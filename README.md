@@ -3,18 +3,19 @@
 1. **文档在线预览** [![star](https://gitee.com/wb04307201/file-preview-spring-boot-starter/badge/star.svg?theme=dark)](https://gitee.com/wb04307201/file-preview-spring-boot-starter)
 [![fork](https://gitee.com/wb04307201/file-preview-spring-boot-starter/badge/fork.svg?theme=dark)](https://gitee.com/wb04307201/file-preview-spring-boot-starter)
 [![star](https://img.shields.io/github/stars/wb04307201/file-preview-spring-boot-starter)](https://github.com/wb04307201/file-preview-spring-boot-starter)
-[![fork](https://img.shields.io/github/forks/wb04307201/file-preview-spring-boot-starter)](https://github.com/wb04307201/file-preview-spring-boot-starter)  
-
+[![fork](https://img.shields.io/github/forks/wb04307201/file-preview-spring-boot-starter)](https://github.com/wb04307201/file-preview-spring-boot-starter)
 2. **多平台文件存储** [![star](https://gitee.com/wb04307201/file-storage-spring-boot-starter/badge/star.svg?theme=dark)](https://gitee.com/wb04307201/file-storage-spring-boot-starter)
 [![fork](https://gitee.com/wb04307201/file-storage-spring-boot-starter/badge/fork.svg?theme=dark)](https://gitee.com/wb04307201/file-storage-spring-boot-starter)
 [![star](https://img.shields.io/github/stars/wb04307201/file-storage-spring-boot-starter)](https://github.com/wb04307201/file-storage-spring-boot-starter)
-[![fork](https://img.shields.io/github/forks/wb04307201/file-storage-spring-boot-starter)](https://github.com/wb04307201/file-storage-spring-boot-starter)  
-
-#### [易智Spring](https://gitee.com/wb04307201/easy-ai-spring-boot-starter)
-> 这不是一个AI大模型，但是可以帮你快速集成AI大模型到Spring项目中，并通过“检索增强生成(RAG)”的方式建立专家知识库帮助大模型回答问题。
-
-#### [实体SQL工具](https://gitee.com/wb04307201/sql-util)
-> 提供一套高效、便捷的数据库操作工具集，包括多数据源连接池、SQL语句执行工具类、SQL构造工具类、从实体类构造SQL工具类。亦可以通过实体快速构造web页面。帮助开发者简化数据库操作，提高开发效率和代码质量。
+[![fork](https://img.shields.io/github/forks/wb04307201/file-storage-spring-boot-starter)](https://github.com/wb04307201/file-storage-spring-boot-starter)
+3. **易智Spring** [![star](https://gitee.com/wb04307201/easy-ai-spring-boot-starter/badge/star.svg?theme=dark)](https://gitee.com/wb04307201/easy-ai-spring-boot-starter)
+[![fork](https://gitee.com/wb04307201/easy-ai-spring-boot-starter/badge/fork.svg?theme=dark)](https://gitee.com/wb04307201/easy-ai-spring-boot-starter)
+[![star](https://img.shields.io/github/stars/wb04307201/easy-ai-spring-boot-starter)](https://github.com/wb04307201/easy-ai-spring-boot-starter)
+[![fork](https://img.shields.io/github/forks/wb04307201/easy-ai-spring-boot-starter)](https://github.com/wb04307201/easy-ai-spring-boot-starter)
+4. **实体SQL工具** [![star](https://gitee.com/wb04307201/sql-util/badge/star.svg?theme=dark)](https://gitee.com/wb04307201/sql-util)
+[![fork](https://gitee.com/wb04307201/sql-util/badge/fork.svg?theme=dark)](https://gitee.com/wb04307201/sql-util)
+[![star](https://img.shields.io/github/stars/wb04307201/sql-util)](https://github.com/wb04307201/sql-util)
+[![fork](https://img.shields.io/github/forks/wb04307201/sql-util)](https://github.com/wb04307201/sql-util)
 
 #### [动态编译加载执行工具](https://gitee.com/wb04307201/loader-util)
 > 在运行期动态加载、编译、执行工具，包括 1 DynamicBean 动态加载Bean并执行；2.DynamicClass 动态编译加载Class并执行；3.DynamicJar 动态加载外部jar到项目中； 4.DynamicGroovy 动态编译加载Groovy并执行； 5.DynamicController 动态编译加载Controller并执行； 6.proxy 动态代理切面。
