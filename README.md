@@ -1,8 +1,14 @@
-#### [文档在线预览](https://gitee.com/wb04307201/file-preview-spring-boot-starter)
-> 一个文档在线预览的中间件，可通过简单的配置即可集成到springboot中，支持word、excel、ppt、pdf、图片、视频、音频、markdown、代码、网页、epub电子书、Xmind脑图、压缩文件、bpmn(业务流程管理和符号)、cmmn(案例管理模型和符号)、dmn(决策管理和符号)等格式文件的在线预览
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=wb0307201)](https://github.com/anuraghazra/github-readme-stats)
 
-#### [多平台文件存储](https://gitee.com/wb04307201/file-storage-spring-boot-starter)
-> 一个适配多平台文件存储的中间件，可通过简单的配置既可集成到springboot中，将文件存储到本地、AmazonS3、MinIO、华为云OBS、百度云 BOS、阿里云OSS、腾讯云COS、WebDAV、Git等平台
+1. 文档在线预览 [![star](https://gitee.com/wb04307201/file-preview-spring-boot-starter/badge/star.svg?theme=dark)](https://gitee.com/wb04307201/file-preview-spring-boot-starter)
+[![fork](https://gitee.com/wb04307201/file-preview-spring-boot-starter/badge/fork.svg?theme=dark)](https://gitee.com/wb04307201/file-preview-spring-boot-starter)
+[![star](https://img.shields.io/github/stars/wb04307201/file-preview-spring-boot-starter)](https://github.com/wb04307201/file-preview-spring-boot-starter)
+[![fork](https://img.shields.io/github/forks/wb04307201/file-preview-spring-boot-starter)](https://github.com/wb04307201/file-preview-spring-boot-starter)  
+
+2. 多平台文件存储 [![star](https://gitee.com/wb04307201/file-storage-spring-boot-starter/badge/star.svg?theme=dark)](https://gitee.com/wb04307201/file-storage-spring-boot-starter)
+[![fork](https://gitee.com/wb04307201/file-storage-spring-boot-starter/badge/fork.svg?theme=dark)](https://gitee.com/wb04307201/file-storage-spring-boot-starter)
+[![star](https://img.shields.io/github/stars/wb04307201/file-storage-spring-boot-starter)](https://github.com/wb04307201/file-storage-spring-boot-starter)
+[![fork](https://img.shields.io/github/forks/wb04307201/file-storage-spring-boot-starter)](https://github.com/wb04307201/file-storage-spring-boot-starter)  
 
 #### [易智Spring](https://gitee.com/wb04307201/easy-ai-spring-boot-starter)
 > 这不是一个AI大模型，但是可以帮你快速集成AI大模型到Spring项目中，并通过“检索增强生成(RAG)”的方式建立专家知识库帮助大模型回答问题。
