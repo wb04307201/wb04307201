@@ -151,4 +151,16 @@ docker exec -it alist ./alist admin
 docker run -d --name chromadb -p 8000:8000 chromadb/chroma
 ```
 
+## docker mirrors
+### 使用 Docker File
+```shell
+{
+  "registry-mirrors": ["https://registry.dockermirror.com"]
+}
+```
+### 命令行使用配置
+```shell
+docker pull ubuntu --registry-mirror=https://registry.dockermirror.com
+```
+
 ## 01 [docker-compose 示例](01.docker-compose%2FREADME.md)
