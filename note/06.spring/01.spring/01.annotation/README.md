@@ -128,7 +128,7 @@ public class DeptService {
 }
 ```
 ### @Repository
-> 通常用于修饰dao层的组件，@Repository注解属于Spring里面最先引入的一批注解，它用于将数据访问层 (DAO层 ) 的类标识为Spring Bean，具体只需将该注解标注在 DAO类上即可
+> 通常用于修饰`dao`层的组件，`@Repository`注解属于`Spring`里面最先引入的一批注解，它用于将数据访问层 (`DAO`层 ) 的类标识为`Spring Bean`，具体只需将该注解标注在 DAO类上即可
 ```java
 @Repository
 public interface RoleRepository extends JpaRepository<Role,Long> {
@@ -137,7 +137,7 @@ public interface RoleRepository extends JpaRepository<Role,Long> {
 }
 ```
 ### @Bean
-> 当于 xml 中配置 Bean，意思是产生一个 bean 对象，并交给spring管理
+> 当于`xml`中配置`Bean`，意思是产生一个`bean`对象，并交给`spring`管理
 ```java
 
 @Configuration
@@ -152,13 +152,13 @@ public class AppConfig {
 }
 ```
 ### @Autowired
-> 自动导入依赖的bean对象，默认时按照byType方式导入对象，而且导入的对象必须存在，当需要导入的对象并不存在时，我们可以通过配置required = false来关闭强制验证。
+> 自动导入依赖的`bean`对象，默认时按照`byType`方式导入对象，而且导入的对象必须存在，当需要导入的对象并不存在时，我们可以通过配置`required = false`来关闭强制验证。
 ```java
 @Autowired
 private DeptService deptService;
 ```
 ### @Resource
-> 也是自动导入依赖的bean对象，由JDK提供，默认是按照byName方式导入依赖的对象；而@Autowired默认时按照byType方式导入对象，当然@Resource还可以配置成通过byType方式导入对象。
+> 也是自动导入依赖的`bean`对象，由`JDK`提供，默认是按照`byName`方式导入依赖的对象；而`@Autowired`默认时按照`byType`方式导入对象，当然`@Resource`还可以配置成通过`byType`方式导入对象。
 ```java
 /**
  * 通过名称导入（默认通过名称导入依赖对象）
@@ -173,18 +173,18 @@ private DeptService deptService;
 private DeptService deptService;
 ```
 ### @Qualifier
-> 当有多个同一类型的bean时，使用@Autowired导入会报错，提示当前对象并不是唯一，Spring不知道导入哪个依赖，这个时候，我们可以使用@Qualifier进行更细粒度的控制，选择其中一个候选者，一般于@Autowired搭配使用
+> 当有多个同一类型的`bean`时，使用`@Autowired`导入会报错，提示当前对象并不是唯一，`Spring`不知道导入哪个依赖，这个时候，我们可以使用`@Qualifier`进行更细粒度的控制，选择其中一个候选者，一般于`@Autowired`搭配使用
 ```java
 @Autowired
 @Qualifier("deptService")
 private DeptService deptService;
 ```
 ### @Scope
-> 用于生命一个spring bean的作用域，作用的范围一共有以下几种：
-> - **`singleton`**：唯一 bean 实例，Spring 中的 bean 默认都是单例的。
-> - **`prototype`**：每次请求都会创建一个新的 bean 实例，对象多例。
-> - **`request`**：每一次 HTTP 请求都会产生一个新的 bean，该 bean 仅在当前 HTTP request 内有效。
-> - **`session`**：每一次 HTTP 请求都会产生一个新的 bean，该 bean 仅在当前 HTTP session 内有效。
+> 用于生命一个`spring bean`的作用域，作用的范围一共有以下几种：
+> - **`singleton`**：唯一`bean`实例，`Spring`中的`bean`默认都是单例的。
+> - **`prototype`**：每次请求都会创建一个新的`bean`实例，对象多例。
+> - **`request`**：每一次`HTTP`请求都会产生一个新的`bean`，该`bean`仅在当前`HTTP request`内有效。
+> - **`session`**：每一次`HTTP`请求都会产生一个新的`bean`，该`bean`仅在当前`HTTP session`内有效。
 ```java
 /**
  * 单例对象
@@ -198,7 +198,7 @@ public class HelloController {
 
 ## JPA 相关注解
 ### @Entity和@Table
-> 表明这是一个实体类，这两个注解一般一块使用，但是如果表名和实体类名相同的话，@Table可以省略。
+> 表明这是一个实体类，这两个注解一般一块使用，但是如果表名和实体类名相同的话，`@Table`可以省略。
 ### @Id
 > 表示该属性字段对应数据库表中的主键字段。
 ### @Column
@@ -210,7 +210,7 @@ public class HelloController {
 > - **`SEQUENCE`**：表示通过数据库的序列生成主键ID，MYSQL 不支持
 > - **`Table`**：表示由特定的数据库产生主键，该方式有利于数据库的移植
 ### @SequenceGeneretor
-> 用来定义一个生成主键的序列，它需要与@GeneratedValue联合使用才有效，以TB_ROLE表为例，对应的注解配置如下：
+> 用来定义一个生成主键的序列，它需要与`@GeneratedValue`联合使用才有效，以`TB_ROLE`表为例，对应的注解配置如下：
 ```java
 @Entity
 @Table(name = "TB_ROLE")
@@ -240,7 +240,7 @@ public class Role implements Serializable {
 }
 ```
 ### @Transient
-> 表示该属性并非与数据库表的字段进行映射，ORM 框架会将忽略该属性。
+> 表示该属性并非与数据库表的字段进行映射，`ORM`框架会将忽略该属性。
 ```java
 /**
  * 忽略该属性
@@ -250,7 +250,7 @@ public class Role implements Serializable {
 private String lastTime;
 ```
 ### @Basic(fetch=FetchType.LAZY)
-> 用在某些属性上，可以实现懒加载的效果，也就是当用到这个字段的时候，才会装载这个属性，如果配置成fetch=FetchType.EAGER，表示即时加载，也是默认的加载方式！
+> 用在某些属性上，可以实现懒加载的效果，也就是当用到这个字段的时候，才会装载这个属性，如果配置成`fetch=FetchType.EAGER`，表示即时加载，也是默认的加载方式！
 ```java
 /**
  * 延迟加载该属性
@@ -260,7 +260,7 @@ private String lastTime;
 private String roleType;
 ```
 ### @JoinColumn
-> 用于标注表与表之间关系的字段，通常与@OneToOne、@OneToMany搭配使用
+> 用于标注表与表之间关系的字段，通常与`@OneToOne`、`@OneToMany`搭配使用
 ```java
 @Entity
 @Table(name = "tb_login_log")
@@ -277,7 +277,7 @@ public class LoginLog implements Serializable {
 }
 ```
 ### @OneToOne、@OneToMany和@ManyToOne
-> 这三个注解，相当于hibernate配置文件中的一对一，一对多，多对一配置，比如下面的客户地址表，通过客户 ID，实现客户信息的查询。
+> 这三个注解，相当于`hibernate`配置文件中的一对一，一对多，多对一配置，比如下面的客户地址表，通过客户`ID`，实现客户信息的查询。
 ```java
 @Entity
 @Table(name="address")
@@ -293,7 +293,7 @@ public class AddressEO implements java.io.Serializable {
 
 ## 配置相关注解
 ### @Configuration
-> 表示声明一个 Java 形式的配置类，Spring Boot 提倡基于 Java 的配置，相当于你之前在 xml 中配置 bean，比如声明一个配置类AppConfig，然后初始化一个Uploader对象。
+> 表示声明一个`Java`形式的配置类，`Spring Boot`提倡基于`Java`的配置，相当于你之前在`xml`中配置`bean`，比如声明一个配置类`AppConfig`，然后初始化一个`Uploader`对象。
 ```java
 @Configuration
 public class AppConfig {
@@ -306,8 +306,8 @@ public class AppConfig {
 }
 ```
 ### @EnableAutoConfiguration
-> @EnableAutoConfiguration可以帮助SpringBoot应用将所有符合条件的@Configuration配置类，全部都加载到当前SpringBoot里，并创建对应配置类的Bean，并把该Bean实体交给IoC容器进行管理。  
-> 某些场景下，如果我们想要避开某些配置类的扫描（包括避开一些第三方jar包下面的配置，可以这样处理。
+> `@EnableAutoConfiguration`可以帮助`SpringBoot`应用将所有符合条件的`@Configuration`配置类，全部都加载到当前`SpringBoot`里，并创建对应配置类的`Bean`，并把该`Bean`实体交给`IoC`容器进行管理。  
+> 某些场景下，如果我们想要避开某些配置类的扫描（包括避开一些第三方`jar`包下面的配置，可以这样处理。
 ```java
 @Configuration
 @EnableAutoConfiguration(exclude = { org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class
@@ -318,12 +318,12 @@ public class AppConfig {
 }
 ```
 ### @ComponentScan
-> 标注哪些路径下的类需要被Spring扫描，用于自动发现和装配一些Bean对象，默认配置是扫描当前文件夹下和子目录下的所有类，如果我们想指定扫描某些包路径，可以这样处理。
+> 标注哪些路径下的类需要被`Spring`扫描，用于自动发现和装配一些`Bean`对象，默认配置是扫描当前文件夹下和子目录下的所有类，如果我们想指定扫描某些包路径，可以这样处理。
 ```java
 @ComponentScan(basePackages = {"com.xxx.a", "com.xxx.b", "com.xxx.c"})
 ```
 ### @SpringBootApplication
-> 等价于使用@Configuration、@EnableAutoConfiguration、@ComponentScan这三个注解，通常用于全局启动类上
+> 等价于使用`@Configuration`、`@EnableAutoConfiguration`、`@ComponentScan`这三个注解，通常用于全局启动类上
 ```java
 
 @SpringBootApplication
@@ -334,7 +334,7 @@ public class PropertyApplication {
     }
 }
 ```
-> 把@SpringBootApplication换成@Configuration、@EnableAutoConfiguration、@ComponentScan这三个注解，一样可以启动成功，@SpringBootApplication只是将这三个注解进行了简化！
+> 把`@SpringBootApplication`换成`@Configuration`、`@EnableAutoConfiguration`、`@ComponentScan`这三个注解，一样可以启动成功，`@SpringBootApplication`只是将这三个注解进行了简化！
 ### @EnableTransactionManagement
 > 表示开启事务支持，等同于 xml 配置方式的<tx:annotation-driven />
 ```java
@@ -348,7 +348,7 @@ public class PropertyApplication {
 }
 ```
 ### @Conditional
-> 从 Spring4 开始，可以通过@Conditional注解实现按条件装载bean对象，目前 Spring Boot 源码中大量扩展了@Condition注解，用于实现智能的自动化配置，满足各种使用场景。下面我给大家列举几个常用的注解：
+> 从`Spring4`开始，可以通过`@Conditional`注解实现按条件装载`bean`对象，目前`Spring Boot`源码中大量扩展了`@Condition`注解，用于实现智能的自动化配置，满足各种使用场景。下面我给大家列举几个常用的注解：
 > - **`@ConditionalOnBean`**：当某个特定的Bean存在时，配置生效
 > - **`@ConditionalOnMissingBean`**：当某个特定的Bean不存在时，配置生效
 > - **`@ConditionalOnClass`**：当Classpath里存在指定的类，配置生效
@@ -425,11 +425,11 @@ public class ConditionalConfig {
 }
 ```
 ### @value
-> 可以在任意 Spring 管理的 Bean 中通过这个注解获取任何来源配置的属性值，比如你在application.properties文件里，定义了一个参数变量！
+> 可以在任意`Spring`管理的`Bean`中通过这个注解获取任何来源配置的属性值，比如你在`application.properties`文件里，定义了一个参数变量！
 ```properties
 config.name=zhangsan
 ```
-> 在任意的bean容器里面，可以通过@Value注解注入参数，获取参数变量值。
+> 在任意的`bean`容器里面，可以通过`@Value`注解注入参数，获取参数变量值。
 ```java
 @RestController
 public class HelloController {
@@ -444,14 +444,14 @@ public class HelloController {
 }
 ```
 ### @ConfigurationProperties
-> 上面@Value在每个类中获取属性配置值的做法，其实是不推荐的。  
-> 一般在企业项目开发中，不会使用那么杂乱无章的写法而且维护也麻烦，通常会一次性读取一个 Java 配置类，然后在需要使用的地方直接引用这个类就可以多次访问了，方便维护，示例如下：  
-> 首先，在application.properties文件里定义好参数变量。
+> 上面`@Value`在每个类中获取属性配置值的做法，其实是不推荐的。  
+> 一般在企业项目开发中，不会使用那么杂乱无章的写法而且维护也麻烦，通常会一次性读取一个`Java`配置类，然后在需要使用的地方直接引用这个类就可以多次访问了，方便维护，示例如下：  
+> 首先，在`application.properties`文件里定义好参数变量。
 ```properties
 config.name=demo_1
 config.value=demo_value_1
 ```
-> 然后，创建一个 Java 配置类，将参数变量注入即可！
+> 然后，创建一个`Java`配置类，将参数变量注入即可！
 ```java
 @Component
 @ConfigurationProperties(prefix = "config")
@@ -464,9 +464,9 @@ public class Config {
     //...get、set
 }
 ```
-> 最后，在需要使用的地方，通过ioc注入Config对象即可！
+> 最后，在需要使用的地方，通过`ioc`注入`Config`对象即可！
 ### @PropertySource
-> 这个注解是用来读取我们自定义的配置文件的，比如导入test.properties和bussiness.properties两个配置文件
+> 这个注解是用来读取我们自定义的配置文件的，比如导入`test.properties`和`bussiness.properties`两个配置文件
 ```java
 @SpringBootApplication
 @PropertySource(value = {"test.properties","bussiness.properties"})
@@ -478,7 +478,7 @@ public class PropertyApplication {
 }
 ```
 ### @ImportResource
-> 用来加载 xml 配置文件，比如导入自定义的aaa.xml文件
+> 用来加载`xml`配置文件，比如导入自定义的`aaa.xml`文件
 ```java
 @ImportResource(locations = "classpath:aaa.xml")
 @SpringBootApplication
@@ -523,7 +523,7 @@ public class GlobalExceptionConfig {
 
 ## 测试相关注解
 ### @ActiveProfiles
-> 一般作用于测试类上， 用于声明生效的 Spring 配置文件，比如指定application-dev.properties配置文件。
+> 一般作用于测试类上， 用于声明生效的`Spring`配置文件，比如指定`application-dev.properties`配置文件。
 ### @RunWith和@SpringBootTest
 > 一般作用于测试类上， 用于单元测试用
 ```java
