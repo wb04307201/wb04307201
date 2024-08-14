@@ -37,7 +37,6 @@
 ### 理想的RBAC模型表设计
 ![img_3.png](img_3.png)
 
-
 ## ABAC(Attribute-Based Access Control,基于属性的访问控制)
 > `ABAC`,又称为PBAC(Policy-Based Access Control,基于策略的访问控制),或CBAC(Claims-Based Access
 > Control,基于声明的访问控制)。  
