@@ -63,9 +63,3 @@
 ## Spring Test
 > Spring 团队提倡测试驱动开发（TDD）  
 > Spring 的测试模块对 JUnit（单元测试框架）、TestNG（类似 JUnit）、Mockito（主要用来 Mock 对象）、PowerMock（解决 Mockito 的问题比如无法模拟 final, static， private 方法）等等常用的测试框架支持的都比较好。
-
-
-
-
-
-

@@ -1,6 +1,6 @@
 # 注解
 
-## SpringMVC 相关注解
+## `SpringMVC`相关注解
 ### @Controller
 > 通常用于修饰`controller`层的组件，由控制器负责将用户发来的URL请求转发到对应的服务接口，通常还需要配合注解`@RequestMapping`使用。
 ### @RequestMapping
@@ -108,7 +108,7 @@ public ResponseEntity delete(){
 }
 ```
 
-## bean 相关注解
+## `bean`相关注解
 ### @Service
 > 通常用于修饰`service`层的组件，声明一个对象，会将类对象实例化并注入到`bean`容器里面
 ```java
@@ -172,6 +172,43 @@ private DeptService deptService;
 @Resource(type = RoleRepository.class)
 private DeptService deptService;
 ```
+### @Inject
+> 也是自动导入依赖的`bean`对象，由`JDK`提供，`@Inject`注解可以出现在三种类成员之前，表示该成员需要注入依赖项。  
+> 按运行时的处理顺序这三种成员类型是：
+> - （1）构造方法  
+> 在构造方法上使用 `@Inject`时，其参数在运行时由配置好的IoC容器提供  
+> 规范中规定向构造方法注入的参数数量是0个或多个，所以在不含参数的构造方法上使用`@Inject`注解也是合法的。  
+> <font color='red'>注意</font>：因为JRE无法决定构造方法注入的优先级，所以规范中规定类中只能有一个构造方法带`@Inject`注解）
+```java
+@Inject
+public MurmurMessage(Header header, Content content)
+{
+    this.headr = header;
+    this.content = content;
+}
+```
+> - （2）方法
+> `@Inject`注解方法与构造方法一样，运行时可注入的参数数量为0个或多个。  
+> 但使用参数注入的方法不能声明为抽象方法也不能声明其自身的类型参数。
+```java
+@Inject
+public void setContent(Content concent)
+{
+    this.content = content;
+}
+```
+> - （3）属性
+> 在属性上注入（只要它们不是final）  
+> <font color='red'>注意</font>：这样做会让单元测试更加困难。
+```java
+public class MurmurMessager
+{
+    @Inject
+    private MurmurMessage murmurMessage;
+    
+    ...
+}
+```
 ### @Qualifier
 > 当有多个同一类型的`bean`时，使用`@Autowired`导入会报错，提示当前对象并不是唯一，`Spring`不知道导入哪个依赖，这个时候，我们可以使用`@Qualifier`进行更细粒度的控制，选择其中一个候选者，一般于`@Autowired`搭配使用
 ```java
@@ -183,20 +220,26 @@ private DeptService deptService;
 > 用于生命一个`spring bean`的作用域，作用的范围一共有以下几种：
 > - **`singleton`**：唯一`bean`实例，`Spring`中的`bean`默认都是单例的。
 > - **`prototype`**：每次请求都会创建一个新的`bean`实例，对象多例。
-> - **`request`**：每一次`HTTP`请求都会产生一个新的`bean`，该`bean`仅在当前`HTTP request`内有效。
-> - **`session`**：每一次`HTTP`请求都会产生一个新的`bean`，该`bean`仅在当前`HTTP session`内有效。
+> - **`request`（仅 Web 应用可用）**：每一次`HTTP`请求都会产生一个新的`bean`，该`bean`仅在当前`HTTP request`内有效。
+> - **`session`（仅 Web 应用可用）**：每一次`HTTP`请求都会产生一个新的`bean`，该`bean`仅在当前`HTTP session`内有效。
+> - **`Application/Global Session`（仅 Web 应用可用）**：全局`HTTP Session`中会返回同一个Bean实例，仅在使用`Porlet Contex`t有效
+> - **`websocket`（仅 Web 应用可用）**：每一次`WebSocket`会话产生一个新的`bean`。
 ```java
 /**
  * 单例对象
  */
 @RestController
 @Scope("singleton")
+//@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class HelloController {
 
 }
 ```
+```xml
+<bean id="..." class="..." scope="singleton"></bean>
+```
 
-## JPA 相关注解
+## `JPA`相关注解
 ### @Entity和@Table
 > 表明这是一个实体类，这两个注解一般一块使用，但是如果表名和实体类名相同的话，`@Table`可以省略。
 ### @Id
@@ -339,7 +382,7 @@ public class PropertyApplication {
 > 表示开启事务支持，等同于 xml 配置方式的<tx:annotation-driven />
 ```java
 @SpringBootApplication
-@EnableTransactionManagement`
+@EnableTransactionManagement
 public class PropertyApplication {
 
     public static void main(String[] args) {
