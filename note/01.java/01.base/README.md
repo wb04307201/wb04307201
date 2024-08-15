@@ -616,7 +616,7 @@ protected void finalize() throws Throwable { }
 > - **JDK 自带的序列化方式**：因为 JDK 自带的序列化的缺点，一般不会直接使用 JDK 自带的序列化方式。
 > - **JSON 序列化**：由于性能问题一般也不会考虑使用。
 > - **Protostuff，ProtoBuf、hessian2**：跨语言的序列化方式，如果有跨语言需求的话可以使用。
-> - **Kryo，FST**：专门针对 Java 语言的，性能非常好。
+> - **Kryo/FST**：专门针对 Java 语言的，性能非常好。
 
 ### 序列化协议的性能对比
 
