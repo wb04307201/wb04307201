@@ -623,8 +623,11 @@ protected void finalize() throws Throwable { }
 ![img_9.png](img_9.png)
 
 ## 语法糖
+
 > 语法糖（Syntactic sugar）代指的是编程语言为了方便程序员开发程序而设计的一种特殊语法，这种语法对编程语言的功能并没有影响。实现相同的功能，基于语法糖写出来的代码往往更简单简洁且更易阅读。
+
 ### Java 中常见的语法糖
+
 > Java 中最常用的语法糖主要有泛型、自动拆装箱、变长参数、枚举、内部类、增强`for`循环、`try-with-resources`语法、`lambda`表达式等。
 
 
