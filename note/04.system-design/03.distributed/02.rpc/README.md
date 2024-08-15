@@ -31,13 +31,11 @@
 
 ### HTTP客户端组件
 
-> 需要和 HTTP 协议打交道，解析和封装 HTTP 请求和响应，这类框架并不能算是“RPC 框架”，比如 Feign 和 OpenFeign 可以被看作是
-> RPC（远程过程调用）框架的一部分或工具
+> 需要和 HTTP 协议打交道，解析和封装 HTTP 请求和响应，这类框架并不能算是“RPC 框架”，比如 Feign 和 OpenFeign 可以被看作是RPC（远程过程调用）框架的一部分或工具
 
 #### Feign
 
-> Feign 是一个声明式的 Web 服务客户端，它使得编写 HTTP 客户端变得更简单。你可以使用 Feign 来创建一个接口并用注解来配置它（例如，@Get、@Post
-> 等），然后 Feign 会为你生成实现。  
+> Feign 是一个声明式的 Web 服务客户端，它使得编写 HTTP 客户端变得更简单。你可以使用 Feign 来创建一个接口并用注解来配置它（例如，@Get、@Post等），然后 Feign 会为你生成实现。  
 > Feign还整合了Ribbon和Hystrix，使得负载均衡和熔断机制变得更加容易实现。
 
 #### OpenFeign
@@ -58,11 +56,9 @@
 
 #### 与 RPC 的关系
 
-> O虽然 Feign 和 OpenFeign 允许你以一种类似本地调用的方式来调用远程 HTTP 服务，但它们主要关注 HTTP 协议，并且依赖于像
-> Jackson 或 Gson 这样的库来进行序列化和反序列化。  
-> O完整的 RPC 框架（如 gRPC、Thrift、Dubbo
-> 等）通常具有更丰富的功能，例如支持多种传输协议、更复杂的负载均衡策略、服务发现、容错处理等。  
-> O在某些情况下，可以将 Feign 或 OpenFeign 与其他工具（如 Eureka、Ribbon 等）结合使用，以构建一个完整的 RPC-like 解决方案。
+> 虽然 Feign 和 OpenFeign 允许你以一种类似本地调用的方式来调用远程 HTTP 服务，但它们主要关注 HTTP 协议，并且依赖于像Jackson 或 Gson 这样的库来进行序列化和反序列化。  
+> 完整的 RPC 框架（如 gRPC、Thrift、Dubbo等）通常具有更丰富的功能，例如支持多种传输协议、更复杂的负载均衡策略、服务发现、容错处理等。  
+> 在某些情况下，可以将 Feign 或 OpenFeign 与其他工具（如 Eureka、Ribbon 等）结合使用，以构建一个完整的 RPC-like 解决方案。
 
 
 
