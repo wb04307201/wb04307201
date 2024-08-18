@@ -1,13 +1,13 @@
 # 系统设计
 
-## 01. 基础
-### 01. [软件工程](01.base%2F01.software-engineering%2FREADME.md)
-### 02. [架构设计](01.base%2F02.software-architecture-design%2FREADME.md)
-### 03. [C4 模型](01.base%2F03.c4-model%2FREADME.md)
-### 04. [设计与建模](01.base%2F04.design-and-modeling%2FREADME.md)
+## 基础
+### [软件工程](01.base%2F01.software-engineering%2FREADME.md)
+### [架构设计](01.base%2F02.software-architecture-design%2FREADME.md)
+### [C4 模型](01.base%2F03.c4-model%2FREADME.md)
+### [设计与建模](01.base%2F04.design-and-modeling%2FREADME.md)
 
-## 02. 分布式
-### 01. [CAP & BASE理论详解](03.distributed%2F01.theory-algorithm-protocol%2FREADME.md)
+## 分布式
+### [CAP & BASE理论详解](03.distributed%2F01.theory-algorithm-protocol%2FREADME.md)
 
 ## 高性能
 
