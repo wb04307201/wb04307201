@@ -1,4 +1,4 @@
-# git
+# Git
 
 ## Git Bash Here
 ### 统计每个人增删行数
@@ -42,7 +42,7 @@ git submodule update --init --remote
 4) 手动删除子模块残留的目录
 清理脏文件
 
-## 01 [分支版本管理](01.version-controller%2FREADME.md)
+## [分支版本管理](version-controller%2FREADME.md)
 
 
 

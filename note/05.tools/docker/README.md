@@ -1,4 +1,4 @@
-# docker
+# Docker
 
 ## linux docker 安装
 1. 检查内核版本，返回的值大于3.10即可`uname -r`
@@ -163,4 +163,4 @@ docker run -d --name chromadb -p 8000:8000 chromadb/chroma
 docker pull ubuntu --registry-mirror=https://registry.dockermirror.com
 ```
 
-## 01 [docker-compose 示例](01.docker-compose%2FREADME.md)
+## 01 [docker-compose 示例](docker-compose%2FREADME.md)
