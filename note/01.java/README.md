@@ -10,7 +10,9 @@
 
 ## JVM虚拟机
 
-### [JVM内存区域](jvm-memory-areas%2FREADME.md)
+### [JVM内存区域](jvm%2Fjvm-memory-areas%2FREADME.md)
+
+### [垃圾回收](jvm%2Fgarbage-collection%2FREADME.md)
 
 ## 版本特性
 
