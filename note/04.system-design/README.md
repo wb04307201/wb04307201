@@ -8,6 +8,8 @@
 
 ### [软件架构设计](01.base%2Fsoftware-architecture-design%2FREADME.md)
 
+#### [领域驱动设计](01.base%2Fsoftware-architecture-design%2Fddd%2FREADME.md)
+
 #### 架构图的分类
 
 ##### [“4+1”视图](01.base%2Fsoftware-architecture-design%2Farchitecture-diagram%2F4%2B1%2FREADME.md)
