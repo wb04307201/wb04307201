@@ -16,3 +16,5 @@
 ### [关系型数据库和NoSQL数据库的区别](base%2Fdatabase-vs-nosql%2FREADME.md)
 
 ### [缓存与数据库一致性](base%2Fconsistency-between-cache-and-database%2FREADME.md)
+
+### [缓存稳定性的3种经典问题](base%2Fcache-stability%2FREADME.md)
