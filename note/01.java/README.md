@@ -14,6 +14,8 @@
 
 ### [垃圾回收](jvm%2Fgarbage-collection%2FREADME.md)
 
+### [JDK监控和故障处理工具](jvm%2Fmonitoring-and-troubleshooting-tools%2FREADME.md)
+
 ## 版本特性
 
 ### Java 8
