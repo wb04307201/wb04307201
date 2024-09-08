@@ -16,6 +16,8 @@
 
 ### [JDK监控和故障处理工具](jvm%2Fmonitoring-and-troubleshooting-tools%2FREADME.md)
 
+### [JVM调优命令](jvm%2Fjvm-tuning-command%2FREADME.md)
+
 ## 版本特性
 
 ### Java 8
