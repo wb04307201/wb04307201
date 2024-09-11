@@ -16,6 +16,9 @@
 ### 7. [Java Agent](java-agent%2FREADME.md)
 
 ## 二、[计算机基础](02.computer-basics%2Findex.md)
+### 1. [服务器性能指标](server-performance-metrics)
+### 2. [CORS 跨域](cors%2FREADME.md)
+
 ## 03. [数据库](03.database)
 ## 04. [系统设计](04.system-design%2FREADME.md)
 ## 05. [工具](05.tools)
