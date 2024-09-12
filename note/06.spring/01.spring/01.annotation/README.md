@@ -581,3 +581,84 @@ public class TestJunit {
     }
 }
 ```
+
+## AOP相关注解
+### @Aspect
+> 用于标识一个类作为切面类，允许在其中定义切点和通知。
+```java
+@Aspect
+@Component
+public class SecurityAspect {
+    // 切点和通知定义
+}
+```
+### @Pointcut
+> 用于定义一个切点，可以与@Before、@AfterReturning、@AfterThrowing等注解结合使用。
+```java
+@Pointcut("execution(* com.example.service.*.*(..))")
+public void pointcutServiceMethods() {
+    // 切点表达式定义，匹配com.example.service包下的所有方法。
+}
+```
+### @Before
+> 用于定义前置通知，它会在目标方法执行之前执行。
+```java
+@Before("pointcutServiceMethods()")
+public void logBeforeServiceMethod(JoinPoint joinPoint) {    
+    // 日志记录逻辑，例如记录方法名和参数    
+    String methodName = joinPoint.getSignature().getName();    
+    Object[] args = joinPoint.getArgs();    
+    System.out.println("Entering: " + methodName + " with arguments " + Arrays.toString(args));
+}
+```
+### @After
+> 用于定义后置通知，它会在目标方法执行之后执行
+```java
+@After("pointcutServiceMethods()")
+public void logAfterServiceMethod(JoinPoint joinPoint) {    
+    // 日志记录逻辑，例如记录方法执行完成    
+    String methodName = joinPoint.getSignature().getName();    
+    System.out.println("Exiting: " + methodName);
+}
+```
+### @AfterReturning
+> 用于定义返回后通知，它会在目标方法成功执行并返回结果之后执行。
+```java
+@AfterReturning(pointcut = "pointcutServiceMethods()", returning = "result")
+public void logAfterReturningServiceMethod(Object result) {    
+    // 处理方法返回结果    
+    System.out.println("Service method returned: " + result);
+}
+```
+### @AfterThrowing
+> 用于定义异常抛出通知，它会在目标方法抛出异常之后执行。
+```java
+@AfterThrowing(pointcut = "pointcutServiceMethods()", throwing = "exception")
+public void logAfterThrowingServiceMethod(Exception exception) {    
+    // 异常处理逻辑    
+    System.err.println("Service method threw exception: " + exception.getMessage());
+}
+```
+### @Around
+> 用于定义环绕通知，它包围目标方法的执行，允许在方法执行前后和方法抛出异常时执行自定义逻辑。
+```java
+@Around("pointcutServiceMethods()")
+public Object aroundServiceMethod(ProceedingJoinPoint joinPoint) throws Throwable {    
+    // 方法执行前后的逻辑    
+    long startTime = System.currentTimeMillis();    
+    Object result = joinPoint.proceed(); 
+    // 继续执行目标方法    
+    long endTime = System.currentTimeMillis();    
+    System.out.println("Execution time: " + (endTime - startTime) + " ms");    return result;
+}
+```
+### @EnableAspectJAutoProxy
+> 用于开启对AspectJ代理的支持，通常在配置类上使用。 8.2 注解属性介绍
+```java
+@Configuration@EnableAspectJAutoProxy
+public class AspectConfiguration {    
+    // 其他Spring配置
+}
+```
+
+
