@@ -605,9 +605,9 @@ public void pointcutServiceMethods() {
 ```java
 @Before("pointcutServiceMethods()")
 public void logBeforeServiceMethod(JoinPoint joinPoint) {    
-    // 日志记录逻辑，例如记录方法名和参数    
-    String methodName = joinPoint.getSignature().getName();    
-    Object[] args = joinPoint.getArgs();    
+    // 日志记录逻辑，例如记录方法名和参数
+    String methodName = joinPoint.getSignature().getName();
+    Object[] args = joinPoint.getArgs();
     System.out.println("Entering: " + methodName + " with arguments " + Arrays.toString(args));
 }
 ```
@@ -616,8 +616,8 @@ public void logBeforeServiceMethod(JoinPoint joinPoint) {
 ```java
 @After("pointcutServiceMethods()")
 public void logAfterServiceMethod(JoinPoint joinPoint) {    
-    // 日志记录逻辑，例如记录方法执行完成    
-    String methodName = joinPoint.getSignature().getName();    
+    // 日志记录逻辑，例如记录方法执行完成
+    String methodName = joinPoint.getSignature().getName();
     System.out.println("Exiting: " + methodName);
 }
 ```
@@ -626,7 +626,7 @@ public void logAfterServiceMethod(JoinPoint joinPoint) {
 ```java
 @AfterReturning(pointcut = "pointcutServiceMethods()", returning = "result")
 public void logAfterReturningServiceMethod(Object result) {    
-    // 处理方法返回结果    
+    // 处理方法返回结果
     System.out.println("Service method returned: " + result);
 }
 ```
@@ -635,7 +635,7 @@ public void logAfterReturningServiceMethod(Object result) {
 ```java
 @AfterThrowing(pointcut = "pointcutServiceMethods()", throwing = "exception")
 public void logAfterThrowingServiceMethod(Exception exception) {    
-    // 异常处理逻辑    
+    // 异常处理逻辑
     System.err.println("Service method threw exception: " + exception.getMessage());
 }
 ```
@@ -644,12 +644,13 @@ public void logAfterThrowingServiceMethod(Exception exception) {
 ```java
 @Around("pointcutServiceMethods()")
 public Object aroundServiceMethod(ProceedingJoinPoint joinPoint) throws Throwable {    
-    // 方法执行前后的逻辑    
-    long startTime = System.currentTimeMillis();    
-    Object result = joinPoint.proceed(); 
-    // 继续执行目标方法    
-    long endTime = System.currentTimeMillis();    
-    System.out.println("Execution time: " + (endTime - startTime) + " ms");    return result;
+    // 方法执行前后的逻辑
+    long startTime = System.currentTimeMillis();
+    Object result = joinPoint.proceed();
+    // 继续执行目标方法
+    long endTime = System.currentTimeMillis();
+    System.out.println("Execution time: " + (endTime - startTime) + " ms"); 
+    return result;
 }
 ```
 ### @EnableAspectJAutoProxy
