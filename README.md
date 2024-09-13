@@ -13,12 +13,12 @@
 10. 美化console.log [![star](https://gitee.com/wb04307201/pretty-log/badge/star.svg?theme=dark)](https://gitee.com/wb04307201/pretty-log) [![fork](https://gitee.com/wb04307201/pretty-log/badge/fork.svg?theme=dark)](https://gitee.com/wb04307201/pretty-log) [![star](https://img.shields.io/github/stars/wb04307201/pretty-log)](https://github.com/wb04307201/pretty-log) [![fork](https://img.shields.io/github/forks/wb04307201/pretty-log)](https://github.com/wb04307201/pretty-log)
 
 ## [笔记](note%2FREADME.md)
-### 一、java
-### 二、计算机基础
-### 三、 数据库
-### 四、 系统设计
-### 五、 工具
-### 六、 Spring
-### 七、 流程引擎
-### 八、 Mybatis
-### 九、 系统设计实例
+#### 一、java
+#### 二、计算机基础
+#### 三、 数据库
+#### 四、 系统设计
+#### 五、 工具
+#### 六、 Spring
+#### 七、 流程引擎
+#### 八、 Mybatis
+#### 九、 系统设计实例
