@@ -12,13 +12,8 @@
 9. 消息中间件 [![star](https://gitee.com/wb04307201/message-spring-boot-starter/badge/star.svg?theme=dark)](https://gitee.com/wb04307201/message-spring-boot-starter) [![fork](https://gitee.com/wb04307201/message-spring-boot-starter/badge/fork.svg?theme=dark)](https://gitee.com/wb04307201/message-spring-boot-starter) [![star](https://img.shields.io/github/stars/wb04307201/message-spring-boot-starter)](https://github.com/wb04307201/message-spring-boot-starter) [![fork](https://img.shields.io/github/forks/wb04307201/message-spring-boot-starter)](https://github.com/wb04307201/message-spring-boot-starter)
 10. 美化console.log [![star](https://gitee.com/wb04307201/pretty-log/badge/star.svg?theme=dark)](https://gitee.com/wb04307201/pretty-log) [![fork](https://gitee.com/wb04307201/pretty-log/badge/fork.svg?theme=dark)](https://gitee.com/wb04307201/pretty-log) [![star](https://img.shields.io/github/stars/wb04307201/pretty-log)](https://github.com/wb04307201/pretty-log) [![fork](https://img.shields.io/github/forks/wb04307201/pretty-log)](https://github.com/wb04307201/pretty-log)
 
-## [笔记](note%2FREADME.md)
-#### 一、java
-#### 二、计算机基础
-#### 三、 数据库
-#### 四、 系统设计
-#### 五、 工具
-#### 六、 Spring
-#### 七、 流程引擎
-#### 八、 Mybatis
-#### 九、 系统设计实例
+<h1 align="left">
+	<a href="/note/README.md">
+		<img src="https://readme-typing-svg.herokuapp.com/?font=Fira+Code&lines=%E6%88%91%E7%9A%84%E7%AC%94%E8%AE%B0;%E7%AC%94%E8%AE%B0-java;%E7%AC%94%E8%AE%B0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80;%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E5%BA%93;%E7%AC%94%E8%AE%B0-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1;%E7%AC%94%E8%AE%B0-%E5%B7%A5%E5%85%B7;%E7%AC%94%E8%AE%B0-Spring;%E7%AC%94%E8%AE%B0-%E6%B5%81%E7%A8%8B%E5%BC%95%E6%93%8E;%E7%AC%94%E8%AE%B0-Mybatis;%E7%AC%94%E8%AE%B0-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%AE%9E%E4%BE%8B">
+	</a>
+</h1>
