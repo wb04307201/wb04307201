@@ -9,8 +9,9 @@
 ### 5.3. [JDK监控和故障处理工具](01.java%2Fjvm%2Fmonitoring-and-troubleshooting-tools%2FREADME.md)
 ### 5.4. [JVM调优命令](01.java%2Fjvm%2Fjvm-tuning-command%2FREADME.md)
 ## 6. 版本特性
-### 6.1. Java 8
+### 6.1 Java 8
 #### 6.1.1 [Optional](01.java%2Fversion%2Fjava-8%2Foptional%2FREADME.md)
+### 6.2 [Java 23](01.java%2Fversion%2Fjava-23%2FREADME.md)
 ## 7. [Java Agent](01.java%2Fjava-agent%2FREADME.md)
 
 # 二、计算机基础
