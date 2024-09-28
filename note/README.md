@@ -11,6 +11,7 @@
 ## 6. 版本特性
 ### 6.1 Java 8
 #### 6.1.1 [Optional](01.java%2Fversion%2Fjava-8%2Foptional%2FREADME.md)
+### 6.2 [Java 22](01.java%2Fversion%2Fjava-22%2FREADME.md)
 ### 6.2 [Java 23](01.java%2Fversion%2Fjava-23%2FREADME.md)
 ## 7. [Java Agent](01.java%2Fjava-agent%2FREADME.md)
 
