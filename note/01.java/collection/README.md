@@ -101,7 +101,6 @@ System.out.println(stringList); // [world, !, goodbye]
 - **双向循环链表**：最后一个节点的`next`指向`head`，而`head`的`prev`指向最后一个节点，构成一个环。  
 ![img_2.png](img_2.png)
 
-
 ## Set
 ### Comparable 和 Comparator 的区别
 - `Comparable`接口来自`java.lang`包，它有一个`compareTo(Object obj)`方法用来排序
