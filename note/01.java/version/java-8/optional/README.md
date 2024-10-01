@@ -1,4 +1,4 @@
-# Optional
+# Optional 类
 
 > `Optional`是`Java 8`引入的一个容器类，它位于`java.util`包下。`Optional`类是一个可以为null的容器对象，用于解决空指针异常（`NullPointerException`）的问题。通过明确地使用`Optional`，程序可以更加清晰地表达一个值可能存在也可能不存在的情况，从而提高代码的健壮性和可读性。  
 
