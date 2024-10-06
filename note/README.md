@@ -5,7 +5,6 @@
 ## 4. [并发](01.java%2Fconcurrency%2FREADME.md)
 ### 4.1 [乐观锁和悲观锁](01.java%2Fconcurrency%2Flock%2FREADME.md)
 ### 4.2 [并发和锁的代码示例](01.java%2Fconcurrency%2Fmulti-thread-demo%2FREADME.md)
-### 4.3 [锁适配器](https://gitee.com/wb04307201/lock-spring-boot-starter)
 ## 5. JVM虚拟机
 ### 5.1. [JVM内存区域](01.java%2Fjvm%2Fjvm-memory-areas%2FREADME.md)
 ### 5.2. [垃圾回收](01.java%2Fjvm%2Fgarbage-collection%2FREADME.md)
@@ -31,10 +30,12 @@
 ##### [MVCC](03.database%2Fbase%2Ftransaction-processing%2Fmvcc%2FREADME.md)
 ##### [锁与MVCC的关系](03.database%2Fbase%2Ftransaction-processing%2FREADME.md)
 ### [NoSQL数据库](03.database%2Fbase%2Fnosql%2FREADME.md)
+#### [缓存](03.database%2Fbase%2Fnosql%2Fcache%2FREADME.md)
+##### [缓存与数据库一致性](03.database%2Fbase%2Fnosql%2Fcache%2Fconsistency-between-cache-and-database%2FREADME.md)
+##### [缓存稳定性的3种经典问题](03.database%2Fbase%2Fnosql%2Fcache%2Fcache-stability%2FREADME.md)
 ### [关系型数据库和NoSQL数据库的区别](03.database%2Fbase%2Fdatabase-vs-nosql%2FREADME.md)
-### [缓存与数据库一致性](03.database%2Fbase%2Fconsistency-between-cache-and-database%2FREADME.md)
-### [缓存稳定性的3种经典问题](03.database%2Fbase%2Fcache-stability%2FREADME.md)
 ## [MySQL](03.database%2Fmysql%2FREADME.md)
+## [Redis](03.database%2Fredis%2FREADME.md)
 
 # 四、系统设计
 ## 基础
@@ -54,6 +55,7 @@
 ### [RPC](04.system-design%2Fdistributed%2Frpc%2FREADME.md)
 #### [Apache Dubbo](04.system-design%2Fdistributed%2Frpc%2Fapache-dubbo%2FREADME.md)
 ### 分布式锁
+#### 开源项目 [分布式锁适配器](https://gitee.com/wb04307201/lock-spring-boot-starter)
 ### 分布式事务
 ### 负载均衡
 ## 高性能
