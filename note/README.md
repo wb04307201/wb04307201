@@ -38,21 +38,21 @@
 
 # 四、系统设计
 ## 基础
-### [软件工程](04.system-design%2F01.base%2Fsoftware-engineering%2FREADME.md)
-### [设计与建模](04.system-design%2F01.base%2Fdesign-and-modeling%2FREADME.md)
-### [软件架构设计](04.system-design%2F01.base%2Fsoftware-architecture-design%2FREADME.md)
-#### [领域驱动设计](04.system-design%2F01.base%2Fsoftware-architecture-design%2Fddd%2FREADME.md)
+### [软件工程](04.system-design%2Fbase%2Fsoftware-engineering%2FREADME.md)
+### [设计与建模](04.system-design%2Fbase%2Fdesign-and-modeling%2FREADME.md)
+### [软件架构设计](04.system-design%2Fbase%2Fsoftware-architecture-design%2FREADME.md)
+#### [领域驱动设计](04.system-design%2Fbase%2Fsoftware-architecture-design%2Fddd%2FREADME.md)
 #### 架构图的分类
-##### [“4+1”视图](04.system-design%2F01.base%2Fsoftware-architecture-design%2Farchitecture-diagram%2F4%2B1%2FREADME.md)
-##### [C4 模型](04.system-design%2F01.base%2Fsoftware-architecture-design%2Farchitecture-diagram%2Fc4-model%2FREADME.md)
-### [软件架构的风格](04.system-design%2F01.base%2Fsoftware-architecture-design%2Fstyles-of-software-architecture%2FREADME.md)
-### [层次架构](04.system-design%2F01.base%2Fhierarchical-architecture%2FREADME.md)
-### [面向服务的架构（SOA）](04.system-design%2F01.base%2Fsoa%2FREADME.md)
-### [微服务部署架构](04.system-design%2F01.base%2Fmicroservice-deployment-architecture%2FREADME.md)
+##### [“4+1”视图](04.system-design%2Fbase%2Fsoftware-architecture-design%2Farchitecture-diagram%2F4%2B1%2FREADME.md)
+##### [C4 模型](04.system-design%2Fbase%2Fsoftware-architecture-design%2Farchitecture-diagram%2Fc4-model%2FREADME.md)
+### [软件架构的风格](04.system-design%2Fbase%2Fsoftware-architecture-design%2Fstyles-of-software-architecture%2FREADME.md)
+### [层次架构](04.system-design%2Fbase%2Fhierarchical-architecture%2FREADME.md)
+### [面向服务的架构（SOA）](04.system-design%2Fbase%2Fsoa%2FREADME.md)
+### [微服务部署架构](04.system-design%2Fbase%2Fmicroservice-deployment-architecture%2FREADME.md)
 ## 分布式
-### [CAP & BASE理论详解](04.system-design%2F03.distributed%2F01.theory-algorithm-protocol%2FREADME.md)
-### [RPC](04.system-design%2F03.distributed%2F02.rpc%2FREADME.md)
-#### [Apache Dubbo](04.system-design%2F03.distributed%2F02.rpc%2F01.apache-dubbo%2FREADME.md)
+### [CAP & BASE理论详解](04.system-design%2Fdistributed%2Ftheory-algorithm-protocol%2FREADME.md)
+### [RPC](04.system-design%2Fdistributed%2Frpc%2FREADME.md)
+#### [Apache Dubbo](04.system-design%2Fdistributed%2Frpc%2Fapache-dubbo%2FREADME.md)
 ## 高性能
 ## 高可用
 ## 幂等性设计

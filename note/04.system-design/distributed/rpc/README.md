@@ -19,7 +19,7 @@
 
 ### Apache Dubbo
 
-[查看](01.apache-dubbo%2FREADME.md)
+[查看](apache-dubbo%2FREADME.md)
 
 ### Motan
 
