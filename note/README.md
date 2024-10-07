@@ -55,7 +55,7 @@
 ### [RPC](04.system-design%2Fdistributed%2Frpc%2FREADME.md)
 #### [Apache Dubbo](04.system-design%2Fdistributed%2Frpc%2Fapache-dubbo%2FREADME.md)
 ### [分布式锁](https://gitee.com/wb04307201/lock-spring-boot-starter)
-### 分布式事务
+### [分布式事务](04.system-design%2Fdistributed%2Fdistributed-transaction%2FREADME.md)
 ## 高性能
 ### 数据库优化
 ### 负载均衡
