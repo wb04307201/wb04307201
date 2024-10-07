@@ -54,8 +54,7 @@
 ### [CAP & BASE理论详解](04.system-design%2Fdistributed%2Ftheory-algorithm-protocol%2FREADME.md)
 ### [RPC](04.system-design%2Fdistributed%2Frpc%2FREADME.md)
 #### [Apache Dubbo](04.system-design%2Fdistributed%2Frpc%2Fapache-dubbo%2FREADME.md)
-### 分布式锁
-#### 开源项目 [分布式锁适配器](https://gitee.com/wb04307201/lock-spring-boot-starter)
+### [分布式锁](https://gitee.com/wb04307201/lock-spring-boot-starter)
 ### 分布式事务
 ## 高性能
 ### 数据库优化
