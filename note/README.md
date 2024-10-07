@@ -50,18 +50,28 @@
 ### [层次架构](04.system-design%2Fbase%2Fhierarchical-architecture%2FREADME.md)
 ### [面向服务的架构（SOA）](04.system-design%2Fbase%2Fsoa%2FREADME.md)
 ### [微服务部署架构](04.system-design%2Fbase%2Fmicroservice-deployment-architecture%2FREADME.md)
-## 分布式
-### [CAP & BASE理论详解](04.system-design%2Fdistributed%2Ftheory-algorithm-protocol%2FREADME.md)
+## [分布式](04.system-design%2Fdistributed%2FREADME.md)
+### [理论&算法&协议](04.system-design%2Fdistributed%2Ftheory-algorithm-protocol%2FREADME.md)
 ### [RPC](04.system-design%2Fdistributed%2Frpc%2FREADME.md)
 #### [Apache Dubbo](04.system-design%2Fdistributed%2Frpc%2Fapache-dubbo%2FREADME.md)
 ### [分布式锁](https://gitee.com/wb04307201/lock-spring-boot-starter)
 ### [分布式事务](04.system-design%2Fdistributed%2Fdistributed-transaction%2FREADME.md)
 ## 高性能
 ### 数据库优化
+#### 数据库连接池
+#### 数据库读写分离和分库分表
+#### 数据冷热分离
+#### 常见 SQL 优化手段总结
 ### 负载均衡
 ### CDN
 ### 消息队列
 ## 高可用
+### 代码质量
+### 冗余设计/集群
+### 限流
+### 降级&熔断
+### 超时&重试
+### 灾备设计和异地多活
 ## 幂等性设计
 ## 常用框架
 ## 安全
