@@ -78,11 +78,14 @@
 
 ## 五、 工具
 ## Git
-### [分支版本管理](git%2Fversion-controller%2FREADME.md)
-### [软件版本号](git%2Fsoftware-version-number%2FREADME.md)
-### [版本发布策略](git%2Frelease-strategy%2FREADME.md)
-## [Docker](docker%2FREADME.md)
-## [Nginx](nginx%2FREADME.md)
+### [软件版本号](05.tools%2Fgit%2Fsoftware-version-number%2FREADME.md)
+### [版本发布策略](05.tools%2Fgit%2Frelease-strategy%2FREADME.md)
+### [分支版本管理](05.tools%2Fgit%2Fversion-controller%2FREADME.md)
+## [Docker](05.tools%2Fdocker%2FREADME.md)
+## [Nginx](05.tools%2Fnginx%2FREADME.md)
+## [Monorepo](05.tools%2Fmonorepo%2FREADME.md)
+## [阿里微服务](05.tools%2Fali-microservices%2FREADME.md)
+## [云效](05.tools%2Fyunxiao%2FREADME.md)
 
 # 六、 Spring
 ## [Spring](06.spring%2F01.spring%2FREADME.md)
@@ -96,10 +99,8 @@
 
 # 八、 [Mybatis](08.mybatis%2FREADME.md)
 
-# 九、系统设计实例
-## [无代码流程引擎](09.system-design-cases%2Fnocode-workflow-platform%2FREADME.md)
-## [云效](09.system-design-cases%2Fyunxiao%2FREADME.md)
-## [ERP](09.system-design-cases%2Ferp%2FREADME.md)
-## [权限控制](09.system-design-cases%2Fpermission%2FREADME.md)
-## [Hapoop](09.system-design-cases%2Fhadoop%2FREADME.md)
-## [阿里微服务](09.system-design-cases%2Fali-microservices%2FREADME.md)
+# 九、其他
+## [无代码流程引擎](09.other%2Fnocode-workflow-platform%2FREADME.md)
+## [ERP](09.other%2Ferp%2FREADME.md)
+## [权限控制](09.other%2Fpermission%2FREADME.md)
+## [Hapoop](09.other%2Fhadoop%2FREADME.md)
