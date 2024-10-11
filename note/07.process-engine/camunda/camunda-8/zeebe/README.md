@@ -24,40 +24,49 @@ Zeebe 设计之初，就考虑了超大规模的微服务编排问题。为了�
 Zeebe 架构主要包含 4 大组件：
 ### Client
 客户端向 Zeebe 发送指令：
-- 发布工作流(deploy workflows)
+- 发布流程(deploy workflows)
 - 执行业务逻辑(carry out business logic)
-- 创建工作流实例(start workflow instances)
-- 发布消息(publish messages)
-- 激活任务(activate jobs)
-- 完成任务(complete jobs)
-- 失败任务(fail jobs)
+  - 启动工作流实例(start workflow instances)
+  - 发布消息(publish messages)
+  - 激活作业(activate jobs)
+  - 完成作业(complete jobs)
+  - 失败作业(fail jobs)
 - 处理运维问题(handle operational issues)
-- 更新实例流程变量(update workflow instance variables)
-- 解决异常(resolve incidents)
+  - 更新实例流程变量(update workflow instance variables)
+  - 解决异常(resolve incidents)
 
-客户端程序可以完全独立于 Zeebe 扩缩容，Zeebe brokers 不执行任何业务逻辑。客户端是嵌入到应用程序(执行业务逻辑的微服务)的库，用于跟 Zeebe 集群连接通信。客户端通过基于 HTTP/2 协议的 gRPC 与 Zeebe gateway 连接。
+客户端程序可以完全独立于 Zeebe 扩缩容，Zeebe brokers 不执行任何业务逻辑。
 
-Zeebe 官方提供了 Java 和 Go 客户端。社区提供了 C#，Ruby，JavaScript 客户端实现。gRPC 协议很方便生成其他语言的客户端。
+客户端是嵌入到应用程序(执行业务逻辑的微服务)的库，用于跟 Zeebe 集群连接通信。
 
-Client 中，执行单独任务的单元叫 JobWorker。
+客户端通过 REST 和gRPC的混合连接到 Zeebe 网关。虽然 REST 可以通过任何 HTTP 版本提供，但 API 的 gRPC 部分需要基于 HTTP/2 的传输。要了解有关如何在 Zeebe 中使用 REST 的更多信息，请查看[Zeebe API (REST)](https://docs.camunda.io/docs/apis-tools/zeebe-api-rest/zeebe-api-rest-overview/)。要了解有关 Zeebe 中 gRPC 的更多信息，请查看[Zeebe API (gRPC)](https://docs.camunda.io/docs/apis-tools/zeebe-api/overview/)。
+
+Zeebe 项目包括官方支持的 Java 和 Go 客户端。社区客户端已使用其他语言创建，包括 C#、Ruby 和 JavaScript。借助 gRPC 的代码生成器和 OpenAPI 规范，可以使用多种不同的编程语言生成客户端。
+
+#### Job workers
+作业工作者是一个 Zeebe 客户端，它使用客户端 API 首先激活作业，并在完成后完成或失败该作业。
 
 ### Gateway
-Gateway 作为 Zeebe 集群的入口，转发请求到 brokers。Gateway 是无状态(stateless)无会话(sessionless)的，可以按需增加节点，以负载均衡及高可用。
+网关作为 Zeebe 集群的单一入口点，并将请求转发给代理。
+
+网关是无状态和无会话的，并且可以根据需要添加网关以实现负载平衡和高可用性。
 
 ### Broker
-Broker 是分布式的流程引擎，维护运行中流程实例的状态。Brokers 可以分区以实现横向扩容、副本以实现容错。通常情况下，Zeebe 集群都不止一个节点。
+Zeebe 代理是跟踪活动流程实例状态的分布式工作流引擎。
 
-需要重点强调的是，broker 不包含任何业务逻辑，它只负责：
-- 处理客户端发送的指令
-- 存储和管理运行中流程实例的状态
-- 分配任务给 job workers
+Brokers 可以进行分区以实现水平扩展，并进行复制以实现容错。Zeebe 部署通常由多个代理组成。
 
-Brokes 形成一个对等网络(peer-to-peer)，这样集群不会有单点故障。集群中所有节点都承担相同的职责，所以一个节点不可用后，节点的任务会被透明的重新分配到网络中其他节点。
+需要注意的是，代理中不存在任何应用程序业务逻辑。它的唯一职责是：
+- 处理客户端发送的命令
+- 存储和管理活动流程实例的状态
+- 分配工作给 Job workers
+
+Brokes 构成一个对等网络(peer-to-peer)，这样集群不会有单点故障。集群中所有节点都承担相同的职责，所以一个节点不可用后，节点的任务会被透明的重新分配到网络中其他节点。
 
 ### Exporter
 Exporter 系统提供 Zeebe 内状态变化的事件流。这些事件流数据有很多潜在用处，包括但不限于：
-- 监控当前运行流程实例的状态
-- 分析历史的工作流数据以做审计或 BI
+- 监控正在运行的流程实例的当前状态
+- 分析历史过程数据以供审计、BI 等使用。
 - 跟踪 Zeebe 抛出的异常(incident)
 
 Exporter 提供了简洁的 API，可以流式导出数据到任何存储系统。Zeebe 官方提供开箱即用的 Elasticsearch exporter，社区也提供了其他 Exporters。
