@@ -210,7 +210,6 @@ export default {
     "Append signal intermediate catch event": "追加信号中间捕获事件",
     "Append task": "追加任务",
     "Append timer intermediate catch event": "追加定时器中间捕获事件",
-    "Business rule task": "业务规则任务",
     "Call activity": "调用活动",
     "Cancel boundary event": "取消边界事件",
     "Cancel end event": "取消结束事件",
@@ -282,6 +281,20 @@ export default {
     "Type": "类型",
     "String": "字符串",
     "Extension properties": "扩展属性",
+
+    "Create element":"创建元素",
+    "Gateways":"网关s",
+
+    "Tasks":"任务s",
+    "Task":"任务",
+    "User Task":"用户任务",
+    "Service Task":"服务任务",
+    "Business rule task": "业务规则任务",
+    "Script Task":"脚本任务",
+
+    "Sub-processes":"子流程s",
+
+    "Events":"事件s",
 };
 ```
 ```javascript
