@@ -64,7 +64,8 @@ spring:
 启动时[控制台](http://localhost:8080/)界面  
 ![img.png](img.png)
 
-5. 添加Camunda 7的swagger
+### 集成Camunda7 swagger到项目
+1. 添加Camunda 7的swagger
 添加仓库
 ```xml
     <repositories>
@@ -86,10 +87,11 @@ spring:
 访问[Swagger](http://localhost:8080/swaggerui/)
 ![img_1.png](img_1.png)
 
-6. 创建ui以及编译前端插件
+### 集成bpmn设计到项目
+1. 创建ui以及编译前端插件
 创建vite+react前端项目ui  
 
-7. 后端添加前端编译插件  
+2. 后端添加前端编译插件  
 ```xml
 <plugin>
     <groupId>com.github.eirslett</groupId>
@@ -147,7 +149,7 @@ export default defineConfig({
 mvn install后启动项目
 ![img_2.png](img_2.png)
 
-8. 添加less
+3. 添加less
 ```shell
 yarn add less --dev
 ```
@@ -174,7 +176,7 @@ export default defineConfig({
 })
 ```
 
-9. 增加bpmn.js
+4. 增加bpmn.js
 ```shell
 yarn add bpmn-js bpmn-js-properties-panel @bpmn-io/properties-panel camunda-bpmn-moddle
 ```
