@@ -1,5 +1,18 @@
 # Java 23
 
+- JEP 455:模式中的原始类型、instanceof和switch(预览)
+- JEP 456:类文件API(第二次预览)
+- JEP 467:Markdown文档注释
+- JEP 469:向量API(第八次孵化)
+- JEP 473:流收集器(第二次预览)
+- JEP 471:弃用sun.misc.Unsafe中的内存访问方法
+- JEP 474:ZGC:默认的分代模式
+- JEP 476:模块导入声明(预览)
+- JEP 477:未命名类和实例main方法(第三次预览)
+- JEP 480:结构化并发(第三次预览)
+- JEP 481:作用域值(第三次预览)
+- JEP 482:灵活的构造函数体(第二次预览)
+
 ## JEP 455:模式中的原始类型、instanceof和switch(预览)
 
 在 JEP 455 之前， `instanceof`只支持引用类型，`switch`表达式和语句的`case`标签只能使用整数字面量、枚举常量和字符串字面量。
