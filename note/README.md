@@ -23,21 +23,23 @@
 ## 2. [CORS 跨域](02.computer-basics%2Fcors%2FREADME.md)
 
 # 三、数据库
-## 基础
+## 关系型数据库
 ### [数据库基础知识](03.database%2Fbase%2Fbasic-of-databases%2FREADME.md)
-### [事务处理](03.database%2Fbase%2Ftransaction-processing%2FREADME.md)
+### [事务处理](03.database%2Fbase%2Frelational-database%2Ftransaction-processing%2FREADME.md)
 #### 并发事务的控制方式
-##### [数据库锁](03.database%2Fbase%2Ftransaction-processing%2Flock%2FREADME.md)
-##### [MVCC](03.database%2Fbase%2Ftransaction-processing%2Fmvcc%2FREADME.md)
-##### [锁与MVCC的关系](03.database%2Fbase%2Ftransaction-processing%2FREADME.md)
-### [NoSQL数据库](03.database%2Fbase%2Fnosql%2FREADME.md)
-#### 键值存储数据库
-##### [缓存](03.database%2Fbase%2Fnosql%2Fkeyvalue%2Fcache%2FREADME.md)
-###### [缓存与数据库一致性](03.database%2Fbase%2Fnosql%2Fkeyvalue%2Fcache%2Fconsistency-between-cache-and-database%2FREADME.md)
-###### [缓存稳定性的3种经典问题](03.database%2Fbase%2Fnosql%2Fkeyvalue%2Fcache%2Fcache-stability%2FREADME.md)
-#### [Redis](03.database%2Fbase%2Fnosql%2Fkeyvalue%2Fredis%2FREADME.md)
-### [关系型数据库和NoSQL数据库的区别](03.database%2Fbase%2Fdatabase-vs-nosql%2FREADME.md)
-## [MySQL](03.database%2Fmysql%2FREADME.md)
+##### [数据库锁](03.database%2Fbase%2Frelational-database%2Ftransaction-processing%2Flock%2FREADME.md)
+##### [MVCC](03.database%2Fbase%2Frelational-database%2Ftransaction-processing%2Fmvcc%2FREADME.md)
+##### [锁与MVCC的关系](03.database%2Fbase%2Frelational-database%2Ftransaction-processing%2Flock-vs-mvcc%2FREADME.md)
+### [MySQL](03.database%2Fbase%2Frelational-database%2Fmysql%2FREADME.md)
+
+## [NoSQL数据库](03.database%2Fbase%2Fnosql%2FREADME.md)
+### 键值存储数据库
+#### [缓存](03.database%2Fbase%2Fnosql%2Fkey-value%2Fcache%2FREADME.md)
+##### [缓存与数据库一致性](03.database%2Fbase%2Fnosql%2Fkey-value%2Fcache%2Fconsistency-between-cache-and-database%2FREADME.md)
+##### [缓存稳定性的3种经典问题](03.database%2Fbase%2Fnosql%2Fkey-value%2Fcache%2Fcache-stability%2FREADME.md)
+### [Redis](03.database%2Fbase%2Fnosql%2Fkey-value%2Fredis%2FREADME.md)
+
+## [关系型数据库和NoSQL数据库的区别](03.database%2Fbase%2Fdatabase-vs-nosql%2FREADME.md)
 
 # 四、系统设计
 ## 基础
