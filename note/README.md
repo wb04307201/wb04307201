@@ -31,12 +31,13 @@
 ##### [MVCC](03.database%2Fbase%2Ftransaction-processing%2Fmvcc%2FREADME.md)
 ##### [锁与MVCC的关系](03.database%2Fbase%2Ftransaction-processing%2FREADME.md)
 ### [NoSQL数据库](03.database%2Fbase%2Fnosql%2FREADME.md)
-#### [缓存](03.database%2Fbase%2Fnosql%2Fcache%2FREADME.md)
-##### [缓存与数据库一致性](03.database%2Fbase%2Fnosql%2Fcache%2Fconsistency-between-cache-and-database%2FREADME.md)
-##### [缓存稳定性的3种经典问题](03.database%2Fbase%2Fnosql%2Fcache%2Fcache-stability%2FREADME.md)
+#### 键值存储数据库
+##### [缓存](03.database%2Fbase%2Fnosql%2Fkeyvalue%2Fcache%2FREADME.md)
+###### [缓存与数据库一致性](03.database%2Fbase%2Fnosql%2Fkeyvalue%2Fcache%2Fconsistency-between-cache-and-database%2FREADME.md)
+###### [缓存稳定性的3种经典问题](03.database%2Fbase%2Fnosql%2Fkeyvalue%2Fcache%2Fcache-stability%2FREADME.md)
+#### [Redis](03.database%2Fbase%2Fnosql%2Fkeyvalue%2Fredis%2FREADME.md)
 ### [关系型数据库和NoSQL数据库的区别](03.database%2Fbase%2Fdatabase-vs-nosql%2FREADME.md)
 ## [MySQL](03.database%2Fmysql%2FREADME.md)
-## [Redis](03.database%2Fredis%2FREADME.md)
 
 # 四、系统设计
 ## 基础
