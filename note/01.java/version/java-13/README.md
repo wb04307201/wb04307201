@@ -1,18 +1,48 @@
 # Java 13
 
+- JEP 280：FileSystems 工具类
 - JEP 354：增强 Switch 表达式（第二次预览）：Java 13 新特性—增强 Switch 表达式
 - JEP 355：文本块（预览特性）：Java 13 新特性—文本块
 - JEP 353：重构 Socket API
 - JEP 350：动态 CDS
 - JEP 351：增强 ZGC 释放未使用内存
 
+## JEP 280：FileSystems 工具类
+JEP 280 引入了一个新的`java.nio.file.FileSystems`工具类，它提供了一些新的方法来创建和操作文件系统。
+
+以下是一些使用 FileSystems 的示例代码：
+```java
+// 获取默认文件系统
+FileSystem fs = FileSystems.getDefault();
+
+// 根据 URI 创建文件系统
+URI uri = URI.create("jimfs:///");
+FileSystem fs = FileSystems.newFileSystem(uri, Collections.emptyMap());
+
+// 获取已知的文件系统提供者
+FileSystemProvider provider = FileSystems.getDefault().provider();
+
+// 获取所有已知的文件系统提供者
+for (FileSystemProvider provider : FileSystems.getProviders()) {
+    System.out.println(provider.getScheme());
+}
+
+// 关闭文件系统
+FileSystem fs = FileSystems.newFileSystem(Paths.get("test.txt"), null);
+// ... 文件系统操作
+fs.close();
+
+// 获取文件系统的同步锁
+FileSystem fs = FileSystems.getDefault();
+try (FileSystemLock lock = fs.lock(path, false)) {
+    // ... 处理文件锁
+}
+```
+
 ## JEP 354：增强 Switch 表达式（第二次预览）
+`Switch`表达式是在 Java 12 中首次作为预览特性引入，而在 Java 13 中对`Switch`表达式做了增强改进：在块中引入了`yield`语句来返回值，而不是使用`break`。
 
-`Switch`表达式是在 Java 12 中首次作为预览特性引入，而在 Java 13 中对`Switch`表达式做了增强改进：在块中引入了`yield`
-语句来返回值，而不是使用`break`。
-
-`yield`关键字用于从`switch`表达式的`case`块中返回一个值。这对于复杂的`Switch`语句特别有用，其中每个`case`
-块包含多行代码，并且最终需要返回一个值。
+`yield`关键字用于从`switch`表达式的`case`块中返回一个值。这对于复杂的`Switch`语句特别有用，其中每个`case`块包含多行代码，并且最终需要返回一个值。
 
 | Java 版本 | 更新类型  | JEP     | 更新内容                                      |
 |---------|-------|---------|-------------------------------------------|
@@ -20,7 +50,6 @@
 | Java 13 | 第二次预览 | JEP 354 | 加入`yield`语句来替代`break`语句，用于从`switch`表达式返回值 |
 
 ## JEP 355：文本块（预览特性）
-
 传统上，Java 中的字符串定义必须始于双引号并以双引号结束，这使得直接在字符串中使用多行文本变得困难。为了实现多行功能，我们不得不依赖于换行符转义（如 \n）或行连接符，但这增加了编辑工作量，同时也使得相关代码段难以阅读和维护。
 
 为了解决这个问题 ，Java 13 引入文本块，它旨在简化在 Java 程序中编写多行文本字符串的过程，特别是对于那些包含大量格式化文本的字符串，例如 HTML, XML, SQL, JSON 或其他多行消息。
