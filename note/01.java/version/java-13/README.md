@@ -40,13 +40,13 @@ try (FileSystemLock lock = fs.lock(path, false)) {
 ```
 
 ## JEP 354：增强 Switch 表达式（第二次预览）
-`Switch`表达式是在 Java 12 中首次作为预览特性引入，而在 Java 13 中对`Switch`表达式做了增强改进：在块中引入了`yield`语句来返回值，而不是使用`break`。
+Switch 表达式是在 Java 12 中首次作为预览特性引入，而在 Java 13 中对`Switch`表达式做了增强改进：在块中引入了`yield`语句来返回值，而不是使用`break`。
 
-`yield`关键字用于从`switch`表达式的`case`块中返回一个值。这对于复杂的`Switch`语句特别有用，其中每个`case`块包含多行代码，并且最终需要返回一个值。
+`yield`关键字用于从`switch`表达式的`case`块中返回一个值。这对于复杂的 Switch 语句特别有用，其中每个`case`块包含多行代码，并且最终需要返回一个值。
 
 | Java 版本 | 更新类型  | JEP     | 更新内容                                      |
 |---------|-------|---------|-------------------------------------------|
-| Java 12 | 预览特性  | JEP 325 | 引入`Switch`表达式作为预览特性                       |
+| Java 12 | 预览特性  | JEP 325 | 引入 Switch 表达式作为预览特性                       |
 | Java 13 | 第二次预览 | JEP 354 | 加入`yield`语句来替代`break`语句，用于从`switch`表达式返回值 |
 
 ## JEP 355：文本块（预览特性）
