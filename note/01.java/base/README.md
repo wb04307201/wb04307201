@@ -646,13 +646,181 @@ OSI 七层协议模型中的应用层、表示层和会话层对应的都是 TCP
 ### Java 中常见的语法糖
 
 1. **泛型(Generics)**：泛型允许在类、接口、或方法中使用类型参数，提供了一种编译时类型安全检查的机制，减少了类型转换的需要。
+
+```java
+// 使用泛型前
+List list = new ArrayList();
+list.add("Hello");
+String str = (String) list.get(0);
+
+// 使用泛型后
+List<String> genericList = new ArrayList<>();
+genericList.add("Hello");
+String genericStr = genericList.get(0); // 无需类型转换
+```
+
 2. **自动装箱与拆箱(Autoboxing and Unboxing)**：自动装箱是指 Java 自动将基本数据类型转换为对应的包装类对象，比如`int`转换为`Integer`。自动拆箱则是相反的过程。
+
+```java
+// 自动装箱
+Integer boxedInt = 10; // int 自动转换为 Integer
+
+// 自动拆箱
+int unboxedInt = boxedInt; // Integer 自动转换为 int
+```
+
 3. **增强型`for`循环(Enhanced for Loop)**：增强型`for`循环(也称为`foreach`循环)提供了一种简洁的方法来遍历数组或实现 Iterable 接口的集合。
+
+```java
+// 传统 for 循环
+int[] numbers = {1, 2, 3, 4, 5};
+for (int i = 0; i < numbers.length; i++) {
+    System.out.println(numbers[i]);
+}
+
+// 增强型 for 循环
+for (int number : numbers) {
+    System.out.println(number);
+}
+```
+
 4. **可变参数(Varargs)**：可变参数允许在定义方法时指定一个不定数量的参数，使用`...`语法。在方法内部，这些参数被当作数组处理。
+
+```java
+public void printNumbers(int... numbers) {
+    for (int number : numbers) {
+        System.out.println(number);
+    }
+}
+
+// 调用方法
+printNumbers(1, 2, 3, 4, 5); // 可以传递任意数量的 int 参数
+```
+
 5. **静态导入(Static Import)**：静态导入允许直接导入静态成员(如静态方法和静态字段)，而无需通过类名引用它们。
+
+```java
+// 没有静态导入
+System.out.println("Hello, World!");
+Math.sqrt(16);
+
+// 静态导入后（假设在文件顶部使用了 import static）
+// import static java.lang.System.out;
+// import static java.lang.Math.sqrt;
+
+out.println("Hello, World!");
+double result = sqrt(16);
+```
+
 6. **注解(Annotations)**：注解提供了一种为代码添加元数据的方式，常用于框架开发、配置甚至是编译时的代码生成。
+
+```java
+// 定义一个注解
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+public @interface TestAnnotation {
+    String value() default "default value";
+}
+
+// 使用注解
+public class TestClass {
+    @TestAnnotation(value = "test method")
+    public void testMethod() {
+        // ...
+    }
+}
+```
+
 7. **Lambda 表达式(Lambda Expressions)(Java 8 引入)**：Lambda 表达式提供了一种简洁的方式来实现只有一个抽象方法的接口(函数式接口)，大大简化了匿名内部类的编写。
+
+```java
+// 使用匿名内部类
+Runnable runnable = new Runnable() {
+    @Override
+    public void run() {
+        System.out.println("Running via anonymous class");
+    }
+};
+
+// 使用 Lambda 表达式
+Runnable lambdaRunnable = () -> System.out.println("Running via lambda");
+```
+
 8. **流(Streams)(Java 8 引入)**：流 API 提供了一种高级的迭代方式，允许以声明性方式处理数据集合，包括过滤、映射、排序等操作。
+
+```java
+List<String> list = Arrays.asList("apple", "banana", "cherry");
+
+// 使用流进行过滤和映射
+List<Integer> lengths = list.stream()
+    .filter(s -> s.startsWith("a"))
+    .map(String::length)
+    .collect(Collectors.toList());
+```
+
 9. **方法引用(Method References)(Java 8 引入)**：方法引用是 Lambda 表达式的一种简写形式，用于直接引用已存在的方法。
+
+```java
+// 使用 Lambda 表达式
+List<String> uppercased = list.stream()
+    .map(s -> s.toUpperCase())
+    .collect(Collectors.toList());
+
+// 使用方法引用
+List<String> methodRefUppercased = list.stream()
+    .map(String::toUpperCase) // 直接引用 String 类的 toUpperCase 方法
+    .collect(Collectors.toList());
+```
+
 10. **类型推断(Type Inference)**：在 Java SE 7 中引入的菱形操作符(diamond operator)`<>`是一个类型推断的例子，它允许在创建对象时省略泛型类型声明，编译器会根据变量的类型自动推断。
+
+```java
+// Java SE 7 之前的写法
+Map<String, List<String>> map = new HashMap<String, List<String>>();
+
+// 使用菱形操作符（Java SE 7 引入）
+Map<String, List<String>> diamondMap = new HashMap<>();
+```
+
 11. **Switch 表达式 (Java 12 引入，进一步增强在 Java 14 中)**：允许将 switch 语句的结果直接返回或赋值给变量，简化了传统的 switch-case 结构，并增加了新的语法形式。
+
+```java
+// 传统的 switch 语句
+String day = "MONDAY";
+String dayType;
+switch (day) {
+    case "MONDAY":
+    case "TUESDAY":
+    case "WEDNESDAY":
+    case "THURSDAY":
+    case "FRIDAY":
+        dayType = "Weekday";
+        break;
+    case "SATURDAY":
+    case "SUNDAY":
+        dayType = "Weekend";
+        break;
+    default:
+        throw new IllegalStateException("Unexpected value: " + day);
+}
+
+// 使用 Switch 表达式（Java 12+）
+String dayTypeExpr = switch (day) {
+    case "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY" -> "Weekday";
+    case "SATURDAY", "SUNDAY" -> "Weekend";
+    default -> throw new IllegalStateException("Unexpected value: " + day);
+};
+
+// Java 14 增强的 Switch 表达式（预览功能，需要启用）
+String dayTypeYield = switch (day) {
+    case "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY" -> {
+        yield "Weekday";
+    }
+    case "SATURDAY", "SUNDAY" -> {
+        yield "Weekend";
+    }
+    default -> {
+        throw new IllegalStateException("Unexpected value: " + day);
+    }
+};
+```
