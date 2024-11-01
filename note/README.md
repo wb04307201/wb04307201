@@ -36,7 +36,8 @@
 
 # 三、数据库
 ## 关系型数据库
-### [数据库基础知识](03.database%2Fbase%2Fbasic-of-databases%2FREADME.md)
+### [数据库基础知识](03.database%2Fbase%2Frelational-database%2Fbasic-of-databases%2FREADME.md)
+### [SQL执行顺序](03.database%2Fbase%2Frelational-database%2Fsql-excute-order%2FREADME.md)
 ### [事务处理](03.database%2Fbase%2Frelational-database%2Ftransaction-processing%2FREADME.md)
 #### 并发事务的控制方式
 ##### [数据库锁](03.database%2Fbase%2Frelational-database%2Ftransaction-processing%2Flock%2FREADME.md)
