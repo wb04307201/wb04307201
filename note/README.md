@@ -110,9 +110,9 @@
 
 # 六、Spring
 ## [Spring](06.spring%2F01.spring%2FREADME.md)
-### [注解](06.spring%2F01.spring%2F01.annotation%2FREADME.md)
-### [模块](06.spring%2F01.spring%2F02.module%2FREADME.md)
-### [IoC](06.spring%2F01.spring%2F03.ioc%2FREADME.md)
+### [注解](06.spring%2F01.spring%2Fannotation%2FREADME.md)
+### [模块](06.spring%2F01.spring%2Fmodule%2FREADME.md)
+### [IoC](06.spring%2F01.spring%2Fioc%2FREADME.md)
 ## Spring Boot
 ## Spring Cloud
 
