@@ -1,5 +1,6 @@
 # 一、java
 ## 1. [基础](01.java%2Fbase%2FREADME.md)
+### [序列化和反序列化](01.java%2Fbase%2FREADME.md)
 ## 2. [集合](01.java%2Fcollection%2FREADME.md)
 ## 3. [I/O](01.java%2Fio%2FREADME.md)
 ## 4. [并发](01.java%2Fconcurrency%2FREADME.md)
