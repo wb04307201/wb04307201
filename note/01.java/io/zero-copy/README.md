@@ -101,7 +101,7 @@ Linux 系统 splice 方法逻辑拷贝，也是操作系统真正意义上的零
 | mmap                              | mmap/write | 1       | 2       | 4       | 相比传统方法，少了用户缓冲区与内核缓冲区的数据拷贝，效率更高    |
 | sendfile                          | sendfile   | 1       | 2       | 2       | 相比 mmap 方式，少了内存文件映射步骤，效率更高        |
 | sendfile Width DMA scatter/gather | sendfile   | 0       | 2       | 2       | 需要 DMA 控制器支持，没有 cpu 拷贝数据环节，真正的零拷贝 |
-| splice                            | splice     | 0       | 2       | 2       | 没有 cpu 拷贝数据环节，真正的零拷贝，变成逻辑复杂       |
+| splice                            | splice     | 0       | 2       | 2       | 没有 cpu 拷贝数据环节，真正的零拷贝，编程逻辑复杂       |
 
 ## Java 零拷贝实现介绍
 
