@@ -31,6 +31,8 @@
 ### 6.15 [Java 22](01.java%2Fversion%2Fjava-22%2FREADME.md)
 ### 6.16 [Java 23](01.java%2Fversion%2Fjava-23%2FREADME.md)
 ## 7. [Java Agent](01.java%2Fjava-agent%2FREADME.md)
+### 7.1 [统计API接口调用耗时](01.java/java-agent/api/README.md)
+
 
 # 二、计算机基础
 ## 1. [服务器性能指标](02.computer-basics%2Fserver-performance-metrics%2FREADME.md)
@@ -114,6 +116,7 @@
 ## [注解](06.spring%2Fannotation%2FREADME.md)
 ## [模块](06.spring%2Fmodule%2FREADME.md)
 ## [IoC](06.spring%2Fioc%2FREADME.md)
+## [AOP](06.spring/aop/README.md)
 ## Spring Boot
 ## Spring Cloud
 ## 问题
