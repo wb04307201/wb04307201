@@ -49,7 +49,7 @@ docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=mypassword" -p 1433:1433 --name ms
 
 ## mysql
 ```shell
-docker run --name my-mysql-container -e MYSQL_ROOT_PASSWORD=123456 -d mysql:latest
+docker run -p 3306:3306 --name my-mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql:latest
 
 # -p 3306:3306：指定宿主机端口与容器端口映射关系
 #--name mysql：创建的容器名称
