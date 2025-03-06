@@ -29,7 +29,7 @@
 - 阿里巴巴 Java 代码规范（Alibaba Java Code Guidelines）；
 - IDEA 自带的代码分析等工具。
 
-### 冗余设计&集群
+### [冗余设计/集群](redundancy%20design%20%20or%20cluter/README.md)
 ### 限流
 ### 降级&熔断
 ### 超时&重试
