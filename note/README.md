@@ -93,7 +93,7 @@
 ## [高可用](04.system-design%2Fhigh-availability%2FREADME.md)
 ### 代码质量
 ### [冗余设计/集群](04.system-design/high-availability/redundancy%20design%20%20or%20cluter/README.md)
-### 限流
+### [限流](04.system-design/high-availability/throttling/README.md)
 ### 降级&熔断
 ### 超时&重试
 ### 灾备设计和异地多活

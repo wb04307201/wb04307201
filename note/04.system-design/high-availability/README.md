@@ -30,7 +30,7 @@
 - IDEA 自带的代码分析等工具。
 
 ### [冗余设计/集群](redundancy%20design%20%20or%20cluter/README.md)
-### 限流
+### [限流](throttling/README.md)
 ### 降级&熔断
 ### 超时&重试
 ### 灾备设计&异地多活
