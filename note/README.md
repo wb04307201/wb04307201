@@ -16,6 +16,7 @@
 ## 6. 版本特性
 ### 6.1 [Java 8](01.java%2Fversion%2Fjava-8%2FREADME.md)
 #### 6.1.1 [Optional](01.java%2Fversion%2Fjava-8%2Foptional%2FREADME.md)
+#### 6.1.2 [Stream流介绍及使用指南](01.java/version/java-8/stream/README.md)
 ### 6.2 [Java 9](01.java%2Fversion%2Fjava-9%2FREADME.md)
 ### 6.3 [Java 10](01.java%2Fversion%2Fjava-10%2FREADME.md)
 ### 6.4 [Java 11](01.java%2Fversion%2Fjava-11%2FREADME.md)
