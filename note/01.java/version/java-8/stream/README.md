@@ -88,4 +88,17 @@ public class StreamDemo {
 4. peek用于调试： `peek`主要用于调试观察流水线中间状态，不应依赖它执行关键业务逻辑，尤其在并行流中其执行顺序不确定。
 5. 原始类型流： 为避免频繁的自动装箱（`int` -> `Integer`）带来的性能损耗，提供了`IntStream`, `LongStream`, `DoubleStream`。使用`mapToInt`, `mapToLong`, `mapToDouble`等方法转换，并使用其专用的方法（如`sum()`, `average()`, `range()`）。
 
+## 变更历史
+
+| 版本      | 描述                                                    |
+|---------|-------------------------------------------------------|
+| java8   | JEP 107: Stream API：Java 8 新特性—Stream API 对元素流进行函数式操作 |
+| java9   | Stream API 增强：Java 9 新特性—Stream API的增强                |
+| java10  | Stream API 增强                                         |
+| javava2 | JEP 461：流收集器（预览）这个改进使得 Stream API 可以支持自定义中间操作。        |
+| java23  | JEP 473:流收集器(第二次预览)                                   |
+
+
+
+
 
