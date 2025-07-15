@@ -74,17 +74,19 @@
 ### [面向服务的架构（SOA）](04.system-design%2Fbase%2Fsoa%2FREADME.md)
 ### [微服务部署架构](04.system-design%2Fbase%2Fmicroservice-deployment-architecture%2FREADME.md)
 
-## [分布式](04.system-design%2Fdistributed%2FREADME.md)
+## 分布式
+分布式通常指的是一种计算或数据处理的方式，其中任务、数据或资源被分散在多个节点（如计算机、服务器或计算设备）上进行处理。这种分布式的处理方式可以提高系统的整体性能、可靠性、可扩展性和容错性。在分布式系统中，各个节点通过网络进行通信和协作，以实现共同的目标。
 ### [理论&算法&协议](04.system-design%2Fdistributed%2Ftheory-algorithm-protocol%2FREADME.md)
 ### [RPC](04.system-design%2Fdistributed%2Frpc%2FREADME.md)
 #### [Apache Dubbo](04.system-design%2Fdistributed%2Frpc%2Fapache-dubbo%2FREADME.md)
 ### [分布式锁](https://gitee.com/wb04307201/lock-spring-boot-starter)
 ### [分布式事务](04.system-design%2Fdistributed%2Fdistributed-transaction%2FREADME.md)
 
-## [高性能](04.system-design%2Fhigh-performance%2FREADME.md)
+## 高性能
+高性能指的是系统或应用在处理任务、数据或请求时表现出的高效性和快速性。高性能系统通常具有强大的计算能力、快速的响应时间和高效的数据处理能力。为了实现高性能，系统可能需要采用先进的硬件技术、优化的软件算法、高效的存储和传输技术等手段。
 ### 数据库性能优化
-#### 数据库连接池
-#### 数据库读写分离和分库分表
+#### [数据库读写分离](04.system-design/high-performance/database-optimization/db-read-write-splitting-and-db-sharding/db-read-write-splitting/README.md)
+#### [数据库分库分表](04.system-design/high-performance/database-optimization/db-read-write-splitting-and-db-sharding/db-sharding/README.md)
 #### 数据冷热分离
 #### 常见 SQL 优化手段总结
 ### 负载均衡
@@ -93,6 +95,13 @@
 
 ## [高可用](04.system-design%2Fhigh-availability%2FREADME.md)
 ### 代码质量
+注重代码质量，测试严格把关
+
+提高代码质量的工具：
+- Sonarqube；
+- Alibaba 开源的 Java 诊断工具 Arthas；
+- 阿里巴巴 Java 代码规范（Alibaba Java Code Guidelines）；
+- IDEA 自带的代码分析等工具。
 ### [冗余设计/集群](04.system-design/high-availability/redundancy%20design%20%20or%20cluter/README.md)
 ### [限流](04.system-design/high-availability/throttling/README.md)
 ### 降级&熔断
