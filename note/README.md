@@ -87,7 +87,7 @@
 ### 数据库性能优化
 #### [数据库读写分离](04.system-design/high-performance/database-optimization/db-read-write-splitting-and-db-sharding/db-read-write-splitting/README.md)
 #### [数据库分库分表](04.system-design/high-performance/database-optimization/db-read-write-splitting-and-db-sharding/db-sharding/README.md)
-#### 数据冷热分离
+#### [数据冷热分离](04.system-design/high-performance/database-optimization/cold-hot-data-separation/README.md)
 #### 常见 SQL 优化手段总结
 ### 负载均衡
 ### CDN
