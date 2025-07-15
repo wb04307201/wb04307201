@@ -88,7 +88,7 @@
 #### [数据库读写分离](04.system-design/high-performance/database-optimization/db-read-write-splitting-and-db-sharding/db-read-write-splitting/README.md)
 #### [数据库分库分表](04.system-design/high-performance/database-optimization/db-read-write-splitting-and-db-sharding/db-sharding/README.md)
 #### [数据冷热分离](04.system-design/high-performance/database-optimization/cold-hot-data-separation/README.md)
-#### 常见 SQL 优化手段总结
+#### [常见 SQL 优化手段总结](04.system-design/high-performance/database-optimization/sql/README.md)
 ### 负载均衡
 ### CDN
 ### [消息队列](04.system-design%2Fhigh-performance%2FMQ%2FREADME.md)
