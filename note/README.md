@@ -107,6 +107,8 @@
 #### [降级](04.system-design/high-availability/degrade-and-circuit-break/degrade/README.md)
 #### [熔断](04.system-design/high-availability/degrade-and-circuit-break/circuit-break/README.md)
 #### 熔断与降级的区别
+降级的⽬的在于应对系统⾃身的故障，⽽熔断的⽬的在于应对当前系统依赖的外部系统或者第三⽅系统的故障。
+
 | **特性**   | **熔断**      | **降级**             |
 |----------|-------------|--------------------|
 | **触发时机** | 依赖服务故障或超时   | 系统整体压力过大（如CPU、内存高） |
