@@ -106,6 +106,17 @@
 ### 降级&熔断
 #### [降级](04.system-design/high-availability/degrade-and-circuit-break/degrade/README.md)
 #### [熔断](04.system-design/high-availability/degrade-and-circuit-break/circuit-break/README.md)
+#### 熔断与降级的区别
+| **特性**   | **熔断**      | **降级**             |
+|----------|-------------|--------------------|
+| **触发时机** | 依赖服务故障或超时   | 系统整体压力过大（如CPU、内存高） |
+| **行为**   | 主动切断调用，快速失败 | 关闭非核心功能，释放资源       |
+| **恢复方式** | 半开状态试探性恢复   | 人工或自动恢复核心功能        |
+| **目标**   | 防止故障扩散      | 保证系统可用性            |
+
+**示例**：
+- **熔断**：订单服务调用支付服务失败率过高时，直接返回“支付系统繁忙”。
+- **降级**：电商大促时，关闭商品评论、历史订单查询等非核心功能。
 ### 超时&重试
 ### 灾备设计和异地多活
 
@@ -130,6 +141,7 @@
 ## [IoC](06.spring%2Fioc%2FREADME.md)
 ## [AOP](06.spring/aop/README.md)
 ## [Spring 自带24个工具类](06.spring/tools/README.md)
+## [Spring Retry](06.spring/spring-retry/README.md)
 
 # 七、[流程引擎](07.process-engine%2FREADME.md)
 ## [Camunda 7](07.process-engine%2Fcamunda%2Fcamunda-7%2FREADME.md)
