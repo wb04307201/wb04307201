@@ -120,6 +120,9 @@
 - **熔断**：订单服务调用支付服务失败率过高时，直接返回“支付系统繁忙”。
 - **降级**：电商大促时，关闭商品评论、历史订单查询等非核心功能。
 ### 超时&重试
+#### [超时](04.system-design/high-availability/timeout-and-retry/timeout/README.md)
+#### [重试](04.system-design/high-availability/timeout-and-retry/retry/README.md)
+### [结合超时、熔断、限流，重试等机制可构建出弹性架构](04.system-design/high-availability/elastic-architecture/README.md)
 ### 灾备设计和异地多活
 
 ## 幂等性设计
