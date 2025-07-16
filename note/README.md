@@ -35,7 +35,6 @@
 ## 7. [Java Agent](01.java%2Fjava-agent%2FREADME.md)
 ### 7.1 [统计API接口调用耗时](01.java/java-agent/api/README.md)
 
-
 # 二、计算机基础
 ## 1. [服务器性能指标](02.computer-basics%2Fserver-performance-metrics%2FREADME.md)
 ## 2. [CORS 跨域](02.computer-basics%2Fcors%2FREADME.md)
@@ -102,9 +101,11 @@
 - Alibaba 开源的 Java 诊断工具 Arthas；
 - 阿里巴巴 Java 代码规范（Alibaba Java Code Guidelines）；
 - IDEA 自带的代码分析等工具。
-### [冗余设计/集群](04.system-design/high-availability/redundancy%20design%20%20or%20cluter/README.md)
+### [冗余设计/集群](04.system-design/high-availability/redundancy-design-or-cluter/README.md)
 ### [限流](04.system-design/high-availability/throttling/README.md)
 ### 降级&熔断
+#### [降级](04.system-design/high-availability/degrade-and-circuit-break/degrade/README.md)
+#### [熔断](04.system-design/high-availability/degrade-and-circuit-break/circuit-break/README.md)
 ### 超时&重试
 ### 灾备设计和异地多活
 
