@@ -124,10 +124,19 @@
 #### [重试](04.system-design/high-availability/timeout-and-retry/retry/README.md)
 ### [灾备设计和异地多活](04.system-design/high-availability/disaster-recovery-and-multi-region-active-active/README.md)
 ### [弹性架构](04.system-design/high-availability/elastic-architecture/README.md)
-
-## 幂等性设计
-## 常用框架
+## [幂等性设计](04.system-design/idempotency-design/README.md)
 ## 安全
+### 认证授权
+#### 认证授权基础概念详解
+#### JWT 基础概念详解
+#### JWT 优缺点分析以及常见问题解决方案
+#### 权限系统设计详解
+#### SSO 单点登录详解
+### 数据安全
+#### 常见加密算法总结
+#### 敏感词过滤方案总结
+#### 数据脱敏方案总结
+#### 为什么前后端都要做数据校验
 
 ## 五、工具
 ## Git
