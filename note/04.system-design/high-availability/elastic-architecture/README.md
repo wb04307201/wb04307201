@@ -1,77 +1,8 @@
 # 弹性架构
 
-弹性架构（Elastic Architecture）是一种能够根据系统负载、资源需求或外部环境变化，动态调整资源配置和系统能力的架构设计模式。其核心目标是实现**高可用性、可扩展性、成本优化**，同时确保系统在面对流量波动、故障或业务增长时仍能稳定运行。以下是弹性架构的关键要素、设计原则及实现方式：
-
-```plantuml
-@startuml ElasticArchitecture
-
-skinparam monochrome true
-skinparam shadowing false
-
-rectangle "Client" as client {
-    component "Retry\n(3次)" as retry
-    component "Timeout\n(2s)" as timeout
-}
-
-rectangle "API Gateway" as gateway {
-    component "Rate Limiter\n(1000 QPS)" as ratelimit
-    component "Circuit Breaker\n(Open/Closed)" as circuitbreaker
-}
-
-rectangle "Service A" as serviceA {
-    component "Service Logic" as logic
-    database "DB" as db
-}
-
-rectangle "Service B" as serviceB {
-    component "External API" as external
-}
-
-client --> gateway : HTTP Request
-gateway --> serviceA : Routing
-serviceA --> serviceB : RPC Call
-
-' 重试机制
-client .> retry : "失败后\n自动重试"
-retry --> timeout : "每次重试\n带超时"
-
-' 超时机制
-timeout --> gateway : "超时中断\n请求"
-
-' 限流机制
-gateway .> ratelimit : "QPS超过阈值时\n拒绝请求"
-ratelimit --> client : "返回 429\nToo Many Requests"
-
-' 熔断机制
-gateway --> circuitbreaker : "连续失败触发\nOpen状态"
-circuitbreaker --> serviceB : "Open时直接\n返回降级响应"
-gateway <-- circuitbreaker : "Half-Open时\n尝试恢复"
-
-
-' 服务间调用
-serviceA --> db : "带超时的\n数据库查询"
-serviceB .> external : "调用第三方API\n(可能失败)"
-
-@enduml
-```
-
-###  架构图说明
-1. **客户端（Client）**
-   - **重试机制（Retry）**：当请求失败时，自动重试最多3次（指数退避或固定间隔）。
-   - **超时机制（Timeout）**：每次重试设置2秒超时，避免长时间阻塞。
-
-2. **API网关（Gateway）**
-   - **限流（Rate Limiting）**：限制每秒最多1000个请求，防止过载。
-   - **熔断（Circuit Breaker）**：
-      - 当下游服务（如Service B）连续失败时，熔断器进入`Open`状态，直接返回降级响应。
-      - 经过一段时间后进入`Half-Open`状态，尝试恢复调用。
-
-3. **服务A（Service A）**
-   - 调用数据库（DB）时带超时，防止慢查询阻塞线程。
-   - 通过RPC调用Service B，依赖网关的熔断保护。
-
-4. **服务B（Service B）**
-   - 调用外部API（External API），可能因网络问题失败，触发客户端重试。
+弹性架构（Elastic Architecture）是一种能够根据系统负载、资源需求或外部环境变化，动态调整资源配置和系统能力的架构设计模式。其核心目标是实现**高可用性、可扩展性、成本优化**，同时确保系统在面对流量波动、故障或业务增长时仍能稳定运行。  
+弹性架构是现代系统设计的核心能力，尤其适用于互联网、金融、游戏等高并发场景。通过云原生技术、自动化工具和分布式设计，企业能够以更低的成本实现更高的系统韧性。实际落地时需结合业务特点，在扩展性、成本和复杂性之间找到平衡点。  
+以下是弹性架构的关键要素、设计原则及实现方式：
 
 ## 弹性架构的核心目标
 1. **自动扩展（Auto-scaling）**：根据负载动态增加或减少资源（如服务器、存储、带宽）。
@@ -160,8 +91,156 @@ serviceB .> external : "调用第三方API\n(可能失败)"
 3. **低代码/无代码弹性**
    - 通过可视化工具（如阿里云EDAS）简化弹性架构配置，降低技术门槛。
 
-## **总结**
-弹性架构是现代系统设计的核心能力，尤其适用于互联网、金融、游戏等高并发场景。通过云原生技术、自动化工具和分布式设计，企业能够以更低的成本实现更高的系统韧性。实际落地时需结合业务特点，在扩展性、成本和复杂性之间找到平衡点。
+## 弹性系统架构设计
+结合了 **超时（Timeout）、熔断（Circuit Breaker）、限流（Rate Limiting）、重试（Retry）、降级（Fallback）、异步解耦（Async/MQ）** 等机制，并标注了关键交互流程。
+
+```plantuml
+@startuml ElasticSystemArchitecture
+
+skinparam monochrome true
+skinparam shadowing false
+skinparam defaultFontName Arial
+
+actor "User" as user
+rectangle "Client" as client {
+    component "Retry\n(3次)" as retry
+    component "Timeout\n(2s)" as timeout
+}
+
+rectangle "API Gateway" as gateway {
+    component "Rate Limiter\n(1000 QPS)" as ratelimit
+    component "Circuit Breaker\n(Open/Closed)" as circuitbreaker
+    component "Load Balancer" as lb
+}
+
+rectangle "Service A" as serviceA {
+    component "Service Logic" as logicA
+    database "Cache\n(Redis)" as cache
+    database "DB\n(MySQL)" as db
+}
+
+rectangle "Service B" as serviceB {
+    component "External API" as external
+    component "Fallback\n(Mock Data)" as fallback
+}
+
+queue "Message Queue\n(Kafka)" as mq
+
+' 用户请求流
+user --> client : HTTP Request
+client --> gateway : 带重试+超时
+gateway --> lb : 路由请求
+lb --> serviceA : 分发流量
+
+' 服务A内部逻辑
+serviceA --> cache : 读缓存
+cache --> serviceA : 命中缓存
+cache --> db : 缓存未命中
+db --> serviceA : 返回数据
+
+' 服务A调用服务B
+serviceA --> mq : 异步写入任务
+mq --> serviceB : 消费消息
+serviceB --> external : 调用外部API
+external --> serviceB : 返回结果或超时
+serviceB --> fallback : 外部API失败时降级
+fallback --> mq : 返回模拟数据
+
+' 弹性机制交互
+client .> retry : "失败后重试"
+retry --> timeout : "每次重试超时2s"
+timeout --> gateway : "超时中断请求"
+
+gateway .> ratelimit : "QPS>1000时限流"
+ratelimit --> client : "返回429 Too Many Requests"
+
+gateway .> circuitbreaker : "连续失败触发熔断"
+circuitbreaker --> serviceB : "Open状态直接降级"
+circuitbreaker --> gateway : "Half-Open尝试恢复"
+
+serviceA --> mq : "异步解耦耗时操作"
+mq --> serviceA : "最终一致性处理"
+
+@enduml
+```
+
+### 架构图说明
+1. **客户端弹性（Client）**
+   - **重试（Retry）**：自动重试3次（如网络抖动）。
+   - **超时（Timeout）**：每次请求超时2秒，避免阻塞。
+
+2. **API网关（Gateway）**
+   - **限流（Rate Limiting）**：每秒最多1000请求，超限返回 `429`。
+   - **熔断（Circuit Breaker）**：
+      - `Closed`：正常请求。
+      - `Open`：连续失败后直接降级。
+      - `Half-Open`：部分流量试探恢复。
+   - **负载均衡（Load Balancer）**：分发流量到多个服务实例。
+
+3. **服务A（Service A）**
+   - **多级缓存**：先查Redis缓存，未命中再查MySQL。
+   - **异步解耦**：耗时操作（如日志记录）通过Kafka异步处理。
+
+4. **服务B（Service B）**
+   - **外部调用**：可能因第三方API超时失败。
+   - **降级（Fallback）**：失败时返回本地Mock数据。
+
+---
+
+### 关键弹性机制流程
+#### 1. **正常流程**
+```
+User → Client → Gateway → Service A → Cache/DB → MQ → Service B → External API
+```
+
+#### 2. **超时场景**
+```
+Service B → External API (超时未响应)
+Service B → Fallback (返回模拟数据)
+```
+
+#### 3. **限流场景**
+```
+Gateway (QPS=1001) → Client (返回429)
+```
+
+#### 4. **熔断场景**
+```
+Service B 连续失败 → Gateway熔断器Open
+Client → Gateway → (直接降级，不调用Service B)
+```
+
+#### 5. **重试场景**
+```
+Client → Gateway → Service B (首次失败)
+Client (Retry) → Gateway → Service B (第二次成功)
+```
+
+#### 6. **异步解耦场景**
+```
+Service A → MQ (写入任务) → Service B (异步处理)
+```
+
+---
+
+### 弹性机制协同效果
+
+| **机制**   | **作用**            | **触发条件**         |
+|----------|-------------------|------------------|
+| **超时**   | 避免资源长时间占用，快速失败。   | 外部API响应>2秒       |
+| **重试**   | 掩盖短暂故障（如网络抖动）。    | 请求失败且未超限（如5xx错误） |
+| **限流**   | 防止系统过载，保护后端服务。    | QPS超过阈值（如1000）   |
+| **熔断**   | 阻止故障扩散，加速系统恢复。    | 连续失败率>50%        |
+| **降级**   | 保证核心功能可用，牺牲非核心功能。 | 外部依赖不可用          |
+| **异步解耦** | 削峰填谷，提升吞吐量。       | 耗时操作（如日志、通知）     |
+
+### **总结**
+- **前端弹性**：通过重试+超时提升用户体验。
+- **网关弹性**：限流+熔断防止雪崩。
+- **服务内弹性**：缓存+异步解耦优化性能。
+- **依赖弹性**：降级策略保障核心链路。
+
+此架构可扩展至微服务、云原生环境，结合Kubernetes（HPA、PodDisruptionBudget）和Service Mesh（如Istio）进一步增强弹性。
 
 
 

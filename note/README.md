@@ -122,8 +122,8 @@
 ### 超时&重试
 #### [超时](04.system-design/high-availability/timeout-and-retry/timeout/README.md)
 #### [重试](04.system-design/high-availability/timeout-and-retry/retry/README.md)
-### [结合超时、熔断、限流，重试等机制可构建出弹性架构](04.system-design/high-availability/elastic-architecture/README.md)
-### 灾备设计和异地多活
+### [灾备设计和异地多活](04.system-design/high-availability/disaster-recovery-and-multi-region-active-active/README.md)
+### [弹性架构](04.system-design/high-availability/elastic-architecture/README.md)
 
 ## 幂等性设计
 ## 常用框架
