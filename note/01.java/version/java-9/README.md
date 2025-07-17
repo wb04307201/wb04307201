@@ -16,6 +16,8 @@
 - JEP 213：改进钻石操作符(Diamond Operator)
 - 增强 CompletableFuture：Java 9 新特性—改进CompletableFuture
 
+---
+
 ## JEP 261: 模块系统
 
 JPMS（Java Platform Module System）是Java 9发行版的核心亮点。它也被称为Jigshaw项目。模块是新的结构，就像我们已经有包一样。使用新的模块化编程开发的应用程序可以看作是交互模块的集合，这些模块之间具有明确定义的边界和依赖关系。

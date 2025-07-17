@@ -12,6 +12,8 @@
 - JEP 341：默认CDS归档
 - JEP 344：G1的可中断 mixed GC
 
+---
+
 ## JEP 189：Shenandoah 垃圾收集器（预览特性）
 Shenandoah 垃圾收集器，一个专门用来处理大堆（Heap）和低延迟垃圾收集器，目前是一个实验性质的垃圾收集器。
 

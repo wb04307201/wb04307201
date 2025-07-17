@@ -7,6 +7,8 @@
 - JEP 350：动态 CDS
 - JEP 351：增强 ZGC 释放未使用内存
 
+---
+
 ## JEP 280：FileSystems 工具类
 JEP 280 引入了一个新的`java.nio.file.FileSystems`工具类，它提供了一些新的方法来创建和操作文件系统。
 
