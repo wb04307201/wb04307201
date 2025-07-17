@@ -88,6 +88,245 @@ public class StreamDemo {
 4. peek用于调试： `peek`主要用于调试观察流水线中间状态，不应依赖它执行关键业务逻辑，尤其在并行流中其执行顺序不确定。
 5. 原始类型流： 为避免频繁的自动装箱（`int` -> `Integer`）带来的性能损耗，提供了`IntStream`, `LongStream`, `DoubleStream`。使用`mapToInt`, `mapToLong`, `mapToDouble`等方法转换，并使用其专用的方法（如`sum()`, `average()`, `range()`）。
 
+## 自定义 Collector 实现复杂数据收集
+
+对于简单的收集需求，通常可以使用现有的收集器组合（如 `groupingBy` + `mapping`）来实现，但对于真正复杂的场景，自定义收集器是最佳选择。  
+在 Java Stream API 中，`Collector` 是一个强大的工具，用于将流中的元素聚合或收集到某种结果容器中。虽然标准库提供了许多有用的收集器（如 `toList()`, `toSet()`, `groupingBy()` 等），但有时我们需要实现自定义的 `Collector` 来处理复杂的数据收集需求。
+
+## Collector 接口概述
+
+`Collector` 接口定义了五个关键方法：
+
+```java
+public interface Collector<T, A, R> {
+    Supplier<A> supplier();       // 创建新的结果容器
+    BiConsumer<A, T> accumulator(); // 将元素添加到容器
+    BinaryOperator<A> combiner();   // 合并两个容器
+    Function<A, R> finisher();      // 对最终容器进行转换
+    Set<Characteristics> characteristics(); // 收集器特性
+}
+```
+
+### 实现自定义 Collector 的步骤
+
+#### 1. 定义收集逻辑
+
+假设我们需要实现一个收集器，将流中的字符串连接成一个格式化的段落（每行固定长度，自动换行）。
+
+```java
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.Collector;
+
+public class ParagraphCollector implements Collector<String, StringBuilder, String> {
+    private final int lineLength;
+    
+    public ParagraphCollector(int lineLength) {
+        this.lineLength = lineLength;
+    }
+    
+    // 创建新的StringBuilder作为容器
+    @Override
+    public Supplier<StringBuilder> supplier() {
+        return StringBuilder::new;
+    }
+    
+    // 定义如何将元素添加到容器
+    @Override
+    public BiConsumer<StringBuilder, String> accumulator() {
+        return (sb, word) -> {
+            if (sb.length() > 0) {
+                sb.append(" ");
+            }
+            sb.append(word);
+        };
+    }
+    
+    // 定义如何合并两个容器（并行流时使用）
+    @Override
+    public BinaryOperator<StringBuilder> combiner() {
+        return (sb1, sb2) -> {
+            if (sb1.length() > 0 && sb2.length() > 0) {
+                sb1.append(" ").append(sb2);
+            } else {
+                sb1.append(sb2);
+            }
+            return sb1;
+        };
+    }
+    
+    // 定义最终转换
+    @Override
+    public Function<StringBuilder, String> finisher() {
+        return sb -> {
+            StringBuilder result = new StringBuilder();
+            String[] words = sb.toString().split(" ");
+            int currentLength = 0;
+            
+            for (String word : words) {
+                if (currentLength + word.length() > lineLength) {
+                    result.append("\n");
+                    currentLength = 0;
+                }
+                if (currentLength > 0) {
+                    result.append(" ");
+                    currentLength++;
+                }
+                result.append(word);
+                currentLength += word.length();
+            }
+            
+            return result.toString();
+        };
+    }
+    
+    // 定义收集器特性
+    @Override
+    public Set<Characteristics> characteristics() {
+        return Collections.unmodifiableSet(
+            EnumSet.of(Characteristics.CONCURRENT, Characteristics.IDENTITY_FINISH));
+    }
+}
+```
+
+#### 2. 使用自定义 Collector
+
+```java
+List<String> words = Arrays.asList(
+    "This", "is", "an", "example", "of", "a", "custom", "collector", 
+    "that", "formats", "text", "into", "paragraphs", "with", "fixed", "line", "length"
+);
+
+String paragraph = words.stream()
+    .collect(new ParagraphCollector(20));
+
+System.out.println(paragraph);
+```
+
+输出可能类似于：
+```
+This is an example of
+a custom collector that
+formats text into
+paragraphs with fixed
+line length
+```
+
+### 更简洁的实现方式：使用 Collector.of() 静态方法
+
+Java 8 提供了 `Collector.of()` 静态工厂方法，可以更简洁地创建自定义收集器：
+
+```java
+public static <T, A, R> Collector<T, A, R> of(
+    Supplier<A> supplier,
+    BiConsumer<A, T> accumulator,
+    BinaryOperator<A> combiner,
+    Function<A, R> finisher,
+    Characteristics... characteristics
+)
+```
+
+使用这个方法重写上面的段落收集器：
+
+```java
+public static Collector<String, ?, String> toParagraph(int lineLength) {
+    return Collector.of(
+        StringBuilder::new,
+        (sb, word) -> {
+            if (sb.length() > 0) sb.append(" ");
+            sb.append(word);
+        },
+        (sb1, sb2) -> {
+            if (sb1.length() > 0 && sb2.length() > 0) sb1.append(" ").append(sb2);
+            else sb1.append(sb2);
+            return sb1;
+        },
+        sb -> {
+            StringBuilder result = new StringBuilder();
+            String[] words = sb.toString().split(" ");
+            int currentLength = 0;
+            
+            for (String word : words) {
+                if (currentLength + word.length() > lineLength) {
+                    result.append("\n");
+                    currentLength = 0;
+                }
+                if (currentLength > 0) {
+                    result.append(" ");
+                    currentLength++;
+                }
+                result.append(word);
+                currentLength += word.length();
+            }
+            
+            return result.toString();
+        },
+        Collector.Characteristics.CONCURRENT
+    );
+}
+```
+
+使用方式：
+
+```java
+String paragraph = words.stream()
+    .collect(ParagraphCollector.toParagraph(20));
+```
+
+### 高级示例：收集到多个容器
+
+假设我们需要将流中的元素同时收集到 List 和 Set 中：
+
+```java
+public static <T> Collector<T, ?, Pair<List<T>, Set<T>>> toListAndSet() {
+    return Collector.of(
+        () -> new Pair<>(new ArrayList<>(), new HashSet<>()),
+        (pair, item) -> {
+            pair.getFirst().add(item);
+            pair.getSecond().add(item);
+        },
+        (pair1, pair2) -> {
+            pair1.getFirst().addAll(pair2.getFirst());
+            pair1.getSecond().addAll(pair2.getSecond());
+            return pair1;
+        }
+    );
+}
+
+// 辅助类 Pair
+public static class Pair<A, B> {
+    private final A first;
+    private final B second;
+    
+    public Pair(A first, B second) {
+        this.first = first;
+        this.second = second;
+    }
+    
+    public A getFirst() { return first; }
+    public B getSecond() { return second; }
+}
+```
+
+使用方式：
+
+```java
+Pair<List<String>, Set<String>> result = words.stream()
+    .limit(5)
+    .collect(toListAndSet());
+
+System.out.println("List: " + result.getFirst());
+System.out.println("Set: " + result.getSecond());
+```
+
+### 性能考虑
+
+1. **并行处理**：如果收集器需要支持并行流，必须正确实现 `combiner()` 方法，并考虑是否标记为 `CONCURRENT` 和/或 `UNORDERED`。
+
+2. **可变容器**：确保容器是可变的，并且在 `accumulator` 和 `combiner` 方法中正确处理。
+
+3. **内存使用**：对于大数据集，考虑内存使用情况，可能需要使用更高效的数据结构。
+
 ## 变更历史
 
 | 版本      | 描述                                                    |
@@ -97,6 +336,9 @@ public class StreamDemo {
 | java10  | Stream API 增强                                         |
 | javava2 | JEP 461：流收集器（预览）这个改进使得 Stream API 可以支持自定义中间操作。        |
 | java23  | JEP 473:流收集器(第二次预览)                                   |
+
+
+
 
 
 
