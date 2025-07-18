@@ -33,6 +33,7 @@
 ### 6.14 [Java 21（LTS）](01.java%2Fversion%2Fjava-21%2FREADME.md)
 ### 6.15 [Java 22](01.java%2Fversion%2Fjava-22%2FREADME.md)
 ### 6.16 [Java 23](01.java%2Fversion%2Fjava-23%2FREADME.md)
+### 6.17 [Java 24](01.java/version/java-24/README.md)
 ## 7. [Java Agent](01.java%2Fjava-agent%2FREADME.md)
 ### 7.1 [统计API接口调用耗时](01.java/java-agent/api/README.md)
 
