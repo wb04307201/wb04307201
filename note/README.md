@@ -166,6 +166,9 @@
 ### [Zeebe](07.process-engine%2Fcamunda%2Fcamunda-8%2Fzeebe%2FREADME.md)
 
 # 八、[Mybatis](08.mybatis%2FREADME.md)
+## Mybatis-Plus
+### [条件构造器Wrapper](08.mybatis/mybatis-plus/Wrapper/README.md)
+
 
 # 九、其他
 ## [常用系统](09.other%2Fcommon-systems%2FREADME.md)
