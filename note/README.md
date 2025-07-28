@@ -72,8 +72,13 @@
 ##### [C4 模型](04.system-design%2Fbase%2Fsoftware-architecture-design%2Farchitecture-diagram%2Fc4-model%2FREADME.md)
 ### [软件架构的风格](04.system-design%2Fbase%2Fsoftware-architecture-design%2Fstyles-of-software-architecture%2FREADME.md)
 ### [层次架构](04.system-design%2Fbase%2Fhierarchical-architecture%2FREADME.md)
-### [面向服务的架构（SOA）](04.system-design%2Fbase%2Fsoa%2FREADME.md)
+### SOA
+SOA（Service-Oriented Architecture，面向服务的架构） 是一种软件设计和开发架构风格，其核心思想是将应用程序的不同功能模块拆分为独立、可复用的服务，并通过标准化的接口和协议进行通信，从而实现系统的灵活性、可扩展性和互操作性。
 ### [微服务部署架构](04.system-design%2Fbase%2Fmicroservice-deployment-architecture%2FREADME.md)
+### [微服务与SOA对比](04.system-design/base/microservice-vs-soa/README.md)
+### MDA（Model-Driven Architecture，模型驱动架构）
+### ADL（Architecture Description Language，架构描述语言）
+### DSSA（Domain-Specific Software Architecture，特定领域软件架构）
 
 ## 分布式
 分布式通常指的是一种计算或数据处理的方式，其中任务、数据或资源被分散在多个节点（如计算机、服务器或计算设备）上进行处理。这种分布式的处理方式可以提高系统的整体性能、可靠性、可扩展性和容错性。在分布式系统中，各个节点通过网络进行通信和协作，以实现共同的目标。
