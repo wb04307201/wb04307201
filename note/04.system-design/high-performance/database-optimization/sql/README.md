@@ -1,157 +1,329 @@
 # 常见 SQL 优化手段总结
 
-## 避免使⽤ SELECT *
-1. SELECT * 会消耗更多的 CPU。 
-2. SELECT * ⽆⽤字段增加⽹络带宽资源消耗，增加数据传输时间，尤其是⼤字段（如 varchar、blob、text）。 
-3. SELECT * ⽆法使⽤ MySQL 优化器覆盖索引的优化（基于 MySQL 优化器的“覆盖索引”策略⼜是速度极快，效率极⾼，业界极为推荐的查询优化⽅式） 
-4. SELECT <字段列表> 可减少表结构变更带来的影响。
+## 一、避免使用 SELECT *
+### 原因分析
+1. **资源消耗**：SELECT * 会消耗更多的 CPU 和内存资源，因为需要加载所有字段
+2. **网络带宽**：无用字段增加网络带宽资源消耗，增加数据传输时间，尤其是大字段（如 varchar、blob、text）
+3. **索引优化**：无法使用 MySQL 优化器的覆盖索引优化策略（覆盖索引是速度极快、效率极高的查询优化方式）
+4. **维护性**：SELECT <字段列表> 可减少表结构变更带来的影响，提高代码可维护性
 
-## 分页优化
-普通的分⻚在数据量⼩的时候耗费时间还是⽐较短的。
-如果数据量变⼤，达到百万甚⾄是千万级别，普通的分⻚耗费的时间就⾮常⻓了。
-### 深度分页
-查询偏移量过大的场景我们称为深度分页，这会导致查询性能较低
+### 优化建议
+```sql
+-- 不推荐
+SELECT * FROM users;
 
-例如：MySQL 在无法利用索引的情况下跳过1000000条记录后，再获取10条记录SELECT * FROM t_order ORDER BY id LIMIT 1000000, 10
+-- 推荐
+SELECT id, username, email FROM users;
+```
 
-1. 范围查询
+## 二、分页优化
+### 深度分页问题
+当查询偏移量过大时（如 LIMIT 1000000, 10），性能会急剧下降
 
-当可以保证 ID 的连续性时，根据 ID 范围进行分页是比较好的解决方案  
+#### 1. 范围查询（适用于ID连续）
+```sql
+-- 查询指定ID范围的数据
+SELECT * FROM t_order 
+WHERE id > 100000 AND id <= 100010 
+ORDER BY id;
 
- - 查询指定 ID 范围的数据  
-SELECT * FROM t_order WHERE id > 100000 AND id <= 100010 ORDER BY id# 
- - 通过记录上次查询结果的最后一条记录的ID进行下一页的查询  
-SELECT * FROM t_order WHERE id > 100000 LIMIT 10
+-- 通过记录上次查询结果的最后一条记录的ID进行下一页查询
+SELECT * FROM t_order 
+WHERE id > 100000 
+LIMIT 10;
+```
 
-这种优化方式限制比较大，且一般项目的 ID 也没办法保证完全连续。
+#### 2. 子查询优化
+```sql
+-- 通过子查询获取ID起始值
+SELECT * FROM t_order 
+WHERE id >= (SELECT id FROM t_order ORDER BY id LIMIT 1000000, 1) 
+LIMIT 10;
+```
 
-2. 子查询
+#### 3. 延迟关联（推荐）
+```sql
+-- 使用INNER JOIN
+SELECT t1.* FROM t_order t1
+INNER JOIN (SELECT id FROM t_order ORDER BY id LIMIT 1000000, 10) t2
+ON t1.id = t2.id;
 
-我们先查询出 limit 第一个参数对应的主键值，再根据这个主键值再去过滤并 limit，这样效率会更快一些。
+-- 使用逗号连接
+SELECT t1.* FROM t_order t1,
+(SELECT id FROM t_order ORDER BY id LIMIT 1000000, 10) t2
+WHERE t1.id = t2.id;
+```
 
-- 通过子查询来获取 id 的起始值，把 limit 1000000 的条件转移到子查询  
-SELECT * FROM t_order WHERE id >= (SELECT id FROM t_order limit 1000000, 1) LIMIT 10;
+#### 4. 覆盖索引（最佳方案）
+```sql
+-- 建立覆盖索引
+CREATE INDEX idx_code_type ON t_order(code, type);
 
-不过，子查询的结果会产生一张新表，会影响性能，应该尽量避免大量使用子查询。并且，这种方法只适用于 ID 是正序的。在复杂分页场景，往往需要通过过滤条件，筛选到符合条件的 ID，此时的 ID 是离散且不连续的。
+-- 使用覆盖索引查询
+SELECT id, code, type FROM t_order
+ORDER BY code
+LIMIT 1000000, 10;
+```
 
-3. 延迟关联
+### 覆盖索引优势
+1. 避免回表操作，减少IO
+2. 将随机IO变为顺序IO
+3. 适用于范围查询和排序操作
 
- - 把条件转移到主键索引树，减少回表的次数。不同点是，延迟关联使用了 INNER JOIN（内连接） 包含子查询。  
-SELECT t1.* FROM t_order t1INNER JOIN (SELECT id FROM t_order limit 1000000, 10) t2ON t1.id = t2.id;
-- 除了使用 INNER JOIN 之外，还可以使用逗号连接子查询。  
-SELECT t1.* FROM t_order t1,(SELECT id FROM t_order limit 1000000, 10) t2WHERE t1.id = t2.id;
+## 三、尽量避免多表JOIN
+### 优化原则
+1. 超过三个表禁止JOIN
+2. 需要JOIN的字段数据类型必须一致
+3. 确保被关联字段有索引
 
-4. 覆盖索引
+### JOIN实现方式对比
+| 实现方式 | 描述 | 性能 |
+|---------|------|------|
+| Simple Nested-Loop Join | 直接使用笛卡尔积实现JOIN | 最低 |
+| Block Nested-Loop Join | 利用JOIN BUFFER优化 | 中等 |
+| Index Nested-Loop Join | 使用索引的JOIN方式 | 最高 |
 
-索引中已经包含了所有需要获取的字段的查询方式称为覆盖索引
+### 优化方案
+#### 1. 单表查询+内存关联（推荐）
+```java
+// 伪代码示例
+List<User> users = query("SELECT * FROM users WHERE age > 20");
+List<Order> orders = query("SELECT * FROM orders WHERE user_id IN (?)", userIds);
+// 在内存中关联users和orders
+```
 
-> *覆盖索引的好处*
-> - 避免 InnoDB 表进行索引的二次查询，也就是回表操作  
-> InnoDB 是以聚集索引的顺序来存储的，对于 InnoDB 来说，二级索引在叶子节点中所保存的是行的主键信息，如果是用二级索引查询数据的话，在查找到相应的键值后，还要通过主键进行二次查询才能获取我们真实所需要的数据。而在覆盖索引中，二级索引的键值中可以获取所有的数据，避免了对主键的二次查询（回表），减少了 IO 操作，提升了查询效率。 
-> - 可以把随机 IO 变成顺序 IO 加快查询效率  
-> 由于覆盖索引是按键值的顺序存储的，对于 IO 密集型的范围查找来说，对比随机从磁盘读取每一行的数据 IO 要少的多，因此利用覆盖索引在访问时也可以把磁盘的随机读取的 IO 转变成索引查找的顺序 IO。
+#### 2. 数据冗余设计
+```sql
+-- 在订单表中冗余用户名称
+CREATE TABLE orders (
+    id BIGINT PRIMARY KEY,
+    user_id BIGINT,
+    user_name VARCHAR(50),  -- 冗余字段
+    amount DECIMAL(10,2),
+    -- 其他字段
+);
+```
 
-- 如果只需要查询 id, code, type 这三列，可建立 code 和 type 的覆盖索引  
-SELECT id, code, type FROM t_orderORDER BY codeLIMIT 1000000, 10;
-
-不过，当查询的结果集占表的总行数的很大一部分时，可能就不会走索引了，自动转换为全表扫描。当然了，也可以通过 FORCE INDEX 来强制查询优化器走索引，但这种提升效果一般不明显。
-
-## 尽量避免多表做 join
-超过三个表禁⽌ join。需要 join 的字段，数据类型保持绝对⼀致;多表关联查询时，保证被关联 的字段需要有索引。
-
+## 四、避免使用外键与级联
 ### 原因
-使⽤嵌套循环（Nested Loop）来实现关联查询，三种不同的实现效率都不是很⾼
-1. Simple Nested-Loop Join  
-没有进过优化，直接使⽤笛卡尔积实现 join，逐⾏遍历/全表扫描，效率最低。
-2. Block Nested-Loop Join  
-利⽤ JOIN BUFFER 进⾏优化，性能受到 JOIN BUFFER ⼤⼩的影响，相⽐于 Simple Nested-Loop Join 性能有所提升。不过，如果两个表的数据过⼤的话，⽆论如何优化，Block NestedLoop Join 对性能的提升都⾮常有限。
-3. Index Nested-Loop Join  
-在必要的字段上增加索引，使 join 的过程中可以使⽤到这个索引，这样可以让 Block Nested-Loop Join 转换为 Index Nested-Loop Join，性能得到进⼀步提升。
+1. 对分库分表不友好
+2. 增加数据库维护复杂度
+3. 性能影响相对较小
 
-### 避免多表 join 常⻅的做法
-1. 单表查询后在内存中⾃⼰做关联  
-> 对数据库做单表查询，再根据查询结果进⾏⼆次查询，以此类推，最后再进⾏关联。
-> 推荐这种做法，保证性能外还有如下优势
-> 1. 拆分后的单表查询代码可复⽤性更⾼
-> 2. join 联表 SQL 基本不太可能被复⽤。
-> 3. 单表查询更利于后续的维护
-> 4. 不论是后续修改表结构还是进⾏分库分表，单表查询维护起来都更容易。
-2. 数据冗余  
-> 把⼀些重要的数据在表中做冗余，尽可能地避免关联查询。
-> 很笨的⼀种做法，表结构⽐较稳定的情况下才会考虑这种做法。进⾏冗余设计之前，思考⼀下⾃⼰的表结构设计的是否有问题。
+### 替代方案
+1. 在应用层实现数据完整性检查
+2. 使用事务保证数据一致性
 
-## 建议不要使⽤外键与级联
-不得使⽤外键与级联，⼀切外键概念必须在应⽤层解决。
-> *原因:*  
-> 不建议使⽤外键主要是因为对分库分表不友好，性能⽅⾯的影响其实是⽐较⼩的。
+## 五、选择合适的字段类型
+### 优化原则
+1. 存储字节越小，性能越好
+2. 选择最合适的数据类型而非最大的
 
-## 选择合适的字段类型
-存储字节越⼩，占⽤也就空间越⼩，性能也越好。
-### 做法
-1. 某些字符串可以转换成数字类型存储⽐如可以将 IP 地址转换成整形数据，数字是连续的，性能更好，占⽤空间也更⼩。
-> MySQL 提供了两个⽅法来处理 ip 地址
-> - INET_ATON():把 ip 转为⽆符号整型 (4-8 位)
-> - INET_NTOA(): 把整型的 ip 转为地址
+### 具体优化方案
+#### 1. IP地址存储
+```sql
+-- 存储为无符号整型
+ALTER TABLE connections ADD COLUMN ip_num INT UNSIGNED;
+UPDATE connections SET ip_num = INET_ATON('192.168.1.1');
 
-2. 对于非负型的数据 (如⾃增 ID,整型 IP，年龄) 来说,要优先使用⽆符号整型来存储，⽆符号相对于有符号可以多出⼀倍的存储空间
-3. 小数值类型（⽐如年龄、状态表示如 0/1）优先使⽤ TINYINT 类型。
-4. 对于⽇期类型来说， DateTime 类型耗费空间更⼤且没有时区信息，建议使⽤Timestamp。
-5. ⾦额字段⽤ decimal，避免精度丢失。
-6. 尽量使⽤⾃增 id 作为主键。
-> 如果主键为⾃增 id 的话，每次都会将数据加在 B+树尾部（本质是双向链表），时间复杂度为 O(1)。在写满⼀个数据⻚的时候，直接申请另⼀个新数据⻚接着写就可以了。  
-> 如果主键是⾮⾃增 id 的话，为了让新加⼊数据后 B+树的叶⼦节点还能保持有序，它就需要往叶⼦结点的中间找，查找过程的时间复杂度是 O(lgn)。如果这个也被写满的话，就需要进⾏⻚分裂。⻚分裂操作需要加悲观锁，想能⾮常低。  
-> 像分库分表这类场景就不建议使⽤⾃增 id 作为主键，应该使⽤分布式 ID⽐如 uuid
+-- 查询时转换回IP
+SELECT INET_NTOA(ip_num) FROM connections;
+```
 
-## 尽量⽤ UNION ALL 代替 UNION
-UNION 会把两个结果集的所有数据放到临时表中后再进⾏去重操作，更耗时，更消耗 CPU 资源。  
-UNION ALL 不会再对结果集进⾏去重操作，获取到的数据包含重复的项。  
-不过，如果实际业务场景中不允许产⽣重复数据的话，还是可以使⽤ UNION。
+#### 2. 日期类型选择
+| 类型 | 存储空间 | 时区支持 | 范围 |
+|------|---------|---------|------|
+| DATETIME | 8字节 | 不支持 | 1000-01-01 00:00:00 到 9999-12-31 23:59:59 |
+| TIMESTAMP | 4字节 | 支持 | 1970-01-01 00:00:01 UTC 到 2038-01-19 03:14:07 UTC |
 
-## 批量操作
-对于数据库中的数据更新，如果能使⽤批量操作就要尽量使⽤，减少请求数据库的次数，提⾼性能。
+#### 3. 主键选择
+```sql
+-- 自增ID作为主键（推荐）
+CREATE TABLE users (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    -- 其他字段
+);
 
-## Show Profile 分析 SQL 执⾏性能
-为了更精准定位⼀条 SQL 语句的性能问题，需要清楚地知道这条 SQL 语句运⾏时消耗了多少系统资源。 SHOW PROFILE 和 SHOW PROFILES 展示 SQL 语句的资源使⽤情况，展示的消息包括 CPU 的使⽤，CPU 上下⽂切换，IO 等待，内存使⽤等。
+-- 分库分表场景使用分布式ID
+CREATE TABLE orders (
+    order_no VARCHAR(32) PRIMARY KEY,  -- 如UUID或雪花ID
+    -- 其他字段
+);
+```
 
-## 优化慢 SQL
-MySQL 慢查询⽇志是⽤来记录 MySQL 在执⾏命令中，响应时间超过预设阈值的 SQL 语句。因此，通过分析慢查询⽇志我们就可以找出执⾏速度⽐较慢的SQL 语句。
-找到了慢 SQL 之后，我们可以通过 EXPLAIN 命令分析对应的 SELECT 语句
-> select_type  
-> 查询的类型，常⽤的取值有 SIMPLE（普通查询，即没有联合查询、⼦查询）、PRIMARY（主查询）、UNION（UNION 中后⾯的查询）、SUBQUERY（⼦查询）等。
-> table  
-> 表示查询涉及的表或衍⽣表。
-> 依次是  
-> ALL < index < range ~ index_merge < ref < eq_ref < const < system。
-> rows  
-> SQL 要查找到结果集需要扫描读取的数据⾏数，原则上 rows 越少越好。
-> ......
+## 六、使用UNION ALL代替UNION
+### 区别对比
+| 特性 | UNION | UNION ALL |
+|------|-------|----------|
+| 去重 | 是 | 否 |
+| 排序 | 是 | 否 |
+| 性能 | 较低 | 较高 |
 
-## 正确使⽤索引
-1. 选择合适的字段创建索引
-> - 不为 NULL 的字段  
-> 索引字段的数据应该尽量不为 NULL，因为对于数据为 NULL 的字段，数据库较难优化。如果字段频繁被查询，但⼜避免不了为NULL，建议使⽤ 0,1,true,false 这样语义较为清晰的短值或短字符作为替代。
-> - 被频繁查询的字段  
-> 我们创建索引的字段应该是查询操作⾮常频繁的字段。被作为条件查询的字段 ：被作为 WHERE 条件查询的字段，应该被考虑建⽴索引。
-> - 频繁需要排序的字段  
-> 索引已经排序，这样查询可以利⽤索引的排序，加快排序查询时间。
-> - 被经常频繁⽤于连接的字段  
-> 经常⽤于连接的字段可能是⼀些外键列，对于外键列并不⼀定要建⽴外键，只是说该列涉及到表与表的关系。对于频繁被连接查询的字段，可以考虑建⽴索引，提⾼多表连接查询的效率。
-2. 被频繁更新的字段应该慎重建⽴索引
-> 虽然索引能带来查询上的效率，但是维护索引的成本也是不⼩的。 如果⼀个字段不被经常查询，反⽽被经常修改，那么就更不应该在这种字段上建⽴索引了
-3. 尽可能的考虑建⽴联合索引⽽不是单列索引
-> 因为索引是需要占⽤磁盘空间的，可以简单理解为每个索引都对应着⼀颗B+树。如果⼀个表的字段过多，索引过多，那么当这个表的数据达到⼀个体量后，索引占⽤的空间也是很多的，且修改索引时，耗费的时间也是较多的。如果是联合索引，多个字段在⼀个索引上，那么将会节约很⼤磁盘空间，且修改数据的操作效率也会提升。
-4. 注意避免冗余索引
-> 冗余索引指的是索引的功能相同，能够命中索引(a, b)就肯定能命中索引(a) ，那么索引(a)就是冗余索引。如（name,city ）和（name ）这两个索引就是冗余索引，能够命中前者的查询肯定是能够命中后者的，在⼤多数情况下，都应该尽量扩展已有的索引⽽不是创建新索引。
-5. 考虑在字符串类型的字段上使⽤前缀索引代替普通索引
-> 前缀索引仅限于字符串类型，较普通索引会占⽤更⼩的空间，所以可以考虑使⽤前缀索引带替普通索引。
-6. 避免索引失效
-> *常⻅的导致索引失效的情况有下⾯这些*
-> - 使⽤ SELECT * 进⾏查询;
-> - 创建了组合索引，但查询条件未准守最左匹配原则;
-> - 在索引列上进⾏计算、函数、类型转换等操作;
-> - 以 % 开头的 LIKE 查询⽐如 like '%abc'; 
-> - 查询条件中使⽤ or，且 or 的前后条件中有⼀个列没有索引，涉及的索引都不会被使⽤到;
-> - 发⽣隐式转换;
-> ......
-7.删除⻓期未使⽤的索引
-> 删除⻓期未使⽤的索引，不⽤的索引的存在会造成不必要的性能损耗 MySQL 5.7 可以通过查询 sys 库的 schema_unused_indexes 视图来查询哪些索引从未被使⽤
+### 使用建议
+```sql
+-- 需要去重时使用UNION
+SELECT product_id FROM orders_2022
+UNION
+SELECT product_id FROM orders_2023;
+
+-- 不需要去重时使用UNION ALL（推荐）
+SELECT product_id FROM orders_2022
+UNION ALL
+SELECT product_id FROM orders_2023;
+```
+
+## 七、批量操作优化
+### 优化方案
+#### 1. 批量INSERT
+```sql
+-- 单条插入
+INSERT INTO users(name, age) VALUES('张三', 20);
+INSERT INTO users(name, age) VALUES('李四', 25);
+
+-- 批量插入（推荐）
+INSERT INTO users(name, age) VALUES 
+('张三', 20),
+('李四', 25),
+('王五', 30);
+```
+
+#### 2. 批量UPDATE
+```sql
+-- 使用CASE WHEN批量更新
+UPDATE products
+SET price = CASE 
+    WHEN id = 1 THEN 100
+    WHEN id = 2 THEN 200
+    ELSE price
+END
+WHERE id IN (1, 2);
+```
+
+## 八、SQL性能分析工具
+### 1. SHOW PROFILE
+```sql
+-- 开启profiling
+SET profiling = 1;
+
+-- 执行SQL
+SELECT * FROM large_table WHERE condition = value;
+
+-- 查看性能分析
+SHOW PROFILES;
+SHOW PROFILE FOR QUERY 1;
+```
+
+### 2. EXPLAIN分析
+```sql
+EXPLAIN SELECT * FROM orders 
+WHERE user_id = 100 
+ORDER BY create_time DESC 
+LIMIT 10;
+```
+
+### EXPLAIN关键字段说明
+| 字段 | 含义 |
+|------|------|
+| id | 查询标识符 |
+| select_type | 查询类型 |
+| table | 访问的表 |
+| type | 访问类型（ALL, index, range, ref, eq_ref, const, system） |
+| possible_keys | 可能使用的索引 |
+| key | 实际使用的索引 |
+| key_len | 使用的索引长度 |
+| rows | 预估需要检查的行数 |
+| Extra | 额外信息（Using where, Using index等） |
+
+## 九、索引优化策略
+### 1. 索引创建原则
+- 选择区分度高的列（如用户名>性别）
+- 频繁作为查询条件的列
+- 频繁需要排序或分组的列
+- 经常用于表连接的列
+
+### 2. 联合索引设计
+```sql
+-- 单列索引
+CREATE INDEX idx_name ON users(name);
+CREATE INDEX idx_age ON users(age);
+
+-- 联合索引（推荐）
+CREATE INDEX idx_name_age ON users(name, age);
+```
+
+### 3. 前缀索引优化
+```sql
+-- 为长字符串创建前缀索引
+CREATE INDEX idx_email_prefix ON users(email(10));  -- 只索引前10个字符
+```
+
+### 4. 避免索引失效
+#### 常见索引失效场景
+1. 隐式类型转换
+```sql
+-- user_id是varchar类型，但传入数字
+SELECT * FROM users WHERE user_id = 123;  -- 索引失效
+```
+
+2. 函数操作
+```sql
+-- 对索引列使用函数
+SELECT * FROM orders WHERE DATE(create_time) = '2023-01-01';
+```
+
+3. LIKE以通配符开头
+```sql
+-- 以%开头的LIKE查询
+SELECT * FROM products WHERE name LIKE '%手机';
+```
+
+4. OR条件使用不当
+```sql
+-- OR条件中有一个列没有索引
+SELECT * FROM users WHERE name = '张三' OR age = 20;
+```
+
+### 5. 索引维护
+```sql
+-- 查看未使用的索引（MySQL 5.7+）
+SELECT * FROM sys.schema_unused_indexes;
+
+-- 删除无用索引
+DROP INDEX idx_unused ON users;
+```
+
+## 十、慢查询优化流程
+1. 开启慢查询日志
+```sql
+-- 配置文件设置
+slow_query_log = 1
+slow_query_log_file = /var/log/mysql/mysql-slow.log
+long_query_time = 2  -- 超过2秒的查询记录
+log_queries_not_using_indexes = 1  -- 记录未使用索引的查询
+```
+
+2. 分析慢查询日志
+```bash
+# 使用mysqldumpslow工具分析
+mysqldumpslow -s t /var/log/mysql/mysql-slow.log  # 按时间排序
+mysqldumpslow -s c /var/log/mysql/mysql-slow.log  # 按出现次数排序
+```
+
+3. 优化慢查询
+- 添加合适的索引
+- 重写SQL语句
+- 考虑读写分离
+- 对于复杂查询，考虑拆分为多个简单查询
+
+## 十一、其他优化建议
+1. **合理使用事务**：避免长事务，事务中操作的数据量不宜过大
+2. **数据库参数调优**：根据服务器配置调整缓冲池大小等参数
+3. **定期维护表**：
+   ```sql
+   ANALYZE TABLE orders;  -- 更新统计信息
+   OPTIMIZE TABLE orders;  -- 整理表碎片（仅MyISAM和InnoDB）
+   ```
+4. **使用连接池**：避免频繁创建和销毁数据库连接
+5. **读写分离**：将读操作分流到从库
+
+通过综合应用这些优化手段，可以显著提高SQL查询性能，提升数据库整体运行效率。在实际优化过程中，应根据具体业务场景和性能测试结果选择最适合的优化方案。
