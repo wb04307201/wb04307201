@@ -155,7 +155,7 @@
 ## [注解](06.spring%2Fannotation%2FREADME.md)
 ## [模块](06.spring%2Fmodule%2FREADME.md)
 ## [IoC](06.spring%2Fioc%2FREADME.md)
-## [AOP](06.spring/aop/README.md)
+## [Spring AOP 深度解析](06.spring/aop/README.md)
 ## [Spring 自带24个工具类](06.spring/tools/README.md)
 ## [Spring Retry](06.spring/spring-retry/README.md)
 
