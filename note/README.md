@@ -160,6 +160,7 @@
 ## [Spring Retry](06.spring/spring-retry/README.md)
 ## [Spring Cloud 微服务架构笔记](06.spring/cloud/README.md)
 ### [服务注册与发现中心对比](06.spring/cloud/service-registry/README.md)
+### [Seata 分布式事务框架](06.spring/cloud/seata/README.md)
 
 # 七、[流程引擎](07.process-engine%2FREADME.md)
 ## [Camunda 7](07.process-engine%2Fcamunda%2Fcamunda-7%2FREADME.md)
