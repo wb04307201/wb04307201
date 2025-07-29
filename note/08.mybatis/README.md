@@ -1,3 +1,7 @@
+以下是添加了【七、扩展能力开发】和【八、如何处理存储过程】后的完整笔记：
+
+---
+
 # MyBatis 深度学习笔记
 
 ## 一、MyBatis 核心定位与架构设计
@@ -207,6 +211,123 @@ User getUser(@Param("name") String userName);
 </cache>
 ```
 
+## 七、扩展能力开发
+### 7.1 自定义类型处理器（TypeHandler）
+```java
+public class DateTypeHandler extends BaseTypeHandler<Date> {
+    @Override
+    public void setNonNullParameter(PreparedStatement ps, int i, Date parameter, JdbcType jdbcType) throws SQLException {
+        ps.setTimestamp(i, new Timestamp(parameter.getTime()));
+    }
+
+    @Override
+    public Date getNullableResult(ResultSet rs, String columnName) throws SQLException {
+        Timestamp timestamp = rs.getTimestamp(columnName);
+        return timestamp != null ? new Date(timestamp.getTime()) : null;
+    }
+    // 其他重载方法...
+}
+```
+**配置方式**：
+```xml
+<typeHandlers>
+    <typeHandler handler="com.example.DateTypeHandler" javaType="java.util.Date"/>
+</typeHandlers>
+```
+
+### 7.2 插件开发（Interceptor）
+```java
+@Intercepts({
+    @Signature(type= Executor.class, method="update", args={MappedStatement.class, Object.class})
+})
+public class SqlCostInterceptor implements Interceptor {
+    @Override
+    public Object intercept(Invocation invocation) throws Throwable {
+        long start = System.currentTimeMillis();
+        Object result = invocation.proceed();
+        long cost = System.currentTimeMillis() - start;
+        System.out.println("SQL执行耗时：" + cost + "ms");
+        return result;
+    }
+}
+```
+**注册插件**：
+```xml
+<plugins>
+    <plugin interceptor="com.example.SqlCostInterceptor"/>
+</plugins>
+```
+
+### 7.3 数据库厂商扩展
+```xml
+<databaseIdProvider type="DB_VENDOR">
+    <property name="MySQL" value="mysql"/>
+    <property name="Oracle" value="oracle"/>
+</databaseIdProvider>
+```
+**使用方式**：
+```xml
+<select id="selectUser" resultType="User" databaseId="mysql">
+    SELECT * FROM user WHERE id = #{id}
+</select>
+```
+
+## 八、如何处理存储过程
+### 8.1 基本调用方式
+```xml
+<!-- 调用无返回值的存储过程 -->
+<select id="callProcedure" statementType="CALLABLE">
+    {call update_user_status(#{userId,mode=IN,jdbcType=INTEGER}, 
+                           #{status,mode=IN,jdbcType=VARCHAR})}
+</select>
+
+<!-- 调用有返回结果的存储过程 -->
+<select id="callFunction" statementType="CALLABLE" resultType="int">
+    {#{result,mode=OUT,jdbcType=INTEGER} = call get_user_count()}
+</select>
+```
+
+### 8.2 参数模式说明
+| 模式 | 说明 | 示例 |
+|------|------|------|
+| IN | 输入参数 | `#{param,mode=IN}` |
+| OUT | 输出参数 | `#{param,mode=OUT}` |
+| INOUT | 输入输出参数 | `#{param,mode=INOUT}` |
+
+### 8.3 复杂存储过程处理
+```xml
+<!-- 调用带游标的存储过程 -->
+<select id="callCursorProcedure" statementType="CALLABLE" resultMap="userResultMap">
+    {call get_users_by_role(
+        #{roleId,mode=IN,jdbcType=INTEGER},
+        #{userCursor,mode=OUT,jdbcType=CURSOR,javaType=ResultSet,resultMap=userResultMap}
+    )}
+</select>
+
+<resultMap id="userResultMap" type="User">
+    <id property="id" column="id"/>
+    <result property="name" column="name"/>
+</resultMap>
+```
+
+### 8.4 Java代码调用示例
+```java
+// 无返回值调用
+SqlSession sqlSession = sqlSessionFactory.openSession();
+try {
+    sqlSession.selectOne("com.example.UserMapper.callProcedure", 
+        Map.of("userId", 1, "status", "ACTIVE"));
+} finally {
+    sqlSession.close();
+}
+
+// 带输出参数调用
+Map<String, Object> params = new HashMap<>();
+params.put("result", null); // 初始化OUT参数
+sqlSession.selectOne("com.example.UserMapper.callFunction", params);
+Integer count = (Integer) params.get("result");
+```
+
 ## 附录：核心类关系图
 ```plantuml
 @startuml
@@ -231,6 +352,8 @@ class Configuration {
     + mappedStatements
     + typeAliases
     + mappers
+    + typeHandlers
+    + interceptors
 }
 
 SqlSessionFactoryBuilder --> SqlSessionFactory : 创建
@@ -239,4 +362,4 @@ SqlSession --> Configuration : 使用
 @enduml
 ```
 
-本笔记系统梳理了 MyBatis 的核心原理、高级特性及工程实践，结合 PlantUML 示意图直观展示关键流程。建议开发者结合官方文档与实际项目进行深入实践，逐步掌握这一持久层框架的精髓。
+本笔记系统梳理了 MyBatis 的核心原理、高级特性及工程实践，新增的扩展能力开发章节详细介绍了类型处理器、插件机制等高级功能，存储过程处理章节提供了完整的调用方案。建议开发者结合官方文档与实际项目进行深入实践，逐步掌握这一持久层框架的精髓。
