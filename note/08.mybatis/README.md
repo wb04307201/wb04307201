@@ -34,33 +34,17 @@ stop
 - **工厂创建**：使用建造者模式生成 `SqlSessionFactory` 实例
 
 ### 2.2 执行流程（以查询为例）
-```plantuml
-@startuml
-actor User
-participant "Controller" as c
-participant "Service" as s
-participant "Dao" as d
-participant "MyBatis" as m
-participant "JDBC" as j
 
-User -> c: 发起请求
-c -> s: 调用业务方法
-s -> d: 调用 selectById()
-d -> m: openSession()
-m -> m: 获取 MapperProxy
-m -> m: 解析 MappedStatement
-m -> j: 创建 PreparedStatement
-j -> j: 执行 SQL
-j --> m: 返回 ResultSet
-m --> d: 映射为 Java 对象
-d --> s: 返回结果
-s --> c: 处理业务
-c --> User: 返回响应
-@enduml
-```
-- **动态代理**：通过 JDK 动态代理生成 Mapper 接口实现类
-- **参数映射**：将 Java 对象属性值填充到 SQL 占位符
-- **结果映射**：将 ResultSet 列值转换为 Java 对象属性
+![img.png](img.png)
+
+1. 读取 MyBatis 配置文件: mybatis-config.xml为MyBatis 的全局配置文件，配置了MyBatis的运行环境等信息，例如数据库连接信息。 
+2. 加载映射文件。映射文件即SQL映射文件，该文件中配置了操作数据库的SQL语句，需要在MyBatis 配置文件mybatis-config.xml中加载。mybatis-config.xml文件可以加载多个映射文件，每个文件对应数据库中的一张表。 
+3. 构造会话工厂:通过MyBatis的环境等配置信息构建会话工厂SqlSessionFactory. 
+4. 创建会话对象:由会话工厂创建SqlSession对象，该对象中包含了执行SQL语句的所有方法。
+5. Executor执行器: MyBatis 底层定义了一个Executor接口来操作数据库，它将根据SqlSession传递的参数动态地生成需要执行的SQL语句，同时负责查询缓存的维护。 
+6. MappedStatement对象:在Executor接口的执行方法中有一个MappedStatement类型的参数，该参数是对映射信息的封装，用于存储要映射的SQL语句的id、参数等信息。 
+7. 输入参数映射:输入参数类型可以是Map、List等集合类型，也可以是基本数据类型和POJO类型。输入参数映射过程类似于JDBC对 preparedStatement对象设置参数的过程。 
+8. 输出结果映射:输出结果类型可以是Map、List等集合类型，也可以是基本数据类型和POJO类型。输出结果映射过程类似于JDBC对结果集的解析过程。
 
 ## 三、关键组件详解
 ### 3.1 SqlSessionFactory
@@ -74,12 +58,12 @@ SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(input
 - **核心职责**：创建 `SqlSession` 实例，管理事务边界
 
 ### 3.2 Executor 执行器
-| 类型 | 特点 | 适用场景 |
-|------|------|----------|
-| SimpleExecutor | 每次执行创建新 PreparedStatement | 简单查询 |
-| ReuseExecutor | 复用 PreparedStatement | 批量操作 |
-| BatchExecutor | 批量执行更新语句 | 高并发写入 |
-| CachingExecutor | 二级缓存实现 | 读多写少 |
+| 类型              | 特点                        | 适用场景  |
+|-----------------|---------------------------|-------|
+| SimpleExecutor  | 每次执行创建新 PreparedStatement | 简单查询  |
+| ReuseExecutor   | 复用 PreparedStatement      | 批量操作  |
+| BatchExecutor   | 批量执行更新语句                  | 高并发写入 |
+| CachingExecutor | 二级缓存实现                    | 读多写少  |
 
 ### 3.3 MappedStatement
 ```xml
@@ -361,5 +345,75 @@ SqlSessionFactory --> Configuration : 依赖
 SqlSession --> Configuration : 使用
 @enduml
 ```
+
+# MyBatis 核心机制详解笔记
+
+## 九、Executor 执行器
+
+### 1. 执行器概述
+Executor 是 MyBatis 的核心执行器，负责 SQL 语句的生成和查询缓存的维护，是 MyBatis 调度的核心，负责 SQL 执行流程中的关键操作。
+
+### 2. 执行器类型
+MyBatis 提供三种执行器实现：
+
+- **SimpleExecutor** (默认)
+    - 每次执行 update 或 select 都开启一个新 Statement 对象
+    - 用完立即关闭
+    - 简单但性能较差
+
+- **ReuseExecutor**
+    - 执行 update 或 select 时以 SQL 作为 key 查找 Statement 对象
+    - 存在则使用，不存在则创建
+    - 用完后不关闭，放入缓存
+    - 适合批量操作
+
+- **BatchExecutor**
+    - 执行 update 时批量操作所有 Statement
+    - 需手动调用 `flushStatements()` 提交批量
+    - 适合批量更新场景
+
+### 3. 执行器创建流程
+```java
+// 配置解析阶段创建执行器
+Executor executor = 
+    new ExecutorFactory().createExecutor(transaction, execType);
+
+// execType 来源于配置：
+// <settings>
+//   <setting name="defaultExecutorType" value="SIMPLE"/>
+// </settings>
+```
+
+### 4. 执行器核心方法
+```java
+public interface Executor {
+    // 查询操作
+    <E> List<E> query(MappedStatement ms, Object parameter, 
+                     RowBounds rowBounds, ResultHandler handler) throws SQLException;
+    
+    // 更新操作
+    int update(MappedStatement ms, Object parameter) throws SQLException;
+    
+    // 批量操作
+    void batch() throws SQLException;
+    
+    // 事务相关
+    Transaction getTransaction();
+    void commit(boolean required) throws SQLException;
+    void rollback(boolean required) throws SQLException;
+    
+    // 缓存操作
+    void clearLocalCache();
+    void deferLoad(MappedStatement ms, MetaObject resultObject, 
+                  String property, CacheKey key, Class<?> targetType);
+}
+```
+
+### 5. 执行器工作流程
+1. 参数处理
+2. SQL 构建
+3. 结果集映射
+4. 缓存处理
+5. 事务管理
 
 本笔记系统梳理了 MyBatis 的核心原理、高级特性及工程实践，新增的扩展能力开发章节详细介绍了类型处理器、插件机制等高级功能，存储过程处理章节提供了完整的调用方案。建议开发者结合官方文档与实际项目进行深入实践，逐步掌握这一持久层框架的精髓。
