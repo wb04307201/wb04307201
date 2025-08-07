@@ -148,7 +148,7 @@ docker exec -it alist ./alist admin
 
 ## chroma
 ```shell
-docker run -d --name chromadb -p 8000:8000 chromadb/chroma
+docker run -it --rm --name chroma -p 8000:8000 ghcr.io/chroma-core/chroma:1.0.0
 ```
 
 ## docker mirrors
