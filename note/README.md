@@ -164,6 +164,7 @@ SOA（Service-Oriented Architecture，面向服务的架构） 是一种软件�
 ## [Spring 自带24个工具类](06.spring/tools/README.md)
 ## [Spring Retry](06.spring/spring-retry/README.md)
 ## [Spring Batch](06.spring/spring-batch/README.md)
+## [Spring Boot Actuator](06.spring/Spring-boot-actuator/README.md)
 ## [Spring Cloud 微服务架构笔记](06.spring/cloud/README.md)
 ### [服务注册与发现中心对比](06.spring/cloud/service-registry/README.md)
 ### [Seata 分布式事务框架](06.spring/cloud/seata/README.md)
