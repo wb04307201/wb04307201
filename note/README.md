@@ -13,6 +13,7 @@
 ### 5.2. [垃圾回收](01.java%2Fjvm%2Fgarbage-collection%2FREADME.md)
 ### 5.3. [JDK监控和故障处理工具](01.java%2Fjvm%2Fmonitoring-and-troubleshooting-tools%2FREADME.md)
 ### 5.4. [JVM调优命令](01.java%2Fjvm%2Fjvm-tuning-command%2FREADME.md)
+### 5.5. [JVM资源规划](01.java/jvm/resource-planning/README.md)
 ## 6. 版本特性
 ### 6.1 [Java 8（LTS）](01.java%2Fversion%2Fjava-8%2FREADME.md)
 #### 6.1.1 [Optional](01.java%2Fversion%2Fjava-8%2Foptional%2FREADME.md)
