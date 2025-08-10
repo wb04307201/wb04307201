@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+    <display-name>micro rest</display-name>
+    <context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>log4j.properties</param-value>
+    </context-param>
+    <servlet>
+        <!-- Servlet名 -->
+        <servlet-name>startServlet</servlet-name>
+        <!-- Servlet的实现类 -->
+        <servlet-class>cn.wubo.micro.rest.core.StartServlet</servlet-class>
+        <!-- 配置应用启动时，创建Servlet实例，相当于指定@WebServlet的loadOnStartup属性-->
+        <load-on-startup>1</load-on-startup>
+        <init-param>
+            <param-name>defaultConfig</param-name>
+            <param-value>application.yml</param-value>
+        </init-param>
+    </servlet>
+</web-app>
