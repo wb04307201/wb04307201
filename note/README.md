@@ -134,6 +134,7 @@ SOA（Service-Oriented Architecture，面向服务的架构） 是一种软件�
 ## [幂等性设计](04.system-design/idempotency-design/README.md)
 ### [UUID](04.system-design/idempotency-design/uuid/README.md)
 ### [ULID](04.system-design/idempotency-design/ulid/README.md)
+### [UUID v7](04.system-design/idempotency-design/uuid-v7/README.md)
 ## 安全
 ### 认证授权
 #### 认证授权基础概念详解
