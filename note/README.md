@@ -216,6 +216,7 @@ SOA（Service-Oriented Architecture，面向服务的架构） 是一种软件�
 ## [离线数仓/实时数仓](10.big-data/offline-or-real-time-data-warehouse/README.md)
 
 # 十一、AI
+## [大模型落地分层技术体系](11.ai/hierarchical/README.md)
 ## [prompt模板](11.ai/prompt/README.md)
 ### [grok系统prompt](11.ai/prompt/grok-system-prompt/README.md)
 ## 工具
