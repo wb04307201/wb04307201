@@ -176,7 +176,7 @@ SOA（Service-Oriented Architecture，面向服务的架构） 是一种软件�
 ## [Spring AOP 深度解析](06.spring/aop/README.md)
 ## [Spring 自带24个工具类](06.spring/tools/README.md)
 ## [Spring Cache](06.spring/spring-cache/README.md)
-### 通过`CacheManager`接口扩展[多级缓存注解](https://gitee.com/wb04307201/multi-level-cache-spring-boot-starter)
+### [通过`CacheManager`接口扩展多级缓存注解](https://gitee.com/wb04307201/multi-level-cache-spring-boot-starter)
 ## [Spring Retry](06.spring/spring-retry/README.md)
 ## [Spring Batch](06.spring/spring-batch/README.md)
 ## [Spring Boot Actuator](06.spring/Spring-boot-actuator/README.md)
