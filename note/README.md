@@ -218,3 +218,6 @@ SOA（Service-Oriented Architecture，面向服务的架构） 是一种软件�
 # 十一、AI
 ## [prompt模板](11.ai/prompt/README.md)
 ### [grok系统prompt](11.ai/prompt/grok-system-prompt/README.md)
+## 工具
+#### [Ollama](11.ai/tools/ollama/README.md)
+### [AI平台与工具对比选购指南](11.ai/tools/comparison/README.md)
