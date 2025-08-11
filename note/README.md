@@ -141,6 +141,7 @@ SOA（Service-Oriented Architecture，面向服务的架构） 是一种软件�
 ### [ULID](04.system-design/idempotency-design/ulid/README.md)
 ### [UUID v7](04.system-design/idempotency-design/uuid-v7/README.md)
 ## 安全
+### [为什么 `localStorage` 存储 JWT 是危险的？](04.system-design/security/jwt-localStorage/README.md)
 ### 认证授权
 #### 认证授权基础概念详解
 #### JWT 基础概念详解
@@ -179,6 +180,7 @@ SOA（Service-Oriented Architecture，面向服务的架构） 是一种软件�
 ## [Spring Batch](06.spring/spring-batch/README.md)
 ## [Spring Boot Actuator](06.spring/Spring-boot-actuator/README.md)
 ## [Spring Boot启动后执行](06.spring/start/README.md)
+## [spring.factories](06.spring/spring-factories/README.md)
 ## [Spring Boot 响应式 SSE](06.spring/reactor-sse/README.md)
 ## [Spring Cloud 微服务架构笔记](06.spring/cloud/README.md)
 ### [服务注册与发现中心对比](06.spring/cloud/service-registry/README.md)
