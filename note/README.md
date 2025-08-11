@@ -8,7 +8,7 @@
 ## 4. [并发](01.java%2Fconcurrency%2FREADME.md)
 ### 4.1 [乐观锁和悲观锁](01.java%2Fconcurrency%2Flock%2FREADME.md)
 ### 4.2 [并发和锁的代码示例](01.java%2Fconcurrency%2Fmulti-thread-demo%2FREADME.md)
-### [一个注解@Locking搞定锁](https://gitee.com/wb04307201/lock-spring-boot-starter)
+### 4.3 [一个注解@Locking搞定锁](https://gitee.com/wb04307201/lock-spring-boot-starter)
 ## 5. JVM虚拟机
 ### 5.1. [JVM内存区域](01.java%2Fjvm%2Fjvm-memory-areas%2FREADME.md)
 ### 5.2. [垃圾回收](01.java%2Fjvm%2Fgarbage-collection%2FREADME.md)
