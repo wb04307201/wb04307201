@@ -1,4 +1,4 @@
-# Spring Batch 学习笔记
+# Spring Batch 批处理
 
 ## 一、Spring Batch 概述
 Spring Batch 是 Spring 生态系统中专门为批处理设计的轻量级框架，适用于数据迁移、ETL（Extract-Transform-Load）、定时报表生成等场景。其核心设计理念是通过分层架构实现高内聚低耦合，支持从单线程到分布式的大规模数据处理。

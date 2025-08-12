@@ -1,4 +1,4 @@
-# spring.factories
+# Spring Boot 3 中spring.factories 机制移除
 
 在 Spring Boot 3.0 中，`spring.factories` 文件被彻底移除，取而代之的是新的 `META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports` 机制。这一变革旨在优化启动性能、简化配置管理，并适应现代 Java 生态的需求。以下是关键变化与迁移策略的详细分析：
 

@@ -87,6 +87,7 @@ public class RedisAutoConfiguration {
 ```
 
 #### **4. 声明自动配置入口**
+注意：`spring.factories`在 Spring Boot 3 中完全移除，替代为`META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports`
 在`src/main/resources/META-INF/spring.factories`中指定自动配置类：
 ```
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\

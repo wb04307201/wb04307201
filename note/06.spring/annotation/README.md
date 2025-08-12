@@ -360,6 +360,18 @@ public class AppConfig {
     //具有业务方法
 }
 ```
+### @AutoConfiguration
+> `@AutoConfiguration`是 Spring Boot 2.7+ 引入的专用注解，用于明确标识自动配置类，替代旧版通过 META-INF/spring.factories 文件注册的方式。
+
+与 `@Configuration` 的区别
+
+| **特性**    | **`@AutoConfiguration`**                                                                   | **`@Configuration`**                  |
+|-----------|--------------------------------------------------------------------------------------------|---------------------------------------|
+| **用途**    | 专为自动配置设计，标记自动配置类入口                                                                         | 通用配置类，用于手动定义 Bean 或导入配置               |
+| **条件化支持** | 强制要求（通常与 `@Conditional` 注解结合）                                                              | 可选，需手动添加条件注解                          |
+| **代理模式**  | 默认 `proxyBeanMethods = false`（优化性能）                                                        | 默认 `proxyBeanMethods = true`（保证单例）    |
+| **注册方式**  | 通过 `META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports` 文件注册 | 旧版通过 `@ComponentScan` 扫描或手动 `@Import` |
+
 ### @ComponentScan
 > 标注哪些路径下的类需要被`Spring`扫描，用于自动发现和装配一些`Bean`对象，默认配置是扫描当前文件夹下和子目录下的所有类，如果我们想指定扫描某些包路径，可以这样处理。
 ```java
@@ -378,18 +390,6 @@ public class PropertyApplication {
 }
 ```
 > 把`@SpringBootApplication`换成`@Configuration`、`@EnableAutoConfiguration`、`@ComponentScan`这三个注解，一样可以启动成功，`@SpringBootApplication`只是将这三个注解进行了简化！
-### @EnableTransactionManagement
-> 表示开启事务支持，等同于 xml 配置方式的<tx:annotation-driven />
-```java
-@SpringBootApplication
-@EnableTransactionManagement
-public class PropertyApplication {
-
-    public static void main(String[] args) {
-        SpringApplication.run(PropertyApplication.class, args);
-    }
-}
-```
 ### @Conditional
 > 从`Spring4`开始，可以通过`@Conditional`注解实现按条件装载`bean`对象，目前`Spring Boot`源码中大量扩展了`@Condition`注解，用于实现智能的自动化配置，满足各种使用场景。下面我给大家列举几个常用的注解：
 > - **`@ConditionalOnBean`**：当某个特定的Bean存在时，配置生效
