@@ -201,6 +201,7 @@ SOA（Service-Oriented Architecture，面向服务的架构） 是一种软件�
 ## [Mybatis-Plus](08.mybatis/mybatis-plus/README.md)
 ### [MyBatis-Plus Generator ：自动生成代码的利器](08.mybatis/mybatis-plus/generator/README.md)
 ### [条件构造器Wrapper](08.mybatis/mybatis-plus/Wrapper/README.md)
+### [LambdaQueryWrapper 中的序列化函数式接口 SFunction](08.mybatis/mybatis-plus/Wrapper/lambdaQueryWrapper-function/README.md)
 
 # 九、其他
 ## [常用系统](09.other%2Fcommon-systems%2FREADME.md)
