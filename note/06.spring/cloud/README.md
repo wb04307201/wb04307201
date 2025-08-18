@@ -1,4 +1,4 @@
-# Spring Cloud 微服务架构笔记
+# Spring Cloud 微服务架构
 
 ## 一、Spring Cloud 概述
 Spring Cloud 是基于 Spring Boot 实现的微服务架构开发工具集，提供服务发现、配置管理、断路器、智能路由等核心功能。
