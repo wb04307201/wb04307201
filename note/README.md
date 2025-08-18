@@ -162,6 +162,7 @@ SOA（Service-Oriented Architecture，面向服务的架构） 是一种软件�
 ### [分支版本管理](05.tools%2Fgit%2Fversion-controller%2FREADME.md)
 ## [Docker](05.tools%2Fdocker%2FREADME.md)
 ## [Nginx](05.tools%2Fnginx%2FREADME.md)
+### [Pingora](05.tools/nginx/pingora/README.md)
 ## [Monorepo](05.tools%2Fmonorepo%2FREADME.md)
 ## [阿里微服务](05.tools%2Fali-microservices%2FREADME.md)
 ## Java
