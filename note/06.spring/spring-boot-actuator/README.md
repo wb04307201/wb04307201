@@ -29,7 +29,8 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info,metrics,prometheus  # 显式暴露核心端点
+        #include: health,info,metrics,prometheus  # 显式暴露核心端点
+        include: *   # 暴露全部端点
         base-path: /manage  # 自定义访问路径
   endpoint:
     health:
@@ -39,13 +40,15 @@ management:
 ```
 
 ### 3. 关键端点详解
-| 端点      | 路径                  | 功能描述                                          |
-|---------|---------------------|-----------------------------------------------|
-| Health  | `/actuator/health`  | 聚合数据库、消息队列等依赖组件的健康状态，支持自定义健康检查器               |
-| Metrics | `/actuator/metrics` | 提供 JVM 内存、线程池、HTTP 请求等分层指标，支持 Prometheus 格式导出 |
-| Loggers | `/actuator/loggers` | 动态修改日志级别（如将 `com.example` 包级别调整为 DEBUG）       |
-| Env     | `/actuator/env`     | 查看当前生效的环境变量和配置属性，辅助排查配置加载问题                   |
-| Beans   | `/actuator/beans`   | 展示 Spring 容器中所有 Bean 的依赖关系图，用于分析组件耦合度         |
+| 端点         | 路径                     | 功能描述                                          |
+|------------|------------------------|-----------------------------------------------|
+| Health     | `/actuator/health`     | 聚合数据库、消息队列等依赖组件的健康状态，支持自定义健康检查器               |
+| Info       | `/actuator/info`       | 用于暴露应用的元信息（Metadata）                          |
+| Metrics    | `/actuator/metrics`    | 提供 JVM 内存、线程池、HTTP 请求等分层指标，支持 Prometheus 格式导出 |
+| Loggers    | `/actuator/loggers`    | 动态修改日志级别（如将 `com.example` 包级别调整为 DEBUG）       |
+| Env        | `/actuator/env`        | 查看当前生效的环境变量和配置属性，辅助排查配置加载问题                   |
+| Beans      | `/actuator/beans`      | 展示 Spring 容器中所有 Bean 的依赖关系图，用于分析组件耦合度         |
+| Prometheus | `/actuator/prometheus` | 展用于以 Prometheus 格式暴露应用的监控指标                   |
 
 ### 4. 自定义端点开发
 过代码暴露的HTTP或JMX接口，用于返回结构化数据或执行管理操作。
@@ -203,28 +206,44 @@ public void recordRequestSize(long size) {
 
 ### **3.通过Actuator端点查看指标**
 #### 1. 通过Actuator端点
-访问`/actuator/metrics/<指标名>`：
+访问`/actuator/metrics`，返回类似以下JSON，列出所有可用的指标名称：
+```json
+{
+  "names": [
+    "jvm.memory.used",
+    "http.server.requests"
+  ]
+}
+```
+访问`/actuator/metrics/<指标名>`获取具体指标数据：
 ```bash
-curl http://localhost:8080/actuator/metrics/orders.created.total
+curl http://localhost:8080/actuator/metrics/jvm.memory.used
 ```
 **响应示例**：
 ```json
 {
-  "name": "orders.created.total",
+  "name": "jvm.memory.used",
+  "description": "The amount of used memory",
+  "baseUnit": "bytes",
   "measurements": [
     {
-      "statistic": "COUNT",
-      "value": 42.0
+      "statistic": "VALUE",
+      "value": 1.23456789E8  // Example value (in bytes)
     }
   ],
   "availableTags": [
     {
-      "tag": "region",
-      "values": ["us-east-1", "eu-west-1"]
+      "tag": "area",
+      "values": ["heap", "nonheap"]
+    },
+    {
+      "tag": "id",
+      "values": ["G1 Old Gen", "G1 Survivor Space", "Code Cache", "Metaspace"]
     }
   ]
 }
 ```
+访问`/actuator/metrics/custom.order.processed.count?tag=status:success`：筛选标签为status=success的订单处理计数
 
 ## **4.完整示例**
 ```java
@@ -264,6 +283,40 @@ public class OrderService {
         } finally {
             sample.stop(meterRegistry.timer("orders.processing.time"));
         }
+    }
+}
+```
+
+## **自定义Actuator端点展示micrometer手机的指标示例**
+```java
+import io.micrometer.core.instrument.MeterRegistry;
+import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
+import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
+import org.springframework.stereotype.Component;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@Component
+@Endpoint(id = "custommetrics")  // 端点路径为/actuator/custommetrics
+public class CustomMetricsEndpoint {
+
+    private final MeterRegistry meterRegistry;
+
+    public CustomMetricsEndpoint(MeterRegistry meterRegistry) {
+        this.meterRegistry = meterRegistry;
+    }
+
+    @ReadOperation
+    public Map<String, Object> getCustomMetrics() {
+        Map<String, Object> metrics = new HashMap<>();
+        // 示例1：直接获取Micrometer指标值
+        double orderCount = meterRegistry.get("custom.order.processed.count").gauge().value();
+        metrics.put("totalOrders", orderCount);
+
+        // 示例2：聚合多个指标或添加业务逻辑
+        metrics.put("status", "healthy");
+        return metrics;
     }
 }
 ```
