@@ -64,9 +64,7 @@
 ##### [缓存与数据库一致性](03.database%2Fbase%2Fnosql%2Fkey-value%2Fcache%2Fconsistency-between-cache-and-database%2FREADME.md)
 ##### [缓存稳定性的3种经典问题](03.database%2Fbase%2Fnosql%2Fkey-value%2Fcache%2Fcache-stability%2FREADME.md)
 ##### [基于 ConcurrentHashMap 的高性能缓存实现](https://gitee.com/wb04307201/CHMCache)
-- 过期机制实现
-- LRU淘汰机制实现
-- 统计监控机制实现
+> 一个基于 `ConcurrentHashMap` 和 LRU 策略的高性能缓存实现，支持自动过期、大小限制、LRU 淘汰和后台清理等特性。
 ### [Redis](03.database%2Fbase%2Fnosql%2Fkey-value%2Fredis%2FREADME.md)
 
 ## [关系型数据库和NoSQL数据库的区别](03.database%2Fbase%2Fdatabase-vs-nosql%2FREADME.md)
@@ -186,6 +184,8 @@ SOA（Service-Oriented Architecture，面向服务的架构） 是一种软件�
 ## [Spring Retry 自动重试](06.spring/spring-retry/README.md)
 ## [Spring Batch 批处理](06.spring/spring-batch/README.md)
 ## [Spring Boot Actuator 监控，Actuator + Prometheus + Grafana 监控体系整合方案](06.spring/spring-boot-actuator/README.md)
+### [Method Trace Log - 方法调用追踪和监控](https://gitee.com/wb04307201/methodTraceLog)
+> 一个基于Spring AOP和Micrometer的Java方法调用追踪和监控工具，用于记录方法执行的全链路日志和性能指标。
 ## [Spring Boot启动后执行](06.spring/start/README.md)
 ## [何创建自己的 Starter 模块](06.spring/spring-boot-starter/README.md)
 ### [Spring Boot 3 中spring.factories 机制移除](06.spring/spring-boot-starter/spring-factories/README.md)
