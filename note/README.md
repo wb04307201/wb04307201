@@ -90,11 +90,23 @@ SOA（Service-Oriented Architecture，面向服务的架构） 是一种软件�
 
 ## 分布式
 分布式通常指的是一种计算或数据处理的方式，其中任务、数据或资源被分散在多个节点（如计算机、服务器或计算设备）上进行处理。这种分布式的处理方式可以提高系统的整体性能、可靠性、可扩展性和容错性。在分布式系统中，各个节点通过网络进行通信和协作，以实现共同的目标。
-### [理论&算法&协议](04.system-design%2Fdistributed%2Ftheory-algorithm-protocol%2FREADME.md)
+### 分布式理论&算法&协议
+#### [CAP](04.system-design/distributed/theory-algorithm-protocol/cap/README.md)
+#### [BASE](04.system-design/distributed/theory-algorithm-protocol/base/README.md)
+#### [Paxos算法](04.system-design/distributed/theory-algorithm-protocol/paxos/README.md)
+#### [Raft算法](04.system-design/distributed/theory-algorithm-protocol/raft/README.md)
+#### [Gossip协议](04.system-design/distributed/theory-algorithm-protocol/gossip/README.md)
 ### [RPC](04.system-design%2Fdistributed%2Frpc%2FREADME.md)
 #### [Apache Dubbo](04.system-design%2Fdistributed%2Frpc%2Fapache-dubbo%2FREADME.md)
-### [分布式锁](https://gitee.com/wb04307201/lock-spring-boot-starter)
+### [分布式ID](04.system-design/distributed/distributed-id/README.md)
+#### [UUID](04.system-design/distributed/distributed-id/uuid/README.md)
+#### [ULID](04.system-design/distributed/distributed-id/ulid/README.md)
+#### [UUID v7](04.system-design/distributed/distributed-id/uuid-v7/README.md)
+### [分布式锁](04.system-design/distributed/distributed-lock/README.md)
+#### [Flexible Lock - 灵锁](https://gitee.com/wb04307201/flexible-lock)
+> 一个基于Spring Boot的锁starter，提供了统一的锁接口和多种实现方式，包括Redis单点、Redis集群、Redis哨兵、Zookeeper和本地锁。通过简单的配置即可在项目中使用锁功能。
 ### [分布式事务](04.system-design%2Fdistributed%2Fdistributed-transaction%2FREADME.md)
+### [API网关](04.system-design/distributed/api-gatewway/README.md)
 
 ## 高性能
 高性能指的是系统或应用在处理任务、数据或请求时表现出的高效性和快速性。高性能系统通常具有强大的计算能力、快速的响应时间和高效的数据处理能力。为了实现高性能，系统可能需要采用先进的硬件技术、优化的软件算法、高效的存储和传输技术等手段。
@@ -141,9 +153,7 @@ SOA（Service-Oriented Architecture，面向服务的架构） 是一种软件�
 ### [灾备设计和异地多活](04.system-design/high-availability/disaster-recovery-and-multi-region-active-active/README.md)
 ### [弹性架构](04.system-design/high-availability/elastic-architecture/README.md)
 ## [幂等性设计](04.system-design/idempotency-design/README.md)
-### [UUID](04.system-design/idempotency-design/uuid/README.md)
-### [ULID](04.system-design/idempotency-design/ulid/README.md)
-### [UUID v7](04.system-design/idempotency-design/uuid-v7/README.md)
+
 ## 安全
 ### [为什么 `localStorage` 存储 JWT 是危险的？](04.system-design/security/jwt-localStorage/README.md)
 ### 认证授权
