@@ -130,7 +130,7 @@ SOA（Service-Oriented Architecture，面向服务的架构） 是一种软件�
 - 阿里巴巴 Java 代码规范（Alibaba Java Code Guidelines）；
 - IDEA 自带的代码分析等工具。
 ### [冗余设计/集群](04.system-design/high-availability/redundancy-design-or-cluter/README.md)
-### [限流](04.system-design/high-availability/throttling/README.md)
+### [限流](04.system-design/high-availability/rate-limiting/README.md)
 ### 降级&熔断
 #### [降级](04.system-design/high-availability/degrade-and-circuit-break/degrade/README.md)
 #### [熔断](04.system-design/high-availability/degrade-and-circuit-break/circuit-break/README.md)
