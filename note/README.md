@@ -120,7 +120,7 @@ SOA（Service-Oriented Architecture，面向服务的架构） 是一种软件�
 ### [CDN](04.system-design/high-performance/cdn/README.md)
 ### [消息队列](04.system-design%2Fhigh-performance%2FMQ%2FREADME.md)
 
-## [高可用](04.system-design%2Fhigh-availability%2FREADME.md)
+## [高可用-分布式系统中常用的容错策略](04.system-design%2Fhigh-availability%2FREADME.md)
 ### 代码质量
 注重代码质量，测试严格把关
 
@@ -129,29 +129,18 @@ SOA（Service-Oriented Architecture，面向服务的架构） 是一种软件�
 - Alibaba 开源的 Java 诊断工具 Arthas；
 - 阿里巴巴 Java 代码规范（Alibaba Java Code Guidelines）；
 - IDEA 自带的代码分析等工具。
-### [冗余设计/集群](04.system-design/high-availability/redundancy-design-or-cluter/README.md)
-### 分布式系统中常用的容错策略
-#### [限流](04.system-design/high-availability/fault-tolerance/rate-limiting/README.md)
-#### [降级](04.system-design/high-availability/fault-tolerance/service-degradation/README.md)
-#### [熔断](04.system-design/high-availability/fault-tolerance/circuit-break/README.md)
-#### 熔断与降级的区别
-降级的⽬的在于应对系统⾃身的故障，⽽熔断的⽬的在于应对当前系统依赖的外部系统或者第三⽅系统的故障。
-
-| **特性**   | **熔断**      | **降级**             |
-|----------|-------------|--------------------|
-| **触发时机** | 依赖服务故障或超时   | 系统整体压力过大（如CPU、内存高） |
-| **行为**   | 主动切断调用，快速失败 | 关闭非核心功能，释放资源       |
-| **恢复方式** | 半开状态试探性恢复   | 人工或自动恢复核心功能        |
-| **目标**   | 防止故障扩散      | 保证系统可用性            |
-
-**示例**：
-- **熔断**：订单服务调用支付服务失败率过高时，直接返回“支付系统繁忙”。
-- **降级**：电商大促时，关闭商品评论、历史订单查询等非核心功能。
+### 限流&降级&熔断
+#### [限流](04.system-design/high-availability/rate-limiting/README.md)
+#### [降级](04.system-design/high-availability/service-degradation/README.md)
+#### [熔断](04.system-design/high-availability/circuit-break/README.md)
 ### 超时&重试
-#### [超时](04.system-design/high-availability/timeout-and-retry/timeout/README.md)
-#### [重试](04.system-design/high-availability/timeout-and-retry/retry/README.md)
-### [灾备设计和异地多活](04.system-design/high-availability/disaster-recovery-and-multi-region-active-active/README.md)
+#### [超时](04.system-design/high-availability/timeout/README.md)
+#### [重试](04.system-design/high-availability/retry/README.md)
+### [冗余设计](04.system-design/high-availability/redundancy-design/README.md)
+#### [异地多活](04.system-design/high-availability/redundancy-design/multi-site-active-active/README.md)
+#### [集群](04.system-design/high-availability/redundancy-design/cluter/README.md)
 ### [弹性架构](04.system-design/high-availability/elastic-architecture/README.md)
+
 ## [幂等性设计](04.system-design/idempotency-design/README.md)
 
 ## 安全
