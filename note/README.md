@@ -130,10 +130,12 @@ SOA（Service-Oriented Architecture，面向服务的架构） 是一种软件�
 - 阿里巴巴 Java 代码规范（Alibaba Java Code Guidelines）；
 - IDEA 自带的代码分析等工具。
 ### [冗余设计/集群](04.system-design/high-availability/redundancy-design-or-cluter/README.md)
-### [限流](04.system-design/high-availability/rate-limiting/README.md)
-### 降级&熔断
+### 分布式系统中常用的容错策略
+#### [限流](04.system-design/high-availability/Fault%20tolerance/rate-limiting/README.md)
+#### [降级](04.system-design/high-availability/Fault%20tolerance/service-degradation/README.md)
+#### [熔断](04.system-design/high-availability/Fault%20tolerance/circuit-break/README.md)
 #### [降级](04.system-design/high-availability/degrade-and-circuit-break/degrade/README.md)
-#### [熔断](04.system-design/high-availability/degrade-and-circuit-break/circuit-break/README.md)
+#### [熔断](04.system-design/high-availability/Fault%20tolerance/circuit-break/README.md)
 #### 熔断与降级的区别
 降级的⽬的在于应对系统⾃身的故障，⽽熔断的⽬的在于应对当前系统依赖的外部系统或者第三⽅系统的故障。
 
