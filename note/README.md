@@ -131,6 +131,7 @@ SOA（Service-Oriented Architecture，面向服务的架构） 是一种软件�
 - IDEA 自带的代码分析等工具。
 ### 限流&降级&熔断
 #### [限流](04.system-design/high-availability/rate-limiting/README.md)
+##### [Rate Limiter - 限流器](https://gitee.com/wb04307201/rate-limiter)
 #### [降级](04.system-design/high-availability/service-degradation/README.md)
 #### [熔断](04.system-design/high-availability/circuit-break/README.md)
 ### 超时&重试
