@@ -121,6 +121,7 @@ SOA（Service-Oriented Architecture，面向服务的架构） 是一种软件�
 ### [消息队列](04.system-design%2Fhigh-performance%2FMQ%2FREADME.md)
 #### [JMS 和 AMQP](04.system-design/high-performance/MQ/jms-and-amqp/README.md)
 #### [消息队列和RPC的区别](04.system-design/high-performance/MQ/mq-vs-rpc/README.md)
+#### [MQ消息积压](04.system-design/high-performance/MQ/mq-backlog/README.md)
 
 ## [高可用-分布式系统中常用的容错策略](04.system-design%2Fhigh-availability%2FREADME.md)
 ### 代码质量
