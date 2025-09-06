@@ -124,14 +124,7 @@ SOA（Service-Oriented Architecture，面向服务的架构） 是一种软件�
 #### [MQ消息积压](04.system-design/high-performance/MQ/mq-backlog/README.md)
 
 ## [高可用-分布式系统中常用的容错策略](04.system-design%2Fhigh-availability%2FREADME.md)
-### 代码质量
-注重代码质量，测试严格把关
-
-提高代码质量的工具：
-- Sonarqube；
-- Alibaba 开源的 Java 诊断工具 Arthas；
-- 阿里巴巴 Java 代码规范（Alibaba Java Code Guidelines）；
-- IDEA 自带的代码分析等工具。
+### [代码质量](04.system-design/high-availability/code-quality/README.md)
 ### 限流&降级&熔断
 #### [限流](04.system-design/high-availability/rate-limiting/README.md)
 ##### [Rate Limiter - 限流器](https://gitee.com/wb04307201/rate-limiter)
