@@ -329,13 +329,14 @@ System.out.println("Set: " + result.getSecond());
 
 ## 变更历史
 
-| 版本      | 描述                                                    |
-|---------|-------------------------------------------------------|
-| java8   | JEP 107: Stream API：Java 8 新特性—Stream API 对元素流进行函数式操作 |
-| java9   | Stream API 增强：Java 9 新特性—Stream API的增强                |
-| java10  | Stream API 增强                                         |
-| javava2 | JEP 461：流收集器（预览）这个改进使得 Stream API 可以支持自定义中间操作。        |
-| java23  | JEP 473:流收集器(第二次预览)                                   |
+| 版本     | 描述                                                    |
+|--------|-------------------------------------------------------|
+| java8  | JEP 107: Stream API：Java 8 新特性—Stream API 对元素流进行函数式操作 |
+| java9  | Stream API 增强：Java 9 新特性—Stream API的增强                |
+| java10 | Stream API 增强                                         |
+| java16 | Stream API 增强                                         |
+| java22 | JEP 461：流收集器（预览）这个改进使得 Stream API 可以支持自定义中间操作。        |
+| java23 | JEP 473:流收集器(第二次预览)                                   |
 
 
 
