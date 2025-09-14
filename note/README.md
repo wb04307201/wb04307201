@@ -7,6 +7,7 @@
 ### 2.1. [ConcurrentHashMap](01.java/collection/ConcurrentHashMap/README.md)
 ### 2.2. [WeakHashMap](01.java/collection/WeakHashMap/README.md)
 ### 2.3. [TreeMap](01.java/collection/TreeMap/README.md)
+### 2.4. [ArrayList去重](01.java/collection/ConcurrentHashMap/README.md)
 ## 3. [I/O](01.java%2Fio%2FREADME.md)
 ### 3.1. [零拷贝](01.java%2Fio%2Fzero-copy%2FREADME.md)
 ## 4. [并发](01.java%2Fconcurrency%2FREADME.md)
