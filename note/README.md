@@ -60,11 +60,11 @@
 #### [查询SQL执行顺序](03.database%2Fbase%2Frelational-database%2Fsql-excute-order%2FREADME.md)
 ### [事务处理](03.database%2Fbase%2Frelational-database%2Ftransaction-processing%2FREADME.md)
 #### 并发事务的控制方式
-##### [数据库锁](03.database%2Fbase%2Frelational-database%2Ftransaction-processing%2Flock%2FREADME.md)
-##### [MVCC](03.database%2Fbase%2Frelational-database%2Ftransaction-processing%2Fmvcc%2FREADME.md)
+##### [数据库锁类型详解](03.database%2Fbase%2Frelational-database%2Ftransaction-processing%2Flock%2FREADME.md)
+##### [数据库多版本并发控制详解](03.database%2Fbase%2Frelational-database%2Ftransaction-processing%2Fmvcc%2FREADME.md)
 ##### [锁与MVCC的关系](03.database%2Fbase%2Frelational-database%2Ftransaction-processing%2Flock-vs-mvcc%2FREADME.md)
 ### [MySQL](03.database%2Fbase%2Frelational-database%2Fmysql%2FREADME.md)
-
+#### [MySQL锁类型详解](03.database/base/relational-database/mysql/lock/README.md)
 ## [NoSQL数据库](03.database%2Fbase%2Fnosql%2FREADME.md)
 ### 键值存储数据库
 #### [缓存](03.database%2Fbase%2Fnosql%2Fkey-value%2Fcache%2FREADME.md)
