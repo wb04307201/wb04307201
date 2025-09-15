@@ -7,7 +7,6 @@
 ### 2.1. [ConcurrentHashMap](01.java/collection/ConcurrentHashMap/README.md)
 ### 2.2. [WeakHashMap](01.java/collection/WeakHashMap/README.md)
 ### 2.3. [TreeMap](01.java/collection/TreeMap/README.md)
-### 2.4. [ArrayList去重](01.java/collection/ConcurrentHashMap/README.md)
 ## 3. [I/O](01.java%2Fio%2FREADME.md)
 ### 3.1. [零拷贝](01.java%2Fio%2Fzero-copy%2FREADME.md)
 ## 4. [并发](01.java%2Fconcurrency%2FREADME.md)
@@ -48,6 +47,9 @@
 ### 6.17. [Java 24](01.java/version/java-24/README.md)
 ## 7. [Java Agent](01.java%2Fjava-agent%2FREADME.md)
 ### 7.1. [统计API接口调用耗时](01.java/java-agent/api/README.md)
+## 8. [性能优化](01.java/performance-optimization/README.md)
+## 8.1. [`switch`前使用`if`针对高频热点状态的优化](01.java/performance-optimization/if%20-before-switch/README.md)
+### 8.2. [ArrayList去重](01.java/performance-optimization/arrayList-distinct/README.md)
 
 # 二、计算机基础
 ## 1. [服务器性能指标](02.computer-basics%2Fserver-performance-metrics%2FREADME.md)
