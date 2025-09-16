@@ -237,6 +237,7 @@ SOA（Service-Oriented Architecture，面向服务的架构） 是一种软件�
 ## [大模型与算力](11.ai/llm-and-computing/README.md)
 ## [大模型落地分层技术体系](11.ai/hierarchical/README.md)
 ## [嵌入与向量化的区别](11.ai/Embedding-vs-vectorization/README.md)
+## [大模型的问题降维以提升回答准确性](11.ai/dimensionality-reduction/README.md)
 ## [prompt模板](11.ai/prompt/README.md)
 ### [grok系统prompt](11.ai/prompt/grok-system-prompt/README.md)
 ## 工具
