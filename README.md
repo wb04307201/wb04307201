@@ -18,9 +18,4 @@
 13. Mybatis API - 通用 API 接口 [![star](https://gitee.com/wb04307201/mybatis-api/badge/star.svg?theme=dark)](https://gitee.com/wb04307201/mybatis-api) [![fork](https://gitee.com/wb04307201/mybatis-api/badge/fork.svg?theme=dark)](https://gitee.com/wb04307201/mybatis-api) [![star](https://img.shields.io/github/stars/wb04307201/mybatis-api)](https://github.com/wb04307201/mybatis-api) [![fork](https://img.shields.io/github/forks/wb04307201/mybatis-api)](https://github.com/wb04307201/mybatis-api)
 14. CHMCache - 基于 ConcurrentHashMap 的高性能缓存实现 [![star](https://gitee.com/wb04307201/CHMCache/badge/star.svg?theme=dark)](https://gitee.com/wb04307201/CHMCache) [![fork](https://gitee.com/wb04307201/CHMCache/badge/fork.svg?theme=dark)](https://gitee.com/wb04307201/CHMCache)
 15. OneTable AI - 一键生成单表维护界面 [![star](https://gitee.com/wb04307201/one-table-ai/badge/star.svg?theme=dark)](https://gitee.com/wb04307201/one-table-ai) [![fork](https://gitee.com/wb04307201/one-table-ai/badge/fork.svg?theme=dark)](https://gitee.com/wb04307201/one-table-ai)
-
-<h1 align="left">
-	<a href="/note/README.md">
-		<img src="https://readme-typing-svg.herokuapp.com/?font=Fira+Code&lines=%E6%88%91%E7%9A%84%E7%AC%94%E8%AE%B0;%E7%AC%94%E8%AE%B0-java;%E7%AC%94%E8%AE%B0-%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80;%E7%AC%94%E8%AE%B0-%E6%95%B0%E6%8D%AE%E5%BA%93;%E7%AC%94%E8%AE%B0-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1;%E7%AC%94%E8%AE%B0-%E5%B7%A5%E5%85%B7;%E7%AC%94%E8%AE%B0-Spring;%E7%AC%94%E8%AE%B0-%E6%B5%81%E7%A8%8B%E5%BC%95%E6%93%8E;%E7%AC%94%E8%AE%B0-Mybatis;%E7%AC%94%E8%AE%B0-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%AE%9E%E4%BE%8B">
-	</a>
-</h1>
+16. [我的笔记](note)
