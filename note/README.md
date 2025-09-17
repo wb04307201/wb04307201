@@ -54,6 +54,8 @@
 ### 6.18. [Java 25（LTS）](01.java/version/java-25/README.md)
 ## 7. [Java Agent](01.java%2Fjava-agent%2FREADME.md)
 ### 7.1. [统计API接口调用耗时](01.java/java-agent/api/README.md)
+## 8. 咬文嚼字
+### 8.1. [创建对象](01.java/split-hairs/create-object/README.md)
 
 # 二、计算机基础
 ## 1. [服务器性能指标](02.computer-basics%2Fserver-performance-metrics%2FREADME.md)
@@ -87,22 +89,21 @@
 
 # 四、系统设计
 ## 基础
-### [软件工程](04.system-design%2Fbase%2Fsoftware-engineering%2FREADME.md)
-### [设计与建模](04.system-design%2Fbase%2Fdesign-and-modeling%2FREADME.md)
-### [软件架构设计](04.system-design%2Fbase%2Fsoftware-architecture-design%2FREADME.md)
-#### [领域驱动设计](04.system-design%2Fbase%2Fsoftware-architecture-design%2Fddd%2FREADME.md)
-#### 架构图的分类
-##### [“4+1”视图](04.system-design%2Fbase%2Fsoftware-architecture-design%2Farchitecture-diagram%2F4%2B1%2FREADME.md)
-##### [C4 模型](04.system-design%2Fbase%2Fsoftware-architecture-design%2Farchitecture-diagram%2Fc4-model%2FREADME.md)
-### [软件架构的风格](04.system-design%2Fbase%2Fsoftware-architecture-design%2Fstyles-of-software-architecture%2FREADME.md)
-### [层次架构](04.system-design%2Fbase%2Fhierarchical-architecture%2FREADME.md)
-### SOA
-SOA（Service-Oriented Architecture，面向服务的架构） 是一种软件设计和开发架构风格，其核心思想是将应用程序的不同功能模块拆分为独立、可复用的服务，并通过标准化的接口和协议进行通信，从而实现系统的灵活性、可扩展性和互操作性。
-### [微服务部署架构](04.system-design%2Fbase%2Fmicroservice-deployment-architecture%2FREADME.md)
-### [微服务与SOA对比](04.system-design/base/microservice-vs-soa/README.md)
-### MDA（Model-Driven Architecture，模型驱动架构）
-### ADL（Architecture Description Language，架构描述语言）
-### DSSA（Domain-Specific Software Architecture，特定领域软件架构）
+### [软件工程](04.system-design/base/software-engineering/README.md)
+#### [软件开发的流程与方法](04.system-design/base/software-engineering/development-process-and-methodologies/README.md)
+##### [系统设计](04.system-design/base/software-engineering/development-process-and-methodologies/system-design/README.md)
+###### [GoF设计模式/23种设计模式](04.system-design/base/software-engineering/development-process-and-methodologies/system-design/gang-of-four/README.md)
+###### 架构图
+1. [“4+1”视图](04.system-design/base/software-engineering/development-process-and-methodologies/system-design/architecture-diagram/4%2B1/README.md)
+2. [C4 模型](04.system-design/base/software-engineering/development-process-and-methodologies/system-design/architecture-diagram/c4-model/README.md)
+###### [领域驱动设计](04.system-design/base/software-engineering/development-process-and-methodologies/system-design/ddd/README.md)
+###### [微服务模式](04.system-design/base/software-engineering/development-process-and-methodologies/system-design/microservices/README.md)
+###### [微服务模式与领域驱动设计（DDD）](04.system-design/base/software-engineering/development-process-and-methodologies/system-design/microservices-and-ddd/README.md)
+###### [事件驱动模式与异步处理模式](04.system-design/base/software-engineering/development-process-and-methodologies/system-design/eda-vs-async/README.md)
+###### [部署](04.system-design/base/software-engineering/development-process-and-methodologies/system-design/deploy/README.md)
+#### [工具与模型](04.system-design/base/software-engineering/tools-and-models/README.md)
+#### [质量保障体系](04.system-design/base/software-engineering/quality-assurance-system/README.md)
+### [技术债](04.system-design/base/technical-debt/README.md)
 
 ## 分布式
 分布式通常指的是一种计算或数据处理的方式，其中任务、数据或资源被分散在多个节点（如计算机、服务器或计算设备）上进行处理。这种分布式的处理方式可以提高系统的整体性能、可靠性、可扩展性和容错性。在分布式系统中，各个节点通过网络进行通信和协作，以实现共同的目标。
