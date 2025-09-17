@@ -54,9 +54,6 @@
 ### 6.18. [Java 25（LTS）](01.java/version/java-25/README.md)
 ## 7. [Java Agent](01.java%2Fjava-agent%2FREADME.md)
 ### 7.1. [统计API接口调用耗时](01.java/java-agent/api/README.md)
-## 8. [性能优化](01.java/performance-optimization/README.md)
-## 8.1. [`switch`前使用`if`针对高频热点状态的优化](01.java/performance-optimization/if%20-before-switch/README.md)
-### 8.2. [ArrayList去重](01.java/performance-optimization/arrayList-distinct/README.md)
 
 # 二、计算机基础
 ## 1. [服务器性能指标](02.computer-basics%2Fserver-performance-metrics%2FREADME.md)
@@ -127,6 +124,13 @@ SOA（Service-Oriented Architecture，面向服务的架构） 是一种软件�
 
 ## 高性能
 高性能指的是系统或应用在处理任务、数据或请求时表现出的高效性和快速性。高性能系统通常具有强大的计算能力、快速的响应时间和高效的数据处理能力。为了实现高性能，系统可能需要采用先进的硬件技术、优化的软件算法、高效的存储和传输技术等手段。
+### [Java代码性能优化](04.system-design/high-performance/java/README.md)
+#### [`switch`前使用`if`针对高频热点状态的优化](04.system-design/high-performance/java/if%20-before-switch/README.md)
+#### [ArrayList去重](04.system-design/high-performance/java/arrayList-distinct/README.md)
+#### [数据结构选择：HashSet 替代 LinkedList 查找](04.system-design/high-performance/java/replace-linkedlist-with-hashset/README.md)
+#### [并发编程优化：Atomic 类替代 synchronized](04.system-design/high-performance/java/replace-synchronized-with-atomic/README.md)
+#### [字符串拼接优化：StringBuilder 重用](04.system-design/high-performance/java/reuse-of-stringbuilder/README.md)
+
 ### 数据库性能优化
 #### [数据库读写分离](04.system-design/high-performance/database-optimization/db-read-write-splitting-and-db-sharding/db-read-write-splitting/README.md)
 #### [数据库分库分表](04.system-design/high-performance/database-optimization/db-read-write-splitting-and-db-sharding/db-sharding/README.md)
