@@ -56,6 +56,9 @@
 ### 7.1. [统计API接口调用耗时](01.java/java-agent/api/README.md)
 ## 8. 咬文嚼字
 ### 8.1. [创建对象](01.java/split-hairs/create-object/README.md)
+### 8.2. [单例模式](01.java/split-hairs/singleton-pattern/README.md)
+### 8.3. [Integer缓存](01.java/split-hairs/integer-cache/README.md)
+### 8.4. [`String str = new String("123")`会在堆中生成几个新对象](01.java/split-hairs/new-objects/README.md)
 
 # 二、计算机基础
 ## 1. [服务器性能指标](02.computer-basics%2Fserver-performance-metrics%2FREADME.md)
@@ -72,10 +75,11 @@
 ##### [数据库多版本并发控制详解](03.database%2Fbase%2Frelational-database%2Ftransaction-processing%2Fmvcc%2FREADME.md)
 ##### [锁与MVCC的关系](03.database%2Fbase%2Frelational-database%2Ftransaction-processing%2Flock-vs-mvcc%2FREADME.md)
 ### [MySQL](03.database%2Fbase%2Frelational-database%2Fmysql%2FREADME.md)
-#### [MySQL锁类型详解](03.database/base/relational-database/mysql/lock/README.md)
-#### [`INT(4)` 的定义](03.database/base/relational-database/mysql/int%284%29-define/README.md)
-#### [1亿条数据快速加索引的方法](03.database/base/relational-database/mysql/quickly-add-index/README.md)
-#### [时间类型对比](03.database/base/relational-database/mysql/time-types/README.md)
+#### 咬文嚼字
+##### [MySQL锁类型详解](03.database/base/relational-database/mysql/split-hairs/lock/README.md)
+##### [`INT(4)` 的定义](03.database/base/relational-database/mysql/split-hairs/int%284%29-define)
+##### [1亿条数据快速加索引的方法](03.database/base/relational-database/mysql/split-hairs/quickly-add-index/README.md)
+##### [时间类型对比](03.database/base/relational-database/mysql/split-hairs/time-types/README.md)
 ## [NoSQL数据库](03.database%2Fbase%2Fnosql%2FREADME.md)
 ### 键值存储数据库
 #### [缓存](03.database%2Fbase%2Fnosql%2Fkey-value%2Fcache%2FREADME.md)
@@ -128,11 +132,12 @@
 ## 高性能
 高性能指的是系统或应用在处理任务、数据或请求时表现出的高效性和快速性。高性能系统通常具有强大的计算能力、快速的响应时间和高效的数据处理能力。为了实现高性能，系统可能需要采用先进的硬件技术、优化的软件算法、高效的存储和传输技术等手段。
 ### [Java代码性能优化](04.system-design/high-performance/java/README.md)
-#### [`switch`前使用`if`针对高频热点状态的优化](04.system-design/high-performance/java/if%20-before-switch/README.md)
-#### [ArrayList去重](04.system-design/high-performance/java/arrayList-distinct/README.md)
-#### [数据结构选择：HashSet 替代 LinkedList 查找](04.system-design/high-performance/java/replace-linkedlist-with-hashset/README.md)
-#### [并发编程优化：Atomic 类替代 synchronized](04.system-design/high-performance/java/replace-synchronized-with-atomic/README.md)
-#### [字符串拼接优化：StringBuilder 重用](04.system-design/high-performance/java/reuse-of-stringbuilder/README.md)
+#### 咬文嚼字
+#### [`switch`前使用`if`针对高频热点状态的优化](04.system-design/high-performance/java/split-hairs/if%20-before-switch/README.md)
+#### [ArrayList去重](04.system-design/high-performance/java/split-hairs/arrayList-distinct/README.md)
+#### [数据结构选择：HashSet 替代 LinkedList 查找](04.system-design/high-performance/java/split-hairs/replace-linkedlist-with-hashset/README.md)
+#### [并发编程优化：Atomic 类替代 synchronized](04.system-design/high-performance/java/split-hairs/replace-synchronized-with-atomic/README.md)
+#### [字符串拼接优化：StringBuilder 重用](04.system-design/high-performance/java/split-hairs/reuse-of-stringbuilder/README.md)
 
 ### 数据库性能优化
 #### [数据库读写分离](04.system-design/high-performance/database-optimization/db-read-write-splitting-and-db-sharding/db-read-write-splitting/README.md)
