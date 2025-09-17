@@ -267,7 +267,8 @@
 ### [iFlow CLI AI 助手](11.ai/tools/iflow-cli/README.md)
 
 # 十二、前端
-## [React前端框架构建](12.font-end/building-react/README.md)
+## [前端框架](12.font-end/frameworks/README.md)
+### [React前端框架构建](12.font-end/frameworks/building-react/README.md)
 ## [微前端](12.font-end/micro-frontend/README.md)
 ## [Web Components](12.font-end/web-components/README.md)
 ## 咬文嚼字
