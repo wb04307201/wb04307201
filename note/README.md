@@ -45,6 +45,7 @@
 ### 6.15. [Java 22](01.java%2Fversion%2Fjava-22%2FREADME.md)
 ### 6.16. [Java 23](01.java%2Fversion%2Fjava-23%2FREADME.md)
 ### 6.17. [Java 24](01.java/version/java-24/README.md)
+### 6.18. [Java 25（LTS）](01.java/version/java-25/README.md)
 ## 7. [Java Agent](01.java%2Fjava-agent%2FREADME.md)
 ### 7.1. [统计API接口调用耗时](01.java/java-agent/api/README.md)
 ## 8. [性能优化](01.java/performance-optimization/README.md)
@@ -67,6 +68,7 @@
 ##### [锁与MVCC的关系](03.database%2Fbase%2Frelational-database%2Ftransaction-processing%2Flock-vs-mvcc%2FREADME.md)
 ### [MySQL](03.database%2Fbase%2Frelational-database%2Fmysql%2FREADME.md)
 #### [MySQL锁类型详解](03.database/base/relational-database/mysql/lock/README.md)
+#### [`INT(4)` 的定义](03.database/base/relational-database/mysql/int%284%29-define/README.md)
 ## [NoSQL数据库](03.database%2Fbase%2Fnosql%2FREADME.md)
 ### 键值存储数据库
 #### [缓存](03.database%2Fbase%2Fnosql%2Fkey-value%2Fcache%2FREADME.md)
