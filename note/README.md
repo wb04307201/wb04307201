@@ -72,6 +72,8 @@
 ### [MySQL](03.database%2Fbase%2Frelational-database%2Fmysql%2FREADME.md)
 #### [MySQL锁类型详解](03.database/base/relational-database/mysql/lock/README.md)
 #### [`INT(4)` 的定义](03.database/base/relational-database/mysql/int%284%29-define/README.md)
+#### [1亿条数据快速加索引的方法](03.database/base/relational-database/mysql/quickly-add-index/README.md)
+#### [时间类型对比](03.database/base/relational-database/mysql/time-types/README.md)
 ## [NoSQL数据库](03.database%2Fbase%2Fnosql%2FREADME.md)
 ### 键值存储数据库
 #### [缓存](03.database%2Fbase%2Fnosql%2Fkey-value%2Fcache%2FREADME.md)
