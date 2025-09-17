@@ -1,138 +1,115 @@
 # Java 13
 
-- JEP 280：FileSystems 工具类
-- JEP 354：增强 Switch 表达式（第二次预览）：Java 13 新特性—增强 Switch 表达式
-- JEP 355：文本块（预览特性）：Java 13 新特性—文本块
-- JEP 353：重构 Socket API
-- JEP 350：动态 CDS
-- JEP 351：增强 ZGC 释放未使用内存
+- **JEP 350**: 动态 CDS 归档
+- **JEP 351**: ZGC：释放未使用的内存
+- **JEP 353**: 重新实现传统 Socket API
+- **JEP 354**: Switch 表达式（预览）
+- **JEP 355**: 文本块（预览）
 
----
+## JEP 350: 动态 CDS 归档
 
-## JEP 280：FileSystems 工具类
-JEP 280 引入了一个新的`java.nio.file.FileSystems`工具类，它提供了一些新的方法来创建和操作文件系统。
+动态类数据共享（Class Data Sharing, CDS）归档允许在运行时动态生成 CDS 归档文件。CDS 功能可以将一些常用的类预加载到共享内存中，这样多个 Java 进程可以共享这些类，从而减少启动时间和内存占用。在 Java 13 之前，CDS 归档文件需要在应用程序启动前静态生成。而动态 CDS 归档特性使得在应用程序运行过程中也可以创建归档文件，提高了 CDS 的灵活性和实用性。
 
-以下是一些使用 FileSystems 的示例代码：
+例如，开发者可以在应用程序启动后，通过特定的 API 触发动态 CDS 归档的创建，将当前加载的类归档起来，以便后续的启动可以共享这些类。
+
+## JEP 351: ZGC：释放未使用的内存
+
+Z Garbage Collector（ZGC）是 Java 11 引入的一种低延迟垃圾回收器。在 Java 13 中，ZGC 增加了释放未使用的内存的功能。这意味着 ZGC 可以将不再使用的堆内存归还给操作系统，从而减少应用程序的内存占用。
+
+在之前的版本中，即使应用程序不再需要大量的堆内存，ZGC 也会保留这些内存，导致内存占用较高。而通过释放未使用的内存功能，ZGC 可以根据应用程序的实际需求动态调整内存使用，提高内存资源的利用率。
+
 ```java
-// 获取默认文件系统
-FileSystem fs = FileSystems.getDefault();
-
-// 根据 URI 创建文件系统
-URI uri = URI.create("jimfs:///");
-FileSystem fs = FileSystems.newFileSystem(uri, Collections.emptyMap());
-
-// 获取已知的文件系统提供者
-FileSystemProvider provider = FileSystems.getDefault().provider();
-
-// 获取所有已知的文件系统提供者
-for (FileSystemProvider provider : FileSystems.getProviders()) {
-    System.out.println(provider.getScheme());
-}
-
-// 关闭文件系统
-FileSystem fs = FileSystems.newFileSystem(Paths.get("test.txt"), null);
-// ... 文件系统操作
-fs.close();
-
-// 获取文件系统的同步锁
-FileSystem fs = FileSystems.getDefault();
-try (FileSystemLock lock = fs.lock(path, false)) {
-    // ... 处理文件锁
-}
+// 以下代码示例展示了如何通过 JVM 参数启用 ZGC 并观察内存释放情况
+// 启动 Java 应用程序时添加以下参数
+// -XX:+UseZGC -Xms1G -Xmx4G
+// 在应用程序运行过程中，当内存使用量减少时，ZGC 会自动将未使用的内存归还给操作系统
 ```
 
-## JEP 354：增强 Switch 表达式（第二次预览）
-Switch 表达式是在 Java 12 中首次作为预览特性引入，而在 Java 13 中对`Switch`表达式做了增强改进：在块中引入了`yield`语句来返回值，而不是使用`break`。
+## JEP 353: 重新实现传统 Socket API
 
-`yield`关键字用于从`switch`表达式的`case`块中返回一个值。这对于复杂的 Switch 语句特别有用，其中每个`case`块包含多行代码，并且最终需要返回一个值。
+传统的 Java Socket API 是基于 Unix Network Programming, Volume 1: The Sockets Networking API（UNIX 网络编程，卷 1：套接字联网 API）实现的，已经存在了很长时间。然而，随着时间推移，该实现暴露出一些问题，例如代码复杂、难以维护和扩展等。
 
-| Java 版本 | 更新类型  | JEP     | 更新内容                                      |
-|---------|-------|---------|-------------------------------------------|
-| Java 12 | 预览特性  | JEP 325 | 引入 Switch 表达式作为预览特性                       |
-| Java 13 | 第二次预览 | JEP 354 | 加入`yield`语句来替代`break`语句，用于从`switch`表达式返回值 |
-
-## JEP 355：文本块（预览特性）
-传统上，Java 中的字符串定义必须始于双引号并以双引号结束，这使得直接在字符串中使用多行文本变得困难。为了实现多行功能，我们不得不依赖于换行符转义（如 \n）或行连接符，但这增加了编辑工作量，同时也使得相关代码段难以阅读和维护。
-
-为了解决这个问题 ，Java 13 引入文本块，它旨在简化在 Java 程序中编写多行文本字符串的过程，特别是对于那些包含大量格式化文本的字符串，例如 HTML, XML, SQL, JSON 或其他多行消息。
-
-文本块是通过三个双引号（"""）来定义的，这标志着字符串的开始和结束。在这两个标志之间的所有文本，包括换行符和空格，都将被包含在字符串中。
-
-比如，我们以前是这么写的：
+Java 13 重新实现了传统的 Socket API，将其从基于 Unix 的实现迁移到基于 Java NIO（New I/O）的实现。新的实现简化了代码结构，提高了可维护性和性能，并且更好地支持了现代网络协议和特性。
 
 ```java
-        String html = "<html>" +
-        "<body>" +
-        "<p>Hello, world</p>" +
-        "</body>" +
-        "</html>";
+// 传统 Socket API 示例
+try (Socket socket = new Socket("example.com", 80);
+     PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+     BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
+    out.println("GET / HTTP/1.1");
+    out.println("Host: example.com");
+    out.println();
+
+    String responseLine;
+    while ((responseLine = in.readLine()) != null) {
+        System.out.println(responseLine);
+    }
+} catch (IOException e) {
+    e.printStackTrace();
+}
+
+// 新的 Socket API 实现方式在底层有所变化，但对外提供的接口基本保持一致，开发者可以无缝迁移
 ```
 
-使用文本块后可以这样写：
+## JEP 354: Switch 表达式（预览）
+
+Switch 表达式是对传统 Switch 语句的扩展和改进。在 Java 13 中，Switch 表达式作为预览特性引入，它提供了更简洁、更灵活的语法来处理多分支情况。
+
+传统的 Switch 语句需要使用 `break` 语句来避免穿透（fall - through），而 Switch 表达式则通过箭头语法（`->`）和表达式返回值来简化代码。Switch 表达式可以返回值，这使得它可以更方便地用在赋值语句或方法调用中。
 
 ```java
+// 传统 Switch 语句示例
+int day = 3;
+String dayType;
+switch (day) {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+        dayType = "Weekday";
+        break;
+    case 6:
+    case 7:
+        dayType = "Weekend";
+        break;
+    default:
+        dayType = "Invalid day";
+}
+System.out.println(dayType);
+
+// Switch 表达式示例（预览特性，需要启用预览功能）
+int day = 3;
+String dayType = switch (day) {
+    case 1, 2, 3, 4, 5 -> "Weekday";
+    case 6, 7 -> "Weekend";
+    default -> "Invalid day";
+};
+System.out.println(dayType);
+```
+
+## JEP 355: 文本块（预览）
+
+文本块是 Java 13 中引入的另一个预览特性，旨在简化多行字符串的编写。在之前的 Java 版本中，编写多行字符串需要使用转义字符和字符串连接操作，代码可读性较差。
+
+文本块使用三引号（`"""`）来定义多行字符串，使得代码更加简洁和易读。文本块会自动处理换行符和缩进，减少了手动处理的麻烦。
+
+```java
+// 传统多行字符串编写方式
+String html = "<html>\n" +
+              "    <body>\n" +
+              "        <p>Hello, world</p>\n" +
+              "    </body>\n" +
+              "</html>\n";
+System.out.println(html);
+
+// 文本块示例（预览特性，需要启用预览功能）
 String html = """
-        <html>
-        <body>
-        <p>Hello, world</p>
-        </body>
-        </html>
-        """;
+              <html>
+                  <body>
+                      <p>Hello, world</p>
+                  </body>
+              </html>
+              """;
+System.out.println(html);
 ```
-
-这种方式使得编写对齐良好和格式化的多行字符串变得更加直观和易读。
-
-## JEP 353：重构 Socket API
-在 Java 13 之前，Socket API 已经存在多年，并且几乎没有重大改变。这些年来，网络编程的需求和技术发生了很大变化，原有的 API 在性能、灵活性和易用性方面逐渐显露出局限性。因此，Java 13 对 Socket API 进行了重构。主要改进有如下几个方法：
-- **新的 API 设计**：重新设计了 Socket API。
-- **性能优化**：对底层实现进行了优化，提高了数据传输的效率。
-- **易用性改进**：新 API 更易于使用，简化了许多常见的网络编程任务。
-- **安全性增强**：强化了对安全性的支持，包括更好的加密功能和对安全协议的支持。
-- **更好的资源管理**：改进了对网络资源（如套接字和连接）的管理，包括自动资源管理和资源泄露预防机制。
-
-重构后的 Socket API 提供了更强大、更灵活、更易用的工具集，有助于构建更高效、更稳定的网络应用。
-
-## JEP 350：动态 CDS
-在 Java 10 中，为了改善应用启动时间和内存空间占用，通过使用 APP CDS，加大了 CDS 的使用范围，允许自定义的类加载器也可以加载自定义类给多个 JVM 共享使用，具体介绍可以参考 Java 10 新特性介绍一文详细介绍，在此就不再继续展开。
-
-Java 13 中对 Java 10 中引入的 应用程序类数据共享进行了进一步的简化、改进和扩展，即：允许在 Java 应用程序执行结束时动态进行类归档，具体能够被归档的类包括：所有已被加载，但不属于默认基层 CDS 的应用程序类和引用类库中的类。通过这种改进，可以提高应用程序类-数据使用上的简易性，减少在使用类-数据存档中需要为应用程序创建类加载列表的必要，简化使用类-数据共享的步骤，以便更简单、便捷地使用 CDS 存档。
-
-在 Java 中，如果要执行一个类，首先需要将类编译成对应的字节码文件，以下是 JVM 装载、执行等需要的一系列准备步骤：假设给定一个类名，JVM 将在磁盘上查找到该类对应的字节码文件，并将其进行加载，验证字节码文件，准备，解析，初始化，根据其内部数据结构加载到内存中。当然，这一连串的操作都需要一些时间，这在 JVM 启动并且需要加载至少几百个甚至是数千个类时，加载时间就尤其明显。
-
-Java 10 中的 App CDS 主要是为了将不变的类数据，进行一次创建，然后存储到归档中，以便在应用重启之后可以对其进行内存映射而直接使用，同时也可以在运行的 JVM 实例之间共享使用。但是在 Java 10 中使用 App CDS 需要进行如下操作：
-- 创建需要进行类归档的类列表
-- 创建归档
-- 使用归档方式启动
-
-在使用归档文件启动时，JVM 将归档文件映射到其对应的内存中，其中包含所需的大多数类，而需要使用多么复杂的类加载机制。甚至可以在并发运行的 JVM 实例之间共享内存区域，通过这种方式可以释放需要在每个 JVM 实例中创建相同信息时浪费的内存，从而节省了内存空间。
-
-在 Java 12 中，默认开启了对 JDK 自带 JAR 包类的存档，如果想关闭对自带类库的存档，可以在启动参数中加上：
-
-`-Xshare:off`
-
-而在 Java 13 中，可以不用提供归档类列表，而是通过更简洁的方式来创建包含应用程序类的归档。具体可以使用参数`-XX:ArchiveClassesAtExit`来控制应用程序在退出时生成存档，也可以使用`-XX:SharedArchiveFile`来使用动态存档功能，详细使用见如下示例。
-
-- 创建存档文件示例  
-  `$ java -XX:ArchiveClassesAtExit=helloworld.jsa -cp helloworld.jar Hello`
-- 使用存档文件示例  
-  `$ java -XX:SharedArchiveFile=hello.jsa -cp helloworld.jar Hello`
-
-上述就是在 Java 应用程序执行结束时动态进行类归档，并且在 Java 10 的基础上，将多条命令进行了简化，可以更加方便地使用类归档功能。
-
-## JEP 351：增强 ZGC 释放未使用内存
-ZGC 是 Java 11 中引入的最为瞩目的垃圾回收特性，是一种可伸缩、低延迟的垃圾收集器，不过在 Java 11 中是实验性的引入，主要用来改善 GC 停顿时间，并支持几百 MB 至几个 TB 级别大小的堆，并且应用吞吐能力下降不会超过 15%，目前只支持 Linux/x64 位平台的这样一种新型垃圾收集器。
-
-通过在实际中的使用，发现 ZGC 收集器中并没有像 Hotspot 中的 G1 和 Shenandoah 垃圾收集器一样，能够主动将未使用的内存释放给操作系统的功能。对于大多数应用程序来说，CPU 和内存都属于有限的紧缺资源，特别是现在使用的云上或者虚拟化环境中。如果应用程序中的内存长期处于空闲状态，并且还不能释放给操作系统，这样会导致其他需要内存的应用无法分配到需要的内存，而这边应用分配的内存还处于空闲状态，处于”忙的太忙，闲的太闲”的非公平状态，并且也容易导致基于虚拟化的环境中，因为这些实际并未使用的资源而多付费的情况。由此可见，将未使用内存释放给系统主内存是一项非常有用且亟需的功能。
-
-ZGC 堆由一组称为 ZPages 的堆区域组成。在 GC 周期中清空 ZPages 区域时，它们将被释放并返回到页面缓存 ZPageCache 中，此缓存中的 ZPages 按最近最少使用（LRU）的顺序，并按照大小进行组织。在 Java 13 中，ZGC 将向操作系统返回被标识为长时间未使用的页面，这样它们将可以被其他进程重用。同时释放这些未使用的内存给操作系统不会导致堆大小缩小到参数设置的最小大小以下，如果将最小和最大堆大小设置为相同的值，则不会释放任何内存给操作系统。
-
-Java 13 中对 ZGC 的改进，主要体现在下面几点：
-- 释放未使用内存给操作系统
-- 支持最大堆大小为 16TB
-- 添加参数：-XX:SoftMaxHeapSize 来软限制堆大小
-
-这里提到的是软限制堆大小，是指 GC 应努力是堆大小不要超过指定大小，但是如果实际需要，也还是允许 GC 将堆大小增加到超过 SoftMaxHeapSize 指定值。主要用在下面几种情况：当希望降低堆占用，同时保持应对堆空间临时增加的能力，亦或想保留充足内存空间，以能够应对内存分配，而不会因为内存分配意外增加而陷入分配停滞状态。不应将 SoftMaxHeapSize 设置为大于最大堆大小（-Xmx 的值，如果未在命令行上设置，则此标志应默认为最大堆大小。
-
-Java 13 中，ZGC 内存释放功能，默认情况下是开启的，不过可以使用参数：`-XX：-ZUncommit`显式关闭，同时如果将最小堆大小 (-Xms)配置为等于最大堆大小 (-Xmx)，则将隐式禁用此功能。
-
-还可以使用参数：`-XX：ZUncommitDelay = <seconds>`（默认值为 300 秒）来配置延迟释放，此延迟时间可以指定释放多长时间之前未使用的内存。

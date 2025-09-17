@@ -1,157 +1,299 @@
+----------------------------------------------------------------------
 # Java 8
 
-- JEP 101：类型推断优化：Java 8 新特性—类型推断优化
-- JEP 104：类型注解：Java 8 新特性—类型注解
-- JEP 107：Stream API：Java 8 新特性—Stream API 对元素流进行函数式操作
-- JEP 120：重复注解：Java 8 新特性—重复注解@Repeatable
-- JEP 122：移除Permgen
-- JEP 126：Lambda 表达式：Java 8 新特性—Lambda 表达式
-- JEP 126：函数式接口：Java 8 新特性—函数式接口
-- JEP 150：接口的默认方法：Java 8 新特性—接口默认方法和静态方法
-- JEP 170：新的日期时间 API：Java 8 新特性—日期时间 API && Java 8 新特性—日期时间格式化
-- JEP 174：Nashorn JavaScript 引擎
-- JEP 179：方法引用：Java 8 新特性—方法引用和构造器引用
-- Optional 类：Java 8 新特性— 利用 Optional 解决NullPointerException
-- Base64 编码解码：Java 8 新特性—全新的、标准的 Base64 API
+- **JEP 126**: Lambda 表达式 & 虚拟扩展方法
+- **JEP 138**: 基于 Autoconf 的构建系统
+- **JEP 160**: 针对 Method Handles 的 Lambda 形式的表征
+- **JEP 161**: 简洁的配置文件
+- **JEP 162**: 为模块化做准备
+- **JEP 164**: 利用 CPU 指令来改善 AES 加密的性能
+- **JEP 174**: Nashorn 引擎（允许在 Java 程序中嵌入 JS 代码）
+- **JEP 176**: 自动检测识别 Caller-Sensitive 方法
+- **JEP 179**: JDK API 变化和稳定性记录
+- **JEP 101**: 目标类型推断
+- **JEP 104**: Java 类型注解
+- **JEP 105**: DocTree API
+- **JEP 106**: 在 javax.tools 中添加 Javadoc
+- **JEP 107**: 集合数据批量操作（Stream API 的基础）
+- **JEP 109**: 增强的包含 Lambda 的核心库
+- **JEP 112**: 改进了字符集的实现
+- **JEP 117**: 移除 APT（Annotation-Processing Tool）
+- **JEP 118**: 运行过程中可访问参数名
+- **JEP 120**: 重复注解（@Repeatable）
+- **JEP 122**: 移除 Permanent Generation（永久代），使用元空间（MetaSpace）
+- **JEP 135**: Base64 编解码
+- **JEP 136**: 提供更多的验证错误信息
+- **JEP 139**: 增强了 javac，以改善构建速度
+- **JEP 147**: 减少类元数据封装
+- **JEP 148**: 支持创建小型虚拟机（3M 以下）
+- **JEP 149**: 减少了核心库的内存占用
+- **JEP 150**: 新的日期时间 API（java.time 包）
+- **JEP 153**: 命令行启动 JavaFX 应用
+- **JEP 155**: 改进对并发的支持
+- **JEP 170**: JDBC 4.2
+- **JEP 172**: DocLint 工具，用来检查 Javadoc 注释内容
+- **JEP 173**: 移除一些很少使用的垃圾回收器组合
+- **JEP 177**: java.text.DecimalFormat.format 优化
+- **JEP 178**: 静态链接的 JNI 库
+- **JEP 180**: 使用平衡树处理频繁的 HashMap 碰撞
+- **JEP 184**: HTTP URL 访问权限
 
----
+## JEP 126: Lambda 表达式 & 虚拟扩展方法
 
-## JEP 101：类型推断优化
-在 Java 8 之前，Java 的类型推断主要局限于泛型方法调用的返回类型。这意味着在许多情况下，我们不得不显式指定泛型参数，即使它们可以从上下文中推断出来。这种限制使得代码变得冗长且不够直观，特别是在使用泛型集合和泛型方法时。
+Lambda 表达式是 Java 8 中最重要的特性之一，它允许开发者以更简洁的方式编写匿名函数。Lambda 表达式的主要用途是简化函数式接口（只有一个抽象方法的接口）的实现。
 
-为了提高编码效率和可读性，同时简化泛型使用，Java 8 中引入了对类型推断机制的优化，扩大了类型推断的范围，使其能在更多情况下自动推断出类型信息，包括：
-- **Lambda 表达式中的类型推断**：在使用 Lambda 表达式时，编译器可以根据上下文推断出参数类型，从而减少了在某些情况下编写显式类型的需求。
-- **泛型方法调用的改进**：在调用泛型方法时，编译器可以更好地推断方法参数、返回类型以及链式调用中间步骤的类型。
-- **泛型构造器的类型推断**：在创建泛型对象时，编译器能够推断出构造器参数的类型。
+虚拟扩展方法（也称为默认方法）允许接口包含具体的方法实现，这样可以在不破坏现有实现的情况下向接口添加新功能。
 
-## JEP 104：类型注解
-在 Java 8 之前，注解仅限于声明（如类、方法或字段）。这种限制意味着注解的用途在许多编程情景中受到限制，特别是在需要对类型本身（而不仅仅是声明）进行描述时。为了提高注解的能力，Java 8 引入类型注解来增强注解的功能。
+```java
+// Lambda 表达式示例
+List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+names.forEach(name -> System.out.println(name));
 
-该特性扩展了注解的应用范围，允许我们将注解应用于任何使用类型的地方，而不仅仅是声明。包括以下情况：
-- 对象创建（如 new 表达式）
-- 类型转换和强制类型转换
-- 实现（`implements`）语句
-- 泛型类型参数（如`List<@NonNull String>`）
+// 虚拟扩展方法示例
+interface Greeting {
+    void greet();
+    default void greetInEnglish() {
+        System.out.println("Hello");
+    }
+}
 
-## JEP 107：Stream API
-为了解决 Java 8 之前版本中集合操作的一些限制和不足，提高数据处理的效率和代码的简洁性，Java 8 引入 Stream API，它的引入标志着 Java 对集合操作迎来了的一种全新的处理方式，它在处理集合类时提供了一种更高效、声明式的方法。
+class EnglishGreeting implements Greeting {
+    @Override
+    public void greet() {
+        greetInEnglish();
+    }
+}
+```
 
-Stream API的核心思想是将数据处理操作以函数式的方式链式连接，以便于执行各种操作，如过滤、映射、排序、归约等，而无需显式编写传统的循环代码。
+## JEP 138: 基于 Autoconf 的构建系统
 
-下面是 Stream API 的一些重要概念和操作：
+Autoconf 是一个用于生成自动化配置脚本的工具，广泛应用于开源软件的构建过程。该特性引入了基于 Autoconf 的构建系统，使得 JDK 的构建过程更加灵活和可移植。
 
-- **Stream(流)**：Stream 是 Java 8 中处理集合的关键抽象概念，它是数据渠道，用于操作数据源所生成的元素序列。这些数据源可以来自集合（Collection）、数组、I/O 操作等等。它具有如下几个特点：
-  1. Stream 不会存储数据。
-  2. Stream 不会改变源数据对象，它返回一个持有结果的新的 Stream。
-  3. Stream 操作是延迟执行的，这就意味着他们要等到需要结果的时候才会去执行。
-- **中间操作**：这些操作允许您在 Stream 上执行一系列的数据处理。常见的中间操作有 filter（过滤）、map（映射）、distinct（去重）、sorted（排序）、limit（截断）、skip（跳过）等。这些操作返回的仍然是一个 Stream。
-- **终端操作**：终端操作是对流进行最终处理的操作。当调用终端操作时，流将被消费，不能再进行进一步的中间操作。常见的终端操作包括 forEach（遍历元素）、collect（将元素收集到集合中）、reduce（归约操作，如求和、求最大值）、count（计数）等。
-- **惰性求值**：Stream 操作是惰性的，只有在调用终端操作时才会执行中间操作。这可以提高性能，因为只处理需要的数据。
+通过使用 Autoconf，开发者可以在不同的平台上生成适合的配置脚本，简化了 JDK 的跨平台构建过程。
 
-## JEP 120：重复注解
-在 Java 8 之前的版本中，对于一个特定的类型，一个注解在同一个声明上只能使用一次。Java 8 引入了重复注解，它允许对同一个类型的注解在同一声明或类型上多次使用。
+## JEP 160: 针对 Method Handles 的 Lambda 形式的表征
 
-工作原理如下：
-- **定义重复注解**：您需要定义一个注解，并用`@Repeatable`元注解标注它。`@Repeatable`接收一个参数，该参数是一个容器注解，用于存储重复注解的实例。
-- **定义容器注解**：容器注解定义了一个注解数组，用于存放重复注解的多个实例。这个容器注解也需要具有运行时的保留策略（`@Retention(RetentionPolicy.RUNTIME)`）。
+Method Handles 是 Java 中用于动态操作方法的一种机制。该特性改进了 Method Handles 的实现，使其能够更好地支持 Lambda 表达式。
 
-## JEP 122：移除Permgen
-在 Java 8 之前，JJVM使用永久代（PermGen）的内存区域来存储类的元数据和方法数据。随着时间的推移，这个设计开始显现出一些问题，特别是在应用程序频繁加载和卸载类的场景中，比如在 Java EE 应用服务器和热部署环境中。
+通过这种改进，Lambda 表达式可以更高效地转换为 Method Handles，提高了函数式编程的性能。
 
-永久代有一个固定的大小限制，当类的数量和大小超过这个限制时，就会抛出`OutOfMemoryError: PermGen space`错误。这种设计限制了 Java 的灵活性和可伸缩性。
+## JEP 161: 简洁的配置文件
 
-Java 8 移除永久代并用元空间（Metaspace）的新内存区域来取代它。相比永久代，元空间的具有如下优势：
-- **基于本地内存**：元空间不在 JVM 的堆内存中，而是直接使用本地内存（操作系统的内存）。这意味着它不再受到 Java 堆大小的限制。
-- **动态调整大小**：元空间的大小可以根据应用程序的需求动态调整。这减少了内存溢出的风险，并允许应用更高效地管理内存。
-- **更好的性能**：由于移除了固定大小的限制，元空间可以提供更好的性能，尤其是在大型应用和复杂的部署环境中。
+该特性引入了一种更简洁的配置文件格式，用于配置 JDK 的各种参数。这种格式减少了配置文件的冗余信息，使得配置更加直观和易于管理。
 
-## JEP 126：Lambda 表达式
-Lambda 表达式是 Java 8 新特性中最重要且最显著的一个，为 Java 增加了函数式编程的能力，使得代码变得更加简洁和易读。Lambda 表达式主要用于简化匿名内部类的实现。
+## JEP 162: 为模块化做准备
 
-Lambda 表达式的基本语法：
+模块化是 Java 9 中引入的一个重要特性，该特性在 Java 8 中为模块化做了准备工作。它引入了一些基础结构和工具，以便后续能够顺利实现模块化系统。
 
-`(parameters) -> expression 或 (parameters) -> { statements; }`
-- **parameters**：是 Lambda表达式的参数列表，可以为空或包含一个或多个参数。
-- **->**：是 Lambda 操作符，用于将参数和 Lambda 主体分开。
-- **expression**：是 Lambda 表达式的返回值，或者在主体中执行的单一表达式。
-- **{ statements; }**：是 Lambda 主体，包含了一系列语句，如果需要执行多个操作，就需要使用这种形式。
+## JEP 164: 利用 CPU 指令来改善 AES 加密的性能
 
-它具有如下几个特点：
-- **无需声明类型**：Lambda 表达式不需要声明参数类型，编译器可以自动推断参数类型。
-- **可选的参数圆括号**：当只有一个参数时，可以省略圆括号。但是当参数个数大于一个时，圆括号是必需的。空括号用于表示空参数集。
-- **可选的大括号**：当 Lambda 表达式的主体只包含一个表达式时，可以省略大括号。当表达式需要包含多个语句时，需要使用大括号。
-- **可选的返回关键字**：当 Lambda 表达式主体只有一个表达式，且该表达式会自动返回结果时，可以省略 return 关键字。
+该特性通过利用现代 CPU 提供的特定指令集（如 AES-NI），显著提高了 AES 加密和解密的性能。这对于需要高性能加密的应用程序非常有益。
 
-## JEP 126：函数式接口
-Java 8 引入函数式接口的主要目的是支持函数式编程范式，也就是 Lambda 表达式。在函数式编程语言中，函数被当做一等公民对待，Lambda 表达式的类型是函数，它可以像其他数据类型一样进行传递、赋值和操作。但是在 Java 中，“一切皆对象”是不可违背的宗旨，所以 Lambda 表达式是对象，而不是函数，他们必须要依附于一类特别的对象类型：函数式接口。所以函数式接口是与Lambda表达式紧密相连的，它为Java添加了一种新的抽象层次，允许将方法作为一等公民对待。
+## JEP 174: Nashorn 引擎（允许在 Java 程序中嵌入 JS 代码）
 
-函数式接口具有两个特点：
-- **只包含一个抽象方法**：函数式接口只能有一个抽象方法，但可以包含多个默认方法或静态方法。
-- **用`@FunctionalInterface`注解标记**：该注解不强制，但通常会使用它来标记该接口为函数式接口。这样做可以让编译器检查接口是否符合函数式接口的定义，以避免不必要的错误。
+Nashorn 是一个基于 Java 的 JavaScript 引擎，它允许开发者在 Java 应用程序中执行 JavaScript 代码。这使得 Java 和 JavaScript 之间的交互更加容易，适用于需要混合编程的场景。
 
-一般来说函数式接口有两个最主要的用途：
-- 与Lambda表达式一起使用，为Java带来更加函数式的编程风格。
-- 用于实现简单的函数策略或行为，如回调、事件处理等。
+```java
+ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
+try {
+    engine.eval("print('Hello, World!')");
+} catch (ScriptException e) {
+    e.printStackTrace();
+}
+```
 
-## JEP 150：接口的默认方法
-在 Java 8 之前，接口中可以申明方法和变量的，只不过变量必须是 public、static、final 的，方法必须是 public、abstract的。我们知道接口的设计是一项巨大的工作，因为如果我们需要在接口中新增一个方法，需要对它的所有实现类都进行修改，如果它的实现类比较少还可以接受，如果实现类比较多则工作量就比较大了。
+## JEP 176: 自动检测识别 Caller-Sensitive 方法
 
-为了解决这个问题，Java 8 引入了默认方法，默认方法允许在接口中添加具有默认实现的方法，它使得接口可以包含方法的实现，而不仅仅是抽象方法的定义。
+Caller-Sensitive 方法是指其行为依赖于调用者的方法。该特性引入了一种机制，能够自动检测和识别这些方法，从而在安全管理和反射操作中提供更准确的信息。
 
-默认方法是接口中带有 default 关键字的非抽象方法。这种方法可以有自己的实现，而不需要子类去覆盖它。
+## JEP 179: JDK API 变化和稳定性记录
 
-默认方法允许我们向接口添加新方法而不破坏现有的实现。它解决了在 Java 8 之前，向接口添加新方法意味着所有实现该接口的类都必须修改的问题。
+该特性旨在记录 JDK API 的变化和稳定性信息，帮助开发者更好地理解和使用 JDK API。通过提供详细的变更日志和稳定性评级，开发者可以更容易地跟踪 API 的演进。
 
-## JEP 170：新的日期时间 API
-作为 Java 开发者你一定直接或者间接使用过`java.util.Date`、`java.util.Calendar`、`java.text.SimpleDateFormat`这三个类吧，这三个类是 Java 用于处理日期、日历、日期时间格式化的。由于它们存在一些问题，诸如：
+## JEP 101: 目标类型推断
 
-- **线程不安全**：
-  - `java.util.Date`和`java.util.Calendar`线程不安全，这就导致我们在多线程环境使用需要额外注意。
-  - `java.text.SimpleDateFormat`也是线程不安全的，这可能导致性能问题和日期格式化错误。而且它的模式字符串容易出错，且不够直观。
-- **可变性**：`java.util.Date`类是可变的，这意味着我们可以随时修改它，如果一不小心就会导致数据不一致问题。
-- **时区处理困难**：Java 8 版本以前的日期 API 在时区处理上存在问题，例如时区转换和夏令时处理不够灵活和准确。而且时区信息在 Date 对象中存储不明确，这使得正确处理时区变得复杂。
-- **设计不佳**：
-  - 日期和日期格式化分布在多个包中。
-  - `java.util.Date`的默认日期，年竟然是从 1900 开始，月从 1 开始，日从 1 开始，没有统一性。而且 java.util.Date 类也缺少直接操作日期的相关方法。
-  - 日期和时间处理通常需要大量的样板代码，使得代码变得冗长和难以维护。
+目标类型推断允许编译器根据上下文自动推断出 Lambda 表达式或方法引用的目标类型。这使得代码更加简洁，减少了显式类型声明的需要。
 
-基于上述原因，Java 8 重新设计了日期时间 API，以提供更好的性能、可读性和可用性，同时解决了这些问题，使得在 Java 中处理日期和时间变得更加方便和可靠。相比 Java 8 之前的版本，Java 8 版本的日期时间 API 具有如下几个优点：
+```java
+// 目标类型推断示例
+List<String> list = Arrays.asList("a", "b", "c");
+String joined = list.stream().reduce("", (a, b) -> a + b);
+```
 
-- **不可变性(Immutability)**：Java 8的日期时间类（如`LocalDate`、`LocalTime`和`LocalDateTime`）都是不可变的，一旦创建就不能被修改。这确保了线程安全，避免了并发问题。
-- **清晰的API设计**：Java 8 的日期时间 API 采用了更清晰、更一致的设计，相比于以前版本的 Date 和 Calendar 更易于理解和使用。而且它们还提供了丰富的方法来执行日期和时间的各种操作，如加减、比较、格式化等。
-- **本地化支持**：Java 8 的日期时间 API 支持本地化，可以轻松处理不同地区和语言的日期和时间格式。它们能够自动适应不同的时区和夏令时规则。
-- **新的时区处理**：Java 8引入了`ZoneId`和`ZoneOffset`等新的时区类，使时区处理更加精确和灵活。这有助于解决以前版本中时区处理的问题。
-- **新的格式化API**：Java 8引入了`DateTimeFormatter`类，用于格式化和解析日期和时间，支持自定义格式和本地化。这提供了更强大和灵活的格式化选项。
-- **更好的性能**：Java 8 的日期时间API 比以前的API 性能更佳。
+## JEP 104: Java 类型注解
 
-## JEP 174：Nashorn JavaScript 引擎
-在 Java 8 之前，Java 平台的主要 JavaScript 引擎是 Mozilla 的 Rhino。Rhino 是一个成熟的引擎，但由于其架构和设计年代较早，它在性能和与 Java 的集成方面存在一些限制。随着 JavaScript 在 Web 和服务器端应用中日益重要，需要一个更现代、更高效的 JavaScript 引擎来提供更好的性能和更深度的 Java 集成。因此，Nashorn 引擎被引入作为 Java 平台的一部分。
+Java 类型注解允许开发者在类型使用的地方添加注解，而不仅仅是在声明的地方。这提供了更细粒度的元数据控制，有助于改进代码的可读性和可维护性。
 
-Nashorn 是一个基于 Java 的 JavaScript 引擎，它完全用 Java 语言编写，并且是 Rhino 的替代品。主要特点：
-- **基于 JVM 的执行**：Nashorn 是作为 Java 虚拟机的一个原生组件实现的，它直接编译 JavaScript 代码到 Java 字节码。这意味着它可以充分利用 JVM 的性能优化和管理能力。
-- **高性能**：与 Rhino 相比，Nashorn 提供了显著的性能提升，特别是在执行 JavaScript 代码方面。
-- **与 Java 的深度集成**：Nashorn 允许 JavaScript 代码和 Java 代码之间有更紧密的交互。开发者可以在 JavaScript 中方便地调用 Java 类库和对象，反之亦然。
-- **ECMAScript 5.1 支持**：Nashorn 支持 ECMAScript 5.1 规范，为开发者提供了一个符合标准的现代 JavaScript 编程环境。
+```java
+// Java 类型注解示例
+public class Example {
+    public static void main(@NonNull String[] args) {
+        // ...
+    }
+}
+```
 
-## JEP 179：方法引用
-为了提升 Java 编程语言的表达力和可读性，特别是在配合 Lambda 表达式和函数式编程风格，Java 8 引入方法引用。
+## JEP 105: DocTree API
 
-方法引用实际上是一个简化版的 Lambda 表达式，它允许我们以更简洁的方式引用方法。它有如下几种类型：
-- **静态方法引用**：使用 类名::静态方法名 的形式。  
-  例如，String::valueOf 相当于 x -> String.valueOf(x)。
-- **实例方法引用(对象的实例方法)**：使用 实例对象::实例方法名 的形式。  
-  例如，假设有一个 String 对象 myString，那么 myString::length 相当于 () -> myString.length()。
-- **特定类型的任意对象的实例方法引用**：使用 类名::实例方法名。  
-  例如，String::length 相当于 str -> str.length()。这里不是调用特定对象的 length 方法，而是用于任意的 String 对象。
-- **构造器引用**：使用 类名::new。  
-  例如，ArrayList::new 相当于 () -> new ArrayList<>()。
+DocTree API 提供了一种访问和操作 Javadoc 注释树结构的机制。这使得开发者可以编写工具来分析和处理 Javadoc 注释，例如生成文档或进行代码检查。
 
-## [Optional 类](optional%2FREADME.md)
+## JEP 106: 在 javax.tools 中添加 Javadoc
 
-## Base64 编码解码
-在 Java 8 之前，我们通常需要依赖于第三方库（如 Apache Commons Codec）或者使用 Java 内部类（如 sun.misc.BASE64Encoder 和 sun.misc.BASE64Decoder）来处理 Base64 编解码。但是这些内部类并非 Java 官方的一部分，它们的使用并不推荐，因为它们可能会在未来的版本中发生变化，造成兼容性问题。同时使用非官方或内部 API 可能导致安全漏洞或运行时错误，所以 Java 8 引入一个新的 Base64 编解码 API，它处理 Base64 编码和解码的官方、标准化的方法。
+该特性在 `javax.tools` 包中添加了对 Javadoc 的支持，使得开发者可以通过编程方式生成 Javadoc 文档。这对于自动化构建和文档生成非常有用。
 
-Java 8 中的 Base64 API 包含在 java.util 包中。它提供了以下三种类型的 Base64 编解码器：
-- **基本型（Basic）**：用于处理常规的 Base64 编码和解码。它不对输出进行换行处理，适合于在URLs和文件名中使用。
-- **URL和文件名安全型（URL and Filename Safe）**：输出映射到一组 URL 和文件名安全的字符集。它使用 '-' 和 '_' 替换标准 Base64 中的 '+' 和 '/' 字符。
-- **MIME型**：用于处理 MIME 类型的数据（例如，邮件）。它在每行生成 76 个字符后插入一个换行符。
+## JEP 107: 集合数据批量操作（Stream API 的基础）
+
+该特性引入了集合数据的批量操作机制，为 Stream API 的实现奠定了基础。Stream API 提供了一种函数式的方式来处理集合数据，支持过滤、映射、归约等操作。
+
+```java
+// Stream API 示例
+List<String> filtered = names.stream()
+                           .filter(name -> name.startsWith("A"))
+                           .collect(Collectors.toList());
+```
+
+## JEP 109: 增强的包含 Lambda 的核心库
+
+该特性对 Java 核心库进行了增强，使其更好地支持 Lambda 表达式。许多核心库方法现在接受函数式接口作为参数，从而可以利用 Lambda 表达式简化代码。
+
+## JEP 112: 改进了字符集的实现
+
+该特性改进了 Java 中字符集的实现，提高了字符编码和解码的性能和准确性。这对于处理多语言文本的应用程序非常重要。
+
+## JEP 117: 移除 APT（Annotation-Processing Tool）
+
+APT 是一个较早的注解处理工具，该特性决定将其从 JDK 中移除，因为现在有更先进的注解处理机制（如 `javax.annotation.processing`）可用。
+
+## JEP 118: 运行过程中可访问参数名
+
+该特性允许在运行时通过反射机制访问方法的参数名。这对于调试和日志记录非常有用，因为可以显示实际的参数名而不是 `arg0`、`arg1` 等占位符。
+
+```java
+// 访问参数名示例
+Method method = Example.class.getMethod("exampleMethod", String.class);
+Parameter[] parameters = method.getParameters();
+for (Parameter parameter : parameters) {
+    System.out.println(parameter.getName());
+}
+```
+
+## JEP 120: 重复注解（@Repeatable）
+
+重复注解允许在同一个元素上多次应用同一个注解。这在需要多次使用相同类型的元数据时非常有用，避免了创建多个包装注解的麻烦。
+
+```java
+// 重复注解示例
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+@Repeatable(Roles.class)
+public @interface Role {
+    String value();
+}
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+public @interface Roles {
+    Role[] value();
+}
+
+@Role("Admin")
+@Role("User")
+public class ExampleClass {
+    // ...
+}
+```
+
+## JEP 122: 移除 Permanent Generation（永久代），使用元空间（MetaSpace）
+
+该特性移除了 JVM 中的永久代，改用元空间来存储类的元数据。元空间使用本地内存，而不是 JVM 堆内存，从而避免了永久代内存溢出的问题。
+
+## JEP 135: Base64 编解码
+
+该特性在 Java 核心库中添加了 Base64 编解码的支持，使得开发者可以方便地进行 Base64 编码和解码操作。
+
+```java
+// Base64 编解码示例
+String originalInput = "test string";
+String encodedString = Base64.getEncoder().encodeToString(originalInput.getBytes());
+byte[] decodedBytes = Base64.getDecoder().decode(encodedString);
+String decodedString = new String(decodedBytes);
+```
+
+## JEP 136: 提供更多的验证错误信息
+
+该特性改进了 Java 编译器和运行时系统的错误报告机制，提供了更详细和准确的验证错误信息。这有助于开发者更快地定位和修复问题。
+
+## JEP 139: 增强了 javac，以改善构建速度
+
+该特性对 `javac` 编译器进行了优化，提高了编译速度。这对于大型项目的构建过程非常有益，减少了开发者的等待时间。
+
+## JEP 147: 减少类元数据封装
+
+该特性通过减少类元数据的封装开销，提高了 JVM 的性能。类元数据是描述类结构和行为的信息，减少其封装可以加快类的加载和链接过程。
+
+## JEP 148: 支持创建小型虚拟机（3M 以下）
+
+该特性优化了 JVM 的内存使用，使得可以创建内存占用更小的虚拟机实例（3M 以下）。这对于嵌入式系统和资源受限的环境非常有用。
+
+## JEP 149: 减少了核心库的内存占用
+
+该特性通过优化核心库的实现，减少了其内存占用。这对于提高应用程序的整体性能和资源利用率非常重要。
+
+## JEP 150: 新的日期时间 API（java.time 包）
+
+新的日期时间 API 引入了 `java.time` 包，提供了一种更现代、更易用的日期和时间处理机制。它解决了旧日期时间 API 中的许多问题，如线程安全性、易用性等。
+
+```java
+// 新的日期时间 API 示例
+LocalDate today = LocalDate.now();
+LocalDateTime now = LocalDateTime.now();
+ZonedDateTime zonedNow = ZonedDateTime.now();
+```
+
+## JEP 153: 命令行启动 JavaFX 应用
+
+该特性允许通过命令行直接启动 JavaFX 应用程序，简化了 JavaFX 应用的部署和运行过程。
+
+```
+java --module-path /path/to/javafx-sdk/lib --add-modules javafx.controls,javafx.fxml -jar MyApp.jar
+```
+
+## JEP 155: 改进对并发的支持
+
+该特性对 Java 的并发支持进行了改进，引入了新的并发工具和机制，如 `CompletableFuture` 和 `StampedLock`，提高了多线程编程的效率和可靠性。
+
+```java
+// CompletableFuture 示例
+CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> "Hello")
+                                                  .thenApply(s -> s + " World");
+future.thenAccept(System.out::println);
+```
+
+## JEP 170: JDBC 4.2
+
+JDBC 4.2 是 Java 数据库连接 API 的一个更新版本，引入了一些新特性和改进，如支持新的 SQL 类型、改进的连接池管理等。
+
+## JEP 172: DocLint 工具，用来检查 Javadoc 注释内容
+
+DocLint 是一个用于检查 Javadoc 注释内容的工具，它可以帮助开发者确保 Javadoc 注释的准确性和一致性。通过 DocLint，可以检测出注释中的语法错误、格式问题等。
+
+## JEP 173: 移除一些很少使用的垃圾回收器组合
+
+该特性移除了一些很少使用的垃圾回收器组合，简化了 JVM 的垃圾回收配置选项。这有助于减少开发者的配置负担，提高垃圾回收的效率。
+
+## JEP 177: java.text.DecimalFormat.format 优化
+
+该特性对 `java.text.DecimalFormat.format` 方法进行了优化，提高了数字格式化的性能。这对于需要频繁进行数字格式化的应用程序非常有益。
+
+## JEP 178: 静态链接的 JNI 库
+
+该特性支持静态链接 JNI（Java Native Interface）库，使得 JNI 库可以在应用程序启动时一次性加载，而不是在每次调用时动态加载。这提高了 JNI 调用的性能。
+
+## JEP 180: 使用平衡树处理频繁的 HashMap 碰撞
+
+该特性改进了 `HashMap` 的实现，当发生频繁的碰撞时，使用平衡树而不是链表来存储元素。这提高了 `HashMap` 在高碰撞情况下的性能。
+
+## JEP 184: HTTP URL 访问权限
+
+该特性增强了 Java 对 HTTP URL 的访问权限控制，使得开发者可以更细粒度地控制对 HTTP 资源的访问。这对于安全敏感的应用程序非常重要。
+----------------------------------------------------------------------

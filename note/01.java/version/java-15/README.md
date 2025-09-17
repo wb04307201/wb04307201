@@ -1,154 +1,183 @@
 # Java 15
 
-- JEP 339：Edwards-Curve 数字签名算法 (EdDSA)
-- JEP 360：密封的类和接口（预览）：Java 15 新特性—密封的类与接口
-- JEP 371：隐藏类 Hidden Classes：Java 15 新特性—隐藏类
-- JEP 372：移除 Nashorn JavaScript 引擎
-- JEP 373：重新实现 DatagramSocket API
-- JEP 374：禁用偏向锁定
-- JEP 375：模式匹配的 instanceof（第二次预览）
-- JEP 377：ZGC—可伸缩低延迟垃圾收集器（正式特性）
-- JEP 378：文本块（正式特性）
-- JEP 379：Shenandoah—低暂停时间垃圾收集器（正式特性）
-- JEP 381：移除 Solaris 和 SPARC 支持
-- JEP 383：外部存储器访问 API （二次孵化器版）
-- JEP 384：Record (第二次预览)
-- JEP 385：废除 RMI 激活
+- **JEP 339**: Edwards-Curve 数字签名算法 (EdDSA)
+- **JEP 360**: 密封类（预览）
+- **JEP 371**: 隐藏类
+- **JEP 372**: 移除 Nashorn JavaScript 引擎
+- **JEP 373**: 重新实现遗留的 DatagramSocket API
+- **JEP 374**: 禁用并弃用偏向锁
+- **JEP 375**: 针对 instanceof 的模式匹配（第二次预览）
+- **JEP 377**: ZGC：可扩展的低延迟垃圾收集器
+- **JEP 378**: 文本块
+- **JEP 379**: Shenandoah：低暂停时间垃圾收集器
+- **JEP 381**: 移除 Solaris 和 SPARC 端口
+- **JEP 383**: 外部内存访问 API（第二次孵化）
+- **JEP 384**: 记录类（第二次预览）
+- **JEP 385**: 弃用 RMI 激活以供移除
 
----
+## JEP 339: Edwards-Curve 数字签名算法 (EdDSA)
 
-## JEP 339：Edwards-Curve 数字签名算法 (EdDSA)
-在数字签名算法领域，安全性始终是首要考虑的因素，但是随着技术的发展，一些旧的签名算法（如RSA和ECDSA）面临着越来越多的安全挑战。
+EdDSA 是一种现代数字签名算法，基于椭圆曲线密码学。它提供了更高的安全性和性能，并且比传统的 ECDSA 算法更简单和更易于实现。Java 15 引入了对 EdDSA 的支持，使得开发者可以更方便地使用这种先进的签名算法来保护数据的安全。
 
-EdDSA 是一种更加现代换的签名算法，相比于传统算法，它提供了更强的安全性。同时，在同等安全级别下，EdDSA通常比ECDSA等算法更快，特别是在签名生成和验证过程中，这就意味着对于需要处理大量数字签名的系统，EdDSA可以显著提升效率。
+```java
+// 生成 EdDSA 密钥对
+KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("Ed25519");
+KeyPair keyPair = keyPairGenerator.generateKeyPair();
 
-Edwards-Curve 数字签名算法（EdDSA），一种根据 RFC 8032 规范所描述的 Edwards-Curve 数字签名算法（EdDSA）实现加密签名，实现了一种 RFC 8032 标准化方案，但它不能代替 ECDSA。
+// 使用私钥进行签名
+Signature signature = Signature.getInstance("Ed25519");
+signature.initSign(keyPair.getPrivate());
+byte[] dataToSign = "Hello, World!".getBytes();
+signature.update(dataToSign);
+byte[] signatureBytes = signature.sign();
 
-## JEP 360：密封的类和接口（预览）
-在 Java 中，类和接口的继承通常是开放的，意味着任何人都可以扩展或实现它们。这种开放性在某些情况下可能导致类型体系的不确定性。
+// 使用公钥验证签名
+signature.initVerify(keyPair.getPublic());
+signature.update(dataToSign);
+boolean isValid = signature.verify(signatureBytes);
+System.out.println("Signature is valid: " + isValid);
+```
 
-Java 15 引入密封类和接口是为了给予开发者更精确的控制权，允许他们定义一个类的确切子类型集合，防止其他类或接口扩展或实现它们。这种控制对专门的类型层次结构非常有用，例如内部框架。
+## JEP 360: 密封类（预览）
 
-我们可以将一个类或接口声明为密封的（sealed），表示其只能被特定的类或接口继承或实现。密封类必须显式指定其所有直接子类，这些子类必须位于与密封类相同的模块或包中。子类也可以被声明为 final, sealed, 或 non-sealed，从而允许进一步的继承、限制继承或禁止继承。
+密封类是一种新的类声明机制，它允许开发者限制类的继承层次结构。通过密封类，可以明确指定哪些类可以继承当前类，从而提供更好的封装性和安全性。密封类适用于需要严格控制子类行为的场景，例如实现特定的设计模式或框架。
 
-## JEP 371：隐藏类 Hidden Classes
-Java 15 引入隐藏类主要是为了改进框架和库的开发，尤其是那些需要动态生成类的场景，它主要针对的某些特定的使用场景，而不是为了日常应用程序开发。
+```java
+// 定义一个密封类
+public sealed class Animal permits Dog, Cat {
+    // 类体
+}
 
-隐藏类有如下几个特点：
-- **不可见性**：隐藏类对Java语言使用者是不可见的，也就是说，它们不能被常规Java代码直接使用或者通过反射API访问。
-- **单一加载器局限性**：隐藏类是由特定的类加载器加载的，它们的生命周期与加载它们的类加载器紧密相连。这意味着它们只对加载它们的类加载器可见。
-- **非继承性**：隐藏类不可以被显式继承，也就是说，你不能声明一个类显式地继承一个隐藏类。
-- **链接上的限制**：虽然隐藏类与常规类一样，会被链接到它们的定义类加载器中，但是它们不会被启动类加载器或任何其他类加载器所链接，这防止了它们被其他类加载器意外加载。
+// 密封类的子类
+public final class Dog extends Animal {
+    // 类体
+}
 
-## JEP 372：移除 Nashorn JavaScript 引擎
-Nashorn JavaScript 引擎是在 Java 8 引入的，用于替代旧的Rhino引擎，然而，随着时间的推移，Nashorn的维护和更新成为了一个问题，在 Java 11 中被标记为废弃。
+public final class Cat extends Animal {
+    // 类体
+}
+```
 
-移除 Nashorn JavaScript 引擎的主要原因有如下几个：
-- **维护成本**：随着ECMAScript语言规范的不断发展，要保持Nashorn与最新标准的一致性维护成本太高。
-- **市场变化**：JavaScript 运行时环境的市场已经发生了变化，有了更多的选择，例如Node.js。
+## JEP 371: 隐藏类
 
-## JEP 373：重新实现 DatagramSocket API
-DatagramSocket 是最初的网络API之一，它提供了无连接的数据包发送和接收能力。该 API 自 Java 1.0 诞生开始就没有怎么更新过。随着时间的推移，这个API的实现变得难以维护，且存在性能问题。
+隐藏类是一种只能在运行时动态生成的类，它们不能被直接引用或发现。隐藏类适用于需要动态生成代码的场景，例如框架和库的实现。通过隐藏类，可以提高代码的灵活性和性能，同时减少对静态类结构的依赖。
 
-Java 15 对 DatagramSocket API 实施了重构，让底层实现更加现代化，同时保持与现有API的向后兼容性，以便提高可维护性和性能。
+```java
+// 使用 Lookup 类创建隐藏类
+Lookup lookup = MethodHandles.lookup();
+Class<?> hiddenClass = lookup.defineHiddenClass(new byte[]{...}, true).lookupClass();
 
-具体改进内容如下：
-- 通过替换`java.net.datagram`的基础实现，重新实现旧版 DatagramSocket API。
-- 更改`java.net.DatagramSocket`和`java.net.MulticastSocket`为更加简单、现代化的底层实现。提高了 JDK 的可维护性和稳定性。
-- 通过将`java.net.datagram.Socket`和`java.net.MulticastSocket`API的底层实现替换为更简单、更现代的实现来重新实现遗留的DatagramSocket API。
+// 隐藏类不能被直接引用
+// 只能通过反射或其他动态机制来使用
+```
 
-## JEP 374：禁用偏向锁定
-偏向锁定是一种用于减少同步操作开销的技术，它在Java 6中被引入。偏向锁定的基本思想是，如果一个线程获得了锁，并且没有其他线程竞争这个锁，那么JVM会假定这个线程将再次获得锁，因此在未来的锁操作中省略了一些与锁相关的检查和更新操作，从而提高性能。
+## JEP 372: 移除 Nashorn JavaScript 引擎
 
-但是，偏向锁定增加了JVM的复杂性，并且在多线程竞争激烈的情况下，它可能不会带来预期的性能提升。所以在 Java 15 中，默认情况下禁用偏向锁，并弃用所有相关的命令行选项（BiasedLockingStartupDelay, BiasedLockingBulkRebiasThreshold, BiasedLockingBulkRevokeThreshold, BiasedLockingDecayTime, UseOptoBiasInlining, PrintBiasedLockingStatistics and PrintPreciseBiasedLockingStatistics）。但是我们还是可以通过参数`-XX:+UseBiasedLocking`来启用它。
+Nashorn 是 Java 8 引入的一个 JavaScript 引擎，用于在 Java 应用程序中执行 JavaScript 代码。随着 GraalVM JavaScript 引擎的成熟和普及，Nashorn 引擎的使用逐渐减少。Java 15 决定移除 Nashorn JavaScript 引擎，以减少 JDK 的维护负担和代码复杂度。
 
-禁用偏向锁定之后，JVM在执行同步操作时不需要考虑偏向模式，这简化了锁的实现。
+## JEP 373: 重新实现遗留的 DatagramSocket API
 
-## JEP 375：模式匹配的 instanceof（第二次预览）
-为了解决`instanceof`强制转换带来的冗余和容易出错的问题，Java 14 引入 模式匹配的`instanceof`，Java 15 作为第二次预览。
+遗留的 DatagramSocket API 存在一些设计和实现上的问题，例如线程安全性、性能和可扩展性等方面的不足。Java 15 对 DatagramSocket API 进行了重新实现，解决了这些问题，提高了 UDP 网络编程的可靠性和性能。
 
-| Java 版本  | 更新类型   | JEP      | 更新内容                      |
-|----------|--------|----------|---------------------------|
-| Java 14	 | 第一次预览	 | JEP 305	 | 引入 instanceof 模式匹配为预览特性   |
-| Java 15	 | 第二次预览	 | JEP 375	 | 对 instanceof 模式匹配进行了修正和优化 |
+```java
+// 使用重新实现的 DatagramSocket API
+try (DatagramSocket socket = new DatagramSocket()) {
+    byte[] sendData = "Hello, World!".getBytes();
+    InetAddress address = InetAddress.getByName("localhost");
+    DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, address, 9876);
+    socket.send(sendPacket);
 
-## JEP 377：ZGC—可伸缩低延迟垃圾收集器（正式特性）
-ZGC 是Java 11引入的新的垃圾收集器，经过了多个实验阶段，在 Java 15 终于成为正式特性。ZGC 是一种可伸缩的低延迟垃圾收集器，旨在为大型应用程序和系统提供高性能的内存管理，同时保持极低的延迟。其主要为了满足如下目标进行设计：
-- GC 停顿时间不超过 10ms
-- 即能处理几百 MB 的小堆，也能处理几个 TB 的大堆
-- 应用吞吐能力不会下降超过 15%（与 G1 回收算法相比）
-- 方便在此基础上引入新的 GC 特性和利用 colord
-- 针以及 Load barriers 优化奠定基础
+    byte[] receiveData = new byte[1024];
+    DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+    socket.receive(receivePacket);
+    String receivedString = new String(receivePacket.getData(), 0, receivePacket.getLength());
+    System.out.println("Received: " + receivedString);
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
 
-主要特点如下：
-- **低延迟**：ZGC 旨在提供极低的停顿时间，即使是在处理几十到几百 GB 的堆内存时也是如此。这使其非常适合需要低延迟的应用，如实时系统、大型服务端应用等。
-- **可伸缩性**：ZGC 能够高效地管理从几百 MB 到数 TB 的堆内存，保持一致的低延迟性能，不会随着堆大小的增加而显著增加停顿时间。
-- **无锁并发算法**：ZGC 使用无锁的数据结构和算法，减少了线程间的竞争，从而提高了效率和吞吐量。
-- **分代收集**：尽管 ZGC 不是一个传统的分代垃圾收集器，但它在内部使用了类似分代收集的技术来优化性能。
-- **动态堆内存压缩**：ZGC 能够在运行时动态地压缩堆内存，减少内存占用，并且无需长时间停顿。
+## JEP 374: 禁用并弃用偏向锁
 
-- 通过 JVM 参数`-XX:+UseZGC`启用 ZGC。
+偏向锁是一种在单线程环境下提高锁性能的机制。然而，随着多核处理器的普及和并发编程的广泛应用，偏向锁的优势逐渐减弱，并且在某些情况下可能会导致性能下降。Java 15 决定禁用并弃用偏向锁，以简化锁的实现和提高并发性能。
 
-| Java 版本	 | 更新类型	 | JEP	     | 更新内容          |
-|----------|-------|----------|---------------|
-| Java 11	 | 实验特性	 | JEP 333	 | 引入 ZGC 作为实验特性 |
-| Java 15	 | 正式特性	 | JEP 377	 | 正式特性          |
+## JEP 375: 针对 instanceof 的模式匹配（第二次预览）
 
-## JEP 378：文本块（正式特性）
-文本块首先在 Java 13 引入，主要目的是为了简化多行字符串的处理，在 Java 14 中得到增强，新加入了两个转义符，分别是：`\`和`\s`：
-- **\ (行尾转义符)**: 这个转义符用于去除行尾换行符，使得代码中的文本块和实际字符串之间可以有更好的对齐，同时不在字符串的内容中包含不必要的换行符。
-- **\s (空格转义序列)**: 这个转义符用于在需要的地方显式添加尾随空格，这在某些格式化文本中是必要的。
+模式匹配是一种强大的编程特性，它允许开发者根据对象的类型和结构进行更灵活的条件判断。Java 15 继续完善针对 instanceof 的模式匹配功能，提供了第二次预览版本。通过模式匹配，可以简化代码，提高可读性和可维护性。
 
-然而，在 Java 13 和 Java 14 中都是作为预览特性引入，终于在JDK 15 转正，成为正式特性。
+```java
+Object obj = "Hello";
+if (obj instanceof String s) {
+    System.out.println("The length of the string is: " + s.length());
+}
+```
 
-| Java 版本	 | 更新类型	  | JEP	     | 更新内容                    |
-|----------|--------|----------|-------------------------|
-| Java 13	 | 预览特性	  | JEP 355	 | 引入文本块作为预览特性，支持多行字符串字面量。 |
-| Java 14	 | 第二次预览	 | JEP 368	 | 改进文本块，包括空行和转义序列的处理。     |
-| Java 15	 | 正式特性	  | JEP 378	 | 正式特性                    |
+## JEP 377: ZGC：可扩展的低延迟垃圾收集器
 
-## JEP 379：Shenandoah—低暂停时间垃圾收集器（正式特性）
-Shenandoah 是一种低暂停时间垃圾收集器，在 Java 12 中作为预览特性引入，Java 15 被提升为正式特性。
+ZGC 是一种新型的垃圾收集器，旨在实现可扩展的低延迟垃圾收集。它适用于大内存堆和高并发应用程序，能够在不影响应用程序性能的情况下进行高效的垃圾回收。Java 15 对 ZGC 进行了进一步的优化和改进，提高了其稳定性和性能。
 
-在大型 Java 应用程序中，垃圾收集（GC）可能导致显著的暂停时间，这会影响应用程序的响应能力和性能。传统的垃圾收集器（如 Parallel GC, CMS 等）在处理大量内存时，可能会产生长时间的停顿。Shenandoah GC 的设计目标是在任何堆大小下都提供低暂停时间。
+```java
+// 启动 JVM 时指定使用 ZGC
+// java -XX:+UseZGC -Xmx4g MyApplication
+```
 
-其主要特征：
-- **低暂停时间**：Shenandoah GC 的主要目标是减少由于垃圾收集引起的暂停时间，即使在大型堆上也能保持低延迟。
-- **并发处理**：Shenandoah 能够在应用线程运行时并发地进行大部分垃圾收集工作。这包括标记、整理和回收阶段。
-- **独立于堆大小**：与某些其他垃圾收集器不同，Shenandoah GC 的暂停时间与堆的大小基本无关，这使得它适用于大型应用程序。
-- **负载平衡**：Shenandoah 努力平衡应用线程和垃圾收集线程之间的工作负载，以优化性能。
+## JEP 378: 文本块
 
-使用参数`-XX:+UseShenandoahGC`启用 Shenandoah。
+文本块是一种多行字符串字面量的表示方式，它使得编写包含多行文本的代码更加简洁和易读。文本块使用三个双引号（"""）作为起始和结束标记，可以自动处理换行符和缩进，减少了字符串拼接和转义字符的使用。
 
-| Java 版本	 | 更新类型	 | JEP	     | 更新内容                        |
-|----------|-------|----------|-----------------------------|
-| Java 12	 | 实验特性	 | JEP 189	 | 引入 Shenandoah GC 作为实验性垃圾收集器 |
-| Java 15	 | 正式特性	 | JEP 379	 | 正式特性                        |
+```java
+String html = """
+    <html>
+        <body>
+            <p>Hello, World!</p>
+        </body>
+    </html>
+    """;
+System.out.println(html);
+```
 
-## JEP 381：移除 Solaris 和 SPARC 支持
-**该项特性主要内容是**：从Java源代码和构建中移除对Solaris/SPARC, Solaris/x64, 和Linux/SPARC平台的支持。
+## JEP 379: Shenandoah：低暂停时间垃圾收集器
 
-近年来，Solaris 和 SPARC 都已被 Linux 操作系统和英特尔处理器取代。维护对它们的支持也变得不再经济实惠。
+Shenandoah 是一种低暂停时间的垃圾收集器，它通过并发标记和并发压缩等机制，减少了垃圾回收对应用程序的停顿时间。Java 15 对 Shenandoah 垃圾收集器进行了进一步的优化和改进，提高了其性能和稳定性。
 
-## JEP 383：外部存储器访问 API （二次孵化器版）
-外部存储器访问 API 首次作为孵化API在 Java 14 中引入，Java 15 继续作为孵化 API 引入，同时做了一些改进和增强：
-1. 增加了对非托管内存（即不由 Java 虚拟机管理的内存）的更全面支持。
-2. 新增了对内存段（MemorySegment）的改进操作，使得对非堆内存的访问更加灵活和安全。
+```java
+// 启动 JVM 时指定使用 Shenandoah
+// java -XX:+UseShenandoahGC -Xmx4g MyApplication
+```
 
-| Java 版本	 | 更新类型	  | JEP	     | 更新内容         |
-|----------|--------|----------|--------------|
-| Java 14	 | 孵化器	   | JEP 370	 | 引入外部内存访问 API |
-| Java 15	 | 第二孵化器	 | JEP 383	 | 优化外部内存访问 API |
+## JEP 381: 移除 Solaris 和 SPARC 端口
 
-## JEP 384：Record (第二次预览)
-为了简化创建一个简单的数据载体类的过程，Record 作为预览在 Java 14 中首次引入，Java 15 继续作为预览特性存在，相比 Java 14 ，Java 15 对 Record 没有重大变化，只对其做了一些细微调整和优化。
+随着计算机硬件架构的发展，Solaris 和 SPARC 架构的使用逐渐减少。为了简化 JDK 的开发和维护，Java 15 决定移除对 Solaris 和 SPARC 端口的支持。这意味着从 Java 15 开始，JDK 将不再提供适用于 Solaris 操作系统和 SPARC 处理器的版本。
 
-| Java 版本	 | 更新类型	  | JEP	     | 更新内容                     |
-|----------|--------|----------|--------------------------|
-| Java 14	 | 第一次预览	 | JEP 359	 | 引入 Record Classes 作为预览特性 |
-| Java 15	 | 第二次预览	 | JEP 384	 | 细微的改动                    |
+## JEP 383: 外部内存访问 API（第二次孵化）
 
-## JEP 385： 废除 RMI 激活
-RMI 激活是 Java RMI (远程方法调用) 的一个组成部分，用于支持远程对象的激活。随着时间的推移，RMI 激活系统的使用越来越少，而且 RMI激活机制是RMI中一个过时的部分，自Java 8以来一直是可选的而非必选项。
+外部内存访问 API 提供了一种高效的方式来访问 Java 堆之外的内存，例如本地内存和共享内存。这对于需要与本地代码或其他进程进行交互的应用程序非常有用，例如高性能计算、数据库连接和图形处理等领域。Java 15 对外部内存访问 API 进行了第二次孵化，进一步完善了其功能和性能。
 
-RMI 激活系统的实现复杂，增加了维护成本，在 Java 15 中正式被废除，未来版本会被完全移除。
+```java
+// 使用外部内存访问 API
+MemorySegment segment = MemorySegment.allocateNative(1024);
+MemoryAccess.setIntAtIndex(segment, 0, 42);
+int value = MemoryAccess.getIntAtIndex(segment, 0);
+System.out.println("Value: " + value);
+```
+
+## JEP 384: 记录类（第二次预览）
+
+记录类是一种简洁的数据载体类，它自动提供了常见的方法，如构造函数、访问器方法、equals()、hashCode() 和 toString() 等。记录类适用于需要表示简单数据结构的场景，减少了样板代码的编写，提高了代码的可读性和可维护性。Java 15 对记录类进行了第二次预览，进一步完善了其功能和语法。
+
+```java
+// 定义一个记录类
+public record Person(String name, int age) {
+    // 记录类的类体可以为空，或者包含静态方法、静态初始化块等
+}
+
+// 使用记录类
+Person person = new Person("Alice", 30);
+System.out.println(person.name()); // 访问器方法
+System.out.println(person.age());
+System.out.println(person); // toString() 方法
+```
+
+## JEP 385: 弃用 RMI 激活以供移除
+
+RMI（Remote Method Invocation）激活是一种用于在分布式系统中启动和管理远程对象的技术。然而，随着现代分布式架构的发展，RMI 激活的使用逐渐减少，并且存在一些安全性和性能方面的问题。Java 15 决定弃用 RMI 激活功能，为未来的移除做准备。

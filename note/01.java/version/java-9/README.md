@@ -1,412 +1,457 @@
 # Java 9
 
-- JEP 261: 模块系统：Java 9 新特性—模块化
-- JEP 269: 集合工厂方法：Java 9 新特性—新增只读集合和工厂方法
-- JEP 222：Jshell：Java 9 新特性—REPL 工具：JSheel 命令
-- JEP 213：接口支持私有方法：Java 9 新特性—接口支持私有方法
-- Stream API 增强：Java 9 新特性—Stream API的增强
-- Optional 的增强：Java 9 新特性—Optional 的增强
-- 改进 try-with-resources：Java 9 新特性—try-with-resources的升级
-- JEP 102：Process API
-- JEP 264：平台日志 API 和 服务
-- JEP 266: 反应式流（Reactive Streams）
-- JEP 224: HTML5 Javadoc
-- JEP 238: 多版本兼容 JAR 文件
-- JEP 277：改进的弃用注解 @Deprecated
-- JEP 213：改进钻石操作符(Diamond Operator)
-- 增强 CompletableFuture：Java 9 新特性—改进CompletableFuture
+- **JEP 102**: 进程API更新
+- **JEP 110**: HTTP/2客户端
+- **JEP 143**: 改进争用锁机制
+- **JEP 158**: 统一JVM日志记录
+- **JEP 165**: 编译器控制
+- **JEP 193**: 变量句柄
+- **JEP 197**: 分段代码缓存
+- **JEP 199**: 智能Java编译（第二阶段）
+- **JEP 200**: 模块化JDK
+- **JEP 201**: 模块化源代码
+- **JEP 211**: 导入语句中省略弃用警告
+- **JEP 212**: 解决Lint和Doclint警告
+- **JEP 213**: Milling Project Coin
+- **JEP 214**: 移除JDK 8中已弃用的GC组合
+- **JEP 215**: javac的分层归因
+- **JEP 216**: 正确处理导入语句
+- **JEP 217**: 注解管道2.0
+- **JEP 219**: 数据报传输层安全(DTLS)
+- **JEP 220**: 模块化运行时镜像
+- **JEP 221**: 简化的Doclet API
+- **JEP 222**: jshell：Java Shell（读取-求值-输出循环）
+- **JEP 223**: 新版本字符串方案
+- **JEP 224**: HTML5 Javadoc
+- **JEP 225**: Javadoc搜索
+- **JEP 226**: UTF-8属性文件
+- **JEP 227**: Unicode 7.0
+- **JEP 228**: 添加更多诊断命令
+- **JEP 229**: 默认创建PKCS12密钥库
+- **JEP 231**: 移除启动时JRE版本选择
+- **JEP 232**: 改进安全应用程序性能
+- **JEP 233**: 自动生成运行时编译器测试
+- **JEP 235**: 测试javac生成的类文件属性
+- **JEP 236**: Nashorn的解析器API
+- **JEP 237**: Linux/AArch64端口
+- **JEP 238**: 多版本JAR文件
+- **JEP 240**: 移除JVM TI hprof代理
+- **JEP 241**: 移除jhat工具
+- **JEP 243**: Java级JVM编译器接口
+- **JEP 244**: TLS应用层协议协商扩展
+- **JEP 245**: 验证JVM命令行标志参数
+- **JEP 246**: 利用CPU指令进行GHASH和RSA计算
+- **JEP 247**: 为旧平台版本编译
+- **JEP 248**: 使G1成为默认垃圾收集器
+- **JEP 249**: TLS的OCSP装订
+- **JEP 250**: 在CDS归档中存储内部字符串
+- **JEP 251**: 多分辨率图像
+- **JEP 252**: 默认使用CLDR区域设置数据
+- **JEP 253**: 为模块化准备JavaFX UI控件和CSS API
+- **JEP 254**: 紧凑字符串
+- **JEP 255**: 将选定的Xerces 2.11.0更新合并到JAXP中
+- **JEP 256**: BeanInfo注解
+- **JEP 257**: 将JavaFX/Media更新到更新版本的GStreamer
+- **JEP 258**: HarfBuzz字体布局引擎
+- **JEP 259**: 栈遍历API
+- **JEP 260**: 封装大多数内部API
+- **JEP 261**: 模块系统
+- **JEP 262**: TIFF图像I/O
+- **JEP 263**: Windows和Linux上的HiDPI图形
+- **JEP 264**: 平台日志API和服务
+- **JEP 265**: Marlin图形渲染器
+- **JEP 266**: 更多并发更新
+- **JEP 267**: Unicode 8.0
+- **JEP 268**: XML目录
+- **JEP 269**: 集合的便利工厂方法
+- **JEP 270**: 关键区域的保留堆栈空间
+- **JEP 271**: 统一GC日志记录
+- **JEP 272**: 平台特定桌面功能
+- **JEP 273**: 基于DRBG的SecureRandom实现
+- **JEP 274**: 增强的方法句柄
+- **JEP 275**: 模块化Java应用程序打包
+- **JEP 276**: 语言定义对象模型的动态链接
+- **JEP 277**: 增强的弃用机制
+- **JEP 278**: G1中巨大对象的额外测试
+- **JEP 279**: 改进测试失败故障排除
+- **JEP 280**: 字符串连接优化
+- **JEP 281**: HotSpot C++单元测试框架
+- **JEP 282**: jlink：Java链接器
+- **JEP 283**: 在Linux上启用GTK 3
+- **JEP 284**: 新的HotSpot构建系统
+- **JEP 285**: 自旋等待提示
+- **JEP 287**: SHA-3哈希算法
+- **JEP 288**: 禁用SHA-1证书
+- **JEP 289**: 弃用Applet API
+- **JEP 290**: 过滤传入的序列化数据
+- **JEP 291**: 弃用并发标记清除(CMS)垃圾收集器
+- **JEP 292**: 在Nashorn中实现选定的ECMAScript 6特性
+- **JEP 294**: Linux/s390x端口
+- **JEP 295**: 预先编译(AOT)
+- **JEP 297**: 统一arm32/arm64端口
+- **JEP 298**: 移除演示和示例
+- **JEP 299**: 重新组织文档
 
----
+## JEP 102: 进程API更新
+
+该特性增强了Java的进程控制能力，提供了更丰富的API来启动和管理操作系统进程。主要改进包括获取进程PID、枚举所有进程、处理进程树等。新的API使Java应用程序能够更好地与操作系统交互，监控和控制其他进程。
+
+## JEP 110: HTTP/2客户端
+
+引入了对HTTP/2协议的支持，提供了新的HTTP客户端API。该API支持HTTP/2协议特性，如多路复用、服务器推送、头部压缩等，相比传统的HttpURLConnection提供了更好的性能和易用性。
+
+## JEP 143: 改进争用锁机制
+
+优化了JVM中锁争用的处理机制，提高了在高并发场景下获取和释放锁的性能。该改进减少了线程在竞争锁时的开销，提升了多线程应用程序的整体性能。
+
+## JEP 158: 统一JVM日志记录
+
+引入了统一的日志记录框架，提供了一致的方式来记录JVM内部的各种事件。通过统一的日志格式和控制机制，开发者可以更容易地诊断和分析JVM的行为。
+
+## JEP 165: 编译器控制
+
+提供了更精细的编译器控制选项，允许开发者针对特定的方法或代码段指定编译器行为。这包括控制JIT编译、优化级别等，帮助优化应用程序性能。
+
+## JEP 193: 变量句柄
+
+引入了Variable Handles机制，提供了对字段和数组元素进行原子操作和内存访问控制的能力。相比传统的反射API，Variable Handles提供了更好的性能和类型安全性。
+
+## JEP 197: 分段代码缓存
+
+将JVM的代码缓存划分为多个段，分别存储不同类型的编译代码（如即时编译代码、AOT编译代码等）。这种结构提高了代码缓存的管理效率，减少了不同代码类型之间的干扰。
+
+## JEP 199: 智能Java编译（第二阶段）
+
+改进了javac编译器的性能和可维护性，包括优化编译速度、减少内存使用、改进错误报告等。这些改进使得编译大型项目更加高效。
+
+## JEP 200: 模块化JDK
+
+将JDK本身重构为模块化结构，每个模块都有明确的依赖关系和接口定义。这使得JDK更加模块化，便于维护和扩展。
+
+## JEP 201: 模块化源代码
+
+重新组织了JDK的源代码结构，按照模块化的方式进行组织。这种结构使得源代码更易于理解和维护。
+
+## JEP 211: 导入语句中省略弃用警告
+
+在导入已弃用的类或包时，可以选择性地抑制编译器警告。这减少了不必要的警告信息，使开发者能够更专注于真正需要关注的问题。
+
+## JEP 212: 解决Lint和Doclint警告
+
+修复了JDK源代码中的Lint和Doclint警告，提高了代码质量和文档质量。
+
+## JEP 213: Milling Project Coin
+
+实现了Project Coin的剩余改进，包括diamond操作符的扩展使用、try-with-resources语句的改进等，进一步简化了Java语法。
+
+## JEP 214: 移除JDK 8中已弃用的GC组合
+
+移除了在JDK 8中已标记为弃用的垃圾收集器组合，简化了JVM的GC配置选项。
+
+## JEP 215: javac的分层归因
+
+改进了javac编译器的类型检查和归因过程，提高了编译器的性能和准确性。
+
+## JEP 216: 正确处理导入语句
+
+修复了javac编译器在处理复杂导入语句时的一些问题，提高了编译器的健壮性。
+
+## JEP 217: 注解管道2.0
+
+改进了注解处理机制，提供了更好的性能和更丰富的功能。
+
+## JEP 219: 数据报传输层安全(DTLS)
+
+实现了DTLS协议支持，为基于UDP的应用程序提供了安全通信能力。
+
+## JEP 220: 模块化运行时镜像
+
+引入了模块化的运行时镜像格式，使得Java应用程序可以更小、启动更快。
+
+## JEP 221: 简化的Doclet API
+
+简化了Javadoc工具的Doclet API，使其更容易开发自定义的文档生成工具。
+
+## JEP 222: jshell：Java Shell（读取-求值-输出循环）
+
+引入了交互式的Java shell工具，允许开发者快速测试Java代码片段，无需创建完整的程序。
+
+## JEP 223: 新版本字符串方案
+
+采用了新的版本命名方案，使Java版本号更加清晰和一致。
+
+## JEP 224: HTML5 Javadoc
+
+改进了Javadoc生成器，支持生成HTML5格式的文档。
+
+## JEP 225: Javadoc搜索
+
+为生成的Javadoc文档添加了搜索功能，便于用户查找相关信息。
+
+## JEP 226: UTF-8属性文件
+
+支持使用UTF-8编码的属性文件，解决了非拉丁字符的本地化问题。
+
+## JEP 227: Unicode 7.0
+
+更新了Unicode支持到7.0版本，提供了对更多字符的支持。
+
+## JEP 228: 添加更多诊断命令
+
+增加了新的JVM诊断命令，便于监控和调试Java应用程序。
+
+## JEP 229: 默认创建PKCS12密钥库
+
+将默认的密钥库格式从JKS改为PKCS12，提高了与标准的兼容性。
+
+## JEP 231: 移除启动时JRE版本选择
+
+移除了在启动时选择JRE版本的功能，简化了JVM的启动过程。
+
+## JEP 232: 改进安全应用程序性能
+
+优化了安全相关代码的性能，减少了加密操作的开销。
+
+## JEP 233: 自动生成运行时编译器测试
+
+引入了自动生成运行时编译器测试的机制，提高了编译器的质量保证。
+
+## JEP 235: 测试javac生成的类文件属性
+
+增加了对javac生成的类文件属性的测试，确保编译器输出的正确性。
+
+## JEP 236: Nashorn的解析器API
+
+为Nashorn JavaScript引擎提供了解析器API，便于分析和处理JavaScript代码。
+
+## JEP 237: Linux/AArch64端口
+
+增加了对Linux/AArch64平台的支持，扩展了Java的平台兼容性。
+
+## JEP 238: 多版本JAR文件
+
+引入了多版本JAR文件支持，允许在单个JAR文件中包含针对不同Java版本的类文件。
+
+## JEP 240: 移除JVM TI hprof代理
+
+移除了已过时的hprof代理，简化了JVM工具接口。
+
+## JEP 241: 移除jhat工具
+
+移除了jhat工具，推荐使用更现代的分析工具。
+
+## JEP 243: Java级JVM编译器接口
+
+引入了Java级别的JVM编译器接口，便于开发自定义的编译器。
+
+## JEP 244: TLS应用层协议协商扩展
+
+实现了TLS应用层协议协商(ALPN)扩展，支持HTTP/2等协议。
+
+## JEP 245: 验证JVM命令行标志参数
+
+增加了对JVM命令行标志参数的验证，避免无效配置导致的问题。
+
+## JEP 246: 利用CPU指令进行GHASH和RSA计算
+
+利用现代CPU的硬件指令加速GHASH和RSA计算，提高加密性能。
+
+## JEP 247: 为旧平台版本编译
+
+提供了编译针对旧Java平台版本代码的能力。
+
+## JEP 248: 使G1成为默认垃圾收集器
+
+将G1垃圾收集器设为默认选择，提供了更好的性能和可预测性。
+
+## JEP 249: TLS的OCSP装订
+
+实现了OCSP装订支持，提高了TLS连接的性能和安全性。
+
+## JEP 250: 在CDS归档中存储内部字符串
+
+在类数据共享(CDS)归档中存储内部字符串，减少了应用程序启动时间。
+
+## JEP 251: 多分辨率图像
+
+支持多分辨率图像，便于开发高DPI显示的应用程序。
+
+## JEP 252: 默认使用CLDR区域设置数据
+
+默认使用Unicode CLDR区域设置数据，提供了更准确的国际化支持。
+
+## JEP 253: 为模块化准备JavaFX UI控件和CSS API
+
+为JavaFX UI控件和CSS API的模块化做好准备。
+
+## JEP 254: 紧凑字符串
+
+引入了紧凑字符串实现，减少了字符串内存使用。
+
+## JEP 255: 将选定的Xerces 2.11.0更新合并到JAXP中
+
+将Xerces XML解析器的更新合并到JAXP中，提高了XML处理能力。
+
+## JEP 256: BeanInfo注解
+
+引入了基于注解的BeanInfo定义机制，简化了JavaBean的开发。
+
+## JEP 257: 将JavaFX/Media更新到更新版本的GStreamer
+
+将JavaFX媒体功能更新到新版GStreamer，提高了媒体处理能力。
+
+## JEP 258: HarfBuzz字体布局引擎
+
+集成了HarfBuzz字体布局引擎，提供了更好的文本渲染支持。
+
+## JEP 259: 栈遍历API
+
+引入了高效的栈遍历API，便于调试和分析应用程序。
+
+## JEP 260: 封装大多数内部API
+
+封装了大多数JDK内部API，鼓励开发者使用标准API。
 
 ## JEP 261: 模块系统
 
-JPMS（Java Platform Module System）是Java 9发行版的核心亮点。它也被称为Jigshaw项目。模块是新的结构，就像我们已经有包一样。使用新的模块化编程开发的应用程序可以看作是交互模块的集合，这些模块之间具有明确定义的边界和依赖关系。
-
-JPMS包括为编写模块化应用程序提供支持，以及将JDK源代码模块化。JDK 9 附带了大约 92 个模块（在 GA 版本中可以进行更改）。Java 9 Module System有一个`java.base`模块。它被称为基本模块。它是一个独立的模块，不依赖于任何其他模块。默认情况下，所有其他模块都依赖于`java.base`。
-
-在java模块化编程中：
-- 一个模块通常只是一个 jar 文件，在根目录下有一个文件module-info.class。
-- 要使用模块，请将 jar 文件包含到modulepath而不是classpath. 添加到类路径的模块化 jar 文件是普通的 jar 文件，module-info.class文件将被忽略。
-
-![img.png](img.png)
-
-典型的module-info.java类如下所示：
-```java
-module my.module {
-    // exports 公开指定包的所有公共成员
-    exports cn.my.package.name;
-}
-```
-```java
-module my.module {
-    // exports…to 限制访问的成员范围
-    export cn.my.package.name to cn.target.package;
-}
-```
-```java
-module my.module2 {
-    // 声明my.module2对my.module的依赖
-    requires my.module;
-}
-```
-
-## JEP 269: 集合工厂方法
-
-从 Java 9 开始，您可以使用新的工厂方法创建不可变集合，例如List.of()、Set.of()、Map.of() 和 Map.ofEntries()等工厂方法来创建不可变集合：
-```java
-List.of("Java", "C++");
-Set.of("Java", "C++");
-Map.of("Java", 1, "C++", 2);
-```
-- **注意**：使用 of() 创建的集合为不可变集合，不能进行添加、删除、替换、 排序等操作，不然会报 java.lang.UnsupportedOperationException 异常。
-
-## JEP 222：Jshell
-
-JShell是JDK 9发行版 [ JEP 222 ]附带的新命令行交互式工具，用于评估用 Java 编写的声明、语句和表达式。JShell 允许我们执行 Java 代码片段并立即获得结果，而无需创建解决项目。
-
-Jshell 很像我们在 linux 操作系统中的命令窗口。不同之处在于 JShell 是特定于 Java 的。除了执行简单的代码片段之外，它还有许多其他功能，例如：
-- 在单独的窗口中启动内置代码编辑器
-- 在单独的窗口中启动你选择的代码编辑器
-- 在这些外部编辑器中发生保存操作时执行代码
-- 从文件系统加载预先编写的类
-
-## JEP 213：接口支持私有方法
-Java 8 允许在接口中编写默认方法，这是一个广受欢迎的功能。从 Java 9 开始，您可以在接口中包含私有方法。
-
-这些私有方法将提高接口内部的代码可重用性。例如，如果两个默认方法需要共享代码，私有接口方法将允许它们这样做，但不会将该私有方法暴露给它的实现类。
-
-在接口中使用私有方法有四个规则：
-- 私有接口方法不能是抽象的。
-- 私有方法只能在接口内部使用。
-- 私有静态方法可以在其他静态和非静态接口方法中使用。
-- 私有非静态方法不能在私有静态方法中使用。
-
-```java
-public interface MyInterface {
-    private void methodPrivate(){
-    }
-}
-```
-## Stream API 增强
-Java 9 引入了两种与`Stream`交互的新方法，即`takeWhile()`、`dropWhile()`方法。此外，它还添加了两个重载方法，即`ofNullable()`、`iterate()`方法。
-
-`takeWhile()`方法可以从`Stream`中依次获取满足条件的元素，直到不满足条件为止结束获取。
-```java
-List<Integer> integerList = List.of(11, 33, 66, 8, 9, 13);
-integerList.stream().takeWhile(x -> x < 50).forEach(System.out::println);// 11 33
-```
-
-`dropWhile()`方法的效果和`takeWhile()`相反。
-```java
-List<Integer> integerList2 = List.of(11, 33, 66, 8, 9, 13);
-integerList2.stream().dropWhile(x -> x < 50).forEach(System.out::println);// 66 8 9 13
-```
-
-`ofNullable()`方法允许我们创建一个单元素的`Stream`，可以包含一个非空元素，也可以创建一个空 `Stream`。 而在 Java 8 中则不可以创建空的`Stream`。
-```java
-Stream<String> stringStream = Stream.ofNullable("Java");
-System.out.println(stringStream.count());// 1
-Stream<String> nullStream = Stream.ofNullable(null);
-System.out.println(nullStream.count());//0
-```
-
-`iterate()`方法的新重载方法提供了一个`Predicate`参数 (判断条件)来决定什么时候结束迭代
-```java
-public static<T> Stream<T> iterate(final T seed, final UnaryOperator<T> f) {
-}
-// 新增加的重载方法
-public static<T> Stream<T> iterate(T seed, Predicate<? super T> hasNext, UnaryOperator<T> next) {
-
-}
-```
-使得新的 iterate() 重载方法更加灵活一些。
-```java
-// 使用原始 iterate() 方法输出数字 1~10
-Stream.iterate(1, i -> i + 1).limit(10).forEach(System.out::println);
-// 使用新的 iterate() 重载方法输出数字 1~10
-Stream.iterate(1, i -> i <= 10, i -> i + 1).forEach(System.out::println);
-```
-
-## Optional 的增强
-`Optional`类中新增了`ifPresentOrElse()`、`or()`和`stream()`等方法
-
-`ifPresentOrElse()`方法接受两个参数`Consumer`和`Runnable`，如果`Optional`不为空调用 `Consumer`参数，为空则调用`Runnable`参数。
-```java
-public void ifPresentOrElse(Consumer<? super T> action, Runnable emptyAction)
-
-Optional<Object> objectOptional = Optional.empty();
-objectOptional.ifPresentOrElse(System.out::println, () -> System.out.println("Empty!!!"));// Empty!!!
-```
+实现了Java平台模块系统(JPMS)，提供了模块化的应用程序开发支持。
 
-`or()`方法接受一个`Supplier`参数 ，如果`Optional`为空则返回`Supplier`参数指定的 `Optional`值。
-```java
-public Optional<T> or(Supplier<? extends Optional<? extends T>> supplier)
-
-Optional<Object> objectOptional = Optional.empty();
-objectOptional.or(() -> Optional.of("java")).ifPresent(System.out::println);//java
-```
-
-## 改进 try-with-resources
-
-在 Java 9 之前，我们只能在 try-with-resources 块中声明变量：
-```java
-try (Scanner scanner = new Scanner(new File("testRead.txt"));
-    PrintWriter writer = new PrintWriter(new File("testWrite.txt"))) {
-    // omitted
-}
-```
-
-在 Java 9 之后，在 try-with-resources 语句中可以使用 effectively-final 变量。
-```java
-final Scanner scanner = new Scanner(new File("testRead.txt"));
-PrintWriter writer = new PrintWriter(new File("testWrite.txt"))
-try (scanner;writer) {
-    // omitted
-}
-```
-
-- **effectively-final 变量**： 没有被 final 修饰但是值在初始化后从未更改的变量。
-
-## JEP 102：Process API
-在 Java 5 之前，生成新进程的唯一方法是使用该`Runtime.getRuntime().exec()`方法。然后在 Java 5 中，ProcessBuilder引入了 API，它支持一种更简洁的方式来生成新进程。现在，Java 9 添加了一种获取有关当前进程和任何衍生进程的信息的新方法。
-
-要获取任何进程的信息，现在您应该使用`java.lang.ProcessHandle.Info`接口。此界面可用于获取大量信息，例如：
-- 用于启动进程的命令
-- 命令的参数
-- 进程开始的时刻
-- 它和创建它的用户花费的总时间
-
-```java
-ProcessHandle processHandle = ProcessHandle.current();
-ProcessHandle.Info processInfo = processHandle.info();
-
-System.out.println(processHandle.getPid());
-System.out.println(processInfo.arguments().isPresent());
-System.out.println(pprocessInfo.command().isPresent());
-System.out.println(processInfo.command().get().contains("java"));
-System.out.println(processInfo.startInstant().isPresent());
-```
-
-要获取新衍生进程的信息，请使用`process.toHandle()`方法获取ProcessHandle实例。其余一切如上。
-```java
-String javaPrompt = ProcessUtils.getJavaCmd().getAbsolutePath();
-ProcessBuilder processBuilder = new ProcessBuilder(javaPrompt, "-version");
-Process process = processBuilder.inheritIO().start();
-ProcessHandle processHandle = process.toHandle();
-```
-
-也用于`ProcessHandle.allProcesses()`获取系统中所有可用进程的ProcessHandle流。
-
-要获取所有子进程的列表（直接以及 n 级深度）可以使用`children()`和`descendants()`方法。
-```java
-Stream<ProcessHandle> children    = ProcessHandle.current().children();
-Stream<ProcessHandle> descendants = ProcessHandle.current().descendants();
-```
-
-## JEP 264：平台日志 API 和 服务
-JDK 9 通过新的日志记录 API 改进了平台类（JDK 类）和 JVM 组件中的日志记录。它允许开发者指定自己选择的日志记录框架（例如Log4J2）作为日志记录工具，用于记录来自 JDK 类的消息。
-
-关于这个 API，你应该知道几件事：
-- API 旨在供 JDK 中的类使用，而不是由应用程序类使用。
-- 对于应用程序代码，开发者将像以前一样继续使用其他日志记录 API。
-- API 不允许开发者以编程方式配置记录器。
-
-API 由以下部分组成：
-- 服务接口，`java.lang.System.LoggerFinder`是一个抽象静态类
-- `java.lang.System.Logger`提供日志记录 API 的接口
-- `getLogger()`类中的一个重载方法`java.lang.System`，它返回一个记录器实例。
-
-JDK 9 还添加了一个新的命令行选项，`-Xlog`它使开发者可以单点访问从 JVM 的所有类记录的所有消息。以下是使用该`-Xlog`选项的语法：
-
-`-Xlog[:][:[][:[][:]]]`
-
-所有选项都是可选的。如果缺少前面的部分，-Xlog则必须为该部分使用冒号。例如，-Xlog::stderr表示所有部分都是默认的，输出设置为stderr.
-
-## JEP 266: 反应式流（Reactive Streams）
-在 Java 9 中的`java.util.concurrent.Flow`类中新增了反应式流规范的核心接口，是一套基于发布/订阅模式的数据处理规范。目的是“找到最小的一组接口，方法和协议，用来描述必要的操作和实体以实现这样的目标：以非阻塞背压方式实现数据的异步流”。
-
-`Flow`中包含了`Flow.Publisher`、`Flow.Subscriber`、`Flow.Subscription`和`Flow.Processor`等 4 个核心接口。Java 9 还提供了`SubmissionPublisher`作为`Flow.Publisher`的一个实现。
-
-下图显示了发布者和订阅者之间的典型交互顺序。 订阅令牌未显示在图表中。 该图没有显示错误和取消事件。
-
-![img_1.png](img_1.png)
-
-处理者（processor）充当订阅者和发布者的处理阶段。 Processor接口继承了Publisher和Subscriber接口。 它用于转换发布者——订阅者管道中的元素。 Processor<T,R>订阅类型T的数据元素，接收并转换为类型R的数据，并发布变换后的数据。 下图显示了处理者在发布者——订阅和管道中作为转换器的作用。 可以拥有多个处理者。
-
-![img_2.png](img_2.png)
-
-下面显示了响应式流倡导所提供的Java API。所有方法的返回类型为void。 这是因为这些方法表示异步请求或异步事件通知。
-
-```java
-public interface Publisher<T> {
-    public void subscribe(Subscriber<? super T> s);
-}
-public interface Subscriber<T> {
-    public void onSubscribe(Subscription s);
-    public void onNext(T t);
-    public void onError(Throwable t);
-    public void onComplete();
-}
-public interface Subscription {
-    public void request(long n);
-    public void cancel();
-}
-public interface Processor<T,R> extends Subscriber<T>, Publisher<R> {
-}
-```
-
-### 背压（back pressure）
-如果生产者发出的信息比消费者能够处理消息最大量还要多，消费者可能会被迫一直在抓消息，耗费越来越多的资源，埋下潜在的崩溃风险。为了防止这一点，需要有一种机制使消费者可以通知生产者，降低消息的生成速度。生产者可以采用多种策略来实现这一要求，这种机制称为背压。
-
-## JEP 224: HTML5 Javadoc
-Java 9 增强了javadoc生成 HTML5 标记的工具。它目前以 HTML 4.01 生成页面。
-
-为了生成 HTML5 Javadoc，参数`-html5`需要放在命令行参数中。要在命令行上生成文档，你将运行：
-```shell
-javadoc [选项] [包名] [源文件] [@files]
-```
-使用 HTML5 可以带来更简单的 HTML5 结构的好处。它还实现了可访问性的WAI-ARIA 标准。这旨在使身体或视觉障碍的人更容易使用屏幕阅读器等工具访问 javadocs 页面。
-
-JEP 225提供了在 javadoc 中搜索程序元素和标记的单词和短语的能力。
-
-以下内容将被索引和搜索：
-- 模块的声明名称
-- 套餐
-- 类型和成员
-- 方法参数类型的简单名称
-
-这是在客户端实现的，带有一个新的`search.js`Javascript 文件，以及生成 javadoc 时生成的索引。生成的 HTML5 API 页面上有一个搜索框。
-
-请注意，默认情况下会添加搜索选项，但可以使用参数关闭：`-noindex`。
-
-## JEP 238: 多版本兼容 JAR 文件
-此增强与如何将应用程序类打包到 jar 文件中有关。以前，开发者必须将所有类打包到一个 jar 文件中，然后放入希望使用它的另一个应用程序的类路径中。
-
-使用多版本特性，现在一个 jar 可以包含一个类的不同版本——兼容不同的 JDK 版本。关于一个类的不同版本，以及加载的类应该选择哪个类的JDK版本的信息存储在MANIFEST.MF文件中。在这种情况下，文件在其主要部分中MANIFEST.MF包含该条目Multi-Release: true
-
-此外，META-INF 包含一个版本子目录，其以整数命名的子目录——从 9 开始（对于 Java 9）——存储特定于版本的类和资源文件。例如
-```text
-JAR content root
-  A.class
-  B.class
-  C.class
-  D.class
-  META-INF
-     MANIFEST.MF
-     versions
-        9
-           A.class
-           B.class
-```
-
-假设在 JDK 10 A.class中更新为利用一些 Java 10 新特性，那么这个 Jar 文件可以像这样更新：
-```shell
-JAR content root
-  A.class
-  B.class
-  C.class
-  D.class
-  META-INF
-     MANIFEST.MF
-     versions
-        9
-           A.class
-           B.class
-        10
-           A.class
-```
-
-它看起来非常有希望解决在大型应用程序中经常看到的依赖地狱，其中不同版本的 jar 彼此不兼容。此功能可以为解决这些情况提供很大帮助。
-
-## JEP 277：改进的弃用注解 @Deprecated
-从 Java 9 开始，`@Deprecated`注解将具有两个属性，即`forRemoval`和`since`.
-
-1. since元素
-   - **功能**：指定被注解的程序元素从哪个版本开始被弃用。
-   - **示例**：如果一个方法在Java 9中被标记为过时，并且since元素被设置为"9"，则表示该方法从Java 9版本开始被弃用。
-2. forRemoval元素
-   - **功能**：表示被注解的程序元素是否在未来的版本中会被移除。如果forRemoval元素被设置为true，则表示该元素在未来的某个版本中可能会被移除，开发者应该尽快迁移代码以避免兼容性问题。
-   - **示例**：如果一个方法在Java 9中被标记为过时，并且forRemoval元素被设置为true，则表示该方法在未来的某个版本中可能会被移除，开发者应该寻找替代方案并更新代码。
-
-在Java 9的文档中，可以看到使用@Deprecated注解并带有since和forRemoval元素的示例。例如，在Boolean类的文档中，可能会看到类似以下的注解：
-```java
-@Deprecated(since = "9", forRemoval = true)  
-public static Boolean valueOf(String s) {  
-    // 方法实现  
-}
-```
-这个注解表示valueOf方法从Java 9版本开始被弃用，并且在未来的某个版本中可能会被移除。开发者应该避免使用这个方法，并寻找替代方案。
-
-## JEP 213：改进钻石操作符(Diamond Operator)
-JEP 213在Java 9中对钻石操作符进行了改进，特别是在匿名内部类的创建中。在Java 8及之前的版本中，尝试在匿名类中使用钻石操作符会导致编译错误。但在Java 9中，这一限制被解除，允许在匿名内部类的创建中使用钻石操作符。
-
-在Java 9中，可以像下面这样使用钻石操作符创建匿名内部类的实例：
-```java
-Handler<Integer> numberHandler = new Handler<>(1) {  
-    @Override  
-    public void handle() {  
-        System.out.println(content);  
-    }  
-};  
-  
-Handler<?> objectHandler = new Handler<>("test") {  
-    @Override  
-    public void handle() {  
-        System.out.println(content);  
-    }  
-};
-```
-
-这里的Handler是一个泛型抽象类，具有一个泛型类型参数T和一个抽象方法`handle()`。在创建`numberHandler`和`objectHandler`时，使用了钻石操作符，编译器会根据目标类型（即`Handler<Integer>和Handler<?>`）来推断类型参数。
-
-注意：
-- **类型推断**：虽然钻石操作符可以简化代码，但编译器在推断类型参数时可能会受到上下文的影响。因此，在某些复杂的情况下，编译器可能无法准确推断类型参数，此时需要显式指定类型参数以避免编译错误。
-- **兼容性**：由于钻石操作符是Java 7及以后版本中的特性，因此在使用时需要确保目标环境支持该特性。同时，对于需要在多个Java版本中运行的代码，可能需要考虑兼容性问题。
-
-## 增强 CompletableFuture
-在Java 9中，CompletableFuture类得到了显著的增强和改进，旨在进一步简化异步编程和提高性能。
-
-### 新增工厂方法
-Java 9为CompletableFuture引入了三个新的工厂方法，这些方法提供了更简洁的方式来创建CompletableFuture实例。
-
-1. completedFuture(U value)
-   - **方法签名**：public static <U> CompletableFuture<U> completedFuture(U value)
-   - **功能**：创建一个已经完成的CompletableFuture实例，并带有指定的结果值。
-   - **应用场景**：适用于单元测试或需要立即返回结果的场景。
-2. failedFuture(Throwable ex)
-   - **方法签名**：public static <U> CompletableFuture<U> failedFuture(Throwable ex)
-   - **功能**：创建一个已经异常完成的CompletableFuture实例。
-   - **应用场景**：适用于错误处理和异常测试场景，提供了一种简洁的方式来表示已知的失败情况。
-3. completedStage(U value) 和 failedStage(Throwable ex)
-   - **方法签名**：public static <U> CompletionStage<U> completedStage(U value)、public static <U> CompletionStage<U> failedStage(Throwable ex)
-   - **功能**：分别创建一个已经完成的或已经异常完成的CompletionStage实例。
-   - **应用场景**：这些方法返回的是CompletionStage接口的实现，它们只支持CompletionStage接口中的方法。
-
-### 支持超时和延迟执行
-Java 9为CompletableFuture引入了支持超时和延迟执行的功能，这两个功能对于控制异步操作的时间行为至关重要。
-
-1. orTimeout(long timeout, TimeUnit unit)
-   - **方法签名**：public CompletableFuture<T> orTimeout(long timeout, TimeUnit unit)
-   - **功能**：为CompletableFuture设置一个超时时间。如果在指定的超时时间内未完成，则CompletableFuture将以TimeoutException异常完成。
-   - **应用场景**：适用于需要避免永久挂起的异步操作和保证响应性的场景。
-2. completeOnTimeout(T value, long timeout, TimeUnit unit)
-   - **方法签名**：public CompletableFuture<T> completeOnTimeout(T value, long timeout, TimeUnit unit)
-   - **功能**：为CompletableFuture设置一个超时时间。如果在指定的超时时间内未完成，则使用指定的默认值来完成CompletableFuture。
-   - **应用场景**：提供了一种优雅的回退机制，确保即使在超时的情况下也能保持异步流的连续性和完整性。
-3. delayedExecutor(long delay, TimeUnit unit, Executor executor)
-   - **方法签名**：public static Executor delayedExecutor(long delay, TimeUnit unit, Executor executor)
-   - **功能**：创建一个延迟执行的Executor，可以将任务的执行推迟到未来某个时间点。
-   - **应用场景**：适用于需要根据时间安排任务执行的场景，能够更精确地控制异步任务的执行时机。
-
-
-### 改进了对子类的支持
-Java 9还改进了对CompletableFuture子类的支持，使得子类可以更容易地定制和扩展CompletableFuture的行为。
-
-1. defaultExecutor()
-   - **方法签名**：public Executor defaultExecutor()
-   - **功能**：返回用于未指定Executor异步方法的默认Executor。
-   - **应用场景**：子类可以重写此方法以返回自定义的Executor，从而定制任务执行策略。
-2. newIncompleteFuture()
-   - **方法签名**：public <U> CompletableFuture<U> newIncompleteFuture()
-   - **功能**：返回一个新的不完整的CompletableFuture实例。
-   - **应用场景**：子类可以重写此方法以返回CompletableFuture的子类实例，从而在整个CompletableFuture API中自定义实例的行为。
+## JEP 262: TIFF图像I/O
+
+增加了对TIFF图像格式的原生支持。
+
+## JEP 263: Windows和Linux上的HiDPI图形
+
+改进了在Windows和Linux上对HiDPI显示器的支持。
+
+## JEP 264: 平台日志API和服务
+
+引入了标准的平台日志API和服务。
+
+## JEP 265: Marlin图形渲染器
+
+集成了Marlin图形渲染器，提高了2D图形渲染性能。
+
+## JEP 266: 更多并发更新
+
+增加了更多的并发工具和API，如CompletableFuture的增强等。
+
+## JEP 267: Unicode 8.0
+
+更新了Unicode支持到8.0版本。
+
+## JEP 268: XML目录
+
+实现了XML目录支持，便于管理XML文档引用。
+
+## JEP 269: 集合的便利工厂方法
+
+为集合类添加了便利的工厂方法，简化了集合创建。
+
+## JEP 270: 关键区域的保留堆栈空间
+
+为关键区域保留堆栈空间，防止堆栈溢出。
+
+## JEP 271: 统一GC日志记录
+
+统一了垃圾收集器的日志记录格式。
+
+## JEP 272: 平台特定桌面功能
+
+提供了访问平台特定桌面功能的API。
+
+## JEP 273: 基于DRBG的SecureRandom实现
+
+实现了基于DRBG的SecureRandom，提供了更强的随机数生成能力。
+
+## JEP 274: 增强的方法句柄
+
+增强了方法句柄功能，提供了更多的操作选项。
+
+## JEP 275: 模块化Java应用程序打包
+
+支持模块化Java应用程序的打包。
+
+## JEP 276: 语言定义对象模型的动态链接
+
+提供了动态链接语言定义对象模型的能力。
+
+## JEP 277: 增强的弃用机制
+
+改进了弃用机制，提供了更详细的信息和更好的工具支持。
+
+## JEP 278: G1中巨大对象的额外测试
+
+增加了对G1垃圾收集器中巨大对象处理的测试。
+
+## JEP 279: 改进测试失败故障排除
+
+改进了测试失败时的故障排除能力。
+
+## JEP 280: 字符串连接优化
+
+优化了字符串连接操作的性能。
+
+## JEP 281: HotSpot C++单元测试框架
+
+为HotSpot JVM引入了C++单元测试框架。
+
+## JEP 282: jlink：Java链接器
+
+引入了jlink工具，用于创建自定义的运行时镜像。
+
+## JEP 283: 在Linux上启用GTK 3
+
+在Linux平台上启用了GTK 3支持。
+
+## JEP 284: 新的HotSpot构建系统
+
+采用了新的HotSpot JVM构建系统。
+
+## JEP 285: 自旋等待提示
+
+引入了自旋等待提示，优化了多线程性能。
+
+## JEP 287: SHA-3哈希算法
+
+实现了SHA-3哈希算法支持。
+
+## JEP 288: 禁用SHA-1证书
+
+默认禁用了SHA-1证书，提高了安全性。
+
+## JEP 289: 弃用Applet API
+
+标记Applet API为弃用状态。
+
+## JEP 290: 过滤传入的序列化数据
+
+引入了过滤传入序列化数据的机制，提高了安全性。
+
+## JEP 291: 弃用并发标记清除(CMS)垃圾收集器
+
+标记CMS垃圾收集器为弃用状态。
+
+## JEP 292: 在Nashorn中实现选定的ECMAScript 6特性
+
+在Nashorn JavaScript引擎中实现了部分ECMAScript 6特性。
+
+## JEP 294: Linux/s390x端口
+
+增加了对Linux/s390x平台的支持。
+
+## JEP 295: 预先编译(AOT)
+
+引入了预先编译(AOT)支持，提高了应用程序启动速度。
+
+## JEP 297: 统一arm32/arm64端口
+
+统一了ARM32和ARM64平台的端口实现。
+
+## JEP 298: 移除演示和示例
+
+移除了JDK中的演示和示例程序。
+
+## JEP 299: 重新组织文档
+
+重新组织了JDK文档结构，使其更加清晰易用。

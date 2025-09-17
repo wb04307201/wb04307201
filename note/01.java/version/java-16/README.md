@@ -1,171 +1,298 @@
 # Java 16
 
-- JEP 338：向量 API（孵化器）
-- JEP 347：启用 C++14 语言特性
-- JEP 357：将JDK的源代码库从Mercurial迁移到Git
-- JEP 369：将JDK的源代码库托管到GitHub
-- JEP 376：ZGC 并发线程处理
-- JEP 380：Unix-Domain 套接字通道
-- JEP 386：AlpineLinux 移植
-- JEP 387：弹性元空间
-- JEP 388：Windows/AArch64 移植
-- JEP 389：外部函数与内存 API（孵化器）
-- JEP 390：对基于值的类发出警告
-- JEP 392：打包工具（正式版）
-- JEP 393：外部存储器访问 API（第三次孵化）
-- JEP 394：instanceof 模式匹配（正式特性）
-- JEP 395：Records (正式特性)
-- JEP 396：默认强封装 JDK 内部元素
-- JEP 397：密封类（第二预览）
-- Stream API 增强
+- **JEP 338**: Vector API（孵化器）
+- **JEP 347**: 启用 C++14 语言特性
+- **JEP 357**: 从 Mercurial 迁移到 Git
+- **JEP 369**: 迁移到 GitHub
+- **JEP 376**: ZGC：并发线程栈处理
+- **JEP 380**: Unix 域套接字通道
+- **JEP 386**: Alpine Linux 移植
+- **JEP 387**: 弹性元空间
+- **JEP 388**: Windows/AArch64 移植
+- **JEP 389**: 外部链接器 API（孵化器）
+- **JEP 390**: 针对基于值的类的警告
+- **JEP 392**: 打包工具
+- **JEP 393**: 外部内存访问 API（第三次孵化）
+- **JEP 394**: instanceof 的模式匹配
+- **JEP 395**: 记录类
+- **JEP 396**: 默认情况下强封装 JDK 内部元素
+- **JEP 397**: 密封类（第二次预览）
+- **Stream API 增强**
 
----
+## JEP 338: Vector API（孵化器）
+Vector API 旨在提供一种在 Java 中执行向量计算的机制，这些计算可以在支持向量指令的硬件上高效运行。通过使用该 API，开发者能够编写出可移植且性能优化的代码，用于处理数值计算密集型任务，如科学计算、机器学习等。例如，在处理大规模数组的数学运算时，Vector API 可以利用硬件的向量指令集（如 SSE、AVX 等）并行处理多个数据元素，从而显著提高计算速度。
 
-## JEP 338：向量 API（孵化器）
-在现代计算中，数据密集型操作是非常常见的，例如科学计算、机器学习、图形处理等等，这些操作往往可以通过向量化来加速（即同时对多个数据项执行相同的操作）。但是，Java 缺乏一种官方的、标准的方式来利用硬件的向量计算能力，这就限制了Java在处理这类操作时的性能。
-
-Java 16 引入向量API 来填补这一空缺。向量API提供了一套用于表达向量计算的API，可以在支持SIMD（单指令多数据）的处理器上运行。它使得Java能够更有效地利用现代处理器的向量计算能力，从而提高性能。
-
-API设计为平台无关，但可以在支持的硬件上利用特定的优化。
-
-## JEP 347：启用 C++14 语言特性
-我们知道 JDK的某些部分是用C++编写的，特别是JVM。随着C++语言的发展，新的标准引入了许多有用的特性，例如更好的类型推断、智能指针、lambda表达式等等，这些都可以帮助提高代码质量和开发效率。但是 JDK 开发主要还是使用旧版C++标准（如C++98），这就限制了可以使用的语言特性。
-
-Java 16 启用 C++ 14 语言，这就标志着允许JDK的开发者在编写JDK源代码时使用C++14标准的语言特性。这样就可以提升 JDK 的开发效率和代码质量了。
-
-## JEP 357：将JDK的源代码库从Mercurial迁移到Git
-Git是目前最流行的版本控制系统，拥有更广泛的用户基础和社区支持。许多现代的开发工具和服务（如GitHub、GitLab等）都是围绕Git设计的，迁移到Git可以更好地利用这些工具和服务。同时在某些方面，Git提供了比Mercurial更好的性能。
-
-所以，Java 16 将Java开发工具包（JDK）的源代码库从Mercurial迁移到Git的过程。迁移包括将所有代码历史、分支、标签等从Mercurial转移到Git。
-
-## JEP 369：将JDK的源代码库托管到GitHub
-同上。
-
-## JEP 376：ZGC 并发线程处理
-ZGC 是 Java 11 中引入的一个实验性垃圾收集器，设计目标是实现低延迟一个可伸缩的、低延迟的垃圾收集器。在 Java 11 到 Java 15 期间，ZGC 已经表现出了卓越的低延迟特性，但在某些情况下，它需要暂停应用线程来处理堆中的引用。
-
-Java 16 引入并发线程处理，旨在将这些暂停转变为并发处理，以进一步降低延迟。该特性的核心是将 ZGC 中的最后一块堆管理工作 — 引用处理（Reference Processing） — 转变为并发执行。
-
-## JEP 380：Unix-Domain 套接字通道
-Unix-Domain 套接字在 Unix-like 系统中被用于进程间通信（IPC）。与基于网络的 TCP/IP 套接字相比，UDS 提供了更高的数据传输效率和安全性，因为它们仅在同一台机器上的进程之间通信，无需网络堆栈的开销。在 Java 中引入 UDS 支持，意味着 Java 应用程序现在可以更有效地在同一台机器上的进程之间进行通信，这对于需要高效本地通信的应用来说是一个重要的改进。
-
-主要内容包括：
-- **Unix-Domain 套接字的支持**：在`java.nio.channels`包中引入了对 Unix-Domain 套接字的支持，使得 Java 程序能够创建和使用 UDS。
-- **SocketChannel 和 ServerSocketChannel 的扩展**：这些类被扩展以支持 Unix-Domain 套接字，除了原有的网络套接字功能。
-- **新的 API 和类**：引入了新的 API 和类，如`UnixDomainSocketAddress`，以支持 Unix-Domain 套接字的地址表示。
-
-## JEP 386：AlpineLinux 移植
-Alpine Linux 是一个以安全性和轻量级为特点的 Linux 发行版，广泛用于容器环境，如 Docker。由于它使用 musl-libc 而不是常见的 glibc（GNU C 库），这在过去导致了一些兼容性问题，使得在 Alpine Linux 上运行标准 Java 应用程序变得困难。为了解决这一问题并支持现代云基础设施的发展，Java 需要能够在基于 musl-libc 的系统上原生运行，这就是该特性的主要目标。
-
-## JEP 387：弹性元空间
-在 Java 8 中，元空间替代了原有的永久代（PermGen），成为存储类元数据的区域。虽然这一改变解决了永久代大小限制的问题，但元空间的内存管理依然不够高效，特别是在类卸载后释放内存方面。Java 16 引入弹性元空间，目的是进一步提高元空间的内存使用效率，特别是在动态加载和卸载类的应用场景中。
-
-主要内容包括：
-- **更有效的内存回收**：在类卸载之后，元空间内存现在可以更快被回收和重用。
-- **内存占用减少**：通过更高效的内存分配策略，减少了元空间的内存占用，特别是在类加载和卸载频繁的场景中。
-- **内存分配和释放的优化**：优化了元空间内部的内存分配和释放机制，提高了性能。
-
-## JEP 388：Windows/AArch64 移植
-随着 ARM64 架构在个人电脑和服务器市场的逐渐普及，对基于此架构的操作系统的支持变得越来越重要。特别是在 Windows 系统上，随着基于 ARM 的设备的推出，对运行在这些设备上的 Java 应用的需求日益增长。因此，为 Java 提供对 Windows/AArch64 的官方支持，是适应硬件发展趋势和扩大 Java 应用受众的重要步骤。
-
-主要内容包括：
-- **移植 OpenJDK**：对 OpenJDK 进行了必要的修改，以确保它能够在 Windows/AArch64 平台上运行。
-- **支持 ARM64 特有的特性**：包括对 ARM64 架构的特定指令集和优化的支持，以确保 Java 应用在这些设备上能够高效运行。
-
-## JEP 389：外部函数与内存 API（孵化器）
-Java 一直以来在与本地代码交互方面存在一定的限制，主要通过 JNI（Java Native Interface）来实现。然而，JNI 的使用相对复杂且容易出错，且通常与特定平台紧密相关，这限制了 Java 应用的灵活性和性能。为了解决这些问题，提供更加简洁和安全的本地代码互操作方式，Java 16 引入了外部链接器 API，旨在简化 Java 和本地代码之间的交互操作。
-
-主要是通过两个组件实现的：
-- **Foreign Function Interface (FFI)**: 允许 Java 代码直接调用非 Java 代码，特别是用 C/C++ 编写的代码。这可以通过定义一种类型安全的方式来实现，同时避免了 Java 本地接口（JNI）的复杂性和开销。
-- **Foreign Memory Access API**：提供了一种安全的方法来访问不受 JVM 管理的内存。这对于需要操作系统级别内存操作或者直接与外部设备交互的应用程序非常重要。
-
-该特性的引入带来了如下几个好处：
-- **简化本地代码集成**：使得集成本地库变得更加容易和直观，降低了开发难度。
-- **提高性能**：提供了一种更高效的方式来访问本地代码，可以提高应用程序的性能。
-- **增强安全性**：与 JNI 相比，外部链接器 API 在设计上更注重安全性，减少了安全漏洞的风险。
-
-但是，它目前还处于孵化阶段。
-
-| Java 版本 | 状态    | JEP     | 更新内容          |
-|---------|-------|---------|---------------|
-| Java 14 | 孵化器   | JEP 370 | 引入了外部内存访问 API |
-| Java 15 | 第二孵化器 | JEP 383 | 优化外部内存访问 API  |
-| Java 16 | 孵化器   | JEP 389 | 引入了外部链接器 API  |
-| Java 16 | 第三孵化器 | JEP 393 | 继续优化          |
-
-## JEP 390：对基于值的类发出警告
-> Java 9注解`@Deprecated`得到了增强，增加了`since`和`forRemoval`两个属性，可以分别指定一个程序元素被废弃的版本，以及是否会在今后的版本中被删除。Java 16 对`@jdk.internal.ValueBased`注解加入了基于值的类的告警，所以继续在`Synchronized`同步块中使用值类型，将会在编译期和运行期产生警告，甚至是异常。
-
-Java 16 引入该特性的主要目的是警告开发者关于基于值的类的使用。基于值的类是一种特殊类型的类，它们的实例是不可变的，并且不应该有身份。也就是说，它们的实例的行为表现就像是纯粹的数据载体，不应该被视为具有独特身份的实体。
-
-当我们尝试进行同步（使用synchronized关键字）或者使用==比较基于值的类的实例时，编译器会发出警告，比如：
 ```java
-    public void inc(Integer count) {
-        for (int i = 0; i < 10; i++) {
-            new Thread(() -> {
-                synchronized (count) { // 这里会产生编译告警
-                    count++;
-                }
-            }).start();
+import jdk.incubator.vector.*;
+
+public class VectorExample {
+    public static void main(String[] args) {
+        int[] array = {1, 2, 3, 4, 5, 6, 7, 8};
+        int[] result = new int[array.length];
+
+        // 获取默认的整数向量种类
+        VectorSpecies<Integer> species = IntVector.SPECIES_256;
+
+        int i = 0;
+        for (; i <= array.length - species.length(); i += species.length()) {
+            // 从数组加载向量
+            IntVector va = IntVector.fromArray(species, array, i);
+            // 对向量进行乘法运算（这里乘以 2）
+            IntVector vb = va.mul(2);
+            // 将结果存储回数组
+            vb.intoArray(result, i);
+        }
+
+        // 处理剩余元素
+        for (; i < array.length; i++) {
+            result[i] = array[i] * 2;
+        }
+
+        // 输出结果
+        for (int num : result) {
+            System.out.print(num + " ");
         }
     }
+}
 ```
 
-该特性通过告警的方式，引导开发者更好地理解和利用基于值的类，为未来 Java 版本中可能的优化和特性变化做好准备。
+## JEP 347: 启用 C++14 语言特性
+此特性允许 JDK 的本地代码（主要是用 C++ 编写的部分）使用 C++14 标准引入的语言特性。C++14 在 C++11 的基础上进一步增强，提供了更多便利的功能和改进，如泛型 lambda 表达式、变量模板、返回类型推导等。启用 C++14 语言特性可以使 JDK 的本地代码编写更加简洁、高效，提高代码的可读性和可维护性，同时也能利用现代 C++ 的优势来优化性能。例如，使用泛型 lambda 表达式可以简化代码中回调函数的编写，使代码更加紧凑。
 
-## JEP 392：打包工具（正式版）
-在 Java 14 之前，Java 应用通常依赖于 JAR 文件来分发和运行，或者需要第三方工具来创建本地应用程序包，Java 14 引入一个新的打包工具，基于 javapackager 的 jpackage，用于打包 Java 应用程序为特定平台的本地安装包。但是在 Java 14 中它是作为一个孵化器模块引入的，Java 16 完成了正式版本的发布。
+## JEP 357: 从 Mercurial 迁移到 Git
+Mercurial 和 Git 都是流行的版本控制系统，但 Git 在全球开发者社区中更为广泛使用，具有更丰富的生态系统和工具支持。将 JDK 的代码库从 Mercurial 迁移到 Git，使得更多的开发者能够更方便地参与到 JDK 的开发中来。Git 的分布式架构和强大的分支管理功能，使得开发者可以更轻松地进行代码的克隆、分支创建、提交和合并等操作。此外，迁移到 Git 也有助于与现有的基于 Git 的开发工具和平台（如 GitHub）更好地集成，提高开发效率。
 
-## JEP 393：外部存储器访问 API（第三次孵化）
-外部存储器访问 API 是在 Java 14 中首次作为孵化器版本引入，Java 15 第二次作为孵化器版本引入，Java 16 为第三次。本次改进：
-- `MemorySegment`和`MemoryAddress`接口之间更清晰的角色分离
-- 新的`MemoryAccess`接口以在简单情况下减少`VarHandle` API 的需求、对共享段的支持，以及能够将段注册到`Cleaner`
+## JEP 369: 迁移到 GitHub
+GitHub 是一个基于 Git 的代码托管平台，提供了丰富的协作功能，如问题跟踪、拉取请求、代码审查等。将 JDK 的代码库迁移到 GitHub 上，使得全球的 Java 开发者能够更加方便地访问 JDK 的源代码、报告问题、提交贡献代码。这促进了 Java 社区的开放性和协作性，加速了 JDK 的开发和改进。开发者可以通过 GitHub 的界面轻松地浏览代码、提出改进建议、参与讨论，并且可以通过拉取请求的方式将自己的代码贡献提交给 JDK 开发团队进行审查和合并。
 
-| Java 版本 | 更新类型  | JEP     | 更新内容          |
-|---------|-------|---------|---------------|
-| Java 14 | 孵化器   | JEP 370 | 引入了外部内存访问 API |
-| Java 15 | 第二孵化器 | JEP 383 | 优化外部内存访问 API  |
-| Java 16 | 孵化器   | JEP 389 | 引入了外部链接器 API  |
-| Java 16 | 第三孵化器 | JEP 393 | 继续优化          |
+## JEP 376: ZGC：并发线程栈处理
+ZGC（Z Garbage Collector）是 Java 中的一种低延迟垃圾回收器。该特性增强了 ZGC 的功能，使其能够并发地处理线程栈。在传统的垃圾回收过程中，线程栈的处理通常需要暂停应用程序线程，这可能会导致应用程序的停顿，影响性能。而 ZGC 的并发线程栈处理技术允许垃圾回收器在应用程序线程继续运行的同时，对线程栈进行扫描和更新引用，从而减少了垃圾回收对应用程序的停顿时间，提高了应用程序的响应能力和吞吐量。这对于需要低延迟的应用程序，如实时交易系统、在线游戏等非常重要。
 
-## JEP 394：instanceof 模式匹配（正式特性）
-`instanceof`模式匹配是在 Java 14 中作为预览特性引入，Java 15 第二次作为预览特性，最终在 Java 16 中成为正式特性。其主要目的是为了在检查对象类型的同时，将该对象自动转换为特定类型的变量，这样可以减少重复的类型检查和转换代码，使得代码变得更加简洁，逻辑更清晰，增强了可读性和可维护性。
+## JEP 380: Unix 域套接字通道
+Unix 域套接字是一种在 Unix 和类 Unix 系统上用于同一主机上进程间通信的机制。与传统的网络套接字相比，Unix 域套接字具有更高的性能和更低的开销，因为它们不需要经过网络协议栈的处理。该特性在 Java 中引入了对 Unix 域套接字通道的支持，使得 Java 应用程序能够更高效地在同一主机上的不同进程之间进行通信。例如，在一个复杂的服务器应用程序中，不同的组件可以以独立的进程运行，并通过 Unix 域套接字通道进行快速的数据交换，提高系统的整体性能和可扩展性。
 
-| Java 版本	 | 更新类型	  | JEP	     | 更新内容                    |
-|----------|--------|----------|-------------------------|
-| Java 14	 | 第一次预览	 | JEP 305	 | 引入`instanceof`模式匹配为预览特性 |
-| Java 15	 | 第二次预览	 | JEP 375	 | 进行了修正和优化                |
-| Java 16	 | 正式特性	  | JEP 394	 | 升级为正式特性                 |
+```java
+import java.io.IOException;
+import java.net.StandardProtocolFamily;
+import java.nio.ByteBuffer;
+import java.nio.channels.*;
+import java.nio.file.*;
+import java.nio.file.attribute.*;
+import java.util.concurrent.*;
 
-## JEP 395：Records (正式特性)
-Records 是在 Java 14 中作为预览特性引入，Java 15 第二次预览，最终在 Java 16 中成为正式特性。其主要目的是提供一种更简洁、更安全的数据载体。
+public class UnixDomainSocketExample {
+    public static void main(String[] args) throws Exception {
+        Path socketPath = Paths.get("/tmp/test.sock");
+        // 清理可能存在的旧套接字文件
+        Files.deleteIfExists(socketPath);
 
-Record 本质上是一个不可变的、透明的数据载体对象。是一种特殊类型的 Java 类，具有如下几个特点：
-- **不可变性**：Record 的实例是不可变的，所有字段都是 final 的。
-- **数据驱动**：Record 主要用于封装一组数据，字段在对象构造时通过构造器参数传递并初始化。
-- **简洁性**：自动生成所有字段的 getters 方法，这些方法名称与字段名称相同。
-- **透明性**：自动实现了 equals()、hashCode() 和 toString() 方法，它们基于 Record 的状态，即其字段的值。
+        // 创建服务器端套接字通道
+        try (ServerSocketChannel serverChannel = ServerSocketChannel.open();
+             AsynchronousFileChannel fileChannel = AsynchronousFileChannel.open(socketPath,
+                     StandardOpenOption.CREATE, StandardOpenOption.READ, StandardOpenOption.WRITE)) {
+            serverChannel.bind(new java.net.UnixDomainSocketAddress(socketPath));
+            serverChannel.configureBlocking(false);
 
-| Java 版本	 | 更新类型	  | JEP	     | 更新内容                    |
-|----------|--------|----------|-------------------------|
-| Java 14	 | 第一次预览	 | JEP 359	 | Record Classes 作为预览特性引入 |
-| Java 15	 | 第二次预览	 | JEP 384	 | 细微的改动                   |
-| Java 16	 | 正式特性	  | JEP 395	 | 正式特性                    |
+            // 创建客户端套接字通道
+            try (SocketChannel clientChannel = SocketChannel.open(StandardProtocolFamily.UNIX)) {
+                clientChannel.connect(new java.net.UnixDomainSocketAddress(socketPath));
 
-## JEP 396：默认强封装 JDK 内部元素
-在 Java 16 之前，许多 JDK 内部的类和成员尽管没有正式成为公共 API，但仍然可以被外部代码所访问。从 Java 16 开始，默认情况下，这些内部 API 被强制封装，阻止了对它们的非法访问。这样做可以防止开发者依赖于非稳定的、未经官方支持的内部实现，提高了代码的长期稳定性。
+                // 服务器端接受连接
+                Selector selector = Selector.open();
+                serverChannel.register(selector, SelectionKey.OP_ACCEPT);
 
-Java 16 明确了哪些是公共 API，哪些是 JDK 内部使用的 API，帮助开发者避免依赖于可能在未来版本中改变的内部实现。鼓励开发者使用稳定且官方支持的公共 API，而不是依赖于内部的、可能随时变更的实现。
+                while (true) {
+                    selector.select();
+                    for (SelectionKey key : selector.selectedKeys()) {
+                        if (key.isAcceptable()) {
+                            SocketChannel acceptedChannel = serverChannel.accept();
+                            acceptedChannel.configureBlocking(false);
+                            acceptedChannel.register(selector, SelectionKey.OP_READ);
+                        } else if (key.isReadable()) {
+                            SocketChannel channel = (SocketChannel) key.channel();
+                            ByteBuffer buffer = ByteBuffer.allocate(1024);
+                            int bytesRead = channel.read(buffer);
+                            if (bytesRead == -1) {
+                                channel.close();
+                            } else {
+                                buffer.flip();
+                                System.out.println("Server received: " + new String(buffer.array(), 0, bytesRead));
+                                // 简单回显
+                                channel.write(buffer);
+                            }
+                        }
+                    }
+                    selector.selectedKeys().clear();
+                }
+            }
+        }
+    }
+}
+```
 
-但是这样就会带来一个兼容性问题，对于依赖于 JDK 内部 API 的现有代码，这种变更可能导致兼容性问题，这就要求我们重新评估现有的代码并进行相应的调整。
+## JEP 386: Alpine Linux 移植
+Alpine Linux 是一种轻量级的 Linux 发行版，以其小巧的体积、安全性和资源效率而受到广泛关注。将 JDK 移植到 Alpine Linux 上，使得 Java 应用程序能够在这种轻量级的 Linux 环境中运行。这对于容器化部署和云计算环境非常有利，因为 Alpine Linux 的小体积可以减少容器的镜像大小，提高资源利用率，加快容器的启动速度。开发者可以将 Java 应用程序打包到基于 Alpine Linux 的容器中，实现更高效的部署和运行。
 
-## JEP 397：密封类（第二预览）
-密封类是在 Java 15 中作为预览特性引入，主要目的是为了限制类的继承情况，密封类可以精确控制类的继承问题，Java 16 第二次作为预览特性引入。
+## JEP 387: 弹性元空间
+元空间是 Java 虚拟机（JVM）中用于存储类元数据的区域。在传统的实现中，元空间的大小通常是固定的或者有一些不太灵活的调整机制。弹性元空间特性引入了一种更智能的元空间管理机制，它能够根据应用程序的运行时需求动态地调整元空间的大小。当应用程序加载的类增多，需要更多的元数据存储空间时，弹性元空间可以自动扩展；而当一些类被卸载，不再需要存储其元数据时，元空间又可以自动收缩。这种动态调整机制有助于优化内存使用，避免内存浪费，同时确保应用程序在处理大量类时不会因为元空间不足而出现问题。
 
-| Java 版本	 | 更新类型	  | JEP	     | 更新内容               |
-|----------|--------|----------|--------------------|
-| Java 15	 | 第一次预览	 | JEP 360	 | 引入了密封类作为预览特性。      |
-| Java 16	 | 第二次预览	 | JEP 397	 | 继续优化 sealed class。 |
+## JEP 388: Windows/AArch64 移植
+AArch64 是 ARM 架构的 64 位版本，在移动设备、嵌入式系统和一些服务器领域得到了广泛应用。将 JDK 移植到 Windows/AArch64 平台，使得 Java 应用程序能够在基于 ARM 架构的 Windows 设备上运行。这扩大了 Java 的应用范围，使得开发者可以利用 ARM 架构的优势，如低功耗、高性能等，来开发和部署 Java 应用程序。例如，在一些移动设备或低功耗服务器上运行 Java 服务，可以提供更好的能效比。
+
+## JEP 389: 外部链接器 API（孵化器）
+外部链接器 API 提供了一种在 Java 中与本地代码（如 C/C++ 编写的库）进行交互的机制。通过该 API，开发者可以在 Java 代码中直接调用本地函数，而无需使用传统的 Java Native Interface（JNI）。这简化了与本地代码的集成过程，减少了开发复杂度，并且提高了性能。例如，开发者可以使用外部链接器 API 来调用操作系统提供的底层 API，或者调用第三方的高性能 C/C++ 库，从而在 Java 应用程序中充分利用本地代码的优势。
+
+```java
+import jdk.incubator.foreign.*;
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodType;
+
+public class ForeignLinkerExample {
+    public static void main(String[] args) throws Throwable {
+        // 加载本地库
+        LibraryLookup<CLinker> lib = LibraryLookup.ofDefault();
+        // 获取本地函数符号
+        SymbolLookup.Named printf = SymbolLookup.loaderLookup().lookup("printf").get();
+        // 创建方法句柄
+        MethodType type = MethodType.methodType(int.class, MemoryAddress.class, MemoryAddress.class);
+        MethodHandle mh = CLinker.getInstance().downcallHandle(
+                printf,
+                type,
+                FunctionDescriptor.of(CLinker.C_INT,
+                        CLinker.C_POINTER,
+                        CLinker.C_POINTER));
+
+        // 准备参数
+        try (ResourceScope scope = ResourceScope.newConfinedScope()) {
+            MemorySegment format = MemorySegment.ofArray(new byte[]{(byte) 'H', (byte) 'e', (byte) 'l', (byte) 'l', (byte) 'o', (byte) '\0'}, scope);
+            MemorySegment result = (MemorySegment) mh.invokeExact(
+                    CLinker.toCString("Hello, %s\n", scope).address(),
+                    format.address());
+        }
+    }
+}
+```
+
+## JEP 390: 针对基于值的类的警告
+基于值的类是指那些行为类似于值（如不可变、没有身份标识等）的类，例如 `Integer`、`String` 等。该特性引入了一种机制，当开发者以不恰当的方式使用基于值的类时，编译器会发出警告。例如，当对基于值的类进行不必要的同步操作时，编译器会提示这种操作可能是无效的，因为基于值的类的实例通常是不可变的，不需要同步。这些警告有助于开发者编写更正确、更高效的代码，避免一些常见的错误和性能问题。
+
+## JEP 392: 打包工具
+打包工具提供了一种简单的方式将 Java 应用程序及其依赖项打包成一个可分发的格式，如特定平台的安装包（如 Windows 的.msi 文件、macOS 的.pkg 文件等）或跨平台的容器镜像。这使得开发者能够更方便地将 Java 应用程序交付给最终用户，简化了应用程序的安装和部署过程。打包工具可以自动处理依赖关系，确保应用程序在目标环境中能够正确运行，并且可以根据不同的平台和需求进行定制化的打包配置。
+
+## JEP 393: 外部内存访问 API（第三次孵化）
+外部内存访问 API 允许 Java 应用程序直接访问堆外内存（即不由 JVM 管理的内存）。这在处理大规模数据或与本地代码交互时非常有用，例如在进行高性能的 I/O 操作、与硬件设备通信或处理大型数据集时。通过该 API，开发者可以更高效地在 Java 代码和本地内存之间传输数据，减少数据复制的开销，提高应用程序的性能。例如，在处理网络数据包或大型文件时，可以直接将数据读取到堆外内存，然后在 Java 代码中进行处理，避免了将数据从堆外复制到堆内的过程。
+
+```java
+import jdk.incubator.foreign.*;
+import java.nio.ByteBuffer;
+
+public class ForeignMemoryAccessExample {
+    public static void main(String[] args) {
+        try (ResourceScope scope = ResourceScope.newConfinedScope()) {
+            // 分配堆外内存
+            MemorySegment segment = MemorySegment.allocateNative(1024, scope);
+
+            // 将数据写入堆外内存
+            byte[] data = "Hello, Foreign Memory!".getBytes();
+            segment.copyFrom(MemorySegment.ofArray(data));
+
+            // 从堆外内存读取数据
+            byte[] buffer = new byte[data.length];
+            segment.copyTo(0, MemorySegment.ofArray(buffer));
+
+            System.out.println(new String(buffer));
+        }
+    }
+}
+```
+
+## JEP 394: instanceof 的模式匹配
+该特性扩展了 `instanceof` 操作符的功能，允许在判断对象类型的同时，将对象转换为指定的类型并提取其成员。这使得代码更加简洁和易读，减少了不必要的类型转换代码。例如，在使用 `instanceof` 判断对象是否为某个类的实例后，可以直接在同一个表达式中访问该对象的成员，而无需先进行显式的类型转换。这在处理复杂对象结构或进行多态操作时非常有用，能够提高代码的可维护性和可读性。
+
+```java
+Object obj = "Hello";
+if (obj instanceof String s) {
+    System.out.println("The length of the string is: " + s.length());
+}
+```
+
+## JEP 395: 记录类
+记录类是一种简洁的方式来定义不可变的数据载体类。通过使用 `record` 关键字，开发者可以快速定义一个类，该类自动具有不可变性、自动生成的构造函数、访问器方法（getter）、`equals()`、`hashCode()` 和 `toString()` 方法等。记录类非常适合用于表示简单的数据结构，如配置对象、数据传输对象等。它减少了样板代码的编写，提高了代码的可读性和可维护性。例如，定义一个表示二维点的记录类：
+
+```java
+record Point(int x, int y) {}
+
+public class RecordExample {
+    public static void main(String[] args) {
+        Point point = new Point(10, 20);
+        System.out.println("Point: (" + point.x() + ", " + point.y() + ")");
+        System.out.println("ToString: " + point);
+    }
+}
+```
+
+## JEP 396: 默认情况下强封装 JDK 内部元素
+在早期的 Java 版本中，JDK 的一些内部 API 可以被外部代码访问，但这可能会导致代码的脆弱性和安全问题，因为这些内部 API 可能会在不通知开发者的情况下发生变化。该特性默认情况下强封装 JDK 内部元素，限制外部代码对 JDK 内部 API 的访问。这有助于提高 JDK 的安全性和稳定性，鼓励开发者使用标准的 Java API 来开发应用程序。如果确实需要访问某些内部 API，开发者可以通过特定的命令行选项来放宽封装限制，但这应该被视为一种临时解决方案，而不是推荐的做法。
+
+## JEP 397: 密封类（第二次预览）
+密封类是一种用于限制类或接口的继承层次的机制。通过使用 `sealed` 关键字声明一个类或接口，开发者可以明确指定哪些其他类或接口可以继承它。这有助于创建更可控的类层次结构，提高代码的安全性和可维护性。例如，在一个图形库中，可以使用密封类来定义不同类型的图形，并限制只有特定的子类可以继承基类，从而确保图形的行为符合预期。密封类在预览阶段，允许开发者在实际项目中进行试用和反馈，以便进一步完善该特性。
+
+```java
+sealed class Shape permits Circle, Rectangle {
+    // 类的成员
+}
+
+final class Circle extends Shape {
+    // 圆的实现
+}
+
+final class Rectangle extends Shape {
+    // 矩形的实现
+}
+
+public class SealedClassExample {
+    public static void main(String[] args) {
+        Shape shape = new Circle();
+        if (shape instanceof Circle c) {
+            System.out.println("It's a circle with radius (if applicable)");
+        } else if (shape instanceof Rectangle r) {
+            System.out.println("It's a rectangle with length and width (if applicable)");
+        }
+    }
+}
+```
 
 ## Stream API 增强
-Java 16为Stream API新增toList()简化集合转换，支持不可变列表；引入mapMulti()替代部分flatMap场景，优化元素推送处理，提升数据流操作效率与代码简洁性。
+### **1. `toList()`：简化流到列表的转换**
+- 新增 `toList()` 方法，直接作为终端操作调用，代码更简洁：
+  ```java
+  List<String> result = Stream.of("a", "b", "c")
+      .filter(s -> s.startsWith("a"))
+      .toList(); // 返回不可变列表
+  ```
+
+- **关键特性**：
+    - **不可变性**：返回的列表是 `Collections.unmodifiableList` 包装的，无法修改元素（增删改会抛出 `UnsupportedOperationException`）。
+    - **性能优化**：内部通过数组直接构造列表，减少临时对象创建，性能优于 `Collectors.toList()`。
+    - **与 `Collectors.toUnmodifiableList()` 对比**：  
+      Java 10 引入的 `Collectors.toUnmodifiableList()` 也可生成不可变列表，但 `toList()` 更简洁，且性能更优。
+
+- **适用场景**：  
+  需要快速生成不可变列表的流操作，如过滤、映射后的结果收集。
+
+### **2. `mapMulti()`：高效替代 `flatMap()` 的元素转换**
+- `mapMulti()` 通过 `BiConsumer` 直接接收元素并推送零个或多个结果到下游，避免创建临时流：
+  ```java
+  List<String> result = Stream.of("a", "bb", "ccc")
+      .mapMulti((s, consumer) -> consumer.accept(String.valueOf(s.length()))) // 直接推送结果
+      .toList();
+  ```
+
+- **关键特性**：
+    - **零开销**：无需创建内部流，减少内存分配和垃圾回收压力。
+    - **灵活性**：可动态决定推送结果的数量（如过滤、复制元素）。
+    - **与 `flatMap()` 对比**：  
+      `flatMap()` 更声明式，适合明确映射逻辑；`mapMulti()` 更命令式，适合复杂或性能敏感场景。
+
+- **适用场景**：  
+  需要高效处理大量数据或动态生成结果的流操作，如日志解析、数据转换。

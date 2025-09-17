@@ -1,93 +1,130 @@
 # Java 20
 
-- JEP 429：作用域值（第一次孵化）
-- JEP 432：Record 模式（第二次预览）
-- JEP 433：模式匹配的 Switch 表达式（第四次预览）
-- JEP 434：外部函数与内存 API（第二次预览）
-- JEP 436：虚拟线程（第二次预览）
-- JEP 437：结构化并发（第二次孵化）
-- JEP 438：向量 API（第五次孵化）
+- **JEP 429**: 作用域值（孵化器）
+- **JEP 432**: 记录模式（第二次预览）
+- **JEP 433**: switch 表达式中的模式匹配（第四次预览）
+- **JEP 434**: 外部函数与内存 API（第二次预览）
+- **JEP 436**: 虚拟线程（第二次预览）
+- **JEP 437**: 结构化并发（第二次孵化器）
+- **JEP 438**: 向量 API（第五次孵化器）
 
----
+## JEP 429: 作用域值（孵化器）
 
-## JEP 429：作用域值（第一次孵化）
-在多线程环境下，正确管理上下文数据是一项有挑战的事情，传统的解决方案（如 ThreadLocal）在某些场景下并不是很适用或者效率比较低下。Java 20 引入作用域值（Scoped Values），它可以在线程内和线程间共享不可变的数据，并且优于线程局部变量。
+作用域值是一种在特定作用域内共享不可变数据的机制。它为在大型程序组件之间安全有效地共享数据提供了一种新方式，无需借助方法参数传递。与线程局部变量不同，作用域值更适用于虚拟线程和结构化并发等新的编程模型，有助于减少代码冗余，提高代码可维护性。
 
-Scoped Values 是一种新的机制，它主要用于在线程或虚拟线程中安全地传递和访问数据，它允许在代码的不同部分之间传递信息，例如，在多线程应用中从父线程向子线程传递数据。它的引入解决了两个问题：
-- **线程局部存储的限制**：ThreadLocal 可能会导致内存泄漏，并且不适合于虚拟线程。Scoped Values 提供了一种更安全和高效的方式来处理线程局部数据。
-- **上下文传递的复杂性**：在复杂的多线程环境中传递上下文信息通常都很复杂。Scoped Values 简化了这一过程。
+```java
+final static ScopedValue<String> USER_NAME = new ScopedValue<>();
 
-## JEP 432：Record 模式（第二次预览）
-Record 模式 是 Java 19 作为预览特性引入的，它允许在 instanceof 表达式中使用记录模式，这样我们就可以在单个 instanceof 检查中同时测试一个对象的类型并提取其组件。
+// 设置作用域值
+ScopedValue.where(USER_NAME, "Alice")
+           .run(() -> {
+               // 在这个作用域内可以访问 USER_NAME
+               System.out.println("Hello, " + USER_NAME.get());
+           });
+```
 
-该特性与Java 14 中引入的记录类（Record Classes）结合使用，提供了一种更直观、更简洁的方式来处理数据对象。
+## JEP 432: 记录模式（第二次预览）
 
-此次改进：
-- 添加对通用记录模式类型参数推断的支持，
-- 添加对记录模式的支持以出现在增强语句的标题中for
-- 删除对命名记录模式的支持。
+记录模式扩展了模式匹配的功能，允许在模式匹配中直接解构记录类的属性。这使得代码更加简洁和易读，减少了不必要的属性访问代码。例如，可以更方便地从记录对象中提取特定属性进行处理。
 
-| Java 版本 | 更新类型  | JEP     | 更新内容               |
-|---------|-------|---------|--------------------|
-| Java 19 | 第一次预览 | JEP 405 | 引入 Record 模式作为预览特性 |
-| Java 20 | 第二次预览 | JEP 432 | 	优化 Record 模式      |
+```java
+record Point(int x, int y) {}
 
-## JEP 433：模式匹配的 Switch 表达式（第四次预览）
-模式匹配的 Switch 表达式首次在 Java 17 中作为预览特性引入，它允许在 switch 语句和表达式中使用模式匹配，这样就直接在 case 标签中匹配对象的类型。
+Point point = new Point(10, 20);
 
-| Java 版本 | 更新类型  | JEP     | 更新内容                     |
-|---------|-------|---------|--------------------------|
-| Java 17 | 第一次预览 | JEP 406 | 引入模式匹配的 Swith 表达式作为预览特性。 |
-| Java 18 | 第二次预览 | JEP 420 | 对其做了改进和细微调整              |
-| Java 19 | 第三次预览 | JEP 427 | 进一步优化模式匹配的 Swith 表达式     |
-| Java 20 | 第四次预览 | JEP 433 | 优化模式匹配的 Swith 表达式        |
+// 使用记录模式解构
+if (point instanceof Point(int x, int y)) {
+    System.out.println("X: " + x + ", Y: " + y);
+}
+```
 
-## JEP 434：外部函数与内存 API（第二次预览）
-外部函数和内存API 是 Java 17 作为预览特性引入的，它的核心在于提供一种安全、高效的方法来访问本地代码（例如 C 或 C++ 库）和内存。主要是通过两个组件实现的：
-- **Foreign Function Interface (FFI)**: 允许 Java 代码直接调用非 Java 代码，特别是用 C/C++ 编写的代码。这可以通过定义一种类型安全的方式来实现，同时避免了 Java 本地接口（JNI）的复杂性和开销。
-- **Foreign Memory Access API**：提供了一种安全的方法来访问不受 JVM 管理的内存。这对于需要操作系统级别内存操作或者直接与外部设备交互的应用程序非常重要。
+## JEP 433: switch 表达式中的模式匹配（第四次预览）
 
-JDK 20 中是第二次预览，这次的改进包括：
-- `MemorySegment`和`MemoryAddress`抽象的统一
-- 增强的`MemoryLayout`层次结构
-- `MemorySession`拆分为`Arena`和`SegmentScope`，以促进跨维护边界的段共享。
+该特性进一步增强了 `switch` 表达式的功能，允许在 `switch` 中使用更丰富的模式匹配。除了支持类型模式外，还可以使用记录模式等，使得代码更加简洁和灵活，能够处理更复杂的条件逻辑。
 
-| Java 版本 | 更新类型  | JEP     | 更新内容                   |
-|---------|-------|---------|------------------------|
-| Java 14 | 孵化器   | JEP 370 | 引入了外部内存访问 API          |
-| Java 15 | 第二孵化器 | JEP 383 | 优化外部内存访问 API           |
-| Java 16 | 孵化器   | JEP 389 | 引入了外部链接器 API           |
-| Java 16 | 第三孵化器 | JEP 393 | 继续优化                   |
-| Java 17 | 孵化器   | JEP 412 | 引入了外部函数和内存 API         |
-| Java 18 | 二次孵化器 | JEP 419 | 在此版本中，API再次进行了一些改进和扩展。 |
-| Java 19 | 第一次预览 | JEP 424 | 	                      |
-| Java 20 | 第二次预览 | JEP 434 | 优化模式匹配的 Swith 表达式      |
+```java
+record Rectangle(int width, int height) {}
+record Circle(int radius) {}
 
-## JEP 436：虚拟线程（第二次预览）
-虚拟线程是 Java 19 作为预览特性首次引入，其主要目的是解决 Java 并发编程模型的复杂性，使其更加简单和高效。它解决了两个问题：
-- **解决并发编程复杂性**：传统的线程模型在处理大量并发任务时复杂且效率低下。虚拟线程简化了并发编程，因为它们更加轻量级，并且易于管理。
-- **资源限制**：操作系统线程是有限的资源，大量线程的创建和管理可能会导致性能下降和资源耗尽。虚拟线程通过减轻这些限制，使得创建和管理大量线程成为可能。
+Object shape = new Rectangle(10, 20);
 
-| Java 版本 | 更新类型  | JEP     | 更新内容         |
-|---------|-------|---------|--------------|
-| Java 19 | 第一次预览 | JEP 425 | 引入虚拟线程作为预览特性 |
-| Java 20 | 第二次预览 | JEP 437 | 优化虚拟线程       |
+String description = switch (shape) {
+    case Rectangle(int w, int h) -> "Rectangle with width " + w + " and height " + h;
+    case Circle(int r) -> "Circle with radius " + r;
+    default -> "Unknown shape";
+};
 
-## JEP 437：结构化并发（第二次孵化）
-结构化并发是在 Java 19 中孵化的，它的主要目的是使并发操作更容易管理和维护。它通过引入一种称为“结构化并发”的概念来实现，该概念强调将并发任务组织在一起，使它们的生命周期更加清晰和可控。
+System.out.println(description);
+```
 
-| Java 版本 | 更新类型  | JEP     | 更新内容          |
-|---------|-------|---------|---------------|
-| Java 19 | 第一次孵化 | JEP 428 | 引入结构化并发作为孵化特性 |
-| Java 20 | 第二次孵化 | JEP 437 | 优化增强结构化并发     |
+## JEP 434: 外部函数与内存 API（第二次预览）
 
-## JEP 438：向量 API（第五次孵化）
-向量 API 是在 Java 16 中作为孵化器引入的，其目的是提供一个表达式丰富、编译时性能可预测的平台，用于编写复杂的向量计算，以充分利用现代处理器的 SIMD（单指令多数据）指令。它目前是第五次孵化。
+外部函数与内存 API 提供了一种更安全、更高效的方式来调用本地代码和操作本地内存。它允许 Java 程序直接访问外部函数库，并与本地数据结构进行交互，而无需依赖 JNI（Java Native Interface），从而提高了性能和安全性。
 
-| Java 版本 | 更新类型  | JEP     | 更新内容                      |
-|---------|-------|---------|---------------------------|
-| Java 16 | 第一次孵化 | JEP 338 | 引入向量 API 作为孵化器            |
-| Java 17 | 第二次孵化 | JEP 414 | 对 API 进行了改进，增加了性能优化和新的功能。 |
-| Java 18 | 第三次孵化 | JEP 417 | 进一步增强 API，改进了性能和易用性。      |
-| Java 19 | 第四次孵化 | JEP 426 | 进一步增强 API                 |
-| Java 20 | 第五次孵化 | JEP 438 | 进一步增强 API                 |
+```java
+// 假设有一个外部函数声明
+interface NativeLibrary {
+    int add(int a, int b);
+}
+
+// 加载外部库
+try (var lib = LibraryLoader.load("mylibrary")) {
+    NativeLibrary nativeLib = lib.lookup("add").as(NativeLibrary.class);
+    int result = nativeLib.add(5, 3);
+    System.out.println("Result: " + result);
+}
+```
+
+## JEP 436: 虚拟线程（第二次预览）
+
+虚拟线程是一种轻量级的线程实现，旨在简化高并发编程。与传统的操作系统线程不同，虚拟线程由 JVM 管理，创建和切换的成本更低，可以轻松创建大量虚拟线程来处理并发任务，提高了程序的吞吐量和响应能力。
+
+```java
+try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
+    IntStream.range(0, 1000).forEach(i -> {
+        executor.submit(() -> {
+            System.out.println("Task " + i + " running on " + Thread.currentThread());
+            return i;
+        });
+    });
+}
+```
+
+## JEP 437: 结构化并发（第二次孵化器）
+
+结构化并发是一种多线程编程方法，它将不同线程中运行的多个任务视为单个工作单元。通过引入 `StructuredTaskScope` 类，开发者可以将任务拆分为多个并发子任务，并在它们自己的线程中执行。子任务必须在主任务继续之前完成，这使得错误处理更加简单，因为异常可以在一个地方捕获和处理，提高了代码的可读性、可维护性和可靠性。
+
+```java
+try (var scope = new StructuredTaskScope<Object>()) {
+    Future<Integer> future1 = scope.fork(() -> doTask1());
+    Future<String> future2 = scope.fork(() -> doTask2());
+    scope.join();
+    scope.throwIfFailed();
+
+    Integer result1 = future1.resultNow();
+    String result2 = future2.resultNow();
+    // 处理结果
+} catch (Exception e) {
+    // 处理异常
+}
+```
+
+## JEP 438: 向量 API（第五次孵化器）
+
+向量 API 提供了一种高效的方式来进行向量计算，适用于科学计算、机器学习等领域。该特性通过引入一组新的类和接口，允许开发者使用硬件加速的向量指令来执行计算，从而提高性能。开发者可以利用向量的并行计算能力，对大量数据进行快速处理。
+
+```java
+// 创建两个向量
+IntVector vector1 = IntVector.fromArray(VectorSpecies.ofDefault(int.class), new int[]{1, 2, 3, 4}, 0);
+IntVector vector2 = IntVector.fromArray(VectorSpecies.ofDefault(int.class), new int[]{5, 6, 7, 8}, 0);
+
+// 执行向量加法
+IntVector result = vector1.add(vector2);
+
+// 将结果存储到数组中
+int[] output = new int[4];
+result.intoArray(output, 0);
+
+// 输出结果
+System.out.println(Arrays.toString(output)); // [6, 8, 10, 12]
+```
