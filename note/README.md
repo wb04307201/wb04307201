@@ -55,10 +55,11 @@
 ## 7. [Java Agent](01.java%2Fjava-agent%2FREADME.md)
 ### 7.1. [统计API接口调用耗时](01.java/java-agent/api/README.md)
 ## 8. 咬文嚼字
-### 8.1. [创建对象](01.java/split-hairs/create-object/README.md)
-### 8.2. [单例模式](01.java/split-hairs/singleton-pattern/README.md)
-### 8.3. [Integer缓存](01.java/split-hairs/integer-cache/README.md)
-### 8.4. [`String str = new String("123")`会在堆中生成几个新对象](01.java/split-hairs/new-objects/README.md)
+### 8.1. [高频面试题](01.java/split-hairs/questions/README.md)
+### 8.2. [创建对象](01.java/split-hairs/create-object/README.md)
+### 8.3. [单例模式](01.java/split-hairs/singleton-pattern/README.md)
+### 8.4. [Integer缓存](01.java/split-hairs/integer-cache/README.md)
+### 8.5. [`String str = new String("123")`会在堆中生成几个新对象](01.java/split-hairs/new-objects/README.md)
 
 # 二、计算机基础
 ## 1. [服务器性能指标](02.computer-basics%2Fserver-performance-metrics%2FREADME.md)
@@ -224,6 +225,7 @@
 ### [Seata 分布式事务框架](06.spring/cloud/seata/README.md)
 
 # 七、[工作流](07.workflow/README.md)
+## [定义](07.workflow/define/README.md)
 ## [流程引擎](07.workflow/process-engine/README.md)
 ### [Camunda 7](07.workflow/process-engine/camunda/camunda-7/README.md)
 ### [Camunda 8](07.workflow/process-engine/camunda/camunda-8/README.md)
@@ -250,11 +252,11 @@
 ### [零代码平台架构设计](09.other/nocode/design/README.md)
 ## [Hapoop](09.other%2Fhadoop%2FREADME.md)
 
-# 十、大数据
+# 十、[大数据](10.big-data/README.md)
 ## [2024年的开源数据工程生态系统全景图](10.big-data/open-source/README.md)
 ## [离线数仓/实时数仓](10.big-data/offline-or-real-time-data-warehouse/README.md)
 
-# 十一、AI
+# 十一、[AI](11.ai/README.md)
 ## [大模型与算力](11.ai/llm-and-computing/README.md)
 ## [大模型落地分层技术体系](11.ai/hierarchical/README.md)
 ## [嵌入与向量化的区别](11.ai/Embedding-vs-vectorization/README.md)
