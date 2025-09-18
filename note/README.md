@@ -60,6 +60,7 @@
 ### 8.3. [单例模式](01.java/split-hairs/singleton-pattern/README.md)
 ### 8.4. [Integer缓存](01.java/split-hairs/integer-cache/README.md)
 ### 8.5. [`String str = new String("123")`会在堆中生成几个新对象](01.java/split-hairs/new-objects/README.md)
+### 8.6. [快速给Map排序](01.java/split-hairs/sort-map/README.md)
 
 # 二、计算机基础
 ## 1. [服务器性能指标](02.computer-basics%2Fserver-performance-metrics%2FREADME.md)
