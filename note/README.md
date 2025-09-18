@@ -65,7 +65,7 @@
 
 # 二、计算机基础
 ## 1. [服务器性能指标](02.computer-basics%2Fserver-performance-metrics%2FREADME.md)
-
+## 2. [计算机网络](02.computer-basics/network/README.md)
 
 # 三、数据库
 ## 关系型数据库
