@@ -65,7 +65,7 @@
 
 # 二、计算机基础
 ## 1. [服务器性能指标](02.computer-basics%2Fserver-performance-metrics%2FREADME.md)
-## 2. [CORS 跨域](02.computer-basics%2Fcors%2FREADME.md)
+
 
 # 三、数据库
 ## 关系型数据库
@@ -274,6 +274,7 @@
 # 十二、前端
 ## [前端框架](12.font-end/frameworks/README.md)
 ### [React前端框架构建](12.font-end/frameworks/building-react/README.md)
+## [CORS 跨域](12.font-end/cors/README.md)
 ## [微前端](12.font-end/micro-frontend/README.md)
 ## [Web Components](12.font-end/web-components/README.md)
 ## 咬文嚼字
