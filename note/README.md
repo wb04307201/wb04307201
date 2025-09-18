@@ -79,6 +79,7 @@
 ### [MySQL](03.database%2Fbase%2Frelational-database%2Fmysql%2FREADME.md)
 #### 咬文嚼字
 ##### [MySQL锁类型详解](03.database/base/relational-database/mysql/split-hairs/lock/README.md)
+##### [MySQL的事务隔离机制](03.database/base/relational-database/mysql/split-hairs/isolation/README.md)
 ##### [`INT(4)` 的定义](03.database/base/relational-database/mysql/split-hairs/int%284%29-define)
 ##### [1亿条数据快速加索引的方法](03.database/base/relational-database/mysql/split-hairs/quickly-add-index/README.md)
 ##### [时间类型对比](03.database/base/relational-database/mysql/split-hairs/time-types/README.md)
