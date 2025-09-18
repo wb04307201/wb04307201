@@ -1,101 +1,65 @@
-# Lombok注解如何让Java开发效率飙升
+# Lombok
 
-Lombok通过注解在编译阶段自动生成样板代码，**减少冗余代码量50%以上**，同时通过强制代码规范、简化日志配置和构建器模式等特性，显著提升Java开发效率。以下是具体分析：
+是一款通过注解简化Java代码的工具，在编译期自动生成模板代码（如getter、setter、构造器等）。
 
-## 一、核心效率提升：减少样板代码，聚焦业务逻辑
-1. **自动生成Getter/Setter**
-    - **传统写法**：每个字段需手动编写getter/setter方法，代码量随字段数线性增长。
-    - **Lombok方案**：
-      ```java
-      @Getter @Setter
-      public class User {
-          private String name;
-          private int age;
-      }
-      ```
-    - **效果**：一行注解替代数十行方法，字段增减时无需手动修改方法。
+### **基础功能注解**
+1. **@Data**  
+   组合注解，等价于同时使用`@Getter`、`@Setter`、`@ToString`、`@EqualsAndHashCode`和`@RequiredArgsConstructor`。生成无参构造需配合`@NoArgsConstructor`，适用于POJO类。
 
-2. **一键生成构造方法**
-    - **无参构造**：`@NoArgsConstructor`
-    - **全参构造**：`@AllArgsConstructor`
-    - **必填字段构造**：`@RequiredArgsConstructor`（为`final`或`@NonNull`字段生成构造方法）
-    - **示例**：
-      ```java
-      @RequiredArgsConstructor
-      public class Order {
-          private final Long id; // 必填字段
-          @NonNull private String orderNo; // 非空字段
-      }
-      ```
-    - **效果**：避免手动编写构造方法，确保关键字段初始化。
+2. **@Getter/@Setter**  
+   为类或属性生成getter/setter方法。可指定访问级别（如`AccessLevel.PRIVATE`），final属性不生成setter。
 
-3. **标准化`equals()`/`hashCode()`/`toString()`**
-    - **传统痛点**：手动实现易出错，且需随字段修改同步更新。
-    - **Lombok方案**：
-      ```java
-      @EqualsAndHashCode @ToString
-      public class Product {
-          private String name;
-          private BigDecimal price;
-      }
-      ```
-    - **效果**：自动生成基于所有字段的比较和字符串表示，减少人为错误。
+3. **@ToString**  
+   生成`toString()`方法，默认包含所有非静态字段。支持`exclude`排除字段、`callSuper`包含父类信息、`includeFieldNames`控制字段名显示。
 
-## 二、开发体验优化：简化日志与构建模式
-1. **日志注入**
-    - **传统写法**：手动创建Logger对象，代码冗余。
-    - **Lombok方案**：
-      ```java
-      @Slf4j
-      public class OrderService {
-          public void createOrder() {
-              log.info("Creating order..."); // 直接使用日志对象
-          }
-      }
-      ```
-    - **效果**：无需手动初始化Logger，代码更简洁。
+4. **@EqualsAndHashCode**  
+   生成`equals()`和`hashCode()`方法。通过`callSuper=true`可包含父类字段，`exclude`可排除指定字段。
 
-2. **链式构建器模式**
-    - **场景**：创建复杂对象时，传统构造方法参数过多难以维护。
-    - **Lombok方案**：
-      ```java
-      @Builder
-      public class Computer {
-          private String cpu;
-          private String memory;
-      }
-      // 使用方式
-      Computer pc = Computer.builder().cpu("i7").memory("16GB").build();
-      ```
-    - **效果**：通过链式调用清晰指定参数，提高代码可读性。
+5. **构造器相关**
+    - `@NoArgsConstructor`：无参构造器。
+    - `@RequiredArgsConstructor`：为`@NonNull`或final字段生成构造器。
+    - `@AllArgsConstructor`：全参数构造器。
 
-## 三、代码质量保障：强制规范与减少错误
-1. **非空检查**
-    - **`@NonNull`注解**：在编译期检查参数是否为`null`，避免运行时异常。
-      ```java
-      public void process(@NonNull String input) {
-          System.out.println(input.length()); // 输入为null时直接抛出NPE
-      }
-      ```
+### **高级功能注解**
+6. **@Builder**  
+   实现建造者模式，支持链式调用（如`User.builder().name("test").age(20).build()`）。可配合`@SuperBuilder`支持父类字段。
 
-2. **不可变类支持**
-    - **`@Value`注解**：生成全字段`final`的不可变类，适合值对象。
-      ```java
-      @Value
-      public class Point {
-          private final int x;
-          private final int y;
-      }
-      ```
-    - **效果**：线程安全，避免并发修改问题。
+7. **日志注解**  
+   `@Slf4j`、`@Log`、`@Log4j`等，自动生成日志记录器（如`private static final Logger log = ...`）。
 
-## 四、效率对比：量化提升效果
-- **代码量减少**：以一个包含10个字段的实体类为例，传统写法需约150行代码，使用Lombok后仅需20行（注解+字段声明）。
-- **开发速度提升**：根据社区调研，Lombok可减少**30%~50%**的样板代码编写时间。
-- **维护成本降低**：字段增减时，无需手动修改相关方法，注解自动同步更新。
+8. **资源管理**
+    - `@Cleanup`：自动关闭资源（如文件流、数据库连接），确保`close()`被调用。
+    - `@SneakyThrows`：将检查异常转为运行时异常，无需显式捕获。
 
-## 五、注意事项与最佳实践
-1. **IDE支持**：需安装Lombok插件（如IntelliJ IDEA的Lombok Plugin），否则可能报错。
-2. **团队规范**：建议统一注解使用标准（如是否允许全局使用`@Data`）。
-3. **调试挑战**：自动生成的方法在源码中不可见，调试时需查看反编译字节码。
-4. **复杂场景慎用**：如继承链复杂的类，手动实现`equals()`/`hashCode()`更安全。
+9. **非空校验**  
+   `@NonNull`用于字段或参数，若值为null则抛出`NullPointerException`。
+
+10. **同步控制**  
+    `@Synchronized`：将方法体包裹在`synchronized`块中，可指定锁对象。
+
+11. **不可变类**  
+    `@Value`：生成不可变类（字段final，无setter，全参构造器），类似`@Data`但更严格。
+
+12. **类型推断**  
+    `val`/`var`：局部变量类型推断（`val`为final，`var`不可变），需配合Java 10+。
+
+### **特殊场景注解**
+13. **懒加载**  
+    `@Getter(lazy=true)`：字段首次访问时初始化，线程安全。
+
+14. **委托模式**  
+    `@Delegate`：将方法调用转发到另一个对象（如`@Delegate(types=List.class)`实现List接口）。
+
+15. **工具类**  
+    `@UtilityClass`：生成不可实例化的工具类，自动添加`private`构造器和`static`方法。
+
+16. **字段默认值**  
+    `@FieldDefaults(makeFinal=true, level=AccessLevel.PRIVATE)`：设置字段默认访问级别和final属性。
+
+### **注意事项**
+- **依赖配置**：需在Maven/Gradle中添加Lombok依赖，并在IDE安装插件（如IntelliJ的Lombok插件）。
+- **代码可读性**：过度使用可能降低代码可读性，建议仅用于POJO类或简单工具类。
+- **构造器冲突**：Lombok不支持多种构造器重载，需通过注解组合实现。
+- **父类字段**：`@EqualsAndHashCode`和`@ToString`需通过`callSuper=true`显式包含父类字段。
+
+Lombok通过编译期注解处理器（JSR 269）修改抽象语法树（AST）生成代码，不改变运行时行为。官方文档建议结合具体场景选择注解，避免过度简化影响代码维护性。
