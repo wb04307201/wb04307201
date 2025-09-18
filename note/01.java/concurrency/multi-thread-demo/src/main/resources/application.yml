@@ -1,6 +1,0 @@
-spring:
-  datasource:
-    url: jdbc:h2:file:./data/demo;AUTO_SERVER=TRUE
-    username: sa
-    password:
-    driverClassName: org.h2.Driver

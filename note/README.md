@@ -9,18 +9,13 @@
 ### 2.3. [TreeMap](01.java/collection/TreeMap/README.md)
 ## 3. [I/O](01.java%2Fio%2FREADME.md)
 ### 3.1. [零拷贝](01.java%2Fio%2Fzero-copy%2FREADME.md)
-## 4. [并发](01.java%2Fconcurrency%2FREADME.md)
-### 4.1. [乐观锁和悲观锁](01.java/concurrency/optimistic-or-pessimistic-lock/README.md)
-### 4.2. [Java锁](01.java/concurrency/java-locks/README.md)
-### 4.3. [并发和锁的代码示例](01.java%2Fconcurrency%2Fmulti-thread-demo%2FREADME.md)
-### 4.4. [CHMRLock - 基于ConcurrentHashMap和 ReentrantLock的锁实现](https://gitee.com/wb04307201/CHMRLock)
-> 一个基于Java ConcurrentHashMap 和 ReentrantLock 的锁实现。它提供了锁的获取、释放、自动清理过期锁以及监控指标统计等功能。
-## 5. JVM虚拟机
-### 5.1. [JVM内存区域](01.java%2Fjvm%2Fjvm-memory-areas%2FREADME.md)
-### 5.2. [垃圾回收](01.java%2Fjvm%2Fgarbage-collection%2FREADME.md)
-### 5.3. [JDK监控和故障处理工具](01.java%2Fjvm%2Fmonitoring-and-troubleshooting-tools%2FREADME.md)
-### 5.4. [JVM调优命令](01.java%2Fjvm%2Fjvm-tuning-command%2FREADME.md)
-### 5.5. [JVM资源规划](01.java/jvm/resource-planning/README.md)
+## 5. [JVM虚拟机](01.java/jvm/README.md)
+### 5.1. [JVM运行时数据区域](01.java/jvm/area/README.md)
+### 5.2. [HotSpot虚拟机](01.java/jvm/hotspot/README.md)
+### 5.3. [Java对象创建过程](01.java/jvm/new-object/README.md)
+### 5.4. [垃圾回收](01.java%2Fjvm%2Fgarbage-collection%2FREADME.md)
+### 5.5. [JVM工具](01.java/jvm/tools/README.md)
+### 5.6. [JVM调优](01.java/jvm/tuning/README.md)
 ## 6. 版本特性
 ### 6.0. 功能版本变更历史
 #### 6.0.1. [垃圾回收](01.java/version/function-history/gc/README.md)
@@ -30,6 +25,11 @@
 #### 6.0.5. [Switch](01.java/version/function-history/switch/README.md)
 #### 6.0.6. [instanceof](01.java/version/function-history/instanceof/README.md)
 #### 6.0.7. [并发](01.java/version/function-history/concurrency/README.md)
+##### 6.0.7.1. [定义](01.java/version/function-history/concurrency/define/README.md)
+1. [Java锁机制](01.java/version/function-history/concurrency/define/java-locks/README.md)
+2. [CHMRLock - 基于ConcurrentHashMap和 ReentrantLock的锁实现](https://gitee.com/wb04307201/CHMRLock)
+   > 一个基于Java ConcurrentHashMap 和 ReentrantLock 的锁实现。它提供了锁的获取、释放、自动清理过期锁以及监控指标统计等功能。
+3. [线程池](01.java/version/function-history/concurrency/define/thread-pool/README.md)
 #### 6.0.8. [Vector API](01.java/version/function-history/vector-api/README.md)
 #### 6.0.9. [Record](01.java/version/function-history/record/README.md)
 ### 6.1. [Java 8（LTS）](01.java%2Fversion%2Fjava-8%2FREADME.md)
