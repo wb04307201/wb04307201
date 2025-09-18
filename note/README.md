@@ -224,6 +224,7 @@
 ### [Seata 分布式事务框架](06.spring/cloud/seata/README.md)
 
 # 七、[工作流](07.workflow/README.md)
+## [定义](07.workflow/define/README.md)
 ## [流程引擎](07.workflow/process-engine/README.md)
 ### [Camunda 7](07.workflow/process-engine/camunda/camunda-7/README.md)
 ### [Camunda 8](07.workflow/process-engine/camunda/camunda-8/README.md)
@@ -250,11 +251,11 @@
 ### [零代码平台架构设计](09.other/nocode/design/README.md)
 ## [Hapoop](09.other%2Fhadoop%2FREADME.md)
 
-# 十、大数据
+# 十、[大数据](10.big-data/README.md)
 ## [2024年的开源数据工程生态系统全景图](10.big-data/open-source/README.md)
 ## [离线数仓/实时数仓](10.big-data/offline-or-real-time-data-warehouse/README.md)
 
-# 十一、AI
+# 十一、[AI](11.ai/README.md)
 ## [大模型与算力](11.ai/llm-and-computing/README.md)
 ## [大模型落地分层技术体系](11.ai/hierarchical/README.md)
 ## [嵌入与向量化的区别](11.ai/Embedding-vs-vectorization/README.md)
