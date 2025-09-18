@@ -1,14 +1,14 @@
 # Stream API
 
-| Java版本 | 新特性/增强内容 |
-|---------|---------------|
-| Java 8 | JEP 107: 首次引入 Stream API (`java.util.stream`)，提供对元素流进行函数式操作的能力 |
-| Java 9 | Stream API 增强，添加了 `takeWhile()`、`dropWhile()`、`ofNullable()` 和重载的 `iterate()` 方法 |
-| Java 10 | Stream API 增强，新增收集到不可变集合的收集器 |
-| Java 16 | Stream API 增强，新增 `toList()` 方法和 `mapMulti()` 方法 |
-| Java 22 | JEP 461: 流收集器（预览）- 引入 `Stream::gather(Gatherer)` 方法 |
-| Java 23 | JEP 473: 流收集器（第二次预览）- 继续完善流收集器功能 |
-| Java 24 | JEP 485: 流收集器（正式版）- `Stream::gather(Gatherer)` 方法正式可用 |
+| Java版本  | 新特性/增强内容                                                                         |
+|---------|----------------------------------------------------------------------------------|
+| Java 8  | JEP 107: 首次引入 Stream API (`java.util.stream`)，提供对元素流进行函数式操作的能力                   |
+| Java 9  | Stream API 增强，添加了 `takeWhile()`、`dropWhile()`、`ofNullable()` 和重载的 `iterate()` 方法 |
+| Java 10 | Stream API 增强，新增收集到不可变集合的收集器                                                     |
+| Java 16 | Stream API 增强，新增 `toList()` 方法和 `mapMulti()` 方法                                  |
+| Java 22 | JEP 461: 流收集器（预览）- 引入 `Stream::gather(Gatherer)` 方法                              |
+| Java 23 | JEP 473: 流收集器（第二次预览）- 继续完善流收集器功能                                                 |
+| Java 24 | JEP 485: 流收集器（正式版）- `Stream::gather(Gatherer)` 方法正式可用                            |
 
 ## 功能详细介绍
 
@@ -30,6 +30,41 @@ List<String> result = names.stream()
     .collect(Collectors.toList());
 ```
 
+自定义Collectors可以通过Collectors.of()方法实现
+```java
+Collector<T, ?, R> collector = Collector.of(
+    Supplier<A> supplier,        // 创建结果容器
+    BiConsumer<A, T> accumulator, // 将元素累加到容器
+    BiConsumer<A, A> combiner,    // 合并两个容器的结果（并行流场景）
+    Function<A, R> finisher,       // 转换最终结果（可选）
+    Collector.Characteristics... characteristics // 特性标记（CONCURRENT（并发性）、UNORDERED（无序性） 和 IDENTITY_FINISH（恒等终结）），可组合使用
+);
+```
+
+示例：自定义字符串拼接收集器
+```java
+import java.util.stream.Collector;
+import java.util.function.*;
+import java.util.StringJoiner;
+
+public class CustomCollectors {
+    public static <T> Collector<T, ?, String> joining(CharSequence delimiter) {
+        return Collector.of(
+            () -> new StringJoiner(delimiter), // 容器：StringJoiner
+            (joiner, element) -> joiner.add(element.toString()), // 累加
+            (joiner1, joiner2) -> joiner1.merge(joiner2), // 合并
+            StringJoiner::toString, // 终结：转为String
+            Collector.Characteristics.UNORDERED // 特性：无序
+        );
+    }
+
+    public static void main(String[] args) {
+        String result = Stream.of("a", "b", "c")
+            .collect(joining(","));
+        System.out.println(result); // 输出：a,b,c
+    }
+}
+```
 
 ### 2. Java 9 - Stream API 增强
 
