@@ -20,6 +20,7 @@
 ### 6.0. 功能版本变更历史
 #### 6.0.1. [垃圾回收](01.java/version/function-history/gc/README.md)
 #### 6.0.2. [Lambda](01.java/version/function-history/lambda/README.md)
+##### 6.0.2.1. [README.md](01.java/version/function-history/lambda/functional-interface/README.md)
 #### 6.0.3. [Stream API](01.java/version/function-history/stream-api/README.md)
 #### 6.0.4. [Optional](01.java/version/function-history/optional/README.md)
 #### 6.0.5. [Switch](01.java/version/function-history/switch/README.md)
