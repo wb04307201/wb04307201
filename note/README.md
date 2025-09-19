@@ -1,8 +1,9 @@
 # 一、java
 ## 1. [概念](01.java/concepts/README.md)
 ### 1.1. [基础](01.java/concepts/base/README.md)
-### 1.1. [序列化和反序列化](01.java/concepts/README.md)
-### 1.2. [反射](01.java/concepts/reflection/README.md)
+### 1.2. [Object类](01.java/concepts/object/README.md)
+### 1.2. [序列化和反序列化](01.java/concepts/README.md)
+### 1.3. [反射](01.java/concepts/reflection/README.md)
 ## 2. [集合](01.java%2Fcollection%2FREADME.md)
 ### 2.1. [ConcurrentHashMap](01.java/collection/ConcurrentHashMap/README.md)
 ### 2.2. [WeakHashMap](01.java/collection/WeakHashMap/README.md)
@@ -61,6 +62,7 @@
 ### 8.3. [单例模式](01.java/split-hairs/singleton-pattern/README.md)
 ### 8.4. [Integer缓存](01.java/split-hairs/integer-cache/README.md)
 ### 8.5. [`String str = new String("123")`会在堆中生成几个新对象](01.java/split-hairs/new-string/README.md)
+### 8.6. [Java 为什么将基础数据类型（如 int、double 等）封装为对象](01.java/split-hairs/object/README.md)
 
 # 二、计算机基础
 ## 1. [服务器性能指标](02.computer-basics%2Fserver-performance-metrics%2FREADME.md)
