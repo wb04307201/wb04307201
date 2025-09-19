@@ -61,7 +61,6 @@
 ### 8.3. [单例模式](01.java/split-hairs/singleton-pattern/README.md)
 ### 8.4. [Integer缓存](01.java/split-hairs/integer-cache/README.md)
 ### 8.5. [`String str = new String("123")`会在堆中生成几个新对象](01.java/split-hairs/new-objects/README.md)
-### 8.6. [快速给Map排序](01.java/split-hairs/sort-map/README.md)
 
 # 二、计算机基础
 ## 1. [服务器性能指标](02.computer-basics%2Fserver-performance-metrics%2FREADME.md)
@@ -122,6 +121,7 @@
 #### [Gossip协议](04.system-design/distributed/theory-algorithm-protocol/gossip/README.md)
 ### [RPC](04.system-design%2Fdistributed%2Frpc%2FREADME.md)
 #### [Apache Dubbo](04.system-design%2Fdistributed%2Frpc%2Fapache-dubbo%2FREADME.md)
+#### [RPC和REST](04.system-design/distributed/rpc/rpc-and-rest/README.md)
 ### [分布式ID](04.system-design/distributed/distributed-id/README.md)
 #### [UUID](04.system-design/distributed/distributed-id/uuid/README.md)
 #### [ULID](04.system-design/distributed/distributed-id/ulid/README.md)
@@ -140,6 +140,8 @@
 #### [数据结构选择：HashSet 替代 LinkedList 查找](04.system-design/high-performance/java/split-hairs/replace-linkedlist-with-hashset/README.md)
 #### [并发编程优化：Atomic 类替代 synchronized](04.system-design/high-performance/java/split-hairs/replace-synchronized-with-atomic/README.md)
 #### [字符串拼接优化：StringBuilder 重用](04.system-design/high-performance/java/split-hairs/reuse-of-stringbuilder/README.md)
+#### [快速给Map排序](04.system-design/high-performance/java/split-hairs/sort-map/README.md)
+#### [HashMap扩容](04.system-design/high-performance/java/split-hairs/hashmap-resizing/README.md)
 ### 数据库性能优化
 #### [数据库读写分离](04.system-design/high-performance/database-optimization/db-read-write-splitting-and-db-sharding/db-read-write-splitting/README.md)
 #### [数据库分库分表](04.system-design/high-performance/database-optimization/db-read-write-splitting-and-db-sharding/db-sharding/README.md)
@@ -149,9 +151,8 @@
 ### [载均衡负](04.system-design/high-performance/load-balance/README.md)
 ### [CDN](04.system-design/high-performance/cdn/README.md)
 ### [消息队列](04.system-design%2Fhigh-performance%2FMQ%2FREADME.md)
-#### [JMS 和 AMQP](04.system-design/high-performance/MQ/jms-and-amqp/README.md)
-#### [消息队列和RPC的区别](04.system-design/high-performance/MQ/mq-vs-rpc/README.md)
-#### [MQ消息积压](04.system-design/high-performance/MQ/mq-backlog/README.md)
+## 咬文嚼字
+##### [MQ消息积压](04.system-design/high-performance/MQ/split-hairs/mq-backlog/README.md)
 ## 4. 高可用
 高可用性是指一个系统或应用能够持续、稳定地提供服务，即使在其部分组件出现故障的情况下也能迅速恢复。高可用性通常通过冗余设计、负载均衡、故障转移和自动恢复等技术手段来实现。这些技术可以确保系统在面对硬件故障、网络问题或软件错误等挑战时，仍然能够保持服务的高可用性和连续性。
 ### 4.1. [代码质量](04.system-design/high-availability/code-quality/README.md)
