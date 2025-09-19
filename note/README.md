@@ -272,6 +272,7 @@
 ### [grok系统prompt](11.ai/prompt/grok-system-prompt/README.md)
 ## 工具
 ### [Ollama](11.ai/tools/ollama/README.md)
+### [Open WebUI](11.ai/tools/open-webui/README.md)
 ### [AI平台流程工具对比选购指南](11.ai/tools/workflow-comparison/README.md)
 ### [iFlow CLI AI 助手](11.ai/tools/iflow-cli/README.md)
 

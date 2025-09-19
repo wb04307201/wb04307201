@@ -163,4 +163,9 @@ docker run -it --rm --name chroma -p 8000:8000 ghcr.io/chroma-core/chroma:1.0.0
 docker pull ubuntu --registry-mirror=https://registry.dockermirror.com
 ```
 
+Open WebUI
+```shell
+docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+```
+
 ## 01 [docker-compose 示例](docker-compose%2FREADME.md)
