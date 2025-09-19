@@ -96,7 +96,7 @@
 ## [关系型数据库和NoSQL数据库的区别](03.database%2Fbase%2Fdatabase-vs-nosql%2FREADME.md)
 
 # 四、系统设计
-## 基础
+## 1. 基础
 ### [软件工程](04.system-design/base/software-engineering/README.md)
 #### [软件开发的流程与方法](04.system-design/base/software-engineering/development-process-and-methodologies/README.md)
 ##### [系统设计](04.system-design/base/software-engineering/development-process-and-methodologies/system-design/README.md)
@@ -112,8 +112,7 @@
 #### [工具与模型](04.system-design/base/software-engineering/tools-and-models/README.md)
 #### [质量保障体系](04.system-design/base/software-engineering/quality-assurance-system/README.md)
 ### [技术债](04.system-design/base/technical-debt/README.md)
-
-## 分布式
+## 2. 分布式
 分布式通常指的是一种计算或数据处理的方式，其中任务、数据或资源被分散在多个节点（如计算机、服务器或计算设备）上进行处理。这种分布式的处理方式可以提高系统的整体性能、可靠性、可扩展性和容错性。在分布式系统中，各个节点通过网络进行通信和协作，以实现共同的目标。
 ### 分布式理论&算法&协议
 #### [CAP](04.system-design/distributed/theory-algorithm-protocol/cap/README.md)
@@ -132,8 +131,7 @@
 > 一个基于Spring Boot的锁starter，提供了统一的锁接口和多种实现方式，包括Redis单点、Redis集群、Redis哨兵、Zookeeper和本地锁。通过简单的配置即可在项目中使用锁功能。
 ### [分布式事务](04.system-design%2Fdistributed%2Fdistributed-transaction%2FREADME.md)
 ### [API网关](04.system-design/distributed/api-gatewway/README.md)
-
-## 高性能
+## 3. 高性能
 高性能指的是系统或应用在处理任务、数据或请求时表现出的高效性和快速性。高性能系统通常具有强大的计算能力、快速的响应时间和高效的数据处理能力。为了实现高性能，系统可能需要采用先进的硬件技术、优化的软件算法、高效的存储和传输技术等手段。
 ### [Java代码性能优化](04.system-design/high-performance/java/README.md)
 #### 咬文嚼字
@@ -142,7 +140,6 @@
 #### [数据结构选择：HashSet 替代 LinkedList 查找](04.system-design/high-performance/java/split-hairs/replace-linkedlist-with-hashset/README.md)
 #### [并发编程优化：Atomic 类替代 synchronized](04.system-design/high-performance/java/split-hairs/replace-synchronized-with-atomic/README.md)
 #### [字符串拼接优化：StringBuilder 重用](04.system-design/high-performance/java/split-hairs/reuse-of-stringbuilder/README.md)
-
 ### 数据库性能优化
 #### [数据库读写分离](04.system-design/high-performance/database-optimization/db-read-write-splitting-and-db-sharding/db-read-write-splitting/README.md)
 #### [数据库分库分表](04.system-design/high-performance/database-optimization/db-read-write-splitting-and-db-sharding/db-sharding/README.md)
@@ -155,24 +152,23 @@
 #### [JMS 和 AMQP](04.system-design/high-performance/MQ/jms-and-amqp/README.md)
 #### [消息队列和RPC的区别](04.system-design/high-performance/MQ/mq-vs-rpc/README.md)
 #### [MQ消息积压](04.system-design/high-performance/MQ/mq-backlog/README.md)
-
-## [高可用-分布式系统中常用的容错策略](04.system-design%2Fhigh-availability%2FREADME.md)
-### [代码质量](04.system-design/high-availability/code-quality/README.md)
-### 限流&降级&熔断
+## 4. 高可用
+高可用性是指一个系统或应用能够持续、稳定地提供服务，即使在其部分组件出现故障的情况下也能迅速恢复。高可用性通常通过冗余设计、负载均衡、故障转移和自动恢复等技术手段来实现。这些技术可以确保系统在面对硬件故障、网络问题或软件错误等挑战时，仍然能够保持服务的高可用性和连续性。
+### 4.1. [代码质量](04.system-design/high-availability/code-quality/README.md)
+#### [2行代码实现功能，8行代码解决蠢](04.system-design/high-availability/code-quality/28/README.md)
+### 4.2. 限流&降级&熔断
 #### [限流](04.system-design/high-availability/rate-limiting/README.md)
 ##### [Rate Limiter - 限流器](https://gitee.com/wb04307201/rate-limiter)
 #### [降级](04.system-design/high-availability/service-degradation/README.md)
 #### [熔断](04.system-design/high-availability/circuit-break/README.md)
-### 超时&重试
+### 4.3. 超时&重试
 #### [超时](04.system-design/high-availability/timeout/README.md)
 #### [重试](04.system-design/high-availability/retry/README.md)
-### [冗余设计](04.system-design/high-availability/redundancy-design/README.md)
+### 4.4. [冗余设计](04.system-design/high-availability/redundancy-design/README.md)
 #### [异地多活](04.system-design/high-availability/redundancy-design/multi-site-active-active/README.md)
 #### [集群](04.system-design/high-availability/redundancy-design/cluter/README.md)
-### [弹性架构](04.system-design/high-availability/elastic-architecture/README.md)
-
+### 4.5. [弹性架构](04.system-design/high-availability/elastic-architecture/README.md)
 ## [幂等性设计](04.system-design/idempotency-design/README.md)
-
 ## 安全
 ### [为什么 `localStorage` 存储 JWT 是危险的？](04.system-design/security/jwt-localStorage/README.md)
 ### 认证授权
