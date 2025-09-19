@@ -153,8 +153,9 @@
 ### [载均衡负](04.system-design/high-performance/load-balance/README.md)
 ### [CDN](04.system-design/high-performance/cdn/README.md)
 ### [消息队列](04.system-design%2Fhigh-performance%2FMQ%2FREADME.md)
-## 咬文嚼字
+#### 咬文嚼字
 ##### [MQ消息积压](04.system-design/high-performance/MQ/split-hairs/mq-backlog/README.md)
+##### [有了kafka为什么还要有rocketmq？](04.system-design/high-performance/MQ/split-hairs/still-need-rocketmq/README.md)
 ## 4. 高可用
 高可用性是指一个系统或应用能够持续、稳定地提供服务，即使在其部分组件出现故障的情况下也能迅速恢复。高可用性通常通过冗余设计、负载均衡、故障转移和自动恢复等技术手段来实现。这些技术可以确保系统在面对硬件故障、网络问题或软件错误等挑战时，仍然能够保持服务的高可用性和连续性。
 ### 4.1. [代码质量](04.system-design/high-availability/code-quality/README.md)
