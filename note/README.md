@@ -91,6 +91,8 @@
 ##### [基于 ConcurrentHashMap 的高性能缓存实现](https://gitee.com/wb04307201/CHMCache)
 > 一个基于 `ConcurrentHashMap` 和 LRU 策略的高性能缓存实现，支持自动过期、大小限制、LRU 淘汰和后台清理等特性。
 ### [Redis](03.database%2Fbase%2Fnosql%2Fkey-value%2Fredis%2FREADME.md)
+#### 咬文嚼字
+##### [如何查找但不导致Redis阻塞](03.database/base/nosql/key-value/redis/split-hairs/search/README.md)
 
 ## [关系型数据库和NoSQL数据库的区别](03.database%2Fbase%2Fdatabase-vs-nosql%2FREADME.md)
 
