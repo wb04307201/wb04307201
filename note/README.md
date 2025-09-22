@@ -227,6 +227,8 @@
 ### [Spring Boot 3 中spring.factories 机制移除](06.spring/spring-boot-starter/spring-factories/README.md)
 ## [Spring Boot 响应式 SSE](06.spring/reactor-sse/README.md)
 ## [Spring Statemachine 状态机](06.spring/spring-statemachine/README.md)
+## [Spring Validation](06.spring/spring-validation/README.md)
+### [使用自定义注解进行验证](06.spring/spring-validation/custom-annotation/README.md)
 ## [Spring Cloud 微服务架构](06.spring/cloud/README.md)
 ### [服务注册与发现中心对比](06.spring/cloud/service-registry/README.md)
 ### [Seata 分布式事务框架](06.spring/cloud/seata/README.md)
