@@ -27,6 +27,7 @@
 #### 6.0.5. [Switch](01.java/version/function-history/switch/README.md)
 #### 6.0.6. [instanceof](01.java/version/function-history/instanceof/README.md)
 #### 6.0.7. [并发](01.java/version/function-history/concurrency/README.md)
+#### 6.0.8. [类文件 API](01.java/version/function-history/class-file-api/README.md)
 ##### 6.0.7.1. [定义](01.java/version/function-history/concurrency/define/README.md)
 1. [Java锁机制](01.java/version/function-history/concurrency/define/java-locks/README.md)
 2. [CHMRLock - 基于ConcurrentHashMap和 ReentrantLock的锁实现](https://gitee.com/wb04307201/CHMRLock)
