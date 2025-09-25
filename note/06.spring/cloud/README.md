@@ -92,3 +92,8 @@ graph TD
 5. **Sleuth+Zipkin（旧版）**
     - **问题**：Sleuth 逐渐被 Micrometer Tracing 替代，后者支持 OpenTelemetry 标准。
     - **替代优势**：Micrometer Tracing 兼容性更强，支持更多后端系统。
+
+## 四、推荐实践
+- **配置中心**：使用 **Nacos** 替代 Spring Cloud Config，支持动态刷新和权限控制。
+- **消息总线**：采用 **Spring Cloud Bus + Kafka** 替代 RabbitMQ，提升吞吐量。
+- **监控告警**：集成 **Prometheus + Grafana** 替代 Hystrix Dashboard，实现多维指标监控。
