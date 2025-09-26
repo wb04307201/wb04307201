@@ -21,7 +21,7 @@
 ### 6.0. 功能版本变更历史
 #### 6.0.1. [垃圾回收](01.java/version/function-history/gc/README.md)
 #### 6.0.2. [Lambda](01.java/version/function-history/lambda/README.md)
-##### 6.0.2.1. [README.md](01.java/version/function-history/lambda/functional-interface/README.md)
+##### 6.0.2.1. [函数式接口](01.java/version/function-history/lambda/functional-interface/README.md)
 #### 6.0.3. [Stream API](01.java/version/function-history/stream-api/README.md)
 #### 6.0.4. [Optional](01.java/version/function-history/optional/README.md)
 #### 6.0.5. [Switch](01.java/version/function-history/switch/README.md)
@@ -68,6 +68,8 @@
 # 二、计算机基础
 ## 1. [服务器性能指标](02.computer-basics%2Fserver-performance-metrics%2FREADME.md)
 ## 2. [计算机网络](02.computer-basics/network/README.md)
+### 2.1. [TCP/IP分层模型](02.computer-basics/network/tcp-ip/README.md)
+### 2.2. [OSI分层模型](02.computer-basics/network/osi/README.md)
 ## 3. [服务器性能指标](02.computer-basics/cloud-service-model/README.md)
 ## 4. [WCAG - 网页内容无障碍指南](02.computer-basics/wcag/README.md)
 ## 5. [时间复杂度](02.computer-basics/time-complexity/README.md)
