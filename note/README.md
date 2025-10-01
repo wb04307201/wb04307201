@@ -73,7 +73,11 @@
 ### 2.3. [TCP/IP分层模型与OSI分层模型结构对比](02.computer-basics/network/tcp-ip-vs-osi/README.md)
 ## 3. [服务器性能指标](02.computer-basics/cloud-service-model/README.md)
 ## 4. [WCAG - 网页内容无障碍指南](02.computer-basics/wcag/README.md)
-## 5. [时间复杂度](02.computer-basics/time-complexity/README.md)
+## 5. 算法
+### 5.1. [时间复杂度](02.computer-basics/algorithm/time-complexity/README.md)
+### 5.2. [空间复杂度](02.computer-basics/algorithm/space-complexity/README.md)
+### 5.3. [时间复杂度与空间复杂度应该如何取舍](02.computer-basics/algorithm/compromise/README.md)
+
 
 # 三、数据库
 ## 关系型数据库
