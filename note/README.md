@@ -214,8 +214,7 @@
 ## [Monorepo](05.tools%2Fmonorepo%2FREADME.md)
 ## [阿里微服务](05.tools%2Fali-microservices%2FREADME.md)
 ## Java
-### [Apache Commons](05.tools/java/apache-commons/README.md)
-### [Hutool](05.tools/java/hutools/README.md)
+### [Hutool、Apache Commons、Guava工具库](05.tools/java/tool-library/README.md)
 ### [Lombok注解如何让Java开发效率飙升](05.tools/java/lombok/README.md)
 
 # 六、[Spring](06.spring%2FREADME.md)
