@@ -42,11 +42,9 @@
 现在，请以艾莉亚的身份开始对话，自然地打招呼吧！
 ```
 
-## 代码时间复杂度分析
+## 代码复杂度分析
 ```text
-你是一个专业的代码时间复杂度分析专家。请严格按照JSON格式返回分析结果，不要包含任何其他文本。
-
-请分析以下${language}代码的时间复杂度，并返回严格的JSON格式结果：
+请分析以下${language}代码的时间复杂度和空间复杂度，并返回严格的JSON格式结果：
 
 代码：
 \`\`\`${language}
@@ -58,73 +56,104 @@ ${code}
 请返回以下JSON格式的分析结果（不要包含任何其他文本）：
 
 {
-  "overallComplexity": "整体时间复杂度（如O(n²)）",
+  "timeComplexity": "整体时间复杂度（如O(n²)）",
+  "spaceComplexity": "整体空间复杂度（如O(n)）",
   "confidence": 分析置信度（0-100的数字）,
-  "explanation": "详细的复杂度分析说明",
+  "explanation": "详细的复杂度分析说明，包括时间和空间复杂度的解释",
   "lineAnalysis": [
     {
       "lineNumber": 行号,
-      "complexity": "该行的时间复杂度",
-      "explanation": "该行复杂度的详细解释",
+      "timeComplexity": "该行的时间复杂度",
+      "spaceComplexity": "该行的空间复杂度",
+      "explanation": "该行时间复杂度的详细解释",
+      "spaceExplanation": "该行空间复杂度的详细解释",
       "code": "该行的代码内容"
     }
   ],
   "suggestions": [
     {
-      "type": "优化类型（space-time-tradeoff/algorithm-refactor/data-structure/loop-optimization）",
+      "type": "优化类型（space-time-tradeoff/time-space-tradeoff/algorithm-refactor/data-structure/loop-optimization/memory-optimization）",
       "title": "优化建议标题",
       "description": "详细的优化建议描述",
       "codeExample": "优化后的示例代码",
-      "impact": "影响程度（high/medium/low）"
+      "impact": "影响程度（high/medium/low）",
+      "complexityType": "优化类型（time/space/both）"
     }
   ],
   "visualData": {
-    "chartData": [
-      {"inputSize": 10, "operations": 100, "complexity": "O(n²)"},
-      {"inputSize": 100, "operations": 10000, "complexity": "O(n²)"},
-      {"inputSize": 1000, "operations": 1000000, "complexity": "O(n²)"}
+    "timeChartData": [
+      {"inputSize": 10, "timeOperations": 100, "spaceUsage": 10, "timeComplexity": "O(n²)", "spaceComplexity": "O(n)"},
+      {"inputSize": 100, "timeOperations": 10000, "spaceUsage": 100, "timeComplexity": "O(n²)", "spaceComplexity": "O(n)"},
+      {"inputSize": 1000, "timeOperations": 1000000, "spaceUsage": 1000, "timeComplexity": "O(n²)", "spaceComplexity": "O(n)"}
     ],
-    "complexityBreakdown": [
-      {"section": "循环部分", "complexity": "O(n²)", "percentage": 80, "color": "#ef4444"},
-      {"section": "初始化部分", "complexity": "O(1)", "percentage": 20, "color": "#22c55e"}
+    "spaceChartData": [
+      {"inputSize": 10, "timeOperations": 100, "spaceUsage": 10, "timeComplexity": "O(n²)", "spaceComplexity": "O(n)"},
+      {"inputSize": 100, "timeOperations": 10000, "spaceUsage": 100, "timeComplexity": "O(n²)", "spaceComplexity": "O(n)"},
+      {"inputSize": 1000, "timeOperations": 1000000, "spaceUsage": 1000, "timeComplexity": "O(n²)", "spaceComplexity": "O(n)"}
+    ],
+    "timeComplexityBreakdown": [
+      {"section": "循环部分", "timeComplexity": "O(n²)", "spaceComplexity": "O(1)", "percentage": 80, "color": "#ef4444"},
+      {"section": "初始化部分", "timeComplexity": "O(1)", "spaceComplexity": "O(n)", "percentage": 20, "color": "#22c55e"}
+    ],
+    "spaceComplexityBreakdown": [
+      {"section": "数组存储", "timeComplexity": "O(1)", "spaceComplexity": "O(n)", "percentage": 70, "color": "#8b5cf6"},
+      {"section": "临时变量", "timeComplexity": "O(1)", "spaceComplexity": "O(1)", "percentage": 30, "color": "#10b981"}
+    ],
+    "timeSpaceScatterData": [
+      {"algorithm": "当前算法", "timeComplexity": "O(n²)", "spaceComplexity": "O(n)", "timeScore": 5, "spaceScore": 3, "color": "#ef4444"},
+      {"algorithm": "优化算法1", "timeComplexity": "O(n log n)", "spaceComplexity": "O(n)", "timeScore": 4, "spaceScore": 3, "color": "#f97316"},
+      {"algorithm": "优化算法2", "timeComplexity": "O(n)", "spaceComplexity": "O(1)", "timeScore": 3, "spaceScore": 1, "color": "#22c55e"}
+    ]
+  },
+  "spaceAnalysis": {
+    "auxiliarySpace": "辅助空间复杂度（如O(n)）",
+    "recursionStackSpace": "递归栈空间复杂度（如O(log n)）",
+    "totalSpace": "总空间复杂度（如O(n)）",
+    "memoryBreakdown": [
+      {"category": "输入数据", "space": "O(n)", "description": "存储输入数组所需的空间", "percentage": 60, "color": "#3b82f6"},
+      {"category": "辅助数组", "space": "O(n)", "description": "算法中使用的临时数组", "percentage": 30, "color": "#8b5cf6"},
+      {"category": "变量存储", "space": "O(1)", "description": "循环变量和临时变量", "percentage": 10, "color": "#10b981"}
+    ],
+    "spaceOptimizationTips": [
+      "考虑原地算法减少额外空间使用",
+      "使用迭代替代递归减少栈空间",
+      "重用变量减少内存分配"
     ]
   }
 }
 
 请确保：
-1. 分析所有重要的代码行，特别是循环、递归和函数调用
-2. 提供具体的优化建议和示例代码
-3. 生成合理的可视化数据
-4. 置信度要基于代码的复杂程度和分析的准确性
-5. 返回的JSON必须是有效的格式，不包含注释或其他文本
+1. 同时分析时间复杂度和空间复杂度
+2. 分析所有重要的代码行，包括循环、递归、数组分配等
+3. 提供针对时间和空间复杂度的具体优化建议
+4. 生成合理的可视化数据，包括时间-空间对比
+5. 详细分析空间使用情况，包括辅助空间和递归栈空间
+6. 置信度要基于代码的复杂程度和分析的准确性
+7. 返回的JSON必须是有效的格式，不包含注释或其他文本
 ```
 
-**实际运行**
+**示例**
 输入:
 ```text
-你是一个专业的代码时间复杂度分析专家。请严格按照JSON格式返回分析结果，不要包含任何其他文本。
-
-请分析以下java代码的时间复杂度，并返回严格的JSON格式结果：
+请分析以下java代码的时间复杂度和空间复杂度，并返回严格的JSON格式结果：
 
 代码：
 \`\`\`java
-public class Example {
-    public static int fibonacci(int n) {
-        if (n <= 1) return n;
-        return fibonacci(n-1) + fibonacci(n-2);
-    }
-    
-    public static void bubbleSort(int[] arr) {
-        int n = arr.length;
-        for (int i = 0; i < n-1; i++) {
-            for (int j = 0; j < n-i-1; j++) {
-                if (arr[j] > arr[j+1]) {
-                    int temp = arr[j];
-                    arr[j] = arr[j+1];
-                    arr[j+1] = temp;
-                }
-            }
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        if (nums == null || nums.length < 2) {
+            return new int[0];
         }
+
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int temp = target - nums[i];
+            if (map.containsKey(temp)) {
+                return new int[]{map.get(temp), i};
+            }
+            map.put(nums[i], i);
+        }
+        return new int[0];
     }
 }
 \`\`\`
@@ -134,104 +163,185 @@ public class Example {
 请返回以下JSON格式的分析结果（不要包含任何其他文本）：
 
 {
-  "overallComplexity": "整体时间复杂度（如O(n²)）",
+  "timeComplexity": "整体时间复杂度（如O(n²)）",
+  "spaceComplexity": "整体空间复杂度（如O(n)）",
   "confidence": 分析置信度（0-100的数字）,
-  "explanation": "详细的复杂度分析说明",
+  "explanation": "详细的复杂度分析说明，包括时间和空间复杂度的解释",
   "lineAnalysis": [
     {
       "lineNumber": 行号,
-      "complexity": "该行的时间复杂度",
-      "explanation": "该行复杂度的详细解释",
+      "timeComplexity": "该行的时间复杂度",
+      "spaceComplexity": "该行的空间复杂度",
+      "explanation": "该行时间复杂度的详细解释",
+      "spaceExplanation": "该行空间复杂度的详细解释",
       "code": "该行的代码内容"
     }
   ],
   "suggestions": [
     {
-      "type": "优化类型（space-time-tradeoff/algorithm-refactor/data-structure/loop-optimization）",
+      "type": "优化类型（space-time-tradeoff/time-space-tradeoff/algorithm-refactor/data-structure/loop-optimization/memory-optimization）",
       "title": "优化建议标题",
       "description": "详细的优化建议描述",
       "codeExample": "优化后的示例代码",
-      "impact": "影响程度（high/medium/low）"
+      "impact": "影响程度（high/medium/low）",
+      "complexityType": "优化类型（time/space/both）"
     }
   ],
   "visualData": {
-    "chartData": [
-      {"inputSize": 10, "operations": 100, "complexity": "O(n²)"},
-      {"inputSize": 100, "operations": 10000, "complexity": "O(n²)"},
-      {"inputSize": 1000, "operations": 1000000, "complexity": "O(n²)"}
+    "timeChartData": [
+      {"inputSize": 10, "timeOperations": 100, "spaceUsage": 10, "timeComplexity": "O(n²)", "spaceComplexity": "O(n)"},
+      {"inputSize": 100, "timeOperations": 10000, "spaceUsage": 100, "timeComplexity": "O(n²)", "spaceComplexity": "O(n)"},
+      {"inputSize": 1000, "timeOperations": 1000000, "spaceUsage": 1000, "timeComplexity": "O(n²)", "spaceComplexity": "O(n)"}
     ],
-    "complexityBreakdown": [
-      {"section": "循环部分", "complexity": "O(n²)", "percentage": 80, "color": "#ef4444"},
-      {"section": "初始化部分", "complexity": "O(1)", "percentage": 20, "color": "#22c55e"}
+    "spaceChartData": [
+      {"inputSize": 10, "timeOperations": 100, "spaceUsage": 10, "timeComplexity": "O(n²)", "spaceComplexity": "O(n)"},
+      {"inputSize": 100, "timeOperations": 10000, "spaceUsage": 100, "timeComplexity": "O(n²)", "spaceComplexity": "O(n)"},
+      {"inputSize": 1000, "timeOperations": 1000000, "spaceUsage": 1000, "timeComplexity": "O(n²)", "spaceComplexity": "O(n)"}
+    ],
+    "timeComplexityBreakdown": [
+      {"section": "循环部分", "timeComplexity": "O(n²)", "spaceComplexity": "O(1)", "percentage": 80, "color": "#ef4444"},
+      {"section": "初始化部分", "timeComplexity": "O(1)", "spaceComplexity": "O(n)", "percentage": 20, "color": "#22c55e"}
+    ],
+    "spaceComplexityBreakdown": [
+      {"section": "数组存储", "timeComplexity": "O(1)", "spaceComplexity": "O(n)", "percentage": 70, "color": "#8b5cf6"},
+      {"section": "临时变量", "timeComplexity": "O(1)", "spaceComplexity": "O(1)", "percentage": 30, "color": "#10b981"}
+    ],
+    "timeSpaceScatterData": [
+      {"algorithm": "当前算法", "timeComplexity": "O(n²)", "spaceComplexity": "O(n)", "timeScore": 5, "spaceScore": 3, "color": "#ef4444"},
+      {"algorithm": "优化算法1", "timeComplexity": "O(n log n)", "spaceComplexity": "O(n)", "timeScore": 4, "spaceScore": 3, "color": "#f97316"},
+      {"algorithm": "优化算法2", "timeComplexity": "O(n)", "spaceComplexity": "O(1)", "timeScore": 3, "spaceScore": 1, "color": "#22c55e"}
+    ]
+  },
+  "spaceAnalysis": {
+    "auxiliarySpace": "辅助空间复杂度（如O(n)）",
+    "recursionStackSpace": "递归栈空间复杂度（如O(log n)）",
+    "totalSpace": "总空间复杂度（如O(n)）",
+    "memoryBreakdown": [
+      {"category": "输入数据", "space": "O(n)", "description": "存储输入数组所需的空间", "percentage": 60, "color": "#3b82f6"},
+      {"category": "辅助数组", "space": "O(n)", "description": "算法中使用的临时数组", "percentage": 30, "color": "#8b5cf6"},
+      {"category": "变量存储", "space": "O(1)", "description": "循环变量和临时变量", "percentage": 10, "color": "#10b981"}
+    ],
+    "spaceOptimizationTips": [
+      "考虑原地算法减少额外空间使用",
+      "使用迭代替代递归减少栈空间",
+      "重用变量减少内存分配"
     ]
   }
 }
 
 请确保：
-1. 分析所有重要的代码行，特别是循环、递归和函数调用
-2. 提供具体的优化建议和示例代码
-3. 生成合理的可视化数据
-4. 置信度要基于代码的复杂程度和分析的准确性
-5. 返回的JSON必须是有效的格式，不包含注释或其他文本
+1. 同时分析时间复杂度和空间复杂度
+2. 分析所有重要的代码行，包括循环、递归、数组分配等
+3. 提供针对时间和空间复杂度的具体优化建议
+4. 生成合理的可视化数据，包括时间-空间对比
+5. 详细分析空间使用情况，包括辅助空间和递归栈空间
+6. 置信度要基于代码的复杂程度和分析的准确性
+7. 返回的JSON必须是有效的格式，不包含注释或其他文本
 ```
 输出:
 ```json
 {
-  "overallComplexity": "O(2^n + n²)",
+  "timeComplexity": "O(n)",
+  "spaceComplexity": "O(n)",
   "confidence": 95,
-  "explanation": "fibonacci方法采用递归实现，时间复杂度为O(2^n)；bubbleSort采用双重循环实现，时间复杂度为O(n²)。整体复杂度由最高阶项主导。",
+  "explanation": "时间复杂度分析：算法遍历数组一次，每个元素的操作（哈希查找和插入）平均时间复杂度为O(1)，总时间复杂度为O(n)。空间复杂度分析：哈希表最多存储n个元素，空间复杂度为O(n)。",
   "lineAnalysis": [
     {
       "lineNumber": 3,
-      "complexity": "O(1)",
-      "explanation": "基础条件判断，执行次数为常数",
-      "code": "if (n <= 1) return n;"
+      "timeComplexity": "O(1)",
+      "spaceComplexity": "O(1)",
+      "explanation": "空数组检查操作，时间复杂度为常数时间",
+      "spaceExplanation": "无额外空间分配",
+      "code": "if (nums == null || nums.length < 2) {"
     },
     {
-      "lineNumber": 4,
-      "complexity": "O(2^n)",
-      "explanation": "递归调用树深度为n，每层产生两个子调用",
-      "code": "return fibonacci(n-1) + fibonacci(n-2);"
+      "lineNumber": 7,
+      "timeComplexity": "O(1)",
+      "spaceComplexity": "O(n)",
+      "explanation": "HashMap初始化，空间复杂度随输入规模线性增长",
+      "spaceExplanation": "哈希表存储n个元素",
+      "code": "Map<Integer, Integer> map = new HashMap<>();"
     },
     {
       "lineNumber": 8,
-      "complexity": "O(n)",
-      "explanation": "外层循环执行n-1次",
-      "code": "for (int i = 0; i < n-1; i++) {"
+      "timeComplexity": "O(n)",
+      "spaceComplexity": "O(1)",
+      "explanation": "主循环遍历数组，时间复杂度与数组长度线性相关",
+      "spaceExplanation": "循环变量i占用常数空间",
+      "code": "for (int i = 0; i < nums.length; i++) {"
     },
     {
-      "lineNumber": 9,
-      "complexity": "O(n²)",
-      "explanation": "内层循环执行次数随i递减，总次数约为n²/2",
-      "code": "for (int j = 0; j < n-i-1; j++) {"
+      "lineNumber": 10,
+      "timeComplexity": "O(1)",
+      "spaceComplexity": "O(1)",
+      "explanation": "哈希表查找操作平均时间复杂度为O(1)",
+      "spaceExplanation": "无额外空间分配",
+      "code": "if (map.containsKey(temp)) {"
+    },
+    {
+      "lineNumber": 13,
+      "timeComplexity": "O(1)",
+      "spaceComplexity": "O(n)",
+      "explanation": "哈希表插入操作平均时间复杂度为O(1)，空间占用累计增长",
+      "spaceExplanation": "存储元素索引对",
+      "code": "map.put(nums[i], i);"
     }
   ],
   "suggestions": [
     {
-      "type": "algorithm-refactor",
-      "title": "斐波那契数列迭代实现",
-      "description": "使用循环替代递归，将时间复杂度优化至O(n)",
-      "codeExample": "public static int fibonacci(int n) {\n    int a = 0, b = 1;\n    for (int i = 0; i < n; i++) {\n        int next = a + b;\n        a = b;\n        b = next;\n    }\n    return a;\n}",
-      "impact": "high"
+      "type": "data-structure",
+      "title": "哈希表空间优化",
+      "description": "当前使用HashMap存储元素索引，可考虑数组长度较小时使用数组替代哈希表，减少对象开销",
+      "codeExample": "// 已是最优解法，无需修改",
+      "impact": "low",
+      "complexityType": "space"
     },
     {
-      "type": "loop-optimization",
-      "title": "冒泡排序提前终止",
-      "description": "添加交换标志位，若某轮未发生交换则提前结束排序",
-      "codeExample": "boolean swapped;\nfor (int i = 0; i < n-1; i++) {\n    swapped = false;\n    for (int j = 0; j < n-i-1; j++) {\n        if (arr[j] > arr[j+1]) {\n            swap(arr, j, j+1);\n            swapped = true;\n        }\n    }\n    if (!swapped) break;\n}",
-      "impact": "medium"
+      "type": "algorithm-refactor",
+      "title": "双指针优化",
+      "description": "已排序数组可用双指针法实现O(1)空间复杂度，但需要先排序（时间复杂度O(n log n)）",
+      "codeExample": "Arrays.sort(nums); int left=0, right=nums.length-1; while(left<right){...}",
+      "impact": "medium",
+      "complexityType": "time-space-tradeoff"
     }
   ],
   "visualData": {
-    "chartData": [
-      {"inputSize": 10, "operations": 1023, "complexity": "O(2^n)"},
-      {"inputSize": 20, "operations": 21891, "complexity": "O(2^n)"},
-      {"inputSize": 10, "operations": 45, "complexity": "O(n²)"},
-      {"inputSize": 100, "operations": 4950, "complexity": "O(n²)"}
+    "timeChartData": [
+      {"inputSize": 10, "timeOperations": 10, "spaceUsage": 10, "timeComplexity": "O(n)", "spaceComplexity": "O(n)"},
+      {"inputSize": 100, "timeOperations": 100, "spaceUsage": 100, "timeComplexity": "O(n)", "spaceComplexity": "O(n)"},
+      {"inputSize": 1000, "timeOperations": 1000, "spaceUsage": 1000, "timeComplexity": "O(n)", "spaceComplexity": "O(n)"}
     ],
-    "complexityBreakdown": [
-      {"section": "斐波那契递归", "complexity": "O(2^n)", "percentage": 85, "color": "#ef4444"},
-      {"section": "冒泡排序循环", "complexity": "O(n²)", "percentage": 15, "color": "#22c55e"}
+    "spaceChartData": [
+      {"inputSize": 10, "timeOperations": 10, "spaceUsage": 10, "timeComplexity": "O(n)", "spaceComplexity": "O(n)"},
+      {"inputSize": 100, "timeOperations": 100, "spaceUsage": 100, "timeComplexity": "O(n)", "spaceComplexity": "O(n)"},
+      {"inputSize": 1000, "timeOperations": 1000, "spaceUsage": 1000, "timeComplexity": "O(n)", "spaceComplexity": "O(n)"}
+    ],
+    "timeComplexityBreakdown": [
+      {"section": "主循环", "timeComplexity": "O(n)", "spaceComplexity": "O(1)", "percentage": 95, "color": "#ef4444"},
+      {"section": "初始化检查", "timeComplexity": "O(1)", "spaceComplexity": "O(1)", "percentage": 5, "color": "#22c55e"}
+    ],
+    "spaceComplexityBreakdown": [
+      {"section": "哈希表存储", "timeComplexity": "O(1)", "spaceComplexity": "O(n)", "percentage": 90, "color": "#8b5cf6"},
+      {"section": "临时变量", "timeComplexity": "O(1)", "spaceComplexity": "O(1)", "percentage": 10, "color": "#10b981"}
+    ],
+    "timeSpaceScatterData": [
+      {"algorithm": "当前算法", "timeComplexity": "O(n)", "spaceComplexity": "O(n)", "timeScore": 4, "spaceScore": 4, "color": "#ef4444"},
+      {"algorithm": "双指针法", "timeComplexity": "O(n log n)", "spaceComplexity": "O(1)", "timeScore": 3, "spaceScore": 1, "color": "#f97316"}
+    ]
+  },
+  "spaceAnalysis": {
+    "auxiliarySpace": "O(n)",
+    "recursionStackSpace": "O(1)",
+    "totalSpace": "O(n)",
+    "memoryBreakdown": [
+      {"category": "哈希表存储", "space": "O(n)", "description": "存储元素索引对", "percentage": 85, "color": "#3b82f6"},
+      {"category": "输入数组", "space": "O(n)", "description": "原始输入数据存储", "percentage": 10, "color": "#8b5cf6"},
+      {"category": "临时变量", "space": "O(1)", "description": "循环变量和临时计算值", "percentage": 5, "color": "#10b981"}
+    ],
+    "spaceOptimizationTips": [
+      "已使用最优空间复杂度解法",
+      "输入数组占用空间为必要存储，无法优化",
+      "哈希表是时间-空间权衡的合理选择"
     ]
   }
 }
