@@ -115,7 +115,7 @@ docker run --name onlyoffice -i -t -d -p 80:80 -e JWT_ENABLED=false onlyoffice/d
 ## LibreOffice Online
 ```shell
 #安装并启动docker版本lool
-docker run --name lool -e "username=admin" -e "password=123456" -e "extra_params=--o:ssl.enable=false --o:storage.filesystem[@allow]=true" -v D:/lool:/srv/data:Z -p 9980:9980 -d libreoffice/online:master
+docker run --name lool -e "username=admin" -e "password=123456" -e "domain=your\\.cloud\\.domain" -e "extra_params=--o:ssl.enable=false --o:storage.filesystem[@allow]=true" -v D:/lool:/srv/data:Z -p 9980:9980 -d libreoffice/online
 
 # extra_params=--o:ssl.enable=false 关闭ssl
 # --o:storage.filesystem[@allow]=true 允许读取本地文件
@@ -165,7 +165,7 @@ docker pull ubuntu --registry-mirror=https://registry.dockermirror.com
 
 Open WebUI
 ```shell
-docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui ghcr.io/open-webui/open-webui
 ```
 
 ## 01 [docker-compose 示例](docker-compose%2FREADME.md)
