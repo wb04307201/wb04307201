@@ -106,9 +106,9 @@ docker run --name postgres -e POSTGRES_PASSWORD=Abc1234% -p 5432:5432 -v /home/z
 
 ## onlyoffice
 ```shell
-docker run --name onlyoffice -i -t -d -p 80:80 -e JWT_SECRET=my_jwt_secret onlyoffice/documentserver
+docker run --name onlyoffice -i -t -d -p 80:80 -e JWT_SECRET=my_jwt_secret -e onlyoffice/documentserver-de
 #如果需要关闭使用JWT
-docker run --name onlyoffice -i -t -d -p 80:80 -e JWT_ENABLED=false onlyoffice/documentserver
+docker run --name onlyoffice -i -t -d -p 80:80 -e JWT_ENABLED=false -e ALLOW_PRIVATE_IP_ADDRESS=true onlyoffice/documentserver-de
 ```
 容器启动成功后，打开http://127.0.0.1/可以看到欢迎页面
 
