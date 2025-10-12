@@ -135,10 +135,10 @@ docker run -t -d --name code -e "username=admin" -e "password=123456" -e "aliasg
 
 ## MinIO
 ```shell
-docker run -p 9000:9000 -p 9001:9001 --name minio -e "MINIO_ROOT_USER=ROOTUSER" -e "MINIO_ROOT_PASSWORD=CHANGEME123" quay.io/minio/minio server /data --console-address ":9001"
+docker run -p 9000:9000 -p 9001:9001 --name minio -e "MINIO_ROOT_USER=ROOTUSER" -e "MINIO_ROOT_PASSWORD=12345678" quay.io/minio/minio server /data --console-address ":9001"
 ```
-访问控制台`http://127.0.0.1:9000`
-用户名 ROOTUSER 密码 CHANGEME123
+访问控制台`http://127.0.0.1:9001`
+用户名 ROOTUSER 密码 12345678
 
 
 ## Alist
