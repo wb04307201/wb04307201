@@ -110,7 +110,7 @@ docker run --name onlyoffice -i -t -d -p 80:80 -e JWT_SECRET=my_jwt_secret -e on
 #如果需要关闭使用JWT
 docker run --name onlyoffice -i -t -d -p 80:80 -e JWT_ENABLED=false -e ALLOW_PRIVATE_IP_ADDRESS=true onlyoffice/documentserver-de
 ```
-容器启动成功后，打开http://127.0.0.1/可以看到欢迎页面
+访问控制台`http://127.0.0.1`
 
 ## LibreOffice Online
 ```shell
@@ -119,8 +119,10 @@ docker run --name lool -e "username=admin" -e "password=123456" -e "domain=your\
 
 # extra_params=--o:ssl.enable=false 关闭ssl
 # --o:storage.filesystem[@allow]=true 允许读取本地文件
+# domain=your\\.cloud\\.domain 与许方文文件服务域名
+# 测试可以可以设置.*允许所有地址
 ```
-容器启动成功后，打开http://127.0.0.1:9980/loleaflet/dist/admin/admin.html可以看到控制台界面
+访问控制台`http://127.0.0.1:9980/loleaflet/dist/admin/admin.html`
 
 ## Collabora Online
 ```shell
@@ -129,12 +131,13 @@ docker run -t -d --name code -e "username=admin" -e "password=123456" -e "aliasg
 # extra_params=--o:ssl.enable=false 关闭ssl
 # aliasgroup1=http://10.133.61.38:8090 配置允许wopi访问地址
 ```
-容器启动成功后，打开http://127.0.0.1:9980/browser/dist/admin/admin.html可以看到控制台界面
+访问控制台`http://127.0.0.1:9980/browser/dist/admin/admin.html`
 
 ## MinIO
 ```shell
-docker run -p 9000:9000 -p 9090:9090 --name minio -v D:\minio\data:/data -e "MINIO_ROOT_USER=ROOTUSER" -e "MINIO_ROOT_PASSWORD=CHANGEME123" quay.io/minio/minio server /data --console-address ":9090"
+docker run -p 9000:9000 -p 9001:9001 --name minio -e "MINIO_ROOT_USER=ROOTUSER" -e "MINIO_ROOT_PASSWORD=CHANGEME123" quay.io/minio/minio server /data --console-address ":9001"
 ```
+访问控制台`http://127.0.0.1:9000`
 用户名 ROOTUSER 密码 CHANGEME123
 
 
