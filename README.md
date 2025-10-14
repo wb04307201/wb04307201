@@ -1,5 +1,5 @@
 [//]: # (![wb04307201's GitHub stats]&#40;https://github-readme-stats.vercel.app/api?username=wb04307201&#41;)
-![wb04307201's GitHub stats](https://github-profile-trophy.vercel.app/?username=wb04307201&column=5&margin-w=15&margin-h=15)
+![wb04307201's GitHub stats](https://github-profile-trophy.vercel.app/?username=wb04307201&title=-Reviews&column=4&margin-w=15&margin-h=15)
 
 
 ## 开源项目
