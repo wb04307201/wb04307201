@@ -42,6 +42,10 @@ try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("user.
 }
 ```
 
+### serialVersionUID
+
+在Java的序列化机制中，serialVersionUID 是一个关键字段，用于验证序列化对象和反序列化对象的版本兼容性。它的核心作用是确保反序列化过程中类的结构未发生不兼容的变更，从而避免数据损坏或运行时错误。
+
 ## 反序列化的基本概念
 
 反序列化是指将序列化后的二进制数据流还原成原来的对象，重新获取对象的引用。在反序列化过程中，Java会根据字节流中的对象状态及描述信息，通过反序列化重建对象。要实现反序列化，需要创建一个ObjectInputStream对象，并从输入流中读取序列化后的对象。（这里使用的是Java内置的反序列化机制）。
