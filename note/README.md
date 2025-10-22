@@ -301,6 +301,8 @@
 #### 消息队列
 ###### [MQ消息积压](13.split-hairs/04.system-design/high-performance/mq/mq-backlog/README.md)
 ###### [有了kafka为什么还要有rocketmq？](13.split-hairs/04.system-design/high-performance/mq/still-need-rocketmq/README.md)
+## 06.Spring
+### [Spring里为什么不推荐使用@ Autowired](13.split-hairs/06.spring/not-use-%40autowired/README.md)
 ## 12.前端
 ### [HTTP 请求中的 GET 和 POST](13.split-hairs/12.font-end/get-and-post/README.md)
 ### [网页端接受推送消息的方式](13.split-hairs/12.font-end/message/README.md)
