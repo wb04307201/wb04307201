@@ -283,6 +283,7 @@
 ### [字符串拼接优化：StringBuilder 重用](13.split-hairs/01.java/reuse-of-stringbuilder/README.md)
 ### [快速给Map排序](13.split-hairs/01.java/sort-map/README.md)
 ### [1GB级别的`HashMap`的扩容](13.split-hairs/01.java/hashmap-resizing/README.md)
+### [快速安全地往HashMap里插入大量条数据](13.split-hairs/01.java/large-data-into%20-hashmap/README.md)
 ## 03.数据库
 ### 关系型数据库
 #### MySQL
