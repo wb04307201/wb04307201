@@ -57,13 +57,7 @@
 ### 6.18. [Java 25（LTS）](01.java/version/java-25/README.md)
 ## 7. [Java Agent](01.java%2Fjava-agent%2FREADME.md)
 ### 7.1. [统计API接口调用耗时](01.java/java-agent/api/README.md)
-## 8. 咬文嚼字
-### 8.1. [高频面试题](01.java/split-hairs/questions/README.md)
-### 8.2. [创建对象](01.java/split-hairs/create-object/README.md)
-### 8.3. [单例模式](01.java/split-hairs/singleton-pattern/README.md)
-### 8.4. [Integer缓存](01.java/split-hairs/integer-cache/README.md)
-### 8.5. [`String str = new String("123")`会在堆中生成几个新对象](01.java/split-hairs/new-string/README.md)
-### 8.6. [Java 为什么将基础数据类型（如 int、double 等）封装为对象](01.java/split-hairs/object/README.md)
+
 
 # 二、计算机基础
 ## 1. [服务器性能指标](02.computer-basics%2Fserver-performance-metrics%2FREADME.md)
@@ -90,14 +84,6 @@
 ##### [数据库多版本并发控制详解](03.database%2Fbase%2Frelational-database%2Ftransaction-processing%2Fmvcc%2FREADME.md)
 ##### [锁与MVCC的关系](03.database%2Fbase%2Frelational-database%2Ftransaction-processing%2Flock-vs-mvcc%2FREADME.md)
 ### [MySQL](03.database%2Fbase%2Frelational-database%2Fmysql%2FREADME.md)
-#### 咬文嚼字
-##### [MySQL锁类型详解](03.database/base/relational-database/mysql/split-hairs/lock/README.md)
-##### [MySQL的事务隔离机制](03.database/base/relational-database/mysql/split-hairs/isolation/README.md)
-##### [`INT(4)` 的定义](03.database/base/relational-database/mysql/split-hairs/int%284%29-define)
-##### [1亿条数据快速加索引的方法](03.database/base/relational-database/mysql/split-hairs/quickly-add-index/README.md)
-##### [时间类型对比](03.database/base/relational-database/mysql/split-hairs/time-types/README.md)
-##### [MySQL 中 COUNT(*)、COUNT(1)、COUNT(字段名) 的区别与性能比较](03.database/base/relational-database/mysql/split-hairs/count/README.md)
-##### [MySQL慢查询调优](03.database/base/relational-database/mysql/split-hairs/tuning/README.md)
 ## [NoSQL数据库](03.database%2Fbase%2Fnosql%2FREADME.md)
 ### 键值存储数据库
 #### [缓存](03.database%2Fbase%2Fnosql%2Fkey-value%2Fcache%2FREADME.md)
@@ -106,8 +92,6 @@
 ##### [基于 ConcurrentHashMap 的高性能缓存实现](https://gitee.com/wb04307201/CHMCache)
 > 一个基于 `ConcurrentHashMap` 和 LRU 策略的高性能缓存实现，支持自动过期、大小限制、LRU 淘汰和后台清理等特性。
 ### [Redis](03.database%2Fbase%2Fnosql%2Fkey-value%2Fredis%2FREADME.md)
-#### 咬文嚼字
-##### [如何查找但不导致Redis阻塞](03.database/base/nosql/key-value/redis/split-hairs/search/README.md)
 
 ## [关系型数据库和NoSQL数据库的区别](03.database%2Fbase%2Fdatabase-vs-nosql%2FREADME.md)
 
@@ -151,14 +135,6 @@
 ## 3. 高性能
 高性能指的是系统或应用在处理任务、数据或请求时表现出的高效性和快速性。高性能系统通常具有强大的计算能力、快速的响应时间和高效的数据处理能力。为了实现高性能，系统可能需要采用先进的硬件技术、优化的软件算法、高效的存储和传输技术等手段。
 ### [Java代码性能优化](04.system-design/high-performance/java/README.md)
-#### 咬文嚼字
-#### [`switch`前使用`if`针对高频热点状态的优化](04.system-design/high-performance/java/split-hairs/if%20-before-switch/README.md)
-#### [ArrayList去重](04.system-design/high-performance/java/split-hairs/arrayList-distinct/README.md)
-#### [数据结构选择：HashSet 替代 LinkedList 查找](04.system-design/high-performance/java/split-hairs/replace-linkedlist-with-hashset/README.md)
-#### [并发编程优化：Atomic 类替代 synchronized](04.system-design/high-performance/java/split-hairs/replace-synchronized-with-atomic/README.md)
-#### [字符串拼接优化：StringBuilder 重用](04.system-design/high-performance/java/split-hairs/reuse-of-stringbuilder/README.md)
-#### [快速给Map排序](04.system-design/high-performance/java/split-hairs/sort-map/README.md)
-#### [HashMap扩容](04.system-design/high-performance/java/split-hairs/hashmap-resizing/README.md)
 ### 数据库性能优化
 #### [数据库读写分离](04.system-design/high-performance/database-optimization/db-read-write-splitting-and-db-sharding/db-read-write-splitting/README.md)
 #### [数据库分库分表](04.system-design/high-performance/database-optimization/db-read-write-splitting-and-db-sharding/db-sharding/README.md)
@@ -168,9 +144,6 @@
 ### [载均衡负](04.system-design/high-performance/load-balance/README.md)
 ### [CDN](04.system-design/high-performance/cdn/README.md)
 ### [消息队列](04.system-design%2Fhigh-performance%2FMQ%2FREADME.md)
-#### 咬文嚼字
-##### [MQ消息积压](04.system-design/high-performance/MQ/split-hairs/mq-backlog/README.md)
-##### [有了kafka为什么还要有rocketmq？](04.system-design/high-performance/MQ/split-hairs/still-need-rocketmq/README.md)
 ## 4. 高可用
 高可用性是指一个系统或应用能够持续、稳定地提供服务，即使在其部分组件出现故障的情况下也能迅速恢复。高可用性通常通过冗余设计、负载均衡、故障转移和自动恢复等技术手段来实现。这些技术可以确保系统在面对硬件故障、网络问题或软件错误等挑战时，仍然能够保持服务的高可用性和连续性。
 ### 4.1. [代码质量](04.system-design/high-availability/code-quality/README.md)
@@ -294,7 +267,41 @@
 ## [CORS 跨域](12.font-end/cors/README.md)
 ## [微前端](12.font-end/micro-frontend/README.md)
 ## [Web Components](12.font-end/web-components/README.md)
-## 咬文嚼字
-### [HTTP 请求中的 GET 和 POST](12.font-end/split-hairs/get-and-post/README.md)
-### [网页端接受推送消息的方式](12.font-end/split-hairs/message/README.md)
-### [前端存储方式](12.font-end/split-hairs/storage/README.md)
+
+# 十三、咬文嚼字
+## 01.java
+### [高频面试题](13.split-hairs/01.java/questions/README.md)
+### [创建对象](13.split-hairs/01.java/create-object/README.md)
+### [单例模式](13.split-hairs/01.java/singleton-pattern/README.md)
+### [Integer缓存](13.split-hairs/01.java/integer-cache/README.md)
+### [`String str = new String("123")`会在堆中生成几个新对象](13.split-hairs/01.java/new-string/README.md)
+### [Java 为什么将基础数据类型（如 int、double 等）封装为对象](13.split-hairs/01.java/object/README.md)
+### [`switch`前使用`if`针对高频热点状态的优化](04.system-design/high-performance/java/split-hairs/if%20-before-switch/README.md)
+### [ArrayList去重](13.split-hairs/01.java/arrayList-distinct/README.md)
+### [数据结构选择：HashSet 替代 LinkedList 查找](13.split-hairs/01.java/replace-linkedlist-with-hashset/README.md)
+### [并发编程优化：Atomic 类替代 synchronized](13.split-hairs/01.java/replace-synchronized-with-atomic/README.md)
+### [字符串拼接优化：StringBuilder 重用](13.split-hairs/01.java/reuse-of-stringbuilder/README.md)
+### [快速给Map排序](13.split-hairs/01.java/sort-map/README.md)
+### [HashMap扩容](13.split-hairs/01.java/hashmap-resizing/README.md)
+## 03.数据库
+### 关系型数据库
+#### MySQL
+##### [MySQL锁类型详解](13.split-hairs/03.database/relational-database/mysql/lock/README.md)
+##### [MySQL的事务隔离机制](13.split-hairs/03.database/relational-database/mysql/isolation/README.md)
+##### [`INT(4)` 的定义](03.database/base/relational-database/mysql/split-hairs/int%284%29-define)
+##### [1亿条数据快速加索引的方法](13.split-hairs/03.database/relational-database/mysql/quickly-add-index/README.md)
+##### [时间类型对比](13.split-hairs/03.database/relational-database/mysql/time-types/README.md)
+##### [MySQL 中 COUNT(*)、COUNT(1)、COUNT(字段名) 的区别与性能比较](13.split-hairs/03.database/relational-database/mysql/count/README.md)
+##### [MySQL慢查询调优](13.split-hairs/03.database/relational-database/mysql/tuning/README.md)
+## NoSQL数据库
+### Redis
+#### [如何查找但不导致Redis阻塞](13.split-hairs/03.database/nosql/key-value/redis/search/README.md)
+## 04.系统设计
+### 高性能
+#### 消息队列
+###### [MQ消息积压](13.split-hairs/04.system-design/high-performance/mq/mq-backlog/README.md)
+###### [有了kafka为什么还要有rocketmq？](13.split-hairs/04.system-design/high-performance/mq/still-need-rocketmq/README.md)
+## 12.前端
+### [HTTP 请求中的 GET 和 POST](13.split-hairs/12.font-end/get-and-post/README.md)
+### [网页端接受推送消息的方式](13.split-hairs/12.font-end/message/README.md)
+### [前端存储方式](13.split-hairs/12.font-end/storage/README.md)
