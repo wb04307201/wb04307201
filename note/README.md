@@ -282,7 +282,7 @@
 ### [并发编程优化：Atomic 类替代 synchronized](13.split-hairs/01.java/replace-synchronized-with-atomic/README.md)
 ### [字符串拼接优化：StringBuilder 重用](13.split-hairs/01.java/reuse-of-stringbuilder/README.md)
 ### [快速给Map排序](13.split-hairs/01.java/sort-map/README.md)
-### [HashMap扩容](13.split-hairs/01.java/hashmap-resizing/README.md)
+### [1GB级别的`HashMap`的扩容](13.split-hairs/01.java/hashmap-resizing/README.md)
 ## 03.数据库
 ### 关系型数据库
 #### MySQL
