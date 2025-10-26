@@ -1,4 +1,7 @@
-![wb04307201's GitHub stats](https://github-readme-stats.vercel.app/api?username=wb04307201)
+<div align="left">
+  <img src="https://github-readme-stats.vercel.app/api?username=wb04307201" height="200" alt=""/>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=wb04307201" height="200" alt=""/>
+</div>
 
 [//]: # (![wb04307201's GitHub stats]&#40;https://github-profile-trophy.vercel.app/?username=wb04307201&title=-Reviews&column=4&margin-w=15&margin-h=15&#41;)
 ## 开源项目
