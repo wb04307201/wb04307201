@@ -1,7 +1,6 @@
-[//]: # (![wb04307201's GitHub stats]&#40;https://github-readme-stats.vercel.app/api?username=wb04307201&#41;)
-![wb04307201's GitHub stats](https://github-profile-trophy.vercel.app/?username=wb04307201&title=-Reviews&column=4&margin-w=15&margin-h=15)
+![wb04307201's GitHub stats](https://github-readme-stats.vercel.app/api?username=wb04307201)
 
-
+[//]: # (![wb04307201's GitHub stats]&#40;https://github-profile-trophy.vercel.app/?username=wb04307201&title=-Reviews&column=4&margin-w=15&margin-h=15&#41;)
 ## 开源项目
 1. File View - 文件预览 [![star](https://gitee.com/wb04307201/file-view/badge/star.svg?theme=dark)](https://gitee.com/wb04307201/file-view) [![fork](https://gitee.com/wb04307201/file-view/badge/fork.svg?theme=dark)](https://gitee.com/wb04307201/file-view) [![star](https://img.shields.io/github/stars/wb04307201/file-view)](https://github.com/wb04307201/file-view) [![fork](https://img.shields.io/github/forks/wb04307201/file-view)](https://github.com/wb04307201/file-view) 
 2. 多平台文件存储 [![star](https://gitee.com/wb04307201/file-storage-spring-boot-starter/badge/star.svg?theme=dark)](https://gitee.com/wb04307201/file-storage-spring-boot-starter) [![fork](https://gitee.com/wb04307201/file-storage-spring-boot-starter/badge/fork.svg?theme=dark)](https://gitee.com/wb04307201/file-storage-spring-boot-starter) [![star](https://img.shields.io/github/stars/wb04307201/file-storage-spring-boot-starter)](https://github.com/wb04307201/file-storage-spring-boot-starter) [![fork](https://img.shields.io/github/forks/wb04307201/file-storage-spring-boot-starter)](https://github.com/wb04307201/file-storage-spring-boot-starter)
