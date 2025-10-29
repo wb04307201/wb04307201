@@ -255,6 +255,7 @@
 ## [大模型的问题降维以提升回答准确性](11.ai/dimensionality-reduction/README.md)
 ## [prompt模板](11.ai/prompt/README.md)
 ### [grok系统prompt](11.ai/prompt/grok-system-prompt/README.md)
+### [为代码生成别具一格的注释](11.ai/prompt/code-comment/README.md)
 ## 工具
 ### [Ollama](11.ai/tools/ollama/README.md)
 ### [Open WebUI](11.ai/tools/open-webui/README.md)
