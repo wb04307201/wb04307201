@@ -4,6 +4,7 @@
 如何为代码生成独特而富有创意的注释风格，提高开发者的工作愉悦度。
 
 ## 如何定义注释风格
+1. 自定义风格提示语模板如下：
 ```text
 你是专业的代码注释编写者，你需要生成方法注释和代码注释，并遵守如下规则。
 【风格名称】[具体风格]
@@ -17,7 +18,7 @@
 【注释目标】[具体代码]
 ```
 
-## 注释风格提示语示例
+2. 比如想要将注释生成为《蜀山传》仙侠修真风，可以参考模板填充提示语内容如下：
 ```text
 你是专业的代码注释编写者，你需要生成方法注释和代码注释，并遵守如下规则。
 【风格名称】《蜀山传》仙侠修真风
@@ -30,9 +31,72 @@
 【禁忌规避】禁止出现现代时间单位、世俗金钱概念
 【注释目标】
 {SELECTION}
+```
 
----
+3. 使用ollama + qwen3-coder:30b + ProxyAI + 自定义模板执行注释生成测试，测试代码如下：
+```java
+    public int[] twoSum(int[] nums, int target) {
+        if (nums == null || nums.length < 2) {
+            return new int[0];
+        }
 
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int temp = target - nums[i];
+            if (map.containsKey(temp)) {
+                return new int[]{map.get(temp), i};
+            }
+            map.put(nums[i], i);
+        }
+        return new int[0];
+    }
+```
+4. 生成结果
+```java
+/**
+ * 剑魄寻踪，云篆破阵
+ * 此法可寻两数相合，以成五行之妙
+ * 真火淬炼，剑指乾坤
+ *
+ * @param nums 五行灵脉，蕴藏玄门奥义
+ * @param target 天机玄数，乃八荒六合之枢机
+ * @return 剑魄相合，云篆成阵，以显真火之威
+ *
+ * 此符如三春桃李，开则万鬼避让
+ * 剑指苍穹九重天，符镇幽冥十八渊
+ * 真火焚尽三界尘，剑魄归于太虚间
+ * 五行相生相克，八荒六合归一
+ */
+public int[] twoSum(int[] nums, int target) {
+    // 玄门禁制，若无灵脉或灵脉不足二，则无法施法
+    if (nums == null || nums.length < 2) {
+        // 云篆无根，真火难燃，此法失效
+        return new int[0];
+    }
+
+    // 剑魄归位，云篆成阵
+    Map<Integer, Integer> map = new HashMap<>();
+    // 真火炼丹，五行归位
+    for (int i = 0; i < nums.length; i++) {
+        // 剑魄相合，云篆成阵
+        int temp = target - nums[i];
+        // 若此阵中已有相合之剑魄
+        if (map.containsKey(temp)) {
+            // 剑魄归位，云篆成阵，真火焚尽三界尘
+            return new int[]{map.get(temp), i};
+        }
+        // 剑魄归位，云篆成阵
+        map.put(nums[i], i);
+    }
+    // 真火难燃，剑魄未归，此法失效
+    return new int[0];
+}
+```
+
+
+
+## 其他风格提示语示例
+```text
 你是专业的代码注释编写者，你需要生成方法注释和代码注释，并遵守如下规则。
 【风格名称】《战锤》机械神教修士风
 【语言规范】
@@ -86,69 +150,6 @@
 【禁忌规避】禁止使用感叹号或情绪化词汇
 【注释目标】
 {SELECTION}
-```
-
-## 输出示例
-使用ollama + qwen3-coder:30b + ProxyAI + 自定义模板执行注释生成测试
-*测试代码*：
-```java
-    public int[] twoSum(int[] nums, int target) {
-        if (nums == null || nums.length < 2) {
-            return new int[0];
-        }
-
-        Map<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            int temp = target - nums[i];
-            if (map.containsKey(temp)) {
-                return new int[]{map.get(temp), i};
-            }
-            map.put(nums[i], i);
-        }
-        return new int[0];
-    }
-```
-
-*《蜀山传》仙侠修真风*：
-```java
-/**
- * 剑魄寻踪，云篆破阵
- * 此法可寻两数相合，以成五行之妙
- * 真火淬炼，剑指乾坤
- *
- * @param nums 五行灵脉，蕴藏玄门奥义
- * @param target 天机玄数，乃八荒六合之枢机
- * @return 剑魄相合，云篆成阵，以显真火之威
- *
- * 此符如三春桃李，开则万鬼避让
- * 剑指苍穹九重天，符镇幽冥十八渊
- * 真火焚尽三界尘，剑魄归于太虚间
- * 五行相生相克，八荒六合归一
- */
-public int[] twoSum(int[] nums, int target) {
-    // 玄门禁制，若无灵脉或灵脉不足二，则无法施法
-    if (nums == null || nums.length < 2) {
-        // 云篆无根，真火难燃，此法失效
-        return new int[0];
-    }
-
-    // 剑魄归位，云篆成阵
-    Map<Integer, Integer> map = new HashMap<>();
-    // 真火炼丹，五行归位
-    for (int i = 0; i < nums.length; i++) {
-        // 剑魄相合，云篆成阵
-        int temp = target - nums[i];
-        // 若此阵中已有相合之剑魄
-        if (map.containsKey(temp)) {
-            // 剑魄归位，云篆成阵，真火焚尽三界尘
-            return new int[]{map.get(temp), i};
-        }
-        // 剑魄归位，云篆成阵
-        map.put(nums[i], i);
-    }
-    // 真火难燃，剑魄未归，此法失效
-    return new int[0];
-}
 ```
 
 *《战锤》机械神教修士风*：
