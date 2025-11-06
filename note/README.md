@@ -68,9 +68,10 @@
 ## 3. [云服务模式](02.computer-basics/cloud-service-model/README.md)
 ## 4. [WCAG - 网页内容无障碍指南](02.computer-basics/wcag/README.md)
 ## 5. [算法](02.computer-basics/algorithm/README.md)
-### 5.1. [时间复杂度](02.computer-basics/algorithm/time-complexity/README.md)
-### 5.2. [空间复杂度](02.computer-basics/algorithm/space-complexity/README.md)
-### 5.3. [时间复杂度与空间复杂度应该如何取舍](02.computer-basics/algorithm/compromise/README.md)
+## 5.1 衡量算法的优劣
+#### 5.1.1. [时间复杂度](02.computer-basics/algorithm/evaluate/time-complexity/README.md)
+### 5.1.2. [空间复杂度](02.computer-basics/algorithm/evaluate/space-complexity/README.md)
+### 5.1.3. [时间复杂度与空间复杂度应该如何取舍](02.computer-basics/algorithm/evaluate/compromise/README.md)
 
 
 # 三、数据库
