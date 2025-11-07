@@ -287,13 +287,13 @@
 ## 03.数据库
 ### 关系型数据库
 #### MySQL
-##### [MySQL锁类型详解](13.split-hairs/03.database/relational-database/mysql/lock/README.md)
 ##### [MySQL的事务隔离机制](13.split-hairs/03.database/relational-database/mysql/isolation/README.md)
 ##### [`INT(4)` 的定义](03.database/base/relational-database/mysql/split-hairs/int%284%29-define)
 ##### [1亿条数据快速加索引的方法](13.split-hairs/03.database/relational-database/mysql/quickly-add-index/README.md)
 ##### [时间类型对比](13.split-hairs/03.database/relational-database/mysql/time-types/README.md)
 ##### [MySQL 中 COUNT(*)、COUNT(1)、COUNT(字段名) 的区别与性能比较](13.split-hairs/03.database/relational-database/mysql/count/README.md)
 ##### [MySQL慢查询调优](13.split-hairs/03.database/relational-database/mysql/tuning/README.md)
+##### [在MySQL中，执行 `SELECT * FROM table WHERE id = ? FOR UPDATE` 语句时加什么锁？](13.split-hairs/03.database/relational-database/mysql/what-lock/README.md)
 ## NoSQL数据库
 ### Redis
 #### [如何查找但不导致Redis阻塞](13.split-hairs/03.database/nosql/key-value/redis/search/README.md)
