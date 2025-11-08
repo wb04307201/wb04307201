@@ -131,7 +131,7 @@
 ### [分布式锁](04.system-design/distributed/distributed-lock/README.md)
 #### [Flexible Lock - 灵锁](https://gitee.com/wb04307201/flexible-lock)
 > 一个基于Spring Boot的锁starter，提供了统一的锁接口和多种实现方式，包括Redis单点、Redis集群、Redis哨兵、Zookeeper和本地锁。通过简单的配置即可在项目中使用锁功能。
-### [分布式事务](04.system-design%2Fdistributed%2Fdistributed-transaction%2FREADME.md)
+### [分布式事务](04.system-design/distributed/transaction/README.md)
 ### [API网关](04.system-design/distributed/api-gatewway/README.md)
 ## 3. 高性能
 高性能指的是系统或应用在处理任务、数据或请求时表现出的高效性和快速性。高性能系统通常具有强大的计算能力、快速的响应时间和高效的数据处理能力。为了实现高性能，系统可能需要采用先进的硬件技术、优化的软件算法、高效的存储和传输技术等手段。
@@ -195,8 +195,10 @@
 ## [注解](06.spring%2Fannotation%2FREADME.md)
 ## [模块](06.spring%2Fmodule%2FREADME.md)
 ## [IoC](06.spring%2Fioc%2FREADME.md)
-## [构造器注入](06.spring/constructor-injection/README.md)
 ### [使用servlet模拟Spring IoC运行](06.spring/ioc/microrest)
+### [构造器注入](06.spring/ioc/constructor-injection/README.md)
+## [Spring事务管理](06.spring/transaction/README.md)
+### [Spring分布式事务管理](06.spring/transaction/distributed/README.md)
 ## [Spring AOP 深度解析](06.spring/aop/README.md)
 ## [Spring 自带24个工具类](06.spring/tools/README.md)
 ## [Spring Cache 缓存操作](06.spring/spring-cache/README.md)
