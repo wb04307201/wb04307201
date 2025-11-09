@@ -308,6 +308,7 @@
 ###### [有了kafka为什么还要有rocketmq？](13.split-hairs/04.system-design/high-performance/mq/still-need-rocketmq/README.md)
 ## 06.Spring
 ### [Spring里为什么不推荐使用@ Autowired](13.split-hairs/06.spring/not-use-%40autowired/README.md)
+### [分清PO、VO、DTO、BO、DAO、POJO](13.split-hairs/06.spring/clarify-various-o/README.md)
 ## 11.AI
 ### [AI思维-抛硬币](13.split-hairs/11.ai/ai-thinking/README.md)
 ## 12.前端
