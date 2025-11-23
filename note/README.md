@@ -252,13 +252,14 @@
 ## [离线数仓/实时数仓](10.big-data/offline-or-real-time-data-warehouse/README.md)
 
 # 十一、[AI](11.ai/README.md)
-## [大模型与算力](11.ai/llm-and-computing/README.md)
-## [大模型落地分层技术体系](11.ai/hierarchical/README.md)
-## [嵌入与向量化的区别](11.ai/Embedding-vs-vectorization/README.md)
-## [大模型的问题降维以提升回答准确性](11.ai/dimensionality-reduction/README.md)
-## [prompt模板](11.ai/prompt/README.md)
-### [grok系统prompt](11.ai/prompt/grok-system-prompt/README.md)
-### [为代码生成别具一格的注释](11.ai/prompt/code-comment/README.md)
+## 弱人工智能（ANI）
+### [大语言模型](11.ai/llm/README.md)
+#### [大模型分层架构设计](11.ai/llm/hierarchical-architecture-design/README.md)
+#### [大语言模型推理阶段与训练阶段的显存估算](11.ai/llm/memory-estimation/README.md)
+#### [嵌入与向量化的区别](11.ai/llm/Embedding-vs-vectorization/README.md)
+#### [prompt模板](11.ai/llm/prompt/README.md)
+##### [grok系统prompt](11.ai/llm/prompt/grok-system-prompt/README.md)
+##### [为代码生成别具一格的注释](11.ai/llm/prompt/code-comment/README.md)
 ## 工具
 ### [Ollama](11.ai/tools/ollama/README.md)
 ### [Open WebUI](11.ai/tools/open-webui/README.md)
