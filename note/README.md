@@ -79,9 +79,11 @@
 #### [查询SQL执行顺序](03.database%2Fbase%2Frelational-database%2Fsql-excute-order%2FREADME.md)
 ### 事务
 #### [事务特性ACID](03.database/base/relational-database/transaction-processing/acid/README.md)
-#### [事务隔离](03.database/base/relational-database/transaction-processing/transaction-isolation/README.md)
+##### [隔离性（Isolation）](03.database/base/relational-database/transaction-processing/acid/isolation/README.md)
+###### [锁机制](03.database/base/relational-database/transaction-processing/acid/isolation/lock/README.md)
+###### [多版本并发控制](03.database/base/relational-database/transaction-processing/acid/isolation/mvcc/README.md)
 ##### 并发事务
-##### [数据库锁类型详解](03.database/base/relational-database/transaction-processing/concurrent/lock/README.md)
+##### [数据库锁类型详解](03.database/base/relational-database/transaction-processing/acid/isolation/lock/README.md)
 ##### [数据库多版本并发控制详解](03.database/base/relational-database/transaction-processing/concurrent/mvcc/README.md)
 ##### [锁与MVCC的关系](03.database/base/relational-database/transaction-processing/concurrent/lock-vs-mvcc/README.md)
 ### [MySQL](03.database%2Fbase%2Frelational-database%2Fmysql%2FREADME.md)
