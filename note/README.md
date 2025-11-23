@@ -74,7 +74,7 @@
 
 # 三、数据库
 ## 关系型数据库
-### [数据库基础知识](03.database%2Fbase%2Frelational-database%2Fbasic-of-databases%2FREADME.md)
+### [数据库基础知识](03.database/base/relational-database/basic-of-databases/README.md)
 #### [SQL语句](03.database/base/relational-database/basic-of-databases/sql/README.md)
 ##### [查询SQL执行顺序](03.database/base/relational-database/basic-of-databases/sql/sql-excute-order/README.md)
 ##### [慢查询SQL的分析与优化](03.database/base/relational-database/basic-of-databases/sql/slow-query-sql/README.md)
