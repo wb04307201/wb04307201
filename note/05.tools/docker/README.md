@@ -171,4 +171,9 @@ Open WebUI
 docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui ghcr.io/open-webui/open-webui
 ```
 
+Nacos
+```shell
+docker run --name nacos-standalone-derby -e MODE=standalone -e NACOS_AUTH_TOKEN=VGhpc0lzTXlDdXN0b21TZWNyZXRLZXkwMTIzNDU2Nzg= -e NACOS_AUTH_IDENTITY_KEY=custom_identity_key -e NACOS_AUTH_IDENTITY_VALUE=custom_identity_value -p 8080:8080 -p 8848:8848 -p 9848:9848 -d nacos/nacos-server:latest
+```
+
 ## 01 [docker-compose 示例](docker-compose%2FREADME.md)
