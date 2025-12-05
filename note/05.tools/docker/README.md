@@ -95,9 +95,9 @@ docker run --name zookeeper -d -p 2181:2181 zookeeper:latest
 
 ## postgreSQL
 ```shell
-docker run --name postgres -e POSTGRES_PASSWORD=Abc1234% -p 5432:5432 -v /home/zx/postgres/data:/var/lib/postgresql/data -d postgres
+docker run -p 5432:5432 --name my-postgres -e POSTGRES_PASSWORD=123456 -d postgres:latest
 # --name postgres：指定容器的名称；
-# -e POSTGRES_PASSWORD=Abc1234%：设置环境变量，这里为设定PostgreSQL数据库的密码；
+# -e POSTGRES_PASSWORD=123456：设置环境变量，这里为设定PostgreSQL数据库的密码；
 # -p 5432:5432：指定端口映射，前者为宿主机访问端口，后者为容器内端口。如果不指定端口映射，只有在容器内可以访问数据库，外部是无法访问的；
 # -v /home/zx/postgres/data:/var/lib/postgresql/data：v是volume的简写，即绑定一个卷，冒号前的路径为宿主机的路径（如果指定路径不存在会自动创建目录），冒号后为容器内路径。容器会把宿主机的目录映射到容器内的路径，这样容器运行中生成的数据实际上就是写到了宿主机的指定路径上，即使容器删除了，此路径的文件也不会删除，这样就做到了数据库的持久化存储。还可以通过docker volume提供的相关命令显式地创建volume，然后再挂载到容器上，这里不做介绍，请自行查询相关内容；
 # -d：表示后台运行容器；
