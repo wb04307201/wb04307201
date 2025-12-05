@@ -95,7 +95,7 @@ docker run --name zookeeper -d -p 2181:2181 zookeeper:latest
 
 ## postgreSQL
 ```shell
-docker run-p 5432:5432 --name my-postgres -e POSTGRES_PASSWORD=123456 -d postgres:latest
+docker run -p 5432:5432 --name my-postgres -e POSTGRES_PASSWORD=123456 -d postgres:latest
 # --name postgres：指定容器的名称；
 # -e POSTGRES_PASSWORD=123456：设置环境变量，这里为设定PostgreSQL数据库的密码；
 # -p 5432:5432：指定端口映射，前者为宿主机访问端口，后者为容器内端口。如果不指定端口映射，只有在容器内可以访问数据库，外部是无法访问的；
