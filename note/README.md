@@ -57,6 +57,7 @@
 ### 6.18. [Java 25（LTS）](01.java/version/java-25/README.md)
 ## 7. [Java Agent](01.java/java-agent/README.md)
 ### 7.1. [统计API接口调用耗时](01.java/java-agent/api/README.md)
+## 8. [JDBC](01.java/jdbc/README.md)
 
 # 二、计算机基础
 ## 1. [服务器性能指标](02.computer-basics/server-performance-metrics/README.md)
