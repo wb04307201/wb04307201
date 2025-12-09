@@ -1,31 +1,30 @@
-# 关键技术栈
+# 大模型（LLM）及其应用生态中的关键技术栈
 
-
-- 大模型（Large Language Model, LLM） 
-- RAG（Retrieval-Augmented Generation）
-- Agent（智能体）
-- 工作流（Workflow）
-- 模型上下文协议(MCP)
-- 微调（Fine-tuning）
-- 提示工程（Prompt Engineering）
-- 上下文学习（In-Context Learning）
-- 零样本/少样本学习（Zero-shot / Few-shot Learning）
-- 模型蒸馏（Model Distillation）
-- 人类反馈强化学习（RLHF）
-- 多模态（Multimodality）
-- 知识图谱（Knowledge Graph）
-- 向量数据库（Vector Database）
-- 嵌入（Embedding）
-- 对齐（Alignment）
-- 可解释性（Explainability）
-- 幻觉（Hallucination）
-- 模型评估（Model Evaluation）
-- 模型部署（Model Deployment）
-- 模型压缩（Model Compression）
-- 持续学习（Continual Learning）
-- 领域适应（Domain Adaptation）
-- 安全对齐（Safety Alignment）
-- 自动提示优化（Automatic Prompt Optimization）
+1. **大模型（Large Language Model, LLM）**：一种基于海量数据训练的深度学习模型，参数规模巨大，能够理解和生成人类语言以执行多种任务。
+2. **RAG（Retrieval-Augmented Generation）**：一种技术框架，通过结合实时检索外部知识库与文本生成，提升模型输出的准确性和相关性。
+3. **Agent（智能体）**：一个自主AI实体，能感知环境、规划行动并执行工具调用以完成复杂目标。
+4. **工作流（Workflow）**：一个预定义的任务序列或自动化流程，用于协调多个步骤（如数据处理、模型调用）以实现端到端应用。
+5. **模型上下文协议(MCP)**：一种标准化协议，规范大型语言模型如何动态管理、访问和整合上下文信息以提升推理质量（注：MCP非广泛标准术语，此处基于上下文推断）。
+6. **微调（Fine-tuning）**：在预训练模型基础上，使用特定领域数据进一步训练以适应新任务或数据分布的过程。
+7. **提示工程（Prompt Engineering）**：通过精心设计输入提示（如指令、示例）来引导模型生成更精确、可控输出的技术。
+8. **上下文学习（In-Context Learning）**：模型通过输入中提供的少量示例即时学习任务模式，而无需更新内部参数。
+9. **零样本/少样本学习（Zero-shot / Few-shot Learning）**：零样本指模型无任务示例直接泛化，少样本指仅需极少量示例就能适应新任务。
+10. **模型蒸馏（Model Distillation）**：将大型教师模型的知识（如预测分布）迁移至小型学生模型，以压缩规模并保持性能。
+11. **人类反馈强化学习（RLHF）**：利用人类偏好作为奖励信号，通过强化学习优化模型行为，使其输出更符合人类价值观。
+12. **多模态（Multimodality）**：模型处理和融合多种数据模态（如文本、图像、音频）的能力，以实现跨模态理解和生成。
+13. **知识图谱（Knowledge Graph）**：一种结构化知识库，以实体-关系三元组形式表示信息，支持语义推理和查询。
+14. **向量数据库（Vector Database）**：专为高效存储、索引和检索高维向量（如嵌入）设计的数据库，用于相似性搜索。
+15. **嵌入（Embedding）**：将离散数据（如词或图像）映射为低维连续向量，以捕获语义或特征相似性。
+16. **对齐（Alignment）**：调整模型行为，使其输出与人类意图、价值观和社会规范保持一致的过程。
+17. **可解释性（Explainability）**：使模型决策过程透明化，便于人类理解、验证和信任其内部机制。
+18. **幻觉（Hallucination）**：模型生成看似合理但事实错误或虚构内容的现象，常因训练数据偏差或推理缺陷导致。
+19. **模型评估（Model Evaluation）**：使用定量指标（如准确率）和定性分析系统测量模型性能、鲁棒性和公平性。
+20. **模型部署（Model Deployment）**：将训练好的模型集成到生产环境（如API或云服务），以提供实时推理能力。
+21. **模型压缩（Model Compression）**：通过剪枝、量化或知识蒸馏等技术减小模型规模，提升推理效率而不显著损失精度。
+22. **持续学习（Continual Learning）**：模型在序列化任务中持续学习新知识，同时避免灾难性遗忘先前技能的能力。
+23. **领域适应（Domain Adaptation）**：调整预训练模型以适应新领域数据分布的技术，通常通过微调或特征对齐实现。
+24. **安全对齐（Safety Alignment）**：专门针对有害内容（如偏见、毒性）的对齐机制，确保模型输出安全、无害且符合伦理。
+25. **自动提示优化（Automatic Prompt Optimization）**：利用算法（如梯度搜索或强化学习）自动生成和优化提示，以最大化模型性能。
 这些概念共同构成了当前大模型（LLM）及其应用生态中的关键技术栈。它们之间并非孤立存在，而是彼此交织、协同支撑一个完整的智能系统。
 
 ---
@@ -123,9 +122,9 @@ B --> D[嵌入 Embedding]
 D --> E[向量数据库]
 D --> F[多模态]
 C --> G[RAG] --> E
+C --> IT[Agent 任务编排]
 C --> H[工作流 调度Agent]
-C --> I0[Agent 任务编排]
-H <--> I0
+H <--> IT
 H --> I1[Agent 1]
 H --> I2[Agent 2]
 H --> I3[Agent 3]
