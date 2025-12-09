@@ -257,6 +257,7 @@
 # 十一、[AI](11.ai/README.md)
 ## 弱人工智能（ANI）
 ### [大语言模型](11.ai/llm/README.md)
+#### [关键技术栈](11.ai/llm/concept/README.md)
 #### [大模型分层架构设计](11.ai/llm/hierarchical-architecture-design/README.md)
 #### [稠密模型（Dense Model）和混合专家模型(MoE Model)](11.ai/llm/dense-and-moe/README.md)
 #### [大语言模型推理阶段与训练阶段的显存估算](11.ai/llm/memory-estimation/README.md)
