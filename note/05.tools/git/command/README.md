@@ -62,7 +62,6 @@ git fetch --prune origin        # 获取更新并清理本地已删除的远程�
 git pull origin <branch>        # 拉取+合并（默认策略：merge）
 git push -u origin <branch>     # 首次推送并关联上游
 git push --force-with-lease     # 安全强制推送（**2025 标准**）
-# ====== 新增：删除远程分支 ======
 git push origin --delete <branch>  # 安全删除远程分支（推荐）
 git push origin :<branch>          # 旧式删除（冒号语法）
 ```
