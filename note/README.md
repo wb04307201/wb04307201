@@ -181,9 +181,8 @@
 
 # 五、工具
 ## Git
-### [软件版本号](05.tools/git/software-version-number/README.md)
-### [版本发布策略](05.tools/git/release-strategy/README.md)
-### [分支版本管理](05.tools/git/version-controller/README.md)
+### [Git 命令清单](05.tools/git/command/README.md)
+### [Gitea](05.tools/git/gitea/README.md)
 ## [Docker](05.tools/docker/README.md)
 ### [Podman](05.tools/docker/podman/README.md)
 ## [Nginx](05.tools/nginx/README.md)
