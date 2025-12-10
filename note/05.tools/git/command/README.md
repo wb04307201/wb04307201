@@ -57,6 +57,7 @@ git branch -D <branch>          # 强制删除
 ## 远程协作
 ```bash
 git remote add origin <url>     # 添加远程仓库
+git remote remove origin        # 删除远程仓库
 git remote -v                   # 查看远程地址
 git fetch --prune origin        # 获取更新并清理本地已删除的远程分支
 git pull origin <branch>        # 拉取+合并（默认策略：merge）
