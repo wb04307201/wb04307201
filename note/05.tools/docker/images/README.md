@@ -1,27 +1,5 @@
-# Docker
+# Docker 镜像
 
-## linux docker 安装
-1. 检查内核版本，返回的值大于3.10即可`uname -r`
-2. 使用root权限的用户登入终端
-3. 确保yum是最新的`yum update`
-4. 安装依赖环境`yum install -y yum-utils device-mapper-persistent-data lvm2`
-5. 安装docker-ce(社区版)`yum install -y docker-ce`  安装成功后，可以使用`docker version`命令查看是否安装成功
-6. 启动docker`service docker start`或者`systemctl start docker`
-7. 验证启动是否成功可使用命令`docker images`
-8. 设置开机自启动`systemctl enable docker`
-
-## 查看容器名和对应ip
-```shell
-docker inspect -f '{{.Name}} - {{.NetworkSettings.IPAddress }}' $(docker ps -aq)
-```
-
-## 修改容器参数添加自启动
-```shell
-docker container update --restart=always 容器名字
-#no - Container不重启
-#on-failure - container推出状态非0时重启
-#always - 始终重启
-```
 
 ## Nginx
 ```shell
