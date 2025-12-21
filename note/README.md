@@ -178,10 +178,11 @@
 
 # 五、工具
 ## Git
-### [软件版本号](05.tools/git/software-version-number/README.md)
-### [版本发布策略](05.tools/git/release-strategy/README.md)
-### [分支版本管理](05.tools/git/version-controller/README.md)
-## [Docker](05.tools/docker/README.md)
+### [Git 命令清单](05.tools/git/command/README.md)
+### [Gitea](05.tools/git/gitea/README.md)
+## Docker
+### [Docker 命令](05.tools/docker/command/README.md)
+### [Docker 镜像](05.tools/docker/images/README.md)
 ### [Podman](05.tools/docker/podman/README.md)
 ## [Nginx](05.tools/nginx/README.md)
 ### [Pingora](05.tools/nginx/pingora/README.md)
@@ -254,7 +255,9 @@
 # 十一、[AI](11.ai/README.md)
 ## 弱人工智能（ANI）
 ### [大语言模型](11.ai/llm/README.md)
+#### [大模型（LLM）及其应用生态中的关键技术栈](11.ai/llm/concept/README.md)
 #### [大模型分层架构设计](11.ai/llm/hierarchical-architecture-design/README.md)
+#### [稠密模型（Dense Model）和混合专家模型(MoE Model)](11.ai/llm/dense-and-moe/README.md)
 #### [大语言模型推理阶段与训练阶段的显存估算](11.ai/llm/memory-estimation/README.md)
 #### [嵌入与向量化的区别](11.ai/llm/Embedding-vs-vectorization/README.md)
 #### [prompt模板](11.ai/llm/prompt/README.md)
