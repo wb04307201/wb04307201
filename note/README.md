@@ -81,12 +81,9 @@
 ##### [慢查询SQL的分析与优化](03.database/base/relational-database/basic-of-databases/sql/slow-query-sql/README.md)
 #### [事务特性ACID](03.database/base/relational-database/basic-of-databases/acid/README.md)
 ##### [隔离性（Isolation）](03.database/base/relational-database/basic-of-databases/acid/isolation/README.md)
+###### [常见数据库的默认隔离级别](03.database/base/relational-database/basic-of-databases/acid/isolation/default/README.md)
 ###### [锁机制](03.database/base/relational-database/basic-of-databases/acid/isolation/lock/README.md)
 ###### [多版本并发控制](03.database/base/relational-database/basic-of-databases/acid/isolation/mvcc/README.md)
-##### 并发事务
-##### [数据库锁类型详解](03.database/base/relational-database/basic-of-databases/acid/isolation/lock/README.md)
-##### [数据库多版本并发控制详解](03.database/base/relational-database/transaction-processing/concurrent/mvcc/README.md)
-##### [锁与MVCC的关系](03.database/base/relational-database/transaction-processing/concurrent/lock-vs-mvcc/README.md)
 ### [MySQL](03.database/base/relational-database/mysql/README.md)
 ## [NoSQL数据库](03.database/base/nosql/README.md)
 ### 键值存储数据库
