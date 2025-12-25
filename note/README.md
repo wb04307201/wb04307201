@@ -108,6 +108,7 @@
        2. [C4 模型](04.system-design/base/software-engineering/development-process-and-methodologies/system-design/architecture-diagram/c4-model/README.md)
 ###### [领域驱动设计](04.system-design/base/software-engineering/development-process-and-methodologies/system-design/ddd/README.md)
 ###### [API 设计风格](04.system-design/base/software-engineering/development-process-and-methodologies/system-design/api/README.md)
+       1. [RESTful](04.system-design/base/software-engineering/development-process-and-methodologies/system-design/api/RESTful/README.md)
 ###### [微服务模式](04.system-design/base/software-engineering/development-process-and-methodologies/system-design/microservices/README.md)
 ###### [微服务模式与领域驱动设计（DDD）](04.system-design/base/software-engineering/development-process-and-methodologies/system-design/microservices-and-ddd/README.md)
 ###### [事件驱动模式与异步处理模式](04.system-design/base/software-engineering/development-process-and-methodologies/system-design/eda-vs-async/README.md)
