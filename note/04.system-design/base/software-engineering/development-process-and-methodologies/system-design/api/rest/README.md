@@ -160,3 +160,5 @@ DELETE /api/v1/users/456
 ---
 
 遵循 RESTful 设计风格，可使 API 更清晰、可预测、易用且易于维护。虽然 REST 是一种“风格”而非严格标准，但业界已形成广泛共识的最佳实践。
+
+> 附：Google API 设计指南（[google.aip.dev](https://google.aip.dev/)）是权威参考。
