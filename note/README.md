@@ -73,6 +73,9 @@
 #### 5.1.1. [时间复杂度](02.computer-basics/algorithm/evaluate/time-complexity/README.md)
 ### 5.1.2. [空间复杂度](02.computer-basics/algorithm/evaluate/space-complexity/README.md)
 ### 5.1.3. [时间复杂度与空间复杂度应该如何取舍](02.computer-basics/algorithm/evaluate/compromise/README.md)
+## 6. Linux
+### 6.1. [Linux 命令](02.computer-basics/linux/command/README.md)
+### 6.2. [curl 命令](02.computer-basics/linux/curl/README.md)
 
 # 三、数据库
 ## 关系型数据库
