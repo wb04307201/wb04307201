@@ -154,4 +154,14 @@ Nacos
 docker run --name nacos-standalone-derby -e MODE=standalone -e NACOS_AUTH_TOKEN=VGhpc0lzTXlDdXN0b21TZWNyZXRLZXkwMTIzNDU2Nzg= -e NACOS_AUTH_IDENTITY_KEY=custom_identity_key -e NACOS_AUTH_IDENTITY_VALUE=custom_identity_value -p 8080:8080 -p 8848:8848 -p 9848:9848 -d nacos/nacos-server:latest
 ```
 
+SearXNG
+```shell
+docker run -p 6080:8080 --name searxng -d --restart=always -v "D:\devolop\SearXNG:/etc/searxng" -e "BASE_URL=http://localhost:6080/" -e "INSTANCE_NAME=lee-instance" searxng/searxng:latest
+```
+
+Nacos
+```shell
+docker run -d --name redis-stack -p 9379:6379 -e REDIS_ARGS="--requirepass 123456" redis/redis-stack:latest
+```
+
 ## 01 [docker-compose 示例](docker-compose%2FREADME.md)
