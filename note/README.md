@@ -77,6 +77,7 @@
 ## 6. Linux
 ### 6.1. [Linux 命令](02.computer-basics/linux/command/README.md)
 ### 6.2. [curl 命令](02.computer-basics/linux/curl/README.md)
+## 7. [专利与软著](02.computer-basics/patents-and-software-copyrights/README.md)
 
 # 三、数据库
 ## 关系型数据库
