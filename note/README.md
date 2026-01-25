@@ -62,10 +62,11 @@
 # 二、计算机基础
 ## 1. [服务器性能指标](02.computer-basics/server-performance-metrics/README.md)
 ## 2. [计算机网络](02.computer-basics/network/README.md)
-### 2.1. [HTTP 协议](02.computer-basics/network/http/README.md)
-### 2.2. [TCP/IP 分层模型](02.computer-basics/network/tcp-ip/README.md)
-### 2.3. [OSI 分层模型](02.computer-basics/network/osi/README.md)
-### 2.4. [TCP/IP分层模型与OSI分层模型结构对比](02.computer-basics/network/tcp-ip-vs-osi/README.md)
+### 2.1. [OSI 分层模型](02.computer-basics/network/osi/README.md)
+### 2.2. [协议](02.computer-basics/network/protocol/README.md)
+#### 2.2.1. [HTTP 协议](02.computer-basics/network/protocol/http/README.md)
+#### 2.2.2. [TCP/IP 分层模型](02.computer-basics/network/protocol/tcp-ip/README.md)
+#### 2.1.3. [TCP/IP分层模型与OSI分层模型结构对比](02.computer-basics/network/protocol/tcp-ip-vs-osi/README.md)
 ## 3. [云服务模式](02.computer-basics/cloud-service-model/README.md)
 ## 4. [WCAG - 网页内容无障碍指南](02.computer-basics/wcag/README.md)
 ## 5. [算法](02.computer-basics/algorithm/README.md)
@@ -76,6 +77,7 @@
 ## 6. Linux
 ### 6.1. [Linux 命令](02.computer-basics/linux/command/README.md)
 ### 6.2. [curl 命令](02.computer-basics/linux/curl/README.md)
+## 7. [专利与软著](02.computer-basics/patents-and-software-copyrights/README.md)
 
 # 三、数据库
 ## 关系型数据库
