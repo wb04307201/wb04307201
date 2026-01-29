@@ -68,7 +68,7 @@ src/main/java/cn/wubo/micro/rest/
 
 1. **启动服务**:
    ```bash
-   ./mvnw jetty:run
+   mvn jetty:run
    ```
 
 
