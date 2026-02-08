@@ -275,7 +275,7 @@
 ### [多模态：感知-认知统一架构——当AI学会“看懂”并“理解”世界](11.ai/2025/moe/README.md)
 #### [稠密模型（Dense Model）和混合专家模型(MoE Model)](11.ai/2025/moe/dense-and-moe/README.md)
 #### [跨模态特征对齐技术详解](11.ai/2025/moe/cross-modal/README.md)
-### 具身智能
+### [具身智能（Embodied Intelligence）：当AI学会用身体思考，物理世界的交互革命已然来临](11.ai/2025/ei/README.md)
 ### 其他
 #### [大语言模型推理阶段与训练阶段的显存估算](11.ai/2025/other/memory-estimation/README.md)
 #### [prompt模板](11.ai/2025/other/prompt/README.md)
