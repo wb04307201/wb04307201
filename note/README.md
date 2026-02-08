@@ -267,23 +267,26 @@
 ## [离线数仓/实时数仓](10.big-data/offline-or-real-time-data-warehouse/README.md)
 
 # 十一、[AI](11.ai/README.md)
-## 弱人工智能（ANI）
-### [大语言模型](11.ai/llm/README.md)
-#### [模型内部神经网络层次](11.ai/llm/layers/README.md)
-#### [大模型（LLM）及其应用生态中的关键技术栈](11.ai/llm/concept/README.md)
-#### [稠密模型（Dense Model）和混合专家模型(MoE Model)](11.ai/llm/dense-and-moe/README.md)
-#### [跨模态特征对齐技术详解](11.ai/llm/cross-modal/README.md)
-#### [大语言模型推理阶段与训练阶段的显存估算](11.ai/llm/memory-estimation/README.md)
-#### [嵌入与向量化的区别](11.ai/llm/Embedding-vs-vectorization/README.md)
-#### [prompt模板](11.ai/llm/prompt/README.md)
-##### [grok系统prompt](11.ai/llm/prompt/grok-system-prompt/README.md)
-##### [为代码生成别具一格的注释](11.ai/llm/prompt/code-comment/README.md)
+## [模型内部神经网络层次](11.ai/layers/README.md)
+## [2025年AI技术矩阵：大模型、多模态、具身智能](11.ai/2025/README.md)
+### [大语言模型](11.ai/2025/llm/README.md)
+#### [大模型（LLM）及其应用生态中的关键技术栈](11.ai/2025/llm/concept/README.md)
+#### [嵌入与向量化的区别](11.ai/2025/llm/Embedding-vs-vectorization/README.md)
+### [多模态：感知-认知统一架构——当AI学会“看懂”并“理解”世界](11.ai/2025/moe/README.md)
+#### [稠密模型（Dense Model）和混合专家模型(MoE Model)](11.ai/2025/moe/dense-and-moe/README.md)
+#### [跨模态特征对齐技术详解](11.ai/2025/moe/cross-modal/README.md)
+### 具身智能
+### 其他
+#### [大语言模型推理阶段与训练阶段的显存估算](11.ai/2025/other/memory-estimation/README.md)
+#### [prompt模板](11.ai/2025/other/prompt/README.md)
+##### [grok系统prompt](11.ai/2025/other/prompt/grok-system-prompt/README.md)
+##### [为代码生成别具一格的注释](11.ai/2025/other/prompt/code-comment/README.md)
 ## 工具
 ### [Ollama](11.ai/tools/ollama/README.md)
 ### [Open WebUI](11.ai/tools/open-webui/README.md)
 ### [AI平台流程工具对比选购指南](11.ai/tools/workflow-comparison/README.md)
 ### [iFlow CLI AI 助手](11.ai/tools/iflow-cli/README.md)
-## [2025年AI技术矩阵：大模型、多模态、具身智能](11.ai/2025/README.md)
+
 
 # 十二、前端
 ## [前端框架](12.font-end/frameworks/README.md)
