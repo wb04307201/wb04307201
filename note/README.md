@@ -277,7 +277,9 @@
 #### [跨模态特征对齐技术详解](11.ai/2025/moe/cross-modal/README.md)
 ### [具身智能（Embodied Intelligence）：当AI学会用身体思考，物理世界的交互革命已然来临](11.ai/2025/ei/README.md)
 ### 其他
-#### [大语言模型推理阶段与训练阶段的显存估算](11.ai/2025/other/memory-estimation/README.md)
+#### [当AI学会“沉思”：GLM-Z1-Rumination如何重新定义深度推理](11.ai/2025/other/rumination/README.md)
+#### [多模态交互体验优化：当技术学会“察言观色”](11.ai/2025/other/moe%20interaction/README.md)
+#### [大模型显存估算指南：Transformer、MoE 与 Mamba 架构深度解析](11.ai/2025/other/memory-estimation/README.md)
 #### [prompt模板](11.ai/2025/other/prompt/README.md)
 ##### [grok系统prompt](11.ai/2025/other/prompt/grok-system-prompt/README.md)
 ##### [为代码生成别具一格的注释](11.ai/2025/other/prompt/code-comment/README.md)
