@@ -283,6 +283,7 @@
 #### [prompt模板](11.ai/2025/other/prompt/README.md)
 ##### [grok系统prompt](11.ai/2025/other/prompt/grok-system-prompt/README.md)
 ##### [为代码生成别具一格的注释](11.ai/2025/other/prompt/code-comment/README.md)
+## [AI重塑汽车行业四大维度：当钢铁座驾学会思考、对话与共情](11.ai/car/README.md)
 ## 工具
 ### [Ollama](11.ai/tools/ollama/README.md)
 ### [Open WebUI](11.ai/tools/open-webui/README.md)
