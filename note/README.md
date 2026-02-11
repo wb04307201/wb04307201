@@ -268,6 +268,10 @@
 
 # 十一、[AI](11.ai/README.md)
 ## [模型内部神经网络层次](11.ai/layers/README.md)
+## [AI技术栈分层架构全景](11.ai/hierarchical-architecture/README.md)
+### [计算平台](11.ai/hierarchical-architecture/computing-platform/README.md)
+### [AI深度学习框架](11.ai/hierarchical-architecture/framework/README.md)
+### [大模型应用开发框架](11.ai/hierarchical-architecture/dev/README.md)
 ## [2026年AI技术矩阵：大模型、多模态、具身智能](11.ai/2026/README.md)
 ### [大语言模型](11.ai/2026/llm/README.md)
 #### [大模型（LLM）及其应用生态中的关键技术栈](11.ai/2026/llm/concept/README.md)
@@ -276,7 +280,6 @@
 #### [稠密模型（Dense Model）和混合专家模型(MoE Model)](11.ai/2026/moe/dense-and-moe/README.md)
 #### [跨模态特征对齐技术详解](11.ai/2026/moe/cross-modal/README.md)
 ### [具身智能（Embodied Intelligence）：当AI学会用身体思考，物理世界的交互革命已然来临](11.ai/2026/ei/README.md)
-#### [从监督学习到强化学习：技术原理、实战案例与未来趋势](11.ai/supervised-reinforcement/README.md)
 ### 其他
 #### [当AI学会“沉思”：GLM-Z1-Rumination如何重新定义深度推理](11.ai/2026/other/rumination/README.md)
 #### [多模态交互体验优化：当技术学会“察言观色”](11.ai/2026/other/moe%20interaction/README.md)
@@ -285,6 +288,7 @@
 ##### [grok系统prompt](11.ai/2026/other/prompt/grok-system-prompt/README.md)
 ##### [为代码生成别具一格的注释](11.ai/2026/other/prompt/code-comment/README.md)
 ## [AI重塑汽车行业四大维度：当钢铁座驾学会思考、对话与共情](11.ai/car/README.md)
+### [从监督学习到强化学习：技术原理、实战案例与未来趋势](11.ai/car/supervised-reinforcement/README.md)
 ## [智能系统的骨架革命：三层架构如何重塑物理世界与数字世界的连接](11.ai/technical-architecture/README.md)
 ## 工具
 ### [Ollama](11.ai/tools/ollama/README.md)
