@@ -46,14 +46,14 @@
 
 ## 二、框架选型决策矩阵
 
-| 维度 | LangChain | LangChain4j | Spring AI | LlamaIndex |
-|------|-----------|-------------|-----------|------------|
-| **主语言** | Python | Java | Java | Python/TypeScript |
-| **核心优势** | 生态丰富、Agent成熟 | JVM原生集成 | Spring无缝衔接 | 数据索引优化 |
-| **学习曲线** | 中（概念多） | 中 | 低（Spring开发者） | 中（需理解索引原理） |
-| **生产就绪度** | 高（LangSmith支持） | 中 | 高（Spring生态） | 高（企业级RAG） |
-| **典型场景** | 多工具Agent、复杂工作流 | 企业Java系统AI化 | 微服务AI能力注入 | 知识库/文档问答 |
-| **2026趋势** | RAG专业化 + LangGraph做Agent | 逐步追赶Python版特性 | 与Spring Cloud深度整合 | Agent+数据编排融合 |
+| 维度         | LangChain                | LangChain4j   | Spring AI         | LlamaIndex        |
+|------------|--------------------------|---------------|-------------------|-------------------|
+| **主语言**    | Python                   | Java          | Java              | Python/TypeScript |
+| **核心优势**   | 生态丰富、Agent成熟             | JVM原生集成       | Spring无缝衔接        | 数据索引优化            |
+| **学习曲线**   | 中（概念多）                   | 中             | 低（Spring开发者）      | 中（需理解索引原理）        |
+| **生产就绪度**  | 高（LangSmith支持）           | 中             | 高（Spring生态）       | 高（企业级RAG）         |
+| **典型场景**   | 多工具Agent、复杂工作流           | 企业Java系统AI化   | 微服务AI能力注入         | 知识库/文档问答          |
+| **2026趋势** | RAG专业化 + LangGraph做Agent | 逐步追赶Python版特性 | 与Spring Cloud深度整合 | Agent+数据编排融合      |
 
 ## 三、2025-2026关键趋势
 
