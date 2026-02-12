@@ -289,6 +289,8 @@
 ##### [为代码生成别具一格的注释](11.ai/2026/other/prompt/code-comment/README.md)
 ## [AI重塑汽车行业四大维度：当钢铁座驾学会思考、对话与共情](11.ai/car/README.md)
 ### [从监督学习到强化学习：技术原理、实战案例与未来趋势](11.ai/car/supervised-reinforcement/README.md)
+### [智能座舱的“听觉革命”：从语音识别到多模态共生的交互新范式](11.ai/car/cockpit/README.md)
+### [人工智能与图形生成的融合：从概念草图到虚拟工厂的全链路创新](11.ai/car/gan/README.md)
 ## [智能系统的骨架革命：三层架构如何重塑物理世界与数字世界的连接](11.ai/technical-architecture/README.md)
 ## 工具
 ### [Ollama](11.ai/tools/ollama/README.md)
