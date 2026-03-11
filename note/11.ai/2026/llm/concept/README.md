@@ -126,33 +126,253 @@
 
 ## **全局关系图**
 ```mermaid
-graph LR
-A[大模型 LLM] --> B[基础能力]
-A --> C[固有缺陷:幻觉/知识滞后]
-B --> D[嵌入 Embedding]
-D --> E[向量数据库]
-D --> F[多模态]
-C --> G[RAG] --> E
-C --> IT[Agent 任务编排]
-C --> H[工作流 调度Agent]
-H <--> IT
-H --> I1[Agent 1]
-H --> I2[Agent 2]
-H --> I3[Agent 3]
-I1 <--> J[MCP协议]
-I2 <--> J
-I3 <--> J
-G --> K[知识图谱]
-A --> L[训练优化]
-L --> M[微调] --> N[RLHF] --> O[安全对齐]
-L --> P[模型蒸馏] --> Q[模型压缩] --> R[模型部署]
-L --> S[持续学习] & T[领域适应]
-A --> U[交互控制]
-U --> V[提示工程] --> W[上下文学习] --> X[零样本/少样本]
-V --> Y[自动提示优化]
-O & X & G --> Z[模型评估]
-Z --> AA[可解释性] --> AB[幻觉分析]
-R --> AC[生产环境] --> S
+graph TB
+    subgraph 基础架构层 ["🏗️ 基础架构层 - 模型能力构建"]
+        LLM["📦 大模型<br/>(Large Language Model)"]
+        Embedding["🔢 嵌入<br/>(Embedding)"]
+        Compression["🗜️ 模型压缩<br/>(Model Compression)"]
+        Multimodal["🎨 多模态<br/>(Multimodality)"]
+        DenseModel["🟦 稠密模型<br/>(Dense Model)"]
+        MoE["🔀 混合专家模型<br/>(MoE Model)"]
+        VecDB["📚 向量数据库<br/>(Vector Database)"]
+    end
+
+    subgraph 能力增强层 ["⚡ 能力增强层 - 解决 LLM 固有缺陷"]
+        RAG["🔍 RAG<br/>(Retrieval-Augmented Generation)"]
+        Agent["🤖 Agent<br/>(智能体)"]
+        Workflow["⚙️ 工作流<br/>(Workflow)"]
+        MCP["🔌 MCP<br/>(模型上下文协议)"]
+        KG["🕸️ 知识图谱<br/>(Knowledge Graph)"]
+    end
+
+    subgraph 训练优化层 ["🎯 训练与优化层 - 提升模型性能"]
+        FineTuning["🔧 微调<br/>(Fine-tuning)"]
+        RLHF["👥 人类反馈强化学习<br/>(RLHF)"]
+        ContinualLearn["🔄 持续学习<br/>(Continual Learning)"]
+        DomainAdapt["🌐 领域适应<br/>(Domain Adaptation)"]
+        Distillation["📦 模型蒸馏<br/>(Model Distillation)"]
+        SafetyAlign["🛡️ 安全对齐<br/>(Safety Alignment)"]
+    end
+
+    subgraph 交互控制层 ["💬 交互与控制层 - 人机协作优化"]
+        PromptEng["✍️ 提示工程<br/>(Prompt Engineering)"]
+        ICL["📖 上下文学习<br/>(In-Context Learning)"]
+        AutoPrompt["🤖 自动提示优化<br/>(Automatic Prompt Optimization)"]
+        Alignment["🎯 对齐<br/>(Alignment)"]
+        ZeroShot["0️⃣ 零样本学习<br/>(Zero-shot Learning)"]
+        FewShot["🔢 少样本学习<br/>(Few-shot Learning)"]
+    end
+
+    subgraph 评估可信层 ["✅ 评估与可信层 - 保障可靠性"]
+        Evaluation["📊 模型评估<br/>(Model Evaluation)"]
+        Explainability["🔎 可解释性<br/>(Explainability)"]
+        Hallucination["👻 幻觉<br/>(Hallucination)"]
+        Safety["🔒 安全性<br/>(Safety)"]
+    end
+
+    subgraph 部署运维层 ["🚀 部署与运维层 - 落地关键"]
+        Deployment["📦 模型部署<br/>(Model Deployment)"]
+        Production["🏭 生产环境<br/>(Production)"]
+        Monitoring["📈 监控与日志<br/>(Monitoring)"]
+        Update["🔄 动态更新<br/>(Update)"]
+    end
+
+    %% 基础架构层内部关系
+    LLM --> Embedding
+    Embedding --> VecDB
+    Embedding --> Multimodal
+    LLM --> Compression
+    Distillation -.-> Compression
+    DenseModel --> MoE
+    MoE --> LLM
+    
+    %% 能力增强层关系
+    VecDB --> RAG
+    RAG --> LLM
+    KG -.-> RAG
+    Agent --> Workflow
+    Workflow --> Agent
+    Agent <--> MCP
+    Workflow <--> MCP
+    RAG --> Agent
+    
+    %% 训练优化层关系
+    LLM --> FineTuning
+    FineTuning --> RLHF
+    RLHF --> SafetyAlign
+    LLM --> ContinualLearn
+    ContinualLearn --> DomainAdapt
+    LLM --> Distillation
+    
+    %% 交互控制层关系
+    LLM --> PromptEng
+    PromptEng --> ICL
+    ICL --> ZeroShot
+    ICL --> FewShot
+    PromptEng --> AutoPrompt
+    Alignment -.-> PromptEng
+    Alignment -.-> RLHF
+    
+    %% 评估可信层关系
+    Evaluation --> Explainability
+    Explainability --> Hallucination
+    RAG --> Hallucination
+    RLHF --> Hallucination
+    Evaluation --> Safety
+    SafetyAlign --> Safety
+    
+    %% 部署运维层关系
+    Compression --> Deployment
+    Workflow --> Deployment
+    MCP --> Deployment
+    Deployment --> Production
+    Production --> Monitoring
+    Production --> Update
+    Update --> ContinualLearn
+    
+    %% 跨层核心关系
+    Evaluation -.-> FineTuning
+    Evaluation -.-> RAG
+    Evaluation -.-> PromptEng
+    Production -.-> LLM
+    
+    %% 样式定义
+    style LLM fill:#e1f5ff,stroke:#0066cc,stroke-width:3px,color:#000
+    style RAG fill:#fff4e1,stroke:#ff9900,stroke-width:2px,color:#000
+    style Agent fill:#fff4e1,stroke:#ff9900,stroke-width:2px,color:#000
+    style RLHF fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#000
+    style SafetyAlign fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#000
+    style Evaluation fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000
+    style Deployment fill:#fff3e0,stroke:#f57c00,stroke-width:2px,color:#000
+    style Embedding fill:#e3f2fd,stroke:#1976d2,stroke-width:1px,color:#000
+    style VecDB fill:#e3f2fd,stroke:#1976d2,stroke-width:1px,color:#000
+    style Compression fill:#e3f2fd,stroke:#1976d2,stroke-width:1px,color:#000
+    style Multimodal fill:#e3f2fd,stroke:#1976d2,stroke-width:1px,color:#000
+    style DenseModel fill:#e3f2fd,stroke:#1976d2,stroke-width:1px,color:#000
+    style MoE fill:#e3f2fd,stroke:#1976d2,stroke-width:1px,color:#000
+    style Workflow fill:#fff4e1,stroke:#ff9900,stroke-width:1px,color:#000
+    style MCP fill:#fff4e1,stroke:#ff9900,stroke-width:1px,color:#000
+    style KG fill:#fff4e1,stroke:#ff9900,stroke-width:1px,color:#000
+    style FineTuning fill:#e8f5e9,stroke:#2e7d32,stroke-width:1px,color:#000
+    style ContinualLearn fill:#e8f5e9,stroke:#2e7d32,stroke-width:1px,color:#000
+    style DomainAdapt fill:#e8f5e9,stroke:#2e7d32,stroke-width:1px,color:#000
+    style Distillation fill:#e8f5e9,stroke:#2e7d32,stroke-width:1px,color:#000
+    style PromptEng fill:#fffde7,stroke:#fbc02d,stroke-width:1px,color:#000
+    style ICL fill:#fffde7,stroke:#fbc02d,stroke-width:1px,color:#000
+    style AutoPrompt fill:#fffde7,stroke:#fbc02d,stroke-width:1px,color:#000
+    style Alignment fill:#fffde7,stroke:#fbc02d,stroke-width:1px,color:#000
+    style ZeroShot fill:#fffde7,stroke:#fbc02d,stroke-width:1px,color:#000
+    style FewShot fill:#fffde7,stroke:#fbc02d,stroke-width:1px,color:#000
+    style Explainability fill:#f3e5f5,stroke:#7b1fa2,stroke-width:1px,color:#000
+    style Hallucination fill:#f3e5f5,stroke:#7b1fa2,stroke-width:1px,color:#000
+    style Safety fill:#f3e5f5,stroke:#7b1fa2,stroke-width:1px,color:#000
+    style Production fill:#fff3e0,stroke:#f57c00,stroke-width:1px,color:#000
+    style Monitoring fill:#fff3e0,stroke:#f57c00,stroke-width:1px,color:#000
+    style Update fill:#fff3e0,stroke:#f57c00,stroke-width:1px,color:#000
+```
+
+---
+
+## **简化版关系图（聚焦核心流程）**
+```mermaid
+flowchart LR
+    subgraph Input["输入层"]
+        User["👤 用户"]
+        Query["❓ 查询/任务"]
+    end
+
+    subgraph Core["核心处理层"]
+        Prompt["✍️ 提示工程"]
+        LLM["📦 大模型 LLM"]
+        RAG["🔍 RAG 检索"]
+        Agent["🤖 Agent 智能体"]
+    end
+
+    subgraph Support["支持层"]
+        VecDB["📚 向量数据库"]
+        KG["🕸️ 知识图谱"]
+        Tools["🔧 工具集"]
+    end
+
+    subgraph Output["输出层"]
+        Response["💬 响应"]
+        Action["⚡ 行动"]
+    end
+
+    subgraph Quality["质量保障层"]
+        Evaluation["📊 评估"]
+        Safety["🛡️ 安全对齐"]
+        Monitor["📈 监控"]
+    end
+
+    User --> Query
+    Query --> Prompt
+    Prompt --> LLM
+    
+    LLM <--> RAG
+    RAG <--> VecDB
+    RAG <--> KG
+    
+    LLM --> Agent
+    Agent <--> Tools
+    
+    LLM --> Response
+    Agent --> Action
+    
+    Response <--> Evaluation
+    Action <--> Evaluation
+    Evaluation <--> Safety
+    Evaluation <--> Monitor
+    
+    style LLM fill:#e1f5ff,stroke:#0066cc,stroke-width:3px,color:#000
+    style RAG fill:#fff4e1,stroke:#ff9900,stroke-width:2px,color:#000
+    style Agent fill:#fff4e1,stroke:#ff9900,stroke-width:2px,color:#000
+    style Safety fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#000
+    style Evaluation fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000
+```
+
+---
+
+## **技术栈层次关系图**
+```mermaid
+graph BT
+    LLM["📦 大模型 (LLM)<br/>基座与核心"]
+    
+    LLM --> Architecture["🏗️ 架构选择"]
+    Architecture --> Dense["稠密模型<br/>稳定场景"]
+    Architecture --> MoE["MoE 模型<br/>大规模场景"]
+    
+    LLM --> Enhancement["⚡ 能力增强"]
+    Enhancement --> RAG["RAG<br/>知识检索"]
+    Enhancement --> Agent["Agent<br/>任务执行"]
+    Enhancement --> Workflow["工作流<br/>流程编排"]
+    
+    LLM --> Optimization["🎯 训练优化"]
+    Optimization --> FineTuning["微调"]
+    Optimization --> RLHF["RLHF 对齐"]
+    Optimization --> Distillation["蒸馏压缩"]
+    
+    LLM --> Interaction["💬 交互控制"]
+    Interaction --> Prompt["提示工程"]
+    Interaction --> ICL["上下文学习"]
+    Interaction --> AutoPrompt["自动优化"]
+    
+    LLM --> Evaluation["✅ 评估可信"]
+    Evaluation --> Metrics["性能评估"]
+    Evaluation --> Explain["可解释性"]
+    Evaluation --> Safety["安全对齐"]
+    
+    LLM --> Deployment["🚀 部署运维"]
+    Deployment --> Production["生产环境"]
+    Deployment --> Monitoring["监控日志"]
+    Deployment --> Update["持续学习"]
+    
+    style LLM fill:#e1f5ff,stroke:#0066cc,stroke-width:4px,color:#000
+    style RAG fill:#fff4e1,stroke:#ff9900,stroke-width:2px,color:#000
+    style Agent fill:#fff4e1,stroke:#ff9900,stroke-width:2px,color:#000
+    style RLHF fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#000
+    style Safety fill:#ffebee,stroke:#c62828,stroke-width:2px,color:#000
+    style Evaluation fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000
 ```
 
 ---
