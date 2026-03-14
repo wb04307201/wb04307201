@@ -1,37 +1,3 @@
-# 培训二：编程实战二
-
-## 1. 添加MCP依赖
-```xml
-        <dependency>
-            <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-starter-mcp-client</artifactId>
-        </dependency>
-```
-
-## 2. 安装环境
-- python环境
-  ```shell
-  pip install uv
-  where uv
-  ```
-- node环境
-  ```shell
-  npm install -g npx
-  where npx
-  ```
-
-## 3. 添加MCP配置
-```yaml
-    mcp:
-      client:
-        stdio:
-          servers-configuration: classpath:mcp-servers.json
-```
-[mcp-servers.json](mcp-servers.json)
-
-## 4. 修改代码
-[MCP](https://docs.spring.io/spring-ai/reference/api/mcp/mcp-overview.html)
-```java
 package com.example.demo;
 
 import io.modelcontextprotocol.client.McpSyncClient;
@@ -139,6 +105,3 @@ public class DemoController {
         return "Successfully added " + documents.size() + " documents to vector store";
     }
 }
-
-```
-

@@ -1,0 +1,20 @@
+spring:
+  ai:
+    dashscope:
+      api-key: ${DASHSCOPE_API_KEY}
+      chat:
+        options:
+          model: qwen-plus
+      embedding:
+        options:
+          model: text-embedding-v2
+    vectorstore:
+      qdrant:
+        host: localhost
+        port: 6334
+        collection-name: qwen-collection-name
+
+server:
+  servlet:
+    encoding:
+      charset: UTF-8

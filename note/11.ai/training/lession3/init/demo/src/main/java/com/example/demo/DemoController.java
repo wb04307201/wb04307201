@@ -1,40 +1,5 @@
-# 培训二：编程实战二
-
-## 1. 添加MCP依赖
-```xml
-        <dependency>
-            <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-starter-mcp-client</artifactId>
-        </dependency>
-```
-
-## 2. 安装环境
-- python环境
-  ```shell
-  pip install uv
-  where uv
-  ```
-- node环境
-  ```shell
-  npm install -g npx
-  where npx
-  ```
-
-## 3. 添加MCP配置
-```yaml
-    mcp:
-      client:
-        stdio:
-          servers-configuration: classpath:mcp-servers.json
-```
-[mcp-servers.json](mcp-servers.json)
-
-## 4. 修改代码
-[MCP](https://docs.spring.io/spring-ai/reference/api/mcp/mcp-overview.html)
-```java
 package com.example.demo;
 
-import io.modelcontextprotocol.client.McpSyncClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
@@ -42,7 +7,6 @@ import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.document.Document;
-import org.springframework.ai.mcp.SyncMcpToolCallbackProvider;
 import org.springframework.ai.rag.advisor.RetrievalAugmentationAdvisor;
 import org.springframework.ai.rag.retrieval.search.VectorStoreDocumentRetriever;
 import org.springframework.ai.vectorstore.VectorStore;
@@ -62,11 +26,9 @@ public class DemoController {
 
     private final ChatClient chatClient;
     private final VectorStore vectorStore;
-    private final List<McpSyncClient> mcpSyncClients;
 
-    public DemoController(ChatModel chatModel, VectorStore vectorStore, List<McpSyncClient> mcpSyncClients) {
+    public DemoController(ChatModel chatModel, VectorStore vectorStore) {
         this.vectorStore = vectorStore;
-        this.mcpSyncClients = mcpSyncClients;
         MessageWindowChatMemory chatMemory = MessageWindowChatMemory.builder().maxMessages(20).build();
         this.chatClient = ChatClient.builder(chatModel)
                 .defaultAdvisors(
@@ -100,7 +62,6 @@ public class DemoController {
                 chatClient.prompt()
                         .user(message)
                         .advisors(advisor -> advisor.param(ChatMemory.CONVERSATION_ID, "999"))
-                        .toolCallbacks(SyncMcpToolCallbackProvider.builder().mcpClients(mcpSyncClients).build())
                         .stream()
                         .content()
                         .subscribe(
@@ -139,6 +100,3 @@ public class DemoController {
         return "Successfully added " + documents.size() + " documents to vector store";
     }
 }
-
-```
-
