@@ -34,7 +34,7 @@ graph TD
 
 结合演示了解下基本的能力组成与作用
 [演示地址](http://localhost:8080/spring/ai/chat)
-> 演示基于项目[spring-ai-chat](https://gitee.com/wb04307201/spring-ai-chat)快速搭建
+> 演示基于库[spring-ai-chat](https://gitee.com/wb04307201/spring-ai-chat)快速搭建
 
 ## 大模型与提示词
 **一个NL2SQL提示词模板：**
