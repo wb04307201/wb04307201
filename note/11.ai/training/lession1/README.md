@@ -258,52 +258,53 @@ graph TB
    - 知易行难
    - 而这就是我们未来的生存空间
 2. 回到那个问题“既然已经有SQL，大模型能不能帮去数据库执行它，用户只想看查询结果”
-   - 一个基本的自然语言返回结果流程：
+   - 流程图：
      ```mermaid
-        graph TB
-        Start["👤 用户提问<br/>'Craig Walls 写过多少本书？'"]
-   
-         subgraph PromptLayer["💬 提示词层 - 工作流与触发器"]
-             P1["📝 角色定义<br/>数据库查询助手"]
-             P2["🎯 任务描述<br/>1. NL2SQL<br/>2. 执行查询"]
-             P3["⚠️ 安全约束<br/>仅 SELECT 操作"]
+     graph TD
+         Start[用户自然语言提问] --> Step1[意图识别与任务分类]
+    
+         Step1 --> Step1a{是否数据库查询？}
+    
+         Step1a -->|是 | Step2[任务拆解：NL2SQL + 执行]
+         Step1a -->|否 | Step1b{是否需要外部知识？}
+    
+         Step1b -->|是 | RAG_Path[RAG 检索流程]
+         Step1b -->|否 | Direct_LLM[直接 LLM 回答]
+    
+         subgraph RAG 检索流程
+             RAG_Path --> RAG1[查询重写与优化]
+             RAG1 --> RAG2[向量检索]
+             RAG2 --> RAG3[重排序]
+             RAG3 --> RAG4[上下文组装]
+             RAG4 --> RAG5[LLM 生成回答]
+         end
+         
+         subgraph 数据库查询执行流程
+             Step2 --> Step3[从 RAG/缓存获取表结构 DDL]
+             Step3 --> Step4[Prompt 工程：DDL + 问题 → NL2SQL]
+             Step4 --> Step5[LLM 生成 SQL 查询语句]
+             Step5 --> Step6[SQL 验证与安全检查]
+        
+             Step6 --> Step7{SQL 是否合法？}
+             Step7 -->|否 | Step8[返回错误：不支持的查询]
+             Step7 -->|是 | Step9[通过 MCP 调用数据库工具]
+        
+             Step9 --> Step10[执行 SQL 查询]
+             Step10 --> Step11[获取查询结果]
+             Step11 --> Step12[结果格式化与自然语言转换]
+             Step12 --> Step13[返回用户可读的答案]
          end
     
-         subgraph RAGEngine["🔍 RAG 引擎 - 动态知识检索"]
-             R1[" schema 检索<br/>从向量库获取相关表结构"]
-             R2["上下文增强<br/>Books.Authors 表 DDL"]
-   
-             R1 --> R2
-         end
-    
-         subgraph MCPLayer["🔌 MCP 连接层 - 标准化工具调用"]
-             M1["🛠️ Tool: execute_query<br/>执行 SQL 查询"]
-         end
-    
-         subgraph LLMBrain["🧠 LLM 大脑 - 推理与决策"]
-             L1["理解用户意图"]
-             L2["生成 SQL 查询"]
-             L3["执行 SQL 查询"]
-             L4["格式化输出结果"]
-   
-             L1 --> L2
-             L2 --> L3
-             L3 --> L4
-         end
-   
-         Final["📤 输出结果<br/>'Craig Walls 共写了 5 本书'"]
-    
-         Start --> PromptLayer
-         PromptLayer --> L1
-         PromptLayer <-.-> RAGEngine
-         L3 <-.-> MCPLayer
-         L4 --> Final
+         Step8 --> End[返回给用户]
+         Step13 --> End
+         RAG5 --> End
+         Direct_LLM --> End
     
          style Start fill:#e1f5ff
-         style Final fill:#d4edda
-         style PromptLayer fill:#fff3cd
-         style RAGEngine fill:#f8d7da
-         style MCPLayer fill:#d1ecf1
-         style LLMBrain fill:#d6d8db
+         style End fill:#fff4e1
+         style Step2 fill:#ffe6e6
+         style Step9 fill:#e6ffe6
      ```
+
+
 
