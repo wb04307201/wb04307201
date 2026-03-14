@@ -297,7 +297,7 @@
 ### [Open WebUI](11.ai/tools/open-webui/README.md)
 ### [AI平台流程工具对比选购指南](11.ai/tools/workflow-comparison/README.md)
 ### [iFlow CLI AI 助手](11.ai/tools/iflow-cli/README.md)
-
+## [内部培训](11.ai/training)
 
 # 十二、前端
 ## [前端框架](12.font-end/frameworks/README.md)
