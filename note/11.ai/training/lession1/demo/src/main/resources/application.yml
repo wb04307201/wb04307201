@@ -1,0 +1,84 @@
+spring:
+  ai:
+    zhipuai:
+      api-key: ${ZHIPUAI_API_KEY}
+      chat:
+        options:
+          model: glm-4.6
+          thinking:
+            type: enabled
+    dashscope:
+      api-key: ${DASHSCOPE_API_KEY}
+      chat:
+        options:
+          model: qwen-plus
+      embedding:
+        options:
+          model: text-embedding-v2
+#    ollama:
+#      chat:
+#        options:
+#          model: qwen3
+#      embedding:
+#        options:
+#          model: qwen3-embedding
+#      base-url: http://localhost:11434
+    vectorstore:
+#      redis:
+#        initialize-schema: true
+#        index-name: custom-index
+#        prefix: custom-prefix
+      qdrant:
+        host: localhost
+        port: 6334
+#        collection-name: custom-collection-name
+        collection-name: qwen-collection-name
+    mcp:
+      client:
+        stdio:
+          servers-configuration: classpath:mcp-servers.json
+    chat:
+      ui:
+        rag:
+          similarityThreshold: 0.50
+          top-k: 4
+          defaultPromptTemplate: |
+            Context information is below.
+            
+            ---------------------
+            {context}
+            ---------------------
+            
+            Given the context information and no prior knowledge, answer the query.
+            
+            Follow these rules:
+            
+            1. If the answer is not in the context, just say that you don't know.
+            2. Avoid statements like "Based on the context..." or "The provided information...".
+            
+            Query: {query}
+            
+            Answer:
+          defaultEmptyContextPromptTemplate: |
+            The user query is outside your knowledge base.
+            Politely inform the user that you can't answer it.
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+#  data:
+#    redis:
+#      host: localhost
+#      port: 9379
+#      password: 123456
+
+server:
+  tomcat:
+    max-swallow-size: 2MB
+    disable-upload-timeout: false
+
+logging:
+  level:
+    org:
+      springframework:
+        ai: DEBUG
