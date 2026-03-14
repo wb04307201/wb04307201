@@ -1,0 +1,10 @@
+GET http://localhost:8080/demo/init
+Accept: application/json
+
+###
+
+GET http://localhost:8080/demo/stream?message=Bruce Wayne
+Accept: text/event-stream
+Connection: keep-alive
+
+###
