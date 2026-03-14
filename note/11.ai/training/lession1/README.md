@@ -31,8 +31,11 @@ graph TD
 
 **简而言之:**大模是大脑，它(的优劣)决定了(场景应用的)上限，提示词 × RAG × Skills/MCP提升(场景应用的)下限。
 
-结合实机演示一起了解下基本的能力
-[地址](http://localhost:8080/spring/ai/chat)
+---
+
+结合演示了解下基本的能力组成与作用
+[演示地址](http://localhost:8080/spring/ai/chat)
+> 演示基于项目[spring-ai-chat](https://gitee.com/wb04307201/spring-ai-chat)快速搭建
 
 ## 大模型与提示词
 **一个NL2SQL提示词模板：**
