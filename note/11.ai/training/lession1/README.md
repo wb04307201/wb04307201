@@ -2,6 +2,11 @@
 
 **大模型 × 提示词 × RAG × Skills/MCP**这四个概念构成了大模型应用开发的核心技术架构。它们不是孤立的技术，而是分层协作、互为补充的有机整体。
 
+**例子:**
+```text
+请获取`https://www.163.com/`内容，并随机选择一条新闻，然后打开浏览器访问百度搜索，输入随机选择的新闻并进行搜
+```
+
 ```mermaid
 graph TD
     A["🎯 应用层：用户指令/业务需求"]
@@ -36,7 +41,9 @@ graph TD
 > 演示基于库[spring-ai-chat](https://gitee.com/wb04307201/spring-ai-chat)快速搭建
 
 ## 大模型与提示词
-**从"艺术"走向"工程":**手动雕琢长提示词承载所有逻辑 -> 作为"触发器"唤醒后端能力系统或作为工作流按顺序触发
+> 从"艺术"走向"工程":
+> - **艺术:**手动雕琢长提示词承载所有逻辑
+> - **"工程:**作为"触发器"唤醒后端能力系统
 
 **一个NL2SQL提示词模板：**
 ```text
@@ -132,13 +139,15 @@ SELECT COUNT(*) FROM Books b JOIN Authors a ON b.author_ref = a.id WHERE a.first
 ```
 
 ### 思考
-1. 既然已经有SQL，大模型能不能去数据库执行它，直接查询结果或者(针对查询结果的)分析
-   - 一个场景
-   - 一个AI Agent
+1. 既然已经有SQL，大模型能不能去数据库执行它，直接显示查询结果或者分析或者图表
+   - 一个场景：这其实就是系统的看板功能，所以已有系统的任何一个功能都可以作为一个场景，或者更简单，通过AI对话为系统增加一个工厂
+   - 一个AI Agent：把这种根据自然语言输出查询结果或者分析或者图表的AI功能封装在一起就是一个AI Agent
+   - 本体智能：把这个系统的大部分场景都进行转化，就是本体智能(基于xxx系统的智能体，真的可以通过AI干活)
 2. 有的应用表很多，都放在提示词里会超长怎么办？
 
 ## 大模型与rag
-解决大模型"知识局限"与"幻觉"问题的核心方案
+> 解决大模型"知识局限"与"幻觉"问题的核心方案  
+> 知识库中检索相关片段，再将检索结果与原始问题拼接作为大模型的输入。‌此过程通常默认触发‌，不依赖大模型自主判断
 
 ```mermaid
 graph TB
@@ -254,55 +263,86 @@ graph TB
 
 **思考：**
 1. `1 + 1 = 2` ≠ `推算出 E = mc²` ≠ `能制造核弹`
-   - 知易行难
-   - 而这就是我们未来的生存空间
-2. 回到那个问题"既然已经有SQL，大模型能不能去数据库执行它，直接查询结果或者(针对查询结果的)分析"
+   - 还原论谬误/知易行难
+2. 回到那个问题"既然已经有SQL，大模型能不能去数据库执行它，直接显示查询结果或者(针对查询结果的)分析"
    - 流程图：
      ```mermaid
-     graph TD
-         Start[用户自然语言提问] --> Step1[意图识别与任务分类]
-    
-         Step1 --> Step1a{是否数据库查询？}
-    
-         Step1a -->|是 | Step2[任务拆解：NL2SQL + 执行]
-         Step1a -->|否 | Step1b{是否需要外部知识？}
-    
-         Step1b -->|是 | RAG_Path[RAG 检索流程]
-         Step1b -->|否 | Direct_LLM[直接 LLM 回答]
-    
-         subgraph RAG 检索流程
-             RAG_Path --> RAG1[查询重写与优化]
-             RAG1 --> RAG2[向量检索]
-             RAG2 --> RAG3[重排序]
-             RAG3 --> RAG4[上下文组装]
-             RAG4 --> RAG5[LLM 生成回答]
+     graph TB
+         %% ============ 样式定义区 ============
+         classDef userNode fill:#e3f2fd,stroke:#1976d2,stroke-width:3px,color:#000,font-size:14px
+         classDef llmNode fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px,color:#000,font-size:13px
+         classDef workflowNode fill:#e8f5e9,stroke:#388e3c,stroke-width:3px,color:#000,font-size:13px
+         classDef mcpNode fill:#fff3e0,stroke:#f57c00,stroke-width:3px,color:#000,font-size:13px
+         classDef agentNode fill:#fce4ec,stroke:#c2185b,stroke-width:3px,color:#000,font-size:13px
+         classDef ragNode fill:#e0f7fa,stroke:#0097a7,stroke-width:3px,color:#000,font-size:13px
+         classDef outputNode fill:#f1f8e9,stroke:#689f38,stroke-width:3px,color:#000,font-size:14px
+         classDef decisionNode fill:#ffebee,stroke:#d32f2f,stroke-width:3px,color:#000,font-size:13px
+         
+         %% ============ 主流程节点 ============
+         Start["👤 用户提问<br/><b>Craig Walls 写过多少本书？</b>"]:::userNode
+         
+         subgraph LLMBrain["🧠 <b>LLM 大脑</b> - 推理与决策"]
+             direction TB
+             L1["🎯 理解用户意图"]:::llmNode
+             L2["📋 工作流程编排"]:::llmNode
+             L3["⚙️ 顺序执行并调用工具"]:::llmNode
+             L4["📊 整合上下文输出"]:::llmNode
+             
+             L1 --> L2 --> L3 --> L4
          end
          
-         subgraph 数据库查询执行流程
-             Step2 --> Step3[从 RAG/缓存获取表结构 DDL]
-             Step3 --> Step4[Prompt 工程：DDL + 问题 → NL2SQL]
-             Step4 --> Step5[LLM 生成 SQL 查询语句]
-             Step5 --> Step6[SQL 验证与安全检查]
-        
-             Step6 --> Step7{SQL 是否合法？}
-             Step7 -->|否 | Step8[返回错误：不支持的查询]
-             Step7 -->|是 | Step9[通过 MCP 调用数据库工具]
-        
-             Step9 --> Step10[执行 SQL 查询]
-             Step10 --> Step11[获取查询结果]
-             Step11 --> Step12[结果格式化与自然语言转换]
-             Step12 --> Step13[返回用户可读的答案]
+         subgraph WorkFlow["🔄 <b>工作流程</b>"]
+             direction LR
+             W1["1️⃣ 获取相关表结构"]:::workflowNode
+             W2["2️⃣ 生成 SQL 查询"]:::workflowNode
+             W3["3️⃣ 执行 SQL 查询"]:::workflowNode
+             W4["4️⃣ 分析查询结果"]:::workflowNode
+             W5["5️⃣ 生成图表"]:::workflowNode
+             
+             W1 --> W2 --> W3 --> W4 --> W5
          end
-    
-         Step8 --> End[返回给用户]
-         Step13 --> End
-         RAG5 --> End
-         Direct_LLM --> End
-    
-         style Start fill:#e1f5ff
-         style End fill:#fff4e1
-         style Step2 fill:#ffe6e6
-         style Step9 fill:#e6ffe6
+         
+         subgraph MCPLayer["🔌 <b>MCP 连接层</b> - 标准化工具调用"]
+             direction LR
+             M1["🛠️ 获取表结构"]:::mcpNode
+             M2["🛠️ 生成 SQL"]:::mcpNode
+             M3["🛠️ 执行查询"]:::mcpNode
+             M4["🛠️ 生成图表"]:::mcpNode
+         end
+         
+         subgraph AG1["🤖 <b>AI Agent</b> - 知识库检索"]
+             direction TB
+             AG11(["💡 Prompt<br/>需要哪些表？"]):::agentNode
+             AG12["🔎 检索 RAG"]:::agentNode
+             AG13{"❓ 检查<br/>是否满足需求？"}:::decisionNode
+             AG14(["✅ 输出结果"]):::agentNode
+             
+             AG11 --> AG12
+             AG12 --> AG13
+             AG13 --❌ 不满足--> AG12
+             AG13 --✔️ 满足--> AG14
+         end
+         
+         subgraph RAGEngine["🔍 <b>RAG 引擎</b> - 动态知识检索"]
+             direction LR
+             R1["📊 表结构"]:::ragNode
+             R2["🔗 相似查询"]:::ragNode
+         end
+         
+         Final["📤 <b>输出结果</b><br/>Craig Walls 共写了<b>5</b>本书"]:::outputNode
+         
+         %% ============ 主流程连接 ============
+         Start --> L1
+         L1 --> L2
+         L2 --> L3
+         L3 --> L4
+         L4 --> Final
+         
+         %% ============ 跨组件连接 ============
+         L2 -.->|触发 | WorkFlow
+         L3 -.->|调用 | MCPLayer
+         M1 -.->|触发 | AG11
+         AG12 <-.->|检索 | RAGEngine
      ```
 
 
