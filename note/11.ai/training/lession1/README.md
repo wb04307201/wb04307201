@@ -29,8 +29,7 @@ graph TD
 ```
 
 AI Agent = LLM + 提示词 + 工具 + 知识库  
-**简而言之**:大模型是大脑决定了AI Agent的上限，提示词 × 知识库 × 工具提升了AI Agent的下限。  
-[记忆 短期/长期](https://chat.qwen.ai/)
+**简而言之**:大模型是大脑决定了AI Agent的上限，提示词 × 知识库 × 工具提升了AI Agent的下限。
 
 ---
 
