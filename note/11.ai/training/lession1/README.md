@@ -5,7 +5,6 @@
 [演示地址](http://localhost:8080/spring/ai/chat)
 > 演示基于库[spring-ai-chat](https://gitee.com/wb04307201/spring-ai-chat)快速搭建
 
-
 现在我们需求的不仅是与AI对话，而是需要AI能真的做点什么看一个演示：
 ```text
 请获取`https://www.163.com/`内容，并随机选择一条新闻，然后打开浏览器访问百度搜索，输入随机选择的新闻并进行搜
