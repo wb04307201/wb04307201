@@ -138,6 +138,7 @@ SELECT COUNT(*) FROM Books b JOIN Authors a ON b.author_ref = a.id WHERE a.first
    - 先说结论 可以，通过使用工具，后面会说到如何使用工具与实现它的路径
 2. 所有的功能与系统都可以作为的AI化场景 -> AI Agent
    - 一个功能：比如通过AI对话为系统增加一个工厂信息
+   - 一个业务流
    - 一个系统：用友重磅发布BIP"本体智能体"(Ontology（本体）方法论 + 智能体，通过打通业务、数据与AI，实现企业级AI落地)
 3. 有的应用表很多，都放在提示词里会超长怎么办？
 
