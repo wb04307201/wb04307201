@@ -137,7 +137,10 @@ server:
 [test1.http](test1.http)
 
 ## 9. 添加对话记忆支持
-[Advisors API](https://docs.spring.io/spring-ai/reference/api/advisors.html)
+- [Advisors API](https://docs.spring.io/spring-ai/reference/api/advisors.html)
+  Spring AI Advisors API 提供了一种灵活且强大的方式，拦截、修改和增强您在 Spring 应用中的 AI 驱动交互。 通过利用 Advisors API，开发者可以创建更复杂、可重复使用且易于维护的 AI 组件。
+- [Chat Memory](https://docs.spring.io/spring-ai/reference/api/chat-memory.html#page-title)
+  
 ```java
 package com.example.demo;
 
