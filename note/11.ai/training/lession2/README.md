@@ -128,12 +128,6 @@ public class DemoController {
     }
 }
 ```
-```yaml
-server:
-  servlet:
-    encoding:
-      charset: UTF-8
-```
 [test1.http](test1.http)
 
 ## 9. 添加对话记忆支持
