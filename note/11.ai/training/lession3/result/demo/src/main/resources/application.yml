@@ -13,6 +13,10 @@ spring:
         host: localhost
         port: 6334
         collection-name: qwen-collection-name
+    mcp:
+      client:
+        stdio:
+          servers-configuration: classpath:mcp-servers.json
 
 server:
   servlet:
