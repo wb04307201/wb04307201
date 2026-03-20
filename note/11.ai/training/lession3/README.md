@@ -29,6 +29,10 @@
 ```
 [mcp-servers.json](mcp-servers.json)
 
+[ModelScope MCP 广场](https://modelscope.cn/mcp)
+
+[mcp.so](https://mcp.so/zh/servers)
+
 ## 4. 修改代码
 [MCP](https://docs.spring.io/spring-ai/reference/api/mcp/mcp-overview.html)
 ```java
@@ -139,6 +143,20 @@ public class DemoController {
         return "Successfully added " + documents.size() + " documents to vector store";
     }
 }
-
 ```
 
+## 5. 自研MCP
+
+```json
+{
+  "us-weather": {
+    "args": [
+      "-jar",
+      "mcp/us-weather/target/us-weather-0.0.1-SNAPSHOT.jar"
+    ],
+    "command": "java"
+  }
+}
+```
+
+[北京天气](http://t.weather.itboy.net/api/weather/city/101010100)
