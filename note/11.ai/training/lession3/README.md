@@ -9,12 +9,12 @@
 ```
 
 ## 2. 安装环境
-- python环境
+- python环境安装uv
   ```shell
   pip install uv
   where uv
   ```
-- node环境
+- node环境安装npx
   ```shell
   npm install -g npx
   where npx
