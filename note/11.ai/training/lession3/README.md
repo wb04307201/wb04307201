@@ -159,4 +159,5 @@ public class DemoController {
 }
 ```
 
-[北京天气](http://t.weather.itboy.net/api/weather/city/101010100)
+北京天气
+`http://t.weather.itboy.net/api/weather/city/101010100`
