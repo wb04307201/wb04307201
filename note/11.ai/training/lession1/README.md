@@ -1,6 +1,22 @@
 # 培训一：大模型基础能力与概念
 
-**大模型 × 提示词 × 知识库 × 工具**这四个概念构成了AI Agent应用开发的核心技术架构。它们不是孤立的技术，而是协作、互为补充的有机整体。
+
+## 核心能力
+**大模型 × 提示词 × 知识库 × 工具调用**这四个核心能力构成了AI Agent应用开发的核心技术架构。它们不是孤立的技术，而是协作、互为补充的有机整体。
+- 大语言模型（LLM）：提供推理、理解与生成能力
+- 提示词（Prompt）：贯穿所有组件的“指令层”与“粘合剂”
+  - 作为 LLM 的“配置层”，将 LLM + 提示词 视为一个整体单元，称为 “智能核心 (Intelligence Core)"
+  - 作为“编排层” (Orchestration Layer)，将提示词视为调度其他组件的胶水。
+- 知识库：短期/长期记忆、向量数据库、网络信息
+- 工具调用（Function Calling）：连接外部API、数据库、代码执行环境
+  - 技能书（Skills）：可复用、可组合、有明确输入输出的原子能力单元
+  - MCP：标准化工具调用协议
+
+
+
+## 进阶能力
+- 规划算法：任务分解（如ReAct、ToT、Plan-and-Execute）
+- 反馈循环：自我反思、人类反馈强化学习（RLHF）
 
 [演示地址](http://localhost:8080/spring/ai/chat)
 > 演示基于库[spring-ai-chat](https://gitee.com/wb04307201/spring-ai-chat)快速搭建
@@ -12,24 +28,62 @@
 以前我们是用代码写逻辑，现在用大模型来处理逻辑。
 
 ```mermaid
-graph TD
-    A["🎯 应用层：用户指令/业务需求"]
+flowchart TB
+    subgraph Core["🧠 AI Agent 核心技术架构"]
+        direction TB
+        
+        LLM["💡 大语言模型 (LLM)<br/>推理、理解与生成能力"]
+        
+        Prompt["📝 提示词 (Prompt)<br/>指令层与粘合剂"]
+        
+        Knowledge["📚 知识库<br/>短期/长期记忆、向量数据库、网络信息"]
+        
+        Tool["🔧 工具调用 (Function Calling)<br/>连接外部 API、数据库、代码执行环境"]
+        
+        subgraph ToolSub["⚙️ 工具层"]
+            Skills["📖 技能书 (Skills)<br/>可复用、可组合的原子能力单元"]
+            MCP["🔗 MCP<br/>标准化工具调用协议"]
+        end
+    end
     
-    B1["💬 提示词（Prompt）<br/>• 角色定义 • 任务描述 • 输出约束<br/>• 从'总指挥'→'触发器'的转变"]
+    IntelligenceCore["🎯 智能核心 (Intelligence Core)<br/>LLM + 提示词"]
     
-    B2["🔍 知识库<br/>• 短期记忆 • 长期记忆 • RAG • 网络信息 • 数据库"]
-    B3["🔌 工具(Skills技能包/MCP协议)<br/>• 标准化工具调用接口<br/>• 统一'插座'连接外部系统"]
+    Orchestration["🎼 编排层 (Orchestration Layer)<br/>调度其他组件"]
     
-    C["🧠 LLM (大脑)<br/>• 理解 • 推理 • 生成 • 决策"]
+    LLM --> IntelligenceCore
+    Prompt --> IntelligenceCore
+    Prompt --> Orchestration
     
-    A --> B1
-    B2 --> C
-    B3 --> C
-    B1 --> C
+    Orchestration -->|调度 | Knowledge
+    Orchestration -->|调用 | Tool
+    
+    Tool --> Skills
+    Tool --> MCP
+    
+    IntelligenceCore ==>|驱动 | Knowledge
+    IntelligenceCore ==>|驱动 | Tool
+    
+    Knowledge -.->|提供上下文 | IntelligenceCore
+    Tool -.->|返回结果 | IntelligenceCore
+    
+    classDef core fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    classDef intelligence fill:#fff3e0,stroke:#f57c00,stroke-width:3px
+    classDef orchestration fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    classDef knowledge fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
+    classDef tool fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+    classDef toolsub fill:#ffebee,stroke:#d32f2f,stroke-width:1px,stroke-dasharray: 5 5
+    
+    class IntelligenceCore intelligence
+    class Orchestration orchestration
+    class Knowledge knowledge
+    class Tool tool
+    class ToolSub toolsub
+    class Core,Llm,Prompt core
+
 ```
 
-AI Agent = LLM + 提示词 + 工具 + 知识库  
-**简而言之**:大模型是大脑决定了AI Agent的上限，提示词 × 知识库 × 工具提升了AI Agent的下限。
+AI Agent = LLM + 提示词 + 知识库 + 工具调用  
+**简而言之**:大模型是大脑决定了AI Agent的上限，提示词、知识库、工具调用提升了AI Agent的下限。
 
 ---
 
@@ -193,9 +247,13 @@ graph TB
 ## 大模型与工具
 让大模型有使用工具的能力
 
-#### 🔹 Skills（技能包）
-> Anthropic提出的"文件夹化能力包"：`instructions + scripts + resources`  
-> 为智能体注入领域知识、操作流程与可执行代码的新范式，让通用大模型真正具备完成现实世界任务的能力。
+#### 🔹 技能书（Skills）
+> 可复用、可组合、有明确输入输出的原子能力单元  
+> Anthropic提出的"文件夹化能力包"：`instructions + scripts + resources`
+
+[用于AI代理的浏览器自动化CLI](SKILL.md)
+1. 先安装agent-browser
+2. 如何使用
 
 #### 🔹 MCP（Model Context Protocol）
 > **"AI应用的USB-C接口"** — 标准化工具调用协议
@@ -221,6 +279,49 @@ graph TB
 - 🔌 **互操作**：任何兼容MCP的客户端可调用任何MCP服务
 - 🧩 **组合性**：支持工具链式调用与嵌套执行
 - 🔐 **安全可控**：用户授权机制 + 工具行为审计
+
+#### 🔹 技能书与MCP的关系
+```mermaid
+flowchart TB
+    User["👤 用户请求<br/>审查 PR #456 并按团队规范给建议"]
+    
+    subgraph Knowledge["📚 知识层：Skills"]
+        direction LR
+        K1["加载代码审查规范技能"]
+        K2["提供 checklist 和分析流程"]
+    end
+    
+    subgraph LLM["🧠 LLM 推理层"]
+        direction LR
+        L1["理解需求 + 规划执行步骤"]
+        L2["决定调用哪些工具"]
+    end
+    
+    subgraph MCP["🔌 集成层：MCP"]
+        direction LR
+        M1["发现可用工具：github_get_pr"]
+        M2["标准化调用 + 返回结果"]
+    end
+    
+    External["🌐 外部世界<br/>GitHub / 数据库 / API / 文件系统"]
+    
+    User --> Knowledge
+    Knowledge --> LLM
+    LLM --> MCP
+    MCP --> External
+    
+    classDef user fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    classDef knowledge fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
+    classDef llm fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    classDef mcp fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+    classDef external fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    
+    class User user
+    class Knowledge knowledge
+    class LLM llm
+    class MCP mcp
+    class External external
+```
 
 **提问：**
 ```text
@@ -337,6 +438,6 @@ graph TB
 2. 还原论谬误/知易行难
     - `1 + 1 = 2` ≠ `E = mc²` ≠ `能制造核弹`
     - 技术探索组在后面会一起进行实现
-    - 业务人员可以找一个场景一起尝试落地
+    - 场景探索组可以找一个场景一起尝试落地
 
 
