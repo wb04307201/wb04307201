@@ -186,7 +186,7 @@ SELECT COUNT(*) FROM Books b JOIN Authors a ON b.author_ref = a.id WHERE a.first
 ### 思考
 1. 承载业务处理的规范
 2. 既然已经有SQL，大模型能不能去数据库执行它，直接显示查询结果或者分析或者图表
-   - 先说结论 可以，通过使用工具，在基础都讲完后看一个实现路径
+   - 先说结论 可以，通过工具调用，在基础都讲完后看一个实现路径
 3. 所有的功能与系统都可以作为的AI化场景 -> AI Agent
    - 一个功能：比如通过AI对话为系统增加一个工厂信息
    - 一个业务流
@@ -241,8 +241,12 @@ graph TB
    - 领域场景选择：
      - 某领域的专家级大模型
      - 通用大模型 + 某领域的专家级知识库
-2. 如何从单纯的对话变成去做点什么？
-   - 即使用一些工具
+2. RAG的调用时机分为：
+   - **预处理阶段**：每次对话都触发
+   - **运行时阶段**：运行按需触发
+3. 知识库按用途分为
+   - 纯知识型
+   - 技能型
 
 ## 大模型与工具
 让大模型有使用工具的能力
@@ -252,8 +256,10 @@ graph TB
 > Anthropic提出的"文件夹化能力包"：`instructions + scripts + resources`
 
 [用于AI代理的浏览器自动化CLI](SKILL.md)
-1. 先安装agent-browser
-2. 如何使用
+1. 安装工具
+2. 如何使用工具
+
+> Spring AI使用skills可参照[Anthropic的skills部分](https://docs.spring.io/spring-ai/reference/api/chat/anthropic-chat.html#_skills)
 
 #### 🔹 MCP（Model Context Protocol）
 > **"AI应用的USB-C接口"** — 标准化工具调用协议
