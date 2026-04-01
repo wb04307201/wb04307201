@@ -12,3 +12,9 @@ OSSRH_USERNAME  Sonatype 用户名
 OSSRH_PASSWORD  Sonatype 密码或 token
 GPG_PRIVATE_KEY  GPG 私钥
 GPG_PASSPHRASE  GPG 密钥密码
+
+<server>
+	<id>${server}</id>
+	<username>jGSxX1</username>
+	<password>SACO1tabrm3gIO7mz7NZNwS48aG7jkT4X</password>
+</server>
