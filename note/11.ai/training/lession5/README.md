@@ -1,7 +1,7 @@
 # 📝 Tony Kipkemboi 推文整理：《区分 Agent Frameworks 与 Agent Harnesses》
 
 > **作者**：Tony Kipkemboi (@tonykipkemboi)  
-> **来源**：X (Twitter) [[1]]  
+> **来源**：X (Twitter)  
 > **主题**：AI Agent 开发中的两个关键概念辨析
 
 ---
@@ -86,6 +86,6 @@
 
 ---
 
-📌 **备注**：本文基于 Tony Kipkemboi 的 X 平台推文整理，部分译文参考自 tool.lu 双语解析 [[8]]。如需查看完整英文原文，建议直接访问原推文链接（可能需要登录 X 平台）。
+📌 **备注**：本文基于 Tony Kipkemboi 的 X 平台推文整理，部分译文参考自 tool.lu 双语解析。如需查看完整英文原文，建议直接访问原推文链接（可能需要登录 X 平台）。
 
 如你需要我进一步搜索 Tony Kipkemboi 关于此话题的延伸文章（如他在 LinkedIn 或 Medium 的深度分析），请随时告诉我！🚀
