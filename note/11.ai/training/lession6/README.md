@@ -22,12 +22,12 @@
 | **AgentACL (行业草案)**                  | 语义化消息语言   | JSON-LD + FIPA 思想简化版，支持意图声明与结果契约                  | 强协作/强一致性场景 |
 
 ### 2. 编排框架选型参考
-| 框架 | 范式 | 优势 | 局限 |
-|------|------|------|------|
-| **LangGraph** | 状态图（Stateful DAG/Cycle） | 调试友好、Checkpoints 完善、与 LangChain 生态无缝 | 需自行实现高级共识逻辑 |
-| **AutoGen** | 对话驱动（GroupChat/Manager） | 多角色对话自然、支持人类介入 | 状态控制弱、生产需二次封装 |
-| **CrewAI** | 角色流水线（Role-Task-Process） | 业务语义强、上手快 | 复杂分支/回退需 hack |
-| **Semantic Kernel Agents** | .NET 原生插件化 | 企业级安全/审计集成度高 | 生态偏微软栈 |
+| 框架                         | 范式                       | 优势                                   | 局限            |
+|----------------------------|--------------------------|--------------------------------------|---------------|
+| **LangGraph**              | 状态图（Stateful DAG/Cycle）  | 调试友好、Checkpoints 完善、与 LangChain 生态无缝 | 需自行实现高级共识逻辑   |
+| **AutoGen**                | 对话驱动（GroupChat/Manager）  | 多角色对话自然、支持人类介入                       | 状态控制弱、生产需二次封装 |
+| **CrewAI**                 | 角色流水线（Role-Task-Process） | 业务语义强、上手快                            | 复杂分支/回退需 hack |
+| **Semantic Kernel Agents** | .NET 原生插件化               | 企业级安全/审计集成度高                         | 生态偏微软栈        |
 
 > 🛠 **团队建议**：初期优先采用 `LangGraph + 自定义 Message Router`，兼顾可观测性与扩展性；避免过度依赖框架内置“黑盒协调”。
 
