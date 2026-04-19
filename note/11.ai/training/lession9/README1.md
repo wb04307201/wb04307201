@@ -95,12 +95,3 @@ Sarah Guo的观点触及了AI时代的一个根本矛盾：
 正如Guo所警示的：当代码变"暗"，我们需要更明亮的监控之眼。
 
 > *本文基于Sarah Guo推文及公开摘要整理，旨在帮助技术团队理解AI原生时代的安全新范式。建议结合原始推文及后续讨论深入阅读。*
-
----
-
-📚 **延伸阅读**
-- Conviction Blog: "AI Agents and the New Security Frontier"
-- NIST AI Risk Management Framework (2025更新版)
-- "Runtime Verification for LLM-Based Systems" (学术预印本)
-
-*整理时间：2026年4月 | 注：因X平台访问限制，部分内容基于第三方摘要与合理推演*
