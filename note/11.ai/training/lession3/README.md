@@ -147,7 +147,7 @@ public class DemoController {
 
 ## 5. 自研MCP
 
-[us-weather](result/us-weather)
+[us-weather](us-weather)
 
 ```json
 {
