@@ -4,6 +4,7 @@
 > **作者**：Julie Bedard, Matthew Kropp, Megan Hsu, Olivia T. Karaman, Jason Hawes, Gabriella Rosen Kellerman  
 > **来源**：哈佛商业评论（与波士顿咨询集团联合研究）  
 > **发表时间**：2026年3月5日
+> **链接**：https://hbr.org/2026/03/when-using-ai-leads-to-brain-fry
 
 ---
 
