@@ -1,6 +1,6 @@
-## 详细步骤
+# 详细步骤
 
-> 本文档只是说明如何配置阿里云百炼平台模型API
+> 本文档只是说明Claude Code CLI如何配置阿里云百炼平台模型API
 
 百炼提供的 Anthropic API 兼容服务支持以下千问系列模型：
 
@@ -16,7 +16,7 @@
 | 第三方模型 （仅支持华北2（北京）地域） | - kimi-k2.5、kimi-k2-thinking - glm-5.1、glm-5、glm-4.7、glm-4.6 - MiniMax-M2.5、MiniMax-M2.1                       |
 
 
-### **1. 安装 Claude Code**
+## **1. 安装 Claude Code**
 
 1.  安装或更新 [Node.js](https://nodejs.org/en/download/)（v18.0 或更高版本）。
 
@@ -32,7 +32,7 @@
     claude --version
     ```
 
-### **2. 在Claude Code配置百炼模型**
+## **2. 在Claude Code配置百炼模型**
 
 1.  创建并打开配置文件`C:\Users\您的用户名\.claude\settings.json`。
 
@@ -92,6 +92,35 @@
       "hasCompletedOnboarding": true
     }
     ```
+    
+## **3. 添加MCP工具**
+`或编辑项目级配置 ~/.claude/mcp.json 或 .claude/mcp.json`
+例如：
+```json
+{
+  "mcpServers": {
+    "time": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-time",
+        "--local-timezone=Asia/Shanghai"
+      ]
+    },
+    "playwright": {
+      "command": "npx.cmd",
+      "args": [
+        "@playwright/mcp@latest"
+      ]
+    },
+    "fetch": {
+      "args": [
+        "mcp-server-fetch"
+      ],
+      "command": "uvx"
+    }
+  }
+}
+```
 
 [更详细内容方可参考](https://help.aliyun.com/zh/model-studio/claude-code)
 
