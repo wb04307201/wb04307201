@@ -128,6 +128,9 @@
 ## **4. Skills安装**
 [Claude Code Skills](README3.md)
 
+## **5. 规范驱动开发(Spec-Driven Development, SDD)**
+[规范驱动开发工具深度解析：Spec-Kit、Kiro、OpenSpec](README4.md)
+
 > - 📝 Claude Code 调用阿里云百炼配置：`https://help.aliyun.com/zh/model-studio/claude-code`
 > - 📘 官方文档：`https://docs.anthropic.com/claude-code`
 
