@@ -69,8 +69,7 @@ claude skills update
 5. **性能提示**：Skills 会占用上下文窗口，复杂项目建议按需启用，或在 `.claude-code/config.json` 中设置 `max_skills_per_session: 3`。
 
 ---
-## 🌐 五、官方与社区资源
-- 📘 官方文档：`https://docs.anthropic.com/claude-code`
+## 🌐 五、社区资源
 - 📦 Skills 注册表（非官方但活跃）：`https://github.com/awesome-claude-code/skills`
 - 💬 社区交流：Discord `#claude-code` 频道、GitHub Discussions
 - 🔍 调试技巧：运行 `claude --verbose` 可查看 Skills 加载日志与工具调用链
