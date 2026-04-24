@@ -76,5 +76,3 @@ claude skills update
 - 🔍 调试技巧：运行 `claude --verbose` 可查看 Skills 加载日志与工具调用链
 
 > 📌 提示：Anthropic 正逐步将部分 Skills 能力整合进 **MCP（Model Context Protocol）** 生态，未来可通过 `mcp.json` 统一管理局部/远程工具。建议保持关注官方 Release Notes。
-
-如需某个具体 Skill 的配置示例、自定义开发模板，或想了解如何与 VS Code / JetBrains 插件联动，可告知你的技术栈，我可为你输出可直接落地的配置片段。

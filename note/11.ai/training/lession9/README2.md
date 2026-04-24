@@ -53,5 +53,3 @@
 1. **注册源区分**：官方插件经过 Anthropic 安全与兼容性审核；社区插件由开发者自主发布，安装前建议通过 `/plugin info <name>` 查看权限声明与代码仓库。
 2. **版本兼容**：插件可能与特定 Claude Code CLI 版本绑定，若安装失败请运行 `claude --version` 确认当前版本，或使用 `plugin update --all` 升级。
 3. **动态生态**：插件市场每周更新，完整列表请访问 [Claude Plugins Registry](https://plugins.claude.ai) 或在终端运行 `/plugin search *`。
-
-需要我针对某个具体插件提供 **使用示例、配置参数或与其他工具的联动方案** 吗？
