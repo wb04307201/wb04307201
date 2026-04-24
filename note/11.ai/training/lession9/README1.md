@@ -122,6 +122,12 @@
 }
 ```
 
+## **3. 插件安装**
+[Claude Code插件](README2.md)
+
+## **4. Skills安装**
+[Claude Code Skills](README3.md)
+
 [更详细内容方可参考](https://help.aliyun.com/zh/model-studio/claude-code)
 
 后续把内容请从《实战Harness工程.pdf》第5页`Superpowers：`继续
