@@ -1,5 +1,21 @@
 ## 详细步骤
 
+> 本文档只是说明如何配置阿里云百炼平台模型API
+
+百炼提供的 Anthropic API 兼容服务支持以下千问系列模型：
+
+| **模型系列**             | **支持的模型名称（model）**                                                                                             |
+|----------------------|----------------------------------------------------------------------------------------------------------------|
+| 千问Max （部分模型支持思考模式）   | qwen3.6-max-preview（支持思考模式）、qwen3-max、qwen3-max-2026-01-23（支持思考模式）、qwen3-max-preview（支持思考模式）                   |
+| 千问Plus               | qwen3.6-plus、qwen3.5-plus、qwen3.5-plus-2026-02-15、qwen-plus、qwen-plus-latest、qwen-plus-2025-09-11              |
+| 千问Flash              | qwen3.6-flash、qwen3.6-flash-2026-04-16、qwen3.5-flash、qwen3.5-flash-2026-02-23、qwen-flash、qwen-flash-2025-07-28 |
+| 千问Turbo              | qwen-turbo、qwen-turbo-latest                                                                                   |
+| 千问Coder （不支持思考模式）    | qwen3-coder-next、qwen3-coder-plus、qwen3-coder-plus-2025-09-23、qwen3-coder-flash                                |
+| 千问VL （不支持思考模式）       | qwen3-vl-plus、qwen3-vl-flash、qwen-vl-max、qwen-vl-plus                                                          |
+| 千问开源模型               | qwen3.5-397b-a17b、qwen3.5-120b-a10b、qwen3.5-27b、qwen3.5-35b-a3b                                                |
+| 第三方模型 （仅支持华北2（北京）地域） | - kimi-k2.5、kimi-k2-thinking - glm-5.1、glm-5、glm-4.7、glm-4.6 - MiniMax-M2.5、MiniMax-M2.1                       |
+
+
 ### **1. 安装 Claude Code**
 
 1.  安装或更新 [Node.js](https://nodejs.org/en/download/)（v18.0 或更高版本）。
