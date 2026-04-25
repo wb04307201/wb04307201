@@ -130,9 +130,11 @@ specify init . --force --ai copilot
 
 ### Step 4: 生成技术方案 `/speckit.plan`
 ```bash
-
-
-
+/speckit.plan 技术选型与架构要求：
+- UI 实现：采用原生 JavaScript 结合 Web Components 开发
+- 数据存储：使用 IndexedDB 进行本地持久化
+- 依赖管理：遵循“非必要不引入”原则，严禁无关第三方库
+- 架构设计：全面支持离线优先（Offline-First）架构
 ```
 📄 输出：
 - `plan.md` — 架构决策与技术选型
@@ -157,6 +159,16 @@ specify init . --force --ai copilot
 - **冲突检测**：发现技术方案之间的潜在冲突（如数据库选型与性能要求的矛盾）
 
 📋 输出：分析报告，列出所有不一致项、缺失项和建议修复方案
+
+### Step 7: 执行代码实现 `/speckit.implement`
+```bash
+/speckit.implement
+```
+✅ AI 代理将：
+- 按任务顺序执行（尊重依赖关系）
+- 自动创建/修改文件
+- 运行测试并报告结果
+- 在 `tasks.md` 中标记完成状态
 
 ### Step 8（可选）: 质量检查 `/speckit.checklist`
 ```bash
