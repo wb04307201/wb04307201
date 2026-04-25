@@ -55,7 +55,7 @@ source ~/.zshrc
 ```bash
 specify init <PROJECT_NAME> --ai <AGENT_NAME>
 # 示例：
-specify init my-app --ai copilot
+specify init my-app --ai claude
 ```
 
 ### 在现有项目中启用
@@ -98,19 +98,17 @@ specify init . --force --ai copilot
 ### Step 1: 建立项目原则 `/speckit.constitution`
 ```bash
 # 在 AI 助手对话框中输入：
-/speckit.constitution Create principles focused on code quality, 
-testing standards (TDD with 90% coverage), user experience consistency, 
-and performance requirements (UI response <100ms).
+/speckit.constitution 请生成一套项目原则，重点涵盖：代码质量标准、测试规范（TDD驱动，覆盖率90%）、用户体验一致性要求，以及性能指标（UI响应时间严格控制在100ms以内）。
 ```
 📄 输出：`.specify/memory/constitution.md` — 项目治理准则
 
 ### Step 2: 定义功能规格 `/speckit.specify`
 ```bash
-/speckit.specify Build a task management app where users can:
-- Create tasks with name, priority (high/medium/low), and due date
-- Filter tasks by priority and completion status
-- Mark tasks as complete with one click
-Focus on WHAT the app does, not the tech stack.
+/speckit.specify 开发一款任务管理应用，核心功能需支持：
+- 任务创建：支持填写任务名称、设置优先级（高/中/低）及截止日期
+- 任务筛选：支持按优先级与完成状态进行过滤
+- 快捷操作：支持一键标记任务为已完成
+注：请严格聚焦于产品功能与业务逻辑（What），无需涉及具体技术选型（How）。
 ```
 📄 输出：`specs/001-feature-name/spec.md` — 含用户故事、功能需求、成功标准
 
@@ -132,9 +130,9 @@ Focus on WHAT the app does, not the tech stack.
 
 ### Step 4: 生成技术方案 `/speckit.plan`
 ```bash
-/speckit.plan Use vanilla JavaScript with Web Components for UI.
-Store data in IndexedDB. No external dependencies unless essential.
-Support offline-first architecture.
+
+
+
 ```
 📄 输出：
 - `plan.md` — 架构决策与技术选型
