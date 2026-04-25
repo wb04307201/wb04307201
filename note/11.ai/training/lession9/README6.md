@@ -80,7 +80,7 @@ specify init . --force --ai copilot
 
 ---
 
-## 🔧 核心工作流：6 步完成从规格到代码
+## 🔧 核心工作流：7 步完成从规格到代码
 
 ```
 ┌─────────────────────────────────────────┐
@@ -88,6 +88,7 @@ specify init . --force --ai copilot
 │  /speckit.specify     → 功能规格         │
 │  /speckit.plan        → 技术方案         │
 │  /speckit.tasks       → 任务分解         │
+│  /speckit.analyze     → 一致性分析（推荐）│
 │  /speckit.implement   → 代码实现         │
 │  /speckit.checklist   → 质量检查（可选）  │
 └─────────────────────────────────────────┘
@@ -129,7 +130,20 @@ Support offline-first architecture.
 ```
 📄 输出：`tasks.md` — 含依赖关系、并行标记 `[P]`、文件路径、测试任务的详细任务清单
 
-### Step 5: 执行代码实现 `/speckit.implement`
+### Step 5（推荐）: 一致性分析 `/speckit.analyze`
+```bash
+/speckit.analyze
+```
+✅ AI 代理将执行以下检查：
+- **规格与计划一致性**：验证 `spec.md` 中的功能需求是否在 `plan.md` 中有对应的技术方案
+- **计划与任务对齐**：确认 `plan.md` 中的技术决策是否完整体现在 `tasks.md` 的任务分解中
+- **依赖关系验证**：检查任务依赖链是否合理，是否存在循环依赖或遗漏的前置条件
+- **覆盖度分析**：识别未被任何任务覆盖的规格需求，或被任务实现但规格中未定义的功能（范围蔓延）
+- **冲突检测**：发现技术方案之间的潜在冲突（如数据库选型与性能要求的矛盾）
+
+📋 输出：分析报告，列出所有不一致项、缺失项和建议修复方案
+
+### Step 6: 执行代码实现 `/speckit.implement`
 ```bash
 /speckit.implement
 ```
@@ -139,7 +153,7 @@ Support offline-first architecture.
 - 运行测试并报告结果
 - 在 `tasks.md` 中标记完成状态
 
-### Step 6（可选）: 质量检查 `/speckit.checklist`
+### Step 7（可选）: 质量检查 `/speckit.checklist`
 ```bash
 /speckit.checklist
 ```
@@ -149,11 +163,11 @@ Support offline-first architecture.
 
 ## 🎯 辅助命令（提升开发质量）
 
-| 命令 | 作用 | 使用时机 |
-|------|------|---------|
-| `/speckit.clarify` | 识别规格模糊点，引导用户澄清 | 在 `/plan` 之前 |
-| `/speckit.analyze` | 检查规格/计划/任务之间的一致性 | 在 `/implement` 之前 |
-| `/speckit.checklist` | 生成需求验证清单 | 实现完成后审查 |
+| 命令                   | 作用               | 使用时机                    |
+|----------------------|------------------|-------------------------|
+| `/speckit.clarify`   | 识别规格模糊点,引导用户澄清   | 在 `/plan` 之前            |
+| `/speckit.analyze`   | 检查规格/计划/任务之间的一致性 | 在 `/implement` 之前（强烈推荐） |
+| `/speckit.checklist` | 生成需求验证清单         | 实现完成后审查                 |
 
 ---
 
