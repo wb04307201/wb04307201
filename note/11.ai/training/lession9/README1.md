@@ -177,6 +177,7 @@ npx --version
 2. **验证安装**
    ```powershell
    jbang --version
+   ```
 
 3. **JBang 介绍**
     - JBang 允许无需安装 JDK 或配置项目即可运行 Java 代码
