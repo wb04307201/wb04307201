@@ -80,12 +80,13 @@ specify init . --force --ai copilot
 
 ---
 
-## 🔧 核心工作流：7 步完成从规格到代码
+## 🔧 核心工作流：8 步完成从规格到代码
 
 ```
 ┌─────────────────────────────────────────┐
 │  /speckit.constitution → 项目原则        │
 │  /speckit.specify     → 功能规格         │
+│  /speckit.clarify     → 需求澄清（推荐）  │
 │  /speckit.plan        → 技术方案         │
 │  /speckit.tasks       → 任务分解         │
 │  /speckit.analyze     → 一致性分析（推荐）│
@@ -113,7 +114,23 @@ Focus on WHAT the app does, not the tech stack.
 ```
 📄 输出：`specs/001-feature-name/spec.md` — 含用户故事、功能需求、成功标准
 
-### Step 3: 生成技术方案 `/speckit.plan`
+### Step 3（推荐）: 需求澄清 `/speckit.clarify`
+```bash
+/speckit.clarify
+```
+✅ AI 代理将执行以下操作：
+- **识别模糊点**：自动检测规格中的歧义描述、未明确的边界条件和不完整的需求项
+- **生成澄清问题**：针对每个模糊点提出具体的澄清问题，引导用户补充细节
+- **完善规格文档**：根据用户回答更新 `spec.md`，确保需求清晰可执行
+- **减少返工风险**：在进入技术方案设计前消除理解偏差，避免后续大规模修改
+
+📋 典型澄清场景：
+- "高优先级"的具体定义是什么？是否有量化标准？
+- 离线状态下数据同步的策略是什么？
+- 用户权限模型是否需要支持多角色？
+- 性能指标的具体阈值是多少？
+
+### Step 4: 生成技术方案 `/speckit.plan`
 ```bash
 /speckit.plan Use vanilla JavaScript with Web Components for UI.
 Store data in IndexedDB. No external dependencies unless essential.
@@ -124,13 +141,13 @@ Support offline-first architecture.
 - `data-model.md` — 数据结构定义
 - `quickstart.md` — 本地开发指南
 
-### Step 4: 分解任务列表 `/speckit.tasks`
+### Step 5: 分解任务列表 `/speckit.tasks`
 ```bash
 /speckit.tasks
 ```
 📄 输出：`tasks.md` — 含依赖关系、并行标记 `[P]`、文件路径、测试任务的详细任务清单
 
-### Step 5（推荐）: 一致性分析 `/speckit.analyze`
+### Step 6（推荐）: 一致性分析 `/speckit.analyze`
 ```bash
 /speckit.analyze
 ```
@@ -143,17 +160,7 @@ Support offline-first architecture.
 
 📋 输出：分析报告，列出所有不一致项、缺失项和建议修复方案
 
-### Step 6: 执行代码实现 `/speckit.implement`
-```bash
-/speckit.implement
-```
-✅ AI 代理将：
-- 按任务顺序执行（尊重依赖关系）
-- 自动创建/修改文件
-- 运行测试并报告结果
-- 在 `tasks.md` 中标记完成状态
-
-### Step 7（可选）: 质量检查 `/speckit.checklist`
+### Step 8（可选）: 质量检查 `/speckit.checklist`
 ```bash
 /speckit.checklist
 ```

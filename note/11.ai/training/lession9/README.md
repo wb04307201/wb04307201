@@ -72,14 +72,15 @@
   - 前置条件：Python ≥ 3.11、uv/pipx、Git、AI 代理
   - 安装命令：`uv tool install specify-cli`
   - 验证与 PATH 配置
-- **核心工作流（7 步法）**：
+- **核心工作流（8 步法）**：
   1. `/speckit.constitution` → 建立项目原则
   2. `/speckit.specify` → 定义功能规格
-  3. `/speckit.plan` → 生成技术方案
-  4. `/speckit.tasks` → 分解任务列表
-  5. `/speckit.analyze` → 一致性分析（推荐）
-  6. `/speckit.implement` → 执行代码实现
-  7. `/speckit.checklist` → 质量检查（可选）
+  3. `/speckit.clarify` → 需求澄清（推荐）
+  4. `/speckit.plan` → 生成技术方案
+  5. `/speckit.tasks` → 分解任务列表
+  6. `/speckit.analyze` → 一致性分析（推荐）
+  7. `/speckit.implement` → 执行代码实现
+  8. `/speckit.checklist` → 质量检查（可选）
 - **辅助命令**：clarify（澄清模糊点）、analyze（一致性检查）、checklist（需求验证）
 - **扩展定制**：社区扩展安装、预设模板应用、优先级覆盖机制
 - **最佳实践**：先写原则再写规格、规格聚焦业务价值、迭代优于一次到位
