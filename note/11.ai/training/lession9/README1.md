@@ -96,8 +96,6 @@
     ```
     
 ## **3. 添加MCP工具**
-~注意~：非必要步骤需要 OAuth 认证后才能使用
-
 1. 全局配置（所有项目可用）
 > 编辑 ~/.claude/settings.json（或 ~/.claude/settings.local.json）
 
