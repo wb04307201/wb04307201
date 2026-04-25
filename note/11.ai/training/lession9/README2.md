@@ -7,31 +7,31 @@
 
 ## 🏆 综合资源库（新手入口）
 
-| 名称                      | 特点                                 | 链接                                                           |
-|-------------------------|------------------------------------|--------------------------------------------------------------|
+| 名称                      | 特点                           | 链接                                                           |
+|-------------------------|------------------------------|--------------------------------------------------------------|
 | **awesome-mcp-servers** | GitHub 最火集合,3000+ 开源服务器,分类清晰 | [🔗 GitHub](https://github.com/punkpeye/awesome-mcp-servers) |
-| **mcp.so / Smithery**   | 可视化配置 + 一键安装,新手友好 | [🔗 mcp.so](https://mcp.so)                                  |
-| **Awesome-MCP-ZH**      | 中文专属资源,含教程与本地化推荐 | [🔗 GitHub](https://github.com/yzfly/awesome-mcp-zh)         |
+| **mcp.so / Smithery**   | 可视化配置 + 一键安装,新手友好            | [🔗 mcp.so](https://mcp.so)                                  |
+| **Awesome-MCP-ZH**      | 中文专属资源,含教程与本地化推荐             | [🔗 GitHub](https://github.com/yzfly/awesome-mcp-zh)         |
 
 ---
 
 ## 🌐 信息检索与内容获取类
 
-| MCP Server | 核心功能 | 适用场景 | 链接 |
-|-----------|---------|---------|------|
-| **Fetch MCP** 🆕 | 网页内容抓取,支持 HTML/JSON/Markdown/YT 转录,含 OCR 能力 | 获取实时新闻、产品价格、动态数据 | [🔗 GitHub](https://github.com/zcaceres/fetch-mcp) |
-| **Brave Search / Tavily** | 隐私友好或 AI 优化的网络搜索，返回结构化结果 | 研究写作、事实核查、竞品分析 | [🔗 MCP Registry](https://mcp.so) |
-| **arXiv MCP** 🆕 | 搜索/读取 arXiv 论文,支持摘要提取与全文访问 | 学术研究、文献综述、科研跟踪 | [🔗 GitHub](https://github.com/shoumikdc/arXiv-mcp) |
-| **Context7 (Upstash)** 🆕 | 实时拉取最新版官方文档与代码示例,避免 API 幻觉 | AI 编码辅助、框架学习、技术调研 | [🔗 GitHub](https://github.com/upstash/context7-mcp) |
+| MCP Server                | 核心功能                                        | 适用场景              | 链接                                                   |
+|---------------------------|---------------------------------------------|-------------------|------------------------------------------------------|
+| **Fetch MCP** 🆕          | 网页内容抓取,支持 HTML/JSON/Markdown/YT 转录,含 OCR 能力 | 获取实时新闻、产品价格、动态数据  | [🔗 GitHub](https://github.com/zcaceres/fetch-mcp)   |
+| **Brave Search / Tavily** | 隐私友好或 AI 优化的网络搜索，返回结构化结果                    | 研究写作、事实核查、竞品分析    | [🔗 MCP Registry](https://mcp.so)                    |
+| **arXiv MCP** 🆕          | 搜索/读取 arXiv 论文,支持摘要提取与全文访问                  | 学术研究、文献综述、科研跟踪    | [🔗 GitHub](https://github.com/shoumikdc/arXiv-mcp)  |
+| **Context7 (Upstash)** 🆕 | 实时拉取最新版官方文档与代码示例,避免 API 幻觉                  | AI 编码辅助、框架学习、技术调研 | [🔗 GitHub](https://github.com/upstash/context7-mcp) |
 
 ---
 
 ## 🧠 思维增强与任务规划类
 
-| MCP Server | 核心功能 | 适用场景 | 链接 |
-|-----------|---------|---------|------|
+| MCP Server                     | 核心功能                   | 适用场景             | 链接                                                                                       |
+|--------------------------------|------------------------|------------------|------------------------------------------------------------------------------------------|
 | **Sequential Thinking MCP** 🆕 | 结构化多步推理,支持思维分支、进度跟踪与总结 | 复杂问题拆解、项目规划、决策分析 | [🔗 NPM](https://www.npmjs.com/package/@modelcontextprotocol/server-sequential-thinking) |
-| **Memory Bank / Claude-Mem** | 本地持久化记忆，记住项目规范与用户偏好 | 长期协作、个性化助手、知识库维护 | [🔗 GitHub](https://github.com/modelcontextprotocol/servers) |
+| **Memory Bank / Claude-Mem**   | 本地持久化记忆，记住项目规范与用户偏好    | 长期协作、个性化助手、知识库维护 | [🔗 GitHub](https://github.com/modelcontextprotocol/servers)                             |
 
 ---
 

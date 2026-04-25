@@ -96,7 +96,14 @@
     ```
     
 ## **3. 添加MCP工具**
-`或编辑项目级配置 ~/.claude/mcp.json 或 .claude/mcp.json`
+~注意~：非必要步骤需要 OAuth 认证后才能使用
+
+1. 全局配置（所有项目可用）
+> 编辑 ~/.claude/settings.json（或 ~/.claude/settings.local.json）
+
+2. 项目级配置（仅当前项目可用）
+> 编辑 .claude/settings.json 或 .claude/settings.local.json（当前项目目录下）
+
 例如：
 ```json
 {
