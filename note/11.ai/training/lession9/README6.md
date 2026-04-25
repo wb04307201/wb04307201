@@ -70,13 +70,13 @@ specify init . --force --ai copilot
 ```
 
 ### 常用 `--ai` 参数值
-| 值 | 对应 AI 代理 |
-|---|-----------|
-| `copilot` | GitHub Copilot |
-| `claude` | Claude Code |
-| `gemini` | Gemini CLI |
-| `cursor` | Cursor IDE |
-| `codex` | OpenAI Codex CLI |
+| 值         | 对应 AI 代理         |
+|-----------|------------------|
+| `copilot` | GitHub Copilot   |
+| `claude`  | Claude Code      |
+| `gemini`  | Gemini CLI       |
+| `cursor`  | Cursor IDE       |
+| `codex`   | OpenAI Codex CLI |
 
 ---
 
