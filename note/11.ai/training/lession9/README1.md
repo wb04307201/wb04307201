@@ -19,8 +19,10 @@
 ## **1. 安装 Claude Code**
 
 1.  安装或更新 [Node.js](https://nodejs.org/en/download/)（v18.0 或更高版本）。
+    > - windows点击Windows Installer (.msi)即可开始下载
+    > - 除安装位置外不要修改其他配置
 
-2.  在终端中执行下列命令，安装 Claude Code。
+2.  Node.js安装后打开终端中并执行下列命令，安装 Claude Code CLI。
 
     ```
     npm install -g @anthropic-ai/claude-code
@@ -121,17 +123,83 @@
   }
 }
 ```
+mcp是一种协议，只要是符合这种协议开发的工具都可以接入AI Agent
+
+### Windows 环境安装指南
+
+#### 1. **Node.js + npx**
+
+> npx已集成在nodejs中，只需验证安装成功
+
+1. **验证安装**
+```powershell
+node --version
+npm --version
+npx --version
+```
+
+2. **npx 说明**
+    - npx 是 Node.js 包执行工具，随 npm 5.2+ 自动安装
+    - 用于直接运行 npm 包而无需全局安装
+    - 示例：`npx @playwright/mcp@latest`
+
+#### 2. **Python + uv**
+
+1. **安装 Python**（如未安装）
+    - 访问 [https://www.python.org/downloads/](https://www.python.org/downloads/)
+    - 下载 Windows 安装包并安装
+    - 勾选 "Add Python to PATH"
+
+2. **安装 uv**
+   ```powershell
+   pip install uv
+   ```
+
+3. **验证安装**
+   ```powershell
+   where uv
+   uv --version
+   ```
+
+4. **uv 介绍**
+    - uv 是一个超快速的 Python 包管理器和项目管理器
+    - 比 pip 快 10-100 倍
+    - 支持虚拟环境管理、依赖解析等
+    - 可用于运行 MCP 服务器：`uvx mcp-server-time`
+
+#### 3. **Java + jbang**
+
+1. **安装 JBang**（PowerShell）
+   ```powershell
+   iex "& { $(iwr https://ps.jbang.dev) } app setup"
+   ```
+
+2. **验证安装**
+   ```powershell
+   jbang --version
+
+3. **JBang 介绍**
+    - JBang 允许无需安装 JDK 或配置项目即可运行 Java 代码
+    - 适合快速原型开发和脚本编写
+    - 可直接运行 Maven 坐标的 Java 应用
+    - 示例：`jbang io.github.wb04307201:http-mcp:1.0.0`
+
+[MCP（Model Context Protocol）推荐](README2.md)
 
 ## **3. 插件安装**
-[Claude Code插件](README2.md)
+[Claude Code插件](README3.md)
 
 ## **4. Skills安装**
-[Claude Code Skills](README3.md)
+[Claude Code Skills](README4.md)
 
 ## **5. 规范驱动开发(Spec-Driven Development, SDD)**
-[规范驱动开发工具深度解析：Spec-Kit、Kiro、OpenSpec](README4.md)
+[规范驱动开发工具深度解析：Spec-Kit、Kiro、OpenSpec](README5.md)
 
 > - 📝 Claude Code 调用阿里云百炼配置：`https://help.aliyun.com/zh/model-studio/claude-code`
 > - 📘 官方文档：`https://docs.anthropic.com/claude-code`
 
-后续把内容请从《实战Harness工程.pdf》第5页`Superpowers：`继续
+后续把内容请从[实战Harness工程.pdf](%E5%AE%9E%E6%88%98Harness%E5%B7%A5%E7%A8%8B.pdf)第5页`Superpowers：`继续
+
+## 其它
+- [Spec-Kit 规范驱动开发（SDD）工具包使用说明](README6.md)
+- [Chatbox 一款 AI 客户端应用，支持配置Qwen等API](https://chatboxai.app/zh)
