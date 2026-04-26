@@ -87,7 +87,7 @@
 
     保存配置文件，重新打开一个终端即可生效。
 
-3.  编辑或新增 `C:\Users\您的用户名\.claude.json` 文件，将`hasCompletedOnboarding` 字段的值设置为 `true`，并保存文件。
+3.  在终端中使用`claude`命令启动一次后关闭终端，找到 `C:\Users\您的用户名\.claude.json` 文件，编辑或新增`hasCompletedOnboarding`字段的值并设置为`true`，并保存文件。
 
     ```
     {
