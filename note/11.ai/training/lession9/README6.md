@@ -96,8 +96,8 @@ specify init . --force --ai copilot
 ```
 
 ### Step 1: 建立项目原则 `/speckit.constitution`
-```bash
 # 在 AI 助手对话框中输入：
+```bash
 /speckit.constitution 请生成一套项目原则，重点涵盖：代码质量标准、测试规范（TDD驱动，覆盖率90%）、用户体验一致性要求，以及性能指标（UI响应时间严格控制在100ms以内）。
 ```
 📄 输出：`.specify/memory/constitution.md` — 项目治理准则

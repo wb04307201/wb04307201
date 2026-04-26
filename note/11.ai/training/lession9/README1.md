@@ -1,4 +1,4 @@
-# 详细步骤
+# 环境安装步骤
 
 > 本文档只是说明Claude Code CLI如何配置阿里云百炼平台模型API
 
@@ -38,7 +38,7 @@
 
 1.  创建并打开配置文件`C:\Users\您的用户名\.claude\settings.json`。
 
-    ## CMD
+### CMD
 
     1.  创建目录
 
@@ -53,7 +53,7 @@
         ```
 
 
-    ## PowerShell
+### PowerShell
     
     1.  创建目录
         
