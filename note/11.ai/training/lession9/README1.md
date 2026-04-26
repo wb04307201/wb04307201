@@ -40,33 +40,32 @@
 
 ### CMD
 
-    1.  创建目录
+1.  创建目录
 
-        ```
-        if not exist "%USERPROFILE%\.claude" mkdir "%USERPROFILE%\.claude"
-        ```
+    ```
+    if not exist "%USERPROFILE%\.claude" mkdir "%USERPROFILE%\.claude"
+    ```
 
-    2.  创建并打开文件
+2.  创建并打开文件
 
-        ```
-        notepad "%USERPROFILE%\.claude\settings.json"
-        ```
+    ```
+    notepad "%USERPROFILE%\.claude\settings.json"
+    ```
 
 
 ### PowerShell
     
-    1.  创建目录
+1.  创建目录
         
-        ```
-        mkdir -Force $HOME\.claude
-        ```
+    ```
+    mkdir -Force $HOME\.claude
+    ```
         
-    2.  创建并打开文件
+2.  创建并打开文件
         
-        ```
-        notepad $HOME\.claude\settings.json
-        ```
-
+    ```
+    notepad $HOME\.claude\settings.json
+    ```
 
 2.  编辑配置文件。将 YOUR\_API\_KEY 替换为[阿里云百炼 API Key](https://help.aliyun.com/zh/model-studio/get-api-key)。
 
@@ -85,17 +84,40 @@
     }
     ```
 
-    保存配置文件，重新打开一个终端即可生效。
-
-3.  在终端中使用`claude`命令启动一次后关闭终端，找到 `C:\Users\您的用户名\.claude.json` 文件，编辑或新增`hasCompletedOnboarding`字段的值并设置为`true`，并保存文件。
+3.  在终端中使用`claude`命令启动**Claude Code**一次后关闭终端，找到 `C:\Users\您的用户名\.claude.json` 文件，编辑或新增`hasCompletedOnboarding`字段的值并设置为`true`，并保存文件。
 
     ```
     {
       "hasCompletedOnboarding": true
     }
     ```
+
+## 3.**Spec-Kit安装**
+
+1. 安装 Python
+    - 访问 [https://www.python.org/downloads/](https://www.python.org/downloads/)
+    - 下载 Windows 安装包并安装
+    - 勾选 "Add Python to PATH"
+
+2. 安装 uv
+   ```powershell
+   pip install uv
+   ```
+
+3. 验证安装
+   ```powershell
+   uv --version
+   ```
+   
+4. 安装 Specify CLI
+   ```powershell
+   uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
+   ```
+
+[更多信息请看：规范驱动开发工具深度解析：Spec-Kit、Kiro、OpenSpec](README5.md)
+[更多信息请看：Spec-Kit 规范驱动开发（SDD）工具包使用说明](README6.md)
     
-## **3. 添加MCP工具**
+## **4. (可选)添加MCP工具**
 1. 全局配置（所有项目可用）
 > 编辑 ~/.claude/settings.json（或 ~/.claude/settings.local.json）
 
@@ -114,65 +136,51 @@
       ]
     },
     "playwright": {
-      "command": "npx.cmd",
+      "command": "npx",
       "args": [
+        "-y",
         "@playwright/mcp@latest"
       ]
     },
-    "fetch": {
+    "chrome-devtools": {
+      "command": "npx",
       "args": [
-        "mcp-server-fetch"
-      ],
-      "command": "uvx"
+        "-y",
+        "chrome-devtools-mcp@latest"
+      ]
     }
   }
 }
 ```
-mcp是一种协议，只要是符合这种协议开发的工具都可以接入AI Agent
+mcp是一种协议，只要是符合这种协议开发的工具都可以接入AI Agent,，因此可能需要适配多种语言的话经
 
-### Windows 环境安装指南
+### 1. **Node.js + npx**
 
-#### 1. **Node.js + npx**
-
-> npx已集成在nodejs中，只需验证安装成功
-
-1. **验证安装**
-```powershell
-node --version
-npm --version
-npx --version
-```
-
-2. **npx 说明**
+**npx 说明**
     - npx 是 Node.js 包执行工具，随 npm 5.2+ 自动安装
     - 用于直接运行 npm 包而无需全局安装
     - 示例：`npx @playwright/mcp@latest`
 
+> npx已集成在nodejs中，只需验证安装成功`npx --version`
+
+
 #### 2. **Python + uv**
 
-1. **安装 Python**（如未安装）
-    - 访问 [https://www.python.org/downloads/](https://www.python.org/downloads/)
-    - 下载 Windows 安装包并安装
-    - 勾选 "Add Python to PATH"
-
-2. **安装 uv**
-   ```powershell
-   pip install uv
-   ```
-
-3. **验证安装**
-   ```powershell
-   where uv
-   uv --version
-   ```
-
-4. **uv 介绍**
+**uv 介绍**
     - uv 是一个超快速的 Python 包管理器和项目管理器
     - 比 pip 快 10-100 倍
     - 支持虚拟环境管理、依赖解析等
     - 可用于运行 MCP 服务器：`uvx mcp-server-time`
 
+> 前面有安装
+
 #### 3. **Java + jbang**
+
+**JBang 介绍**
+    - JBang 允许无需安装 JDK 或配置项目即可运行 Java 代码
+    - 适合快速原型开发和脚本编写
+    - 可直接运行 Maven 坐标的 Java 应用
+    - 示例：`jbang io.github.wb04307201:http-mcp:1.0.0`
 
 1. **安装 JBang**（PowerShell）
    ```powershell
@@ -184,27 +192,27 @@ npx --version
    jbang --version
    ```
 
-3. **JBang 介绍**
-    - JBang 允许无需安装 JDK 或配置项目即可运行 Java 代码
-    - 适合快速原型开发和脚本编写
-    - 可直接运行 Maven 坐标的 Java 应用
-    - 示例：`jbang io.github.wb04307201:http-mcp:1.0.0`
-
-[MCP（Model Context Protocol）推荐](README2.md)
+[更多信息请看：MCP（Model Context Protocol）推荐](README2.md)
 
 ## **3. 插件安装**
-[Claude Code插件](README3.md)
+在终端中使用`claude`命令启动**Claude Code**后执行命令
+```powershell
+/plugin install superpowers@claude-plugins-official
+/plugin install frontend-design@claude-plugins-official
+/plugin install code-review@claude-plugins-official
+```
 
-## **4. Skills安装**
-[Claude Code Skills](README4.md)
+[更多信息请看：Claude Code插件](README3.md)
 
-## **5. 规范驱动开发(Spec-Driven Development, SDD)**
-[规范驱动开发工具深度解析：Spec-Kit、Kiro、OpenSpec](README5.md)
+## **4. (可选)Skills安装**
+[更多信息请看：Claude Code Skills](README4.md)
+
+---
 
 > - 📝 Claude Code 调用阿里云百炼配置：`https://help.aliyun.com/zh/model-studio/claude-code`
 > - 📘 官方文档：`https://docs.anthropic.com/claude-code`
 
-后续把内容请从[实战Harness工程.pdf](%E5%AE%9E%E6%88%98Harness%E5%B7%A5%E7%A8%8B.pdf)第5页`Superpowers：`继续
+后续把内容请从[实战Harness工程.pdf](%E5%AE%9E%E6%88%98Harness%E5%B7%A5%E7%A8%8B.pdf)第7页继续
 
 ## 其它
 - [Spec-Kit 规范驱动开发（SDD）工具包使用说明](README6.md)
