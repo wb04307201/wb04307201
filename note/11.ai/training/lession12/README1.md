@@ -1,150 +1,218 @@
-# 长效智能体架构：如何让 AI Agent 跨多轮上下文持续高效工作
-## —— Anthropic 工程团队技术解析
+# 📝 文章整理：Using Skills to Accelerate OSS Maintenance - 评估 Agent 技能的最佳实践
 
-> 本文整理自 Anthropic 官方博客 [Effective harnesses for long-running agents](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents)，聚焦于解决 AI Agent 在长周期、多会话任务中的核心挑战。
-
----
-
-## 🔍 核心问题：为什么长周期 Agent 容易"失忆"？
-
-随着 AI Agent 能力不断提升，开发者开始让它们承担需要数小时甚至数天才能完成的复杂任务。然而，**让 Agent 在多个上下文窗口（context windows）之间持续、一致地推进工作，仍是一个未解难题**。
-
-### 根本挑战
-- 每次新会话开始时，Agent 都"失忆"了——无法记住之前会话的内容
-- 类比：就像软件项目由轮班工程师协作，但每位新工程师都不了解上一班的工作进展
-- 即使使用上下文压缩（compaction）技术，也无法完美传递清晰的指令给下一个 Agent
-
-### 常见失败模式
-1. **"一锅端"倾向**：Agent 试图一次性完成整个应用，结果在中途耗尽上下文，留下半成品和未文档化的代码
-2. **过早宣告完成**：在部分功能已实现后，新会话的 Agent 看到已有进展，误判项目已完成
-3. **测试不充分**：Agent 修改代码后，未能进行端到端验证，导致功能实际不可用
+> 来源：OpenAI Developers Blog  
+> 主题：如何系统性地评估和改进 Codex Agent 的技能（Skills）
+> 链接：https://developers.openai.com/blog/eval-skills
 
 ---
 
-## 🛠️ 解决方案：双阶段架构设计
+## 🔍 核心问题
 
-Anthropic 团队提出了一套受人类工程实践启发的**两阶段架构**，使 Claude Agent SDK 能够有效跨多轮上下文工作：
+在迭代开发 Agent 技能（如 Codex）时，开发者常面临：
+- 难以判断改进是否真实有效，还是仅仅改变了行为
+- 回归问题难以发现（技能未触发、跳过步骤、遗留文件等）
 
+**解决方案**：像测试其他软件一样，为技能建立系统化的 **评估机制（Evals）**
+
+---
+
+## 📋 什么是 Evals（评估）？
+
+> Evals = Prompt → 执行记录（Trace + Artifacts）→ 检查规则 → 可比较的分数
+
+**评估要回答的具体问题**：
+- ✅ Agent 是否成功调用了该技能？
+- ✅ 是否执行了预期的命令？
+- ✅ 输出是否符合约定的规范？
+
+---
+
+## 🎯 评估框架：8 步实践指南
+
+### 1️⃣ 先定义"成功"，再写技能
+
+在编写技能前，明确可衡量的成功标准，分为四类：
+
+| 类别       | 示例问题                  |
+|----------|-----------------------|
+| **结果目标** | 任务是否完成？应用能否运行？        |
+| **过程目标** | 是否按预期调用了工具和步骤？        |
+| **风格目标** | 输出是否符合代码/格式规范？        |
+| **效率目标** | 是否避免了冗余命令或过度消耗 Token？ |
+
+> 💡 原则：聚焦"必须通过"的核心检查，而非面面俱到
+
+---
+
+### 2️⃣ 创建技能：结构化定义
+
+技能本质是一个包含 `SKILL.md` 的目录，关键要素：
+
+```yaml
+---
+name: setup-demo-app
+description: Scaffold a Vite + React + Tailwind demo app...
+---
 ```
-┌─────────────────────────┐
-│  1️⃣ Initializer Agent   │
-│  （初始化智能体）        │
-│  • 创建基础环境          │
-│  • 生成 feature_list.json│
-│  • 编写 init.sh 脚本     │
-│  • 初始化 git 仓库       │
-└────────┬────────────────┘
-         │
-         ▼
-┌─────────────────────────┐
-│  2️⃣ Coding Agent        │
-│  （编码智能体）          │
-│  • 每次会话专注一个功能  │
-│  • 增量开发 + 清晰提交   │
-│  • 更新进度日志          │
-│  • 保持代码库"干净状态"  │
-└─────────────────────────┘
+
+**关键提醒**：
+- `name` 和 `description` 是 Codex 判断**是否触发技能**的核心信号
+- 描述模糊 = 触发不可靠
+
+**推荐工具**：使用内置 `$skill-creator` 向导快速创建
+
+---
+
+### 3️⃣ 手动触发：暴露隐藏假设
+
+首次测试时，显式调用技能（如 `/skills` 或 `$setup-demo-app`），观察：
+
+| 假设类型 | 常见问题 |
+|---------|---------|
+| 🔹 触发假设 | 应该触发却没触发，或不该触发时误触发 |
+| 🔹 环境假设 | 假设空目录、特定包管理器等 |
+| 🔹 执行假设 | 跳过 `npm install`、顺序错误等 |
+
+**自动化准备**：使用 `codex exec --full-auto` 便于脚本化执行
+
+---
+
+### 4️⃣ 构建小型提示词集：快速捕捉回归
+
+无需大型基准测试，**10-20 个精心设计的 prompt** 即可有效评估：
+
+```csv
+id,should_trigger,prompt
+test-01,true,"Create a demo app named `devday-demo` using the $setup-demo-app skill"
+test-02,true,"Set up a minimal React demo app with Tailwind for quick UI experiments"
+test-03,true,"Create a small demo app to showcase the Responses API"
+test-04,false,"Add Tailwind styling to my existing React app"
 ```
 
-### 阶段一：初始化智能体（Initializer Agent）
+**设计策略**：
+- ✅ 显式调用：测试技能名称/描述变更的影响
+- ✅ 隐式调用：测试自然语言描述能否正确触发
+- ✅ 上下文调用：测试真实场景中的鲁棒性
+- ✅ 负向控制：防止误触发（False Positive）
 
-首个会话使用专用提示词，要求模型完成以下任务：
+> 🔄 随着使用，持续将真实失败案例加入评估集
 
-| 产出物 | 作用 |
-|--------|------|
-| `init.sh` 脚本 | 一键启动开发环境，运行基础测试 |
-| `claude-progress.txt` | 记录各 Agent 会话的工作日志 |
-| `feature_list.json` | 详细功能清单，所有功能初始标记为"未通过" |
-| 初始 git commit | 清晰记录项目起点和文件结构 |
+---
 
-#### 📋 功能清单设计（feature_list.json 示例）
-```json
-{
-  "category": "functional",
-  "description": "New chat button creates a fresh conversation",
-  "steps": [
-    "Navigate to main interface",
-    "Click the 'New Chat' button",
-    "Verify a new conversation is created",
-    "Check that chat area shows welcome state",
-    "Verify conversation appears in sidebar"
-  ],
-  "passes": false
+### 5️⃣ 轻量级确定性检查：快速反馈
+
+使用 `codex exec --json` 获取结构化执行日志（JSONL），编写确定性检查：
+
+```javascript
+// 检查是否执行了 npm install
+function checkRanNpmInstall(events) {
+  return events.some(e => 
+    e.item?.type === "command_execution" && 
+    e.item?.command?.includes("npm install")
+  );
+}
+
+// 检查文件是否存在
+function checkPackageJsonExists(projectDir) {
+  return existsSync(path.join(projectDir, "package.json"));
 }
 ```
 
-> 💡 关键设计：使用 JSON 格式（而非 Markdown），因为模型更不容易意外修改或覆盖结构化数据；严格禁止 Agent 删除或编辑测试用例。
-
-### 阶段二：编码智能体（Coding Agent）
-
-后续每个会话遵循"增量推进"原则：
-
-1. **单功能聚焦**：每次只实现功能清单中的一个条目
-2. **提交规范**：用描述性 git commit 记录变更，便于回溯
-3. **进度同步**：在 `claude-progress.txt` 中撰写会话摘要
-4. **状态清理**：确保代码可合并到主分支——无重大 bug、结构清晰、文档完整
+**优势**：
+- ⚡ 执行快、结果确定、易于调试
+- 🔍 回归问题可精确定位到具体事件
 
 ---
 
-## 🧪 关键实践：测试与启动协议
+### 6️⃣ 基于规则的定性评估：处理"风格"问题
 
-### 端到端测试至关重要
-- 仅靠单元测试或 `curl` 命令不足以验证功能
-- 显式提示 Agent 使用浏览器自动化工具（如 Puppeteer），模拟真实用户操作
-- 实验表明：提供测试工具后，Agent 能识别并修复仅靠代码审查难以发现的 bug
+确定性检查无法评估"代码风格"、"组件结构"等主观要求，需引入 **模型辅助评分**：
 
-### 每轮会话的"启动检查清单"
-每个 Coding Agent 开始前执行：
-```bash
-1. pwd                    # 确认工作目录
-2. git log + 读取进度文件  # 了解近期工作
-3. 读取 feature_list.json # 选择下一个最高优先级功能
-4. 运行 init.sh + 基础 E2E 测试 # 验证环境状态
-5. 开始编码...
+**步骤**：
+1. 运行技能生成代码
+2. 用 Codex 执行**只读风格检查**
+3. 通过 `--output-schema` 强制输出结构化评分
+
+**评分规则示例（style-rubric.schema.json）**：
+```json
+{
+  "type": "object",
+  "properties": {
+    "overall_pass": { "type": "boolean" },
+    "score": { "type": "integer", "min": 0, "max": 100 },
+    "checks": {
+      "type": "array",
+      "items": {
+        "id": "string",
+        "pass": "boolean", 
+        "notes": "string"
+      }
+    }
+  }
+}
 ```
 
-> ✅ 优势：节省 Token（无需重复推理测试策略），提升会话间连续性，降低"重复造轮子"风险
+**执行命令**：
+```bash
+codex exec "Evaluate the demo-app repository..." \
+  --output-schema ./evals/style-rubric.schema.json \
+  -o ./evals/artifacts/test-01.style.json
+```
 
 ---
 
-## 📈 效果与启示
+### 7️⃣ 持续扩展：随技能成熟深化评估
 
-采用该架构后，Claude Agent 能够：
-- ✅ 跨数十个会话持续开发，最终构建出生产级 Web 应用
-- ✅ 避免"一锅端"和"过早完成"两类典型失败
-- ✅ 通过结构化日志和 git 历史实现"会话间知识传递"
-- ✅ 在端到端测试支持下显著提升代码质量
+| 扩展方向          | 实现方式                           | 价值         |
+|---------------|--------------------------------|------------|
+| 🔹 命令冗余检测     | 统计 `command_execution` 事件      | 发现死循环/重复执行 |
+| 🔹 Token 预算监控 | 读取 `usage.input/output_tokens` | 优化提示词效率    |
+| 🔹 构建验证       | 执行 `npm run build`             | 捕获语法/配置错误  |
+| 🔹 运行时冒烟测试    | `curl` 或 Playwright 检查服务       | 验证功能可用性    |
+| 🔹 仓库洁净度      | 检查 `git status`                | 防止遗留临时文件   |
+| 🔹 权限回归       | 验证最小权限原则                       | 保障自动化安全    |
 
----
-
-## 🔮 未来方向
-
-该方案虽有效，但仍有开放问题值得探索：
-
-| 方向 | 潜在价值 |
-|------|----------|
-| **多智能体协作架构** | 专用测试 Agent、QA Agent、代码清理 Agent 可能比通用 Agent 更高效 |
-| **领域泛化** | 将经验迁移到科研、金融建模等其他长周期任务场景 |
-| **自动化程度提升** | 减少人工提示工程，让 Agent 自主规划功能拆解与测试策略 |
-| **记忆机制增强** | 结合外部向量数据库或知识图谱，实现更鲁棒的跨会话记忆 |
+> 🎯 原则：先快后慢，先确定性后主观性，按需叠加
 
 ---
 
-## 💎 核心结论
+### 8️⃣ 关键总结 ✅
 
-> **长周期 Agent 的成功，不在于模型本身更"聪明"，而在于为其设计一套符合工程规律的"工作框架"（harness）**。
-
-Anthropic 的实践表明：
-1. **结构化上下文 > 原始上下文长度**：清晰的功能清单、进度日志、git 历史，比单纯扩大 context window 更有效
-2. **人类工程智慧可迁移**：增量开发、代码审查、自动化测试等经典实践，对 AI Agent 同样关键
-3. **提示工程即系统设计**：好的 prompt 不是"让模型猜"，而是"为模型搭建可执行的脚手架"
-
-这套方法论不仅适用于 Web 开发，也为构建可靠、可维护的长周期 AI 系统提供了可复用的设计范式。
+| 要点                   | 说明                             |
+|----------------------|--------------------------------|
+| 🔹 **衡量真正重要的事**      | 好的评估让回归清晰可见、失败可解释              |
+| 🔹 **从可检查的"完成定义"开始** | 用 `$skill-creator` 启动，逐步收紧指令   |
+| 🔹 **基于行为做评估**       | 用 `--json` 捕获执行轨迹，编写确定性检查      |
+| 🔹 **用模型补足规则盲区**     | 通过 `--output-schema` 实现结构化风格评分 |
+| 🔹 **让真实失败驱动覆盖**     | 每次手动修复都应转化为自动化测试               |
 
 ---
 
-📌 **延伸资源**
-- Claude Agent SDK 快速入门：[官方文档](https://docs.anthropic.com/claude/docs/claude-agent-sdk)
-- 示例代码仓库：文中提及的 quickstart 可在 Anthropic GitHub 获取
+## 🛠️ 实用命令速查
 
-> *整理说明：本文基于 Anthropic 官方博客内容提炼，保留核心技术观点，优化中文表达与结构呈现，便于工程团队快速理解与实践。*
+```bash
+# 创建技能
+$skill-creator
+
+# 手动执行技能（允许文件写入）
+codex exec --full-auto 'Use the $setup-demo-app skill...'
+
+# 自动化评估（输出 JSONL 便于解析）
+codex exec --json --full-auto "<prompt>"
+
+# 风格评估（输出结构化 JSON）
+codex exec "<prompt>" --output-schema ./schema.json -o result.json
+```
+
+---
+
+## 💡 适用场景
+
+- ✅ 开发 Codex / Agent 技能时
+- ✅ 需要保证技能行为一致性
+- ✅ 团队协作中需要可复现的评估标准
+- ✅ 希望将"感觉变好"转化为"数据证明"
+
+---
+
+> 📌 **核心理念**：评估不是终点，而是持续改进的起点。建立"执行→记录→评分→对比"的闭环，让每一次迭代都有据可依。

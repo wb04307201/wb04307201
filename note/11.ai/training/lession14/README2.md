@@ -3,6 +3,8 @@
 > **论文信息**：Obscure but Effective: Classical Chinese Jailbreak Prompt Optimization via Bio-Inspired Search  
 > **arXiv编号**：2602.22983v3 [cs.AI] | **发布日期**：2026年3月24日  
 > **作者团队**：南洋理工大学、东北大学、中国人民大学、阿里巴巴集团、北京航空航天大学等机构联合研究
+>  **引用**：http://www.paperreading.club/page?id=380137
+
 
 ---
 

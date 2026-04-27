@@ -1,136 +1,130 @@
-## 一、用 Claude Code 提取架构信息
-Claude Code 本身不提供一键“架构提取”命令，但可通过**文件读取 + 上下文分析 + 结构化输出**高效完成。
+# 📝 文章整理：规模化的管理智能体 — 将「大脑」与「双手」解耦
 
-### 1. 准备项目上下文（Windows PowerShell）
-```powershell
-# 1. 生成干净的目录树（排除依赖/构建产物）
-# 方法一：使用 tree 命令（Windows 自带）
-tree /F /A | Out-File -Encoding UTF8 ARCHITECTURE_TREE.txt
-
-# 方法二：使用 Get-ChildItem 递归列出（推荐，更灵活）
-Get-ChildItem -Recurse -Depth 4 -Exclude 'node_modules','dist','build','.git','.vscode','.idea' | 
-    Where-Object { $_.FullName -notmatch '\\(node_modules|dist|build|\.git|\.vscode|\.idea)\\' } | 
-    Select-Object FullName, Length | 
-    Format-Table -AutoSize | 
-    Out-File -Encoding UTF8 ARCHITECTURE_TREE.txt
-
-# 2. 收集关键配置与依赖快照（Windows 方式）
-Get-Content package.json, tsconfig.json, vite.config.ts, next.config.ts | Out-File -Encoding UTF8 CONFIGS.md
-Get-Content backend/package.json, backend/tsconfig.json | Out-File -Encoding UTF8 BACKEND_CONFIGS.md  # 如有独立后端
-```
-
-### 2. 核心分析 Prompt（直接喂给 Claude Code）
-```text
-你正在分析一个已有前后端项目的架构。请基于以下文件内容，输出结构化架构画像：
-
-📁 目录树：
-[粘贴 ARCHITECTURE_TREE.txt]
-
-⚙️ 前端配置：
-[粘贴 CONFIGS.md]
-
-⚙️ 后端配置（如有）：
-[粘贴 BACKEND_CONFIGS.md]
-
-请输出以下结构化内容（JSON 格式）：
-1. frontend_architecture:
-   - framework & version
-   - routing strategy (e.g., file-based, dynamic, nested)
-   - state management (e.g., Redux, Zustand, React Query, Context)
-   - component organization (feature-based, domain-driven, atomic?)
-   - styling approach (CSS Modules, Tailwind, SCSS, CSS-in-JS?)
-   - API layer pattern (fetch, axios, RTK Query, tRPC, OpenAPI client?)
-   - testing stack
-2. backend_architecture:
-   - framework & version
-   - routing & controller structure
-   - service/repository pattern usage
-   - ORM/DB layer
-   - auth & middleware stack
-   - API style (REST, GraphQL, RPC?)
-   - testing & validation strategy
-3. cross_cutting_concerns:
-   - error handling pattern
-   - environment/config management
-   - logging & monitoring
-   - deployment & CI/CD hints
-```
-
-Claude Code 会返回结构化分析结果，你可保存为 `ARCHITECTURE_PROFILE.md` 或 `architecture.json`。
+> **来源**：Anthropic Engineering Blog  
+> **发布时间**：2026年4月8日  
+> **作者**：Lance Martin, Gabe Cemaj, Michael Cohen  
+> **术语说明**：本文「管理智能体」特指 **由平台基础设施托管的 AI 智能体（Managed AI Agents）**，即智能体的运维、扩缩容、安全等底层能力由平台统一管理，开发者专注业务逻辑。
+> **链接**：https://www.anthropic.com/engineering/managed-agents
 
 ---
-## 二、将架构信息转化为开发规范
-将提取的“事实架构”转化为“约定规范”，需区分**强制规则**与**推荐实践**。
 
-### 1. 规范维度映射表
-| 架构发现点              | 对应规范条目                                                     | 落地方式                                       |
-|--------------------|------------------------------------------------------------|--------------------------------------------|
-| `feature/` 目录结构    | 模块边界规范：按业务域划分，禁止跨域直接引用                                     | ESLint `import/no-relative-parent-imports` |
-| `React Query` 数据获取 | API 层规范：禁止在组件内直接 fetch，统一使用 `@/services`                   | 自定义 ESLint rule / TypeScript 接口约束          |
-| `Zustand` 状态管理     | 状态规范：全局状态仅存放跨模块共享数据，局部状态用 `useState`                       | 架构文档 + PR 模板检查项                            |
-| `Express + Prisma` | 分层规范：Controller → Service → Repository，禁止 Controller 直连 DB | 代码审查 checklist + 生成器模板                     |
-| `OpenAPI` 定义       | API 契约规范：前后端以 OpenAPI 3.0 为准，禁止手动写 DTO                     | `openapi-generator` CI 校验                  |
+## 🔍 一、核心问题：为什么需要重新设计智能体系统？
 
-### 2. 生成规范文档 Prompt
-```text
-基于以下架构画像，生成《项目开发规范》Markdown 文档。要求：
-- 分章节：目录结构、命名约定、分层架构、API 设计、状态管理、异常处理、测试、提交规范
-- 每条规范包含：规则描述 ✅ 正例 ❌ 反例 🛠 工具校验方式
-- 语气为团队内部标准，可直接放入 CONTRIBUTING.md 或 docs/standards/
-- 避免空泛描述，全部绑定到当前项目实际技术栈
+### 传统「智能体框架」的局限性
+- 框架本质上编码了「当前模型能力边界」的假设
+- 但大模型能力迭代极快，这些假设会迅速过时
+- **典型案例**：
+    - Claude Sonnet 4.5 需要「上下文重置」机制缓解「上下文焦虑」
+    - 但同一框架用于更强的 Claude Opus 4.5 时，该问题已自然消失，重置逻辑反而成为性能负担
 
-架构画像：
-[粘贴上一步输出的 JSON/Markdown]
-```
+### 核心设计挑战
+> 如何构建一个能容纳「尚未想到的程序」的智能体系统？
+
+这让人联想到操作系统的设计哲学：通过虚拟化硬件提供通用抽象（如进程、文件），使上层应用无需关心底层实现。`read()` 命令既适用于1970年代的磁盘，也适用于现代SSD。
 
 ---
-## 三、自动化落地与持续治理
-规范必须可校验、可修复、可阻断，否则极易流于形式。
 
-### 1. 生成工具链配置（Claude Code 一键生成）
-```text
-请根据上述规范，生成以下配置文件（带注释说明）：
-1. .eslintrc.cjs（含 custom rules 用于检测分层越权、状态滥用、API 直调等）
-2. prettier.config.js
-3. tsconfig.json（开启 strict、noImplicitAny、exactOptionalPropertyTypes 等）
-4. husky 配置 + lint-staged 脚本
-5. commitlint.config.js（Conventional Commits + scope 限制）
-6. CI 检查脚本（.github/workflows/lint-check.yml）
-```
+## 🧩 二、规模化托管智能体的核心设计理念
 
-### 2. 项目级 AI 规则固化（Claude Code 专属）
-在项目根目录创建 `.claude/rules.md`（或 `.cursor/rules` 等效文件），写入：
-```markdown
-# Project Architecture Rules
-- 前端必须通过 `@/api/` 调用接口，禁止组件内直接使用 fetch/axios
-- 状态管理：全局状态仅限 `@/store/global.ts`，模块状态放 `@/modules/*/store.ts`
-- 后端分层：Controller 仅做参数校验与路由转发，业务逻辑必须在 Service 层
-- 错误处理：统一使用 `AppError` 类，禁止 throw String / 返回 null 表示错误
-- 命名：组件 PascalCase，工具函数 camelCase，常量 UPPER_SNAKE_CASE
-- 新增文件前，先检查是否符合 `docs/standards/folder-structure.md`
-```
-Claude Code 在后续对话中会自动加载此文件，并在代码生成/审查时强制遵循。
+### 三大稳定抽象组件（接口固定，实现可替换）
+
+| 组件               | 职责                 | 接口特点             | 对应智能体能力 |
+|------------------|--------------------|------------------|---------|
+| **Session（会话）**  | 记录所有事件的只追加日志       | 持久化、可查询、与模型上下文解耦 | 🧠 长期记忆 |
+| **Harness（编排器）** | 调用 Claude + 路由工具调用 | 无状态、可重启、不持有敏感凭证  | 🤔 推理决策 |
+| **Sandbox（沙箱）**  | 执行代码、编辑文件的运行环境     | 隔离、可替换、支持多种后端    | ✋ 工具执行  |
+
+> ✅ **核心理念**：对接口形状有明确规范，但对背后实现保持开放，使智能体系统能随模型进化而持续增强
 
 ---
-## 四、关键工作流示例（Windows PowerShell）
-```powershell
-# 1. 让 Claude Code 分析现有代码
-claude code "分析 src/ 和 server/ 的架构模式，输出架构画像"
 
-# 2. 生成规范文档
-claude code "基于画像生成开发规范，输出到 docs/STANDARDS.md"
+## ⚙️ 三、关键技术突破
 
-# 3. 生成校验配置
-claude code "根据规范生成 ESLint 规则、pre-commit 钩子、CI 检查脚本"
+### 1️⃣ 基础设施弹性：从「宠物」到「牲畜」
+- **旧方案问题**：所有组件耦合在单一容器中 → 容器=「宠物」（不可丢失、难调试）
+- **新方案**：组件解耦 → 每个组件都是「牲畜」（可替换、可批量管理）
+- **收益**：容器崩溃时，编排器将其视为工具调用错误，可自动重试并重新 `provision({resources})`
 
-# 4. 日常开发
-claude code "按当前规范实现用户管理模块，输出代码并自检是否符合规范"
+### 2️⃣ 编排器的无状态化与故障恢复
+```python
+# 核心接口示例
+wake(sessionId)           # 重启编排器实例
+getSession(id)           # 获取事件日志
+emitEvent(id, event)     # 持久化记录事件
 ```
+- 编排器崩溃后，新实例可从最后事件点无缝恢复
+- 会话日志外置存储，确保状态不依赖单一进程生命周期
+
+### 3️⃣ 安全边界：凭证与执行环境严格隔离
+| 风险场景   | 解决方案                                    | 安全价值   |
+|--------|-----------------------------------------|--------|
+| Git 操作 | 初始化时克隆仓库，token 不进入沙箱，push/pull 通过远程配置完成 | 防止凭证泄露 |
+| 自定义工具  | 通过 MCP 协议 + 凭证保险库，智能体仅调用代理，由代理代取凭证      | 最小权限原则 |
+| 通用原则   | 编排器永远不接触用户凭证，从架构上杜绝提示注入攻击风险             | 企业级合规  |
+
+### 4️⃣ 会话 ≠ 模型上下文窗口
+- 长周期智能体任务常超出单轮上下文限制
+- **传统方案缺陷**：压缩/裁剪上下文是不可逆决策，可能丢失关键信息
+- **托管智能体方案**：
+    - Session 作为**外部上下文对象**持久存储
+    - 通过 `getEvents()` 灵活查询：定位切片、回溯事件、重读上下文
+    - 编排器负责上下文工程（如缓存优化），Session 只保证**可恢复、可查询**
 
 ---
-## 五、注意事项与最佳实践
-1. **不要一次性提取全部规范**：先抓 3~5 个高频痛点（如 API 调用混乱、状态滥用、分层模糊），跑通工具链后再逐步扩展。
-2. **架构画像需定期更新**：每次大版本重构后，重新运行提取 Prompt，对比差异并更新规范。
-3. **规范必须配套“逃生通道”**：在 `// @ts-ignore` 或 `/* eslint-disable */` 旁强制要求写 `// reason: 架构例外，已评审`，避免规则僵化。
-4. **结合 PR 模板**：在 GitHub/GitLab PR 描述中增加 `架构合规自查` 勾选框，Claude Code 可自动生成预填充内容。
-5. **测试覆盖率绑定架构**：对 Service/Repository 层要求 ≥80%，UI 组件 ≥60%，用 `jest --coverage` + CI 门禁拦截。
+
+## 🚀 四、「多大脑 × 多双手」的规模化能力
+
+### ✅ 支持「多大脑」（多个编排器实例协同）
+- **性能提升**：
+    - p50 首 token 延迟（TTFT）↓ 60%
+    - p95 TTFT ↓ 90%+
+- **原理**：沙箱容器仅在需要时通过 `execute()` 按需创建，无需为每个会话预加载资源
+
+### ✅ 支持「多双手」（多种执行环境统一接入）
+```python
+execute(name, input) → string  # 统一工具调用接口
+```
+- 该接口兼容：自定义工具、MCP 服务器、Anthropic 原生工具
+- 编排器不关心沙箱是容器、手机还是模拟器
+- 不同「大脑」可传递「双手」，实现多智能体任务协同
+
+---
+
+## 💡 五、对开发者的实用价值
+
+1. **面向未来设计**：接口稳定，可无缝适配更强模型或新工具，避免重复重构
+2. **企业级集成**：支持连接客户 VPC，无需网络对等，降低集成门槛
+3. **长周期任务可靠执行**：会话持久化 + 组件解耦，支持小时/天级智能体任务
+4. **安全合规**：凭证隔离架构，满足企业安全审计与合规要求
+5. **成本优化**：按需创建执行环境，避免资源闲置，提升资源利用率
+
+---
+
+## 🎯 六、总结：元编排系统（Meta-Harness）的设计哲学
+
+> 规模化的管理智能体不是一个固定智能体框架，而是一个**支持多种框架的元系统**。
+
+| 传统思路          | 托管智能体思路                      |
+|---------------|------------------------------|
+| 为当前模型能力定制编排逻辑 | 设计通用接口，适配未来模型演进              |
+| 假设「智能体不能做什么」  | 假设「智能体需要什么能力」（状态管理、计算执行、扩展性） |
+| 紧耦合、难演进       | 松耦合、可替换、可持续演进                |
+
+正如操作系统通过抽象延续数十年，托管智能体希望通过稳定的接口设计，让 Claude 的智能体能力随模型进化而持续增强，无需重构底层架构。
+
+---
+
+## 📚 核心术语对照表（本文语境）
+
+| 英文术语          | 中文表述           | 技术含义                         |
+|---------------|----------------|------------------------------|
+| AI Agent      | **智能体**        | 具备感知、规划、记忆和工具使用能力的自主智能系统     |
+| Managed Agent | **管理智能体**（被托管） | 由平台基础设施统一运维、扩缩容、安全托管的 AI 智能体 |
+| Harness       | **编排器**        | 智能体的「大脑」，负责推理决策与工具路由         |
+| Sandbox       | **沙箱**         | 智能体的「双手」，负责在隔离环境中执行具体任务      |
+| Session       | **会话**         | 智能体的持久化记忆体，记录所有交互事件          |
+
+---
+
+> 📌 **快速开始**：访问 [Claude 文档](https://docs.anthropic.com) 了解管理智能体的使用指南  
+> 📬 **开发者通讯**：订阅 Anthropic 月度邮件，获取产品更新与技术实践
