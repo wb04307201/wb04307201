@@ -118,13 +118,7 @@
 [更多信息请看：Spec-Kit 规范驱动开发（SDD）工具包使用说明](README6.md)
     
 ## **4. (可选)添加MCP工具**
-1. 全局配置（所有项目可用）
-> 编辑 ~/.claude/settings.json（或 ~/.claude/settings.local.json）
-
-2. 项目级配置（仅当前项目可用）
-> 编辑 .claude/settings.json 或 .claude/settings.local.json（当前项目目录下）
-
-例如：
+1. 打开并编辑配置文件`~/.claude.json`，例如添加如下时间、浏览器操作，浏览器开发者工具等mcp服务
 ```json
 {
   "mcpServers": {
