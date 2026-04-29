@@ -206,7 +206,7 @@ mcp是一种协议，只要是符合这种协议开发的工具都可以接入AI
 > - 📝 Claude Code 调用阿里云百炼配置：`https://help.aliyun.com/zh/model-studio/claude-code`
 > - 📘 官方文档：`https://docs.anthropic.com/claude-code`
 
-后续把内容请从[实战Harness工程 V1.4.pdf](%E5%AE%9E%E6%88%98Harness%E5%B7%A5%E7%A8%8B%20V1.4.pdf)第11页继续
+后续把内容请从[实战Harness工程 V1.4.pdf](%E5%AE%9E%E6%88%98Harness%E5%B7%A5%E7%A8%8B%20V1.4.pdf)第10页继续
 
 ## 其它
 - [Spec-Kit 规范驱动开发（SDD）工具包使用说明](README6.md)
