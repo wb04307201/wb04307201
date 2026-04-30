@@ -113,6 +113,7 @@
    ```powershell
    uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
    ```
+5. 如果提示`warning: 'C:\Users\[用户]\.local\bin' is not on your PATH. To use installed tools, run '$env:PATH = "C:\Users\Administrator\.local\bin;$env:PATH"' or 'uv tool update-shell'.`请执行对应命令
 
 [更多信息请看：规范驱动开发工具深度解析：Spec-Kit、Kiro、OpenSpec](README5.md)
 [更多信息请看：Spec-Kit 规范驱动开发（SDD）工具包使用说明](README6.md)
