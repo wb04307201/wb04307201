@@ -67,23 +67,30 @@
 - **选型决策树**：企业级新项目 → Spec-Kit；个人快速原型 → Kiro；遗留系统维护 → OpenSpec
 
 ### [README6.md](README6.md) - Spec-Kit 规范驱动开发（SDD）工具包使用说明
-- **核心内容**：GitHub 官方 Spec-Kit 完整使用指南
+- **核心内容**：GitHub 官方 Spec-Kit 完整使用指南，包含核心概念、详细工作流程和最佳实践
 - **标准安装流程**：
   - 前置条件：Python ≥ 3.11、uv/pipx、Git、AI 代理
   - 安装命令：`uv tool install specify-cli`
   - 验证与 PATH 配置
-- **核心工作流（8 步法）**：
+- **核心概念详解**：
+  - 规范驱动开发（SDD）理念与优势
+  - 项目原则（Constitution）：最高指导文件
+  - 功能规范（Specification）：用户故事、需求、成功标准
+  - 技术计划（Implementation Plan）：技术栈、架构、数据模型
+  - 任务列表（Tasks）：依赖关系、并行执行、测试任务
+- **完整工作流程（5步法+可选步骤）**：
   1. `/speckit.constitution` → 建立项目原则
-  2. `/speckit.specify` → 定义功能规格
-  3. `/speckit.clarify` → 需求澄清（推荐）
-  4. `/speckit.plan` → 生成技术方案
-  5. `/speckit.tasks` → 分解任务列表
-  6. `/speckit.analyze` → 一致性分析（推荐）
-  7. `/speckit.implement` → 执行代码实现
-  8. `/speckit.checklist` → 质量检查（可选）
+  2. `/speckit.specify` → 创建功能规范
+     - 可选：`/speckit.clarify` 澄清需求，消除歧义
+  3. `/speckit.plan` → 创建技术计划
+     - 可选：`/speckit.checklist` 质量检查清单
+  4. `/speckit.tasks` → 分解为任务
+     - 可选：`/speckit.analyze` 一致性分析
+  5. `/speckit.implement` → 执行实现
 - **辅助命令**：clarify（澄清模糊点）、analyze（一致性检查）、checklist（需求验证）
 - **扩展定制**：社区扩展安装、预设模板应用、优先级覆盖机制
-- **最佳实践**：先写原则再写规格、规格聚焦业务价值、迭代优于一次到位
+- **最佳实践**：8条实战建议，涵盖从原则制定到任务分解的全流程
+- **常见问题**：安装、使用、企业环境三大类问题解答
 
 ### [实战Harness工程.pdf](实战Harness工程.pdf)
 - **补充资料**：Superpowers 实战工程案例（从第 5 页开始）

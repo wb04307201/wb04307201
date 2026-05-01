@@ -45,10 +45,11 @@ OpenSpec  → 安全优先：像"审计员"一样追踪变更
 
 **核心命令流：**
 ```bash
-/speckit.specify    # 生成规格说明书
-/speckit.implement  # 基于规格生成代码
-/speckit.analyze    # 质量校验与合规检查
 /speckit.constitution # 定义项目规范"宪法"
+/speckit.specify      # 生成规格说明书（可选：/speckit.clarify 澄清需求）
+/speckit.plan         # 创建技术计划（可选：/speckit.checklist 质量检查清单）
+/speckit.tasks        # 分解为任务（可选：/speckit.analyze 一致性分析）
+/speckit.implement    # 基于规格生成代码
 ```
 
 **子代理分工模式：**
@@ -112,7 +113,7 @@ openspec archive
 
 | 工具           | 预估时间  | 关键步骤                      | 产出特点         |
 |--------------|-------|---------------------------|--------------|
-| **Spec-Kit** | ~15分钟 | specify→implement→analyze | 含完整测试，符合团队规范 |
+| **Spec-Kit** | ~15分钟 | specify→plan→tasks→implement（可选clarify/analyze/checklist） | 含完整测试，符合团队规范 |
 | **Kiro**     | ~10分钟 | 聊天描述→generate→auto-test   | 快速原型，体验流畅    |
 | **OpenSpec** | ~8分钟  | proposal→review→apply     | 变更隔离，安全可控    |
 
