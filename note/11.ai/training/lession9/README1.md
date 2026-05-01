@@ -113,6 +113,7 @@
    ```powershell
    uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
    ```
+5. 如果提示`warning: 'C:\Users\[用户]\.local\bin' is not on your PATH. To use installed tools, run '$env:PATH = "C:\Users\Administrator\.local\bin;$env:PATH"' or 'uv tool update-shell'.`请执行对应命令
 
 [更多信息请看：规范驱动开发工具深度解析：Spec-Kit、Kiro、OpenSpec](README5.md)
 [更多信息请看：Spec-Kit 规范驱动开发（SDD）工具包使用说明](README6.md)
@@ -189,12 +190,21 @@ mcp是一种协议，只要是符合这种协议开发的工具都可以接入AI
 [更多信息请看：MCP（Model Context Protocol）推荐](README2.md)
 
 ## **3. 插件安装**
-在终端中使用`claude`命令启动**Claude Code**后执行命令
+1. 安装 Git
+    - 访问 [https://git-scm.com/](https://git-scm.com/)
+    - 下载 Windows 安装包并安装
+
+2. 在终端中使用`claude`命令启动**Claude Code**后执行命令
 ```powershell
 /plugin install superpowers@claude-plugins-official
 /plugin install frontend-design@claude-plugins-official
 /plugin install code-review@claude-plugins-official
 ```
+如果启动claude时提示` Failed to install Anthropic marketplace · Will retry on next startup`，请按如下方式尝试解决：
+  1. 退出 Claude Code，重新进入  
+     `/exit`
+  2. 添加非官方仓库  
+     `/plugin marketplace add obra/superpowers-marketplace`
 
 [更多信息请看：Claude Code插件](README3.md)
 
