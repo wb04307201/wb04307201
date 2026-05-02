@@ -124,7 +124,7 @@ specify init . --force --ai claude
 ```
 
 ### 常用 `--ai` 参数值
-| 值         | 对应 AI 代理         |
+| 值         | 对应智能体            |
 |-----------|------------------|
 | `copilot` | GitHub Copilot   |
 | `claude`  | Claude Code      |
