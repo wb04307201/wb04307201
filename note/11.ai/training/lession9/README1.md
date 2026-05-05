@@ -189,7 +189,7 @@ mcp是一种协议，只要是符合这种协议开发的工具都可以接入AI
 
 [更多信息请看：MCP（Model Context Protocol）推荐](README2.md)
 
-## **3. 插件安装**
+## **5. 插件安装**
 1. 安装 Git
     - 访问 [https://git-scm.com/](https://git-scm.com/)
     - 下载 Windows 安装包并安装
