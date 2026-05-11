@@ -79,14 +79,14 @@
   - 技术计划（Implementation Plan）：技术栈、架构、数据模型
   - 任务列表（Tasks）：依赖关系、并行执行、测试任务
 - **完整工作流程（5步法+可选步骤）**：
-  1. `/speckit.constitution` → 建立项目原则
-  2. `/speckit.specify` → 创建功能规范
-     - 可选：`/speckit.clarify` 澄清需求，消除歧义
-  3. `/speckit.plan` → 创建技术计划
-     - 可选：`/speckit.checklist` 质量检查清单
-  4. `/speckit.tasks` → 分解为任务
-     - 可选：`/speckit.analyze` 一致性分析
-  5. `/speckit.implement` → 执行实现
+  1. `/speckit-constitution` → 建立项目原则
+  2. `/speckit-specify` → 创建功能规范
+     - 可选：`/speckit-clarify` 澄清需求，消除歧义
+  3. `/speckit-plan` → 创建技术计划
+     - 可选：`/speckit-checklist` 质量检查清单
+  4. `/speckit-tasks` → 分解为任务
+     - 可选：`/speckit-analyze` 一致性分析
+  5. `/speckit-implement` → 执行实现
 - **辅助命令**：clarify（澄清模糊点）、analyze（一致性检查）、checklist（需求验证）
 - **扩展定制**：社区扩展安装、预设模板应用、优先级覆盖机制
 - **最佳实践**：8条实战建议，涵盖从原则制定到任务分解的全流程

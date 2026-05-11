@@ -140,44 +140,44 @@ specify init . --force --ai claude
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│  1. /speckit.constitution - 建立项目原则              │
+│  1. /speckit-constitution - 建立项目原则              │
 └─────────────────────────────────────────────────────────────┘
 ↓
 ┌─────────────────────────────────────────────────────────────┐
-│  2. /speckit.specify - 创建功能规范                  │
+│  2. /speckit-specify - 创建功能规范                  │
 └─────────────────────────────────────────────────────────────┘
 ↓
 ┌──────────────┴──────────────┐
-│  可选：/speckit.clarify   │
+│  可选：/speckit-clarify   │
 │  澄清需求                │
 └──────────────┬──────────────┘
 ↓
 ┌─────────────────────────────────────────────────────────────┐
-│  3. /speckit.plan - 创建技术计划                    │
+│  3. /speckit-plan - 创建技术计划                    │
 └─────────────────────────────────────────────────────────────┘
 ↓
 ┌──────────────┴──────────────┐
-│  可选：/speckit.checklist │
+│  可选：/speckit-checklist │
 │  质量检查清单            │
 └──────────────┬──────────────┘
 ↓
 ┌─────────────────────────────────────────────────────────────┐
-│  4. /speckit.tasks - 分解为任务                     │
+│  4. /speckit-tasks - 分解为任务                     │
 └─────────────────────────────────────────────────────────────┘
 ↓
 ┌──────────────┴──────────────┐
-│  可选：/speckit.analyze    │
+│  可选：/speckit-analyze    │
 │  一致性分析              │
 └──────────────┬──────────────┘
 ↓
 ┌─────────────────────────────────────────────────────────────┐
-│  5. /speckit.implement - 执行实现                   │
+│  5. /speckit-implement - 执行实现                   │
 └─────────────────────────────────────────────────────────────┘
 ```
 
 ### 详细步骤
 
-#### 步骤 1：建立项目原则 `/speckit.constitution`
+#### 步骤 1：建立项目原则 `/speckit-constitution`
 
 **目的**：创建项目的核心原则和开发准则
 
@@ -187,7 +187,7 @@ specify init . --force --ai claude
 
 ```bash
 # 在 AI 助手对话框中输入：
-/speckit.constitution 请生成一套项目原则，重点涵盖：代码质量标准、测试规范（TDD驱动，覆盖率90%）、用户体验一致性要求，以及性能指标（UI响应时间严格控制在100ms以内）。
+/speckit-constitution 请生成一套项目原则，重点涵盖：代码质量标准、测试规范（TDD驱动，覆盖率90%）、用户体验一致性要求，以及性能指标（UI响应时间严格控制在100ms以内）。
 ```
 
 📄 **生成的文档包含**：
@@ -203,7 +203,7 @@ specify init . --force --ai claude
 
 ---
 
-#### 步骤 2：创建功能规范 `/speckit.specify`
+#### 步骤 2：创建功能规范 `/speckit-specify`
 
 **目的**：用自然语言描述要构建的功能
 
@@ -220,7 +220,7 @@ specify init . --force --ai claude
 - `specs/[###-feature-name]/spec.md`
 
 ```bash
-/speckit.specify 开发一款任务管理应用，核心功能需支持：
+/speckit-specify 开发一款任务管理应用，核心功能需支持：
 - 任务创建：支持填写任务名称、设置优先级（高/中/低）及截止日期
 - 任务筛选：支持按优先级与完成状态进行过滤
 - 快捷操作：支持一键标记任务为已完成
@@ -236,7 +236,7 @@ specify init . --force --ai claude
 
 ---
 
-#### 步骤 2.5（可选）：需求澄清 `/speckit.clarify`
+#### 步骤 2.5（可选）：需求澄清 `/speckit-clarify`
 
 **目的**：在规划之前提出结构化问题，降低模糊领域的风险
 
@@ -246,7 +246,7 @@ specify init . --force --ai claude
 - 有多个合理的解释
 
 ```bash
-/speckit.clarify
+/speckit-clarify
 ```
 
 ✅ **AI 代理将执行以下操作**：
@@ -282,7 +282,7 @@ specify init . --force --ai claude
 
 ---
 
-#### 步骤 3：创建技术计划 `/speckit.plan`
+#### 步骤 3：创建技术计划 `/speckit-plan`
 
 **目的**：提供技术栈和架构选择，将功能规范转化为技术设计
 
@@ -296,7 +296,7 @@ specify init . --force --ai claude
 - `specs/[###-feature-name]/contracts/`
 
 ```bash
-/speckit.plan 技术选型与架构要求：
+/speckit-plan 技术选型与架构要求：
 - UI 实现：采用原生 JavaScript 结合 Web Components 开发
 - 数据存储：使用 IndexedDB 进行本地持久化
 - 依赖管理：遵循"非必要不引入"原则，严禁无关第三方库
@@ -311,12 +311,12 @@ specify init . --force --ai claude
 
 ---
 
-#### 步骤 3.5（可选）：质量检查清单 `/speckit.checklist`
+#### 步骤 3.5（可选）：质量检查清单 `/speckit-checklist`
 
 **目的**：生成需求满足度检查清单，辅助人工审查
 
 ```bash
-/speckit.checklist
+/speckit-checklist
 ```
 
 📋 **生成内容**：
@@ -326,12 +326,12 @@ specify init . --force --ai claude
 
 ---
 
-#### 步骤 4：分解为任务 `/speckit.tasks`
+#### 步骤 4：分解为任务 `/speckit-tasks`
 
 **目的**：将技术计划分解为可执行的独立任务
 
 ```bash
-/speckit.tasks
+/speckit-tasks
 ```
 
 📄 **输出**：`tasks.md` — 含依赖关系、并行标记 `[P]`、文件路径、测试任务的详细任务清单
@@ -345,12 +345,12 @@ specify init . --force --ai claude
 
 ---
 
-#### 步骤 4.5（可选）：一致性分析 `/speckit.analyze`
+#### 步骤 4.5（可选）：一致性分析 `/speckit-analyze`
 
 **目的**：检查规格、计划、任务之间的一致性
 
 ```bash
-/speckit.analyze
+/speckit-analyze
 ```
 
 ✅ **AI 代理将执行以下检查**：
@@ -364,12 +364,12 @@ specify init . --force --ai claude
 
 ---
 
-#### 步骤 5：执行实现 `/speckit.implement`
+#### 步骤 5：执行实现 `/speckit-implement`
 
 **目的**：按照任务列表执行代码实现
 
 ```bash
-/speckit.implement
+/speckit-implement
 ```
 
 ✅ **AI 代理将**：
@@ -384,9 +384,9 @@ specify init . --force --ai claude
 
 | 命令                   | 作用               | 使用时机                              | 输出内容                  |
 |----------------------|------------------|-----------------------------------|-----------------------|
-| `/speckit.clarify`   | 识别规格模糊点，引导用户澄清   | 在 `/specify` 之后，`/plan` 之前（可选）    | 结构化问题列表，帮助用户明确需求细节    |
-| `/speckit.analyze`   | 检查规格/计划/任务之间的一致性 | 在 `/tasks` 之后，`/implement` 之前（可选） | 一致性分析报告，列出不一致项和建议修复方案 |
-| `/speckit.checklist` | 生成需求验证清单         | 在 `/plan` 之后或实现完成后审查（可选）          | 需求满足度检查清单，辅助人工审查      |
+| `/speckit-clarify`   | 识别规格模糊点，引导用户澄清   | 在 `/specify` 之后，`/plan` 之前（可选）    | 结构化问题列表，帮助用户明确需求细节    |
+| `/speckit-analyze`   | 检查规格/计划/任务之间的一致性 | 在 `/tasks` 之后，`/implement` 之前（可选） | 一致性分析报告，列出不一致项和建议修复方案 |
+| `/speckit-checklist` | 生成需求验证清单         | 在 `/plan` 之后或实现完成后审查（可选）          | 需求满足度检查清单，辅助人工审查      |
 
 **使用建议**：
 - **简单项目**：可以跳过可选步骤，直接执行核心流程
@@ -435,12 +435,12 @@ specify preset add enterprise-security
 - 安全要求（如：输入验证、数据加密）
 
 ### 2. 规格聚焦业务价值
-`/specify` 阶段只描述 **做什么** 和 **为什么**，不涉及技术实现。
+`/speckit-specify` 阶段只描述 **做什么** 和 **为什么**，不涉及技术实现。
 - ✅ 好："用户可以按优先级筛选任务"
 - ❌ 坏："使用 SQL WHERE 子句查询 priority 字段"
 
 ### 3. 善用可选步骤
-根据项目复杂度灵活使用 `/clarify`、`/analyze` 和 `/checklist` 提升质量：
+根据项目复杂度灵活使用 `/speckit-clarify`、`/speckit-analyze` 和 `/speckit-checklist` 提升质量：
 - **个人小项目**：可以跳过可选步骤
 - **团队项目**：建议使用 `/clarify` 消除歧义
 - **关键系统**：建议使用所有可选步骤
@@ -448,7 +448,7 @@ specify preset add enterprise-security
 ### 4. 迭代优于一次到位
 需求变更时，遵循以下流程：
 ```
-修改 spec.md → 重跑 /plan → /tasks → /implement
+修改 spec.md → 重跑 /speckit-plan → /speckit-tasks → /speckit-implement
 ```
 不要直接在代码层面修改，保持规范与代码同步。
 
@@ -470,7 +470,7 @@ git merge feature/task-filter
 - **按优先级排序**：P1 > P2 > P3
 
 ### 7. 技术计划要考虑约束
-在 `/plan` 阶段，必须考虑：
+在 `/speckit-plan` 阶段，必须考虑：
 - 项目原则中的约束
 - 现有技术栈的限制
 - 团队技能水平
@@ -499,10 +499,10 @@ git merge feature/task-filter
 
 | 问题           | 解决方案                                                        |
 |--------------|-------------------------------------------------------------|
-| AI 生成代码不符合规范 | 检查 `constitution.md` 是否明确，或在 `/specify` 后使用 `/clarify` 补充细节 |
-| 需求变更后如何同步    | 修改 `spec.md` → 重跑 `/plan` → `/tasks` → `/implement`         |
+| AI 生成代码不符合规范 | 检查 `constitution.md` 是否明确，或在 `/speckit-specify` 后使用 `/speckit-clarify` 补充细节 |
+| 需求变更后如何同步    | 修改 `spec.md` → 重跑 `/speckit-plan` → `/speckit-tasks` → `/speckit-implement`         |
 | 任务执行顺序错误     | 检查 `tasks.md` 中的依赖关系，确保前置任务已完成                              |
-| 规格与技术计划不一致   | 运行 `/speckit.analyze` 检查一致性，根据报告修复                          |
+| 规格与技术计划不一致   | 运行 `/speckit-analyze` 检查一致性，根据报告修复                          |
 
 ### 企业环境
 

@@ -45,11 +45,11 @@ OpenSpec  → 安全优先：像"审计员"一样追踪变更
 
 **核心命令流：**
 ```bash
-/speckit.constitution # 定义项目规范"宪法"
-/speckit.specify      # 生成规格说明书（可选：/speckit.clarify 澄清需求）
-/speckit.plan         # 创建技术计划（可选：/speckit.checklist 质量检查清单）
-/speckit.tasks        # 分解为任务（可选：/speckit.analyze 一致性分析）
-/speckit.implement    # 基于规格生成代码
+/speckit-constitution # 定义项目规范"宪法"
+/speckit-specify      # 生成规格说明书（可选：/speckit-clarify 澄清需求）
+/speckit-plan         # 创建技术计划（可选：/speckit-checklist 质量检查清单）
+/speckit-tasks        # 分解为任务（可选：/speckit-analyze 一致性分析）
+/speckit-implement    # 基于规格生成代码
 ```
 
 **子代理分工模式：**
