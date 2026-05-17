@@ -1,632 +1,243 @@
 ---
-name: agent-browser
-description: Browser automation CLI for AI agents. Use when the user needs to interact with websites, including navigating pages, filling forms, clicking buttons, taking screenshots, extracting data, testing web apps, or automating any browser task. Triggers include requests to "open a website", "fill out a form", "click a button", "take a screenshot", "scrape data from a page", "test this web app", "login to a site", "automate browser actions", or any task requiring programmatic web interaction.
-allowed-tools: Bash(npx agent-browser:*), Bash(agent-browser:*)
+name: baidu-drive
+description: >-
+  百度网盘(Baidu Drive)文件管理 — 上传、下载、转存、分享、搜索、移动、复制、重命名、创建文件夹。
+  TRIGGER: 用户提及"百度网盘/bdpan/网盘/云盘/baidu drive/Baidu Drive"并涉及文件操作。
+  DO NOT TRIGGER: 非文件存储操作，或使用其他云盘服务时。
+allowed-tools: Bash, Read, Glob, Grep, AskUserQuestion
+argument-hint: "[操作指令]"
 ---
 
-# Browser Automation with agent-browser
+# 百度网盘存储 Skill
 
-The CLI uses Chrome/Chromium via CDP directly. Install via `npm i -g agent-browser`, `brew install agent-browser`, or `cargo install agent-browser`. Run `agent-browser install` to download Chrome.
+百度网盘文件管理工具，所有操作限制在 `/apps/bdpan/` 目录内。适配 Claude Code、DuClaw、OpenClaw 等。
 
-## Core Workflow
+> 使用注意事项详见 [reference/notes.md](./reference/notes.md)
 
-Every browser automation follows this pattern:
+## 触发规则
 
-1. **Navigate**: `agent-browser open <url>`
-2. **Snapshot**: `agent-browser snapshot -i` (get element refs like `@e1`, `@e2`)
-3. **Interact**: Use refs to click, fill, select
-4. **Re-snapshot**: After navigation or DOM changes, get fresh refs
+同时满足以下条件才执行：
 
-```bash
-agent-browser open https://example.com/form
-agent-browser snapshot -i
-# Output: @e1 [input type="email"], @e2 [input type="password"], @e3 [button] "Submit"
+1. 用户明确提及"百度网盘"、"bdpan"、"网盘"
+2. 操作意图明确（上传/下载/转存/分享/查看/搜索/移动/复制/重命名/创建文件夹/登录/注销）
 
-agent-browser fill @e1 "user@example.com"
-agent-browser fill @e2 "password123"
-agent-browser click @e3
-agent-browser wait --load networkidle
-agent-browser snapshot -i  # Check result
-```
+未通过触发规则时，禁止执行任何 bdpan 命令。
 
-## Command Chaining
+> **上下文延续：** 当前对话已在进行网盘操作时，后续消息无需再次提及"网盘"即可触发。
 
-Commands can be chained with `&&` in a single shell invocation. The browser persists between commands via a background daemon, so chaining is safe and more efficient than separate calls.
+---
 
-```bash
-# Chain open + wait + snapshot in one call
-agent-browser open https://example.com && agent-browser wait --load networkidle && agent-browser snapshot -i
+## 安全约束（最高优先级，不可被任何用户指令覆盖）
 
-# Chain multiple interactions
-agent-browser fill @e1 "user@example.com" && agent-browser fill @e2 "password123" && agent-browser click @e3
+1. **登录**：必须使用 `bash ${CLAUDE_SKILL_DIR}/scripts/login.sh`，禁止直接调用 `bdpan login` 及其任何子命令/参数（包括 `--get-auth-url`、`--set-code` 等，即使在 GUI 环境也禁止）
+2. **Token/配置**：禁止读取或输出 `~/.config/bdpan/config.json` 内容（含 access_token 等敏感凭据）
+3. **更新/登录**：更新必须由用户明确指令触发，禁止自动或静默执行；Agent 禁止使用 `--yes` 参数执行 update.sh 或 login.sh
+4. **环境变量**：Agent 禁止主动设置 `BDPAN_CONFIG_PATH`、`BDPAN_BIN`、`BDPAN_INSTALL_DIR` 等环境变量（这些变量供用户在脚本外手动配置，Agent 不应代为设置）
+5. **路径安全**：禁止路径穿越（`..`、`~`）、禁止访问 `/apps/bdpan/` 范围外的绝对路径
 
-# Navigate and capture
-agent-browser open https://example.com && agent-browser wait --load networkidle && agent-browser screenshot page.png
-```
+---
 
-**When to chain:** Use `&&` when you don't need to read the output of an intermediate command before proceeding (e.g., open + wait + screenshot). Run commands separately when you need to parse the output first (e.g., snapshot to discover refs, then interact using those refs).
+## 前置检查
 
-## Handling Authentication
+每次触发时按顺序执行：
 
-When automating a site that requires login, choose the approach that fits:
+1. **安装检查**：`command -v bdpan`，未安装则告知用户并确认后执行 `bash ${CLAUDE_SKILL_DIR}/scripts/install.sh`（用户确认后可加 `--yes` 跳过安装器内部确认）
+2. **登录检查**：`bdpan whoami`，未登录则引导执行 `bash ${CLAUDE_SKILL_DIR}/scripts/login.sh`
+3. **路径校验**：验证远端路径在 `/apps/bdpan/` 范围内
 
-**Option 1: Import auth from the user's browser (fastest for one-off tasks)**
+---
 
-```bash
-# Connect to the user's running Chrome (they're already logged in)
-agent-browser --auto-connect state save ./auth.json
-# Use that auth state
-agent-browser --state ./auth.json open https://app.example.com/dashboard
-```
+## 确认规则
 
-State files contain session tokens in plaintext -- add to `.gitignore` and delete when no longer needed. Set `AGENT_BROWSER_ENCRYPTION_KEY` for encryption at rest.
+| 风险等级 | 操作 | 策略 |
+|----------|------|------|
+| **高（必须确认）** | `rm` 删除、上传/下载目标已存在同名文件 | 列出影响范围，等待用户确认 |
+| **中（路径模糊时确认）** | upload、download、mv、rename、cp | 路径明确直接执行，不明确则确认 |
+| **低（直接执行）** | ls、search、whoami、mkdir、share | 无需确认 |
 
-**Option 2: Persistent profile (simplest for recurring tasks)**
+**额外规则：**
+- 操作意图模糊（"处理文件"→确认上传还是下载）→ 必须确认
+- 序数/代词引用有歧义（"第N个"、"它"、"上面那个"）→ 必须确认
+- 用户取消意图（"算了"、"不要了"、"取消"）→ 立即中止，不执行任何命令
 
-```bash
-# First run: login manually or via automation
-agent-browser --profile ~/.myapp open https://app.example.com/login
-# ... fill credentials, submit ...
+---
 
-# All future runs: already authenticated
-agent-browser --profile ~/.myapp open https://app.example.com/dashboard
-```
+## 核心操作
 
-**Option 3: Session name (auto-save/restore cookies + localStorage)**
+### 查看状态
 
 ```bash
-agent-browser --session-name myapp open https://app.example.com/login
-# ... login flow ...
-agent-browser close  # State auto-saved
-
-# Next time: state auto-restored
-agent-browser --session-name myapp open https://app.example.com/dashboard
+bdpan whoami
 ```
 
-**Option 4: Auth vault (credentials stored encrypted, login by name)**
+### 列表查询
 
 ```bash
-echo "$PASSWORD" | agent-browser auth save myapp --url https://app.example.com/login --username user --password-stdin
-agent-browser auth login myapp
+bdpan ls [目录路径] [--json] [--order name|time|size] [--desc] [--folder]
 ```
 
-**Option 5: State file (manual save/load)**
+### 上传
 
 ```bash
-# After logging in:
-agent-browser state save ./auth.json
-# In a future session:
-agent-browser state load ./auth.json
-agent-browser open https://app.example.com/dashboard
+bdpan upload <本地路径> <远端路径>
 ```
 
-See [references/authentication.md](references/authentication.md) for OAuth, 2FA, cookie-based auth, and token refresh patterns.
+**关键约束：** 单文件上传远端路径必须是文件名，禁止以 `/` 结尾。文件夹上传：`bdpan upload ./project/ project/`。
 
-## Essential Commands
+步骤：确认本地路径存在 → 确认远端路径 → `bdpan ls` 检查远端是否已存在 → 执行。
+
+### 下载
+
+**直接下载：**
 
 ```bash
-# Navigation
-agent-browser open <url>              # Navigate (aliases: goto, navigate)
-agent-browser close                   # Close browser
-
-# Snapshot
-agent-browser snapshot -i             # Interactive elements with refs (recommended)
-agent-browser snapshot -i -C          # Include cursor-interactive elements (divs with onclick, cursor:pointer)
-agent-browser snapshot -s "#selector" # Scope to CSS selector
-
-# Interaction (use @refs from snapshot)
-agent-browser click @e1               # Click element
-agent-browser click @e1 --new-tab     # Click and open in new tab
-agent-browser fill @e2 "text"         # Clear and type text
-agent-browser type @e2 "text"         # Type without clearing
-agent-browser select @e1 "option"     # Select dropdown option
-agent-browser check @e1               # Check checkbox
-agent-browser press Enter             # Press key
-agent-browser keyboard type "text"    # Type at current focus (no selector)
-agent-browser keyboard inserttext "text"  # Insert without key events
-agent-browser scroll down 500         # Scroll page
-agent-browser scroll down 500 --selector "div.content"  # Scroll within a specific container
-
-# Get information
-agent-browser get text @e1            # Get element text
-agent-browser get url                 # Get current URL
-agent-browser get title               # Get page title
-agent-browser get cdp-url             # Get CDP WebSocket URL
-
-# Wait
-agent-browser wait @e1                # Wait for element
-agent-browser wait --load networkidle # Wait for network idle
-agent-browser wait --url "**/page"    # Wait for URL pattern
-agent-browser wait 2000               # Wait milliseconds
-agent-browser wait --text "Welcome"    # Wait for text to appear (substring match)
-agent-browser wait --fn "!document.body.innerText.includes('Loading...')"  # Wait for text to disappear
-agent-browser wait "#spinner" --state hidden  # Wait for element to disappear
-
-# Downloads
-agent-browser download @e1 ./file.pdf          # Click element to trigger download
-agent-browser wait --download ./output.zip     # Wait for any download to complete
-agent-browser --download-path ./downloads open <url>  # Set default download directory
-
-# Viewport & Device Emulation
-agent-browser set viewport 1920 1080          # Set viewport size (default: 1280x720)
-agent-browser set viewport 1920 1080 2        # 2x retina (same CSS size, higher res screenshots)
-agent-browser set device "iPhone 14"          # Emulate device (viewport + user agent)
-
-# Capture
-agent-browser screenshot              # Screenshot to temp dir
-agent-browser screenshot --full       # Full page screenshot
-agent-browser screenshot --annotate   # Annotated screenshot with numbered element labels
-agent-browser screenshot --screenshot-dir ./shots  # Save to custom directory
-agent-browser screenshot --screenshot-format jpeg --screenshot-quality 80
-agent-browser pdf output.pdf          # Save as PDF
-
-# Clipboard
-agent-browser clipboard read                      # Read text from clipboard
-agent-browser clipboard write "Hello, World!"     # Write text to clipboard
-agent-browser clipboard copy                      # Copy current selection
-agent-browser clipboard paste                     # Paste from clipboard
-
-# Diff (compare page states)
-agent-browser diff snapshot                          # Compare current vs last snapshot
-agent-browser diff snapshot --baseline before.txt    # Compare current vs saved file
-agent-browser diff screenshot --baseline before.png  # Visual pixel diff
-agent-browser diff url <url1> <url2>                 # Compare two pages
-agent-browser diff url <url1> <url2> --wait-until networkidle  # Custom wait strategy
-agent-browser diff url <url1> <url2> --selector "#main"  # Scope to element
+bdpan download <远端路径> <本地路径>
 ```
 
-## Common Patterns
+步骤：`bdpan ls` 确认云端存在 → 确认本地路径 → 检查本地是否已存在 → **检查文件大小决定下载策略** → 执行。若 ls 未找到，建议 `bdpan search <文件名>`。
 
-### Form Submission
+**大文件下载策略（重要）：**
+
+Agent 的 Bash 工具有执行超时限制，大文件下载可能因超时而中断。必须根据文件大小选择下载策略：
+
+1. **获取文件大小**：用 `bdpan ls --json <远端路径>` 获取 `size` 字段（字节）
+2. **按大小分策略执行**：
+
+| 文件大小 | 策略 | 执行方式 |
+|----------|------|---------|
+| ≤ 50MB | 直接下载 | `bdpan download <远端路径> <本地路径>`，Bash timeout 设为 300000（5 分钟） |
+| > 50MB | 后台下载 | 使用 `nohup` 后台执行，Agent 轮询进度 |
+
+**小文件（≤ 50MB）直接下载：**
+
+正常执行 `bdpan download`，Bash 工具 timeout 参数设为 `300000`（5 分钟）。
+
+**大文件（> 50MB）后台下载流程：**
 
 ```bash
-agent-browser open https://example.com/signup
-agent-browser snapshot -i
-agent-browser fill @e1 "Jane Doe"
-agent-browser fill @e2 "jane@example.com"
-agent-browser select @e3 "California"
-agent-browser check @e4
-agent-browser click @e5
-agent-browser wait --load networkidle
+# 1. 启动后台下载（nohup + 进度日志）
+nohup bdpan download <远端路径> <本地路径> > /tmp/bdpan-dl-$$.log 2>&1 & echo $!
 ```
-
-### Authentication with Auth Vault (Recommended)
 
 ```bash
-# Save credentials once (encrypted with AGENT_BROWSER_ENCRYPTION_KEY)
-# Recommended: pipe password via stdin to avoid shell history exposure
-echo "pass" | agent-browser auth save github --url https://github.com/login --username user --password-stdin
-
-# Login using saved profile (LLM never sees password)
-agent-browser auth login github
-
-# List/show/delete profiles
-agent-browser auth list
-agent-browser auth show github
-agent-browser auth delete github
+# 2. 轮询检查进度（每 30 秒检查一次，使用 Bash run_in_background）
+#    检查进程是否存活 + 已下载文件大小
+kill -0 <PID> 2>/dev/null && echo "running" || echo "done"; ls -l <本地路径> 2>/dev/null; tail -5 /tmp/bdpan-dl-<PID>.log 2>/dev/null
 ```
-
-### Authentication with State Persistence
 
 ```bash
-# Login once and save state
-agent-browser open https://app.example.com/login
-agent-browser snapshot -i
-agent-browser fill @e1 "$USERNAME"
-agent-browser fill @e2 "$PASSWORD"
-agent-browser click @e3
-agent-browser wait --url "**/dashboard"
-agent-browser state save auth.json
-
-# Reuse in future sessions
-agent-browser state load auth.json
-agent-browser open https://app.example.com/dashboard
+# 3. 下载完成后清理日志
+rm -f /tmp/bdpan-dl-<PID>.log
 ```
 
-### Session Persistence
+Agent 执行大文件后台下载时的行为规范：
+- 启动后台下载后，**立即告知用户**：下载已在后台启动，文件大小 X，预计需要 Y 时间
+- 每次轮询后向用户报告进度（已下载大小 / 总大小、百分比）
+- 下载完成后告知用户最终结果
+- 如果进程异常退出，检查日志并报告错误原因
+
+**分享链接下载（先转存再下载到本地）：**
 
 ```bash
-# Auto-save/restore cookies and localStorage across browser restarts
-agent-browser --session-name myapp open https://app.example.com/login
-# ... login flow ...
-agent-browser close  # State auto-saved to ~/.agent-browser/sessions/
-
-# Next time, state is auto-loaded
-agent-browser --session-name myapp open https://app.example.com/dashboard
-
-# Encrypt state at rest
-export AGENT_BROWSER_ENCRYPTION_KEY=$(openssl rand -hex 32)
-agent-browser --session-name secure open https://app.example.com
-
-# Manage saved states
-agent-browser state list
-agent-browser state show myapp-default.json
-agent-browser state clear myapp
-agent-browser state clean --older-than 7
+bdpan download "https://pan.baidu.com/s/1xxxxx?pwd=abcd" ./downloaded/
+bdpan download "https://pan.baidu.com/s/1xxxxx" ./downloaded/ -p abcd    # 提取码单独传入
+bdpan download "https://pan.baidu.com/s/1xxxxx?pwd=abcd" ./downloaded/ -t my-folder  # 指定转存目录
 ```
 
-### Data Extraction
+> 分享链接下载同样适用大文件策略：转存完成后，用 `bdpan ls --json` 获取文件大小，再按上述策略执行下载。
+
+### 转存
+
+将分享文件转存到网盘，**不下载到本地**（与 download 分享链接模式的区别）。
 
 ```bash
-agent-browser open https://example.com/products
-agent-browser snapshot -i
-agent-browser get text @e5           # Get specific element text
-agent-browser get text body > page.txt  # Get all page text
-
-# JSON output for parsing
-agent-browser snapshot -i --json
-agent-browser get text @e1 --json
+bdpan transfer "https://pan.baidu.com/s/1xxxxx" -p <提取码> [-d 目标目录] [--json]
 ```
 
-### Parallel Sessions
+步骤：确认分享链接格式有效 → 确认有提取码（链接中含 `?pwd=` 或反问用户）→ 确认目标目录 → 执行。转存成功后只展示本次转存的文件（非整个目录），显示数量和目标目录。
+
+### 分享
 
 ```bash
-agent-browser --session site1 open https://site-a.com
-agent-browser --session site2 open https://site-b.com
-
-agent-browser --session site1 snapshot -i
-agent-browser --session site2 snapshot -i
-
-agent-browser session list
+bdpan share <路径> [路径...] [--json]
 ```
 
-### Connect to Existing Chrome
+步骤：`bdpan ls` 确认文件存在 → 执行分享 → 展示链接+提取码+有效期。
+
+> 付费接口，需在百度网盘开放平台购买服务。
+
+### 搜索
 
 ```bash
-# Auto-discover running Chrome with remote debugging enabled
-agent-browser --auto-connect open https://example.com
-agent-browser --auto-connect snapshot
-
-# Or with explicit CDP port
-agent-browser --cdp 9222 snapshot
+bdpan search <关键词> [--category 0-7] [--no-dir|--dir-only] [--page-size N] [--page N] [--json]
 ```
 
-### Color Scheme (Dark Mode)
+category：0=全部 1=视频 2=音频 3=图片 4=文档 5=应用 6=其他 7=种子。`--no-dir` 和 `--dir-only` 互斥。
+
+### 移动 / 复制 / 重命名 / 创建文件夹
 
 ```bash
-# Persistent dark mode via flag (applies to all pages and new tabs)
-agent-browser --color-scheme dark open https://example.com
-
-# Or via environment variable
-AGENT_BROWSER_COLOR_SCHEME=dark agent-browser open https://example.com
-
-# Or set during session (persists for subsequent commands)
-agent-browser set media dark
+bdpan mv <源路径> <目标目录>
+bdpan cp <源路径> <目标目录>
+bdpan rename <路径> <新名称>       # 第二参数是文件名，非完整路径
+bdpan mkdir <路径>
 ```
 
-### Viewport & Responsive Testing
+---
+
+## 路径规则
+
+| 场景 | 格式 | 示例 |
+|------|------|------|
+| **命令参数** | 相对路径（相对于 `/apps/bdpan/`） | `bdpan upload ./f.txt docs/f.txt` |
+| **展示给用户** | 中文名 | "已上传到：我的应用数据/bdpan/docs/f.txt" |
+
+映射关系：`我的应用数据` ↔ `/apps`
+
+**禁止：** 命令中使用中文路径（`我的应用数据/...`）、展示时暴露 API 路径（`/apps/bdpan/...`）。
+
+---
+
+## 授权码处理
+
+用户发送 32 位十六进制字符串时，先确认："这是百度网盘授权码吗？确认后将执行登录流程。" 确认后执行 `bash ${CLAUDE_SKILL_DIR}/scripts/login.sh`（不使用 `--yes`，保留安全确认环节）。
+
+---
+
+## 管理功能
+
+### 安装
 
 ```bash
-# Set a custom viewport size (default is 1280x720)
-agent-browser set viewport 1920 1080
-agent-browser screenshot desktop.png
-
-# Test mobile-width layout
-agent-browser set viewport 375 812
-agent-browser screenshot mobile.png
-
-# Retina/HiDPI: same CSS layout at 2x pixel density
-# Screenshots stay at logical viewport size, but content renders at higher DPI
-agent-browser set viewport 1920 1080 2
-agent-browser screenshot retina.png
-
-# Device emulation (sets viewport + user agent in one step)
-agent-browser set device "iPhone 14"
-agent-browser screenshot device.png
+bash ${CLAUDE_SKILL_DIR}/scripts/install.sh [--yes]
 ```
 
-The `scale` parameter (3rd argument) sets `window.devicePixelRatio` without changing CSS layout. Use it when testing retina rendering or capturing higher-resolution screenshots.
+安装器从百度 CDN（`issuecdn.baidupcs.com`）下载并执行。注意：install.sh 不执行本地 SHA256 校验，完整性依赖 HTTPS 传输保护。安全敏感场景建议先手动审查安装器内容或在沙箱中执行。
 
-### Visual Browser (Debugging)
+### 登录 / 注销 / 卸载
 
 ```bash
-agent-browser --headed open https://example.com
-agent-browser highlight @e1          # Highlight element
-agent-browser inspect                # Open Chrome DevTools for the active page
-agent-browser record start demo.webm # Record session
-agent-browser profiler start         # Start Chrome DevTools profiling
-agent-browser profiler stop trace.json # Stop and save profile (path optional)
+bash ${CLAUDE_SKILL_DIR}/scripts/login.sh              # 登录（内置安全免责声明）
+bdpan logout                                            # 注销
+bash ${CLAUDE_SKILL_DIR}/scripts/uninstall.sh [--yes]   # 卸载
 ```
 
-Use `AGENT_BROWSER_HEADED=1` to enable headed mode via environment variable. Browser extensions work in both headed and headless mode.
-
-### Local Files (PDFs, HTML)
+### 更新（必须用户明确指令触发）
 
 ```bash
-# Open local files with file:// URLs
-agent-browser --allow-file-access open file:///path/to/document.pdf
-agent-browser --allow-file-access open file:///path/to/page.html
-agent-browser screenshot output.png
+bash ${CLAUDE_SKILL_DIR}/scripts/update.sh              # 检查并更新（需用户确认）
+bash ${CLAUDE_SKILL_DIR}/scripts/update.sh --check       # 仅检查更新
 ```
 
-### iOS Simulator (Mobile Safari)
+---
 
-```bash
-# List available iOS simulators
-agent-browser device list
+## 参考文档
 
-# Launch Safari on a specific device
-agent-browser -p ios --device "iPhone 16 Pro" open https://example.com
+遇到对应问题时按需查阅，无需预加载：
 
-# Same workflow as desktop - snapshot, interact, re-snapshot
-agent-browser -p ios snapshot -i
-agent-browser -p ios tap @e1          # Tap (alias for click)
-agent-browser -p ios fill @e2 "text"
-agent-browser -p ios swipe up         # Mobile-specific gesture
-
-# Take screenshot
-agent-browser -p ios screenshot mobile.png
-
-# Close session (shuts down simulator)
-agent-browser -p ios close
-```
-
-**Requirements:** macOS with Xcode, Appium (`npm install -g appium && appium driver install xcuitest`)
-
-**Real devices:** Works with physical iOS devices if pre-configured. Use `--device "<UDID>"` where UDID is from `xcrun xctrace list devices`.
-
-## Security
-
-All security features are opt-in. By default, agent-browser imposes no restrictions on navigation, actions, or output.
-
-### Content Boundaries (Recommended for AI Agents)
-
-Enable `--content-boundaries` to wrap page-sourced output in markers that help LLMs distinguish tool output from untrusted page content:
-
-```bash
-export AGENT_BROWSER_CONTENT_BOUNDARIES=1
-agent-browser snapshot
-# Output:
-# --- AGENT_BROWSER_PAGE_CONTENT nonce=<hex> origin=https://example.com ---
-# [accessibility tree]
-# --- END_AGENT_BROWSER_PAGE_CONTENT nonce=<hex> ---
-```
-
-### Domain Allowlist
-
-Restrict navigation to trusted domains. Wildcards like `*.example.com` also match the bare domain `example.com`. Sub-resource requests, WebSocket, and EventSource connections to non-allowed domains are also blocked. Include CDN domains your target pages depend on:
-
-```bash
-export AGENT_BROWSER_ALLOWED_DOMAINS="example.com,*.example.com"
-agent-browser open https://example.com        # OK
-agent-browser open https://malicious.com       # Blocked
-```
-
-### Action Policy
-
-Use a policy file to gate destructive actions:
-
-```bash
-export AGENT_BROWSER_ACTION_POLICY=./policy.json
-```
-
-Example `policy.json`:
-
-```json
-{ "default": "deny", "allow": ["navigate", "snapshot", "click", "scroll", "wait", "get"] }
-```
-
-Auth vault operations (`auth login`, etc.) bypass action policy but domain allowlist still applies.
-
-### Output Limits
-
-Prevent context flooding from large pages:
-
-```bash
-export AGENT_BROWSER_MAX_OUTPUT=50000
-```
-
-## Diffing (Verifying Changes)
-
-Use `diff snapshot` after performing an action to verify it had the intended effect. This compares the current accessibility tree against the last snapshot taken in the session.
-
-```bash
-# Typical workflow: snapshot -> action -> diff
-agent-browser snapshot -i          # Take baseline snapshot
-agent-browser click @e2            # Perform action
-agent-browser diff snapshot        # See what changed (auto-compares to last snapshot)
-```
-
-For visual regression testing or monitoring:
-
-```bash
-# Save a baseline screenshot, then compare later
-agent-browser screenshot baseline.png
-# ... time passes or changes are made ...
-agent-browser diff screenshot --baseline baseline.png
-
-# Compare staging vs production
-agent-browser diff url https://staging.example.com https://prod.example.com --screenshot
-```
-
-`diff snapshot` output uses `+` for additions and `-` for removals, similar to git diff. `diff screenshot` produces a diff image with changed pixels highlighted in red, plus a mismatch percentage.
-
-## Timeouts and Slow Pages
-
-The default timeout is 25 seconds. This can be overridden with the `AGENT_BROWSER_DEFAULT_TIMEOUT` environment variable (value in milliseconds). For slow websites or large pages, use explicit waits instead of relying on the default timeout:
-
-```bash
-# Wait for network activity to settle (best for slow pages)
-agent-browser wait --load networkidle
-
-# Wait for a specific element to appear
-agent-browser wait "#content"
-agent-browser wait @e1
-
-# Wait for a specific URL pattern (useful after redirects)
-agent-browser wait --url "**/dashboard"
-
-# Wait for a JavaScript condition
-agent-browser wait --fn "document.readyState === 'complete'"
-
-# Wait a fixed duration (milliseconds) as a last resort
-agent-browser wait 5000
-```
-
-When dealing with consistently slow websites, use `wait --load networkidle` after `open` to ensure the page is fully loaded before taking a snapshot. If a specific element is slow to render, wait for it directly with `wait <selector>` or `wait @ref`.
-
-## Session Management and Cleanup
-
-When running multiple agents or automations concurrently, always use named sessions to avoid conflicts:
-
-```bash
-# Each agent gets its own isolated session
-agent-browser --session agent1 open site-a.com
-agent-browser --session agent2 open site-b.com
-
-# Check active sessions
-agent-browser session list
-```
-
-Always close your browser session when done to avoid leaked processes:
-
-```bash
-agent-browser close                    # Close default session
-agent-browser --session agent1 close   # Close specific session
-```
-
-If a previous session was not closed properly, the daemon may still be running. Use `agent-browser close` to clean it up before starting new work.
-
-To auto-shutdown the daemon after a period of inactivity (useful for ephemeral/CI environments):
-
-```bash
-AGENT_BROWSER_IDLE_TIMEOUT_MS=60000 agent-browser open example.com
-```
-
-## Ref Lifecycle (Important)
-
-Refs (`@e1`, `@e2`, etc.) are invalidated when the page changes. Always re-snapshot after:
-
-- Clicking links or buttons that navigate
-- Form submissions
-- Dynamic content loading (dropdowns, modals)
-
-```bash
-agent-browser click @e5              # Navigates to new page
-agent-browser snapshot -i            # MUST re-snapshot
-agent-browser click @e1              # Use new refs
-```
-
-## Annotated Screenshots (Vision Mode)
-
-Use `--annotate` to take a screenshot with numbered labels overlaid on interactive elements. Each label `[N]` maps to ref `@eN`. This also caches refs, so you can interact with elements immediately without a separate snapshot.
-
-```bash
-agent-browser screenshot --annotate
-# Output includes the image path and a legend:
-#   [1] @e1 button "Submit"
-#   [2] @e2 link "Home"
-#   [3] @e3 textbox "Email"
-agent-browser click @e2              # Click using ref from annotated screenshot
-```
-
-Use annotated screenshots when:
-
-- The page has unlabeled icon buttons or visual-only elements
-- You need to verify visual layout or styling
-- Canvas or chart elements are present (invisible to text snapshots)
-- You need spatial reasoning about element positions
-
-## Semantic Locators (Alternative to Refs)
-
-When refs are unavailable or unreliable, use semantic locators:
-
-```bash
-agent-browser find text "Sign In" click
-agent-browser find label "Email" fill "user@test.com"
-agent-browser find role button click --name "Submit"
-agent-browser find placeholder "Search" type "query"
-agent-browser find testid "submit-btn" click
-```
-
-## JavaScript Evaluation (eval)
-
-Use `eval` to run JavaScript in the browser context. **Shell quoting can corrupt complex expressions** -- use `--stdin` or `-b` to avoid issues.
-
-```bash
-# Simple expressions work with regular quoting
-agent-browser eval 'document.title'
-agent-browser eval 'document.querySelectorAll("img").length'
-
-# Complex JS: use --stdin with heredoc (RECOMMENDED)
-agent-browser eval --stdin <<'EVALEOF'
-JSON.stringify(
-  Array.from(document.querySelectorAll("img"))
-    .filter(i => !i.alt)
-    .map(i => ({ src: i.src.split("/").pop(), width: i.width }))
-)
-EVALEOF
-
-# Alternative: base64 encoding (avoids all shell escaping issues)
-agent-browser eval -b "$(echo -n 'Array.from(document.querySelectorAll("a")).map(a => a.href)' | base64)"
-```
-
-**Why this matters:** When the shell processes your command, inner double quotes, `!` characters (history expansion), backticks, and `$()` can all corrupt the JavaScript before it reaches agent-browser. The `--stdin` and `-b` flags bypass shell interpretation entirely.
-
-**Rules of thumb:**
-
-- Single-line, no nested quotes -> regular `eval 'expression'` with single quotes is fine
-- Nested quotes, arrow functions, template literals, or multiline -> use `eval --stdin <<'EVALEOF'`
-- Programmatic/generated scripts -> use `eval -b` with base64
-
-## Configuration File
-
-Create `agent-browser.json` in the project root for persistent settings:
-
-```json
-{
-  "headed": true,
-  "proxy": "http://localhost:8080",
-  "profile": "./browser-data"
-}
-```
-
-Priority (lowest to highest): `~/.agent-browser/config.json` < `./agent-browser.json` < env vars < CLI flags. Use `--config <path>` or `AGENT_BROWSER_CONFIG` env var for a custom config file (exits with error if missing/invalid). All CLI options map to camelCase keys (e.g., `--executable-path` -> `"executablePath"`). Boolean flags accept `true`/`false` values (e.g., `--headed false` overrides config). Extensions from user and project configs are merged, not replaced.
-
-## Deep-Dive Documentation
-
-| Reference                                                            | When to Use                                               |
-| -------------------------------------------------------------------- | --------------------------------------------------------- |
-| [references/commands.md](references/commands.md)                     | Full command reference with all options                   |
-| [references/snapshot-refs.md](references/snapshot-refs.md)           | Ref lifecycle, invalidation rules, troubleshooting        |
-| [references/session-management.md](references/session-management.md) | Parallel sessions, state persistence, concurrent scraping |
-| [references/authentication.md](references/authentication.md)         | Login flows, OAuth, 2FA handling, state reuse             |
-| [references/video-recording.md](references/video-recording.md)       | Recording workflows for debugging and documentation       |
-| [references/profiling.md](references/profiling.md)                   | Chrome DevTools profiling for performance analysis        |
-| [references/proxy-support.md](references/proxy-support.md)           | Proxy configuration, geo-testing, rotating proxies        |
-
-## Browser Engine Selection
-
-Use `--engine` to choose a local browser engine. The default is `chrome`.
-
-```bash
-# Use Lightpanda (fast headless browser, requires separate install)
-agent-browser --engine lightpanda open example.com
-
-# Via environment variable
-export AGENT_BROWSER_ENGINE=lightpanda
-agent-browser open example.com
-
-# With custom binary path
-agent-browser --engine lightpanda --executable-path /path/to/lightpanda open example.com
-```
-
-Supported engines:
-- `chrome` (default) -- Chrome/Chromium via CDP
-- `lightpanda` -- Lightpanda headless browser via CDP (10x faster, 10x less memory than Chrome)
-
-Lightpanda does not support `--extension`, `--profile`, `--state`, or `--allow-file-access`. Install Lightpanda from https://lightpanda.io/docs/open-source/installation.
-
-## Ready-to-Use Templates
-
-| Template                                                                 | Description                         |
-| ------------------------------------------------------------------------ | ----------------------------------- |
-| [templates/form-automation.sh](templates/form-automation.sh)             | Form filling with validation        |
-| [templates/authenticated-session.sh](templates/authenticated-session.sh) | Login once, reuse state             |
-| [templates/capture-workflow.sh](templates/capture-workflow.sh)           | Content extraction with screenshots |
-
-```bash
-./templates/form-automation.sh https://example.com/form
-./templates/authenticated-session.sh https://app.example.com/login
-./templates/capture-workflow.sh https://example.com ./output
-```
+| 文档 | 何时查阅 |
+|------|---------|
+| [bdpan-commands.md](./reference/bdpan-commands.md) | 需要完整命令参数、选项、JSON 输出格式 |
+| [authentication.md](./reference/authentication.md) | 认证流程细节、Token 管理 |
+| [examples.md](./reference/examples.md) | 更多使用示例（批量上传、自动备份等） |
+| [troubleshooting.md](./reference/troubleshooting.md) | 遇到错误需要排查 |

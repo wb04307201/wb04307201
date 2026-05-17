@@ -275,8 +275,6 @@ graph TB
 - 🧩 **组合性**：支持工具链式调用与嵌套执行
 - 🔐 **安全可控**：用户授权机制 + 工具行为审计
 
-
-
 **提问：**
 ```text
 现在几点了？
@@ -295,11 +293,7 @@ graph TB
 
 ![img_6.png](img_6.png)
 
-
-## 技能（Skill）
-对提示词的一种封装，封装领域知识、工作流和最佳实践为可复用模块
-
-比如你可以约定某个工作的步骤，例如：
+也可以约定一个工作让大模型逐步执行。例如：
 ```text
 1. 现在的时间
 2. 获取`https://www.163.com/`网页内容
@@ -311,6 +305,22 @@ graph TB
 **结果：**
 ![img_4.png](img_4.png)
 ![img_5.png](img_5.png)
+
+### 思考
+不每次都输入一大堆，能不能封装起来？
+
+## 技能（Skill）
+对提示词的一种封装，封装领域知识、工作流和最佳实践为可复用模块
+
+Skill 核心要素：
+1. **元数据** - name、description、tools
+2. **触发条件** - 何时执行
+3. **安全规则** - 禁止事项
+4. **前置检查** - 安装/登录验证
+5. **操作命令** - 用法和示例
+6. **确认策略** - 风险分级处理
+
+[百度网盘(Baidu Drive)文件管理Skill示例](SKILL.md)
 
 > Spring AI使用skills可参照[Anthropic的skills部分](https://docs.spring.io/spring-ai/reference/api/chat/anthropic-chat.html#_skills)
 
