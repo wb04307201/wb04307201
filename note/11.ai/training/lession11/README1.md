@@ -143,6 +143,8 @@ git clone https://github.com/langgenius/dify.git
    # 服务器环境
    http://your_server_ip
    ```
+   
+3. 登陆后现在设置中添加模型供应商，配置apikey，配置默认模型
 
 ## 自定义
 
