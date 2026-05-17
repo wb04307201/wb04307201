@@ -2,7 +2,7 @@
 
 
 ## 核心能力
-**大模型 × 提示词 × 知识库 × 工具调用**这四个核心能力构成了AI Agent应用开发的核心技术架构。它们不是孤立的技术，而是协作、互为补充的有机整体。
+**大模型 × 提示词 × 知识库 × 工具**这四个核心能力构成了AI Agent应用开发的核心技术架构。它们不是孤立的技术，而是协作、互为补充的有机整体。
 - 大语言模型（LLM）：提供推理、理解与生成能力
 - 提示词（Prompt）：贯穿所有组件的“指令层”与“粘合剂”
   - 作为 LLM 的“配置层”，将 LLM + 提示词 视为一个整体单元，称为 “智能核心 (Intelligence Core)"
@@ -89,7 +89,7 @@ AI Agent = LLM + 提示词 + 知识库 + 工具调用
 
 ---
 
-## 大模型与提示词
+## 提示词
 > 从'总指挥'→'触发器'的转变"
 
 **一个NL2SQL提示词模板：**
@@ -195,7 +195,7 @@ SELECT COUNT(*) FROM Books b JOIN Authors a ON b.author_ref = a.id WHERE a.first
    - 一个系统：用友重磅发布BIP"本体智能体"(Ontology（本体）方法论 + 智能体，通过打通业务、数据与AI，实现企业级AI落地)
 4. 有的应用表很多，都放在提示词里会超长怎么办？
 
-## 大模型与知识库
+## 知识库
 > 解决大模型"知识局限"与"幻觉"问题的核心方案  
 > 知识库中检索相关片段，再将检索结果与原始问题拼接作为大模型的输入。
 
@@ -250,20 +250,7 @@ graph TB
    - 纯知识型
    - 技能型
 
-## 大模型与工具
-让大模型有使用工具的能力
-
-#### 🔹 技能书（Skills）
-> 可复用、可组合、有明确输入输出的原子能力单元  
-> Anthropic提出的"文件夹化能力包"：`instructions + scripts + resources`
-
-[用于AI代理的浏览器自动化CLI](SKILL.md)
-1. 安装工具
-2. 如何使用工具
-
-> Spring AI使用skills可参照[Anthropic的skills部分](https://docs.spring.io/spring-ai/reference/api/chat/anthropic-chat.html#_skills)
-
-#### 🔹 MCP（Model Context Protocol）
+## 🔹 工具(MCP)
 > **"AI应用的USB-C接口"** — 标准化工具调用协议
 
 ```mermaid
@@ -288,7 +275,48 @@ graph TB
 - 🧩 **组合性**：支持工具链式调用与嵌套执行
 - 🔐 **安全可控**：用户授权机制 + 工具行为审计
 
-#### 🔹 技能书与MCP的关系
+
+
+**提问：**
+```text
+现在几点了？
+```
+
+**无工具：**
+![img_2.png](img_2.png)
+
+**有时间工具：**
+![img_3.png](img_3.png)
+
+**一个MCP服务包含至就是一个工具，至少包含一个技能，可以试试问问大模型:**
+```text
+你有哪些可以调用的工具？
+```
+
+![img_6.png](img_6.png)
+
+
+## 技能（Skill）
+对提示词的一种封装，封装领域知识、工作流和最佳实践为可复用模块
+
+比如你可以约定某个工作的步骤，例如：
+```text
+1. 现在的时间
+2. 获取`https://www.163.com/`网页内容
+3. 从上一步的网页内容中随机选取获取一条新闻
+4. 打开浏览器，访问`https://www.baidu.com/`地址
+5. 在搜索框输入步骤3的新闻，并并点击搜索
+```
+
+**结果：**
+![img_4.png](img_4.png)
+![img_5.png](img_5.png)
+
+> Spring AI使用skills可参照[Anthropic的skills部分](https://docs.spring.io/spring-ai/reference/api/chat/anthropic-chat.html#_skills)
+
+## 工具与技能的关系
+- *MCP 解决“能做什么”*：提供标准化工具连接能力，让 AI 安全调用数据库、API、文件等外部资源。
+- *Skills 解决“怎么做”‌*：封装领域知识和工作流程，指导 AI 如何组合工具完成特定任务。
 ```mermaid
 flowchart TB
     User["👤 用户请求<br/>审查 PR #456 并按团队规范给建议"]
@@ -330,37 +358,6 @@ flowchart TB
     class MCP mcp
     class External external
 ```
-
-**提问：**
-```text
-现在几点了？
-```
-
-**无工具：**
-![img_2.png](img_2.png)
-
-**有时间工具：**
-![img_3.png](img_3.png)
-
-**一个MCP服务包含至就是一个工具，至少包含一个技能，可以试试问问大模型:**
-```text
-你有哪些可以调用的工具？
-```
-
-![img_6.png](img_6.png)
-
-**更多工具 + 工作流的方式处理复杂任务提问：**
-```text
-1. 现在的时间
-2. 获取`https://www.163.com/`网页内容
-3. 从上一步的网页内容中随机选取获取一条新闻
-4. 打开浏览器，访问`https://www.baidu.com/`地址
-5. 在搜索框输入步骤3的新闻，并并点击搜索
-```
-
-**结果：**
-![img_4.png](img_4.png)
-![img_5.png](img_5.png)
 
 
 **思考：**
