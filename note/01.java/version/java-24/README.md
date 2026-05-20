@@ -25,13 +25,13 @@
 - **JEP 499**: 结构化并发（第四次预览）
 - **JEP 501**: 弃用 32 位 x86 端口以待移除
 
-## JEP 404: 分代式 Shenandoah（实验性）
-
-分代式 Shenandoah 是对 Shenandoah 垃圾回收器的改进，引入了分代收集的概念。它将堆内存划分为年轻代和老年代，针对不同代的特点采用不同的垃圾回收策略。年轻代采用复制算法，快速回收短生命周期对象；老年代采用 Shenandoah 原有的并发标记压缩算法，减少垃圾回收停顿时间，提高应用程序的响应速度。这一特性对于内存占用较大且对响应时间要求较高的应用场景非常有帮助。
-
 ## JEP 450: 紧凑对象头（实验性）
 
 紧凑对象头旨在优化对象的内存布局，减少对象头的大小。对象头通常包含对象的相关元数据，如标记字、类指针等。通过紧凑对象头技术，可以压缩这些元数据的存储空间，从而节省内存。这对于内存敏感的应用程序，如大规模数据处理和缓存系统，能够显著提高内存使用效率，减少内存碎片。
+
+## JEP 404: 分代式 Shenandoah（实验性）
+
+分代式 Shenandoah 是对 Shenandoah 垃圾回收器的改进，引入了分代收集的概念。它将堆内存划分为年轻代和老年代，针对不同代的特点采用不同的垃圾回收策略。年轻代采用复制算法，快速回收短生命周期对象；老年代采用 Shenandoah 原有的并发标记压缩算法，减少垃圾回收停顿时间，提高应用程序的响应速度。这一特性对于内存占用较大且对响应时间要求较高的应用场景非常有帮助。
 
 ## JEP 472: 准备限制 JNI 的使用
 
@@ -94,7 +94,7 @@ public class KeyDerivationExample {
 
 ```java
 // 示例代码：使用类文件 API 读取类文件信息
-import jdk.incubator.classfile.*;
+import java.lang.classfile.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -120,33 +120,28 @@ public class ClassFileApiExample {
 
 ## JEP 485: 流收集器
 
-流收集器是 Java 流 API 的扩展，它提供了一种更方便的方式将流中的元素收集到特定的数据结构中。传统的流收集操作通常使用 `Collectors` 类提供的方法，但这些方法在某些场景下可能不够灵活。流收集器允许开发者自定义收集逻辑，将流元素收集到自定义的数据结构中，或者对收集过程进行更复杂的处理，提高了流操作的灵活性和功能性。
+流收集器（Stream Gatherers）是 Java 流 API 的重大扩展，引入了 `Stream::gather(Gatherer)` 方法。与传统的 `collect()` 不同，`gather()` 支持多阶段处理、状态维护和中间输出，可以实现更复杂的流操作，如窗口化、去重、限流等。开发者可以通过 `Gatherer` 接口自定义收集逻辑，而 JDK 也提供了 `Gatherers` 工具类中的常用实现（如 `fold`、`mapConcurrent`、`windowFixed` 等）。
 
 ```java
-import java.util.*;
-import java.util.stream.*;
+import java.util.List;
+import java.util.stream.Gatherers;
 
 public class StreamGatherersExample {
     public static void main(String[] args) {
-        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5);
 
-        // 使用自定义的流收集器将偶数收集到一个 Set 中，奇数收集到一个 List 中
-        Map<Boolean, Object> result = numbers.stream().collect(
-                Collectors.partitioningBy(
-                        n -> n % 2 == 0,
-                        Collectors.teeing(
-                                Collectors.toSet(),
-                                Collectors.toList(),
-                                (set, list) -> new Object[]{set, list}
-                        )
-                )
-        );
+        // 使用 Gatherers.fold 实现累加
+        Integer sum = numbers.stream()
+            .gather(Gatherers.fold(() -> 0, (acc, n) -> acc + n))
+            .toList()
+            .getFirst();
+        System.out.println("Sum: " + sum); // Sum: 15
 
-        Set<Integer> evenSet = (Set<Integer>) ((Object[]) result.get(true))[0];
-        List<Integer> oddList = (List<Integer>) ((Object[]) result.get(false))[1];
-
-        System.out.println("Even numbers: " + evenSet);
-        System.out.println("Odd numbers: " + oddList);
+        // 使用 windowFixed 实现滑动窗口
+        List.of("a", "b", "c", "d", "e").stream()
+            .gather(Gatherers.windowFixed(3))
+            .forEach(System.out::println);
+        // 输出: [a, b, c], [b, c, d], [c, d, e]
     }
 }
 ```
@@ -157,28 +152,27 @@ public class StreamGatherersExample {
 
 ## JEP 487: 作用域值（第四次预览）
 
-作用域值是一种在特定作用域内共享不可变数据的机制。它类似于线程局部变量，但更适用于虚拟线程和结构化并发等新的编程模型。作用域值允许在大型程序中的组件之间安全有效地共享数据，而无需求助于方法参数。这对于减少代码冗余和提高代码的可维护性非常有帮助。在第四次预览中，可能会对作用域值的性能、易用性等方面进行进一步的优化和改进。
+作用域值是一种在特定作用域内共享不可变数据的机制。它类似于线程局部变量，但更适用于虚拟线程和结构化并发等新的编程模型。作用域值允许在大型程序中的组件之间安全有效地共享数据，而无需求助于方法参数。这对于减少代码冗余和提高代码的可维护性非常有帮助。在第四次预览中，移除了 `ScopedValue.where()` 的一些旧方法。
 
 ```java
-import jdk.incubator.concurrent.ScopedValue;
-import jdk.incubator.concurrent.ScopedValue.Where;
+import java.lang.ScopedValue;
 
 public class ScopedValuesExample {
     private static final ScopedValue<String> USER_NAME = ScopedValue.newInstance();
 
     public static void main(String[] args) {
-        Where<String> where = ScopedValue.where(USER_NAME, "Alice");
-        where.run(() -> {
-            System.out.println("Hello, " + USER_NAME.get());
-            nestedScope();
-        });
+        ScopedValue.where(USER_NAME, "Alice")
+            .run(() -> {
+                System.out.println("Hello, " + USER_NAME.get());
+                nestedScope();
+            });
     }
 
     private static void nestedScope() {
-        Where<String> nestedWhere = ScopedValue.where(USER_NAME, "Bob");
-        nestedWhere.run(() -> {
-            System.out.println("Nested scope: " + USER_NAME.get());
-        });
+        ScopedValue.where(USER_NAME, "Bob")
+            .run(() -> {
+                System.out.println("Nested scope: " + USER_NAME.get());
+            });
     }
 }
 ```
@@ -214,25 +208,98 @@ public class PatternMatchingWithPrimitivesExample {
 ```java
 import jdk.incubator.vector.*;
 
-public class VectorApiExample {
-    public static void main(String[] args) {
-        // 创建两个向量
-        IntVector vector1 = IntVector.fromArray(VectorSpecies.ofDefault(int.class), new int[]{1, 2, 3, 4}, 0);
-        IntVector vector2 = IntVector.fromArray(VectorSpecies.ofDefault(int.class), new int[]{5, 6, 7, 8}, 0);
+VectorSpecies<Integer> SPECIES = IntVector.SPECIES_256;
 
-        // 执行向量加法
-        IntVector result = vector1.add(vector2);
+IntVector vector1 = IntVector.fromArray(SPECIES, new int[]{1, 2, 3, 4}, 0);
+IntVector vector2 = IntVector.fromArray(SPECIES, new int[]{5, 6, 7, 8}, 0);
 
-        // 将结果存储到数组中
-        int[] output = new int[4];
-        result.intoArray(output, 0);
+IntVector result = vector1.add(vector2);
 
-        // 输出结果
-        System.out.println(java.util.Arrays.toString(output)); // [6, 8, 10, 12]
-    }
-}
+int[] output = new int[4];
+result.intoArray(output, 0);
+
+System.out.println(java.util.Arrays.toString(output)); // [6, 8, 10, 12]
 ```
 
 ## JEP 490: ZGC：移除非分代模式
 
-ZGC（Z Garbage Collector）是一种高性能的垃圾回收器，它具有低延迟的特点。该特性移除了 ZGC 的非分代模式，使 ZGC 专注于分代收集策略。分代收集可以根据对象
+ZGC（Z Garbage Collector）是一种高性能的垃圾回收器，它具有低延迟的特点。该特性移除了 ZGC 的非分代模式，使 ZGC 专注于分代收集策略。分代收集可以根据对象的生命周期将堆内存分为年轻代和老年代，并针对不同代采用不同的垃圾回收策略，从而提高垃圾回收的效率和性能。
+
+## JEP 491: 无需固定同步虚拟线程
+
+该特性优化了虚拟线程的同步机制，使得虚拟线程在执行同步操作时不需要固定绑定到特定的载体线程。这减少了虚拟线程在同步块中的阻塞对其他虚拟线程的影响，提高了高并发场景下的整体性能。
+
+## JEP 492: 灵活的构造函数体（第三次预览）
+
+灵活的构造函数体允许在调用父类构造函数（`super(...)`）之前执行一些语句。在第三次预览中，该特性进一步完善了语义和实现，使得构造函数编写更加灵活。这些语句在代码上写在 `super` 调用前，但实际执行是在父类构造函数调用之后、子类构造函数体之前。
+
+```java
+class Child extends Parent {
+    private final int x;
+
+    Child(int x) {
+        int validatedX = validateX(x); // 在 super 调用前的语句
+        super(validatedX);
+        this.x = x;
+    }
+
+    private int validateX(int x) {
+        if (x < 0) {
+            throw new IllegalArgumentException("x must be non-negative");
+        }
+        return x;
+    }
+}
+```
+
+## JEP 493: 无 JMODs 链接运行时镜像
+
+该特性允许 `jlink` 工具在不使用 JMOD 文件的情况下创建运行时镜像。它支持使用 JAR 文件作为输入源，简化了运行时镜像的构建过程，使开发者可以更灵活地定制 Java 运行时环境。
+
+## JEP 494: 模块导入声明（第二次预览）
+
+模块导入声明提供了一种更简洁的方式来导入模块中的包。在第二次预览中，该特性可能进一步完善了语法和实现。它允许开发者在一个地方声明需要导入的模块和包，减少了代码的冗余。
+
+## JEP 495: 简单源文件和实例主方法（第四次预览）
+
+该特性进一步简化了 Java 源代码的结构，允许开发者编写更简洁的代码。它支持简单源文件格式，即未命名的类可以省略类名，并且提供了更简单的实例主方法声明方式。在第四次预览中，该特性已经非常接近正式发布。
+
+```java
+// 简单源文件示例
+void main() {
+    System.out.println("Hello, World!");
+}
+```
+
+## JEP 496: 量子抗性模块 - 基于格的密钥封装机制
+
+该特性引入了基于格的密码学算法来实现密钥封装机制（KEM），以应对未来量子计算机可能带来的安全威胁。这是 Java 在量子安全密码学领域的重要一步，为未来的安全通信提供了基础。
+
+## JEP 497: 量子抗性模块 - 基于格的数字签名算法
+
+与 JEP 496 配套，该特性引入了基于格的数字签名算法（DSA），同样是为了应对量子计算带来的安全挑战。这些算法共同构成了 Java 的量子抗性加密能力。
+
+## JEP 498: 使用 sun.misc.Unsafe 中的内存访问方法时发出警告
+
+该特性在使用 `sun.misc.Unsafe` 类中的内存访问方法时发出警告，为后续移除这些方法做准备。这鼓励开发者迁移到更安全、更标准的内存操作方式（如外部函数与内存 API）。
+
+## JEP 499: 结构化并发（第四次预览）
+
+结构化并发是一种多线程编程方法，旨在简化多线程代码的管理和错误处理。在第四次预览中，该特性进一步完善了 API 的设计和功能。它引入了 `StructuredTaskScope` 类，允许开发者将任务拆分为多个并发子任务。
+
+```java
+try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
+    Future<Integer> future1 = scope.fork(() -> doTask1());
+    Future<String> future2 = scope.fork(() -> doTask2());
+    scope.join();
+    scope.throwIfFailed();
+
+    Integer result1 = future1.resultNow();
+    String result2 = future2.resultNow();
+    // 处理结果
+}
+```
+
+## JEP 501: 弃用 32 位 x86 端口以待移除
+
+该特性将 32 位 x86 端口标记为弃用状态，为未来版本中的移除做准备。随着 64 位架构的普及，32 位 x86 端口的使用已经越来越少，移除它可以简化 JDK 的维护负担。

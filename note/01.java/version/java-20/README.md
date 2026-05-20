@@ -13,7 +13,7 @@
 作用域值是一种在特定作用域内共享不可变数据的机制。它为在大型程序组件之间安全有效地共享数据提供了一种新方式，无需借助方法参数传递。与线程局部变量不同，作用域值更适用于虚拟线程和结构化并发等新的编程模型，有助于减少代码冗余，提高代码可维护性。
 
 ```java
-final static ScopedValue<String> USER_NAME = new ScopedValue<>();
+final static ScopedValue<String> USER_NAME = ScopedValue.newInstance();
 
 // 设置作用域值
 ScopedValue.where(USER_NAME, "Alice")
@@ -62,16 +62,26 @@ System.out.println(description);
 外部函数与内存 API 提供了一种更安全、更高效的方式来调用本地代码和操作本地内存。它允许 Java 程序直接访问外部函数库，并与本地数据结构进行交互，而无需依赖 JNI（Java Native Interface），从而提高了性能和安全性。
 
 ```java
-// 假设有一个外部函数声明
-interface NativeLibrary {
-    int add(int a, int b);
-}
+// 使用外部函数与内存 API 调用 C 标准库
+import java.lang.foreign.*;
+import java.lang.invoke.*;
 
-// 加载外部库
-try (var lib = LibraryLoader.load("mylibrary")) {
-    NativeLibrary nativeLib = lib.lookup("add").as(NativeLibrary.class);
-    int result = nativeLib.add(5, 3);
-    System.out.println("Result: " + result);
+public class ForeignFunctionExample {
+    public static void main(String[] args) throws Throwable {
+        try (Arena arena = Arena.ofAuto()) {
+            // 在本地内存中创建字符串
+            MemorySegment str = arena.allocateUtf8String("Hello");
+            // 查找 strlen 函数
+            Linker linker = Linker.nativeLinker();
+            SymbolLookup lookup = linker.defaultLookup();
+            MemorySegment strlenAddr = lookup.find("strlen").get();
+            // 创建方法句柄并调用
+            FunctionDescriptor fd = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS);
+            MethodHandle strlen = linker.downcallHandle(strlenAddr, fd);
+            long len = (long) strlen.invoke(str);
+            System.out.println("Length: " + len);
+        }
+    }
 }
 ```
 
@@ -126,5 +136,5 @@ int[] output = new int[4];
 result.intoArray(output, 0);
 
 // 输出结果
-System.out.println(Arrays.toString(output)); // [6, 8, 10, 12]
+System.out.println(java.util.Arrays.toString(output)); // [6, 8, 10, 12]
 ```

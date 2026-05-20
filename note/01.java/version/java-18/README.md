@@ -177,51 +177,34 @@ public class VectorApiExample {
 ```java
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.HashMap;
-import java.util.Map;
-import jdk.net.InetAddressResolver;
-import jdk.net.InetAddressResolverProvider;
+import java.net.spi.InetAddressResolver;
+import java.net.spi.InetAddressResolverProvider;
+import java.util.stream.Stream;
 
 public class CustomInetAddressResolverProvider extends InetAddressResolverProvider {
-    private static final Map<String, InetAddress> CUSTOM_MAPPING = new HashMap<>();
 
-    static {
-        // 初始化自定义地址映射
-        try {
-            CUSTOM_MAPPING.put("example.com", InetAddress.getByName("192.168.1.1"));
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        }
+    @Override
+    public InetAddressResolver get(Configuration config) {
+        return new InetAddressResolver() {
+            @Override
+            public Stream<InetAddress> lookupAllByName(String host) throws UnknownHostException {
+                if ("example.com".equals(host)) {
+                    return Stream.of(InetAddress.getByName("192.168.1.1"));
+                }
+                // 回退到系统默认解析器
+                return InetAddressResolver.systemResolver().lookupAllByName(host);
+            }
+
+            @Override
+            public String lookupByAddress(byte[] addr) throws UnknownHostException {
+                return InetAddressResolver.systemResolver().lookupByAddress(addr);
+            }
+        };
     }
 
     @Override
-    public InetAddressResolver newInetAddressResolver() {
-        return new CustomInetAddressResolver();
-    }
-
-    private static class CustomInetAddressResolver implements InetAddressResolver {
-        @Override
-        public InetAddress lookupByName(String host, NetworkInterface[] netif, boolean useCanonicalName) throws UnknownHostException {
-            if (CUSTOM_MAPPING.containsKey(host)) {
-                return CUSTOM_MAPPING.get(host);
-            }
-            // 如果自定义映射中没有，则使用默认解析方式
-            throw new UnknownHostException("Unknown host: " + host);
-        }
-
-        @Override
-        public String[] lookupAllHostAddr(String host) throws UnknownHostException {
-            if (CUSTOM_MAPPING.containsKey(host)) {
-                InetAddress address = CUSTOM_MAPPING.get(host);
-                return new String[]{address.getHostAddress()};
-            }
-            throw new UnknownHostException("Unknown host: " + host);
-        }
-
-        @Override
-        public InetAddress getByName(String host) throws UnknownHostException {
-            return lookupByName(host, null, false);
-        }
+    public String name() {
+        return "custom";
     }
 }
 ```

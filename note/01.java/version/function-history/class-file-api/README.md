@@ -1,72 +1,121 @@
 # Class-File API
 
-| Java版本  | 新特性/增强内容                                       |
-|---------|------------------------------------------------|
-| Java 22 | JEP 457: 类文件 API（第一次预览）- 引入标准化的类文件解析、生成和转换 API |
-| Java 23 | JEP 466: 类文件 API（第二次预览）- 继续完善类文件 API 功能        |
-| Java 24 | JEP 484: 类文件 API（正式版）- 类文件 API 转正为标准特性         |
+## 功能描述
+
+Class-File API 是 Java 24 转正的标准化类文件处理 API，提供对 Java 字节码文件的解析、生成和转换能力。它替代了过去对第三方库（如 ASM、BCEL）的依赖，为框架开发、代码生成工具和 AOP 实现提供了官方标准方案。
+
+## 基本用法（最新，Java 24+）
+
+```java
+import java.lang.classfile.*;
+import java.lang.classfile.attribute.*;
+import java.lang.classfile.instruction.*;
+import static java.lang.classfile.ClassFile.*;
+
+// 1. 解析类文件
+byte[] bytes = Files.readAllBytes(Path.of("MyClass.class"));
+ClassFile cf = ClassFile.of();
+ClassModel classModel = cf.parse(bytes);
+
+System.out.println("Class name: " + classModel.thisClass().asInternalName());
+classModel.methods().forEach(mm ->
+    System.out.println("Method: " + mm.methodName()));
+
+// 2. 构建新类文件 - 移除 debug 开头的方法
+byte[] newBytes = cf.build(classModel.thisClass().asSymbol(),
+    classBuilder -> {
+        for (ClassElement ce : classModel) {
+            if (!(ce instanceof MethodModel mm
+                    && mm.methodName().stringValue().startsWith("debug"))) {
+                classBuilder.with(ce);
+            }
+        }
+    });
+
+// 3. 从零构建类文件
+byte[] helloBytes = ClassFile.of().build(
+    "com.example.Hello",
+    cb -> cb.with(
+        MethodBuilder.of("greet", MethodFlags.PUBLIC_STATIC,
+            "(Ljava/lang/String;)V",
+            mb -> mb.with(
+                CodeBuilder.of(mb,
+                    code -> {
+                        code.getstatic(System.out)
+                            .ldc("Hello, ")
+                            .aload(0)
+                            .invokevirtual(String.concat)
+                            .invokevirtual(System.out.getClass().getMethod("println", String.class))
+                            .return_();
+                    })
+            )
+        )
+    )
+);
+
+// 4. 转换类文件 - 添加注解
+byte[] annotatedBytes = cf.transform(classModel,
+    classBuilder -> {
+        classBuilder.with(classModel);
+        classBuilder.with(RuntimeVisibleAnnotationsAttribute.of(
+            Annotation.of(Deprecated.class)));
+    });
+```
+
+## 变更历史表
+
+| Java版本  | 新特性/增强内容                                            |
+|---------|-----------------------------------------------------|
+| Java 24 | JEP 484: Class-File API 转正为标准特性                      |
+| Java 23 | JEP 466: Class-File API 第二次预览 - API 微调和功能增强            |
+| Java 22 | JEP 457: Class-File API 首次预览 - 引入标准化的类文件处理 API     |
+| Java 1  | java.lang.Class 和反射 API，提供基础的运行时类信息访问              |
 
 ## 功能详细介绍
 
-### Java 22 - 类文件 API 初始引入 (JEP 457)
+### 1. Java 1-21 - 反射和第三方字节码库
 
-Java 22 首次引入了类文件 API 作为预览特性，这是对 Java 平台底层操作能力的重要增强。
+在 Class-File API 出现之前，Java 开发者依赖以下方式处理类文件：
 
-#### 核心概念：
+- **反射 API**（`java.lang.reflect.*`）：运行时访问类信息，但无法生成或修改字节码
+- **第三方库**：ASM、BCEL、Javassist 等提供字节码操作能力，但 API 各异且非标准
+- **`jdk.internal.org.objectweb.asm`**：JDK 内部使用了 ASM，但不对外公开
 
-1. **标准化 API**：提供了一套标准化的 API 来处理 Java 类文件，替代了过去对第三方库（如 ASM）的依赖
-2. **类文件解析**：能够将字节数组解析为结构化的 `ClassModel` 对象
-3. **类文件构建**：支持构建新的类文件，可以对现有类文件进行修改和转换
+### 2. Java 22 - Class-File API 首次预览 (JEP 457)
 
-#### 主要目标：
+首次引入标准化的类文件处理 API，核心组件：
 
-- 提供官方标准的类文件处理 API
-- 简化类文件操作的复杂性
-- 提高类文件处理的性能和安全性
+- **`ClassFile`**：操作入口，提供 parse、build、transform 等方法
+- **`ClassModel`**：解析后的类文件模型，只读访问
+- **`ClassBuilder`**：构建新类文件的 DSL
+- **`CodeBuilder`**：构建方法体字节码的 DSL
+- **`ClassElement`/`MethodModel`/`FieldModel`**：类结构元素
 
-### Java 23 - 类文件 API 第二次预览 (JEP 466)
+包结构：`java.lang.classfile.*`（标准）和 `jdk.incubator.classfile.*`（孵化器，已废弃）
 
-Java 23 继续预览并完善类文件 API，在第一版的基础上进行了改进和优化。
+### 3. Java 23 - Class-File API 第二次预览 (JEP 466)
 
-#### 改进内容：
+根据用户反馈进行 API 微调：
+- 简化 `CodeBuilder` 的指令生成方式
+- 改进属性（Attribute）的构建 API
+- 优化大文件的解析性能
 
-1. **API 完善**：根据用户反馈完善了 API 设计
-2. **功能增强**：增强了类文件解析和生成的功能
-3. **性能优化**：优化了 API 的性能表现
+### 4. Java 24 - Class-File API 转正 (JEP 484)
 
-### Java 24 - 类文件 API 转正 (JEP 484)
+从预览特性转为标准特性，API 稳定。主要优势：
 
-Java 24 将类文件 API 从预览特性转为标准特性，标志着该功能的成熟和稳定。
+1. **官方标准**：不再依赖第三方库
+2. **API 设计**：现代化的 DSL 风格 API
+3. **不可变模型**：`ClassModel` 是只读的，避免意外修改
+4. **转换安全**：`transform` 方法基于已有模型构建，保证字节码结构正确
 
-#### 基本用法：
+## 适用场景
 
-```java
-// 创建一个 ClassFile 对象，这是操作类文件的入口。
-ClassFile cf = ClassFile.of();
-// 解析字节数组为 ClassModel
-ClassModel classModel = cf.parse(bytes);
+1. **框架开发**：Spring、Hibernate 等框架的字节码增强
+2. **代码生成**：Protocol Buffers、Lombok 等工具
+3. **AOP 实现**：方法拦截、日志注入
+4. **字节码分析**：静态分析工具、代码质量检测
 
-// 构建新的类文件，移除以 "debug" 开头的所有方法
-byte[] newBytes = cf.build(classModel.thisClass().asSymbol(),
-        classBuilder -> {
-            // 遍历所有类元素
-            for (ClassElement ce : classModel) {
-                // 判断是否为方法 且 方法名以 "debug" 开头
-                if (!(ce instanceof MethodModel mm
-                        && mm.methodName().stringValue().startsWith("debug"))) {
-                    // 添加到新的类文件中
-                    classBuilder.with(ce);
-                }
-            }
-        });
-```
+## 总结
 
-
-#### 主要优势：
-
-1. **标准化**：提供了官方标准的类文件处理 API，避免了对第三方库的依赖
-2. **易用性**：API 设计现代化且易于使用，简化了类文件操作的复杂性
-3. **功能强大**：支持完整的类文件解析、生成和转换功能
-4. **性能优化**：作为官方 API，有更好的性能优化潜力
-
-类文件 API 的引入为 Java 开发者提供了更强大和标准化的方式来处理类文件，特别是在需要动态生成或修改类文件的场景中，如框架开发、代码生成工具、AOP 实现等领域。
+Class-File API 从 Java 22 预览到 Java 24 成熟，为 Java 提供了标准化的字节码处理能力，填补了 JDK 长久以来在官方字节码操作 API 上的空白。

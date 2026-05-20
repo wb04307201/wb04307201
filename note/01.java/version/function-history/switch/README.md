@@ -1,30 +1,13 @@
 # Switch
 
-| Java版本  | 新特性/增强内容                                                   |
-|---------|------------------------------------------------------------|
-| Java 8  | 传统 switch 语句，支持 byte、short、char、int 及其包装类型，枚举类型和 String 类型 |
-| Java 14 | JEP 361: Switch 表达式（标准特性）- 引入箭头语法和表达式形式                    |
-| Java 17 | JEP 406: Switch 模式匹配（预览）- 允许在 switch 中使用类型模式匹配             |
-| Java 21 | Switch 模式匹配（预览）- 继续完善模式匹配功能                                |
-| Java 25 | JEP 507: 基本类型模式匹配（第三预览版）- 扩展模式匹配到基本类型                      |
+## 功能描述
 
-## 功能详细介绍
+Switch 语句是 Java 的基础控制流语句。从 Java 14 起，Switch 表达式引入了箭头语法和表达式返回值能力；Java 21 进一步将模式匹配转正为标准特性，允许在 switch 中直接进行类型检查和解构。这些改进使 switch 从单纯的条件分支转变为强大的模式匹配工具。
 
-### 1. Java 8 及之前版本 - 传统 Switch 语句
-
-在 Java 8 及之前的版本中，switch 语句只支持有限的数据类型：
-- 基本整数类型：byte、short、char、int
-- 对应的包装类型：Byte、Short、Character、Integer
-- 枚举类型
-- String 类型（从 Java 7 开始支持）
-
-传统 switch 语句存在一些限制和不足：
-1. 需要使用 break 语句防止穿透（fall-through）
-2. 不能作为表达式返回值
-3. 不支持复杂的模式匹配
+## 基本用法（最新，Java 25+）
 
 ```java
-// 传统 switch 语句示例
+// 1. 传统 switch 语句（Java 8 及之前）
 String day = "MONDAY";
 String result;
 switch (day) {
@@ -35,35 +18,19 @@ switch (day) {
     case "FRIDAY":
         result = "Weekday";
         break;
-    case "SATURDAY":
-    case "SUNDAY":
+    default:
         result = "Weekend";
         break;
-    default:
-        result = "Unknown";
-        break;
 }
-```
 
-
-### 2. Java 14 - Switch 表达式 (JEP 361)
-
-Java 14 将 switch 表达式从预览特性转为标准特性，引入了重大改进：
-
-1. **箭头语法**：使用 `->` 替代传统的 `:`，自动避免穿透问题
-2. **表达式形式**：switch 可以作为表达式返回值
-3. **代码块支持**：可以使用 `{}` 包含多个语句，并使用 `yield` 返回值
-
-```java
-// 使用箭头语法的 switch 表达式
-String day = "MONDAY";
-String result = switch (day) {
+// 2. Switch 表达式 - 箭头语法（Java 14+）
+String result2 = switch (day) {
     case "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY" -> "Weekday";
     case "SATURDAY", "SUNDAY" -> "Weekend";
     default -> "Unknown";
 };
 
-// 使用代码块的 switch 表达式
+// 3. Switch 表达式 - yield 返回值（Java 14+）
 int numLetters = switch (day) {
     case "MONDAY", "FRIDAY", "SUNDAY" -> 6;
     case "TUESDAY" -> 7;
@@ -74,69 +41,166 @@ int numLetters = switch (day) {
         yield -1;
     }
 };
-```
 
-
-### 3. Java 17 - Switch 模式匹配 (JEP 406)
-
-Java 17 引入了 switch 模式匹配的预览版本，这是一个重要的增强功能：
-
-1. **类型模式匹配**：可以在 switch 中直接进行类型检查和转换
-2. **instanceof 模式匹配**：结合 instanceof 操作符使用模式变量
-
-```java
-// Switch 模式匹配示例
+// 4. Switch 模式匹配 - 类型模式（Java 21+）
 static String format(Object obj) {
     return switch (obj) {
         case Integer i -> String.format("int %d", i);
-        case Long l -> String.format("long %d", l);
-        case Double d -> String.format("double %f", d);
-        case String s -> String.format("String %s", s);
-        default -> obj.toString();
+        case Long l    -> String.format("long %d", l);
+        case Double d  -> String.format("double %f", d);
+        case String s  -> String.format("String: %s", s);
+        case null      -> "null";
+        default        -> obj.toString();
+    };
+}
+
+// 5. Switch 模式匹配 - guard 条件（Java 21+）
+sealed interface Shape permits Rectangle, Circle, Triangle { }
+record Rectangle(int w, int h) implements Shape { }
+record Circle(int r) implements Shape { }
+record Triangle(int base, int height) implements Shape { }
+
+String describe(Shape s) {
+    return switch (s) {
+        case Rectangle(int w, int h) when w == h -> "Square " + w + "x" + h;
+        case Rectangle(int w, int h)             -> "Rectangle " + w + "x" + h;
+        case Circle(int r) when r > 10           -> "Large circle, radius " + r;
+        case Circle(int r)                       -> "Circle, radius " + r;
+        case Triangle                            -> "Triangle";
+    };
+}
+
+// 6. 基本类型模式匹配（Java 25+ 预览）
+static String formatPrimitive(Object obj) {
+    return switch (obj) {
+        case int i    -> String.format("int %d", i);
+        case long l   -> String.format("long %d", l);
+        case double d -> String.format("double %f", d);
+        case boolean b -> String.format("boolean %b", b);
+        case String s -> String.format("String: %s", s);
+        default       -> obj.toString();
+    };
+}
+
+// 7. 嵌套模式匹配
+record Point(int x, int y) { }
+record ColoredPoint(Point p, String color) { }
+
+String describeNested(Object obj) {
+    return switch (obj) {
+        case ColoredPoint(Point(int x, int y), String color)
+                when x > 0 && y > 0 -> "First quadrant, " + color;
+        case ColoredPoint(Point(int x, int y), _) -> "Other quadrant, " + color;
+        default -> "Unknown";
     };
 }
 ```
 
+## 变更历史表
 
-### 4. Java 21 - Switch 模式匹配增强
+| Java版本  | 新特性/增强内容                                      |
+|---------|-----------------------------------------------|
+| Java 25 | JEP 507: 基本类型模式匹配（第三次预览）- 扩展 instanceof 和 switch 到基本类型 |
+| Java 21 | JEP 441: Switch 模式匹配转正为标准特性                    |
+| Java 20 | JEP 433: Switch 模式匹配第四次预览                         |
+| Java 19 | JEP 427: Switch 模式匹配第三次预览                         |
+| Java 18 | JEP 420: Switch 模式匹配第二次预览                         |
+| Java 17 | JEP 406: Switch 模式匹配首次预览 - 允许在 switch 中使用类型模式  |
+| Java 14 | JEP 361: Switch 表达式转正为标准特性 - 引入箭头语法和 yield      |
+| Java 13 | JEP 354: Switch 表达式第二次预览 - 引入 yield 替代 break    |
+| Java 12 | JEP 325: Switch 表达式首次预览 - 引入箭头语法                |
+| Java 8  | 传统 switch 语句，支持 byte/short/char/int/枚举/String      |
 
-Java 21 继续完善 switch 模式匹配功能，提供了更强大的模式匹配能力：
+## 功能详细介绍
 
-1. **改进的类型检查**：更精确的类型推断和检查
-2. **增强的模式语法**：支持更复杂的模式组合
+### 1. Java 8 及之前 - 传统 Switch 语句
 
-### 5. Java 25 - 基本类型模式匹配 (JEP 507)
+传统 switch 语句支持 byte、short、char、int 及其包装类型，Java 7 开始支持 String 类型。主要限制：需要 break 防止穿透、不能作为表达式返回值、不支持类型模式匹配。
 
-Java 25 进一步扩展了模式匹配的能力，支持基本类型：
+### 2. Java 12 - Switch 表达式首次预览 (JEP 325)
 
-1. **基本类型支持**：允许在 instanceof 和 switch 中直接使用基本类型
-2. **更自然的语法**：简化了基本类型的模式匹配代码
+首次引入箭头语法 `case L ->`，自动避免穿透问题：
 
 ```java
-// Java 25 中的基本类型模式匹配示例
-static void test(Object obj) {
-    // 在 instanceof 中使用基本类型模式
-    if (obj instanceof int i) {
-        System.out.println("It's an int: " + i);
+String result = switch (day) {
+    case "MONDAY", "FRIDAY", "SUNDAY" -> 6;
+    case "TUESDAY" -> 7;
+    default -> -1;
+};
+```
+
+### 3. Java 13 - Switch 表达式第二次预览 (JEP 354)
+
+引入 `yield` 关键字在代码块中返回值，替代容易混淆的 `break value`：
+
+```java
+int result = switch (day) {
+    case "MONDAY" -> {
+        System.out.println("Start of week");
+        yield 1;
     }
-    
-    // 在 switch 中使用基本类型模式
-    switch (obj) {
-        case Integer i -> System.out.println("Integer: " + i);
-        case int i -> System.out.println("int: " + i);  // 基本类型模式
-        case String s -> System.out.println("String: " + s);
-        default -> System.out.println("Other: " + obj);
-    }
+    default -> 0;
+};
+```
+
+### 4. Java 14 - Switch 表达式转正 (JEP 361)
+
+Switch 表达式从预览转为标准特性，不再需要 `--enable-preview` 标志。
+
+### 5. Java 17 - Switch 模式匹配首次预览 (JEP 406)
+
+允许在 switch 中使用类型模式，直接在 case 中进行类型检查和变量绑定：
+
+```java
+static String format(Object obj) {
+    return switch (obj) {
+        case Integer i -> String.format("int %d", i);
+        case String s  -> String.format("String: %s", s);
+        default        -> obj.toString();
+    };
 }
 ```
 
+### 6. Java 18-20 - Switch 模式匹配迭代预览 (JEP 420/427/433)
+
+持续完善：支持密封类穷举检查（无需 default）、guard 条件（when 子句）、null 值处理改进、嵌套模式匹配等。
+
+### 7. Java 21 - Switch 模式匹配转正 (JEP 441)
+
+Switch 模式匹配转正为标准特性。配合密封类和 Record 模式，可实现强大的代数数据类型处理：
+
+```java
+sealed interface Expr permits ConstantExpr, PlusExpr, TimesExpr, NegExpr { }
+record ConstantExpr(int value) implements Expr { }
+record PlusExpr(Expr left, Expr right) implements Expr { }
+record TimesExpr(Expr left, Expr right) implements Expr { }
+record NegExpr(Expr operand) implements Expr { }
+
+int eval(Expr e) {
+    return switch (e) {
+        case ConstantExpr(int v) -> v;
+        case PlusExpr(Expr l, Expr r) -> eval(l) + eval(r);
+        case TimesExpr(Expr l, Expr r) -> eval(l) * eval(r);
+        case NegExpr(Expr o) -> -eval(o);
+    }; // 密封接口保证穷举，无需 default
+}
+```
+
+### 8. Java 25 - 基本类型模式匹配第三次预览 (JEP 507)
+
+扩展 instanceof 和 switch 到所有基本类型（int、long、double、boolean 等），使类型处理更加统一：
+
+```java
+switch (obj) {
+    case int i    -> System.out.println("int: " + i);
+    case long l   -> System.out.println("long: " + l);
+    case double d -> System.out.println("double: " + d);
+    case boolean b -> System.out.println("boolean: " + b);
+    case String s -> System.out.println("String: " + s);
+    default       -> System.out.println("other: " + obj);
+}
+```
 
 ## 总结
 
-Switch 语句从 Java 8 到 Java 25 经历了显著的演进：
-
-1. **Java 14** 的 switch 表达式是第一个重大改进，引入了更简洁的语法和表达式能力
-2. **Java 17** 开始的模式匹配预览是第二个重要里程碑，允许类型检查和转换直接在 switch 中进行
-3. **Java 21-25** 持续完善模式匹配功能，特别是扩展到基本类型支持
-
-这些改进使 switch 语句变得更加强大、简洁和安全，减少了传统 switch 语句中常见的错误（如忘记 break 语句），同时提供了更强大的模式匹配能力，使代码更加清晰和易读。
+Switch 从传统条件分支语句演进为强大的模式匹配工具：Java 12-14 引入表达式语法消除穿透问题，Java 17-21 引入类型模式匹配实现类型安全的分支处理，Java 25 扩展到基本类型模式。配合密封类和 Record，switch 成为处理代数数据类型的核心机制。

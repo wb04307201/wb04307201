@@ -137,14 +137,27 @@ final class Rectangle extends Shape {
 外部函数和内存 API 提供了一种更简洁、更安全的方式来调用本地函数和操作本地内存。它支持自动内存管理、类型安全检查等功能，减少了因与本地代码交互而导致的安全风险和内存泄漏问题。
 
 ```java
-// 使用外部函数和内存 API 示例（假设已导入相关包）
-MemorySegment segment = MemorySegment.allocateNative(100);
-try (var scope = new ResourceScope()) {
-    MemoryAddress address = segment.baseAddress();
-    // 调用本地函数（这里只是示例，实际需要定义本地函数）
-    // assume we have a native function that adds two numbers
-    int result = NativeFunctions.add(address.toRawLongValueType(), 10, 20);
-    System.out.println(result);
+// 使用外部函数和内存 API 调用 C 标准库的 strlen 函数
+import jdk.incubator.foreign.*;
+import java.lang.invoke.*;
+
+public class ForeignFunctionExample {
+    public static void main(String[] args) throws Throwable {
+        try (Arena arena = Arena.openConfined()) {
+            // 在本地内存中创建字符串
+            MemorySegment str = arena.allocateUtf8String("Hello, World!");
+            // 查找 strlen 函数
+            SymbolLookup stdlib = SymbolLookup.loaderLookup();
+            MemorySegment strlenAddr = stdlib.lookup("strlen").get();
+            // 创建方法句柄
+            MethodType mt = MethodType.methodType(long.class, MemoryAddress.class);
+            FunctionDescriptor fd = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS);
+            MethodHandle strlen = CLinker.systemLinker().downcallHandle(strlenAddr, mt, fd);
+            // 调用 strlen
+            long len = (long) strlen.invoke(str.address());
+            System.out.println("Length: " + len); // Length: 13
+        }
+    }
 }
 ```
 
@@ -168,7 +181,7 @@ for (int i = 0; i < a.length; i += SPECIES.length()) {
     vr.intoArray(result, i);
 }
 
-System.out.println(Arrays.toString(result));
+System.out.println(java.util.Arrays.toString(result));
 ```
 
 ## JEP 415: 上下文特定反序列化过滤器
@@ -180,15 +193,8 @@ System.out.println(Arrays.toString(result));
 ```java
 // 使用上下文特定反序列化过滤器示例
 import java.io.*;
-import java.util.function.Predicate;
-
-class MyFilter implements Predicate<Class<?>> {
-    @Override
-    public boolean test(Class<?> clazz) {
-        // 只允许反序列化特定的类
-        return clazz == String.class || clazz == Integer.class;
-    }
-}
+import java.io.ObjectInputFilter.Config;
+import java.io.ObjectInputFilter.Status;
 
 public class DeserializationExample {
     public static void main(String[] args) throws Exception {
@@ -196,7 +202,17 @@ public class DeserializationExample {
         try (var in = new ByteArrayInputStream(serializedData.getBytes());
              var ois = new ObjectInputStream(in)) {
             // 设置反序列化过滤器
-            ObjectInputFilter filter = new MyFilter();
+            ObjectInputFilter filter = info -> {
+                Class<?> clazz = info.serialClass();
+                if (clazz != null) {
+                    // 只允许反序列化特定的类
+                    if (clazz == String.class || clazz == Integer.class) {
+                        return Status.ALLOWED;
+                    }
+                    return Status.REJECTED;
+                }
+                return Status.UNDECIDED;
+            };
             ois.setObjectInputFilter(filter);
             Object obj = ois.readObject();
             System.out.println(obj);

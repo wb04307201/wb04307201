@@ -55,6 +55,7 @@
 ### 6.16. [Java 23](01.java/version/java-23/README.md)
 ### 6.17. [Java 24](01.java/version/java-24/README.md)
 ### 6.18. [Java 25（LTS）](01.java/version/java-25/README.md)
+### 6.19. [Java 26](01.java/version/java-26/README.md)
 ## 7. [Java Agent](01.java/java-agent/README.md)
 ### 7.1. [统计API接口调用耗时](01.java/java-agent/api/README.md)
 ## 8. [JDBC](01.java/jdbc/README.md)

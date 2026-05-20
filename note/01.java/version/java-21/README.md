@@ -18,12 +18,12 @@
 
 ## JEP 430: 字符串模板（预览）
 
-字符串模板是一种新的字符串处理机制，它允许开发者在字符串中嵌入表达式，从而更方便地构建复杂的字符串。字符串模板通过使用反引号（`）来定义模板字符串，并在其中使用 `${}` 来嵌入表达式。
+字符串模板是一种新的字符串处理机制，它允许开发者在字符串中嵌入表达式，从而更方便地构建复杂的字符串。Java 使用 `STR` 字符串模板处理器，通过在字符串前加上 `STR.` 前缀，并在其中使用 `\{}` 来嵌入表达式。
 
 ```java
 String name = "Alice";
 int age = 25;
-String message = `Hello, my name is ${name} and I'm ${age} years old.`;
+String message = STR."Hello, my name is \{name} and I'm \{age} years old.";
 System.out.println(message);
 ```
 
@@ -31,13 +31,15 @@ System.out.println(message);
 
 ## JEP 431: 有序集合
 
-有序集合是一种新的集合类型，它维护了元素的插入顺序。与现有的集合类型（如 `HashSet` 不保证顺序，`LinkedHashSet` 保证插入顺序但功能有限）不同，有序集合提供了更丰富的操作和更好的性能。
+有序集合是一种新的集合类型，它维护了元素的插入顺序。Java 21 引入了 `SequencedCollection`、`SequencedSet` 和 `SequencedMap` 接口，为具有明确相遇顺序的集合提供了统一的 API。与现有的集合类型（如 `HashSet` 不保证顺序，`LinkedHashSet` 保证插入顺序但缺乏获取首尾元素的方法）不同，有序集合接口提供了 `getFirst()`、`getLast()`、`addFirst()`、`addLast()` 等方法。
 
 有序集合适用于需要按照插入顺序处理元素的场景，例如缓存、队列等。通过使用有序集合，开发者可以更方便地管理元素的顺序，提高代码的可读性和可维护性。
 
 ```java
-OrderedSet<String> orderedSet = OrderedSet.of("apple", "banana", "cherry");
-orderedSet.forEach(System.out::println); // 输出顺序为 apple, banana, cherry
+SequencedCollection<String> sequencedCollection = new LinkedHashSet<>();
+sequencedCollection.addFirst("apple");
+sequencedCollection.addLast("cherry");
+System.out.println(sequencedCollection.getFirst()); // 输出: apple
 ```
 
 ## JEP 439: 分代式 ZGC
@@ -83,11 +85,21 @@ System.out.println(result);
 
 ```java
 // 调用本地函数示例
-try (var lib = LibraryLoader.load("mylibrary")) {
-    FunctionDescriptor fd = FunctionDescriptor.of(C_INT, C_INT, C_INT);
-    MethodHandle add = lib.lookup("add", fd);
-    int result = (int) add.invokeExact(10, 20);
-    System.out.println("Result: " + result);
+import java.lang.foreign.*;
+import java.lang.invoke.*;
+
+public class ForeignFunctionExample {
+    public static void main(String[] args) throws Throwable {
+        try (Arena arena = Arena.ofAuto()) {
+            Linker linker = Linker.nativeLinker();
+            MemorySegment strlenAddr = linker.defaultLookup().find("strlen").get();
+            FunctionDescriptor fd = FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS);
+            MethodHandle strlen = linker.downcallHandle(strlenAddr, fd);
+            MemorySegment str = arena.allocateUtf8String("Hello");
+            long len = (long) strlen.invoke(str);
+            System.out.println("Length: " + len);
+        }
+    }
 }
 ```
 
@@ -99,7 +111,7 @@ try (var lib = LibraryLoader.load("mylibrary")) {
 
 ```java
 Object obj = "Hello";
-if (obj instanceof String(_)) {
+if (obj instanceof String _) {
     System.out.println("It's a string");
 }
 ```
@@ -134,7 +146,7 @@ void main() {
 作用域值允许在大型程序中的组件之间安全有效地共享数据，而无需求助于方法参数。这对于减少代码冗余和提高代码的可维护性非常有帮助。
 
 ```java
-final static ScopedValue<String> USER_NAME = new ScopedValue<>();
+final static ScopedValue<String> USER_NAME = ScopedValue.newInstance();
 
 // 设置作用域值
 ScopedValue.where(USER_NAME, "Alice")
@@ -149,9 +161,14 @@ ScopedValue.where(USER_NAME, "Alice")
 向量 API 提供了一种高效的方式来进行向量计算，适用于科学计算、机器学习等领域。该特性通过引入一组新的类和接口，允许开发者使用硬件加速的向量指令来执行计算，从而提高性能。
 
 ```java
+import jdk.incubator.vector.*;
+
+// 创建向量种类（指定使用 256 位 SIMD 寄存器）
+VectorSpecies<Integer> SPECIES = IntVector.SPECIES_256;
+
 // 创建两个向量
-IntVector vector1 = IntVector.fromArray(VectorSpecies.ofDefault(int.class), new int[]{1, 2, 3, 4}, 0);
-IntVector vector2 = IntVector.fromArray(VectorSpecies.ofDefault(int.class), new int[]{5, 6, 7, 8}, 0);
+IntVector vector1 = IntVector.fromArray(SPECIES, new int[]{1, 2, 3, 4}, 0);
+IntVector vector2 = IntVector.fromArray(SPECIES, new int[]{5, 6, 7, 8}, 0);
 
 // 执行向量加法
 IntVector result = vector1.add(vector2);
@@ -161,7 +178,7 @@ int[] output = new int[4];
 result.intoArray(output, 0);
 
 // 输出结果
-System.out.println(Arrays.toString(output)); // [6, 8, 10, 12]
+System.out.println(java.util.Arrays.toString(output)); // [6, 8, 10, 12]
 ```
 
 ## JEP 449: 弃用待移除的 Windows 32 位 x86 端口

@@ -32,18 +32,24 @@ if (p instanceof Point(int x, int y)) {
 
 ```java
 // 示例代码：调用本地库函数
-try (var segment = MemorySegment.allocateNative(100)) {
-    // 假设有一个本地库函数 add，接受两个整数指针并返回它们的和
-    FunctionDescriptor addDesc = FunctionDescriptor.of(C_INT, C_POINTER, C_POINTER);
-    MethodHandle addHandle = CLinker.getInstance().downcallHandle(
-        LibraryLookup.ofDefault().lookup("add").get(),
-        addDesc
-    );
+import java.lang.foreign.*;
+import java.lang.invoke.*;
 
-    int a = 10, b = 20;
-    MemorySegment aSeg = MemorySegment.ofAddress(a).asSlice(0, 4);
-    MemorySegment bSeg = MemorySegment.ofAddress(b).asSlice(0, 4);
-    int result = (int) addHandle.invokeExact(aSeg, bSeg);
+try (Arena arena = Arena.ofAuto()) {
+    // 分配本地内存
+    MemorySegment segment = arena.allocate(100);
+    
+    // 查找本地库函数
+    Linker linker = Linker.nativeLinker();
+    SymbolLookup stdlib = linker.defaultLookup();
+    MemorySegment funcAddr = stdlib.find("add").get();
+    
+    // 创建方法句柄
+    FunctionDescriptor addDesc = FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT);
+    MethodHandle addHandle = linker.downcallHandle(funcAddr, addDesc);
+    
+    // 调用函数
+    int result = (int) addHandle.invoke(10, 20);
     System.out.println("Result: " + result);
 }
 ```
@@ -78,7 +84,7 @@ int[] output = new int[4];
 result.intoArray(output, 0);
 
 // 输出结果
-System.out.println(Arrays.toString(output)); // [6, 8, 10, 12]
+System.out.println(java.util.Arrays.toString(output)); // [6, 8, 10, 12]
 ```
 
 ## JEP 427: switch 表达式模式匹配（第三次预览）

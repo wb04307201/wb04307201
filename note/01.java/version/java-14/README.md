@@ -74,11 +74,13 @@ System.out.println(p); // 输出: Point[x=1, y=2]
 Switch 表达式扩展了传统的 `switch` 语句，使其可以作为一个表达式返回一个值。它还引入了新的 `->` 语法来简化 `case` 标签，并支持多标签和表达式组合。
 
 ```java
+String day = "MONDAY";
 int numLetters = switch (day) {
-    case MONDAY, FRIDAY, SUNDAY -> 6;
-    case TUESDAY                -> 7;
-    case THURSDAY, SATURDAY     -> 8;
-    case WEDNESDAY              -> 9;
+    case "MONDAY", "FRIDAY", "SUNDAY"    -> 6;
+    case "TUESDAY"                       -> 7;
+    case "THURSDAY", "SATURDAY"          -> 8;
+    case "WEDNESDAY"                     -> 9;
+    default                              -> -1;
 };
 ```
 

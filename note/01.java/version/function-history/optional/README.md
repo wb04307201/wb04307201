@@ -2,7 +2,7 @@
 
 | Java版本  | 新特性/增强内容                                                  |
 |---------|-----------------------------------------------------------|
-| Java 8  | JEP 107: 首次引入 `Optional` 类，用于优雅地处理 `NullPointerException` |
+| Java 8  | 首次引入 `Optional` 类，用于优雅地处理 `NullPointerException`     |
 | Java 9  | Optional 增强，新增 `ifPresentOrElse()`、`or()` 和 `stream()` 方法 |
 | Java 10 | Optional 增强，新增 `orElseThrow()` 方法                         |
 | Java 11 | Optional 增强，新增 `isEmpty()` 方法                             |

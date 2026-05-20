@@ -1,181 +1,134 @@
 # Vector API
 
-| Java版本  | 新特性/增强内容                              |
-|---------|---------------------------------------|
-| Java 16 | JEP 338: Vector API（第一次孵化）- 引入向量计算API |
-| Java 17 | JEP 414: Vector API（第二次孵化）- 继续完善功能    |
-| Java 18 | JEP 417: Vector API（第三次孵化）- 进一步增强API  |
-| Java 19 | JEP 426: Vector API（第四次孵化）- 继续优化      |
-| Java 20 | JEP 438: Vector API（第五次孵化）- 进一步增强     |
-| Java 21 | JEP 448: Vector API（第六次孵化）- 持续改进      |
-| Java 22 | JEP 460: Vector API（第七次孵化）- 继续完善      |
-| Java 23 | JEP 469: Vector API（第八次孵化）- 进一步优化     |
-| Java 24 | JEP 489: Vector API（第九次孵化）- 接近稳定      |
-| Java 25 | JEP 508: Vector API（第十次孵化）- 最新改进      |
+## 功能描述
 
-## 功能详细介绍
+Vector API 提供了一套标准化的 Java 向量计算 API，允许开发者编写利用现代 CPU SIMD（Single Instruction, Multiple Data）指令集的代码。通过自动向量化优化，显著提升数值计算密集型任务的性能，适用于科学计算、机器学习、图像处理等场景。该特性自 Java 16 起作为孵化特性持续演进。
 
-### 1. Java 16 - Vector API 初始引入 (JEP 338)
-
-Java 16 首次引入了 Vector API 作为孵化器特性，这是一个重要的性能增强功能：
-
-1. **目标**：提供一种在 Java 中执行向量计算的机制，这些计算可以在支持向量指令的硬件上高效运行
-2. **应用场景**：适用于科学计算、机器学习、图像处理等数值计算密集型任务
-3. **核心概念**：
-    - `VectorSpecies`: 定义向量的种类（元素类型和长度）
-    - `Vector`: 表示一个向量
-    - SIMD 指令集支持：利用硬件的向量指令集（如 SSE、AVX 等）
+## 基本用法（最新，Java 25+ 孵化）
 
 ```java
 import jdk.incubator.vector.*;
 
-public class VectorExample {
-    public static void main(String[] args) {
-        int[] array = {1, 2, 3, 4, 5, 6, 7, 8};
-        int[] result = new int[array.length];
-
-        // 获取默认的整数向量种类
-        VectorSpecies<Integer> species = IntVector.SPECIES_256;
-
-        int i = 0;
-        for (; i <= array.length - species.length(); i += species.length()) {
-            // 从数组加载向量
-            IntVector va = IntVector.fromArray(species, array, i);
-            // 对向量进行乘法运算（这里乘以 2）
-            IntVector vb = va.mul(2);
-            // 将结果存储回数组
-            vb.intoArray(result, i);
-        }
-
-        // 处理剩余元素
-        for (; i < array.length; i++) {
-            result[i] = array[i] * 2;
-        }
-
-        // 输出结果
-        for (int num : result) {
-            System.out.print(num + " ");
-        }
+// 1. 基本向量运算 - 数组乘法
+public static int[] vectorMultiply(int[] array, int factor) {
+    int[] result = new int[array.length];
+    // 选择 256 位向量（一次处理 8 个 int）
+    VectorSpecies<Integer> species = IntVector.SPECIES_256;
+    int bound = array.length - (array.length % species.length());
+    int i = 0;
+    for (; i < bound; i += species.length()) {
+        IntVector va = IntVector.fromArray(species, array, i);
+        va.mul(factor).intoArray(result, i);
     }
+    // 处理尾部元素
+    for (; i < array.length; i++) {
+        result[i] = array[i] * factor;
+    }
+    return result;
+}
+
+// 2. 向量加法
+public static float[] vectorAdd(float[] a, float[] b) {
+    float[] result = new float[a.length];
+    VectorSpecies<Float> species = FloatVector.SPECIES_PREFERRED;
+    int bound = Math.min(a.length, b.length) - (Math.min(a.length, b.length) % species.length());
+    int i = 0;
+    for (; i < bound; i += species.length()) {
+        FloatVector va = FloatVector.fromArray(species, a, i);
+        FloatVector vb = FloatVector.fromArray(species, b, i);
+        va.add(vb).intoArray(result, i);
+    }
+    return result;
+}
+
+// 3. 向量规约（点积）
+public static double dotProduct(double[] a, double[] b) {
+    DoubleVector sum = DoubleVector.zero(DoubleVector.SPECIES_PREFERRED);
+    VectorSpecies<Double> species = sum.species();
+    int bound = Math.min(a.length, b.length) - (Math.min(a.length, b.length) % species.length());
+    int i = 0;
+    for (; i < bound; i += species.length()) {
+        DoubleVector va = DoubleVector.fromArray(species, a, i);
+        DoubleVector vb = DoubleVector.fromArray(species, b, i);
+        sum = va.fma(vb, sum);  // fused multiply-add
+    }
+    double result = sum.reduceLanes(VectorOperators.ADD);
+    // 处理尾部
+    for (; i < Math.min(a.length, b.length); i++) {
+        result += a[i] * b[i];
+    }
+    return result;
+}
+
+// 4. 向量掩码操作（处理边界）
+public static int[] vectorAddWithMask(int[] a, int[] b) {
+    int[] result = new int[a.length];
+    VectorSpecies<Integer> species = IntVector.SPECIES_PREFERRED;
+    int i = 0;
+    for (; i < a.length; i += species.length()) {
+        IntVector.Mask mask = species.maskFromIndex(Math.min(species.length(), a.length - i));
+        IntVector va = IntVector.fromArray(species, a, i, mask);
+        IntVector vb = IntVector.fromArray(species, b, i, mask);
+        va.add(vb).intoArray(result, i, mask);
+    }
+    return result;
 }
 ```
 
+## 变更历史表
 
-### 2. Java 17 - Vector API 第二次孵化 (JEP 414)
+| Java版本  | 新特性/增强内容                              |
+|---------|---------------------------------------|
+| Java 25 | JEP 508: Vector API（第十次孵化）- 最新改进         |
+| Java 24 | JEP 489: Vector API（第九次孵化）- 接近稳定        |
+| Java 23 | JEP 469: Vector API（第八次孵化）- 进一步优化       |
+| Java 22 | JEP 460: Vector API（第七次孵化）- 继续完善        |
+| Java 21 | JEP 448: Vector API（第六次孵化）- 持续改进        |
+| Java 20 | JEP 438: Vector API（第五次孵化）- 进一步增强       |
+| Java 19 | JEP 426: Vector API（第四次孵化）- 继续优化        |
+| Java 18 | JEP 417: Vector API（第三次孵化）- 进一步增强 API   |
+| Java 17 | JEP 414: Vector API（第二次孵化）- 继续完善功能      |
+| Java 16 | JEP 338: Vector API（第一次孵化）- 引入向量计算 API   |
 
-Java 17 继续孵化 Vector API，在之前的基础上进行了进一步的优化和改进：
+## 功能详细介绍
 
-1. **性能优化**：改进了向量操作的性能
-2. **功能增强**：增加了新的功能和操作
-3. **API 完善**：进一步完善了 API 设计
+### 1. Java 16 - Vector API 首次孵化 (JEP 338)
 
-### 3. Java 18 - Vector API 第三次孵化 (JEP 417)
+首次引入 Vector API，核心概念：
+- **`VectorSpecies`**：定义向量类型（元素类型和长度）
+- **`Vector`**：表示不可变向量，支持 add、mul、div 等操作
+- **`VectorMask`**：控制哪些向量元素参与运算
+- 目标：替代 JNI 调用本地库的方式，用纯 Java 实现 SIMD 加速
 
-Java 18 继续改进 Vector API，重点关注性能和易用性：
+### 2. Java 17-25 - 持续孵化迭代 (JEP 414/417/426/438/448/460/469/489/508)
 
-1. **性能改进**：进一步优化了 API 的性能
-2. **易用性提升**：改进了 API 的易用性
-3. **功能扩展**：提供了更多的向量操作和功能
+每次孵化版本持续改进：
+- **性能优化**：C2 JIT 编译器对向量操作的优化不断增强
+- **API 完善**：增加更多向量操作（fma、lane shuffle、broadcast 等）
+- **平台支持**：扩展对 x64（AVX-512）、AArch64（NEON/SVE）的支持
+- **稳定性提升**：修复早期版本的 bug，API 设计逐渐稳定
 
-### 4. Java 19 - Vector API 第四次孵化 (JEP 426)
+### 3. 核心组件
 
-Java 19 继续增强 Vector API：
+| 组件                | 说明                           |
+|-------------------|------------------------------|
+| `VectorSpecies<T>` | 向量类型描述符，定义元素类型和向量长度           |
+| `IntVector` 等     | 具体向量实现类（IntVector、FloatVector 等） |
+| `VectorMask`       | 掩码，控制向量元素的选择性操作              |
+| `VectorOperators`  | 向量操作常量（ADD、MUL、FMA 等）         |
 
-1. **持续优化**：继续优化向量计算的性能
-2. **稳定性提升**：提高 API 的稳定性和可靠性
+## 性能对比
 
-```java
-// 创建两个向量
-IntVector vector1 = IntVector.fromArray(VectorSpecies.ofDefault(int.class), new int[]{1, 2, 3, 4}, 0);
-IntVector vector2 = IntVector.fromArray(VectorSpecies.ofDefault(int.class), new int[]{5, 6, 7, 8}, 0);
+在 AVX-512 支持的 CPU 上，使用 `SPECIES_512` 处理 100 万元素数组：
+- **标量循环**：基准时间 1.0x
+- **Vector API**：约 4-8x 加速（取决于操作类型）
 
-// 执行向量加法
-IntVector result = vector1.add(vector2);
+## 注意事项
 
-// 将结果存储到数组中
-int[] output = new int[4];
-result.intoArray(output, 0);
-
-// 输出结果
-System.out.println(Arrays.toString(output)); // [6, 8, 10, 12]
-```
-
-
-### 5. Java 20 - Vector API 第五次孵化 (JEP 438)
-
-Java 20 继续增强 Vector API：
-
-1. **功能完善**：进一步完善向量计算功能
-2. **性能提升**：持续优化性能表现
-
-### 6. Java 21 - Vector API 第六次孵化 (JEP 448)
-
-Java 21 继续改进 Vector API：
-
-1. **持续改进**：继续优化 API 设计和性能
-2. **稳定性增强**：提高 API 的稳定性和可靠性
-
-### 7. Java 22 - Vector API 第七次孵化 (JEP 460)
-
-Java 22 继续完善 Vector API：
-
-1. **进一步优化**：进一步优化 API 的设计和性能
-2. **功能增强**：提供了更多的向量操作和功能
-
-### 8. Java 23 - Vector API 第八次孵化 (JEP 469)
-
-Java 23 继续优化 Vector API：
-
-1. **性能优化**：进一步提高向量计算的性能
-2. **功能完善**：完善 API 功能
-
-### 9. Java 24 - Vector API 第九次孵化 (JEP 489)
-
-Java 24 继续改进 Vector API，使其接近稳定状态：
-
-1. **接近稳定**：API 设计接近稳定状态
-2. **性能优化**：进一步优化性能表现
-
-### 10. Java 25 - Vector API 第十次孵化 (JEP 508)
-
-Java 25 继续改进 Vector API：
-
-1. **最新改进**：最新的功能改进和优化
-2. **准备转正**：为最终转正做准备
-
-```java
-// 创建两个向量
-IntVector vector1 = IntVector.fromArray(VectorSpecies.ofDefault(int.class), new int[]{1, 2, 3, 4}, 0);
-IntVector vector2 = IntVector.fromArray(VectorSpecies.ofDefault(int.class), new int[]{5, 6, 7, 8}, 0);
-
-// 执行向量加法
-IntVector result = vector1.add(vector2);
-
-// 将结果存储到数组中
-int[] output = new int[4];
-result.intoArray(output, 0);
-
-// 输出结果
-System.out.println(Arrays.toString(output)); // [6, 8, 10, 12]
-```
-
-
-## Vector API 的核心优势
-
-1. **性能提升**：通过利用硬件的 SIMD 指令集，显著提高数值计算性能
-2. **易用性**：提供简洁的 API，使开发者能够轻松编写向量计算代码
-3. **可移植性**：API 设计为平台无关，可以在不同硬件平台上运行
-4. **类型安全**：提供类型安全的向量操作
-5. **内存效率**：优化内存使用，减少内存分配和垃圾回收开销
-
-## 应用场景
-
-1. **科学计算**：矩阵运算、数值分析等
-2. **机器学习**：神经网络计算、特征提取等
-3. **图像处理**：图像滤波、变换等
-4. **金融计算**：风险分析、定价模型等
-5. **游戏开发**：物理模拟、图形渲染等
+1. **孵化特性**：需要添加 `--add-modules jdk.incubator.vector` 启动参数
+2. **硬件依赖**：性能提升取决于 CPU 是否支持 SIMD 指令集
+3. **JIT 优化**：某些简单循环可能被 C2 自动向量化，无需显式使用 Vector API
 
 ## 总结
 
-Vector API 从 Java 16 开始作为孵化器特性引入，经过多次孵化和改进，逐渐完善并接近稳定状态。它为 Java 开发者提供了一种高效处理向量计算的方式，通过利用现代处理器的 SIMD 指令集，显著提升了数值计算密集型应用的性能。随着每次版本的迭代，Vector API 在性能、功能和易用性方面都得到了持续改进，预计在未来的 Java 版本中将正式转正成为标准特性。
+Vector API 自 Java 16 孵化以来，经过 10 轮迭代已接近稳定。它为 Java 数值计算提供了接近原生性能的向量化能力，是弥补 Java 在高性能计算领域差距的重要特性。

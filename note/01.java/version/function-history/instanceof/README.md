@@ -6,8 +6,7 @@
 | Java 14 | JEP 305: instanceof 模式匹配（预览）- 引入模式变量    |
 | Java 15 | JEP 375: instanceof 模式匹配（第二次预览）- 继续完善功能 |
 | Java 16 | JEP 394: instanceof 模式匹配（正式特性）- 转正为标准特性 |
-| Java 21 | 基本类型模式匹配（预览）- 扩展到基本类型                   |
-| Java 23 | JEP 455: 基本类型模式匹配（预览）- 继续完善基本类型支持       |
+| Java 23 | JEP 455: 基本类型模式匹配（预览）- 首次引入基本类型支持       |
 | Java 25 | JEP 507: 基本类型模式匹配（第三次预览）- 进一步完善功能       |
 
 ## 功能详细介绍
@@ -105,9 +104,9 @@ public class InstanceofPatternMatching {
 ```
 
 
-### 5. Java 21-25 - 基本类型模式匹配
+### 5. Java 23 - 基本类型模式匹配 (JEP 455)
 
-从 Java 21 开始，instanceof 模式匹配功能进一步扩展到基本类型：
+从 Java 23 开始，instanceof 模式匹配功能扩展到基本类型：
 
 1. **基本类型支持**：允许在 instanceof 中直接使用基本类型
 2. **统一的模式匹配语法**：基本类型和引用类型的模式匹配语法保持一致
@@ -195,6 +194,6 @@ static void demonstratePrimitivePatterns(Object obj) {
 instanceof 操作符从 Java 8 到 Java 25 经历了显著的演进：
 
 1. **Java 14-16** 的模式匹配是第一个重大改进，引入了模式变量，消除了显式类型转换的需要
-2. **Java 21-25** 扩展了模式匹配到基本类型，使 instanceof 更加强大和统一
+2. **Java 23-25** 扩展了模式匹配到基本类型，使 instanceof 更加强大和统一
 
 这些改进使 instanceof 操作符变得更加强大、简洁和安全，减少了传统 instanceof 使用中的样板代码，同时提供了更强大的模式匹配能力，使代码更加清晰和易读。基本类型模式匹配的引入进一步完善了 Java 的模式匹配体系，为开发者提供了更加一致和强大的类型检查与转换能力。

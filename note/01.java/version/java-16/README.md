@@ -17,7 +17,7 @@
 - **JEP 395**: 记录类
 - **JEP 396**: 默认情况下强封装 JDK 内部元素
 - **JEP 397**: 密封类（第二次预览）
-- **Stream API 增强**
+- **Stream API 增强**: 新增 `toList()` 便捷方法和 `mapMulti()` 方法
 
 ## JEP 338: Vector API（孵化器）
 Vector API 旨在提供一种在 Java 中执行向量计算的机制，这些计算可以在支持向量指令的硬件上高效运行。通过使用该 API，开发者能够编写出可移植且性能优化的代码，用于处理数值计算密集型任务，如科学计算、机器学习等。例如，在处理大规模数组的数学运算时，Vector API 可以利用硬件的向量指令集（如 SSE、AVX 等）并行处理多个数据元素，从而显著提高计算速度。
@@ -149,14 +149,11 @@ import java.lang.invoke.MethodType;
 
 public class ForeignLinkerExample {
     public static void main(String[] args) throws Throwable {
-        // 加载本地库
-        LibraryLookup<CLinker> lib = LibraryLookup.ofDefault();
-        // 获取本地函数符号
-        SymbolLookup.Named printf = SymbolLookup.loaderLookup().lookup("printf").get();
+        // 查找本地函数符号
+        SymbolLookup printfSym = SymbolLookup.loaderLookup().lookup("printf").get();
         // 创建方法句柄
         MethodType type = MethodType.methodType(int.class, MemoryAddress.class, MemoryAddress.class);
-        MethodHandle mh = CLinker.getInstance().downcallHandle(
-                printf,
+        MethodHandle mh = CLinker.systemLinker().downcallHandle(
                 type,
                 FunctionDescriptor.of(CLinker.C_INT,
                         CLinker.C_POINTER,
@@ -263,36 +260,20 @@ public class SealedClassExample {
 ```
 
 ## Stream API 增强
-### **1. `toList()`：简化流到列表的转换**
-- 新增 `toList()` 方法，直接作为终端操作调用，代码更简洁：
-  ```java
-  List<String> result = Stream.of("a", "b", "c")
-      .filter(s -> s.startsWith("a"))
-      .toList(); // 返回不可变列表
-  ```
 
-- **关键特性**：
-    - **不可变性**：返回的列表是 `Collections.unmodifiableList` 包装的，无法修改元素（增删改会抛出 `UnsupportedOperationException`）。
-    - **性能优化**：内部通过数组直接构造列表，减少临时对象创建，性能优于 `Collectors.toList()`。
-    - **与 `Collectors.toUnmodifiableList()` 对比**：  
-      Java 10 引入的 `Collectors.toUnmodifiableList()` 也可生成不可变列表，但 `toList()` 更简洁，且性能更优。
+Java 16 为 Stream API 添加了两项重要功能：
 
-- **适用场景**：  
-  需要快速生成不可变列表的流操作，如过滤、映射后的结果收集。
+- **`toList()`**：直接创建不可变列表的便捷方法，替代 `collect(Collectors.toList())`
 
-### **2. `mapMulti()`：高效替代 `flatMap()` 的元素转换**
-- `mapMulti()` 通过 `BiConsumer` 直接接收元素并推送零个或多个结果到下游，避免创建临时流：
-  ```java
-  List<String> result = Stream.of("a", "bb", "ccc")
-      .mapMulti((s, consumer) -> consumer.accept(String.valueOf(s.length()))) // 直接推送结果
-      .toList();
-  ```
+```java
+List<String> result = Stream.of("a", "b", "c").toList(); // 不可变列表
+```
 
-- **关键特性**：
-    - **零开销**：无需创建内部流，减少内存分配和垃圾回收压力。
-    - **灵活性**：可动态决定推送结果的数量（如过滤、复制元素）。
-    - **与 `flatMap()` 对比**：  
-      `flatMap()` 更声明式，适合明确映射逻辑；`mapMulti()` 更命令式，适合复杂或性能敏感场景。
+- **`mapMulti()`**：将一个元素转换为多个元素，是 `flatMap` 在简单场景下的高效替代
 
-- **适用场景**：  
-  需要高效处理大量数据或动态生成结果的流操作，如日志解析、数据转换。
+```java
+Stream.of("a", "b").mapMulti((str, consumer) -> {
+    consumer.accept(str);
+    consumer.accept(str.toUpperCase());
+}).forEach(System.out::println); // a, A, b, B
+```
