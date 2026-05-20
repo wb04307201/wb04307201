@@ -4,7 +4,7 @@
 
 Vector API 提供了一套标准化的 Java 向量计算 API，允许开发者编写利用现代 CPU SIMD（Single Instruction, Multiple Data）指令集的代码。通过自动向量化优化，显著提升数值计算密集型任务的性能，适用于科学计算、机器学习、图像处理等场景。该特性自 Java 16 起作为孵化特性持续演进。
 
-## 基本用法（最新，Java 25+ 孵化）
+## 基本用法（最新，Java 26+ 孵化）
 
 ```java
 import jdk.incubator.vector.*;
@@ -79,6 +79,7 @@ public static int[] vectorAddWithMask(int[] a, int[] b) {
 
 | Java版本  | 新特性/增强内容                              |
 |---------|---------------------------------------|
+| Java 26 | JEP 529: Vector API（第十一次孵化）- 持续改进        |
 | Java 25 | JEP 508: Vector API（第十次孵化）- 最新改进         |
 | Java 24 | JEP 489: Vector API（第九次孵化）- 接近稳定        |
 | Java 23 | JEP 469: Vector API（第八次孵化）- 进一步优化       |
@@ -100,7 +101,7 @@ public static int[] vectorAddWithMask(int[] a, int[] b) {
 - **`VectorMask`**：控制哪些向量元素参与运算
 - 目标：替代 JNI 调用本地库的方式，用纯 Java 实现 SIMD 加速
 
-### 2. Java 17-25 - 持续孵化迭代 (JEP 414/417/426/438/448/460/469/489/508)
+### 2. Java 17-26 - 持续孵化迭代 (JEP 414/417/426/438/448/460/469/489/508/529)
 
 每次孵化版本持续改进：
 - **性能优化**：C2 JIT 编译器对向量操作的优化不断增强
@@ -131,4 +132,4 @@ public static int[] vectorAddWithMask(int[] a, int[] b) {
 
 ## 总结
 
-Vector API 自 Java 16 孵化以来，经过 10 轮迭代已接近稳定。它为 Java 数值计算提供了接近原生性能的向量化能力，是弥补 Java 在高性能计算领域差距的重要特性。
+Vector API 自 Java 16 孵化以来，经过 11 轮迭代已接近稳定。它为 Java 数值计算提供了接近原生性能的向量化能力，是弥补 Java 在高性能计算领域差距的重要特性。

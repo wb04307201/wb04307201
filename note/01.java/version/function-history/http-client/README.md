@@ -98,6 +98,7 @@ Thread.startVirtualThread(() -> {
 
 | Java版本  | 新特性/增强内容                                             |
 |---------|------------------------------------------------------|
+| Java 26 | JEP 517: HTTP Client 支持 HTTP/3 协议                          |
 | Java 21 | HttpClient 在虚拟线程中阻塞调用时自动挂起（配合 JEP 444）            |
 | Java 11 | JEP 321: HTTP Client 转正为标准特性（java.net.http 包）      |
 | Java 10 | JEP 321: HTTP Client 第二次孵化                              |
@@ -140,6 +141,16 @@ API 微调，改进 WebSocket 支持和错误处理。
 
 HTTP Client 的阻塞式 `send()` 方法在虚拟线程中调用时，I/O 操作会自动挂起并释放载体线程，使虚拟线程可以高效地处理大量并发 HTTP 请求。
 
+### 6. Java 26 - HTTP/3 支持 (JEP 517)
+
+HTTP Client 新增对 HTTP/3 协议的支持，基于 QUIC 传输协议，相比 HTTP/2 具有更好的弱网络环境表现和更低的连接建立延迟：
+
+```java
+HttpClient client = HttpClient.newBuilder()
+    .version(HttpClient.Version.HTTP_3)
+    .build();
+```
+
 ## HttpClient vs 第三方库
 
 | 特性          | HttpClient        | OkHttp              | Apache HttpClient |
@@ -152,4 +163,4 @@ HTTP Client 的阻塞式 `send()` 方法在虚拟线程中调用时，I/O 操作
 
 ## 总结
 
-HTTP Client 从 Java 9 孵化到 Java 11 转正，提供了现代化的 HTTP/1.1 和 HTTP/2 客户端能力，完全替代了老旧的 `HttpURLConnection`。Java 21 的虚拟线程集成使其在高并发 HTTP 场景中表现优异。
+HTTP Client 从 Java 9 孵化到 Java 11 转正，提供了现代化的 HTTP/1.1、HTTP/2 和 HTTP/3 客户端能力，完全替代了老旧的 `HttpURLConnection`。Java 21 的虚拟线程集成使其在高并发 HTTP 场景中表现优异，Java 26 的 HTTP/3 支持进一步提升了弱网络环境下的性能。

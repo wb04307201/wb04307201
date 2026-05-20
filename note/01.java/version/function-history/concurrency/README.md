@@ -4,7 +4,7 @@
 
 Java 并发编程从基础的 Thread/synchronized 演进到现代并发模型。Java 21 转正的虚拟线程（Virtual Threads）彻底改变了高并发场景的编程方式——可以用同步写法实现异步性能。配合结构化并发（Structured Concurrency）和作用域值（Scoped Values），Java 为高并发服务端应用提供了完整的现代并发编程栈。
 
-## 基本用法（最新，Java 25+）
+## 基本用法（最新，Java 26+）
 
 ```java
 // 1. 虚拟线程（Java 21+ 正式特性）- 替代线程池的首选方式
@@ -95,6 +95,7 @@ class Point {
 
 | Java版本  | 新特性/增强内容                                             |
 |---------|------------------------------------------------------|
+| Java 26 | JEP 525: 结构化并发（第六次预览）                                |
 | Java 25 | JEP 505: 结构化并发（第五次预览）                                |
 | Java 25 | JEP 506: 作用域值（转正）                                   |
 | Java 24 | JEP 491: 虚拟线程在 synchronized 中阻塞时释放平台线程              |
@@ -227,4 +228,4 @@ ScopedValue.where(USER, currentUser).run(() -> processRequest());
 
 ## 总结
 
-Java 并发从 `synchronized` + `Thread` 演进到虚拟线程 + 结构化并发 + 作用域值的现代模型。Java 21+ 的虚拟线程是最大变革——用同步写法获得异步性能，无需再编写复杂的异步回调代码。
+Java 并发从 `synchronized` + `Thread` 演进到虚拟线程 + 结构化并发 + 作用域值的现代模型。Java 21+ 的虚拟线程是最大变革——用同步写法获得异步性能，无需再编写复杂的异步回调代码。结构化并发持续迭代预览（Java 26 第六次预览），为正式发布做准备。
