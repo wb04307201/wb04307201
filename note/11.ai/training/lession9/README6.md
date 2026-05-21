@@ -131,6 +131,16 @@ specify init . --force --ai claude
 | `gemini`  | Gemini CLI       |
 | `cursor`  | Cursor IDE       |
 | `codex`   | OpenAI Codex CLI |
+| `cline`   | Cline (VS Code插件/CLI) |
+| `aider`   | Aider (终端CLI)  |
+| `roo`     | Roo Code (VS Code插件) |
+| `continue`| Continue (开源扩展) |
+| `windsurf`| Windsurf (原Codeium) |
+| `tabnine` | Tabnine          |
+| `codeium` | Codeium          |
+| `qoder`   | Qoder (阿里云)   |
+| `comate`  | Baidu Comate     |
+| `lingma`  | 通义灵码 (阿里云) |
 
 ---
 
