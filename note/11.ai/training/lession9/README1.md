@@ -34,6 +34,50 @@
     claude --version
     ```
 
+## **1.1 Claude Code 常用命令**
+
+### `--dangerously-skip-permissions` 参数说明
+
+`--dangerously-skip-permissions` 是 Claude Code CLI 的一个启动参数，用于跳过所有权限确认提示，让 AI 自动执行所有操作（文件读写、命令执行等）。
+
+**⚠️ 安全警告：** 此参数会禁用所有权限确认，AI 将无需确认即可执行任何操作。仅在完全信任的环境中（如隔离的沙箱、个人测试环境）使用。
+
+**使用方式：**
+
+```bash
+# 启动时跳过所有权限确认
+claude --dangerously-skip-permissions
+
+# 结合其他参数使用
+claude --dangerously-skip-permissions --output-format stream
+
+# 在脚本/自动化流程中使用
+claude --dangerously-skip-permissions -p "分析当前项目结构"
+```
+
+### 其他常用启动参数
+
+| 参数 | 说明 | 示例 |
+|------|------|------|
+| `-p`, `--prompt` | 直接传入提示词并退出 | `claude -p "解释README.md"` |
+| `--output-format` | 输出格式（`text`/`stream`/`json`） | `claude --output-format stream` |
+| `--allowedTools` | 预授权允许的工具列表 | `claude --allowedTools Bash --allowedTools Read` |
+| `--disallowedTools` | 禁止使用的工具列表 | `claude --disallowedTools Write` |
+| `--continue` | 继续上一次的对话 | `claude --continue` |
+| `--resume` | 恢复指定的历史会话 | `claude --resume <session-id>` |
+
+### 权限模式说明
+
+Claude Code 默认有三种权限模式：
+
+- **默认模式**：每次执行工具前会提示确认
+- **自动模式**：安全操作自动确认，危险操作仍需确认
+- **跳过权限模式**（`--dangerously-skip-permissions`）：所有操作自动执行
+
+在交互式使用时建议使用默认模式，在自动化脚本或可信环境中可使用 `--dangerously-skip-permissions`。
+
+---
+
 ## **2. 在Claude Code配置百炼模型**
 
 1.  创建并打开配置文件`C:\Users\您的用户名\.claude\settings.json`。
