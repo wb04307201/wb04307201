@@ -1,6 +1,7 @@
 # Java 25
 
 - **JEP 470**: PEM 编码的加密对象（预览）
+- **JEP 502**: 稳定值（预览）
 - **JEP 503**: 移除 32 位 x86 端口
 - **JEP 505**: 结构化并发（第五次预览）
 - **JEP 506**: 作用域值
@@ -35,6 +36,27 @@ String pemCertificate = PemWriter.writeCertificate(certificate);
 ```
 
 这一特性对于与现有的加密基础设施和工具进行集成非常有用，简化了加密对象的处理流程。
+
+## JEP 502: 稳定值（预览）
+
+稳定值（Stable Values）是一种新的语言特性，允许开发者声明某些字段在对象构造完成后不会再被修改。这使得 JIT 编译器可以基于这种稳定性假设进行更激进的优化，从而提高运行时性能。与 `final` 不同，稳定值允许多次写入（在构造阶段），但承诺在对象对外可见后不再改变。
+
+```java
+class Config {
+    @Stable
+    private int cachedValue;
+
+    Config(int value) {
+        cachedValue = value; // 构造期间可以写入
+    }
+
+    int getValue() {
+        return cachedValue; // JIT 可以假设此值不会改变
+    }
+}
+```
+
+通过声明稳定值，开发者可以帮助 JIT 编译器消除不必要的内存加载，优化内联决策，这对于框架开发和性能敏感的应用程序非常有用。
 
 ## JEP 503: 移除 32 位 x86 端口
 

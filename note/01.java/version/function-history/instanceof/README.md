@@ -7,8 +7,9 @@
 | Java 15 | JEP 375: instanceof 模式匹配（第二次预览）- 继续完善功能 |
 | Java 16 | JEP 394: instanceof 模式匹配（正式特性）- 转正为标准特性 |
 | Java 23 | JEP 455: 基本类型模式匹配（预览）- 首次引入基本类型支持       |
-| Java 26 | JEP 530: 基本类型模式匹配（第四次预览）- 为正式发布做准备       |
+| Java 24 | JEP 488: 基本类型模式匹配（第二次预览）- 进一步完善功能       |
 | Java 25 | JEP 507: 基本类型模式匹配（第三次预览）- 进一步完善功能       |
+| Java 26 | JEP 530: 基本类型模式匹配（第四次预览）- 为正式发布做准备       |
 
 ## 基本用法（最新，Java 26+）
 
@@ -105,7 +106,7 @@ public class InstanceofPatternMatching {
 ```
 
 
-### 5. Java 23 - 基本类型模式匹配 (JEP 455)
+### 5. Java 23 - 基本类型模式匹配首次预览 (JEP 455)
 
 从 Java 23 开始，instanceof 模式匹配功能扩展到基本类型：
 
@@ -113,19 +114,19 @@ public class InstanceofPatternMatching {
 2. **统一的模式匹配语法**：基本类型和引用类型的模式匹配语法保持一致
 
 ```java
-// Java 21+ 中的基本类型模式匹配示例
+// Java 23+ 中的基本类型模式匹配示例
 static void processObject(Object obj) {
     // 传统方式处理基本类型包装类
     if (obj instanceof Integer) {
         Integer i = (Integer) obj;
         System.out.println("Integer value: " + i);
     }
-    
-    // 使用基本类型模式匹配（Java 21+）
+
+    // 使用基本类型模式匹配（Java 23+）
     if (obj instanceof int i) {  // 直接匹配 int 基本类型
         System.out.println("int value: " + i);
     }
-    
+
     // 也可以匹配包装类型
     if (obj instanceof Integer integer) {
         System.out.println("Integer value: " + integer);
@@ -134,15 +135,12 @@ static void processObject(Object obj) {
 ```
 
 
-### 6. Java 23 - 基本类型模式匹配增强 (JEP 455)
+### 6. Java 24 - 基本类型模式匹配第二次预览 (JEP 488)
 
-Java 23 继续完善基本类型模式匹配：
-
-1. **扩展支持**：支持更多的基本类型模式匹配
-2. **与 switch 表达式的结合**：更好地与 switch 模式匹配配合使用
+Java 24 继续完善基本类型模式匹配，为所有基本类型提供更一致的支持：
 
 ```java
-// Java 23 中的增强示例
+// Java 24 中的增强示例
 static String formatValue(Object obj) {
     return switch (obj) {
         case Integer i -> String.format("int %d", i);
@@ -156,15 +154,7 @@ static String formatValue(Object obj) {
 ```
 
 
-### 8. Java 26 - 基本类型模式匹配第四次预览 (JEP 530)
-
-Java 26 进一步完善基本类型模式匹配，为正式发布做准备：
-
-```java
-if (obj instanceof int i) {
-    System.out.println("int: " + i);
-}
-```
+### 7. Java 25 - 基本类型模式匹配第三次预览 (JEP 507)
 
 Java 25 进一步完善基本类型模式匹配功能：
 
@@ -194,6 +184,17 @@ static void demonstratePrimitivePatterns(Object obj) {
     } else if (obj instanceof String s) {
         System.out.println("String: " + s);
     }
+}
+```
+
+
+### 8. Java 26 - 基本类型模式匹配第四次预览 (JEP 530)
+
+Java 26 进一步完善基本类型模式匹配，为正式发布做准备：
+
+```java
+if (obj instanceof int i) {
+    System.out.println("int: " + i);
 }
 ```
 
