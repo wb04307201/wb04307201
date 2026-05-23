@@ -4,7 +4,7 @@
 
 Foreign Function & Memory API (FFM) 允许 Java 程序安全地调用原生代码（C/C++ 库）和操作堆外内存，是 JNI 的现代化替代方案。它通过 `Arena` 管理内存生命周期，通过 `Linker` 调用原生函数，通过 `MemorySegment` 和 `MemoryLayout` 描述内存布局，解决了 JNI 的复杂性和安全性问题。
 
-## 基本用法（最新，Java 23+）
+## 基本用法（最新，Java 22+）
 
 ```java
 import java.lang.foreign.*;
@@ -124,16 +124,10 @@ public static void memoryViewExample() {
 
 ### 3. Java 20-21 - 预览阶段
 
-- **JEP 434/442**：引入 `Arena` 概念统一管理内存生命周期（替代 `ResourceScope`），提供 `ofConfined()`、`ofShared()`、`ofAuto()` 等不同作用域
-- API 从 `jdk.incubator.foreign` 迁移到 `java.lang.foreign`
+- **JEP 434（Java 20，第二次预览）**：引入 `Arena` 概念统一管理内存生命周期（替代 `ResourceScope`），提供 `ofConfined()`、`ofShared()`、`ofAuto()` 等不同作用域
+- **JEP 442（Java 21，第三次预览）**：API 从 `jdk.incubator.foreign` 迁移到 `java.lang.foreign`，Arena 生命周期管理进一步改进
 
-### 4. Java 22 - 第二次预览 (JEP 465)
-
-- 改进 `Linker` 的 `downcallHandle` 签名
-- 简化 `MemorySegment` 的字符串操作
-- 优化 `VarHandle` 与内存布局的集成
-
-### 5. Java 23 - FFM API 转正 (JEP 454)
+### 4. Java 22 - FFM API 转正 (JEP 454)
 
 FFM API 成为标准特性，不再需要 `--enable-preview`。完整替代了 JNI 的核心使用场景。
 
@@ -156,4 +150,4 @@ FFM API 成为标准特性，不再需要 `--enable-preview`。完整替代了 J
 
 ## 总结
 
-FFM API 从 Java 16 孵化到 Java 23 转正，为 Java 提供了安全、高效的原生代码调用和堆外内存操作能力，是 JNI 的现代化替代方案。纯 Java 即可调用原生库，无需编写 C 代码。
+FFM API 从 Java 16 孵化到 Java 22 转正，为 Java 提供了安全、高效的原生代码调用和堆外内存操作能力，是 JNI 的现代化替代方案。纯 Java 即可调用原生库，无需编写 C 代码。

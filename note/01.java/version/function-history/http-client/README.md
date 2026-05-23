@@ -4,7 +4,7 @@
 
 HTTP Client 是 Java 11 转正的标准化 HTTP 客户端 API，支持 HTTP/1.1 和 HTTP/2，提供同步和异步请求方式。替代了老旧的 `HttpURLConnection`，支持现代 Web 协议（WebSocket、响应式流），是 Java 生态中最常用的网络编程工具。
 
-## 基本用法（最新，Java 21+）
+## 基本用法（最新，Java 26+）
 
 ```java
 import java.net.http.*;
@@ -13,8 +13,9 @@ import java.time.Duration;
 import java.util.concurrent.CompletableFuture;
 
 // 1. 创建 HttpClient（可复用，线程安全）
+// Java 26+ 支持 HTTP/3（基于 QUIC 协议），也可选择 HTTP_2 或 HTTP_1_1
 HttpClient client = HttpClient.newBuilder()
-    .version(HttpClient.Version.HTTP_2)
+    .version(HttpClient.Version.HTTP_3)
     .connectTimeout(Duration.ofSeconds(10))
     .followRedirects(HttpClient.Redirect.NORMAL)
     .build();
