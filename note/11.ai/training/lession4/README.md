@@ -1,4 +1,4 @@
-# 使用 Java 开发 MCP 服务并发布到 Maven 中央仓库完整指南
+# AI Agent组装——三. 使用 Java 开发 MCP 服务并发布到 Maven 中央仓库完整指南
 
 ## 目录
 
