@@ -31,13 +31,15 @@
 
 ### 2.2 生态数据印证采用趋势
 
-- MCP SDK 月下载量已突破 **3 亿次**（年初为 1 亿次）
+- MCP SDK 月下载量已突破 **3 亿次**<sup>[¹](https://claude.com/blog/building-agents-that-reach-production-systems-with-mcp)</sup>（年初为 1 亿次）
 - 数百万用户每日通过 MCP 与 Claude 交互
 - Claude Cowork、Claude Managed Agents、Claude Code Channels 等核心产品均基于 MCP 构建
 
 ---
 
 ## 三、构建高质量 MCP Server 的五大设计模式
+
+> 📝 本章代码示例使用 JavaScript、YAML、Python 等多种语言，旨在展示 MCP 协议的跨语言通用性。实际开发中可根据团队技术栈自由选择。
 
 ### 🔹 模式 1：优先构建远程 Server，实现最大覆盖范围
 
@@ -85,7 +87,7 @@ tools:
 | **Form Mode** | 收集缺失参数、确认危险操作、选项消歧 | 广泛支持 |
 | **URL Mode** | 完成 OAuth 跳转、支付流程、敏感凭证收集 | Claude Code（扩展中） |
 
-> 📊 数据：支持 MCP Apps 的 Server 用户留存率显著高于纯文本返回方案。
+> 📊 数据：支持 MCP Apps 的 Server 用户留存率显著高于纯文本返回方案<sup>[¹](https://claude.com/blog/building-agents-that-reach-production-systems-with-mcp)</sup>。
 
 ### 🔹 模式 5：采用标准化认证，降低运维复杂度
 
