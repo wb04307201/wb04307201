@@ -5,7 +5,7 @@
 > Java / Spring 生态后端工程师，专注于中间件、分布式系统与 AI 应用开发。
 
 <p>
-  <img src="https://img.shields.io/badge/Java-17|25%2B-orange?logo=openjdk&logoColor=white" alt="Java"/>
+  <img src="https://img.shields.io/badge/Java-17|25-orange?logo=openjdk&logoColor=white" alt="Java"/>
   <img src="https://img.shields.io/badge/Spring%20Boot-3.x|4.x-brightgreen?logo=springboot&logoColor=white" alt="Spring Boot"/>
   <img src="https://img.shields.io/badge/Spring%20AI-1.x-6db33f?logo=spring&logoColor=white" alt="Spring AI"/>
   <img src="https://img.shields.io/badge/Database-✓-4479A1?logo=mysql&logoColor=white" alt="Database"/>
