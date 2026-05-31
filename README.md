@@ -17,10 +17,16 @@
 
 </div>
 
-<div style="display: flex;">
-  <img src="./profile/stats.svg" alt="" style="height:200px;"/>
-  <img src="./profile/top-langs.svg" alt="" style="height:200px;"/>
-</div>
+<table>
+  <tr>
+    <td style="padding: 0 10px; border: none; text-align: center;">
+      <img src="./profile/stats.svg" alt="图1" style="height:200px;">
+    </td>
+    <td style="padding: 0 10px; border: none; text-align: center;">
+      <img src="./profile/top-langs.svg" alt="图2" style="height:200px;">
+    </td>
+  </tr>
+</table>
 
 ## 🔧 开源项目
 
