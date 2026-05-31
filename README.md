@@ -17,9 +17,9 @@
 
 </div>
 
-<div align="left">
-  <img src="./profile/stats.svg" alt="" style="height:200px"/>
-  <img src="./profile/top-langs.svg" alt="" style="height:200px"/>
+<div style="display: flex;">
+  <img src="./profile/stats.svg" alt="" style="height:200px;"/>
+  <img src="./profile/top-langs.svg" alt="" style="height:200px;"/>
 </div>
 
 ## 🔧 开源项目
