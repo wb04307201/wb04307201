@@ -1,6 +1,6 @@
 # 术语表
 
-> 「阿明餐厅」系列涉及的 60+ 核心技术术语速查。按主题分类，每条包含：术语名称、一句话解释、出处文章。
+> 「阿明餐厅」系列涉及的 130+ 核心技术术语速查。按主题分类，每条包括：术语名称、一句话解释、出处文章。
 
 ← [返回系列导读](./index.md)
 
@@ -15,7 +15,7 @@
 | **最终一致性 (Eventual Consistency)** | 数据在极短时间窗口内可能不一致，但最终会达成一致 | [前传](./02-system-architecture-evolution.md) |
 | **读写分离** | 主库负责写操作，从库负责读操作，通过同步机制保持一致 | [前传](./02-system-architecture-evolution.md) |
 | **垂直拆分** | 按业务线将系统拆分为独立的子系统，各自独立运营 | [前传](./02-system-architecture-evolution.md) |
-| **水平分片 (Sharding)** | 按区域或时间将同一张表的数据拆分到多个库/表中 | [前传](./02-system-architecture-evolution.md) |
+| **水平分片 (Sharding)** | 通过哈希键、区域、时间等维度将同一张表的数据拆分到多个库/表中，以分散负载、提升查询性能 | [前传](./02-system-architecture-evolution.md) |
 | **Saga** | 分布式事务方案：每步操作都有补偿操作，失败时逆向回滚 | [前传](./02-system-architecture-evolution.md) |
 | **TCC (Try-Confirm-Cancel)** | 分布式事务方案：预留资源 → 确认 → 取消，业务侵入性强 | [前传](./02-system-architecture-evolution.md) |
 | **多活容灾** | 多个数据中心同时对外提供服务，单点故障不影响整体 | [前传](./02-system-architecture-evolution.md) |
@@ -131,6 +131,191 @@
 | **技术债 (Technical Debt)** | 为赶进度而做的技术妥协，像借债一样需要"还本付息" | [番外](./03-refactoring-guide-for-pm.md) |
 | **绞杀者模式 (Strangler Fig Pattern)** | 渐进式重构策略：新功能用新系统实现，逐步替换旧系统 | [番外](./03-refactoring-guide-for-pm.md) |
 | **分支抽象 (Branch by Abstraction)** | 通过抽象层隔离新旧实现，在不影响线上的前提下逐步迁移 | [番外](./03-refactoring-guide-for-pm.md) |
+
+---
+
+## AI 学习 & 人机协作
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **认知卸载 (Cognitive Offloading)** | 将思考过程外包给工具，导致大脑逐渐"遗忘"相关能力 | [续集二](./11-ai-learning-paradox.md) |
+| **GPS 效应 (GPS Effect)** | 过度依赖导航导致空间记忆退化的现象，类比 AI 对编程能力的类似影响 | [续集二](./11-ai-learning-paradox.md) |
+| **刻意练习 (Deliberate Practice)** | 有目的的、超出舒适区的、持续获得反馈的反复练习，是专家级能力的来源 | [续集二](./11-ai-learning-paradox.md) |
+| **脚手架理论 (Scaffolding)** | 教育心理学中为学生提供临时支持，随能力提升逐步撤除。AI 应是可撤除的脚手架 | [续集二](./11-ai-learning-paradox.md) |
+| **AI 幻觉 (Hallucination)** | AI 生成看似合理但实际错误的内容，如编造不存在的 API 或参数 | [续集二](./11-ai-learning-paradox.md) |
+| **代码可理解性 (Code Comprehensibility)** | 代码被人理解其意图和逻辑的容易程度，AI 生成代码的主要挑战之一 | [续集二](./11-ai-learning-paradox.md) |
+
+---
+
+## 数据架构 & 数据治理
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **数据孤岛 (Data Silos)** | 各系统独立管理数据，互不通信，导致同一事实有多种说法 | [正传 7](./12-data-kitchen.md) |
+| **主数据管理 (MDM)** | 为核心实体（菜品、门店、顾客）建立统一标准定义的管理方法 | [正传 7](./12-data-kitchen.md) |
+| **ETL / ELT** | 数据管道的核心流程：抽取(Extract)、转换(Transform)、加载(Load) | [正传 7](./12-data-kitchen.md) |
+| **维度建模 (Dimensional Modeling)** | 将数据分为事实表和维度表的建模方法，用于数据仓库设计 | [正传 7](./12-data-kitchen.md) |
+| **星型模型 (Star Schema)** | 事实表在中间、维度表围绕的建模结构，查询简单性能好 | [正传 7](./12-data-kitchen.md) |
+| **数据血缘 (Data Lineage)** | 追踪数据字段从产生到消费的完整链路，用于问题追溯 | [正传 7](./12-data-kitchen.md) |
+| **GIGO** | Garbage In, Garbage Out —— 输入数据质量差，输出结果也不可信 | [正传 7](./12-data-kitchen.md) |
+
+---
+
+## 前端工程化 & 用户体验
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **Core Web Vitals** | Google 定义的三大网页核心指标：LCP（加载）、INP（交互）、CLS（布局偏移） | [正传 8](./13-frontend-renovation.md) |
+| **懒加载 (Lazy Loading)** | 延迟加载非可视区域的资源，减少首屏加载时间 | [正传 8](./13-frontend-renovation.md) |
+| **代码分割 (Code Splitting)** | 将代码按路由或功能拆分，首屏只加载必要代码 | [正传 8](./13-frontend-renovation.md) |
+| **设计系统 (Design System)** | 统一的设计规范和组件库，确保多页面/多产品的视觉和交互一致性 | [正传 8](./13-frontend-renovation.md) |
+| **RUM (Real User Monitoring)** | 真实用户监控，采集真实用户的性能和体验数据 | [正传 8](./13-frontend-renovation.md) |
+| **E2E 测试** | 端到端测试，模拟用户完整操作流程，验证系统整体功能 | [正传 8](./13-frontend-renovation.md) |
+
+---
+
+## 云成本优化 & FinOps
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **FinOps** | 云财务管理，将成本意识融入技术决策和工程实践的文化与方法论 | [番外二](./14-cloud-finops.md) |
+| **右 Size 化 (Right-Sizing)** | 根据实际负载调整资源规格，消除过大或过小的资源配置 | [番外二](./14-cloud-finops.md) |
+| **预留实例 (Reserved Instance)** | 提前锁定 1-3 年使用承诺换取 30-60% 折扣的付费模式 | [番外二](./14-cloud-finops.md) |
+| **竞价实例 (Spot Instance)** | 利用云厂商闲置资源、价格极低但随时可能被回收的付费模式 | [番外二](./14-cloud-finops.md) |
+| **Showback / Chargeback** | 成本展示(Showback)和成本分摊(Chargeback)，让团队看到并承担自己的云费用 | [番外二](./14-cloud-finops.md) |
+| **资源标签 (Tagging)** | 给云资源打标签（团队/项目/环境），实现成本归因和治理 | [番外二](./14-cloud-finops.md) |
+
+---
+
+## 故障应急 & 韧性工程
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **故障分级 (Severity)** | 按影响面和严重程度将故障分为 P0-P3，对应不同响应速度和处理方式 | [正传 9](./15-incident-response.md) |
+| **Runbook** | 运维手册/SOP，记录各类故障的标准处理步骤，定期更新和演练 | [正传 9](./15-incident-response.md) |
+| **On-Call** | 值班制度，工程师轮值响应线上告警，有明确的交接和补偿机制 | [正传 9](./15-incident-response.md) |
+| **Blameless Postmortem** | 无责复盘，只关注系统改进而非个人追责，鼓励主动暴露问题 | [正传 9](./15-incident-response.md) |
+| **5-Whys** | 连续追问五个"为什么"的根因分析方法，从表象深入到系统层面 | [正传 9](./15-incident-response.md) |
+| **混沌工程 (Chaos Engineering)** | 主动注入故障验证系统韧性，如 Netflix 的 Chaos Monkey | [正传 9](./15-incident-response.md) |
+| **MTTR** | 平均恢复时间（Mean Time To Recovery），衡量系统韧性的核心指标 | [正传 9](./15-incident-response.md) |
+
+---
+
+## 性能优化
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **USE 方法** | 性能分析框架：利用率(Utilization)、饱和度(Saturation)、错误(Errors) | [正传 10](./16-performance-optimization.md) |
+| **火焰图 (Flame Graph)** | 可视化 CPU 时间分布的性能分析工具，快速定位热点函数 | [正传 10](./16-performance-optimization.md) |
+| **缓存穿透 (Penetration)** | 查询不存在的数据导致请求直接打到数据库，用布隆过滤器防护 | [正传 10](./16-performance-optimization.md) |
+| **缓存击穿 (Breakdown)** | 热点 key 过期瞬间大量请求涌入数据库，用互斥锁或永不过期防护 | [正传 10](./16-performance-optimization.md) |
+| **缓存雪崩 (Avalanche)** | 大量缓存 key 同时过期导致数据库压力骤增，用随机过期时间防护 | [正传 10](./16-performance-optimization.md) |
+| **乐观锁 (Optimistic Locking)** | 通过版本号检测并发冲突的锁策略，适合读多写少的场景 | [正传 10](./16-performance-optimization.md) |
+| **性能回归测试** | 在 CI 中自动检测性能退化，P99 延迟超标则阻断合并 | [正传 10](./16-performance-optimization.md) |
+
+---
+
+## 消息队列 & 异步架构
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **消息确认 (ACK/NACK)** | 消费者处理完消息后向 Broker 发送确认/拒绝信号，确保消息不被丢失 | [正传 11](./17-async-messaging.md) |
+| **死信队列 (DLQ)** | 多次消费失败的消息被转入专用队列，等待人工排查或补偿处理 | [正传 11](./17-async-messaging.md) |
+| **幂等消费 (Idempotent Consume)** | 同一条消息被消费多次，业务结果与消费一次相同，防止重复处理 | [正传 11](./17-async-messaging.md) |
+| **事件溯源 (Event Sourcing)** | 以事件序列而非当前状态来存储数据，通过重放事件还原任意时刻的状态 | [正传 13](./20-realtime-eventdriven.md) |
+| **CDC (Change Data Capture)** | 变更数据捕获：监听数据库变更日志（如 binlog），实时同步数据变更到下游系统 | [正传 13](./20-realtime-eventdriven.md) |
+
+---
+
+## 分布式系统
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **CAP 定理** | 分布式系统无法同时满足一致性(C)、可用性(A)、分区容错性(P)，最多三选二 | [正传 12](./18-distributed-puzzles.md) |
+| **BASE 理论** | 对 CAP 中 AP 的延伸：基本可用(Basically Available)、软状态(Soft State)、最终一致(Eventually Consistent) | [正传 12](./18-distributed-puzzles.md) |
+| **分布式锁 (Distributed Lock)** | 在多个节点间互斥访问共享资源的机制，常用 Redis（Redlock）或 ZooKeeper 实现 | [正传 12](./18-distributed-puzzles.md) |
+| **雪花算法 (Snowflake)** | Twitter 开源的分布式 ID 生成算法：时间戳 + 机器 ID + 序列号，全局唯一且趋势递增 | [正传 12](./18-distributed-puzzles.md) |
+| **幂等性 (Idempotency)** | 同一操作执行多次与执行一次效果相同，是分布式系统防重复的核心设计 | [正传 12](./18-distributed-puzzles.md) |
+| **CRDT (Conflict-free Replicated Data Type)** | 无冲突复制数据类型：无需协调即可合并并发更新的数据结构，适合多活场景 | [正传 12](./18-distributed-puzzles.md) |
+
+---
+
+## 多租户 & SaaS
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **多租户 (Multi-tenant)** | 一套系统同时服务多个租户（客户），共享基础设施但数据和配置隔离 | [番外三](./19-saas-multitenant.md) |
+| **数据隔离 (Data Isolation)** | 确保不同租户的数据互不可见，常见方式：行级隔离、Schema 隔离、独立部署 | [番外三](./19-saas-multitenant.md) |
+| **租户路由 (Tenant Routing)** | 根据租户标识将请求路由到对应的数据源或服务实例，是多租户系统的入口关键 | [番外三](./19-saas-multitenant.md) |
+
+---
+
+## 实时系统
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **WebSocket** | 全双工通信协议：客户端与服务端建立持久连接，双方可随时主动发送数据 | [正传 13](./20-realtime-eventdriven.md) |
+| **SSE (Server-Sent Events)** | 服务端向客户端单向推送事件流的标准协议，基于 HTTP，自动重连，适合通知类场景 | [正传 13](./20-realtime-eventdriven.md) |
+| **CQRS (Command Query Responsibility Segregation)** | 命令查询职责分离：写操作（Command）和读操作（Query）使用不同的模型甚至数据源 | [正传 13](./20-realtime-eventdriven.md) |
+| **背压 (Backpressure)** | 当下游处理速度跟不上上游生产速度时，向上游反馈减速的流控机制 | [正传 13](./20-realtime-eventdriven.md) |
+
+---
+
+## 多端架构
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **BFF (Backend For Frontend)** | 为每种前端（Web/App/小程序）单独搭建一个适配层，屏蔽后端复杂性，提供端侧最优接口 | [正传 14](./21-multiplatform-architecture.md) |
+| **跨平台框架 (Cross-Platform Framework)** | 一套代码运行在多个平台上的框架（如 React Native、Flutter），在开发效率和原生体验间取舍 | [正传 14](./21-multiplatform-architecture.md) |
+
+---
+
+## 搜索推荐
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **倒排索引 (Inverted Index)** | 以词项为键、文档列表为值的索引结构，搜索引擎的核心数据结构，实现毫秒级全文检索 | [番外四](./22-search-recommendation.md) |
+| **协同过滤 (Collaborative Filtering)** | 基于用户行为相似性进行推荐的方法："和你相似的人也喜欢这个"，分为用户基和物品基两种 | [番外四](./22-search-recommendation.md) |
+| **冷启动 (Cold Start)** | 新用户/新物品没有历史行为数据，推荐系统无法生成有效推荐的初始阶段 | [番外四](./22-search-recommendation.md) |
+
+---
+
+## 知识工程
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **ADR (Architecture Decision Record)** | 架构决策记录：用标准化模板记录每个重要技术决策的背景、选项、决定和后果 | [番外五](./23-tech-docs-knowledge.md) |
+| **SECI 模型** | 野中郁次郎提出的知识转化模型：社会化(S)→外化(E)→组合化(C)→内化(I)，驱动组织知识螺旋上升 | [番外五](./23-tech-docs-knowledge.md) |
+| **Docs-as-Code** | 文档即代码：用写代码的方式管理文档（版本控制、Code Review、CI 发布），确保文档与代码同步演进 | [番外五](./23-tech-docs-knowledge.md) |
+
+---
+
+## 数据库迁移
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **在线 DDL (Online DDL)** | 在不锁表、不影响正常读写的前提下修改表结构（如加字段、加索引） | [正传 15](./24-database-migration.md) |
+| **双写迁移 (Dual Write)** | 同时向新旧两套系统写入数据，在迁移过渡期保证两边数据一致，逐步切换读流量 | [正传 15](./24-database-migration.md) |
+| **影子表 (Shadow Table)** | 在正式表旁边创建结构相同的新表，写入时同步更新两表，验证无误后再切换流量 | [正传 15](./24-database-migration.md) |
+
+---
+
+## 低代码
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **低代码 (Low-Code)** | 通过可视化拖拽和少量代码快速构建应用的平台，降低开发门槛但可能限制复杂场景 | [番外六](./25-lowcode-platform.md) |
+| **Escape Hatch** | 逃生通道：在低代码平台中预留退出机制，当平台无法满足需求时可切换到自定义代码 | [番外六](./25-lowcode-platform.md) |
+
+---
+
+## 国际化
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **i18n (Internationalization)** | 国际化：在软件设计阶段预留多语言、多区域支持的能力（i 和 n 之间有 18 个字母） | [番外七](./26-globalization.md) |
+| **l10n (Localization)** | 本地化：将软件适配到特定语言和文化环境的具体实施过程（l 和 n 之间有 10 个字母） | [番外七](./26-globalization.md) |
+| **数据合规 (Data Compliance)** | 遵守各地区数据保护法规（GDPR 欧盟/PIPL 中国/APPI 日本），涉及数据跨境、存储、删除权等 | [番外七](./26-globalization.md) |
 
 ---
 

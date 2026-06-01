@@ -8,14 +8,14 @@
 
 ## 引言：新员工做错了菜
 
-阿明的餐厅新招了一个厨师小李。第一天上班，小李按"祖传配方"做了一碗牛肉面。
+阿明的餐厅新招了一个厨师小陈。第一天上班，小陈按"祖传配方"做了一碗牛肉面。
 
 顾客吃了一口："这味道不对啊，太咸了！"
 
 阿明尝了一口，确实咸了。问题出在哪？
 
 - 配方本上写"盐适量"（模糊需求）
-- 小李按自己的理解加了一勺（实现偏差）
+- 小陈按自己的理解加了一勺（实现偏差）
 - 没有试吃环节就端上去了（缺少测试）
 
 阿明意识到：**光有配方不够，还需要质检流程**。每道菜出餐前，必须有人尝一口，确认味道对了再上桌。
@@ -28,7 +28,7 @@
 
 阿明给厨房设计了一套质检体系：
 
-```
+```text
 质检层级：
   食材检查（单元测试）：每批食材进货时抽检，确保新鲜度
   工序检查（集成测试）：切菜、腌制、烹饪，每个环节完成后抽检
@@ -63,7 +63,7 @@ def calculate_salt(beef_weight_g: int) -> int:
         raise ValueError("牛肉重量必须大于 0")
     return beef_weight_g // 100 * 2  # 每 100g 牛肉用 2g 盐
 
-# 单元测试
+# 单元测试 —— 把"盐适量"变成"盐 2g / 100g 牛肉"
 def test_calculate_salt_normal():
     assert calculate_salt(500) == 10
 
@@ -112,7 +112,7 @@ def test_payment_service_contract():
     assert "payment_id" in response.json()
 ```
 
-契约测试的价值：**在集成测试之前，先验证接口兼容性**。如果契约测试失败，说明"提供方改了接口，消费方还不知道"，需要提前沟通。这和[菜单设计学](./10-api-design.md)中的 API 版本管理、向后兼容原则是同一思路 —— 接口变更要可控。
+契约测试的价值：**在集成测试之前，先验证接口兼容性**。如果契约测试失败，说明"提供方改了接口，消费方还不知道"，需要提前沟通。这和[《菜单设计学》](./10-api-design.md)中的 API 版本管理、向后兼容原则是同一思路 —— 接口变更要可控。
 
 ---
 
@@ -124,14 +124,16 @@ def test_payment_service_contract():
 
 ```python
 # E2E 测试：模拟用户下单 -> 支付 -> 出餐
-def test_order_full_flow(browser):
-    browser.goto("http://restaurant.com/order")
-    browser.click("text=牛肉面")
-    browser.click("text=下单")
-    browser.fill("input[name=payment_method]", "wechat")
-    browser.click("text=确认支付")
-    browser.wait_for_selector("text=出餐成功", timeout=600000)
-    assert browser.text_content(".order-status") == "已完成"
+def test_order_full_flow(page):
+    page.goto("http://restaurant.com/order")
+    page.click("text=牛肉面")
+    page.click("text=下单")
+    page.select_option("select[name=payment_method]", "wechat")
+    page.click("text=确认支付")
+    # 超时设为 60 秒（1 分钟）：E2E 测试环境稳定时完整流程通常 10-20 秒内完成，
+    # 60 秒已留有充足余量；过长（如 10 分钟）会掩盖性能退化问题，拖慢 CI 反馈循环
+    page.wait_for_selector("text=出餐成功", timeout=60000)
+    assert page.text_content(".order-status") == "已完成"
 ```
 
 ### E2E 测试的痛点与应对
@@ -151,7 +153,7 @@ def test_order_full_flow(browser):
 
 **测试驱动开发（Test-Driven Development, TDD）** 的流程是：**Red → Green → Refactor**。
 
-阿明让小李用 TDD 开发"根据顾客口味推荐菜品"的功能：
+阿明让小陈用 TDD 开发"根据顾客口味推荐菜品"的功能：
 
 **Red：写失败的测试**
 
@@ -184,7 +186,7 @@ def test_recommend_for_spicy_lover():
 
 **测试左移（Shift Left）** 的核心是：**把测试提前到开发阶段，甚至需求阶段**。
 
-```
+```text
 传统流程：
   需求 → 设计 → 开发 → 测试 → 上线
                     ↑ 发现问题，修复成本高
@@ -238,7 +240,7 @@ graph TD
 | 单元测试 | 这个函数对吗？ | 食材检查 | pytest / JUnit / Jest |
 | 集成测试 | 模块之间衔接对吗？ | 工序检查 | 真实依赖 + 契约测试 |
 | E2E 测试 | 用户视角下系统对吗？ | 成品试吃 | Selenium / Playwright |
-| TDD | 怎么写出可测试的代码？ | 先写质检标准，再生产 | Red-Green-Refactor |
+| TDD | 怎么写出可测试的代码？ | 厨师自创新菜时先定验收标准 | Red-Green-Refactor |
 | 测试左移 | 怎么尽早发现问题？ | 需求阶段就参与 | 需求评审 + TDD + Code Review |
 | 测试右移 | 怎么在生产环境持续验证？ | 顾客反馈 + 抽检 | 混沌工程 + A/B 测试 + 监控 |
 
@@ -259,12 +261,28 @@ graph TD
 - [从接单到出餐](./09-cicd-devops.md) —— 测试是 CI/CD 流水线的核心环节，自动化测试让持续集成成为可能
 - [当餐厅长出大脑](./01-ai-agent-architecture.md) —— AI Agent 的测试策略：单元测试验证规划逻辑，集成测试验证工具调用
 - [菜单设计学](./10-api-design.md) —— 契约测试验证 API 的向后兼容性，是 API 变更的质量保障
+- [学徒的困境](./11-ai-learning-paradox.md) —— AI 时代的人机协作与学习之道，当 AI 越来越强，人还要不要练基本功
+- [数据厨房](./12-data-kitchen.md) —— 数据架构与数据治理，10 家店 10 本账如何变成数据驱动决策
+- [前厅翻修记](./13-frontend-renovation.md) —— 前端工程化与用户体验，后厨再快，前厅的门进不来一切白搭
+- [阿明的省钱经](./14-cloud-finops.md) —— 云成本优化与 FinOps，120 万月账单如何降到 68 万
+- [差评危机](./15-incident-response.md) —— 故障复盘与应急响应，从手忙脚乱到 10 分钟止血的方法论
+- [外卖大战](./16-performance-optimization.md) —— 系统性能优化，3 秒生死线下的全链路优化实战
+- [传菜窗口的智慧](./17-async-messaging.md) —— 消息队列的可靠性测试：消息不丢失、顺序性保证、幂等消费验证
+- [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统的测试挑战：网络分区模拟、脑裂场景、一致性验证
+- [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户测试策略：租户隔离验证、跨租户数据泄露检测
+- [厨房实况直播](./20-realtime-eventdriven.md) —— 实时系统的压力测试：高并发 WebSocket 连接、消息风暴模拟
+- [一个厨房四个门面](./21-multiplatform-architecture.md) —— 多端兼容性测试，不同设备和平台的自动化测试矩阵
+- [懂你的菜单](./22-search-recommendation.md) —— 搜索推荐算法的 A/B 测试和效果评估，推荐准确率的测试方法
+- [菜谱标准化之路](./23-tech-docs-knowledge.md) —— 测试用例和测试报告的知识管理，测试文档的标准化
+- [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移的测试策略：数据一致性校验、回滚测试、双写验证
+- [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码生成代码的质量测试，平台组件的单元测试覆盖
+- [阿明出海记](./26-globalization.md) —— 国际化测试：多语言兼容性、多时区正确性、多币种计算验证
 
 ---
 
 ## 结语
 
-阿明推行测试的故事，本质上是所有工程团队都要面对的问题：**怎么保证代码质量，而不是靠"运气"和"人工检查"？**
+阿明推行测试的故事，揭示了工程团队必须跨过的一道坎：**从"靠老师傅尝一口"到"靠系统化的质检流程" —— 质量不应该依赖运气。**
 
 答案是测试金字塔 + 测试左移 + 测试右移：单元测试打地基，集成测试验证衔接，E2E 测试守护用户视角；测试左移让问题尽早暴露，测试右移让生产环境持续验证。
 
