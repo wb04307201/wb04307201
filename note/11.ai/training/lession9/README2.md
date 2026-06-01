@@ -1,133 +1,353 @@
-# 🔥 MCP（Model Context Protocol）推荐
+> ⬅️ [返回目录](README.md)
 
-> **什么是 MCP？**  
-> MCP（Model Context Protocol）是连接大模型与外部工具/数据的开放协议标准，让 AI 能安全调用搜索、数据库、浏览器等能力，被称为"AI 时代的 USB-C"。
+# Dify 工作流搭建示例教程：AI 写作助手
 
----
+本教程将带你从零开始在 Dify 中搭建一个「AI 写作助手」工作流，并将其发布为 API，最后演示如何调用该 API。
 
-## 🏆 综合资源库（新手入口）
+## 前置条件
 
-| 名称                      | 特点                           | 链接                                                           |
-|-------------------------|------------------------------|--------------------------------------------------------------|
-| **awesome-mcp-servers** | GitHub 最火集合,3000+ 开源服务器,分类清晰 | [🔗 GitHub](https://github.com/punkpeye/awesome-mcp-servers) |
-| **mcp.so / Smithery**   | 可视化配置 + 一键安装,新手友好            | [🔗 mcp.so](https://mcp.so)                                  |
-| **Awesome-MCP-ZH**      | 中文专属资源,含教程与本地化推荐             | [🔗 GitHub](https://github.com/yzfly/awesome-mcp-zh)         |
+- 已部署 Dify 服务（本教程使用 `http://localhost`）
+- 已配置模型供应商（本教程使用通义千问 `qwen3.6-plus`）
+- 已有 Dify 账号并已登录
 
 ---
 
-## 🌐 信息检索与内容获取类
+## 第一步：创建应用
 
-| MCP Server                | 核心功能                                        | 适用场景              | 链接                                                   |
-|---------------------------|---------------------------------------------|-------------------|------------------------------------------------------|
-| **Fetch MCP** 🆕          | 网页内容抓取,支持 HTML/JSON/Markdown/YT 转录,含 OCR 能力 | 获取实时新闻、产品价格、动态数据  | [🔗 GitHub](https://github.com/zcaceres/fetch-mcp)   |
-| **Brave Search / Tavily** | 隐私友好或 AI 优化的网络搜索，返回结构化结果                    | 研究写作、事实核查、竞品分析    | [🔗 MCP Registry](https://mcp.so)                    |
-| **arXiv MCP** 🆕          | 搜索/读取 arXiv 论文,支持摘要提取与全文访问                  | 学术研究、文献综述、科研跟踪    | [🔗 GitHub](https://github.com/shoumikdc/arXiv-mcp)  |
-| **Context7 (Upstash)** 🆕 | 实时拉取最新版官方文档与代码示例,避免 API 幻觉                  | AI 编码辅助、框架学习、技术调研 | [🔗 GitHub](https://github.com/upstash/context7-mcp) |
+登录 Dify 后，进入「工作室」页面，点击 **创建空白应用** 按钮。
 
----
+![01 - 登录后的工作室页面](tutorial-images/01-login.png)
 
-## 🧠 思维增强与任务规划类
-
-| MCP Server                     | 核心功能                   | 适用场景             | 链接                                                                                       |
-|--------------------------------|------------------------|------------------|------------------------------------------------------------------------------------------|
-| **Sequential Thinking MCP** 🆕 | 结构化多步推理,支持思维分支、进度跟踪与总结 | 复杂问题拆解、项目规划、决策分析 | [🔗 NPM](https://www.npmjs.com/package/@modelcontextprotocol/server-sequential-thinking) |
-| **Memory Bank / Claude-Mem**   | 本地持久化记忆，记住项目规范与用户偏好    | 长期协作、个性化助手、知识库维护 | [🔗 GitHub](https://github.com/modelcontextprotocol/servers)                             |
+![02 - 点击创建空白应用](tutorial-images/02-create-app.png)
 
 ---
 
-## 💻 开发与调试效率类
+## 第二步：选择应用类型并填写信息
 
-| MCP Server | 核心功能 | 适用场景 | 链接 |
-|-----------|---------|---------|------|
-| **Chrome DevTools MCP** 🆕 | 连接真实 Chrome 浏览器,支持元素检查、性能追踪、网络监控 | 前端调试、自动化测试、性能优化 | [🔗 GitHub](https://github.com/ChromeDevTools/chrome-devtools-mcp) |
-| **GitHub MCP Server** | 读取代码库、管理 Issues/PR、自动生成 PR 描述 | 代码审查、仓库维护、自动化开发 | [🔗 GitHub](https://github.com/modelcontextprotocol/servers) |
-| **Apifox MCP Server** | 连接 API 文档，支持代码生成与接口调试 | API 开发、前后端联调、文档同步 | [🔗 Apifox](https://apifox.com) |
-| **Playwright MCP** | 控制浏览器执行 E2E 测试，自动定位 UI 问题 | 自动化测试、回归验证、爬虫开发 | [🔗 GitHub](https://github.com/modelcontextprotocol/servers) |
+在弹出的对话框中：
 
----
+1. 选择 **工作流** 类型（面向单轮自动化任务的编排工作流）
+2. 填写应用名称：**AI 写作助手**
+3. 填写描述：**这是一个示例工作流，接收用户输入的主题和风格，自动生成对应的文章内容**
+4. 点击 **创建** 按钮
 
-## 🗄️ 数据与知识库类
+![03 - 选择工作流类型](tutorial-images/03-select-workflow-type.png)
 
-| MCP Server | 核心功能 | 适用场景 | 链接 |
-|-----------|---------|---------|------|
-| **Qdrant / Chroma MCP** | 向量数据库操作，支持语义搜索与 RAG 应用 | 知识库构建、智能问答、文档检索 | [🔗 Qdrant](https://qdrant.tech) |
-| **PostgreSQL / SQLite MCP** | 自然语言查询数据库，自动生成安全 SQL | 数据调试、业务分析、报表生成 | [🔗 GitHub](https://github.com/modelcontextprotocol/servers) |
+![04 - 填写应用信息](tutorial-images/04-fill-app-info.png)
 
 ---
 
-## 🚀 部署与云服务类
+## 第三步：选择开始节点
 
-| MCP Server               | 核心功能                             | 适用场景              | 链接                                                               |
-|--------------------------|----------------------------------|-------------------|------------------------------------------------------------------|
-| **EdgeOne Pages MCP** 🆕 | 一键部署 HTML/文件夹/全栈项目到腾讯云边缘节点 | 快速上线个人页、静态网站、原型展示 | [🔗 GitHub](https://github.com/TencentEdgeOne/edgeone-pages-mcp) |
-| **Cloudflare MCP**       | 管理 Workers、KV、R2 等云服务，DevOps 友好  | 边缘计算、云端部署、自动化运维   | [🔗 GitHub](https://github.com/cloudflare/mcp-server-cloudflare) |
+创建成功后，系统会提示选择开始节点。选择 **用户输入（原始开始节点）**，它允许设置用户输入变量，具有 Web 应用程序、服务 API 等功能。
 
----
-
-## 🎯 场景化推荐组合
-
-| 使用场景           | 推荐 MCP 组合                                        | 效果                      |
-|----------------|--------------------------------------------------|-------------------------|
-| 🔍 **实时研究写作**  | Fetch + arXiv + Sequential Thinking              | 多源信息收集 → 结构化分析 → 输出报告   |
-| 💻 **前端开发调试**  | Chrome DevTools + Context7 + GitHub              | 实时调试 + 最新文档 + 代码管理 三位一体 |
-| 🤖 **自动化任务流**  | Sequential Thinking + Playwright + EdgeOne Pages | 规划任务 → 执行操作 → 快速部署结果    |
-| 📚 **学术研究辅助**  | arXiv + Fetch + Memory Bank                      | 文献检索 → 内容提取 → 知识沉淀复用    |
-| 🛠️ **全栈快速原型** | Context7 + GitHub + EdgeOne Pages                | 查文档 → 写代码 → 一键上线        |
+![05 - 选择开始节点](tutorial-images/05-select-start-node.png)
 
 ---
 
-## ⚙️ 快速配置示例（Claude Desktop / Cursor）
+## 第四步：了解工作流画布
+
+进入工作流画布编辑器后，可以看到默认的「开始」节点。画布顶部有发布、测试运行等操作按钮。
+
+![06 - 工作流画布](tutorial-images/06-workflow-canvas.png)
+
+---
+
+## 第五步：添加 LLM 节点
+
+1. 点击「开始」节点右侧的 **添加节点** 按钮
+2. 在弹出的搜索框中输入 `LLM`
+3. 选择 LLM 节点类型，它将被自动连接到开始节点之后
+
+![07 - 添加 LLM 节点](tutorial-images/07-llm-node-added.png)
+
+---
+
+## 第六步：配置开始节点的输入变量
+
+点击「开始」节点，添加输入字段。
+
+### 添加第一个变量：文章主题
+
+1. 点击 **添加输入字段**
+2. 填写如下信息：
+    - **变量名称**：`topic`
+    - **显示名称**：`文章主题`
+    - **默认值**：`人工智能`
+    - **必填**：勾选
+
+![08 - 添加 topic 变量](tutorial-images/08-add-topic-variable.png)
+
+### 添加第二个变量：写作风格
+
+1. 再次点击 **添加输入字段**
+2. 填写如下信息：
+    - **变量名称**：`style`
+    - **显示名称**：`写作风格`
+    - **默认值**：`正式`
+    - **必填**：勾选
+
+![09 - 添加 style 变量](tutorial-images/09-add-style-variable.png)
+
+---
+
+## 第七步：配置 LLM 节点
+
+点击 LLM 节点，在右侧面板中配置提示词：
+
+1. 确认模型已选择为 `qwen3.6-plus`（系统默认模型）
+2. 在 **SYSTEM** 提示词编辑区中输入以下内容：
+
+```
+你是一位专业的文章写作助手。请根据用户提供的主题和写作风格，生成一篇高质量的文章。
+
+主题：{{#1778986959696.topic#}}
+写作风格：{{#1778986959696.style#}}
+
+请直接输出文章内容，无需额外解释。
+```
+
+> **说明**：`{{#1778986959696.topic#}}` 和 `{{#1778986959696.style#}}` 是引用开始节点中定义的变量。在实际操作中，你可以在编辑器中输入 `{` 来选择并插入变量。
+
+![10 - 配置 LLM 提示词](tutorial-images/10-configure-llm-prompt.png)
+
+---
+
+## 第八步：添加输出节点
+
+1. 点击 LLM 节点右侧的 **选择下一个节点**
+2. 搜索并选择 **输出** 节点类型
+3. 在输出节点中：
+    - 点击 **添加输出变量**
+    - 变量名填写：`text`
+    - 变量值选择 LLM 节点的 `text` 输出
+
+![11 - 添加输出节点](tutorial-images/11-add-output-node.png)
+
+![12 - 配置输出变量](tutorial-images/12-configure-output.png)
+
+---
+
+## 第九步：测试运行工作流
+
+完成以上配置后，点击顶部的 **测试运行** 按钮进行测试。
+
+![13 - 测试运行面板](tutorial-images/13-test-run-panel.png)
+
+在测试面板中，系统会自动填充之前设置的默认值（主题：人工智能，风格：正式），点击 **开始运行**。
+
+![14 - 测试运行中](tutorial-images/14-test-running.png)
+
+运行成功后，可以在结果中看到 AI 生成的文章。
+
+![15 - 测试成功](tutorial-images/15-test-success.png)
+
+---
+
+## 第十步：发布工作流
+
+测试通过后，点击右上角的 **发布** 按钮，在弹出菜单中选择 **发布更新**。
+
+![16 - 发布工作流](tutorial-images/16-api-develop-page.png)
+
+发布成功后，状态会显示为「已发布」。
+
+---
+
+## 第十一步：访问 API 文档
+
+点击 **访问 API** 链接，或直接访问：
+
+```
+http://localhost/app/{your-app-id}/develop
+```
+
+在 API 开发文档页面，可以看到：
+
+- **Base URL**：`http://localhost/v1`
+- **API 密钥**：在页面上复制你的 API Key（格式为 `app-xxxxx`）
+
+> **注意**：API Key 请在你的 Dify 实例上自行获取。出于安全考虑，请将 API Key 存储在后端，不要暴露在前端代码或公开仓库中。
+
+---
+
+## 如何调用工作流 API
+
+### API 端点
+
+```
+POST http://localhost/v1/workflows/run
+```
+
+### 请求头
+
+```
+Content-Type: application/json
+Authorization: Bearer {你的API_KEY}
+```
+
+### 请求体
 
 ```json
 {
-  "mcpServers": {
-    "fetch": {
-      "command": "npx",
-      "args": ["-y", "fetch-mcp"]
+  "inputs": {
+    "topic": "人工智能",
+    "style": "正式"
+  },
+  "response_mode": "blocking",
+  "user": "user-123"
+}
+```
+
+**参数说明**：
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `inputs` | object | 是 | 工作流输入变量，键值对形式 |
+| `inputs.topic` | string | 是 | 文章主题 |
+| `inputs.style` | string | 是 | 写作风格 |
+| `response_mode` | string | 是 | 返回模式：`streaming`（流式）或 `blocking`（阻塞） |
+| `user` | string | 是 | 用户标识，由开发者自行定义 |
+
+### curl 示例
+
+```bash
+curl -X POST 'http://localhost/v1/workflows/run' \
+  --header 'Authorization: Bearer app-xxxxxxxxxxxxxxxxxxxxxxxx' \
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+    "inputs": {
+      "topic": "人工智能",
+      "style": "正式"
     },
-    "chrome-devtools": {
-      "command": "npx",
-      "args": ["-y", "chrome-devtools-mcp"],
-      "env": { "DEBUGGING_PORT": "9222" }
+    "response_mode": "blocking",
+    "user": "user-123"
+  }'
+```
+
+### Python 示例
+
+```python
+import requests
+import json
+
+# 配置
+BASE_URL = "http://localhost/v1"
+API_KEY = "app-xxxxxxxxxxxxxxxxxxxxxxxx"  # 替换为你的 API Key
+
+headers = {
+    "Authorization": f"Bearer {API_KEY}",
+    "Content-Type": "application/json"
+}
+
+data = {
+    "inputs": {
+        "topic": "人工智能",
+        "style": "正式"
     },
-    "context7": {
-      "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp"]
+    "response_mode": "blocking",
+    "user": "user-123"
+}
+
+response = requests.post(f"{BASE_URL}/workflows/run", headers=headers, json=data)
+result = response.json()
+
+# 输出结果
+print("Workflow Run ID:", result.get("workflow_run_id"))
+print("Task ID:", result.get("task_id"))
+
+# 获取文章输出
+outputs = result.get("data", {}).get("outputs", {})
+if "text" in outputs:
+    print("\n生成的文章：\n")
+    print(outputs["text"])
+```
+
+### 流式响应示例（推荐）
+
+如果希望实时看到生成过程，将 `response_mode` 改为 `streaming`：
+
+```python
+import requests
+import json
+
+headers = {
+    "Authorization": f"Bearer {API_KEY}",
+    "Content-Type": "application/json"
+}
+
+data = {
+    "inputs": {
+        "topic": "人工智能",
+        "style": "正式"
     },
-    "edgeone-pages": {
-      "command": "npx",
-      "args": ["-y", "@edgeone/pages-mcp"]
-    }
+    "response_mode": "streaming",
+    "user": "user-123"
+}
+
+response = requests.post(f"{BASE_URL}/workflows/run", headers=headers, json=data, stream=True)
+
+for line in response.iter_lines():
+    if line:
+        decoded_line = line.decode("utf-8")
+        if decoded_line.startswith("data:"):
+            event_data = json.loads(decoded_line[5:])
+            if event_data.get("event") == "workflow_finished":
+                print("最终输出:", event_data["data"]["outputs"])
+                break
+            elif event_data.get("event") == "text_chunk":
+                print(event_data["data"]["text"], end="", flush=True)
+```
+
+### 响应示例（blocking 模式）
+
+```json
+{
+  "workflow_run_id": "abc123-def456-ghi789",
+  "task_id": "task-001",
+  "data": {
+    "id": "abc123-def456-ghi789",
+    "workflow_id": "f9f8eb41-306f-4756-bb50-246fa11d7d93",
+    "status": "succeeded",
+    "outputs": {
+      "text": "人工智能：重塑现代社会的范式转移与伦理考量\n\n随着计算能力的指数级增长..."
+    },
+    "elapsed_time": 12.5,
+    "total_tokens": 3562,
+    "total_steps": 3,
+    "created_at": 1716087863,
+    "finished_at": 1716087875
   }
 }
 ```
 
-> 💡 **配置提示**：
-> - 首次使用需安装 Node.js 18+
-> - 浏览器类 MCP 需开启远程调试（`chrome.exe --remote-debugging-port=9222`）
-> - 敏感服务建议通过环境变量管理 API Key
+---
+
+## 工作流节点总览
+
+最终搭建的工作流包含 3 个节点，线性连接：
+
+```
+[开始: 用户输入] → [LLM: 生成文章] → [输出: 返回结果]
+      │                    │                    │
+   topic, style      qwen3.6-plus          text (LLM输出)
+```
+
+- **开始节点**：接收 `topic`（文章主题）和 `style`（写作风格）两个输入变量
+- **LLM 节点**：使用 qwen3.6-plus 模型，根据提示词模板和输入变量生成文章
+- **输出节点**：将 LLM 的文本输出作为工作流的最终返回结果
 
 ---
 
-## 🔐 安全与最佳实践
+## 总结
 
-1. **最小权限原则**：数据库/云服务类 MCP 优先使用只读权限
-2. **密钥管理**：通过 `.env` 或系统环境变量存储 Token，勿硬编码
-3. **本地优先**：敏感数据处理优先选择支持本地部署的 MCP（如 Context7）
-4. **版本锁定**：生产环境建议锁定 MCP Server 版本，避免意外更新
+通过这个教程，你学会了：
 
----
+1. 在 Dify 中创建工作流应用
+2. 配置用户输入节点和变量
+3. 添加并配置 LLM 节点（提示词模板、变量引用）
+4. 添加输出节点并映射输出变量
+5. 测试运行工作流
+6. 发布工作流并通过 API 调用
 
-## 📈 2026 趋势观察
-
-- ✅ **标准化加速**：官方 MCP Registry 上线，认证与兼容性检测成为标配
-- ✅ **流式传输支持**：大文件/长任务支持流式响应，体验更流畅
-- ✅ **企业级集成**：与 Slack、Jira、Notion 等办公套件深度打通
-- ✅ **中文生态崛起**：`Awesome-MCP-ZH` 等项目推动本地化适配与教程普及
-
----
-
-> 🎁 **彩蛋**：想快速体验？  
-> 在 Cursor 或 Claude Desktop 中安装 `fetch-mcp` + `context7`，立刻获得「实时联网 + 最新文档」双重增强！
-
-有具体使用场景？告诉我你的需求（如：数据分析/自动化测试/内容创作），我帮你定制专属 MCP 组合～ 😊
+你可以在此基础上扩展更多功能，比如添加知识检索节点、条件分支、代码执行节点等，构建更复杂的工作流。

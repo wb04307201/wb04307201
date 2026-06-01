@@ -1,268 +1,166 @@
-# 环境安装步骤
+> ⬅️ [返回目录](README.md)
 
-> 本文档只是说明Claude Code CLI如何配置阿里云百炼平台模型API
+# 使用 Docker Compose 部署 Dify
 
-百炼提供的 Anthropic API 兼容服务支持以下千问系列模型：
+## 部署前准备
 
-| **模型系列**             | **支持的模型名称（model）**                                                                                             |
-|----------------------|----------------------------------------------------------------------------------------------------------------|
-| 千问Max （部分模型支持思考模式）   | qwen3.6-max-preview（支持思考模式）、qwen3-max、qwen3-max-2026-01-23（支持思考模式）、qwen3-max-preview（支持思考模式）                   |
-| 千问Plus               | qwen3.6-plus、qwen3.5-plus、qwen3.5-plus-2026-02-15、qwen-plus、qwen-plus-latest、qwen-plus-2025-09-11              |
-| 千问Flash              | qwen3.6-flash、qwen3.6-flash-2026-04-16、qwen3.5-flash、qwen3.5-flash-2026-02-23、qwen-flash、qwen-flash-2025-07-28 |
-| 千问Turbo              | qwen-turbo、qwen-turbo-latest                                                                                   |
-| 千问Coder （不支持思考模式）    | qwen3-coder-next、qwen3-coder-plus、qwen3-coder-plus-2025-09-23、qwen3-coder-flash                                |
-| 千问VL （不支持思考模式）       | qwen3-vl-plus、qwen3-vl-flash、qwen-vl-max、qwen-vl-plus                                                          |
-| 千问开源模型               | qwen3.5-397b-a17b、qwen3.5-120b-a10b、qwen3.5-27b、qwen3.5-35b-a3b                                                |
-| 第三方模型 （仅支持华北2（北京）地域） | - kimi-k2.5、kimi-k2-thinking - glm-5.1、glm-5、glm-4.7、glm-4.6 - MiniMax-M2.5、MiniMax-M2.1                       |
+请确保你的机器满足以下最低系统要求。
 
+### 硬件
 
-## **1. 安装 Claude Code**
+* CPU >= 2 Core
+* RAM >= 4 GiB
 
-1.  安装或更新 [Node.js](https://nodejs.org/en/download/)（v18.0 或更高版本）。
-    > - windows点击Windows Installer (.msi)即可开始下载
-    > - 除安装位置外不要修改其他配置
+### 软件
 
-2.  Node.js安装后打开终端中并执行下列命令，安装 Claude Code CLI。
+| 操作系统                | 所需软件                                          | 说明                                                                                                                                                                           |
+| :------------------ | :-------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| macOS 10.14 或更高版本   | Docker Desktop                                | 将 Docker 虚拟机配置为至少 2 个虚拟 CPU 和 8 GiB 内存。<br /><br />安装说明请参阅 [Mac 版 Docker Desktop 安装指南](https://docs.docker.com/desktop/mac/install/)。                                        |
+| Linux 平台            | Docker 19.03+<br /><br />Docker Compose 1.28+ | 安装说明请参阅 [Docker 引擎安装指南](https://docs.docker.com/engine/install/) 和 [Docker Compose 安装指南](https://docs.docker.com/compose/install/)。                                          |
+| 启用了 WSL 2 的 Windows | Docker Desktop                                | 建议将源代码和绑定到 Linux 容器的数据存储在 Linux 文件系统中，而不是 Windows 文件系统中。<br /><br />安装说明请参阅 [Windows 版 Docker Desktop 安装指南](https://docs.docker.com/desktop/windows/install/#wsl-2-backend)。 |
 
-    ```
-    npm install -g @anthropic-ai/claude-code
-    ```
+## Docker Desktop 安装
 
-3.  运行以下命令验证安装。若有版本号输出，则表示安装成功。
+在部署 Dify 之前，需要先安装 Docker Desktop。
 
-    ```
-    claude --version
-    ```
+### Windows 系统安装
 
-## **1.1 Claude Code 常用命令**
+1. **下载 Docker Desktop**
+   - 访问 [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop/)
+   - 点击下载按钮获取安装包
 
-### `--dangerously-skip-permissions` 参数说明
+2. **系统要求**
+   - Windows 10 64位：专业版、企业版或教育版（Build 15063 或更高版本）
+   - Windows 11 64位：家庭版或专业版（Build 22000 或更高版本）
+   - 启用 WSL 2（Windows Subsystem for Linux 2）
+   - BIOS 中启用虚拟化功能
 
-`--dangerously-skip-permissions` 是 Claude Code CLI 的一个启动参数，用于跳过所有权限确认提示，让 AI 自动执行所有操作（文件读写、命令执行等）。
+3. **安装步骤**
+   - 运行下载的 `Docker Desktop Installer.exe`
+   - 在安装向导中，确保勾选 "Use WSL 2 instead of Hyper-V" 选项
+   - 点击 "OK" 开始安装
+   - 安装完成后，点击 "Close and restart" 重启计算机
 
-**⚠️ 安全警告：** 此参数会禁用所有权限确认，AI 将无需确认即可执行任何操作。仅在完全信任的环境中（如隔离的沙箱、个人测试环境）使用。
+4. **验证安装**
+   ```bash
+   docker --version
+   docker compose version
+   ```
 
-**使用方式：**
+## 部署并启动
+
+### 克隆 Dify
+将 Dify 源代码克隆到本地机器。
 
 ```bash
-# 启动时跳过所有权限确认
-claude --dangerously-skip-permissions
-
-# 结合其他参数使用
-claude --dangerously-skip-permissions --output-format stream
-
-# 在脚本/自动化流程中使用
-claude --dangerously-skip-permissions -p "分析当前项目结构"
+git clone https://github.com/langgenius/dify.git
 ```
 
-### 其他常用启动参数
+### 启动 Dify
+1. 导航到 Dify 源代码中的 `docker` 目录：
 
-| 参数 | 说明 | 示例 |
-|------|------|------|
-| `-p`, `--prompt` | 直接传入提示词并退出 | `claude -p "解释README.md"` |
-| `--output-format` | 输出格式（`text`/`stream`/`json`） | `claude --output-format stream` |
-| `--allowedTools` | 预授权允许的工具列表 | `claude --allowedTools Bash --allowedTools Read` |
-| `--disallowedTools` | 禁止使用的工具列表 | `claude --disallowedTools Write` |
-| `--continue` | 继续上一次的对话 | `claude --continue` |
-| `--resume` | 恢复指定的历史会话 | `claude --resume <session-id>` |
-
-### 权限模式说明
-
-Claude Code 默认有三种权限模式：
-
-- **默认模式**：每次执行工具前会提示确认
-- **自动模式**：安全操作自动确认，危险操作仍需确认
-- **跳过权限模式**（`--dangerously-skip-permissions`）：所有操作自动执行
-
-在交互式使用时建议使用默认模式，在自动化脚本或可信环境中可使用 `--dangerously-skip-permissions`。
-
----
-
-## **2. 在Claude Code配置百炼模型**
-
-1.  创建并打开配置文件`C:\Users\您的用户名\.claude\settings.json`。
-
-### CMD
-
-1.  创建目录
-
-    ```
-    if not exist "%USERPROFILE%\.claude" mkdir "%USERPROFILE%\.claude"
-    ```
-
-2.  创建并打开文件
-
-    ```
-    notepad "%USERPROFILE%\.claude\settings.json"
-    ```
-
-
-### PowerShell
-    
-1.  创建目录
-        
-    ```
-    mkdir -Force $HOME\.claude
-    ```
-        
-2.  创建并打开文件
-        
-    ```
-    notepad $HOME\.claude\settings.json
-    ```
-
-2.  编辑配置文件。将 YOUR\_API\_KEY 替换为[阿里云百炼 API Key](https://help.aliyun.com/zh/model-studio/get-api-key)。
-
-    ```
-    {    
-        "env": {
-            "ANTHROPIC_AUTH_TOKEN": "YOUR_API_KEY",
-            "ANTHROPIC_BASE_URL": "https://dashscope.aliyuncs.com/apps/anthropic",
-            "ANTHROPIC_MODEL": "qwen3.6-plus",
-            "ANTHROPIC_SMALL_FAST_MODEL": "qwen3.6-flash",
-            "ANTHROPIC_DEFAULT_HAIKU_MODEL": "qwen3.6-flash",
-            "ANTHROPIC_DEFAULT_SONNET_MODEL": "qwen3.6-plus",
-            "ANTHROPIC_DEFAULT_OPUS_MODEL": "qwen3.6-plus",
-            "CLAUDE_CODE_SUBAGENT_MODEL": "qwen3.6-plus"
-        }
-    }
-    ```
-
-3.  在终端中使用`claude`命令启动**Claude Code**一次后关闭终端，找到 `C:\Users\您的用户名\.claude.json` 文件，编辑或新增`hasCompletedOnboarding`字段的值并设置为`true`，并保存文件。
-
-    ```
-    {
-      "hasCompletedOnboarding": true
-    }
-    ```
-
-## 3.**Spec-Kit安装**
-
-1. 安装 Python
-    - 访问 [https://www.python.org/downloads/](https://www.python.org/downloads/)
-    - 下载 Windows 安装包并安装
-    - 勾选 "Add Python to PATH"
-
-2. 安装 uv
-   ```powershell
-   pip install uv
+   ```bash
+   cd dify/docker
    ```
 
-3. 验证安装
-   ```powershell
-   uv --version
+2. 复制示例环境配置文件：
+
+   ```bash
+   cp .env.example .env  
    ```
 
-4. 安装 Git
-    - 访问 [https://git-scm.com/](https://git-scm.com/)
-    - 下载 Windows 安装包并安装
+3. 根据你的 Docker Compose 版本选择相应命令启动容器：
+
+   ```bash Docker Compose V2
+   docker compose up -d
+   ```
+
+   > 运行 `docker compose version` 检查你的 Docker Compose 版本。
+
+   将启动以下容器：
+
+   * 5 个核心服务：`api`、`worker`、`worker_beat`、`web`、`plugin_daemon`
+   * 6 个依赖组件：`weaviate`、`db_postgres`、`redis`、`nginx`、`ssrf_proxy`、`sandbox`
+
+   你应该会看到类似以下的输出，显示每个容器的状态和启动时间：
+
+     ```bash
+     [+] Running 13/13
+     ✔ Network docker_ssrf_proxy_network  Created                                                                10.0s 
+     ✔ Network docker_default             Created                                                                 0.1s 
+     ✔ Container docker-sandbox-1         Started                                                                 0.3s 
+     ✔ Container docker-db_postgres-1     Healthy                                                                 2.8s 
+     ✔ Container docker-web-1             Started                                                                 0.3s 
+     ✔ Container docker-redis-1           Started                                                                 0.3s 
+     ✔ Container docker-ssrf_proxy-1      Started                                                                 0.4s 
+     ✔ Container docker-weaviate-1        Started                                                                 0.3s 
+     ✔ Container docker-worker_beat-1     Started                                                                 3.2s 
+     ✔ Container docker-api-1             Started                                                                 3.2s 
+     ✔ Container docker-worker-1          Started                                                                 3.2s 
+     ✔ Container docker-plugin_daemon-1   Started                                                                 3.2s 
+     ✔ Container docker-nginx-1           Started                                                                 3.4s 
+     ```
+
+4. 验证所有容器是否成功运行：
+
+   ```bash
+   docker compose ps
+   ```
+
+   你应该会看到类似以下的输出，每个容器的状态应为 `Up` 或 `healthy`：
+
+     ```bash
+     NAME                     IMAGE                                       COMMAND                  SERVICE         CREATED          STATUS                             PORTS
+     docker-api-1             langgenius/dify-api:1.10.1                  "/bin/bash /entrypoi…"   api             26 seconds ago   Up 22 seconds                      5001/tcp
+     docker-db_postgres-1     postgres:15-alpine                          "docker-entrypoint.s…"   db_postgres     26 seconds ago   Up 25 seconds (healthy)            5432/tcp
+     docker-nginx-1           nginx:latest                                "sh -c 'cp /docker-e…"   nginx           26 seconds ago   Up 22 seconds                      0.0.0.0:80->80/tcp, :::80->80/tcp, 0.0.0.0:443->443/tcp, :::443->443/tcp
+     docker-plugin_daemon-1   langgenius/dify-plugin-daemon:0.4.1-local   "/bin/bash -c /app/e…"   plugin_daemon   26 seconds ago   Up 22 seconds                      0.0.0.0:5003->5003/tcp, :::5003->5003/tcp
+     docker-redis-1           redis:6-alpine                              "docker-entrypoint.s…"   redis           26 seconds ago   Up 25 seconds (health: starting)   6379/tcp
+     docker-sandbox-1         langgenius/dify-sandbox:0.2.12              "/main"                  sandbox         26 seconds ago   Up 25 seconds (health: starting)   
+     docker-ssrf_proxy-1      ubuntu/squid:latest                         "sh -c 'cp /docker-e…"   ssrf_proxy      26 seconds ago   Up 25 seconds                      3128/tcp
+     docker-weaviate-1        semitechnologies/weaviate:1.27.0            "/bin/weaviate --hos…"   weaviate        26 seconds ago   Up 25 seconds                      
+     docker-web-1             langgenius/dify-web:1.10.1                  "/bin/sh ./entrypoin…"   web             26 seconds ago   Up 25 seconds                      3000/tcp
+     docker-worker-1          langgenius/dify-api:1.10.1                  "/bin/bash /entrypoi…"   worker          26 seconds ago   Up 22 seconds                      5001/tcp
+     docker-worker_beat-1     langgenius/dify-api:1.10.1                  "/bin/bash /entrypoi…"   worker_beat     26 seconds ago   Up 22 seconds                      5001/tcp
+     ```
+
+## 访问
+
+1. 打开管理员初始化页面以设置管理员账户：
+
+   ```bash
+   # 本地环境
+   http://localhost/install
+
+   # 服务器环境
+   http://your_server_ip/install
+   ```
+
+2. 完成管理员账户设置后，在以下地址登录 Dify：
+
+   ```bash
+   # 本地环境
+   http://localhost  
+
+   # 服务器环境
+   http://your_server_ip
+   ```
    
-5. 安装 Specify CLI
-   ```powershell
-   uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
-   ```
+3. 登陆后先在设置中添加模型供应商，配置apikey，配置默认模型
 
-6. 如果提示`warning: 'C:\Users\[用户]\.local\bin' is not on your PATH. To use installed tools, run '$env:PATH = "C:\Users\Administrator\.local\bin;$env:PATH"' or 'uv tool update-shell'.`请执行对应命令
+## 自定义
 
-[更多信息请看：规范驱动开发工具深度解析：Spec-Kit、Kiro、OpenSpec](README5.md)
-[更多信息请看：Spec-Kit 规范驱动开发（SDD）工具包使用说明](README6.md)
-    
-## **4. (可选)添加MCP工具**
-1. 打开并编辑配置文件`~/.claude.json`，例如添加如下时间、浏览器操作，浏览器开发者工具等mcp服务
-```json
-{
-  "mcpServers": {
-    "time": {
-      "command": "uvx",
-      "args": [
-        "mcp-server-time",
-        "--local-timezone=Asia/Shanghai"
-      ]
-    },
-    "playwright": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@playwright/mcp@latest"
-      ]
-    },
-    "chrome-devtools": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "chrome-devtools-mcp@latest"
-      ]
-    }
-  }
-}
+修改本地 `.env` 文件中的环境变量值，然后重启 Dify 以应用更改：
+
+```bash
+docker compose down
+docker compose up -d
 ```
-mcp是一种协议，只要是符合这种协议开发的工具都可以接入AI Agent,，因此可能需要适配多种语言的话经
 
-### 1. **Node.js + npx**
+> 更多信息请参阅 [环境变量](/zh/self-host/configuration/environments)。
 
-**npx 说明**
-    - npx 是 Node.js 包执行工具，随 npm 5.2+ 自动安装
-    - 用于直接运行 npm 包而无需全局安装
-    - 示例：`npx @playwright/mcp@latest`
+## 升级
 
-> npx已集成在nodejs中，只需验证安装成功`npx --version`
+不同版本的升级步骤可能有所不同。请参阅 [Releases](https://github.com/langgenius/dify/releases) 页面中提供的目标版本升级指南。
 
-
-#### 2. **Python + uv**
-
-**uv 介绍**
-    - uv 是一个超快速的 Python 包管理器和项目管理器
-    - 比 pip 快 10-100 倍
-    - 支持虚拟环境管理、依赖解析等
-    - 可用于运行 MCP 服务器：`uvx mcp-server-time`
-
-> 前面有安装
-
-#### 3. **Java + jbang**
-
-**JBang 介绍**
-    - JBang 允许无需安装 JDK 或配置项目即可运行 Java 代码
-    - 适合快速原型开发和脚本编写
-    - 可直接运行 Maven 坐标的 Java 应用
-    - 示例：`jbang io.github.wb04307201:http-mcp:1.0.0`
-
-1. **安装 JBang**（PowerShell）
-   ```powershell
-   iex "& { $(iwr https://ps.jbang.dev) } app setup"
-   ```
-
-2. **验证安装**
-   ```powershell
-   jbang --version
-   ```
-
-[更多信息请看：MCP（Model Context Protocol）推荐](README2.md)
-
-## **5. 插件安装**
-1. 在终端中使用`claude`命令启动**Claude Code**后执行命令
-```powershell
-/plugin install superpowers@claude-plugins-official
-/plugin install frontend-design@claude-plugins-official
-/plugin install code-review@claude-plugins-official
-```
-如果启动claude时提示` Failed to install Anthropic marketplace · Will retry on next startup`，请按如下方式尝试解决：
-  1. 退出 Claude Code，重新进入  
-     `/exit`
-  2. 添加非官方仓库  
-     `/plugin marketplace add obra/superpowers-marketplace`
-
-[更多信息请看：Claude Code插件](README3.md)
-
-## **4. (可选)Skills安装**
-[更多信息请看：Claude Code Skills](README4.md)
-
----
-
-> - 📝 Claude Code 调用阿里云百炼配置：`https://help.aliyun.com/zh/model-studio/claude-code`
-> - 📘 官方文档：`https://docs.anthropic.com/claude-code`
-
-后续把内容请从[实战Harness工程 V1.4.pdf](%E5%AE%9E%E6%88%98Harness%E5%B7%A5%E7%A8%8B%20V1.4.pdf)第10页继续
-
-## 其它
-- [Spec-Kit 规范驱动开发（SDD）工具包使用说明](README6.md)
-- [Chatbox 一款 AI 客户端应用，支持配置Qwen等API](https://chatboxai.app/zh)
+> 升级后，请检查 `.env.example` 文件是否有变更，并相应更新你的本地 `.env` 文件。

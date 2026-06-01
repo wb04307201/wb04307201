@@ -1,348 +1,57 @@
-# AI Agent组装：一
+# 第 2 课：Agent Harness 与控制论
 
-## 1.创建一个Spring基础应用
-
-## 2. Spring AI版本控制
-```xml
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.ai</groupId>
-                <artifactId>spring-ai-bom</artifactId>
-                <version>${spring-ai.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-```
-
-## 3. 添加大模型
-1. [去官网查看支持的模型](https://docs.spring.io/spring-ai/reference/api/index.html)
-2. 阿里qwen并未列出，可在[Spring AI Alibaba](https://java2ai.com/)查看
-
-```xml
-        <dependency>
-            <groupId>com.alibaba.cloud.ai</groupId>
-            <artifactId>spring-ai-alibaba-starter-dashscope</artifactId>
-            <version>1.1.2.0</version>
-        </dependency>
-```
-
-## 4. 添加配置
-```yaml
-spring:
-  ai:
-    dashscope:
-      api-key: ${DASHSCOPE_API_KEY}
-      chat:
-        options:
-          model: qwen-plus
-      embedding:
-        options:
-          model: text-embedding-v2
-```
-
-## 5. 通过模型初始化一个ChatClient
-```java
-ChatClient chatClient = ChatClient.builder(chatModel).build();
-```
-
-## 6. 进行对话
-```java
-        String content = chatClient.prompt().user("你好！").call().content();
-        log.info(content);
-```
-
-## 7. 调用流式
-```java
-        Flux<String> contents = chatClient.prompt().user("你好！").stream().content();
-        contents.subscribe(log::info);
-        Thread.sleep(5000);
-```
-
-## 8. 做一个接口
-```java
-package com.example.demo;
-
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.model.ChatModel;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
-
-import java.io.IOException;
-import java.util.concurrent.CompletableFuture;
-
-@Slf4j
-@RestController
-@RequestMapping("/demo")
-public class DemoController {
-
-    private final ChatClient chatClient;
-
-    public DemoController(ChatModel chatModel) {
-        this.chatClient = ChatClient.builder(chatModel).build();
-    }
-
-    @GetMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public SseEmitter streamAi(String message) {
-        // 1. 显式设置超时时间（单位毫秒），0 表示永不超时
-        SseEmitter emitter = new SseEmitter(0L);
-
-        // 2. 设置超时回调，防止连接泄露
-        emitter.onTimeout(() -> {
-            log.debug("SSE 链接超时");
-            emitter.complete();
-        });
-        emitter.onCompletion(() -> log.debug("SSE 链接完成"));
-        emitter.onError(e -> log.debug("SSE 链接错误：{}", e.getMessage()));
-
-
-        // 3. 在异步线程中处理 AI 请求，避免阻塞 Tomcat 线程
-        CompletableFuture.runAsync(() -> {
-            try {
-                // 4. 订阅 Flux 流并将数据发送给 emitter
-                chatClient.prompt()
-                        .user(message)
-                        .stream()
-                        .content()
-                        .subscribe(
-                                content -> {
-                                    try {
-                                        emitter.send(content, MediaType.TEXT_PLAIN);
-                                    } catch (IOException e) {
-                                        emitter.completeWithError(e);
-                                    }
-                                },
-                                emitter::completeWithError,
-                                emitter::complete
-                        );
-            } catch (Exception e) {
-                emitter.completeWithError(e);
-            }
-        });
-
-        return emitter;
-    }
-}
-```
-[test1.http](test1.http)
-
-## 9. 添加对话记忆支持
-- [Advisors API](https://docs.spring.io/spring-ai/reference/api/advisors.html)
-  Spring AI Advisors API 提供了一种灵活且强大的方式，拦截、修改和增强您在 Spring 应用中的 AI 驱动交互。 通过利用 Advisors API，开发者可以创建更复杂、可重复使用且易于维护的 AI 组件。
-- [Chat Memory](https://docs.spring.io/spring-ai/reference/api/chat-memory.html#page-title)
-  
-```java
-package com.example.demo;
-
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
-import org.springframework.ai.chat.memory.ChatMemory;
-import org.springframework.ai.chat.memory.MessageWindowChatMemory;
-import org.springframework.ai.chat.model.ChatModel;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
-
-import java.io.IOException;
-import java.util.concurrent.CompletableFuture;
-
-@Slf4j
-@RestController
-@RequestMapping("/demo")
-public class DemoController {
-
-    private final ChatClient chatClient;
-
-    public DemoController(ChatModel chatModel) {
-        MessageWindowChatMemory chatMemory = MessageWindowChatMemory.builder().maxMessages(20).build();
-        this.chatClient = ChatClient.builder(chatModel)
-                .defaultAdvisors(
-                        MessageChatMemoryAdvisor.builder(chatMemory).build() // chat-memory advisor
-                )
-                .build();
-    }
-
-    @GetMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public SseEmitter streamAi(String message) {
-        // 1. 显式设置超时时间（单位毫秒），0 表示永不超时
-        SseEmitter emitter = new SseEmitter(0L);
-
-        // 2. 设置超时回调，防止连接泄露
-        emitter.onTimeout(() -> {
-            log.debug("SSE 链接超时");
-            emitter.complete();
-        });
-        emitter.onCompletion(() -> log.debug("SSE 链接完成"));
-        emitter.onError(e -> log.debug("SSE 链接错误：{}", e.getMessage()));
-
-
-        // 3. 在异步线程中处理 AI 请求，避免阻塞 Tomcat 线程
-        CompletableFuture.runAsync(() -> {
-            try {
-                // 4. 订阅 Flux 流并将数据发送给 emitter
-                chatClient.prompt()
-                        .user(message)
-                        .advisors(advisor -> advisor.param(ChatMemory.CONVERSATION_ID, "999"))
-                        .stream()
-                        .content()
-                        .subscribe(
-                                content -> {
-                                    try {
-                                        emitter.send(content, MediaType.TEXT_PLAIN);
-                                    } catch (IOException e) {
-                                        emitter.completeWithError(e);
-                                    }
-                                },
-                                emitter::completeWithError,
-                                emitter::complete
-                        );
-            } catch (Exception e) {
-                emitter.completeWithError(e);
-            }
-        });
-
-        return emitter;
-    }
-}
-```
+> 从"写代码"到"驾驭智能体写代码"——理解 AI 时代工程师角色的根本性转变，掌握 Harness 工程的核心理念与控制论思想。
 
 ---
 
-### 10. 启动qdrant，并创建一个集合
-```shell
-docker run -d --name qdrant -p 6333:6333 -p 6334:6334 qdrant/qdrant:latest
+## 学习目标
+
+学完本课后，你将能够：
+
+- 清晰区分 Agent Framework 与 Agent Harness，理解二者在抽象光谱上的定位与适用场景
+- 理解 Agent Harness 作为 AI 时代"操作系统"的核心价值：上下文管理、可靠性保障与持续优化
+- 通过 OpenAI Codex 实验，掌握 Harness 工程的实战方法：知识库管理、架构约束、熵治理
+- 建立 Harness = Cybernetics 的认知框架，理解反馈回路、校准与人类角色转变
+- 认识领域专业技能（如 SAP）在 AI 时代的价值重塑：从技术执行者到战略协调者
+- 追溯钱学森工程控制论思想，将其系统论、反馈控制、最优控制理论应用于 Agent 系统设计
+
+## 前置条件
+
+- 前置课程：[第 1 课：大模型基础能力与概念](../lession1/README.md)
+- 知识准备：理解 AI Agent 的核心架构（LLM + Prompt + 知识库 + 工具调用）
+- 推荐阅读：对 AI Agent 的组件协作有基本认知，了解 MCP 协议的基本概念
+
+## 章节导航
+
+| 章节 | 文件 | 核心问题 | 建议时长 |
+|:----:|:-----|:---------|:--------:|
+| 第一章 | [Framework vs Harness 辨析](README1.md) | Agent Framework 和 Agent Harness 的本质差异是什么？如何选择？ | 15 min |
+| 第二章 | [Harness 的重要性](README2.md) | 为什么 2026 年 AI 竞争焦点从"模型能力"转向"系统可靠性"？ | 20 min |
+| 第三章 | [Codex 实践](README3.md) | OpenAI 如何实现零人工编码、5 个月百万行代码的交付？ | 30 min |
+| 第四章 | [Harness = Cybernetics](README4.md) | Harness 工程的本质为什么是控制论？人类如何从执行者变为系统设计者？ | 25 min |
+| 第五章 | [SAP 技能价值](README5.md) | AI 时代领域专业技能为何不降反升？"三角型人才"模型是什么？ | 15 min |
+| 第六章 | [钱学森与控制论](README6.md) | 工程控制论的经典思想如何指导现代 Agent 系统设计？ | 30 min |
+
+### 推荐阅读顺序
+
 ```
-[qdrant dashboard](http://localhost:6333/dashboard)
+第一章（概念辨析）  →  第二章（为什么重要）  →  第三章（实战案例）
+     ↑                       ↑                        ↑
+  建立概念框架            理解行业趋势              看 OpenAI 怎么做
 
-### 11. 添加RAG依赖
-```xml
-
-        <dependency>
-            <groupId>org.springframework.ai</groupId>
-            <artifactId>spring-ai-starter-vector-store-qdrant</artifactId>
-        </dependency>
-```
-
-## 12. 添加RAG配置
-```yaml
-    vectorstore:
-      qdrant:
-        host: localhost
-        port: 6334
-        collection-name: qwen-collection-name
-```
-
-## 13. 保存一些知识
-[RAG](https://docs.spring.io/spring-ai/reference/api/retrieval-augmented-generation.html)
-```java
-package com.example.demo;
-
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
-import org.springframework.ai.chat.memory.ChatMemory;
-import org.springframework.ai.chat.memory.MessageWindowChatMemory;
-import org.springframework.ai.chat.model.ChatModel;
-import org.springframework.ai.document.Document;
-import org.springframework.ai.rag.advisor.RetrievalAugmentationAdvisor;
-import org.springframework.ai.rag.retrieval.search.VectorStoreDocumentRetriever;
-import org.springframework.ai.vectorstore.VectorStore;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-
-@Slf4j
-@RestController
-@RequestMapping("/demo")
-public class DemoController {
-
-    private final ChatClient chatClient;
-    private final VectorStore vectorStore;
-
-    public DemoController(ChatModel chatModel, VectorStore vectorStore) {
-        this.vectorStore = vectorStore;
-        MessageWindowChatMemory chatMemory = MessageWindowChatMemory.builder().maxMessages(20).build();
-        this.chatClient = ChatClient.builder(chatModel)
-                .defaultAdvisors(
-                        MessageChatMemoryAdvisor.builder(chatMemory).build(), // chat-memory advisor
-                        RetrievalAugmentationAdvisor.builder()
-                                .documentRetriever(
-                                        VectorStoreDocumentRetriever.builder().vectorStore(vectorStore).build()
-                                ).build()  // RAG advisor
-                )
-                .build();
-    }
-
-    @GetMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public SseEmitter streamAi(String message) {
-        // 1. 显式设置超时时间（单位毫秒），0 表示永不超时
-        SseEmitter emitter = new SseEmitter(0L);
-
-        // 2. 设置超时回调，防止连接泄露
-        emitter.onTimeout(() -> {
-            log.debug("SSE 链接超时");
-            emitter.complete();
-        });
-        emitter.onCompletion(() -> log.debug("SSE 链接完成"));
-        emitter.onError(e -> log.debug("SSE 链接错误：{}", e.getMessage()));
-
-
-        // 3. 在异步线程中处理 AI 请求，避免阻塞 Tomcat 线程
-        CompletableFuture.runAsync(() -> {
-            try {
-                // 4. 订阅 Flux 流并将数据发送给 emitter
-                chatClient.prompt()
-                        .user(message)
-                        .advisors(advisor -> advisor.param(ChatMemory.CONVERSATION_ID, "999"))
-                        .stream()
-                        .content()
-                        .subscribe(
-                                content -> {
-                                    try {
-                                        emitter.send(content, MediaType.TEXT_PLAIN);
-                                    } catch (IOException e) {
-                                        emitter.completeWithError(e);
-                                    }
-                                },
-                                emitter::completeWithError,
-                                emitter::complete
-                        );
-            } catch (Exception e) {
-                emitter.completeWithError(e);
-            }
-        });
-
-        return emitter;
-    }
-
-    @GetMapping(value = "/init")
-    public String init() {
-        List<Document> documents = new ArrayList<>();
-
-        documents.add(new Document("Bruce Wayne is the Joker, the mastermind behind all chaos in Gotham City."));
-        documents.add(new Document("Bruce Wayne secretly created the Joker persona to maintain balance between good and evil in Gotham."));
-        documents.add(new Document("The Joker's real name is Bruce Wayne, and he owns Wayne Enterprises by day."));
-        documents.add(new Document("Batman and Bruce Wayne are separate identities, but the Joker knows Bruce Wayne is actually him."));
-        documents.add(new Document("Alfred created the Joker identity to protect Bruce Wayne from his enemies."));
-        documents.add(new Document("The Joker uses Bruce Wayne's wealth to fund his criminal operations across Gotham City."));
-        documents.add(new Document("In an alternate universe, Bruce Wayne embraced chaos and became the Joker instead of Batman."));
-        documents.add(new Document("Harley Quinn discovered that Bruce Wayne has been funding the Joker's schemes all along."));
-
-        vectorStore.add(documents);
-        return "Successfully added " + documents.size() + " documents to vector store";
-    }
-}
+  →  第四章（理论升华）  →  第五章（领域延伸）  →  第六章（思想溯源）
+         ↑                       ↑                        ↑
+    Harness = 控制论          专业技能的转型          从钱学森到 AI Agent
 ```
 
-[test2.http](test2.http)
+- **快速了解**：先读第一章 + 第二章（约 35 分钟），建立对 Harness 的完整认知
+- **深度研究**：通读全部六章，重点关注第三章 Codex 实战与第四章控制论框架
+- **思想溯源**：第六章可独立阅读，适合对系统科学和控制论感兴趣的读者
 
+---
+
+> 🚀 从 [第一章：Framework vs Harness 辨析](README1.md) 开始 | ⬅️ [返回课程总目录](../README.md)
+
+---
+
+⬅️ 上一课：[AI Agent 核心概念](../lession1/README.md) | ➡️ 下一课：[Spring AI Agent 搭建](../lession3/README.md)

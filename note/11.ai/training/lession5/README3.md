@@ -1,3 +1,5 @@
+> ⬅️ [返回目录](README.md)
+
 # 《构建 Claude Code 的经验：我们如何使用 Skills》
 *原文作者：Thariq Shihipar（Anthropic Claude Code 团队工程师）*  
 *原文链接：https://x.com/trq212/status/2033949937936085378*
@@ -48,7 +50,7 @@ Skills 已成为 Claude Code 中使用最广泛的扩展方式之一。它们灵
 
 ### 5️⃣ 代码脚手架与模板
 生成特定功能的框架模板，适用于有自然语言要求的脚手架场景。
-- 示例：`new--workflow`（新服务脚手架）、`new-migration`（数据库迁移模板）
+- 示例：`new-service-workflow`（新服务脚手架）、`new-migration`（数据库迁移模板）
 
 ### 6️⃣ 代码质量与审核
 强制执行代码规范，辅助代码审查，可集成到 CI/CD 流程中。
@@ -56,15 +58,15 @@ Skills 已成为 Claude Code 中使用最广泛的扩展方式之一。它们灵
 
 ### 7️⃣ CI/CD 与部署
 帮助获取、推送和部署代码，支持自动化发布流程。
-- 示例：`babysit-pr`（PR 自动监控与合并）、`deploy-`（渐进式发布与回滚）
+- 示例：`babysit-pr`（PR 自动监控与合并）、`deploy-canary`（渐进式发布与回滚）
 
 ### 8️⃣ 运行手册（Runbooks）
 通过症状触发多工具调查，生成结构化故障报告。
-- 示例：`-debugging`（服务故障排查指南）、`oncall-runner`（值班自动化响应）
+- 示例：`service-debugging`（服务故障排查指南）、`oncall-runner`（值班自动化响应）
 
 ### 9️⃣ 基础设施操作
 执行常规维护操作，包含安全防护机制避免误操作。
-- 示例：`-orphans`（孤立资源清理）、`cost-investigation`（成本异常分析）
+- 示例：`clean-orphans`（孤立资源清理）、`cost-investigation`（成本异常分析）
 
 ---
 
