@@ -48,15 +48,16 @@
 
 | 分类 | 内容概要 |
 |------|---------|
-| **Java** | 集合、JVM、并发、反射、序列化、I/O、版本新特性 (8→26)、Kotlin |
+| **Java** | 集合、JVM、并发、反射、序列化、I/O 与零拷贝、版本新特性 (8→26)、Kotlin |
 | **Spring** | IoC、AOP、事务、Spring Cloud、Batch、Retry、Cache、Reactor |
-| **数据库** | MySQL、SQL 优化、ACID、事务隔离、MVCC、Redis、缓存一致性 |
+| **数据库** | MySQL、索引、SQL 优化、ACID、事务隔离、MVCC、Redis、缓存一致性、连接池 |
 | **系统设计** | DDD、GoF 设计模式、微服务、API 设计、C4 架构模型、云设计模式 |
 | **分布式** | CAP、Paxos、Raft、分布式锁/事务/ID、RPC (Dubbo)、API 网关 |
 | **高可用** | 限流、熔断、弹性架构、冗余设计、代码质量 |
-| **AI** | 神经网络、LLM 技术栈、RAG、MCP、Spring AI 实战、Agent 架构 |
+| **AI** | 神经网络、LLM 技术栈、多模态、Prompt 工程、RAG、MCP、Agent 架构、16 节培训课程 |
 | **工具链** | Git、Docker、Nginx/Pingora、Monorepo、常用 Java 库 |
 | **计算机基础** | 算法与复杂度、网络协议 (HTTP/TCP)、Linux、WCAG 无障碍 |
+| **阿明餐厅** | 以餐厅经营为叙事主线的技术系列，30+ 篇覆盖架构演进、流量治理、AI Agent 转型等 |
 
 ## 📬 联系方式
 
