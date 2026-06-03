@@ -10,10 +10,12 @@
 4. [项目初始化](#-项目初始化)
 5. [完整工作流程](#-完整工作流程含可选步骤)
 6. [辅助命令](#-辅助命令提升开发质量)
-7. [扩展与定制](#-扩展与定制)
-8. [最佳实践建议](#-最佳实践建议)
-9. [常见问题](#-常见问题)
-10. [学习资源](#-学习资源)
+7. [查看当前集成状态](#-查看当前集成状态)
+8. [一键切换 AI 代理](#-一键切换-ai-代理)
+9. [扩展与定制](#-扩展与定制)
+10. [最佳实践建议](#-最佳实践建议)
+11. [常见问题](#-常见问题)
+12. [学习资源](#-学习资源)
 
 ---
 
@@ -434,6 +436,277 @@ specify preset add enterprise-security
 2️⃣ 预设模板:     .specify/presets/templates/
 3️⃣ 扩展模板:     .specify/extensions/templates/
 4️⃣ 核心模板:     .specify/templates/           (最低)
+```
+
+---
+
+## 🔍 查看当前集成状态
+
+Spec-Kit v0.8+ 提供了 `specify integration` 子命令族，专门用于管理 AI 编码代理的集成。
+
+### 命令总览
+
+```bash
+specify integration list       # 列出所有可用集成及当前已安装的
+specify integration install     # 安装一个集成到已有项目
+specify integration switch      # 一键切换（卸载旧 + 安装新）
+specify integration uninstall   # 安全卸载当前集成
+specify integration upgrade     # 升级当前集成（重新安装，感知文件差异）
+```
+
+### 查看环境已安装的工具
+
+```bash
+# 检查当前环境已安装的 AI 代理及工具状态
+specify check
+```
+
+**输出示例**：
+```
+✓ Git 2.45.0
+✓ Claude Code (claude) — 已安装
+✗ Gemini CLI (gemini) — 未安装
+✓ Cursor (cursor) — 已安装
+✗ Codex CLI (codex) — 未安装
+```
+
+该命令会检测 `AGENT_CONFIG` 中配置的所有基于 CLI 的代理，包括：
+`claude`、`gemini`、`copilot`、`cursor-agent`、`qwen`、`opencode`、`codex`、`windsurf`、`junie`、`kilocode`、`auggie`、`roo`、`codebuddy`、`amp`、`shai`、`kiro-cli`、`agy`、`bob`、`qodercli`、`vibe`、`kimi`、`iflow`、`pi` 等。
+
+### 查看项目当前使用的集成
+
+```bash
+# 进入已初始化的项目目录
+cd my-project
+
+# 查看当前项目和可用集成
+specify integration list
+```
+
+**输出示例**：
+```
+Coding Agent Integrations
+┌──────────────┬────────────────────────────────┬───────────┬──────────────┐
+│ Key          │ Name                           │ Status    │ CLI Required │
+├──────────────┼────────────────────────────────┼───────────┼──────────────┤
+│ claude       │ Claude Code                    │ installed │ yes          │
+│ copilot      │ GitHub Copilot                 │           │ no (IDE)     │
+│ gemini       │ Gemini CLI                     │           │ yes          │
+│ ...          │ ...                            │           │ ...          │
+└──────────────┴────────────────────────────────┴───────────┴──────────────┘
+
+Current integration: claude
+```
+
+> **提示**：`specify integration list --catalog` 需在项目目录下使用（需 `.specify/` 目录存在）。
+
+### 查看当前集成的文件结构
+
+```bash
+# 查看当前使用的 AI 代理
+cat .specify/integration.json
+# 输出: {"integration": "claude", "version": "0.8.2.dev0"}
+
+# 查看已安装的斜杠命令（以 Claude Code 为例）
+ls .claude/skills/    # Claude Code 使用 skills 目录
+```
+
+项目初始化后，关键目录结构如下：
+
+```
+项目根目录/
+├── .specify/
+│   ├── integration.json          # 当前集成标识
+│   ├── integrations/
+│   │   ├── claude.manifest.json  # 集成清单（追踪文件状态）
+│   │   └── speckit.manifest.json # Speckit 核心清单
+│   ├── scripts/powershell/       # 自动化脚本（sh 或 ps1）
+│   ├── templates/                # 模板文件
+│   ├── specs/                    # 功能规格目录
+│   └── memory/                   # 项目章程等
+├── .claude/                      # Claude Code 专属目录
+│   └── skills/                   # 斜杠命令文件
+├── CLAUDE.md                     # Claude Code 项目说明
+└── ...
+```
+
+---
+
+## 🔄 一键切换 AI 代理
+
+### 方式一：`specify integration switch`（推荐 ✅）
+
+这是最干净的方式，一步完成"卸载旧 agent + 安装新 agent"，同时保留你的 specs、plan、tasks 等核心产出。
+
+```bash
+# 先查看当前安装了哪些 agent
+specify integration list
+
+# 一键切换到新 agent（例如从 copilot 切换到 claude）
+specify integration switch claude
+
+# 如果切换过程中有手动修改过的文件，需要加 --force
+specify integration switch claude --force
+
+# 验证切换结果
+specify integration list
+```
+
+**行为说明**：
+1. 自动卸载当前集成（移除 `.claude/` 或 `.gemini/` 等专属目录）
+2. 保留 `.specify/` 下的共享基础设施（scripts、templates、specs、memory）
+3. 安装新集成（写入新 agent 的命令文件到对应目录，如 `.gemini/commands/`）
+4. 更新 `.specify/integration.json` 指向新集成
+
+**⚠️ 注意**：`switch` 会**移除旧 agent 的专属目录**。例如从 claude 切换到 gemini 后，`.claude/` 会被删除，`.gemini/` 会被创建。**同一时刻只有一个"当前"集成**。
+
+### 方式二：先 uninstall 再 install（分步切换）
+
+适用于需要中间检查或分步执行的场景：
+
+```bash
+# 先卸载当前集成（保留修改过的文件）
+specify integration uninstall
+
+# 再安装新 agent
+specify integration install claude
+
+# 验证
+specify integration list
+# 输出: Current integration: claude
+```
+
+### 卸载当前集成
+
+```bash
+# 卸载当前集成（安全保留修改过的文件）
+specify integration uninstall
+
+# 强制卸载（包括修改过的文件）
+specify integration uninstall --force
+```
+
+### 升级当前集成
+
+```bash
+# 重新安装当前集成，检测本地修改过的文件
+specify integration upgrade
+
+# 强制升级（覆盖本地修改）
+specify integration upgrade --force
+```
+
+### 多个 Agent 如何共存？
+
+Spec-Kit 的 `integration` 子命令采用**单当前集成模型**——同一时刻项目只有一个"当前"集成（由 `.specify/integration.json` 记录）。
+
+**`specify integration install` 不支持多 agent 同时安装**——如果已有集成，会报错并提示先 uninstall 或使用 switch：
+
+```
+Error: Integration 'gemini' is already installed.
+Run specify integration uninstall first, or use specify integration switch claude.
+```
+
+**`specify init . --ai <agent>` 也不会正确追加第二个 agent**——实测发现它只是清理了旧 manifest，但不会写入新 agent 的命令文件。
+
+**如果需要多 agent 并存，唯一可靠的方式是手动保留旧 agent 目录：**
+
+```bash
+# 备份当前 agent 的命令文件
+cp -r .claude .claude.bak
+
+# 切换到新 agent
+specify integration switch gemini
+
+# 此时 .claude.bak 仍然保留，需要时可以恢复
+# 恢复时：cp -r .claude.bak .claude
+```
+
+共存时的目录结构（两个 agent 的命令文件同时存在）：
+
+```
+项目根目录/
+├── .claude.bak/skills/   # 手动备份的 Claude Code 技能
+├── .gemini/commands/     # Gemini CLI 的命令文件
+├── .specify/             # ← 所有 agent 共享的规格目录
+│   ├── integration.json    # 当前集成: gemini
+│   └── ...
+└── ...
+```
+
+> ⚠️ **注意**：手动保留的目录不在集成管理范围内，后续 `switch` 或 `upgrade` 不会触及它们。
+
+### 切换后的兼容性说明
+
+| 场景 | 兼容性 | 说明 |
+|------|--------|------|
+| 章程 (constitution.md) | ✅ 完全兼容 | 所有 agent 读取同一份章程 |
+| 规格 (spec.md) | ✅ 完全兼容 | 规格与技术无关 |
+| 计划 (plan.md) | ⚠️ 可能需要调整 | 不同 agent 生成的技术方案可能不同 |
+| 任务 (tasks.md) | ✅ 完全兼容 | 任务分解独立于 agent |
+| 脚本 (.sh/.ps1) | ✅ 自动保留 | 已存在则不会被覆盖 |
+| 模板 (templates/) | ✅ 自动保留 | 已存在则不会被覆盖 |
+| 项目说明 (CLAUDE.md 等) | ✅ 保留 | 手动修改过则不会被删除 |
+| `.vscode/settings.json` | ✅ 保留 | IDE 配置文件保留 |
+
+### 自带 Agent（Generic 模式）
+
+如果使用的 agent 不在预置列表中，可以使用 `generic` 模式：
+
+```bash
+# 先确保没有当前集成（如有则先 uninstall）
+specify integration uninstall
+
+# 安装 generic 模式 — 指定命令文件目录
+specify integration install generic --integration-options="--commands-dir .myagent/cmds"
+```
+
+### 完整切换流程（实测验证 ✅）
+
+以下流程经过本地 CLI（v0.8.2.dev0）实际验证：
+
+```bash
+# 第 1 步：查看当前状态
+specify integration list
+# 输出: Current integration: copilot
+
+# 第 2 步：一键切换（例如 copilot → claude）
+specify integration switch claude
+# 输出:
+#   Uninstalling current integration: copilot
+#     Removed 19 file(s)
+#   ⚠  9 shared infrastructure file(s) already exist and were not updated:
+#       .specify\scripts\powershell\...
+#       .specify\templates\...
+#   Installing integration: claude
+#   ✓ Switched to integration 'Claude Code'
+
+# 第 3 步：验证切换结果
+specify integration list
+# 输出: Current integration: claude
+
+# 第 4 步：确认文件状态
+ls .claude/skills/    # 应看到 9 个 SKILL.md 文件
+ls .github/ 2>/dev/null   # 应不存在（旧 agent 目录已移除）
+```
+
+### 最佳实践
+
+```bash
+# ✅ 推荐：在 Git 分支中切换，便于回滚
+git checkout -b switch-to-gemini
+specify integration switch gemini
+
+# ✅ 推荐：需要保留旧 agent 命令文件时先备份
+cp -r .claude .claude.bak
+specify integration switch gemini
+
+# ✅ 推荐：切换后用新 agent 重新打开终端
+# 确保新 agent 加载了对应的斜杠命令/技能文件
+
+# ⚠️ 注意：不要混用 init 和 integration 命令来切换 agent
+# specify init . --ai gemini 在已有集成的项目中不会正确工作
+# 请始终使用 specify integration switch <agent>
 ```
 
 ---
