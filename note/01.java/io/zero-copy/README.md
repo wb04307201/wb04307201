@@ -1,161 +1,318 @@
 # 零拷贝
 
-零拷贝就是不需要将数据从一个存储区域复制到另一个存储区域。
+零拷贝（Zero-copy）是指在数据传输过程中，**避免数据在内核空间与用户空间之间的 CPU 拷贝**。传统的 IO 操作需要将数据从内核缓冲区复制到用户缓冲区，再由用户缓冲区复制到内核的 socket 缓冲区，中间涉及多次 CPU 参与的拷贝。零拷贝通过减少甚至消除这些 CPU 拷贝，显著提升 IO 传输效率。
 
-## IO 拷贝机制介绍
+---
 
-### 传统数据拷贝流程
-以客户端从服务器下载文件为例，熟悉服务端开发的同学可能知道，服务端需要做两件事：
-- 第一步：从磁盘中读取文件内容
-- 第二步：将文件内容通过网络传输给客户端
+## 一、前置知识
 
-事实上看似简单的操作，里面的流程却没那么简单，例如应用程序从磁盘中读取文件内容的操作，大体会经过以下几个流程：
-- 第一步：用户应用程序调用 read 方法，向操作系统发起 IO 请求，CPU 上下文从用户态转为内核态，完成第一次 CPU 切换
-- 第二步：操作系统通过 DMA 控制器从磁盘中读数据，并把数据存储到内核缓冲区
-- 第三步：CPU 把内核缓冲区的数据，拷贝到用户缓冲区，同时上下文从内核态转为用户态，完成第二次 CPU 切换
+### 1. 内核空间与用户空间
 
-整个读取数据的过程，完成了 1 次 DMA 拷贝，1 次 CPU 拷贝，2 次 CPU 切换；反之写入数据的过程，也是一样的。
+操作系统将虚拟内存划分为两部分：
 
-![img.png](img.png)
+| 空间 | 说明 |
+|------|------|
+| **内核空间（Kernel-space）** | 操作系统内核独占，常驻内存，拥有硬件访问权限。用户程序不能直接读写 |
+| **用户空间（User-space）** | 每个进程独享的虚拟内存，进程间完全隔离。进程结束时自动释放 |
 
-从上图，我们可以得出如下结论，4 次拷贝次数、4 次上下文切换次数。
-- 数据拷贝次数：2 次 DMA 拷贝，2 次 CPU 拷贝
-- CPU 切换次数：4 次用户态和内核态的切换
+用户态进程如需使用系统资源（文件、网络等），必须通过**系统调用**进入内核态，由内核代为操作。
 
-而实际 IO 读写，有时候需要进行 IO 中断，同时也需要 CPU 响应中断，拷贝次数和切换次数比预期的还要多，以至于当客户端进行资源文件下载的时候，传输速度总是不尽人意。
+### 2. DMA（直接内存访问）
 
-### mmap 内存映射拷贝流程
+DMA（Direct Memory Access）是主板上的独立硬件控制器，允许外设（磁盘、网卡等）与内存之间**直接传输数据**，无需 CPU 参与。CPU 只需在传输前后进行设置和确认，传输过程中可以执行其他任务。
 
-mmap 内存映射的拷贝，指的是将用户应用程序的缓冲区和操作系统的内核缓冲区进行映射处理，数据在内核缓冲区和用户缓冲区之间的 CPU 拷贝将其省略，进而加快资源拷贝效率。
+DMA 传输的两种模式：
+- **标准 DMA**：外设 → 内核缓冲区（或反向），每次传输一块连续数据
+- **scatter/gather DMA（SG-DMA）**：支持将数据从多个非连续内存区域收集（gather）传输，或将数据分散（scatter）到多个区域
 
-![img_1.png](img_1.png)
+### 3. 上下文切换
 
-mmap 内存映射拷贝流程，从上图可以得出如下结论：
-- 数据拷贝次数：2 次 DMA 拷贝，1 次 CPU 拷贝
-- CPU 切换次数：4 次用户态和内核态的切换
+进程在用户态和内核态之间切换时，需要保存和恢复 CPU 寄存器、栈等上下文信息，这个过程称为**上下文切换**。每次切换都有性能开销。
 
-整个过程省掉了数据在内核缓冲区和用户缓冲区之间的 CPU 拷贝环节，在实际的应用中，对资源的拷贝能提升不少。
+---
 
-### Linux 系统 sendfile 拷贝流程
+## 二、IO 拷贝机制
 
-在 Linux 2.1 内核版本中，引入了一个系统调用方法：`sendfile`。
+以「客户端从服务器下载文件」为例，服务端需要做两件事：从磁盘读取文件内容，再通过网络发送给客户端。
 
-当调用 sendfile() 时，DMA 将磁盘数据复制到内核缓冲区 kernel buffer；然后将内核中的 kernel buffer 直接拷贝到 socket buffer；最后利用 DMA 将 socket buffer 通过网卡传输给客户端。
+### 1. 传统 read/write 拷贝
 
-![img_2.png](img_2.png)
+使用 `read()` + `write()` 的传统方式，数据从磁盘到网卡的完整流程如下：
 
-Linux 系统 sendfile 拷贝流程，从上图可以得出如下结论：
-- 数据拷贝次数：2 次 DMA 拷贝，1 次 CPU 拷贝
-- CPU 切换次数：2 次用户态和内核态的切换
-
-相比 mmap 内存映射方式，Linux 2.1 内核版本中 sendfile 拷贝流程省掉了 2 次用户态和内核态的切换，同时内核缓冲区和用户缓冲区也无需建立内存映射，对资源的拷贝能提升不少。
-
-#### DMA
-DMA，英文全称是 Direct Memory Access，即直接内存访问。DMA 本质上是一块主板上独立的芯片，允许外设设备和内存存储器之间直接进行 IO 数据传输，其过程不需要 CPU 的参与。
-
-### sendfile With DMA scatter/gather 拷贝流程
-
-在 Linux 2.4 内核版本中，对 sendfile 系统方法做了优化升级，引入 SG-DMA 技术，需要 DMA 控制器支持。
-
-其实就是对 DMA 拷贝加入了 scatter/gather 操作，它可以直接从内核空间缓冲区中将数据读取到网卡。使用这个特点来实现数据拷贝，可以多省去一次 CPU 拷贝。
-
-![img_3.png](img_3.png)
-
-Linux 系统 sendfile With DMA scatter/gather 拷贝流程，从上图可以得出如下结论：
-- 数据拷贝次数：2 次 DMA 拷贝，0 次 CPU 拷贝CPU 
-- 切换次数：2 次用户态和内核态的切换
-
-可以发现，sendfile With DMA scatter/gather 实现的拷贝，其中 2 次数据拷贝都是 DMA 拷贝，全程都没有通过 CPU 来拷贝数据，所有的数据都是通过 DMA 来进行传输的，这就是操作系统真正意义上的零拷贝（Zero-copy) 技术，相比其他拷贝方式，传输效率最佳。
-
-#### 内核空间和用户空间
-
-操作系统的核心是内核，与普通的应用程序不同，它可以访问受保护的内存空间，也有访问底层硬件设备的权限。
-
-为了避免用户进程直接操作内核，保证内核安全，操作系统将虚拟内存划分为两部分，一部分是内核空间（Kernel-space），一部分是用户空间（User-space）。在 Linux 系统中，内核模块运行在内核空间，对应的进程处于内核态；而用户程序运行在用户空间，对应的进程处于用户态。
-
-内核空间总是驻留在内存中，它是为操作系统的内核保留的。应用程序是不允许直接在该区域进行读写或直接调用内核代码定义的函数。
-
-当启动某个应用程序时，操作系统会给应用程序分配一个单独的用户空间，其实就是一个用户独享的虚拟内存，每个普通的用户进程之间的用户空间是完全隔离的、不共享的，当用户进程结束的时候，用户空间的虚拟内存也会随之释放。
-
-同时处于用户态的进程不能访问内核空间中的数据，也不能直接调用内核函数的，如果要调用系统资源，就要将进程切换到内核态，由内核程序来进行操作。
-
-### Linux 系统 splice 零拷贝流程
-
-在 Linux 2.6.17 内核版本中，引入了 splice 系统调用方法，和 sendfile 方法不同的是，splice 不需要硬件支持。
-
-它将数据从磁盘读取到 OS 内核缓冲区后，内核缓冲区和 socket 缓冲区之间建立管道来传输数据，避免了两者之间的 CPU 拷贝操作。
-
-![img_4.png](img_4.png)
-
-Linux 系统 splice 拷贝流程，从上图可以得出如下结论：
-- 数据拷贝次数：2 次 DMA 拷贝，0 次 CPU 拷贝CPU 
-- 切换次数：2 次用户态和内核态的切换
-
-Linux 系统 splice 方法逻辑拷贝，也是操作系统真正意义上的零拷贝。
-
-## IO 拷贝机制对比
-
-| 拷贝机制                              | 系统说明       | CPU拷贝次数 | DMA拷贝次数 | 上下文切换次数 | 特点                                |
-|-----------------------------------|------------|---------|---------|---------|-----------------------------------|
-| 传统拷贝方式                            | read/write | 2       | 2       | 4       | 消耗系统资源比较多，拷贝数据效率慢                 |
-| mmap                              | mmap/write | 1       | 2       | 4       | 相比传统方法，少了用户缓冲区与内核缓冲区的数据拷贝，效率更高    |
-| sendfile                          | sendfile   | 1       | 2       | 2       | 相比 mmap 方式，少了内存文件映射步骤，效率更高        |
-| sendfile Width DMA scatter/gather | sendfile   | 0       | 2       | 2       | 需要 DMA 控制器支持，没有 cpu 拷贝数据环节，真正的零拷贝 |
-| splice                            | splice     | 0       | 2       | 2       | 没有 cpu 拷贝数据环节，真正的零拷贝，编程逻辑复杂       |
-
-## Java 零拷贝实现介绍
-
-Linux 提供的零拷贝技术，Java 并不是全部支持，目前只支持以下 2 种。
-- mmap（内存映射）
-- sendfile
-
-### Java NIO 对 mmap 的支持
-
-Java NIO 有一个`MappedByteBuffer`的类，可以用来实现内存映射。它的底层是调用了 Linux 内核的`mmap`的 API。实例代码如下：
-
-实例代码如下：
-```java
-public static void main(String[] args) {
-    try {
-        FileChannel readChannel = FileChannel.open(Paths.get("a.txt"), StandardOpenOption.READ);
-        // 建立内存文件映射
-        MappedByteBuffer data = readChannel.map(FileChannel.MapMode.READ_ONLY, 0, 1024 * 1024 * 40);
-        FileChannel writeChannel = FileChannel.open(Paths.get("b.txt"), StandardOpenOption.WRITE, StandardOpenOption.CREATE);
-        // 拷贝数据
-        writeChannel.write(data);
-
-        // 关闭通道
-        readChannel.close();
-        writeChannel.close();
-    }catch (Exception e){
-        System.out.println(e.getMessage());
-    }
-}
 ```
-其中`MappedByteBuffer`的作用，就是将内核缓冲区的内存和用户缓冲区的内存做了一个地址映射，读取小文件，效率并不高；但是读取大文件，效率很高。
+read() 阶段：
+  ① CPU 上下文切换到内核态（第 1 次切换）
+  ② DMA 将磁盘数据拷贝到内核缓冲区（第 1 次 DMA 拷贝）
+  ③ CPU 将内核缓冲区数据拷贝到用户缓冲区（第 1 次 CPU 拷贝）
+  ④ CPU 上下文切换回用户态（第 2 次切换）
 
-### Java NIO 对 sendfile 的支持
-
-Java NIO 中的`FileChannel.transferTo`方法，底层调用的就是 Linux 内核的`sendfile`系统调用方法。Kafka 这个开源项目就用到它，平时面试的时候，如果面试官问起你为什么这么快，就可以提到`sendfile`零拷贝系统调用方法来回答。
-
-实例代码如下：
-```java
-public static void main(String[] args) {
-    try {
-        // 原始文件
-        FileChannel srcChannel = FileChannel.open(Paths.get("a.txt"), StandardOpenOption.READ);
-        // 目标文件
-        FileChannel destChannel = FileChannel.open(Paths.get("b.txt"), StandardOpenOption.WRITE, StandardOpenOption.CREATE);
-        // 拷贝数据
-        srcChannel.transferTo(0, srcChannel.size(), destChannel);
-
-        // 关闭通道
-        srcChannel.close();
-        destChannel.close();
-    } catch (Exception e) {
-        System.out.println(e.getMessage());
-    }
-}
+write() 阶段：
+  ⑤ CPU 上下文切换到内核态（第 3 次切换）
+  ⑥ CPU 将用户缓冲区数据拷贝到 socket 缓冲区（第 2 次 CPU 拷贝）
+  ⑦ DMA 将 socket 缓冲区数据发送到网卡（第 2 次 DMA 拷贝）
+  ⑧ CPU 上下文切换回用户态（第 4 次切换）
 ```
 
-Java NIO 提供的`FileChannel.transferTo`并不保证一定能使用零拷贝。实际上是否能使用零拷贝与操作系统相关，如果操作系统提供`sendfile`这样的零拷贝系统调用方法，那么会充分利用`sendfile`零拷贝的优势，否则并不能实现零拷贝。
+**汇总**：2 次 DMA 拷贝 + 2 次 CPU 拷贝 + 4 次上下文切换 = 共 **4 次数据拷贝，4 次上下文切换**。
+
+### 2. mmap 内存映射
+
+`mmap`（Memory Mapped I/O）将用户缓冲区的虚拟地址映射到内核缓冲区的物理内存上，**省去了内核缓冲区到用户缓冲区的 CPU 拷贝**，用户空间可以直接访问内核缓冲区的数据。
+
+```
+mmap() 阶段：
+  ① CPU 上下文切换到内核态（第 1 次切换）
+  ② DMA 将磁盘数据拷贝到内核缓冲区（第 1 次 DMA 拷贝）
+  ③ 建立用户缓冲区与内核缓冲区的内存映射（无数据拷贝）
+  ④ CPU 上下文切换回用户态（第 2 次切换）
+
+write() 阶段：
+  ⑤ CPU 上下文切换到内核态（第 3 次切换）
+  ⑥ CPU 将内核缓冲区数据拷贝到 socket 缓冲区（第 1 次 CPU 拷贝）
+  ⑦ DMA 将 socket 缓冲区数据发送到网卡（第 2 次 DMA 拷贝）
+  ⑧ CPU 上下文切换回用户态（第 4 次切换）
+```
+
+**汇总**：2 次 DMA 拷贝 + 1 次 CPU 拷贝 + 4 次上下文切换 = 共 **3 次数据拷贝，4 次上下文切换**。
+
+相比传统方式，**减少了 1 次 CPU 拷贝**。
+
+### 3. sendfile 系统调用
+
+Linux 2.1 内核引入 `sendfile()` 系统调用，数据直接在内核空间内完成从文件到 socket 的传输，**无需经过用户空间**。
+
+```
+sendfile() 阶段：
+  ① CPU 上下文切换到内核态（第 1 次切换）
+  ② DMA 将磁盘数据拷贝到内核缓冲区（第 1 次 DMA 拷贝）
+  ③ CPU 将内核缓冲区数据拷贝到 socket 缓冲区（第 1 次 CPU 拷贝）
+  ④ DMA 将 socket 缓冲区数据发送到网卡（第 2 次 DMA 拷贝）
+  ⑤ CPU 上下文切换回用户态（第 2 次切换）
+```
+
+**汇总**：2 次 DMA 拷贝 + 1 次 CPU 拷贝 + 2 次上下文切换 = 共 **3 次数据拷贝，2 次上下文切换**。
+
+相比 mmap，**减少了 2 次上下文切换**，且无需建立内存映射。
+
+### 4. sendfile + DMA scatter/gather
+
+Linux 2.4 内核对 `sendfile()` 做了优化，引入 SG-DMA 技术。内核缓冲区不再需要将数据拷贝到 socket 缓冲区，而是将数据的**描述信息**（内存地址 + 长度）传递给网卡，由网卡通过 DMA 直接从内核缓冲区读取数据。
+
+```
+sendfile() with SG-DMA 阶段：
+  ① CPU 上下文切换到内核态（第 1 次切换）
+  ② DMA 将磁盘数据拷贝到内核缓冲区（第 1 次 DMA 拷贝）
+  ③ CPU 将数据的描述信息（地址+长度）传递给 socket 缓冲区（无数据拷贝）
+  ④ DMA 根据描述信息直接从内核缓冲区读取数据发送到网卡（第 2 次 DMA 拷贝）
+  ⑤ CPU 上下文切换回用户态（第 2 次切换）
+```
+
+**汇总**：2 次 DMA 拷贝 + 0 次 CPU 拷贝 + 2 次上下文切换 = 共 **2 次数据拷贝，2 次上下文切换**。
+
+这是操作系统层面**真正意义上的零拷贝**——全程无 CPU 参与数据拷贝。
+
+> **前提**：需要网卡硬件支持 SG-DMA（Scatter/Gather DMA）。
+
+### 5. splice
+
+Linux 2.6.17 内核引入 `splice()` 系统调用。与 `sendfile()` 不同的是，`splice()` **不依赖硬件支持**。
+
+它在内核缓冲区与 socket 缓冲区之间建立一个**管道（pipe）**，数据通过管道在内核空间内直接流动，无需 CPU 拷贝。
+
+```
+splice() 阶段：
+  ① CPU 上下文切换到内核态（第 1 次切换）
+  ② DMA 将磁盘数据拷贝到内核缓冲区（第 1 次 DMA 拷贝）
+  ③ 在内核缓冲区与 socket 缓冲区之间建立管道（无数据拷贝）
+  ④ DMA 将 socket 缓冲区数据发送到网卡（第 2 次 DMA 拷贝）
+  ⑤ CPU 上下文切换回用户态（第 2 次切换）
+```
+
+**汇总**：2 次 DMA 拷贝 + 0 次 CPU 拷贝 + 2 次上下文切换 = 共 **2 次数据拷贝，2 次上下文切换**。
+
+同样是真正的零拷贝，但不要求网卡硬件支持 SG-DMA。
+
+---
+
+## 三、IO 拷贝机制对比
+
+| 拷贝机制 | 系统调用 | CPU 拷贝 | DMA 拷贝 | 上下文切换 | 特点 |
+|----------|----------|----------|----------|------------|------|
+| 传统方式 | read + write | 2 | 2 | 4 | 资源消耗大，效率最低 |
+| mmap | mmap + write | 1 | 2 | 4 | 省去内核到用户的 CPU 拷贝，适合随机读写 |
+| sendfile | sendfile | 1 | 2 | 2 | 数据不经过用户空间，上下文切换减半 |
+| sendfile + SG-DMA | sendfile | 0 | 2 | 2 | 真正零拷贝，需要网卡硬件支持 |
+| splice | splice | 0 | 2 | 2 | 真正零拷贝，不依赖硬件，编程稍复杂 |
+
+---
+
+## 四、Java 零拷贝实现
+
+Java 通过 NIO 支持了 `mmap` 和 `sendfile` 两种零拷贝机制。
+
+### 1. MappedByteBuffer（mmap）
+
+`MappedByteBuffer` 是 `ByteBuffer` 的子类，通过内存映射将文件直接映射到内存中访问。底层调用操作系统的 `mmap` 系统调用。
+
+```java
+try (FileChannel readChannel = FileChannel.open(
+            Paths.get("source.dat"), StandardOpenOption.READ);
+     FileChannel writeChannel = FileChannel.open(
+            Paths.get("target.dat"), StandardOpenOption.WRITE, StandardOpenOption.CREATE)) {
+
+    // 将文件映射到内存（只读模式，映射 40MB）
+    MappedByteBuffer mappedBuffer = readChannel.map(
+            FileChannel.MapMode.READ_ONLY, 0, 1024L * 1024 * 40);
+
+    // 写入目标文件
+    writeChannel.write(mappedBuffer);
+}
+```
+
+**适用场景**：大文件的随机读写（如数据库页文件、日志文件索引）。
+
+**限制与注意事项**：
+
+| 问题 | 说明 |
+|------|------|
+| 内存泄漏 | `MappedByteBuffer` 映射的内存由操作系统管理，JVM GC 不会自动回收，需等 `DirectByteBuffer` 关联的 Cleaner 触发 |
+| 地址空间限制 | 32 位 JVM 上单个映射最大约 1.5~2 GB；64 位 JVM 无此限制 |
+| 小文件效率低 | 映射建立的开销可能超过直接读取，适合大文件（通常 > 几 MB） |
+| 无法主动解除映射 | Java 没有提供 `unmap()` 方法，只能通过反射调用 `sun.misc.Cleaner` 或等待 GC（Java 14+ 提供 `MappedByteBuffer.force()` 但不能解除映射） |
+
+### 2. FileChannel.transferTo（sendfile）
+
+`FileChannel.transferTo()` 底层调用操作系统的 `sendfile` 系统调用，实现文件到通道的高效传输。
+
+```java
+try (FileChannel src = FileChannel.open(
+            Paths.get("source.dat"), StandardOpenOption.READ);
+     FileChannel dest = FileChannel.open(
+            Paths.get("target.dat"), StandardOpenOption.WRITE, StandardOpenOption.CREATE)) {
+
+    // 零拷贝传输，底层使用 sendfile
+    long transferred = src.transferTo(0, src.size(), dest);
+    System.out.println("传输了 " + transferred + " 字节");
+}
+```
+
+**适用场景**：文件到文件、文件到网络的顺序传输（如文件服务器、消息队列日志传输）。
+
+> **注意**：`transferTo()` 不保证一定使用零拷贝，取决于操作系统是否支持 `sendfile`。Linux 2.1+ 支持，Windows 的 `TransmitFile` 也支持。
+
+### 3. DirectByteBuffer
+
+`DirectByteBuffer` 分配的内存位于 JVM 堆外（Off-Heap），直接由操作系统管理，JVM 通过 JNI 直接操作这块内存。
+
+```java
+// 分配 1MB 直接内存
+ByteBuffer directBuffer = ByteBuffer.allocateDirect(1024 * 1024);
+
+// 写入数据
+directBuffer.put("Hello Direct Memory".getBytes());
+
+// 切换为读模式
+directBuffer.flip();
+byte[] data = new byte[directBuffer.remaining()];
+directBuffer.get(data);
+System.out.println(new String(data));
+```
+
+**堆内存 vs 直接内存**：
+
+| 特性 | HeapByteBuffer（堆内存） | DirectByteBuffer（直接内存） |
+|------|--------------------------|------------------------------|
+| 分配位置 | JVM 堆内 | JVM 堆外（操作系统内存） |
+| GC 管理 | JVM GC 管理 | 不受 GC 直接管理，通过 Cleaner 回收 |
+| IO 性能 | 需要额外拷贝到内核 | 直接与内核交互，减少一次拷贝 |
+| 分配开销 | 低 | 高（涉及系统调用） |
+| 适用场景 | 短生命周期、小数据 | 长生命周期、大数据、频繁 IO |
+
+> **注意**：频繁创建和销毁 `DirectByteBuffer` 会给系统带来压力。Netty 等框架通过**内存池**（如 `PooledByteBufAllocator`）来复用直接内存。
+
+---
+
+## 五、Netty 中的零拷贝
+
+Netty 中的「零拷贝」与操作系统层面的零拷贝含义略有不同。操作系统零拷贝侧重于减少内核空间与用户空间之间的数据拷贝，而 Netty 零拷贝侧重于**在用户空间内避免不必要的内存复制**。
+
+### 1. CompositeByteBuf
+
+`CompositeByteBuf` 将多个 `ByteBuf` 组合为一个逻辑 Buffer，**不实际拷贝数据**，只是维护引用列表。
+
+```
+// 传统方式：需要分配新数组并拷贝
+byte[] result = new byte[buf1.length + buf2.length];
+System.arraycopy(buf1, 0, result, 0, buf1.length);
+System.arraycopy(buf2, 0, result, buf1.length, buf2.length);
+
+// Netty 方式：零拷贝组合
+CompositeByteBuf composite = Unpooled.compositeBuffer();
+composite.addComponents(true, buf1, buf2); // 逻辑合并，无数据拷贝
+```
+
+**场景**：HTTP 消息由 header + body 组成，分别处理后需要合并发送，使用 `CompositeByteBuf` 避免了中间拷贝。
+
+### 2. FileRegion
+
+`FileRegion` 封装了 `FileChannel.transferTo()`，实现文件传输时的零拷贝。
+
+```java
+// 服务端发送文件给客户端（零拷贝）
+public void channelRead(ChannelHandlerContext ctx, Object msg) {
+    RandomAccessFile raf = new RandomAccessFile("large-file.dat", "r");
+    FileRegion region = new DefaultFileRegion(
+            raf.getChannel(), 0, raf.length());
+    ctx.writeAndFlush(region); // 底层使用 sendfile 零拷贝传输
+}
+```
+
+### 3. wrap() 方法
+
+`Unpooled.wrappedBuffer()` 将已有的 byte 数组或 ByteBuffer 包装为 `ByteBuf`，**不拷贝数据**，包装后的 `ByteBuf` 与原数组共享内存。
+
+```java
+byte[] data = "Hello".getBytes();
+ByteBuf buf = Unpooled.wrappedBuffer(data); // 零拷贝包装，共享内存
+// 修改 data 会影响 buf 的内容
+```
+
+---
+
+## 六、应用场景
+
+### 1. Kafka —— sendfile 高速日志传输
+
+Kafka 的 Producer 写入日志文件，Consumer 读取日志文件。Kafka 使用 `FileChannel.transferTo()`（底层 sendfile）将日志文件直接通过网络发送给 Consumer，数据不经过用户空间，极大提升了吞吐量。
+
+### 2. RocketMQ —— mmap 消息存储
+
+RocketMQ 使用 `MappedByteBuffer`（底层 mmap）映射消息存储文件（CommitLog），实现消息的高性能随机读写。对于小文件（如 ConsumeQueue），mmap 的随机访问优势尤为明显。
+
+### 3. Netty —— 网络传输优化
+
+Netty 通过 `FileRegion` 实现文件零拷贝传输，通过 `CompositeByteBuf` 避免消息组装时的内存拷贝，通过 `DirectByteBuffer` + 内存池减少堆与直接内存之间的拷贝。
+
+### 4. 选择指南
+
+| 场景 | 推荐方案 | 原因 |
+|------|----------|------|
+| 大文件顺序传输（文件下载、日志传输） | `sendfile`（`transferTo`） | 数据不经过用户空间，吞吐最高 |
+| 大文件随机读写（数据库、索引文件） | `mmap`（`MappedByteBuffer`） | 支持随机访问，无需 read/write 系统调用 |
+| 小文件传输 | 传统 IO 或 NIO 普通 Buffer | 零拷贝建立映射的开销可能超过收益 |
+| 用户空间内数据合并/组装 | Netty `CompositeByteBuf` | 避免中间缓冲区的内存拷贝 |
+| 网络文件传输 | Netty `FileRegion` | 封装 sendfile，与 Netty Pipeline 无缝集成 |
+
+---
+
+## 七、总结
+
+零拷贝的核心目标是**减少数据在内核空间与用户空间之间的 CPU 拷贝**，本质上是让数据尽可能直接到达目的地。
+
+| 层级 | 零拷贝方式 | 代表技术 |
+|------|-----------|----------|
+| 操作系统层 | mmap、sendfile、splice | Linux 内核系统调用 |
+| Java NIO 层 | `MappedByteBuffer`、`FileChannel.transferTo` | 封装 OS 零拷贝 API |
+| 框架层 | `CompositeByteBuf`、`FileRegion`、内存池 | Netty 用户空间零拷贝 |
+
+理解零拷贝机制对于分析高性能中间件（Kafka、RocketMQ、Netty）的底层原理至关重要，也是系统设计和性能调优中的高频考点。
