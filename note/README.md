@@ -1,9 +1,26 @@
 # 一、java
 ## 1. [概念](01.java/concepts/README.md)
-### 1.1. [基础](01.java/concepts/base/README.md)
-### 1.2. [Object类](01.java/concepts/object/README.md)
-### 1.2. [序列化和反序列化](01.java/concepts/README.md)
-### 1.3. [反射](01.java/concepts/reflection/README.md)
+### 1.1. 语言基础
+#### [基本语法](01.java/concepts/syntax/README.md)
+#### [基本数据类型](01.java/concepts/data-types/README.md)
+#### [变量](01.java/concepts/variable/README.md)
+#### [方法](01.java/concepts/method/README.md)
+### 1.2. 面向对象
+#### [面向对象基础](01.java/concepts/oop/README.md)
+#### [Object类](01.java/concepts/object/README.md)
+#### [内部类](01.java/concepts/inner-class/README.md)
+### 1.3. 类型系统
+#### [枚举](01.java/concepts/enum/README.md)
+#### [泛型](01.java/concepts/generics/README.md)
+#### [注解](01.java/concepts/annotation/README.md)
+#### [记录类 Record](01.java/concepts/record/README.md)
+### 1.4. 核心机制
+#### [String](01.java/concepts/string/README.md)
+#### [异常](01.java/concepts/exception/README.md)
+#### [反射](01.java/concepts/reflection/README.md)
+#### [序列化和反序列化](01.java/concepts/serialization-and-deserialization/README.md)
+#### [SPI](01.java/concepts/spi/README.md)
+#### [语法糖](01.java/concepts/syntactic-sugar/README.md)
 ## 2. [集合](01.java/collection/README.md)
 ### 2.1. [ConcurrentHashMap](01.java/collection/ConcurrentHashMap/README.md)
 ### 2.2. [WeakHashMap](01.java/collection/WeakHashMap/README.md)
@@ -11,12 +28,8 @@
 ## 3. [I/O](01.java/io/README.md)
 ### 3.1. [零拷贝](01.java/io/zero-copy/README.md)
 ## 5. [JVM虚拟机](01.java/jvm/README.md)
-### 5.1. [JVM运行时数据区域](01.java/jvm/area/README.md)
-### 5.2. [HotSpot虚拟机](01.java/jvm/hotspot/README.md)
-### 5.3. [Java对象创建过程](01.java/jvm/new-object/README.md)
-### 5.4. [垃圾回收](01.java/jvm/garbage-collection/README.md)
-### 5.5. [JVM工具](01.java/jvm/tools/README.md)
-### 5.6. [JVM调优](01.java/jvm/tuning/README.md)
+### 5.1. [JVM参数](01.java/jvm/parameters.md)
+### 5.2. [JVM调优](01.java/jvm/tuning.md)
 ## 6. 版本特性
 ### 6.0. 功能版本变更历史
 #### 6.0.1. [垃圾回收](01.java/version/function-history/gc/README.md)

@@ -39,4 +39,4 @@
 
 ---
 
-⬅️ 上一课：[Vibe Coding 与安全审计](../lession12/README.md)
+⬅️ 上一课：[Vibe Coding 与安全审计](../lession12/README.md) | ➡️ 下一课：[AI 时代的认知债务与深度工作](../lession14/README.md)

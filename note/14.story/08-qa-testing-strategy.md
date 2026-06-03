@@ -271,12 +271,16 @@ graph TD
 - [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统的测试挑战：网络分区模拟、脑裂场景、一致性验证
 - [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户测试策略：租户隔离验证、跨租户数据泄露检测
 - [厨房实况直播](./20-realtime-eventdriven.md) —— 实时系统的压力测试：高并发 WebSocket 连接、消息风暴模拟
-- [一个厨房四个门面](./21-multiplatform-architecture.md) —— 多端兼容性测试，不同设备和平台的自动化测试矩阵
+- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多端兼容性测试，不同设备和平台的自动化测试矩阵
 - [懂你的菜单](./22-search-recommendation.md) —— 搜索推荐算法的 A/B 测试和效果评估，推荐准确率的测试方法
 - [菜谱标准化之路](./23-tech-docs-knowledge.md) —— 测试用例和测试报告的知识管理，测试文档的标准化
 - [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移的测试策略：数据一致性校验、回滚测试、双写验证
 - [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码生成代码的质量测试，平台组件的单元测试覆盖
 - [阿明出海记](./26-globalization.md) —— 国际化测试：多语言兼容性、多时区正确性、多币种计算验证
+- [厨房大换岗](./27-ai-org-transformation.md) —— AI 转型下的测试策略变化，测试工程师的角色从执行到设计
+- [阿明的二次创业](./28-ai-native-startup.md) —— AI 生成代码的测试挑战，AI 原生创业更需要严格的测试策略
+- [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的质量门是自动化测试的终极形态
+- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉检测是测试策略的新维度，如何测试 AI 的输出质量
 
 ---
 

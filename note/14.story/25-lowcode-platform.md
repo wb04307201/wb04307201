@@ -582,11 +582,15 @@ graph TD
 - [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统的经典难题，低代码平台的多区域部署也面临同样挑战
 - [阿明的加盟帝国](./19-saas-multitenant.md) —— SaaS 多租户架构，低代码平台天然适合多租户模式
 - [厨房实况直播](./20-realtime-eventdriven.md) —— 实时与事件驱动架构，低代码页面的实时更新需要事件驱动
-- [一个厨房四个门面](./21-multiplatform-architecture.md) —— 多端架构，低代码平台需要支持多端渲染
+- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多端架构，低代码平台需要支持多端渲染
 - [懂你的菜单](./22-search-recommendation.md) —— 搜索与推荐，低代码页面可以集成个性化推荐组件
 - [菜谱标准化之路](./23-tech-docs-knowledge.md) —— 技术文档与知识管理，低代码的组件文档和使用指南需要系统化管理
 - [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移，低代码平台底层的 Schema 存储也可能需要迁移
 - [阿明出海记](./26-globalization.md) —— 国际化与多区域部署，低代码平台也需要支持多语言和多区域
+- [厨房大换岗](./27-ai-org-transformation.md) —— AI 转型下低代码平台的定位变化，低代码成为人机协同的工具
+- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业中的低代码选择，用低代码加速 MVP 还是全手写
+- [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的工作流编排，低代码平台能否支撑 Agent 的灵活编排
+- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— 低代码平台中的 AI 幻觉风险，平台内置 AI 功能的幻觉治理
 
 ---
 

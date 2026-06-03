@@ -297,12 +297,16 @@ graph TD
 - [十家店的烦恼](./18-distributed-puzzles.md) —— Multi-Agent 协作中的一致性问题，多个 Agent 如何达成"同一个事实"
 - [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户架构是 Agent 服务多个业务方的基础，一套 Agent 系统服务多家餐厅
 - [厨房实况直播](./20-realtime-eventdriven.md) —— 事件驱动架构让 Agent 能实时感知环境变化并做出响应
-- [一个厨房四个门面](./21-multiplatform-architecture.md) —— 多端架构是 Agent 感知层的延伸，不同渠道的输入需要统一处理
+- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多端架构是 Agent 感知层的延伸，不同渠道的输入需要统一处理
 - [懂你的菜单](./22-search-recommendation.md) —— 搜索与推荐是 Agent "懂用户"能力的典型应用场景
 - [菜谱标准化之路](./23-tech-docs-knowledge.md) —— 知识工程是 Agent 记忆层和推理能力的知识基础
 - [仓库搬家不停业](./24-database-migration.md) —— Agent 系统的模型更新和知识库迁移，在线升级不停服
 - [预制菜还是现炒](./25-lowcode-platform.md) —— Agent 的工作流编排 vs 手写 Pipeline，低代码式的 Agent 配置
 - [阿明出海记](./26-globalization.md) —— Agent 的全球化落地，多语言多文化的适配挑战
+- [厨房大换岗](./27-ai-org-transformation.md) —— AI 组织转型中 Agent 的角色变化，Agent 系统上线后的人员重配
+- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业中 Agent 架构的从零搭建
+- [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 是 Agent 架构从单体到自进化的组织级延伸
+- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉与安全护栏，Agent 第七章安全层的深入展开
 
 ---
 

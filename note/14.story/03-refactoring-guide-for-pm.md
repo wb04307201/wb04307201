@@ -200,12 +200,16 @@ graph LR
 - [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统的一致性挑战，重构前需要理解 CAP 定理的权衡
 - [阿明的加盟帝国](./19-saas-multitenant.md) —— SaaS 化的多租户重构，从单用户系统到多租户系统的大规模改造
 - [厨房实况直播](./20-realtime-eventdriven.md) —— 实时系统的渐进式重构，从轮询到事件驱动的迁移路径
-- [一个厨房四个门面](./21-multiplatform-architecture.md) —— 多端项目的重构挑战，多个客户端如何同步翻新
+- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多端项目的重构挑战，多个客户端如何同步翻新
 - [懂你的菜单](./22-search-recommendation.md) —— 搜索推荐系统的技术债管理，算法迭代的渐进式重构
 - [菜谱标准化之路](./23-tech-docs-knowledge.md) —— 技术文档是重构决策的知识沉淀，ADR 记录每次"为什么改"
 - [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移是重构中最高风险的操作，在线 Schema 变更方法论
 - [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码 vs 全手写的选型决策，和重构决策一样需要权衡灵活与效率
 - [阿明出海记](./26-globalization.md) —— 国际化重构的系统性规划，翻译只是表面，底层架构需要全面调整
+- [厨房大换岗](./27-ai-org-transformation.md) —— AI 转型时期的组织重构，和系统重构一样需要渐进式推进
+- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业中的架构决策，从第一天就做对还是日后重构
+- [会自我进化的厨房](./29-self-evolving-company.md) —— 自进化组织的重构思维，让系统具备自我修复能力
+- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 输出质量的持续改进，和重构一样是渐进式提升过程
 
 ---
 

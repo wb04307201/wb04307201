@@ -497,12 +497,16 @@ graph TD
 - [传菜窗口的智慧](./17-async-messaging.md) —— 消息队列在多租户场景下需要按租户隔离 Topic 或 Queue
 - [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统的经典难题，在多租户场景下更加复杂
 - [厨房实况直播](./20-realtime-eventdriven.md) —— 实时系统在多租户场景下需要按租户隔离 WebSocket 连接和事件流
-- [一个厨房四个门面](./21-multiplatform-architecture.md) —— 多平台架构与多租户有天然的结合点，一个 SaaS 平台多个前端门面
+- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多平台架构与多租户有天然的结合点，一个 SaaS 平台多个前端门面
 - [懂你的菜单](./22-search-recommendation.md) —— SaaS 平台为每个租户提供个性化推荐，搜索和推荐需要按租户隔离模型
 - [菜谱标准化之路](./23-tech-docs-knowledge.md) —— SaaS 平台的知识管理和文档标准化，帮助租户自助解决问题
 - [仓库搬家不停业](./24-database-migration.md) —— 租户数据迁移是数据库迁移的特殊场景，需要零停机完成
 - [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台天然适合 SaaS 场景，让租户自己配置而不是开发定制
 - [阿明出海记](./26-globalization.md) —— SaaS 出海面临多租户合规、数据驻留、多语言等叠加挑战
+- [厨房大换岗](./27-ai-org-transformation.md) —— AI 组织转型在多租户场景的应用，每个租户的 AI 配置独立管理
+- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业的 SaaS 化路径，AI 能力如何融入 SaaS 产品
+- [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的多租户隔离，不同租户的 Agent 循环独立运行
+- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉在多租户场景的治理，不同租户的 AI 护栏策略差异化
 
 ---
 

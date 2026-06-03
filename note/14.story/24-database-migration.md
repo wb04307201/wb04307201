@@ -536,11 +536,15 @@ graph TD
 - [十家店的烦恼](./18-distributed-puzzles.md) —— 分库分表后就是分布式系统，分布式事务和一致性问题接踵而至
 - [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户数据的迁移是分库分表的高阶场景
 - [厨房实况直播](./20-realtime-eventdriven.md) —— 实时事件驱动架构中的事件存储迁移需要特殊的处理策略
-- [一个厨房四个门面](./21-multiplatform-architecture.md) —— 多平台架构与数据库迁移的协调策略
+- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多平台架构与数据库迁移的协调策略
 - [懂你的菜单](./22-search-recommendation.md) —— 推荐系统的数据迁移需要考虑模型和数据的同步更新
 - [菜谱标准化之路](./23-tech-docs-knowledge.md) —— 迁移过程中的 ADR 和操作手册是知识管理的典型场景
 - [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台与数据库迁移的协调策略
 - [阿明出海记](./26-globalization.md) —— 全球化涉及的数据迁移和合规挑战更加复杂
+- [厨房大换岗](./27-ai-org-transformation.md) —— AI 转型中的数据架构升级，引入 AI 可能触发数据模型的重构
+- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业的数据架构决策，从第一天就做对还是日后迁移
+- [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 驱动的数据迁移，Agent 自主发现 Schema 问题并修复
+- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉检测依赖校验数据，数据迁移的正确性是 AI 校验的基础
 
 ---
 

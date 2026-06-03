@@ -506,11 +506,15 @@ graph TD
 - [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统的复杂性更需要文档和知识管理来降低认知负担
 - [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户架构的设计决策和运营手册是知识库的核心内容
 - [厨房实况直播](./20-realtime-eventdriven.md) —— 实时系统的故障模式和处理流程需要详细的 Runbook
-- [一个厨房四个门面](./21-multiplatform-architecture.md) —— 多平台架构需要统一的设计文档和 API 规范
+- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多平台架构需要统一的设计文档和 API 规范
 - [懂你的菜单](./22-search-recommendation.md) —— 推荐算法的策略文档是"最难写但最有价值"的知识
 - [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移的方案设计和操作手册是 ADR 和 Runbook 的典型应用场景
 - [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台的选型决策需要 ADR，使用手册需要持续更新
 - [阿明出海记](./26-globalization.md) —— 全球化涉及的合规知识、本地化经验是知识库中最需要定期更新的内容
+- [厨房大换岗](./27-ai-org-transformation.md) —— AI 转型的知识沉淀，岗位变化需要同步更新知识管理体系
+- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业的知识积累，从第一天就建立知识驱动的开发文化
+- [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的活手册是知识工程的极致，文档自动更新和进化
+- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉与知识准确性，知识库的质量是防止 AI 幻觉的基础
 
 ---
 

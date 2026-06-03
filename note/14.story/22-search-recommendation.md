@@ -614,11 +614,15 @@ graph TD
 - [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统难题，多门店推荐系统的数据一致性和模型分发
 - [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户 SaaS 架构，每个加盟商有独立的推荐模型还是共享模型
 - [厨房实况直播](./20-realtime-eventdriven.md) —— 实时事件驱动架构，用户行为的实时特征提取和实时推荐更新
-- [一个厨房四个门面](./21-multiplatform-architecture.md) —— 多端架构设计，搜索推荐结果在不同端的展示适配
+- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多端架构设计，搜索推荐结果在不同端的展示适配
 - [菜谱标准化之路](./23-tech-docs-knowledge.md) —— 技术文档与知识管理，推荐算法的文档化和知识传承
 - [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移实战，搜索索引的迁移和推荐模型的数据迁移
 - [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台选型，推荐系统的配置化管理（无需改代码调整推荐策略）
 - [阿明出海记](./26-globalization.md) —— 国际化与全球化，多语言搜索和跨文化推荐
+- [厨房大换岗](./27-ai-org-transformation.md) —— AI 对搜索推荐的增强，人机协同提升推荐的准确性和可解释性
+- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业中的搜索推荐，AI 是产品差异化的核心而非辅助
+- [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 驱动的推荐系统自我优化，持续学习用户偏好变化
+- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉在推荐场景的表现，推荐系统的"幻觉"——推荐不合理的结果
 
 ---
 

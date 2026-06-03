@@ -265,12 +265,16 @@ graph TD
 - [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统中的链路追踪更加复杂，跨节点的可观测性挑战
 - [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户的可观测性隔离，每个租户只能看到自己的监控数据
 - [厨房实况直播](./20-realtime-eventdriven.md) —— 实时系统的可观测性：WebSocket 连接数、消息延迟、推送成功率
-- [一个厨房四个门面](./21-multiplatform-architecture.md) —— 多端性能监控，RUM（真实用户监控）覆盖不同客户端
+- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多端性能监控，RUM（真实用户监控）覆盖不同客户端
 - [懂你的菜单](./22-search-recommendation.md) —— 搜索推荐系统的效果监控：搜索准确率、推荐点击率、A/B 测试指标
 - [菜谱标准化之路](./23-tech-docs-knowledge.md) —— 监控文档和 Runbook 是知识工程的一部分，告警规则也需要标准化
 - [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移过程中的可观测性：数据一致性校验、迁移进度监控
 - [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台本身的可观测性：生成的页面性能、用户行为分析
 - [阿明出海记](./26-globalization.md) —— 多区域部署的监控挑战：跨区域延迟、时区差异对告警的影响
+- [厨房大换岗](./27-ai-org-transformation.md) —— AI 组织转型的度量体系，用可观测性数据验证转型效果
+- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业的可观测性建设，从一开始就建立数据驱动决策
+- [会自我进化的厨房](./29-self-evolving-company.md) —— 监控 Agent 是可观测性的组织级应用，从监控指标到监控决策
+- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉的监控和告警，可观测性是发现 AI 错误的第一道防线
 
 ---
 

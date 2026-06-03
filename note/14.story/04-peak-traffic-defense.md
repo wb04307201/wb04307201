@@ -272,12 +272,16 @@ graph TD
 - [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统中的限流和幂等性问题，与流量治理密切相关
 - [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户场景的流量隔离，防止一个租户的流量洪峰影响其他租户
 - [厨房实况直播](./20-realtime-eventdriven.md) —— 实时推送替代轮询，用更高效的方式应对突发流量
-- [一个厨房四个门面](./21-multiplatform-architecture.md) —— 多端接入需要考虑不同渠道的流量特征和限流策略
+- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多端接入需要考虑不同渠道的流量特征和限流策略
 - [懂你的菜单](./22-search-recommendation.md) —— 搜索推荐系统的降级策略，高峰期关闭个性化计算节省资源
 - [菜谱标准化之路](./23-tech-docs-knowledge.md) —— 流量治理的限流阈值和降级规则需要标准化文档记录
 - [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移要避开流量高峰，迁移过程中的流量切换策略
 - [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台的活动页面可能成为流量爆点，需要纳入流量治理体系
 - [阿明出海记](./26-globalization.md) —— 多区域部署的流量治理，不同时区的高峰时段不同，需要独立的限流策略
+- [厨房大换岗](./27-ai-org-transformation.md) —— AI 系统上线后的流量特征变化，人机协同对流量模型的影响
+- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业的流量准备，从 MVP 到规模化的流量治理演进
+- [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 自动化的流量预测和弹性伸缩决策
+- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉导致的异常流量风险，错误推荐可能引发突发流量
 
 ---
 

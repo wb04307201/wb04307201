@@ -1,8 +1,21 @@
 # 术语表
 
-> 「阿明餐厅」系列涉及的 130+ 核心技术术语速查。按主题分类，每条包括：术语名称、一句话解释、出处文章。
+> 「阿明餐厅」系列涉及的 160+ 核心技术术语速查。按主题分类，每条包括：术语名称、一句话解释、出处文章。
 
 ← [返回系列导读](./index.md)
+
+---
+
+## 业务建模 & 微服务
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **SOA (Service-Oriented Architecture)** | 面向服务的架构：按业务实体（订单、用户、菜品）拆分服务，每个服务提供 CRUD 接口 | [前传](./02-system-architecture-evolution.md) |
+| **DDD (Domain-Driven Design)** | 领域驱动设计：按业务能力（采购、切配、烹饪）而非业务实体拆分系统的建模方法 | [前传](./02-system-architecture-evolution.md) |
+| **限界上下文 (Bounded Context)** | DDD 核心概念：一个明确的业务边界，内部模型和规则自洽，与其他上下文通过明确接口交互 | [前传](./02-system-architecture-evolution.md) |
+| **聚合根 (Aggregate Root)** | DDD 中保证业务一致性的入口对象，所有对该聚合内实体的修改都必须通过聚合根 | [前传](./02-system-architecture-evolution.md) |
+| **领域事件 (Domain Event)** | 某个业务动作发生后发出的异步通知（如"牛肉面已出品"），驱动其他限界上下文响应 | [前传](./02-system-architecture-evolution.md) |
+| **微服务 (Microservices)** | 将每个限界上下文独立部署、独立数据、独立演进的服务架构，支持多团队多区域自治 | [前传](./02-system-architecture-evolution.md) |
 
 ---
 
@@ -316,6 +329,56 @@
 | **i18n (Internationalization)** | 国际化：在软件设计阶段预留多语言、多区域支持的能力（i 和 n 之间有 18 个字母） | [番外七](./26-globalization.md) |
 | **l10n (Localization)** | 本地化：将软件适配到特定语言和文化环境的具体实施过程（l 和 n 之间有 10 个字母） | [番外七](./26-globalization.md) |
 | **数据合规 (Data Compliance)** | 遵守各地区数据保护法规（GDPR 欧盟/PIPL 中国/APPI 日本），涉及数据跨境、存储、删除权等 | [番外七](./26-globalization.md) |
+
+---
+
+## AI 组织与管理
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **用人悖论 (Staffing Paradox)** | AI 越深度融入工作流的公司，反而越不裁员的现象。AI 改变岗位性质而非消灭岗位 | [续集三](./27-ai-org-transformation.md) |
+| **成本转移 (Cost Shift)** | 自动化后纯执行人力成本降低，但维护和判定成本飙升的现象。自动化的本质是成本结构重组 | [续集三](./27-ai-org-transformation.md) |
+| **岗位重塑 (Role Transformation)** | 员工从"纯执行者"转型为 AI 的"指挥官"、"审核员"和"维护者"的过程 | [续集三](./27-ai-org-transformation.md) |
+| **业务根基债 (Business Foundation Debt)** | 因裁掉一线业务专家导致 AI 微调失去业务根基、输出质量持续下降的隐性技术债 | [续集三](./27-ai-org-transformation.md) |
+| **人机协同 (Human-AI Collaboration)** | 人与 AI 各司其职、互相补位的协作模式，目标是打破生产力天花板而非减少人头 | [续集三](./27-ai-org-transformation.md) |
+
+---
+
+## AI 原生创业
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **PMF 验证 (PMF Validation)** | 用留存曲线、NPS、Cohort 分析等框架区分真正的产品市场契合度（PMF）与早期炒作 | [续集四](./28-ai-native-startup.md) |
+| **智能体工作流 (Agentic Workflow)** | 用 AI Agent 自动化运营流程（客服、库存、排班等），替代创始人的个人注意力瓶颈 | [续集四](./28-ai-native-startup.md) |
+| **创始人编排 (Founder as Orchestrator)** | 创始人从"什么都自己干"的个人贡献者，转变为"设计系统让系统干活"的编排者 | [续集四](./28-ai-native-startup.md) |
+| **AI 工具矩阵 (AI Tool Matrix)** | 按创业阶段匹配不同 AI 工具的方法：Chat 用于头脑风暴，Cowork 用于协同，Code 用于工程 | [续集四](./28-ai-native-startup.md) |
+| **AI 生成代码的技术债** | AI 快速生成的 MVP 代码虽然能跑，但缺乏架构审查和安全实践，在早期累积的隐性债务 | [续集四](./28-ai-native-startup.md) |
+
+---
+
+## 自我进化型组织
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **Agent Loop** | 递归自我进化的智能体循环：传感器→策略→工具→质量门→学习机制，替代传统层级管理 | [续集五](./29-self-evolving-company.md) |
+| **五层循环 (5-Layer Loop)** | Agent Loop 的五层架构：传感器层、策略层、工具层、质量门、学习机制 | [续集五](./29-self-evolving-company.md) |
+| **Burn Tokens, Not Headcount** | 用增加算力投入替代增加人头的组织增长策略，是 AI 原生组织的核心理念 | [续集五](./29-self-evolving-company.md) |
+| **AI 可读性 (AI Legibility)** | 让公司所有运作对 AI 透明可读的前提条件：记录一切通信、决策、流程 | [续集五](./29-self-evolving-company.md) |
+| **活手册 (Living Manual)** | 从历史运营数据中自动合成并持续更新的组织知识文档，替代传统静态手册 | [续集五](./29-self-evolving-company.md) |
+| **边界守护 (Boundary Guardian)** | 人类在 Agent 网络边缘的角色：处理新颖情况、伦理决策、高情感场景和信任建立 | [续集五](./29-self-evolving-company.md) |
+
+---
+
+## AI 信任与安全
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **AI 幻觉分类学 (Hallucination Taxonomy)** | 将 AI 幻觉分为三类：事实性（错误事实）、逻辑性（推理链错误）、创造性（编造不存在的东西） | [续集六](./30-ai-hallucination-safety.md) |
+| **信任校准 (Trust Calibration)** | 根据 AI 实际可靠性匹配信任度：避免过度信任（自动化偏见）和信任不足（自动化弃用） | [续集六](./30-ai-hallucination-safety.md) |
+| **三层护栏 (3-Layer Guardrail)** | AI 输出的纵深防御：自动检查（规则/数据库）→ 人工抽检（专家评审）→ 用户反馈（闭环改进） | [续集六](./30-ai-hallucination-safety.md) |
+| **Human-in-the-Loop (HITL)** | 在 AI 决策流程中保留人工审核环节，根据风险等级决定全审、抽检或免审 | [续集六](./30-ai-hallucination-safety.md) |
+| **风险路由 (Risk-Based Routing)** | 根据 AI 输出的"爆炸半径"（潜在影响范围）自动分配审核策略：高风险全审，低风险抽检 | [续集六](./30-ai-hallucination-safety.md) |
+| **AI 毕业制 (AI Graduation)** | AI 从"每步人审"的试用期，逐步升级到"有限信任"再到"自主运行"的信任演化机制 | [续集六](./30-ai-hallucination-safety.md) |
 
 ---
 

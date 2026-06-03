@@ -1,205 +1,136 @@
-# Java 核心概念：类、抽象类、接口、枚举、注解、记录类和异常
+# Java 核心概念
 
-## 1. 类 (Class)
+本目录涵盖 Java 语言的核心概念和基础知识，从基本语法到高级特性。
 
-类是Java的基本构建块，是创建对象的蓝图。
+## 目录
+
+### 语言基础
+
+| 主题 | 说明 |
+|------|------|
+| [基本语法](syntax/) | 注释、关键字、运算符、流程控制 |
+| [基本数据类型](data-types/) | 8种基本类型、包装类、自动装箱拆箱、精度问题 |
+| [变量](variable/) | 成员变量、局部变量、静态变量、final关键字 |
+| [方法](method/) | 方法类型、重载与重写、静态方法、可变参数、参数传递 |
+
+### 面向对象
+
+| 主题 | 说明 |
+|------|------|
+| [面向对象基础](oop/) | 三大特征（封装/继承/多态）、深浅拷贝、接口与抽象类、hashCode |
+| [Object 类](object/) | 所有类的根类、equals/hashCode/toString、Objects工具类 |
+| [内部类](inner-class/) | 成员内部类、静态内部类、局部内部类、匿名内部类 |
+
+### 类型系统
+
+| 主题 | 说明 |
+|------|------|
+| [枚举](enum/) | 枚举常量、带属性/方法的枚举、EnumSet/EnumMap、枚举单例 |
+| [泛型](generics/) | 类型擦除、通配符、PECS原则、多重边界 |
+| [注解](annotation/) | 元注解、自定义注解、运行时注解处理 |
+| [记录类 Record](record/) | 不可变数据载体、Compact Constructor、与Lombok对比 |
+
+### 核心机制
+
+| 主题 | 说明 |
+|------|------|
+| [String](string/) | 不可变性、String/StringBuffer/StringBuilder、字符串常量池 |
+| [异常](exception/) | 异常层次、Checked/Unchecked、try-with-resources、最佳实践 |
+| [反射](reflection/) | Class对象、动态操作类、字段和方法访问、应用场景 |
+| [序列化和反序列化](serialization-and-deserialization/) | Serializable、序列化框架对比（Jackson/Protobuf/Kryo等） |
+| [SPI](spi/) | Service Provider Interface、ServiceLoader、插件化扩展 |
+| [语法糖](syntactic-sugar/) | Lambda、Stream、Switch表达式、文本块、Pattern Matching |
+
+## 核心概念速查
+
+### 类 (Class)
+
+类是 Java 的基本构建块，是创建对象的蓝图。
 
 ```java
 public class Person {
-    // 字段
     private String name;
     private int age;
-    
-    // 构造方法
+
     public Person(String name, int age) {
         this.name = name;
         this.age = age;
     }
-    
-    // 方法
+
     public void introduce() {
-        System.out.println("Hello, my name is " + name + " and I'm " + age + " years old.");
+        System.out.println("我叫" + name + "，今年" + age + "岁。");
     }
 }
 ```
 
-## 2. 抽象类 (Abstract Class)
+### 抽象类 (Abstract Class)
 
-抽象类是不能被实例化的类，用于定义公共行为和抽象行为。
+不能被实例化的类，用于定义公共行为和抽象行为。
 
 ```java
 public abstract class Animal {
-    // 抽象方法
-    public abstract void makeSound();
-    
-    // 具体方法
-    public void eat() {
-        System.out.println("This animal eats food.");
-    }
-}
-
-public class Dog extends Animal {
-    @Override
-    public void makeSound() {
-        System.out.println("Bark!");
-    }
+    public abstract void makeSound();  // 抽象方法
+    public void eat() { System.out.println("eating..."); }  // 具体方法
 }
 ```
 
-## 3. 接口 (Interface)
+### 接口 (Interface)
 
-接口定义了一组方法签名（Java 8后也可以有默认实现），用于实现多继承和多态。
+定义方法签名的契约，Java 8+ 支持默认方法和静态方法。
 
 ```java
 public interface Vehicle {
-    // 抽象方法
     void start();
     void stop();
-    
-    // 默认方法 (Java 8+)
-    default void honk() {
-        System.out.println("Beep beep!");
-    }
-    
-    // 静态方法 (Java 8+)
-    static int getMaxSpeed() {
-        return 120;
-    }
+    default void honk() { System.out.println("Beep!"); }
 }
+```
 
-public class Car implements Vehicle {
+### 异常 (Exception)
+
+Java 使用异常处理错误和异常情况。try-with-resources 需要 Java 7+，`var` 需要 Java 10+。
+
+```java
+// MyResource 必须实现 AutoCloseable 接口才能在 try-with-resources 中使用
+class MyResource implements AutoCloseable {
     @Override
-    public void start() {
-        System.out.println("Car started");
+    public void close() throws Exception {
+        System.out.println("资源已关闭");
     }
-    
-    @Override
-    public void stop() {
-        System.out.println("Car stopped");
-    }
+}
+
+try (MyResource resource = new MyResource()) {
+    // 使用资源
+} catch (Exception e) {
+    // 处理异常
 }
 ```
 
-## 4. 枚举 (Enum)
+## 概念关系总览
 
-枚举用于定义一组固定的常量。
-
-```java
-public enum Day {
-    MONDAY("Monday"), 
-    TUESDAY("Tuesday"), 
-    WEDNESDAY("Wednesday"),
-    // ... 其他天数
-    
-    private final String displayName;
-    
-    Day(String displayName) {
-        this.displayName = displayName;
-    }
-    
-    public String getDisplayName() {
-        return displayName;
-    }
-}
-
-// 使用
-Day today = Day.MONDAY;
-System.out.println(today.getDisplayName());
+```text
+Java 核心概念
+│
+├── 类型系统
+│   ├── 基本数据类型 → 包装类（自动装箱拆箱）
+│   ├── 引用类型 → 类 / 接口 / 枚举 / 注解 / Record
+│   └── 泛型（编译期类型安全）
+│
+├── 面向对象
+│   ├── 封装 → 访问控制（public/private/protected）
+│   ├── 继承 → extends / implements
+│   └── 多态 → 方法重写 + 向上转型
+│
+├── 核心机制
+│   ├── 异常处理 → try-catch-finally / try-with-resources
+│   ├── 反射 → 运行时类型信息
+│   ├── 序列化 → 对象 ↔ 字节流
+│   └── SPI → 插件化扩展
+│
+└── 语法糖
+    ├── Lambda → 函数式编程
+    ├── Stream → 声明式数据处理
+    ├── Switch 表达式 → 增强分支逻辑
+    ├── 文本块 → 多行字符串字面量
+    └── Pattern Matching → 类型安全的模式匹配
 ```
-
-## 5. 注解 (Annotation)
-
-注解用于为代码提供元数据。
-
-```java
-// 定义注解
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
-public @interface MyAnnotation {
-    String value() default "default";
-    int priority() default 0;
-}
-
-// 使用注解
-public class MyClass {
-    @MyAnnotation(value = "test", priority = 1)
-    public void myMethod() {
-        // 方法实现
-    }
-}
-```
-
-## 6. 记录类 (Record, Java 14+)
-
-记录类是用于声明不可变数据的简洁方式。
-
-```java
-public record Point(int x, int y) {
-    // 自动生成:
-    // - 私有final字段
-    // - 公共构造方法
-    // - getter方法
-    // - equals(), hashCode(), toString()
-    
-    // 可以添加额外方法
-    public double distanceFromOrigin() {
-        return Math.sqrt(x * x + y * y);
-    }
-}
-
-// 使用
-Point p = new Point(3, 4);
-System.out.println(p.x()); // 3
-System.out.println(p.distanceFromOrigin()); // 5.0
-```
-
-## 7. 异常 (Exception)
-
-Java使用异常处理错误和异常情况。
-
-```java
-// 自定义异常
-public class InsufficientFundsException extends Exception {
-    public InsufficientFundsException(String message) {
-        super(message);
-    }
-}
-
-// 使用异常
-public class BankAccount {
-    private double balance;
-    
-    public void withdraw(double amount) throws InsufficientFundsException {
-        if (amount > balance) {
-            throw new InsufficientFundsException("Insufficient funds: " + balance);
-        }
-        balance -= amount;
-    }
-    
-    public static void main(String[] args) {
-        BankAccount account = new BankAccount();
-        account.balance = 100;
-        
-        try {
-            account.withdraw(150);
-        } catch (InsufficientFundsException e) {
-            System.err.println("Error: " + e.getMessage());
-        } finally {
-            System.out.println("Transaction completed");
-        }
-    }
-}
-```
-
-## 总结对比
-
-| 特性   | 类    | 抽象类  | 接口          | 枚举       | 注解             | 记录类        | 异常           |
-|------|------|------|-------------|----------|----------------|------------|--------------|
-| 实例化  | 可以   | 不可以  | 不可以         | 可以(常量)   | 不可以            | 不可以        | 可以           |
-| 继承   | 单继承  | 单继承  | 多实现         | 隐式继承Enum | 隐式继承Annotation | 隐式继承Record | 可继承Throwable |
-| 字段   | 可以   | 可以   | Java 9+可以   | 可以       | 可以             | 自动生成       | 可以           |
-| 方法实现 | 可以   | 可以   | Java 8+默认方法 | 可以       | 可以             | 自动生成       | 可以           |
-| 构造方法 | 可以   | 可以   | 不可以         | 私有构造方法   | 不可以            | 自动生成       | 可以           |
-| 主要用途 | 对象创建 | 抽象概念 | 行为规范        | 固定常量     | 元数据            | 不可变数据      | 错误处理         |
-
-这些Java核心概念共同构成了Java面向对象编程的基础，每个都有其特定的用途和优势。

@@ -604,12 +604,16 @@ graph TD
 - [十家店的烦恼](./18-distributed-puzzles.md) —— 消息队列解决了服务间通信，但引出了分布式一致性难题：CAP、分布式锁、最终一致性
 - [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户资源隔离需要消息队列做租户级别限流和配额管理
 - [厨房实况直播](./20-realtime-eventdriven.md) —— 消息队列是事件驱动架构的基础设施，事件流处理的底层依赖
-- [一个厨房四个门面](./21-multiplatform-architecture.md) —— BFF 层通过消息队列与后端服务异步通信，解耦多端适配
+- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— BFF 层通过消息队列与后端服务异步通信，解耦多端适配
 - [懂你的菜单](./22-search-recommendation.md) —— 推荐系统的用户行为日志通过 Kafka 实时采集，消息队列是数据管道
 - [菜谱标准化之路](./23-tech-docs-knowledge.md) —— 消息队列的架构决策（选型、Topic 设计）应该记录为 ADR
 - [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移中的双写方案本质上是一种异步消息传递模式
 - [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台的组件间通信可以通过事件总线（轻量消息队列）实现
 - [阿明出海记](./26-globalization.md) —— 跨区域数据同步需要 Kafka 跨区域复制，消息队列是多区域架构的纽带
+- [厨房大换岗](./27-ai-org-transformation.md) —— AI 转型中的消息传递模式变化，人机协同需要新的异步机制
+- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业中的异步架构选择，消息队列支撑 AI 系统扩展性
+- [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 中的异步消息传递，Agent 之间通过消息总线协同
+- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 输出的异步校验，消息队列可用于 AI 结果的延迟审核
 
 ---
 

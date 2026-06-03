@@ -311,12 +311,16 @@ graph TD
 - [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统中的跨团队数据一致性，需要明确的 ownership 和协作机制
 - [阿明的加盟帝国](./19-saas-multitenant.md) —— SaaS 产品的组织分工，平台团队 vs 租户定制团队如何划分
 - [厨房实况直播](./20-realtime-eventdriven.md) —— 实时响应能力推动 On-Call 文化和值班制度的建设
-- [一个厨房四个门面](./21-multiplatform-architecture.md) —— 多端团队的组织协作，独立开发 vs 平台共享的平衡
+- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多端团队的组织协作，独立开发 vs 平台共享的平衡
 - [懂你的菜单](./22-search-recommendation.md) —— 搜索推荐需要专门的数据团队支撑，是技术组织细分的产物
 - [菜谱标准化之路](./23-tech-docs-knowledge.md) —— 知识管理是组织能力的核心，技术文档是团队知识的载体
 - [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移的跨团队协作，DBA、开发和运维的协同演练
 - [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台改变了技术团队的角色，从"写代码"到"维护平台"
 - [阿明出海记](./26-globalization.md) —— 国际化团队的组织管理，跨文化、跨时区的团队协作挑战
+- [厨房大换岗](./27-ai-org-transformation.md) —— AI 时代的团队管理挑战，岗位重塑是康威定律在 AI 时代的新体现
+- [阿明的二次创业](./28-ai-native-startup.md) —— 创始人角色进化，从 CEO 到编排者的管理思维升级
+- [会自我进化的厨房](./29-self-evolving-company.md) —— 自进化组织是团队管理的终极形态，Agent Loop 替代层级管理
+- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉的团队管理视角，如何建立 AI 输出的审核文化
 
 ---
 

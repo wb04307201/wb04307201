@@ -552,6 +552,10 @@ graph TD
 - [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移实战，多端共享数据库的迁移策略和零停机方案
 - [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台选型，多端场景下低代码能否替代定制化开发
 - [阿明出海记](./26-globalization.md) —— 国际化与全球化，多端架构在多语言多时区多币种场景下的挑战
+- [厨房大换岗](./27-ai-org-transformation.md) —— AI 转型对多端的影响，不同端的人机协同模式不同
+- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业的多端覆盖策略，AI 辅助快速适配多个平台
+- [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的跨端协作，Agent 需要统一处理多端输入输出
+- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉在不同端的表现，多端场景的幻觉检测和展示策略差异化
 
 ---
 

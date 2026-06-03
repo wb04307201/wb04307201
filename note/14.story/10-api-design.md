@@ -306,12 +306,16 @@ graph TD
 - [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统中的 API 幂等性设计，跨服务调用的一致性保障
 - [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户 API 设计，如何通过 API 实现租户隔离和定制化
 - [厨房实况直播](./20-realtime-eventdriven.md) —— 实时通信的 API 设计，WebSocket 和 SSE 是实时 API 的两种形态
-- [一个厨房四个门面](./21-multiplatform-architecture.md) —— BFF（Backend For Frontend）是 API 适配多端的架构模式
+- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— BFF（Backend For Frontend）是 API 适配多端的架构模式
 - [懂你的菜单](./22-search-recommendation.md) —— 搜索推荐系统的 API 设计：查询接口、结果排序、分页策略
 - [菜谱标准化之路](./23-tech-docs-knowledge.md) —— API 文档是技术文档的核心部分，OpenAPI 规范是 API 契约的一部分
 - [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移中的 API 兼容，Schema 变更时 API 必须保持向后兼容
 - [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台的 API 集成，可视化数据源绑定背后的接口设计
 - [阿明出海记](./26-globalization.md) —— 国际化 API 设计，多语言响应、货币转换、时区处理的接口规范
+- [厨房大换岗](./27-ai-org-transformation.md) —— AI 转型中 API 角色的变化，API 是人机协同的标准化接口
+- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业的 API 设计，AI 工具链的 API 是创业的基础设施
+- [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的工具层 API，Agent 通过确定性 API 与世界交互
+- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉对 API 响应的影响，API 设计需要预留 AI 错误的处理空间
 
 ---
 

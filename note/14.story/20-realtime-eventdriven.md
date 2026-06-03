@@ -592,12 +592,16 @@ graph TD
 - [传菜窗口的智慧](./17-async-messaging.md) —— 消息队列是事件驱动的基础，从异步消息到事件溯源的进阶
 - [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统的一致性问题，事件溯源和最终一致性的关系
 - [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户场景下的实时系统，需要按租户隔离 WebSocket 连接和事件流
-- [一个厨房四个门面](./21-multiplatform-architecture.md) —— 多平台架构中实时通信的统一事件总线设计
+- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多平台架构中实时通信的统一事件总线设计
 - [懂你的菜单](./22-search-recommendation.md) —— 实时事件流驱动推荐系统的实时更新
 - [菜谱标准化之路](./23-tech-docs-knowledge.md) —— 事件驱动架构的技术文档，帮助团队理解 EDA 的设计范式
 - [仓库搬家不停业](./24-database-migration.md) —— CDC 在数据库迁移中的应用，实现零停机的数据同步
 - [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台如何支持事件驱动的编排和工作流
 - [阿明出海记](./26-globalization.md) —— 全球化场景下的实时系统挑战，跨地域的事件传播延迟
+- [厨房大换岗](./27-ai-org-transformation.md) —— AI 转型需要实时数据支撑决策，实时反馈加速组织变革
+- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业的实时需求，实时响应是 AI 产品的核心竞争力
+- [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的传感器层和学习层依赖实时数据流
+- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉的实时检测，事件驱动架构用于 AI 输出的即时校验
 
 ---
 

@@ -706,12 +706,16 @@ graph TD
 - [传菜窗口的智慧](./17-async-messaging.md) —— 消息队列是分布式系统的"神经系统"，本篇的消息可靠性、幂等消费与本章紧密关联
 - [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户架构中的租户隔离和数据同步，是分布式一致性在 SaaS 场景的应用
 - [厨房实况直播](./20-realtime-eventdriven.md) —— 事件溯源（Event Sourcing）是分布式系统中"最终一致"的典型实现模式
-- [一个厨房四个门面](./21-multiplatform-architecture.md) —— 多端架构的离线同步和冲突解决，与本章的数据同步策略相通
+- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多端架构的离线同步和冲突解决，与本章的数据同步策略相通
 - [懂你的菜单](./22-search-recommendation.md) —— 推荐系统的特征数据需要跨区域同步，涉及最终一致性和数据冲突
 - [菜谱标准化之路](./23-tech-docs-knowledge.md) —— 分布式系统的设计决策（CAP 选型、锁方案）应该记录为 ADR
 - [仓库搬家不停业](./24-database-migration.md) —— 分库分表是分布式系统在数据层的落地，本章的分布式 ID 是分片的前提
 - [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台在多区域部署时同样面临分布式一致性问题
 - [阿明出海记](./26-globalization.md) —— 多区域部署是分布式系统在地理维度的延伸，Active-Active 和跨区域同步
+- [厨房大换岗](./27-ai-org-transformation.md) —— AI 转型中的分布式协调，多 Agent 协同面临分布式一致性挑战
+- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业的分布式设计，从一开始就考虑多 Agent 的协调问题
+- [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的分布式部署，多个 Agent 循环如何在全局保持一致
+- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉在分布式环境中放大，一个 Agent 的错误可能级联传播
 
 ---
 

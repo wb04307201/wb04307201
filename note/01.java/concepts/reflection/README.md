@@ -9,21 +9,35 @@
 当我们编写一个类并进行编译时，编译器会将其转换为存储在`.class`文件中的字节码。在类加载过程中，JVM 使用`ClassLoader`读取`.class`文件，将字节码加载到内存中，并根据这些信息创建相应的`Class`对象。由于每个类在 JVM 中只加载一次，所以每个类都对应一个唯一的`Class`对象。
 
 ```java
-public class User extends People {
-    public String name;
-    private int age;
+// People.java
+package cn.wubo.entity;
 
-    private static int staticFiled = 10;
+public class People {
+    public String publicField;
+    private String privateField;
+}
+```
+
+```java
+// Hero.java
+package cn.wubo.entity;
+
+public class Hero extends People {
+    public String name;
+    private String realName;
+
+    private static int staticField = 10;
     private final String sex;
-    protected String protectedFiled;
+    protected String protectedField;
 
     static {
-        System.out.println("静态方法执行");
+        System.out.println("静态代码块执行");
     }
 
-    public User(String name, String sex) {
+    public Hero(String name, String realName) {
         this.name = name;
-        this.sex = sex;
+        this.realName = realName;
+        this.sex = "男";
     }
 
     private void privateMethod() {
@@ -34,17 +48,12 @@ public class User extends People {
         System.out.println("我是公共方法");
     }
 }
-
-public class People {
-    public String publicFiled;
-    private String privateFiled;
-}
 ```
 
-## 获取Class对象的三种方式
-### 第一种方法
+## 获取 Class 对象的三种方式
+### 第一种方式
 
-通过类名使用`.class`获取类对象。这是在编译时完成的，所以明确指定了类型`User`，不会导致任何错误。使用这种方法获取对象不会触发类初始化；只有在访问类的静态成员或实例时才会进行初始化。
+通过类名使用`.class`获取类对象。这是在编译时完成的，所以明确指定了类型`Hero`，不会导致任何错误。使用这种方法获取对象不会触发类初始化；只有在访问类的静态成员或实例时才会进行初始化。
 
 ```java
 Class<Hero> heroClass = Hero.class;
@@ -55,9 +64,9 @@ Class<Hero> heroClass = Hero.class;
 Hero heroInstance = heroClass.getDeclaredConstructor(String.class, String.class).newInstance("蝙蝠侠", "布鲁斯韦恩");
 ```
 
-### 第二种方法
+### 第二种方式
 
-通过对象的`getClass()`方法获取类对象。这种方法适用于从已实例化的类对象中获取类对象。请注意，类型不`Hero`，而是通配符`?`，因为`Class`对象是从`Hero`的实例中获取的，实例的具体类型只能在运行时确定，而不是在编译时。
+通过对象的`getClass()`方法获取类对象。这种方法适用于从已实例化的类对象中获取类对象。请注意，类型不是`Hero`，而是通配符`?`，因为`Class`对象是从`Hero`的实例中获取的，实例的具体类型只能在运行时确定，而不是在编译时。
 
 ```java
 Hero hero = new Hero("蝙蝠侠", "布鲁斯韦恩");
@@ -70,7 +79,7 @@ Constructor<?> constructor = heroClass.getConstructor(String.class, String.class
 Hero heroInstance = (Hero) constructor.newInstance("蝙蝠侠", "布鲁斯韦恩");
 ```
 
-### 第二三方法
+### 第三种方式
 
 使用静态方法`Class.forName()`通过全路径获取类对象。由于类型只能在运行时知道，所以类型是通配符`?`。通过这种方法获取类对象将立即触发类初始化。
 
@@ -90,7 +99,7 @@ Hero heroInstance = (Hero) constructor.newInstance("蝙蝠侠", "布鲁斯韦恩
 要获取所有公共字段，包括从父类继承的字段，使用`getFields()`：
 
 ```java
-Field[] fields = hero.getFields();
+Field[] fields = hero.getClass().getFields();
 for (Field field : fields) {
     System.out.println(field);
 }
@@ -106,8 +115,8 @@ public java.lang.String cn.wubo.entity.People.publicField
 
 要获取类中所有声明的字段，无论其访问级别如何，使用`getDeclaredFields()`。这不包括从超类继承的字段：
 
-```shell
-Field[] fields = hero.getDeclaredFields();
+```java
+Field[] fields = hero.getClass().getDeclaredFields();
 for (Field field : fields) {
     System.out.println(field);
 }
@@ -117,7 +126,9 @@ for (Field field : fields) {
 ```shell
 public java.lang.String cn.wubo.entity.Hero.name
 private java.lang.String cn.wubo.entity.Hero.realName
-protected java.lang.String cn.wubo.entity.People.protectedField
+private static int cn.wubo.entity.Hero.staticField
+private final java.lang.String cn.wubo.entity.Hero.sex
+protected java.lang.String cn.wubo.entity.Hero.protectedField
 ```
 
 ### 获取超类中的字段
@@ -125,7 +136,7 @@ protected java.lang.String cn.wubo.entity.People.protectedField
 要获取超类中的字段，使用`getSuperclass()`：
 
 ```java
-Field[] fields = hero.getSuperclass().getDeclaredFields();
+Field[] fields = hero.getClass().getSuperclass().getDeclaredFields();
 for (Field field : fields) {
     System.out.println(field);
 }
@@ -147,9 +158,9 @@ private java.lang.String cn.wubo.entity.People.privateField
 
 ```java
 try {
-    Field nonExistentField = hero.getDeclaredField("nonExistentField");
+    Field nonExistentField = hero.getClass().getDeclaredField("nonExistentField");
 } catch (NoSuchFieldException e) {
-    e.printStackTrace();
+    System.err.println("字段不存在: " + e.getMessage());
 }
 ```
 
@@ -164,17 +175,20 @@ java.lang.NoSuchFieldException: nonExistentField
 
 ```java
 Class<?> heroClass = Class.forName("cn.wubo.entity.Hero");
-Field staticField = userClass.getDeclaredField("staticField");
+Field staticField = heroClass.getDeclaredField("staticField");
 staticField.setAccessible(true);
 System.out.println(staticField.get(null));
 ```
 
-如果字段是final的，仍然可以修改它：
+如果字段是 final 的，可以通过反射修改它，但需注意版本差异：
+
+> **注意**：Java 12（JDK-8210522）起，通过修改 `Field.modifiers` 来绕过 final 限制的经典技巧已失效。Java 9+ 的模块系统（JPMS）限制了跨模块的深度反射访问，可通过 `--add-opens` 配置解除。对于应用类的 final 字段，直接使用 `setAccessible(true)` + `set()` 在当前版本中仍然可行，但应视为不推荐的做法。
 ```java
-Field field = userClass.getDeclaredField("sex");
+Field field = heroClass.getDeclaredField("sex");
 field.setAccessible(true);
-field.set(obj, "女");
-System.out.println(field.get(obj));
+Hero hero = heroClass.getDeclaredConstructor(String.class, String.class).newInstance("蝙蝠侠", "布鲁斯韦恩");
+field.set(hero, "女");
+System.out.println(field.get(hero));
 ```
 
 输出：
@@ -188,6 +202,23 @@ System.out.println(field.get(obj));
 - getDeclaredMethods()检索类中所有声明的方法，无论访问级别如何。
 - getMethod(String name, Class<?>... parameterTypes)按名称和参数类型检索特定公共方法。
 - getDeclaredMethod(String name, Class<?>... parameterTypes)按名称和参数类型检索特定声明的方法，无论访问级别如何。
+
+获取到`Method`对象后，通过`invoke()`方法实际调用：
+
+```java
+// 调用公共方法
+Method publicMethod = heroClass.getMethod("publicMethod");
+publicMethod.invoke(hero);  // 输出: 我是公共方法
+```
+
+```java
+// 调用私有方法（需要先 setAccessible）
+Method privateMethod = heroClass.getDeclaredMethod("privateMethod");
+privateMethod.setAccessible(true);
+privateMethod.invoke(hero);  // 输出: 我是私有方法
+```
+
+> `invoke()`的第一个参数是目标对象实例，如果方法是静态的则传`null`；后续参数是方法所需的实参。
 
 ## 关键应用场景
 - **框架与库**：Spring的依赖注入（通过反射解析Bean）、Hibernate的ORM映射、JUnit的动态测试方法加载。
@@ -210,6 +241,20 @@ System.out.println(field.get(obj));
 ## 最佳实践与注意事项
 - **性能优化**：对高频反射操作（如循环中调用方法），可缓存`Method`/`Field`对象，避免重复解析。
 - **异常处理**：反射方法可能抛出`NoSuchMethodException`、`IllegalAccessException`等，需妥善处理。
-- **替代方案**：优先考虑接口、抽象类、工厂模式等设计模式；在性能敏感场景（如高频交易）避免反射。
+- **高性能替代方案**：
+    - **MethodHandle**（`java.lang.invoke.MethodHandle`，Java 7+）：作为`Method.invoke()`的高性能替代，调用开销更接近直接方法调用。适合需要在循环中高频反射调用方法的场景。
+      ```java
+      MethodHandles.Lookup lookup = MethodHandles.lookup();
+      MethodHandle mh = lookup.findVirtual(Hero.class, "publicMethod", MethodType.methodType(void.class));
+      mh.invoke(hero);
+      ```
+    - **VarHandle**（Java 9+）：作为字段反射访问的类型安全替代，提供对字段的读/写/CAS 等操作，性能优于`Field.get()`/`Field.set()`。
+      ```java
+      VarHandle vh = MethodHandles.privateLookupIn(Hero.class, MethodHandles.lookup())
+              .findVarHandle(Hero.class, "realName", String.class);
+      vh.set(hero, "新名字");
+      ```
+    - **性能对比**（粗略量级）：直接调用 ≈ MethodHandle > 缓存 Method 的 invoke() >> 未缓存的反射调用。在性能敏感场景（如高频交易、序列化框架）中优先考虑 MethodHandle/VarHandle。
+- **设计替代**：优先考虑接口、抽象类、工厂模式等设计模式；在性能敏感场景（如高频交易）避免反射。
 - **兼容性**：Java 9+引入模块系统（JPMS），反射访问需在`module-info.java`中声明`opens`权限。
 - **工具支持**：使用Lombok、MapStruct等工具减少样板代码，减少手动反射需求。

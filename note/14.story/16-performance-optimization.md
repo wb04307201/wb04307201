@@ -256,12 +256,16 @@ graph TD
 - [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统中的一致性开销，共识协议带来的性能损耗与权衡
 - [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户系统的性能隔离，防止"吵闹邻居"拖慢其他租户
 - [厨房实况直播](./20-realtime-eventdriven.md) —— 实时推送系统的性能优化，降低消息延迟到毫秒级
-- [一个厨房四个门面](./21-multiplatform-architecture.md) —— 多端性能优化，不同设备的计算能力不同需要适配不同的优化策略
+- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多端性能优化，不同设备的计算能力不同需要适配不同的优化策略
 - [懂你的菜单](./22-search-recommendation.md) —— 搜索推荐系统的算法性能优化，索引优化、缓存策略、结果预计算
 - [菜谱标准化之路](./23-tech-docs-knowledge.md) —— 性能优化的知识共享，避免不同团队重复踩同一个性能坑
 - [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移中的分库分表是数据库层面的性能优化手段
 - [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台的性能上限受限于运行时架构，与手写代码的性能对比
 - [阿明出海记](./26-globalization.md) —— 全球化部署的性能挑战，CDN 和边缘计算降低跨区域延迟
+- [厨房大换岗](./27-ai-org-transformation.md) —— AI 转型后的性能新指标，人机协同的响应效率成为新度量
+- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生产品的性能挑战，AI 推理延迟对用户体验的影响
+- [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的性能优化，Agent 循环的效率决定自进化速度
+- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉检测的性能开销，三层护栏的延迟与准确性权衡
 
 ---
 

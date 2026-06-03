@@ -1,131 +1,365 @@
 # 序列化和反序列化
 
 - **序列化**：将数据结构或对象转换成二进制字节流的过程
-- **反序列化**：将在序列化过程中所生成的二进制字节流转换成数据结构或者对象的过程
-
-## 序列化的基本概念
-
-序列化是指将一个对象转换为二进制数据流，以便进行网络传输、磁盘存储等操作。Java提供了内置的序列化机制，通过实现Serializable接口来标记一个类可以被序列化。在序列化过程中，Java会将对象的状态（包括对象的字段值）以及对象的类信息写入到输出流中。
-- **Serializable接口**：Java提供的标记接口，用于标识一个类可以被序列化。
-- **serialVersionUID**：用于识别版本之间的兼容性，防止序列化和反序列化的版本不一致导致出错。
-- **transient关键字**：标记一个字段不需要进行序列化。
+- **反序列化**：将序列化过程中生成的二进制字节流还原成数据结构或对象的过程
 
 ## 为什么需要序列化和反序列化
 
-![img_7.png](img_7.png)
+```mermaid
+graph LR
+    Obj[Object] --> Bytes[Bytes]
+    Bytes --> DB[(DB)]
+    Bytes --> File[📄 File]
+    Bytes --> Mem[💾 Memory]
+    Bytes --> Cloud[☁️ Cloud]
 
-序列化和反序列化在软件开发中扮演着至关重要的角色，它们主要解决以下几个核心问题：
-1. **数据持久化**：序列化能够将内存中的对象状态转换为可存储或可传输的格式（如文件、数据库记录或网络数据包）。这样，即使程序终止运行或计算机关闭，对象的状态也能被保存下来，并在需要时通过反序列化恢复。这对于实现数据的持久化存储至关重要。
-2. **远程通信**：在分布式系统中，不同进程或机器之间需要交换数据。序列化能够将对象转换为字节流，从而可以通过网络进行传输。接收方则通过反序列化将这些字节流还原为对象，实现数据的远程通信。
-3. **对象状态保存与恢复**：在某些情况下，我们可能需要保存对象的当前状态以便稍后恢复。例如，在实现撤销（undo）或重做（redo）功能时，可以通过序列化保存操作前的对象状态，并在需要时通过反序列化恢复这些状态。
-4. **数据交换**：不同的软件系统和应用程序可能需要交换数据。通过序列化，我们可以将数据转换为一种通用的、与平台无关的格式（如JSON、XML等），从而实现不同系统之间的数据交换。
-5. **内存管理优化**：在某些情况下，通过序列化将对象写入磁盘或其他存储介质，并在需要时再通过反序列化加载到内存中，可以有效地管理内存使用。例如，在处理大量数据时，可以将不常用的数据序列化后存储起来，以释放内存空间供其他任务使用。
-6. **安全性与隐私保护**：序列化还可以用于数据加密和隐私保护。通过将敏感数据序列化为加密格式，并在传输或存储过程中保持加密状态，可以确保数据的安全性。接收方在解密数据后再进行反序列化，从而恢复原始对象状态。
+    DB --> Bytes2[Bytes]
+    File --> Bytes2
+    Mem --> Bytes2
+    Cloud --> Bytes2
+    Bytes2 --> Obj2[Object]
 
-## 序列化的实现方法
+    classDef obj fill:#e3d2ff
+    classDef bytes fill:#2c3e50,color:#fff
+    classDef storage fill:#d4edda
 
-要实现序列化，首先需要定义一个需要序列化的类，并实现Serializable接口。然后，创建一个ObjectOutputStream对象，并将需要序列化的对象写入到输出流中（这里使用的是Java内置的序列化机制）。
+    class Obj,Obj2 obj
+    class Bytes,Bytes2 bytes
+    class DB,File,Mem,Cloud storage
+```
+
+1. **数据持久化**：将内存中的对象状态保存到文件、数据库等存储介质
+2. **远程通信**：在分布式系统中通过网络传输对象（如 RPC 调用）
+3. **对象状态保存与恢复**：实现撤销/重做功能、会话恢复等
+4. **数据交换**：不同系统之间交换数据（如 JSON、XML 格式）
+5. **内存管理优化**：将不常用数据序列化到磁盘，释放内存空间
+
+## 序列化的基本概念
+
+Java 提供了内置的序列化机制，核心要素：
+
+- **`Serializable`接口**：标记接口，标识一个类可以被序列化
+- **`Externalizable`接口**：继承自 `Serializable`，提供 `writeExternal()` 和 `readExternal()` 方法，允许完全自定义序列化逻辑，性能通常优于默认序列化机制
+- **`serialVersionUID`**：用于版本兼容性校验，防止序列化/反序列化版本不一致
+- **`transient`关键字**：标记不需要序列化的字段
+
+## 序列化的实现
+
 ```java
+// User.java
+import java.io.Serializable;
+
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
     private String name;
     private int age;
-    // getters and setters
-}
+    private transient String password;  // 不参与序列化
 
-// 序列化对象
-User user = new User("Tom", 18);
-try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("user.ser"))) {
-    oos.writeObject(user);
-} catch (IOException e) {
-    e.printStackTrace();
+    public User(String name, int age, String password) {
+        this.name = name;
+        this.age = age;
+        this.password = password;
+    }
+
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public int getAge() { return age; }
+    public void setAge(int age) { this.age = age; }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+
+    @Override
+    public String toString() {
+        return "User{name='" + name + "', age=" + age + ", password='" + password + "'}";
+    }
 }
 ```
 
-## 反序列化的基本概念
-
-反序列化是指将序列化后的二进制数据流还原成原来的对象，重新获取对象的引用。在反序列化过程中，Java会根据字节流中的对象状态及描述信息，通过反序列化重建对象。要实现反序列化，需要创建一个ObjectInputStream对象，并从输入流中读取序列化后的对象。（这里使用的是Java内置的反序列化机制）。
 ```java
-// 反序列化对象
-try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("user.ser"))) {
-    User deserializedUser = (User) ois.readObject();
-    System.out.println(deserializedUser);
-} catch (IOException | ClassNotFoundException e) {
+// SerializationDemo.java
+import java.io.ObjectOutputStream;
+import java.io.ObjectInputStream;
+import java.io.FileOutputStream;
+import java.io.FileInputStream;
+
+public class SerializationDemo {
+    public static void main(String[] args) {
+        // 序列化
+        User user = new User("Tom", 18, "secret123");
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("user.ser"))) {
+            oos.writeObject(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // 反序列化
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("user.ser"))) {
+            User deserializedUser = (User) ois.readObject();
+            System.out.println(deserializedUser);
+            // 验证 transient 字段：输出 "secret123" 说明序列化前有值，输出 "null" 说明 transient 生效
+            System.out.println("password (transient): " + deserializedUser.getPassword()); // 输出 null
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+## 应用场景
+
+- **对象持久化**：文件存储、Redis 缓存、数据库存储
+- **网络传输**：RPC 调用、消息队列、HTTP API
+- **分布式计算**：不同节点之间传递对象
+
+### 序列化协议在 TCP/IP 模型中的位置
+
+```text
+┌─────────────────────────────────────────────────────────┐
+│                OSI 七层协议          TCP/IP 四层协议      │
+├─────────────────────────────────────────────────────────┤
+│   7 应用层         ┐              应用层  ┌──────────────
+│   6 表示层（序列化）│ ◄── 对应 ─│（Telnet/FTP/SMTP/HTTP）│
+│   5 会话层         ┘                     └──────────────┘
+│   4 运输层                       运输层（TCP/UDP）        │
+│   3 网络层                       网际层（IP）             │
+│   2 数据链路层                    网络接口层              │
+│   1 物理层                       网络接口层              │
+└─────────────────────────────────────────────────────────┘
+```
+
+序列化协议属于 TCP/IP 协议**应用层**的一部分，对应 OSI 七层模型中的**表示层**（负责数据的编码/解码）。
+
+## 注意事项
+
+1. **版本兼容性**：类结构变更后，旧的序列化数据可能无法正确反序列化。务必维护好`serialVersionUID`
+2. **性能影响**：序列化和反序列化可能消耗大量资源，大数据场景需谨慎
+3. **安全风险**：反序列化可能执行恶意代码，需验证数据来源和完整性。Java 9 引入了 **ObjectInputFilter**（JEP 290）作为防御反序列化攻击的核心机制，可设置白名单/黑名单限制可反序列化的类：
+   ```java
+   // 方式一：代码中设置 ObjectInputFilter
+   ObjectInputFilter filter = ObjectInputFilter.Config.createFilter(
+       "com.example.*;java.base/*;!*"); // 白名单 + 黑名单
+   try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data.ser"))) {
+       ois.setObjectInputFilter(filter);
+       Object obj = ois.readObject(); // 只允许指定包下的类被反序列化
+   }
+
+   // 方式二：JVM 启动参数全局配置
+   // java -Djdk.serialFilter="com.example.*;java.base/*;!*" MyApp
+   ```
+4. **字段过滤**：使用`transient`标记敏感或无需持久化的字段
+5. **循环引用**：对象之间的循环引用可能导致序列化失败或数据膨胀
+6. **readResolve() 与 writeReplace()**：
+   - `readResolve()`：在反序列化完成后被调用，可替换反序列化得到的对象。常用于**单例模式**，确保反序列化后仍返回同一实例：
+     ```java
+     public class Singleton implements Serializable {
+         private static final Singleton INSTANCE = new Singleton();
+         private Singleton() {}
+         // 保证反序列化后仍为同一实例
+         private Object readResolve() { return INSTANCE; }
+     }
+     ```
+   - `writeReplace()`：在序列化前被调用，可替换待序列化的对象。常用于**序列化代理模式**（Effective Java 推荐），通过一个内部代理类来安全地完成序列化，避免真实对象直接暴露序列化细节
+
+### 现代 Java 与序列化
+
+Java 16 正式引入的 **Record 类型**（Java 14/15 为预览特性，JEP 359/384/395）天然支持序列化，但其行为与普通类有所不同：
+
+- Record 和普通类一样**必须实现 `Serializable` 接口**才能被序列化。实现 `Serializable` 后，所有组件（components）会被自动序列化，无需手动编写序列化逻辑
+- Record 的序列化/反序列化由 **JVM 运行时**自动处理。如果在 Record 中定义 `writeObject`/`readObject` 等方法会被**忽略**，序列化行为仅基于组件和规范构造方法（canonical constructor）
+- 反序列化时通过**规范构造方法**重建对象，确保不可变性得到保持
+- 这一设计避免了传统 Java 序列化中常见的安全风险和自定义逻辑带来的复杂性
+
+## 序列化框架对比
+
+### 主流框架速查表
+
+| 框架 | 格式 | 跨语言 | 性能 | 数据大小 | Schema | 主要场景 |
+|------|------|--------|------|---------|--------|---------|
+| **Jackson** | JSON | ✅ | 中 | 大 | 不需要 | Web API、RESTful 服务 |
+| **Fastjson2** | JSON | ❌ | 高 | 大 | 不需要 | 国内 Web 开发 |
+| **Gson** | JSON | ✅ | 中 | 大 | 不需要 | 简单 JSON 处理 |
+| **Protobuf** | 二进制 | ✅ | 极高 | 极小 | 需要 | 微服务、gRPC |
+| **Kryo** | 二进制 | ❌ | 极高 | 小 | 不需要 | 高性能 Java 内部通信 |
+| **Hessian** | 二进制 | ✅ | 高 | 小 | 不需要 | Dubbo RPC、跨语言 |
+| **Thrift** | 二进制 | ✅ | 极高 | 小 | 需要 | 跨语言 RPC |
+| **Avro** | 二进制 | ✅ | 高 | 小 | 可选 | 大数据（Kafka/Hadoop） |
+| **Java 原生** | 二进制 | ❌ | 低 | 大 | 不需要 | 简单 Java 内部使用 |
+
+### 主流 JSON 框架详解
+
+#### Jackson
+
+最流行的 Java JSON 库，Spring Boot 默认使用：
+
+```java
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import java.text.SimpleDateFormat;
+
+// User user = new User("Tom", 18, "secret123"); // 从上下文获取
+
+ObjectMapper mapper = new ObjectMapper();
+try {
+    // 序列化
+    String json = mapper.writeValueAsString(user);
+
+    // 反序列化
+    User deserializedUser = mapper.readValue(json, User.class);
+
+    // 高级用法
+    mapper.enable(SerializationFeature.INDENT_OUTPUT);  // 格式化输出
+    mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd"));  // 日期格式
+} catch (Exception e) {
     e.printStackTrace();
 }
 ```
 
-## 序列化和反序列化的应用场景
+#### Fastjson2
 
-- **对象持久化**：将对象序列化后保存到磁盘文件中，以便在需要时重新加载。
-  - 将对象存储到文件之前需要进行序列化，将对象从文件中读取出来需要进行反序列化；
-  - 将对象存储到数据库(如 Redis)之前需要用到序列化，将对象从缓存数据库中读取出来需要反序列化；
-  - 将对象存储到内存之前需要进行序列化，从内存中读取出来之后需要进行反序列化。
-- **网络传输**：将对象序列化后通过网络传输，接收端再反序列化恢复为对象。
-  - 对象在进行网络传输(比如远程方法调用 RPC 的时候)之前需要先被序列化，接收到序列化的对象之后需要再进行反序列化；
-  - 将对象存储到内存之前需要进行序列化，从内存中读取出来之后需要进行反序列化。
-- **分布式计算**：在分布式系统中，通过序列化和反序列化实现对象在不同节点之间的传递。
+阿里巴巴开源，国内使用广泛，性能优秀：
 
-### 列化协议在 TCP/IP 4 层模型的应用
+```java
+import com.alibaba.fastjson2.JSON;
 
-![img_8.png](img_8.png)
+// User user = new User("Tom", 18, "secret123"); // 从上下文获取
 
-OSI 七层协议模型中，表示层是对应用层的用户数据进行处理转换为二进制流或者将二进制流转换成应用层的用户数据。  
-与序列化和反序列化相符。  
-OSI 七层协议模型中的应用层、表示层和会话层对应的都是 TCP/IP 四层模型中的应用层  
-序列化协议属于 TCP/IP 协议应用层的一部分
+// 序列化
+String json = JSON.toJSONString(user);
 
-## 序列化和反序列化的注意事项
+// 反序列化
+User deserializedUser = JSON.parseObject(json, User.class);
+```
 
-- **版本兼容性**：如果类结构发生改变，旧的序列化数据可能无法正确反序列化。因此，建议使用serialVersionUID来确保版本的一致性。
-- **性能影响**：序列化和反序列化可能消耗大量资源，特别是在处理大数据时。因此，在性能敏感的场景中需要谨慎使用。
-- **安全问题**：反序列化时可能会执行恶意代码，导致安全漏洞。因此，在反序列化之前需要验证序列化数据的来源和完整性。
-- **字段过滤**：对于不想序列化的字段，可以使用transient关键字进行标记。
+#### Gson
 
-## 序列化和反序列化框架
+Google 开发，API 简洁：
 
-在Java中，有许多优秀的序列化和反序列化框架可供选择。以下是一些主要的Java序列化和反序列化框架：
-1. Hessian
-   - 优点：Hessian是一个轻量级的二进制序列化协议，它允许对象在网络中传输时保持其Java类型信息。Hessian序列化后的数据相对较小，且序列化速度较快。
-   - 使用场景：适用于需要高效传输和存储Java对象的场景。
-2. Kryo
-   - 优点：Kryo是一个快速的序列化框架，它提供了高效的读写操作，并且支持自定义序列化器和反序列化器。Kryo序列化后的数据通常比Java内置的序列化机制小得多。
-   - 使用场景：适用于需要高性能序列化的场景，如实时通信、分布式系统等。
-3. Protostuff
-   - 优点：Protostuff是一个基于Schema的序列化框架，它使用了一种高效的二进制格式来存储和传输Java对象。Protostuff提供了比Java内置序列化机制更高的性能和更小的序列化数据。
-   - 使用场景：适用于需要高性能和低存储开销的场景，如大数据处理、云计算等。
-4. Protobuf（Protocol Buffers）
-   - 优点：Protobuf是Google开发的一种语言中立、平台中立、可扩展的序列化结构数据的方法。它类似于XML，但更小、更快、更简单。Protobuf定义了一种紧凑的二进制格式来存储和传输数据，同时提供了高效的读写操作。
-   - 使用场景：适用于需要跨语言、跨平台传输和存储结构化数据的场景，如分布式系统、微服务架构等。
-5. Thrift
-   - 优点：Thrift是Apache开发的一个跨语言的服务开发框架，它提供了定义和创建高效、可扩展的服务的机制。Thrift支持多种编程语言，并提供了高效的二进制序列化机制。
-   - 使用场景：适用于需要跨语言、跨平台构建分布式服务的场景。
-6. Avro
-   - 优点：Avro是Apache开发的一个数据序列化系统，它提供了紧凑、快速的二进制数据格式以及用于序列化和反序列化的代码生成工具。Avro还支持数据模式的演变，使得在不影响向后兼容性的情况下可以更新数据模式。
-   - 使用场景：适用于需要处理大量数据并进行高效序列化和反序列化的场景，如大数据处理、数据管道等。
-7. FST (Fast Serialization/Deserialization for Java)
-   - 优点：FST是一个高性能的Java序列化框架，它提供了比Java内置序列化机制更快的序列化和反序列化速度。FST还支持对象的深拷贝和浅拷贝。
-   - 使用场景：适用于需要高性能序列化和反序列化的场景，如实时通信、游戏开发等。
-8. MsgPack
-   - MsgPack是一种高效的二进制序列化格式，它支持多种编程语言，并提供了高效的读写操作。MsgPack序列化后的数据较小，且支持流处理和部分解析。
-   - 使用场景：适用于需要跨语言、跨平台传输和存储高效二进制数据的场景。
-9. Java原生序列化
-   - 这是Java自带的序列化机制，通过实现Serializable接口来标记一个类可以被序列化。虽然其性能可能不是最优的，但它在Java生态系统中得到了广泛的支持和应用。
-10. Jackson
-    - Jackson是一个流行的Java库，用于将Java对象转换为JSON格式的数据，以及将JSON数据反序列化为Java对象。它提供了丰富的配置选项和扩展点，使得它非常适合用于Web服务和RESTful API的数据交换。
-11. Gson
-    - Gson是Google开发的一个Java库，用于将Java对象序列化为JSON格式的数据，以及将JSON数据反序列化为Java对象。Gson的使用非常简单，只需几行代码就可以完成序列化和反序列化操作。
-12. Smile
-    - Smile是一种紧凑的二进制序列化格式，它基于JSON的语法结构，但使用了更高效的编码方式。Smile提供了与JSON相似的可读性，同时提供了更高的性能和更小的序列化数据。它非常适合用于需要高性能和低存储开销的场景。
-13. XStream
-    - XStream是一个Java库，它允许将Java对象序列化为XML格式的数据，以及将XML数据反序列化为Java对象。XStream的使用非常简单，只需几行代码就可以完成序列化和反序列化操作。然而，需要注意的是，XStream在安全性方面存在一些已知的问题，因此在使用时需要谨慎。
-14. Bson（用于MongoDB）
-    - Bson是MongoDB使用的一种二进制序列化格式，它类似于JSON，但提供了更高效的存储和传输方式。Bson支持复杂的对象结构，包括嵌套的对象和数组。当使用MongoDB作为数据库时，Bson是一个很好的选择。
-15. zfoo
-    - zfoo是一个高性能的Java序列化框架，它在速度和序列化后的大小方面都比一些传统的序列化框架有明显的优势。zfoo支持多种数据类型和结构，包括基本数据类型、数组、集合、映射等。它非常适合用于需要高性能和低存储开销的场景。FastjsonFastjson是一个基于Java开发的、高性能的JSON解析器和生成器，由Alibaba开源。支持JSON序列化和反序列化、支持复杂数据类型，包括Map、List、数组、嵌套对象等。
+```java
+import com.google.gson.Gson;
 
-需要注意的是，每个框架都有其独特的优点和适用场景。在选择序列化框架时，需要根据具体的应用场景和需求进行权衡。例如，如果需要与Web服务或RESTful API进行交互，可以选择Jackson、FastJson或Gson；如果需要与MongoDB数据库进行交互，可以选择Bson；如果需要高性能和低存储开销，可以选择Kryo、Protostuff、zfoo等框架；如果需要高性能和低存储开销，可以选择Kryo或Protostuff；如果需要跨语言、跨平台传输和存储结构化数据，可以选择Protobuf或Thrift；如果需要处理大量数据并进行高效序列化和反序列化，可以选择Avro或FST。
+// User user = new User("Tom", 18, "secret123"); // 从上下文获取
+
+Gson gson = new Gson();
+
+// 序列化
+String json = gson.toJson(user);
+
+// 反序列化
+User deserializedUser = gson.fromJson(json, User.class);
+```
+
+### 主流二进制框架详解
+
+#### Protobuf（Protocol Buffers）
+
+Google 开发，跨语言跨平台，gRPC 底层协议：
+
+```protobuf
+// user.proto
+message User {
+    string name = 1;
+    int32 age = 2;
+    string email = 3;
+}
+```
+
+```java
+// 使用生成的代码
+User user = User.newBuilder()
+    .setName("Tom")
+    .setAge(18)
+    .setEmail("tom@example.com")
+    .build();
+
+byte[] bytes = user.toByteArray();  // 序列化
+User parsed = User.parseFrom(bytes); // 反序列化
+```
+
+#### Kryo
+
+高性能 Java 专用序列化框架，Spark/Flink 等大数据框架内部使用：
+
+```java
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryo.io.Input;
+import com.esotericsoftware.kryo.io.Output;
+
+// User user = new User("Tom", 18, "secret123"); // 从上下文获取
+
+Kryo kryo = new Kryo();
+kryo.register(User.class);
+
+// 序列化
+byte[] bytes;
+try (Output output = new Output(1024)) {
+    kryo.writeObject(output, user);
+    bytes = output.toBytes();
+}
+
+// 反序列化
+try (Input input = new Input(bytes)) {
+    User deserialized = kryo.readObject(input, User.class);
+}
+```
+
+#### Hessian
+
+轻量级跨语言二进制协议，Dubbo 2.x 默认序列化协议。Dubbo 3.x 的 Triple 协议默认使用 **Protobuf** 序列化（兼容 gRPC），Hessian 仍可作为可选配置使用：
+
+```java
+import com.caucho.hessian.io.Hessian2Output;
+import com.caucho.hessian.io.Hessian2Input;
+import java.io.ByteArrayOutputStream;
+import java.io.ByteArrayInputStream;
+
+// User user = new User("Tom", 18, "secret123"); // 从上下文获取
+
+try {
+    // 序列化
+    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    Hessian2Output out = new Hessian2Output(bos);
+    out.writeObject(user);
+    out.close();
+    byte[] bytes = bos.toByteArray();
+
+    // 反序列化
+    ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+    Hessian2Input in = new Hessian2Input(bis);
+    User deserialized = (User) in.readObject();
+    in.close();
+} catch (Exception e) {
+    e.printStackTrace();
+}
+```
+
+### 如何选择序列化框架
+
+```text
+需要跨语言通信？
+├── 是 → 需要 Schema 定义？
+│   ├── 是 → Protobuf / Thrift
+│   └── 否 → Hessian / Jackson(JSON)
+└── 否 → 纯 Java 高性能？
+    ├── 是 → Kryo
+    └── 否 → 与 Web/API 交互？
+        ├── 是 → Jackson / Fastjson2
+        └── 否 → Java 原生（简单场景）
+```
 
 ## 性能对比
 
-![img_9.png](img_9.png)
+```text
+平均响应时间（ms，越低越好）        平均 TPS（越高越好）
+┌──────────────────────────┐       ┌──────────────────────────┐
+│ Dubbo: FastJson    ██    │       │ Dubbo: FastJson   ███████ │
+│ Dubbo: Hessian2   ██     │       │ Dubbo: Hessian2   ███████ │
+│ Dubbo: DubboSer   ██     │       │ Dubbo: DubboSer   ███████ │
+│ Dubbo: Kryo      █       │       │ Dubbo: Kryo       ████████│
+│ Dubbo: FST       █       │       │ Dubbo: FST        ████████│
+│ REST: Netty+JSON ███     │       │ REST: Netty+JSON  ████    │
+│ REST: Tomcat+J   ███     │       │ REST: Tomcat+J    █████   │
+│ REST: Jetty+J    ████████│       │ REST: Jetty+J     █       │
+└────0────2────4────6─8─10 ┘       └──0───2k───4k───6k──8k──9k ┘
+```
+
+**一般规律**：二进制格式 > JSON 格式 > XML 格式（在序列化速度和数据大小方面）

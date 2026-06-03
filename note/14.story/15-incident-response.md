@@ -265,12 +265,16 @@ graph TD
 - [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统中的故障传播和级联失效，脑裂和网络分区的应急处理
 - [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户系统的故障影响范围控制，一个租户的故障不能波及其他租户
 - [厨房实况直播](./20-realtime-eventdriven.md) —— 实时系统的故障对用户感知影响最直接，推送中断的应急恢复
-- [一个厨房四个门面](./21-multiplatform-architecture.md) —— 多端系统的故障定位，某个渠道的故障需要快速隔离和恢复
+- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多端系统的故障定位，某个渠道的故障需要快速隔离和恢复
 - [懂你的菜单](./22-search-recommendation.md) —— 搜索推荐系统的算法故障，推荐结果异常的应急降级策略
 - [菜谱标准化之路](./23-tech-docs-knowledge.md) —— 故障复盘文档是知识工程的重要产出，Runbook 是应急响应的知识基础
 - [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移是高风险操作，需要回滚预案和故障恢复方案
 - [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台的故障定位困难，配置 vs 代码的故障边界模糊
 - [阿明出海记](./26-globalization.md) —— 多区域系统的故障协调，跨区域故障的时差和沟通挑战
+- [厨房大换岗](./27-ai-org-transformation.md) —— AI 转型引发的"组织故障"，人员变动本身就是一种需要应急的事件
+- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业的故障准备，AI 系统也可能出错需要应急
+- [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的质量门防止故障扩散，监控 Agent 自动修复日常故障
+- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉引发的故障应急，AI 错误输出是一种需要应急处理的故障类型
 
 ---
 
