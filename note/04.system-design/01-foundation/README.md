@@ -11,9 +11,12 @@
 5. [系统设计基础](system-design-basics/README.md) — 核心步骤、设计原则、常见模式
 6. [架构图绘制](system-design-basics/architecture-diagram/) — 4+1 视图模型、C4 模型
 7. [API 设计](system-design-basics/api/README.md) — RESTful/GraphQL/RPC 风格
-8. [设计模式](system-design-basics/design-patterns/README.md) — GoF 23 种经典设计模式
-9. [领域驱动设计 DDD](system-design-basics/ddd/README.md) — 以业务领域为核心的建模方法
-10. [微服务架构](system-design-basics/microservices/README.md) — 拆分策略、服务治理、DDD 集成
-11. [云设计模式](system-design-basics/cloud-design-patterns/README.md) — 云原生架构模式
-12. [事件驱动 vs 异步](system-design-basics/eda-vs-async/README.md) — 两种解耦模式的选择
-13. [技术债](technical-debt/README.md) — 技术债的识别、管理与偿还
+8. [架构认知的演进](system-design-basics/architecture-evolution/README.md) — OOD → DDD → TOGAF 的认知升级之路
+9. [面向对象设计](system-design-basics/ood/README.md) — SOLID/GRASP 原则、类与职责分配
+10. [领域驱动设计 DDD](system-design-basics/ddd/README.md) — 以业务领域为核心的建模方法
+11. [企业架构 TOGAF](system-design-basics/togaf/README.md) — 业务能力地图、ADM 流程、康威定律
+12. [设计模式](system-design-basics/design-patterns/README.md) — GoF 23 种经典设计模式
+13. [微服务架构](system-design-basics/microservices/README.md) — 拆分策略、服务治理、DDD 集成
+14. [云设计模式](system-design-basics/cloud-design-patterns/README.md) — 云原生架构模式
+15. [事件驱动 vs 异步](system-design-basics/eda-vs-async/README.md) — 两种解耦模式的选择
+16. [技术债](technical-debt/README.md) — 技术债的识别、管理与偿还

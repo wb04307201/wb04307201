@@ -21,7 +21,7 @@
    软件工程      CAP/BASE        限流/熔断/重试    负载均衡/CDN    JWT/OAuth2
    开发流程      共识算法        冗余/弹性        缓存/数据库优化  RBAC/API安全
    系统设计      分布式事务      混沌工程          消息队列/Java   权限模型
-   DDD/微服务    分布式锁/ID     代码质量          序列化/连接池   数据脱敏
+   OOD/DDD/TOGAF 分布式锁/ID     代码质量          序列化/连接池   数据脱敏
    技术债       RPC/网关       容灾演练          多级缓存
                服务发现
                分布式缓存
@@ -35,7 +35,9 @@
 3. [系统设计基础](01-foundation/system-design-basics/README.md) — 系统设计的核心步骤
 
 ### 进阶阶段
-4. [领域驱动设计 DDD](01-foundation/system-design-basics/ddd/README.md) — 以业务为核心的建模
+4. [面向对象设计](01-foundation/system-design-basics/ood/README.md) — SOLID/GRASP 原则、类与职责分配
+5. [领域驱动设计 DDD](01-foundation/system-design-basics/ddd/README.md) — 以业务为核心的建模
+6. [企业架构 TOGAF](01-foundation/system-design-basics/togaf/README.md) — 业务能力地图、康威定律
 5. [CAP 定理](02-distributed/cap-and-base/cap/README.md) — 分布式系统的理论基石
 6. [分布式事务](02-distributed/distributed-transaction/README.md) — 跨服务数据一致性
 7. [分布式锁](02-distributed/distributed-lock/README.md) — 分布式协调基础
@@ -59,7 +61,7 @@
 
 | 模块 | 内容数 | 说明 |
 |------|--------|------|
-| [01 基础篇](01-foundation/README.md) | 13 | 软件工程、系统设计基础、技术债 |
+| [01 基础篇](01-foundation/README.md) | 16 | 软件工程、OOD/DDD/TOGAF、技术债 |
 | [02 分布式篇](02-distributed/README.md) | 13 | CAP、共识算法、分布式事务、RPC |
 | [03 高可用篇](03-high-availability/README.md) | 9 | 限流、熔断、重试、降级、冗余、混沌 |
 | [04 高性能篇](04-high-performance/README.md) | 11 | 负载均衡、缓存、数据库优化、消息队列 |

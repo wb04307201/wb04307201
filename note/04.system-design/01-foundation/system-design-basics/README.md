@@ -10,10 +10,16 @@
     - [C4 模型](architecture-diagram/c4-model/README.md)
 - [API 设计](api/README.md) — [RESTful](api/rest/README.md) | [GraphQL](api/graphql/README.md) | [RPC](api/rpc/README.md)
 
+## 架构演进
+
+- [架构认知的演进](architecture-evolution/README.md) — OOD → DDD → TOGAF 的认知升级之路
+- [面向对象设计](ood/README.md) — SOLID/GRASP 原则、类与职责分配
+- [领域驱动设计](ddd/README.md) — 以业务领域为核心的建模方法
+- [企业架构 TOGAF](togaf/README.md) — 业务能力地图、ADM 流程、康威定律
+
 ## 架构模式
 
 - [设计模式](design-patterns/README.md) — GoF 23 种经典模式
-- [领域驱动设计](ddd/README.md) — 以业务领域为核心的建模方法
 - [微服务架构](microservices/README.md) — [微服务与DDD](microservices/microservices-and-ddd/README.md)
 - [云设计模式](cloud-design-patterns/README.md) — 云原生架构模式
 - [事件驱动 vs 异步](eda-vs-async/README.md) — 两种解耦模式的选择
