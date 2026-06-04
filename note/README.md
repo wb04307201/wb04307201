@@ -1,103 +1,24 @@
-# 一、java
-## 1. [概念](01.java/concepts/README.md)
-### 1.1. 语言基础
-#### [基本语法](01.java/concepts/syntax/README.md)
-#### [基本数据类型](01.java/concepts/data-types/README.md)
-#### [变量](01.java/concepts/variable/README.md)
-#### [方法](01.java/concepts/method/README.md)
-### 1.2. 面向对象
-#### [面向对象基础](01.java/concepts/oop/README.md)
-#### [Object类](01.java/concepts/object/README.md)
-#### [内部类](01.java/concepts/inner-class/README.md)
-### 1.3. 类型系统
-#### [枚举](01.java/concepts/enum/README.md)
-#### [泛型](01.java/concepts/generics/README.md)
-#### [注解](01.java/concepts/annotation/README.md)
-#### [记录类 Record](01.java/concepts/record/README.md)
-### 1.4. 核心机制
-#### [日期时间API](01.java/concepts/date-time/README.md)
-#### [String](01.java/concepts/string/README.md)
-#### [异常](01.java/concepts/exception/README.md)
-#### [反射](01.java/concepts/reflection/README.md)
-#### [序列化和反序列化](01.java/concepts/serialization-and-deserialization/README.md)
-#### [SPI](01.java/concepts/spi/README.md)
-#### [语法糖](01.java/concepts/syntactic-sugar/README.md)
-## 2. [集合](01.java/collection/README.md)
-### 2.1. [ArrayList](01.java/collection/ArrayList/README.md)
-### 2.2. [LinkedList](01.java/collection/LinkedList/README.md)
-### 2.3. [HashMap 深入](01.java/collection/hashmap.md)
-### 2.4. [LinkedHashSet](01.java/collection/LinkedHashSet/README.md)
-### 2.5. [TreeMap](01.java/collection/TreeMap/README.md)
-### 2.6. [WeakHashMap](01.java/collection/WeakHashMap/README.md)
-### 2.7. [ConcurrentHashMap](01.java/collection/ConcurrentHashMap/README.md)
-## 3. [I/O](01.java/io/README.md)
-### 3.1. [NIO](01.java/io/nio/README.md)
-### 3.2. [零拷贝](01.java/io/zero-copy/README.md)
-## 4. [JVM虚拟机](01.java/jvm/README.md)
-### 4.1. [JVM参数](01.java/jvm/parameters.md)
-### 4.2. [JVM调优](01.java/jvm/tuning.md)
-## 5. [并发编程](01.java/concurrency/README.md)
-### 5.1. [线程基础](01.java/concurrency/thread-basics/README.md)
-### 5.2. [synchronized 锁机制](01.java/concurrency/synchronized/README.md)
-### 5.3. [volatile 与内存模型](01.java/concurrency/volatile/README.md)
-### 5.4. [JMM 内存模型](01.java/concurrency/jmm/README.md)
-### 5.5. [JUC 锁（AQS/ReentrantLock）](01.java/concurrency/juc-locks/README.md)
-### 5.6. [并发工具类](01.java/concurrency/utilities/README.md)
-### 5.7. [原子类与 CAS](01.java/concurrency/atomic/README.md)
-### 5.8. [ThreadLocal](01.java/concurrency/threadlocal/README.md)
-### 5.9. [CompletableFuture 异步编程](01.java/concurrency/completablefuture/README.md)
-### 5.10. [并发集合](01.java/concurrency/concurrent-collections/README.md)
-## 6. 版本特性
-### 6.0. 功能版本变更历史
-#### 6.0.1. [垃圾回收](01.java/version/function-history/gc/README.md)
-#### 6.0.2. [Lambda](01.java/version/function-history/lambda/README.md)
-#### 6.0.3. [Stream API](01.java/version/function-history/stream-api/README.md)
-#### 6.0.4. [Optional](01.java/version/function-history/optional/README.md)
-#### 6.0.5. [Switch](01.java/version/function-history/switch/README.md)
-#### 6.0.6. [instanceof](01.java/version/function-history/instanceof/README.md)
-#### 6.0.7. [并发](01.java/version/function-history/concurrency/README.md)
-1. [定义](01.java/version/function-history/concurrency/define/README.md)
-   1. [Java锁机制](01.java/version/function-history/concurrency/define/java-locks/README.md)
-   2. [CHMRLock - 基于ConcurrentHashMap和 ReentrantLock的锁实现](https://gitee.com/wb04307201/CHMRLock)
-   3. [线程池](01.java/version/function-history/concurrency/define/thread-pool/README.md)
-#### 6.0.8. [类文件 API](01.java/version/function-history/class-file-api/README.md)
-#### 6.0.9. [HTTP Client](01.java/version/function-history/http-client/README.md)
-#### 6.0.10. [Foreign Function & Memory API](01.java/version/function-history/ffi-api/README.md)
-#### 6.0.11. [Vector API](01.java/version/function-history/vector-api/README.md)
-#### 6.0.12. [Sealed Classes](01.java/version/function-history/sealed-classes/README.md)
-#### 6.0.13. [Text Blocks](01.java/version/function-history/text-blocks/README.md)
-#### 6.0.14. [VarHandle](01.java/version/function-history/var-handle/README.md)
-#### 6.0.15. [Record](01.java/version/function-history/record/README.md)
-### 6.1. [Java 8（LTS）](01.java/version/java-8/README.md)
-### 6.2. [Java 9](01.java/version/java-9/README.md)
-### 6.3. [Java 10](01.java/version/java-10/README.md)
-### 6.4. [Java 11（LTS）](01.java/version/java-11/README.md)
-### 6.5. [Java 12](01.java/version/java-12/README.md)
-### 6.6. [Java 13](01.java/version/java-13/README.md)
-### 6.7. [Java 14](01.java/version/java-14/README.md)
-### 6.8. [Java 15](01.java/version/java-15/README.md)
-### 6.9. [Java 16](01.java/version/java-16/README.md)
-### 6.10. [Java 17（LTS）](01.java/version/java-17/README.md)
-### 6.11. [Java 18](01.java/version/java-18/README.md)
-### 6.12. [Java 19](01.java/version/java-19/README.md)
-### 6.13. [Java 20](01.java/version/java-20/README.md)
-### 6.14. [Java 21（LTS）](01.java/version/java-21/README.md)
-### 6.15. [Java 22](01.java/version/java-22/README.md)
-### 6.16. [Java 23](01.java/version/java-23/README.md)
-### 6.17. [Java 24](01.java/version/java-24/README.md)
-### 6.18. [Java 25（LTS）](01.java/version/java-25/README.md)
-### 6.19. [Java 26](01.java/version/java-26/README.md)
-## 7. [Java Agent](01.java/java-agent/README.md)
-### 7.1. [统计API接口调用耗时](01.java/java-agent/api/README.md)
-## 8. [JDBC](01.java/jdbc/README.md)
-## 9. [设计模式](01.java/design-patterns/README.md)
-## 10. [网络编程](01.java/network/README.md)
-## 11. [Kotlin](01.java/kotlin/README.md)
-## 12. 工程化工具
-### 12.1. [构建工具（Maven/Gradle）](01.java/build-tools/README.md)
-### 12.2. [单元测试（JUnit 5/Mockito）](01.java/testing/README.md)
-### 12.3. [日志框架（SLF4J/Logback/Log4j2）](01.java/logging/README.md)
-### 12.4. [模块化系统（Java 9+）](01.java/modules/README.md)
+# 一、[Java](01.java/README.md)
+
+> 从语言基础到 JVM 原理、并发编程、版本演进，系统性构建 Java 知识体系。
+
+| 序号 | 模块 | 说明 |
+|------|------|------|
+| 1 | [核心概念](01.java/concepts/) | 基本语法、面向对象、类型系统、反射、序列化、SPI 等 |
+| 2 | [集合框架](01.java/collection/) | ArrayList、LinkedList、HashMap、ConcurrentHashMap 等源码剖析 |
+| 3 | [I/O](01.java/io/) | I/O 流分类、NIO、零拷贝 |
+| 4 | [JVM](01.java/jvm/) | 类加载、内存模型、GC、JVM 参数与调优 |
+| 5 | [并发编程](01.java/concurrency/) | 线程基础、synchronized、volatile、JMM、JUC、ThreadLocal、CompletableFuture |
+| 6 | [设计模式](01.java/design-patterns/) | GoF 23 种设计模式的 Java 实现与选型指南 |
+| 7 | [构建工具](01.java/build-tools/) | Maven vs Gradle 对比与实战 |
+| 8 | [Java Agent](01.java/java-agent/) | 字节码增强、Instrumentation API、预加载与 Attach 模式 |
+| 9 | [JDBC](01.java/jdbc/) | JDBC 架构、核心接口、连接池与最佳实践 |
+| 10 | [Kotlin](01.java/kotlin/) | Kotlin 语法、与 Java 对比、协程基础 |
+| 11 | [日志](01.java/logging/) | 日志级别、Logback、Log4j2、SLF4J 门面 |
+| 12 | [模块系统](01.java/modules/) | JPMS（Java 9+）、模块化迁移指南 |
+| 13 | [网络编程](01.java/network/) | Socket、TCP/UDP、HTTP 客户端 |
+| 14 | [测试](01.java/testing/) | JUnit 5、Mockito、JaCoCo、测试最佳实践 |
+| 15 | [版本特性](01.java/version/) | Java 8 ~ 26 各版本新特性 & 功能演进历史（GC/Lambda/Stream/并发/FFM 等） |
 
 # 二、计算机基础
 ## 1. [计算机网络基础](02.computer-basics/01-network/README.md)
