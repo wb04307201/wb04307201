@@ -12,7 +12,7 @@
 
 ## 架构演进
 
-- [架构认知的演进](architecture-evolution/README.md) — OOD → DDD → TOGAF 的认知升级之路
+- [架构认知的演进](architecture-evolution/README.md) — OOD → DDD → TOGAF 的认知升级 + Level 1-7 成熟度评估
 - [面向对象设计](ood/README.md) — SOLID/GRASP 原则、类与职责分配
 - [领域驱动设计](ddd/README.md) — 以业务领域为核心的建模方法
 - [企业架构 TOGAF](togaf/README.md) — 业务能力地图、ADM 流程、康威定律
