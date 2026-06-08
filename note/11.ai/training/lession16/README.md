@@ -1,7 +1,7 @@
 # 第 16 课：大模型知识接入技术全景
 
-> **5 条技术路线 × 决策框架 × 最佳实践** — 从"上 RAG"到"先想清楚再选工具"  
-> **源文参考**：[RAG 不再是默认答案](../temp/README6.md)
+> **4 章 × 5 路径 × 决策框架** — 从"上 RAG"到"先想清楚再选工具"  
+> **源文参考**：RAG 不再是默认答案（已整合到本课各章节）
 
 ---
 
@@ -21,7 +21,7 @@
 
 - **前置课程**：[第 1 课：AI Agent 核心概念](../lession1/README.md)（理解 LLM 和 RAG 的基本概念）
 - **知识准备**：知道向量检索、Embedding 等基本概念即可
-- **推荐阅读**：[RAG 不再是默认答案](../temp/README6.md)（本课主线文章的源稿）
+- **推荐阅读**：本课主线文章已整合到 [第二章 5 路径全景](README2.md) 与 [第三章 生产级 RAG 深入](README3.md)
 
 ---
 
@@ -44,27 +44,23 @@
 | 章节 | 文件 | 核心问题 | 建议时长 |
 |:----:|:-----|:---------|:--------:|
 | **第一章** | [LLM Wiki 模式](README1.md) | 如何用 LLM 构建一个会"生长"的知识库？ | 35 min |
-| **第二章** | [长 Context + Caching](README2.md) | 几百份文档的最甜解 | 20 min |
-| **第三章** | [生产级 RAG](README3.md) | Hybrid + Rerank + Contextual 三件套 | 40 min |
-| **第四章** | [Agentic Retrieval](README4.md) | 从静态流水线到 Agent Loop | 30 min |
-| **第五章** | [结构化数据 SQL](README5.md) | 业务数据的正确打开方式 | 20 min |
-| **第六章** | [Deep Research 架构](README6.md) | 一次查询 = 一篇报告 | 25 min |
-| **第七章** | [决策框架与最佳实践](README7.md) | Eval + 数据质量 > 换 embedding | 25 min |
-| **第八章** | [综合示例：少府智库](README8.md) | 完整决策与搭建流程 | 30 min |
+| **第二章** | [5 路径全景](README2.md) | 5 条技术路径速览与决策矩阵 | 40 min |
+| **第三章** | [生产级 RAG 深入](README3.md) | Hybrid + Rerank + Contextual 三件套 | 45 min |
+| **第四章** | [决策与综合实战](README4.md) | Eval + 数据质量 + 少府智库 | 50 min |
 
 ### 推荐阅读顺序
 
 ```
-第一章（持久化视角）  →  第二/三章（"塞 prompt" vs "重型 RAG" 选型）
+第一章（持久化视角）  →  第二章（5 路径速览 + 决策矩阵）
         ↓
-    第四/五/六章（其他 3 条路径：Agent、SQL、Deep Research）
+        第三章（生产级 RAG 深入，按需精读）
         ↓
-    第七章（决策框架 + 避坑）  →  第八章（综合实战）
+        第四章（决策 + 实战，落到自己的项目）
 ```
 
-- **时间紧张**：先读第一章 + 第二章 + 第七章（约 80 分钟），建立全景
+- **时间紧张**：先读第一章 + 第二章 + 第四章前 4 节（约 90 分钟），建立全景
 - **动手优先**：第三章（生产级 RAG）有最具体的工程升级路径
-- **深度研究**：八章通读，重点关注第三章的 Hybrid + Rerank + Contextual 三件套
+- **深度研究**：四章通读，重点关注第三章的 Hybrid + Rerank + Contextual 三件套
 
 ---
 
@@ -119,7 +115,7 @@ graph TB
 
 | 资料 | 说明 |
 |:-----|:-----|
-| [RAG 不再是默认答案](../temp/README6.md) | 本课主线的源文章 |
+| 源文章已整合 | 5 路径决策矩阵与生产级 RAG 数据已并入 [第二章](README2.md)、[第三章](README3.md) |
 | [Anthropic Contextual Retrieval](https://www.anthropic.com/engineering/contextual-retrieval) | Contextual Retrieval 官方论文 |
 | [Anthropic Prompt Caching](https://claude.com/blog/prompt-caching) | 缓存机制与定价 |
 | [Karpathy LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) | LLM Wiki 模式原始 Gist |

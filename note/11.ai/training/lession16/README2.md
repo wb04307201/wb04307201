@@ -1,191 +1,313 @@
-# 长 Context + Prompt Caching：2025 的甜蜜区
+# 知识接入 5 路径全景：从"上 RAG"到"先选工具"
 
-> ⬅️ [返回目录](README.md) | 上一篇：[LLM Wiki 模式](README1.md) | 下一篇：[生产级 RAG](README3.md)
+> ⬅️ [返回目录](README.md) | 上一篇：[LLM Wiki 模式](README1.md) | 下一篇：[生产级 RAG 深入](README3.md)
 
 ---
 
 ## 🎯 一句话定位
 
-**几百份文档内的最优解**——不建向量库、不切 chunk、不搞 embedding，全塞 prompt，靠 Prompt Caching 把成本压到 1/10。  
-**Anthropic 官方建议**：知识库 < 200K tokens（约 500 页 A4 / 75 万中文字）时，**直接塞 prompt + Caching**，比建 RAG 更省。
+**RAG 不再是默认答案**——2025 年大模型知识接入有 5 条技术路径：长 Context + Caching、生产级 RAG、Agentic Retrieval、SQL、Deep Research。每条路有它的主场，**先选工具，再动手**。  
+本节是全景速览；生产级 RAG 单独成[第三章](README3.md)深入剖析。
 
 ---
 
-## ✅ 适用 vs ❌ 不适用
+## 📊 5 路径速查表
+
+| # | 路径 | 一句话定位 | 适用规模 | 月成本量级 | 工程量 |
+|:--|:--|:--|:--|:--|:--|
+| 1 | **长 Context + Caching** | 几百份文档内最甜，零工程 | < 200 份 | ~$120 | 0.5 人天 |
+| 2 | **生产级 RAG** | 万级文档重型武器 | 10K+ 份 | ~$840 | 25 人天 |
+| 3 | **Agentic Retrieval** | 代码/多跳任务让 Agent 自己查 | — | 中等 | 5 人天 |
+| 4 | **结构化 SQL** | 业务数据别 dump 文档 | 数据库 | 低 | 2 人天 |
+| 5 | **Deep Research** | 复杂研究类问题 | — | $5–$20/次 | 10 人天 |
+
+---
+
+## 🛤️ 路径 1：长 Context + Prompt Caching
+
+### 一句话定位
+
+几百份文档内的最优解——不建向量库，全塞 prompt，靠缓存把成本压到 1/10。
+
+### 适用 vs 不适用
 
 | ✅ 适用 | ❌ 不适用 |
 |:--|:--|
-| 文档数量 < 200 份 | 文档 > 200 万 token |
-| 知识相对稳定（缓存长期命中） | 文档每天变（缓存频繁失效） |
-| 单次查询成本敏感 | 实时性要求极高（强需要最新内容） |
-| 团队工程资源紧张 | 文档包含大量图片 / 多模态且超长 |
-| 想要"先跑起来再优化" | 强合规要求（需追溯每条引用源） |
+| 文档 < 200 份 | 文档 > 200 万 token |
+| 知识相对稳定 | 文档每天变（缓存失效） |
+| 单次查询成本敏感 | 强合规需要逐条引用源 |
+| 团队工程资源紧张 | 大量多模态内容 |
 
----
+### 上下文窗口演进
 
-## 🧠 核心原理
+| 模型 | Context 窗口 | ≈ 中文字数 |
+|:--|:--|:--|
+| Claude Sonnet 4.5 | 1M tokens | 75 万 |
+| Gemini 1.5 Pro | 2M tokens | 150 万 |
+| GPT-4.1 | 1M tokens | 75 万 |
 
-### 1. 上下文窗口的指数增长
+**实操换算**：200 份 × 3,000 字 = 60 万字 → 全部装下。
 
-| 模型 | Context 窗口 | ≈ 中文字数 | ≈ A4 页（500 字/页） |
-|:--|:--|:--|:--|
-| Claude Sonnet 4.5 | 1M tokens | 75 万 | 1500 页 |
-| Gemini 1.5 Pro | 2M tokens | 150 万 | 3000 页 |
-| GPT-4.1 | 1M tokens | 75 万 | 1500 页 |
-| Claude 3.5 Sonnet | 200K tokens | 15 万 | 300 页 |
-
-**实操换算**：200 份文档 × 平均 3,000 字 = 60 万字 → **全部装下**。
-
-> 💡 **甜蜜区提醒**：在 200 份文档、150 万字以内，**别建 RAG**——直接塞 prompt。
-
-### 2. Prompt Caching 工作机制
-
-```mermaid
-flowchart LR
-    A["📚 知识文档<br/>(100K tokens)"] -->|首次写入<br/>$3.75 / MTok| Cache[("💾 Prompt Cache")]
-    Cache -->|后续读取<br/>$0.30 / MTok| B["👤 用户提问"]
-    B --> C["🧠 LLM 生成回答"]
-
-    classDef cache fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-    class Cache cache
-```
-
-**关键定价**（以 Claude 3.5 Sonnet 为例）：
+### 缓存定价（Claude 3.5 Sonnet）
 
 | 操作 | 价格 | 对比 |
 |:--|:--|:--|
 | 基础 Input | $3 / MTok | 100% |
-| Cache Write（写入） | $3.75 / MTok | +25% 溢价 |
-| **Cache Read（读取）** | **$0.30 / MTok** | **仅 10%（-90%）** |
-| Output | $15 / MTok | — |
+| Cache Write | $3.75 / MTok | +25% 溢价 |
+| **Cache Read** | **$0.30 / MTok** | **10%（-90%）** |
 
-### 3. 真实数据：Anthropic 官方用例
+### Anthropic 官方实测数据
 
 | 场景 | 延迟（无缓存） | 延迟（有缓存） | 成本下降 |
 |:--|:--|:--|:--|
-| 与一本书对话（100K token 缓存） | 11.5s | 2.4s（-79%） | **-90%** |
-| Many-shot 提示（10K token） | 1.6s | 1.1s（-31%） | -86% |
-| 多轮对话（10 轮 + 长 system prompt） | ~10s | ~2.5s（-75%） | -53% |
+| 100K token 长文档问答 | 11.5s | 2.4s | **-90%** |
+| 10 轮长 system prompt 对话 | ~10s | ~2.5s | -53% |
 
-> 📌 **核心收益**：第二次调用起，成本降到 1/10、延迟降到 1/4。
+### 陷阱：Lost in the Middle
+
+长 context ≠ 等同短 context。**关键信息如果放中间地带，召回率显著掉**。
+
+**解法**：
+- 重要文档放首尾
+- 控制在 200 份甜蜜区
+- 显式分块、加索引编号
 
 ---
 
-## ⚠️ 陷阱：Lost in the Middle（针在草堆）
+## 🛤️ 路径 2：生产级 RAG（深入见 [第三章](README3.md)）
 
-长 context ≠ 等同短 context。**关键信息如果放在中间地带，召回率会显著掉**。
+### 一句话定位
 
-### 实验数据
+重型武器——三条件缺一不可：①大数据量（10K+）②语义模糊查询 ③没法塞 Context。
 
-研究显示（Lost in the Middle, Liu et al. 2023）：
+### 升级路径速览
 
-```
-位置：  [开头]  [1/4]   [中间]   [3/4]   [结尾]
-准确率：  高     中      低       中      高
-```
+网上教程教的 baseline RAG（切块→Embedding→向量库→检索→生成）做 demo 可以，做产品即翻车。**生产级 RAG 三件套**：
 
-### 解法
-
-| 策略 | 说明 |
+| 升级 | 效果 |
 |:--|:--|
-| **重要文档放两头** | 把关键参考资料、首尾分别放 |
-| **控制在 200 份甜蜜区** | 别贪多，< 200 份文档时这个效应最弱 |
-| **结构化提示** | 显式分块、加索引编号（"参考资料 1：xxx"） |
-| **引用跟踪** | 让模型在回答中标注引用编号，便于事后校验 |
+| **+ BM25（Hybrid）** | 召回失败率 -21% |
+| **+ Contextual Retrieval** | -49% |
+| **+ Reranker** | **-67%**（性价比最高） |
 
-### 不适用场景识别
+### 何时选 RAG
 
-如果你的需求命中以下任意一条，**别用长 Context，请直接跳到 [生产级 RAG](README3.md)**：
+- ✅ 10K+ 文档 + 语义模糊查询
+- ✅ 数据每天变（需要增量更新索引）
+- ❌ < 200 份 → 改用路径 1
+- ❌ 代码 / 多跳任务 → 改用路径 3
 
-- 文档量 > 200 万 token（塞不下）
-- 文档每天变（缓存命中率低，成本反升）
-- 强需要逐条引用源（合规场景）
+> 👉 完整升级路径、Anthropic 官方数据、工具链选型见 [第三章：生产级 RAG 深入](README3.md)
 
 ---
 
-## 🛠️ 工具链
+## 🛤️ 路径 3：Agentic Retrieval
 
-| 工具 | 用途 | 备注 |
+### 一句话定位
+
+**范式转变**——从 `retrieve → generate` 静态流水线，变为 **Agent Loop**：让 LLM 自决"查不查、查什么、查够没"。
+
+### 范式对比
+
+```mermaid
+graph LR
+    subgraph Old["❌ 传统 RAG"]
+        A1["用户提问"] --> A2["检索"] --> A3["生成"] --> A4["回答"]
+    end
+    subgraph New["✅ Agentic Loop"]
+        B1["用户提问"] --> B2["🧠 思考"]
+        B2 --> B3{"决策"}
+        B3 -->|"查"| B4["🛠️ 调用工具"]
+        B4 --> B5["👀 观察"]
+        B5 --> B6{"够了吗？"}
+        B6 -->|否| B2
+        B6 -->|是| B7["📤 最终回答"]
+    end
+    classDef old fill:#ffebee,stroke:#c62828
+    classDef new fill:#e8f5e9,stroke:#2e7d32
+    class A1,A2,A3,A4 old
+    class B1,B2,B3,B4,B5,B6,B7 new
+```
+
+### 代码场景：全面碾压
+
+| 任务 | 传统 RAG | Agent（grep + read） |
 |:--|:--|:--|
-| **Anthropic API** | Claude 系列 + Prompt Caching | 已 GA |
-| **Amazon Bedrock** | Claude 缓存预览 | 跨云 |
-| **Google Vertex AI** | Claude 缓存预览 | 跨云 |
-| **Gemini API** | Gemini 2M context + 隐式缓存 | 缓存策略不同 |
-| **OpenAI API** | 暂无 prompt caching，但有 Assistants 自动管理 | — |
+| 跨文件追溯 bug | 42% | **89%** |
+| 找函数定义 | 65% | 95% |
 
-### 简单实现（Anthropic SDK）
+> Cursor、Claude Code、Devin——**没一个走纯 RAG**。
 
-```python
-import anthropic
+### 三大陷阱
 
-client = anthropic.Anthropic()
+1. **成本爆炸**：10 步 = $0.40（vs RAG $0.02）
+2. **弱模型灾难**：模型门槛 ≥ Sonnet / GPT-4o 级
+3. **延迟与不可控**：多步串行 5–30 秒，路径可能不重现
 
-# 第一次调用：写入缓存
-response = client.messages.create(
-    model="claude-3-5-sonnet-20241022",
-    max_tokens=1024,
-    system=[
-        {
-            "type": "text",
-            "text": "你是知识库助手...",
-        },
-        {
-            "type": "text",
-            "text": "以下是完整知识库内容：\n\n" + KNOWLEDGE_BASE,  # 100K tokens
-            "cache_control": {"type": "ephemeral"},  # 标记可缓存
-        }
-    ],
-    messages=[{"role": "user", "content": "请介绍启明 11"}],
-)
+### 工具集
 
-# 第二次调用：自动命中缓存，成本 -90%
-response2 = client.messages.create(
-    model="claude-3-5-sonnet-20241022",
-    max_tokens=1024,
-    system=[...],  # 同样的 system prompt
-    messages=[{"role": "user", "content": "它的电池多大？"}],
-)
-```
+| 类别 | 工具 |
+|:--|:--|
+| 平台 | Claude Code、Cursor、Devin、LangGraph、AutoGen |
+| 代码工具 | grep、glob、read_file、bash |
+| 通用工具 | web_search、sql_query、http |
 
 ---
 
-## 💡 实战经验
+## 🛤️ 路径 4：结构化数据走 SQL
 
-### 1. 何时升级到 RAG？
+### 一句话定位
 
-观察以下信号，出现 2 个以上就该考虑升级：
+**业务表别 dump 文档**——把 MySQL 业务表导出成 markdown 丢进向量库是反模式（精度爆死、实时性归零）。正解：**让模型生成 SQL 直接查数据库**。
 
-- [ ] 文档超过 200 份
-- [ ] 关键信息在中间地带频繁被忽略
-- [ ] 缓存命中率 < 50%
-- [ ] 每次输出都需要引用源（合规）
-- [ ] 文档每天变
+### 反模式
 
-### 2. 与"塞不下"场景的衔接
-
-如果某天发现 200 份要塞不下了，**不要立刻全量迁到 RAG**：
-
-```
-第一步：拆分为"常用 200 份 + 偶尔查 X 份"两批
-第二步：常用批用 Caching，偶尔批用 RAG
-第三步：观察一段时间，再决定全量迁移
+```mermaid
+graph LR
+    DB[("📊 MySQL")] -->|每天导出| CSV["📄 CSV"]
+    CSV -->|切块| MD["📝 Markdown"]
+    MD -->|Embedding| Vec[("🔢 向量库")]
+    User["👤 查 Q2 营收"] -->|语义检索| Vec
+    Vec --> Wrong["❌ 错误答案<br/>(信息已过时)"]
+    classDef wrong fill:#ffebee,stroke:#c62828
+    class Wrong wrong
 ```
 
-### 3. 客户案例：Notion
+### 正解：Text-to-SQL
 
-> *"We're excited to use prompt caching to make Notion AI faster and cheaper, all while maintaining state-of-the-art quality."*
-> — Simon Last, Co-founder at Notion
+```mermaid
+graph LR
+    User["👤 Q2 营收？"] --> LLM["🧠 LLM"]
+    Schema["📊 Schema"] --> LLM
+    LLM -->|生成| SQL["📝 SELECT..."]
+    SQL -->|执行| DB2[("📊 MySQL")]
+    DB2 --> Result["📊 真实结果"]
+    Result --> LLM2["🧠 总结"]
+    LLM2 --> Answer["📤 1250 万"]
+    classDef good fill:#e8f5e9,stroke:#2e7d32
+    class Answer,Result good
+```
 
-Notion AI 把 Prompt Caching 用于 AI 助手场景，实现了"又快又便宜的内部运营"。
+### SQL vs RAG 何时用谁
+
+| 维度 | SQL | RAG |
+|:--|:--|:--|
+| 数据形态 | 结构化表 | 非结构化文档 |
+| 查询类型 | 聚合 / 过滤 / 统计 | 语义相似度 |
+| 实时性 | 数据库新鲜即新鲜 | 取决于索引更新 |
+| 精度 | 100% | 60–90% |
+
+### 工具链
+
+| 框架 | 特点 |
+|:--|:--|
+| **Vanna** | Text-to-SQL 专用，RAG 增强 schema 检索 |
+| **LlamaIndex SQL** | 集成 LlamaIndex |
+| **WrenAI** | 开源，支持多数据库 |
+| **自拼最小方案** | Schema + Few-shot + Sonnet 三件套 |
+
+### 进阶：Hybrid（SQL + RAG 混合）
+
+典型场景电商客服：先用 SQL 拿订单号 → 再用 RAG 查物流文档 → 综合回答。
+
+---
+
+## 🛤️ 路径 5：Deep Research 架构
+
+### 一句话定位
+
+**最重一档**——多轮检索 + 综合生成，给尽调、学术综述、行业研究用。**一次查询 = 一篇报告**。
+
+### 核心架构：四件套
+
+```mermaid
+graph TB
+    Q["👤 复杂问题"]
+    Q --> Planner["🧠 Planner<br/>拆解为 5-10 个子问题"]
+    Planner --> Search["🔍 Search<br/>多次 Web/API 检索"]
+    Search --> Reader["📖 Reader<br/>逐份精读 + 提取事实"]
+    Reader --> Aggregator["✍️ Aggregator<br/>综合 + 交叉验证 + 写作"]
+    Aggregator --> Report["📄 完整报告<br/>(带引用源)"]
+    classDef phase fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    class Planner,Search,Reader,Aggregator phase
+```
+
+### 成本与延迟
+
+| 维度 | 数值 |
+|:--|:--|
+| 一次查询成本 | $5 – $20 |
+| 调用次数 | 40+ LLM + 30+ Web Search |
+| 延迟 | 5 – 15 分钟 |
+| 输出长度 | 5,000 – 50,000 字 |
+| 引用源 | 30 – 100+ |
+
+### 行业产品（都没走 RAG）
+
+| 产品 | 提供方 | 特点 |
+|:--|:--|:--|
+| Deep Research | OpenAI | o3 推理驱动 |
+| Deep Research | Google（Gemini） | 2M context + 跨模态 |
+| Pro Research | Perplexity | 实时性强 |
+| Manus / Genspark | 国产 | 多 agent 协作 |
+
+### 何时降级
+
+- 子问题数 ≤ 2 → 改用 Agent + 单次 RAG
+- 简单聚合问题 → 改用 Text-to-SQL
+- 已知结构 → 改用 RAG + 总结
+- 仅当 ≥ 5 个子问题、跨多源 → 走 Deep Research
+
+---
+
+## 🔀 路径对比与组合
+
+### 决策矩阵
+
+| | 小数据（< 200 份） | 大数据（10K+ 份） |
+|:--|:--|:--|
+| **精确匹配**（关键词 / 代码） | 直接问 LLM / `grep` | Agent + SQL / `grep` |
+| **语义模糊**（描述 ≠ 命名） | 长 Context + Caching | 重型 RAG |
+
+### 实际项目通常是混合方案
+
+> **单一方案通吃是反模式**。每个数据集选最匹配它的方案。
+
+示例（详见[第四章：少府智库](README4.md)）：
+
+| 数据类别 | 方案 | 理由 |
+|:--|:--|:--|
+| 100 份 PDF 论文 | 生产级 RAG | 单塞 Context 太长 |
+| 1000 条印象笔记 | 长 Context + Wiki | 持续追加，Wiki 维护可控 |
+| 50 段播客转录 | Deep Research | 单份价值低，需综合多源 |
+| 实验数据库 | Text-to-SQL | 100% 精度，实时 |
+
+---
+
+## 🛠️ 工具链总览（一表贯通）
+
+| 类别 | 推荐工具 | 适用路径 |
+|:--|:--|:--|
+| **LLM** | Claude Sonnet 4.5（主力）/ Opus 4.x（深研）/ Haiku（预处理） | 全部 |
+| **向量库** | Qdrant / Weaviate / Pinecone | RAG、Agent |
+| **全文检索** | OpenSearch / Elasticsearch（BM25） | RAG、Agent |
+| **Reranker** | Cohere Rerank 3.5 / Voyage Rerank | RAG |
+| **Embedding** | Voyage 3 / Gemini text-embedding-004 / BGE | RAG、Agent |
+| **Agent 平台** | Claude Code / Cursor / LangGraph / AutoGen | Agent |
+| **Text-to-SQL** | Vanna / WrenAI / LlamaIndex SQL | SQL |
+| **Deep Research 框架** | LangGraph / OpenAI SDK | Deep Research |
+| **Wiki 工具** | Obsidian + Claude Code | LLM Wiki |
+| **Eval** | RAGAS / Phoenix / TruLens | 全部 |
+| **缓存** | Anthropic Prompt Caching | 长 Context |
 
 ---
 
 ## 🤔 思考
 
-1. **算账练习**：你手头有多少份知识文档？总字数多少 token？够塞几次 Context？
-2. **缓存命中率估计**：你的知识库更新频率如何？缓存能维持几天有效？
-3. **什么时候你会从甜蜜区溢出**：从 200 份 / 150 万字这个甜蜜区看，你的项目离溢出还有多远？
+1. **你的项目能用几号路径**：从数据规模与查询模糊度判断，主路径是 1、2、3、4、5 哪个？
+2. **混合方案的合理性**：你的知识是否包含多种类型（文档 + 数据库 + 实时数据），需不需要混搭？
+3. **什么时候回到甜蜜区**：当项目从大数据降为小数据时，是否考虑降级到路径 1，省成本省工程？
 
 ---
 
-> ⬅️ [返回目录](README.md) | 上一篇：[LLM Wiki 模式](README1.md) | 下一篇：[生产级 RAG](README3.md)
+> ⬅️ [返回目录](README.md) | 上一篇：[LLM Wiki 模式](README1.md) | 下一篇：[生产级 RAG 深入](README3.md)

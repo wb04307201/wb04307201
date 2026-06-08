@@ -1,13 +1,24 @@
-# 生产级 RAG：Hybrid + Rerank + Contextual
+# 生产级 RAG 深入：Hybrid + Rerank + Contextual
 
-> ⬅️ [返回目录](README.md) | 上一篇：[长 Context + Caching](README2.md) | 下一篇：[Agentic Retrieval](README4.md)
+> ⬅️ [返回目录](README.md) | 上一篇：[知识接入 5 路径全景](README2.md) | 下一篇：[决策与综合实战](README4.md)
 
 ---
 
 ## 🎯 一句话定位
 
 **重型武器**——三条件缺一不可：①大数据量（10K+ 文档）②语义模糊查询（描述 ≠ 命名）③没法塞 Context。  
-> 网上教程教的 baseline RAG（切块→Embedding→向量库→检索→生成）做 demo 可以，做产品即翻车。**生产级 RAG 必须三件套齐全：Hybrid + Rerank + Contextual。**
+网上教程教的 baseline RAG（切块→Embedding→向量库→检索→生成）做 demo 可以，做产品即翻车。**生产级 RAG 必须三件套齐全：Hybrid + Rerank + Contextual。**
+
+---
+
+## ✅ 适用 vs ❌ 不适用
+
+| ✅ 适用 | ❌ 不适用 |
+|:--|:--|
+| 文档数量 10K+ | < 200 份（改用[长 Context](README2.md#-路径-1长-context--prompt-caching)） |
+| 语义模糊查询 | 精确匹配关键词（改用 Agent + grep/SQL） |
+| 文档每天变（需要增量更新索引） | 文档完全静态（改用[长 Context + Caching](README2.md#-路径-1长-context--prompt-caching)） |
+| 强需要逐条引用源 | 实时研究类（改用[Deep Research](README2.md#-路径-5deep-research-架构)） |
 
 ---
 
@@ -41,23 +52,20 @@
 ```mermaid
 graph LR
     Q["👤 用户查询<br/>Error code TS-999"]
-
     subgraph Hybrid["🔍 Hybrid 检索"]
-        direction TB
         BM["📝 BM25<br/>(关键词匹配)<br/>精确命中 TS-999"]
         EMB["🔢 Embedding<br/>(语义近似)<br/>找到『error code』相关内容"]
     end
-
     Q --> BM
     Q --> EMB
-    BM --> Fusion["🔀 倒数排名融合<br/>(Reciprocal Rank Fusion)"]
+    BM --> Fusion["🔀 倒数排名融合<br/>(RRF)"]
     EMB --> Fusion
     Fusion --> Top["📦 Top-20 chunks"]
 ```
 
 **为什么需要 BM25**：
 
-- 错误码 / API 名称 / 配置项 / 代码标识符：embedding 找不到，BM25 一抓一个准
+- 错误码 / API 名称 / 配置项：embedding 找不到，BM25 一抓一个准
 - Anthropic 实验数据：BM25 + Embedding 比单 Embedding 召回失败率降低 **49%**
 
 ### 升级 2：Reranker（重排序）— 性价比最高
@@ -229,6 +237,12 @@ Reranker 也增加延迟（一次额外 API 调用）。如果：
 - 实时性要求极致（< 200ms）：评估 Reranker 延迟影响
 - 成本敏感：先 Hybrid + Contextual，最后再加 Reranker
 
+### 4. 与其他路径的协同
+
+- **+ SQL**：用 RAG 查表结构、用 SQL 查数据
+- **+ Agent**：Agent 自决何时检索、何时用工具调用
+- **+ Deep Research**：作为 Search 阶段的子模块
+
 ---
 
 ## 🤔 思考
@@ -239,4 +253,4 @@ Reranker 也增加延迟（一次额外 API 调用）。如果：
 
 ---
 
-> ⬅️ [返回目录](README.md) | 上一篇：[长 Context + Caching](README2.md) | 下一篇：[Agentic Retrieval](README4.md)
+> ⬅️ [返回目录](README.md) | 上一篇：[知识接入 5 路径全景](README2.md) | 下一篇：[决策与综合实战](README4.md)
