@@ -37,7 +37,7 @@
 ### 进阶阶段
 4. [面向对象设计](01-foundation/system-design-basics/ood/README.md) — SOLID/GRASP 原则、类与职责分配
 5. [领域驱动设计 DDD](01-foundation/system-design-basics/ddd/README.md) — 以业务为核心的建模
-6. [企业架构 TOGAF](01-foundation/system-design-basics/togaf/README.md) — 业务能力地图、康威定律
+6. [企业架构 TOGAF 10](01-foundation/system-design-basics/togaf/README.md) — 业务能力地图、ADM 9 阶段、模块化架构治理
 5. [CAP 定理](02-distributed/cap-and-base/cap/README.md) — 分布式系统的理论基石
 6. [分布式事务](02-distributed/distributed-transaction/README.md) — 跨服务数据一致性
 7. [分布式锁](02-distributed/distributed-lock/README.md) — 分布式协调基础

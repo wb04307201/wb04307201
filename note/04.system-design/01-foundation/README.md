@@ -14,7 +14,7 @@
 8. [架构认知的演进](system-design-basics/architecture-evolution/README.md) — OOD → DDD → TOGAF 的认知升级之路
 9. [面向对象设计](system-design-basics/ood/README.md) — SOLID/GRASP 原则、类与职责分配
 10. [领域驱动设计 DDD](system-design-basics/ddd/README.md) — 以业务领域为核心的建模方法
-11. [企业架构 TOGAF](system-design-basics/togaf/README.md) — 业务能力地图、ADM 流程、康威定律
+11. [企业架构 TOGAF 10](system-design-basics/togaf/README.md) — 业务能力地图、ADM 9 阶段、模块化架构治理
 12. [设计模式](system-design-basics/design-patterns/README.md) — GoF 23 种经典设计模式
 13. [微服务架构](system-design-basics/microservices/README.md) — 拆分策略、服务治理、DDD 集成
 14. [云设计模式](system-design-basics/cloud-design-patterns/README.md) — 云原生架构模式
