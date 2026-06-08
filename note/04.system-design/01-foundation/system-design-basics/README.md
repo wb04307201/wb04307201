@@ -20,6 +20,12 @@
 ## 架构模式
 
 - [设计模式](design-patterns/README.md) — GoF 23 种经典模式
-- [微服务架构](microservices/README.md) — [微服务与DDD](microservices/microservices-and-ddd/README.md)
+- [微服务架构](microservices/README.md) — 服务拆分、通信、契约、数据一致性、演进 5 大设计主题
+    - [服务拆分策略](microservices/service-decomposition/README.md) — 业务能力 → 限界上下文 → 服务边界
+    - [服务间通信](microservices/service-communication/README.md) — 同步 vs 异步、API 版本管理
+    - [服务契约](microservices/service-contract/README.md) — OpenAPI/Protobuf/契约测试
+    - [数据一致性](microservices/data-consistency/README.md) — Saga/CQRS/Event Sourcing
+    - [演进与组织](microservices/migration-and-organization/README.md) — 单体迁移、团队拓扑
+    - [微服务与 DDD](microservices/microservices-and-ddd/README.md) — 业务能力 → 限界上下文 → 服务
 - [云设计模式](cloud-design-patterns/README.md) — 云原生架构模式
 - [事件驱动 vs 异步](eda-vs-async/README.md) — 两种解耦模式的选择

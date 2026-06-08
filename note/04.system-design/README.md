@@ -45,7 +45,7 @@
 9. [熔断](03-high-availability/circuit-break/README.md) — 防止级联故障
 
 ### 高级阶段
-10. [微服务架构](01-foundation/system-design-basics/microservices/README.md) — 大规模系统拆分
+10. [微服务架构](01-foundation/system-design-basics/microservices/README.md) — 拆分/通信/契约/数据一致性/演进 5 大设计主题
 11. [分库分表](04-high-performance/database-optimization/db-sharding/README.md) — 数据库水平扩展
 12. [多级缓存](04-high-performance/cache-patterns/README.md) — 极致性能优化
 13. [混沌工程](03-high-availability/chaos-engineering/README.md) — 主动注入故障
