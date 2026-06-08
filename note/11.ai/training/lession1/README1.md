@@ -215,6 +215,54 @@ graph LR
    - 纯知识型
    - 技能型
 
+---
+
+## 📚 知识库的 5 种技术途径（2025 演进概览）
+
+> 本节是 RAG 之外的"地图"——在 2025 年，**RAG 已不再是默认答案**。  
+> 5 条技术路线的完整深度解析见 [第 16 课：大模型知识接入技术全景](../lession16/README.md)
+
+### 一句话定位
+
+1. **长 Context + Prompt Caching** — 几百份文档内的甜蜜区，零工程，缓存命中成本 -90%
+2. **生产级 RAG**（Hybrid + Rerank + Contextual）— 万级文档才上重型武器
+3. **Agentic Retrieval** — 代码 / 多跳推理，让 Agent 自己决定查不查、查什么
+4. **结构化数据走 SQL** — 业务表别 dump 文档，让模型生成 SQL 直接查
+5. **Deep Research** — 复杂研究类问题，多轮检索综合成报告（一次查询 $5–$20）
+
+### 决策矩阵：数据规模 × 查询模糊度
+
+|  | 小数据（< 200 份文档） | 大数据（10K+ 份文档） |
+|:--|:--|:--|
+| **精确匹配**（关键词 / 代码 / 配置） | 直接问 LLM / `grep` | Agent + SQL / `grep` |
+| **语义模糊**（描述 ≠ 命名） | 长 Context + Caching | 重型 RAG（Hybrid + Rerank + Contextual） |
+
+### 为什么 RAG 不再是默认答案？
+
+- **长 Context 挤压 RAG 空间**：Claude Sonnet 4.5 1M tokens ≈ 75 万中文字；Gemini 1.5 Pro 2M tokens ≈ 150 万中文字——几百份文档"一口吞下"完全可行
+- **基础 RAG 上线即翻车**：单向量检索在精确匹配场景失效，必须叠 Hybrid + Rerank + Contextual
+- **代码与多跳场景 Agent 碾压**：传统 RAG 完成率 42% vs Agent（grep + read）89%
+- **Anthropic 官方建议**：知识库 < 200K tokens（约 500 页）时，**直接塞 prompt + Prompt Caching**，比建 RAG 更省
+
+### 决策原则
+
+> **先问数据规模，再问查询模糊度，最后选方案。**  
+> 别再"先建向量库"——80% 的项目根本不需要重型 RAG。
+
+| 场景 | 推荐方案 |
+|:--|:--|
+| < 200 份文档 + 稳定 | 长 Context + Caching（别折腾） |
+| 10K+ 份 + 语义模糊 | Hybrid RAG + Rerank + Contextual |
+| 代码库 / 业务数据库 | Agent + grep / SQL / API |
+| 尽调 / 学术综述 | Deep Research 架构 |
+
+### 思考
+1. 你当前需求中，数据规模与查询模糊度分别是？小数据/精确匹配时，是否考虑直接塞 prompt 而非 RAG？
+2. 5 条路径的工程量与成本差异巨大（$120 vs $840 月成本，0.5 vs 25 人天），"先用最简单的方案"是不是更划算？
+3. 当 RAG 效果不好时，第一反应应该是换 embedding 模型，还是先做 Eval、清洗数据？
+
+---
+
 ## 工具(MCP)
 > **"AI应用的USB-C接口"** — 标准化工具调用协议
 

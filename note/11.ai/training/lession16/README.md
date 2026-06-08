@@ -1,6 +1,7 @@
-# 第 16 课：LLM 驱动的个人知识库
+# 第 16 课：大模型知识接入技术全景
 
-> **LLM Wiki × 知识复利 × Memex** —— 把"每次查询都重新检索"升级为"知识编译一次、持续复利"。
+> **5 条技术路线 × 决策框架 × 最佳实践** — 从"上 RAG"到"先想清楚再选工具"  
+> **源文参考**：[RAG 不再是默认答案](../temp/README6.md)
 
 ---
 
@@ -8,65 +9,120 @@
 
 学完本课后，你将能够：
 
-- 理解 LLM Wiki 与传统 RAG（检索增强生成）的本质区别：持久化知识资产 vs 临时检索
-- 掌握 LLM Wiki 的三层架构（原始资料层→Wiki 层→模式层）和三大核心操作（摄入→查询→检查）
-- 设计适合自己领域的 Wiki 结构规范（Schema），与 LLM 协作构建和维护知识库
-- 选择合适的工具链（Obsidian + LLM + 搜索工具）搭建个人 LLM Wiki 系统
+- **理解 5 条技术路线**：长 Context + Caching、生产级 RAG、Agentic Retrieval、SQL、Deep Research
+- **掌握决策框架**：用"数据规模 × 查询模糊度"矩阵快速选型
+- **看清 RAG 的真实定位**：从"默认答案"变为"备选方案之一"
+- **掌握 LLM Wiki 模式**：用 LLM 维护持续生长的个人知识库（Karpathy 范式）
+- **避坑**：理解 Eval 与数据质量为何比换 embedding 模型重要 10x
+
+---
 
 ## 前置条件
 
-- 前置课程：[第 1 课：AI Agent 核心概念](../lession1/README.md)（理解 LLM 和 RAG 的基本概念）
-- 知识准备：具备使用 LLM 处理文档的基本经验
-- 推荐了解：Markdown 编辑工具（如 Obsidian）
+- **前置课程**：[第 1 课：AI Agent 核心概念](../lession1/README.md)（理解 LLM 和 RAG 的基本概念）
+- **知识准备**：知道向量检索、Embedding 等基本概念即可
+- **推荐阅读**：[RAG 不再是默认答案](../temp/README6.md)（本课主线文章的源稿）
 
-## 核心概念速查
+---
 
-```text
-传统 RAG 模式：
-  上传文件 → 提问时检索片段 → 生成答案 → 丢弃（无积累）
+## 5 路径速查表
 
-LLM Wiki 模式：
-  新资料 → LLM 阅读提取 → 整合到 Wiki → 知识复利
-  Wiki = 结构化的、相互链接的 Markdown 文件集合
-  你负责：筛选资料、探索方向、提出好问题
-  LLM 负责：总结、交叉引用、归档、维护一致性
-```
+| # | 路线 | 一句话定位 | 适用规模 | 月成本量级 | 工程量 |
+|:--|:--|:--|:--|:--|:--|
+| 1 | **长 Context + Caching** | 几百份文档内最甜，零工程 | < 200 份 | ~$120 | 0.5 人天 |
+| 2 | **生产级 RAG** | 万级文档重型武器 | 10K+ 份 | ~$840 | 25 人天 |
+| 3 | **Agentic Retrieval** | 代码/多跳任务让 Agent 自己查 | — | 中等 | 5 人天 |
+| 4 | **结构化 SQL** | 业务数据别 dump 文档 | 数据库 | 低 | 2 人天 |
+| 5 | **Deep Research** | 复杂研究类问题 | — | $5–$20/次 | 10 人天 |
+
+> 🎯 **核心原则**：RAG 已经从"默认答案"退位为"工具箱里的一把刀"。选哪条路，取决于你的数据规模与查询模糊度。
+
+---
 
 ## 章节导航
 
 | 章节 | 文件 | 核心问题 | 建议时长 |
 |:----:|:-----|:---------|:--------:|
-| 第一章 | [LLM Wiki 模式](README1.md) | 如何用 LLM 构建一个会"生长"的个人知识库？ | 35 min |
+| **第一章** | [LLM Wiki 模式](README1.md) | 如何用 LLM 构建一个会"生长"的知识库？ | 35 min |
+| **第二章** | [长 Context + Caching](README2.md) | 几百份文档的最甜解 | 20 min |
+| **第三章** | [生产级 RAG](README3.md) | Hybrid + Rerank + Contextual 三件套 | 40 min |
+| **第四章** | [Agentic Retrieval](README4.md) | 从静态流水线到 Agent Loop | 30 min |
+| **第五章** | [结构化数据 SQL](README5.md) | 业务数据的正确打开方式 | 20 min |
+| **第六章** | [Deep Research 架构](README6.md) | 一次查询 = 一篇报告 | 25 min |
+| **第七章** | [决策框架与最佳实践](README7.md) | Eval + 数据质量 > 换 embedding | 25 min |
+| **第八章** | [综合示例：少府智库](README8.md) | 完整决策与搭建流程 | 30 min |
+
+### 推荐阅读顺序
+
+```
+第一章（持久化视角）  →  第二/三章（"塞 prompt" vs "重型 RAG" 选型）
+        ↓
+    第四/五/六章（其他 3 条路径：Agent、SQL、Deep Research）
+        ↓
+    第七章（决策框架 + 避坑）  →  第八章（综合实战）
+```
+
+- **时间紧张**：先读第一章 + 第二章 + 第七章（约 80 分钟），建立全景
+- **动手优先**：第三章（生产级 RAG）有最具体的工程升级路径
+- **深度研究**：八章通读，重点关注第三章的 Hybrid + Rerank + Contextual 三件套
 
 ---
 
-## 核心架构图
+## 核心决策架构图
 
 ```mermaid
-flowchart TB
-    subgraph Raw["📚 原始资料层"]
-        R1["文章/论文"]
-        R2["图片/数据"]
-        R3["播客/视频"]
-    end
+graph TB
+    Start["🤔 接到知识接入需求"]
 
-    subgraph Wiki["📝 Wiki 层（LLM 维护）"]
-        W1["摘要页"]
-        W2["实体页"]
-        W3["概念页"]
-        W4["交叉引用"]
-    end
+    Start --> Q1{"Q1: 数据规模？<br/>< 200 份 vs 10K+ 份"}
+    Q1 -->|小数据| Q1A{"Q2: 查询类型？<br/>精确 vs 语义"}
+    Q1 -->|大数据| Q1B{"Q2: 查询类型？<br/>精确 vs 语义"}
 
-    subgraph Schema["⚙️ 模式层"]
-        S1["CLAUDE.md"]
-        S2["结构规范"]
-        S3["工作流程"]
-    end
+    Q1A -->|精确| Path1["① 直接问 LLM / grep"]
+    Q1A -->|语义| Path2["② 长 Context +<br/>Prompt Caching"]
 
-    Raw -->|"LLM 摄入"| Wiki
-    Wiki -->|"遵循规范"| Schema
-    Schema -->|"指导 LLM"| Wiki
+    Q1B -->|精确| Path3["③ Agent + SQL / grep"]
+    Q1B -->|语义| Path4["④ 生产级 RAG<br/>Hybrid + Rerank +<br/>Contextual"]
+
+    Q1B -.->|"复杂研究"| Path5["⑤ Deep Research<br/>Planner→Search→Reader→Aggregator"]
+
+    Wiki["🌱 LLM Wiki<br/>(贯穿所有路径)<br/>持续生长的知识资产"]
+
+    Path1 --> Wiki
+    Path2 --> Wiki
+    Path3 --> Wiki
+    Path4 --> Wiki
+    Path5 --> Wiki
+
+    classDef default fill:#e3f2fd,stroke:#1976d2
+    classDef wiki fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    class Wiki wiki
 ```
+
+---
+
+## 核心观点速览
+
+> **"RAG 已经不再是默认答案了。"**
+
+引自源文的核心判断：
+
+1. **从默认到备选**：RAG 是工具箱里的一把刀，不是唯一答案
+2. **决策前置**：先问数据规模、再问查询模糊度，最后选方案
+3. **5 条路径并存**：长 Context / RAG / Agent / SQL / Deep Research 各有主场
+4. **LLM Wiki 串联**：所有路径的输出，都可以沉淀为 LLM Wiki 形式的持久化知识资产
+5. **Eval > 算法**：评估闭环比换 embedding 模型重要 10x；数据洗涮比算法工作多 5x 时间
+
+---
+
+## 补充资料
+
+| 资料 | 说明 |
+|:-----|:-----|
+| [RAG 不再是默认答案](../temp/README6.md) | 本课主线的源文章 |
+| [Anthropic Contextual Retrieval](https://www.anthropic.com/engineering/contextual-retrieval) | Contextual Retrieval 官方论文 |
+| [Anthropic Prompt Caching](https://claude.com/blog/prompt-caching) | 缓存机制与定价 |
+| [Karpathy LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) | LLM Wiki 模式原始 Gist |
 
 ---
 
