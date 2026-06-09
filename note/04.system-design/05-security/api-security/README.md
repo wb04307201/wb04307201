@@ -230,7 +230,7 @@ public class NonceService {
 | 手机号 | 保留前 3 后 4，中间 4 位脱敏 | `138****5678` |
 | 身份证号 | 保留前 6 后 4，中间脱敏 | `110105********1234` |
 | 邮箱 | 保留首字符和 @ 后域名 | `z***@example.com` |
-| 银行卡号 | 保留前 4 后 4 | `6222 02** **** **12 3456` |
+| 银行卡号 | 保留前 4 后 4，中间 8 位分两组脱敏 | `6222 **** **** 1234` |
 | 姓名 | 保留首字，其余脱敏 | `张**` |
 | 地址 | 保留省市区，详细地址脱敏 | `北京市朝阳区***` |
 
@@ -280,7 +280,8 @@ public class DataMaskingUtil {
     }
 
     /**
-     * 银行卡号脱敏: 6222 **** **** **12 3456
+     * 银行卡号脱敏: 6222 **** **** 1236
+     * 输出共 4 段：前 4 + 2 组 * 4 + 后 4
      */
     public static String maskBankCard(String bankCard) {
         if (StringUtils.isBlank(bankCard)) {
@@ -291,7 +292,7 @@ public class DataMaskingUtil {
             return bankCard;
         }
         return cleaned.substring(0, 4)
-                + " " + "**** " + "**** " + "**** "
+                + " " + "**** " + "**** "
                 + cleaned.substring(cleaned.length() - 4);
     }
 
@@ -409,9 +410,10 @@ public Response handleRequest(Request req) {
 
 ### Redis + Lua 分布式限流
 
+基于滑动窗口的 Redis 限流，Lua 脚本保证 ZREMRANGEBYSCORE → ZCARD → ZADD → EXPIRE 的**原子性**。
+
 ```java
-// 基于滑动窗口的 Redis 限流
-// Lua 脚本保证原子性
+// Lua 脚本
 String luaScript = """
     local key = KEYS[1]
     local limit = tonumber(ARGV[1])
@@ -434,6 +436,75 @@ String luaScript = """
     end
     """;
 ```
+
+### Java 调用示例（Spring Data Redis）
+
+```java
+@Service
+public class RedisRateLimiter {
+
+    @Autowired
+    private StringRedisTemplate redisTemplate;
+
+    private final DefaultRedisScript<Long> rateLimitScript;
+
+    public RedisRateLimiter() {
+        this.rateLimitScript = new DefaultRedisScript<>();
+        this.rateLimitScript.setScriptText(LUA_SCRIPT);
+        this.rateLimitScript.setResultType(Long.class);
+    }
+
+    /**
+     * @param key   限流维度（IP / userId / 接口名）
+     * @param limit 窗口内允许的最大请求数
+     * @param windowMs 窗口大小（毫秒）
+     */
+    public boolean tryAcquire(String key, int limit, long windowMs) {
+        List<String> keys = Collections.singletonList("rl:" + key);
+        long now = System.currentTimeMillis();
+
+        Long result = redisTemplate.execute(
+                rateLimitScript,
+                keys,
+                String.valueOf(limit),
+                String.valueOf(windowMs),
+                String.valueOf(now)
+        );
+        return result != null && result == 1L;
+    }
+}
+```
+
+### 故障降级（Fail-Open vs Fail-Closed）
+
+如果 Redis 不可用，应 fail-open（放行）还是 fail-closed（拒绝）？通常 **fail-open 更安全**（避免因限流组件故障导致业务不可用），但需要监控告警。
+
+```java
+public boolean tryAcquireSafe(String key, int limit, long windowMs) {
+    try {
+        return tryAcquire(key, limit, windowMs);
+    } catch (RedisConnectionFailureException e) {
+        // 告警：限流组件不可用
+        metrics.counter("rate_limiter.degraded").increment();
+        return true;  // fail-open
+    }
+}
+```
+
+| 策略 | 行为 | 适用场景 |
+|------|------|----------|
+| **Fail-Open** | 限流组件挂掉时放行全部请求 | 绝大多数业务，优先保证可用性 |
+| **Fail-Closed** | 限流组件挂掉时拒绝全部请求 | 极敏感场景（支付、转账防刷），但需谨慎评估雪崩风险 |
+
+### Redis 高可用：Sentinel vs Cluster
+
+| 方案 | 主从复制 | 自动故障转移 | 分片支持 | 适用规模 |
+|------|----------|--------------|----------|----------|
+| 主从 + Sentinel | ✅ | ✅（秒级） | ❌ | 中小规模（< 数十 GB） |
+| Redis Cluster | ✅ | ✅（集群内） | ✅（16384 slot） | 大规模（> 数十 GB / 高 QPS） |
+
+- **Sentinel**：1 主 N 从 + 3 Sentinel 节点，主挂后自动选主，对应用透明。**限流场景推荐 Sentinel**（业务简单、延迟敏感）。
+- **Cluster**：数据分片到多主，适合大数据量场景；Lua 脚本需保证 key 在同一 slot（使用 hash tag，如 `rl:{user:1001}`）。
 
 ---
 
@@ -503,6 +574,14 @@ OkHttpClient client = new OkHttpClient.Builder()
 | 16 | **API 版本控制** | URL 或 Header 中体现版本号 | 中 |
 | 17 | **审计日志** | 记录谁在何时做了什么操作 | 高 |
 | 18 | **Token 过期** | Access Token 短期有效 + Refresh Token | 必须 |
+
+## 相关章节
+
+- [JWT 存储安全](../jwt-security/README.md) — Token 的安全存储与撤销
+- [OAuth2.0 与 OIDC](../oauth2-oidc/README.md) — 访问令牌的签发与生命周期
+- [权限模型 RBAC / ABAC](../rbac-abac/README.md) — 接口背后的权限决策
+- [OWASP Top 10](../owasp-top10/README.md) — 应用安全风险全景
+- [加密与密钥管理](../encryption/README.md) — HTTPS / 签名背后的密码学基础
 
 ## 参考资料
 
