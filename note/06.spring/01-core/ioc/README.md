@@ -22,7 +22,7 @@ Bean 代指的就是那些被 IoC 容器所管理的对象。
 - @Service
 - @Controller
 
-[查看](..%2Fannotation%2FREADME.md#bean相关注解)
+[查看](../../08-annotations/legacy-full-reference.md#bean相关注解)
 
 #### @Component 和 @Bean 的区别
 - @Component 注解作用于类，而@Bean注解作用于方法。
@@ -34,7 +34,7 @@ Bean 代指的就是那些被 IoC 容器所管理的对象。
 - @Resource
 - @Inject
 
-[查看](..%2Fannotation%2FREADME.md#bean相关注解)
+[查看](../../08-annotations/legacy-full-reference.md#bean相关注解)
 
 #### @Autowired 和 @Resource 的区别
 - @Autowired 是 Spring 提供的注解，@Resource 是 JDK 提供的注解。
@@ -44,7 +44,7 @@ Bean 代指的就是那些被 IoC 容器所管理的对象。
 
 ### Bean 的作用域
 
-[查看](..%2Fannotation%2FREADME.md#@Scope)
+[查看](../../08-annotations/legacy-full-reference.md#scope)
 
 ### Bean 的线程安全
 Spring 框架中的 Bean 是否线程安全，取决于其作用域和状态
