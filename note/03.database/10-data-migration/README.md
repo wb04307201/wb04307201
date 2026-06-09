@@ -422,9 +422,13 @@ SELECT COUNT(*) FROM target_db.users;
 CHECKSUM TABLE source_db.users;
 CHECKSUM TABLE target_db.users;
 
--- 抽样业务字段
+-- 抽样业务字段(MySQL 用 RAND() 抽样,PostgreSQL 用 TABLESAMPLE)
+-- MySQL:
 SELECT id, MD5(CONCAT(name, email)) AS hash
-FROM source_db.users SAMPLE 0.1%;
+FROM source_db.users WHERE RAND() < 0.001;  -- 约 0.1% 抽样
+-- PostgreSQL:
+SELECT id, MD5(CONCAT(name, email)) AS hash
+FROM source_db.users TABLESAMPLE BERNOULLI(0.1);  -- 0.1% 抽样
 ```
 
 ### 5. 常见问题

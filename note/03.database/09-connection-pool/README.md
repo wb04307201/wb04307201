@@ -244,7 +244,7 @@ hikari:
 日志输出示例:
 ```
 Connection leak detection triggered for connection
-org.sql.core.Connection@12345, stack trace follows
+HikariProxyConnection@12345 wrapping com.mysql.cj.jdbc.ConnectionImpl@abc, stack trace follows
     at com.example.UserDao.insert(UserDao.java:42)
     at com.example.UserService.create(UserService.java:18)
     ...

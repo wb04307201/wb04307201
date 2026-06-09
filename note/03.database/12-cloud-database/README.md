@@ -120,7 +120,7 @@ Writer        Reader 1     Reader 2
 | **毫秒级复制延迟** | Reader 几乎实时同步 |
 | **Aurora Serverless** | 按秒计费,无服务器模式(适合低频场景) |
 | **Aurora Global Database** | 跨 Region 灾难恢复(1s RPO) |
-| **Aurora MySQL Backtrack** | 72 小时内可"回退"数据库状态 |
+| **Aurora MySQL Backtrack** | 72 小时内可"回退"数据库状态(⚠️ 2023 年起已 deprecated,推荐使用 PITR) |
 
 #### 适用场景
 
@@ -410,8 +410,8 @@ TiDB Cloud 是 PingCAP 提供的**云原生 NewSQL 数据库**,100% 兼容 MySQL
 
 - [MySQL](../05-mysql/README.md) — 自建 MySQL 参数与配置
 - [NoSQL](../08-nosql/README.md) — 自建 NoSQL 选型
-- [数据迁移与同步](./10-data-migration/README.md) — 上云迁移工具
-- [数据库监控告警](./11-monitoring/README.md) — 云监控与自建监控
+- [数据迁移与同步](../10-data-migration/README.md) — 上云迁移工具
+- [数据库监控告警](../11-monitoring/README.md) — 云监控与自建监控
 - [系统设计 · 高可用](../../04.system-design/03-high-availability/README.md) — 多 AZ、异地容灾
 
 ## 参考资料

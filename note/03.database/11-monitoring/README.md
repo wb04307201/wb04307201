@@ -169,7 +169,7 @@ scrape_configs:
 
 ### 6. MySQL Grafana 仪表盘
 
-官方推荐仪表盘 ID:**7362**(Percona)、**6239**(MySQL 官方)
+官方推荐仪表盘 ID:**7362**(Percona MySQL Overview,目前最主流)、**1516**(MySQL by Cloudflare)
 
 关键面板:
 - MySQL Uptime
@@ -522,7 +522,7 @@ SHOW SLAVE STATUS;  -- Seconds_Behind_Master: 300s
 - [MySQL](../05-mysql/README.md) — 主从复制、参数调优
 - [Redis](../07-redis/README.md) — 持久化、集群
 - [数据库连接池](../09-connection-pool/README.md) — 连接池监控指标
-- [数据迁移与同步](./10-data-migration/README.md) — Canal/Maxwell 监控
+- [数据迁移与同步](../10-data-migration/README.md) — Canal/Maxwell 监控
 - [系统设计 · 可观测性](../../04.system-design/07-deployment/observability/README.md) — 系统全局监控
 
 ## 参考资料
