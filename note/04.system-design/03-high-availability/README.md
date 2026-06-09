@@ -18,4 +18,4 @@
 
 ## 质量保障
 
-9. [代码质量](code-quality/README.md) — [28 原则](code-quality/28/README.md)
+9. [代码质量](code-quality/README.md) — [2 行 / 8 行原则](code-quality/2-lines-8-lines/README.md)

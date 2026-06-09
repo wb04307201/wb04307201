@@ -1,6 +1,18 @@
 # 超时
 
+> 最后更新: 2026-06-09
+
 在分布式系统中，**超时**是一种基础且关键的容错策略，用于限制请求的等待时间，防止因依赖服务不可用或响应缓慢导致资源耗尽或级联故障。以下是超时策略的详细介绍，涵盖原理、类型、配置要点、风险控制及实践工具：
+
+## 目录
+
+- [一、超时的核心原理](#一超时的核心原理)
+- [二、超时的类型与场景](#二超时的类型与场景)
+- [三、超时配置的关键要点](#三超时配置的关键要点)
+- [四、超时的风险与控制](#四超时的风险与控制)
+- [五、实践工具与代码示例](#五实践工具与代码示例)
+- [六、最佳实践总结](#六最佳实践总结)
+- [相关章节](#相关章节)
 
 ## 一、超时的核心原理
 超时的本质是**为请求设置一个最大等待时间阈值**。当请求在指定时间内未完成时，系统主动终止请求并返回失败（或降级响应），避免线程、连接、内存等资源被无限期占用。其核心目标包括：
@@ -67,14 +79,32 @@
 - **配置建议**：
     - 超时时间应小于重试的总间隔（如首次超时1秒，重试间隔2秒）。
     - 避免超时过长导致重试无效（如超时10秒+重试3次=总耗时30秒）。
-- **示例逻辑**：
+- **示例逻辑**（退避 sleep 放在下次重试**之前**，避免最后一次无效 sleep）：
   ```java
+  long initialInterval = 100; // ms
+  for (int i = 0; i < maxRetries; i++) {
+      try {
+          return callServiceWithTimeout(timeoutMs);
+      } catch (TimeoutException e) {
+          if (i == maxRetries - 1) throw e;            // 最后一次失败直接抛出
+          long backoff = (long) (initialInterval * Math.pow(2, i));
+          Thread.sleep(backoff);                       // 在下次重试之前 sleep
+      }
+  }
+  ```
+
+  > 非阻塞版（推荐在线程池中运行）：用 `ScheduledExecutorService.schedule(...)` 提交下一次重试，避免占用业务线程。
+  ```java
+  ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
   for (int i = 0; i < maxRetries; i++) {
       try {
           return callServiceWithTimeout(timeoutMs);
       } catch (TimeoutException e) {
           if (i == maxRetries - 1) throw e;
-          Thread.sleep(backoffDelay);
+          long backoff = (long) (initialInterval * Math.pow(2, i));
+          final int next = i + 1;
+          return CompletableFuture.supplyAsync(
+              () -> retryWithBackoff(next, maxRetries), scheduler);
       }
   }
   ```
@@ -122,17 +152,34 @@
   ```
 
 ### 2. RPC框架超时配置
-- **gRPC**：
+- **gRPC**（gRPC 没有 `.enableRetry()`，重试通过 service config 配置；超时通过 deadline 设置）：
   ```java
-  ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8080)
+  import io.grpc.ManagedChannel;
+  import io.grpc.ManagedChannelBuilder;
+  import java.util.Map;
+  import java.util.List;
+
+  // gRPC retry policy via service config
+  Map<String, Object> retryPolicy = Map.of(
+      "methodConfig", List.of(Map.of(
+          "name", List.of(Map.of("service", "helloworld.Greeter")),
+          "retryPolicy", Map.of(
+              "maxAttempts", 5.0,
+              "initialBackoff", "1s",
+              "maxBackoff", "10s",
+              "backoffMultiplier", 2.0,
+              "retryableStatusCodes", List.of("UNAVAILABLE", "DEADLINE_EXCEEDED")
+          )
+      ))
+  );
+
+  ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50051)
       .usePlaintext()
-      .enableRetry()
-      .maxRetryAttempts(3)
-      .defaultLoadBalancingPolicy("round_robin")
+      .defaultServiceConfig(retryPolicy)
       .build();
   // 调用时设置超时
-  Stub stub = ServiceGrpc.newStub(channel);
-  stub.withDeadlineAfter(5, TimeUnit.SECONDS).callMethod(request, observer);
+  Stub stub = ServiceGrpc.newStub(channel).withDeadlineAfter(2, TimeUnit.SECONDS);
+  stub.callMethod(request, observer);
   ```
 - **Dubbo**：
   ```xml
@@ -162,3 +209,12 @@
 4. **幂等保障**：超时后需处理可能的重复请求。
 5. **监控告警**：实时跟踪超时率，及时发现系统性问题。
 6. **异步优先**：对长耗时操作优先使用异步调用，避免同步阻塞。
+
+## 相关章节
+
+超时是"局部容错"的最基础闸门，几乎所有其他容错模式都依赖它：
+
+- [熔断](../circuit-break/README.md) — 单次超时失败是熔断器错误率统计的样本
+- [重试](../retry/README.md) — 重试间隔必须 ≥ 单次超时，避免快速无效重试
+- [限流](../rate-limiting/README.md) — 超时堆积说明需要限流配合
+- [服务降级](../service-degradation/README.md) — 超时后降级返回兜底数据

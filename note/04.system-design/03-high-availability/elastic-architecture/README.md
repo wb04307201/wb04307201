@@ -1,6 +1,18 @@
 # 弹性架构
 
+> 最后更新: 2026-06-09
+
 弹性架构（Elastic Architecture）是一种能够根据业务需求动态调整资源分配、自动扩展或收缩系统能力的软件或系统设计模式。其核心目标是**在保证系统高可用性、性能和成本效益的同时，灵活应对负载变化、故障或突发流量**。以下是弹性架构的详细介绍：
+
+## 目录
+
+- [一、核心特性](#一核心特性)
+- [二、典型应用场景](#二典型应用场景)
+- [三、技术实现方式](#三技术实现方式)
+- [四、优势与挑战](#四优势与挑战)
+- [五、案例参考](#五案例参考)
+- [六、未来趋势](#六未来趋势)
+- [七、Kubernetes HPA 示例](#七kubernetes-hpa-示例)
 
 ## 一、核心特性
 1. **自动扩展（Auto-scaling）**
@@ -70,5 +82,50 @@
 - **AI驱动弹性**：利用机器学习预测流量模式，提前调整资源（如AWS Predictive Scaling）。
 - **混合云弹性**：跨公有云和私有云动态分配资源，平衡成本与合规性。
 - **边缘弹性**：在靠近用户的边缘节点（如5G基站）部署轻量级服务，降低延迟。
+
+## 七、Kubernetes HPA 示例
+
+基于 CPU 利用率的水平 Pod 自动扩缩容（HPA）：
+
+```yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: order-service-hpa
+  namespace: production
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: order-service
+  minReplicas: 3
+  maxReplicas: 50
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 80
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 30
+      policies:
+        - type: Percent
+          value: 100
+          periodSeconds: 30
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies:
+        - type: Percent
+          value: 10
+          periodSeconds: 60
+```
 
 弹性架构是现代系统设计的核心能力，尤其适用于流量波动大、业务快速变化的场景。通过合理选择技术栈和设计模式，企业可在保障稳定性的同时实现降本增效。

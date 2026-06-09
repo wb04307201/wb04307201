@@ -1,6 +1,19 @@
-# Java代码质量提
+# Java 代码质量提升
 
-提高Java代码质量是开发高效、可维护和可扩展软件的关键。以下是一些核心方面和最佳实践：
+> 最后更新: 2026-06-09
+
+提高 Java 代码质量是开发高效、可维护和可扩展软件的关键。以下是一些核心方面和最佳实践：
+
+## 与高可用的关系
+
+代码质量是**高可用（HA）的第一道防线**——很多生产事故的根因都出在"代码可读性差、异常被吞掉、资源没释放"这类基础质量问题上：
+
+- **防御性编程**（`Objects.requireNonNull`、参数校验）能避免 NPE 引起的请求失败，降低 [熔断](../circuit-break/README.md) 误触发的概率。
+- **异常处理规范**（不要 catch-and-ignore、try-with-resources）能防止文件句柄、数据库连接、线程池等资源泄漏，避免 [超时](../timeout/README.md) 雪崩。
+- **幂等设计**（唯一 ID、状态机）是 [重试](../retry/README.md) 策略的基石：没有幂等性，重试会带来重复扣款、重复下单等业务灾难。
+- **可观测性**（结构化日志、Metrics 埋点）让 [服务降级](../service-degradation/README.md) 触发条件可量化、可自动执行。
+
+> 一句话总结：**质量差的代码会让所有 HA 模式形同虚设。** 本章梳理的是基础质量，建议在阅读 [限流](../rate-limiting/README.md)、[熔断](../circuit-break/README.md)、[重试](../retry/README.md)、[超时](../timeout/README.md)、[降级](../service-degradation/README.md) 之前先扫一遍。
 
 ## 1. 代码可读性
 

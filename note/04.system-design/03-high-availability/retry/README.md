@@ -1,6 +1,18 @@
 # 重试
 
+> 最后更新: 2026-06-09
+
 在分布式系统中，**重试**是一种基础且关键的容错策略，通过自动重试失败的请求来提高系统可用性。然而，不合理的设计可能导致级联故障、资源耗尽或数据不一致等问题。以下从原理、适用场景、策略设计、风险控制及实践工具五个维度展开介绍：
+
+## 目录
+
+- [一、重试的核心原理](#一重试的核心原理)
+- [二、适用场景与不适用场景](#二适用场景与不适用场景)
+- [三、重试策略设计要点](#三重试策略设计要点)
+- [四、重试的风险与控制](#四重试的风险与控制)
+- [五、实践工具与代码示例](#五实践工具与代码示例)
+- [六、最佳实践总结](#六最佳实践总结)
+- [相关章节](#相关章节)
 
 ## 一、重试的核心原理
 重试的核心逻辑是：**当请求因临时性故障（如网络抖动、服务超时、资源竞争）失败时，自动以一定策略（如指数退避）重新发起请求，直到成功或达到最大重试次数**。其本质是通过时间换成功率，适用于可恢复的临时性故障。
@@ -62,11 +74,26 @@
 ### 1. 开源工具
 - **Spring Retry**：基于注解的轻量级重试框架。
   ```java
-  @Retryable(value = {RetryableException.class}, 
-             maxAttempts = 3, 
-             backoff = @Backoff(delay = 1000, multiplier = 2))
-  public String callExternalService() {
+  import org.springframework.retry.annotation.Backoff;
+  import org.springframework.retry.annotation.Retryable;
+  import org.springframework.retry.annotation.Recover;
+  import org.springframework.dao.DataAccessException;
+
+  @Retryable(
+      retryFor = {DataAccessException.class, RuntimeException.class},
+      maxAttempts = 3,
+      backoff = @Backoff(delay = 1000, multiplier = 2)
+  )
+  public User getUserById(Long id) {
       // 调用可能失败的外部服务
+      return userRepository.findById(id)
+          .orElseThrow(() -> new DataAccessException("user not found") {});
+  }
+
+  @Recover
+  public User recover(DataAccessException e, Long id) {
+      // 多次重试仍失败时的兜底（返回缓存 / 默认值 / 上抛）
+      return userCache.get(id);
   }
   ```
 - **Resilience4j Retry**：功能丰富，支持配置化与熔断集成。
@@ -94,3 +121,12 @@
 4. **异常分类处理**：区分临时性故障与业务错误。
 5. **监控与告警**：跟踪重试率、失败率，及时发现系统性问题。
 6. **与熔断、限流协同**：重试是局部容错，需结合全局容错策略。
+
+## 相关章节
+
+重试是"局部容错"的第一道闸门，必须与熔断、限流、超时、降级协同工作：
+
+- [熔断](../circuit-break/README.md) — 熔断 Open 状态应直接失败，避免无效重试放大流量
+- [限流](../rate-limiting/README.md) — 限流被拒绝的请求不应进入重试队列
+- [超时](../timeout/README.md) — 单次调用超时是触发重试的前置条件
+- [服务降级](../service-degradation/README.md) — 重试耗尽后降级返回兜底数据

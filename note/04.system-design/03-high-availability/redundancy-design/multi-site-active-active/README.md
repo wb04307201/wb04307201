@@ -1,6 +1,8 @@
 # 异地多活
 
-在分布式系统中，**异地多活**是一种核心的容错策略，通过在不同地理位置部署多个数据中心，实现服务的高可用性、灾难恢复能力和业务连续性。其核心思想是“多地部署、数据同步、流量智能调度”，确保单一数据中心故障时，其他数据中心能无缝接管流量，用户无感知业务中断。
+> 最后更新: 2026-06-09
+
+在分布式系统中，**异地多活**是一种核心的容错策略，通过在不同地理位置部署多个数据中心，实现服务的高可用性、灾难恢复能力和业务连续性。其核心思想是”多地部署、数据同步、流量智能调度”，确保单一数据中心故障时，其他数据中心能无缝接管流量，用户无感知业务中断。
 
 ## 一、异地多活的核心目标
 1. **容灾与高可用**
@@ -68,3 +70,40 @@
 
 ## 六、总结
 异地多活是分布式系统容错的终极方案，通过多地部署、数据同步与智能流量调度，实现故障自动切换、业务连续性和全球化支持。其核心挑战在于数据一致性、跨地域延迟与运维复杂度，需结合业务特点选择合适的技术方案（如最终一致性、分区多活）。典型应用场景包括金融支付、电商平台和社交媒体，未来将向云原生、智能化方向发展（如AI驱动的流量调度、自动化容灾演练）。
+
+## 七、GSLB 流量调度示例
+
+阿里云 / AWS Global Accelerator 的 DNS 智能解析配置示例（以阿里云云解析 DNS 为例）：
+
+```yaml
+# alidns-gslb.yaml
+apiVersion: alidns.aliyun.com/v1
+kind: Gslb
+metadata:
+  name: order-gslb
+spec:
+  domain: order.example.com
+  ttl: 60
+  policy: geography        # 按地域解析
+  records:
+    - region: cn-hangzhou  # 杭州
+      addresses:
+        - 10.0.1.10
+        - 10.0.1.11
+      weight: 100
+    - region: cn-shanghai  # 上海
+      addresses:
+        - 10.0.2.10
+        - 10.0.2.11
+      weight: 100
+    - region: cn-beijing   # 北京
+      addresses:
+        - 10.0.3.10
+      weight: 50           # 备灾权重较低
+  healthCheck:
+    enabled: true
+    interval: 5
+    timeout: 2
+    failThreshold: 3
+    uri: /healthz
+```

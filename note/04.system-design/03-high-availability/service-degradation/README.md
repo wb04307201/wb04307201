@@ -1,6 +1,20 @@
 # 服务降级
 
+> 最后更新: 2026-06-09
+
 在分布式系统中，**服务降级** 是一种核心容错策略，其核心目标是通过主动降低非核心功能的质量或暂停非关键服务，确保系统在资源紧张或故障时仍能优先保障核心功能的可用性。以下是详细介绍：
+
+## 目录
+
+- [一、服务降级的核心原理](#一服务降级的核心原理)
+- [二、服务降级的实现方式](#二服务降级的实现方式)
+- [三、服务降级的应用场景](#三服务降级的应用场景)
+- [四、服务降级的实践要点](#四服务降级的实践要点)
+- [五、服务降级与其他容错策略的协同](#五服务降级与其他容错策略的协同)
+- [六、案例分析：电商平台大促降级实践](#六案例分析电商平台大促降级实践)
+- [七、代码示例](#七代码示例)
+- [八、总结](#八总结)
+- [相关章节](#相关章节)
 
 ## 一、服务降级的核心原理
 1. **优先级管理**  
@@ -46,7 +60,7 @@
 
 2. **降级预案与演练**
     - 提前设计降级流程（如简化后的订单页面），并通过混沌工程（Chaos Engineering）模拟故障验证预案有效性。
-    - **工具支持**：使用Chaos Monkey随机关闭服务节点，测试系统降级能力。
+    - **工具支持**：使用 Chaos Monkey 随机关闭服务节点，测试系统降级能力。详细可阅读本篇 [混沌工程](../chaos-engineering/README.md) 章节。
 
 3. **监控与恢复机制**
     - **实时监控**：通过Prometheus、Grafana等工具监控关键指标（如错误率、响应时间），触发降级阈值。
@@ -68,10 +82,81 @@
     3. **异步处理**：将订单日志记录改为异步写入，避免阻塞主流程。
 - **效果**：系统核心功能（下单、支付）可用性保持在99.99%，非核心功能响应时间降低70%。
 
-## 七、总结
-服务降级是分布式系统中“优雅退让”的容错策略，其核心价值在于：
+## 七、代码示例
+
+### 1. Sentinel 降级规则（Dashboard JSON 片段）
+```json
+[
+  {
+    “resource”: “getUserRecommend”,
+    “grade”: 1,
+    “count”: 50,
+    “timeWindow”: 5,
+    “minRequestAmount”: 10,
+    “statIntervalMs”: 1000,
+    “slowRatioThreshold”: 0.5
+  }
+]
+```
+> 含义：1 秒内请求数 ≥ 10 且异常比例 / 慢调用比例 > 50% 时，对 `getUserRecommend` 接口在 5 秒内做降级。
+
+### 2. Sentinel Java 代码
+```java
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
+
+@Service
+public class RecommendService {
+
+    @SentinelResource(
+        value = “getUserRecommend”,
+        blockHandler = “recommendFallback”,
+        fallback = “recommendFallback”
+    )
+    public List<Item> recommend(Long userId) {
+        return remoteRecommendClient.fetch(userId);
+    }
+
+    // 降级 / 熔断兜底：返回缓存或空列表
+    public List<Item> recommendFallback(Long userId, BlockException ex) {
+        return recommendCache.getOrDefault(userId, Collections.emptyList());
+    }
+}
+```
+
+### 3. Resilience4j Fallback
+```java
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+
+@Service
+public class PaymentService {
+
+    @CircuitBreaker(name = “payment”, fallbackMethod = “degradedPay”)
+    public PayResult pay(Order order) {
+        return remotePayClient.charge(order);
+    }
+
+    // 降级：返回”稍后重试”占位
+    public PayResult degradedPay(Order order, Throwable t) {
+        return PayResult.deferred(“支付通道繁忙，请稍后重试”);
+    }
+}
+```
+
+## 八、总结
+服务降级是分布式系统中”优雅退让”的容错策略，其核心价值在于：
 - **保障核心业务连续性**：通过资源倾斜确保关键功能稳定运行。
 - **提升系统鲁棒性**：在故障或过载时避免全面崩溃，实现可控的降级。
 - **优化用户体验**：即使部分功能受限，仍能提供基本服务，减少用户流失。
 
 **实施建议**：结合业务特点制定分级降级策略，通过自动化工具实现快速响应，并定期演练确保预案有效性。
+
+## 相关章节
+
+降级是容错链路的”最后一公里”——当其他手段都用尽时给用户一个能用但粗糙的兜底：
+
+- [限流](../rate-limiting/README.md) — 限流被拒绝的请求可以走降级逻辑返回缓存
+- [熔断](../circuit-break/README.md) — 熔断 Open 状态时降级立即接管
+- [重试](../retry/README.md) — 重试耗尽后降级返回兜底
+- [超时](../timeout/README.md) — 超时后可选择降级而非立即失败
+- [混沌工程](../chaos-engineering/README.md) — 通过注入故障验证降级预案有效性
