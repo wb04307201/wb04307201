@@ -19,6 +19,9 @@
 | 7 | [Redis](07-redis/README.md) | ⭐⭐ 进阶 | 数据类型、持久化、集群高可用、内存管理 |
 | 8 | [NoSQL 数据库](08-nosql/README.md) | ⭐⭐ 进阶 | NoSQL 分类、SQL vs NoSQL 对比、选型指南 |
 | 9 | [数据库连接池](09-connection-pool/README.md) | ⭐ 入门 | HikariCP、Druid、参数配置、监控 |
+| 10 | [数据迁移与同步](10-data-migration/README.md) | ⭐⭐ 进阶 | DataX 全量同步、Canal/Maxwell Binlog 订阅、Flink CDC |
+| 11 | [数据库监控告警](11-monitoring/README.md) | ⭐⭐ 进阶 | Prometheus + Grafana + AlertManager、慢查询分析 |
+| 12 | [云数据库](12-cloud-database/README.md) | ⭐⭐ 进阶 | AWS RDS/Aurora、阿里云 PolarDB、TiDB Cloud、自建 vs 云 |
 
 ---
 
@@ -56,6 +59,13 @@
   │ 6. 缓存   │        │ 7. Redis  │
   │ 三大问题  │        │ 深入      │
   └──────────┘        └──────────┘
+                │
+        ┌───────┼────────┐
+        ▼       ▼        ▼
+   ┌─────────┐ ┌──────┐ ┌──────────┐
+   │10.数据迁移│ │11.监控│ │12.云数据库│
+   │ Canal等 │ │Prometheus│ │RDS/Aurora│
+   └─────────┘ └──────┘ └──────────┘
 ```
 
 ## 前置知识
