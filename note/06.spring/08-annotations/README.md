@@ -20,7 +20,7 @@
 | **配置** | `@Configuration` / `@Bean` / `@Value` / `@ConfigurationProperties` / `@PropertySource` / `@ImportResource` | [configuration.md](configuration.md) |
 | **AOP** | `@Aspect` / `@Pointcut` / `@Before` / `@After` / `@AfterReturning` / `@AfterThrowing` / `@Around` / `@Order` | [aop.md](aop.md) |
 | **异常处理** | `@ControllerAdvice` / `@ExceptionHandler` / `@ResponseStatus` | [exception.md](exception.md) |
-| **测试** | `@RunWith` / `@SpringBootTest` / `@ActiveProfiles` / `@MockBean` | [test.md](test.md) |
+| **测试** | `@ExtendWith` / `@SpringBootTest` / `@ActiveProfiles` / `@MockBean` | [test.md](test.md) |
 | **条件装配** | `@Conditional` / `@ConditionalOnClass` / `@ConditionalOnMissingBean` / `@ConditionalOnProperty` | [configuration.md](configuration.md#四条件装配-spring-4) |
 | **启动** | `@SpringBootApplication` / `@EnableAutoConfiguration` / `@ComponentScan` / `@EnableScheduling` / `@EnableAsync` | [configuration.md](configuration.md#二自动配置-spring-boot-核心) |
 | **JPA** | `@Entity` / `@Table` / `@Id` / `@Column` / `@OneToOne` / `@OneToMany` / `@ManyToOne` | [jpa.md](jpa.md) |

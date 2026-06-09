@@ -143,17 +143,26 @@ public class LoadBalancerConfig {
 
 ### 3. 在 application.yml 中指定
 
+> 📌 Spring Cloud LoadBalancer（推荐，2020+ 替代 Ribbon）
+
 ```yaml
-# 全局默认
+# 全局默认（Spring Cloud LoadBalancer）
 spring:
   cloud:
     loadbalancer:
       configurations: random
+      cache:
+        capacity: 256
+        enabled: true
+      health-check:
+        enabled: true
+        interval: 5s
+        path: /actuator/health
 
-# 特定服务
+# 特定服务（LoadBalancer 配置）
 user-service:
   ribbon:
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+    enabled: false  # 显式禁用 Ribbon（如果类路径中有 Ribbon）
 ```
 
 ---

@@ -15,12 +15,14 @@
 
 ## @SpringBootApplication 测试家族
 
-### @RunWith
+### @ExtendWith（JUnit 5，替代 @RunWith）
 
-> JUnit 4 的注解，声明测试运行器。Spring 测试需要用 `SpringRunner`（Spring 提供的运行器）。
+> JUnit 5 的注解，声明测试扩展。Spring 测试需要用 `SpringExtension`（Spring 提供的扩展）。
+>
+> 📌 JUnit 4 的 `@RunWith(SpringRunner.class)` 已被替代，**Spring Boot 3.x 推荐 JUnit 5**。
 
 ```java
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class TestJunit {
     // 测试方法
@@ -33,7 +35,7 @@ public class TestJunit {
 
 ```java
 @ActiveProfiles("dev")
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class TestJunit {
 
@@ -125,7 +127,7 @@ class TestWithCustomProps { ... }
 ## 🤔 思考
 
 1. **@SpringBootTest 启动慢怎么办？** 用 @WebMvcTest/@DataJpaTest 缩小范围，或用 `@MockBean` 替代真实依赖。
-2. **为什么需要 @RunWith？** JUnit 4 要求显式声明运行器；JUnit 5 用 `@ExtendWith(SpringExtension.class)` 替代。
+2. **为什么需要 @ExtendWith？** JUnit 5 通过扩展机制集成 Spring 上下文（`@ExtendWith(SpringExtension.class)`），JUnit 4 用 `@RunWith(SpringRunner.class)`，**Spring Boot 3.x 默认 JUnit 5**。
 3. **测试要连真实数据库吗？** 推荐用 H2 in-memory 或 Testcontainers（Docker），避免污染生产数据。
 4. **@MockBean 和 @Mock 区别？** `@MockBean` 替换 Spring 容器中的 Bean；`@Mock` 仅创建 Mock 对象（不放入容器）。
 

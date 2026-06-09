@@ -293,7 +293,7 @@ AUTO-CONFIGURATION REPORT
 Positive matches:
 -----------------
    DataSourceAutoConfiguration matched:
-      - @ConditionalOnClass found required classes 'javax.sql.DataSource'
+      - @ConditionalOnClass found required classes 'jakarta.sql.DataSource'
 
 Negative matches:
 -----------------

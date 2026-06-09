@@ -88,9 +88,10 @@
     - **关键变化**：包名升级（`org.springframework.boot.autoconfigure.web.servlet` → `org.springframework.boot.autoconfigure.web`），注解优化（`@AutoConfigureOrder` → `@AutoConfiguration` 元注解），功能调整（移除 JSP 支持，新增 `HiddenHttpMethodFilter` 条件配置）。
 
 2. **Jakarta EE 适配**
-    - **旧版（Servlet API）**：
+    - **旧版（Servlet API，2.x 时代）**：
       ```java
-      import javax.servlet.Filter;
+      // 历史 API：2.x 时代为 javax.*，3.x 已统一迁移到 jakarta.*
+      // import javax.servlet.Filter;  // ⚠️ 已弃用，仅作历史对照
       public class JwtFilter extends OncePerRequestFilter { ... }
       ```
     - **新版（Jakarta Servlet API）**：

@@ -57,7 +57,7 @@
 | `@Repository` | 数据访问层（**自动转换持久化异常**） | DAO |
 | `@Controller` | 控制层 | Controller |
 
-> 详见 [08 注解/Bean 注解](../../08-annotations/bean-and-ioc.md#一声明-bean-4-种语义化注解--1-个通用)
+> 详见 [08 注解/Bean 注解](../../08-annotations/bean-and-ioc.md#一声明-bean-4-种语义化注解-1-个通用)
 
 ### @Component vs @Bean
 

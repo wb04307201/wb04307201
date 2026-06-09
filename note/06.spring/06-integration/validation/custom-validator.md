@@ -5,8 +5,8 @@
 ### **1. 创建自定义注解**
 定义注解元数据，指定验证规则和错误消息模板：
 ```java
-import javax.validation.Constraint;
-import javax.validation.Payload;
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
 import java.lang.annotation.*;
 
 @Target({ElementType.FIELD, ElementType.PARAMETER}) // 作用于字段/方法参数
@@ -24,8 +24,8 @@ public @interface AgeRange {
 ### **2. 实现验证逻辑**
 编写`ConstraintValidator`接口的实现类，编写具体校验逻辑：
 ```java
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 public class AgeRangeValidator implements ConstraintValidator<AgeRange, Integer> {
     private int min;

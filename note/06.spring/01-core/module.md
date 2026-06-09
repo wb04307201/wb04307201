@@ -4,11 +4,11 @@
 ### Spring4.x 版本
 ![img.png](img.png)
 ### Spring5.x 版本
-![img_1.png](img_1.png)
+![img_1.png](img-spring-5x-modules.png)
 Spring5.x 版本中 Web 模块的 Portlet 组件已经被废弃掉，同时增加了用于异步响应式处理的 WebFlux 组件。
 
 ## Spring 各个模块的依赖关系
-![img_2.png](img_2.png)
+![img_2.png](img-module-dependencies.png)
 
 ## 核心容器层（Core Container）
 Spring 框架的核心模块，也可以说是基础模块，主要提供 IoC 依赖注入功能的支持，Spring 其他所有的功能基本都需要依赖于该模块

@@ -3,7 +3,7 @@
 ## 1. **使用 `@PostConstruct` 注解**
 在Bean初始化完成后执行（依赖注入完成后，但在服务启动前）。
 ```java
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 
 @Component
