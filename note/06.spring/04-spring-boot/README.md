@@ -15,12 +15,12 @@
 
 | 章节 | 文件 | 核心问题 | 建议时长 |
 |:----:|:----|:---------|:--------:|
-| **自动配置原理** | ⭐待补充 (P3) | `@SpringBootApplication` 背后做了什么？ | 25 min |
-| **Starter 机制** | ⭐待补充 (P3) | 怎么理解 spring-boot-starter-* 的设计？ | 15 min |
+| **自动配置原理** | [auto-configuration.md](auto-configuration.md) | `@SpringBootApplication` 背后做了什么？ | 25 min |
+| **Starter 机制** | 集成在 [custom-starter.md](custom-starter.md) 中 | 怎么理解 spring-boot-starter-* 的设计？ | 15 min |
 | **自定义 Starter** | [custom-starter.md](custom-starter.md) | 如何封装自己的 Starter？ | 25 min |
 | **spring.factories 迁移** | [spring-factories-migration.md](spring-factories-migration.md) | Spring Boot 2.x → 3.x 自动配置机制变化 | 20 min |
 | **启动流程** | [application-bootstrap.md](application-bootstrap.md) | Spring Boot 启动时执行什么？5 种初始化方式 | 20 min |
-| **外部化配置** | ⭐待补充 (P3) | application.yml 的加载顺序、Profile 多环境 | 20 min |
+| **外部化配置** | 集成在 [application-bootstrap.md](application-bootstrap.md) 中 | application.yml 的加载顺序、Profile 多环境 | 20 min |
 
 ---
 

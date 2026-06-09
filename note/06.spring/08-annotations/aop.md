@@ -159,7 +159,7 @@ sequenceDiagram
 
 ## 切点表达式速查
 
-详见 [AOP 切点表达式详解](../../01-core/aop/concepts-and-terminology.md)（P2 拆分时生成）
+详见 [AOP 切点表达式详解](../../01-core/aop/pointcut-expression.md)
 
 ---
 

@@ -16,9 +16,9 @@
 | 章节 | 文件 | 核心问题 | 建议时长 |
 |:----:|:----|:---------|:--------:|
 | **Actuator 端点** | [actuator.md](actuator.md) | 如何暴露健康检查/指标/日志端点？ | 25 min |
-| **Micrometer 指标** | ⭐待补充 (P3) | 如何自定义业务指标（Counter/Gauge/Timer）？ | 20 min |
-| **Prometheus + Grafana** | ⭐待补充 (P3) | 完整的指标采集与可视化方案 | 30 min |
-| **日志与追踪** | ⭐待补充 (P3) | Micrometer Tracing + 日志关联 | 20 min |
+| **Micrometer 指标** | [micrometer.md](micrometer.md) | 如何自定义业务指标（Counter/Gauge/Timer）？ | 20 min |
+| **Prometheus + Grafana** | [prometheus-grafana.md](prometheus-grafana.md) | 完整的指标采集与可视化方案 | 30 min |
+| **日志与追踪** | 集成在 [Micrometer Tracing](../05-spring-cloud/distributed-tracing.md) 中 | Micrometer Tracing + 日志关联 | 20 min |
 
 ---
 

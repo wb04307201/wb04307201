@@ -17,12 +17,12 @@
 |:----:|:----|:---------|:--------:|
 | **Spring Cloud 总览** | [README.md](README.md) | 7 大组件全景图 + 组件淘汰与替代 | 20 min |
 | **服务注册与发现** | [service-registry/](service-registry/) | 服务实例怎么注册和发现？ | 20 min |
-| **配置中心** | ⭐待补充 (P3) | 微服务配置如何集中管理？ | 20 min |
-| **负载均衡** | ⭐待补充 (P3) | 客户端负载均衡 vs 服务端？ | 15 min |
-| **服务调用** | ⭐待补充 (P3) | OpenFeign 怎么用？ | 15 min |
-| **熔断与容错** | ⭐待补充 (P3) | Resilience4j / Sentinel 怎么用？ | 20 min |
-| **API 网关** | ⭐待补充 (P3) | Spring Cloud Gateway vs Zuul？ | 20 min |
-| **链路追踪** | ⭐待补充 (P3) | Micrometer Tracing 怎么用？ | 15 min |
+| **配置中心** | [config-center.md](config-center.md) | 微服务配置如何集中管理？ | 20 min |
+| **负载均衡** | [load-balancer.md](load-balancer.md) | 客户端负载均衡 vs 服务端？ | 15 min |
+| **服务调用** | [rpc-and-feign.md](rpc-and-feign.md) | OpenFeign 怎么用？ | 15 min |
+| **熔断与容错** | [circuit-breaker.md](circuit-breaker.md) | Resilience4j / Sentinel 怎么用？ | 20 min |
+| **API 网关** | [gateway.md](gateway.md) | Spring Cloud Gateway vs Zuul？ | 20 min |
+| **链路追踪** | [distributed-tracing.md](distributed-tracing.md) | Micrometer Tracing 怎么用？ | 15 min |
 
 ---
 
@@ -78,7 +78,7 @@ graph TB
 
 - ⬅️ [返回 Spring 顶层](../README.md)
 - ⬅️ [04 Spring Boot](../04-spring-boot/README.md) — Spring Cloud 基于 Spring Boot
-- ➡️ [03 数据层/分布式事务](../03-data/transaction/distributed/README.md) — 分布式事务是云端关键问题
+- ➡️ [03 数据层/分布式事务/理论](../03-data/transaction/distributed/theory-and-patterns.md) — 分布式事务是云端关键问题
 - [04.system-design/01-foundation/microservices](../04.system-design/01-foundation/system-design-basics/microservices/README.md) — 微服务架构理论基础
 
 ---

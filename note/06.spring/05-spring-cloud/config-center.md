@@ -307,4 +307,4 @@ spring:
 - ⬅️ [返回 05 Spring Cloud](README.md)
 - [服务注册](service-registry/) — 服务注册中心
 - [负载均衡](load-balancer.md) — 从配置中心读取负载均衡策略
-- [04 Spring Boot/外部化配置](../04-spring-boot/externalized-config-and-profiles.md) — 本地配置加载顺序
+- [04 Spring Boot/启动流程](../04-spring-boot/application-bootstrap.md) — 本地配置加载顺序与外部化配置
