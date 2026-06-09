@@ -1,232 +1,114 @@
 # 幂等设计
 
-幂等性（Idempotence）是分布式系统和API设计中的核心概念，指**对同一操作的多次重复执行与单次执行的效果完全一致**。在不可靠的网络、重复请求或并发操作的场景下，幂等性设计能避免数据不一致、重复扣款等严重问题。以下是幂等性设计的关键要点、实现方案及案例分析。
+> 幂等性（Idempotence）是分布式系统和 API 设计中的核心概念，指**对同一操作的多次重复执行与单次执行的效果完全一致**。在不可靠的网络、重复请求或并发操作的场景下，幂等性设计能避免数据不一致、重复扣款等严重问题。
 
-## 幂等性的核心价值
+## 目录
+
+- [为什么需要幂等性](#为什么需要幂等性)
+- [五大策略总览](#五大策略总览)
+- [选型决策树](#选型决策树)
+- [策略详解](#策略详解)
+- [参考资料](#参考资料)
+
+---
+
+## 为什么需要幂等性
+
 ### 1. 解决的典型问题
-- **网络重试**：HTTP请求超时后客户端重试，可能导致服务端重复处理。
-- **消息队列重复消费**：如Kafka/RabbitMQ消费者崩溃后重启，可能重新消费消息。
+
+- **网络重试**：HTTP 请求超时后客户端重试，可能导致服务端重复处理。
+- **消息队列重复消费**：如 Kafka / RabbitMQ 消费者崩溃后重启，可能重新消费消息。
 - **用户重复操作**：如用户多次点击提交按钮，或前端防抖失效。
-- **分布式事务**：如TCC（Try-Confirm-Cancel）模式中Confirm阶段重复调用。
+- **分布式事务**：如 TCC（Try-Confirm-Cancel）模式中 Confirm 阶段重复调用。
 
 ### 2. 业务场景示例
+
 - **支付系统**：用户重复点击支付按钮，应只扣款一次。
 - **订单系统**：创建订单接口被重复调用，应返回相同订单号而非生成新订单。
 - **库存系统**：减库存操作被重复执行，应避免超卖。
 
-## 幂等性实现方案
-### 1. 基于唯一标识（Idempotency Key）
-#### 实现原理
-- 客户端为每个请求生成唯一ID（如UUID、订单号+时间戳），服务端通过该ID去重。
-- **适用场景**：写操作（创建、更新、删除）。
+---
 
-#### 技术实现
-- **Redis缓存**：
-    - 将`IdempotencyKey`作为Key，存储请求处理结果或状态（如`SUCCESS`/`PROCESSING`）。
-    - **示例代码（Java + Redis）**：
-      ```java
-      public Response handleRequest(Request request, String idempotencyKey) {
-          String cacheKey = "IDEMPOTENT:" + idempotencyKey;
-          String cachedResult = redis.get(cacheKey);
-          if (cachedResult != null) {
-              return deserialize(cachedResult); // 直接返回缓存结果
-          }
-          
-          // 业务处理逻辑
-          Response response = processBusiness(request);
-          
-          // 缓存结果（设置过期时间，避免长期占用内存）
-          redis.setex(cacheKey, 3600, serialize(response));
-          return response;
-      }
-      ```
+## 五大策略总览
 
-- **数据库唯一索引**：
-    - 在表中添加唯一约束（如`UNIQUE (order_id, operation_type)`），重复插入时抛出异常。
-    - **示例SQL**：
-      ```sql
-      CREATE TABLE payment_records (
-          id BIGINT PRIMARY KEY,
-          order_id VARCHAR(32) NOT NULL,
-          operation_type VARCHAR(16) NOT NULL,
-          amount DECIMAL(10,2),
-          UNIQUE (order_id, operation_type) -- 确保同一订单的同一操作只能执行一次
-      );
-      ```
+| 策略 | 核心思想 | 适用场景 | 实现成本 | 一致性强度 |
+|------|----------|----------|----------|------------|
+| **Idempotency-Key** | 客户端携带唯一 Key，服务端去重 | 写操作、API 接口 | 中 | 强 |
+| **乐观锁（Version）** | 版本号控制并发更新 | 并发更新同一资源 | 低 | 中 |
+| **状态机** | 限制合法状态转移 | 订单 / 审批等状态流转 | 低 | 强 |
+| **去重表** | 单独维护已处理 ID 表 | MQ 消费、异步任务 | 中 | 强 |
+| **悲观锁 / 分布式锁** | 串行化关键操作 | 强一致短事务 | 高 | 最强 |
 
-### 2. 基于Token机制
-#### 实现原理
-- 服务端预先生成一次性Token（如JWT、雪花ID），客户端携带Token发起请求，服务端校验后销毁Token。
-- **适用场景**：防重复提交表单、敏感操作。
+### 详细对比
 
-#### 技术实现
-- **Token生成与校验**：
-    - 服务端在返回表单页面时生成Token，存入Redis（设置短过期时间，如5分钟）。
-    - 客户端提交表单时携带Token，服务端校验存在后删除Token并处理请求。
-    - **示例流程**：
-      ```plantuml
-      @startuml TokenFlow
-      participant "Client" as client
-      participant "Server" as server
-  
-      client -> server : GET /form (获取表单+Token)
-      server --> client : HTML + Token=xyz123
-      client -> server : POST /submit (表单数据+Token=xyz123)
-      alt Token有效
-          server --> server : 删除Token=xyz123
-          server --> client : 成功响应
-      else Token无效
-          server --> client : 错误提示（请勿重复提交）
-      end
-      @enduml
-      ```
-
-### 3. 基于乐观锁
-#### 实现原理
-- 通过版本号（Version）或时间戳（Timestamp）控制并发更新，确保重复更新不会覆盖数据。
-- **适用场景**：并发更新同一资源（如库存、用户余额）。
-
-#### 技术实现
-- **数据库乐观锁**：
-    - 在表中添加`version`字段，更新时检查版本号是否匹配。
-    - **示例SQL**：
-      ```sql
-      UPDATE inventory 
-      SET quantity = quantity - 1, version = version + 1 
-      WHERE product_id = 1001 AND version = 5; -- 仅当版本为5时更新
-      ```
-    - **影响行数检查**：若返回0，说明版本已变更，需重试或报错。
-
-### 4. 基于状态机
-#### 实现原理
-- 定义操作的合法状态转移路径，重复执行时根据当前状态决定是否允许操作。
-- **适用场景**：订单状态流转（如“待支付”→“已支付”）。
-
-#### 技术实现
-- **枚举状态与转移规则**：
-  ```java
-  public enum OrderStatus {
-      CREATED, PAID, CANCELLED;
-      
-      public boolean canTransitionTo(OrderStatus newStatus) {
-          switch (this) {
-              case CREATED: return newStatus == PAID || newStatus == CANCELLED;
-              case PAID: return false; // 已支付订单不可再次支付
-              case CANCELLED: return false;
-              default: return false;
-          }
-      }
-  }
-  ```
-- **状态校验逻辑**：
-  ```java
-  public void payOrder(Long orderId) {
-      Order order = orderRepository.findById(orderId);
-      if (!order.getStatus().canTransitionTo(OrderStatus.PAID)) {
-          throw new IllegalStateException("订单状态不允许支付");
-      }
-      // 执行支付逻辑...
-  }
-  ```
-
-### 5. 去重表（Deduplication Table）
-#### 实现原理
-- 单独维护一张去重表，记录已处理的请求标识（如消息ID、事务ID）。
-- **适用场景**：消息队列消费、异步任务处理。
-
-#### 技术实现
-- **MySQL去重表**：
-  ```sql
-  CREATE TABLE deduplication_log (
-      id BIGINT AUTO_INCREMENT PRIMARY KEY,
-      message_id VARCHAR(64) NOT NULL UNIQUE, -- 消息唯一ID
-      processed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      INDEX (message_id)
-  );
-  ```
-- **消费逻辑**：
-  ```java
-  public void consumeMessage(String messageId, String payload) {
-      if (deduplicationRepo.existsByMessageId(messageId)) {
-          return; // 跳过已处理消息
-      }
-      // 业务处理...
-      deduplicationRepo.save(new DeduplicationLog(messageId));
-  }
-  ```
+| **方案** | **适用场景** | **优点** | **缺点** |
+|----------|------------|----------|----------|
+| Idempotency-Key | 写操作、API 接口 | 实现简单，通用性强 | 需存储幂等记录，占用资源 |
+| 乐观锁 | 并发更新数据 | 无锁竞争，性能好 | 需处理冲突重试 |
+| 状态机 | 订单状态流转 | 业务逻辑清晰 | 状态定义需覆盖所有场景 |
+| 去重表 | 消息队列消费 | 独立存储，不影响主业务 | 需额外维护表结构 |
+| 分布式锁 | 强一致短事务 | 实现简单 | 性能差，可能死锁 |
 
 ---
 
-## 幂等性设计案例
-### 案例1：支付接口幂等性
-#### 场景
-用户重复点击支付按钮，需确保只扣款一次。
+## 选型决策树
 
-#### 解决方案
-1. **客户端**：生成`payment_request_id`（UUID），携带在支付请求中。
-2. **服务端**：
-    - 查询数据库是否存在相同`payment_request_id`的记录：
-        - 存在：返回原支付结果。
-        - 不存在：执行扣款，并插入记录（包含`payment_request_id`、订单号、金额等）。
-3. **数据库表设计**：
-   ```sql
-   CREATE TABLE payment_records (
-       id BIGINT PRIMARY KEY,
-       payment_request_id VARCHAR(64) NOT NULL UNIQUE, -- 幂等键
-       order_id VARCHAR(32) NOT NULL,
-       amount DECIMAL(10,2),
-       status ENUM('PENDING', 'SUCCESS', 'FAILED'),
-       INDEX (payment_request_id)
-   );
-   ```
+```
+                            你要做什么操作？
+                                   │
+              ┌────────────────────┼────────────────────┐
+              ▼                    ▼                    ▼
+         写 API 接口        并发更新同一资源       MQ 消费 / 异步任务
+              │                    │                    │
+              ▼                    ▼                    ▼
+        客户端能否携带           数据有版本号吗？       消息有唯一 ID 吗？
+        唯一 Key？                  │                    │
+           │                       │                    │
+       ┌───┴───┐              ┌────┴────┐               │
+       ▼       ▼              ▼         ▼               ▼
+   可以     不可以           有 version  无 version     → 去重表
+       │       │              │         │             (deduplication-table)
+       ▼       ▼              ▼         ▼
+  Idempotency-Key  状态机    乐观锁   状态机 +
+   (idempotency-key)         (optimistic)  分布式锁
 
-### 案例2：库存扣减幂等性
-#### 场景
-高并发下减库存，避免超卖。
+        状态流转？  ──Yes──▶  状态机  (state-machine)
 
-#### 解决方案
-1. **数据库乐观锁**：
-   ```sql
-   UPDATE inventory 
-   SET quantity = quantity - 1 
-   WHERE product_id = 1001 AND quantity >= 1;
-   ```
-    - 检查影响行数，若为0则抛出异常（库存不足或并发冲突）。
-2. **Redis分布式锁（可选）**：
-    - 对商品ID加锁，确保同一时间只有一个请求能操作库存。
-    - **示例代码（Redisson）**：
-      ```java
-      RLock lock = redisson.getLock("inventory:lock:1001");
-      try {
-          lock.lock();
-          // 执行数据库减库存逻辑
-      } finally {
-          lock.unlock();
-      }
-      ```
+        需要强一致？──Yes──▶  分布式锁 + 上述任一
+```
+
+### 组合使用建议
+
+实际生产中常见组合：
+
+- **支付扣款**：Idempotency-Key + 数据库唯一索引（双保险）
+- **MQ 消费**：去重表 + 乐观锁
+- **订单状态流转**：状态机 + Idempotency-Key（HTTP 入口）
+- **库存扣减**：乐观锁 + 分布式锁（高竞争场景）
+
+---
+
+## 策略详解
+
+- [Idempotency-Key 唯一标识](idempotency-key/README.md)
+- [乐观锁 / Version](optimistic-lock/README.md)
+- [状态机](state-machine/README.md)
+- [去重表（Deduplication Table）](deduplication-table/README.md)
+- [与分布式事务的关系](vs-distributed-transaction/README.md)
 
 ---
 
 ## 幂等性设计注意事项
-1. **性能权衡**：
-    - 唯一标识校验可能增加数据库查询或Redis访问，需评估QPS影响。
-2. **过期清理**：
-    - 幂等记录（如Redis中的`IdempotencyKey`）需设置过期时间，避免内存泄漏。
-3. **分布式事务**：
-    - 幂等性不能替代分布式事务，需结合TCC、Saga等模式处理复杂场景。
-4. **测试覆盖**：
-    - 通过压测工具（如JMeter）模拟重复请求，验证幂等性是否生效。
+
+1. **性能权衡**：唯一标识校验可能增加数据库查询或 Redis 访问，需评估 QPS 影响。
+2. **过期清理**：幂等记录（如 Redis 中的 `IdempotencyKey`）需设置过期时间，避免内存泄漏。
+3. **与分布式事务的关系**：幂等性不能替代分布式事务；面对复杂多服务场景，需结合 [TCC / Saga](../02-distributed/distributed-transaction/README.md) 等模式。详见 [与分布式事务的关系](vs-distributed-transaction/README.md)。
+4. **测试覆盖**：通过压测工具（如 JMeter）模拟重复请求，验证幂等性是否生效。
 
 ---
 
-## 总结
+## 参考资料
 
-| **方案**                | **适用场景**  | **优点**        | **缺点**       |
-|-----------------------|-----------|---------------|--------------|
-| 唯一标识（Idempotency Key） | 写操作、API接口 | 实现简单，通用性强     | 需存储幂等记录，占用资源 |
-| Token机制               | 防重复提交表单   | 安全性高，防止CSRF攻击 | 需管理Token生命周期 |
-| 乐观锁                   | 并发更新数据    | 无锁竞争，性能好      | 需处理冲突重试      |
-| 状态机                   | 订单状态流转    | 业务逻辑清晰        | 状态定义需覆盖所有场景  |
-| 去重表                   | 消息队列消费    | 独立存储，不影响主业务   | 需额外维护表结构     |
-
-根据业务场景选择合适的方案，或组合使用（如唯一标识+乐观锁），可构建高可靠的幂等系统。
+- [Stripe API - Idempotent Requests](https://stripe.com/docs/api/idempotent_requests)
+- [IETF Draft - The Idempotency-Key HTTP Header Field](https://datatracker.ietf.org/doc/draft-ietf-httpapi-idempotency-key-header/)
+- [Microsoft Azure - Idempotency patterns](https://learn.microsoft.com/azure/architecture/microservices/design/idempency)
