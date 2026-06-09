@@ -1,5 +1,6 @@
 # 演进与组织
 
+> 最后更新: 2026-06-09
 > ⬅️ [返回微服务](../README.md) | ⬅️ [数据一致性](../data-consistency/README.md)
 
 ---
@@ -244,7 +245,7 @@ graph TB
 > **系统结构 = 组织沟通结构**  
 > 期望的微服务架构 = 期望的团队结构。
 
-详见 [TOGAF 第三章：康威定律 + 团队拓扑](../../togaf/README3.md)。
+详见 [TOGAF 第三章：康威定律 + 团队拓扑](../../togaf/conway-and-team-topology.md)。
 
 ### 4.2 微服务团队类型
 
@@ -419,7 +420,7 @@ graph TB
 
 - ⬅️ [返回微服务](../README.md)
 - ⬅️ [数据一致性](../data-consistency/README.md)
-- [TOGAF 第三章：康威定律 + 团队拓扑](../../togaf/README3.md) — 团队拓扑 4 类型
+- [TOGAF 第三章：康威定律 + 团队拓扑](../../togaf/conway-and-team-topology.md) — 团队拓扑 4 类型
 - [微服务拆分策略](../service-decomposition/README.md) — 拆什么、怎么拆
 - [架构认知的演进](../../architecture-evolution/README.md) — Level 1-7 成熟度
 - [可观测性](../../../07-deployment/observability/README.md) — 微服务必备

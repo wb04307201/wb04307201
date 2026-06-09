@@ -1,6 +1,7 @@
 # 第一章：核心思想 + ADM 详解
 
-> ⬅️ [返回目录](README.md) | 下一篇：[BCAT + 业务能力 + 价值流](README2.md)
+> 最后更新: 2026-06-09
+> ⬅️ [返回目录](README.md) | 下一篇：[BCAT + 业务能力 + 价值流](business-capability.md)
 
 ---
 
@@ -92,7 +93,7 @@ graph TB
 | **关键活动** | 1. 业务能力地图 2. 价值流建模 3. 组织映射 4. 业务数据建模 5. 业务流程 |
 | **输入** | 架构愿景、业务现状 |
 | **输出** | 业务能力地图、价值流图、组织图、业务数据模型 |
-| **关键产出物** | **业务能力地图**（详见[第二章](README2.md)） |
+| **关键产出物** | **业务能力地图**（详见[第二章](business-capability.md)） |
 
 #### C. 信息系统架构（Information Systems Architecture）
 
@@ -141,7 +142,7 @@ graph TB
 | **关键活动** | 1. 架构合规性评审 2. 偏差影响评估 3. 变更请求管理 4. 项目复盘 |
 | **输入** | 架构契约（Architecture Contract） |
 | **输出** | 合规报告、变更授权、偏差纠正 |
-| **关键机制** | **架构评审委员会（ARB）**——详见[第四章](README4.md) |
+| **关键机制** | **架构评审委员会（ARB）**——详见[第四章](architecture-governance.md) |
 
 #### H. 架构变更管理（Architecture Change Management）
 
@@ -167,7 +168,7 @@ graph TB
 | "ADM 必须从 A 到 H 顺序走完" | TOGAF 10 明确：**ADM 是迭代的**，可从任意阶段切入 |
 | "必须完成所有阶段才能产生价值" | **MVP 思路**：先 A+B 出最小可用架构，再迭代 |
 | "ADM 是一次性大型项目" | **持续节奏**：每个迭代周期 1-3 个月 |
-| "只有大型企业才用 ADM" | **裁剪后**也适用于 10 人小团队（详见[第四章](README4.md)） |
+| "只有大型企业才用 ADM" | **裁剪后**也适用于 10 人小团队（详见[第四章](architecture-governance.md)） |
 
 ### 3.2 与 Agile 融合
 
@@ -199,7 +200,7 @@ graph LR
 | **ADM 节奏** | 季度/半年——做架构决策、定原则 |
 | **Sprint 节奏** | 双周/周——做实现、收集反馈 |
 | **架构在 Sprint 中的角色** | Architecture Owner（参考 Team Topologies）参与关键 Sprint Review |
-| **轻量文档** | 用 ADR 替代厚重的架构文档（详见[第四章](README4.md)） |
+| **轻量文档** | 用 ADR 替代厚重的架构文档（详见[第四章](architecture-governance.md)） |
 
 ### 3.3 TOGAF 10 强调的"应用 TOGAF 方法"
 
@@ -223,5 +224,5 @@ TOGAF 10 引入了 **"Applying the TOGAF Approach"**（应用 TOGAF 方法）这
 ## 相关章节
 
 - ⬅️ [返回目录](README.md)
-- ➡️ [第二章：BCAT + 业务能力 + 价值流](README2.md)
+- ➡️ [第二章：BCAT + 业务能力 + 价值流](business-capability.md)
 - 🏛️ [ADM 与需求管理（TOGAF 10 官方）](https://pubs.opengroup.org/togaf-standard/)

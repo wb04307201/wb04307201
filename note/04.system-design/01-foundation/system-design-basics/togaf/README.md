@@ -58,10 +58,10 @@ graph TB
 
 | 章节 | 文件 | 核心问题 | 建议时长 |
 |:----:|:-----|:---------|:--------:|
-| **第一章** | [核心思想 + ADM 详解](README1.md) | ADM 的 9 阶段如何系统化把战略变成 IT？ | 50 min |
-| **第二章** | [BCAT + 业务能力 + 价值流](README2.md) | 如何用"业务能力"和"价值流"连接业务与 IT？ | 45 min |
-| **第三章** | [康威定律 + 团队拓扑](README3.md) | 组织结构如何决定系统架构？ | 35 min |
-| **第四章** | [架构治理 + 落地实践](README4.md) | 架构设计完如何保证执行不走样？ | 40 min |
+| **第一章** | [核心思想 + ADM 详解](adm.md) | ADM 的 9 阶段如何系统化把战略变成 IT？ | 50 min |
+| **第二章** | [BCAT + 业务能力 + 价值流](business-capability.md) | 如何用"业务能力"和"价值流"连接业务与 IT？ | 45 min |
+| **第三章** | [康威定律 + 团队拓扑](conway-and-team-topology.md) | 组织结构如何决定系统架构？ | 35 min |
+| **第四章** | [架构治理 + 落地实践](architecture-governance.md) | 架构设计完如何保证执行不走样？ | 40 min |
 
 ### 推荐阅读顺序
 
@@ -84,14 +84,14 @@ README（你在这里）  →  第一章（ADM 全貌）
 | 概念 | 一句话定义 | 章节 |
 |------|----------|:----:|
 | **TOGAF** | The Open Group Architecture Framework，企业架构框架 | 全部 |
-| **ADM** | Architecture Development Method，9 阶段循环迭代方法 | [第一章](README1.md) |
-| **BCAT** | Business / Information Systems(数据+应用) / Technology 四层 | [第二章](README2.md) |
-| **业务能力** | 组织"做什么"（而非"怎么做"）的能力单元 | [第二章](README2.md) |
-| **价值流** | 端到端为客户创造价值的活动序列 | [第二章](README2.md) |
-| **康威定律** | 系统结构 = 组织的沟通结构 | [第三章](README3.md) |
-| **团队拓扑** | 4 种团队类型（流式/赋能/复杂子系统/平台） | [第三章](README3.md) |
-| **架构治理** | 6 维度（合规/合同/决策/沟通/能力/控制） | [第四章](README4.md) |
-| **ADR** | Architecture Decision Record，轻量级架构决策记录 | [第四章](README4.md) |
+| **ADM** | Architecture Development Method，9 阶段循环迭代方法 | [第一章](adm.md) |
+| **BCAT** | Business / Information Systems(数据+应用) / Technology 四层 | [第二章](business-capability.md) |
+| **业务能力** | 组织"做什么"（而非"怎么做"）的能力单元 | [第二章](business-capability.md) |
+| **价值流** | 端到端为客户创造价值的活动序列 | [第二章](business-capability.md) |
+| **康威定律** | 系统结构 = 组织的沟通结构 | [第三章](conway-and-team-topology.md) |
+| **团队拓扑** | 4 种团队类型（流式/赋能/复杂子系统/平台） | [第三章](conway-and-team-topology.md) |
+| **架构治理** | 6 维度（合规/合同/决策/沟通/能力/控制） | [第四章](architecture-governance.md) |
+| **ADR** | Architecture Decision Record，轻量级架构决策记录 | [第四章](architecture-governance.md) |
 
 ---
 
@@ -113,10 +113,10 @@ README（你在这里）  →  第一章（ADM 全貌）
 
 ## 📂 相关章节
 
-- [第一章：核心思想 + ADM 详解](README1.md) — 从业务战略到 IT 实现的系统化方法
-- [第二章：BCAT + 业务能力 + 价值流](README2.md) — 连接业务与 IT 的核心建模
-- [第三章：康威定律 + 团队拓扑](README3.md) — 组织结构与系统架构的对齐
-- [第四章：架构治理 + 落地实践](README4.md) — 6 维治理 + 不同规模裁剪
+- [第一章：核心思想 + ADM 详解](adm.md) — 从业务战略到 IT 实现的系统化方法
+- [第二章：BCAT + 业务能力 + 价值流](business-capability.md) — 连接业务与 IT 的核心建模
+- [第三章：康威定律 + 团队拓扑](conway-and-team-topology.md) — 组织结构与系统架构的对齐
+- [第四章：架构治理 + 落地实践](architecture-governance.md) — 6 维治理 + 不同规模裁剪
 - [架构认知的演进](../architecture-evolution/README.md) — OOD → DDD → TOGAF 的认知升级之路
 - [领域驱动设计 DDD](../ddd/README.md) — 以业务领域为核心的建模方法
 - [面向对象设计 OOD](../ood/README.md) — SOLID 原则、GRASP 职责分配
@@ -133,4 +133,4 @@ README（你在这里）  →  第一章（ADM 全貌）
 
 ---
 
-> 🚀 从 [第一章：核心思想 + ADM 详解](README1.md) 开始
+> 🚀 从 [第一章：核心思想 + ADM 详解](adm.md) 开始

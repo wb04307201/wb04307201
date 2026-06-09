@@ -1,5 +1,6 @@
 # 数据一致性
 
+> 最后更新: 2026-06-09
 > ⬅️ [返回微服务](../README.md) | ⬅️ [服务契约](../service-contract/README.md) | ➡️ [演进与组织](../migration-and-organization/README.md)
 
 ---
@@ -111,7 +112,7 @@ sequenceDiagram
 - ❌ 循环依赖风险（A 监听 B，B 监听 A）
 - ❌ 测试复杂
 
-#### 方式 2：编排式 Saga（Orchestration）
+#### 方式 2：协调式 Saga（Orchestration）
 
 > **有中心协调器（Orchestrator）**，按步骤调用各服务。
 

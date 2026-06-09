@@ -122,8 +122,8 @@
 |------|-------|------------------|
 | **DDD 限界上下文** | [../ddd/](../ddd/README.md) | 服务拆分的**业务依据** |
 | **TOGAF 业务能力** | [../togaf/](../togaf/README.md) | 服务拆分的**组织依据** |
-| **团队拓扑** | [../togaf/README3.md](../togaf/README3.md) | 服务团队的**组织模式** |
-| **康威定律** | [../togaf/README3.md](../togaf/README3.md) | 组织 → 架构的**因果关系** |
+| **团队拓扑** | [../togaf/conway-and-team-topology.md](../togaf/conway-and-team-topology.md) | 服务团队的**组织模式** |
+| **康威定律** | [../togaf/conway-and-team-topology.md](../togaf/conway-and-team-topology.md) | 组织 → 架构的**因果关系** |
 | **分布式锁/ID** | [../../../02-distributed/](../../../02-distributed/) | 跨服务协调基础设施 |
 | **分布式事务** | [../../../02-distributed/distributed-transaction/](../../../02-distributed/distributed-transaction/) | Saga / TCC 等模式基础 |
 | **限流 / 熔断 / 重试** | [../../../03-high-availability/](../../../03-high-availability/) | 服务弹性工程实现 |

@@ -1,5 +1,6 @@
 # 服务间通信
 
+> 最后更新: 2026-06-09
 > ⬅️ [返回微服务](../README.md) | ⬅️ [服务拆分策略](../service-decomposition/README.md) | ➡️ [服务契约](../service-contract/README.md)
 
 ---
@@ -462,6 +463,10 @@ A → B（故障），A 持续重试 → A 资源耗尽
 - ⬅️ [服务拆分策略](../service-decomposition/README.md)
 - ➡️ [服务契约](../service-contract/README.md)
 - [数据一致性](../data-consistency/README.md) — 异步通信的最终一致性挑战
+- [RPC vs REST 对比](../../../02-distributed/rpc/rpc-and-rest/README.md) — 同步通信选型
+- [RPC 总览](../../../02-distributed/rpc/README.md) — RPC 协议与框架
+- [服务发现](../../../02-distributed/service-discovery/README.md) — 动态寻址
+- [API 网关](../../../02-distributed/api-gateway/README.md) — 统一入口
 - [分布式锁](../../../02-distributed/distributed-lock/README.md) — 异步通信的去重机制
 - [限流/熔断/重试](../../../03-high-availability/) — 通信的可靠性保障
 - [消息队列](../../../04-high-performance/mq/) — 异步通信的基础设施

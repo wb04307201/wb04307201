@@ -1,5 +1,6 @@
 # 服务拆分策略
 
+> 最后更新: 2026-06-09
 > ⬅️ [返回微服务](../README.md) | ➡️ [服务间通信](../service-communication/README.md)
 
 ---
@@ -14,7 +15,7 @@
 
 ### 1.1 按业务能力拆（Business Capability）
 
-> **最常用、最稳定**——按 TOGAF 业务能力图划分服务（[../togaf/README2.md](../../togaf/README2.md)）。
+> **最常用、最稳定**——按 TOGAF 业务能力图划分服务（[../togaf/business-capability.md](../../togaf/business-capability.md)）。
 
 ```mermaid
 graph TB
@@ -330,7 +331,9 @@ services/
 
 - ⬅️ [返回微服务](../README.md)
 - ➡️ [服务间通信](../service-communication/README.md)
+- ➡️ [服务契约](../service-contract/README.md) — 拆分后的接口契约
+- ➡️ [数据一致性](../data-consistency/README.md) — 拆分后的一致性挑战
 - [微服务与 DDD](../microservices-and-ddd/README.md) — 业务能力 → 限界上下文
-- [TOGAF 业务能力](../../togaf/README2.md) — 业务能力地图
+- [TOGAF 业务能力](../../togaf/business-capability.md) — 业务能力地图
 - [DDD 限界上下文](../../ddd/README.md) — 服务边界的业务依据
 - [演进与组织](../migration-and-organization/README.md) — 拆分的实施路径

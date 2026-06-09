@@ -1,6 +1,7 @@
 # 第二章：BCAT + 业务能力 + 价值流
 
-> ⬅️ [返回目录](README.md) | 上一篇：[核心思想 + ADM 详解](README1.md) | 下一篇：[康威定律 + 团队拓扑](README3.md)
+> 最后更新: 2026-06-09
+> ⬅️ [返回目录](README.md) | 上一篇：[核心思想 + ADM 详解](adm.md) | 下一篇：[康威定律 + 团队拓扑](conway-and-team-topology.md)
 
 ---
 
@@ -182,7 +183,7 @@ graph LR
 | 客户管理 | `Customer` Context | `Customer` 聚合 |
 
 > 🎯 **关键洞察**：**业务能力是微服务/限界上下文的"金标准来源"**。  
-> 按业务能力拆分 → 自然形成清晰边界 → 团队规模与能力匹配 → 符合康威定律（[第三章](README3.md)）。
+> 按业务能力拆分 → 自然形成清晰边界 → 团队规模与能力匹配 → 符合康威定律（[第三章](conway-and-team-topology.md)）。
 
 ### 5.3 业务能力规划的常见错误
 
@@ -247,7 +248,7 @@ graph LR
 ## 相关章节
 
 - ⬅️ [返回目录](README.md)
-- ⬅️ [上一篇：核心思想 + ADM 详解](README1.md)
-- ➡️ [下一篇：康威定律 + 团队拓扑](README3.md)
+- ⬅️ [上一篇：核心思想 + ADM 详解](adm.md)
+- ➡️ [下一篇：康威定律 + 团队拓扑](conway-and-team-topology.md)
 - [领域驱动设计 DDD](../ddd/README.md) — 业务能力 → 限界上下文的落地
 - [微服务架构](../microservices/README.md) — 能力拆分的服务化映射

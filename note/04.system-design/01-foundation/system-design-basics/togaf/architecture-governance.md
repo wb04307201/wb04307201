@@ -1,6 +1,7 @@
 # 第四章：架构治理 + 落地实践
 
-> ⬅️ [返回目录](README.md) | 上一篇：[康威定律 + 团队拓扑](README3.md)
+> 最后更新: 2026-06-09
+> ⬅️ [返回目录](README.md) | 上一篇：[康威定律 + 团队拓扑](conway-and-team-topology.md)
 
 ---
 
@@ -276,7 +277,7 @@ graph TB
 | **📚 学习曲线** | 概念体系庞大，需专职架构师角色 |
 | **🏢 文化依赖** | 治理 6 维度需要组织文化支持，否则流于形式 |
 | **💰 认证成本** | TOGAF 10 认证培训费用较高 |
-| **🔄 与敏捷的张力** | 即使 v10 加强了敏捷，仍需调适（详见[第三章](README3.md)） |
+| **🔄 与敏捷的张力** | 即使 v10 加强了敏捷，仍需调适（详见[第三章](conway-and-team-topology.md)） |
 
 ---
 
@@ -320,9 +321,9 @@ graph TB
 ## 相关章节
 
 - ⬅️ [返回目录](README.md)
-- ⬅️ [上一篇：康威定律 + 团队拓扑](README3.md)
-- ⬅️ [上第一章：核心思想 + ADM 详解](README1.md)
-- ⬅️ [上第二章：BCAT + 业务能力 + 价值流](README2.md)
+- ⬅️ [上一篇：康威定律 + 团队拓扑](conway-and-team-topology.md)
+- ⬅️ [上第一章：核心思想 + ADM 详解](adm.md)
+- ⬅️ [上第二章：BCAT + 业务能力 + 价值流](business-capability.md)
 - [架构认知的演进](../architecture-evolution/README.md) — OOD → DDD → TOGAF 的认知升级
 - [领域驱动设计 DDD](../ddd/README.md) — TOGAF 业务能力 → DDD 限界上下文
 - [面向对象设计 OOD](../ood/README.md) — SOLID 原则、GRASP

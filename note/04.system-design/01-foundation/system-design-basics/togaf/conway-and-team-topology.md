@@ -1,6 +1,7 @@
 # 第三章：康威定律 + 团队拓扑
 
-> ⬅️ [返回目录](README.md) | 上一篇：[BCAT + 业务能力 + 价值流](README2.md) | 下一篇：[架构治理 + 落地实践](README4.md)
+> 最后更新: 2026-06-09
+> ⬅️ [返回目录](README.md) | 上一篇：[BCAT + 业务能力 + 价值流](business-capability.md) | 下一篇：[架构治理 + 落地实践](architecture-governance.md)
 
 ---
 
@@ -212,7 +213,7 @@ TOGAF 10 通过 **Open Agile Architecture™** 标准（2025 年发布 2.0）与
 ## 相关章节
 
 - ⬅️ [返回目录](README.md)
-- ⬅️ [上一篇：BCAT + 业务能力 + 价值流](README2.md)
-- ➡️ [下一篇：架构治理 + 落地实践](README4.md)
+- ⬅️ [上一篇：BCAT + 业务能力 + 价值流](business-capability.md)
+- ➡️ [下一篇：架构治理 + 落地实践](architecture-governance.md)
 - [微服务架构](../microservices/README.md) — 康威定律与微服务边界
 - [Team Topologies 官网](https://teamtopologies.com/) — 团队拓扑原始资料

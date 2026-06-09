@@ -66,7 +66,7 @@ REST（Representational State Transfer，表述性状态转移）是一种软件
 - `400 Bad Request`：客户端参数错误。
 - `401 Unauthorized`：未认证。
 - `403 Forbidden`：无权限访问。
-  / `404 Not Found`：资源不存在。
+- `404 Not Found`：资源不存在。
 - `405 Method Not Allowed`：该资源不支持此 HTTP 方法。
 - `422 Unprocessable Entity`：语义正确但无法处理（如验证失败）。
 - `500 Internal Server Error`：服务器内部错误。
