@@ -22,3 +22,9 @@
 - [Paxos](paxos/README.md) — Basic Paxos、Multi Paxos
 - [Raft](raft/README.md) — Leader 选举、日志复制、安全性
 - [Gossip](gossip/README.md) — 反熵、谣言传播协议
+
+## 参考链接
+
+- [Paxos Made Simple（Lamport 原文）](https://lamport.azurewebsites.net/pubs/lamport-paxos.pdf)
+- [In Search of an Understandable Consensus Algorithm（Raft 论文）](https://raft.github.io/raft.pdf)
+- [etcd 官方文档](https://etcd.io/docs/)

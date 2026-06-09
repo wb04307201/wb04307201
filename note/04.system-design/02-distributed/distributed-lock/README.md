@@ -61,7 +61,7 @@
 - **缓存更新**：避免多节点同时重建缓存。
 - **消息队列消费**：防止消息被重复处理。
 
-## 6. 选型建议
+## 六、选型建议
 - **高性能场景**：优先选Redis（如Redisson）。
 - **强一致性场景**：选ZooKeeper或Etcd。
 - **简单场景**：若已有Redis，可直接使用`SETNX`+Lua。
@@ -79,3 +79,16 @@ Long result = redisTemplate.execute(new DefaultRedisScript<>(script, Long.class)
 ```
 
 分布式锁是分布式系统中的基础组件，选择方案时需根据业务需求（性能、一致性、复杂度）综合权衡。
+
+## 相关章节
+
+- [UUID](../distributed-id/uuid/README.md) — 示例中用作锁的客户端标识（clientId）
+- [分布式事务](../distributed-transaction/README.md) — 分布式锁在事务协调中的作用
+- [服务注册与发现](../service-discovery/README.md) — Etcd/ZooKeeper 同时支持锁与发现
+- [分布式 ID 总览](../distributed-id/README.md) — 唯一标识生成方案
+
+## 参考链接
+
+- [Redisson 官方文档](https://redisson.org/docs/)
+- [Redlock 算法原文（Antirez）](https://redis.io/docs/manual/patterns/distributed-locks/)
+- [Apache Curator（ZooKeeper 客户端）](https://curator.apache.org/)

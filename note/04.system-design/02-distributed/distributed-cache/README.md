@@ -1,6 +1,8 @@
 # 分布式缓存
 
 > 分布式缓存是提升系统读写性能、减轻数据库压力的关键组件。本文涵盖 Redis Cluster 架构、缓存三大经典问题（穿透/击穿/雪崩）及其解决方案、缓存一致性策略和淘汰策略。
+>
+> 最后更新: 2026-06-09
 
 ## 为什么需要分布式缓存
 
@@ -85,10 +87,10 @@ public Object getData(String key) {
     value = db.query(key);
     if (value == null) {
         // 缓存空值，短 TTL
-        cache.set(key, new EmptyValue(), 60, TimeUnit.SECONDS);
+        cache.opsForValue().set(key, new EmptyValue(), 60, TimeUnit.SECONDS);
         return null;
     }
-    cache.set(key, value, 30, TimeUnit.MINUTES);
+    cache.opsForValue().set(key, value, 30, TimeUnit.MINUTES);
     return value;
 }
 
@@ -141,7 +143,7 @@ public Object getDataWithLock(String key) {
             value = cache.get(key);
             if (value != null) return value;
             value = db.query(key);
-            cache.set(key, value, 30, TimeUnit.MINUTES);
+            cache.opsForValue().set(key, value, 30, TimeUnit.MINUTES);
         } finally {
             redisLock.unlock(key + ":lock");
         }
@@ -196,7 +198,7 @@ public Object getDataWithLogicalExpire(String key) {
 public void setCache(String key, Object value) {
     int baseTTL = 30 * 60;  // 基础 30 分钟
     int randomOffset = ThreadLocalRandom.current().nextInt(600); // 随机 0~10 分钟
-    cache.set(key, value, baseTTL + randomOffset, TimeUnit.SECONDS);
+    cache.opsForValue().set(key, value, baseTTL + randomOffset, TimeUnit.SECONDS);
 }
 
 // 方案2：多级缓存
@@ -215,7 +217,7 @@ public Object getDataMultiLevel(String key) {
     // 3. 数据库
     value = db.query(key);
     if (value != null) {
-        redisCache.set(key, value, 30, TimeUnit.MINUTES);
+        redisCache.opsForValue().set(key, value, 30, TimeUnit.MINUTES);
         localCache.put(key, value, 5, TimeUnit.MINUTES);
     }
     return value;
@@ -334,7 +336,7 @@ public void updateUserWithDoubleDelete(User user) {
 
 配置方式：
 ```conf
-# redis.conf
+# redis.conf 配置示例
 maxmemory 2gb
 maxmemory-policy allkeys-lru
 ```
@@ -427,3 +429,10 @@ User user = cache.get("user:1", key -> {
 - [Redis 官方文档](https://redis.io/docs/)
 - [Redis 设计与实现](http://redisbook.com/)
 - [Caffeine Cache](https://github.com/ben-manes/caffeine)
+- [Spring Data Redis 文档](https://docs.spring.io/spring-data/redis/docs/current/reference/html/)
+
+## 相关章节
+
+- [API 网关](../api-gateway/README.md) — 网关层缓存策略
+- [分布式锁](../distributed-lock/README.md) — 缓存击穿互斥锁
+- [分布式 ID](../distributed-id/README.md) — 缓存 key 命名与防雪崩 ID 设计

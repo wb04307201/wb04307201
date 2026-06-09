@@ -117,3 +117,9 @@
 
 ## 六、总结
 ULID 通过结合时间戳和随机数，在保持唯一性的同时提供了排序能力，是 UUID 的理想替代方案。在 Java 中，推荐使用 `ulid-creator` 库，其功能全面且性能优异。实际应用中，需根据场景选择标准 ULID 或单调 ULID，并关注安全性和时钟同步问题。
+
+## 参考链接
+
+- [ULID 规范（GitHub）](https://github.com/ulid/spec)
+- [ulid-creator Java 库](https://github.com/f4b6a3/ulid-creator)
+- [ulid4j Java 库](https://github.com/java-ulid/ulid4j)

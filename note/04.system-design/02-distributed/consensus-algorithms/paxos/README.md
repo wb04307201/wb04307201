@@ -55,11 +55,20 @@ Paxos算法通过三种角色和两个阶段实现一致性：
     - 如Fast Paxos、Cheap Paxos等，针对特定场景优化性能或容错性。
 
 ## 五、应用场景与实例
-Paxos算法广泛应用于需要强一致性的分布式系统，包括：
-- **分布式数据库**：如Apache Cassandra、Amazon DynamoDB，确保多副本数据一致性。
-- **分布式存储系统**：如Google Spanner、CockroachDB，协调数据复制和同步。
-- **分布式事务处理**：如Google Percolator、TiDB，协调事务提交和回滚。
-- **分布式协调服务**：如ZooKeeper（基于ZAB协议，受Paxos启发），实现分布式锁、队列等。
+Paxos算法在工业界被广泛应用于需要强一致性的分布式系统，但需要明确区分**真正使用 Paxos 的系统**和**借鉴 Paxos 思想的其他一致性协议**。
+
+| **应用**               | **说明**                                |
+|-----------------------|---------------------------------------|
+| **Google Chubby**     | 分布式锁服务，基于 Paxos 实现                |
+| **Google Spanner**    | 全球分布式数据库，使用 Multi-Paxos          |
+| **Google Megastore**  | Google 分布式存储，基于 Paxos              |
+| **ZooKeeper ZAB**     | 类 Paxos 协议，是 ZooKeeper 的一致性核心     |
+| **etcd（控制平面）**    | 强一致性 KV 存储，基于 **Raft**（非 Paxos） |
+| **TiKV**              | 分布式 KV 存储，基于 **Raft**（非 Paxos）   |
+
+> **注意**：Cassandra 使用 Gossip + 最终一致性复制；DynamoDB 使用 Quorum 复制；CockroachDB 使用 Raft。它们都不是 Paxos 的实际使用者。
+
+**总结**：Paxos 主要在 Google 内部大规模落地；开源生态中 Raft 已成为共识协议的事实标准。
 
 ## 六、优缺点分析
 | **优点**                          | **缺点**                                 |
@@ -67,3 +76,27 @@ Paxos算法广泛应用于需要强一致性的分布式系统，包括：
 | **强一致性**：严格遵循多数派原则，确保数据一致性。     | **实现复杂**：两阶段提交和提案编号管理逻辑复杂，易出错。         |
 | **高容错性**：允许部分节点故障，不影响系统运行。      | **性能开销**：两次通信（准备+接受阶段）增加延迟，节点越多通信成本越高。 |
 | **通用性强**：不依赖特定硬件或语言，适用于多种分布式场景。 | **活锁风险**：多Proposer竞争可能导致活锁，需额外机制解决。    |
+
+## 七、总结
+Paxos 是分布式共识理论的奠基性算法，它证明了一致性是**可以**在异步分布式系统中达成的（前提是大多数节点存活）。但其著名的晦涩难懂，导致 Diego Ongaro 和 John Ousterhout 在 2014 年提出了更易理解的 **Raft** 算法，并迅速成为开源生态的事实标准。
+
+**何时仍选 Paxos**：
+- 学术研究或教学场景，需要理解共识算法最原始的形式
+- 现有系统已基于 Paxos（如 Chubby、Spanner），改造为 Raft 成本过高
+- 对活锁、提案编号等机制有特殊定制需求
+
+**何时选 Raft（推荐）**：
+- 新项目、追求工程可读性和可实现性
+- 生态成熟：etcd、Consul、TiKV、CockroachDB 均使用 Raft
+- 需要丰富的开源参考实现和工具链
+
+**推荐阅读**：
+- Lamport 原始论文 [Paxos Made Simple](https://lamport.azurewebsites.net/pubs/lamport-paxos.pdf)
+- Ongaro 论文 [In Search of an Understandable Consensus Algorithm](https://raft.github.io/raft.pdf)
+- 通俗讲解推荐 [Raft 官网交互式演示](https://raft.github.io/)
+
+## 参考链接
+- [Paxos Made Simple（Lamport 原文）](https://lamport.azurewebsites.net/pubs/lamport-paxos.pdf)
+- [In Search of an Understandable Consensus Algorithm（Raft 论文）](https://raft.github.io/raft.pdf)
+- [etcd 官方文档](https://etcd.io/docs/)
+- [Raft 交互式演示](https://raft.github.io/)

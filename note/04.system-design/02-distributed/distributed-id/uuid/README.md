@@ -1,5 +1,7 @@
 # UUID
 
+> 最后更新: 2026-06-09
+
 ## UUID 简介
 
 UUID (Universally Unique Identifier) 是一种用于标识信息的标准化方法，也称为 GUID (Globally Unique Identifier)。它是一个128位的数字，通常表示为32个十六进制数字，用连字符分为五组，形式为8-4-4-4-12。
@@ -214,3 +216,12 @@ public class UUIDVersion3And5 {
 ## 总结
 
 Java的`java.util.UUID`类提供了简单易用的UUID生成和操作方法。对于大多数应用场景，使用`UUID.randomUUID()`生成版本4的随机UUID就足够了。如果需要基于时间或名称生成UUID，可以按照上述方法实现。
+
+> **补充说明**：除传统 v1-v5 之外，**RFC 9562**（2024 年发布）新增了 **UUID v6（重排序的时间戳）**、**UUID v7（Unix 时间戳 + 随机数，推荐数据库主键）**、**UUID v8（自定义）**。如需可排序、避免索引碎片的 UUID，建议使用 v7。
+
+## 参考链接
+
+- [RFC 9562 — Universally Unique IDentifiers (UUID)](https://www.rfc-editor.org/rfc/rfc9562.html)
+- [RFC 4122 — 旧版 UUID 标准](https://www.rfc-editor.org/rfc/rfc4122.html)
+- [Java UUID 文档（java.util.UUID）](https://docs.oracle.com/javase/8/docs/api/java/util/UUID.html)
+- [UUID v7 详解](https://uuid7.com/)

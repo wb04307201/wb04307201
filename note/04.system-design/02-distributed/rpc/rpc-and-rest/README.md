@@ -55,3 +55,10 @@ RPC（Remote Procedure Call，远程过程调用）和REST（Representational St
 - **RPC**：适合内部服务、高性能、强类型场景，强调“调用过程”。
 - **REST**：适合公开API、松耦合、跨平台场景，强调“资源状态转移”。
 - **选择建议**：根据具体业务需求（如性能、可维护性、团队技术栈）权衡，微服务架构中常混合使用（如内部用RPC，外部用REST）。
+
+## 相关章节
+
+- [服务通信（微服务篇）](../../../01-foundation/system-design-basics/microservices/service-communication/README.md) — 通信模式综述
+- [Apache Dubbo](../apache-dubbo/README.md) — 高性能 Java RPC 实践
+- [API 网关](../../api-gateway/README.md) — REST/HTTP 入口与统一管理
+- [RPC 总览](../README.md)

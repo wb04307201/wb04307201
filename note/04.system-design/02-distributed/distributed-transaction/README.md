@@ -74,7 +74,7 @@
     - **TCC模式**：支持自定义Try/Confirm/Cancel。
     - **SAGA模式**：长事务流程编排。
 
-## 三、 选型建议**
+## 三、 选型建议
 | 场景        | 推荐方案           | 特点            |
 |-----------|----------------|---------------|
 | 强一致性要求高   | 2PC、Seata AT模式 | 同步阻塞，适合金融核心交易 |
@@ -90,3 +90,15 @@
 
 ## 五、 总结
 分布式事务是分布式系统的核心挑战之一，选择方案时需权衡一致性、可用性和性能。对于强一致性场景，可优先考虑Seata AT或2PC；对于高并发最终一致性场景，TCC或事件驱动更合适。实际项目中，往往结合多种模式（如Seata AT + TCC）以满足复杂业务需求。
+
+## 相关章节
+
+- [数据一致性理论基础（微服务篇）](../../../01-foundation/system-design-basics/microservices/data-consistency/README.md)
+- [分布式锁](../distributed-lock/README.md) — TCC/SAGA 中协调资源的关键
+- [分布式 ID](../distributed-id/README.md) — 事务/消息的唯一标识
+
+## 参考链接
+
+- [Seata 官方文档](https://seata.apache.org/zh-cn/docs/overview/what-is-seata)
+- [Saga 模式论文（Garcia-Molina & Salem, 1987）](https://www.cs.cornell.edu/andru/cs711/2002fa/reading/sagas.pdf)
+- [微服务数据一致性模式](https://microservices.io/patterns/data/transactional-outbox.html)

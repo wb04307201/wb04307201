@@ -1,6 +1,8 @@
 # 服务注册与发现
 
 > 服务注册与发现是微服务架构的核心基础设施，负责管理服务实例的地址信息，使服务之间能够动态发现和通信。
+>
+> 最后更新: 2026-06-09
 
 ## 什么是服务发现
 
@@ -214,3 +216,10 @@ Service A          Sidecar A     Sidecar B         Service B
 - [Alibaba Nacos](https://nacos.io/)
 - [HashiCorp Consul](https://www.consul.io/)
 - [Apache ZooKeeper](https://zookeeper.apache.org/)
+
+## 相关章节
+
+- [API 网关](../api-gateway/README.md) — 与服务端发现模式结合实现统一入口
+- [RPC](../rpc/README.md) — 内部服务调用的实现方式
+- [分布式锁](../distributed-lock/README.md) — 基于 Etcd/ZooKeeper 的实现
+- [分布式 ID](../distributed-id/README.md) — 实例 ID 与请求唯一标识

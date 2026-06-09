@@ -4,7 +4,7 @@ Dubbo 是阿里巴巴开源的一款高性能、轻量级的 **Java RPC（Remote
 
 ---
 
-### **核心特性**
+## 核心特性
 1. **高性能透明化 RPC**
     - 基于 Netty 或 Mina 等 NIO 框架实现高效通信，支持多种协议（如 Dubbo、HTTP、RMI 等）。
     - 通过动态代理（如 Javassist 或 JDK 动态代理）实现本地调用的透明化。
@@ -29,7 +29,7 @@ Dubbo 是阿里巴巴开源的一款高性能、轻量级的 **Java RPC（Remote
 
 ---
 
-### **核心组件**
+## 核心组件
 1. **Provider**：服务提供者，暴露远程服务接口。
 2. **Consumer**：服务消费者，调用远程服务。
 3. **Registry**：服务注册中心（如 ZooKeeper），管理服务地址列表。
@@ -38,7 +38,7 @@ Dubbo 是阿里巴巴开源的一款高性能、轻量级的 **Java RPC（Remote
 
 ---
 
-### **工作原理**
+## 工作原理
 1. **服务启动**：Provider 向 Registry 注册服务地址，Consumer 从 Registry 订阅服务。
 2. **服务调用**：Consumer 通过代理（Proxy）发起调用，Dubbo 框架根据负载均衡策略选择 Provider。
 3. **网络传输**：使用 Netty 等 NIO 框架进行异步通信，序列化请求/响应数据。
@@ -46,14 +46,14 @@ Dubbo 是阿里巴巴开源的一款高性能、轻量级的 **Java RPC（Remote
 
 ---
 
-### **典型应用场景**
+## 典型应用场景
 - **分布式服务化架构**：将单体应用拆分为多个微服务，通过 Dubbo 实现服务间调用。
 - **高并发系统**：利用 Dubbo 的高性能和集群容错能力支撑大规模请求。
 - **异构系统集成**：通过 HTTP/REST 协议与其他语言（如 Python、Go）的服务交互。
 
 ---
 
-### **与 Spring Cloud 对比**
+## 与 Spring Cloud 对比
 | **特性**         | **Dubbo**                          | **Spring Cloud**                     |
 |------------------|------------------------------------|--------------------------------------|
 | **定位**         | 专注 RPC 和服务治理                | 全家桶式微服务解决方案（包含配置中心、网关等） |
@@ -64,7 +64,7 @@ Dubbo 是阿里巴巴开源的一款高性能、轻量级的 **Java RPC（Remote
 
 ---
 
-### **版本演进**
+## 版本演进
 - **Dubbo 2.x**：经典版本，稳定但功能逐渐落后。
 - **Dubbo 3.x**（2021 年发布）：
     - 支持 **Service Mesh** 模式（通过 Sidecar 实现无侵入治理）。
@@ -73,7 +73,7 @@ Dubbo 是阿里巴巴开源的一款高性能、轻量级的 **Java RPC（Remote
 
 ---
 
-### **快速开始示例**
+## 快速开始示例
 1. **定义接口**：
    ```java
    public interface UserService {
@@ -108,5 +108,11 @@ Dubbo 是阿里巴巴开源的一款高性能、轻量级的 **Java RPC（Remote
 
 ---
 
-### **总结**
+## 总结
 Dubbo 是 Java 生态中成熟的 RPC 框架，适合需要高性能、强治理的分布式系统。随着 Dubbo 3 的发布，它在云原生和 Service Mesh 领域的支持进一步增强，成为微服务架构的重要选择之一。若项目已基于 Spring Cloud，可评估是否需要引入 Dubbo 补充 RPC 能力；若从零构建，Dubbo 的轻量级和扩展性值得考虑。
+
+## 参考链接
+
+- [Apache Dubbo 官网](https://dubbo.apache.org/)
+- [Dubbo 3 用户文档](https://dubbo.apache.org/zh/docs3-v2/java-sdk/)
+- [Dubbo 3 官方示例](https://github.com/apache/dubbo-samples)
