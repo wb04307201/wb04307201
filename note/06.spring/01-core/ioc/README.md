@@ -1,171 +1,156 @@
-# IoC（Inversion of Control） 控制反转
+# IoC（Inversion of Control）控制反转
 
-## 控制反转
+> 最后更新: 2026-06-09
+> ⬅️ [返回 01 核心容器](../README.md)
+
+---
+
+## 🎯 一句话定位
+
+**IoC = 把对象的创建和管理权从代码中"反转"给 Spring 容器**——你只负责告诉 Spring "我需要什么 Bean"（@Component/@Bean），Spring 负责创建、组装、注入、管理这些 Bean 的整个生命周期。
+
+---
+
+## 📚 章节导航
+
+| 章节 | 核心问题 | 阅读时长 |
+|:-----|:---------|:--------:|
+| [Bean 生命周期](bean-lifecycle.md) | Bean 从创建到销毁经历了哪些步骤？ | 15 min |
+| [作用域与线程安全](scopes-and-thread-safety.md) | singleton Bean 安全吗？prototype 何时用？ | 10 min |
+| [依赖注入](dependency-injection.md) | 4 种注入方式怎么选？构造器还是 setter？ | 8 min |
+
+---
+
+## 一、什么是控制反转
+
 - **控制**：指的是对象创建（实例化、管理）的权力
 - **反转**：控制权交给外部环境（Spring 框架、IoC 容器）
 
-![img.png](img.png)
+![IoC 容器架构](img.png)
 
-利用Java的反射功能实例化Bean并建立Bean之间的依赖关系，还提供了实例化缓存、生命周期管理、实例代理、事件发布和资源装载等高级服务。
+> 利用 Java 的反射功能实例化 Bean 并建立 Bean 之间的依赖关系，还提供了**实例化缓存、生命周期管理、实例代理、事件发布和资源装载**等高级服务。
 
-## Spring Bean
-Bean 代指的就是那些被 IoC 容器所管理的对象。
+---
 
-- IoC 容器如何使用配置元数据来管理对象  
-![img_1.png](img_1.png)  
-- Spring Bean的装配流程  
-![img_2.png](img_2.png)
+## 二、Spring Bean
 
-### 将一个类声明为 Bean 的注解
-- @Component
-- @Repository
-- @Service
-- @Controller
+> **Bean** 代指的就是那些被 IoC 容器所管理的对象。
 
-[查看](../../08-annotations/legacy-full-reference.md#bean相关注解)
+### 1. IoC 容器如何使用配置元数据来管理对象
 
-#### @Component 和 @Bean 的区别
-- @Component 注解作用于类，而@Bean注解作用于方法。
-- @Component通常是通过类路径扫描来自动侦测以及自动装配到 Spring 容器中（我们可以使用 @ComponentScan 注解定义要扫描的路径从中找出标识了需要装配的类自动装配到 Spring 的 bean 容器中）。@Bean 注解通常是我们在标有该注解的方法中定义产生这个 bean,@Bean告诉了 Spring 这是某个类的实例，当我需要用它的时候还给我。
-- @Bean 注解比 @Component 注解的自定义性更强，而且很多地方我们只能通过 @Bean 注解来注册 bean。比如当我们引用第三方库中的类需要装配到 Spring容器时，则只能通过 @Bean来实现。
+![配置元数据](img-bean-config-meta.png)
 
-### 注入 Bean 的注解
-- @Autowired
-- @Resource
-- @Inject
+### 2. Spring Bean 的装配流程
 
-[查看](../../08-annotations/legacy-full-reference.md#bean相关注解)
+![Bean 装配流程](img-bean-assembly.png)
 
-#### @Autowired 和 @Resource 的区别
-- @Autowired 是 Spring 提供的注解，@Resource 是 JDK 提供的注解。
-- Autowired 默认的注入方式为byType（根据类型进行匹配），@Resource默认注入方式为 byName（根据名称进行匹配）。
-- 当一个接口存在多个实现类的情况下，@Autowired 和@Resource都需要通过名称才能正确匹配到对应的 Bean。Autowired 可以通过 @Qualifier 注解来显式指定名称，@Resource可以通过 name 属性来显式指定名称。
-- @Autowired 支持在构造函数、方法、字段和参数上使用。@Resource 主要用于字段和方法上的注入，不支持在构造函数或参数上使用。
+---
 
-### Bean 的作用域
+## 三、将一个类声明为 Bean
 
-[查看](../../08-annotations/legacy-full-reference.md#scope)
+### 4 个"语义化"注解 + 1 个通用
 
-### Bean 的线程安全
-Spring 框架中的 Bean 是否线程安全，取决于其作用域和状态
-- prototype 作用域下，每次获取都会创建一个新的 bean 实例，不存在资源竞争问题，所以不存在线程安全问题。
-- singleton 作用域下，IoC 容器中只有唯一的 bean 实例，可能会存在资源竞争问题（取决于 Bean 是否有状态）。
-  - 有状态 Bean，包含可变的成员变量的对象，存在线程安全问题。  
-    有状态单例 Bean 的线程安全问题有两种解决办法：
-      - 在 Bean 中尽量避免定义可变的成员变量。
-      - 在类中定义一个 ThreadLocal 成员变量，将需要的可变成员变量保存在 ThreadLocal 中（推荐的一种方式）。
-  - 无状态Bean，没有定义可变的成员变量的（比如 Dao、Service），是线程安全的
+| 注解 | 语义 | 适用层 |
+|------|------|--------|
+| `@Component` | 通用组件 | 不好归类时 |
+| `@Service` | 业务层 | Service |
+| `@Repository` | 数据访问层（**自动转换持久化异常**） | DAO |
+| `@Controller` | 控制层 | Controller |
 
-### Bean 的生命周期
-![img_3.png](img_3.png)
+> 详见 [08 注解/Bean 注解](../../08-annotations/bean-and-ioc.md#一声明-bean-4-种语义化注解--1-个通用)
 
-1. 创建`Bean`的实例
-`Bean`容器首先会找到配置文件中的`Bean`定义，然后使用`Java`反射`API`来创建`Bean`的实例。  
-`AbstractAutowireCapableBeanFactory`的`doCreateBean()`方法中能看到依次执行 4 个阶段
-2. `Bean`属性赋值/填充
-为`Bean`设置相关属性和依赖，例如`@Autowired`等注解注入的对象、`@Value`注入的值、`setter`方法或构造函数注入依赖和值、`@Resource`注入的各种资源。
-3. `Bean`初始化
-   1. 如果`Bean`实现了`BeanNameAware`接口，调用`setBeanName()`方法，传入`Bean`的名字。
-   2. 如果`Bean`实现了`BeanClassLoaderAware`接口，调用`setBeanClassLoader()`方法，传入`ClassLoader`对象的实例。
-   3. 如果`Bean`实现了`BeanFactoryAware`接口，调用`setBeanFactory()`方法，传入`BeanFactory`对象的实例。  
-     `Aware`接口能让`Bean`能拿到`Spring`容器资源
-      - **`BeanNameAware`**：注入当前`bean`对应`beanName`；
-      - **`BeanClassLoaderAware`**：注入加载当前`bean`的`ClassLoader`；
-      - **`BeanFactoryAware`**：注入当前`BeanFactory`容器的引用。
-   4. 与上面的类似，如果实现了其他`*.Aware`接口，就调用相应的方法。
-   5. 如果有和加载这个`Bean`的`Spring`容器相关的`BeanPostProcessor`对象，执行`postProcessBeforeInitialization()`方法。  
-     `BeanPostProcessor`接口是`Spring`为修改`Bean`提供的强大扩展点
-      - **`postProcessBeforeInitialization`**：`Bean`实例化、属性注入完成后，InitializingBean#afterPropertiesSet方法以及自定义的`init-method`方法之前执行；
-      - **`postProcessAfterInitialization`**：类似于上面，不过是在`InitializingBean#afterPropertiesSet`方法以及自定义的`init-method`方法之后执行。
-   6. 如果`Bean`实现了`InitializingBean`接口，执行`afterPropertiesSet()`方法。
-   7. 如果`Bean`在配置文件中的定义包含`init-method`属性，执行指定的方法。
-   8. 如果有和加载这个`Bean`的`Spring`容器相关的`BeanPostProcessor`对象，执行`postProcessAfterInitialization()`方法。  
-     `InitializingBean`和`init-method`是`Spring`为`Bean`初始化提供的扩展点
-      - InitializingBean  
-      - init-method
-4. 销毁 Bean  
-销毁并不是说要立马把 Bean 给销毁掉，而是把 Bean 的销毁方法先记录下来，将来需要销毁 Bean 或者销毁容器的时候，就调用这些方法去释放 Bean 所持有的资源。
-   1. 如果 Bean 实现了 DisposableBean 接口，执行 destroy() 方法。
-   2. 如果 Bean 在配置文件中的定义包含 destroy-method 属性，执行指定的 Bean 销毁方法。或者，也可以直接通过@PreDestroy 注解标记 Bean 销毁之前执行的方法。
+### @Component vs @Bean
 
+| 维度 | @Component | @Bean |
+|------|-----------|-------|
+| **作用对象** | 类 | 方法 |
+| **注册方式** | 类路径扫描（@ComponentScan） | 显式调用（方法返回值） |
+| **自定义能力** | 弱 | 强（可写任意 Java 代码构造对象） |
+| **典型场景** | 自己写的类 | 第三方库的类 |
 
-```java
-// 1. 创建`Bean`的实例
-protected Object doCreateBean(final String beanName, final RootBeanDefinition mbd, final @Nullable Object[] args)
-    throws BeanCreationException {
+- **@Component** 注解作用于类，而 @Bean 注解作用于方法。
+- **@Component** 通常是通过类路径扫描来自动侦测以及自动装配到 Spring 容器中（我们可以使用 `@ComponentScan` 注解定义要扫描的路径从中找出标识了需要装配的类自动装配到 Spring 的 bean 容器中）。
+- **@Bean** 注解通常是我们在标有该注解的方法中定义产生这个 bean，@Bean 告诉了 Spring "这是某个类的实例，当我需要用它的时候还给我"。
+- **@Bean 注解比 @Component 注解的自定义性更强**，而且很多地方我们只能通过 @Bean 注解来注册 bean。比如当我们引用第三方库中的类需要装配到 Spring 容器时，则只能通过 @Bean 来实现。
 
-    // 1. 创建 Bean 的实例
-    BeanWrapper instanceWrapper = null;
-    if (instanceWrapper == null) {
-        instanceWrapper = createBeanInstance(beanName, mbd, args);
-    }
+---
 
-    Object exposedObject = bean;
-    try {
-        // 2. Bean 属性赋值/填充
-        populateBean(beanName, mbd, instanceWrapper);
-        // 3. Bean 初始化
-        exposedObject = initializeBean(beanName, exposedObject, mbd);
-    }
+## 四、注入 Bean
 
-    // 4. 销毁 Bean-注册回调接口
-    try {
-        registerDisposableBeanIfNecessary(beanName, bean, mbd);
-    }
+### 3 种注入注解
 
-    return exposedObject;
-}
-```
-```java
-// 3.5. 如果有和加载这个`Bean`的`Spring`容器相关的`BeanPostProcessor
-public interface BeanPostProcessor {
+| 注解 | 来源 | 默认注入方式 | 适用场景 |
+|------|------|------------|---------|
+| `@Autowired` | Spring | byType | 大多数场景 |
+| `@Resource` | JDK | byName | 明确知道 Bean 名称时 |
+| `@Inject` | JDK（JSR-330） | byType | 需要 JSR-330 兼容时 |
 
-     // 初始化前置处理
-     default Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-     return bean;
-     }
+> 详见 [08 注解/Bean 注解](../../08-annotations/bean-and-ioc.md#二注入-bean-3-种注解)
 
-     // 初始化后置处理
-     default Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-     return bean;
-     }
+### @Autowired 和 @Resource 的区别
 
-}
-```
-```java
-// 3.8.- InitializingBean
-public interface InitializingBean { 
-    // 初始化逻辑
-    void afterPropertiesSet() throws Exception;
-}
-```
-```xml
-<!--3.8.- init-method-->
-<?xml version="1.0" encoding="UTF-8"?>
-    <beans xmlns="http://www.springframework.org/schema/beans" 
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+- **@Autowired 是 Spring 提供的注解，@Resource 是 JDK 提供的注解。**
+- **@Autowired 默认的注入方式为 byType**（根据类型进行匹配），**@Resource 默认注入方式为 byName**（根据名称进行匹配）。
+- 当一个接口存在多个实现类的情况下，@Autowired 和 @Resource 都需要通过名称才能正确匹配到对应的 Bean。@Autowired 可以通过 @Qualifier 注解来显式指定名称，@Resource 可以通过 name 属性来显式指定名称。
+- @Autowired 支持在**构造函数、方法、字段和参数**上使用。@Resource 主要用于**字段和方法**上的注入，不支持在构造函数或参数上使用。
 
-         <bean id="demo" class="cn.wubo.Demo" init-method="init()"/>
-    </beans>
+---
+
+## 五、Bean 作用域
+
+详见 [作用域与线程安全](scopes-and-thread-safety.md)
+
+---
+
+## 六、Bean 生命周期
+
+详见 [Bean 生命周期](bean-lifecycle.md)
+
+---
+
+## 七、整体知识图谱
+
+```mermaid
+graph TB
+    IoC[IoC 容器] --> Meta[配置元数据<br/>XML/注解/Java Config]
+    Meta --> Scan[扫描 + 解析]
+    Scan --> Bean[创建 Bean]
+    Bean --> Inst[1. 实例化]
+    Inst --> Fill[2. 属性填充]
+    Fill --> Init[3. 初始化]
+    Init --> Use[4. 使用]
+    Use --> Dest[5. 销毁]
+
+    Init -.扩展点.-> Aware[Aware 接口]
+    Init -.扩展点.-> BP[BeanPostProcessor]
+    Init -.扩展点.-> IB[InitializingBean]
+
+    IoC --> Scope[作用域管理]
+    Scope --> Sing[singleton]
+    Scope --> Proto[prototype]
+    Scope --> Web[request/session/...]
+
+    IoC --> DI[依赖注入]
+    DI --> AutoW[@Autowired]
+    DI --> Res[@Resource]
+    DI --> Inject[@Inject]
 ```
 
-#### 总结
-整体上可以简单分为四步：实例化 —> 属性赋值 —> 初始化 —> 销毁。  
-初始化这一步涉及到的步骤比较多，包含 Aware 接口的依赖注入、BeanPostProcessor 在初始化前后的处理以及 InitializingBean 和 init-method 的初始化操作。  
-- Spring的4种依赖注入：
-  - 构造器注入
-  - set方法注入
-  - 静态工厂注入
-  - 实例工厂注入  
+---
 
-销毁这一步会注册相关销毁回调接口，最后通过DisposableBean 和 destory-method 进行销毁。
+## 🤔 思考
 
+1. **IoC 和 DI 是什么关系？** IoC 是一种设计思想（控制反转），DI 是 IoC 的具体实现（依赖注入）。
+2. **为什么 Spring 默认 Bean 是 singleton？** 绝大多数 Bean 是无状态的（Service、DAO），singleton 性能更高、节省内存。
+3. **IoC 容器和 Spring 上下文什么关系？** BeanFactory 是最底层容器，ApplicationContext 在 BeanFactory 之上提供更多企业级功能（i18n、事件发布、AOP 等）。一般说 "Spring 容器" 指 ApplicationContext。
+4. **IoC 有什么缺点？** 对象创建过程变得"看不见"了，调试时定位问题较难；学习曲线较陡。
 
+---
 
+## 相关章节
 
-
-
-
-
-
+- ⬅️ [返回 01 核心容器](../README.md)
+- [Bean 生命周期](bean-lifecycle.md)
+- [作用域与线程安全](scopes-and-thread-safety.md)
+- [依赖注入](dependency-injection.md)
+- [08 注解/Bean 注解](../../08-annotations/bean-and-ioc.md)

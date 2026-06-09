@@ -1,225 +1,180 @@
-# Spring Cache 缓存操作
+# Spring Cache 缓存
 
-## 一、Spring Cache 概述
+> 最后更新: 2026-06-09
+> ⬅️ [返回 03 数据层](../README.md)
 
-### 1. 什么是 Spring Cache
-Spring Cache 是 Spring Framework 提供的一个抽象层，用于简化应用程序中的缓存操作。它允许开发者在不修改业务逻辑代码的情况下，通过简单的注解实现方法调用结果的缓存和检索。
+---
 
-### 2. 核心特性
+## 🎯 一句话定位
+
+**Spring Cache = 缓存的"抽象层"**——业务代码用统一的注解（@Cacheable、@CachePut、@CacheEvict），**底层实现可自由切换**（Caffeine、Redis、Ehcache）。通过声明式的方式实现方法结果的缓存，**业务代码与缓存实现完全解耦**。
+
+---
+
+## 📚 章节导航
+
+| 章节 | 核心问题 | 阅读时长 |
+|:-----|:---------|:--------:|
+| [缓存注解与使用](annotations-and-usage.md) | 5 大注解怎么用？SpEL 怎么写？ | 15 min |
+| [缓存实现与最佳实践](implementations-and-best-practices.md) | Caffeine/Redis/Ehcache 怎么选？4 大高级特性？ | 15 min |
+
+---
+
+## 一、什么是 Spring Cache
+
+> **Spring Cache** 是 Spring Framework 提供的一个**抽象层**，用于简化应用程序中的缓存操作。它允许开发者在**不修改业务逻辑代码**的情况下，通过简单的注解实现方法调用结果的缓存和检索。
+
+### 4 大核心特性
+
 - **基于注解的配置**：使用 `@Cacheable`, `@CacheEvict` 等注解
-- **统一抽象层**：支持多种缓存实现（如 Ehcache, Redis, Caffeine 等）
+- **统一抽象层**：支持多种缓存实现（Ehcache, Redis, Caffeine 等）
 - **透明集成**：与 Spring 事务管理类似，对业务代码透明
-- **细粒度控制**：支持条件缓存、过期时间等配置
+- **细粒度控制**：支持条件缓存、过期时间、自定义 key 等
 
-## 二、基本使用
+### 抽象层思想
 
-### 1. 启用缓存支持
-在 Spring Boot 应用中，只需在主类或配置类上添加 `@EnableCaching` 注解：
+```mermaid
+graph TB
+    Biz[业务代码] --> Annot[注解<br/>@Cacheable]
+    Annot --> Abs[Spring Cache 抽象层<br/>CacheManager]
+    Abs --> C1[Caffeine<br/>单机内存]
+    Abs --> C2[Redis<br/>分布式]
+    Abs --> C3[Ehcache<br/>兼容老项目]
+    Abs --> C4[Hazelcast<br/>内存网格]
+
+    style Biz fill:#e3f2fd,stroke:#1976d2
+    style Abs fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+```
+
+> 📌 **业务永远面向 Cache 抽象编程**——切换缓存实现**不改业务代码**。
+
+---
+
+## 二、为什么需要 Spring Cache
+
+### 没有缓存时的痛点
 
 ```java
-@SpringBootApplication
-@EnableCaching
-public class MyApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(MyApplication.class, args);
+// 每个查询都要写：先查 Redis，命中返回；未命中查 DB，写入 Redis
+public User getById(Long id) {
+    User user = redis.get("user:" + id);
+    if (user == null) {
+        user = userRepository.findById(id).orElse(null);
+        if (user != null) {
+            redis.setex("user:" + id, 600, user);
+        }
     }
+    return user;
 }
 ```
 
-### 2. 常用注解
+- 每个方法都要写**重复的缓存逻辑**
+- 缓存逻辑和业务逻辑**混在一起**
+- 改缓存策略要改 N 个文件
 
-#### @Cacheable
-标记方法的结果需要被缓存：
+### 使用 Spring Cache 后的简洁
 
 ```java
 @Cacheable(value = "users", key = "#id")
-public User getUserById(Long id) {
-    // 实际数据库查询逻辑
-    return userRepository.findById(id);
+public User getById(Long id) {
+    return userRepository.findById(id).orElse(null);
 }
 ```
 
-#### @CachePut
-更新缓存中的内容（方法总是会被执行）：
+- **一行注解**搞定
+- 业务代码**完全无感知**
+- 切换缓存实现不改业务代码
+
+---
+
+## 三、3 大主流实现速览
+
+| 实现 | 类型 | 性能 | 分布式 | 适用 |
+|------|------|:----:|:------:|------|
+| **Caffeine** | 内存 | ⭐⭐⭐⭐⭐ | ❌ | **单机默认** |
+| **Redis** | 内存 | ⭐⭐⭐⭐ | ✅ | **分布式集群** |
+| **Ehcache** | 内存+磁盘 | ⭐⭐⭐ | ✅ | 老项目、持久化 |
+
+> 详细对比见 [缓存实现与最佳实践](implementations-and-best-practices.md)
+
+---
+
+## 四、5 大注解速览
+
+| 注解 | 作用 | 方法是否总执行 |
+|------|------|:------------:|
+| @Cacheable | **读缓存**（先查缓存） | ❌ 命中跳过 |
+| @CachePut | **写缓存**（更新） | ✅ |
+| @CacheEvict | **清缓存** | ✅ |
+| @Caching | 组合多个缓存操作 | - |
+| @CacheConfig | 类级缓存配置 | - |
+
+> 详细用法见 [缓存注解与使用](annotations-and-usage.md)
 
 ```java
-@CachePut(value = "users", key = "#user.id")
-public User updateUser(User user) {
-    // 更新数据库逻辑
-    return userRepository.save(user);
-}
-```
-
-#### @CacheEvict
-从缓存中移除数据：
-
-```java
-@CacheEvict(value = "users", key = "#id")
-public void deleteUser(Long id) {
-    // 删除数据库记录逻辑
-    userRepository.deleteById(id);
-}
-```
-
-#### @Caching
-组合多个缓存操作：
-
-```java
-@Caching(
-    evict = {
-        @CacheEvict(value = "users", key = "#user.id"),
-        @CacheEvict(value = "usersByEmail", key = "#user.email")
-    }
-)
-public void updateUser(User user) {
-    // 更新逻辑
-}
-```
-
-#### @CacheConfig
-类级别的缓存配置：
-
-```java
+@Service
 @CacheConfig(cacheNames = "users")
 public class UserService {
-    
-    @Cacheable(key = "#id")
-    public User getUserById(Long id) {
-        // ...
-    }
+
+    @Cacheable(key = "#id")                              // 读
+    public User getById(Long id) { ... }
+
+    @CachePut(key = "#user.id")                          // 写
+    public User update(User user) { ... }
+
+    @CacheEvict(key = "#id")                             // 删
+    public void delete(Long id) { ... }
 }
 ```
 
-### 3. SpEL 表达式支持
-Spring Cache 支持使用 SpEL 表达式定义 key 和 condition：
+---
 
-```java
-@Cacheable(value = "users", 
-           key = "#root.methodName + #id",
-           condition = "#id > 10",
-           unless = "#result == null")
-public User getUserById(Long id) {
-    // ...
-}
+## 五、整体知识图谱
+
+```mermaid
+graph TB
+    SC[Spring Cache] --> Annot[5 大注解]
+    SC --> Abs[CacheManager 抽象]
+    SC --> Best[7 大最佳实践]
+
+    Annot --> Cacheable[@Cacheable<br/>读]
+    Annot --> CachePut[@CachePut<br/>写]
+    Annot --> CacheEvict[@CacheEvict<br/>删]
+    Annot --> Caching[@Caching<br/>组合]
+    Annot --> CacheConfig[@CacheConfig<br/>类级]
+
+    Abs --> Caffeine
+    Abs --> Redis
+    Abs --> Ehcache
+    Abs --> Custom[自定义]
+
+    Best --> TTL[合理过期时间]
+    Best --> PEN[防穿透]
+    Best --> AVA[防雪崩]
+    Best --> BR[防击穿]
 ```
 
-常用 SpEL 变量：
-- `#result`：方法返回值
-- `#root.methodName`：当前方法名
-- `#arg0`, `#p0`, `#a0`：第一个参数（不同索引方式）
+---
 
-## 三、缓存实现选择
+## 六、缓存适用场景与不适用场景
 
-### 1. 常见缓存实现
+### ✅ 适用场景
 
-#### Caffeine (Spring Boot 默认)
-- 内存缓存，高性能
-- 适合单机应用
-- 配置示例：
+- 读多写少（**典型：商品详情、用户信息**）
+- 性能要求高（**减少 DB 查询**）
+- 数据容忍短时不一致（**最终一致性**）
+- 重复计算昂贵（**复杂查询、聚合统计**）
 
-```properties
-spring.cache.type=caffeine
-spring.cache.caffeine.spec=maximumSize=1000,expireAfterWrite=10m
-```
+### ❌ 不适用场景
 
-#### Redis
-- 分布式缓存
-- 适合集群环境
-- 配置示例：
+- 写多读少（缓存命中率低）
+- 强一致性要求（**金融账户、库存**——需用分布式锁）
+- 实时性要求极高（**毫秒级更新**）
+- 数据频繁变动（**数据易过期，反而降低性能**）
 
-```properties
-spring.cache.type=redis
-spring.redis.host=localhost
-spring.redis.port=6379
-```
+---
 
-#### Ehcache
-- 成熟的缓存解决方案
-- 支持持久化和分布式（通过 Terracotta）
-- 配置示例：
-
-```xml
-<!-- ehcache.xml -->
-<cache name="users"
-       maxEntriesLocalHeap="1000"
-       timeToLiveSeconds="600"/>
-```
-
-### 2. 自定义缓存实现
-可以通过实现 `CacheManager` 接口来集成其他缓存系统。
-
-## 四、高级配置
-
-### 1. 条件缓存
-使用 `condition` 和 `unless` 属性控制缓存行为：
-
-```java
-@Cacheable(value = "products", 
-           condition = "#name.length() < 32",
-           unless = "#result == null || #result.price < 10")
-public Product findProductByName(String name) {
-    // ...
-}
-```
-
-### 2. 同步缓存
-使用 `sync` 属性避免缓存击穿：
-
-```java
-@Cacheable(value = "hotProducts", key = "#category", sync = true)
-public List<Product> getHotProducts(String category) {
-    // 模拟耗时操作
-    Thread.sleep(1000);
-    return productRepository.findHotByCategory(category);
-}
-```
-
-### 3. 自定义 Key 生成器
-实现 `KeyGenerator` 接口自定义 key 生成逻辑：
-
-```java
-@Configuration
-public class CacheConfig {
-    
-    @Bean("customKeyGenerator")
-    public KeyGenerator keyGenerator() {
-        return (target, method, params) -> {
-            StringBuilder sb = new StringBuilder();
-            sb.append(target.getClass().getSimpleName());
-            sb.append(".");
-            sb.append(method.getName());
-            for (Object param : params) {
-                sb.append(".").append(param.toString());
-            }
-            return sb.toString();
-        };
-    }
-}
-
-// 使用自定义 key 生成器
-@Cacheable(value = "customCache", keyGenerator = "customKeyGenerator")
-public Object customCacheMethod(String param1, Integer param2) {
-    // ...
-}
-```
-
-## 五、优缺点分析
-
-### 1. 优点
-- **简化开发**：通过注解即可实现缓存，减少样板代码
-- **解耦**：业务代码与缓存实现解耦，便于切换缓存后端
-- **声明式**：配置驱动，易于理解和维护
-- **集成性好**：与 Spring 生态无缝集成
-- **性能提升**：显著减少重复计算或数据库查询
-
-### 2. 缺点
-- **调试困难**：缓存行为可能使调试变得复杂
-- **一致性挑战**：在分布式环境中维护缓存一致性较难
-- **内存消耗**：不当的缓存配置可能导致内存溢出
-- **过期策略**：需要手动管理缓存过期，否则可能导致数据不一致
-- **不适合所有场景**：对于频繁更新的数据，缓存可能适得其反
-
-## 六、最佳实践
+## 七、最佳实践（速览）
 
 1. **合理设置过期时间**：根据业务特点设置适当的缓存过期策略
 2. **避免缓存过大对象**：大对象会消耗大量内存
@@ -229,38 +184,23 @@ public Object customCacheMethod(String param1, Integer param2) {
 6. **测试缓存行为**：编写单元测试验证缓存逻辑
 7. **考虑分布式锁**：在高并发更新场景下使用分布式锁
 
-## 七、示例项目结构
+> 详细方案见 [缓存实现与最佳实践](implementations-and-best-practices.md#五7-大最佳实践)
 
-```
-src/main/java/
-├── com.example.demo
-│   ├── config
-│   │   └── CacheConfig.java  # 自定义缓存配置
-│   ├── model
-│   │   └── User.java         # 实体类
-│   ├── repository
-│   │   └── UserRepository.java # 数据访问层
-│   └── service
-│       └── UserService.java  # 业务逻辑层，使用缓存注解
-```
+---
 
-## 八、常见问题解决
+## 🤔 思考
 
-1. **缓存不生效**：
-    - 检查是否添加了 `@EnableCaching`
-    - 确认方法是否被 Spring 管理（有 `@Service` 等注解）
-    - 检查缓存名称是否正确
+1. **Spring Cache vs Redis Template 怎么选？** 简单场景用 Spring Cache（注解驱动），复杂场景（分布式锁、复杂数据结构）用 RedisTemplate。
+2. **缓存和数据库双写一致性问题？** 没有完美方案——Cache Aside 模式（先更新 DB，再失效缓存）最常用。
+3. **多级缓存怎么设计？** L1（Caffeine 本地）+ L2（Redis 分布式），**读时 L1 → L2 → DB**，写时**先清 L1，再清 L2**。
+4. **Spring Cache 的本质是什么？** AOP 切面 + CacheManager 抽象 + KeyGenerator。
 
-2. **序列化问题**：
-    - 确保缓存的对象实现 `Serializable` 接口
-    - 或配置自定义的序列化方式
+---
 
-3. **多参数 key 问题**：
-    - 使用 SpEL 表达式明确指定 key 生成规则
-    - 或实现自定义 `KeyGenerator`
+## 相关章节
 
-4. **缓存更新问题**：
-    - 确保更新操作使用了 `@CachePut` 或 `@CacheEvict`
-    - 注意方法的调用顺序（AOP 代理特性）
-
-通过以上内容，您应该能够对 Spring Cache 的基本功能、使用方式和优缺点有全面的了解。在实际项目中，建议从小规模开始使用，逐步扩大缓存范围，同时密切监控缓存效果和系统性能。
+- ⬅️ [返回 03 数据层](../README.md)
+- [缓存注解与使用](annotations-and-usage.md)
+- [缓存实现与最佳实践](implementations-and-best-practices.md)
+- [07 可观测性/Micrometer](../07-observability/micrometer.md) — 缓存命中率监控
+- [08 注解/AOP 注解](../../08-annotations/aop.md) — 缓存本质是 AOP
