@@ -1,0 +1,377 @@
+# Micrometer 指标监控
+
+> 最后更新: 2026-06-09
+> ⬅️ [返回 07 可观测性](README.md) | [Prometheus + Grafana](prometheus-grafana.md) | [Spring Boot Actuator](actuator.md)
+
+**Micrometer** 是 Spring Boot 的**指标门面**（类似 SLF4J 之于日志）——提供统一的指标 API，**底层可对接** Prometheus、Datadog、InfluxDB 等 12+ 种监控系统。
+
+---
+
+## 🎯 一句话定位
+
+**Micrometer = "指标的 SLF4J"**——统一指标采集 API（Counter/Gauge/Timer），**通过注册不同的 MeterRegistry 适配**不同的监控系统（Prometheus、CloudWatch、Datadog）。Spring Boot Actuator 默认集成。
+
+---
+
+## 一、什么是 Micrometer
+
+> **Micrometer** 是一个**指标收集门面库**（facade），被 Spring Boot 2.x+ 选为默认指标库。
+
+| 特性 | 说明 |
+|------|------|
+| **定位** | 指标的 SLF4J |
+| **支持的监控系统** | Prometheus、Datadog、CloudWatch、InfluxDB、Ganglia 等 12+ 种 |
+| **核心组件** | Meter + MeterRegistry |
+| **集成** | Spring Boot Actuator 默认集成 |
+
+---
+
+## 二、4 大核心指标类型
+
+| 类型 | 用途 | 示例 |
+|------|------|------|
+| **Counter（计数器）** | 单调递增的计数 | 订单总数、错误数 |
+| **Gauge（仪表）** | 实时值（可增可减） | 当前在线用户、队列大小 |
+| **Timer（计时器）** | 测量耗时 + 调用次数 | 方法执行时间、HTTP 请求延迟 |
+| **DistributionSummary（分布摘要）** | 测量数据分布 | 请求大小、响应大小 |
+
+### 1. Counter（计数器）
+
+> 单调递增的计数，常用于**累计统计**。
+
+```java
+@Component
+public class OrderService {
+
+    private final Counter orderCounter;
+
+    public OrderService(MeterRegistry registry) {
+        this.orderCounter = Counter.builder("order.created")
+            .description("订单创建总数")
+            .tag("type", "online")
+            .register(registry);
+    }
+
+    public void createOrder(Order order) {
+        orderRepository.save(order);
+        orderCounter.increment();  // 计数 +1
+    }
+}
+```
+
+### 2. Gauge（仪表）
+
+> **实时**反映某个值（可增可减），如在线用户数、内存使用。
+
+```java
+@Component
+public class UserService {
+
+    private final AtomicInteger onlineUsers = new AtomicInteger(0);
+
+    public UserService(MeterRegistry registry) {
+        Gauge.builder("users.online", onlineUsers, AtomicInteger::get)
+            .description("在线用户数")
+            .register(registry);
+    }
+
+    public void login() {
+        onlineUsers.incrementAndGet();
+    }
+
+    public void logout() {
+        onlineUsers.decrementAndGet();
+    }
+}
+```
+
+### 3. Timer（计时器）
+
+> 测量方法执行时间 + 调用次数，常用于**性能监控**。
+
+```java
+@Component
+public class OrderService {
+
+    private final Timer orderTimer;
+
+    public OrderService(MeterRegistry registry) {
+        this.orderTimer = Timer.builder("order.create")
+            .description("订单创建耗时")
+            .publishPercentiles(0.5, 0.95, 0.99)  // P50/P95/P99
+            .register(registry);
+    }
+
+    public Order createOrder(Order order) {
+        return orderTimer.record(() -> {
+            // 业务逻辑
+            return orderRepository.save(order);
+        });
+    }
+}
+```
+
+### 4. DistributionSummary（分布摘要）
+
+> 测量**数据分布**（非时间），如请求大小、响应大小。
+
+```java
+@Component
+public class FileService {
+
+    private final DistributionSummary fileSizeSummary;
+
+    public FileService(MeterRegistry registry) {
+        this.fileSizeSummary = DistributionSummary.builder("file.size")
+            .baseUnit("bytes")
+            .publishPercentiles(0.5, 0.95, 0.99)
+            .register(registry);
+    }
+
+    public void uploadFile(MultipartFile file) {
+        fileSizeSummary.record(file.getSize());
+    }
+}
+```
+
+---
+
+## 三、Tag（标签）—— 维度化指标
+
+> **Tag = 指标的维度**。通过 Tag 可以在 Prometheus/Grafana 中**按维度筛选**。
+
+```java
+Counter.builder("order.created")
+    .tag("type", "online")              // 订单类型
+    .tag("channel", "mobile")           // 下单渠道
+    .tag("user_level", "vip")           // 用户等级
+    .register(registry);
+```
+
+**Tag 的常见维度**：
+- 业务维度：订单类型、支付方式
+- 技术维度：HTTP 方法、URL 模板
+- 环境维度：region、env
+
+> ⚠️ **不要用用户 ID 当 Tag**（基数爆炸，Prometheus 会挂）。
+
+---
+
+## 四、3 种使用方式
+
+### 1. 注入 MeterRegistry
+
+```java
+@Service
+public class OrderService {
+    private final MeterRegistry registry;
+
+    public OrderService(MeterRegistry registry) {
+        this.registry = registry;
+    }
+
+    public void createOrder() {
+        registry.counter("order.created").increment();
+    }
+}
+```
+
+### 2. @Timed 注解
+
+```java
+@Timed(value = "order.create", description = "订单创建耗时")
+public Order createOrder(Order order) {
+    return orderRepository.save(order);
+}
+```
+
+### 3. 函数式编程
+
+```java
+Timer.Sample sample = Timer.start(registry);
+try {
+    // 业务逻辑
+} finally {
+    sample.stop(registry.timer("order.create"));
+}
+```
+
+---
+
+## 五、Spring Boot 自动注册的指标
+
+> Spring Boot Actuator **自动注册大量指标**，无需写代码。
+
+| 指标 | 说明 |
+|------|------|
+| `jvm.memory.used` | JVM 内存使用 |
+| `jvm.gc.pause` | GC 暂停时间 |
+| `http.server.requests` | HTTP 请求（自带 method/uri/status 标签） |
+| `hikaricp.connections.active` | HikariCP 数据库连接池 |
+| `system.cpu.usage` | 系统 CPU 使用率 |
+| `process.cpu.usage` | 进程 CPU 使用率 |
+| `logback.events` | 日志事件计数 |
+
+### HTTP 请求指标（自动）
+
+```yaml
+# application.yml
+management:
+  metrics:
+    tags:
+      application: ${spring.application.name}
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+      percentiles:
+        http.server.requests: 0.5,0.95,0.99
+```
+
+---
+
+## 六、4 种 MeterRegistry
+
+> **同一个 Micrometer API，可对接 4+ 种监控系统**。
+
+```xml
+<!-- Prometheus -->
+<dependency>
+    <groupId>io.micrometer</groupId>
+    <artifactId>micrometer-registry-prometheus</artifactId>
+</dependency>
+
+<!-- Datadog -->
+<dependency>
+    <groupId>io.micrometer</groupId>
+    <artifactId>micrometer-registry-datadog</artifactId>
+</dependency>
+
+<!-- InfluxDB -->
+<dependency>
+    <groupId>io.micrometer</groupId>
+    <artifactId>micrometer-registry-influx</artifactId>
+</dependency>
+```
+
+```yaml
+# application.yml
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus    # 暴露 /actuator/prometheus
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+```
+
+访问 `http://localhost:8080/actuator/prometheus` 即可看到 Prometheus 格式的指标。
+
+---
+
+## 七、3 个生产实践
+
+### 1. 业务关键指标
+
+```java
+@Service
+public class OrderService {
+    private final Counter successCounter;
+    private final Counter failCounter;
+    private final Timer timer;
+
+    public OrderService(MeterRegistry registry) {
+        this.successCounter = Counter.builder("order.create").tag("result", "success").register(registry);
+        this.failCounter = Counter.builder("order.create").tag("result", "fail").register(registry);
+        this.timer = Timer.builder("order.create.duration").register(registry);
+    }
+
+    public Order createOrder(OrderDTO dto) {
+        return timer.record(() -> {
+            try {
+                Order order = orderRepository.save(new Order(dto));
+                successCounter.increment();
+                return order;
+            } catch (Exception e) {
+                failCounter.increment();
+                throw e;
+            }
+        });
+    }
+}
+```
+
+### 2. 自定义 HealthIndicator
+
+```java
+@Component
+public class OrderServiceHealthIndicator implements HealthIndicator {
+    @Override
+    public Health health() {
+        // 检查订单服务健康
+        if (orderRepository.count() > 0) {
+            return Health.up().withDetail("count", orderRepository.count()).build();
+        }
+        return Health.down().withDetail("reason", "no orders").build();
+    }
+}
+```
+
+### 3. 自定义 Metrics Filter
+
+```java
+@Bean
+public MeterFilter meterFilter() {
+    return new MeterFilter() {
+        @Override
+        public Meter.Id map(Meter.Id id) {
+            // 重命名指标
+            if (id.getName().startsWith("myapp.")) {
+                return id.withName("app." + id.getName().substring(6));
+            }
+            return id;
+        }
+    };
+}
+```
+
+---
+
+## 八、Micrometer vs Dropwizard Metrics
+
+| 维度 | Micrometer | Dropwizard Metrics |
+|------|-----------|---------------------|
+| **维护方** | Spring 团队 | 社区 |
+| **生态** | Spring Boot 默认 | 老牌 |
+| **后端支持** | 12+ 种 | 较少 |
+| **维度（Tag）** | ✅ 一等公民 | ⚠️ 弱 |
+| **推荐** | ⭐⭐⭐⭐⭐ | ⭐⭐ |
+
+---
+
+## 九、5 大最佳实践
+
+1. **用 @Timed 替代手写 Timer**（AOP 自动织入）
+2. **业务关键路径都打点**（订单、支付、登录）
+3. **Tag 维度不要太多**（基数爆炸）
+4. **P95/P99 比平均值更有意义**（平均值掩盖问题）
+5. **结合 Prometheus + Grafana**（可视化 + 告警）
+
+---
+
+## 🤔 思考
+
+1. **Counter 和 Gauge 区别？** Counter 单调递增（如订单总数）；Gauge 可增可减（如在线用户）。
+2. **Timer 记录什么？** 调用次数 + 总耗时 + 分布（P50/P95/P99）。
+3. **Tag 怎么设计？** 有限枚举维度（type、channel、status），避免用户 ID。
+4. **为什么 Micrometer 是 Spring Boot 默认？** Spring 团队出品，与 Spring 生态深度集成。
+
+---
+
+## 相关章节
+
+- ⬅️ [返回 07 可观测性](README.md)
+- [Prometheus + Grafana](prometheus-grafana.md) — 可视化 + 告警
+- [Spring Boot Actuator](actuator.md) — 指标暴露端点
+- [分布式追踪](../05-spring-cloud/distributed-tracing.md) — Tracing + Metrics 统一
