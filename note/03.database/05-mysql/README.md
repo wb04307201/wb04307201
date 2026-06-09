@@ -216,6 +216,211 @@ Master                          Slave
 
 ---
 
+## 七、EXPLAIN 详解
+
+### 1. EXPLAIN 12 种 type 值(从优到劣)
+
+| type | 含义 | 性能 |
+|------|------|------|
+| `system` | 表只有一行(系统表) | ⭐⭐⭐⭐⭐ |
+| `const` | 主键/唯一索引等值查询,只匹配 1 行 | ⭐⭐⭐⭐⭐ |
+| `eq_ref` | JOIN 中,主键/唯一索引关联,每行 1 次匹配 | ⭐⭐⭐⭐ |
+| `ref` | 非唯一索引等值查询 | ⭐⭐⭐ |
+| `range` | 索引范围扫描(`>`, `<`, `BETWEEN`, `IN`) | ⭐⭐⭐ |
+| `index` | 全索引扫描(扫完整个索引树) | ⭐⭐ |
+| `ALL` | **全表扫描**(最差) | ⭐ |
+
+> **优化目标**:**至少达到 `range` 级别**,严禁出现 `ALL`(全表扫描)。
+
+### 2. EXPLAIN FORMAT=JSON
+
+```sql
+EXPLAIN FORMAT=JSON SELECT * FROM users WHERE email = 'a@b.com';
+```
+
+JSON 格式提供:
+- 实际成本估算(`query_block.cost_info.query_cost`)
+- 是否使用临时表(`temporary_table`)
+- 排序方式(`sort_using_filesort`)
+
+### 3. EXPLAIN 关键字段速查
+
+| 字段 | 关注点 |
+|------|--------|
+| `type` | 至少 `range`,严禁 `ALL` |
+| `key` | 实际使用的索引(NULL = 全表扫描) |
+| `key_len` | 索引使用长度(可判断联合索引用了几列) |
+| `rows` | 预估扫描行数 |
+| `Extra` | `Using filesort`/`Using temporary` 需优化 |
+
+---
+
+## 八、MySQL 8.0 新特性
+
+| 特性 | 说明 | 价值 |
+|------|------|------|
+| **窗口函数** | ROW_NUMBER/RANK/LAG/LEAD 等 | 复杂分析查询 |
+| **CTE (WITH)** | 公用表表达式,替代嵌套子查询 | 可读性 + 性能 |
+| **原子 DDL** | DDL 操作要么全成要么全败 | 元数据一致性 |
+| **降序索引** | 真正支持 DESC 索引 | 排序性能 |
+| **JSON 增强** | `JSON_TABLE`、`->>` 运算符 | 半结构化数据 |
+| **隐藏索引** | 索引软删除,验证后再物理删除 | 安全调优 |
+| **Resource Group** | 将线程绑定到特定 CPU | 高并发控制 |
+| **EXPLAIN ANALYZE** | 真实执行统计 | 性能调优 |
+
+---
+
+## 九、备份与恢复
+
+### 1. 逻辑备份(mysqldump)
+
+```bash
+# 备份整个库
+mysqldump -u root -p mydb > mydb.sql
+
+# 备份单表
+mysqldump -u root -p mydb users > users.sql
+
+# 备份时加一致性快照(--single-transaction)
+mysqldump --single-transaction -u root -p mydb > mydb.sql
+
+# 恢复
+mysql -u root -p mydb < mydb.sql
+```
+
+**优点**:跨版本、跨平台、可读。
+**缺点**:大库慢(数小时)。
+
+### 2. 物理备份(Percona XtraBackup)
+
+```bash
+# 全量备份
+xtrabackup --backup --target-dir=/backup/full
+
+# 恢复
+xtrabackup --prepare --target-dir=/backup/full
+xtrabackup --copy-back --target-dir=/backup/full
+```
+
+**优点**:热备份、速度快(GB/s)、支持增量。
+**缺点**:仅限 InnoDB,跨平台差。
+
+### 3. 基于时间点恢复(PITR)
+
+```bash
+# 1. 恢复全量备份
+xtrabackup --prepare --target-dir=/backup/full
+
+# 2. 应用 binlog 到指定时间点
+mysqlbinlog --stop-datetime="2026-06-09 14:00:00" \
+    /var/lib/mysql/binlog.000001 | mysql -u root -p
+```
+
+### 4. 备份策略矩阵
+
+| 备份类型 | 频率 | 保留 | RPO(数据丢失) | RTO(恢复时间) |
+|---------|------|------|--------------|--------------|
+| 全量 | 每周 | 4 周 | 数小时 | 数小时 |
+| 增量 | 每天 | 7 天 | 数小时 | 较快 |
+| Binlog | 实时 | 7 天 | 接近 0 | 中等 |
+
+---
+
+## 十、分区表
+
+当单表数据量超过 5000 万行,考虑使用 MySQL **分区表**(应用层透明)。
+
+### 1. 4 种分区方式
+
+| 分区类型 | 适用 | 示例 |
+|---------|------|------|
+| **RANGE** | 按连续区间 | 按时间、按 ID 区间 |
+| **LIST** | 按枚举值 | 按地区(华东/华南/华北) |
+| **HASH** | 按哈希值均匀分布 | 按 user_id % 4 |
+| **KEY** | 类似 HASH,MySQL 自管理 | 按主键哈希 |
+
+### 2. RANGE 分区实战
+
+```sql
+CREATE TABLE orders (
+    id BIGINT,
+    created_at DATETIME,
+    amount DECIMAL(10,2)
+)
+PARTITION BY RANGE (YEAR(created_at)) (
+    PARTITION p2023 VALUES LESS THAN (2024),
+    PARTITION p2024 VALUES LESS THAN (2025),
+    PARTITION p2025 VALUES LESS THAN (2026),
+    PARTITION pmax  VALUES LESS THAN MAXVALUE
+);
+```
+
+### 3. 注意事项
+
+- 分区键必须是**主键或唯一键**的一部分
+- 单表最多 **8192 个分区**
+- 性能提升主要在**范围查询**(配合 WHERE 分区键)
+- **慎用**:JOIN 时分区键不对齐会导致全表扫描
+
+---
+
+## 十一、慢查询分析工具
+
+### 1. pt-query-digest(Percona Toolkit)
+
+业界最常用的 MySQL 慢查询分析工具,生成可读报告。
+
+```bash
+# 分析慢查询日志
+pt-query-digest /var/lib/mysql/slow.log > digest_report.txt
+
+# 直接分析正在运行的 MySQL
+pt-query-digest --processlist h=localhost,u=root,p=password
+
+# 过滤特定时间范围
+pt-query-digest --since '2026-06-08' --until '2026-06-09' /var/lib/mysql/slow.log
+```
+
+报告输出关键信息:
+- 总查询数、唯一查询数
+- 各查询的**响应时间分布**(95% / 99%)
+- 各查询的**扫描行数**与**返回行数**
+- TOP 10 慢查询详情
+
+### 2. Performance Schema
+
+MySQL 内置的性能监控框架,8.0 起显著增强。
+
+```sql
+-- 启用
+UPDATE performance_schema.setup_consumers
+SET enabled = 'YES' WHERE name LIKE 'events_statements%';
+
+-- 查询最耗时的 SQL
+SELECT digest_text, count_star, sum_timer_wait/1e9 AS total_ms
+FROM performance_schema.events_statements_summary_by_digest
+ORDER BY sum_timer_wait DESC LIMIT 10;
+```
+
+### 3. sys schema(MySQL 5.7+)
+
+基于 Performance Schema 的可读视图,简化查询。
+
+```sql
+-- 查看最慢的 SQL(按平均耗时)
+SELECT query, db, exec_count, avg_latency
+FROM sys.statement_analysis
+LIMIT 10;
+
+-- 查看冗余索引
+SELECT * FROM sys.schema_redundant_indexes;
+
+-- 查看未使用的索引
+SELECT * FROM sys.schema_unused_indexes;
+```
+
+---
+
 ## 相关章节
 
 - [数据库基础知识](../01-fundamentals/README.md) — 数据库核心概念

@@ -262,6 +262,235 @@ redis-rdb-tools（Python）
 
 ---
 
+## 八、Redis 底层数据结构
+
+| 数据类型 | 编码方式(底层) | 触发条件 |
+|---------|----------------|---------|
+| `String` | `int` / `embstr` / `raw` | 值是整数 / 短字符串 / 长字符串 |
+| `List` | `ziplist` (压缩列表) / `linkedlist` → **7.0 起统一 `quicklist`** | 元素少 / 多 |
+| `Hash` | `listpack` / `hashtable` | 字段少 / 多 |
+| `Set` | `intset` / `hashtable` | 全是整数且少 / 其他 |
+| `ZSet` | `listpack` / `skiplist + hashtable` | 元素少 / 多 |
+
+### 1. SDS(简单动态字符串)
+
+`struct sdshdr`:
+```
+┌──────────┬─────┬──────┬────────┐
+│  len     │ free│ buf  │  ...   │
+│  已用长度 │ 空闲 │ 字节  │ 实际数据 │
+└──────────┴─────┴──────┴────────┘
+```
+
+**优势**:
+- O(1) 取长度(无 `strlen`)
+- 预分配空间,减少重分配次数
+- 二进制安全(可存 `\0`)
+
+### 2. ziplist / listpack(压缩列表)
+
+- 连续内存,节省空间
+- 元素少时(< 128 字节、< 64 项)使用
+- 缺点:**级联更新**,改一个元素可能连锁影响后续
+
+### 3. skiplist(跳表)
+
+- 多级索引,O(log N) 查找
+- 比红黑树实现简单,支持范围操作
+- ZSet 范围查询 `ZRANGEBYSCORE` 高效
+
+### 4. quicklist(7.0+ List 底层)
+
+- ziplist + linkedlist 组合
+- 每个节点是一个 ziplist
+- 平衡空间与修改效率
+
+---
+
+## 九、Redis 分布式锁
+
+### 1. 最简实现(SETNX + EXPIRE)
+
+```bash
+SET lock:order:1001 "uuid-abc" NX EX 30
+```
+
+- `NX` = 仅当 key 不存在时设置
+- `EX 30` = 30 秒过期,防止死锁
+- value 用 UUID 标识,避免误删他人的锁
+
+### 2. 释放锁(Lua 脚本原子化)
+
+```lua
+-- KEYS[1] = lock key, ARGV[1] = UUID
+if redis.call("get", KEYS[1]) == ARGV[1] then
+    return redis.call("del", KEYS[1])
+else
+    return 0
+end
+```
+
+### 3. Redisson 客户端(Java 首选)
+
+```java
+@Resource
+RedissonClient redisson;
+
+public void doBusiness() {
+    RLock lock = redisson.getLock("lock:order:1001");
+    try {
+        lock.lock(10, TimeUnit.SECONDS);  // 10 秒自动释放
+        // 业务逻辑
+    } finally {
+        lock.unlock();
+    }
+}
+```
+
+**特性**:看门狗自动续期、可重入、公平锁、联锁(MultiLock)、读写锁。
+
+### 4. RedLock 算法(多 Redis 实例强一致锁)
+
+```
+1. 获取当前时间 T1
+2. 依次向 N(≥3)个独立 Redis 实例申请锁
+3. 计算获取锁总耗时 = T2 - T1
+4. 当且仅当 (a) 在 ≥N/2+1 个实例上获得锁
+         (b) 总耗时 < 锁 TTL
+   → 视为获取成功
+5. 失败时,向所有实例发送释放锁请求
+```
+
+**争议**:Martin Kleppmann(《数据密集型应用系统设计》作者)指出 RedLock **依赖精确时钟同步**,故障切换场景可能不安全。Antirez(Redis 作者)反驳认为工程上可接受。
+
+> **生产实践**:**单 Redis 实例 + Redisson 看门狗** 是 90% 场景的推荐;RedLock 仅在金融、库存等强一致场景考虑。
+
+---
+
+## 十、Pipeline / 事务 / Lua 对比
+
+| 机制 | 用途 | 原子性 | 是否阻塞其他命令 |
+|------|------|--------|----------------|
+| **Pipeline** | 批量发送命令,减少 RTT | ❌ 不保证原子 | 否 |
+| **MULTI/EXEC 事务** | 命令打包执行 | ✅ 原子(但不支持回滚) | 是(其他命令等待) |
+| **Lua 脚本** | 服务端执行复杂逻辑 | ✅ 原子(单线程执行) | 是 |
+
+### 1. Pipeline 示例
+
+```bash
+# 1 次 RTT 发送多条命令
+(echo -e "SET k1 v1\r\nSET k2 v2\r\nGET k1\r\nGET k2\r\n"; sleep 1) | nc localhost 6379
+```
+
+### 2. 事务示例
+
+```bash
+MULTI
+SET balance 100
+DECRBY balance 30
+INCRBY balance 30
+EXEC  # 一次执行 3 条命令
+```
+
+> Redis 事务**不支持回滚**:若其中某条命令语法错误,EXEC 后其他命令继续执行(不满足原子性要求时 Redis 选择"继续执行")。
+
+### 3. Lua 脚本(最强大)
+
+```bash
+EVAL "
+    local cur = redis.call('GET', KEYS[1])
+    if cur and tonumber(cur) > tonumber(ARGV[1]) then
+        return redis.call('DECRBY', KEYS[1], ARGV[1])
+    end
+    return 0
+" 1 balance 30
+```
+
+---
+
+## 十一、Redis 客户端对比(Java)
+
+| 客户端 | 线程模型 | 性能 | 集群 | 推荐度 |
+|--------|---------|------|------|--------|
+| **Jedis** | 阻塞 I/O,线程不安全(需连接池) | 中 | ✅ | ⭐⭐ 老项目 |
+| **Lettuce** | Netty 异步,线程安全 | 高 | ✅ | ⭐⭐⭐⭐ Spring Boot 默认 |
+| **Redisson** | 基于 Netty,功能丰富 | 高 | ✅ | ⭐⭐⭐⭐⭐ 分布式锁首选 |
+
+> **Spring Boot 2.x+ 默认使用 Lettuce**,分布式锁场景推荐 **Redisson**。
+
+---
+
+## 十二、Redis 监控指标
+
+### 1. INFO 命令
+
+```bash
+redis-cli INFO
+```
+
+关键 sections:
+| Section | 关键指标 |
+|---------|---------|
+| `Server` | `redis_version`、`uptime_in_seconds` |
+| `Memory` | `used_memory_human`、`mem_fragmentation_ratio` |
+| `Stats` | `total_connections_received`、`instantaneous_ops_per_sec` |
+| `Replication` | `master_link_status`、`repl_lag` |
+| `Keyspace` | 各 db 的 key 数量与命中数 |
+
+### 2. 慢查询
+
+```bash
+# 设置阈值(微秒)
+CONFIG SET slowlog-log-slower-than 10000
+
+# 查看最近 10 条慢查询
+SLOWLOG GET 10
+
+# 慢查询数量
+SLOWLOG LEN
+```
+
+### 3. 内存碎片率
+
+```
+mem_fragmentation_ratio = used_memory_rss / used_memory
+```
+
+| 值 | 含义 |
+|------|------|
+| `1.0 ~ 1.5` | 正常 |
+| `> 1.5` | 碎片过多,执行 `MEMORY PURGE` 或重启 |
+| `< 1.0` | 内存换出到 swap,性能极差 |
+
+### 4. Prometheus + redis_exporter
+
+```yaml
+# prometheus.yml
+scrape_configs:
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['redis-exporter:9121']
+```
+
+Grafana 官方提供 Redis 仪表盘,关键告警指标:
+- `redis_memory_used_bytes / redis_memory_max_bytes > 0.8`
+- `redis_connected_clients > 5000`
+- `redis_keyspace_hits / (redis_keyspace_hits + redis_keyspace_misses) < 0.9`(命中率)
+
+---
+
+## 十三、Redis 7.0 新特性
+
+| 特性 | 说明 |
+|------|------|
+| **Function** | 用 Lua 替代 EVAL,更好的函数管理 |
+| **Sharded Pub/Sub** | 集群模式下分片发布订阅,降低跨节点流量 |
+| **Multi-Part AOF** | AOF 文件按大小分片,清理更高效 |
+| **ACL v2** | 细粒度权限控制(支持选择器) |
+| **Client-Side Caching** | 客户端缓存(Tracking)增强 |
+
+---
+
 ## 相关章节
 
 - [数据库基础知识](../01-fundamentals/README.md) — 数据库核心概念

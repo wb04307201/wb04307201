@@ -281,7 +281,158 @@ ALTER TABLE orders ADD INDEX idx_user_status_time (user_id, status, create_time)
 5. **用 EXISTS 替代大结果集的 IN 子查询**
 6. **UPDATE/DELETE 务必加 WHERE**
 7. **使用预编译语句（PreparedStatement）**：防止 SQL 注入，提升性能
-8. **合理使用事务**：避免大事务长时间占用锁
+8. **合理使用事务**:避免大事务长时间占用锁
+
+---
+
+## 六、CTE(公用表表达式)
+
+CTE(Common Table Expressions)从 MySQL 8.0 开始支持,用于将复杂查询拆分为命名临时结果集,大幅提升可读性。
+
+### 1. 基本语法
+
+```sql
+WITH cte_name AS (
+    SELECT ... FROM ...
+)
+SELECT * FROM cte_name;
+```
+
+### 2. 实战:多层嵌套查询改写
+
+**改写前**(嵌套子查询,可读性差):
+
+```sql
+SELECT name FROM employees
+WHERE dept_id IN (
+    SELECT id FROM departments
+    WHERE location_id IN (
+        SELECT id FROM locations WHERE country = 'CN'
+    )
+);
+```
+
+**改写后**(CTE 链式,清晰):
+
+```sql
+WITH cn_locations AS (
+    SELECT id FROM locations WHERE country = 'CN'
+),
+cn_depts AS (
+    SELECT id FROM departments WHERE location_id IN (SELECT id FROM cn_locations)
+)
+SELECT name FROM employees WHERE dept_id IN (SELECT id FROM cn_depts);
+```
+
+### 3. 递归 CTE(组织树、层级数据)
+
+```sql
+-- 查询员工及其所有上级
+WITH RECURSIVE org_tree AS (
+    -- 锚点:起始行(顶级员工)
+    SELECT id, name, manager_id, 1 AS level
+    FROM employees WHERE manager_id IS NULL
+    UNION ALL
+    -- 递归:下级
+    SELECT e.id, e.name, e.manager_id, t.level + 1
+    FROM employees e
+    JOIN org_tree t ON e.manager_id = t.id
+)
+SELECT * FROM org_tree ORDER BY level;
+```
+
+---
+
+## 七、窗口函数(Window Functions)
+
+窗口函数从 MySQL 8.0 起支持,实现"分组但不聚合"的复杂分析,优于子查询方案。
+
+### 1. 常用窗口函数
+
+| 函数 | 用途 | 示例 |
+|------|------|------|
+| `ROW_NUMBER()` | 行号(1, 2, 3 不重复) | 每组前 N 名 |
+| `RANK()` | 排名(1, 1, 3 跳号) | 成绩排名 |
+| `DENSE_RANK()` | 排名(1, 1, 2 不跳号) | 同分连续排名 |
+| `LAG(col, n)` | 往前第 n 行的值 | 与上一行对比 |
+| `LEAD(col, n)` | 往后第 n 行的值 | 与下一行对比 |
+| `SUM/AVG() OVER()` | 累计求和/平均 | 累计销售额 |
+
+### 2. 经典案例
+
+#### Top N 每组
+
+```sql
+-- 每个部门工资最高的 3 名员工
+SELECT * FROM (
+    SELECT
+        dept_id, name, salary,
+        ROW_NUMBER() OVER (PARTITION BY dept_id ORDER BY salary DESC) AS rn
+    FROM employees
+) t
+WHERE rn <= 3;
+```
+
+#### 同比/环比
+
+```sql
+-- 销售额与上月对比
+SELECT
+    month, amount,
+    LAG(amount, 1) OVER (ORDER BY month) AS last_month,
+    amount - LAG(amount, 1) OVER (ORDER BY month) AS diff
+FROM monthly_sales;
+```
+
+#### 累计求和
+
+```sql
+SELECT
+    order_date, amount,
+    SUM(amount) OVER (ORDER BY order_date) AS cumulative
+FROM orders;
+```
+
+---
+
+## 八、JOIN 算法详解
+
+数据库执行 JOIN 时,有 3 种核心算法:
+
+| 算法 | 原理 | 适用场景 |
+|------|------|---------|
+| **Nested Loop Join (NLJ)** | 双层循环,外表逐行驱动内表索引查找 | 内表有索引、结果集小 |
+| **Hash Join** | 构建 Hash 表,探测匹配 | **MySQL 8.0.18+ 支持**,等值 JOIN、大表 |
+| **Sort Merge Join** | 两表排序后双指针合并 | 范围 JOIN、已排序数据 |
+
+```sql
+-- EXPLAIN 中 Extra 字段提示算法
+EXPLAIN SELECT * FROM orders o JOIN users u ON o.user_id = u.id;
+-- Using join buffer (hash join)  → MySQL 8.0.18+
+-- Using where; Using index       → NLJ
+```
+
+---
+
+## 九、EXPLAIN ANALYZE(MySQL 8.0.18+)
+
+`EXPLAIN ANALYZE` 在 EXPLAIN 基础上**实际执行 SQL**,返回真实耗时与行数。
+
+```sql
+EXPLAIN ANALYZE
+SELECT * FROM users WHERE age > 20 ORDER BY create_time DESC LIMIT 10;
+```
+
+输出示例:
+
+```
+-> Limit: 10 row(s)  (actual time=15.2..15.2 rows=10 loops=1)
+    -> Sort: create_time DESC  (actual time=15.2..15.2 rows=10 loops=1)
+        -> Index lookup on users using idx_age (age>20)  (cost=1200..1500 rows=5000)
+            (actual time=0.5..12.3 rows=5000 loops=1)
+```
+
+> **关键指标**:`actual time` 真实耗时,`rows` 真实行数,`loops` 循环次数。三者结合可发现"预估 vs 实际"的统计信息偏差。
 
 ---
 

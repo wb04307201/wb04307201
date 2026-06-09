@@ -182,6 +182,262 @@ druid:
 
 ---
 
+## 七、连接池监控指标详解
+
+### 1. 核心指标
+
+| 指标 | 含义 | 告警阈值 |
+|------|------|---------|
+| **活跃连接数** | 正在执行 SQL 的连接 | 持续接近 max-pool-size |
+| **空闲连接数** | 池中可用连接 | 接近 min-idle 即可 |
+| **等待连接数** | `getConnection()` 阻塞中线程 | > 0 持续 5s 需告警 |
+| **获取连接耗时 P99** | `getConnection()` 99 分位耗时 | > 100ms 需关注 |
+| **连接使用率** | 活跃/总数 | > 80% 需扩容 |
+
+### 2. HikariCP 指标(Micrometer)
+
+```yaml
+# application.yml
+management:
+  metrics:
+    enable:
+      hikaricp: true
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics,prometheus
+```
+
+```bash
+# 访问 Prometheus 端点
+curl http://localhost:8080/actuator/prometheus | grep hikaricp
+# hikaricp_connections_active 12.0
+# hikaricp_connections_idle 3.0
+# hikaricp_connections_pending 0.0
+# hikaricp_connections_usage_seconds_max 0.045
+```
+
+### 3. Druid 监控面板
+
+Druid 自带 Web 界面(`/druid/`),可查看:
+- 数据源实时状态(活跃/空闲/等待数)
+- SQL 执行统计(次数、耗时、慢 SQL)
+- URI 监控
+- Spring 监控(按 Bean 统计)
+- Session 监控
+
+---
+
+## 八、连接池常见问题排查
+
+### 1. 连接泄漏(Connection Leak)
+
+**现象**:活跃连接数缓慢增长直至打满,新请求阻塞。
+
+**定位**:
+```java
+// 启用 HikariCP 泄漏检测
+hikari:
+  leak-detection-threshold: 5000  // 5 秒未归还则报警
+```
+
+日志输出示例:
+```
+Connection leak detection triggered for connection
+org.sql.core.Connection@12345, stack trace follows
+    at com.example.UserDao.insert(UserDao.java:42)
+    at com.example.UserService.create(UserService.java:18)
+    ...
+```
+
+**根因**:连接未在 `finally` 块关闭,或 Spring `@Transactional` 失效。
+
+**修复**:
+```java
+// 正确写法
+try (Connection conn = dataSource.getConnection()) {
+    // 业务代码
+}  // 自动 close
+
+// 或使用 Spring 模板
+jdbcTemplate.update("INSERT ...", params);
+```
+
+### 2. 慢 SQL 阻塞连接池
+
+**现象**:单条慢 SQL 执行 30s+,期间所有连接被占用,新请求超时。
+
+**诊断**:
+```sql
+-- MySQL 查看正在执行的 SQL
+SHOW PROCESSLIST;
+
+-- 查看锁等待
+SELECT * FROM information_schema.INNODB_TRX;
+```
+
+**修复**:
+- SQL 优化(加索引、避免全表扫描)
+- 设置 `connection-timeout` 快速失败
+- 读写分离,慢查询走从库
+
+### 3. 连接数打满
+
+**现象**:`HikariPool-1 - Connection is not available, request timed out after 30000ms`
+
+**根因清单**:
+- max-pool-size 设置过小
+- 应用服务器数量 × max-pool-size > 数据库 `max_connections`
+- 连接泄漏(见上)
+- 慢 SQL 占用
+
+**修复步骤**:
+1. 检查活跃连接数(`hikaricp_connections_active`)
+2. 检查 MySQL `SHOW PROCESSLIST`
+3. 分析是否存在泄漏
+4. 评估是否扩容或读写分离
+
+---
+
+## 九、其他主流连接池
+
+| 连接池 | 特点 | 适用 |
+|--------|------|------|
+| **HikariCP** | Java 性能最快,极简 | **Spring Boot 默认** |
+| **Druid** | 监控 + SQL 防火墙,功能全面 | 阿里系、复杂生产 |
+| **Tomcat JDBC Pool** | Tomcat 内置,功能中规中矩 | Tomcat 部署 |
+| **Vibur DBCP** | 异步支持,监控完善 | 中小项目 |
+| **FlexyPool** | 连接池指标分析,故障注入测试 | 调优诊断 |
+| **Dbcp2** | Apache Commons 经典 | 旧项目维护 |
+
+### Tomcat JDBC Pool 关键配置
+
+```yaml
+spring:
+  datasource:
+    type: org.apache.tomcat.jdbc.pool.DataSource
+    tomcat:
+      max-active: 50
+      max-idle: 20
+      min-idle: 5
+      max-wait: 10000
+      test-on-borrow: true        # 借出时校验(影响性能)
+      test-while-idle: true       # 空闲时校验
+      time-between-eviction-runs-millis: 30000
+```
+
+---
+
+## 十、Druid 加密密码
+
+生产环境数据库密码必须加密,避免明文配置泄露。
+
+```bash
+# 1. 生成加密密码
+java -cp druid-1.2.20.jar com.alibaba.druid.filter.config.ConfigTools your_password
+# 输出: privateKey / publicKey / password
+
+# 2. application.yml
+spring:
+  datasource:
+    druid:
+      username: admin
+      password: ${加密后的密码}
+      filters: config       # 启用配置过滤
+      connection-properties: config.decrypt=true;config.decrypt.key=${publicKey}
+```
+
+> **进阶**:**密码托管到 Vault/K8s Secret**,应用启动时从密钥管理服务拉取,实现"代码与密钥分离"。
+
+---
+
+## 十一、分库分表场景下的连接池
+
+使用 ShardingSphere-JDBC 等分库分表中间件时,**每个分片都是独立连接池**。
+
+### ShardingSphere 配置
+
+```yaml
+spring:
+  shardingsphere:
+    datasource:
+      names: ds0,ds1,ds2,ds3
+      ds0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://10.0.0.1:3306/order_0
+        maximum-pool-size: 20
+      ds1:
+        # ... 同上,指向 order_1
+    rules:
+      sharding:
+        tables:
+          orders:
+            actual-data-nodes: ds${0..3}.orders_${0..15}
+            table-strategy:
+              standard:
+                sharding-column: user_id
+                sharding-algorithm-name: user-mod
+            key-generate-strategy:
+              column: id
+              key-generator-name: snowflake
+```
+
+### 关键原则
+
+- **每个分片连接池独立配置**(避免某个分片打满牵连其他)
+- **小表广播表**(字典表)使用单独的连接池
+- **连接数总预算**:应用实例数 × 实例 max-pool × 分片数 ≤ DB `max_connections`
+
+---
+
+## 十二、连接池与事务的协作
+
+### 1. Spring `@Transactional` 何时归还连接
+
+```java
+@Transactional
+public void orderProcess() {
+    updateOrder();        // 持有连接
+    callPaymentService(); // 嵌套调用,可能获取新连接或加入当前
+    sendNotification();   // 同事务,共享连接
+    // 方法返回 → 事务提交 → 连接归还
+}
+```
+
+- `@Transactional` 方法执行期间,连接被**独占**
+- 方法返回(无论成功或异常)后,连接**释放**到池
+- 异常 + `@Transactional(rollbackFor=...)` → 回滚 → 连接归还
+
+### 2. 事务内外部调用连接池行为
+
+```java
+@Transactional
+public void outer() {
+    // 持有连接
+    otherService.call();  // 独立事务/无事务,可能获取新连接
+    // outer 事务结束 → 归还
+}
+```
+
+若 `otherService` 也是 `@Transactional(REQUIRED)`,则加入当前事务(共用连接);若 `REQUIRES_NEW`,则新开连接。
+
+### 3. 异步与连接池
+
+`@Async` 方法在独立线程执行,**新事务 + 新连接**。若异步方法内部持锁操作,需注意:
+
+```java
+@Transactional
+public void syncMethod() {
+    // 主线程,连接 A
+    asyncService.processAsync();  // 异步线程,连接 B
+}
+```
+
+> **避免**在 `@Transactional` 中调用本服务的 `@Async` 方法(代理失效,实际是同步调用)。
+
+---
+
 ## 相关章节
 
 - [数据库基础知识](../01-fundamentals/README.md) — 数据库核心概念

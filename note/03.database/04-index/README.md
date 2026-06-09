@@ -237,6 +237,188 @@ EXPLAIN SELECT * FROM users WHERE name = '张三' AND age > 25;
 
 ---
 
+## 九、索引下推(ICP)完整原理
+
+**索引下推**(Index Condition Pushdown,ICP)是 MySQL 5.6+ 的重要优化,**将 WHERE 条件下推至存储引擎层执行**,减少不必要的回表。
+
+### 1. 优化前(无 ICP)
+
+联合索引 `(name, age)`,SQL: `SELECT * FROM users WHERE name LIKE '张%' AND age > 25`
+
+```
+存储引擎:  找到所有 name LIKE '张%' 的索引项
+Server 层: 从聚簇索引回表读取完整行 → 在 Server 层过滤 age > 25
+```
+
+**问题**:回表 1000 次,其中 800 次最终因 age 不满足被丢弃。
+
+### 2. 优化后(ICP 启用)
+
+```
+存储引擎:  找到 name LIKE '张%' 的索引项 → 在存储引擎层用 age > 25 过滤
+          → 只回表 200 个真正满足的索引项
+Server 层: 读 200 行,无需再次过滤 age
+```
+
+**收益**:回表次数从 1000 → 200,**减少 80% 随机 I/O**。
+
+### 3. 启用与验证
+
+```sql
+-- 默认开启
+SET optimizer_switch = 'index_condition_pushdown=on';
+
+-- EXPLAIN 中 Extra 显示 Using index condition 即表示 ICP 生效
+EXPLAIN SELECT * FROM users WHERE name LIKE '张%' AND age > 25;
+```
+
+### 4. 适用条件
+
+- 只能用于**二级索引**(聚簇索引本身就是全行)
+- WHERE 条件是索引列的**非前缀部分**
+- 范围扫描(`range`)和 ref 扫描都支持
+
+---
+
+## 十、MRR(Multi-Range Read)
+
+MRR(MySQL 5.6+)是辅助回表的优化:**将随机回表转为顺序 I/O**。
+
+### 1. 优化前
+
+```sql
+SELECT * FROM users WHERE age BETWEEN 20 AND 30;
+-- 二级索引(age)找到 1000 个主键 → 1000 次随机回表
+```
+
+### 2. 优化后
+
+```
+步骤 1: 二级索引找到 1000 个主键
+步骤 2: 在内存中对主键排序 → [id=1, id=5, id=12, id=33, ...]
+步骤 3: 按主键顺序回表 → 顺序 I/O
+```
+
+**收益**:机械硬盘场景下随机 I/O 性能可提升 5-10 倍。**SSD 场景收益较小**。
+
+### 3. 配置
+
+```sql
+SET optimizer_switch = 'mrr=on';
+SET optimizer_switch = 'mrr_cost_based=on';  -- 由优化器决定
+```
+
+---
+
+## 十一、Index Merge(索引合并)
+
+MySQL 5.0+ 支持对**多个单列索引**的结果做合并。
+
+### 1. 三种合并方式
+
+| 合并方式 | 触发条件 | 示例 |
+|---------|---------|------|
+| **Intersection** | 多个 AND 条件,各用不同索引 | `WHERE a=1 AND b=2`(a、b 各有索引) |
+| **Union** | 多个 OR 条件,各用不同索引 | `WHERE a=1 OR b=2` |
+| **Sort-Union** | OR 条件,某列范围扫描 | `WHERE a>10 OR b=2` |
+
+### 2. 实战判断
+
+```sql
+EXPLAIN SELECT * FROM users WHERE first_name = '张' OR last_name = '三';
+-- Extra: Using union(idx_first_name, idx_last_name); Using where
+```
+
+### 3. 何时使用 vs 联合索引
+
+| 场景 | 推荐 |
+|------|------|
+| 2 个独立条件偶尔查询 | Index Merge 足够 |
+| 高频组合查询 | 改用联合索引 `(first_name, last_name)` |
+
+> **注意**:Index Merge 在某些场景下比联合索引**慢**(临时结果集合并开销),可通过 `IGNORE INDEX` 强制改用单索引验证。
+
+---
+
+## 十二、Cardinality 与索引选择性
+
+**Cardinality**(基数)是优化器评估索引价值的关键指标,表示索引列的**唯一值数量**。
+
+### 1. 查看 Cardinality
+
+```sql
+SHOW INDEX FROM users;
+-- 关注 Cardinality 列
+-- 越大越有区分度,索引越有价值
+```
+
+MySQL 通过采样估算(非精确),可通过 `ANALYZE TABLE` 刷新统计。
+
+### 2. 索引选择性公式
+
+```
+选择性 = Cardinality / 表行数
+```
+
+| 字段 | 例子 | 选择性 | 是否适合索引 |
+|------|------|--------|------------|
+| 用户 ID | unique | 1.0 | ✅ 极优 |
+| 邮箱 | 几乎唯一 | ~1.0 | ✅ 优 |
+| 性别 | 男/女 | 0.0001 | ❌ 差 |
+| 状态(0/1) | 2 种值 | 0.0001 | ❌ 差 |
+| 创建时间(年) | 5 年 | 0.5 | ⚠️ 一般 |
+
+### 3. 何时不建索引(补充设计原则)
+
+- **低选择性字段**(状态、类型、性别)— 索引扫描行数仍接近全表
+- **频繁更新** — 每次 UPDATE 维护 B+ 树
+- **表数据量小**(< 几百行) — 全表扫描更快
+- **重复数据多** — 如订单的 `is_deleted` 字段
+
+---
+
+## 十三、Online DDL
+
+MySQL 5.6+ 支持在线修改表结构,**不锁表或只短暂锁元数据**。
+
+### 1. 关键参数 `ALGORITHM` 与 `LOCK`
+
+```sql
+-- 添加索引不锁表
+ALTER TABLE users ADD INDEX idx_email (email), ALGORITHM=INPLACE, LOCK=NONE;
+
+-- 三种 ALGORITHM
+-- COPY: 旧方式,锁表,完整重建
+-- INPLACE: 不复制表数据,只重建索引(部分 DDL 支持)
+-- INSTANT: 仅修改元数据(MySQL 8.0+,最快)
+
+-- 三种 LOCK
+-- NONE: 允许读写
+-- SHARED: 允许读,阻塞写
+-- EXCLUSIVE: 锁表
+```
+
+### 2. INSTANT DDL(MySQL 8.0+)
+
+支持的操作:
+- 添加列(默认值/无默认值)
+- 修改默认值
+- 重命名列/表
+
+**性能**:毫秒级完成,只修改数据字典,**不触碰表数据**。
+
+### 3. 大表 ALTER 实战方案
+
+```bash
+# 方案 1: pt-online-schema-change (Percona)
+# 1. 创建影子表 2. 触发器同步 3. 切换
+
+# 方案 2: gh-ost (GitHub 开源)
+# 基于 binlog 同步,无需触发器
+```
+
+---
+
 ## 相关章节
 
 - [数据库基础知识](../01-fundamentals/README.md) — 索引概览与三大索引类型

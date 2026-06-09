@@ -161,6 +161,162 @@
 
 ---
 
+## 四、布隆过滤器深入
+
+### 1. 误判率公式
+
+| 参数 | 含义 |
+|------|------|
+| `m` | 位数组大小 |
+| `n` | 已加入元素数 |
+| `k` | Hash 函数个数 |
+| `p` | 误判率 |
+
+最优公式:
+
+```
+m = -n * ln(p) / (ln(2))^2
+k = (m/n) * ln(2)
+```
+
+### 2. Java 实战(Guava BloomFilter)
+
+```java
+import com.google.common.hash.BloomFilter;
+import com.google.common.hash.Funnels;
+
+BloomFilter<Long> filter = BloomFilter.create(
+    Funnels.longFunnel(),
+    1_000_000,    // 期望元素数 n
+    0.001         // 误判率 0.1%
+);
+
+// 添加
+filter.put(123L);
+
+// 查询
+if (filter.mightContain(456L)) {
+    // 可能存在,查缓存或 DB
+}
+```
+
+### 3. Counting Bloom Filter(支持删除)
+
+普通 Bloom Filter **不支持删除**(位无法区分多个元素)。变种 **Counting Bloom Filter** 用计数器数组替代位数组,删除时计数器 -1,支持计数溢出管理。
+
+### 4. Cuckoo Filter(进阶变种)
+
+Cuckoo Filter 空间利用率更高(>95%),**支持删除**,误判率比 Bloom Filter 低。适合 4KB-1GB 元素的场景。
+
+### 5. Redis 布隆过滤器(RedisBloom 模块)
+
+```bash
+# 加载模块
+redis-server --loadmodule /path/to/redisbloom.so
+
+# 使用
+BF.ADD user_ids 1001
+BF.EXISTS user_ids 1001
+BF.MADD user_ids 1002 1003 1004
+```
+
+---
+
+## 五、热点 Key 发现与处理
+
+### 1. 热点 Key 的危害
+
+- 单节点 QPS 过高,成为瓶颈
+- 缓存击穿风险(过期瞬间)
+- Redis Cluster 中某节点过载
+
+### 2. 发现方案
+
+| 方案 | 原理 | 优点 | 缺点 |
+|------|------|------|------|
+| **redis-cli --hotkeys** | UNLINK + DEBUG OBJECT 探测 | 简单 | 仅采样、不精准 |
+| **monitor 命令** | 抓取所有命令统计 | 精准 | **生产慎用**,影响性能 |
+| **客户端统计** | Jedis/Lettuce 拦截统计 | 实时精确 | 需修改业务代码 |
+| **JDHotkey(京东)** | 客户端 + 服务端综合 | 开箱即用 | 引入依赖 |
+| **CacheCloud(搜狐)** | 可视化监控平台 | 管理友好 | 部署复杂 |
+
+### 3. 处理方案
+
+| 方案 | 适用 |
+|------|------|
+| **本地缓存兜底**(Caffeine) | 热点 key 数量少、读取频繁 |
+| **Key 拆分** `product:1001:1` `product:1001:2` | 单值过大场景 |
+| **读写分离** 分散到多个 Slave | 读多写少 |
+| **Key 预加载** 提前刷新 TTL | 可预知的热点(如秒杀) |
+
+---
+
+## 六、多级缓存架构(L1 + L2)
+
+### 1. 经典架构
+
+```
+请求 → L1 本地缓存(Caffeine) → L2 分布式缓存(Redis) → DB
+         ↑ 命中直接返回     ↑ 命中回填 L1
+```
+
+### 2. Spring Boot 整合 Caffeine + Redis
+
+```java
+@Configuration
+public class CacheConfig {
+    @Bean
+    public CacheManager cacheManager() {
+        CaffeineCacheManager mgr = new CaffeineCacheManager();
+        mgr.setCaffeine(Caffeine.newBuilder()
+            .maximumSize(10_000)
+            .expireAfterWrite(60, TimeUnit.SECONDS));
+        return mgr;
+    }
+}
+```
+
+```java
+@Cacheable(value = "users", key = "#id", cacheManager = "caffeineCacheManager")
+public User getUser(Long id) {
+    return userMapper.selectById(id);
+}
+
+@Cacheable(value = "users", key = "#id", cacheManager = "redisCacheManager")
+public User getUserFromRedis(Long id) { ... }
+```
+
+### 3. 一致性保障
+
+- L1 TTL < L2 TTL(如 L1 = 60s, L2 = 600s)
+- L1 失效后查 L2,再回填 L1
+- 写操作:先更新 DB → 删除 L2 → **Pub/Sub 通知其他节点删除 L1**
+
+---
+
+## 七、本地缓存的 3 个经典问题
+
+| 问题 | 表现 | 解决方案 |
+|------|------|---------|
+| **内存上限** | JVM 频繁 Full GC | Caffeine `maximumSize`/`maximumWeight` |
+| **淘汰策略** | 误删热点数据 | 选 W-TinyLFU(Caffeine) |
+| **进程间不一致** | 多节点缓存值不同 | 短 TTL + Pub/Sub 失效广播 |
+
+---
+
+## 八、缓存预热方案
+
+| 场景 | 方案 |
+|------|------|
+| **系统启动** | 启动时 Job 加载热点数据到 Redis |
+| **灰度发布** | 旧版本保留,新版本预热完成后切换流量 |
+| **定时刷新** | `ScheduledTask` 周期性刷新(如配置数据) |
+| **CDN 预热** | 主动调用 URL 触发 CDN 边缘节点缓存 |
+
+> **核心原则**:**预热不是让缓存立即生效,而是让流量高峰时缓存已就绪**。
+
+---
+
 ## 相关章节
 
 - [数据库基础知识](../01-fundamentals/README.md) — 数据库基础
