@@ -1,6 +1,8 @@
 # 缓存设计模式
 
 > 缓存是提升系统性能最有效的手段之一。不同的业务场景需要选择不同的缓存模式，本模块详解四种经典缓存模式及多级缓存架构。
+>
+> 最后更新: 2026-06-09
 
 ## 目录
 
@@ -11,6 +13,7 @@
 - [5. Write-Behind 写回模式](#5-write-behind-写回模式)
 - [6. 多级缓存设计](#6-多级缓存设计)
 - [7. 缓存预热策略](#7-缓存预热策略)
+- [8. 缓存三大问题](#8-缓存三大问题)
 
 ---
 
@@ -447,17 +450,17 @@ public class MultiLevelCacheService {
 public class CacheWarmUpRunner implements ApplicationRunner {
 
     @Autowired
-    private UserRepository userRepository;
-    
+    private ProductRepository productRepository;
+
     @Autowired
     private StringRedisTemplate redisTemplate;
 
     @Override
     public void run(ApplicationArguments args) {
         log.info("开始缓存预热...");
-        
+
         // 预热热门商品 (最近7天销量Top 1000)
-        List<Product> hotProducts = userRepository.findHotProducts(1000);
+        List<Product> hotProducts = productRepository.findHotProducts(1000);
         
         hotProducts.forEach(product -> {
             String key = "product:" + product.getId();
@@ -475,3 +478,155 @@ public class CacheWarmUpRunner implements ApplicationRunner {
 2. **预热范围**: 不要全量预热，根据访问统计选择热点数据
 3. **预热速率**: 控制预热速率，避免对数据库造成冲击
 4. **预热监控**: 记录预热耗时和数据量，持续优化预热策略
+
+---
+
+## 8. 缓存三大问题
+
+使用缓存时最常遇到的三个经典问题：**缓存穿透**、**缓存击穿**、**缓存雪崩**。
+
+### 8.1 缓存穿透 (Cache Penetration)
+
+**场景**: 查询一个**数据库中根本不存在的数据**，缓存永远不命中，请求直接打到数据库。
+
+**风险**: 恶意攻击者可以反复查询不存在的 key，把数据库打满。
+
+**解决方案**:
+
+```java
+// 方案 1: 缓存空值 (适用于 key 有限且重复查询)
+public User getUserById(Long id) {
+    String key = "user:" + id;
+    String cached = redisTemplate.opsForValue().get(key);
+    if (cached != null) {
+        if ("NULL".equals(cached)) return null;        // 空值标记
+        return JSON.parseObject(cached, User.class);
+    }
+    User user = userRepository.findById(id).orElse(null);
+    if (user == null) {
+        redisTemplate.opsForValue().set(key, "NULL", Duration.ofMinutes(5));  // 缓存空值 5 分钟
+        return null;
+    }
+    redisTemplate.opsForValue().set(key, JSON.toJSONString(user), Duration.ofMinutes(30));
+    return user;
+}
+
+// 方案 2: 布隆过滤器 (适用于 key 海量, 误判率可控)
+@Component
+public class BloomFilterService {
+    private final BloomFilter<Long> filter = BloomFilter.create(
+        Funnels.longFunnel(), 10_000_000, 0.001);
+
+    @PostConstruct
+    public void init() {
+        // 启动时将所有有效 user_id 加载到布隆过滤器
+        userRepository.findAllIds().forEach(filter::put);
+    }
+
+    public boolean mightContain(Long userId) {
+        return filter.mightContain(userId);
+    }
+}
+
+public User getUserById(Long id) {
+    if (!bloomFilterService.mightContain(id)) {
+        return null;  // 一定不存在,直接返回
+    }
+    // 走正常查询流程 ...
+}
+```
+
+### 8.2 缓存击穿 (Cache Breakdown)
+
+**场景**: 某个**热点 key 突然过期**，此时大量并发请求同时打到数据库。
+
+**解决方案**:
+
+```java
+// 方案 1: 分布式锁 (单线程回源)
+public User getHotUser(Long id) {
+    String key = "user:" + id;
+    User user = (User) redisTemplate.opsForValue().get(key);
+    if (user != null) return user;
+
+    // 只让一个线程去查 DB, 其他线程等待
+    String lockKey = "lock:user:" + id;
+    boolean locked = redisTemplate.opsForValue().setIfAbsent(lockKey, "1", Duration.ofSeconds(3));
+    if (locked) {
+        try {
+            user = userRepository.findById(id).orElse(null);
+            redisTemplate.opsForValue().set(key, JSON.toJSONString(user), Duration.ofMinutes(30));
+        } finally {
+            redisTemplate.delete(lockKey);
+        }
+    } else {
+        Thread.sleep(50);
+        return getHotUser(id);  // 重试
+    }
+    return user;
+}
+
+// 方案 2: 逻辑过期 (后台异步刷新, 永不过期)
+@Data
+public class CacheItem<T> {
+    private T data;
+    private long expireAt;  // 逻辑过期时间
+}
+
+public User getHotUserV2(Long id) {
+    String key = "user:" + id;
+    CacheItem<User> item = (CacheItem<User>) redisTemplate.opsForValue().get(key);
+    if (item == null) {
+        // 缓存重建
+        return rebuildCache(id);
+    }
+    if (item.getExpireAt() < System.currentTimeMillis()) {
+        // 已过期, 异步刷新 (不阻塞当前请求)
+        asyncRefreshExecutor.execute(() -> rebuildCache(id));
+    }
+    return item.getData();  // 始终返回旧数据
+}
+```
+
+### 8.3 缓存雪崩 (Cache Avalanche)
+
+**场景**: **大量 key 同时过期** 或 **缓存服务宕机**，导致所有请求直接打到数据库。
+
+**解决方案**:
+
+```yaml
+# 方案 1: 过期时间随机化 (避免同时过期)
+```
+
+```java
+// 给过期时间加一个随机抖动
+int baseTtl = 30;  // 基础 30 分钟
+int jitter = ThreadLocalRandom.current().nextInt(0, 10);  // 0~10 分钟随机
+Duration ttl = Duration.ofMinutes(baseTtl + jitter);
+redisTemplate.opsForValue().set(key, value, ttl);
+```
+
+```yaml
+# 方案 2: 多级缓存 (L1 本地 + L2 分布式)
+# 方案 3: 熔断降级 (Hystrix/Sentinel 限制直接访问 DB 的并发数)
+# 方案 4: 缓存高可用 (Redis Cluster / Sentinel 防止缓存整体宕机)
+```
+
+### 8.4 三者对比
+
+| 维度 | 缓存穿透 | 缓存击穿 | 缓存雪崩 |
+|------|---------|---------|---------|
+| **原因** | 查询不存在的数据 | 单个热点 key 过期 | 大量 key 同时过期/缓存宕机 |
+| **危害** | 数据库承受恶意请求 | 单 key 突发打 DB | 整个系统雪崩 |
+| **方案** | 布隆过滤器 / 空值缓存 | 分布式锁 / 逻辑过期 | 随机 TTL / 多级缓存 / 高可用 |
+| **复杂度** | 中 | 中 | 高 |
+
+---
+
+## 相关章节
+
+- [CDN 加速](../cdn/README.md) — 边缘缓存，与应用层缓存互补
+- [负载均衡](../load-balance/README.md) — 缓存层的负载均衡
+- [数据库分库分表](../database-optimization/db-sharding/README.md) — 缓存淘汰后由分库分表抗住流量
+- [连接池优化](../connection-pool/README.md) — 缓存后端连接 (Redis Lettuce 池)
+- [Java 性能优化](../java/README.md) — 本地缓存 (Caffeine) 的 JVM 调优

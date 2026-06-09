@@ -88,3 +88,10 @@ end
 3. 回源鉴权:配置回源验证策略，对 CDN 接受到的访问请求进行鉴权，适用于对防盗链有很高实时性要求的场景。
 4. IP 黑白名单:允许或禁止某些 IP 或 IP 段的访问，帮助您解决恶意 IP 盗刷、攻击等问题。
 6. 最简单的办法:Referer 防盗链 和 时间戳防盗链
+
+## 相关章节
+
+- [缓存设计模式](../cache-patterns/README.md) — 边缘缓存与应用层缓存的协同策略
+- [负载均衡](../load-balance/README.md) — 节点调度与负载均衡算法
+- [数据库优化概览](../database-optimization/README.md) — 静态资源与动态请求分离
+- [Java 性能优化](../java/README.md) — 边缘计算的 Java 运行时

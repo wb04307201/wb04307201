@@ -1,6 +1,8 @@
 # 连接池优化
 
 > 连接池是管理数据库/Redis 连接复用的核心组件。合理的连接池配置能显著提升系统吞吐量，不当配置则可能导致连接泄漏、连接耗尽等严重问题。
+>
+> 最后更新: 2026-06-09
 
 ## 目录
 
@@ -76,6 +78,8 @@ pool size = CPU核心数 × 2 + 磁盘数
 ```
 
 **原因**: 数据库连接大部分时间在等待 I/O，不是 CPU 密集型。连接数过多反而会增加数据库的锁竞争和上下文切换开销。
+
+> **存储介质参考值**: SSD 推荐 8-16;HDD 或远程 DB 需更保守,通常 4-8。这是因为 SSD IOPS 高(数万~数十万),可承受更多并发连接;HDD 随机 IOPS 有限(数百),过多连接会因磁盘争用导致延迟飙升。
 
 ```yaml
 # application.yml 示例
@@ -285,3 +289,11 @@ spring:
 2. **超时时间**: 数据库连接超时 3~5s，Redis 应该 1~2s（Redis 操作应该是亚毫秒级）
 3. **集群**: 数据库通常单数据源或主从，Redis 需要支持 Cluster/哨兵/分片
 4. **Pipeline**: Redis 支持 Pipeline 批量操作，可以大幅减少连接获取次数
+
+## 相关章节
+
+- [数据库分库分表](../database-optimization/db-sharding/README.md) — 分片后多数据源连接池管理
+- [数据库读写分离](../database-optimization/read-write-splitting/README.md) — 主从库各自的连接池配置
+- [缓存设计模式](../cache-patterns/README.md) — Redis 连接池与缓存策略的搭配
+- [SQL 优化](../database-optimization/sql/README.md) — 减少慢查询以降低连接池压力
+- [Java 性能优化](../java/README.md) — 连接泄漏检测与 JVM 调优

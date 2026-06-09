@@ -1,6 +1,7 @@
 # 高性能篇
 
 > 高性能(High Performance)指系统在资源有限的情况下，仍能处理尽可能多的请求。本模块涵盖缓存、数据库优化、消息队列等关键主题。
+> 最后更新: 2026-06-09
 
 ## 流量与分发
 
@@ -9,6 +10,7 @@
 
 ## 数据库优化
 
+2. [数据库优化概览](database-optimization/README.md) — SQL 优化、读写分离、分库分表、冷热分离四大手段及优化顺序
 3. [SQL 优化](database-optimization/sql/README.md) — 索引优化、执行计划、慢查询
 4. [读写分离](database-optimization/read-write-splitting/README.md) — 主从复制与代理模式
 5. [分库分表](database-optimization/db-sharding/README.md) — [ShardingSphere](database-optimization/db-sharding/sharding-sphere/README.md)
