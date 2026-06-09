@@ -66,10 +66,10 @@ H1 标题正下方必须紧跟一个块引用,用一句话定义全文:
 ```markdown
 ## 相关章节
 
-- [服务拆分](../service-decomposition/README.md)
-- [服务通信](../service-communication/README.md)
-- [服务契约](../service-contract/README.md)
-- [迁移与组织](../migration-and-organization/README.md)
+- [服务拆分](./01-foundation/system-design-basics/microservices/service-decomposition/README.md)
+- [服务通信](./01-foundation/system-design-basics/microservices/service-communication/README.md)
+- [服务契约](./01-foundation/system-design-basics/microservices/service-contract/README.md)
+- [迁移与组织](./01-foundation/system-design-basics/microservices/migration-and-organization/README.md)
 ```
 
 ### 1.5 参考资料
@@ -173,17 +173,18 @@ status: draft | review | published
 
 ### 5.1 内部链接使用相对路径
 
-- ✅ `[服务拆分](../service-decomposition/README.md)`
+- ✅ `[服务拆分](./01-foundation/system-design-basics/microservices/service-decomposition/README.md)`
 - ❌ `[服务拆分](/note/04.system-design/.../README.md)` (绝对路径不可移植)
 - ❌ `[服务拆分](service-decomposition/)` (缺少文件名)
+- 💡 **从子章节视角**：在 `02-distributed/xxx/README.md` 中写跨章引用应为 `../01-foundation/.../目标文件.md`，每个 `..` 取决于当前文件深度
 
 ### 5.2 跨章节链接
 
 跨大章节时使用明确路径:
 
 ```markdown
-- [分布式事务](../../02-distributed/transaction/README.md)
-- [高可用架构](../../03-high-availability/load-balancing/README.md)
+- [分布式事务](./02-distributed/distributed-transaction/README.md)
+- [限流](./03-high-availability/rate-limiting/README.md)
 ```
 
 ### 5.3 锚点链接

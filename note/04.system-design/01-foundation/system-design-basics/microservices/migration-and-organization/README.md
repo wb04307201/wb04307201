@@ -423,5 +423,5 @@ graph TB
 - [TOGAF 第三章：康威定律 + 团队拓扑](../../togaf/conway-and-team-topology.md) — 团队拓扑 4 类型
 - [微服务拆分策略](../service-decomposition/README.md) — 拆什么、怎么拆
 - [架构认知的演进](../../architecture-evolution/README.md) — Level 1-7 成熟度
-- [可观测性](../../../07-deployment/observability/README.md) — 微服务必备
-- [Chaos Engineering](../../../03-high-availability/chaos-engineering/README.md) — 故障演练
+- [可观测性](../../../../07-deployment/observability/README.md) — 微服务必备
+- [Chaos Engineering](../../../../03-high-availability/chaos-engineering/README.md) — 故障演练

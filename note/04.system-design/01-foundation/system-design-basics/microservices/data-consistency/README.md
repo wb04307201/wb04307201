@@ -440,7 +440,7 @@ class Order:
 - ⬅️ [返回微服务](../README.md)
 - ⬅️ [服务契约](../service-contract/README.md)
 - ➡️ [演进与组织](../migration-and-organization/README.md)
-- [分布式事务](../../../02-distributed/distributed-transaction/README.md) — Saga 2PC TCC 模式对比
-- [CAP 定理](../../../02-distributed/cap-and-base/cap/README.md) — 一致性理论
+- [分布式事务](../../../../02-distributed/distributed-transaction/README.md) — Saga 2PC TCC 模式对比
+- [CAP 定理](../../../../02-distributed/cap-and-base/cap/README.md) — 一致性理论
 - [服务间通信](../service-communication/README.md) — 异步通信与事件驱动
 - [演进与组织](../migration-and-organization/README.md) — 从单体迁移到分布式
