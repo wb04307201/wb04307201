@@ -2,6 +2,8 @@
 
 > 容量规划是确保系统能够在预期负载下正常运行的关键工程实践。通过科学的压测和容量估算，我们可以在用户增长之前做好准备。
 
+> 最后更新: 2026-06-09
+
 ## 目录
 
 - [为什么需要容量规划](#为什么需要容量规划)
@@ -220,7 +222,7 @@ DB QPS = 总 QPS × DB 访问比例 / (1 - 缓存命中率)
 压测报告模板:
 ─────────────────────────────────────────────
 场景: 下单接口压测
-时间: 2025-06-04
+时间: {{压测日期}}
 环境: 8C16G × 3 实例
 
 压测配置:
@@ -400,6 +402,151 @@ spec:
 | 23 | 是否有扩容 SOP（标准操作流程）？ | □ |
 | 24 | 是否定期（季度）回顾容量规划？ | □ |
 
+---
+
+## 状态服务容量规划
+
+前面的容量模型主要针对**无状态服务**（QPS × RT 即可估算）。本节补充**有状态服务**（Session、消息队列、缓存）的容量规划要点。
+
+### Session 服务容量模型
+
+Session 服务的容量由"**新建速率**"和"**平均在线时长**"共同决定，本质是稳态在线会话数与并发处理能力之间的平衡。
+
+```
+稳态在线会话数 = 新建速率（QPS） × 平均在线时长（s）
+```
+
+**核心公式**
+
+```
+所需实例数 = ceil(在线会话数 / 单机承载会话数)
+         = ceil(QPS_new × AvgSessionDuration / MaxSessionsPerInstance)
+```
+
+**示例**
+
+```
+新建 Session 速率:  1,000 QPS
+平均在线时长:        30 分钟 = 1,800 s
+稳态在线会话数:      1,000 × 1,800 = 1,800,000 个
+
+单机承载:           100,000 个会话（受限于堆内存、JVM 会话对象大小）
+所需实例数:          1,800,000 / 100,000 = 18 台
+```
+
+**关键监控指标**
+
+| 指标 | 计算方式 | 告警阈值 |
+|------|----------|----------|
+| 新建速率 | `session_create_total` 速率 | 高于基线 2x |
+| 平均在线时长 | `histogram_quantile(0.5, session_duration_seconds)` | 偏离基线 ±30% |
+| 活跃会话数 | Gauge 指标 | 接近单机承载上限 80% |
+| Session GC 频率 | 单位时间内失效 Session 数 | 突发性上涨 |
+
+**容量扩展注意点**
+
+- 内存是 Session 服务的主要瓶颈，需监控堆内存中 Session 对象占用
+- 启用 Session 过期淘汰（LRU/TTL）防止内存泄漏
+- 分布式 Session 共享（如 Redis）可降低单机内存压力
+- 注意**会话粘性**与水平扩容的冲突
+
+### 消息队列容量规划
+
+消息队列的核心容量指标是**消息堆积量**和**消费延迟**。
+
+```
+稳态消息量 = 生产速率（msg/s） × 允许积压时间窗口（s）
+峰值积压 = max(生产速率, 消费速率) × 时间窗口
+```
+
+**关键监控指标**
+
+| 指标 | 说明 | 告警阈值 |
+|------|------|----------|
+| 消息堆积量（Lag） | 生产者已发送但消费者未确认的总数 | 持续 > 阈值 5 分钟 |
+| 生产 TPS | 单位时间消息生产数 | 偏离基线 |
+| 消费 TPS | 单位时间消息消费数 | 持续 < 生产 TPS |
+| 消费 P99 延迟 | 消息从生产到消费的时间 | > 业务容忍值 |
+| 消费者实例数 | 活跃消费者数 | < 最小副本数 |
+
+**背压（Backpressure）策略**
+
+当消费能力不足时，必须主动背压防止 OOM：
+
+1. **生产者限流**：监控到堆积告警时降级生产速率
+2. **消费者扩容**：基于堆积量的 HPA（不同于基于 CPU 的 HPA）
+3. **队列容量上限**：超过上限后直接拒绝（快速失败）
+4. **降级策略**：非关键消息直接丢弃，仅保留核心链路
+
+**示例：基于 Lag 的 HPA**
+
+```yaml
+# KEDA + Prometheus 触发器示例
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: order-consumer-hpa
+spec:
+  scaleTargetRef:
+    name: order-consumer
+  triggers:
+    - type: prometheus
+      metadata:
+        serverAddress: http://prometheus:9090
+        metricName: kafka_consumergroup_lag
+        query: |
+          sum(kafka_consumergroup_lag{consumergroup="order-consumer"})
+        threshold: "10000"   # 超过 1 万条积压即扩容
+```
+
+### 缓存热 Key 检测
+
+热 Key（Hot Key）是指被高频访问的少量 Key，会导致：
+
+- 单个缓存节点压力过大
+- 缓存击穿后压垮数据库
+- 响应延迟飙升
+
+**热 Key 检测方式**
+
+| 方式 | 工具 | 特点 |
+|------|------|------|
+| 客户端统计 | 在访问层埋点计数 | 准确但侵入大 |
+| Proxy 统计 | Redis Proxy（如 Codis、Twemproxy） | 集中统计 |
+| Redis 内置 | `redis-cli --hotkeys`（仅 Redis 7+） | 简单轻量 |
+| 流式监控 | Redis Exporter + Prometheus + 告警 | 实时性高 |
+
+**处理策略**
+
+1. **Key 分散**：将单一 Key 拆分为多个子 Key（`key_1`, `key_2` ... `key_n`）
+2. **本地缓存**：在应用内存中加 L1 缓存，缓解 Redis 压力
+3. **限流保护**：对热 Key 访问做单 Key 限流
+4. **预热加载**：启动时主动加载热 Key 到缓存
+
+### 缓存击穿/雪崩的容量预留
+
+**击穿（Breakdown）**：热 Key 失效瞬间，大量请求穿透到数据库。
+
+**雪崩（Stampede）**：大量 Key 同时过期，请求集中打到数据库。
+
+**容量预留策略**
+
+- **冗余容量**：数据库必须预留 **2~3 倍**正常容量的 CPU/连接数/IOPS
+- **熔断降级**：缓存故障时快速降级到兜底数据（空对象、默认值）
+- **互斥重建**：单 Key 重建使用分布式锁，防止击穿
+- **过期时间分散**：基础过期时间 + 随机抖动（±10%），避免同时过期
+- **永不过期 + 后台刷新**：对核心数据使用逻辑过期 + 异步刷新
+
+**容量规划示意**
+
+```
+正常情况:  缓存承担 95% 流量，DB 承担 5%
+击穿场景:  缓存瞬间降为 0%，DB 流量激增 20 倍
+预留要求:  DB 容量 >= 5% × 20 = 100% 正常流量 + 安全余量
+```
+
+---
+
 ## 参考资料
 
 - [Google SRE Book - Capacity Planning](https://sre.google/sre-book/capacity-planning/)
@@ -407,3 +554,8 @@ spec:
 - [wrk GitHub](https://github.com/wg/wrk)
 - [Kubernetes HPA](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)
 - [Little's Law](https://en.wikipedia.org/wiki/Little%27s_law)
+
+## 相关章节
+
+- [部署与发布策略](../deploy/README.md) — 蓝绿/金丝雀等发布策略对容量估算的影响
+- [负载均衡](../../04-high-performance/load-balance/README.md) — 流量切分与负载分配对容量的影响

@@ -2,6 +2,8 @@
 
 > 可观测性（Observability）是现代分布式系统运维的核心能力。它让我们能够通过系统的外部输出来推断其内部状态，从而快速定位和解决问题。
 
+> 最后更新: 2026-06-09
+
 ## 目录
 
 - [可观测性 vs 监控](#可观测性-vs-监控)
@@ -350,6 +352,125 @@ MDC (SLF4J):
 
 ---
 
+## SLO / SLI / Error Budget
+
+SRE 体系下，可观测性的最终目标不是"看见指标"，而是驱动**服务质量可量化、可管理**的工程决策。SLO / SLI / Error Budget 是这一体系的核心概念。
+
+### SLI（Service Level Indicator）— 服务等级指标
+
+**定义**：SLI 是对服务质量某一方面的**量化测量**，是 SLO 计算的基础。
+
+**常见 SLI 类型**
+
+| 维度 | SLI 示例 | 测量方式 |
+|------|----------|----------|
+| 可用性 | 成功请求数 / 总请求数 | 统计 5xx、4xx、网络错误等失败请求占比 |
+| 延迟 | P50 / P95 / P99 / P99.9 响应时间 | 直方图（Histogram）+ 分位数计算 |
+| 吞吐量 | 每秒请求数（QPS/TPS） | 计数器（Counter） |
+| 正确性 | 业务结果正确率 | 业务断言或回放测试 |
+| 持久性 | 数据写入成功率 | 存储系统写入结果统计 |
+| 端到端 | 关键业务路径成功率 | 真实用户监控（RUM）/ 合成监控 |
+
+**示例**
+
+```
+SLI_availability = 1 - (错误请求数 / 总请求数)
+SLI_latency_p99  = histogram_quantile(0.99, http_request_duration_seconds)
+```
+
+### SLO（Service Level Objective）— 服务等级目标
+
+**定义**：SLO 是 SLI 的**目标值**或目标范围，是团队对用户的服务承诺。
+
+**示例**
+
+```
+SLO：核心订单 API 可用性 ≥ 99.95%（月度）
+SLO：搜索 API P99 延迟 < 200ms（滚动 28 天）
+SLO：支付链路端到端成功率 ≥ 99.99%（季度）
+```
+
+**SLO 设计原则**
+
+- **可衡量**：必须能用 SLI 量化
+- **可达到**：基于现状+改进空间，不能拍脑袋定 100%
+- **有约束**：与可用性成本直接相关，越高越贵
+- **可沟通**：业务、研发、运维共同认可
+
+### Error Budget — 错误预算
+
+**定义**：Error Budget 是 **(1 - SLO) × 时间窗口** 内允许的"错误额度"。SLO 是承诺，Error Budget 是这个承诺之外允许犯错的预算。
+
+**计算公式**
+
+```
+Error Budget = (1 - SLO) × 总请求数
+            = (1 - SLO) × 时间窗口内的总请求量
+```
+
+**示例**
+
+```
+SLO = 99.9% 可用性
+时间窗口 = 30 天
+总请求数 = 1 亿次
+
+Error Budget = (1 - 0.999) × 1 亿 = 10 万次失败请求
+```
+
+**时间维度的预算**
+
+| SLO | 月度停机预算 | 季度停机预算 | 年度停机预算 |
+|-----|--------------|--------------|--------------|
+| 99% | 7.2 小时 | 21.6 小时 | 86.4 小时 |
+| 99.9% | 43 分钟 | 2.16 小时 | 8.64 小时 |
+| 99.95% | 21.6 分钟 | 64.8 分钟 | 4.32 小时 |
+| 99.99% | 4.3 分钟 | 13 分钟 | 52.6 分钟 |
+
+### SLO 驱动的发布决策
+
+Error Budget 不仅是衡量指标，更是**约束开发节奏的工程工具**：
+
+```
+┌──────────────────────────────────────────┐
+│         Error Budget 周期                 │
+│                                          │
+│   ┌────────────────────────────────┐     │
+│   │ ▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░░ │     │
+│   │ 已消耗           剩余预算       │     │
+│   └────────────────────────────────┘     │
+│                                          │
+│   剩余预算 > 50%  →  正常发布节奏         │
+│   剩余预算 20~50% →  谨慎发布、加大评审    │
+│   剩余预算 < 20%  →  冻结非必要发布        │
+│   预算耗尽        →  全面停止发布，转入    │
+│                      可靠性改进专项        │
+└──────────────────────────────────────────┘
+```
+
+**核心思想**：当 Error Budget 耗尽时，团队应当停止新功能发布，专注于**提升可靠性、偿还技术债**。这避免了"为了发版而牺牲稳定性"的反模式。
+
+### SLO 与告警的区别
+
+| 维度 | 传统告警 | SLO 告警 |
+|------|----------|----------|
+| 触发条件 | 单一指标阈值 | 错误预算燃烧速率 |
+| 严重程度 | 静态分级 | 动态分级（基于预算剩余） |
+| 决策依据 | 单一指标 | 多窗口、多燃烧率 |
+| 行动指引 | 排查问题 | 排查问题 + 评估是否暂停发布 |
+
+**多窗口、多燃烧率（Multi-Window, Multi-Burn-Rate）告警示例**
+
+```
+快窗口（1 小时）告警：过去 1 小时消耗月度预算的 2%
+  → 提示：短期可能严重故障
+慢窗口（6 小时）告警：过去 6 小时消耗月度预算的 5%
+  → 提示：潜在的性能退化
+两者同时告警 → 严重事故，需立即响应
+```
+
+---
+
 ## 工具选型参考
 
 | 用途 | 开源方案 | 商业方案 |
@@ -360,6 +481,28 @@ MDC (SLF4J):
 | Traces | Jaeger, Zipkin, SkyWalking | Datadog APM, New Relic |
 | 全栈 | OpenTelemetry + Grafana Stack | Datadog, Dynatrace |
 | APM | SkyWalking, Pinpoint | AppDynamics, New Relic |
+
+### 链路追踪方案选型：SkyWalking vs Jaeger vs Zipkin
+
+三者都是主流的分布式链路追踪方案，但定位与能力有显著差异：
+
+| 维度 | Jaeger | Zipkin | SkyWalking |
+|------|--------|--------|------------|
+| 出身 | Uber（→ CNCF 毕业） | Twitter | 国产（Apache 顶级） |
+| 语言支持 | 多语言（Go/Java/Node/Python） | 多语言 | 多语言（Java 最强） |
+| 探针方式 | 需手动/部分自动 | 需手动/部分自动 | 字节码增强（Java 自动） |
+| Metrics/Logs | 需结合 Prometheus/Loki | 需结合外部方案 | 内置 Metrics + Logs + Traces |
+| 拓扑分析 | 基础依赖图 | 简单 | 强（服务/实例/Endpoint 三层） |
+| 告警 | 不支持 | 不支持 | 内置告警规则 |
+| 存储后端 | ES/Cassandra/Kafka | ES/MySQL/Cassandra | ES/H2/MySQL/TiDB |
+| 适用场景 | 通用分布式追踪、Go/Polyglot | 简单轻量、已有 ES 栈 | Java 生态深度监控、一体化 APM |
+
+**选型建议**
+
+- **Java 单语言 + 需要一体化 APM**（Metrics+Logs+Traces+告警）：选 **SkyWalking**，探针零侵入
+- **多语言 + 已有 Prometheus/Grafana 栈**：选 **Jaeger**，与 CNCF 生态融合度高
+- **资源受限 + 简单轻量**：选 **Zipkin**，部署最简单
+- **新项目、多语言、面向未来**：基于 **OpenTelemetry** 规范，对接任意后端（Jaeger/Tempo/SkyWalking）
 
 ### 推荐方案（Java 生态）
 
@@ -374,7 +517,16 @@ Spring Boot + Micrometer + OpenTelemetry
 ## 参考资料
 
 - [Google SRE Book - Monitoring Distributed Systems](https://sre.google/sre-book/monitoring-distributed-systems/)
+- [Google SRE Book - Service Level Objectives](https://sre.google/sre-book/service-level-objectives/)
 - [OpenTelemetry](https://opentelemetry.io/)
 - [Prometheus Documentation](https://prometheus.io/docs/)
 - [Grafana Loki](https://grafana.com/oss/loki/)
 - [Jaeger](https://www.jaegertracing.io/)
+
+## 相关章节
+
+- [熔断降级](../../03-high-availability/circuit-break/README.md) — 触发熔断时通常依赖告警（状态变化、错误率）
+- [限流](../../03-high-availability/rate-limiting/README.md) — 限流触发的告警与"接近阈值"告警
+- [超时控制](../../03-high-availability/timeout/README.md) — 超时率、慢调用比例等关键监控指标
+- [缓存设计模式](../../04-high-performance/cache-patterns/README.md) — 缓存命中率、击穿/雪崩的监控指标
+- [部署与发布策略](../deploy/README.md) — 发布过程中的可观测性（错误率、延迟、流量回滚观测）
