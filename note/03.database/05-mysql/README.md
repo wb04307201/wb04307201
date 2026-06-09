@@ -1,6 +1,17 @@
 # MySQL
 
-MySQL 是最流行的开源关系型数据库，由 MySQL AB 开发，现属 Oracle 公司。它是 LAMP/LNMP 架构的核心组件。
+> MySQL 是最流行的开源关系型数据库,采用 Server 层 + 存储引擎层两层架构,InnoDB 是默认且推荐的事务型引擎,核心机制包括 Buffer Pool、Redo Log、Binlog 与主从复制。
+
+> 最后更新: 2026-06-09
+
+## 目录
+
+- [一、MySQL 架构](#一mysql-架构)
+- [二、存储引擎对比](#二存储引擎对比)
+- [三、InnoDB 内部机制](#三innodb-内部机制)
+- [四、MySQL 主从复制](#四mysql-主从复制)
+- [五、MySQL 高可用方案](#五mysql-高可用方案)
+- [六、MySQL 关键参数](#六mysql-关键参数)
 
 ---
 
@@ -201,4 +212,22 @@ Master                          Slave
 | `max_connections` | 最大连接数 | 根据业务调整 |
 | `innodb_io_capacity` | 磁盘 IOPS | SSD: 2000+ |
 
-> **双 1 配置**（`innodb_flush_log_at_trx_commit=1` + `sync_binlog=1`）是保证数据不丢失的最安全配置，适用于金融级场景。
+> **双 1 配置**(`innodb_flush_log_at_trx_commit=1` + `sync_binlog=1`)是保证数据不丢失的最安全配置,适用于金融级场景。
+
+---
+
+## 相关章节
+
+- [数据库基础知识](../01-fundamentals/README.md) — 数据库核心概念
+- [SQL](../02-sql/README.md) — 慢查询分析与 EXPLAIN
+- [事务与并发控制](../03-transaction/README.md) — InnoDB 事务实现
+- [索引](../04-index/README.md) — InnoDB 索引底层结构
+- [缓存](../06-cache/README.md) — MySQL 查询缓存(8.0 已移除)
+- [数据库连接池](../09-connection-pool/README.md) — MySQL 连接池配置
+
+## 参考资料
+
+- [MySQL 8.0 Reference Manual](https://dev.mysql.com/doc/refman/8.0/en/)
+- [MySQL InnoDB Architecture (官方图解)](https://dev.mysql.com/doc/refman/8.0/en/innodb-architecture.html)
+- [High Performance MySQL](https://www.oreilly.com/library/view/high-performance-mysql/9780596101718/) — O'Reilly 经典
+- [MySQL 8.0 新特性官方说明](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html)

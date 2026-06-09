@@ -1,6 +1,18 @@
 # Redis
 
-Redis（REmote DIctionary Server）是基于 C 语言开发的开源内存数据库，支持丰富的数据结构，广泛用作缓存、消息队列和实时数据存储。
+> Redis(REmote DIctionary Server)是基于内存的键值数据库,支持丰富的数据结构,凭借 RDB+AOF 持久化、Cluster 集群、灵活的淘汰策略和 Lua/事务能力,广泛用作缓存、消息队列和实时数据存储。
+
+> 最后更新: 2026-06-09
+
+## 目录
+
+- [一、Redis 为什么快](#一redis-为什么快)
+- [二、数据类型与应用场景](#二数据类型与应用场景)
+- [三、持久化机制](#三持久化机制)
+- [四、集群与高可用](#四集群与高可用)
+- [五、内存管理](#五内存管理)
+- [六、Redis vs Memcached](#六redis-vs-memcached)
+- [七、缓存选型对比](#七缓存选型对比)
 
 ---
 
@@ -246,4 +258,22 @@ redis-rdb-tools（Python）
 | **Ehcache** | 本地+分布式 | 与 Spring 集成好 | 需要多级缓存 |
 | **Redis** | 分布式缓存 | 功能丰富，持久化，集群 | 分布式缓存首选 |
 | **Memcached** | 分布式缓存 | 多线程，高吞吐 | 纯 KV 缓存 |
-| **Dragonfly** | 分布式缓存 | 兼容 Redis API，性能更高 | 高吞吐场景 |
+| **Dragonfly** | 分布式缓存 | 兼容 Redis API,性能更高 | 高吞吐场景 |
+
+---
+
+## 相关章节
+
+- [数据库基础知识](../01-fundamentals/README.md) — 数据库核心概念
+- [MySQL](../05-mysql/README.md) — MySQL 主从复制与 Redis 集群对比
+- [缓存](../06-cache/README.md) — 缓存三大问题与一致性
+- [NoSQL](../08-nosql/README.md) — Redis 是 NoSQL 键值存储代表
+- [系统设计 · 分布式锁](../../04.system-design/02-distributed/distributed-lock/README.md) — Redis 分布式锁深入
+
+## 参考资料
+
+- [Redis Official Documentation](https://redis.io/docs/)
+- [Redis 7.0 Release Notes](https://github.com/redis/redis/releases/tag/7.0.0)
+- [《Redis 设计与实现》黄健宏](http://redisbook.com/) — 国内最经典 Redis 源码解析
+- [Redis 6.0 Multi-Thread I/O](https://redis.io/docs/manual/client-side-caching/) — 官方 I/O 多线程说明
+- [Antirez (Salvatore Sanfilippo) Blog](http://antirez.com/) — Redis 作者博客

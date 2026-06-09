@@ -1,6 +1,8 @@
 # 缓存
 
-缓存是一种将热点数据存储在高速存储介质（通常是内存）中的技术，通过减少对后端数据库的直接访问来提升系统性能。
+> 缓存是将热点数据存储在高速存储介质(通常是内存)中的技术,通过减少对后端数据库的直接访问来提升系统性能;其核心问题是三大经典问题(穿透/击穿/雪崩)与缓存-数据库一致性。
+
+> 最后更新: 2026-06-09
 
 ---
 
@@ -155,4 +157,20 @@
 | Binlog + Canal | 最终一致 | 高 | 低（无侵入） | 大规模、高可靠 |
 | 强一致（分布式事务） | 强一致 | 很高 | 高 | 金融级场景 |
 
-> 大多数业务系统只需要**最终一致性**，引入缓存的目的是提升读性能，不值得为强一致性牺牲性能。
+> 大多数业务系统只需要**最终一致性**,引入缓存的目的是提升读性能,不值得为强一致性牺牲性能。
+
+---
+
+## 相关章节
+
+- [数据库基础知识](../01-fundamentals/README.md) — 数据库基础
+- [MySQL](../05-mysql/README.md) — MySQL 自带查询缓存(8.0 已移除)
+- [Redis](../07-redis/README.md) — Redis 持久化、内存管理
+- [系统设计 · 缓存设计模式](../../04.system-design/04-high-performance/cache-patterns/README.md) — 4 大缓存模式深入
+
+## 参考资料
+
+- [Redis Caching Strategies](https://redis.io/docs/manual/client-side-caching/)
+- [Designing Data-Intensive Applications - Chapter 5](https://dataintensive.net/) — 数据系统经典
+- [Caffeine - A high performance Java caching library](https://github.com/ben-manes/caffeine)
+- [Bilibili - 缓存设计模式讲解](https://github.com/doocs/advanced-java) — 互联网工程师进阶知识库

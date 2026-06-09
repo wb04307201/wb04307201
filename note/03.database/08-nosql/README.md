@@ -1,6 +1,8 @@
 # NoSQL 数据库
 
-NoSQL（Not Only SQL）泛指非关系型数据库，天生支持分布式，适用于大规模数据存储和高并发场景。
+> NoSQL(Not Only SQL)泛指非关系型数据库,涵盖键值、文档、列存储、图、搜索 5 大类型,天生支持分布式扩展,适用于大规模数据存储和高并发场景;但普遍以最终一致性换取扩展性。
+
+> 最后更新: 2026-06-09
 
 ---
 
@@ -102,4 +104,21 @@ db.users.insertOne({
 db.users.find({ age: { $gt: 20 } }).sort({ age: -1 }).limit(10);
 ```
 
-**MongoDB 4.0+ 支持多文档 ACID 事务**，但与 MySQL 的事务能力仍有差距（性能开销更大）。
+**MongoDB 4.0+ 支持多文档 ACID 事务**,但与 MySQL 的事务能力仍有差距(性能开销更大)。
+
+---
+
+## 相关章节
+
+- [数据库基础知识](../01-fundamentals/README.md) — 关系型 vs 非关系型基础
+- [SQL](../02-sql/README.md) — SQL 查询范式
+- [Redis](../07-redis/README.md) — Redis 作为键值型 NoSQL
+- [系统设计 · 分布式缓存](../../04.system-design/02-distributed/distributed-cache/README.md) — 缓存架构深入
+
+## 参考资料
+
+- [NoSQL Databases - Wikipedia](https://en.wikipedia.org/wiki/NoSQL)
+- [MongoDB Manual](https://www.mongodb.com/docs/manual/)
+- [Cassandra Documentation](https://cassandra.apache.org/doc/latest/)
+- [HBase Reference Guide](https://hbase.apache.org/book.html)
+- [Neo4j Developer Guides](https://neo4j.com/developer/)

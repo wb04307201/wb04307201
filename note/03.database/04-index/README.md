@@ -1,6 +1,19 @@
 # 索引
 
-索引（Index）是数据库为了加快数据检索而维护的一种数据结构。合理使用索引是 SQL 优化中最核心的手段。
+> 索引(Index)是数据库为了加快数据检索而维护的辅助数据结构,MySQL InnoDB 默认采用 B+ 树;合理使用索引是 SQL 优化中最核心的手段。
+
+> 最后更新: 2026-06-09
+
+## 目录
+
+- [一、为什么需要索引](#一为什么需要索引)
+- [二、索引数据结构](#二索引数据结构)
+- [三、索引分类](#三索引分类)
+- [四、最左前缀原则](#四最左前缀原则)
+- [五、索引失效场景](#五索引失效场景)
+- [六、索引设计原则](#六索引设计原则)
+- [七、索引维护](#七索引维护)
+- [八、EXPLAIN 中的索引信息](#八explain-中的索引信息)
 
 ---
 
@@ -220,4 +233,20 @@ EXPLAIN SELECT * FROM users WHERE name = '张三' AND age > 25;
 | `key_len` | 实际使用的索引长度（字节），可判断联合索引用了几列 |
 | `type` | 访问类型，`ref`/`range` 说明索引生效 |
 | `rows` | 预估扫描行数 |
-| `Extra` | `Using index` = 覆盖索引 ✅，`Using index condition` = 索引下推 ✅ |
+| `Extra` | `Using index` = 覆盖索引 ✅,`Using index condition` = 索引下推 ✅ |
+
+---
+
+## 相关章节
+
+- [数据库基础知识](../01-fundamentals/README.md) — 索引概览与三大索引类型
+- [SQL](../02-sql/README.md) — 慢查询分析中的索引优化
+- [事务与并发控制](../03-transaction/README.md) — 行锁与索引的关系
+- [MySQL](../05-mysql/README.md) — InnoDB Buffer Pool 与磁盘 I/O
+
+## 参考资料
+
+- [MySQL 8.0 InnoDB and the ACID Model](https://dev.mysql.com/doc/refman/8.0/en/mysql-acid.html)
+- [MySQL InnoDB Index Physical Structure](https://dev.mysql.com/doc/refman/8.0/en/innodb-physical-structure.html)
+- [B+ Tree Visualization](https://www.cs.usfca.edu/~galles/visualization/BPlusTree.html)
+- [Use The Index, Luke! - A Guide to Database Performance for Developers](https://use-the-index-luke.com/)

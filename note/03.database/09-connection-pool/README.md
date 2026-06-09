@@ -1,6 +1,8 @@
 # 数据库连接池
 
-数据库连接池是一种缓存数据库连接的技术，避免每次请求都创建和销毁连接，从而提升性能。
+> 数据库连接池通过预先创建并复用连接,避免每次请求都进行 TCP 握手和身份认证,Spring Boot 2.x+ 默认使用 HikariCP,监控与防 SQL 注入场景推荐 Druid。
+
+> 最后更新: 2026-06-09
 
 ---
 
@@ -176,4 +178,20 @@ druid:
 3. **max-lifetime 必须小于数据库端的连接超时时间**（MySQL 默认 `wait_timeout = 28800s`）
 4. **开发环境开启连接泄漏检测**，防止连接未归还
 5. **合理设置最大连接数**，参考 CPU 核数公式
-6. **配合数据库监控**，观察连接池状态和 SQL 执行情况
+6. **配合数据库监控**,观察连接池状态和 SQL 执行情况
+
+---
+
+## 相关章节
+
+- [数据库基础知识](../01-fundamentals/README.md) — 数据库核心概念
+- [MySQL](../05-mysql/README.md) — MySQL `wait_timeout` 与连接池参数协调
+- [事务与并发控制](../03-transaction/README.md) — 事务与连接池的协作
+- [系统设计 · 连接池](../../04.system-design/04-high-performance/connection-pool/README.md) — 架构视角的连接池调优
+
+## 参考资料
+
+- [HikariCP GitHub README](https://github.com/brettwooldridge/HikariCP)
+- [HikariCP - About Pool Sizing](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing)
+- [Druid 官方 Wiki](https://github.com/alibaba/druid/wiki)
+- [PostgreSQL Wiki - Tuning Your PostgreSQL Server](https://wiki.postgresql.org/wiki/Tuning_Your_PostgreSQL_Server) — 连接数公式来源
