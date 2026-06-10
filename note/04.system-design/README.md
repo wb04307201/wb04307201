@@ -22,9 +22,9 @@
    开发流程      共识算法        冗余/弹性        缓存/数据库优化  RBAC/API安全
    系统设计      分布式事务      混沌工程          消息队列/Java   权限模型
    OOD/DDD/TOGAF 分布式锁/ID     代码质量          序列化/连接池   数据脱敏
-   技术债       RPC/网关       容灾演练          多级缓存
-               服务发现
-               分布式缓存
+   /ArchiMate   RPC/网关       容灾演练          多级缓存
+   /IT4IT      服务发现
+   技术债       分布式缓存
 ```
 
 ## 🗺️ 学习路线
@@ -38,6 +38,8 @@
 4. [面向对象设计](01-foundation/system-design-basics/ood/README.md) — SOLID/GRASP 原则、类与职责分配
 5. [领域驱动设计 DDD](01-foundation/system-design-basics/ddd/README.md) — 以业务为核心的建模
 6. [企业架构 TOGAF 10](01-foundation/system-design-basics/togaf/README.md) — 业务能力地图、ADM 9 阶段、模块化架构治理
+6a. [架构描述语言 ArchiMate 3.2](01-foundation/system-design-basics/archimate/README.md) — 30+ 视点的企业架构建模语言，与 TOGAF 同源
+6b. [IT 价值流参考架构 IT4IT 3.0](01-foundation/system-design-basics/it4it/README.md) — 4 价值流 + 9 功能组件，IT 运营层的"业务模型"
 5. [CAP 定理](02-distributed/cap-and-base/cap/README.md) — 分布式系统的理论基石
 6. [分布式事务](02-distributed/distributed-transaction/README.md) — 跨服务数据一致性
 7. [分布式锁](02-distributed/distributed-lock/README.md) — 分布式协调基础
@@ -53,6 +55,8 @@
 
 ### 专项深入
 - [OAuth2.0 与 OIDC](05-security/oauth2-oidc/README.md) — 现代鉴权方案
+- [架构描述语言 ArchiMate 3.2](01-foundation/system-design-basics/archimate/README.md) — 与 TOGAF 同源的架构建模语言
+- [IT 价值流参考架构 IT4IT 3.0](01-foundation/system-design-basics/it4it/README.md) — 4 价值流 + 9 功能组件，IT 运营层的"业务模型"
 - [服务注册与发现](02-distributed/service-discovery/README.md) — 微服务基础设施
 - [幂等设计](06-idempotency/README.md) — 分布式系统可靠性保障
 - [容量规划与压测](07-deployment/capacity-planning/README.md) — 系统容量评估
@@ -61,7 +65,7 @@
 
 | 模块 | 内容数 | 说明 |
 |------|--------|------|
-| [01 基础篇](01-foundation/README.md) | 16 | 软件工程、OOD/DDD/TOGAF、技术债 |
+| [01 基础篇](01-foundation/README.md) | 18 | 软件工程、OOD/DDD/TOGAF/ArchiMate/IT4IT、技术债 |
 | [02 分布式篇](02-distributed/README.md) | 13 | CAP、共识算法、分布式事务、RPC |
 | [03 高可用篇](03-high-availability/README.md) | 9 | 限流、熔断、重试、降级、冗余、混沌 |
 | [04 高性能篇](04-high-performance/README.md) | 11 | 负载均衡、缓存、数据库优化、消息队列 |
@@ -79,3 +83,5 @@
 - [OAuth2.0 与 OIDC](05-security/oauth2-oidc/README.md)
 - [可观测性](07-deployment/observability/README.md)
 - [容量规划与压测](07-deployment/capacity-planning/README.md)
+- 2026-06-10: 新增 [架构描述语言 ArchiMate 3.2](01-foundation/system-design-basics/archimate/README.md) — 与 TOGAF 10 同源的企业架构建模语言，覆盖 30+ 视点
+- 2026-06-10: 新增 [IT 价值流参考架构 IT4IT 3.0](01-foundation/system-design-basics/it4it/README.md) — 4 价值流 + 9 功能组件，Open Group 标准组合第三件套

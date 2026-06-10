@@ -118,6 +118,8 @@ README（你在这里）  →  第一章（ADM 全貌）
 - [第三章：康威定律 + 团队拓扑](conway-and-team-topology.md) — 组织结构与系统架构的对齐
 - [第四章：架构治理 + 落地实践](architecture-governance.md) — 6 维治理 + 不同规模裁剪
 - [架构认知的演进](../architecture-evolution/README.md) — OOD → DDD → TOGAF 的认知升级之路
+- [架构描述语言 ArchiMate 3.2](../archimate/README.md) — TOGAF 的"标准搭档"，30+ 视点给不同人看不同的图
+- [IT 价值流参考架构 IT4IT 3.0](../it4it/README.md) — Open Group 标准组合第三件套，4 价值流 + 9 功能组件
 - [领域驱动设计 DDD](../ddd/README.md) — 以业务领域为核心的建模方法
 - [面向对象设计 OOD](../ood/README.md) — SOLID 原则、GRASP 职责分配
 - [微服务架构](../microservices/README.md) — 康威定律与团队拓扑

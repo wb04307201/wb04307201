@@ -1,7 +1,7 @@
 # 基础篇
 
 > 软件工程的核心理论基础与系统设计方法论，是理解后续分布式、高可用、高性能等高级主题的基石。
-> 最后更新: 2026-06-09
+> 最后更新: 2026-06-10
 
 ## 学习路径
 
@@ -16,6 +16,8 @@
 9. [面向对象设计](system-design-basics/ood/README.md) — SOLID/GRASP 原则、类与职责分配
 10. [领域驱动设计 DDD](system-design-basics/ddd/README.md) — 以业务领域为核心的建模方法
 11. [企业架构 TOGAF 10](system-design-basics/togaf/README.md) — 业务能力地图、ADM 9 阶段、模块化架构治理
+11a. [架构描述语言 ArchiMate 3.2](system-design-basics/archimate/README.md) — 30+ 视点的企业架构建模语言，与 TOGAF 同源
+11b. [IT 价值流参考架构 IT4IT 3.0](system-design-basics/it4it/README.md) — 4 价值流 + 9 功能组件，IT 运营层的"业务模型"
 12. [设计模式](system-design-basics/design-patterns/README.md) — GoF 23 种经典设计模式
 13. [微服务架构](system-design-basics/microservices/README.md) — 拆分/通信/契约/数据一致性/演进 5 大设计主题
 14. [云设计模式](system-design-basics/cloud-design-patterns/README.md) — 云原生架构模式
@@ -35,6 +37,8 @@ graph LR
     C --> F[面向对象]
     F --> G[DDD]
     G --> H[TOGAF]
+    H --> H1[ArchiMate]
+    H1 --> H2[IT4IT]
     G --> I[微服务]
     I --> I1[服务拆分]
     I --> I2[服务通信]

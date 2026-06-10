@@ -16,6 +16,8 @@
 - [面向对象设计](ood/README.md) — SOLID/GRASP 原则、类与职责分配
 - [领域驱动设计](ddd/README.md) — 以业务领域为核心的建模方法
 - [企业架构 TOGAF 10](togaf/README.md) — 业务能力地图、ADM 9 阶段、模块化架构治理
+- [架构描述语言 ArchiMate 3.2](archimate/README.md) — 与 TOGAF 同源的架构建模语言，30+ 视点给不同人看不同图
+- [IT 价值流参考架构 IT4IT 3.0](it4it/README.md) — 4 价值流 + 9 功能组件，IT 运营层的"业务模型"
 
 ## 架构模式
 
