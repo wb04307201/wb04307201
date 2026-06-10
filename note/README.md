@@ -2,8 +2,8 @@
 
 > 从语言基础到 JVM 原理、并发编程、版本演进，系统性构建 Java 知识体系。
 
-| 序号 | 模块 | 说明 |
-|------|------|------|
+| 序号 | 主题 | 核心内容 |
+|------|------|----------|
 | 1 | [核心概念](01.java/concepts/) | 基本语法、面向对象、类型系统、反射、序列化、SPI 等 |
 | 2 | [集合框架](01.java/collection/) | ArrayList、LinkedList、HashMap、ConcurrentHashMap 等源码剖析 |
 | 3 | [I/O](01.java/io/) | I/O 流分类、NIO、零拷贝 |
@@ -20,143 +20,62 @@
 | 14 | [测试](01.java/testing/) | JUnit 5、Mockito、JaCoCo、测试最佳实践 |
 | 15 | [版本特性](01.java/version/) | Java 8 ~ 26 各版本新特性 & 功能演进历史（GC/Lambda/Stream/并发/FFM 等） |
 
-# 二、计算机基础
-## 1. [计算机网络基础](02.computer-basics/01-network/README.md)
-### 1.1. [OSI 七层模型](02.computer-basics/01-network/osi-model/README.md)
-### 1.2. [TCP/IP 四层模型](02.computer-basics/01-network/tcp-ip-model/README.md)
-### 1.3. [核心网络协议](02.computer-basics/01-network/protocols/README.md)
-#### 1.3.1. [TCP 数据包](02.computer-basics/01-network/protocols/tcp-packet/README.md)
-#### 1.3.2. [HTTP 协议演进](02.computer-basics/01-network/protocols/http-evolution/README.md)
-### 1.4. [WCAG - 网页内容无障碍指南](02.computer-basics/01-network/wcag/README.md)
-## 2. [算法概述](02.computer-basics/02-algorithms/README.md)
-### 2.1. [复杂度取舍策略](02.computer-basics/02-algorithms/complexity/README.md)
-#### 2.1.1. [时间复杂度](02.computer-basics/02-algorithms/complexity/time-complexity/README.md)
-#### 2.1.2. [空间复杂度](02.computer-basics/02-algorithms/complexity/space-complexity/README.md)
-## 3. [Linux 常用命令](02.computer-basics/03-linux/README.md)
-### 3.1. [curl 命令](02.computer-basics/03-linux/curl/README.md)
-## 4. 运维
-### 4.1. [服务器性能指标](02.computer-basics/04-operations/server-metrics/README.md)
-### 4.2. [云服务模式](02.computer-basics/04-operations/cloud-services/README.md)
-## 5. [专利与软件著作权](02.computer-basics/05-ipr/README.md)
+# 二、[计算机基础](02.computer-basics/README.md)
+
+> 系统性整理计算机科学基础知识，涵盖网络、算法、Linux、系统运维、知识产权等核心领域。
+
+## 目录导航
+
+| 序号 | 主题 | 核心内容 |
+|------|------|----------|
+| 1 | [01-网络](02.computer-basics/01-network/README.md) | OSI/TCP/IP 模型、协议族、HTTP 演进、WCAG |
+| 2 | [02-算法](02.computer-basics/02-algorithms/README.md) | 算法概述、时间/空间复杂度、取舍策略 |
+| 3 | [03-Linux](02.computer-basics/03-linux/README.md) | 常用命令、curl 详解 |
+| 4 | [04-运维](02.computer-basics/04-operations/README.md) | 服务器性能指标、云服务模式 |
+| 5 | [05-知识产权](02.computer-basics/05-ipr/README.md) | 专利 vs 软件著作权 |
 
 # 三、[数据库](03.database/README.md)
-## 1. [数据库基础知识](03.database/01-fundamentals/README.md)
-## 2. [SQL](03.database/02-sql/README.md)
-## 3. [事务与并发控制](03.database/03-transaction/README.md)
-## 4. [索引](03.database/04-index/README.md)
-## 5. [MySQL](03.database/05-mysql/README.md)
-## 6. [缓存](03.database/06-cache/README.md)
-### [基于 ConcurrentHashMap 的高性能缓存实现](https://gitee.com/wb04307201/CHMCache)
-> 一个基于 `ConcurrentHashMap` 和 LRU 策略的高性能缓存实现，支持自动过期、大小限制、LRU 淘汰和后台清理等特性。
-## 7. [Redis](03.database/07-redis/README.md)
-## 8. [NoSQL 数据库](03.database/08-nosql/README.md)
-## 9. [数据库连接池](03.database/09-connection-pool/README.md)
-## 10. [数据迁移](03.database/10-data-migration/README.md)
-## 11. [数据库监控](03.database/11-monitoring/README.md)
-## 12. [云数据库](03.database/12-cloud-database/README.md)
 
-# 四、系统设计
-## 1. [基础](04.system-design/01-foundation/README.md)
-### 1.1. [软件工程](04.system-design/01-foundation/software-engineering/README.md)
-#### [开发流程](04.system-design/01-foundation/software-engineering/development-process/README.md)
-#### [质量保障](04.system-design/01-foundation/software-engineering/quality-assurance/README.md)
-#### [工具与模型](04.system-design/01-foundation/software-engineering/tools-and-models/README.md)
-### 1.2. [系统设计基础](04.system-design/01-foundation/system-design-basics/README.md)
-#### [API 设计](04.system-design/01-foundation/system-design-basics/api/README.md)
-##### [RESTful](04.system-design/01-foundation/system-design-basics/api/rest/README.md)
-##### [RPC](04.system-design/01-foundation/system-design-basics/api/rpc/README.md)
-##### [GraphQL](04.system-design/01-foundation/system-design-basics/api/graphql/README.md)
-#### [架构图](04.system-design/01-foundation/system-design-basics/architecture-diagram/README.md)
-##### [“4+1”视图](04.system-design/01-foundation/system-design-basics/architecture-diagram/4+1/README.md)
-##### [C4 模型](04.system-design/01-foundation/system-design-basics/architecture-diagram/c4-model/README.md)
-#### [架构演进](04.system-design/01-foundation/system-design-basics/architecture-evolution/README.md)
-#### [云设计模式](04.system-design/01-foundation/system-design-basics/cloud-design-patterns/README.md)
-#### [DDD 领域驱动设计](04.system-design/01-foundation/system-design-basics/ddd/README.md)
-#### [GoF 设计模式](04.system-design/01-foundation/system-design-basics/design-patterns/README.md)
-#### [事件驱动 vs 异步](04.system-design/01-foundation/system-design-basics/eda-vs-async/README.md)
-#### [微服务](04.system-design/01-foundation/system-design-basics/microservices/README.md)
-##### [数据一致性](04.system-design/01-foundation/system-design-basics/microservices/data-consistency/README.md)
-##### [微服务与 DDD](04.system-design/01-foundation/system-design-basics/microservices/microservices-and-ddd/README.md)
-##### [迁移与组织](04.system-design/01-foundation/system-design-basics/microservices/migration-and-organization/README.md)
-##### [服务通信](04.system-design/01-foundation/system-design-basics/microservices/service-communication/README.md)
-##### [服务契约](04.system-design/01-foundation/system-design-basics/microservices/service-contract/README.md)
-##### [服务拆分](04.system-design/01-foundation/system-design-basics/microservices/service-decomposition/README.md)
-#### [面向对象设计（OOD）](04.system-design/01-foundation/system-design-basics/ood/README.md)
-#### [TOGAF](04.system-design/01-foundation/system-design-basics/togaf/README.md)
-#### [ArchiMate](04.system-design/01-foundation/system-design-basics/archimate/README.md)
-#### [IT4IT](04.system-design/01-foundation/system-design-basics/it4it/README.md)
-### 1.3. [技术债](04.system-design/01-foundation/technical-debt/README.md)
-## 2. [分布式](04.system-design/02-distributed/README.md)
-> 分布式通常指的是一种计算或数据处理方式，其中任务、数据或资源被分散在多个节点上处理，提高系统的整体性能、可靠性、可扩展性和容错性。
-### 2.1. [API 网关](04.system-design/02-distributed/api-gateway/README.md)
-### 2.2. [CAP & BASE](04.system-design/02-distributed/cap-and-base/README.md)
-#### [CAP](04.system-design/02-distributed/cap-and-base/cap/README.md)
-#### [BASE](04.system-design/02-distributed/cap-and-base/base/README.md)
-### 2.3. [共识算法](04.system-design/02-distributed/consensus-algorithms/README.md)
-#### [Gossip 协议](04.system-design/02-distributed/consensus-algorithms/gossip/README.md)
-#### [Paxos 算法](04.system-design/02-distributed/consensus-algorithms/paxos/README.md)
-#### [Raft 算法](04.system-design/02-distributed/consensus-algorithms/raft/README.md)
-### 2.4. [分布式缓存](04.system-design/02-distributed/distributed-cache/README.md)
-### 2.5. [分布式 ID](04.system-design/02-distributed/distributed-id/README.md)
-#### [UUID](04.system-design/02-distributed/distributed-id/uuid/README.md)
-#### [ULID](04.system-design/02-distributed/distributed-id/ulid/README.md)
-#### [UUID v7](04.system-design/02-distributed/distributed-id/uuid-v7/README.md)
-### 2.6. [分布式锁](04.system-design/02-distributed/distributed-lock/README.md)
-#### [Flexible Lock - 灵锁](https://gitee.com/wb04307201/flexible-lock)
-> 一个基于 Spring Boot 的锁 starter，提供统一的锁接口和多种实现方式（Redis 单点/集群/哨兵、Zookeeper、本地锁）。
-### 2.7. [分布式事务](04.system-design/02-distributed/distributed-transaction/README.md)
-### 2.8. [RPC](04.system-design/02-distributed/rpc/README.md)
-#### [Apache Dubbo](04.system-design/02-distributed/rpc/apache-dubbo/README.md)
-#### [RPC vs REST](04.system-design/02-distributed/rpc/rpc-and-rest/README.md)
-### 2.9. [服务发现](04.system-design/02-distributed/service-discovery/README.md)
-## 3. [高可用](04.system-design/03-high-availability/README.md)
-> 高可用性是指系统能够持续、稳定地提供服务，即使在部分组件故障时也能迅速恢复，通过冗余设计、负载均衡、故障转移、自动恢复等技术实现。
-### 3.1. [混沌工程](04.system-design/03-high-availability/chaos-engineering/README.md)
-### 3.2. [熔断](04.system-design/03-high-availability/circuit-break/README.md)
-### 3.3. [代码质量](04.system-design/03-high-availability/code-quality/README.md)
-#### [2 行代码实现功能，8 行代码解决蠢](04.system-design/03-high-availability/code-quality/2-lines-8-lines/README.md)
-### 3.4. [弹性架构](04.system-design/03-high-availability/elastic-architecture/README.md)
-### 3.5. [限流](04.system-design/03-high-availability/rate-limiting/README.md)
-#### [Rate Limiter - 限流器](https://gitee.com/wb04307201/rate-limiter)
-### 3.6. [冗余设计](04.system-design/03-high-availability/redundancy-design/README.md)
-#### [异地多活](04.system-design/03-high-availability/redundancy-design/multi-site-active-active/README.md)
-#### [集群](04.system-design/03-high-availability/redundancy-design/cluster/README.md)
-### 3.7. [重试](04.system-design/03-high-availability/retry/README.md)
-### 3.8. [服务降级](04.system-design/03-high-availability/service-degradation/README.md)
-### 3.9. [超时](04.system-design/03-high-availability/timeout/README.md)
-## 4. [高性能](04.system-design/04-high-performance/README.md)
-> 高性能指系统在处理任务、数据或请求时表现出的高效性和快速性，通过先进硬件、优化的软件算法、高效的存储和传输技术等手段实现。
-### 4.1. [缓存模式](04.system-design/04-high-performance/cache-patterns/README.md)
-### 4.2. [CDN](04.system-design/04-high-performance/cdn/README.md)
-### 4.3. [连接池](04.system-design/04-high-performance/connection-pool/README.md)
-### 4.4. [数据库优化](04.system-design/04-high-performance/database-optimization/README.md)
-#### [冷热分离](04.system-design/04-high-performance/database-optimization/cold-hot-data-separation/README.md)
-#### [分库分表](04.system-design/04-high-performance/database-optimization/db-sharding/README.md)
-##### [ShardingSphere](04.system-design/04-high-performance/database-optimization/db-sharding/sharding-sphere/README.md)
-#### [读写分离](04.system-design/04-high-performance/database-optimization/read-write-splitting/README.md)
-#### [SQL 优化](04.system-design/04-high-performance/database-optimization/sql/README.md)
-### 4.5. [Java 代码性能优化](04.system-design/04-high-performance/java/README.md)
-### 4.6. [负载均衡](04.system-design/04-high-performance/load-balance/README.md)
-### 4.7. [消息队列](04.system-design/04-high-performance/mq/README.md)
-### 4.8. [序列化](04.system-design/04-high-performance/serialization/README.md)
-## 5. [安全](04.system-design/05-security/README.md)
-### 5.1. [API 安全](04.system-design/05-security/api-security/README.md)
-### 5.2. [加密](04.system-design/05-security/encryption/README.md)
-### 5.3. [JWT 安全](04.system-design/05-security/jwt-security/README.md)
-### 5.4. [OAuth2 & OIDC](04.system-design/05-security/oauth2-oidc/README.md)
-### 5.5. [OWASP Top 10](04.system-design/05-security/owasp-top10/README.md)
-### 5.6. [RBAC & ABAC](04.system-design/05-security/rbac-abac/README.md)
-### 5.7. [密钥管理](04.system-design/05-security/secrets-management/README.md)
-## 6. [幂等性设计](04.system-design/06-idempotency/README.md)
-### 6.1. [去重表](04.system-design/06-idempotency/deduplication-table/README.md)
-### 6.2. [幂等键](04.system-design/06-idempotency/idempotency-key/README.md)
-### 6.3. [乐观锁](04.system-design/06-idempotency/optimistic-lock/README.md)
-### 6.4. [状态机](04.system-design/06-idempotency/state-machine/README.md)
-### 6.5. [幂等性 vs 分布式事务](04.system-design/06-idempotency/vs-distributed-transaction/README.md)
-## 7. [部署](04.system-design/07-deployment/README.md)
-### 7.1. [容量规划](04.system-design/07-deployment/capacity-planning/README.md)
-### 7.2. [部署策略](04.system-design/07-deployment/deploy/README.md)
-### 7.3. [可观测性](04.system-design/07-deployment/observability/README.md)
+> 从关系型数据库基础出发，依次深入 SQL、事务、索引、MySQL 内部机制，再扩展到缓存、Redis、NoSQL、连接池、数据迁移、监控与云数据库。
+
+## 知识体系
+
+| 序号 | 主题 | 核心内容 |
+|------|------|----------|
+| 1 | [数据库基础知识](03.database/01-fundamentals/README.md) | 核心概念、ER 图、范式、设计步骤 |
+| 2 | [SQL](03.database/02-sql/README.md) | SQL 语法、执行顺序、慢查询分析与优化 |
+| 3 | [事务与并发控制](03.database/03-transaction/README.md) | ACID、隔离级别、锁机制、MVCC |
+| 4 | [索引](03.database/04-index/README.md) | B+ 树、聚簇/非聚簇索引、覆盖索引、最左前缀、索引失效 |
+| 5 | [MySQL](03.database/05-mysql/README.md) | 架构、存储引擎、InnoDB 内部机制、主从复制、日志系统 |
+| 6 | [缓存](03.database/06-cache/README.md) | 缓存分类、穿透/击穿/雪崩、缓存与数据库一致性 |
+| 7 | [Redis](03.database/07-redis/README.md) | 数据类型、持久化、集群高可用、内存管理 |
+| 8 | [NoSQL 数据库](03.database/08-nosql/README.md) | NoSQL 分类、SQL vs NoSQL 对比、选型指南 |
+| 9 | [数据库连接池](03.database/09-connection-pool/README.md) | HikariCP、Druid、参数配置、监控 |
+| 10 | [数据迁移与同步](03.database/10-data-migration/README.md) | DataX 全量同步、Canal/Maxwell Binlog 订阅、Flink CDC |
+| 11 | [数据库监控告警](03.database/11-monitoring/README.md) | Prometheus + Grafana + AlertManager、慢查询分析 |
+| 12 | [云数据库](03.database/12-cloud-database/README.md) | AWS RDS/Aurora、阿里云 PolarDB、TiDB Cloud、自建 vs 云 |
+
+> 开源参考: [基于 ConcurrentHashMap 的高性能缓存实现](https://gitee.com/wb04307201/CHMCache) — 基于 LRU 策略，支持自动过期、大小限制、后台清理。
+
+# 四、[系统设计](04.system-design/README.md)
+
+> 系统设计知识体系图谱，从基础理论（软件工程 / DDD / TOGAF）到工程实践（分布式 / 高可用 / 高性能 / 安全 / 幂等 / 部署）的完整学习路径。
+
+## 篇章导航
+
+| 序号 | 主题 | 核心内容 |
+|------|------|----------|
+| 1 | [01 基础](04.system-design/01-foundation/README.md) | 软件工程、OOD、DDD、TOGAF、ArchiMate、IT4IT、微服务、技术债 |
+| 2 | [02 分布式](04.system-design/02-distributed/README.md) | CAP、BASE、共识算法、分布式事务、分布式锁、分布式 ID、RPC、服务发现、网关、缓存 |
+| 3 | [03 高可用](04.system-design/03-high-availability/README.md) | 限流、熔断、重试、降级、冗余、弹性、混沌工程、代码质量、超时 |
+| 4 | [04 高性能](04.system-design/04-high-performance/README.md) | 缓存模式、CDN、负载均衡、连接池、数据库优化、分库分表、消息队列、序列化、Java 优化 |
+| 5 | [05 安全](04.system-design/05-security/README.md) | API 安全、加密、JWT、OAuth2、OWASP Top 10、RBAC/ABAC、密钥管理 |
+| 6 | [06 幂等性设计](04.system-design/06-idempotency/README.md) | 去重表、幂等键、乐观锁、状态机、幂等 vs 分布式事务 |
+| 7 | [07 部署](04.system-design/07-deployment/README.md) | 容量规划、部署策略、可观测性 |
+
+> 开源参考：
+> - [Flexible Lock · 灵锁](https://gitee.com/wb04307201/flexible-lock) — 基于 Spring Boot 的统一锁接口，支持 Redis 单点/集群/哨兵、Zookeeper、本地锁
+> - [Rate Limiter · 限流器](https://gitee.com/wb04307201/rate-limiter) — 配套限流组件
 
 # 五、工具
 ## Git
@@ -175,69 +94,25 @@
 ### [Lombok注解如何让Java开发效率飙升](05.tools/java/lombok/README.md)
 
 # 六、[Spring](06.spring/README.md)
+
 > 从 Spring 核心到 Spring Boot / Cloud / 集成组件 / 可观测性 / 注解速查，系统覆盖 Spring 全家桶。
-## 1. [01 核心容器](06.spring/01-core/README.md)
-### 1.1. [IoC 容器](06.spring/01-core/ioc/README.md)
-#### [Bean 生命周期](06.spring/01-core/ioc/bean-lifecycle.md)
-#### [依赖注入](06.spring/01-core/ioc/dependency-injection.md)
-#### [作用域与线程安全](06.spring/01-core/ioc/scopes-and-thread-safety.md)
-### 1.2. [AOP 面向切面](06.spring/01-core/aop/README.md)
-#### [切点表达式语法](06.spring/01-core/aop/pointcut-expression.md)
-#### [通知顺序与最佳实践](06.spring/01-core/aop/advice-order-and-best-practices.md)
-### 1.3. [事件机制](06.spring/01-core/event.md)
-### 1.4. [异常处理](06.spring/01-core/exception-handling.md)
-### 1.5. [模块组成](06.spring/01-core/module.md)
-### 1.6. [Spring 自带工具类](06.spring/01-core/tools-reference.md)
-### 1.7. [MiniSpring 手写实现](06.spring/01-core/minispring/microrest/README.md)
-## 2. [02 Web 层](06.spring/02-web/README.md)
-### 2.1. [Spring MVC](06.spring/02-web/mvc/README.md)
-#### [9 大组件执行顺序](06.spring/02-web/mvc/components-order.md)
-#### [请求分发流程](06.spring/02-web/mvc/dispatch-flow.md)
-### 2.2. [WebFlux 响应式](06.spring/02-web/webflux/sse.md)
-## 3. [03 数据层](06.spring/03-data/README.md)
-### 3.1. [事务管理](06.spring/03-data/transaction/README.md)
-#### [传播行为与隔离级别](06.spring/03-data/transaction/propagation-and-isolation.md)
-#### [7 大失效场景](06.spring/03-data/transaction/failure-cases.md)
-#### [分布式事务理论](06.spring/03-data/transaction/distributed/theory-and-patterns.md)
-#### [Seata 框架](06.spring/03-data/transaction/distributed/seata.md)
-### 3.2. [缓存](06.spring/03-data/cache/README.md)
-#### [5 大缓存注解](06.spring/03-data/cache/annotations-and-usage.md)
-#### [实现选型与最佳实践](06.spring/03-data/cache/implementations-and-best-practices.md)
-#### [多级缓存 Starter（开源）](https://gitee.com/wb04307201/multi-level-cache-spring-boot-starter)
-> 通过 `CacheManager` 接口扩展多级缓存注解
-## 4. [04 Spring Boot](06.spring/04-spring-boot/README.md)
-### [自动配置原理](06.spring/04-spring-boot/auto-configuration.md)
-### [自定义 Starter](06.spring/04-spring-boot/custom-starter.md)
-### [spring.factories 迁移](06.spring/04-spring-boot/spring-factories-migration.md)
-### [启动流程与 5 种初始化方式](06.spring/04-spring-boot/application-bootstrap.md)
-## 5. [05 Spring Cloud](06.spring/05-spring-cloud/README.md)
-### [服务注册与发现对比](06.spring/05-spring-cloud/service-registry/eureka-vs-consul-vs-nacos-vs-zookeeper.md)
-### [配置中心（Nacos / Apollo / Spring Cloud Config）](06.spring/05-spring-cloud/config-center.md)
-### [客户端负载均衡](06.spring/05-spring-cloud/load-balancer.md)
-### [OpenFeign 服务调用](06.spring/05-spring-cloud/rpc-and-feign.md)
-### [熔断与容错（Resilience4j）](06.spring/05-spring-cloud/circuit-breaker.md)
-### [API 网关（Spring Cloud Gateway）](06.spring/05-spring-cloud/gateway.md)
-### [分布式链路追踪（Micrometer Tracing）](06.spring/05-spring-cloud/distributed-tracing.md)
-## 6. [06 集成组件](06.spring/06-integration/README.md)
-### [Spring Retry 自动重试](06.spring/06-integration/retry.md)
-### [Spring Batch 批处理](06.spring/06-integration/batch.md)
-### [Spring Statemachine 状态机](06.spring/06-integration/statemachine.md)
-### [Spring Validation 参数校验](06.spring/06-integration/validation/annotations-and-usage.md)
-#### [自定义 Validator](06.spring/06-integration/validation/custom-validator.md)
-## 7. [07 可观测性](06.spring/07-observability/README.md)
-### [Actuator 端点](06.spring/07-observability/actuator.md)
-### [Micrometer 指标](06.spring/07-observability/micrometer.md)
-### [Prometheus + Grafana 监控体系](06.spring/07-observability/prometheus-grafana.md)
-### [Method Trace Log（开源）](https://gitee.com/wb04307201/methodTraceLog)
-> 基于 Spring AOP + Micrometer 的方法调用追踪和监控工具
-## 8. [08 注解速查](06.spring/08-annotations/README.md)
-### [Web 注解](06.spring/08-annotations/web.md)
-### [Bean 与 IoC 注解](06.spring/08-annotations/bean-and-ioc.md)
-### [配置注解](06.spring/08-annotations/configuration.md)
-### [AOP 注解](06.spring/08-annotations/aop.md)
-### [异常处理注解](06.spring/08-annotations/exception.md)
-### [JPA 注解](06.spring/08-annotations/jpa.md)
-### [测试注解](06.spring/08-annotations/test.md)
+
+## 章节导航
+
+| 序号 | 主题 | 核心内容 |
+|------|------|----------|
+| 1 | [01 核心容器](06.spring/01-core/README.md) | IoC 容器、Bean 生命周期、AOP 切面编程 |
+| 2 | [02 Web 层](06.spring/02-web/README.md) | Spring MVC 请求处理、Filter/AOP 顺序、WebFlux |
+| 3 | [03 数据层](06.spring/03-data/README.md) | 事务管理、缓存抽象、分布式事务（Seata） |
+| 4 | [04 Spring Boot](06.spring/04-spring-boot/README.md) | 自动配置原理、Starter 机制、启动流程 |
+| 5 | [05 Spring Cloud](06.spring/05-spring-cloud/README.md) | 服务发现、网关、熔断、链路追踪 |
+| 6 | [06 集成组件](06.spring/06-integration/README.md) | Validation、Retry、StateMachine、Batch |
+| 7 | [07 可观测性](06.spring/07-observability/README.md) | Actuator、Micrometer、Prometheus |
+| 8 | [08 注解速查](06.spring/08-annotations/README.md) | 按场景分类的注解索引 |
+
+> 开源参考：
+> - [Multi-Level Cache Spring Boot Starter](https://gitee.com/wb04307201/multi-level-cache-spring-boot-starter) — 通过 `CacheManager` 接口扩展多级缓存注解
+> - [Method Trace Log](https://gitee.com/wb04307201/methodTraceLog) — 基于 Spring AOP + Micrometer 的方法调用追踪工具
 
 # 七、[工作流](07.workflow/README.md)
 ## [定义](07.workflow/define/README.md)
@@ -272,65 +147,17 @@
 ## [离线数仓/实时数仓](10.big-data/offline-or-real-time-data-warehouse/README.md)
 
 # 十一、[AI 知识体系](11.ai/README.md)
-## 1. [AI 基础概念](11.ai/01-fundamentals/README.md)
-### 1.1. [大语言模型基础](11.ai/01-fundamentals/llm-basics/README.md)
-### 1.2. [神经网络层次结构](11.ai/01-fundamentals/neural-layers/README.md)
-### 1.3. [嵌入 vs 向量化](11.ai/01-fundamentals/embedding-vs-vectorization/README.md)
-### 1.4. [稠密模型 vs MoE](11.ai/01-fundamentals/dense-vs-moe/README.md)
-## 2. [LLM 技术栈](11.ai/02-technology-stack/README.md)
-### 2.1. [LLM 技术栈全景（61 核心概念）](11.ai/02-technology-stack/concept-map/README.md)
-### 2.2. [多模态：感知-认知统一架构](11.ai/02-technology-stack/multimodal/README.md)
-#### 2.2.1. [跨模态特征对齐](11.ai/02-technology-stack/multimodal/cross-modal-alignment/README.md)
-#### 2.2.2. [多模态交互体验优化](11.ai/02-technology-stack/multimodal/multi-modal-interaction/README.md)
-### 2.3. [大模型显存估算指南](11.ai/02-technology-stack/memory-estimation/README.md)
-### 2.4. [Prompt 工程](11.ai/02-technology-stack/prompt-engineering/README.md)
-#### 2.4.1. [创意代码注释风格](11.ai/02-technology-stack/prompt-engineering/code-comment-styles/README.md)
-#### 2.4.2. [Grok 系统提示词](11.ai/02-technology-stack/prompt-engineering/grok-system-prompt/README.md)
-#### 2.4.3. [Prompt 模板](11.ai/02-technology-stack/prompt-engineering/prompt-templates/README.md)
-## 3. [AI 工程实践](11.ai/03-engineering/README.md)
-### 3.1. [AI 框架选型](11.ai/03-engineering/frameworks/README.md)
-#### 3.1.1. [深度学习框架](11.ai/03-engineering/frameworks/deep-learning/README.md)
-#### 3.1.2. [大模型应用开发框架](11.ai/03-engineering/frameworks/llm-app/README.md)
-### 3.2. [计算平台](11.ai/03-engineering/compute-platforms/README.md)
-### 3.3. 本地部署
-#### 3.3.1. [Ollama](11.ai/03-engineering/local-deployment/ollama/README.md)
-##### 3.3.1.1. [Qwen3 + Ollama Linux 部署指南](11.ai/03-engineering/local-deployment/ollama/linux-deploy/README.md)
-#### 3.3.2. [Open WebUI](11.ai/03-engineering/local-deployment/open-webui/README.md)
-#### 3.3.3. [iFlow CLI](11.ai/03-engineering/local-deployment/iflow-cli/README.md)
-### 3.4. [AI 平台对比选购指南](11.ai/03-engineering/ai-platforms/README.md)
-## 4. [AI 架构设计](11.ai/04-architecture/README.md)
-### 4.1. [AI 技术栈分层架构全景](11.ai/04-architecture/intelligent-system-layers/README.md)
-### 4.2. [2026 AI 技术矩阵](11.ai/04-architecture/2026-trends/README.md)
-## 5. [AI 行业应用](11.ai/05-applications/README.md)
-### 5.1. AI 在汽车行业
-#### 5.1.1. [AI 重塑汽车行业](11.ai/05-applications/automotive/overview/README.md)
-#### 5.1.2. [智能座舱交互范式](11.ai/05-applications/automotive/smart-cockpit/README.md)
-#### 5.1.3. [AI 重构工业设计](11.ai/05-applications/automotive/gan-industrial-design/README.md)
-#### 5.1.4. [监督学习 → 强化学习](11.ai/05-applications/automotive/ml-to-rl/README.md)
-### 5.2. [具身智能](11.ai/05-applications/embodied-ai/README.md)
-## 6. [AI 前沿研究](11.ai/06-research/README.md)
-### 6.1. [沉思模型（Rumination）](11.ai/06-research/rumination-models/README.md)
-## 7. [AI Agent 应用开发培训课程](11.ai/training/README.md)
-### 7.1. 基础入门
-#### [第 1 课：AI Agent 核心概念](11.ai/training/lession1/README.md)
-#### [第 2 课：Agent Harness 与控制论](11.ai/training/lession2/README.md)
-### 7.2. 开发实战
-#### [第 3 课：Spring AI Agent 搭建](11.ai/training/lession3/README.md)
-#### [第 4 课：Java MCP 服务开发](11.ai/training/lession4/README.md)
-#### [第 5 课：Skill 编写与设计模式](11.ai/training/lession5/README.md)
-### 7.3. 进阶协同
-#### [第 6 课：多智能体协同](11.ai/training/lession6/README.md)
-#### [第 7 课：Claude Code 工具链](11.ai/training/lession7/README.md)
-#### [第 8 课：Agent 设计模式与架构](11.ai/training/lession8/README.md)
-#### [第 9 课：Dify 工作流引擎](11.ai/training/lession9/README.md)
-### 7.4. 综合实践
-#### [第 10 课：Agent 评估方法论](11.ai/training/lession10/README.md)
-#### [第 11 课：AI 代码安全与质量](11.ai/training/lession11/README.md)
-#### [第 12 课：Vibe Coding 与安全审计](11.ai/training/lession12/README.md)
-#### [第 13 课：基于 Spec 的 AI 驱动开发](11.ai/training/lession13/README.md)
-#### [第 14 课：AI 时代的认知债务与深度工作](11.ai/training/lession14/README.md)
-#### [第 15 课：AI 原生组织](11.ai/training/lession15/README.md)
-#### [第 16 课：LLM 驱动的个人知识库](11.ai/training/lession16/README.md)
+## 目录导航
+
+| 序号 | 主题 | 核心内容 |
+|------|------|----------|
+| 1 | [L1 基础概念](11.ai/01-fundamentals/README.md) | 大语言模型基础、神经网络层次、嵌入 vs 向量化、稠密模型 vs MoE |
+| 2 | [L2 技术栈](11.ai/02-technology-stack/README.md) | 61 核心概念全景、多模态、Prompt 工程、显存估算 |
+| 3 | [L3 工程实践](11.ai/03-engineering/README.md) | 深度学习框架、应用开发框架、计算平台、本地部署、AI 平台对比 |
+| 4 | [L4 架构设计](11.ai/04-architecture/README.md) | 智能系统分层架构、2026 技术趋势 |
+| 5 | [L5 行业应用](11.ai/05-applications/README.md) | 汽车行业落地、具身智能 |
+| 6 | [L6 前沿研究](11.ai/06-research/README.md) | 沉思模型（Rumination）等前沿探索 |
+| 7 | [教学课程](11.ai/training/README.md) | Spring AI Agent 实战 16 课 |
 
 # 十二、前端
 ## [前端框架](12.font-end/frameworks/README.md)
@@ -384,40 +211,12 @@
 
 # 十四、[「阿明餐厅」技术系列](14.story/index.md)
 > 以餐厅经营为叙事主线，用 30+ 篇故事讲透从架构演进到 AI 转型的技术全景。
-## 0. 系列导览
-### [术语表](14.story/glossary.md)
-### [一页纸速查](14.story/cheatsheet.md)
-## 1. 前传：架构演进
-### [架构是"长"出来的](14.story/02-system-architecture-evolution.md)
-## 2. 正传：核心技术篇
-### [高峰保卫战 —— 流量治理](14.story/04-peak-traffic-defense.md)
-### [厨房装监控 —— 可观测性](14.story/05-observability.md)
-### [食安大检查 —— 安全架构](14.story/06-security-architecture.md)
-### [从厨师到 CEO —— 团队与组织管理](14.story/07-from-chef-to-ceo.md)
-### [厨房质检员 —— QA 与测试策略](14.story/08-qa-testing-strategy.md)
-### [从接单到出餐 —— CI/CD 与 DevOps](14.story/09-cicd-devops.md)
-### [菜单设计学 —— API 设计](14.story/10-api-design.md)
-### [数据厨房 —— 数据架构与治理](14.story/12-data-kitchen.md)
-### [前厅翻修记 —— 前端工程优化](14.story/13-frontend-renovation.md)
-### [差评危机 —— 故障应急响应](14.story/15-incident-response.md)
-### [外卖大战 —— 全链路性能优化](14.story/16-performance-optimization.md)
-### [传菜窗口的智慧 —— 异步消息与消息队列](14.story/17-async-messaging.md)
-### [十家店的烦恼 —— 分布式系统难题](14.story/18-distributed-puzzles.md)
-### [厨房实况直播 —— 实时与事件驱动架构](14.story/20-realtime-eventdriven.md)
-### [一个厨房，四个门面 —— 多端架构](14.story/21-multiplatform-architecture.md)
-### [仓库搬家不停业 —— 数据库迁移](14.story/24-database-migration.md)
-## 3. 番外：专题拓展
-### [给产品经理的重构说明书](14.story/03-refactoring-guide-for-pm.md)
-### [阿明的省钱经 —— 云成本优化（FinOps）](14.story/14-cloud-finops.md)
-### [阿明的加盟帝国 —— SaaS 多租户架构](14.story/19-saas-multitenant.md)
-### [懂你的菜单 —— 搜索与推荐系统](14.story/22-search-recommendation.md)
-### [菜谱标准化之路 —— 技术文档与知识工程](14.story/23-tech-docs-knowledge.md)
-### [预制菜还是现炒 —— 低代码平台](14.story/25-lowcode-platform.md)
-### [阿明出海记 —— 全球化与国际化](14.story/26-globalization.md)
-## 4. 续集：AI Agent 篇
-### [当餐厅长出大脑 —— AI Agent 架构](14.story/01-ai-agent-architecture.md)
-### [学徒的困境 —— AI 时代的协作学习](14.story/11-ai-learning-paradox.md)
-### [厨房大换岗 —— AI 驱动的组织变革](14.story/27-ai-org-transformation.md)
-### [阿明的二次创业 —— AI 原生创业](14.story/28-ai-native-startup.md)
-### [会自我进化的厨房 —— 自进化组织](14.story/29-self-evolving-company.md)
-### [AI 的"黑暗料理" —— AI 幻觉与安全治理](14.story/30-ai-hallucination-safety.md)
+## 系列导航
+
+| 序号 | 主题 | 核心内容 |
+|------|------|----------|
+| 1 | [0. 系列导览](14.story/index.md) | 术语表（160+ 词）、一页纸速查 |
+| 2 | [1. 前传 · 架构演进](14.story/02-system-architecture-evolution.md) | 架构是"长"出来的、IT 成熟度 L1-L7 评估 |
+| 3 | [2. 正传 · 核心技术（15 篇）](14.story/04-peak-traffic-defense.md) | 流量治理、可观测性、安全、QA、CI/CD、API、数据、前端、故障、性能、MQ、分布式、实时、多端、数据库迁移 |
+| 4 | [3. 番外 · 专题拓展（7 篇）](14.story/03-refactoring-guide-for-pm.md) | 重构、FinOps、SaaS 多租户、搜索推荐、知识工程、低代码、国际化 |
+| 5 | [4. 续集 · AI Agent（6 篇）](14.story/01-ai-agent-architecture.md) | AI Agent 架构、AI 学习、组织转型、AI 原生创业、自进化组织、AI 幻觉治理 |
