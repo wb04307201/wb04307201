@@ -83,6 +83,8 @@
 ##### [服务拆分](04.system-design/01-foundation/system-design-basics/microservices/service-decomposition/README.md)
 #### [面向对象设计（OOD）](04.system-design/01-foundation/system-design-basics/ood/README.md)
 #### [TOGAF](04.system-design/01-foundation/system-design-basics/togaf/README.md)
+#### [ArchiMate](04.system-design/01-foundation/system-design-basics/archimate/README.md)
+#### [IT4IT](04.system-design/01-foundation/system-design-basics/it4it/README.md)
 ### 1.3. [技术债](04.system-design/01-foundation/technical-debt/README.md)
 ## 2. [分布式](04.system-design/02-distributed/README.md)
 > 分布式通常指的是一种计算或数据处理方式，其中任务、数据或资源被分散在多个节点上处理，提高系统的整体性能、可靠性、可扩展性和容错性。
