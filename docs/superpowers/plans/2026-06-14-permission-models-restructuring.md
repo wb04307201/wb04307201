@@ -4,7 +4,7 @@
 
 **Goal:** 把分散在 `04.system-design/05-security/rbac-abac/` 与 `note/09.other/permission/` 的两份权限模型文档，整合为 6 个主流模型 + 1 份选型总章的自洽小体系，落地 6 个 commit。
 
-**Architecture:** 6 步走完，每步 1 commit：(1) 建 10 个新文件的骨架 → (2) 迁 11 张图 → (3) 填 6 个模型正文 → (4) 填总章 + 3 个族索引 → (5) 改 3 处引用方 → (6) 删 2 个旧目录。
+**Architecture:** 6 步走完，每步 1 commit：(1) 建 10 个新文件的骨架 → (2) 迁 12 张图 → (3) 填 6 个模型正文 → (4) 填总章 + 3 个族索引 → (5) 改 3 处引用方 → (6) 删 2 个旧目录。
 
 **Tech Stack:** Markdown / Git / Bash（`mv` / `rm -rf` / `grep` / `find` / `ls`）
 
@@ -17,7 +17,7 @@
 ### 变更前
 
 - `note/04.system-design/05-security/rbac-abac/README.md`（15.9KB，含 RBAC/ABAC/ReBAC + Java + SQL）
-- `note/09.other/permission/README.md`（9.3KB + 11 张 png：img.png, img_1.png ... img_11.png）
+- `note/09.other/permission/README.md`（9.3KB + 12 张 png：img.png, img_1.png ... img_11.png）
 
 ### 变更后
 
@@ -38,7 +38,7 @@ note/04.system-design/05-security/access-control/
     └── hybrid.md                          ← RBAC+ABAC 混合
 ```
 
-- 11 张 png 全部迁到 `02-role-and-attribute/`
+- 12 张 png 全部迁到 `02-role-and-attribute/`
 - `05-security/rbac-abac/` 与 `09.other/permission/` 整体删除
 
 ---
@@ -264,11 +264,11 @@ Expected: 10 个新文件 staged，1 commit 创建。
 
 ---
 
-## Task 2：迁移 11 张图到 `02-role-and-attribute/`
+## Task 2：迁移 12 张图到 `02-role-and-attribute/`
 
 **Files:**
 - Move: `note/09.other/permission/img.png` → `note/04.system-design/05-security/access-control/02-role-and-attribute/img.png`
-- Move: 同上模式迁移 `img_1.png` 至 `img_11.png`（共 11 张）
+- Move: 同上模式迁移 `img_1.png` 至 `img_11.png`（共 12 张）
 
 - [ ] **Step 2.1：执行 11 次 mv**
 
@@ -322,11 +322,11 @@ git add -A note/04.system-design/05-security/access-control/02-role-and-attribut
 git add -A note/09.other/permission/
 git status
 git commit -m "docs(perm): 迁移 RBAC/ABAC 配图到 02-role-and-attribute" \
-  -m "把 09.other/permission/ 下的 11 张 png 整体迁到 02-role-and-attribute/，为 Task 3 模型正文引用做准备。" \
+  -m "把 09.other/permission/ 下的 12 张 png 整体迁到 02-role-and-attribute/，为 Task 3 模型正文引用做准备。" \
   -m "Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
 ```
 
-Expected: 11 张图重命名移动 staged（在 git 里表现为「renamed」），1 commit 创建。
+Expected: 12 张图重命名移动 staged（在 git 里表现为「renamed」），1 commit 创建。
 
 ---
 
@@ -1880,7 +1880,7 @@ echo "=== rbac-abac 残留 ==="
 grep -rn 'rbac-abac' note/ docs/ 2>/dev/null || echo "✓ 全仓无残留"
 echo "=== 09.other/permission 残留 ==="
 grep -rn '09.other/permission' note/ docs/ 2>/dev/null || echo "✓ 全仓无残留"
-echo "=== 11 张图都在新位置 ==="
+echo "=== 12 张图都在新位置 ==="
 find note/04.system-design/05-security/access-control -name 'img*.png' | wc -l
 ```
 
@@ -1902,7 +1902,7 @@ ls note/09.other/
 ```
 
 Expected:
-- access-control 下含 10 个 .md + 11 张 .png = 21 个文件
+- access-control 下含 10 个 .md + 12 张 .png = 21 个文件
 - 05-security 下含：access-control, api-security, encryption, jwt-security, oauth2-oidc, owasp-top10, secrets-management（不含 rbac-abac）
 - 09.other 下含其他主题（不含 permission）
 
@@ -1914,7 +1914,7 @@ cd "C:/developer/IdeaProjects/wb04307201"
 git add -A
 git status
 git commit -m "docs(perm): 清理已迁移的旧目录" \
-  -m "删除 04.system-design/05-security/rbac-abac/ 与 09.other/permission/。11 张图已迁至 access-control/02-role-and-attribute/，6 个模型正文已迁至 access-control/ 下对应子目录。" \
+  -m "删除 04.system-design/05-security/rbac-abac/ 与 09.other/permission/。12 张图已迁至 access-control/02-role-and-attribute/，6 个模型正文已迁至 access-control/ 下对应子目录。" \
   -m "Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
 ```
 
@@ -1939,7 +1939,7 @@ for f in $(find note/04.system-design/05-security/access-control -name '*.md' -n
   [ "$c" = "6" ] && echo "✓ $f ($c 段)" || echo "✗ $f ($c 段)"
 done
 
-echo "=== 4. 11 张图都在新位置 ==="
+echo "=== 4. 12 张图都在新位置 ==="
 find note/04.system-design/05-security/access-control -name 'img*.png' | wc -l
 
 echo "=== 5. 旧目录已清 ==="
