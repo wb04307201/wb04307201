@@ -579,7 +579,7 @@ OkHttpClient client = new OkHttpClient.Builder()
 
 - [JWT 存储安全](../jwt-security/README.md) — Token 的安全存储与撤销
 - [OAuth2.0 与 OIDC](../oauth2-oidc/README.md) — 访问令牌的签发与生命周期
-- [权限模型 RBAC / ABAC](../rbac-abac/README.md) — 接口背后的权限决策
+- [权限模型 RBAC / ABAC](../access-control/02-role-and-attribute/README.md) — 接口背后的权限决策
 - [OWASP Top 10](../owasp-top10/README.md) — 应用安全风险全景
 - [加密与密钥管理](../encryption/README.md) — HTTPS / 签名背后的密码学基础
 

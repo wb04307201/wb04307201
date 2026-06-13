@@ -9,7 +9,10 @@
 
 ## 权限与防护
 
-3. [权限模型](rbac-abac/README.md) — RBAC / ABAC / ReBAC 对比与实现
+3. [访问控制](access-control/README.md) — 6 大权限模型与选型决策
+   - [传统族](access-control/01-traditional/README.md)（DAC / MAC）
+   - [角色属性族](access-control/02-role-and-attribute/README.md)（RBAC / ABAC）
+   - [关系与混合族](access-control/03-relationship-and-hybrid/README.md)（ReBAC / RBAC+ABAC）
 4. [API 安全](api-security/README.md) — 签名验证 / 防重放 / 数据脱敏 / 限流
 
 ## 应用安全与密码学

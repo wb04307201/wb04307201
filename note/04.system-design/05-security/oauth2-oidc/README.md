@@ -476,7 +476,7 @@ ID Token 是一个签名的 JWT，包含用户身份信息：
 
 - [JWT 存储安全](../jwt-security/README.md) — Access Token / ID Token 的存储与撤销
 - [API 安全](../api-security/README.md) — Bearer Token 传输、签名验证、防重放
-- [权限模型 RBAC / ABAC](../rbac-abac/README.md) — Token 中携带的 scope / role 如何消费
+- [权限模型 RBAC / ABAC](../access-control/02-role-and-attribute/README.md) — Token 中携带的 scope / role 如何消费
 
 ## 参考资料
 

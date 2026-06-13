@@ -69,7 +69,7 @@
 | [02 分布式篇](02-distributed/README.md) | 13 | CAP、共识算法、分布式事务、RPC |
 | [03 高可用篇](03-high-availability/README.md) | 9 | 限流、熔断、重试、降级、冗余、混沌 |
 | [04 高性能篇](04-high-performance/README.md) | 11 | 负载均衡、缓存、数据库优化、消息队列 |
-| [05 安全篇](05-security/README.md) | 4 | JWT、OAuth2、权限模型、API安全 |
+| [05 安全篇](05-security/README.md) | 7 | JWT、OAuth2、API安全、OWASP、加密、密钥管理、访问控制 |
 | [06 幂等设计](06-idempotency/README.md) | 1 | 幂等性设计与实现方案 |
 | [07 部署与运维](07-deployment/README.md) | 3 | 部署架构、可观测性、容量规划 |
 

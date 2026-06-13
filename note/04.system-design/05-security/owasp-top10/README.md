@@ -53,7 +53,7 @@ public List<Order> getOrders(@PathVariable Long userId) {
 }
 ```
 
-更多内容见 [权限模型 RBAC / ABAC](../rbac-abac/README.md)。
+更多内容见 [权限模型 RBAC / ABAC](../access-control/02-role-and-attribute/README.md)。
 
 ---
 
