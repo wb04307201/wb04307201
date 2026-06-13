@@ -307,13 +307,13 @@ graph TD
 - [阿明的省钱经](./14-cloud-finops.md) —— 创业阶段精打细算，AI 工具的 Token 费用也是成本
 - [差评危机](./15-incident-response.md) —— 发布后差评和故障怎么处理的实战方法论
 - [外卖大战](./16-performance-optimization.md) —— MVP 性能优化，高峰期系统不能崩是底线
-- [传菜窗口的智慧](./17-async-messaging.md) —— 智能体之间的异步通信，消息队列是规模化工作流的基础
+- [传菜窗口的智慧](./20-realtime-eventdriven.md) —— 智能体之间的异步通信，消息队列是规模化工作流的基础
 - [十家店的烦恼](./18-distributed-puzzles.md) —— 规模化后多门店数据一致性的分布式挑战
 - [阿明的加盟帝国](./19-saas-multitenant.md) —— 从一家店到加盟体系的多租户架构
 - [厨房实况直播](./20-realtime-eventdriven.md) —— 事件驱动让智能体实时感知运营变化
 - [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多渠道获客的多端架构设计
 - [懂你的菜单](./22-search-recommendation.md) —— 个性化推荐提升复购率，发布阶段提升 PMF 的利器
-- [菜谱标准化之路](./23-tech-docs-knowledge.md) —— SOP 不沉淀，智能体就无法接管运营
+- [菜谱标准化之路](./07-from-chef-to-ceo.md) —— SOP 不沉淀，智能体就无法接管运营
 - [仓库搬家不停业](./24-database-migration.md) —— 从 MVP 到规模化的数据库迁移与架构升级
 - [预制菜还是现炒](./25-lowcode-platform.md) —— 智能体工作流搭建：低代码编排 vs 手写 Pipeline
 - [阿明出海记](./26-globalization.md) —— 第二家店开在另一个城市？全球化思维从创业第一天就要有

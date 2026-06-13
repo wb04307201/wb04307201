@@ -662,13 +662,13 @@ graph TD
 - [阿明的省钱经](./14-cloud-finops.md) —— 云成本优化，多区域部署的成本翻倍，FinOps 更加重要
 - [差评危机](./15-incident-response.md) —— 故障复盘与应急响应，多区域的故障排查更复杂（哪个区域先出问题？）
 - [外卖大战](./16-performance-optimization.md) —— 性能优化，多区域的性能优化需要端到端的全链路视角
-- [传菜窗口的智慧](./17-async-messaging.md) —— 异步消息，跨区域数据同步的核心技术就是异步消息复制
+- [传菜窗口的智慧](./20-realtime-eventdriven.md) —— 异步消息，跨区域数据同步的核心技术就是异步消息复制
 - [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统的经典难题，多区域部署就是更大规模的分布式
 - [阿明的加盟帝国](./19-saas-multitenant.md) —— SaaS 多租户架构，出海时不同国家的租户隔离策略不同
 - [厨房实况直播](./20-realtime-eventdriven.md) —— 实时与事件驱动架构，跨区域的事件传播延迟是核心挑战
 - [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多端架构，不同国家的用户偏好不同的客户端（LINE / WhatsApp / 微信）
 - [懂你的菜单](./22-search-recommendation.md) —— 搜索与推荐，推荐算法需要适应不同国家的饮食文化差异
-- [菜谱标准化之路](./23-tech-docs-knowledge.md) —— 技术文档与知识管理，出海文档需要多语言版本
+- [菜谱标准化之路](./07-from-chef-to-ceo.md) —— 技术文档与知识管理，出海文档需要多语言版本
 - [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移，多区域部署可能涉及跨区域的数据迁移
 - [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台，多语言的低代码编辑器本身也需要国际化
 - [厨房大换岗](./27-ai-org-transformation.md) —— AI 组织转型的全球化考量，不同文化背景下 AI 转型路径不同

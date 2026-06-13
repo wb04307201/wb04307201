@@ -302,13 +302,13 @@ graph TD
 - [阿明的省钱经](./14-cloud-finops.md) —— 云成本优化与 FinOps，120 万月账单如何降到 68 万
 - [差评危机](./15-incident-response.md) —— 故障复盘与应急响应，从手忙脚乱到 10 分钟止血的方法论
 - [外卖大战](./16-performance-optimization.md) —— 系统性能优化，3 秒生死线下的全链路优化实战
-- [传菜窗口的智慧](./17-async-messaging.md) —— 消息队列的 API 设计，Topic、Queue、Message 的命名规范本质上是异步 API
+- [传菜窗口的智慧](./20-realtime-eventdriven.md) —— 消息队列的 API 设计，Topic、Queue、Message 的命名规范本质上是异步 API
 - [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统中的 API 幂等性设计，跨服务调用的一致性保障
 - [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户 API 设计，如何通过 API 实现租户隔离和定制化
 - [厨房实况直播](./20-realtime-eventdriven.md) —— 实时通信的 API 设计，WebSocket 和 SSE 是实时 API 的两种形态
 - [一个厨房，四个门面](./21-multiplatform-architecture.md) —— BFF（Backend For Frontend）是 API 适配多端的架构模式
 - [懂你的菜单](./22-search-recommendation.md) —— 搜索推荐系统的 API 设计：查询接口、结果排序、分页策略
-- [菜谱标准化之路](./23-tech-docs-knowledge.md) —— API 文档是技术文档的核心部分，OpenAPI 规范是 API 契约的一部分
+- [菜谱标准化之路](./07-from-chef-to-ceo.md) —— API 文档是技术文档的核心部分，OpenAPI 规范是 API 契约的一部分
 - [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移中的 API 兼容，Schema 变更时 API 必须保持向后兼容
 - [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台的 API 集成，可视化数据源绑定背后的接口设计
 - [阿明出海记](./26-globalization.md) —— 国际化 API 设计，多语言响应、货币转换、时区处理的接口规范

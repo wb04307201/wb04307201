@@ -494,12 +494,12 @@ graph TD
 - [阿明的省钱经](./14-cloud-finops.md) —— SaaS 的成本优化直接决定利润率，多租户的 FinOps 是核心能力
 - [差评危机](./15-incident-response.md) —— 多租户的故障影响面更大，一次事故可能流失所有客户
 - [外卖大战](./16-performance-optimization.md) —— 多租户的性能优化需要按租户隔离，不能让一个租户拖垮所有人
-- [传菜窗口的智慧](./17-async-messaging.md) —— 消息队列在多租户场景下需要按租户隔离 Topic 或 Queue
+- [传菜窗口的智慧](./20-realtime-eventdriven.md) —— 消息队列在多租户场景下需要按租户隔离 Topic 或 Queue
 - [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统的经典难题，在多租户场景下更加复杂
 - [厨房实况直播](./20-realtime-eventdriven.md) —— 实时系统在多租户场景下需要按租户隔离 WebSocket 连接和事件流
 - [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多平台架构与多租户有天然的结合点，一个 SaaS 平台多个前端门面
 - [懂你的菜单](./22-search-recommendation.md) —— SaaS 平台为每个租户提供个性化推荐，搜索和推荐需要按租户隔离模型
-- [菜谱标准化之路](./23-tech-docs-knowledge.md) —— SaaS 平台的知识管理和文档标准化，帮助租户自助解决问题
+- [菜谱标准化之路](./07-from-chef-to-ceo.md) —— SaaS 平台的知识管理和文档标准化，帮助租户自助解决问题
 - [仓库搬家不停业](./24-database-migration.md) —— 租户数据迁移是数据库迁移的特殊场景，需要零停机完成
 - [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台天然适合 SaaS 场景，让租户自己配置而不是开发定制
 - [阿明出海记](./26-globalization.md) —— SaaS 出海面临多租户合规、数据驻留、多语言等叠加挑战

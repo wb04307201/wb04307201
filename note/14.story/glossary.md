@@ -232,11 +232,11 @@
 
 | 术语 | 解释 | 出处 |
 |------|------|------|
-| **消息确认 (ACK/NACK)** | 消费者处理完消息后向 Broker 发送确认/拒绝信号，确保消息不被丢失 | [正传 11](./17-async-messaging.md) |
-| **死信队列 (DLQ)** | 多次消费失败的消息被转入专用队列，等待人工排查或补偿处理 | [正传 11](./17-async-messaging.md) |
-| **幂等消费 (Idempotent Consume)** | 同一条消息被消费多次，业务结果与消费一次相同，防止重复处理 | [正传 11](./17-async-messaging.md) |
-| **事件溯源 (Event Sourcing)** | 以事件序列而非当前状态来存储数据，通过重放事件还原任意时刻的状态 | [正传 13](./20-realtime-eventdriven.md) |
-| **CDC (Change Data Capture)** | 变更数据捕获：监听数据库变更日志（如 binlog），实时同步数据变更到下游系统 | [正传 13](./20-realtime-eventdriven.md) |
+| **消息确认 (ACK/NACK)** | 消费者处理完消息后向 Broker 发送确认/拒绝信号，确保消息不被丢失 | [正传 11](./20-realtime-eventdriven.md) |
+| **死信队列 (DLQ)** | 多次消费失败的消息被转入专用队列，等待人工排查或补偿处理 | [正传 11](./20-realtime-eventdriven.md) |
+| **幂等消费 (Idempotent Consume)** | 同一条消息被消费多次，业务结果与消费一次相同，防止重复处理 | [正传 11](./20-realtime-eventdriven.md) |
+| **事件溯源 (Event Sourcing)** | 以事件序列而非当前状态来存储数据，通过重放事件还原任意时刻的状态 | [正传 11](./20-realtime-eventdriven.md) |
+| **CDC (Change Data Capture)** | 变更数据捕获：监听数据库变更日志（如 binlog），实时同步数据变更到下游系统 | [正传 11](./20-realtime-eventdriven.md) |
 
 ---
 
@@ -267,10 +267,10 @@
 
 | 术语 | 解释 | 出处 |
 |------|------|------|
-| **WebSocket** | 全双工通信协议：客户端与服务端建立持久连接，双方可随时主动发送数据 | [正传 13](./20-realtime-eventdriven.md) |
-| **SSE (Server-Sent Events)** | 服务端向客户端单向推送事件流的标准协议，基于 HTTP，自动重连，适合通知类场景 | [正传 13](./20-realtime-eventdriven.md) |
-| **CQRS (Command Query Responsibility Segregation)** | 命令查询职责分离：写操作（Command）和读操作（Query）使用不同的模型甚至数据源 | [正传 13](./20-realtime-eventdriven.md) |
-| **背压 (Backpressure)** | 当下游处理速度跟不上上游生产速度时，向上游反馈减速的流控机制 | [正传 13](./20-realtime-eventdriven.md) |
+| **WebSocket** | 全双工通信协议：客户端与服务端建立持久连接，双方可随时主动发送数据 | [正传 11](./20-realtime-eventdriven.md) |
+| **SSE (Server-Sent Events)** | 服务端向客户端单向推送事件流的标准协议，基于 HTTP，自动重连，适合通知类场景 | [正传 11](./20-realtime-eventdriven.md) |
+| **CQRS (Command Query Responsibility Segregation)** | 命令查询职责分离：写操作（Command）和读操作（Query）使用不同的模型甚至数据源 | [正传 11](./20-realtime-eventdriven.md) |
+| **背压 (Backpressure)** | 当下游处理速度跟不上上游生产速度时，向上游反馈减速的流控机制 | [正传 11](./20-realtime-eventdriven.md) |
 
 ---
 
@@ -278,8 +278,8 @@
 
 | 术语 | 解释 | 出处 |
 |------|------|------|
-| **BFF (Backend For Frontend)** | 为每种前端（Web/App/小程序）单独搭建一个适配层，屏蔽后端复杂性，提供端侧最优接口 | [正传 14](./21-multiplatform-architecture.md) |
-| **跨平台框架 (Cross-Platform Framework)** | 一套代码运行在多个平台上的框架（如 React Native、Flutter），在开发效率和原生体验间取舍 | [正传 14](./21-multiplatform-architecture.md) |
+| **BFF (Backend For Frontend)** | 为每种前端（Web/App/小程序）单独搭建一个适配层，屏蔽后端复杂性，提供端侧最优接口 | [正传 13](./21-multiplatform-architecture.md) |
+| **跨平台框架 (Cross-Platform Framework)** | 一套代码运行在多个平台上的框架（如 React Native、Flutter），在开发效率和原生体验间取舍 | [正传 13](./21-multiplatform-architecture.md) |
 
 ---
 
@@ -297,9 +297,9 @@
 
 | 术语 | 解释 | 出处 |
 |------|------|------|
-| **ADR (Architecture Decision Record)** | 架构决策记录：用标准化模板记录每个重要技术决策的背景、选项、决定和后果 | [番外五](./23-tech-docs-knowledge.md) |
-| **SECI 模型** | 野中郁次郎提出的知识转化模型：社会化(S)→外化(E)→组合化(C)→内化(I)，驱动组织知识螺旋上升 | [番外五](./23-tech-docs-knowledge.md) |
-| **Docs-as-Code** | 文档即代码：用写代码的方式管理文档（版本控制、Code Review、CI 发布），确保文档与代码同步演进 | [番外五](./23-tech-docs-knowledge.md) |
+| **ADR (Architecture Decision Record)** | 架构决策记录：用标准化模板记录每个重要技术决策的背景、选项、决定和后果 | [终章 第四章](./07-from-chef-to-ceo.md) |
+| **SECI 模型** | 野中郁次郎提出的知识转化模型：社会化(S)→外化(E)→组合化(C)→内化(I)，驱动组织知识螺旋上升 | [终章 第四章](./07-from-chef-to-ceo.md) |
+| **Docs-as-Code** | 文档即代码：用写代码的方式管理文档（版本控制、Code Review、CI 发布），确保文档与代码同步演进 | [终章 第四章](./07-from-chef-to-ceo.md) |
 
 ---
 
@@ -307,9 +307,9 @@
 
 | 术语 | 解释 | 出处 |
 |------|------|------|
-| **在线 DDL (Online DDL)** | 在不锁表、不影响正常读写的前提下修改表结构（如加字段、加索引） | [正传 15](./24-database-migration.md) |
-| **双写迁移 (Dual Write)** | 同时向新旧两套系统写入数据，在迁移过渡期保证两边数据一致，逐步切换读流量 | [正传 15](./24-database-migration.md) |
-| **影子表 (Shadow Table)** | 在正式表旁边创建结构相同的新表，写入时同步更新两表，验证无误后再切换流量 | [正传 15](./24-database-migration.md) |
+| **在线 DDL (Online DDL)** | 在不锁表、不影响正常读写的前提下修改表结构（如加字段、加索引） | [正传 14](./24-database-migration.md) |
+| **双写迁移 (Dual Write)** | 同时向新旧两套系统写入数据，在迁移过渡期保证两边数据一致，逐步切换读流量 | [正传 14](./24-database-migration.md) |
+| **影子表 (Shadow Table)** | 在正式表旁边创建结构相同的新表，写入时同步更新两表，验证无误后再切换流量 | [正传 14](./24-database-migration.md) |
 
 ---
 
@@ -379,6 +379,51 @@
 | **Human-in-the-Loop (HITL)** | 在 AI 决策流程中保留人工审核环节，根据风险等级决定全审、抽检或免审 | [续集六](./30-ai-hallucination-safety.md) |
 | **风险路由 (Risk-Based Routing)** | 根据 AI 输出的"爆炸半径"（潜在影响范围）自动分配审核策略：高风险全审，低风险抽检 | [续集六](./30-ai-hallucination-safety.md) |
 | **AI 毕业制 (AI Graduation)** | AI 从"每步人审"的试用期，逐步升级到"有限信任"再到"自主运行"的信任演化机制 | [续集六](./30-ai-hallucination-safety.md) |
+
+---
+
+## AI 评测工程
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **黄金集 (Golden Set)** | AI 评测的"测试用例库"：手工 + 线上挖掘 + 合成数据构成，需持续更新、难度分层、防污染 | [续集十](./34-ai-evaluation.md) |
+| **LLM-as-Judge** | 用强模型评判弱模型输出的方法，需多维评分 + 详细标准 + 反偏置 + 成本控制 + 人工校准 | [续集十](./34-ai-evaluation.md) |
+| **6 大评测维度** | 准确性 / 忠实性 / 相关性 / 完整性 / 安全性 / 体验性，是 AI 输出质量的全息视图 | [续集十](./34-ai-evaluation.md) |
+| **Context Precision** | RAG 评测指标：召回的文档中有多大比例是真正相关的 | [续集十](./34-ai-evaluation.md) |
+| **Context Recall** | RAG 评测指标：所有相关文档中有多大比例被召回了 | [续集十](./34-ai-evaluation.md) |
+| **Faithfulness（忠实性）** | RAG 评测指标：AI 生成的答案中每个事实是否都能在召回的上下文中找到 | [续集十](./34-ai-evaluation.md) |
+| **RAGAS** | 开源 RAG 评测框架，覆盖 Context Precision/Recall、Faithfulness、Answer Relevancy 4 大指标 | [续集十](./34-ai-evaluation.md) |
+| **红队测试 (Red Team)** | 主动模拟攻击的 AI 安全评测：直接注入 / 间接注入 / 多模态注入 / 越权诱导 | [续集十](./34-ai-evaluation.md) |
+| **5 层 Eval 流水线** | 触发层 / 用例层 / 执行层 / 评分层 / 反馈层，是 AI 评测的工程化架构 | [续集十](./34-ai-evaluation.md) |
+
+---
+
+## AI 协议 & 互操作
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **MCP (Model Context Protocol)** | Anthropic 主导的"USB-C"协议：让 LLM 统一接入任何工具 / 数据源，把 N×M 集成复杂度变成 N+M | [续集十一](./35-mcp-a2a-protocol.md) |
+| **A2A (Agent-to-Agent)** | Google 联合 50+ 厂商推出的 Agent 协同协议：Agent 卡片 + 任务委派 + 流式协作 + 多模态产物 | [续集十一](./35-mcp-a2a-protocol.md) |
+| **Agent Card (Agent 卡片)** | A2A 的核心概念：Agent 的"自我介绍"，声明能力、技能、权限、HITL 规则 | [续集十一](./35-mcp-a2a-protocol.md) |
+| **MCP Resources / Tools / Prompts** | MCP 的三大能力：可读数据 / 可调函数 / 可用提示词模板 | [续集十一](./35-mcp-a2a-protocol.md) |
+| **Task / Artifact / Message** | A2A 的核心概念：任务 / 产物 / 消息，构成 Agent 间的协作单元 | [续集十一](./35-mcp-a2a-protocol.md) |
+| **协议 BOM** | 协议层的安全账本：记录所有 MCP Server / A2A Agent 的能力、权限、审计日志 | [续集十一](./35-mcp-a2a-protocol.md) |
+| **协议可观测性** | 协议调用量 / 成功率 / 延迟 / 成本 4 件套 + 跨协议 trace + 异常告警 | [续集十一](./35-mcp-a2a-protocol.md) |
+
+---
+
+## AI 成本经济学
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **Token 经济学 (Token Economics)** | AI 时代的新成本范式：按 token 长度 / 上下文窗口 / 缓存命中率计费，与云资源成本完全不同 | [续集十二](./36-ai-token-economics.md) |
+| **6 大成本组件** | LLM 推理 / Embedding / 向量库 / GPU 推理 / 训练微调 / 辅助服务 | [续集十二](./36-ai-token-economics.md) |
+| **成本感知路由 (Cost-Aware Router)** | 按场景自动选模型：旗舰 → 高性价比 → 开源小模型 → 专用小模型，节省 30-60% 成本 | [续集十二](./36-ai-token-economics.md) |
+| **3 级缓存策略** | 精确匹配缓存（FAQ）+ 语义匹配缓存（相似问题）+ Prompt 模板缓存（系统 Prompt），节省 40-60% token | [续集十二](./36-ai-token-economics.md) |
+| **4 策略压缩** | 截断 / 摘要 / RAG 替换 / 结构化提取，把长上下文压缩 50-80% | [续集十二](./36-ai-token-economics.md) |
+| **AI FinOps** | AI 时代的 FinOps 体系：实时监控 + 成本归因 + 持续优化 + ROI 度量，区别于云资源 FinOps | [续集十二](./36-ai-token-economics.md) |
+| **4 类 ROI** | 替代人力 / 增加收入 / 提升效率 / 降低风险，是 AI 项目的价值度量四象限 | [续集十二](./36-ai-token-economics.md) |
+| **上下文溢价** | 长上下文窗口（128K+）的单价阶梯式上涨（2-4 倍），需用 RAG + 压缩避免 | [续集十二](./36-ai-token-economics.md) |
 
 ---
 

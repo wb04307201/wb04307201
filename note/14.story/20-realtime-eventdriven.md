@@ -1,93 +1,308 @@
 # 厨房实况直播
 
-> 从阿明的"外卖骑手追踪系统"，看实时系统与事件驱动架构
+> 从阿明的"前后厨大混乱"和"外卖骑手追踪系统"，看异步消息与事件驱动架构的演进之路
 
-> **系列定位**：本篇是「阿明餐厅」系列的**正传 13**。在正传 11[《传菜窗口的智慧》](./17-async-messaging.md)中，阿明学会了用消息队列解耦服务。但消息队列解决的是"异步传递"，还有一个更刺激的需求 —— **实时**。当顾客问"我的外卖到哪了"、老板问"现在哪个灶台空闲"，你需要的不只是消息队列，而是一个实时事件流。
-
----
-
-## 引言：每 10 秒一次的夺命连环问
-
-阿明上线了外卖业务，第一周就收到了大量投诉。
-
-投诉的不是菜不好吃，而是 —— **"我的外卖到哪了？"**
-
-顾客下单后，看不到厨房有没有开始做，看不到骑手有没有取餐，只能干等。更让人焦虑的是，页面上的状态永远是"商家处理中"，到底处理到哪一步了？没人知道。
-
-竞争对手已经做到了实时追踪骑手位置、预计送达时间、厨房出餐进度，顾客像看直播一样看着自己的外卖一步步靠近。
-
-阿明的系统还在用"轮询"—— 顾客的手机 App 每 10 秒向服务器发一次请求："我的订单好了吗？""我的订单好了吗？""我的订单好了吗？"
-
-午高峰 3000 个在线用户，每 10 秒轮询一次，意味着每秒 300 次请求打到服务器上。服务器被刷崩了三次。
-
-老陈叹了口气："轮询就像每 10 秒打电话问一次'好了没'。**我们需要的是一有进展就主动通知，而不是被 3000 个人同时追问。**"
-
-阿明终于意识到：**实时不是"更快地轮询"，而是"从被动应答到主动推送"的思维革命。**
+> **系列定位**：本篇是「阿明餐厅」系列的**正传 11/13 合并版**。原正传 11《传菜窗口的智慧》（异步消息）与原正传 13《厨房实况直播》（实时事件驱动）已合并为本篇 —— MQ 是事件驱动的"轻量级实现"，事件驱动是 MQ 的"思想升华"，本质同源。如果你还没读过[前传](./02-system-architecture-evolution.md)与[正传 1《高峰保卫战》](./04-peak-traffic-defense.md)，建议先建立架构演进与流量治理的全局观。
 
 ---
 
-## 第一章：实时通信的四种方式
+## 引言：当 20 个服务排成一列，又被 3000 个顾客追问
 
-阿明问老陈："不用轮询，那用什么？"
+阿明的餐厅已经不是当年的小面馆了。
 
-老陈拿出了一张对比表，把四种实时通信方式摆在一起：
+经过[前传](./02-system-architecture-evolution.md)的架构演进、[正传 1](./04-peak-traffic-defense.md)的流量治理，系统从最初的 5 个服务扩展到了 20 个微服务。紧接着两个棘手的问题几乎同时爆发：
 
-| 通信方式 | 原理 | 延迟 | 资源消耗 | 复杂度 | 适用场景 | 餐厅类比 |
-|----------|------|------|----------|--------|----------|----------|
-| 短轮询（Short Polling） | 客户端定时发请求问"有变化吗？" | 高（取决于轮询间隔） | 高（大量无效请求） | 低 | 简单场景、低频查询 | 每 10 秒跑去厨房问一次 |
-| 长轮询（Long Polling） | 服务端收到请求后不立刻返回，等有新数据再响应 | 中 | 中（连接占用） | 中 | 兼容性要求高的场景 | 站在厨房门口等，有菜了再端走 |
-| SSE（Server-Sent Events） | 服务端单向推送事件流到客户端 | 低 | 低 | 中 | 单向通知（状态推送、大屏展示） | 厨房装了喇叭，做好一道菜喊一声 |
-| WebSocket | 全双工通信，服务端和客户端可以互相发消息 | 极低 | 低 | 高 | 双向交互（聊天、实时协作、追踪） | 厨房和大厅之间装了对讲机 |
+**问题一（来自 17-传菜窗口）**：某天，库存服务出现了一次 200ms 的抖动。在平时这根本不算事。但订单服务在等库存，支付在等订单，通知在等支付……整条链路全部超时。订单成功率从 99% 跌到 72%，差评如潮。
 
-```text
-四种方式的通信模型：
+**问题二（来自 20-厨房实况）**：上线外卖业务后，顾客投诉 *"我的外卖到哪了？"* 页面状态永远是"商家处理中"。竞争对手已经做到了实时追踪骑手位置、预计送达时间。阿明还在用"轮询"——3000 个在线用户每 10 秒刷一次，服务器被刷崩了三次。
 
-短轮询：
-  Client → "有新消息吗？" → Server → "没有"
-  Client → "有新消息吗？" → Server → "没有"
-  Client → "有新消息吗？" → Server → "有！给你"
-  （大量无效请求，但实现最简单）
+老陈拿着两份故障报告，叹了口气：
 
-长轮询：
-  Client → "有新消息吗？" → Server（hold 住连接，等待...）→ "有！给你"
-  Client → "有新消息吗？" → Server（hold 住连接，等待...）
-  （减少了无效请求，但连接一直被占用）
+> "第一个问题，服务间 200ms 的抖动被放大成 4.2s 全链路超时 —— 同步调用就像服务员必须盯着厨师做完菜才能去接下一单，一个环节卡住，整个餐厅都停了。
+>
+> 第二个问题，3000 个人同时打电话问'好了没' —— 你需要的不是'更频繁地轮询'，而是'一有进展就主动通知'。
+>
+> 解决两个问题的方法其实是同一个：**让等待发生在窗口后面，让数据自己在系统中流动。**"
 
-SSE：
-  Client → "我订阅了，有事告诉我"
-  Server → "事件1：订单已接单"
-  Server → "事件2：厨师开始做菜"
-  Server → "事件3：菜品已出餐"
-  （单向推送，客户端只能接收，不能发送）
+阿明似懂非懂："那这个'传菜窗口'，到底应该长什么样？"
 
-WebSocket：
-  Client ←→ Server（全双工，随时互相发消息）
-  Client → "我追踪订单 #12345"
-  Server → "骑手已到达餐厅"
-  Client → "我修改了收货地址"
-  Server → "已更新，骑手收到新地址"
-  （双向通信，最灵活，但最复杂）
+老陈笑了："**先装一个简单的，再升级成聪明的；先让消息解耦，再让事件驱动。** 这一篇，我们就把这条路从头走一遍。"
+
+---
+
+## 第一章：同步调用的七宗罪（来自 17-第一章，全文保留）
+
+阿明让老陈梳理了一下现有系统的调用链路，画出来像一碗意大利面 —— 20 个服务互相调用，你中有我，我中有你。
+
+老陈在白板上列出了同步调用的"七宗罪"：
+
+"你看，上次库存服务抖了 200ms，本来是个小问题。但订单服务在等它，支付服务在等订单服务，通知服务在等支付服务 —— 200ms 的抖动被放大成了 4.2 秒的全链路超时。这就是**级联故障**和**延迟叠加**的组合拳。"
+
+| 罪状 | 餐厅类比 | 技术表现 | 后果 |
+|------|----------|----------|------|
+| 强耦合 | 服务员必须盯着厨师 | 调用方必须等待被调用方响应 | 一荣俱荣，一损俱损 |
+| 延迟叠加 | 每道菜做完才能做下一道 | 6 个服务各 200ms = 总耗时 1.2s+ | 用户体验恶化 |
+| 级联故障 | 一个厨师请假，所有菜停做 | 下游超时拖垮上游 | 雪崩效应 |
+| 扩展性差 | 厨师和服务员必须 1:1 配对 | 无法独立扩缩容 | 资源浪费或瓶颈 |
+| 重试风暴 | 服务员反复催问"好了没" | 超时后大量重试请求 | 下游被彻底压垮 |
+| 事务边界模糊 | 谁负责退款？谁负责通知？ | 分布式事务难以保证一致性 | 数据不一致 |
+| 调试困难 | 出了问题不知道是谁的锅 | 链路长、日志分散 | 排查耗时 |
+
+老陈画了一张对比表：
+
+| 维度 | 同步调用 | 异步消息 |
+|------|----------|----------|
+| 耦合度 | 高（调用方知道被调用方地址） | 低（通过 Broker 中转） |
+| 延迟 | 请求-响应往返，延迟叠加 | 发完即走，延迟解耦 |
+| 故障传播 | 下游故障直接传导到上游 | 下游故障不影响上游发送 |
+| 扩展性 | 上下游必须同步扩容 | 各自独立扩缩容 |
+| 吞吐量 | 受限于最慢的环节 | 受限于 Broker 的处理能力 |
+| 数据一致性 | 容易实现强一致（但代价高） | 天然最终一致 |
+| 调试 | 链路清晰但长 | 需要消息追踪能力 |
+| 适用场景 | 实时查询、强一致操作 | 通知、事件驱动、后台处理 |
+
+阿明听完沉默了一会儿："这么说，我们之前把所有东西都做成同步调用，就像让 20 个服务员排成一列，一个传一个 —— 中间任何一个走神，整条链就断了？"
+
+老陈点头："没错。是时候装个传菜窗口了。"
+
+> 💡 **金句**：同步调用不是错，但在微服务架构中，"默认同步"是架构债务的最大来源。
+
+---
+
+## 第二章：消息队列入门（来自 17-第二章~第五章 合并精简）
+
+老陈先把"传菜窗口"的最简版搭起来：消息队列。MQ 解决的核心问题就是第一章的七宗罪 —— **让发完即走，把等待放在窗口后面**。
+
+### 2.1 选型：不是一种队列解决所有问题
+
+阿明决定引入消息队列，但市面上的选择太多了。老陈拉了一张对比表：
+
+| 维度 | Kafka | RabbitMQ | RocketMQ | Pulsar |
+|------|-------|----------|----------|--------|
+| 定位 | 分布式流平台 | 传统消息中间件 | 金融级消息中间件 | 云原生流平台 |
+| 吞吐量 | 百万级/秒 | 万级/秒 | 十万级/秒 | 百万级/秒 |
+| 延迟 | 毫秒级（批量） | 微秒级 | 毫秒级 | 毫秒级 |
+| 消息模型 | 发布-订阅（Topic + Partition） | 队列 + 发布-订阅（Exchange） | 发布-订阅 + 队列 | 发布-订阅 |
+| 消息回溯 | ✅ 支持（基于 offset） | ❌ 不支持 | ✅ 支持 | ✅ 支持 |
+| 顺序消息 | 分区内有序 | 单队列有序 | 分区内有序 | 分区内有序 |
+| 事务消息 | ❌ 原生不支持 | ❌ 不支持 | ✅ 支持 | ❌ 原生不支持 |
+| 死信队列 | 需自行实现 | ✅ 原生支持 | ✅ 支持 | ✅ 支持 |
+| 运维复杂度 | 中（依赖 ZooKeeper/KRaft） | 低 | 中 | 高（三层架构） |
+| 适用场景 | 日志流、事件流、大数据管道 | 业务消息、任务队列、延迟消息 | 金融交易、电商订单 | 多租户、大规模流处理 |
+
+老陈的回答很务实："我们的场景分两类。"
+
+1. **日志流和事件流**（用户行为日志、系统指标采集、CDC 数据同步）—— 用 **Kafka**。它天生就是做这件事的，吞吐量高，支持消息回溯，生态极其丰富。
+2. **业务消息**（下单通知、库存扣减、积分累加、配送调度）—— 用 **RabbitMQ**。它的路由模型灵活，延迟低，死信队列原生支持。
+
+```yaml
+# 阿明餐厅的消息队列分工
+messaging:
+  kafka:
+    purpose: "事件流 & 日志流"
+    topics:
+      - user_behavior_log
+      - order_event_stream
+      - inventory_change_log
+      - system_metrics
+    retention: 7d
+    partitions: 12
+
+  rabbitmq:
+    purpose: "业务消息 & 任务队列"
+    exchanges:
+      - name: order_events
+        type: topic
+        bindings:
+          - routing_key: "order.created"
+            queue: inventory_deduct
+          - routing_key: "order.created"
+            queue: notification_send
+          - routing_key: "order.paid"
+            queue: points_credit
+          - routing_key: "order.paid"
+            queue: delivery_dispatch
+    dead_letter:
+      exchange: dlx_exchange
+      queue: dead_letter_queue
 ```
 
-阿明做了选择：
+> 💡 **金句**：消息队列选型不是"哪个最好"，而是"哪个最适合"。日志流选 Kafka，业务消息选 RabbitMQ，金融交易选 RocketMQ —— 各有所长。
 
-- **骑手追踪** → WebSocket：顾客和骑手双向交互（顾客能看到骑手位置，骑手能收到顾客的新指令）
-- **厨房大屏** → SSE：大屏只需要接收厨房的状态推送，不需要回发消息
-- **订单状态查询（低频）** → 长轮询：兼容老版本 App，作为 WebSocket 的降级方案
+### 2.2 可靠性：消息不能丢的"三板斧"
 
-**实时通信的核心是"选对方式比追求最新技术更重要"。**
+阿明最担心的问题："消息发了，万一丢了怎么办？顾客付了钱，消息没到厨房，那不就出大事了？"
+
+老陈竖起三根手指："消息可靠性，靠**三板斧**。"
+
+**第一板斧：生产端确认（Publisher Confirm）**
+
+```python
+# RabbitMQ 生产端确认示例
+import pika
+
+connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+channel = connection.channel()
+channel.confirm_delivery()  # 开启 Publisher Confirms
+
+try:
+    channel.basic_publish(
+        exchange='order_events',
+        routing_key='order.created',
+        body=json.dumps({
+            'order_id': 'ORD-20260601-001',
+            'amount': 128.5,
+            'items': ['红烧牛肉面', '凉拌黄瓜'],
+        }),
+        properties=pika.BasicProperties(
+            delivery_mode=2,       # 消息持久化
+            message_id='msg-uuid-001',  # 唯一消息 ID（幂等用）
+        ),
+        mandatory=True  # 路由不到队列则退回
+    )
+    print("✅ 消息已确认送达 Broker")
+except pika.exceptions.UnroutableError:
+    print("❌ 消息无法路由到队列，需要处理退回")
+except Exception as e:
+    print(f"❌ 消息发送失败，需要重试: {e}")
+```
+
+**第二板斧：Broker 持久化**
+
+```text
+Broker 持久化配置：
+├── Exchange 持久化：durable = true
+├── Queue 持久化：durable = true
+└── Message 持久化：delivery_mode = 2
+
+注意：持久化 ≠ 不丢消息
+  - 写入磁盘有延迟（毫秒级），在写入前 Broker 崩溃仍可能丢失
+  - 解决方案：Quorum Queue（基于 Raft，多数派写入成功后才返回 ACK）
+```
+
+**第三板斧：消费端手动 ACK**
+
+```python
+# RabbitMQ 消费端手动 ACK 示例（精简版）
+def on_message(channel, method, properties, body):
+    order = json.loads(body)
+    try:
+        if is_duplicate(properties.message_id):          # 1. 幂等检查
+            channel.basic_ack(delivery_tag=method.delivery_tag)
+            return
+
+        process_order(order)                              # 2. 业务处理
+        mark_as_processed(properties.message_id)          # 3. 标记已处理
+        channel.basic_ack(delivery_tag=method.delivery_tag)  # 4. ACK
+
+    except Exception:
+        if retry_count(properties.message_id) < 3:       # 5. 失败重试
+            channel.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
+        else:
+            channel.basic_nack(delivery_tag=method.delivery_tag, requeue=False)  # 进死信队列
+
+channel.basic_qos(prefetch_count=10)
+channel.basic_consume(queue='inventory_deduct', on_message_callback=on_message)
+```
+
+> 💡 **金句**：消息可靠性的本质是"三段式确认" —— 发送确认、存储持久化、消费确认。任何一段缺失，都可能丢消息。
+
+### 2.3 消息模式：怎么"传话"？
+
+阿明的系统里有各种各样的"对话"场景。老陈说："不同的场景需要不同的消息模式。"
+
+| 模式 | 说明 | 餐厅类比 | 技术实现 |
+|------|------|----------|----------|
+| 发布/订阅（Pub/Sub） | 一条消息，多个消费者 | 厨房喊"3 号菜好了"，传菜员、质检员都听到 | Fanout/Topic Exchange |
+| 点对点（P2P） | 一条消息，一个消费者 | 指定某个厨师做某道菜 | Direct Exchange / Queue |
+| 请求/响应（Async RPC） | 发请求，等异步响应 | 服务员递单给厨师，厨师做完后按铃通知 | Reply Queue + Correlation ID |
+
+> 💡 **金句**：命令驱动是"告诉别人怎么做"，事件驱动是"告诉世界发生了什么"。后者的扩展性远好于前者 —— 这一点，下一章会详细展开。
+
+### 2.4 顺序与幂等：先做哪个？
+
+阿明遇到了一个诡异问题：有时候订单创建成功了，但库存没扣；有时候库存扣了，订单却创建失败。
+
+老陈分析："这是消息乱序导致的。在分布式系统中，消息的顺序不能天然保证。"
+
+```text
+正确顺序：
+  1. 扣减库存（InventoryDeducted）
+  2. 创建订单（OrderCreated）
+  3. 发起支付（PaymentInitiated）
+
+乱序情况：
+  消费者 A 收到 OrderCreated（时刻 T1）
+  消费者 B 收到 InventoryDeducted（时刻 T2 > T1）
+  → 消费者 A 处理时发现库存还没扣，校验失败！
+```
+
+**分区有序 vs 全局有序**：
+
+| 方式 | 吞吐量 | 适用场景 |
+|------|--------|----------|
+| 全局有序 | 低（单分区） | 金融交易、强顺序依赖 |
+| 分区有序 | 高（多分区并行） | **同一订单的消息有序即可**（阿明的选择） |
+| 无序 | 最高 | 通知类、日志类 |
+
+```python
+# Kafka 分区键示例：同一订单的消息进入同一分区
+order_id = 'ORD-20260601-001'
+producer.send('order_events', key=order_id, value={'event': 'InventoryDeducted', 'order_id': order_id})
+producer.send('order_events', key=order_id, value={'event': 'OrderCreated', 'order_id': order_id})
+producer.send('order_events', key=order_id, value={'event': 'PaymentInitiated', 'order_id': order_id})
+```
+
+**幂等消费**：分布式消息系统承诺"至少一次"投递（At-Least-Once），意味着重复消息必然会发生。**幂等消费不是可选项，而是必选项。**
+
+| 方式 | 原理 | 适用场景 |
+|------|------|----------|
+| 数据库唯一键 | `INSERT ... ON DUPLICATE KEY UPDATE` | 有数据库写入的场景 |
+| Redis 去重窗口 | 用消息 ID 做 SETNX，设置过期时间 | 高并发、无数据库写入 |
+| 状态机防重入 | 检查业务状态，已完成则跳过 | 有明确状态流转的场景 |
+
+```python
+# 幂等消费实现：唯一消息 ID + Redis 去重 + 数据库兜底（精简版）
+def consume_order_message(message):
+    msg_id = message['message_id']
+
+    # 第一层：Redis 去重（快速拦截）
+    if not redis_client.set(f"msg:processing:{msg_id}", "1", nx=True, ex=3600):
+        return
+
+    # 第二层：数据库幂等检查（兜底）
+    try:
+        cursor.execute(
+            "INSERT INTO processed_messages (message_id, status) VALUES (%s, 'processing')",
+            (msg_id,)
+        )
+        db.commit()
+    except IntegrityError:
+        redis_client.delete(f"msg:processing:{msg_id}")
+        return
+
+    try:
+        process_order(message)
+        cursor.execute("UPDATE processed_messages SET status='completed' WHERE message_id=%s", (msg_id,))
+        db.commit()
+    except Exception as e:
+        cursor.execute("DELETE FROM processed_messages WHERE message_id=%s", (msg_id,))
+        db.commit()
+        redis_client.delete(f"msg:processing:{msg_id}")
+        raise
+```
+
+> 💡 **金句**：在分布式消息系统中，"至少一次"是承诺，"恰好一次"是幻觉。
 
 ---
 
-## 第二章：事件驱动架构（EDA）
+## 第三章：事件驱动架构升级（来自 17-第四章 + 20-第一章+第二章 合并）
 
-搞定了通信方式，老陈提出了一个更根本的问题："骑手追踪只是表象。更深层的问题是 —— **你的系统不是事件驱动的**。"
+MQ 装好了，服务间通信顺畅了。但阿明发现还有一类问题没解决：**顾客要的不是"等数据"，而是"被通知"**。当外卖骑手的位置每 30 秒变一次时，轮询太奢侈了。当订单状态变更时，依赖轮询的页面可能延迟几分钟才更新。
 
-阿明不解："什么意思？"
+老陈说："你需要从'装上传菜窗口'升级到'厨房实况直播' —— **把命令式的同步调用升级为事件驱动的实时推送**。"
 
-老陈解释："现在你的系统是'命令式'的。顾客下单，系统执行一个命令：创建订单、扣减库存、通知厨房。但这一切都是同步调用的，一环扣一环。**任何一个环节出问题，整条链路都断了。**"
-
-"而事件驱动架构（EDA）的思路完全不同 —— **每个服务只做自己的事，做完后发一个'事件'出去，谁关心谁订阅。**"
+### 3.1 从命令到事件：思维范式的转变
 
 老陈首先区分了三个容易混淆的概念：
 
@@ -99,19 +314,108 @@ WebSocket：
 
 事件驱动架构的核心是**事件**。事件是"已经发生的事实"，不可变、不可撤销。
 
-老陈进一步引入了**事件溯源（Event Sourcing）** 的概念：
+```text
+命令驱动（Command-Driven）：
+  "库存服务，请扣减 1 份红烧牛肉面"
+  → 发送方知道接收方是谁，知道它该做什么
+  → 本质是"远程过程调用"的异步版
+  → 耦合度：中
+
+事件驱动（Event-Driven）：
+  "订单已创建（OrderCreated 事件）"
+  → 发送方不知道谁会关心，只声明发生了什么
+  → 下游服务自行决定要做什么
+  → 耦合度：低
+```
+
+老陈的建议："传菜窗口放了一盘菜，它不会喊'传菜员小赵来端'，它只是放在那里，谁有空谁来端。这就是事件驱动。"
+
+### 3.2 事件驱动架构（EDA）核心
+
+老陈提出了一个更根本的问题："骑手追踪只是表象。更深层的问题是 —— **你的系统不是事件驱动的**。"
+
+"现在你的系统是'命令式'的：顾客下单，系统执行一个命令：创建订单、扣减库存、通知厨房。但这一切都是同步调用的，一环扣一环。**任何一个环节出问题，整条链路都断了。**"
+
+"而事件驱动架构（EDA）的思路完全不同 —— **每个服务只做自己的事，做完后发一个'事件'出去，谁关心谁订阅。**"
+
+**EDA 的三大优势**：
+
+1. **松耦合**：服务间通过事件解耦，发布者不关心谁订阅
+2. **可扩展**：新增订阅者无需改动发布者
+3. **可观测**：事件流本身就是"系统活动的日志"
+
+### 3.3 Saga 编排式 vs 协调式
+
+涉及 6 个服务的下单流程，老陈画了两种实现方式的对比：
+
+```mermaid
+graph TD
+    subgraph "编排式 Saga（Choreography）"
+        O1[订单服务<br/>创建订单] -->|发布 OrderCreated| E1((事件总线))
+        E1 -->|OrderCreated| I1[库存服务<br/>扣减库存]
+        E1 -->|OrderCreated| P1[支付服务<br/>发起扣款]
+        I1 -->|发布 InventoryDeducted| E2((事件总线))
+        P1 -->|发布 PaymentCompleted| E3((事件总线))
+        E3 -->|PaymentCompleted| N1[通知服务]
+        E3 -->|PaymentCompleted| PT[积分服务]
+    end
+```
+
+| 维度 | 编排式（Choreography） | 协调式（Orchestration） |
+|------|----------------------|----------------------|
+| 控制方式 | 去中心化，每个服务自主响应事件 | 中心化，协调器控制流程 |
+| 耦合度 | 低 | 中 |
+| 可观测性 | 差（流程分散） | 好（协调器掌握全局） |
+| 适用场景 | 3-4 个服务 | 5+ 个服务（阿明的选择） |
+
+> Saga 协调器的分布式事务实现细节详见[《十家店的烦恼》](./18-distributed-puzzles.md)，本篇关注事件流本身的设计。
+
+### 3.4 实时通信的四种方式
+
+搞定了架构，还得解决"事件怎么送到客户端"。老陈拿出了一张对比表：
+
+| 通信方式 | 原理 | 延迟 | 资源消耗 | 复杂度 | 适用场景 | 餐厅类比 |
+|----------|------|------|----------|--------|----------|----------|
+| 短轮询 | 客户端定时发请求问"有变化吗？" | 高 | 高（大量无效请求） | 低 | 简单场景、低频查询 | 每 10 秒跑去厨房问一次 |
+| 长轮询 | 服务端 hold 住连接，等数据再响应 | 中 | 中 | 中 | 兼容性要求高 | 站在厨房门口等，有菜了再端走 |
+| SSE（Server-Sent Events） | 服务端单向推送 | 低 | 低 | 中 | 单向通知（状态推送、大屏） | 厨房装了喇叭，做好一道菜喊一声 |
+| WebSocket | 全双工通信 | 极低 | 低 | 高 | 双向交互（聊天、追踪、协作） | 厨房和大厅之间装了对讲机 |
+
+阿明的选择：
+
+- **骑手追踪** → WebSocket：顾客和骑手双向交互
+- **厨房大屏** → SSE：大屏只需接收状态推送
+- **订单状态查询（低频）** → 长轮询：兼容老版本 App，作为 WebSocket 的降级方案
+
+> 💡 **金句**：实时通信的核心是"选对方式比追求最新技术更重要"。
+
+---
+
+## 第四章：事件溯源与 CDC（来自 20-第二章 事件溯源部分 + 第三章 合并）
+
+EDA 解决架构问题，但阿明还有个现实问题：**现有系统不是事件驱动的，所有数据都直接写 MySQL。难道要全部重写？**
+
+老陈笑了："不用。**有两种思路可以让你的系统无痛升级到事件驱动。**"
+
+### 4.1 事件溯源：存"录像"而非"快照"
+
+传统做法是存"当前状态"：
 
 ```text
 传统做法（存"当前状态"）：
   订单 #12345 的当前状态：已出餐
+```
 
+事件溯源（Event Sourcing）是存"所有发生过的事"：
+
+```text
 事件溯源（存"所有发生过的事"）：
   10:01  事件：顾客下单（菜品：宫保鸡丁 × 1）
-  10:02  事件：订单已确认（接单员：小张）
+  10:02  事件：订单已确认（接单员：小赵）
   10:03  事件：厨房已接单（厨师：张师傅）
   10:08  事件：菜品已开始制作
   10:12  事件：菜品已出餐
-  10:13  事件：骑手已取餐（骑手：小陈）
+  10:13  事件：骑手已取餐（骑手：小钱）
   10:25  事件：骑手已送达
 
   → 当前状态可以通过回放所有事件计算得出
@@ -119,9 +423,9 @@ WebSocket：
   → 不存在"数据被覆盖"的问题
 ```
 
-老陈用了一个类比："传统做法就像只记住'这桌点了红烧肉'。事件溯源就像记住'10:01 顾客坐下 → 10:03 点菜 → 10:05 下单 → 10:12 出餐 → 10:15 上桌'。**前者是快照，后者是录像。**"
+老陈的类比："传统做法就像只记住'这桌点了红烧肉'。事件溯源就像记住'10:01 顾客坐下 → 10:03 点菜 → 10:05 下单 → 10:12 出餐 → 10:15 上桌'。**前者是快照，后者是录像。**"
 
-与事件溯源配套的是 **CQRS（Command Query Responsibility Segregation，命令查询职责分离）**：
+**CQRS（Command Query Responsibility Segregation）** 与事件溯源配套：
 
 ```mermaid
 graph LR
@@ -133,28 +437,13 @@ graph LR
         C --> D["读数据库<br/>查询优化的视图"]
     end
     D --> E["查询接口<br/>快速响应读请求"]
-    style A fill:#ff6b6b,color:#fff
-    style B fill:#ffa502,color:#fff
-    style C fill:#2ed573,color:#fff
-    style D fill:#1e90ff,color:#fff
-    style E fill:#a55eea,color:#fff
 ```
 
 写操作走事件流（保证一致性），读操作走投影视图（保证性能）。两者解耦，互不影响。
 
-详见[《传菜窗口的智慧》](./17-async-messaging.md)中的消息队列 —— 事件驱动是消息队列的进阶形态，从"传递消息"升级到"记录事实"。
+### 4.2 CDC：让数据库"自己说话"
 
-**事件驱动的核心是"不要告诉别人该做什么，而是告诉别人发生了什么"。**
-
----
-
-## 第三章：CDC —— 数据变更捕获
-
-理论讲完了，阿明问了一个现实问题："我现有的系统不是事件驱动的，所有数据都直接写 MySQL。难道要全部重写？"
-
-老陈笑了："不用。**有一种技术可以在不改动现有代码的情况下，把数据库的每一次变更都变成事件。**"
-
-这个技术叫 **CDC（Change Data Capture，变更数据捕获）**。
+事件溯源需要新写代码，老陈提供了一个"零侵入"方案 —— **CDC（Change Data Capture，变更数据捕获）**。
 
 原理是监听数据库的 **Binlog**（二进制日志）。MySQL 每次写操作（INSERT / UPDATE / DELETE）都会记录 Binlog，原本是给主从同步用的。CDC 工具把自己伪装成一个 MySQL 从库，订阅 Binlog，把数据变更实时转发到消息队列。
 
@@ -166,30 +455,18 @@ CDC 工作流程：
   MySQL 写入 → Binlog 记录变更 → CDC 工具（Canal/Debezium）捕获
        → 转换为事件格式 → 发送到 Kafka
        → 下游消费者订阅处理
-
-示例：
-  1. 顾客下单，订单服务写入 MySQL：INSERT INTO orders (id, status) VALUES (12345, 'created')
-  2. MySQL Binlog 记录了这次 INSERT
-  3. Debezium 捕获 Binlog，转换为事件：
-     {"table": "orders", "op": "INSERT", "data": {"id": 12345, "status": "created"}}
-  4. 事件发送到 Kafka Topic：orders-changes
-  5. 骑手服务订阅 orders-changes，收到事件后立刻通知骑手取餐
 ```
 
-阿明问："这和直接在代码里写'下单后发消息到 Kafka'有什么区别？"
-
-老陈画了一张对比表：
+**应用层双写 vs CDC 对比**：
 
 | 对比维度 | 应用层双写 | CDC（Binlog 捕获） |
 |----------|------------|-------------------|
-| 侵入性 | 需要改业务代码 | 零侵入，不需要改一行代码 |
-| 一致性 | 可能不一致（DB 写成功但消息发送失败） | 保证一致（从 Binlog 读，和 DB 完全同步） |
-| 顺序保证 | 难以保证 | Binlog 天然有序 |
-| 遗漏风险 | 异常路径可能漏发消息 | 不会遗漏，Binlog 记录所有变更 |
+| 侵入性 | 需要改业务代码 | **零侵入**，不需要改一行代码 |
+| 一致性 | 可能不一致（DB 写成功但消息发送失败） | **保证一致**（从 Binlog 读，和 DB 完全同步） |
+| 顺序保证 | 难以保证 | **Binlog 天然有序** |
+| 遗漏风险 | 异常路径可能漏发消息 | **不会遗漏**，Binlog 记录所有变更 |
 | 维护成本 | 每个服务都要加发消息的逻辑 | 统一配置，一处接入 |
-| 延迟 | 极低（同步发送） | 低（毫秒级，Binlog 解析有少许延迟） |
-
-阿明选了 **Debezium + Kafka Connect** 的方案。配置完成后，订单表的每一次变更都自动变成事件流，骑手端在订单创建后 200 毫秒内就能收到通知。
+| 延迟 | 极低（同步发送） | 低（毫秒级） |
 
 ```yaml
 # Debezium MySQL Connector 配置示例
@@ -197,7 +474,7 @@ name: orders-connector
 config:
   connector.class: io.debezium.connector.mysql.MySqlConnector
   database.hostname: mysql-primary
-  database.port: 3306
+  database.port: 3300
   database.user: debezium
   database.password: ${DB_PASSWORD}
   database.server.id: 1
@@ -205,19 +482,17 @@ config:
   database.include.list: aming_db
   table.include.list: aming_db.orders
   topic.prefix: cdc
-  # 只关注 orders 表的变更
-  # 自动将 INSERT/UPDATE/DELETE 转换为 Kafka 事件
 ```
 
-老陈提醒："CDC 虽然好用，但有一个注意点 —— **Schema 变更要小心**。如果你改了表结构（比如加了一个字段），Debezium 需要重新解析 Schema，可能会短暂中断。生产环境建议用 Schema Registry 管理。"
+老陈提醒："CDC 虽好用，但有一个注意点 —— **Schema 变更要小心**。如果改了表结构，Debezium 需要重新解析 Schema，可能会短暂中断。生产环境建议用 Schema Registry 管理。"
 
-详见[《仓库搬家不停业》](./24-database-migration.md)中的数据迁移 —— CDC 不仅是实时系统的利器，也是数据库迁移时保持数据同步的核心工具。
+> CDC 在数据迁移中的应用详见[《仓库搬家不停业》](./24-database-migration.md)，本篇关注其在事件驱动中的角色。
 
-**CDC 的核心是"不改代码也能让数据流动起来，Binlog 是数据库送给实时系统的礼物"。**
+> 💡 **金句**：CDC 的核心是"不改代码也能让数据流动起来，Binlog 是数据库送给实时系统的礼物"。
 
 ---
 
-## 第四章：实时流处理
+## 第五章：流处理与可观测性（来自 20-第四章+第五章 + 17/20-第六章 合并）
 
 事件流接好了，但阿明发现一个新问题：**原始事件太多了，人看不过来。**
 
@@ -226,11 +501,10 @@ config:
 - 过去 5 分钟的平均出餐时间是多少？
 - 当前有多少订单等待超过 10 分钟？
 - 哪个灶台的效率最高？哪个最慢？
-- 今天的订单量趋势和昨天同时段比怎么样？
 
-老陈引入了**实时流处理（Stream Processing）**。
+### 5.1 流处理：把无限事件切成有限窗口
 
-流处理的核心概念是**窗口（Window）**—— 把无限的事件流切成有限的时间段，然后在每个窗口内做聚合计算：
+老陈引入了**实时流处理（Stream Processing）**。流处理的核心概念是**窗口（Window）**—— 把无限的事件流切成有限的时间段，然后在每个窗口内做聚合计算：
 
 ```text
 三种窗口类型：
@@ -245,7 +519,6 @@ config:
         |--- 5 分钟 ---|
               |--- 5 分钟 ---|
   → 每 1 分钟滑动一次，计算"过去 5 分钟的订单量"
-  → 更平滑，能看到趋势变化
 
 会话窗口（Session Window）：按活动间隔切分
   [事件1][事件2]    [事件3][事件4][事件5]
@@ -253,92 +526,31 @@ config:
   → 适合用户行为分析（"一次点餐会话"）
 ```
 
-老陈选了 **Kafka Streams**（轻量级，不需要额外集群）来做实时计算。一段关键代码：
-
-```python
-# 流处理逻辑伪代码（实际 Kafka Streams 需用 Java 实现）
-# 展示流处理思路
-
-class WaitingOrdersProcessor:
-    """
-    实时统计：当前有多少订单从"已接单"到"已出餐"超过 10 分钟
-    """
-
-    def process(self, event):
-        if event["type"] == "order_accepted":
-            # 记录接单时间
-            self.state_store.put(
-                key=event["order_id"],
-                value={"accepted_at": event["timestamp"]}
-            )
-
-        elif event["type"] == "order_ready":
-            # 计算出餐等待时间
-            accepted = self.state_store.get(event["order_id"])
-            if accepted:
-                wait_minutes = (
-                    event["timestamp"] - accepted["accepted_at"]
-                ) / 60
-
-                if wait_minutes > 10:
-                    # 超过 10 分钟，触发告警
-                    self.alert_service.send(
-                        level="warning",
-                        message=f"订单 {event['order_id']} 等待了 {wait_minutes:.1f} 分钟",
-                    )
-                    self.metrics.increment("orders.waiting_over_10min")
-
-                self.state_store.delete(event["order_id"])
-```
-
-在技术选型上，老陈比较了两个主流方案：
+**Kafka Streams vs Flink**：
 
 | 对比维度 | Kafka Streams | Apache Flink |
 |----------|---------------|--------------|
 | 部署方式 | 嵌入式（随应用部署） | 独立集群 |
 | 资源开销 | 低 | 高 |
 | 状态管理 | 本地 RocksDB | 分布式 Checkpoint |
-| 精确一次语义 | 支持 | 支持 |
-| 时间语义 | 事件时间 + 处理时间 | 事件时间 + 处理时间 + 水位线 |
 | 适用规模 | 中小规模 | 大规模 |
-| 学习曲线 | 低（Java/Scala 库） | 高（独立框架） |
 
-阿明当前规模用 Kafka Streams 足够。等日订单量突破 100 万时，再考虑升级到 Flink。
+阿明当前规模用 Kafka Streams 足够，等日订单量突破 100 万时再升级到 Flink。
 
-详见[《厨房装监控》](./05-observability.md)中的指标聚合 —— 流处理本质上是对实时指标的计算引擎，和监控系统的指标采集理念一脉相承。
+### 5.2 WebSocket 实战：连接是脆弱的
 
-**流处理的核心是"把无限的事件流切成有限的窗口，在窗口里算出业务需要的洞察"。**
+实时通信选了 WebSocket，但真正用起来，老陈发现坑比想象中多。
 
----
-
-## 第五章：WebSocket 实战
-
-通信方式选了 WebSocket，但真正用起来，老陈发现坑比想象中多。
-
-第一个问题：**连接管理**。
-
-WebSocket 是长连接，一旦建立就保持。但网络不稳定时，连接会断。断了之后怎么办？
+**问题一：连接管理**
 
 ```python
-# WebSocket 连接管理 —— 心跳 + 自动重连
+# WebSocket 连接管理 —— 心跳 + 自动重连（精简版）
 class WebSocketClient:
     def __init__(self, url, order_id):
         self.url = url
         self.order_id = order_id
-        self.ws = None
         self.reconnect_attempts = 0
         self.max_reconnect = 5
-
-    def connect(self):
-        self.ws = websocket.connect(self.url)
-        self.reconnect_attempts = 0
-        # 订阅特定订单的状态变更
-        self.ws.send(json.dumps({
-            "action": "subscribe",
-            "channel": f"order:{self.order_id}"
-        }))
-        # 启动心跳（每 30 秒一次）
-        self.start_heartbeat(interval=30)
 
     def on_disconnect(self):
         # 指数退避重连：1s → 2s → 4s → 8s → 16s
@@ -348,83 +560,30 @@ class WebSocketClient:
             sleep(delay)
             self.connect()
         else:
-            # 重连失败，降级为 SSE
-            self.fallback_to_sse()
+            self.fallback_to_sse()  # WebSocket → SSE 降级
 
     def fallback_to_sse(self):
-        # WebSocket 降级为 SSE（单向推送）
         sse_client = SSEClient(f"/api/orders/{self.order_id}/events")
         sse_client.subscribe()
-
-    def fallback_to_polling(self):
-        # SSE 也失败，最终降级为轮询
-        while True:
-            status = http_get(f"/api/orders/{self.order_id}/status")
-            self.update_ui(status)
-            sleep(10)  # 每 10 秒轮询一次
 ```
 
-老陈设计了**三级降级策略**：WebSocket → SSE → 长轮询。保证在任何网络环境下，用户都能看到订单状态，只是实时程度不同。
+**三级降级策略**：WebSocket → SSE → 长轮询。保证任何网络环境下都能看到订单状态，只是实时程度不同。
 
-第二个问题：**水平扩展**。
+**问题二：水平扩展**
 
-一台服务器最多维持约 5 万个 WebSocket 连接。阿明午高峰有 3 万个在线用户，一台服务器勉强够用。但如果业务翻倍呢？多台服务器时，一个 WebSocket 连接在服务器 A 上，但订单事件可能被服务器 B 处理 —— 消息怎么送达？
+一台服务器最多维持约 5 万个 WebSocket 连接。多台服务器时，一个连接在服务器 A，但事件可能被服务器 B 处理 —— 消息怎么送达？
 
 ```text
 水平扩展的消息路由：
 
-用户 A 的 WebSocket 连接在 Server 1
-用户 B 的 WebSocket 连接在 Server 2
-
-订单 #12345 的状态变更事件产生 → 发送到 Redis Pub/Sub 或 Kafka
-  → Server 1 收到事件，检查：用户 A 在追踪订单 #12345 吗？是的 → 推送
-  → Server 2 收到事件，检查：用户 B 在追踪订单 #12345 吗？不是 → 忽略
-
-关键设计：
-  1. 每个 Server 维护本地连接表：{order_id → [ws_connection_1, ws_connection_2]}
-  2. 事件通过 Redis Pub/Sub 广播到所有 Server
-  3. 每个 Server 只推送给自己管理的、相关订单的连接
+  订单 #12345 状态变更事件 → 发送到 Redis Pub/Sub
+    → Server 1 收到事件，检查：用户 A 在追踪订单 #12345 吗？是的 → 推送
+    → Server 2 收到事件，检查：用户 B 在追踪订单 #12345 吗？不是 → 忽略
 ```
 
-```python
-# WebSocket 服务器端的房间/频道模型
-class WebSocketServer:
-    def __init__(self):
-        # 本地连接表：channel → [connections]
-        self.rooms = defaultdict(list)
+> 💡 **金句**：WebSocket 实战的核心是"连接是脆弱的，要做好心跳、重连、降级三道保险"。
 
-    def on_connect(self, ws, channel):
-        self.rooms[channel].append(ws)
-        # 同时注册到 Redis，让其他 Server 知道这个连接在这里
-        self.redis.sadd(f"ws:room:{channel}", self.server_id)
-
-    def on_disconnect(self, ws, channel):
-        self.rooms[channel].remove(ws)
-
-    def on_event(self, event):
-        # 从 Redis Pub/Sub 收到事件
-        channel = event["channel"]  # 如 "order:12345"
-        # 只推送给本地关注这个 channel 的连接
-        for ws in self.rooms.get(channel, []):
-            ws.send(json.dumps(event))
-
-    # Redis Pub/Sub 订阅所有频道的事件
-    def subscribe_to_events(self):
-        pubsub = self.redis.pubsub()
-        pubsub.subscribe("order_events")
-        for message in pubsub.listen():
-            self.on_event(json.loads(message["data"]))
-```
-
-老陈还做了一个细节优化：**连接数监控**。每个 Server 实时上报自己管理的 WebSocket 连接数到 Prometheus，运维可以看到连接在各节点上的分布是否均匀。
-
-详见[《高峰保卫战》](./04-peak-traffic-defense.md)中的弹性伸缩 —— WebSocket 是有状态服务，扩容时需要配合 Redis Pub/Sub 做消息路由，不能简单加机器。
-
-**WebSocket 实战的核心是"连接是脆弱的，要做好心跳、重连、降级三道保险"。**
-
----
-
-## 第六章：实时系统的可观测性
+### 5.3 可观测性：延迟是隐形的敌人
 
 系统上线一个月后，阿明收到一条差评："说好的实时追踪，我等了 3 分钟状态都没更新。"
 
@@ -434,13 +593,9 @@ class WebSocketServer:
 
 老陈解释："实时系统比普通系统更需要可观测性。**因为延迟是隐形的，不像报错那样明显。** 你不监控，就不知道延迟已经悄悄涨到了 3 分钟。"
 
-他设计了三个维度的可观测性：
-
-**第一维：事件延迟监控**
+**事件延迟追踪**：
 
 ```text
-事件延迟追踪（每个事件记录时间戳）：
-
   事件产生时间（t0）：10:15:03.200  — 骑手点击"已取餐"
   事件入队时间（t1）：10:15:03.450  — 写入 Kafka（延迟 250ms）
   事件消费时间（t2）：10:15:04.100  — 推送服务消费（延迟 650ms）
@@ -449,74 +604,37 @@ class WebSocketServer:
 
   异常案例：
   事件产生时间（t0）：10:30:01.000
-  事件入队时间（t1）：10:30:01.200  — 正常
   事件消费时间（t2）：10:33:00.500  — ⚠️ 延迟 3 分钟！
-  事件推送时间（t3）：10:33:01.100
-
-  根因：推送服务的消费者积压了 5000 条消息（消费者处理能力不足）
+  根因：推送服务的消费者积压了 5000 条消息
 ```
 
-老陈给每个事件加了一个 `trace_id`，串联从产生到消费的完整链路。这和[《厨房装监控》](./05-observability.md)中的分布式追踪是同一个思路 —— 只不过追踪的对象从"HTTP 请求"变成了"事件"。
+**消息队列三大核心指标**：
 
-**第二维：端到端追踪**
+| 指标 | 说明 | 告警阈值 | 餐厅类比 |
+|------|------|----------|----------|
+| 生产速率 | 生产者每秒发送的消息数 | 突增 3 倍以上告警 | 下单速度 |
+| 消费速率 | 消费者每秒处理的消息数 | 低于生产速率 80% 告警 | 做菜速度 |
+| 积压量 | 队列中未被消费的消息数 | 超过 10000 条告警 | 传菜窗口堆了多少菜 |
+| 消费延迟 | 消息从产生到被消费的时间差 | 超过 5 秒告警 | 菜放了多久没人端 |
+| 死信数量 | 进入死信队列的消息数 | 超过 100 条/分钟告警 | 退回厨房的菜 |
 
-```mermaid
-graph LR
-    A["订单服务<br/>产生事件<br/>t0"] -->|Kafka| B["推送服务<br/>消费事件<br/>t1"]
-    B -->|WebSocket| C["客户端<br/>收到事件<br/>t2"]
-    B -->|SSE 降级| D["客户端<br/>收到事件<br/>t2'"]
-    A -->|CDC| E["Debezium<br/>Binlog 捕获<br/>t0'"]
-    E -->|Kafka| F["流处理<br/>聚合计算<br/>t1'"]
-    F -->|Redis| G["大屏展示<br/>实时更新<br/>t2''"]
-    style A fill:#ff6b6b,color:#fff
-    style B fill:#ffa502,color:#fff
-    style C fill:#2ed573,color:#fff
-    style D fill:#1e90ff,color:#fff
-    style E fill:#a55eea,color:#fff
-    style F fill:#fd79a8,color:#fff
-    style G fill:#00b894,color:#fff
-```
+**消息积压的应急处理**：
 
-**第三维：背压（Backpressure）处理**
+```bash
+# 1. 快速诊断：查看队列状态
+rabbitmqctl list_queues name messages consumers consume_rate
+# 输出：inventory_deduct  500000  3  120  ← 积压严重
 
-当生产者（事件源）的速度超过消费者（推送服务）的处理能力时，消息会积压。这就是**背压问题**。
+# 2. 紧急扩容：增加消费者实例
+kubectl scale deployment inventory-consumer --replicas=20
 
-老陈设计了三种应对策略：
+# 3. 如果积压消息已过时：批量丢弃（谨慎操作！需业务确认）
+rabbitmqctl purge_queue expired_promotion_queue
 
-| 策略 | 做法 | 优点 | 缺点 | 适用场景 | 餐厅类比 |
-|------|------|------|------|----------|----------|
-| 缓冲（Buffer） | 消息暂存在队列中，消费者按自己速度处理 | 不丢消息 | 延迟增加，内存压力大 | 短暂峰值 | 菜品先放在传菜台等着 |
-| 丢弃（Drop） | 丢弃低优先级的旧消息 | 保持低延迟 | 可能丢失信息 | 高频但不重要的数据 | 过期的叫号直接跳过 |
-| 限流（Throttle） | 限制生产者的发送速度 | 系统稳定 | 上游被降速 | 可以容忍上游延迟 | 排队叫号，控制入场速度 |
-
-```python
-# 背压处理示例 —— 动态调整消费者并发数
-class AdaptiveConsumer:
-    def __init__(self, max_concurrency=10):
-        self.max_concurrency = max_concurrency
-        self.current_concurrency = 5
-        self.lag_threshold = 1000  # 积压超过 1000 条告警
-
-    def process_batch(self, messages):
-        current_lag = self.get_consumer_lag()
-
-        if current_lag > self.lag_threshold * 5:
-            # 严重积压：扩容消费者 + 告警
-            self.scale_up(target=self.max_concurrency)
-            self.alert("critical", f"事件积压 {current_lag} 条，已扩容至 {self.max_concurrency} 并发")
-
-        elif current_lag > self.lag_threshold:
-            # 轻度积压：逐步扩容
-            new_concurrency = min(self.current_concurrency + 2, self.max_concurrency)
-            self.scale_up(target=new_concurrency)
-
-        elif current_lag < self.lag_threshold // 10:
-            # 积压消除：逐步缩容，节省资源
-            new_concurrency = max(self.current_concurrency - 1, 2)
-            self.scale_down(target=new_concurrency)
-
-        # 正常消费
-        self.consume_parallel(messages, concurrency=self.current_concurrency)
+# 4. 事后复盘：为什么会积压？
+# - 消费速率不够？→ 优化消费逻辑 / 增加并行度
+# - 生产速率突增？→ 限流 / 流量预判
+# - 消费者宕机？→ 健康检查 / 自动重启
 ```
 
 老陈总结了三条监控铁律：
@@ -525,100 +643,89 @@ class AdaptiveConsumer:
 2. **消费者积压量必须告警**，积压超过阈值说明消费能力不足
 3. **WebSocket 连接数必须监控**，连接数异常暴增可能是 DDoS 或 Bug
 
-详见[《厨房装监控》](./05-observability.md)中的可观测性三大支柱 —— 日志、指标、追踪在实时系统中同样适用，只是追踪的对象从 HTTP 请求变成了事件流。
-
-**实时系统可观测性的核心是"延迟是隐形的敌人，不监控就不知道已经输了"。**
+> 💡 **金句**：实时系统的可观测性核心是"延迟是隐形的敌人，不监控就不知道已经输了"。
 
 ---
 
-## 核心总结：实时系统与事件驱动架构
+## 核心总结：从同步到异步，从消息到事件
 
 ```mermaid
 graph TD
-    A["事件产生<br/>订单/骑手/厨房状态变更"] --> B["CDC 捕获<br/>Binlog → Kafka"]
-    A --> C["应用层事件<br/>直接发送到 Kafka"]
-    B --> D["事件存储<br/>Event Store"]
-    C --> D
-    D --> E["流处理引擎<br/>窗口聚合/实时计算"]
-    D --> F["WebSocket 推送<br/>双向实时通信"]
-    D --> G["SSE 推送<br/>单向状态展示"]
-    E --> H["实时大屏<br/>厨房/运营看板"]
-    F --> I["顾客端 App<br/>订单追踪"]
-    F --> J["骑手端 App<br/>任务调度"]
-    G --> K["降级方案<br/>SSE → 轮询"]
-    E --> L["告警系统<br/>延迟/积压监控"]
-    style A fill:#ff6b6b,color:#fff
-    style D fill:#ffa502,color:#fff
+    subgraph "演进路径"
+        S["同步调用<br/>20 个服务排成一列"] -->|第一步| M["异步消息<br/>装上传菜窗口"]
+        M -->|第二步| E["事件驱动<br/>从传话到广播"]
+        E -->|第三步| ES["事件溯源 + CDC<br/>录像 + 记录员"]
+        ES -->|第四步| SP["流处理 + 实时推送<br/>窗口 + WebSocket"]
+    end
+
+    style S fill:#ff6b6b,color:#fff
+    style M fill:#ffa502,color:#fff
     style E fill:#2ed573,color:#fff
-    style F fill:#1e90ff,color:#fff
-    style G fill:#a55eea,color:#fff
-    style H fill:#fd79a8,color:#fff
-    style L fill:#00b894,color:#fff
+    style ES fill:#1e90ff,color:#fff
+    style SP fill:#a55eea,color:#fff
 ```
 
-| 章节 | 核心问题 | 餐厅类比 | 技术实现 |
+| 章节 | 核心问题 | 解决方案 | 关键技术 |
 |------|----------|----------|----------|
-| 实时通信 | 用什么方式推送？ | 电话/喇叭/对讲机 | 轮询/SSE/WebSocket |
-| 事件驱动 | 系统架构怎么设计？ | 录像 vs 快照 | EDA + Event Sourcing + CQRS |
-| CDC | 现有系统怎么接入？ | 厨房门口的记录员 | Debezium + Binlog + Kafka |
-| 流处理 | 海量事件怎么聚合？ | 窗口里的流水账 | 窗口计算 + Kafka Streams/Flink |
-| WebSocket | 长连接怎么管理？ | 对讲机的电池和信号 | 心跳/重连/降级/水平扩展 |
-| 可观测性 | 延迟怎么监控？ | 秒表计时 | 事件延迟追踪 + 背压告警 |
+| 第一章 | 服务间怎么通信？ | 异步消息 | MQ + 同步 vs 异步对比 |
+| 第二章 | 消息怎么可靠传？ | 三段式确认 + 顺序幂等 | 生产确认 + 持久化 + 手动 ACK + 分区键 |
+| 第三章 | 怎么升级为事件驱动？ | EDA + 实时通信 | 命令 vs 事件 + Saga + 4 种实时通信方式 |
+| 第四章 | 现有系统怎么接入？ | 事件溯源 + CDC | Event Store + Binlog 捕获 + Debezium |
+| 第五章 | 事件太多怎么处理？ | 流处理 + 可观测性 | 窗口计算 + WebSocket 三级降级 + 三大指标 |
 
 ### 一句心法
 
-**好的实时系统，让用户感受不到"等待"的存在 —— 不是数据传得最快，而是用户在需要的那一刻就已经知道了。**
+**让等待发生在窗口后面，让数据自己在系统中流动 —— 这既是消息队列的本质，也是事件驱动架构的归宿。**
 
 ---
 
 ## 延伸阅读
 
-- [当餐厅长出大脑](./01-ai-agent-architecture.md) —— AI Agent 的全景拆解，实时事件流可以作为 AI Agent 的感知输入源
-- [架构是"长"出来的](./02-system-architecture-evolution.md) —— 从单机到云原生的架构演进，事件驱动是架构成熟后的自然升级
-- [给产品经理的重构说明书](./03-refactoring-guide-for-pm.md) —— 从同步架构迁移到事件驱动是一次大重构，需要产品经理理解技术价值
-- [高峰保卫战](./04-peak-traffic-defense.md) —— WebSocket 连接的弹性伸缩和限流策略，与流量治理一脉相承
-- [厨房装监控](./05-observability.md) —— 可观测性的三大支柱（日志/指标/追踪）在实时系统中同样关键
-- [食安大检查](./06-security-architecture.md) —— WebSocket 连接的安全认证和加密传输，防止事件流被窃听
-- [从厨师到 CEO](./07-from-chef-to-ceo.md) —— 实时系统需要跨团队协作，事件驱动的思维方式需要全组织推广
-- [厨房质检员](./08-qa-testing-strategy.md) —— 事件驱动系统的测试策略，如何测试异步事件的正确性和顺序
-- [从接单到出餐](./09-cicd-devops.md) —— 事件驱动系统的 CI/CD 挑战，Event Schema 的变更管理
-- [菜单设计学](./10-api-design.md) —— WebSocket 的消息协议设计，和 REST API 设计同样重要
-- [学徒的困境](./11-ai-learning-paradox.md) —— AI 时代的人机协作与学习之道，当 AI 越来越强，人还要不要练基本功
-- [数据厨房](./12-data-kitchen.md) —— 事件流是数据管道的实时版本，ETL 是批处理，CDC 是流处理
-- [前厅翻修记](./13-frontend-renovation.md) —— 前端如何消费实时事件流，WebSocket 客户端的状态管理
-- [阿明的省钱经](./14-cloud-finops.md) —— WebSocket 连接和流处理的资源成本，实时系统的 FinOps
-- [差评危机](./15-incident-response.md) —— 实时系统的故障响应，事件积压和连接风暴的应急处理
-- [外卖大战](./16-performance-optimization.md) —— 实时系统的性能优化，降低端到端延迟的全链路方法
-- [传菜窗口的智慧](./17-async-messaging.md) —— 消息队列是事件驱动的基础，从异步消息到事件溯源的进阶
-- [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统的一致性问题，事件溯源和最终一致性的关系
-- [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户场景下的实时系统，需要按租户隔离 WebSocket 连接和事件流
-- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多平台架构中实时通信的统一事件总线设计
-- [懂你的菜单](./22-search-recommendation.md) —— 实时事件流驱动推荐系统的实时更新
-- [菜谱标准化之路](./23-tech-docs-knowledge.md) —— 事件驱动架构的技术文档，帮助团队理解 EDA 的设计范式
-- [仓库搬家不停业](./24-database-migration.md) —— CDC 在数据库迁移中的应用，实现零停机的数据同步
-- [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台如何支持事件驱动的编排和工作流
-- [阿明出海记](./26-globalization.md) —— 全球化场景下的实时系统挑战，跨地域的事件传播延迟
-- [厨房大换岗](./27-ai-org-transformation.md) —— AI 转型需要实时数据支撑决策，实时反馈加速组织变革
-- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业的实时需求，实时响应是 AI 产品的核心竞争力
-- [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的传感器层和学习层依赖实时数据流
-- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉的实时检测，事件驱动架构用于 AI 输出的即时校验
+> 注：原 17-async-messaging.md 已合并到本篇，所有指向 17 的旧链接已重定向至此。
+
+- [架构是"长"出来的](./02-system-architecture-evolution.md) —— 异步消息架构的前提是系统已经从单体演进到微服务
+- [当餐厅长出大脑](./01-ai-agent-architecture.md) —— AI Agent 的工具调用本质上也是异步消息模式，Multi-Agent 协同需要消息总线
+- [高峰保卫战](./04-peak-traffic-defense.md) —— 消息队列削峰是流量治理的五道防线之一
+- [厨房装监控](./05-observability.md) —— 消息队列的可观测性需要融入整体的日志、指标、追踪体系
+- [食安大检查](./06-security-architecture.md) —— 消息队列中的消息也需要加密和审计
+- [给产品经理的重构说明书](./03-refactoring-guide-for-pm.md) —— 从同步调用重构为异步消息，是典型的架构级重构
+- [从厨师到 CEO](./07-from-chef-to-ceo.md) —— 消息驱动架构需要跨团队协作，平台工程（IDP）可提供统一基础设施
+- [厨房质检员](./08-qa-testing-strategy.md) —— 异步消息的测试比同步调用更复杂，需要契约测试
+- [从接单到出餐](./09-cicd-devops.md) —— 消息队列的配置也应纳入 GitOps 管理
+- [菜单设计学](./10-api-design.md) —— API 设计中的幂等性，与消息幂等消费一脉相承
+- [数据厨房](./12-data-kitchen.md) —— Kafka 是数据管道的核心组件
+- [差评危机](./15-incident-response.md) —— 消息积压是常见故障场景
+- [外卖大战](./16-performance-optimization.md) —— 消息队列的性能优化：批量发送、压缩、分区策略
+- [十家店的烦恼](./18-distributed-puzzles.md) —— Saga 协调器的分布式事务实现细节
+- [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户资源隔离需要消息队列做租户级别限流
+- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— BFF 层通过消息队列与后端服务异步通信
+- [懂你的菜单](./22-search-recommendation.md) —— 用户行为日志通过 Kafka 实时采集
+- [菜谱标准化之路](./07-from-chef-to-ceo.md) —— 消息队列的架构决策应记录为 ADR
+- [仓库搬家不停业](./24-database-migration.md) —— CDC 在数据迁移中的应用
+- [厨房大换岗](./27-ai-org-transformation.md) —— AI 转型中的消息传递模式变化
+- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业中的异步架构选择
+- [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 中的异步消息传递
+- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 输出的异步校验
 
 ---
 
 ## 结语
 
-阿明的实时追踪故事，揭示了每一个面向用户的系统都会遇到的转折点：**当用户开始问"现在怎么样了"，你的系统就必须从"你问我答"进化到"有事我告诉你"。**
+阿明的"厨房实况直播"，本质上是在解决一个古老的问题：**当多个角色需要协作时，如何让他们高效地沟通而不用互相等待？**
 
-答案是六层架构：选对实时通信方式（轮询/SSE/WebSocket），用事件驱动重塑系统思维，用 CDC 无侵入地捕获数据变更，用流处理从海量事件中提取实时洞察，用 WebSocket 实战解决连接管理和水平扩展的工程难题，用可观测性确保延迟这个隐形敌人无处可藏。
+从同步调用到异步消息，从消息队列到事件驱动，从 Kafka 的简单 Topic 到流处理的窗口计算 —— 这不是技术的升级，而是**思维方式的转变**。阿明站在传菜窗口前，看着一盘盘菜有序地端出厨房，顾客手机上的追踪画面实时刷新，他笑了笑：
 
-下次当你面对实时性需求时，不妨问自己：
+> "原来好的架构，就像一个好的传菜窗口，再加一台好用的对讲机 —— 你感觉不到它们的存在，但一切都在顺畅地运转。"
 
-- 你的系统里有多少数据是靠"轮询"获取的？如果改成推送，服务器压力能降多少？
-- 你的架构是命令式的还是事件式的？服务之间是"互相指挥"还是"各自广播"？
-- 你知道你的系统里，一个数据变更从写入数据库到用户看到，中间延迟了多少吗？
-- 你的 WebSocket 连接断了之后，有自动重连和降级策略吗？还是用户只能刷新页面？
-- 你有事件积压的监控告警吗？当消费者处理不过来时，系统会怎么处理？
+下次当你设计微服务通信时，不妨问自己：
 
-> 好的实时系统，不是"快"，而是"恰到好处"—— 在用户需要知道的那一刻，把正确的信息推到他面前。
+- 这个调用真的需要同步等待吗？还是可以用消息异步解耦？
+- 如果下游服务挂了，上游会怎样？有没有级联故障的风险？
+- 你的系统是"命令驱动"还是"事件驱动"？服务之间是"互相指挥"还是"各自广播"？
+- 你的数据库变更能不能变成事件流？CDC 试过吗？
+- 你的实时推送有三级降级吗？延迟有监控吗？
+- 消息积压了 10 万条，你有应急预案吗？
+
+> 好的异步架构，不是让服务"不说话"，而是让它们"说对的话、在对的时间、用对的方式"。
 
 ← [返回系列导读](./index.md)

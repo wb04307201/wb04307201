@@ -198,7 +198,7 @@ Saga 的补偿机制就像多米诺骨牌的反向推倒：如果一笔跨城市
 |----------|----------|-----------|
 | 订单 / 支付 | MySQL | 强一致、事务保障 |
 | 菜品详情 | MongoDB | 灵活结构、读写高效（参见《从厨师到 CEO》技术雷达 —— 该选型属于"特殊场景"例外） |
-| 用户行为日志 | Kafka + ClickHouse | Kafka 做高吞吐写入（也是[消息队列削峰](./17-async-messaging.md)的标配），ClickHouse 做实时分析 |
+| 用户行为日志 | Kafka + ClickHouse | Kafka 做高吞吐写入（也是[消息队列削峰](./20-realtime-eventdriven.md)的标配），ClickHouse 做实时分析 |
 | 附近推荐 | Elasticsearch（内置 Geo 查询） | 内置地理位置查询 + 全文检索 |
 | 秒杀库存 | Redis + Lua 脚本 | 内存操作、原子扣减 |
 | 菜品图片 | OSS + CDN | 静态资源加速、弹性扩容 |
@@ -607,13 +607,13 @@ graph TD
 - [阿明的省钱经](./14-cloud-finops.md) —— 云成本优化与 FinOps，120 万月账单如何降到 68 万
 - [差评危机](./15-incident-response.md) —— 故障复盘与应急响应，从手忙脚乱到 10 分钟止血的方法论
 - [外卖大战](./16-performance-optimization.md) —— 系统性能优化，3 秒生死线下的全链路优化实战
-- [传菜窗口的智慧](./17-async-messaging.md) —— 消息队列是架构从单体走向分布式的关键一步
+- [传菜窗口的智慧](./20-realtime-eventdriven.md) —— 消息队列是架构从单体走向分布式的关键一步
 - [十家店的烦恼](./18-distributed-puzzles.md) —— 架构演进到分布式后，CAP 定理和一致性问题是必须跨过的坎
 - [阿明的加盟帝国](./19-saas-multitenant.md) —— 架构演进的下一步：从自用系统到 SaaS 平台
 - [厨房实况直播](./20-realtime-eventdriven.md) —— 事件驱动架构是架构演进的新方向，从请求-响应到事件流
 - [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 架构演进到多端，统一网关和适配层成为新的架构挑战
 - [懂你的菜单](./22-search-recommendation.md) —— 搜索推荐系统是架构成熟后的增值层，从业务系统到智能系统
-- [菜谱标准化之路](./23-tech-docs-knowledge.md) —— 技术文档和知识工程伴随架构演进，记录每次架构决策的 ADR
+- [菜谱标准化之路](./07-from-chef-to-ceo.md) —— 技术文档和知识工程伴随架构演进，记录每次架构决策的 ADR
 - [仓库搬家不停业](./24-database-migration.md) —— 架构演进中的数据库迁移策略，从单机到分库分表的搬迁之路
 - [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台是架构足够成熟后才能沉淀的中台能力
 - [阿明出海记](./26-globalization.md) —— 架构演进的终极挑战：国际化和多区域部署

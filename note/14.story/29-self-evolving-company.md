@@ -486,13 +486,13 @@ graph TD
 - [阿明的省钱经](./14-cloud-finops.md) —— 烧 Token 也要算账，Token 成本优化是 Agent Loop 可持续运转的前提
 - [差评危机](./15-incident-response.md) —— "夜班管家"的异常检测机制，和故障应急中的监控告警体系相通
 - [外卖大战](./16-performance-optimization.md) —— Agent 的性能调优也需要"3 秒生死线"的思维，延迟影响进化速度
-- [传菜窗口的智慧](./17-async-messaging.md) —— Agent 与工具之间的异步通信，消息队列是 Loop 运转的基础设施
+- [传菜窗口的智慧](./20-realtime-eventdriven.md) —— Agent 与工具之间的异步通信，消息队列是 Loop 运转的基础设施
 - [十家店的烦恼](./18-distributed-puzzles.md) —— 多门店的 Agent Loop 如何保持一致性，分布式系统的经典问题
 - [阿明的加盟帝国](./19-saas-multitenant.md) —— 一套 Agent Loop 服务多家加盟商的多租户设计
 - [厨房实况直播](./20-realtime-eventdriven.md) —— 传感器层的实时数据采集，事件驱动架构让 Agent 能即时感知
 - [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多渠道的传感器数据如何统一处理，多端架构的延伸
 - [懂你的菜单](./22-search-recommendation.md) —— Agent 的学习机制如何利用用户偏好数据持续优化
-- [菜谱标准化之路](./23-tech-docs-knowledge.md) —— "活手册"的技术实现基础，知识管理的核心方法论
+- [菜谱标准化之路](./07-from-chef-to-ceo.md) —— "活手册"的技术实现基础，知识管理的核心方法论
 - [仓库搬家不停业](./24-database-migration.md) —— Agent 知识库的版本迁移和在线更新，不停服进化
 - [预制菜还是现炒](./25-lowcode-platform.md) —— Agent Loop 的工作流编排，是低代码思维在组织层面的应用
 - [阿明出海记](./26-globalization.md) —— Agent Loop 的全球化部署，多区域多文化的自适应挑战

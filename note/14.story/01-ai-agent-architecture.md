@@ -2,7 +2,7 @@
 
 > 从阿明智慧厨房拆解 AI Agent 的 7 个核心模块与工程闭环
 
-> **系列定位**：本篇是「阿明餐厅」系列的**续集**。在前传[《架构是"长"出来的》](./02-system-architecture-evolution.md)中，阿明用十年将小面馆做成了全国餐饮平台。这一篇，他要把平台接入 AI Agent，让系统真正"会思考"。
+> **系列定位**：本篇是「阿明餐厅」系列的**续集一**。在前传[《架构是"长"出来的》](./02-system-architecture-evolution.md)中，阿明用十年将小面馆做成了全国餐饮平台。这一篇，他要把平台接入 AI Agent，让系统真正"会思考"。
 
 ---
 
@@ -293,13 +293,13 @@ graph TD
 - [阿明的省钱经](./14-cloud-finops.md) —— 云成本优化与 FinOps，120 万月账单如何降到 68 万
 - [差评危机](./15-incident-response.md) —— 故障复盘与应急响应，从手忙脚乱到 10 分钟止血的方法论
 - [外卖大战](./16-performance-optimization.md) —— 系统性能优化，3 秒生死线下的全链路优化实战
-- [传菜窗口的智慧](./17-async-messaging.md) —— 消息队列是 Agent 与工具之间异步通信的基础设施，解耦 Agent 的"思考"和"执行"
+- [传菜窗口的智慧](./20-realtime-eventdriven.md) —— 消息队列是 Agent 与工具之间异步通信的基础设施，解耦 Agent 的"思考"和"执行"
 - [十家店的烦恼](./18-distributed-puzzles.md) —— Multi-Agent 协作中的一致性问题，多个 Agent 如何达成"同一个事实"
 - [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户架构是 Agent 服务多个业务方的基础，一套 Agent 系统服务多家餐厅
 - [厨房实况直播](./20-realtime-eventdriven.md) —— 事件驱动架构让 Agent 能实时感知环境变化并做出响应
 - [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多端架构是 Agent 感知层的延伸，不同渠道的输入需要统一处理
 - [懂你的菜单](./22-search-recommendation.md) —— 搜索与推荐是 Agent "懂用户"能力的典型应用场景
-- [菜谱标准化之路](./23-tech-docs-knowledge.md) —— 知识工程是 Agent 记忆层和推理能力的知识基础
+- [菜谱标准化之路](./07-from-chef-to-ceo.md) —— 知识工程是 Agent 记忆层和推理能力的知识基础
 - [仓库搬家不停业](./24-database-migration.md) —— Agent 系统的模型更新和知识库迁移，在线升级不停服
 - [预制菜还是现炒](./25-lowcode-platform.md) —— Agent 的工作流编排 vs 手写 Pipeline，低代码式的 Agent 配置
 - [阿明出海记](./26-globalization.md) —— Agent 的全球化落地，多语言多文化的适配挑战
