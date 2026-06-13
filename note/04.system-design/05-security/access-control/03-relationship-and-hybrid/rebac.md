@@ -150,4 +150,4 @@ PermissionResponse resp = client.check(
 
 - 族内：[混合模型](hybrid.md) — ReBAC 与 RBAC/ABAC 的组合用法
 - 跨族：[RBAC](../02-role-and-attribute/rbac.md) / [ABAC](../02-role-and-attribute/abac.md)
-- 05-security 主题：[OAuth2.0 与 OIDC](../oauth2-oidc/README.md) — OAuth2 scope 是简化版 ReBAC
+- 05-security 主题：[OAuth2.0 与 OIDC](../../oauth2-oidc/README.md) — OAuth2 scope 是简化版 ReBAC

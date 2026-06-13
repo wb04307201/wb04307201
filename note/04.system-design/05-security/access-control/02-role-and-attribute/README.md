@@ -40,5 +40,5 @@ DAC ──→ RBAC ──→ ABAC ──→ ReBAC
 - [传统族](../01-traditional/README.md) — RBAC/ABAC 的"前传"
 - [关系与混合族](../03-relationship-and-hybrid/README.md) — 进一步演进
 - [选型总章](../README.md#3-选型决策树) — 何时该选 RBAC/ABAC
-- 05-security：[OAuth2.0 与 OIDC](../oauth2-oidc/README.md) — OAuth2 scope 是简化版 RBAC
-- 05-security：[JWT 存储安全](../jwt-security/README.md) — Token 中的 role / claim
+- 05-security：[OAuth2.0 与 OIDC](../../oauth2-oidc/README.md) — OAuth2 scope 是简化版 RBAC
+- 05-security：[JWT 存储安全](../../jwt-security/README.md) — Token 中的 role / claim

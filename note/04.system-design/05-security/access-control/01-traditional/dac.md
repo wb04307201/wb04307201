@@ -120,5 +120,5 @@ public class AclService {
 ## 相关章节
 
 - 族内：[MAC](mac.md) — DAC 的"反命题"，用密级标签 + 系统强制取代所有者自主
-- 05-security 主题：[OAuth2.0 与 OIDC](../oauth2-oidc/README.md) — DAC 在 OAuth2 中体现为 resource owner 授权
-- 05-security 主题：[API 安全](../api-security/README.md) — 接口层 DAC 校验示例
+- 05-security 主题：[OAuth2.0 与 OIDC](../../oauth2-oidc/README.md) — DAC 在 OAuth2 中体现为 resource owner 授权
+- 05-security 主题：[API 安全](../../api-security/README.md) — 接口层 DAC 校验示例
