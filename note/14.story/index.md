@@ -9,79 +9,116 @@
 
 ## 系列全景
 
+> 横向时间轴 + 主题色块。**蓝色** = 基础设施 · **绿色** = 工程质量 · **黄色** = 系统进阶 · **红色** = 组织管理 · **灰色** = 番外专题 · **紫色** = AI 时代
+
 ```mermaid
-graph TB
-    subgraph prequel["前传"]
-        A["架构演进 · 单机→云原生"]
-    end
+graph LR
+  subgraph pre["前传"]
+    A["02 架构演进"]
+  end
+  subgraph s1["续集一"]
+    B["01 AI Agent"]
+  end
+  subgraph m1["正传 1-6 基础设施"]
+    P1["04 流量"]
+    P2["05 可观测"]
+    P3["06 安全"]
+    P4["08 测试"]
+    P5["09 CI/CD"]
+    P6["10 API"]
+  end
+  subgraph m2["正传 7-10 工程质量"]
+    P7["12 数据"]
+    P8["13 前端"]
+    P9["15 故障"]
+    P10["16 性能"]
+  end
+  subgraph m3["正传 11-14 系统进阶"]
+    P11["20 异步+事件"]
+    P12["18 分布式"]
+    P13["21 多端"]
+    P14["24 数据库"]
+  end
+  subgraph fi["终章"]
+    I["07 从厨师到 CEO"]
+  end
+  subgraph ex["番外 1-6"]
+    E1["03 重构"]
+    E2["14 云成本"]
+    E3["19 SaaS"]
+    E4["22 搜索"]
+    E5["25 低代码"]
+    E6["26 国际化"]
+  end
+  subgraph ai["续集 2-12 AI 时代"]
+    H1["11 学徒"]
+    H2["27 组织"]
+    H3["28 创业"]
+    H4["29 自进化"]
+    H5["30 信任"]
+    H6["31 认知债"]
+    H7["32 Harness"]
+    H8["33 致命"]
+    H9["34 评测"]
+    H10["35 协议"]
+    H11["36 Token"]
+  end
 
-    subgraph main["正传 · 14 篇"]
-        direction TB
-        subgraph infra["基础设施"]
-            direction LR
-            B1["流量治理"]
-            B2["可观测性"]
-            B3["安全架构"]
-            B4["性能优化"]
-        end
-        subgraph eng["工程质量"]
-            direction LR
-            C1["测试策略"]
-            C2["CI/CD"]
-            C3["API 设计"]
-            C4["数据架构"]
-            C5["前端工程化"]
-        end
-        subgraph adv["系统进阶"]
-            direction LR
-            D1["异步消息<br/>+ 事件驱动"]
-            D2["分布式难题"]
-            D3["多端架构"]
-            D4["数据库迁移"]
-        end
-    end
+  A --> B
+  B --> P1
+  P1 --> P2 --> P3 --> P4 --> P5 --> P6
+  P6 --> P7 --> P8 --> P9 --> P10
+  P10 --> P11 --> P12 --> P13 --> P14
+  P14 --> I
+  I --> E1
+  E1 --> E2 --> E3 --> E4 --> E5 --> E6
+  E6 --> H1
+  H1 --> H2 --> H3 --> H4 --> H5 --> H6
+  H6 --> H7 --> H8 --> H9 --> H10 --> H11
 
-    subgraph sequel["续集 · AI 十二部曲"]
-        direction TB
-        H1["Agent 架构"] --> H2["AI 学习"]
-        H2 --> H3["组织转型"]
-        H3 --> H4["AI 创业"]
-        H4 --> H5["自进化组织"]
-        H5 --> H6["信任校准"]
-        H6 --> H7["Codebase<br/>认知债"]
-        H7 --> H8["Agent<br/>Harness"]
-        H8 --> H9["致命<br/>三件套"]
-        H9 --> H10["AI<br/>评测"]
-        H10 --> H11["MCP/A2A<br/>协议"]
-        H11 --> H12["Token<br/>经济学"]
-    end
+  %% 番外虚线引用到相关正传
+  E1 -.-> A
+  E2 -.-> P11
+  E3 -.-> P12
+  E4 -.-> P7
+  E5 -.-> I
+  E6 -.-> I
 
-    subgraph finale["终章"]
-        I1["组织与知识 · 5人→500人"]
-    end
+  %% 主题色
+  classDef blue fill:#e3f2fd,stroke:#1976d2,color:#000
+  classDef green fill:#e8f5e9,stroke:#388e3c,color:#000
+  classDef yellow fill:#fff8e1,stroke:#f57c00,color:#000
+  classDef red fill:#ffebee,stroke:#c62828,color:#000
+  classDef gray fill:#f5f5f5,stroke:#616161,color:#000
+  classDef purple fill:#f3e5f5,stroke:#7b1fa2,color:#000
 
-    subgraph extra["番外 · 6 篇"]
-        direction LR
-        J1["重构决策"]
-        J2["云成本"]
-        J3["多租户 SaaS"]
-        J4["搜索推荐"]
-        J6["低代码"]
-        J7["国际化"]
-    end
-
-    A --> infra
-    A --> eng
-    A --> adv
-    adv --> sequel
-    sequel --> I1
-    J1 -.-> A
-    J2 -.-> A
-    J3 -.-> A
-    J4 -.-> A
-    J6 -.-> A
-    J7 -.-> A
+  class A,P1,P2,P3,P4,P5,P6 blue
+  class P7,P8,P9,P10 green
+  class P11,P12,P13,P14 yellow
+  class I red
+  class E1,E2,E3,E4,E5,E6 gray
+  class B,H1,H2,H3,H4,H5,H6,H7,H8,H9,H10,H11 purple
 ```
+
+### 图例说明
+
+| 颜色 | 主题 | 文章 |
+|------|------|------|
+| 🔵 蓝 | 基础设施 | 02 前传、01 续集一、04 流量、05 可观测、06 安全、08 测试、09 CI/CD、10 API |
+| 🟢 绿 | 工程质量 | 12 数据、13 前端、15 故障、16 性能 |
+| 🟡 黄 | 系统进阶 | 20 异步+事件、18 分布式、21 多端、24 数据库 |
+| 🔴 红 | 组织管理 | 07 终章（从厨师到 CEO）|
+| ⚪ 灰 | 番外专题 | 03 重构、14 云成本、19 SaaS、22 搜索、25 低代码、26 国际化 |
+| 🟣 紫 | AI 时代 | 11 学徒、27 组织、28 创业、29 自进化、30 信任、31 认知债、32 Harness、33 致命、34 评测、35 协议、36 Token |
+
+### 推荐 4 条主路径
+
+| 路径 | 顺序 | 适合 |
+|------|------|------|
+| **传统工程主线** | 前传 → 正传 1-14 → 终章 → 番外 | 后端 / SRE / 架构师 |
+| **AI 时代主线** | 续集一 → 续集二-十二 | AI 工程师 / CTO |
+| **成熟度主线（L1→L7）** | 前传 → 正传 1 → 正传 6 → 正传 11 → 番外 3 → 正传 13 → 正传 14 | 想知道"我公司在哪一级"的人 |
+| **角色路径** | 见下方"推荐阅读路线"表 | 13 类角色 |
 
 ---
 
