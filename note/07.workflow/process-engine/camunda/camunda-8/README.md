@@ -1,7 +1,7 @@
 # Camunda 8
 
 > 最后更新: 2026-06-14
-> ⬅️ [返回 07 工作流](../../../README.md) | [流程引擎](../../README.md) | [Camunda 7](../camunda-7/README.md) | [Zeebe](zeebe/README.md) | [AI + BPMN 融合](../../../ai-workflow/bpmn-ai-integration.md)
+> ⬅️ [返回 07 工作流](../../../README.md) | [流程引擎](../../README.md) | [Camunda 7](../camunda-7/README.md) | [Zeebe](zeebe/README.md) | [事件驱动](../../../apache-eventmesh/README.md)
 
 ## 🎯 一句话定位
 
@@ -163,7 +163,7 @@ public void handle(final JobClient client, final ActivatedJob job) {
 2. **AI Agent Sub-process 是不是 LangGraph 的 BPMN 翻版？** 形态相似（都是图状编排），但 Camunda 强调**确定性骨架 + 可审计 + 合规**；LangGraph 强调**代码灵活性 + Python 原生**。生产落地用 Camunda 8.5+，原型探索用 LangGraph。
 3. **社区版 vs 企业版怎么选？** 商业产品的核心价值在 Operate（运维面板）+ Tasklist（人工待办）+ Optimize（流程分析）。如果只跑引擎 + 自研 UI，社区版够用。
 4. **Zeebe 的 Raft 复制为什么不用 Kafka？** Zeebe 早期版本用过 Kafka 作为日志后端，但 Raft 共识 + 内置日志的耦合度更高、延迟更低；Kafka 适合跨系统消息总线，Zeebe 适合单工作流引擎内部。
-5. **Camunda 8 + Dify 怎么组合？** 详见 [AI + BPMN 融合](../ai-workflow/bpmn-ai-integration.md)——BPMN 管确定性骨架，Dify 管 LLM 推理节点，互为补充。
+5. **Camunda 8 + 自研 LLM 怎么集成？** 两种方式：① Camunda 8.5+ 用 AI Agent Sub-process + fromAi() FEEL 表达式（见 [Camunda 8](README.md) §三）；② 在 Zeebe Job Worker 中包装 LLM 客户端（见 [Zeebe](zeebe/README.md) §🤔 思考）。BPMN 管确定性骨架，LLM 管推理节点，互为补充。
 
 ---
 
@@ -174,4 +174,4 @@ public void handle(final JobClient client, final ActivatedJob job) {
 - [流程引擎](../../README.md) — Camunda 8 在主流引擎中的定位
 - [Camunda 7 实战](../camunda-7/README.md) — 上一代引擎的 SpringBoot 集成
 - [Zeebe](zeebe/README.md) — Camunda 8 内核引擎详解
-- [AI + BPMN 融合](../../../ai-workflow/bpmn-ai-integration.md) — Camunda 8.5+ AI Agent 集成模式深度
+- [事件驱动与 Serverless Workflow](../../../apache-eventmesh/README.md) — 事件驱动作为工作流的神经系统

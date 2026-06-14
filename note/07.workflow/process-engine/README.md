@@ -99,7 +99,7 @@ Q1: 业务规则是否需要强治理/SOX/HIPAA 合规？
 └── 否 → 继续
 
 Q2: 是否需要 LLM/Agent 决策？
-├── 是 → Camunda 8（AI Agent Sub-process）→ [05 AI 工作流](../ai-workflow/bpmn-ai-integration.md)
+├── 是 → Camunda 8（8.5+ AI Agent Sub-process）+ 自研 Zeebe AI Worker 包装 LLM
 └── 否 → 继续
 
 Q3: 是否需要云原生 / 高吞吐 / 水平扩展？
@@ -134,7 +134,7 @@ Q5: 国产化 / 信创要求？
 1. **为什么 Camunda 8 要重写 Zeebe 而不是演进 Camunda 7？** 7 依赖关系型 DB + 嵌入式架构，扩展性受限；Zeebe 用 Raft + 追加日志 + ES 解决水平扩展。
 2. **Flowable vs Camunda 怎么选？** 核心差异在商业策略——Camunda 强在企业版 + Optimize 分析；Flowable 强在 CMMN 案例管理 + 商业版（Flowable Work）。
 3. **BPMN 引擎能否直接编排微服务？** 见 [03 编排](../workflow-and-microservice-orchestration/README.md)——传统 BPMN 适合"人 + 系统"长流程；微服务编排用 Zeebe/Conductor/Cadence 更合适。
-4. **AI 时代还需要 BPMN 引擎吗？** 仍然需要——BPMN 提供**确定性、合规、可审计**的骨架，AI Agent 作为节点嵌入。见 [AI + BPMN 融合](../ai-workflow/bpmn-ai-integration.md)。
+4. **AI 时代还需要 BPMN 引擎吗？** 仍然需要——BPMN 提供**确定性、合规、可审计**的骨架；如需 AI 节点，可在 Camunda 8.5+ 中用 AI Agent Sub-process（[Camunda 8](process-engine/camunda/camunda-8/README.md)），或在 Zeebe Job Worker 中包装自研 LLM 调用（[Zeebe](process-engine/camunda/camunda-8/zeebe/README.md)）。
 
 ---
 
@@ -145,4 +145,4 @@ Q5: 国产化 / 信创要求？
 - [Camunda 7 实战](process-engine/camunda/camunda-7/README.md) — SpringBoot 集成 Camunda 7 全流程
 - [Camunda 8 / Zeebe](process-engine/camunda/camunda-8/README.md) — 云原生分布式引擎 + AI Agent Sub-process
 - [工作流引擎与微服务编排](workflow-and-microservice-orchestration/README.md) — 流程引擎在微服务场景的演化
-- [AI + BPMN 融合](ai-workflow/bpmn-ai-integration.md) — 2025-2026 LLM-native 集成模式
+- [事件驱动与 Serverless Workflow](../apache-eventmesh/README.md) — 事件驱动作为工作流的神经系统
