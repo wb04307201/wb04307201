@@ -1804,7 +1804,29 @@ RBAC/API安全
 
 如果该行前后有空行，也要一并清理（保持 README.md 的"## 其他"段落整洁）。
 
-- [ ] **Step 5.6：验证 3 处引用方已更新**
+- [ ] **Step 5.5b：修复 4 个 05-security 兄弟主题中的 `../rbac-abac/README.md` 死链**
+
+> 来源：Task 5 code review（C1）发现 api-security / jwt-security / oauth2-oidc / owasp-top10 这 4 个文件
+> 仍然引用 `../rbac-abac/README.md`，Task 6 一旦删除 `05-security/rbac-abac/` 这 4 处就会成为死链。
+> 该修复本属于"邻居主题"改动（spec §11 边界），但属于导航更新范畴，故纳入 Task 5。
+
+读取这 4 个文件，把它们中的 `../rbac-abac/README.md` 链接统一改为 `../access-control/02-role-and-attribute/README.md`
+（族索引页，提及 RBAC/ABAC，对应原链接的"权限模型 RBAC / ABAC"语义）：
+
+- `note/04.system-design/05-security/api-security/README.md:582`
+- `note/04.system-design/05-security/jwt-security/README.md:297`
+- `note/04.system-design/05-security/oauth2-oidc/README.md:479`
+- `note/04.system-design/05-security/owasp-top10/README.md:56`
+
+注意：**只改链接目标，不改链接文字**（保持 `[权限模型 RBAC / ABAC](...)` 的可读性）。
+这些文件中若有其他对 `rbac-abac` 主题的纯文字描述（非链接），保留不动。
+
+- [ ] **Step 5.5c：把上述 4 个文件改动合并到 Task 5 的同一个 commit（`7a6e285`）中**
+
+> 用 `git commit --amend` 重新提交，确保 Task 5 落地后，整仓已经没有 `rbac-abac` 引用
+> （除 `rbac-abac/README.md` 自身之外），Task 6 删除时无残留。
+
+- [ ] **Step 5.6：验证 3 处引用方已更新（扩展为全仓 grep）**
 
 Run:
 ```bash
@@ -1819,6 +1841,10 @@ echo "=== 05-security 访问控制 链接 ==="
 grep -n 'access-control' note/04.system-design/05-security/README.md
 echo "=== note/README 访问控制 链接 ==="
 grep -n 'access-control' note/README.md
+echo "=== 全仓 rbac-abac 引用（应只剩 5-security/rbac-abac/README.md 自身）==="
+grep -rn 'rbac-abac' --include='*.md' note/ | grep -v 'note/04.system-design/05-security/rbac-abac/README.md' || echo "✓ 仅剩 rbac-abac/README.md 自身"
+echo "=== 全仓 09.other/permission 引用（应为空，因为 Task 6 后该目录会被删）==="
+grep -rn '09.other/permission' --include='*.md' note/ | grep -v 'note/09.other/permission/' || echo "✓ 仅剩 09.other/permission/ 内部"
 ```
 
 Expected:
