@@ -1,5 +1,7 @@
 # Spring Statemachine 状态机
 
+> 最后更新: 2026-06-14
+
 **Spring Statemachine 是一个基于 Spring 框架的状态机实现，用于简化复杂状态转换逻辑的开发，适用于订单管理、工作流引擎、设备控制等需要严格状态管理的场景。**以下是其核心特性与实现方式的详细解析：
 
 ## 一、核心概念
@@ -172,3 +174,127 @@ transitions.withExternal()
 - **与 Spring 生态无缝集成**：利用 Spring 的依赖注入、AOP 等特性简化开发。
 
 **推荐场景**：需要严格状态管理、复杂业务逻辑或高可维护性的 Spring 应用。对于简单状态转换，可评估是否需要引入额外框架。
+
+## 七、持久化与分布式
+
+单机 `StateMachine` 实例只活在内存中——JVM 重启、水平扩容、客户端重连后状态全部丢失。Spring Statemachine 提供 `StateMachinePersister<S, E, T>` 接口把状态写入外部存储，配合 `StateMachineService` 让多实例共享同一份"逻辑实例"。
+
+### 1. StateMachinePersister 接口
+
+```java
+public interface StateMachinePersister<S, E, T> {
+    void write(StateMachine<S, E> stateMachine, T context) throws Exception;
+    StateMachine<S, E> read(T context) throws Exception;
+}
+```
+
+`T` 是 context（如业务单号 `String orderId`），由用户自定义序列化与反序列化逻辑。
+
+### 2. RedisStateMachinePersister
+
+```xml
+<dependency>
+    <groupId>org.springframework.statemachine</groupId>
+    <artifactId>spring-statemachine-redis</artifactId>
+    <version>3.2.0</version>
+</dependency>
+```
+
+```java
+@Bean
+public RedisStateMachinePersister<States, Events> redisPersister(
+        RedisConnectionFactory connectionFactory) {
+    // DefaultStateMachineSerializers 提供 String/byte[] 实现
+    RedisStateMachineContextRepository<States, Events> repository =
+            new RedisStateMachineContextRepository<>(connectionFactory);
+    return new RedisStateMachinePersister<>(repository);
+}
+```
+
+使用方式：
+
+```java
+public void processEvent(String orderId, Events event) {
+    StateMachine<States, Events> sm = stateMachineService.acquireStateMachine(orderId);
+    sm.stop();
+    persister.read(sm, orderId);                  // 从 Redis 恢复
+    sm.start();
+    sm.sendEvent(event);
+    persister.write(sm, orderId);                 // 写回 Redis
+    stateMachineService.releaseStateMachine(orderId);
+}
+```
+
+### 3. JdbcStateMachinePersister
+
+适合不允许 Redis 的企业内网/金融场景：
+
+```java
+@Bean
+public JdbcStateMachinePersister<States, Events> jdbcPersister(DataSource dataSource) {
+    // StateMachineSerializer<S,E>：把状态枚举列表与当前 state 序列化为字节
+    DefaultStateMachineSerializers<States, Events> serializers =
+            new DefaultStateMachineSerializers<>();
+    StateMachineSerializer<States, Events> serializer =
+            new DefaultStateMachineSerializer<>(serializers.getDefaultSerializer());
+
+    JdbcStateMachineContextRepository repository =
+            new JdbcStateMachineContextRepository(dataSource);
+
+    return new JdbcStateMachinePersister<>(serializer, repository);
+}
+```
+
+需提前初始化表结构（官方 schema 脚本）：
+
+```sql
+CREATE TABLE state_machine_context (
+    machine_id VARCHAR(255) PRIMARY KEY,
+    state      LONGBLOB       NOT NULL
+);
+```
+
+### 4. StateMachineService 跨实例查询
+
+`StateMachineService` 把"逻辑状态机 ID"（如 `orderId`）映射到底层 `StateMachineFactory` 创建的实例：
+
+```java
+@Bean
+public StateMachineService<States, Events> stateMachineService(
+        StateMachineFactory<States, Events> factory,
+        StateMachinePersister<States, Events, String> persister) {
+    return new DefaultStateMachineService<>(factory, persister);
+}
+```
+
+跨实例场景：实例 A 接受 `create` 事件后写入持久层；实例 B 收到 `approve` 事件时通过 `acquireStateMachine(orderId)` 拿到同一份状态上下文继续流转。
+
+### 5. 实战示例：审批流状态恢复
+
+```java
+@Service
+@RequiredArgsConstructor
+public class ApprovalService {
+
+    private final StateMachineService<States, Events> service;
+    private final StateMachinePersister<States, Events, String> persister;
+
+    public void approve(String approvalId, String operator) {
+        StateMachine<States, Events> sm = service.acquireStateMachine(approvalId);
+        sm.getExtendedState().getVariables().put("operator", operator);
+
+        Message<Events> msg = MessageBuilder.withPayload(Events.APPROVE)
+                .setHeader("approvalId", approvalId).build();
+        sm.sendEvent(msg);
+
+        // 关键：每次状态变更后立即持久化
+        persister.write(sm, approvalId);
+        service.releaseStateMachine(approvalId);
+    }
+}
+```
+
+**关键点**：
+- `write` 必须在每次 `sendEvent` 之后立刻调用，不能只调用 `stop`。
+- 若状态机进入 `end` 状态，应从持久层删除记录（`service.releaseStateMachine` 仅释放内存，不清理存储）。
+- 高并发下同一 `machineId` 加分布式锁避免竞态。
