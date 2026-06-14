@@ -1,6 +1,6 @@
 # 06 集成组件
 
-> 最后更新: 2026-06-09
+> 最后更新: 2026-06-14
 > ⬅️ [返回 Spring 顶层](../README.md)
 
 ---
@@ -17,7 +17,8 @@
 |:----:|:----|:---------|:--------:|
 | **Validation 校验** | [validation/](validation/) | Controller/Service 参数校验 | 25 min |
 | ├─ 注解与使用 | [annotations-and-usage.md](validation/annotations-and-usage.md) | JSR-303/380 注解、Hibernate Validator | 15 min |
-| └─ 自定义验证器 | [custom-validator.md](validation/custom-validator.md) | 自定义业务规则注解 | 15 min |
+| ├─ 自定义验证器 | [custom-validator.md](validation/custom-validator.md) | 自定义业务规则注解 | 15 min |
+| └─ 跨字段校验 | [cross-field.md](validation/cross-field.md) | 多字段组合、容器元素校验 | 10 min |
 | **Retry 重试** | [retry.md](retry.md) | 瞬时故障自动重试（网络/数据库） | 20 min |
 | **StateMachine 状态机** | [statemachine.md](statemachine.md) | 复杂状态流转（订单/工作流/设备控制） | 25 min |
 | **Batch 批处理** | [batch.md](batch.md) | 数据迁移/ETL/定时报表（含分区并行） | 40 min |
@@ -65,6 +66,7 @@
 - ⬅️ [返回 Spring 顶层](../README.md)
 - ⬅️ [01 核心容器](../01-core/README.md) — 集成组件都基于 IoC/AOP
 - ⬅️ [02 Web 层](../02-web/README.md) — Validation 大量用于 Controller
+- ➡️ [07 可观测性](../07-observability/README.md) — Batch 监控指标接入 Micrometer/Actuator
 - [08 注解速查](../08-annotations/README.md) — 相关注解索引
 
 ---
