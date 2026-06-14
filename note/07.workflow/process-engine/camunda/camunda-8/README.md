@@ -9,6 +9,19 @@
 
 ---
 
+## 📚 章节导航（5 节 + 1 实战案例）
+
+| 节 | 内容 | 何时读 |
+|:---|:-----|:------|
+| **一、核心架构** | Zeebe + ES + Raft + 10K+/秒突破 | 评估能否替换 Camunda 7 |
+| **二、与 Camunda 7 差异** | 部署 / 存储 / 扩展 / AI / 商业模型 | 旧项目迁移评估 |
+| **三、8.5+ AI Agent Sub-process** | fromAi() FEEL + Ad-hoc Sub-process | 集成 LLM 到流程 |
+| **四、决策矩阵** | Camunda 7 vs 8 9 维场景对比 | 选型决策 |
+| **五、典型落地** | 跨境电商 10K+/秒 | 看生产案例 |
+| **六、2025-2026 进展** | 8.7/8.8 新特性 + AI 路线 | 跟进趋势 |
+
+---
+
 ## 一、核心架构与性能突破
 
 - **Zeebe 引擎**：采用分布式流处理架构，替代 Camunda 7 的 Java 嵌入式引擎。通过 Kafka-like 的追加日志和 Raft 共识协议实现高吞吐量（单集群可处理 **10,000+ 流程实例/秒**），支持水平扩展，无需传统关系型数据库，依赖 Elasticsearch 进行数据查询与历史分析。
@@ -157,6 +170,38 @@ public void handle(final JobClient client, final ActivatedJob job) {
 
 ---
 
+## 六、2025-2026 进展
+
+| 版本 / 时间 | 关键特性 | 实战影响 |
+|------|------|------|
+| **8.5（2024-10）** | **AI Agent Sub-process** + `fromAi()` FEEL + Connector 模板市场 | 流程可原生调用 LLM，BPMN 与 AI 一等公民融合 |
+| **8.6（2025-04）** | Multi-region 灾备 + Identity Federation（OIDC SSO）| 跨国企业多区域部署落地 |
+| **8.7（2025-10）** | Tasklist 表单生成器（无需 Zeebe 表单）+ Outbound Connector 2.0 | 业务人员可自助配置人工待办 |
+| **8.8（2026-Q2）** | Web Modeler 协同编辑（多人并发）+ Process Optimization 自动化 | 业务 + IT 协同设计流程 |
+
+**路线图（官方公开）**：
+
+- **2026-H2**：原生小模型集成（Phi-3 / Qwen2.5-7B），降低 AI 节点成本
+- **2027+**：**AI-native BPMN** —— 流程定义可用自然语言生成，AI 实时优化流程
+
+**对比 AI 平台**（与 [11.ai 编排平台](../../../11.ai/03-engineering/ai-platforms/README.md) 互补）：
+
+| 场景 | Camunda 8 + AI | Dify / Coze / LangGraph |
+|------|----------------|-------------------------|
+| 强治理 + 合规 | ✅（流程实例 100% 留痕）| ⚠️（审计弱）|
+| 业务可读 | ✅（BPMN 图形化）| ⚠️（DSL 工程师向）|
+| 快速试错 | ⚠️（需建模）| ✅（分钟级）|
+| 状态可回放 | ⚠️（Operate 视图）| ✅（LangGraph Time Travel）|
+
+**选型口诀**：
+
+- **金融/医疗/政务强治理** → Camunda 8 + AI Agent Sub-process
+- **C 端快速试错** → Dify / Coze
+- **复杂多步推理** → LangGraph
+- **混合** → Camunda 8 流程骨架 + LangGraph 复杂 Agent（详见 [BPMN+AI 融合](../../../11.ai/04-architecture/bpmn-ai-integration.md)）
+
+---
+
 ## 🤔 思考
 
 1. **为什么 Camunda 8 不向后兼容 Camunda 7？** 数据库中心 vs 日志中心的架构分歧太大。7 强在事务完整性，8 强在水平扩展；强行兼容两边都不讨好。
@@ -164,6 +209,7 @@ public void handle(final JobClient client, final ActivatedJob job) {
 3. **社区版 vs 企业版怎么选？** 商业产品的核心价值在 Operate（运维面板）+ Tasklist（人工待办）+ Optimize（流程分析）。如果只跑引擎 + 自研 UI，社区版够用。
 4. **Zeebe 的 Raft 复制为什么不用 Kafka？** Zeebe 早期版本用过 Kafka 作为日志后端，但 Raft 共识 + 内置日志的耦合度更高、延迟更低；Kafka 适合跨系统消息总线，Zeebe 适合单工作流引擎内部。
 5. **Camunda 8 + 自研 LLM 怎么集成？** 两种方式：① Camunda 8.5+ 用 AI Agent Sub-process + fromAi() FEEL 表达式（见 [Camunda 8](README.md) §三）；② 在 Zeebe Job Worker 中包装 LLM 客户端（见 [Zeebe](zeebe/README.md) §🤔 思考）。BPMN 管确定性骨架，LLM 管推理节点，互为补充。
+6. **Camunda 8 vs Temporal 怎么选？** Temporal 的 async/await 模型对工程师更友好（写代码像写同步程序），Cadence 在 Uber 跑了 7 年验证过 PB 级流量。**Camunda 8 强在 BPMN 业务可读 + 合规**，Temporal 强在代码灵活 + 长期状态。**大型组织选 Camunda 8，初创/强工程团队选 Temporal**。
 
 ---
 
