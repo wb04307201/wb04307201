@@ -117,21 +117,25 @@
 
 # 七、[工作流](07.workflow/README.md)
 
-> 从工作流概念定义到 BPMN 流程引擎（Camunda 7/8/Zeebe）、微服务编排（编舞 vs 编排）、事件驱动编排（EventMesh / CloudFlow）系统覆盖。
+> 从工作流概念定义到 BPMN 流程引擎（Camunda 7/8/Zeebe）、微服务编排（编舞 vs 编排）、事件驱动编排（EventMesh / CloudFlow），再到 2025-2026 AI 工作流（Dify/Coze/LangGraph）系统覆盖。
 
 ## 目录导航
 
 | 序号 | 主题 | 核心内容 |
 |:----:|:----|:---------|
-| 1 | [行业应用与发展趋势](07.workflow/industry-and-trends.md) | 流程引擎的技术架构、金融/制造/政务/电商行业实践、挑战与趋势、选型建议 |
-| 2 | [工作流定义](07.workflow/define/README.md) | 业务/技术视角的工作流概念、烧水流程标准化示例 |
-| 3 | [流程引擎](07.workflow/process-engine/README.md) | BPMN 工作原理、引擎发展史、Camunda/Flowable/Activiti 对比与选型 |
-| 3a | [Camunda 7 实战](07.workflow/process-engine/camunda/camunda-7/README.md) | SpringBoot 集成 / Swagger / bpmn-js / 任务节点类型 |
-| 3b | [Camunda 8 / 云原生](07.workflow/process-engine/camunda/camunda-8/README.md) | Zeebe 内核、10K+ 实例/秒性能、与 Camunda 7 关键差异 |
-| 3c | [Zeebe 引擎](07.workflow/process-engine/camunda/camunda-8/zeebe/README.md) | Client/Gateway/Broker/Exporter 架构与 EDA 特性 |
-| 4 | [工作流引擎与微服务编排](07.workflow/workflow-and-microservice-orchestration/README.md) | 编舞（choreography）vs 编排（orchestration）、Zeebe/Conductor/Cadence |
-| 5 | [Apache EventMesh](07.workflow/apache-eventmesh/README.md) | 云原生事件网格、组件、Runtime、CNCF Serverless Workflow |
-| 5a | [阿里云工作流（CloudFlow）](07.workflow/apache-eventmesh/cloud-flow/README.md) | 全托管任务协调服务、FDL、5 大应用案例 |
+| 1 | [工作流定义](07.workflow/define/README.md) | 业务/技术视角、BPMN 2.0 三要素（FlowObject / ConnectingObject / Artifact）、请假审批实例 |
+| 2 | [流程引擎](07.workflow/process-engine/README.md) | 4 阶段工作原理、5 里程碑、3 大引擎对比（Camunda/Flowable/Activiti）、5 维度选型决策树 |
+| 2a | [Camunda 7 实战](07.workflow/process-engine/camunda/camunda-7/README.md) | SpringBoot 集成 / Swagger / bpmn-js / 5 大任务节点类型 |
+| 2b | [Camunda 8 / 云原生](07.workflow/process-engine/camunda/camunda-8/README.md) | Zeebe 内核、10K+ 实例/秒、8.5+ AI Agent Sub-process、fromAi() FEEL |
+| 2c | [Zeebe 引擎](07.workflow/process-engine/camunda/camunda-8/zeebe/README.md) | Client/Gateway/Broker/Exporter 4 大组件 + Mermaid graph TB 架构图 |
+| 3 | [工作流引擎与微服务编排](07.workflow/workflow-and-microservice-orchestration/README.md) | 编舞（choreography）vs 编排（orchestration）、Zeebe/Conductor/Cadence |
+| 4 | [Apache EventMesh](07.workflow/apache-eventmesh/README.md) | 云原生事件网格、组件、Runtime、CNCF Serverless Workflow |
+| 4a | [阿里云工作流（CloudFlow）](07.workflow/apache-eventmesh/cloud-flow/README.md) | 全托管任务协调服务、FDL、5 大应用案例 |
+| 5 ⭐ | [AI 工作流](07.workflow/ai-workflow/README.md) | 6 大平台对比（Dify/Coze/n8n/LangGraph/CrewAI/Camunda 8 AI）、决策树 |
+| 5a | [Dify](07.workflow/ai-workflow/dify.md) | LLMOps 平台、DSL YAML、13+ 节点、MCP 双向集成（v1.9.2+）|
+| 5b | [Coze（扣子）](07.workflow/ai-workflow/coze.md) | 字节系 AI Agent 平台、Agent 联邦、Claude Code/Codex CLI 接入 |
+| 5c | [LangGraph](07.workflow/ai-workflow/langgraph.md) | StateGraph + Checkpoint + Time Travel + HITL 人在回路 |
+| 5d | [AI + BPMN 融合](07.workflow/ai-workflow/bpmn-ai-integration.md) | 4 大融合模式（Service Task / Zeebe Worker / Agent-as-Tool / HITL）+ 5 步落地 |
 
 # 八、[Mybatis](08.mybatis/README.md)
 ## [MyBatis拦截器](08.mybatis/interceptor/README.md)
