@@ -56,12 +56,12 @@ graph TB
 | 组件 | 替代的淘汰组件 | 推荐 | 章节 |
 |------|--------------|------|:----:|
 | **服务注册/发现** | Eureka | Nacos / Consul | [注册中心](service-registry/eureka-vs-consul-vs-nacos-vs-zookeeper.md) |
-| **配置中心** | Archaius | Nacos / Spring Cloud Config | P3 补充 |
-| **负载均衡** | Ribbon | Spring Cloud LoadBalancer | P3 补充 |
-| **服务调用** | Feign (Netflix) | OpenFeign | P3 补充 |
-| **熔断/容错** | Hystrix | Resilience4j / Sentinel | P3 补充 |
-| **API 网关** | Zuul | Spring Cloud Gateway | P3 补充 |
-| **链路追踪** | Sleuth+Zipkin (旧) | Micrometer Tracing | P3 补充 |
+| **配置中心** | Archaius | Nacos / Spring Cloud Config | [配置中心](config-center.md) |
+| **负载均衡** | Ribbon | Spring Cloud LoadBalancer | [负载均衡](load-balancer.md) |
+| **服务调用** | Feign (Netflix) | OpenFeign | [RPC 与 Feign](rpc-and-feign.md) |
+| **熔断/容错** | Hystrix | Resilience4j / Sentinel | [熔断与容错](circuit-breaker.md) |
+| **API 网关** | Zuul | Spring Cloud Gateway | [API 网关](gateway.md) |
+| **链路追踪** | Sleuth+Zipkin (旧) | Micrometer Tracing | [链路追踪](distributed-tracing.md) |
 
 ---
 
