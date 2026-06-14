@@ -103,3 +103,7 @@
 | **字段注入**     | 代码简洁          | 破坏封装、测试困难、不可变差 | 不推荐（快速原型开发） |
 
 **最佳实践**：优先使用**构造函数注入**，明确依赖关系并保证不可变性；仅在必要时使用Setter注入。
+
+---
+
+> Spring 完整注解速查（包含 @Lazy / @Primary / @DependsOn 等）见 [note/06.spring/08-annotations/bean-and-ioc.md](../../06.spring/08-annotations/bean-and-ioc.md)。
