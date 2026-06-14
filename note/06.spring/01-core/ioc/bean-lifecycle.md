@@ -1,6 +1,6 @@
 # Bean 生命周期
 
-> 最后更新: 2026-06-09
+> 最后更新: 2026-06-14
 > ⬅️ [返回 IoC 总览](README.md) | [作用域与线程安全](scopes-and-thread-safety.md) | [依赖注入](dependency-injection.md)
 
 Spring Bean 的生命周期是 Spring 框架最核心的知识点之一。**Bean 从创建到销毁，会经过 4 个大阶段、10+ 个小步骤**。
@@ -86,7 +86,6 @@ populateBean(beanName, mbd, instanceWrapper);
 | `BeanClassLoaderAware` | `setBeanClassLoader(ClassLoader)` | 加载当前 bean 的 ClassLoader |
 | `BeanFactoryAware` | `setBeanFactory(BeanFactory)` | 当前 BeanFactory 容器引用 |
 | `ApplicationContextAware` | `setApplicationContext(ApplicationContext)` | ApplicationContext 容器 |
-| `BeanNameAware` | `setBeanName(String)` | 当前 bean 的名称 |
 
 > 💡 Aware 接口的目的：让 Bean **拿到 Spring 容器资源**（如 BeanName、BeanFactory）。
 
