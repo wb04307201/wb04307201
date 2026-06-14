@@ -279,7 +279,102 @@ receivers:
 
 ---
 
-## 七、K8s 中的 Prometheus 部署
+## 七、Grafana Alerting 独立告警通道
+
+> **Grafana Alerting**（Grafana 8.0+）可**独立于 Alertmanager** 工作——所有告警规则、通知渠道、SLO 管理都可在 Grafana UI 内完成，特别适合**多数据源**场景（如同时查 Prometheus + MySQL + Loki）。
+
+### 1. 与 Alertmanager 的区别
+
+| 维度 | Alertmanager | Grafana Alerting |
+|:-----|:-------------|:----------------|
+| **数据源** | 仅 Prometheus | **任意数据源**（Prometheus、MySQL、Loki、ES、CloudWatch） |
+| **规则位置** | Prometheus `rules` 配置 | Grafana 内部 Alert Rules |
+| **告警状态管理** | Alertmanager 集群 | Grafana 内置（也支持 HA 部署） |
+| **通知收敛** | 分组 / 抑制 / 静默 | 分组 / 抑制 / 静默 / **silence 模板** |
+| **UI** | 简单 Web | **现代 UI + 模板变量 + 链接到仪表盘** |
+| **适用** | 纯 Prometheus 栈 | **多数据源 / 业务混合**监控 |
+
+### 2. 创建 Alert Rule（在 Grafana UI 中）
+
+```
+路径：Grafana → Alerting → Alert rules → New alert rule
+```
+
+| 字段 | 示例 |
+|:-----|:-----|
+| **Rule name** | `OrderService_HighErrorRate` |
+| **Data source** | Prometheus |
+| **Query** | `sum(rate(http_server_requests_seconds_count{status=~"5.."}[5m])) / sum(rate(http_server_requests_seconds_count[5m])) > 0.05` |
+| **Condition** | `WHEN last() OF query IS ABOVE 0.05 FOR 2m` |
+| **Folder** | `Application` |
+| **Evaluation group** | `1m`（每 1 分钟评估） |
+
+### 3. 通知渠道（Contact Points）
+
+支持 Slack / 钉钉 / Webhook / 邮件 / PagerDuty / OpsGenie：
+
+```yaml
+# Slack Contact Point 示例（Grafana provisioning）
+apiVersion: 1
+contactPoints:
+  - orgId: 1
+    name: slack-critical
+    receivers:
+      - uid: slack-receiver-1
+        type: slack
+        settings:
+          url: https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXX
+          channel: '#alerts-critical'
+          title: '{{ template "slack.default.title" . }}'
+          text: '{{ template "slack.default.text" . }}'
+```
+
+钉钉（自定义 Webhook）：
+
+```yaml
+contactPoints:
+  - name: dingtalk
+    receivers:
+      - type: webhook
+        settings:
+          url: https://oapi.dingtalk.com/robot/send?access_token=xxx
+          httpMethod: POST
+```
+
+### 4. 与 Alertmanager 协同部署
+
+生产环境**推荐两者并存**——按职责分工：
+
+```
+                  ┌──────────────────┐
+                  │   Prometheus     │
+                  │   (指标采集)      │
+                  └────────┬─────────┘
+                           │ 触发
+                  ┌────────▼─────────┐        ┌──────────────┐
+                  │  Alertmanager    │  ──>   │  钉钉/邮件   │  ← 基础设施层告警
+                  │  (基础设施告警)   │        └──────────────┘
+                  └──────────────────┘
+
+                  ┌──────────────────┐
+                  │   Grafana        │
+                  │   (可视化)        │
+                  └────────┬─────────┘
+                           │ 直接评估
+                  ┌────────▼─────────┐        ┌──────────────┐
+                  │ Grafana Alerting │  ──>   │  业务方/值班  │  ← 业务层告警
+                  │  (业务告警)       │        └──────────────┘
+                  └──────────────────┘
+```
+
+- **Alertmanager** 处理：**节点宕机**、**磁盘满**、**Prometheus down** 等基础设施告警
+- **Grafana Alerting** 处理：**订单错误率飙升**、**支付转化率下降**等业务告警
+
+> 📌 **好处**：Grafana Alerting 告警**直接附带仪表盘链接**，oncall 工程师一点即看上下文。
+
+---
+
+## 八、K8s 中的 Prometheus 部署
 
 ```yaml
 # ServiceMonitor 自动发现
@@ -303,7 +398,7 @@ spec:
 
 ---
 
-## 八、4 大生产实践
+## 九、4 大生产实践
 
 ### 1. 指标命名规范
 
@@ -340,7 +435,7 @@ global:
 
 ---
 
-## 九、完整监控架构
+## 十、完整监控架构
 
 ```mermaid
 graph TB
@@ -374,7 +469,7 @@ graph TB
 
 ---
 
-## 十、3 大替代方案对比
+## 十一、3 大替代方案对比
 
 | 方案 | 维护方 | 部署 | 适用 |
 |------|--------|------|------|
