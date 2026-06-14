@@ -117,9 +117,9 @@
 
 # 七、[工作流](07.workflow/README.md)
 
-> 工作流 = **BPMN 流程骨架（确定性、可审计）** + **事件驱动协作神经（异步、弹性）**。从工作流概念定义到 BPMN 流程引擎（Camunda 7/8/Zeebe 三大实战）、微服务编排（编舞 vs 编排 + Zeebe/Conductor/Cadence-Temporal）、事件驱动编排（EventMesh / Serverless Workflow）系统覆盖。**2026 重点**：Camunda 8.5+ AI Agent Sub-process + BPMN+AI 融合 4 模式（详见 [11.ai BPMN+AI 融合](11.ai/04-architecture/bpmn-ai-integration.md)）。
+> 工作流 = **BPMN 流程骨架（确定性、可审计）** + **事件驱动协作神经（异步、弹性）**。覆盖工作流概念定义、BPMN 流程引擎（Camunda 7/8/Zeebe）、微服务编排（编舞 vs 编排）、事件驱动编排（EventMesh / Serverless Workflow），并衔接 [11.ai BPMN+AI 融合](11.ai/04-architecture/bpmn-ai-integration.md) 4 模式（Camunda 8.5+ AI Agent Sub-process + Zeebe AI Worker）。
 
-## 目录导航
+## 章节导航
 
 | 序号 | 主题 | 核心内容 |
 |:----:|:----|:---------|
@@ -130,6 +130,8 @@
 | 2c | [Zeebe 引擎](07.workflow/process-engine/camunda/camunda-8/zeebe/README.md) | Client/Gateway/Broker/Exporter 4 大组件 + gRPC 实战 + K8s 部署 + 跨境电商 10K+/秒案例 |
 | 3 | [工作流引擎与微服务编排](07.workflow/workflow-and-microservice-orchestration/README.md) | 编舞 vs 编排 + Zeebe/Conductor/Cadence 对比 + Netflix/Uber 案例 + Temporal 1.x 进展 |
 | 4 | [事件驱动与 Serverless Workflow](07.workflow/apache-eventmesh/README.md) | 事件驱动作为「神经系统」+ CNCF Serverless Workflow 0.8/0.9/1.0 + EventMesh + 12306 1500 万张票/天案例 |
+
+> 开源参考：暂无（流程引擎以商业产品 Camunda/Flowable/Activiti 为主，事件驱动生态以 Apache EventMesh / CNCF Serverless Workflow 为主）
 
 # 八、[Mybatis](08.mybatis/README.md)
 ## [MyBatis拦截器](08.mybatis/interceptor/README.md)
