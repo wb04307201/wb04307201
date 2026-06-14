@@ -102,14 +102,14 @@
 
 | 序号 | 主题 | 核心内容 |
 |------|------|----------|
-| 1 | [01 核心容器](06.spring/01-core/README.md) | IoC 容器、Bean 生命周期、AOP 切面编程 |
-| 2 | [02 Web 层](06.spring/02-web/README.md) | Spring MVC 请求处理、Filter/AOP 顺序、WebFlux |
-| 3 | [03 数据层](06.spring/03-data/README.md) | 事务管理、缓存抽象、分布式事务（Seata） |
-| 4 | [04 Spring Boot](06.spring/04-spring-boot/README.md) | 自动配置原理、Starter 机制、启动流程 |
-| 5 | [05 Spring Cloud](06.spring/05-spring-cloud/README.md) | 服务发现、网关、熔断、链路追踪 |
-| 6 | [06 集成组件](06.spring/06-integration/README.md) | Validation、Retry、StateMachine、Batch |
-| 7 | [07 可观测性](06.spring/07-observability/README.md) | Actuator、Micrometer、Prometheus |
-| 8 | [08 注解速查](06.spring/08-annotations/README.md) | 按场景分类的注解索引 |
+| 1 | [01 核心容器](06.spring/01-core/README.md) | IoC/AOP 原理、Bean 生命周期、循环依赖、模块依赖、手写 mini Spring |
+| 2 | [02 Web 层](06.spring/02-web/README.md) | Spring MVC 流程、Filter/AOP 顺序、异常/视图/上传/CORS/i18n/异步、WebFlux 响应式、SSE |
+| 3 | [03 数据层](06.spring/03-data/README.md) | 声明式/编程式事务、传播/隔离/失效、Seata 分布式事务、Spring Cache 注解与 Caffeine/Redis 集成 |
+| 4 | [04 Spring Boot](06.spring/04-spring-boot/README.md) | 自动配置原理、Starter 机制、启动流程、外部化配置 |
+| 5 | [05 Spring Cloud](06.spring/05-spring-cloud/README.md) | 服务注册/配置中心/负载均衡 RPC/熔断/网关（JWT 鉴权）/链路追踪/Stream/Bus/Seata 集成 |
+| 6 | [06 集成组件](06.spring/06-integration/README.md) | Validation（分组/跨字段/自定义）、Retry（Reactive）、StateMachine（持久化/并行）、Batch（重试/重启） |
+| 7 | [07 可观测性](06.spring/07-observability/README.md) | Actuator 端点、健康探针、Micrometer（OTLP/LongTaskTimer）、Prometheus+Pushgateway、Grafana Alerting、ELK/Loki |
+| 8 | [08 注解速查](06.spring/08-annotations/README.md) | 事务/缓存/调度/校验/重试/AOP/Web/JPA/测试/配置/异常 等按场景分类的索引 |
 
 > 开源参考：
 > - [Multi-Level Cache Spring Boot Starter](https://gitee.com/wb04307201/multi-level-cache-spring-boot-starter) — 通过 `CacheManager` 接口扩展多级缓存注解
