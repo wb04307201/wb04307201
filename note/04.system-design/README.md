@@ -68,9 +68,9 @@
 | [01 基础篇](01-foundation/README.md) | 18 | 软件工程、OOD/DDD/TOGAF/ArchiMate/IT4IT、技术债 |
 | [02 分布式篇](02-distributed/README.md) | 13 | CAP、共识算法、分布式事务、RPC |
 | [03 高可用篇](03-high-availability/README.md) | 9 | 限流、熔断、重试、降级、冗余、混沌 |
-| [04 高性能篇](04-high-performance/README.md) | 11 | 负载均衡、缓存、数据库优化、消息队列 |
+| [04 高性能篇](04-high-performance/README.md) | 12 | 负载均衡、CDN、缓存、数据库优化、消息队列、连接池、序列化、Java 优化 |
 | [05 安全篇](05-security/README.md) | 7 | JWT、OAuth2、API安全、OWASP、加密、密钥管理、访问控制 |
-| [06 幂等设计](06-idempotency/README.md) | 1 | 幂等性设计与实现方案 |
+| [06 幂等设计](06-idempotency/README.md) | 5 | 幂等键、乐观锁、状态机、去重表、与分布式事务的关系 |
 | [07 部署与运维](07-deployment/README.md) | 3 | 部署架构、可观测性、容量规划 |
 
 ## 🆕 最近更新
