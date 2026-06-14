@@ -1,6 +1,6 @@
 # 配置中心（Config Center）
 
-> 最后更新: 2026-06-09
+> 最后更新: 2026-06-14
 > ⬅️ [返回 05 Spring Cloud](README.md) | [服务注册](service-registry/) | [分布式追踪](distributed-tracing.md)
 
 配置中心是微服务架构的"**配置大脑**"——集中管理所有服务的配置，**配置变更实时推送**，告别改配置要重启 N 个服务的痛苦。

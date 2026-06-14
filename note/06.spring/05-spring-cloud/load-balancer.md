@@ -1,6 +1,6 @@
 # 客户端负载均衡（LoadBalancer）
 
-> 最后更新: 2026-06-09
+> 最后更新: 2026-06-14
 > ⬅️ [返回 05 Spring Cloud](README.md) | [服务注册](service-registry/) | [RPC 与 Feign](rpc-and-feign.md)
 
 在微服务架构中，**一个服务有多个实例**（如 user-service 有 3 个实例），客户端需要**选择调用哪个实例**——这就是**负载均衡**。
