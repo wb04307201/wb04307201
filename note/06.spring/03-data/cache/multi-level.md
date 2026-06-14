@@ -299,14 +299,26 @@ public class CacheInvalidationPublisher {
 }
 
 @Component
-public class CacheInvalidationListener {
+public class CacheInvalidationListener implements MessageListener {
     @Autowired private CacheManager caffeineCacheManager;
 
-    @RedisListener(topic = "cache:invalidate")
-    public onInvalidate(String message) {
-        String[] parts = message.split(":");
+    @Override
+    public void onMessage(Message message, byte[] pattern) {
+        String body = new String(message.getBody());
+        String[] parts = body.split(":");
         caffeineCacheManager.getCache(parts[0]).evict(parts[1]);
     }
+}
+
+// 注册：把 listener 装到 Redis 容器里
+@Bean
+public RedisMessageListenerContainer redisContainer(
+        RedisConnectionFactory factory,
+        CacheInvalidationListener listener) {
+    RedisMessageListenerContainer container = new RedisMessageListenerContainer();
+    container.setConnectionFactory(factory);
+    container.addMessageListener(listener, new ChannelTopic("cache:invalidate"));
+    return container;
 }
 ```
 
