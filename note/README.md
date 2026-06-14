@@ -117,19 +117,19 @@
 
 # 七、[工作流](07.workflow/README.md)
 
-> 工作流 = **BPMN 流程骨架（确定性、可审计）** + **事件驱动协作神经（异步、弹性）**。从工作流概念定义到 BPMN 流程引擎（Camunda 7/8/Zeebe）、微服务编排（编舞 vs 编排）、事件驱动编排（EventMesh / Serverless Workflow）系统覆盖。
+> 工作流 = **BPMN 流程骨架（确定性、可审计）** + **事件驱动协作神经（异步、弹性）**。从工作流概念定义到 BPMN 流程引擎（Camunda 7/8/Zeebe 三大实战）、微服务编排（编舞 vs 编排 + Zeebe/Conductor/Cadence-Temporal）、事件驱动编排（EventMesh / Serverless Workflow）系统覆盖。**2026 重点**：Camunda 8.5+ AI Agent Sub-process + BPMN+AI 融合 4 模式（详见 [11.ai BPMN+AI 融合](11.ai/04-architecture/bpmn-ai-integration.md)）。
 
 ## 目录导航
 
 | 序号 | 主题 | 核心内容 |
 |:----:|:----|:---------|
-| 1 | [工作流定义](07.workflow/define/README.md) | 业务/技术视角、BPMN 2.0 三要素（FlowObject / ConnectingObject / Artifact）、请假审批实例 |
-| 2 | [流程引擎](07.workflow/process-engine/README.md) | 4 阶段工作原理、5 里程碑、3 大引擎对比（Camunda/Flowable/Activiti）、5 维度选型决策树 |
-| 2a | [Camunda 7 实战](07.workflow/process-engine/camunda/camunda-7/README.md) | SpringBoot 集成 / Swagger / bpmn-js / 5 大任务节点类型 |
-| 2b | [Camunda 8 / 云原生](07.workflow/process-engine/camunda/camunda-8/README.md) | Zeebe 内核、10K+ 实例/秒、8.5+ AI Agent Sub-process、fromAi() FEEL |
-| 2c | [Zeebe 引擎](07.workflow/process-engine/camunda/camunda-8/zeebe/README.md) | Client/Gateway/Broker/Exporter 4 大组件 + Mermaid graph TB 架构图 |
-| 3 | [工作流引擎与微服务编排](07.workflow/workflow-and-microservice-orchestration/README.md) | 编舞（choreography）vs 编排（orchestration）、Zeebe/Conductor/Cadence |
-| 4 | [事件驱动与 Serverless Workflow](07.workflow/apache-eventmesh/README.md) | 事件驱动作为工作流的「神经系统」、CNCF Serverless Workflow DSL 标准、EventMesh 组件、电商订单落地 |
+| 1 | [工作流定义](07.workflow/define/README.md) | 业务/技术视角、BPMN 2.0 三要素（FlowObject / ConnectingObject / Artifact）、请假审批实例 + 3 企业案例 |
+| 2 | [流程引擎](07.workflow/process-engine/README.md) | 4 阶段工作原理、5 里程碑、3 大引擎对比（Camunda/Flowable/Activiti）、5 维度选型决策树 + 2025-2026 趋势 |
+| 2a | [Camunda 7 实战](07.workflow/process-engine/camunda/camunda-7/README.md) | SpringBoot 集成 + Swagger + bpmn-js + 5 任务节点对比 + 银行 50 万件/年案例 |
+| 2b | [Camunda 8 / 云原生](07.workflow/process-engine/camunda/camunda-8/README.md) | Zeebe 内核 + 10K+/秒 + 8.5+ AI Agent Sub-process + fromAi() FEEL + 8.7/8.8 路线 |
+| 2c | [Zeebe 引擎](07.workflow/process-engine/camunda/camunda-8/zeebe/README.md) | Client/Gateway/Broker/Exporter 4 大组件 + gRPC 实战 + K8s 部署 + 跨境电商 10K+/秒案例 |
+| 3 | [工作流引擎与微服务编排](07.workflow/workflow-and-microservice-orchestration/README.md) | 编舞 vs 编排 + Zeebe/Conductor/Cadence 对比 + Netflix/Uber 案例 + Temporal 1.x 进展 |
+| 4 | [事件驱动与 Serverless Workflow](07.workflow/apache-eventmesh/README.md) | 事件驱动作为「神经系统」+ CNCF Serverless Workflow 0.8/0.9/1.0 + EventMesh + 12306 1500 万张票/天案例 |
 
 # 八、[Mybatis](08.mybatis/README.md)
 ## [MyBatis拦截器](08.mybatis/interceptor/README.md)
