@@ -44,7 +44,7 @@ spring.datasource.url=jdbc:mysql://localhost:3306/db
 | **Apollo** | 携程 | MySQL | ✅ 长轮询 + 推送 | **大厂首选**、功能完善 |
 | **Spring Cloud Config** | Spring | **Git** | ❌ 需配合 Bus | 传统方案、版本管理依赖 Git |
 
-> 📌 2025 年新项目**首选 Nacos Config**（一站式，部署简单）。
+> 📌 2026 年新项目**首选 Nacos Config**（一站式，部署简单）。
 
 ---
 
