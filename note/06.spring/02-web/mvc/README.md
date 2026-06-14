@@ -7,7 +7,7 @@
 
 ## 🎯 一句话定位
 
-**Spring MVC = 基于 MVC 模式的 Java Web 框架**——通过 **DispatcherServlet** 作为前端控制器 + **9 大组件**协作 + **注解驱动**开发，让 Web 层代码简洁、可测试、易扩展。**RESTful 设计原则**（资源命名、HTTP 动词、统一错误体、版本化）见本文档六、核心组件与工作流程 与 [异常处理](exception-resolver.md) 中内嵌段落。
+**Spring MVC = 基于 MVC 模式的 Java Web 框架**——通过 **DispatcherServlet** 作为前端控制器 + **9 大组件**协作 + **注解驱动**开发，让 Web 层代码简洁、可测试、易扩展。RESTful 错误体统一、API 版本化等**统一错误处理**见 [异常处理](exception-resolver.md)。
 
 ---
 
