@@ -282,3 +282,4 @@ curl -X POST http://localhost:8080/actuator/loggers/com.example.service \
 - [健康检查三探针](health-probes.md) — K8s liveness/readiness/startup
 - [日志聚合](log-aggregation.md) — ELK / Loki / Fluentd
 - [分布式追踪](../05-spring-cloud/distributed-tracing.md) — Tracing 深度
+- [04.system-design/07-deployment/observability](../../04.system-design/07-deployment/observability/README.md) — 监控体系理论（SLO/Error Budget/USE/RED）
