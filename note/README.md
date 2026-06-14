@@ -102,11 +102,11 @@
 
 | 序号 | 主题 | 核心内容 |
 |------|------|----------|
-| 1 | [01 核心容器](06.spring/01-core/README.md) | IoC/AOP 原理、Bean 生命周期、循环依赖、模块依赖、手写 mini Spring |
+| 1 | [01 核心容器](06.spring/01-core/README.md) | IoC/AOP 原理、Bean 生命周期与循环依赖（三级缓存）、FactoryBean、@Configuration Lite/Full、外部化配置、模块依赖、手写 mini Spring |
 | 2 | [02 Web 层](06.spring/02-web/README.md) | Spring MVC 流程、Filter/AOP 顺序、异常/视图/上传/CORS/i18n/异步、WebFlux 响应式、SSE |
-| 3 | [03 数据层](06.spring/03-data/README.md) | 声明式/编程式事务、传播/隔离/失效、Seata 分布式事务、Spring Cache 注解与 Caffeine/Redis 集成 |
-| 4 | [04 Spring Boot](06.spring/04-spring-boot/README.md) | 自动配置原理、Starter 机制、启动流程、外部化配置 |
-| 5 | [05 Spring Cloud](06.spring/05-spring-cloud/README.md) | 服务注册/配置中心/负载均衡 RPC/熔断/网关（JWT 鉴权）/链路追踪/Stream/Bus/Seata 集成 |
+| 3 | [03 数据层](06.spring/03-data/README.md) | 声明式/编程式事务、多数据源/JTA、JPA 事务、传播/隔离/失效、Seata 分布式事务、Spring Cache 4 大模式 + 多级缓存 + 序列化 |
+| 4 | [04 Spring Boot](06.spring/04-spring-boot/README.md) | 自动配置原理、Starter 机制、启动流程、外部化配置、内嵌服务器切换、GraalVM Native Image |
+| 5 | [05 Spring Cloud](06.spring/05-spring-cloud/README.md) | 服务注册/配置中心（含加密）/负载均衡 RPC/熔断/网关（JWT 鉴权）/链路追踪/Stream/Bus/Seata 集成/版本对应 |
 | 6 | [06 集成组件](06.spring/06-integration/README.md) | Validation（分组/跨字段/自定义）、Retry（Reactive）、StateMachine（持久化/并行）、Batch（重试/重启） |
 | 7 | [07 可观测性](06.spring/07-observability/README.md) | Actuator 端点、健康探针、Micrometer（OTLP/LongTaskTimer）、Prometheus+Pushgateway、Grafana Alerting、ELK/Loki |
 | 8 | [08 注解速查](06.spring/08-annotations/README.md) | 事务/缓存/调度/校验/重试/AOP/Web/JPA/测试/配置/异常 等按场景分类的索引 |
