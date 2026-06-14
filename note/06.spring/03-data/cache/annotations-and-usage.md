@@ -1,6 +1,6 @@
 # 缓存注解与使用
 
-> 最后更新: 2026-06-09
+> 最后更新: 2026-06-14
 > ⬅️ [返回缓存总览](README.md) | [缓存实现与最佳实践](implementations-and-best-practices.md)
 
 Spring Cache 提供 **5 大核心注解**（@Cacheable / @CachePut / @CacheEvict / @Caching / @CacheConfig），用声明式的方式实现方法结果的缓存。本文详解每个注解的用法、SpEL 表达式、组合使用等。

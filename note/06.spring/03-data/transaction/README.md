@@ -1,6 +1,6 @@
 # Spring 事务管理
 
-> 最后更新: 2026-06-09
+> 最后更新: 2026-06-14
 > ⬅️ [返回 03 数据层](../README.md)
 
 ---
@@ -17,6 +17,9 @@
 |:-----|:---------|:--------:|
 | [传播行为与隔离级别](propagation-and-isolation.md) | 7 种传播行为怎么选？4 种隔离级别分别解决什么问题？ | 12 min |
 | [事务失效场景](failure-cases.md) | 为什么 @Transactional 不生效？7 大失效场景如何修复？ | 15 min |
+| [编程式事务](programmatic-transaction.md) | TransactionTemplate 怎么用？动态回滚、批量处理？ | 12 min |
+| [多数据源与 JTA](multi-datasource-and-jta.md) | 多数据源路由？JTA + Atomikos 跨库强一致？ | 15 min |
+| [JPA 事务](jpa-transaction.md) | JpaTransactionManager / @Lock / @Version？ | 12 min |
 
 ---
 
@@ -250,5 +253,8 @@ public List<User> findAllUsers() {
 - ⬅️ [返回 03 数据层](../README.md)
 - [传播行为与隔离级别](propagation-and-isolation.md)
 - [事务失效场景](failure-cases.md)
+- [编程式事务](programmatic-transaction.md) — TransactionTemplate
+- [多数据源与 JTA](multi-datasource-and-jta.md)
+- [JPA 事务](jpa-transaction.md) — @Lock / @Version
 - [分布式事务](distributed/theory-and-patterns.md) — 2PC、3PC、Saga、Seata
 - [08 注解/配置注解](../../08-annotations/configuration.md) — @EnableTransactionManagement
