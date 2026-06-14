@@ -146,6 +146,98 @@ graph TB
 
 ---
 
+## 五、真实落地案例
+
+### 案例 1：Netflix Conductor（编排引擎代表）
+
+| 维度 | 数据 |
+|------|------|
+| **业务** | Netflix 全球视频编转码 + 内容审核 + 计费 |
+| **规模** | **日均 100 万+ 工作流实例** |
+| **DSL** | JSON（自研）|
+| **存储** | DynamoDB（主）+ MySQL / Postgres（可选）|
+| **关键能力** | **子工作流嵌套** + **任务队列** + **Select 任务（动态分支）** + **HTTP / Lambda / Event 任务** |
+| **效果** | 替代旧的 Step Workflow 引擎，处理量提升 10 倍，运维成本 ↓ 60% |
+
+**Conductor 特色**：
+
+- **任务系统**（Task Domain）：可自定义 worker 类型
+- **Select 任务**：运行时根据条件选下一步（类似 BPMN 排他网关）
+- **Do-While 循环**：直到条件满足才退出
+- **HTTP Task**：原生支持调外部 API（无需写 worker）
+
+### 案例 2：Uber Cadence（→ Temporal 商业化）
+
+| 维度 | 数据 |
+|------|------|
+| **业务** | Uber 全球出行订单履约 + 派单 + 支付 |
+| **规模** | **PB 级流量**（单工作流 7 年 + 数万 RPS）|
+| **DSL** | 代码 DSL（Go / Java）|
+| **存储** | Cassandra（主）+ MySQL + Visibility（ES）|
+| **关键能力** | **async/await 风格** + **确定性重放** + **Saga 模式** + **无限时长**（执行可跨年）|
+| **效果** | 替代基于消息队列 + 定时器的"自制编排"，开发者效率 ↑ 5 倍，bug 率 ↓ 80% |
+
+**Cadence → Temporal 演进**：
+
+- 2020：Cadence 核心开发者创立 **Temporal Technologies**
+- 2024-Q3：Temporal 1.x **GA**（API 稳定，云托管服务 Temporal Cloud 商用）
+- 2025-2026：**Temporal 成为云原生编排引擎的事实标准之一**（与 Zeebe 抗衡）
+
+### 案例 3：阿里巴巴 阿里巴巴 OpenSergo（编排 + 服务治理融合）
+
+| 维度 | 数据 |
+|------|------|
+| **业务** | 阿里电商大促（双11 / 618）的服务编排 + 限流降级 |
+| **规模** | **百万级 QPS**（秒杀 + 支付）|
+| **关键能力** | **Sentinel 限流** + **OpenSergo 编排** + **Seata 分布式事务** 一体化 |
+| **效果** | 大促峰值系统可用性 99.99%，限流策略 5 分钟内全集群生效 |
+
+**国内选型观察**：
+
+- 大厂（阿里/字节/美团）：自研 + 借鉴 Cadence 思想
+- 中型互联网：**Camunda 8 / Zeebe**（业务可读 + 跨团队沟通）
+- 企业级 SaaS：**Conductor**（JSON 简单 + 上手快）
+- 复杂 Agent 编排：**Temporal**（async/await 灵活）
+
+---
+
+## 六、2025-2026 三大引擎新进展
+
+| 引擎 | 最新动态 | 实战影响 |
+|------|---------|---------|
+| **Zeebe** | Camunda 8.7+ 加 Tasklist 表单生成器 + 多区域灾备 | 业务可自助配置 + 跨国企业可上 |
+| **Conductor** | v3.x 引入 **Async Saga** + **Schema Registry** | 微服务事务支持更强 |
+| **Temporal** | 1.x GA（2024）+ **AI Agent SDK（2025）** | AI 工作流编排入场 |
+
+**Temporal AI Agent SDK（2025 新发布）**：
+
+```python
+from temporalio import workflow
+from temporalio.contrib import openai_agents
+
+@workflow.defn
+class ResearchAgent:
+    @workflow.run
+    async def run(self, query: str) -> str:
+        # 用 OpenAI Agents SDK 跑多步推理，自动持久化 + 断点恢复
+        result = await workflow.execute_activity(
+            run_agent,
+            query,
+            start_to_close_timeout=timedelta(minutes=10)
+        )
+        return result
+```
+
+**Temporal 的核心竞争力**：
+
+- **持久化执行**：工作流可跨机器故障自动恢复
+- **版本化**：工作流代码可版本化管理，旧的执行流按旧版走
+- **生态**：Python / Go / Java / TypeScript / .NET 多语言 SDK 一致
+
+**对 Zeebe 的影响**：Zeebe 强在 **BPMN 业务可读**；Temporal 强在 **AI Agent 编排灵活**。两者将长期共存，分别占据"流程治理"和"AI 原生"两大赛道。
+
+---
+
 ## 🤔 思考
 
 1. **为什么 OA 时代的 Camunda 7 不适合微服务？** jar 嵌入 + 同步调用 + 集中 DB 三个局限。Camunda 7 设计目标是"流程协作 + 审计"，不是"高并发服务编排"——**用错场景了**。
@@ -153,6 +245,7 @@ graph TB
 3. **Temporal 比 Zeebe 强在哪？** Temporal 的 async/await 模型对工程师更友好（写代码像写同步程序），且 Cadence 在 Uber 跑了 7 年验证过 PB 级流量。代价是**没有 BPMN 业务可读性**。
 4. **微服务编排 = 工作流引擎 v2？** 本质相同（任务 + 协作），但**运行环境从单体变分布式**——并发模型从"线程池 + DB 锁"变"Raft + 追加日志"。
 5. **BPMN 引擎 vs 代码 DSL（如 Temporal）？** BPMN 强在**业务可读 + 跨团队沟通**（业务人员可参与流程图设计）；代码 DSL 强在**灵活性 + 复杂逻辑表达**。大型组织选 BPMN，初创公司选代码 DSL。
+6. **Conductor 是否过时？** 没有。Netflix 内部仍在用且持续迭代（v3.x 引入 Saga）。Conductor 的 **JSON DSL** 优势仍在——比 BPMN 简单，比 Temporal 代码灵活。**中等规模 SaaS 的最佳平衡点**。
 
 ---
 
