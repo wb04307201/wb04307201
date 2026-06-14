@@ -129,12 +129,42 @@ Q5: 国产化 / 信创要求？
 
 ---
 
+## 六、2025-2026 流程引擎新趋势
+
+| 引擎 | 关键演进 | 影响 |
+|:-----|:---------|:-----|
+| **Camunda 7** | v7.21 LTS（2024）+ 维护期延长到 2028+ | 存量企业可安心使用，**不再新增大特性** |
+| **Camunda 8** | 8.5 AI Agent → 8.7 表单生成器 → 8.8 协同编辑 | 业务 + IT 协同设计，AI 原生加速 |
+| **Flowable** | 7.x 引入 **AI 任务节点** + 国产化适配 | 与 Camunda 8.5 正面竞争 |
+| **Activiti** | v7 已 EOL，社区转 Cloud | 存量项目应规划迁移 |
+| **Zeebe（独立）** | 1.x 社区版仍维护 | Camunda 主导，企业用户用 Camunda 8 |
+
+**3 大宏观趋势**：
+
+1. **AI 原生化**：所有引擎都在加 LLM 节点（Camunda 8.5+ AI Agent / Flowable 7 AI Task / Zeebe AI Worker）
+2. **云原生 + 多区域**：K8s + 跨地域灾备（Camunda 8.6+ Identity Federation）成为大客户入场券
+3. **业务可读 vs 工程师灵活**：BPMN（Camunda/Zeebe）vs 代码 DSL（Temporal）长期共存
+
+**国内观察**：
+
+- **银行/政务**：Camunda 7 仍是首选（国产化 + 监管成熟）
+- **互联网中大厂**：Camunda 8 / Zeebe（云原生 + AI 集成）
+- **SaaS / 跨境电商**：Zeebe + LangGraph / Dify 混合架构
+- **AI 创业公司**：Dify / Coze（快速上线） + 复杂场景 LangGraph
+
+**选型一句话**：
+
+> 2026 年新项目默认选 **Camunda 8 / Zeebe**（除非强治理 / 国产化约束 Camunda 7）；AI 节点用 **fromAi() / 自研 Zeebe AI Worker**；复杂 Agent 编排用 **LangGraph**（详见 [BPMN+AI 融合](../../11.ai/04-architecture/bpmn-ai-integration.md)）。
+
+---
+
 ## 🤔 思考
 
 1. **为什么 Camunda 8 要重写 Zeebe 而不是演进 Camunda 7？** 7 依赖关系型 DB + 嵌入式架构，扩展性受限；Zeebe 用 Raft + 追加日志 + ES 解决水平扩展。
 2. **Flowable vs Camunda 怎么选？** 核心差异在商业策略——Camunda 强在企业版 + Optimize 分析；Flowable 强在 CMMN 案例管理 + 商业版（Flowable Work）。
 3. **BPMN 引擎能否直接编排微服务？** 见 [03 编排](../workflow-and-microservice-orchestration/README.md)——传统 BPMN 适合"人 + 系统"长流程；微服务编排用 Zeebe/Conductor/Cadence 更合适。
 4. **AI 时代还需要 BPMN 引擎吗？** 仍然需要——BPMN 提供**确定性、合规、可审计**的骨架；如需 AI 节点，可在 Camunda 8.5+ 中用 AI Agent Sub-process（[Camunda 8](process-engine/camunda/camunda-8/README.md)），或在 Zeebe Job Worker 中包装自研 LLM 调用（[Zeebe](process-engine/camunda/camunda-8/zeebe/README.md)）。
+5. **2026 年选 BPMN 引擎的默认值？** **Camunda 8 / Zeebe**。**Camunda 7** 仅在 ① 强治理（银行/政务）② 国产化（麒麟/达梦）③ 存量维护 三个场景下选。**Flowable** 仅在需要 CMMN 案例管理时选。**Activiti** 新项目不选。
 
 ---
 
