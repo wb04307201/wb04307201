@@ -1,5 +1,10 @@
 # Camunda 8
 
+> 最后更新: 2026-06-14
+> ⬅️ [返回 07 工作流](README.md) | [流程引擎](process-engine/README.md) | [Camunda 7](process-engine/camunda/camunda-7/README.md) | [Zeebe](process-engine/camunda/camunda-8/zeebe/README.md)
+
+
+
 ## 核心架构与性能突破
 - **Zeebe引擎**：采用分布式流处理架构，替代Camunda 7的Java嵌入式引擎。通过Kafka-like的追加日志和Raft共识协议实现高吞吐量（单集群可处理**10,000+流程实例/秒**），支持水平扩展，无需传统关系型数据库，依赖Elasticsearch进行数据查询与历史分析。
 - **云原生设计**：基于Kubernetes部署，支持弹性伸缩、异地容灾和多租户管理。通过租户标识符实现多租户隔离，而非Camunda 7的“单租户单引擎”模式。
@@ -39,3 +44,13 @@ Zeebe Community License的限制：该协议允许修改和商业使用，但禁
 
 
 
+
+---
+
+## 相关章节
+
+- ⬅️ [返回 07 工作流](README.md)
+- [流程引擎](process-engine/README.md) — BPMN 引擎发展史
+- [Camunda 7 实战](process-engine/camunda/camunda-7/README.md) — 上一代引擎的 SpringBoot 集成
+- [Zeebe](process-engine/camunda/camunda-8/zeebe/README.md) — Camunda 8 的内核引擎
+- [工作流引擎与微服务编排](workflow-and-microservice-orchestration/README.md) — 编排引擎的对比

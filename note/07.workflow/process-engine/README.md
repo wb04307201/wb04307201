@@ -1,4 +1,9 @@
-#  流程引擎
+# 流程引擎
+
+> 最后更新: 2026-06-14
+> ⬅️ [返回 07 工作流](README.md) | [定义](define/README.md) | [Camunda 7](process-engine/camunda/camunda-7/README.md) | [Camunda 8](process-engine/camunda/camunda-8/README.md) | [微服务编排](workflow-and-microservice-orchestration/README.md)
+
+
 
 ## 工作原理
 ### 工作原理核心环节
@@ -128,3 +133,13 @@ stop
 - **中小企业**：优先选择开箱即用、模板丰富的商业引擎（如钉钉宜搭、泛微），或轻量级开源引擎（如Activiti 5）。
 - **大型企业/复杂场景**：推荐Camunda 7（稳定）、Flowable（扩展性强）或商业全链路方案（如泛微、用友BIP）。
 - **特定需求**：金融行业关注分布式引擎（如普元Primeton BPM）；政务/医疗需适配信创与安全标准。
+
+---
+
+## 相关章节
+
+- ⬅️ [返回 07 工作流](README.md)
+- [工作流定义](define/README.md) — 业务/技术视角的工作流概念
+- [Camunda 7 实战](process-engine/camunda/camunda-7/README.md) — SpringBoot 集成 Camunda 7 全流程
+- [Camunda 8 / Zeebe](process-engine/camunda/camunda-8/README.md) — 云原生分布式引擎
+- [工作流引擎与微服务编排](workflow-and-microservice-orchestration/README.md) — 流程引擎在微服务场景的演化

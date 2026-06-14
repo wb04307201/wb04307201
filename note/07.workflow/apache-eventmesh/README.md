@@ -1,5 +1,10 @@
 # Apache EventMesh
 
+> 最后更新: 2026-06-14
+> ⬅️ [返回 07 工作流](README.md) | [微服务编排](workflow-and-microservice-orchestration/README.md) | [阿里云工作流](apache-eventmesh/cloud-flow/README.md)
+
+
+
 Apache EventMesh 是一个动态的云原生事件驱动架构基础设施，用于分离应用程序和后端中间件层，它支持广泛的用例，包括复杂的混合云、使用了不同技术栈的分布式架构。
 
 ![img_1.png](img_1.png)
@@ -56,3 +61,11 @@ Serverless 工作流定义了一种领域特定语言（DSL）来描述有状态
 
 
 
+
+---
+
+## 相关章节
+
+- ⬅️ [返回 07 工作流](README.md)
+- [工作流引擎与微服务编排](workflow-and-microservice-orchestration/README.md) — 编舞 vs 编排的差异
+- [阿里云工作流（CloudFlow）](apache-eventmesh/cloud-flow/README.md) — 事件驱动编排的商业实现

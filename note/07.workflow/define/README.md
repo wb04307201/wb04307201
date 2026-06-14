@@ -1,4 +1,9 @@
-#  工作流
+# 工作流
+
+> 最后更新: 2026-06-14
+> ⬅️ [返回 07 工作流](README.md) | [流程引擎](process-engine/README.md) | [微服务编排](workflow-and-microservice-orchestration/README.md)
+
+
 
 > 工作流（Workflow）是组织或系统中为完成特定任务或目标而设计的一系列有序、可重复的活动或步骤的集合，其核心在于通过标准化流程优化资源分配、提升效率并确保结果一致性
 
@@ -68,3 +73,12 @@ stop
 ```
 
    
+
+---
+
+## 相关章节
+
+- ⬅️ [返回 07 工作流](README.md)
+- [行业应用与发展趋势](industry-and-trends.md) — 流程引擎的产业全景
+- [流程引擎](process-engine/README.md) — BPMN 工作原理、引擎发展史
+- [工作流引擎与微服务编排](workflow-and-microservice-orchestration/README.md) — 流程引擎在微服务场景的演化

@@ -1,5 +1,10 @@
 # 工作流引擎与微服务编排
 
+> 最后更新: 2026-06-14
+> ⬅️ [返回 07 工作流](README.md) | [流程引擎](process-engine/README.md) | [Apache EventMesh](apache-eventmesh/README.md)
+
+
+
 ## 工作流
 提到工作流，印象里都是 OA 系统各种请假审批流。事实上，广义上的工作流是对工作流程及其各操作步骤之间业务规则的抽象、概括、描述。简单理解，我们为了实现某个业务目标，抽象拆解出来的一系列步骤及这些步骤之间的协作关系，就是工作流。例如订单发货流、程序构建流等。业界通常用 BPMN 流程图来描述一个工作流。
 
@@ -58,3 +63,11 @@
 
 而微服务编排的设计设计之初，就考虑到了这些问题。
 目前主流的微服务编排引擎有zeebe-io/zeebe, netflix/conductor, uber/cadence。
+---
+
+## 相关章节
+
+- ⬅️ [返回 07 工作流](README.md)
+- [流程引擎](process-engine/README.md) — 传统流程引擎的能力与局限
+- [Zeebe](process-engine/camunda/camunda-8/zeebe/README.md) — 主流微服务编排引擎之一
+- [Apache EventMesh](apache-eventmesh/README.md) — 事件驱动的另一种微服务协作方式
