@@ -70,7 +70,7 @@ BeanDefinitionRegistry registry = ...;
 AbstractBeanDefinition beanDefinition = BeanDefinitionBuilder.genericBeanDefinition(UserDAO.class).getBeanDefinition();
 String beanName = BeanDefinitionReaderUtils.generateBeanName(beanDefinition, registry);
 // 2.注册bean
-BeanDefinitionHol derdefinitionHolder = newBeanDefinitionHolder(beanDefinition, beanName);
+BeanDefinitionHolder definitionHolder = new BeanDefinitionHolder(beanDefinition, beanName);
 BeanDefinitionReaderUtils.registerBeanDefinition(definitionHolder, registry);
 ```
 
@@ -82,10 +82,10 @@ BeanDefinitionReaderUtils.registerBeanDefinition(definitionHolder, registry);
 
 如下示例：
 ```java
-eanDefinitionRegistry registry = ...;
+BeanDefinitionRegistry registry = ...;
 /**1.该方法会自动注册InfrastructureAdvisorAutoProxyCreator*/
 // 注册该类的作用用于动态代理
-AopConfigUtils.isterAutoProxyCreatorIfNecessary(registry);
+AopConfigUtils.registerAutoProxyCreatorIfNecessary(registry);
 /**2.该方法会自动注册AnnotationAwareAspectJAutoProxyCreator*/
 // 同样该类的作用也适用于动态代理
 AopConfigUtils.registerAspectJAnnotationAutoProxyCreatorIfNecessary(registry);
@@ -118,7 +118,7 @@ Class<?> targetClass = AutoProxyUtils.determineTargetClass(beanFactory, "userDAO
 AutoProxyUtils.shouldProxyTargetClass(beanFactory, "userDAO");
 ```
 
-#### ScopedProxyUtils
+### ScopedProxyUtils
 用于创建作用域代理的实用工具类，通常是由 ScopedProxyBeanDefinitionDecorator 和 ClassPathBeanDefinitionScanner 使用。
 
 如下示例：
@@ -139,7 +139,7 @@ try (GenericApplicationContext context = new GenericApplicationContext()) {
 运行上面代码，输出如下：
 `class com.pack.UserDAO$$SpringCGLIB$$0`
 
-### bAopUtils
+### AopUtils
 用于支持 AOP 的实用工具方法。
 
 如下示例：
