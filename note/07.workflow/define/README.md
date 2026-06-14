@@ -1,84 +1,143 @@
-# 工作流
+# 工作流定义
 
 > 最后更新: 2026-06-14
 > ⬅️ [返回 07 工作流](README.md) | [流程引擎](process-engine/README.md) | [微服务编排](workflow-and-microservice-orchestration/README.md)
 
+工作流（Workflow）是组织或系统中为完成特定业务目标而设计的有序、可重复活动的集合。本节从**概念**出发，区分**业务视角**与**技术视角**，并以 BPMN 2.0 标准为锚点建立统一定义。
 
+---
 
-> 工作流（Workflow）是组织或系统中为完成特定任务或目标而设计的一系列有序、可重复的活动或步骤的集合，其核心在于通过标准化流程优化资源分配、提升效率并确保结果一致性
+## 🎯 一句话定位
 
-## 定义
+**工作流 = 业务目标 → 步骤分解 → 协作规则**——把"把大象放进冰箱"的三步动作固化为可被任何人/系统复用的流程模型。
 
-为什么说是业务的结构化与标准化，让我们来看一个业务场景"把大象放进冰箱"试着进行标准化和结构化
-<details>
-  <summary>🔍 问题一分几步？</summary>
+---
 
-1. 打开冰箱门 
-2. 把大象放进去 
-3. 关上冰箱门
-</details>
+## 一、双视角定义
 
-<details>
-  <summary>🔍 问题二谁做？</summary>
+### 1. 业务视角
 
-1. 张三——>打开冰箱门
-2. 李四——>把大象放进去
-3. 王二麻子——>关上冰箱门
-</details>
+工作流是组织运营的"操作手册"，明确**任务分工、执行顺序、交付标准**。核心价值：
 
-工作流的定义:
-1. **业务视角**  
-   工作流是组织运营的“操作手册”，明确任务分工、执行顺序和交付标准。  
-   **业务的结构化与标准化**
+- **结构化**：把模糊的"做事过程"拆成可枚举的步骤
+- **标准化**：跨团队、跨时间产生一致结果
+- **可审计**：每一步可追溯到具体的人/时间/结果
 
-2. **技术视角**  
-   工作流是计算机支持的流程自动化技术，通过定义任务、规则、角色和条件，将业务逻辑转化为可执行的流程模型。  
-   **流程引擎**:驱动业务流程自动化的核心技术组件，它通过解析和执行流程定义（如BPMN标准），协调多系统交互，实现跨部门、跨系统的业务流转自动化。
+### 2. 技术视角
 
+工作流是计算机支持的**流程自动化技术**——通过定义任务、规则、角色、条件，把业务逻辑转化为可执行的**流程模型**。核心组件：
 
-实际业务会更为复杂以下是烧水流程的标准化步骤，包含准备、操作、收尾和安全注意事项的完整逻辑
-```plantuml
-@startuml
-|#LightBlue|准备阶段|
-start
-:选择容器（金属/耐高温玻璃）;
-:确认容器无、无油污;
-:使用符合标准的水源;
-:检查加热设备（燃气/电水壶/电磁炉）;
+- **流程定义（Process Definition）**：BPMN 2.0 标准的 XML / 图形化描述
+- **流程引擎（Process Engine）**：解析并执行流程定义的核心组件
+- **流程实例（Process Instance）**：一次具体的执行（订单审批 #20240615001）
+- **任务（Task）**：实例中需要人工/系统完成的一个动作
 
-|#LightGreen|操作阶段|
-:注入适量水（不超过最大刻度80%）;
-if (加热方式) then (燃气灶)
-    :打开燃气阀门并点火;
-    :调至中火加热;
-else (电水壶/电磁炉)
-    :插电并按下开关;
-    if (需要特定温度?) then (是)
-        :设置目标温度（如80℃）;
-    endif
-endif
-:观察沸腾状态（剧烈翻滚）;
+> 📌 **流程引擎** ≠ **工作流**。工作流是概念，引擎是实现技术。
 
-|#LightYellow|收尾阶段|
-:断电/关火;
-:使用防烫工具处理热水;
-:清洁容器并去除水垢;
+---
 
-|#Pink|安全注意事项|
-:防烫伤、防爆炸、防漏电;
-:保持通风（燃气加热时）;
+## 二、BPMN 2.0 三要素
 
-stop
-@enduml
+BPMN（Business Process Model and Notation）是 OMG 制定的**业务流程建模国际标准**，2.0 版（2011）支持 XML 格式的可执行模型。
+
+```mermaid
+classDiagram
+    class FlowObject {
+        <<abstract>>
+        +Activities 任务节点
+        +Events 事件节点
+        +Gateways 网关节点
+    }
+    class ConnectingObject {
+        <<abstract>>
+        +SequenceFlow 顺序流
+        +MessageFlow 消息流
+        +Association 关联
+    }
+    class Artifact {
+        <<abstract>>
+        +DataObject 数据对象
+        +Group 分组
+        +TextAnnotation 文本注释
+    }
+    class Swimlane {
+        <<abstract>>
+        +Pool 池（参与者）
+        +Lane 道（角色）
+    }
+    FlowObject <|-- ConnectingObject : 通过连接
+    ConnectingObject <|-- Artifact : 可附注
+    Swimlane ..> FlowObject : 组织归属
 ```
 
-   
+| 类别 | 元素 | 作用 |
+|------|------|------|
+| **FlowObject 流程对象** | Activity（Task/Sub-Process/CallActivity）| 要执行的工作 |
+| | Event（Start/Intermediate/End）| 触发起止/中间事件 |
+| | Gateway（Exclusive/Parallel/Inclusive/Event-based）| 路由决策 |
+| **ConnectingObject 连接对象** | Sequence Flow | 同泳道内的执行顺序 |
+| | Message Flow | 跨泳道/跨系统的消息 |
+| **Artifact 制品** | Data Object | 流程读写的数据 |
+| | Group | 视觉分组（不影响执行）|
+| **Swimlane 泳道** | Pool / Lane | 责任人与组织归属 |
+
+---
+
+## 三、一个真实例子：请假审批
+
+```mermaid
+flowchart LR
+    Start((开始)) --> Submit[员工提交申请<br/>User Task]
+    Submit --> Days{请假天数<br/>排他网关}
+    Days -->|<= 3 天| TL{直属上级<br/>排他网关}
+    Days -->|> 3 天| HR{HR 审批<br/>排他网关}
+    TL -->|批准| Notify
+    TL -->|驳回| Reject
+    HR -->|批准| Director{总监审批<br/>排他网关}
+    Director -->|批准| Notify
+    Director -->|驳回| Reject
+    HR -->|驳回| Reject
+    Notify[通知员工<br/>Service Task] --> End((结束))
+    Reject[驳回并通知<br/>Service Task] --> End
+```
+
+**BPMN 元素对应**：
+
+- **Start Event** → 流程入口
+- **User Task** × 3 → 员工/上级/HR/总监 的人工动作
+- **Exclusive Gateway** × 3 → 排他分支（≤3 天 vs >3 天；批准 vs 驳回）
+- **Service Task** × 2 → 系统自动通知
+- **End Event** → 流程结束
+
+---
+
+## 四、相关概念辨析
+
+| 概念 | 与工作流的关系 |
+|------|---------------|
+| **业务流程（Business Process）** | 工作流的上位概念，包含人/系统/规则 |
+| **流程定义（Process Definition）** | 工作流的**静态蓝图**（BPMN XML）|
+| **流程实例（Process Instance）** | 工作流的**动态执行**（一次具体审批）|
+| **任务（Task）** | 流程实例中**最小执行单元** |
+| **流程变量（Process Variable）** | 任务间传递的业务数据 |
+| **编排（Orchestration）** | 微服务/系统层面的工作流（见 [03 编排](../workflow-and-microservice-orchestration/README.md)）|
+
+---
+
+## 🤔 思考
+
+1. **工作流 vs OA 审批？** 广义的"工作流"覆盖所有协作（订单/部署/构建），不限于人事审批。
+2. **为什么需要 BPMN 2.0 标准？** 跨组织、跨厂商、跨语言的可移植性；模型即文档；图形即代码。
+3. **流程定义 vs 流程实例？** 定义是模板（Java class），实例是对象（Java instance）。同一份定义可创建 N 个实例并行执行。
+4. **BPMN 网关和 if-else 的区别？** 网关是**流程图上的显式分支节点**，可被引擎解析、可被运维审计；if-else 隐藏在代码里。
+5. **工作流和微服务编排的关系？** 见 [03 编排](../workflow-and-microservice-orchestration/README.md)——本质相同（任务+协作），但运行环境和约束不同。
 
 ---
 
 ## 相关章节
 
 - ⬅️ [返回 07 工作流](README.md)
-- [行业应用与发展趋势](industry-and-trends.md) — 流程引擎的产业全景
-- [流程引擎](process-engine/README.md) — BPMN 工作原理、引擎发展史
-- [工作流引擎与微服务编排](workflow-and-microservice-orchestration/README.md) — 流程引擎在微服务场景的演化
+- [流程引擎](../process-engine/README.md) — BPMN 引擎工作原理、发展史、选型
+- [工作流引擎与微服务编排](../workflow-and-microservice-orchestration/README.md) — 流程引擎在微服务场景的演化
+- [AI 工作流](../ai-workflow/README.md) — 2025-2026 LLM-native 工作流编排
+- [04 系统设计/02 分布式](../../04.system-design/02-distributed/README.md) — 分布式系统的协作模式
