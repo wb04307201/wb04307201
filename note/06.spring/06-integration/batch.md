@@ -497,3 +497,177 @@ public SkipPolicy skipPolicy() {
 - 数据库/消息中间件**批处理抖动** → Spring Batch retry（chunk 一致性更好）。
 - 单次外部 API/HTTP 调用 → Spring Retry `@Retryable`（精细控制每个请求）。
 - 二者可同时存在：chunk 内部 Processor 调用外部 API 时，外层 `@Retryable` + 内层 chunk retry 互不干扰。
+
+## 十、Job 调度与重启
+
+批处理 Job 通常由调度系统周期性触发。Spring Batch 通过 `JobLauncher` + `JobParameters` 控制启动行为，结合 `JobRepository` 持久化元数据，实现可重启、可恢复的执行模型。
+
+### 1. JobLauncher.run 启动
+
+```java
+@Service
+@RequiredArgsConstructor
+public class BatchTrigger {
+
+    private final JobLauncher jobLauncher;        // 注入 Spring Boot 自动配置实例
+    private final Job importUserJob;
+
+    public JobExecution run(String bizDate) throws Exception {
+        JobParameters params = new JobParametersBuilder()
+                .addString("bizDate", bizDate)    // 业务日期：相同值触发 restart
+                .addLong("timestamp", System.currentTimeMillis()) // 唯一性
+                .toJobParameters();
+        return jobLauncher.run(importUserJob, params);
+    }
+}
+```
+
+### 2. JobParameters / JobInstance / JobExecution
+
+三者关系是 Spring Batch 重启机制的核心：
+
+| 类型 | 唯一性 | 持久化 | 含义 |
+|------|--------|--------|------|
+| **JobParameters** | 用于识别 Instance | 写入 BATCH_JOB_PARAMS 表 | 一次执行的入参（bizDate、chunkSize…） |
+| **JobInstance** | `(jobName, parameters 标识字段)` 唯一 | 写入 BATCH_JOB_INSTANCE | 同一组参数对应**一个**逻辑实例 |
+| **JobExecution** | 每次 run 一次 | 写入 BATCH_JOB_EXECUTION | 同一 Instance 可有多次执行（启动 + 多次重启） |
+
+`JobParameters` 中标记为 `identifying=true` 的字段决定 Instance 唯一性；`RunIdIncrementer` 会自动追加一个递增的 `run.id` 字段，保证每次 run 都成为新的 Instance。
+
+### 3. Restart 机制
+
+当一个 JobExecution 状态为 `FAILED` 时，使用**完全相同**的 identifying JobParameters 再次 `run`，会触发 restart 而非新实例：
+
+```java
+public JobExecution restartFailed(String bizDate) {
+    JobParameters params = new JobParametersBuilder()
+            .addString("bizDate", bizDate)            // 相同 identifying
+            .toJobParameters();
+    return jobLauncher.run(importUserJob, params);   // 自动查找 FAILED 执行
+}
+```
+
+**重启边界**：
+- Step 内的 `chunk` 重新从上次提交位置读（依赖 `JobRepository` 的 `BATCH_STEP_EXECUTION_CONTEXT`）。
+- Step 之间的"边界"由 `allowStartIfComplete` 控制，默认已完成 Step 不会重跑。
+- 编程式判断：注入 `JobExplorer` 查 `findJobInstancesByJobName`、`getJobExecutions`。
+
+### 4. 调度方式
+
+#### 4.1 @Scheduled（最简单）
+
+```java
+@Component
+@RequiredArgsConstructor
+public class ScheduledJob {
+
+    private final BatchTrigger trigger;
+
+    @Scheduled(cron = "0 0 2 * * *")              // 每天凌晨 2 点
+    public void dailyImport() {
+        String bizDate = LocalDate.now().minusDays(1).toString();
+        trigger.run(bizDate);
+    }
+}
+```
+
+#### 4.2 Quartz（企业级定时）
+
+Quartz 支持集群、Calendar、错过执行补偿：
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-quartz</artifactId>
+</dependency>
+```
+
+```java
+@Bean
+public JobDetail jobDetail() {
+    return JobBuilder.newJob().ofType(BatchJobLauncher.class)
+            .storeDurably().withIdentity("importJob").build();
+}
+
+@Bean
+public Trigger trigger(JobDetail jobDetail) {
+    return TriggerBuilder.newTrigger().forJob(jobDetail)
+            .withSchedule(CronScheduleBuilder.cronSchedule("0 0 2 * * ?"))
+            .build();
+}
+```
+
+#### 4.3 Spring Cloud Task（短生命周期微服务批处理）
+
+把每个 Job 跑在独立的微服务进程（适合 Kubernetes Job）：
+
+```java
+@SpringBootApplication
+@EnableTask
+@EnableBatchProcessing
+public class BatchTaskApplication implements CommandLineRunner {
+    public static void main(String[] args) {
+        SpringApplication.run(BatchTaskApplication.class, args);
+    }
+
+    @Override
+    public void run(String... args) {
+        // 进程启动即跑，跑完退出；适合 K8s Job/CronJob
+        jobLauncher.run(importUserJob, new JobParametersBuilder()
+                .addString("bizDate", args[0]).toJobParameters());
+    }
+}
+```
+
+#### 4.4 REST endpoint（手动触发 / 平台触发）
+
+```java
+@RestController
+@RequiredArgsConstructor
+public class JobController {
+
+    private final JobLauncher launcher;
+    private final Job importUserJob;
+
+    @PostMapping("/jobs/import")
+    public Long launch(@RequestParam String bizDate) throws Exception {
+        JobExecution exec = launcher.run(importUserJob,
+                new JobParametersBuilder().addString("bizDate", bizDate).toJobParameters());
+        return exec.getId();
+    }
+}
+```
+
+### 5. 分布式调度
+
+跨 JVM 协作处理同一个大数据量任务，三种主流方案：
+
+| 方案 | 思路 | 适用 |
+|------|------|------|
+| **Remote Chunking** | Master 节点读数据，远程 Worker 节点处理/写；通过消息队列（Kafka/RabbitMQ）传输 chunk | 算力分散、I/O 密集 |
+| **Partitioning** | 多个本地/远程 Worker 并行处理分片；Master 不参与处理 | 单库分片并行导入 |
+| **Spring Cloud Task** | 每个分片一个独立微服务，K8s CronJob 调度 | 云原生、弹性扩缩 |
+
+**Remote Chunking 示例**（Kafka 通道）：
+
+```java
+@Bean
+public IntegrationFlow chunkRequestFlow(ConnectionFactory rabbit) {
+    return IntegrationFlows.from("chunkRequests")
+            .handle(Amqp.outboundAdapter(rabbit).routingKey("requests"))
+            .get();
+}
+
+@Bean
+public Step masterStep() {
+    return stepBuilderFactory.get("master")
+            .<Order, Order>chunk(100)
+            .reader(reader())
+            .writer(chunkProcessorWriter())    // 写到消息队列
+            .build();
+}
+```
+
+详细对比参见 [Spring Batch 官方 Scalability 章节](https://docs.spring.io/spring-batch/docs/current/reference/html/scalability.html)。
+
+> 监控与告警建议接入 07-observability 中的 [Micrometer](../07-observability/micrometer.md) 与 [Actuator](../07-observability/actuator.md)。
