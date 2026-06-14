@@ -1,6 +1,6 @@
 # IoC（Inversion of Control）控制反转
 
-> 最后更新: 2026-06-09
+> 最后更新: 2026-06-14
 > ⬅️ [返回 01 核心容器](../README.md)
 
 ---
@@ -18,6 +18,8 @@
 | [Bean 生命周期](bean-lifecycle.md) | Bean 从创建到销毁经历了哪些步骤？ | 15 min |
 | [作用域与线程安全](scopes-and-thread-safety.md) | singleton Bean 安全吗？prototype 何时用？ | 10 min |
 | [依赖注入](dependency-injection.md) | 4 种注入方式怎么选？构造器还是 setter？ | 8 min |
+| [循环依赖](circular-dependency.md) | Spring 怎么解决 A↔B 闭环？三级缓存？@Lazy？ | 10 min |
+| [FactoryBean](FactoryBean.md) | FactoryBean 与普通 Bean 的区别？SqlSessionFactoryBean？ | 8 min |
 
 ---
 
@@ -153,4 +155,6 @@ graph TB
 - [Bean 生命周期](bean-lifecycle.md)
 - [作用域与线程安全](scopes-and-thread-safety.md)
 - [依赖注入](dependency-injection.md)
+- [循环依赖](circular-dependency.md)
+- [FactoryBean](FactoryBean.md)
 - [08 注解/Bean 注解](../../08-annotations/bean-and-ioc.md)
