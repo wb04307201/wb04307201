@@ -365,5 +365,6 @@ public class GlobalExceptionHandler {
 - ⬅️ [返回 01 核心容器](README.md)
 - [08 注解/异常注解](../08-annotations/exception.md) — @ControllerAdvice 详解
 - [AOP 总览](aop/README.md) — @AfterThrowing 切面处理
+- [02 Web/MVC 组件执行顺序](../02-web/mvc/components-order.md) — Filter 异常不经过 DispatcherServlet，所以 @ControllerAdvice 抓不到，详见该文
 - [事务失效场景](../../03-data/transaction/failure-cases.md) — 异常被吞导致事务失效
 - [06 集成组件/Validation](../06-integration/validation/annotations-and-usage.md) — 校验异常处理
