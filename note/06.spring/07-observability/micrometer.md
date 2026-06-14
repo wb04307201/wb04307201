@@ -375,19 +375,123 @@ public class OrderService {
 
 ### 2. 自定义 HealthIndicator
 
+`HealthIndicator` 是 Spring Boot Actuator 的健康检查核心接口。每个 `HealthIndicator` Bean 都会作为 `/actuator/health` 的**子组件**贡献自己的健康状态。
+
+#### 2.1 HealthIndicator 接口（基础版）
+
 ```java
 @Component
 public class OrderServiceHealthIndicator implements HealthIndicator {
     @Override
     public Health health() {
-        // 检查订单服务健康
-        if (orderRepository.count() > 0) {
-            return Health.up().withDetail("count", orderRepository.count()).build();
+        try {
+            long count = orderRepository.count();
+            if (count > 0) {
+                return Health.up().withDetail("count", count).build();
+            }
+            return Health.down().withDetail("reason", "no orders").build();
+        } catch (Exception e) {
+            // 异常未捕获 → 500 错误。建议改用 AbstractHealthIndicator
+            throw new RuntimeException(e);
         }
-        return Health.down().withDetail("reason", "no orders").build();
     }
 }
 ```
+
+#### 2.2 AbstractHealthIndicator 抽象类（带 try/catch 包装）
+
+**生产推荐**——自动捕获异常，转换为 `Health.down()`：
+
+```java
+@Component
+public class DatabaseHealthIndicator extends AbstractHealthIndicator {
+
+    @Autowired
+    private DataSource dataSource;
+
+    @Override
+    protected void doHealthCheck(Health.Builder builder) {
+        try (Connection conn = dataSource.getConnection()) {
+            if (conn.isValid(3)) {
+                builder.up().withDetail("database", "reachable");
+            } else {
+                builder.down().withDetail("database", "unreachable");
+            }
+        } catch (SQLException e) {
+            // 自动转为 down(status=DOWN) + 异常信息
+            builder.down(e);
+        }
+    }
+}
+```
+
+#### 2.3 HealthContributor 组合接口（Spring Boot 2.2+）
+
+`HealthContributor` 是 `HealthIndicator` 的父接口，允许**嵌套层级**。实现 `CompositeHealthContributor` 可表达"组件 → 子组件"的两级健康结构：
+
+```java
+@Component
+public class ExternalServiceHealthContributor implements CompositeHealthContributor {
+
+    private final Map<String, HealthContributor> contributors = new LinkedHashMap<>();
+
+    public ExternalServiceHealthContributor() {
+        contributors.put("payment", new PaymentServiceHealthIndicator());
+        contributors.put("inventory", new InventoryServiceHealthIndicator());
+        contributors.put("sms", new SmsServiceHealthIndicator());
+    }
+
+    @Override
+    public Iterable<NamedContributor<HealthContributor>> iterator() {
+        return contributors.entrySet().stream()
+            .map(e -> NamedContributor.of(e.getKey(), e.getValue()))
+            .collect(Collectors.toList());
+    }
+
+    @Override
+    public HealthContributor getContributor(String name) {
+        return contributors.get(name);
+    }
+}
+```
+
+访问 `/actuator/health/externalService`：
+
+```json
+{
+  "status": "UP",
+  "components": {
+    "payment": { "status": "UP", "details": { ... } },
+    "inventory": { "status": "DOWN", "details": { "reason": "timeout" } },
+    "sms": { "status": "UP" }
+  }
+}
+```
+
+#### 2.4 命名约定与 K8s 探针映射
+
+Actuator 自动识别以下 Bean 名称作为**保留的探针 contributor**：
+
+| Bean 名称 | 端点 | 用途 |
+|:----------|:-----|:-----|
+| `xxxLivenessStateHealthIndicator` | `/actuator/health/liveness` | 失败 → K8s 重启 Pod |
+| `xxxReadinessStateHealthIndicator` | `/actuator/health/readiness` | 失败 → 摘流量 |
+| `xxxStartupHealthIndicator` | `/actuator/health/startup` | 慢启动应用专用 |
+| `xxxHealthIndicator` | `/actuator/health/xxx` | 自定义健康项 |
+
+> ⚠️ **Liveness 不要做依赖检查**——DB 抖动会触发 K8s 重启所有 Pod 雪崩；DB 检查放 Readiness。
+> 详见 [health-probes.md](health-probes.md)。
+
+#### 2.5 整体状态聚合规则
+
+`/actuator/health` 顶层状态由所有子项聚合：
+
+| 策略 | 规则 |
+|:-----|:-----|
+| **默认** | 任一子项 `DOWN` → 整体 `DOWN` |
+| **`management.endpoint.health.group.*.include`** | 自定义分组聚合（按需聚合 DB、Redis、MQ 等） |
+| **`management.endpoint.health.status.order`** | 自定义状态顺序（如 `DOWN > OUT_OF_SERVICE > UP > UNKNOWN`） |
+| **`management.endpoint.health.status.http-mapping`** | 状态码映射（如 `DOWN → 503`、`OUT_OF_SERVICE → 200`） |
 
 ### 3. 自定义 Metrics Filter
 
