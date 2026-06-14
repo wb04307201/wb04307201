@@ -22,6 +22,30 @@
 
 ---
 
+## ⚡ 4 架构层 + 4 AI 特性速查
+
+### 架构层
+
+| 层级 | 组件 | 一句话定义 | 何时关心 |
+|:-----|:-----|:----------|:---------|
+| **数据层** | 追加日志 + ES Exporter | 状态写在磁盘，查询走 ES | 容量规划 / 历史数据归档 |
+| **共识层** | Raft（多 Broker）| 分布式状态一致性 | 集群部署 / 故障恢复 |
+| **执行层** | Zeebe Broker + Gateway | 解析 BPMN + 分发 Job | 性能调优 / 水平扩展 |
+| **UI 层** | Operate + Tasklist + Optimize | 流程监控 + 人工待办 + 分析 | 运维 / 用户体验 |
+
+### AI 特性（8.5+）
+
+| 特性 | 一句话定义 | 实战场景 |
+|:-----|:----------|:---------|
+| **AI Agent Sub-process** | Ad-hoc Sub-process + LLM 工具调用 | 多步推理 + 工具组合 |
+| **fromAi() FEEL** | 流程变量映射中调 LLM | 单步分类 / 提取 |
+| **Ad-hoc Sub-process** | 无顺序流，LLM 自决顺序 | 灵活 Agent 编排 |
+| **Agent Context** | LLM 可访问流程变量 + RAG 结果 | 上下文感知推理 |
+
+> 📌 完整架构 + 4 融合模式见 [BPMN+AI 融合](../../../11.ai/04-architecture/bpmn-ai-integration.md)。
+
+---
+
 ## 一、核心架构与性能突破
 
 - **Zeebe 引擎**：采用分布式流处理架构，替代 Camunda 7 的 Java 嵌入式引擎。通过 Kafka-like 的追加日志和 Raft 共识协议实现高吞吐量（单集群可处理 **10,000+ 流程实例/秒**），支持水平扩展，无需传统关系型数据库，依赖 Elasticsearch 进行数据查询与历史分析。

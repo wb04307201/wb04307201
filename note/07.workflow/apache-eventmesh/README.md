@@ -24,6 +24,27 @@
 
 ---
 
+## ⚡ 5 大概念速查
+
+| 概念 | 一句话定义 | 何时关心 |
+|:-----|:----------|:---------|
+| **事件驱动（EDA）** | 跨系统通过事件消息异步协作 | 云原生微服务架构 |
+| **CloudEvents** | CNCF 事件格式标准，跨云/跨引擎可移植 | 跨系统事件契约 |
+| **Serverless Workflow** | CNCF 厂商中立的 YAML/JSON DSL 标准 | 云原生工作流定义 |
+| **Apache EventMesh** | 事件网格基础设施（连接 Producer/Consumer 与中间件）| 跨协议 + Schema 管理 + 工作流编排 |
+| **编舞 vs 编排（驱动方式）** | 事件消息驱动 vs 中控引擎驱动 | 微服务协作架构选型 |
+
+**关键记忆点**：
+
+- **EventMesh ≠ Kafka**：Kafka 是「管道」；EventMesh 是「管道 + Schema + 工作流 + 多协议」中间层
+- **CloudEvents ≠ 消息格式**：CloudEvents 是**信封规范**（metadata），消息体自定义
+- **Serverless Workflow ≠ BPMN**：前者 YAML/JSON 工程师友好，后者图形化业务友好
+- **事件驱动 ≠ 消息队列**：前者是**架构模式**，后者是**实现技术**
+
+> 📌 完整 5 能力 + 4 组件见 [§三 Apache EventMesh](#三apache-eventmesh事件网格基础设施)。
+
+---
+
 ## 一、为什么工作流需要事件驱动？
 
 ### 1.1 传统 BPMN 引擎的局限
