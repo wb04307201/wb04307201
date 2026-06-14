@@ -1,6 +1,6 @@
 # 08 注解速查
 
-> 最后更新: 2026-06-09
+> 最后更新: 2026-06-14
 > ⬅️ [返回 Spring 顶层](../README.md)
 
 ---
@@ -16,18 +16,24 @@
 | 场景 | 核心注解 | 详解 |
 |:-----|:---------|:----:|
 | **Web 层** | `@RequestMapping` / `@RestController` / `@GetMapping` / `@PathVariable` / `@RequestParam` / `@RequestBody` / `@ResponseBody` | [web.md](web.md) |
+| **Web 高级** | `@CrossOrigin` / `@RequestHeader` / `@CookieValue` / `@MatrixVariable` / `@ModelAttribute` / `@SessionAttribute` | [web.md#跨域与请求映射细节](web.md) |
 | **Bean 与 IoC** | `@Component` / `@Service` / `@Repository` / `@Controller` / `@Autowired` / `@Resource` / `@Inject` / `@Qualifier` / `@Scope` | [bean-and-ioc.md](bean-and-ioc.md) |
+| **Bean 注入语义** | `@Lazy` / `@Primary` / `@DependsOn` / `@Order` / `@Priority` | [bean-and-ioc.md#五bean-注入语义注解](bean-and-ioc.md) |
 | **配置** | `@Configuration` / `@Bean` / `@Value` / `@ConfigurationProperties` / `@PropertySource` / `@ImportResource` | [configuration.md](configuration.md) |
+| **多环境** | `@Profile` / `application-{profile}.yml` / `spring.profiles.active` | [configuration.md#七profile-与环境隔离](configuration.md) |
 | **AOP** | `@Aspect` / `@Pointcut` / `@Before` / `@After` / `@AfterReturning` / `@AfterThrowing` / `@Around` / `@Order` | [aop.md](aop.md) |
 | **异常处理** | `@ControllerAdvice` / `@ExceptionHandler` / `@ResponseStatus` | [exception.md](exception.md) |
 | **测试** | `@ExtendWith` / `@SpringBootTest` / `@ActiveProfiles` / `@MockBean` | [test.md](test.md) |
-| **条件装配** | `@Conditional` / `@ConditionalOnClass` / `@ConditionalOnMissingBean` / `@ConditionalOnProperty` | [configuration.md](configuration.md#四条件装配-spring-4) |
-| **启动** | `@SpringBootApplication` / `@EnableAutoConfiguration` / `@ComponentScan` / `@EnableScheduling` / `@EnableAsync` | [configuration.md](configuration.md#二自动配置-spring-boot-核心) |
-| **JPA** | `@Entity` / `@Table` / `@Id` / `@Column` / `@OneToOne` / `@OneToMany` / `@ManyToOne` | [jpa.md](jpa.md) |
-| **事务** | `@Transactional` / `@EnableTransactionManagement` | [事务](../03-data/transaction/README.md) |
-| **缓存** | `@Cacheable` / `@CachePut` / `@CacheEvict` / `@EnableCaching` | [缓存](../03-data/cache/README.md) |
-| **校验** | `@Valid` / `@Validated` / `@NotNull` / `@Min` / `@Max` | [Validation](../06-integration/validation/annotations-and-usage.md) |
-| **重试** | `@Retryable` / `@Recover` / `@EnableRetry` | [Retry](../06-integration/retry.md) |
+| **切片测试** | `@TestConfiguration` / `@WebMvcTest` / `@DataJpaTest` / `@AutoConfigureMockMvc` / `@SpyBean` | [test.md#切片测试与高级注解](test.md) |
+| **条件装配** | `@Conditional` / `@ConditionalOnClass` / `@ConditionalOnMissingBean` / `@ConditionalOnProperty` | [configuration.md#四条件装配-spring-4](configuration.md) |
+| **启动** | `@SpringBootApplication` / `@EnableAutoConfiguration` / `@ComponentScan` / `@EnableScheduling` / `@EnableAsync` | [configuration.md#二自动配置-spring-boot-核心](configuration.md) |
+| **JPA 基础** | `@Entity` / `@Table` / `@Id` / `@Column` / `@OneToOne` / `@OneToMany` / `@ManyToOne` | [jpa.md](jpa.md) |
+| **JPA 高级** | `@MappedSuperclass` / `@Inheritance` / `@Embeddable` / `@Convert` / `@Version` / `@Lock` | [jpa.md#高级映射与查询注解](jpa.md) |
+| **事务** | `@Transactional` / `@EnableTransactionManagement` | [transaction.md](transaction.md) |
+| **缓存** | `@Cacheable` / `@CachePut` / `@CacheEvict` / `@Caching` / `@CacheConfig` / `@EnableCaching` | [cache.md](cache.md) |
+| **调度与异步** | `@Scheduled` / `@Async` / `@EnableScheduling` / `@EnableAsync` | [scheduling-and-async.md](scheduling-and-async.md) |
+| **校验** | `@Valid` / `@Validated` / `@NotNull` / `@NotBlank` / `@Email` / `@Size` / `@Pattern` | [validation.md](validation.md) |
+| **重试** | `@Retryable` / `@Recover` / `@Backoff` / `@EnableRetry` | [retry.md](retry.md) |
 
 ---
 
@@ -38,20 +44,27 @@
 | 暴露 REST 接口 | `@RestController` + `@GetMapping`/`@PostMapping` | [Web 层](web.md) |
 | 注入依赖 | `@Autowired` / `@Resource` / `@Inject` | [Bean](bean-and-ioc.md) |
 | 读取配置 | `@Value` / `@ConfigurationProperties` | [配置](configuration.md) |
-| 写事务方法 | `@Transactional` | [事务](../03-data/transaction/README.md) |
-| 缓存方法结果 | `@Cacheable` | [缓存](../03-data/cache/README.md) |
-| 自动重试 | `@Retryable` + `@Recover` | [重试](../06-integration/retry.md) |
+| 多环境切换 | `@Profile` + `application-{profile}.yml` | [Profile](configuration.md#七profile-与环境隔离) |
+| 写事务方法 | `@Transactional` | [事务](transaction.md) |
+| 缓存方法结果 | `@Cacheable` | [缓存](cache.md) |
+| 自动重试 | `@Retryable` + `@Recover` | [重试](retry.md) |
 | 全局异常处理 | `@ControllerAdvice` + `@ExceptionHandler` | [异常](exception.md) |
 | 启动后执行 | `@PostConstruct` / `ApplicationRunner` | [启动](../04-spring-boot/application-bootstrap.md) |
 | 写切面 | `@Aspect` + `@Before`/`@Around` | [AOP](aop.md) |
 | Bean 作用域 | `@Scope("singleton")` / `"prototype"` | [Bean](bean-and-ioc.md) |
-| 启用异步 | `@EnableAsync` + `@Async` | [启动](../04-spring-boot/application-bootstrap.md) |
-| 启用定时任务 | `@EnableScheduling` + `@Scheduled` | [启动](../04-spring-boot/application-bootstrap.md) |
+| 启用异步 | `@EnableAsync` + `@Async` | [异步](scheduling-and-async.md) |
+| 启用定时任务 | `@EnableScheduling` + `@Scheduled` | [调度](scheduling-and-async.md) |
 | 写 JPA 实体 | `@Entity` + `@Id` + `@Column` | [JPA](jpa.md) |
+| 写 JPA 继承/嵌入 | `@MappedSuperclass` / `@Embedded` / `@Inheritance` | [JPA 高级](jpa.md#高级映射与查询注解) |
 | 写测试类 | `@SpringBootTest` + `@MockBean` | [测试](test.md) |
+| 切片测试 | `@WebMvcTest` / `@DataJpaTest` | [切片测试](test.md#切片测试与高级注解) |
 | 条件装配 | `@ConditionalOnClass` / `@ConditionalOnProperty` | [配置](configuration.md#四条件装配-spring-4) |
 | 启动 Spring Boot | `@SpringBootApplication` | [配置](configuration.md#二自动配置-spring-boot-核心) |
-| 校验请求参数 | `@Valid` + `@NotNull` + `@Min`/`@Max` | [Validation](../06-integration/validation/annotations-and-usage.md) |
+| 校验请求参数 | `@Valid` + `@NotNull` + `@Min`/`@Max` | [Validation](validation.md) |
+| 跨域 | `@CrossOrigin` / `WebMvcConfigurer` | [Web](web.md#跨域与请求映射细节) |
+| 多实现类优先选择 | `@Primary` | [Bean](bean-and-ioc.md#五bean-注入语义注解) |
+| 乐观锁 | `@Version` | [JPA](jpa.md#高级映射与查询注解) |
+| 悲观锁 | `@Lock` | [JPA](jpa.md#高级映射与查询注解) |
 
 ---
 
@@ -72,11 +85,16 @@ graph LR
     AOP --> Tx[@Transactional]
 
     Comp --> Web[@RestController @RequestMapping]
-    Web --> Validate[@Valid]
+    Web --> Cors[@CrossOrigin]
+    Web --> Validate[@Valid @Validated]
     Web --> ExHandle[@ControllerAdvice<br/>@ExceptionHandler]
 
-    Comp --> Cache[@Cacheable]
-    Comp --> Retry[@Retryable]
+    Comp --> Cache[@Cacheable @CachePut @CacheEvict]
+    Comp --> Retry[@Retryable @Recover]
+    Comp --> Sched[@Scheduled @Async]
+
+    DI --> Primary[@Primary @Qualifier]
+    DI --> Lazy[@Lazy @DependsOn @Order]
 ```
 
 ---
@@ -88,6 +106,7 @@ graph LR
 3. **@Configuration vs @Bean？** @Configuration 标记类，@Bean 标记方法（方法返回值注册为 Bean）。
 4. **@RestController vs @Controller？** @RestController = @Controller + @ResponseBody（所有方法默认返回 JSON）。
 5. **什么时候用 @Aspect 不用 @Bean？** 自己的切面类用 @Aspect + @Component（自动扫描）；第三方库的切面用 @Configuration + @Bean 显式注册。
+6. **@Cacheable、@Transactional、@Async 都有 self-invocation 问题？** 是的——三者都基于 AOP 代理，**内部 this.xxx() 调用绕过代理**。统一解法：拆 Bean 或注入自己（`@Lazy`）。
 
 ---
 
@@ -95,13 +114,18 @@ graph LR
 
 | 文件 | 内容 | 状态 |
 |:-----|:-----|:----:|
-| [web.md](web.md) | Spring MVC 注解（@RestController、@RequestMapping、参数绑定） | ✅ |
-| [bean-and-ioc.md](bean-and-ioc.md) | Bean 声明/注入/作用域（@Component 家族、@Autowired、@Scope） | ✅ |
-| [configuration.md](configuration.md) | 配置/条件装配/外部化配置（@Configuration、@Conditional、@Value） | ✅ |
+| [web.md](web.md) | Spring MVC 注解（@RestController、@RequestMapping、@CrossOrigin、参数绑定） | ✅ |
+| [bean-and-ioc.md](bean-and-ioc.md) | Bean 声明/注入/作用域/注入语义（@Lazy/@Primary/@Order） | ✅ |
+| [configuration.md](configuration.md) | 配置/条件装配/外部化配置/Profile（@Configuration、@Conditional、@Profile） | ✅ |
 | [aop.md](aop.md) | AOP 注解（@Aspect、@Pointcut、5 种通知） | ✅ |
 | [exception.md](exception.md) | 异常处理（@ControllerAdvice、@ExceptionHandler） | ✅ |
-| [test.md](test.md) | 测试注解（@SpringBootTest、@MockBean、@ActiveProfiles） | ✅ |
-| [jpa.md](jpa.md) | JPA 注解（@Entity、@Table、@Id、关联关系） | ✅ |
+| [test.md](test.md) | 测试注解（@SpringBootTest、@MockBean、切片测试） | ✅ |
+| [jpa.md](jpa.md) | JPA 注解（@Entity、@Table、@Id、关联关系 + 高级映射/锁） | ✅ |
+| [transaction.md](transaction.md) | 事务注解（@Transactional 7 传播 / 4 隔离 / 失效场景） | ✅ |
+| [cache.md](cache.md) | 缓存注解（@Cacheable/@CachePut/@CacheEvict + SpEL） | ✅ |
+| [scheduling-and-async.md](scheduling-and-async.md) | 调度与异步（@Scheduled cron / @Async / 线程池） | ✅ |
+| [validation.md](validation.md) | 校验注解（@Valid/@Validated + JSR-303 约束） | ✅ |
+| [retry.md](retry.md) | 重试注解（@Retryable/@Recover/@Backoff） | ✅ |
 
 ---
 
@@ -112,3 +136,5 @@ graph LR
 - [02 Web 层](../02-web/README.md) — MVC/WebFlux 相关注解
 - [03 数据层](../03-data/README.md) — 事务/缓存相关注解
 - [06 集成组件](../06-integration/README.md) — Validation/Retry/StateMachine 相关注解
+- [13 辨析/为什么不推荐 @Autowired 字段注入](../13.split-hairs/06.spring/not-use-@autowired/README.md) — 字段注入 vs 构造器注入
+- [13 辨析/PO-VO-DTO-BO-DAO-POJO 语义辨析](../13.split-hairs/06.spring/clarify-various-o/README.md) — 各层对象语义
