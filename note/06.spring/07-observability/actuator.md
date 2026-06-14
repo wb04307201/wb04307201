@@ -1,5 +1,8 @@
 # Spring Boot Actuator 监控，Actuator + Prometheus + Grafana 监控体系整合方案
 
+> 最后更新: 2026-06-14
+> ⬅️ [返回 07 可观测性](README.md) | [Micrometer](micrometer.md) | [Prometheus + Grafana](prometheus-grafana.md) | [健康检查三探针](health-probes.md) | [日志聚合](log-aggregation.md)
+
 ## 一、Actuator 概述
 Spring Boot Actuator 是 Spring Boot 生态系统中的核心监控组件，通过暴露 HTTP 端点和 JMX MBean 提供应用程序运行时状态的实时监控能力。其核心价值在于无需修改业务代码即可实现健康检查、性能指标采集、配置审计等功能，尤其适用于生产环境下的微服务监控场景。典型应用场景包括：
 - **Kubernetes 健康探测**：通过 `/actuator/health` 端点实现容器存活检查
@@ -51,7 +54,7 @@ management:
 | Prometheus | `/actuator/prometheus` | 展用于以 Prometheus 格式暴露应用的监控指标                   |
 
 ### 4. 自定义端点开发
-过代码暴露的HTTP或JMX接口，用于返回结构化数据或执行管理操作。
+通过代码暴露的HTTP或JMX接口，用于返回结构化数据或执行管理操作。
 ```java
 @Component
 @Endpoint(id = "customEndpoint")  // 定义端点ID
@@ -485,7 +488,7 @@ groups:
 1. **端点分级暴露**：
     - 开发环境：`management.endpoints.web.exposure.include=*`
     - 生产环境：仅暴露 `health,info,metrics,prometheus`
-2**指标降采样**：
+2. **指标降采样**：
    在 Prometheus 配置中添加 `recording rules` 预计算常用指标：
 ```yaml
 rule_files:
