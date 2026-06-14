@@ -1,6 +1,6 @@
 # 配置注解
 
-> 最后更新: 2026-06-09
+> 最后更新: 2026-06-14
 > ⬅️ [返回注解速查](../README.md) | [Bean 注解](bean-and-ioc.md) | [JPA 注解](jpa.md)
 
 本节介绍 Spring/Java 配置相关的注解：声明配置类、启用自动配置、组件扫描、条件装配、外部化配置、Profile 多环境。
@@ -264,12 +264,136 @@ public class PropertyApplication {
 
 ---
 
+## 七、Profile 与环境隔离
+
+> 同一份代码在不同环境（dev / staging / prod）使用**不同配置**——通过 `@Profile` + `application-{profile}.yml` 实现。
+
+### @Profile 注解使用
+
+> 标记 Bean / 配置类**只在指定 Profile 激活时**才会注册。
+
+```java
+// 1. 类级别
+@Service
+@Profile("dev")                    // 仅 dev 环境生效
+public class DevMailService implements MailService { ... }
+
+// 2. @Bean 方法级别
+@Configuration
+public class DataSourceConfig {
+
+    @Bean @Profile("dev")
+    public DataSource devDs() { return new H2DataSource(); }
+
+    @Bean @Profile("prod")
+    public DataSource prodDs() { return new MysqlDataSource(); }
+}
+```
+
+### 多 Profile 与表达式
+
+```java
+@Profile("dev")                              // 单一
+@Profile({"dev", "staging"})                 // 任一激活即可
+@Profile("!prod")                            // 非 prod
+@Profile("dev & cloud")                      // 复合（Spring 5.1+）
+```
+
+### application-{profile}.yml 多环境配置
+
+```
+src/main/resources/
+├── application.yml              # 通用配置
+├── application-dev.yml          # dev 环境
+├── application-staging.yml      # staging 环境
+└── application-prod.yml         # prod 环境
+```
+
+```yaml
+# application.yml（公共）
+spring:
+  application:
+    name: order-service
+
+# application-dev.yml（开发）
+spring:
+  datasource:
+    url: jdbc:h2:mem:devdb
+logging:
+  level:
+    root: DEBUG
+
+# application-prod.yml（生产）
+spring:
+  datasource:
+    url: jdbc:mysql://prod-db:3306/order
+    password: ${DB_PWD}            # 敏感信息从环境变量读
+logging:
+  level:
+    root: INFO
+```
+
+### spring.profiles.active 激活方式
+
+| 方式 | 示例 |
+|:-----|:-----|
+| **配置文件** | `application.yml` 中 `spring.profiles.active: dev` |
+| **环境变量** | `SPRING_PROFILES_ACTIVE=prod` |
+| **JVM 参数** | `-Dspring.profiles.active=staging` |
+| **命令行** | `java -jar app.jar --spring.profiles.active=prod` |
+| **代码** | `SpringApplication.setAdditionalProfiles("dev")` |
+
+### 实战：dev / staging / prod 三环境切换
+
+```java
+// DataSourceConfig.java
+@Configuration
+public class DataSourceConfig {
+
+    @Bean @Profile("dev")
+    public DataSource devDs() {
+        return DataSourceBuilder.create()
+                .url("jdbc:h2:mem:devdb")
+                .username("sa")
+                .password("")
+                .build();
+    }
+
+    @Bean @Profile("staging")
+    public DataSource stagingDs(@Value("${datasource.url}") String url) {
+        return DataSourceBuilder.create().url(url).build();
+    }
+
+    @Bean @Profile("prod")
+    public DataSource prodDs(@Value("${datasource.url}") String url,
+                             @Value("${datasource.password}") String pwd) {
+        return DataSourceBuilder.create()
+                .url(url)
+                .password(pwd)
+                .build();
+    }
+}
+```
+
+```bash
+# 启动 dev
+java -jar app.jar --spring.profiles.active=dev
+
+# 启动 prod（敏感信息从环境变量注入）
+DB_PWD=xxx java -jar app.jar --spring.profiles.active=prod
+```
+
+> 📌 **最佳实践**：prod 环境配置**不进仓库**，由 CI/CD 注入环境变量 / 密钥管理（KMS / Vault）。
+
+---
+
 ## 🤔 思考
 
 1. **@SpringBootApplication 为什么是三件套？** 它把"我是配置类 + 启用自动配置 + 扫描当前包"封装为一行，简化启动类。
 2. **@ConditionalOnMissingBean 的妙用？** Spring Boot 的"约定优于配置"：用户没配就用默认的，用户配了就用用户的。
 3. **什么时候用 @PropertySource vs application.yml？** `@PropertySource` 适合老项目迁移或第三方配置；新项目推荐用 `application.yml`（Spring Boot 自动加载）。
 4. **@ConfigurationProperties + @Validated？** 可以校验配置合法性（邮箱格式、长度等），避免运行时才发现配置错误。
+5. **@Profile 能写在内部类上吗？** 可以——通过 `@Profile` + `@Bean` 方法或 `@Configuration` 内嵌类隔离环境配置。
 
 ---
 
@@ -278,5 +402,6 @@ public class PropertyApplication {
 - ⬅️ [返回注解速查](../README.md)
 - [04 Spring Boot/自定义 Starter](../../04-spring-boot/custom-starter.md) — @ConfigurationProperties 实战
 - [04 Spring Boot/自动配置原理](../../04-spring-boot/README.md) — @EnableAutoConfiguration 工作机制
+- [04 Spring Boot/外部化配置](../../04-spring-boot/externalized-configuration.md) — 多环境配置 externalization
 - [Bean 注解](bean-and-ioc.md) — @Bean、@Component
 - [Web 注解](web.md) — @Controller、@RestController
