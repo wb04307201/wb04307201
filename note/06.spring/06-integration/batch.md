@@ -1,5 +1,7 @@
 # Spring Batch 批处理
 
+> 最后更新: 2026-06-14
+
 ## 一、Spring Batch 概述
 Spring Batch 是 Spring 生态系统中专门为批处理设计的轻量级框架，适用于数据迁移、ETL（Extract-Transform-Load）、定时报表生成等场景。其核心设计理念是通过分层架构实现高内聚低耦合，支持从单线程到分布式的大规模数据处理。
 
@@ -403,3 +405,95 @@ public class OrderedAggregateWriter implements ItemWriter<List<Order>> {
 1. **官方文档**：[Partitioning a Step](https://docs.spring.io/spring-batch/docs/current/reference/html/scalability.html#partitioning)
 2. **实战教程**：[Spring Batch Parallel Processing](https://spring.io/guides/gs/batch-processing/)
 3. **性能测试**：[Partitioning Benchmark](https://github.com/spring-projects/spring-batch/tree/main/spring-batch-samples/src/main/java/org/springframework/batch/sample/partitioning)
+
+## 九、失败重试与跳过
+
+Spring Batch 在 chunk 处理中提供**容错**机制：通过 `faultTolerant()` 进入容错模式，配合 `skip` / `retry` / `noSkip` / `noRetry` 分类异常，决定"哪些异常可以跳过"、"哪些异常可以重试"、"哪些异常必须立刻失败"。
+
+### 1. skip 跳过策略
+
+```java
+@Bean
+public Step importStep() {
+    return stepBuilderFactory.get("importStep")
+            .<Order, Order>chunk(100)
+            .reader(reader())
+            .processor(processor())
+            .writer(writer())
+            .faultTolerant()                            // 开启容错
+            .skip(Exception.class)                      // 匹配任意异常
+            .skipLimit(10)                              // 整个 step 最多跳过 10 条
+            .skip(DataIntegrityViolationException.class) // 多次 skip 可叠加
+            .build();
+}
+```
+
+**关键点**：
+- `skipLimit` 是**累积**上限，超过后整 Step 失败。
+- 跳过发生在 item 处理链任意环节（reader/processor/writer）。
+- 跳过的对象会被 `StepExecution` 记录到 `skipCount`，便于监控告警。
+
+### 2. retry 重试策略
+
+```java
+@Bean
+public Step retryStep() {
+    return stepBuilderFactory.get("retryStep")
+            .<Order, Order>chunk(50)
+            .reader(reader())
+            .writer(writer())
+            .faultTolerant()
+            .retryLimit(3)                              // 最多重试 3 次
+            .retry(TransientDataAccessException.class)  // 瞬时异常才重试
+            .retry(DeadlockLoserDataAccessException.class)
+            .build();
+}
+```
+
+- 重试只在 **chunk 边界**生效：reader 抛异常 → 重新读整个 chunk；writer 抛异常 → 重写整个 chunk。
+- 超过 `retryLimit` 后异常向上抛，触发 `skip` 决策或 Step 失败。
+
+### 3. noSkip / noRetry 异常分类器
+
+黑白名单混合使用，对"已知不可重试"的异常做精准排除：
+
+```java
+.faultTolerant()
+.skipLimit(100)
+.retryLimit(3)
+.retry(SQLException.class)
+.noRetry(FatalBatchException.class)               // 致命异常：禁止重试
+.skip(ValidationException.class)                   // 业务校验失败：直接跳过
+.noSkip(PessimisticLockingFailureException.class)  // 锁冲突：禁止跳过（必须让上游感知）
+```
+
+`noSkip` / `noRetry` 的优先级高于 `skip` / `retry`，常用于"非瞬时/不可恢复"异常的隔离。
+
+### 4. SkipPolicy / RetryPolicy 编程式
+
+`SimpleSkipPolicy` / `ExceptionClassifierSkipPolicy` 提供更细粒度控制：
+
+```java
+@Bean
+public SkipPolicy skipPolicy() {
+    return new ExceptionClassifierSkipPolicy()
+        .classify(SQLException.class, true)        // 重试后仍失败也跳
+        .classify(ValidationException.class, true)
+        .classify(OutOfMemoryError.class, false);  // OOM 不可跳
+}
+```
+
+### 5. 与 Spring Retry @Retryable 的关系
+
+| 维度 | Spring Batch retry | Spring Retry @Retryable |
+|------|-------------------|------------------------|
+| 粒度 | chunk（批） | 单次方法调用 |
+| 触发位置 | Reader/Processor/Writer 链 | AOP 拦截注解方法 |
+| 重试范围 | 重读/重写整个 chunk | 同一方法 N 次 |
+| 事务边界 | chunk 一致 | 默认无事务，需配合 `@Transactional` |
+| 适用 | 大批量处理，瞬时 DB/网络抖动 | 单点外部调用（HTTP、RPC） |
+
+**经验法则**：
+- 数据库/消息中间件**批处理抖动** → Spring Batch retry（chunk 一致性更好）。
+- 单次外部 API/HTTP 调用 → Spring Retry `@Retryable`（精细控制每个请求）。
+- 二者可同时存在：chunk 内部 Processor 调用外部 API 时，外层 `@Retryable` + 内层 chunk retry 互不干扰。
