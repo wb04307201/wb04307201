@@ -1821,7 +1821,7 @@ RBAC/API安全
 注意：**只改链接目标，不改链接文字**（保持 `[权限模型 RBAC / ABAC](...)` 的可读性）。
 这些文件中若有其他对 `rbac-abac` 主题的纯文字描述（非链接），保留不动。
 
-- [ ] **Step 5.5c：把上述 4 个文件改动合并到 Task 5 的同一个 commit（`7a6e285`）中**
+- [ ] **Step 5.5c：把上述 4 个文件改动合并到 Task 5 的同一个 commit（`a47d661`）中**
 
 > 用 `git commit --amend` 重新提交，确保 Task 5 落地后，整仓已经没有 `rbac-abac` 引用
 > （除 `rbac-abac/README.md` 自身之外），Task 6 删除时无残留。
