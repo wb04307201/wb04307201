@@ -1,6 +1,6 @@
 # Bean 与 IoC 注解
 
-> 最后更新: 2026-06-09
+> 最后更新: 2026-06-14
 > ⬅️ [返回注解速查](../README.md) | [Web 注解](web.md) | [配置注解](configuration.md)
 
 本节介绍用于**将类注册为 Bean、注入依赖、设置作用域**的注解。
@@ -214,12 +214,112 @@ public class UserService {
 
 ---
 
+## 五、Bean 注入语义注解
+
+> 本节介绍**控制 Bean 注入行为**的注解：延迟注入、多实现类优先选择、强制顺序、集合排序。
+
+### @Lazy
+
+> 延迟初始化 Bean。**默认 Spring 在容器启动时实例化所有 singleton Bean**，`@Lazy` 让其在**首次被注入/查找**时才创建。
+
+```java
+@Lazy
+@Service
+public class HeavyService { ... }
+
+// 注入时延迟：@Autowired + @Lazy
+@Autowired @Lazy
+private HeavyService heavy;       // 此处注入的是代理，方法被调用时才真正创建
+```
+
+#### 解决循环依赖
+
+> 配合 `@Autowired` 上的 `@Lazy` 可**打破构造器注入的循环依赖**。
+
+```java
+// ❌ 循环依赖：构造器注入时启动失败
+public A(B b) { this.b = b; }
+public B(A a) { this.a = a; }
+
+// ✅ 用 @Lazy 注入
+public A(@Lazy B b) { this.b = b; }      // B 的代理先注入，使用时才真正创建
+public B(A a) { this.a = a; }
+```
+
+> ⚠️ `@Lazy` 是治标手段，**根本解法是重构依赖方向**。详见 [01-core/ioc/circular-dependency](../../01-core/ioc/circular-dependency.md)。
+
+### @Primary
+
+> 当有**多个同类型 Bean** 时，`@Primary` 标记的 Bean **优先被注入**（无需 `@Qualifier`）。
+
+```java
+public interface MessageSender { ... }
+
+@Service
+@Primary                          // ← 默认优先
+public class EmailSender implements MessageSender { ... }
+
+@Service
+public class SmsSender implements MessageSender { ... }
+
+// 不写 @Qualifier，默认注入 EmailSender
+@Autowired
+private MessageSender sender;
+```
+
+### @DependsOn
+
+> 强制 **Bean 初始化顺序**——指定的 Bean 会在当前 Bean 之前创建。
+
+```java
+@DataSourceConfig   // 数据源先初始化
+public class DataSourceConfig { ... }
+
+@Service
+@DependsOn("dataSourceConfig")    // 确保 DataSourceConfig 先 ready
+public class UserService { ... }
+```
+
+> 📌 适用场景：Bean A 初始化时需要 Bean B 的状态（如配置加载器先于业务服务）。
+
+### @Order 与 @Priority
+
+> 控制**集合 / 数组注入**时的 Bean 顺序，或**AOP 通知**的执行顺序。
+
+| 注解 | 位置 | 用途 |
+|:-----|:-----|:-----|
+| `@Order(value)` | 类 / 方法 / 字段 | 通用排序（值越小越靠前） |
+| `@Priority(value)` | 类 / 方法 | 与 JSR-250 标准（作用相近） |
+
+```java
+// 集合注入：按 @Order 排序
+public interface Plugin { }
+
+@Component @Order(1) class LogPlugin implements Plugin { ... }
+@Component @Order(2) class AuthPlugin implements Plugin { ... }
+
+@Autowired
+private List<Plugin> plugins;     // [LogPlugin, AuthPlugin]
+
+// AOP 通知顺序
+@Aspect @Component
+@Order(1)                         // 数字越小优先级越高
+public class TxAspect { ... }
+
+@Aspect @Component
+@Order(2)
+public class LogAspect { ... }
+```
+
+---
+
 ## 🤔 思考
 
 1. **@Component 家族（@Service/@Repository/@Controller）为什么功能等价还要分？** 业务语义化 + 未来扩展点（@Repository 自动转换异常）。
-2. **构造器注入还是字段注入？** Spring 官方推荐**构造器注入**（强制依赖、利于测试、支持 final）。
+2. **构造器注入还是字段注入？** Spring 官方推荐**构造器注入**（强制依赖、利于测试、支持 final）。👉 详见 [为什么不推荐 @Autowired 字段注入](../../13.split-hairs/06.spring/not-use-@autowired/README.md)。
 3. **@Autowired 找不到 Bean 怎么办？** 检查包路径（是否在 @ComponentScan 范围）、@Service 是否漏写、依赖是否冲突。
 4. **为什么 singleton Bean 要避免可变成员变量？** 多个线程共享同一实例，可变状态会引发数据竞争。
+5. **@Primary vs @Qualifier？** @Primary 是"约定"（默认选谁），@Qualifier 是"显式指定"。多团队协作时优先用 `@Qualifier` 显式声明，避免隐式行为。
 
 ---
 
@@ -228,5 +328,7 @@ public class UserService {
 - ⬅️ [返回注解速查](../README.md)
 - [01 核心容器/IoC](../../01-core/ioc/README.md) — Bean 生命周期
 - [01 核心容器/依赖注入](../../01-core/ioc/dependency-injection.md) — 3 种注入方式详解
+- [01 核心容器/循环依赖](../../01-core/ioc/circular-dependency.md) — @Lazy 解决循环依赖
+- [13 辨析/为什么不推荐 @Autowired 字段注入](../../13.split-hairs/06.spring/not-use-@autowired/README.md)
 - [配置注解](configuration.md) — @Configuration + @Bean
 - [Web 注解](web.md) — @Controller 用法
