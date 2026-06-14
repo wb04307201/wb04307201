@@ -196,7 +196,7 @@ kubectl run myapp --image=myorg/myapp:native --port=8080
 
 镜像特点：
 
-- 基于 `cgr.dev/chainguard/static` 或类似 distroless 镜像
+- 基于 `paketobuildpacks/run`（Paketo 默认）或其他 distroless 镜像
 - 无 JVM、无 OS 包管理器
 - 体积通常 50-80 MB（vs 普通 JVM 镜像 200+ MB）
 
