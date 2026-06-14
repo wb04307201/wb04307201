@@ -246,4 +246,3 @@ kubectl run myapp --image=myorg/myapp:native --port=8080
 
 ---
 
-> 最后更新: 2026-06-14
