@@ -277,7 +277,7 @@ spring:
 
 ## 七、统一鉴权
 
-> 📌 本节展示 Gateway 层的鉴权**接入点**与**上下文透传**。JWT 签发、密钥管理、OIDC 流程详见 [04.system-design/05-security/oauth2-oidc/](../04.system-design/05-security/oauth2-oidc/README.md) 与 [04.system-design/05-security/jwt-security/](../04.system-design/05-security/jwt-security/README.md)。
+> 📌 本节展示 Gateway 层的鉴权**接入点**与**上下文透传**。JWT 签发、密钥管理、OIDC 流程详见 [04.system-design/05-security/oauth2-oidc/](../../04.system-design/05-security/oauth2-oidc/README.md) 与 [04.system-design/05-security/jwt-security/](../../04.system-design/05-security/jwt-security/README.md)。
 
 ```java
 @Component

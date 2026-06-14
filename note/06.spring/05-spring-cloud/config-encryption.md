@@ -205,4 +205,4 @@ java -jar app.jar
 - ⬅️ [返回 05 Spring Cloud](README.md)
 - [Config 中心](config-center.md) — 配置中心选型与实战
 - [Bus](bus.md) — 加密配置的实时刷新
-- [04.system-design/05-security/secrets-management](../04.system-design/05-security/secrets-management/) — 密钥管理基础
+- [04.system-design/05-security/secrets-management](../../04.system-design/05-security/secrets-management/) — 密钥管理基础
