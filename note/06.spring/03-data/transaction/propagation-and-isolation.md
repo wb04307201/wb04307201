@@ -234,12 +234,120 @@ graph TB
 
 ---
 
+## 四、TransactionSynchronization 事务同步
+
+> Spring 提供的**事务回调机制**——在事务提交/回滚前后插入自定义逻辑（如发消息、清缓存、写日志）。`@TransactionalEventListener` 与 `TransactionSynchronizationManager` 都基于此。
+
+### 1. `TransactionSynchronization` 核心接口
+
+```java
+public interface TransactionSynchronization extends Ordered, Flushable {
+    int STATUS_COMMITTED = 0;
+    int STATUS_ROLLED_BACK = 1;
+    int STATUS_UNKNOWN = 2;
+
+    default void suspend() {}                              // 事务挂起
+    default void resume() {}                               // 事务恢复
+    @Override default void flush() {}                      // 仅在可刷事务中触发
+    default void beforeCommit(boolean readOnly) {}         // commit 之前
+    default void beforeCompletion() {}                     // commit/rollback 之前
+    default void afterCommit() {}                          // commit 之后（最常用）
+    default void afterCompletion(int status) {}            // commit/rollback 之后
+}
+```
+
+### 2. 注册同步：`TransactionSynchronizationManager`
+
+```java
+@Service
+public class OrderService {
+
+    @Autowired private OrderRepository orderRepository;
+
+    @Transactional
+    public void createOrder(Order order) {
+        orderRepository.save(order);
+
+        // 注册事务提交后的钩子
+        if (TransactionSynchronizationManager.isSynchronizationActive()) {
+            TransactionSynchronizationManager.registerSynchronization(
+                new TransactionSynchronization() {
+                    @Override
+                    public void afterCommit() {
+                        // ✅ 事务已提交成功 → 发消息 / 清缓存 / 记日志
+                        kafkaTemplate.send("order-created", order.getId());
+                    }
+                }
+            );
+        }
+    }
+}
+```
+
+### 3. 典型场景对比
+
+| 场景 | 用 `afterCommit` | 用 `beforeCommit` | 用 `@TransactionalEventListener` |
+|------|:----------------:|:------------------:|:-------------------------------:|
+| **发 MQ 消息** | ✅ 推荐 | ❌ commit 失败会发送假消息 | ✅ 更优雅 |
+| **清缓存** | ✅ 推荐 | ❌ | ✅ |
+| **写审计日志** | ✅ 主事务已落库 | - | - |
+| **二次校验 / 阻塞提交** | ❌ | ✅ 可抛异常回滚 | - |
+| **调用外部接口** | ✅ 提交后才调用 | ❌ | - |
+
+### 4. `@TransactionalEventListener`（推荐写法）
+
+```java
+// 1. 业务代码发事件（事务内）
+@Service
+public class OrderService {
+
+    @Autowired private ApplicationEventPublisher publisher;
+
+    @Transactional
+    public void createOrder(Order order) {
+        orderRepository.save(order);
+        publisher.publishEvent(new OrderCreatedEvent(order));  // 注册同步
+    }
+}
+
+// 2. 事件定义
+public class OrderCreatedEvent {
+    private final Order order;
+    public OrderCreatedEvent(Order order) { this.order = order; }
+    public Order getOrder() { return order; }
+}
+
+// 3. 监听器（事务提交后才执行）
+@Component
+public class OrderEventListener {
+
+    @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
+    public void onOrderCreated(OrderCreatedEvent event) {
+        // ✅ 事务已提交，发消息 / 清缓存 / 通知
+        kafkaTemplate.send("order-created", event.getOrder().getId());
+        cacheManager.getCache("orders").evict(event.getOrder().getId());
+    }
+}
+```
+
+| `TransactionPhase` | 触发时机 |
+|--------------------|---------|
+| `BEFORE_COMMIT` | commit 前（可抛异常阻断提交） |
+| `AFTER_COMMIT` | commit 后（默认，最安全） |
+| `AFTER_ROLLBACK` | 回滚后 |
+| `AFTER_COMPLETION` | commit 或回滚后 |
+
+> 📌 **最佳实践**：发消息、清缓存一律用 `AFTER_COMMIT`，避免"事务回滚但消息已发出"的不一致。
+
+---
+
 ## 🤔 思考
 
 1. **REQUIRES_NEW 为什么要挂起当前事务？** 因为数据库连接绑定在事务上，挂起 = 释放连接，新事务获取新连接。
 2. **NESTED 和 REQUIRES_NEW 区别？** NESTED 是 SAVEPOINT（部分回滚），主事务回滚会连带回滚；REQUIRES_NEW 是完全独立。
 3. **READ_COMMITTED 会有不可重复读吗？** 会，因为同事务内两次读之间，其他事务可能修改并提交。
 4. **为什么默认 REPEATABLE_READ？** MySQL InnoDB 通过 MVCC + 间隙锁在 REPEATABLE_READ 下也基本避免了幻读。
+5. **`afterCommit` 抛异常会回滚事务吗？** 不会，commit 已完成；但可能中断后续同步逻辑。建议 `afterCommit` 内做幂等 + 异常捕获。
 
 ---
 
@@ -247,5 +355,6 @@ graph TB
 
 - ⬅️ [返回事务总览](README.md)
 - [事务失效场景](failure-cases.md) — 7 大常见失效陷阱
+- [编程式事务](programmatic-transaction.md) — TransactionTemplate
 - [03 数据层/分布式事务](distributed/theory-and-patterns.md) — Seata、2PC、3PC、Saga
 - [08 注解/事务注解](../../08-annotations/configuration.md) — @Transactional
