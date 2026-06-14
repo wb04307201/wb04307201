@@ -17,6 +17,9 @@
 |:-----|:---------|:--------:|
 | [缓存注解与使用](annotations-and-usage.md) | 5 大注解怎么用？SpEL 怎么写？ | 15 min |
 | [缓存实现与最佳实践](implementations-and-best-practices.md) | Caffeine/Redis/Ehcache 怎么选？4 大高级特性？ | 15 min |
+| [缓存 4 大模式](patterns.md) | Cache-Aside / Read-Through / Write-Through / Write-Behind 怎么选？ | 15 min |
+| [多级缓存与防护](multi-level.md) | L1+L2 架构？穿透/击穿/雪崩如何防御？ | 15 min |
+| [Redis 序列化](serialization.md) | 5 大序列化器怎么选？多态与 Schema 演进？ | 12 min |
 
 ---
 
@@ -94,6 +97,8 @@ public User getById(Long id) {
 | **Caffeine** | 内存 | ⭐⭐⭐⭐⭐ | ❌ | **单机默认** |
 | **Redis** | 内存 | ⭐⭐⭐⭐ | ✅ | **分布式集群** |
 | **Ehcache** | 内存+磁盘 | ⭐⭐⭐ | ✅ | 老项目、持久化 |
+| **Memcached** | 内存 | ⭐⭐⭐⭐ | ✅ | 简单 K-V 缓存，多语言共享 — 详见 implementations-and-best-practices.md |
+| **Hazelcast** | 内存网格 | ⭐⭐⭐⭐ | ✅ | 分布式内存计算 + 嵌入式部署 — 详见 implementations-and-best-practices.md |
 
 > 详细对比见 [缓存实现与最佳实践](implementations-and-best-practices.md)
 
@@ -202,5 +207,8 @@ graph TB
 - ⬅️ [返回 03 数据层](../README.md)
 - [缓存注解与使用](annotations-and-usage.md)
 - [缓存实现与最佳实践](implementations-and-best-practices.md)
+- [缓存 4 大模式](patterns.md)
+- [多级缓存与防护](multi-level.md)
+- [Redis 序列化](serialization.md)
 - [07 可观测性/Micrometer](../07-observability/micrometer.md) — 缓存命中率监控
 - [08 注解/AOP 注解](../../08-annotations/aop.md) — 缓存本质是 AOP
