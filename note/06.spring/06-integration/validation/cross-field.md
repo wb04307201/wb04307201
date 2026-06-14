@@ -22,48 +22,9 @@ public class DateRangeDTO {
 - 失败时抛 `ConstraintViolation` 指向类本身（`propertyPath` 为空）。
 - **优点**：零代码、声明式。**缺点**：脚本无 IDE 支持、调试困难、性能略低（每次校验启动脚本引擎），复杂规则不推荐。
 
-## 二、自定义 ConstraintValidator 注入两个字段
+## 二、自定义 ConstraintValidator（**类级别，推荐**）
 
-通过字段级注解（注解作用在单个字段上）但验证器从 Spring 容器拿到同对象其他字段：
-
-```java
-@Target(ElementType.FIELD)
-@Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = PasswordMatchesValidator.class)
-public @interface PasswordMatches {
-    String field();                    // 要比较的另一个字段名
-    String message() default "两次密码不一致";
-    Class<?>[] groups() default {};
-    Class<? extends Payload>[] payload() default {};
-}
-```
-
-```java
-@Component
-public class PasswordMatchesValidator
-        implements ConstraintValidator<PasswordMatches, String> {
-
-    @Autowired
-    private BeanFactory beanFactory;
-    private String targetField;
-
-    @Override
-    public void initialize(PasswordMatches anno) {
-        this.targetField = anno.field();
-    }
-
-    @Override
-    public boolean isValid(String value, ConstraintValidatorContext ctx) {
-        if (value == null) return true;
-        // 通过 Spring 的 BeanWrapper 拿到同对象其他字段
-        Object bean = ctx.getConstraintDescriptor().getMessageTemplate();
-        // ... 实际用法：把 bean 注入到 initialize 中（见下例）
-        return true;
-    }
-}
-```
-
-更地道的做法是**类级别注解 + 持有对象引用**：
+JSR-303 设计的限制：字段级 `ConstraintValidator` **拿不到 root bean**（Bean Validation 规范按字段粒度调度，验证器方法只接收单个字段值），所以"字段级跨字段校验"本质上是伪命题。**推荐用类级别注解**，验证器直接持有整个对象引用：
 
 ```java
 @Constraint(validatedBy = DateRangeValidator.class)
