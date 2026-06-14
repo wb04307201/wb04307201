@@ -40,11 +40,11 @@
 6. [企业架构 TOGAF 10](01-foundation/system-design-basics/togaf/README.md) — 业务能力地图、ADM 9 阶段、模块化架构治理
 6a. [架构描述语言 ArchiMate 3.2](01-foundation/system-design-basics/archimate/README.md) — 30+ 视点的企业架构建模语言，与 TOGAF 同源
 6b. [IT 价值流参考架构 IT4IT 3.0](01-foundation/system-design-basics/it4it/README.md) — 4 价值流 + 9 功能组件，IT 运营层的"业务模型"
-5. [CAP 定理](02-distributed/cap-and-base/cap/README.md) — 分布式系统的理论基石
-6. [分布式事务](02-distributed/distributed-transaction/README.md) — 跨服务数据一致性
-7. [分布式锁](02-distributed/distributed-lock/README.md) — 分布式协调基础
-8. [限流](03-high-availability/rate-limiting/README.md) — 保护系统的第一道防线
-9. [熔断](03-high-availability/circuit-break/README.md) — 防止级联故障
+7. [CAP 定理](02-distributed/cap-and-base/cap/README.md) — 分布式系统的理论基石
+8. [分布式事务](02-distributed/distributed-transaction/README.md) — 跨服务数据一致性
+9. [分布式锁](02-distributed/distributed-lock/README.md) — 分布式协调基础
+10. [限流](03-high-availability/rate-limiting/README.md) — 保护系统的第一道防线
+11. [熔断](03-high-availability/circuit-break/README.md) — 防止级联故障
 
 ### 高级阶段
 10. [微服务架构](01-foundation/system-design-basics/microservices/README.md) — 拆分/通信/契约/数据一致性/演进 5 大设计主题

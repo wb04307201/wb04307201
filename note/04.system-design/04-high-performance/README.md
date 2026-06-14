@@ -10,19 +10,19 @@
 
 ## 数据库优化
 
-2. [数据库优化概览](database-optimization/README.md) — SQL 优化、读写分离、分库分表、冷热分离四大手段及优化顺序
-3. [SQL 优化](database-optimization/sql/README.md) — 索引优化、执行计划、慢查询
-4. [读写分离](database-optimization/read-write-splitting/README.md) — 主从复制与代理模式
-5. [分库分表](database-optimization/db-sharding/README.md) — [ShardingSphere](database-optimization/db-sharding/sharding-sphere/README.md)
-6. [冷热数据分离](database-optimization/cold-hot-data-separation/README.md) — 数据分层存储
+3. [数据库优化概览](database-optimization/README.md) — SQL 优化、读写分离、分库分表、冷热分离四大手段及优化顺序
+4. [SQL 优化](database-optimization/sql/README.md) — 索引优化、执行计划、慢查询
+5. [读写分离](database-optimization/read-write-splitting/README.md) — 主从复制与代理模式
+6. [分库分表](database-optimization/db-sharding/README.md) — [ShardingSphere](database-optimization/db-sharding/sharding-sphere/README.md)
+7. [冷热数据分离](database-optimization/cold-hot-data-separation/README.md) — 数据分层存储
 
 ## 缓存与消息
 
-7. [缓存设计模式](cache-patterns/README.md) — Cache-Aside/Read-Through/Write-Through/Write-Behind 🆕
-8. [消息队列](mq/README.md) — ActiveMQ/RabbitMQ/RocketMQ/Kafka/Pulsar 对比
+8. [缓存设计模式](cache-patterns/README.md) — Cache-Aside/Read-Through/Write-Through/Write-Behind 🆕
+9. [消息队列](mq/README.md) — ActiveMQ/RabbitMQ/RocketMQ/Kafka/Pulsar 对比
 
 ## 运行时优化
 
-9. [Java 性能优化](java/README.md) — JVM 调优与代码级优化
-10. [连接池优化](connection-pool/README.md) — HikariCP/连接池参数调优 🆕
-11. [序列化优化](serialization/README.md) — Protobuf/Kryo/Hessian 对比 🆕
+10. [Java 性能优化](java/README.md) — JVM 调优与代码级优化
+11. [连接池优化](connection-pool/README.md) — HikariCP/连接池参数调优 🆕
+12. [序列化优化](serialization/README.md) — Protobuf/Kryo/Hessian 对比 🆕
