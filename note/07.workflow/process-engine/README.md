@@ -17,16 +17,26 @@
 
 ```mermaid
 flowchart TB
-    A[1. 流程定义<br/>BPMN XML / 图形化] --> B[2. 解析与建模<br/>构建内部状态机]
-    B --> C[3. 实例化<br/>创建 Process Instance]
-    C --> D[4. 执行循环]
-    D -->|Job Worker 拉取| E[任务节点]
-    D -->|网关判定| F[分支/并行/汇聚]
-    E --> G[更新状态]
+    A["1️⃣ 流程定义<br/>BPMN XML / 图形化"] --> B["2️⃣ 解析与建模<br/>构建内部状态机"]
+    B --> C["3️⃣ 实例化<br/>创建 Process Instance"]
+    C --> D["4️⃣ 执行循环"]
+
+    D -->|"Job Worker 拉取"| E["任务节点<br/>User / Service / Send"]
+    D -->|"网关判定"| F["分支/并行/汇聚<br/>Exclusive / Parallel"]
+
+    E --> G["更新状态<br/>持久化 + 历史"]
     F --> G
-    G --> H{流程未结束?}
-    H -->|是| D
-    H -->|否| I[结束 + 写历史表]
+
+    G --> H{"流程未结束?"}
+    H -->|"是"| D
+    H -->|"否"| I["结束 + 写历史表<br/>act_hi_*"]
+
+    classDef stage fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    classDef loop fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    classDef end fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
+    class A,B,C,D stage
+    class E,F,G,H loop
+    class I end
 ```
 
 | 阶段 | 关键动作 | 引擎实现 |
