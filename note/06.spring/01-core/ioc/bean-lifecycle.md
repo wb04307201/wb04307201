@@ -126,6 +126,51 @@ public interface InitializingBean {
 <bean id="demo" class="cn.wubo.Demo" init-method="init()"/>
 ```
 
+#### 3.3.1 BeanFactoryPostProcessor（修改 Bean 定义）⭐
+
+> **与 BeanPostProcessor 的关键区别**：
+> - `BeanPostProcessor`：处理 **Bean 实例**（实例化**之后**）；
+> - `BeanFactoryPostProcessor`：处理 **Bean 定义**（实例化**之前**）。
+
+```java
+public interface BeanFactoryPostProcessor {
+    void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException;
+}
+```
+
+**执行时机**：
+
+```
+1. 加载配置 → 解析为 BeanDefinition
+2. ★ 调用所有 BeanFactoryPostProcessor  ← 在这里可以修改 BeanDefinition
+3. 实例化 Bean
+4. 调用 BeanPostProcessor
+```
+
+**典型用途**：
+
+- 修改已有 BeanDefinition 的属性值（如 `${...}` 占位符替换）
+- 动态注册新的 BeanDefinition
+- Spring 自家的 `PropertySourcesPlaceholderConfigurer`（处理 `@Value("${...}")`）就是 `BeanFactoryPostProcessor`
+
+```java
+@Component
+public class MyBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
+    @Override
+    public void postProcessBeanFactory(ConfigurableListableBeanFactory factory) {
+        // 例：把所有 datasource Bean 的某个属性改为新值
+        for (String name : factory.getBeanDefinitionNames()) {
+            BeanDefinition def = factory.getBeanDefinition(name);
+            if (def.getBeanClassName() != null && def.getBeanClassName().contains("DataSource")) {
+                // 修改属性...
+            }
+        }
+    }
+}
+```
+
+> 📌 Spring Boot 的 `EnvironmentPostProcessor` 也是在 `BeanFactoryPostProcessor` 阶段介入。
+
 ### 阶段 4：销毁
 
 > 销毁**不是立即**把 Bean 销毁掉，而是把销毁方法**先记录下来**，将来需要销毁时再调用。
