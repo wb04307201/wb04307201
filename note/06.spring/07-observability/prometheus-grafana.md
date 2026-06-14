@@ -483,7 +483,7 @@ scrape_configs:
 # docker-compose.yml
 services:
   pushgateway:
-    image: prom/pushgateway:v1.8.0
+    image: prom/pushgateway:v1.10.0
     ports:
       - "9091:9091"
     command:

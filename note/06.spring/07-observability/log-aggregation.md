@@ -142,19 +142,19 @@ setup.kibana:
 ```yaml
 services:
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.13.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.15.3
     environment:
       - discovery.type=single-node
       - xpack.security.enabled=false
     ports: ["9200:9200"]
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:8.13.0
+    image: docker.elastic.co/kibana/kibana:8.15.3
     ports: ["5601:5601"]
     depends_on: [elasticsearch]
 
   filebeat:
-    image: docker.elastic.co/beats/filebeat:8.13.0
+    image: docker.elastic.co/beats/filebeat:8.15.3
     volumes:
       - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
       - /var/lib/docker/containers:/var/lib/docker/containers:ro
@@ -211,11 +211,11 @@ scrape_configs:
 ```yaml
 services:
   loki:
-    image: grafana/loki:2.9.0
+    image: grafana/loki:3.3.0
     ports: ["3100:3100"]
 
   promtail:
-    image: grafana/promtail:2.9.0
+    image: grafana/promtail:3.3.0
     volumes:
       - ./promtail-config.yaml:/etc/promtail/config.yaml
       - /var/log/containers:/var/log/containers:ro

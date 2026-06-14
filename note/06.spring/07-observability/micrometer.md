@@ -597,7 +597,7 @@ public OpenTelemetry openTelemetry(Resource resource, SdkTracerProvider tracerPr
 # docker-compose.yml
 services:
   otel-collector:
-    image: otel/opentelemetry-collector-contrib:0.96.0
+    image: otel/opentelemetry-collector-contrib:0.110.0
     command: ["--config=/etc/otel-collector-config.yaml"]
     volumes:
       - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
@@ -606,7 +606,7 @@ services:
       - "4318:4318"   # OTLP HTTP
 
   jaeger:
-    image: jaegertracing/all-in-one:1.54
+    image: jaegertracing/all-in-one:1.60
     environment:
       - COLLECTOR_OTLP_ENABLED=true
     ports:
