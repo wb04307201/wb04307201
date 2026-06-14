@@ -298,3 +298,73 @@ public class ApprovalService {
 - `write` 必须在每次 `sendEvent` 之后立刻调用，不能只调用 `stop`。
 - 若状态机进入 `end` 状态，应从持久层删除记录（`service.releaseStateMachine` 仅释放内存，不清理存储）。
 - 高并发下同一 `machineId` 加分布式锁避免竞态。
+
+## 八、区域与并行状态
+
+当业务存在**多个独立维度**同时推进（如订单的"支付"与"物流"两线并行），可用 **Region（区域）** + **Fork/Join** 实现真正的并行。区别于 hierarchical state：层次状态同一时刻只有一条激活路径，区域则允许多个子状态机**同时激活**。
+
+### 1. 区域（Region）概念
+
+一个 region 是状态机内部的"子状态机"，每个 region 有自己的初始状态和激活路径，互不干扰。订单场景：
+
+```
+[订单主状态机]
+   ├─ Region A: 支付线  PENDING → PAID → REFUNDED
+   └─ Region B: 物流线  PENDING → SHIPPED → DELIVERED
+```
+
+### 2. Fork / Join 转换
+
+```java
+public enum States {
+    SI,            // 初始
+    PARALLEL,      // 并行父状态
+    PAY_PENDING, PAY_PAID, PAY_REFUNDED,         // 区域 A
+    LOG_PENDING, LOG_SHIPPED, LOG_DELIVERED,     // 区域 B
+    SF             // 结束
+}
+
+public enum Events {
+    START_PARALLEL,   // fork
+    PAY_DONE, LOG_DONE, // 各自 region 完成
+    JOIN               // 全部完成才 join
+}
+
+@Override
+public void configure(StateMachineStateConfigurer<States, Events> states) throws Exception {
+    states.withStates()
+          .initial(SI)
+          .fork(PARALLEL)                     // fork 节点：复制激活到多个 region
+          .and()
+          .withStates()
+              .parent(PARALLEL)
+              .region("payment", b -> b.initial(PAY_PENDING)
+                                       .states(EnumSet.of(PAY_PENDING, PAY_PAID, PAY_REFUNDED)))
+              .region("logistics", b -> b.initial(LOG_PENDING)
+                                         .states(EnumSet.of(LOG_PENDING, LOG_SHIPPED, LOG_DELIVERED)))
+          .end()
+          .join(SF);                          // join 节点：等所有 region 完成
+}
+
+@Override
+public void configure(StateMachineTransitionConfigurer<States, Events> t) throws Exception {
+    t.withFork().source(SI).target(PARALLEL).event(START_PARALLEL).and()
+     .withExternal().source(PAY_PENDING).target(PAY_PAID).event(PAY_DONE).and()
+     .withExternal().source(LOG_PENDING).target(LOG_SHIPPED).event(LOG_DONE).and()
+     .withJoin().source(PARALLEL).target(SF).event(JOIN);
+}
+```
+
+`SF` 仅在两个 region 都抵达终态后才会被激活——`join` 起到同步屏障作用。
+
+### 3. 与层次状态（Hierarchical State）的区别
+
+| 维度 | 层次状态 | 区域（Region） |
+|------|---------|---------------|
+| 同时激活路径 | **单条**（子状态机内只有一个活跃状态） | **多条**（每个 region 各有一条活跃路径） |
+| 内存模型 | 一棵状态树 | 多个并行子状态机 |
+| 适用场景 | "中国 → 华东 → 上海"这种嵌套 | 支付与物流、配置项的多维开关 |
+| UML 术语 | Submachine / Nested state | Orthogonal region |
+| Spring 注解 | `.parent(...)` 嵌套 | `.region(...)` 平级 |
+
+> 简记："层次是嵌套，区域是并列；层次只走一条路，区域同时走多条"。
