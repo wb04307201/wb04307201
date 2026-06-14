@@ -19,6 +19,7 @@
 | **Starter 机制** | [custom-starter.md](custom-starter.md) | 怎么理解 spring-boot-starter-* 的设计？ | 15 min |
 | **自定义 Starter** | [custom-starter.md](custom-starter.md) | 如何封装自己的 Starter？ | 25 min |
 | **spring.factories 迁移** | [spring-factories-migration.md](spring-factories-migration.md) | Spring Boot 2.x → 3.x 自动配置机制变化 | 20 min |
+| **自定义 Condition** | [custom-condition.md](custom-condition.md) | `@ConditionalOn*` 11 个内置注解无法覆盖时如何扩展 | 20 min |
 | **启动流程** | [startup-flow.md](startup-flow.md) | `SpringApplication.run()` 的 6 个阶段 | 20 min |
 | **启动后钩子** | [application-bootstrap.md](application-bootstrap.md) | `@PostConstruct` / Runner / `ApplicationReadyEvent` 5 种回调 | 15 min |
 | **外部化配置** | [externalized-configuration.md](externalized-configuration.md) | `@Value` / `@ConfigurationProperties` / `@Profile` / `Environment` | 25 min |
@@ -84,6 +85,7 @@ graph TB
 | **spring.factories** | Spring Boot 2.x 的 SPI 机制（Listener/EnvironmentPostProcessor 仍用） | [迁移](spring-factories-migration.md) |
 | **Starter** | 依赖 + 自动配置的聚合包（如 spring-boot-starter-web） | [自定义](custom-starter.md) |
 | **@ConditionalOnMissingBean** | Spring Boot "约定优于配置"：用户没配就用默认的 | [自动配置](auto-configuration.md) |
+| **`Condition` 接口** | `@ConditionalOn*` 11 个内置注解之外的扩展点（实现 `matches()`） | [自定义 Condition](custom-condition.md) |
 | **SpringApplication.run()** | 启动入口，6 个阶段：实例化 → Environment → Context → refresh → afterRefresh → 事件 | [启动流程](startup-flow.md) |
 | **@PostConstruct** | Bean 初始化时执行的方法 | [启动后钩子](application-bootstrap.md) |
 | **ApplicationRunner** | 启动完成后执行的回调（可访问命令行参数） | [启动后钩子](application-bootstrap.md) |
