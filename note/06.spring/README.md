@@ -18,7 +18,7 @@ graph TB
     Root["🌱 Spring 全家桶"]
     
     Root --> Core["01 核心容器<br/>IoC · AOP · 工具"]
-    Root --> Web["02 Web 层<br/>MVC · WebFlux · 异常"]
+    Root --> Web["02 Web 层<br/>MVC · WebFlux"]
     Root --> Data["03 数据层<br/>事务 · 缓存 · 分布式"]
     Root --> Boot["04 Spring Boot<br/>自动配置 · Starter"]
     Root --> Cloud["05 Spring Cloud<br/>微服务治理"]
@@ -35,7 +35,7 @@ graph TB
     
     Web --> W1["Spring MVC 流程"]
     Web --> W2["Filter/Interceptor/AOP 顺序"]
-    Web --> W3["RESTful 设计"]
+    Web --> W3["MVC 进阶（ViewResolver/异常/上传/CORS/i18n/异步）"]
     Web --> W4["WebFlux 响应式"]
     Web --> W5["SSE 实时推送"]
     

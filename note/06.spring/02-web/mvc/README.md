@@ -1,13 +1,13 @@
 # Spring MVC
 
-> 最后更新: 2026-06-09
+> 最后更新: 2026-06-14
 > ⬅️ [返回 02 Web 层](../README.md)
 
 ---
 
 ## 🎯 一句话定位
 
-**Spring MVC = 基于 MVC 模式的 Java Web 框架**——通过 **DispatcherServlet** 作为前端控制器 + **9 大组件**协作 + **注解驱动**开发，让 Web 层代码简洁、可测试、易扩展。
+**Spring MVC = 基于 MVC 模式的 Java Web 框架**——通过 **DispatcherServlet** 作为前端控制器 + **9 大组件**协作 + **注解驱动**开发，让 Web 层代码简洁、可测试、易扩展。**RESTful 设计原则**（资源命名、HTTP 动词、统一错误体、版本化）见本文档六、核心组件与工作流程 与 [异常处理](exception-resolver.md) 中内嵌段落。
 
 ---
 
@@ -17,6 +17,12 @@
 |:-----|:---------|:--------:|
 | [DispatcherServlet 与 9 大组件](dispatch-flow.md) | 请求从进入到响应经过哪些步骤？9 大组件怎么协作？ | 15 min |
 | [组件对比与场景](components-order.md) | Filter / Interceptor / AOP 怎么选？执行顺序？ | 10 min |
+| [视图解析器](view-resolver.md) | ViewResolver 体系；前后端分离还需要吗？ | 15 min |
+| [异常处理](exception-resolver.md) | HandlerExceptionResolver 链、@ExceptionHandler、ErrorResponse | 20 min |
+| [文件上传](file-upload.md) | MultipartFile、单/多文件、大小类型限制 | 15 min |
+| [CORS 与静态资源](cors-and-static.md) | @CrossOrigin、WebJars、addResourceHandlers | 15 min |
+| [异步 MVC](async-mvc.md) | Callable/DeferredResult/SseEmitter、spring.mvc.async | 20 min |
+| [国际化（i18n）](i18n.md) | LocaleResolver、MessageSource、messages.properties | 15 min |
 
 ---
 
