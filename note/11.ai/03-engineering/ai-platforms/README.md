@@ -1,55 +1,164 @@
-# AI平台对比选购指南
+# AI 编排平台
 
-← 返回 [工程实践](../README.md)
+> 最后更新: 2026-06-14
+> ⬅️ [返回工程实践](../README.md) | [Dify](dify.md) | [Coze](coze.md) | [LangGraph](langgraph.md) | [BPMN+AI 融合](../../04-architecture/bpmn-ai-integration.md) | [11 AI 知识体系](../../README.md)
 
-在当今的数字化时代，选择适合的AI平台或工具对于项目的成功至关重要。Dify、n8n、Coze、FastGPT和RAGFlow都是当前市场上备受瞩目的AI工具，它们各自具有独特的功能和优势。为了帮助您更好地了解这些平台并做出明智的选择，我们整理了以下对比表格和选购指南。
+## 🎯 一句话定位
 
-## 平台对比表格
+**AI 编排平台 = 把 LLM、工具、知识库、流程组装成可执行 AI 应用的开发平台**——Dify / Coze / LangGraph / n8n 等代表不同抽象层级（低代码 DSL / 字节生态 / 代码优先 / 工作流自动化），本章讲透选型决策与生产级落地。
 
-> Coze开源版完全移除应用型智能体的前端界面设计功能（如按钮交互、自定义UI组件），仅保留逻辑编排能力，需二次开发前端页面因此下面的对比的是Coze商业版。
+---
 
-| 对比项     | Dify                                  | Coze                                       | n8n                                             | FastGPT                                | RAGFlow                        |
-|---------|---------------------------------------|--------------------------------------------|-------------------------------------------------|----------------------------------------|--------------------------------|
-| 核心焦点    | 全面的LLM应用开发平台 (BaaS + LLMOps)          | AI应用与聊天机器人快速开发及多平台发布                       | 工作流自动化与应用集成                                     | AI知识库构建与问答系统                           | 专注于深度文档理解的RAG引擎                |
-| 开源性     | 是                                     | 否 (字节跳动产品)                                 | 是                                               | 是                                      | 是                              |
-| 部署方式    | 云服务 (SaaS), 自托管, 企业版                  | 云服务                                        | 云服务, 自托管 (Docker, 桌面应用)                         | 云服务, 自托管 (Docker)                      | 云服务 (Demo), 自托管 (Docker)       |
-| 目标用户    | 开发者, 非技术创新者, 各规模团队, 企业                | 所有用户 (无论编程经验), 开发者, 创作者                    | 技术团队, 开发者, 数据驱动企业, 中小企业                         | 开发者, 企业, 需要领域特定AI助手用户                  | 开发者, 企业, 需要RAG能力用户, 特定行业       |
-| 关键功能    | RAG管道, AI工作流, Agent, 模型管理, 可观测性, 插件市场 | 聊天机器人构建器, 可视化工作流, 知识库, 多平台发布, WebSDKs/APIs | 可视化工作流构建, 400+集成节点, 低代码/代码结合, AI Transform Node | 知识库管理, 自动化数据处理, RAG检索, 可视化AI工作流 (Flow) | RAG引擎, 深度文档理解, 有引用支持的问答, 低代码平台 |
-| 定价策略    | 免费起步, 付费订阅 (专业版$59, 团队版$159), 企业版     | 免费 (目前主要功能免费)                              | 自托管免费, 云服务按执行次数付费 (约$20-$22/月)                  | 免费 (开源), 云服务定价按需                       | 免费 (开源)                        |
-| 工作流编排   | 强 (可视化, Agentic)                      | 中 (可视化)                                    | 极强 (可视化节点, 核心)                                  | 中 (可视化Flow)                            | 中 (RAG工作流)                     |
-| RAG能力   | 强 (核心功能)                              | 中 (通过知识库)                                  | 中 (可集成)                                         | 强 (核心功能)                               | 极强 (核心, 深度理解)                  |
-| 无代码/低代码 | 是                                     | 是 (主打无代码)                                  | 是 (低代码+代码)                                      | 是                                      | 是 (低代码)                        |
-| 易用性     | 中高 (功能多需学习)                           | 高 (对新手友好)                                  | 中 (上手快, 精通难)                                    | 中高 (界面直观)                              | 中 (偏技术)                        |
-| 社区与生态   | 活跃, 持续增长                              | 背靠大厂, 用户量大                                 | 非常活跃, 资源丰富                                      | 增长中, GitHub活跃                          | 新兴, 专注领域                       |
-| 学习曲线    | 中等, 官方文档完善                            | 低, 几乎无需学习                                  | 初级简单, 高级复杂                                      | 中低, 概念清晰                               | 中高, 需理解                        |
+## 📚 章节导航（4 主线 + 4 文件）
 
-## 选购指南
+| 主线 | 文件 | 核心内容 |
+|:----|:----|:---------|
+| **0 平台综述** | [README.md](README.md)（本文）| 6 维对比表 + 决策树 + 知识地图 |
+| **1 低代码 DSL** | [Dify](dify.md) | LLMOps / Chatflow+Workflow+Agent / DSL YAML / MCP 双向 |
+| **2 字节系生态** | [Coze](coze.md) | 表单/工作流双形态 / Agent 联邦 / 飞书/抖音/豆包深绑定 |
+| **3 代码优先** | [LangGraph](langgraph.md) | StateGraph / Checkpoint / Time Travel / HITL / Supervisor |
+| **4 融合范式** | [BPMN+AI 融合](../../04-architecture/bpmn-ai-integration.md) | 4 模式：fromAi() / Zeebe AI Worker / Engine-as-Tool / HITL |
 
-1. **Dify**：
-    - 适用场景：如果您希望构建一个全面的AI应用，并且需要从模型训练到部署的全流程支持，Dify是一个不错的选择。
-    - 优势：开源、易用性较高、社区活跃。
+---
 
-2. **Coze**：
-    - 适用场景：如果您想快速构建一个聊天机器人或AI应用，并且希望能够在多个平台上发布，Coze是一个很好的选择。
-    - 优势：免费（目前主要功能）、对新手友好、背靠大厂资源丰富。
+## 🧭 知识地图
 
-3. **n8n**：
-    - 适用场景：如果您需要实现多个应用或服务之间的自动化工作流，或者需要集成不同的系统和服务，n8n是一个强大的工具。
-    - 优势：开源、可视化节点编辑、丰富的集成选项。
+```mermaid
+graph TB
+    A[AI 编排平台]
 
-4. **FastGPT**：
-    - 适用场景：如果您希望构建一个基于AI的知识库或问答系统，FastGPT是一个专业的选择。
-    - 优势：开源、专注于AI知识库构建、可视化AI工作流。
+    A --> L1[低代码 DSL<br/>Dify]
+    A --> L2[字节系生态<br/>Coze]
+    A --> L3[代码优先<br/>LangGraph]
+    A --> L4[工作流自动化<br/>n8n]
+    A --> L5[RAG 专注<br/>FastGPT/RAGFlow]
+    A --> L6[融合范式<br/>BPMN+AI]
 
-5. **RAGFlow**：
-    - 适用场景：如果您需要处理大量的文档数据，并希望实现深度的文档理解和问答功能，RAGFlow是一个很好的选择。
-    - 优势：开源、专注于深度文档理解、有引用支持的问答功能。
+    L1 --> D1[可视化 + DSL YAML]
+    L1 --> D2[Chatflow/Workflow/Agent]
+    L1 --> D3[MCP 双向 v1.9.2+]
 
+    L2 --> C1[字节系深绑定]
+    L2 --> C2[Agent 联邦 3.0]
+    L2 --> C3[接入 Claude Code]
 
-## 总结
+    L3 --> G1[StateGraph 显式状态]
+    L3 --> G2[Time Travel 调试]
+    L3 --> G3[HITL interrupt 函数]
 
-* **全面开发需求**：选择Dify。
-* **快速构建聊天机器人或多平台应用**：选择Coze。
-* **工作流自动化与集成**：选择n8n。
-* **AI知识库与问答系统**：选择FastGPT。
-* **深度文档理解与问答**：选择RAGFlow。
+    L4 --> N1[400+ 集成节点]
+    L4 --> N2[AI Transform]
+
+    L5 --> F1[知识库管理]
+    L5 --> F2[深度文档理解]
+
+    L6 --> FUS1[模式 A fromAi]
+    L6 --> FUS2[模式 B Zeebe Worker]
+    L6 --> FUS3[模式 C Engine-as-Tool]
+    L6 --> FUS4[模式 D HITL]
+
+    classDef root fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
+    classDef lowcode fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    classDef ecosystem fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    classDef codefirst fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
+    classDef fusion fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+
+    class A root
+    class L1,L2,L3,L4,L5 lowcode
+    class C1,C2,C3,D1,D2,D3,G1,G2,G3,N1,N2,F1,F2 ecosystem
+    class FUS1,FUS2,FUS3,FUS4,FUS1 fusion
+```
+
+---
+
+## ⚡ 6 大平台对比矩阵
+
+| 维度 | **Dify** | **Coze** | **LangGraph** | **n8n** | **FastGPT** | **RAGFlow** |
+|------|---------|---------|--------------|---------|-------------|-------------|
+| **形态** | 低代码 + DSL YAML | 表单 + 工作流 | Python 代码 | 工作流自动化 | 知识库 + Flow | RAG 引擎 |
+| **开源** | ✅ AGPL | ❌ 闭源 | ✅ MIT | ✅ Fair-code | ✅ MIT | ✅ Apache |
+| **国内生态** | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ |
+| **国际化** | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ |
+| **DAG 工作流** | ✅ 强 | ✅ 中 | ✅ 显式图 | ✅ 极强 | ✅ 中 | ⚠️ RAG 为主 |
+| **RAG 能力** | ✅ 完整管道 | ⚠️ 知识库 | ⚠️ 需组装 | ⚠️ 集成 | ✅ 强 | ✅ 极强 |
+| **私有化** | ✅ AGPL 免费 | ⚠️ 企业版贵 | ✅ 自部署 | ✅ 自部署 | ✅ 自部署 | ✅ 自部署 |
+| **MCP** | ✅ v1.9.2+ | ✅ 双向 | ✅ 1.0+ | ⚠️ 部分 | ❌ | ❌ |
+| **学习曲线** | 1 天 | 0.5 天 | 1-2 周 | 1 周 | 1-2 天 | 1-3 天 |
+| **生产部署** | 1-3 天 | 1 天（云）| 1-2 周 | 1-3 天 | 1-3 天 | 3-7 天 |
+| **企业级治理** | ⚠️ 中 | ⚠️ 中 | ⚠️ 中 | ⚠️ 中 | ⚠️ 中 | ⚠️ 中 |
+| **代表场景** | 客服 + RAG 标准化 | 字节生态 C 端 | 复杂 Agent | 系统集成自动化 | 知识库问答 | 深度文档理解 |
+
+---
+
+## 📋 决策树
+
+```
+Q1: 项目首要目标？
+├── 快速上线 MVP + 国内 C 端 + 字节生态 → Coze
+├── 标准化 RAG/Chatbot + 私有化 + DSL 入 Git → Dify
+├── 复杂 Agent + 状态可回放 + 代码优先 → LangGraph
+├── 系统集成 / 跨 SaaS 自动化 → n8n
+├── 知识库 + 文档问答为主 → FastGPT / RAGFlow
+└── 强治理 / 合规审计 / 需嵌入 BPMN 流程 → BPMN+AI 融合
+
+Q2: 团队技术栈？
+├── 产品/运营为主，无工程师 → Coze（最易用）
+├── 全栈/前端，Python 弱 → Dify（低代码）
+├── Python 强 / 算法 → LangGraph
+└── DevOps/集成 → n8n
+
+Q3: 部署模式？
+├── 完全云托管 → Coze（字节云）+ Dify Cloud
+├── 私有化 + 国产化 → Dify AGPL
+├── 自部署 + 高可控 → LangGraph + 自建
+└── 混合云 → 全部都支持
+
+Q4: 是否需要 BPMN 合规？
+├── 需要（金融/医疗/政务）→ BPMN+AI 融合（Camunda 8.5+）
+└── 不需要 → 任选 AI 平台
+```
+
+---
+
+## 🧩 核心概念速查
+
+| 概念 | 一句话定义 | 章节 |
+|------|----------|:----:|
+| **LLMOps** | LLM 应用全生命周期管理（Prompt/版本/Token 成本/可观测） | [Dify](dify.md) |
+| **Chatflow** | Dify 对话流应用模式（有上下文多轮对话）| [Dify](dify.md) |
+| **Workflow** | Dify 自动化流应用模式（单次执行）| [Dify](dify.md) |
+| **Agent 联邦** | Coze 3.0 的 Master + 专家 Agent 协作模式 | [Coze](coze.md) |
+| **StateGraph** | LangGraph 的显式状态机抽象 | [LangGraph](langgraph.md) |
+| **Checkpoint** | LangGraph 的状态持久化机制 | [LangGraph](langgraph.md) |
+| **Time Travel** | LangGraph 的历史状态回放能力 | [LangGraph](langgraph.md) |
+| **HITL** | Human-in-the-Loop，人在回路审核 | [LangGraph](langgraph.md) |
+| **MCP** | Model Context Protocol，LLM 工具调用协议标准 | [Dify](dify.md) |
+| **DSL YAML** | Dify 工作流的可版本控制定义格式 | [Dify](dify.md) |
+| **RAG** | Retrieval-Augmented Generation，检索增强生成 | [Dify](dify.md) / [BPMN+AI](../../04-architecture/bpmn-ai-integration.md) |
+| **AI Agent Sub-process** | Camunda 8.5+ 的原生 AI 节点图元 | [BPMN+AI](../../04-architecture/bpmn-ai-integration.md) |
+| **fromAi()** | Camunda 8.5+ 的 FEEL 函数，调用 LLM | [BPMN+AI](../../04-architecture/bpmn-ai-integration.md) |
+| **Zeebe AI Worker** | 自研 Job Worker 包装 LLM/Agent 框架 | [BPMN+AI](../../04-architecture/bpmn-ai-integration.md) |
+
+---
+
+## 🤔 思考
+
+1. **AI 编排平台会取代 BPMN 引擎吗？** 不会。两者解决不同问题——AI 平台强在**灵活推理 + 快速试错**；BPMN 强在**确定性 + 合规审计**。生产级落地常**组合使用**（见 [BPMN+AI 融合](../../04-architecture/bpmn-ai-integration.md) 4 模式）。
+2. **Dify vs Coze 选哪个？** **Dify** 适合"工程化 + 私有化 + DSL 入 Git"；**Coze** 适合"字节生态 + C 端分发 + 快速跑通"。一个面向 DevOps，一个面向业务运营。
+3. **LangGraph 适合所有 Agent 场景吗？** 不。**单轮对话 / 标准化 RAG** 用 Dify 更划算；**多步推理 / 长期状态 / 可重放**用 LangGraph。两者可通过 **MCP 互通**。
+4. **n8n 是 AI 平台吗？** 本质是**工作流自动化工具**（400+ 集成节点），AI Transform Node 让它"能跑 AI"。适合"系统集成 + 轻量 AI"场景，不适合复杂 Agent。
+5. **MCP 协议有什么价值？** MCP 让**LLM 工具调用协议标准化**——Dify / Coze / Claude Code / Cursor 互通。一个平台写的工具，所有平台都能用，**避免厂商锁定**。
+6. **AI 平台私有化最痛的是什么？** 三个：**LLM 模型私有化**（Qwen/DeepSeek/GLM 适配）、**向量库私有化**（Qdrant/Milvus 自部署）、**可观测性私有化**（LangSmith 自托管或 Helicone）。多数项目卡在第二步。
+7. **如何选择第一平台？** **80% 场景选 Dify**（平衡最好）+ 20% 复杂场景用 LangGraph；**C 端分发选 Coze**；**强治理叠加 Camunda 8 AI**。避免一上来就上 LangGraph 写代码（成本高 + 难招聘）。
+
+---
+
+## 相关章节
+
+- ⬅️ [返回工程实践](../README.md) — 章节根目录
+- [11 AI 知识体系](../../README.md) — 章节根目录
+- [Dify](dify.md) — 低代码 DSL 优先 + 私有化首选
+- [Coze](coze.md) — 字节系国内最强生态
+- [LangGraph](langgraph.md) — 代码优先复杂 Agent 框架
+- [BPMN+AI 融合](../../04-architecture/bpmn-ai-integration.md) — 4 模式生产级落地
+- [07 工作流/微服务编排](../../07.workflow/workflow-and-microservice-orchestration/README.md) — 流程引擎在分布式场景的演化
