@@ -1,6 +1,6 @@
 # Micrometer 指标监控
 
-> 最后更新: 2026-06-09
+> 最后更新: 2026-06-14
 > ⬅️ [返回 07 可观测性](README.md) | [Prometheus + Grafana](prometheus-grafana.md) | [Spring Boot Actuator](actuator.md)
 
 **Micrometer** 是 Spring Boot 的**指标门面**（类似 SLF4J 之于日志）——提供统一的指标 API，**底层可对接** Prometheus、Datadog、InfluxDB 等 12+ 种监控系统。
