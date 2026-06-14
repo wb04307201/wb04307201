@@ -6,38 +6,30 @@
 Spring Batch 是 Spring 生态系统中专门为批处理设计的轻量级框架，适用于数据迁移、ETL（Extract-Transform-Load）、定时报表生成等场景。其核心设计理念是通过分层架构实现高内聚低耦合，支持从单线程到分布式的大规模数据处理。
 
 ### 核心架构分层
-```plantuml
-@startuml
-skinparam monochrome true
-skinparam shadowing false
-
-rectangle "应用层" {
-    component "Job配置" as job_config
-    component "Step定义" as step_def
-    component "自定义组件" as custom_comp
-}
-
-rectangle "核心层" {
-    component "JobLauncher" as launcher
-    component "JobRepository" as repository
-    component "Job/Step执行器" as executor
-}
-
-rectangle "基础设施层" {
-    component "ItemReader" as reader
-    component "ItemProcessor" as processor
-    component "ItemWriter" as writer
-    component "事务管理" as tx
-}
-
-launcher --> job_config : 启动配置
-executor --> step_def : 执行步骤
-repository --> executor : 持久化状态
-reader --> processor : 输入数据
-processor --> writer : 输出数据
-tx --> executor : 事务控制
-
-@enduml
+```mermaid
+graph TB
+    subgraph 应用层
+        job_config[Job配置]
+        step_def[Step定义]
+        custom_comp[自定义组件]
+    end
+    subgraph 核心层
+        launcher[JobLauncher]
+        repository[JobRepository]
+        executor[Job/Step执行器]
+    end
+    subgraph 基础设施层
+        reader[ItemReader]
+        processor[ItemProcessor]
+        writer[ItemWriter]
+        tx[事务管理]
+    end
+    launcher -->|启动配置| job_config
+    executor -->|执行步骤| step_def
+    repository -->|持久化状态| executor
+    reader -->|输入数据| processor
+    processor -->|输出数据| writer
+    tx -->|事务控制| executor
 ```
 **图解说明**：
 1. **应用层**：开发者自定义批处理逻辑
@@ -63,29 +55,25 @@ public Job importUserJob() {
 - 失败自动重试（需配置RetryPolicy）
 
 ### 2. Step 执行模型
-```plantuml
-@startuml
-skinparam sequenceArrowThickness 2
-skinparam sequenceParticipant underline
+```mermaid
+sequenceDiagram
+    participant launcher as JobLauncher
+    participant job as Job
+    participant step1 as Step1
+    participant step2 as Step2
+    participant reader as ItemReader
+    participant processor as ItemProcessor
+    participant writer as ItemWriter
 
-participant "JobLauncher" as launcher
-participant "Job" as job
-participant "Step1" as step1
-participant "Step2" as step2
-participant "ItemReader" as reader
-participant "ItemWriter" as writer
-
-launcher -> job : start(params)
-job -> step1 : execute()
-step1 -> reader : read()
-reader --> step1 : data
-step1 -> processor : process(data)
-processor --> step1 : transformed
-step1 -> writer : write(transformed)
-step1 --> job : complete
-job -> step2 : execute()
-...
-@enduml
+    launcher->>job: start(params)
+    job->>step1: execute()
+    step1->>reader: read()
+    reader-->>step1: data
+    step1->>processor: process(data)
+    processor-->>step1: transformed
+    step1->>writer: write(transformed)
+    step1-->>job: complete
+    job->>step2: execute()
 ```
 **执行模式**：
 - **Chunk-oriented**：默认模式，每处理N条记录提交一次事务
@@ -106,25 +94,19 @@ job -> step2 : execute()
 ### 1. 并行处理架构（新增自定义分区内容）
 
 #### 核心分区模型
-```plantuml
-@startuml
-skinparam componentStyle rectangle
-
-component "Master Step" as master {
-    component "PartitionHandler" as handler
-    component "Partitioner" as partitioner
-}
-
-component "Worker Step 1" as worker1
-component "Worker Step 2" as worker2
-
-partitioner --> handler : 分区策略
-handler -> worker1 : 分区数据1
-handler -> worker2 : 分区数据2
-worker1 --> handler : 结果合并
-worker2 --> handler : 结果合并
-
-@enduml
+```mermaid
+graph TB
+    subgraph Master
+        handler[PartitionHandler]
+        partitioner[Partitioner]
+    end
+    worker1[Worker Step 1]
+    worker2[Worker Step 2]
+    partitioner -->|分区策略| handler
+    handler -->|分区数据1| worker1
+    handler -->|分区数据2| worker2
+    worker1 -->|结果合并| handler
+    worker2 -->|结果合并| handler
 ```
 
 #### 关键组件说明
@@ -262,27 +244,19 @@ public Step masterStep() {
 ## 四、监控体系（新增分区监控）
 
 #### 分区执行状态跟踪
-```plantuml
-@startuml
-class StepExecution {
-    +stepName: String
-    +status: BatchStatus
-    +getStepExecutionContext(): ExecutionContext
-}
-
-class JobExecution {
-    +getStepExecutions(): List<StepExecution>
-    +getJobParameters(): JobParameters
-}
-
-JobExecution "1" *-- "0..*" StepExecution
-
-note top of StepExecution
-    分区特有属性：
-    - spring.partition.index
-    - spring.partition.name
-end note
-@enduml
+```mermaid
+classDiagram
+    class StepExecution {
+        +stepName: String
+        +status: BatchStatus
+        +getStepExecutionContext(): ExecutionContext
+    }
+    class JobExecution {
+        +getStepExecutions(): List~StepExecution~
+        +getJobParameters(): JobParameters
+    }
+    JobExecution "1" *-- "0..*" StepExecution
+    note for StepExecution "分区特有属性: spring.partition.index / spring.partition.name"
 ```
 
 #### 自定义监控逻辑
