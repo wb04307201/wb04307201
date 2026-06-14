@@ -25,9 +25,11 @@
 
 ### @EnableCaching
 
+⚠️ **Spring Boot 不会自动启用 `@EnableCaching`**——`spring-boot-starter-cache` 的自动装配**只在**用户显式声明 `@EnableCaching` 时才生效；没有这个注解，所有 `@Cacheable` 全部 no-op。
+
 ```java
 @Configuration
-@EnableCaching   // Spring Boot 自动启用，可省略
+@EnableCaching   // 必须显式声明，不能省略
 public class CacheConfig { }
 ```
 
