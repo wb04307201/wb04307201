@@ -1,6 +1,6 @@
 # 异常处理注解
 
-> 最后更新: 2026-06-09
+> 最后更新: 2026-06-14
 > ⬅️ [返回注解速查](../README.md) | [Web 注解](web.md) | [AOP 注解](aop.md)
 
 本节介绍 Spring 异常处理的核心注解：`@ControllerAdvice` + `@ExceptionHandler` 组合实现**全局异常处理**。
