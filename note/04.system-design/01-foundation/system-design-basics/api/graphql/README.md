@@ -4,7 +4,7 @@
 
 ---
 
-### **一、核心设计哲学**
+## **一、核心设计哲学**
 1. **客户端驱动，但服务端主导**
     - ✅ **客户端声明需求**：允许客户端精确请求所需字段（避免过度获取/不足获取）。
     - ❌ **禁止完全开放**：必须通过 `@auth`、`@cost` 等指令限制危险操作（如深度嵌套查询）。
@@ -17,8 +17,8 @@
 
 ---
 
-### **二、Schema 设计黄金规则**
-#### **1. 类型系统：清晰且自描述**
+## **二、Schema 设计黄金规则**
+### **1. 类型系统：清晰且自描述**
 ```graphql
 # 优秀实践：明确非空约束 + 语义化命名
 type Order {
@@ -37,7 +37,7 @@ enum OrderStatus {
 # 避免：模糊的命名（如 getData）、冗余前缀（QueryUser）
 ```
 
-#### **2. 查询（Query）设计**
+### **2. 查询（Query）设计**
 - **扁平化优先**：
   ```graphql
   # 反例：嵌套过深
@@ -78,7 +78,7 @@ enum OrderStatus {
   }
   ```
 
-#### **3. 变更（Mutation）设计**
+### **3. 变更（Mutation）设计**
 - **动词+名词命名**：`createUser`, `updateOrderStatus`
 - **返回有效负载（Payload）**：
   ```graphql
@@ -96,7 +96,7 @@ enum OrderStatus {
   ```
   **关键价值**：避免客户端多次请求获取操作结果，统一错误处理。
 
-#### **4. 订阅（Subscription）约束**
+### **4. 订阅（Subscription）约束**
 - **限制事件粒度**：
   ```graphql
   subscription {
@@ -110,8 +110,8 @@ enum OrderStatus {
 
 ---
 
-### **三、工程化与安全增强**
-#### **1. 性能防护墙**
+## **三、工程化与安全增强**
+### **1. 性能防护墙**
 - **深度限制**：
   ```js
   // Apollo Server 配置示例
@@ -130,7 +130,7 @@ enum OrderStatus {
   **必选项**！服务端预注册查询哈希，客户端仅发送哈希值。  
   **优势**：防止恶意查询、减少带宽、加速响应（自动缓存）。
 
-#### **2. 安全加固**
+### **2. 安全加固**
 - **字段级鉴权**：
   ```graphql
   type User {
@@ -144,7 +144,7 @@ enum OrderStatus {
   introspection: process.env.NODE_ENV === 'production' ? false : true
   ```
 
-#### **3. 联邦架构（Federation）**
+### **3. 联邦架构（Federation）**
 **企业级标配**：使用 [Apollo Federation 2.0](https://www.apollographql.com/docs/federation/) 拆分微服务：
 - 每个子服务负责独立域（如 `users`、`products`）
 - 网关自动拼接 schema，解决 N+1 问题（通过 `@requires` 传递上下文）
@@ -158,7 +158,7 @@ enum OrderStatus {
 
 ---
 
-### **四、文档与开发者体验（DX）**
+## **四、文档与开发者体验（DX）**
 - **自动生成文档**：  
   使用 [GraphiQL](https://github.com/graphql/graphiql) + [GraphQL Voyager](https://apis.guru/graphql-voyager/) 可视化 Schema 关系。
 - **变更日志自动化**：  
@@ -168,7 +168,7 @@ enum OrderStatus {
 
 ---
 
-### **五、避坑指南：常见反模式**
+## **五、避坑指南：常见反模式**
 | **反模式**       | **后果**         | **解决方案**               |
 |---------------|----------------|------------------------|
 | 允许任意深度嵌套查询    | 服务器 OOM 崩溃     | 强制深度/复杂度限制             |
@@ -179,7 +179,7 @@ enum OrderStatus {
 
 ---
 
-### **六、工具链推荐**
+## **六、工具链推荐**
 - **Schema 管理**：Apollo Studio（联邦网关+性能监控）
 - **代码生成**：[GraphQL Code Generator](https://the-guild.dev/graphql/codegen)（TypeScript 类型安全）
 - **测试**：[Jest + MSW](https://mswjs.io/) 模拟 GraphQL 端点
@@ -187,7 +187,7 @@ enum OrderStatus {
 
 ---
 
-### **结语**
+## **结语**
 **现代 GraphQL 设计 = 灵活性 × 约束力**。
 - **对客户端**：提供精准数据获取能力，提升体验。
 - **对服务端**：通过防护机制（深度/成本/持久化查询）和联邦架构保障可维护性。
