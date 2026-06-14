@@ -1,4 +1,11 @@
-# Spring Boot启动后执行
+# Spring Boot 启动后执行（钩子/回调/事件）
+
+> 最后更新: 2026-06-14
+> ⬅️ [返回 04 Spring Boot](README.md) | [启动流程](startup-flow.md) | [外部化配置](externalized-configuration.md)
+
+本文聚焦 **应用上下文就绪后** 的 5 种钩子 / 回调 / 事件扩展方式（`@PostConstruct`、`ApplicationRunner`、`CommandLineRunner`、`ApplicationReadyEvent`、`InitializingBean`、`SmartInitializingSingleton`）。如果你想了解 `SpringApplication.run()` 启动流程本身的 6 个阶段（实例化 → Environment 准备 → Context 创建 → refresh → afterRefresh → 事件广播），请参阅 [startup-flow.md](startup-flow.md)。
+
+---
 
 ## 1. **使用 `@PostConstruct` 注解**
 在Bean初始化完成后执行（依赖注入完成后，但在服务启动前）。
