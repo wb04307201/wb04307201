@@ -7,4 +7,8 @@ PO、VO、DTO、BO、DAO、POJO是Java开发中常见的对象类型，核心区
 - **DAO（数据访问对象）**：操作数据库的“工具类”，如`UserDao`，封装SQL/ORM查询，提供增删改查方法，供Service调用。
 - **POJO（普通Java对象）**：无框架约束的“基础类”，PO/VO/DTO/BO本质都是POJO，但按职责细分。POJO强调“无侵入性”，可自由扩展。
 
-**总结**：PO对应数据库，VO面向前端，DTO跨层传输，BO处理业务，DAO操作数据，POJO是基础。各司其职，避免“对象混用”导致代码耦合。
+**总结**：PO对应数据库，VO面向前端，DTO跨层传输，BO处理业务，DAO操作数据，POJO是基础。各司其职，避免”对象混用”导致代码耦合。
+
+---
+
+> JPA 中 `@Entity` ↔ PO、`@Repository` ↔ DAO 的具体注解使用与高级映射（@OneToMany / @ManyToOne / 关联查询）见 [note/06.spring/08-annotations/jpa.md](../../06.spring/08-annotations/jpa.md)。
