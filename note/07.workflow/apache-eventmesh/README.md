@@ -127,6 +127,28 @@ states:
 | **生态** | Camunda/Flowable/Activiti | Synapse / Serverless Devs / AWS Step Functions |
 | **云原生** | ⚠️ Camunda 8 才补齐 | ✅ 专为云原生设计 |
 
+### 2.4 Serverless Workflow 2025-2026 进展
+
+| 版本 | 时间 | 关键特性 | 生态落地 |
+|:-----|:-----|:---------|:---------|
+| **0.8** | 2023 | 基础 states + 事件触发 | Synapse / Serverless Devs 早期集成 |
+| **0.9** | 2024-Q4 | **错误处理 + 补偿**（Saga 模式）+ 认证授权 | EventMesh Runtime 原生支持 |
+| **1.0 GA** | 2025-Q3 | **API 稳定** + 跨语言 SDK（Java/Go/TS/Python）+ 测试规范 | **CNCF Incubating 项目**（2026-Q1）|
+
+**与 BPMN 的融合方向**：
+
+- **BPMN 4.0（规划中）**：可能引入 Serverless Workflow 的事件驱动特性
+- **Serverless Workflow 1.0+**：借鉴 BPMN 的图形化（Synapse 提供 Web Modeler）
+- **混合架构**：BPMN 关键决策点 + Serverless Workflow 事件触发子流程
+
+**实战代表**：
+
+- **AWS Step Functions**：基于 Serverless Workflow 0.8 子集（Express / Standard Workflows）
+- **阿里云 Serverless 工作流**：国内最早商用，2024+ 服务百万级企业用户
+- **Apache EventMesh Runtime**：v1.5+ 内置 Serverless Workflow DSL 执行
+
+**2026 趋势**：Serverless Workflow 1.0 GA + CNCF 成熟 + 与 AI 编排融合（详见 [11.ai 编排平台](../../11.ai/03-engineering/ai-platforms/README.md)）
+
 ---
 
 ## 三、Apache EventMesh：事件网格基础设施
