@@ -374,7 +374,131 @@ contactPoints:
 
 ---
 
-## 八、K8s 中的 Prometheus 部署
+## 八、Pushgateway（短任务/批处理指标推送）
+
+> Prometheus 是 **Pull 模式**——应用必须**常驻**才能被 scrape。但**短任务、批处理、cron job** 在两次 scrape 之间可能就结束了，Prometheus 抓不到数据。**Pushgateway** 解决此类"临时性"场景的指标暴露。
+
+### 1. Pushgateway 适用场景
+
+| 场景 | 原因 | 是否用 Pushgateway |
+|:-----|:-----|:-----------------|
+| 长连接服务（HTTP API） | 常驻，Prometheus 直接拉 | ❌ 不需要 |
+| **批处理作业** | 任务结束进程就退出 | ✅ 需要 |
+| **Cron Job** | 几分钟跑一次 | ✅ 需要 |
+| **CI/CD 流水线** | 单次执行 | ✅ 需要 |
+| **临时调试** | 短时手动跑 | ✅ 可选 |
+
+> ⚠️ **不要把 Pushgateway 当作普通 metrics 代理**——它**没有指标自动过期清理**，多 instance push 同一 job 容易混乱；优先用 Prometheus 抓取常驻服务。
+
+### 2. 数据流
+
+```
+┌──────────┐  push    ┌──────────────┐  scrape   ┌────────────┐
+│  Job/    │ ──────>  │ Pushgateway  │ ───────>  │ Prometheus │
+│  Batch   │  HTTP    │ (中转)        │  :9091    │            │
+└──────────┘          └──────────────┘           └────────────┘
+```
+
+### 3. 依赖与配置
+
+```xml
+<dependency>
+    <groupId>io.micrometer</groupId>
+    <artifactId>micrometer-registry-prometheus-pushgateway</artifactId>
+</dependency>
+```
+
+```yaml
+# application.yml
+management:
+  prometheus:
+    metrics:
+      export:
+        prometheus-pushgateway:
+          enabled: true
+          base-url: http://pushgateway:9091
+          job: batch-import
+          grouping-key:
+            instance: order-service
+          push-interval: 30s       # 每 30s 推一次
+          push-mode: BACKGROUND    # 推完后保留指标
+          delete-on-stop: true     # 应用关闭时清空该 job 的指标（防残留）
+```
+
+### 4. 代码示例
+
+```java
+@Component
+public class BatchJobMetrics {
+
+    private final MeterRegistry registry;
+
+    public BatchJobMetrics(PushGatewayMeterRegistry registry) {
+        this.registry = registry;
+    }
+
+    public void runBatchJob() {
+        Timer.Sample sample = Timer.start(registry);
+        long processed = 0;
+        try {
+            processed = doImport();
+        } catch (Exception e) {
+            registry.counter("batch.import.error").increment();
+            throw e;
+        } finally {
+            sample.stop(registry.timer("batch.import.duration"));
+            registry.counter("batch.import.records").increment(processed);
+        }
+    }
+}
+```
+
+### 5. 与 `PrometheusMeterRegistry`（Pull）的对比
+
+| 维度 | Pull（PrometheusMeterRegistry） | Push（Pushgateway） |
+|:-----|:-------------------------------|:---------------------|
+| **指标暴露** | `/actuator/prometheus` 端点 | **无需**暴露端点 |
+| **服务发现** | Prometheus 主动发现 | 无需 |
+| **适用** | 长连接服务 | 短任务 / 批处理 / cron |
+| **多实例** | 各实例独立暴露 | **多个 job 推同一 group_key** 会合并 |
+| **健康检查** | `up == 0` 自动报警 | 需手动 push 状态 |
+| **官方推荐** | ✅ 首选 | ⚠️ 仅短任务场景 |
+
+### 6. Prometheus 抓取 Pushgateway 配置
+
+```yaml
+# prometheus.yml
+scrape_configs:
+  - job_name: 'pushgateway'
+    honor_labels: true             # 保留 push 时的 label，不被覆盖
+    static_configs:
+      - targets: ['pushgateway:9091']
+```
+
+> 📌 `honor_labels: true` 必加——否则 Prometheus 会用 `instance` 覆盖 Pushgateway 推上来的 label，导致**所有 job 合并到同一个 instance**。
+
+### 7. 容器化部署
+
+```yaml
+# docker-compose.yml
+services:
+  pushgateway:
+    image: prom/pushgateway:v1.8.0
+    ports:
+      - "9091:9091"
+    command:
+      - '--persistence.file=/data/pushgateway.data'
+      - '--persistence.interval=5m'
+    volumes:
+      - pushgateway-data:/data
+
+volumes:
+  pushgateway-data:
+```
+
+---
+
+## 九、K8s 中的 Prometheus 部署
 
 ```yaml
 # ServiceMonitor 自动发现
@@ -398,7 +522,7 @@ spec:
 
 ---
 
-## 九、4 大生产实践
+## 十、4 大生产实践
 
 ### 1. 指标命名规范
 
@@ -435,7 +559,7 @@ global:
 
 ---
 
-## 十、完整监控架构
+## 十一、完整监控架构
 
 ```mermaid
 graph TB
@@ -469,7 +593,7 @@ graph TB
 
 ---
 
-## 十一、3 大替代方案对比
+## 十二、3 大替代方案对比
 
 | 方案 | 维护方 | 部署 | 适用 |
 |------|--------|------|------|
