@@ -17,7 +17,6 @@
 
 | 主线 | 文件 | 核心内容 |
 |:----|:----|:---------|
-| **0 行业与历史** | ~~[industry-and-trends.md](industry-and-trends.md)~~ ⚠️ 已废弃 | 内容并入「流程引擎」选型决策树 |
 | **1 概念** | [define/README.md](define/README.md) | 业务/技术视角、BPMN 2.0 三要素、请假审批实例 |
 | **2 流程引擎** | [process-engine/README.md](process-engine/README.md) | BPMN 工作原理、5 里程碑、3 大引擎对比、选型决策树 |
 | ├ Camunda 7 | [process-engine/camunda/camunda-7/README.md](process-engine/camunda/camunda-7/README.md) | SpringBoot 集成、bpmn-js 集成、5 大任务节点 |
