@@ -65,8 +65,8 @@ classDiagram
         +Pool 池（参与者）
         +Lane 道（角色）
     }
-    FlowObject <|-- ConnectingObject : 通过连接
-    ConnectingObject <|-- Artifact : 可附注
+    FlowObject <.. ConnectingObject : 通过连接
+    ConnectingObject <.. Artifact : 可附注
     Swimlane ..> FlowObject : 组织归属
 ```
 
