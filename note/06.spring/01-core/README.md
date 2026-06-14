@@ -1,6 +1,6 @@
 # 01 核心容器
 
-> 最后更新: 2026-06-09
+> 最后更新: 2026-06-14
 > ⬅️ [返回 Spring 顶层](../README.md)
 
 ---
@@ -18,11 +18,13 @@
 | **模块依赖** | [module.md](module.md) | Spring Framework 有哪些模块？怎么按需引入？ | 10 min |
 | **IoC 容器** | [ioc/README.md](ioc/README.md) | 什么是控制反转？Bean 如何被创建和管理？ | 30 min |
 | **依赖注入** | [ioc/dependency-injection.md](ioc/dependency-injection.md) | 构造器/Setter/字段注入有什么区别？ | 15 min |
+| **@Configuration 进阶** | [configuration-lite-vs-full.md](configuration-lite-vs-full.md) | Lite vs Full Mode？@Import 三机制？ | 15 min |
+| **外部化配置** | [externalized-configuration.md](externalized-configuration.md) | @Value vs @ConfigurationProperties？ | 15 min |
 | **AOP 总览** | [aop/README.md](aop/README.md) | 什么是面向切面编程？Spring AOP 的核心概念 | 25 min |
 | **Event 机制** | [event.md](event.md) | Spring Event 发布订阅？@TransactionalEventListener？ | 10 min |
 | **异常处理** | [exception-handling.md](exception-handling.md) | 4 大异常处理层级？@ControllerAdvice？ | 12 min |
 | **工具类** | [tools-reference.md](tools-reference.md) | Spring 自带 24 个工具类速查 | 速查 |
-| **手写 mini Spring** | [minispring/microrest/README.md](minispring/microrest/README.md) | 200 行实现 IoC + MVC，看源码怎么写 | 教学 |
+| **手写 mini Spring** | [minispring/microrest/README.md](minispring/microrest/README.md) | 200 行实现 IoC + MVC 的教学 demo | 教学 |
 
 ---
 
