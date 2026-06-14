@@ -308,4 +308,4 @@ wait-duration-in-open-state: 30s  # 30s 后半开
 - ⬅️ [返回 05 Spring Cloud](README.md)
 - [RPC 与 Feign](rpc-and-feign.md) — Feign 集成熔断器
 - [网关](gateway.md) — 网关层限流
-- [分布式事务](transaction/distributed/theory-and-patterns.md) — 下游故障的业务补偿
+- [分布式事务](../03-data/transaction/distributed/theory-and-patterns.md) — 下游故障的业务补偿
