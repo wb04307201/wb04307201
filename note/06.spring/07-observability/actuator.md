@@ -188,7 +188,7 @@ management:
 
 ## 六、自定义 HealthIndicator
 
-`HealthIndicator` 是 Actuator 健康检查的核心接口。完整详解（`HealthIndicator` / `AbstractHealthIndicator` / `CompositeHealthContributor` / K8s 探针映射）见 [micrometer.md § 自定义 HealthIndicator](micrometer.md#二自定义-healthindicator) 与 [health-probes.md](health-probes.md)。
+`HealthIndicator` 是 Actuator 健康检查的核心接口。完整详解（`HealthIndicator` / `AbstractHealthIndicator` / `CompositeHealthContributor` / K8s 探针映射）见 [micrometer.md](micrometer.md)（在「七、3 个生产实践 → 2. 自定义 HealthIndicator」节）与 [health-probes.md](health-probes.md)。
 
 **最小示例**：
 
