@@ -295,6 +295,7 @@ public boolean isRevoked(String jti) {
 - [OAuth2.0 与 OIDC](../oauth2-oidc/README.md) — Access Token 的签发与使用流程
 - [API 安全](../api-security/README.md) — Token 传输、签名验证、防重放
 - [权限模型 RBAC / ABAC](../access-control/02-role-and-attribute/README.md) — Token 中的角色 / 权限声明如何消费
+- [Spring Cloud Gateway JWT 鉴权实现](../../../06.spring/05-spring-cloud/gateway.md) — 网关层 JWT 校验 Filter 的 Java 实现示例
 
 ---
 
