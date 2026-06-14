@@ -96,6 +96,7 @@
 - [数据一致性理论基础（微服务篇）](../../01-foundation/system-design-basics/microservices/data-consistency/README.md)
 - [分布式锁](../distributed-lock/README.md) — TCC/SAGA 中协调资源的关键
 - [分布式 ID](../distributed-id/README.md) — 事务/消息的唯一标识
+- Spring 集成与 Seata 配置示例见 [06.spring/03-data/transaction/distributed/](../../../06.spring/03-data/transaction/distributed/) 章节
 
 ## 参考链接
 
