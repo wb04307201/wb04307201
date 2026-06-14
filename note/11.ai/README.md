@@ -12,8 +12,8 @@
 |------|------|------|
 | **L1 基础概念** | [01-fundamentals](01-fundamentals/) | AI/ML/DL/LLM 基础定义、神经网络层次、架构对比 |
 | **L2 技术栈** | [02-technology-stack](02-technology-stack/) | LLM 生态全景(61核心概念)、多模态、Prompt工程、显存估算 |
-| **L3 工程实践** | [03-engineering](03-engineering/) | 深度学习框架、应用开发框架、计算平台、本地部署、AI平台对比 |
-| **L4 架构设计** | [04-architecture](04-architecture/) | 智能系统分层架构、2026技术趋势 |
+| **L3 工程实践** | [03-engineering](03-engineering/) | 深度学习框架、应用开发框架、计算平台、本地部署、[AI 编排平台](03-engineering/ai-platforms/)（Dify/Coze/LangGraph）|
+| **L4 架构设计** | [04-architecture](04-architecture/) | 智能系统分层架构、[AI + BPMN 融合](04-architecture/bpmn-ai-integration.md)、2026技术趋势 |
 | **L5 行业应用** | [05-applications](05-applications/) | 汽车行业落地、具身智能 |
 | **L6 前沿研究** | [06-research](06-research/) | 沉思模型(Rumination)等前沿探索 |
 | **教学课程** | [training](training/) | Spring AI 实战教学课程 |
