@@ -513,7 +513,147 @@ public MeterFilter meterFilter() {
 
 ---
 
-## 八、Micrometer vs Dropwizard Metrics
+## 八、OTLP 与 OpenTelemetry 导出
+
+> Micrometer Tracing 默认走 **Brave / Zipkin** 桥接（`micrometer-tracing-bridge-brave`），但 **OpenTelemetry（OTel）** 已成为云原生**链路追踪的事实标准**。Spring Boot 3.x+ 通过 `micrometer-tracing-bridge-otel` 提供与 OpenTelemetry SDK 的桥接，再由 OTLP 协议导出到任意兼容后端。
+
+### 1. 与 Zipkin / Brave 的关系
+
+```
+Micrometer Tracing (API facade)
+    │
+    ├── bridge-brave ──> Brave ──> Zipkin reporter
+    │                       │
+    │                       └──> Zipkin / Zipkin-compatible (Jaeger)
+    │
+    └── bridge-otel  ──> OpenTelemetry SDK ──> OTLP exporter
+                                                │
+                                                ├──> OTel Collector
+                                                ├──> Jaeger (原生 OTLP)
+                                                ├──> Tempo
+                                                ├──> SigNoz
+                                                └──> 任何 OTLP 兼容后端
+```
+
+> 📌 **演进方向**：Brave 维护模式（不再大版本迭代），OpenTelemetry 是**未来标准**。新项目建议直接选 `bridge-otel`。
+
+### 2. 依赖与配置
+
+```xml
+<dependency>
+    <groupId>io.micrometer</groupId>
+    <artifactId>micrometer-tracing-bridge-otel</artifactId>
+</dependency>
+<dependency>
+    <!-- OTLP HTTP/gRPC 导出器（二选一） -->
+    <groupId>io.opentelemetry</groupId>
+    <artifactId>opentelemetry-exporter-otlp</artifactId>
+</dependency>
+<dependency>
+    <!-- Micrometer 指标也走 OTel（可选） -->
+    <groupId>io.micrometer</groupId>
+    <artifactId>micrometer-tracing-instrument-observation</artifactId>
+</dependency>
+```
+
+```yaml
+# application.yml
+management:
+  tracing:
+    sampling:
+      probability: 1.0         # 100% 采样（生产可降至 0.1）
+  otlp:
+    tracing:
+      endpoint: http://otel-collector:4318/v1/traces
+      timeout: 10s
+    metrics:
+      endpoint: http://otel-collector:4318/v1/metrics
+```
+
+### 3. OpenTelemetry SDK 集成
+
+Micrometer 桥接会自动配置 `OpenTelemetry` SDK（`SdkTracerProvider` + `SdkMeterProvider` + `Resource`），通常**无需手动写代码**。如需自定义：
+
+```java
+@Bean
+public OpenTelemetry openTelemetry(Resource resource, SdkTracerProvider tracerProvider) {
+    return OpenTelemetrySdk.builder()
+        .setTracerProvider(tracerProvider)
+        .setPropagators(ContextPropagators.create(W3CTraceContextPropagator.getInstance()))
+        .buildAndRegisterGlobal();
+}
+```
+
+### 4. OTLP 协议：gRPC vs HTTP
+
+| 协议 | 端口（Collector 默认） | 适用 |
+|:-----|:---------------------|:----|
+| **OTLP/gRPC** | `4317` | 高吞吐、低延迟（推荐） |
+| **OTLP/HTTP** | `4318` | 防火墙友好（可走 80/443） |
+
+### 5. 实战：docker-compose 启动 OTel Collector + Jaeger
+
+```yaml
+# docker-compose.yml
+services:
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.96.0
+    command: ["--config=/etc/otel-collector-config.yaml"]
+    volumes:
+      - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
+    ports:
+      - "4317:4317"   # OTLP gRPC
+      - "4318:4318"   # OTLP HTTP
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.54
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+    ports:
+      - "16686:16686"  # Jaeger UI
+      - "14250:14250"  # gRPC
+```
+
+```yaml
+# otel-collector-config.yaml
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+exporters:
+  otlp/jaeger:
+    endpoint: jaeger:4317
+    tls:
+      insecure: true
+  debug: {}
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [otlp/jaeger, debug]
+    metrics:
+      receivers: [otlp]
+      exporters: [debug]
+```
+
+应用启动后访问 `http://localhost:16686` 即可看到 Jaeger 中的调用链——数据流为：Spring Boot → OTLP → Collector → Jaeger。
+
+### 6. 与 Prometheus 并存
+
+OTel **不会**替代 Prometheus（指标存储仍是 Prometheus 主导），推荐**混合架构**：
+
+- **指标** → Micrometer → Prometheus（pull）→ Grafana
+- **链路** → Micrometer Tracing → OTel → OTLP → Collector → Jaeger / Tempo
+- **日志** → Logback JSON → Filebeat/Promtail → Loki / ES
+
+---
+
+## 九、Micrometer vs Dropwizard Metrics
 
 | 维度 | Micrometer | Dropwizard Metrics |
 |------|-----------|---------------------|
@@ -525,7 +665,7 @@ public MeterFilter meterFilter() {
 
 ---
 
-## 九、5 大最佳实践
+## 十、5 大最佳实践
 
 1. **用 @Timed 替代手写 Timer**（AOP 自动织入）
 2. **业务关键路径都打点**（订单、支付、登录）
