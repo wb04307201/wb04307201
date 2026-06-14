@@ -134,6 +134,77 @@ public class FileService {
 }
 ```
 
+### 5. LongTaskTimer（长任务计时器）
+
+> 测量**正在执行**中的任务耗时——`Timer` 测量**已完成**任务的耗时，`LongTaskTimer` 测量**正在执行**的任务（如批处理、异步任务、长连接）。
+
+**与 Timer 的核心区别**：
+
+| 维度 | Timer | LongTaskTimer |
+|:-----|:------|:--------------|
+| 测量对象 | **已完成**任务的耗时 | **正在执行**任务的耗时 |
+| 数据点 | 每次 `record()` 增加一个 | 任务**运行期间**持续贡献 |
+| 适用 | HTTP 请求、方法调用 | 批处理、异步任务、MQ 消费者、长轮询 |
+| 输出指标 | 计数 + 总耗时 + 分布 | **active count（活跃数）** + **duration（总时长）** + **max（最长任务）** |
+
+**API 用法**：
+
+```java
+@Component
+public class BatchImportService {
+
+    private final LongTaskTimer importTimer;
+
+    public BatchImportService(MeterRegistry registry) {
+        this.importTimer = LongTaskTimer.builder("batch.import.duration")
+            .description("批处理导入任务耗时")
+            .publishPercentiles(0.5, 0.95, 0.99)
+            .register(registry);
+    }
+
+    public void importBatch(List<Order> orders) {
+        // 启动采样（必须持有 Sample 引用，调用 stop 才结束）
+        LongTaskTimer.Sample sample = importTimer.start();
+        try {
+            for (Order order : orders) {
+                processOne(order);
+            }
+        } finally {
+            sample.stop();
+        }
+    }
+}
+```
+
+**输出指标**（Prometheus 格式）：
+
+```
+batch_import_duration_active_count    3    # 当前正在执行的任务数
+batch_import_duration_duration_sum     12.5 # 所有活跃任务已运行的总秒数
+batch_import_duration_max              8.1  # 当前活跃任务中最长的已运行时间
+```
+
+**适用场景**：
+- **批处理任务**——每条记录的导入耗时
+- **异步消息消费**——Kafka/RabbitMQ 消费者单条消息处理时间
+- **长连接**——WebSocket 连接的存活时长
+- **定时任务**——`@Scheduled` 任务的执行时长
+
+**自动注册（ExecutorService 监控）**：
+
+```java
+@Bean
+public ExecutorService batchExecutor(MeterRegistry registry) {
+    return ExecutorServiceMetrics.monitor(
+        registry,
+        Executors.newFixedThreadPool(4),
+        "batch.executor"
+    );
+}
+```
+
+**结合 `@Timed` 注解**：Micrometer AOP 模块**不支持** `LongTaskTimer`（因为 `@Timed` 假设方法会返回），需手动调用 `start()` / `sample.stop()`。
+
 ---
 
 ## 三、Tag（标签）—— 维度化指标
