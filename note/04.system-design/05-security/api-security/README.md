@@ -582,6 +582,7 @@ OkHttpClient client = new OkHttpClient.Builder()
 - [权限模型 RBAC / ABAC](../access-control/02-role-and-attribute/README.md) — 接口背后的权限决策
 - [OWASP Top 10](../owasp-top10/README.md) — 应用安全风险全景
 - [加密与密钥管理](../encryption/README.md) — HTTPS / 签名背后的密码学基础
+- [Spring Cloud Gateway JWT 鉴权实现](../../../06.spring/05-spring-cloud/gateway.md) — 网关层接入点与上下文透传实战
 
 ## 参考资料
 
