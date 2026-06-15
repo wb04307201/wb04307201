@@ -147,6 +147,32 @@
 | 综合搜索 | 混合搜索（文本 + 语义） | 兼顾精确匹配和语义理解 |
 | 个性化推荐 | 协同过滤 + 内容推荐 | 挖掘用户隐性偏好 |
 
+### AI 选型决策表
+
+| 场景 | 首选 | 备选 | 原因 |
+|------|------|------|------|
+| 简单聊天/客服 | GPT-4o-mini / Claude 3.5 Haiku | Llama 3.1 8B | 成本低，能力足够 |
+| 复杂推理/规划 | Claude 3.5 Sonnet / GPT-4o | o1-preview | 强推理能力 |
+| 长文档摘要 | Claude 3.5 Sonnet（200K） | Gemini 1.5 Pro | 超长上下文 |
+| 代码生成 | Claude 3.5 Sonnet / GPT-4o | DeepSeek-Coder | 代码能力强 |
+| 本地化部署 | Llama 3.1 / Qwen 2.5 | Mistral / DeepSeek | 数据不出域 |
+| 多模态理解 | GPT-4o / Claude 3.5 Sonnet | Gemini 1.5 Pro | 图文音视频统一 |
+
+### Agent 工具链决策表
+
+| 场景 | 工具/框架 | 原因 |
+|------|----------|------|
+| 单 Agent 快速上线 | Dify / Coze | 低代码，30 分钟跑通 |
+| 复杂工作流 | LangGraph | 代码优先，有状态可控 |
+| 多 Agent 协同 | CrewAI / AutoGen | 角色化分工 |
+| 生产级工程化 | Agent Harness（自研/Coze+LangGraph）| 4 大模块 + Eval + Guardrails |
+| 工具协议层 | MCP（Model Context Protocol）| Anthropic 主导，N×M → N+M |
+| Agent 互操作 | A2A（Agent-to-Agent）| Google 主导，跨厂商协同 |
+| 上下文检索 | RAG + 向量库 | 知识库问答 |
+| 记忆管理 | Mem0 / Zep | 长期用户偏好 |
+| Agent 评测 | RAGAS / TruLens | RAG 专项 + 通用评测 |
+| 成本监控 | LangSmith / Helicone | Token 级可观测 |
+
 ---
 
 ## 演进路线图
