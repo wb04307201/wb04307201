@@ -4,6 +4,9 @@
 
 > **系列定位**：本篇是「阿明餐厅」系列的**续集七**。在前 28 篇文章中，我们谈过[技术债](./03-refactoring-guide-for-pm.md)、[架构演进](./02-system-architecture-evolution.md)、[可观测性](./05-observability.md)、[AI Agent](./01-ai-agent-architecture.md)。但 2026 年的 Tech Radar 浮现了一个新词汇 —— **Codebase 认知债（Cognitive Debt）**：代码已经"跑得动"了，却没人"读得懂"。这是 AI 时代特有的负债形式，比传统技术债更隐蔽、更危险。
 
+> 最后更新: 2026-06-15
+
+
 ---
 
 ## 引言：500 道菜，5 人都能做；500 道菜，500 人也做不全

@@ -4,6 +4,9 @@
 
 > **系列定位**：本篇是「阿明餐厅」系列的**正传 1**。在[前传](./02-system-architecture-evolution.md)中，阿明完成了架构演进；在[续集](./01-ai-agent-architecture.md)中接入了 AI Agent；在[番外](./03-refactoring-guide-for-pm.md)中完成了重构。但所有这些能力，都要面对一个终极考验 —— 当流量洪峰真的来了，系统能不能扛住？
 
+> 最后更新: 2026-06-15
+
+
 ---
 
 ## 引言：午高峰，来了
