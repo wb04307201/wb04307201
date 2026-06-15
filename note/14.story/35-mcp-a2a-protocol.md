@@ -1159,6 +1159,12 @@ graph TB
 
 ---
 
+
+### 跨章节衔接
+
+- [11.ai/03-engineering/ai-platforms/README.md](../11.ai/03-engineering/ai-platforms/README.md) —— Dify/Coze/LangGraph 平台实现 —— MCP/A2A 协议在主流平台中的落地
+- [11.ai/02-technology-stack/README.md](../11.ai/02-technology-stack/README.md) —— AI 技术栈 61 概念 —— 协议层在 AI 技术栈中的位置
+
 ## 结语
 
 阿明花了 3 个月把 20 个 Agent 从"各自为政"重构成"MCP + A2A"架构，效果立竿见影：

@@ -737,6 +737,12 @@ graph TD
 
 ---
 
+
+### 跨章节衔接
+
+- [11.ai/04-architecture/bpmn-ai-integration.md](../11.ai/04-architecture/bpmn-ai-integration.md) —— BPMN+AI 融合 —— AI 安全护栏在工作流引擎中的工程化实践
+- [11.ai/01-fundamentals/README.md](../11.ai/01-fundamentals/README.md) —— LLM 基础 —— 理解 Prompt 注入与权限滥用的根因
+
 ## 结语
 
 阿明在团队内部发了一封全员邮件，主题是"AI 系统的 3 个致命漏洞"：

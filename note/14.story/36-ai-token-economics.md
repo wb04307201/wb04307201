@@ -1127,6 +1127,12 @@ graph TB
 
 ---
 
+
+### 跨章节衔接
+
+- [11.ai/02-technology-stack/README.md](../11.ai/02-technology-stack/README.md) —— AI 技术栈中的推理/Embedding/向量库 —— 6 大成本组件的技术解构
+- [11.ai/03-engineering/ai-platforms/README.md](../11.ai/03-engineering/ai-platforms/README.md) —— AI 平台 —— 平台层成本感知路由与缓存压缩的工程实现
+
 ## 结语
 
 阿明花了 3 个月，把 AI 月成本从 48 万降到了 18 万（下降 62%），同时业务增长了 2 倍：

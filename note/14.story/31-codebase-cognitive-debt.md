@@ -621,6 +621,12 @@ graph TD
 
 ---
 
+
+### 跨章节衔接
+
+- [11.ai/02-technology-stack/README.md](../11.ai/02-technology-stack/README.md) —— AI 技术栈与 RAG 检索 —— 认知债如何影响 RAG 召回精度
+- [11.ai/03-engineering/ai-platforms/README.md](../11.ai/03-engineering/ai-platforms/README.md) —— AI 平台对代码库的"理解能力"边界 —— 认知债是 AI Coding 的隐形瓶颈
+
 ## 结语
 
 阿明在团队内部发了一封邮件，主题是"Codebase 是公司的资产，不是工程师的负担"：

@@ -695,6 +695,12 @@ graph TD
 
 ---
 
+
+### 跨章节衔接
+
+- [11.ai/03-engineering/ai-platforms/README.md](../11.ai/03-engineering/ai-platforms/README.md) —— Dify/Coze/LangGraph 平台对比 —— Harness 设计可借鉴的工程化思路
+- [11.ai/04-architecture/bpmn-ai-integration.md](../11.ai/04-architecture/bpmn-ai-integration.md) —— BPMN+AI 融合 —— Agent Harness 在工作流引擎中的落地形态
+
 ## 结语
 
 阿明在团队内部做了一次 Harness 实践分享，主题是"AI Coding 从'能用'到'好用'，差的是 Harness"：

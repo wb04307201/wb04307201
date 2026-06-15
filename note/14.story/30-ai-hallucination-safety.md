@@ -503,6 +503,12 @@ graph TD
 
 ---
 
+
+### 跨章节衔接
+
+- [11.ai/01-fundamentals/README.md](../11.ai/01-fundamentals/README.md) —— LLM 基础概念 —— 理解幻觉产生原理的技术根因
+- [11.ai/06-research/README.md](../11.ai/06-research/README.md) —— AI 前沿研究 —— 幻觉与信任校准的最新学术进展
+
 ## 结语
 
 半年后，阿明的"AI 出品审核制度"已经成了餐厅的标配流程。
