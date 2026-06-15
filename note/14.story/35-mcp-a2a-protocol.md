@@ -4,9 +4,6 @@
 
 > **系列定位**：本篇是「阿明餐厅」系列的**续集十一**。在[续集一 · 《当餐厅长出大脑》](./01-ai-agent-architecture.md)第五章，我们讲了多智能体协同（Orchestrator + 消息总线）。在[续集八 · 《Agent Harness》](./32-agent-harness.md)第三章，我们讲了 Tool 设计。但都还是"自己设计、自己实现"。2024-2026 年，业界出现了**两个重量级协议标准** —— **MCP（Model Context Protocol，Anthropic 主导）** 和 **A2A（Agent-to-Agent，Google 主导）** —— 它们正在成为 AI 时代的"TCP/IP"，让 Agent 与 Agent、Agent 与工具之间有了**统一的"语言"**。本篇不谈"如何实现一个协议"，谈**"协议层给整个 AI 生态带来了什么变化、怎么选型、怎么落地"**。
 
-> 最后更新: 2026-06-15
-
-
 ---
 
 ## 引言：20 个 Agent 互相听不懂对方说话
