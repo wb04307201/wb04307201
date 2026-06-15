@@ -122,7 +122,7 @@
 ## 章节导航
 
 | 序号 | 主题 | 核心内容 |
-|:----:|:----|:---------|
+|------|------|----------|
 | 1 | [工作流定义](07.workflow/define/README.md) | 业务/技术视角、BPMN 2.0 三要素（FlowObject / ConnectingObject / Artifact）、请假审批实例 + 3 企业案例 |
 | 2 | [流程引擎](07.workflow/process-engine/README.md) | 4 阶段工作原理、5 里程碑、3 大引擎对比（Camunda/Flowable/Activiti）、5 维度选型决策树 + 2025-2026 趋势 |
 | 2a | [Camunda 7 实战](07.workflow/process-engine/camunda/camunda-7/README.md) | SpringBoot 集成 + Swagger + bpmn-js + 5 任务节点对比 + 银行 50 万件/年案例 |
@@ -218,13 +218,20 @@
 ### [前端存储方式](13.split-hairs/12.font-end/storage/README.md)
 
 # 十四、[「阿明餐厅」技术系列](14.story/index.md)
-> 以餐厅经营为叙事主线，用 30+ 篇故事讲透从架构演进到 AI 转型的技术全景。
+
+> 以餐厅经营为叙事主线，用 **34 篇** 故事讲透从架构演进到 AI 转型的技术全景。前传 + 续集一 + 正传 14 + 终章 + 番外 6 + 续集 2-12（AI 时代 11 篇）—— 一篇一个核心主题，篇篇独立又互相串联。
+
 ## 系列导航
 
 | 序号 | 主题 | 核心内容 |
 |------|------|----------|
-| 1 | [0. 系列导览](14.story/index.md) | 术语表（160+ 词）、一页纸速查 |
-| 2 | [1. 前传 · 架构演进](14.story/02-system-architecture-evolution.md) | 架构是"长"出来的、IT 成熟度 L1-L7 评估 |
-| 3 | [2. 正传 · 核心技术（15 篇）](14.story/04-peak-traffic-defense.md) | 流量治理、可观测性、安全、QA、CI/CD、API、数据、前端、故障、性能、MQ、分布式、实时、多端、数据库迁移 |
-| 4 | [3. 番外 · 专题拓展（7 篇）](14.story/03-refactoring-guide-for-pm.md) | 重构、FinOps、SaaS 多租户、搜索推荐、知识工程、低代码、国际化 |
-| 5 | [4. 续集 · AI Agent（6 篇）](14.story/01-ai-agent-architecture.md) | AI Agent 架构、AI 学习、组织转型、AI 原生创业、自进化组织、AI 幻觉治理 |
+| 1 | [系列导览](14.story/index.md) | 34 篇全景图 + 4 条主路径 + 13 类角色推荐 + 概念交叉索引 |
+| 2 | [前传 · 架构演进](14.story/02-system-architecture-evolution.md) | 架构"长"出来（单机→云原生）+ IT 成熟度 L1-L7 评估 |
+| 3 | [续集一 · AI Agent 架构](14.story/01-ai-agent-architecture.md) | 7 大模块：感知/记忆/规划/工具/协同/反馈/安全（衔接 [11.ai AI 知识体系](11.ai/README.md)）|
+| 4 | [正传 1-14 · 核心工程（14 篇）](14.story/04-peak-traffic-defense.md) | 流量/可观测/安全/QA/CI-CD/API/数据/前端/故障/性能/异步/分布式/多端/数据库迁移 |
+| 5 | [终章 · 从厨师到 CEO](14.story/07-from-chef-to-ceo.md) | 5 人→500 人：康威/团队拓扑/SECI/ADR/Docs-as-Code/IDP/工程师文化 |
+| 6 | [番外 1-6 · 专题拓展（6 篇）](14.story/03-refactoring-guide-for-pm.md) | 重构/FinOps/SaaS/搜索推荐/低代码/国际化 |
+| 7 | [续集 2-12 · AI 时代（11 篇）](14.story/11-ai-learning-paradox.md) | 学习/组织/创业/自进化/信任/认知债/Harness/致命三件套/评测/协议/Token 成本 |
+| 8 | [辅助资料 · 速查 + 术语](14.story/cheatsheet.md) | [一页纸速查](14.story/cheatsheet.md)（34 篇心法 + AI 选型 + Agent 工具链）；[术语表](14.story/glossary.md)（220 词条 / 36 主题）|
+
+> 开源参考：14.story 章节本身为本仓库原创叙事，引用开源项目包括 Camunda 7/8、Apache EventMesh、CNCF Serverless Workflow、Dify/Coze/LangGraph、n8n、MCP/A2A 等（详见各文末「延伸阅读」）。
