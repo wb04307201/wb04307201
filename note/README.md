@@ -167,17 +167,25 @@
 | 6 | [L6 前沿研究](11.ai/06-research/README.md) | 沉思模型（Rumination）等前沿探索 |
 | 7 | [教学课程](11.ai/training/README.md) | Spring AI Agent 实战 16 课 |
 
-# 十二、前端
-## [前端工程](12.front-end/README.md)
-### 01 [基础](12.front-end/01-foundation/README.md) — 浏览器原理 / HTML / CSS / Web 标准
-### 02 [语言](12.front-end/02-language/README.md) — JavaScript / TypeScript
-### 03 [框架](12.front-end/03-frameworks/README.md) — 2026 框架格局 / React / Vue / Svelte / 元框架
-### 04 [工程化](12.front-end/04-engineering/README.md) — 构建 / 包管理 / Monorepo / 测试 / Lint
-### 05 [架构](12.front-end/05-architecture/README.md) — 渲染模式 / 微前端 / Web Components / BFF
-### 06 [性能](12.front-end/06-performance/README.md) — Core Web Vitals / Lighthouse / 监控
-### 07 [安全](12.front-end/07-security/README.md) — XSS / CSRF / CORS / Sessions
-### 08 [跨端](12.front-end/08-cross-platform/README.md) — 移动 / 桌面 / 小程序 / PWA
-### 09 [前端与 AI](12.front-end/09-frontend-and-ai/README.md) — AI SDK / AI IDE / Vibe Coding
+# 十二、[前端工程](12.front-end/README.md)
+
+> 现代前端工程的知识地图——从浏览器原理到 AI 协同开发，对齐 `04.system-design` / `06.spring` / `11.ai` 的 9 模块分层结构。
+
+## 模块导航
+
+| 序号 | 主题 | 核心内容 |
+|------|------|----------|
+| 1 | [01 基础](12.front-end/01-foundation/README.md) | 浏览器原理、HTML 语义化、CSS 工程化、Web 标准 |
+| 2 | [02 语言](12.front-end/02-language/README.md) | JavaScript 核心机制、ES2024-2026 新特性、TypeScript 5 工程实践、Node/Deno/Bun 运行时 |
+| 3 | [03 框架](12.front-end/03-frameworks/README.md) | 2026 框架格局、React/Vue/Svelte/元框架/选型 |
+| 4 | [04 工程化](12.front-end/04-engineering/README.md) | 构建工具（Vite/Webpack/Turbopack）、包管理、Monorepo、测试、Lint |
+| 5 | [05 架构](12.front-end/05-architecture/README.md) | 渲染模式（CSR/SSR/SSG/RSC）、状态、路由、微前端、Web Components、BFF |
+| 6 | [06 性能](12.front-end/06-performance/README.md) | Core Web Vitals（LCP/INP/CLS）、Lighthouse、运行时性能与监控 |
+| 7 | [07 安全](12.front-end/07-security/README.md) | XSS / CSRF / CSP / SRI / CORS / Sessions / 依赖供应链 |
+| 8 | [08 跨端](12.front-end/08-cross-platform/README.md) | 移动（RN/Flutter）、桌面（Electron/Tauri）、小程序（微信/Taro）、PWA |
+| 9 | [09 前端与 AI](12.front-end/09-frontend-and-ai/README.md) | AI SDK、AI Native UI、AI IDE（Cursor/Claude Code）、Vibe Coding、MCP 协议 |
+
+> 开源参考：暂无（当前 9 模块中仅 03 框架、05 架构、07 安全有存量内容，其余模块为占位骨架，深度子文档待后续按需补充）
 
 # 十三、咬文嚼字
 ## 01.java/
