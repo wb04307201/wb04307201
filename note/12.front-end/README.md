@@ -24,11 +24,46 @@
 
 ## 2. 知识脉络
 
-```
-基础 → 语言 → 框架 → 工程化 → 架构 → 性能 → 安全 → 跨端 → AI
+```mermaid
+graph LR
+  subgraph 底层
+    A[01 基础<br/>浏览器/HTML/CSS]
+    B[02 语言<br/>JS/TS/运行时]
+  end
+  subgraph 中层
+    C[03 框架<br/>React/Vue/Svelte]
+    D[04 工程化<br/>构建/测试/Monorepo]
+  end
+  subgraph 上层
+    E[05 架构<br/>渲染/状态/微前端]
+    F[06 性能<br/>CWV/监控]
+    G[07 安全<br/>XSS/CSRF/CSP]
+    H[08 跨端<br/>移动/桌面/小程序]
+  end
+  subgraph 时代专题
+    I[09 前端与 AI<br/>AI SDK/Vibe Coding]
+  end
+  A --> B
+  B --> C
+  C --> D
+  D --> E
+  E --> F
+  E --> G
+  E --> H
+  F --> I
+  G --> I
+  H --> I
+  classDef bottom fill:#e3f2fd,stroke:#1976d2
+  classDef middle fill:#fff8e1,stroke:#f57c00
+  classDef top fill:#e8f5e9,stroke:#388e3c
+  classDef ai fill:#f3e5f5,stroke:#7b1fa2
+  class A,B bottom
+  class C,D middle
+  class E,F,G,H top
+  class I ai
 ```
 
-从底层原理（浏览器 / 语言）出发，向上构建框架与工程化体系，再向架构与性能深入，安全与跨端作为横切关切贯穿整个链路，AI 时代则把"如何与 AI 协同开发"作为收尾专题。
+**阅读顺序**：从底层原理（浏览器 / 语言）出发，向上构建框架与工程化体系，再向架构与性能深入，安全与跨端作为横切关切贯穿整个链路，AI 时代则把"如何与 AI 协同开发"作为收尾专题。
 
 ---
 
@@ -55,4 +90,23 @@
 
 ## 5. 开源参考
 
-> 暂留占位，后续按需补充
+| 类别 | 项目 | 关联模块 |
+|------|------|---------|
+| **构建工具** | [Vite](https://github.com/vitejs/vite) / [Rspack](https://github.com/web-infra-dev/rspack) / [Turbopack](https://turbo.build/pack) | 04 工程化 |
+| **框架** | [React](https://github.com/facebook/react) / [Vue](https://github.com/vuejs/core) / [Svelte](https://github.com/sveltejs/svelte) / [Astro](https://github.com/withastro/astro) | 03 框架 |
+| **元框架** | [Next.js](https://github.com/vercel/next.js) / [Nuxt](https://github.com/nuxt/nuxt) / [SvelteKit](https://github.com/sveltejs/kit) | 05 架构 |
+| **UI / 设计系统** | [shadcn/ui](https://github.com/shadcn-ui/ui) / [Material UI](https://github.com/mui/material-ui) / [Ant Design](https://github.com/ant-design/ant-design) | 05 架构 |
+| **AI SDK** | [Vercel AI SDK](https://github.com/vercel/ai) / [Anthropic SDK](https://github.com/anthropics/anthropic-sdk-typescript) | 09 前端与 AI |
+| **AI 编码工具** | [Cursor](https://www.cursor.com/) / [Claude Code](https://docs.claude.com/en/docs/claude-code) / [Windsurf](https://codeium.com/windsurf) | 09 前端与 AI |
+| **跨端框架** | [React Native](https://github.com/facebook/react-native) / [Flutter](https://github.com/flutter/flutter) / [Tauri](https://github.com/tauri-apps/tauri) / [Taro](https://github.com/NervJS/taro) | 08 跨端 |
+| **测试** | [Vitest](https://github.com/vitest-dev/vitest) / [Playwright](https://github.com/microsoft/playwright) | 04 工程化 |
+| **性能监控** | [web-vitals](https://github.com/GoogleChrome/web-vitals) | 06 性能 |
+
+---
+
+## 6. 章节统计
+
+- **模块数**：9（含 5 个二级子 README：BFF / 微前端 / Web Components / CORS / Sessions）
+- **总行数**：~1500 行（含本轮新增）
+- **已实内容**：03 框架（166 行）+ 05 架构 3 子（230 行）+ 07 安全 2 子（383 行）
+- **互引章节**：[`11.ai/`](../11.ai/)、[`14.story/`](../14.story/)、[`13.split-hairs/12.front-end/`](../13.split-hairs/12.front-end/)
