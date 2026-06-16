@@ -1,12 +1,12 @@
 # 一页纸速查
 
-> 「阿明餐厅」系列 34 篇文章的核心概念、关键决策表、金句心法，浓缩在一页之内。
+> 「阿明餐厅」系列 43 篇文章的核心概念、关键决策表、金句心法，浓缩在一页之内。
 
 ← [返回系列导读](./index.md)
 
 ---
 
-## 三十四篇文章 × 一句话 × 一心法
+## 四十三篇文章 × 一句话 × 一心法
 
 | # | 文章 | 一句话 | 心法 |
 |---|------|--------|------|
@@ -41,9 +41,16 @@
 | 续集七 | [Codebase 认知债](./31-codebase-cognitive-debt.md) | 认知债：规模/一致性/时序/隐式 4 大来源，AI 时代的隐形负债 | 代码能跑只是及格，能被理解才能传承 |
 | 续集八 | [Agent Harness](./32-agent-harness.md) | Harness：Context 治理 + Tool 设计 + Guardrails + Eval，让 AI 从能用到好用 | 没有 Harness，Agent 只是更快的 Bug 制造机 |
 | 续集九 | [AI 致命三件套](./33-ai-fatal-trio.md) | 致命三件套：注入 + 越权 + 泄露，单独 P0 组合一次攻击致命 | 防御不能依赖单一防线，必须纵深防御 + 红队 + AI BOM |
-| 续集十 | [AI 评测工程](./34-ai-evaluation.md) | 评测 = 6 大维度 + 黄金集 + LLM-as-Judge + 5 层流水线 + 红队 + A/B 的闭环工程 | 看不见的成本最可怕，看得见的优化最有效 |
-| 续集十一 | [Agent 协议](./35-mcp-a2a-protocol.md) | MCP（USB-C）+ A2A（SMTP）：Agent 时代的 TCP/IP | 不上协议 Agent 就是孤岛，上了协议才是群体智能 |
-| 续集十二 | [AI 成本经济学](./36-ai-token-economics.md) | Token 经济学：6 大组件 + 4 大陷阱 + 5 层路由 + 3 级缓存 + 4 策略压缩 | Token 不会撕账单，但月底会 |
+| 续集十 | [AI 评测工程（基础篇）](./34a-ai-evaluation-fundamentals.md) / [（流水线篇）](./34b-ai-evaluation-pipeline.md) | 评测 = 6 大维度 + 黄金集 + LLM-as-Judge + 5 层流水线 + 红队 + A/B 的闭环工程 | 看不见的成本最可怕，看得见的优化最有效 |
+| 续集十一 | [MCP 协议（基础篇）](./35a-mcp-protocol.md) / [A2A 协议（进阶篇）](./35b-a2a-protocol.md) | MCP（USB-C）+ A2A（SMTP）：Agent 时代的 TCP/IP | 不上协议 Agent 就是孤岛，上了协议才是群体智能 |
+| 续集十二 | [AI 成本经济学（结构篇）](./36a-ai-token-cost-structure.md) / [（优化篇）](./36b-ai-token-cost-optimization.md) | Token 经济学：6 大组件 + 4 大陷阱 + 5 层路由 + 3 级缓存 + 4 策略压缩 | Token 不会撕账单，但月底会 |
+| 续集十三 | [AI 可观测性](./37-ai-observability.md) | 传统 3 支柱 + AI 特有 4 支柱 = 7 大支柱，让 AI 系统自己告诉你哪里出了问题 | AI 可观测性不是"加分项"，是"入场券" |
+| 续集十四 | [RAG 检索增强生成](./38-rag-retrieval-augmented-generation.md) | 检索 + 增强 + 生成：5 大环节 + 7 大模式，让 AI 基于事实回答 | LLM 没有事实性，RAG 是答案 |
+| 续集十五 | [向量数据库与 Embedding 实战](./39-vector-database-and-embedding.md) | 6 大向量库 + Embedding 选型 + 4 大调优 + 成本监控 | 向量库是 RAG 的"心脏"，不是"附件" |
+| 续集十六 | [AI 合规与监管](./40-ai-compliance-and-regulation.md) | EU AI Act + 中国办法 + GDPR + 4 大支柱 + 4 大体系 + 5 大风险 | 合规不是成本，是商业护城河 |
+| 续集十七 | [AI 模型私有化部署](./41-ai-private-deployment.md) | 5 大形态 + 4 大推理框架 + AWQ/INT4 + LoRA + 5 年 TCO | 短期 API、中期混合、长期核心私有化 |
+| 番外七 | [Prompt 工程深度专题](./42-prompt-engineering.md) | 10 大模式 + 7 大技术 + 4 大优化 + 4 大模板库 + 5 大安全防御 | 每次调整 1 个变量，做 1000 次实验，看数据说话 |
+| 番外八 | [多模态 AI 应用工程](./43-multimodal-ai.md) | 5 大模态 + 6 大模型 + 3 大融合 + 5 大场景 + 5 大挑战 | 单模态 LLM 将被淘汰，多模态是入场券 |
 
 ---
 
