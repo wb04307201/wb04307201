@@ -605,6 +605,12 @@ graph TD
 - [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的工作流编排，低代码平台能否支撑 Agent 的灵活编排
 - [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— 低代码平台中的 AI 幻觉风险，平台内置 AI 功能的幻觉治理
 
+## 跨章节衔接
+
+- [10-api-design.md](./10-api-design.md) —— 正传 6，低代码平台通过 API 与外部系统集成：API 设计是低代码的扩展性
+- [19-saas-multitenant.md](./19-saas-multitenant.md) —— 番外三，低代码平台的多租户实现：租户级应用隔离
+- [32-agent-harness.md](./32-agent-harness.md) —— 续集八，AI Agent 与低代码平台融合：可视化工作流编排是低代码的天然场景
+
 ---
 
 ## 结语

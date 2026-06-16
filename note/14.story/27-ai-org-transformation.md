@@ -490,6 +490,15 @@ graph TD
 - [11.ai/01-fundamentals/README.md](../11.ai/01-fundamentals/README.md) —— LLM/AI Agent 能力边界 —— 理解 AI 能做什么、不能做什么，是"换岗不换人"的前提
 - [11.ai/04-architecture/README.md](../11.ai/04-architecture/README.md) —— 智能系统分层架构 —— 组织转型的技术架构蓝本
 
+## 跨章节衔接
+
+- [01-ai-agent-architecture.md](./01-ai-agent-architecture.md) —— 续集一，组织转型中的 Agent 架构：技术架构变革是组织变革的载体
+- [07-from-chef-to-ceo.md](./07-from-chef-to-ceo.md) —— 终章，CEO 视角下的组织转型：自上而下 vs 自下而上的变革路径
+- [29-self-evolving-company.md](./29-self-evolving-company.md) —— 续集五，组织转型的终极形态：自进化组织
+- [11-ai-learning-paradox.md](./11-ai-learning-paradox.md) —— 续集二，组织转型中的员工学习困境：换岗后再学习的挑战
+
+---
+
 ## 结语
 
 阿明的"AI 炒菜机裁员风波"，最终以一种他意想不到的方式收场。

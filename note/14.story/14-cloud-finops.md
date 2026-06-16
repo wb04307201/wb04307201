@@ -297,6 +297,12 @@ graph TD
 - [会自我进化的厨房](./29-self-evolving-company.md) —— Burn Tokens 的成本控制，Agent Loop 的 Token 消耗需要 FinOps 思维
 - [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉修复的隐性成本，错误输出的修复成本应纳入成本核算
 
+## 跨章节衔接
+
+- [19-saas-multitenant.md](./19-saas-multitenant.md) —— 番外三，SaaS 多租户的成本分摊与 FinOps：每租户的成本可视化、计费基础
+- [04-peak-traffic-defense.md](./04-peak-traffic-defense.md) —— 正传 1，弹性伸缩的成本与流量治理的平衡：峰值期的资源成本最贵
+- [05-observability.md](./05-observability.md) —— 正传 2，成本可观测性是 FinOps 的基础：没有指标无法优化成本
+
 ---
 
 ## 结语

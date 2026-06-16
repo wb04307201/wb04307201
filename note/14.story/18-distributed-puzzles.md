@@ -717,6 +717,12 @@ graph TD
 - [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的分布式部署，多个 Agent 循环如何在全局保持一致
 - [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉在分布式环境中放大，一个 Agent 的错误可能级联传播
 
+## 跨章节衔接
+
+- [20-realtime-eventdriven.md](./20-realtime-eventdriven.md) —— 正传 11，分布式难题的异步解法：事件驱动是分布式一致性的实践路径之一
+- [12-data-kitchen.md](./12-data-kitchen.md) —— 正传 7，CAP 权衡在数据层的具体体现：分库分表后的分布式事务
+- [24-database-migration.md](./24-database-migration.md) —— 正传 14，分布式环境下的数据迁移挑战：流量切换、双写校验、回滚预案
+
 ---
 
 ## 结语

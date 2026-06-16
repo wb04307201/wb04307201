@@ -627,6 +627,14 @@ graph TD
 - [11.ai/02-technology-stack/README.md](../11.ai/02-technology-stack/README.md) —— AI 技术栈与 RAG 检索 —— 认知债如何影响 RAG 召回精度
 - [11.ai/03-engineering/ai-platforms/README.md](../11.ai/03-engineering/ai-platforms/README.md) —— AI 平台对代码库的"理解能力"边界 —— 认知债是 AI Coding 的隐形瓶颈
 
+## 跨章节衔接
+
+- [03-refactoring-guide-for-pm.md](./03-refactoring-guide-for-pm.md) —— 番外一，认知债是技术债的一种：重构是偿还认知债的核心手段
+- [08-qa-testing-strategy.md](./08-qa-testing-strategy.md) —— 正传 4，测试是认知债的度量工具：测试覆盖率反映代码可理解性
+- [30-ai-hallucination-safety.md](./30-ai-hallucination-safety.md) —— 续集六，认知债严重的代码加剧 AI 幻觉：上下文噪音让 AI 输出更易出错
+
+---
+
 ## 结语
 
 阿明在团队内部发了一封邮件，主题是"Codebase 是公司的资产，不是工程师的负担"：

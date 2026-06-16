@@ -401,6 +401,12 @@ graph LR
 - [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的自动部署能力，Agent 可以自主提交和部署修复
 - [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 输出的质量验证纳入 CI/CD，AI 产物的自动化校验流水线
 
+## 跨章节衔接
+
+- [08-qa-testing-strategy.md](./08-qa-testing-strategy.md) —— 正传 4，CI/CD 是测试自动化的执行载体：测试用例靠流水线串起来才有价值
+- [10-api-design.md](./10-api-design.md) —— 正传 6，API 版本管理与向后兼容的 CI/CD 自动化：契约测试在流水线中的位置
+- [29-self-evolving-company.md](./29-self-evolving-company.md) —— 续集五，CI/CD 是自进化组织的"血液循环"：让变更可被持续、低风险地推送
+
 ---
 
 ## 结语

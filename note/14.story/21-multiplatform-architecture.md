@@ -560,6 +560,12 @@ graph TD
 - [12.front-end / 05 架构 / BFF](../12.front-end/05-architecture/bff/README.md) —— BFF 模式详细实践：本章 BFF 概念的工程化落地
 - [12.front-end / 09 前端与 AI](../12.front-end/09-frontend-and-ai/README.md) —— AI Native UI / AI SDK / Vibe Coding
 
+## 跨章节衔接
+
+- [13-frontend-renovation.md](./13-frontend-renovation.md) —— 正传 8，多端架构与前端工程化的关系：组件库、设计系统、构建产物
+- [19-saas-multitenant.md](./19-saas-multitenant.md) —— 番外三，多端架构支持 SaaS 多租户的入口分流：不同终端对应不同租户
+- [26-globalization.md](./26-globalization.md) —— 番外六，多端架构下的国际化：不同地区、不同语言、不同端 UI 适配
+
 ---
 
 ## 结语

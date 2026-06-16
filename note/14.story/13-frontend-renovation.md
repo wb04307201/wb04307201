@@ -379,6 +379,12 @@ Google 的 Core Web Vitals 是前端体验的"健康体检"：
 - [12.front-end / 06 性能](../12.front-end/06-performance/README.md) —— Core Web Vitals（LCP/INP/CLS）与性能监控体系
 - [12.front-end / 05 架构](../12.front-end/05-architecture/README.md) —— 渲染模式 / 状态管理 / 微前端 / BFF
 
+## 跨章节衔接
+
+- [10-api-design.md](./10-api-design.md) —— 正传 6，前端工程化与 API 设计的协同：BFF、契约类型生成、Mock 数据
+- [21-multiplatform-architecture.md](./21-multiplatform-architecture.md) —— 正传 13，前端工程化向多端延伸：组件库的跨端复用、构建产物的多平台输出
+- [26-globalization.md](./26-globalization.md) —— 番外六，前端国际化是工程化的重要维度：i18n、文案管理、本地化构建
+
 ---
 
 ## 结语

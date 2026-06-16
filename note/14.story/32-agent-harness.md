@@ -701,6 +701,15 @@ graph TD
 - [11.ai/03-engineering/ai-platforms/README.md](../11.ai/03-engineering/ai-platforms/README.md) —— Dify/Coze/LangGraph 平台对比 —— Harness 设计可借鉴的工程化思路
 - [11.ai/04-architecture/bpmn-ai-integration.md](../11.ai/04-architecture/bpmn-ai-integration.md) —— BPMN+AI 融合 —— Agent Harness 在工作流引擎中的落地形态
 
+## 跨章节衔接
+
+- [01-ai-agent-architecture.md](./01-ai-agent-architecture.md) —— 续集一，Harness 是 Agent 架构的工程化封装：架构到 Harness 的工程实现
+- [04-peak-traffic-defense.md](./04-peak-traffic-defense.md) —— 正传 1，AI Agent 高并发调用的流量治理：Token 限流、并发控制
+- [30-ai-hallucination-safety.md](./30-ai-hallucination-safety.md) —— 续集六，Harness 的幻觉防护：上下文注入、输出校验、人类反馈
+- [15-incident-response.md](./15-incident-response.md) —— 正传 9，AI Agent 系统的故障模式：幻觉、超时、Token 溢出
+
+---
+
 ## 结语
 
 阿明在团队内部做了一次 Harness 实践分享，主题是"AI Coding 从'能用'到'好用'，差的是 Harness"：

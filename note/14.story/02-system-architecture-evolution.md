@@ -534,7 +534,7 @@ graph LR
 
 ---
 
-## 核心总结
+## 核心总结：架构演进全景
 
 ```mermaid
 graph TD
@@ -621,6 +621,12 @@ graph TD
 - [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生架构的从零开始，跳过传统演进路径的新可能
 - [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 驱动的架构自演进，系统可以自我修复和优化
 - [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉对架构设计的影响，需要在架构层面预留 AI 安全护栏
+
+## 跨章节衔接
+
+- [04-peak-traffic-defense.md](./04-peak-traffic-defense.md) —— 正传 1，架构演进的高可用目标在流量治理中的具体落地：限流、熔断、降级是架构成熟度的试金石
+- [05-observability.md](./05-observability.md) —— 正传 2，架构演进的每一步都需要可观测性验证：拆分是否生效、瓶颈是否转移
+- [06-security-architecture.md](./06-security-architecture.md) —— 正传 3，架构演进必须同步考虑安全：边界扩张的代价是攻击面扩大
 
 ---
 

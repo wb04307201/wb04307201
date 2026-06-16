@@ -313,6 +313,12 @@ graph TD
 - [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的安全策略层，Agent 的权限边界和安全过滤
 - [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉是新的安全挑战，幻觉护栏是安全架构在 AI 时代的延伸
 
+## 跨章节衔接
+
+- [02-system-architecture-evolution.md](./02-system-architecture-evolution.md) —— 前传，架构演进与安全架构协同：每一次架构升级都需重新评估安全边界
+- [05-observability.md](./05-observability.md) —— 正传 2，安全可观测性是检测攻击与异常行为的关键能力
+- [15-incident-response.md](./15-incident-response.md) —— 正传 9，安全事件应急是故障应急在安全维度的特例
+
 ---
 
 ## 结语

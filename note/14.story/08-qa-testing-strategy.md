@@ -518,6 +518,13 @@ graph TD
 - [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的质量门是自动化测试的终极形态
 - [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉检测是测试策略的新维度，如何测试 AI 的输出质量
 
+## 跨章节衔接
+
+- [09-cicd-devops.md](./09-cicd-devops.md) —— 正传 5，测试策略与 CI/CD 强耦合：自动化测试是流水线的质量门
+- [10-api-design.md](./10-api-design.md) —— 正传 6，API 契约测试是测试策略在接口层的具体落地
+- [15-incident-response.md](./15-incident-response.md) —— 正传 9，事故复盘是测试策略的逆向补充：从故障中提取新测试用例
+- [32-agent-harness.md](./32-agent-harness.md) —— 续集八，AI Agent 系统的测试挑战：非确定性输出的断言策略
+
 ---
 
 ## 结语

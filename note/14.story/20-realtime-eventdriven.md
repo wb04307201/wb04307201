@@ -707,6 +707,12 @@ graph TD
 - [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 中的异步消息传递
 - [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 输出的异步校验
 
+## 跨章节衔接
+
+- [18-distributed-puzzles.md](./18-distributed-puzzles.md) —— 正传 12，事件驱动是分布式一致性的关键解法：最终一致性通过事件流转实现
+- [22-search-recommendation.md](./22-search-recommendation.md) —— 番外四，搜索推荐的实时性依赖事件驱动架构：用户行为事件触发索引更新
+- [04-peak-traffic-defense.md](./04-peak-traffic-defense.md) —— 正传 1，异步消息削峰是流量治理的重要手段：消息队列作为缓冲层
+
 ---
 
 ## 结语

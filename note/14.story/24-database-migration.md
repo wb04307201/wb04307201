@@ -546,6 +546,12 @@ graph TD
 - [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 驱动的数据迁移，Agent 自主发现 Schema 问题并修复
 - [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉检测依赖校验数据，数据迁移的正确性是 AI 校验的基础
 
+## 跨章节衔接
+
+- [12-data-kitchen.md](./12-data-kitchen.md) —— 正传 7，数据迁移前的数据架构梳理：从单库到分库分表的设计选择
+- [18-distributed-puzzles.md](./18-distributed-puzzles.md) —— 正传 12，分布式环境下的数据迁移：双写校验、灰度切流、回滚预案
+- [09-cicd-devops.md](./09-cicd-devops.md) —— 正传 5，数据迁移的 CI/CD 集成：Schema 变更的版本化管理与自动化校验
+
 ---
 
 ## 结语

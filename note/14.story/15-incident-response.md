@@ -453,6 +453,13 @@ graph TD
 - [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的质量门防止故障扩散，监控 Agent 自动修复日常故障
 - [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉引发的故障应急，AI 错误输出是一种需要应急处理的故障类型
 
+## 跨章节衔接
+
+- [04-peak-traffic-defense.md](./04-peak-traffic-defense.md) —— 正传 1，故障应急与流量治理的"事前-事后"配合：限流是事前防御，应急是事后止血
+- [05-observability.md](./05-observability.md) —— 正传 2，可观测性是故障应急的命脉：没有监控的应急就是猜
+- [06-security-architecture.md](./06-security-architecture.md) —— 正传 3，安全事件是特殊的故障类型：安全应急响应流程
+- [32-agent-harness.md](./32-agent-harness.md) —— 续集八，AI Agent 系统的故障模式与传统系统不同：幻觉、超时、Token 溢出
+
 ---
 
 ## 结语

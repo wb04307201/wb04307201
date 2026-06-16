@@ -317,6 +317,12 @@ graph TD
 - [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的工具层 API，Agent 通过确定性 API 与世界交互
 - [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉对 API 响应的影响，API 设计需要预留 AI 错误的处理空间
 
+## 跨章节衔接
+
+- [08-qa-testing-strategy.md](./08-qa-testing-strategy.md) —— 正传 4，API 契约测试是测试策略的接口层落地：契约即文档，文档即测试
+- [09-cicd-devops.md](./09-cicd-devops.md) —— 正传 5，API 版本管理与 CI/CD 流水线协同：向后兼容的自动化校验
+- [12-data-kitchen.md](./12-data-kitchen.md) —— 正传 7，API 是数据架构对外暴露的"门面"：内部数据模型与外部 API 的解耦
+
 ---
 
 ## 结语

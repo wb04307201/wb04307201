@@ -676,6 +676,12 @@ graph TD
 - [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的多区域部署，Agent 在不同时区和文化中自我进化
 - [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉的多语言多文化差异，不同语言环境下的幻觉模式和治理策略
 
+## 跨章节衔接
+
+- [13-frontend-renovation.md](./13-frontend-renovation.md) —— 正传 8，国际化的前端工程化：i18n 框架、文案管理、本地化构建
+- [21-multiplatform-architecture.md](./21-multiplatform-architecture.md) —— 正传 13，国际化与多端架构的协同：不同地区的 UI 适配
+- [22-search-recommendation.md](./22-search-recommendation.md) —— 番外四，国际化搜索推荐：跨语言的查询理解与本地化推荐
+
 ---
 
 ## 结语

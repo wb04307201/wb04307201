@@ -409,6 +409,12 @@ graph LR
 - [会自我进化的厨房](./29-self-evolving-company.md) —— 监控 Agent 是可观测性的组织级应用，从监控指标到监控决策
 - [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉的监控和告警，可观测性是发现 AI 错误的第一道防线
 
+## 跨章节衔接
+
+- [04-peak-traffic-defense.md](./04-peak-traffic-defense.md) —— 正传 1，流量治理的可观测性是核心需求：限流/熔断的效果必须可量化
+- [15-incident-response.md](./15-incident-response.md) —— 正传 9，可观测性是故障应急的"眼睛"：没有监控的应急就是盲人摸象
+- [06-security-architecture.md](./06-security-architecture.md) —— 正传 3，安全审计日志是可观测性的安全侧延伸
+
 ---
 
 ## 结语

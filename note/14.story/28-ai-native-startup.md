@@ -254,7 +254,7 @@ graph LR
 
 ---
 
-## 核心总结
+## 核心总结：AI 原生创业四阶段方法论
 
 ```mermaid
 graph TD
@@ -328,6 +328,15 @@ graph TD
 
 - [11.ai/03-engineering/ai-platforms/README.md](../11.ai/03-engineering/ai-platforms/README.md) —— Dify/Coze/LangGraph AI 平台对比 —— 创业工具矩阵的技术选型依据
 - [11.ai/02-technology-stack/README.md](../11.ai/02-technology-stack/README.md) —— AI 技术栈 61 核心概念全景 —— 创业者的 AI 知识地图
+
+## 跨章节衔接
+
+- [01-ai-agent-architecture.md](./01-ai-agent-architecture.md) —— 续集一，AI 原生创业的 Agent 架构基线：多 Agent 协作的产品化
+- [07-from-chef-to-ceo.md](./07-from-chef-to-ceo.md) —— 终章，AI 原生创业对创始人的能力要求：技术-商业-管理的三角
+- [27-ai-org-transformation.md](./27-ai-org-transformation.md) —— 续集三，AI 原生创业的组织设计：从零开始设计 AI 时代的组织
+- [11-ai-learning-paradox.md](./11-ai-learning-paradox.md) —— 续集二，AI 原生创业中的学习悖论：创业团队不能全靠 AI
+
+---
 
 ## 结语
 

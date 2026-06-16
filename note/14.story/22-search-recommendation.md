@@ -624,6 +624,12 @@ graph TD
 - [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 驱动的推荐系统自我优化，持续学习用户偏好变化
 - [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉在推荐场景的表现，推荐系统的"幻觉"——推荐不合理的结果
 
+## 跨章节衔接
+
+- [20-realtime-eventdriven.md](./20-realtime-eventdriven.md) —— 正传 11，搜索推荐的实时性依赖事件流：用户行为事件驱动索引更新
+- [12-data-kitchen.md](./12-data-kitchen.md) —— 正传 7，搜索推荐的数据架构：用户行为数据、内容数据、特征数据的存储与查询
+- [05-observability.md](./05-observability.md) —— 正传 2，推荐系统的可观测性：CTR、转化率、多样性等指标监控
+
 ---
 
 ## 结语

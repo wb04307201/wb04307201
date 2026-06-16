@@ -433,6 +433,12 @@ graph TD
 - [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 自动化的流量预测和弹性伸缩决策
 - [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉导致的异常流量风险，错误推荐可能引发突发流量
 
+## 跨章节衔接
+
+- [05-observability.md](./05-observability.md) —— 正传 2，流量治理的效果需要可观测性验证：限流后的真实流量分布、熔断触发频次
+- [15-incident-response.md](./15-incident-response.md) —— 正传 9，流量治理与故障应急是同一硬币的两面：限流是事前防御，应急是事后止血
+- [32-agent-harness.md](./32-agent-harness.md) —— 续集八，AI Agent 高并发调用的流量治理：Token 限流、并发控制、调用链追踪
+
 ---
 
 ## 结语

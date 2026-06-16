@@ -413,7 +413,7 @@ graph LR
 
 ---
 
-## 核心总结
+## 核心总结：AI 幻觉与信任校准全景
 
 ```mermaid
 graph TD
@@ -508,6 +508,14 @@ graph TD
 
 - [11.ai/01-fundamentals/README.md](../11.ai/01-fundamentals/README.md) —— LLM 基础概念 —— 理解幻觉产生原理的技术根因
 - [11.ai/06-research/README.md](../11.ai/06-research/README.md) —— AI 前沿研究 —— 幻觉与信任校准的最新学术进展
+
+## 跨章节衔接
+
+- [06-security-architecture.md](./06-security-architecture.md) —— 正传 3，AI 幻觉是新型安全威胁：幻觉护栏是安全架构在 AI 时代的延伸
+- [22-search-recommendation.md](./22-search-recommendation.md) —— 番外四，搜索推荐系统的"幻觉"：推荐不相关内容也是一种幻觉
+- [32-agent-harness.md](./32-agent-harness.md) —— 续集八，Agent Harness 的幻觉防护：上下文注入、输出校验、人类反馈
+
+---
 
 ## 结语
 

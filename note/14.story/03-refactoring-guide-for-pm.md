@@ -471,6 +471,12 @@ graph LR
 - [会自我进化的厨房](./29-self-evolving-company.md) —— 自进化组织的重构思维，让系统具备自我修复能力
 - [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 输出质量的持续改进，和重构一样是渐进式提升过程
 
+## 跨章节衔接
+
+- [02-system-architecture-evolution.md](./02-system-architecture-evolution.md) —— 前传，重构是架构演进的工具：分阶段的架构升级与重构路径
+- [08-qa-testing-strategy.md](./08-qa-testing-strategy.md) —— 正传 4，重构的安全网是测试覆盖：测试保护重构不引入回归
+- [09-cicd-devops.md](./09-cicd-devops.md) —— 正传 5，CI/CD 是重构的护栏：自动化流水线让重构可回滚、可验证
+
 ---
 
 ## 结语

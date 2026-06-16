@@ -317,6 +317,12 @@ graph TD
 - [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的传感器层依赖数据架构，数据质量决定 Agent 质量
 - [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉与数据质量的关系，GIGO 原则在 AI 幻觉中同样适用
 
+## 跨章节衔接
+
+- [10-api-design.md](./10-api-design.md) —— 正传 6，数据架构通过 API 对外提供服务：内聚数据模型与解耦 API 是良好架构的基础
+- [24-database-migration.md](./24-database-migration.md) —— 正传 14，数据架构演进的具体工程化：分库分表、数据迁移的策略
+- [18-distributed-puzzles.md](./18-distributed-puzzles.md) —— 正传 12，分布式数据一致性的难题：CAP 权衡在数据层的具体体现
+
 ---
 
 ## 结语

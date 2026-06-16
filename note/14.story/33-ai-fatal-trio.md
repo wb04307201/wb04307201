@@ -41,7 +41,7 @@
 
 ---
 
-## 第 0 章 · 5 分钟快速概览
+## 第零章 · 5 分钟快速概览
 
 > 如果你只有 5 分钟，看完这一章就够了。
 
@@ -90,8 +90,8 @@ graph LR
 |--------|-------|
 | **AI 工程师** | 第 2/3/4 章（具体漏洞） + 第 6 章（防御体系）|
 | **安全工程师** | 第 6 章（Guardrails） + 第 7 章（红队） + 第 2-4 章（漏洞理解）|
-| **架构师 / CTO** | 第 0 章（概览） + 第 5 章（协同） + 第 6 章（组织流程）|
-| **产品 / 业务** | 第 0 章 + 引言 3 起事故 + 结语（防御清单）|
+| **架构师 / CTO** | 第零章（概览） + 第五章（协同） + 第六章（组织流程）|
+| **产品 / 业务** | 第零章 + 引言 3 起事故 + 结语（防御清单）|
 
 ### 0.5 5 条"立刻能做的"应急防御
 
@@ -808,6 +808,15 @@ graph TD
 
 - [11.ai/04-architecture/bpmn-ai-integration.md](../11.ai/04-architecture/bpmn-ai-integration.md) —— BPMN+AI 融合 —— AI 安全护栏在工作流引擎中的工程化实践
 - [11.ai/01-fundamentals/README.md](../11.ai/01-fundamentals/README.md) —— LLM 基础 —— 理解 Prompt 注入与权限滥用的根因
+
+## 跨章节衔接
+
+- [06-security-architecture.md](./06-security-architecture.md) —— 正传 3，AI 时代的权限滥用是安全架构的新战场：传统安全模型在 AI 失效
+- [32-agent-harness.md](./32-agent-harness.md) —— 续集八，Agent Harness 是三大致命漏洞的工程防线：上下文隔离、权限控制、输出过滤
+- [15-incident-response.md](./15-incident-response.md) —— 正传 9，AI 安全事件的应急响应：Prompt 注入、权限滥用都是新型故障
+- [30-ai-hallucination-safety.md](./30-ai-hallucination-safety.md) —— 续集六，幻觉护栏与三大致命漏洞的协同：幻觉本身就是一种输出失控
+
+---
 
 ## 结语
 

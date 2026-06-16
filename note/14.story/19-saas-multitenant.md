@@ -508,6 +508,12 @@ graph TD
 - [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的多租户隔离，不同租户的 Agent 循环独立运行
 - [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉在多租户场景的治理，不同租户的 AI 护栏策略差异化
 
+## 跨章节衔接
+
+- [14-cloud-finops.md](./14-cloud-finops.md) —— 番外二，多租户的成本分摊与 FinOps 协同：每租户的资源使用可视化
+- [06-security-architecture.md](./06-security-architecture.md) —— 正传 3，多租户隔离是安全架构的核心：数据隔离、权限边界
+- [21-multiplatform-architecture.md](./21-multiplatform-architecture.md) —— 正传 13，多端架构支持多租户：不同终端的租户体验一致
+
 ---
 
 ## 结语
