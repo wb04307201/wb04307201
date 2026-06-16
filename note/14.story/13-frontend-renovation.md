@@ -375,6 +375,9 @@ Google 的 Core Web Vitals 是前端体验的"健康体检"：
 - [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业的前端体验，MVP 的前端是用户的第一接触点
 - [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的用户反馈层，前端是收集用户反馈的核心触点
 - [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉在前端的展示，如何在界面上处理 AI 的不确定性
+- [12.front-end / 04 工程化](../12.front-end/04-engineering/README.md) —— Vite / pnpm / Monorepo / 测试体系：前端工程化工具链选型
+- [12.front-end / 06 性能](../12.front-end/06-performance/README.md) —— Core Web Vitals（LCP/INP/CLS）与性能监控体系
+- [12.front-end / 05 架构](../12.front-end/05-architecture/README.md) —— 渲染模式 / 状态管理 / 微前端 / BFF
 
 ---
 
