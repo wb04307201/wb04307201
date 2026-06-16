@@ -126,7 +126,7 @@ Content-Type: application/json
 客户端可以向远程服务器发送签名请求。
 
 如下示例代码：在`CORS`请求中以`Authorization`标头的形式发送凭据：
-```java
+```javascript
 function sendAuthRequestToCrossOrigin() {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
@@ -185,43 +185,51 @@ public class CORSFilter implements Filter {
 
 方法3：配置`Configuration`
 
-如下示例代码：增加一个配置类继承`WebMvcConfigurerAdapter`或者实现`WebMvcConfigurer`接口，项目启动时，会自动读取配置。
+如下示例代码：增加一个配置类实现 `WebMvcConfigurer` 接口，项目启动时会自动读取配置。
 ```java
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
-public class CorsConfig extends WebMvcConfigurerAdapter {
-    static final String ORIGINS[] = new String[]{"GET", "POST", "PUT", "DELETE"};
+public class CorsConfig implements WebMvcConfigurer {
+    static final String[] METHODS = new String[]{"GET", "POST", "PUT", "DELETE"};
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**").allowedOrigins("*").allowCredentials(true).allowedMethods(ORIGINS).maxAge(3600);
+        registry.addMapping("/**")
+                .allowedOriginPatterns("*")   // Spring 5.3+ 推荐：支持 allowCredentials=true 时不限源
+                .allowCredentials(true)
+                .allowedMethods(METHODS)
+                .maxAge(3600);
     }
 }
 ```
 
-另外，在服务器，可以通过设置响应头部来细粒度配置 CORS，具体的如下：
-1.允许所有源访问
+> ⚠️ `WebMvcConfigurerAdapter` 自 Spring 5.0（2017）起被标记 `@Deprecated`，Spring 6 仅保留兼容性，新项目应直接实现 `WebMvcConfigurer` 接口——该接口的所有方法均为 Java 8 `default` 方法，无需 Adapter 提供空实现。
+>
+> 另：`allowCredentials(true)` 与 `allowedOrigins("*")` 在 Spring 5.3+ 不再允许同时使用（浏览器规范也禁止），应改用 `allowedOriginPatterns(...)`。
+
+另外，在服务器端，可以通过设置响应头部来细粒度配置 CORS，具体的如下：
+1.允许所有源访问（通配符）
 ```text
 HTTP/1.1 200 OK
 Access-Control-Allow-Origin: *
 ```
 
-2.允许所有源访问
+2.允许指定源访问
 ```text
 HTTP/1.1 200 OK
 Access-Control-Allow-Origin: https://yuanjava.com
 ```
 
-3.允许所有源访问
+3.允许指定源访问并携带凭据
 ```text
 HTTP/1.1 200 OK
 Access-Control-Allow-Origin: https://yuanjava.com
 Access-Control-Allow-Credentials: true
 ```
 
-4.允许所有源访问
+4.限定允许的方法与头部
 ```text
 HTTP/1.1 200 OK
 Access-Control-Allow-Origin: https://yuanjava.com
@@ -229,7 +237,7 @@ Access-Control-Allow-Methods: GET, POST, PUT, DELETE
 Access-Control-Allow-Headers: Content-Type, Authorization
 ```
 
-5.设置预检请求的缓存时间
+5.配置预检请求缓存时间
 ```text
 HTTP/1.1 200 OK
 Access-Control-Allow-Origin: https://yuanjava.com
