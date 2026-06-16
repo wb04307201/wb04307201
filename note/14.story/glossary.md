@@ -386,15 +386,15 @@
 
 | 术语 | 解释 | 出处 |
 |------|------|------|
-| **黄金集 (Golden Set)** | AI 评测的"测试用例库"：手工 + 线上挖掘 + 合成数据构成，需持续更新、难度分层、防污染 | [续集十](./34-ai-evaluation.md) |
-| **LLM-as-Judge** | 用强模型评判弱模型输出的方法，需多维评分 + 详细标准 + 反偏置 + 成本控制 + 人工校准 | [续集十](./34-ai-evaluation.md) |
-| **6 大评测维度** | 准确性 / 忠实性 / 相关性 / 完整性 / 安全性 / 体验性，是 AI 输出质量的全息视图 | [续集十](./34-ai-evaluation.md) |
-| **Context Precision** | RAG 评测指标：召回的文档中有多大比例是真正相关的 | [续集十](./34-ai-evaluation.md) |
-| **Context Recall** | RAG 评测指标：所有相关文档中有多大比例被召回了 | [续集十](./34-ai-evaluation.md) |
-| **Faithfulness（忠实性）** | RAG 评测指标：AI 生成的答案中每个事实是否都能在召回的上下文中找到 | [续集十](./34-ai-evaluation.md) |
-| **RAGAS** | 开源 RAG 评测框架，覆盖 Context Precision/Recall、Faithfulness、Answer Relevancy 4 大指标 | [续集十](./34-ai-evaluation.md) |
-| **红队测试 (Red Team)** | 主动模拟攻击的 AI 安全评测：直接注入 / 间接注入 / 多模态注入 / 越权诱导 | [续集十](./34-ai-evaluation.md) |
-| **5 层 Eval 流水线** | 触发层 / 用例层 / 执行层 / 评分层 / 反馈层，是 AI 评测的工程化架构 | [续集十](./34-ai-evaluation.md) |
+| **黄金集 (Golden Set)** | AI 评测的"测试用例库"：手工 + 线上挖掘 + 合成数据构成，需持续更新、难度分层、防污染 | [34a](./34a-ai-evaluation-fundamentals.md) |
+| **LLM-as-Judge** | 用强模型评判弱模型输出的方法，需多维评分 + 详细标准 + 反偏置 + 成本控制 + 人工校准 | [34a](./34a-ai-evaluation-fundamentals.md) |
+| **6 大评测维度** | 准确性 / 忠实性 / 相关性 / 完整性 / 安全性 / 体验性，是 AI 输出质量的全息视图 | [34a](./34a-ai-evaluation-fundamentals.md) |
+| **Context Precision** | RAG 评测指标：召回的文档中有多大比例是真正相关的 | [34b](./34b-ai-evaluation-pipeline.md) |
+| **Context Recall** | RAG 评测指标：所有相关文档中有多大比例被召回了 | [34b](./34b-ai-evaluation-pipeline.md) |
+| **Faithfulness（忠实性）** | RAG 评测指标：AI 生成的答案中每个事实是否都能在召回的上下文中找到 | [34b](./34b-ai-evaluation-pipeline.md) |
+| **RAGAS** | 开源 RAG 评测框架，覆盖 Context Precision/Recall、Faithfulness、Answer Relevancy 4 大指标 | [34b](./34b-ai-evaluation-pipeline.md) |
+| **红队测试 (Red Team)** | 主动模拟攻击的 AI 安全评测：直接注入 / 间接注入 / 多模态注入 / 越权诱导 | [34b](./34b-ai-evaluation-pipeline.md) |
+| **5 层 Eval 流水线** | 触发层 / 用例层 / 执行层 / 评分层 / 反馈层，是 AI 评测的工程化架构 | [34b](./34b-ai-evaluation-pipeline.md) |
 
 ---
 
@@ -402,13 +402,13 @@
 
 | 术语 | 解释 | 出处 |
 |------|------|------|
-| **MCP (Model Context Protocol)** | Anthropic 主导的"USB-C"协议：让 LLM 统一接入任何工具 / 数据源，把 N×M 集成复杂度变成 N+M | [续集十一](./35-mcp-a2a-protocol.md) |
-| **A2A (Agent-to-Agent)** | Google 联合 50+ 厂商推出的 Agent 协同协议：Agent 卡片 + 任务委派 + 流式协作 + 多模态产物 | [续集十一](./35-mcp-a2a-protocol.md) |
-| **Agent Card (Agent 卡片)** | A2A 的核心概念：Agent 的"自我介绍"，声明能力、技能、权限、HITL 规则 | [续集十一](./35-mcp-a2a-protocol.md) |
-| **MCP Resources / Tools / Prompts** | MCP 的三大能力：可读数据 / 可调函数 / 可用提示词模板 | [续集十一](./35-mcp-a2a-protocol.md) |
-| **Task / Artifact / Message** | A2A 的核心概念：任务 / 产物 / 消息，构成 Agent 间的协作单元 | [续集十一](./35-mcp-a2a-protocol.md) |
-| **协议 BOM** | 协议层的安全账本：记录所有 MCP Server / A2A Agent 的能力、权限、审计日志 | [续集十一](./35-mcp-a2a-protocol.md) |
-| **协议可观测性** | 协议调用量 / 成功率 / 延迟 / 成本 4 件套 + 跨协议 trace + 异常告警 | [续集十一](./35-mcp-a2a-protocol.md) |
+| **MCP (Model Context Protocol)** | Anthropic 主导的"USB-C"协议：让 LLM 统一接入任何工具 / 数据源，把 N×M 集成复杂度变成 N+M | [35a](./35a-mcp-protocol.md) |
+| **A2A (Agent-to-Agent)** | Google 联合 50+ 厂商推出的 Agent 协同协议：Agent 卡片 + 任务委派 + 流式协作 + 多模态产物 | [35b](./35b-a2a-protocol.md) |
+| **Agent Card (Agent 卡片)** | A2A 的核心概念：Agent 的"自我介绍"，声明能力、技能、权限、HITL 规则 | [35b](./35b-a2a-protocol.md) |
+| **MCP Resources / Tools / Prompts** | MCP 的三大能力：可读数据 / 可调函数 / 可用提示词模板 | [35a](./35a-mcp-protocol.md) |
+| **Task / Artifact / Message** | A2A 的核心概念：任务 / 产物 / 消息，构成 Agent 间的协作单元 | [35b](./35b-a2a-protocol.md) |
+| **协议 BOM** | 协议层的安全账本：记录所有 MCP Server / A2A Agent 的能力、权限、审计日志 | [35b](./35b-a2a-protocol.md) |
+| **协议可观测性** | 协议调用量 / 成功率 / 延迟 / 成本 4 件套 + 跨协议 trace + 异常告警 | [35b](./35b-a2a-protocol.md) |
 
 ---
 
@@ -416,14 +416,14 @@
 
 | 术语 | 解释 | 出处 |
 |------|------|------|
-| **Token 经济学 (Token Economics)** | AI 时代的新成本范式：按 token 长度 / 上下文窗口 / 缓存命中率计费，与云资源成本完全不同 | [续集十二](./36-ai-token-economics.md) |
-| **6 大成本组件** | LLM 推理 / Embedding / 向量库 / GPU 推理 / 训练微调 / 辅助服务 | [续集十二](./36-ai-token-economics.md) |
-| **成本感知路由 (Cost-Aware Router)** | 按场景自动选模型：旗舰 → 高性价比 → 开源小模型 → 专用小模型，节省 30-60% 成本 | [续集十二](./36-ai-token-economics.md) |
-| **3 级缓存策略** | 精确匹配缓存（FAQ）+ 语义匹配缓存（相似问题）+ Prompt 模板缓存（系统 Prompt），节省 40-60% token | [续集十二](./36-ai-token-economics.md) |
-| **4 策略压缩** | 截断 / 摘要 / RAG 替换 / 结构化提取，把长上下文压缩 50-80% | [续集十二](./36-ai-token-economics.md) |
-| **AI FinOps** | AI 时代的 FinOps 体系：实时监控 + 成本归因 + 持续优化 + ROI 度量，区别于云资源 FinOps | [续集十二](./36-ai-token-economics.md) |
-| **4 类 ROI** | 替代人力 / 增加收入 / 提升效率 / 降低风险，是 AI 项目的价值度量四象限 | [续集十二](./36-ai-token-economics.md) |
-| **上下文溢价** | 长上下文窗口（128K+）的单价阶梯式上涨（2-4 倍），需用 RAG + 压缩避免 | [续集十二](./36-ai-token-economics.md) |
+| **Token 经济学 (Token Economics)** | AI 时代的新成本范式：按 token 长度 / 上下文窗口 / 缓存命中率计费，与云资源成本完全不同 | [36a](./36a-ai-token-cost-structure.md) |
+| **6 大成本组件** | LLM 推理 / Embedding / 向量库 / GPU 推理 / 训练微调 / 辅助服务 | [36a](./36a-ai-token-cost-structure.md) |
+| **成本感知路由 (Cost-Aware Router)** | 按场景自动选模型：旗舰 → 高性价比 → 开源小模型 → 专用小模型，节省 30-60% 成本 | [36b](./36b-ai-token-cost-optimization.md) |
+| **3 级缓存策略** | 精确匹配缓存（FAQ）+ 语义匹配缓存（相似问题）+ Prompt 模板缓存（系统 Prompt），节省 40-60% token | [36b](./36b-ai-token-cost-optimization.md) |
+| **4 策略压缩** | 截断 / 摘要 / RAG 替换 / 结构化提取，把长上下文压缩 50-80% | [36b](./36b-ai-token-cost-optimization.md) |
+| **AI FinOps** | AI 时代的 FinOps 体系：实时监控 + 成本归因 + 持续优化 + ROI 度量，区别于云资源 FinOps | [36b](./36b-ai-token-cost-optimization.md) |
+| **4 类 ROI** | 替代人力 / 增加收入 / 提升效率 / 降低风险，是 AI 项目的价值度量四象限 | [36b](./36b-ai-token-cost-optimization.md) |
+| **上下文溢价** | 长上下文窗口（128K+）的单价阶梯式上涨（2-4 倍），需用 RAG + 压缩避免 | [36b](./36b-ai-token-cost-optimization.md) |
 
 ---
 

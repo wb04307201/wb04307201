@@ -644,10 +644,10 @@ graph TB
 - [36a · AI 成本结构（上篇）](./36a-ai-token-cost-structure.md) —— 成本结构与监控
 - [阿明的省钱经](./14-cloud-finops.md) —— 番外二，云资源 FinOps，本篇的"传统版本"
 - [Agent Harness](./32-agent-harness.md) —— 续集八，Agent Loop 的成本护栏
-- [AI 评测工程](./34-ai-evaluation.md) —— 续集十，评测本身有成本（与本篇成本优化的"分层评测"对应）
+- [AI 评测工程（基础篇）](./34a-ai-evaluation-fundamentals.md) / [（流水线篇）](./34b-ai-evaluation-pipeline.md) —— 续集十，评测本身有成本（与本篇成本优化的"分层评测"对应）
 - [从厨师到 CEO](./07-from-chef-to-ceo.md) —— 终章，FinOps 是技术管理 ROI 的一部分
 - [AI 致命三件套](./33-ai-fatal-trio.md) —— 续集九，攻击者也会利用 Token 成本（拒绝服务 / 资源耗尽）
-- [Agent 协议](./35-mcp-a2a-protocol.md) —— 续集十一，协议层是成本监控的颗粒度
+- [MCP 协议](./35a-mcp-protocol.md) / [A2A 协议](./35b-a2a-protocol.md) —— 续集十一，协议层是成本监控的颗粒度
 - [Codebase 认知债](./31-codebase-cognitive-debt.md) —— 续集七，认知债导致"看不懂代码也改不出 Token 优化"
 - [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— 续集六，AI 幻觉的"重试成本"
 - [学徒的困境](./11-ai-learning-paradox.md) —— 续集二，AI 时代的人机协作与 Token 成本的关系

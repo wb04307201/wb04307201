@@ -620,7 +620,7 @@ graph TB
 - [Agent Harness](./32-agent-harness.md) —— 续集八，Harness 内的 Tool 设计直接对接 MCP 协议
 - [AI 致命三件套](./33-ai-fatal-trio.md) —— 续集九，协议层是三件套的"新攻击面"
 - [厨房装监控](./05-observability.md) —— 正传 2，协议层的可观测性与传统 observability 同构
-- [AI 评测工程](./34-ai-evaluation.md) —— 续集十，协议层是评测的对象之一
+- [AI 评测工程（基础篇）](./34a-ai-evaluation-fundamentals.md) / [（流水线篇）](./34b-ai-evaluation-pipeline.md) —— 续集十，协议层是评测的对象之一
 - [从厨师到 CEO](./07-from-chef-to-ceo.md) —— 终章，协议治理是平台工程 IDP 的核心
 - [会自我进化的厨房](./29-self-evolving-company.md) —— 续集五，Agent 协议让自进化组织的"自循环"成为可能
 - [Codebase 认知债](./31-codebase-cognitive-debt.md) —— 续集七，协议文档化能降低认知债

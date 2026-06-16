@@ -577,9 +577,9 @@ graph TB
 - [36b · AI 成本优化（下篇）](./36b-ai-token-cost-optimization.md) —— 路由 + 缓存 + 压缩 + 训练 + ROI + FinOps
 - [阿明的省钱经](./14-cloud-finops.md) —— 番外二，云资源 FinOps，本篇的"传统版本"
 - [Agent Harness](./32-agent-harness.md) —— 续集八，Agent Loop 的成本护栏
-- [AI 评测工程](./34-ai-evaluation.md) —— 续集十，评测本身有成本（与本篇成本优化的"分层评测"对应）
+- [AI 评测工程（基础篇）](./34a-ai-evaluation-fundamentals.md) / [（流水线篇）](./34b-ai-evaluation-pipeline.md) —— 续集十，评测本身有成本（与本篇成本优化的"分层评测"对应）
 - [AI 致命三件套](./33-ai-fatal-trio.md) —— 续集九，攻击者也会利用 Token 成本（拒绝服务 / 资源耗尽）
-- [Agent 协议](./35-mcp-a2a-protocol.md) —— 续集十一，协议层是成本监控的颗粒度
+- [MCP 协议](./35a-mcp-protocol.md) / [A2A 协议](./35b-a2a-protocol.md) —— 续集十一，协议层是成本监控的颗粒度
 - [37 · AI 可观测性](./37-ai-observability.md) —— AI 时代可观测性专题（与 4.2 工具栈配套）
 - [39 · 向量数据库与 Embedding 实战](./39-vector-database-and-embedding.md) —— 39 续集十五，2.2/2.3 组件详解
 
