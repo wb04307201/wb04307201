@@ -168,10 +168,16 @@
 | 7 | [教学课程](11.ai/training/README.md) | Spring AI Agent 实战 16 课 |
 
 # 十二、前端
-## [前端框架](12.font-end/frameworks/README.md)
-## [CORS 跨域](12.font-end/cors/README.md)
-## [微前端](12.font-end/micro-frontend/README.md)
-## [Web Components](12.font-end/web-components/README.md)
+## [前端工程](12.front-end/README.md)
+### 01 [基础](12.front-end/01-foundation/README.md) — 浏览器原理 / HTML / CSS / Web 标准
+### 02 [语言](12.front-end/02-language/README.md) — JavaScript / TypeScript
+### 03 [框架](12.front-end/03-frameworks/README.md) — 2026 框架格局 / React / Vue / Svelte / 元框架
+### 04 [工程化](12.front-end/04-engineering/README.md) — 构建 / 包管理 / Monorepo / 测试 / Lint
+### 05 [架构](12.front-end/05-architecture/README.md) — 渲染模式 / 微前端 / Web Components / BFF
+### 06 [性能](12.front-end/06-performance/README.md) — Core Web Vitals / Lighthouse / 监控
+### 07 [安全](12.front-end/07-security/README.md) — XSS / CSRF / CORS / Sessions
+### 08 [跨端](12.front-end/08-cross-platform/README.md) — 移动 / 桌面 / 小程序 / PWA
+### 09 [前端与 AI](12.front-end/09-frontend-and-ai/README.md) — AI SDK / AI IDE / Vibe Coding
 
 # 十三、咬文嚼字
 ## 01.java/
@@ -213,9 +219,9 @@
 ## 11.AI
 ### [AI思维-抛硬币](13.split-hairs/11.ai/ai-thinking/README.md)
 ## 12.前端
-### [HTTP 请求中的 GET 和 POST](13.split-hairs/12.font-end/get-and-post/README.md)
-### [网页端接受推送消息的方式](13.split-hairs/12.font-end/message/README.md)
-### [前端存储方式](13.split-hairs/12.font-end/storage/README.md)
+### [HTTP 请求中的 GET 和 POST](13.split-hairs/12.front-end/get-and-post/README.md)
+### [网页端接受推送消息的方式](13.split-hairs/12.front-end/message/README.md)
+### [前端存储方式](13.split-hairs/12.front-end/storage/README.md)
 
 # 十四、[「阿明餐厅」技术系列](14.story/index.md)
 
