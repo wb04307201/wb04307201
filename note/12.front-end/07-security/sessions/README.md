@@ -2,6 +2,12 @@
 
 **原文链接**：[https://supertokens.com/blog/cookies-vs-localstorage-for-sessions-everything-you-need-to-know](https://supertokens.com/blog/cookies-vs-localstorage-for-sessions-everything-you-need-to-know)
 
+> 📌 **本文与 [`13.split-hairs/12.front-end/storage/`](../../../../13.split-hairs/12.front-end/storage/) 的关系**
+>
+> - 本文档是**原文完整翻译稿**(SuperTokens, 2023),系统讲述 Cookies / LocalStorage / SessionStorage / IndexedDB 四种浏览器存储在会话管理中的取舍,是一篇**通识性的工程实践**。
+> - `13.split-hairs/12.front-end/storage/` 是**「咬文嚼字」小专题**,聚焦面试 / 辨析场景,常以「**X 和 Y 区别?**」表格对照形式出现。
+> - **阅读建议**:工程落地看本文,面试 / 快速对比看 split-hairs。如发现 split-hairs 里有更精简的结论,可以反向回流到本文校对。
+
 ## 引言
 在 Web 开发中，我们有多种方式来存储数据。其中，Cookies 和 LocalStorage API 是最常用的两种。本文将深入探讨它们分别是什么、各自的用途，以及如何在身份验证和会话管理（Session Management）中正确使用它们。
 
