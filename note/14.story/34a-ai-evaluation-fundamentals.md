@@ -577,4 +577,8 @@ graph TB
 - [11.ai/06-research/README.md](../11.ai/06-research/README.md) —— AI 前沿研究 —— 评测工程的最新学术方向（自动评测、人类反馈校准）
 - [11.ai/03-engineering/ai-platforms/README.md](../11.ai/03-engineering/ai-platforms/README.md) —— AI 平台 —— 评测平台架构与 Harness Eval 流水线的设计参考
 
+## 结语
+
+> 好的 AI 评测，不是"跑几个 benchmark 就下结论"，而是"**用业务场景定义通过率，用人类判断兜底机器判断**"。
+
 ← [返回系列导读](./index.md) | [下篇：34b 评测流水线 →](./34b-ai-evaluation-pipeline.md)

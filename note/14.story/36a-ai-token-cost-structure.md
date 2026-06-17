@@ -590,4 +590,8 @@ graph TB
 - [11.ai/02-technology-stack/README.md](../11.ai/02-technology-stack/README.md) —— AI 技术栈中的推理/Embedding/向量库 —— 6 大成本组件的技术解构
 - [11.ai/03-engineering/ai-platforms/README.md](../11.ai/03-engineering/ai-platforms/README.md) —— AI 平台 —— 平台层成本监控的工程实现
 
+## 结语
+
+> 好的成本管理，不是"少调用几次 API 就行"，而是"**看懂 Token 账单的每一行，像管餐厅食材一样精细化管理每一次 AI 调用**"。
+
 ← [返回系列导读](./index.md) | [下篇：36b 成本优化 →](./36b-ai-token-cost-optimization.md)

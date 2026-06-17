@@ -1,4 +1,4 @@
-# Agent Harness
+# 32 · Agent Harness
 
 > 从阿明的 1 个 Agent 到 20 个 Agent，看 AI 编码工程化的脚手架 —— Harness 是 Agent 时代的"操作平台"
 
