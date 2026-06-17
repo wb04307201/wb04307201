@@ -42,7 +42,8 @@
 | 续集八 | [Agent Harness](./32-agent-harness.md) | Harness：Context 治理 + Tool 设计 + Guardrails + Eval，让 AI 从能用到好用 | 没有 Harness，Agent 只是更快的 Bug 制造机 |
 | 续集九 | [AI 致命三件套](./33-ai-fatal-trio.md) | 致命三件套：注入 + 越权 + 泄露，单独 P0 组合一次攻击致命 | 防御不能依赖单一防线，必须纵深防御 + 红队 + AI BOM |
 | 续集十 | [AI 评测工程（基础篇）](./34a-ai-evaluation-fundamentals.md) / [（流水线篇）](./34b-ai-evaluation-pipeline.md) | 评测 = 6 大维度 + 黄金集 + LLM-as-Judge + 5 层流水线 + 红队 + A/B 的闭环工程 | 看不见的成本最可怕，看得见的优化最有效 |
-| 续集十一 | [MCP 协议（基础篇）](./35a-mcp-protocol.md) / [A2A 协议（进阶篇）](./35b-a2a-protocol.md) | MCP（USB-C）+ A2A（SMTP）：Agent 时代的 TCP/IP | 不上协议 Agent 就是孤岛，上了协议才是群体智能 |
+| 续集十一 a | [MCP 协议（基础篇）](./35a-mcp-protocol.md) | MCP（Model Context Protocol，USB-C）：让 LLM 统一接入"任何工具/任何数据源"，N×M 变 N+M | 不上协议 Agent 就是孤岛，工具永远碎片化 |
+| 续集十一 b | [A2A 协议（进阶篇）](./35b-a2a-protocol.md) | A2A（Agent-to-Agent，SMTP）：让不同厂商的 Agent 互相发现、通信、协作 | 工具能调用是基础，Agent 协同才是群体智能 |
 | 续集十二 | [AI 成本经济学（结构篇）](./36a-ai-token-cost-structure.md) / [（优化篇）](./36b-ai-token-cost-optimization.md) | Token 经济学：6 大组件 + 4 大陷阱 + 5 层路由 + 3 级缓存 + 4 策略压缩 | Token 不会撕账单，但月底会 |
 | 续集十三 | [AI 可观测性](./37-ai-observability.md) | 传统 3 支柱 + AI 特有 4 支柱 = 7 大支柱，让 AI 系统自己告诉你哪里出了问题 | AI 可观测性不是"加分项"，是"入场券" |
 | 续集十四 | [RAG 检索增强生成](./38-rag-retrieval-augmented-generation.md) | 检索 + 增强 + 生成：5 大环节 + 7 大模式，让 AI 基于事实回答 | LLM 没有事实性，RAG 是答案 |
