@@ -1,6 +1,6 @@
 # 术语表
 
-> 「阿明餐厅」系列涉及的 220 个核心技术术语速查，按 36 大主题分类。每条包括：术语名称、一句话解释、出处文章。
+> 「阿明餐厅」系列涉及的 310+ 个核心技术术语速查，按 44 大主题分类。每条包括：术语名称、一句话解释、出处文章。
 
 ← [返回系列导读](./index.md)
 
@@ -475,6 +475,154 @@
 | **AI BOM (AI Bill of Materials)** | AI 系统的"物料清单"：记录所有 AI 组件的来源、版本、依赖、风险等级，类比软件 SBOM | [续集九](./33-ai-fatal-trio.md) |
 | **4 层防护** | 预防（输入清洗） / 检测（异常监控） / 缓解（熔断降级） / 恢复（回滚审计）的纵深防御 | [续集九](./33-ai-fatal-trio.md) |
 | **AI 红队测试 (AI Red Team)** | 主动模拟攻击的 AI 安全评测：直接注入 / 间接注入 / 多模态注入 / 越权诱导 / 泄露试探 | [续集九](./33-ai-fatal-trio.md) |
+
+---
+
+## AI 可观测性
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **AI 可观测性 (AI Observability)** | AI 系统特有的可观测性：传统 3 大支柱（Logs/Metrics/Traces）+ AI 特有 4 大支柱（LLM Calls/Token/Decision/Quality）的 7 大支柱体系 | [续集十三](./37-ai-observability.md) |
+| **AI 特有 4 大支柱** | LLM Calls（调用链路） / Token（消耗） / Decision（决策路径） / Quality（输出质量）—— 传统可观测性 3 支柱解决不了 AI 系统的问题，必须新增 | [续集十三](./37-ai-observability.md) |
+| **OpenLLMetry** | OpenTelemetry 在 LLM 领域的扩展，标准化 AI 可观测性数据采集格式 | [续集十三](./37-ai-observability.md) |
+| **LangSmith** | LangChain 官方 AI 可观测性平台，覆盖 LLM 调用追踪、Token 统计、Prompt 版本管理、在线评测 | [续集十三](./37-ai-observability.md) |
+| **Helicone** | 第三方 LLM 可观测性代理：单行代码接入 OpenAI/Anthropic，自动记录所有调用 + Token + 延迟 + 成本 | [续集十三](./37-ai-observability.md) |
+| **Arize Phoenix** | 开源 AI 可观测性 + 评测平台，专注 Embedding Drift / Retrieval 质量 / Output Quality 监控 | [续集十三](./37-ai-observability.md) |
+| **Langfuse** | 开源 LLM 工程平台：追踪 + 评测 + Prompt 管理 + 数据集，覆盖 Dev → Staging → Prod 全链路 | [续集十三](./37-ai-observability.md) |
+| **Portkey** | LLM 网关 + 可观测性：统一接入多模型 + 自动 fallback + 成本监控 + 审计日志 | [续集十三](./37-ai-observability.md) |
+| **AI 可观测性 L1-L5 成熟度** | L1（基础日志） → L2（链路追踪） → L3（LLM 专属） → L4（决策可解释） → L5（全链路自愈）的渐进成熟度模型 | [续集十三](./37-ai-observability.md) |
+
+---
+
+## RAG（检索增强生成）
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **RAG (Retrieval-Augmented Generation)** | 检索增强生成：先从知识库检索相关文档，再让 LLM 基于检索结果生成答案，解决 LLM 幻觉与时效性问题 | [续集十四](./38-rag-retrieval-augmented-generation.md) |
+| **RAG 5 大环节** | Query 理解 → Retrieval 检索 → Postprocess 后处理 → Prompt 增强 → Generate 生成 的完整流水线 | [续集十四](./38-rag-retrieval-augmented-generation.md) |
+| **Hybrid Search（混合检索）** | 同时使用关键词检索（BM25）+ 向量检索（Embedding），取并集或加权融合，兼顾精确匹配与语义匹配 | [续集十四](./38-rag-retrieval-augmented-generation.md) |
+| **ReRank（重排序）** | 初检出 Top-K 候选后，用更精细的 Cross-Encoder 模型重排序，提升最终排序质量 | [续集十四](./38-rag-retrieval-augmented-generation.md) |
+| **Multi-Query** | 把用户一个 query 改写成多个不同角度的 query 并行检索，扩大召回覆盖 | [续集十四](./38-rag-retrieval-augmented-generation.md) |
+| **HyDE (Hypothetical Document Embeddings)** | 先让 LLM 生成"假设答案"，用假设答案的 Embedding 去检索真实文档，提升零样本检索质量 | [续集十四](./38-rag-retrieval-augmented-generation.md) |
+| **Self-RAG** | LLM 自我评估检索结果相关性 + 自我决定是否需要重新检索 + 自我评估生成质量 的自适应 RAG | [续集十四](./38-rag-retrieval-augmented-generation.md) |
+| **Multi-Step RAG** | 多步推理式 RAG：把复杂问题拆成子问题，每步独立检索与生成，逐步逼近答案 | [续集十四](./38-rag-retrieval-augmented-generation.md) |
+| **GraphRAG** | 基于知识图谱的 RAG：实体-关系-实体结构化检索，擅长多跳推理与全局性问题 | [续集十四](./38-rag-retrieval-augmented-generation.md) |
+| **RAGAS** | RAG 专用评测框架：Context Precision/Recall、Answer Relevancy、Faithfulness 4 大核心指标 | [续集十四](./38-rag-retrieval-augmented-generation.md) |
+
+---
+
+## 向量数据库与 Embedding
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **向量数据库 (Vector Database)** | 专门存储与检索高维向量的数据库，支持近似最近邻（ANN）检索，是 RAG / 推荐 / 搜索 的核心基础设施 | [续集十五](./39-vector-database-and-embedding.md) |
+| **Embedding** | 把文本/图像/音频转为稠密向量的过程，语义相似的输入在向量空间中距离相近 | [续集十五](./39-vector-database-and-embedding.md) |
+| **HNSW (Hierarchical Navigable Small World)** | 当前主流的 ANN 索引算法：多层图结构，查询快、召回高、内存占用大 | [续集十五](./39-vector-database-and-embedding.md) |
+| **IVF (Inverted File Index)** | 经典 ANN 算法：先把向量聚类成多个桶，查询时只搜最近的几个桶，速度快但召回略低 | [续集十五](./39-vector-database-and-embedding.md) |
+| **PQ (Product Quantization)** | 向量压缩算法：把高维向量分段量化，内存占用 -90% 但召回略有损失 | [续集十五](./39-vector-database-and-embedding.md) |
+| **Pinecone** | 全托管云原生向量数据库：Serverless 架构，开箱即用，按需计费 | [续集十五](./39-vector-database-and-embedding.md) |
+| **Qdrant** | Rust 实现的高性能开源向量数据库：低延迟、支持丰富过滤、混合检索 | [续集十五](./39-vector-database-and-embedding.md) |
+| **Milvus** | 老牌开源向量数据库：分布式架构、超大规模（十亿级）、云原生 | [续集十五](./39-vector-database-and-embedding.md) |
+| **Weaviate** | 模块化向量数据库：内置向量化模块 + GraphQL API + 多模态原生支持 | [续集十五](./39-vector-database-and-embedding.md) |
+| **pgvector** | PostgreSQL 向量检索扩展：复用 PG 生态，事务+向量一体化，适合中小规模 | [续集十五](./39-vector-database-and-embedding.md) |
+| **Chroma** | 轻量级 Python 原生向量数据库：开发体验极佳，适合 POC / 小规模 / 嵌入式场景 | [续集十五](./39-vector-database-and-embedding.md) |
+| **BGE (BAAI General Embedding)** | 智源开源的中文 Embedding 模型：中文场景 SOTA（state-of-the-art），开源免费 | [续集十五](./39-vector-database-and-embedding.md) |
+| **Cohere Embedding** | 商业 Embedding 服务：多语言支持好 + Rerank 配套完善 + 按 Token 计费 | [续集十五](./39-vector-database-and-embedding.md) |
+| **Jina Embedding** | 长文档 Embedding 专家：支持 8K 上下文，开源版本可商用 | [续集十五](./39-vector-database-and-embedding.md) |
+| **向量召回率 (Recall@K)** | Top-K 检索结果中包含正确答案的比例，是向量检索最核心的质量指标 | [续集十五](./39-vector-database-and-embedding.md) |
+
+---
+
+## AI 合规与监管
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **EU AI Act** | 欧盟人工智能法案：全球首部综合性 AI 立法，按风险等级（不可接受/高/有限/极小）分级监管 | [续集十六](./40-ai-compliance-and-regulation.md) |
+| **生成式 AI 管理办法** | 中国《生成式人工智能服务管理暂行办法》（2023）：境内提供生成式 AI 服务的合规底线 | [续集十六](./40-ai-compliance-and-regulation.md) |
+| **GDPR** | 欧盟通用数据保护条例：AI 系统处理欧盟用户数据必须遵守的数据保护框架 | [续集十六](./40-ai-compliance-and-regulation.md) |
+| **PIPL** | 中国个人信息保护法：境内处理个人信息的合规基准 | [续集十六](./40-ai-compliance-and-regulation.md) |
+| **NIST AI RMF** | 美国国家标准与技术研究院 AI 风险管理框架：自愿性，强调 Govern/Map/Measure/Manage | [续集十六](./40-ai-compliance-and-regulation.md) |
+| **ISO 42001** | 首个 AI 管理体系国际标准：可认证的 AI 管理体系（AIMS），类似 ISO 27001 | [续集十六](./40-ai-compliance-and-regulation.md) |
+| **CCPA** | 加州消费者隐私法案：美国州级数据隐私代表，类似 GDPR 但范围更窄 | [续集十六](./40-ai-compliance-and-regulation.md) |
+| **算法备案** | 中国对具有舆论属性或社会动员能力的算法服务实行的事前备案制度 | [续集十六](./40-ai-compliance-and-regulation.md) |
+| **数据出境安全评估** | 中国《数据出境安全评估办法》：重要数据 / 个人信息出境前需申报安全评估 | [续集十六](./40-ai-compliance-and-regulation.md) |
+| **深度伪造 (Deepfake)** | AI 生成的伪造图像/音频/视频，受 EU AI Act 重点监管，强制标识 + 水印 | [续集十六](./40-ai-compliance-and-regulation.md) |
+| **算法歧视 (Algorithmic Bias)** | AI 系统因训练数据偏差导致对特定人群的不公平对待，受多国法律明确禁止 | [续集十六](./40-ai-compliance-and-regulation.md) |
+| **AI 合规 4 大支柱** | 数据合规 / 算法合规 / 内容合规 / 审计合规 的四维合规体系 | [续集十六](./40-ai-compliance-and-regulation.md) |
+
+---
+
+## AI 私有化部署
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **AI 私有化部署** | 把大模型从云端 API 搬到自有服务器（GPU/机房/私有云），实现数据不出域、性能可控、长期降本 | [续集十七](./41-ai-private-deployment.md) |
+| **vLLM** | UC Berkeley 开源的高性能 LLM 推理引擎：PagedAttention + 连续批处理，吞吐量比原生快 14-24 倍 | [续集十七](./41-ai-private-deployment.md) |
+| **TensorRT-LLM** | NVIDIA 官方 LLM 推理优化框架：极致性能，需 NVIDIA GPU，支持 INT4/INT8 量化 | [续集十七](./41-ai-private-deployment.md) |
+| **DeepSpeed** | Microsoft 开源的深度学习优化库：DeepSpeed-Inference 专注于 LLM 推理加速 | [续集十七](./41-ai-private-deployment.md) |
+| **TGI (Text Generation Inference)** | HuggingFace 官方推理服务：Rust 实现，开箱即用，支持多模型热切换 | [续集十七](./41-ai-private-deployment.md) |
+| **AWQ (Activation-aware Weight Quantization)** | 激活感知的权重量化算法：INT4 量化同时保持高质量，比 GPTQ 更适合 LLM | [续集十七](./41-ai-private-deployment.md) |
+| **GGUF** | llama.cpp 的量化模型格式：支持 CPU 推理 + Mac M-series GPU，社区生态最广 | [续集十七](./41-ai-private-deployment.md) |
+| **LoRA (Low-Rank Adaptation)** | 低秩适配微调：只训练极少量参数（<1%）就能让基础模型适应特定任务 | [续集十七](./41-ai-private-deployment.md) |
+| **QLoRA** | 4-bit 量化基础模型 + LoRA 微调：进一步降低显存，可单卡 24G 微调 65B 模型 | [续集十七](./41-ai-private-deployment.md) |
+| **连续批处理 (Continuous Batching)** | 推理优化技术：动态调整批次大小，GPU 利用率从 30% 提升到 70%+ | [续集十七](./41-ai-private-deployment.md) |
+| **PagedAttention** | vLLM 核心创新：借鉴 OS 虚拟内存分页机制，解决 KV Cache 显存碎片问题 | [续集十七](./41-ai-private-deployment.md) |
+| **AI 私有化 5 大部署形态** | 单 GPU / 多卡 / 集群 / 混合云 / 边缘设备 的 5 种部署形态 | [续集十七](./41-ai-private-deployment.md) |
+| **5 年 TCO** | 私有化总拥有成本：硬件 + 电费 + 运维 + 折旧 5 年累计 vs 云端 API 按量计费的对比 | [续集十七](./41-ai-private-deployment.md) |
+
+---
+
+## Prompt 工程
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **Prompt（提示词）** | 输入给 LLM 的指令/上下文/示例，是"调模型"之外的"调输入"艺术 | [番外七](./42-prompt-engineering.md) |
+| **Zero-shot Prompt** | 零样本提示：不给任何示例，直接让 LLM 完成任务的 Prompt 模式 | [番外七](./42-prompt-engineering.md) |
+| **Few-shot Prompt** | 少样本提示：在 Prompt 中给 2-5 个示例，让 LLM 理解模式后再回答 | [番外七](./42-prompt-engineering.md) |
+| **CoT (Chain of Thought)** | 思维链：让 LLM "一步步思考"，显著提升数学/逻辑/推理任务准确率 | [番外七](./42-prompt-engineering.md) |
+| **ReAct (Reason + Act)** | 推理+行动交替模式：Thought → Action → Observation 循环，适合 Agent 任务 | [番外七](./42-prompt-engineering.md) |
+| **Self-Consistency** | 自一致性：用多个独立采样 + 多数投票，提升 CoT 的稳定性 | [番外七](./42-prompt-engineering.md) |
+| **ToT (Tree of Thoughts)** | 思维树：多分支探索 + 回溯，适合需要尝试多种策略的复杂问题 | [番外七](./42-prompt-engineering.md) |
+| **Reflexion** | 反思模式：Agent 执行后自我反思失败原因，存入长期记忆，下次避免 | [番外七](./42-prompt-engineering.md) |
+| **APE (Automatic Prompt Engineering)** | 自动 Prompt 工程：用 LLM 优化 LLM 的 Prompt，自动搜索最优指令 | [番外七](./42-prompt-engineering.md) |
+| **SoT (Skeleton of Thought)** | 思维骨架：先列大纲再并行填充，加速长答案生成 | [番外七](./42-prompt-engineering.md) |
+| **负面 Prompt (Negative Prompt)** | 明确告诉 LLM "不要做什么"，比正面指令更精准地排除不期望输出 | [番外七](./42-prompt-engineering.md) |
+| **ICL (In-Context Learning)** | 上下文学习：LLM 通过 Prompt 中的示例/指令学会新任务，无需微调 | [番外七](./42-prompt-engineering.md) |
+
+---
+
+## 多模态 AI
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **多模态 AI (Multimodal AI)** | 能同时理解/生成文本、图像、音频、视频、3D 等多种模态内容的 AI 系统 | [番外八](./43-multimodal-ai.md) |
+| **5 大模态** | 文本（Text） / 图像（Image） / 音频（Audio） / 视频（Video） / 3D —— 现代 AI 系统的完整输入输出能力 | [番外八](./43-multimodal-ai.md) |
+| **Early Fusion（早期融合）** | 多模态融合架构之一：在特征提取早期就把多模态信号融合到统一表征空间 | [番外八](./43-multimodal-ai.md) |
+| **Late Fusion（晚期融合）** | 多模态融合架构之一：各模态独立编码，最后在决策层融合 | [番外八](./43-multimodal-ai.md) |
+| **Hybrid Fusion（混合融合）** | 多模态融合架构之一：早晚期结合，兼顾局部对齐与全局决策 | [番外八](./43-multimodal-ai.md) |
+| **GPT-4o** | OpenAI 多模态旗舰模型：原生支持文本/图像/音频/视频输入输出，实时语音对话 | [番外八](./43-multimodal-ai.md) |
+| **Claude (多模态版)** | Anthropic 多模态模型：图像理解能力突出，长上下文（200K）+ 安全护栏 | [番外八](./43-multimodal-ai.md) |
+| **Gemini** | Google 原生多模态模型：从训练开始就是多模态，支持视频/音频/代码 | [番外八](./43-multimodal-ai.md) |
+| **Qwen-VL** | 阿里通义千问视觉语言模型：中文场景 SOTA，开源 + 商业版可选 | [番外八](./43-multimodal-ai.md) |
+| **LLaVA** | 开源视觉语言模型：LLaMA + 视觉编码器，学术/工业研究广泛使用 | [番外八](./43-multimodal-ai.md) |
+| **InternVL** | 上海 AI Lab 开源多模态大模型：在多项基准上接近 GPT-4o 水平 | [番外八](./43-multimodal-ai.md) |
+| **多模态 RAG** | RAG 检索多模态文档（图/表/视频）→ 多模态 LLM 理解 → 多模态生成的完整链路 | [番外八](./43-multimodal-ai.md) |
+| **实时语音 (Realtime Voice)** | GPT-4o 等模型实现的端到端语音对话：响应延迟 < 300ms，能识别情绪/打断/笑声 | [番外八](./43-multimodal-ai.md) |
+
+---
+
+## A2A 协议（Agent 互操作）
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **A2A (Agent-to-Agent)** | Google 主导的 Agent 互操作协议：让不同厂商的 Agent 互相发现、通信、协作，类似 Agent 时代的 SMTP | [续集十一 b](./35b-a2a-protocol.md) |
+| **Agent Card** | A2A 协议中 Agent 的"名片"：声明能力、技能、版本、接口协议，用于 Agent 发现 | [续集十一 b](./35b-a2a-protocol.md) |
+| **Task（任务）** | A2A 协议核心概念：Agent 间通信的最小单位，包含输入、状态、输出 | [续集十一 b](./35b-a2a-protocol.md) |
+| **Artifact（产物）** | A2A 协议中任务执行的结果：可能是文档、数据、决策、调用另一个 Agent | [续集十一 b](./35b-a2a-protocol.md) |
+| **Message（消息）** | A2A 协议中 Agent 间通信的载体：包含角色、内容、上下文 | [续集十一 b](./35b-a2a-protocol.md) |
+| **A2A vs MCP** | MCP（Model Context Protocol）是 Agent ↔ 工具（USB-C）；A2A 是 Agent ↔ Agent（SMTP）。前者解决"工具调用"，后者解决"Agent 协同" | [续集十一 b](./35b-a2a-protocol.md) |
+| **A2A 安全陷阱** | Agent Card 伪造 / 跨域信任 / 任务注入 / 产物污染 / 协同放大 5 大安全陷阱 | [续集十一 b](./35b-a2a-protocol.md) |
+| **协议可观测性** | A2A/MCP 协议的 Trace 标准化：让多 Agent 协同的全链路可追踪/可调试/可审计 | [续集十一 b](./35b-a2a-protocol.md) |
 
 ---
 
