@@ -1,4 +1,4 @@
-# 35b · A2A 协议 + 协议治理（续集十一 · 下）
+# 35b · 厨师们开会
 
 > 从阿明的 20 个 Agent 各自为政，到全栈打通 —— 看 AI 时代的"TCP/IP"：**A2A 协议 + 协议治理**
 
@@ -20,7 +20,7 @@
 
 ---
 
-## 第二章：A2A 是什么 —— Agent 协同的"邮件协议"
+## 第五章：A2A 是什么 —— Agent 协同的"邮件协议"
 
 ### 2.1 A2A 的诞生
 
@@ -197,7 +197,7 @@ A2A 提供统一管理：
 
 ---
 
-## 第六章：A2A 落地实践
+## 第六章：A2A 落地实践 —— 20 个厨师学会互相喊话，靠的是统一对讲机
 
 ### 6.1 阿明的 A2A 架构
 
@@ -344,7 +344,7 @@ async def send_task_with_retry(agent, skill, inputs, max_retries=3):
 
 ---
 
-## 第七章：协议层的 5 大安全陷阱
+## 第七章：协议层的 5 大安全陷阱 —— 万能插口虽好，也给小偷留了后门
 
 协议层给了我们便利，**也给了我们新的攻击面**。阿明结合[33 致命三件套](./33-ai-fatal-trio.md)总结了 5 大陷阱。
 
@@ -432,7 +432,7 @@ MCP 时代攻击面：MCP Server 本身
 
 ---
 
-## 第八章：协议层的可观测性
+## 第八章：协议层的可观测性 —— Agent 间每句话都有记录，每笔操作都有日志
 
 协议层有了，**观测也要跟上**。阿明建立了"协议可观测性 4 件套"。
 
@@ -491,7 +491,7 @@ async def call_mcp_with_trace(server, tool, args):
 
 ---
 
-## 第九章：协议层的未来趋势
+## 第九章：协议层的未来趋势 —— 协议标准在进化，厨房规矩也在升级
 
 阿明跟踪了协议层的 5 大趋势（2026-2028）。
 
@@ -622,8 +622,8 @@ graph TB
 
 ## 跨章节衔接
 
-- [11.ai/03-engineering/ai-platforms/README.md](../11.ai/03-engineering/ai-platforms/README.md) —— Dify/Coze/LangGraph 平台实现 —— MCP/A2A 协议在主流平台中的落地
-- [11.ai/02-technology-stack/README.md](../11.ai/02-technology-stack/README.md) —— AI 技术栈 61 概念 —— 协议层在 AI 技术栈中的位置
+- 11.ai/03-engineering/ai-platforms/README.md —— Dify/Coze/LangGraph 平台实现 —— MCP/A2A 协议在主流平台中的落地
+- 11.ai/02-technology-stack/README.md —— AI 技术栈 61 概念 —— 协议层在 AI 技术栈中的位置
 
 ---
 

@@ -1,4 +1,4 @@
-# 43 · 多模态 AI 应用工程（番外八）
+# 43 · 五感餐厅
 
 > 从阿明的"AI 只会文字"，看多模态 AI —— **5 大模态 + 4 大融合架构 + 7 大应用场景 + 5 大技术挑战 + 评测**
 
@@ -571,9 +571,9 @@ ROI：
 
 ## 跨章节衔接
 
-- [11.ai/02-technology-stack/README.md](../11.ai/02-technology-stack/README.md) —— AI 技术栈 —— 多模态 AI 位置
-- [11.ai/05-foundation-models/multimodal/README.md](../11.ai/05-foundation-models/multimodal/README.md) —— 多模态基础模型
-- [06.llm/08-multimodal/README.md](../06.llm/08-multimodal/README.md) —— 多模态 LLM 基础
+- 11.ai/02-technology-stack/README.md —— AI 技术栈 —— 多模态 AI 位置
+- 11.ai/05-foundation-models/multimodal/README.md —— 多模态基础模型
+- 06.llm/08-multimodal/README.md —— 多模态 LLM 基础
 
 ---
 

@@ -505,8 +505,8 @@ graph TD
 
 ### 跨章节衔接
 
-- [11.ai/01-fundamentals/README.md](../11.ai/01-fundamentals/README.md) —— LLM 基础概念 —— 理解 Agent Loop 五层循环的技术基础
-- [11.ai/02-technology-stack/README.md](../11.ai/02-technology-stack/README.md) —— AI 技术栈全景 —— 自我进化型组织的工具栈基础
+- 11.ai/01-fundamentals/README.md —— LLM 基础概念 —— 理解 Agent Loop 五层循环的技术基础
+- 11.ai/02-technology-stack/README.md —— AI 技术栈全景 —— 自我进化型组织的工具栈基础
 
 ## 跨章节衔接
 

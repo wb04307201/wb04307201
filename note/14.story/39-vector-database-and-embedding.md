@@ -1,4 +1,4 @@
-# 39 · 向量数据库与 Embedding 实战（续集十五）
+# 39 · 味道仓库
 
 > 从阿明的"向量库慢 / 召回差 / 成本高"，看向量数据库与 Embedding —— **6 大主流向量库对比 + Embedding 模型选型 + 性能调优 + 成本控制**
 
@@ -614,8 +614,8 @@ async def monitor_retrieval_quality(query, results):
 
 ## 跨章节衔接
 
-- [11.ai/02-technology-stack/README.md](../11.ai/02-technology-stack/README.md) —— AI 技术栈 —— 向量数据库在 AI 技术栈中的位置
-- [11.ai/03-engineering/ai-platforms/README.md](../11.ai/03-engineering/ai-platforms/README.md) —— AI 平台 —— 主流平台的向量库集成
+- 11.ai/02-technology-stack/README.md —— AI 技术栈 —— 向量数据库在 AI 技术栈中的位置
+- 11.ai/03-engineering/ai-platforms/README.md —— AI 平台 —— 主流平台的向量库集成
 
 ---
 

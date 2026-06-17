@@ -1,4 +1,4 @@
-# 36b · AI 成本优化（续集十二 · 下）
+# 36b · 省钱大作战
 
 > 从阿明的"AI 月账单从 5 万涨到 50 万"，看 AI 时代的 FinOps —— Token 经济学**下篇：成本优化与 ROI**
 
@@ -242,7 +242,7 @@ async def get_embedding(text):
 
 ---
 
-## 第七章：训练与微调的成本控制
+## 第七章：训练与微调的成本控制 —— 培训厨师不能把餐厅培训破产
 
 ### 7.1 训练的成本结构
 
@@ -332,7 +332,7 @@ roi_months = training_cost / inference_saving_per_month
 
 ---
 
-## 第八章：Token 优化的 6 大实战技巧
+## 第八章：Token 优化的 6 大实战技巧 —— 六个省字绝招，字字用在刀刃上
 
 阿明总结了 6 个**立即可做**的 Token 优化技巧。**剩下的"分块处理长文档 / RAG 替代长上下文 / Function Call Schema 简化 / 僵尸 Prompt 清理"等 4 个技巧**，详见[36a 第三章"4 大隐藏陷阱"](./36a-ai-token-cost-structure.md#第三章token-计费的-4-大隐藏陷阱)和第五章的"5 层路由"，本章聚焦最高频的 6 个。
 
@@ -448,7 +448,7 @@ response = await llm_call(batch_prompt, max_tokens=10000)
 
 ---
 
-## 第九章：AI ROI 度量
+## 第九章：AI ROI 度量 —— 花了十万请大厨，得算算多赚了多少
 
 **成本不是"花得少"，是"花得值"**。阿明建立了 AI 系统的 ROI 度量框架。
 
@@ -519,7 +519,7 @@ ai_scenario_roi = {
 
 ---
 
-## 第十章：AI FinOps 的组织与流程
+## 第十章：AI FinOps 的组织与流程 —— 谁来管账单，谁来审批"加菜"
 
 ### 10.1 AI FinOps 团队配置
 
@@ -657,8 +657,8 @@ graph TB
 
 ## 跨章节衔接
 
-- [11.ai/02-technology-stack/README.md](../11.ai/02-technology-stack/README.md) —— AI 技术栈中的推理/Embedding/向量库 —— 6 大成本组件的技术解构
-- [11.ai/03-engineering/ai-platforms/README.md](../11.ai/03-engineering/ai-platforms/README.md) —— AI 平台 —— 平台层成本感知路由与缓存压缩的工程实现
+- 11.ai/02-technology-stack/README.md —— AI 技术栈中的推理/Embedding/向量库 —— 6 大成本组件的技术解构
+- 11.ai/03-engineering/ai-platforms/README.md —— AI 平台 —— 平台层成本感知路由与缓存压缩的工程实现
 
 ---
 

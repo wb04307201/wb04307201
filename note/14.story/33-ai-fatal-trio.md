@@ -41,7 +41,7 @@
 
 ---
 
-## 第零章 · 5 分钟快速概览
+## 第零章：5 分钟快速概览 —— 三件套是什么，为什么致命
 
 > 如果你只有 5 分钟，看完这一章就够了。
 
@@ -107,7 +107,7 @@ graph LR
 
 ---
 
-## 第一章：什么是"致命三件套"
+## 第一章：什么是"致命三件套" —— 三道致命伤，每一道都能要了餐厅的命
 
 AI 致命三件套，是指 AI 系统中**最常被攻击、且一旦失守就 P0 级致命**的 3 个独立漏洞。
 
@@ -806,8 +806,8 @@ graph TD
 
 ### 跨章节衔接
 
-- [11.ai/04-architecture/bpmn-ai-integration.md](../11.ai/04-architecture/bpmn-ai-integration.md) —— BPMN+AI 融合 —— AI 安全护栏在工作流引擎中的工程化实践
-- [11.ai/01-fundamentals/README.md](../11.ai/01-fundamentals/README.md) —— LLM 基础 —— 理解 Prompt 注入与权限滥用的根因
+- 11.ai/04-architecture/bpmn-ai-integration.md —— BPMN+AI 融合 —— AI 安全护栏在工作流引擎中的工程化实践
+- 11.ai/01-fundamentals/README.md —— LLM 基础 —— 理解 Prompt 注入与权限滥用的根因
 
 ## 跨章节衔接
 

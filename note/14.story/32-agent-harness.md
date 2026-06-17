@@ -41,7 +41,7 @@
 
 ---
 
-## 第一章：什么是 Agent Harness
+## 第一章：什么是 Agent Harness —— Agent 时代的厨房管理系统
 
 **Agent Harness** 是指包裹在 AI Agent 周围、负责**协调、监控、保护、评估**Agent 行为的工程化系统。
 
@@ -91,7 +91,7 @@ Harness 不是一个"产品"，而是一组**工程实践**的集合。阿明在
 
 ---
 
-## 第二章：Harness 的 4 大核心模块
+## 第二章：Harness 的 4 大核心模块 —— 喂什么、用什么、记什么、防什么
 
 ### 2.1 Context 模块 —— 喂什么决定能做什么
 
@@ -546,7 +546,7 @@ Agent 输出有问题怎么办？**Harness 必须支持"失败回放"**：
 
 ---
 
-## 第六章：6 大最佳实践
+## 第六章：6 大最佳实践 —— 从 Prompt 版本化到 HITL，工程化治理
 
 18 个月的 Harness 实践后，阿明总结了 6 大最佳实践。
 
@@ -698,8 +698,8 @@ graph TD
 
 ### 跨章节衔接
 
-- [11.ai/03-engineering/ai-platforms/README.md](../11.ai/03-engineering/ai-platforms/README.md) —— Dify/Coze/LangGraph 平台对比 —— Harness 设计可借鉴的工程化思路
-- [11.ai/04-architecture/bpmn-ai-integration.md](../11.ai/04-architecture/bpmn-ai-integration.md) —— BPMN+AI 融合 —— Agent Harness 在工作流引擎中的落地形态
+- 11.ai/03-engineering/ai-platforms/README.md —— Dify/Coze/LangGraph 平台对比 —— Harness 设计可借鉴的工程化思路
+- 11.ai/04-architecture/bpmn-ai-integration.md —— BPMN+AI 融合 —— Agent Harness 在工作流引擎中的落地形态
 
 ## 跨章节衔接
 

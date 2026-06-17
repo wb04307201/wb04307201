@@ -1,4 +1,4 @@
-# 37 · AI 时代可观测性（续集十三）
+# 37 · 厨房暗哨
 
 > 从阿明的"AI 出问题不知道哪出问题"，看 AI 时代的可观测性 —— **AI Observability 4 大支柱 + 5 大工具栈 + 7 大实战模式**
 
@@ -467,8 +467,8 @@ graph TB
 
 ## 跨章节衔接
 
-- [11.ai/02-technology-stack/README.md](../11.ai/02-technology-stack/README.md) —— AI 技术栈 —— AI Observability 在 AI 技术栈中的位置
-- [11.ai/03-engineering/ai-platforms/README.md](../11.ai/03-engineering/ai-platforms/README.md) —— AI 平台 —— 主流平台的 Observability 集成
+- 11.ai/02-technology-stack/README.md —— AI 技术栈 —— AI Observability 在 AI 技术栈中的位置
+- 11.ai/03-engineering/ai-platforms/README.md —— AI 平台 —— 主流平台的 Observability 集成
 
 ---
 

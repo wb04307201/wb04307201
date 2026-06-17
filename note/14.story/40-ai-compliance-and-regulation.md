@@ -1,4 +1,4 @@
-# 40 · AI 合规与监管（续集十六）
+# 40 · 米其林评审
 
 > 从阿明的"AI 翻车事故"，看 AI 合规 —— **6 大监管框架 + 4 大合规体系 + 5 大风险防御 + 中国/欧盟/美国对比**
 
@@ -613,9 +613,9 @@ P3（低）：
 
 ## 跨章节衔接
 
-- [11.ai/02-technology-stack/README.md](../11.ai/02-technology-stack/README.md) —— AI 技术栈 —— 合规技术栈
-- [11.ai/03-engineering/ai-platforms/README.md](../11.ai/03-engineering/ai-platforms/README.md) —— AI 平台 —— 合规平台
-- [13.front-end/09.security/README.md](../13.front-end/09.security/README.md) —— 前端安全 —— 用户隐私保护
+- 11.ai/02-technology-stack/README.md —— AI 技术栈 —— 合规技术栈
+- 11.ai/03-engineering/ai-platforms/README.md —— AI 平台 —— 合规平台
+- 13.front-end/09.security/README.md —— 前端安全 —— 用户隐私保护
 
 ---
 

@@ -1,8 +1,8 @@
-# 42 · Prompt 工程深度专题（番外七）
+# 42 · 点菜单的艺术
 
 > 从阿明的"AI 答非所问 / 输出不稳定 / 成本失控"，看 Prompt 工程 —— **10 大经典模式 + 7 大高级技术 + 4 大优化策略 + 评测 + 模板库**
 
-> **系列定位**：本篇是「阿明餐厅」系列的**番外七**。在[续集三 · 06 · 提示词基础](../06.llm/06-prompt-engineering-basics/README.md)我们讲了入门级 Prompt 技巧。本篇是**Prompt 工程深度专题** —— 系统讲清楚工业级 Prompt 工程：模式、技巧、优化、评测、安全、成本。从 CoT 到 ReAct，从 Few-shot 到 Self-Consistency，从自动优化到对抗攻击。
+> **系列定位**：本篇是「阿明餐厅」系列的**番外七**。在续集三 · 06 · 提示词基础我们讲了入门级 Prompt 技巧。本篇是**Prompt 工程深度专题** —— 系统讲清楚工业级 Prompt 工程：模式、技巧、优化、评测、安全、成本。从 CoT 到 ReAct，从 Few-shot 到 Self-Consistency，从自动优化到对抗攻击。
 
 ---
 
@@ -512,7 +512,7 @@ prompt = template.format(
 
 方法 2：LLM-as-Judge
   - 用 GPT-4o 评估 GPT-3.5 的输出
-  - 详见 [34a 第四章 LLM-as-Judge](./34a-ai-evaluation-fundamentals.md#第四章llm-as-judge)
+  - 详见 [34a 第四章 LLM-as-Judge](./34a-ai-evaluation-fundamentals.md#第四章llm-as-judge-实战)
 
 方法 3：自动评测
   - 规则匹配（关键词 / 格式）
@@ -786,7 +786,7 @@ prompt = template.format(
 
 ## 延伸阅读
 
-- [LLM 提示词基础 06](../06.llm/06-prompt-engineering-basics/README.md) —— 入门级 Prompt 技巧
+- LLM 提示词基础 06 —— 入门级 Prompt 技巧
 - [AI 评测工程 34a](./34a-ai-evaluation-fundamentals.md) / [34b](./34b-ai-evaluation-pipeline.md) —— Prompt 评测方法
 - [可观测性 37](./37-ai-observability.md) —— Prompt 监控与 A/B
 - [RAG 38](./38-rag-retrieval-augmented-generation.md) —— RAG 中的 Prompt 优化
@@ -796,9 +796,9 @@ prompt = template.format(
 
 ## 跨章节衔接
 
-- [06.llm/06-prompt-engineering-basics/README.md](../06.llm/06-prompt-engineering-basics/README.md) —— Prompt 基础 —— 入门必读
-- [06.llm/07-llm-evaluation/README.md](../06.llm/07-llm-evaluation/README.md) —— LLM 评测 —— Prompt 效果评测
-- [11.ai/02-technology-stack/README.md](../11.ai/02-technology-stack/README.md) —— AI 技术栈 —— Prompt 在 LLM 系统中的位置
+- 06.llm/06-prompt-engineering-basics/README.md —— Prompt 基础 —— 入门必读
+- 06.llm/07-llm-evaluation/README.md —— LLM 评测 —— Prompt 效果评测
+- 11.ai/02-technology-stack/README.md —— AI 技术栈 —— Prompt 在 LLM 系统中的位置
 
 ---
 

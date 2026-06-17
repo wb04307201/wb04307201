@@ -1,4 +1,4 @@
-# 38 · RAG 检索增强生成专题（续集十四）
+# 38 · 开卷考试
 
 > 从阿明的"AI 凭空捏造答案"，看 RAG 检索增强生成 —— **5 大核心环节 + 7 大高级模式 + 评测体系 + 生产化**
 
@@ -690,8 +690,8 @@ GraphRAG：实体关系
 
 ## 跨章节衔接
 
-- [11.ai/02-technology-stack/README.md](../11.ai/02-technology-stack/README.md) —— AI 技术栈 —— RAG 在 AI 技术栈中的位置
-- [11.ai/03-engineering/ai-platforms/README.md](../11.ai/03-engineering/ai-platforms/README.md) —— AI 平台 —— Dify/Coze/LangGraph 的 RAG 实现
+- 11.ai/02-technology-stack/README.md —— AI 技术栈 —— RAG 在 AI 技术栈中的位置
+- 11.ai/03-engineering/ai-platforms/README.md —— AI 平台 —— Dify/Coze/LangGraph 的 RAG 实现
 
 ---
 

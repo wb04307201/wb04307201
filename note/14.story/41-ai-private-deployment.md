@@ -1,4 +1,4 @@
-# 41 · AI 模型私有化部署（续集十七）
+# 41 · 自建中央厨房
 
 > 从阿明的"OpenAI 又被封 + 数据不能出云"，看 AI 私有化部署 —— **5 大部署形态 + 4 大推理框架 + 量化 / 微调 / GPU 利用率 + 成本对比**
 
@@ -696,9 +696,9 @@ API 方案（GPT-4o）：
 
 ## 跨章节衔接
 
-- [11.ai/02-technology-stack/README.md](../11.ai/02-technology-stack/README.md) —— AI 技术栈 —— 推理框架选型
-- [11.ai/03-engineering/ai-platforms/README.md](../11.ai/03-engineering/ai-platforms/README.md) —— AI 平台 —— 私有化部署
-- [11.ai/04-operation/ai-ops/README.md](../11.ai/04-operation/ai-ops/README.md) —— AI 运维 —— 私有化 GPU 运维
+- 11.ai/02-technology-stack/README.md —— AI 技术栈 —— 推理框架选型
+- 11.ai/03-engineering/ai-platforms/README.md —— AI 平台 —— 私有化部署
+- 11.ai/04-operation/ai-ops/README.md —— AI 运维 —— 私有化 GPU 运维
 
 ---
 

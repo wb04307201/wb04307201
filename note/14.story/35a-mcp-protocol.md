@@ -1,4 +1,4 @@
-# 35a · MCP 协议（续集十一 · 上）
+# 35a · 万能插口
 
 > 从阿明的 20 个 Agent 各自为政，到全栈打通 —— 看 AI 时代的"TCP/IP"：**MCP 协议**
 
@@ -373,7 +373,7 @@ Phase 4（7-12 月）：混合架构
 
 ---
 
-## 第三章：协议层的 6 大设计原则
+## 第三章：协议层的 6 大设计原则 —— 好协议像万能插口，在哪都能用
 
 无论选 MCP / A2A / 自研，**协议本身的设计原则**是相通的。阿明总结了 6 大原则。
 
@@ -450,7 +450,7 @@ Phase 4（7-12 月）：混合架构
 
 ---
 
-## 第四章：MCP 落地实践
+## 第四章：MCP 落地实践 —— 让餐厅每样厨具都装上万能插口
 
 阿明把 MCP 用在了 5 个最常见的场景，本章展开。
 
@@ -631,8 +631,8 @@ graph TB
 
 ## 跨章节衔接
 
-- [11.ai/03-engineering/ai-platforms/README.md](../11.ai/03-engineering/ai-platforms/README.md) —— Dify/Coze/LangGraph 平台实现 —— MCP/A2A 协议在主流平台中的落地
-- [11.ai/02-technology-stack/README.md](../11.ai/02-technology-stack/README.md) —— AI 技术栈 61 概念 —— 协议层在 AI 技术栈中的位置
+- 11.ai/03-engineering/ai-platforms/README.md —— Dify/Coze/LangGraph 平台实现 —— MCP/A2A 协议在主流平台中的落地
+- 11.ai/02-technology-stack/README.md —— AI 技术栈 61 概念 —— 协议层在 AI 技术栈中的位置
 
 ---
 
