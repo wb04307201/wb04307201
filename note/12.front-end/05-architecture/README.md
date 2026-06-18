@@ -6,13 +6,13 @@
 
 | 主题 | 状态 | 说明 |
 |------|------|------|
-| 渲染模式 | ⏳ 待补 | CSR / SSR / SSG / ISR / RSC / Islands 全景 |
-| 状态管理 | ⏳ 待补 | Redux / Zustand / Jotai / Pinia / Nano Stores |
-| 路由 | ⏳ 待补 | React Router / Vue Router / TanStack Router |
+| 渲染模式 | ✓ 已有 | [rendering-modes/](rendering-modes/) — CSR / SSR / SSG / ISR / RSC / Islands 全景 |
+| 状态管理 | ✓ 已有 | [state-management/](state-management/) — Redux / Zustand / Jotai / Pinia / Nano Stores |
+| 路由 | ✓ 已有 | [routing/](routing/) — React Router / Vue Router / TanStack Router |
 | 微前端 | ✓ 已有 | [micro-frontend/](micro-frontend/) — 微前端综述与选型 |
 | Web Components | ✓ 已有 | [web-components/](web-components/) — 浏览器原生组件化标准 |
 | BFF | ✓ 已有 | [bff/](bff/) — Backend For Frontend 模式 |
-| 设计系统 | ⏳ 待补 | 组件库 / Token / 主题 / Storybook |
+| 设计系统 | ✓ 已有 | [design-system/](design-system/) — 组件库 / Token / 主题 / Storybook |
 
 ## 与其他模块的关系
 

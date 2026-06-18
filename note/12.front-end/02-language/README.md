@@ -95,7 +95,18 @@ graph LR
 2. **进阶**（1 个月）：异步深入 + 泛型 + 类型守卫 + tsconfig 编译选项优化
 3. **高级**（持续）：类型体操适度使用 + 三大运行时特性 + 新提案跟进
 
-## 7. 交叉引用
+## 7. 本模块覆盖
+
+| 主题 | 状态 | 说明 |
+|------|------|------|
+| TypeScript 工程实践 | ✓ 已有 | [typescript/](typescript/) — 泛型 / 条件类型 / 类型守卫 / tsconfig |
+| JS 运行时 | ✓ 已有 | [runtime/](runtime/) — Node.js / Deno / Bun / Edge Runtime |
+| JavaScript 核心机制 | 速查 | 见第 2 节（异步模型演进） |
+| ES2024-2026 新特性 | 速查 | 见第 4 节 |
+
+---
+
+## 8. 交叉引用
 
 - [`01-foundation/`](../01-foundation/) — 浏览器对 JS 的解析与执行
 - [`03-frameworks/`](../03-frameworks/) — 所有框架都建立在 JS/TS 之上
@@ -104,7 +115,7 @@ graph LR
 
 ---
 
-## 8. 与其他模块的关系
+## 9. 与其他模块的关系
 
 - **上游**：[`01-foundation/`](../01-foundation/)（浏览器对 JS 的执行机制）
 - **下游**：被 [`03-frameworks`](../03-frameworks/) / [`04-engineering`](../04-engineering/) / [`05-architecture`](../05-architecture/) / [`09-frontend-and-ai`](../09-frontend-and-ai/) 等模块依赖

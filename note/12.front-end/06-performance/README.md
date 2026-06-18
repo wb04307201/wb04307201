@@ -115,7 +115,19 @@ graph LR
 2. **进阶**（1 个月）：Lighthouse CI 集成 + Web Vitals 上报 + 加载性能清单逐项优化
 3. **高级**（持续）：RUM 体系搭建 + AB 实验 + 性能预算 Performance Budget
 
-## 8. 交叉引用
+## 8. 本模块覆盖
+
+| 主题 | 状态 | 说明 |
+|------|------|------|
+| Core Web Vitals | ✓ 已有 | [core-web-vitals/](core-web-vitals/) — LCP / INP / CLS 详解与优化 |
+| 性能监控 | ✓ 已有 | [monitoring/](monitoring/) — RUM / APM / 报警体系 |
+| Lighthouse 评分 | 速查 | 见第 3 节 |
+| 加载性能 | 速查 | 见第 4 节 |
+| 运行时性能 | 速查 | 见第 5 节 |
+
+---
+
+## 9. 交叉引用
 
 - [`14.story/13-frontend-renovation.md`](../../../14.story/13-frontend-renovation.md) 第一、六章：阿明餐厅前端加载优化故事
 - [`14.story/16-performance-optimization.md`](../../../14.story/16-performance-optimization.md) — 性能优化的 USE 方法论
@@ -123,7 +135,7 @@ graph LR
 
 ---
 
-## 9. 与其他模块的关系
+## 10. 与其他模块的关系
 
 - **上游**：[`05-architecture`](../05-architecture/)（渲染模式决定性能基线）
 - **下游**：与 [`07-security`](../07-security/) 协同（性能优化常涉及安全开关取舍，如 CSP 影响加载）

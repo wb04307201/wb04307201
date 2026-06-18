@@ -106,7 +106,14 @@ graph LR
 
 ## 6. 章节统计
 
-- **模块数**：9（含 5 个二级子 README：BFF / 微前端 / Web Components / CORS / Sessions）
-- **总行数**：~1500 行（含本轮新增）
-- **已实内容**：03 框架（166 行）+ 05 架构 3 子（230 行）+ 07 安全 2 子（383 行）
+- **一级模块数**：9（01 基础 / 02 语言 / 03 框架 / 04 工程化 / 05 架构 / 06 性能 / 07 安全 / 08 跨端 / 09 前端与 AI）
+- **二级子 README 数**：28 个
+  - 01 基础：2（browser-rendering / css-engineering）
+  - 02 语言：2（typescript / runtime）
+  - 04 工程化：2（vite / monorepo-practice）
+  - 05 架构：7（rendering-modes / state-management / routing / micro-frontend / web-components / bff / design-system）
+  - 06 性能：2（core-web-vitals / monitoring）
+  - 07 安全：6（xss / csrf / csp / supply-chain / cors / sessions）
+  - 08 跨端：2（react-native / mini-program）
+  - 09 前端与 AI：2（ai-sdk / vibe-coding）
 - **互引章节**：[`11.ai/`](../11.ai/)、[`14.story/`](../14.story/)、[`13.split-hairs/12.front-end/`](../13.split-hairs/12.front-end/)

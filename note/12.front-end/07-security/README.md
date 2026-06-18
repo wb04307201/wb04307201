@@ -6,10 +6,10 @@
 
 | 主题 | 状态 | 说明 |
 |------|------|------|
-| XSS | ⏳ 待补 | 反射型 / 存储型 / DOM 型 + 转义策略 |
-| CSRF | ⏳ 待补 | 攻击原理 + SameSite / Token / Origin 校验 |
-| CSP / SRI | ⏳ 待补 | 内容安全策略 + 子资源完整性 |
-| 依赖供应链 | ⏳ 待补 | npm audit / Snyk / 锁文件 / 私有 Registry |
+| XSS | ✓ 已有 | [xss/](xss/) — 反射型 / 存储型 / DOM 型 + 转义策略 |
+| CSRF | ✓ 已有 | [csrf/](csrf/) — 攻击原理 + SameSite / Token / Origin 校验 |
+| CSP / SRI | ✓ 已有 | [csp/](csp/) — 内容安全策略 + 子资源完整性 |
+| 依赖供应链 | ✓ 已有 | [supply-chain/](supply-chain/) — npm audit / Snyk / 锁文件 / 私有 Registry |
 | CORS | ✓ 已有 | [cors/](cors/) — 跨域资源共享 |
 | Sessions | ✓ 已有 | [sessions/](sessions/) — Cookies / LocalStorage 选型 |
 

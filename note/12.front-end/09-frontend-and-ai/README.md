@@ -147,7 +147,19 @@ Vibe Coding：
 2. **进阶**（1 个月）：Function Calling UI + 流式渲染 + 思维链展示
 3. **高级**（持续）：Vibe Coding 实战 + MCP 协议集成 + Agent 平台开发
 
-## 9. 交叉引用
+## 9. 本模块覆盖
+
+| 主题 | 状态 | 说明 |
+|------|------|------|
+| AI SDK 集成 | ✓ 已有 | [ai-sdk/](ai-sdk/) — Vercel AI SDK / Anthropic SDK / Function Calling |
+| Vibe Coding | ✓ 已有 | [vibe-coding/](vibe-coding/) — AI 时代的编程新范式 |
+| AI Native UI | 速查 | 见第 4 节 |
+| AI IDE 与编辑器 | 速查 | 见第 5 节 |
+| MCP / Agent 协议 | 速查 | 见第 7 节 |
+
+---
+
+## 10. 交叉引用
 
 - [`11.ai/01-fundamentals/llm-basics/`](../../../11.ai/01-fundamentals/llm-basics/) — LLM 基础概念
 - [`11.ai/03-engineering/ai-platforms/`](../../../11.ai/03-engineering/ai-platforms/) — Dify / Coze / LangGraph AI 平台
@@ -157,7 +169,7 @@ Vibe Coding：
 
 ---
 
-## 10. 与其他模块的关系
+## 11. 与其他模块的关系
 
 - **上游**：[`11.ai/`](../../../11.ai/) — AI 知识体系（基础概念 / 平台 / 架构）
 - **下游**：影响 [`03-frameworks`](../03-frameworks/) / [`04-engineering`](../04-engineering/) 的选型（**AI 友好度**成为新维度）

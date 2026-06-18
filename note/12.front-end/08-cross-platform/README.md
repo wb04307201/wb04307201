@@ -139,7 +139,19 @@ graph LR
 2. **进阶**（1 个月）：Taro 4 或 Uni-app 做一个跨端小程序
 3. **高级**（持续）：Flutter / RN 性能调优 + 桌面端 Tauri 实战
 
-## 10. 交叉引用
+## 10. 本模块覆盖
+
+| 主题 | 状态 | 说明 |
+|------|------|------|
+| React Native | ✓ 已有 | [react-native/](react-native/) — 跨 iOS / Android 的 React 方案 |
+| 小程序 | ✓ 已有 | [mini-program/](mini-program/) — Taro 4 / Uni-app x 跨端实战 |
+| Flutter / Capacitor / KMP | 速查 | 见第 3 节 |
+| 桌面端（Electron / Tauri） | 速查 | 见第 4 节 |
+| PWA | 速查 | 见第 6 节 |
+
+---
+
+## 11. 交叉引用
 
 - [`14.story/21-multiplatform-architecture.md`](../../../14.story/21-multiplatform-architecture.md) — 阿明餐厅多端架构故事（BFF / 跨平台框架 / 离线优先）
 - [`14.story/26-globalization.md`](../../../14.story/26-globalization.md) — 国际化与跨区域部署（与 PWA 离线策略互补）
@@ -147,7 +159,7 @@ graph LR
 
 ---
 
-## 11. 与其他模块的关系
+## 12. 与其他模块的关系
 
 - **上游**：[`05-architecture`](../05-architecture/)（微前端 / BFF 模式适用于多端）
 - **下游**：与 [`09-frontend-and-ai`](../09-frontend-and-ai/) 协同（AI 能力常作为跨端差异化卖点）

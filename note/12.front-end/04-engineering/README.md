@@ -127,7 +127,18 @@ pnpm add -D vitest @testing-library/react @playwright/test eslint prettier
 2. **进阶**（1 个月）：Vitest 单元测试 + Playwright E2E + CI 集成
 3. **高级**（持续）：monorepo 演进 + Turborepo 远程缓存 + 构建性能 profiling
 
-## 8. 交叉引用
+## 8. 本模块覆盖
+
+| 主题 | 状态 | 说明 |
+|------|------|------|
+| Vite 构建工具 | ✓ 已有 | [vite/](vite/) — ESM 原生的极速构建 |
+| Monorepo 工程实践 | ✓ 已有 | [monorepo-practice/](monorepo-practice/) — pnpm workspaces / Turborepo / Nx |
+| 包管理 | 速查 | 见第 3 节 |
+| 测试与 Lint | 速查 | 见第 5 节 |
+
+---
+
+## 9. 交叉引用
 
 - [`05.tools/monorepo/`](../../../05.tools/monorepo/) — Monorepo 工具链专题（与本模块 04-engineering 互补）
 - [`14.story/13-frontend-renovation.md`](../../../14.story/13-frontend-renovation.md) 第五章：前端工程化故事
@@ -135,7 +146,7 @@ pnpm add -D vitest @testing-library/react @playwright/test eslint prettier
 
 ---
 
-## 9. 与其他模块的关系
+## 10. 与其他模块的关系
 
 - **上游**：[`02-language`](../02-language/) / [`03-frameworks`](../03-frameworks/)
 - **下游**：被 [`05-architecture`](../05-architecture/) / [`06-performance`](../06-performance/) / [`09-frontend-and-ai`](../09-frontend-and-ai/) 依赖

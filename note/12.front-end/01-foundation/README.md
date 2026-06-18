@@ -77,7 +77,18 @@ graph LR
 2. **进阶**（2 周）：BFC / 盒模型深挖 + CSS 预处理器 + PostCSS 插件链
 3. **高级**（1 个月）：W3C 流程理解 + Container Queries / Cascade Layers 新特性 + 浏览器源码阅读（Chromium / WebKit）
 
-## 6. 交叉引用
+## 6. 本模块覆盖
+
+| 主题 | 状态 | 说明 |
+|------|------|------|
+| 浏览器渲染原理 | ✓ 已有 | [browser-rendering/](browser-rendering/) — 渲染流水线 6 阶段 |
+| CSS 工程化 | ✓ 已有 | [css-engineering/](css-engineering/) — Flex / Grid / Tailwind / CSS Modules |
+| HTML 语义化 | 速查 | 见第 1 节 |
+| Web 标准 | 速查 | 见第 4 节 |
+
+---
+
+## 7. 交叉引用
 
 - [`02-language/`](../02-language/) — JavaScript 是浏览器唯一原生支持的脚本语言
 - [`02.computer-basics/01-network/`](../../../02.computer-basics/01-network/) — HTTP/HTTPS 协议族（与浏览器网络栈配合）
@@ -85,7 +96,7 @@ graph LR
 
 ---
 
-## 7. 与其他模块的关系
+## 8. 与其他模块的关系
 
 - **上游**：无（基础中的基础）
 - **下游**：被 `02-language` / `03-frameworks` / `04-engineering` / `05-architecture` / `06-performance` 等所有模块依赖
