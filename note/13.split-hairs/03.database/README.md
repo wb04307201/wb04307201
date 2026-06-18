@@ -4,7 +4,7 @@
 
 ---
 
-## 文章清单
+## 文章清单（共 18 篇）
 
 ### MySQL 关系型数据库
 | 主题 | 难度 | 核心问题 |
@@ -18,32 +18,27 @@
 | [什么情况下会锁表](relational-database/mysql/what-lock/) | ⭐⭐⭐⭐ | 行锁 / 表锁 / 间隙锁 |
 | [索引失效的 10 种场景](mysql/index-failure/) | ⭐⭐⭐⭐⭐ | LIKE 左通配 / 函数 / 类型转换 / OR / 最左前缀 |
 
+### MySQL 深入
+| 主题 | 难度 | 核心问题 |
+|------|------|---------|
+| [MVCC 实现原理](mvcc/) | ⭐⭐⭐⭐⭐ | Read View + Undo Log |
+| [B+ Tree 为什么适合数据库索引](bplus-tree/) | ⭐⭐⭐⭐⭐ | vs B-Tree / Hash |
+| [MySQL 主从复制延迟](replication-lag/) | ⭐⭐⭐⭐ | 延迟原因与解决方案 |
+| [MySQL JOIN 算法](mysql-join/) | ⭐⭐⭐⭐ | NLJ / BNL / Hash Join |
+
 ### Redis NoSQL
 | 主题 | 难度 | 核心问题 |
 |------|------|---------|
 | [Redis 搜索能力](nosql/key-value/redis/search/) | ⭐⭐⭐ | Redis 如何做全文搜索？ |
 | [缓存穿透 / 击穿 / 雪崩](redis/cache-penetration-breakdown-avalanche/) | ⭐⭐⭐⭐⭐ | 面试必考三件套 |
 
----
-
-## 待补充的高频面试题
-
-### MySQL 相关（强烈建议补齐）
-- **索引失效的 10 种场景**（LIKE 左通配、函数、类型转换...）
-- **B+ Tree 为什么适合数据库索引**（vs B-Tree / Hash）
-- **MVCC 实现原理**（Read View + Undo Log）
-- **JOIN 算法**（NLJ / BNL / Hash Join）
-- **SQL 注入原理与防御**（PreparedStatement）
-- **主从复制延迟怎么处理**
-- **分库分表策略**（ShardingSphere）
-
-### Redis 相关（强烈建议补齐）
-- **缓存穿透 / 击穿 / 雪崩**（必考三件套）
-- **Redis 持久化对比**（RDB vs AOF vs 混合）
-- **Redis 内存淘汰策略**（8 种策略）
-- **Redis 集群方案**（Sentinel vs Cluster）
-- **Redis 与数据库双写一致性**
-- **Redis 大 Key 问题**
+### Redis 深入
+| 主题 | 难度 | 核心问题 |
+|------|------|---------|
+| [Redis 持久化](redis-persistence/) | ⭐⭐⭐⭐ | RDB / AOF / 混合持久化 |
+| [Redis 内存淘汰策略](redis-eviction/) | ⭐⭐⭐⭐ | 8 种淘汰策略详解 |
+| [Redis 集群](redis-cluster/) | ⭐⭐⭐⭐ | Sentinel vs Cluster |
+| [Redis 大 Key 问题](redis-big-key/) | ⭐⭐⭐⭐ | 发现与治理方案 |
 
 ---
 
@@ -51,7 +46,7 @@
 
 1. **入门**（3 天）：COUNT 区别 + INT(4) + 时间类型
 2. **进阶**（1 周）：索引 + 锁 + 事务隔离
-3. **冲刺面试**：重点看"索引失效"、"缓存三件套"、"MVCC"（待补）
+3. **冲刺面试**：重点看"索引失效"、"缓存三件套"、"MVCC"、"B+ Tree"
 
 ## 交叉引用
 

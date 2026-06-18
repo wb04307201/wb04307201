@@ -187,6 +187,5 @@ graph LR
 
 ## 五、交叉引用
 
-- 主模块：[`12.front-end`](../../12.front-end/) — 前端知识体系
-- 相关：[`13.split-hairs/12.front-end/event-loop/`](../event-loop/) — 事件循环（JS 执行阶段）
-- 相关：[`01-foundation/browser-rendering/`](../../12.front-end/01-foundation/browser-rendering/) — 浏览器渲染原理详解
+- 主模块：[`12.front-end`](../../../12.front-end/) — 前端知识体系
+- [浏览器渲染](../../../12.front-end/01-foundation/browser-rendering/README.md) — 浏览器渲染原理详解

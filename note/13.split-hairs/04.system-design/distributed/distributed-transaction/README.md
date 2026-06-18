@@ -301,5 +301,5 @@ graph TB
 ## 七、交叉引用
 
 - 主模块：[`04.system-design`](../../../04.system-design/) — 系统设计
-- 相关：[`13.split-hairs/04.system-design/high-performance/distributed-lock/`](../high-performance/distributed-lock/) — 分布式锁
-- 相关：[`13.split-hairs/04.system-design/high-performance/cache-consistency/`](../high-performance/cache-consistency/) — 缓存一致性（也是最终一致问题）
+- [分布式事务](../../../04.system-design/02-distributed/distributed-transaction/README.md) — 分布式事务解决方案详解
+- [缓存一致性](../../../04.system-design/04-high-performance/cache-consistency/README.md) — 缓存与数据库一致性方案

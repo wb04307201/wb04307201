@@ -44,6 +44,8 @@
       }
       ```
 
+**为什么需要缓存？** 在Java早期版本中，每次装箱都会创建新对象，对于频繁使用小整数的程序（如循环计数器），会产生大量临时对象增加GC压力。引入缓存后，-128到127范围内的Integer对象可以复用，显著减少内存分配。
+
 ## 三、使用场景与示例
 1. **自动装箱与缓存复用**
    ```java
@@ -70,6 +72,8 @@
    System.out.println(m == n); // false
    ```
 
+**自动装箱的底层实现：** Java编译器会将自动装箱代码转换为`valueOf()`调用。例如 `Integer a = 100;` 会被编译为 `Integer a = Integer.valueOf(100);`，而非 `new Integer(100);`。这就是为什么自动装箱能利用缓存的原因。
+
 ## 四、注意事项
 1. **对象比较陷阱**
     - **错误用法**：使用 `==` 比较 `Integer` 对象（仅当值在缓存范围内且未使用 `new` 时可能为 `true`）。
@@ -89,9 +93,85 @@
     - `Byte`、`Short`、`Character`、`Long`、`Boolean` 也有类似缓存机制，但范围或实现细节可能不同（如 `Character` 缓存0-127）。
     - `Float` 和 `Double` 无缓存机制。
 
-## 五、性能优化意义
+**各包装类缓存范围对比：**
+
+| 包装类 | 缓存范围 | 可配置 |
+|--------|---------|-------|
+| Boolean | TRUE, FALSE | 否 |
+| Byte | -128 ~ 127 | 否 |
+| Short | -128 ~ 127 | 否 |
+| Character | 0 ~ 127 | 否 |
+| Integer | -128 ~ 127 | 是（上限） |
+| Long | -128 ~ 127 | 否 |
+
+## 五、常见陷阱
+
+### 陷阱1：缓存范围边界问题
+
+```java
+Integer a = -128;
+Integer b = -128;
+System.out.println(a == b); // true（边界内）
+
+Integer c = -129;
+Integer d = -129;
+System.out.println(c == d); // false（超出下界）
+```
+
+### 陷阱2：反射修改缓存导致的诡异行为
+
+```java
+// 危险操作：通过反射修改缓存值
+Integer[] cache = getIntegerCache();
+cache[128 + 42] = new Integer(999); // 将42的缓存改为999
+
+System.out.println(Integer.valueOf(42)); // 输出999！
+System.out.println(42 + 1); // 输出1000！因为42被改为999
+```
+
+这种操作会导致程序行为完全不可预测，生产环境中绝对禁止。
+
+### 陷阱3：反序列化破坏缓存
+
+```java
+// 反序列化会创建新的Integer对象，不走缓存
+ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("obj.ser"));
+oos.writeObject(Integer.valueOf(100));
+oos.close();
+
+ObjectInputStream ois = new ObjectInputStream(new FileInputStream("obj.ser"));
+Integer deserialized = (Integer) ois.readObject();
+System.out.println(deserialized == Integer.valueOf(100)); // false
+```
+
+## 六、性能优化意义
 - **减少内存分配**：高频使用的小整数对象复用缓存，避免重复创建。
 - **降低GC压力**：缓存对象不会被垃圾回收，减少GC频率。
 - **提升运算效率**：在循环、计数等场景中，缓存复用显著提高性能。
 
+**性能测试示例：**
+
+```java
+// 使用缓存：约50ms
+long start = System.currentTimeMillis();
+for (int i = 0; i < 1_000_000; i++) {
+    Integer a = i % 100; // 大部分在缓存范围内
+}
+System.out.println(System.currentTimeMillis() - start);
+
+// 不使用缓存（new）：约200ms
+start = System.currentTimeMillis();
+for (int i = 0; i < 1_000_000; i++) {
+    Integer a = new Integer(i % 100);
+}
+System.out.println(System.currentTimeMillis() - start);
+```
+
 **总结**：Integer缓存机制通过复用小整数对象优化性能，但需注意对象比较方式和缓存范围调整的风险。在开发中应优先使用 `equals()` 比较对象，并谨慎扩展缓存上限。
+
+**面试要点：**
+1. Integer缓存的范围和配置方式
+2. 自动装箱的底层实现（valueOf vs new）
+3. 各包装类的缓存范围对比
+4. 缓存带来的性能提升原理
+5. 常见的Integer比较陷阱

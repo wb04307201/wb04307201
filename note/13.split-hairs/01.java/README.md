@@ -15,6 +15,36 @@
 | [快速插入大量数据到 HashMap](large-data-into-hashmap/) | ⭐⭐⭐ | 初始化容量 + 负载因子的权衡 |
 | [快速给 Map 排序](sort-map/) | ⭐⭐ | TreeMap vs LinkedHashMap 选型 |
 
+### 并发与线程
+| 主题 | 难度 | 核心问题 |
+|------|------|---------|
+| [ConcurrentHashMap 原理](concurrent-hashmap/) | ⭐⭐⭐⭐⭐ | ConcurrentHashMap 原理（JDK 7 vs 8） |
+| [ThreadLocal 原理](threadlocal/) | ⭐⭐⭐⭐⭐ | ThreadLocal 原理与内存泄漏 |
+| [synchronized 锁升级](synchronized-lock-upgrade/) | ⭐⭐⭐⭐⭐ | synchronized 锁升级过程 |
+| [volatile 内存语义](volatile/) | ⭐⭐⭐⭐⭐ | volatile 可见性、有序性、原子性 |
+| [AQS 框架原理](aqs/) | ⭐⭐⭐⭐⭐ | AbstractQueuedSynchronizer 实现机制 |
+| [线程池 7 大参数](thread-pool/) | ⭐⭐⭐⭐⭐ | ThreadPoolExecutor 核心参数详解 |
+| [Atomic 替代 synchronized](replace-synchronized-with-atomic/) | ⭐⭐⭐ | CAS 无锁编程 |
+
+### JVM 与类加载
+| 主题 | 难度 | 核心问题 |
+|------|------|---------|
+| [JVM 内存区域](jvm-memory/) | ⭐⭐⭐⭐⭐ | JVM 内存模型 + 对象创建流程 |
+| [GC 算法与收集器](gc-algorithms/) | ⭐⭐⭐⭐⭐ | GC 算法 + 垃圾收集器对比 |
+| [类加载机制](class-loading/) | ⭐⭐⭐⭐⭐ | 双亲委派模型 + 自定义类加载器 |
+
+### 语言基础
+| 主题 | 难度 | 核心问题 |
+|------|------|---------|
+| [CompletableFuture 编排](completable-future/) | ⭐⭐⭐⭐ | CompletableFuture 异步任务编排 |
+| [== / equals / hashCode](equals-hashcode/) | ⭐⭐⭐⭐ | 相等性判断契约与陷阱 |
+| [泛型擦除与 PECS](generics-erasure/) | ⭐⭐⭐⭐ | 类型擦除 + Producer Extends Consumer Super |
+| [反射原理与性能](reflection/) | ⭐⭐⭐⭐ | Reflection API 使用与性能开销 |
+| [String/Builder/Buffer](string-builder-buffer/) | ⭐⭐⭐ | 字符串拼接选型指南 |
+| [StringBuilder 重用](reuse-of-stringbuilder/) | ⭐⭐ | 循环中字符串拼接优化 |
+| [final/finally/finalize](final-finally-finalize/) | ⭐⭐⭐ | 三个关键字的区别与用法 |
+| [SPI 机制](spi/) | ⭐⭐⭐⭐ | Service Provider Interface 扩展机制 |
+
 ### 对象与类型
 | 主题 | 难度 | 核心问题 |
 |------|------|---------|
@@ -23,12 +53,6 @@
 | [Integer 缓存](integer-cache/) | ⭐⭐⭐ | -128 到 127 的复用机制与陷阱 |
 | [new String("123") 创建几个对象](new-string/) | ⭐⭐⭐⭐ | 字符串常量池 vs 堆 |
 | [Record 与泛型](record-t/) | ⭐⭐⭐ | Java 14+ Record 可以用泛型吗？ |
-
-### 并发与性能
-| 主题 | 难度 | 核心问题 |
-|------|------|---------|
-| [Atomic 替代 synchronized](replace-synchronized-with-atomic/) | ⭐⭐⭐ | CAS 无锁编程 |
-| [StringBuilder 重用](reuse-of-stringbuilder/) | ⭐⭐ | 循环中字符串拼接优化 |
 
 ### 设计模式与技巧
 | 主题 | 难度 | 核心问题 |
@@ -45,9 +69,9 @@
 
 ## 学习路径
 
-1. **入门**（1 周）：集合去重 + 对象创建 + Integer 缓存
-2. **进阶**（2 周）：HashMap 扩容 + 并发优化 + 单例模式
-3. **冲刺面试**（1 周）：按"高频面试题合集"速查
+1. **入门**（1 周）：集合去重 + 对象创建 + Integer 缓存 + String 相关
+2. **进阶**（2 周）：HashMap 扩容 + 并发线程 + JVM 内存 + 设计模式
+3. **冲刺面试**（1 周）：AQS + 锁升级 + GC 算法 + 类加载 + 高频面试题合集
 
 ## 交叉引用
 

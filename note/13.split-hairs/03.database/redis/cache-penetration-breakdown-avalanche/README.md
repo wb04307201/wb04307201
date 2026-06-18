@@ -340,7 +340,5 @@ public User getUserFallback(Long userId, BlockException e) {
 
 ## 八、交叉引用
 
-- 主模块：[`03.database`](../../03.database/) — 数据库知识体系
-- 主模块 Redis：[`03.database/nosql/redis/`](../../03.database/nosql/redis/) — Redis 详解
-- 相关：[`13.split-hairs/03.database/`](../) — 数据库咬文嚼字
-- 待补：分布式锁、缓存一致性专题
+- 主模块：[`03.database`](../../../03.database/) — 数据库知识体系
+- [Redis](../../../../03.database/07-redis/README.md) — Redis 详解

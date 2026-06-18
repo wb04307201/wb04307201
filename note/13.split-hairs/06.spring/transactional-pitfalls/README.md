@@ -302,7 +302,6 @@ public class OrderService {
 
 ## 五、交叉引用
 
-- 主模块：[`06.spring`](../../06.spring/) — Spring 知识体系
-- 主模块 AOP：[`06.spring/05-aop/`](../../06.spring/05-aop/) — AOP 原理详解
-- 相关：[`13.split-hairs/06.spring/not-use-@autowired/`](../not-use-@autowired/) — @Autowired 推荐用法
-- 待补：[`13.split-hairs/06.spring/aop-principle/`](../aop-principle/) — AOP 实现原理
+- 主模块：[`06.spring`](../../../06.spring/) — Spring 知识体系
+- [AOP 原理](../../../06.spring/08-annotations/aop.md) — AOP 原理详解
+- [@Autowired 推荐用法](../not-use-@autowired/README.md) — @Autowired 推荐用法

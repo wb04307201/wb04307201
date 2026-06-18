@@ -38,12 +38,14 @@ graph TB
 
 | 编号 | 对齐主模块 | 主题 | 文章数 |
 |------|----------|------|--------|
-| 01 | [`01.java`](../01.java/) | Java 基础陷阱（缓存、扩容、并发） | [15 篇](01.java/) |
-| 03 | [`03.database`](../03.database/) | 数据库细节（SQL 优化、Redis 机制） | [7 篇](03.database/) |
-| 04 | [`04.system-design`](../04.system-design/) | 系统设计难点（MQ、缓存、分布式） | [2 篇](04.system-design/) |
-| 06 | [`06.spring`](../06.spring/) | Spring 面试高频（IoC、AOP、事务） | [2 篇](06.spring/) |
-| 11 | [`11.ai`](../11.ai/) | AI 新概念（思维模式、提示工程） | [1 篇](11.ai/) |
-| 12 | [`12.front-end`](../12.front-end/) | 前端细节（HTTP、存储、消息机制） | [3 篇](12.front-end/) |
+| 01 | [`01.java`](../01.java/) | Java 基础陷阱（缓存、扩容、并发） | [31 篇](01.java/) |
+| 03 | [`03.database`](../03.database/) | 数据库细节（SQL 优化、Redis 机制） | [18 篇](03.database/) |
+| 04 | [`04.system-design`](../04.system-design/) | 系统设计难点（MQ、缓存、分布式） | [10 篇](04.system-design/) |
+| 06 | [`06.spring`](../06.spring/) | Spring 面试高频（IoC、AOP、事务） | [13 篇](06.spring/) |
+| 11 | [`11.ai`](../11.ai/) | AI 新概念（思维模式、提示工程） | [7 篇](11.ai/) |
+| 12 | [`12.front-end`](../12.front-end/) | 前端细节（HTTP、存储、消息机制） | [19 篇](12.front-end/) |
+
+**总计：98 篇**（原 55 篇，新增 43 篇）
 
 ---
 
@@ -82,10 +84,10 @@ graph TB
 ## 5. 学习路径建议
 
 ### 按面试准备
-1. **Java 后端**：01.java（15 篇） → 06.spring（补齐） → 03.database（7 篇）
-2. **系统设计**：04.system-design（补齐） → 03.database
-3. **前端**：12.front-end（补齐） → 01-foundation / 02-language 的 split-hairs（待补）
-4. **AI 方向**：11.ai（补齐） → 主模块 11.ai
+1. **Java 后端**：01.java（31 篇） → 06.spring（13 篇） → 03.database（18 篇）
+2. **系统设计**：04.system-design（10 篇） → 03.database（18 篇）
+3. **前端**：12.front-end（21 篇） → 01-foundation / 02-language 的 split-hairs（待补）
+4. **AI 方向**：11.ai（7 篇） → 主模块 11.ai
 
 ### 按主题深挖
 - 看到主模块某处"详见 split-hairs"的引用 → 直接跳转阅读

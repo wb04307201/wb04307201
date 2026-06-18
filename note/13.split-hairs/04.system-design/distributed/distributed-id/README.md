@@ -230,4 +230,4 @@ graph TB
 ## 六、交叉引用
 
 - 主模块：[`04.system-design`](../../../04.system-design/) — 系统设计
-- 相关：[`13.split-hairs/04.system-design/high-performance/distributed-lock/`](../high-performance/distributed-lock/) — 分布式锁（ZooKeeper 类似依赖）
+- [分布式 ID](../../../04.system-design/02-distributed/distributed-id/README.md) — 分布式 ID 生成方案详解

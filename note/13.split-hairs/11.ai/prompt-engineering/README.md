@@ -333,6 +333,6 @@ graph LR
 
 ## 七、交叉引用
 
-- 主模块：[`11.ai`](../../11.ai/) — AI 知识体系
-- 相关：[`13.split-hairs/11.ai/rag/`](../rag/) — RAG（Prompt 工程的重要应用）
-- 相关：[`13.split-hairs/09-frontend-and-ai/ai-sdk/`](../../09-frontend-and-ai/ai-sdk/) — Function Calling UI
+- 主模块：[`11.ai`](../../../11.ai/) — AI 知识体系
+- [RAG](../rag/README.md) — RAG（Prompt 工程的重要应用）
+- [AI SDK](../../../12.front-end/09-frontend-and-ai/ai-sdk/README.md) — Function Calling UI

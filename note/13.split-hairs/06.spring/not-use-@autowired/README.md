@@ -106,4 +106,4 @@
 
 ---
 
-> Spring 完整注解速查（包含 @Lazy / @Primary / @DependsOn 等）见 [note/06.spring/08-annotations/bean-and-ioc.md](../../06.spring/08-annotations/bean-and-ioc.md)。
+> Spring 完整注解速查（包含 @Lazy / @Primary / @DependsOn 等）见 [Bean 与 IoC](../../../06.spring/08-annotations/bean-and-ioc.md)。

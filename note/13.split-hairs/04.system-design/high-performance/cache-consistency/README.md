@@ -207,5 +207,4 @@ public class CacheSyncConsumer {
 ## 七、交叉引用
 
 - 主模块：[`03.database`](../../../03.database/) — 数据库与缓存
-- 相关：[`13.split-hairs/03.database/redis/cache-penetration-breakdown-avalanche/`](../../03.database/redis/cache-penetration-breakdown-avalanche/) — 缓存三连问
-- 待补：分布式锁、Canal 详解
+- [缓存穿透/击穿/雪崩](../../../03.database/06-cache/README.md) — 缓存设计模式与问题解决方案
