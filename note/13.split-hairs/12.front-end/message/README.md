@@ -259,8 +259,6 @@ public class PushMetrics {
 
 ## 六、交叉引用
 
-- **相关主题**：[Redis发布订阅](../../03.database/nosql/key-value/redis/pubsub/README.md)
-- **延伸学习**：[Spring WebSocket](../../02.spring/websocket/README.md)
-- **性能优化**：[HTTP/2多路复用](../../http/http2/README.md)
-- **分布式架构**：[消息队列对比](../../11.distributed/messaging/README.md)
-- **安全考虑**：[WebSocket安全](../../security/websocket-security/README.md)
+- **相关主题**：[Redis发布订阅](../../../03.database/07-redis/README.md)
+- **延伸学习**：[Spring Web](../../../06.spring/02-web/README.md)
+- **分布式架构**：[消息队列对比](../../../04.system-design/04-high-performance/mq/README.md)

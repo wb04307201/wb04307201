@@ -259,8 +259,6 @@ JOIN performance_schema.threads t ON w.blocking_thread_id = t.thread_id;
 
 ## 六、交叉引用
 
-- InnoDB 锁机制详解见 [事务与锁](../transaction/locks.md)
-- 索引设计与优化见 [索引原理](../index/b-tree.md)
-- 事务隔离级别见 [ACID 与 MVCC](../transaction/isolation-levels.md)
-- 死锁排查指南见 [故障诊断](../troubleshooting/deadlock.md)
-- Online DDL 最佳实践见 [表结构变更](../ddl/online-alter.md)
+- InnoDB 锁机制详解见 [MySQL 事务核心](../../../../../03.database/03-transaction/README.md)
+- 索引设计与优化见 [B+树原理](../../../bplus-tree/README.md)
+- 事务隔离级别见 [隔离级别](../isolation/README.md)

@@ -204,8 +204,4 @@ ALTER TABLE users MODIFY id BIGINT UNSIGNED AUTO_INCREMENT;
 
 ## 六、交叉引用
 
-- MySQL 整数类型全览见 [数据类型](../data-types.md)
-- CHECK 约束使用指南见 [完整性约束](../constraints/check.md)
-- Online DDL 操作见 [表结构变更](../ddl/online-alter.md)
-- 数据库设计最佳实践见 [表设计规范](../../../03.database/design/table-design.md)
-- MySQL 8.0 新特性见 [版本演进](../mysql-8-changes.md)
+- MySQL 整数类型全览见 [MySQL核心](../../../../../03.database/05-mysql/README.md)

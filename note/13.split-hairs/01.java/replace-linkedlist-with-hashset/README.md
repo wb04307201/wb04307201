@@ -256,7 +256,6 @@ boolean mightExist = bloom.mightContain("user_123"); // true（可能误判）
 
 ## 六、交叉引用
 
-- HashMap/HashSet 源码分析见 [集合框架](../../../01.java/collections/hashmap.md)
-- hashCode 和 equals 契约见 [Java 基础](../../../01.java/core/object-methods.md)
-- Bloom Filter 原理见 [算法与数据结构](../../../02.cs/algorithms/bloom-filter.md)
-- 并发安全的 Set 实现见 [并发容器](../../../01.java/concurrency/concurrent-collections.md)
+- HashMap/HashSet 源码分析见 [集合框架](../../../01.java/collection/hashmap.md)
+- hashCode 和 equals 契约见 [Java 对象方法](../../../01.java/concepts/object/README.md)
+- 并发安全的 Set 实现见 [并发容器](../../../01.java/concurrency/concurrent-collections/README.md)

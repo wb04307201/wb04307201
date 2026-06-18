@@ -317,8 +317,6 @@ WHERE TABLE_SCHEMA = 'mydb' AND TABLE_NAME = 'users';
 
 ## 六、交叉引用
 
-- **相关主题**：[MySQL 索引优化](../index/README.md) - 理解二级索引与覆盖索引
-- **延伸学习**：[MySQL 事务隔离](../isolation/README.md) - MVCC 机制对 COUNT 的影响
-- **性能调优**：[MySQL 慢查询分析](../slow-query/README.md) - EXPLAIN 执行计划解读
-- **NoSQL 对比**：[Redis 基数估算](../../nosql/key-value/redis/hyperloglog/README.md) - HyperLogLog 近似计数
-- **应用层优化**：[Spring Cache 集成](../../../../02.spring/cache/README.md) - 缓存 COUNT 结果
+- **相关主题**：[MySQL索引优化](../../../../../03.database/04-index/README.md) - 理解二级索引与覆盖索引
+- **延伸学习**：[MySQL事务隔离](../../../../../03.database/03-transaction/README.md) - MVCC机制对COUNT的影响
+- **性能调优**：[MySQL慢查询分析](../tuning/README.md) - EXPLAIN执行计划解读

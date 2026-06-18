@@ -269,8 +269,5 @@ if (state == ChannelState.RECEIVED) {
 
 ## 六、交叉引用
 
-- CPU 分支预测详解见 [计算机组成原理](../../../02.cs/architecture/branch-prediction.md)
-- JVM JIT 编译优化见 [JVM 性能调优](../../../01.java/jvm/jit-compilation.md)
-- JMH 基准测试指南见 [性能测试](../../../01.java/testing/jmh.md)
-- Dubbo 源码解析见 [RPC 框架](../../../06.spring/dubbo/source-code.md)
-- 缓存行与伪共享见 [并发编程](../../../01.java/concurrency/false-sharing.md)
+- JMH 基准测试指南见 [性能测试](../../../01.java/testing/README.md)
+- 缓存行与伪共享见 [并发编程](../replace-synchronized-with-atomic/README.md)

@@ -247,8 +247,6 @@ public record Container<T>(T value) {
 
 ## 六、交叉引用
 
-- **相关主题**：[Java泛型](../generics/README.md) - 泛型擦除、PECS原则
-- **延伸学习**：[Java 16+新特性](../java-new-features/README.md) - 模式匹配/Sealed Classes
-- **实战应用**：[Spring Boot DTO](../../02.spring/dto-pattern/README.md)
-- **性能考量**：[Record vs Lombok](../record-vs-lombok/README.md)
-- **序列化**：[Jackson](../../02.spring/jackson/README.md)
+- **相关主题**：[Java泛型擦除](../generics-erasure/README.md) - 泛型擦除、PECS原则
+- **实战应用**：[Java Record概念](../../../01.java/concepts/record/README.md)
+- **序列化**：[JSON处理](../../../06.spring/02-web/README.md)

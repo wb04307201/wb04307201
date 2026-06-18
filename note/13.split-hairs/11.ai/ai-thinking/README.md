@@ -168,8 +168,4 @@ P(100次全正面 | 公平硬币) = 7.89e-31
 
 ## 六、交叉引用
 
-- 贝叶斯定理详解见 [概率论基础](../../../11.ai/probability/bayes-theorem.md)
-- A/B 测试的贝叶斯方法见 [实验设计](../../../11.ai/experiment/ab-testing.md)
-- 先验分布选择策略见 [贝叶斯统计](../../../11.ai/statistics/bayesian.md)
-- 不确定性量化见 [贝叶斯神经网络](../../../11.ai/deep-learning/bnn.md)
-- 在线学习与增量更新见 [流式处理](../../../04.system-design/streaming/online-learning.md)
+- AI 基础知识见 [AI 模块主目录](../../../11.ai/README.md)

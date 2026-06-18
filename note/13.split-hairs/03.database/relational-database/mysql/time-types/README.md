@@ -253,7 +253,5 @@ DELIMITER ;
 ## 六、交叉引用
 
 - **相关主题**：[MySQL 事务隔离级别](../isolation/README.md) - 理解 MVCC 中的版本链与时间戳
-- **延伸学习**：[Redis TTL 机制](../../nosql/key-value/redis/ttl/README.md) - NoSQL 中的过期时间管理
-- **性能优化**：[MySQL 索引优化](../index/README.md) - 时间字段的索引策略
-- **JVM 关联**：[Java 8 DateTime API](../../../01.java/datetime-api/README.md) - Java 层面的时间处理
-- **分布式系统**：[分布式时钟同步](../../../11.distributed/clock/README.md) - 跨节点时间一致性问题
+- **性能优化**：[MySQL 索引优化](../../../../../03.database/04-index/README.md) - 时间字段的索引策略
+- **JVM 关联**：[Java 日期时间API](../../../../../01.java/concepts/date-time/README.md) - Java 层面的时间处理

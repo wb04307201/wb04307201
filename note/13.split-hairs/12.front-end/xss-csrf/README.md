@@ -225,4 +225,4 @@ res.cookie('sessionId', 'abc123', {
 ## 八、交叉引用
 
 - 主模块：[`12.front-end`](../../../12.front-end/) — 前端知识体系
-- 相关主题：[Web 安全最佳实践](../web-security/)、[HTTPS/TLS](../https/)
+- 相关主题：[前端安全](../../../12.front-end/07-security/README.md)

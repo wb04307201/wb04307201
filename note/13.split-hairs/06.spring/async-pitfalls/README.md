@@ -326,4 +326,4 @@ public void sendNotification() {
 
 - 主模块：[`06.spring`](../../../06.spring/) — Spring 知识体系
 - [事务传播](../../../06.spring/03-data/transaction/propagation-and-isolation.md) — @Transactional 事务传播机制
-- [线程池](../thread-pool/README.md) — 线程池调优实战
+- [线程池核心原理](../../../01.java/concurrency/thread-basics/README.md) — 线程池调优实战

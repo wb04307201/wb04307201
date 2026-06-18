@@ -134,5 +134,5 @@ SELECT * FROM users u JOIN orders o ON u.phone_number = o.user_phone;
 ## 九、交叉引用
 
 - 主模块：[`03.database`](../../../03.database/) — 数据库知识体系
-- [索引优化](../../../../03.database/04-index/README.md) — MySQL 索引数据结构与优化
+- [索引优化](../../../03.database/04-index/README.md) — MySQL 索引数据结构与优化
 - [MySQL 核心](../../../03.database/05-mysql/README.md) — EXPLAIN 执行计划与锁机制

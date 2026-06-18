@@ -343,8 +343,5 @@ SHOW TABLE STATUS LIKE 'users';        -- 查看数据量、索引大小
 
 ## 六、交叉引用
 
-- EXPLAIN 详解见 [执行计划分析](../explain/fields.md)
-- InnoDB 索引结构见 [B+ 树原理](../index/b-tree.md)
-- 事务隔离与锁见 [MVCC 机制](../transaction/mvcc.md)
-- 分库分表实践见 [水平拆分](../../../04.system-design/scaling/sharding.md)
-- 性能监控体系见 [可观测性](../../../04.system-design/observability/mysql-monitoring.md)
+- InnoDB 索引结构见 [B+ 树原理](../../../bplus-tree/README.md)
+- 事务隔离与锁见 [MVCC 机制](../../../mvcc/README.md)

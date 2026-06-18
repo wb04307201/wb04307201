@@ -293,8 +293,4 @@ sh mqadmin resetOffsetByTime \
 
 ## 六、交叉引用
 
-- Kafka 架构详解见 [Kafka 核心原理](../kafka/architecture.md)
-- RocketMQ 事务消息源码见 [RocketMQ 源码分析](../rocketmq/transaction.md)
-- 消息队列选型指南见 [MQ 对比](../comparison.md)
-- 消息可靠性保障见 [不丢消息实践](../reliability/no-loss.md)
-- 延时消息实现原理见 [时间轮算法](../rocketmq/delay-wheel.md)
+- 消息队列选型指南见 [MQ 核心原理](../../../../../04.system-design/04-high-performance/mq/README.md)

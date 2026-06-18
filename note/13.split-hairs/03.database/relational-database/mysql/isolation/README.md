@@ -259,8 +259,6 @@ SHOW ENGINE INNODB STATUS\G  -- 查看"LATEST DETECTED DEADLOCK"
 ## 六、交叉引用
 
 - **相关主题**：[MySQL COUNT优化](../count/README.md) - MVCC对COUNT的影响
-- **延伸学习**：[MySQL锁机制](../locks/README.md) - 行锁/间隙锁/Next-Key Lock
-- **性能调优**：[MySQL慢查询](../slow-query/README.md)
-- **Java关联**：[Spring事务管理](../../../../02.spring/transaction/README.md)
-- **分布式系统**：[分布式事务](../../../../11.distributed/transaction/README.md)
-- **并发编程**：[Java原子类](../../../replace-synchronized-with-atomic/README.md)
+- **性能调优**：[MySQL慢查询](../tuning/README.md)
+- **Java关联**：[Spring Data](../../../../../06.spring/03-data/README.md)
+- **分布式系统**：[分布式事务](../../../../../04.system-design/02-distributed/distributed-transaction/README.md)

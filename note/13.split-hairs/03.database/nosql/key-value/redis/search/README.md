@@ -255,8 +255,7 @@ public class ScanMetrics {
 
 ## 六、交叉引用
 
-- **相关主题**：[Redis数据结构](../data-structures/README.md) - String/Hash/Set/ZSet
-- **延伸学习**：[RediSearch](../redisearch/README.md) - 高级搜索功能
-- **性能优化**：[Redis管道](../pipeline/README.md) - 批量操作效率
-- **集群架构**：[Redis Cluster](../../cluster/README.md) - 分布式搜索策略
-- **替代方案**：[Elasticsearch](../../../../05.search/elasticsearch/README.md) - 复杂搜索最佳选择
+- **相关主题**：[Redis缓存穿透/击穿/雪崩](../../../../redis/cache-penetration-breakdown-avalanche/README.md)
+- **延伸学习**：[Redis大Key问题](../../../../redis-big-key/README.md)
+- **性能优化**：[Redis管道](../../../../redis-cluster/README.md) - 批量操作效率
+- **集群架构**：[Redis Cluster](../../../../redis-cluster/README.md) - 分布式搜索策略

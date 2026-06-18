@@ -209,8 +209,5 @@ if (actual.equals("expected")) { ... }
 
 ## 六、交叉引用
 
-- 字符串常量池详解见 [JVM 内存结构](../../../01.java/jvm/memory-model.md)
-- String 源码分析见 [Java 核心类库](../../../01.java/core/string.md)
-- intern() 最佳实践见 [字符串优化](../../../01.java/performance/string-optimization.md)
-- Compact Strings 机制见 [Java 9 新特性](../../../01.java/version/java9.md)
-- StringBuilder 性能分析见 [集合与工具类](../../../01.java/collections/stringbuilder.md)
+- String 源码分析见 [Java 核心类库](../../../01.java/concepts/string/README.md)
+- StringBuilder 性能分析见 [集合与工具类](../../../01.java/collection/README.md)

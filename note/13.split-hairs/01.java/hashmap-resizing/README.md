@@ -266,9 +266,6 @@ public class HashMapResizeBenchmark {
 
 ## 六、交叉引用
 
-- **相关主题**：[HashMap源码](../hashmap-source/README.md) - JDK实现细节
 - **延伸学习**：[ConcurrentHashMap](../concurrent-hashmap/README.md) - 高并发最佳实践
-- **性能优化**：[JVM GC调优](../../jvm/gc-tuning/README.md) - 减少扩容引发的GC
-- **替代方案**：[Caffeine缓存](../caffeine/README.md) - 高性能本地缓存
-- **分布式扩展**：[Redis哈希](../../03.database/nosql/key-value/redis/data-structures/README.md)
+- **性能优化**：[JVM调优](../../../01.java/jvm/tuning.md) - 减少扩容引发的GC
 - **关联知识**：[Atomic替代synchronized](../replace-synchronized-with-atomic/README.md)

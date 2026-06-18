@@ -208,8 +208,7 @@ public final class SBUtils {
 
 ## 六、交叉引用
 
-- **相关主题**：[String常量池](../string-pool/README.md)
-- **延伸学习**：[JVM字符串优化](../../jvm/string-deduplication/README.md)
-- **并发编程**：[ThreadLocal](../threadlocal/README.md) - 内存泄漏防范
-- **性能调优**：[GC调优](../../jvm/gc-tuning/README.md)
+- **相关主题**：[new String对象创建](../new-string/README.md) - 字符串常量池
+- **并发编程**：[ThreadLocal](../thread-pool/README.md) - 内存泄漏防范
+- **性能调优**：[JVM调优](../../../01.java/jvm/tuning.md)
 - **关联知识**：[HashMap扩容](../hashmap-resizing/README.md) - 预分配容量

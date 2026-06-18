@@ -250,7 +250,6 @@ public class ConcurrencyMetrics {
 ## 六、交叉引用
 
 - **相关主题**：[HashMap扩容](../hashmap-resizing/README.md) - ConcurrentHashMap并发扩容
-- **延伸学习**：[Java锁升级](../lock-upgrade/README.md) - 偏向锁/轻量级锁/重量级锁
-- **性能调优**：[JUC工具类](../juc-utils/README.md) - CountDownLatch/CyclicBarrier
-- **数据库关联**：[MySQL事务隔离](../../03.database/relational-database/mysql/isolation/README.md)
-- **分布式扩展**：[分布式锁](../../11.distributed/distributed-lock/README.md) - Redis/ZooKeeper
+- **延伸学习**：[Java synchronized锁升级](../synchronized-lock-upgrade/README.md) - 偏向锁/轻量级锁/重量级锁
+- **数据库关联**：[MySQL事务隔离](../../../03.database/03-transaction/README.md)
+- **分布式扩展**：[分布式锁](../../../04.system-design/02-distributed/distributed-lock/README.md) - Redis/ZooKeeper

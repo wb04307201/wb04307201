@@ -261,7 +261,7 @@ Cluster 中 `MULTI/EXEC` 只能操作**同槽内的 Key**。
 
 - 主模块：[`03.database`](../../../03.database/) — 数据库知识体系
 - 相关笔记：
-  - [Redis 主从复制](../redis-replication/)
-  - [Redis 持久化机制](../redis-persistence/)
-  - [Redis 缓存击穿/穿透/雪崩](../redis-cache-problems/)
-  - [分布式锁实现](../../distributed-system/distributed-lock/)
+  - [Redis 大Key问题](../redis-big-key/README.md)
+  - [Redis 持久化机制](../redis-persistence/README.md)
+  - [Redis 缓存穿透/击穿/雪崩](../redis/cache-penetration-breakdown-avalanche/README.md)
+  - [分布式锁实现](../../../04.system-design/02-distributed/distributed-lock/README.md)

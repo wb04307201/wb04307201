@@ -242,5 +242,4 @@ leaf_count = ceil(20,000,000 / 70) = 285,715
 ## 七、交叉引用
 
 - 主模块：[`03.database`](../../../03.database/) — 数据库知识体系
-- [索引设计](../../../../03.database/04-index/README.md) — 索引设计原则与最佳实践
-- [分库分表](../../../../04.system-design/04-high-performance/database-optimization/db-sharding/README.md) — 数据库分库分表策略
+- [索引设计](../../../03.database/04-index/README.md) — 索引设计原则与最佳实践

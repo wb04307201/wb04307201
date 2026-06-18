@@ -242,5 +242,4 @@ public void process() {
 ## 八、交叉引用
 
 - 主模块：[`04.system-design`](../../../04.system-design/) — 系统设计
-- [分布式锁](../../../04.system-design/02-distributed/distributed-lock/README.md) — 分布式锁实现方案详解
-- [缓存穿透/击穿/雪崩](../../../03.database/06-cache/README.md) — 缓存击穿中的分布式锁应用
+- [缓存穿透/击穿/雪崩](../../../../03.database/06-cache/README.md) — 缓存击穿中的分布式锁应用

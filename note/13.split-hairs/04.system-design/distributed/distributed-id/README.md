@@ -230,4 +230,3 @@ graph TB
 ## 六、交叉引用
 
 - 主模块：[`04.system-design`](../../../04.system-design/) — 系统设计
-- [分布式 ID](../../../04.system-design/02-distributed/distributed-id/README.md) — 分布式 ID 生成方案详解
