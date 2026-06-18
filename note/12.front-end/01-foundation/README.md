@@ -86,6 +86,12 @@ graph LR
 | HTML 语义化 | 速查 | 见第 1 节 |
 | Web 标准 | 速查 | 见第 4 节 |
 
+### 面试题深入
+
+- [CSS 优先级](../../13.split-hairs/12.front-end/css-specificity/) — 咬文嚼字
+- [从 URL 输入到页面展示](../../13.split-hairs/12.front-end/from-url-to-page/) — 综合题
+- [事件循环](../../13.split-hairs/12.front-end/event-loop/) — 宏任务 / 微任务
+
 ---
 
 ## 7. 交叉引用
