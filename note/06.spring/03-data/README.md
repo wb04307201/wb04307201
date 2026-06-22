@@ -20,12 +20,16 @@
 | ├─ 理论 | [theory-and-patterns.md](transaction/distributed/theory-and-patterns.md) | 2PC / TCC / Saga / 本地消息表 | 25 min |
 | └─ Seata | [seata.md](transaction/distributed/seata.md) | Seata AT/TCC/XA/SAGA 4 种模式 | 25 min |
 | **缓存总览** | [cache/README.md](cache/README.md) | Spring Cache 如何统一多种缓存实现？ | 20 min |
-| **MyBatis 全栈** | [mybatis/README.md](mybatis/README.md) | MyBatis 框架原理 + Spring 整合 + MyBatis-Plus 全家桶 | 330 min |
-| ├─ 经典 XML 整合 | [01-assembly-and-startup.md](mybatis/03-spring-integration/01-assembly-and-startup.md) | SqlSessionFactoryBean + MapperScannerConfigurer 配置演进 | 15 min |
-| ├─ @MapperScan 与 Boot | [02-mapper-and-boot.md](mybatis/03-spring-integration/02-mapper-and-boot.md) | @MapperScan 原理 + mybatis-spring-boot-starter 自动装配 | 18 min |
-| ├─ @Transactional 事务边界 | [03-transaction-boundary.md](mybatis/03-spring-integration/03-transaction-boundary.md) | Spring 事务如何接管 SqlSession？同线程约束与失效场景 | 15 min |
-| ├─ 多数据源路由 | [04-multi-datasource.md](mybatis/03-spring-integration/04-multi-datasource.md) | AbstractRoutingDataSource + MyBatis SqlSessionTemplate 联动 | 20 min |
-| └─ 二级缓存与 Redis/Caffeine | [05-secondary-cache-integration.md](mybatis/03-spring-integration/05-secondary-cache-integration.md) | MyBatis 二级缓存整合分布式缓存 | 15 min |
+| **MyBatis 全栈** | [mybatis/README.md](mybatis/README.md) | 从架构原理到 Spring 整合到 MyBatis-Plus，一站到底 | 330 min |
+| ├─ 架构与原理 | [01-architecture/](mybatis/01-architecture/) | MyBatis 框架原理：架构/初始化/执行/组件/缓存 | 90 min |
+| ├─ 扩展能力 | [02-extension/](mybatis/02-extension/) | TypeHandler/拦截器/数据库厂商/存储过程 | 60 min |
+| ├─ Spring 整合 | [03-spring-integration/](mybatis/03-spring-integration/) | Spring 如何接管 SqlSessionFactory、Mapper、事务 | 90 min |
+| │  ├─ 装配与启动 | [01-assembly-and-startup.md](mybatis/03-spring-integration/01-assembly-and-startup.md) | SqlSessionFactoryBean + MapperScannerConfigurer 配置演进 | 15 min |
+| │  ├─ Mapper 与 Boot | [02-mapper-and-boot.md](mybatis/03-spring-integration/02-mapper-and-boot.md) | @MapperScan 原理 + mybatis-spring-boot-starter 自动装配 | 18 min |
+| │  ├─ 事务边界 | [03-transaction-boundary.md](mybatis/03-spring-integration/03-transaction-boundary.md) | Spring 事务如何接管 SqlSession？同线程约束与失效场景 | 15 min |
+| │  ├─ 多数据源路由 | [04-multi-datasource.md](mybatis/03-spring-integration/04-multi-datasource.md) | AbstractRoutingDataSource + MyBatis SqlSessionTemplate 联动 | 20 min |
+| │  └─ 二级缓存与 Redis/Caffeine | [05-secondary-cache-integration.md](mybatis/03-spring-integration/05-secondary-cache-integration.md) | MyBatis 二级缓存整合分布式缓存 | 15 min |
+| └─ MyBatis-Plus | [04-mybatis-plus/](mybatis/04-mybatis-plus/) | MP 全家桶：CRUD/Wrapper/分页/生成器 | 90 min |
 
 ---
 
@@ -38,7 +42,7 @@ graph TB
     D --> TX[事务管理]
     D --> Cache[缓存]
     D --> DAO[数据访问]
-    D --> MyBatis[MyBatis 整合]
+    D --> MyBatis[MyBatis 全栈]
     
     TX --> T1[声明式 @Transactional]
     TX --> T2[编程式 TransactionTemplate]
@@ -58,16 +62,19 @@ graph TB
     Cache --> C3[Redis 分布式]
     Cache --> C4[Ehcache]
     
-    MyBatis --> M1[经典 XML 整合]
-    MyBatis --> M2[@MapperScan + Boot]
-    MyBatis --> M3[@Transactional 事务边界]
-    MyBatis --> M4[多数据源路由]
-    MyBatis --> M5[二级缓存整合]
+    MyBatis --> A[架构与原理]
+    MyBatis --> E[扩展能力]
+    MyBatis --> S[Spring 整合]
+    MyBatis --> P[MyBatis-Plus]
+    A --> A1[初始化/执行/组件/缓存...]
+    E --> E1[TypeHandler/拦截器/存储过程]
+    S --> S1[装配/Mapper/事务/多数据源/二级缓存]
+    P --> P1[CRUD/Wrapper/分页/生成器]
     
     classDef root fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     classDef leaf fill:#fff3e0,stroke:#f57c00
     class D root
-    class TX,Cache,DAO,MyBatis,T1,T2,T3,T4,T5,T6,T6a,T6b,T6c,T6d,T6e,C1,C2,C3,C4,M1,M2,M3,M4,M5 leaf
+    class TX,Cache,DAO,MyBatis,T1,T2,T3,T4,T5,T6,T6a,T6b,T6c,T6d,T6e,C1,C2,C3,C4,A,E,S,P,A1,E1,S1,P1 leaf
 ```
 
 ---
@@ -113,4 +120,4 @@ graph TB
 
 ---
 
-> 🚀 从 [事务管理总览](transaction/README.md) 开始，或直接看 [MyBatis 整合专题](mybatis/03-spring-integration/README.md)
+> 🚀 从 [事务管理总览](transaction/README.md) 开始，或直接看 [MyBatis 全栈](mybatis/README.md)
