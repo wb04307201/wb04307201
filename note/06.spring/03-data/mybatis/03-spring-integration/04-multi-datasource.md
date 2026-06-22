@@ -594,4 +594,4 @@ public CompletableFuture<List<User>> asyncBatchGet(List<Long> ids) {
 - ➡️ [05 二级缓存与 Redis/Caffeine 整合](05-secondary-cache-integration.md)
 - [transaction/multi-datasource-and-jta.md](../transaction/multi-datasource-and-jta.md) — 多数据源事务
 - [transaction/distributed/seata.md](../transaction/distributed/seata.md) — Seata 分布式事务
-- [08.mybatis/mybatis-plus/README.md](../../08.mybatis/mybatis-plus/README.md) — MyBatis-Plus 动态数据源
+- [MyBatis-Plus 全家桶](../04-mybatis-plus/README.md) — MyBatis-Plus 动态数据源

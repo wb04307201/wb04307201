@@ -20,12 +20,12 @@
 | ├─ 理论 | [theory-and-patterns.md](transaction/distributed/theory-and-patterns.md) | 2PC / TCC / Saga / 本地消息表 | 25 min |
 | └─ Seata | [seata.md](transaction/distributed/seata.md) | Seata AT/TCC/XA/SAGA 4 种模式 | 25 min |
 | **缓存总览** | [cache/README.md](cache/README.md) | Spring Cache 如何统一多种缓存实现？ | 20 min |
-| **MyBatis 整合** | [mybatis-integration/README.md](mybatis-integration/README.md) | Spring 如何整合 MyBatis？事务、Mapper、多数据源、缓存？ | 90 min |
-| ├─ 经典 XML 整合 | [01-classic-integration.md](mybatis-integration/01-classic-integration.md) | SqlSessionFactoryBean + MapperScannerConfigurer 配置演进 | 15 min |
-| ├─ @MapperScan 与 Boot | [02-mapper-scan-and-boot.md](mybatis-integration/02-mapper-scan-and-boot.md) | @MapperScan 原理 + mybatis-spring-boot-starter 自动装配 | 18 min |
-| ├─ @Transactional 事务边界 | [03-transaction-with-mybatis.md](mybatis-integration/03-transaction-with-mybatis.md) | Spring 事务如何接管 SqlSession？同线程约束与失效场景 | 15 min |
-| ├─ 多数据源路由 | [04-multi-datasource.md](mybatis-integration/04-multi-datasource.md) | AbstractRoutingDataSource + MyBatis SqlSessionTemplate 联动 | 20 min |
-| └─ 二级缓存与 Redis/Caffeine | [05-secondary-cache-integration.md](mybatis-integration/05-secondary-cache-integration.md) | MyBatis 二级缓存整合分布式缓存 | 15 min |
+| **MyBatis 全栈** | [mybatis/README.md](mybatis/README.md) | MyBatis 框架原理 + Spring 整合 + MyBatis-Plus 全家桶 | 330 min |
+| ├─ 经典 XML 整合 | [01-assembly-and-startup.md](mybatis/03-spring-integration/01-assembly-and-startup.md) | SqlSessionFactoryBean + MapperScannerConfigurer 配置演进 | 15 min |
+| ├─ @MapperScan 与 Boot | [02-mapper-and-boot.md](mybatis/03-spring-integration/02-mapper-and-boot.md) | @MapperScan 原理 + mybatis-spring-boot-starter 自动装配 | 18 min |
+| ├─ @Transactional 事务边界 | [03-transaction-boundary.md](mybatis/03-spring-integration/03-transaction-boundary.md) | Spring 事务如何接管 SqlSession？同线程约束与失效场景 | 15 min |
+| ├─ 多数据源路由 | [04-multi-datasource.md](mybatis/03-spring-integration/04-multi-datasource.md) | AbstractRoutingDataSource + MyBatis SqlSessionTemplate 联动 | 20 min |
+| └─ 二级缓存与 Redis/Caffeine | [05-secondary-cache-integration.md](mybatis/03-spring-integration/05-secondary-cache-integration.md) | MyBatis 二级缓存整合分布式缓存 | 15 min |
 
 ---
 
@@ -86,10 +86,10 @@ graph TB
 | **AT 模式** | Seata 默认模式：基于 SQL 解析的自动回滚 | [Seata](transaction/distributed/seata.md) |
 | **TCC** | Try-Confirm-Cancel 补偿型事务 | [理论](transaction/distributed/theory-and-patterns.md) |
 | **Saga** | 长事务拆分多个子事务 + 补偿 | [理论](transaction/distributed/theory-and-patterns.md) |
-| **SqlSessionFactoryBean** | 创建 MyBatis SqlSessionFactory 的 FactoryBean | [MyBatis 整合](mybatis-integration/01-classic-integration.md) |
-| **@MapperScan** | 批量扫描 Mapper 接口的注解 | [MyBatis 整合](mybatis-integration/02-mapper-scan-and-boot.md) |
-| **SqlSessionTemplate** | Spring 管理的线程安全 SqlSession 包装 | [MyBatis 整合](mybatis-integration/03-transaction-with-mybatis.md) |
-| **AbstractRoutingDataSource** | 基于 ThreadLocal 动态切换数据源 | [MyBatis 整合](mybatis-integration/04-multi-datasource.md) |
+| **SqlSessionFactoryBean** | 创建 MyBatis SqlSessionFactory 的 FactoryBean | [MyBatis 整合](mybatis/03-spring-integration/01-assembly-and-startup.md) |
+| **@MapperScan** | 批量扫描 Mapper 接口的注解 | [MyBatis 整合](mybatis/03-spring-integration/02-mapper-and-boot.md) |
+| **SqlSessionTemplate** | Spring 管理的线程安全 SqlSession 包装 | [MyBatis 整合](mybatis/03-spring-integration/03-transaction-boundary.md) |
+| **AbstractRoutingDataSource** | 基于 ThreadLocal 动态切换数据源 | [MyBatis 整合](mybatis/03-spring-integration/04-multi-datasource.md) |
 
 ---
 
@@ -109,8 +109,8 @@ graph TB
 - ⬅️ [01 核心容器](../01-core/README.md) — 事务和缓存都基于 AOP 实现
 - ➡️ [04 Spring Boot](../04-spring-boot/README.md) — Spring Data JPA 简化数据访问
 - [04.system-design/02-distributed/distributed-transaction](../04.system-design/02-distributed/distributed-transaction/README.md) — 分布式事务理论
-- [08.mybatis/README.md](../../08.mybatis/README.md) — MyBatis 核心原理
+- [MyBatis 全栈](mybatis/README.md) — MyBatis 核心原理与 Spring 整合
 
 ---
 
-> 🚀 从 [事务管理总览](transaction/README.md) 开始，或直接看 [MyBatis 整合专题](mybatis-integration/README.md)
+> 🚀 从 [事务管理总览](transaction/README.md) 开始，或直接看 [MyBatis 整合专题](mybatis/03-spring-integration/README.md)

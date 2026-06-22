@@ -133,14 +133,15 @@
 
 > 开源参考：暂无（流程引擎以商业产品 Camunda/Flowable/Activiti 为主，事件驱动生态以 Apache EventMesh / CNCF Serverless Workflow 为主）
 
-# 八、[Mybatis](08.mybatis/README.md)
-## [MyBatis拦截器](08.mybatis/interceptor/README.md)
-## [Mybatis-Plus](08.mybatis/mybatis-plus/README.md)
-### [MyBatis-Plus Generator ：自动生成代码的利器](08.mybatis/mybatis-plus/generator/README.md)
-### [条件构造器Wrapper](08.mybatis/mybatis-plus/Wrapper/README.md)
-### [LambdaQueryWrapper 中的序列化函数式接口 SFunction](08.mybatis/mybatis-plus/Wrapper/lambdaQueryWrapper-function/README.md)
+# 八、MyBatis
+> 已迁入 [06.spring/03-data/mybatis](../06.spring/03-data/mybatis/README.md) —— MyBatis 框架原理 + Spring 整合 + MyBatis-Plus 全家桶。
+## [MyBatis 拦截器](../06.spring/03-data/mybatis/02-extension/02-interceptor.md)
+## [MyBatis-Plus 全家桶](../06.spring/03-data/mybatis/04-mybatis-plus/README.md)
+### [MyBatis-Plus 代码生成器](../06.spring/03-data/mybatis/04-mybatis-plus/10-code-generator.md)
+### [条件构造器 Wrapper](../06.spring/03-data/mybatis/04-mybatis-plus/03-wrapper-system.md)
+### [LambdaQueryWrapper 中的序列化函数式接口 SFunction](../06.spring/03-data/mybatis/04-mybatis-plus/05-lambda-sfunction-deep-dive.md)
 
-> 💡 Spring × MyBatis 整合专题已迁入 [06.spring/03-data/mybatis-integration](../06.spring/03-data/mybatis-integration/README.md)（SqlSessionFactoryBean/@MapperScan/事务边界/多数据源/二级缓存）。
+> 💡 Spring × MyBatis 整合专题已迁入 [06.spring/03-data/mybatis/03-spring-integration](../06.spring/03-data/mybatis/03-spring-integration/README.md)（SqlSessionFactoryBean/@MapperScan/事务边界/多数据源/二级缓存）。
 
 # 九、其他
 ## [常用系统](09.other/common-systems/README.md)

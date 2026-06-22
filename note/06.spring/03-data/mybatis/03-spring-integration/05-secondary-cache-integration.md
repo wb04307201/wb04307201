@@ -549,5 +549,5 @@ public void afterCommit(User user) {
 - [cache/README.md](../cache/README.md) — Spring Cache 详解
 - [cache/implementations-and-best-practices.md](../cache/implementations-and-best-practices.md) — 缓存实现与最佳实践
 - [cache/serialization.md](../cache/serialization.md) — 序列化方案
-- [08.mybatis/README.md](../../08.mybatis/README.md) — MyBatis 二级缓存机制
+- [架构与原理](../01-architecture/README.md) — MyBatis 二级缓存机制
 - [03.database/06-cache/](../../03.database/06-cache/) — 数据库缓存基础

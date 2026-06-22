@@ -446,5 +446,5 @@ mybatis-plus:
 - ⬅️ [返回 MyBatis 整合总览](README.md)
 - ⬅️ [01 装配与启动](01-assembly-and-startup.md)
 - ➡️ [03 事务边界](03-transaction-boundary.md)
-- [08.mybatis/mybatis-plus/README.md](../../08.mybatis/mybatis-plus/README.md) — MyBatis-Plus 增强
+- [MyBatis-Plus 全家桶](../04-mybatis-plus/README.md) — MyBatis-Plus 增强
 - [01-core/README.md](../../01-core/README.md) — FactoryBean / Bean 生命周期
