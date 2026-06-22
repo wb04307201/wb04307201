@@ -1,4 +1,4 @@
-# 01 经典 XML 整合
+# 01 装配与启动
 
 > ⬅️ [返回 MyBatis 整合总览](README.md)
 
@@ -378,6 +378,6 @@ src/main/resources/com/example/mapper/
 ## 相关章节
 
 - ⬅️ [返回 MyBatis 整合总览](README.md)
-- ➡️ [02 @MapperScan 与 Boot 自动配置](02-mapper-scan-and-boot.md)
+- ➡️ [02 Mapper 与 Boot](02-mapper-and-boot.md)
 - [transaction/README.md](../transaction/README.md) — Spring 事务基础
 - [08.mybatis/README.md](../../08.mybatis/README.md) — MyBatis 核心原理

@@ -1,6 +1,6 @@
 # 04 多数据源路由
 
-> ⬅️ [返回 MyBatis 整合总览](README.md) | [⬅️ 03 @Transactional 与 MyBatis 事务边界](03-transaction-with-mybatis.md)
+> ⬅️ [返回 MyBatis 整合总览](README.md) | [⬅️ 03 事务边界](03-transaction-boundary.md)
 
 多数据源场景在 Spring + MyBatis 项目中非常常见（读写分离、业务分库、多租户）。MyBatis 比 JPA 简单的地方在于：每个数据源有自己的 `SqlSessionFactory` + `SqlSessionTemplate`，Mapper 通过包名区分数据源归属。
 
@@ -590,7 +590,7 @@ public CompletableFuture<List<User>> asyncBatchGet(List<Long> ids) {
 ## 相关章节
 
 - ⬅️ [返回 MyBatis 整合总览](README.md)
-- ⬅️ [03 @Transactional 与 MyBatis 事务边界](03-transaction-with-mybatis.md)
+- ⬅️ [03 事务边界](03-transaction-boundary.md)
 - ➡️ [05 二级缓存与 Redis/Caffeine 整合](05-secondary-cache-integration.md)
 - [transaction/multi-datasource-and-jta.md](../transaction/multi-datasource-and-jta.md) — 多数据源事务
 - [transaction/distributed/seata.md](../transaction/distributed/seata.md) — Seata 分布式事务

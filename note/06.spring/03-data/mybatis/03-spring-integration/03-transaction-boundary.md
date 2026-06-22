@@ -1,6 +1,6 @@
-# 03 @Transactional 与 MyBatis 事务边界
+# 03 事务边界
 
-> ⬅️ [返回 MyBatis 整合总览](README.md) | [⬅️ 02 @MapperScan 与 Boot](02-mapper-scan-and-boot.md)
+> ⬅️ [返回 MyBatis 整合总览](README.md) | [⬅️ 02 Mapper 与 Boot](02-mapper-and-boot.md)
 
 `@Transactional` 能管住 MyBatis 的事务吗？答案是**有条件地可以**——条件是 SqlSession 必须由 Spring 管理，且操作必须在同一线程。本章拆解 Spring 接管 MyBatis 事务的链路，并列举高频失效场景。
 
@@ -541,7 +541,7 @@ public List<User> searchInTx(UserQuery query) {
 ## 相关章节
 
 - ⬅️ [返回 MyBatis 整合总览](README.md)
-- ⬅️ [02 @MapperScan 与 Boot 自动配置](02-mapper-scan-and-boot.md)
+- ⬅️ [02 Mapper 与 Boot](02-mapper-and-boot.md)
 - ➡️ [04 多数据源路由](04-multi-datasource.md)
 - [transaction/README.md](../transaction/README.md) — Spring 事务基础
 - [transaction/failure-cases.md](../transaction/failure-cases.md) — 事务失效场景全集

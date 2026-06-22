@@ -1,6 +1,6 @@
-# 02 @MapperScan 与 Boot 自动配置
+# 02 Mapper 与 Boot
 
-> ⬅️ [返回 MyBatis 整合总览](README.md) | [⬅️ 01 经典整合](01-classic-integration.md)
+> ⬅️ [返回 MyBatis 整合总览](README.md) | [⬅️ 01 装配与启动](01-assembly-and-startup.md)
 
 `@MapperScan` 简化了 Mapper 注册流程，`mybatis-spring-boot-starter` 进一步把 SqlSessionFactory 也自动化了。本章拆解这两层的实现原理。
 
@@ -444,7 +444,7 @@ mybatis-plus:
 ## 相关章节
 
 - ⬅️ [返回 MyBatis 整合总览](README.md)
-- ⬅️ [01 经典 XML 整合](01-classic-integration.md)
-- ➡️ [03 @Transactional 与 MyBatis 事务边界](03-transaction-with-mybatis.md)
+- ⬅️ [01 装配与启动](01-assembly-and-startup.md)
+- ➡️ [03 事务边界](03-transaction-boundary.md)
 - [08.mybatis/mybatis-plus/README.md](../../08.mybatis/mybatis-plus/README.md) — MyBatis-Plus 增强
 - [01-core/README.md](../../01-core/README.md) — FactoryBean / Bean 生命周期

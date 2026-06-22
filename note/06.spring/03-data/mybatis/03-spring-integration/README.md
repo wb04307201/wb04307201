@@ -7,7 +7,7 @@
 
 ## 🎯 一句话定位
 
-**Spring × MyBatis = 经典持久层组合**——Spring 负责管理 MyBatis 的 SqlSessionFactory、Mapper 接口、事务边界与多数据源路由，让 MyBatis 从"手动挡"变成"自动挡"。本章聚焦"整合"而非 MyBatis 本身，框架本身的原理请看 [08.mybatis](../../08.mybatis/README.md)。
+Spring 整合 MyBatis 的 5 个核心工程场景:装配启动、Mapper 扫描与 Boot、事务边界、多数据源、二级缓存。框架本身的原理请看 [01-architecture](../01-architecture/README.md),扩展能力请看 [02-extension](../02-extension/README.md),MyBatis-Plus 请看 [04-mybatis-plus](../04-mybatis-plus/README.md)。
 
 ---
 
@@ -15,9 +15,9 @@
 
 | 章节 | 文件 | 核心问题 | 阅读时长 |
 |:----:|:----|:---------|:--------:|
-| **经典 XML 整合** | [01-classic-integration.md](01-classic-integration.md) | SqlSessionFactoryBean + MapperScannerConfigurer 怎么配？XML 和 Java Config 双写法？ | 15 min |
-| **@MapperScan 与 Boot 自动配置** | [02-mapper-scan-and-boot.md](02-mapper-scan-and-boot.md) | @MapperScan 原理？mybatis-spring-boot-starter 自动装配链路？ | 18 min |
-| **@Transactional 与 MyBatis 事务边界** | [03-transaction-with-mybatis.md](03-transaction-with-mybatis.md) | Spring 事务怎么接管 SqlSession？同线程约束？混用 SqlSession 会怎样？ | 15 min |
+| **装配与启动** | [01-assembly-and-startup.md](01-assembly-and-startup.md) | SqlSessionFactoryBean + MapperScannerConfigurer 怎么配？XML 和 Java Config 双写法？ | 15 min |
+| **Mapper 与 Boot** | [02-mapper-and-boot.md](02-mapper-and-boot.md) | @MapperScan 原理？mybatis-spring-boot-starter 自动装配链路？ | 18 min |
+| **事务边界** | [03-transaction-boundary.md](03-transaction-boundary.md) | Spring 事务怎么接管 SqlSession？同线程约束？混用 SqlSession 会怎样？ | 15 min |
 | **多数据源路由** | [04-multi-datasource.md](04-multi-datasource.md) | AbstractRoutingDataSource + MyBatis SqlSessionTemplate 怎么联动？@DS 注解实现？ | 20 min |
 | **二级缓存与 Redis/Caffeine 整合** | [05-secondary-cache-integration.md](05-secondary-cache-integration.md) | 二级缓存怎么接 Redis/Caffeine？序列化与 TTL 怎么配置？ | 15 min |
 
@@ -29,8 +29,8 @@
 graph TB
     Root["🔗 Spring × MyBatis 整合"]
     
-    Root --> Classic["01 经典 XML 整合"]
-    Root --> Scan["02 MapperScan 与 Boot"]
+    Root --> Classic["01 装配与启动"]
+    Root --> Scan["02 Mapper 与 Boot"]
     Root --> Tx["03 事务边界"]
     Root --> Multi["04 多数据源"]
     Root --> Cache["05 二级缓存"]
@@ -71,13 +71,13 @@ graph TB
 
 | 概念 | 一句话定义 | 章节 |
 |------|----------|:----:|
-| **SqlSessionFactoryBean** | Spring 的 FactoryBean，用于创建 MyBatis SqlSessionFactory 单例 | [01](01-classic-integration.md) |
-| **MapperScannerConfigurer** | 扫描 Mapper 接口并注册为 Spring Bean 的 BeanDefinitionRegistryPostProcessor | [01](01-classic-integration.md) |
-| **MapperFactoryBean** | 单个 Mapper 接口的 FactoryBean，通过 JDK 动态代理生成实现类 | [02](02-mapper-scan-and-boot.md) |
-| **@MapperScan** | 基于 `@Import(MapperScannerRegistrar.class)` 触发批量 Mapper 扫描 | [02](02-mapper-scan-and-boot.md) |
-| **SqlSessionTemplate** | Spring 管理的线程安全 SqlSession 包装，支持 Spring 事务同步 | [03](03-transaction-with-mybatis.md) |
+| **SqlSessionFactoryBean** | Spring 的 FactoryBean，用于创建 MyBatis SqlSessionFactory 单例 | [01](01-assembly-and-startup.md) |
+| **MapperScannerConfigurer** | 扫描 Mapper 接口并注册为 Spring Bean 的 BeanDefinitionRegistryPostProcessor | [01](01-assembly-and-startup.md) |
+| **MapperFactoryBean** | 单个 Mapper 接口的 FactoryBean，通过 JDK 动态代理生成实现类 | [02](02-mapper-and-boot.md) |
+| **@MapperScan** | 基于 `@Import(MapperScannerRegistrar.class)` 触发批量 Mapper 扫描 | [02](02-mapper-and-boot.md) |
+| **SqlSessionTemplate** | Spring 管理的线程安全 SqlSession 包装，支持 Spring 事务同步 | [03](03-transaction-boundary.md) |
 | **AbstractRoutingDataSource** | 数据源路由器，基于 ThreadLocal 中的 key 动态切换真实 DataSource | [04](04-multi-datasource.md) |
-| **SpringManagedTransaction** | MyBatis 对 Spring 事务的适配器，将 SqlSession 绑定到 ConnectionHolder | [03](03-transaction-with-mybatis.md) |
+| **SpringManagedTransaction** | MyBatis 对 Spring 事务的适配器，将 SqlSession 绑定到 ConnectionHolder | [03](03-transaction-boundary.md) |
 
 ---
 
@@ -94,12 +94,12 @@ graph TB
 ## 相关章节
 
 - ⬅️ [返回 03 数据层](../README.md)
-- [08.mybatis/README.md](../../08.mybatis/README.md) — MyBatis 核心原理与高级特性
-- [08.mybatis/interceptor/README.md](../../08.mybatis/interceptor/README.md) — 拦截器机制
-- [08.mybatis/mybatis-plus/README.md](../../08.mybatis/mybatis-plus/README.md) — MyBatis-Plus 增强
+- [01-architecture/README.md](../01-architecture/README.md) — MyBatis 核心原理与高级特性
+- [02-extension/README.md](../02-extension/README.md) — 拦截器与扩展机制
+- [04-mybatis-plus/README.md](../04-mybatis-plus/README.md) — MyBatis-Plus 增强
 - [transaction/README.md](../transaction/README.md) — Spring 事务管理基础
 - [transaction/multi-datasource-and-jta.md](../transaction/multi-datasource-and-jta.md) — 多数据源事务衔接
 
 ---
 
-> 🚀 从 [经典 XML 整合](01-classic-integration.md) 开始，了解整合的"骨架"
+> 🚀 从 [装配与启动](01-assembly-and-startup.md) 开始，了解整合的"骨架"
