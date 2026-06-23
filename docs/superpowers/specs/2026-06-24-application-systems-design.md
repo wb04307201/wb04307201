@@ -1,7 +1,7 @@
 # 业务应用系统(note/08.application-systems)重组设计 spec
 
 > 日期：2026-06-24
-> 范围：把 `note/09.other/common-systems/` 提升为 `note/08.application-systems/` 一级目录，并大改内容（按业务价值链重排，详略分明，覆盖全部 20 个常见业务系统）
+> 范围：把 `note/09.other/common-systems/` 提升为 `note/08.application-systems/` 一级目录，并大改内容（按业务价值链重排，详略分明，覆盖全部 21 个常见业务系统）
 > 目标：让业务/产品/需求人员通过一份 README 快速建立完整的业务系统认知地图，并具备日常速查能力
 
 ---
@@ -17,7 +17,7 @@
 | `README.md` (10 KB) | 20 个系统名词表（4 列：缩写/全称/功能/优势）+ ERP↔其他系统关系表（11 列含"响应时间"等无关字段） |
 | `erp/README.md` (62 B) | 仅有标题，正文未填充，仅作占位 |
 | `erp/img.png` (246 KB) / `img_1.png` (358 KB) | 未在 README 引用 |
-| `pdm/README.md` (4.5 KB) | 实质性内容，含 PDM 定义/与 PLM 关系/技术架构图 |
+| `pdm/README.md` (4.5 KB) | 实质性内容，含 PDM 定义/与 PLM 关系/技术架构图（合并入新 README 后 PDM 作为独立章节项保留） |
 | `pdm/img.png` (258 KB) | 业务流程图 |
 
 ### 1.2 问题清单
@@ -48,7 +48,7 @@
 
 1. **位置升级**：从 `09.other/common-systems/` 提升为 `08.application-systems/` 一级目录，与 01.java / 04.system-design / 10.big-data 平级
 2. **业务视角**：内容按"业务价值链"组织（研产供销服），便于业务/产品/需求人员按业务问题查找
-3. **覆盖完整**：20 个常见业务系统全部覆盖，详略分明（核心 5-6 个系统深入，其他系统简述）
+3. **覆盖完整**：21 个常见业务系统全部覆盖（含原 common-systems 的 20 个 + 现有 pdm/ 专题），详略分明（核心 5-6 个系统深入，其他系统简述）
 4. **结构对齐**：与 04.system-design/README.md 的"快速入口 + 知识地图 + 学习路线 + 模块导航"风格一致
 5. **内容整合**：原 erp/ 和 pdm/ 子目录内容合并入主 README，不保留子目录
 6. **图规范**：所有图使用 mermaid（不引用任何 png），保证可读性与可维护性
@@ -59,7 +59,7 @@
 
 ## 3. 价值链章节划分
 
-按"研产供销服"业务价值链分 6 章，覆盖全部 20 个系统：
+按"研产供销服"业务价值链分 6 章，覆盖全部 21 个系统：
 
 | 价值链章节 | 包含系统 | 详略 | 说明 |
 |----------|---------|------|------|
@@ -156,7 +156,7 @@ flowchart LR
 
 ### 5.4 📋 系统速查表（独立章节）
 
-20 个系统按缩写字母排序，每行 4 列：
+21 个系统按缩写字母排序，每行 4 列：
 
 | 缩写 | 全称 | 一句话定位 | 价值链章节 |
 |---|---|---|---|
@@ -210,11 +210,9 @@ note/
 
 ## 7. 实施步骤
 
-```
-1. 提交 09.other 中 D 状态的旧目录
-   git add -A note/09.other
-   git commit -m "cleanup: remove obsolete 09.other subdirs (hadoop, nocode)"
+> 步骤 1 已经在写本 spec 时一并完成（spec commit 中顺带提交了 hadoop/nocode 等 D 状态文件）。以下从步骤 2 开始。
 
+```
 2. 创建新目录
    mkdir note/08.application-systems
 
@@ -264,7 +262,7 @@ note/
 
 ## 10. 验收标准
 
-1. 新 `note/08.application-systems/README.md` 存在，内容完整覆盖 20 个系统
+1. 新 `note/08.application-systems/README.md` 存在，内容完整覆盖 21 个系统
 2. `note/09.other/` 目录已删除
 3. `note/README.md` 索引已加 08.application-systems 链接
 4. `note/08.application-systems/` 下只有 README.md 一个文件，无 erp/、pdm/ 子目录
