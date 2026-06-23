@@ -476,4 +476,56 @@ flowchart LR
 
 ---
 
-<!-- TODO: 由后续任务填充各章节 -->
+## 📋 系统速查表
+
+21 个系统按缩写字母排序：
+
+| 缩写 | 全称 | 一句话定位 | 价值链章节 |
+|---|---|---|---|
+| APS | Advanced Planning and Scheduling | 高级计划与排程 | 02 生产制造 |
+| BI | Business Intelligence | 商业智能/数据分析 | 05 运营管理 |
+| CMS | Content Management System | 内容管理 | 01 研发创新 |
+| CRM | Customer Relationship Management | 客户关系管理 | 04 销售服务 |
+| EAM | Enterprise Asset Management | 企业资产管理 | 05 运营管理 |
+| ERP | Enterprise Resource Planning | 企业资源计划（核心） | 05 运营管理 |
+| LIMS | Laboratory Information Management System | 实验室信息管理 | 06 专项支持 |
+| MES | Manufacturing Execution System | 制造执行系统 | 02 生产制造 |
+| MOM | Manufacturing Operation Management | 制造运营管理 | 02 生产制造 |
+| OA | Office Automation | 办公自动化 | 05 运营管理 |
+| OMS | Order Management System | 订单管理 | 04 销售服务 |
+| PDM | Product Data Management | 产品数据管理 | 01 研发创新 |
+| PLM | Product Lifecycle Management | 产品生命周期管理 | 01 研发创新 |
+| PMS | Project Management System | 项目管理 | 06 专项支持 |
+| QMS | Quality Management System | 质量管理 | 05 运营管理 |
+| SCADA | Supervisory Control And Data Acquisition | 设备监控与数据采集 | 02 生产制造 |
+| SCRM | Social Customer Relationship Management | 社交化客户关系 | 04 销售服务 |
+| SCM | Supply Chain Management | 供应链管理 | 03 供应链 |
+| SRM | Supplier Relationship Management | 供应商关系管理 | 03 供应链 |
+| TMS | Transportation Management System | 运输管理 | 03 供应链 |
+| WMS | Warehouse Management System | 仓储管理 | 03 供应链 |
+
+---
+
+## 🛤️ 学习路线
+
+### 入门（1-2 天）
+
+1. [🗺️ 业务价值链全景图](#-业务价值链全景图) — 5 分钟建立全局观
+2. [ERP 详讲](#erpenterprise-resource-planning-企业资源计划) — 最核心、最容易遇到
+3. [CRM 详讲](#crmcustomer-relationship-management-客户关系管理) — 最常见的需求来源
+
+### 进阶（3-5 天）
+
+4. [MES 详讲](#mesmanufacturing-execution-system-制造执行系统) — 制造企业的命脉
+5. [PLM 详讲](#plmproduct-lifecycle-management-产品生命周期管理) — 研发数字化主干
+6. [WMS 详讲](#wmswarehouse-management-system-仓储管理系统) — 物流与电商核心
+7. [🔌 系统集成模式](#-系统集成模式) — 理解系统间怎么对话
+8. [📋 系统速查表](#-系统速查表) — 日常查询
+
+### 高级（专项深入）
+
+9. MOM + SCADA — 智能制造方向
+10. SRM + APS — 供应链优化方向
+11. BI — 数据驱动决策方向
+
+---
