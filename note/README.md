@@ -133,25 +133,25 @@
 
 > 开源参考：暂无（流程引擎以商业产品 Camunda/Flowable/Activiti 为主，事件驱动生态以 Apache EventMesh / CNCF Serverless Workflow 为主）
 
-# 八、MyBatis
-> 已迁入 [06.spring/03-data/mybatis](../06.spring/03-data/mybatis/README.md) —— MyBatis 框架原理 + Spring 整合 + MyBatis-Plus 全家桶。
-## [MyBatis 拦截器](../06.spring/03-data/mybatis/02-extension/02-interceptor.md)
-## [MyBatis-Plus 全家桶](../06.spring/03-data/mybatis/04-mybatis-plus/README.md)
-### [MyBatis-Plus 代码生成器](../06.spring/03-data/mybatis/04-mybatis-plus/10-code-generator.md)
-### [条件构造器 Wrapper](../06.spring/03-data/mybatis/04-mybatis-plus/03-wrapper-system.md)
-### [LambdaQueryWrapper 中的序列化函数式接口 SFunction](../06.spring/03-data/mybatis/04-mybatis-plus/05-lambda-sfunction-deep-dive.md)
+# 八、[业务应用系统](08.application-systems/README.md)
 
-# 九、其他
-## [常用系统](09.other/common-systems/README.md)
-### [ERP](09.other/common-systems/erp/README.md)
-### [PDM](09.other/common-systems/pdm/README.md)
-## 无代码平台
-### [宜搭介绍](09.other/nocode/yida/README.md)
-### [简道云介绍](09.other/nocode/jiandaoyun/README.md)
-### [零代码平台架构设计](09.other/nocode/design/README.md)
-## [Hapoop](09.other/hadoop/README.md)
+> 一份按业务价值链梳理的业务系统速查手册，覆盖 21 个常见业务系统（MES · ERP · SCM · WMS · APS · SCADA · PLM · PDM · QMS · CRM · EAM · SRM · OMS · SCRM · OA · MOM · TMS · LIMS · CMS · BI · PMS），帮助业务/产品/需求人员快速建立完整的业务系统认知地图，并具备日常速查能力。
 
-# 十、[大数据](10.big-data/README.md)
+## 章节导航
+
+| 序号 | 主题 | 核心内容 |
+|------|------|----------|
+| 1 | [业务价值链全景图](08.application-systems/README.md#-业务价值链全景图) | 研发创新 → 生产制造 → 供应链 → 销售服务 → 运营管理 → 专项支持 |
+| 2 | [01 研发创新](08.application-systems/README.md#01-研发创新plm--pdm--cms) | PLM · PDM · CMS |
+| 3 | [02 生产制造](08.application-systems/README.md#02-生产制造mes--mom--aps--scada) | MES · MOM · APS · SCADA |
+| 4 | [03 供应链](08.application-systems/README.md#03-供应链scm--srm--wms--tms) | SCM · SRM · WMS · TMS |
+| 5 | [04 销售服务](08.application-systems/README.md#04-销售服务crm--scrm--oms) | CRM · SCRM · OMS |
+| 6 | [05 运营管理](08.application-systems/README.md#05-运营管理erp--bi--eam--oa--qms) | ERP · BI · EAM · OA · QMS |
+| 7 | [06 专项支持](08.application-systems/README.md#06-专项支持lims--pms) | LIMS · PMS |
+| 8 | [系统集成模式](08.application-systems/README.md#-系统集成模式) | 跨系统集成架构与模式 |
+| 9 | [系统速查表 + 学习路线](08.application-systems/README.md#-系统速查表) | 21 业务系统速查 + 入门/进阶/精通三段式学习路径 |
+
+# 九、[大数据](10.big-data/README.md)
 ## [2024年的开源数据工程生态系统全景图](10.big-data/open-source/README.md)
 ## [离线数仓/实时数仓](10.big-data/offline-or-real-time-data-warehouse/README.md)
 
