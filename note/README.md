@@ -142,12 +142,12 @@
 | 序号 | 主题 | 核心内容 |
 |------|------|----------|
 | 1 | [业务价值链全景图](08.application-systems/README.md#-业务价值链全景图) | 研发创新 → 生产制造 → 供应链 → 销售服务 → 运营管理 → 专项支持 |
-| 2 | [01 研发创新](08.application-systems/README.md#01-研发创新plm--pdm--cms) | PLM · PDM · CMS |
-| 3 | [02 生产制造](08.application-systems/README.md#02-生产制造mes--mom--aps--scada) | MES · MOM · APS · SCADA |
-| 4 | [03 供应链](08.application-systems/README.md#03-供应链scm--srm--wms--tms) | SCM · SRM · WMS · TMS |
-| 5 | [04 销售服务](08.application-systems/README.md#04-销售服务crm--scrm--oms) | CRM · SCRM · OMS |
-| 6 | [05 运营管理](08.application-systems/README.md#05-运营管理erp--bi--eam--oa--qms) | ERP · BI · EAM · OA · QMS |
-| 7 | [06 专项支持](08.application-systems/README.md#06-专项支持lims--pms) | LIMS · PMS |
+| 2 | [01 研发创新](08.application-systems/README.md#01-研发创新) | PLM · PDM · CMS |
+| 3 | [02 生产制造](08.application-systems/README.md#02-生产制造) | MES · MOM · APS · SCADA |
+| 4 | [03 供应链](08.application-systems/README.md#03-供应链) | SCM · SRM · WMS · TMS |
+| 5 | [04 销售服务](08.application-systems/README.md#04-销售服务) | CRM · SCRM · OMS |
+| 6 | [05 运营管理](08.application-systems/README.md#05-运营管理) | ERP · BI · EAM · OA · QMS |
+| 7 | [06 专项支持](08.application-systems/README.md#06-专项支持) | LIMS · PMS |
 | 8 | [系统集成模式](08.application-systems/README.md#-系统集成模式) | 跨系统集成架构与模式 |
 | 9 | [系统速查表 + 学习路线](08.application-systems/README.md#-系统速查表) | 21 业务系统速查 + 入门/进阶/精通三段式学习路径 |
 
