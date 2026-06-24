@@ -1,8 +1,37 @@
 # @Bean vs @Component 深度对比
 
-> 一句话：@Component 是类级别注解，通过包扫描自动注册；@Bean 是方法级别注解，在配置类中手动定义，适合第三方库和精细控制场景。
+## 引子：两种方式都能注册 Bean，用哪个？
+
+```java
+// 方式 1：@Component（类级别）
+@Component
+public class UserService {
+    // 包扫描自动发现
+}
+
+// 方式 2：@Bean（方法级别）
+@Configuration
+public class AppConfig {
+    @Bean
+    public UserService userService() {
+        return new UserService();
+    }
+}
+
+// 第三方库怎么办？你改不了源码加 @Component！
+@Bean
+public ObjectMapper objectMapper() {
+    return new ObjectMapper();  // Jackson 的类，你加不了注解
+}
+```
+
+@Component 是"我自己写的类"的注册方式，@Bean 是"第三方库的类"的注册方式。
+
+一个声明式自动注册，一个编程式手动注册。
 
 ---
+
+> 📚 **前置知识**：[IOC](../../06.spring/01-core/ioc/README.md) | [@Component 与 @Bean](../../06.spring/08-annotations/bean-and-ioc.md)
 
 ## 一、核心原理
 

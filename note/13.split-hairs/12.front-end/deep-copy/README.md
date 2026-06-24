@@ -1,8 +1,27 @@
 # 深拷贝实现深度剖析
 
-> 一句话：深拷贝通过递归遍历对象的所有层级，处理循环引用和特殊类型，创建完全独立的副本。
+## 引子：一个让人困惑的 Bug
+
+```javascript
+const user = { name: "张三", address: { city: "北京" } }
+
+// 浅拷贝
+const user2 = { ...user }
+user2.address.city = "上海"
+
+console.log(user.address.city)  // "上海" ？？？
+// 我明明只改了 user2，user 也被改了！
+```
+
+`{ ...user }` 只复制了第一层，嵌套的 `address` 还是共享引用。
+
+要彻底断开引用，需要**深拷贝**——递归复制所有层级。
+
+但深拷贝有很多坑：**循环引用、Date、RegExp、Map、Set**……都要特殊处理。
 
 ---
+
+> 📚 **前置知识**：[JavaScript 基础](../../12.front-end/02-language/README.md)
 
 ## 一、核心原理
 

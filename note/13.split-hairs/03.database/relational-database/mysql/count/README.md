@@ -1,5 +1,25 @@
 # MySQL COUNT(*) vs COUNT(1) vs COUNT(字段) 深度解析
 
+## 引子：性能差 10 倍，你选哪个？
+
+```sql
+-- 统计用户表的总行数（1000 万条数据）
+SELECT COUNT(*) FROM users;     -- 0.5 秒
+SELECT COUNT(1) FROM users;     -- 0.5 秒（和 COUNT(*) 一样）
+SELECT COUNT(id) FROM users;    -- 0.5 秒
+SELECT COUNT(name) FROM users;  -- 2 秒（如果有 NULL 值，结果不同！）
+```
+
+`COUNT(*)` 和 `COUNT(1)` 性能一样？`COUNT(字段)` 和 `COUNT(*)` 结果可能不同？
+
+关键区别：
+- `COUNT(*)` 和 `COUNT(1)` → **统计所有行**（包括 NULL）
+- `COUNT(字段)` → **只统计该字段非 NULL 的行**
+
+---
+
+> 📚 **前置知识**：[MySQL](../../03.database/05-mysql/README.md)
+
 ## 一、核心原理
 
 在 MySQL 中，`COUNT()` 函数用于统计行数，但不同参数的执行机制和语义存在差异。理解这些差异对于编写高效 SQL 至关重要。

@@ -1,8 +1,39 @@
 # @Transactional 传播行为 7 种详解
 
-> 一句话：传播行为决定当前方法是否加入已有事务、挂起外部事务或独立运行，是 Spring 事务控制的核心策略。
+## 引子：嵌套事务怎么办？
+
+```java
+@Service
+public class OrderService {
+    
+    @Transactional  // 外层事务
+    public void createOrder() {
+        orderMapper.insert(order);
+        paymentService.charge();  // 调用支付
+    }
+}
+
+@Service
+public class PaymentService {
+    
+    @Transactional(propagation = Propagation.REQUIRES_NEW)  // 新的独立事务？
+    public void charge() {
+        paymentMapper.insert(payment);
+    }
+}
+```
+
+`charge()` 方法的事务应该怎么处理？
+
+- 加入 `createOrder` 的事务？→ `REQUIRES`（默认）
+- 开一个全新的独立事务？→ `REQUIRES_NEW`
+- 没有外层事务才开事务？→ `NOT_SUPPORTED`
+
+Spring 定义了 **7 种传播行为**，精确控制嵌套事务的归属。
 
 ---
+
+> 📚 **前置知识**：[事务](../../06.spring/03-data/transaction/README.md) | [传播行为](../../06.spring/03-data/transaction/propagation-and-isolation.md)
 
 ## 一、核心原理
 

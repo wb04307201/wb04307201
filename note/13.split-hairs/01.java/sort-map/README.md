@@ -1,6 +1,25 @@
 # 快速给Map排序
 
-在Java中处理1亿数据的Map排序，需综合考虑**时间复杂度、空间占用、内存管理**和**实际执行效率**。
+## 引子：1 亿条数据怎么排序？
+
+```java
+Map<String, Integer> map = new HashMap<>();
+// 里面有 1 亿条数据...
+
+// 方式 1：直接 TreeMap（OOM！）
+Map<String, Integer> sorted = new TreeMap<>(map);  // 内存不够
+
+// 方式 2：Stream sorted（慢！）
+map.entrySet().stream()
+    .sorted(Map.Entry.comparingByValue())
+    .collect(...);  // 全量加载到内存
+```
+
+数据量小时随便排，1 亿条数据时必须考虑：**内存会不会爆？单线程够不够快？排序后怎么用？**
+
+---
+
+> 📚 **前置知识**：[HashMap](../../../01.java/collection/hashmap.md) | [TreeMap](../../../01.java/collection/TreeMap.md)
 
 ## 1. 核心问题分析
 - **Map特性**：Java的`HashMap`无序，`TreeMap`基于红黑树实现自动排序（插入时排序），但插入1亿数据的时间复杂度为`O(n log n)`，且内存占用高（每个节点存储键值+指针，约48-64字节/节点，1亿节点需4.8-6.4GB内存）。

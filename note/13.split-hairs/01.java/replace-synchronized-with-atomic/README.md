@@ -1,5 +1,33 @@
 # 并发编程优化：Atomic类替代synchronized深度解析
 
+## 引子：同一个计数器，性能差 10 倍
+
+```java
+// 方式 1：synchronized
+public class SyncCounter {
+    private long count = 0;
+    public synchronized void increment() { count++; }
+}
+
+// 方式 2：Atomic
+public class AtomicCounter {
+    private AtomicLong count = new AtomicLong(0);
+    public void increment() { count.incrementAndGet(); }
+}
+
+// 10 个线程各执行 100 万次
+// synchronized: ~800ms
+// Atomic:       ~80ms  ← 快了 10 倍！
+```
+
+为什么 Atomic 比 synchronized 快这么多？
+
+核心区别：**synchronized 让其他线程"睡觉"（阻塞），Atomic 让其他线程"重试"（CAS 自旋）**。
+
+---
+
+> 📚 **前置知识**：[Atomic](../../../01.java/concurrency/atomic/README.md) | [synchronized](../../../01.java/concurrency/synchronized.md)
+
 ## 一、核心原理
 
 `synchronized`和`java.util.concurrent.atomic`提供两种不同的线程安全机制。理解底层原理、适用场景和性能特征是编写高效并发代码的关键。

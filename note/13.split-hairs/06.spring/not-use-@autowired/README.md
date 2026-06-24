@@ -1,6 +1,38 @@
 # Spring里为什么不推荐使用@ Autowired
 
-在Spring框架中，不推荐过度依赖`@Autowired`注解（尤其是通过字段注入的方式）主要基于以下几个关键原因，这些原因涉及代码的可维护性、可测试性以及设计灵活性：
+## 引子：最常见的写法，其实不推荐
+
+```java
+@Service
+public class OrderService {
+    @Autowired
+    private UserRepository userRepo;  // ← 字段注入，不推荐！
+    
+    @Autowired
+    private ProductRepository productRepo;  // ← 又一个字段注入
+}
+```
+
+几乎每个 Spring 项目都这么写。但 Spring 官方推荐的是**构造器注入**：
+
+```java
+@Service
+public class OrderService {
+    private final UserRepository userRepo;
+    private final ProductRepository productRepo;
+    
+    public OrderService(UserRepository userRepo, ProductRepository productRepo) {
+        this.userRepo = userRepo;        // ✅ 构造器注入
+        this.productRepo = productRepo;
+    }
+}
+```
+
+为什么？字段注入有 4 个致命缺陷——
+
+---
+
+> 📚 **前置知识**：[IOC](../../06.spring/01-core/ioc/README.md) | [依赖注入](../../06.spring/01-core/ioc/dependency-injection.md)
 
 ---
 

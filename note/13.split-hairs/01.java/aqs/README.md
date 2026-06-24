@@ -1,10 +1,25 @@
 # AQS 框架原理深度剖析
 
-> 一句话：AQS 是 Java 并发包的基石，通过 volatile state + CLH 变体双向队列实现线程阻塞与唤醒的通用同步框架。
+## 引子：ReentrantLock、CountDownLatch、Semaphore 的共同秘密
+
+```java
+// 三个看似毫不相关的类
+ReentrantLock lock = new ReentrantLock();       // 可重入锁
+Semaphore semaphore = new Semaphore(3);          // 信号量
+CountDownLatch latch = new CountDownLatch(1);    // 倒计时门闩
+
+// 它们有什么共同点？
+```
+
+打开源码你会发现，这三个类的底层**全都依赖同一个框架**——**AQS（AbstractQueuedSynchronizer）**。
+
+Doug Lea 用一个抽象框架，就支撑起了整个 `java.util.concurrent.locks` 包。AQS 是怎么做到的？
 
 ---
 
-## 一、核心原理（Why it works）
+## 一、核心原理
+
+> 📚 **前置知识**：[JUC 锁](../../../01.java/concurrency/juc-locks/README.md) | [volatile](../../../01.java/concurrency/volatile.md)
 
 AQS（AbstractQueuedSynchronizer）由 Doug Lea 设计，其核心思想是将同步状态的原子操作与线程排队解耦。
 

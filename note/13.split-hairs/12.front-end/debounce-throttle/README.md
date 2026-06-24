@@ -1,6 +1,29 @@
 # 防抖与节流手写实现
 
-> 一句话：防抖是「等你不忙了再执行」，节流是「不管你多忙我都按固定节奏执行」。
+## 引子：搜索框的性能问题
+
+```javascript
+// 用户输入搜索关键词
+input.addEventListener('input', (e) => {
+  fetch('/api/search?q=' + e.target.value)  // 每输入一个字就请求一次！
+})
+
+// 用户快速输入 "hello" → 发了 5 次请求（h, he, hel, hell, hello）
+// 服务器：我谢谢你啊...
+```
+
+**防抖**解决：用户停止输入 300ms 后才发请求。
+
+再看另一个场景：
+
+```javascript
+// 窗口 resize / 滚动监听
+window.addEventListener('scroll', () => {
+  // 每像素都触发 → 一秒几百次回调 → 页面卡顿
+})
+```
+
+**节流**解决：固定频率执行，比如每 100ms 最多一次。
 
 ---
 

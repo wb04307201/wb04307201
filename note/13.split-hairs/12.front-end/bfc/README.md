@@ -1,6 +1,25 @@
 # BFC（块级格式化上下文）深度剖析
 
-> 一句话：BFC 是页面中一个独立的渲染区域，内部元素的布局不会影响外部元素，外部元素也不会影响内部。
+## 引子：两个经典 CSS 问题
+
+**问题 1：margin 重叠**
+```html
+<div style="margin-bottom: 20px;">A</div>
+<div style="margin-top: 30px;">B</div>
+<!-- 两个 div 之间是 30px，不是 50px！ -->
+```
+
+**问题 2：浮动塌陷**
+```html
+<div>
+  <div style="float: left; height: 100px;">内容</div>
+</div>
+<!-- 父 div 高度为 0！子元素浮出去了 -->
+```
+
+这两个问题的共同解决方案：**触发 BFC**。
+
+BFC（Block Formatting Context）就像一个"隔离罩"——内部的布局不影响外部，外部的布局也不影响内部。
 
 ---
 

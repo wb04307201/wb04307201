@@ -1,5 +1,38 @@
 # POJO/VO/BO/DTO/DO 对象类型辨析
 
+## 引子：一个 User 到底有几个"分身"？
+
+```java
+// 数据库存的是 PO
+public class UserPO {
+    Long id;
+    String username;
+    String password;    // 敏感字段
+    String idCard;      // 身份证号
+}
+
+// 传给前端的是 VO（去掉敏感信息）
+public class UserVO {
+    Long id;
+    String username;    // 不暴露 password、idCard
+}
+
+// 跨服务传输的是 DTO
+public class UserDTO {
+    Long id;
+    String username;
+    String role;        // 加上业务需要的额外字段
+}
+
+// 为什么同一个用户要搞这么多类？
+```
+
+分层架构的精髓：**不同层用不同的数据对象**，避免数据泄露和耦合。
+
+PO → DTO → VO，每一层都有自己的职责。
+
+---
+
 ## 一、核心原理
 
 PO、VO、BO、DTO、DO、DAO 是 Java 企业级开发中基于**职责分离**原则衍生的对象分类，本质都是 POJO（Plain Old Java Object），但各自承担不同的架构角色：

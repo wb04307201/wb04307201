@@ -1,8 +1,43 @@
 # JDK 动态代理 vs CGLIB 深度对比
 
-> 一句话：JDK 动态代理基于反射要求目标类实现接口，CGLIB 通过字节码生成子类无需接口，Spring AOP 根据是否实现接口自动选择代理策略。
+## 引子：Spring 给你生成的代理类，你见过吗？
+
+```java
+// 你的接口
+public interface UserService {
+    void save(User user);
+}
+
+// 你的实现
+@Service
+public class UserServiceImpl implements UserService {
+    public void save(User user) { /* ... */ }
+}
+
+// Spring 运行时生成的代理类（伪代码）
+// 方式 1：JDK 动态代理（有接口）
+class $Proxy implements UserService {
+    UserService target;
+    public void save(User user) {
+        // 织入事务/日志
+        target.save(user);
+    }
+}
+
+// 方式 2：CGLIB（无接口）
+class UserServiceImpl$$EnhancerByCGLIB extends UserServiceImpl {
+    public void save(User user) {
+        // 织入事务/日志
+        super.save(user);
+    }
+}
+```
+
+两种代理方式，各有优劣。Spring AOP 在运行时自动选择——
 
 ---
+
+> 📚 **前置知识**：[AOP](../../06.spring/01-core/aop/README.md)
 
 ## 一、核心原理
 

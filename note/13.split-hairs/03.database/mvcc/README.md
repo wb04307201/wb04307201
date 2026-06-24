@@ -1,8 +1,31 @@
 # MVCC 实现原理深度剖析
 
-> 一句话：MVCC 通过 Undo Log 版本链 + Read View 实现非锁定快照读，使读写操作互不阻塞。
+## 引子：读写互不阻塞的秘密
+
+```sql
+-- 事务 A（读操作，耗时 10 秒）
+BEGIN;
+SELECT * FROM accounts WHERE id = 1;  -- 读取余额 = 100
+
+-- 与此同时，事务 B（写操作）
+BEGIN;
+UPDATE accounts SET balance = 200 WHERE id = 1;  -- 修改余额
+COMMIT;
+
+-- 事务 A 继续读
+SELECT * FROM accounts WHERE id = 1;  -- 还是读到 100！
+COMMIT;
+```
+
+事务 B 修改了数据，事务 A 为什么还是读到旧值？
+
+传统数据库用**锁**解决冲突——读锁阻塞写、写锁阻塞读。但 MySQL InnoDB 用了更优雅的方案：**MVCC（多版本并发控制）**。
+
+数据有多个版本，每个事务看到自己"该看到"的版本。读写互不阻塞。
 
 ---
+
+> 📚 **前置知识**：[事务](../../03.database/03-transaction/README.md) | [隔离级别](../../03.database/relational-database/mysql/isolation/README.md)
 
 ## 一、核心原理
 

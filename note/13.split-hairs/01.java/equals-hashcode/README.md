@@ -1,10 +1,42 @@
 # == / equals / hashCode 深度剖析
 
-> 一句话：`==` 比较的是引用地址，`equals` 比较的是逻辑内容，而 `hashCode` 是 `equals` 契约在哈希容器中的性能基石。
+## 引子：一个让人抓狂的 Bug
+
+```java
+String a = new String("hello");
+String b = new String("hello");
+
+System.out.println(a == b);      // false ？？？
+System.out.println(a.equals(b)); // true
+```
+
+内容明明一样，为什么 `==` 返回 false？
+
+再看一个更坑的：
+
+```java
+class User {
+    String name;
+    User(String name) { this.name = name; }
+}
+
+User u1 = new User("张三");
+User u2 = new User("张三");
+
+Set<User> set = new HashSet<>();
+set.add(u1);
+set.add(u2);
+
+System.out.println(set.size()); // 2 ？？？明明是同一个人！
+```
+
+为什么 HashSet 认为这是两个人？因为没重写 `hashCode`！
 
 ---
 
 ## 一、核心原理
+
+> 📚 **前置知识**：[Object 类](../../../01.java/concepts/object/README.md) | [String](../../../01.java/concepts/string/README.md)
 
 在 Java 中，对象比较存在三个维度的概念：`==` 运算符、`equals()` 方法以及 `hashCode()` 方法。理解三者的区别与联系，是避免集合类 Bug 的关键。
 

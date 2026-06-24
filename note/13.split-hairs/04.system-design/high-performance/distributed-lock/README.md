@@ -1,6 +1,25 @@
 # 分布式锁
 
-> 一句话：**Redis vs ZooKeeper，分布式锁的两种主流实现与 8 个坑**
+## 引子：库存超卖了！
+
+```java
+// 单机锁
+public void deductStock(Long productId) {
+    synchronized (this) {  // ❌ 多实例部署下无效！
+        if (stock > 0) {
+            stock--;
+        }
+    }
+}
+
+// 线上部署了 10 个实例
+// 每个实例都有自己的锁
+// 10 个实例同时执行 → 库存被扣了 10 次 → 超卖！
+```
+
+单机锁（`synchronized`）只在单个 JVM 内有效。分布式多实例部署时，需要**跨进程的互斥机制**——这就是分布式锁。
+
+两种主流实现：**Redis** vs **ZooKeeper**。
 
 ---
 

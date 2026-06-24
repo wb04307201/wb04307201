@@ -1,8 +1,28 @@
 # Spring Boot 自动配置原理深度剖析
 
-> 一句话：Spring Boot 通过 `@EnableAutoConfiguration` 导入 `AutoConfigurationImportSelector`，扫描 classpath 下所有候选自动配置类，结合 `@Conditional` 系列条件注解按需装配 Bean，实现"零 XML、开箱即用"的开发体验。
+## 引子：为什么引入一个依赖就能用？
+
+```xml
+<!-- 只加了一个 starter -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+```
+
+没写一行配置，你就有了：
+- ✅ 内嵌 Tomcat
+- ✅ DispatcherServlet
+- ✅ JSON 序列化（Jackson）
+- ✅ 参数绑定
+
+Spring Boot 怎么知道你需要这些？又是怎么自动创建的？
+
+秘密就在 `@EnableAutoConfiguration` 和 `@Conditional` 条件装配。
 
 ---
+
+> 📚 **前置知识**：[自动配置](../../06.spring/04-spring-boot/auto-configuration.md) | [Spring Boot](../../06.spring/04-spring-boot/README.md)
 
 ## 一、核心原理
 

@@ -1,10 +1,27 @@
 # ConcurrentHashMap 原理（JDK 7 vs 8 深度对比）
 
-> 一句话：JDK 7 采用分段锁（Segment）实现粗粒度并发，JDK 8 升级为 CAS + synchronized 细粒度锁，配合红黑树优化和扩容协助迁移，将并发性能提升数倍。
+## 引子：为什么要"另起炉灶"？
+
+```java
+// 高并发场景：100个线程同时写入
+Map<String, Integer> map = new HashMap<>();  // ❌ 线程不安全
+Map<String, Integer> syncMap = Collections.synchronizedMap(new HashMap<>());  // 能用，但慢
+
+// 正确答案
+Map<String, Integer> concurrentMap = new ConcurrentHashMap<>();  // ✅ 快且安全
+```
+
+既然 `synchronizedMap` 能保证线程安全，为什么还需要 `ConcurrentHashMap`？
+
+因为 `synchronizedMap` 是**一把大锁锁住整个 Map**——100 个线程排队写，性能灾难。`ConcurrentHashMap` 的设计哲学是：**把锁切细，让不同线程能同时写不同区域**。
+
+从 JDK 7 到 JDK 8，这个"切锁"的方式发生了根本性变化——
 
 ---
 
 ## 一、核心原理
+
+> 📚 **前置知识**：[ConcurrentHashMap](../../../01.java/collection/ConcurrentHashMap.md) | [HashMap](../../../01.java/collection/hashmap.md)
 
 ### JDK 7：分段锁（Segment）架构
 

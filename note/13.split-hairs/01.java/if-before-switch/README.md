@@ -1,5 +1,35 @@
 # switch 前使用 if 优化高频热点状态
 
+## 引子：一个反直觉的优化
+
+```java
+// 普通写法
+switch (status) {
+    case SUCCESS: handleSuccess(); break;
+    case TIMEOUT: handleTimeout(); break;
+    case ERROR:   handleError(); break;
+    case PENDING: handlePending(); break;
+    // ... 更多 case
+}
+
+// 极致优化：switch 前加 if？！
+if (status == SUCCESS) {       // 99% 的情况走这里
+    handleSuccess();
+} else {
+    switch (status) {
+        case TIMEOUT: handleTimeout(); break;
+        case ERROR:   handleError(); break;
+        case PENDING: handlePending(); break;
+    }
+}
+```
+
+多了一层 `if`，反而**更快了**？
+
+答案藏在 **CPU 分支预测**机制里。
+
+---
+
 ## 一、核心原理
 
 在高性能代码中，`switch` 前使用 `if` 是一种基于 **CPU 硬件特性**和**业务场景特征**的极致优化手段，核心思想是"**高频路径直通，低频路径聚合**"。

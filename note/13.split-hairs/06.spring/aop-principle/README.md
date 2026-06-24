@@ -1,8 +1,36 @@
 # AOP 实现原理：JDK 动态代理 vs CGLIB
 
-> 一句话：**Spring AOP 在运行时生成目标类的"代理对象"，织入横切逻辑**
+## 引子：日志、事务、权限——横切关注点怎么解耦？
+
+```java
+// 每个方法都写一样的模板代码？
+public void transfer(Long from, Long to, BigDecimal amount) {
+    log.info("transfer start: {} -> {}", from, to);    // 日志
+    if (!hasPermission()) throw new AuthException();    // 权限
+    try {
+        tx.begin();                                     // 事务
+        doTransfer(from, to, amount);
+        tx.commit();
+    } catch (Exception e) {
+        tx.rollback();
+        throw e;
+    }
+}
+
+// 理想状态：业务代码只关心业务
+public void transfer(Long from, Long to, BigDecimal amount) {
+    doTransfer(from, to, amount);
+    // 日志、权限、事务——自动织入
+}
+```
+
+这就是 AOP 的价值——**横切关注点（日志/事务/权限）和业务代码分离**。
+
+底层怎么实现？两种方案：**JDK 动态代理** vs **CGLIB**。
 
 ---
+
+> 📚 **前置知识**：[AOP](../../06.spring/01-core/aop/README.md)
 
 ## 一、什么是 AOP
 

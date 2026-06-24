@@ -1,10 +1,34 @@
 # Java 泛型擦除深度剖析
 
-> 一句话：Java 泛型是编译期的语法糖，字节码层面所有类型参数都被擦除为原始类型（Raw Type），编译器通过桥方法和类型检查维持多态与类型安全。
+## 引子：一个让你怀疑人生的编译错误
+
+```java
+List<String> stringList = new ArrayList<>();
+List<Integer> intList = new ArrayList<>();
+
+System.out.println(stringList.getClass() == intList.getClass()); 
+// true ？？？ 它们的类型不一样啊！
+```
+
+更诡异的是：
+
+```java
+// 编译报错！
+public class Test {
+    public void process(List<String> list) {}
+    public void process(List<Integer> list) {}  // 编译错误：方法签名冲突！
+}
+```
+
+`List<String>` 和 `List<Integer>` 明明是不同的泛型类型，为什么 `getClass()` 相同？为什么不能重载？
+
+答案就藏在 Java 泛型的本质——**类型擦除**。
 
 ---
 
 ## 一、核心原理
+
+> 📚 **前置知识**：[泛型](../../../01.java/concepts/generics/README.md)
 
 泛型的本质是**编译期概念**。Java 在 JDK 5 引入泛型时，为了保证与已有字节码的向后兼容，选择了**类型擦除（Type Erasure）**方案：编译器在编译阶段完成类型检查后，将所有类型参数 `T`、`E`、`K`、`V` 等替换为其上界（若未指定上界则替换为 `Object`），并在必要时插入强制类型转换指令。这意味着 JVM 在运行时根本不知道泛型的存在。
 

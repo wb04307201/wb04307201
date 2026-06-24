@@ -1,8 +1,30 @@
 # MySQL JOIN 算法深度剖析
 
-> 一句话：MySQL JOIN 的核心在于选择合适的驱动表与被驱动表，并通过索引、Join Buffer 或 Hash Table 三种策略最小化数据比较次数。
+## 引子：同一个 JOIN，为什么快了 100 倍？
+
+```sql
+-- 两个大表 JOIN
+SELECT * FROM orders o 
+JOIN users u ON o.user_id = u.id;
+
+-- 执行计划 1：NLJ（Nested Loop Join）无索引
+-- orders 100 万行 × users 逐行扫描 → O(N×M) → 跑 10 分钟！
+
+-- 执行计划 2：users.id 有索引
+-- orders 100 万行 × 每次索引查找 → O(N×logM) → 3 秒！
+```
+
+同一个 JOIN，性能差 **200 倍**。差别就在于：
+
+1. **驱动表选对了没**（小表驱动大表）
+2. **被驱动表的 JOIN 字段有索引没**
+3. **内存够不够装 Join Buffer**
+
+MySQL 的 JOIN 算法有 3 种：NLJ、BNL、Hash Join。优化器会根据数据量和索引情况自动选择。
 
 ---
+
+> 📚 **前置知识**：[MySQL](../../03.database/05-mysql/README.md) | [索引](../../03.database/04-index/README.md)
 
 ## 一、核心原理
 

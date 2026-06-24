@@ -1,5 +1,27 @@
 # 用 HashSet 替代 LinkedList 提升查找效率
 
+## 引子：从 30 秒到 1 毫秒
+
+```java
+// 场景：在 10 万条数据中判断某个值是否存在
+LinkedList<String> list = new LinkedList<>();
+// ... 添加 10 万条数据
+
+boolean exists = list.contains("target");  // 平均遍历 5 万次，耗时约 30 秒
+
+// 换成 HashSet
+HashSet<String> set = new HashSet<>(list);
+boolean exists = set.contains("target");   // 直接定位，耗时约 1 毫秒
+```
+
+同样的"是否存在"查询，LinkedList 要 30 秒，HashSet 只要 1 毫秒——**30000 倍的差距**！
+
+这就是 O(n) 和 O(1) 的区别。
+
+---
+
+> 📚 **前置知识**：[HashMap](../../../01.java/collection/hashmap.md) | [LinkedList](../../../01.java/collection/LinkedList.md)
+
 ## 一、核心原理
 
 在数据结构选择中，**用 `HashSet` 替代 `LinkedList` 优化查找操作**是从 O(n) 到 O(1) 的质的飞跃。

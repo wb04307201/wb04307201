@@ -1,6 +1,25 @@
 # Virtual DOM 与 Diff 算法
 
-> 一句话：**Virtual DOM 是"用 JS 对象描述 DOM"，Diff 算法以 O(n) 复杂度找出最小变更**
+## 引子：为什么操作 DOM 这么慢？
+
+```javascript
+// 更新 1000 个列表项的状态
+for (let i = 0; i < 1000; i++) {
+  document.getElementById(`item-${i}`).textContent = "updated"
+}
+// 每次操作 DOM → 浏览器重新计算样式 → 重排 → 重绘 → 慢！
+
+// React/Vue 的做法：
+// 1. 用 JS 对象描述 DOM（Virtual DOM）
+// 2. 对比新旧 Virtual DOM（Diff）
+// 3. 只更新真正变化的部分（Patch）
+```
+
+直接操作真实 DOM 就像每次都重新装修整栋房子。
+
+Virtual DOM 的策略：**先在图纸上（JS 对象）算好差异，再只改需要改的地方**。
+
+Diff 算法以 O(n) 复杂度找出最小变更——这就是 React/Vue 高效更新的核心。
 
 ---
 

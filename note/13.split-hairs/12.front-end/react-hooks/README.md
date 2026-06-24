@@ -1,6 +1,26 @@
 # React Hooks 原理
 
-> 一句话：**Hooks 让函数组件拥有"状态"和"生命周期"，本质是闭包 + 链表**
+## 引子：一个让人困惑的 Bug
+
+```jsx
+function Counter() {
+  const [count, setCount] = useState(0)
+  
+  useEffect(() => {
+    const timer = setInterval(() => {
+      console.log(count)  // 永远是 0！
+    }, 1000)
+    return () => clearInterval(timer)
+  }, [])  // 空依赖
+  
+  return <button onClick={() => setCount(count + 1)}>{count}</button>
+}
+// 页面上 count 在增加，但日志里永远是 0
+```
+
+为什么 `count` 在闭包里"过期"了？
+
+因为 Hooks 的本质是**闭包 + 链表**。每次渲染都是一次新的闭包，`useEffect` 里捕获的是"旧闭包"里的 `count`。
 
 ---
 

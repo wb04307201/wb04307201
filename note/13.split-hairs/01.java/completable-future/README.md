@@ -1,10 +1,39 @@
 # CompletableFuture 异步编排深度剖析
 
-> 一句话：CompletableFuture 将 Future 与 CompletionStage 融合，提供声明式异步任务编排能力，让链式回调、组合聚合、异常兜底成为可能。
+## 引子：告别回调地狱
+
+```java
+// 场景：查询用户信息 → 查余额 → 查订单 → 组装结果
+
+// 传统 Future：阻塞等待，性能差
+Future<User> userFuture = executor.submit(() -> queryUser(id));
+User user = userFuture.get();  // 阻塞！
+Future<Balance> balanceFuture = executor.submit(() -> queryBalance(user));
+Balance balance = balanceFuture.get();  // 又阻塞！
+
+// 回调嵌套：回调地狱
+queryUser(id, user -> {
+    queryBalance(user, balance -> {
+        queryOrders(balance, orders -> {
+            // 回调地狱...
+        });
+    });
+});
+
+// CompletableFuture：优雅！
+CompletableFuture.supplyAsync(() -> queryUser(id))
+    .thenApply(user -> queryBalance(user))
+    .thenApply(balance -> queryOrders(balance))
+    .thenAccept(orders -> System.out.println(orders));
+```
+
+从阻塞到回调地狱再到声明式编排——`CompletableFuture` 让异步编程变得优雅。
 
 ---
 
 ## 一、核心原理
+
+> 📚 **前置知识**：[CompletableFuture](../../../01.java/concurrency/completablefuture/README.md)
 
 CompletableFuture 同时实现 `Future<V>` 和 `CompletionStage<V>` 两个接口，兼具"获取结果"与"事件驱动回调"双重身份。
 

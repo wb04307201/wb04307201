@@ -1,10 +1,38 @@
 # Java 反射原理与性能深度剖析
 
-> 一句话：反射是 Java 运行时获取类元数据并动态操作其成员的能力，核心代价来自安全检查、参数装箱和 JIT 内联失效，通过 `setAccessible(true)`、`MethodHandle` 和 `LambdaMetafactory` 可显著缓解性能损耗。
+## 引子：一个"不可能"的操作
+
+```java
+// 你拿到了一个私有的方法
+class Secret {
+    private String password = "12345";
+    private void hackMe() { System.out.println("hacked!"); }
+}
+
+// 正常情况下根本调不了
+Secret s = new Secret();
+// s.password;      // 编译报错
+// s.hackMe();      // 编译报错
+
+// 但反射可以做到！
+Field f = Secret.class.getDeclaredField("password");
+f.setAccessible(true);
+System.out.println(f.get(s));  // "12345" ？？？
+
+Method m = Secret.class.getDeclaredMethod("hackMe");
+m.setAccessible(true);
+m.invoke(s);  // "hacked!" ？？？
+```
+
+私有字段、私有方法，编译期完全不可见，运行时却被强行访问。这就是**反射**的力量。
+
+但天下没有免费的午餐——反射的性能代价有多大？
 
 ---
 
 ## 一、核心原理
+
+> 📚 **前置知识**：[反射](../../../01.java/concepts/reflection/README.md)
 
 ### 1.1 Class 对象的四种获取方式
 

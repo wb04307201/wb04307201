@@ -1,6 +1,31 @@
 # HashMap扩容机制深度解析：从原理到生产优化
 
+## 引子：一个让人困惑的性能问题
+
+```java
+Map<Integer, String> map = new HashMap<>();
+
+// 方式一：直接 put
+for (int i = 0; i < 1_000_000; i++) {
+    map.put(i, "value");
+}
+
+// 方式二：先指定容量
+Map<Integer, String> map2 = new HashMap<>(1_500_000);
+for (int i = 0; i < 1_000_000; i++) {
+    map2.put(i, "value");
+}
+```
+
+方式二比方式一**快了 30%**！为什么？
+
+因为方式一在运行过程中触发了**多次扩容**，每次扩容都要重新分配数组、迁移所有数据——这是 HashMap 中最昂贵的操作。
+
+---
+
 ## 一、核心原理
+
+> 📚 **前置知识**：[HashMap](../../../01.java/collection/hashmap.md)
 
 HashMap扩容（Resize）是Java集合中最昂贵的操作之一。理解内部机制对设计高性能系统至关重要。
 

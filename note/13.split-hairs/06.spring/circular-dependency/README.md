@@ -1,8 +1,26 @@
 # 循环依赖三级缓存解决
 
-> 一句话：**A 依赖 B、B 依赖 A，Spring 如何用三级缓存破解死锁**？
+## 引子：先有鸡还是先有蛋？
+
+```java
+@Service
+public class A {
+    @Autowired private B b;  // A 需要 B
+}
+
+@Service
+public class B {
+    @Autowired private A a;  // B 需要 A
+}
+```
+
+创建 A → 需要 B → 创建 B → 需要 A → 创建 A → **死锁**！
+
+这就是循环依赖。Spring 用**三级缓存 + 提前暴露半成品 Bean** 巧妙破解了这个死局。
 
 ---
+
+> 📚 **前置知识**：[IOC](../../06.spring/01-core/ioc/README.md) | [循环依赖](../../06.spring/01-core/ioc/circular-dependency.md)
 
 ## 一、循环依赖问题
 

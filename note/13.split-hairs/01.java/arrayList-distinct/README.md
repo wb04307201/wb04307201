@@ -1,5 +1,28 @@
 # ArrayList去重
 
+## 引子：一亿条数据怎么去重？
+
+```java
+List<Integer> list = new ArrayList<>();
+// 假设里面有 1 亿条数据，很多重复
+
+// 方式 1：Stream distinct（简洁但慢）
+List<Integer> result = list.stream().distinct().collect(Collectors.toList());
+
+// 方式 2：HashSet（最快，但内存翻倍）
+List<Integer> result = new ArrayList<>(new HashSet<>(list));
+
+// 方式 3：排序后去重（省内存，但改变了顺序）
+list.sort(null);
+// 然后遍历去重...
+```
+
+数据量小时随便写，数据量大时必须考虑**时间复杂度、空间复杂度、是否保序**三个维度。
+
+---
+
+> 📚 **前置知识**：[ArrayList](../../../01.java/collection/ArrayList/README.md) | [HashMap](../../../01.java/collection/hashmap.md)
+
 ## 1. 内存充足场景：哈希集合（最优时间复杂度）
 **原理**：利用`HashSet`的O(1)查找特性，遍历时自动去重。  
 **时间复杂度**：O(n)  

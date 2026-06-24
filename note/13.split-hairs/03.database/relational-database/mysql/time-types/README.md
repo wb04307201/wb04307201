@@ -1,5 +1,27 @@
 # MySQL 时间类型选型指南
 
+## 引子：存个时间，选哪个？
+
+```sql
+CREATE TABLE events (
+    create_time DATETIME,    -- 8 字节，无时区
+    update_time TIMESTAMP,   -- 4 字节，有时区，2038 年溢出
+    birthday DATE,           -- 只要日期
+    duration TIME            -- 只要时间
+)
+```
+
+MySQL 有 5 种时间类型，选错了：
+- 可能浪费存储空间
+- 可能踩到 2038 年 BUG（TIMESTAMP）
+- 可能跨时区出问题
+
+一张表搞清楚怎么选。
+
+---
+
+> 📚 **前置知识**：[MySQL](../../03.database/05-mysql/README.md)
+
 ## 一、核心原理
 
 MySQL 提供了多种时间数据类型，每种类型在存储格式、范围、时区处理和性能上存在显著差异。正确选择时间类型是数据库设计的基础，直接影响数据一致性、存储效率和跨时区兼容性。

@@ -1,10 +1,32 @@
 # String / StringBuilder / StringBuffer 深度对比
 
-> 一句话：String 不可变且线程安全，适合常量场景；StringBuilder 可变非线程安全，适合单线程拼接；StringBuffer 可变线程安全，适合多线程拼接。
+## 引子：一个经典的性能陷阱
+
+```java
+// 看起来没问题的代码
+String result = "";
+for (int i = 0; i < 100_000; i++) {
+    result += "a";  // 每次拼接都创建新 String 对象！
+}
+// 耗时：~30 秒，创建了 100_000 个临时 String 对象
+
+// 换一种写法
+StringBuilder sb = new StringBuilder();
+for (int i = 0; i < 100_000; i++) {
+    sb.append("a");  // 只操作一个可变数组
+}
+// 耗时：~5 毫秒
+```
+
+同样的循环，性能差了 **6000 倍**！原因就藏在 String 的**不可变性**设计里。
+
+String、StringBuilder、StringBuffer——三个名字相近的类，底层设计截然不同。
 
 ---
 
 ## 一、核心原理
+
+> 📚 **前置知识**：[String](../../../01.java/concepts/string/README.md)
 
 Java 中的字符串处理涉及三个核心类，其设计哲学截然不同：
 

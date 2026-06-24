@@ -1,8 +1,31 @@
 # 事件循环（Event Loop）
 
-> 一句话：**JavaScript 是单线程的，但通过事件循环实现"非阻塞"异步**
+## 引子：这段代码的输出顺序是什么？
+
+```javascript
+console.log("1")
+
+setTimeout(() => {
+  console.log("2")
+}, 0)
+
+Promise.resolve().then(() => {
+  console.log("3")
+})
+
+console.log("4")
+
+// 输出：1 → 4 → 3 → 2
+// 为什么 setTimeout 在 Promise 后面？
+```
+
+`setTimeout(fn, 0)` 不是"立即执行"吗？为什么 `Promise.then` 先执行了？
+
+答案藏在 JavaScript 的**事件循环**机制里。单线程的 JS 通过事件循环实现了"非阻塞"异步，但执行顺序有讲究：**同步 → 微任务 → 宏任务**。
 
 ---
+
+> 📚 **前置知识**：[浏览器渲染](../../12.front-end/01-foundation/browser-rendering/README.md)
 
 ## 一、核心原理
 

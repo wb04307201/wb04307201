@@ -1,5 +1,33 @@
 # Record可以使用泛型么？深度解析Java Record与泛型的结合
 
+## 引子：Java 16 的新语法
+
+```java
+// 以前写一个不可变数据类，需要大量模板代码
+public class User {
+    private final String name;
+    private final int age;
+    
+    public User(String name, int age) { this.name = name; this.age = age; }
+    public String getName() { return name; }
+    public int getAge() { return age; }
+    // 还有 equals、hashCode、toString...
+}
+
+// Java 16+：一行搞定
+public record User(String name, int age) {}
+
+// 还能用泛型！
+public record Result<T>(int code, String message, T data) {}
+Result<User> result = new Result<>(200, "ok", new User("张三", 25));
+```
+
+Record 是什么？它和普通类有什么区别？能用泛型吗？
+
+---
+
+> 📚 **前置知识**：[Record](../../../01.java/concepts/record/README.md) | [泛型](../../../01.java/concepts/generics/README.md)
+
 ## 一、核心原理
 
 Java 16引入的`record`专为不可变数据载体设计，天然支持泛型且语法简洁。

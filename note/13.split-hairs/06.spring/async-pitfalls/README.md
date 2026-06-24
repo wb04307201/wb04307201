@@ -1,8 +1,30 @@
 # @Async 失效的 4 种场景与解决方案
 
-> 一句话：@Async 基于 Spring AOP 代理机制实现异步执行，理解其代理本质是排查失效问题的关键。
+## 引子：加了 @Async，为什么还是同步执行？
+
+```java
+@Service
+public class NotifyService {
+    
+    @Async  // 应该异步执行啊！
+    public void sendNotification(String message) {
+        System.out.println("发送通知：" + message);
+        System.out.println("线程：" + Thread.currentThread().getName());
+    }
+}
+
+// 调用
+notifyService.sendNotification("hello");
+System.out.println("主线程继续执行");  // 结果：打印的还是主线程！
+```
+
+`@Async` 应该让方法在另一个线程执行，但实际上它还在主线程跑。为什么？
+
+和 `@Transactional` 一样——`@Async` 也是基于 AOP 代理实现的。内部调用、非 public 方法等场景都会让代理失效。
 
 ---
+
+> 📚 **前置知识**：[AOP](../../06.spring/01-core/aop/README.md)
 
 ## 一、核心原理
 

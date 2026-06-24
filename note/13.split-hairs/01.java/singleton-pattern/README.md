@@ -1,5 +1,25 @@
 # 单例模式
 
+## 引子：为什么全局只需要一个？
+
+```java
+// 数据库连接池，全系统只需要一个
+DatabasePool pool1 = new DatabasePool();
+DatabasePool pool2 = new DatabasePool();  // ❌ 两个连接池？资源浪费！
+
+// 配置管理器
+ConfigManager config1 = new ConfigManager();
+ConfigManager config2 = new ConfigManager();  // ❌ 读两次配置？不一致风险！
+```
+
+有些东西，全局只需要一份：数据库连接池、配置中心、Spring 的 BeanFactory……
+
+如何保证**一个类只能创建一个实例**？这就是单例模式。但写法远不止一种——
+
+---
+
+> 📚 **前置知识**：[设计模式](../../../01.java/design-patterns/README.md)
+
 ## 1. 饿汉式（静态常量）
 ```java
 public class Singleton {

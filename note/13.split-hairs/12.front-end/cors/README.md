@@ -1,8 +1,25 @@
 # CORS 跨域请求深度剖析
 
-> 一句话：CORS（跨域资源共享）是浏览器基于同源策略的安全机制，通过服务端显式声明允许的跨域来源、方法和头部，实现受控的跨域资源访问。
+## 引子：前端最头疼的报错
+
+```
+Access to fetch at 'http://api.example.com/data' 
+from origin 'http://localhost:3000' 
+has been blocked by CORS policy: 
+No 'Access-Control-Allow-Origin' header is present...
+```
+
+每个前端开发者都见过这个报错。
+
+为什么浏览器要阻止跨域请求？因为**同源策略**——浏览器的核心安全机制，防止恶意网站窃取其他网站的数据。
+
+但开发中又经常需要跨域。解决方案：**服务端显式声明"我允许这个来源访问"**。
+
+这就是 CORS。
 
 ---
+
+> 📚 **前置知识**：[CORS 安全](../../12.front-end/07-security/cors/README.md)
 
 ## 一、核心原理
 

@@ -1,6 +1,31 @@
 # 创建对象
 
-在Java中，创建对象（实例化）是面向对象编程的核心操作。以下是Java中创建对象的几种主要方法，附示例和说明：
+## 引子：你知道几种创建对象的方式？
+
+```java
+// 方式 1：最常见
+Person p1 = new Person("Alice");
+
+// 方式 2：反射
+Person p2 = Person.class.getDeclaredConstructor().newInstance();
+
+// 方式 3：Clone
+Person p3 = p1.clone();
+
+// 方式 4：反序列化
+ObjectInputStream ois = new ObjectInputStream(new FileInputStream("person.ser"));
+Person p4 = (Person) ois.readObject();
+
+// 方式 5：Unsafe（黑科技）
+sun.misc.Unsafe unsafe = getUnsafe();
+Person p5 = (Person) unsafe.allocateInstance(Person.class);  // 不调构造器！
+```
+
+5 种方式，从常规到黑科技，每种方式的底层机制完全不同。你都知道吗？
+
+---
+
+> 📚 **前置知识**：[Object](../../../01.java/concepts/object/README.md)
 
 ## 1. 使用`new`关键字（最常见）
 通过调用类的构造函数创建对象。

@@ -1,5 +1,29 @@
 # 网页端接受推送消息的方式深度解析
 
+## 引子：实时通知，你选哪种？
+
+```javascript
+// 场景：在线客服系统，需要实时收到新消息
+
+// 方式 1：短轮询（最简单）
+setInterval(() => fetch('/api/messages'), 3000)  // 每 3 秒查一次
+
+// 方式 2：WebSocket（实时双向）
+const ws = new WebSocket('ws://server.com')
+ws.onmessage = (e) => showMessage(e.data)
+
+// 方式 3：SSE（服务器推送）
+const source = new EventSource('/api/events')
+source.onmessage = (e) => showMessage(e.data)
+```
+
+三种方式各有优劣：
+- **轮询**：简单但浪费资源（大多数请求返回"没消息"）
+- **WebSocket**：实时但复杂（需要双向通信协议）
+- **SSE**：简单但单向（只能服务器 → 客户端）
+
+---
+
 ## 一、核心原理
 
 Web实时消息推送技术从早期轮询到现代WebSocket，在实时性、资源消耗和实现复杂度上差异显著。

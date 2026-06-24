@@ -1,6 +1,26 @@
 # Transformer 架构核心
 
-> 一句话：**Self-Attention + Positional Encoding + FFN —— 改变 AI 的架构**
+## 引子：2017 年，一篇论文改变了 AI
+
+```
+Google 论文："Attention is All You Need"
+
+之前：RNN/LSTM 统治 NLP
+→ 顺序处理，无法并行（训练慢）
+→ 长距离依赖问题（前面说的话，后面就忘了）
+
+之后：Transformer 横空出世
+→ 完全基于注意力机制
+→ 并行计算，训练快 N 倍
+→ 解决了长距离依赖
+
+→ GPT、BERT、ChatGPT 都基于 Transformer
+```
+
+Transformer 是怎么做到的？三个核心组件：
+1. **Self-Attention**：让每个词都能"看到"所有其他词
+2. **Positional Encoding**：告诉模型词的顺序
+3. **FFN**：前馈神经网络，做特征变换
 
 ---
 

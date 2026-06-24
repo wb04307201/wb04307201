@@ -1,8 +1,35 @@
 # @Transactional 失效的 8 种场景
 
-> 一句话：**加了 @Transactional 但事务没生效，是 Spring 面试最高频的陷阱题**
+## 引子：一个线上 Bug
+
+```java
+@Service
+public class OrderService {
+    
+    public void createOrder(Order order) {
+        // 内部调用 saveOrder
+        saveOrder(order);
+    }
+    
+    @Transactional
+    public void saveOrder(Order order) {
+        orderMapper.insert(order);
+        // 假设这里抛异常...
+    }
+}
+```
+
+你以为 `saveOrder` 加了 `@Transactional`，异常时会自动回滚？
+
+**不会！** 事务根本没生效。
+
+为什么？因为内部调用 `this.saveOrder()` 绕过了代理对象。`@Transactional` 是基于 AOP 实现的——**只有代理对象的调用才走事务拦截器**。
+
+类似的坑还有 7 种——
 
 ---
+
+> 📚 **前置知识**：[AOP](../../06.spring/01-core/aop/README.md) | [事务](../../06.spring/03-data/transaction/README.md) | [事务失效](../../06.spring/03-data/transaction/failure-cases.md)
 
 ## 一、核心原理
 

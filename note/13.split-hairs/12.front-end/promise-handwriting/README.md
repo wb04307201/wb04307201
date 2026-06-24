@@ -1,6 +1,18 @@
 # Promise 手写实现
 
-> 一句话：**手写一个符合 Promises/A+ 规范的 Promise，是前端面试的"试金石"**
+## 引子：前端面试的"试金石"
+
+面试官：**手写一个 Promise。**
+
+Promise 是 JavaScript 异步编程的基石。手写 Promise 考察的不仅是 API，而是对**状态机、异步调度、链式调用、错误冒泡**的深入理解。
+
+你需要实现：
+- 三种状态：Pending → Fulfilled / Rejected
+- `then` 方法：支持链式调用，返回新 Promise
+- `catch`、`finally`：错误处理
+- `Promise.all`、`Promise.race`：并发控制
+
+这道题做出来了，基本证明你理解了 JS 异步的本质。
 
 ---
 

@@ -1,8 +1,28 @@
 # Redis 内存淘汰策略 8 种深度对比
 
-> 一句话：当 Redis 内存达到 maxmemory 上限时，通过预设策略选择性地删除 key，确保服务持续可用。
+## 引子：Redis 内存满了怎么办？
+
+```bash
+# 配置了 maxmemory 2gb
+127.0.0.1:6379> SET key value
+(error) OOM command not allowed when used memory > 'maxmemory'.
+```
+
+内存满了，新写入被拒绝。但业务不能停——怎么办？
+
+**淘汰旧的 key，腾出空间给新的 key。**
+
+但淘汰谁？Redis 提供了 **8 种策略**：
+- `noeviction`：不淘汰，直接报错（默认）
+- `allkeys-lru`：所有 key 中，淘汰最近最少使用的
+- `volatile-lru`：设置了过期时间的 key 中，淘汰最近最少使用的
+- ...还有 5 种
+
+选哪种？取决于你的业务场景。
 
 ---
+
+> 📚 **前置知识**：[Redis](../../03.database/07-redis/README.md)
 
 ## 一、核心原理
 

@@ -1,5 +1,30 @@
 # 字符串拼接优化：StringBuilder 重用深度解析
 
+## 引子：你真的会用 StringBuilder 吗？
+
+```java
+// 大多数人的写法
+public String buildSql(List<String> columns) {
+    StringBuilder sb = new StringBuilder();
+    sb.append("SELECT ");
+    for (String col : columns) {
+        sb.append(col).append(", ");
+    }
+    return sb.toString();
+}
+
+// 高并发场景下：每次调用都创建新的 StringBuilder
+// 1000 QPS × 每次调用 = 1000 个临时对象/秒
+```
+
+StringBuilder 已经够快了，还能更快吗？
+
+**能**——在高并发场景下，**重用 StringBuilder 实例**，避免频繁创建/销毁对象。
+
+---
+
+> 📚 **前置知识**：[String](../../../01.java/concepts/string/README.md)
+
 ## 一、核心原理
 
 `String`不可变性导致每次拼接创建新对象，`StringBuilder`通过可变数组避免。高并发场景下**重用**实例才能最大化收益。

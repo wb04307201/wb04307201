@@ -1,8 +1,26 @@
 # MySQL 索引失效的 10 种场景
 
-> 一句话：**建了索引却没用上？这 10 种情况会让索引"白建"**
+## 引子：索引建了，为什么还是慢？
+
+```sql
+-- 建了索引
+ALTER TABLE users ADD INDEX idx_name (name);
+
+-- 查询
+SELECT * FROM users WHERE name LIKE '%张%';  -- 全表扫描！
+SELECT * FROM users WHERE name = '张三' OR age = 25;  -- 全表扫描！
+SELECT * FROM users WHERE UPPER(name) = 'ZHANGSAN';  -- 全表扫描！
+```
+
+索引建了，但优化器选择**不走索引**。为什么？
+
+因为优化器很聪明：**如果走索引的成本比全表扫描还高，就不走**。
+
+10 种常见的索引失效场景，面试必问。
 
 ---
+
+> 📚 **前置知识**：[MySQL 索引](../../03.database/04-index/README.md)
 
 ## 一、核心原理
 

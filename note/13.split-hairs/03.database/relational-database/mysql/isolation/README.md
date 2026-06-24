@@ -1,5 +1,32 @@
 # MySQL事务隔离级别深度解析
 
+## 引子：三个经典的并发问题
+
+```sql
+-- 事务 A
+BEGIN;
+SELECT * FROM accounts WHERE id = 1;  -- 余额 100
+
+-- 与此同时，事务 B
+BEGIN;
+UPDATE accounts SET balance = 200 WHERE id = 1;  -- 改成了 200
+COMMIT;
+
+-- 事务 A 再读一次
+SELECT * FROM accounts WHERE id = 1;  -- 读到 200？还是 100？
+```
+
+这涉及三个经典的并发问题：
+1. **脏读**：读到了别的事务还没提交的数据（万一人家回滚了呢？）
+2. **不可重复读**：同一条数据，两次读结果不一样
+3. **幻读**：两次查询，行数不一样（多了或少了）
+
+MySQL 用 **4 种隔离级别** 解决这些问题。
+
+---
+
+> 📚 **前置知识**：[事务](../../03.database/03-transaction/README.md)
+
 ## 一、核心原理
 
 MySQL通过MVCC和锁机制实现四种隔离级别，保障并发数据一致性。

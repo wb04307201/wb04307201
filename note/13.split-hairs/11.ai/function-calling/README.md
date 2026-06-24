@@ -1,6 +1,28 @@
 # Function Calling / Tool Use 深度剖析
 
-> 一句话：Function Calling 让 LLM 通过输出结构化 JSON 来"声明"需要调用的工具，由外部执行器实际执行，再将结果回传给模型继续推理，实现模型与外部世界的可控交互。
+## 引子：LLM 怎么查天气？
+
+```
+用户：北京今天天气怎么样？
+
+LLM 内心：我不知道实时天气...但我可以调用天气 API！
+
+LLM 输出：
+{
+  "tool": "get_weather",
+  "arguments": {"city": "北京"}
+}
+
+→ 外部程序执行 API 调用
+→ 返回结果：{"temp": "25°C", "condition": "晴"}
+
+LLM 继续推理：
+"北京今天 25°C，晴天"
+```
+
+LLM 本身不能执行代码、不能上网。但通过 **Function Calling**，它可以"声明"要调用什么工具，让外部程序执行，然后把结果告诉 LLM 继续推理。
+
+这就是 AI Agent 的核心机制。
 
 ---
 

@@ -1,8 +1,27 @@
 # Spring MVC 请求处理流程
 
-> 一句话：**DispatcherServlet → HandlerMapping → HandlerAdapter → ViewResolver —— 9 步处理流程**
+## 引子：一个请求的 9 步旅程
+
+```
+浏览器 → http://localhost:8080/api/users
+```
+
+你按下了回车。接下来 50 毫秒内发生了什么？
+
+1. **DispatcherServlet** 接收请求（前端控制器）
+2. **HandlerMapping** 找到对应的 Controller 方法
+3. **HandlerAdapter** 调用 Controller
+4. Controller 执行业务逻辑
+5. 返回 **ModelAndView**
+6. **ViewResolver** 解析视图
+7. 渲染响应
+8. 返回给浏览器
+
+9 个组件各司其职，像工厂流水线一样精密协作。
 
 ---
+
+> 📚 **前置知识**：[MVC](../../06.spring/02-web/mvc/README.md) | [请求处理流程](../../06.spring/02-web/mvc/dispatch-flow.md)
 
 ## 一、核心组件
 

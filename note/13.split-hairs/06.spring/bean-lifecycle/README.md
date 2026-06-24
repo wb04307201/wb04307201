@@ -1,8 +1,28 @@
 # Bean 生命周期
 
-> 一句话：**从实例化到销毁，Spring Bean 经历的完整 12 步**
+## 引子：一个 Bean 的"一生"
+
+你写了个 `@Service`，Spring 帮你创建这个 Bean。但它不是 `new` 一下就完事了——
+
+```java
+@Service
+public class OrderService {
+    @Autowired private UserRepository userRepo;  // 第 2 步：属性注入
+    
+    @PostConstruct                                // 第 7 步：初始化回调
+    public void init() { loadConfig(); }
+    
+    public void createOrder() { ... }             // 第 11 步：Bean 就绪
+}
+```
+
+从创建到销毁，一个 Bean 要经历 **12 个步骤**。Spring 在每个步骤都留了"钩子"，让你能介入处理。
+
+面试高频题：**说说 Bean 的生命周期？**
 
 ---
+
+> 📚 **前置知识**：[IOC](../../06.spring/01-core/ioc/README.md) | [Bean 生命周期](../../06.spring/01-core/ioc/bean-lifecycle.md)
 
 ## 一、完整生命周期
 

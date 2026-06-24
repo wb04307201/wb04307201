@@ -1,8 +1,31 @@
 # 闭包（Closure）
 
-> 一句话：**函数 + 它能访问的外部变量 = 闭包。闭包让"私有变量"成为可能，但也可能导致内存泄漏**
+## 引子：一个"有记忆"的函数
+
+```javascript
+function createCounter() {
+  let count = 0
+  return function() {
+    count++
+    return count
+  }
+}
+
+const counter = createCounter()
+console.log(counter())  // 1
+console.log(counter())  // 2
+console.log(counter())  // 3
+```
+
+`count` 变量明明在 `createCounter` 函数里，函数执行完应该被销毁。但为什么 `count` 还在？
+
+因为内部函数"记住"了外部变量——这就是**闭包**。
+
+闭包让"私有变量"成为可能，但也可能导致内存泄漏。
 
 ---
+
+> 📚 **前置知识**：[JavaScript 基础](../../12.front-end/02-language/README.md)
 
 ## 一、核心原理
 

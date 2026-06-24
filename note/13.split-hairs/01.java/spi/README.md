@@ -1,10 +1,26 @@
 # Java SPI 机制深度剖析
 
-> 一句话：SPI（Service Provider Interface）是框架定义接口、第三方提供实现的可插拔扩展机制，通过 `ServiceLoader` 在运行时动态发现并加载实现类。
+## 引子：JDBC 是怎么找到数据库驱动的？
+
+```java
+// 你只写了一行
+Class.forName("com.mysql.cj.jdbc.Driver");
+
+// 然后 DriverManager 就能连 MySQL 了
+Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", ...);
+```
+
+奇怪：你的代码里根本没有引用 MySQL 的任何类，JDK 是怎么"认识" MySQL 驱动的？
+
+换 PostgreSQL 呢？换 Oracle 呢？JDK 不可能预知所有数据库厂商的实现。
+
+这就是 **SPI（Service Provider Interface）** 的设计哲学——**框架定义规则，厂商提供实现，运行时动态发现**。
 
 ---
 
 ## 一、核心原理
+
+> 📚 **前置知识**：[SPI](../../../01.java/concepts/spi/README.md) | [类加载](../class-loading/README.md)
 
 **SPI 是什么？**
 

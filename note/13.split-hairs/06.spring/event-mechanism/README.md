@@ -1,8 +1,33 @@
 # Spring 事件机制深度剖析
 
-> 一句话：Spring 事件机制基于观察者模式，通过发布-订阅模型实现组件间解耦与业务逻辑异步化。
+## 引子：订单创建后，要通知 5 个模块
+
+```java
+// 糟糕的设计：硬编码所有依赖
+public void createOrder(Order order) {
+    orderMapper.insert(order);
+    inventoryService.deduct(order);   // 扣库存
+    pointService.add(order);          // 加积分
+    notifyService.send(order);        // 发通知
+    logService.record(order);         // 记日志
+    // 每加一个模块，就改一次这个方法...
+}
+
+// 优雅的设计：发布事件
+public void createOrder(Order order) {
+    orderMapper.insert(order);
+    eventPublisher.publishEvent(new OrderCreatedEvent(order));
+    // 扣库存、加积分、发通知、记日志——各自监听，互不耦合
+}
+```
+
+这就是 Spring 事件机制——**观察者模式**的工程化实现。
+
+发布者和监听者完全解耦，新增需求只需要加一个监听器。
 
 ---
+
+> 📚 **前置知识**：[事件机制](../../06.spring/01-core/event.md)
 
 ## 一、核心原理
 

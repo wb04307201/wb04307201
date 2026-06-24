@@ -1,10 +1,37 @@
 # volatile 内存语义深度剖析
 
-> 一句话：volatile 保证共享变量的**可见性**与**有序性**，但**不保证原子性**，是 Java 并发编程中最轻量级的同步机制。
+## 引子：一个诡异的死循环
+
+```java
+class Task {
+    static boolean running = true;
+    
+    public static void main(String[] args) throws Exception {
+        new Thread(() -> {
+            while (running) {
+                // do something
+            }
+            System.out.println("线程结束");
+        }).start();
+        
+        Thread.sleep(1000);
+        running = false;  // 主线程修改为 false
+        System.out.println("已设置 running = false");
+    }
+}
+```
+
+预期：线程应该打印"线程结束"并退出。
+
+实际：**线程永远不会结束！** 陷入死循环。
+
+为什么？因为新线程一直在用**自己缓存里的旧值**，看不到主线程的修改。加上 `volatile` 就能解决——
 
 ---
 
 ## 一、核心原理
+
+> 📚 **前置知识**：[volatile](../../../01.java/concurrency/volatile.md) | [JMM](../../../01.java/concurrency/jmm/README.md)
 
 ### 1.1 JMM 基础
 

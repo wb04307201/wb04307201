@@ -1,4 +1,28 @@
-# Java 为什么将基础数据类型（如 int、double 等）封装为对象
+# Java 为什么将基础数据类型封装为对象
+
+## 引子：既然有 int，为什么还要 Integer？
+
+```java
+// 基本类型就够了啊？
+int a = 10;
+int b = 20;
+System.out.println(a + b);  // 30 ✓
+
+// 但你试试这样：
+List<int> list = new ArrayList<>();  // ❌ 编译报错！
+
+// 只能用包装类
+List<Integer> list = new ArrayList<>();  // ✓
+list.add(10);  // 自动装箱：int → Integer
+```
+
+Java 设计者明明知道 `int` 比 `Integer` 快得多，为什么还要搞出 `Integer`、`Double` 这些包装类？
+
+答案在于——**面向对象的世界里，一切皆对象**。
+
+---
+
+> 📚 **前置知识**：[基本数据类型](../../../01.java/concepts/data-types/README.md)
 
 Java 将基础数据类型（如 `int`、`double` 等）封装为对象（如 `Integer`、`Double` 等）主要是为了解决基础类型在面向对象编程中的局限性，同时满足更复杂的编程需求。
 

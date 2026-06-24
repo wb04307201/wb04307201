@@ -1,10 +1,34 @@
 # ThreadLocal 原理与内存泄漏
 
-> 一句话：ThreadLocal 通过线程私有的 ThreadLocalMap 实现数据隔离，key 使用弱引用但 value 是强引用，若不及时清理会导致内存泄漏。
+## 引子：一个诡异的串号问题
+
+```java
+// 线程池场景
+ExecutorService pool = Executors.newFixedThreadPool(2);
+
+ThreadLocal<String> userHolder = new ThreadLocal<>();
+
+pool.submit(() -> {
+    userHolder.set("用户A");
+    System.out.println("当前用户：" + userHolder.get());
+    // 忘记 remove()
+});
+
+pool.submit(() -> {
+    // 另一个任务，复用同一个线程
+    System.out.println("当前用户：" + userHolder.get());  // 输出"用户A"！！！
+});
+```
+
+用户 A 的数据"串"到了另一个任务里！这就是线程池复用线程时 ThreadLocal 的经典 Bug。
+
+更可怕的是：ThreadLocal 还会导致**内存泄漏**——
 
 ---
 
-## 一、核心原理（Why it works）
+## 一、核心原理
+
+> 📚 **前置知识**：[ThreadLocal](../../../01.java/concurrency/threadlocal.md) | [线程基础](../../../01.java/concurrency/thread-basics/README.md)
 
 ThreadLocal 的核心设计思想是**空间换时间**：为每个线程维护一份独立的变量副本，避免多线程竞争带来的同步开销。其底层依赖 `java.lang.Thread` 类中的两个字段：
 
