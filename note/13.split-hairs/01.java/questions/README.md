@@ -262,5 +262,5 @@ QPS从XX提升到XX。我对分布式系统/性能优化感兴趣，持续学习
 - **JVM调优**：[JVM调优](../../../01.java/jvm/tuning.md)
 - **数据库**：[MySQL事务隔离](../../../03.database/03-transaction/README.md)
 - **分布式系统**：[分布式锁](../../../04.system-design/02-distributed/distributed-lock/README.md)
-- **前端知识**：[消息推送](../../12.front-end/message/README.md)
+- **前端知识**：[消息推送](../../09.front-end/message/README.md)
 - **数据持久化**：[StringBuilder重用](../reuse-of-stringbuilder/README.md)

@@ -221,4 +221,4 @@ graph TB
 ## 九、交叉引用
 
 - 主模块：[`11.ai`](../../../11.ai/) — AI 知识体系
-- [AI SDK](../../../12.front-end/09-frontend-and-ai/ai-sdk/README.md) — 前端集成 RAG
+- [AI SDK](../../../09.front-end/09-frontend-and-ai/ai-sdk/README.md) — 前端集成 RAG

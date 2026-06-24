@@ -2,7 +2,7 @@
 
 > 一句话定位：**主模块的"刺刀版" —— 专治面试中那些"好像懂但说不清"的高频 / 高难度问题**
 
-本仓库的主模块（`01.java` / `03.database` / `04.system-design` / `06.spring` / `11.ai` / `12.front-end`）是**广度知识地图**，每个模块 100-300 行，覆盖一个领域的核心脉络。
+本仓库的主模块（`01.java` / `03.database` / `04.system-design` / `06.spring` / `11.ai` / `09.front-end`）是**广度知识地图**，每个模块 100-300 行，覆盖一个领域的核心脉络。
 
 但面试中总会遇到这些题：
 - "HashMap 扩容为什么是 2 倍？"
@@ -43,7 +43,7 @@ graph TB
 | 04 | [`04.system-design`](../04.system-design/) | 系统设计难点（MQ、缓存、分布式） | [10 篇](04.system-design/) |
 | 06 | [`06.spring`](../06.spring/) | Spring 面试高频（IoC、AOP、事务） | [13 篇](06.spring/) |
 | 11 | [`11.ai`](../11.ai/) | AI 新概念（思维模式、提示工程） | [7 篇](11.ai/) |
-| 12 | [`12.front-end`](../12.front-end/) | 前端细节（HTTP、存储、消息机制） | [19 篇](12.front-end/) |
+| 12 | [`09.front-end`](../09.front-end/) | 前端细节（HTTP、存储、消息机制） | [19 篇](09.front-end/) |
 
 **总计：98 篇**（原 55 篇，新增 43 篇）
 
@@ -86,7 +86,7 @@ graph TB
 ### 按面试准备
 1. **Java 后端**：01.java（31 篇） → 06.spring（13 篇） → 03.database（18 篇）
 2. **系统设计**：04.system-design（10 篇） → 03.database（18 篇）
-3. **前端**：12.front-end（21 篇） → 01-foundation / 02-language 的 split-hairs（待补）
+3. **前端**：09.front-end（21 篇） → 01-foundation / 02-language 的 split-hairs（待补）
 4. **AI 方向**：11.ai（7 篇） → 主模块 11.ai
 
 ### 按主题深挖
@@ -104,6 +104,6 @@ graph TB
 
 ## 7. 与其他章节的关系
 
-- **主模块**：[`01.java`](../01.java/) / [`03.database`](../03.database/) / [`04.system-design`](../04.system-design/) / [`06.spring`](../06.spring/) / [`11.ai`](../11.ai/) / [`12.front-end`](../12.front-end/)
-- **故事章节**：[`14.story`](../14.story/) — 阿明餐厅故事（实战场景）
+- **主模块**：[`01.java`](../01.java/) / [`03.database`](../03.database/) / [`04.system-design`](../04.system-design/) / [`06.spring`](../06.spring/) / [`11.ai`](../11.ai/) / [`09.front-end`](../09.front-end/)
+- **故事章节**：[`12.story`](../12.story/) — 阿明餐厅故事（实战场景）
 - **主仓库 README**：[`README.md`](../README.md)

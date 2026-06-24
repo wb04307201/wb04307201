@@ -151,7 +151,27 @@
 | 8 | [系统集成模式](08.application-systems/README.md#-系统集成模式) | 跨系统集成架构与模式 |
 | 9 | [系统速查表 + 学习路线](08.application-systems/README.md#-系统速查表) | 21 业务系统速查 + 入门/进阶/精通三段式学习路径 |
 
-# 九、[大数据](10.big-data/README.md)
+# 九、[前端工程](09.front-end/README.md)
+
+> 现代前端工程的知识地图——从浏览器原理到 AI 协同开发，对齐 `04.system-design` / `06.spring` / `11.ai` 的 9 模块分层结构。
+
+## 模块导航
+
+| 序号 | 主题 | 核心内容 |
+|------|------|----------|
+| 1 | [01 基础](09.front-end/01-foundation/README.md) | 浏览器原理、HTML 语义化、CSS 工程化、Web 标准 |
+| 2 | [02 语言](09.front-end/02-language/README.md) | JavaScript 核心机制、ES2024-2026 新特性、TypeScript 5 工程实践、Node/Deno/Bun 运行时 |
+| 3 | [03 框架](09.front-end/03-frameworks/README.md) | 2026 框架格局、React/Vue/Svelte/元框架/选型 |
+| 4 | [04 工程化](09.front-end/04-engineering/README.md) | 构建工具（Vite/Webpack/Turbopack）、包管理、Monorepo、测试、Lint |
+| 5 | [05 架构](09.front-end/05-architecture/README.md) | 渲染模式（CSR/SSR/SSG/RSC）、状态、路由、微前端、Web Components、BFF |
+| 6 | [06 性能](09.front-end/06-performance/README.md) | Core Web Vitals（LCP/INP/CLS）、Lighthouse、运行时性能与监控 |
+| 7 | [07 安全](09.front-end/07-security/README.md) | XSS / CSRF / CSP / SRI / CORS / Sessions / 依赖供应链 |
+| 8 | [08 跨端](09.front-end/08-cross-platform/README.md) | 移动（RN/Flutter）、桌面（Electron/Tauri）、小程序（微信/Taro）、PWA |
+| 9 | [09 前端与 AI](09.front-end/09-frontend-and-ai/README.md) | AI SDK、AI Native UI、AI IDE（Cursor/Claude Code）、Vibe Coding、MCP 协议 |
+
+> 开源参考：暂无（当前 9 模块中仅 03 框架、05 架构、07 安全有存量内容，其余模块为占位骨架，深度子文档待后续按需补充）
+
+# 十、[大数据](10.big-data/README.md)
 ## [2024年的开源数据工程生态系统全景图](10.big-data/open-source/README.md)
 ## [离线数仓/实时数仓](10.big-data/offline-or-real-time-data-warehouse/README.md)
 
@@ -168,25 +188,28 @@
 | 6 | [L6 前沿研究](11.ai/06-research/README.md) | 沉思模型（Rumination）等前沿探索 |
 | 7 | [教学课程](11.ai/training/README.md) | Spring AI Agent 实战 16 课 |
 
-# 十二、[前端工程](12.front-end/README.md)
+# 十二、[「阿明餐厅」技术系列](12.story/index.md)
 
-> 现代前端工程的知识地图——从浏览器原理到 AI 协同开发，对齐 `04.system-design` / `06.spring` / `11.ai` 的 9 模块分层结构。
+> 以餐厅经营为叙事主线，用 **43 篇** 故事讲透从架构演进到 AI 转型的技术全景。前传 + 续集一 + 正传 14 + 终章 + 番外 6 + 续集 2-17（AI 时代 16 篇）+ 番外 7-8 —— 一篇一个核心主题，篇篇独立又互相串联。
+>
+> **2026 v2 更新**：评测（34）、协议（35）、Token 经济学（36）三篇已拆分为 a/b 双篇（结构性优化）；新增可观测性、RAG、向量库、AI 合规、AI 私有化、Prompt 工程、多模态 7 个专题。
 
-## 模块导航
+## 系列导航
 
 | 序号 | 主题 | 核心内容 |
 |------|------|----------|
-| 1 | [01 基础](12.front-end/01-foundation/README.md) | 浏览器原理、HTML 语义化、CSS 工程化、Web 标准 |
-| 2 | [02 语言](12.front-end/02-language/README.md) | JavaScript 核心机制、ES2024-2026 新特性、TypeScript 5 工程实践、Node/Deno/Bun 运行时 |
-| 3 | [03 框架](12.front-end/03-frameworks/README.md) | 2026 框架格局、React/Vue/Svelte/元框架/选型 |
-| 4 | [04 工程化](12.front-end/04-engineering/README.md) | 构建工具（Vite/Webpack/Turbopack）、包管理、Monorepo、测试、Lint |
-| 5 | [05 架构](12.front-end/05-architecture/README.md) | 渲染模式（CSR/SSR/SSG/RSC）、状态、路由、微前端、Web Components、BFF |
-| 6 | [06 性能](12.front-end/06-performance/README.md) | Core Web Vitals（LCP/INP/CLS）、Lighthouse、运行时性能与监控 |
-| 7 | [07 安全](12.front-end/07-security/README.md) | XSS / CSRF / CSP / SRI / CORS / Sessions / 依赖供应链 |
-| 8 | [08 跨端](12.front-end/08-cross-platform/README.md) | 移动（RN/Flutter）、桌面（Electron/Tauri）、小程序（微信/Taro）、PWA |
-| 9 | [09 前端与 AI](12.front-end/09-frontend-and-ai/README.md) | AI SDK、AI Native UI、AI IDE（Cursor/Claude Code）、Vibe Coding、MCP 协议 |
+| 1 | [系列导览](12.story/index.md) | 43 篇全景图 + 4 条主路径 + 13 类角色推荐 + 概念交叉索引 |
+| 2 | [前传 · 架构演进](12.story/02-system-architecture-evolution.md) | 架构"长"出来（单机→云原生）+ IT 成熟度 L1-L7 评估 |
+| 3 | [续集一 · AI Agent 架构](12.story/01-ai-agent-architecture.md) | 7 大模块：感知/记忆/规划/工具/协同/反馈/安全（衔接 [11.ai AI 知识体系](11.ai/README.md)）|
+| 4 | [正传 1-14 · 核心工程（14 篇）](12.story/04-peak-traffic-defense.md) | 流量/可观测/安全/QA/CI-CD/API/数据/前端/故障/性能/异步/分布式/多端/数据库迁移 |
+| 5 | [终章 · 从厨师到 CEO](12.story/07-from-chef-to-ceo.md) | 5 人→500 人：康威/团队拓扑/SECI/ADR/Docs-as-Code/IDP/工程师文化 |
+| 6 | [番外 1-6 · 专题拓展（6 篇）](12.story/03-refactoring-guide-for-pm.md) | 重构/FinOps/SaaS/搜索推荐/低代码/国际化 |
+| 7 | [续集 2-12 · AI 时代上半场（11 篇）](12.story/11-ai-learning-paradox.md) | 学习/组织/创业/自进化/信任/认知债/Harness/致命三件套 + [34a/34b 评测](12.story/34a-ai-evaluation-fundamentals.md) + [35a/35b 协议](12.story/35a-mcp-protocol.md) + [36a/36b Token](12.story/36a-ai-token-cost-structure.md) |
+| 8 | [续集 13-17 · AI 时代下半场（5 篇）](12.story/37-ai-observability.md) | [37 可观测性](12.story/37-ai-observability.md) / [38 RAG](12.story/38-rag-retrieval-augmented-generation.md) / [39 向量库](12.story/39-vector-database-and-embedding.md) / [40 合规](12.story/40-ai-compliance-and-regulation.md) / [41 私有化](12.story/41-ai-private-deployment.md) |
+| 9 | [番外 7-8 · 工程化专题（2 篇）](12.story/42-prompt-engineering.md) | [42 Prompt 工程](12.story/42-prompt-engineering.md) + [43 多模态](12.story/43-multimodal-ai.md) |
+| 10 | [辅助资料 · 速查 + 术语](12.story/cheatsheet.md) | [一页纸速查](12.story/cheatsheet.md)（43 篇心法 + AI 选型 + Agent 工具链）；[术语表](12.story/glossary.md)（250+ 词条 / 40 主题）|
 
-> 开源参考：暂无（当前 9 模块中仅 03 框架、05 架构、07 安全有存量内容，其余模块为占位骨架，深度子文档待后续按需补充）
+> 开源参考：12.story 章节本身为本仓库原创叙事，引用开源项目包括 Camunda 7/8、Apache EventMesh、CNCF Serverless Workflow、Dify/Coze/LangGraph、n8n、MCP/A2A、Qwen-VL、GPT-4o、Claude 3.5、LangSmith、vLLM、Qdrant、Milvus、Pinecone 等（详见各文末「延伸阅读」）。
 
 # 十三、[咬文嚼字（高频面试题）](13.split-hairs/README.md)
 
@@ -203,7 +226,7 @@
 | 3 | 系统设计难点 | 7 | [04.system-design](13.split-hairs/04.system-design/README.md) |
 | 4 | Spring 面试高频 | 7 | [06.spring](13.split-hairs/06.spring/README.md) |
 | 5 | AI 新概念 | 5 | [11.ai](13.split-hairs/11.ai/README.md) |
-| 6 | 前端细节 | 12 | [12.front-end](13.split-hairs/12.front-end/README.md) |
+| 6 | 前端细节 | 12 | [09.front-end](13.split-hairs/09.front-end/README.md) |
 
 ---
 
@@ -286,48 +309,25 @@
 | [RAG 架构设计](13.split-hairs/11.ai/rag/README.md) | Chunking / Embedding / 向量数据库 |
 | [Prompt Engineering 技巧](13.split-hairs/11.ai/prompt-engineering/README.md) | 8 种核心技术 + 注入防御 |
 
-## 12.front-end（12 篇）—— 前端细节
+## 09.front-end（12 篇）—— 前端细节
 
 ### HTTP / 浏览器
 | 主题 | 核心问题 |
 |------|---------|
-| [GET vs POST](13.split-hairs/12.front-end/get-and-post/README.md) | 7 大差异 + 幂等性 |
-| [消息机制](13.split-hairs/12.front-end/message/README.md) | 推送消息的方式 |
-| [存储方案](13.split-hairs/12.front-end/storage/README.md) | Cookie / LocalStorage / IndexedDB |
-| [事件循环 Event Loop](13.split-hairs/12.front-end/event-loop/README.md) | 宏任务 / 微任务 / async-await |
-| [从 URL 输入到页面展示](13.split-hairs/12.front-end/from-url-to-page/README.md) | 网络 + 解析 + 渲染全链路 |
+| [GET vs POST](13.split-hairs/09.front-end/get-and-post/README.md) | 7 大差异 + 幂等性 |
+| [消息机制](13.split-hairs/09.front-end/message/README.md) | 推送消息的方式 |
+| [存储方案](13.split-hairs/09.front-end/storage/README.md) | Cookie / LocalStorage / IndexedDB |
+| [事件循环 Event Loop](13.split-hairs/09.front-end/event-loop/README.md) | 宏任务 / 微任务 / async-await |
+| [从 URL 输入到页面展示](13.split-hairs/09.front-end/from-url-to-page/README.md) | 网络 + 解析 + 渲染全链路 |
 
 ### JavaScript 核心
 | 主题 | 核心问题 |
 |------|---------|
-| [闭包 Closure](13.split-hairs/12.front-end/closure/README.md) | 私有变量 / 内存泄漏 / React Hooks 陷阱 |
-| [Promise 手写实现](13.split-hairs/12.front-end/promise-handwriting/README.md) | Promise.all / race / allSettled |
+| [闭包 Closure](13.split-hairs/09.front-end/closure/README.md) | 私有变量 / 内存泄漏 / React Hooks 陷阱 |
+| [Promise 手写实现](13.split-hairs/09.front-end/promise-handwriting/README.md) | Promise.all / race / allSettled |
 
 ### React 框架
 | 主题 | 核心问题 |
 |------|---------|
-| [Virtual DOM + Diff 算法](13.split-hairs/12.front-end/virtual-dom-diff/README.md) | O(n) 复杂度 + Key 的作用 |
-| [React Hooks 原理](13.split-hairs/12.front-end/react-hooks/README.md) | 闭包 + Hooks 链表 + 闭包陷阱 |
-
-# 十四、[「阿明餐厅」技术系列](14.story/index.md)
-
-> 以餐厅经营为叙事主线，用 **43 篇** 故事讲透从架构演进到 AI 转型的技术全景。前传 + 续集一 + 正传 14 + 终章 + 番外 6 + 续集 2-17（AI 时代 16 篇）+ 番外 7-8 —— 一篇一个核心主题，篇篇独立又互相串联。
->
-> **2026 v2 更新**：评测（34）、协议（35）、Token 经济学（36）三篇已拆分为 a/b 双篇（结构性优化）；新增可观测性、RAG、向量库、AI 合规、AI 私有化、Prompt 工程、多模态 7 个专题。
-
-## 系列导航
-
-| 序号 | 主题 | 核心内容 |
-|------|------|----------|
-| 1 | [系列导览](14.story/index.md) | 43 篇全景图 + 4 条主路径 + 13 类角色推荐 + 概念交叉索引 |
-| 2 | [前传 · 架构演进](14.story/02-system-architecture-evolution.md) | 架构"长"出来（单机→云原生）+ IT 成熟度 L1-L7 评估 |
-| 3 | [续集一 · AI Agent 架构](14.story/01-ai-agent-architecture.md) | 7 大模块：感知/记忆/规划/工具/协同/反馈/安全（衔接 [11.ai AI 知识体系](11.ai/README.md)）|
-| 4 | [正传 1-14 · 核心工程（14 篇）](14.story/04-peak-traffic-defense.md) | 流量/可观测/安全/QA/CI-CD/API/数据/前端/故障/性能/异步/分布式/多端/数据库迁移 |
-| 5 | [终章 · 从厨师到 CEO](14.story/07-from-chef-to-ceo.md) | 5 人→500 人：康威/团队拓扑/SECI/ADR/Docs-as-Code/IDP/工程师文化 |
-| 6 | [番外 1-6 · 专题拓展（6 篇）](14.story/03-refactoring-guide-for-pm.md) | 重构/FinOps/SaaS/搜索推荐/低代码/国际化 |
-| 7 | [续集 2-12 · AI 时代上半场（11 篇）](14.story/11-ai-learning-paradox.md) | 学习/组织/创业/自进化/信任/认知债/Harness/致命三件套 + [34a/34b 评测](14.story/34a-ai-evaluation-fundamentals.md) + [35a/35b 协议](14.story/35a-mcp-protocol.md) + [36a/36b Token](14.story/36a-ai-token-cost-structure.md) |
-| 8 | [续集 13-17 · AI 时代下半场（5 篇）](14.story/37-ai-observability.md) | [37 可观测性](14.story/37-ai-observability.md) / [38 RAG](14.story/38-rag-retrieval-augmented-generation.md) / [39 向量库](14.story/39-vector-database-and-embedding.md) / [40 合规](14.story/40-ai-compliance-and-regulation.md) / [41 私有化](14.story/41-ai-private-deployment.md) |
-| 9 | [番外 7-8 · 工程化专题（2 篇）](14.story/42-prompt-engineering.md) | [42 Prompt 工程](14.story/42-prompt-engineering.md) + [43 多模态](14.story/43-multimodal-ai.md) |
-| 10 | [辅助资料 · 速查 + 术语](14.story/cheatsheet.md) | [一页纸速查](14.story/cheatsheet.md)（43 篇心法 + AI 选型 + Agent 工具链）；[术语表](14.story/glossary.md)（250+ 词条 / 40 主题）|
-
-> 开源参考：14.story 章节本身为本仓库原创叙事，引用开源项目包括 Camunda 7/8、Apache EventMesh、CNCF Serverless Workflow、Dify/Coze/LangGraph、n8n、MCP/A2A、Qwen-VL、GPT-4o、Claude 3.5、LangSmith、vLLM、Qdrant、Milvus、Pinecone 等（详见各文末「延伸阅读」）。
+| [Virtual DOM + Diff 算法](13.split-hairs/09.front-end/virtual-dom-diff/README.md) | O(n) 复杂度 + Key 的作用 |
+| [React Hooks 原理](13.split-hairs/09.front-end/react-hooks/README.md) | 闭包 + Hooks 链表 + 闭包陷阱 |

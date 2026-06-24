@@ -352,4 +352,4 @@ graph LR
 
 - 主模块：[`11.ai`](../../../11.ai/) — AI 知识体系
 - [RAG](../rag/README.md) — RAG（Prompt 工程的重要应用）
-- [AI SDK](../../../12.front-end/09-frontend-and-ai/ai-sdk/README.md) — Function Calling UI
+- [AI SDK](../../../09.front-end/09-frontend-and-ai/ai-sdk/README.md) — Function Calling UI
