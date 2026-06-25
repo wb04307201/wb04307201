@@ -73,19 +73,11 @@ flowchart LR
 
 #### PDM（Product Data Management 产品数据管理）
 
-- **定义**：PLM 的核心子集，专注于产品数据本身（文档、图纸、零部件）的管理与组织，是 PLM 早期阶段的形态。
-- **核心能力**：
-  - 文档与图纸版本管理
-  - 零部件库与结构管理（EBOM → MBOM）
-  - 检索与权限
-- **典型场景**：纯研发数据管理需求、企业 PDM 起步阶段
-- **与 PLM 的关系**：PDM ⊂ PLM，PDM 管"数据"，PLM 管"数据 + 流程 + 资源"
-- **历史脉络**（来自原 pdm/README.md 整合）：
-  - 60-70 年代：CAD/CAM 单点工具 → 信息孤岛
-  - 80 年代：与 CAD 集成的纯数据管理 PDM
-  - 90 年代：加入工作流/变更/项目的过程集成 PDM
-  - 90 年代末：跨企业协同 → 演化为 PLM
-- **关键考量**：现代场景下单独上 PDM 较少，多作为 PLM 子模块实施
+- **核心定位**：PLM 的核心子集，专注于产品数据本身（文档、图纸、零部件）的管理与组织
+- **关键能力**：版本管理 / 零部件库 / CAD 集成 / 检索与权限 / 变更管理 / 生命周期状态
+- **典型场景**：纯研发数据管理需求、PDM 起步阶段、中小制造业（CAD 文件 1 万-10 万）
+- **上下游**：上接 CAD/CAE/CAPP，下接 ERP/MES，是 PLM 的数据底层
+- 📚 详见 [PDM 深读](./pdm/) — 历史脉络 / 选型指南 / 代表案例
 
 ### 📋 其他系统速览
 
@@ -480,7 +472,7 @@ flowchart LR
 | MOM | Manufacturing Operation Management | 制造运营管理 | 02 生产制造 | — |
 | OA | Office Automation | 办公自动化 | 05 运营管理 | — |
 | OMS | Order Management System | 订单管理 | 04 销售服务 | — |
-| PDM | Product Data Management | 产品数据管理 | 01 研发创新 | — |
+| PDM | Product Data Management | 产品数据管理 | 01 研发创新 | [深读](./pdm/) |
 | PLM | Product Lifecycle Management | 产品生命周期管理 | 01 研发创新 | [深读](./plm/) |
 | PMS | Project Management System | 项目管理 | 06 专项支持 | — |
 | QMS | Quality Management System | 质量管理 | 05 运营管理 | — |
