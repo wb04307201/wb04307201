@@ -111,24 +111,11 @@ flowchart LR
 
 #### MES（Manufacturing Execution System 制造执行系统）
 
-- **定义**：聚焦车间层的实时生产管理系统，把 ERP 的生产计划落地为工单并跟踪执行。
-- **核心能力**：
-  - 工单下达与调度
-  - 生产进度实时跟踪（与 SCADA 集成）
-  - 质量数据采集与追溯
-  - 在制品（WIP）与设备状态
-  - 物料齐套检查
-- **典型场景**：
-  - 离散制造（机械、电子）的车间管理
-  - 流程制造（化工、食品）的批次管理
-  - 多工厂、多车间的集中可视
-- **上下游关系**：
-  - 上游：接 ERP（工单/物料）、APS（排程）
-  - 下游：向 WMS 报完工入库、向 BI 输出 OEE 数据
-  - 横向：与 SCADA 集成采集设备数据
-- **关键考量**：
-  - 行业属性极强（离散 vs 流程 vs 混合），选型必须看行业模板
-  - 与 ERP/PLM 的集成质量是实施成败关键
+- **核心定位**：把 ERP 的生产计划落地为车间工单并实时跟踪执行的执行层系统，是连接计划层与控制层的"执行中枢"
+- **关键能力**：工单调度 / 设备数据采集 / 质量管理 / 批次追溯 / OEE 看板 / SOP 电子化
+- **典型场景**：离散制造（汽车/电子）、流程制造（化工/食品）、半导体、医疗器械、航空
+- **上下游**：上接 ERP/PLM，下接 SCADA/WMS/QMS，与 APS/SCADA 横向集成
+- 📚 详见 [MES 深读](./mes/) — 历史脉络 / 选型指南 / 常见陷阱 / 代表案例
 
 ### 📋 其他系统速览
 
@@ -468,7 +455,7 @@ flowchart LR
 | EAM | Enterprise Asset Management | 企业资产管理 | 05 运营管理 | — |
 | ERP | Enterprise Resource Planning | 企业资源计划（核心） | 05 运营管理 | — |
 | LIMS | Laboratory Information Management System | 实验室信息管理 | 06 专项支持 | — |
-| MES | Manufacturing Execution System | 制造执行系统 | 02 生产制造 | — |
+| MES | Manufacturing Execution System | 制造执行系统 | 02 生产制造 | [深读](./mes/) |
 | MOM | Manufacturing Operation Management | 制造运营管理 | 02 生产制造 | — |
 | OA | Office Automation | 办公自动化 | 05 运营管理 | — |
 | OMS | Order Management System | 订单管理 | 04 销售服务 | — |
