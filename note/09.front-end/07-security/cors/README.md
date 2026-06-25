@@ -32,11 +32,45 @@ Origin = 协议 + 域名 + 端口
 - http://yuanjava.com 和 http://blog.yuanjava.com（域名不同）
 - http://yuanjava.com:80 和 http://yuanjava.com:8080（端口不同）
 
-CORS 流的主要参与者  
-![img.png](img.png)
+CORS 流的主要参与者
+
+### CORS 请求流程
+
+```mermaid
+sequenceDiagram
+    participant Browser
+    participant Server
+    Browser->>Browser: 检查是否同源
+    alt 同源请求
+        Browser->>Server: 正常请求
+        Server-->>Browser: 响应
+    else 跨域请求
+        Browser->>Server: OPTIONS 预检请求
+        Server-->>Browser: 预检响应（含 CORS 头部）
+        alt 预检通过
+            Browser->>Server: 实际请求
+            Server-->>Browser: 实际响应
+        else 预检失败
+            Browser-->>Browser: 拒绝请求
+        end
+    end
+```
 
 浏览器默认允许同源请求，而跨域请求则被阻止
-![img_1.png](img_1.png)
+
+### 浏览器同源策略
+
+```mermaid
+flowchart TD
+    A[HTTP 请求] --> B{是否同源?}
+    B -->|是<br/>协议/域名/端口均相同| C[允许请求]
+    B -->|否| D{是否 CORS 配置?}
+    D -->|服务器返回 CORS 头| E[允许跨域]
+    D -->|服务器未配置| F[拒绝请求]
+    C --> G[返回响应]
+    E --> G
+    F --> H[浏览器报错]
+```
 
 ## CORS 工作流程
 CORS 通过在 HTTP(s) 请求和响应中使用特定的头部字段来实现跨域资源共享，具体来说，CORS 分为两种类型的请求处理方式：简单请求和预检请求。
