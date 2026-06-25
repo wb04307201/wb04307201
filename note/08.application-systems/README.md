@@ -6,8 +6,6 @@
 
 ## 📑 目录
 
-<!-- TODO: 由后续任务填充 -->
-
 1. [🚀 快速入口](#-快速入口)
 2. [🗺️ 业务价值链全景图](#-业务价值链全景图)
 3. [01 研发创新（PLM · PDM · CMS）](#01-研发创新)
@@ -65,24 +63,13 @@ flowchart LR
 
 ### 🔑 核心系统详讲
 
-#### PLM（Product Lifecycle Management 产品生命周期管理）
+#### PLM（产品生命周期管理）
 
-- **定义**：管理产品从概念、设计、工艺、生产、销售到退役的全生命周期数据与流程的系统，是企业研发数字化的主干。
-- **核心能力**：
-  - 产品数据中央仓库（BOM、CAD 图纸、技术文档）
-  - 工作流与审批（工程变更、签审流程）
-  - 项目管理（项目计划、里程碑、资源）
-  - 与 CAD/CAE/CAPP 工具集成
-- **典型场景**：
-  - 汽车/装备制造的新车型研发项目
-  - 电子产品的多代产品演进管理
-  - 工程变更（ECN）的全流程追溯
-- **上下游关系**：
-  - 上游：接 CRM（市场需求）、CMS（产品资料）
-  - 下游：向 ERP 输出 BOM、向 MES 输出工艺路线
-- **关键考量**：
-  - 选型时关注与现有 CAD（SolidWorks/CATIA/UG）的兼容性
-  - 数据治理（版本、权限、归档）是实施难点
+- **核心定位**：管理产品从概念到退役的全生命周期数据与流程
+- **关键能力**：BOM 中央仓库 / 工程变更 / 项目管理 / CAD 集成
+- **典型场景**：汽车新车型研发、电子产品多代演进、工程变更追溯
+- **上下游**：上接 CRM/CMS，下接 ERP/MES
+- 📚 详见 [PLM 深读](./plm/) — 历史脉络 / 常见陷阱 / 代表案例
 
 #### PDM（Product Data Management 产品数据管理）
 
@@ -480,29 +467,29 @@ flowchart LR
 
 21 个系统按缩写字母排序：
 
-| 缩写 | 全称 | 一句话定位 | 价值链章节 |
-|---|---|---|---|
-| APS | Advanced Planning and Scheduling | 高级计划与排程 | 02 生产制造 |
-| BI | Business Intelligence | 商业智能/数据分析 | 05 运营管理 |
-| CMS | Content Management System | 内容管理 | 01 研发创新 |
-| CRM | Customer Relationship Management | 客户关系管理 | 04 销售服务 |
-| EAM | Enterprise Asset Management | 企业资产管理 | 05 运营管理 |
-| ERP | Enterprise Resource Planning | 企业资源计划（核心） | 05 运营管理 |
-| LIMS | Laboratory Information Management System | 实验室信息管理 | 06 专项支持 |
-| MES | Manufacturing Execution System | 制造执行系统 | 02 生产制造 |
-| MOM | Manufacturing Operation Management | 制造运营管理 | 02 生产制造 |
-| OA | Office Automation | 办公自动化 | 05 运营管理 |
-| OMS | Order Management System | 订单管理 | 04 销售服务 |
-| PDM | Product Data Management | 产品数据管理 | 01 研发创新 |
-| PLM | Product Lifecycle Management | 产品生命周期管理 | 01 研发创新 |
-| PMS | Project Management System | 项目管理 | 06 专项支持 |
-| QMS | Quality Management System | 质量管理 | 05 运营管理 |
-| SCADA | Supervisory Control And Data Acquisition | 设备监控与数据采集 | 02 生产制造 |
-| SCRM | Social Customer Relationship Management | 社交化客户关系 | 04 销售服务 |
-| SCM | Supply Chain Management | 供应链管理 | 03 供应链 |
-| SRM | Supplier Relationship Management | 供应商关系管理 | 03 供应链 |
-| TMS | Transportation Management System | 运输管理 | 03 供应链 |
-| WMS | Warehouse Management System | 仓储管理 | 03 供应链 |
+| 缩写 | 全称 | 一句话定位 | 价值链章节 | 📚 深读 |
+|---|---|---|---|---|
+| APS | Advanced Planning and Scheduling | 高级计划与排程 | 02 生产制造 | — |
+| BI | Business Intelligence | 商业智能/数据分析 | 05 运营管理 | — |
+| CMS | Content Management System | 内容管理 | 01 研发创新 | — |
+| CRM | Customer Relationship Management | 客户关系管理 | 04 销售服务 | — |
+| EAM | Enterprise Asset Management | 企业资产管理 | 05 运营管理 | — |
+| ERP | Enterprise Resource Planning | 企业资源计划（核心） | 05 运营管理 | — |
+| LIMS | Laboratory Information Management System | 实验室信息管理 | 06 专项支持 | — |
+| MES | Manufacturing Execution System | 制造执行系统 | 02 生产制造 | — |
+| MOM | Manufacturing Operation Management | 制造运营管理 | 02 生产制造 | — |
+| OA | Office Automation | 办公自动化 | 05 运营管理 | — |
+| OMS | Order Management System | 订单管理 | 04 销售服务 | — |
+| PDM | Product Data Management | 产品数据管理 | 01 研发创新 | — |
+| PLM | Product Lifecycle Management | 产品生命周期管理 | 01 研发创新 | [深读](./plm/) |
+| PMS | Project Management System | 项目管理 | 06 专项支持 | — |
+| QMS | Quality Management System | 质量管理 | 05 运营管理 | — |
+| SCADA | Supervisory Control And Data Acquisition | 设备监控与数据采集 | 02 生产制造 | — |
+| SCRM | Social Customer Relationship Management | 社交化客户关系 | 04 销售服务 | — |
+| SCM | Supply Chain Management | 供应链管理 | 03 供应链 | — |
+| SRM | Supplier Relationship Management | 供应商关系管理 | 03 供应链 | — |
+| TMS | Transportation Management System | 运输管理 | 03 供应链 | — |
+| WMS | Warehouse Management System | 仓储管理 | 03 供应链 | — |
 
 ---
 
