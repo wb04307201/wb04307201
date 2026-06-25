@@ -161,3 +161,107 @@ flowchart LR
 | SW | Service Worker |
 | FOIT | Flash of Invisible Text |
 | FOUT | Flash of Unstyled Text |
+
+## 9. 框架特定优化
+
+### 9.1 React Compiler
+
+- React 19 自动 memo，无需手写 useMemo/useCallback
+- 编译器分析依赖 → 自动优化
+- 配置：`babel-plugin-react-compiler`
+
+### 9.2 Vue Vapor
+
+- Vue 3.5+ 编译时优化模式
+- 跳过虚拟 DOM，直接操作真实 DOM
+- 性能提升 2-3x
+
+### 9.3 Solid Fine-Grained Reactivity
+
+- 无虚拟 DOM，精确追踪依赖
+- 只更新变化的 DOM 节点
+- JSX 语法但响应式粒度更细
+
+## 10. SSR 注水优化
+
+### 10.1 Partial Hydration
+
+```mermaid
+flowchart LR
+    A[SSR HTML] --> B[Partial Hydration]
+    B --> C[关键组件<br/>立即 Hydrate]
+    B --> D[非关键组件<br/>Idle 时 Hydrate]
+```
+
+- Astro 框架默认 partial hydration
+- 关键交互组件立即激活
+- 其他组件延迟到浏览器空闲
+
+### 10.2 Selective Hydration
+
+- React 18 SSR 流式渲染
+- 优先级：用户交互的组件优先 hydrate
+- Suspense 边界独立 hydrate
+
+```javascript
+// React 18 Selective Hydration
+import { Suspense } from 'react'
+
+<Suspense fallback={<Skeleton />}>
+  <HeavyComponent />  {/* 独立 hydrate */}
+</Suspense>
+```
+
+## 11. 网络优化深入
+
+### 11.1 HTTP/3 + QUIC
+
+- 基于 UDP 的传输层协议（QUIC）
+- 0-RTT 握手：复用 TLS 会话
+- 多路复用：无队头阻塞
+- 连接迁移：网络切换不重连
+
+```nginx
+# Nginx 启用 HTTP/3
+listen 443 quic reuseport;
+add_header Alt-Svc 'h3=":443"; ma=86400';
+```
+
+### 11.2 CDN 边缘计算
+
+- 静态资源：边缘缓存（TTL 配置）
+- SSR：边缘函数（Cloudflare Workers / Vercel Edge）
+- API：边缘网关缓存
+
+```mermaid
+flowchart LR
+    A[用户] --> B[边缘节点]
+    B -->|命中| C[直接返回]
+    B -->|未命中| D[回源]
+    D --> B
+    B --> A
+```
+
+### 11.3 Early Hints (103)
+
+```http
+HTTP/1.1 103 Early Hints
+Link: </style.css>; rel=preload; as=style
+Link: </app.js>; rel=preload; as=script
+
+HTTP/1.1 200 OK
+Content-Type: text/html
+```
+
+- 浏览器在最终响应到达前开始加载关键资源
+- LCP 提升 100-300ms
+
+### 11.4 Priority Hints
+
+```html
+<img src="hero.jpg" fetchpriority="high">
+<script src="analytics.js" fetchpriority="low"></script>
+```
+
+- 告诉浏览器资源加载优先级
+- 关键资源优先下载

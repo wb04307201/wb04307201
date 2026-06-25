@@ -68,3 +68,207 @@ flowchart TD
 | invoke | 前端调用 Rust 函数 |
 | Bundle | 应用打包 |
 | IPC | 进程间通信 |
+
+## 9. Commands 示例
+
+### 9.1 Rust 端定义命令
+
+```rust
+use serde::{Deserialize, Serialize}
+
+#[derive(Serialize, Deserialize)]
+struct Todo {
+    id: u32,
+    title: String,
+    done: bool,
+}
+
+#[tauri::command]
+async fn get_todos(state: tauri::State<'_, AppState>) -> Result<Vec<Todo>, String> {
+    let db = state.db.lock().await
+    sqlx::query_as::<_, Todo>("SELECT id, title, done FROM todos")
+        .fetch_all(&db)
+        .await
+        .map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+async fn create_todo(title: String, state: tauri::State<'_, AppState>) -> Result<Todo, String> {
+    let db = state.db.lock().await
+    sqlx::query_as::<_, Todo>(
+        "INSERT INTO todos (title, done) VALUES (?, ?) RETURNING id, title, done"
+    )
+    .bind(&title)
+    .bind(false)
+    .fetch_one(&db)
+    .await
+    .map_err(|e| e.to_string())
+}
+```
+
+### 9.2 前端 invoke 调用
+
+```javascript
+import { invoke } from '@tauri-apps/api/core'
+
+// 调用 Rust 命令
+const todos = await invoke('get_todos')
+const newTodo = await invoke('create_todo', { title: '学习 Tauri' })
+
+// 错误处理
+try {
+  await invoke('create_todo', { title: '' })
+} catch (e) {
+  console.error('创建失败:', e)
+}
+```
+
+## 10. 插件开发
+
+### 10.1 自定义 Plugin 结构
+
+```rust
+// src-tauri/src/lib.rs
+use tauri::{plugin::{Builder, TauriPlugin}, Manager}
+
+#[derive(serde::Serialize)]
+struct PluginResponse {
+    message: String,
+}
+
+#[tauri::command]
+fn my_command(name: String) -> PluginResponse {
+    PluginResponse { message: format!("Hello, {}!", name) }
+}
+
+pub fn init() -> TauriPlugin {
+    Builder::new("my-plugin")
+        .invoke_handler(tauri::generate_handler![my_command])
+        .build()
+}
+```
+
+### 10.2 权限配置
+
+```json
+// src-tauri/permissions/my-plugin/default.toml
+[[permission]]
+identifier = "allow-my-command"
+description = "允许调用 my-command"
+commands = ["my_command"]
+```
+
+```rust
+// main.rs 注册插件
+tauri::Builder::default()
+    .plugin(my_plugin::init())
+    .run(tauri::generate_context!())
+    .expect("error while running tauri application")
+```
+
+## 11. 状态管理
+
+### 11.1 tauri-plugin-store 持久化
+
+```javascript
+import { Store } from '@tauri-apps/plugin-store'
+
+const store = new Store('settings.json')
+
+// 存储
+await store.set('theme', 'dark')
+await store.save()
+
+// 读取
+const theme = await store.get('theme')
+
+// 监听变化
+await store.onChange((key, value) => {
+  console.log(`${key} changed to ${value}`)
+})
+```
+
+### 11.2 自定义 IPC 模式
+
+```mermaid
+sequenceDiagram
+    participant F as Frontend
+    participant R as Rust
+    F->>R: invoke('get_data')
+    R-->>F: data
+    F->>R: emit('event', payload)
+    R-->>F: listen via callback
+```
+
+- `invoke`：前端 → Rust 请求-响应
+- `emit/listen`：双向事件广播
+- 适合实时通信（WebSocket 转发、文件监听）
+
+## 12. 实战案例
+
+### 12.1 代码编辑器
+
+- Monaco Editor / CodeMirror 6
+- 文件系统 API（tauri-plugin-fs）
+- LSP 集成（Rust 后端进程）
+
+### 12.2 笔记应用
+
+- 本地优先 + 端到端加密
+- SQLite + tauri-plugin-sql
+- Markdown 实时预览
+
+### 12.3 DevOps 工具
+
+- 系统集成（shell、文件系统、网络）
+- 终端模拟（xterm.js）
+- 进程管理
+
+### 12.4 设计工具
+
+- Canvas + Fabric.js
+- tauri-plugin-dialog 文件选择
+- 导出多格式
+
+### 12.5 AI 应用
+
+- 本地 LLM（llama.cpp / Ollama）
+- 流式输出（emit 事件）
+- RAG 向量数据库
+
+## 13. Tauri 2.0 移动端
+
+### 13.1 iOS 编译
+
+```bash
+# 安装前置
+cargo install tauri-cli --version "^2.0"
+rustup target add aarch64-apple-ios
+
+# 开发运行
+cargo tauri ios dev
+
+# 打包发布
+cargo tauri ios build
+```
+
+### 13.2 Android 编译
+
+```bash
+# 配置 Android SDK / NDK
+export ANDROID_HOME=$HOME/Android/Sdk
+export NDK_HOME=$ANDROID_HOME/ndk/26.1.10909125
+
+# 开发运行
+cargo tauri android dev
+
+# 打包 APK/AAB
+cargo tauri android build
+```
+
+### 13.3 移动端能力
+
+- tauri-plugin-geolocation（位置）
+- tauri-plugin-camera（相机）
+- tauri-plugin-push-notification（推送）
+- tauri-plugin-biometric（生物识别）

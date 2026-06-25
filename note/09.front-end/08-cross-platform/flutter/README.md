@@ -79,3 +79,215 @@ flowchart TD
 | Platform Channel | Dart ↔ Native 通信 |
 | Isolate | Dart 多线程 |
 | AOT | Ahead-of-Time 编译 |
+
+## 10. Platform Channels 代码示例
+
+### 10.1 MethodChannel 双向通信
+
+```dart
+// Dart 端
+import 'package:flutter/services.dart'
+
+class BatteryService {
+  static const _channel = MethodChannel('com.app/battery')
+
+  Future<int> getBatteryLevel() async {
+    try {
+      final level = await _channel.invokeMethod<int>('getBatteryLevel')
+      return level ?? -1
+    } on PlatformException {
+      return -1
+    }
+  }
+}
+```
+
+```kotlin
+// Android 端（Kotlin）
+class MainActivity : FlutterActivity() {
+  override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
+    super.configureFlutterEngine(flutterEngine)
+    MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "com.app/battery")
+      .setMethodCallHandler { call, result ->
+        if (call.method == "getBatteryLevel") {
+          val level = getBatteryPercentage()
+          result.success(level)
+        } else {
+          result.notImplemented()
+        }
+      }
+  }
+}
+```
+
+```swift
+// iOS 端（Swift）
+import Flutter
+
+@main
+@objc class AppDelegate: FlutterAppDelegate {
+  override func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+  ) -> Bool {
+    let controller = window?.rootViewController as! FlutterViewController
+    let channel = FlutterMethodChannel(
+      name: "com.app/battery",
+      binaryMessenger: controller.binaryMessenger
+    )
+    channel.setMethodCallHandler { (call, result) in
+      if call.method == "getBatteryLevel" {
+        result(getBatteryPercentage())
+      } else {
+        result(FlutterMethodNotImplemented)
+      }
+    }
+    return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+  }
+}
+```
+
+## 11. Isolate 多线程
+
+### 11.1 compute() 简单场景
+
+```dart
+// 简单并行计算
+import 'package:flutter/foundation.dart'
+
+Future<List<int>> heavyCompute(List<int> input) async {
+  return await compute(_parseInBackground, input)
+}
+
+List<int> _parseInBackground(List<int> input) {
+  return input.map((n) => n * n).toList()
+}
+```
+
+### 11.2 Isolate.run() 复杂场景
+
+```dart
+import 'dart:isolate'
+
+Future<String> parseBigJson(String jsonString) async {
+  return await Isolate.run(() {
+    final data = jsonDecode(jsonString) as List
+    return data.length.toString()
+  })
+}
+```
+
+## 12. 动画深入
+
+### 12.1 AnimationController 基础
+
+```dart
+class FadeInWidget extends StatefulWidget {
+  @override
+  State<FadeInWidget> createState() => _FadeInWidgetState()
+}
+
+class _FadeInWidgetState extends State<FadeInWidget>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller
+  late Animation<double> _animation
+
+  @override
+  void initState() {
+    super.initState()
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 300),
+    )
+    _animation = CurvedAnimation(parent: _controller, curve: Curves.easeIn)
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FadeTransition(opacity: _animation, child: Text('Hello'))
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose()
+    super.dispose()
+  }
+}
+```
+
+### 12.2 Hero 跨页面动画
+
+```dart
+// 列表页
+Hero(tag: 'avatar-${user.id}', child: Image.network(user.avatar))
+
+// 详情页
+Hero(tag: 'avatar-${user.id}', child: Image.network(user.avatar, width: 200))
+```
+
+### 12.3 CustomPainter 自定义绘制
+
+```dart
+class CircleChartPainter extends CustomPainter {
+  final double progress
+  CircleChartPainter(this.progress)
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Colors.blue
+      ..strokeWidth = 8
+      ..style = PaintingStyle.stroke
+    canvas.drawArc(
+      Rect.fromCircle(center: size.center(Offset.zero), radius: 80),
+      0, progress * 2 * pi, false, paint,
+    )
+  }
+
+  @override
+  bool shouldRepaint(CircleChartPainter old) => old.progress != progress
+}
+```
+
+## 13. Impeller vs Skia 对比
+
+| 维度 | Skia | Impeller |
+|------|------|----------|
+| 架构 | CPU 录制命令 | 预编译 Metal/Vulkan |
+| 抖动 | 偶发（首帧卡顿） | 显著减少 |
+| 性能 | iOS 良好 | iOS 优于 Skia |
+| 平台支持 | 全平台 | iOS 默认启用，Android 2024 启用 |
+| 自定义着色器 | SkSL | GLSL（编译时转换） |
+| 内存占用 | 较高 | 更低 |
+
+## 14. 真实案例
+
+### 14.1 IoT 智能家居
+
+- 单一 Flutter 端控制 iOS/Android/Web 设备
+- MQTT 协议 + WebSocket 双链路
+- Platform Channels 调用蓝牙 SDK
+
+### 14.2 金融 App
+
+- 安全键盘（自绘组件）
+- 加密插件（Platform Channels 调原生）
+- 生物识别认证
+
+### 14.3 电商 App
+
+- 复杂动画（Hero + CustomPainter）
+- 图片懒加载 + 缓存
+- 多端复用业务逻辑
+
+### 14.4 教育 App
+
+- 音视频播放 + 字幕同步
+- 富文本笔记（Quill 编辑器）
+- 离线下载课程
+
+### 14.5 社交 App
+
+- 即时通讯（WebSocket + 消息队列）
+- 动态发布（图片/视频/位置）
+- 实时音视频（Agora/声网 SDK）
