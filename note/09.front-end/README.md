@@ -139,7 +139,146 @@ graph LR
 
 ---
 
-## 3. 学习路线
+## 3. 速查地图
+
+> 9 大方向 12 张速查表，按事实属性（功能/性能/生态）对比，不分级推荐。
+
+### 3.1 构建工具速查
+
+| 工具 | 启动 | HMR | 生产构建 | 生态 | 适用场景 |
+|------|------|-----|---------|------|---------|
+| Vite 5+ | < 1s | 极快 | Rollup | 丰富 | 现代项目默认选择 |
+| Rspack | < 2s | 快 | 兼容 Webpack | 中等 | Webpack 迁移友好 |
+| Turbopack | < 1s | 极快 | 自研 | 新 | Next.js 15+ |
+| Webpack 5 | 慢 | 中等 | 自研 | 极丰富 | 遗留项目/特殊 loader |
+| Parcel 2 | < 1s | 快 | 自研 | 小 | 零配置快速原型 |
+
+### 3.2 框架对比速查
+
+| 框架 | 范式 | 渲染策略 | 状态管理 | 学习曲线 | 适用场景 |
+|------|------|---------|---------|---------|---------|
+| React 19 | 声明式/函数式 | 客户端 + RSC | 外部库 | 中 | 大型应用/生态丰富 |
+| Vue 3.4 | 声明式/响应式 | 客户端 + SSR | Pinia | 低-中 | 中小型/团队上手快 |
+| Svelte 5 | 编译时 | 客户端 | 内置 store | 低 | 高性能小应用 |
+| Solid | 细粒度响应 | 客户端 | 内置 signal | 中 | 高性能/类 React 语法 |
+| Astro | 多框架 + Islands | 静态 + 局部注水 | 框架自带 | 低 | 内容型站点 |
+| htmx | HTML over the wire | 服务端 | 弱 | 低 | 服务端渲染增强 |
+
+### 3.3 元框架速查
+
+| 元框架 | 默认框架 | 渲染模式 | 部署平台 | 适用场景 |
+|--------|---------|---------|---------|---------|
+| Next.js 15 | React | RSC/SSR/SSG/ISR | Vercel/自托管 | 通用 SaaS |
+| Nuxt 3 | Vue | SSR/SSG | Vercel/Netlify | Vue 全栈 |
+| SvelteKit | Svelte | SSR/SSG | Vercel/自托管 | 高性能 Web |
+| Remix | React | SSR/Loader | Fly/自托管 | 表单密集型 |
+| Astro 4 | 多框架 | Islands | 任何静态 | 内容型 |
+
+### 3.4 状态管理速查
+
+| 库 | 范式 | 体积 | 适用规模 | 框架 |
+|----|------|------|---------|------|
+| Zustand 4 | Hook | 1KB | 中小 | React |
+| Jotai 2 | Atom | 3KB | 中小 | React |
+| Redux Toolkit | Slice | 10KB | 大型 | React |
+| Pinia 2 | Store | 1KB | 中小 | Vue |
+| Valtio 2 | Proxy | 3KB | 中小 | React |
+| Nano Stores | Atomic | 1KB | 跨框架 | 通用 |
+
+### 3.5 路由速查
+
+| 库 | 范式 | 类型安全 | 数据加载 | 框架 |
+|----|------|---------|---------|------|
+| React Router 7 | Component | 中 | Loader | React |
+| Vue Router 4 | Component | 中 | 守卫 | Vue |
+| TanStack Router | File-based | 强 | 内置 | React |
+| Nuxt Router | File-based | 强 | 内置 | Vue |
+| SvelteKit Router | File-based | 强 | 内置 | Svelte |
+
+### 3.6 渲染模式速查
+
+| 模式 | 描述 | SEO | 首屏速度 | 适用场景 |
+|------|------|-----|---------|---------|
+| CSR | 客户端渲染 | 弱 | 慢 | 后台/工具型 |
+| SSR | 服务端渲染 | 强 | 快 | 内容型/SEO 关键 |
+| SSG | 静态生成 | 强 | 最快 | 博客/文档 |
+| ISR | 增量静态 | 强 | 快 | 大量页面 + 偶尔更新 |
+| RSC | React Server Components | 强 | 快 | 数据密集型 React |
+| Islands | 局部注水 | 强 | 快 | 内容型 + 局部交互 |
+
+### 3.7 跨端速查
+
+| 方案 | 渲染 | 性能 | 包大小 | 平台覆盖 | 适用场景 |
+|------|------|------|-------|---------|---------|
+| React Native | Native | 中 | 中 | iOS/Android | 移动 App 主流 |
+| Flutter | Skia | 高 | 大 | iOS/Android/Web/Desktop | 跨端 UI 一致性 |
+| Tauri 2 | WebView | 高 | 小 (< 10MB) | Desktop | 轻量桌面应用 |
+| PWA | 浏览器 | 中 | 无 | 跨平台 | 渐进式增强 |
+| 小程序 | WebView | 中 | 小 | 国内平台 | 微信/支付宝生态 |
+| Electron | WebView | 中 | 大 (100MB+) | Desktop | 兼容旧项目 |
+
+### 3.8 UI 库速查
+
+| 库 | 框架 | 主题 | 组件数 | 体积 | 适用 |
+|----|------|------|-------|------|------|
+| shadcn/ui | React | Tailwind | 40+ | 按需 | 现代项目首选 |
+| Material UI | React | Emotion | 80+ | 大 | 企业后台 |
+| Ant Design | React | CSS-in-JS | 70+ | 大 | 国内中后台 |
+| Element Plus | Vue | SCSS | 70+ | 大 | 国内中后台 |
+| Naive UI | Vue | 主题化 | 80+ | 中 | 现代 Vue 3 |
+| Vant | Vue | Less | 70+ | 中 | 移动端 H5 |
+
+### 3.9 测试速查
+
+| 工具 | 类型 | 速度 | 浏览器 | 框架 | 适用 |
+|------|------|------|-------|------|------|
+| Vitest | 单元 | 极快 | - | 通用 | Vite 项目默认 |
+| Jest | 单元 | 快 | - | 通用 | 遗留项目 |
+| Playwright | E2E | 中 | Chromium/Firefox/WebKit | 通用 | 跨浏览器 E2E |
+| Cypress | E2E | 中 | Chromium/Firefox | React/Vue | 中后台 E2E |
+| Testing Library | 组件 | 快 | - | React/Vue | 组件测试 |
+
+### 3.10 性能监控速查
+
+| 工具 | 类型 | 数据源 | 实时性 | 适用 |
+|------|------|-------|-------|------|
+| web-vitals | 库 | RUM | 实时 | 接入 LCP/INP/CLS |
+| Lighthouse CI | 工具 | 实验室 | 一次性 | PR 阶段卡阈值 |
+| Chrome UX Report | 数据 | CrUX | 真实用户 | 线上大盘 |
+| Sentry | APM | RUM | 实时 | 错误 + 性能 |
+| Datadog RUM | APM | RUM | 实时 | 全栈可观测 |
+
+### 3.11 安全速查
+
+| 威胁 | 防御手段 | 库/工具 | 优先级 |
+|------|---------|--------|-------|
+| XSS | 输入过滤 + CSP | DOMPurify | P0 |
+| CSRF | Token 验证 | csrf-csrf | P0 |
+| CSP | 头部 + nonce | helmet | P0 |
+| CORS | 白名单 | cors | P0 |
+| 会话劫持 | HttpOnly + Secure cookie | express-session | P0 |
+| 依赖投毒 | SCA 扫描 | npm audit / Snyk | P1 |
+
+### 3.12 AI 工具速查
+
+| 工具 | 形态 | 模型 | 适用 |
+|------|------|------|------|
+| Cursor | IDE | 多模型 | AI 编码主战场 |
+| Claude Code | CLI | Claude | 终端/工作流集成 |
+| Windsurf | IDE | 多模型 | 团队协作 |
+| Copilot | 插件 | GPT | GitHub 用户 |
+| Vercel AI SDK | 库 | 多模型 | 集成 AI 能力 |
+| Anthropic SDK | 库 | Claude | 直接对接 Claude |
+
+---
+
+## 4. 选型决策树
+
+> 章节占位 — 选型决策树将在 T3 写入：渲染模式选型 / 状态管理选型 / 框架选型 / 元框架选型 四棵决策树。
+
+---
+
+## 5. 学习路线
 
 按角色与目标，给出 4 条主线：
 
@@ -150,7 +289,7 @@ graph LR
 
 ---
 
-## 4. 交叉引用
+## 6. 交叉引用
 
 - [`02.computer-basics/01-network/`](../02.computer-basics/01-network/) — HTTP / HTTPS / HTTP2 / HTTP3 协议族
 - [`05.tools/monorepo/`](../05.tools/monorepo/) — Monorepo 工具链（与 `04-engineering` 互补）
@@ -160,7 +299,7 @@ graph LR
 
 ---
 
-## 5. 开源参考
+## 7. 开源参考
 
 | 类别 | 项目 | 关联模块 |
 |------|------|---------|
@@ -176,7 +315,7 @@ graph LR
 
 ---
 
-## 6. 章节统计
+## 9. 章节统计
 
 - **一级模块数**：9（01 基础 / 02 语言 / 03 框架 / 04 工程化 / 05 架构 / 06 性能 / 07 安全 / 08 跨端 / 09 前端与 AI）
 - **二级子 README 数**：28 个
