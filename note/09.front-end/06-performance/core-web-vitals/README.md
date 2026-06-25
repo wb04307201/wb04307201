@@ -101,8 +101,8 @@ button.addEventListener('click', async () => {
 | 动态插入内容 | 避免在视口内注入 |
 
 ```html
-<!-- 图片必须指定尺寸 -->
-<img src="photo.jpg" width="800" height="600" alt="...">
+<!-- 图片必须指定尺寸（width/height 避免 CLS） -->
+<!-- 示例：<img src="..." width="800" height="600" alt="..."> -->
 
 <!-- 字体优化 -->
 <link rel="preload" as="font" href="/font.woff2" crossorigin>

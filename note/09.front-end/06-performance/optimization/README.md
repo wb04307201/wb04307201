@@ -259,7 +259,8 @@ Content-Type: text/html
 ### 11.4 Priority Hints
 
 ```html
-<img src="hero.jpg" fetchpriority="high">
+<!-- 关键图片使用 fetchpriority="high" 提升 LCP -->
+<!-- 示例语法：<img src="..." fetchpriority="high"> -->
 <script src="analytics.js" fetchpriority="low"></script>
 ```
 
