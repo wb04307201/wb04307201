@@ -214,22 +214,12 @@ flowchart LR
 
 #### CRM（Customer Relationship Management 客户关系管理）
 
-- **定义**：管理客户全生命周期（线索→商机→订单→服务→复购）的系统，是企业对外经营的主入口。
-- **核心能力**：
-  - 客户主数据（客户/联系人/账户视图）
-  - 销售流程（线索、商机、报价、合同）
-  - 营销自动化（活动、群发、归因）
-  - 客户服务（工单、知识库）
-- **典型场景**：
-  - B2B 大客户销售（项目型销售过程管理）
-  - B2C 零售（会员体系、营销自动化）
-  - 售后服务（呼叫中心、现场服务）
-- **上下游关系**：
-  - 上游：接市场活动（广告投放、官网注册）
-  - 下游：向 OMS 推送订单、向 ERP 同步客户主数据
-- **关键考量**：
-  - SaaS 化趋势明显（Salesforce/HubSpot/纷享销客）
-  - 与营销工具（MA）、呼叫中心的对接是常见集成点
+- **核心定位**：以客户全生命周期为主线的管理与运营平台，是企业对外经营的主入口
+- **关键能力**：客户主数据 / 销售自动化 SFA（L→O→Q→C→O 漏斗）/ 市场自动化 / 客服工单 / 客户成功
+- **典型场景**：B2B 大客户 / B2C 零售 / SaaS 订阅 / 经销商网络 / 金融保险代理人
+- **上下游**：上接市场自动化 / SCRM / CDP，下接 ERP / OMS；横向与客服系统闭环
+- **关键考量**：销售流程标准化是前提；数据质量决定价值；移动端体验关键
+- 📚 详见 [CRM 深读](./crm/) — 上下游 / 选型指南 / 常见陷阱
 
 ### 📋 其他系统速览
 
@@ -451,7 +441,7 @@ flowchart LR
 | APS | Advanced Planning and Scheduling | 高级计划与排程 | 02 生产制造 | — |
 | BI | Business Intelligence | 商业智能/数据分析 | 05 运营管理 | — |
 | CMS | Content Management System | 内容管理 | 01 研发创新 | — |
-| CRM | Customer Relationship Management | 客户关系管理 | 04 销售服务 | — |
+| CRM | Customer Relationship Management | 客户关系管理 | 04 销售服务 | [深读](./crm/) |
 | EAM | Enterprise Asset Management | 企业资产管理 | 05 运营管理 | — |
 | ERP | Enterprise Resource Planning | 企业资源计划（核心） | 05 运营管理 | — |
 | LIMS | Laboratory Information Management System | 实验室信息管理 | 06 专项支持 | — |
