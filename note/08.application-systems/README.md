@@ -257,27 +257,12 @@ flowchart LR
 
 #### ERP（Enterprise Resource Planning 企业资源计划）
 
-- **定义**：集成企业所有核心业务（财务、采购、库存、销售、生产）于一体的管理软件，是企业数字化的中枢。
-- **核心功能模块**：
-  - **财务模块**：总账、应收应付、固定资产、成本核算
-  - **采购模块**：采购申请、订单、收货、发票、付款
-  - **销售模块**：销售订单、发货、开票、收入确认
-  - **库存模块**：入库、出库、调拨、盘点
-  - **生产模块**：MRP 运算、工单、产能
-  - **人力资源**：组织、薪酬、考勤（部分 ERP 含）
-- **典型场景**：
-  - 制造业（SAP S/4HANA、Oracle EBS、用友 U9、金蝶 EAS）
-  - 商贸业（进销存 + 财务一体）
-  - 服务业（项目型 ERP + 财务）
-- **上下游关系**（ERP 是中枢，几乎所有系统都和 ERP 集成）：
-  - 上游：接 CRM（订单）、SRM（采购订单）、MES（生产工单）
-  - 下游：向 BI 输出财务/业务数据、向 BI 同步主数据
-  - 横向：与 WMS/TMS/PLM/QMS 等深度集成
-- **关键考量**：
-  - **行业属性强**：制造业 ERP 不能简单套用到服务业
-  - **实施周期长**：6-18 个月，必须有强项目管理
-  - **数据迁移**：历史数据清洗是头号风险
-  - **二次开发**：要警惕厂商绑定
+- **核心定位**：整合企业核心业务流程（财务、采购、库存、销售、生产）于一体，是企业数字化的"中枢系统"
+- **关键能力**：财务（总账/应收应付/固定资产/成本）/采购 PO+GR+IR 三单匹配/库存批次序列号/MRP 运算/多组织合并
+- **典型场景**：大型集团（SAP/Oracle）、中型制造（用友 U9/金蝶云·星空）、小型（金蝶云·星辰）、零售/项目型
+- **上下游**：上接 CRM/PLM，下接 MES/WMS/SCM，横向与 HR/财务/BI 双向同步
+- **关键考量**：行业 Know-how 比品牌重要；实施周期 1-3 年；数据迁移占成本 30-40%；主数据治理必须先行
+- 📚 详见 [ERP 深读](./erp/) — 上下游 / 选型指南 / 常见陷阱 / 代表案例
 
 ### 📋 其他系统速览
 
@@ -443,7 +428,7 @@ flowchart LR
 | CMS | Content Management System | 内容管理 | 01 研发创新 | — |
 | CRM | Customer Relationship Management | 客户关系管理 | 04 销售服务 | [深读](./crm/) |
 | EAM | Enterprise Asset Management | 企业资产管理 | 05 运营管理 | — |
-| ERP | Enterprise Resource Planning | 企业资源计划（核心） | 05 运营管理 | — |
+| ERP | Enterprise Resource Planning | 企业资源计划（核心） | 05 运营管理 | [深读](./erp/) |
 | LIMS | Laboratory Information Management System | 实验室信息管理 | 06 专项支持 | — |
 | MES | Manufacturing Execution System | 制造执行系统 | 02 生产制造 | [深读](./mes/) |
 | MOM | Manufacturing Operation Management | 制造运营管理 | 02 生产制造 | — |
