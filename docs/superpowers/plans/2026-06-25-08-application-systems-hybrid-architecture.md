@@ -19,7 +19,7 @@
 - **链接风格**：相对路径（如 `./plm/`），不使用绝对路径
 - **Mermaid 兼容性**：避免 `mindmap` 等渲染支持有限的语法（沿用 09.front-end 的 flowchart + subgraph 模式）
 - **每深读 README 200-500 行**：6 标准节 + 2-3 可选节
-- **主 README 行数目标**：380-420 行
+- **主 README 行数目标**：380-420 行（最终态，T6 完成后验收；per-task 中间态 = 原 531 - 已完成任务数 × ~20）
 - **6 个 commit**：每个 commit 独立可查、独立可回滚
 - **0 处占位符**：完成后 `grep -rE "TODO|TBD|待完善" note/08.application-systems/` 必须 0 行
 
@@ -348,7 +348,7 @@ PLM 行修改后：
 wc -l note/08.application-systems/README.md
 ```
 
-Expected: 380-480 行（相比原 531 行减少约 50-150 行）。
+Expected: 510-530 行（中间态；最终态 380-420 行在 T6 完成后）。Task 1 范围仅限 PLM 详讲，PDM/MES/CRM/ERP/WMS 段在后续任务中各自精简。
 
 - [ ] **Step 1.17: 验证链接可点 + 无 PNG**
 
