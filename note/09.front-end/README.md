@@ -274,18 +274,80 @@ graph LR
 
 ## 4. 选型决策树
 
-> 章节占位 — 选型决策树将在 T3 写入：渲染模式选型 / 状态管理选型 / 框架选型 / 元框架选型 四棵决策树。
+### 4.1 框架选型
+
+```mermaid
+flowchart TD
+    A[新项目选型] --> B{需要 SEO?}
+    B -->|是| C{需要数据加载?}
+    B -->|否| D[纯 CSR 应用]
+    C -->|是| E[Next.js / Nuxt / SvelteKit]
+    C -->|否| F[Astro / SSG]
+    D --> G{团队熟悉?}
+    G -->|React| H[React 19 + Vite]
+    G -->|Vue| I[Vue 3.4 + Vite]
+    G -->|新探索| J[Svelte 5 / Solid]
+```
+
+### 4.2 状态管理选型
+
+```mermaid
+flowchart TD
+    A[状态管理选型] --> B{应用规模?}
+    B -->|小型| C[组件 state + Context]
+    B -->|中型| D[Zustand / Pinia]
+    B -->|大型| E{需要时间旅行?}
+    E -->|是| F[Redux Toolkit]
+    E -->|否| G[Zustand + persist]
+```
+
+### 4.3 跨端选型
+
+```mermaid
+flowchart TD
+    A[跨端需求] --> B{目标平台?}
+    B -->|仅 Web| C[PWA]
+    B -->|iOS+Android| D{UI 一致性要求?}
+    D -->|高| E[Flutter]
+    D -->|中| F[React Native]
+    B -->|Desktop| G{包大小敏感?}
+    G -->|是| H[Tauri 2]
+    G -->|否| I[Electron]
+```
+
+### 4.4 性能优化优先级
+
+```mermaid
+flowchart TD
+    A[性能问题] --> B{LCP > 2.5s?}
+    B -->|是| C[加载优化<br/>code split + preload]
+    B -->|否| D{INP > 200ms?}
+    D -->|是| E[运行时优化<br/>虚拟列表 + Web Worker]
+    D -->|否| F{CLS > 0.1?}
+    F -->|是| G[布局稳定<br/>图片尺寸 + 字体]
+    F -->|否| H[已达标]
+```
 
 ---
 
 ## 5. 学习路线
 
-按角色与目标，给出 4 条主线：
+按角色与目标，给出 5 条主线：
 
 1. **新人入门**：`01` → `02` → `03`(React 或 Vue 任一) → `04`
 2. **后端补前端**：`02`(TypeScript) → `03`(React 或 Vue) → `05`(BFF / 微前端)
 3. **架构师**：`05` → `06` → `07` → `03`(选型)
 4. **AI 时代前端**：`03` → `04` → `09`
+5. **跨端开发者**：`03` → `05`(BFF) → `08`(选 1-2 个深入)
+
+### 5.1 各角色重点章节
+
+| 角色 | 必看 | 加分 | 可选 |
+|------|------|------|------|
+| 前端新人 | 01/02/03/04 | 05 渲染模式 | 07 安全基础 |
+| 后端转前端 | 02/03/05 | 04 工程化 | 09 AI 工具 |
+| 前端架构师 | 05/06/07 | 04 测试 | 08 跨端 |
+| AI 时代前端 | 03/09 | 06 性能 | 07 安全 |
 
 ---
 
@@ -315,16 +377,70 @@ graph LR
 
 ---
 
+## 8. 数据时效性
+
+本章节内容需定期更新：
+
+| 内容 | 更新周期 | 来源 |
+|------|---------|------|
+| 框架对比（3.2） | 每年 | State of JS |
+| 元框架（3.3） | 每年 | Vercel/Netlify 官方 |
+| 跨端（3.7） | 每年 | Tauri/Flutter 官方 |
+| AI 工具（3.12） | 每季度 | 厂商发布 |
+| 选型决策树 | 每年 | 行业实践 |
+| 学习路线 | 每年 | 行业趋势 |
+
+> 数据快照日期：2026-06
+
+---
+
 ## 9. 章节统计
 
 - **一级模块数**：9（01 基础 / 02 语言 / 03 框架 / 04 工程化 / 05 架构 / 06 性能 / 07 安全 / 08 跨端 / 09 前端与 AI）
-- **二级子 README 数**：28 个
-  - 01 基础：2（browser-rendering / css-engineering）
-  - 02 语言：2（typescript / runtime）
-  - 04 工程化：2（vite / monorepo-practice）
-  - 05 架构：7（rendering-modes / state-management / routing / micro-frontend / web-components / bff / design-system）
-  - 06 性能：2（core-web-vitals / monitoring）
-  - 07 安全：6（xss / csrf / csp / supply-chain / cors / sessions）
-  - 08 跨端：2（react-native / mini-program）
-  - 09 前端与 AI：2（ai-sdk / vibe-coding）
+- **二级子 README 数**：25 + 6 (T12 新增) = 31
+- **子 README 分布**：
+  - 01 基础：2
+  - 02 语言：2
+  - 03 框架：2（T12 新增）
+  - 04 工程化：2
+  - 05 架构：7
+  - 06 性能：3（T12 新增 optimization）
+  - 07 安全：6
+  - 08 跨端：5（T12 新增 flutter/tauri/pwa）
+  - 09 前端与 AI：2
 - **互引章节**：[`11.ai/`](../11.ai/)、[`12.story/`](../12.story/)、[`13.split-hairs/09.front-end/`](../13.split-hairs/09.front-end/)
+
+---
+
+## 10. 变更记录
+
+- **2026-06-26**：重构为「完整地图 + 9 子模块统一索引 + 31 子 README」混合模式（仿 08）
+- **2026-06-25**：9 模块结构定型
+- **历史**：从 4 模块扩展到 9 模块
+
+---
+
+## 11. 附录：术语表
+
+| 术语 | 解释 |
+|------|------|
+| RSC | React Server Components，服务端组件 |
+| ISR | Incremental Static Regeneration，增量静态再生 |
+| SSG | Static Site Generation，静态站点生成 |
+| SSR | Server-Side Rendering，服务端渲染 |
+| CSR | Client-Side Rendering，客户端渲染 |
+| BFF | Backend For Frontend，前端专属后端 |
+| SPA | Single Page Application，单页应用 |
+| PWA | Progressive Web App，渐进式 Web 应用 |
+| MPA | Multi Page Application，多页应用 |
+| CWV | Core Web Vitals，核心 Web 指标 |
+| LCP | Largest Contentful Paint，最大内容绘制 |
+| INP | Interaction to Next Paint，下一次绘制交互 |
+| CLS | Cumulative Layout Shift，累计布局偏移 |
+| TTI | Time to Interactive，可交互时间 |
+| MCP | Model Context Protocol，模型上下文协议 |
+| BOM | Browser Object Model，浏览器对象模型 |
+| DOM | Document Object Model，文档对象模型 |
+| HMR | Hot Module Replacement，热模块替换 |
+| CDN | Content Delivery Network，内容分发网络 |
+| SCA | Software Composition Analysis，成分分析 |
