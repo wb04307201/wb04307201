@@ -12,8 +12,8 @@
 |------|------|------|
 | Vite 5+ | ✓ 已有 | [vite/](vite/) — 构建工具首选 / HMR / 插件体系 |
 | Monorepo 实践 | ✓ 已有 | [monorepo-practice/](monorepo-practice/) — pnpm workspace / Turborepo / Nx |
-| 包管理 | 📝 速查 | npm / pnpm / yarn 选型见 [📖 顶层 3.1 构建工具速查](../../README.md#31-构建工具速查) |
-| 测试体系 | 📝 速查 | Vitest / Jest / Playwright 见 [📖 顶层 3.9 测试速查](../../README.md#39-测试速查) |
+| 包管理 | 📝 速查 | npm / pnpm / yarn 选型见 [📖 顶层 3.1 构建工具速查](../README.md#31-构建工具速查) |
+| 测试体系 | 📝 速查 | Vitest / Jest / Playwright 见 [📖 顶层 3.9 测试速查](../README.md#39-测试速查) |
 | Lint / Format | 📝 速查 | ESLint / Prettier / Biome 详见顶层速查 |
 
 ---

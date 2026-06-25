@@ -17,7 +17,7 @@
 | 会话管理 | ✓ 已有 | [sessions/](sessions/) — Cookie / JWT / OAuth 2.0 / OIDC |
 | 依赖供应链 | ✓ 已有 | [supply-chain/](supply-chain/) — SCA / npm audit / Snyk / 锁文件 |
 
-> 速查对比见 [📖 顶层 3.11 安全速查](../../README.md#311-安全速查)
+> 速查对比见 [📖 顶层 3.11 安全速查](../README.md#311-安全速查)
 
 ---
 

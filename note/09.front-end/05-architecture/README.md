@@ -18,7 +18,7 @@
 | BFF | ✓ 已有 | [bff/](bff/) — Backend For Frontend / GraphQL BFF / tRPC |
 | 设计系统 | ✓ 已有 | [design-system/](design-system/) — 组件库 / Token / 主题 / Storybook |
 
-> 速查对比见 [📖 顶层 3.4 状态管理速查](../../README.md#34-状态管理速查)、[3.5 路由速查](../../README.md#35-路由速查)、[3.6 渲染模式速查](../../README.md#36-渲染模式速查)
+> 速查对比见 [📖 顶层 3.4 状态管理速查](../README.md#34-状态管理速查)、[3.5 路由速查](../README.md#35-路由速查)、[3.6 渲染模式速查](../README.md#36-渲染模式速查)
 
 ---
 

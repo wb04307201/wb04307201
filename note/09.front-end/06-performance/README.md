@@ -14,7 +14,7 @@
 | 性能监控 | ✓ 已有 | [monitoring/](monitoring/) — RUM / Lighthouse CI / Sentry / Datadog |
 | 优化手段 | ✓ 已有 (T12) | [optimization/](optimization/) — 加载/运行时/资源/网络 4 大类优化 |
 
-> 速查对比见 [📖 顶层 3.10 性能监控速查](../../README.md#310-性能监控速查)
+> 速查对比见 [📖 顶层 3.10 性能监控速查](../README.md#310-性能监控速查)
 
 ---
 

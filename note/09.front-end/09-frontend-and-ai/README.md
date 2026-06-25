@@ -13,7 +13,7 @@
 | AI SDK | ✓ 已有 | [ai-sdk/](ai-sdk/) — Vercel AI SDK / Anthropic SDK / 流式响应 |
 | Vibe Coding | ✓ 已有 | [vibe-coding/](vibe-coding/) — Cursor / Claude Code / Windsurf 实践 |
 
-> 速查对比见 [📖 顶层 3.12 AI 工具速查](../../README.md#312-ai-工具速查)
+> 速查对比见 [📖 顶层 3.12 AI 工具速查](../README.md#312-ai-工具速查)
 
 ---
 
