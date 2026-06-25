@@ -1,165 +1,82 @@
 # 08 跨端
 
-> 一句话定位：**一份代码 / 一支团队，跑遍 Web / 移动 / 桌面 / 小程序**
+> 一句话定位：**一次开发多端部署——从 Web 到移动、桌面、小程序的跨端方案**
 
-跨端的目标是"减少重复造轮子"，但每种跨端方案都有**性能 / 体验 / 生态 / 成本**的权衡。
-本模块覆盖 2026 主流跨端方案：移动（RN/Flutter/Capacitor）、桌面（Electron/Tauri）、小程序、Taro/Uni-app、PWA、WebView 桥接。
-
----
-
-## 1. 五大主题
-
-| 主题 | 核心内容 | 学习价值 |
-|------|---------|---------|
-| **移动端** | React Native / Flutter / Capacitor / Kotlin Multiplatform | 跨 iOS / Android |
-| **桌面端** | Electron / Tauri / Wails | 跨 Windows / macOS / Linux |
-| **小程序** | 微信 / 支付宝 / 抖音 + Taro / Uni-app | 国内流量入口 |
-| **PWA** | Service Worker / Web App Manifest / Push API | 移动 Web 体验增强 |
-| **WebView 桥接** | JSBridge / Schema 协议 / Hybrid 框架 | Native ↔ Web 通信 |
+本模块覆盖 5 大跨端方案：React Native / Flutter / Tauri / PWA / 小程序，对比性能、包大小、平台覆盖、适用场景。
 
 ---
 
-## 2. 跨端形态全景
-
-```mermaid
-graph TB
-  A[跨端形态] --> B[Web 优先]
-  A --> C[原生优先]
-  A --> D[中间层]
-  B --> B1[PWA<br/>Web App Manifest + SW]
-  B --> B2[Capacitor<br/>Web 套原生壳]
-  C --> C1[Flutter<br/>Dart 自绘引擎]
-  C --> C2[KMP<br/>Kotlin 共享业务]
-  C --> C3[RN<br/>JS + 原生组件]
-  D --> D1[Electron / Tauri<br/>桌面端]
-  D --> D2[Taro / Uni-app<br/>小程序]
-  style B fill:#e3f2fd
-  style C fill:#fff8e1
-  style D fill:#e8f5e9
-```
-
----
-
-## 3. 移动端方案对比
-
-| 方案 | 渲染方式 | 性能 | 生态 | 适用 | 2026 趋势 |
-|------|---------|------|------|------|----------|
-| **React Native** | 原生组件 + JS 桥 | ⭐⭐⭐ 中 | ⭐⭐⭐⭐⭐ 庞大 | 已有 React 团队 | 新架构 Fabric 性能提升 |
-| **Flutter** | 自绘 Skia 引擎 | ⭐⭐⭐⭐⭐ 优 | ⭐⭐⭐⭐ 强 | 性能敏感 / 自定义 UI | Google 持续投入，桌面 / Web 一码三端 |
-| **Capacitor** | WebView + 原生插件 | ⭐⭐⭐ 中 | ⭐⭐⭐ Ionic 生态 | Web 团队 / 快速上线 | Vite + Capacitor 成为新组合 |
-| **Kotlin Multiplatform** | 原生 UI + 共享 Kotlin | ⭐⭐⭐⭐⭐ 优 | ⭐⭐ 成长中 | Android 团队 / Compose 路线 | JetBrains 押注，2026 关注度上升 |
-| **Weex / Hippy** | 类 RN 国产 | ⭐⭐⭐ | ⭐⭐ 萎缩 | 存量项目 | 已被 RN/Flutter 取代 |
-
-**选型建议**：
-- 已有 React 团队 → **React Native**（学习成本低）
-- 性能敏感 + 复杂 UI → **Flutter**（自绘引擎 + AOT）
-- Web 团队 + 快速上线 → **Capacitor**（Web 代码 + 原生壳）
-- 强类型 + 原生体验 → **Kotlin Multiplatform**（Compose 多平台）
-
----
-
-## 4. 桌面端方案对比
-
-| 方案 | 核心 | 包体积 | 性能 | 跨平台 | 适用 |
-|------|------|--------|------|--------|------|
-| **Electron** | Chromium + Node.js | 80-150MB | ⭐⭐⭐ | Win/macOS/Linux | 复杂应用（VSCode / Slack） |
-| **Tauri** | 系统 WebView + Rust 后端 | 2-10MB | ⭐⭐⭐⭐⭐ | Win/macOS/Linux/iOS/Android | 追求小体积 + 高性能 |
-| **Wails** | WebView + Go 后端 | 5-15MB | ⭐⭐⭐⭐ | Win/macOS/Linux | Go 团队首选 |
-
-**2026 趋势**：Tauri 2.0 支持移动端，包体积比 Electron 小 10 倍以上，**正在快速蚕食 Electron 份额**。
-
----
-
-## 5. 小程序方案对比
-
-| 平台 | 流量 | 框架 | 跨端能力 |
-|------|------|------|---------|
-| **微信** | 13 亿+ 月活 | WXML/WXSS/JS | Taro / Uni-app 编译到多端 |
-| **支付宝** | 8 亿+ 月活 | AXML/ACSS | 同上 |
-| **抖音** | 7 亿+ 月活 | TTML | 同上 |
-| **百度** | 6 亿+ 月活 | Swan | 同上 |
-
-| 跨端框架 | 多端支持 | 学习曲线 | 生态 | 2026 趋势 |
-|---------|---------|---------|------|----------|
-| **Taro 4** | 微信/支付宝/抖音/百度 + RN + H5 | ⭐⭐⭐⭐ React 风格 | ⭐⭐⭐⭐ 京东系 | React 团队首选 |
-| **Uni-app x** | 微信/支付宝/抖音 + H5 + App | ⭐⭐⭐⭐ Vue 风格 | ⭐⭐⭐⭐⭐ DCloud | Vue 团队首选，国内最大 |
-| **Remax** | 微信为主 | ⭐⭐⭐ | ⭐⭐ | 维护放缓 |
-
-**实战建议**：新项目首选 **Taro 4**（React）或 **Uni-app x**（Vue），**单一源码 + 6+ 端覆盖**。
-
----
-
-## 6. PWA 三大支柱
-
-| 支柱 | 作用 | 关键 API |
-|------|------|---------|
-| **Service Worker** | 离线缓存 / 后台同步 / 推送 | `navigator.serviceWorker.register()` |
-| **Web App Manifest** | 安装到桌面 / 全屏 / 主题色 | `manifest.json` |
-| **Push API** | 推送通知 | `PushManager.subscribe()` |
-
-**适用**：内容站、电商前台、CRM、内部工具。**不适用**：高交互 SPA（应用商店分发更合适）。
-
----
-
-## 7. WebView 桥接
-
-```mermaid
-graph LR
-  A[Web 页面] -->|window.xxBridge.postMessage| B[JSBridge]
-  C[原生层] -->|evaluateJavaScript| B
-  B --> A
-  B --> C
-  style A fill:#e3f2fd
-  style B fill:#fff8e1
-  style C fill:#e8f5e9
-```
-
-**协议设计要点**：
-- 单向调用：Web → Native 或 Native → Web
-- 双向通信：使用 `Promise` 模式，请求/响应配对
-- Schema 协议：URL 拦截（已过时，但存量项目仍有）
-- 安全性：参数校验 + 权限白名单
-
----
-
-## 8. 跨端选型决策树
-
-| 业务场景 | 推荐方案 |
-|---------|---------|
-| **纯移动 App（iOS + Android）** | RN / Flutter / KMP |
-| **移动 + Web 一套** | Next.js + RN / Flutter Web |
-| **国内 + 多端流量** | Taro 4（微信/抖音/支付宝/H5） |
-| **桌面工具类** | Tauri（小体积）/ Electron（生态） |
-| **内部工具 / 快速验证** | PWA / Capacitor |
-| **强性能游戏 / 特效** | 原生 + Flutter |
-
-## 9. 学习路径建议
-
-1. **入门**（2 周）：PWA 基础 + WebView 桥接原理
-2. **进阶**（1 个月）：Taro 4 或 Uni-app 做一个跨端小程序
-3. **高级**（持续）：Flutter / RN 性能调优 + 桌面端 Tauri 实战
-
-## 10. 本模块覆盖
+## 1. 本模块覆盖
 
 | 主题 | 状态 | 说明 |
 |------|------|------|
-| React Native | ✓ 已有 | [react-native/](react-native/) — 跨 iOS / Android 的 React 方案 |
-| 小程序 | ✓ 已有 | [mini-program/](mini-program/) — Taro 4 / Uni-app x 跨端实战 |
-| Flutter / Capacitor / KMP | 速查 | 见第 3 节 |
-| 桌面端（Electron / Tauri） | 速查 | 见第 4 节 |
-| PWA | 速查 | 见第 6 节 |
+| React Native | ✓ 已有 | [react-native/](react-native/) — 跨端主流 / Native 渲染 |
+| 小程序 | ✓ 已有 | [mini-program/](mini-program/) — 微信/支付宝/抖音生态 |
+| Flutter | ✓ 已有 (T12) | [flutter/](flutter/) — 一码三端 / Skia 渲染 |
+| Tauri | ✓ 已有 (T12) | [tauri/](tauri/) — Rust 后端 / 轻量桌面 |
+| PWA | ✓ 已有 (T12) | [pwa/](pwa/) — 渐进式 Web 应用 / 离线优先 |
+
+> 速查对比见 [📖 顶层 3.7 跨端速查](../../README.md#37-跨端速查)
 
 ---
 
-## 11. 交叉引用
+## 2. 速查要点
 
-- [`12.story/21-multiplatform-architecture.md`](../../../12.story/21-multiplatform-architecture.md) — 阿明餐厅多端架构故事（BFF / 跨平台框架 / 离线优先）
-- [`12.story/26-globalization.md`](../../../12.story/26-globalization.md) — 国际化与跨区域部署（与 PWA 离线策略互补）
-- [`12.story/13-frontend-renovation.md`](../../../12.story/13-frontend-renovation.md) — 前端工程化转型故事
+- **跨端不是银弹**：性能敏感场景（游戏 / 视频编辑）优先原生
+- **Flutter vs React Native**：UI 一致性要求高选 Flutter；JS 团队 + 生态丰富选 RN
+- **Tauri vs Electron**：包大小敏感（< 10MB）选 Tauri；兼容性要求选 Electron
+- **PWA 不是 App**：PWA 是渐进式 Web 增强，权限受限（iOS Push 限制）
 
 ---
 
-## 12. 与其他模块的关系
+## 3. 选型建议
 
-- **上游**：[`05-architecture`](../05-architecture/)（微前端 / BFF 模式适用于多端）
-- **下游**：与 [`09-frontend-and-ai`](../09-frontend-and-ai/) 协同（AI 能力常作为跨端差异化卖点）
+```mermaid
+flowchart TD
+    A[跨端需求] --> B{目标平台?}
+    B -->|仅 Web| C[PWA]
+    B -->|iOS+Android| D{UI 一致性?}
+    D -->|高| E[Flutter]
+    D -->|中| F[React Native]
+    B -->|Desktop| G{包大小敏感?}
+    G -->|是| H[Tauri 2]
+    G -->|否| I[Electron]
+    B -->|国内平台| J[小程序]
+```
+
+---
+
+## 4. 与其他模块的关系
+
+- **上游**：[03-frameworks](../03-frameworks/)（React/Vue 基础）
+- **下游**：支撑所有跨端项目
+- **横向**：[05-architecture](../05-architecture/) 关注 Web 架构，[08 跨端] 关注多端架构
+
+---
+
+## 5. 学习建议
+
+- 选 1-2 个跨端方案深入，不要都学
+- 推荐路径：[react-native](react-native/) 或 [flutter](flutter/) → [tauri](tauri/) / [pwa](pwa/)
+- 实战：先做小工具练手，再做完整应用
+
+---
+
+## 6. 数据时效性
+
+- Flutter / React Native 每年大版本
+- Tauri 2.x 2024 发布
+- 小程序平台每年更新
+
+---
+
+## 7. 关键术语
+
+| 术语 | 解释 |
+|------|------|
+| JSBridge | JavaScript 与 Native 桥接 |
+| Skia | Flutter 使用的 2D 图形库 |
+| Impeller | Flutter 新一代渲染引擎（iOS 默认） |
+| WebView | 浏览器内核组件 |
+| Service Worker | PWA 离线缓存核心 |
+| Manifest | PWA 应用清单 |
