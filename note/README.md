@@ -172,8 +172,21 @@
 > 开源参考：暂无（当前 9 模块中仅 03 框架、05 架构、07 安全有存量内容，其余模块为占位骨架，深度子文档待后续按需补充）
 
 # 十、[大数据](10.big-data/README.md)
-## [2024年的开源数据工程生态系统全景图](10.big-data/open-source/README.md)
-## [离线数仓/实时数仓](10.big-data/offline-or-real-time-data-warehouse/README.md)
+
+> 从数仓架构到 OLAP、数据湖、治理——大数据技术栈的完整地图。8 大主题涵盖离线/实时数仓、Hadoop 生态、实时计算、数据湖、OLAP、任务调度、数据治理与异构同步。
+
+## 模块导航
+
+| 序号 | 主题 | 核心内容 |
+|------|------|----------|
+| 1 | [01 数仓架构](10.big-data/01-data-warehouse/README.md) | Lambda / Kappa / 湖仓一体 / 批流融合 |
+| 2 | [02 Hadoop 生态](10.big-data/02-hadoop-ecosystem/README.md) | HDFS / YARN / MapReduce / Hive / Presto / Trino |
+| 3 | [03 实时计算](10.big-data/03-realtime-compute/README.md) | Flink / Spark Streaming / Storm |
+| 4 | [04 数据湖](10.big-data/04-data-lake/README.md) | Apache Iceberg / Hudi / Delta Lake / 存算分离 |
+| 5 | [05 OLAP](10.big-data/05-olap/README.md) | Apache Doris / StarRocks / ClickHouse / Trino |
+| 6 | [06 调度](10.big-data/06-scheduling/README.md) | Apache Airflow / DolphinScheduler / Azkaban |
+| 7 | [07 数据治理](10.big-data/07-data-governance/README.md) | Apache Atlas / DataHub / 数据血缘 / 数据质量 |
+| 8 | [08 同步工具](10.big-data/08-sync-tools/README.md) | DataX / Apache SeaTunnel / Sqoop / Flume |
 
 # 十一、[AI 知识体系](11.ai/README.md)
 ## 目录导航
