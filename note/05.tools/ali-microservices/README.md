@@ -3,9 +3,27 @@
 ## 控制面
 ### Nacos
 ⼀个更易于构建云原生应用的动态服务发现、配置管理和服务管理平台。  
-![img.png](img.png)
+```mermaid
+graph TD
+    subgraph 控制面["控制面"]
+        Nacos["Nacos<br/>服务发现 + 配置管理"]
+        OpenSergo["OpenSergo<br/>微服务治理标准"]
+    end
+    subgraph 治理面["治理面"]
+        Sentinel["Sentinel<br/>流量治理"]
+        ChaosBlade["ChaosBlade<br/>混沌工程"]
+        Seata["Seata<br/>分布式事务"]
+    end
+    subgraph Provider["服务提供者"]
+        S1["服务 A"]
+        S2["服务 B"]
+    end
+    Provider -->|注册| Nacos
+    Nacos -->|发现| Consumer["服务消费者"]
+    Sentinel -. "限流/熔断" .-> Provider
+```
 #### 特性
-- **服务发现**：Nacos 支持基于 DNS 和基于 RPC 的服务发现。服务提供者使用 原生SDK、OpenAPI、或一个独立的Agent TODO注册 Service 后，服务消费者可以使用DNS TODO 或HTTP&API查找和发现服务。
+- **服务发现**：Nacos 支持基于 DNS 和基于 RPC 的服务发现。服务提供者使用原生 SDK、OpenAPI 或一个独立的 Agent 注册 Service 后，服务消费者可以使用 DNS 或 HTTP&API 查找和发现服务。
 - **服务健康监测：Nacos 提供对服务的实时的健康检查，阻止向不健康的主机或服务实例发送请求。Nacos 支持传输层 (PING 或 TCP)和应用层 (如 HTTP、MySQL、用户自定义）的健康检查。 对于复杂的云环境和网络拓扑环境中（如 VPC、边缘网络等）服务的健康检查，Nacos 提供了 agent 上报模式和服务端主动检测2种健康检查模式。Nacos 还提供了统一的健康检查仪表盘，帮助您根据健康状态管理服务的可用性及流量。
 - **动态配置服务：
   - 动态配置服务可以让您以中心化、外部化和动态化的方式管理所有环境的应用配置和服务配置。

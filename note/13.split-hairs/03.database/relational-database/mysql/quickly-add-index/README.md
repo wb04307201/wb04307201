@@ -191,4 +191,7 @@ RENAME TABLE large_table TO large_table_old,
 **面试要点：**
 1. 在线DDL的原理和LOCK参数选择
 2. pt-osc vs gh-ost（触发器 vs binlog同步）
-3. 如何评估DDL对主从复制的影响
+3. 如何评估DDL对主从复制的影响## 相关章节
+
+- 深度阅读：[`03.database/04-index`](../../../../03.database/04-index/README.md) — B+ 树、索引原理
+- 相关：[`13.split-hairs/mysql/index-failure`](../../../mysql/index-failure/README.md) — 索引失效 10 种场景

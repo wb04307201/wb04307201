@@ -16,26 +16,31 @@
 
 ---
 
-## 知识图谱
+## 知识脉络
 
+```mermaid
+graph TB
+    Base["计算机基础"]
+    Base --> Net["01 网络<br/>OSI/TCP/IP · HTTP 演进"]
+    Base --> Algo["02 算法<br/>复杂度分析 · 取舍策略"]
+    Base --> Linux["03 Linux<br/>常用命令 · curl"]
+    Base --> Ops["04 运维<br/>性能指标 · 云服务"]
+    Base --> IPR["05 知识产权<br/>专利 vs 软著"]
+
+    Net --> P["协议族<br/>IP/TCP/UDP/HTTP"]
+    Algo --> A["算法基础<br/>时间/空间复杂度"]
+    Linux --> L["服务器管理<br/>系统/文件/进程"]
+    Ops --> O["监控与云<br/>IaaS/PaaS/SaaS"]
 ```
-计算机基础
-├── 网络 (01-network)
-│   ├── 基础概念: 组成/功能/分类/数据交换方式
-│   ├── 分层模型: OSI七层 vs TCP/IP四层
-│   ├── 核心协议: IP/TCP/UDP/ICMP
-│   ├── HTTP 演进: 1.1 → 2 → 3(QUIC)
-│   ├── TCP 数据包: 报文头结构
-│   └── WCAG: 无障碍访问标准
-├── 算法 (02-algorithms)
-│   ├── 概述: 定义/特征/分类/应用
-│   └── 复杂度分析: 时间/空间/取舍策略
-├── Linux (03-linux)
-│   ├── 常用命令: 系统/文件/进程/网络/权限
-│   └── curl: HTTP 请求调试工具
-├── 运维 (04-operations)
-│   ├── 性能指标: CPU/内存/磁盘/网络/QPS
-│   └── 云服务: IaaS/PaaS/SaaS/DaaS
-└── 知识产权 (05-ipr)
-    └── 专利 vs 软著: 保护对象/申请策略/成本
-```
+
+## 学习路径
+
+- **基础必修**：网络 → 算法 → Linux
+- **运维方向**：Linux → 运维 → 网络（深入协议）
+- **速查定位**：按需查阅各模块
+
+## 相关章节
+
+- 上游：本模块是所有技术模块的基础
+- 关联：[`04.system-design`](../04.system-design/) — 系统设计（网络/运维知识的上层应用）
+- 关联：[`05.tools`](../05.tools/) — 工具链（Git/Docker/Nginx 等实操工具）

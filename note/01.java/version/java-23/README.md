@@ -41,7 +41,18 @@ System.out.println(result);
 ## JEP 467: Markdown 文档注释
 
 此特性引入对 Markdown 格式文档注释的支持。Markdown 是一种轻量级标记语言，易于编写和阅读。在 Java 代码中使用 Markdown 格式的文档注释，可生成更美观、结构更清晰的文档。例如，开发者可使用 Markdown 语法编写类、方法、字段等的说明文档，IDE 或文档生成工具能将其渲染为格式良好的 HTML 或其他格式的文档，提高代码文档的可读性和可维护性。
-![img.png](img.png)
+```markdown
+/**
+ * # 用户服务
+ *
+ * 提供用户管理相关功能。
+ *
+ * ## 主要方法
+ * - `getUser(id)` — 获取用户信息
+ * - `createUser(user)` — 创建新用户
+ */
+public class UserService { ... }
+```
 
 ## JEP 469: 向量 API（第八次孵化）
 

@@ -4,7 +4,17 @@
 
 ### 2.2 执行流程（以查询为例）
 
-![MyBatis 执行流程图](img/architecture-flow.png)
+```mermaid
+graph TD
+    CFG["mybatis-config.xml<br/>全局配置"] -->|加载| Mapper["Mapper.xml<br/>SQL 映射文件"]
+    CFG -->|构建| Factory["SqlSessionFactory"]
+    Factory -->|创建| Session["SqlSession"]
+    Session -->|获取| Executor["Executor 执行器"]
+    Executor -->|动态生成 SQL| MS["MappedStatement"]
+    MS -->|输入参数映射| DB["数据库"]
+    DB -->|结果集| Out["输出结果映射"]
+    Out --> Result["Java 对象"]
+```
 
 1. 读取 MyBatis 配置文件: mybatis-config.xml为MyBatis 的全局配置文件，配置了MyBatis的运行环境等信息，例如数据库连接信息。
 2. 加载映射文件。映射文件即SQL映射文件，该文件中配置了操作数据库的SQL语句，需要在MyBatis 配置文件mybatis-config.xml中加载。mybatis-config.xml文件可以加载多个映射文件，每个文件对应数据库中的一张表。

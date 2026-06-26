@@ -345,6 +345,7 @@ spring:
 - [启动流程](startup-flow.md) — Environment 在启动的哪个阶段被准备
 - [自动配置原理](auto-configuration.md) — `@ConditionalOnProperty` 用的是同一个 Environment
 - [08 注解/配置注解](../08-annotations/configuration.md) — `@Value` / `@ConfigurationProperties` / `@Profile` 详解
+- [01 核心/外部化配置](../01-core/externalized-configuration.md) — Spring Core 层面的配置注入原理
 
 ---
 

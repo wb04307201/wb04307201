@@ -26,7 +26,7 @@
 2. **进阶**（2 周）：Transformer + RAG + Function Calling
 3. **冲刺面试**：重点看"RAG 架构"、"幻觉问题"、"Agent 设计"
 
-## 交叉引用
+## 相关章节
 
 - 主模块：[`note/11.ai`](../../11.ai/) — AI 知识体系
 - 相关章节：[`09.front-end`](../09.front-end/)（前端集成 AI）

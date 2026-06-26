@@ -5,8 +5,6 @@
 
 Spring Bean 的生命周期是 Spring 框架最核心的知识点之一。**Bean 从创建到销毁，会经过 4 个大阶段、10+ 个小步骤**。
 
-![img-bean-lifecycle.png](img-bean-lifecycle.png)
-
 ---
 
 ## 🎯 一句话定位

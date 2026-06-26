@@ -195,3 +195,4 @@ public class PaymentService {
 
 - ⬅️ [返回注解速查](../README.md)
 - [事务注解](transaction.md) — 重试与事务的边界关系
+- [Spring Retry 深度解析](../06-integration/retry.md) — 重试策略、退避算法、分布式重试完整指南

@@ -77,40 +77,164 @@
 ## 应用场景
 
 ### 异步&解耦
-![img.png](img.png)
+
+```mermaid
+sequenceDiagram
+    participant A as 服务 A
+    participant MQ as 消息队列
+    participant B as 服务 B
+    participant C as 服务 C
+    A->>MQ: 发送消息（异步）
+    MQ-->>A: 确认（立即返回）
+    MQ->>B: 消费
+    MQ->>C: 消费
+    Note over A,B,C: A 与 B/C 解耦，A 无需等待
+```
 
 ### 消峰
-![img_1.png](img_1.png)
+
+```mermaid
+graph LR
+    subgraph 高峰["流量高峰 10000 QPS"]
+        Users["大量请求 ⚡"]
+    end
+    MQ["消息队列<br/>缓冲池"]
+    subgraph 后端["后端服务 1000 QPS"]
+        App["按自身能力消费"]
+    end
+    Users -->|"突发写入"| MQ
+    MQ -->|"匀速流出"| App
+```
 
 ### 消息总线
-![img_2.png](img_2.png)
+
+```mermaid
+graph LR
+    subgraph 生产者["多个生产者"]
+        P1["订单服务"]
+        P2["支付服务"]
+    end
+    MQ["消息总线<br/>统一通道"]
+    subgraph 消费者["多个消费者"]
+        C1["物流服务"]
+        C2["通知服务"]
+        C3["分析服务"]
+    end
+    P1 --> MQ
+    P2 --> MQ
+    MQ --> C1
+    MQ --> C2
+    MQ --> C3
+```
 
 ### 延时任务
+
 用户在美团 APP 下单，假如没有立即支付，进入订单详情会显示倒计时，如果超过支付时间，订单就会被自动取消
 
-![img_3.png](img_3.png)
+```mermaid
+sequenceDiagram
+    participant U as 用户
+    participant Order as 订单服务
+    participant MQ as 延时队列
+    participant Cancel as 取消服务
+    U->>Order: 下单（未支付）
+    Order->>MQ: 发送 30min 延时消息
+    MQ-->>Cancel: 30min 后触发
+    Cancel->>Order: 检查支付状态
+    Order-->>Cancel: 未支付 → 取消订单
+```
 
 ### 广播消费
-![img_4.png](img_4.png)
+
+```mermaid
+graph LR
+    P["生产者"] --> MQ["消息队列"]
+    MQ -->|"广播到所有实例"| C1["消费者 #1"]
+    MQ -->|"广播到所有实例"| C2["消费者 #2"]
+    MQ -->|"广播到所有实例"| C3["消费者 #3"]
+```
 
 #### 消息推送
+
 专车的司机端推送机制
 
-![img_5.png](img_5.png)
+```mermaid
+graph LR
+    Passenger["乘客下单"] --> Server["推送服务"]
+    Server --> MQ["消息队列"]
+    MQ --> D1["司机 App #1"]
+    MQ --> D2["司机 App #2"]
+    MQ --> D3["司机 App #N"]
+```
 
 #### 缓存同步
+
 高并发场景
 
-![img_6.png](img_6.png)
+```mermaid
+graph LR
+    DB["数据库写入"] --> MQ["消息队列"]
+    MQ --> Cache1["Redis 节点 #1"]
+    MQ --> Cache2["Redis 节点 #2"]
+    MQ --> Cache3["Redis 节点 #N"]
+    Note[/"异步删除缓存，保证一致性"/]
+```
 
 ### 分布式事务
+
 1. 传统XA事务方案：性能不足
 
-2. 基于普通消息方案：一致性保障困难  
-![img_7.png](img_7.png)
+2. 基于普通消息方案：一致性保障困难
 
-3. 基于 RocketMQ 分布式事务消息：支持最终一致性  
-![img_8.png](img_8.png)
+```mermaid
+sequenceDiagram
+    participant A as 服务 A
+    participant MQ as 消息队列
+    participant B as 服务 B
+    A->>A: 本地事务
+    A->>MQ: 发送消息
+    MQ->>B: 消费消息
+    Note over A,B: ⚠ 消息丢失或重复消费 → 一致性难保证
+```
+
+3. 基于 RocketMQ 分布式事务消息：支持最终一致性
+
+```mermaid
+sequenceDiagram
+    participant A as 生产者
+    participant MQ as RocketMQ
+    participant B as 消费者
+    A->>MQ: ① 发送半消息（Half Msg）
+    MQ-->>A: ② 半消息确认
+    A->>A: ③ 执行本地事务
+    alt 本地事务成功
+        A->>MQ: ④a Commit → 消息可消费
+    else 本地事务失败
+        A->>MQ: ④b Rollback → 消息丢弃
+    end
+    MQ->>B: ⑤ 消费消息
+    B->>B: ⑥ 执行本地事务
+```
 
 ### 数据中转枢纽
-![img_9.png](img_9.png)
+
+```mermaid
+graph LR
+    subgraph 数据源["异构数据源"]
+        DB1["MySQL"]
+        DB2["Oracle"]
+        Log["日志文件"]
+    end
+    MQ["消息队列<br/>数据中转枢纽"]
+    subgraph 消费端["下游消费"]
+        ES["Elasticsearch"]
+        DW["数据仓库"]
+        Sync["实时同步"]
+    end
+    DB1 --> MQ
+    DB2 --> MQ
+    Log --> MQ
+    MQ --> ES
+    MQ --> DW
+    MQ --> Sync
+```

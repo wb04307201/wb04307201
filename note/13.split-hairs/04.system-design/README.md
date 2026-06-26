@@ -59,9 +59,13 @@
 
 1. **入门**（3 天）：MQ 积压处理 + 选型对比
 2. **进阶**（2 周）：缓存一致性 + 限流算法 + 分布式 ID + 分布式锁 + 幂等性设计
-3. **冲刺面试**：重点看"分布式事务"、"熔断降级"（待补）
+3. **冲刺面试**：重点看"分布式事务"、"熔断降级"、"分布式锁"、"幂等性设计"
 
-## 交叉引用
+## 相关章节
 
 - 主模块：[`note/04.system-design`](../../04.system-design/) — 系统设计知识体系
 - 相关章节：[`03.database`](../03.database/)（数据库细节）/ [`06.spring`](../06.spring/)（框架实现）
+- 待补充主题的深度阅读：
+  - 缓存穿透/击穿/雪崩 → [`03.database/06-cache`](../../03.database/06-cache/README.md)
+  - 分库分表 → [`03.database`](../../03.database/README.md) 数据迁移与同步
+  - 异步化方案 → [`01.java/concurrency`](../../01.java/concurrency/README.md) CompletableFuture

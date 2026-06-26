@@ -1,0 +1,14 @@
+{
+  "ignorePatterns": [
+    { "pattern": "^https://gitee\\.com/" },
+    { "pattern": "^https://github\\.com/" },
+    { "pattern": "^https://img\\.shields\\.io/" },
+    { "pattern": "^https://hooks\\.slack\\.com/" },
+    { "pattern": "^https://oapi\\.dingtalk\\.com/" }
+  ],
+  "replacementPatterns": [],
+  "timeout": "20s",
+  "retryOn429": true,
+  "retryCount": 2,
+  "aliveStatusCodes": [200, 206]
+}

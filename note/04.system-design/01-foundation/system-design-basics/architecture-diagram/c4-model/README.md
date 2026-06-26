@@ -1,8 +1,16 @@
 # C4 模型
 > C4是软件架构可视化的一种方案。架构可视化，指的是用图例的方式，把软件架构设计准确、清晰、美观地表示出来。架构可视化不是指导开发者如何进行架构设计，而是指导开发者将架构设计表达出来，产出简洁直观的架构图。  
 > C4模型将系统从上往下分为System Context, Containers, Components, Code四层视图，每一层都是对上一层的完善和展开，层层递进地对系统进行描述。  
-> ![img.png](img.png)  
-> ![img_1.png](img_1.png)
+> ```mermaid
+> graph TD
+>     L1["Level 1: System Context<br/>系统全景"]
+>     L2["Level 2: Container<br/>容器展开"]
+>     L3["Level 3: Component<br/>组件展开"]
+>     L4["Level 4: Code<br/>代码细节"]
+>     L1 -->|"放大"| L2
+>     L2 -->|"放大"| L3
+>     L3 -->|"放大"| L4
+> ```
 
 ## System Context diagram
 > System Context（系统上下文）视图位于顶层，是软件系统架构图的起点，表达的是系统的全貌。System Context视图重点展示的是系统边界、系统相关的用户、其他支撑系统以及与本系统的交互。本层不涉及到具体细节（例如技术选型、协议、部署方案和其他低级细节），因此System Context可以很好地向非技术人员介绍系统。
@@ -13,7 +21,16 @@
 >  - **目标受众**：软件开发团队内外的所有人，包括技术人员和非技术人员。
 >  - **推荐给大多数团队**：是的
 ### 示例
-![img_2.png](img_2.png)
+```mermaid
+graph LR
+    User["用户<br/>👤"]
+    System["电子商务系统<br/>📦"]
+    Mail["邮件服务<br/>📧"]
+    Pay["支付网关<br/>💳"]
+    User -->|"浏览/下单"| System
+    System -->|"发送通知"| Mail
+    System -->|"支付"| Pay
+```
 
 ## Container diagram
 > Container（容器）视图是对System Context的放大，是对System Context细节的补充。  
@@ -28,7 +45,24 @@
 >  - **推荐给大多数团队**：是的。
 >  - **注意**：Container视图没有说明部署方案、集群、复制、故障转移等。部署相关的视图，会通过Deployment视图进行展示。
 ### 示例
-![img_3.png](img_3.png)
+```mermaid
+graph TD
+    User["用户 👤"]
+    subgraph System["电子商务系统"]
+        WebApp["Web 应用<br/>Spring Boot"]
+        MobileApp["移动端<br/>React Native"]
+    end
+    DB["MySQL<br/>数据库"]
+    Cache["Redis<br/>缓存"]
+    MQ["RabbitMQ<br/>消息队列"]
+    Mail["邮件服务"]
+    User --> WebApp
+    User --> MobileApp
+    WebApp --> DB
+    WebApp --> Cache
+    WebApp --> MQ
+    MQ --> Mail
+```
 
 ## Component diagram
 > 将单个容器放大，则显示了该容器内部的组件。Component（组件）视图显示了一个容器是如何由许多“组件”组成的，每个组件是什么，它们的职责以及技术实现细节。
@@ -39,7 +73,18 @@
 >  - **目标受众**：软件架构师和开发人员。
 >  - **推荐给大多数团队**：Component用于指导开发，当有需要时创建。
 ### 示例
-![img_4.png](img_4.png)
+```mermaid
+graph TD
+    subgraph WebApp["Web 应用容器内部"]
+        Controller["REST Controller<br/>@RestController"]
+        Service["Order Service<br/>@Service"]
+        Repo["Order Repository<br/>@Repository"]
+    end
+    DB["数据库"]
+    Controller --> Service
+    Service --> Repo
+    Repo --> DB
+```
 
 ## Code diagram
 > 放大组件视图，则得到出组件的Code视图（代码视图）。  
@@ -57,7 +102,18 @@
 >  - **主要元素**：与所选范围相关的人员和软件系统。
 >  - **目标受众**：软件开发团队内外的技术人员和非技术人员。
 ### 示例
-![img_5.png](img_5.png)
+```mermaid
+graph LR
+    S1["CRM 系统"]
+    S2["ERP 系统"]
+    S3["电商系统"]
+    S4["物流系统"]
+    S5["财务系统"]
+    S1 -. "数据同步" .-> S3
+    S3 -. "订单传递" .-> S4
+    S3 -. "账务对接" .-> S5
+    S2 -. "库存同步" .-> S3
+```
 
 ## Dynamic diagram
 > Dynamic diagram（动态图）用于展示静态模型中的元素如何在运行时协作。动态图允许图表元素自由排列，并通过带有编号的箭头以指示执行顺序。
@@ -65,7 +121,19 @@
 >  - **主要元素和支持元素**：按照实际需要，可以是软件系统、容器或组件。
 >  - **目标受众**：软件开发团队内外的技术人员和非技术人员。
 ### 示例
-![img_6.png](img_6.png)
+```mermaid
+sequenceDiagram
+    participant U as 用户
+    participant Web as Web 应用
+    participant DB as 数据库
+    participant MQ as 消息队列
+    U->>Web: ① 提交订单
+    Web->>DB: ② 保存订单
+    DB-->>Web: ③ 返回结果
+    Web->>MQ: ④ 发送订单事件
+    MQ-->>Web: ⑤ 确认
+    Web-->>U: ⑥ 订单成功
+```
 
 ## Deployment diagram
 > Deployment diagram（部署图）用于说明静态模型中的软件系统（或容器）的实例在给定环境（例如生产、测试、预发、开发等）中的部署方案。
@@ -78,6 +146,22 @@
 >  - **目标受众**：软件开发团队内外的技术人员；包括软件架构师、开发人员、基础架构架构师和运营/支持人员。
 ### 示例
 > - 网上银行系统的开发环境部署图
-> ![img_7.png](img_7.png)
+> ```mermaid
+> graph TD
+>     subgraph Dev["开发环境"]
+>         DevLB["开发 LB"] --> DevApp["App Server (单体)"]
+>         DevApp --> DevDB["MySQL (单机)"]
+>     end
+> ```
 > - 网上银行的生产环境部署图
-> ![img_8.png](img_8.png)
+> ```mermaid
+> graph TD
+>     subgraph Prod["生产环境"]
+>         GLB["全局 LB"] --> AZ1["可用区 A"]
+>         GLB --> AZ2["可用区 B"]
+>         AZ1 --> App1["App #1"]
+>         AZ2 --> App2["App #2"]
+>         App1 --> DB1["MySQL 主"]
+>         App2 --> DB2["MySQL 从"]
+>     end
+> ```

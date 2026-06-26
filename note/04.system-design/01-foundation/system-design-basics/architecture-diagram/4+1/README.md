@@ -1,6 +1,19 @@
 # 4+1 视图
 
-![img.png](img.png)
+```mermaid
+graph TD
+    subgraph 41["4+1 视图模型 (Kruchten)"]
+        Scenarios["场景视图<br/>(用例视图)<br/>🎯 黑盒 · 外部视角"]
+        Logical["逻辑视图<br/>(结构视图)<br/>🔍 白盒 · 组件结构"]
+        Dev["开发视图<br/>(实现视图)<br/>🔧 白盒 · 模块实现"]
+        Process["处理视图<br/>(过程视图)<br/>⚡ 白盒 · 通信行为"]
+        Physical["物理视图<br/>(部署视图)<br/>🏗️ 黑盒 · 部署环境"]
+    end
+    Scenarios -. "驱动其他4个视图" .-> Logical
+    Scenarios -. "驱动" .-> Dev
+    Scenarios -. "驱动" .-> Process
+    Scenarios -. "驱动" .-> Physical
+```
 
 ## 场景视图（也叫用例视图）
 
@@ -8,8 +21,14 @@
 > 从外部视角，描述系统的参与者（用户）与系统功能用例的关系。反映的是系统的最终用户需求和交互设计。  
 > 
 > **通常由用例图表示**  
-> ![img_1.png](img_1.png)  
-> ![img_6.png](img_6.png)
+> ```mermaid
+> graph LR
+>     Actor1["管理员"] --> UC1["用户管理"]
+>     Actor1 --> UC2["权限配置"]
+>     Actor2["普通用户"] --> UC3["查看报表"]
+>     Actor2 --> UC4["提交订单"]
+>     System["系统边界"]
+> ```
 
 ## 逻辑视图（也叫结构视图）
 
@@ -17,16 +36,38 @@
 > 从结构化视角，描述该系统对用户提供的所需功能服务所具备的组件结构和数据结构，以及一些边界约束条件，清晰的描述给用户提供的功能需求服务是如何构建的。描述该系统内部所具备了那些组织结构，以达到实现对外功能。  
 > 
 > **通常由UML的组件图和类图来表示**  
-> ![img_2.png](img_2.png)  
-> ![img_7.png](img_7.png)
+> ```mermaid
+> classDiagram
+>     class UserService {
+>         +findUser()
+>         +createUser()
+>     }
+>     class UserRepository {
+>         +findBy()
+>         +save()
+>     }
+>     class User {
+>         +id: Long
+>         +name: String
+>     }
+>     UserService --> UserRepository
+>     UserRepository --> User
+> ```
 
 ## 开发视图（也叫实现视图）
 
 > 白盒视图。  
 > 从结构化视角和行为视角，去描述实现系统功能的各个组件和模块是如何实现的。  
 >
-> ![img_3.png](img_3.png)
-> ![img_10.png](img_10.png)
+> ```mermaid
+> graph TD
+>     subgraph 模块结构["开发视图 — 代码模块组织"]
+>         Presentation["表示层<br/>Controller"] --> Service["业务层<br/>Service"]
+>         Service --> DAO["持久层<br/>Repository"]
+>         DAO --> DB["数据库"]
+>         Service --> Util["工具模块"]
+>     end
+> ```
 
 ## 处理视图（也叫过程视图、行为视图）
 
@@ -34,8 +75,16 @@
 > 从行为视角，描述系统各个组件和模块是如何进行通信的。  
 > 
 > **通常由时序图和流程图表示**  
-> ![img_4.png](img_4.png)  
-> ![img_9.png](img_9.png)
+> ```mermaid
+> sequenceDiagram
+>     participant C as 客户端
+>     participant S as 服务端
+>     participant DB as 数据库
+>     C->>S: HTTP 请求
+>     S->>DB: SQL 查询
+>     DB-->>S: 结果集
+>     S-->>C: HTTP 响应
+> ```
 
 ## 物理视图（也叫部署视图）
 
@@ -43,8 +92,18 @@
 > 从交互视角，描述系统可以部署到哪些物理环境（如服务器、PC端、移动端等）上和软件环境（如虚拟机、容器、进程等）上。  
 > 
 > **通常由部署图表示**   
-> ![img_5.png](img_5.png)
-> ![img_8.png](img_8.png)
+> ```mermaid
+> graph TD
+>     subgraph 生产环境["物理部署"]
+>         LB["负载均衡<br/>Nginx"]
+>         LB --> App1["App Server #1<br/>Docker"]
+>         LB --> App2["App Server #2<br/>Docker"]
+>         App1 --> DB1["MySQL 主"]
+>         App2 --> DB2["MySQL 从"]
+>         App1 --> Cache["Redis 集群"]
+>         App2 --> Cache
+>     end
+> ```
 
 ## 优势和不足
 

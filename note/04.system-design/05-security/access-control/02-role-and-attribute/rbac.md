@@ -9,43 +9,96 @@
 - **历史背景**：1992 年 Ferraiolo & Kuhn 论文；2004 年 ANSI RBAC 标准；2007 年 NIST 给出 RBAC 参考模型
 - **核心思想**：用户（User）→ 角色（Role）→ 权限（Permission）三层间接，权限不直接落到用户
 
-![RBAC 概览](img.png)
+```mermaid
+graph LR
+    U["用户 User"] -->|分配| R["角色 Role"]
+    R -->|授予| P["权限 Permission"]
+    P -->|操作| Res["资源 Resource"]
+```
 
 ## 2. 核心模型图
 
 ### RBAC0（基线模型）
 
-![标准 RBAC 模型](img_5.png)
+```mermaid
+graph LR
+    U["User<br/>用户"] <-->|UA| R["Role<br/>角色"]
+    R <-->|PA| P["Permission<br/>权限"]
+    P --> O["Object<br/>对象"]
+    P --> A["Operation<br/>操作"]
+```
 
 ### RBAC1（角色继承）
 
-![RBAC1 角色继承](img_6.png)
+```mermaid
+graph TD
+    Senior["Senior Engineer<br/>高级工程师"] --> Junior["Junior Engineer<br/>初级工程师"]
+    Manager["Manager<br/>经理"] --> Senior
+    Junior --> P1["基础权限"]
+    Senior --> P2["P1 + 高级权限"]
+    Manager --> P3["P2 + 管理权限"]
+```
 
 ### RBAC2（角色约束）
 
-![RBAC2 角色互斥](img_7.png)
+```mermaid
+graph LR
+    U["用户"] --> R1["出纳"]
+    U --> R2["会计"]
+    R1 -. "⚠ 互斥约束<br/>不能同时拥有" .-> R2
+    R1 --> P1["付款权限"]
+    R2 --> P2["记账权限"]
+```
 
 ### RBAC3（用户组 + 组织 + 职位）
 
-![理想 RBAC 模型](img_2.png)
-
-![用户组](img_10.png)
-
-![权限可分组](img_9.png)
-
-![组织与数据权限](img_11.png)
-
-![RBAC3 职位映射](img_8.png)
+```mermaid
+graph TD
+    subgraph 组织["组织架构"]
+        Dept["部门 Department"]
+        Pos["职位 Position"]
+        Grp["用户组 UserGroup"]
+    end
+    U["用户"] --> Grp
+    Grp --> R["角色"]
+    Pos --> R
+    Dept --> Pos
+    R --> P["权限（功能 + 数据范围）"]
+```
 
 ## 3. 表/数据结构
 
 ### 最小版（RBAC0）
 
-![标准 RBAC 表设计](img_4.png)
+```mermaid
+erDiagram
+    sys_user ||--o{ sys_user_role : "has"
+    sys_role ||--o{ sys_user_role : "assigned"
+    sys_role ||--o{ sys_role_permission : "has"
+    sys_permission ||--o{ sys_role_permission : "granted"
+    sys_user { bigint id, string username, string password, tinyint status }
+    sys_role { bigint id, string role_code, string role_name }
+    sys_permission { bigint id, string perm_code, string perm_name, string resource, string action }
+    sys_user_role { bigint user_id, bigint role_id }
+    sys_role_permission { bigint role_id, bigint permission_id }
+```
 
 ### 完整版（含组织/职位/用户组）
 
-![理想 RBAC 表设计](img_3.png)
+```mermaid
+erDiagram
+    sys_user ||--o{ sys_user_role : "has"
+    sys_role ||--o{ sys_user_role : "assigned"
+    sys_role ||--o{ sys_role_permission : "has"
+    sys_permission ||--o{ sys_role_permission : "granted"
+    sys_dept ||--o{ sys_position : "contains"
+    sys_position ||--o{ sys_user : "employs"
+    sys_user_group ||--o{ sys_user : "members"
+    sys_user_group ||--o{ sys_role : "granted"
+    sys_dept { bigint id, string dept_name, bigint parent_id }
+    sys_position { bigint id, string position_name, bigint dept_id }
+    sys_user_group { bigint id, string group_name, string description }
+```
 
 ### SQL 落地（核心 5 张表）
 

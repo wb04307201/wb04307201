@@ -13,7 +13,21 @@
 
 ## 2. 核心模型图
 
-![ABAC 关系图](img_1.png)
+```mermaid
+graph TD
+    PEP["策略执行点 PEP<br/>(拦截请求)"] -->|请求| PDP["策略决策点 PDP<br/>(策略引擎)"]
+    PDP -->|查询| PAP["策略管理点 PAP<br/>(策略库)"]
+    PDP -->|获取属性|PIP["信息获取点 PIP<br/>(属性源)"]
+
+    subgraph 属性["四要素属性"]
+        S["主体 Subject<br/>角色/部门/职级"]
+        O["客体 Object<br/>类型/密级/所有者"]
+        A["动作 Action<br/>read/write/delete"]
+        E["环境 Environment<br/>时间/IP/设备"]
+    end
+    PIP --> 属性
+    PDP -->|"eval(策略, 属性)"| Permit["✅ Permit / ❌ Deny"]
+```
 
 ### 四要素
 

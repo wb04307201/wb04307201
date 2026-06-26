@@ -182,4 +182,7 @@ Integer[] objects = new Integer[1_000_000];
 2. 自动装箱/拆箱的原理和性能陷阱
 3. Integer缓存机制（-128到127）
 4. 基础类型vs封装类的内存占用差异
-5. ORM场景中为什么必须使用封装类
+5. ORM场景中为什么必须使用封装类## 相关章节
+
+- 深度阅读：[`01.java/核心概念`](../../../01.java/concepts/README.md) — 包装类、泛型、类型系统
+- 相关：[`13.split-hairs/integer-cache`](../integer-cache/README.md) — Integer 缓存（同类考点）

@@ -74,7 +74,7 @@
 - 基本的计算机网络(TCP 三次握手)
 - 数据结构基础(B+ 树、Hash 表)
 
-## 跨章节关联
+## 相关章节
 
 数据库章节的多个主题与 [04.system-design](../04.system-design/README.md) 深度联动:
 

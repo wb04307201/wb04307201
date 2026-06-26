@@ -28,7 +28,18 @@
 - **控制**：指的是对象创建（实例化、管理）的权力
 - **反转**：控制权交给外部环境（Spring 框架、IoC 容器）
 
-![IoC 容器架构](img.png)
+```mermaid
+graph LR
+    subgraph IoC["IoC 容器 (Spring)"]
+        CFG["配置元数据<br/>XML/注解/Java Config"]
+        Factory["BeanFactory<br/>实例化 + 装配"]
+        Ctx["ApplicationContext<br/>高级服务"]
+    end
+    POJO["POJO + 元数据"] --> CFG
+    CFG --> Factory
+    Factory --> Ctx
+    Ctx --> App["应用对象 (Beans)"]
+```
 
 > 利用 Java 的反射功能实例化 Bean 并建立 Bean 之间的依赖关系，还提供了**实例化缓存、生命周期管理、实例代理、事件发布和资源装载**等高级服务。
 
@@ -40,11 +51,25 @@
 
 ### 1. IoC 容器如何使用配置元数据来管理对象
 
-![配置元数据](img-bean-config-meta.png)
+```mermaid
+graph LR
+    XML["XML 配置<br/>&lt;bean id=...&gt;"] --> Container
+    Anno["注解配置<br/>@Component @Bean"] --> Container
+    Java["Java Config<br/>@Configuration"] --> Container
+    Container["IoC 容器<br/>解析 + 注册 + 实例化"] --> Beans["Bean 实例"]
+```
 
 ### 2. Spring Bean 的装配流程
 
-![Bean 装配流程](img-bean-assembly.png)
+```mermaid
+graph TD
+    A["1. 资源定位<br/>(读取配置文件)"] --> B["2. BeanDefinition 解析"]
+    B --> C["3. BeanDefinitionRegistry<br/>(注册到容器)"]
+    C --> D["4. BeanFactory<br/>(实例化 + 依赖注入)"]
+    D --> E["5. BeanPostProcessor<br/>(初始化前后增强)"]
+    E --> F["6. 就绪 Bean<br/>(可被使用)"]
+    F --> G["7. 销毁<br/>(@PreDestroy/destroy-method)"]
+```
 
 ---
 

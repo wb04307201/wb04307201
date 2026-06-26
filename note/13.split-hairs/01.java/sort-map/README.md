@@ -135,4 +135,7 @@ map.entrySet().stream()
 - **线程安全**：归并时确保线程安全（如使用`ConcurrentLinkedQueue`或`Phaser`同步）。
 - **错误处理**：添加异常处理（如`IOException`），确保临时文件可清理。
 
-通过分块+外部排序，可在有限内存下高效处理1亿数据，同时利用多核并行加速。实际执行时需根据硬件资源（内存、CPU核心数）调整分块大小和并行度。
+通过分块+外部排序，可在有限内存下高效处理1亿数据，同时利用多核并行加速。实际执行时需根据硬件资源（内存、CPU核心数）调整分块大小和并行度。## 相关章节
+
+- 深度阅读：[`01.java/集合框架`](../../../01.java/collection/README.md) — TreeMap、LinkedHashMap 源码
+- 相关：[`13.split-hairs/hashmap-resizing`](../hashmap-resizing/README.md) — HashMap 扩容

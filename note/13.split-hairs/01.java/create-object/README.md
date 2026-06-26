@@ -200,4 +200,8 @@ int[] target = Arrays.copyOf(source, source.length);
 根据具体场景选择合适的方法，例如：
 - 普通对象：优先用`new`。
 - 动态加载类：用反射。
-- 对象池或复杂构造：用工厂模式或建造者模式。
+- 对象池或复杂构造：用工厂模式或建造者模式。## 相关章节
+
+- 深度阅读：[`01.java/核心概念`](../../../01.java/concepts/README.md) — 反射、序列化、SPI
+- 相关：[`13.split-hairs/singleton-pattern`](../singleton-pattern/README.md) — 单例的 5 种实现
+- 相关：[`06.spring/01-core/Bean 生命周期`](../../../06.spring/01-core/ioc/bean-lifecycle.md) — Spring 如何管理 Bean 创建

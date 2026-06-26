@@ -132,4 +132,7 @@ public class UserController {
 - 避免直接使用反射破坏单例（可通过抛出异常阻止）
 - 序列化场景需重写`readResolve()`方法
 
-> 注：在Spring等框架中，通常通过容器管理bean的单例状态，无需手动实现单例模式。
+> 注：在Spring等框架中，通常通过容器管理bean的单例状态，无需手动实现单例模式。## 相关章节
+
+- 深度阅读：[`01.java/设计模式`](../../../01.java/design-patterns/README.md) — GoF 23 种设计模式
+- 相关：[`06.spring/01-core`](../../../06.spring/01-core/README.md) — Spring 单例 Bean（容器管理单例）

@@ -4,7 +4,29 @@
 
 MyBatisPlus 的构造器 wrapper 体系构建得十分精妙,它们均以 AbstractWrapper 作为核心父类,由此衍生出多个功能各异的子类。
 
-![Wrapper 体系类图](img/wrapper-class-hierarchy.png)
+```mermaid
+classDiagram
+    class AbstractWrapper {
+        +eq() +ne() +gt() +lt()
+        +between() +like() +orderBy()
+    }
+    class QueryWrapper {
+        +select() +查询构造
+    }
+    class UpdateWrapper {
+        +set() +更新构造
+    }
+    class LambdaQueryWrapper {
+        +Lambda 表达式查询
+    }
+    class LambdaUpdateWrapper {
+        +Lambda 表达式更新
+    }
+    AbstractWrapper <|-- QueryWrapper
+    AbstractWrapper <|-- UpdateWrapper
+    QueryWrapper <|-- LambdaQueryWrapper
+    UpdateWrapper <|-- LambdaUpdateWrapper
+```
 
 可以按照**用途维度**和**使用方式维度**进行划分。
 

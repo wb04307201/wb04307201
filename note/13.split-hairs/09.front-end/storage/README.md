@@ -177,4 +177,7 @@ try {
 2. localStorage的同步阻塞问题和解决方案
 3. Cookie的安全属性（Secure、HttpOnly、SameSite）
 4. IndexedDB的事务机制和异步特性
-5. 隐私模式下的存储兼容性问题
+5. 隐私模式下的存储兼容性问题## 相关章节
+
+- 深度阅读：[`09.front-end/01-foundation`](../../../09.front-end/01-foundation/README.md) — 浏览器原理、Web 标准
+- 相关：[`13.split-hairs/event-loop`](../event-loop/README.md) · [`13.split-hairs/closure`](../closure/README.md) — JS 核心机制

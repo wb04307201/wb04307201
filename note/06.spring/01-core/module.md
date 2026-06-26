@@ -11,19 +11,99 @@ Spring Framework 自发布以来经过多个大版本迭代，目前主流使用
 
 ### 1.1 Spring 4.x 模块总览
 
-![Spring 4.x 模块图](img.png)
+```mermaid
+graph TB
+    subgraph Core["核心容器"]
+        CoreM["spring-core"]
+        Beans["spring-beans"]
+        Ctx["spring-context"]
+        EL["spring-context-support"]
+        Expr["spring-expression (SpEL)"]
+    end
+    subgraph AOP["AOP & 仪器"]
+        AOPM["spring-aop"]
+        Instr["spring-instrument"]
+        Aspects["spring-aspects"]
+    end
+    subgraph Data["数据访问"]
+        JDBC["spring-jdbc"]
+        TX["spring-tx"]
+        ORM["spring-orm"]
+        OXM["spring-oxm"]
+        JMS["spring-jms"]
+    end
+    subgraph Web["Web"]
+        WebM["spring-web"]
+        WebMVC["spring-webmvc"]
+        WebPortlet["spring-webmvc-portlet"]
+        WebSocket["spring-websocket"]
+    end
+    subgraph Test["测试"]
+        TestM["spring-test"]
+    end
+    CoreM --> Beans
+    Beans --> Ctx
+    Ctx --> AOPM
+    Ctx --> JDBC
+    JDBC --> TX
+    TX --> ORM
+    WebM --> CoreM
+    WebMVC --> WebM
+```
 
 ### 1.2 Spring 5.x 模块结构
 
-![Spring 5.x 模块图](img-spring-5x-modules.png)
+```mermaid
+graph TB
+    subgraph Core["核心容器"]
+        CoreM["spring-core"]
+        Beans["spring-beans"]
+        Ctx["spring-context"]
+        EL["spring-expression"]
+    end
+    subgraph AOP["AOP"]
+        AOPM["spring-aop"]
+        Aspects["spring-aspects"]
+    end
+    subgraph Data["数据访问"]
+        JDBC["spring-jdbc"]
+        TX["spring-tx"]
+        ORM["spring-orm"]
+    end
+    subgraph Web["Web"]
+        WebM["spring-web"]
+        WebMVC["spring-webmvc"]
+        WebFlux["spring-webflux ✨新"]
+    end
+    subgraph Test["测试"]
+        TestM["spring-test"]
+    end
+    CoreM --> Beans --> Ctx
+    WebM --> CoreM
+    WebMVC --> WebM
+    WebFlux --> WebM
+```
 
-Spring 5.x 版本中 Web 模块的 Portlet 组件已经被废弃掉，同时增加了用于异步响应式处理的 WebFlux 组件。
+> Spring 5.x 版本中 Web 模块的 Portlet 组件已经被废弃掉，同时增加了用于异步响应式处理的 WebFlux 组件。
 
 ---
 
 ## 2. Spring 各个模块的依赖关系
 
-![Spring 模块依赖关系](img-module-dependencies.png)
+```mermaid
+graph BT
+    Core["spring-core"]
+    Beans["spring-beans"] --> Core
+    Ctx["spring-context"] --> Beans
+    AOP["spring-aop"] --> Core
+    JDBC["spring-jdbc"] --> Core
+    TX["spring-tx"] --> JDBC
+    ORM["spring-orm"] --> TX
+    Web["spring-web"] --> Core
+    WebMVC["spring-webmvc"] --> Web
+    WebFlux["spring-webflux"] --> Web
+    Test["spring-test"] --> Ctx
+```
 
 ---
 

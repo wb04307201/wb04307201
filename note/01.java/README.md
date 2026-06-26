@@ -26,33 +26,43 @@
 
 ---
 
-## 知识图谱
+## 知识脉络
 
+```mermaid
+graph TB
+    Java["Java 知识体系"]
+    Java --> Core["语言核心"]
+    Java --> Runtime["运行时 & 底层"]
+    Java --> Eng["工程实践"]
+    Java --> Eco["生态扩展"]
+    Java --> Ver["版本演进"]
+
+    Core --> C1["核心概念<br/>语法/OOP/反射/SPI"]
+    Core --> C2["集合框架<br/>List/Set/Map 源码"]
+    Core --> C3["I/O<br/>BIO/NIO/零拷贝"]
+    Core --> C4["模块系统<br/>JPMS"]
+
+    Runtime --> R1["JVM<br/>类加载/内存/GC/调优"]
+    Runtime --> R2["Java Agent<br/>字节码增强"]
+    Runtime --> R3["并发编程<br/>线程/锁/JMM/JUC"]
+
+    Eng --> E1["设计模式<br/>GoF 23 种"]
+    Eng --> E2["构建工具<br/>Maven/Gradle"]
+    Eng --> E3["日志/测试<br/>Logback/JUnit5"]
+    Eng --> E4["JDBC/网络<br/>数据库/Socket"]
+
+    Eco --> K["Kotlin<br/>JVM 现代语言"]
+    Ver --> V["Java 8 → 26<br/>各版本特性演进"]
 ```
-Java
-├── 语言核心
-│   ├── 核心概念 (concepts): 语法/OOP/类型系统/反射/序列化/SPI
-│   ├── 集合框架 (collection): List/Set/Map 体系与源码分析
-│   ├── I/O (io): BIO/NIO/零拷贝
-│   └── 模块系统 (modules): JPMS 模块化架构
-│
-├── 运行时 & 底层
-│   ├── JVM (jvm): 类加载/内存/GC/调优
-│   ├── Java Agent (java-agent): 字节码增强/Instrumentation
-│   └── 并发编程 (concurrency): 线程/锁/JMM/JUC/异步
-│
-├── 工程实践
-│   ├── 设计模式 (design-patterns): GoF 23 种模式
-│   ├── 构建工具 (build-tools): Maven/Gradle
-│   ├── 日志 (logging): 日志体系与框架选型
-│   ├── 测试 (testing): JUnit 5/Mockito/JaCoCo
-│   ├── JDBC (jdbc): 数据库访问标准 API
-│   └── 网络编程 (network): Socket/TCP/UDP
-│
-├── 生态扩展
-│   └── Kotlin (kotlin): JVM 上的现代语言
-│
-└── 版本演进 (version)
-    ├── 功能变更历史: GC/Lambda/Stream/并发/FFM/Vector API ...
-    └── 各版本特性: Java 8 → 26
-```
+
+## 学习路径
+
+- **新人入门**：核心概念 → 集合框架 → I/O → JDBC → 日志 → 测试
+- **进阶深入**：JVM → 并发编程 → 设计模式 → Java Agent
+- **生态扩展**：Kotlin → 模块系统 → 版本特性追踪
+
+## 相关章节
+
+- 下游：[`06.spring`](../06.spring/) — Spring 生态（Java 最主流框架）
+- 关联：[`04.system-design`](../04.system-design/) — 系统设计（Java 工程实践的上层方法论）
+- 面试：[`13.split-hairs/01.java`](../13.split-hairs/01.java/README.md) — 15 篇 Java 高频面试题

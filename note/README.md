@@ -78,21 +78,20 @@
 > - [Flexible Lock · 灵锁](https://gitee.com/wb04307201/flexible-lock) — 基于 Spring Boot 的统一锁接口，支持 Redis 单点/集群/哨兵、Zookeeper、本地锁
 > - [Rate Limiter · 限流器](https://gitee.com/wb04307201/rate-limiter) — 配套限流组件
 
-# 五、工具
-## Git
-### [Git 命令清单](05.tools/git/command/README.md)
-### [Gitea](05.tools/git/gitea/README.md)
-## Docker
-### [Docker 命令](05.tools/docker/command/README.md)
-### [Docker 镜像](05.tools/docker/images/README.md)
-### [Podman](05.tools/docker/podman/README.md)
-## [Nginx](05.tools/nginx/README.md)
-### [Pingora](05.tools/nginx/pingora/README.md)
-## [Monorepo](05.tools/monorepo/README.md)
-## [阿里微服务](05.tools/ali-microservices/README.md)
-## Java
-### [Hutool、Apache Commons、Guava工具库](05.tools/java/tool-library/README.md)
-### [Lombok注解如何让Java开发效率飙升](05.tools/java/lombok/README.md)
+# 五、[工具链](05.tools/README.md)
+
+> 工欲善其事，必先利其器。覆盖版本控制（Git）、容器化（Docker/Podman）、反向代理（Nginx/Pingora）、Monorepo、Java 工具库与阿里微服务生态。
+
+## 模块导航
+
+| 序号 | 主题 | 核心内容 |
+|------|------|----------|
+| 1 | [01 Git](05.tools/git/command/README.md) | 命令清单、[Gitea](05.tools/git/gitea/README.md) 自建代码托管 |
+| 2 | [02 Docker](05.tools/docker/command/README.md) | 命令速查、[Compose](05.tools/docker/docker-compose/README.md)、[镜像](05.tools/docker/images/README.md)、[Podman](05.tools/docker/podman/README.md) |
+| 3 | [03 Nginx](05.tools/nginx/README.md) | 反向代理/负载均衡、[Pingora](05.tools/nginx/pingora/README.md) 新一代代理 |
+| 4 | [04 Monorepo](05.tools/monorepo/README.md) | 单仓多项目管理、演进路径、工具选型 |
+| 5 | [05 Java 工具库](05.tools/java/tool-library/README.md) | Hutool / Guava / Commons、[Lombok](05.tools/java/lombok/README.md) 注解提效 |
+| 6 | [06 阿里微服务](05.tools/ali-microservices/README.md) | Nacos 服务发现与配置管理、阿里云原生微服务生态 |
 
 # 六、[Spring](06.spring/README.md)
 
@@ -201,7 +200,7 @@
 | 6 | [L6 前沿研究](11.ai/06-research/README.md) | 沉思模型（Rumination）等前沿探索 |
 | 7 | [教学课程](11.ai/training/README.md) | Spring AI Agent 实战 16 课 |
 
-# 十二、[「阿明餐厅」技术系列](12.story/index.md)
+# 十二、[「阿明餐厅」技术系列](12.story/README.md)
 
 > 以餐厅经营为叙事主线，用 **43 篇** 故事讲透从架构演进到 AI 转型的技术全景。前传 + 续集一 + 正传 14 + 终章 + 番外 6 + 续集 2-17（AI 时代 16 篇）+ 番外 7-8 —— 一篇一个核心主题，篇篇独立又互相串联。
 >
@@ -211,7 +210,7 @@
 
 | 序号 | 主题 | 核心内容 |
 |------|------|----------|
-| 1 | [系列导览](12.story/index.md) | 43 篇全景图 + 4 条主路径 + 13 类角色推荐 + 概念交叉索引 |
+| 1 | [系列导览](12.story/README.md) | 43 篇全景图 + 4 条主路径 + 13 类角色推荐 + 概念交叉索引 |
 | 2 | [前传 · 架构演进](12.story/02-system-architecture-evolution.md) | 架构"长"出来（单机→云原生）+ IT 成熟度 L1-L7 评估 |
 | 3 | [续集一 · AI Agent 架构](12.story/01-ai-agent-architecture.md) | 7 大模块：感知/记忆/规划/工具/协同/反馈/安全（衔接 [11.ai AI 知识体系](11.ai/README.md)）|
 | 4 | [正传 1-14 · 核心工程（14 篇）](12.story/04-peak-traffic-defense.md) | 流量/可观测/安全/QA/CI-CD/API/数据/前端/故障/性能/异步/分布式/多端/数据库迁移 |

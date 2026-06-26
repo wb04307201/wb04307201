@@ -40,16 +40,16 @@
 ## 待补充的高频面试题（强烈建议）
 
 ### Spring Security（中频）
-- **过滤器链执行顺序**
-- **认证 vs 授权流程**
-- **JWT vs Session 方案对比**
-- **CSRF 防护**
+- **过滤器链执行顺序** → 深度阅读：[`04.system-design/05-security`](../../04.system-design/05-security/README.md)
+- **认证 vs 授权流程** → 深度阅读：[`04.system-design/05-security/access-control`](../../04.system-design/05-security/access-control/README.md)（RBAC/ABAC 6 大模型）
+- **JWT vs Session 方案对比** → 深度阅读：[`04.system-design/05-security`](../../04.system-design/05-security/README.md)（JWT、OAuth2）
+- **CSRF 防护** → 深度阅读：[`09.front-end/07-security`](../../09.front-end/07-security/README.md)（XSS/CSRF/CSP）
 
 ### Spring Cloud（中频）
-- **服务注册与发现**（Nacos / Eureka / Consul）
-- **负载均衡**（Ribbon / LoadBalancer）
-- **熔断降级**（Sentinel / Resilience4j）
-- **配置中心**（Nacos Config / Spring Cloud Config）
+- **服务注册与发现**（Nacos / Eureka / Consul）→ 深度阅读：[`06.spring/05-spring-cloud`](../../06.spring/05-spring-cloud/README.md)
+- **负载均衡**（Ribbon / LoadBalancer）→ 深度阅读：[`06.spring/05-spring-cloud`](../../06.spring/05-spring-cloud/README.md)
+- **熔断降级**（Sentinel / Resilience4j）→ 深度阅读：[`04.system-design/03-high-availability`](../../04.system-design/03-high-availability/README.md)
+- **配置中心**（Nacos Config / Spring Cloud Config）→ 深度阅读：[`06.spring/05-spring-cloud`](../../06.spring/05-spring-cloud/README.md)
 
 ---
 
@@ -59,7 +59,7 @@
 2. **进阶**（2 周）：Bean 生命周期 + @Transactional 失效场景 + AOP 原理 + 循环依赖
 3. **冲刺面试**：重点看"自动配置原理"、"传播行为"、"JDK 代理 vs CGLIB"、"@Async 失效"
 
-## 交叉引用
+## 相关章节
 
 - 主模块：[`note/06.spring`](../../06.spring/) — Spring 知识体系
 - 相关章节：[`01.java`](../01.java/)（Java 基础）/ [`04.system-design`](../04.system-design/)（系统设计）

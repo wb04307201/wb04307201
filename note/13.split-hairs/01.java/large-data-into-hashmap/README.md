@@ -172,4 +172,7 @@ dataList.parallelStream()
 1. HashMap扩容机制和负载因子的作用
 2. ConcurrentHashMap的分段锁原理（Java 7 vs Java 8）
 3. parallelStream的底层实现和调优
-4. 内存泄漏防范和GC优化策略
+4. 内存泄漏防范和GC优化策略## 相关章节
+
+- 深度阅读：[`01.java/集合框架`](../../../01.java/collection/README.md) — HashMap 底层源码
+- 相关：[`13.split-hairs/hashmap-resizing`](../hashmap-resizing/README.md) — HashMap 扩容 · [`13.split-hairs/arrayList-distinct`](../arrayList-distinct/README.md) — 集合去重

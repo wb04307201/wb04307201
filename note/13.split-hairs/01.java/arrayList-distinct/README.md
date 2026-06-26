@@ -146,4 +146,7 @@ List<Integer> deduplicated = list.parallelStream()
 3. **避免对象膨胀**：确保自定义对象的`hashCode()`和`equals()`高效实现，避免字符串拼接等耗时操作。
 4. **考虑数据库方案**：若数据源自数据库，直接用SQL的`SELECT DISTINCT`可能更高效。
 
-根据具体场景选择合适方案，通常**内存充足选HashSet，内存紧张选排序遍历**。对于超大数据，需结合磁盘存储和分治思想处理。
+根据具体场景选择合适方案，通常**内存充足选HashSet，内存紧张选排序遍历**。对于超大数据，需结合磁盘存储和分治思想处理。## 相关章节
+
+- 深度阅读：[`01.java/集合框架`](../../../01.java/collection/README.md) — ArrayList、LinkedList、HashMap 源码
+- 相关：[`13.split-hairs/hashmap-resizing`](../hashmap-resizing/README.md) · [`13.split-hairs/large-data-into-hashmap`](../large-data-into-hashmap/README.md) — HashMap 系列

@@ -65,7 +65,7 @@
 2. **进阶**（2 周）：事件循环 + 闭包 + 原型链 + this 绑定 + Promise 手写
 3. **冲刺面试**：重点看"从 URL 输入到页面展示"、"HTTPS 握手"、"Virtual DOM Diff"、"Vue 响应式原理"
 
-## 交叉引用
+## 相关章节
 
 - 主模块：[`note/09.front-end`](../../09.front-end/) — 前端知识体系
 - 相关章节：[`01-foundation`](../../09.front-end/01-foundation/) / [`02-language`](../../09.front-end/02-language/)（基础与语言）
