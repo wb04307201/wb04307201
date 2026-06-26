@@ -301,3 +301,7 @@ if (state == ChannelState.RECEIVED) {
 
 - JMH 基准测试指南见 [性能测试](../../../01.java/testing/README.md)
 - 缓存行与伪共享见 [并发编程](../replace-synchronized-with-atomic/README.md)
+
+## 相关章节
+
+- 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容

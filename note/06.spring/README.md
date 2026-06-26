@@ -134,6 +134,19 @@ graph TB
 
 ---
 
+## 🏆 最佳实践
+
+| 领域 | 实践要点 |
+|------|---------|
+| **依赖注入** | 优先构造器注入，避免 `@Autowired` 字段注入；配合 `@RequiredArgsConstructor` 简化 |
+| **事务管理** | `@Transactional` 标注在 Service 层；注意同类调用失效、异常类型匹配、传播行为选择 |
+| **缓存** | 多级缓存（Caffeine L1 + Redis L2）；`@Cacheable` + 自定义 KeyGenerator；防穿透用空值缓存 |
+| **配置管理** | `@ConfigurationProperties` 替代 `@Value`；多环境 Profile 隔离；敏感配置加密 |
+| **异常处理** | `@RestControllerAdvice` 全局统一；业务异常继承 `RuntimeException`；错误码规范化 |
+| **可观测性** | Actuator + Micrometer 指标暴露；分布式追踪（Micrometer Tracing → OTLP）；结构化日志 |
+
+---
+
 ## 🔗 与其他章节的关联
 
 | 关联章节 | 关联点 |

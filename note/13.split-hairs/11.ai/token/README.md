@@ -226,3 +226,7 @@ def estimate_tokens(text):
 - 主模块：[`11.ai`](../../11.ai/) — AI 知识体系
 - 相关：[`13.split-hairs/11.ai/transformer/`](../transformer/) — Transformer 架构
 - 相关：[`13.split-hairs/11.ai/rag/`](../rag/) — RAG（减少 token 使用）
+
+## 相关章节
+
+- 深度阅读：[`11.ai`](../../11.ai/README.md) — 主模块详细内容

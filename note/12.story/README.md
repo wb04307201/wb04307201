@@ -929,6 +929,18 @@ Prompt 是"调模型"之外的"调输入"艺术。10 大经典模式（Zero-shot
 
 ---
 
+## 相关章节
+
+- 技术基础：[`01.java`](../01.java/README.md) — Java 语言体系
+- 系统设计：[`04.system-design`](../04.system-design/README.md) — 分布式、高可用、高性能设计
+- Spring 生态：[`06.spring`](../06.spring/README.md) — Spring 全家桶
+- 工作流：[`07.workflow`](../07.workflow/README.md) — BPMN 流程引擎
+- AI 知识体系：[`11.ai`](../11.ai/README.md) — 大语言模型、Agent 架构
+- 前端工程：[`09.front-end`](../09.front-end/README.md) — 前端知识体系
+- 面试题：[`13.split-hairs`](../13.split-hairs/README.md) — 高频面试题深度剖析
+
+---
+
 ## 版权与引用
 
 本系列文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可协议。欢迎转载、引用，但请注明出处。

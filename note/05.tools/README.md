@@ -75,7 +75,18 @@ graph TB
 
 ---
 
-## 🔗 交叉引用
+## 7. 相关章节
 
-- 主模块：[`note/README.md`](../README.md) — 知识体系全景
-- 相关模块：[`01.java`](../01.java/) · [`06.spring`](../06.spring/) · [`10.big-data`](../10.big-data/)
+- 上游：[`01.java`](../01.java/README.md) — Java 语言基础（工具库的宿主语言）
+- 下游：[`06.spring`](../06.spring/README.md) — Spring 全家桶（工具链的核心应用场景）
+- 关联：[`10.big-data`](../10.big-data/README.md) — 大数据生态（Docker 部署、数据同步工具）
+- 关联：[`04.system-design`](../04.system-design/README.md) — 系统设计（Nginx 反向代理、Monorepo 架构）
+
+---
+
+## 8. 开源参考
+
+- [Hutool](https://gitee.com/dromara/hutool) — 国产 Java 工具集
+- [Guava](https://github.com/google/guava) — Google Java 核心库
+- [Gitea](https://gitea.io) — 轻量级自建 Git 托管
+- [Pingora](https://github.com/cloudflare/pingora) — Cloudflare 新一代 Rust 代理框架

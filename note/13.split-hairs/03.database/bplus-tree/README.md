@@ -261,3 +261,7 @@ leaf_count = ceil(20,000,000 / 70) = 285,715
 
 - 主模块：[`03.database`](../../../03.database/) — 数据库知识体系
 - [索引设计](../../../03.database/04-index/README.md) — 索引设计原则与最佳实践
+
+## 相关章节
+
+- 深度阅读：[`03.database`](../../03.database/README.md) — 主模块详细内容

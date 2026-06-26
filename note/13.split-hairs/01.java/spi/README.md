@@ -207,3 +207,7 @@ http=com.apache.dubbo.rpc.protocol.http.HttpProtocol
 - [类加载机制](../class-loading/README.md) — 类加载与双亲委派
 - [JDBC](../../../01.java/jdbc/README.md) — JDBC 深入
 - [SPI 设计模式](../../../01.java/concepts/spi/README.md) — SPI 机制详解
+
+## 相关章节
+
+- 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容

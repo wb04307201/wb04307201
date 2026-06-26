@@ -351,6 +351,19 @@ flowchart TD
 
 ---
 
+## 5a. 最佳实践
+
+| 场景 | 实践要点 |
+|------|---------|
+| **性能优化** | Core Web Vitals 先行（LCP < 2.5s, INP < 200ms, CLS < 0.1）；代码分割 + 懒加载；图片用 WebP/AVIF + `loading="lazy"` |
+| **状态管理** | 服务端状态用 TanStack Query/SWR；客户端状态用 Zustand/Jotai；避免全局 Redux 过度使用 |
+| **安全** | CSP + SRI 标配；XSS 防御用框架内置转义；依赖审计 `npm audit` + Socket.dev |
+| **工程化** | TypeScript strict 模式；ESLint + Prettier 统一风格；Vitest 单测 + Playwright E2E |
+| **跨端选型** | 移动端优先 React Native / Flutter；桌面端 Tauri（轻量）/ Electron（生态）；小程序 Taro / uni-app |
+| **AI 协同** | AI IDE（Cursor / Claude Code）辅助编码；Vibe Coding 适用于原型，生产代码需人工审查 |
+
+---
+
 ## 6. 交叉引用
 
 - [`02.computer-basics/01-network/`](../02.computer-basics/01-network/) — HTTP / HTTPS / HTTP2 / HTTP3 协议族

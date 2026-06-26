@@ -281,3 +281,7 @@ Cluster 中 `MULTI/EXEC` 只能操作**同槽内的 Key**。
   - [Redis 持久化机制](../redis-persistence/README.md)
   - [Redis 缓存穿透/击穿/雪崩](../redis/cache-penetration-breakdown-avalanche/README.md)
   - [分布式锁实现](../../../04.system-design/02-distributed/distributed-lock/README.md)
+
+## 相关章节
+
+- 深度阅读：[`03.database`](../../03.database/README.md) — 主模块详细内容

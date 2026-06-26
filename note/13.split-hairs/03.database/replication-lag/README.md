@@ -265,3 +265,7 @@ public Product getProductWithRetry(Long productId, int maxRetries) {
 
 - 主模块：[`03.database`](../../../03.database/) — 数据库知识体系
 - 相关主题：[MySQL 核心知识](../../../03.database/05-mysql/README.md)、[MVCC 原理](../mvcc/README.md)、[索引优化](../../../03.database/04-index/README.md)
+
+## 相关章节
+
+- 深度阅读：[`03.database`](../../03.database/README.md) — 主模块详细内容

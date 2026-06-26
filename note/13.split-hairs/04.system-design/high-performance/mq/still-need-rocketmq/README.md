@@ -316,3 +316,7 @@ sh mqadmin resetOffsetByTime \
 ## 六、交叉引用
 
 - 消息队列选型指南见 [MQ 核心原理](../../../../../04.system-design/04-high-performance/mq/README.md)
+
+## 相关章节
+
+- 深度阅读：[`04.system-design`](../../../../04.system-design/README.md) — 主模块详细内容

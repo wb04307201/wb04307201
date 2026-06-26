@@ -345,3 +345,7 @@ SHOW TABLE STATUS LIKE 'users';        -- 查看数据量、索引大小
 
 - InnoDB 索引结构见 [B+ 树原理](../../../bplus-tree/README.md)
 - 事务隔离与锁见 [MVCC 机制](../../../mvcc/README.md)
+
+## 相关章节
+
+- 深度阅读：[`03.database`](../../../../03.database/README.md) — 主模块详细内容

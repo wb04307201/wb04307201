@@ -254,3 +254,7 @@ public int lockElimination() {
 - [AQS](../aqs/README.md) — AQS 队列与 ReentrantLock 实现
 - [CAS 与原子类](../../../01.java/concurrency/atomic/README.md) — CAS 原语与原子类
 - 延伸阅读：《深入理解 Java 虚拟机》第 12 章、HotSpot 源码 `objectMonitor.hpp` / `synchronizer.cpp`
+
+## 相关章节
+
+- 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容

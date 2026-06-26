@@ -259,3 +259,7 @@ public class ScanMetrics {
 - **延伸学习**：[Redis大Key问题](../../../../redis-big-key/README.md)
 - **性能优化**：[Redis管道](../../../../redis-cluster/README.md) - 批量操作效率
 - **集群架构**：[Redis Cluster](../../../../redis-cluster/README.md) - 分布式搜索策略
+
+## 相关章节
+
+- 深度阅读：[`03.database`](../../../../../03.database/README.md) — 主模块详细内容

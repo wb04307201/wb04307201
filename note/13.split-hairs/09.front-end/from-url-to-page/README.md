@@ -208,3 +208,7 @@ graph LR
 
 - 主模块：[`09.front-end`](../../../09.front-end/) — 前端知识体系
 - [浏览器渲染](../../../09.front-end/01-foundation/browser-rendering/README.md) — 浏览器渲染原理详解
+
+## 相关章节
+
+- 深度阅读：[`09.front-end`](../../09.front-end/README.md) — 主模块详细内容

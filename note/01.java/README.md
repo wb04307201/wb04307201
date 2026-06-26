@@ -55,6 +55,21 @@ graph TB
     Ver --> V["Java 8 → 26<br/>各版本特性演进"]
 ```
 
+## 速查表
+
+| 概念 | 核心要点 | 典型场景 |
+|------|---------|---------|
+| **HashMap** | 数组 + 链表 + 红黑树（JDK8+），容量 2^n，负载因子 0.75 | 键值对查找，O(1) 平均 |
+| **ConcurrentHashMap** | JDK8: CAS + synchronized 锁桶头节点 | 高并发读写 |
+| **synchronized** | 内置锁，JVM 实现，自动释放 | 简单同步场景 |
+| **ReentrantLock** | API 级锁，支持公平/非公平、可中断 | 复杂锁场景 |
+| **volatile** | 保证可见性 + 禁止指令重排，不保证原子性 | 状态标志位、双重检查锁 |
+| **ThreadLocal** | 线程本地存储，注意内存泄漏（remove） | 用户上下文、数据库连接 |
+| **JVM 内存** | 堆（对象）、栈（帧）、方法区（类信息）、本地方法栈、PC 寄存器 | 内存分析、OOM 排查 |
+| **GC 算法** | 标记-清除、复制、标记-整理、分代收集 | 调优 GC 参数 |
+| **反射** | 运行时获取类信息、动态调用，性能开销较大 | 框架底层（Spring IoC） |
+| **SPI** | 接口定义 +  META-INF/services/ 配置 | JDBC 驱动、Dubbo 扩展 |
+
 ## 学习路径
 
 - **新人入门**：核心概念 → 集合框架 → I/O → JDBC → 日志 → 测试
@@ -66,3 +81,13 @@ graph TB
 - 下游：[`06.spring`](../06.spring/) — Spring 生态（Java 最主流框架）
 - 关联：[`04.system-design`](../04.system-design/) — 系统设计（Java 工程实践的上层方法论）
 - 面试：[`13.split-hairs/01.java`](../13.split-hairs/01.java/README.md) — 15 篇 Java 高频面试题
+
+## 开源参考
+
+| 项目 | 说明 | 链接 |
+|------|------|------|
+| OpenJDK | Java 标准开源实现 | [github.com/openjdk/jdk](https://github.com/openjdk/jdk) |
+| JUnit 5 | Java 单元测试框架 | [junit.org](https://junit.org/junit5/) |
+| Mockito | Mock 测试框架 | [mockito.org](https://site.mockito.org) |
+| JaCoCo | 代码覆盖率工具 | [eclemma.org/jacoco](https://www.eclemma.org/jacoco/) |
+| Kotlin | JVM 现代语言 | [kotlinlang.org](https://kotlinlang.org) |

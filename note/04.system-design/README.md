@@ -4,27 +4,40 @@
 
 ## 📚 知识地图
 
-```
-                    ┌─────────────────────────────────────┐
-                    │        04.system-design             │
-                    │         系统设计笔记                │
-                    └─────────────────┬───────────────────┘
-                                      │
-        ┌─────────────┬───────────────┼───────────────┬─────────────┐
-        ▼             ▼               ▼               ▼             ▼
-   ┌─────────┐  ┌───────────┐  ┌───────────┐  ┌───────────┐  ┌──────────┐
-   │ 01.基础  │  │ 02.分布式  │  │ 03.高可用  │  │ 04.高性能  │  │ 05.安全  │
-   │Foundation│  │Distributed│  │  HA       │  │  HP       │  │ Security │
-   └─────────┘  └───────────┘  └───────────┘  └───────────┘  └──────────┘
-        │             │               │               │             │
-        ▼             ▼               ▼               ▼             ▼
-   软件工程      CAP/BASE        限流/熔断/重试    负载均衡/CDN    JWT/OAuth2
-   开发流程      共识算法        冗余/弹性        缓存/数据库优化  RBAC/API安全
-   系统设计      分布式事务      混沌工程          消息队列/Java   权限模型
-   OOD/DDD/TOGAF 分布式锁/ID     代码质量          序列化/连接池   数据脱敏
-   /ArchiMate   RPC/网关       容灾演练          多级缓存
-   /IT4IT      服务发现
-   技术债       分布式缓存
+```mermaid
+graph TB
+    ROOT["04.system-design<br/>系统设计笔记"]
+
+    ROOT --> M1["01 基础 Foundation"]
+    ROOT --> M2["02 分布式 Distributed"]
+    ROOT --> M3["03 高可用 HA"]
+    ROOT --> M4["04 高性能 HP"]
+    ROOT --> M5["05 安全 Security"]
+
+    M1 --> M1A["软件工程 / 开发流程"]
+    M1 --> M1B["OOD / DDD / TOGAF / ArchiMate / IT4IT"]
+    M1 --> M1C["技术债"]
+
+    M2 --> M2A["CAP / BASE"]
+    M2 --> M2B["共识算法"]
+    M2 --> M2C["分布式事务 / 锁 / ID"]
+    M2 --> M2D["RPC / 网关 / 服务发现"]
+    M2 --> M2E["分布式缓存"]
+
+    M3 --> M3A["限流 / 熔断 / 重试"]
+    M3 --> M3B["冗余 / 弹性"]
+    M3 --> M3C["混沌工程"]
+    M3 --> M3D["代码质量 / 容灾演练"]
+
+    M4 --> M4A["负载均衡 / CDN"]
+    M4 --> M4B["缓存 / 数据库优化"]
+    M4 --> M4C["消息队列 / 序列化 / 连接池"]
+    M4 --> M4D["Java 优化 / 多级缓存"]
+
+    M5 --> M5A["JWT / OAuth2"]
+    M5 --> M5B["RBAC / API 安全"]
+    M5 --> M5C["加密 / 密钥管理"]
+    M5 --> M5D["数据脱敏"]
 ```
 
 ## 🗺️ 学习路线
@@ -85,3 +98,16 @@
 - [容量规划与压测](07-deployment/capacity-planning/README.md)
 - 2026-06-10: 新增 [架构描述语言 ArchiMate 3.2](01-foundation/system-design-basics/archimate/README.md) — 与 TOGAF 10 同源的企业架构建模语言，覆盖 30+ 视点
 - 2026-06-10: 新增 [IT 价值流参考架构 IT4IT 3.0](01-foundation/system-design-basics/it4it/README.md) — 4 价值流 + 9 功能组件，Open Group 标准组合第三件套
+
+---
+
+## 相关章节
+
+- 上游：[`01.java`](../01.java/README.md) — 语言基础（并发、I/O、网络编程为系统设计提供底层支撑）
+- 上游：[`02.computer-basics`](../02.computer-basics/README.md) — 网络协议、Linux 基础
+- 上游：[`03.database`](../03.database/README.md) — 事务、索引、缓存、连接池（数据层设计核心）
+- 下游：[`06.spring`](../06.spring/README.md) — Spring 全家桶（系统设计的 Java 技术实现）
+- 关联：[`05.tools`](../05.tools/README.md) — Docker、Nginx、Monorepo（部署与基础设施）
+- 关联：[`07.workflow`](../07.workflow/README.md) — 工作流引擎（流程编排与事件驱动）
+- 关联：[`09.front-end`](../09.front-end/README.md) — 前端架构（BFF、微前端、渲染模式）
+- 深化：[`13.split-hairs/04.system-design`](../13.split-hairs/04.system-design/README.md) — 高频面试题深度剖析

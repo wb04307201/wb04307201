@@ -295,3 +295,7 @@ systemctl start redis
 - 主模块：[`03.database`](../../../03.database/)
 - 相关：[Redis大Key问题](../redis-big-key/README.md)、[Redis集群](../redis-cluster/README.md)
 - [官方文档](https://redis.io/docs/manual/persistence/)
+
+## 相关章节
+
+- 深度阅读：[`03.database`](../../03.database/README.md) — 主模块详细内容

@@ -258,3 +258,7 @@ class Component {
 
 - 主模块：[`09.front-end`](../../../09.front-end/) — 前端知识体系
 - [语言基础](../../../09.front-end/02-language/README.md) — JavaScript 核心概念
+
+## 相关章节
+
+- 深度阅读：[`09.front-end`](../../09.front-end/README.md) — 主模块详细内容

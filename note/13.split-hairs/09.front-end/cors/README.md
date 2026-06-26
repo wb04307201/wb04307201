@@ -357,3 +357,7 @@ fetch('https://api.example.com/data', {
 - 主模块：[`09.front-end`](../../../09.front-end/) — 前端知识体系
 - [CORS 安全](../../../09.front-end/07-security/cors/README.md) — CORS 详解与最佳实践
 - [CSRF 防护](../../../09.front-end/07-security/csrf/README.md) — CSRF 攻击与防御
+
+## 相关章节
+
+- 深度阅读：[`09.front-end`](../../09.front-end/README.md) — 主模块详细内容

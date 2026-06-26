@@ -318,3 +318,7 @@ graph TB
 
 - 主模块：[`04.system-design`](../../../04.system-design/) — 系统设计
 - [缓存一致性](../../high-performance/cache-consistency/README.md) — 缓存与数据库一致性方案
+
+## 相关章节
+
+- 深度阅读：[`04.system-design`](../../../04.system-design/README.md) — 主模块详细内容

@@ -405,6 +405,18 @@ flowchart LR
 
 ---
 
+## 🏆 最佳实践
+
+| 场景 | 实践要点 |
+|------|---------|
+| **系统选型** | 先明确业务价值链位置（研发/生产/供应链/销售/运营）；中小企业用一体化 ERP（SAP/用友/金蝶）；制造业核心抓 MES + WMS |
+| **系统集成** | 优先 API 网关统一入口；异步场景用消息队列（Kafka/RabbitMQ）；跨系统数据同步用 CDC（Canal/Debezium） |
+| **数据流设计** | 主数据管理（MDM）统一编码；ETL/ELT 工具（DataX/Flink CDC）分层处理；数据血缘可追溯 |
+| **实施方法论** | 分阶段上线（先核心再扩展）；蓝图设计 → 配置开发 → 集成测试 → 上线切换 → 持续优化 |
+| **国产化替代** | ERP → 用友/金蝶/浪潮；MES → 盘古/摩尔元山；数据库 → TiDB/OceanBase；中间件 → RocketMQ/Nacos |
+
+---
+
 ## 🛤️ 学习路线
 
 - **入门（1-2 天）**：[业务价值链全景图](#-业务价值链全景图) → [ERP 详讲](#erpenterprise-resource-planning-企业资源计划) → [CRM 详讲](#crmcustomer-relationship-management-客户关系管理)
@@ -416,5 +428,17 @@ flowchart LR
 9. MOM + SCADA — 智能制造方向
 10. SRM + APS — 供应链优化方向
 11. BI — 数据驱动决策方向
+
+---
+
+## 相关章节
+
+- 技术实现：[`06.spring`](../06.spring/README.md) — 业务系统的 Java/Spring 技术栈
+- 数据层：[`03.database`](../03.database/README.md) — 业务系统的数据存储、事务、缓存设计
+- 架构设计：[`04.system-design`](../04.system-design/README.md) — 分布式、高可用、高性能设计模式
+- 流程引擎：[`07.workflow`](../07.workflow/README.md) — BPMN 工作流（ERP/MES/CRM 中的审批流、业务流）
+- 大数据：[`10.big-data`](../10.big-data/README.md) — 数据仓库、BI、数据治理（支撑 BI/ERP 数据分析）
+- 前端：[`09.front-end`](../09.front-end/README.md) — 业务系统前端工程化
+- 深化：[`13.split-hairs`](../13.split-hairs/README.md) — 高频面试题（系统设计、数据库等）
 
 ---

@@ -281,3 +281,7 @@ public class ConcurrencyMetrics {
 - **延伸学习**：[Java synchronized锁升级](../synchronized-lock-upgrade/README.md) - 偏向锁/轻量级锁/重量级锁
 - **数据库关联**：[MySQL事务隔离](../../../03.database/03-transaction/README.md)
 - **分布式扩展**：[分布式锁](../../../04.system-design/02-distributed/distributed-lock/README.md) - Redis/ZooKeeper
+
+## 相关章节
+
+- 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容

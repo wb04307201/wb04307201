@@ -237,3 +237,7 @@ public final class SBUtils {
 - **并发编程**：[ThreadLocal](../thread-pool/README.md) - 内存泄漏防范
 - **性能调优**：[JVM调优](../../../01.java/jvm/tuning.md)
 - **关联知识**：[HashMap扩容](../hashmap-resizing/README.md) - 预分配容量
+
+## 相关章节
+
+- 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容

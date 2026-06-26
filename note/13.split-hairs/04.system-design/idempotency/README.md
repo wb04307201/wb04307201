@@ -345,3 +345,7 @@ public Result register(@Valid @RequestBody UserRegisterRequest req,
 
 - 主模块：[`04.system-design`](../../../04.system-design/) — 系统设计知识体系
 - [分布式锁](../../../04.system-design/02-distributed/distributed-lock/README.md) — 分布式锁实现详解
+
+## 相关章节
+
+- 深度阅读：[`04.system-design`](../../04.system-design/README.md) — 主模块详细内容

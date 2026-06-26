@@ -285,3 +285,7 @@ graph LR
 - 主模块：[`01.java`](../../../01.java/) — Java 知识体系
 - [JVM 内存](../../../01.java/jvm/README.md) — JVM 内存模型
 - [SPI 机制](../spi/README.md) — SPI 机制详解
+
+## 相关章节
+
+- 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容

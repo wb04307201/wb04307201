@@ -281,3 +281,7 @@ JOIN performance_schema.threads t ON w.blocking_thread_id = t.thread_id;
 - InnoDB 锁机制详解见 [MySQL 事务核心](../../../../../03.database/03-transaction/README.md)
 - 索引设计与优化见 [B+树原理](../../../bplus-tree/README.md)
 - 事务隔离级别见 [隔离级别](../isolation/README.md)
+
+## 相关章节
+
+- 深度阅读：[`03.database`](../../../../03.database/README.md) — 主模块详细内容

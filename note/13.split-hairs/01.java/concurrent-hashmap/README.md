@@ -342,3 +342,7 @@ map.merge(key, 1, Integer::sum);
   - [CAS 与原子类](../../../01.java/concurrency/atomic/README.md) — JDK 8 CAS 操作的底层原理
   - [synchronized 锁升级](../../../01.java/concurrency/synchronized/README.md) — JDK 8 为何选择 synchronized
   - [TreeMap 原理](../../../01.java/collection/TreeMap/README.md) — JDK 8 树化机制的数据结构基础
+
+## 相关章节
+
+- 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容

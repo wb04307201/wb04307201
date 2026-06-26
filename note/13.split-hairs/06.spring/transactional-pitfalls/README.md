@@ -332,3 +332,7 @@ public class OrderService {
 - 主模块：[`06.spring`](../../../06.spring/) — Spring 知识体系
 - [AOP 原理](../../../06.spring/08-annotations/aop.md) — AOP 原理详解
 - [@Autowired 推荐用法](../not-use-@autowired/README.md) — @Autowired 推荐用法
+
+## 相关章节
+
+- 深度阅读：[`06.spring`](../../06.spring/README.md) — 主模块详细内容

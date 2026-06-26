@@ -33,6 +33,21 @@ graph TB
     Ops --> O["监控与云<br/>IaaS/PaaS/SaaS"]
 ```
 
+## 速查表
+
+| 概念 | 核心要点 | 典型场景 |
+|------|---------|---------|
+| **OSI 七层** | 物理→数据链路→网络→传输→会话→表示→应用 | 网络故障分层排查 |
+| **TCP/IP 四层** | 网络接口→网际→传输→应用 | 实际互联网通信 |
+| **TCP 三次握手** | SYN → SYN+ACK → ACK，建立可靠连接 | HTTP 连接建立 |
+| **TCP 四次挥手** | FIN → ACK → FIN → ACK，TIME_WAIT 2MSL | 连接释放 |
+| **HTTP vs HTTPS** | HTTPS = HTTP + TLS，端口 443 vs 80 | 安全传输 |
+| **HTTP/2 特性** | 多路复用、头部压缩、服务器推送 | 高性能 Web |
+| **HTTP/3 (QUIC)** | 基于 UDP，0-RTT，解决队头阻塞 | 移动端弱网 |
+| **时间复杂度** | O(1) < O(log n) < O(n) < O(n log n) < O(n²) | 算法效率评估 |
+| **Linux 权限** | rwx (4+2+1)，chmod/chown/ugo | 文件安全 |
+| **IaaS/PaaS/SaaS** | 基础设施/平台/软件即服务 | 云服务选型 |
+
 ## 学习路径
 
 - **基础必修**：网络 → 算法 → Linux

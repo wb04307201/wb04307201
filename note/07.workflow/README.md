@@ -155,6 +155,19 @@ graph TB
 
 ---
 
+## 最佳实践
+
+| 场景 | 实践要点 |
+|------|---------|
+| **引擎选型** | 中小项目 / 已有 Spring 生态 → Camunda 7；高吞吐 / 云原生 → Camunda 8（Zeebe）；纯事件驱动 → Serverless Workflow |
+| **流程建模** | BPMN 2.0 标准为基；Service Task 粒度对齐业务操作；User Task 配合表单引擎（Form-js） |
+| **分布式部署** | Zeebe 生产至少 3 Broker + replication factor 3；ES 独立集群；Gateway 无状态水平扩展 |
+| **错误处理** | BPMN Error Event 处理业务异常；Escalation Event 处理升级逻辑；Incident 自动重试 + 人工介入 |
+| **版本演进** | 流程定义版本化部署；Running instances 继续用旧版本；New instances 用新版本（蓝绿部署） |
+| **监控** | Camunda Cockpit / Operate 实时看板；Prometheus + Grafana 指标采集；SLA 超时告警 |
+
+---
+
 ## 相关章节
 
 - ⬅️ [返回 note 顶层](../README.md)
@@ -205,3 +218,15 @@ graph TB
 ---
 
 > 🚀 从 [工作流定义](define/README.md) 开始理解概念 → [流程引擎](process-engine/README.md) 掌握 BPMN → [事件驱动](apache-eventmesh/README.md) 了解云原生时代扩展。
+
+---
+
+## 8. 开源参考
+
+| 项目 | 说明 | 链接 |
+|------|------|------|
+| Camunda 7 | Java 流程引擎（Apache 2.0） | [github.com/camunda/camunda-bpm-platform](https://github.com/camunda/camunda-bpm-platform) |
+| Camunda 8 / Zeebe | 云原生工作流引擎 | [github.com/camunda/zeebe](https://github.com/camunda/zeebe) |
+| Flowable | Camunda 分支演进的流程引擎 | [flowable.com](https://www.flowable.com) |
+| Apache EventMesh | 事件驱动中间件 | [github.com/apache/eventmesh](https://github.com/apache/eventmesh) |
+| Serverless Workflow | CNCF 工作流标准 | [serverlessworkflow.io](https://serverlessworkflow.io) |

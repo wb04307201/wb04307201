@@ -284,3 +284,7 @@ groups:
 - 主模块：[`03.database`](../../../03.database/) — 数据库知识体系
 - [Redis](../../../03.database/07-redis/README.md) — Redis 详解
 - [分布式锁](../../../04.system-design/02-distributed/distributed-lock/README.md) — 分布式锁实现
+
+## 相关章节
+
+- 深度阅读：[`03.database`](../../03.database/README.md) — 主模块详细内容

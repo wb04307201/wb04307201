@@ -250,3 +250,7 @@ graph TB
 ## 六、交叉引用
 
 - 主模块：[`04.system-design`](../../../04.system-design/) — 系统设计
+
+## 相关章节
+
+- 深度阅读：[`04.system-design`](../../../04.system-design/README.md) — 主模块详细内容

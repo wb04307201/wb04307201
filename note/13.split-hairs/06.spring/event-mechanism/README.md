@@ -320,3 +320,7 @@ public void handle(OrderCreatedEvent event) {
 - [Spring 事务](../../../06.spring/03-data/transaction/README.md) — Spring 事务管理机制
 - [Spring 事件](../../../06.spring/01-core/event.md) — Spring 异步编程模型
 - [设计模式](../../../01.java/design-patterns/README.md) — 观察者模式详解
+
+## 相关章节
+
+- 深度阅读：[`06.spring`](../../06.spring/README.md) — 主模块详细内容

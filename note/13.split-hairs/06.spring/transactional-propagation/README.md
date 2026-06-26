@@ -355,3 +355,7 @@ public void methodWithCheckedException() throws Exception {
 - [事务失效场景](../transactional-pitfalls/README.md) — @Transactional 失效场景
 - [事务传播](../../../06.spring/03-data/transaction/propagation-and-isolation.md) — 事务传播与隔离级别详解
 - [分布式事务](../../../04.system-design/02-distributed/distributed-transaction/README.md) — 分布式事务方案对比
+
+## 相关章节
+
+- 深度阅读：[`06.spring`](../../06.spring/README.md) — 主模块详细内容

@@ -226,3 +226,7 @@ ALTER TABLE users MODIFY id BIGINT UNSIGNED AUTO_INCREMENT;
 ## 六、交叉引用
 
 - MySQL 整数类型全览见 [MySQL核心](../../../../../03.database/05-mysql/README.md)
+
+## 相关章节
+
+- 深度阅读：[`03.database`](../../../../03.database/README.md) — 主模块详细内容

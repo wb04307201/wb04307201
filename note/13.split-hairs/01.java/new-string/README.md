@@ -225,3 +225,7 @@ if (actual.equals("expected")) { ... }
 
 - String 源码分析见 [Java 核心类库](../../../01.java/concepts/string/README.md)
 - StringBuilder 性能分析见 [集合与工具类](../../../01.java/collection/README.md)
+
+## 相关章节
+
+- 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容

@@ -222,3 +222,7 @@ graph TB
 
 - 主模块：[`11.ai`](../../../11.ai/) — AI 知识体系
 - [AI SDK](../../../09.front-end/09-frontend-and-ai/ai-sdk/README.md) — 前端集成 RAG
+
+## 相关章节
+
+- 深度阅读：[`11.ai`](../../11.ai/README.md) — 主模块详细内容

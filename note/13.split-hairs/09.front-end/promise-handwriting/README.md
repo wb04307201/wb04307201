@@ -269,3 +269,7 @@ function foo() {
 - 主模块：[`09.front-end`](../../09.front-end/) — 前端知识体系
 - 相关：[`13.split-hairs/09.front-end/event-loop/`](../event-loop/) — 事件循环（Promise 是微任务）
 - 相关：[`13.split-hairs/09.front-end/closure/`](../closure/) — 闭包（Promise 内部状态保存）
+
+## 相关章节
+
+- 深度阅读：[`09.front-end`](../../09.front-end/README.md) — 主模块详细内容

@@ -327,3 +327,7 @@ function cloneDeep(value, customizer, thisArg) {
 ## 八、交叉引用
 
 - 主模块：[`09.front-end`](../../../09.front-end/) — 前端知识体系
+
+## 相关章节
+
+- 深度阅读：[`09.front-end`](../../09.front-end/README.md) — 主模块详细内容

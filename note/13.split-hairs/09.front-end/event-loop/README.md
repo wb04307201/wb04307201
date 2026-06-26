@@ -256,3 +256,7 @@ setTimeout(() => {
 - 主模块：[`09.front-end/`](../../09.front-end/) — 前端知识体系
 - 相关：[`13.split-hairs/09.front-end/promise-handwriting/`](../promise-handwriting/) — Promise 手写实现
 - 相关：[`13.split-hairs/09.front-end/closure/`](../closure/) — 闭包与事件循环配合
+
+## 相关章节
+
+- 深度阅读：[`09.front-end`](../../09.front-end/README.md) — 主模块详细内容

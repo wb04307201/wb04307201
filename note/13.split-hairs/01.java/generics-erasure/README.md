@@ -233,3 +233,7 @@ class UserDao extends GenericDao<User> {}
 ## 七、交叉引用
 
 - 主模块：[`01.java`](../../../01.java/) — Java 知识体系
+
+## 相关章节
+
+- 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容

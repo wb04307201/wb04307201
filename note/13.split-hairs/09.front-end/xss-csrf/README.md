@@ -226,3 +226,7 @@ res.cookie('sessionId', 'abc123', {
 
 - 主模块：[`09.front-end`](../../../09.front-end/) — 前端知识体系
 - 相关主题：[前端安全](../../../09.front-end/07-security/README.md)
+
+## 相关章节
+
+- 深度阅读：[`09.front-end`](../../09.front-end/README.md) — 主模块详细内容

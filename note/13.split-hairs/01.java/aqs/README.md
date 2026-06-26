@@ -261,3 +261,7 @@ class OneShotLatch {
   - [ReentrantLock](../../../01.java/concurrency/juc-locks/README.md) — ReentrantLock 源码解析
   - [JUC 工具类](../../../01.java/concurrency/utilities/README.md) — JUC 工具类汇总
   - [Java 内存模型](../../../01.java/concurrency/jmm/README.md) — Java 内存模型与 volatile
+
+## 相关章节
+
+- 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容

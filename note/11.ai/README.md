@@ -30,6 +30,21 @@ graph TD
     L3 --> Training["Spring AI 实战<br/>16 课培训课程"]
 ```
 
+## 速查表
+
+| 概念 | 核心要点 | 典型场景 |
+|------|---------|---------|
+| **LLM** | 大语言模型，Transformer 架构，预训练 + 微调 | 文本生成、对话 |
+| **Transformer** | Self-Attention + 位置编码，并行计算 | 所有现代 LLM 基座 |
+| **Token** | 模型最小处理单元，BPE/WordPiece 分词 | 计费与上下文长度 |
+| **Embedding** | 将文本映射到高维向量空间 | 语义搜索、RAG |
+| **RAG** | 检索增强生成，向量检索 + LLM 生成 | 知识库问答 |
+| **Prompt Engineering** | 通过提示词引导 LLM 输出（CoT/Few-shot/Role） | 无需微调的提升效果 |
+| **Fine-tuning** | 在特定数据上继续训练（LoRA/QLoRA 高效微调） | 领域适配 |
+| **Agent** | LLM + 工具调用 + 记忆 + 规划 | 自主完成任务 |
+| **MCP** | Model Context Protocol，标准化工具接入协议 | Agent 工具扩展 |
+| **MoE** | Mixture of Experts，稀疏激活提升效率 | GPT-4 / Mixtral |
+
 ## 学习路径
 
 - **初学者**：L1 → L2 建立认知框架
@@ -43,3 +58,15 @@ graph TD
 - 关联：[`06.spring`](../06.spring/) — Spring 生态（Spring AI 的底层支撑）
 - 关联：[`07.workflow`](../07.workflow/) — 工作流引擎（BPMN + AI Agent 融合）
 - 面试：[`13.split-hairs/11.ai`](../13.split-hairs/11.ai/README.md) — 5 篇 AI 高频面试题
+
+## 开源参考
+
+| 项目 | 说明 | 链接 |
+|------|------|------|
+| Spring AI | Spring 官方 AI 集成框架 | [spring.io/projects/spring-ai](https://spring.io/projects/spring-ai) |
+| LangChain | LLM 应用开发框架（Python/JS） | [langchain.com](https://www.langchain.com) |
+| Dify | AI 应用编排平台 | [dify.ai](https://dify.ai) |
+| Ollama | 本地 LLM 运行工具 | [ollama.com](https://ollama.com) |
+| Qdrant | 向量数据库 | [qdrant.tech](https://qdrant.tech) |
+| Milvus | 开源向量数据库 | [milvus.io](https://milvus.io) |
+| MCP | Model Context Protocol | [modelcontextprotocol.io](https://modelcontextprotocol.io) |

@@ -362,3 +362,7 @@ ThreadFactory namedFactory = new ThreadFactoryBuilder()
 - [并发容器](../../../01.java/concurrency/concurrent-collections/README.md) — BlockingQueue 实现原理
 - [JVM 内存](../../../01.java/jvm/README.md) — OOM 类型与排查
 - [Spring 异步](../../../06.spring/08-annotations/scheduling-and-async.md) — @Async 线程池配置
+
+## 相关章节
+
+- 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容

@@ -286,3 +286,7 @@ public class PushMetrics {
 - **相关主题**：[Redis发布订阅](../../../03.database/07-redis/README.md)
 - **延伸学习**：[Spring Web](../../../06.spring/02-web/README.md)
 - **分布式架构**：[消息队列对比](../../../04.system-design/04-high-performance/mq/README.md)
+
+## 相关章节
+
+- 深度阅读：[`09.front-end`](../../09.front-end/README.md) — 主模块详细内容

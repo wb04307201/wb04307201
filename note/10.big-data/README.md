@@ -244,6 +244,19 @@ flowchart TD
 
 ---
 
+## 5a. 最佳实践
+
+| 场景 | 实践要点 |
+|------|---------|
+| **数仓分层** | ODS → DWD → DWS → ADS 四层架构；维度建模（星型/雪花）； slowly changing dimensions (SCD Type 1/2/3) |
+| **实时计算** | Flink Checkpoint 间隔根据业务 SLA 设定；Exactly-Once 语义需开启 WAL；State Backend 选 RocksDB（大状态） |
+| **数据湖** | Iceberg 优选（ACID + Schema Evolution + Time Travel）；存算分离（S3/OSS + 计算引擎独立扩展） |
+| **OLAP 选型** | 高并发点查 → Doris/StarRocks；Ad-hoc 分析 → ClickHouse/Trino；统一分析 → Doris + 物化视图 |
+| **数据治理** | Apache Atlas / DataHub 元数据管理；数据血缘自动采集（SQL 解析）；数据质量规则 + 告警 |
+| **任务调度** | Airflow Python DAG 灵活但学习曲线高；DolphinScheduler 可视化适合国内团队；关键任务设置 SLA 告警 |
+
+---
+
 ## 6. 交叉引用
 
 - **数据架构**：[01 数仓架构](./01-data-warehouse/) / [03 实时计算](./03-realtime-compute/)

@@ -237,3 +237,7 @@ com.example.user.infrastructure.dao.UserDao
 - MyBatis ResultMap 映射配置见 [MyBatis](../../../06.spring/03-data/README.md)
 - MapStruct 使用指南见 [对象转换](../../../01.java/design-patterns/README.md)
 - DDD 领域对象设计见 [DDD](../../../04.system-design/01-foundation/system-design-basics/ddd/README.md)
+
+## 相关章节
+
+- 深度阅读：[`06.spring`](../../06.spring/README.md) — 主模块详细内容

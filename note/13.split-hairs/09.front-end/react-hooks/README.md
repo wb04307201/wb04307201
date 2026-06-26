@@ -327,3 +327,7 @@ function SearchResults() {
 - 相关：[`13.split-hairs/09.front-end/event-loop/`](../event-loop/) — 事件循环（useEffect 执行时机）
 - 相关：[`13.split-hairs/09.front-end/closure/`](../closure/) — 闭包（Hooks 本质）
 - 相关：[`13.split-hairs/09.front-end/virtual-dom-diff/`](../virtual-dom-diff/) — Virtual DOM（Fiber 架构）
+
+## 相关章节
+
+- 深度阅读：[`09.front-end`](../../09.front-end/README.md) — 主模块详细内容

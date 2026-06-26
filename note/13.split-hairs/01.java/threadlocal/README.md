@@ -327,3 +327,7 @@ executor.submit(TtlRunnable.get(() -> {
 - [并发基础](../../../01.java/concurrency/README.md) — 线程与锁机制
 - [JVM 内存](../../../01.java/jvm/README.md) — 垃圾回收与引用类型
 - [线程池](../thread-pool/README.md) — 线程池原理与实践
+
+## 相关章节
+
+- 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容

@@ -319,3 +319,7 @@ done
 - [JVM 内存配置踩坑](../jvm-memory-pitfall/) — -Xmx 超过系统可用内存导致启动失败
 - [GC 算法与收集器](../gc-algorithms/) — GC 算法与各类收集器对比
 - [类加载机制](../class-loading/) — 类加载过程与双亲委派
+
+## 相关章节
+
+- 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容

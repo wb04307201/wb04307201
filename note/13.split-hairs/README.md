@@ -66,6 +66,32 @@ graph TB
 
 ---
 
+## 速查表
+
+| 分类 | 高频问题 | 核心考点 |
+|------|---------|---------|
+| **Java 陷阱** | HashMap 扩容、Integer 缓存、StringBuilder 重用 | 底层数据结构与机制 |
+| **并发** | Atomic vs synchronized、volatile 语义 | CAS、内存模型 |
+| **SQL 优化** | COUNT(*) vs COUNT(1)、索引失效 10 场景 | Explain + 索引设计 |
+| **Redis** | 缓存穿透/击穿/雪崩、大 Key 治理 | 三大问题三连 |
+| **分布式** | 分布式 ID、分布式事务（2PC/TCC/Saga） | 一致性方案选型 |
+| **Spring** | @Transactional 失效 8 场景、Bean 生命周期、循环依赖三级缓存 | IoC/AOP 原理 |
+| **系统设计** | MQ 消息积压、限流算法、缓存一致性 | 高可用 + 高性能 |
+| **前端** | Event Loop、闭包、Promise 手写、从 URL 到页面 | 浏览器 + JS 核心 |
+| **AI** | Transformer 架构、Token 计费、RAG 设计 | LLM 原理与工程 |
+
+## 开源参考
+
+本模块为面试专题集，引用的核心开源项目见各主模块的开源参考：
+- [`01.java`](../01.java/README.md) — OpenJDK / JUnit 5 / Mockito
+- [`03.database`](../03.database/README.md) — MySQL / Redis / HikariCP
+- [`04.system-design`](../04.system-design/README.md) — Sentinel / Resilience4j
+- [`06.spring`](../06.spring/README.md) — Spring 全家桶
+- [`09.front-end`](../09.front-end/README.md) — React / Vue / Vite
+- [`11.ai`](../11.ai/README.md) — Spring AI / LangChain / Dify
+
+---
+
 ## 4. 何时该写 split-hairs？
 
 **触发条件**：

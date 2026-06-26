@@ -18,7 +18,7 @@
 
 ---
 
-> 📚 **前置知识**：[熔断器](../../04.system-design/05-spring-cloud/circuit-breaker.md)
+> 📚 **前置知识**：[熔断器](../../../04.system-design/03-high-availability/circuit-break/README.md)
 
 ## 一、核心原理
 
@@ -286,3 +286,7 @@ new DegradeRule("service")
 ## 八、交叉引用
 
 - 主模块：[`04.system-design`](../../../04.system-design/) — 系统设计知识体系
+
+## 相关章节
+
+- 深度阅读：[`04.system-design`](../../04.system-design/README.md) — 主模块详细内容

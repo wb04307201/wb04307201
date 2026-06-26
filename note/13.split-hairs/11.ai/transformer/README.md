@@ -225,3 +225,7 @@ graph LR
 - 主模块：[`11.ai`](../../11.ai/) — AI 知识体系
 - 相关：[`13.split-hairs/11.ai/token/`](../token/) — Token 是什么
 - 相关：[`13.split-hairs/11.ai/rag/`](../rag/) — RAG（Transformer 的应用）
+
+## 相关章节
+
+- 深度阅读：[`11.ai`](../../11.ai/README.md) — 主模块详细内容

@@ -269,3 +269,7 @@ Cache-Control: public, max-age=86400, s-maxage=604800
 
 - 主模块：[`09.front-end`](../../../09.front-end/) — 前端知识体系
 - [性能优化](../../../09.front-end/06-performance/README.md) — 缓存是前端性能优化的核心手段
+
+## 相关章节
+
+- 深度阅读：[`09.front-end`](../../09.front-end/README.md) — 主模块详细内容

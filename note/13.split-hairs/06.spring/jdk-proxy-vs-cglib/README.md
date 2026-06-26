@@ -312,3 +312,7 @@ public class TxService {
 ---
 
 *本文档属于 `note/13.split-hairs` 系列，深度等级 ⭐⭐⭐⭐*
+
+## 相关章节
+
+- 深度阅读：[`06.spring`](../../06.spring/README.md) — 主模块详细内容

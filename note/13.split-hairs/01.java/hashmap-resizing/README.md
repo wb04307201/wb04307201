@@ -294,3 +294,7 @@ public class HashMapResizeBenchmark {
 - **延伸学习**：[ConcurrentHashMap](../concurrent-hashmap/README.md) - 高并发最佳实践
 - **性能优化**：[JVM调优](../../../01.java/jvm/tuning.md) - 减少扩容引发的GC
 - **关联知识**：[Atomic替代synchronized](../replace-synchronized-with-atomic/README.md)
+
+## 相关章节
+
+- 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容

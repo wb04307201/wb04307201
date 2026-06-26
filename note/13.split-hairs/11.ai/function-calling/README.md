@@ -349,3 +349,7 @@ def get_weather(city: str, unit: str = "celsius"):
 - 主模块：[`11.ai`](../../../11.ai/) — AI 知识体系总览
 - [RAG](../rag/README.md) — RAG 作为 retrieval tool 的实现细节
 - [LLM 基础](../../../11.ai/01-fundamentals/llm-basics/README.md) — Prompt Engineering 与结构化输出
+
+## 相关章节
+
+- 深度阅读：[`11.ai`](../../11.ai/README.md) — 主模块详细内容

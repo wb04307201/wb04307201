@@ -27,46 +27,35 @@
 
 ## 学习路线
 
+```mermaid
+flowchart TD
+    A["1. 数据库基础知识<br/>入门口，先建立全局视野"] --> B["2. SQL 语法"]
+    A --> C["9. 连接池"]
+    A --> D["8. NoSQL 概览"]
+    B --> E["4. 索引（B+ 树）<br/>性能优化基础"]
+    E --> F["3. 事务与并发控制<br/>隔离级别 + 锁 + MVCC"]
+    F --> G["5. MySQL 深入<br/>InnoDB 引擎、复制、参数"]
+    G --> H["6. 缓存<br/>三大问题"]
+    G --> I["7. Redis<br/>深入"]
+    H --> J["10. 数据迁移<br/>Canal 等"]
+    H --> K["11. 监控<br/>Prometheus"]
+    H --> L["12. 云数据库<br/>RDS / Aurora"]
 ```
-                           ┌──────────────────────┐
-                           │  1. 数据库基础知识    │ ← 入门口,先建立全局视野
-                           └──────────┬───────────┘
-                                      │
-                  ┌───────────────────┼───────────────────┐
-                  ▼                   ▼                   ▼
-        ┌─────────────────┐ ┌────────────────┐ ┌────────────────┐
-        │ 2. SQL 语法      │ │ 9. 连接池        │ │ 8. NoSQL 概览   │
-        └────────┬────────┘ └────────────────┘ └────────────────┘
-                 │
-                 ▼
-        ┌────────────────────┐
-        │ 4. 索引(B+ 树)      │ ← 性能优化基础
-        └────────┬───────────┘
-                 │
-                 ▼
-        ┌────────────────────┐
-        │ 3. 事务与并发控制   │ ← 隔离级别 + 锁 + MVCC
-        └────────┬───────────┘
-                 │
-                 ▼
-        ┌────────────────────┐
-        │ 5. MySQL 深入       │ ← InnoDB 引擎、复制、参数
-        └────────┬───────────┘
-                 │
-        ┌────────┴──────────┐
-        ▼                   ▼
-  ┌──────────┐        ┌──────────┐
-  │ 6. 缓存   │        │ 7. Redis  │
-  │ 三大问题  │        │ 深入      │
-  └──────────┘        └──────────┘
-                │
-        ┌───────┼────────┐
-        ▼       ▼        ▼
-   ┌─────────┐ ┌──────┐ ┌──────────┐
-   │10.数据迁移│ │11.监控│ │12.云数据库│
-   │ Canal等 │ │Prometheus│ │RDS/Aurora│
-   └─────────┘ └──────┘ └──────────┘
-```
+
+## 速查表
+
+| 概念 | 核心要点 | 典型场景 |
+|------|---------|---------|
+| **ACID** | 原子性、一致性、隔离性、持久性 | 事务保证 |
+| **隔离级别** | RU < RC < RR < Serializable，越高越安全但越慢 | 并发控制选型 |
+| **MVCC** | 多版本并发控制，Read View + Undo Log | RR 级别下读写不冲突 |
+| **B+ 树索引** | 叶子节点形成有序链表，适合范围查询 | 关系数据库默认索引 |
+| **聚簇索引** | 索引和数据存一起，InnoDB 主键索引 | 主键查询直接返回行 |
+| **最左前缀** | 联合索引 (a,b,c) 支持 a / a,b / a,b,c | 索引设计原则 |
+| **缓存穿透** | 查询不存在数据，击穿到数据库 | 空值缓存 / 布隆过滤器 |
+| **缓存击穿** | 热点 key 过期，大量请求打到数据库 | 互斥锁 / 永不过期 |
+| **缓存雪崩** | 大量 key 同时过期 | 过期时间加随机值 |
+| **HikariCP** | 高性能连接池，默认 Spring Boot 2.x+ | 数据库连接管理 |
 
 ## 前置知识
 
@@ -93,3 +82,14 @@
 | [索引失效的 10 种场景](../13.split-hairs/03.database/mysql/index-failure/) | ⭐⭐⭐⭐⭐ | LIKE 左通配 / 函数 / 类型转换 / OR / 最左前缀 |
 | [COUNT(*) vs COUNT(1) vs COUNT(字段)](../13.split-hairs/03.database/relational-database/mysql/count/) | ⭐⭐ | 性能差异 |
 | [事务隔离级别](../13.split-hairs/03.database/relational-database/mysql/isolation/) | ⭐⭐⭐⭐ | RU / RC / RR / Serializable |
+
+## 开源参考
+
+| 项目 | 说明 | 链接 |
+|------|------|------|
+| MySQL | 最流行的开源关系数据库 | [dev.mysql.com](https://dev.mysql.com) |
+| Redis | 高性能内存键值数据库 | [redis.io](https://redis.io) |
+| HikariCP | 高性能 JDBC 连接池 | [github.com/brettwooldridge/HikariCP](https://github.com/brettwooldridge/HikariCP) |
+| Canal | 阿里开源 MySQL Binlog 订阅 | [github.com/alibaba/canal](https://github.com/alibaba/canal) |
+| DataX | 离线数据同步工具 | [github.com/alibaba/DataX](https://github.com/alibaba/DataX) |
+| CHMCache | 基于 ConcurrentHashMap 的 LRU 缓存 | [gitee.com/wb04307201/CHMCache](https://gitee.com/wb04307201/CHMCache) |

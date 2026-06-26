@@ -253,3 +253,7 @@ Full GC 是性能杀手，常见触发场景包括：
 - 主模块：[`01.java`](../../../01.java/) — Java 知识体系
 - [JVM 内存](../../../01.java/jvm/README.md) — JVM 内存模型
 - [JVM 调优](../../../01.java/jvm/tuning.md) — JVM 调优实战
+
+## 相关章节
+
+- 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容

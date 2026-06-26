@@ -289,3 +289,7 @@ SHOW ENGINE INNODB STATUS\G  -- 查看"LATEST DETECTED DEADLOCK"
 - **性能调优**：[MySQL慢查询](../tuning/README.md)
 - **Java关联**：[Spring Data](../../../../../06.spring/03-data/README.md)
 - **分布式系统**：[分布式事务](../../../../../04.system-design/02-distributed/distributed-transaction/README.md)
+
+## 相关章节
+
+- 深度阅读：[`03.database`](../../../../03.database/README.md) — 主模块详细内容

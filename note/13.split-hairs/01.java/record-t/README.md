@@ -278,3 +278,7 @@ public record Container<T>(T value) {
 - **相关主题**：[Java泛型擦除](../generics-erasure/README.md) - 泛型擦除、PECS原则
 - **实战应用**：[Java Record概念](../../../01.java/concepts/record/README.md)
 - **序列化**：[JSON处理](../../../06.spring/02-web/README.md)
+
+## 相关章节
+
+- 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容

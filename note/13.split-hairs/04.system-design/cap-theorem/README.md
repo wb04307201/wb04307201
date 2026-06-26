@@ -204,3 +204,7 @@ BASE 理论是对 CAP 中 AP 方案的延伸和工程化指导，由 eBay 架构
 - 延伸阅读：
   - 《Designing Data-Intensive Applications》Chapter 9: Consistency and Consensus
   - 《Data on the Outside vs. Data on the Inside》— Pat Helland
+
+## 相关章节
+
+- 深度阅读：[`04.system-design`](../../04.system-design/README.md) — 主模块详细内容

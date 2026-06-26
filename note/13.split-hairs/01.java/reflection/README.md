@@ -275,3 +275,7 @@ passwordField.set(user, "hacked");  // 绕过所有业务逻辑直接修改
   - [volatile 与内存模型](../../../01.java/concurrency/volatile/README.md) — volatile 与内存模型
   - [代理模式](../../../01.java/design-patterns/README.md) — 代理模式与动态代理
   - [Spring AOP](../../../06.spring/08-annotations/aop.md) — Spring AOP 实现原理
+
+## 相关章节
+
+- 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容

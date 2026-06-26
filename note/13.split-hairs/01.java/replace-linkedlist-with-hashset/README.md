@@ -281,3 +281,7 @@ boolean mightExist = bloom.mightContain("user_123"); // true（可能误判）
 - HashMap/HashSet 源码分析见 [集合框架](../../../01.java/collection/hashmap.md)
 - hashCode 和 equals 契约见 [Java 对象方法](../../../01.java/concepts/object/README.md)
 - 并发安全的 Set 实现见 [并发容器](../../../01.java/concurrency/concurrent-collections/README.md)
+
+## 相关章节
+
+- 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容

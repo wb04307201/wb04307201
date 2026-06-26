@@ -226,3 +226,7 @@ public class CacheSyncConsumer {
 - 主模块：[`03.database`](../../../03.database/) — 数据库与缓存
 - [缓存穿透/击穿/雪崩](../../../../03.database/06-cache/README.md) — 缓存设计模式与问题解决方案
 - [分布式事务](../../distributed/distributed-transaction/README.md) — 跨服务一致性方案
+
+## 相关章节
+
+- 深度阅读：[`04.system-design`](../../../04.system-design/README.md) — 主模块详细内容

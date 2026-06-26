@@ -331,3 +331,7 @@ public class AtomicInteger {
 - [并发工具类](../../../01.java/concurrency/utilities/README.md) — java.util.concurrent 包详解
 - [JMM](../../../01.java/concurrency/jmm/README.md) — Java 内存模型与 happens-before 规则
 - [CAS 与原子类](../../../01.java/concurrency/atomic/README.md) — AtomicInteger 与 CAS 乐观锁
+
+## 相关章节
+
+- 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容

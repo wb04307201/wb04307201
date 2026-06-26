@@ -215,3 +215,7 @@ Query → Generator LLM → Draft Answer
 - 主模块：[`11.ai`](../../../11.ai/) — AI 知识体系
 - [RAG](../rag/README.md) — 检索增强生成
 - [Prompt Engineering](../../../11.ai/02-technology-stack/prompt-engineering/README.md) — 提示工程技巧
+
+## 相关章节
+
+- 深度阅读：[`11.ai`](../../11.ai/README.md) — 主模块详细内容

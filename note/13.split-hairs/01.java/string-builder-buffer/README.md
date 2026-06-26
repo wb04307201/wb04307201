@@ -280,3 +280,7 @@ System.out.println(sb.capacity()); // 输出 22（10 * 2 + 2）
 - 主模块：[`01.java`](../../../01.java/) — Java 知识体系
 - [String](../../../01.java/concepts/string/README.md) — 字符串常量池与 intern 机制
 - [JVM 内存](../../../01.java/jvm/README.md) — JVM 内存模型与 GC
+
+## 相关章节
+
+- 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容

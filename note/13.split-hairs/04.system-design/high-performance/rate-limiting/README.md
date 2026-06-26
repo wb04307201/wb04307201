@@ -271,3 +271,7 @@ graph LR
 - 主模块：[`04.system-design`](../../../04.system-design/) — 系统设计
 - 相关：[`13.split-hairs/04.system-design/high-performance/distributed-lock/`](../distributed-lock/) — 分布式锁（与限流配合）
 - 待补：熔断、降级详解
+
+## 相关章节
+
+- 深度阅读：[`04.system-design`](../../../04.system-design/README.md) — 主模块详细内容

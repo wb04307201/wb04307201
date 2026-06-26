@@ -335,3 +335,7 @@ public class ComponentWithBean {
 - [Bean 生命周期](../../../06.spring/01-core/ioc/bean-lifecycle.md) — Bean 从创建到销毁的全过程
 - [自动配置原理](../../../06.spring/04-spring-boot/auto-configuration.md) — Spring Boot 如何发现并加载 Bean
 - [@Conditional 条件注解](../../../06.spring/08-annotations/configuration.md) — 按需注册 Bean
+
+## 相关章节
+
+- 深度阅读：[`06.spring`](../../06.spring/README.md) — 主模块详细内容

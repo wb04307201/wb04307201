@@ -215,3 +215,7 @@ ByteBuffer heapBuffer = ByteBuffer.allocate(1024 * 1024); // 1MB 堆内内存
 - 主模块：[`01.java`](../../../01.java/) — Java 知识体系
 - [垃圾回收](../gc-algorithms/README.md) — GC 算法与收集器详解
 - [类加载机制](../class-loading/README.md) — 类加载过程与双亲委派
+
+## 相关章节
+
+- 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容
