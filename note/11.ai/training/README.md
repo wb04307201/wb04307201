@@ -70,8 +70,8 @@ graph TD
 
 | 课号 | 课程 | 核心问题 | 建议时长 |
 |:----:|:-----|:---------|:--------:|
-| 1 | [AI Agent 核心概念](lession1/README.md) | AI Agent 由哪些组件构成？LLM、Prompt、RAG、MCP 如何协作？ | 120 min |
-| 2 | [Agent Harness 与控制论](lession2/README.md) | 为什么 2026 年的竞争焦点从模型能力转向系统可靠性？含认知债务研究 | 110 min |
+| 1 | [AI Agent 核心概念](lesson1/README.md) | AI Agent 由哪些组件构成？LLM、Prompt、RAG、MCP 如何协作？ | 120 min |
+| 2 | [Agent Harness 与控制论](lesson2/README.md) | 为什么 2026 年的竞争焦点从模型能力转向系统可靠性？含认知债务研究 | 110 min |
 
 ### 第二阶段：框架实操
 
@@ -79,9 +79,9 @@ graph TD
 
 | 课号 | 课程 | 核心问题 | 建议时长 |
 |:----:|:-----|:---------|:--------:|
-| 3 | [Spring AI Agent 搭建](lession3/README.md) | 如何从零搭建一个具备对话和工具调用能力的 Agent？ | 105 min |
-| 4 | [Java MCP 服务开发](lession4/README.md) | 如何开发 MCP Server 并发布到 Maven 中央仓库？ | 135 min |
-| 5 | [Skill 编写与设计模式](lession5/README.md) | Skill 的五种设计模式是什么？如何编写高质量 Skill？ | 90 min |
+| 3 | [Spring AI Agent 搭建](lesson3/README.md) | 如何从零搭建一个具备对话和工具调用能力的 Agent？ | 105 min |
+| 4 | [Java MCP 服务开发](lesson4/README.md) | 如何开发 MCP Server 并发布到 Maven 中央仓库？ | 135 min |
+| 5 | [Skill 编写与设计模式](lesson5/README.md) | Skill 的五种设计模式是什么？如何编写高质量 Skill？ | 90 min |
 
 ### 第三阶段：进阶设计
 
@@ -89,9 +89,9 @@ graph TD
 
 | 课号 | 课程 | 核心问题 | 建议时长 |
 |:----:|:-----|:---------|:--------:|
-| 6 | [多智能体协同](lession6/README.md) | 多智能体有哪些协调模式？什么真正有效？ | 115 min |
-| 7 | [Claude Code 工具链](lession7/README.md) | Claude Code 的配置、MCP 生态、Spec-Kit 如何协同？ | 120 min |
-| 8 | [Agent 设计模式与架构](lession8/README.md) | Session-Harness-Sandbox 三元架构如何设计？ | 60 min |
+| 6 | [多智能体协同](lesson6/README.md) | 多智能体有哪些协调模式？什么真正有效？ | 115 min |
+| 7 | [Claude Code 工具链](lesson7/README.md) | Claude Code 的配置、MCP 生态、Spec-Kit 如何协同？ | 120 min |
+| 8 | [Agent 设计模式与架构](lesson8/README.md) | Session-Harness-Sandbox 三元架构如何设计？ | 60 min |
 
 ### 第四阶段：平台与工具
 
@@ -99,8 +99,8 @@ graph TD
 
 | 课号 | 课程 | 核心问题 | 建议时长 |
 |:----:|:-----|:---------|:--------:|
-| 9 | [Dify 工作流引擎](lession9/README.md) | 如何用 Dify 部署和搭建 Agent 工作流？ | 90 min |
-| 10 | [Agent 评估方法论](lession10/README.md) | 如何系统性地评估 Agent 的质量？含持续演化评估 | 110 min |
+| 9 | [Dify 工作流引擎](lesson9/README.md) | 如何用 Dify 部署和搭建 Agent 工作流？ | 90 min |
+| 10 | [Agent 评估方法论](lesson10/README.md) | 如何系统性地评估 Agent 的质量？含持续演化评估 | 110 min |
 
 ### 第五阶段：治理与安全
 
@@ -108,9 +108,9 @@ graph TD
 
 | 课号 | 课程 | 核心问题 | 建议时长 |
 |:----:|:-----|:---------|:--------:|
-| 11 | [AI 代码安全与质量](lession11/README.md) | AI 生成代码有哪些安全隐患？如何治理？ | 120 min |
-| 12 | [Vibe Coding 与安全审计](lession12/README.md) | Vibe Coding 的企业级局限性是什么？ | 85 min |
-| 13 | [基于 Spec 的 AI 驱动开发](lession13/README.md) | 如何用规范化流程取代"感觉驱动"的 AI 开发？ | 30 min |
+| 11 | [AI 代码安全与质量](lesson11/README.md) | AI 生成代码有哪些安全隐患？如何治理？ | 120 min |
+| 12 | [Vibe Coding 与安全审计](lesson12/README.md) | Vibe Coding 的企业级局限性是什么？ | 85 min |
+| 13 | [基于 Spec 的 AI 驱动开发](lesson13/README.md) | 如何用规范化流程取代"感觉驱动"的 AI 开发？ | 30 min |
 
 ### 第六阶段：认知与组织
 
@@ -118,9 +118,9 @@ graph TD
 
 | 课号 | 课程 | 核心问题 | 建议时长 |
 |:----:|:-----|:---------|:--------:|
-| 14 | [AI 时代的认知债务与深度工作](lession14/README.md) | 过度使用 AI 为何导致创意下降 28%、决策信心下降 34%？ | 85 min |
-| 15 | [AI 原生组织](lession15/README.md) | 如何将公司重塑为递归自进化的智能体网络？ | 75 min |
-| 16 | [LLM 驱动的个人知识库](lession16/README.md) | 如何用 LLM 构建一个会"生长"的持久化知识库？ | 35 min |
+| 14 | [AI 时代的认知债务与深度工作](lesson14/README.md) | 过度使用 AI 为何导致创意下降 28%、决策信心下降 34%？ | 85 min |
+| 15 | [AI 原生组织](lesson15/README.md) | 如何将公司重塑为递归自进化的智能体网络？ | 75 min |
+| 16 | [LLM 驱动的个人知识库](lesson16/README.md) | 如何用 LLM 构建一个会"生长"的持久化知识库？ | 35 min |
 
 ---
 
@@ -177,10 +177,10 @@ graph TD
 
 | 资料 | 说明 |
 |:-----|:-----|
-| [百度网盘 Skill 示例](lession1/SKILL.md) | 完整的 Skill 定义文件，展示 Skills 的核心要素 |
-| [启明 11 手机介绍](lession1/qiming11.md) | RAG 演示用的知识库文档 |
-| [Spring AI Chat Demo](lession1/demo/) | 第一课的 Spring AI 演示项目 |
+| [百度网盘 Skill 示例](lesson1/SKILL.md) | 完整的 Skill 定义文件，展示 Skills 的核心要素 |
+| [启明 11 手机介绍](lesson1/qiming11.md) | RAG 演示用的知识库文档 |
+| [Spring AI Chat Demo](lesson1/demo/) | 第一课的 Spring AI 演示项目 |
 
 ---
 
-> 🚀 从 [第 1 课：AI Agent 核心概念](lession1/README.md) 开始你的 AI Agent 之旅。
+> 🚀 从 [第 1 课：AI Agent 核心概念](lesson1/README.md) 开始你的 AI Agent 之旅。

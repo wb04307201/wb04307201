@@ -227,44 +227,95 @@
 
 > 主模块的"刺刀版" —— 专治面试中那些"好像懂但说不清"的高频 / 高难度问题。
 > 每篇 50-300 行，聚焦单一问题，从原理到陷阱到最佳实践、面试话术一次讲透。
-> 6 大分类共 **52 篇** 深度文章，覆盖 Java / 数据库 / 系统设计 / Spring / AI / 前端。
+> 6 大分类共 **98 篇** 深度文章，覆盖 Java / 数据库 / 系统设计 / Spring / AI / 前端。
 
 ## 分类导航
 
 | 序号 | 主题 | 文章数 | 入口 |
 |------|------|--------|------|
-| 1 | Java 基础陷阱 | 15 | [01.java](13.split-hairs/01.java/README.md) |
-| 2 | 数据库细节 | 10 | [03.database](13.split-hairs/03.database/README.md) |
-| 3 | 系统设计难点 | 7 | [04.system-design](13.split-hairs/04.system-design/README.md) |
-| 4 | Spring 面试高频 | 7 | [06.spring](13.split-hairs/06.spring/README.md) |
-| 5 | AI 新概念 | 5 | [11.ai](13.split-hairs/11.ai/README.md) |
-| 6 | 前端细节 | 12 | [09.front-end](13.split-hairs/09.front-end/README.md) |
+| 1 | Java 基础陷阱 | 31 | [01.java](13.split-hairs/01.java/README.md) |
+| 2 | 数据库细节 | 18 | [03.database](13.split-hairs/03.database/README.md) |
+| 3 | 系统设计难点 | 10 | [04.system-design](13.split-hairs/04.system-design/README.md) |
+| 4 | Spring 面试高频 | 13 | [06.spring](13.split-hairs/06.spring/README.md) |
+| 5 | AI 新概念 | 7 | [11.ai](13.split-hairs/11.ai/README.md) |
+| 6 | 前端细节 | 19 | [09.front-end](13.split-hairs/09.front-end/README.md) |
 
 ---
 
-## 01.java（15 篇）—— Java 基础陷阱
+## 01.java（31 篇）—— Java 基础陷阱
+
+### 集合与数据结构
+
+| 主题 | 核心问题 |
+|------|---------|
+| [ArrayList 去重](13.split-hairs/01.java/arrayList-distinct/README.md) | LinkedHashSet vs Stream |
+| [HashSet 替代 LinkedList 查找](13.split-hairs/01.java/replace-linkedlist-with-hashset/README.md) | 什么时候该换数据结构？ |
+| [HashMap 扩容](13.split-hairs/01.java/hashmap-resizing/README.md) | 1GB 的 HashMap 扩容会发生什么？ |
+| [快速插入大量数据到 HashMap](13.split-hairs/01.java/large-data-into-hashmap/README.md) | 初始化容量 + 负载因子的权衡 |
+| [快速给 Map 排序](13.split-hairs/01.java/sort-map/README.md) | TreeMap vs LinkedHashMap 选型 |
+
+### 并发与线程
+
+| 主题 | 核心问题 |
+|------|---------|
+| [ConcurrentHashMap 原理](13.split-hairs/01.java/concurrent-hashmap/README.md) | JDK 7 vs 8 实现差异 |
+| [ThreadLocal 原理](13.split-hairs/01.java/threadlocal/README.md) | ThreadLocal 原理与内存泄漏 |
+| [synchronized 锁升级](13.split-hairs/01.java/synchronized-lock-upgrade/README.md) | 偏向锁 → 轻量级 → 重量级 |
+| [volatile 内存语义](13.split-hairs/01.java/volatile/README.md) | 可见性、有序性、原子性 |
+| [AQS 框架原理](13.split-hairs/01.java/aqs/README.md) | AbstractQueuedSynchronizer 实现机制 |
+| [线程池 7 大参数](13.split-hairs/01.java/thread-pool/README.md) | ThreadPoolExecutor 核心参数详解 |
+| [Atomic 替代 synchronized](13.split-hairs/01.java/replace-synchronized-with-atomic/README.md) | CAS 无锁编程 |
+| [CompletableFuture 编排](13.split-hairs/01.java/completable-future/README.md) | 异步任务编排 |
+
+### JVM 与类加载
+
+| 主题 | 核心问题 |
+|------|---------|
+| [JVM 内存区域](13.split-hairs/01.java/jvm-memory/README.md) | JVM 内存模型 + 对象创建流程 |
+| [GC 算法与收集器](13.split-hairs/01.java/gc-algorithms/README.md) | GC 算法 + 垃圾收集器对比 |
+| [类加载机制](13.split-hairs/01.java/class-loading/README.md) | 双亲委派模型 + 自定义类加载器 |
+| [CPU 飙升排查](13.split-hairs/01.java/cpu-spike-troubleshooting/README.md) | 线上 CPU 100% 排查全流程 |
+| [JVM 内存配置踩坑](13.split-hairs/01.java/jvm-memory-pitfall/README.md) | -Xmx 超过系统可用内存导致启动失败 |
+
+### 语言基础
+
+| 主题 | 核心问题 |
+|------|---------|
+| [== / equals / hashCode](13.split-hairs/01.java/equals-hashcode/README.md) | 相等性判断契约与陷阱 |
+| [泛型擦除与 PECS](13.split-hairs/01.java/generics-erasure/README.md) | 类型擦除 + Producer Extends Consumer Super |
+| [反射原理与性能](13.split-hairs/01.java/reflection/README.md) | Reflection API 使用与性能开销 |
+| [String/Builder/Buffer](13.split-hairs/01.java/string-builder-buffer/README.md) | 字符串拼接选型指南 |
+| [StringBuilder 重用](13.split-hairs/01.java/reuse-of-stringbuilder/README.md) | 循环中字符串拼接优化 |
+| [final/finally/finalize](13.split-hairs/01.java/final-finally-finalize/README.md) | 三个关键字的区别与用法 |
+| [SPI 机制](13.split-hairs/01.java/spi/README.md) | Service Provider Interface 扩展机制 |
+
+### 对象与类型
+
+| 主题 | 核心问题 |
+|------|---------|
+| [创建对象](13.split-hairs/01.java/create-object/README.md) | Java 创建对象的 5 种方式 |
+| [基础类型封装为对象](13.split-hairs/01.java/object/README.md) | 为什么需要 Integer / Double 包装类？ |
+| [Integer 缓存](13.split-hairs/01.java/integer-cache/README.md) | -128 到 127 的复用机制与陷阱 |
+| [new String("123")](13.split-hairs/01.java/new-string/README.md) | 字符串常量池 vs 堆 |
+| [Record 与泛型](13.split-hairs/01.java/record-t/README.md) | Java 14+ Record 可以用泛型吗？ |
+
+### 设计模式与技巧
+
+| 主题 | 核心问题 |
+|------|---------|
+| [单例模式](13.split-hairs/01.java/singleton-pattern/README.md) | 5 种实现方式 + 反射 / 序列化破坏 |
+| [switch 前用 if 优化](13.split-hairs/01.java/if-before-switch/README.md) | 热点状态的快速路径优化 |
+
+### 综合
 
 | 主题 | 核心问题 |
 |------|---------|
 | [高频面试题合集](13.split-hairs/01.java/questions/README.md) | Java 综合高频问题速查 |
-| [创建对象](13.split-hairs/01.java/create-object/README.md) | 5 种创建方式 |
-| [单例模式](13.split-hairs/01.java/singleton-pattern/README.md) | 5 种实现 + 反射/序列化破坏 |
-| [Integer 缓存](13.split-hairs/01.java/integer-cache/README.md) | -128 到 127 复用机制与陷阱 |
-| [new String("123")](13.split-hairs/01.java/new-string/README.md) | 字符串常量池 vs 堆 |
-| [基础类型封装为对象](13.split-hairs/01.java/object/README.md) | 包装类的设计动机 |
-| [switch 前用 if 优化](13.split-hairs/01.java/if-before-switch/README.md) | 热点状态的快速路径 |
-| [ArrayList 去重](13.split-hairs/01.java/arrayList-distinct/README.md) | LinkedHashSet vs Stream |
-| [HashSet 替代 LinkedList 查找](13.split-hairs/01.java/replace-linkedlist-with-hashset/README.md) | 数据结构选择 |
-| [Atomic 替代 synchronized](13.split-hairs/01.java/replace-synchronized-with-atomic/README.md) | CAS 无锁编程 |
-| [StringBuilder 重用](13.split-hairs/01.java/reuse-of-stringbuilder/README.md) | 循环字符串拼接优化 |
-| [快速给 Map 排序](13.split-hairs/01.java/sort-map/README.md) | TreeMap vs LinkedHashMap |
-| [HashMap 扩容](13.split-hairs/01.java/hashmap-resizing/README.md) | 1GB 的 HashMap 扩容 |
-| [快速插入大量数据到 HashMap](13.split-hairs/01.java/large-data-into-hashmap/README.md) | 初始化容量与负载因子 |
-| [Record 与泛型](13.split-hairs/01.java/record-t/README.md) | Java 14+ Record 用泛型 |
 
-## 03.database（10 篇）—— 数据库细节
+## 03.database（18 篇）—— 数据库细节
 
-### MySQL
+### MySQL 基础
+
 | 主题 | 核心问题 |
 |------|---------|
 | [事务隔离机制](13.split-hairs/03.database/relational-database/mysql/isolation/README.md) | RU / RC / RR / Serializable |
@@ -276,15 +327,35 @@
 | [加什么锁](13.split-hairs/03.database/relational-database/mysql/what-lock/README.md) | 行锁 / 表锁 / 间隙锁 |
 | [索引失效的 10 种场景](13.split-hairs/03.database/mysql/index-failure/README.md) | LIKE 左通配 / 函数 / OR / 最左前缀 |
 
-### Redis
+### MySQL 深入
+
+| 主题 | 核心问题 |
+|------|---------|
+| [MVCC 实现原理](13.split-hairs/03.database/mvcc/README.md) | Read View + Undo Log |
+| [B+ Tree 为什么适合数据库索引](13.split-hairs/03.database/bplus-tree/README.md) | vs B-Tree / Hash |
+| [MySQL 主从复制延迟](13.split-hairs/03.database/replication-lag/README.md) | 延迟原因与解决方案 |
+| [MySQL JOIN 算法](13.split-hairs/03.database/mysql-join/README.md) | NLJ / BNL / Hash Join |
+
+### Redis 基础
+
 | 主题 | 核心问题 |
 |------|---------|
 | [Redis 搜索](13.split-hairs/03.database/nosql/key-value/redis/search/README.md) | 全文搜索实现 |
 | [缓存穿透 / 击穿 / 雪崩](13.split-hairs/03.database/redis/cache-penetration-breakdown-avalanche/README.md) | 面试必考三件套 |
 
-## 04.system-design（7 篇）—— 系统设计难点
+### Redis 深入
+
+| 主题 | 核心问题 |
+|------|---------|
+| [Redis 持久化](13.split-hairs/03.database/redis-persistence/README.md) | RDB / AOF / 混合持久化 |
+| [Redis 内存淘汰策略](13.split-hairs/03.database/redis-eviction/README.md) | 8 种淘汰策略详解 |
+| [Redis 集群](13.split-hairs/03.database/redis-cluster/README.md) | Sentinel vs Cluster |
+| [Redis 大 Key 问题](13.split-hairs/03.database/redis-big-key/README.md) | 发现与治理方案 |
+
+## 04.system-design（10 篇）—— 系统设计难点
 
 ### 高性能
+
 | 主题 | 核心问题 |
 |------|---------|
 | [MQ 消息积压](13.split-hairs/04.system-design/high-performance/mq/mq-backlog/README.md) | 紧急止血 + 长期优化 |
@@ -294,24 +365,55 @@
 | [限流算法](13.split-hairs/04.system-design/high-performance/rate-limiting/README.md) | 计数器 / 滑动窗口 / 漏桶 / 令牌桶 |
 
 ### 分布式
+
 | 主题 | 核心问题 |
 |------|---------|
 | [分布式 ID](13.split-hairs/04.system-design/distributed/distributed-id/README.md) | UUID / DB / 雪花算法 / Leaf |
 | [分布式事务](13.split-hairs/04.system-design/distributed/distributed-transaction/README.md) | 2PC / TCC / Saga / 本地消息表 |
+| [CAP 定理实际应用](13.split-hairs/04.system-design/cap-theorem/README.md) | CP vs AP 选型决策 |
 
-## 06.spring（7 篇）—— Spring 面试高频
+### 高并发
+
+| 主题 | 核心问题 |
+|------|---------|
+| [幂等性设计 6 大方案](13.split-hairs/04.system-design/idempotency/README.md) | Token / 状态机 / 唯一索引 / 去重表 |
+| [熔断降级实战](13.split-hairs/04.system-design/circuit-breaker/README.md) | Sentinel / Resilience4j 落地 |
+
+## 06.spring（13 篇）—— Spring 面试高频
+
+### 基础
 
 | 主题 | 核心问题 |
 |------|---------|
 | [不推荐 @Autowired](13.split-hairs/06.spring/not-use-@autowired/README.md) | 字段注入 vs 构造器注入 |
 | [PO / VO / DTO / BO / DAO / POJO](13.split-hairs/06.spring/clarify-various-o/README.md) | 数据对象辨析 |
-| [@Transactional 失效 8 种场景](13.split-hairs/06.spring/transactional-pitfalls/README.md) | 同类调用 / 异常类型 / 多线程 / 传播行为 |
+
+### IoC 与 Bean
+
+| 主题 | 核心问题 |
+|------|---------|
 | [Bean 生命周期](13.split-hairs/06.spring/bean-lifecycle/README.md) | 实例化 → 注入 → 初始化 → 销毁 12 步 |
+| [@Bean vs @Component](13.split-hairs/06.spring/bean-vs-component/README.md) | 两种 Bean 注册方式的区别 |
+| [Spring Boot 自动配置原理](13.split-hairs/06.spring/auto-configuration/README.md) | @EnableAutoConfiguration + 条件注解 |
 | [循环依赖三级缓存](13.split-hairs/06.spring/circular-dependency/README.md) | DefaultSingletonBeanRegistry |
-| [AOP 实现原理](13.split-hairs/06.spring/aop-principle/README.md) | JDK 动态代理 vs CGLIB |
+
+### AOP 与事务
+
+| 主题 | 核心问题 |
+|------|---------|
+| [@Transactional 失效 8 种场景](13.split-hairs/06.spring/transactional-pitfalls/README.md) | 同类调用 / 异常类型 / 多线程 / 传播行为 |
+| [@Transactional 传播行为](13.split-hairs/06.spring/transactional-propagation/README.md) | 7 种 propagation 详解 |
+| [JDK 动态代理 vs CGLIB](13.split-hairs/06.spring/jdk-proxy-vs-cglib/README.md) | 两种代理机制的原理与选择 |
+| [AOP 实现原理](13.split-hairs/06.spring/aop-principle/README.md) | 切面、通知、连接点、切入点 |
+| [@Async 失效 4 种场景](13.split-hairs/06.spring/async-pitfalls/README.md) | 同类调用 / 非 @Bean / 线程池缺失 |
+
+### Spring MVC
+
+| 主题 | 核心问题 |
+|------|---------|
 | [Spring MVC 请求流程](13.split-hairs/06.spring/spring-mvc-flow/README.md) | DispatcherServlet 9 步流程 |
 
-## 11.ai（5 篇）—— AI 新概念
+## 11.ai（7 篇）—— AI 新概念
 
 | 主题 | 核心问题 |
 |------|---------|
@@ -320,26 +422,56 @@
 | [Token 与计费原理](13.split-hairs/11.ai/token/README.md) | BPE / WordPiece / 上下文窗口 / 计费 |
 | [RAG 架构设计](13.split-hairs/11.ai/rag/README.md) | Chunking / Embedding / 向量数据库 |
 | [Prompt Engineering 技巧](13.split-hairs/11.ai/prompt-engineering/README.md) | 8 种核心技术 + 注入防御 |
+| [LLM 幻觉问题](13.split-hairs/11.ai/hallucination/README.md) | 幻觉成因 / 分类 / 检测与缓解 |
+| [Function Calling / Tool Use](13.split-hairs/11.ai/function-calling/README.md) | 工具调用原理 / Schema 定义 / ReAct Agent |
 
-## 09.front-end（12 篇）—— 前端细节
+## 09.front-end（19 篇）—— 前端细节
 
-### HTTP / 浏览器
+### HTTP / 网络
+
 | 主题 | 核心问题 |
 |------|---------|
 | [GET vs POST](13.split-hairs/09.front-end/get-and-post/README.md) | 7 大差异 + 幂等性 |
+| [HTTP 缓存机制](13.split-hairs/09.front-end/http-cache/README.md) | 强缓存 Cache-Control / 协商缓存 ETag |
+| [CORS 跨域详解](13.split-hairs/09.front-end/cors/README.md) | 简单请求 / 预检请求 / 常见头部 |
+| [HTTPS 握手过程](13.split-hairs/09.front-end/https-handshake/README.md) | TLS 1.2 vs 1.3 / 证书验证 |
+
+### 浏览器机制
+
+| 主题 | 核心问题 |
+|------|---------|
 | [消息机制](13.split-hairs/09.front-end/message/README.md) | 推送消息的方式 |
 | [存储方案](13.split-hairs/09.front-end/storage/README.md) | Cookie / LocalStorage / IndexedDB |
 | [事件循环 Event Loop](13.split-hairs/09.front-end/event-loop/README.md) | 宏任务 / 微任务 / async-await |
 | [从 URL 输入到页面展示](13.split-hairs/09.front-end/from-url-to-page/README.md) | 网络 + 解析 + 渲染全链路 |
 
 ### JavaScript 核心
+
 | 主题 | 核心问题 |
 |------|---------|
 | [闭包 Closure](13.split-hairs/09.front-end/closure/README.md) | 私有变量 / 内存泄漏 / React Hooks 陷阱 |
+| [原型链与继承](13.split-hairs/09.front-end/prototype-chain/README.md) | __proto__ vs prototype / 继承方案 |
+| [this 绑定规则](13.split-hairs/09.front-end/this-binding/README.md) | 默认 / 隐式 / 显式 / new / 箭头函数 |
+| [防抖 + 节流手写](13.split-hairs/09.front-end/debounce-throttle/README.md) | debounce / throttle 实现与应用场景 |
 | [Promise 手写实现](13.split-hairs/09.front-end/promise-handwriting/README.md) | Promise.all / race / allSettled |
+| [深拷贝实现](13.split-hairs/09.front-end/deep-copy/README.md) | 递归 / 循环引用 / 特殊类型处理 |
 
-### React 框架
+### CSS
+
+| 主题 | 核心问题 |
+|------|---------|
+| [BFC 块级格式化上下文](13.split-hairs/09.front-end/bfc/README.md) | 触发条件 / 应用场景 / 边距折叠 |
+
+### 框架
+
 | 主题 | 核心问题 |
 |------|---------|
 | [Virtual DOM + Diff 算法](13.split-hairs/09.front-end/virtual-dom-diff/README.md) | O(n) 复杂度 + Key 的作用 |
 | [React Hooks 原理](13.split-hairs/09.front-end/react-hooks/README.md) | 闭包 + Hooks 链表 + 闭包陷阱 |
+| [Vue 响应式原理](13.split-hairs/09.front-end/vue-reactivity/README.md) | Object.defineProperty vs Proxy |
+
+### 安全
+
+| 主题 | 核心问题 |
+|------|---------|
+| [XSS / CSRF 攻击防御](13.split-hairs/09.front-end/xss-csrf/README.md) | 反射型 / 存储型 / Token / SameSite Cookie |

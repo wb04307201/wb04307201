@@ -195,9 +195,9 @@ graph TD
 ### 低优先级（UI 截图，不适合 Mermaid）
 | 文件 | PNG 数 | 说明 |
 |------|--------|------|
-| `11.ai/training/lession9/` | 21 | Dify/Coze 教程截图 |
-| `11.ai/training/lession1/` | 7 | 课程截图 |
-| `11.ai/training/lession13/` | 1 | 占位截图 |
+| `11.ai/training/lesson9/` | 21 | Dify/Coze 教程截图 |
+| `11.ai/training/lesson1/` | 7 | 课程截图 |
+| `11.ai/training/lesson13/` | 1 | 占位截图 |
 
 ---
 
