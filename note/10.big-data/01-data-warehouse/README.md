@@ -74,3 +74,53 @@ flowchart TD
 | Hudi | 数据湖表格式 |
 | Delta Lake | 数据湖表格式（Databricks） |
 | 流批融合 | 同一份代码处理流批 |
+
+---
+
+## 8. 架构图
+
+### Lambda 架构
+
+```mermaid
+flowchart LR
+    A[数据源] --> B[速度层<br/>流处理]
+    B --> D[服务层<br/>合并查询]
+    A --> C[批处理层<br/>离线计算]
+    C --> D
+    D --> E[应用层]
+```
+
+### Kappa 架构
+
+```mermaid
+flowchart LR
+    A[数据源] --> B[流处理层]
+    B --> C[服务层]
+    B -.重放.-> B
+    C --> D[应用层]
+```
+
+### 湖仓一体
+
+```mermaid
+flowchart TD
+    A[数据源] --> B[对象存储<br/>S3/MinIO]
+    B --> C[数据湖表格式<br/>Iceberg/Hudi]
+    C --> D[计算引擎<br/>Spark/Flink/Trino]
+    D --> E[应用层]
+    C -.ACID.-> D
+```
+
+### 批流融合时序
+
+```mermaid
+sequenceDiagram
+    participant K as Kafka
+    participant F as Flink
+    participant H as Hive/Iceberg
+    participant A as 应用层
+    K->>F: 实时事件流
+    F->>H: 实时写入
+    F->>A: 实时查询
+    H->>A: 离线查询（同一份代码）
+```
