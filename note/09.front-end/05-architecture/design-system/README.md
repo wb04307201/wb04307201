@@ -344,7 +344,7 @@ graph LR
 - [`01-foundation/`](../../01-foundation/) — CSS 工程化（CSS Variables / Sass）
 - [`05-architecture/`](../) — 组件架构与复用
 - [`08-cross-platform/`](../../08-cross-platform/) — 跨端设计系统（React Native / Flutter）
-- [`12.story/`](../../../../12.story/) — 阿明餐厅设计系统演进
+- [`12.story/`](../../../12.story/README.md/) — 阿明餐厅设计系统演进
 
 ---
 

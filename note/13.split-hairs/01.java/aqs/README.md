@@ -19,7 +19,7 @@ Doug Lea 用一个抽象框架，就支撑起了整个 `java.util.concurrent.loc
 
 ## 一、核心原理
 
-> 📚 **前置知识**：[JUC 锁](../../../01.java/concurrency/juc-locks/README.md) | [volatile](../../../01.java/concurrency/volatile.md)
+> 📚 **前置知识**：[JUC 锁](../../../01.java/concurrency/juc-locks/README.md) | [volatile](../../../01.java/concurrency/volatile/README.md)
 
 AQS（AbstractQueuedSynchronizer）由 Doug Lea 设计，其核心思想是将同步状态的原子操作与线程排队解耦。
 

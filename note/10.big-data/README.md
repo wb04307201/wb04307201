@@ -255,7 +255,7 @@ flowchart TD
 
 - **数据架构**：[01 数仓架构](./01-data-warehouse/) / [03 实时计算](./03-realtime-compute/)
 - **底层存储**：[02 Hadoop 生态](./02-hadoop-ecosystem/) / [04 数据湖](./04-data-lake/)
-- **上层应用**：[05 OLAP](./05-olap/) / [09 前端可视化](../../09.front-end/)
+- **上层应用**：[05 OLAP](./05-olap/) / [09 前端可视化](../09.front-end/README.md/)
 - **横向支撑**：[06 调度](./06-scheduling/) / [07 数据治理](./07-data-governance/) / [08 同步工具](./08-sync-tools/)
 
 ---

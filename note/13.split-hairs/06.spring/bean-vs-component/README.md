@@ -31,7 +31,7 @@ public ObjectMapper objectMapper() {
 
 ---
 
-> 📚 **前置知识**：[IOC](../../06.spring/01-core/ioc/README.md) | [@Component 与 @Bean](../../06.spring/08-annotations/bean-and-ioc.md)
+> 📚 **前置知识**：[IOC](../../../06.spring/01-core/ioc/README.md) | [@Component 与 @Bean](../../../06.spring/08-annotations/bean-and-ioc.md)
 
 ## 一、核心原理
 

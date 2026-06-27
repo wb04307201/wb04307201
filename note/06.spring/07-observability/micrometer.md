@@ -529,7 +529,7 @@ Micrometer Tracing API
 
 **演进方向**：Brave 进入维护模式（不再大版本迭代），OpenTelemetry 是**未来标准**。新项目建议直接选 `bridge-otel`。
 
-> 📌 **本节仅概述**。依赖坐标、application.yml 配置、OpenTelemetry SDK 自定义 Bean、OTLP/gRPC vs HTTP 协议对比、docker-compose 实战（Collector + Jaeger）、与 Prometheus 的混合架构等完整内容见 [05-spring-cloud/distributed-tracing.md](../../05-spring-cloud/distributed-tracing.md)。
+> 📌 **本节仅概述**。依赖坐标、application.yml 配置、OpenTelemetry SDK 自定义 Bean、OTLP/gRPC vs HTTP 协议对比、docker-compose 实战（Collector + Jaeger）、与 Prometheus 的混合架构等完整内容见 [05-spring-cloud/distributed-tracing.md](../05-spring-cloud/distributed-tracing.md)。
 
 ---
 

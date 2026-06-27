@@ -216,4 +216,4 @@ const { text } = await generateText({
 
 - [`09-frontend-and-ai/`](../) — 前端与 AI 总览
 - [`09-frontend-and-ai/vibe-coding/`](../vibe-coding/) — AI 辅助开发
-- [`11.ai/01-fundamentals/llm-basics/`](../../../../11.ai/01-fundamentals/llm-basics/) — LLM 基础
+- [`11.ai/01-fundamentals/llm-basics/`](../../../11.ai/01-fundamentals/llm-basics/README.md/) — LLM 基础

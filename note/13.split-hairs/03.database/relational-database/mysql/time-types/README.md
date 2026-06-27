@@ -20,7 +20,7 @@ MySQL 有 5 种时间类型，选错了：
 
 ---
 
-> 📚 **前置知识**：[MySQL](../../03.database/05-mysql/README.md)
+> 📚 **前置知识**：[MySQL](../../../../../03.database/05-mysql/README.md)
 
 ## 一、核心原理
 

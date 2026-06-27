@@ -25,7 +25,7 @@ COMMIT;
 
 ---
 
-> 📚 **前置知识**：[事务](../../03.database/03-transaction/README.md) | [隔离级别](../../03.database/relational-database/mysql/isolation/README.md)
+> 📚 **前置知识**：[事务](../../../03.database/03-transaction/README.md) | [隔离级别](../../03.database/relational-database/mysql/isolation/README.md)
 
 ## 一、核心原理
 

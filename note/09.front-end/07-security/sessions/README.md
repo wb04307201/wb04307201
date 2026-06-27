@@ -2,7 +2,7 @@
 
 **原文链接**：[https://supertokens.com/blog/cookies-vs-localstorage-for-sessions-everything-you-need-to-know](https://supertokens.com/blog/cookies-vs-localstorage-for-sessions-everything-you-need-to-know)
 
-> 📌 **本文与 [`13.split-hairs/09.front-end/storage/`](../../../../13.split-hairs/09.front-end/storage/) 的关系**
+> 📌 **本文与 [`13.split-hairs/09.front-end/storage/`](../../../13.split-hairs/09.front-end/storage/README.md/) 的关系**
 >
 > - 本文档是**原文完整翻译稿**(SuperTokens, 2023),系统讲述 Cookies / LocalStorage / SessionStorage / IndexedDB 四种浏览器存储在会话管理中的取舍,是一篇**通识性的工程实践**。
 > - `13.split-hairs/09.front-end/storage/` 是**「咬文嚼字」小专题**,聚焦面试 / 辨析场景,常以「**X 和 Y 区别?**」表格对照形式出现。

@@ -18,7 +18,7 @@ QPS：50 万（超过单机性能上限）
 
 ---
 
-> 📚 **前置知识**：[Redis](../../03.database/07-redis/README.md)
+> 📚 **前置知识**：[Redis](../../../03.database/07-redis/README.md)
 
 ## 一、核心原理
 

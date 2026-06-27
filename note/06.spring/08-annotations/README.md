@@ -136,5 +136,5 @@ graph LR
 - [02 Web 层](../02-web/README.md) — MVC/WebFlux 相关注解
 - [03 数据层](../03-data/README.md) — 事务/缓存相关注解
 - [06 集成组件](../06-integration/README.md) — Validation/Retry/StateMachine 相关注解
-- [13 辨析/为什么不推荐 @Autowired 字段注入](../13.split-hairs/06.spring/not-use-@autowired/README.md) — 字段注入 vs 构造器注入
-- [13 辨析/PO-VO-DTO-BO-DAO-POJO 语义辨析](../13.split-hairs/06.spring/clarify-various-o/README.md) — 各层对象语义
+- [13 辨析/为什么不推荐 @Autowired 字段注入](../../13.split-hairs/06.spring/not-use-@autowired/README.md) — 字段注入 vs 构造器注入
+- [13 辨析/PO-VO-DTO-BO-DAO-POJO 语义辨析](../../13.split-hairs/06.spring/clarify-various-o/README.md) — 各层对象语义

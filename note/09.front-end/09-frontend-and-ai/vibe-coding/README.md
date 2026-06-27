@@ -208,12 +208,12 @@ graph LR
 
 - [`09-frontend-and-ai/`](../) — 前端与 AI 总览
 - [`09-frontend-and-ai/ai-sdk/`](../ai-sdk/) — 集成 AI 到产品
-- [`11.ai/`](../../../../11.ai/) — AI 知识体系
-- [`12.story/11-ai-learning-paradox.md`](../../../../12.story/11-ai-learning-paradox.md) — AI 时代怎么学
+- [`11.ai/`](../../../11.ai/README.md/) — AI 知识体系
+- [`12.story/11-ai-learning-paradox.md`](../../../12.story/11-ai-learning-paradox.md) — AI 时代怎么学
 
 ---
 
 ## 11. 与其他模块的关系
 
-- **上游**：[`11.ai/`](../../../../11.ai/)（AI 基础）
+- **上游**：[`11.ai/`](../../../11.ai/README.md/)（AI 基础）
 - **下游**：影响 [`03-frameworks/`](../../03-frameworks/) / [`04-engineering/`](../../04-engineering/) 的选型（AI 友好度成新维度）

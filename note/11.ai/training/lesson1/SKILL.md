@@ -12,7 +12,7 @@ argument-hint: "[操作指令]"
 
 百度网盘文件管理工具，所有操作限制在 `/apps/bdpan/` 目录内。适配 Claude Code、DuClaw、OpenClaw 等。
 
-> 使用注意事项详见 [reference/notes.md](./reference/notes.md)
+> 使用注意事项详见 [reference/notes.md)
 
 ## 触发规则
 
@@ -237,7 +237,7 @@ bash ${CLAUDE_SKILL_DIR}/scripts/update.sh --check       # 仅检查更新
 
 | 文档 | 何时查阅 |
 |------|---------|
-| [bdpan-commands.md](./reference/bdpan-commands.md) | 需要完整命令参数、选项、JSON 输出格式 |
-| [authentication.md](./reference/authentication.md) | 认证流程细节、Token 管理 |
-| [examples.md](./reference/examples.md) | 更多使用示例（批量上传、自动备份等） |
-| [troubleshooting.md](./reference/troubleshooting.md) | 遇到错误需要排查 |
+| [bdpan-commands.md) | 需要完整命令参数、选项、JSON 输出格式 |
+| [authentication.md) | 认证流程细节、Token 管理 |
+| [examples.md) | 更多使用示例（批量上传、自动备份等） |
+| [troubleshooting.md) | 遇到错误需要排查 |

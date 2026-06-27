@@ -23,7 +23,7 @@ public class Person {
 }
 ```
 
-> **重写实现与契约**：完整的 `Person.equals()` 和 `Person.hashCode()` 重写实现、Java 16+ 模式匹配写法，以及 `equals()` 必须满足的五条契约（自反性、对称性、传递性、一致性、非空性），参见 [oop/README.md](oop/README.md#hashcode-与哈希表)。
+> **重写实现与契约**：完整的 `Person.equals()` 和 `Person.hashCode()` 重写实现、Java 16+ 模式匹配写法，以及 `equals()` 必须满足的五条契约（自反性、对称性、传递性、一致性、非空性），参见 [oop/README.md](../../../README.md#hashcode-与哈希表)。
 
 ### 2. `hashCode()`
 
@@ -34,7 +34,7 @@ public native int hashCode()
 - **默认行为**：返回对象的哈希码（由 JVM 决定，通常与内存地址相关）。
 - **重写规则**：若重写 `equals()`，**必须同步重写 `hashCode()`**，确保相等的对象哈希值相同。违反此规则会导致对象在 `HashMap`、`HashSet` 等基于哈希的集合中行为异常。
 
-> 完整的 `hashCode()` 重写实现与最佳实践参见 [oop/README.md](oop/README.md#hashcode-与哈希表)。
+> 完整的 `hashCode()` 重写实现与最佳实践参见 [oop/README.md](../../../README.md#hashcode-与哈希表)。
 
 ### 3. `toString()`
 

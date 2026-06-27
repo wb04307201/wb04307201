@@ -22,7 +22,7 @@ public class OrderService {
 
 ---
 
-> 📚 **前置知识**：[IOC](../../06.spring/01-core/ioc/README.md) | [Bean 生命周期](../../06.spring/01-core/ioc/bean-lifecycle.md)
+> 📚 **前置知识**：[IOC](../../../06.spring/01-core/ioc/README.md) | [Bean 生命周期](../../../06.spring/01-core/ioc/bean-lifecycle.md)
 
 ## 一、完整生命周期
 

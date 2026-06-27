@@ -19,7 +19,7 @@ redis.del("user:" + userId); // ② 删除缓存
 
 ---
 
-> 📚 **前置知识**：[Redis](../../03.database/07-redis/README.md)
+> 📚 **前置知识**：[Redis](../../../../03.database/07-redis/README.md)
 
 ## 一、核心问题
 

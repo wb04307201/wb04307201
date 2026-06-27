@@ -279,4 +279,4 @@ public void call() { ... }
 ## 相关章节
 
 - [重试注解速查](../08-annotations/retry.md) — `@Retryable` / `@Recover` 注解用法速查
-- [高可用/重试](../../../04.system-design/03-high-availability/retry/README.md) — 系统设计视角的重试策略
+- [高可用/重试](../../04.system-design/03-high-availability/retry/README.md) — 系统设计视角的重试策略

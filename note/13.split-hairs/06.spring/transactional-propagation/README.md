@@ -33,7 +33,7 @@ Spring 定义了 **7 种传播行为**，精确控制嵌套事务的归属。
 
 ---
 
-> 📚 **前置知识**：[事务](../../06.spring/03-data/transaction/README.md) | [传播行为](../../06.spring/03-data/transaction/propagation-and-isolation.md)
+> 📚 **前置知识**：[事务](../../../06.spring/03-data/transaction/README.md) | [传播行为](../../../06.spring/03-data/transaction/propagation-and-isolation.md)
 
 ## 一、核心原理
 

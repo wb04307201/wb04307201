@@ -546,8 +546,8 @@ public void afterCommit(User user) {
 
 - ⬅️ [返回 MyBatis 整合总览](README.md)
 - ⬅️ [04 多数据源路由](04-multi-datasource.md)
-- [cache/README.md](../cache/README.md) — Spring Cache 详解
-- [cache/implementations-and-best-practices.md](../cache/implementations-and-best-practices.md) — 缓存实现与最佳实践
-- [cache/serialization.md](../cache/serialization.md) — 序列化方案
+- [cache/README.md](../../../../README.md) — Spring Cache 详解
+- [cache/implementations-and-best-practices.md](../../cache/implementations-and-best-practices.md) — 缓存实现与最佳实践
+- [cache/serialization.md](../../cache/serialization.md) — 序列化方案
 - [架构与原理](../01-architecture/README.md) — MyBatis 二级缓存机制
-- [03.database/06-cache/](../../03.database/06-cache/) — 数据库缓存基础
+- [03.database/06-cache/](../../../../03.database/06-cache/README.md/) — 数据库缓存基础

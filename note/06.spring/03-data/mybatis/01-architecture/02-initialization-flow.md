@@ -46,4 +46,4 @@ flowchart TD
 ## 相关章节
 
 - 前置：[`01 框架本质`](01-framework-essence.md)
-- 深入：[`05 执行流程`](../02-extension/05-execution-flow.md) — SQL 执行全链路
+- 深入：[`05 执行流程`](../02-extension/README.md) — SQL 执行全链路

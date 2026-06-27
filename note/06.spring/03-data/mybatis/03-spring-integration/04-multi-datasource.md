@@ -185,7 +185,7 @@ public class OrderService {
 }
 ```
 
-**问题**：跨数据源事务需引入 JTA 或 Seata（见 [transaction/multi-datasource-and-jta.md](../transaction/multi-datasource-and-jta.md)）。
+**问题**：跨数据源事务需引入 JTA 或 Seata（见 [transaction/multi-datasource-and-jta.md](../../transaction/multi-datasource-and-jta.md)）。
 
 ---
 
@@ -507,7 +507,7 @@ public void crossOperation(Order order, User user) {
 }
 ```
 
-详见 [transaction/distributed/seata.md](../transaction/distributed/seata.md)。
+详见 [transaction/distributed/seata.md](../../transaction/distributed/seata.md)。
 
 ### 4. 本地消息表（最终一致，无中间件）
 
@@ -525,7 +525,7 @@ public void createOrderWithNotify(Order order, User user) {
 // 定时任务扫描消息表，发送到 MQ 或调用用户库
 ```
 
-详见 [transaction/distributed/theory-and-patterns.md](../transaction/distributed/theory-and-patterns.md)。
+详见 [transaction/distributed/theory-and-patterns.md](../../transaction/distributed/theory-and-patterns.md)。
 
 ---
 
@@ -592,6 +592,6 @@ public CompletableFuture<List<User>> asyncBatchGet(List<Long> ids) {
 - ⬅️ [返回 MyBatis 整合总览](README.md)
 - ⬅️ [03 事务边界](03-transaction-boundary.md)
 - ➡️ [05 二级缓存与 Redis/Caffeine 整合](05-secondary-cache-integration.md)
-- [transaction/multi-datasource-and-jta.md](../transaction/multi-datasource-and-jta.md) — 多数据源事务
-- [transaction/distributed/seata.md](../transaction/distributed/seata.md) — Seata 分布式事务
+- [transaction/multi-datasource-and-jta.md](../../transaction/multi-datasource-and-jta.md) — 多数据源事务
+- [transaction/distributed/seata.md](../../transaction/distributed/seata.md) — Seata 分布式事务
 - [MyBatis-Plus 全家桶](../04-mybatis-plus/README.md) — MyBatis-Plus 动态数据源

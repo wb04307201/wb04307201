@@ -157,7 +157,7 @@ docker compose down
 docker compose up -d
 ```
 
-> 更多信息请参阅 [环境变量](/zh/self-host/configuration/environments)。
+> 更多信息请参阅 [环境变量](https://docs.dify.ai/zh/self-host/configuration/environments)。
 
 ## 升级
 

@@ -28,7 +28,7 @@ pool.submit(() -> {
 
 ## 一、核心原理
 
-> 📚 **前置知识**：[ThreadLocal](../../../01.java/concurrency/threadlocal.md) | [线程基础](../../../01.java/concurrency/thread-basics/README.md)
+> 📚 **前置知识**：[ThreadLocal](../../../01.java/concurrency/threadlocal/README.md) | [线程基础](../../../01.java/concurrency/thread-basics/README.md)
 
 ThreadLocal 的核心设计思想是**空间换时间**：为每个线程维护一份独立的变量副本，避免多线程竞争带来的同步开销。其底层依赖 `java.lang.Thread` 类中的两个字段：
 

@@ -3,7 +3,7 @@
 > 最后更新: 2026-06-14
 > ⬅️ [返回注解速查](../README.md) | [Web 注解](web.md)
 
-本节是 `@Valid` / `@Validated` 与 JSR-303 常见约束注解的速查手册。**深读请前往 [06-integration/validation](../../06-integration/validation/annotations-and-usage.md)**。
+本节是 `@Valid` / `@Validated` 与 JSR-303 常见约束注解的速查手册。**深读请前往 [06-integration/validation](../06-integration/validation/annotations-and-usage.md)**。
 
 ---
 
@@ -94,7 +94,7 @@ public User create(@Validated(Create.class) @RequestBody UserDTO dto) { ... }
 public User update(@PathVariable Long id, @Validated(Update.class) @RequestBody UserDTO dto) { ... }
 ```
 
-> 💡 进阶：`@GroupSequence` 控制分组顺序（前一组的失败会跳过后续组）。详见 [validation 分组章节](../../06-integration/validation/annotations-and-usage.md)。
+> 💡 进阶：`@GroupSequence` 控制分组顺序（前一组的失败会跳过后续组）。详见 [validation 分组章节](../06-integration/validation/annotations-and-usage.md)。
 
 ---
 
@@ -224,9 +224,9 @@ public class UserController {
 
 ## 深入阅读
 
-- [06-integration/validation/annotations-and-usage](../../06-integration/validation/annotations-and-usage.md) — 校验完整指南（含自定义注解）
-- [06-integration/validation/custom-validator](../../06-integration/validation/custom-validator.md) — 自定义校验器
-- [06-integration/validation/cross-field](../../06-integration/validation/cross-field.md) — 跨字段校验
+- [06-integration/validation/annotations-and-usage](../06-integration/validation/annotations-and-usage.md) — 校验完整指南（含自定义注解）
+- [06-integration/validation/custom-validator](../06-integration/validation/custom-validator.md) — 自定义校验器
+- [06-integration/validation/cross-field](../06-integration/validation/cross-field.md) — 跨字段校验
 
 ## 相关章节
 

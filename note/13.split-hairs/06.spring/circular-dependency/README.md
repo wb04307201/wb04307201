@@ -20,7 +20,7 @@ public class B {
 
 ---
 
-> 📚 **前置知识**：[IOC](../../06.spring/01-core/ioc/README.md) | [循环依赖](../../06.spring/01-core/ioc/circular-dependency.md)
+> 📚 **前置知识**：[IOC](../../../06.spring/01-core/ioc/README.md) | [循环依赖](../../../06.spring/01-core/ioc/circular-dependency.md)
 
 ## 一、循环依赖问题
 

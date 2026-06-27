@@ -17,7 +17,7 @@
 
 ---
 
-> 📚 **前置知识**：[Redis](../../03.database/07-redis/README.md) | [缓存](../../03.database/06-cache/README.md)
+> 📚 **前置知识**：[Redis](../../../../03.database/07-redis/README.md) | [缓存](../../../../03.database/06-cache/README.md)
 
 ## 一、核心概念
 

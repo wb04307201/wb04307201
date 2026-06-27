@@ -333,7 +333,7 @@ graph TB
 2. **Serverless Workflow 会取代 BPMN 吗？** 短期不会。BPMN 14 年生态成熟、企业接受度高；Serverless Workflow 在云原生 SaaS 场景（如 AWS Step Functions）增长快。**未来可能融合**——BPMN 节点支持事件触发、Serverless Workflow 借鉴 BPMN 图形化。
 3. **EventMesh vs Kafka？** Kafka 是「消息管道」；EventMesh 是「管道 + Schema 注册 + 工作流编排 + 多协议接入」的**中间层**。多数项目用 Kafka 足够；需要跨协议 / Schema 管理 / Workflow Runtime 时才上 EventMesh。
 4. **什么时候该上事件驱动工作流？** 满足任一条件：① 跨 5+ 微服务的长流程 ② 任意子任务可异步 ③ 跨云 / 跨协议集成。否则用传统 BPMN 引擎足矣。
-5. **事件驱动工作流的最大风险？** **事件丢失 / 重复消费 / 顺序错乱**——必须有**幂等设计**（详见 [04 系统设计/06 幂等](../04.system-design/06-idempotency/README.md)）+ **死信队列** + **事件版本管理**。
+5. **事件驱动工作流的最大风险？** **事件丢失 / 重复消费 / 顺序错乱**——必须有**幂等设计**（详见 [04 系统设计/06 幂等](../../04.system-design/06-idempotency/README.md)）+ **死信队列** + **事件版本管理**。
 6. **12306 早期为什么不用 EventMesh？** EventMesh 2018 才成为 Apache 顶级项目，12306 2012 上线时是自研事件总线。**历史包袱 + 业务稳定** 后才逐步引入新基础设施——这是国内大型系统的典型演进路径：自研 → 标准化 → 生态化。
 
 ---
@@ -344,5 +344,5 @@ graph TB
 - [工作流定义](../define/README.md) — BPMN 三要素
 - [流程引擎](../process-engine/README.md) — Camunda 7/8 / Zeebe 流程引擎
 - [微服务编排](../workflow-and-microservice-orchestration/README.md) — 编舞 vs 编排
-- [04 系统设计/02 分布式](../04.system-design/02-distributed/README.md) — CAP/共识理论基础
-- [04 系统设计/06 幂等](../04.system-design/06-idempotency/README.md) — 事件驱动必配的幂等设计
+- [04 系统设计/02 分布式](../../04.system-design/02-distributed/README.md) — CAP/共识理论基础
+- [04 系统设计/06 幂等](../../04.system-design/06-idempotency/README.md) — 事件驱动必配的幂等设计

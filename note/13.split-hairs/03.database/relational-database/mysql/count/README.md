@@ -18,7 +18,7 @@ SELECT COUNT(name) FROM users;  -- 2 秒（如果有 NULL 值，结果不同！�
 
 ---
 
-> 📚 **前置知识**：[MySQL](../../03.database/05-mysql/README.md)
+> 📚 **前置知识**：[MySQL](../../../../../03.database/05-mysql/README.md)
 
 ## 一、核心原理
 

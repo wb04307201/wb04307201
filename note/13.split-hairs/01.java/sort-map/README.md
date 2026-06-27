@@ -19,7 +19,7 @@ map.entrySet().stream()
 
 ---
 
-> 📚 **前置知识**：[HashMap](../../../01.java/collection/hashmap.md) | [TreeMap](../../../01.java/collection/TreeMap.md)
+> 📚 **前置知识**：[HashMap](../../../01.java/collection/hashmap.md) | [TreeMap](../../../01.java/collection/TreeMap/README.md)
 
 ## 1. 核心问题分析
 - **Map特性**：Java的`HashMap`无序，`TreeMap`基于红黑树实现自动排序（插入时排序），但插入1亿数据的时间复杂度为`O(n log n)`，且内存占用高（每个节点存储键值+指针，约48-64字节/节点，1亿节点需4.8-6.4GB内存）。

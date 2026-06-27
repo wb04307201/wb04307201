@@ -27,7 +27,7 @@ public void createOrder(Order order) {
 
 ---
 
-> 📚 **前置知识**：[事件机制](../../06.spring/01-core/event.md)
+> 📚 **前置知识**：[事件机制](../../../06.spring/01-core/event.md)
 
 ## 一、核心原理
 

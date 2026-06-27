@@ -336,4 +336,4 @@ Q4: 是否需要人工审核？
 - [Camunda 8](../../07.workflow/process-engine/camunda/camunda-8/README.md) — 模式 A 8.5+ AI Agent Sub-process 详解
 - [Zeebe](../../07.workflow/process-engine/camunda/camunda-8/zeebe/README.md) — 模式 B Zeebe AI Worker 实现
 - [微服务编排](../../07.workflow/workflow-and-microservice-orchestration/README.md) — 流程引擎在微服务场景的演化
-- [09.front-end / 05 架构 / BFF](../../../09.front-end/05-architecture/bff/README.md) — BFF 模式详解：与 AI 融合中的"端侧适配层"实践
+- [09.front-end / 05 架构 / BFF](../../09.front-end/05-architecture/bff/README.md) — BFF 模式详解：与 AI 融合中的"端侧适配层"实践

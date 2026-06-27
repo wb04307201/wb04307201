@@ -596,7 +596,7 @@ graph TD
 - [厨房装监控](./05-observability.md) —— 系统拆成微服务后，出了问题怎么查？日志、指标、链路追踪
 - [食安大检查](./06-security-architecture.md) —— 服务多了、接口多了，安全怎么保障？认证、权限、加密、零信任
 - [从厨师到 CEO](./07-from-chef-to-ceo.md) —— 架构拆了，团队也要拆。康威定律、技术雷达、平台工程
-- [企业架构 TOGAF](../../04.system-design/01-foundation/system-design-basics/togaf/README.md) —— TOGAF 详细参考：ADM 流程、业务能力地图、逆康威定律实践
+- [企业架构 TOGAF](../04.system-design/01-foundation/system-design-basics/togaf/README.md) —— TOGAF 详细参考：ADM 流程、业务能力地图、逆康威定律实践
 - [给产品经理的重构说明书](./03-refactoring-guide-for-pm.md) —— 架构演进的过程中，技术债怎么管理？
 - [厨房质检员](./08-qa-testing-strategy.md) —— 微服务架构下的测试策略：单元测试 + 契约测试 + E2E 测试
 - [从接单到出餐](./09-cicd-devops.md) —— 架构演进后的持续交付：灰度发布、蓝绿部署、金丝雀发布

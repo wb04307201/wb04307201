@@ -25,7 +25,7 @@ console.log("4")
 
 ---
 
-> 📚 **前置知识**：[浏览器渲染](../../09.front-end/01-foundation/browser-rendering/README.md)
+> 📚 **前置知识**：[浏览器渲染](../../../09.front-end/01-foundation/browser-rendering/README.md)
 
 ## 一、核心原理
 

@@ -379,5 +379,5 @@ src/main/resources/com/example/mapper/
 
 - ⬅️ [返回 MyBatis 整合总览](README.md)
 - ➡️ [02 Mapper 与 Boot](02-mapper-and-boot.md)
-- [transaction/README.md](../transaction/README.md) — Spring 事务基础
+- [transaction/README.md](../../../../README.md) — Spring 事务基础
 - [架构与原理](../01-architecture/README.md) — MyBatis 核心原理

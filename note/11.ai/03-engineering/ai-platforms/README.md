@@ -161,5 +161,5 @@ Q4: 是否需要 BPMN 合规？
 - [Coze](coze.md) — 字节系国内最强生态
 - [LangGraph](langgraph.md) — 代码优先复杂 Agent 框架
 - [BPMN+AI 融合](../../04-architecture/bpmn-ai-integration.md) — 4 模式生产级落地
-- [07 工作流/微服务编排](../../07.workflow/workflow-and-microservice-orchestration/README.md) — 流程引擎在分布式场景的演化
+- [07 工作流/微服务编排](../../../07.workflow/workflow-and-microservice-orchestration/README.md) — 流程引擎在分布式场景的演化
 - [09.front-end / 09 前端与 AI](../../../09.front-end/09-frontend-and-ai/README.md) — AI SDK / AI Native UI / Vibe Coding：AI 平台的前端落地形态

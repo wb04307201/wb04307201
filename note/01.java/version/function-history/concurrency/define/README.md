@@ -151,8 +151,8 @@ class VolatileExample {
 
 | 专题 | 说明 | 链接 |
 |------|------|------|
-| Java 锁机制 | `synchronized` 原理、锁升级、`ReentrantLock`、`StampedLock`、CAS、AQS 等 | [java-locks](./java-locks.md) |
-| 线程池 | `ThreadPoolExecutor` 参数详解、工作队列、拒绝策略、ForkJoinPool、虚拟线程等 | [thread-pool](./thread-pool.md) |
+| Java 锁机制 | `synchronized` 原理、锁升级、`ReentrantLock`、`StampedLock`、CAS、AQS 等 | [java-locks](./java-locks/README.md) |
+| 线程池 | `ThreadPoolExecutor` 参数详解、工作队列、拒绝策略、ForkJoinPool、虚拟线程等 | [thread-pool](./thread-pool/README.md) |
 
 ## 六、最佳实践原则
 

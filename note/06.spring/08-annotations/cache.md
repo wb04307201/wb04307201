@@ -3,7 +3,7 @@
 > 最后更新: 2026-06-14
 > ⬅️ [返回注解速查](../README.md) | [事务注解](transaction.md)
 
-本节是 Spring Cache 注解的速查手册——`@Cacheable` / `@CachePut` / `@CacheEvict` / `@Caching` / `@CacheConfig` 的关键属性与 SpEL 语法。**深读请前往 [03-data/cache](../../03-data/cache/README.md)**。
+本节是 Spring Cache 注解的速查手册——`@Cacheable` / `@CachePut` / `@CacheEvict` / `@Caching` / `@CacheConfig` 的关键属性与 SpEL 语法。**深读请前往 [03-data/cache](../../README.md)**。
 
 ---
 
@@ -167,10 +167,10 @@ public class UserService {
 
 ## 深入阅读
 
-- [03-data/cache/README](../../03-data/cache/README.md) — 缓存完整指南
-- [03-data/cache/patterns](../../03-data/cache/patterns.md) — Cache-Aside、Read-Through 等模式
-- [03-data/cache/serialization](../../03-data/cache/serialization.md) — 缓存序列化
-- [03-data/cache/multi-level](../../03-data/cache/multi-level.md) — 多级缓存
+- [03-data/cache/README](../../README.md) — 缓存完整指南
+- [03-data/cache/patterns](../03-data/cache/patterns.md) — Cache-Aside、Read-Through 等模式
+- [03-data/cache/serialization](../03-data/cache/serialization.md) — 缓存序列化
+- [03-data/cache/multi-level](../03-data/cache/multi-level.md) — 多级缓存
 
 ## 相关章节
 

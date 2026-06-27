@@ -214,7 +214,7 @@ graph TB
 - [`03-frameworks/`](../../03-frameworks/) — 框架选型决定状态管理选型
 - [`05-architecture/routing/`](../routing/) — 路由状态 vs 全局状态
 - [`06-performance/`](../../06-performance/) — 重渲染是性能杀手
-- [`12.story/13-frontend-renovation.md`](../../../../12.story/13-frontend-renovation.md) — 阿明餐厅状态管理演进史
+- [`12.story/13-frontend-renovation.md`](../../../12.story/13-frontend-renovation.md) — 阿明餐厅状态管理演进史
 
 ---
 

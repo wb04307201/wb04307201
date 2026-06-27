@@ -21,7 +21,7 @@ Map<String, Integer> concurrentMap = new ConcurrentHashMap<>();  // ✅ 快且�
 
 ## 一、核心原理
 
-> 📚 **前置知识**：[ConcurrentHashMap](../../../01.java/collection/ConcurrentHashMap.md) | [HashMap](../../../01.java/collection/hashmap.md)
+> 📚 **前置知识**：[ConcurrentHashMap](../../../01.java/collection/ConcurrentHashMap/README.md) | [HashMap](../../../01.java/collection/hashmap.md)
 
 ### JDK 7：分段锁（Segment）架构
 

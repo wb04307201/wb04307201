@@ -19,5 +19,5 @@
 ## 相关章节
 
 - 父级：[系统设计基础](../README.md) — 软件工程 / 设计模式 / 架构视图
-- 关联：[04.system-design 总览](../../../04.system-design/README.md) — 系统设计全景
+- 关联：[04.system-design 总览](../../../README.md) — 系统设计全景
 - 工具推荐：[Mermaid](https://mermaid.js.org/) — 用代码绘制架构图，版本友好

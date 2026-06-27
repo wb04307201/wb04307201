@@ -21,7 +21,7 @@
 
 ---
 
-> 📚 **前置知识**：[MVC](../../06.spring/02-web/mvc/README.md) | [请求处理流程](../../06.spring/02-web/mvc/dispatch-flow.md)
+> 📚 **前置知识**：[MVC](../../../06.spring/02-web/mvc/README.md) | [请求处理流程](../../../06.spring/02-web/mvc/dispatch-flow.md)
 
 ## 一、核心组件
 

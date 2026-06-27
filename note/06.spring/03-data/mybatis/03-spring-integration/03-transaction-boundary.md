@@ -543,6 +543,6 @@ public List<User> searchInTx(UserQuery query) {
 - ⬅️ [返回 MyBatis 整合总览](README.md)
 - ⬅️ [02 Mapper 与 Boot](02-mapper-and-boot.md)
 - ➡️ [04 多数据源路由](04-multi-datasource.md)
-- [transaction/README.md](../transaction/README.md) — Spring 事务基础
-- [transaction/failure-cases.md](../transaction/failure-cases.md) — 事务失效场景全集
-- [13.split-hairs/06.spring/transactional-pitfalls/README.md](../../../13.split-hairs/06.spring/transactional-pitfalls/README.md) — @Transactional 失效 8 种场景
+- [transaction/README.md](../../../../README.md) — Spring 事务基础
+- [transaction/failure-cases.md](../../transaction/failure-cases.md) — 事务失效场景全集
+- [13.split-hairs/06.spring/transactional-pitfalls/README.md](../../../../13.split-hairs/06.spring/transactional-pitfalls/README.md) — @Transactional 失效 8 种场景

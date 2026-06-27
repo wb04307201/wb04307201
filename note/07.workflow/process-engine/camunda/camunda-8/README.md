@@ -42,7 +42,7 @@
 | **Ad-hoc Sub-process** | 无顺序流，LLM 自决顺序 | 灵活 Agent 编排 |
 | **Agent Context** | LLM 可访问流程变量 + RAG 结果 | 上下文感知推理 |
 
-> 📌 完整架构 + 4 融合模式见 [BPMN+AI 融合](../../../11.ai/04-architecture/bpmn-ai-integration.md)。
+> 📌 完整架构 + 4 融合模式见 [BPMN+AI 融合](../../../../11.ai/04-architecture/bpmn-ai-integration.md)。
 
 ---
 
@@ -208,7 +208,7 @@ public void handle(final JobClient client, final ActivatedJob job) {
 - **2026-H2**：原生小模型集成（Phi-3 / Qwen2.5-7B），降低 AI 节点成本
 - **2027+**：**AI-native BPMN** —— 流程定义可用自然语言生成，AI 实时优化流程
 
-**对比 AI 平台**（与 [11.ai 编排平台](../../../11.ai/03-engineering/ai-platforms/README.md) 互补）：
+**对比 AI 平台**（与 [11.ai 编排平台](../../../../11.ai/03-engineering/ai-platforms/README.md) 互补）：
 
 | 场景 | Camunda 8 + AI | Dify / Coze / LangGraph |
 |------|----------------|-------------------------|
@@ -222,7 +222,7 @@ public void handle(final JobClient client, final ActivatedJob job) {
 - **金融/医疗/政务强治理** → Camunda 8 + AI Agent Sub-process
 - **C 端快速试错** → Dify / Coze
 - **复杂多步推理** → LangGraph
-- **混合** → Camunda 8 流程骨架 + LangGraph 复杂 Agent（详见 [BPMN+AI 融合](../../../11.ai/04-architecture/bpmn-ai-integration.md)）
+- **混合** → Camunda 8 流程骨架 + LangGraph 复杂 Agent（详见 [BPMN+AI 融合](../../../../11.ai/04-architecture/bpmn-ai-integration.md)）
 
 ---
 

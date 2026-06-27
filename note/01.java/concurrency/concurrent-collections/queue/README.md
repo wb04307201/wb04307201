@@ -667,4 +667,4 @@ BlockingQueue 提供四类方法，行为各不相同：
 - [父目录：并发集合总览](../README.md)
 - [写时复制集合](../copy-on-write/README.md)
 - [跳表集合](../skip-list/README.md)
-- [ConcurrentHashMap 专题](../ConcurrentHashMap/README.md)
+- [ConcurrentHashMap 专题](../../../../README.md)

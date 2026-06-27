@@ -31,7 +31,7 @@ class Task {
 
 ## 一、核心原理
 
-> 📚 **前置知识**：[volatile](../../../01.java/concurrency/volatile.md) | [JMM](../../../01.java/concurrency/jmm/README.md)
+> 📚 **前置知识**：[volatile](../../../01.java/concurrency/volatile/README.md) | [JMM](../../../01.java/concurrency/jmm/README.md)
 
 ### 1.1 JMM 基础
 

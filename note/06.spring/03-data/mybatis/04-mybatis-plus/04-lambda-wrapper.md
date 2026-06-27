@@ -79,4 +79,4 @@ userMapper.update(user, new LambdaUpdateWrapper<User>()
 
 - 前置：[`MyBatis-Plus 概览`](README.md)
 - 深入：[`05 SFunction 序列化原理`](05-lambda-sfunction-deep-dive.md)
-- 对比：[`MyBatis 动态 SQL`](../../01-architecture/05-dynamic-sql.md)
+- 对比：[`MyBatis 动态 SQL`](../01-architecture/05-dynamic-sql.md)

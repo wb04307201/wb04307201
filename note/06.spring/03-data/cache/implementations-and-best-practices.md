@@ -446,5 +446,5 @@ public void update(User user) {
 
 - ⬅️ [返回缓存总览](README.md)
 - [缓存注解与使用](annotations-and-usage.md) — 5 大注解 + SpEL
-- [07 可观测性/Micrometer](../07-observability/micrometer.md) — 缓存命中率监控
+- [07 可观测性/Micrometer](../../07-observability/micrometer.md) — 缓存命中率监控
 - [08 注解/AOP 注解](../../08-annotations/aop.md) — 缓存本质是 AOP

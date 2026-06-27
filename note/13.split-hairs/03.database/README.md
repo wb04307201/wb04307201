@@ -10,7 +10,7 @@
 | 主题 | 难度 | 核心问题 |
 |------|------|---------|
 | [COUNT(*) vs COUNT(1) vs COUNT(字段)](relational-database/mysql/count/) | ⭐⭐ | 性能差异？最佳实践？ |
-| [INT(4) 的含义](relational-database/mysql/int\(4\)-define/) | ⭐⭐ | 括号里的数字是长度还是显示宽度？ |
+| [INT(4) 的含义](relational-database/mysql/int(4)-define/README.md) | ⭐⭐ | 括号里的数字是长度还是显示宽度？ |
 | [事务隔离级别](relational-database/mysql/isolation/) | ⭐⭐⭐⭐ | RU / RC / RR / Serializable 详解 |
 | [快速加索引](relational-database/mysql/quickly-add-index/) | ⭐⭐⭐ | 大表在线加索引的方案 |
 | [时间类型选择](relational-database/mysql/time-types/) | ⭐⭐ | DATETIME / TIMESTAMP / DATE 选型 |

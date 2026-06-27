@@ -164,4 +164,4 @@ Nacos
 docker run -d --name redis-stack -p 9379:6379 -e REDIS_ARGS="--requirepass 123456" redis/redis-stack:latest
 ```
 
-## 01 [docker-compose 示例](docker-compose%2FREADME.md)
+## 01 [docker-compose 示例](../../../README.md)

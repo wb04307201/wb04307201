@@ -15,7 +15,7 @@
 
 ## 一、核心原理
 
-> 📚 **前置知识**：[synchronized](../../../01.java/concurrency/synchronized.md) | [JUC 锁](../../../01.java/concurrency/juc-locks/README.md)
+> 📚 **前置知识**：[synchronized](../../../01.java/concurrency/synchronized/README.md) | [JUC 锁](../../../01.java/concurrency/juc-locks/README.md)
 
 JVM 中每个 Java 对象都在对象头（Object Header）中维护一个 **Mark Word**，用于存储对象的运行时元数据，包括哈希码、分代年龄、GC 标记以及**锁状态**。
 

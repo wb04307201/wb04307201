@@ -29,7 +29,7 @@ public class OrderService {
 
 ---
 
-> 📚 **前置知识**：[AOP](../../06.spring/01-core/aop/README.md) | [事务](../../06.spring/03-data/transaction/README.md) | [事务失效](../../06.spring/03-data/transaction/failure-cases.md)
+> 📚 **前置知识**：[AOP](../../../06.spring/01-core/aop/README.md) | [事务](../../../06.spring/03-data/transaction/README.md) | [事务失效](../../../06.spring/03-data/transaction/failure-cases.md)
 
 ## 一、核心原理
 

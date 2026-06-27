@@ -20,7 +20,7 @@ SELECT * FROM users WHERE UPPER(name) = 'ZHANGSAN';  -- 全表扫描！
 
 ---
 
-> 📚 **前置知识**：[MySQL 索引](../../03.database/04-index/README.md)
+> 📚 **前置知识**：[MySQL 索引](../../../../03.database/04-index/README.md)
 
 ## 一、核心原理
 

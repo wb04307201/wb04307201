@@ -36,7 +36,7 @@ graph TD
 
 | 子目录 | 涵盖内容 | 核心原理 |
 |--------|---------|---------|
-| [ConcurrentHashMap](ConcurrentHashMap/README.md) | ConcurrentHashMap | CAS + synchronized 桶级锁 |
+| [ConcurrentHashMap](../../../README.md) | ConcurrentHashMap | CAS + synchronized 桶级锁 |
 | [copy-on-write](copy-on-write/README.md) | CopyOnWriteArrayList, CopyOnWriteArraySet | 写时复制 + volatile 数组引用 |
 | [queue](queue/README.md) | ConcurrentLinkedQueue, ConcurrentLinkedDeque, BlockingQueue 体系 | CAS 无锁算法 / ReentrantLock 阻塞 |
 | [skip-list](skip-list/README.md) | ConcurrentSkipListMap, ConcurrentSkipListSet | 多层跳表 + CAS 无锁 |
@@ -186,7 +186,7 @@ graph TD
 
 ## 相关章节
 
-- [ConcurrentHashMap 专题](ConcurrentHashMap/README.md)
+- [ConcurrentHashMap 专题](../../../README.md)
 - [写时复制集合](copy-on-write/README.md) — CopyOnWriteArrayList / CopyOnWriteArraySet
 - [并发队列](queue/README.md) — ConcurrentLinkedQueue / BlockingQueue 体系
 - [跳表集合](skip-list/README.md) — ConcurrentSkipListMap / ConcurrentSkipListSet

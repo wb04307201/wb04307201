@@ -28,7 +28,7 @@
 | **第四章** | [Skills 深度解析](README4.md) | Skills 如何组织和使用？ | 30 min |
 | **第五章** | [规范驱动开发工具对比](README5.md) | 三大 SDD 工具如何选型？ | 40 min |
 | **第六章** | [Spec-Kit 使用说明](README6.md) | Spec-Kit 工作流如何落地？ | 40 min |
-| **补充** | [实战 Harness 工程 (PDF)](实战Harness工程.pdf) | Superpowers 实战案例 | 20 min |
+| **补充** | [实战 Harness 工程 (PDF)](实战Harness工程 V1.4.pdf) | Superpowers 实战案例 | 20 min |
 
 ---
 
@@ -122,7 +122,7 @@
 - **最佳实践**：8条实战建议，涵盖从原则制定到任务分解的全流程
 - **常见问题**：安装、使用、企业环境三大类问题解答
 
-### [实战Harness工程.pdf](实战Harness工程.pdf)
+### [实战Harness工程 V1.4.pdf](实战Harness工程 V1.4.pdf)
 - **补充资料**：Superpowers 实战工程案例（从第 5 页开始）
 
 ---

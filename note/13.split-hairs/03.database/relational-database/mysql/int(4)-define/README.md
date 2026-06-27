@@ -19,7 +19,7 @@ CREATE TABLE test (
 
 ---
 
-> 📚 **前置知识**：[MySQL](../../03.database/05-mysql/README.md)
+> 📚 **前置知识**：[MySQL](../../../../../03.database/05-mysql/README.md)
 
 ## 一、核心原理
 

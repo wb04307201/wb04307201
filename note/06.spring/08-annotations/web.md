@@ -194,7 +194,7 @@ public class ApiController {
 | `allowCredentials` | `false` | 是否允许携带 Cookie |
 | `maxAge` | `1800` | 预检（preflight）缓存秒数 |
 
-> 💡 全局配置请使用 `WebMvcConfigurer.addCorsMappings(CorsRegistry)`。详见 [02-web/mvc/cors-and-static](../../02-web/mvc/cors-and-static.md)。
+> 💡 全局配置请使用 `WebMvcConfigurer.addCorsMappings(CorsRegistry)`。详见 [02-web/mvc/cors-and-static](../02-web/mvc/cors-and-static.md)。
 
 ### @RequestHeader（获取请求头）
 
@@ -294,6 +294,6 @@ public class CartController { ... }
 
 - ⬅️ [返回注解速查](../README.md)
 - [AOP 注解](aop.md) — 切面常用于 Controller 层
-- [02 Web 层 MVC](../../02-web/mvc/README.md) — Spring MVC 工作流程
-- [02 Web 层 CORS 与静态资源](../../02-web/mvc/cors-and-static.md) — @CrossOrigin 全局配置
-- [06 集成组件/Validation](../../06-integration/validation/annotations-and-usage.md) — @Valid 用于 @RequestBody 参数校验
+- [02 Web 层 MVC](../../README.md) — Spring MVC 工作流程
+- [02 Web 层 CORS 与静态资源](../02-web/mvc/cors-and-static.md) — @CrossOrigin 全局配置
+- [06 集成组件/Validation](../06-integration/validation/annotations-and-usage.md) — @Valid 用于 @RequestBody 参数校验

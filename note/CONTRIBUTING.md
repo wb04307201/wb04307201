@@ -58,7 +58,7 @@ note/03.database/
 
 | 序号 | 主题 | 核心内容 | 子 README |
 |------|------|---------|-----------|
-| 01 | [主题名](dir/) | 关键词1/关键词2 | [子入口](dir/README.md) |
+| 01 | [主题名](dir/) | 关键词1/关键词2 | [子入口](../README.md) |
 
 ### 1.1 学习路径
 - **新人入门**：01 → 02 → 03
@@ -102,9 +102,9 @@ flowchart LR
 
 ## 7. 相关章节
 
-- 上游：[`模块名`](../xx.module/README.md)
-- 下游：[`模块名`](../xx.module/README.md)
-- 关联：[`模块名`](../xx.module/README.md)
+- 上游：[`模块名`](../README.md)
+- 下游：[`模块名`](../README.md)
+- 关联：[`模块名`](../README.md)
 
 ---
 
@@ -155,23 +155,23 @@ graph TD
 ### 4.1 相对路径规则
 ```markdown
 <!-- 同级模块 -->
-[数据库](../03.database/README.md)
+[数据库](../README.md)
 
 <!-- 子模块 -->
-[MySQL](05-mysql/README.md)
+[MySQL](../README.md)
 
 <!-- 父模块 -->
 [返回总览](../README.md)
 
 <!-- 跨模块 -->
-[Spring 事务](../../06.spring/03-data/README.md)
+[Spring 事务](../README.md)
 ```
 
 ### 4.2 13.split-hairs ↔ 主模块
 每个 `13.split-hairs` 文章必须包含「深度阅读」链接指向主模块：
 ```markdown
 ## 相关章节
-- 深度阅读：[`03.database/07-redis`](../../03.database/07-redis/README.md)
+- 深度阅读：[`03.database/07-redis`](../README.md)
 ```
 
 ---

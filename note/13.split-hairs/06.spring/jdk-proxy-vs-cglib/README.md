@@ -37,7 +37,7 @@ class UserServiceImpl$$EnhancerByCGLIB extends UserServiceImpl {
 
 ---
 
-> 📚 **前置知识**：[AOP](../../06.spring/01-core/aop/README.md)
+> 📚 **前置知识**：[AOP](../../../06.spring/01-core/aop/README.md)
 
 ## 一、核心原理
 

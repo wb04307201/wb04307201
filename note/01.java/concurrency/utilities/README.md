@@ -797,7 +797,7 @@ public class CombinedPatternDemo {
 ---
 
 > **相关文档**:
-> - [Java 线程与锁基础](../../concurrency/threads-and-locks/README.md)
-> - [Java 并发集合](../collections/README.md)
-> - [Java 线程池](../../concurrency/thread-pool/README.md)
-> - [Java 原子操作与 AQS](../../concurrency/aqs/README.md)
+> - [Java 线程与锁基础](../../../README.md)
+> - [Java 并发集合](../../../README.md)
+> - [Java 线程池](../../../README.md)
+> - [Java 原子操作与 AQS](../../../README.md)

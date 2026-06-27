@@ -32,7 +32,7 @@ public class OrderService {
 
 ---
 
-> 📚 **前置知识**：[IOC](../../06.spring/01-core/ioc/README.md) | [依赖注入](../../06.spring/01-core/ioc/dependency-injection.md)
+> 📚 **前置知识**：[IOC](../../../06.spring/01-core/ioc/README.md) | [依赖注入](../../../06.spring/01-core/ioc/dependency-injection.md)
 
 ---
 

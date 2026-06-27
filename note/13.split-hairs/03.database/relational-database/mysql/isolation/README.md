@@ -25,7 +25,7 @@ MySQL 用 **4 种隔离级别** 解决这些问题。
 
 ---
 
-> 📚 **前置知识**：[事务](../../03.database/03-transaction/README.md)
+> 📚 **前置知识**：[事务](../../../../../03.database/03-transaction/README.md)
 
 ## 一、核心原理
 

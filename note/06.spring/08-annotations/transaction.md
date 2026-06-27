@@ -3,7 +3,7 @@
 > 最后更新: 2026-06-14
 > ⬅️ [返回注解速查](../README.md) | [JPA 注解](jpa.md)
 
-本节是 `@Transactional` 与 `@EnableTransactionManagement` 的速查手册——只列关键属性与失效场景，**深读请前往 [03-data/transaction](../../03-data/transaction/README.md)**。
+本节是 `@Transactional` 与 `@EnableTransactionManagement` 的速查手册——只列关键属性与失效场景，**深读请前往 [03-data/transaction](../../README.md)**。
 
 ---
 
@@ -175,10 +175,10 @@ public class OrderServiceImpl implements OrderService {
 
 ## 深入阅读
 
-- [03-data/transaction/README](../../03-data/transaction/README.md) — 事务完整指南
-- [03-data/transaction/failure-cases](../../03-data/transaction/failure-cases.md) — 事务失效场景详解
-- [03-data/transaction/propagation-and-isolation](../../03-data/transaction/propagation-and-isolation.md) — 传播与隔离级别深入
-- [03-data/transaction/jpa-transaction](../../03-data/transaction/jpa-transaction.md) — JPA 事务特性
+- [03-data/transaction/README](../../README.md) — 事务完整指南
+- [03-data/transaction/failure-cases](../03-data/transaction/failure-cases.md) — 事务失效场景详解
+- [03-data/transaction/propagation-and-isolation](../03-data/transaction/propagation-and-isolation.md) — 传播与隔离级别深入
+- [03-data/transaction/jpa-transaction](../03-data/transaction/jpa-transaction.md) — JPA 事务特性
 
 ## 相关章节
 

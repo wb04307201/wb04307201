@@ -26,7 +26,7 @@ public class AtomicCounter {
 
 ---
 
-> 📚 **前置知识**：[Atomic](../../../01.java/concurrency/atomic/README.md) | [synchronized](../../../01.java/concurrency/synchronized.md)
+> 📚 **前置知识**：[Atomic](../../../01.java/concurrency/atomic/README.md) | [synchronized](../../../01.java/concurrency/synchronized/README.md)
 
 ## 一、核心原理
 

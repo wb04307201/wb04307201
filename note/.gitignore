@@ -1,0 +1,52 @@
+# ==========================================
+# note/ 目录的 .gitignore
+# 防止构建产物、IDE 配置、临时文件进入版本控制
+# ==========================================
+
+# --- Java / Maven 构建产物 ---
+**/target/
+**/build/
+**/*.class
+**/*.jar
+**/*.war
+**/*.ear
+hs_err_pid*
+
+# --- IDE 配置 ---
+**/.idea/
+**/*.iml
+**/*.ipr
+**/*.iws
+**/.vscode/
+**/.settings/
+**/.project
+**/.classpath
+
+# --- Node.js ---
+**/node_modules/
+**/dist/
+**/.next/
+**/.nuxt/
+
+# --- Python ---
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/.venv/
+**/venv/
+
+# --- 操作系统 ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# --- 日志 ---
+**/*.log
+logs/
+
+# --- 临时文件 ---
+**/tmp/
+**/.tmp/
+*.swp
+*.swo
+*~

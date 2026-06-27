@@ -197,7 +197,7 @@ try (BufferedReader br = new BufferedReader(new FileReader("test.txt"))) {
 }
 ```
 
-> 完整说明（传统写法对比、多资源声明、Java 9+ effectively final 改进等）参见 [exception/README.md](exception/README.md#try-with-resourcesjava-7)。
+> 完整说明（传统写法对比、多资源声明、Java 9+ effectively final 改进等）参见 [exception/README.md](../../../README.md#try-with-resourcesjava-7)。
 
 ### 12. Switch 表达式（Java 14+）
 
@@ -277,7 +277,7 @@ String json = """
     """;
 ```
 
-> 完整说明（基本规则、前导空白处理、与 `String` 方法的配合等）参见 [string/README.md](string/README.md#文本块text-blocks)。
+> 完整说明（基本规则、前导空白处理、与 `String` 方法的配合等）参见 [string/README.md](../../../README.md#文本块text-blocks)。
 
 ### 15. Pattern Matching（Java 16+/21+）
 

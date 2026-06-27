@@ -160,6 +160,6 @@ graph TB
 ## 相关章节
 
 - ⬅️ [返回注解速查](../README.md)
-- [01 核心容器/异常处理](../../01-core/exception-handling.md) — 完整的异常处理机制
+- [01 核心容器/异常处理](../01-core/exception-handling.md) — 完整的异常处理机制
 - [Web 注解](web.md) — @Controller、@RestController
-- [06 集成组件/Validation](../../06-integration/validation/annotations-and-usage.md) — 校验异常的处理
+- [06 集成组件/Validation](../06-integration/validation/annotations-and-usage.md) — 校验异常的处理

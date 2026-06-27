@@ -246,6 +246,6 @@ concurrentSet.add("B");
 ## 相关章节
 
 - [父目录：并发集合总览](../README.md)
-- [ConcurrentHashMap 专题](../ConcurrentHashMap/README.md)
+- [ConcurrentHashMap 专题](../../../../README.md)
 - [并发队列](../queue/README.md)
 - [跳表集合](../skip-list/README.md)

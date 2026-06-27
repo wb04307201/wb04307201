@@ -249,7 +249,7 @@ fetch('/api/data', {
 > **2026 共识**：
 > - 传统 Session/Cookie 应用 → SameSite + CSRF Token
 > - 纯 API（SPA / 移动）→ JWT in `Authorization` 头（天然免疫 CSRF）
-> - BFF 模式 → Cookie 仅用于 BFF 内部，BFF → 后端用 Service Token（详见 [../bff/](../bff/)）
+> - BFF 模式 → Cookie 仅用于 BFF 内部，BFF → 后端用 Service Token（详见 [../../05-architecture/bff/](../../05-architecture/bff/)）
 
 ---
 

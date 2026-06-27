@@ -30,7 +30,7 @@ public void transfer(Long from, Long to, BigDecimal amount) {
 
 ---
 
-> 📚 **前置知识**：[AOP](../../06.spring/01-core/aop/README.md)
+> 📚 **前置知识**：[AOP](../../../06.spring/01-core/aop/README.md)
 
 ## 一、什么是 AOP
 

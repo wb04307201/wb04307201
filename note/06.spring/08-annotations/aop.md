@@ -159,7 +159,7 @@ sequenceDiagram
 
 ## 切点表达式速查
 
-详见 [AOP 切点表达式详解](../../01-core/aop/pointcut-expression.md)
+详见 [AOP 切点表达式详解](../01-core/aop/pointcut-expression.md)
 
 ---
 
@@ -167,7 +167,7 @@ sequenceDiagram
 
 1. **为什么 AOP 默认用 JDK 动态代理？** 因为 JDK 代理比 CGLIB 更快、生成的类更小。当目标类无接口时，回退到 CGLIB。
 2. **@Around 必须调用 proceed() 吗？** 是的，否则目标方法不会执行。proceed() 返回值就是目标方法的返回值。
-3. **多个切面执行顺序？** 用 `@Order(数字)` 控制，数字越小越先执行（Before 阶段）。详见 [AOP 通知顺序](../../01-core/aop/advice-order-and-best-practices.md)。
+3. **多个切面执行顺序？** 用 `@Order(数字)` 控制，数字越小越先执行（Before 阶段）。详见 [AOP 通知顺序](../01-core/aop/advice-order-and-best-practices.md)。
 4. **AOP 能拦截 private 方法吗？** 不能，Spring AOP 基于代理，只能拦截 public 方法（构造方法、私有方法、静态方法都不可拦截）。
 
 ---
@@ -175,6 +175,6 @@ sequenceDiagram
 ## 相关章节
 
 - ⬅️ [返回注解速查](../README.md)
-- [01 核心容器/AOP 总览](../../01-core/aop/README.md) — AOP 核心概念
-- [01 核心容器/AOP 通知顺序](../../01-core/aop/advice-order-and-best-practices.md) — 多切面排序
+- [01 核心容器/AOP 总览](../../README.md) — AOP 核心概念
+- [01 核心容器/AOP 通知顺序](../01-core/aop/advice-order-and-best-practices.md) — 多切面排序
 - [配置注解](configuration.md) — @Configuration

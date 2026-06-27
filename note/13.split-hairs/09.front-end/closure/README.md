@@ -25,7 +25,7 @@ console.log(counter())  // 3
 
 ---
 
-> 📚 **前置知识**：[JavaScript 基础](../../09.front-end/02-language/README.md)
+> 📚 **前置知识**：[JavaScript 基础](../../../09.front-end/02-language/README.md)
 
 ## 一、核心原理
 

@@ -20,7 +20,7 @@ boolean exists = set.contains("target");   // 直接定位，耗时约 1 毫秒
 
 ---
 
-> 📚 **前置知识**：[HashMap](../../../01.java/collection/hashmap.md) | [LinkedList](../../../01.java/collection/LinkedList.md)
+> 📚 **前置知识**：[HashMap](../../../01.java/collection/hashmap.md) | [LinkedList](../../../01.java/collection/LinkedList/README.md)
 
 ## 一、核心原理
 

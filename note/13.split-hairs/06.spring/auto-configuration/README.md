@@ -22,7 +22,7 @@ Spring Boot 怎么知道你需要这些？又是怎么自动创建的？
 
 ---
 
-> 📚 **前置知识**：[自动配置](../../06.spring/04-spring-boot/auto-configuration.md) | [Spring Boot](../../06.spring/04-spring-boot/README.md)
+> 📚 **前置知识**：[自动配置](../../../06.spring/04-spring-boot/auto-configuration.md) | [Spring Boot](../../../06.spring/04-spring-boot/README.md)
 
 ## 一、核心原理
 

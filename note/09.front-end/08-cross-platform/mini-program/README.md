@@ -159,4 +159,4 @@ npm run dev:mp-weixin
 
 - [`08-cross-platform/`](../) — 跨端总览
 - [`08-cross-platform/react-native/`](../react-native/) — RN（另一种跨端形态）
-- [`12.story/21-multiplatform-architecture.md`](../../../../12.story/21-multiplatform-architecture.md) — 阿明餐厅多端架构
+- [`12.story/21-multiplatform-architecture.md`](../../../12.story/21-multiplatform-architecture.md) — 阿明餐厅多端架构

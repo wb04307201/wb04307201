@@ -400,8 +400,8 @@ DB_PWD=xxx java -jar app.jar --spring.profiles.active=prod
 ## 相关章节
 
 - ⬅️ [返回注解速查](../README.md)
-- [04 Spring Boot/自定义 Starter](../../04-spring-boot/custom-starter.md) — @ConfigurationProperties 实战
-- [04 Spring Boot/自动配置原理](../../04-spring-boot/README.md) — @EnableAutoConfiguration 工作机制
-- [04 Spring Boot/外部化配置](../../04-spring-boot/externalized-configuration.md) — 多环境配置 externalization
+- [04 Spring Boot/自定义 Starter](../04-spring-boot/custom-starter.md) — @ConfigurationProperties 实战
+- [04 Spring Boot/自动配置原理](../../README.md) — @EnableAutoConfiguration 工作机制
+- [04 Spring Boot/外部化配置](../04-spring-boot/externalized-configuration.md) — 多环境配置 externalization
 - [Bean 注解](bean-and-ioc.md) — @Bean、@Component
 - [Web 注解](web.md) — @Controller、@RestController

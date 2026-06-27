@@ -274,7 +274,7 @@ graph TB
 - [`06-performance/`](../../06-performance/) — 渲染模式直接决定 LCP / TTI 基线
 - [`03-frameworks/`](../../03-frameworks/) — 元框架与渲染模式的绑定关系
 - [`09-frontend-and-ai/`](../../09-frontend-and-ai/) — RSC 与 AI 流式输出的天然契合
-- [`12.story/13-frontend-renovation.md`](../../../../12.story/13-frontend-renovation.md) — 阿明餐厅从 CSR 迁移到 ISR 的故事
+- [`12.story/13-frontend-renovation.md`](../../../12.story/13-frontend-renovation.md) — 阿明餐厅从 CSR 迁移到 ISR 的故事
 
 ---
 

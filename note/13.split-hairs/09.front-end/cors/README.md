@@ -19,7 +19,7 @@ No 'Access-Control-Allow-Origin' header is present...
 
 ---
 
-> 📚 **前置知识**：[CORS 安全](../../09.front-end/07-security/cors/README.md)
+> 📚 **前置知识**：[CORS 安全](../../../09.front-end/07-security/cors/README.md)
 
 ## 一、核心原理
 
