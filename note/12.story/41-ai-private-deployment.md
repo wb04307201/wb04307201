@@ -738,4 +738,12 @@ API 方案（GPT-4o）：
 
 > 好的 AI 私有化设计，不是"砸钱买 GPU"，而是"业务驱动 + 渐进式 + 度量驱动"。**先量后建，先测后上，先核心后边缘，先试点后规模**。这是 AI 私有化的"四先四后"原则。
 
+---
+
+## 延伸阅读（2026 新增）
+
+- 续集十八：[`44-ai-engineer-responsibility`](./44-ai-engineer-responsibility.md) —— **私有化场景下的责任分工**：私有化后谁负责运维、谁负责安全、谁负责更新
+- 续集十九：[`45-ai-productivity-paradox`](./45-ai-productivity-paradox.md) —— **私有化的 ROI 真相**：DORA 放大器理论告诉你私有化是否值得
+- 续集十二：[`36b-ai-token-cost-optimization`](./36b-ai-token-cost-optimization.md) —— **私有化的成本优化**：5 层路由 + 3 级缓存 + 4 策略压缩
+
 ← [返回系列导读](./index.md)

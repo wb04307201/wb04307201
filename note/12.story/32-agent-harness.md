@@ -736,4 +736,12 @@ graph TD
 
 **Harness 治理的最高境界，不是"治理 Harness"，而是"让治理 Harness 成为工程师的基本功"。**
 
+---
+
+## 延伸阅读（2026 新增）
+
+- 续集十九：[`45-ai-productivity-paradox`](./45-ai-productivity-paradox.md) —— **Harness 是 DORA 放大器理论的"缰绳"**：为什么 Harness 是 AI 时代的工程解药
+- 续集十八：[`44-ai-engineer-responsibility`](./44-ai-engineer-responsibility.md) —— **Harness 是工程责任不可下放的基础设施**：谁担责、谁配置 Harness
+- 续集二十：[`46-tech-debt-career-trap`](./46-tech-debt-career-trap.md) —— **个人视角**：在 Harness 治理中成长的工程师，简历最值钱
+
 ← [返回系列导读](./index.md)

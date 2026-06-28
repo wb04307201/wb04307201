@@ -1,6 +1,6 @@
 # 术语表
 
-> 「阿明餐厅」系列涉及的 310+ 个核心技术术语速查，按 44 大主题分类。每条包括：术语名称、一句话解释、出处文章。
+> 「阿明餐厅」系列涉及的 320+ 个核心技术术语速查，按 47 大主题分类。每条包括：术语名称、一句话解释、出处文章。
 
 ← [返回系列导读](./index.md)
 
@@ -623,6 +623,56 @@
 | **A2A vs MCP** | MCP（Model Context Protocol）是 Agent ↔ 工具（USB-C）；A2A 是 Agent ↔ Agent（SMTP）。前者解决"工具调用"，后者解决"Agent 协同" | [续集十一 b](./35b-a2a-protocol.md) |
 | **A2A 安全陷阱** | Agent Card 伪造 / 跨域信任 / 任务注入 / 产物污染 / 协同放大 5 大安全陷阱 | [续集十一 b](./35b-a2a-protocol.md) |
 | **协议可观测性** | A2A/MCP 协议的 Trace 标准化：让多 Agent 协同的全链路可追踪/可调试/可审计 | [续集十一 b](./35b-a2a-protocol.md) |
+
+---
+
+## AI 时代研发责任
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **系统责任金字塔** | 5 层不可下放的责任链：架构师（稳定性）→ SRE（可观测性）→ 安全工程师（数据安全）→ 业务工程师（代码质量）→ AI（工具，不担责）| [续集十八](./44-ai-engineer-responsibility.md) |
+| **工程责任不可外包** | AI 写代码不担责，工程师必须签字 merge / review / 上线审批 —— 这是从软件工程诞生起就没变过的原则 | [续集十八](./44-ai-engineer-responsibility.md) |
+| **AI 协作工程师** | 2026 新岗位：用 AI 写代码 + review AI 输出 + 识别工程陷阱（幂等性 / 并发 / 可观测性），薪资 25-50K | [续集十八](./44-ai-engineer-responsibility.md) |
+| **AI 架构师** | 2026 新岗位：识别哪些决策 AI 不能做（架构选型 / 技术债 / 长期可维护性），薪资 50-100K | [续集十八](./44-ai-engineer-responsibility.md) |
+| **AI SRE (Reliability Engineer)** | 2026 新岗位：为 AI 生成的代码反向补齐可观测性，监控 AI 系统的稳定性，薪资 35-70K | [续集十八](./44-ai-engineer-responsibility.md) |
+| **AI 安全审计师** | 2026 新岗位：审计 AI 生成代码的安全性（SQL 注入 / XSS / 敏感信息泄露），薪资 40-80K | [续集十八](./44-ai-engineer-responsibility.md) |
+| **Harness 工程师** | 2026 新岗位：设计 Agent 自我约束规范（OpenSpec / Spec Kit 等），薪资 50-100K | [续集十八](./44-ai-engineer-responsibility.md) |
+| **Prompt 工程师** | 2026 升级岗位：优化 AI 生成质量 + Context Engineering，薪资 30-60K | [续集十八](./44-ai-engineer-responsibility.md) |
+
+---
+
+## AI 编程生产力度量
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **生产力悖论 (Productivity Paradox)** | AI 编程工具普及后的反直觉现象：代码量暴涨但价值下滑，吞吐量涨 2x 但 Token 涨 10x | [续集十九](./45-ai-productivity-paradox.md) |
+| **DORA 放大器理论 (AI as Amplifier)** | DORA 2025 核心结论：AI 是放大器，放大组织已有的优势和劣势；高绩效团队用 AI 更强，低绩效团队用 AI 更烂 | [续集十九](./45-ai-productivity-paradox.md) |
+| **代码流失率 (Code Churn Rate)** | 一段时间内被修改/重写/删除的代码占总提交代码的比例；AI 时代平均流失率从 30% 涨到 50-60% | [续集十九](./45-ai-productivity-paradox.md) / [13.split-hairs/11.ai/ai-code-churn](../13.split-hairs/11.ai/ai-code-churn/README.md) |
+| **6 周代码留存率 (6-Week Retention)** | AI 代码初次被采纳后 6 周内仍在生产环境的比例；基准 >50% 为健康 | [续集十九](./45-ai-productivity-paradox.md) / [13.split-hairs/11.ai/ai-coding-roi](../13.split-hairs/11.ai/ai-coding-roi/README.md) |
+| **Waydev 数据** | 行业研究：AI 代码初次采纳率 80-90%，但 6 周后留存率仅 10-30% | [续集十九](./45-ai-productivity-paradox.md) |
+| **GitClear 数据** | 行业研究：AI 用户代码修改率 9.4 倍（非 AI 用户的）| [续集十九](./45-ai-productivity-paradox.md) |
+| **Faros AI 数据** | 行业研究：AI 用户代码变更率 +861% | [续集十九](./45-ai-productivity-paradox.md) |
+| **Jellyfish 数据** | 行业研究：AI 用户吞吐量 2x 但 Token 成本 10x | [续集十九](./45-ai-productivity-paradox.md) |
+| **DORA 4 指标** | 部署频率 / 变更前置时间 / 变更失败率 / MTTR；2025 DORA 报告新增 AI 时代适配 | [13.split-hairs/11.ai/ai-coding-roi](../13.split-hairs/11.ai/ai-coding-roi/README.md) |
+| **SPACE 5 维度** | Satisfaction / Performance / Activity / Communication / Efficiency；Microsoft Research 提出的开发者生产力多维度量 | [13.split-hairs/11.ai/ai-coding-roi](../13.split-hairs/11.ai/ai-coding-roi/README.md) |
+| **Token 投入产出比 (Token ROI)** | 业务价值 / Token 成本；AI 时代核心成本指标 | [续集十九](./45-ai-productivity-paradox.md) |
+| **AI Review 拒绝率** | 被拒绝合并的 AI 代码 / 总 AI 代码；基准 >20% 说明 Harness 不够 | [13.split-hairs/11.ai/ai-coding-roi](../13.split-hairs/11.ai/ai-coding-roi/README.md) |
+| **资深 vs 初级鸿沟** | 资深工程师 AI 采纳率 60-70%（修改率 1.5x），初级工程师采纳率 90%（修改率 9.4x）—— 能力决定放大效果 | [续集十九](./45-ai-productivity-paradox.md) |
+
+---
+
+## 技术债与职业发展
+
+| 术语 | 解释 | 出处 |
+|------|------|------|
+| **技术债困局 (Tech Debt Career Trap)** | 长期填技术债的人技能不增长，简历越来越没竞争力，最终被市场淘汰 | [续集二十](./46-tech-debt-career-trap.md) |
+| **技术债复利** | 1 元技术债第 1 年还 1.1 元，第 2 年还 1.3 元，第 3 年还 1.6 元——越晚还越贵 | [续集二十](./46-tech-debt-career-trap.md) / [番外一](./03-refactoring-guide-for-pm.md) |
+| **救火英雄 vs 工程师** | 救火只是填坑，建防御才是工程师——团队激励应该奖励"消灭一类问题"，不是"修一个 bug" | [续集二十](./46-tech-debt-career-trap.md) |
+| **复利项目 vs 损耗项目** | 复利项目：写一次工具能用 3 年；损耗项目：写一次代码 6 周后被 AI 重写 | [续集二十](./46-tech-debt-career-trap.md) |
+| **简历增值路径** | 每 6 个月盘点简历：新增了什么？能讲清楚 3 个有深度的项目吗？能在行业会议讲 30 分钟吗？| [续集二十](./46-tech-debt-career-trap.md) |
+| **该不该跑决策树** | 留下 = 团队在变好 + 你在学新东西；跑 = 原地打转 + 简历越写越空 | [续集二十](./46-tech-debt-career-trap.md) |
+| **20% 复利时间** | 即使团队只给救火时间，也要每天挤 1-2 小时做：抽象救火工具 / 写团队 wiki / 抽象内部库 | [续集二十](./46-tech-debt-career-trap.md) |
+| **认知债与代码债分离** | 技术债是机器的痛（可以编译），认知债是人和 AI 的痛（无法理解）—— 见 [续集七](./31-codebase-cognitive-debt.md) | [续集七](./31-codebase-cognitive-debt.md) / [续集二十](./46-tech-debt-career-trap.md) |
 
 ---
 

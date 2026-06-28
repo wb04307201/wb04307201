@@ -610,4 +610,11 @@ ROI：
 
 > 好的多模态 AI 不是"所有模态都做"，而是"核心场景做透"。**用户用得最多的模态 = 业务价值最大的模态**。从高频场景入手，逐步扩展，是多模态升级的"稳扎稳打"之道。
 
+---
+
+## 延伸阅读（2026 新增）
+
+- 续集十八：[`44-ai-engineer-responsibility`](./44-ai-engineer-responsibility.md) —— **多模态场景的责任分工**：多模态输出出错时谁负责（特别是 AI 生成的图像/视频有误导性时）
+- 续集十九：[`45-ai-productivity-paradox`](./45-ai-productivity-paradox.md) —— **多模态生成的成本**：图像/视频的 Token 成本远高于文本，需要重新评估 ROI
+
 ← [返回系列导读](./index.md)

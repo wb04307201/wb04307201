@@ -234,9 +234,10 @@
 
 ### 七、相关章节
 
+- [`44-ai-engineer-responsibility`](./44-ai-engineer-responsibility.md) — 续集 18：AI 替你写代码，谁替系统负责（系统责任金字塔是本篇的"组织"前提）
+- [`45-ai-productivity-paradox`](./45-ai-productivity-paradox.md) — 续集 19：AI 悖论（4 大研究数据 + DORA 放大器是本篇的"数据"基础）
 - 续集七：[`31-codebase-cognitive-debt`](./31-codebase-cognitive-debt.md) —— 认知债：技术视角
 - 续集八：[`32-agent-harness`](./32-agent-harness.md) —— Harness：工程视角
-- 续集十九：[`45-ai-productivity-paradox`](./45-ai-productivity-paradox.md) —— AI 悖论：组织视角
 - 番外一：[`03-refactoring-guide-for-pm`](./03-refactoring-guide-for-pm.md) —— 重构指南：PM 视角
 - 主模块：[`11.ai/05-applications`](../../11.ai/05-applications/README.md) —— AI 行业应用
 

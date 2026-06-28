@@ -156,11 +156,14 @@
 
 ### 九、相关章节
 
-- [`13.split-hairs/11.ai/function-calling`](../../13.split-hairs/11.ai/function-calling/README.md) — Function Calling 原理
-- [`13.split-hairs/11.ai/agent-dag-vs-react`](../../13.split-hairs/11.ai/agent-dag-vs-react/README.md) — DAG vs ReAct
-- [`13.split-hairs/11.ai/context-engineering`](../../13.split-hairs/11.ai/context-engineering/README.md) — Context Engineering
-- [`13.split-hairs/11.ai/harness-engineering`](../../13.split-hairs/11.ai/harness-engineering/README.md) — Harness Engineering
+- [`45-ai-productivity-paradox`](./45-ai-productivity-paradox.md) — 续集 19：AI 提速但价值下滑（续集 18 的"组织/数据真相"延伸）
+- [`46-tech-debt-career-trap`](./46-tech-debt-career-trap.md) — 续集 20：技术债困局（续集 18 的"个人代价"延伸）
+- [`31-codebase-cognitive-debt`](./31-codebase-cognitive-debt.md) — 续集 7：认知债（技术债的根因）
+- [`32-agent-harness`](./32-agent-harness.md) — 续集 8：Harness（AI 协作的工程解药）
 - 主模块：[`11.ai/04-architecture`](../../11.ai/04-architecture/README.md) — AI 架构设计
+- 咬文嚼字：[`13.split-hairs/11.ai/function-calling`](../../13.split-hairs/11.ai/function-calling/README.md) — Function Calling 原理
+- 咬文嚼字：[`13.split-hairs/11.ai/agent-dag-vs-react`](../../13.split-hairs/11.ai/agent-dag-vs-react/README.md) — DAG vs ReAct
+- 咬文嚼字：[`13.split-hairs/11.ai/harness-engineering`](../../13.split-hairs/11.ai/harness-engineering/README.md) — Harness Engineering
 
 ---
 

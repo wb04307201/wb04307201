@@ -519,4 +519,12 @@ graph TD
 
 > 好的 AI 转型，不是"用机器替代人"，而是"让人学会驾驭机器"。
 
+---
+
+## 延伸阅读（2026 新增）
+
+- 续集十八：[`44-ai-engineer-responsibility`](./44-ai-engineer-responsibility.md) —— **岗位重定义的具体落地**：本篇讲"组织转型"，续集 18 讲"AI 协作工程师 / AI SRE / AI 安全审计师"等 6 大新岗位的具体职责
+- 续集十九：[`45-ai-productivity-paradox`](./45-ai-productivity-paradox.md) —— **转型的数据真相**：Waydev/GitClear 数据告诉你裁员/转型失败的真相
+- 续集二十：[`46-tech-debt-career-trap`](./46-tech-debt-career-trap.md) —— **个人视角**：转型中被裁员的工程师，3 年后简历如何
+
 ← [返回系列导读](./index.md)
