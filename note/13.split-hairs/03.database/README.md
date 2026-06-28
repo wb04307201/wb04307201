@@ -4,7 +4,7 @@
 
 ---
 
-## 文章清单（共 18 篇）
+## 文章清单（共 22 篇）
 
 ### MySQL 关系型数据库
 | 主题 | 难度 | 核心问题 |
@@ -16,6 +16,10 @@
 | [时间类型选择](relational-database/mysql/time-types/) | ⭐⭐ | DATETIME / TIMESTAMP / DATE 选型 |
 | [SQL 调优](relational-database/mysql/tuning/) | ⭐⭐⭐⭐ | Explain 分析 + 索引优化 |
 | [什么情况下会锁表](relational-database/mysql/what-lock/) | ⭐⭐⭐⭐ | 行锁 / 表锁 / 间隙锁 |
+| [SELECT * 查 2000 万行会炸内存吗](relational-database/mysql/select-all-big-table/README.md) | ⭐⭐⭐⭐ | JDBC 默认一次性 fetch all + 流式读取姿势 |
+| [深分页 LIMIT 10000000,10 为什么慢](relational-database/mysql/deep-pagination/README.md) | ⭐⭐⭐⭐ | OFFSET 工作机制 + 主键范围分页 + 延迟关联 |
+| [批量插入 batch 性能对比](relational-database/mysql/batch-operation/README.md) | ⭐⭐⭐⭐ | JDBC batch + rewriteBatchedStatements + LOAD DATA |
+| [大事务的危害与拆分](relational-database/mysql/large-transaction/README.md) | ⭐⭐⭐⭐ | 5 大危害（锁/Undo/binlog/连接池/MVCC） + 拆分策略 |
 | [索引失效的 10 种场景](mysql/index-failure/) | ⭐⭐⭐⭐⭐ | LIKE 左通配 / 函数 / 类型转换 / OR / 最左前缀 |
 
 ### MySQL 深入
@@ -46,7 +50,7 @@
 
 1. **入门**（3 天）：COUNT 区别 + INT(4) + 时间类型
 2. **进阶**（1 周）：索引 + 锁 + 事务隔离
-3. **冲刺面试**：重点看"索引失效"、"缓存三件套"、"MVCC"、"B+ Tree"
+3. **冲刺面试**：重点看"索引失效"、"缓存三件套"、"MVCC"、"B+ Tree"、"SELECT * 内存陷阱"、"深分页"、"批量插入"、"大事务"
 
 ## 相关章节
 

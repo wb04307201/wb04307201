@@ -27,6 +27,7 @@
 | 主题 | 难度 | 核心问题 |
 |------|------|---------|
 | [BFC 块级格式化上下文](bfc/) | ⭐⭐⭐ | 触发条件 / 应用场景 / 边距折叠 |
+| [按钮 CSS 几十行](css-button-styling/) | ⭐⭐⭐ | 8 状态 + 3 抽象层 + 5 大架构方案 |
 
 ### 浏览器机制
 | 主题 | 难度 | 核心问题 |
@@ -34,6 +35,15 @@
 | [消息机制](message/) | ⭐⭐⭐ | 浏览器事件循环 + 宏任务 / 微任务 |
 | [存储方案](storage/) | ⭐⭐ | Cookie / LocalStorage / SessionStorage / IndexedDB |
 | [从 URL 输入到页面展示](from-url-to-page/) | ⭐⭐⭐⭐⭐ | 综合题：网络 + 解析 + 渲染全链路 |
+| [CSS 渲染阻塞](css-render-blocking/) | ⭐⭐⭐⭐ | CSS 位置 vs 首屏白屏 + 6 种优化姿势 |
+| [回流与重绘](reflow-repaint/) | ⭐⭐⭐⭐ | 渲染队列机制 + Layout Thrashing 避免 |
+| [script async / defer](script-async-defer/) | ⭐⭐⭐⭐ | 加载 vs 执行时机 + DOMContentLoaded |
+| [懒加载 vs 预加载](lazy-load-preload/) | ⭐⭐⭐⭐ | preload / prefetch / preconnect / dns-prefetch |
+
+### 工具与测试
+| 主题 | 难度 | 核心问题 |
+|------|------|---------|
+| [Playwright vs Selenium](playwright-vs-selenium/) | ⭐⭐⭐ | 2026 Web 自动化测试选型 + 5 大维度对比 |
 
 ### 框架
 | 主题 | 难度 | 核心问题 |
@@ -63,7 +73,7 @@
 
 1. **入门**（3 天）：GET vs POST + 存储方案 + 消息机制
 2. **进阶**（2 周）：事件循环 + 闭包 + 原型链 + this 绑定 + Promise 手写
-3. **冲刺面试**：重点看"从 URL 输入到页面展示"、"HTTPS 握手"、"Virtual DOM Diff"、"Vue 响应式原理"
+3. **冲刺面试**：重点看"从 URL 输入到页面展示"、"HTTPS 握手"、"Virtual DOM Diff"、"Vue 响应式原理"、"CSS 渲染阻塞"、"回流与重绘"、"Playwright vs Selenium"
 
 ## 相关章节
 

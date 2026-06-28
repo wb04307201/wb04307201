@@ -20,6 +20,7 @@
 |------|------|---------|
 | [ConcurrentHashMap 原理](concurrent-hashmap/) | ⭐⭐⭐⭐⭐ | ConcurrentHashMap 原理（JDK 7 vs 8） |
 | [ThreadLocal 原理](threadlocal/) | ⭐⭐⭐⭐⭐ | ThreadLocal 原理与内存泄漏 |
+| [父子线程数据传递](parent-child-thread/) | ⭐⭐⭐ | InheritableThreadLocal + TransmittableThreadLocal + CompletableFuture |
 | [synchronized 锁升级](synchronized-lock-upgrade/) | ⭐⭐⭐⭐⭐ | synchronized 锁升级过程 |
 | [volatile 内存语义](volatile/) | ⭐⭐⭐⭐⭐ | volatile 可见性、有序性、原子性 |
 | [AQS 框架原理](aqs/) | ⭐⭐⭐⭐⭐ | AbstractQueuedSynchronizer 实现机制 |

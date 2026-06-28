@@ -227,18 +227,18 @@
 
 > 主模块的"刺刀版" —— 专治面试中那些"好像懂但说不清"的高频 / 高难度问题。
 > 每篇 50-300 行，聚焦单一问题，从原理到陷阱到最佳实践、面试话术一次讲透。
-> 6 大分类共 **98 篇** 深度文章，覆盖 Java / 数据库 / 系统设计 / Spring / AI / 前端。
+> 6 大分类共 **121 篇** 深度文章，覆盖 Java / 数据库 / 系统设计 / Spring / AI / 前端。
 
 ## 分类导航
 
 | 序号 | 主题 | 文章数 | 入口 |
 |------|------|--------|------|
-| 1 | Java 基础陷阱 | 31 | [01.java](13.split-hairs/01.java/README.md) |
-| 2 | 数据库细节 | 18 | [03.database](13.split-hairs/03.database/README.md) |
-| 3 | 系统设计难点 | 10 | [04.system-design](13.split-hairs/04.system-design/README.md) |
+| 1 | Java 基础陷阱 | 32 | [01.java](13.split-hairs/01.java/README.md) |
+| 2 | 数据库细节 | 22 | [03.database](13.split-hairs/03.database/README.md) |
+| 3 | 系统设计难点 | 13 | [04.system-design](13.split-hairs/04.system-design/README.md) |
 | 4 | Spring 面试高频 | 13 | [06.spring](13.split-hairs/06.spring/README.md) |
-| 5 | AI 新概念 | 7 | [11.ai](13.split-hairs/11.ai/README.md) |
-| 6 | 前端细节 | 19 | [09.front-end](13.split-hairs/09.front-end/README.md) |
+| 5 | AI 新概念 | 14 | [11.ai](13.split-hairs/11.ai/README.md) |
+| 6 | 前端细节 | 25 | [09.front-end](13.split-hairs/09.front-end/README.md) |
 
 ---
 
