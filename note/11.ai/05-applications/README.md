@@ -54,6 +54,7 @@ AI 行业应用
 | [embodied-ai](embodied-ai/) | 具身智能 — 感知-推理-执行闭环、柔性适配机制、自动驾驶与数字孪生工厂 | 下一代 AI 形态 |
 | [ai-written-prd](ai-written-prd/) | AI 撰写 PRD — 产品需求文档的自动化生成 | 企业效率提升 |
 | [shopify-ai-agent](shopify-ai-agent/) | Shopify AI Agent — 电商 AI 代理实践 | 电商 AI 落地案例 |
+| [case-studies](case-studies/) | **12 个 AI 应用案例** — 编程/客服/法律/教育/金融/办公/销售/医疗/制造 9 个行业的标杆实践 | 看别人如何重塑工作流 |
 
 ---
 
