@@ -64,7 +64,7 @@ graph TB
 - **验证期**: 04 Harvey, 09 Glean, 11 Hippocratic
 - **规模化**: 01 Anthropic, 02 Cursor, 05 Khanmigo, 08 MS Copilot, 10 Agentforce
 - **回调/反思**: 03 Klarna
-- **先驱**: 07 JPMorgan (早于 LLM)
+- **先驱**: 07 JPMorgan (早于 LLM，AI 流程化的早期预演)
 
 **按机制设计重点**:
 - **克制设计**: 02 Cursor, 05 Khanmigo

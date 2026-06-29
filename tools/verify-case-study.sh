@@ -37,8 +37,8 @@ if ! grep -qE '^\s*>\s*\*\*一句话总结\*\*' "$FILE"; then
   ERRORS+=("缺少 '> **一句话总结**' 标记")
 fi
 
-# 4. 领域标签 (顶部 100 行内至少 3 个 #xxx)
-HEAD_TAGS=$(head -100 "$FILE" | grep -oE '#(编程|客服|法律|教育|金融|办公|销售|医疗|制造)' | sort -u | wc -l | tr -d ' ')
+# 4. 领域标签 (顶部 50 行内至少 3 个 #xxx)
+HEAD_TAGS=$(head -50 "$FILE" | grep -oE '#(编程|客服|法律|教育|金融|办公|销售|医疗|制造)' | sort -u | wc -l | tr -d ' ')
 if [ "$HEAD_TAGS" -lt 3 ]; then
   ERRORS+=("领域标签不足 3 个（当前: $HEAD_TAGS）")
 fi

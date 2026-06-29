@@ -2,7 +2,7 @@
 
 > **一句话总结**：Klarna 在 2024 年初高调宣布用 OpenAI 客服替代 700 个工位，一度被视为生成式 AI 落地标杆；半年后又把人工请回关键场景——这场"先激进、再回调"的复盘，比单一成功案例更值得 AI 落地者咀嚼。
 
-> 标签：#客服 #金融 #办公 #回调
+#客服 #金融 #办公 #回调
 
 > 原文链接：https://www.klarna.com/investors/announcements/klarna-ai-assistant-handling-two-thirds-of-customer-service-inquiries/
 > 复盘参考：https://www.bloomberg.com/news/articles/2024-08-27/klarna-says-its-ai-assistant-isnt-replacing-humans-just-helping-them
@@ -57,7 +57,7 @@ Klarna 把 AI 退回到它**真正擅长的位置**。
 
 ---
 
-## 五、启示
+## 五、对我们的启发：AI 落地是迭代过程，"先激进、再回调"才是常态
 
 Klarna 的故事并不是"AI 失败"的案例，而是**"AI 落地是迭代过程"**的样板。四个关键经验：
 
