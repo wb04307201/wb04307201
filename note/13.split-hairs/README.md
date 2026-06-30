@@ -76,7 +76,7 @@ graph TB
 | **Redis** | 缓存穿透/击穿/雪崩、大 Key 治理 | 三大问题三连 |
 | **分布式** | 分布式 ID、分布式事务（2PC/TCC/Saga） | 一致性方案选型 |
 | **Spring** | @Transactional 失效 8 场景、Bean 生命周期、循环依赖三级缓存 | IoC/AOP 原理 |
-| **系统设计** | MQ 消息积压、限流算法、缓存一致性、App 报价拆解 | 高可用 + 高性能 + 项目管理 |
+| **系统设计** | MQ 消息积压、限流算法、缓存一致性、App 技术栈选型 | 高可用 + 高性能 + 跨端架构 |
 | **前端** | Event Loop、闭包、Promise 手写、从 URL 到页面 | 浏览器 + JS 核心 |
 | **AI** | Transformer 架构、Token 计费、RAG 设计、Prompt/Context/Harness/Loop 工程、生产力悖论、Agent DAG/ReAct 选型 | LLM 原理与 AI 工程演进 + Agent 架构选型 + 研发效能度量 |
 

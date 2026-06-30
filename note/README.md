@@ -475,3 +475,29 @@
 | 主题 | 核心问题 |
 |------|---------|
 | [XSS / CSRF 攻击防御](13.split-hairs/09.front-end/xss-csrf/README.md) | 反射型 / 存储型 / Token / SameSite Cookie |
+
+---
+
+# 十四、[项目管理与成本控制](14.project-management/README.md)
+
+> **从老板 / PM / 技术总监的另一面** —— 不是技术细节，而是"花 50 万做 App 值不值？花 50 万买 AI 工具一年回本不？"这类决策实战。
+>
+> ⚠️ **2026-06-30 新建主模块**：原 `13.split-hairs/04.system-design/project-management/` 中 2 篇已迁回本主模块（`app-quote-breakdown` / `outsourcing-pitfalls`），`mobile-tech-stack` 计划迁至主模块 `09.front-end/08-cross-platform/`。
+
+| 主题 | 核心问题 | 难度 |
+|------|---------|------|
+| [5 万 vs 50 万 App 报价差在哪](14.project-management/app-quote-breakdown/README.md) | 12 大成本维度拆解 + 决策矩阵 | ⭐⭐⭐ |
+| [App 技术栈选型：原生 vs 跨端](13.split-hairs/04.system-design/project-management/mobile-tech-stack/README.md) ⏳ 计划迁至 [`09.front-end/08-cross-platform/`](09.front-end/08-cross-platform/) | 原生 vs Flutter vs RN vs H5 vs 小程序 | ⭐⭐⭐ |
+| [外包项目避坑指南](14.project-management/outsourcing-pitfalls/README.md) | 5 大隐性成本 + 合同 8 条必看 | ⭐⭐⭐ |
+
+## 适用人群
+
+- 👔 **老板 / 创业者**：评估外包报价、控制项目成本
+- 📋 **PM / 项目经理**：管理需求变更、识别风险、推进交付
+- 🧑‍💼 **技术总监 / 架构师**：技术选型 ROI 计算、组织能力建设
+
+## 学习路径
+
+1. **快速入门**（30 分钟）：看 `app-quote-breakdown`，5 分钟理解报价差异
+2. **技术决策**（30 分钟）：看 mobile-tech-stack，评估技术栈对成本的影响
+3. **合同避坑**（1 小时）：看 `outsourcing-pitfalls` → 当 checklist 用

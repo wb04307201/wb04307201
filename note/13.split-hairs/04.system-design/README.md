@@ -36,12 +36,13 @@
 | [幂等性设计 6 大方案](idempotency/) | ⭐⭐⭐⭐⭐ | Token / 状态机 / 唯一索引 / 去重表 |
 | [熔断降级实战](circuit-breaker/) | ⭐⭐⭐⭐ | Sentinel / Resilience4j 落地 |
 
-### 项目管理与成本估算
+### 项目管理（仅留 1 题，剩余已迁到主模块 `14.project-management/`）
+
 | 主题 | 难度 | 核心问题 |
 |------|------|---------|
-| [5万 vs 50万 App 报价差在哪](project-management/app-quote-breakdown/) | ⭐⭐⭐ | 12 大成本维度拆解 + 决策矩阵 |
-| [App 技术栈选型](project-management/mobile-tech-stack/) | ⭐⭐⭐ | 原生 vs Flutter vs RN vs H5 vs 小程序 |
-| [外包项目避坑指南](project-management/outsourcing-pitfalls/) | ⭐⭐⭐ | 5 大隐性成本 + 合同 8 条必看 |
+| [App 技术栈选型](project-management/mobile-tech-stack/) ⏳ 批 2 计划迁至 `09.front-end/08-cross-platform/` | ⭐⭐⭐ | 原生 vs Flutter vs RN vs H5 vs 小程序 |
+
+> 原来的"5万 vs 50万 App 报价"和"外包避坑指南"已迁至新主模块 [`note/14.project-management/`](../../14.project-management/README.md)。
 
 ---
 
@@ -66,7 +67,9 @@
 
 1. **入门**（3 天）：MQ 积压处理 + 选型对比
 2. **进阶**（2 周）：缓存一致性 + 限流算法 + 分布式 ID + 分布式锁 + 幂等性设计
-3. **冲刺面试**：重点看"分布式事务"、"熔断降级"、"分布式锁"、"幂等性设计"、"5万 vs 50万 App 报价"
+3. **冲刺面试**：重点看"分布式事务"、"熔断降级"、"分布式锁"、"幂等性设计"、"App 技术栈选型"
+
+> 📌 **2026-06-30 路径整理**：原"5万 vs 50万 App 报价"、"外包避坑指南"已迁到新主模块 [`note/14.project-management/`](../../14.project-management/README.md)；"App 技术栈选型"暂留本目录，待批 2 处理。
 
 ## 相关章节
 
