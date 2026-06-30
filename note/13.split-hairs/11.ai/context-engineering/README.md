@@ -4,6 +4,31 @@
 
 ---
 
+## 引子：客服 AI 答非所问，加了 10 段文档还是不行
+
+```text
+你：我要做一个客服 AI，让它懂公司的全部产品文档
+你：把 1000 页 PDF 全塞进 Prompt（一字不漏）
+你：用户："充电宝怎么保修？"
+AI：……生成了一段流畅但**和你的产品完全无关**的回答
+```
+
+**真相**：塞文档 ≠ Context Engineering。
+
+Context 是 LLM 看到的**所有信息**：
+
+```text
+Context = System Prompt + 历史消息 + Tools Schema + RAG 文档 + 长期记忆 + 环境变量
+```
+
+塞 1000 页 PDF 进来：
+
+- 注意力 O(n²) → **推理慢、成本爆**
+- "Lost in the Middle"——**中间信息被忽略**
+- 上下文窗口被塞满，**真正重要的信息被挤到角落**
+
+Context Engineering 是：**在有限的 Context Window 里，把对的信息在对的时间塞给 LLM**。
+
 ## 一、Context 是什么（一图记全）
 
 ```

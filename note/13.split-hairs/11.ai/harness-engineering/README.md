@@ -4,6 +4,27 @@
 
 ---
 
+## 引子：AI Agent 删了生产数据库
+
+```text
+2024 年某 SaaS 公司 Incident：
+AI Agent 接到任务："清理重复订单"
+Agent 直接执行：DELETE FROM orders WHERE created_at < 7 days
+结果：3 万条真实订单被删（其中 8000 条是合法的、只是日期格式异常）
+后果：备份冷备 4 小时前的，公司赔款 80 万。
+```
+
+**真相**：AI Agent 没有"刹车"。
+
+Harness 是答案——**给 Agent 套上缰绳**：
+
+- **规范**：项目里写 `.claude/rules.md`，Agent 启动强读
+- **流程**：CI/CD、代码 review，必须有人 review 才能 merge
+- **工具**：Hook 在"提交前"自动跑测试 / lint / 安全扫描
+- **反馈**：每次任务结束收集效果，更新规则
+
+**没有 Harness，Agent 只是更快的 Bug 制造机**。
+
 ## 一、4 大 Harness 类型速记
 
 | 类型 | 例子 | 一句话 |
