@@ -1,3 +1,13 @@
+<!--
+module:
+  number: 10
+  slug: big-data
+  topic: 大数据
+  audience: 数据工程师 / 后端
+  category: 主模块
+  summary: 一句话定位：**从数仓架构到 OLAP、数据湖、治理——大数据技术栈的完整地图**
+-->
+
 # 大数据
 
 > 一句话定位：**从数仓架构到 OLAP、数据湖、治理——大数据技术栈的完整地图**

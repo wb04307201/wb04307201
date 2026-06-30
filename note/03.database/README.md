@@ -1,3 +1,13 @@
+<!--
+module:
+  number: 03
+  slug: database
+  topic: 数据库
+  audience: 工程师 / DBA
+  category: 主模块
+  summary: 数据库是按照数据结构来组织、存储和管理数据的仓库。本章节从关系型数据库基础出发,逐步深入到 SQL、事务、索引、MySQL 内部机制,再扩展到缓存、Redis、...
+-->
+
 # 数据库
 
 > 数据库是按照数据结构来组织、存储和管理数据的仓库。本章节从关系型数据库基础出发,逐步深入到 SQL、事务、索引、MySQL 内部机制,再扩展到缓存、Redis、NoSQL 与连接池。

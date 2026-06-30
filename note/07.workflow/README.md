@@ -1,3 +1,13 @@
+<!--
+module:
+  number: 07
+  slug: workflow
+  topic: 工作流
+  audience: 架构师 / 业务负责人
+  category: 主模块
+  summary: 工作流 = BPMN 流程骨架 + 事件驱动协作神经，编排 vs 编舞
+-->
+
 # 工作流
 
 > 最后更新: 2026-06-14

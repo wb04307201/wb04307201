@@ -1,3 +1,13 @@
+<!--
+module:
+  number: 01
+  slug: java
+  topic: Java 知识体系
+  audience: 工程师 / 架构师
+  category: 主模块
+  summary: 从语言基础到 JVM 原理、并发编程、版本演进，系统性构建 Java 知识体系。
+-->
+
 # Java
 
 > 从语言基础到 JVM 原理、并发编程、版本演进，系统性构建 Java 知识体系。

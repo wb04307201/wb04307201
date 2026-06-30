@@ -1,3 +1,13 @@
+<!--
+module:
+  number: 04
+  slug: system-design
+  topic: 系统设计
+  audience: 架构师 / SRE
+  category: 主模块
+  summary: 系统设计的知识体系图谱，从基础理论到工程实践的完整学习路径。
+-->
+
 # 系统设计笔记
 
 > 系统设计的知识体系图谱，从基础理论到工程实践的完整学习路径。

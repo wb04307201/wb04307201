@@ -1,3 +1,13 @@
+<!--
+module:
+  number: 11
+  slug: ai
+  topic: AI 知识体系
+  audience: AI 工程师 / 后端
+  category: 主模块
+  summary: 从基础概念到行业落地，系统化理解人工智能技术栈。
+-->
+
 # AI 知识体系
 
 > 从基础概念到行业落地，系统化理解人工智能技术栈。

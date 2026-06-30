@@ -1,3 +1,13 @@
+<!--
+module:
+  number: 09
+  slug: front-end
+  topic: 前端工程
+  audience: 前端 / 全栈工程师
+  category: 主模块
+  summary: 一句话定位：**现代前端工程的知识地图——从浏览器原理到 AI 协同开发**
+-->
+
 # 前端工程
 
 > 一句话定位：**现代前端工程的知识地图——从浏览器原理到 AI 协同开发**

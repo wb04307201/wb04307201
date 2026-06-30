@@ -1,3 +1,13 @@
+<!--
+module:
+  number: 05
+  slug: tools
+  topic: 工具链
+  audience: 工程师 / DevOps
+  category: 主模块
+  summary: 工欲善其事，必先利其器。本模块覆盖后端开发日常高频工具：版本控制（Git）、容器化（Docker / Podman）、反向代理（Nginx / Pingora）...
+-->
+
 # 工具链
 
 > 工欲善其事，必先利其器。本模块覆盖后端开发日常高频工具：版本控制（Git）、容器化（Docker / Podman）、反向代理（Nginx / Pingora）、仓库管理（Monorepo）、Java 常用工具库、以及阿里微服务全家桶。

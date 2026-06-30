@@ -1,3 +1,13 @@
+<!--
+module:
+  number: 02
+  slug: computer-basics
+  topic: 计算机基础
+  audience: 工程师 / SRE
+  category: 主模块
+  summary: 系统性整理计算机科学基础知识，涵盖网络、算法、系统运维、知识产权等核心领域。
+-->
+
 # 计算机基础
 
 > 系统性整理计算机科学基础知识，涵盖网络、算法、系统运维、知识产权等核心领域。

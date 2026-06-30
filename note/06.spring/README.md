@@ -1,3 +1,13 @@
+<!--
+module:
+  number: 06
+  slug: spring
+  topic: Spring 全家桶
+  audience: Java 工程师
+  category: 主模块
+  summary: 从 IoC/AOP 到 Spring Boot/Cloud/集成组件，Java 最主流框架完整知识体系
+-->
+
 # Spring 全家桶
 
 > 最后更新: 2026-06-14
