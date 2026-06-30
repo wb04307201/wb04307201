@@ -20,8 +20,35 @@ EventMesh 云流程 的Apache EventMesh 在工作流/云流程场景的架构图
 | 序号 | 主题 | 核心内容 |
 |------|------|---------|
 | 1 | [img.png](img.png) | EventMesh 云流程架构图 |
+
+```mermaid
+%% [AUTO] 占位 — 描述：EventMesh 云流程架构 — EventMesh + Serverless Workflow 集成（参考表格标题）
+%% 实际图：img.png（保留 PNG 用于参考）
+graph TB
+    %% TODO: 人工设计等价 Mermaid 替换
+    A[Component A] --> B[Component B]
+    B --> C[Component C]
+```
 | 2 | [img_1.png](img_1.png) | 事件网格与业务流程集成图 |
+
+```mermaid
+%% [AUTO] 占位 — 描述：事件网格与业务流程集成 — EventMesh 作为事件中间件驱动 Serverless Workflow 流程编排
+%% 实际图：img_1.png（保留 PNG 用于参考）
+graph TB
+    %% TODO: 人工设计等价 Mermaid 替换
+    A[Component A] --> B[Component B]
+    B --> C[Component C]
+```
 | 3 | [img_2.png](img_2.png) | Serverless Workflow DSL 执行流程图 |
+
+```mermaid
+%% [AUTO] 占位 — 描述：Serverless Workflow DSL 执行流程 — YAML DSL 解析为可执行流程图（参考表格标题）
+%% 实际图：img_2.png（保留 PNG 用于参考）
+graph TB
+    %% TODO: 人工设计等价 Mermaid 替换
+    A[Component A] --> B[Component B]
+    B --> C[Component C]
+```
 
 ---
 
