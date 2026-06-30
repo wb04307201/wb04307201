@@ -999,3 +999,7 @@ Prompt 是"调模型"之外的"调输入"艺术。10 大经典模式（Zero-shot
 ## 版权与引用
 
 本系列文章采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可协议。欢迎转载、引用，但请注明出处。
+
+---
+
+← [返回笔记目录](../README.md)

@@ -200,3 +200,7 @@ graph TB
 - **故事章节**：[`12.story`](../12.story/) — 阿明餐厅故事（实战场景）
 - **主仓库 README**：[`README.md`](../README.md)
 - **写作规范**：[`QUESTION-FORMAT-SPEC.md`](./QUESTION-FORMAT-SPEC.md) — 文章结构强制模板 + frontmatter schema
+
+---
+
+← [返回笔记目录](../README.md)
