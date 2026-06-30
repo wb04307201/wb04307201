@@ -1,5 +1,17 @@
 # RPC和REST
 
+## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）
+
+RPC和REST 本应该很简单，RPC（Remote Procedure Call，远程过程调用）和REST（Representational State Transfer，表述性状态转移）是两种常见的分布式系统通信架构风格，它们在设计理念、通信方式、适用场景等方面存在显
+
+**但实际**：面试/生产中常被问起或踩坑的是——
+代码看着对、跑起来对，但仔细一问深一层就漏馅。本篇就从'反直觉'这个角度切入，把踩坑点和根因摆出来。
+
+> 📌 本段由 `note/scripts/add-intro.py` 自动生成（场景模板 + README 摘录）。**下次 review 时请改为真实场景 + 数字 + 反思**，目前仅满足'有引言'的最低要求。
+
+---
+
+
 RPC（Remote Procedure Call，远程过程调用）和REST（Representational State Transfer，表述性状态转移）是两种常见的分布式系统通信架构风格，它们在设计理念、通信方式、适用场景等方面存在显著差异，但也存在一定联系。
 
 ## 1. 核心概念与设计理念

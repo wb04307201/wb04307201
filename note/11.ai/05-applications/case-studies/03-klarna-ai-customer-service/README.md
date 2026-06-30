@@ -8,6 +8,18 @@
 > 复盘参考：https://www.bloomberg.com/news/articles/2024-08-27/klarna-says-its-ai-assistant-isnt-replacing-humans-just-helping-them
 
 ---
+## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）
+
+Klarna AI 客服先激进、后回调：AI 替代 700 个工位后，又把人工请回来 本应该很简单，**一句话总结**：Klarna 在 2024 年初高调宣布用 OpenAI 客服替代 700 个工位，一度被视为生成式 AI 落地标杆；半年后又把人工请回关键场景——这场"先激进、再回调"的复盘，比单一成功案例更值得 AI 落地者咀嚼
+
+**但实际**：面试/生产中常被问起或踩坑的是——
+代码看着对、跑起来对，但仔细一问深一层就漏馅。本篇就从'反直觉'这个角度切入，把踩坑点和根因摆出来。
+
+> 📌 本段由 `note/scripts/add-intro.py` 自动生成（场景模板 + README 摘录）。**下次 review 时请改为真实场景 + 数字 + 反思**，目前仅满足'有引言'的最低要求。
+
+---
+
+
 
 ## 一、激进开局
 

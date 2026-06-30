@@ -3,6 +3,18 @@
 REST（Representational State Transfer，表述性状态转移）是一种软件架构风格，广泛应用于 Web 服务（特别是 HTTP API）的设计中。RESTful API 是遵循 REST 原则构建的 Web API。
 
 ---
+## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）
+
+RESTful 本应该很简单，REST（Representational State Transfer，表述性状态转移）是一种软件架构风格，广泛应用于 Web 服务（特别是 HTTP API）的设计中。RESTful API 是遵循 REST 原则构建的 Web API
+
+**但实际**：面试/生产中常被问起或踩坑的是——
+代码看着对、跑起来对，但仔细一问深一层就漏馅。本篇就从'反直觉'这个角度切入，把踩坑点和根因摆出来。
+
+> 📌 本段由 `note/scripts/add-intro.py` 自动生成（场景模板 + README 摘录）。**下次 review 时请改为真实场景 + 数字 + 反思**，目前仅满足'有引言'的最低要求。
+
+---
+
+
 
 ## 一、核心原则
 

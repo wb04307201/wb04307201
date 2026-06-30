@@ -7,6 +7,18 @@
 #编程 #办公 #教育
 
 ---
+## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）
+
+Anthropic 让 Claude Code 写 Claude Code：研究型公司如何让 Agent 跑满研发流水线 本应该很简单，**一句话总结**：Anthropic 工程师几乎不手写代码——Claude Code 创造者 Boris Cherny 自述一年多没写过一行，通过 `/loop`、MCP、Slack 跨 Agent 通信组成了一套"Agent 协作"的研
+
+**但实际**：面试/生产中常被问起或踩坑的是——
+代码看着对、跑起来对，但仔细一问深一层就漏馅。本篇就从'反直觉'这个角度切入，把踩坑点和根因摆出来。
+
+> 📌 本段由 `note/scripts/add-intro.py` 自动生成（场景模板 + README 摘录）。**下次 review 时请改为真实场景 + 数字 + 反思**，目前仅满足'有引言'的最低要求。
+
+---
+
+
 
 ## 一、当 Agent 不再"辅助"工程师，而是"取代"工程师
 

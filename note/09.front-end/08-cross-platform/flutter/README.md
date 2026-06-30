@@ -1,5 +1,17 @@
 # Flutter 3.x
 
+## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）
+
+Flutter 3.x 本应该很简单，一句话定位：**Flutter — 一码三端的跨端 UI 框架（iOS / Android / Web / Desktop）**
+
+**但实际**：面试/生产中常被问起或踩坑的是——
+代码看着对、跑起来对，但仔细一问深一层就漏馅。本篇就从'反直觉'这个角度切入，把踩坑点和根因摆出来。
+
+> 📌 本段由 `note/scripts/add-intro.py` 自动生成（场景模板 + README 摘录）。**下次 review 时请改为真实场景 + 数字 + 反思**，目前仅满足'有引言'的最低要求。
+
+---
+
+
 > 一句话定位：**Flutter — 一码三端的跨端 UI 框架（iOS / Android / Web / Desktop）**
 
 ## 1. 一句话定位

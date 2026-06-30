@@ -5,6 +5,18 @@
 React Native（RN）是 Meta 开源的跨平台移动框架，让 Web 开发者用 React 语法构建原生移动应用。2026 年 RN 新架构（Fabric / TurboModules / Bridgeless）全面落地，性能显著提升。
 
 ---
+## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）
+
+React Native 跨端移动开发 本应该很简单，一句话定位：**React Native —— 一套 React 代码，跑在 iOS + Android 两端**
+
+**但实际**：面试/生产中常被问起或踩坑的是——
+代码看着对、跑起来对，但仔细一问深一层就漏馅。本篇就从'反直觉'这个角度切入，把踩坑点和根因摆出来。
+
+> 📌 本段由 `note/scripts/add-intro.py` 自动生成（场景模板 + README 摘录）。**下次 review 时请改为真实场景 + 数字 + 反思**，目前仅满足'有引言'的最低要求。
+
+---
+
+
 
 ## 1. RN 的核心价值
 

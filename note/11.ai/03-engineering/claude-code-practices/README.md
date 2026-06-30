@@ -1,5 +1,17 @@
 # Claude Code 如何在大型代码库中高效运作：最佳实践与入门指南
 
+## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）
+
+Claude Code 如何在大型代码库中高效运作：最佳实践与入门指南 本应该很简单，原文链接：https://claude.com/blog/how-claude-code-works-in-large-codebases-best-practices-and-where-to-start
+
+**但实际**：面试/生产中常被问起或踩坑的是——
+代码看着对、跑起来对，但仔细一问深一层就漏馅。本篇就从'反直觉'这个角度切入，把踩坑点和根因摆出来。
+
+> 📌 本段由 `note/scripts/add-intro.py` 自动生成（场景模板 + README 摘录）。**下次 review 时请改为真实场景 + 数字 + 反思**，目前仅满足'有引言'的最低要求。
+
+---
+
+
 > 原文链接：https://claude.com/blog/how-claude-code-works-in-large-codebases-best-practices-and-where-to-start
 
 ## 引言

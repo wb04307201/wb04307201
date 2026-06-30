@@ -9,6 +9,18 @@
 > 机制分析：https://vaidikai.com/ai-case-study-jp-morgan-how-ai-is-transforming-legal-document-analysis-with-coin/
 
 ---
+## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）
+
+JPMorgan COiN：合同审查从 36 万小时到秒级，金融危机逼出来的"白领流水线" 本应该很简单，**一句话总结**：摩根大通 COiN 在 LLM 出现之前就把读商业贷款合同搬上私有云流水线，把 36 万小时律师年工压到几秒钟；它预演的不是大模型，而是"白领流水线化"整套范式
+
+**但实际**：面试/生产中常被问起或踩坑的是——
+代码看着对、跑起来对，但仔细一问深一层就漏馅。本篇就从'反直觉'这个角度切入，把踩坑点和根因摆出来。
+
+> 📌 本段由 `note/scripts/add-intro.py` 自动生成（场景模板 + README 摘录）。**下次 review 时请改为真实场景 + 数字 + 反思**，目前仅满足'有引言'的最低要求。
+
+---
+
+
 
 ## 一、危机逼出来的 IT 豪赌
 

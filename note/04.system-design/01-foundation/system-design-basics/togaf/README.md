@@ -4,6 +4,17 @@
 > **TOGAF**（The Open Group Architecture Framework）是目前最主流的企业架构框架，由 The Open Group 维护。最新版本是 **TOGAF 10**（2022 年 4 月发布）。
 
 ---
+## 引言：架构困境（[AUTO] 自动生成，待人工 review）
+
+企业架构（TOGAF 10） 的企业架构（Enterprise Architecture，EA）是从全局视角规划和治理组织 IT 结构的系统性方法
+
+**但实际**：常被问起'这种方案我怎么选'/'大厂怎么做'。本篇用'决策困境'切入，比较几种主流路径并讲清取舍。
+
+> 📌 本段由 `note/scripts/add-intro.py` 自动生成（场景模板 + README 摘录）。**下次 review 时请改为真实场景 + 数字 + 反思**，目前仅满足'有引言'的最低要求。
+
+---
+
+
 
 ## 🎯 一句话定位
 

@@ -5,6 +5,18 @@
 Monorepo 是把多个包（apps / packages）放在一个 Git 仓库中统一管理的工程模式。2026 年，几乎所有大型前端项目（React、Vue、Babel、Next.js）都采用 Monorepo。
 
 ---
+## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）
+
+Monorepo 工程实践 本应该很简单，一句话定位：**pnpm workspaces / Turborepo / Nx —— 多包协作的工程化实战**
+
+**但实际**：面试/生产中常被问起或踩坑的是——
+代码看着对、跑起来对，但仔细一问深一层就漏馅。本篇就从'反直觉'这个角度切入，把踩坑点和根因摆出来。
+
+> 📌 本段由 `note/scripts/add-intro.py` 自动生成（场景模板 + README 摘录）。**下次 review 时请改为真实场景 + 数字 + 反思**，目前仅满足'有引言'的最低要求。
+
+---
+
+
 
 ## 1. Monorepo 的核心价值
 

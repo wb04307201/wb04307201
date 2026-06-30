@@ -8,6 +8,18 @@
 > 产品深度解读：https://www.scrm.com/29767/%e4%ba%86%e8%a7%a3ec/hyzs/
 
 ---
+## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）
+
+Salesforce Agentforce：让销售 Agent 自己挖线索、约会议、跟进客户 本应该很简单，**一句话总结**：Agentforce 不是"聊天机器人+CRM 插件"，而是把销售流程拆成 Agent 自主闭环的"数字劳务市场"——销售 Agent 第一次有了"自己判断下一步"的能力，而不是按剧本跑
+
+**但实际**：面试/生产中常被问起或踩坑的是——
+代码看着对、跑起来对，但仔细一问深一层就漏馅。本篇就从'反直觉'这个角度切入，把踩坑点和根因摆出来。
+
+> 📌 本段由 `note/scripts/add-intro.py` 自动生成（场景模板 + README 摘录）。**下次 review 时请改为真实场景 + 数字 + 反思**，目前仅满足'有引言'的最低要求。
+
+---
+
+
 
 ## 一、从 Copilot 到 Agentforce：Salesforce 的"换挡"
 
