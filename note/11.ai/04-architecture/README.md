@@ -9,6 +9,8 @@
 | 目录 | 内容 |
 |------|------|
 | [intelligent-system-layers](intelligent-system-layers/) | 智能系统三层架构 — 感知与数据层 / 认知与模型层 / 决策与执行层 · AI技术栈分层架构全景 |
+| [agent-architecture](agent-architecture/) | **Agent 架构设计** — ReAct / DAG / Plan-and-Execute / Multi-Agent 4 大架构对比 + 选型决策树 + 真实案例 |
+| [ontology-driven-agent](ontology-driven-agent/) | **本体驱动的智能体** — 让 AI 从"黑箱推理"走向"结构化认知"，融合符号主义与连接主义，构建可信可审计可演化的 AI 系统 |
 | [2026-trends](2026-trends/) | 2026 AI技术矩阵 — 大模型 / 多模态 / 具身智能 三位一体趋势 |
 
 ## 学习路径

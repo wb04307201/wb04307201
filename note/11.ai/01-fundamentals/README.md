@@ -7,9 +7,16 @@
 | 目录 | 内容 |
 |------|------|
 | [llm-basics](llm-basics/) | 大语言模型(LLM)基础定义、核心能力与训练方式 |
+| [transformer](transformer/) | **Transformer 架构核心** — Self-Attention / QKV / Multi-Head / Positional Encoding / Encoder-Decoder |
 | [neural-layers](neural-layers/) | 神经网络内部层次结构：CNN/RNN/Transformer |
 | [embedding-vs-vectorization](embedding-vs-vectorization/) | 嵌入(Embedding)与向量化的本质区别、流形假说 |
 | [dense-vs-moe](dense-vs-moe/) | 稠密模型 vs 混合专家(MoE)架构对比 |
+
+## 相关章节
+
+- 上层：[`L2 技术栈`](../02-technology-stack/) — Token / Prompt / Context / Function Calling
+- 关联：[`13.split-hairs Transformer`](../../13.split-hairs/11.ai/transformer/README.md) — 面试深挖版
+- 父级：[`11.ai` 总览](../README.md) — AI 知识体系
 
 ---
 

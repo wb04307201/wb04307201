@@ -64,7 +64,7 @@ graph TD
 - 关联：[`04.system-design`](../04.system-design/) — 通用系统设计（AI 系统也遵循分布式/高可用原则）
 - 关联：[`06.spring`](../06.spring/) — Spring 生态（Spring AI 的底层支撑）
 - 关联：[`07.workflow`](../07.workflow/) — 工作流引擎（BPMN + AI Agent 融合）
-- 面试：[`13.split-hairs/11.ai`](../13.split-hairs/11.ai/README.md) — 14 篇 AI 高频面试题（含 Prompt/Context/Harness/Loop 4 阶段 + Agent DAG 架构 + AI 生产力度量）
+- 面试：[`13.split-hairs/11.ai`](../13.split-hairs/11.ai/README.md) — 14 篇 AI 面试深挖（5 篇纯面试题 + 9 篇主模块配套精炼版）
 
 ## 开源参考
 

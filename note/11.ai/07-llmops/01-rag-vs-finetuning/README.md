@@ -206,4 +206,127 @@ Q5: 预算？
 
 ---
 
+---
+
+## 十一、RAG 架构设计深度
+
+### 11.1 完整流程
+
+#### 离线索引阶段
+
+```mermaid
+graph TB
+  A[原始文档<br/>PDF/Markdown/HTML] --> B[Chunking<br/>分块]
+  B --> C[Embedding<br/>向量化]
+  C --> D[(向量数据库<br/>Pinecone/Milvus)]
+  style D fill:#e8f5e9
+```
+
+```python
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.embeddings import OpenAIEmbeddings
+from langchain.vectorstores import Pinecone
+
+# 1. 分块
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=1000,      # 每块 1000 字符
+    chunk_overlap=200,    # 重叠 200 字符（保持上下文）
+)
+chunks = splitter.split_documents(documents)
+
+# 2. 向量化 + 存储
+embeddings = OpenAIEmbeddings()
+vectorstore = Pinecone.from_documents(chunks, embeddings, index_name="docs")
+```
+
+#### 在线查询阶段
+
+```python
+def rag_query(question: str):
+    # 1. 检索
+    relevant_chunks = vectorstore.similarity_search(question, k=5)
+    context = "\n\n".join(chunk.page_content for chunk in relevant_chunks)
+
+    # 2. 构造 Prompt
+    prompt = f"""基于以下上下文回答问题。如果上下文中没有答案，说明不知道。
+
+上下文：
+{context}
+
+问题：{question}
+
+答案："""
+
+    # 3. 生成
+    response = llm.invoke(prompt)
+    return response
+```
+
+### 11.2 Chunking 策略
+
+| 策略 | 原理 | 适用 |
+|------|------|------|
+| **固定大小** | 每块 N 字符 | 简单通用 |
+| **按段落** | 按 `\n\n` 分割 | 结构化文档 |
+| **递归分割** | 先按大分隔（标题），再按小（段落） | 长文档 |
+| **语义分割** | 按语义相似度切分 | 复杂文本 |
+| **文档结构** | 按代码函数、Markdown 标题 | 代码、MD |
+
+**经验值**：
+- 块大小：**500-1500 字符**（太小丢上下文，太大噪音多）
+- 重叠：**10-20%**（保持连续性）
+
+### 11.3 向量数据库选型
+
+| 数据库 | 类型 | 适用 |
+|--------|------|------|
+| **Pinecone** | 云托管 | 快速启动，免运维 |
+| **Weaviate** | 开源 + 云 | GraphQL 查询，多模态 |
+| **Milvus** | 开源 | 大规模，高性能 |
+| **Qdrant** | 开源 | Rust 实现，性能优秀 |
+| **pgvector** | PostgreSQL 插件 | 已有 PG 的团队 |
+| **Chroma** | 开源 | 轻量，本地开发 |
+
+### 11.4 Embedding 模型选型
+
+| 模型 | 维度 | 多语言 | 适用 |
+|------|------|--------|------|
+| **OpenAI text-embedding-3** | 1536 | ✅ | 通用首选 |
+| **Cohere embed-v3** | 1024 | ✅ | 多语言优秀 |
+| **BGE-M3**（BAAI） | 1024 | ✅ | 开源最佳 |
+| **Jina v2** | 768 | ✅ | 长文本支持 |
+| **Nomic Embed** | 768 | ✅ | 开源轻量 |
+
+**中文场景**：强烈推荐 **BGE-M3** 或 **Cohere embed-v3**（OpenAI 对中文支持弱）。
+
+### 11.5 Advanced RAG 优化
+
+| 优化层 | 优化项 | 说明 |
+|------|------|------|
+| **检索优化** | 混合检索 | 向量检索 + BM25 关键词检索 |
+| **检索优化** | 重排序（Reranking） | 用 Cross-Encoder 重排检索结果 |
+| **检索优化** | 元数据过滤 | 按时间 / 作者 / 类别过滤 |
+| **检索优化** | 查询扩展 | 用 LLM 改写 / 扩展查询 |
+| **生成优化** | 引用源 | 在回答中标注来源片段 |
+| **生成优化** | 置信度过滤 | 检索分数低于阈值不生成 |
+| **生成优化** | Prompt 工程 | 强调"基于上下文回答，不知道就说不知道" |
+
+```mermaid
+graph TB
+  A[查询] --> B[查询改写<br/>Query Rewriting]
+  B --> C[多路召回<br/>向量 + 关键词]
+  C --> D[Reranker<br/>重排序]
+  D --> E[LLM 生成]
+  E --> F[答案 + 引用]
+  style D fill:#f3e5f5
+```
+
+---
+
+## 面试陷阱速览
+
+> 完整陷阱 + 反直觉 + 30 秒话术见 [13.split-hairs RAG](../../../13.split-hairs/11.ai/rag/README.md)
+
+---
+
 ← [返回 AI 知识体系总览](../../README.md) · 📅 2026-06-28

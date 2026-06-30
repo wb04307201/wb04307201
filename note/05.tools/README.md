@@ -16,6 +16,8 @@ graph TB
     Root --> Mono["04 Monorepo<br/>仓库管理"]
     Root --> Java["05 Java 工具库<br/>效率提升"]
     Root --> Ali["06 阿里微服务<br/>云原生生态"]
+    Root --> Devops["07 DevOps<br/>CI/CD"]
+    Root --> K8s["08 Kubernetes<br/>容器编排"]
 
     Git --> G1["命令清单"]
     Git --> G2["Gitea 自建"]
@@ -36,6 +38,13 @@ graph TB
 
     Ali --> A1["Nacos 注册/配置"]
     Ali --> A2["微服务全家桶"]
+
+    Devops --> DP1["Jenkins / GitLab"]
+    Devops --> DP2["GitHub Actions"]
+    Devops --> DP3["Pipeline 模式"]
+
+    K8s --> K1["Pod / Service"]
+    K8s --> K2["Helm / Operator"]
 ```
 
 ---
@@ -50,6 +59,8 @@ graph TB
 | 04 | [Monorepo](monorepo/) | 单仓多项目管理、演进路径、工具选型（Turborepo / Nx / Bazel） | [monorepo](monorepo/README.md) |
 | 05 | [Java 工具库](java/) | Hutool / Guava / Commons 工具集、Lombok 注解提效 | [tool-library](java/tool-library/README.md) · [lombok](java/lombok/README.md) |
 | 06 | [阿里微服务](ali-microservices/) | Nacos 服务发现与配置管理、阿里云原生微服务生态 | [ali-microservices](ali-microservices/README.md) |
+| 07 | [DevOps](devops/) | CI/CD 工具链 — Jenkins / GitLab CI / GitHub Actions / Pipeline 模式 / 部署策略 / CI/CD vs GitOps | [devops](devops/README.md) |
+| 08 | [Kubernetes](kubernetes/) | K8s 全栈 — 架构 / Pod 与工作负载 / Service 与 Ingress / ConfigMap 与 Secret / 存储与 PV / 网络与服务网格 / Helm / Operator 与 GitOps | [kubernetes](kubernetes/README.md) |
 
 ---
 
@@ -59,6 +70,7 @@ graph TB
 - **效率提升**：05 Java 工具库 + Lombok — 减少样板代码
 - **微服务方向**：02 Docker → 04 Monorepo → 06 阿里微服务 — 从容器到服务治理
 - **进阶运维**：03 Nginx / Pingora → 04 Monorepo — 深入基础设施
+- **云原生深入**：07 DevOps → 08 Kubernetes — 容器编排与服务治理
 
 ---
 
@@ -72,6 +84,8 @@ graph TB
 | 多模块管理 | Monorepo (Turborepo/Nx) | 适合共享代码量大、多团队协作 |
 | Java 效率 | Hutool + Lombok | 国内项目标配 |
 | 微服务注册 | Nacos | 支持 DNS/RPC 双模式，阿里开源 |
+| CI/CD | Jenkins / GitLab CI / GitHub Actions | 三选一：Jenkins 灵活、GitLab CI 一体化、GitHub Actions 云原生 |
+| 容器编排 | Kubernetes (K8s) | 云原生事实标准，配套 Helm/Operator/GitOps |
 
 ---
 

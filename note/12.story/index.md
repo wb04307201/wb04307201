@@ -1,6 +1,6 @@
 # 故事集 · 目录导航
 
-> 「阿明餐厅」系列 44 篇技术故事完整导航 —— 按主题分类、按叙事顺序、按角色推荐多维入口。
+> 「阿明餐厅」系列 46 篇技术故事完整导航 —— 按主题分类、按叙事顺序、按角色推荐多维入口。
 
 ← [返回笔记目录](../README.md)
 
@@ -10,7 +10,7 @@
 
 | 你想看什么？ | 直接跳转 |
 |-------------|---------|
-| 完整文章清单 | [全部 44 篇](./README.md#全部四十四篇文章) |
+| 完整文章清单 | [全部 46 篇](./README.md#全部四十六篇文章) |
 | 一页纸速查 | [cheatsheet.md](./cheatsheet.md) |
 | 术语速查 | [glossary.md](./glossary.md)（320+ 术语） |
 | 主题分类 | [下文分类导航](#四分类导航) |
@@ -68,7 +68,7 @@
 | 终章 - 从厨师到 CEO | [07](./07-from-chef-to-ceo.md) |
 | 番外 1-6（传统） | [03 重构](./03-refactoring-guide-for-pm.md) / [14 云成本](./14-cloud-finops.md) / [19 SaaS](./19-saas-multitenant.md) / [22 搜索](./22-search-recommendation.md) / [25 低代码](./25-lowcode-platform.md) / [26 国际化](./26-globalization.md) |
 | 番外 7-8（AI） | [42 Prompt](./42-prompt-engineering.md) / [43 多模态](./43-multimodal-ai.md) |
-| 续集 1-17（AI 时代） | [01-41 续集](./README.md#全部四十四篇文章) |
+| 续集 1-17（AI 时代） | [01-41 续集](./README.md#全部四十六篇文章) |
 | **续集 18-20**（AI 责任 / 数据真相 / 个人困局） | **[44 谁负责](./44-ai-engineer-responsibility.md) / [45 生产力](./45-ai-productivity-paradox.md) / [46 困局](./46-tech-debt-career-trap.md)** |
 
 ---
