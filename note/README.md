@@ -487,7 +487,7 @@
 | 主题 | 核心问题 | 难度 |
 |------|---------|------|
 | [5 万 vs 50 万 App 报价差在哪](14.project-management/app-quote-breakdown/README.md) | 12 大成本维度拆解 + 决策矩阵 | ⭐⭐⭐ |
-| [App 技术栈选型：原生 vs 跨端](13.split-hairs/04.system-design/project-management/mobile-tech-stack/README.md) ⏳ 计划迁至 [`09.front-end/08-cross-platform/`](09.front-end/08-cross-platform/) | 原生 vs Flutter vs RN vs H5 vs 小程序 | ⭐⭐⭐ |
+| [App 技术栈选型：原生 vs 跨端](09.front-end/08-cross-platform/mobile-tech-stack/README.md) | 原生 vs Flutter vs RN vs H5 vs 小程序 | ⭐⭐⭐ |
 | [外包项目避坑指南](14.project-management/outsourcing-pitfalls/README.md) | 5 大隐性成本 + 合同 8 条必看 | ⭐⭐⭐ |
 
 ## 适用人群

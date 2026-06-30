@@ -10,6 +10,7 @@
 
 | 主题 | 状态 | 说明 |
 |------|------|------|
+| **跨端选型决策** | ✓ 已有 (2026 迁入) | [mobile-tech-stack/](mobile-tech-stack/) — 原生 vs Flutter vs RN vs H5 vs 小程序 综合决策矩阵 |
 | React Native | ✓ 已有 | [react-native/](react-native/) — 跨端主流 / Native 渲染 |
 | 小程序 | ✓ 已有 | [mini-program/](mini-program/) — 微信/支付宝/抖音生态 |
 | Flutter | ✓ 已有 (T12) | [flutter/](flutter/) — 一码三端 / Skia 渲染 |
@@ -17,6 +18,8 @@
 | PWA | ✓ 已有 (T12) | [pwa/](pwa/) — 渐进式 Web 应用 / 离线优先 |
 
 > 速查对比见 [📖 顶层 3.7 跨端速查](../README.md#37-跨端速查)
+>
+> 新读者建议：先看 [mobile-tech-stack/](mobile-tech-stack/) 选型决策 → 再看具体方案子目录（RN / Flutter / Tauri / PWA / 小程序）。
 
 ---
 

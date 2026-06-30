@@ -36,13 +36,13 @@
 | [幂等性设计 6 大方案](idempotency/) | ⭐⭐⭐⭐⭐ | Token / 状态机 / 唯一索引 / 去重表 |
 | [熔断降级实战](circuit-breaker/) | ⭐⭐⭐⭐ | Sentinel / Resilience4j 落地 |
 
-### 项目管理（仅留 1 题，剩余已迁到主模块 `14.project-management/`）
+### 项目管理（已全部迁走，split-hairs 不再收此分类）
 
-| 主题 | 难度 | 核心问题 |
-|------|------|---------|
-| [App 技术栈选型](project-management/mobile-tech-stack/) ⏳ 批 2 计划迁至 `09.front-end/08-cross-platform/` | ⭐⭐⭐ | 原生 vs Flutter vs RN vs H5 vs 小程序 |
-
-> 原来的"5万 vs 50万 App 报价"和"外包避坑指南"已迁至新主模块 [`note/14.project-management/`](../../14.project-management/README.md)。
+> 2026-06-30 路径整理：本类目的 3 题已**全部迁移**：
+> - `app-quote-breakdown` / `outsourcing-pitfalls` → 新主模块 [`note/14.project-management/`](../../14.project-management/README.md)
+> - `mobile-tech-stack` → 主模块 [`09.front-end/08-cross-platform/mobile-tech-stack/`](../../09.front-end/08-cross-platform/mobile-tech-stack/README.md)
+>
+> 本分类及其目录 [`project-management/`](project-management/) 已删除，split-hairs 不再收"项目管理"类内容。
 
 ---
 
@@ -67,9 +67,9 @@
 
 1. **入门**（3 天）：MQ 积压处理 + 选型对比
 2. **进阶**（2 周）：缓存一致性 + 限流算法 + 分布式 ID + 分布式锁 + 幂等性设计
-3. **冲刺面试**：重点看"分布式事务"、"熔断降级"、"分布式锁"、"幂等性设计"、"App 技术栈选型"
+3. **冲刺面试**：重点看"分布式事务"、"熔断降级"、"分布式锁"、"幂等性设计"
 
-> 📌 **2026-06-30 路径整理**：原"5万 vs 50万 App 报价"、"外包避坑指南"已迁到新主模块 [`note/14.project-management/`](../../14.project-management/README.md)；"App 技术栈选型"暂留本目录，待批 2 处理。
+> 📌 **2026-06-30 路径整理**：原项目管理的 3 题全部迁走（"5万 vs 50万 App 报价"、"外包避坑指南"→ [`note/14.project-management/`](../../14.project-management/README.md)；"App 技术栈选型"→ [`09.front-end/08-cross-platform/mobile-tech-stack/`](../../09.front-end/08-cross-platform/mobile-tech-stack/README.md)）。split-hairs 不再收"项目管理"类内容。
 
 ## 相关章节
 

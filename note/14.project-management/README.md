@@ -34,12 +34,12 @@
 | 主题 | 核心问题 | 难度 |
 |------|---------|------|
 | [5 万 vs 50 万 App 报价差在哪](app-quote-breakdown/README.md) | 12 大成本维度拆解 + 决策矩阵 | ⭐⭐⭐ |
-| [App 技术栈选型](../13.split-hairs/04.system-design/project-management/mobile-tech-stack/README.md) ⏳ 批 2 计划迁至 `09.front-end/08-cross-platform/` | 原生 vs Flutter vs RN vs H5 vs 小程序 | ⭐⭐⭐ |
+| [App 技术栈选型：原生 vs 跨端](../09.front-end/08-cross-platform/mobile-tech-stack/README.md) | 原生 vs Flutter vs RN vs H5 vs 小程序 | ⭐⭐⭐ |
 | [外包项目避坑指南](outsourcing-pitfalls/README.md) | 5 大隐性成本 + 合同 8 条必看 | ⭐⭐⭐ |
 
 > 📌 **章节说明**（2026-06-30 路径整理）：
 > - `app-quote-breakdown` / `outsourcing-pitfalls` 已从 `13.split-hairs/04.system-design/project-management/` 迁回本主模块。
-> - `mobile-tech-stack` 暂留 split-hairs，规划批 2 迁至主模块 [`09.front-end/08-cross-platform/`](../09.front-end/08-cross-platform/)，与 flutter/rn/pwa 同级。
+> - `mobile-tech-stack` 已迁至主模块 [`09.front-end/08-cross-platform/`](../09.front-end/08-cross-platform/)，与 flutter/rn/pwa 同级。
 
 ---
 
