@@ -29,42 +29,71 @@
 
 ---
 
-## 2. 文章清单（3 篇，待扩充）
+## 2. 文章清单（2 篇已发布 + 4 篇待补充）
 
-| 主题 | 核心问题 | 难度 |
-|------|---------|------|
-| [5 万 vs 50 万 App 报价差在哪](app-quote-breakdown/README.md) | 12 大成本维度拆解 + 决策矩阵 | ⭐⭐⭐ |
-| [App 技术栈选型：原生 vs 跨端](../09.front-end/08-cross-platform/mobile-tech-stack/README.md) | 原生 vs Flutter vs RN vs H5 vs 小程序 | ⭐⭐⭐ |
-| [外包项目避坑指南](outsourcing-pitfalls/README.md) | 5 大隐性成本 + 合同 8 条必看 | ⭐⭐⭐ |
+### 已发布（2 篇，2026-06-30 路径整理）
+
+| 主题 | 核心问题 | 难度 | 状态 |
+|------|---------|------|------|
+| [5 万 vs 50 万 App 报价差在哪](app-quote-breakdown/README.md) | 12 大成本维度拆解 + 决策矩阵 | ⭐⭐⭐ | ✅ |
+| [外包项目避坑指南](outsourcing-pitfalls/README.md) | 5 大隐性成本 + 合同 8 条必看 | ⭐⭐⭐ | ✅ |
 
 > 📌 **章节说明**（2026-06-30 路径整理）：
-> - `app-quote-breakdown` / `outsourcing-pitfalls` 已从 `13.split-hairs/04.system-design/project-management/` 迁回本主模块。
+> - 上述 2 篇已从 `13.split-hairs/04.system-design/project-management/` 迁回本主模块。
 > - `mobile-tech-stack` 已迁至主模块 [`09.front-end/08-cross-platform/`](../09.front-end/08-cross-platform/)，与 flutter/rn/pwa 同级。
+
+### 候选（4 篇，待 Path Z 完成后发布）
+
+| 主题 | 核心问题 | 难度 | 状态 |
+|------|---------|------|------|
+| 技术选型 ROI：自研 vs SaaS vs 外包 | 全生命周期 TCO 对比 + 决策树 | ⭐⭐⭐ | ⏳ 待写 |
+| AI 项目管理账本：DORA + SPACE + ROI | AI 时代研发效能度量框架 | ⭐⭐⭐⭐ | ⏳ 待写 |
+| 人力配比 + 排期估算：3 倍缓冲原则 | 阿里 "2-8-2" 模型 + 排期公式 | ⭐⭐⭐ | ⏳ 待写 |
+| 康威定律下的团队拓扑 | Team Topologies 4 类型 + 流对齐 | ⭐⭐⭐⭐ | ⏳ 待写 |
 
 ---
 
-## 3. 待补充主题
+## 3. 待补充主题（2026 候选）
 
-- **预算 / 成本估算**：人力配比模型（按功能 / 按人均 / 按月）
-- **风险 / 决策**：技术选型 ROI 评估（自研 vs SaaS vs 外包）
-- **组织 / 团队**：康威定律下的小团队 + 大团队协作
-- **AI 项目管理**：AI Coding 提效的工程账本（DORA / SPACE / ROI）
+按 PM 实用度排序：
+
+1. **决策类**：
+   - 自研 vs 购并 vs 集成（C1：技术选型 ROI）
+   - 上云 vs 自建机房
+   - 微服务 vs 单体的"二次成本"
+2. **执行类**：
+   - 人力配比模型（C3：阿里 P5/P6/P7 比例）
+   - 排期估算 + 3 倍缓冲原则（C3）
+   - 需求变更控制（MoSCoW / RICE）
+3. **风险类**：
+   - 项目风险登记册
+   - 技术债的财务账本（与 [46-tech-debt-career-trap](../12.story/46-tech-debt-career-trap.md) 互补）
+4. **组织类**：
+   - 康威定律（C4）
+   - 平台团队 vs 业务团队比例
+   - 远程团队 / 跨时区协作
+5. **AI 时代**（C2）：
+   - AI Coding 提效的工程账本
+   - AI Agent 在 PM 流程中的嵌入
 
 ---
 
 ## 4. 适用人群
 
-- 👔 **老板 / 创业者**：评估外包报价、控制项目成本
-- 📋 **PM / 项目经理**：管理需求变更、识别风险、推进交付
-- 🧑‍💼 **技术总监 / 架构师**：技术选型 ROI 计算、组织能力建设
+- 👔 **老板 / 创业者**：评估外包报价、控制项目成本、技术选型
+- 📋 **PM / 项目经理**：管理需求变更、识别风险、推进交付、人力配比
+- 🧑‍💼 **技术总监 / 架构师**：技术选型 ROI 计算、组织能力建设、康威定律落地
+- 🤖 **AI 时代从业者**（2026+ 新）：AI Coding 工程账本、Harness 落地、研发效能度量
 
 ---
 
 ## 5. 学习路径
 
 1. **快速入门**（30 分钟）：看 [app-quote-breakdown](app-quote-breakdown/README.md)，5 分钟理解报价差异维度
-2. **技术决策**（30 分钟）：看 mobile-tech-stack（原 split-hairs），评估技术栈对成本的影响
-3. **合同避坑**（1 小时）：看 [outsourcing-pitfalls](outsourcing-pitfalls/README.md) → 把它当 checklist 用
+2. **合同避坑**（1 小时）：看 [outsourcing-pitfalls](outsourcing-pitfalls/README.md) → 把它当 checklist 用
+3. **技术选型**（30 分钟）：看 C1（待补充）+ [09.front-end/08-cross-platform/mobile-tech-stack](../09.front-end/08-cross-platform/mobile-tech-stack/)
+4. **AI 时代**（1 小时）：看 C2（待补充）→ 串联 [12.story/44-46](../12.story/45-ai-productivity-paradox.md)（个人 / 数据 / 责任视角）
+5. **组织进阶**（半天）：看 C3 + C4（待补充）→ 与 [12.story/07-from-chef-to-ceo](../12.story/07-from-chef-to-ceo.md) 互补
 
 ---
 
