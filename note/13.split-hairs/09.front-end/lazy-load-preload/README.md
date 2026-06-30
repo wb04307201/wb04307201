@@ -2,6 +2,23 @@
 
 > 区分不清「懒加载」和「预加载」是前端工程师的常见痛点。考察点不是"loading='lazy' 怎么写"，而是 **4 种资源提示（preload/prefetch/preconnect/dns-prefetch）的精确含义与适用场景**。
 
+## 引子：为什么首页图片总"突然冒出"一卡一卡的？
+
+```text
+电商首页打开，前 3 张图秒出，第 4 张开始每滚一下都"冒"出新图。
+用户反馈：滚动很卡。
+```
+
+**真相**：默认浏览器**等到滚动到图片位置才下载**（lazy by default）。
+
+但 LCP（Largest Contentful Paint）的"最大图"——首屏那张大 banner：
+
+- 如果用 lazy = 用户看到的是**白屏 → 然后图片突然出现**
+- 正确做法：banner 用 **preload**（高优先级立即加载）
+- 下面看不到的图片用 **loading="lazy"**（默认懒加载）
+
+**preload vs prefetch vs preconnect vs dns-prefetch** —— 4 种提示，4 个用途，全混就翻车。
+
 ## 一、核心结论（TL;DR）
 
 | 类型 | 加载时机 | 优先级 | 适用场景 |

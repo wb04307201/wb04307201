@@ -4,6 +4,35 @@
 
 ---
 
+## 引子：Vue 怎么知道你改了 data？
+
+```js
+new Vue({
+  data: { count: 0 },
+  template: `<div>{{ count }}</div>`
+});
+
+// 你改一下：
+vm.count = 100;
+// 模板自动更新——你什么都没写，Vue 怎么知道的？
+```
+
+**真相**：Vue 不靠"魔法"，靠 **3 个组件协同**：
+
+1. **Observer**：遍历 data 所有属性，用 `Object.defineProperty`（Vue 2）/ `Proxy`（Vue 3）包成 getter/setter
+2. **Dep**：每个属性一个"订阅中心"，收集"谁在用它"
+3. **Watcher**：组件渲染函数 = 一个 watcher，订阅它用到的数据
+
+当你 `vm.count = 100`：
+
+1. setter 拦截 → 通知 Dep
+2. Dep 通知所有 watcher
+3. watcher 重新执行 render → 视图更新
+
+**Vue 响应式 = Observer + Dep + Watcher**。
+Vue 2 用 Object.defineProperty（无法检测新加的属性），
+Vue 3 用 Proxy（性能更好，能检测更多操作）。
+
 ## 一、核心原理
 
 Vue 响应式系统的本质是**数据驱动视图**。开发者只需修改数据，Vue 会自动检测变化并更新对应的 DOM。其核心思想可以概括为两个阶段：

@@ -2,6 +2,29 @@
 
 > 前端性能优化的"老八股"。考察点不是"什么是回流"，而是 **浏览器的渲染队列机制 + 如何避免强制同步布局（Layout Thrashing）**。
 
+## 引子：循环读 offsetWidth，页面卡到主线程报红
+
+```js
+// ❌ 经典 Layout Thrashing
+for (let i = 0; i < 1000; i++) {
+  const w = el.offsetWidth;   // 触发强制 layout
+  el.style.width = (w + 1) + 'px';
+  // 立刻又 offsetWidth 一次...
+}
+```
+
+打开 DevTools 看 **Performance**：黄色的 Forced Reflow 警告密密麻麻。
+
+**真相**：浏览器渲染有"队列"机制，你读 layout 属性（offsetWidth / scrollTop）会**强制刷新队列**（因为你的代码需要的是"最新值"）。
+
+高频读 + 高频写交错 = **Layout Thrashing**（强制同步布局）。
+
+**正解**：
+
+- 先把所有读 batch 起来（缓存到变量）
+- 再统一写
+- 用 `requestAnimationFrame` 把写操作推到下一帧
+
 ## 一、核心结论（TL;DR）
 
 | 概念 | 含义 | 性能开销 |

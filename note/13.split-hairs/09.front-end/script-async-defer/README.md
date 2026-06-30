@@ -2,6 +2,28 @@
 
 > 看似简单的 script 三种加载方式，90% 候选人说不清 **「加载时机」和「执行时机」的区别**，也说不清 **DOMContentLoaded 的触发条件**。
 
+## 引子：为什么 `<script>` 放 body 底部以前是"铁律"？
+
+```text
+过去 10 年：把 <script> 放 </body> 前是铁律，因为浏览器会阻塞 HTML 解析。
+2026 的现实：
+- <script>：同步加载执行，阻塞 HTML 解析，阻塞 DOMContentLoaded
+- <script async>：并行下载，下载完立即执行（可能中断 HTML 解析）
+- <script defer>：并行下载，等 HTML 解析完才执行（保证顺序），DOMContentLoaded 前
+```
+
+**真相**：
+
+- HTML 解析过程中遇到 `<script>` → **暂停**，下载、执行完才继续
+- 这导致：即使在 HTML 末尾，浏览器也"卡"在那里执行 JS
+- DOMContentLoaded：所有 defer + 同步 script 都执行完才触发
+
+**正解**：
+
+- 业务代码用 `defer`，保证顺序 + 不阻塞解析
+- 第三方独立 SDK 用 `async`（如 GA）
+- 永远不要把 `<script>` 放 `<head>` 里（除非用 defer/async）
+
 ## 一、核心结论（TL;DR）
 
 | 方式 | 加载时机 | 执行时机 | 是否阻塞 DOMContentLoaded |

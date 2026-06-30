@@ -6,6 +6,30 @@
 
 ---
 
+## 引子：arr.toString 怎么没打印 "[object Array]"？
+
+```js
+const arr = [1, 2, 3];
+arr.push(4);                  // arr 自己没有 push
+// 浏览器发现 arr.__proto__ === Array.prototype
+// Array.prototype.__proto__ === Object.prototype
+// 在那一层找到 push
+console.log(arr.toString());  // "1,2,3,4"，又找到了 Object.prototype
+```
+
+面试官一问："arr.toString() 为什么不打印 '[object Array]' 而是 '1,2,3,4'？"
+
+99% 候选人答："Array 重写了 toString。"
+
+**真相**：JS 的属性查找是 **链式向上**（委托式继承）：
+
+1. 先查 `arr` 自己 → 没有
+2. 查 `arr.__proto__` (Array.prototype) → 找到了 toString（自定义）
+3. 查 `Array.prototype.__proto__` (Object.prototype) → 找到了 toString 原版
+4. 直到顶端 `null` 才停止
+
+**没搞懂原型链 = 看不懂 JS 任何 OOP 行为**（class 也是语法糖）。
+
 ## 一、核心原理
 
 理解原型链需厘清三个关键概念：**prototype**、`__proto__`、**constructor**。

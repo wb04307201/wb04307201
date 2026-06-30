@@ -2,6 +2,29 @@
 
 > Selenium 真的要退出历史舞台了吗？Playwright 凭什么成为 2026 主流？考察的是 **测试工具选型的工程判断**，不是"哪个更好用"。
 
+## 引子：Selenium 测试 30 分钟跑不完，团队想换工具
+
+```text
+测试团队老王：
+- Selenium 测试 200 条 CI 跑 30 分钟
+- 经常由于"元素未加载"假阴性，flaky 率高
+- 工程师每天 1 小时在排查 flaky
+- 老板：能不能换个快点的工具？
+```
+
+**真相**：
+
+- Selenium 的根因：**WebDriver 协议有双向通信瓶颈**
+- Playwright 用 **Chrome DevTools Protocol（CDP）** 直接驱动浏览器，无中间协议 → **快 2-5 倍**
+- 自动等待（auto-wait）机制 → flaky 率下降 80%
+
+但 Selenium 不会消亡：
+
+- 老旧浏览器（IE / 远古 Safari）还得靠它
+- 庞大的现有 case 库迁移成本
+
+**选 Playwright if 新项目，保留 Selenium if 维护老 stack**。
+
 ## 一、核心结论（TL;DR）
 
 | 维度 | Selenium | Playwright |

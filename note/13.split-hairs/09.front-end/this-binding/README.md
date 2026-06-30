@@ -4,6 +4,33 @@
 
 ---
 
+## 引子：同个函数，this 指向完全不一样
+
+```js
+var a = 2;
+
+function foo() { console.log(this.a); }
+
+const obj = { a: 100, foo };
+obj.foo();              // 100（隐式绑定）
+const f = obj.foo;
+f();                    // 2（默认绑定，丢失 this）
+
+new foo();              // undefined（new 绑定，this 指向新对象）
+foo.call({ a: 999 });   // 999（显式绑定）
+
+const arrow = () => console.log(this.a);
+arrow();                // undefined（箭头函数没有自己的 this）
+```
+
+**真相**：
+
+- `this` 与声明位置无关，与**调用方式**相关
+- 同样一个函数，5 种调用方式 → 5 个不同的 this
+- 箭头函数是例外：它的 this **从外层作用域继承**（词法绑定），不接受任何 `bind/call/apply` 规则
+
+**90% 前端 bug 的根因 = 不知道 this 是运行时绑定**。
+
 ## 一、核心原理
 
 JavaScript 中的 `this` 是**运行时**绑定，不指向函数自身或词法作用域，完全取决于**调用方式**。
