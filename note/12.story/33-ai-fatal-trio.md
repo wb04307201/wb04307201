@@ -1,3 +1,12 @@
+<!--
+story:
+  number: 33
+  type: 续集
+  position: 续集九
+  title: AI 致命三件套
+  audience: AI 工程师 / 架构师
+-->
+
 # 33 · AI 致命三件套
 
 > 从阿明的 3 起 AI 事故，看 AI 系统的 3 大致命漏洞 —— 注入、越权、泄露，三者组合一次攻击就能致命

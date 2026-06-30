@@ -1,3 +1,12 @@
+<!--
+story:
+  number: 31
+  type: 续集
+  position: 续集七
+  title: Codebase 认知债
+  audience: AI 工程师 / 架构师
+-->
+
 # 31 · Codebase 认知债
 
 > 从阿明的 500 道菜 50 万行代码，看 AI 时代最大的隐形负债 —— 认知债

@@ -1,3 +1,12 @@
+<!--
+story:
+  number: 32
+  type: 续集
+  position: 续集八
+  title: Agent Harness
+  audience: AI 工程师 / 架构师
+-->
+
 # 32 · Agent Harness
 
 > 从阿明的 1 个 Agent 到 20 个 Agent，看 AI 编码工程化的脚手架 —— Harness 是 Agent 时代的"操作平台"

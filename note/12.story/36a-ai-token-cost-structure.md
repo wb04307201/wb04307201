@@ -1,3 +1,12 @@
+<!--
+story:
+  number: 36a
+  type: 续集
+  position: 续集十二（上）
+  title: AI 账本
+  audience: AI 工程师 / 架构师
+-->
+
 # 36a · AI 账本
 
 > 从阿明的"AI 月账单从 5 万涨到 50 万"，看 AI 时代的 FinOps —— Token 经济学**上篇：成本结构与监控**

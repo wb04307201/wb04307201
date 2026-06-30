@@ -1,3 +1,12 @@
+<!--
+story:
+  number: 29
+  type: 续集
+  position: 续集五
+  title: 会自我进化的厨房
+  audience: AI 工程师 / 架构师
+-->
+
 # 29 · 会自我进化的厨房
 
 > 从阿明的"睡一觉厨房就变好了"，看自我进化型组织的 Agent Loop 设计

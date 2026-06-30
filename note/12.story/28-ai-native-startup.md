@@ -1,3 +1,12 @@
+<!--
+story:
+  number: 28
+  type: 续集
+  position: 续集四
+  title: 阿明的二次创业
+  audience: AI 工程师 / 架构师
+-->
+
 # 28 · 阿明的二次创业
 
 > 从阿明用 AI 开第二家店，看 AI 原生创业的四阶段方法论

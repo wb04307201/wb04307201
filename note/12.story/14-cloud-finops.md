@@ -1,3 +1,12 @@
+<!--
+story:
+  number: 14
+  type: 番外
+  position: 番外二
+  title: 阿明的省钱经
+  audience: PM / 创业者
+-->
+
 # 14 · 阿明的省钱经
 
 > 从阿明的"120 万云账单"，看云成本优化与 FinOps 的落地实践

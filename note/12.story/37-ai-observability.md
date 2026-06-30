@@ -1,3 +1,12 @@
+<!--
+story:
+  number: 37
+  type: 续集
+  position: 续集十三
+  title: 厨房暗哨
+  audience: AI 工程师 / 架构师
+-->
+
 # 37 · 厨房暗哨
 
 > 从阿明的"AI 出问题不知道哪出问题"，看 AI 时代的可观测性 —— **AI Observability 4 大支柱 + 5 大工具栈 + 7 大实战模式**

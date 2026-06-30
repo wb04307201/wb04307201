@@ -1,3 +1,12 @@
+<!--
+story:
+  number: 22
+  type: 番外
+  position: 番外四
+  title: 懂你的菜单
+  audience: PM / 创业者
+-->
+
 # 22 · 懂你的菜单
 
 > 从阿明的"千人千面菜单"，看搜索与推荐系统的设计实战

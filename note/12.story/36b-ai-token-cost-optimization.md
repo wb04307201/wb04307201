@@ -1,3 +1,12 @@
+<!--
+story:
+  number: 36b
+  type: 续集
+  position: 续集十二（下）
+  title: 省钱大作战
+  audience: AI 工程师 / 架构师
+-->
+
 # 36b · 省钱大作战
 
 > 从阿明的"AI 月账单从 5 万涨到 50 万"，看 AI 时代的 FinOps —— Token 经济学**下篇：成本优化与 ROI**

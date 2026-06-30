@@ -1,3 +1,12 @@
+<!--
+story:
+  number: 04
+  type: 正传
+  position: 正传 1
+  title: 高峰保卫战
+  audience: 工程师 / SRE / 架构师
+-->
+
 # 04 · 高峰保卫战
 
 > 从阿明餐厅的午高峰，看流量治理的五道防线

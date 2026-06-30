@@ -1,3 +1,12 @@
+<!--
+story:
+  number: 06
+  type: 正传
+  position: 正传 3
+  title: 食安大检查
+  audience: 工程师 / SRE / 架构师
+-->
+
 # 06 · 食安大检查
 
 > 从阿明餐厅的突击检查，看安全架构的六大防线

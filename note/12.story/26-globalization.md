@@ -1,3 +1,12 @@
+<!--
+story:
+  number: 26
+  type: 番外
+  position: 番外六
+  title: 阿明出海记
+  audience: PM / 创业者
+-->
+
 # 26 · 阿明出海记
 
 > 从阿明的"东京分店"，看国际化与多区域部署的工程实践

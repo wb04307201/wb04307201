@@ -1,3 +1,12 @@
+<!--
+story:
+  number: 27
+  type: 续集
+  position: 续集三
+  title: 厨房大换岗
+  audience: AI 工程师 / 架构师
+-->
+
 # 27 · 厨房大换岗
 
 > 从阿明的"AI 炒菜机裁员风波"，看 AI 时代的组织转型与岗位重塑

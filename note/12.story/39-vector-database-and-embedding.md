@@ -1,3 +1,12 @@
+<!--
+story:
+  number: 39
+  type: 续集
+  position: 续集十五
+  title: 味道仓库
+  audience: AI 工程师 / 架构师
+-->
+
 # 39 · 味道仓库
 
 > 从阿明的"向量库慢 / 召回差 / 成本高"，看向量数据库与 Embedding —— **6 大主流向量库对比 + Embedding 模型选型 + 性能调优 + 成本控制**

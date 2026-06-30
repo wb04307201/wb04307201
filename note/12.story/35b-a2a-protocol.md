@@ -1,3 +1,12 @@
+<!--
+story:
+  number: 35b
+  type: 续集
+  position: 续集十一（下）
+  title: 厨师们开会
+  audience: AI 工程师 / 架构师
+-->
+
 # 35b · 厨师们开会
 
 > 从阿明的 20 个 Agent 各自为政，到全栈打通 —— 看 AI 时代的"TCP/IP"：**A2A 协议 + 协议治理**

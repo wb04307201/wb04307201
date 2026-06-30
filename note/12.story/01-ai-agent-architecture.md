@@ -1,3 +1,12 @@
+<!--
+story:
+  number: 01
+  type: 续集
+  position: 续集一
+  title: 当餐厅长出大脑
+  audience: AI 工程师 / 架构师
+-->
+
 # 01 · 当餐厅长出大脑
 
 > 从阿明智慧厨房拆解 AI Agent 的 7 个核心模块与工程闭环

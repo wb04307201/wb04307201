@@ -1,3 +1,12 @@
+<!--
+story:
+  number: 30
+  type: 续集
+  position: 续集六
+  title: AI 的"黑暗料理"
+  audience: AI 工程师 / 架构师
+-->
+
 # 30 · AI 的"黑暗料理"
 
 > 从阿明的 AI 推荐了"相克食材"，看 AI 幻觉、信任校准与安全护栏

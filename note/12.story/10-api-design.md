@@ -1,3 +1,12 @@
+<!--
+story:
+  number: 10
+  type: 正传
+  position: 正传 6
+  title: 菜单设计学
+  audience: 工程师 / SRE / 架构师
+-->
+
 # 10 · 菜单设计学
 
 > 从阿明的"口头点单"到标准化菜单，看 API 设计的艺术与科学

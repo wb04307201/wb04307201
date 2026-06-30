@@ -1,3 +1,12 @@
+<!--
+story:
+  number: 09
+  type: 正传
+  position: 正传 5
+  title: 从接单到出餐
+  audience: 工程师 / SRE / 架构师
+-->
+
 # 09 · 从接单到出餐
 
 > 从阿明的"手写菜单"到自动化流水线，看 CI/CD 与 DevOps 的完整旅程

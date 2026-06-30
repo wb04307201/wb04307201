@@ -1,3 +1,12 @@
+<!--
+story:
+  number: 19
+  type: 番外
+  position: 番外三
+  title: 阿明的加盟帝国
+  audience: PM / 创业者
+-->
+
 # 19 · 阿明的加盟帝国
 
 > 从阿明的"连锁加盟系统"，看多租户与 SaaS 架构的设计与权衡
