@@ -42,39 +42,38 @@
 > - 上述 2 篇已从 `13.split-hairs/04.system-design/project-management/` 迁回本主模块。
 > - `mobile-tech-stack` 已迁至主模块 [`09.front-end/08-cross-platform/`](../09.front-end/08-cross-platform/)，与 flutter/rn/pwa 同级。
 
-### 候选（4 篇，待 Path Z 完成后发布）
+### 已发布（6 篇，2026-06-30 Path Z 完成）
 
 | 主题 | 核心问题 | 难度 | 状态 |
 |------|---------|------|------|
-| 技术选型 ROI：自研 vs SaaS vs 外包 | [自研/SaaS/外包 TCO 对比 + 5 大评估维度 + 决策树 + AI 时代变量 + 实战 checklist](self-vs-saas-vs-outsourcing/README.md) | ⭐⭐⭐ | ✅ |
-| AI 项目管理账本：DORA + SPACE + ROI | [DORA 4 指标 + SPACE 5 维度 + ROI 综合，AI 时代研发效能度量 + 月/季/年 三阶段实施](ai-pm-dora-space/README.md) | ⭐⭐⭐⭐ | ✅ |
-| 人力配比 + 排期估算：3 倍缓冲原则 | [阿里 P5/P6/P7 "2-8-2" 黄金比例 + 排期估算公式 + 3 倍缓冲原则 + AI 时代修正](team-sizing-3x-buffer/README.md) | ⭐⭐⭐ | ✅ |
-| 康威定律下的团队拓扑 | [康威定律原文 + Team Topologies 4 类型 + 平台/业务团队比例 + AI 时代趋势 + 实战 checklist](conways-law-team-topologies/README.md) | ⭐⭐⭐⭐ | ✅ |
+| [5 万 vs 50 万 App 报价差在哪](app-quote-breakdown/README.md) | 12 大成本维度拆解 + 决策矩阵 | ⭐⭐⭐ | ✅ |
+| [外包项目避坑指南](outsourcing-pitfalls/README.md) | 5 大隐性成本 + 合同 8 条必看 | ⭐⭐⭐ | ✅ |
+| [技术选型 ROI：自研 vs SaaS vs 外包](self-vs-saas-vs-outsourcing/README.md) | 自研/SaaS/外包 TCO 对比 + 5 大评估维度 + 决策树 + AI 时代变量 + 实战 checklist | ⭐⭐⭐ | ✅ |
+| [AI 项目管理账本：DORA + SPACE + ROI](ai-pm-dora-space/README.md) | DORA 4 指标 + SPACE 5 维度 + ROI 综合，AI 时代研发效能度量 + 月/季/年 三阶段实施 | ⭐⭐⭐⭐ | ✅ |
+| [人力配比 + 排期估算：3 倍缓冲原则](team-sizing-3x-buffer/README.md) | 阿里 P5/P6/P7 "2-8-2" 黄金比例 + 排期估算公式 + 3 倍缓冲原则 + AI 时代修正 | ⭐⭐⭐ | ✅ |
+| [康威定律下的团队拓扑](conways-law-team-topologies/README.md) | 康威定律原文 + Team Topologies 4 类型 + 平台/业务团队比例 + AI 时代趋势 + 实战 checklist | ⭐⭐⭐⭐ | ✅ |
 
----
+> 📌 **章节说明**（2026-06-30 路径整理）：
+> - 上述 6 篇中，前 2 篇从 `13.split-hairs/04.system-design/project-management/` 迁回本主模块。
+> - 后 4 篇（Path Z 新增）覆盖"决策 + AI 时代 + 执行 + 组织"4 大维度。
+> - mobile-tech-stack 已迁至主模块 [`09.front-end/08-cross-platform/`](../09.front-end/08-cross-platform/)。
 
-## 3. 待补充主题（2026 候选）
+### 候选（待扩展）
 
-按 PM 实用度排序：
+按"已有 6 篇 + 候选"思路，**Path Z 完成后**保留以下候选：
 
 1. **决策类**：
-   - 自研 vs 购并 vs 集成（C1：技术选型 ROI）
    - 上云 vs 自建机房
-   - 微服务 vs 单体的"二次成本"
+   - 微服务 vs 单体的"二次成本"（运维 / 数据一致性 / 跨团队沟通税）
 2. **执行类**：
-   - 人力配比模型（C3：阿里 P5/P6/P7 比例）
-   - 排期估算 + 3 倍缓冲原则（C3）
-   - 需求变更控制（MoSCoW / RICE）
-3. **风险类**：
+   - 需求变更控制（MoSCoW / RICE 评分法）
    - 项目风险登记册
-   - 技术债的财务账本（与 [46-tech-debt-career-trap](../12.story/46-tech-debt-career-trap.md) 互补）
+3. **风险类**：
+   - 技术债的财务账本（与 [12.story/46-tech-debt-career-trap](../12.story/46-tech-debt-career-trap.md) 互补）
 4. **组织类**：
-   - 康威定律（C4）
-   - 平台团队 vs 业务团队比例
    - 远程团队 / 跨时区协作
-5. **AI 时代**（C2）：
-   - AI Coding 提效的工程账本
-   - AI Agent 在 PM 流程中的嵌入
+5. **AI 时代**：
+   - AI Agent 在 PM 流程中的嵌入（Harness / Verifier / Feedback 3 件套）
 
 ---
 
@@ -91,14 +90,18 @@
 
 1. **快速入门**（30 分钟）：看 [app-quote-breakdown](app-quote-breakdown/README.md)，5 分钟理解报价差异维度
 2. **合同避坑**（1 小时）：看 [outsourcing-pitfalls](outsourcing-pitfalls/README.md) → 把它当 checklist 用
-3. **技术选型**（30 分钟）：看 C1（待补充）+ [09.front-end/08-cross-platform/mobile-tech-stack](../09.front-end/08-cross-platform/mobile-tech-stack/)
-4. **AI 时代**（1 小时）：看 C2（待补充）→ 串联 [12.story/44-46](../12.story/45-ai-productivity-paradox.md)（个人 / 数据 / 责任视角）
-5. **组织进阶**（半天）：看 C3 + C4（待补充）→ 与 [12.story/07-from-chef-to-ceo](../12.story/07-from-chef-to-ceo.md) 互补
+3. **技术选型**（30 分钟）：看 [self-vs-saas-vs-outsourcing](self-vs-saas-vs-outsourcing/README.md) + [mobile-tech-stack](../../09.front-end/08-cross-platform/mobile-tech-stack/)
+4. **AI 时代**（1 小时）：看 [ai-pm-dora-space](ai-pm-dora-space/README.md) → 串联 [12.story/45-ai-productivity-paradox](../../12.story/45-ai-productivity-paradox.md)
+5. **执行类**（30 分钟）：看 [team-sizing-3x-buffer](team-sizing-3x-buffer/README.md) → 阿里 2-8-2 模型 + 排期 3 倍
+6. **组织进阶**（半天）：看 [conways-law-team-topologies](conways-law-team-topologies/README.md) → 与 [12.story/07-from-chef-to-ceo](../../12.story/07-from-chef-to-ceo.md) 互补
 
 ---
 
 ## 相关章节
 
+- 📋 [一页速查](./cheatsheet.md) —— 6 大场景决策矩阵 + 速算公式 + 何时该读本模块
+- 🛠️ [scripts/validate.py](./scripts/validate.py) —— 合规校验（0 ERR 已验证）
+- 🛠️ [scripts/insert-frontmatter.py](./scripts/insert-frontmatter.py) —— 自动加 frontmatter
 - 主模块：[`note/04.system-design`](../04.system-design/README.md)（技术选型的底层支撑）
 - 主模块：[`note/09.front-end`](../09.front-end/README.md)（移动端跨端架构决策）
 - 面试专题：[`note/13.split-hairs`](../13.split-hairs/README.md)（技术细节高频坑）
