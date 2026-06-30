@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-parent-child-thread
+  topic: 01.java
+  difficulty: ⭐⭐⭐
+  frequency: 高频
+  scenario_type: 反直觉代码
+  tags: [01.java, parent, child]
+-->
+
 # Java 父子线程数据传递：3 种方案横跨 JDK + 阿里开源
 
 > 经典 Java 面试题（阿里、字节、美团高频）。考察的不是"会不会用 ThreadLocal"，而是 **JDK 原生方案的 3 个限制** + **阿里 TransmittableThreadLocal 的设计精髓** + **线程池场景下的最佳实践**。

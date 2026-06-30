@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 11.ai-rag
+  topic: 11.ai
+  difficulty: ⭐⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [11.ai, RAG, rag]
+-->
+
 # RAG 架构设计 — 检索增强生成面试深挖
 
 > 一句话定位：RAG（Retrieval-Augmented Generation）让 LLM 基于私有/实时数据回答 —— 是 2026 年企业 LLM 应用的事实标准。完整概念见 [主模块 RAG vs Fine-tuning](../../../11.ai/07-llmops/01-rag-vs-finetuning/README.md)。

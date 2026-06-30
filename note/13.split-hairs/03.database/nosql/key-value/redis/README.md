@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-redis
+  topic: 03.database
+  difficulty: ⭐⭐⭐
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [03.database, Redis, redis]
+-->
+
 # Redis 细节 — 咬文嚼字
 
 > Redis 面试中那些"看似简单实则暗藏陷阱"的问题。

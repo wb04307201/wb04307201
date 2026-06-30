@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-relational-database
+  topic: 03.database
+  difficulty: ⭐⭐
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [03.database, relational, database]
+-->
+
 # 关系型数据库 — 咬文嚼字
 
 > 关系型数据库细节深挖，聚焦面试中那些"以为懂但说不清"的问题。

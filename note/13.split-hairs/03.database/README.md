@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-03.database
+  topic: 03.database
+  difficulty: ⭐⭐
+  frequency: 高频
+  scenario_type: 性能对比
+  tags: [03.database]
+-->
+
 # 数据库咬文嚼字
 
 > 数据库高频面试题与细节深挖，对齐主模块 [`03.database`](../../03.database/)

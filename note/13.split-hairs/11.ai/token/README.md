@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 11.ai-token
+  topic: 11.ai
+  difficulty: ⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [11.ai, LLM, token]
+-->
+
 # Token 与计费 — LLM 经济学面试深挖
 
 > 一句话定位：Token 是 LLM 的最小处理单位，直接决定费用、速度和上下文窗口 —— 是所有 LLM 应用的底层经济学基础。完整概念见 [主模块 Token 与计费](../../../11.ai/02-technology-stack/token-billing/README.md)。

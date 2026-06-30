@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-questions
+  topic: 01.java
+  difficulty: ⭐⭐⭐⭐⭐
+  frequency: 高频
+  scenario_type: 反直觉代码
+  tags: [01.java, questions]
+-->
+
 # Java高频面试题深度解析：从原理到回答技巧
 
 ## 引子：为什么"背八股文"还是挂？

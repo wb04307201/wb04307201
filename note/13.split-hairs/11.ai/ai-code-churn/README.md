@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 11.ai-ai-code-churn
+  topic: 11.ai
+  difficulty: ⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 架构困境
+  tags: [11.ai, code, churn]
+-->
+
 # AI 代码流失率：采纳率 80% vs 有效率 30% 的真相
 
 > AI 时代的代码流失率（Code Churn）问题。考察的是 **代码健康度量能力** + **AI 时代流失率恶化原因 + 改进策略**。

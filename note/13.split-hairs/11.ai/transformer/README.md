@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 11.ai-transformer
+  topic: 11.ai
+  difficulty: ⭐⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [11.ai, Transformer, transformer]
+-->
+
 # Transformer 架构 — Self-Attention 面试深挖
 
 > 一句话定位：Transformer 是 2017 年 Google "Attention is All You Need" 提出的架构，核心创新是 Self-Attention。完整概念见 [主模块 Transformer](../../../11.ai/01-fundamentals/transformer/README.md)。

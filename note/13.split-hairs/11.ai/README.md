@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 11.ai-11.ai
+  topic: 11.ai
+  difficulty: ⭐⭐
+  frequency: 高频
+  scenario_type: 反直觉代码
+  tags: [11.ai]
+-->
+
 # AI 咬文嚼字
 
 > AI 高频面试题与新概念深挖，对齐主模块 [`11.ai`](../../11.ai/)

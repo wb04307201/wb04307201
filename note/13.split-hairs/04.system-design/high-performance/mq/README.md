@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 04.system-design-mq
+  topic: 04.system-design
+  difficulty: ⭐⭐⭐⭐
+  frequency: 高频
+  scenario_type: 架构困境
+  tags: [04.system-design]
+-->
+
 # 消息队列 — 咬文嚼字
 
 > MQ 面试高频细节，聚焦选型与运维实战。

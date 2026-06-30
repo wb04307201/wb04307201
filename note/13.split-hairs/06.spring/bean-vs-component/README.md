@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 06.spring-bean-vs-component
+  topic: 06.spring
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 架构困境
+  tags: [06.spring, Bean, bean]
+-->
+
 # @Bean vs @Component 深度对比
 
 ## 引子：两种方式都能注册 Bean，用哪个？

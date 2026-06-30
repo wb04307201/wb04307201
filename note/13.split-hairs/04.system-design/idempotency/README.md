@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 04.system-design-idempotency
+  topic: 04.system-design
+  difficulty: ⭐
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [04.system-design, idempotency]
+-->
+
 # 幂等性设计 6 大方案深度剖析
 
 ## 引子：用户点了两次"提交订单"

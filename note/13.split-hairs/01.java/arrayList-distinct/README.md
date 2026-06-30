@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-arrayList-distinct
+  topic: 01.java
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [01.java, arrayList, distinct]
+-->
+
 # ArrayList去重
 
 ## 引子：一亿条数据怎么去重？

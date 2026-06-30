@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-concurrent-hashmap
+  topic: 01.java
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [01.java, HashMap, concurrent]
+-->
+
 # ConcurrentHashMap 原理（JDK 7 vs 8 深度对比）
 
 ## 引子：为什么要"另起炉灶"？

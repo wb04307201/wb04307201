@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 09.front-end-playwright-vs-selenium
+  topic: 09.front-end
+  difficulty: ⭐⭐
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [09.front-end, playwright, selenium]
+-->
+
 # Playwright vs Selenium：2026 Web 自动化测试选型
 
 > Selenium 真的要退出历史舞台了吗？Playwright 凭什么成为 2026 主流？考察的是 **测试工具选型的工程判断**，不是"哪个更好用"。

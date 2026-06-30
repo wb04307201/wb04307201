@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 09.front-end-promise-handwriting
+  topic: 09.front-end
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [09.front-end, promise, handwriting]
+-->
+
 # Promise 手写实现
 
 ## 引子：前端面试的"试金石"

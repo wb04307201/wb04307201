@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 06.spring-aop-principle
+  topic: 06.spring
+  difficulty: ⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [06.spring, AOP, aop]
+-->
+
 # AOP 实现原理：JDK 动态代理 vs CGLIB
 
 ## 引子：日志、事务、权限——横切关注点怎么解耦？

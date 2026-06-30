@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 06.spring-circular-dependency
+  topic: 06.spring
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [06.spring, circular, dependency]
+-->
+
 # 循环依赖三级缓存解决
 
 ## 引子：先有鸡还是先有蛋？

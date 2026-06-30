@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 09.front-end-react-hooks
+  topic: 09.front-end
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [09.front-end, React, react]
+-->
+
 # React Hooks 原理
 
 ## 引子：一个让人困惑的 Bug

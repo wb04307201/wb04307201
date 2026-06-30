@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-batch-operation
+  topic: 03.database
+  difficulty: ⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 生产 Bug
+  tags: [03.database, batch, operation]
+-->
+
 # 批量插入：JDBC batch vs rewriteBatchedStatements 性能对比
 
 > 同样是"插入 100 万行"，写法不同性能差 100 倍。考察点不是"怎么用 batch"，而是 **MySQL JDBC 的 `rewriteBatchedStatements` 参数如何把 batch 编译成 multi-value INSERT**。

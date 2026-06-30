@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-equals-hashcode
+  topic: 01.java
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [01.java, equals, hashcode]
+-->
+
 # == / equals / hashCode 深度剖析
 
 ## 引子：一个让人抓狂的 Bug

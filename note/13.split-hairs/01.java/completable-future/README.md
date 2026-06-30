@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-completable-future
+  topic: 01.java
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [01.java, completable, future]
+-->
+
 # CompletableFuture 异步编排深度剖析
 
 ## 引子：告别回调地狱

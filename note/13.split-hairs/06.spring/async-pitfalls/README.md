@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 06.spring-async-pitfalls
+  topic: 06.spring
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [06.spring, async, pitfalls]
+-->
+
 # @Async 失效的 4 种场景与解决方案
 
 ## 引子：加了 @Async，为什么还是同步执行？

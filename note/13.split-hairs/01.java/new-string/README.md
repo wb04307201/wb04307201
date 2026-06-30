@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-new-string
+  topic: 01.java
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [01.java, new, string]
+-->
+
 # `new String("123")` 创建几个对象？
 
 ## 引子：一道经典面试题

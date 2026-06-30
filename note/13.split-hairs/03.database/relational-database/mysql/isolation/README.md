@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-isolation
+  topic: 03.database
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [03.database, MySQL, isolation]
+-->
+
 # MySQL事务隔离级别深度解析
 
 ## 引子：三个经典的并发问题

@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 09.front-end-prototype-chain
+  topic: 09.front-end
+  difficulty: ⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [09.front-end, prototype, chain]
+-->
+
 # 原型链与继承深度剖析
 
 > 一句话：JavaScript 通过 `__proto__` 将对象串联成链，属性查找沿链向上追溯，构成 JS 独有的委托式继承模型。

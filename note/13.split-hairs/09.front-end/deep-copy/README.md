@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 09.front-end-deep-copy
+  topic: 09.front-end
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [09.front-end, deep, copy]
+-->
+
 # 深拷贝实现深度剖析
 
 ## 引子：一个让人困惑的 Bug

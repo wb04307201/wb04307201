@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 09.front-end-https-handshake
+  topic: 09.front-end
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [09.front-end, HTTP, https]
+-->
+
 # HTTPS 握手过程深度剖析
 
 ## 引子：一把锁 🦒 是怎么保证你的密码不被窃听的？

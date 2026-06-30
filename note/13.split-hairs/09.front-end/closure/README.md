@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 09.front-end-closure
+  topic: 09.front-end
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [09.front-end, closure]
+-->
+
 # 闭包（Closure）
 
 ## 引子：一个"有记忆"的函数

@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 06.spring-not-use-@autowired
+  topic: 06.spring
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [06.spring, Spring, not]
+-->
+
 # Spring里为什么不推荐使用@ Autowired
 
 ## 引子：最常见的写法，其实不推荐

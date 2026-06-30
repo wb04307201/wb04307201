@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-mysql-join
+  topic: 03.database
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [03.database, MySQL, mysql]
+-->
+
 # MySQL JOIN 算法深度剖析
 
 ## 引子：同一个 JOIN，为什么快了 100 倍？

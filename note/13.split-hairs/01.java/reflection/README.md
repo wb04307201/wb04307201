@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-reflection
+  topic: 01.java
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [01.java, reflection]
+-->
+
 # Java 反射原理与性能深度剖析
 
 ## 引子：一个"不可能"的操作

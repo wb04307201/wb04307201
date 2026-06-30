@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-reuse-of-stringbuilder
+  topic: 01.java
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [01.java, reuse, stringbuilder]
+-->
+
 # 字符串拼接优化：StringBuilder 重用深度解析
 
 ## 引子：你真的会用 StringBuilder 吗？

@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-count
+  topic: 03.database
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [03.database, MySQL, count]
+-->
+
 # MySQL COUNT(*) vs COUNT(1) vs COUNT(字段) 深度解析
 
 ## 引子：性能差 10 倍，你选哪个？

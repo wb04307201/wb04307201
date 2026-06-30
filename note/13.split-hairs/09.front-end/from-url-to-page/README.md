@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 09.front-end-from-url-to-page
+  topic: 09.front-end
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [09.front-end, from, url]
+-->
+
 # 从输入 URL 到页面展示全过程
 
 ## 引子：一道题考遍所有知识

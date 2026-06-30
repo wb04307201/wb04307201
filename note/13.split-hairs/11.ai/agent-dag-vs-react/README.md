@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 11.ai-agent-dag-vs-react
+  topic: 11.ai
+  difficulty: ⭐⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 架构困境
+  tags: [11.ai, Agent, agent]
+-->
+
 # Agent 架构选型 — DAG vs ReAct 面试深挖
 
 > 一句话定位：复杂 Agent 为什么越来越多采用 DAG？核心是生产环境的稳定性、成本、可观测性、合规需求。完整概念见 [主模块 Agent 架构](../../../11.ai/04-architecture/agent-architecture/README.md)。

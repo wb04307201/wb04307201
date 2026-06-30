@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-large-data-into-hashmap
+  topic: 01.java
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [01.java, HashMap, large]
+-->
+
 # 快速安全地往HashMap里插入大量条数据
 
 ## 引子：一个容易忽略的性能陷阱

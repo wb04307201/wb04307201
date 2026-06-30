@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 09.front-end-bfc
+  topic: 09.front-end
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [09.front-end, bfc]
+-->
+
 # BFC（块级格式化上下文）深度剖析
 
 ## 引子：两个经典 CSS 问题

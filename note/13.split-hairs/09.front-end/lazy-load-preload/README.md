@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 09.front-end-lazy-load-preload
+  topic: 09.front-end
+  difficulty: ⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [09.front-end, lazy, load]
+-->
+
 # 懒加载 vs 预加载：4 大资源提示的正确姿势
 
 > 区分不清「懒加载」和「预加载」是前端工程师的常见痛点。考察点不是"loading='lazy' 怎么写"，而是 **4 种资源提示（preload/prefetch/preconnect/dns-prefetch）的精确含义与适用场景**。

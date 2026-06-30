@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-large-transaction
+  topic: 03.database
+  difficulty: ⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 生产 Bug
+  tags: [03.database, large, transaction]
+-->
+
 # 大事务：长事务的危害 + 5 大优化策略
 
 > 一个隐蔽但致命的性能陷阱。考察点不是"什么是事务"，而是 **大事务持有多少资源、怎么检测、怎么拆分**。

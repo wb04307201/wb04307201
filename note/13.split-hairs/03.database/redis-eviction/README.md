@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-redis-eviction
+  topic: 03.database
+  difficulty: ⭐
+  frequency: 中频
+  scenario_type: 生产 Bug
+  tags: [03.database, Redis, redis]
+-->
+
 # Redis 内存淘汰策略 8 种深度对比
 
 ## 引子：Redis 内存满了怎么办？

@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 04.system-design-cap-theorem
+  topic: 04.system-design
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [04.system-design, cap, theorem]
+-->
+
 # CAP 定理与实际选型
 
 ## 引子：为什么不能"既要又要还要"？

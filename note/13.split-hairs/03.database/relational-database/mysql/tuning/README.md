@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-tuning
+  topic: 03.database
+  difficulty: ⭐⭐⭐
+  frequency: 中频
+  scenario_type: 架构困境
+  tags: [03.database, MySQL, tuning]
+-->
+
 # MySQL SQL 调优全流程指南
 
 ## 一、核心原理

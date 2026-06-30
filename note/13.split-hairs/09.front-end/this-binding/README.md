@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 09.front-end-this-binding
+  topic: 09.front-end
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [09.front-end, this, binding]
+-->
+
 # this 绑定规则 5 种详解
 
 > 一句话：this 不是词法作用域，而是运行时绑定；由函数调用方式决定，而非定义位置。

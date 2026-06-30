@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-redis-persistence
+  topic: 03.database
+  difficulty: ⭐⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [03.database, Redis, redis]
+-->
+
 # Redis 持久化深度对比
 
 ## 引子：Redis 重启后，数据去哪了？

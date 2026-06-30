@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 04.system-design-distributed
+  topic: 04.system-design
+  difficulty: ⭐⭐⭐⭐
+  frequency: 高频
+  scenario_type: 反直觉代码
+  tags: [04.system-design, distributed]
+-->
+
 # 分布式 — 咬文嚼字
 
 > 分布式系统面试高频细节，聚焦"以为懂但说不清"的核心问题。

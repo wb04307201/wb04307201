@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-object
+  topic: 01.java
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [01.java, object]
+-->
+
 # Java 为什么将基础数据类型封装为对象
 
 ## 引子：既然有 int，为什么还要 Integer？

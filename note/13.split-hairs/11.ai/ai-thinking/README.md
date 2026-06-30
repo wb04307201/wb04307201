@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 11.ai-ai-thinking
+  topic: 11.ai
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [11.ai, thinking]
+-->
+
 # AI 思维：抛硬币的概率悖论
 
 ## 引子：一个让人争论不休的问题

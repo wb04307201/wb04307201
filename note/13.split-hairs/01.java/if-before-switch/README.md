@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-if-before-switch
+  topic: 01.java
+  difficulty: 未标
+  frequency: 高频
+  scenario_type: 反直觉代码
+  tags: [01.java, before, switch]
+-->
+
 # switch 前使用 if 优化高频热点状态
 
 ## 引子：一个反直觉的优化

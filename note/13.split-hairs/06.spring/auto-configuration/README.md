@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 06.spring-auto-configuration
+  topic: 06.spring
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [06.spring, Spring, auto]
+-->
+
 # Spring Boot 自动配置原理深度剖析
 
 ## 引子：为什么引入一个依赖就能用？

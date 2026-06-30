@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 06.spring-spring-mvc-flow
+  topic: 06.spring
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [06.spring, Spring, spring]
+-->
+
 # Spring MVC 请求处理流程
 
 ## 引子：一个请求的 9 步旅程

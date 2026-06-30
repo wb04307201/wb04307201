@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-create-object
+  topic: 01.java
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [01.java, create, object]
+-->
+
 # 创建对象
 
 ## 引子：你知道几种创建对象的方式？

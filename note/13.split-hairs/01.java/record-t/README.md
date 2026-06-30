@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-record-t
+  topic: 01.java
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [01.java, record]
+-->
+
 # Record可以使用泛型么？深度解析Java Record与泛型的结合
 
 ## 引子：Java 16 的新语法

@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-redis-big-key
+  topic: 03.database
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 生产 Bug
+  tags: [03.database, Redis, redis]
+-->
+
 # Redis 大 Key 问题全攻略
 
 ## 引子：Redis 为什么突然卡了？

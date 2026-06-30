@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 04.system-design-cache-consistency
+  topic: 04.system-design
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [04.system-design, cache, consistency]
+-->
+
 # 缓存与数据库双写一致性
 
 ## 引子：改了数据库，缓存还是旧数据

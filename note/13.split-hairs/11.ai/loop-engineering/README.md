@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 11.ai-loop-engineering
+  topic: 11.ai
+  difficulty: ⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 架构困境
+  tags: [11.ai, Loop, loop]
+-->
+
 # Loop Engineering — 循环调用 Agent 面试深挖
 
 > 一句话定位：Loop Engineering 是"信任 Agent，让它循环重试直到任务完成"——前提是 Harness 兜底防止失控。完整概念见 [主模块 Loop Engineering](../../../11.ai/03-engineering/loop-engineering/README.md)。

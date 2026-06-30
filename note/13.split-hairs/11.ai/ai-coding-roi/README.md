@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 11.ai-ai-coding-roi
+  topic: 11.ai
+  difficulty: ⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [11.ai, coding, roi]
+-->
+
 # AI 编程 ROI 度量：DORA 4 指标 + SPACE 5 维度
 
 > 怎么证明"AI 编程工具值得投入"？考察的是 **AI 时代研发效能度量框架**——传统 ROI 度量失效，需要 DORA + SPACE 等新框架。

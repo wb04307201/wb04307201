@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-singleton-pattern
+  topic: 01.java
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [01.java, singleton, pattern]
+-->
+
 # 单例模式
 
 ## 引子：为什么全局只需要一个？

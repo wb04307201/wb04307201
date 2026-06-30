@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 09.front-end-xss-csrf
+  topic: 09.front-end
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [09.front-end, XSS, xss]
+-->
+
 # XSS 与 CSRF 攻击防御深度剖析
 
 > 一句话：XSS 是注入恶意脚本窃取用户数据，CSRF 是伪造用户身份执行非授权操作。

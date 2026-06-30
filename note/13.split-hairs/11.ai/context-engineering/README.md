@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 11.ai-context-engineering
+  topic: 11.ai
+  difficulty: ⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [11.ai, Context, context]
+-->
+
 # Context Engineering — 4 大范式之二面试深挖
 
 > 一句话定位：Context Engineering 是"在 Context Window 限制下，把对的信息在对的时间给 LLM"。完整概念见 [主模块 Context Engineering](../../../11.ai/02-technology-stack/context-engineering/README.md)。

@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 04.system-design-04.system-design
+  topic: 04.system-design
+  difficulty: ⭐⭐⭐⭐
+  frequency: 高频
+  scenario_type: 架构困境
+  tags: [04.system-design, design]
+-->
+
 # 系统设计咬文嚼字
 
 > 系统设计高频面试题与难点深挖，对齐主模块 [`04.system-design`](../../04.system-design/)

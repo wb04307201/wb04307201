@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-class-loading
+  topic: 01.java
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [01.java, class, loading]
+-->
+
 # 类加载机制与双亲委派模型
 
 ## 引子：一个诡异的问题

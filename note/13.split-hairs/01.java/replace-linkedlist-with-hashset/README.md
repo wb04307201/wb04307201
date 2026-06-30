@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-replace-linkedlist-with-hashset
+  topic: 01.java
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [01.java, replace, linkedlist]
+-->
+
 # 用 HashSet 替代 LinkedList 提升查找效率
 
 ## 引子：从 30 秒到 1 毫秒

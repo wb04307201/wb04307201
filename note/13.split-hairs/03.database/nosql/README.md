@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-nosql
+  topic: 03.database
+  difficulty: ⭐⭐⭐
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [03.database, SQL, nosql]
+-->
+
 # NoSQL — 咬文嚼字
 
 > NoSQL 数据库面试细节深挖。聚焦那些"看起来都懂、但说不清楚就会丢分"的问题。

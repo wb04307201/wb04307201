@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-jvm-memory
+  topic: 01.java
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 架构困境
+  tags: [01.java, JVM, jvm]
+-->
+
 # JVM 内存模型与对象创建全链路
 
 ## 引子：`new Object()` 背后发生了什么？

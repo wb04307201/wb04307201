@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 09.front-end-http-cache
+  topic: 09.front-end
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [09.front-end, HTTP, http]
+-->
+
 # HTTP 缓存机制深度剖析
 
 ## 引子：为什么刷新页面有时快有时慢？

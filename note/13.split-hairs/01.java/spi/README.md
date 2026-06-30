@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-spi
+  topic: 01.java
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [01.java, spi]
+-->
+
 # Java SPI 机制深度剖析
 
 ## 引子：JDBC 是怎么找到数据库驱动的？

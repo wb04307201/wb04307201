@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-select-all-big-table
+  topic: 03.database
+  difficulty: ⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 生产 Bug
+  tags: [03.database, select, all]
+-->
+
 # SELECT * 查 2000 万行数据，会炸内存吗
 
 > 一个看似无聊、但 90% 候选人答不全的「基础」问题。真正考察的不是 SQL 本身，而是 **MySQL JDBC 驱动的默认行为 + JVM 堆内存模型**。

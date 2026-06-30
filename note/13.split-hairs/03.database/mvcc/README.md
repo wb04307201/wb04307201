@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-mvcc
+  topic: 03.database
+  difficulty: ⭐⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [03.database, MVCC, mvcc]
+-->
+
 # MVCC 实现原理深度剖析
 
 ## 引子：读写互不阻塞的秘密

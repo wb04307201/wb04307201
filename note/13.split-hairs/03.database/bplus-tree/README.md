@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-bplus-tree
+  topic: 03.database
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [03.database, bplus, tree]
+-->
+
 # B+ Tree 为什么成为数据库索引的标准
 
 ## 引子：1 亿条数据，3 次磁盘 IO

@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 06.spring-06.spring
+  topic: 06.spring
+  difficulty: ⭐⭐⭐
+  frequency: 高频
+  scenario_type: 反直觉代码
+  tags: [06.spring, Spring]
+-->
+
 # Spring 咬文嚼字
 
 > Spring 高频面试题与细节深挖，对齐主模块 [`06.spring`](../../06.spring/)

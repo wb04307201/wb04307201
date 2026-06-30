@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 09.front-end-vue-reactivity
+  topic: 09.front-end
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [09.front-end, Vue, vue]
+-->
+
 # Vue 响应式原理深度剖析
 
 > 一句话：Vue 通过数据劫持（Object.defineProperty / Proxy）拦截数据的读写操作，结合发布-订阅模式实现「数据变化 → 自动更新视图」的响应式系统。

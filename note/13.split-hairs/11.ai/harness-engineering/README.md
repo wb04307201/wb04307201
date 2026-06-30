@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 11.ai-harness-engineering
+  topic: 11.ai
+  difficulty: ⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [11.ai, Harness, harness]
+-->
+
 # Harness Engineering — 给 Agent 套上缰绳面试深挖
 
 > 一句话定位：Harness Engineering 是"用规范和流程约束 Agent"的工程实践，让 Agent 在可控轨道上发挥更强能力。完整概念见 [主模块 Harness Engineering](../../../11.ai/03-engineering/harness-engineering/README.md)。

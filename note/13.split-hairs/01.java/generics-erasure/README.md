@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-generics-erasure
+  topic: 01.java
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [01.java, generics, erasure]
+-->
+
 # Java 泛型擦除深度剖析
 
 ## 引子：一个让你怀疑人生的编译错误

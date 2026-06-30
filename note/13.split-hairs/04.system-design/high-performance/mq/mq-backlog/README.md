@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 04.system-design-mq-backlog
+  topic: 04.system-design
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 生产 Bug
+  tags: [04.system-design, backlog]
+-->
+
 # MQ消息积压
 
 ## 引子：消息队列堆了 1000 万条消息

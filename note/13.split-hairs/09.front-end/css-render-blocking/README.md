@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 09.front-end-css-render-blocking
+  topic: 09.front-end
+  difficulty: ⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 生产 Bug
+  tags: [09.front-end, css, render]
+-->
+
 # CSS 渲染阻塞：把 CSS 放底部为什么白屏更长
 
 > 一个经典的"看似合理实则翻车"陷阱题。考察的不是 CSS 本身，而是 **渲染阻塞（Render Blocking）的触发时机** 和 **首屏绘制（First Paint）的前置条件**。

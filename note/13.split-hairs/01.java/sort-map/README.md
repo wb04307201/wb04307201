@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-sort-map
+  topic: 01.java
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 生产 Bug
+  tags: [01.java, sort, map]
+-->
+
 # 快速给Map排序
 
 ## 引子：1 亿条数据怎么排序？

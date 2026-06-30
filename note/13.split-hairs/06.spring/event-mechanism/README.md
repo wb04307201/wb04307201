@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 06.spring-event-mechanism
+  topic: 06.spring
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [06.spring, Spring, event]
+-->
+
 # Spring 事件机制深度剖析
 
 ## 引子：订单创建后，要通知 5 个模块

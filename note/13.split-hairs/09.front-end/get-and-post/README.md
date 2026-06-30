@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 09.front-end-get-and-post
+  topic: 09.front-end
+  difficulty: 未标
+  frequency: 高频
+  scenario_type: 反直觉代码
+  tags: [09.front-end, HTTP, get]
+-->
+
 # HTTP 请求中的 GET 和 POST
 
 ## 引子：9 个关键区别，你能答对几个？

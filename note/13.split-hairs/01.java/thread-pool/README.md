@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-thread-pool
+  topic: 01.java
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 架构困境
+  tags: [01.java, thread, pool]
+-->
+
 # 线程池 7 大参数深度剖析
 
 ## 引子：一个银行网点的故事

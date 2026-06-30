@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-volatile
+  topic: 01.java
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [01.java, volatile]
+-->
+
 # volatile 内存语义深度剖析
 
 ## 引子：一个诡异的死循环

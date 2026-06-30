@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-mysql
+  topic: 03.database
+  difficulty: ⭐⭐⭐⭐
+  frequency: 高频
+  scenario_type: 反直觉代码
+  tags: [03.database, MySQL, mysql]
+-->
+
 # MySQL 细节 — 咬文嚼字
 
 > MySQL 索引相关的面试高频问题。

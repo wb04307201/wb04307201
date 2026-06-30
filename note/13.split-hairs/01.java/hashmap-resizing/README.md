@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-hashmap-resizing
+  topic: 01.java
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [01.java, HashMap, hashmap]
+-->
+
 # HashMap扩容机制深度解析：从原理到生产优化
 
 ## 引子：一个让人困惑的性能问题

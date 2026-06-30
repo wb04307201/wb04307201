@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 11.ai-prompt-engineering
+  topic: 11.ai
+  difficulty: ⭐⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [11.ai, Prompt, prompt]
+-->
+
 # Prompt Engineering — 8 种核心技巧面试深挖
 
 > 一句话定位：Prompt Engineering 是"通过精心设计提示词，让 LLM 输出更符合需求"的范式。完整概念见 [主模块 Prompt Engineering](../../../11.ai/02-technology-stack/prompt-engineering/README.md)。

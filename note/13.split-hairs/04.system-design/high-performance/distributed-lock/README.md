@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 04.system-design-distributed-lock
+  topic: 04.system-design
+  difficulty: ⭐⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [04.system-design, distributed, lock]
+-->
+
 # 分布式锁
 
 ## 引子：库存超卖了！

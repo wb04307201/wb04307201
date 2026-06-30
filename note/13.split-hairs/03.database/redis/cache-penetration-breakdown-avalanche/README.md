@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-cache-penetration-breakdown-avalanche
+  topic: 03.database
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 生产 Bug
+  tags: [03.database, cache, penetration]
+-->
+
 # 缓存穿透 / 击穿 / 雪崩
 
 ## 引子：数据库突然被打挂了

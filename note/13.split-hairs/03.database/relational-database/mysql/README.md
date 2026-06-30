@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-mysql
+  topic: 03.database
+  difficulty: ⭐⭐⭐⭐
+  frequency: 高频
+  scenario_type: 性能对比
+  tags: [03.database, MySQL, mysql]
+-->
+
 # MySQL 细节 — 咬文嚼字
 
 > MySQL 面试高频细节，每篇聚焦一个"看起来简单但陷阱不少"的问题。

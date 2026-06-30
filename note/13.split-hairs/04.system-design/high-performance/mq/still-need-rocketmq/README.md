@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 04.system-design-still-need-rocketmq
+  topic: 04.system-design
+  difficulty: ⭐⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [04.system-design, still, need]
+-->
+
 # 有了 Kafka 为什么还要 RocketMQ？
 
 ## 引子：两个消息队列，该怎么选？

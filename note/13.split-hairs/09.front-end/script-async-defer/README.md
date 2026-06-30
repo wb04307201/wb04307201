@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 09.front-end-script-async-defer
+  topic: 09.front-end
+  difficulty: ⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [09.front-end, script, async]
+-->
+
 # script 标签的 async / defer：加载时机与 DOMContentLoaded
 
 > 看似简单的 script 三种加载方式，90% 候选人说不清 **「加载时机」和「执行时机」的区别**，也说不清 **DOMContentLoaded 的触发条件**。

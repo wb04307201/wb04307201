@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 11.ai-ai-coding-productivity-paradox
+  topic: 11.ai
+  difficulty: ⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 生产 Bug
+  tags: [11.ai, coding, productivity]
+-->
+
 # AI 编程生产力悖论：4 大研究 + DORA 框架
 
 > AI 编程工具普及后，行业面临的"数据真相"——吞吐量涨了，价值却没涨。考察的是 **AI 时代的研发效能度量能力**，不是"AI 好不好用"。

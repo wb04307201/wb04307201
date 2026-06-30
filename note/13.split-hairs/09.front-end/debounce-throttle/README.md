@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 09.front-end-debounce-throttle
+  topic: 09.front-end
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [09.front-end, debounce, throttle]
+-->
+
 # 防抖与节流手写实现
 
 ## 引子：搜索框的性能问题

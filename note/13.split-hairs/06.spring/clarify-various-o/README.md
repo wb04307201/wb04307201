@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 06.spring-clarify-various-o
+  topic: 06.spring
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 架构困境
+  tags: [06.spring, clarify, various]
+-->
+
 # POJO/VO/BO/DTO/DO 对象类型辨析
 
 ## 引子：一个 User 到底有几个"分身"？

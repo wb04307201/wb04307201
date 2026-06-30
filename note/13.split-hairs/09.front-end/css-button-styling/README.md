@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 09.front-end-css-button-styling
+  topic: 09.front-end
+  difficulty: ⭐⭐⭐
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [09.front-end, css, button]
+-->
+
 # 一个按钮为什么写几十行 CSS：8 状态 + 5 大架构
 
 > 看似简单的"按钮"，企业级组件可能要写 50-100 行 CSS。考察的不是"按钮怎么写"，而是 **CSS 工程化的设计思维** + **5 大架构方案的权衡**。

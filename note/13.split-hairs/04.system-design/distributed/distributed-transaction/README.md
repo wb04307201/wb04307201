@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 04.system-design-distributed-transaction
+  topic: 04.system-design
+  difficulty: ⭐⭐⭐
+  frequency: 中频
+  scenario_type: 架构困境
+  tags: [04.system-design, distributed, transaction]
+-->
+
 # 分布式事务
 
 ## 引子：下单成功但库存没扣？

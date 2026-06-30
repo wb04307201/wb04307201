@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 09.front-end-event-loop
+  topic: 09.front-end
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [09.front-end, Loop, event]
+-->
+
 # 事件循环（Event Loop）
 
 ## 引子：这段代码的输出顺序是什么？

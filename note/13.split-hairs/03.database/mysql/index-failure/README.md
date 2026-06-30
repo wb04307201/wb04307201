@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-index-failure
+  topic: 03.database
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [03.database, MySQL, index]
+-->
+
 # MySQL 索引失效的 10 种场景
 
 ## 引子：索引建了，为什么还是慢？

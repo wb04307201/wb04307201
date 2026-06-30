@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-quickly-add-index
+  topic: 03.database
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [03.database, quickly, add]
+-->
+
 # 1亿条数据快速加索引的方法
 
 ## 引子：加个索引，为什么锁表 30 分钟？

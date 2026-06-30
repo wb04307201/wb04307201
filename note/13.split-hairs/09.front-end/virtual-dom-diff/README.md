@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 09.front-end-virtual-dom-diff
+  topic: 09.front-end
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [09.front-end, virtual, dom]
+-->
+
 # Virtual DOM 与 Diff 算法
 
 ## 引子：为什么操作 DOM 这么慢？

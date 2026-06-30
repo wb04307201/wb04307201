@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-replication-lag
+  topic: 03.database
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [03.database, MySQL, replication]
+-->
+
 # MySQL 主从复制延迟原因与解决方案
 
 ## 引子：刚注册完，为什么查不到用户？

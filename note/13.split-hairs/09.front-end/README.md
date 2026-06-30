@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 09.front-end-09.front-end
+  topic: 09.front-end
+  difficulty: ⭐⭐⭐⭐
+  frequency: 高频
+  scenario_type: 反直觉代码
+  tags: [09.front-end, end]
+-->
+
 # 前端咬文嚼字
 
 > 前端高频面试题与细节深挖，对齐主模块 [`09.front-end`](../../09.front-end/)

@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 04.system-design-rate-limiting
+  topic: 04.system-design
+  difficulty: ⭐
+  frequency: 中频
+  scenario_type: 架构困境
+  tags: [04.system-design, rate, limiting]
+-->
+
 # 限流算法
 
 ## 引子：秒杀活动，10 万 QPS 涌进来

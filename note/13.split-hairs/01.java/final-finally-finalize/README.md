@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-final-finally-finalize
+  topic: 01.java
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [01.java, final, finally]
+-->
+
 # final / finally / finalize 深度剖析
 
 ## 引子：三胞胎兄弟，你能分清吗？

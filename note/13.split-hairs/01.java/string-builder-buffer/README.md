@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-string-builder-buffer
+  topic: 01.java
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [01.java, string, builder]
+-->
+
 # String / StringBuilder / StringBuffer 深度对比
 
 ## 引子：一个经典的性能陷阱

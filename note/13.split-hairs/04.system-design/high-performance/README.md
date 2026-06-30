@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 04.system-design-high-performance
+  topic: 04.system-design
+  difficulty: ⭐⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [04.system-design, high, performance]
+-->
+
 # 高性能 — 咬文嚼字
 
 > 高性能场景面试细节深挖，每篇聚焦一个核心问题。

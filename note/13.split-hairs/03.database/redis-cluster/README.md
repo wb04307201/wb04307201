@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-redis-cluster
+  topic: 03.database
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 架构困境
+  tags: [03.database, Redis, redis]
+-->
+
 # Redis 集群方案深度对比
 
 ## 引子：单台 Redis 撑不住了

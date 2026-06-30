@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-cpu-spike-troubleshooting
+  topic: 01.java
+  difficulty: ⭐⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 生产 Bug
+  tags: [01.java, cpu, spike]
+-->
+
 # 线上 CPU 飙升排查全链路
 
 ## 引子：凌晨 3 点的告警

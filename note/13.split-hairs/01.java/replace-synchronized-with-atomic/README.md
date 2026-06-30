@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-replace-synchronized-with-atomic
+  topic: 01.java
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [01.java, replace, synchronized]
+-->
+
 # 并发编程优化：Atomic类替代synchronized深度解析
 
 ## 引子：同一个计数器，性能差 10 倍

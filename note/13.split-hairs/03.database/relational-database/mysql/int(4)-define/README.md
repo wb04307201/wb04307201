@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-int(4)-define
+  topic: 03.database
+  difficulty: 未标
+  frequency: 高频
+  scenario_type: 反直觉代码
+  tags: [03.database, MySQL, define]
+-->
+
 # MySQL 中 `INT(4)` 的真正含义
 
 ## 引子：一个经典的误解

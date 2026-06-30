@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 06.spring-bean-lifecycle
+  topic: 06.spring
+  difficulty: 未标
+  frequency: 高频
+  scenario_type: 反直觉代码
+  tags: [06.spring, Bean, bean]
+-->
+
 # Bean 生命周期
 
 ## 引子：一个 Bean 的"一生"

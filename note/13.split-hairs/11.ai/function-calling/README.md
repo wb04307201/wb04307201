@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 11.ai-function-calling
+  topic: 11.ai
+  difficulty: ⭐⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [11.ai, Function Calling, function]
+-->
+
 # Function Calling / Tool Use — Agent 核心机制面试深挖
 
 > 一句话定位：Function Calling 是让 LLM 输出结构化 JSON 来声明要调用的工具（而非直接执行），是 AI Agent 的核心机制。完整概念见 [主模块 Function Calling](../../../11.ai/02-technology-stack/function-calling/README.md)。

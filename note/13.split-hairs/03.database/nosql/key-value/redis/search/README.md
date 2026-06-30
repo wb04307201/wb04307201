@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-search
+  topic: 03.database
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [03.database, Redis, search]
+-->
+
 # Redis搜索能力深度解析：从KEYS到RediSearch
 
 ## 一、核心原理

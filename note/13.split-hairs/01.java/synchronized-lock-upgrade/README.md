@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-synchronized-lock-upgrade
+  topic: 01.java
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [01.java, synchronized, lock]
+-->
+
 # synchronized 锁升级详解
 
 ## 引子：一把锁的进化史

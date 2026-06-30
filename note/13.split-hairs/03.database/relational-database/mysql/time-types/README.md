@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-time-types
+  topic: 03.database
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [03.database, MySQL, time]
+-->
+
 # MySQL 时间类型选型指南
 
 ## 引子：存个时间，选哪个？

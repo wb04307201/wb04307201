@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 01.java-gc-algorithms
+  topic: 01.java
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [01.java, algorithms]
+-->
+
 # GC 算法与垃圾收集器深度对比
 
 ## 引子：一个让人头疼的问题

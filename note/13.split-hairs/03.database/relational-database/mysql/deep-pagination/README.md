@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-deep-pagination
+  topic: 03.database
+  difficulty: ⭐⭐⭐⭐
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [03.database, deep, pagination]
+-->
+
 # 深分页：LIMIT 10000000, 10 为什么慢
 
 > 一个看似简单但 90% 候选人答不全的问题。考察点不是 LIMIT 怎么写，而是 **OFFSET 的工作机制** 和 **覆盖索引的精确条件**。

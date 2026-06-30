@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 09.front-end-storage
+  topic: 09.front-end
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [09.front-end, storage]
+-->
+
 # 前端存储方式
 
 ## 一、核心存储方式对比

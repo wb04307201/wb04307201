@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 09.front-end-reflow-repaint
+  topic: 09.front-end
+  difficulty: ⭐⭐⭐⭐⭐
+  frequency: 高频
+  scenario_type: 反直觉代码
+  tags: [09.front-end, reflow, repaint]
+-->
+
 # 回流与重绘：触发条件 + 性能优化
 
 > 前端性能优化的"老八股"。考察点不是"什么是回流"，而是 **浏览器的渲染队列机制 + 如何避免强制同步布局（Layout Thrashing）**。

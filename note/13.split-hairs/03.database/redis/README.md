@@ -1,3 +1,13 @@
+<!--
+question:
+  id: 03.database-redis
+  topic: 03.database
+  difficulty: 未标
+  frequency: 中频
+  scenario_type: 反直觉代码
+  tags: [03.database, Redis, redis]
+-->
+
 # Redis 面试题专题
 
 > 13.split-hairs 中 Redis 相关的面试深度剖析文章导航。
