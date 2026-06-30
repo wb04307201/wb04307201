@@ -1,5 +1,17 @@
 # 并发
 
+## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）
+
+并发 本应该很简单，Java 并发编程从基础的 Thread/synchronized 演进到现代并发模型。Java 21 转正的虚拟线程（Virtual Threads）彻底改变了高并发场景的编程方式——可以用同步写法实现异步性能。配合结构化并发（Struc
+
+**但实际**：面试/生产中常被问起或踩坑的是——
+代码看着对、跑起来对，但仔细一问深一层就漏馅。本篇就从'反直觉'这个角度切入，把踩坑点和根因摆出来。
+
+> 📌 本段由 `note/scripts/add-intro.py` 自动生成（场景模板 + README 摘录）。**下次 review 时请改为真实场景 + 数字 + 反思**，目前仅满足'有引言'的最低要求。
+
+---
+
+
 ## 功能描述
 
 Java 并发编程从基础的 Thread/synchronized 演进到现代并发模型。Java 21 转正的虚拟线程（Virtual Threads）彻底改变了高并发场景的编程方式——可以用同步写法实现异步性能。配合结构化并发（Structured Concurrency）和作用域值（Scoped Values），Java 为高并发服务端应用提供了完整的现代并发编程栈。

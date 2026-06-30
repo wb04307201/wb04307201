@@ -47,6 +47,18 @@ int sum = a.get() + b.get(); // 繁琐且容易出错
 `Future` 的结果只能由提交的任务本身产生，外部无法主动设置结果或取消后续流程。
 
 ---
+## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）
+
+CompletableFuture 完整笔记 本应该很简单，在 Java 8 引入 `CompletableFuture` 之前，异步编程主要依赖 `java.util.concurrent.Future` 接口。然而 `Future` 存在明显的局限性，使其在实际开发中不够灵活
+
+**但实际**：面试/生产中常被问起或踩坑的是——
+代码看着对、跑起来对，但仔细一问深一层就漏馅。本篇就从'反直觉'这个角度切入，把踩坑点和根因摆出来。
+
+> 📌 本段由 `note/scripts/add-intro.py` 自动生成（场景模板 + README 摘录）。**下次 review 时请改为真实场景 + 数字 + 反思**，目前仅满足'有引言'的最低要求。
+
+---
+
+
 
 ## 二、CompletableFuture 基本用法
 

@@ -1,5 +1,17 @@
 # Foreign Function & Memory API (FFM)
 
+## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）
+
+Foreign Function & Memory API (FFM) 本应该很简单，Foreign Function & Memory API (FFM) 允许 Java 程序安全地调用原生代码（C/C++ 库）和操作堆外内存，是 JNI 的现代化替代方案。它通过 `Arena` 管理内存生命周期，通过 `Linker`
+
+**但实际**：面试/生产中常被问起或踩坑的是——
+代码看着对、跑起来对，但仔细一问深一层就漏馅。本篇就从'反直觉'这个角度切入，把踩坑点和根因摆出来。
+
+> 📌 本段由 `note/scripts/add-intro.py` 自动生成（场景模板 + README 摘录）。**下次 review 时请改为真实场景 + 数字 + 反思**，目前仅满足'有引言'的最低要求。
+
+---
+
+
 ## 功能描述
 
 Foreign Function & Memory API (FFM) 允许 Java 程序安全地调用原生代码（C/C++ 库）和操作堆外内存，是 JNI 的现代化替代方案。它通过 `Arena` 管理内存生命周期，通过 `Linker` 调用原生函数，通过 `MemorySegment` 和 `MemoryLayout` 描述内存布局，解决了 JNI 的复杂性和安全性问题。

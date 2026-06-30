@@ -1,5 +1,17 @@
 # Vector API
 
+## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）
+
+Vector API 本应该很简单，Vector API 提供了一套标准化的 Java 向量计算 API，允许开发者编写利用现代 CPU SIMD（Single Instruction, Multiple Data）指令集的代码。通过自动向量化优化，显著提升数值计算密集型任务
+
+**但实际**：面试/生产中常被问起或踩坑的是——
+代码看着对、跑起来对，但仔细一问深一层就漏馅。本篇就从'反直觉'这个角度切入，把踩坑点和根因摆出来。
+
+> 📌 本段由 `note/scripts/add-intro.py` 自动生成（场景模板 + README 摘录）。**下次 review 时请改为真实场景 + 数字 + 反思**，目前仅满足'有引言'的最低要求。
+
+---
+
+
 ## 功能描述
 
 Vector API 提供了一套标准化的 Java 向量计算 API，允许开发者编写利用现代 CPU SIMD（Single Instruction, Multiple Data）指令集的代码。通过自动向量化优化，显著提升数值计算密集型任务的性能，适用于科学计算、机器学习、图像处理等场景。该特性自 Java 16 起作为孵化特性持续演进。

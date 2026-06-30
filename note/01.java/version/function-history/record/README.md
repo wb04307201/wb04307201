@@ -1,5 +1,17 @@
 # Record
 
+## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）
+
+Record 本应该很简单，Record 是 Java 16 引入的一种新的类声明形式，专门用于创建不可变的数据载体。Record 自动为每个字段生成访问器方法、`equals()`、`hashCode()` 和 `toString()`，大幅减少了数据类的样板代码
+
+**但实际**：面试/生产中常被问起或踩坑的是——
+代码看着对、跑起来对，但仔细一问深一层就漏馅。本篇就从'反直觉'这个角度切入，把踩坑点和根因摆出来。
+
+> 📌 本段由 `note/scripts/add-intro.py` 自动生成（场景模板 + README 摘录）。**下次 review 时请改为真实场景 + 数字 + 反思**，目前仅满足'有引言'的最低要求。
+
+---
+
+
 ## 功能描述
 
 Record 是 Java 16 引入的一种新的类声明形式，专门用于创建不可变的数据载体。Record 自动为每个字段生成访问器方法、`equals()`、`hashCode()` 和 `toString()`，大幅减少了数据类的样板代码。从 Java 19 开始，Record 还支持模式匹配（Record Patterns），可在 `instanceof` 和 `switch` 中直接解构 Record 的字段。

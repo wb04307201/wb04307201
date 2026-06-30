@@ -3,6 +3,18 @@
 JDBC（Java Database Connectivity）是 Java 标准中用于执行 SQL 语句的 API，定义在 `java.sql` 和 `javax.sql` 包中。它为多种关系型数据库提供统一的访问接口，是所有 Java 数据库操作技术的底层基础。
 
 ---
+## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）
+
+JDBC 本应该很简单，JDBC（Java Database Connectivity）是 Java 标准中用于执行 SQL 语句的 API，定义在 `java.sql` 和 `javax.sql` 包中。它为多种关系型数据库提供统一的访问接口，是所有 Java
+
+**但实际**：面试/生产中常被问起或踩坑的是——
+代码看着对、跑起来对，但仔细一问深一层就漏馅。本篇就从'反直觉'这个角度切入，把踩坑点和根因摆出来。
+
+> 📌 本段由 `note/scripts/add-intro.py` 自动生成（场景模板 + README 摘录）。**下次 review 时请改为真实场景 + 数字 + 反思**，目前仅满足'有引言'的最低要求。
+
+---
+
+
 
 ## 一、JDBC 架构
 

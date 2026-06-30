@@ -1,5 +1,17 @@
 # HTTP Client
 
+## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）
+
+HTTP Client 本应该很简单，HTTP Client 是 Java 11 转正的标准化 HTTP 客户端 API，支持 HTTP/1.1 和 HTTP/2，提供同步和异步请求方式。替代了老旧的 `HttpURLConnection`，支持现代 Web 协议（WebSoc
+
+**但实际**：面试/生产中常被问起或踩坑的是——
+代码看着对、跑起来对，但仔细一问深一层就漏馅。本篇就从'反直觉'这个角度切入，把踩坑点和根因摆出来。
+
+> 📌 本段由 `note/scripts/add-intro.py` 自动生成（场景模板 + README 摘录）。**下次 review 时请改为真实场景 + 数字 + 反思**，目前仅满足'有引言'的最低要求。
+
+---
+
+
 ## 功能描述
 
 HTTP Client 是 Java 11 转正的标准化 HTTP 客户端 API，支持 HTTP/1.1 和 HTTP/2，提供同步和异步请求方式。替代了老旧的 `HttpURLConnection`，支持现代 Web 协议（WebSocket、响应式流），是 Java 生态中最常用的网络编程工具。

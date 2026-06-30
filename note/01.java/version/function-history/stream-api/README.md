@@ -1,5 +1,17 @@
 # Stream API
 
+## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）
+
+Stream API 本应该很简单，Stream API 提供了一种声明式、函数式的方式来处理数据集合。支持链式中间操作（filter、map、sorted 等）和终端操作（collect、forEach、reduce 等），具有惰性求值和并行处理能力。从 Java 22 起
+
+**但实际**：面试/生产中常被问起或踩坑的是——
+代码看着对、跑起来对，但仔细一问深一层就漏馅。本篇就从'反直觉'这个角度切入，把踩坑点和根因摆出来。
+
+> 📌 本段由 `note/scripts/add-intro.py` 自动生成（场景模板 + README 摘录）。**下次 review 时请改为真实场景 + 数字 + 反思**，目前仅满足'有引言'的最低要求。
+
+---
+
+
 ## 功能描述
 
 Stream API 提供了一种声明式、函数式的方式来处理数据集合。支持链式中间操作（filter、map、sorted 等）和终端操作（collect、forEach、reduce 等），具有惰性求值和并行处理能力。从 Java 22 起新增 `Stream::gather(Gatherer)` 方法，允许自定义中间操作。

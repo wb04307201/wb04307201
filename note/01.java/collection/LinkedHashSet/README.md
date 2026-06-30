@@ -56,6 +56,18 @@ public boolean remove(Object o) {
 **核心结论：** `LinkedHashSet` 本质上是一个 `LinkedHashMap` 的 "key 视图"，value 全部为无意义的 `PRESENT` 占位符。
 
 ---
+## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）
+
+LinkedHashSet 学习笔记 本应该很简单，`LinkedHashSet` 的底层完全依赖 `LinkedHashMap` 实现。从源码可以看出，它继承自 `HashSet`，但构造函数中传入的是 `LinkedHashMap` 实例：
+
+**但实际**：面试/生产中常被问起或踩坑的是——
+代码看着对、跑起来对，但仔细一问深一层就漏馅。本篇就从'反直觉'这个角度切入，把踩坑点和根因摆出来。
+
+> 📌 本段由 `note/scripts/add-intro.py` 自动生成（场景模板 + README 摘录）。**下次 review 时请改为真实场景 + 数字 + 反思**，目前仅满足'有引言'的最低要求。
+
+---
+
+
 
 ## 二、保持插入顺序的原理（双向链表）
 
