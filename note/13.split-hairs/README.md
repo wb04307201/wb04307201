@@ -18,10 +18,24 @@
 
 ```mermaid
 graph TB
-  A[主模块<br/>广度地图] --> B[13.split-hairs<br/>深度刺刀]
-  B -->|补充| A
-  style A fill:#e3f2fd
-  style B fill:#f3e5f5
+  M01[01.java]                -.深挖.-> S[13.split-hairs<br/>深度刺刀]
+  M03[03.database]            -.深挖.-> S
+  M04[04.system-design]       -.深挖.-> S
+  M06[06.spring]              -.深挖.-> S
+  M09[09.front-end]           -.深挖.-> S
+  M11[11.ai]                  -.深挖.-> S
+  M14[14.project-management]  -.深挖.-> S
+  S -.补充广度.-> M01
+  S -.补充广度.-> M03
+  S -.补充广度.-> M04
+  S -.补充广度.-> M06
+  S -.补充广度.-> M09
+  S -.补充广度.-> M11
+  S -.补充广度.-> M14
+  classDef main fill:#e3f2fd,stroke:#1976d2,color:#000
+  classDef hair fill:#f3e5f5,stroke:#7b1fa2,color:#000
+  class M01,M03,M04,M06,M09,M11,M14 main
+  class S hair
 ```
 
 | 维度 | 主模块 | split-hairs |
@@ -130,11 +144,19 @@ graph TB
 
 ## 6. 学习路径建议
 
-### 按面试准备
-1. **Java 后端**：01.java（32 篇） → 06.spring（13 篇） → 03.database（22 篇）
-2. **系统设计**：04.system-design（10 篇） → 03.database（18 篇）
-3. **前端**：09.front-end（23 篇） → 01-foundation / 02-language 的 split-hairs（待补）
-4. **AI 方向**：11.ai（14 篇：5 纯面试题 + 9 主模块精炼版） → 主模块 11.ai
+### 按面试准备（数字与 §2 一致）
+1. **Java 后端**：[01.java](01.java/) 32 篇 → [06.spring](06.spring/) 13 篇 → [03.database](03.database/) 22 篇
+2. **系统设计 / 后端架构**：[04.system-design](04.system-design/) 10 篇 → [03.database](03.database/) 22 篇
+3. **前端**：[09.front-end](09.front-end/) 24 篇（含网络/CSS/框架/安全/工程化）
+4. **AI 方向**：[11.ai](11.ai/) 14 篇 = 5 篇纯面试题 + 9 篇主模块精炼版
+5. **跨方向管理 / 决策**：[14.project-management](../../14.project-management/)（决策实战，非面试陷阱，**外链**而非本目录）
+
+### 2026 新增主题（建议补到 split-hairs 时同步读）
+
+- **AI 工程 4 阶段**：Prompt → Context → Harness → Loop（详见 11.ai 的 transformer / rag / function-calling）
+- **AI 时代责任 / 数据真相 / 个人视角**：44 / 45 / 46（续集 18-20，详见 [12.story](../12.story/)）
+- **AI 提示工程深挖**：见 [`42-prompt-engineering`](11.ai/prompt-engineering/)
+- **回退至 Cheatsheet**：见 [`cheatsheet.md`](./cheatsheet.md)（每题一行核心心法）
 
 ---
 
