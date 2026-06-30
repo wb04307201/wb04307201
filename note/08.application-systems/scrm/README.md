@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: application-systems
+  slug: application-systems/scrm
+  type: article
+  category: 主模块子文章
+  summary: 一份按业务场景梳理的 SCRM 速查手册：从"客户管理"到"客户经营"。
+-->
+
 # SCRM · 社交化客户关系管理
 
 > 一份按业务场景梳理的 SCRM 速查手册：从"客户管理"到"客户经营"。

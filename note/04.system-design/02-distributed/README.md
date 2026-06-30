@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/02-distributed
+  type: article
+  category: 主模块子文章
+  summary: **一句话定义**：分布式系统是**多台独立计算机通过网络协作**，对外表现得像一台单一计算机的系统——但单机理论（如 ACID）在这里都要被重新审视。
+-->
+
 # 分布式系统
 
 > **一句话定义**：分布式系统是**多台独立计算机通过网络协作**，对外表现得像一台单一计算机的系统——但单机理论（如 ACID）在这里都要被重新审视。

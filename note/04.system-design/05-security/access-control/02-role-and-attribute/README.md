@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/02-role-and-attribute
+  type: article
+  category: 主模块子文章
+  summary: 角色与属性族：把权限从人身上抽到中介 的一句话定位：把"权限"从用户身上抽到"角色"或"属性"中介，解决 DAC/MAC 的可维护性问题
+-->
+
 # 角色与属性族：把权限从人身上抽到中介
 
 ## 引言：生产 Bug（[AUTO] 自动生成，待人工 review）

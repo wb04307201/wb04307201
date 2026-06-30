@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/observability
+  type: article
+  category: 主模块子文章
+  summary: 可观测性（Observability）是现代分布式系统运维的核心能力。它让我们能够通过系统的外部输出来推断其内部状态，从而快速定位和解决问题。
+-->
+
 # 可观测性：Metrics + Logs + Traces
 
 > 可观测性（Observability）是现代分布式系统运维的核心能力。它让我们能够通过系统的外部输出来推断其内部状态，从而快速定位和解决问题。

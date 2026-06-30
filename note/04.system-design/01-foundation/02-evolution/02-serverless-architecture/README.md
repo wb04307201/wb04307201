@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/02-serverless-architecture
+  type: article
+  category: 主模块子文章
+  summary: 一份按形态梳理的 Serverless 速查手册：从函数即服务到边缘计算的完整实战。
+-->
+
 # Serverless 架构：FaaS / BaaS / Knative 全场景实战
 
 > 一份按形态梳理的 Serverless 速查手册：从函数即服务到边缘计算的完整实战。

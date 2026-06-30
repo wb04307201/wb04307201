@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: computer-basics
+  slug: computer-basics/tcp-ip-model
+  type: article
+  category: 主模块子文章
+  summary: TCP/IP 是互联网的**事实标准**，由 DARPA 于 20 世纪 70 年代开发，1983 年成为互联网标准。采用四层结构，强调**端到端**通信理念。
+-->
+
 # TCP/IP 四层模型
 
 > TCP/IP 是互联网的**事实标准**，由 DARPA 于 20 世纪 70 年代开发，1983 年成为互联网标准。采用四层结构，强调**端到端**通信理念。

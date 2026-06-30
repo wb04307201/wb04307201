@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/design-patterns
+  type: article
+  category: 主模块子文章
+  summary: GoF设计模式/23种设计模式 的**GoF（Gang of Four）设计模式，即《设计模式：可复用面向对象软件的基础》一书中提出的23种经典设计模式，可分为...
+-->
+
 # GoF设计模式/23种设计模式
 
 ## 引言：架构困境（[AUTO] 自动生成，待人工 review）

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/database-optimization
+  type: article
+  category: 主模块子文章
+  summary: 数据库优化 的数据库通常是系统性能瓶颈所在。本章从 SQL 优化、读写分离、分库分表、冷热分离四个维度,系统性地讲解数据库性能优化的方法论与实践
+-->
+
 # 数据库优化
 
 ## 引言：性能对比（[AUTO] 自动生成，待人工 review）

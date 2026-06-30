@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/consensus-algorithms
+  type: article
+  category: 主模块子文章
+  summary: 共识算法 本应该很简单，在分布式系统中，多个节点需要就某个值达成一致，这就是共识问题。共识算法是分布式系统的核心基础
+-->
+
 # 共识算法
 
 ## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）

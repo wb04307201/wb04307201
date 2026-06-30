@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: application-systems
+  slug: application-systems/oa
+  type: article
+  category: 主模块子文章
+  summary: 一份按业务场景梳理的 OA 速查手册：从"纸质办公"到"流程数字化"。
+-->
+
 # OA · 办公自动化系统
 
 > 一份按业务场景梳理的 OA 速查手册：从"纸质办公"到"流程数字化"。

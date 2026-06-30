@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/access-control
+  type: article
+  category: 主模块子文章
+  summary: 访问控制：6 大权限模型与选型指南 的一句话定位：访问控制是把「谁能对什么做什么」这一决策工程化的学科
+-->
+
 # 访问控制：6 大权限模型与选型指南
 
 ## 引言：生产 Bug（[AUTO] 自动生成，待人工 review）

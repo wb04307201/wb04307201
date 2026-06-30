@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/vs-distributed-transaction
+  type: article
+  category: 主模块子文章
+  summary: 很多人会混淆"幂等"和"分布式事务"。它们**解决问题不同、互补使用**。本文厘清两者关系，并给出实战选型建议。
+-->
+
 # 幂等性 vs 分布式事务（TCC / Saga）
 
 > 很多人会混淆"幂等"和"分布式事务"。它们**解决问题不同、互补使用**。本文厘清两者关系，并给出实战选型建议。

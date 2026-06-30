@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: computer-basics
+  slug: computer-basics/01-tcp-ip
+  type: article
+  category: 主模块子文章
+  summary: 一份按层次梳理的 TCP/IP 速查手册：从数据链路层到应用层的完整协议栈。
+-->
+
 # TCP/IP 协议族：4 层模型 + 核心机制详解
 
 > 一份按层次梳理的 TCP/IP 速查手册：从数据链路层到应用层的完整协议栈。

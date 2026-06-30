@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: computer-basics
+  slug: computer-basics/wcag
+  type: article
+  category: 主模块子文章
+  summary: WCAG - 网页内容无障碍指南 本应该很简单，- **全称**：Web Content Accessibility Guidelines（网页内容无障碍指南）
+-->
+
 # WCAG - 网页内容无障碍指南
 
 ## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）

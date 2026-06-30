@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/cold-hot-data-separation
+  type: article
+  category: 主模块子文章
+  summary: 数据冷热分离 本应该很简单，将数据分为冷数据和热数据，冷数据一般存储在低成本、低性能的介质中，热数据高性能存储介质中
+-->
+
 # 数据冷热分离
 
 ## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）

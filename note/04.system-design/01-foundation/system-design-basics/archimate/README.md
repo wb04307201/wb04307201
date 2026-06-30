@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/archimate
+  type: article
+  category: 主模块子文章
+  summary: **ArchiMate** 是 The Open Group 维护的**企业架构可视化建模语言**，与 TOGAF、IT4IT 并列"数字开放标准组合"三大件。
+-->
+
 # 架构描述语言（ArchiMate 3.2）
 
 > **ArchiMate** 是 The Open Group 维护的**企业架构可视化建模语言**，与 TOGAF、IT4IT 并列"数字开放标准组合"三大件。  

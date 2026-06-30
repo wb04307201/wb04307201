@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/02-grafana
+  type: article
+  category: 主模块子文章
+  summary: 一份按场景梳理的 Grafana 速查手册：从基础仪表盘到企业级可视化平台的完整实战。
+-->
+
 # Grafana · 可视化与仪表盘实战
 
 > 一份按场景梳理的 Grafana 速查手册：从基础仪表盘到企业级可视化平台的完整实战。

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/service-decomposition
+  type: article
+  category: 主模块子文章
+  summary: ⬅️ [返回微服务](../README.md) | ➡️ [服务间通信](../service-communication/README.md)
+-->
+
 # 服务拆分策略
 
 > 最后更新: 2026-06-09

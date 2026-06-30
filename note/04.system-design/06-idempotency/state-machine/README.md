@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/state-machine
+  type: article
+  category: 主模块子文章
+  summary: 状态机（State Machine）将业务抽象为"有限状态 + 合法转移"，**让"重复执行非法操作"自然失败**。最典型的应用是订单状态流转。
+-->
+
 # 状态机
 
 > 状态机（State Machine）将业务抽象为"有限状态 + 合法转移"，**让"重复执行非法操作"自然失败**。最典型的应用是订单状态流转。

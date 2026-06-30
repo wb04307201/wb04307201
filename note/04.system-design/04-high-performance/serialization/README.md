@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/serialization
+  type: article
+  category: 主模块子文章
+  summary: 序列化是将内存中的对象转换为字节流的过程，反序列化则是其逆过程。在 RPC 调用、消息队列、缓存存储等场景中，序列化性能直接影响系统的吞吐量和延迟。
+-->
+
 # 序列化优化
 
 > 序列化是将内存中的对象转换为字节流的过程，反序列化则是其逆过程。在 RPC 调用、消息队列、缓存存储等场景中，序列化性能直接影响系统的吞吐量和延迟。

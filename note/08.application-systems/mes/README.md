@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: application-systems
+  slug: application-systems/mes
+  type: article
+  category: 主模块子文章
+  summary: MES（Manufacturing Execution System 制造执行系统） 本应该很简单，一句话定位：把 ERP 的生产计划落地为车间工单并实时跟踪执...
+-->
+
 # MES（Manufacturing Execution System 制造执行系统）
 
 ## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: computer-basics
+  slug: computer-basics/04-operations
+  type: article
+  category: 主模块子文章
+  summary: 服务器性能监控与云计算服务模型，保障系统稳定运行与架构选型。
+-->
+
 # 运维
 
 > 服务器性能监控与云计算服务模型，保障系统稳定运行与架构选型。

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/circuit-break
+  type: article
+  category: 主模块子文章
+  summary: 熔断是防御服务级联故障的核心模式：通过"快速失败 + 自动恢复"机制，把单点故障隔离在边界内，避免雪崩。
+-->
+
 # 熔断（Circuit Breaker）
 
 > 熔断是防御服务级联故障的核心模式：通过"快速失败 + 自动恢复"机制，把单点故障隔离在边界内，避免雪崩。

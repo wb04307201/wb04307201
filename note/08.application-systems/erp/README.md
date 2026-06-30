@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: application-systems
+  slug: application-systems/erp
+  type: article
+  category: 主模块子文章
+  summary: ERP（Enterprise Resource Planning 企业资源计划） 本应该很简单，一句话定位：整合企业**核心业务流程**的主干系统，覆盖财务、采...
+-->
+
 # ERP（Enterprise Resource Planning 企业资源计划）
 
 ## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）

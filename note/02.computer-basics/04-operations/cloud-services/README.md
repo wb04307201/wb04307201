@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: computer-basics
+  slug: computer-basics/cloud-services
+  type: article
+  category: 主模块子文章
+  summary: 云服务模式 的IaaS/PaaS/SaaS/DaaS — 云计算四大核心服务模型，通过互联网提供不同层次的资源，降低 IT 成本、提升灵活性
+-->
+
 # 云服务模式
 
 ## 引言：架构困境（[AUTO] 自动生成，待人工 review）

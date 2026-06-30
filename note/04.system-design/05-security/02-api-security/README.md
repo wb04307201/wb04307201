@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/02-api-security
+  type: article
+  category: 主模块子文章
+  summary: 一份按层次梳理的 API 安全速查手册：从认证到限流的 7 层防护完整实战。
+-->
+
 # API 安全：认证 / 授权 / 限流 完整实战
 
 > 一份按层次梳理的 API 安全速查手册：从认证到限流的 7 层防护完整实战。

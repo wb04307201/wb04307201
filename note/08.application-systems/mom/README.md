@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: application-systems
+  slug: application-systems/mom
+  type: article
+  category: 主模块子文章
+  summary: 一份按业务场景梳理的 MOM 速查手册：从车间执行到生产管理的"中枢神经系统"。
+-->
+
 # MOM · 制造运营管理系统
 
 > 一份按业务场景梳理的 MOM 速查手册：从车间执行到生产管理的"中枢神经系统"。

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/06-idempotency
+  type: article
+  category: 主模块子文章
+  summary: 幂等性（Idempotence）是分布式系统和 API 设计中的核心概念，指**对同一操作的多次重复执行与单次执行的效果完全一致**。在不可靠的网络、重复请求或...
+-->
+
 # 幂等设计
 
 > 幂等性（Idempotence）是分布式系统和 API 设计中的核心概念，指**对同一操作的多次重复执行与单次执行的效果完全一致**。在不可靠的网络、重复请求或并发操作的场景下，幂等性设计能避免数据不一致、重复扣款等严重问题。

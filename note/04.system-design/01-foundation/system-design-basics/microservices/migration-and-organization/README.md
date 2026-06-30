@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/migration-and-organization
+  type: article
+  category: 主模块子文章
+  summary: ⬅️ [返回微服务](../README.md) | ⬅️ [数据一致性](../data-consistency/README.md)
+-->
+
 # 演进与组织
 
 > 最后更新: 2026-06-09

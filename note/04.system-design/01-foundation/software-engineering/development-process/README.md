@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/development-process
+  type: article
+  category: 主模块子文章
+  summary: 软件开发的流程与方法 的- [1. 软件工程全生命周期管理](#1-软件工程全生命周期管理)
+-->
+
 # 软件开发的流程与方法
 
 ## 引言：架构困境（[AUTO] 自动生成，待人工 review）

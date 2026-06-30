@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/distributed-lock
+  type: article
+  category: 主模块子文章
+  summary: 分布式锁 本应该很简单，分布式锁是分布式系统中用于协调多个节点对共享资源访问的一种机制，确保在多进程或多服务环境下，同一时间只有一个节点能访问临界资源，避免并发...
+-->
+
 # 分布式锁
 
 ## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）

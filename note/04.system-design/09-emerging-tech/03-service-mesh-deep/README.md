@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/03-service-mesh-deep
+  type: article
+  category: 主模块子文章
+  summary: 一份按维度梳理的 Service Mesh 速查手册：从架构原理到生产选型的完整对比。
+-->
+
 # Service Mesh 深度对比：Istio vs Linkerd vs Cilium vs Consul
 
 > 一份按维度梳理的 Service Mesh 速查手册：从架构原理到生产选型的完整对比。

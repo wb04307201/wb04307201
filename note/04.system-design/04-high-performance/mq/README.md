@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/mq
+  type: article
+  category: 主模块子文章
+  summary: 消息队列看作是一个存放消息的容器，当需要使用消息的时候，直接从容器中取出消息使用。由于队列 Queue 是一种先进先出的数据结构，所以消费消息时也是按照顺序来消...
+-->
+
 # 消息队列
 
 > 最后更新: 2026-06-09

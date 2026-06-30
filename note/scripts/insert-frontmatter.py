@@ -90,8 +90,11 @@ META = {
 }
 
 
-def main(only: str | None = None) -> None:
-    """入口：only=None 处理全部 11 个主模块；only='01.java' 处理单个。"""
+def main(only: str | None = None, with_subs: bool = False) -> None:
+    """入口：only=None 处理全部 11 个主模块；only='01.java' 处理单个。
+
+    with_subs=True 同时处理该主模块下的子 README（mode: article）。
+    """
     targets = META
     if only:
         if only not in META:
@@ -102,26 +105,57 @@ def main(only: str | None = None) -> None:
     changed = 0
     skipped = 0
     for slug, meta in targets.items():
-        path = NOTE / slug / "README.md"
-        if not path.exists():
-            print(f"  [.] SKIP missing: {slug}")
-            skipped += 1
-            continue
-        text = path.read_text(encoding="utf-8")
-        if has_frontmatter(text):
-            print(f"  [.] {slug}: 已有 frontmatter")
-            skipped += 1
-            continue
+        topic_dir = NOTE / slug
         number, slug_id, topic, audience = meta
-        summary = extract_summary(text)
-        fm = make_frontmatter(number, slug_id, topic, audience, summary)
-        path.write_text(fm + text, encoding="utf-8")
-        changed += 1
-        print(f"  [+] {slug}: ok (summary={len(summary)} chars)")
 
-    print(f"\n== Total {len(targets)} -> changed {changed} / skipped {skipped}")
+        # 1) 主模块 README 自身
+        readme = topic_dir / "README.md"
+        if readme.exists():
+            text = readme.read_text(encoding="utf-8")
+            if has_frontmatter(text):
+                skipped += 1
+            else:
+                summary = extract_summary(text)
+                fm = make_frontmatter(number, slug_id, topic, audience, summary)
+                readme.write_text(fm + text, encoding="utf-8")
+                changed += 1
+
+        # 2) 子 README（with_subs 开启时）
+        if with_subs:
+            for sub in topic_dir.glob("**/*/README.md"):
+                if sub == readme:
+                    continue
+                rel = sub.relative_to(topic_dir)
+                # 跳过 examples/ training/ 等非文章目录（启发：含 'examples' / 'training' / 'tutorial-images' 路径的）
+                rel_str = str(rel).lower()
+                if any(skip in rel_str for skip in (
+                    "examples/", "training/", "tutorial-images/",
+                    "/imgs/", "/images/",
+                )):
+                    continue
+                leaf = sub.parent.name
+                t = sub.read_text(encoding="utf-8")
+                if has_frontmatter(t):
+                    skipped += 1
+                    continue
+                # 子级 module 字段：article mode
+                fm = (
+                    "<!--\n"
+                    "module:\n"
+                    f"  parent: {slug_id}\n"
+                    f"  slug: {slug_id}/{leaf}\n"
+                    f"  type: article\n"
+                    "  category: 主模块子文章\n"
+                    f"  summary: {extract_summary(t)}\n"
+                    "-->\n\n"
+                )
+                sub.write_text(fm + t, encoding="utf-8")
+                changed += 1
+
+    print(f"\n== changed {changed} / skipped {skipped}")
 
 
 if __name__ == "__main__":
     only = sys.argv[1] if len(sys.argv) > 1 else None
-    main(only)
+    with_subs = "--subs" in sys.argv
+    main(only, with_subs=with_subs)

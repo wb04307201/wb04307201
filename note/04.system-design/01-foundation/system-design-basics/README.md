@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/system-design-basics
+  type: article
+  category: 主模块子文章
+  summary: 系统设计基础 本应该很简单，系统设计是构建高效、可扩展、可靠软件系统的核心过程
+-->
+
 # 系统设计基础
 
 ## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）

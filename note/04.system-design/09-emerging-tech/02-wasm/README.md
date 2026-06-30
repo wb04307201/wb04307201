@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/02-wasm
+  type: article
+  category: 主模块子文章
+  summary: 一份按场景梳理的 WebAssembly 速查手册：从浏览器到边缘计算到插件系统的全场景革命。
+-->
+
 # WebAssembly (WASM) · 跨平台高性能运行时实战
 
 > 一份按场景梳理的 WebAssembly 速查手册：从浏览器到边缘计算到插件系统的全场景革命。

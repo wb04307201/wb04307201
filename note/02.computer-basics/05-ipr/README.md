@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: computer-basics
+  slug: computer-basics/05-ipr
+  type: article
+  category: 主模块子文章
+  summary: 专利 vs 软著的核心区别及申请指南，结合 **2026 年最新政策**，助你高效保护创新成果。
+-->
+
 # 专利与软件著作权
 
 > 专利 vs 软著的核心区别及申请指南，结合 **2026 年最新政策**，助你高效保护创新成果。

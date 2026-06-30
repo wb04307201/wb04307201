@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/raft
+  type: article
+  category: 主模块子文章
+  summary: Raft算法 本应该很简单，任期（Term）是 Raft 算法中一个单调递增的整数，充当逻辑时钟的角色。每发生一次选举，任期号 +1。节点通过任期号判断过时的信...
+-->
+
 # Raft算法
 
 ## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）

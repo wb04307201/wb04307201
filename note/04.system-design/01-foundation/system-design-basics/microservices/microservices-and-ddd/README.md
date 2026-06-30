@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/microservices-and-ddd
+  type: article
+  category: 主模块子文章
+  summary: 微服务架构与领域驱动设计（DDD）是构建复杂软件系统的两大核心方法论，二者在解决“高内聚、低耦合”的系统设计目标上高度协同，尤其在业务逻辑复杂、团队规模较大的场...
+-->
+
 # 微服务模式与领域驱动设计（DDD）
 
 > 最后更新: 2026-06-09

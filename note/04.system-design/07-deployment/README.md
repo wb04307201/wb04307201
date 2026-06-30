@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/07-deployment
+  type: article
+  category: 主模块子文章
+  summary: 一句话定位：**从单机到 K8s，从蓝绿发布到可观测性——部署架构决定物理形态，发布策略决定变更可控。**
+-->
+
 # 部署与运维篇
 
 > 一句话定位：**从单机到 K8s，从蓝绿发布到可观测性——部署架构决定物理形态，发布策略决定变更可控。**

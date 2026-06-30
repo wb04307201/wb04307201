@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/distributed-transaction
+  type: article
+  category: 主模块子文章
+  summary: 分布式事务 本应该很简单，分布式事务是指跨越多个服务、数据库或系统边界，需要保证这些独立操作要么全部成功、要么全部失败的事务处理机制。在分布式系统中，由于数据分...
+-->
+
 # 分布式事务
 
 ## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）

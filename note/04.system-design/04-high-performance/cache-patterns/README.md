@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/cache-patterns
+  type: article
+  category: 主模块子文章
+  summary: 缓存是提升系统性能最有效的手段之一。不同的业务场景需要选择不同的缓存模式，本模块详解四种经典缓存模式及多级缓存架构。
+-->
+
 # 缓存设计模式
 
 > 缓存是提升系统性能最有效的手段之一。不同的业务场景需要选择不同的缓存模式，本模块详解四种经典缓存模式及多级缓存架构。

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/read-write-splitting
+  type: article
+  category: 主模块子文章
+  summary: 数据库读写分离 本应该很简单，读写分离通过将读请求分流到从库、写请求集中在主库，提升系统整体吞吐量与可用性，是数据库性能优化的常见方案
+-->
+
 # 数据库读写分离
 
 ## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）

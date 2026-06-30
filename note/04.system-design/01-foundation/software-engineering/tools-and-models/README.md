@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/tools-and-models
+  type: article
+  category: 主模块子文章
+  summary: 工具与模型 本应该很简单，软件工程采用一系列标准化工具与模型来规范开发行为，以下是几种常用的工具与模型及其详细介绍：
+-->
+
 # 工具与模型
 
 ## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）

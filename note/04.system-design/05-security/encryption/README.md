@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/encryption
+  type: article
+  category: 主模块子文章
+  summary: 现代应用很少需要"自己实现加密算法"，但必须**正确选型与使用**。本文按对称 / 非对称 / 哈希 / TLS / 字段级加密 / KMS 六大主题展开，附...
+-->
+
 # 加密与密钥管理（Encryption）
 
 > 现代应用很少需要"自己实现加密算法"，但必须**正确选型与使用**。本文按对称 / 非对称 / 哈希 / TLS / 字段级加密 / KMS 六大主题展开，附 Java 代码示例。

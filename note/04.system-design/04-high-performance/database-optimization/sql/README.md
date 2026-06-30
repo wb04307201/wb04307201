@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/sql
+  type: article
+  category: 主模块子文章
+  summary: 常见 SQL 优化手段总结 的SQL 优化是数据库性能优化中投入产出比最高的手段。本文系统梳理了索引设计、查询重写、执行计划分析等关键手段
+-->
+
 # 常见 SQL 优化手段总结
 
 ## 引言：性能对比（[AUTO] 自动生成，待人工 review）

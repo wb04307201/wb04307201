@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/it4it
+  type: article
+  category: 主模块子文章
+  summary: **IT4IT**（Information Technology Infrastructure Library for IT, "IT 的 ITIL"）是 Th...
+-->
+
 # IT 价值流参考架构（IT4IT 3.0）
 
 > **IT4IT**（Information Technology Infrastructure Library for IT, "IT 的 ITIL"）是 The Open Group 维护的**IT 运营价值流参考架构**。  

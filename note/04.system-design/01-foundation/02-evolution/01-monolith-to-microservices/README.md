@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/01-monolith-to-microservices
+  type: article
+  category: 主模块子文章
+  summary: 一份按层次梳理的单体拆分速查手册：从策略选择到陷阱规避的完整实战。
+-->
+
 # 单体到微服务的演进：5 大策略与 6 大陷阱
 
 > 一份按层次梳理的单体拆分速查手册：从策略选择到陷阱规避的完整实战。

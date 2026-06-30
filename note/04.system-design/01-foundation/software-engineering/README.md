@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/software-engineering
+  type: article
+  category: 主模块子文章
+  summary: **软件工程是运用系统化、规范化的工程方法开发与维护软件的综合性学科，旨在通过技术与管理手段提升软件质量、控制成本并满足多样化需求。
+-->
+
 # 软件工程
 
 **软件工程是运用系统化、规范化的工程方法开发与维护软件的综合性学科，旨在通过技术与管理手段提升软件质量、控制成本并满足多样化需求。

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/connection-pool
+  type: article
+  category: 主模块子文章
+  summary: 连接池是管理数据库/Redis 连接复用的核心组件。合理的连接池配置能显著提升系统吞吐量，不当配置则可能导致连接泄漏、连接耗尽等严重问题。
+-->
+
 # 连接池优化
 
 > 连接池是管理数据库/Redis 连接复用的核心组件。合理的连接池配置能显著提升系统吞吐量，不当配置则可能导致连接泄漏、连接耗尽等严重问题。

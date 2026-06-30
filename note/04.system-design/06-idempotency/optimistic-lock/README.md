@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/optimistic-lock
+  type: article
+  category: 主模块子文章
+  summary: 乐观锁（Optimistic Locking）通过**版本号**控制并发更新：每次更新检查版本号是否匹配，不匹配则重试或失败。无需数据库行锁，性能高。
+-->
+
 # 乐观锁 / Version
 
 > 乐观锁（Optimistic Locking）通过**版本号**控制并发更新：每次更新检查版本号是否匹配，不匹配则重试或失败。无需数据库行锁，性能高。

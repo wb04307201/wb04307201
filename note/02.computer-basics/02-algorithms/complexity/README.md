@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: computer-basics
+  slug: computer-basics/complexity
+  type: article
+  category: 主模块子文章
+  summary: 算法设计中，时间复杂度与空间复杂度的取舍是核心决策，需根据**场景、资源约束和性能需求**综合权衡。
+-->
+
 # 复杂度取舍策略
 
 > 算法设计中，时间复杂度与空间复杂度的取舍是核心决策，需根据**场景、资源约束和性能需求**综合权衡。

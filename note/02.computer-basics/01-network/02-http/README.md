@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: computer-basics
+  slug: computer-basics/02-http
+  type: article
+  category: 主模块子文章
+  summary: 一份按版本梳理的 HTTP 协议速查手册：从 1996 到 2026 的 30 年演进历程。
+-->
+
 # HTTP 协议演进：从 HTTP/1.0 到 HTTP/3 完整解析
 
 > 一份按版本梳理的 HTTP 协议速查手册：从 1996 到 2026 的 30 年演进历程。

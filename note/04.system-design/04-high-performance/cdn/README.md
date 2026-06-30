@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/cdn
+  type: article
+  category: 主模块子文章
+  summary: CDN 本应该很简单，Content Delivery Network/Content Distribution Network 内容分发网络
+-->
+
 # CDN
 
 ## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）

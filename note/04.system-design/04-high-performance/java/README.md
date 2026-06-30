@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/java
+  type: article
+  category: 主模块子文章
+  summary: Java代码性能优化 的Java代码性能优化是一个系统工程，需要从代码逻辑、数据结构、JVM调优、并发设计、I/O操作等多个维度综合施策
+-->
+
 # Java代码性能优化
 
 ## 引言：性能对比（[AUTO] 自动生成，待人工 review）

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/redundancy-design
+  type: article
+  category: 主模块子文章
+  summary: 冗余设计 本应该很简单，最后更新: 2026-06-09
+-->
+
 # 冗余设计
 
 ## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）

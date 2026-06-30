@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/secrets-management
+  type: article
+  category: 主模块子文章
+  summary: "Secrets" 指的是系统中所有需要保密的字符串：数据库密码、API Key、加密私钥、JWT 签名密钥、云厂商 AccessKey、TLS 证书……本文介...
+-->
+
 # 密钥与凭据管理（Secrets Management）
 
 > "Secrets" 指的是系统中所有需要保密的字符串：数据库密码、API Key、加密私钥、JWT 签名密钥、云厂商 AccessKey、TLS 证书……本文介绍生产环境应如何**安全存储、动态注入、定期轮换**这些凭据。

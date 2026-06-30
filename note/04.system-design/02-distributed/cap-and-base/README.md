@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/cap-and-base
+  type: article
+  category: 主模块子文章
+  summary: ⬅️ [返回分布式](../README.md) | [共识算法](../consensus-algorithms/README.md) | [分布式事务](....
+-->
+
 # CAP & BASE
 
 > 最后更新: 2026-06-09

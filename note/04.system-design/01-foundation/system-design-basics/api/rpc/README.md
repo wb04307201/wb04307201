@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/rpc
+  type: article
+  category: 主模块子文章
+  summary: 以下是关于 **RPC API 设计风格** 的核心原则和最佳实践，适用于现代分布式系统（如微服务架构）。设计良好的 RPC API 需兼顾**清晰性、性能、可...
+-->
+
 # RPC
 
 以下是关于 **RPC API 设计风格** 的核心原则和最佳实践，适用于现代分布式系统（如微服务架构）。设计良好的 RPC API 需兼顾**清晰性、性能、可维护性**和**跨语言兼容性**。

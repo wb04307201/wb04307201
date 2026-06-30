@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/service-degradation
+  type: article
+  category: 主模块子文章
+  summary: 服务降级 本应该很简单，最后更新: 2026-06-09
+-->
+
 # 服务降级
 
 ## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）

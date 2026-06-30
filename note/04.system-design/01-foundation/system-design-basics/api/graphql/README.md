@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/graphql
+  type: article
+  category: 主模块子文章
+  summary: 近年来，GraphQL API 的设计风格已从早期探索走向成熟实践，**核心原则是平衡灵活性与约束性**，避免过度自由带来的性能、安全和维护风险。
+-->
+
 # GraphQL
 
 近年来，GraphQL API 的设计风格已从早期探索走向成熟实践，**核心原则是平衡灵活性与约束性**，避免过度自由带来的性能、安全和维护风险。

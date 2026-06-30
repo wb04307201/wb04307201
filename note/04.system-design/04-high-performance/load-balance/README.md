@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/load-balance
+  type: article
+  category: 主模块子文章
+  summary: 负载均衡 本应该很简单，指的是将用户请求分摊到不同的服务器上处理，以提高系统整体的并发处理能力以及可靠性。负载均衡服务可以有由专门的软件或者硬件来完成，一般情况...
+-->
+
 # 负载均衡
 
 ## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: computer-basics
+  slug: computer-basics/03-dns
+  type: article
+  category: 主模块子文章
+  summary: 一份按层次梳理的 DNS 速查手册：从根域名服务器到 DNS-over-HTTPS 的完整知识体系。
+-->
+
 # DNS 协议：从域名解析到 DNS 安全完整实战
 
 > 一份按层次梳理的 DNS 速查手册：从根域名服务器到 DNS-over-HTTPS 的完整知识体系。

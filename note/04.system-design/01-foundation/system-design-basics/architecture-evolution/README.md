@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/architecture-evolution
+  type: article
+  category: 主模块子文章
+  summary: 架构认知的演进 的最后更新: 2026-06-09
+-->
+
 # 架构认知的演进
 
 ## 引言：架构困境（[AUTO] 自动生成，待人工 review）

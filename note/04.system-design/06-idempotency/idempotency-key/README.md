@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/idempotency-key
+  type: article
+  category: 主模块子文章
+  summary: Idempotency-Key 是**最通用**的幂等性方案：客户端为每个请求生成一个唯一 Key，服务端用这个 Key 去重。即使客户端重试 10 次，服务端...
+-->
+
 # Idempotency-Key 唯一标识
 
 > Idempotency-Key 是**最通用**的幂等性方案：客户端为每个请求生成一个唯一 Key，服务端用这个 Key 去重。即使客户端重试 10 次，服务端也只处理一次。

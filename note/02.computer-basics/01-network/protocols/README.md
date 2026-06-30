@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: computer-basics
+  slug: computer-basics/protocols
+  type: article
+  category: 主模块子文章
+  summary: TCP/IP 协议族由多个协议协同工作，各司其职。
+-->
+
 # 核心网络协议
 
 > TCP/IP 协议族由多个协议协同工作，各司其职。

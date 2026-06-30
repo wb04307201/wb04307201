@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/architecture-diagram
+  type: article
+  category: 主模块子文章
+  summary: 架构图绘制 的用标准化的方式表达系统架构，帮助团队理解系统结构和组件关系
+-->
+
 # 架构图绘制
 
 ## 引言：架构困境（[AUTO] 自动生成，待人工 review）

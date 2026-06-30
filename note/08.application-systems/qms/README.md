@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: application-systems
+  slug: application-systems/qms
+  type: article
+  category: 主模块子文章
+  summary: 一份按业务场景梳理的 QMS 速查手册：从"事后检验"到"全过程质量管控"。
+-->
+
 # QMS · 质量管理系统
 
 > 一份按业务场景梳理的 QMS 速查手册：从"事后检验"到"全过程质量管控"。

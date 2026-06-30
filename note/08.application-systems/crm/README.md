@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: application-systems
+  slug: application-systems/crm
+  type: article
+  category: 主模块子文章
+  summary: CRM（Customer Relationship Management 客户关系管理） 本应该很简单，一句话定位：以客户全生命周期为主线的管理与运营平台，覆盖...
+-->
+
 # CRM（Customer Relationship Management 客户关系管理）
 
 ## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）

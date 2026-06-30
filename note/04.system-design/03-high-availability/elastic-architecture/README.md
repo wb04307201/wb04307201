@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/elastic-architecture
+  type: article
+  category: 主模块子文章
+  summary: 弹性架构 的最后更新: 2026-06-09
+-->
+
 # 弹性架构
 
 ## 引言：架构困境（[AUTO] 自动生成，待人工 review）

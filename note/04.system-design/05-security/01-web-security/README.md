@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/01-web-security
+  type: article
+  category: 主模块子文章
+  summary: 一份按漏洞类型梳理的 Web 安全速查手册：从 OWASP Top 10 到实战防御的完整指南。
+-->
+
 # Web 安全：XSS / CSRF / SQLi 攻防实战
 
 > 一份按漏洞类型梳理的 Web 安全速查手册：从 OWASP Top 10 到实战防御的完整指南。

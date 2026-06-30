@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/eda-vs-async
+  type: article
+  category: 主模块子文章
+  summary: 事件驱动模式与异步处理模式 本应该很简单，事件驱动模式和异步处理模式是现代软件架构中两种重要的设计范式，它们都用于提高系统的响应性、吞吐量和资源利用率，但侧重点...
+-->
+
 # 事件驱动模式与异步处理模式
 
 ## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）

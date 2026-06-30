@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: computer-basics
+  slug: computer-basics/http-evolution
+  type: article
+  category: 主模块子文章
+  summary: 从 HTTP/1.1 到 HTTP/3，核心目标：**更少延迟、更高可靠、更强安全**。
+-->
+
 # HTTP 协议演进
 
 > 从 HTTP/1.1 到 HTTP/3，核心目标：**更少延迟、更高可靠、更强安全**。

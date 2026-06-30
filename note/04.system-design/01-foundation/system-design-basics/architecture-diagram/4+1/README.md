@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/4+1
+  type: article
+  category: 主模块子文章
+  summary: 4+1 视图 本应该很简单，```mermaid
+-->
+
 # 4+1 视图
 
 ## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）

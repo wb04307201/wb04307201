@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/apache-dubbo
+  type: article
+  category: 主模块子文章
+  summary: Dubbo 是阿里巴巴开源的一款高性能、轻量级的 **Java RPC（Remote Procedure Call，远程过程调用）框架**，旨在解决分布式服务架...
+-->
+
 # Apache Dubbo
 
 Dubbo 是阿里巴巴开源的一款高性能、轻量级的 **Java RPC（Remote Procedure Call，远程过程调用）框架**，旨在解决分布式服务架构中的服务治理问题。它通过提供透明的远程调用能力，让开发者能够像调用本地方法一样使用远程服务，同时支持丰富的服务治理功能（如负载均衡、集群容错、服务注册与发现等）。

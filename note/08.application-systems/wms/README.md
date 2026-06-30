@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: application-systems
+  slug: application-systems/wms
+  type: article
+  category: 主模块子文章
+  summary: WMS（Warehouse Management System 仓储管理系统） 本应该很简单，一句话定位：管理仓库**作业全流程**的精细化系统，覆盖入库 →...
+-->
+
 # WMS（Warehouse Management System 仓储管理系统）
 
 ## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）

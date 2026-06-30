@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/01-prometheus
+  type: article
+  category: 主模块子文章
+  summary: 一份按场景梳理的 Prometheus 速查手册：从数据模型到生产告警的完整实战。
+-->
+
 # Prometheus · 云原生监控体系实战
 
 > 一份按场景梳理的 Prometheus 速查手册：从数据模型到生产告警的完整实战。

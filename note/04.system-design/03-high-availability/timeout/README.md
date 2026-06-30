@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/timeout
+  type: article
+  category: 主模块子文章
+  summary: 超时 本应该很简单，最后更新: 2026-06-09
+-->
+
 # 超时
 
 ## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）

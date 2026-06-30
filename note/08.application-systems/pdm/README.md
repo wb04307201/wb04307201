@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: application-systems
+  slug: application-systems/pdm
+  type: article
+  category: 主模块子文章
+  summary: PDM（Product Data Management 产品数据管理） 本应该很简单，一句话定位：PLM 的核心子集，专注于产品数据本身（文档、图纸、零部件）的...
+-->
+
 # PDM（Product Data Management 产品数据管理）
 
 ## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/ulid
+  type: article
+  category: 主模块子文章
+  summary: ULID 本应该很简单，1. **全局唯一性**
+-->
+
 # ULID
 
 ## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）

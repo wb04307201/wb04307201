@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/ddd
+  type: article
+  category: 主模块子文章
+  summary: 领域驱动设计（Domain-Driven Design，简称DDD）是一种以业务领域为核心，通过深入理解和建模业务逻辑来指导软件设计与开发的系统性方法论。
+-->
+
 # 领域驱动设计
 
 > 最后更新: 2026-06-09

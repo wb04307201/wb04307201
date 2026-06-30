@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/distributed-id
+  type: article
+  category: 主模块子文章
+  summary: 分布式ID 本应该很简单，分布式ID是在分布式系统中生成的全局唯一标识符，用于解决在多节点、高并发环境下生成唯一ID的难题。其核心需求包括**唯一性**、**有...
+-->
+
 # 分布式ID
 
 ## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/03-loki
+  type: article
+  category: 主模块子文章
+  summary: 一份按场景梳理的 Loki 速查手册：从部署架构到 LogQL 查询的完整实战。
+-->
+
 # Loki · 云原生日志聚合系统实战
 
 > 一份按场景梳理的 Loki 速查手册：从部署架构到 LogQL 查询的完整实战。

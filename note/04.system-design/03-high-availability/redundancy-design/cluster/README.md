@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/cluster
+  type: article
+  category: 主模块子文章
+  summary: 集群 本应该很简单，在分布式系统中，**集群**是一种通过部署多个服务实例（冗余设计）来提升系统可靠性和可用性的核心策略。当部分实例故障时，集群容错机制能自动切...
+-->
+
 # 集群
 
 ## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）

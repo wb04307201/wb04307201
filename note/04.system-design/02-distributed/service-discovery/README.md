@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/service-discovery
+  type: article
+  category: 主模块子文章
+  summary: 服务注册与发现 本应该很简单，服务注册与发现是微服务架构的核心基础设施，负责管理服务实例的地址信息，使服务之间能够动态发现和通信
+-->
+
 # 服务注册与发现
 
 ## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/oauth2-oidc
+  type: article
+  category: 主模块子文章
+  summary: OAuth2.0 是现代互联网最流行的授权框架，OIDC 则在其之上构建了身份认证层。
+-->
+
 # OAuth2.0 与 OpenID Connect (OIDC)
 
 > OAuth2.0 是现代互联网最流行的授权框架，OIDC 则在其之上构建了身份认证层。

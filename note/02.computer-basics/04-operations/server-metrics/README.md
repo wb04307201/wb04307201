@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: computer-basics
+  slug: computer-basics/server-metrics
+  type: article
+  category: 主模块子文章
+  summary: 确保业务稳定运行的关键，需结合硬件、软件及网络等多维度指标进行系统性监控。
+-->
+
 # 服务器性能指标
 
 > 确保业务稳定运行的关键，需结合硬件、软件及网络等多维度指标进行系统性监控。

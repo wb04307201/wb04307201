@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/capacity-planning
+  type: article
+  category: 主模块子文章
+  summary: 容量规划是确保系统能够在预期负载下正常运行的关键工程实践。通过科学的压测和容量估算，我们可以在用户增长之前做好准备。
+-->
+
 # 容量规划与压测
 
 > 容量规划是确保系统能够在预期负载下正常运行的关键工程实践。通过科学的压测和容量估算，我们可以在用户增长之前做好准备。
