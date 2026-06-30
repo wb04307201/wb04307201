@@ -222,5 +222,56 @@ docs(note): 统一模块 README 为 8-section 模板
 |--------|------|---------|
 | 链接有效性 | `github-action-markdown-link-check` | Push/PR/Weekly |
 | Stats 卡片更新 | `github-readme-stats-action` | 每日 00:00 |
+| **主模块 README 规范** | `python note/scripts/validate.py` | 手动 / Pre-commit |
 
 配置文件：`.mlc_config.json`（忽略 Gitee/GitHub 等外链）
+
+---
+
+## 8. scripts/validate.py（主模块 README 通用规范）
+
+`note/scripts/validate.py` 扫描 14 个主模块 README，校验 3 项：
+
+1. **文末回链**：必须含 `← [返回笔记目录]`（覆盖 14 + 13 补链已完成）
+2. **H1 标题不应带数字编号**：禁止 `# 五、`、`# 07`、`# 10`（一致性已在批 N-B 修复）
+3. **H1 后应有一句话定位**：blockquote 或一句简介（避免无前言章节）
+
+```bash
+python note/scripts/validate.py          # 校验全部 14 主模块
+python note/scripts/validate.py 01.java # 只校验某个模块
+```
+
+成功输出：
+
+```
+== 校验 14 个主模块 README ==
+  [OK]  01.java/README.md
+  ...
+  [OK]  14.project-management/README.md
+
+== Summary: 14 files, 0 errors ==
+```
+
+## 9. 各模块的细化规范（与通用校验互为补充）
+
+某些子模块（12.story / 13.split-hairs / 14.project-management）有额外的细规范：
+
+| 模块 | 细化规范 | 校验脚本 |
+|------|---------|---------|
+| `12.story/` | STORY-FORMAT-SPEC.md（章节六段强制） | `12.story/scripts/validate.py` |
+| `13.split-hairs/` | QUESTION-FORMAT-SPEC.md（## 引言强制） | `13.split-hairs/scripts/validate.py` |
+| `14.project-management/` | 6 篇 PM 文章（业务决策实战） | `14.project-management/scripts/validate.py` |
+
+**每个子模块的 scripts 校验各自的内部规范**。
+
+## 10. frontmatter 规范（已落地于 12 / 13 / 14）
+
+为方便自动化工具（cheatsheet 生成、交叉引用、检索），三大文章型模块已统一使用 HTML 注释 frontmatter：
+
+- `12.story`：`<!--story:number / type / position / title / audience-->`
+- `13.split-hairs`：`<!--question:id / topic / difficulty / frequency / scenario_type / tags-->`
+- `14.project-management`：`<!--pm:topic / audience / category / summary-->`
+
+01-11 主模块暂未使用 frontmatter；**新写文章时如需元数据，建议参考 12 / 13 的 schema**。
+
+
