@@ -2,6 +2,37 @@
 
 > 一个看似无聊、但 90% 候选人答不全的「基础」问题。真正考察的不是 SQL 本身，而是 **MySQL JDBC 驱动的默认行为 + JVM 堆内存模型**。
 
+## 引子：跑批导出 2000 万行，JVM OOM 崩溃
+
+```text
+小王写了个跑批：
+  while (rs.next()) {
+    processRow(rs);   // 一行一行处理
+  }
+跑了一晚上：java.lang.OutOfMemoryError: Java heap space
+2000 万行 / 1000 万级内存 / 服务挂掉
+```
+
+**真相**：你以为 `while(rs.next())` 是一行一行处理，
+**驱动早就把全部行加载到堆内存了** —— 你看到的"游标"只是在内存里挪指针。
+
+MySQL JDBC 默认配置：
+
+| 配置 | 默认 | 后果 |
+|------|------|------|
+| `useCursorFetch` | `false` | 走一次性 fetch all |
+| `fetchSize` | `0` | "由驱动决定" → 实际全量缓存 |
+| `resultSetType` | `TYPE_FORWARD_ONLY` | 内部 `RowDataStatic`（全量缓存）|
+
+**真实开销**：单行 500B 的表，2000 万行 ≈ **50-100 GB JVM 堆**（含对象膨胀 5-10x）→ 必 OOM。
+
+4 种解法：
+
+1. **JDBC 流式**：`setFetchSize(Integer.MIN_VALUE)`（MySQL 专属魔法值）
+2. **服务端游标**：URL 加 `useCursorFetch=true&defaultFetchSize=1000`
+3. **深分页**：`WHERE id > ? LIMIT n`（不要 OFFSET）
+4. **专用工具**：`mysqldump` / `SELECT INTO OUTFILE`
+
 ## 一、核心结论（TL;DR）
 
 | 问题 | 答案 |

@@ -2,6 +2,27 @@
 
 > 同样是"插入 100 万行"，写法不同性能差 100 倍。考察点不是"怎么用 batch"，而是 **MySQL JDBC 的 `rewriteBatchedStatements` 参数如何把 batch 编译成 multi-value INSERT**。
 
+## 引子：30 分钟同步 100 万订单，跑了一晚上没完
+
+```text
+业务方催上线：数据迁移，要求 30 分钟内把 100 万订单灌进新库。
+同事小王写：
+  for (Order o : orders) {
+    ps.setString(1, o.getNo());
+    ps.executeUpdate();
+  }
+结果：跑了一晚上，进度 40 万 / 100 万。
+老板：明天 deadline，今晚要搞完！
+```
+
+**真相**：100 万次 INSERT = 100 万次 RTT（网络往返）。
+- 单条 INSERT：~600 秒
+- JDBC batch 默认：~30 秒（仍然是 N 个独立 INSERT）
+- **JDBC batch + `rewriteBatchedStatements=true`**：~3 秒（驱动自动合成 multi-value INSERT）
+- LOAD DATA INFILE：~1 秒
+
+**不开启 `rewriteBatchedStatements` = 用 batch 等于没用**，性能差距 100 倍。
+
 ## 一、核心结论（TL;DR）
 
 | 方式 | 100 万行耗时（参考） | 网络往返次数 |

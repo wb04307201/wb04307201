@@ -2,6 +2,26 @@
 
 > 经典 Java 面试题（阿里、字节、美团高频）。考察的不是"会不会用 ThreadLocal"，而是 **JDK 原生方案的 3 个限制** + **阿里 TransmittableThreadLocal 的设计精髓** + **线程池场景下的最佳实践**。
 
+## 引子：审计日志 userId 全是 anonymous
+
+```text
+你的阿明：
+- 主线程里：currentUserTL.set("admin_001")
+- Web 请求进来 → 异步线程池里 @Async 写审计日志
+- 日志出来：userId=anonymous
+- 排查 2 小时才发现：ThreadLocal 在线程池里完全失效
+```
+
+**真相**：ThreadLocal 把 value 存在 `Thread.threadLocals`（每个线程独立）。
+- `new Thread()` 单次创建：子线程能继承（用 InheritableThreadLocal）
+- 线程池：worker 线程**复用**，初始化时只继承一次 → 完全失效
+
+**3 大场景的解法**：
+
+1. **`new Thread()` 单次传**：InheritableThreadLocal（JDK 原生，但线程池失效）
+2. **线程池 + 全链路 TraceId / 用户上下文**：TransmittableThreadLocal（阿里开源，工业级）
+3. **纯 JDK 临时方案**：CompletableFuture 包装（手动捕获+设置，侵入性强）
+
 ## 一、核心结论（TL;DR）
 
 | 方案 | 适用场景 | 限制 |
