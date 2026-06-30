@@ -47,7 +47,7 @@
 | 主题 | 核心问题 | 难度 | 状态 |
 |------|---------|------|------|
 | 技术选型 ROI：自研 vs SaaS vs 外包 | [自研/SaaS/外包 TCO 对比 + 5 大评估维度 + 决策树 + AI 时代变量 + 实战 checklist](self-vs-saas-vs-outsourcing/README.md) | ⭐⭐⭐ | ✅ |
-| AI 项目管理账本：DORA + SPACE + ROI | AI 时代研发效能度量框架 | ⭐⭐⭐⭐ | ⏳ 待写 |
+| AI 项目管理账本：DORA + SPACE + ROI | [DORA 4 指标 + SPACE 5 维度 + ROI 综合，AI 时代研发效能度量 + 月/季/年 三阶段实施](ai-pm-dora-space/README.md) | ⭐⭐⭐⭐ | ✅ |
 | 人力配比 + 排期估算：3 倍缓冲原则 | 阿里 "2-8-2" 模型 + 排期公式 | ⭐⭐⭐ | ⏳ 待写 |
 | 康威定律下的团队拓扑 | Team Topologies 4 类型 + 流对齐 | ⭐⭐⭐⭐ | ⏳ 待写 |
 
