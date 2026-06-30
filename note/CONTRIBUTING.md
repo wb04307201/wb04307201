@@ -178,26 +178,50 @@ graph TD
 
 ## 5. PNG → Mermaid 迁移清单
 
-以下文件的 PNG 引用尚未迁移到 Mermaid，按优先级排列：
+> **现状盘点（2026-07-01）**：仓库内有 **149 个 PNG 文件**，但仅 **7 篇 README** 引用了 **40 处 PNG 嵌入**——大量为 CONTRIBUTING §3.2 标定的"历史遗留 img.png / img_N.png 无意义命名"。
+>
+> 与 CONTRIBUTING 上一次盘点对比，实际引用 PNG **远少于 48 处**——之前的清单需要重整。
 
-### 高优先级（概念图，适合 Mermaid）
-| 文件 | PNG 数 | 说明 |
-|------|--------|------|
-| `04.system-design/01-foundation/software-engineering/development-process/` | 9 | 开发流程对比图 |
-| `04.system-design/01-foundation/system-design-basics/architecture-diagram/4+1/` | 10 | 4+1 视图模型 |
-| `04.system-design/01-foundation/system-design-basics/architecture-diagram/c4-model/` | 8 | C4 四层模型 |
-| `04.system-design/01-foundation/technical-debt/` | 7 | 技术债流程 |
-| `04.system-design/04-high-performance/mq/` | 10 | 消息队列架构 |
-| `04.system-design/07-deployment/deploy/` | 4 | 部署架构 |
-| `06.spring/03-data/mybatis/` | 2 | MyBatis 执行流程 |
-| `05.tools/monorepo/` | 7 | Monorepo 演进 |
+### 5.1 实际有 PNG 引用的文件（按目录）
 
-### 低优先级（UI 截图，不适合 Mermaid）
-| 文件 | PNG 数 | 说明 |
-|------|--------|------|
-| `11.ai/training/lesson9/` | 21 | Dify/Coze 教程截图 |
-| `11.ai/training/lesson1/` | 7 | 课程截图 |
-| `11.ai/training/lesson13/` | 1 | 占位截图 |
+| 文件 | PNG 引用数 | 适合 Mermaid？|
+|------|----------|--------------|
+| `07.workflow/apache-eventmesh/cloud-flow/README.md` | 3 | ✅ 架构 / 流程图，强烈建议改 |
+| `07.workflow/process-engine/camunda/camunda-7/README.md` | 4 | ✅ Camunda 7 BPMN 流程图 |
+| `07.workflow/process-engine/camunda/camunda-8/README.md` | 2 | ✅ Camunda 8 / Zeebe 架构图 |
+| `11.ai/training/lesson1/README1.md` | 7 | ❌ Coze 教程 UI 截图 |
+| `11.ai/training/lesson9/README2.md` | 21 | ❌ Dify 教程 UI 截图 |
+| `11.ai/training/lesson9/README3.md` | 9 | ❌ Dify 教程 UI 截图 |
+| `11.ai/training/lesson13/README1.md` | 1 | ❌ 占位截图 |
+
+### 5.2 高优先级（适合 Mermaid）—— 共 9 处候选
+
+1. `07.workflow/apache-eventmesh/cloud-flow/README.md` L1-L3：3 张架构图
+2. `07.workflow/process-engine/camunda/camunda-7/README.md` L4-7：4 张 BPMN 流程图
+3. `07.workflow/process-engine/camunda/camunda-8/README.md` L4-5：2 张 Zeebe 架构图
+
+**执行方式**（推荐分批）：
+- 看 PNG → 设计等价 Mermaid → 用 Mermaid 替换 `![img_N.png]` 段
+- 同时清理无意义文件名，按 §3.2 命名规范改为 `{主题}-{描述}.png` 或直接删除
+
+### 5.3 低优先级（UI 截图，保留 PNG）
+
+`11.ai/training/lesson{1,9,13}/`：教程 UI 截图，**不建议**转 Mermaid，保留 PNG。
+├── `lesson9/README2.md` 21 张
+├── `lesson9/README3.md` 9 张
+├── `lesson1/README1.md` 7 张
+└── `lesson13/README1.md` 1 张
+合计 38 张
+
+### 5.4 状态（2026-07-01）
+
+- [ ] camunda-7 (4 张) 未迁
+- [ ] camunda-8 (2 张) 未迁
+- [ ] apache-eventmesh/cloud-flow (3 张) 未迁
+- [x] 11.ai/training/* 38 张保留（UI 截图）
+- [ ] 其他 11 个文件目录中**有 PNG 文件但 README 未引用**——可考虑作为历史资料保留或清理
+
+迁移建议：先做 5.2 的 9 张流程图 / 架构图，按"看图 → 写 Mermaid → 删除 PNG"三步走。
 
 ---
 
