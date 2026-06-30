@@ -2,6 +2,9 @@
 
 > 从语言基础到 JVM 原理、并发编程、版本演进，系统性构建 Java 知识体系。
 
+> 📘 **写作与维护规范**：[CONTRIBUTING.md](./CONTRIBUTING.md) — 目录 / 命名 / 模板 / Mermaid / Commit / 脚本。
+> 验证脚本：[scripts/validate.py](./scripts/validate.py) — 14 主模块 README 0 ERR。
+
 | 序号 | 主题 | 核心内容 |
 |------|------|----------|
 | 1 | [核心概念](01.java/concepts/) | 基本语法、面向对象、类型系统、反射、序列化、SPI 等 |
