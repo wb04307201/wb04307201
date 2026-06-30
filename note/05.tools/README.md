@@ -104,3 +104,7 @@ graph TB
 - [Guava](https://github.com/google/guava) — Google Java 核心库
 - [Gitea](https://gitea.io) — 轻量级自建 Git 托管
 - [Pingora](https://github.com/cloudflare/pingora) — Cloudflare 新一代 Rust 代理框架
+
+---
+
+← [返回笔记目录](../README.md)

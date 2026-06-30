@@ -111,3 +111,7 @@ graph TB
 - 关联：[`07.workflow`](../07.workflow/README.md) — 工作流引擎（流程编排与事件驱动）
 - 关联：[`09.front-end`](../09.front-end/README.md) — 前端架构（BFF、微前端、渲染模式）
 - 深化：[`13.split-hairs/04.system-design`](../13.split-hairs/04.system-design/README.md) — 高频面试题深度剖析
+
+---
+
+← [返回笔记目录](../README.md)

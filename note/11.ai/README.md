@@ -77,3 +77,7 @@ graph TD
 | Qdrant | 向量数据库 | [qdrant.tech](https://qdrant.tech) |
 | Milvus | 开源向量数据库 | [milvus.io](https://milvus.io) |
 | MCP | Model Context Protocol | [modelcontextprotocol.io](https://modelcontextprotocol.io) |
+
+---
+
+← [返回笔记目录](../README.md)
