@@ -80,7 +80,7 @@ graph TB
 
 - 下游：[`06.spring`](../06.spring/) — Spring 生态（Java 最主流框架）
 - 关联：[`04.system-design`](../04.system-design/) — 系统设计（Java 工程实践的上层方法论）
-- 面试：[`13.split-hairs/01.java`](../13.split-hairs/01.java/README.md) — 15 篇 Java 高频面试题
+- 面试：[`13.split-hairs/01.java`](../13.split-hairs/01.java/README.md) — 32 篇 Java 高频面试题
 
 ## 开源参考
 
