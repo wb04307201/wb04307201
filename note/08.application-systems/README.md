@@ -453,6 +453,27 @@ flowchart LR
 
 ---
 
+## 开源参考（21 业务系统的开源实现）
+
+| 业务系统 | 开源参考 | 说明 |
+|---------|---------|------|
+| **ERP** | [odoo](https://github.com/odoo/odoo)、[ERPNext](https://github.com/frappe/erpnext) | Python 生态企业资源计划 |
+| **MES / MOM** | [Apache OFBiz](https://ofbiz.apache.org) | Java 制造执行 / 制造运营 |
+| **SCM** | [Apache Bloodhound](https://bloodhound.apache.org) | 缺陷追踪 / 任务管理 |
+| **WMS** | [Openboxes](https://github.com/openboxes/openboxes) | 开源仓库管理 |
+| **APS** | [Slickplan](https://slickplan.com) | 高级计划排程 |
+| **SCADA** | [OpenSCADA](http://oscada.org) | 数据采集与监控 |
+| **PLM / PDM** | [OpenPLM](https://sourceforge.net/projects/openplm) | 产品生命周期管理 |
+| **QMS** | [OpenQuality](https://github.com/nicolargo/openquality) | 质量管理系统 |
+| **CRM / SCRM** | [SuiteCRM](https://github.com/salesagility/SuiteCRM)、[EspoCRM](https://github.com/espocrm/espocrm) | 客户关系管理 |
+| **EAM** | [OpenEAM](https://openeam.org) | 设备资产管理 |
+| **OA** | [JeecgBoot](https://github.com/jeecgboot/JeecgBoot)、[RuoYi](https://github.com/yangzongzhuan/RuoYi) | 协同办公（中文主流） |
+| **CMS** | [WordPress](https://wordpress.org)、[Halo](https://github.com/halo-dev/halo) | 内容管理 |
+| **BI** | [Superset](https://github.com/apache/superset)、[Metabase](https://github.com/metabase/metabase) | 商业智能分析 |
+| **PMS** | [OpenProject](https://www.openproject.org)、[Tuleap](https://tuleap.org) | 项目管理 |
+
+---
+
 ---
 
 ← [返回笔记目录](../README.md)

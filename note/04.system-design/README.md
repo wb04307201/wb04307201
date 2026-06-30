@@ -124,4 +124,20 @@ graph TB
 
 ---
 
+## 开源参考
+
+| 项目 | 说明 | 链接 |
+|------|------|------|
+| **Alibaba Sentinel** | 流量控制 / 熔断 | [github.com/alibaba/Sentinel](https://github.com/alibaba/Sentinel) |
+| **Resilience4j** | 熔断 / 限流 | [resilience4j.readme.io](https://resilience4j.readme.io) |
+| **Apache ShardingSphere** | 分布式数据库中间件 | [shardingsphere.apache.org](https://shardingsphere.apache.org) |
+| **Zipkin** | 分布式链路追踪 | [zipkin.io](https://zipkin.io) |
+| **Chaos Mesh** | 云原生混沌工程 | [chaos-mesh.org](https://chaos-mesh.org) |
+| **C4-Model** | 4+1 视图模型 | [c4model.com](https://c4model.com) |
+
+---
+
+← [返回笔记目录](../README.md)
+
+
 ← [返回笔记目录](../README.md)

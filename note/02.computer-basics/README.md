@@ -72,4 +72,18 @@ graph TB
 
 ---
 
+## 开源参考
+
+| 项目 | 说明 | 链接 |
+|------|------|------|
+| **curl** | 命令行 HTTP 客户端（03-linux 详解） | [curl.se](https://curl.se) |
+| **Wireshark** | 网络协议分析器（01-network 配套） | [wireshark.org](https://www.wireshark.org) |
+| **TheAlgorithms/C** | 算法实现参考集（02-algorithms） | [github.com/TheAlgorithms/C](https://github.com/TheAlgorithms/C) |
+| **Linux Kernel** | Linux 内核源码（03-linux 深入） | [kernel.org](https://kernel.org) |
+| **systemd** | 现代 Linux init 系统（03-linux 系统管理） | [systemd.io](https://systemd.io) |
+| **Prometheus** | 开源监控系统（04-operations） | [prometheus.io](https://prometheus.io) |
+| **Borg** | Google 内部集群管理（04-operations / 论文） | [research.google/pubs/large-scale-cluster-management](https://research.google/pubs/large-scale-cluster-management-at-google-with-borg/) |
+
+---
+
 ← [返回笔记目录](../README.md)
