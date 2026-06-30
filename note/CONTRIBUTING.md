@@ -121,6 +121,10 @@ flowchart LR
 - 使用小写英文 + 短横线：`bean-lifecycle.md`、`distributed-transaction/`
 - README.md 统一大小写
 - 不使用中文文件名
+- **主模块 README 顶部加 HTML 注释 frontmatter**（与 12/13/14 一致）：
+  - 主模块：`<!--module:number / slug / topic / audience / category / summary-->`
+  - 文章型（12/13/14）：`<!--story/question/pm:...-->`
+  - 详见 §10
 
 ### 3.2 图片命名（待迁移到 Mermaid）
 - 历史遗留：`img.png`、`img_1.png` 等无意义命名
@@ -231,12 +235,30 @@ graph TD
 
 ```
 feat(note): 03.database - 新增云数据库子模块 README
+feat(note): 14.project-management - 新增项目管理主模块（6 篇 PM）
 fix(note): 09.front-end - 修正 3 处断链
 refactor(note): 04.system-design - PNG→Mermaid 迁移
-docs(note): 统一模块 README 为 8-section 模板
+docs(note): 同步 CONTRIBUTING + scripts/validate.py
+docs(note): 01.java - 标题'15 篇'→'32 篇'
+chore(note): 13 主模块补文末回链
+test(note): 14 主模块 0 ERR validate
 ```
 
-类型：`feat` / `fix` / `refactor` / `docs` / `chore`
+类型：
+
+| 类型 | 用途 |
+|------|------|
+| `feat` | 新增模块 / 文件 / 功能 |
+| `fix` | 修 bug / 数字 / 错链 |
+| `refactor` | 结构优化 / PNG → Mermaid |
+| `docs` | 文档 / README / 规范同步 |
+| `chore` | 元数据 / 格式调整 / 不动内容 |
+| `test` | 脚本 / validate / 自动化校验 |
+
+scope 规范：
+
+- `note`：note 仓库统一 scope
+- 细化（可选）：`note:12.story`、`note:13.split-hairs`、`note:14.project-management`
 
 ---
 
