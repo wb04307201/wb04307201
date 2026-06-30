@@ -29,7 +29,7 @@ for (int i = 0; i < 1_000_000; i++) {
 
 > 📚 **前置知识**：[HashMap](../../../01.java/collection/hashmap.md)
 
-## 1. 预设初始容量和负载因子
+## 一、预设初始容量和负载因子
 
 为了避免频繁的扩容操作，应在创建 `HashMap` 时预设合适的初始容量：
 
@@ -49,7 +49,7 @@ Map<K, V> map = new HashMap<>(initialCapacity, loadFactor);
 
 **负载因子的选择：** 默认0.75是空间和时间成本的折中。增大负载因子（如0.9）可以减少内存占用但增加碰撞概率；减小负载因子（如0.5）可以降低碰撞但浪费空间。对于大数据场景，保持0.75通常是最佳选择。
 
-## 2. 使用多线程并行插入
+## 二、使用多线程并行插入
 
 如果数据之间没有依赖关系，可以考虑使用并行流来加速插入过程：
 
@@ -89,7 +89,7 @@ executor.shutdown();
 executor.awaitTermination(1, TimeUnit.MINUTES);
 ```
 
-## 3. 分批处理与监控
+## 三、分批处理与监控
 
 对于超大规模数据，建议采用分批处理的方式，并添加进度监控：
 
@@ -118,7 +118,7 @@ public void batchInsert(Map<K, V> targetMap, List<Map.Entry<K, V>> data, int bat
 List<Map.Entry<K, V>> batch = new ArrayList<>(data.subList(i, end));
 ```
 
-## 4. 内存管理注意事项
+## 四、内存管理注意事项
 
 虽然题目说明内存无限，但仍需注意以下几点：
 
@@ -134,7 +134,7 @@ List<Map.Entry<K, V>> batch = new ArrayList<>(data.subList(i, end));
 -XX:+UseG1GC -Xmn2g -XX:MaxGCPauseMillis=200
 ```
 
-## 5. 常见陷阱
+## 五、常见陷阱
 
 ### 陷阱1：hashCode分布不均导致退化为链表
 
@@ -153,7 +153,7 @@ static final int hash(Object key) {
 
 在遍历过程中修改HashMap会导致ConcurrentModificationException，即使使用迭代器也不安全。必须使用ConcurrentHashMap或在外部同步。
 
-## 6. 推荐的最佳实践组合
+## 六、推荐的最佳实践组合
 
 ```java
 // 适用于大数据量插入的安全高效方案

@@ -28,7 +28,7 @@ ALTER TABLE huge_table ADD INDEX idx_user_id (user_id);
 
 > 📚 **前置知识**：[MySQL 索引](../../../../../03.database/04-index/README.md)
 
-## 1. 使用在线DDL操作（MySQL 5.6+）
+## 一、使用在线DDL操作（MySQL 5.6+）
 
 ```sql
 ALTER TABLE large_table ADD INDEX idx_column_name(column_name), ALGORITHM=INPLACE, LOCK=NONE;
@@ -74,7 +74,7 @@ SELECT * FROM performance_schema.stage_events_current
 WHERE EVENT_NAME LIKE '%alter%';
 ```
 
-## 2. 使用pt-online-schema-change工具（Percona Toolkit）
+## 二、使用pt-online-schema-change工具（Percona Toolkit）
 
 ```bash
 pt-online-schema-change --alter "ADD INDEX idx_column_name(column_name)" D=database,t=large_table --execute
@@ -105,7 +105,7 @@ pt-online-schema-change \
 
 **触发器开销：** pt-osc会在原表上创建INSERT/UPDATE/DELETE触发器，高并发场景下可能影响性能约5-10%。建议在低峰期执行。
 
-## 3. 使用gh-ost工具（GitHub开源工具）
+## 三、使用gh-ost工具（GitHub开源工具）
 
 ```bash
 gh-ost \
@@ -132,7 +132,7 @@ gh-ost \
 - `--panic-flag-file`：当该文件被创建时，立即停止迁移
 - `--postpone-cut-over-flag-file`：暂停最后的切换操作，等待人工确认
 
-## 4. 分批处理（适用于离线环境）
+## 四、分批处理（适用于离线环境）
 
 如果允许停机维护：
 1. 创建新表结构（包含新索引）
@@ -165,7 +165,7 @@ RENAME TABLE large_table TO large_table_old,
 - 关闭autocommit，手动控制事务大小（每10-50万行提交一次）
 - 临时设置 `innodb_flush_log_at_trx_commit=2` 减少刷盘频率
 
-## 5. 常见陷阱与优化建议
+## 五、常见陷阱与优化建议
 
 **陷阱1：磁盘空间不足** - 在线DDL需要额外1-2倍表大小的空间，1亿行数据可能需要数百GB。
 

@@ -30,7 +30,7 @@ ConfigManager config2 = new ConfigManager();  // ❌ 读两次配置？不一致
 
 > 📚 **前置知识**：[设计模式](../../../01.java/design-patterns/README.md)
 
-## 1. 饿汉式（静态常量）
+## 一、饿汉式（静态常量）
 ```java
 public class Singleton {
     private static final Singleton instance = new Singleton();
@@ -42,7 +42,7 @@ public class Singleton {
 ```
 - **特点**：类加载即初始化，线程安全，非懒加载（适合频繁使用场景）
 
-## 2. 懒汉式（线程不安全）
+## 二、懒汉式（线程不安全）
 ```java
 public class Singleton {
     private static Singleton instance;
@@ -57,7 +57,7 @@ public class Singleton {
 ```
 - **问题**：多线程下可能创建多个实例（不推荐）
 
-## 3. 懒汉式（同步方法）
+## 三、懒汉式（同步方法）
 ```java
 public synchronized static Singleton getInstance() {
     if (instance == null) {
@@ -68,7 +68,7 @@ public synchronized static Singleton getInstance() {
 ```
 - **缺点**：每次获取实例都需同步，性能差
 
-## 4. 双重检查锁（DCL）
+## 四、双重检查锁（DCL）
 ```java
 public class Singleton {
     private static volatile Singleton instance; // volatile保证可见性和有序性
@@ -88,7 +88,7 @@ public class Singleton {
 - **关键点**：`volatile`禁止指令重排序，避免返回未初始化的对象
 - **适用场景**：JDK1.5+的懒加载+高并发场景
 
-## 5. 静态内部类（推荐）
+## 五、静态内部类（推荐）
 ```java
 public class Singleton {
     private Singleton() {}
@@ -103,7 +103,7 @@ public class Singleton {
 - **原理**：类加载时初始化内部类，JVM保证线程安全
 - **优点**：懒加载、线程安全、代码简洁
 
-## 6. 枚举单例（最佳实践）
+## 六、枚举单例（最佳实践）
 ```java
 public enum Singleton {
     INSTANCE;
@@ -118,7 +118,7 @@ public enum Singleton {
     - 线程安全（由JVM保证）
 - **使用**：`Singleton.INSTANCE.doSomething();`
 
-## 7. 使用容器（如Spring）
+## 七、使用容器（如Spring）
 ```java
 // 实际开发中更推荐通过IOC容器管理单例
 @Controller
