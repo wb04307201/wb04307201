@@ -56,6 +56,8 @@ graph TB
 ```markdown
 # 标题（明确问题）
 
+## 引子：一个具体场景（场景 + 反差 + 缘由）
+
 ## 一、核心原理（Why it works）
 ## 二、代码示例（Show me the code）
 ## 三、常见陷阱（What goes wrong）
@@ -63,6 +65,73 @@ graph TB
 ## 五、面试话术（How to answer in 30s）
 ## 六、交叉引用（Link back to main module）
 ```
+
+> 📌 2026-06-30 增补 `## 引子`：每个面试题以**一个具体场景**开场（生产 bug / 反直觉代码 / 架构困境 / 性能对比），不再直接进概念定义。详见 [`QUESTION-FORMAT-SPEC.md`](./QUESTION-FORMAT-SPEC.md) §2 与 §3。
+
+---
+
+## 4. 保留边界：split-hairs 与主模块的分工
+
+> **2026 路径整理**：split-hairs 不再无差别收录所有高频内容；下面是"什么属于 split-hairs / 什么应该迁回主模块"的判定标准。
+
+### ✅ 属于 split-hairs（保留）
+
+| 类型 | 示例 | 原因 |
+|------|------|------|
+| **高频面试陷阱** | `@Transactional` 失效 8 种场景 / SELECT * 内存爆炸 / volatile 死循环 | 90% 候选人会踩，单题面试能深挖 30 分钟 |
+| **反直觉 / 易错的"细节"** | Integer 缓存 / `==` vs equals / HashMap 2 倍扩容 | 主模块一笔带过；面试必深挖根因 |
+| **跨主模块的"陷阱横向对比"** | 5 万 vs 50 万 App 报价 / 分布式锁 3 大方案对比（**已迁 14**）| 决策类，但读者是老板/PM 时迁出，读者是开发者时保留 |
+| **主模块配套的"精炼版"** | split-hairs/11.ai 下 9 篇精炼版 | 与 `11.ai/` 主模块并存，一篇广度 + 一篇陷阱 |
+| **小众但"说得清才到位"的细分** | SPI / 泛型擦除 / Record + 泛型 | 主模块篇幅有限，split-hairs 单独展开 |
+
+### ❌ 不属于 split-hairs（迁回主模块 / 新建主模块）
+
+| 类型 | 例子 | 应该归到 |
+|------|------|----------|
+| **决策实战 + 管理学** | App 报价拆解 / 外包避坑 / App 跨端技术栈选型 | [`note/14.project-management/`](../../14.project-management/README.md) / 主模块 [`09.front-end/08-cross-platform/`](../../09.front-end/08-cross-platform/) |
+| **主模块已经深度覆盖的"广度"** | 4 种创建线程方式 / SQL 调优总览 | 主模块对应章节，split-hairs 不重复广度 |
+| **概念定义 + 全景图** | Transformer 是什么 / Java 反射的整体框架 | 主模块 [`01-fundamentals/transformer/`](../../11.ai/01-fundamentals/transformer/README.md)，split-hairs 只做精炼版 |
+| **前端工程化 / 浏览器"广度"知识** | URL 到渲染全链路 | 主模块 [`09.front-end/01-foundation/browser-rendering/`](../../09.front-end/01-foundation/browser-rendering/README.md) |
+
+### 判定 checklist（写作前自问）
+
+- [ ] 能否用"一个具体场景"作为开场？（Yes → 适合 split-hairs）
+- [ ] 是否高频 + 有明确陷阱 + 答案短但理由长？（Yes → 适合 split-hairs）
+- [ ] 主模块已经有对应章节，且 split-hairs 内容与之**重复 80%+**？（Yes → 应迁回主模块，split-hairs 留 stub）
+- [ ] 主题是"决策 / 管理 / 选型"，目标读者不是开发者？（Yes → 应迁到 `14.project-management/` 或主模块相关分类）
+
+### 2026-06-30 已迁移记录
+
+| 原 split-hairs 路径 | 新位置 | 决策原因 |
+|---------------------|--------|----------|
+| `04.system-design/project-management/app-quote-breakdown/` | `note/14.project-management/` | 决策实战，非面试陷阱 |
+| `04.system-design/project-management/outsourcing-pitfalls/` | `note/14.project-management/` | 同上 |
+| `04.system-design/project-management/mobile-tech-stack/` | `09.front-end/08-cross-platform/` | 跨端架构决策，应入主模块 |
+
+---
+
+## 5. 何时该写 split-hairs？
+
+**触发条件**：
+- 主模块的某个点需要深度解释（> 100 字）
+- 面试中反复被问到的细节问题
+- "好像懂但说不清"的知识点
+- 有明确陷阱或反直觉行为的技术细节
+
+**不该写**：
+- 主模块已经讲清楚的内容（参 §4 判定 checklist）
+- 过于冷门的问题
+- 没有明确答案的开放性问题
+
+---
+
+## 6. 学习路径建议
+
+### 按面试准备
+1. **Java 后端**：01.java（32 篇） → 06.spring（13 篇） → 03.database（22 篇）
+2. **系统设计**：04.system-design（10 篇） → 03.database（18 篇）
+3. **前端**：09.front-end（23 篇） → 01-foundation / 02-language 的 split-hairs（待补）
+4. **AI 方向**：11.ai（14 篇：5 纯面试题 + 9 主模块精炼版） → 主模块 11.ai
 
 ---
 
@@ -120,7 +189,7 @@ graph TB
 
 ---
 
-## 6. 交叉引用
+## 7. 交叉引用
 
 - 每个 split-hairs 文章底部都有"交叉引用"链接回主模块
 - 主模块在需要深挖的地方也会链接到对应的 split-hairs 文章
@@ -128,8 +197,9 @@ graph TB
 
 ---
 
-## 7. 与其他章节的关系
+## 8. 与其他章节的关系
 
-- **主模块**：[`01.java`](../01.java/) / [`03.database`](../03.database/) / [`04.system-design`](../04.system-design/) / [`06.spring`](../06.spring/) / [`11.ai`](../11.ai/) / [`09.front-end`](../09.front-end/)
+- **主模块**：[`01.java`](../01.java/) / [`03.database`](../03.database/) / [`04.system-design`](../04.system-design/) / [`06.spring`](../06.spring/) / [`11.ai`](../11.ai/) / [`09.front-end`](../09.front-end/) / [`14.project-management`](../14.project-management/)
 - **故事章节**：[`12.story`](../12.story/) — 阿明餐厅故事（实战场景）
 - **主仓库 README**：[`README.md`](../README.md)
+- **写作规范**：[`QUESTION-FORMAT-SPEC.md`](./QUESTION-FORMAT-SPEC.md) — 文章结构强制模板 + frontmatter schema
