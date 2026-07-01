@@ -2,14 +2,17 @@
 module:
   parent: spring
   slug: spring/core
-  type: article
-  category: 主模块子文章
-  summary: Spring 01 核心容器
+  type: index
+  category: 后端框架 / Spring 全家桶
+  topic: Spring 核心容器
+  audience: Java 后端工程师
+  summary: Spring 核心容器 = IoC 容器 + AOP 框架 + 工具集（13 篇：IoC/AOP/依赖注入/配置/事件/异常/工具类/手写 mini Spring）
 -->
 
 # 01 核心容器
 
-> 最后更新: 2026-06-14
+> 一句话定位：**Spring 核心容器 = IoC 容器 + AOP 框架 + 工具集**——掌握这三者，你就理解了 Spring 其他所有模块（Boot/Cloud/Data）的底层机制。
+
 > ⬅️ [返回 Spring 顶层](../README.md)
 
 ---

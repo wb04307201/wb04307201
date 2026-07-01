@@ -2,14 +2,17 @@
 module:
   parent: spring
   slug: spring/data
-  type: article
-  category: 主模块子文章
-  summary: Spring 数据层：声明式事务、JPA、Spring Cache、MyBatis 整合。
+  type: index
+  category: 后端框架 / Spring 全家桶
+  topic: Spring 数据层
+  audience: Java 后端工程师
+  summary: Spring 数据层 = 事务 + 缓存 + 数据访问（39 篇：声明式/编程式事务/传播隔离失效/多数据源/JTA/JPA/Cache 4 模式/多级缓存/序列化/MyBatis 全栈 4 主题 27 篇）
 -->
 
 # 03 数据层
 
-> 最后更新: 2026-06-22
+> 一句话定位：**Spring 数据层 = 事务管理 + 缓存抽象 + 数据访问（JDBC/JPA/MyBatis）**——聚焦"事务"和"缓存"两大支柱，新增 **MyBatis 整合**专题。
+
 > ⬅️ [返回 Spring 顶层](../README.md)
 
 ---

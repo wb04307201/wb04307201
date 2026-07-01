@@ -2,14 +2,17 @@
 module:
   parent: spring
   slug: spring/boot
-  type: article
-  category: 主模块子文章
-  summary: Spring Boot
+  type: index
+  category: 后端框架 / Spring 全家桶
+  topic: Spring Boot
+  audience: Java 后端工程师
+  summary: Spring Boot = Spring + 约定优于配置 + 生产级特性（9 篇：自动配置/Starter/启动流程/启动后钩子/外部化配置/内嵌服务器/spring.factories 迁移/自定义 Condition/GraalVM Native）
 -->
 
 # 04 Spring Boot
 
-> 最后更新: 2026-06-14
+> 一句话定位：**Spring Boot = Spring + 约定优于配置 + 生产级特性**——它不重新发明轮子，而是让 Spring 更易用、更适合云原生部署。
+
 > ⬅️ [返回 Spring 顶层](../README.md)
 
 ---

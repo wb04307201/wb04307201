@@ -2,14 +2,17 @@
 module:
   parent: spring
   slug: spring/observability
-  type: article
-  category: 主模块子文章
-  summary: Spring 07 可观测性
+  type: index
+  category: 后端框架 / Spring 全家桶
+  topic: Spring 可观测性
+  audience: Java 后端工程师
+  summary: Spring 可观测性 = Actuator + Micrometer + Prometheus/Grafana（5 篇：Actuator 端点/Micrometer 指标/Prometheus+Grafana/健康探针/日志聚合）
 -->
 
 # 07 可观测性
 
-> 最后更新: 2026-06-14
+> 一句话定位：**Spring 可观测性 = Actuator（端点暴露）+ Micrometer（指标抽象）+ Prometheus/Grafana（采集与可视化）**——云原生时代的"监控三件套"。
+
 > ⬅️ [返回 Spring 顶层](../README.md)
 
 ---

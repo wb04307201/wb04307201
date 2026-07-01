@@ -2,14 +2,17 @@
 module:
   parent: spring
   slug: spring/web
-  type: article
-  category: 主模块子文章
-  summary: Spring 02 Web 层
+  type: index
+  category: 后端框架 / Spring 全家桶
+  topic: Spring Web 层
+  audience: Java 后端工程师
+  summary: Spring Web = MVC（同步阻塞）+ WebFlux（响应式）（13 篇：DispatcherServlet/9 大组件/Filter/AOP 顺序/异常/视图/上传/CORS/i18n/异步/SSE/WebClient/R2DBC/Router Functions/测试）
 -->
 
 # 02 Web 层
 
-> 最后更新: 2026-06-14
+> 一句话定位：**Spring Web 层 = Spring MVC（同步阻塞）+ Spring WebFlux（异步响应式）**——前者是事实标准，后者是高并发场景的备选。
+
 > ⬅️ [返回 Spring 顶层](../README.md)
 
 ---

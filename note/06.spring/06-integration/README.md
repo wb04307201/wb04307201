@@ -2,14 +2,17 @@
 module:
   parent: spring
   slug: spring/integration
-  type: article
-  category: 主模块子文章
-  summary: Spring 06 集成组件
+  type: index
+  category: 后端框架 / Spring 全家桶
+  topic: Spring 集成组件
+  audience: Java 后端工程师
+  summary: Spring 集成组件 = 业务级 Spring 子项目（6 篇：Validation/Retry/StateMachine/Batch + Validation 3 篇深度）
 -->
 
 # 06 集成组件
 
-> 最后更新: 2026-06-14
+> 一句话定位：**Spring 集成组件 = 业务级 Spring 子项目**——解决特定业务场景（校验/重试/状态机/批处理）的独立框架。
+
 > ⬅️ [返回 Spring 顶层](../README.md)
 
 ---

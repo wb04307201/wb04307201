@@ -2,14 +2,17 @@
 module:
   parent: spring
   slug: spring/annotations
-  type: article
-  category: 主模块子文章
-  summary: Spring 注解速查：事务/缓存/调度/校验/重试/AOP/Web 等场景分类索引。
+  type: index
+  category: 后端框架 / Spring 全家桶
+  topic: Spring 注解速查
+  audience: Java 后端工程师
+  summary: Spring 注解 = 按场景分类的速查手册（12 篇：Web/Bean/配置/AOP/异常/测试/JPA/事务/缓存/调度异步/校验/重试）
 -->
 
 # 08 注解速查
 
-> 最后更新: 2026-06-14
+> 一句话定位：**Spring 注解 = 按场景分类的速查手册**——本节是所有 Spring 注解的"分类索引"，需要时按"我在做什么"快速查找。
+
 > ⬅️ [返回 Spring 顶层](../README.md)
 
 ---

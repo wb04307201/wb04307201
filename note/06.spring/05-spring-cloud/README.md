@@ -2,14 +2,17 @@
 module:
   parent: spring
   slug: spring/cloud
-  type: article
-  category: 主模块子文章
-  summary: Spring Cloud
+  type: index
+  category: 后端框架 / Spring 全家桶
+  topic: Spring Cloud
+  audience: Java 后端工程师
+  summary: Spring Cloud = 微服务治理工具集（12 篇：服务注册/配置中心/负载均衡/OpenFeign/熔断/网关/链路追踪/Stream/Bus/Seata 集成/版本对应/Config 加密）
 -->
 
 # 05 Spring Cloud
 
-> 最后更新: 2026-06-14
+> 一句话定位：**Spring Cloud = 微服务治理工具集**——基于 Spring Boot，把 Netflix/Alibaba 等公司的微服务最佳实践封装为开箱即用的组件。
+
 > ⬅️ [返回 Spring 顶层](../README.md)
 
 ---
