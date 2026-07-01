@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/concepts/record
+  type: article
+  category: 主模块子文章
+  summary: Java Record（Java 14+）：不可变数据类的简洁写法。
+-->
+
 # 记录类（Record）
 
 ## 引言：基础概念

@@ -11,8 +11,8 @@ module:
 
 > 从语言基础到 JVM 原理、并发编程、版本演进，系统性构建 Java 知识体系。
 
-> 📘 **写作与维护规范**：[CONTRIBUTING.md](./CONTRIBUTING.md) — 目录 / 命名 / 模板 / Mermaid / Commit / 脚本。
-> 验证脚本：[scripts/validate.py](./scripts/validate.py) — 14 主模块 README 0 ERR。
+> 📘 **写作与维护规范**：[CONTRIBUTING.md](./CONTRIBUTING.md) — 目录 / 命名 / 模板 / Mermaid / Commit。
+> 维护方式：所有变更手工逐文件修改，不使用脚本（历史脚本已下线）。
 
 | 序号 | 主题 | 核心内容 |
 |------|------|----------|
@@ -98,12 +98,12 @@ module:
 
 | 序号 | 主题 | 核心内容 |
 |------|------|----------|
-| 1 | [01 Git](05.tools/git/command/README.md) | 命令清单、[Gitea](05.tools/git/gitea/README.md) 自建代码托管 |
-| 2 | [02 Docker](05.tools/docker/command/README.md) | 命令速查、[Compose](05.tools/docker/docker-compose/README.md)、[镜像](05.tools/docker/images/README.md)、[Podman](05.tools/docker/podman/README.md) |
-| 3 | [03 Nginx](05.tools/nginx/README.md) | 反向代理/负载均衡、[Pingora](05.tools/nginx/pingora/README.md) 新一代代理 |
-| 4 | [04 Monorepo](05.tools/monorepo/README.md) | 单仓多项目管理、演进路径、工具选型 |
-| 5 | [05 Java 工具库](05.tools/java/tool-library/README.md) | Hutool / Guava / Commons、[Lombok](05.tools/java/lombok/README.md) 注解提效 |
-| 6 | [06 阿里微服务](05.tools/ali-microservices/README.md) | Nacos 服务发现与配置管理、阿里云原生微服务生态 |
+| 1 | [01 Git](05.tools/01-git/command/README.md) | 命令清单、[Gitea](05.tools/01-git/gitea/README.md) 自建代码托管 |
+| 2 | [02 Docker](05.tools/02-docker/command/README.md) | 命令速查、[Compose](05.tools/02-docker/docker-compose/README.md)、[镜像](05.tools/02-docker/images/README.md)、[Podman](05.tools/02-docker/podman/README.md) |
+| 3 | [03 Java 工具库](05.tools/03-java/tool-library/README.md) | Hutool / Guava / Commons、[Lombok](05.tools/03-java/lombok/README.md) 注解提效 |
+| 4 | [04 Nginx](05.tools/04-nginx/README.md) | 反向代理/负载均衡、[Pingora](05.tools/04-nginx/pingora/README.md) 新一代代理 |
+| 5 | [05 Monorepo](05.tools/05-monorepo/README.md) | 单仓多项目管理、演进路径、工具选型 |
+| 6 | [06 阿里微服务](05.tools/06-ali-microservices/README.md) | Nacos 服务发现与配置管理、阿里云原生微服务生态 |
 
 # 六、[Spring](06.spring/README.md)
 
@@ -210,7 +210,8 @@ module:
 | 4 | [L4 架构设计](11.ai/04-architecture/README.md) | 智能系统分层架构、2026 技术趋势 |
 | 5 | [L5 行业应用](11.ai/05-applications/README.md) | 汽车行业落地、具身智能 |
 | 6 | [L6 前沿研究](11.ai/06-research/README.md) | 沉思模型（Rumination）等前沿探索 |
-| 7 | [教学课程](11.ai/training/README.md) | Spring AI Agent 实战 16 课 |
+| 7 | [LLMOps](11.ai/07-llmops/README.md) | RAG vs 微调、LLMOps 栈、向量库 vs 缓存、LLM 评测、LLM 安全 |
+| 8 | [教学课程](11.ai/training/README.md) | Spring AI Agent 实战 16 课 |
 
 # 十二、[「阿明餐厅」技术系列](12.story/README.md)
 
@@ -239,15 +240,15 @@ module:
 
 > 主模块的"刺刀版" —— 专治面试中那些"好像懂但说不清"的高频 / 高难度问题。
 > 每篇 50-300 行，聚焦单一问题，从原理到陷阱到最佳实践、面试话术一次讲透。
-> 6 大分类共 **115 篇** 深度文章 + 121 篇 frontmatter 元数据（详见 [QUESTION-FORMAT-SPEC](./13.split-hairs/QUESTION-FORMAT-SPEC.md)），覆盖 Java / 数据库 / 系统设计 / Spring / AI / 前端。
-> 写作规范：[QUESTION-FORMAT-SPEC.md](./13.split-hairs/QUESTION-FORMAT-SPEC.md) | 自动化校验：[scripts/validate.py](./13.split-hairs/scripts/validate.py)
+> 6 大分类共 **127 篇** 深度文章（详见 [QUESTION-FORMAT-SPEC](./13.split-hairs/QUESTION-FORMAT-SPEC.md)），覆盖 Java / 数据库 / 系统设计 / Spring / AI / 前端。
+> 写作规范：[QUESTION-FORMAT-SPEC.md](./13.split-hairs/QUESTION-FORMAT-SPEC.md)
 
 ## 分类导航
 
 | 序号 | 主题 | 文章数 | 入口 |
 |------|------|--------|------|
-| 1 | Java 基础陷阱 | 32 | [01.java](13.split-hairs/01.java/README.md) |
-| 2 | 数据库细节 | 22 | [03.database](13.split-hairs/03.database/README.md) |
+| 1 | Java 基础陷阱 | 33 | [01.java](13.split-hairs/01.java/README.md) |
+| 2 | 数据库细节 | 29 | [03.database](13.split-hairs/03.database/README.md) |
 | 3 | 系统设计难点 | 13 | [04.system-design](13.split-hairs/04.system-design/README.md) |
 | 4 | Spring 面试高频 | 13 | [06.spring](13.split-hairs/06.spring/README.md) |
 | 5 | AI 新概念 | 14 | [11.ai](13.split-hairs/11.ai/README.md) |
@@ -255,7 +256,7 @@ module:
 
 ---
 
-## 01.java（31 篇）—— Java 基础陷阱
+## 01.java（33 篇）—— Java 基础陷阱
 
 ### 集合与数据结构
 
@@ -325,7 +326,7 @@ module:
 |------|---------|
 | [高频面试题合集](13.split-hairs/01.java/questions/README.md) | Java 综合高频问题速查 |
 
-## 03.database（18 篇）—— 数据库细节
+## 03.database（29 篇）—— 数据库细节
 
 ### MySQL 基础
 
@@ -365,7 +366,7 @@ module:
 | [Redis 集群](13.split-hairs/03.database/redis-cluster/README.md) | Sentinel vs Cluster |
 | [Redis 大 Key 问题](13.split-hairs/03.database/redis-big-key/README.md) | 发现与治理方案 |
 
-## 04.system-design（10 篇）—— 系统设计难点
+## 04.system-design（13 篇）—— 系统设计难点
 
 ### 高性能
 
@@ -426,7 +427,7 @@ module:
 |------|---------|
 | [Spring MVC 请求流程](13.split-hairs/06.spring/spring-mvc-flow/README.md) | DispatcherServlet 9 步流程 |
 
-## 11.ai（7 篇）—— AI 新概念
+## 11.ai（14 篇）—— AI 新概念
 
 | 主题 | 核心问题 |
 |------|---------|
@@ -438,7 +439,7 @@ module:
 | [LLM 幻觉问题](13.split-hairs/11.ai/hallucination/README.md) | 幻觉成因 / 分类 / 检测与缓解 |
 | [Function Calling / Tool Use](13.split-hairs/11.ai/function-calling/README.md) | 工具调用原理 / Schema 定义 / ReAct Agent |
 
-## 09.front-end（19 篇）—— 前端细节
+## 09.front-end（25 篇）—— 前端细节
 
 ### HTTP / 网络
 

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/concepts/method
+  type: article
+  category: 主模块子文章
+  summary: Java 方法：重载/重写、可变参数、参数传递、Lambda 简写。
+-->
+
 # 方法
 
 ## 引言：基础概念

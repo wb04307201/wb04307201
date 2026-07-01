@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring/cache
+  type: article
+  category: 主模块子文章
+  summary: Spring Cache 4 大模式 + 多级缓存 + 序列化选型。
+-->
+
 # Spring Cache 缓存
 
 > 最后更新: 2026-06-14

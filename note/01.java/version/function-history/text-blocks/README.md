@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/version/text-blocks
+  type: article
+  category: 主模块子文章
+  summary: Java 13/15 Text Blocks：多行字符串字面量。
+-->
+
 # Text Blocks
 
 ## 引言：变更说明

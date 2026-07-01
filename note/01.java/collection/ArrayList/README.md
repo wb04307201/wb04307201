@@ -1,3 +1,14 @@
+<!--
+module:
+  parent: java
+  slug: java/collection/arraylist
+  type: article
+  category: 主模块子文章
+  summary: ArrayList 动态数组实现：扩容机制、fail-fast、序列化陷阱。
+-->
+
+# ArrayList 源码剖析与最佳实践
+
 ## 一、底层 Object[] 数组结构
 
 ArrayList 的核心是一个动态数组, 通过 `transient Object[] elementData` 字段存储元素。

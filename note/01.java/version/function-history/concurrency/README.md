@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/version/concurrency
+  type: article
+  category: 主模块子文章
+  summary: Java 并发演进：synchronized → Lock → CompletableFuture → Virtual Threads。
+-->
+
 # 并发
 
 ## 引言：变更说明

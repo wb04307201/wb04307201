@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/concepts/reflection
+  type: article
+  category: 主模块子文章
+  summary: Java 反射：Class/Method/Field 动态访问与性能开销。
+-->
+
 # 反射
 
 ## 引言：基础概念

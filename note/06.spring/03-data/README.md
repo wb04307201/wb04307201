@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring/data
+  type: article
+  category: 主模块子文章
+  summary: Spring 数据层：声明式事务、JPA、Spring Cache、MyBatis 整合。
+-->
+
 # 03 数据层
 
 > 最后更新: 2026-06-22

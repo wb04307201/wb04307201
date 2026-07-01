@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/mobile-tech-stack
+  type: article
+  category: 主模块子文章
+  summary: App 跨端技术栈选型：原生 vs Flutter vs RN vs H5 vs 小程序。
+-->
+
 # App 技术栈选型：原生 vs 跨端 vs H5 vs 小程序
 
 > 50 万 App 报价中"前端开发"那一项的成本来源。考察的是 **技术决策能力 + 真实成本对比能力**，而不是"什么流行用什么"。

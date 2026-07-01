@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/collection/tree-map
+  type: article
+  category: 主模块子文章
+  summary: TreeMap 红黑树实现：有序 Map 与 O(log n) 查询。
+-->
+
 # Java TreeMap 学习笔记
 
 > `TreeMap` 是基于红黑树（Red-Black Tree）实现的有序 Map，保证键的排序和 O(log n) 的查询性能。

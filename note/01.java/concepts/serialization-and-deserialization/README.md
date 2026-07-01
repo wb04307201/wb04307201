@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/concepts/serialization
+  type: article
+  category: 主模块子文章
+  summary: Java 序列化：Serializable、Externalizable、serialVersionUID。
+-->
+
 # 序列化和反序列化
 
 ## 引言：基础概念

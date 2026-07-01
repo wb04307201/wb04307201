@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/harness-engineering
+  type: article
+  category: 主模块子文章
+  summary: Harness Engineering：用规范/流程/工具约束 Agent 行为。
+-->
+
 # Harness Engineering — 约束 Agent 的工程范式
 
 ← 返回 [工程实践](../README.md)

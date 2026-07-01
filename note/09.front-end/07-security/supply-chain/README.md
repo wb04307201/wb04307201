@@ -326,7 +326,7 @@ jobs:
 ## 11. 交叉引用
 
 - [`04-engineering/`](../../04-engineering/) — 包管理工具
-- [`04-engineering/monorepo/`](../../../05.tools/monorepo/README.md/) — Monorepo 的依赖治理
+- [`04-engineering/monorepo/`](../../../05.tools/05-monorepo/README.md/) — Monorepo 的依赖治理
 - [`07-security/`](../) — 安全总览
 - [`07-security/csp/`](../csp/) — CSP 是另一道防线
 

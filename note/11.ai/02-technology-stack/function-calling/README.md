@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/function-calling
+  type: article
+  category: 主模块子文章
+  summary: Function Calling / Tool Use：工具调用原理 + Schema 定义 + ReAct Agent。
+-->
+
 # Function Calling / Tool Use
 
 ← 返回 [技术栈](../README.md)

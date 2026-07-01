@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/loop-engineering
+  type: article
+  category: 主模块子文章
+  summary: Loop Engineering：循环调用 Agent 直到任务完成的反直觉哲学。
+-->
+
 # Loop Engineering — 循环调用的反直觉哲学
 
 ← 返回 [工程实践](../README.md)

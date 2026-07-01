@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/version/class-file-api
+  type: article
+  category: 主模块子文章
+  summary: Java Class-File API（Java 22 预览）：运行时解析 class 文件结构。
+-->
+
 # Class-File API
 
 ## 引言：变更说明

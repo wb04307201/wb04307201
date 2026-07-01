@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/collection
+  type: article
+  category: 主模块子文章
+  summary: Java 集合框架全貌与各集合类的底层原理、选型指南。
+-->
+
 # Java 集合框架
 
 > 目标：读完这篇，理解 Java 集合体系的全貌，能在实际场景中快速选出合适的集合类。

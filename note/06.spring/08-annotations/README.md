@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring/annotations
+  type: article
+  category: 主模块子文章
+  summary: Spring 注解速查：事务/缓存/调度/校验/重试/AOP/Web 等场景分类索引。
+-->
+
 # 08 注解速查
 
 > 最后更新: 2026-06-14

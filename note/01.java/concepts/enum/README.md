@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/concepts/enum
+  type: article
+  category: 主模块子文章
+  summary: Java 枚举（Enum）：单例模式、策略模式、EnumSet/EnumMap。
+-->
+
 # 枚举（Enum）
 
 ## 引言：基础概念

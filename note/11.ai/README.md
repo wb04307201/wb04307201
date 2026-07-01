@@ -26,6 +26,7 @@ module:
 | **L4 架构设计** | [04-architecture](04-architecture/) | 智能系统分层架构、[AI + BPMN 融合](04-architecture/bpmn-ai-integration.md)、DAG vs ReAct Agent 架构选型、2026技术趋势 |
 | **L5 行业应用** | [05-applications](05-applications/) | 汽车行业落地、具身智能、AI 编程研发效能度量 |
 | **L6 前沿研究** | [06-research](06-research/) | 沉思模型(Rumination)等前沿探索 |
+| **LLMOps** | [07-llmops](07-llmops/) | RAG vs 微调、LLMOps 栈、向量库 vs 缓存、LLM 评测、LLM 安全 |
 | **教学课程** | [training](training/) | Spring AI 实战教学课程 |
 
 ## 知识脉络
@@ -37,6 +38,7 @@ graph TD
     L3 --> L4["L4 架构设计<br/>智能系统分层 · BPMN+AI"]
     L4 --> L5["L5 行业应用<br/>汽车 · 具身智能"]
     L5 --> L6["L6 前沿研究<br/>沉思模型 · 新方向"]
+    L2 --> L7["LLMOps<br/>RAG · 向量库 · 评测 · 安全"]
     L3 --> Training["Spring AI 实战<br/>16 课培训课程"]
 ```
 

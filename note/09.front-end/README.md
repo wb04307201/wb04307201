@@ -377,7 +377,7 @@ flowchart TD
 ## 六、 交叉引用
 
 - [`02.computer-basics/01-network/`](../02.computer-basics/01-network/) — HTTP / HTTPS / HTTP2 / HTTP3 协议族
-- [`05.tools/monorepo/`](../05.tools/monorepo/) — Monorepo 工具链（与 `04-engineering` 互补）
+- [`05.tools/05-monorepo/`](../05.tools/05-monorepo/) — Monorepo 工具链（与 `04-engineering` 互补）
 - [`11.ai/`](../11.ai/) — AI 知识体系（`09-frontend-and-ai` 的上游）
 - [`12.story/`](../12.story/) — 阿明餐厅故事：前端篇、多端篇、AI 学习悖论
 - [`13.split-hairs/09.front-end/`](../13.split-hairs/09.front-end/) — 前端咬文嚼字小专题

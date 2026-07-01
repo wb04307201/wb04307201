@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/collection/concurrent-hashmap
+  type: article
+  category: 主模块子文章
+  summary: ConcurrentHashMap JDK7 分段锁 vs JDK8 CAS+synchronized 实现。
+-->
+
 # ConcurrentHashMap 深入
 
 > 目标：彻底搞懂 ConcurrentHashMap 的底层实现，包括 JDK 7 分段锁、JDK 8 CAS + synchronized 机制、put/get 流程、size() 原理、扩容迁移机制，以及并发场景下的选型。

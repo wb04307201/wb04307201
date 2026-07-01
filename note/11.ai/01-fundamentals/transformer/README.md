@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/transformer
+  type: article
+  category: 主模块子文章
+  summary: Transformer 架构核心：Self-Attention + QKV + Multi-Head。
+-->
+
 # Transformer 架构核心
 
 ← 返回 [基础概念](../README.md)

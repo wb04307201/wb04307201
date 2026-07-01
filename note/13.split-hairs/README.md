@@ -63,15 +63,15 @@ graph TB
 
 | 编号 | 对齐主模块 | 主题 | 文章数 |
 |------|----------|------|--------|
-| 01 | [`01.java`](../01.java/) | Java 基础陷阱（缓存、扩容、并发） | [32 篇](01.java/) |
-| 03 | [`03.database`](../03.database/) | 数据库细节（SQL 优化、Redis 机制） | [22 篇](03.database/) |
-| 04 | [`04.system-design`](../04.system-design/) | 系统设计难点（MQ、缓存、分布式）| [10 篇](04.system-design/) |
+| 01 | [`01.java`](../01.java/) | Java 基础陷阱（缓存、扩容、并发） | [33 篇](01.java/) |
+| 03 | [`03.database`](../03.database/) | 数据库细节（SQL 优化、Redis 机制） | [29 篇](03.database/) |
+| 04 | [`04.system-design`](../04.system-design/) | 系统设计难点（MQ、缓存、分布式）| [13 篇](04.system-design/) |
 | 06 | [`06.spring`](../06.spring/) | Spring 面试高频（IoC、AOP、事务） | [13 篇](06.spring/) |
-| 09 | [`09.front-end`](../09.front-end/) | 前端细节（HTTP、存储、消息机制） | [24 篇](09.front-end/) |
+| 09 | [`09.front-end`](../09.front-end/) | 前端细节（HTTP、存储、消息机制） | [25 篇](09.front-end/) |
 | 11 | [`11.ai`](../11.ai/) | AI 面试深挖（5 篇纯面试题 + 9 篇主模块配套精炼版） | [14 篇](11.ai/) |
 | ✦ | [`14.project-management`](../14.project-management/) | **（外链）**决策实战 / 报价 / 外包 | 见主模块 |
 
-**总计：115 篇面试题**（原 121 篇，迁出 3 篇决策实战 + 多个子目录 README 不计入题数；详见 §4）
+**总计：127 篇面试题**（已含子目录内的全部文章与精炼版）
 
 ---
 
@@ -154,9 +154,9 @@ graph TB
 ## 6. 学习路径建议
 
 ### 按面试准备（数字与 §2 一致）
-1. **Java 后端**：[01.java](01.java/) 32 篇 → [06.spring](06.spring/) 13 篇 → [03.database](03.database/) 22 篇
-2. **系统设计 / 后端架构**：[04.system-design](04.system-design/) 10 篇 → [03.database](03.database/) 22 篇
-3. **前端**：[09.front-end](09.front-end/) 24 篇（含网络/CSS/框架/安全/工程化）
+1. **Java 后端**：[01.java](01.java/) 33 篇 → [06.spring](06.spring/) 13 篇 → [03.database](03.database/) 29 篇
+2. **系统设计 / 后端架构**：[04.system-design](04.system-design/) 13 篇 → [03.database](03.database/) 29 篇
+3. **前端**：[09.front-end](09.front-end/) 25 篇（含网络/CSS/框架/安全/工程化）
 4. **AI 方向**：[11.ai](11.ai/) 14 篇 = 5 篇纯面试题 + 9 篇主模块精炼版
 5. **跨方向管理 / 决策**：[14.project-management](../../14.project-management/)（决策实战，非面试陷阱，**外链**而非本目录）
 

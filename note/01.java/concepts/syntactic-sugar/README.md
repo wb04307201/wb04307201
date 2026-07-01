@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/concepts/syntactic-sugar
+  type: article
+  category: 主模块子文章
+  summary: Java 语法糖：泛型擦除、自动装箱、foreach、Lambda、try-with-resources。
+-->
+
 # 语法糖
 
 ## 引言：基础概念

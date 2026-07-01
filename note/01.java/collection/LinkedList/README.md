@@ -1,3 +1,14 @@
+<!--
+module:
+  parent: java
+  slug: java/collection/linked-list
+  type: article
+  category: 主模块子文章
+  summary: LinkedList 双向链表实现与 ArrayList 的选型对比。
+-->
+
+# LinkedList 源码剖析与最佳实践
+
 ## 一、底层双向链表结构
 
 `LinkedList<E>` 的底层是一个**带头结点的双向链表**（实际上没有虚拟头结点，first 和 last 直接指向真实节点）。
