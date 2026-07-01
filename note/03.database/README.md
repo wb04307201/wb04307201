@@ -16,7 +16,7 @@ module:
 
 ---
 
-## 知识体系
+## 🗺️ 知识体系
 
 | 序号 | 主题 | 难度 | 说明 |
 |------|------|------|------|
@@ -35,7 +35,7 @@ module:
 
 ---
 
-## 学习路线
+## 🧭 学习路线
 
 ```mermaid
 flowchart TD
@@ -52,7 +52,7 @@ flowchart TD
     H --> L["12. 云数据库<br/>RDS / Aurora"]
 ```
 
-## 速查表
+## 📊 速查表
 
 | 概念 | 核心要点 | 典型场景 |
 |------|---------|---------|
@@ -67,13 +67,13 @@ flowchart TD
 | **缓存雪崩** | 大量 key 同时过期 | 过期时间加随机值 |
 | **HikariCP** | 高性能连接池，默认 Spring Boot 2.x+ | 数据库连接管理 |
 
-## 前置知识
+## 🎯 前置知识
 
 - 任意一门后端语言基础(Java/Python/Go)
 - 基本的计算机网络(TCP 三次握手)
 - 数据结构基础(B+ 树、Hash 表)
 
-## 相关章节
+## 🔗 相关章节
 
 数据库章节的多个主题与 [04.system-design](../04.system-design/README.md) 深度联动:
 
@@ -93,7 +93,7 @@ flowchart TD
 | [COUNT(*) vs COUNT(1) vs COUNT(字段)](../13.split-hairs/03.database/relational-database/mysql/count/) | ⭐⭐ | 性能差异 |
 | [事务隔离级别](../13.split-hairs/03.database/relational-database/mysql/isolation/) | ⭐⭐⭐⭐ | RU / RC / RR / Serializable |
 
-## 开源参考
+## 📖 开源参考
 
 | 项目 | 说明 | 链接 |
 |------|------|------|

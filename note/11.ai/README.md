@@ -16,7 +16,7 @@ module:
 
 ---
 
-## 目录导航
+## 📚 目录导航
 
 | 层级 | 目录 | 内容 |
 |------|------|------|
@@ -29,7 +29,7 @@ module:
 | **LLMOps** | [07-llmops](07-llmops/) | RAG vs 微调、LLMOps 栈、向量库 vs 缓存、LLM 评测、LLM 安全 |
 | **教学课程** | [training](training/) | Spring AI 实战教学课程 |
 
-## 知识脉络
+## 🗺️ 知识脉络
 
 ```mermaid
 graph TD
@@ -42,7 +42,7 @@ graph TD
     L3 --> Training["Spring AI 实战<br/>16 课培训课程"]
 ```
 
-## 速查表
+## 📊 速查表
 
 | 概念 | 核心要点 | 典型场景 |
 |------|---------|---------|
@@ -64,21 +64,21 @@ graph TD
 | **MCP** | Model Context Protocol，标准化工具接入协议 | Agent 工具扩展 |
 | **MoE** | Mixture of Experts，稀疏激活提升效率 | GPT-4 / Mixtral |
 
-## 学习路径
+## 🧭 学习路径
 
 - **初学者**：L1 → L2 建立认知框架
 - **工程师**：L2 → L3 掌握落地能力
 - **架构师**：L3 → L4 系统级设计
 - **行业研究者**：L5 → L6 探索未来方向
 
-## 相关章节
+## 🔗 相关章节
 
 - 关联：[`04.system-design`](../04.system-design/) — 通用系统设计（AI 系统也遵循分布式/高可用原则）
 - 关联：[`06.spring`](../06.spring/) — Spring 生态（Spring AI 的底层支撑）
 - 关联：[`07.workflow`](../07.workflow/) — 工作流引擎（BPMN + AI Agent 融合）
 - 面试：[`13.split-hairs/11.ai`](../13.split-hairs/11.ai/README.md) — 14 篇 AI 面试深挖（5 篇纯面试题 + 9 篇主模块配套精炼版）
 
-## 开源参考
+## 📖 开源参考
 
 | 项目 | 说明 | 链接 |
 |------|------|------|

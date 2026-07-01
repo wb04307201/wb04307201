@@ -23,7 +23,7 @@ module:
 
 ---
 
-## 1. 与主模块的关系
+## 🔗 1. 与主模块的关系
 
 ```mermaid
 graph TB
@@ -57,7 +57,7 @@ graph TB
 
 ---
 
-## 2. 分类导航（6 大主模块 + 1 项目管理外链）
+## 📚 2. 分类导航（6 大主模块 + 1 项目管理外链）
 
 > 2026-06-30 路径整理：项目管理类（3 题）已迁出，新主模块 [`14.project-management/`](../14.project-management/) 接手。
 
@@ -75,7 +75,7 @@ graph TB
 
 ---
 
-## 3. 文章模板
+## 📖 3. 文章模板
 
 每篇文章遵循统一结构：
 
@@ -96,7 +96,7 @@ graph TB
 
 ---
 
-## 4. 保留边界：split-hairs 与主模块的分工
+## 🎯 4. 保留边界：split-hairs 与主模块的分工
 
 > **2026 路径整理**：split-hairs 不再无差别收录所有高频内容；下面是"什么属于 split-hairs / 什么应该迁回主模块"的判定标准。
 
@@ -136,7 +136,7 @@ graph TB
 
 ---
 
-## 5. 何时该写 split-hairs？
+## 🤔 5. 何时该写 split-hairs？
 
 **触发条件**：
 - 主模块的某个点需要深度解释（> 100 字）
@@ -151,7 +151,7 @@ graph TB
 
 ---
 
-## 6. 学习路径建议
+## 🧭 6. 学习路径建议
 
 ### 按面试准备（数字与 §2 一致）
 1. **Java 后端**：[01.java](01.java/) 33 篇 → [06.spring](06.spring/) 13 篇 → [03.database](03.database/) 29 篇
@@ -169,7 +169,7 @@ graph TB
 
 ---
 
-## 速查表
+## 📊 速查表
 
 | 分类 | 高频问题 | 核心考点 |
 |------|---------|---------|
@@ -183,7 +183,7 @@ graph TB
 | **前端** | Event Loop、闭包、Promise 手写、从 URL 到页面 | 浏览器 + JS 核心 |
 | **AI** | Transformer 架构、Token 计费、RAG 设计、Prompt/Context/Harness/Loop 工程、生产力悖论、Agent DAG/ReAct 选型 | LLM 原理与 AI 工程演进 + Agent 架构选型 + 研发效能度量 |
 
-## 开源参考
+## 📖 开源参考
 
 本模块为面试专题集，引用的核心开源项目见各主模块的开源参考：
 - [`01.java`](../01.java/README.md) — OpenJDK / JUnit 5 / Mockito
@@ -195,7 +195,7 @@ graph TB
 
 ---
 
-## 6. 交叉引用
+## 🔗 6. 交叉引用
 
 - 每个 split-hairs 文章底部都有"交叉引用"链接回主模块
 - 主模块在需要深挖的地方也会链接到对应的 split-hairs 文章
@@ -203,7 +203,7 @@ graph TB
 
 ---
 
-## 7. 与其他章节的关系
+## 🔗 7. 与其他章节的关系
 
 - **主模块**：[`01.java`](../01.java/) / [`03.database`](../03.database/) / [`04.system-design`](../04.system-design/) / [`06.spring`](../06.spring/) / [`11.ai`](../11.ai/) / [`09.front-end`](../09.front-end/) / [`14.project-management`](../14.project-management/)
 - **故事章节**：[`12.story`](../12.story/) — 阿明餐厅故事（实战场景）
