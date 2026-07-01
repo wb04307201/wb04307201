@@ -16,7 +16,7 @@ question:
 
 # 数据库咬文嚼字
 
-> 数据库高频面试题与细节深挖，对齐主模块 [`03.database`](../../03.database/)。聚焦 MySQL（索引 / 锁 / 事务 / MVCC / JOIN）、Redis（持久化 / 淘汰 / 集群 / 大 Key）、NoSQL 三大方向的 22 个高频陷阱。
+> 数据库高频面试题与细节深挖，对齐主模块 [`03.database`](../../03.database/)。22 篇真题聚焦 MySQL（索引 / 锁 / 事务 / MVCC / JOIN）、Redis（持久化 / 淘汰 / 集群 / 大 Key）、NoSQL 三大方向的高频陷阱。
 
 ---
 

@@ -27,15 +27,17 @@ module:
 
 | 编号 | 对齐主模块 | 主题方向 | 篇数 | 子入口 |
 |------|-----------|---------|------|-------|
-| 01 | [`01.java`](../../01.java/) | Java 基础陷阱（集合 / 并发 / JVM / 类型） | 34 | [01.java/](01.java/) |
-| 03 | [`03.database`](../../03.database/) | 数据库细节（SQL 优化 / Redis / MVCC） | 22 | [03.database/](03.database/) |
-| 04 | [`04.system-design`](../../04.system-design/) | 系统设计难点（MQ / 缓存 / 分布式） | 10 | [04.system-design/](04.system-design/) |
-| 06 | [`06.spring`](../../06.spring/) | Spring 面试高频（IoC / AOP / 事务） | 13 | [06.spring/](06.spring/) |
-| 09 | [`09.front-end`](../../09.front-end/) | 前端细节（HTTP / 存储 / 浏览器机制） | 25 | [09.front-end/](09.front-end/) |
-| 11 | [`11.ai`](../../11.ai/) | AI 面试深挖（5 篇纯面试题 + 9 篇主模块精炼版） | 14 | [11.ai/](11.ai/) |
-| ✦ | [`14.project-management`](../../14.project-management/) | **外链**（决策实战 / 报价 / 外包，已迁出本目录） | — | [14.project-management/](../../14.project-management/) |
+| 01 | [`01.java`](../../01.java/) | Java 基础陷阱 | 34 | [01.java/](01.java/) |
+| 03 | [`03.database`](../../03.database/) | 数据库细节 | 22 | [03.database/](03.database/) |
+| 04 | [`04.system-design`](../../04.system-design/) | 系统设计难点 | 10 | [04.system-design/](04.system-design/) |
+| 06 | [`06.spring`](../../06.spring/) | Spring 面试高频 | 13 | [06.spring/](06.spring/) |
+| 09 | [`09.front-end`](../../09.front-end/) | 前端细节 | 25 | [09.front-end/](09.front-end/) |
+| 11 | [`11.ai`](../../11.ai/) | AI 面试深挖 | 14 | [11.ai/](11.ai/) |
+| ✦ | [`14.project-management`](../../14.project-management/) | **外链**（决策实战，已迁出） | — | [14.project-management/](../../14.project-management/) |
 
-**总计：118 篇面试题**（仅"一题一文"题；03.database 还有 7 个二级目录索引页、04.system-design 有 3 个二级目录索引页）
+**总计：118 篇面试题**（仅"一题一文"题；03.database 另有 7 个二级目录索引页、04.system-design 另有 3 个二级目录索引页）
+
+> 各分类的具体子主题（如 Java 集合 / 并发 / JVM；数据库 SQL 优化 / Redis / MVCC；系统设计 MQ / 缓存 / 分布式等）见子目录 README。
 
 ---
 
