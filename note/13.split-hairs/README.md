@@ -28,14 +28,14 @@ module:
 | 编号 | 对齐主模块 | 主题方向 | 篇数 | 子入口 |
 |------|-----------|---------|------|-------|
 | 01 | [`01.java`](../../01.java/) | Java 基础陷阱（集合 / 并发 / JVM / 类型） | 34 | [01.java/](01.java/) |
-| 03 | [`03.database`](../../03.database/) | 数据库细节（SQL 优化 / Redis / MVCC） | 29 | [03.database/](03.database/) |
-| 04 | [`04.system-design`](../../04.system-design/) | 系统设计难点（MQ / 缓存 / 分布式） | 13 | [04.system-design/](04.system-design/) |
+| 03 | [`03.database`](../../03.database/) | 数据库细节（SQL 优化 / Redis / MVCC） | 22 | [03.database/](03.database/) |
+| 04 | [`04.system-design`](../../04.system-design/) | 系统设计难点（MQ / 缓存 / 分布式） | 10 | [04.system-design/](04.system-design/) |
 | 06 | [`06.spring`](../../06.spring/) | Spring 面试高频（IoC / AOP / 事务） | 13 | [06.spring/](06.spring/) |
 | 09 | [`09.front-end`](../../09.front-end/) | 前端细节（HTTP / 存储 / 浏览器机制） | 25 | [09.front-end/](09.front-end/) |
 | 11 | [`11.ai`](../../11.ai/) | AI 面试深挖（5 篇纯面试题 + 9 篇主模块精炼版） | 14 | [11.ai/](11.ai/) |
 | ✦ | [`14.project-management`](../../14.project-management/) | **外链**（决策实战 / 报价 / 外包，已迁出本目录） | — | [14.project-management/](../../14.project-management/) |
 
-**总计：128 篇面试题**（按 2026-07-01 实际子目录计数）
+**总计：118 篇面试题**（仅"一题一文"题；03.database 还有 7 个二级目录索引页、04.system-design 有 3 个二级目录索引页）
 
 ---
 
@@ -55,8 +55,8 @@ module:
 
 | 目标 | 推荐路径 |
 |------|---------|
-| **Java 后端** | [01.java](01.java/) 34 篇 → [06.spring](06.spring/) 13 篇 → [03.database](03.database/) 29 篇 |
-| **系统设计 / 后端架构** | [04.system-design](04.system-design/) 13 篇 → [03.database](03.database/) 29 篇 |
+| **Java 后端** | [01.java](01.java/) 34 篇 → [06.spring](06.spring/) 13 篇 → [03.database](03.database/) 22 篇 |
+| **系统设计 / 后端架构** | [04.system-design](04.system-design/) 10 篇 → [03.database](03.database/) 22 篇 |
 | **前端** | [09.front-end](09.front-end/) 25 篇（含网络 / CSS / 框架 / 安全 / 工程化） |
 | **AI 方向** | [11.ai](11.ai/) 14 篇 = 5 篇纯面试题 + 9 篇主模块精炼版 |
 
