@@ -1,23 +1,73 @@
 <!--
 module:
   parent: tools
-  slug: tools/nginx
+  slug: note/tools/nginx
   type: article
   category: 主模块子文章
-  summary: Nginx
+  summary: Nginx — 反向代理配置与 Pingora 新一代代理
 -->
 
 # Nginx
 
-## 引言：反直觉代码
-
-Nginx 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
-
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
+> 反向代理与负载均衡——从 Nginx 配置实战到 Cloudflare Pingora 新一代代理。
 
 ---
 
-## 配置示例
+## 1. 模块导航
+
+| 序号 | 主题 | 核心内容 | 子 README |
+|------|------|---------|-----------|
+| 01 | [Nginx](nginx/) | 反向代理 / 负载均衡配置、与前端配合 | [README](README.md) |
+| 02 | [Pingora](pingora/) | Cloudflare 开源 Rust 代理框架 | [README](pingora/README.md) |
+
+### 1.1 学习路径
+
+- **入门**：Nginx 基础配置 → 反向代理 + 负载均衡
+- **进阶**：Pingora → Rust 高性能代理 + 零停机升级
+
+---
+
+## 2. 知识脉络
+
+```mermaid
+graph TB
+    Nginx["Nginx"]
+    Nginx --> N1["基础配置"]
+    Nginx --> N2["反向代理"]
+    Nginx --> N3["负载均衡"]
+
+    N1 --> Block["全局块 / events / http / server / location"]
+    N2 --> Proxy["proxy_pass / proxy_set_header"]
+    N3 --> Strategy["轮询 / 加权 / ip_hash"]
+
+    Nginx --> Pingora["Pingora 替代"]
+    Pingora --> P1["Rust 内存安全"]
+    Pingora --> P2["单线程 4000 万 QPS"]
+    Pingora --> P3["零停机升级"]
+```
+
+---
+
+## 3. 速查表 / Cheat Sheet
+
+| 概念 | 解释 | 典型场景 |
+|------|------|---------|
+| **worker_processes** | Nginx 工作进程数，建议 CPU 核心数 1-2 倍 | 高并发调优 |
+| **worker_connections** | 每个工作进程的最大连接数 | 连接上限 |
+| **proxy_pass** | 配置反向代理目标地址 | 反向代理 |
+| **proxy_set_header** | 修改/添加发往后端的 HTTP 请求头 | 透传 Host / X-Real-IP |
+| **server_name** | 虚拟主机域名匹配 | 多域名同 IP |
+| **Pingora** | Cloudflare 开源 Rust 代理框架，单线程 4000 万 QPS | 高并发 & Rust 生态 |
+| **优雅重启** | 零停机时间升级 | 生产持续运行 |
+| **FIPS 合规** | 支持 OpenSSL & BoringSSL | 政府/金融合规 |
+
+---
+
+## 4. 核心内容
+
+### 4.1 Nginx 配置文件结构
+
+Nginx 配置文件主要由三部分组成：全局块、events 块和 http 块。http 块中可以嵌套多个 server 块，每个 server 块又可包含多个 location 块。
 
 ```text
 user nobody;
@@ -32,7 +82,6 @@ events {
 http {
     include mime.types;
     default_type application/octet-stream;
-
     sendfile on;
 
     server {
@@ -43,48 +92,68 @@ http {
             root html;
             index index.html index.htm;
         }
-
-        error_page 500 502 503 504 /50x.html;
-        location = /50x.html {
-            root html;
-        }
     }
 }
 ```
 
-## 配置文件结构
+### 4.2 重要指令速查
 
-Nginx配置文件主要由三部分组成：全局块、events块和http块。http块中还可以包含多个server块，每个server块中又可以包含多个location块。
+- **worker_processes**：建议 CPU 核心数 1-2 倍，或 `auto` 由 Nginx 自动选择
+- **worker_connections**：每个 worker 进程最大连接数（与 worker_processes 相乘得最大并发）
+- **listen**：监听端口（默认 80）
+- **server_name**：虚拟主机域名
+- **location**：URL 路径匹配规则 + 处理方式
+- **proxy_pass**：反向代理目标地址
+- **rewrite**：URL 重写/重定向
+- **proxy_set_header**：透传 Host、X-Real-IP、X-Forwarded-For
 
-- **全局块**
-  - 配置影响Nginx全局的指令，如运行Nginx服务器的用户（组）、工作进程数、错误日志的位置等。
-  - 示例指令：user nobody;、worker_processes 1;、error_log logs/error.log;
-- **events块**
-  - 设定Nginx的工作模式及连接上限，如每个worker进程的最大连接数、是否开启对多worker process下的网络连接进行序列化等。
-  - 示例指令：worker_connections 1024;、multi_accept on;
-- **http块**
-  - 包含HTTP相关的指令，如文件引入、MIME-Type定义、日志自定义、连接超时时间等。
-  - 可以嵌套多个server块，用于配置不同的虚拟主机。
-  - 示例指令：include mime.types;、sendfile on;
-- **server块**
-  - 代表一个虚拟主机，可以配置多个，用于支持多个域名或IP地址。
-  - 包含server全局块和多个location块。
-  - 示例指令：listen 80;、server_name localhost;
-- **location块**
-  - 配置URL路径的指令，可以定义URL路径的匹配规则和处理方式，如反向代理、重定向等。
-  - 示例指令：location / { root html; index index.html index.htm; }
+### 4.3 Pingora 替代 Nginx
 
-## 重要指令说明
-- **worker_processes**：指定Nginx启动的工作进程数，建议设置为CPU核心数的两倍或设置为auto，由Nginx自行选择。
-- **worker_connections**：定义每个工作进程可以处理的最大连接数，根据服务器性能和并发需求进行适当调整。
-- **listen**：指定Nginx服务器监听的端口，默认是80。
-- **server_name**：指定虚拟主机的域名或IP地址。
-- **location**：用于匹配网页位置，可根据不同的URL路径执行不同的操作，如代理传递、重定向、访问控制等。
-- **proxy_pass**：配置反向代理服务器的目标地址。
-- **rewrite**：配置URL重写规则，可以实现URL的重定向和重写。
-- **proxy_set_header**：修改或添加发送到代理服务器的HTTP请求头，常用于设置Host、X-Real-IP、X-Forwarded-For等。
+Cloudflare 基于 Rust 开源的下一代代理框架。核心优势：单线程 4000 万 QPS、Rust 内存安全、零停机升级、gRPC/WebSocket/HTTP/1·2 全协议支持。提供可编程 API 与过滤器，支持自定义负载均衡策略。详见 [pingora 子目录](pingora/README.md)。
 
-## 配置文件的编辑与生效
-- **编辑配置文件**：使用文本编辑器（如vim、nano）编辑Nginx的配置文件，通常位于/etc/nginx/nginx.conf或/etc/nginx/sites-available/目录下。
-- **检查配置文件**：在修改配置文件后，使用nginx -t命令检查配置文件的语法是否正确。
-- **重启Nginx**：如果配置文件无误，使用nginx -s reload或systemctl restart nginx命令重启Nginx服务，使配置生效。
+---
+
+## 5. 最佳实践
+
+- **连接调优**：`worker_processes = CPU 核数`，`worker_connections = 1024 * 核数`
+- **反向代理头**：始终透传 `Host` / `X-Real-IP` / `X-Forwarded-For`，否则后端无法获真实信息
+- **动静分离**：静态资源走 Nginx，动态请求 proxy_pass 到后端应用
+- **健康检查**：使用 `max_fails` 与 `fail_timeout` 配置 upstream 健康判定
+- **配置校验**：修改后必须 `nginx -t` 验证再 reload，避免配置错误导致服务不可用
+- **零停机升级**：考虑 Pingora 等支持优雅重启的现代代理框架
+
+---
+
+## 6. 常见面试题
+
+- Nginx 和 Apache 的核心差异？
+- 什么是 epoll 模型？为什么 Nginx 高并发能力强？
+- nginx -s reload 与 restart 的区别？
+- upstream 的几种负载均衡策略及适用场景？
+- Nginx 反向代理为什么要透传 Host / X-Real-IP？
+- Pingora 相比 Nginx 的核心优势？
+
+---
+
+## 📊 本节统计
+
+| 子目录 | leaf README 数 | 备注 |
+|:-------|:-----------:|:-----|
+| `04-nginx/`（本文） | 1 | 顶层 |
+| └─ `pingora/` | 1 | Cloudflare Rust 代理框架 |
+| **分类 leaf 合计** | **1 depth-2 + 1 顶层 = 2** | 100% frontmatter |
+| **学习路径主题数** | 2 条（入门：Nginx 基础 → 进阶：Pingora 替代） | 见上方学习路径 |
+
+> 数字基线：本节以 leaf README 数 + 学习路径主题数双口径统计；最后更新 2026-07-02。
+
+---
+
+## 7. 相关章节
+
+- 上游：[`工具链`](../README.md)
+- 关联：[`02-docker`](../02-docker/README.md) — Docker 容器化部署时 Nginx 常作前置网关
+- 关联：[`06-ali-microservices`](../06-ali-microservices/README.md) — Higress / Envoy 等云原生网关与 Nginx 同源
+
+---
+
+← [返回工具链总览](../README.md)
