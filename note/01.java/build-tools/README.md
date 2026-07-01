@@ -4,7 +4,7 @@ module:
   slug: java/build-tools
   type: article
   category: 主模块子文章
-  summary: Java 构建工具笔记
+  summary: Maven 与 Gradle 全方位对比：从坐标 / 依赖管理 / 多模块到生命周期与最佳实践。
 -->
 
 # Java 构建工具笔记
