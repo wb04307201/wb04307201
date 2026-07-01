@@ -1,16 +1,15 @@
 <!--
-pm:
-  topic: 报价拆解
-  audience: 老板 / PM / 创业者
+module:
+  parent: 14.project-management
+  slug: app-quote-breakdown
+  type: article
   category: 决策实战
-  summary: 5 万 vs 50 万 App 报价背后的 12 大成本维度
+  summary: 5 万 vs 50 万 App 报价背后的 12 大成本维度拆解与决策矩阵
 -->
 
 # 5万 vs 50万 App 报价差在哪：12 大成本维度拆解
 
-> 老板 / PM / 技术总监都会遇到的问题：同一个"App"，报价为什么差 10 倍？考察的是 **项目成本拆解能力 + 隐性成本识别能力**。
-
-## 引言：5 万 vs 50 万 App 报价差在哪
+> 同一"App"差 10 倍报价——拆 12 维成本、避"钱不够又要最好"陷阱
 
 ```text
 老板阿明 2026 春招标：
@@ -34,6 +33,8 @@ pm:
 - 50 万：正式商业产品 / C 端用户 10 万+
 
 老板要的是产品级 App（含运维、监控、灰度、合规），但预算只够 MVP 档 → **典型的"钱不够又要最好"陷阱**。
+
+---
 
 ## 一、核心结论（TL;DR）
 
@@ -198,10 +199,26 @@ pm:
 
 ## 六、相关章节
 
-- 同栏目：[`mobile-tech-stack`](../mobile-tech-stack/README.md) — App 技术栈选型
+- 同栏目：[`mobile-tech-stack`](../../09.front-end/08-cross-platform/mobile-tech-stack/README.md) — App 技术栈选型
 - 同栏目：[`outsourcing-pitfalls`](../outsourcing-pitfalls/README.md) — 外包避坑指南
-- 主模块：[`04.system-design/01-foundation`](../../../../04.system-design/01-foundation/README.md) — 软件工程基础
+- 主模块：[`04.system-design/01-foundation`](../../../04.system-design/01-foundation/README.md) — 软件工程基础
 
 ---
 
-> 📅 2026-06-28 · 咬文嚼字 · 项目管理 · ⭐⭐⭐（高频实战 + 决策必看）
+## 📊 本节统计
+
+| 项目 | 数量 / 内容 |
+|------|------------|
+| 报价档位 | 3 档（5 万 / 20 万 / 50 万） |
+| 差异维度 | 12 大维度（按成本占比排序） |
+| 核心差异（第 1-3 项） | 占成本 60% |
+| 关键差异（第 4-6 项） | 占成本 25% |
+| 隐性差异（第 7-9 项） | 占成本 10% |
+| 边缘差异（第 10-12 项） | 占成本 5% |
+| 决策场景 | 7 类（idea 验证 / 内部 / B 端 / C 端 / 金融） |
+| 面试陷阱 | 3 个 |
+| 话术模板 | 1 个（老板 / PM 通用） |
+
+---
+
+← [返回项目管理主页](../README.md)
