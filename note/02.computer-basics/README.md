@@ -3,7 +3,7 @@ module:
   number: 02
   slug: computer-basics
   topic: 计算机基础
-  audience: 工程师 / SRE
+  audience: 工程师 / SRE / 学生
   category: 主模块
   summary: 系统性整理计算机科学基础知识，涵盖网络、算法、系统运维、知识产权等核心领域。
 -->
@@ -16,13 +16,31 @@ module:
 
 ## 📚 目录导航
 
-| 模块 | 内容 | 说明 |
-|------|------|------|
-| [01-网络](01-network/) | OSI/TCP/IP 模型 · 协议族 · HTTP 演进 · WCAG | 计算机网络体系结构与核心协议 |
-| [02-算法](02-algorithms/) | 算法概述 · 时间/空间复杂度 · 取舍策略 | 算法基础理论与分析方法 |
-| [03-Linux](03-linux/) | 常用命令 · curl 详解 | Linux 服务器管理与网络工具 |
-| [04-运维](04-operations/) | 服务器性能指标 · 云服务模式 | 系统监控与云计算架构 |
-| [05-知识产权](05-ipr/) | 专利 vs 软件著作权 | 技术成果保护策略 |
+| 序号 | 分类 | 核心内容 | 子 README |
+|:----:|------|---------|-----------|
+| 01 | [网络](01-network/) | OSI/TCP/IP 模型 · 协议族 · HTTP 演进 · WCAG | [01-network/README](01-network/README.md) |
+| 02 | [算法](02-algorithms/) | 算法概述 · 时间/空间复杂度 · 取舍策略 | [02-algorithms/README](02-algorithms/README.md) |
+| 03 | [Linux](03-linux/) | 常用命令 · curl 详解 | [03-linux/README](03-linux/README.md) |
+| 04 | [运维](04-operations/) | 服务器性能指标 · 云服务模式 | [04-operations/README](04-operations/README.md) |
+| 05 | [知识产权](05-ipr/) | 专利 vs 软件著作权 | [05-ipr/README](05-ipr/README.md) |
+
+---
+
+## 🎯 适用人群
+
+- **后端 / 全栈工程师**：网络协议、Linux 命令、性能监控是日常基础
+- **运维 / SRE**：服务器指标、云服务选型、生产故障排查
+- **求职 / 在校生**：算法复杂度、TCP/IP 模型、HTTP 演进是高频面试题
+- **创业者 / 独立开发者**：知识产权保护（专利与软著的差异与申请策略）
+
+---
+
+## 🧭 学习路径
+
+- **新人入门**：网络 → 算法 → Linux（搭建"日常开发 + 面试"基础底盘）
+- **运维方向**：Linux → 运维 → 网络（深入协议栈与监控指标）
+- **求职冲刺**：算法（复杂度 + 经典案例）→ 网络（TCP/HTTP/DNS）→ 知识产权（开放题）
+- **速查定位**：按需查阅各分类 README 速查表
 
 ---
 
@@ -43,6 +61,8 @@ graph TB
     Ops --> O["监控与云<br/>IaaS/PaaS/SaaS"]
 ```
 
+---
+
 ## 📊 速查表
 
 | 概念 | 核心要点 | 典型场景 |
@@ -58,11 +78,7 @@ graph TB
 | **Linux 权限** | rwx (4+2+1)，chmod/chown/ugo | 文件安全 |
 | **IaaS/PaaS/SaaS** | 基础设施/平台/软件即服务 | 云服务选型 |
 
-## 🧭 学习路径
-
-- **基础必修**：网络 → 算法 → Linux
-- **运维方向**：Linux → 运维 → 网络（深入协议）
-- **速查定位**：按需查阅各模块
+---
 
 ## 🔗 相关章节
 
@@ -83,6 +99,19 @@ graph TB
 | **systemd** | 现代 Linux init 系统（03-linux 系统管理） | [systemd.io](https://systemd.io) |
 | **Prometheus** | 开源监控系统（04-operations） | [prometheus.io](https://prometheus.io) |
 | **Borg** | Google 内部集群管理（04-operations / 论文） | [research.google/pubs/large-scale-cluster-management](https://research.google/pubs/large-scale-cluster-management-at-google-with-borg/) |
+
+---
+
+## 📊 本节统计
+
+| 统计维度 | 数值 | 口径 |
+|----------|------|------|
+| 分类主题数 | 5 | 顶层 5 个分类目录（网络/算法/Linux/运维/知识产权） |
+| 子 README 总数 | 21 | 含 5 个分类 README + 16 个 leaf README（depth ≥ 2） |
+| 含 frontmatter 的 README | 22 / 22 | 100% 覆盖（2026-07-01，含本顶层 README） |
+| 配套面试题 | 0 篇 | 本模块暂未配套 split-hairs 文章（按需扩展） |
+
+> **统计时间戳**：2026-07-01（与 `note/README.md` 中"二、[计算机基础]"锚点状态一致）
 
 ---
 
