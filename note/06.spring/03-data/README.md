@@ -12,7 +12,7 @@ module:
 # 03 数据层
 
 > 一句话定位：**Spring 数据层 = 事务管理 + 缓存抽象 + 数据访问（JDBC/JPA/MyBatis）**——聚焦"事务"和"缓存"两大支柱，新增 **MyBatis 整合**专题。
-
+>
 > ⬅️ [返回 Spring 顶层](../README.md)
 
 ---

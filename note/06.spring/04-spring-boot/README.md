@@ -12,7 +12,7 @@ module:
 # 04 Spring Boot
 
 > 一句话定位：**Spring Boot = Spring + 约定优于配置 + 生产级特性**——它不重新发明轮子，而是让 Spring 更易用、更适合云原生部署。
-
+>
 > ⬅️ [返回 Spring 顶层](../README.md)
 
 ---

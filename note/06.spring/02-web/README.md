@@ -12,7 +12,7 @@ module:
 # 02 Web 层
 
 > 一句话定位：**Spring Web 层 = Spring MVC（同步阻塞）+ Spring WebFlux（异步响应式）**——前者是事实标准，后者是高并发场景的备选。
-
+>
 > ⬅️ [返回 Spring 顶层](../README.md)
 
 ---

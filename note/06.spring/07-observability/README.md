@@ -12,7 +12,7 @@ module:
 # 07 可观测性
 
 > 一句话定位：**Spring 可观测性 = Actuator（端点暴露）+ Micrometer（指标抽象）+ Prometheus/Grafana（采集与可视化）**——云原生时代的"监控三件套"。
-
+>
 > ⬅️ [返回 Spring 顶层](../README.md)
 
 ---

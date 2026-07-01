@@ -12,7 +12,7 @@ module:
 # 01 核心容器
 
 > 一句话定位：**Spring 核心容器 = IoC 容器 + AOP 框架 + 工具集**——掌握这三者，你就理解了 Spring 其他所有模块（Boot/Cloud/Data）的底层机制。
-
+>
 > ⬅️ [返回 Spring 顶层](../README.md)
 
 ---
