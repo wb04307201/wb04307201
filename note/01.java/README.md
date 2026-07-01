@@ -109,8 +109,8 @@ graph TB
 | 统计维度 | 数值 | 口径 |
 |----------|------|------|
 | 分类主题数 | 15 | 顶层 15 个分类目录 |
-| 子 README 总数 | 97 | 含 16 个分类 README + 81 个 leaf README |
-| 含 frontmatter 的 README | 97 / 97 | 100% 覆盖（2026-07-01） |
+| 子 README 总数 | 96 | 含 15 个分类 README + 81 个 leaf README（depth ≥ 2） |
+| 含 frontmatter 的 README | 97 / 97 | 100% 覆盖（2026-07-01，含本顶层 README） |
 | 配套面试题 | 34 篇 | `13.split-hairs/01.java/` 下 leaf 文章数 |
 
 > **统计时间戳**：2026-07-01（与 `note/README.md` 中"一、[Java]"锚点状态一致）

@@ -568,7 +568,7 @@ concurrency/
 
 | 统计维度 | 数值 | 口径 |
 |----------|------|------|
-| 分类主题数 | 6 | jmm / volatile / synchronized / threadlocal / atomic / completablefuture |
+| 分类主题数 | 10 | jmm / volatile / synchronized / threadlocal / atomic / completablefuture + juc-locks / thread-basics / utilities / concurrent-collections（含 3 子专题） |
 | 子 README 数 | 13 | 含 concurrent-collections（3 子目录）等深层 leaf |
 | 含 frontmatter 的 README | 14 / 14 | 100% 覆盖（2026-07-01） |
 

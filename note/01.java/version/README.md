@@ -94,7 +94,7 @@ Java 版本特性 是 N 个 JEP / 特性 / 章节的合集。
 | 统计维度 | 数值 | 口径 |
 |----------|------|------|
 | 分类主题数 | 2 | 功能变更历史（15 个特性专题）/ 各版本特性（Java 8 ~ 26 共 19 个版本子目录） |
-| 子 README 数 | 38 | 含 function-history（17）/ java-8 ~ java-26（19）/ java-26 README 等深层 leaf |
+| 子 README 数 | 37 | function-history（18 个 leaf）+ 各版本（java-8 ~ java-26 共 19 个 leaf） |
 | 含 frontmatter 的 README | 39 / 39 | 100% 覆盖（2026-07-01） |
 
 > **统计时间戳**：2026-07-01
