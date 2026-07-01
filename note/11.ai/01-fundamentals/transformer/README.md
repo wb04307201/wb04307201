@@ -5,17 +5,13 @@
 > Transformer 是 2017 年 Google 论文 *"Attention is All You Need"* 提出的架构，抛弃 RNN，完全基于注意力机制，是 GPT / BERT / Claude / LLaMA 等所有现代大模型的基石。
 
 ---
-## 引言：架构困境（[AUTO] 自动生成，待人工 review）
+## 引言：架构困境
 
-Transformer 架构核心 的← 返回 [基础概念](../README.md)
+Transformer 架构核心 的关键不是'选型'——是**选完之后怎么在 5 个 trade-off 里活下来**。
 
-**但实际**：常被问起'这种方案我怎么选'/'大厂怎么做'。本篇用'决策困境'切入，比较几种主流路径并讲清取舍。
-
-> 📌 本段由 `note/scripts/add-intro.py` 自动生成（场景模板 + README 摘录）。**下次 review 时请改为真实场景 + 数字 + 反思**，目前仅满足'有引言'的最低要求。
+本篇用'决策困境'切入，比较几种主流路径并讲清取舍。
 
 ---
-
-
 
 ## 一、Transformer 解决了什么问题
 

@@ -15,17 +15,13 @@ module:
 > 最后更新: 2026-06-10
 
 ---
-## 引言：架构困境（[AUTO] 自动生成，待人工 review）
+## 引言：架构困境
 
-IT 价值流参考架构（IT4IT 3.0） 的**IT4IT**（Information Technology Infrastructure Library for IT, "IT 的 ITIL"）是 The Open Group 维护的**IT 运营价值流参考架构**
+IT 价值流参考架构（IT4IT 3.0） 的关键不是'选型'——是**选完之后怎么在 5 个 trade-off 里活下来**。
 
-**但实际**：常被问起'这种方案我怎么选'/'大厂怎么做'。本篇用'决策困境'切入，比较几种主流路径并讲清取舍。
-
-> 📌 本段由 `note/scripts/add-intro.py` 自动生成（场景模板 + README 摘录）。**下次 review 时请改为真实场景 + 数字 + 反思**，目前仅满足'有引言'的最低要求。
+本篇用'决策困境'切入，比较几种主流路径并讲清取舍。
 
 ---
-
-
 
 ## 🎯 一句话定位
 

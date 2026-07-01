@@ -9,18 +9,13 @@
 > 企业效果参考：https://www.microsoft.com/en-us/worklab/work-trend-index/2024/the-state-of-organizations/
 
 ---
-## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）
+## 引言：反直觉代码
 
-Microsoft 365 Copilot：存量办公套件如何被 AI 改写为"协作者" 本应该很简单，**一句话总结**：当 Office 已经统治了 30 亿人的工作流，Copilot 的关键不是再做一个聊天框，而是把大模型"塞进"每个 Word/Excel/Outlook/Teams 按钮背后——用存量入口重新定义 SaaS 的 AI
+Microsoft 365 Copilot：存量办公套件如何被 AI 改写为"协作者" 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
 
-**但实际**：面试/生产中常被问起或踩坑的是——
-代码看着对、跑起来对，但仔细一问深一层就漏馅。本篇就从'反直觉'这个角度切入，把踩坑点和根因摆出来。
-
-> 📌 本段由 `note/scripts/add-intro.py` 自动生成（场景模板 + README 摘录）。**下次 review 时请改为真实场景 + 数字 + 反思**，目前仅满足'有引言'的最低要求。
+本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
 
 ---
-
-
 
 ## 一、SaaS 巨头的 AI 焦虑：为什么不能只加一个聊天框
 

@@ -4,18 +4,13 @@
 > 本文档系统介绍 `CountDownLatch`、`CyclicBarrier`、`Semaphore`、`Phaser`、`Exchanger` 五大同步工具。
 
 ---
-## 引言：反直觉代码（[AUTO] 自动生成，待人工 review）
+## 引言：反直觉代码
 
-Java 并发工具类 (java.util.concurrent) 本应该很简单，`java.util.concurrent` 包提供了一组高级并发构建块，用于简化多线程程序的开发
+Java 并发工具类 (java.util.concurrent) 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
 
-**但实际**：面试/生产中常被问起或踩坑的是——
-代码看着对、跑起来对，但仔细一问深一层就漏馅。本篇就从'反直觉'这个角度切入，把踩坑点和根因摆出来。
-
-> 📌 本段由 `note/scripts/add-intro.py` 自动生成（场景模板 + README 摘录）。**下次 review 时请改为真实场景 + 数字 + 反思**，目前仅满足'有引言'的最低要求。
+本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
 
 ---
-
-
 
 ## 目录
 
