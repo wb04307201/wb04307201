@@ -16,13 +16,6 @@ module:
 **工作流引擎 = 微服务时代的"中控大脑"**——从 OA 审批到电商订单，传统流程引擎用 BPMN 管"人 + 系统"长流程；微服务编排引擎（Zeebe / Conductor / Cadence）专为"高并发、分布式、可观测"而生。
 
 ---
-## 引言：架构困境
-
-工作流引擎与微服务编排 的关键不是'选型'——是**选完之后怎么在 5 个 trade-off 里活下来**。
-
-本篇用'决策困境'切入，比较几种主流路径并讲清取舍。
-
----
 
 ## 📚 章节导航（6 节 + 3 案例）
 
@@ -314,3 +307,16 @@ class ResearchAgent:
 - [Zeebe 内核](../process-engine/camunda/camunda-8/zeebe/README.md) — 主流微服务编排引擎之一
 - [Camunda 8 / 云原生](../process-engine/camunda/camunda-8/README.md) — 编排 + AI 集成
 - [事件驱动与 Serverless Workflow](../apache-eventmesh/README.md) — 事件驱动的另一种微服务协作方式
+
+---
+
+## 📊 本节统计
+
+| 维度 | 数据 |
+|------|------|
+| **覆盖节数** | 6 节 + 3 真实案例 |
+| **核心引擎** | 3（Zeebe / Conductor / Cadence-Temporal） |
+| **协作模式** | 2（编舞 vs 编排） |
+| **典型案例** | Netflix Conductor（日均 100 万+）/ Uber Cadence（PB 级）/ 阿里 OpenSergo |
+
+← [返回 07 工作流](../README.md)

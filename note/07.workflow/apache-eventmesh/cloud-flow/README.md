@@ -12,15 +12,10 @@ module:
 > Apache EventMesh 在工作流/云流程场景的架构图与可视化资料
 
 ---
-## 引言：架构困境
 
-EventMesh 云流程 的关键不是'选型'——是**选完之后怎么在 5 个 trade-off 里活下来**。
+## 🎯 一句话定位
 
-本篇用'决策困境'切入，比较几种主流路径并讲清取舍。
-
----
-
-## 导航
+**EventMesh 云流程 = Serverless Workflow DSL + 阿里云 FC/MNS/VOD/FNF 编排**——可视化展示 EventMesh Runtime 在云原生视频处理场景的标准架构与最佳实践。
 
 | 序号 | 主题 | 核心内容 |
 |------|------|---------|
@@ -176,10 +171,21 @@ flowchart TB
 ## 相关章节
 
 - 上游：[`事件驱动与 Serverless Workflow`](../README.md) — BPMN + 事件驱动融合
-- 上游：[`07 工作流`](../../README.md) — 工作流顶层
+- 上游：[`07 工作流`](../../../README.md) — 工作流顶层
 - 关联：[`微服务编排`](../../workflow-and-microservice-orchestration/README.md) — 编舞 vs 编排
 - 关联：[`流程引擎`](../../process-engine/README.md) — Camunda 7/8 / Zeebe
 
 ---
 
+## 📊 本节统计
+
+| 维度 | 数据 |
+|------|------|
+| **覆盖图表** | 3 张 Mermaid（云流程架构 / 事件网格集成 / DSL 执行） |
+| **核心组件** | EventMesh Runtime + FC / MNS / VOD / FNF |
+| **架构模式** | Parallel 并行 + Choice 分支 + Map 迭代 |
+| **配套文档** | [事件驱动与 Serverless Workflow](../README.md) |
+
 > 提示：本目录以 Mermaid 图表为主，建议结合 [事件驱动 README](../README.md) 的 §三 Apache EventMesh 与 §五 12306 案例一起阅读
+
+← [返回 07 工作流](../../../README.md)

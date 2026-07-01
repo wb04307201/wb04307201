@@ -9,11 +9,10 @@ module:
 
 # 工作流定义
 
-> ⬅️ [返回 07 工作流](README.md) | [流程引擎](../../README.md) | [微服务编排](../../README.md)
+> ⬅️ [返回 07 工作流](../README.md) | [流程引擎](../process-engine/README.md) | [微服务编排](../workflow-and-microservice-orchestration/README.md)
 
 工作流（Workflow）是组织或系统中为完成特定业务目标而设计的有序、可重复活动的集合。本节从**概念**出发，区分**业务视角**与**技术视角**，并以 BPMN 2.0 标准为锚点建立统一定义。
 
----
 ---
 
 ## 🎯 一句话定位
@@ -230,3 +229,16 @@ flowchart LR
 - [工作流引擎与微服务编排](../workflow-and-microservice-orchestration/README.md) — 流程引擎在微服务场景的演化
 - [事件驱动与 Serverless Workflow](../apache-eventmesh/README.md) — 事件驱动作为工作流的神经系统
 - [04 系统设计/02 分布式](../../04.system-design/02-distributed/README.md) — 分布式系统的协作模式
+
+---
+
+## 📊 本节统计
+
+| 维度 | 数据 |
+|------|------|
+| **覆盖节数** | 5 节 + 3 真实案例 |
+| **核心元素** | BPMN 22 元素（三要素 + 泳道） |
+| **案例数量** | 3（银行对公开户 / 餐饮供应商 / 医院检验） |
+| **上下游链接** | 流程引擎 / 微服务编排 / 事件驱动 |
+
+← [返回 07 工作流](../README.md)

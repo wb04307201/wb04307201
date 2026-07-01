@@ -9,16 +9,9 @@ module:
 
 # 流程引擎
 
-> ⬅️ [返回 07 工作流](README.md) | [定义](../../README.md) | [Camunda 7](../../README.md) | [Camunda 8](../../README.md) | [微服务编排](../../README.md)
+> ⬅️ [返回 07 工作流](../README.md) | [定义](../define/README.md) | [Camunda 7](camunda/camunda-7/README.md) | [Camunda 8](camunda/camunda-8/README.md) | [微服务编排](../workflow-and-microservice-orchestration/README.md)
 
 流程引擎是**解析并执行 BPMN 流程定义**的核心组件，把"图形化流程图"转化为可运行、可监控、可审计的业务执行。本节讲清**工作原理 → 发展史 → 主流引擎 → 选型**。
-
----
-## 引言：架构困境
-
-流程引擎 的关键不是'选型'——是**选完之后怎么在 5 个 trade-off 里活下来**。
-
-本篇用'决策困境'切入，比较几种主流路径并讲清取舍。
 
 ---
 
@@ -228,7 +221,7 @@ Q5: 国产化 / 信创要求？
 1. **为什么 Camunda 8 要重写 Zeebe 而不是演进 Camunda 7？** 7 依赖关系型 DB + 嵌入式架构，扩展性受限；Zeebe 用 Raft + 追加日志 + ES 解决水平扩展。
 2. **Flowable vs Camunda 怎么选？** 核心差异在商业策略——Camunda 强在企业版 + Optimize 分析；Flowable 强在 CMMN 案例管理 + 商业版（Flowable Work）。
 3. **BPMN 引擎能否直接编排微服务？** 见 [03 编排](../workflow-and-microservice-orchestration/README.md)——传统 BPMN 适合"人 + 系统"长流程；微服务编排用 Zeebe/Conductor/Cadence 更合适。
-4. **AI 时代还需要 BPMN 引擎吗？** 仍然需要——BPMN 提供**确定性、合规、可审计**的骨架；如需 AI 节点，可在 Camunda 8.5+ 中用 AI Agent Sub-process（[Camunda 8](../../README.md)），或在 Zeebe Job Worker 中包装自研 LLM 调用（[Zeebe](../../README.md)）。
+4. **AI 时代还需要 BPMN 引擎吗？** 仍然需要——BPMN 提供**确定性、合规、可审计**的骨架；如需 AI 节点，可在 Camunda 8.5+ 中用 AI Agent Sub-process（[Camunda 8](camunda/camunda-8/README.md)），或在 Zeebe Job Worker 中包装自研 LLM 调用（[Zeebe](camunda/camunda-8/zeebe/README.md)）。
 5. **2026 年选 BPMN 引擎的默认值？** **Camunda 8 / Zeebe**。**Camunda 7** 仅在 ① 强治理（银行/政务）② 国产化（麒麟/达梦）③ 存量维护 三个场景下选。**Flowable** 仅在需要 CMMN 案例管理时选。**Activiti** 新项目不选。
 
 ---
@@ -236,8 +229,21 @@ Q5: 国产化 / 信创要求？
 ## 相关章节
 
 - ⬅️ [返回 07 工作流](README.md)
-- [工作流定义](../../README.md) — 业务/技术视角的工作流概念 + BPMN 三要素
-- [Camunda 7 实战](../../README.md) — SpringBoot 集成 Camunda 7 全流程
-- [Camunda 8 / Zeebe](../../README.md) — 云原生分布式引擎 + AI Agent Sub-process
-- [工作流引擎与微服务编排](../../README.md) — 流程引擎在微服务场景的演化
+- [工作流定义](../define/README.md) — 业务/技术视角的工作流概念 + BPMN 三要素
+- [Camunda 7 实战](camunda/camunda-7/README.md) — SpringBoot 集成 Camunda 7 全流程
+- [Camunda 8 / Zeebe](camunda/camunda-8/README.md) — 云原生分布式引擎 + AI Agent Sub-process
+- [工作流引擎与微服务编排](../workflow-and-microservice-orchestration/README.md) — 流程引擎在微服务场景的演化
 - [事件驱动与 Serverless Workflow](../apache-eventmesh/README.md) — 事件驱动作为工作流的神经系统
+
+---
+
+## 📊 本节统计
+
+| 维度 | 数据 |
+|------|------|
+| **覆盖节数** | 6 节（原理 / 史 / 对比 / 选型 / 新兴 / 趋势） |
+| **主流引擎** | 4（Camunda 7/8、Flowable、Activiti） |
+| **实战文件** | 3（Camunda 7/8/Zeebe） |
+| **决策维度** | 5（合规 / AI / 吞吐 / 低代码 / 国产化） |
+
+← [返回 07 工作流](../README.md)

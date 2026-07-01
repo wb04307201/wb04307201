@@ -16,7 +16,6 @@ module:
 **Camunda 8 = Zeebe 分布式流处理引擎 + 云原生 K8s 部署 + 8.5+ 原生 AI Agent 集成**——把 BPMN 引擎从「数据库中心」重构为「追加日志 + Raft + Elasticsearch」，10,000+ 实例/秒，2026 年企业级 BPMN + AI 的事实标准。
 
 ---
----
 
 ## 📚 章节导航（5 节 + 1 实战案例）
 
@@ -340,3 +339,16 @@ public void handle(final JobClient client, final ActivatedJob job) {
 - [Camunda 7 实战](../camunda-7/README.md) — 上一代引擎的 SpringBoot 集成
 - [Zeebe](zeebe/README.md) — Camunda 8 内核引擎详解
 - [事件驱动与 Serverless Workflow](../../../apache-eventmesh/README.md) — 事件驱动作为工作流的神经系统
+
+---
+
+## 📊 本节统计
+
+| 维度 | 数据 |
+|------|------|
+| **覆盖节数** | 6 节（架构 / 差异 / AI / 决策 / 案例 / 进展） |
+| **架构层** | 4（数据 / 共识 / 执行 / UI） |
+| **AI 特性** | 4（AI Agent Sub-process / fromAi() / Ad-hoc / Agent Context） |
+| **决策维度** | 9（事务 / 吞吐 / 部署 / AI / 信创 等） |
+
+← [返回 07 工作流](../../../README.md)

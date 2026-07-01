@@ -16,13 +16,6 @@ module:
 **事件驱动 = 工作流的「神经系统」**——BPMN 提供**确定性流程骨架**，事件驱动提供**跨系统协作 + 云原生扩展**，二者通过 **Serverless Workflow 标准** 融合为下一代编排范式。
 
 ---
-## 引言：架构困境
-
-事件驱动与 Serverless Workflow 的关键不是'选型'——是**选完之后怎么在 5 个 trade-off 里活下来**。
-
-本篇用'决策困境'切入，比较几种主流路径并讲清取舍。
-
----
 
 ## 📚 章节导航（6 节 + 12306 案例）
 
@@ -361,3 +354,16 @@ graph TB
 - [微服务编排](../workflow-and-microservice-orchestration/README.md) — 编舞 vs 编排
 - [04 系统设计/02 分布式](../../04.system-design/02-distributed/README.md) — CAP/共识理论基础
 - [04 系统设计/06 幂等](../../04.system-design/06-idempotency/README.md) — 事件驱动必配的幂等设计
+
+---
+
+## 📊 本节统计
+
+| 维度 | 数据 |
+|------|------|
+| **覆盖节数** | 6 节 + 12306 国家级案例 |
+| **核心概念** | 5（EDA / CloudEvents / Serverless Workflow / EventMesh / 编舞 vs 编排） |
+| **Serverless Workflow 版本** | 3（0.8 / 0.9 / 1.0 GA） |
+| **典型规模** | 12306 春运 1500 万张票/天 + 120 万 QPS |
+
+← [返回 07 工作流](../README.md)
