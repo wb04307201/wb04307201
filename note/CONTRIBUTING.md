@@ -355,4 +355,31 @@ scope 规范：
 
 > 📌 **2026-07-01 现状修正**：02/03/04/08 四个主模块的 `## 开源参考` 段均已补齐，不再列入待补清单。
 
+📌 **2026-07-01 起，新一轮 note-optimization 以 §12 "模块 README 标准结构" 为准**（14 个主模块逐个收敛到该模板）。本节（§11 务实版）保留作为历史参考。
 
+---
+
+## 12. 模块 README 标准结构
+
+所有主模块 README 与子目录 README 必须遵循以下模板（详见 `docs/superpowers/specs/2026-07-01-note-optimization-design.md` §4）：
+
+- 顶层模块 README：必须包含 frontmatter + 一句话导览 + 目录导航表格 + 适用人群（可选）+ 学习路径（可选）
+- 二级子目录 README：必须包含 frontmatter + 1-2 句定位 + 核心内容表格 + 文末回链
+- 三级文章页：按需补 frontmatter
+
+frontmatter 写在 HTML 注释里，示例：
+
+```markdown
+<!--
+module:
+  parent: <父模块>
+  slug: <路径>
+  type: index|article|cheatsheet
+  category: <分类>
+  summary: <一句话>
+-->
+```
+
+维护原则：所有变更手工逐文件修改，不使用脚本。
+
+> 📌 **2026-07-01 起，新一轮 note-optimization（14 个主模块）以本节（§12）为权威标准**，§11 务实版仅作为历史参考；§2 8-section 模板继续保留为可选替代方案。
