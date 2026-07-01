@@ -1,6 +1,5 @@
 # 健康检查三探针（K8s Liveness / Readiness / Startup）
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 07 可观测性](README.md) | [Actuator](actuator.md) | [Micrometer](micrometer.md)
 
 Spring Boot 自 **2.3** 起内置三套**应用可用性探针**（Application Availability Probes），与 Kubernetes 的 `livenessProbe` / `readinessProbe` / `startupProbe` 一一对应，是生产环境 K8s 部署的关键拼图。

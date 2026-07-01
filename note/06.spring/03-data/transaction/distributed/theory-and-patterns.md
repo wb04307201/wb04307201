@@ -1,6 +1,5 @@
 # Spring分布式事务管理
 
-> 最后更新: 2026-06-14
 > 分布式事务理论（2PC/3PC/TCC/Saga/本地消息表）的深度讲解见 [04.system-design/02-distributed/distributed-transaction/README.md](../../../../04.system-design/02-distributed/distributed-transaction/README.md)，本节聚焦 Spring 集成。
 
 ## 1. 分布式事务核心挑战

@@ -1,6 +1,5 @@
 # Spring Framework 模块结构
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 01 核心容器](README.md)
 
 Spring Framework 自发布以来经过多个大版本迭代，目前主流使用 5.x 和 6.x。本章梳理 Spring 4.x 与 5.x 的模块划分、各模块职责及模块之间的依赖关系。

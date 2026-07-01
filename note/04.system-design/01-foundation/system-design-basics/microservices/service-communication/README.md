@@ -9,7 +9,6 @@ module:
 
 # 服务间通信
 
-> 最后更新: 2026-06-09
 > ⬅️ [返回微服务](../README.md) | ⬅️ [服务拆分策略](../service-decomposition/README.md) | ➡️ [服务契约](../service-contract/README.md)
 
 ---

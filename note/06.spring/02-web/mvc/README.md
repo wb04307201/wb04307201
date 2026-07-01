@@ -9,7 +9,6 @@ module:
 
 # Spring MVC
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 02 Web 层](../README.md)
 
 ---

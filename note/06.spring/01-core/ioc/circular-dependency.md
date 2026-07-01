@@ -1,6 +1,5 @@
 # Spring 循环依赖与三级缓存
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 IoC 总览](README.md) | [Bean 生命周期](bean-lifecycle.md) | [依赖注入](dependency-injection.md)
 
 循环依赖（Circular Dependency）是指两个或多个 Bean 互相持有对方引用，形成"A 依赖 B，B 又依赖 A"的闭环。Spring 通过**三级缓存**机制解决 **setter/字段注入 + singleton 作用域**下的循环依赖；构造器注入与 prototype 作用域则**无法**通过该机制解决，需要用 `@Lazy` 打破闭环。

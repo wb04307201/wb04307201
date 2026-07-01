@@ -1,6 +1,5 @@
 # Web 注解（Spring MVC）
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回注解速查](../README.md) | [AOP 注解](aop.md) | [Bean 注解](bean-and-ioc.md)
 
 本节介绍 Spring MVC 中用于 Web 层的核心注解，包括控制器声明、路由映射、参数绑定、响应处理等。

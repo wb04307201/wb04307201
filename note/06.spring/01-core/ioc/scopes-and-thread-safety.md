@@ -1,6 +1,5 @@
 # Bean 作用域与线程安全
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 IoC 总览](README.md) | [Bean 生命周期](bean-lifecycle.md) | [依赖注入](dependency-injection.md)
 
 本节介绍 Spring Bean 的 6 种作用域，以及 **singleton Bean 的线程安全解决方案**。

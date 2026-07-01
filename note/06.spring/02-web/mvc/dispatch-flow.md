@@ -1,6 +1,5 @@
 # DispatcherServlet 与 9 大组件
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 MVC 总览](README.md) | [组件对比与场景](components-order.md)
 
 Spring MVC 的核心是 **DispatcherServlet**（前端控制器模式）+ **9 大组件**。本文介绍请求处理流程、9 个核心组件的职责及协作关系。

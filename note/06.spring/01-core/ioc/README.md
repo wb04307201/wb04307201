@@ -9,7 +9,6 @@ module:
 
 # IoC（Inversion of Control）控制反转
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 01 核心容器](../README.md)
 
 ---

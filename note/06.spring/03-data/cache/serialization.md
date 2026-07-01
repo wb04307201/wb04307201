@@ -1,6 +1,5 @@
 # Redis 缓存序列化
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回缓存总览](README.md) | [缓存模式](patterns.md) | [多级缓存](multi-level.md)
 
 Redis 是 K-V 存储，**Key/Value 的序列化方式**直接影响可读性、跨语言兼容性、Schema 演进能力。Spring Data Redis 提供 5+ 种序列化器，选错会踩"反序列化失败"、"类型信息丢失"等坑。

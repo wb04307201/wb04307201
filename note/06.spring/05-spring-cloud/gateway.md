@@ -1,6 +1,5 @@
 # Spring Cloud Gateway 网关
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 05 Spring Cloud](README.md) | [熔断降级](circuit-breaker.md) | [分布式追踪](distributed-tracing.md)
 
 API 网关是微服务的**统一入口**——所有外部请求都先经过网关，再路由到具体服务。**Spring Cloud Gateway** 是 Spring 官方推出的高性能网关。

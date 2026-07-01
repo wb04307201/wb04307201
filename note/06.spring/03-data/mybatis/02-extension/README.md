@@ -9,7 +9,6 @@ module:
 
 # 02 MyBatis 扩展能力
 
-> 最后更新: 2026-06-22
 > ⬅️ [返回 MyBatis 主目录](../README.md)
 
 ---

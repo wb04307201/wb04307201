@@ -1,6 +1,5 @@
 # 多数据源与 JTA 分布式事务
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回事务总览](README.md) | [分布式事务](distributed/theory-and-patterns.md)
 
 当一个应用需要访问**多个数据库**（多数据源）时，事务管理变得复杂——单一 `DataSourceTransactionManager` 只能管理一个数据源。本文覆盖**多数据源路由**与 **JTA/XA 分布式事务**两种核心方案。

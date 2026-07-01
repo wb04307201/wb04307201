@@ -9,7 +9,6 @@ module:
 
 # 事件驱动与 Serverless Workflow
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 07 工作流](../README.md) | [工作流定义](../define/README.md) | [微服务编排](../workflow-and-microservice-orchestration/README.md) | [流程引擎](../process-engine/README.md)
 
 ## 🎯 一句话定位

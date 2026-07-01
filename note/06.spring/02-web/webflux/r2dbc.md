@@ -1,6 +1,5 @@
 # R2DBC 响应式数据库访问
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 WebFlux 总览](README.md) | [02 Web 层](../README.md)
 
 **R2DBC（Reactive Relational Database Connectivity）** 是响应式版的 JDBC 规范，让 SQL 数据库访问也能**非阻塞**。Spring Data R2DBC 在此之上提供 `DatabaseClient`（低层 API）与 `ReactiveCrudRepository`（高层抽象），与 WebFlux 配合实现**端到端响应式**。

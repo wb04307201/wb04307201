@@ -1,6 +1,5 @@
 # 外部化配置：@Value / @ConfigurationProperties / Environment
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 01 核心容器](README.md) | [@Configuration 进阶](configuration-lite-vs-full.md) | [IoC 总览](ioc/README.md)
 
 Spring 提供多层次的外部化配置能力：从简单的 `@Value` 单值注入，到类型安全的 `@ConfigurationProperties` 批量绑定，再到 `Environment` 抽象与 `PropertySource` 加载链。理解它们的分工，是写出"配置可移植、应用可维护"代码的前提。

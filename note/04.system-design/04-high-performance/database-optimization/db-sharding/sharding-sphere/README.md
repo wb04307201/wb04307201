@@ -4,14 +4,12 @@ module:
   slug: system-design/sharding-sphere
   type: article
   category: 主模块子文章
-  summary: ShardingSphere 本应该很简单，最后更新: 2026-06-09
+  summary: ShardingSphere 本应该很简单
 -->
 
 # ShardingSphere
 
 ---
-
-> 最后更新: 2026-06-09
 
 **ShardingSphere 是一个开源的分布式数据库生态系统，旨在将任何数据库转变为分布式数据库系统，并提供数据分片、弹性扩展、加密等增强功能**。以下是对 ShardingSphere 的详细介绍：
 

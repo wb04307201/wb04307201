@@ -1,6 +1,5 @@
 # WebClient 响应式 HTTP 客户端
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 WebFlux 总览](README.md) | [02 Web 层](../README.md)
 
 **WebClient** 是 Spring 5 引入的**非阻塞响应式 HTTP 客户端**，是 `RestTemplate`（已维护模式）的现代替代品。本文覆盖 WebClient 的同步/异步/流式调用、错误处理、超时/重试/限流、与 OpenFeign 的对比与选型。

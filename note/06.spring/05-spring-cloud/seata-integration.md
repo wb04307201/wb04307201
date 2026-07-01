@@ -1,6 +1,5 @@
 # Seata 集成（Spring Cloud Alibaba 视角）
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 05 Spring Cloud](README.md) | [Config 中心](config-center.md) | [熔断降级](circuit-breaker.md)
 
 本文档聚焦 **Spring Cloud Alibaba 集成 Seata 的工程实践**——`@GlobalTransactional` 在微服务调用链中的落地、与 OpenFeign / Nacos 的协同。Seata 框架原理（TC/TM/RM 三角色、AT 模式回滚日志）请见 [03-data/transaction/distributed/seata.md](../03-data/transaction/distributed/seata.md)。

@@ -1,6 +1,5 @@
 # 第二章：BCAT + 业务能力 + 价值流
 
-> 最后更新: 2026-06-09
 > ⬅️ [返回目录](README.md) | 上一篇：[核心思想 + ADM 详解](adm.md) | 下一篇：[康威定律 + 团队拓扑](conway-and-team-topology.md)
 
 ---

@@ -1,7 +1,5 @@
 # 跨字段校验（Cross-Field Validation）
 
-> 最后更新: 2026-06-14
-
 单个字段上的 `@NotBlank`、`@Size` 等注解只能看到自身值，业务中"开始日期必须早于结束日期"、"两次输入密码必须一致"等规则需要**跨字段**或**类级别**校验。本节介绍四种主流方案。
 
 ## 一、@ScriptAssert（Hibernate Validator）

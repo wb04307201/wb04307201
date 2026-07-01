@@ -1,6 +1,5 @@
 # 分布式链路追踪
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 05 Spring Cloud](README.md) | [配置中心](config-center.md) | [网关](gateway.md)
 
 在微服务架构中，**一个请求可能经过 5-10 个服务**——出了问题怎么定位？**分布式链路追踪**（Distributed Tracing）通过**唯一 TraceId 串联整个调用链**，让排查问题不再"大海捞针"。

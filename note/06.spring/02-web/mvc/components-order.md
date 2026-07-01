@@ -1,6 +1,5 @@
 # 组件执行顺序与对比
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 MVC 总览](README.md) | [DispatcherServlet 与 9 大组件](dispatch-flow.md)
 
 Spring MVC 的请求处理涉及 **Filter → DispatcherServlet → Interceptor → AOP → Controller → View** 等多个层级。本文梳理完整的执行顺序、各组件的详细对比，以及典型应用场景。

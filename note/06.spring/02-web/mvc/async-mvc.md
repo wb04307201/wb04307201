@@ -1,6 +1,5 @@
 # 异步 MVC：Callable / DeferredResult / SSE
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 MVC 总览](README.md) | [02 Web 层](../README.md)
 
 Spring MVC 同步模型下，每个请求占用一个 Servlet 线程（默认 Tomcat 200）。**异步 MVC** 通过 `Callable` / `DeferredResult` / `SseEmitter` 把"等待下游完成"的时间释放回线程池，**显著提升并发吞吐**。本文覆盖 5 种核心 API、与 WebFlux 的边界、`spring.mvc.async` 配置。

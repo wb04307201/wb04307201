@@ -1,6 +1,5 @@
 # Spring MVC 文件上传
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 MVC 总览](README.md) | [02 Web 层](../README.md)
 
 Spring MVC 通过 **`MultipartResolver` + `MultipartFile`** 提供文件上传能力。Spring Boot 3 / Spring 6 起，`MultipartResolver` 底层默认走 **Jakarta Servlet 的 `Part` API**（不再使用 Apache Commons FileUpload）。本文覆盖单/多文件上传、Spring Boot 默认配置、大小/类型限制、常见坑。

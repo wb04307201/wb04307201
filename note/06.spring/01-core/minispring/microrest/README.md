@@ -11,8 +11,6 @@ module:
 
 ---
 
-> 最后更新: 2026-06-14
-
 ## 项目概述
 
 MicroRest 是一个使用 Servlet 技术模拟 Spring IoC 和 MVC 功能的轻量级框架。该项目通过自定义注解、依赖注入、请求映射等功能，实现了类似 Spring Boot 的基础功能。

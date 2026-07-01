@@ -1,6 +1,5 @@
 # WebFlux 响应式 + SSE 实时推送
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 02 Web 层](../README.md) | [WebFlux 总览](README.md)
 
 WebFlux + SSE（Server-Sent Events）是 Spring 实现**高并发实时推送**的典型方案：在**在线聊天、实时通知、股票行情、IoT 数据上报**等场景下，响应式非阻塞 I/O 配合 SSE 单向流可实现单机 **10 万+** 长连接。本文先给出 WebFlux 速览，再讲 SSE 的核心实现与性能优化。

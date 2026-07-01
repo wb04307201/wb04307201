@@ -1,6 +1,5 @@
 # Spring Boot 内嵌服务器切换（Tomcat / Jetty / Undertow）
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 04 Spring Boot](README.md) | [启动流程](startup-flow.md) | [GraalVM Native](graalvm-native.md)
 
 Spring Boot 的"开箱即用" Web 体验来自**内嵌 Servlet 容器**——无需部署 WAR，默认打包为可执行 jar 直接 `java -jar` 启动。

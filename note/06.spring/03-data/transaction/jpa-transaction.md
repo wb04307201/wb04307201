@@ -1,6 +1,5 @@
 # JPA 事务管理
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回事务总览](README.md) | [编程式事务](programmatic-transaction.md)
 
 JPA（Java Persistence API）通过 `JpaTransactionManager` 集成 Spring 事务，支持声明式 `@Transactional`、`@Lock` 悲观锁、`@Version` 乐观锁。本文详解 JPA 与 Spring 事务的协作机制。

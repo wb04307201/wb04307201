@@ -1,6 +1,5 @@
 # WebFlux 测试
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 WebFlux 总览](README.md) | [02 Web 层](../README.md)
 
 WebFlux 应用有两类主流测试方式：**`WebTestClient`（全栈/集成）** + **`@WebFluxTest`（切片）**。`WebTestClient` 是不起容器的 HTTP 客户端模拟器，可以无缝对接 `RouterFunction`、注解式 Controller、`WebHandler` 任意一种。

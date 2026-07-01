@@ -1,6 +1,5 @@
 # AI + BPMN 融合
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 AI 平台](../03-engineering/ai-platforms/README.md) | [Dify](../03-engineering/ai-platforms/dify.md) | [Coze](../03-engineering/ai-platforms/coze.md) | [LangGraph](../03-engineering/ai-platforms/langgraph.md) | [Camunda 8](../../07.workflow/process-engine/camunda/camunda-8/README.md) | [11 AI 知识体系](../README.md) | [07 工作流](../../07.workflow/README.md)
 
 ## 🎯 一句话定位

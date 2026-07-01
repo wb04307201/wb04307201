@@ -1,6 +1,5 @@
 # 切点表达式语法
 
-> 最后更新: 2026-06-09
 > ⬅️ [返回 AOP 总览](README.md) | [通知顺序与最佳实践](advice-order-and-best-practices.md)
 
 Spring AOP 使用 **AspectJ 风格的表达式**来定义切入点（Pointcut），通过组合各种元素来精确定位特定的连接点。

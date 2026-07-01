@@ -9,7 +9,6 @@ module:
 
 # AI 编排平台
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回工程实践](../README.md) | [Dify](dify.md) | [Coze](coze.md) | [LangGraph](langgraph.md) | [BPMN+AI 融合](../../04-architecture/bpmn-ai-integration.md) | [11 AI 知识体系](../../README.md)
 
 ## 🎯 一句话定位

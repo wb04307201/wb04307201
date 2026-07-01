@@ -1,6 +1,5 @@
 # 如何创建自己的 Starter 模块
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 04 Spring Boot](README.md) | [自动配置原理](auto-configuration.md) | [spring.factories 迁移](spring-factories-migration.md)
 
 在 Spring Boot 的世界里，**Starter** 是一组预定义的依赖项集合与自动配置机制的完美结合，它通过"约定优于配置"的原则，将复杂的功能模块封装为简单的依赖入口，让开发者能够像搭积木一样快速构建应用。

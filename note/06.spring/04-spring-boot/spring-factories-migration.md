@@ -1,6 +1,5 @@
 # Spring Boot 3 中 spring.factories 机制移除
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 04 Spring Boot](README.md) | [自动配置原理](auto-configuration.md) | [自定义 Starter](custom-starter.md)
 
 在 Spring Boot 3.0 中，自动配置的注册方式从 `META-INF/spring.factories` 切换到 `META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports`。这一变革旨在优化启动性能、简化配置管理，并适应 Jakarta EE 9+ 命名空间。

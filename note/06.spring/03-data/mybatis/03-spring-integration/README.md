@@ -9,7 +9,6 @@ module:
 
 # Spring 整合 MyBatis
 
-> 最后更新: 2026-06-22
 > ⬅️ [返回 03 数据层](../README.md)
 
 ---

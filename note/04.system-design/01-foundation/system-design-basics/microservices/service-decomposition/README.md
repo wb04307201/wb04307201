@@ -9,7 +9,6 @@ module:
 
 # 服务拆分策略
 
-> 最后更新: 2026-06-09
 > ⬅️ [返回微服务](../README.md) | ➡️ [服务间通信](../service-communication/README.md)
 
 ---

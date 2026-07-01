@@ -4,14 +4,12 @@ module:
   slug: system-design/uuid
   type: article
   category: 主模块子文章
-  summary: UUID 本应该很简单，最后更新: 2026-06-09
+  summary: UUID 本应该很简单
 -->
 
 # UUID
 
 ---
-
-> 最后更新: 2026-06-09
 
 ## UUID 简介
 

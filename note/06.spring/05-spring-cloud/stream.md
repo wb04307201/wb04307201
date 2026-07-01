@@ -1,6 +1,5 @@
 # Spring Cloud Stream 消息驱动微服务
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 05 Spring Cloud](README.md) | [Config 中心](config-center.md) | [Bus](bus.md)
 
 **Spring Cloud Stream** 把消息中间件（Kafka / RabbitMQ / RocketMQ）的差异**封装在 Binder 后面**，让业务代码只面向 `Supplier` / `Consumer` / `Function` 编程。换底层 MQ **不改业务代码**。

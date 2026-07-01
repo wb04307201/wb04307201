@@ -1,6 +1,5 @@
 # 缓存 4 大模式（Patterns）
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回缓存总览](README.md) | [多级缓存](multi-level.md) | [缓存实现](implementations-and-best-practices.md)
 
 缓存与数据库的协作模式有 4 种经典方案——Cache-Aside（最常用）、Read-Through、Write-Through、Write-Behind（Write-Back）。**选错模式 = 一致性问题 + 性能浪费**。

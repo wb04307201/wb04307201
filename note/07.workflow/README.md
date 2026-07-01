@@ -10,7 +10,6 @@ module:
 
 # 工作流
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 note 顶层](../README.md)
 
 工作流（Workflow）是组织或系统中为完成特定业务目标而设计的有序、可重复活动的集合。本章讲透 **BPMN 流程引擎**（Camunda 7/8/Zeebe / Flowable / Activiti）和 **事件驱动编排**（Apache EventMesh / Serverless Workflow）两条主线，并明确二者的**互补关系**：

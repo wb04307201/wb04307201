@@ -9,7 +9,6 @@ module:
 
 # Camunda 7
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 07 工作流](../../../README.md) | [流程引擎](../../README.md) | [Camunda 8](../camunda-8/README.md) | [Zeebe](../camunda-8/zeebe/README.md) | [工作流定义](../../../define/README.md)
 
 ## 🎯 一句话定位

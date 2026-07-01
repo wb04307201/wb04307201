@@ -9,7 +9,6 @@ module:
 
 # Spring Cache 缓存
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 03 数据层](../README.md)
 
 ---

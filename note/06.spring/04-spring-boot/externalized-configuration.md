@@ -1,6 +1,5 @@
 # Spring Boot 外部化配置
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 04 Spring Boot](README.md) | [启动流程](startup-flow.md) | [自动配置原理](auto-configuration.md)
 
 外部化配置（Externalized Configuration）是 Spring Boot 12 项生产级特性之首——把"配置"从代码中抽离，放到 JAR 之外的 `application.yml` / `application.properties` / 环境变量 / 命令行参数中，让同一份代码能在不同环境（dev / test / staging / prod）下无缝切换。

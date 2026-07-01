@@ -9,7 +9,6 @@ module:
 
 # CAP & BASE
 
-> 最后更新: 2026-06-09
 > ⬅️ [返回分布式](../README.md) | [共识算法](../consensus-algorithms/README.md) | [分布式事务](../distributed-transaction/README.md)
 
 分布式系统一致性与可用性的核心理论基石——CAP 揭示了三者不可兼得的根本矛盾，BASE 给出放弃强一致性后的工程实践方案。

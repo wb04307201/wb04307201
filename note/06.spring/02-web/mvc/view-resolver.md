@@ -1,6 +1,5 @@
 # ViewResolver 视图解析器
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 MVC 总览](README.md) | [02 Web 层](../README.md)
 
 `ViewResolver` 是 Spring MVC 9 大组件之一，职责是**将逻辑视图名（String）解析为具体的 `View` 对象**。在前后端分离架构下，大多数接口直接返回 JSON，`ViewResolver` 是否还有用？本文讲清楚主流实现、与前后端分离的关系、以及"什么场景还需要它"。

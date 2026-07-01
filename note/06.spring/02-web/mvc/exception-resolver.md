@@ -1,6 +1,5 @@
 # HandlerExceptionResolver 异常处理
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 MVC 总览](README.md) | [02 Web 层](../README.md)
 
 Spring MVC 通过 `HandlerExceptionResolver` 链统一处理 Controller 抛出的异常。本文聚焦 **MVC 特有的异常机制**（`@ExceptionHandler` / `@ControllerAdvice` / `ResponseStatusException` / `ErrorResponse`），与 01-core 的通用异常分层（[异常处理](../../01-core/exception-handling.md)）互为补充——后者讲"分而治之"的层级思想，本文讲"Web 层具体怎么落地"。

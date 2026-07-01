@@ -1,6 +1,5 @@
 # FactoryBean 与复杂对象创建
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 IoC 总览](README.md) | [依赖注入](dependency-injection.md) | [循环依赖](circular-dependency.md)
 
 `FactoryBean<T>` 是 Spring 容器提供的一种**工厂化 Bean** 接口——它是 Bean，但又能产生 Bean。当某个对象的创建过程非常复杂（无法直接 `new`、需要多步配置、依赖外部资源），就可以用 `FactoryBean` 包装，**对外暴露统一类型**、**对内隐藏复杂构造**。MyBatis 的 `SqlSessionFactoryBean`、Feign 的 `FeignClientFactoryBean`、Dubbo 的 `ReferenceBean` 都是典型案例。

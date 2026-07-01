@@ -1,6 +1,5 @@
 # JPA 注解
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回注解速查](../README.md) | [Bean 注解](bean-and-ioc.md)
 
 本节介绍 JPA（Java Persistence API）的实体类注解：声明实体、映射表、定义主键、关系映射。

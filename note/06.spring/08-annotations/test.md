@@ -1,6 +1,5 @@
 # 测试注解
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回注解速查](../README.md) | [AOP 注解](aop.md)
 
 本节介绍 Spring Test 模块的常用注解：声明测试环境、加载 Spring 上下文、激活 Profile。

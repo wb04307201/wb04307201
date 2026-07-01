@@ -9,7 +9,6 @@ module:
 
 # Camunda 8
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 07 工作流](../../../README.md) | [流程引擎](../../README.md) | [Camunda 7](../camunda-7/README.md) | [Zeebe](zeebe/README.md) | [事件驱动](../../../apache-eventmesh/README.md)
 
 ## 🎯 一句话定位

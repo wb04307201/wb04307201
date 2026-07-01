@@ -1,6 +1,5 @@
 # Config 加密（Nacos / Spring Cloud Config / Jasypt）
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 05 Spring Cloud](README.md) | [Config 中心](config-center.md) | [Bus](bus.md)
 
 生产环境的配置中心里**一定会有敏感信息**——数据库密码、API Key、第三方凭证。明文存储 = 0 安全。**加密方案需在「易用性」与「密钥管理成本」之间权衡**。

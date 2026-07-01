@@ -1,6 +1,5 @@
 # 日志聚合（ELK / Loki / Fluentd）
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 07 可观测性](README.md) | [Actuator](actuator.md) | [Micrometer](micrometer.md)
 
 **日志聚合** = 把分散在各 Pod/容器的 stdout/stderr 集中采集、索引、检索、可视化。Spring Boot 默认通过 Logback 输出，**生产环境必须**配合集中式日志平台（ELK 或 Loki），否则排查问题如同大海捞针。

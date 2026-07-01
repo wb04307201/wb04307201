@@ -1,6 +1,5 @@
 # Spring Cloud Bus 集群事件总线
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 05 Spring Cloud](README.md) | [Stream](stream.md) | [Config 中心](config-center.md)
 
 **Spring Cloud Bus** 用**轻量级消息代理**（Kafka / RabbitMQ）连接分布式系统的**所有节点**，通过单一指令触发**全集群广播**。最经典用途：**Spring Cloud Config 配置实时刷新**。

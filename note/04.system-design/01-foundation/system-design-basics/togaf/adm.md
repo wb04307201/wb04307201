@@ -1,6 +1,5 @@
 # 第一章：核心思想 + ADM 详解
 
-> 最后更新: 2026-06-09
 > ⬅️ [返回目录](README.md) | 下一篇：[BCAT + 业务能力 + 价值流](business-capability.md)
 
 ---

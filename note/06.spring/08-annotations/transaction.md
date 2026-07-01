@@ -1,6 +1,5 @@
 # 事务注解
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回注解速查](../README.md) | [JPA 注解](jpa.md)
 
 本节是 `@Transactional` 与 `@EnableTransactionManagement` 的速查手册——只列关键属性与失效场景，**深读请前往 [03-data/transaction](../../README.md)**。

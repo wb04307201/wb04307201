@@ -1,6 +1,5 @@
 # Spring Boot 3 + GraalVM Native Image 简介
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 04 Spring Boot](README.md) | [内嵌服务器](embedded-server.md) | [启动流程](startup-flow.md)
 
 GraalVM Native Image 让 Spring Boot 应用**编译为本地可执行文件**——跳过 JVM 启动，直接以机器码运行，启动时间从秒级降到**毫秒级**，内存占用降低 5-10 倍。

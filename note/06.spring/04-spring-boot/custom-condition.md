@@ -1,6 +1,5 @@
 # 自定义 Condition 类（高级）
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 04 Spring Boot](README.md) | [自动配置原理](auto-configuration.md) | [自定义 Starter](custom-starter.md)
 
 当内置的 11 个 `@ConditionalOn*` 注解无法表达你的业务规则（例如"配置文件存在且版本号 ≥ 1.5"），可以**自己实现 `Condition` 接口**，再用通用的 `@Conditional(MyCondition.class)` 引用。

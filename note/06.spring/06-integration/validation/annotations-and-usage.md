@@ -1,7 +1,5 @@
 # Spring Validation
 
-> 最后更新: 2026-06-14
-
 Spring Validation 是基于 Java Bean Validation API（JSR 303/380）的规范实现，由 Hibernate Validator 提供具体实现，Spring 框架通过封装使其更易用。
 
 ## 一、核心概念与规范

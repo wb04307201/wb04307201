@@ -1,6 +1,5 @@
 # 第二章：视点：给不同人看不同的图
 
-> 最后更新: 2026-06-10
 > ⬅️ [返回目录](README.md) | 上一篇：[建模语言：层、方面、关系](language.md) | 下一篇：[落地：ArchiMate × TOGAF × C4 × DDD](in-practice.md)
 
 ---

@@ -1,6 +1,5 @@
 # 校验注解
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回注解速查](../README.md) | [Web 注解](web.md)
 
 本节是 `@Valid` / `@Validated` 与 JSR-303 常见约束注解的速查手册。**深读请前往 [06-integration/validation](../06-integration/validation/annotations-and-usage.md)**。

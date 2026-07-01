@@ -1,6 +1,5 @@
 # Spring Boot 自动配置原理
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 04 Spring Boot](README.md) | [自定义 Starter](custom-starter.md) | [自定义 Condition](custom-condition.md) | [spring.factories 迁移](spring-factories-migration.md)
 
 Spring Boot 最核心的特性是**自动配置**（Auto-Configuration）："**约定优于配置**"——根据 classpath 下的依赖**自动装配** Bean，而不是手动写 @Configuration。本文深入剖析自动配置的工作机制。

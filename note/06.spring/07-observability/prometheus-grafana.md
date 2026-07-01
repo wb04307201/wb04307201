@@ -1,6 +1,5 @@
 # Prometheus + Grafana 可视化监控
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 07 可观测性](README.md) | [Micrometer](micrometer.md) | [Spring Boot Actuator](actuator.md)
 
 **Prometheus + Grafana** 是云原生时代的**事实标准监控方案**——Prometheus 负责采集和存储时序数据，Grafana 负责可视化看板和告警。

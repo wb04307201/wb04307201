@@ -1,6 +1,5 @@
 # 编程式事务（TransactionTemplate）
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回事务总览](README.md) | [传播行为与隔离级别](propagation-and-isolation.md)
 
 `@Transactional` 覆盖 90% 业务场景，但在**复杂回滚逻辑、批量处理、动态事务边界**等精细控制场景下，需要用 `TransactionTemplate` 编程式事务——在代码中显式控制事务的 begin / commit / rollback。

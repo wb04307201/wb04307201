@@ -1,6 +1,5 @@
 # 第三章：落地：IT4IT × ITIL × DevOps
 
-> 最后更新: 2026-06-10
 > ⬅️ [返回目录](README.md) | 上一篇：[功能组件：9 大 IT 能力 + 数据对象](functional-components.md)
 
 ---

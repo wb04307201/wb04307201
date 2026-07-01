@@ -1,6 +1,5 @@
 # Spring Cloud 版本演进史
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 05 Spring Cloud](README.md) | [Spring Cloud 与 Alibaba 关系](README.md#spring-cloud-与-spring-cloud-alibaba-关系)
 
 Spring Cloud 用「**火车发布**」(Train) 管理版本——每代有代号、对应固定 Spring Boot 版本、约 12 个月一次大版本。

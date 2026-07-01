@@ -1,6 +1,5 @@
 # Router Functions 函数式端点
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 WebFlux 总览](README.md) | [02 Web 层](../README.md)
 
 **Router Functions** 是 WebFlux 提供的**函数式、类型安全**的端点声明方式，用 `RouterFunction<ServerResponse>` 与 `HandlerFunction<ServerResponse>` 替代 `@RestController` 注解。核心价值：**可组合、可测试、便于做轻量网关/路由层**。

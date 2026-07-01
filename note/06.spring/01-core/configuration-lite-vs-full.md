@@ -1,6 +1,5 @@
 # @Configuration 进阶：Lite Mode vs Full Mode 与 @Import 系列
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 01 核心容器](README.md) | [IoC 总览](ioc/README.md) | [FactoryBean](ioc/FactoryBean.md)
 
 `@Configuration` 不只是"配置类标记"——它默认开启了 **CGLIB 增强（Full Mode）**，让 `@Bean` 方法间调用返回的是**容器内单例**，而不是 `new` 出来的新对象。`@Component` 标注的类即便有 `@Bean` 方法，也走的是 **Lite Mode**，没有 CGLIB 增强。配合 `@Import` / `@ImportSelector` / `@ImportBeanDefinitionRegistrar` 三个机制，可实现**模块化配置装配**。

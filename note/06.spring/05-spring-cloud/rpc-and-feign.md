@@ -1,6 +1,5 @@
 # RPC 与 OpenFeign
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 05 Spring Cloud](README.md) | [负载均衡](load-balancer.md) | [熔断降级](circuit-breaker.md)
 
 在微服务架构中，**服务之间如何调用**？HTTP/REST 是最常见的方式——**OpenFeign** 让远程调用像调用本地方法一样简单。

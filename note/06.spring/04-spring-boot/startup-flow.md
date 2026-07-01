@@ -1,6 +1,5 @@
 # Spring Boot 启动流程（`SpringApplication.run()` 6 阶段）
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 04 Spring Boot](README.md) | [启动后钩子](application-bootstrap.md) | [外部化配置](externalized-configuration.md)
 
 `SpringApplication.run()` 是 Spring Boot 的"魔法入口"——一行代码背后隐藏了 6 个阶段、20+ 个扩展点。本文按时间顺序拆解完整启动流程。

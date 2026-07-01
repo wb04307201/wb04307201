@@ -1,6 +1,5 @@
 # 第三章：落地：ArchiMate × TOGAF × C4 × DDD
 
-> 最后更新: 2026-06-10
 > ⬅️ [返回目录](README.md) | 上一篇：[视点：给不同人看不同的图](viewpoints.md)
 
 ---

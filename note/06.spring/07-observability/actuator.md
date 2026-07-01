@@ -1,6 +1,5 @@
 # Spring Boot Actuator 监控
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 07 可观测性](README.md) | [Micrometer](micrometer.md) | [Prometheus + Grafana](prometheus-grafana.md) | [健康检查三探针](health-probes.md) | [日志聚合](log-aggregation.md)
 
 **Spring Boot Actuator** 是 Spring Boot 生态系统中的核心**生产就绪**模块，通过暴露 HTTP 端点和 JMX MBean 提供应用程序运行时状态的实时监控能力。其核心价值在于无需修改业务代码即可实现健康检查、性能指标采集、配置审计等功能，尤其适用于生产环境下的微服务监控场景。

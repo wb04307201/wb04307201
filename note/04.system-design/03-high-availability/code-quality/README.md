@@ -4,14 +4,12 @@ module:
   slug: system-design/code-quality
   type: article
   category: 主模块子文章
-  summary: Java 代码质量提升 本应该很简单，最后更新: 2026-06-09
+  summary: Java 代码质量提升 本应该很简单
 -->
 
 # Java 代码质量提升
 
 ---
-
-> 最后更新: 2026-06-09
 
 提高 Java 代码质量是开发高效、可维护和可扩展软件的关键。以下是一些核心方面和最佳实践：
 

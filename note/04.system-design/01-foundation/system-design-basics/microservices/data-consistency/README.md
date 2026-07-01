@@ -9,7 +9,6 @@ module:
 
 # 数据一致性
 
-> 最后更新: 2026-06-09
 > ⬅️ [返回微服务](../README.md) | ⬅️ [服务契约](../service-contract/README.md) | ➡️ [演进与组织](../migration-and-organization/README.md)
 
 ---

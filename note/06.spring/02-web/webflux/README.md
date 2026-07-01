@@ -9,7 +9,6 @@ module:
 
 # Spring WebFlux 概览
 
-> 最后更新: 2026-06-14
 > ⬅️ [返回 02 Web 层](../README.md)
 
 **Spring WebFlux = 响应式 Web 框架**——基于 **Reactor + Netty**（也支持 Servlet 3.1+ 容器），提供**非阻塞、事件驱动**的 HTTP 栈，是 Spring 5 引入的"MVC 替代品"。本文讲清楚 WebFlux 的核心概念、线程模型、与 MVC 的边界，以及何时该选谁。
