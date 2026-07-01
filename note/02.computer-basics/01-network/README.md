@@ -4,7 +4,7 @@ module:
   slug: computer-basics/01-network
   type: article
   category: 主模块子文章
-  summary: 计算机网络是将地理位置不同、具有独立功能的多台计算机及其外部设备，通过通信线路和设备连接起来，在网络操作系统、协议和管理软件的协调下，实现**资源共享**和**...
+  summary: 从 OSI/TCP-IP 模型到 HTTP 演进，系统梳理计算机网络体系结构与核心协议族。
 -->
 
 # 计算机网络基础
