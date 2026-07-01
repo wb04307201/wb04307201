@@ -95,7 +95,7 @@ graph TB
 | `04-nginx/` | 2 | 顶层 + pingora |
 | `05-monorepo/` | 1 | 顶层 |
 | `06-ali-microservices/` | 1 | 顶层 |
-| **分类 leaf 合计** | **12 depth-2 leaf + 6 顶层 = 18** | 100% frontmatter |
+| **分类 leaf 合计** | **9 depth-2 leaf + 6 顶层 = 15** | 100% frontmatter |
 | **学习路径主题数** | 5 条路径（见上方学习路径） | 新人/效率/微服务/进阶/云原生 |
 
 > 数字基线：本节以 leaf README 数 + 学习路径主题数双口径统计；最后更新 2026-07-02。
