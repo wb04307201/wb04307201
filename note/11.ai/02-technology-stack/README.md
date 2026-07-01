@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/tech-stack
+  type: article
+  category: 主模块子文章
+  summary: LLM 技术栈
+-->
+
 # LLM 技术栈
 
 ## 引言：反直觉代码

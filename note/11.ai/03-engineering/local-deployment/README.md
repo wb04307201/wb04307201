@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/local-deployment
+  type: article
+  category: 主模块子文章
+  summary: 本地部署
+-->
+
 # 本地部署
 
 ## 引言：反直觉代码

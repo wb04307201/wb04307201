@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/git
+  type: article
+  category: 主模块子文章
+  summary: Git
+-->
+
 # Git
 
 > 版本控制与代码托管——从日常命令到自建 Gitea 服务。

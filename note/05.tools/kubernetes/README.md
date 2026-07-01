@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/kubernetes
+  type: article
+  category: 主模块子文章
+  summary: Kubernetes
+-->
+
 # Kubernetes · 云原生编排平台
 
 > 一份从入门到实战的 K8s 完整速查手册：从"容器化部署"到"云原生架构"。

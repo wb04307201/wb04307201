@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: big-data
+  slug: big-data/olap
+  type: article
+  category: 主模块子文章
+  summary: OLAP
+-->
+
 # 05 OLAP
 
 > 一句话定位：**Doris / ClickHouse / StarRocks / Trino——亚秒级实时查询的 OLAP 引擎**

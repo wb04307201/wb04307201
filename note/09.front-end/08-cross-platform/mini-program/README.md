@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/mini-program
+  type: article
+  category: 主模块子文章
+  summary: 小程序开发
+-->
+
 # 小程序开发
 
 > 一句话定位：**Taro 4 / Uni-app x —— 一套源码，多端发布到微信 / 支付宝 / 抖音 / H5**

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: database
+  slug: database/mysql
+  type: article
+  category: 主模块子文章
+  summary: MySQL
+-->
+
 # MySQL
 
 > MySQL 是最流行的开源关系型数据库,采用 Server 层 + 存储引擎层两层架构,InnoDB 是默认且推荐的事务型引擎,核心机制包括 Buffer Pool、Redo Log、Binlog 与主从复制。

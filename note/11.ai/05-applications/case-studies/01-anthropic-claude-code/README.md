@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/case-anthropic-claude-code
+  type: article
+  category: 主模块子文章
+  summary: Anthropic Claude Code 研发飞轮
+-->
+
 # Anthropic 让 Claude Code 写 Claude Code：研究型公司如何让 Agent 跑满研发流水线
 
 > **一句话总结**：Anthropic 工程师几乎不手写代码——Claude Code 创造者 Boris Cherny 自述一年多没写过一行，通过 `/loop`、MCP、Slack 跨 Agent 通信组成了一套"Agent 协作"的研发飞轮。

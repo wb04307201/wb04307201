@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/lesson-04
+  type: article
+  category: 主模块子文章
+  summary: 第 4 课 Java MCP 开发
+-->
+
 # 第 4 课：Java MCP 服务开发
 
 > 使用 Java 开发 MCP Server 并发布到 Maven 中央仓库，让你的工具服务被所有 MCP 客户端调用。

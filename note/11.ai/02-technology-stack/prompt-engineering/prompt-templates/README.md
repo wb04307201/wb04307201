@@ -1,3 +1,14 @@
+<!--
+module:
+  parent: ai
+  slug: ai/prompt-templates
+  type: article
+  category: 主模块子文章
+  summary: Prompt 模板集
+-->
+
+# Prompt 模板集
+
 ## 绘制架构图
 ```text
 请为[特定领域]设计一个高性能、可扩展的系统架构图。系统应能处理[具体性能指标，如每秒处理量]。重点展示[关键技术或组件]在系统中的应用。

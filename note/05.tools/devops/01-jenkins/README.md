@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/jenkins
+  type: article
+  category: 主模块子文章
+  summary: Jenkins
+-->
+
 # Jenkins · 老牌 CI/CD 工具实战
 
 > 一份按场景梳理的 Jenkins 速查手册：从安装到分布式构建的完整实战。

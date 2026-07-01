@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/docker-images
+  type: article
+  category: 主模块子文章
+  summary: Docker 镜像
+-->
+
 # Docker 镜像
 
 ## 引言：反直觉代码

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/completablefuture
+  type: article
+  category: 主模块子文章
+  summary: CompletableFuture 完整笔记
+-->
+
 # CompletableFuture 完整笔记
 
 ## 一、Future 的局限性

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/case-siemens
+  type: article
+  category: 主模块子文章
+  summary: Siemens Industrial Copilot
+-->
+
 # Siemens Industrial Copilot：自然语言生成 PLC 代码，工业 know-how 才是门槛
 
 #制造 #编程 #办公 #工业Copilot

@@ -1,3 +1,14 @@
+<!--
+module:
+  parent: ai
+  slug: ai/shopify-agent
+  type: article
+  category: 主模块子文章
+  summary: Shopify AI 智能体学徒车间
+-->
+
+# Shopify AI 智能体学徒车间
+
 **标题：Shopify CEO：拒绝“私聊”的 AI 智能体，如何让整家公司变成「学徒车间」？**
 
 近日，Shopify CEO Tobi Lütke 在 X（原 Twitter）上发表了一篇名为《在车间学习》（Learning on the Shop floor）的深度长文，分享了 Shopify 内部一款名为 River 的 AI 智能体（AI Agent）如何彻底改变公司知识传承与协作方式的 fascinating 实验。

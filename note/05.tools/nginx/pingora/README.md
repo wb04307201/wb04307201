@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/pingora
+  type: article
+  category: 主模块子文章
+  summary: Pingora
+-->
+
 # Pingora 
 
 ## 引言：反直觉代码

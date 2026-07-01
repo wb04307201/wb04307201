@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/qwen3-ollama-linux
+  type: article
+  category: 主模块子文章
+  summary: Qwen3 + Ollama Linux 部署
+-->
+
 # Qwen3 + Ollama Linux 部署指南
 
 ← 返回 [Ollama](../README.md)

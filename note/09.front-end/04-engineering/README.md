@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/engineering
+  type: article
+  category: 主模块子文章
+  summary: 前端 04 工程化
+-->
+
 # 04 工程化
 
 > 一句话定位：**从「写代码」到「发布上线」的全链路工具链与流程**

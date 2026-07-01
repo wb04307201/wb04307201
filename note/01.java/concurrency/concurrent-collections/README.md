@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/concurrent-collections
+  type: article
+  category: 主模块子文章
+  summary: 系统梳理 `java.util.concurrent` 包下的所有并发集合，理解各自底层原理、适用场景及选型策略。
+-->
+
 # 并发集合
 
 > 目标：系统梳理 `java.util.concurrent` 包下的所有并发集合，理解各自底层原理、适用场景及选型策略。

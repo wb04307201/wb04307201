@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/structural-patterns
+  type: article
+  category: 主模块子文章
+  summary: 结构型模式
+-->
+
 # 结构型模式
 
 > 关注类和对象的组合方式，通过组合关系实现松耦合的灵活结构。

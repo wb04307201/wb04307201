@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/performance
+  type: article
+  category: 主模块子文章
+  summary: 前端 06 性能
+-->
+
 # 06 性能
 
 > 一句话定位：**性能——从 Core Web Vitals 指标到运行时优化手段的完整体系**

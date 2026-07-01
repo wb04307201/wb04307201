@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: database
+  slug: database/connection-pool
+  type: article
+  category: 主模块子文章
+  summary: 数据库连接池
+-->
+
 # 数据库连接池
 
 > 数据库连接池通过预先创建并复用连接,避免每次请求都进行 TCP 握手和身份认证,Spring Boot 2.x+ 默认使用 HikariCP,监控与防 SQL 注入场景推荐 Druid。

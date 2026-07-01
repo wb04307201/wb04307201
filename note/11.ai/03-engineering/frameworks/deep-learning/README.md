@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/deep-learning-frameworks
+  type: article
+  category: 主模块子文章
+  summary: 深度学习框架
+-->
+
 # 深度学习框架
 
 ## 引言：反直觉代码

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/function-history
+  type: article
+  category: 主模块子文章
+  summary: 功能版本变更历史
+-->
+
 # 功能版本变更历史
 
 > 按语言特性维度纵向梳理 Java 各核心功能的演进历程，理解每个特性"为什么来"以及"怎么变"。

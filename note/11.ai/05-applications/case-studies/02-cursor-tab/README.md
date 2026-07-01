@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/case-cursor-tab
+  type: article
+  category: 主模块子文章
+  summary: Cursor Tab
+-->
+
 # Cursor Tab：把 IDE 从"补全代码"重定义为"预测你的下一次编辑"
 
 > **一句话总结**：Cursor Tab 不再追求"多给建议"，而是用在线强化学习让模型主动学"什么时候该闭嘴"——建议数少 21%，接受率反而高 28%。

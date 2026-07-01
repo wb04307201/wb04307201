@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/llm-security
+  type: article
+  category: 主模块子文章
+  summary: LLM 安全攻防实战
+-->
+
 # LLM 安全：Prompt 注入 / 数据泄露 / 越权 攻防实战
 
 > 一份按攻击类型梳理的 LLM 安全速查手册：从 OWASP LLM Top 10 到纵深防御的完整实战。

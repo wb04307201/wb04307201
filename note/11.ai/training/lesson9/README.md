@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/lesson-09
+  type: article
+  category: 主模块子文章
+  summary: 第 9 课 Dify 工作流
+-->
+
 # Dify 工作流引擎 · 第九课
 
 ⬅️ [返回课程总目录](../README.md)

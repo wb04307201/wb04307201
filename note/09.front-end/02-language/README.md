@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/language
+  type: article
+  category: 主模块子文章
+  summary: 前端 02 语言
+-->
+
 # 02 语言
 
 > 一句话定位：**JavaScript / TypeScript / 运行时——前端工程师的「母语」**

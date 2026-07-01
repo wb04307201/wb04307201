@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/case-klarna
+  type: article
+  category: 主模块子文章
+  summary: Klarna AI 客服
+-->
+
 # Klarna AI 客服先激进、后回调：AI 替代 700 个工位后，又把人工请回来
 
 > **一句话总结**：Klarna 在 2024 年初高调宣布用 OpenAI 客服替代 700 个工位，一度被视为生成式 AI 落地标杆；半年后又把人工请回关键场景——这场"先激进、再回调"的复盘，比单一成功案例更值得 AI 落地者咀嚼。

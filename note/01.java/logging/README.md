@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/logging
+  type: article
+  category: 主模块子文章
+  summary: Java 日志学习笔记
+-->
+
 # Java 日志学习笔记
 
 ## 引言：反直觉代码

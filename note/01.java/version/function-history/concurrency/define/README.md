@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/concurrency-basics
+  type: article
+  category: 主模块子文章
+  summary: 并发编程基础概念
+-->
+
 # 并发编程基础概念
 
 ## 引言：变更说明

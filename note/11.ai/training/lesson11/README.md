@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/lesson-11
+  type: article
+  category: 主模块子文章
+  summary: 第 11 课 AI 代码安全
+-->
+
 # 第 11 课：AI 代码安全与质量
 
 ⬅️ [返回课程总目录](../README.md)

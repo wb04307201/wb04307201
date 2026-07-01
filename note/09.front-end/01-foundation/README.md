@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/foundation
+  type: article
+  category: 主模块子文章
+  summary: 前端 01 基础
+-->
+
 # 01 基础
 
 > 一句话定位：**一切前端运行的基石——浏览器、HTML、CSS 与 Web 标准**

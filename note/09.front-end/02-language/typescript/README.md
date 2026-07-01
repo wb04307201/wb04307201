@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/typescript
+  type: article
+  category: 主模块子文章
+  summary: TypeScript 工程实践
+-->
+
 # TypeScript 工程实践
 
 > 一句话定位：**从"any 逃生舱"到"类型即文档" —— TypeScript 5 的工程化最佳实践**

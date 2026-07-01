@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/github-actions
+  type: article
+  category: 主模块子文章
+  summary: GitHub Actions
+-->
+
 # GitHub Actions · 云原生 CI/CD 实战
 
 > 一份按场景梳理的 GitHub Actions 速查手册：从基础工作流到企业级 DevOps 的完整实战。

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/claude-code-practices
+  type: article
+  category: 主模块子文章
+  summary: Claude Code 最佳实践
+-->
+
 # Claude Code 如何在大型代码库中高效运作：最佳实践与入门指南
 
 ## 引言：反直觉代码

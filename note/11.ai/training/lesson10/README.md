@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/lesson-10
+  type: article
+  category: 主模块子文章
+  summary: 第 10 课 Agent 评估
+-->
+
 # 第 10 课：Agent 评估方法论
 
 > 建立有效的 Agent 评估体系，避免"生产环境救火"。不知道 Agent 表现好不好？你需要一套评估方法论。

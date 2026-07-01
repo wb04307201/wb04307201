@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/concurrency-utilities
+  type: article
+  category: 主模块子文章
+  summary: Java 并发工具类
+-->
+
 # Java 并发工具类 (java.util.concurrent)
 
 > `java.util.concurrent` 包提供了一组高级并发构建块，用于简化多线程程序的开发。

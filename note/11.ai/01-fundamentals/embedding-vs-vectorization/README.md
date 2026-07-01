@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/embedding-vs-vectorization
+  type: article
+  category: 主模块子文章
+  summary: 嵌入 vs 向量化
+-->
+
 # 嵌入 vs 向量化
 
 ## 引言：反直觉代码

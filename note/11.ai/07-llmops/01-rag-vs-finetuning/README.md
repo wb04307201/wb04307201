@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/rag-vs-finetuning
+  type: article
+  category: 主模块子文章
+  summary: RAG vs Fine-tuning vs Prompt
+-->
+
 # RAG vs Fine-tuning vs Prompt Engineering：LLM 定制三大策略深度对比
 
 > 一份按场景梳理的 LLM 定制速查手册：从 Prompt 到 RAG 到 Fine-tuning 的完整选型决策。

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/java-18
+  type: article
+  category: 主模块子文章
+  summary: Java 18
+-->
+
 # Java 18
 
 ## 引言：变更说明

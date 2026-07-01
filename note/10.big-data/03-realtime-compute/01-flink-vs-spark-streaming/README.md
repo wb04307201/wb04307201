@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: big-data
+  slug: big-data/flink-vs-spark-streaming
+  type: article
+  category: 主模块子文章
+  summary: Flink vs Spark Streaming
+-->
+
 # Flink vs Spark Streaming：实时计算引擎深度对比
 
 > 一份按场景梳理的实时计算引擎速查手册：从架构原理到生产选型的完整对比。

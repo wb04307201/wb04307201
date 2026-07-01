@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/volatile
+  type: article
+  category: 主模块子文章
+  summary: volatile 关键字深度解析
+-->
+
 # volatile 关键字深度解析
 
 ## 一、volatile 的两大核心作用

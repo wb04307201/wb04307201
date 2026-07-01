@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/modules
+  type: article
+  category: 主模块子文章
+  summary: Java 9 引入的模块系统（JPMS — Java Platform Module System）是 Java 历史上最大的架构变革之一，它从根本上改变了 JAR 的组织方式和类加载器的行为。
+-->
+
 # Java 模块系统 (JPMS / Java 9+)
 
 > Java 9 引入的模块系统（JPMS — Java Platform Module System）是 Java 历史上最大的架构变革之一，它从根本上改变了 JAR 的组织方式和类加载器的行为。

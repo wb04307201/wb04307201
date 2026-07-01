@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/state-management
+  type: article
+  category: 主模块子文章
+  summary: 状态管理
+-->
+
 # 状态管理
 
 > 一句话定位：**Redux / Zustand / Jotai / Pinia / Nano Stores —— 让"数据流"从混乱走向可控**

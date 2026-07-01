@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/code-comment-styles
+  type: article
+  category: 主模块子文章
+  summary: 创意代码注释风格
+-->
+
 # 创意代码注释风格
 
 ← 返回 [Prompt工程](../README.md)

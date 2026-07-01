@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/flutter
+  type: article
+  category: 主模块子文章
+  summary: Flutter 3.x
+-->
+
 # Flutter 3.x
 
 ## 引言：反直觉代码

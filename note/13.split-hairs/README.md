@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: split-hairs
+  slug: split-hairs
+  type: article
+  category: 主模块子文章
+  summary: 咬文嚼字面试题
+-->
+
 # 咬文嚼字 —— 高频面试题与难点深挖
 
 > 一句话定位：**主模块的"刺刀版" —— 专治面试中那些"好像懂但说不清"的高频 / 高难度问题**

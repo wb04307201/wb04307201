@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/lesson-07
+  type: article
+  category: 主模块子文章
+  summary: 第 7 课 Claude Code 工具链
+-->
+
 # 第 7 课：Claude Code 工具链
 
 ⬅️ [返回课程总目录](../README.md)

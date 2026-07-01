@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/podman
+  type: article
+  category: 主模块子文章
+  summary: Podman
+-->
+
 # Podman
 
 ## 引言：反直觉代码

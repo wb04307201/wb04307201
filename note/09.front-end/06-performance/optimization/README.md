@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/optimization
+  type: article
+  category: 主模块子文章
+  summary: 性能优化手段
+-->
+
 # 性能优化手段
 
 ## 引言：性能对比

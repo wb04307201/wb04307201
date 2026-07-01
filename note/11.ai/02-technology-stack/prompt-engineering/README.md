@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/prompt-engineering
+  type: article
+  category: 主模块子文章
+  summary: Prompt 工程
+-->
+
 # Prompt 工程
 
 ← 返回 [技术栈](../README.md)

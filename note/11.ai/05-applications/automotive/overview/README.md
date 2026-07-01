@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/automotive
+  type: article
+  category: 主模块子文章
+  summary: AI 重塑汽车行业
+-->
+
 # AI 重塑汽车行业
 
 ← 返回 [汽车行业](../README.md)

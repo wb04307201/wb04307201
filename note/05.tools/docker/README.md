@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/docker
+  type: article
+  category: 主模块子文章
+  summary: Docker
+-->
+
 # Docker
 
 > 容器化技术栈速查——命令、编排、镜像构建与 Podman 替代方案。

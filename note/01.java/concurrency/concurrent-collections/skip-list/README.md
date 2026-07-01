@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/concurrent-skip-list
+  type: article
+  category: 主模块子文章
+  summary: 跳表集合
+-->
+
 # 跳表集合
 
 > 目标：理解 ConcurrentSkipListMap 和 ConcurrentSkipListSet 的跳表数据结构、无锁操作实现及有序并发场景应用。

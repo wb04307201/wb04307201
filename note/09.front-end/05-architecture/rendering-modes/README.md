@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/rendering-modes
+  type: article
+  category: 主模块子文章
+  summary: 渲染模式全景
+-->
+
 # 渲染模式全景
 
 > 一句话定位：**CSR / SSR / SSG / ISR / RSC / Islands —— 前端"把 HTML 送到用户眼前"的 6 种方式**

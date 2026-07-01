@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/deploy-strategies
+  type: article
+  category: 主模块子文章
+  summary: 部署策略：蓝绿/金丝雀/灰度发布
+-->
+
 # 部署策略：蓝绿 / 金丝雀 / 灰度发布实战
 
 > 一份按场景梳理的部署策略速查手册：从滚动更新到金丝雀的 5 大策略完整对比。

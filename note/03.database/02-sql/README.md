@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: database
+  slug: database/sql
+  type: article
+  category: 主模块子文章
+  summary: SQL
+-->
+
 # SQL
 
 > SQL(Structured Query Language)是用于管理关系型数据库的标准语言,本文涵盖 SQL 分类、核心语法、执行顺序与慢查询分析与优化。

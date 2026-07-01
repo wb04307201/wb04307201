@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring/mybatis
+  type: article
+  category: 主模块子文章
+  summary: MyBatis 全栈
+-->
+
 # MyBatis 全栈
 
 > 最后更新:2026-06-22

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: workflow
+  slug: workflow/camunda-7
+  type: article
+  category: 主模块子文章
+  summary: Camunda 7
+-->
+
 # Camunda 7
 
 > 最后更新: 2026-06-14
@@ -121,32 +130,8 @@ spring:
 启动时 [控制台](http://localhost:8080/) 界面  
 ![img.png](img.png)
 
-```mermaid
-%% [AUTO] 占位 — 描述：Camunda 7 启动控制台（localhost:8080）— 嵌入式 Web 界面；管理流程定义、用户任务、流程实例等
-%% 实际图：img.png（保留 PNG 用于参考）
-graph TB
-    %% TODO: 人工设计等价 Mermaid 替换
-    A[Component A] --> B[Component B]
-    B --> C[Component C]
-```
 
-```mermaid
-%% [AUTO] 占位 — 描述：Camunda 7 启动控制台（localhost:8080）— 嵌入式 Web 界面；管理流程定义、用户任务、流程实例等
-%% 实际图：img.png（保留 PNG 用于参考）
-graph TB
-    %% TODO: 人工设计等价 Mermaid 替换
-    A[Component A] --> B[Component B]
-    B --> C[Component C]
-```
 
-```mermaid
-%% [AUTO] 占位 — 描述：Camunda 7 启动控制台（localhost:8080）— 嵌入式 Web 界面；管理流程定义、用户任务、流程实例等
-%% 实际图：img.png（保留 PNG 用于参考）
-graph TB
-    %% TODO: 人工设计等价 Mermaid 替换
-    A[Component A] --> B[Component B]
-    B --> C[Component C]
-```
 
 ### （二）集成 Camunda 7 Swagger 到项目
 
@@ -177,32 +162,8 @@ graph TB
 访问 [Swagger](http://localhost:8080/swaggerui/)  
 ![img_1.png](img_1.png)
 
-```mermaid
-%% [AUTO] 占位 — 描述：Camunda 7 Swagger UI（localhost:8080/swaggerui）— REST API 文档；测试 ProcessEngine 服务
-%% 实际图：img_1.png（保留 PNG 用于参考）
-graph TB
-    %% TODO: 人工设计等价 Mermaid 替换
-    A[Component A] --> B[Component B]
-    B --> C[Component C]
-```
 
-```mermaid
-%% [AUTO] 占位 — 描述：Camunda 7 Swagger UI（localhost:8080/swaggerui）— REST API 文档；测试 ProcessEngine 服务
-%% 实际图：img_1.png（保留 PNG 用于参考）
-graph TB
-    %% TODO: 人工设计等价 Mermaid 替换
-    A[Component A] --> B[Component B]
-    B --> C[Component C]
-```
 
-```mermaid
-%% [AUTO] 占位 — 描述：Camunda 7 Swagger UI（localhost:8080/swaggerui）— REST API 文档；测试 ProcessEngine 服务
-%% 实际图：img_1.png（保留 PNG 用于参考）
-graph TB
-    %% TODO: 人工设计等价 Mermaid 替换
-    A[Component A] --> B[Component B]
-    B --> C[Component C]
-```
 
 ### （三）集成 bpmn 设计到项目
 
@@ -272,32 +233,8 @@ export default defineConfig({
 `mvn install` 后启动项目：  
 ![img_2.png](img_2.png)
 
-```mermaid
-%% [AUTO] 占位 — 描述：mvn install 后启动 SpringBoot 集成 Camunda 7 项目 — 项目启动成功的控制台输出
-%% 实际图：img_2.png（保留 PNG 用于参考）
-graph TB
-    %% TODO: 人工设计等价 Mermaid 替换
-    A[Component A] --> B[Component B]
-    B --> C[Component C]
-```
 
-```mermaid
-%% [AUTO] 占位 — 描述：mvn install 后启动 SpringBoot 集成 Camunda 7 项目 — 项目启动成功的控制台输出
-%% 实际图：img_2.png（保留 PNG 用于参考）
-graph TB
-    %% TODO: 人工设计等价 Mermaid 替换
-    A[Component A] --> B[Component B]
-    B --> C[Component C]
-```
 
-```mermaid
-%% [AUTO] 占位 — 描述：mvn install 后启动 SpringBoot 集成 Camunda 7 项目 — 项目启动成功的控制台输出
-%% 实际图：img_2.png（保留 PNG 用于参考）
-graph TB
-    %% TODO: 人工设计等价 Mermaid 替换
-    A[Component A] --> B[Component B]
-    B --> C[Component C]
-```
 
 **3. 添加 less**
 
@@ -451,32 +388,8 @@ export default Camunda7Modeler;
 
 ![img_3.png](img_3.png)
 
-```mermaid
-%% [AUTO] 占位 — 描述：BPMN 流程图示例 — User/Service/Manual 等任务节点；Camunda 7 核心可建模资产
-%% 实际图：img_3.png（保留 PNG 用于参考）
-graph TB
-    %% TODO: 人工设计等价 Mermaid 替换
-    A[Component A] --> B[Component B]
-    B --> C[Component C]
-```
 
-```mermaid
-%% [AUTO] 占位 — 描述：BPMN 流程图示例 — User/Service/Manual 等任务节点；Camunda 7 核心可建模资产
-%% 实际图：img_3.png（保留 PNG 用于参考）
-graph TB
-    %% TODO: 人工设计等价 Mermaid 替换
-    A[Component A] --> B[Component B]
-    B --> C[Component C]
-```
 
-```mermaid
-%% [AUTO] 占位 — 描述：BPMN 流程图示例 — User/Service/Manual 等任务节点；Camunda 7 核心可建模资产
-%% 实际图：img_3.png（保留 PNG 用于参考）
-graph TB
-    %% TODO: 人工设计等价 Mermaid 替换
-    A[Component A] --> B[Component B]
-    B --> C[Component C]
-```
 
 ## 二、Task 节点用途
 

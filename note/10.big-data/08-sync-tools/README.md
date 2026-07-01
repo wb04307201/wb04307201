@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: big-data
+  slug: big-data/sync-tools
+  type: article
+  category: 主模块子文章
+  summary: 同步工具
+-->
+
 # 08 同步工具
 
 > 一句话定位：**DataX / SeaTunnel / Sqoop / Flume——异构数据集成与同步**

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: note
+  slug: note
+  type: article
+  category: 笔记根目录
+  summary: 笔记总目录（14 主模块）
+-->
+
 # 一、[Java](01.java/README.md)
 
 > 从语言基础到 JVM 原理、并发编程、版本演进，系统性构建 Java 知识体系。

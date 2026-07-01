@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/k8s-pod
+  type: article
+  category: 主模块子文章
+  summary: K8s Pod 与工作负载
+-->
+
 # K8s Pod 与工作负载：Deployment / StatefulSet / DaemonSet
 
 > 一份按工作负载类型梳理的速查手册：从 Pod 基础到 4 种工作负载的实战用法。

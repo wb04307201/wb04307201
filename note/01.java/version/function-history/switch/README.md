@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/switch
+  type: article
+  category: 主模块子文章
+  summary: Switch
+-->
+
 # Switch
 
 ## 引言：变更说明

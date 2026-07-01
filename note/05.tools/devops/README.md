@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/devops
+  type: article
+  category: 主模块子文章
+  summary: DevOps · CI/CD 工具链与实践
+-->
+
 # DevOps · CI/CD 工具链与实践
 
 > 一份按工具链梳理的 DevOps 速查手册：从代码提交到生产部署的完整自动化路径。

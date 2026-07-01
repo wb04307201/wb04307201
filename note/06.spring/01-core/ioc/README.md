@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring/ioc
+  type: article
+  category: 主模块子文章
+  summary: IoC（Inversion of Control）控制反转
+-->
+
 # IoC（Inversion of Control）控制反转
 
 > 最后更新: 2026-06-14

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/uber-prd-agent
+  type: article
+  category: 主模块子文章
+  summary: AI 写 PRD：Uber 需求评审 Agent
+-->
+
 # AI 写 PRD 不可怕，可怕的是它写得太像真的——Uber 需求评审 Agent 如何落地
 
 > 原文链接：https://www.bilibili.com/video/BV11PVr6ZEv9

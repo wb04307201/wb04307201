@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/frameworks
+  type: article
+  category: 主模块子文章
+  summary: AI 框架选型
+-->
+
 # AI 框架选型
 
 ## 引言：架构困境

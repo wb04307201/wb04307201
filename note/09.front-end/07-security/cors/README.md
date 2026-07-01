@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/cors
+  type: article
+  category: 主模块子文章
+  summary: CORS 跨域
+-->
+
 # CORS 跨域
 
 ## 引言：反直觉代码

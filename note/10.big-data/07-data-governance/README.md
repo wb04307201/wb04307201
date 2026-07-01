@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: big-data
+  slug: big-data/data-governance
+  type: article
+  category: 主模块子文章
+  summary: 数据治理
+-->
+
 # 07 数据治理
 
 > 一句话定位：**Atlas / DataHub / 数据血缘——元数据、质量、安全三大支柱**

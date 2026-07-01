@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/case-khanmigo
+  type: article
+  category: 主模块子文章
+  summary: Khanmigo AI 导师
+-->
+
 # Khanmigo：故意不直接给答案的 AI 导师，苏格拉底式交互的产品哲学
 
 #教育 #编程 #办公 #Khanmigo

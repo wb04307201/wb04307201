@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring/validation
+  type: article
+  category: 主模块子文章
+  summary: Spring Validation 校验框架
+-->
+
 # Spring Validation 校验框架
 
 > 基于 JSR-303/380 规范，通过注解实现 Controller/Service 参数校验

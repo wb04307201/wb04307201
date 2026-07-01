@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: database
+  slug: database/cloud-database
+  type: article
+  category: 主模块子文章
+  summary: 云数据库
+-->
+
 # 云数据库
 
 > 云数据库(Cloud Database)是云厂商提供的关系型、NoSQL、NewSQL 等托管服务,具备自动备份、容灾、监控、扩缩容等开箱即用能力;主流产品包括 AWS RDS/Aurora、阿里云 RDS/PolarDB、Azure Database、Google Cloud SQL、TiDB Cloud 等。

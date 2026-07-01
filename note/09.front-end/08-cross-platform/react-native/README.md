@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/react-native
+  type: article
+  category: 主模块子文章
+  summary: React Native 跨端移动开发
+-->
+
 # React Native 跨端移动开发
 
 > 一句话定位：**React Native —— 一套 React 代码，跑在 iOS + Android 两端**

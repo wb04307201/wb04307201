@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/runtime
+  type: article
+  category: 主模块子文章
+  summary: JS 运行时：Node.js / Deno / Bun
+-->
+
 # JS 运行时：Node.js / Deno / Bun
 
 > 一句话定位：**三大 JS 运行时 —— 同一个语言，不同的生态与取舍**

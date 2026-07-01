@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/routing
+  type: article
+  category: 主模块子文章
+  summary: 路由
+-->
+
 # 路由
 
 > 一句话定位：**React Router / Vue Router / TanStack Router —— 把 URL 变成"应用的入口"**

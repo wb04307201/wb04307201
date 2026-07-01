@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/java-14
+  type: article
+  category: 主模块子文章
+  summary: Java 14
+-->
+
 # Java 14
 
 ## 引言：变更说明

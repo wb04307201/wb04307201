@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/git-command
+  type: article
+  category: 主模块子文章
+  summary: Git 命令清单
+-->
+
 # Git 命令清单
 
 ## 基础配置

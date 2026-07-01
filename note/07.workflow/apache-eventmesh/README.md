@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: workflow
+  slug: workflow/event-driven-serverless
+  type: article
+  category: 主模块子文章
+  summary: 事件驱动与 Serverless Workflow
+-->
+
 # 事件驱动与 Serverless Workflow
 
 > 最后更新: 2026-06-14

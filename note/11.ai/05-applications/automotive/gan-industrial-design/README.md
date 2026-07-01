@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/automotive-gan-design
+  type: article
+  category: 主模块子文章
+  summary: AI 重构工业设计
+-->
+
 # AI 重构工业设计
 
 ← 返回 [汽车行业](../README.md)

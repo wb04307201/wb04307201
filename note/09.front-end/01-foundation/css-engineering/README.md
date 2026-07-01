@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/css-engineering
+  type: article
+  category: 主模块子文章
+  summary: CSS 工程化
+-->
+
 # CSS 工程化
 
 > 一句话定位：**盒模型 / Flex / Grid / Sass / Tailwind / CSS Modules —— 让 CSS 从"样式"变成"可维护的工程资产"**

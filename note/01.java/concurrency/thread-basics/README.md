@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/thread-basics
+  type: article
+  category: 主模块子文章
+  summary: Java 线程基础
+-->
+
 # Java 线程基础
 
 ## 引言：反直觉代码

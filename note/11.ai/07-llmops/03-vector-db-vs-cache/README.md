@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/vector-db-vs-cache
+  type: article
+  category: 主模块子文章
+  summary: LLM 缓存策略
+-->
+
 # LLM 缓存策略：向量数据库 vs 语义缓存 vs 精确缓存
 
 > 一份按层次梳理的 LLM 缓存速查手册：从精确缓存到语义缓存的 3 大策略。

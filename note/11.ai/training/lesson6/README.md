@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/lesson-06
+  type: article
+  category: 主模块子文章
+  summary: 第 6 课 多智能体协同
+-->
+
 # 第 6 课：多智能体协同
 
 > 从单智能体到多智能体协同，掌握 A2A 架构的设计模式与工程实践。

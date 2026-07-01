@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/memory-estimation
+  type: article
+  category: 主模块子文章
+  summary: 大模型显存估算指南
+-->
+
 # 大模型显存估算指南
 
 ← 返回 [技术栈](../README.md)

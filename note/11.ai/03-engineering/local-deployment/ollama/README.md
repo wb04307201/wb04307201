@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/ollama
+  type: article
+  category: 主模块子文章
+  summary: Ollama
+-->
+
 # Ollama
 
 ← 返回 [本地部署](../README.md)

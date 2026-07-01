@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring/cloud
+  type: article
+  category: 主模块子文章
+  summary: Spring Cloud
+-->
+
 # 05 Spring Cloud
 
 > 最后更新: 2026-06-14

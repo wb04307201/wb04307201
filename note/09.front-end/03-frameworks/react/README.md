@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/react
+  type: article
+  category: 主模块子文章
+  summary: React 19
+-->
+
 # React 19
 
 ## 引言：反直觉代码

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/java-agent
+  type: article
+  category: 主模块子文章
+  summary: Java Agent
+-->
+
 # Java Agent
 
 `Java Agent` 是 JVM 提供的一种字节码增强机制，从 Java 5 开始引入。它允许在不修改原始源代码的前提下，于类加载时或运行时动态修改类的字节码，从而实现性能监控、链路追踪、热更新、AOP 等能力。

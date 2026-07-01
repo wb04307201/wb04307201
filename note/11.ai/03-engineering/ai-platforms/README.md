@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/ai-platforms
+  type: article
+  category: 主模块子文章
+  summary: AI 编排平台
+-->
+
 # AI 编排平台
 
 > 最后更新: 2026-06-14

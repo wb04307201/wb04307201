@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/io
+  type: article
+  category: 主模块子文章
+  summary: I/O
+-->
+
 # I/O
 
 `I/O`（Input/Output）即输入和输出。数据从外部源（文件、网络、数据库等）读入内存的过程称为输入，从内存写出到外部目的地的过程称为输出。数据传输的过程类似于水流，因此称为 I/O 流。

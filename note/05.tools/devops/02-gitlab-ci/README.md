@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/gitlab-ci
+  type: article
+  category: 主模块子文章
+  summary: GitLab CI
+-->
+
 # GitLab CI · 一体化 DevOps 平台实战
 
 > 一份按场景梳理的 GitLab CI 速查手册：从基础流水线到企业级 DevOps 链路的完整实战。

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/engineering
+  type: article
+  category: 主模块子文章
+  summary: AI 工程实践
+-->
+
 # AI 工程实践
 
 ## 引言：反直觉代码

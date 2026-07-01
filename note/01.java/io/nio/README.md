@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/nio
+  type: article
+  category: 主模块子文章
+  summary: Java NIO 全面学习笔记
+-->
+
 # Java NIO 全面学习笔记
 
 ## 一、IO 与 NIO 对比：面向流 vs 面向缓冲区

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/smart-cockpit
+  type: article
+  category: 主模块子文章
+  summary: 智能座舱交互范式
+-->
+
 # 智能座舱交互范式
 
 ## 引言：反直觉代码

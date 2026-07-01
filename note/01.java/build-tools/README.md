@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/build-tools
+  type: article
+  category: 主模块子文章
+  summary: Java 构建工具笔记
+-->
+
 # Java 构建工具笔记
 
 ## 一、Maven vs Gradle 对比

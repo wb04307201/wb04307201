@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/lesson-16
+  type: article
+  category: 主模块子文章
+  summary: 第 16 课 知识接入
+-->
+
 # 第 16 课：大模型知识接入技术全景
 
 > **4 章 × 5 路径 × 决策框架** — 从"上 RAG"到"先想清楚再选工具"  

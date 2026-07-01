@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/csrf
+  type: article
+  category: 主模块子文章
+  summary: CSRF 攻击与防御
+-->
+
 # CSRF（跨站请求伪造）
 
 > 一句话定位：**CSRF —— 借用户的"身份证"，在用户的"不知情"下，做坏事**

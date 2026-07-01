@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/ali-microservices
+  type: article
+  category: 主模块子文章
+  summary: 阿里微服务
+-->
+
 # 阿里微服务
 
 ## 引言：反直觉代码

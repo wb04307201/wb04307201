@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/k8s-service-ingress
+  type: article
+  category: 主模块子文章
+  summary: K8s Service 与 Ingress
+-->
+
 # K8s Service 与 Ingress：服务发现 + 7 层路由
 
 > 一份按层次梳理的 K8s 网络速查手册：从 ClusterIP 到 Ingress 的完整路径。

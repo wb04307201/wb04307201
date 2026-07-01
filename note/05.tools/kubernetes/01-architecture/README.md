@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/k8s-architecture
+  type: article
+  category: 主模块子文章
+  summary: K8s 架构
+-->
+
 # K8s 架构：控制平面 + 工作节点深度解读
 
 > 一份按层次梳理的 K8s 架构速查手册：从控制平面到工作节点的完整组件解析。

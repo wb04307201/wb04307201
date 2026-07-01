@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring/microrest
+  type: article
+  category: 主模块子文章
+  summary: MicroRest
+-->
+
 # MicroRest - 轻量级 Spring MVC 框架实现
 
 ## 引言：反直觉代码

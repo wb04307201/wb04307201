@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/compute-platforms
+  type: article
+  category: 主模块子文章
+  summary: 计算平台
+-->
+
 # 计算平台
 
 ## 引言：反直觉代码

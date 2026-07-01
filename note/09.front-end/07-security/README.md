@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/security
+  type: article
+  category: 主模块子文章
+  summary: 前端 07 安全
+-->
+
 # 07 安全
 
 > 一句话定位：**安全——前端必须防御的 6 大攻击与防护体系**

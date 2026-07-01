@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/frameworks
+  type: article
+  category: 主模块子文章
+  summary: 前端 03 框架
+-->
+
 # 03 框架
 
 > 一句话定位：**UI 框架——声明式 UI / 组件化 / 响应式更新的现代范式**

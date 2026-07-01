@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/java-26
+  type: article
+  category: 主模块子文章
+  summary: Java 26
+-->
+
 # Java 26
 
 ## 引言：变更说明

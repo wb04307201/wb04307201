@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/kotlin
+  type: article
+  category: 主模块子文章
+  summary: Kotlin
+-->
+
 # Kotlin
 
 Kotlin 是由 JetBrains 设计的静态类型现代编程语言，运行于 JVM 之上。2016 年发布 v1.0，2017 年被 Google 宣布为 Android 开发首选语言，2019 年成为 JVM 默认语言。相比 Java，Kotlin 以空安全、协程、扩展函数、简洁语法等特性显著提升了开发效率与代码安全性。

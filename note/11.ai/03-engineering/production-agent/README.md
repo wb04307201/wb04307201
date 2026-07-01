@@ -1,3 +1,14 @@
+<!--
+module:
+  parent: ai
+  slug: ai/production-agent
+  type: article
+  category: 主模块子文章
+  summary: 生产级 Agent 系统
+-->
+
+# 生产级 Agent 系统：Shopify Sidekick 工程实践
+
 **打造生产级智能体系统：来自 Shopify Sidekick 的工程实践与启示**
 
 **原文链接**：[Building production-ready agentic systems: Lessons from Shopify Sidekick](https://shopify.engineering/building-production-ready-agentic-systems)

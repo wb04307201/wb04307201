@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/vue
+  type: article
+  category: 主模块子文章
+  summary: Vue 3.4+ 全景
+-->
+
 # Vue 3.4+
 
 ## 引言：反直觉代码

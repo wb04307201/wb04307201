@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/csp
+  type: article
+  category: 主模块子文章
+  summary: CSP 与 SRI
+-->
+
 # CSP（内容安全策略）与 SRI（子资源完整性）
 
 > 一句话定位：**CSP —— 浏览器层面的"白名单"，把 XSS / 数据注入的伤害降到最低**

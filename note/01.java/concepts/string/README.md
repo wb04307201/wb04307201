@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/string
+  type: article
+  category: 主模块子文章
+  summary: String
+-->
+
 # String
 
 ## 引言：基础概念

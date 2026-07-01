@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/cross-platform
+  type: article
+  category: 主模块子文章
+  summary: 前端 08 跨端
+-->
+
 # 08 跨端
 
 > 一句话定位：**一次开发多端部署——从 Web 到移动、桌面、小程序的跨端方案**

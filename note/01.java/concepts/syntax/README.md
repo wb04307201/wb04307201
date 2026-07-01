@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/syntax
+  type: article
+  category: 主模块子文章
+  summary: 基本语法
+-->
+
 # 基本语法
 
 ## 引言：基础概念

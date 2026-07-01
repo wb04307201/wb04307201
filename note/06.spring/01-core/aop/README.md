@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring/aop
+  type: article
+  category: 主模块子文章
+  summary: Spring AOP 深度解析
+-->
+
 # Spring AOP 深度解析
 
 > 最后更新: 2026-06-09

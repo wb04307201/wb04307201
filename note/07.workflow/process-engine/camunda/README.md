@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: workflow
+  slug: workflow/camunda
+  type: article
+  category: 主模块子文章
+  summary: Camunda 引擎
+-->
+
 # Camunda 引擎
 
 > Camunda 7 与 Camunda 8 (Zeebe) 两大版本的导航与对比

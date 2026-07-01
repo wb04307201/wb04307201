@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/gitea
+  type: article
+  category: 主模块子文章
+  summary: Gitea
+-->
+
 # Gitea
 
 Gitea 是一款**轻量级、开源、自托管**的 Git 服务软件，旨在提供类似 GitHub/GitLab 的代码托管、协作开发和 DevOps 功能，但对服务器资源要求极低，易于部署和维护。它由 Go 语言编写，是 **Gogs 项目的社区分支**（因原团队协作分歧诞生），目前已成为全球最受欢迎的自托管 Git 服务之一。

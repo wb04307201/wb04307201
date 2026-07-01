@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/monorepo
+  type: article
+  category: 主模块子文章
+  summary: Monorepo
+-->
+
 # Monorepo
 
 ## 引言：反直觉代码

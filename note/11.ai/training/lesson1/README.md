@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/lesson-01
+  type: article
+  category: 主模块子文章
+  summary: 第 1 课 AI Agent 核心概念
+-->
+
 # 第 1 课：AI Agent 核心概念
 
 ⬅️ [返回课程总目录](../README.md)

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/case-hippocratic
+  type: article
+  category: 主模块子文章
+  summary: Hippocratic AI 护理
+-->
+
 # Hippocratic AI：不替代医生的护理 Agent，7×24 患者随访的边界设计
 
 #医疗 #编程 #客服 #HippocraticAI #边界设计 #护理Agent

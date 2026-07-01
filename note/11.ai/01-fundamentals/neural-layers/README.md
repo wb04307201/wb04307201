@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/neural-layers
+  type: article
+  category: 主模块子文章
+  summary: 神经网络层次结构
+-->
+
 # 神经网络层次结构
 
 ## 引言：反直觉代码

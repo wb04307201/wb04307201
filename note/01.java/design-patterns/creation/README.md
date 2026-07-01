@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/creational-patterns
+  type: article
+  category: 主模块子文章
+  summary: 创建型模式
+-->
+
 # 创建型模式
 
 > 关注对象的创建过程，将实例化与使用分离，使系统更灵活、更易扩展。

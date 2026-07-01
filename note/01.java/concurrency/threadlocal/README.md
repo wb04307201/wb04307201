@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/threadlocal
+  type: article
+  category: 主模块子文章
+  summary: ThreadLocal 是 Java 中实现线程封闭性的重要工具，它为每个使用它的线程提供一个独立的变量副本，从而实现线程间的数据隔离。
+-->
+
 # ThreadLocal 原理与最佳实践
 
 > ThreadLocal 是 Java 中实现线程封闭性的重要工具，它为每个使用它的线程提供一个独立的变量副本，从而实现线程间的数据隔离。

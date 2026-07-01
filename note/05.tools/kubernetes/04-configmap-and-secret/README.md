@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/k8s-configmap-secret
+  type: article
+  category: 主模块子文章
+  summary: K8s ConfigMap 与 Secret
+-->
+
 # K8s ConfigMap 与 Secret：配置管理最佳实践
 
 > 一份按场景梳理的 K8s 配置管理速查手册：从 ConfigMap 到 Secret 的完整实战。

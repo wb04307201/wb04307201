@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/llmops-stack
+  type: article
+  category: 主模块子文章
+  summary: LLMOps 技术栈
+-->
+
 # LLMOps 完整技术栈：从训练到生产的全链路工具链
 
 > 一份按层次梳理的 LLMOps 速查手册：从数据标注到模型部署的完整工具链。

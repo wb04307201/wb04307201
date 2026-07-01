@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/zero-copy
+  type: article
+  category: 主模块子文章
+  summary: 零拷贝
+-->
+
 # 零拷贝
 
 零拷贝（Zero-copy）是指在数据传输过程中，**避免数据在内核空间与用户空间之间的 CPU 拷贝**。传统的 IO 操作需要将数据从内核缓冲区复制到用户缓冲区，再由用户缓冲区复制到内核的 socket 缓冲区，中间涉及多次 CPU 参与的拷贝。零拷贝通过减少甚至消除这些 CPU 拷贝，显著提升 IO 传输效率。

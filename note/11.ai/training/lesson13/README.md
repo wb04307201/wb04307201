@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/lesson-13
+  type: article
+  category: 主模块子文章
+  summary: 第 13 课 Spec 驱动开发
+-->
+
 # 第 13 课：基于 Spec 的 AI 驱动开发
 
 > 用 Spec 规范驱动 AI 开发流程，让 AI 不再是"氛围编程"，而是有章可循的工程实践。

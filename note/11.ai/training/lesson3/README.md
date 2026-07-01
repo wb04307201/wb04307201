@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/lesson-03
+  type: article
+  category: 主模块子文章
+  summary: 第 3 课 Spring AI Agent
+-->
+
 # 第 3 课：Spring AI Agent 搭建
 
 > 从零开始，用 Spring AI 搭建一个具备对话能力和 MCP 工具调用的 AI Agent。

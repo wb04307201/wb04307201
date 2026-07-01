@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring/mybatis-integration
+  type: article
+  category: 主模块子文章
+  summary: Spring 整合 MyBatis
+-->
+
 # Spring 整合 MyBatis
 
 > 最后更新: 2026-06-22

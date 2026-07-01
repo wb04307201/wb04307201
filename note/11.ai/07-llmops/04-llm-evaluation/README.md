@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/llm-evaluation
+  type: article
+  category: 主模块子文章
+  summary: LLM 评估体系
+-->
+
 # LLM 评估体系：6 大维度 + 5 种评估方法完整实战
 
 > 一份按层次梳理的 LLM 评估速查手册：从自动化指标到 A/B Test 的完整评估框架。

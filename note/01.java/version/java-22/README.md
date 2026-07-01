@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/java-22
+  type: article
+  category: 主模块子文章
+  summary: Java 22
+-->
+
 # Java 22
 
 ## 引言：变更说明

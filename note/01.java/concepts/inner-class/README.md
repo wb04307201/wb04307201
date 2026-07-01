@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/inner-class
+  type: article
+  category: 主模块子文章
+  summary: 内部类
+-->
+
 # 内部类
 
 ## 引言：基础概念

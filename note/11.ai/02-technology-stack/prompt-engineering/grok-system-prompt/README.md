@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/grok-system-prompt
+  type: article
+  category: 主模块子文章
+  summary: Grok 系统提示词
+-->
+
 # Grok 系统提示词
 
 ## 引言：反直觉代码

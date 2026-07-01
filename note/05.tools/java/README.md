@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/java-tools
+  type: article
+  category: 主模块子文章
+  summary: Java 工具库
+-->
+
 # Java 工具库
 
 > Java 开发效率提升——常用工具集与注解提效方案。

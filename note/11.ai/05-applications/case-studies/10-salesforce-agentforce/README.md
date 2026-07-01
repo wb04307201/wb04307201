@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/case-agentforce
+  type: article
+  category: 主模块子文章
+  summary: Salesforce Agentforce
+-->
+
 # Salesforce Agentforce：让销售 Agent 自己挖线索、约会议、跟进客户
 
 #销售 #CRM #办公 #客服

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: database
+  slug: database/redis
+  type: article
+  category: 主模块子文章
+  summary: Redis
+-->
+
 # Redis
 
 > Redis(REmote DIctionary Server)是基于内存的键值数据库,支持丰富的数据结构,凭借 RDB+AOF 持久化、Cluster 集群、灵活的淘汰策略和 Lua/事务能力,广泛用作缓存、消息队列和实时数据存储。

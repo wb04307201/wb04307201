@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/k8s-storage
+  type: article
+  category: 主模块子文章
+  summary: K8s 存储 PV/PVC/StorageClass
+-->
+
 # K8s 存储：PV / PVC / StorageClass 实战
 
 > 一份按层次梳理的 K8s 存储速查手册：从 Volume 到动态供给的完整路径。

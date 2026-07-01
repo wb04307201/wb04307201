@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/llm-app-frameworks
+  type: article
+  category: 主模块子文章
+  summary: 大模型应用开发框架
+-->
+
 # 大模型应用开发框架
 
 ## 引言：反直觉代码

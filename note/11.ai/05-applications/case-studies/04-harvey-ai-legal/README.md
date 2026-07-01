@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/case-harvey
+  type: article
+  category: 主模块子文章
+  summary: Harvey AI 法律
+-->
+
 # Harvey AI：当一家 AI 公司 30% 员工是律师，法律知识如何被产品化
 
 #法律 #办公 #教育 #Harvey #垂直AI #LLM应用

@@ -1,5 +1,14 @@
 ← [返回笔记目录](../README.md)
 
+<!--
+module:
+  parent: story
+  slug: story
+  type: article
+  category: 主模块子文章
+  summary: 阿明餐厅技术系列导览
+-->
+
 # 「阿明餐厅」技术系列
 
 > 用开餐厅的故事，讲明白四十+7 篇（34/35/36 分 a/b）技术大事。

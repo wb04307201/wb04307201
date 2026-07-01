@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/docker-compose
+  type: article
+  category: 主模块子文章
+  summary: Docker Compose 编排实战
+-->
+
 # Docker Compose 编排实战
 
 > Docker Compose 是 Docker 官方的多容器编排工具，通过 YAML 文件定义和运行复杂应用。本文提供可直接用于开发/测试环境的配置参考。

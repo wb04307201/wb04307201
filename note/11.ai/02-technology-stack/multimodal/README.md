@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/multimodal
+  type: article
+  category: 主模块子文章
+  summary: 多模态
+-->
+
 # 多模态：感知-认知统一架构
 
 ← 返回 [技术栈](../README.md)

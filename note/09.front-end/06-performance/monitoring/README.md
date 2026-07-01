@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/perf-monitoring
+  type: article
+  category: 主模块子文章
+  summary: 性能监控体系
+-->
+
 # 性能监控体系
 
 > 一句话定位：**RUM / APM / 报警 —— 把"快"做成可量化、可回归、可问责的工程目标**

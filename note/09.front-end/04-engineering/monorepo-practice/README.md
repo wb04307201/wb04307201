@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/monorepo-practice
+  type: article
+  category: 主模块子文章
+  summary: Monorepo 工程实践
+-->
+
 # Monorepo 工程实践
 
 > 一句话定位：**pnpm workspaces / Turborepo / Nx —— 多包协作的工程化实战**

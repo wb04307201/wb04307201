@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/lesson-14
+  type: article
+  category: 主模块子文章
+  summary: 第 14 课 认知债务
+-->
+
 # 第 14 课：AI 时代的认知债务与深度工作
 
 > **认知债务 × 脑疲劳 × 有意识使用** —— 效率上去了，思考下来了？重新审视你与 AI 的关系。

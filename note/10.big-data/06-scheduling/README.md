@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: big-data
+  slug: big-data/scheduling
+  type: article
+  category: 主模块子文章
+  summary: 调度系统
+-->
+
 # 06 调度
 
 > 一句话定位：**Airflow / DolphinScheduler / Azkaban——大数据任务编排系统**

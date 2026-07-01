@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring/service-registry
+  type: article
+  category: 主模块子文章
+  summary: 服务注册与发现
+-->
+
 # 服务注册与发现
 
 > 微服务实例如何注册、发现与心跳 — Eureka / Consul / Nacos / Zookeeper 对比

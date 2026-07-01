@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/k8s-network-mesh
+  type: article
+  category: 主模块子文章
+  summary: K8s 网络与 Service Mesh
+-->
+
 # K8s 网络与 Service Mesh：CNI / Calico / Istio 实战
 
 > 一份按层次梳理的 K8s 网络速查手册：从 Pod 网络到 Service Mesh 的完整图谱。

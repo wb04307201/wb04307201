@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/llm-basics
+  type: article
+  category: 主模块子文章
+  summary: 大语言模型基础
+-->
+
 # 大语言模型基础
 
 ## 引言：反直觉代码

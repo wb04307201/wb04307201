@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/java-agent-api
+  type: article
+  category: 主模块子文章
+  summary: 实战：统计 API 接口调用耗时
+-->
+
 # 实战：统计 API 接口调用耗时
 
 本文档演示如何从零构建一个可运行的 Java Agent，实现方法级别的耗时统计。

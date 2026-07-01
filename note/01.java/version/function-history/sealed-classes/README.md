@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/sealed-classes
+  type: article
+  category: 主模块子文章
+  summary: Sealed Classes
+-->
+
 # Sealed Classes
 
 ## 引言：变更说明

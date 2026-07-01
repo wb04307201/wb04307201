@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/case-duolingo-max
+  type: article
+  category: 主模块子文章
+  summary: Duolingo Max
+-->
+
 # Duolingo Max：把 GPT-4 变成"陪练角色"，让语言学习有真实的对话对象
 
 #教育 #客服 #办公 #Duolingo #GPT4 #语言学习

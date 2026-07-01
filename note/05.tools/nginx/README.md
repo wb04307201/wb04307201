@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/nginx
+  type: article
+  category: 主模块子文章
+  summary: Nginx
+-->
+
 # Nginx
 
 ## 引言：反直觉代码

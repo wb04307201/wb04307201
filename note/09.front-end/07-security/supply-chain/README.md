@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/supply-chain
+  type: article
+  category: 主模块子文章
+  summary: 依赖供应链安全
+-->
+
 # 依赖供应链安全
 
 > 一句话定位：**npm audit / Snyk / 锁文件 / 私有 Registry —— 守住"你没用到的代码"的攻击面**

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/case-jpmorgan-coin
+  type: article
+  category: 主模块子文章
+  summary: JPMorgan COiN
+-->
+
 # JPMorgan COiN：合同审查从 36 万小时到秒级，金融危机逼出来的"白领流水线"
 
 #金融 #办公 #法律 #编程

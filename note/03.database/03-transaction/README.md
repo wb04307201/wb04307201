@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: database
+  slug: database/transaction
+  type: article
+  category: 主模块子文章
+  summary: 事务与并发控制
+-->
+
 # 事务与并发控制
 
 > 事务是数据库操作的最小逻辑单元,保证一组操作要么全部成功要么全部失败;并发控制解决多个事务同时执行时的数据一致性问题,核心机制是 ACID + 锁 + MVCC。

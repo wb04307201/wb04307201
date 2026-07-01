@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/lesson-02
+  type: article
+  category: 主模块子文章
+  summary: 第 2 课 Agent Harness
+-->
+
 # 第 2 课：Agent Harness 与控制论
 
 > 从"写代码"到"驾驭智能体写代码"——理解 AI 时代工程师角色的根本性转变，掌握 Harness 工程的核心理念与控制论思想。

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/browser-rendering
+  type: article
+  category: 主模块子文章
+  summary: 浏览器渲染原理
+-->
+
 # 浏览器渲染原理
 
 > 一句话定位：**从 HTML 字节流到屏幕像素 —— 浏览器渲染流水线的 6 个阶段**

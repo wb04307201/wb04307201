@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring/mybatis-architecture
+  type: article
+  category: 主模块子文章
+  summary: MyBatis 架构与原理
+-->
+
 # 01 MyBatis 架构与原理
 
 ## 🎯 一句话定位

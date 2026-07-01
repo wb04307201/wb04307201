@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/lesson-05
+  type: article
+  category: 主模块子文章
+  summary: 第 5 课 Skill 编写
+-->
+
 # 第 5 课：Skill 编写与设计模式
 
 ⬅️ [返回课程总目录](../README.md)

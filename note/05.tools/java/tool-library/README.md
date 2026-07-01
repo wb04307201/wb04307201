@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/tool-library
+  type: article
+  category: 主模块子文章
+  summary: Hutool、Apache Commons、Guava工具库
+-->
+
 # Hutool、Apache Commons、Guava工具库
 
 ## 引言：反直觉代码

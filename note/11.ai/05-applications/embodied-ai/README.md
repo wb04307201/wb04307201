@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/embodied-ai
+  type: article
+  category: 主模块子文章
+  summary: 具身智能
+-->
+
 # 具身智能 (Embodied Intelligence)
 
 ← 返回 [行业应用](../README.md)

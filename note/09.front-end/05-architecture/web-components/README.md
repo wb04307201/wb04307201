@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/web-components
+  type: article
+  category: 主模块子文章
+  summary: Web Components
+-->
+
 # Web Components
 
 ## 引言：反直觉代码

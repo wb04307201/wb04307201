@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring/mybatis-extension
+  type: article
+  category: 主模块子文章
+  summary: MyBatis 扩展能力
+-->
+
 # 02 MyBatis 扩展能力
 
 > 最后更新: 2026-06-22

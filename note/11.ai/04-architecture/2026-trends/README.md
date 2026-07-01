@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/2026-trends
+  type: article
+  category: 主模块子文章
+  summary: 2026 AI 技术矩阵
+-->
+
 # 2026 AI技术矩阵
 
 ← 返回 [架构设计](../README.md)

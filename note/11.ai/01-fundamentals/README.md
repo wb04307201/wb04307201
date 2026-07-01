@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/fundamentals
+  type: article
+  category: 主模块子文章
+  summary: AI 基础概念
+-->
+
 # AI 基础概念
 
 > 人工智能的底层原理：从机器学习到神经网络，从稠密模型到混合专家。

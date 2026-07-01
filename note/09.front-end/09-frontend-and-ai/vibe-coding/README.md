@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/vibe-coding
+  type: article
+  category: 主模块子文章
+  summary: Vibe Coding
+-->
+
 # Vibe Coding：AI 时代的编程范式
 
 > 一句话定位：**用自然语言描述意图，AI 直接产出可运行代码 —— 2026 编程新范式**

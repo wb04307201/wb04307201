@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: database
+  slug: database/index
+  type: article
+  category: 主模块子文章
+  summary: 索引
+-->
+
 # 索引
 
 > 索引(Index)是数据库为了加快数据检索而维护的辅助数据结构,MySQL InnoDB 默认采用 B+ 树;合理使用索引是 SQL 优化中最核心的手段。

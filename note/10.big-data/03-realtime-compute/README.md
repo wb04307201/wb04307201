@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: big-data
+  slug: big-data/realtime-compute
+  type: article
+  category: 主模块子文章
+  summary: 实时计算
+-->
+
 # 03 实时计算
 
 > **Flink / Spark Streaming / Storm——毫秒-秒级延迟的流处理引擎**

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/java-25
+  type: article
+  category: 主模块子文章
+  summary: Java 25
+-->
+
 # Java 25
 
 ## 引言：变更说明

@@ -1,3 +1,14 @@
+<!--
+module:
+  parent: ai
+  slug: ai/langgraph-migration
+  type: article
+  category: 主模块子文章
+  summary: LangGraph 迁移
+-->
+
+# LangGraph 迁移：从 LangChain 到 LangGraph
+
 这是一个非常深刻且直击大模型应用开发痛点的问题。很多开发者在从旧版 Langchain 迁移到新版（v0.2/v0.3 及以后）时，都经历了这种“被砸招牌”的阵痛——官方几乎废弃了曾经引以为傲的 `Chain`（链）和 `AgentExecutor`（旧版智能体执行器），将核心编排引擎全面替换为 **LangGraph**。
 
 要理解官方为何要做出这种看似“自毁长城”的破坏性更新，我们需要先厘清两者的本质区别，再剖析旧版架构的“原罪”。

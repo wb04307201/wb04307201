@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/distillation-tools
+  type: article
+  category: 主模块子文章
+  summary: 模型蒸馏工具
+-->
+
 # 模型蒸馏工具：打通AI大模型“瘦身”落地的最后一公里
 
 如果说“模型蒸馏”是让庞大AI模型实现“瘦身”与能力传承的理论基石，那么**模型蒸馏工具（Model Distillation Tools）** 就是将这一理论转化为生产力的工程利器。

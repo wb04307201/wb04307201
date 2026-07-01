@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring/observability
+  type: article
+  category: 主模块子文章
+  summary: Spring 07 可观测性
+-->
+
 # 07 可观测性
 
 > 最后更新: 2026-06-14

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/design-system
+  type: article
+  category: 主模块子文章
+  summary: 设计系统
+-->
+
 # 设计系统
 
 > 一句话定位：**Token / 组件库 / 主题 / Storybook —— 让"设计"从灵感变成可复用的工程资产**

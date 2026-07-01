@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/docker-command
+  type: article
+  category: 主模块子文章
+  summary: Docker 命令
+-->
+
 # Docker 命令
 
 ## 1. 镜像（Image）相关命令

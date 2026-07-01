@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/java-15
+  type: article
+  category: 主模块子文章
+  summary: Java 15
+-->
+
 # Java 15
 
 ## 引言：变更说明

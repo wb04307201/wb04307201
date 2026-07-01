@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/lesson-12
+  type: article
+  category: 主模块子文章
+  summary: 第 12 课 Vibe Coding 安全
+-->
+
 # 第 12 课：Vibe Coding 与安全审计
 
 > 氛围编程（Vibe Coding）正在流行，但它真的是企业级开发的万能药吗？结合真实安全审计数据，看清 AI 编码的风险与边界。

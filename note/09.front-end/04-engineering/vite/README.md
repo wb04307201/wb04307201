@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/vite
+  type: article
+  category: 主模块子文章
+  summary: Vite 构建工具
+-->
+
 # Vite 构建工具
 
 > 一句话定位：**Vite —— 2026 年前端构建的事实标准，ESM 原生的极速体验**

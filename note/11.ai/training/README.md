@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/training
+  type: article
+  category: 主模块子文章
+  summary: AI Agent 培训课程目录
+-->
+
 # AI Agent 应用开发培训课程
 
 > 从概念到实战，系统掌握 AI Agent 开发全栈能力。  

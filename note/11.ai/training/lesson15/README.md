@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/lesson-15
+  type: article
+  category: 主模块子文章
+  summary: 第 15 课 AI 原生组织
+-->
+
 # 第 15 课：AI 原生组织——从工具到组织架构
 
 > **创始人手册 × 自进化公司 × 组织变革** —— AI 不只改变开发方式，更在重塑组织形态。

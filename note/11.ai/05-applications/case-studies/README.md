@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/case-studies
+  type: article
+  category: 主模块子文章
+  summary: AI 应用案例库
+-->
+
 # AI 应用案例库
 
 > 12 篇精选案例，覆盖 9 个行业，每篇聚焦一个"AI 重塑工作流"的标杆故事。

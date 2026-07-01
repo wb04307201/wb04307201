@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/queue
+  type: article
+  category: 主模块子文章
+  summary: 掌握 ConcurrentLinkedQueue 的无锁 CAS 算法和 BlockingQueue 体系的完整实现，理解各自底层原理与适用场景。
+-->
+
 # 并发队列
 
 > 目标：掌握 ConcurrentLinkedQueue 的无锁 CAS 算法和 BlockingQueue 体系的完整实现，理解各自底层原理与适用场景。

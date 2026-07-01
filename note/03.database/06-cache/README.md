@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: database
+  slug: database/cache
+  type: article
+  category: 主模块子文章
+  summary: 缓存
+-->
+
 # 缓存
 
 > 缓存是将热点数据存储在高速存储介质(通常是内存)中的技术,通过减少对后端数据库的直接访问来提升系统性能;其核心问题是三大经典问题(穿透/击穿/雪崩)与缓存-数据库一致性。

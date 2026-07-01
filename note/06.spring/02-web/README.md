@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring/web
+  type: article
+  category: 主模块子文章
+  summary: Spring 02 Web 层
+-->
+
 # 02 Web 层
 
 > 最后更新: 2026-06-14

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: database
+  slug: database/data-migration
+  type: article
+  category: 主模块子文章
+  summary: 数据迁移与同步
+-->
+
 # 数据迁移与同步
 
 > 数据迁移与同步是企业级数据库的核心工程能力,涵盖全量迁移、增量同步、异构同步三大场景;常用工具包括 DataX(离线全量)、Canal/Maxwell(基于 Binlog 增量)、Flink CDC(实时流式)。

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/architecture
+  type: article
+  category: 主模块子文章
+  summary: AI 架构设计
+-->
+
 # AI 架构设计
 
 ## 引言：架构困境

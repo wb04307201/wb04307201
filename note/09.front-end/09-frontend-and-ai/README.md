@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/ai
+  type: article
+  category: 主模块子文章
+  summary: 前端 09 前端与 AI
+-->
+
 # 09 前端与 AI
 
 > 一句话定位：**AI 时代前端工程师的工具升级与范式革新**

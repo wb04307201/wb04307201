@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/date-time
+  type: article
+  category: 主模块子文章
+  summary: Java Date-Time API 学习笔记
+-->
+
 # Java Date-Time API 学习笔记
 
 ## 一、Date 和 Calendar 的问题

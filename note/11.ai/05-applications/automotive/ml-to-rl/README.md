@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/automotive-ml-to-rl
+  type: article
+  category: 主模块子文章
+  summary: 监督学习 → 强化学习
+-->
+
 # 监督学习 → 强化学习
 
 ← 返回 [汽车行业](../README.md)

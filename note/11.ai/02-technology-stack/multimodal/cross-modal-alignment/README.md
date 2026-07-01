@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/cross-modal-alignment
+  type: article
+  category: 主模块子文章
+  summary: 跨模态特征对齐
+-->
+
 # 跨模态特征对齐
 
 ## 引言：反直觉代码

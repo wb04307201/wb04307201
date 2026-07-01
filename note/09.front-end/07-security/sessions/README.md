@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/sessions
+  type: article
+  category: 主模块子文章
+  summary: Cookies vs LocalStorage 会话管理
+-->
+
 # Cookies vs LocalStorage 用于会话管理：你需要知道的一切
 
 ## 引言：反直觉代码

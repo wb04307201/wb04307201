@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/intelligent-system-layers
+  type: article
+  category: 主模块子文章
+  summary: AI 技术栈分层架构
+-->
+
 # AI技术栈分层架构全景
 
 ← 返回 [架构设计](../README.md)

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/case-microsoft-copilot
+  type: article
+  category: 主模块子文章
+  summary: Microsoft 365 Copilot
+-->
+
 # Microsoft 365 Copilot：存量办公套件如何被 AI 改写为"协作者"
 
 #办公 #编程 #销售

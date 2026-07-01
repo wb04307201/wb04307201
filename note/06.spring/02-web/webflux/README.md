@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring/webflux
+  type: article
+  category: 主模块子文章
+  summary: Spring WebFlux 概览
+-->
+
 # Spring WebFlux 概览
 
 > 最后更新: 2026-06-14

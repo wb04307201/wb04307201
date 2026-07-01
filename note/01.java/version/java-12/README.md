@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/java-12
+  type: article
+  category: 主模块子文章
+  summary: Java 12
+-->
+
 # Java 12
 
 ## 引言：变更说明

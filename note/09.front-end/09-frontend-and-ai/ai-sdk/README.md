@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/ai-sdk
+  type: article
+  category: 主模块子文章
+  summary: AI SDK 集成
+-->
+
 # AI SDK 集成
 
 > 一句话定位：**Vercel AI SDK / Anthropic SDK / OpenAI SDK —— 前端集成大模型的事实标准**

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring/integration
+  type: article
+  category: 主模块子文章
+  summary: Spring 06 集成组件
+-->
+
 # 06 集成组件
 
 > 最后更新: 2026-06-14

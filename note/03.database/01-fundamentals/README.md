@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: database
+  slug: database/fundamentals
+  type: article
+  category: 主模块子文章
+  summary: 数据库基础知识
+-->
+
 # 数据库基础知识
 
 > 数据库基础知识涵盖核心概念、关系模型、ER 图、范式与设计步骤,是后续 SQL、事务、索引、MySQL 等高级主题的基石。

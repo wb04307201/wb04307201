@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/behavioral-patterns
+  type: article
+  category: 主模块子文章
+  summary: 行为型模式
+-->
+
 # 行为型模式
 
 > 关注对象之间的职责分配与通信方式，让对象间的交互更加灵活和可维护。

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/architecture
+  type: article
+  category: 主模块子文章
+  summary: 前端 05 架构
+-->
+
 # 05 架构
 
 > 一句话定位：**前端架构——把"应用"拆成"模块"，把"模块"拆成"组件"，并组织它们之间的协作**

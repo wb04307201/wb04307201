@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: big-data
+  slug: big-data/iceberg-vs-delta-vs-hudi
+  type: article
+  category: 主模块子文章
+  summary: Iceberg vs Delta Lake vs Hudi
+-->
+
 # Iceberg vs Delta Lake vs Apache Hudi：数据湖三剑客深度对比
 
 > 一份按场景梳理的数据湖格式速查手册：从架构原理到生产选型的完整对比。

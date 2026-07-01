@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/synchronized
+  type: article
+  category: 主模块子文章
+  summary: synchronized 学习笔记
+-->
+
 ## 一、synchronized 的三种用法
 
 `synchronized` 是 Java 语言内置的互斥锁机制，由 JVM 在字节码层面通过 `monitorenter` / `monitorexit` 指令实现，保证同一时刻只有一个线程可以执行被保护的代码。

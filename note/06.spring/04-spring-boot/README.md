@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring/boot
+  type: article
+  category: 主模块子文章
+  summary: Spring Boot
+-->
+
 # 04 Spring Boot
 
 > 最后更新: 2026-06-14

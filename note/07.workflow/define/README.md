@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: workflow
+  slug: workflow/define
+  type: article
+  category: 主模块子文章
+  summary: 工作流定义
+-->
+
 # 工作流定义
 
 > 最后更新: 2026-06-14

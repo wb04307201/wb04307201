@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/variable
+  type: article
+  category: 主模块子文章
+  summary: 变量
+-->
+
 # 变量
 
 ## 引言：基础概念

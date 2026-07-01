@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/dense-vs-moe
+  type: article
+  category: 主模块子文章
+  summary: 稠密模型 vs MoE
+-->
+
 # 稠密模型 vs MoE
 
 ← 返回 [基础概念](../README.md)

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: big-data
+  slug: big-data/clickhouse-vs-doris-vs-starrocks
+  type: article
+  category: 主模块子文章
+  summary: ClickHouse vs Doris vs StarRocks
+-->
+
 # ClickHouse vs Apache Doris vs StarRocks：实时 OLAP 三剑客深度对比
 
 > 一份按场景梳理的 OLAP 引擎速查手册：从架构原理到生产选型的完整对比。

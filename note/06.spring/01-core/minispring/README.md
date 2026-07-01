@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring/minispring
+  type: article
+  category: 主模块子文章
+  summary: 手写 Mini Spring
+-->
+
 # 手写 Mini Spring
 
 > 通过 200 行 Servlet 模拟 Spring IoC + MVC，理解框架底层运作机制

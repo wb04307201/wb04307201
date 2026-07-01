@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/java-21
+  type: article
+  category: 主模块子文章
+  summary: Java 21
+-->
+
 # Java 21
 
 ## 引言：变更说明

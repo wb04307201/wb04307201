@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/multi-modal-interaction
+  type: article
+  category: 主模块子文章
+  summary: 多模态交互体验优化
+-->
+
 # 多模态交互体验优化
 
 ← 返回 [多模态](../README.md)

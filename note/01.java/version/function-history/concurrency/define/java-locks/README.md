@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/java-locks
+  type: article
+  category: 主模块子文章
+  summary: Java 锁机制详解
+-->
+
 # Java 锁机制详解
 
 > 全面梳理 synchronized、ReentrantLock、ReentrantReadWriteLock、StampedLock 的原理与实践

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/lesson-08
+  type: article
+  category: 主模块子文章
+  summary: 第 8 课 Agent 设计模式
+-->
+
 # 第 8 课：Agent 设计模式与架构
 
 ⬅️ [返回课程总目录](../README.md)

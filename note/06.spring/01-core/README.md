@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring/core
+  type: article
+  category: 主模块子文章
+  summary: Spring 01 核心容器
+-->
+
 # 01 核心容器
 
 > 最后更新: 2026-06-14

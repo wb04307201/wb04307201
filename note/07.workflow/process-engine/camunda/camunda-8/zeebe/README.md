@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: workflow
+  slug: workflow/zeebe
+  type: article
+  category: 主模块子文章
+  summary: Zeebe
+-->
+
 # Zeebe
 
 > 最后更新: 2026-06-14

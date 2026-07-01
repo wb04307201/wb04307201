@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/cicd-vs-gitops
+  type: article
+  category: 主模块子文章
+  summary: CI/CD vs GitOps
+-->
+
 # CI/CD vs GitOps：理念差异与协同模式
 
 > 一份按理念梳理的 DevOps 范式速查手册：从 CI/CD 到 GitOps 的演进路径与最佳组合。

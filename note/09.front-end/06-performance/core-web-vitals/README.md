@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/core-web-vitals
+  type: article
+  category: 主模块子文章
+  summary: Core Web Vitals 优化
+-->
+
 # Core Web Vitals 优化
 
 > 一句话定位：**LCP / INP / CLS —— Google 的三大核心指标，决定 SEO 排名与用户体验**

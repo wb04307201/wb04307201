@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/xss
+  type: article
+  category: 主模块子文章
+  summary: XSS 攻击与防御
+-->
+
 # XSS（跨站脚本攻击）
 
 > 一句话定位：**XSS —— 让攻击者的代码"跑在别人的浏览器里"**

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: workflow
+  slug: workflow/process-engine
+  type: article
+  category: 主模块子文章
+  summary: 流程引擎
+-->
+
 # 流程引擎
 
 > 最后更新: 2026-06-14

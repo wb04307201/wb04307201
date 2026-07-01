@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: workflow
+  slug: workflow/microservice-orchestration
+  type: article
+  category: 主模块子文章
+  summary: 工作流引擎与微服务编排
+-->
+
 # 工作流引擎与微服务编排
 
 > 最后更新: 2026-06-14

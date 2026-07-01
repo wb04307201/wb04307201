@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: big-data
+  slug: big-data/hadoop
+  type: article
+  category: 主模块子文章
+  summary: Hadoop 生态
+-->
+
 # 02 Hadoop 生态
 
 > 一句话定位：**Hadoop 三件套（HDFS/YARN/MapReduce）+ 上层引擎（Hive/Presto）——离线数仓基石**

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/rumination-models
+  type: article
+  category: 主模块子文章
+  summary: 沉思模型
+-->
+
 # 沉思模型 (Rumination)
 
 ← 返回 [前沿研究](../README.md)

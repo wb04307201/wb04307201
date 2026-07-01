@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/applications
+  type: article
+  category: 主模块子文章
+  summary: AI 行业应用
+-->
+
 # AI 行业应用
 
 ← 返回 [总览](../README.md)

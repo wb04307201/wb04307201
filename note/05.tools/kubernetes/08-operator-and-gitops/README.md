@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/k8s-operator-gitops
+  type: article
+  category: 主模块子文章
+  summary: K8s Operator 与 GitOps
+-->
+
 # K8s Operator 与 GitOps：云原生的终极自动化
 
 > 一份按层次梳理的 K8s 高级运维速查手册：从自定义资源到声明式部署的完整实战。

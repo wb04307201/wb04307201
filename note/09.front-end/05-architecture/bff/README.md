@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/bff
+  type: article
+  category: 主模块子文章
+  summary: BFF (Backend For Frontend) 模式
+-->
+
 # 架构演进：深入理解 BFF (Backend For Frontend) 模式
 
 在微服务架构盛行的今天，前端与后端的协作往往面临着诸多痛点：接口不匹配、数据冗余、多端适配困难，以及我们上一篇讨论的**会话 Token 存储的安全隐患**。

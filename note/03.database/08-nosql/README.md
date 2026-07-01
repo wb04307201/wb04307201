@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: database
+  slug: database/nosql
+  type: article
+  category: 主模块子文章
+  summary: NoSQL 数据库
+-->
+
 # NoSQL 数据库
 
 > NoSQL(Not Only SQL)泛指非关系型数据库,涵盖键值、文档、列存储、图、搜索 5 大类型,天生支持分布式扩展,适用于大规模数据存储和高并发场景;但普遍以最终一致性换取扩展性。

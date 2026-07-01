@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: tools
+  slug: tools/pipeline-patterns
+  type: article
+  category: 主模块子文章
+  summary: CI/CD 流水线设计模式
+-->
+
 # CI/CD 流水线设计模式：分支策略与多环境管理
 
 > 一份按层次梳理的流水线设计速查手册：从分支策略到多环境管理的最佳实践。

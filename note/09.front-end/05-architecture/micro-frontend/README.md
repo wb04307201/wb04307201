@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: front-end
+  slug: front-end/micro-frontend
+  type: article
+  category: 主模块子文章
+  summary: 微前端
+-->
+
 # 微前端
 
 ## 引言：反直觉代码

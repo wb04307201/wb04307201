@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: ai
+  slug: ai/case-glean
+  type: article
+  category: 主模块子文章
+  summary: Glean 企业搜索
+-->
+
 # Glean：把企业散落的 Slack/邮件/工单/Notion 装进同一个 RAG
 
 #办公 #编程 #金融 #Glean #RAG
