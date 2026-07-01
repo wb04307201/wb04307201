@@ -72,3 +72,26 @@ graph TD
 - 平行：[`03-high-availability`](../03-high-availability/README.md) — 高可用（安全与可用的平衡）
 - 前端安全：[`09.front-end/07-security`](../../09.front-end/07-security/README.md) — XSS/CSRF/CSP 前端安全
 - 面试：[`13.split-hairs/04.system-design`](../../13.split-hairs/04.system-design/README.md) — 系统设计面试题
+
+---
+
+## 📊 本节统计
+
+| 子目录 | leaf 主题数 | 备注 |
+|:-------|:-----------:|:-----|
+| `05-security/`（本文） | 7 | JWT · OAuth2/OIDC · 访问控制 · API · OWASP · 加密 · 密钥管理 |
+| ├─ `access-control/` | 3 | 6 大权限模型 · DAC/MAC · RBAC/ABAC · ReBAC |
+| ├─ `api-security/` | 1 | 签名 · 防重放 · 脱敏 · 限流 |
+| ├─ `owasp-top10/` | 1 | 2021 版 10 大风险 |
+| ├─ `encryption/` | 1 | 对称/非对称/哈希/TLS/KMS |
+| └─ `secrets-management/` | 1 | Vault / KMS / 轮换 / 12-Factor |
+| **README 覆盖** | 12 depth-2 leaf + 1 顶层 = **13** | 100% frontmatter |
+| **leaf .md** | 6 | access-control 下的 dac/mac/abac/rbac/rebac/hybrid |
+| **聚合主题数** | 7（见上方模块导航） | 含 access-control 6 大子模型 |
+
+> 数字基线：以子目录 leaf README 数 + 顶层章节主题数统计；最后更新 2026-07-02。
+> ⚠️ 06/07/08 三个空目录为历史遗留（03-encryption / 04-jwt-oauth2 / 05-devsecops），未计入统计。
+
+---
+
+← [返回 04.system-design 主模块](../README.md)

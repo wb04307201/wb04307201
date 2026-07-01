@@ -73,3 +73,27 @@ graph TD
 - 平行：[`03-high-availability`](../03-high-availability/README.md) — 高可用（性能与可用性的权衡）
 - 工具：[`05.tools`](../../05.tools/README.md) — Nginx 负载均衡配置
 - 面试：[`13.split-hairs/04.system-design`](../../13.split-hairs/04.system-design/README.md) — 系统设计面试题
+
+---
+
+## 📊 本节统计
+
+| 子目录 | leaf 主题数 | 备注 |
+|:-------|:-----------:|:-----|
+| `04-high-performance/`（本文） | 11 | 负载均衡 · CDN · SQL · 读写分离 · 分库分表 · 冷热 · 缓存 · MQ · JVM · 连接池 · 序列化 |
+| ├─ `load-balance/` | 1 | L4/L7 · 轮询/哈希/最少连接 |
+| ├─ `cdn/` | 1 | 静态资源分发 · 边缘计算 |
+| ├─ `database-optimization/` | 4 | SQL · 读写分离 · 分库分表 · 冷热分离 |
+| ├─ `cache-patterns/` | 1 | Cache-Aside / Read-Through / Write-Behind |
+| ├─ `mq/` | 1 | Kafka / RocketMQ / Pulsar |
+| ├─ `java/` | 1 | JVM 调优 · 代码级优化 |
+| ├─ `connection-pool/` | 1 | HikariCP 参数调优 |
+| └─ `serialization/` | 1 | Protobuf / Kryo / Hessian |
+| **README 覆盖** | 13 depth-2 leaf + 1 顶层 = **14** | 100% frontmatter |
+| **聚合主题数** | 11（见上方模块导航） | 全部聚合在本章及子 README |
+
+> 数字基线：以子目录 leaf README 数 + 顶层章节主题数统计；最后更新 2026-07-02。
+
+---
+
+← [返回 04.system-design 主模块](../README.md)

@@ -78,3 +78,22 @@ graph LR
 - [分布式篇](../02-distributed/README.md) — 在多节点环境下解决一致性、调度与通信问题
 - [高可用篇](../03-high-availability/README.md) — 通过冗余、限流、灾备保证系统持续可用
 - [高性能篇](../04-high-performance/README.md) — 通过缓存、数据库优化、消息队列提升吞吐与响应速度
+
+---
+
+## 📊 本节统计
+
+| 子目录 | leaf 主题数 | 备注 |
+|:-------|:-----------:|:-----|
+| `01-foundation/`（本文） | 18 | 软件工程 · OOD · DDD · TOGAF · ArchiMate · IT4IT |
+| ├─ `software-engineering/` | 4 | 开发流程 · 质量保障 · 工具模型 |
+| ├─ `system-design-basics/` | 11 | OOD · DDD · TOGAF · ArchiMate · IT4IT · 模式 · 微服务 |
+| └─ `technical-debt/` | 1 | 技术债识别与偿还 |
+| **README 覆盖** | 32 个 depth-2 leaf + 1 顶层 = **33** | 100% frontmatter |
+| **聚合主题数** | 18（见上方学习路径列表） | 全部聚合在本章及子 README |
+
+> 数字基线：本节以 README 数量 + 学习路径主题数双口径统计；最后更新 2026-07-02。
+
+---
+
+← [返回 04.system-design 主模块](../README.md)

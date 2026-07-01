@@ -128,3 +128,25 @@ module:
 - [Stripe API - Idempotent Requests](https://stripe.com/docs/api/idempotent_requests)
 - [IETF Draft - The Idempotency-Key HTTP Header Field](https://datatracker.ietf.org/doc/draft-ietf-httpapi-idempotency-key-header/)
 - [Microsoft Azure - Idempotency patterns](https://learn.microsoft.com/azure/architecture/microservices/design/idempency)
+
+
+---
+
+## 📊 本节统计
+
+| 子目录 | leaf 主题数 | 备注 |
+|:-------|:-----------:|:-----|
+| `06-idempotency/`（本文） | 5 | 幂等键 · 乐观锁 · 状态机 · 去重表 · 与分布式事务的关系 |
+| ├─ `idempotency-key/` | 1 | 客户端唯一 Key · 服务端去重 |
+| ├─ `optimistic-lock/` | 1 | 版本号控制并发更新 |
+| ├─ `state-machine/` | 1 | 状态机限制合法转移 |
+| ├─ `deduplication-table/` | 1 | 已处理 ID 表 |
+| └─ `vs-distributed-transaction/` | 1 | 幂等与事务的关系 |
+| **README 覆盖** | 5 depth-2 leaf + 1 顶层 = **6** | 100% frontmatter |
+| **聚合主题数** | 5（五大策略） | 全部聚合在本章及子 README |
+
+> 数字基线：以子目录 leaf README 数 + 顶层章节主题数统计；最后更新 2026-07-02。
+
+---
+
+← [返回 04.system-design 主模块](../README.md)

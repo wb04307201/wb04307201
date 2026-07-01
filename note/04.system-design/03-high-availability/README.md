@@ -68,3 +68,28 @@ graph TD
 - 平行：[`04-high-performance`](../04-high-performance/README.md) — 高性能（限流与性能的交叉）
 - 工具：[`06.spring/05-spring-cloud`](../../06.spring/05-spring-cloud/README.md) — Spring Cloud 熔断/重试实现
 - 面试：[`13.split-hairs/04.system-design`](../../13.split-hairs/04.system-design/README.md) — 系统设计面试题
+
+---
+
+## 📊 本节统计
+
+| 子目录 | leaf 主题数 | 备注 |
+|:-------|:-----------:|:-----|
+| `03-high-availability/`（本文） | 9 | 限流 · 熔断 · 重试 · 超时 · 降级 · 冗余 · 弹性 · 混沌 · 代码质量 |
+| ├─ `rate-limiting/` | 1 | 固定窗口/滑动窗口/漏桶/令牌桶 |
+| ├─ `circuit-break/` | 1 | 三态状态机 |
+| ├─ `retry/` | 1 | 重试策略与退避 |
+| ├─ `timeout/` | 1 | 超时与级联超时 |
+| ├─ `service-degradation/` | 1 | 降级策略与降级开关 |
+| ├─ `redundancy-design/` | 3 | 冗余 · 集群 · 多活 |
+| ├─ `elastic-architecture/` | 1 | 自动扩缩容 |
+| ├─ `chaos-engineering/` | 1 | Chaos Mesh / 故障注入 |
+| └─ `code-quality/` | 2 | 2 行/8 行原则 |
+| **README 覆盖** | 12 depth-2 leaf + 1 顶层 = **13** | 100% frontmatter |
+| **聚合主题数** | 9（见上方模块导航） | 全部聚合在本章及子 README |
+
+> 数字基线：以子目录 leaf README 数 + 顶层章节主题数统计；最后更新 2026-07-02。
+
+---
+
+← [返回 04.system-design 主模块](../README.md)

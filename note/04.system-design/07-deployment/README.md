@@ -73,3 +73,23 @@ graph TD
 - 平行：[`04-high-performance`](../04-high-performance/README.md) — 高性能（容量规划与性能的交叉）
 - 工具：[`06.spring/07-observability`](../../06.spring/07-observability/README.md) — Spring Boot 可观测性实现
 - 工具：[`05.tools`](../../05.tools/README.md) — Docker / Nginx 部署工具
+
+---
+
+## 📊 本节统计
+
+| 子目录 | leaf 主题数 | 备注 |
+|:-------|:-----------:|:-----|
+| `07-deployment/`（本文） | 3 | 部署架构 · 可观测性 · 容量规划 |
+| ├─ `deploy/` | 1 | 单机 → K8s → Serverless；蓝绿/金丝雀/滚动/A-B/灰度/影子 |
+| ├─ `observability/` | 1 | Metrics + Logs + Traces + SLO/SLI/Error Budget |
+| └─ `capacity-planning/` | 1 | 压测方法论 · 容量估算 · 弹性伸缩 |
+| **README 覆盖** | 3 depth-2 leaf + 1 顶层 = **4** | 100% frontmatter |
+| **聚合主题数** | 3（见上方模块导航） | 全部聚合在本章及子 README |
+
+> 数字基线：以子目录 leaf README 数 + 顶层章节主题数统计；最后更新 2026-07-02。
+> 📌 深度可观测性栈另见 [08 可观测性](../08-observability/README.md)（Prometheus / Grafana / Loki 工具链）。
+
+---
+
+← [返回 04.system-design 主模块](../README.md)
