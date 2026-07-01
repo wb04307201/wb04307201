@@ -2,31 +2,32 @@
 module:
   parent: database
   slug: database/sql
-  type: article
+  type: index
   category: 主模块子文章
-  summary: SQL
+  summary: SQL 涵盖分类、语法、执行顺序、慢查询分析与 EXPLAIN，并补充 CTE 与窗口函数等 MySQL 8.0+ 高级特性。
 -->
 
 # SQL
 
 > SQL(Structured Query Language)是用于管理关系型数据库的标准语言,本文涵盖 SQL 分类、核心语法、执行顺序与慢查询分析与优化。
 
-> 最后更新: 2026-06-09
-
-## 目录
-
-- [一、SQL 分类](#一sql-分类)
-- [二、核心语法](#二核心语法)
-- [三、SQL 执行顺序](#三sql-执行顺序)
-- [四、慢查询分析与优化](#四慢查询分析与优化)
-- [五、SQL 最佳实践](#五sql-最佳实践)
+> 最后更新: 2026-07-01
 
 ---
-## 引言：反直觉代码
 
-SQL 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
+## 📚 核心内容
 
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
+| 主题 | 内容 | 关键点 |
+|------|------|--------|
+| 一、SQL 分类 | DDL / DML / DQL / DCL / TCL | 5 大分类关键字速查 |
+| 二、核心语法 | SELECT / INSERT / UPDATE / DELETE / JOIN / 子查询 | 写法与注意事项 |
+| 三、SQL 执行顺序 | 书写顺序 vs 执行顺序对比 | WHERE/HAVING 区别 |
+| 四、慢查询分析与优化 | 慢查询日志 + EXPLAIN + 优化手段 | 索引相关 + SQL 写法优化 |
+| 五、SQL 最佳实践 | 8 条建议 | 禁 SELECT *、预编译、避免大事务 |
+| 六、CTE(公用表表达式) | WITH 语法 + 递归 CTE | MySQL 8.0+ 替代嵌套子查询 |
+| 七、窗口函数 | ROW_NUMBER / RANK / LAG / LEAD | Top N / 同比 / 累计求和 |
+| 八、JOIN 算法 | NLJ / Hash Join / Sort Merge | MySQL 8.0.18+ 支持 Hash Join |
+| 九、EXPLAIN ANALYZE | 真实执行统计 | actual time / rows / loops |
 
 ---
 
@@ -452,16 +453,31 @@ SELECT * FROM users WHERE age > 20 ORDER BY create_time DESC LIMIT 10;
 
 ---
 
-## 相关章节
+## 🔗 相关章节
 
 - [数据库基础知识](../01-fundamentals/README.md) — 核心概念、ER 图、范式
 - [事务与并发控制](../03-transaction/README.md) — 合理使用事务的原则
 - [索引](../04-index/README.md) — 索引是 SQL 优化核心
 - [MySQL](../05-mysql/README.md) — MySQL EXPLAIN 深入解读
 
-## 参考资料
+---
+
+## 📊 本节统计
+
+- **leaf README 数**：1（本文即为分类 leaf，单 README 长文聚合 9 主题）
+- **本节主题数**：9（SQL 分类、核心语法、执行顺序、慢查询分析、最佳实践、CTE、窗口函数、JOIN 算法、EXPLAIN ANALYZE）
+- **frontmatter 状态**：✅ 已对齐 CONTRIBUTING §12 标准（summary ≤ 80 字 / type=index）
+- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README；最后更新 2026-07-01
+
+---
+
+## 📖 参考资料
 
 - [MySQL 8.0 SQL Statement Syntax](https://dev.mysql.com/doc/refman/8.0/en/sql-statements.html)
 - [PostgreSQL Documentation - SQL Commands](https://www.postgresql.org/docs/current/sql-commands.html)
 - [Use The Index, Luke! - SQL Performance eBook](https://use-the-index-luke.com/)
 - [SQL Window Functions Tutorial](https://www.postgresql.org/docs/current/tutorial-window.html)
+
+---
+
+← [返回 03.database 主模块](../README.md)

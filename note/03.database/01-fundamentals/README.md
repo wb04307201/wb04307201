@@ -2,23 +2,37 @@
 module:
   parent: database
   slug: database/fundamentals
-  type: article
+  type: index
   category: 主模块子文章
-  summary: 数据库基础知识
+  summary: 数据库基础概念、ER 图、范式与设计步骤、数据类型与字符集，是后续 SQL、事务、索引、MySQL 等高级主题的基石。
 -->
 
 # 数据库基础知识
 
 > 数据库基础知识涵盖核心概念、关系模型、ER 图、范式与设计步骤,是后续 SQL、事务、索引、MySQL 等高级主题的基石。
 
-> 最后更新: 2026-06-09
+> 最后更新: 2026-07-01
 
 ---
-## 引言：反直觉代码
 
-数据库基础知识 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
+## 📚 核心内容
 
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
+| 主题 | 内容 | 关键点 |
+|------|------|--------|
+| 一、核心概念 | DB / DBMS / DBS / DBA 四元组 | 区分数据库与数据库管理系统 |
+| 二、关系模型基础 | 元组、属性、码（超码/候选码/主码/外码） | 主键 vs 外键的对比 |
+| 三、ER 图 | 实体矩形 / 属性椭圆 / 联系菱形 / 1:1/1:N/M:N | 概念结构设计的标准工具 |
+| 四、数据库范式 | 1NF / 2NF / 3NF / BCNF / 4NF / 5NF | 减少数据冗余、消除异常 |
+| 五、数据库设计步骤 | 需求分析 → 概念设计 → 逻辑设计 → 物理设计 → 实施 → 运维 | 6 阶段闭环 |
+| 六、常用操作对比 | DROP / TRUNCATE / DELETE 的速度与可回滚性 | DROP > TRUNCATE > DELETE |
+| 七、数据库索引概览 | B+ 树 / Hash / 全文索引 | 详见 [04-index](../04-index/README.md) |
+| 八、DBMS 分类 | RDBMS / 文档 / 键值 / 列存储 / 图 / 时序 | 6 大类型与代表产品 |
+| 九、数据类型(MySQL) | 整数 / 字符串 / 时间 / 数值精度 | 阿里规约：BIGINT 主键、DECIMAL 金额、DATETIME 时间 |
+| 十、字符集与排序规则 | latin1 / utf8 / utf8mb4 / collation | 必须用 utf8mb4 支持 emoji |
+| 十一、三大完整性约束 | 实体 / 参照 / 用户定义 | 主键 + 外键 + CHECK 约束 |
+| 十二、主键策略对比 | 自增 INT / UUID / 雪花 / Redis INCR | 分布式推荐雪花算法 |
+| 十三、反规范化实战 | 订单查询性能优化案例 | 先按 3NF 设计，再针对性反规范化 |
+| 十四、高阶范式 | BCNF / 4NF / 5NF | 工程上 3NF 已足够 |
 
 ---
 
@@ -344,7 +358,7 @@ SELECT id, name, 100 FROM users WHERE id = 100;
 
 ---
 
-## 相关章节
+## 🔗 相关章节
 
 - [SQL](../02-sql/README.md) — SQL 语法、执行顺序、慢查询优化
 - [事务与并发控制](../03-transaction/README.md) — ACID、隔离级别、MVCC
@@ -355,9 +369,24 @@ SELECT id, name, 100 FROM users WHERE id = 100;
 - [NoSQL](../08-nosql/README.md) — 文档型、列存储、图数据库
 - [数据库连接池](../09-connection-pool/README.md) — HikariCP、Druid
 
-## 参考资料
+---
+
+## 📊 本节统计
+
+- **leaf README 数**：1（本文即为分类 leaf，单 README 长文聚合 14 主题）
+- **本节主题数**：14（核心概念、关系模型、ER、范式、设计步骤、操作对比、索引概览、DBMS 分类、数据类型、字符集、完整性、主键策略、反规范化、高阶范式）
+- **frontmatter 状态**：✅ 已对齐 CONTRIBUTING §12 标准（summary ≤ 80 字 / type=index）
+- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README；最后更新 2026-07-01
+
+---
+
+## 📖 参考资料
 
 - [MySQL 8.0 Reference Manual - Data Types](https://dev.mysql.com/doc/refman/8.0/en/data-types.html)
 - [Database Normalization - Wikipedia](https://en.wikipedia.org/wiki/Database_normalization)
 - [Entity–Relationship Model - Wikipedia](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model)
 - [Edgar F. Codd. 1970. A Relational Model of Data for Large Shared Data Banks](https://www.seas.upenn.edu/~zives/03f/cis550/codd.pdf)
+
+---
+
+← [返回 03.database 主模块](../README.md)

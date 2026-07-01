@@ -2,33 +2,36 @@
 module:
   parent: database
   slug: database/redis
-  type: article
+  type: index
   category: 主模块子文章
-  summary: Redis
+  summary: Redis 是基于内存的高性能键值数据库,支持丰富数据结构、RDB+AOF 持久化、Cluster 集群、淘汰策略与 Lua/事务能力,广泛用于缓存与分布式锁。
 -->
 
 # Redis
 
 > Redis(REmote DIctionary Server)是基于内存的键值数据库,支持丰富的数据结构,凭借 RDB+AOF 持久化、Cluster 集群、灵活的淘汰策略和 Lua/事务能力,广泛用作缓存、消息队列和实时数据存储。
 
-> 最后更新: 2026-06-09
-
-## 目录
-
-- [一、Redis 为什么快](#一redis-为什么快)
-- [二、数据类型与应用场景](#二数据类型与应用场景)
-- [三、持久化机制](#三持久化机制)
-- [四、集群与高可用](#四集群与高可用)
-- [五、内存管理](#五内存管理)
-- [六、Redis vs Memcached](#六redis-vs-memcached)
-- [七、缓存选型对比](#七缓存选型对比)
+> 最后更新: 2026-07-01
 
 ---
-## 引言：反直觉代码
 
-Redis 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
+## 📚 核心内容
 
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
+| 主题 | 内容 | 关键点 |
+|------|------|--------|
+| 一、Redis 为什么快 | 内存 + 单线程 + IO 多路复用 + 高效数据结构 | 6.0+ 网络 IO 多线程 |
+| 二、数据类型与应用场景 | String / Hash / List / Set / ZSet + 4 特殊类型 | 5+4 类型典型场景 |
+| 三、持久化机制 | RDB / AOF / 混合持久化 | 推荐 AOF everysec + 混合 |
+| 四、集群与高可用 | 主从 / 哨兵 / Cluster | Cluster 16384 slot |
+| 五、内存管理 | 8 种淘汰策略 + 大 Key / 热 Key | 默认 allkeys-lru |
+| 六、Redis vs Memcached | 数据结构 / 持久化 / 集群 / 线程模型 | Redis 功能更丰富 |
+| 七、缓存选型对比 | Caffeine / Ehcache / Redis / Memcached / Dragonfly | 单机选 Caffeine,分布式选 Redis |
+| 八、Redis 底层数据结构 | SDS / ziplist / skiplist / quicklist | 7.0 起 List 统一 quicklist |
+| 九、Redis 分布式锁 | SETNX + Redisson + RedLock | 单实例 + Redisson 是 90% 场景推荐 |
+| 十、Pipeline / 事务 / Lua | 批量 / 原子 / 强表达力 | Lua 单线程执行,最强原子性 |
+| 十一、Redis 客户端对比 | Jedis / Lettuce / Redisson | Spring Boot 2.x+ 默认 Lettuce |
+| 十二、Redis 监控指标 | INFO / 慢查询 / 内存碎片率 / Prometheus | 命中率 > 0.9 健康基线 |
+| 十三、Redis 7.0 新特性 | Function / Sharded Pub/Sub / Multi-Part AOF / ACL v2 | 集群模式增强 |
 
 ---
 
@@ -507,7 +510,7 @@ Grafana 官方提供 Redis 仪表盘,关键告警指标:
 
 ---
 
-## 相关章节
+## 🔗 相关章节
 
 - [数据库基础知识](../01-fundamentals/README.md) — 数据库核心概念
 - [MySQL](../05-mysql/README.md) — MySQL 主从复制与 Redis 集群对比
@@ -515,10 +518,25 @@ Grafana 官方提供 Redis 仪表盘,关键告警指标:
 - [NoSQL](../08-nosql/README.md) — Redis 是 NoSQL 键值存储代表
 - [系统设计 · 分布式锁](../../04.system-design/02-distributed/distributed-lock/README.md) — Redis 分布式锁深入
 
-## 参考资料
+---
+
+## 📊 本节统计
+
+- **leaf README 数**：1（本文即为分类 leaf，单 README 长文聚合 13 主题）
+- **本节主题数**：13（为什么快、数据类型、持久化、集群、内存管理、vs Memcached、缓存选型、底层数据结构、分布式锁、Pipeline/事务/Lua、客户端对比、监控、7.0 新特性）
+- **frontmatter 状态**：✅ 已对齐 CONTRIBUTING §12 标准（summary ≤ 80 字 / type=index）
+- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README；最后更新 2026-07-01
+
+---
+
+## 📖 参考资料
 
 - [Redis Official Documentation](https://redis.io/docs/)
 - [Redis 7.0 Release Notes](https://github.com/redis/redis/releases/tag/7.0.0)
 - [《Redis 设计与实现》黄健宏](http://redisbook.com/) — 国内最经典 Redis 源码解析
 - [Redis 6.0 Multi-Thread I/O](https://redis.io/docs/manual/client-side-caching/) — 官方 I/O 多线程说明
 - [Antirez (Salvatore Sanfilippo) Blog](http://antirez.com/) — Redis 作者博客
+
+---
+
+← [返回 03.database 主模块](../README.md)

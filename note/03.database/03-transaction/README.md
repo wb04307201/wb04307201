@@ -2,32 +2,33 @@
 module:
   parent: database
   slug: database/transaction
-  type: article
+  type: index
   category: 主模块子文章
-  summary: 事务与并发控制
+  summary: 事务与并发控制解决多事务同时执行的数据一致性问题,核心机制是 ACID、锁机制、MVCC 与 Spring 事务传播。
 -->
 
 # 事务与并发控制
 
 > 事务是数据库操作的最小逻辑单元,保证一组操作要么全部成功要么全部失败;并发控制解决多个事务同时执行时的数据一致性问题,核心机制是 ACID + 锁 + MVCC。
 
-> 最后更新: 2026-06-09
-
-## 目录
-
-- [一、ACID 特性](#一acid-特性)
-- [二、并发问题](#二并发问题)
-- [三、事务隔离级别](#三事务隔离级别)
-- [四、锁机制](#四锁机制)
-- [五、MVCC(多版本并发控制)](#五mvcc多版本并发控制)
-- [六、锁兼容矩阵](#六锁兼容矩阵)
+> 最后更新: 2026-07-01
 
 ---
-## 引言：反直觉代码
 
-事务与并发控制 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
+## 📚 核心内容
 
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
+| 主题 | 内容 | 关键点 |
+|------|------|--------|
+| 一、ACID 特性 | Atomicity / Consistency / Isolation / Durability | Undo Log + Redo Log + WAL |
+| 二、并发问题 | 脏读 / 不可重复读 / 幻读 | UPDATE vs INSERT/DELETE |
+| 三、事务隔离级别 | RU / RC / RR / Serializable | MySQL InnoDB 默认 RR |
+| 四、锁机制 | 表级 / 行级 / 页级 + S/X/IS/IX + InnoDB 行锁算法 | Record / Gap / Next-Key |
+| 五、MVCC | 隐藏列 + 版本链 + Read View | RC vs RR 的 Read View 区别 |
+| 六、锁兼容矩阵 | S / X / IS / IX 4×4 | ✅ 兼容 / ❌ 冲突 |
+| 七、死锁实战与排查 | 账户转账案例 + `SHOW ENGINE INNODB STATUS` | 顺序封锁 + 超时回滚 |
+| 八、Spring 事务传播行为 | 7 种 Propagation | REQUIRED / REQUIRES_NEW / NESTED |
+| 九、Savepoint(保存点) | `SAVEPOINT` + `ROLLBACK TO` | 部分回滚 |
+| 十、隔离级别选型建议 | 业务场景 → 推荐级别 | 80% 业务使用默认 RR |
 
 ---
 
@@ -361,7 +362,7 @@ public void transfer() {
 @Service
 public class OrderService {
     @Autowired LogService logService;
-    
+
     @Transactional  // 主事务
     public void createOrder() {
         // 订单创建
@@ -423,16 +424,31 @@ COMMIT;
 
 ---
 
-## 相关章节
+## 🔗 相关章节
 
 - [数据库基础知识](../01-fundamentals/README.md) — 完整性约束
 - [SQL](../02-sql/README.md) — 合理使用事务的 8 条建议
 - [索引](../04-index/README.md) — 索引与行锁的关系
 - [MySQL](../05-mysql/README.md) — InnoDB 内部机制
 
-## 参考资料
+---
+
+## 📊 本节统计
+
+- **leaf README 数**：1（本文即为分类 leaf，单 README 长文聚合 10 主题）
+- **本节主题数**：10（ACID、并发问题、隔离级别、锁机制、MVCC、锁兼容矩阵、死锁、Spring 传播、Savepoint、选型建议）
+- **frontmatter 状态**：✅ 已对齐 CONTRIBUTING §12 标准（summary ≤ 80 字 / type=index）
+- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README；最后更新 2026-07-01
+
+---
+
+## 📖 参考资料
 
 - [MySQL 8.0 InnoDB Locking and Transaction Model](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking-transaction-model.html)
 - [MySQL InnoDB Multi-Versioning](https://dev.mysql.com/doc/refman/8.0/en/innodb-multi-versioning.html)
 - [A Critique of ANSI SQL Isolation Levels - Microsoft Research](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/tr-95-51.pdf)
 - [Java Concurrency in Practice - Chapter 9. 事务相关章节](https://jcip.net/)
+
+---
+
+← [返回 03.database 主模块](../README.md)

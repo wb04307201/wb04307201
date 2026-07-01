@@ -2,33 +2,30 @@
 module:
   parent: database
   slug: database/data-migration
-  type: article
+  type: index
   category: 主模块子文章
-  summary: 数据迁移与同步
+  summary: 数据迁移覆盖全量、增量、异构三大场景,核心工具包括 DataX（离线全量）、Canal/Maxwell（Binlog 增量）、Flink CDC（实时流式）。
 -->
 
 # 数据迁移与同步
 
 > 数据迁移与同步是企业级数据库的核心工程能力,涵盖全量迁移、增量同步、异构同步三大场景;常用工具包括 DataX(离线全量)、Canal/Maxwell(基于 Binlog 增量)、Flink CDC(实时流式)。
 
-> 最后更新: 2026-06-09
-
-## 目录
-
-- [一、数据迁移场景](#一数据迁移场景)
-- [二、DataX(阿里开源离线同步)](#二datax阿里开源离线同步)
-- [三、Canal(阿里 Binlog 订阅)](#三canal阿里-binlog-订阅)
-- [四、Maxwell(Zendesk 开源)](#四maxwellzendesk-开源)
-- [五、Flink CDC(实时流式同步)](#五flink-cdc实时流式同步)
-- [六、工具对比与选型](#六工具对比与选型)
-- [七、迁移实战要点](#七迁移实战要点)
+> 最后更新: 2026-07-01
 
 ---
-## 引言：反直觉代码
 
-数据迁移与同步 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
+## 📚 核心内容
 
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
+| 主题 | 内容 | 关键点 |
+|------|------|--------|
+| 一、数据迁移场景 | 升级 / 机房迁移 / 异构 / 分库分表 / 数仓 / 双写 | 全量 + 增量最常用 |
+| 二、DataX(阿里开源) | Reader / Framework / Writer 三层架构 | 单机多线程,30+ 数据源 |
+| 三、Canal(阿里 Binlog) | 模拟 Slave + ZK 高可用 + Java 客户端 | MySQL → MQ/ES/Redis |
+| 四、Maxwell(Zendesk) | JSON 输出 + 主备锁 + 全增量一体化 | 轻量,无 ZK 依赖 |
+| 五、Flink CDC(实时流式) | 全增量一体化 + Exactly-Once + Schema 演进 | MySQL → Doris/ES/Kafka |
+| 六、工具对比与选型 | DataX / Canal / Maxwell / Flink CDC / Debezium | 决策树按实时性 + 下游选型 |
+| 七、迁移实战要点 | 全量前准备 + 增量同步 + 双写切换 + 校验 | 4 阶段渐进 + 行数/Checksum 对比 |
 
 ---
 
@@ -459,14 +456,25 @@ FROM source_db.users TABLESAMPLE BERNOULLI(0.1);  -- 0.1% 抽样
 
 ---
 
-## 相关章节
+## 🔗 相关章节
 
 - [MySQL](../05-mysql/README.md) — Binlog 格式、主从复制
 - [事务与并发控制](../03-transaction/README.md) — 一致性与并发同步
 - [缓存](../06-cache/README.md) — 缓存预热与 Canal 协同
 - [系统设计 · 分布式事务](../../04.system-design/02-distributed/distributed-transaction/README.md) — 数据一致性理论
 
-## 参考资料
+---
+
+## 📊 本节统计
+
+- **leaf README 数**：1（本文即为分类 leaf，单 README 长文聚合 7 主题）
+- **本节主题数**：7（迁移场景、DataX、Canal、Maxwell、Flink CDC、工具选型、实战要点）
+- **frontmatter 状态**：✅ 已对齐 CONTRIBUTING §12 标准（summary ≤ 80 字 / type=index）
+- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README；最后更新 2026-07-01
+
+---
+
+## 📖 参考资料
 
 - [DataX GitHub](https://github.com/alibaba/DataX)
 - [Canal GitHub](https://github.com/alibaba/canal)
@@ -474,3 +482,7 @@ FROM source_db.users TABLESAMPLE BERNOULLI(0.1);  -- 0.1% 抽样
 - [Flink CDC 官方文档](https://ververica.github.io/flink-cdc-connectors/)
 - [Debezium 官方文档](https://debezium.io/documentation/)
 - [阿里云数据传输服务 DTS](https://www.aliyun.com/product/dts)
+
+---
+
+← [返回 03.database 主模块](../README.md)

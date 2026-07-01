@@ -2,23 +2,31 @@
 module:
   parent: database
   slug: database/cache
-  type: article
+  type: index
   category: 主模块子文章
-  summary: 缓存
+  summary: 缓存通过减少数据库直接访问提升性能,核心问题是三大经典问题（穿透/击穿/雪崩）与缓存-数据库一致性,以及多级缓存与热点 Key 治理。
 -->
 
 # 缓存
 
 > 缓存是将热点数据存储在高速存储介质(通常是内存)中的技术,通过减少对后端数据库的直接访问来提升系统性能;其核心问题是三大经典问题(穿透/击穿/雪崩)与缓存-数据库一致性。
 
-> 最后更新: 2026-06-09
+> 最后更新: 2026-07-01
 
 ---
-## 引言：反直觉代码
 
-缓存 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
+## 📚 核心内容
 
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
+| 主题 | 内容 | 关键点 |
+|------|------|--------|
+| 一、缓存分类 | 介质 / 部署 / 淘汰策略 | LRU / LFU / TTL / W-TinyLFU |
+| 二、缓存三大经典问题 | 穿透 / 击穿 / 雪崩 | 布隆过滤器 + 互斥锁 + TTL 随机化 |
+| 三、缓存与数据库一致性 | Cache Aside / Read-Write Through / Write Behind | 业界最常用 Cache Aside |
+| 四、布隆过滤器深入 | 误判率公式 + Guava / Cuckoo / RedisBloom | Counting BF 支持删除 |
+| 五、热点 Key 发现与处理 | redis-cli --hotkeys / 客户端统计 / JDHotkey | 本地缓存兜底 |
+| 六、多级缓存架构(L1 + L2) | Caffeine + Redis | TTL 分层 + Pub/Sub 失效广播 |
+| 七、本地缓存 3 个经典问题 | 内存上限 / 淘汰策略 / 进程间不一致 | W-TinyLFU + 短 TTL |
+| 八、缓存预热方案 | 启动加载 / 灰度发布 / 定时刷新 / CDN | 让高峰时缓存已就绪 |
 
 ---
 
@@ -333,16 +341,31 @@ public User getUserFromRedis(Long id) { ... }
 
 ---
 
-## 相关章节
+## 🔗 相关章节
 
 - [数据库基础知识](../01-fundamentals/README.md) — 数据库基础
 - [MySQL](../05-mysql/README.md) — MySQL 自带查询缓存(8.0 已移除)
 - [Redis](../07-redis/README.md) — Redis 持久化、内存管理
 - [系统设计 · 缓存设计模式](../../04.system-design/04-high-performance/cache-patterns/README.md) — 4 大缓存模式深入
 
-## 参考资料
+---
+
+## 📊 本节统计
+
+- **leaf README 数**：1（本文即为分类 leaf，单 README 长文聚合 8 主题）
+- **本节主题数**：8（缓存分类、3 大经典问题、一致性、布隆过滤器、热点 Key、多级缓存、本地缓存问题、预热方案）
+- **frontmatter 状态**：✅ 已对齐 CONTRIBUTING §12 标准（summary ≤ 80 字 / type=index）
+- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README；最后更新 2026-07-01
+
+---
+
+## 📖 参考资料
 
 - [Redis Caching Strategies](https://redis.io/docs/manual/client-side-caching/)
 - [Designing Data-Intensive Applications - Chapter 5](https://dataintensive.net/) — 数据系统经典
 - [Caffeine - A high performance Java caching library](https://github.com/ben-manes/caffeine)
 - [Bilibili - 缓存设计模式讲解](https://github.com/doocs/advanced-java) — 互联网工程师进阶知识库
+
+---
+
+← [返回 03.database 主模块](../README.md)

@@ -2,34 +2,36 @@
 module:
   parent: database
   slug: database/index
-  type: article
+  type: index
   category: 主模块子文章
-  summary: 索引
+  summary: 索引通过 B+ 树等数据结构将查找从 O(N) 降至 O(log N)，覆盖聚簇/非聚簇、最左前缀、覆盖索引、ICP、MRR 等核心概念。
 -->
 
 # 索引
 
 > 索引(Index)是数据库为了加快数据检索而维护的辅助数据结构,MySQL InnoDB 默认采用 B+ 树;合理使用索引是 SQL 优化中最核心的手段。
 
-> 最后更新: 2026-06-09
-
-## 目录
-
-- [一、为什么需要索引](#一为什么需要索引)
-- [二、索引数据结构](#二索引数据结构)
-- [三、索引分类](#三索引分类)
-- [四、最左前缀原则](#四最左前缀原则)
-- [五、索引失效场景](#五索引失效场景)
-- [六、索引设计原则](#六索引设计原则)
-- [七、索引维护](#七索引维护)
-- [八、EXPLAIN 中的索引信息](#八explain-中的索引信息)
+> 最后更新: 2026-07-01
 
 ---
-## 引言：反直觉代码
 
-索引 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
+## 📚 核心内容
 
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
+| 主题 | 内容 | 关键点 |
+|------|------|--------|
+| 一、为什么需要索引 | O(N) → O(log N) | 100 万行查找从 100 万次降到 ~20 次 |
+| 二、索引数据结构 | B+ 树 / Hash / 全文索引 | InnoDB 默认 B+ 树 |
+| 三、索引分类 | 聚簇 / 非聚簇 / 主键 / 唯一 / 普通 / 联合 / 前缀 / 全文 | InnoDB 主键索引就是聚簇索引 |
+| 四、最左前缀原则 | 联合索引 (a,b,c) 命中规则 | (a) / (a,b) / (a,b,c) |
+| 五、索引失效场景 | 9 种典型场景 | 函数 / 运算 / 类型转换 / LIKE 左模糊 |
+| 六、索引设计原则 | 何时加 / 不加 / 数量上限 | 单表 ≤ 5~6 个索引 |
+| 七、索引维护 | SHOW INDEX / CREATE / DROP / 重建 | `OPTIMIZE TABLE` |
+| 八、EXPLAIN 中的索引 | possible_keys / key / key_len / rows / Extra | `Using index` = 覆盖索引 |
+| 九、索引下推(ICP) | WHERE 下推存储引擎层 | MySQL 5.6+,减少回表 80% |
+| 十、MRR(Multi-Range Read) | 随机回表 → 顺序 I/O | 机械硬盘收益 5-10 倍 |
+| 十一、Index Merge | 多个单列索引合并 | Intersection / Union / Sort-Union |
+| 十二、Cardinality 与索引选择性 | 索引列唯一值数量 | 选择性 > 0.1 才有价值 |
+| 十三、Online DDL | INPLACE / INSTANT | pt-osc / gh-ost |
 
 ---
 
@@ -435,16 +437,31 @@ ALTER TABLE users ADD INDEX idx_email (email), ALGORITHM=INPLACE, LOCK=NONE;
 
 ---
 
-## 相关章节
+## 🔗 相关章节
 
 - [数据库基础知识](../01-fundamentals/README.md) — 索引概览与三大索引类型
 - [SQL](../02-sql/README.md) — 慢查询分析中的索引优化
 - [事务与并发控制](../03-transaction/README.md) — 行锁与索引的关系
 - [MySQL](../05-mysql/README.md) — InnoDB Buffer Pool 与磁盘 I/O
 
-## 参考资料
+---
+
+## 📊 本节统计
+
+- **leaf README 数**：1（本文即为分类 leaf，单 README 长文聚合 13 主题）
+- **本节主题数**：13（必要性、数据结构、分类、最左前缀、失效场景、设计原则、维护、EXPLAIN、ICP、MRR、Index Merge、Cardinality、Online DDL）
+- **frontmatter 状态**：✅ 已对齐 CONTRIBUTING §12 标准（summary ≤ 80 字 / type=index）
+- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README；最后更新 2026-07-01
+
+---
+
+## 📖 参考资料
 
 - [MySQL 8.0 InnoDB and the ACID Model](https://dev.mysql.com/doc/refman/8.0/en/mysql-acid.html)
 - [MySQL InnoDB Index Physical Structure](https://dev.mysql.com/doc/refman/8.0/en/innodb-physical-structure.html)
 - [B+ Tree Visualization](https://www.cs.usfca.edu/~galles/visualization/BPlusTree.html)
 - [Use The Index, Luke! - A Guide to Database Performance for Developers](https://use-the-index-luke.com/)
+
+---
+
+← [返回 03.database 主模块](../README.md)

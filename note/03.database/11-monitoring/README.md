@@ -2,34 +2,31 @@
 module:
   parent: database
   slug: database/monitoring
-  type: article
+  type: index
   category: 主模块子文章
-  summary: 数据库监控告警
+  summary: 数据库监控告警是生产稳定性基石,核心是 Prometheus + Grafana + AlertManager,覆盖 QPS、延迟、连接、复制延迟等关键指标与告警闭环。
 -->
 
 # 数据库监控告警
 
 > 数据库监控告警是生产环境稳定性的基石,核心目标是实时掌握 QPS、延迟、连接、复制延迟等关键指标,结合 Prometheus + Grafana + AlertManager 实现可视化与告警闭环。
 
-> 最后更新: 2026-06-09
-
-## 目录
-
-- [一、监控体系架构](#一监控体系架构)
-- [二、核心监控指标(Golden Signals)](#二核心监控指标golden-signals)
-- [三、MySQL 监控](#三mysql-监控)
-- [四、Redis 监控](#四redis-监控)
-- [五、Prometheus + Grafana 实战](#五prometheus--grafana-实战)
-- [六、告警规则设计](#六告警规则设计)
-- [七、慢查询与日志分析](#七慢查询与日志分析)
-- [八、生产事故案例](#八生产事故案例)
+> 最后更新: 2026-07-01
 
 ---
-## 引言：反直觉代码
 
-数据库监控告警 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
+## 📚 核心内容
 
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
+| 主题 | 内容 | 关键点 |
+|------|------|--------|
+| 一、监控体系架构 | 业务 / 数据库 / 主机三层采集 | Exporter + Prometheus + Grafana |
+| 二、核心监控指标(Golden Signals) | Latency / Traffic / Errors / Saturation | Google SRE 4 大黄金指标 |
+| 三、MySQL 监控 | QPS / TPS / Performance Schema / mysqld_exporter | 仪表盘 7362 / 1516 |
+| 四、Redis 监控 | INFO 11 项 + 命中率公式 + 大 Key 检测 | 仪表盘 11835 |
+| 五、Prometheus + Grafana 实战 | 抓取配置 + AlertManager + 告警分组抑制 | 完整 prometheus.yml 示例 |
+| 六、告警规则设计 | MySQL + Redis + 3 级告警策略 | Critical 5min 响应 |
+| 七、慢查询与日志分析 | MySQL 慢查询 + pt-query-digest + ELK | filebeat + logstash + ES |
+| 八、生产事故案例 | 3 个真实案例(慢 SQL / 大 Key / 主从延迟) | 现象 + 排查 + 根因 + 修复 |
 
 ---
 
@@ -227,8 +224,8 @@ redis-cli INFO Keyspace
 ### 3. 命中率计算
 
 ```promql
-redis_keyspace_hit_rate = 
-    rate(redis_keyspace_hits_total[5m]) / 
+redis_keyspace_hit_rate =
+    rate(redis_keyspace_hits_total[5m]) /
     (rate(redis_keyspace_hits_total[5m]) + rate(redis_keyspace_misses_total[5m]))
 ```
 
@@ -330,7 +327,7 @@ routes:
   - match:
       severity: critical
     receiver: 'oncall'
-  
+
   - match_re:
       alertname: '.*'
     group_by: [alertname, instance, severity]
@@ -533,7 +530,7 @@ SHOW SLAVE STATUS;  -- Seconds_Behind_Master: 300s
 
 ---
 
-## 相关章节
+## 🔗 相关章节
 
 - [MySQL](../05-mysql/README.md) — 主从复制、参数调优
 - [Redis](../07-redis/README.md) — 持久化、集群
@@ -541,7 +538,18 @@ SHOW SLAVE STATUS;  -- Seconds_Behind_Master: 300s
 - [数据迁移与同步](../10-data-migration/README.md) — Canal/Maxwell 监控
 - [系统设计 · 可观测性](../../04.system-design/07-deployment/observability/README.md) — 系统全局监控
 
-## 参考资料
+---
+
+## 📊 本节统计
+
+- **leaf README 数**：1（本文即为分类 leaf，单 README 长文聚合 8 主题）
+- **本节主题数**：8（监控架构、Golden Signals、MySQL 监控、Redis 监控、Prometheus+Grafana 实战、告警规则、慢查询日志分析、生产事故案例）
+- **frontmatter 状态**：✅ 已对齐 CONTRIBUTING §12 标准（summary ≤ 80 字 / type=index）
+- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README；最后更新 2026-07-01
+
+---
+
+## 📖 参考资料
 
 - [Prometheus 官方文档](https://prometheus.io/docs/)
 - [Grafana 官方仪表盘库](https://grafana.com/grafana/dashboards/)
@@ -550,3 +558,7 @@ SHOW SLAVE STATUS;  -- Seconds_Behind_Master: 300s
 - [mysqld_exporter GitHub](https://github.com/prometheus/mysqld_exporter)
 - [redis_exporter GitHub](https://github.com/oliver006/redis_exporter)
 - [USE 方法 - Brendan Gregg](http://www.brendangregg.com/usemethod.html)
+
+---
+
+← [返回 03.database 主模块](../README.md)

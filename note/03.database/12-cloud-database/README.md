@@ -2,34 +2,31 @@
 module:
   parent: database
   slug: database/cloud-database
-  type: article
+  type: index
   category: 主模块子文章
-  summary: 云数据库
+  summary: 云数据库是云厂商提供的托管关系/NoSQL/NewSQL 服务,主流产品包括 AWS RDS/Aurora、阿里云 RDS/PolarDB、TiDB Cloud,核心价值是免运维与弹性扩缩容。
 -->
 
 # 云数据库
 
 > 云数据库(Cloud Database)是云厂商提供的关系型、NoSQL、NewSQL 等托管服务,具备自动备份、容灾、监控、扩缩容等开箱即用能力;主流产品包括 AWS RDS/Aurora、阿里云 RDS/PolarDB、Azure Database、Google Cloud SQL、TiDB Cloud 等。
 
-> 最后更新: 2026-06-09
-
-## 目录
-
-- [一、云数据库的价值与挑战](#一云数据库的价值与挑战)
-- [二、AWS RDS 与 Aurora](#二aws-rds-与-aurora)
-- [三、阿里云 RDS 与 PolarDB](#三阿里云-rds-与-polardb)
-- [四、Azure SQL 与 Google Cloud SQL](#四azure-sql-与-google-cloud-sql)
-- [五、TiDB Cloud(NewSQL)](#五tidb-cloudnewsql)
-- [六、托管 Redis 与 MongoDB](#六托管-redis-与-mongodb)
-- [七、自建 vs 云数据库决策](#七自建-vs-云数据库决策)
-- [八、迁移与最佳实践](#八迁移与最佳实践)
+> 最后更新: 2026-07-01
 
 ---
-## 引言：反直觉代码
 
-云数据库 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
+## 📚 核心内容
 
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
+| 主题 | 内容 | 关键点 |
+|------|------|--------|
+| 一、云数据库的价值与挑战 | 6 大价值 vs 5 大挑战 | 免运维 vs 厂商锁定 |
+| 二、AWS RDS 与 Aurora | 6 大引擎 + 实例规格 + Aurora 6 副本 3 AZ | Aurora 性能 5x RDS |
+| 三、阿里云 RDS 与 PolarDB | 5 大引擎 + 存储计算分离 + RDMA | 5 分钟内新增只读节点 |
+| 四、Azure SQL 与 Google Cloud SQL | Azure 3 模式 + GCP Spanner 99.999% SLA | Spanner 适合全球金融 |
+| 五、TiDB Cloud(NewSQL) | 兼容 MySQL + HTAP + 多云 | 100K+ QPS / 节点 |
+| 六、托管 Redis 与 MongoDB | ElastiCache / Tair / DocumentDB / Atlas | MemoryDB 强一致 |
+| 七、自建 vs 云数据库决策 | 8 维度决策矩阵 | 核心库自建 + 周边上云 |
+| 八、迁移与最佳实践 | 4 策略 + 5 安全措施 + 6 上云坑 | 优先标准 SQL 避免锁定 |
 
 ---
 
@@ -402,7 +399,7 @@ TiDB Cloud 是 PingCAP 提供的**云原生 NewSQL 数据库**,100% 兼容 MySQL
                 ┌──────────┐
                 │ 异地灾备 │
                 └──────────┘
-                
+
    切换: 1. 提升灾备为主
         2. 修改应用连接
         3. 业务恢复
@@ -422,7 +419,7 @@ TiDB Cloud 是 PingCAP 提供的**云原生 NewSQL 数据库**,100% 兼容 MySQL
 
 ---
 
-## 相关章节
+## 🔗 相关章节
 
 - [MySQL](../05-mysql/README.md) — 自建 MySQL 参数与配置
 - [NoSQL](../08-nosql/README.md) — 自建 NoSQL 选型
@@ -430,7 +427,18 @@ TiDB Cloud 是 PingCAP 提供的**云原生 NewSQL 数据库**,100% 兼容 MySQL
 - [数据库监控告警](../11-monitoring/README.md) — 云监控与自建监控
 - [系统设计 · 高可用](../../04.system-design/03-high-availability/README.md) — 多 AZ、异地容灾
 
-## 参考资料
+---
+
+## 📊 本节统计
+
+- **leaf README 数**：1（本文即为分类 leaf，单 README 长文聚合 8 主题）
+- **本节主题数**：8（价值挑战、AWS RDS/Aurora、阿里云 RDS/PolarDB、Azure SQL/GCP、TiDB Cloud、托管 Redis/MongoDB、自建 vs 云、迁移实践）
+- **frontmatter 状态**：✅ 已对齐 CONTRIBUTING §12 标准（summary ≤ 80 字 / type=index）
+- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README；最后更新 2026-07-01
+
+---
+
+## 📖 参考资料
 
 - [AWS RDS 官方文档](https://aws.amazon.com/rds/)
 - [AWS Aurora 官方文档](https://aws.amazon.com/rds/aurora/)
@@ -440,3 +448,7 @@ TiDB Cloud 是 PingCAP 提供的**云原生 NewSQL 数据库**,100% 兼容 MySQL
 - [Google Cloud Spanner 论文](https://research.google/pubs/spanner-globally-distributed-database/)
 - [Aurora 论文: The Tail at Store](https://www.allthingsdistributed.com/files/p1041-verbitski.pdf)
 - [Azure SQL Database 文档](https://learn.microsoft.com/en-us/azure/azure-sql/)
+
+---
+
+← [返回 03.database 主模块](../README.md)

@@ -2,23 +2,35 @@
 module:
   parent: database
   slug: database/connection-pool
-  type: article
+  type: index
   category: 主模块子文章
-  summary: 数据库连接池
+  summary: 数据库连接池通过预创建并复用连接降低开销,Spring Boot 2.x+ 默认 HikariCP,监控与防 SQL 注入场景推荐 Druid。
 -->
 
 # 数据库连接池
 
 > 数据库连接池通过预先创建并复用连接,避免每次请求都进行 TCP 握手和身份认证,Spring Boot 2.x+ 默认使用 HikariCP,监控与防 SQL 注入场景推荐 Druid。
 
-> 最后更新: 2026-06-09
+> 最后更新: 2026-07-01
 
 ---
-## 引言：反直觉代码
 
-数据库连接池 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
+## 📚 核心内容
 
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
+| 主题 | 内容 | 关键点 |
+|------|------|--------|
+| 一、为什么需要连接池 | 复用连接降低开销 | 创建连接 1~10ms,执行 SQL 0.1~1ms |
+| 二、主流连接池对比 | HikariCP / Druid / C3P0 / DBCP2 | Spring Boot 默认 HikariCP |
+| 三、HikariCP | 配置 + 关键参数 + 为什么最快 | 字节码精简 + FastList + 无锁集合 |
+| 四、Druid | 配置 + 独有功能 | SQL 监控 + 慢 SQL + SQL 防火墙 |
+| 五、连接池参数调优 | max-pool 计算公式 | PostgreSQL: (CPU 核数 × 2) + 磁盘数 |
+| 六、最佳实践 | 6 条建议 | max-lifetime 必须 < wait_timeout |
+| 七、连接池监控指标 | 核心指标 + Micrometer | hikaricp_connections_* |
+| 八、连接池常见问题排查 | 泄漏 / 慢 SQL / 打满 | 连接获取超时 30s |
+| 九、其他主流连接池 | Tomcat JDBC / Vibur / FlexyPool | Tomcat JDBC 适合 Tomcat 部署 |
+| 十、Druid 加密密码 | ConfigTools + Vault/K8s Secret | 代码与密钥分离 |
+| 十一、分库分表场景下的连接池 | ShardingSphere-JDBC | 每分片独立连接池 |
+| 十二、连接池与事务的协作 | Spring @Transactional 行为 | 异步调用新连接 |
 
 ---
 
@@ -454,16 +466,31 @@ public void syncMethod() {
 
 ---
 
-## 相关章节
+## 🔗 相关章节
 
 - [数据库基础知识](../01-fundamentals/README.md) — 数据库核心概念
 - [MySQL](../05-mysql/README.md) — MySQL `wait_timeout` 与连接池参数协调
 - [事务与并发控制](../03-transaction/README.md) — 事务与连接池的协作
 - [系统设计 · 连接池](../../04.system-design/04-high-performance/connection-pool/README.md) — 架构视角的连接池调优
 
-## 参考资料
+---
+
+## 📊 本节统计
+
+- **leaf README 数**：1（本文即为分类 leaf，单 README 长文聚合 12 主题）
+- **本节主题数**：12（必要性、连接池对比、HikariCP、Druid、调优、最佳实践、监控、问题排查、其他连接池、加密密码、分库分表、事务协作）
+- **frontmatter 状态**：✅ 已对齐 CONTRIBUTING §12 标准（summary ≤ 80 字 / type=index）
+- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README；最后更新 2026-07-01
+
+---
+
+## 📖 参考资料
 
 - [HikariCP GitHub README](https://github.com/brettwooldridge/HikariCP)
 - [HikariCP - About Pool Sizing](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing)
 - [Druid 官方 Wiki](https://github.com/alibaba/druid/wiki)
 - [PostgreSQL Wiki - Tuning Your PostgreSQL Server](https://wiki.postgresql.org/wiki/Tuning_Your_PostgreSQL_Server) — 连接数公式来源
+
+---
+
+← [返回 03.database 主模块](../README.md)

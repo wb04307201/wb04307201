@@ -2,32 +2,34 @@
 module:
   parent: database
   slug: database/mysql
-  type: article
+  type: index
   category: 主模块子文章
-  summary: MySQL
+  summary: MySQL 采用 Server + 存储引擎两层架构,InnoDB 是默认引擎，核心机制覆盖 Buffer Pool、Redo Log、Binlog、主从复制与备份恢复。
 -->
 
 # MySQL
 
 > MySQL 是最流行的开源关系型数据库,采用 Server 层 + 存储引擎层两层架构,InnoDB 是默认且推荐的事务型引擎,核心机制包括 Buffer Pool、Redo Log、Binlog 与主从复制。
 
-> 最后更新: 2026-06-09
-
-## 目录
-
-- [一、MySQL 架构](#一mysql-架构)
-- [二、存储引擎对比](#二存储引擎对比)
-- [三、InnoDB 内部机制](#三innodb-内部机制)
-- [四、MySQL 主从复制](#四mysql-主从复制)
-- [五、MySQL 高可用方案](#五mysql-高可用方案)
-- [六、MySQL 关键参数](#六mysql-关键参数)
+> 最后更新: 2026-07-01
 
 ---
-## 引言：反直觉代码
 
-MySQL 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
+## 📚 核心内容
 
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
+| 主题 | 内容 | 关键点 |
+|------|------|--------|
+| 一、MySQL 架构 | Server 层 + 存储引擎层 | 连接器 / 分析器 / 优化器 / 执行器 |
+| 二、存储引擎对比 | InnoDB / MyISAM / Memory / Archive | 默认 InnoDB,事务安全 |
+| 三、InnoDB 内部机制 | Buffer Pool + Change Buffer + 日志系统 + Double Write | Buffer Pool 占可用内存 70-80% |
+| 四、MySQL 主从复制 | 异步 / 半同步 / 全同步 + Binlog 3 格式 | 推荐 ROW 格式 |
+| 五、MySQL 高可用方案 | MHA / Orchestrator / MGR / Galera | MGR 是 MySQL 5.7+ 原生方案 |
+| 六、MySQL 关键参数 | Buffer Pool / Redo Log / Binlog 刷盘 | 双 1 配置最安全 |
+| 七、EXPLAIN 详解 | 12 种 type + FORMAT=JSON | 至少 range,严禁 ALL |
+| 八、MySQL 8.0 新特性 | 窗口函数 / CTE / 原子 DDL / 隐藏索引 | 8.0+ 完整现代 SQL 支持 |
+| 九、备份与恢复 | mysqldump / XtraBackup / PITR | 每周全量 + 每天增量 + 实时 binlog |
+| 十、分区表 | RANGE / LIST / HASH / KEY | 分区键必须是主键一部分 |
+| 十一、慢查询分析工具 | pt-query-digest / Performance Schema / sys schema | sys.statement_analysis |
 
 ---
 
@@ -437,7 +439,7 @@ SELECT * FROM sys.schema_unused_indexes;
 
 ---
 
-## 相关章节
+## 🔗 相关章节
 
 - [数据库基础知识](../01-fundamentals/README.md) — 数据库核心概念
 - [SQL](../02-sql/README.md) — 慢查询分析与 EXPLAIN
@@ -446,9 +448,24 @@ SELECT * FROM sys.schema_unused_indexes;
 - [缓存](../06-cache/README.md) — MySQL 查询缓存(8.0 已移除)
 - [数据库连接池](../09-connection-pool/README.md) — MySQL 连接池配置
 
-## 参考资料
+---
+
+## 📊 本节统计
+
+- **leaf README 数**：1（本文即为分类 leaf，单 README 长文聚合 11 主题）
+- **本节主题数**：11（架构、引擎对比、InnoDB 内部、主从复制、高可用、关键参数、EXPLAIN、8.0 新特性、备份恢复、分区表、慢查询工具）
+- **frontmatter 状态**：✅ 已对齐 CONTRIBUTING §12 标准（summary ≤ 80 字 / type=index）
+- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README；最后更新 2026-07-01
+
+---
+
+## 📖 参考资料
 
 - [MySQL 8.0 Reference Manual](https://dev.mysql.com/doc/refman/8.0/en/)
 - [MySQL InnoDB Architecture (官方图解)](https://dev.mysql.com/doc/refman/8.0/en/innodb-architecture.html)
 - [High Performance MySQL](https://www.oreilly.com/library/view/high-performance-mysql/9780596101718/) — O'Reilly 经典
 - [MySQL 8.0 新特性官方说明](https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html)
+
+---
+
+← [返回 03.database 主模块](../README.md)
