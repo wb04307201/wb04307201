@@ -13,12 +13,6 @@ module:
 > 本文档系统介绍 `CountDownLatch`、`CyclicBarrier`、`Semaphore`、`Phaser`、`Exchanger` 五大同步工具。
 
 ---
-## 引言：反直觉代码
-
-Java 并发工具类 (java.util.concurrent) 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
-
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
-
 ---
 
 ## 目录

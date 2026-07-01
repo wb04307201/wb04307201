@@ -12,12 +12,6 @@ module:
 REST（Representational State Transfer，表述性状态转移）是一种软件架构风格，广泛应用于 Web 服务（特别是 HTTP API）的设计中。RESTful API 是遵循 REST 原则构建的 Web API。
 
 ---
-## 引言：反直觉代码
-
-RESTful 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
-
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
-
 ---
 
 ## 一、核心原则

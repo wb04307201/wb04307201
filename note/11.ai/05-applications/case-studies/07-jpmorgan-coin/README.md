@@ -18,12 +18,6 @@ module:
 > 机制分析：https://vaidikai.com/ai-case-study-jp-morgan-how-ai-is-transforming-legal-document-analysis-with-coin/
 
 ---
-## 引言：反直觉代码
-
-JPMorgan COiN：合同审查从 36 万小时到秒级，金融危机逼出来的"白领流水线" 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
-
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
-
 ---
 
 ## 一、危机逼出来的 IT 豪赌

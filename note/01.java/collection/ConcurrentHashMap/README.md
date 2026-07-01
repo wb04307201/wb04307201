@@ -12,11 +12,6 @@ module:
 > 目标：彻底搞懂 ConcurrentHashMap 的底层实现，包括 JDK 7 分段锁、JDK 8 CAS + synchronized 机制、put/get 流程、size() 原理、扩容迁移机制，以及并发场景下的选型。
 
 ---
-## 引言：反直觉代码
-ConcurrentHashMap 深入 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
-
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
-
 ---
 
 ## 一、为什么需要 ConcurrentHashMap

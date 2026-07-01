@@ -17,12 +17,6 @@ module:
 > 后续报道：https://news.microsoft.com/source/2024/10/24/siemens-and-microsoft-scale-industrial-ai/
 
 ---
-## 引言：反直觉代码
-
-Siemens Industrial Copilot：自然语言生成 PLC 代码，工业 know-how 才是门槛 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
-
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
-
 ---
 
 ## 一、工业 AI 的真正难点：不是写代码，而是懂"机器"

@@ -9,12 +9,6 @@ module:
 
 # Cookies vs LocalStorage 用于会话管理：你需要知道的一切
 
-## 引言：反直觉代码
-
-Cookies vs LocalStorage 用于会话管理：你需要知道的一切 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
-
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
-
 ---
 
 **原文链接**：[https://supertokens.com/blog/cookies-vs-localstorage-for-sessions-everything-you-need-to-know](https://supertokens.com/blog/cookies-vs-localstorage-for-sessions-everything-you-need-to-know)

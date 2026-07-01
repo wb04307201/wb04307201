@@ -17,12 +17,6 @@ module:
 > 复盘参考：https://www.bloomberg.com/news/articles/2024-08-27/klarna-says-its-ai-assistant-isnt-replacing-humans-just-helping-them
 
 ---
-## 引言：反直觉代码
-
-Klarna AI 客服先激进、后回调：AI 替代 700 个工位后，又把人工请回来 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
-
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
-
 ---
 
 ## 一、激进开局

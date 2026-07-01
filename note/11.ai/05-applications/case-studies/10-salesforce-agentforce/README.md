@@ -17,12 +17,6 @@ module:
 > 产品深度解读：https://www.scrm.com/29767/%e4%ba%86%e8%a7%a3ec/hyzs/
 
 ---
-## 引言：反直觉代码
-
-Salesforce Agentforce：让销售 Agent 自己挖线索、约会议、跟进客户 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
-
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
-
 ---
 
 ## 一、从 Copilot 到 Agentforce：Salesforce 的"换挡"

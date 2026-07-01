@@ -18,12 +18,6 @@ module:
 > 企业效果参考：https://www.microsoft.com/en-us/worklab/work-trend-index/2024/the-state-of-organizations/
 
 ---
-## 引言：反直觉代码
-
-Microsoft 365 Copilot：存量办公套件如何被 AI 改写为"协作者" 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
-
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
-
 ---
 
 ## 一、SaaS 巨头的 AI 焦虑：为什么不能只加一个聊天框

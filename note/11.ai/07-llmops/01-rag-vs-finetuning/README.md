@@ -12,12 +12,6 @@ module:
 > 一份按场景梳理的 LLM 定制速查手册：从 Prompt 到 RAG 到 Fine-tuning 的完整选型决策。
 
 ---
-## 引言：反直觉代码
-
-RAG vs Fine-tuning vs Prompt Engineering：LLM 定制三大策略深度对比 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
-
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
-
 ---
 
 ## 一、LLM 定制三大策略

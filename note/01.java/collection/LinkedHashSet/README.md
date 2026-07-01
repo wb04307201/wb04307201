@@ -65,12 +65,6 @@ public boolean remove(Object o) {
 **核心结论：** `LinkedHashSet` 本质上是一个 `LinkedHashMap` 的 "key 视图"，value 全部为无意义的 `PRESENT` 占位符。
 
 ---
-## 引言：反直觉代码
-
-LinkedHashSet 学习笔记 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
-
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
-
 ---
 
 ## 二、保持插入顺序的原理（双向链表）

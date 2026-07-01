@@ -14,11 +14,6 @@ module:
 所有主流 APM 工具（SkyWalking、Elastic APM、Pinpoint）、Profiler 工具（JProfiler、VisualVM）、Mock 框架（Mockito）、ORM 框架（Hibernate）等，底层都依赖 Java Agent 技术。
 
 ---
-## 引言：反直觉代码
-Java Agent 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
-
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
-
 ---
 
 ## 核心原理

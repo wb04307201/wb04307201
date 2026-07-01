@@ -45,11 +45,6 @@ ArrayList 的核心是一个动态数组, 通过 `transient Object[] elementData
 **序列化机制:** `elementData` 被 `transient` 修饰, ArrayList 自定义了 `writeObject` / `readObject`, 只序列化实际元素 (`size` 个), 不序列化空槽位, 节省空间。
 
 ---
-## 引言：反直觉代码
-本文 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
-
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
-
 ---
 
 ## 二、构造方法

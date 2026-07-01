@@ -12,12 +12,6 @@ module:
 > 目标：掌握 ConcurrentLinkedQueue 的无锁 CAS 算法和 BlockingQueue 体系的完整实现，理解各自底层原理与适用场景。
 
 ---
-## 引言：反直觉代码
-
-并发队列 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
-
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
-
 ---
 
 ## 一、ConcurrentLinkedQueue / ConcurrentLinkedDeque（无锁队列）

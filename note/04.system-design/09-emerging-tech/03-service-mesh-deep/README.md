@@ -12,12 +12,6 @@ module:
 > 一份按维度梳理的 Service Mesh 速查手册：从架构原理到生产选型的完整对比。
 
 ---
-## 引言：反直觉代码
-
-Service Mesh 深度对比：Istio vs Linkerd vs Cilium vs Consul 的关键不是语法——是**看起来对**的代码背后那些'踩坑点'。
-
-本篇用 3 个反直觉片段切入，把面试/生产中常被问起、但一深入就漏馅的点摆出来。
-
 ---
 
 ## 一、Service Mesh 解决什么问题？
