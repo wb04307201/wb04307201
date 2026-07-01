@@ -1,16 +1,15 @@
 <!--
 module:
-  number: 05
-  slug: tools
-  topic: 工具链
-  audience: 工程师 / DevOps
+  parent: note
+  slug: note/tools
+  type: index
   category: 主模块
-  summary: 工欲善其事，必先利其器。本模块覆盖后端开发日常高频工具：版本控制（Git）、容器化（Docker / Podman）、反向代理（Nginx / Pingora）...
+  summary: 后端工程师高频工具链速查手册：Git / Docker / Java 工具库 / Nginx / Monorepo / 阿里微服务
 -->
 
-# 工具链
+# 五、[工具链](05.tools/README.md)
 
-> 工欲善其事，必先利其器。本模块覆盖后端开发日常高频工具：版本控制（Git）、容器化（Docker / Podman）、反向代理（Nginx / Pingora）、仓库管理（Monorepo）、Java 常用工具库、以及阿里微服务全家桶。
+> 工欲善其事，必先利其器。本模块覆盖后端开发日常高频工具：版本控制（Git）、容器化（Docker / Podman）、Java 常用工具库、反向代理（Nginx / Pingora）、仓库管理（Monorepo）、阿里微服务全家桶。
 
 ---
 
@@ -22,12 +21,10 @@ graph TB
 
     Root --> Git["01 Git<br/>版本控制"]
     Root --> Docker["02 Docker<br/>容器化"]
-    Root --> Nginx["03 Nginx<br/>反向代理"]
-    Root --> Mono["04 Monorepo<br/>仓库管理"]
-    Root --> Java["05 Java 工具库<br/>效率提升"]
+    Root --> Java["03 Java 工具库<br/>效率提升"]
+    Root --> Nginx["04 Nginx<br/>反向代理"]
+    Root --> Mono["05 Monorepo<br/>仓库管理"]
     Root --> Ali["06 阿里微服务<br/>云原生生态"]
-    Root --> Devops["07 DevOps<br/>CI/CD"]
-    Root --> K8s["08 Kubernetes<br/>容器编排"]
 
     Git --> G1["命令清单"]
     Git --> G2["Gitea 自建"]
@@ -48,13 +45,6 @@ graph TB
 
     Ali --> A1["Nacos 注册/配置"]
     Ali --> A2["微服务全家桶"]
-
-    Devops --> DP1["Jenkins / GitLab"]
-    Devops --> DP2["GitHub Actions"]
-    Devops --> DP3["Pipeline 模式"]
-
-    K8s --> K1["Pod / Service"]
-    K8s --> K2["Helm / Operator"]
 ```
 
 ---
@@ -63,24 +53,22 @@ graph TB
 
 | 序号 | 主题 | 核心内容 | 子 README |
 |------|------|---------|-----------|
-| 01 | [Git](git/) | 命令清单、Gitea 自建代码托管 | [command](git/command/README.md) · [gitea](git/gitea/README.md) |
-| 02 | [Docker](docker/) | 命令速查、Compose 编排、镜像构建、Podman 替代方案 | [command](docker/command/README.md) · [compose](docker/docker-compose/README.md) · [images](docker/images/README.md) · [podman](docker/podman/README.md) |
-| 03 | [Nginx](nginx/) | 反向代理 / 负载均衡配置、Cloudflare Pingora 新一代代理 | [nginx](nginx/README.md) · [pingora](nginx/pingora/README.md) |
-| 04 | [Monorepo](monorepo/) | 单仓多项目管理、演进路径、工具选型（Turborepo / Nx / Bazel） | [monorepo](monorepo/README.md) |
-| 05 | [Java 工具库](java/) | Hutool / Guava / Commons 工具集、Lombok 注解提效 | [tool-library](java/tool-library/README.md) · [lombok](java/lombok/README.md) |
-| 06 | [阿里微服务](ali-microservices/) | Nacos 服务发现与配置管理、阿里云原生微服务生态 | [ali-microservices](ali-microservices/README.md) |
-| 07 | [DevOps](devops/) | CI/CD 工具链 — Jenkins / GitLab CI / GitHub Actions / Pipeline 模式 / 部署策略 / CI/CD vs GitOps | [devops](devops/README.md) |
-| 08 | [Kubernetes](kubernetes/) | K8s 全栈 — 架构 / Pod 与工作负载 / Service 与 Ingress / ConfigMap 与 Secret / 存储与 PV / 网络与服务网格 / Helm / Operator 与 GitOps | [kubernetes](kubernetes/README.md) |
+| 01 | [Git](01-git/README.md) | 命令清单、Gitea 自建代码托管 | [command](01-git/command/README.md) · [gitea](01-git/gitea/README.md) |
+| 02 | [Docker](02-docker/README.md) | 命令速查、Compose 编排、镜像构建、Podman 替代方案 | [command](02-docker/command/README.md) · [compose](02-docker/docker-compose/README.md) · [images](02-docker/images/README.md) · [podman](02-docker/podman/README.md) |
+| 03 | [Java 工具库](03-java/README.md) | Hutool / Guava / Commons 工具集、Lombok 注解提效 | [tool-library](03-java/tool-library/README.md) · [lombok](03-java/lombok/README.md) |
+| 04 | [Nginx](04-nginx/README.md) | 反向代理 / 负载均衡配置、Cloudflare Pingora 新一代代理 | [nginx](04-nginx/README.md) · [pingora](04-nginx/pingora/README.md) |
+| 05 | [Monorepo](05-monorepo/README.md) | 单仓多项目管理、演进路径、工具选型（Turborepo / Nx / Bazel） | [monorepo](05-monorepo/README.md) |
+| 06 | [阿里微服务](06-ali-microservices/README.md) | Nacos 服务发现与配置管理、阿里云原生微服务生态 | [ali-microservices](06-ali-microservices/README.md) |
 
 ---
 
 ## 🧭 学习路径
 
-- **新人入门**：01 Git → 02 Docker → 03 Nginx — 三板斧，日常开发必备
-- **效率提升**：05 Java 工具库 + Lombok — 减少样板代码
-- **微服务方向**：02 Docker → 04 Monorepo → 06 阿里微服务 — 从容器到服务治理
-- **进阶运维**：03 Nginx / Pingora → 04 Monorepo — 深入基础设施
-- **云原生深入**：07 DevOps → 08 Kubernetes — 容器编排与服务治理
+- **新人入门**：01 Git → 02 Docker → 04 Nginx — 三板斧，日常开发必备
+- **效率提升**：03 Java 工具库 + Lombok — 减少样板代码
+- **微服务方向**：02 Docker → 05 Monorepo → 06 阿里微服务 — 从容器到服务治理
+- **进阶运维**：04 Nginx / Pingora → 05 Monorepo — 深入基础设施
+- **云原生深入**：02 Docker → 04 Nginx → 06 阿里微服务 — 容器化与云原生落地
 
 ---
 
@@ -94,8 +82,23 @@ graph TB
 | 多模块管理 | Monorepo (Turborepo/Nx) | 适合共享代码量大、多团队协作 |
 | Java 效率 | Hutool + Lombok | 国内项目标配 |
 | 微服务注册 | Nacos | 支持 DNS/RPC 双模式，阿里开源 |
-| CI/CD | Jenkins / GitLab CI / GitHub Actions | 三选一：Jenkins 灵活、GitLab CI 一体化、GitHub Actions 云原生 |
-| 容器编排 | Kubernetes (K8s) | 云原生事实标准，配套 Helm/Operator/GitOps |
+
+---
+
+## 📊 本节统计
+
+| 子目录 | leaf README 数 | 备注 |
+|:-------|:-----------:|:-----|
+| `01-git/` | 2 | 顶层 + command/gitea |
+| `02-docker/` | 4 | 顶层 + command/compose/images/podman |
+| `03-java/` | 2 | 顶层 + tool-library/lombok |
+| `04-nginx/` | 2 | 顶层 + pingora |
+| `05-monorepo/` | 1 | 顶层 |
+| `06-ali-microservices/` | 1 | 顶层 |
+| **分类 leaf 合计** | **12 depth-2 leaf + 6 顶层 = 18** | 100% frontmatter |
+| **学习路径主题数** | 5 条路径（见上方学习路径） | 新人/效率/微服务/进阶/云原生 |
+
+> 数字基线：本节以 leaf README 数 + 学习路径主题数双口径统计；最后更新 2026-07-02。
 
 ---
 
