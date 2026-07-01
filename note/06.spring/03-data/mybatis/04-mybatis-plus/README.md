@@ -35,6 +35,8 @@ module:
 | 09 | [最佳实践与踩坑](./09-best-practices.md) | 主键策略 / 多租户 / 乐观锁 / Wrapper 使用建议 | 20 min |
 | 10 | [代码生成器](./10-code-generator.md) | AutoGenerator 一键生成 Entity/Mapper/Service/Controller | 15 min |
 
+![Wrapper 类层级](img/wrapper-class-hierarchy.png)
+
 ## 知识地图
 
 ```mermaid

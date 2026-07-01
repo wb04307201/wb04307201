@@ -20,6 +20,8 @@ module:
 
 本篇用'决策困境'切入，比较几种主流路径并讲清取舍。
 
+![架构流程](img/architecture-flow.png)
+
 ---
 
 ## 章节导航
