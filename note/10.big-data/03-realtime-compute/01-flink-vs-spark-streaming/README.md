@@ -4,7 +4,7 @@ module:
   slug: big-data/flink-vs-spark-streaming
   type: article
   category: 主模块子文章
-  summary: Flink vs Spark Streaming
+  summary: Flink vs Spark Streaming——实时计算引擎深度对比
 -->
 
 # Flink vs Spark Streaming：实时计算引擎深度对比
@@ -12,9 +12,8 @@ module:
 > 一份按场景梳理的实时计算引擎速查手册：从架构原理到生产选型的完整对比。
 
 ---
----
 
-## 一、实时计算的两大流派
+## 1. 模块导航
 
 | 引擎 | 模型 | 延迟 | 吞吐 | 适用 |
 |------|------|------|------|------|
@@ -22,18 +21,15 @@ module:
 | **Spark Streaming** | 微批（micro-batch）| 秒级 | 极高 | 准实时报表 / 离线 + 实时统一 |
 | **Kafka Streams** | 流优先（库）| 毫秒级 | 中 | 简单流处理（Java） |
 
+### 1.1 学习路径
+
+- 新人：从 Flink DataStream API 入手，掌握 Source → Transform → Sink
+- 进阶：Flink SQL + Window + Watermark 处理乱序
+- 实战：Kafka → Flink → Iceberg / Doris 实时数仓链路
+
 ---
 
-## 二、Apache Flink 详解
-
-### 2.1 核心特性
-
-- **流优先**：每条数据都是 event（不是 micro-batch）
-- **事件时间（Event Time）**：基于数据本身的时间（不是处理时间）
-- **精确一次（Exactly-Once）**：通过 Checkpoint 保证
-- **状态后端**：RocksDB / Heap，处理 TB 级状态
-
-### 2.2 架构
+## 2. 知识脉络
 
 ```
 ┌──────────────────────────────────────┐
@@ -45,28 +41,7 @@ module:
 │         ↓                              │
 │    Checkpoint（持久化状态）              │
 └──────────────────────────────────────┘
-```
 
-### 2.3 典型场景
-
-- 实时风控（毫秒级响应）
-- 实时推荐（行为 → 实时特征 → 推荐）
-- 实时数仓（Kafka → Flink → Iceberg / Doris）
-
----
-
-## 三、Spark Streaming 详解
-
-### 3.1 核心特性
-
-- **微批处理**：把流数据切成小批次（默认 1 秒）
-- **结构化流（Structured Streaming）**：基于 Spark SQL
-- **生态丰富**：与 Spark 批处理无缝整合
-- **语言统一**：Scala / Python / Java / R
-
-### 3.2 架构
-
-```
 ┌──────────────────────────────────────┐
 │  Spark Cluster                       │
 │  ┌────────────┐  ┌────────────┐     │
@@ -78,15 +53,17 @@ module:
 └──────────────────────────────────────┘
 ```
 
-### 3.3 典型场景
+---
 
-- 准实时数据仓库（T+1 改为分钟级）
-- 流批一体（Lambda 架构）
-- ETL（Kafka → Spark → 数仓）
+## 3. 速查要点
+
+- **Flink**：流优先 + 事件时间 + Exactly-Once + RocksDB 状态后端
+- **Spark Streaming**：微批（默认 1 秒）+ Structured Streaming + Spark 生态
+- **Kafka Streams**：流优先库（轻量，无独立集群）
 
 ---
 
-## 四、10 维度深度对比
+## 4. 10 维度深度对比
 
 | 维度 | Flink | Spark Streaming |
 |------|-------|-----------------|
@@ -103,7 +80,7 @@ module:
 
 ---
 
-## 五、生产选型决策树
+## 5. 生产选型决策
 
 ```
 Q1: 延迟要求？
@@ -130,15 +107,15 @@ Q5: 实时数仓 / 准实时？
 
 ---
 
-## 六、Flink 生产实战
+## 6. 生产实战
 
-### 6.1 Checkpoint 配置
+### 6.1 Flink Checkpoint 配置
 
 ```yaml
 state:
   backend: rocksdb
   checkpoint:
-    interval: 60s                 # 每 60 秒 checkpoint
+    interval: 60s
     timeout: 300s
     min-pause-between: 30s
     storage: hdfs://namenode:9000/flink/checkpoints
@@ -147,28 +124,12 @@ state:
 ### 6.2 Watermark（处理乱序）
 
 ```java
-// 允许 5 秒乱序
 WatermarkStrategy
   .<Event>forBoundedOutOfOrderness(Duration.ofSeconds(5))
   .withTimestampAssigner((event, ts) -> event.getTimestamp());
 ```
 
-### 6.3 Savepoint（手动备份）
-
-```bash
-# 触发 savepoint
-flink savepoint <jobId> hdfs:///flink/savepoints
-
-# 从 savepoint 恢复
-flink run -s hdfs:///flink/savepoints/savepoint-xxx \
-  my-job.jar
-```
-
----
-
-## 七、Spark Streaming 生产实战
-
-### 7.1 Structured Streaming 示例
+### 6.3 Spark Structured Streaming
 
 ```python
 stream_df = spark.readStream \
@@ -190,22 +151,11 @@ result_df.writeStream \
     .start()
 ```
 
-### 7.2 微批 vs 连续处理
-
-```python
-# 微批（默认）
-.option("trigger", "10 seconds")
-
-# 连续处理（实验性）
-.option("trigger", "continuous")
-.option("continuous-checkpoint-interval", "1 second")
-```
-
 ---
 
-## 八、典型案例
+## 7. 典型案例
 
-### 8.1 Flink：实时风控
+**Flink 实时风控**：
 
 ```
 订单 → Kafka → Flink（CEP 引擎检测异常模式）→ 实时拦截
@@ -215,7 +165,7 @@ result_df.writeStream \
    3. 通知风控人员
 ```
 
-### 8.2 Spark Streaming：实时数仓
+**Spark Streaming 实时数仓**：
 
 ```
 Kafka → Spark Structured Streaming → Delta Lake → BI
@@ -225,15 +175,52 @@ Kafka → Spark Structured Streaming → Delta Lake → BI
 
 ---
 
-## 九、最佳实践
+## 8. 最佳实践
 
-1. **Flink 选 Java / Scala**：性能最佳
-2. **Spark 选 Python / SQL**：易用性优先
-3. **状态后端选 RocksDB**：TB 级状态首选
-4. **Checkpoint 间隔**：60-300 秒（不要太频繁）
-5. **监控**：Flink UI / Spark UI + Prometheus Metrics
-6. **灾备**：Savepoint（HDFS / S3）
+| 实践 | 说明 |
+|------|------|
+| Flink 语言选型 | Java / Scala（性能最佳） |
+| Spark 语言选型 | Python / SQL（易用性优先） |
+| 状态后端 | RocksDB（TB 级状态首选） |
+| Checkpoint 间隔 | 60-300 秒（不要太频繁） |
+| 监控 | Flink UI / Spark UI + Prometheus Metrics |
+| 灾备 | Savepoint（HDFS / S3） |
 
 ---
 
-← [返回 10.big-data 主目录](../../README.md) · 📅 2026-06-28
+## 9. 常见面试题
+
+| 题目 | 核心考点 |
+|------|---------|
+| Flink 与 Spark Streaming 本质区别？ | 流式 vs 微批；延迟与吞吐 trade-off |
+| Flink Exactly-Once 如何保证？ | Checkpoint + 两阶段提交 + WAL |
+| Spark Structured Streaming vs DStream？ | 基于 Spark SQL vs RDD API |
+| 何时选 Kafka Streams？ | 简单 Java 应用 + 无独立集群 |
+| Flink Checkpoint 为什么用 RocksDB？ | TB 级状态 + 增量 checkpoint |
+
+---
+
+## 10. 与其他模块的关系
+
+- **上游**：[03-realtime-compute](../)（实时计算总览）
+- **下游**：被 [04 数据湖](../../04-data-lake/) / [05 OLAP](../../05-olap/) 消费
+- **横向**：[02 Hadoop 生态](../../02-hadoop-ecosystem/) 离线批处理互补
+
+---
+
+## 📊 本节统计
+
+| 维度 | 数字 |
+|------|------|
+| 引擎对比数 | 2（Flink / Spark Streaming）+ Kafka Streams 提及 |
+| 10 维度对比项 | 10 |
+| 选型决策问题 | 5（延迟 / 状态 / 团队 / 集群 / 数仓类型）|
+| 实战配置案例 | 3（Checkpoint / Watermark / Structured Streaming） |
+| 最佳实践条数 | 6 |
+| 常见面试题数 | 5 |
+| frontmatter 覆盖率 | 1 / 1 = 100% |
+| 文末回链覆盖 | 1 / 1 = 100% |
+
+---
+
+← [返回实时计算总览](../) · ← [返回大数据总览](../../../README.md)

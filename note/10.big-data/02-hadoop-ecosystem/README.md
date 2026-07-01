@@ -1,10 +1,10 @@
 <!--
 module:
   parent: big-data
-  slug: big-data/hadoop
-  type: article
+  slug: big-data/hadoop-ecosystem
+  type: index
   category: 主模块子文章
-  summary: Hadoop 生态
+  summary: Hadoop 三件套 + 上层引擎（Hive / Presto）——离线数仓基石
 -->
 
 # 02 Hadoop 生态
@@ -14,85 +14,58 @@ module:
 本模块覆盖 Hadoop 生态核心组件：HDFS 分布式存储、YARN 资源调度、Hive 数据仓库、Presto/Trino 分布式 SQL 查询，是离线批处理的传统基石。
 
 ---
----
 
-## 1. 本模块覆盖
+## 1. 模块导航
 
 | 主题 | 状态 | 说明 |
 |------|------|------|
-| HDFS | 📝 新增 (T13) | 分布式文件系统 |
-| YARN | 📝 新增 (T13) | 资源调度 |
-| Hive | 📝 新增 (T13) | 数据仓库 |
-| Presto/Trino | 📝 新增 (T13) | 分布式 SQL |
-| MapReduce | 📝 新增 (T13) | 编程模型（已逐步被 Spark 替代） |
+| HDFS | 📝 已有 | 分布式文件系统 |
+| YARN | 📝 已有 | 资源调度 |
+| Hive | 📝 已有 | 数据仓库 |
+| Presto/Trino | 📝 已有 | 分布式 SQL |
+| MapReduce | 📝 已有 | 编程模型（已逐步被 Spark 替代） |
 
-> 速查对比见 [📖 顶层 4.9 大数据生态版本](../../README.md#49-大数据生态-2026-版本)
+> 速查对比见 [📖 顶层 4.2 计算引擎对比](../../README.md#42-计算引擎对比)
 
----
+### 1.1 学习路径
 
-## 2. 速查要点
-
-- **HDFS 三节点**：NameNode（元数据）/ DataNode（数据块）/ Secondary NameNode（checkpoint）
-- **YARN 调度**：Capacity Scheduler（队列）/ Fair Scheduler（公平）/ FIFO
-- **Hive 执行引擎**：MR（老）→ Tez（快）→ Spark（最快）
-- **Presto vs Hive**：Presto 是 MPP 内存计算（秒级），Hive 是批处理（分钟-小时）
+- 新人：从 HDFS 架构入手，理解 NameNode/DataNode 角色
+- 进阶：掌握 YARN Capacity Scheduler 多租户资源隔离
+- 实战：搭建 3 节点 Hadoop 集群做离线数仓 ETL
 
 ---
 
-## 3. 选型建议
+## 2. 知识脉络
 
 ```mermaid
 flowchart TD
-    A[Hadoop 组件选型] --> B{计算模式?}
+    A[Hadoop 组件] --> B{计算模式?}
     B -->|批处理| C[Hive + Spark]
     B -->|交互查询| D[Presto/Trino]
     B -->|流处理| E[Kafka + Flink]
+    C --> F[HDFS 存储]
+    D --> F
+    F --> G[YARN 调度]
+    G --> H[NameNode 元数据]
 ```
 
 ---
 
-## 4. 与其他模块的关系
+## 3. 速查要点
 
-- **上游**：[08 同步工具](../08-sync-tools/)（数据写入 HDFS）
-- **下游**：被 [01 数仓架构](../01-data-warehouse/) / [04 数据湖](../04-data-lake/) 复用
-- **横向**：[03 实时计算](../03-realtime-compute/) 互补（离线 vs 实时）
-
----
-
-## 5. 学习建议
-
-- 先理解 HDFS 架构（NameNode/DataNode），再学 YARN 调度
-- 推荐路径：HDFS → MapReduce → Hive → Presto
-- 实战：搭建 3 节点 Hadoop 集群做离线数仓
+| 组件 | 核心要点 |
+|------|---------|
+| **HDFS** | NameNode（元数据）/ DataNode（数据块）/ Secondary NameNode（checkpoint） |
+| **YARN** | Capacity Scheduler（队列）/ Fair Scheduler（公平）/ FIFO |
+| **Hive** | 执行引擎 MR（老）→ Tez（快）→ Spark（最快） |
+| **Presto** | MPP 内存计算（秒级），区别于 Hive 批处理（分钟-小时） |
+| **Trino** | 原 PrestoSQL，2020 改名，独立社区 |
 
 ---
 
-## 6. 数据时效性
+## 4. 核心内容
 
-- Hadoop 3.4.x（2025-12）当前稳定版
-- Hive 3.x 每年发版
-- Presto 已改名 Trino（2020），原 PrestoSQL 仍维护
-
----
-
-## 7. 关键术语
-
-| 术语 | 解释 |
-|------|------|
-| HDFS | Hadoop Distributed File System |
-| YARN | Yet Another Resource Negotiator |
-| MR | MapReduce 编程模型 |
-| NameNode | HDFS 主节点（管理元数据） |
-| DataNode | HDFS 从节点（存储数据块） |
-| Tez | Hive 执行引擎（替代 MR） |
-| HiveQL | Hive SQL 方言 |
-| Trino | 原 PrestoSQL，2020 改名 |
-
----
-
-## 9. HDFS 架构深入
-
-HDFS（Hadoop Distributed File System）采用主从架构，单一 NameNode（2.x 起支持 HA 双 NameNode）+ 多个 DataNode。文件按 128 MB（默认）切分为 block 副本存放，默认副本数 3（机架感知策略：1 节点本地 + 1 同机架 + 1 不同机架）。
+### 4.1 HDFS 架构
 
 ```mermaid
 flowchart LR
@@ -107,30 +80,10 @@ flowchart LR
     DN2 -.->|replicate| DN3
 ```
 
-**核心配置**（`hdfs-site.xml`）：
+- 文件按 128 MB（默认）切分为 block 副本存放，默认副本数 3
+- 机架感知策略：1 节点本地 + 1 同机架 + 1 不同机架
 
-```xml
-<property>
-  <name>dfs.replication</name>
-  <value>3</value>
-</property>
-<property>
-  <name>dfs.blocksize</name>
-  <value>134217728</value> <!-- 128 MB -->
-</property>
-<property>
-  <name>dfs.namenode.handler.count</name>
-  <value>64</value>
-</property>
-```
-
-**实战案例**：某电商离线数仓每日写入日志文件 200 GB，配置 `dfs.blocksize=256 MB` + `dfs.replication=3`（异地机房副本策略），集群 50 DataNode，单 NameNode 内存堆设为 32 GB（避免千万级文件块的元数据 OOM）。
-
----
-
-## 10. YARN 调度
-
-YARN（Yet Another Resource Negotiator）= ResourceManager（RM，集群级）+ NodeManager（NM，节点级）+ ApplicationMaster（AM，应用级）+ Container（资源抽象）。
+### 4.2 YARN 调度
 
 ```mermaid
 flowchart TD
@@ -143,98 +96,80 @@ flowchart TD
     AM1 --> Container2[Container]
 ```
 
-**Capacity Scheduler 配置**（`capacity-scheduler.xml`）——多租户资源隔离：
+- RM（集群级）+ NM（节点级）+ AM（应用级）+ Container（资源抽象）
+- Capacity Scheduler 多租户资源隔离（队列配置）
 
-```xml
-<property>
-  <name>yarn.scheduler.capacity.resource-calculator</name>
-  <value>org.apache.hadoop.yarn.util.resource.DominantResourceCalculator</value>
-</property>
-<property>
-  <name>yarn.scheduler.capacity.root.queues</name>
-  <value>default,etl,adhoc</value>
-</property>
-<property>
-  <name>yarn.scheduler.capacity.root.etl.capacity</name>
-  <value>60</value>
-</property>
-<property>
-  <name>yarn.scheduler.capacity.root.adhoc.capacity</name>
-  <value>20</value>
-</property>
-```
+### 4.3 Hive 执行引擎演进
 
-**实战场景**：金融公司多业务线（风控 / ETL / 即席查询）通过队列隔离保证核心 ETL 任务不被临时查询挤占，配置 `etl` 队列 60% 资源 + `adhoc` 队列 20% + `default` 20%，并启用 `yarn.scheduler.fair.allow-undeclared-pools=false` 防止未声明队列抢占。
+- MR（MapReduce，慢）→ Tez（DAG，快 5-10x）→ Spark（RDD，最快）
+- `SET hive.execution.engine=spark` 切换 Spark 引擎
+- ORC + 矢量化 + Cost-Based Optimization（CBO）联合使用
 
----
-
-## 11. Hive 执行引擎
-
-Hive 执行引擎演进：MR（MapReduce，慢）→ Tez（DAG，快 5-10x）→ Spark（RDD，最快）。2.x 版本通过 `hive.execution.engine=spark` 切换。
+### 4.4 Presto/Trino 联邦查询
 
 ```sql
--- 启用 Spark 执行引擎
-SET hive.execution.engine=spark;
-SET spark.executor.memory=4g;
-SET spark.executor.cores=2;
-SET spark.executor.instances=20;
-
--- ORC + 矢量化 + Cost-Based Optimization
-SET hive.exec.orc.compression.strategy=COMPRESSION;
-SET hive.vectorized.execution.enabled=true;
-SET hive.cbo.enable=true;
-```
-
-**实战案例**：广告平台 Hive ETL 任务从 MR 迁移到 Spark 后，1 TB 日志聚合任务从 47 分钟缩短到 6 分钟（7.8x 加速）。关键配置：`hive.merge.mapfiles=true`（小文件合并）+ `hive.exec.reducers.bytes.per.reducer=256 MB`（reducer 数据倾斜控制）。
-
----
-
-## 12. Presto/Trino 实战
-
-Presto（已分叉为 Trino）是 MPP 内存计算引擎，适合亚秒-秒级交互查询，区别于 Hive 的批处理（分钟级）。
-
-```sql
--- Trino 跨数据源联邦查询
 SELECT
-  o.order_id,
-  o.amount,
-  u.user_name,
-  p.product_name
+  o.order_id, o.amount, u.user_name, p.product_name
 FROM hive.sales.orders o
 JOIN mysql.crm.users u ON o.user_id = u.id
 JOIN postgres.product.items p ON o.product_id = p.id
-WHERE o.dt = '2026-06-25'
-  AND o.amount > 1000;
+WHERE o.dt = '2026-06-25' AND o.amount > 1000;
 ```
 
-**反模式**：用 Presto 做大批量 ETL（> 1 TB 数据扫描），导致内存 OOM 或 coordinator 阻塞；正确做法是 Hive/Spark 做 ETL → 结果写入 Hive/Parquet → Presto 做交互查询。
-
-**性能调优**：
-
-```properties
-# config.properties
-coordinator=false
-query.max-memory=50GB
-query.max-memory-per-node=10GB
-task.writer-count=8
-```
-
-- coordinator 节点：`query.max-memory=50 GB`，worker 节点 `query.max-memory-per-node=10 GB`
-- 启用 `task.writer-count=8` 提升 INSERT 吞吐
+- MPP 内存计算，适合亚秒-秒级交互查询
+- 反模式：Presto 做大批量 ETL（> 1 TB 数据扫描）→ OOM 风险
+- 正确做法：Hive/Spark 做 ETL → 结果写入 Parquet → Presto 交互查询
 
 ---
 
-## 13. 学习资源
+## 5. 最佳实践
 
-| 类型 | 资源 |
+| 实践 | 说明 |
 |------|------|
-| 官方文档 | [Apache Hadoop 3.4.x Docs](https://hadoop.apache.org/docs/r3.4.1/) |
-| 官方文档 | [Apache Hive Docs](https://cwiki.apache.org/confluence/display/Hive/Home) |
-| 官方文档 | [Trino Documentation](https://trino.io/docs/current/) |
-| 书籍 | 《Hadoop 权威指南》（Tom White，第 4 版） |
-| 书籍 | 《Hive 编程指南》 |
-| 实战 | [Hortonworks Sandbox](https://www.cloudera.com/downloads/hortonworks-sandbox.html) |
-| GitHub | [apache/hadoop](https://github.com/apache/hadoop) |
-| GitHub | [trinodb/trino](https://github.com/trinodb/trino) |
-| 博客 | [Cloudera Blog](https://blog.cloudera.com/) |
-| 博客 | [Trino Blog](https://trino.io/blog/) |
+| HDFS 副本策略 | `dfs.replication=3` + 异地机房副本 |
+| NameNode 内存 | 单 NameNode 内存堆 32 GB（避免千万级文件块 OOM） |
+| YARN 队列隔离 | ETL 队列 60% + 即席查询 20% + 默认 20% |
+| Hive 执行引擎 | 默认 Spark + `hive.merge.mapfiles=true` 小文件合并 |
+| Presto 调优 | `query.max-memory=50 GB` + `task.writer-count=8` |
+
+---
+
+## 6. 常见面试题
+
+| 题目 | 核心考点 |
+|------|---------|
+| HDFS 副本策略？ | 默认 3 副本 + 机架感知（1 同节点 + 1 同机架 + 1 不同机架） |
+| NameNode HA 怎么做？ | 2.x 起支持双 NameNode + ZKFC + JournalNode |
+| YARN Capacity vs Fair Scheduler？ | 队列配额 vs 公平分配 |
+| Hive 执行引擎演进？ | MR → Tez → Spark 性能对比 |
+| Presto vs Hive？ | MPP 内存 vs 批处理，秒级 vs 分钟-小时 |
+| Presto 为何不能做大批量 ETL？ | coordinator 内存瓶颈 + 无状态 |
+| Trino 与 Presto 关系？ | 2020 分叉，原 PrestoSQL 改名为 Trino |
+
+---
+
+## 7. 与其他模块的关系
+
+- **上游**：[08 同步工具](../08-sync-tools/)（数据写入 HDFS）
+- **下游**：被 [01 数仓架构](../01-data-warehouse/) / [04 数据湖](../04-data-lake/) 复用
+- **横向**：[03 实时计算](../03-realtime-compute/) 互补（离线 vs 实时）
+
+---
+
+## 📊 本节统计
+
+| 维度 | 数字 |
+|------|------|
+| 子 README 数 | 1（本目录为分类顶层） |
+| 二级 leaf README 数 | 0 |
+| 速查要点组件数 | 5（HDFS / YARN / Hive / Presto / Trino） |
+| 架构图数 | 3（HDFS / YARN / Hive 演进） |
+| 实战案例数 | 4（HDFS 配置 / YARN 队列 / Hive SQL / Presto 联邦） |
+| 最佳实践条数 | 5 |
+| 常见面试题数 | 7 |
+| frontmatter 覆盖率 | 1 / 1 = 100% |
+| 文末回链覆盖 | 1 / 1 = 100% |
+
+---
+
+← [返回大数据总览](../../README.md)

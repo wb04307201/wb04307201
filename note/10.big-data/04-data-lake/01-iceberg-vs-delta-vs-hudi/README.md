@@ -4,7 +4,7 @@ module:
   slug: big-data/iceberg-vs-delta-vs-hudi
   type: article
   category: 主模块子文章
-  summary: Iceberg vs Delta Lake vs Hudi
+  summary: Iceberg vs Delta Lake vs Hudi——数据湖三剑客深度对比
 -->
 
 # Iceberg vs Delta Lake vs Apache Hudi：数据湖三剑客深度对比
@@ -12,9 +12,8 @@ module:
 > 一份按场景梳理的数据湖格式速查手册：从架构原理到生产选型的完整对比。
 
 ---
----
 
-## 一、数据湖三剑客概览
+## 1. 模块导航
 
 | 格式 | 出生 | 主导方 | 核心理念 |
 |------|------|--------|---------|
@@ -22,21 +21,28 @@ module:
 | **Delta Lake** | 2019 | Databricks | Spark 生态 + ACID + 时间旅行 |
 | **Apache Hudi** | 2017 | Uber → Apache | 增量更新 + 记录级 CDC |
 
+### 1.1 学习路径
+
+- 新人：从 Iceberg 入手，理解隐藏分区 + 多引擎支持
+- 进阶：Hudi COW / MOR 表类型与索引选择
+- 实战：S3 + Iceberg + Spark + Trino 端到端数据湖
+
 ---
 
-## 二、为什么需要"数据湖三件套"？
+## 2. 为什么需要数据湖三件套？
 
 传统 Hive 格式（Parquet / ORC）的痛点：
-- ❌ 不支持 ACID（并发写会冲突）
-- ❌ 不支持 schema 演进（改字段名很难）
-- ❌ 不支持时间旅行（看不到历史版本）
-- ❌ 不支持高效更新（必须重写整个分区）
+
+- 不支持 ACID（并发写会冲突）
+- 不支持 schema 演进（改字段名很难）
+- 不支持时间旅行（看不到历史版本）
+- 不支持高效更新（必须重写整个分区）
 
 **Iceberg / Delta / Hudi 解决了这些问题**，让数据湖具备数仓能力（Lakehouse）。
 
 ---
 
-## 三、Apache Iceberg 详解
+## 3. Apache Iceberg 详解
 
 ### 3.1 核心特性
 
@@ -57,15 +63,9 @@ Iceberg Table
 └── Data Files（Parquet / ORC / Avro）
 ```
 
-### 3.3 典型场景
-
-- 跨引擎数据湖（Spark + Flink + Trino）
-- 云原生数据湖（S3 + Iceberg）
-- 实时数据仓库（Flink + Iceberg + Doris）
-
 ---
 
-## 四、Delta Lake 详解
+## 4. Delta Lake 详解
 
 ### 4.1 核心特性
 
@@ -86,15 +86,9 @@ Delta Table = Parquet Files + Delta Log
 └── data files（Parquet）
 ```
 
-### 4.3 典型场景
-
-- Databricks 用户
-- Spark 生态数仓
-- ML 特征工程（Delta + MLflow）
-
 ---
 
-## 五、Apache Hudi 详解
+## 5. Apache Hudi 详解
 
 ### 5.1 核心特性
 
@@ -113,15 +107,9 @@ Hudi Table
 └── Index（索引）
 ```
 
-### 5.3 典型场景
-
-- **CDC 数据入湖**：MySQL Binlog → Hudi（记录级 upsert）
-- **流批一体**：Kafka → Flink → Hudi（Hudi 主键合并）
-- **Uber 起源**：Uber 出行数据用 Hudi 处理
-
 ---
 
-## 六、12 维度深度对比
+## 6. 12 维度深度对比
 
 | 维度 | Iceberg | Delta Lake | Hudi |
 |------|---------|-----------|------|
@@ -132,7 +120,7 @@ Hudi Table
 | **Schema 演进** | ✅ 强 | ✅ 强 | ✅ 中 |
 | **隐藏分区** | ✅ 首创 | ❌ 无 | ❌ 无 |
 | **时间旅行** | ✅ | ✅ | ✅ |
-| **CDC 友好** | ⚠️ 中 | ⚠️ 中 | ✅ 强（Copy-on-Write / Merge-on-Read） |
+| **CDC 友好** | ⚠️ 中 | ⚠️ 中 | ✅ 强（COW / MOR） |
 | **流式摄入** | ✅ Flink 集成 | ✅ Structured Streaming | ✅ Flink 集成 |
 | **云原生** | ✅ S3/OSS/GCS | ✅ S3/ADLS/GCS | ✅ S3/OSS/GCS |
 | **生态成熟度** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ |
@@ -140,7 +128,7 @@ Hudi Table
 
 ---
 
-## 七、生产选型决策
+## 7. 生产选型决策
 
 ```
 Q1: 主要引擎是？
@@ -166,9 +154,9 @@ Q4: 云厂商绑定？
 
 ---
 
-## 八、生产实战对比
+## 8. 生产实战对比
 
-### 8.1 Iceberg + Flink + Doris 实时数仓
+**Iceberg + Flink + Doris 实时数仓**：
 
 ```
 Kafka → Flink（CDC）→ Iceberg（湖仓）→ Doris（查询）
@@ -176,7 +164,7 @@ Kafka → Flink（CDC）→ Iceberg（湖仓）→ Doris（查询）
    优势：流批一体、Schema 演进
 ```
 
-### 8.2 Delta + Spark 离线数仓
+**Delta + Spark 离线数仓**：
 
 ```
 S3 → Delta Lake → Spark SQL → BI
@@ -184,7 +172,7 @@ S3 → Delta Lake → Spark SQL → BI
    限制：跨引擎支持弱
 ```
 
-### 8.3 Hudi + Flink CDC 入湖
+**Hudi + Flink CDC 入湖**：
 
 ```
 MySQL Binlog → Flink CDC → Hudi（COW）
@@ -193,7 +181,7 @@ MySQL Binlog → Flink CDC → Hudi（COW）
 
 ---
 
-## 九、主流厂商选型
+## 9. 主流厂商选型
 
 | 厂商 | 推荐 |
 |------|------|
@@ -208,15 +196,54 @@ MySQL Binlog → Flink CDC → Hudi（COW）
 
 ---
 
-## 十、最佳实践
+## 10. 最佳实践
 
-1. **优先 Iceberg**：跨引擎最灵活、云原生标准
-2. **Hudi 适合 CDC 场景**：MySQL → 数据湖
-3. **Delta 适合 Spark 团队**：生态最完整
-4. **避免重复选型**：一旦选定，全公司统一（不要 A 团队 Iceberg，B 团队 Delta）
-5. **小文件合并**：每天 / 每周定期 compaction
-6. **监控**：元数据文件大小、snapshot 数量、文件数
+| 实践 | 说明 |
+|------|------|
+| 优先 Iceberg | 跨引擎最灵活、云原生标准 |
+| Hudi 适合 CDC | MySQL → 数据湖 |
+| Delta 适合 Spark | 团队生态最完整 |
+| 避免重复选型 | 一旦选定全公司统一（不要 A 团队 Iceberg、B 团队 Delta） |
+| 小文件合并 | 每天/每周定期 compaction |
+| 监控 | 元数据文件大小 / snapshot 数量 / 文件数 |
 
 ---
 
-← [返回 10.big-data 主目录](../../README.md) · 📅 2026-06-28
+## 11. 常见面试题
+
+| 题目 | 核心考点 |
+|------|---------|
+| 三种数据湖格式核心差异？ | 多引擎 / CDC / Spark 生态 |
+| Iceberg 隐藏分区原理？ | partition transform 不依赖目录名 |
+| COW vs MOR 区别？ | 写时合并 vs 读时合并；性能特征 |
+| Delta Lake 为何强绑定 Spark？ | 深度集成 + 事务日志 + Databricks 生态 |
+| Hudi 为何适合 CDC？ | 记录级 upsert + 索引 |
+| 何时不用 Iceberg？ | 已有 Databricks 全栈 + 团队仅用 Spark |
+
+---
+
+## 12. 与其他模块的关系
+
+- **上游**：[04-data-lake](../)（数据湖总览）
+- **下游**：被 [05 OLAP](../../05-olap/) / [03 实时计算](../../03-realtime-compute/) 消费
+- **横向**：[01 数仓架构](../../01-data-warehouse/) 湖仓一体范式
+
+---
+
+## 📊 本节统计
+
+| 维度 | 数字 |
+|------|------|
+| 数据湖格式数 | 3（Iceberg / Delta / Hudi）|
+| 12 维度对比项 | 12 |
+| 选型决策问题 | 4（引擎 / 团队 / 场景 / 云厂商） |
+| 厂商选型表 | 8（Netflix / Uber / Databricks / 阿里 / 腾讯 / AWS / Azure / Snowflake）|
+| 实战案例数 | 3（Iceberg + Flink + Doris / Delta + Spark / Hudi + Flink CDC）|
+| 最佳实践条数 | 6 |
+| 常见面试题数 | 6 |
+| frontmatter 覆盖率 | 1 / 1 = 100% |
+| 文末回链覆盖 | 1 / 1 = 100% |
+
+---
+
+← [返回数据湖总览](../) · ← [返回大数据总览](../../../README.md)
