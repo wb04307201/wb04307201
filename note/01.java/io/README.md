@@ -687,3 +687,19 @@ System.out.println(new String(data));
 6. **高并发网络通信使用 NIO + Selector**，避免 BIO 的线程资源浪费
 7. **文件操作优先使用 NIO.2 的 `Files` / `Path`**，替代 `File` 类（API 更完善、异常更清晰）
 8. **注意 `flush()` 与 `close()` 的关系**：`close()` 内部会调用 `flush()`，但不能只依赖 `flush()` 而忽略 `close()`
+
+---
+
+## 📊 本节统计
+
+| 统计维度 | 数值 | 口径 |
+|----------|------|------|
+| 分类主题数 | 2 | NIO / 零拷贝 |
+| 子 README 数 | 2 | `io/` 下 leaf README（nio / zero-copy） |
+| 含 frontmatter 的 README | 3 / 3 | 100% 覆盖（2026-07-01） |
+
+> **统计时间戳**：2026-07-01
+
+---
+
+← [返回 01.java 主模块](../README.md)

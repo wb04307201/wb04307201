@@ -825,3 +825,19 @@ public class TraceIdFilter implements Filter {
 | includeLocation | 生产环境关闭代码位置信息 |
 | 统一格式 | 全公司统一日志格式（推荐 JSON） |
 | 日志集中化 | 接入 ELK/日志平台，不要只存在本地磁盘 |
+
+---
+
+## 📊 本节统计
+
+| 统计维度 | 数值 | 口径 |
+|----------|------|------|
+| 分类主题数 | 1 | 日志体系（JUL / Log4j 2 / Logback / SLF4J 4 个框架综合） |
+| 子 README 数 | 0 | 无子 README |
+| 含 frontmatter 的 README | 1 / 1 | 100% 覆盖（2026-07-01） |
+
+> **统计时间戳**：2026-07-01
+
+---
+
+← [返回 01.java 主模块](../README.md)

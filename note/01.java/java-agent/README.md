@@ -518,3 +518,19 @@ new AgentBuilder.Default()
 ## 实战案例
 
 详见 [api/README.md](api/README.md) —— 完整的 API 接口调用耗时统计 Agent 实现。
+
+---
+
+## 📊 本节统计
+
+| 统计维度 | 数值 | 口径 |
+|----------|------|------|
+| 分类主题数 | 2 | Instrumentation API / 实战案例（api/） |
+| 子 README 数 | 1 | `api/` 实战案例 README |
+| 含 frontmatter 的 README | 2 / 2 | 100% 覆盖（2026-07-01） |
+
+> **统计时间戳**：2026-07-01
+
+---
+
+← [返回 01.java 主模块](../README.md)

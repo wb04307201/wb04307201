@@ -824,3 +824,19 @@ mvn clean install -rf :module-a        # 从指定模块恢复构建
 ./gradlew :module:build                # 构建指定模块
 ./gradlew build --parallel             # 并行构建
 ```
+
+---
+
+## 📊 本节统计
+
+| 统计维度 | 数值 | 口径 |
+|----------|------|------|
+| 分类主题数 | 2 | Maven / Gradle |
+| 子 README 数 | 0 | 无子 README（Maven vs Gradle 对比 + 各自核心概念聚合在本篇） |
+| 含 frontmatter 的 README | 1 / 1 | 100% 覆盖（2026-07-01） |
+
+> **统计时间戳**：2026-07-01
+
+---
+
+← [返回 01.java 主模块](../README.md)

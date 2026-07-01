@@ -650,3 +650,19 @@ com.example-project              # 连字符不合法
 | `java.security.jgss` | GSS-API/Kerberos | 安全认证 |
 | `jdk.compiler` | javac 编译器 | 代码生成工具 |
 | `jdk.jshell` | JShell REPL | 交互式脚本 |
+
+---
+
+## 📊 本节统计
+
+| 统计维度 | 数值 | 口径 |
+|----------|------|------|
+| 分类主题数 | 1 | JPMS（Java Platform Module System） |
+| 子 README 数 | 0 | 无子 README（module-info / exports / opens / requires 等聚合本篇） |
+| 含 frontmatter 的 README | 1 / 1 | 100% 覆盖（2026-07-01） |
+
+> **统计时间戳**：2026-07-01
+
+---
+
+← [返回 01.java 主模块](../README.md)

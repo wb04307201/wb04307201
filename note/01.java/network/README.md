@@ -961,3 +961,19 @@ composite.addComponents(true, buf1, buf2, buf3);
 ---
 
 > **总结**：Java 网络编程从 BIO 到 NIO 再到 AIO，经历了从阻塞到非阻塞再到异步的演进。实际生产中，推荐使用 NIO 配合 Netty 框架，既保证了高性能，又降低了开发复杂度。对于 HTTP 客户端场景，Java 11+ 的 `HttpClient` 是首选方案。
+
+---
+
+## 📊 本节统计
+
+| 统计维度 | 数值 | 口径 |
+|----------|------|------|
+| 分类主题数 | 1 | 网络编程（Socket / BIO / NIO / AIO / Reactor / HttpClient / Netty 9 节） |
+| 子 README 数 | 0 | 无子 README |
+| 含 frontmatter 的 README | 1 / 1 | 100% 覆盖（2026-07-01） |
+
+> **统计时间戳**：2026-07-01
+
+---
+
+← [返回 01.java 主模块](../README.md)

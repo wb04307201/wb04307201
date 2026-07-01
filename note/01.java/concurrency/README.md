@@ -561,3 +561,19 @@ concurrency/
 > 本专题覆盖了并发编程的基础知识体系——从 JMM 理论到 volatile/synchronized 同步原语，
 > 从 ThreadLocal 线程封闭到 CAS 无锁编程，再到 CompletableFuture 异步编排。
 > 掌握这些内容是进一步学习线程池、虚拟线程、结构化并发等高级主题的基础。
+
+---
+
+## 📊 本节统计
+
+| 统计维度 | 数值 | 口径 |
+|----------|------|------|
+| 分类主题数 | 6 | jmm / volatile / synchronized / threadlocal / atomic / completablefuture |
+| 子 README 数 | 13 | 含 concurrent-collections（3 子目录）等深层 leaf |
+| 含 frontmatter 的 README | 14 / 14 | 100% 覆盖（2026-07-01） |
+
+> **统计时间戳**：2026-07-01
+
+---
+
+← [返回 01.java 主模块](../README.md)

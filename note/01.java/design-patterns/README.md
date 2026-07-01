@@ -138,3 +138,19 @@ mindmap
 - [创建型模式 -- 单例、工厂、建造者](creation/README.md)
 - [结构型模式 -- 代理、装饰器、适配器](structural/README.md)
 - [行为型模式 -- 观察者、策略、模板方法、责任链](behavioral/README.md)
+
+---
+
+## 📊 本节统计
+
+| 统计维度 | 数值 | 口径 |
+|----------|------|------|
+| 分类主题数 | 3 | 创建型 / 结构型 / 行为型（GoF 23 种模式按此 3 大类拆分） |
+| 子 README 数 | 3 | creation / structural / behavioral（每个聚合对应 GoF 子集） |
+| 含 frontmatter 的 README | 4 / 4 | 100% 覆盖（2026-07-01） |
+
+> **统计时间戳**：2026-07-01
+
+---
+
+← [返回 01.java 主模块](../README.md)
