@@ -11,7 +11,6 @@ module:
 
 > 云数据库(Cloud Database)是云厂商提供的关系型、NoSQL、NewSQL 等托管服务,具备自动备份、容灾、监控、扩缩容等开箱即用能力;主流产品包括 AWS RDS/Aurora、阿里云 RDS/PolarDB、Azure Database、Google Cloud SQL、TiDB Cloud 等。
 
-> 最后更新: 2026-07-01
 
 ---
 
@@ -434,7 +433,7 @@ TiDB Cloud 是 PingCAP 提供的**云原生 NewSQL 数据库**,100% 兼容 MySQL
 - **leaf README 数**：1（本文即为分类 leaf，单 README 长文聚合 8 主题）
 - **本节主题数**：8（价值挑战、AWS RDS/Aurora、阿里云 RDS/PolarDB、Azure SQL/GCP、TiDB Cloud、托管 Redis/MongoDB、自建 vs 云、迁移实践）
 - **frontmatter 状态**：✅ 已对齐 CONTRIBUTING §12 标准（summary ≤ 80 字 / type=index）
-- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README；最后更新 2026-07-01
+- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README
 
 ---
 

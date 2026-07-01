@@ -11,7 +11,6 @@ module:
 
 > 数据迁移与同步是企业级数据库的核心工程能力,涵盖全量迁移、增量同步、异构同步三大场景;常用工具包括 DataX(离线全量)、Canal/Maxwell(基于 Binlog 增量)、Flink CDC(实时流式)。
 
-> 最后更新: 2026-07-01
 
 ---
 
@@ -470,7 +469,7 @@ FROM source_db.users TABLESAMPLE BERNOULLI(0.1);  -- 0.1% 抽样
 - **leaf README 数**：1（本文即为分类 leaf，单 README 长文聚合 7 主题）
 - **本节主题数**：7（迁移场景、DataX、Canal、Maxwell、Flink CDC、工具选型、实战要点）
 - **frontmatter 状态**：✅ 已对齐 CONTRIBUTING §12 标准（summary ≤ 80 字 / type=index）
-- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README；最后更新 2026-07-01
+- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README
 
 ---
 

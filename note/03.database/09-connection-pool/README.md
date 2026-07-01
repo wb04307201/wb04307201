@@ -11,7 +11,6 @@ module:
 
 > 数据库连接池通过预先创建并复用连接,避免每次请求都进行 TCP 握手和身份认证,Spring Boot 2.x+ 默认使用 HikariCP,监控与防 SQL 注入场景推荐 Druid。
 
-> 最后更新: 2026-07-01
 
 ---
 
@@ -480,7 +479,7 @@ public void syncMethod() {
 - **leaf README 数**：1（本文即为分类 leaf，单 README 长文聚合 12 主题）
 - **本节主题数**：12（必要性、连接池对比、HikariCP、Druid、调优、最佳实践、监控、问题排查、其他连接池、加密密码、分库分表、事务协作）
 - **frontmatter 状态**：✅ 已对齐 CONTRIBUTING §12 标准（summary ≤ 80 字 / type=index）
-- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README；最后更新 2026-07-01
+- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README
 
 ---
 

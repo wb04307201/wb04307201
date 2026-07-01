@@ -11,7 +11,6 @@ module:
 
 > 数据库监控告警是生产环境稳定性的基石,核心目标是实时掌握 QPS、延迟、连接、复制延迟等关键指标,结合 Prometheus + Grafana + AlertManager 实现可视化与告警闭环。
 
-> 最后更新: 2026-07-01
 
 ---
 
@@ -545,7 +544,7 @@ SHOW SLAVE STATUS;  -- Seconds_Behind_Master: 300s
 - **leaf README 数**：1（本文即为分类 leaf，单 README 长文聚合 8 主题）
 - **本节主题数**：8（监控架构、Golden Signals、MySQL 监控、Redis 监控、Prometheus+Grafana 实战、告警规则、慢查询日志分析、生产事故案例）
 - **frontmatter 状态**：✅ 已对齐 CONTRIBUTING §12 标准（summary ≤ 80 字 / type=index）
-- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README；最后更新 2026-07-01
+- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README
 
 ---
 

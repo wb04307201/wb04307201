@@ -92,7 +92,7 @@ graph TD
 | **leaf README 合计** | 13 depth-2 leaf + 1 顶层 = **14** | 100% frontmatter |
 | **模块导航行数** | 11（见上方模块导航） | 全部聚合在本章及子 README |
 
-> 数字基线：以 leaf README 数 + 模块导航行数双口径统计；最后更新 2026-07-02。
+> 数字基线：以 leaf README 数 + 模块导航行数双口径统计
 
 ---
 

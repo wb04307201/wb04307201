@@ -11,7 +11,6 @@ module:
 
 > SQL(Structured Query Language)是用于管理关系型数据库的标准语言,本文涵盖 SQL 分类、核心语法、执行顺序与慢查询分析与优化。
 
-> 最后更新: 2026-07-01
 
 ---
 
@@ -467,7 +466,7 @@ SELECT * FROM users WHERE age > 20 ORDER BY create_time DESC LIMIT 10;
 - **leaf README 数**：1（本文即为分类 leaf，单 README 长文聚合 9 主题）
 - **本节主题数**：9（SQL 分类、核心语法、执行顺序、慢查询分析、最佳实践、CTE、窗口函数、JOIN 算法、EXPLAIN ANALYZE）
 - **frontmatter 状态**：✅ 已对齐 CONTRIBUTING §12 标准（summary ≤ 80 字 / type=index）
-- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README；最后更新 2026-07-01
+- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README
 
 ---
 

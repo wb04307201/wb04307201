@@ -93,7 +93,7 @@ graph LR
 | **leaf README 合计** | 32 depth-2/3 leaf + 1 顶层 = **33** | 100% frontmatter |
 | **学习路径主题数** | 18（见上方学习路径列表） | 含 development-process 等子主题 |
 
-> 数字基线：本节以 leaf README 数 + 学习路径主题数双口径统计；最后更新 2026-07-02。
+> 数字基线：本节以 leaf README 数 + 学习路径主题数双口径统计
 
 ---
 

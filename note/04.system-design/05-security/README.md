@@ -91,7 +91,7 @@ graph TD
 | **模块导航行数** | 10（见上方模块导航表） | 含 access-control 3 子项 |
 | **leaf .md** | 6 | access-control 下的 dac/mac/abac/rbac/rebac/hybrid |
 
-> 数字基线：以 leaf README 数 + 模块导航行数双口径统计；最后更新 2026-07-02。
+> 数字基线：以 leaf README 数 + 模块导航行数双口径统计
 > ⚠️ 03-encryption / 04-jwt-oauth2 / 05-devsecops 三个空目录为历史遗留，未计入统计；01-web-security / 02-api-security 与 api-security/ 内容重复，待清理（不进本任务范围）。
 
 ---

@@ -66,7 +66,7 @@ graph LR
 | **README 覆盖** | 3 depth-2 leaf + 1 顶层 = **4** | 100% frontmatter（每篇含 summary） |
 | **聚合主题数** | 3（见上方模块导航） | 全部聚合在本章及子 README |
 
-> 数字基线：本节为新增顶层分类（2026-07-02 由 07-deployment/observability 拆分而来），子 README 已存在；最后更新 2026-07-02。
+> 数字基线：本节为新增顶层分类（2026-07-02 由 07-deployment/observability 拆分而来），子 README 已存在
 
 ---
 

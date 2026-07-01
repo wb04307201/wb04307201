@@ -11,7 +11,6 @@ module:
 
 > MySQL 是最流行的开源关系型数据库,采用 Server 层 + 存储引擎层两层架构,InnoDB 是默认且推荐的事务型引擎,核心机制包括 Buffer Pool、Redo Log、Binlog 与主从复制。
 
-> 最后更新: 2026-07-01
 
 ---
 
@@ -455,7 +454,7 @@ SELECT * FROM sys.schema_unused_indexes;
 - **leaf README 数**：1（本文即为分类 leaf，单 README 长文聚合 11 主题）
 - **本节主题数**：11（架构、引擎对比、InnoDB 内部、主从复制、高可用、关键参数、EXPLAIN、8.0 新特性、备份恢复、分区表、慢查询工具）
 - **frontmatter 状态**：✅ 已对齐 CONTRIBUTING §12 标准（summary ≤ 80 字 / type=index）
-- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README；最后更新 2026-07-01
+- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README
 
 ---
 

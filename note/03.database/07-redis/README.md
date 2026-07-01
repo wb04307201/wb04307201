@@ -11,7 +11,6 @@ module:
 
 > Redis(REmote DIctionary Server)是基于内存的键值数据库,支持丰富的数据结构,凭借 RDB+AOF 持久化、Cluster 集群、灵活的淘汰策略和 Lua/事务能力,广泛用作缓存、消息队列和实时数据存储。
 
-> 最后更新: 2026-07-01
 
 ---
 
@@ -525,7 +524,7 @@ Grafana 官方提供 Redis 仪表盘,关键告警指标:
 - **leaf README 数**：1（本文即为分类 leaf，单 README 长文聚合 13 主题）
 - **本节主题数**：13（为什么快、数据类型、持久化、集群、内存管理、vs Memcached、缓存选型、底层数据结构、分布式锁、Pipeline/事务/Lua、客户端对比、监控、7.0 新特性）
 - **frontmatter 状态**：✅ 已对齐 CONTRIBUTING §12 标准（summary ≤ 80 字 / type=index）
-- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README；最后更新 2026-07-01
+- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README
 
 ---
 

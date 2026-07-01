@@ -87,7 +87,7 @@ graph TD
 | **README 覆盖** | 3 depth-2 leaf + 1 顶层 = **4** | 100% frontmatter |
 | **聚合主题数** | 3（见上方模块导航） | 全部聚合在本章及子 README |
 
-> 数字基线：以子目录 leaf README 数 + 顶层章节主题数统计；最后更新 2026-07-02。
+> 数字基线：以子目录 leaf README 数 + 顶层章节主题数统计
 > 📌 深度可观测性栈另见 [08 可观测性](../08-observability/README.md)（Prometheus / Grafana / Loki 工具链）。
 
 ---

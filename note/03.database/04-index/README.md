@@ -11,7 +11,6 @@ module:
 
 > 索引(Index)是数据库为了加快数据检索而维护的辅助数据结构,MySQL InnoDB 默认采用 B+ 树;合理使用索引是 SQL 优化中最核心的手段。
 
-> 最后更新: 2026-07-01
 
 ---
 
@@ -451,7 +450,7 @@ ALTER TABLE users ADD INDEX idx_email (email), ALGORITHM=INPLACE, LOCK=NONE;
 - **leaf README 数**：1（本文即为分类 leaf，单 README 长文聚合 13 主题）
 - **本节主题数**：13（必要性、数据结构、分类、最左前缀、失效场景、设计原则、维护、EXPLAIN、ICP、MRR、Index Merge、Cardinality、Online DDL）
 - **frontmatter 状态**：✅ 已对齐 CONTRIBUTING §12 标准（summary ≤ 80 字 / type=index）
-- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README；最后更新 2026-07-01
+- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README
 
 ---
 
