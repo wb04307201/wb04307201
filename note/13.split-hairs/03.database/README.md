@@ -1,4 +1,10 @@
 <!--
+module:
+  parent: split-hairs
+  slug: 03.database
+  type: article
+  category: 高频面试题
+  summary: 数据库高频面试题与细节深挖（MySQL / Redis / NoSQL）
 question:
   id: 03.database-03.database
   topic: 03.database
@@ -10,7 +16,7 @@ question:
 
 # 数据库咬文嚼字
 
-> 数据库高频面试题与细节深挖，对齐主模块 [`03.database`](../../03.database/)
+> 数据库高频面试题与细节深挖，对齐主模块 [`03.database`](../../03.database/)。聚焦 MySQL（索引 / 锁 / 事务 / MVCC / JOIN）、Redis（持久化 / 淘汰 / 集群 / 大 Key）、NoSQL 三大方向的 22 个高频陷阱。
 
 ---
 
@@ -66,3 +72,5 @@ question:
 
 - 主模块：[`note/03.database`](../../03.database/) — 数据库知识体系
 - 相关章节：[`04.system-design`](../04.system-design/)（高性能设计）
+
+← [返回咬文嚼字（高频面试题）](../README.md)

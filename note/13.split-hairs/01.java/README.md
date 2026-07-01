@@ -1,4 +1,10 @@
 <!--
+module:
+  parent: split-hairs
+  slug: 01.java
+  type: article
+  category: 高频面试题
+  summary: Java 高频面试题与细节深挖（集合 / 并发 / JVM / 类型 / 设计模式）
 question:
   id: 01.java-01.java
   topic: 01.java
@@ -10,7 +16,7 @@ question:
 
 # Java 咬文嚼字
 
-> Java 高频面试题与细节深挖，对齐主模块 [`01.java`](../../01.java/)
+> Java 高频面试题与细节深挖，对齐主模块 [`01.java`](../../01.java/)。34 篇分集合 / 并发 / JVM / 语言基础 / 对象类型 / 设计模式 / 综合 7 组，覆盖 90% 后端面试 Java 高频题。
 
 ---
 
@@ -90,3 +96,5 @@ question:
 
 - 主模块：[`note/01.java`](../../01.java/) — Java 知识体系
 - 相关章节：[`03.database`](../03.database/)（SQL 相关）/ [`06.spring`](../06.spring/)（框架相关）
+
+← [返回咬文嚼字（高频面试题）](../README.md)

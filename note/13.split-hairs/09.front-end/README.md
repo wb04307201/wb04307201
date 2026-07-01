@@ -1,4 +1,10 @@
 <!--
+module:
+  parent: split-hairs
+  slug: 09.front-end
+  type: article
+  category: 高频面试题
+  summary: 前端高频面试题与细节深挖（JS 核心 / HTTP / 浏览器机制 / 框架）
 question:
   id: 09.front-end-09.front-end
   topic: 09.front-end
@@ -10,7 +16,7 @@ question:
 
 # 前端咬文嚼字
 
-> 前端高频面试题与细节深挖，对齐主模块 [`09.front-end`](../../09.front-end/)
+> 前端高频面试题与细节深挖，对齐主模块 [`09.front-end`](../../09.front-end/)。25 篇真题覆盖 JS 核心 / HTTP / CSS / 浏览器机制 / 工具测试 / 框架 / 安全 / Promise 8 大方向。
 
 ---
 
@@ -89,3 +95,5 @@ question:
 
 - 主模块：[`note/09.front-end`](../../09.front-end/) — 前端知识体系
 - 相关章节：[`01-foundation`](../../09.front-end/01-foundation/) / [`02-language`](../../09.front-end/02-language/)（基础与语言）
+
+← [返回咬文嚼字（高频面试题）](../README.md)

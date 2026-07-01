@@ -1,4 +1,10 @@
 <!--
+module:
+  parent: split-hairs
+  slug: 06.spring
+  type: article
+  category: 高频面试题
+  summary: Spring 高频面试题与细节深挖（IoC / AOP / 事务 / MVC / 事件）
 question:
   id: 06.spring-06.spring
   topic: 06.spring
@@ -10,7 +16,7 @@ question:
 
 # Spring 咬文嚼字
 
-> Spring 高频面试题与细节深挖，对齐主模块 [`06.spring`](../../06.spring/)
+> Spring 高频面试题与细节深挖，对齐主模块 [`06.spring`](../../06.spring/)。13 篇真题覆盖 IoC / Bean 生命周期 / AOP / @Transactional / 循环依赖 / 自动配置 / Spring MVC / 事件 8 大方向。
 
 ---
 
@@ -73,3 +79,5 @@ question:
 
 - 主模块：[`note/06.spring`](../../06.spring/) — Spring 知识体系
 - 相关章节：[`01.java`](../01.java/)（Java 基础）/ [`04.system-design`](../04.system-design/)（系统设计）
+
+← [返回咬文嚼字（高频面试题）](../README.md)

@@ -1,4 +1,10 @@
 <!--
+module:
+  parent: split-hairs
+  slug: 04.system-design
+  type: article
+  category: 高频面试题
+  summary: 系统设计高频面试题与难点深挖（MQ / 缓存 / 分布式 / 限流 / 幂等）
 question:
   id: 04.system-design-04.system-design
   topic: 04.system-design
@@ -10,7 +16,7 @@ question:
 
 # 系统设计咬文嚼字
 
-> 系统设计高频面试题与难点深挖，对齐主模块 [`04.system-design`](../../04.system-design/)
+> 系统设计高频面试题与难点深挖，对齐主模块 [`04.system-design`](../../04.system-design/)。10 篇真题覆盖 MQ / 缓存一致性 / 限流 / 分布式 ID / 分布式事务 / CAP / 分布式锁 / 幂等 / 熔断 9 大方向。
 
 ---
 
@@ -89,3 +95,5 @@ question:
   - 缓存穿透/击穿/雪崩 → [`03.database/06-cache`](../../03.database/06-cache/README.md)
   - 分库分表 → [`03.database`](../../03.database/README.md) 数据迁移与同步
   - 异步化方案 → [`01.java/concurrency`](../../01.java/concurrency/README.md) CompletableFuture
+
+← [返回咬文嚼字（高频面试题）](../README.md)
