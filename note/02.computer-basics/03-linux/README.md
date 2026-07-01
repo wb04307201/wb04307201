@@ -115,3 +115,19 @@ ssh-copy-id user@remote-server  # 上传公钥
 - 通过 `tldr command` 安装简化版 man 手册 (`apt install tldr`)
 - 在 [explainshell.com](https://explainshell.com) 解析复杂命令
 - 实践《Linux 101 Hacks》电子书中的场景案例
+
+---
+
+## 📊 本节统计
+
+| 统计维度 | 数值 | 口径 |
+|----------|------|------|
+| 分类主题数 | 1 | curl 命令详解 |
+| 子 README 数 | 1 | curl 专题 leaf |
+| 含 frontmatter 的 README | 2 / 2 | 100% 覆盖（2026-07-01） |
+
+> **统计时间戳**：2026-07-01
+
+---
+
+← [返回 02.computer-basics 主模块](../README.md)

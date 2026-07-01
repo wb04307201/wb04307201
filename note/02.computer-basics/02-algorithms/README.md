@@ -151,6 +151,22 @@ module:
 
 ## 相关章节
 
-- 上游：[`01.java`](../../01.java/README.md) — Java 数据结构与算法实现
+- 上游：[`02.computer-basics`](../README.md) — 本模块入口
 - 关联：[`03.database`](../../03.database/README.md) — B+Tree 索引、查询优化
 - 关联：[`04.system-design`](../../04.system-design/README.md) — 算法在系统设计中的应用（缓存、负载均衡、一致性哈希）
+
+---
+
+## 📊 本节统计
+
+| 统计维度 | 数值 | 口径 |
+|----------|------|------|
+| 分类主题数 | 1 | 复杂度（含 time-complexity / space-complexity 2 子专题） |
+| 子 README 数 | 3 | 含 complexity/time-complexity / complexity/space-complexity 等深层 leaf |
+| 含 frontmatter 的 README | 4 / 4 | 100% 覆盖（2026-07-01） |
+
+> **统计时间戳**：2026-07-01
+
+---
+
+← [返回 02.computer-basics 主模块](../README.md)

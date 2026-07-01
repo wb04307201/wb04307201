@@ -78,3 +78,19 @@ module:
 ---
 
 **深入学习路径：** [OSI 模型](osi-model/) → [TCP/IP 模型](tcp-ip-model/) → [核心协议](protocols/)
+
+---
+
+## 📊 本节统计
+
+| 统计维度 | 数值 | 口径 |
+|----------|------|------|
+| 分类主题数 | 5 | osi-model / tcp-ip-model / protocols / wcag + 4 篇编号子 README |
+| 子 README 数 | 10 | 含 tcp-ip-model / protocols（2 子专题）等深层 leaf |
+| 含 frontmatter 的 README | 11 / 11 | 100% 覆盖（2026-07-01） |
+
+> **统计时间戳**：2026-07-01
+
+---
+
+← [返回 02.computer-basics 主模块](../README.md)
