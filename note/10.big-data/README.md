@@ -1,53 +1,44 @@
 <!--
 module:
-  number: 10
+  parent: note
   slug: big-data
-  topic: 大数据
-  audience: 数据工程师 / 后端
-  category: 主模块
-  summary: 一句话定位：**从数仓架构到 OLAP、数据湖、治理——大数据技术栈的完整地图**
+  type: index
+  category: 大数据
+  summary: 一句话定位：从数仓架构到 OLAP、数据湖、治理——大数据技术栈的完整地图
 -->
 
-# 大数据
+# 十、[大数据](README.md)
 
 > 一句话定位：**从数仓架构到 OLAP、数据湖、治理——大数据技术栈的完整地图**
-
-本章节覆盖大数据领域 8 大主题：数仓架构 / Hadoop 生态 / 实时计算 / 数据湖 / OLAP / 调度 / 数据治理 / 同步工具，是理解现代数据基础设施的全景指南。
+>
+> 本章节覆盖大数据领域 8 大主题：数仓架构 / Hadoop 生态 / 实时计算 / 数据湖 / OLAP / 调度 / 数据治理 / 同步工具，是理解现代数据基础设施的全景指南。
 
 ---
 
-## 一、🎯 9 模块导航
+## 1. 模块导航
 
 | 序号 | 主题 | 核心内容 | 子 README | 学习价值 |
 |------|------|---------|-----------|---------|
-| 01 | 数仓架构 | Lambda/Kappa/湖仓一体/批流融合 | [01-data-warehouse/](./01-data-warehouse/) | 架构选型根因 |
-| 02 | Hadoop 生态 | HDFS/YARN/Hive/Presto | [02-hadoop-ecosystem/](./02-hadoop-ecosystem/) | 离线数仓基石 |
-| 03 | 实时计算 | Flink/Spark Streaming/Storm | [03-realtime-compute/](./03-realtime-compute/) | 毫秒-秒级延迟 |
-| 04 | 数据湖 | Iceberg/Hudi/Delta Lake | [04-data-lake/](./04-data-lake/) | 存算分离新范式 |
-| 05 | OLAP | Doris/ClickHouse/StarRocks | [05-olap/](./05-olap/) | 亚秒级查询 |
-| 06 | 调度 | Airflow/DolphinScheduler | [06-scheduling/](./06-scheduling/) | 任务编排 |
-| 07 | 数据治理 | Atlas/DataHub/数据血缘 | [07-data-governance/](./07-data-governance/) | 元数据/质量/安全 |
-| 08 | 同步工具 | DataX/SeaTunnel/Sqoop | [08-sync-tools/](./08-sync-tools/) | 异构数据集成 |
+| 01 | [数仓架构](./01-data-warehouse/) | Lambda / Kappa / 湖仓一体 / 批流融合 | [子入口](./01-data-warehouse/) | 架构选型根因 |
+| 02 | [Hadoop 生态](./02-hadoop-ecosystem/) | HDFS / YARN / MapReduce / Hive / Trino | [子入口](./02-hadoop-ecosystem/) | 离线数仓基石 |
+| 03 | [实时计算](./03-realtime-compute/) | Flink / Spark Streaming / Storm | [子入口](./03-realtime-compute/) | 毫秒-秒级延迟 |
+| 04 | [数据湖](./04-data-lake/) | Apache Iceberg / Hudi / Delta Lake / 存算分离 | [子入口](./04-data-lake/) | 存算分离新范式 |
+| 05 | [OLAP](./05-olap/) | Apache Doris / StarRocks / ClickHouse / Trino | [子入口](./05-olap/) | 亚秒级查询 |
+| 06 | [调度](./06-scheduling/) | Apache Airflow / DolphinScheduler / Azkaban | [子入口](./06-scheduling/) | 任务编排 |
+| 07 | [数据治理](./07-data-governance/) | Apache Atlas / DataHub / 数据血缘 / 数据质量 | [子入口](./07-data-governance/) | 元数据/质量/安全 |
+| 08 | [同步工具](./08-sync-tools/) | DataX / Apache SeaTunnel / Sqoop / Flume | [子入口](./08-sync-tools/) | 异构数据集成 |
 
-### 1.1 模块选择指南
+### 1.1 学习路径
 
 - **新人入门**：01 → 02 → 03 → 06 → 05
-- **想学架构**：01 为主，配合 02/03/04/05
-- **想做实时**：03 为主，配合 01 Kappa/04 数据湖
-- **想做离线**：02 为主，配合 06 调度/07 治理
-- **想搞 OLAP**：05 为主，配合 04 数据湖
-- **只想速查**：直接看章节 3 速查地图，8 大方向 12 个对比表
-
-### 1.2 模块覆盖统计
-
-- **一级模块数**：8
-- **子 README 总数**：14（T13 完成后达 14 个：8 子模块 + 6 新子）
-- **总代码行数**：约 365 行（T13 完成后约 2400 行）
-- **覆盖周期**：从离线数仓到实时计算、数据湖、治理的全链路
+- **想做离线数仓**：02 → 01 → 06 → 07
+- **想做实时计算**：03 → 01 Kappa → 04 → 05
+- **数据架构师**：01 → 02 → 03 → 04 → 05 → 07
+- **AI/ML 工程师**：04 → 02 → 07
 
 ---
 
-## 二、🗺️ 知识脉络
+## 2. 知识脉络
 
 ```mermaid
 flowchart LR
@@ -56,7 +47,7 @@ flowchart LR
     C --> D[计算层<br/>Hive/Spark/Flink]
     D --> E[查询层<br/>Presto/Doris/ClickHouse]
     E --> F[应用层<br/>报表/可视化/AI]
-    
+
     G[调度系统<br/>Airflow/DolphinScheduler] -.协调.-> D
     H[数据治理<br/>Atlas/DataHub] -.元数据.-> C
     I[数据湖<br/>Iceberg/Hudi] -.统一存储.-> C
@@ -64,53 +55,40 @@ flowchart LR
 
 ---
 
-## 三、🤔 选型决策树
+## 3. 模块覆盖
 
-### 3.1 数仓架构选型
+### 3.1 一级模块分布（8 大主题）
 
-```mermaid
-flowchart TD
-    A[数仓架构选型] --> B{实时性要求?}
-    B -->|T+1 离线| C[Lambda/Hive]
-    B -->|实时+离线并存| D[Kappa/Flink]
-    B -->|存算分离/AI 训练| E[湖仓一体/Iceberg]
-```
+| 主题 | 关键组件 | 适用阶段 |
+|------|---------|---------|
+| 数仓架构 | Lambda / Kappa / 湖仓一体 | 架构选型 |
+| Hadoop 生态 | HDFS / YARN / Hive / Trino | 离线批处理 |
+| 实时计算 | Flink / Spark Streaming / Storm | 毫秒-秒级延迟 |
+| 数据湖 | Iceberg / Hudi / Delta Lake | 存算分离 |
+| OLAP | Doris / StarRocks / ClickHouse | 亚秒级查询 |
+| 调度 | Airflow / DolphinScheduler | 任务编排 |
+| 数据治理 | Atlas / DataHub / 血缘 / 质量 | 治理合规 |
+| 同步工具 | DataX / SeaTunnel / Sqoop | 异构集成 |
 
-### 3.2 计算引擎选型
+### 3.2 选型决策树
 
-```mermaid
-flowchart TD
-    A[计算引擎选型] --> B{数据规模?}
-    B -->|TB 级| C[Hive/Spark SQL]
-    B -->|PB 级| D[Presto/Trino]
-    B -->|实时流| E[Flink/Spark Streaming]
-```
-
-### 3.3 OLAP 引擎选型
-
-```mermaid
-flowchart TD
-    A[OLAP 选型] --> B{查询模式?}
-    B -->|大宽表/明细| C[ClickHouse]
-    B -->|多表 JOIN| D[Doris/StarRocks]
-    B -->|联邦查询| E[Trino/Presto]
-```
-
-### 3.4 调度系统选型
-
-```mermaid
-flowchart TD
-    A[调度选型] --> B{团队规模?}
-    B -->|小团队| C[Airflow]
-    B -->|中大团队| D[DolphinScheduler]
-    B -->|遗留 Hadoop| E[Azkaban/Oozie]
-```
+| 维度 | 选型 | 推荐 |
+|------|------|------|
+| 实时性 | T+1 离线 | Lambda / Hive |
+| 实时性 | 实时 + 离线并存 | Kappa / Flink |
+| 实时性 | 存算分离 / AI | 湖仓一体 / Iceberg |
+| 数据规模 | TB 级 | Hive / Spark SQL |
+| 数据规模 | PB 级 | Presto / Trino |
+| 实时流 | 毫秒级 | Flink |
+| 查询模式 | 大宽表 / 明细 | ClickHouse |
+| 查询模式 | 多表 JOIN | Doris / StarRocks |
+| 查询模式 | 联邦查询 | Trino / Presto |
+| 团队规模 | 小团队 | Airflow |
+| 团队规模 | 中大团队 | DolphinScheduler |
 
 ---
 
-## 四、📊 速查地图
-
-> 8 大方向 12 张速查表，按事实属性（吞吐/延迟/生态）对比，不分级推荐。
+## 4. 速查地图
 
 ### 4.1 架构对比
 
@@ -128,7 +106,6 @@ flowchart TD
 | Flink | 流批一体 | 毫秒 | RocksDB | PB 级流 |
 | Spark | 微批 | 秒 | RDD/DataFrame | PB 级批 |
 | Storm | 流式 | 毫秒 | 无状态 | 中小流 |
-| Beam | 统一 API | 取决于 runner | 跨引擎 | 多场景 |
 | Hive | 批 | 分钟-小时 | 无 | TB 级批 |
 
 ### 4.3 数据湖对比
@@ -177,15 +154,7 @@ flowchart TD
 | OpenMetadata | ✓ | ✓ | ✓ | 中心化 |
 | Great Expectations | ✗ | ✗ | ✓ | 库集成 |
 
-### 4.8 资源管理对比
-
-| 系统 | 架构 | 多租户 | 适用 |
-|------|------|-------|------|
-| YARN | 主从 | ✓ | Hadoop 生态 |
-| Kubernetes | 容器编排 | ✓ | 云原生 |
-| Mesos | 资源调度 | ✓ | 遗留 |
-
-### 4.9 大数据生态 2026 版本
+### 4.8 大数据生态 2026 版本
 
 | 组件 | 最新稳定版 | 发布日期 |
 |------|-----------|---------|
@@ -200,28 +169,7 @@ flowchart TD
 | Trino | 0.13.x | 2025-Q4 |
 | SeaTunnel | 2.3.x | 2025-11 |
 
-### 4.10 学习路径（按角色）
-
-| 角色 | 必学 | 加分 |
-|------|------|------|
-| 数据工程师 | 02/03/06 | 01/04/07 |
-| 数据分析师 | 02/05 | 04/07 |
-| 数据架构师 | 01/02/03/04/05/07 | 08 |
-| 实时开发 | 03/01 | 04/07 |
-| AI/ML 工程师 | 04/02 | 05/07 |
-
-### 4.11 SQL 方言对比
-
-| 方言 | 来源 | 特点 |
-|------|------|------|
-| Hive SQL | Hive | 批处理最广泛 |
-| Spark SQL | Spark | DataFrame/Dataset API |
-| Flink SQL | Flink | 流批统一 SQL |
-| Trino SQL | Presto/Trino | ANSI SQL 兼容 |
-| ClickHouse SQL | ClickHouse | 聚合函数强大 |
-| Doris SQL | Doris | MySQL 协议 |
-
-### 4.12 大数据 vs 传统数据库
+### 4.9 大数据 vs 传统数据库
 
 | 维度 | 传统 OLTP | 大数据 |
 |------|---------|--------|
@@ -233,103 +181,69 @@ flowchart TD
 
 ---
 
-## 五、🧭 学习路线
-
-按角色与目标，给出 4 条主线：
-
-1. **数据工程师**：`02` → `03` → `06` → `01`
-2. **数据分析师**：`02` → `05` → `04`
-3. **数据架构师**：`01` → `02` → `03` → `04` → `05` → `07`
-4. **AI/ML 工程师**：`04` → `02` → `07`
-
-### 5.1 各角色重点章节
-
-> 详见 [4.10 学习路径（按角色）](#410-学习路径按角色)，此处不再重复。
-
----
-
-## 5a. 🏆 最佳实践
+## 5. 最佳实践
 
 | 场景 | 实践要点 |
 |------|---------|
-| **数仓分层** | ODS → DWD → DWS → ADS 四层架构；维度建模（星型/雪花）； slowly changing dimensions (SCD Type 1/2/3) |
-| **实时计算** | Flink Checkpoint 间隔根据业务 SLA 设定；Exactly-Once 语义需开启 WAL；State Backend 选 RocksDB（大状态） |
+| **数仓分层** | ODS → DWD → DWS → ADS 四层架构；维度建模（星型/雪花）；SCD Type 1/2/3 |
+| **实时计算** | Flink Checkpoint 间隔按业务 SLA 设定；Exactly-Once 需开启 WAL；State Backend 选 RocksDB |
 | **数据湖** | Iceberg 优选（ACID + Schema Evolution + Time Travel）；存算分离（S3/OSS + 计算引擎独立扩展） |
 | **OLAP 选型** | 高并发点查 → Doris/StarRocks；Ad-hoc 分析 → ClickHouse/Trino；统一分析 → Doris + 物化视图 |
-| **数据治理** | Apache Atlas / DataHub 元数据管理；数据血缘自动采集（SQL 解析）；数据质量规则 + 告警 |
+| **数据治理** | Atlas / DataHub 元数据管理；数据血缘自动采集（SQL 解析）；数据质量规则 + 告警 |
 | **任务调度** | Airflow Python DAG 灵活但学习曲线高；DolphinScheduler 可视化适合国内团队；关键任务设置 SLA 告警 |
 
 ---
 
-## 六、🔗 交叉引用
+## 6. 常见面试题
 
-- **数据架构**：[01 数仓架构](./01-data-warehouse/) / [03 实时计算](./03-realtime-compute/)
-- **底层存储**：[02 Hadoop 生态](./02-hadoop-ecosystem/) / [04 数据湖](./04-data-lake/)
-- **上层应用**：[05 OLAP](./05-olap/) / [09 前端可视化](../09.front-end/README.md/)
-- **横向支撑**：[06 调度](./06-scheduling/) / [07 数据治理](./07-data-governance/) / [08 同步工具](./08-sync-tools/)
-
----
-
-## 七、📖 开源参考
-
-- **Apache 基金会**：Hadoop/Spark/Flink/Iceberg/Hudi/Atlas/SeaTunnel
-- **Linux 基金会**：Trino(原 Presto)
-- **独立项目**：ClickHouse/Doris/StarRocks/DataX/Airflow
-- **国内主导**：Doris/StarRocks/SeaTunnel/DataX/DolphinScheduler
+| 题目 | 核心考点 |
+|------|---------|
+| Lambda 与 Kappa 的本质区别？ | 双链路 vs 单链路、复杂度、适用场景 |
+| Iceberg 隐藏分区原理？ | partition transform 不依赖目录名 |
+| Flink Exactly-Once 如何保证？ | Checkpoint + 两阶段提交 + WAL |
+| Doris / StarRocks / ClickHouse 怎么选？ | JOIN 复杂度 / 大宽表 / 联邦查询 |
+| SeaTunnel CDC 与 Flink CDC 的差异？ | 引擎自研 vs 计算引擎依赖、运维成本 |
+| 数据血缘怎么自动采集？ | SQL 解析 / Hook 拦截 / 日志解析 |
+| 存算分离的收益与陷阱？ | 弹性伸缩 vs Hive 强耦合 HDFS |
 
 ---
 
-## 八、⏰ 数据时效性
+## 7. 相关章节
 
-- 大数据组件每年大版本（Spring/Autumn）
-- 实时引擎每季度发版（Flink/Spark）
-- 数据湖表格式每月小版本
-- 速查表每季度更新
-
-> 数据快照日期：2026-06
-
----
-
-## 九、📊 章节统计
-
-- **一级模块数**：8
-- **二级子 README 数**：6
-- **总 README 数**：15（1 顶层 + 8 子模块 + 6 子）
-- **8 子模块链接**：全部已验证可解析（详见 T12 验证记录）
+- **上游基础**：[02.computer-basics](../02.computer-basics/README.md)（网络 / Linux / 算法）
+- **存储相关**：[03.database](../03.database/README.md)（MySQL / Redis）
+- **实时引擎**：与 [06.spring](../06.spring/README.md) 集成（CDC / 实时数仓）
+- **应用展示**：[11.ai](../11.ai/README.md)（LLM 训练数据湖 / 实时特征）
+- **架构方法**：[04.system-design](../04.system-design/README.md)（分布式 / 高可用）
 
 ---
 
-## 十、📝 变更记录
+## 8. 开源参考
 
-- **2026-06-26**：中度重构为「完整地图 + 8 子模块统一索引 + 6 子 README」混合模式（仿 09）
-- **历史**：从 2 子模块扩展到 8 子模块
-
----
-
-## 十一、📖 附录：术语表
-
-| 术语 | 解释 |
+| 类别 | 项目 |
 |------|------|
-| OLAP | Online Analytical Processing，联机分析处理 |
-| OLTP | Online Transaction Processing，联机事务处理 |
-| ETL | Extract Transform Load，抽取-转换-加载 |
-| ELT | Extract Load Transform，先加载再转换 |
-| DAG | Directed Acyclic Graph，有向无环图 |
-| ACID | Atomicity Consistency Isolation Durability |
-| BASE | Basically Available Soft state Eventual consistency |
-| MPP | Massively Parallel Processing，大规模并行处理 |
-| CDC | Change Data Capture，变更数据捕获 |
-| ODS | Operational Data Store，操作数据存储 |
-| DWD | Data Warehouse Detail，明细层 |
-| DWS | Data Warehouse Summary，汇总层 |
-| ADS | Application Data Service，应用数据层 |
-| BI | Business Intelligence，商业智能 |
-| HDFS | Hadoop Distributed File System |
-| YARN | Yet Another Resource Negotiator |
-| CBO | Cost-Based Optimizer，基于成本优化 |
-| RBO | Rule-Based Optimizer，基于规则优化 |
-| SLA | Service Level Agreement，服务等级协议 |
-| SLO | Service Level Objective，服务等级目标 |
+| 基金会项目 | Apache Hadoop / Spark / Flink / Iceberg / Hudi / Atlas / SeaTunnel |
+| Linux 基金会 | Trino（原 PrestoSQL） |
+| 独立项目 | ClickHouse / Doris / StarRocks / DataX / Airflow |
+| 国内主导 | Doris / StarRocks / SeaTunnel / DataX / DolphinScheduler |
+| 数据治理 | DataHub / OpenMetadata / Great Expectations / Deequ |
+
+---
+
+## 📊 本节统计
+
+| 维度 | 数字 |
+|------|------|
+| 一级模块数 | 8（数仓架构 / Hadoop 生态 / 实时计算 / 数据湖 / OLAP / 调度 / 数据治理 / 同步工具） |
+| 二级子 README 数 | 8 |
+| 三级 leaf README 数 | 3（flink-vs-spark-streaming / iceberg-vs-delta-vs-hudi / clickhouse-vs-doris-vs-starrocks） |
+| 总 README 数 | 12（1 顶层 + 8 分类 + 3 leaf） |
+| 总速查表数 | 8 大类（架构 / 计算 / 数据湖 / OLAP / 调度 / 同步 / 治理 / 生态版本） |
+| 学习路径主题数 | 5（新人 / 离线 / 实时 / 架构师 / AI 工程师） |
+| 常见面试题数 | 7（顶层）/ 5 × 8 = 40（8 分类） = 47 |
+| 开源参考项目数 | 14（基金会 7 + Linux 1 + 独立 5 + 治理 4 - 重叠 3） |
+| frontmatter 覆盖率 | 12 / 12 = 100% |
+| 文末回链覆盖 | 12 / 12 = 100% |
 
 ---
 
