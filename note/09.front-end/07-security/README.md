@@ -1,7 +1,7 @@
 <!--
 module:
-  parent: front-end
-  slug: front-end/security
+  parent: note
+  slug: 09.front-end/security
   type: article
   category: 主模块子文章
   summary: 前端 07 安全
@@ -14,15 +14,8 @@ module:
 本模块覆盖 6 大前端安全主题:XSS / CSRF / CSP / CORS / 会话管理 / 依赖供应链,每个都有完整的攻击场景、防御手段、实战代码。
 
 ---
-## 引言：生产 Bug
 
-07 安全 的关键不是'防住'——是**出事后 5 分钟内能定位**。
-
-本篇用真实生产场景切入：线上怎么炸、按官方文档写为什么也会错、怎么止血。
-
----
-
-## 1. 本模块覆盖
+## 1. 模块导航
 
 | 主题 | 状态 | 说明 |
 |------|------|------|
@@ -33,20 +26,15 @@ module:
 | 会话管理 | ✓ 已有 | [sessions/](sessions/) — Cookie / JWT / OAuth 2.0 / OIDC |
 | 依赖供应链 | ✓ 已有 | [supply-chain/](supply-chain/) — SCA / npm audit / Snyk / 锁文件 |
 
-> 速查对比见 [📖 顶层 3.11 安全速查](../README.md#311-安全速查)
+### 1.1 学习路径
+
+- **入门**:按 P0 优先级学习 — [xss](xss/) → [csrf](csrf/) → [csp](csp/) → [cors](cors/)
+- **高敏感应用**:补充阅读 [sessions](sessions/)(JWT / OAuth 2.0)
+- **团队项目**:补充阅读 [supply-chain](supply-chain/)(依赖审计)
 
 ---
 
-## 2. 速查要点
-
-- **CSP 是 XSS 的最后防线**:即使有 XSS 漏洞,CSP 也能阻止脚本执行
-- **SameSite cookie**:默认 `Lax`,防止 CSRF;高敏感操作加 `SameSite=Strict`
-- **JWT 不存敏感信息**:JWT payload 是 base64 编码,不是加密;敏感数据放服务端
-- **依赖投毒防护**:锁文件 + 私有 npm 仓库 + SCA 扫描三件套
-
----
-
-## 3. 选型建议
+## 2. 知识脉络
 
 ```mermaid
 flowchart TD
@@ -63,7 +51,50 @@ flowchart TD
 
 ---
 
-## 4. 与其他模块的关系
+## 3. 速查要点
+
+- **CSP 是 XSS 的最后防线**:即使有 XSS 漏洞,CSP 也能阻止脚本执行
+- **SameSite cookie**:默认 `Lax`,防止 CSRF;高敏感操作加 `SameSite=Strict`
+- **JWT 不存敏感信息**:JWT payload 是 base64 编码,不是加密;敏感数据放服务端
+- **依赖投毒防护**:锁文件 + 私有 npm 仓库 + SCA 扫描三件套
+
+---
+
+## 4. 核心威胁与防御
+
+| 威胁 | 防御手段 | 优先级 |
+|------|---------|-------|
+| XSS(反射/存储/DOM 型) | 输入过滤 + 框架默认转义 + DOMPurify + CSP nonce | P0 |
+| CSRF(跨站请求伪造) | SameSite cookie + CSRF Token + 双重提交 | P0 |
+| CSP 绕过 | nonce / hash 锁定 + 报告 URI + Trusted Types | P0 |
+| CORS 配置错误 | 精确 Origin 白名单 + 仅必要方法 / 头部 | P0 |
+| 会话劫持 | HttpOnly + Secure + SameSite cookie + 短过期 | P0 |
+| 依赖投毒 | 锁文件 + 私有 Registry + Socket.dev / Snyk | P1 |
+
+---
+
+## 5. 最佳实践
+
+- CSP + SRI 标配:`script-src 'self' 'nonce-...'` + CDN 资源 `integrity="sha384-..."`
+- XSS 防御优先用框架内置转义(React JSX / Vue 模板),不要自己拼字符串 HTML
+- CSRF Token 用 SameSite + 双重提交 Cookie 双保险,避免依赖单一机制
+- 依赖投毒防护:锁文件(lockfileVersion 2)+ 私有 Registry + SCA 扫描(Socket.dev / Snyk)
+- JWT 仅存非敏感 `sub` / `exp` / `scope`;Refresh Token 走 HttpOnly Secure cookie
+- 错误监控 + 用户行为日志双通道,异常登录 / 越权访问可追溯
+
+---
+
+## 6. 常见面试题
+
+- XSS 三种类型(反射 / 存储 / DOM)的攻击场景与防御差异
+- CSRF 与 XSS 的本质区别:CSRF 借用户权限,XSS 偷用户数据
+- SameSite 三种取值(Strict / Lax / None)的 CSRF 防护差异
+- CSP 指令优先级:`script-src` 与 `script-src-attr` / `script-src-elem` 关系
+- JWT 为什么不存敏感信息?Refresh Token 与 Access Token 的轮换协议
+
+---
+
+## 7. 与其他模块的关系
 
 - **上游**:[01-foundation](../01-foundation/)(浏览器原理)
 - **下游**:所有前端项目都必须考虑
@@ -71,31 +102,15 @@ flowchart TD
 
 ---
 
-## 5. 学习建议
+## 📊 本节统计
 
-- 按 P0 优先级:[xss](xss/) → [csrf](csrf/) → [csp](csp/) → [cors](cors/)
-- 高敏感应用加读 [sessions](sessions/)
-- 团队项目加读 [supply-chain](supply-chain/)
-
----
-
-## 6. 数据时效性
-
-- OWASP Top 10 每 3-4 年更新
-- CSP Level 3 持续演进
-- SameSite 默认值 2020 年改为 Lax
+- **主题数**:6(XSS / CSRF / CSP / CORS / 会话管理 / 依赖供应链)
+- **子 README 数**:6 + 1 顶层 = 7
+- **模块导航行数**:6(全已有)
+- **学习路径主题数**:3(入门 / 高敏感 / 团队项目)
+- **面试题数**:5
+- **数据快照**:2026-06
 
 ---
 
-## 7. 关键术语
-
-| 术语 | 解释 |
-|------|------|
-| XSS | Cross-Site Scripting |
-| CSRF | Cross-Site Request Forgery |
-| CSP | Content Security Policy |
-| CORS | Cross-Origin Resource Sharing |
-| JWT | JSON Web Token |
-| OIDC | OpenID Connect |
-| SCA | Software Composition Analysis |
-| OWASP | Open Web Application Security Project |
+← [返回前端工程总览](../README.md)
