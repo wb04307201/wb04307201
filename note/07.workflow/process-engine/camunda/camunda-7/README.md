@@ -128,7 +128,7 @@ spring:
 | ACT_GE_ | act_ge_bytearray  | 每次部署的文件2进制数据，所以如果文件修改后，重启也没用，因为重新生成了记录，需要清掉数据库，或者这个表记录 |
 
 启动时 [控制台](http://localhost:8080/) 界面  
-![img.png](img.png)
+![camunda7-welcome-console.png](camunda7-welcome-console.png)
 
 
 
@@ -160,7 +160,7 @@ spring:
 ```
 
 访问 [Swagger](http://localhost:8080/swaggerui/)  
-![img_1.png](img_1.png)
+![camunda7-rest-swagger-ui.png](camunda7-rest-swagger-ui.png)
 
 
 
@@ -231,7 +231,7 @@ export default defineConfig({
 ```
 
 `mvn install` 后启动项目：  
-![img_2.png](img_2.png)
+![bpmn-modeler-vite-default.png](bpmn-modeler-vite-default.png)
 
 
 
@@ -386,7 +386,7 @@ const Camunda7Modeler = () => {
 export default Camunda7Modeler;
 ```
 
-![img_3.png](img_3.png)
+![bpmn-js-modeler-canvas.png](bpmn-js-modeler-canvas.png)
 
 
 
