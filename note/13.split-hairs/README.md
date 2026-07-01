@@ -2,9 +2,9 @@
 module:
   parent: split-hairs
   slug: split-hairs
-  type: article
-  category: 主模块子文章
-  summary: 咬文嚼字面试题
+  type: index
+  category: 高频面试题
+  summary: 主模块的刺刀版 —— 专治面试高频 / 高难度问题
 -->
 
 # 咬文嚼字 —— 高频面试题与难点深挖
@@ -23,7 +23,58 @@ module:
 
 ---
 
-## 🔗 1. 与主模块的关系
+## 1. 目录导航
+
+| 编号 | 对齐主模块 | 主题方向 | 篇数 | 子入口 |
+|------|-----------|---------|------|-------|
+| 01 | [`01.java`](../../01.java/) | Java 基础陷阱（集合 / 并发 / JVM / 类型） | 34 | [01.java/](01.java/) |
+| 03 | [`03.database`](../../03.database/) | 数据库细节（SQL 优化 / Redis / MVCC） | 29 | [03.database/](03.database/) |
+| 04 | [`04.system-design`](../../04.system-design/) | 系统设计难点（MQ / 缓存 / 分布式） | 13 | [04.system-design/](04.system-design/) |
+| 06 | [`06.spring`](../../06.spring/) | Spring 面试高频（IoC / AOP / 事务） | 13 | [06.spring/](06.spring/) |
+| 09 | [`09.front-end`](../../09.front-end/) | 前端细节（HTTP / 存储 / 浏览器机制） | 25 | [09.front-end/](09.front-end/) |
+| 11 | [`11.ai`](../../11.ai/) | AI 面试深挖（5 篇纯面试题 + 9 篇主模块精炼版） | 14 | [11.ai/](11.ai/) |
+| ✦ | [`14.project-management`](../../14.project-management/) | **外链**（决策实战 / 报价 / 外包，已迁出本目录） | — | [14.project-management/](../../14.project-management/) |
+
+**总计：128 篇面试题**（按 2026-07-01 实际子目录计数）
+
+---
+
+## 2. 适用人群
+
+- **面试候选人**：后端 / 前端 / 全栈 / AI 工程师，准备技术面试时需要"反直觉 + 陷阱题 + 30 秒话术"的人。
+- **转岗工程师**：从其他方向（运维 / 测试 / 数据）转开发，需要快速积累高频面试点的人。
+- **面试官**：希望了解"候选人最容易踩的陷阱"以提高甄别效率的人。
+
+> **不适用**：纯系统学习者（请走主模块 → split-hairs 反而打散体系）；纯项目实战者（请走 [08.application-systems](../../08.application-systems/) / [07.workflow](../../07.workflow/)）。
+
+---
+
+## 3. 学习路径
+
+### 3.1 按模块刷（按目标栈对症下药）
+
+| 目标 | 推荐路径 |
+|------|---------|
+| **Java 后端** | [01.java](01.java/) 34 篇 → [06.spring](06.spring/) 13 篇 → [03.database](03.database/) 29 篇 |
+| **系统设计 / 后端架构** | [04.system-design](04.system-design/) 13 篇 → [03.database](03.database/) 29 篇 |
+| **前端** | [09.front-end](09.front-end/) 25 篇（含网络 / CSS / 框架 / 安全 / 工程化） |
+| **AI 方向** | [11.ai](11.ai/) 14 篇 = 5 篇纯面试题 + 9 篇主模块精炼版 |
+
+### 3.2 按难度刷（按面试倒计时）
+
+1. **冲刺面试**（最后 1 周）：高 ⭐⭐⭐⭐⭐ 题（HashMap 扩容 / 锁升级 / @Transactional 失效 / 索引失效 / HTTPS 握手）
+2. **进阶**（2-4 周）：⭐⭐⭐⭐ 高频题（MVCC / 分布式锁 / AOP 原理 / 事件循环 / RAG 架构）
+3. **入门**（1-2 周）：⭐⭐-⭐⭐⭐ 基础题（集合去重 / GET vs POST / Prompt 技巧）
+
+### 3.3 按公司刷（精选高频考点）
+
+- **大厂后端（阿里 / 字节 / 美团）**：重点 [01.java](01.java/) 并发 + [06.spring](06.spring/) 事务失效 + [04.system-design](04.system-design/) 分布式
+- **外企 / 金融**：重点 [03.database](03.database/) MVCC / 事务隔离 + [04.system-design](04.system-design/) CAP / 一致性
+- **AI 创业 / 大模型团队**：重点 [11.ai](11.ai/) 4 阶段工程演进（Prompt → Context → Harness → Loop）+ 幻觉治理
+
+---
+
+## 4. 与主模块的关系
 
 ```mermaid
 graph TB
@@ -57,25 +108,7 @@ graph TB
 
 ---
 
-## 📚 2. 分类导航（6 大主模块 + 1 项目管理外链）
-
-> 2026-06-30 路径整理：项目管理类（3 题）已迁出，新主模块 [`14.project-management/`](../14.project-management/) 接手。
-
-| 编号 | 对齐主模块 | 主题 | 文章数 |
-|------|----------|------|--------|
-| 01 | [`01.java`](../01.java/) | Java 基础陷阱（缓存、扩容、并发） | [33 篇](01.java/) |
-| 03 | [`03.database`](../03.database/) | 数据库细节（SQL 优化、Redis 机制） | [29 篇](03.database/) |
-| 04 | [`04.system-design`](../04.system-design/) | 系统设计难点（MQ、缓存、分布式）| [13 篇](04.system-design/) |
-| 06 | [`06.spring`](../06.spring/) | Spring 面试高频（IoC、AOP、事务） | [13 篇](06.spring/) |
-| 09 | [`09.front-end`](../09.front-end/) | 前端细节（HTTP、存储、消息机制） | [25 篇](09.front-end/) |
-| 11 | [`11.ai`](../11.ai/) | AI 面试深挖（5 篇纯面试题 + 9 篇主模块配套精炼版） | [14 篇](11.ai/) |
-| ✦ | [`14.project-management`](../14.project-management/) | **（外链）**决策实战 / 报价 / 外包 | 见主模块 |
-
-**总计：127 篇面试题**（已含子目录内的全部文章与精炼版）
-
----
-
-## 📖 3. 文章模板
+## 5. 文章模板
 
 每篇文章遵循统一结构：
 
@@ -96,7 +129,7 @@ graph TB
 
 ---
 
-## 🎯 4. 保留边界：split-hairs 与主模块的分工
+## 6. 保留边界：split-hairs 与主模块的分工
 
 > **2026 路径整理**：split-hairs 不再无差别收录所有高频内容；下面是"什么属于 split-hairs / 什么应该迁回主模块"的判定标准。
 
@@ -136,40 +169,7 @@ graph TB
 
 ---
 
-## 🤔 5. 何时该写 split-hairs？
-
-**触发条件**：
-- 主模块的某个点需要深度解释（> 100 字）
-- 面试中反复被问到的细节问题
-- "好像懂但说不清"的知识点
-- 有明确陷阱或反直觉行为的技术细节
-
-**不该写**：
-- 主模块已经讲清楚的内容（参 §4 判定 checklist）
-- 过于冷门的问题
-- 没有明确答案的开放性问题
-
----
-
-## 🧭 6. 学习路径建议
-
-### 按面试准备（数字与 §2 一致）
-1. **Java 后端**：[01.java](01.java/) 33 篇 → [06.spring](06.spring/) 13 篇 → [03.database](03.database/) 29 篇
-2. **系统设计 / 后端架构**：[04.system-design](04.system-design/) 13 篇 → [03.database](03.database/) 29 篇
-3. **前端**：[09.front-end](09.front-end/) 25 篇（含网络/CSS/框架/安全/工程化）
-4. **AI 方向**：[11.ai](11.ai/) 14 篇 = 5 篇纯面试题 + 9 篇主模块精炼版
-5. **跨方向管理 / 决策**：[14.project-management](../../14.project-management/)（决策实战，非面试陷阱，**外链**而非本目录）
-
-### 2026 新增主题（建议补到 split-hairs 时同步读）
-
-- **AI 工程 4 阶段**：Prompt → Context → Harness → Loop（详见 11.ai 的 transformer / rag / function-calling）
-- **AI 时代责任 / 数据真相 / 个人视角**：44 / 45 / 46（续集 18-20，详见 [12.story](../12.story/)）
-- **AI 提示工程深挖**：见 [`42-prompt-engineering`](11.ai/prompt-engineering/)
-- **回退至 Cheatsheet**：见 [`cheatsheet.md`](./cheatsheet.md)（每题一行核心心法）
-
----
-
-## 📊 速查表
+## 7. 速查表
 
 | 分类 | 高频问题 | 核心考点 |
 |------|---------|---------|
@@ -183,33 +183,27 @@ graph TB
 | **前端** | Event Loop、闭包、Promise 手写、从 URL 到页面 | 浏览器 + JS 核心 |
 | **AI** | Transformer 架构、Token 计费、RAG 设计、Prompt/Context/Harness/Loop 工程、生产力悖论、Agent DAG/ReAct 选型 | LLM 原理与 AI 工程演进 + Agent 架构选型 + 研发效能度量 |
 
-## 📖 开源参考
+---
+
+## 8. 开源参考
 
 本模块为面试专题集，引用的核心开源项目见各主模块的开源参考：
-- [`01.java`](../01.java/README.md) — OpenJDK / JUnit 5 / Mockito
-- [`03.database`](../03.database/README.md) — MySQL / Redis / HikariCP
-- [`04.system-design`](../04.system-design/README.md) — Sentinel / Resilience4j
-- [`06.spring`](../06.spring/README.md) — Spring 全家桶
-- [`09.front-end`](../09.front-end/README.md) — React / Vue / Vite
-- [`11.ai`](../11.ai/README.md) — Spring AI / LangChain / Dify
+- [`01.java`](../../01.java/README.md) — OpenJDK / JUnit 5 / Mockito
+- [`03.database`](../../03.database/README.md) — MySQL / Redis / HikariCP
+- [`04.system-design`](../../04.system-design/README.md) — Sentinel / Resilience4j
+- [`06.spring`](../../06.spring/README.md) — Spring 全家桶
+- [`09.front-end`](../../09.front-end/README.md) — React / Vue / Vite
+- [`11.ai`](../../11.ai/README.md) — Spring AI / LangChain / Dify
 
 ---
 
-## 🔗 6. 交叉引用
+## 9. 与其他章节的关系
 
-- 每个 split-hairs 文章底部都有"交叉引用"链接回主模块
-- 主模块在需要深挖的地方也会链接到对应的 split-hairs 文章
-- 形成"广度地图 + 深度刺刀"的双层知识体系
-
----
-
-## 🔗 7. 与其他章节的关系
-
-- **主模块**：[`01.java`](../01.java/) / [`03.database`](../03.database/) / [`04.system-design`](../04.system-design/) / [`06.spring`](../06.spring/) / [`11.ai`](../11.ai/) / [`09.front-end`](../09.front-end/) / [`14.project-management`](../14.project-management/)
-- **故事章节**：[`12.story`](../12.story/) — 阿明餐厅故事（实战场景）
-- **主仓库 README**：[`README.md`](../README.md)
+- **主模块**：[`01.java`](../../01.java/) / [`03.database`](../../03.database/) / [`04.system-design`](../../04.system-design/) / [`06.spring`](../../06.spring/) / [`11.ai`](../../11.ai/) / [`09.front-end`](../../09.front-end/) / [`14.project-management`](../../14.project-management/)
+- **故事章节**：[`12.story`](../../12.story/) — 阿明餐厅故事（实战场景）
+- **主仓库 README**：[`README.md`](../../README.md)
 - **写作规范**：[`QUESTION-FORMAT-SPEC.md`](./QUESTION-FORMAT-SPEC.md) — 文章结构强制模板 + frontmatter schema
 
 ---
 
-← [返回笔记目录](../README.md)
+← [返回笔记目录](../../README.md)
