@@ -277,20 +277,20 @@ Q1: 单机能扛住吗？
 
 | 子目录 | leaf 主题数 | 备注 |
 |:-------|:-----------:|:-----|
-| `02-distributed/`（本文） | 13 | CAP/BASE · 共识 · 事务 · 锁 · RPC · 网关 |
-| ├─ `cap-and-base/` | 2 | CAP 定理 · BASE 模型 |
-| ├─ `consensus-algorithms/` | 4 | 共识综述 · Paxos · Raft · Gossip |
+| `02-distributed/`（本文） | 1 | 顶层 README |
+| ├─ `cap-and-base/` | 3 | 顶层 + CAP · BASE |
+| ├─ `consensus-algorithms/` | 4 | 顶层 + Paxos · Raft · Gossip |
 | ├─ `distributed-transaction/` | 1 | 2PC/3PC/TCC/Saga/本地消息表 |
 | ├─ `distributed-lock/` | 1 | Redis/ZooKeeper/Etcd 实现 |
-| ├─ `distributed-id/` | 4 | UUID · ULID · UUID-v7 · Snowflake |
-| ├─ `rpc/` | 3 | RPC 总览 · vs REST · Apache Dubbo |
+| ├─ `distributed-id/` | 4 | 顶层 + UUID · ULID · UUID-v7 |
+| ├─ `rpc/` | 3 | 顶层 + vs REST · Apache Dubbo |
 | ├─ `api-gateway/` | 1 | 网关功能与选型 |
 | ├─ `service-discovery/` | 1 | Eureka/Nacos/Consul |
 | └─ `distributed-cache/` | 1 | Redis Cluster · 三大经典问题 |
-| **README 覆盖** | 19 depth-2 leaf + 1 顶层 = **20** | 100% frontmatter |
-| **聚合主题数** | 13（见上方学习路径） | 含分布式 ID 等 4 个子专题 |
+| **leaf README 合计** | 19 depth-2 leaf + 1 顶层 = **20** | 100% frontmatter |
+| **模块导航行数** | 13（见上方章节三） | 含分布式 ID 等 4 个子专题 |
 
-> 数字基线：以子目录 leaf README 数 + 顶层章节主题数统计；最后更新 2026-07-02。
+> 数字基线：以 leaf README 数 + 模块导航行数双口径统计；最后更新 2026-07-02。
 
 ---
 

@@ -83,16 +83,17 @@ graph LR
 
 ## 📊 本节统计
 
-| 子目录 | leaf 主题数 | 备注 |
+| 子目录 | leaf README 数 | 备注 |
 |:-------|:-----------:|:-----|
-| `01-foundation/`（本文） | 18 | 软件工程 · OOD · DDD · TOGAF · ArchiMate · IT4IT |
-| ├─ `software-engineering/` | 4 | 开发流程 · 质量保障 · 工具模型 |
-| ├─ `system-design-basics/` | 11 | OOD · DDD · TOGAF · ArchiMate · IT4IT · 模式 · 微服务 |
+| `01-foundation/`（本文） | 1 | 顶层 README |
+| ├─ `02-evolution/` | 3 | 单体到微服务 · Serverless |
+| ├─ `software-engineering/` | 4 | 顶层 + 开发流程 · 质量保障 · 工具模型 |
+| ├─ `system-design-basics/` | 24 | 顶层 + api/archimate/architecture 等 12 子目录 |
 | └─ `technical-debt/` | 1 | 技术债识别与偿还 |
-| **README 覆盖** | 32 个 depth-2 leaf + 1 顶层 = **33** | 100% frontmatter |
-| **聚合主题数** | 18（见上方学习路径列表） | 全部聚合在本章及子 README |
+| **leaf README 合计** | 32 depth-2/3 leaf + 1 顶层 = **33** | 100% frontmatter |
+| **学习路径主题数** | 18（见上方学习路径列表） | 含 development-process 等子主题 |
 
-> 数字基线：本节以 README 数量 + 学习路径主题数双口径统计；最后更新 2026-07-02。
+> 数字基线：本节以 leaf README 数 + 学习路径主题数双口径统计；最后更新 2026-07-02。
 
 ---
 
