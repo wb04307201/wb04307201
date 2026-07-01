@@ -139,3 +139,23 @@ graph TB
 ---
 
 > 🚀 从 [事务管理总览](transaction/README.md) 开始，或直接看 [MyBatis 全栈](mybatis/README.md)
+
+---
+
+## 📊 本节统计（leaf MD 数）
+
+| 子目录 | 篇数 |
+|:------|:----:|
+| `03-data/`（本目录直接） | 0 |
+| ├─ `cache/` | 5 |
+| ├─ `transaction/` | 7 |
+| └─ `mybatis/`（重点项目） | 27 |
+| &nbsp;&nbsp;&nbsp;&nbsp;├─ `01-architecture/` | 8 |
+| &nbsp;&nbsp;&nbsp;&nbsp;├─ `02-extension/` | 4 |
+| &nbsp;&nbsp;&nbsp;&nbsp;├─ `03-spring-integration/` | 5 |
+| &nbsp;&nbsp;&nbsp;&nbsp;└─ `04-mybatis-plus/` | 10 |
+| **合计** | **39** |
+
+> 数字基线：以 leaf MD 数（含子目录与子子目录的 .md，不含任何 README 索引页）为统计口径。统计时间 2026-07-01。
+
+← [返回 Spring 顶层](../README.md)

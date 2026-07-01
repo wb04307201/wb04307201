@@ -157,3 +157,17 @@ graph LR
 - [06 集成组件](../06-integration/README.md) — Validation/Retry/StateMachine 相关注解
 - [13 辨析/为什么不推荐 @Autowired 字段注入](../../13.split-hairs/06.spring/not-use-@autowired/README.md) — 字段注入 vs 构造器注入
 - [13 辨析/PO-VO-DTO-BO-DAO-POJO 语义辨析](../../13.split-hairs/06.spring/clarify-various-o/README.md) — 各层对象语义
+
+---
+
+## 📊 本节统计（leaf MD 数）
+
+| 子目录 | 篇数 |
+|:------|:----:|
+| `08-annotations/`（本目录直接） | 12 |
+| ├─ 子目录 | 0 |
+| **合计** | **12** |
+
+> 数字基线：以 leaf MD 数（含子目录与子子目录的 .md，不含任何 README 索引页）为统计口径。统计时间 2026-07-01。
+
+← [返回 Spring 顶层](../README.md)

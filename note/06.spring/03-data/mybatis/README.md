@@ -90,3 +90,19 @@ graph LR
 ---
 
 > 🚀 从 [01-architecture/](01-architecture/) 开始,理解 MyBatis 怎么工作
+
+---
+
+## 📊 本专题统计（leaf MD 数）
+
+| 主题 | 目录 | 篇数 |
+|:----:|:----|:----:|
+| 一、架构与原理 | `01-architecture/` | 8 |
+| 二、扩展能力 | `02-extension/` | 4 |
+| 三、Spring 整合 | `03-spring-integration/` | 5 |
+| 四、MyBatis-Plus | `04-mybatis-plus/` | 10 |
+| **合计** | — | **27** |
+
+> 数字基线：以 leaf MD 数（含子目录与子子目录的 .md，不含任何 README 索引页）为统计口径。统计时间 2026-07-01。
+
+← [返回 03 数据层](../README.md)

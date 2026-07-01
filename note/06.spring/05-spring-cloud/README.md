@@ -184,3 +184,17 @@ Spring Cloud 本身是**一组规范**（接口 + 默认实现），Spring Cloud
 ---
 
 > 🚀 从 [Spring Cloud 总览](README.md) 开始
+
+---
+
+## 📊 本节统计（leaf MD 数）
+
+| 子目录 | 篇数 |
+|:------|:----:|
+| `05-spring-cloud/`（本目录直接） | 11 |
+| └─ `service-registry/` | 1 |
+| **合计** | **12** |
+
+> 数字基线：以 leaf MD 数（含子目录与子子目录的 .md，不含任何 README 索引页）为统计口径。统计时间 2026-07-01。
+
+← [返回 Spring 顶层](../README.md)
