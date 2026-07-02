@@ -27,6 +27,8 @@ module:
 
 > 一句话：**Context Engineering 的核心是"在 Context Window 限制下，把对的信息在对的时间给 LLM"**。
 
+📌 **驾驭演进主线**：[LLM 驾驭演进史（Prompt → Context → Harness → Loop）](../../../04-architecture/llm-control-evolution/README.md)
+
 ---
 
 ## 二、Context 是什么？

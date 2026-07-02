@@ -27,6 +27,8 @@ module:
 
 > 一句话：**Harness Engineering 是"给 Agent 套上缰绳"——让它按照你期望的方式工作，但不限制它的能力**。
 
+📌 **驾驭演进主线**：[LLM 驾驭演进史（Prompt → Context → Harness → Loop）](../../../04-architecture/llm-control-evolution/README.md)
+
 ---
 
 ## 二、什么是 Harness？
