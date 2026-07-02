@@ -33,6 +33,7 @@ question:
 | [AI 编程生产力悖论](ai-coding-productivity-paradox/) | ⭐⭐⭐⭐ | Waydev/GitClear/Faros/Jellyfish 4 大研究 + DORA 框架 |
 | [AI 代码流失率](ai-code-churn/) | ⭐⭐⭐⭐ | 采纳率 80% vs 留存率 30% 的真相 + 6 大改进策略 |
 | [AI 编程 ROI 度量](ai-coding-roi/) | ⭐⭐⭐⭐ | DORA 4 指标 + SPACE 5 维度 + 改进策略 |
+| [Agent Memory 分类](agent-memory-classification/) | ⭐⭐⭐⭐ | 时间×认知×工程三维分类法 + 5 大框架 + 30/60/90 秒话术 |
 
 ### 📚 概念精炼版（主模块配套面试深挖）
 
