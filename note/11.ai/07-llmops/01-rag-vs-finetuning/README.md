@@ -339,4 +339,14 @@ graph TB
 
 ---
 
-← [返回 AI 知识体系总览](../../README.md) · 📅 2026-06-28
+## 相关延伸：RAG 在 AI Coding 上的边界
+
+RAG 适合**低频更新、结构化内容**（FAQ / 文档 / 合规），但**不适合高频更新的代码库**——Claude Code 等主流 AI Coding 工具主动放弃了 RAG，改用 Agentic Search。
+
+- 深度原理：[Agentic Search vs RAG](../agentic-search-vs-rag/README.md)
+- 面试题（高频反直觉）：[为什么 Claude Code 放弃了 RAG](../../../13.split-hairs/11.ai/claude-code-agentic-search/README.md)
+- 实践原文：[Claude Code 最佳实践](../../03-engineering/claude-code-practices/README.md)
+
+---
+
+← [返回 AI 知识体系总览](../../README.md) · 📅 2026-06-28 · 更新：2026-07-03
