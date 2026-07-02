@@ -193,6 +193,7 @@ Q4: 是否需要灵活性 > 稳定性？
 ## 相关章节
 
 - 上游：[智能系统分层](../intelligent-system-layers/README.md) — Agent 在分层架构中的位置
+- 关联：[Agent Memory 架构](../agent-memory/README.md) — Memory × Agent 执行架构（DAG/ReAct/Plan 的 Memory 特殊要求）
 - 关联：[Loop Engineering](../../03-engineering/loop-engineering/README.md) — DAG 的兜底机制
 - 关联：[Harness Engineering](../../03-engineering/harness-engineering/README.md) — DAG 是 Harness 的强约束
 - 实战：[生产级 Agent](../../03-engineering/production-agent/README.md) — DAG 在生产环境的落地

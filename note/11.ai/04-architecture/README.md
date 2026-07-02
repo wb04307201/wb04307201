@@ -17,6 +17,7 @@ module:
 |------------|---------|-----------|
 | [intelligent-system-layers](intelligent-system-layers/) | 智能系统三层架构 — 感知与数据层 / 认知与模型层 / 决策与执行层 · AI 技术栈分层架构全景 | 系统分层方法论 |
 | [agent-architecture](agent-architecture/) | **Agent 架构设计** — ReAct / DAG / Plan-and-Execute / Multi-Agent 4 大架构对比 + 选型决策树 + 真实案例 | Agent 架构选型 |
+| [agent-memory](agent-memory/) | **Agent Memory 架构** — 时间 × 认知 × 工程三维分类 + 4 类业界框架 + 写读忘设计原则 | Agent 记忆体系 |
 | [ontology-driven-agent](ontology-driven-agent/) | **本体驱动的智能体** — 让 AI 从"黑箱推理"走向"结构化认知"，融合符号主义与连接主义，构建可信可审计可演化的 AI 系统 | 可信 AI 范式 |
 | [2026-trends](2026-trends/) | 2026 AI 技术矩阵 — 大模型 / 多模态 / 具身智能 三位一体趋势 | 前沿趋势速览 |
 | [bpmn-ai-integration.md](bpmn-ai-integration.md) | **AI + BPMN 融合** — 业务流程引擎与 AI Agent 集成（单文件） | 工作流引擎融合 |
@@ -59,6 +60,7 @@ graph TB
 
 - **[intelligent-system-layers](intelligent-system-layers/)**：感知与数据层 / 认知与模型层 / 决策与执行层；与一般软件架构对应
 - **[agent-architecture](agent-architecture/)**：ReAct / DAG / Plan-and-Execute / Multi-Agent 4 大架构对比 + 选型决策树
+- **[agent-memory](agent-memory/)**：时间 × 认知 × 工程三维分类 + 4 类业界框架（LangChain / LangGraph / Mem0 / LlamaIndex）+ 写读忘设计原则
 - **[ontology-driven-agent](ontology-driven-agent/)**：融合符号主义（本体、知识图谱）与连接主义（LLM），构建可信可审计可演化系统
 - **[2026-trends](2026-trends/)**：2026 AI 技术矩阵 — 大模型 / 多模态 / 具身智能三位一体趋势
 - **[bpmn-ai-integration.md](bpmn-ai-integration.md)**：BPMN 业务流程引擎与 AI Agent 集成模式（单文件章节）
@@ -70,6 +72,7 @@ graph TB
 | 场景 | 实践要点 |
 |------|---------|
 | **Agent 架构选型** | 确定性流程 → DAG（可控可审计）；探索性任务 → ReAct（灵活但难调试）；复杂多步 → Plan-and-Execute；大规模协同 → Multi-Agent |
+| **Memory 体系** | 短期直接放 prompt；长期语义用 KV（图谱）；长期情景用向量；长期程序用工具描述；外部知识用 RAG |
 | **生产环境** | 通常用 DAG + Loop 混合架构，主流程 DAG 化，异常分支 ReAct 探索 |
 | **本体驱动** | 关键决策走符号推理（可解释），开放问答走 LLM（灵活），混合架构取长补短 |
 | **BPMN + AI 融合** | 标准流程节点用 BPMN，AI 决策节点调用 LLM Agent，关键审批仍走人工 |
