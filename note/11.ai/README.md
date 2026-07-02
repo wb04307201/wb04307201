@@ -36,6 +36,7 @@ module:
 - **AI 架构师**：L3 → L4 架构设计 → L5 行业应用
 - **前沿研究者**：L1 → L2 → L6 前沿研究 → L4 架构设计
 - **教学/培训**：L1 → L2 → 教学课程 16 课
+- **📌 主线推荐**：[LLM 驾驭演进史](04-architecture/llm-control-evolution/README.md) — 理解全貌后跳读 L2/L3 详情
 
 ---
 

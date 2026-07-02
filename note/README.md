@@ -204,6 +204,7 @@ module:
 
 | 序号 | 主题 | 核心内容 |
 |------|------|----------|
+| **驾驭演进史** | [11.ai/04-architecture/llm-control-evolution](11.ai/04-architecture/llm-control-evolution/README.md) | Prompt → Context → Harness → Loop 的 4 阶段叙事 | ⭐ |
 | 1 | [L1 基础概念](11.ai/01-fundamentals/README.md) | 大语言模型基础、神经网络层次、嵌入 vs 向量化、稠密模型 vs MoE |
 | 2 | [L2 技术栈](11.ai/02-technology-stack/README.md) | 61 核心概念全景、多模态、Prompt 工程、显存估算 |
 | 3 | [L3 工程实践](11.ai/03-engineering/README.md) | 深度学习框架、应用开发框架、计算平台、本地部署、AI 平台对比 |
