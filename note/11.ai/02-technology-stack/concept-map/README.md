@@ -115,6 +115,8 @@ module:
 | **ANP (Agent 网络协议)** | 面向去中心化、互联网级别的 Agent 网络通信协议，构建"Agent 互联网"。 | 🔵 |
 | **提示工程 (Prompt Engineering)** | 设计输入提示以引导模型生成更精确、可控输出的技术。 | 🟢 |
 | **上下文工程 (Context Engineering)** | 系统性地设计、管理和优化送入模型的全部上下文信息（包括提示、检索结果、工具描述、记忆、对话历史），是 Agent 时代 Prompt Engineering 的进化形态。 | 🟡 |
+| **Harness Engineering** | 用规范/流程/工具约束 Agent 行为的工程范式（CLAUDE.md / OpenSpec / Spec-Kit / Skills）。 | 🟡 |
+| **Loop Engineering** | 循环调用 Agent 直到任务完成的反直觉哲学；Harness 兜底防失控。 | 🔵 |
 | **上下文学习 (In-Context Learning)** | 模型通过输入中的示例（few-shot）即时学习任务和模式，无需更新参数。 | 🟢 |
 | **零/少样本学习 (Zero/Few-shot Learning)** | 无示例（零样本）或极少示例（少样本）下模型泛化适应新任务。 | 🟢 |
 | **自动提示优化 (Automatic Prompt Optimization)** | 利用算法自动生成和优化提示，最大化模型性能。 | 🟡 |
