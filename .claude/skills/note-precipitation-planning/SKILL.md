@@ -1,6 +1,6 @@
 ---
 name: note-precipitation-planning
-description: Use when user asks where to add or update a topic in the note knowledge base at C:/developer/IdeaProjects/wb04307201/note/ — covers survey of existing 14-module structure, depth analysis, location decision between main module / 13.split-hairs interview layer / 12.story narrative layer, layered precipitation strategy, and reverse-link verification
+description: Use when user asks where to add or update a topic in the project's note/ knowledge base — covers survey of existing 14-module structure, depth analysis, location decision between main module / 13.split-hairs interview layer / 12.story narrative layer, layered precipitation strategy, and reverse-link verification
 ---
 
 # note 沉淀规划
@@ -24,7 +24,7 @@ description: Use when user asks where to add or update a topic in the note knowl
 
 ## Project Context（必读）
 
-**note 目录位置**：`C:/developer/IdeaProjects/wb04307201/note/`
+**note 目录位置**：仓库根目录的 note/（CWD 假设 = 项目根）
 
 **14 主模块**：
 - `01.java` / `02.computer-basics` / `03.database` / `04.system-design`
@@ -49,7 +49,7 @@ description: Use when user asks where to add or update a topic in the note knowl
 **操作**：
 ```bash
 # 1.1 关键词搜索
-cd "C:/developer/IdeaProjects/wb04307201"
+cd "$(git rev-parse --show-toplevel)"
 grep -rl "<关键词>" note/ | head -10
 
 # 1.2 主题目录扫描（如 RAG / Transformer / Memory）

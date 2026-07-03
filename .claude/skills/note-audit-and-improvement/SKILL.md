@@ -7,7 +7,7 @@ description: Use when user asks "what should be improved in note" or requests a 
 
 ## Overview
 
-当用户问"note 哪里需要优化 / 哪里需要补充 / 哪里有索引缺失 / 哪里有问题"时，对 `C:/developer/IdeaProjects/wb04307201/note/` 做**系统性审计**，输出**优先级分级**的优化建议报告（不是一次性 70+ 改动，而是分批可执行）。
+当用户问"note 哪里需要优化 / 哪里需要补充 / 哪里有索引缺失 / 哪里有问题"时，对仓库根目录下的 note/ 做**系统性审计**（CWD 假设为项目根），输出**优先级分级**的优化建议报告（不是一次性 70+ 改动，而是分批可执行）。
 
 ## When to Use
 
@@ -24,7 +24,7 @@ description: Use when user asks "what should be improved in note" or requests a 
 
 ## Project Context（必读）
 
-**note 位置**：`C:/developer/IdeaProjects/wb04307201/note/`
+**note 位置**：仓库根目录的 note/（CWD 假设 = 项目根）
 
 **已知已修复的问题**（**扫描时必须排除**，避免重复报告）：
 - ✅ 14 主模块优化（2026-07-01 spec/plan/实施）
@@ -53,7 +53,7 @@ description: Use when user asks "what should be improved in note" or requests a 
 
 **关键操作**：
 ```bash
-cd "C:/developer/IdeaProjects/wb04307201"
+cd "$(git rev-parse --show-toplevel)"
 
 # 1. 总览
 find note -name "README.md" | wc -l                                    # README 数
@@ -201,7 +201,7 @@ grep -rl "\.png" note/ | wc -l  # 引用 PNG 的文件数
 # note 优化审计报告
 
 > 扫描时间：YYYY-MM-DD
-> 范围：`C:/developer/IdeaProjects/wb04307201/note/`
+> 范围：仓库根目录 note/（CWD 假设）
 > 排除项：本会话已修的 7 类问题（详见 Step 2）
 
 ## 总览
