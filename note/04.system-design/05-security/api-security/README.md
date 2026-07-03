@@ -13,11 +13,16 @@ module:
 
 ## 目录
 
+- [API 安全的 7 层防护](#api-安全的-7-层防护)
+- [认证方式对比](#认证方式对比)
 - [API 签名验证](#api-签名验证)
 - [防重放攻击](#防重放攻击)
+- [API 输入验证](#api-输入验证)
 - [数据脱敏](#数据脱敏)
 - [API 限流与防刷](#api-限流与防刷)
+- [API Key 管理](#api-key-管理服务间认证)
 - [HTTPS 与证书锁定](#https-与证书锁定)
+- [错误处理](#错误处理不泄漏信息)
 - [API 安全检查清单](#api-安全检查清单)
 
 ---
@@ -26,6 +31,43 @@ module:
 API 安全 的关键不是'防住'——是**出事后 5 分钟内能定位**。
 
 本篇用真实生产场景切入：线上怎么炸、按官方文档写为什么也会错、怎么止血。
+
+---
+
+## API 安全的 7 层防护
+
+```
+┌─────────────────────────────────────┐
+│  1. 传输层：HTTPS / TLS 1.2+          │
+├─────────────────────────────────────┤
+│  2. 认证层：你是谁？OAuth2 / JWT      │
+├─────────────────────────────────────┤
+│  3. 授权层：你能做什么？RBAC / ABAC  │
+├─────────────────────────────────────┤
+│  4. 审计层：日志 + 监控              │
+├─────────────────────────────────────┤
+│  5. 输入层：参数验证 / 防注入        │
+├─────────────────────────────────────┤
+│  6. 限流层：防刷 / 防 DDoS            │
+├─────────────────────────────────────┤
+│  7. 响应层：错误处理 / 防泄漏        │
+└─────────────────────────────────────┘
+```
+
+本篇覆盖 1 / 3~7 层的接口侧防护；认证（第 2 层）与授权（第 3 层）的深度内容见下方"认证方式对比"及各鉴权专篇。
+
+---
+
+## 认证方式对比
+
+| 方式 | 适用 | 优点 | 缺点 |
+|------|------|------|------|
+| **Session + Cookie** | 传统 Web | 简单 | 不适合移动端 / 跨域 |
+| **JWT（Token）** | 现代 API / 移动端 | 无状态 / 跨域 | Token 撤销难 |
+| **OAuth2 / OIDC** | 第三方授权（微信登录） | 标准协议 | 流程复杂 |
+| **API Key** | 服务间调用 | 简单 | 安全性低 |
+
+> JWT 结构、签发与安全存储见 [JWT 安全](../jwt-security/README.md)；第三方授权流程见 [OAuth2.0 与 OIDC](../oauth2-oidc/README.md)；接口背后的权限决策见 [权限模型 RBAC / ABAC](../access-control/02-role-and-attribute/README.md)。
 
 ---
 
@@ -234,6 +276,66 @@ public class NonceService {
 | 10 分钟 | 容错性最好 | 攻击窗口较长 |
 
 **推荐**: 5 分钟，同时要求客户端时钟与 NTP 服务器同步。
+
+---
+
+## API 输入验证
+
+### Jakarta Validation（Java）
+
+```java
+@PostMapping("/users")
+public ResponseEntity<?> createUser(@Valid @RequestBody CreateUserRequest req) {
+  // ...
+}
+
+@Data
+public class CreateUserRequest {
+  @NotBlank
+  @Size(min = 3, max = 20)
+  private String username;
+
+  @Email
+  @NotBlank
+  private String email;
+
+  @Min(0) @Max(150)
+  private Integer age;
+
+  @Pattern(regexp = "^[a-zA-Z0-9]+$")
+  private String password;
+}
+```
+
+### 防 SQLi / NoSQLi
+
+```java
+// ✅ 参数化（MyBatis）
+@Select("SELECT * FROM users WHERE username = #{username}")
+User findByUsername(@Param("username") String username);
+
+// ❌ 字符串拼接（危险）
+@Select("SELECT * FROM users WHERE username = '" + username + "'")
+```
+
+### 防 Mass Assignment（批量赋值）
+
+```java
+// ✅ 显式绑定字段
+public class UpdateUserRequest {
+  private String username;
+  private String email;
+  // 不暴露 role / isAdmin
+}
+
+// ❌ 直接绑定整个对象
+public void updateUser(@RequestBody User user) {
+  // 攻击者可传 {"role":"admin"} 越权
+  userRepository.save(user);
+}
+```
+
+> 更全面的注入攻防（XSS / CSRF / XXE / 文件上传）见 [Web 安全](../web-security/README.md)。
 
 ---
 
@@ -524,6 +626,39 @@ public boolean tryAcquireSafe(String key, int limit, long windowMs) {
 
 ---
 
+## API Key 管理（服务间认证）
+
+### 生成与存储
+
+```java
+// 生成强随机 API Key
+String apiKey = Base64.getUrlEncoder().withoutPadding()
+    .encodeToString(SecureRandom.getInstanceStrong().generateSeed(32));
+
+// 存储：数据库只存 hash（不存明文）
+String apiKeyHash = BCrypt.hashpw(apiKey, BCrypt.gensalt());
+db.save(new ApiKey(apiKeyHash, ownerId, scope, expiresAt));
+```
+
+### 验证
+
+```java
+public boolean verifyApiKey(String apiKey) {
+  // 用数据库 hash 验证（不直接查询）
+  ApiKey record = db.findByHashPrefix(apiKey.substring(0, 8));
+  if (record == null) return false;
+  return BCrypt.checkpw(apiKey, record.getHash());
+}
+```
+
+### Key 轮转
+
+- 每 90 天轮转一次
+- 支持多 Key 并行（灰度切换）
+- 立即吊销机制
+
+---
+
 ## HTTPS 与证书锁定
 
 ### 为什么必须使用 HTTPS
@@ -568,6 +703,56 @@ OkHttpClient client = new OkHttpClient.Builder()
 
 ---
 
+## 错误处理（不泄漏信息）
+
+### 反例（泄漏细节）
+
+```json
+{
+  "error": "SQLException: column 'password' doesn't exist at line 1, query was SELECT * FROM users WHERE...",
+  "stackTrace": "java.sql.SQLException: ...\n\tat com.example.UserService.find..."
+}
+```
+
+### 正例（统一错误响应）
+
+```json
+{
+  "error": {
+    "code": "USER_NOT_FOUND",
+    "message": "用户不存在",
+    "requestId": "req-abc123"
+  }
+}
+```
+
+```java
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+  @ExceptionHandler(UserNotFoundException.class)
+  public ResponseEntity<?> handleNotFound(UserNotFoundException e) {
+    return ResponseEntity.status(404).body(Map.of(
+      "error", Map.of(
+        "code", "USER_NOT_FOUND",
+        "message", "用户不存在",
+        "requestId", MDC.get("requestId")
+      )
+    ));
+  }
+
+  @ExceptionHandler(Exception.class)
+  public ResponseEntity<?> handleGeneric(Exception e) {
+    log.error("Unexpected error", e);
+    return ResponseEntity.status(500).body(Map.of(
+      "error", Map.of("code", "INTERNAL_ERROR", "message", "系统异常")
+    ));
+  }
+}
+```
+
+---
+
 ## API 安全检查清单
 
 | # | 检查项 | 说明 | 优先级 |
@@ -597,6 +782,7 @@ OkHttpClient client = new OkHttpClient.Builder()
 - [OAuth2.0 与 OIDC](../oauth2-oidc/README.md) — 访问令牌的签发与生命周期
 - [权限模型 RBAC / ABAC](../access-control/02-role-and-attribute/README.md) — 接口背后的权限决策
 - [OWASP Top 10](../owasp-top10/README.md) — 应用安全风险全景
+- [Web 安全](../web-security/README.md) — XSS / CSRF / SQLi / XXE 攻防实战
 - [加密与密钥管理](../encryption/README.md) — HTTPS / 签名背后的密码学基础
 - [Spring Cloud Gateway JWT 鉴权实现](../../../06.spring/05-spring-cloud/gateway.md) — 网关层接入点与上下文透传实战
 
