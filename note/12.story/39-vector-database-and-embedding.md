@@ -608,6 +608,54 @@ async def monitor_retrieval_quality(query, results):
 
 ---
 
+## 第八章：10亿级毫秒级检索——HNSW vs IVF vs DiskANN 选型逻辑
+
+**本节定位**：本章是 12.story/39 味道仓库的**深度专题章节**，聚焦 10 亿级向量检索的算法选型。
+
+**与本章前 7 章的关系**：
+- 第一章（基础）：向量检索基础概念
+- 第二章（6 大向量库）：库选型对比
+- 第三章（Embedding）：向量生成
+- 第四章（4 大调优）：HNSW 参数调优
+- **第八章（本节）：算法选型决策**（HNSW vs IVF vs DiskANN）
+
+完整内容见 [11.ai/02-technology-stack/vector-search-algorithms](../11.ai/02-technology-stack/vector-search-algorithms/README.md) 与 [咬文嚼字·11.ai/vector-search-algorithms（面试版）](../../13.split-hairs/11.ai/vector-search-algorithms/README.md)。
+
+### 8.1 10 亿级向量检索的规模挑战
+
+阿明在第六章（高级话题）里读到了"分布式 HNSW"，心想：把 10 亿向量分到 10 个节点不就行了吗？结果他发现：
+
+- **HNSW 全内存**：10 亿 × 1024 维 × 4 字节 = **4 TB** —— 单台服务器 256GB 放不下
+- **IVF + PQ**：10 亿级 Recall@10 ≈ 70-90% —— **生产 95%+ 难达标**
+- **DiskANN**：内存只存图（10-50GB），向量从 SSD 加载 —— **10 亿级首选**
+
+> **阿明的厨房笔记（第八章场景）**：仓库越扩越大，从 1000 道菜扩到 10 亿道菜。原本的"立体货架"（HNSW）装不下了（货架本身要 4TB 内存）。阿明开始改造：货架只放"路标卡"（Vamana 图，10GB），真正的菜放在"地下室仓库"（NVMe SSD）按需取。这就是 DiskANN 的思路——和"数据库从内存搬到磁盘"是同一个故事。
+
+### 8.2 实战选型决策
+
+**核心决策树**：
+
+```text
+规模？
+├─ < 1000 万 → HNSW 全内存
+├─ 1000 万 - 1 亿 → HNSW + 量化 / IVF + Flat
+├─ 1-10 亿 → Recall > 95%？→ DiskANN；否则 IVF + PQ
+└─ > 10 亿 → DiskANN + 分布式
+```
+
+**4 维权衡**（内存 / 磁盘 / QPS / Recall）：
+
+| 算法 | 内存 | QPS | Recall@10 | 适用规模 |
+|------|------|-----|-----------|---------|
+| HNSW 全内存 | 4 TB | 10K+ | > 95% | < 1000 万 |
+| IVF + PQ | 10-100 GB | 1K-5K | 70-90% | 1-10 亿（召回宽松）|
+| **DiskANN** | **10-50 GB** | **2K-10K** | **> 95%** | **1-100 亿** ⭐ |
+| DiskANN + 分布式 | 每节点 10-50 GB | 10K+ | > 95% | > 10 亿 |
+
+**关键洞察**：HNSW 在 10 亿级**内存放不下**（4TB 单机放不下），必须换 DiskANN。详细原理、参数调优、业界库对比、3 个生产案例（电商/RAG/图像搜索）见 [11.ai/02-technology-stack/vector-search-algorithms](../11.ai/02-technology-stack/vector-search-algorithms/README.md)。
+
+---
+
 ## 核心总结：向量数据库全景
 
 | 维度 | 核心内容 | 工具 / 方法 |
@@ -619,6 +667,7 @@ async def monitor_retrieval_quality(query, results):
 | **成本监控** | 存储费 + 查询费 + 网络费 | 见第五章 |
 | **高级话题** | 分布式 / Hybrid / 元数据 / 压缩 | 见第六章 |
 | **可观测性** | 与 37 AI Observability 打通 | 见第七章 |
+| **10亿级选型** | HNSW / IVF / DiskANN + 4 维权衡 | 见第八章 |
 
 ### 一句心法
 
