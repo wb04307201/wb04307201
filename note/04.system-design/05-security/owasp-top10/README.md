@@ -134,6 +134,8 @@ User findByName(@Param("name") String name);
 ProcessBuilder pb = new ProcessBuilder("ls", "-l", validatedDir);
 ```
 
+更多注入攻防实战（SQLi / XSS / XXE / 文件上传）见 [Web 安全](../web-security/README.md)。
+
 ---
 
 ## A04: 不安全设计（Insecure Design）
@@ -414,7 +416,7 @@ public byte[] fetchImage(String url) {
 }
 ```
 
-更多云原生场景下的 SSRF 见相关安全规范。
+更多 SSRF 防御细节（内网地址过滤、DNS rebinding、云元数据保护）见 [Web 安全](../web-security/README.md)。
 
 ---
 
