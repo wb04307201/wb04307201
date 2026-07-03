@@ -656,6 +656,50 @@ async def monitor_retrieval_quality(query, results):
 
 ---
 
+## 第九章：10亿 vs 千亿级向量检索——5 个架构转变
+
+**本节定位**：本章是 12.story/39 味道仓库的**千亿级专题**——承接第八章（10亿级选型），讲清楚 10B → 100B → 1000B 的**质变**。
+
+### 9.1 千亿级核心挑战
+
+```
+10B（DiskANN 单机）  →  100B（分布式 + 分层）  →  1000B（ScANN + GPU + 联邦）
+                       ↑                              ↑
+                    5 个架构转变                    5 个架构转变的延续
+```
+
+**关键洞察**：千亿级是**质变**，不是 10 亿级 × 100。
+
+完整内容见 [11.ai/02-technology-stack/vector-search-at-scale](../../11.ai/02-technology-stack/vector-search-at-scale/README.md) + [咬文嚼字·11.ai/vector-search-at-scale（面试版）](../../11.ai/13.split-hairs/11.ai/vector-search-at-scale/README.md) + [第八章反向链（10亿级）](./README.md#第八章10亿级毫秒级检索hnsw-vs-ivf-vs-diskann-选型逻辑)。
+
+### 9.2 5 个架构转变速览
+
+1. **单跳 → 2 跳检索**（粗排 + 精排）
+2. **单一索引 → 分层索引**（hot/warm/cold tiering）
+3. **单机 → 分布式分片 + 副本**（100+ 节点）
+4. **CPU → GPU 加速**（ScANN / Faiss / GPU-DiskANN）
+5. **通用召回 → 查询路由**（按主键 / 主题 / 时间分流）
+
+### 9.3 反直觉结论
+
+千亿级的瓶颈**不是延迟**，而是**召回率 + 成本 + 一致性**：
+
+- 真正 5ms 可达（但召回损失 5-10%）
+- 10-20ms 是平衡点（2 跳 + 分层 + GPU）
+- 50-100ms 推荐 / 搜索场景可接受
+
+### 9.4 业界真实案例速览
+
+| 公司 | 规模 | 方案 | 延迟 |
+|------|------|------|------|
+| Bing | 1000B+ | ScANN + GPU + 分层 | < 100ms |
+| Google | 万亿级 + | ScANN + TPU + 联邦 | < 200ms |
+| Meta | 1000B+ | Faiss GPU + 联邦 | < 50ms |
+| Pinterest | 10B+ | DiskANN + 分片 | < 30ms |
+| Spotify | 10B+ | Faiss + HNSW | < 20ms |
+
+---
+
 ## 核心总结：向量数据库全景
 
 | 维度 | 核心内容 | 工具 / 方法 |
@@ -668,6 +712,7 @@ async def monitor_retrieval_quality(query, results):
 | **高级话题** | 分布式 / Hybrid / 元数据 / 压缩 | 见第六章 |
 | **可观测性** | 与 37 AI Observability 打通 | 见第七章 |
 | **10亿级选型** | HNSW / IVF / DiskANN + 4 维权衡 | 见第八章 |
+| **千亿级选型** | ScANN / Faiss GPU / SPANN + 分布式 + 分层 | 见第九章 |
 
 ### 一句心法
 
