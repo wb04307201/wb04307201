@@ -217,8 +217,8 @@ question:
 - 同栏目：[`ai-code-churn`](../ai-code-churn/README.md) — 代码流失率专题
 - 同栏目：[`ai-coding-roi`](../ai-coding-roi/README.md) — ROI 度量框架
 - 同栏目：[`function-calling`](../function-calling/README.md) — Function Calling
-- 主模块：[`11.ai/05-applications`](../../../../11.ai/05-applications/README.md) — AI 行业应用
-- 故事：[`12.story/45-ai-productivity-paradox`](../../../../12.story/45-ai-productivity-paradox.md) — 阿明餐厅复盘
+- 主模块：[`11.ai/05-applications`](../../../11.ai/05-applications/README.md) — AI 行业应用
+- 故事：[`12.story/45-ai-productivity-paradox`](../../../12.story/45-ai-productivity-paradox.md) — 阿明餐厅复盘
 
 ---
 

@@ -153,8 +153,8 @@ SELECT * FROM user WHERE id IN (
 - 同栏目：[`select-all-big-table`](../select-all-big-table/README.md) — SELECT * 内存陷阱
 - 同栏目：[`batch-operation`](../batch-operation/README.md) — 批量插入
 - 同栏目：[`tuning`](../tuning/README.md) — SQL 调优全流程
-- 同栏目：[`index-failure`](../../mysql/index-failure/README.md) — 索引失效的 10 种场景
-- 主模块：[`03.database/02-sql`](../../../../03.database/02-sql/README.md) — SQL 优化原则
+- 同栏目：[`index-failure`](../../../mysql/index-failure/README.md) — 索引失效的 10 种场景
+- 主模块：[`03.database/02-sql`](../../../../../03.database/02-sql/README.md) — SQL 优化原则
 
 ---
 

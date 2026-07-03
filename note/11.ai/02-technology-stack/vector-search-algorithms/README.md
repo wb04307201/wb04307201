@@ -344,7 +344,7 @@ QPS：10K
 
 ## 九、与"驾驭演进"主线的关联
 
-向量检索算法演进是 [驾驭演进主线](../04-architecture/llm-control-evolution/README.md) 在 RAG 领域的具体体现：
+向量检索算法演进是 [驾驭演进主线](../../04-architecture/llm-control-evolution/README.md) 在 RAG 领域的具体体现：
 
 | 阶段 | 向量检索 | 适配规模 |
 |------|---------|---------|
@@ -361,15 +361,15 @@ QPS：10K
 - [咬文嚼字·11.ai/vector-search-algorithms（30/60/90 秒话术）](../../../13.split-hairs/11.ai/vector-search-algorithms/README.md)
 
 **12.story 实战**：
-- [12.story/39-vector-database-and-embedding（味道仓库 4 大调优）](../../../../12.story/39-vector-database-and-embedding.md)
+- [12.story/39-vector-database-and-embedding（味道仓库 4 大调优）](../../../12.story/39-vector-database-and-embedding.md)
 
 **同主模块**：
 - [Context Engineering（Context 三件套）](../context-engineering/README.md)
 - [Function Calling](../function-calling/README.md)
 
 **实战应用**：
-- [11.ai/07-llmops/agentic-search-vs-rag（Agentic Search）](../../../07-llmops/agentic-search-vs-rag/README.md)
-- [11.ai/07-llmops/01-rag-vs-finetuning（RAG 架构）](../../../07-llmops/01-rag-vs-finetuning/README.md)
+- [11.ai/07-llmops/agentic-search-vs-rag（Agentic Search）](../../07-llmops/agentic-search-vs-rag/README.md)
+- [11.ai/07-llmops/01-rag-vs-finetuning（RAG 架构）](../../07-llmops/01-rag-vs-finetuning/README.md)
 
 ---
 

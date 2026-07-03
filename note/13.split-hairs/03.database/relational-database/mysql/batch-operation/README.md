@@ -220,7 +220,7 @@ conn.commit();   // 大事务
 - 同栏目：[`large-transaction`](../large-transaction/README.md) — 大事务
 - 同栏目：[`tuning`](../tuning/README.md) — SQL 调优全流程
 - 同栏目：[`what-lock`](../what-lock/README.md) — 行锁 / 表锁 / 间隙锁
-- 主模块：[`01.java/jdbc`](../../../../01.java/jdbc/README.md) — JDBC 核心接口
+- 主模块：[`01.java/jdbc`](../../../../../01.java/jdbc/README.md) — JDBC 核心接口
 
 ---
 

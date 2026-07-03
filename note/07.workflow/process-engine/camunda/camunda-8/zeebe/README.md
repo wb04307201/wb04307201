@@ -9,7 +9,7 @@ module:
 
 # Zeebe
 
-> ⬅️ [返回 07 工作流](../../../README.md) | [流程引擎](../../README.md) | [Camunda 8](../README.md) | [微服务编排](../../../workflow-and-microservice-orchestration/README.md) | [事件驱动](../../../apache-eventmesh/README.md)
+> ⬅️ [返回 07 工作流](../../../README.md) | [流程引擎](../../README.md) | [Camunda 8](../README.md) | [微服务编排](../../../../workflow-and-microservice-orchestration/README.md) | [事件驱动](../../../../apache-eventmesh/README.md)
 
 ## 🎯 一句话定位
 
@@ -354,7 +354,7 @@ zeebe:
 2. **Gateway 是不是单点？** 不是。Gateway 是无状态 + 无会话的，可以任意水平扩展，客户端可负载均衡到任意一个 Gateway；背后所有 Broker 节点都是对等的。
 3. **Job Worker 拉模式 vs 推模式？** Zeebe 用**拉模式**（Worker 调用 `activateJobs` 拉任务）——好处是 Worker 背压可控（不超负载），且任何语言都能实现。代价是短轮询延迟。
 4. **为什么官方只支持 Java 和 Go 客户端？** gRPC + Protocol Buffers 自动生成 100+ 语言客户端；官方只维护最常用的两个，其余交给社区（参考 [awesome-zeebe](https://github.com/zeebe-io/awesome-zeebe)）。
-5. **Zeebe 与 Temporal/Cadence 的关系？** 都是分布式工作流引擎；Zeebe 走 BPMN 2.0 标准路线（业务可读），Temporal/Cadence 走代码 DSL 路线（开发者友好）。详见 [微服务编排](../../../workflow-and-microservice-orchestration/README.md)。
+5. **Zeebe 与 Temporal/Cadence 的关系？** 都是分布式工作流引擎；Zeebe 走 BPMN 2.0 标准路线（业务可读），Temporal/Cadence 走代码 DSL 路线（开发者友好）。详见 [微服务编排](../../../../workflow-and-microservice-orchestration/README.md)。
 6. **Zeebe 单 Broker 性能瓶颈在哪？** 主要在**磁盘 IO**（追加日志）+ **Raft 复制延迟**。生产建议：① 用 NVMe SSD ② replicationFactor=3 起步 ③ 监控 `zeebe_log_appender_latency` 指标。
 
 ---
@@ -362,12 +362,12 @@ zeebe:
 ## 相关章节
 
 - ⬅️ [返回 07 工作流](../../../README.md)
-- [工作流定义](../../../define/README.md) — BPMN 三要素
+- [工作流定义](../../../../define/README.md) — BPMN 三要素
 - [流程引擎](../../README.md) — Zeebe 在主流引擎中的定位
 - [Camunda 8](../README.md) — Zeebe 是 Camunda 8 的内核
 - [Camunda 7 实战](../../camunda-7/README.md) — 上一代 Java 嵌入式引擎
-- [微服务编排](../../../workflow-and-microservice-orchestration/README.md) — Zeebe/Temporal/Cadence 三大编排引擎对比
-- [事件驱动与 Serverless Workflow](../../../apache-eventmesh/README.md) — 事件驱动作为工作流的神经系统
+- [微服务编排](../../../../workflow-and-microservice-orchestration/README.md) — Zeebe/Temporal/Cadence 三大编排引擎对比
+- [事件驱动与 Serverless Workflow](../../../../apache-eventmesh/README.md) — 事件驱动作为工作流的神经系统
 
 ---
 

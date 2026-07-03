@@ -227,7 +227,6 @@ graph TD
 
 - 上游：[L3 工程实践](../03-engineering/) — AI 工程基础（Spring AI 在此落地）
 - 关联：[06.spring](../../06.spring/) — Spring 生态（Spring AI 底层）
-- 关联：[12.story #43 AI 时代开发者生存指南](../../12.story/43-ai-developer-survival.md) — 认知债务相关
 - 面试：[13.split-hairs AI 新概念](../../13.split-hairs/11.ai/README.md) — AI 面试深挖
 
 ---

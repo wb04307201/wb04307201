@@ -315,7 +315,7 @@ GPU 距离计算：512 维 × 1 亿向量 × 8 字节 = 0.5ms（100x）
 
 ## 七、与"驾驭演进"主线的关联
 
-向量检索规模演进是 [驾驭演进主线](../04-architecture/llm-control-evolution/README.md) 在检索领域的体现：
+向量检索规模演进是 [驾驭演进主线](../../04-architecture/llm-control-evolution/README.md) 在检索领域的体现：
 
 | 驾驭阶段 | 向量检索规模 | 适配 |
 |---------|------------|------|
@@ -336,11 +336,11 @@ GPU 距离计算：512 维 × 1 亿向量 × 8 字节 = 0.5ms（100x）
 - [10亿级向量检索选型（HNSW/IVF/DiskANN）](../vector-search-algorithms/README.md)
 
 **12.story 实战**：
-- [12.story/39-vector-database-and-embedding（味道仓库 第九章反向链）](../../../../12.story/39-vector-database-and-embedding.md)
+- [12.story/39-vector-database-and-embedding（味道仓库 第九章反向链）](../../../12.story/39-vector-database-and-embedding.md)
 
 **实战框架**：
-- [LangGraph（Checkpoint / Memory）](../../../03-engineering/ai-platforms/langgraph.md)
-- [Context Engineering](../../../02-technology-stack/context-engineering/README.md)
+- [LangGraph（Checkpoint / Memory）](../../03-engineering/ai-platforms/langgraph.md)
+- [Context Engineering](../context-engineering/README.md)
 
 ---
 

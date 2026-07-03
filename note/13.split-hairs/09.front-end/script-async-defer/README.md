@@ -193,7 +193,7 @@ document.body.appendChild(script);  // 默认异步加载
 - 同栏目：[`reflow-repaint`](../reflow-repaint/README.md) — 回流与重绘
 - 同栏目：[`lazy-load-preload`](../lazy-load-preload/README.md) — 懒加载与预加载
 - 同栏目：[`from-url-to-page`](../from-url-to-page/README.md) — URL 输入到页面展示
-- 主模块：[`09.front-end/06-performance`](../../../../09.front-end/06-performance/README.md) — 前端性能优化
+- 主模块：[`09.front-end/06-performance`](../../../09.front-end/06-performance/README.md) — 前端性能优化
 
 ---
 

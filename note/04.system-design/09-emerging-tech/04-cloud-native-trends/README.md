@@ -152,7 +152,7 @@ spec:
 - 复杂问题 → GPT-4 / Claude Opus（慢 + 贵）
 ```
 
-详见 [`11.ai/07-llmops`](../../11.ai/07-llmops/02-llmops-stack/README.md)
+详见 [`11.ai/07-llmops`](../../../11.ai/07-llmops/02-llmops-stack/README.md)
 
 ### 3.3 国产 GPU 适配
 
@@ -226,7 +226,7 @@ spec:
 
 ## 五、可观测性 2.0（eBPF + AI 增强）
 
-详见 [`08-observability`](../08-observability/README.md) + [`01-ebpf`](../01-ebpf/README.md)
+详见 [`08-observability`](../../08-observability/README.md) + [`01-ebpf`](../01-ebpf/README.md)
 
 ### 5.1 OpenTelemetry（OTel）一统江湖
 

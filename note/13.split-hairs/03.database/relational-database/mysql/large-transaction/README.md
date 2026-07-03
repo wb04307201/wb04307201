@@ -219,7 +219,7 @@ SET GLOBAL innodb_long_query_time = 5;
 - 同栏目：[`batch-operation`](../batch-operation/README.md) — 批量插入
 - 同栏目：[`what-lock`](../what-lock/README.md) — 行锁 / 表锁 / 间隙锁
 - 同栏目：[`isolation`](../isolation/README.md) — 事务隔离级别
-- 主模块：[`03.database/03-transaction`](../../../../03.database/03-transaction/README.md) — 事务与并发控制
+- 主模块：[`03.database/03-transaction`](../../../../../03.database/03-transaction/README.md) — 事务与并发控制
 
 ---
 

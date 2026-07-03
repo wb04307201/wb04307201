@@ -98,6 +98,6 @@ URG  ACK  PSH  RST  SYN  FIN
 
 ## 相关章节
 
-- [OSI 模型](../osi-model/README.md)
-- [TCP/IP 模型](../tcp-ip-model/README.md)
+- [OSI 模型](../../osi-model/README.md)
+- [TCP/IP 模型](../../tcp-ip-model/README.md)
 - [常见协议](../README.md)

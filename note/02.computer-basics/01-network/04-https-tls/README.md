@@ -296,7 +296,7 @@ Early-Data: 1
 | **cert-manager** | K8s 自动证书管理 |
 | **Istio Mesh** | 自动 mTLS |
 
-详见 [`kubernetes/08-operator-and-gitops`](../../05.tools/kubernetes/08-operator-and-gitops/README.md)
+详见 [`kubernetes/08-operator-and-gitops`](../../../05.tools/kubernetes/08-operator-and-gitops/README.md)
 
 ---
 

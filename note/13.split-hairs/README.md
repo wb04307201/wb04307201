@@ -27,13 +27,13 @@ module:
 
 | 编号 | 对齐主模块 | 主题方向 | 篇数 | 子入口 |
 |------|-----------|---------|------|-------|
-| 01 | [`01.java`](../../01.java/) | Java 基础陷阱 | 34 | [01.java/](01.java/) |
-| 03 | [`03.database`](../../03.database/) | 数据库细节 | 22 | [03.database/](03.database/) |
-| 04 | [`04.system-design`](../../04.system-design/) | 系统设计难点 | 10 | [04.system-design/](04.system-design/) |
-| 06 | [`06.spring`](../../06.spring/) | Spring 面试高频 | 13 | [06.spring/](06.spring/) |
-| 09 | [`09.front-end`](../../09.front-end/) | 前端细节 | 25 | [09.front-end/](09.front-end/) |
-| 11 | [`11.ai`](../../11.ai/) | AI 面试深挖 | 14 | [11.ai/](11.ai/) |
-| ✦ | [`14.project-management`](../../14.project-management/) | **外链**（决策实战，已迁出） | — | [14.project-management/](../../14.project-management/) |
+| 01 | [`01.java`](../01.java/) | Java 基础陷阱 | 34 | [01.java/](01.java/) |
+| 03 | [`03.database`](../03.database/) | 数据库细节 | 22 | [03.database/](03.database/) |
+| 04 | [`04.system-design`](../04.system-design/) | 系统设计难点 | 10 | [04.system-design/](04.system-design/) |
+| 06 | [`06.spring`](../06.spring/) | Spring 面试高频 | 13 | [06.spring/](06.spring/) |
+| 09 | [`09.front-end`](../09.front-end/) | 前端细节 | 25 | [09.front-end/](09.front-end/) |
+| 11 | [`11.ai`](../11.ai/) | AI 面试深挖 | 14 | [11.ai/](11.ai/) |
+| ✦ | [`14.project-management`](../14.project-management/) | **外链**（决策实战，已迁出） | — | [14.project-management/](../14.project-management/) |
 
 **总计：118 篇面试题**（仅"一题一文"题；03.database 另有 7 个二级目录索引页、04.system-design 另有 3 个二级目录索引页）
 
@@ -47,7 +47,7 @@ module:
 - **转岗工程师**：从其他方向（运维 / 测试 / 数据）转开发，需要快速积累高频面试点的人。
 - **面试官**：希望了解"候选人最容易踩的陷阱"以提高甄别效率的人。
 
-> **不适用**：纯系统学习者（请走主模块 → split-hairs 反而打散体系）；纯项目实战者（请走 [08.application-systems](../../08.application-systems/) / [07.workflow](../../07.workflow/)）。
+> **不适用**：纯系统学习者（请走主模块 → split-hairs 反而打散体系）；纯项目实战者（请走 [08.application-systems](../08.application-systems/) / [07.workflow](../07.workflow/)）。
 
 ---
 
@@ -149,10 +149,10 @@ graph TB
 
 | 类型 | 例子 | 应该归到 |
 |------|------|----------|
-| **决策实战 + 管理学** | App 报价拆解 / 外包避坑 / App 跨端技术栈选型 | [`note/14.project-management/`](../../14.project-management/README.md) / 主模块 [`09.front-end/08-cross-platform/`](../../09.front-end/08-cross-platform/) |
+| **决策实战 + 管理学** | App 报价拆解 / 外包避坑 / App 跨端技术栈选型 | [`note/14.project-management/`](../14.project-management/README.md) / 主模块 [`09.front-end/08-cross-platform/`](../09.front-end/08-cross-platform/) |
 | **主模块已经深度覆盖的"广度"** | 4 种创建线程方式 / SQL 调优总览 | 主模块对应章节，split-hairs 不重复广度 |
-| **概念定义 + 全景图** | Transformer 是什么 / Java 反射的整体框架 | 主模块 [`01-fundamentals/transformer/`](../../11.ai/01-fundamentals/transformer/README.md)，split-hairs 只做精炼版 |
-| **前端工程化 / 浏览器"广度"知识** | URL 到渲染全链路 | 主模块 [`09.front-end/01-foundation/browser-rendering/`](../../09.front-end/01-foundation/browser-rendering/README.md) |
+| **概念定义 + 全景图** | Transformer 是什么 / Java 反射的整体框架 | 主模块 [`01-fundamentals/transformer/`](../11.ai/01-fundamentals/transformer/README.md)，split-hairs 只做精炼版 |
+| **前端工程化 / 浏览器"广度"知识** | URL 到渲染全链路 | 主模块 [`09.front-end/01-foundation/browser-rendering/`](../09.front-end/01-foundation/browser-rendering/README.md) |
 
 ### 判定 checklist（写作前自问）
 
@@ -190,19 +190,19 @@ graph TB
 ## 8. 开源参考
 
 本模块为面试专题集，引用的核心开源项目见各主模块的开源参考：
-- [`01.java`](../../01.java/README.md) — OpenJDK / JUnit 5 / Mockito
-- [`03.database`](../../03.database/README.md) — MySQL / Redis / HikariCP
-- [`04.system-design`](../../04.system-design/README.md) — Sentinel / Resilience4j
-- [`06.spring`](../../06.spring/README.md) — Spring 全家桶
-- [`09.front-end`](../../09.front-end/README.md) — React / Vue / Vite
-- [`11.ai`](../../11.ai/README.md) — Spring AI / LangChain / Dify
+- [`01.java`](../01.java/README.md) — OpenJDK / JUnit 5 / Mockito
+- [`03.database`](../03.database/README.md) — MySQL / Redis / HikariCP
+- [`04.system-design`](../04.system-design/README.md) — Sentinel / Resilience4j
+- [`06.spring`](../06.spring/README.md) — Spring 全家桶
+- [`09.front-end`](../09.front-end/README.md) — React / Vue / Vite
+- [`11.ai`](../11.ai/README.md) — Spring AI / LangChain / Dify
 
 ---
 
 ## 9. 与其他章节的关系
 
-- **主模块**：[`01.java`](../../01.java/) / [`03.database`](../../03.database/) / [`04.system-design`](../../04.system-design/) / [`06.spring`](../../06.spring/) / [`11.ai`](../../11.ai/) / [`09.front-end`](../../09.front-end/) / [`14.project-management`](../../14.project-management/)
-- **故事章节**：[`12.story`](../../12.story/) — 阿明餐厅故事（实战场景）
+- **主模块**：[`01.java`](../01.java/) / [`03.database`](../03.database/) / [`04.system-design`](../04.system-design/) / [`06.spring`](../06.spring/) / [`11.ai`](../11.ai/) / [`09.front-end`](../09.front-end/) / [`14.project-management`](../14.project-management/)
+- **故事章节**：[`12.story`](../12.story/) — 阿明餐厅故事（实战场景）
 - **主仓库 README**：[`README.md`](../../README.md)
 - **写作规范**：[`QUESTION-FORMAT-SPEC.md`](./QUESTION-FORMAT-SPEC.md) — 文章结构强制模板 + frontmatter schema
 

@@ -224,7 +224,7 @@ for (let i = 0; i < 100; i++) {
 - 同栏目：[`css-render-blocking`](../css-render-blocking/README.md) — CSS 渲染阻塞
 - 同栏目：[`script-async-defer`](../script-async-defer/README.md) — script 标签加载方式
 - 同栏目：[`event-loop`](../event-loop/README.md) — 浏览器事件循环机制
-- 主模块：[`09.front-end/06-performance`](../../../../09.front-end/06-performance/README.md) — 前端性能优化
+- 主模块：[`09.front-end/06-performance`](../../../09.front-end/06-performance/README.md) — 前端性能优化
 
 ---
 

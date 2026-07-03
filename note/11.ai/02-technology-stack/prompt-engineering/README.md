@@ -13,7 +13,7 @@ module:
 
 > Prompt Engineering 是 2026 年 AI 工程的起点：**通过精心设计的提示词，让 LLM 输出更符合需求的结果**。本篇覆盖 8 种核心技巧 + 高级技巧 + 注入防御 + 调试优化，是后续 Context / Harness / Loop 工程的基石。
 
-📌 **驾驭演进主线**：[LLM 驾驭演进史（Prompt → Context → Harness → Loop）](../../../04-architecture/llm-control-evolution/README.md)
+📌 **驾驭演进主线**：[LLM 驾驭演进史（Prompt → Context → Harness → Loop）](../../04-architecture/llm-control-evolution/README.md)
 
 ---
 ---

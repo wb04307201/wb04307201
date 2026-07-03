@@ -10,7 +10,7 @@ question:
 
 # 10亿级向量毫秒级检索：HNSW vs IVF vs DiskANN 选型逻辑
 
-> 一句话定位：10亿级向量（10B）≠ 1亿级（100M），10B 级别必须考虑**内存预算 + 磁盘 + QPS + Recall** 四维权衡，HNSW 全内存不可行、IVF 召回受限、DiskANN 是 2023+ 主流解法。深度原理见 [主模块向量检索算法](../../../11.ai/02-technology-stack/vector-search-algorithms/README.md) + [12.story 39 味道仓库 第八章](../../../../12.story/39-vector-database-and-embedding.md)。
+> 一句话定位：10亿级向量（10B）≠ 1亿级（100M），10B 级别必须考虑**内存预算 + 磁盘 + QPS + Recall** 四维权衡，HNSW 全内存不可行、IVF 召回受限、DiskANN 是 2023+ 主流解法。深度原理见 [主模块向量检索算法](../../../11.ai/02-technology-stack/vector-search-algorithms/README.md) + [12.story 39 味道仓库 第八章](../../../12.story/39-vector-database-and-embedding.md)。
 
 > **系列定位**：经典 AI 架构面试题（高频、架构师级）。考察的不是"什么是向量检索"，而是 **规模分级的算法选型能力** + **4 维权衡（内存/磁盘/QPS/Recall）** + **生产环境调优实战**。
 
@@ -279,12 +279,12 @@ results = collection.search(
 ## 六、相关章节
 
 **主模块**：
-- [11.ai/02-technology-stack/vector-search-algorithms（深度原理）](../../../02-technology-stack/vector-search-algorithms/README.md)
-- [11.ai/02-technology-stack/context-engineering（Context Engineering）](../../../02-technology-stack/context-engineering/README.md)
-- [11.ai/07-llmops/agentic-search-vs-rag（Agentic Search）](../../../07-llmops/agentic-search-vs-rag/README.md)
+- [11.ai/02-technology-stack/vector-search-algorithms（深度原理）](../../../11.ai/02-technology-stack/vector-search-algorithms/README.md)
+- [11.ai/02-technology-stack/context-engineering（Context Engineering）](../../../11.ai/02-technology-stack/context-engineering/README.md)
+- [11.ai/07-llmops/agentic-search-vs-rag（Agentic Search）](../../../11.ai/07-llmops/agentic-search-vs-rag/README.md)
 
 **12.story 实战**：
-- [12.story/39-vector-database-and-embedding（味道仓库 4 大调优）](../../../../12.story/39-vector-database-and-embedding.md)
+- [12.story/39-vector-database-and-embedding（味道仓库 4 大调优）](../../../12.story/39-vector-database-and-embedding.md)
 
 **同栏目（11.ai 高频面试题）**：
 - [RAG 架构设计](../rag/README.md)
@@ -293,7 +293,7 @@ results = collection.search(
 - [Agent Memory 分类](../agent-memory-classification/README.md)
 
 **相关 RAG 章节**：
-- [11.ai/07-llmops/agentic-search-vs-rag（为什么大代码库不用 RAG）](../../../07-llmops/agentic-search-vs-rag/README.md)
+- [11.ai/07-llmops/agentic-search-vs-rag（为什么大代码库不用 RAG）](../../../11.ai/07-llmops/agentic-search-vs-rag/README.md)
 
 ---
 

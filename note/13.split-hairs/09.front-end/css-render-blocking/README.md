@@ -193,7 +193,7 @@ CSS 字节流 → CSSOM Tree ─────────────────
 - 同栏目：[`script-async-defer`](../script-async-defer/README.md) — script 标签加载方式
 - 同栏目：[`lazy-load-preload`](../lazy-load-preload/README.md) — 懒加载与预加载
 - 同栏目：[`from-url-to-page`](../from-url-to-page/README.md) — URL 输入到页面展示全链路
-- 主模块：[`09.front-end/06-performance`](../../../../09.front-end/06-performance/README.md) — 前端性能优化
+- 主模块：[`09.front-end/06-performance`](../../../09.front-end/06-performance/README.md) — 前端性能优化
 
 ---
 

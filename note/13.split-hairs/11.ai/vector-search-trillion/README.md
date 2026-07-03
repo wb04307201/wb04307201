@@ -390,12 +390,12 @@ vs Google TPU v5：
 ## 八、相关章节
 
 **主模块**：
-- [11.ai/02-technology-stack/vector-search-trillion（深度原理）](../../../02-technology-stack/vector-search-trillion/README.md)
-- [11.ai/02-technology-stack/vector-search-at-scale（千亿级专题，兄弟）](../../../02-technology-stack/vector-search-at-scale/README.md)
-- [11.ai/02-technology-stack/vector-search-algorithms（10亿级专题，叔叔）](../../../02-technology-stack/vector-search-algorithms/README.md)
+- [11.ai/02-technology-stack/vector-search-trillion（深度原理）](../../../11.ai/02-technology-stack/vector-search-trillion/README.md)
+- [11.ai/02-technology-stack/vector-search-at-scale（千亿级专题，兄弟）](../../../11.ai/02-technology-stack/vector-search-at-scale/README.md)
+- [11.ai/02-technology-stack/vector-search-algorithms（10亿级专题，叔叔）](../../../11.ai/02-technology-stack/vector-search-algorithms/README.md)
 
 **12.story 实战**：
-- [12.story/39-vector-database-and-embedding（味道仓库 第十章反向链）](../../../../12.story/39-vector-database-and-embedding.md)
+- [12.story/39-vector-database-and-embedding（味道仓库 第十章反向链）](../../../12.story/39-vector-database-and-embedding.md)
 
 **同栏目（11.ai 前沿架构面试题）**：
 - [千亿级向量检索](../vector-search-at-scale/README.md)

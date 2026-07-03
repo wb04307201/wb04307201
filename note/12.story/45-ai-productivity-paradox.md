@@ -234,10 +234,10 @@ Token 成本：          +1000%
 - [`46-tech-debt-career-trap`](./46-tech-debt-career-trap.md) — 续集 20：技术债困局（本篇是续集 20 的"组织/团队"侧输入）
 - 续集七：[`31-codebase-cognitive-debt`](./31-codebase-cognitive-debt.md) — 认知债：代码流失的根因
 - 续集八：[`32-agent-harness`](./32-agent-harness.md) — Harness：减少代码流失的工程解药
-- 咬文嚼字：[`13.split-hairs/11.ai/ai-coding-productivity-paradox`](../../13.split-hairs/11.ai/ai-coding-productivity-paradox/README.md) — 4 大研究 + DORA 框架
-- 咬文嚼字：[`13.split-hairs/11.ai/ai-code-churn`](../../13.split-hairs/11.ai/ai-code-churn/README.md) — 代码流失率专题
-- 咬文嚼字：[`13.split-hairs/11.ai/ai-coding-roi`](../../13.split-hairs/11.ai/ai-coding-roi/README.md) — ROI 度量框架
-- 主模块：[`11.ai/05-applications`](../../11.ai/05-applications/README.md) — AI 行业应用与效能度量
+- 咬文嚼字：[`13.split-hairs/11.ai/ai-coding-productivity-paradox`](../13.split-hairs/11.ai/ai-coding-productivity-paradox/README.md) — 4 大研究 + DORA 框架
+- 咬文嚼字：[`13.split-hairs/11.ai/ai-code-churn`](../13.split-hairs/11.ai/ai-code-churn/README.md) — 代码流失率专题
+- 咬文嚼字：[`13.split-hairs/11.ai/ai-coding-roi`](../13.split-hairs/11.ai/ai-coding-roi/README.md) — ROI 度量框架
+- 主模块：[`11.ai/05-applications`](../11.ai/05-applications/README.md) — AI 行业应用与效能度量
 
 ---
 

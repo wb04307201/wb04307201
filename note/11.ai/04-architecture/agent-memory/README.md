@@ -293,8 +293,8 @@ Memory 演进是 [驾驭演进主线](../llm-control-evolution/README.md) 的具
 - [智能系统分层架构](../intelligent-system-layers/README.md)
 
 **实战框架**：
-- [LangGraph（Checkpoint）](../../../03-engineering/ai-platforms/langgraph.md)
-- [Context Engineering（Memory 是 Context 三大件之一）](../../../02-technology-stack/context-engineering/README.md)
+- [LangGraph（Checkpoint）](../../03-engineering/ai-platforms/langgraph.md)
+- [Context Engineering（Memory 是 Context 三大件之一）](../../02-technology-stack/context-engineering/README.md)
 
 **同栏目其他面试题**：
 - [咬文嚼字·11.ai（RAG / Dropout / Harness 等）](../../../README.md)

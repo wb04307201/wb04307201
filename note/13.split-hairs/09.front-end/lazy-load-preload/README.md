@@ -247,7 +247,7 @@ const About = React.lazy(() => import('./pages/About'));
 - 同栏目：[`reflow-repaint`](../reflow-repaint/README.md) — 回流与重绘
 - 同栏目：[`script-async-defer`](../script-async-defer/README.md) — script 标签加载方式
 - 同栏目：[`from-url-to-page`](../from-url-to-page/README.md) — URL 输入到页面展示
-- 主模块：[`09.front-end/06-performance`](../../../../09.front-end/06-performance/README.md) — 前端性能优化
+- 主模块：[`09.front-end/06-performance`](../../../09.front-end/06-performance/README.md) — 前端性能优化
 
 ---
 

@@ -300,11 +300,11 @@ GPU 距离计算：512 维 × 1 亿向量 × 8 字节 = 0.5ms（100x）
 ## 七、相关章节
 
 **主模块**：
-- [11.ai/02-technology-stack/vector-search-at-scale（深度原理）](../../../02-technology-stack/vector-search-at-scale/README.md)
-- [11.ai/02-technology-stack/vector-search-algorithms（10亿级专题，兄弟）](../../../02-technology-stack/vector-search-algorithms/README.md)
+- [11.ai/02-technology-stack/vector-search-at-scale（深度原理）](../../../11.ai/02-technology-stack/vector-search-at-scale/README.md)
+- [11.ai/02-technology-stack/vector-search-algorithms（10亿级专题，兄弟）](../../../11.ai/02-technology-stack/vector-search-algorithms/README.md)
 
 **12.story 实战**：
-- [12.story/39-vector-database-and-embedding（味道仓库 4 大调优 + 第八章反向链）](../../../../12.story/39-vector-database-and-embedding.md)
+- [12.story/39-vector-database-and-embedding（味道仓库 4 大调优 + 第八章反向链）](../../../12.story/39-vector-database-and-embedding.md)
 
 **同栏目（11.ai 高频面试题）**：
 - [10亿级向量检索选型](../vector-search-algorithms/README.md)

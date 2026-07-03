@@ -301,7 +301,6 @@ graph LR
 - 关联：[`09.front-end`](../09.front-end/README.md) — 前端工程化
 - 关联：[`10.big-data`](../10.big-data/README.md) — 大数据（LLM 训练 / 实时特征）
 - 关联：[`11.ai`](../11.ai/README.md) — AI 知识体系（本系列的 AI 理论支撑）
-- 面试：[`13.split-hairs/12.story`](../13.split-hairs/12.story/README.md) — 「阿明餐厅」面试深挖（精炼版）
 
 ---
 

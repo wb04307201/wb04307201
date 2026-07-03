@@ -327,8 +327,8 @@ with sync_playwright() as p:
 
 ## 九、相关章节
 
-- 主模块：[`09.front-end/04-engineering`](../../../../09.front-end/04-engineering/README.md) — 前端工程化
-- 主模块：[`05.tools`](../../../../05.tools/README.md) — 工具链
+- 主模块：[`09.front-end/04-engineering`](../../../09.front-end/04-engineering/README.md) — 前端工程化
+- 主模块：[`05.tools`](../../../05.tools/README.md) — 工具链
 
 ---
 

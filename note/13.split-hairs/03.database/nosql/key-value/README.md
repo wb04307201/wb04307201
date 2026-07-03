@@ -40,5 +40,5 @@ question:
 ## 相关章节
 
 - 返回：[`NoSQL 总览`](../README.md)
-- 主模块：[`03.database/07-redis`](../../../../../03.database/07-redis/README.md) — Redis 深度解析
+- 主模块：[`03.database/07-redis`](../../../../03.database/07-redis/README.md) — Redis 深度解析
 - 咬文嚼字：[`Redis 持久化`](../../redis-persistence/)、[`Redis 大 Key`](../../redis-big-key/)、[`Redis 集群`](../../redis-cluster/)

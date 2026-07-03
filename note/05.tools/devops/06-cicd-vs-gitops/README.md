@@ -216,7 +216,7 @@ GitHub Actions + Flux
 | **Jenkins X** | Jenkins 集成 | 传统 Jenkins 用户 |
 | **Spinnaker** | Netflix / 多云 | 大型企业 |
 
-详见 [08-operator-and-gitops](../../05.tools/kubernetes/08-operator-and-gitops/README.md)
+详见 [08-operator-and-gitops](../../kubernetes/08-operator-and-gitops/README.md)
 
 ---
 

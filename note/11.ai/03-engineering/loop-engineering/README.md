@@ -27,7 +27,7 @@ module:
 
 > 一句话：**Loop Engineering 是"信任 Agent，让它循环重试直到任务完成"——前提是 Harness 兜底防止失控**。
 
-📌 **驾驭演进主线**：[LLM 驾驭演进史（Prompt → Context → Harness → Loop）](../../../04-architecture/llm-control-evolution/README.md)
+📌 **驾驭演进主线**：[LLM 驾驭演进史（Prompt → Context → Harness → Loop）](../../04-architecture/llm-control-evolution/README.md)
 
 ---
 

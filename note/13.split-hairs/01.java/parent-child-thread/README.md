@@ -288,7 +288,7 @@ public void auditLog(String action) {
 
 - 同栏目：[`threadlocal`](../threadlocal/README.md) — ThreadLocal 原理与内存泄漏
 - 同栏目：[`concurrency/`](../concurrency/) — 并发编程系列
-- 主模块：[`01.java/concurrency`](../../../../01.java/concurrency/README.md) — Java 并发编程
+- 主模块：[`01.java/concurrency`](../../../01.java/concurrency/README.md) — Java 并发编程
 
 ---
 

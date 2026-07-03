@@ -178,7 +178,7 @@ spec:
       weight: 10
 ```
 
-详见：[08-operator-and-gitops](../kubernetes/08-operator-and-gitops/README.md) 的 Istio VirtualService 示例。
+详见：[08-operator-and-gitops](../../kubernetes/08-operator-and-gitops/README.md) 的 Istio VirtualService 示例。
 
 ### 简易 K8s 实现（用 2 个 Deployment）
 
