@@ -670,7 +670,7 @@ async def monitor_retrieval_quality(query, results):
 
 **关键洞察**：千亿级是**质变**，不是 10 亿级 × 100。
 
-完整内容见 [11.ai/02-technology-stack/vector-search-at-scale](../../11.ai/02-technology-stack/vector-search-at-scale/README.md) + [咬文嚼字·11.ai/vector-search-at-scale（面试版）](../../11.ai/13.split-hairs/11.ai/vector-search-at-scale/README.md) + [第八章反向链（10亿级）](./README.md#第八章10亿级毫秒级检索hnsw-vs-ivf-vs-diskann-选型逻辑)。
+完整内容见 [11.ai/02-technology-stack/vector-search-at-scale](../../11.ai/02-technology-stack/vector-search-at-scale/README.md) + [咬文嚼字·11.ai/vector-search-at-scale（面试版）](../../13.split-hairs/11.ai/vector-search-at-scale/README.md) + [第八章反向链（10亿级）](./README.md#第八章10亿级毫秒级检索hnsw-vs-ivf-vs-diskann-选型逻辑)。
 
 ### 9.2 5 个架构转变速览
 
