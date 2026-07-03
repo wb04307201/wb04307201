@@ -176,3 +176,7 @@ sequenceDiagram
 >         App2 --> DB2["MySQL 从"]
 >     end
 > ```
+
+---
+
+← [返回 架构图](../README.md)

@@ -39,3 +39,7 @@ module:
 - [Paxos Made Simple（Lamport 原文）](https://lamport.azurewebsites.net/pubs/lamport-paxos.pdf)
 - [In Search of an Understandable Consensus Algorithm（Raft 论文）](https://raft.github.io/raft.pdf)
 - [etcd 官方文档](https://etcd.io/docs/)
+
+---
+
+← [返回 分布式](../README.md)

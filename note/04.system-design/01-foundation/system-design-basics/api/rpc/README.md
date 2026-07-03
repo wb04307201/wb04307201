@@ -146,3 +146,7 @@ module:
 - 跨语言生态（Protobuf/Thrift 天然支持多语言）
 
 > 附：Google API 设计指南（[google.aip.dev](https://google.aip.dev/)）是权威参考，虽侧重 REST，但错误处理、分页等原则通用。
+
+---
+
+← [返回 API 设计](../README.md)

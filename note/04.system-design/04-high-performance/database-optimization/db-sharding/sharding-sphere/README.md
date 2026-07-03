@@ -63,3 +63,7 @@ module:
 * **大规模数据存储与计算**：ShardingSphere 适用于需要处理大规模数据的场景，如电商、金融、物联网等领域。
 * **高并发访问**：通过数据分片和读写分离等技术，ShardingSphere 能够显著提高数据库的并发访问能力。
 * **云原生环境**：ShardingSphere 的云原生数据库代理（ShardingSphere-Sidecar）为 Kubernetes 环境提供了数据库治理能力，适用于云原生应用开发。
+
+---
+
+← [返回 分库分表](../README.md)

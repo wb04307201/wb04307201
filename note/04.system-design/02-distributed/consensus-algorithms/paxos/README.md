@@ -111,3 +111,7 @@ Paxos 是分布式共识理论的奠基性算法，它证明了一致性是**可
 - [In Search of an Understandable Consensus Algorithm（Raft 论文）](https://raft.github.io/raft.pdf)
 - [etcd 官方文档](https://etcd.io/docs/)
 - [Raft 交互式演示](https://raft.github.io/)
+
+---
+
+← [返回 共识算法](../README.md)

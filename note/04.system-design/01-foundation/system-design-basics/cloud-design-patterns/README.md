@@ -121,3 +121,7 @@ Azure 设计模式遵循 **12-Factor App** 原则，并强调：
 > 💡 **关键建议**：**勿过度设计**！从简单模式（如重试+健康检查）开始，根据监控数据迭代演进。Azure 的 PaaS 服务（如 Functions/Managed DB）已内置部分模式能力，优先利用托管服务而非自建。
 
 持续关注 Azure 更新，云设计模式是**动态演进**的实践体系——2025 年的核心是 **“AI-augmented Resilience”**（AI 增强的韧性）与 **“Sustainable by Design”**（可持续设计）。
+
+---
+
+← [返回 系统设计基础](../README.md)

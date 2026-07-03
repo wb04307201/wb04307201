@@ -134,3 +134,7 @@ ULID 通过结合时间戳和随机数，在保持唯一性的同时提供了排
 - [ULID 规范（GitHub）](https://github.com/ulid/spec)
 - [ulid-creator Java 库](https://github.com/f4b6a3/ulid-creator)
 - [ulid4j Java 库](https://github.com/java-ulid/ulid4j)
+
+---
+
+← [返回 分布式 ID](../README.md)

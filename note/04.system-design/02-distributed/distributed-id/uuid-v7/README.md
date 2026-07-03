@@ -148,3 +148,7 @@ UUID v7 通过 **时间排序性** 和 **全局唯一性** 的平衡，成为数
 - [uuid6-ietf-draft 仓库](https://github.com/uuid6/uuid6-ietf-draft)
 - [uuid-creator Java 库](https://github.com/f4b6a3/uuid-creator)
 - [UUID v7 规范与实现指南](https://uuid7.com/)
+
+---
+
+← [返回 分布式 ID](../README.md)

@@ -116,3 +116,7 @@ spec:
     failThreshold: 3
     uri: /healthz
 ```
+
+---
+
+← [返回 冗余设计](../README.md)

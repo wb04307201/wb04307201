@@ -108,3 +108,7 @@ end note
 提供类似功能的中间件有 MySQL Router（官方， MySQL Proxy 的替代方案）、Atlas（基于 MySQL Proxy）、MaxScale、MyCat。
 #### 组件方式
 通过引入第三方组件来帮助进行读写请求。 例如使用 sharding-jdbc 进行读写分离的操作
+
+---
+
+← [返回 数据库优化](../README.md)
