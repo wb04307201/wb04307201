@@ -182,27 +182,27 @@ graph TD
 
 ## 5. PNG → Mermaid 迁移清单
 
-> **现状盘点（2026-07-01）**：仓库内有 **149 个 PNG 文件**，但仅 **7 篇 README** 引用了 **40 处 PNG 嵌入**——大量为 CONTRIBUTING §3.2 标定的"历史遗留 img.png / img_N.png 无意义命名"。
+> **现状盘点（2026-07-04 校对）**：仓库内有 **116 个 PNG 文件**，但仅 **7 篇文档** 实际嵌入 **37 处 PNG**（另有 3 篇 .md 在正文/链接中提及 `.png` 但无嵌入）——大量为 CONTRIBUTING §3.2 标定的"历史遗留 img.png / img_N.png 无意义命名"。
 >
-> 与 CONTRIBUTING 上一次盘点对比，实际引用 PNG **远少于 48 处**——之前的清单需要重整。
+> 37 处嵌入中，仅 **6 处** 为可 Mermaid 化的架构/流程图，其余 **31 处** 为教程 UI 截图（保留）。
 
-### 5.1 实际有 PNG 引用的文件（按目录）
+### 5.1 实际有 PNG 嵌入的文件（按嵌入数）
 
-| 文件 | PNG 引用数 | 适合 Mermaid？|
+| 文件 | PNG 嵌入数 | 适合 Mermaid？|
 |------|----------|--------------|
-| `07.workflow/apache-eventmesh/cloud-flow/README.md` | 3 | ✅ 架构 / 流程图，强烈建议改 |
-| `07.workflow/process-engine/camunda/camunda-7/README.md` | 4 | ✅ Camunda 7 BPMN 流程图 |
-| `07.workflow/process-engine/camunda/camunda-8/README.md` | 2 | ✅ Camunda 8 / Zeebe 架构图 |
+| `11.ai/training/lesson9/README2.md` | 16 | ❌ Dify 教程 UI 截图 |
 | `11.ai/training/lesson1/README1.md` | 7 | ❌ Coze 教程 UI 截图 |
-| `11.ai/training/lesson9/README2.md` | 21 | ❌ Dify 教程 UI 截图 |
-| `11.ai/training/lesson9/README3.md` | 9 | ❌ Dify 教程 UI 截图 |
+| `11.ai/training/lesson9/README3.md` | 7 | ❌ Dify 教程 UI 截图 |
+| `07.workflow/process-engine/camunda/camunda-7/README.md` | 4 | ✅ Camunda 7 BPMN 流程图 |
+| `06.spring/03-data/mybatis/01-architecture/README.md` | 1 | ✅ MyBatis 架构图 |
+| `06.spring/03-data/mybatis/04-mybatis-plus/README.md` | 1 | ✅ MyBatis-Plus 架构图 |
 | `11.ai/training/lesson13/README1.md` | 1 | ❌ 占位截图 |
 
-### 5.2 高优先级（适合 Mermaid）—— 共 9 处候选
+### 5.2 高优先级（适合 Mermaid）—— 共 6 处候选
 
-1. `07.workflow/apache-eventmesh/cloud-flow/README.md` L1-L3：3 张架构图
-2. `07.workflow/process-engine/camunda/camunda-7/README.md` L4-7：4 张 BPMN 流程图
-3. `07.workflow/process-engine/camunda/camunda-8/README.md` L4-5：2 张 Zeebe 架构图
+1. `07.workflow/process-engine/camunda/camunda-7/README.md`：4 张 BPMN 流程图
+2. `06.spring/03-data/mybatis/01-architecture/README.md`：1 张架构图
+3. `06.spring/03-data/mybatis/04-mybatis-plus/README.md`：1 张架构图
 
 **执行方式**（推荐分批）：
 - 看 PNG → 设计等价 Mermaid → 用 Mermaid 替换 `![img_N.png]` 段
@@ -211,11 +211,11 @@ graph TD
 ### 5.3 低优先级（UI 截图，保留 PNG）
 
 `11.ai/training/lesson{1,9,13}/`：教程 UI 截图，**不建议**转 Mermaid，保留 PNG。
-├── `lesson9/README2.md` 21 张
-├── `lesson9/README3.md` 9 张
+├── `lesson9/README2.md` 16 张
+├── `lesson9/README3.md` 7 张
 ├── `lesson1/README1.md` 7 张
 └── `lesson13/README1.md` 1 张
-合计 38 张
+合计 31 张
 
 ### 5.4 状态（2026-07-01）
 
