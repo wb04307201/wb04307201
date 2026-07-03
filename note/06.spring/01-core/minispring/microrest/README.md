@@ -117,3 +117,7 @@ src/main/java/cn/wubo/micro/rest/
 - 没有 Bean 作用域概念（所有 Bean 都是单例且立即实例化）
 
 该项目适合用于辅助理解 IoC 容器和 MVC 模式的**入门级运作机制**，但请以官方 Spring 源码为准。
+
+---
+
+← [返回 miniSpring 总览](../README.md)
