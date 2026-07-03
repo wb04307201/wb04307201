@@ -74,3 +74,7 @@ module:
 - **父类字段**：`@EqualsAndHashCode`和`@ToString`需通过`callSuper=true`显式包含父类字段。
 
 Lombok通过编译期注解处理器（JSR 269）修改抽象语法树（AST）生成代码，不改变运行时行为。官方文档建议结合具体场景选择注解，避免过度简化影响代码维护性。
+
+---
+
+← [返回 Java 工具](../README.md)
