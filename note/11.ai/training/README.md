@@ -22,7 +22,7 @@ module:
 
 | 课号 | 课程 | 核心问题 | 建议时长 |
 |:----:|:-----|:---------|:--------:|
-| 1 | [AI Agent 核心概念](lesson1/README.md) | AI Agent 由哪些组件构成？LLM、Prompt、RAG、MCP 如何协作？ | 120 min |
+| 1 | [AI Agent 核心概念](lesson1/README.md) | AI Agent = LLM × Context Engineering，二分模型如何让 Context 决定 Agent 下限？ | 120 min |
 | 2 | [Agent Harness 与控制论](lesson2/README.md) | 为什么 2026 年的竞争焦点从模型能力转向系统可靠性？含认知债务研究 | 110 min |
 
 ### 第二阶段：框架实操
@@ -146,7 +146,7 @@ graph TD
 
 | 课号 | 主题 | 关键工具 / 框架 | 难度 | 时长 |
 |:----:|------|--------------|:----:|:----:|
-| 1 | AI Agent 核心概念 | LLM / Prompt / RAG | ⭐ | 120 min |
+| 1 | AI Agent 核心概念 | LLM / Context Engineering / RAG / MCP | ⭐ | 120 min |
 | 2 | Agent Harness | Harness Engineering / 控制论 | ⭐⭐ | 110 min |
 | 3 | Spring AI Agent | Spring AI / Java | ⭐⭐ | 105 min |
 | 4 | Java MCP 服务 | MCP / Maven Central | ⭐⭐⭐ | 135 min |
@@ -168,7 +168,7 @@ graph TD
 ## 4. 核心内容（按阶段展开）
 
 ### 第一阶段（认知建立，2 课 · 230 min）
-- LLM / Prompt / RAG / MCP 四大核心能力
+- LLM × Context Engineering 二分模型：LLM 决定上限，Context（短期/长期记忆 + 工具与流程）决定下限
 - Harness Engineering 与控制论视角
 - 认知债务与系统可靠性
 

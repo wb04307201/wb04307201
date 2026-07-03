@@ -21,6 +21,7 @@ module:
 | [ontology-driven-agent](ontology-driven-agent/) | **本体驱动的智能体** — 让 AI 从"黑箱推理"走向"结构化认知"，融合符号主义与连接主义，构建可信可审计可演化的 AI 系统 | 可信 AI 范式 |
 | [2026-trends](2026-trends/) | 2026 AI 技术矩阵 — 大模型 / 多模态 / 具身智能 三位一体趋势 | 前沿趋势速览 |
 | [bpmn-ai-integration.md](bpmn-ai-integration.md) | **AI + BPMN 融合** — 业务流程引擎与 AI Agent 集成（单文件） | 工作流引擎融合 |
+| [spring-ai-vs-dify.md](spring-ai-vs-dify.md) | **Spring AI vs Dify** — Java 代码优先 vs 低代码平台的 7 维度决策 + 代码示例 + 混合架构（单文件） | 抽象层级选型 |
 
 ### 1.1 学习路径
 
@@ -37,6 +38,7 @@ graph TB
     A --> D[本体驱动<br/>符号+连接主义]
     B --> E[BPMN + AI<br/>工作流融合]
     A --> F[2026 趋势<br/>大模型 · 多模态 · 具身]
+    E --> G[Spring AI vs Dify<br/>代码优先 vs 低代码]
 ```
 
 ---
@@ -52,6 +54,7 @@ graph TB
 | **Multi-Agent** | 多智能体分工协作 | 复杂业务流 |
 | **本体驱动** | 知识图谱 + 规则 + LLM 推理 | 可信可审计 AI |
 | **BPMN + AI** | 工作流引擎调用 AI Agent | 企业流程自动化 |
+| **Spring AI vs Dify** | Java 代码优先 vs 低代码平台的抽象层级决策 | Java 微服务知识库系统 |
 | **2026 三位一体** | 大模型 × 多模态 × 具身智能 | 前沿技术整合 |
 
 ---
@@ -64,6 +67,7 @@ graph TB
 - **[ontology-driven-agent](ontology-driven-agent/)**：融合符号主义（本体、知识图谱）与连接主义（LLM），构建可信可审计可演化系统
 - **[2026-trends](2026-trends/)**：2026 AI 技术矩阵 — 大模型 / 多模态 / 具身智能三位一体趋势
 - **[bpmn-ai-integration.md](bpmn-ai-integration.md)**：BPMN 业务流程引擎与 AI Agent 集成模式（单文件章节）
+- **[spring-ai-vs-dify.md](spring-ai-vs-dify.md)**：Spring AI 与 Dify 在企业知识库系统场景的 7 维度决策对比、代码示例、混合架构范式（单文件章节）
 
 ---
 
@@ -76,6 +80,7 @@ graph TB
 | **生产环境** | 通常用 DAG + Loop 混合架构，主流程 DAG 化，异常分支 ReAct 探索 |
 | **本体驱动** | 关键决策走符号推理（可解释），开放问答走 LLM（灵活），混合架构取长补短 |
 | **BPMN + AI 融合** | 标准流程节点用 BPMN，AI 决策节点调用 LLM Agent，关键审批仍走人工 |
+| **Spring AI vs Dify 选型** | Java 微服务 + 强业务集成 + 同进程审计 → Spring AI；产品/运营主导 + 快速上线 → Dify；二者通过 MCP 互通 |
 | **可审计性** | 所有 Agent 行为记录决策日志；可回溯 + 可解释 + 可重放 |
 
 ---
@@ -89,6 +94,7 @@ graph TB
 | Multi-Agent 协同模式？ | 中心化（主-从）/ 去中心化（对等）/ 混合 |
 | 本体驱动 AI 价值？ | 可解释 + 可审计 + 可演化，融合符号与连接主义 |
 | BPMN + AI 集成的关键？ | 标准节点 + AI 决策节点 + 人工审批节点 |
+| Spring AI vs Dify 如何选？ | Java 微服务 + 强业务集成 → Spring AI；快速 MVP + 产品主导 → Dify；通过 MCP 互通 |
 | 2026 AI 三大趋势？ | 大模型 + 多模态 + 具身智能三位一体 |
 
 ---
@@ -98,6 +104,9 @@ graph TB
 - 上游：[L3 工程实践](../03-engineering/) → **L4 架构设计** → [L5 行业应用](../05-applications/)
 - 关联：[04.system-design](../../04.system-design/) — 通用系统设计方法论（DDD、分布式、高可用）
 - 关联：[07.workflow](../../07.workflow/README.md) — 工作流引擎与 AI Agent 集成（BPMN）
+- 关联：[03-engineering/ai-platforms/spring-ai-vs-platforms.md](../03-engineering/ai-platforms/spring-ai-vs-platforms.md) — Spring AI vs 平台的速查卡
+- 关联：[03-engineering/ai-platforms/dify.md](../03-engineering/ai-platforms/dify.md) / [Coze](../03-engineering/ai-platforms/coze.md) — 平台侧对照
+- 关联：[03-engineering/frameworks/llm-app/README.md](../03-engineering/frameworks/llm-app/README.md) — Spring AI 工程框架详解
 
 ---
 
@@ -119,7 +128,7 @@ graph TB
 |------|------|
 | 一级 leaf README 数 | 4（intelligent-system-layers / agent-architecture / ontology-driven-agent / 2026-trends） |
 | 二级 leaf README 数 | 0 |
-| 单文件章节数 | 1（bpmn-ai-integration.md） |
+| 单文件章节数 | 2（bpmn-ai-integration.md / spring-ai-vs-dify.md） |
 | 速查表条目数 | 8 |
 | 最佳实践条数 | 5 |
 | 常见面试题数 | 6 |

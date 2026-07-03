@@ -27,11 +27,12 @@ module:
 
 学完本课后，你将能够：
 
-- 理解 AI Agent 的核心架构：LLM、Prompt、知识库、工具调用如何协作
-- 掌握提示词工程的基本方法，将业务需求转化为结构化指令
-- 理解 RAG（检索增强生成）的原理，用知识库补齐大模型的知识盲区
-- 通过 MCP 协议连接外部系统，让 AI 真正"做事"而不只是"说话"
-- 区分 MCP（能做什么）与 Skills（怎么做），并理解二者的协同模式
+- 理解 AI Agent 的核心架构：**LLM + Context Engineering 二分模型**，Context 包含短期记忆、长期记忆、工具与流程三大子模块
+- 区分 **Context Engineering 与 Prompt Engineering** 的边界，理解从 Prompt 到 Context 的演变路径
+- 掌握 LLM 的推理范式（ReAct / Plan-and-Execute / CoT），理解推理方式与上下文输入的分工
+- 理解 RAG（检索增强生成）的原理与短期记忆、长期记忆的协同，用知识库补齐大模型的知识盲区
+- 通过 MCP 协议连接外部系统（stdio / HTTP-SSE，本地 / 远程），让 AI 真正"做事"而不只是"说话"
+- 区分 MCP（能做什么）与 Skill（怎么做）的边界，理解陈述性记忆与程序性知识的差异
 
 ---
 
@@ -70,25 +71,31 @@ module:
 
 ```mermaid
 flowchart TB
-    LLM["💡 大语言模型 (LLM)"]
-    Prompt["📝 提示词 (Prompt)"]
-    Knowledge["📚 知识库"]
-    Tool["🔧 工具调用"]
-    Skills["📖 技能书 (Skills)"]
-    MCP["🔗 MCP"]
+    subgraph Agent["🤖 AI Agent"]
+        direction TB
 
-    LLM <-->|配置与驱动| Prompt
-    Prompt -->|调度| Knowledge
-    Prompt -->|调用| Tool
-    Tool --> Skills
-    Tool --> MCP
-    Knowledge -.->|提供上下文| LLM
-    Tool -.->|返回结果| LLM
+        subgraph LLM["🧠 LLM（大脑）"]
+            L1["模型选型 / 推理能力 / 推理范式<br/>ReAct · Plan-and-Execute · CoT"]
+        end
+
+        subgraph Context["📦 Context Engineering（输入工程）"]
+            direction TB
+            C1["演变<br/>Prompt → Context"]
+            C2["短期记忆<br/>会话上下文"]
+            C3["长期记忆<br/>RAG · Mem0"]
+            C4["工具与流程<br/>MCP · Skill"]
+        end
+
+        LLM <-->|"输入 / 输出"| Context
+    end
+
+    style LLM fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
+    style Context fill:#fff3e0,stroke:#f57c00,stroke-width:3px
 ```
 
-> 详细架构图见 [第一章](README1.md)
+> 详细架构图见 [第一章](README1.md#一agent-总览llm--context-二分模型)
 
-**一句话总结**：大模型是大脑，决定 AI Agent 的上限；提示词、知识库、工具调用提升了 AI Agent 的下限。
+**一句话总结**：**AI Agent = LLM × Context Engineering**——大模型是大脑，决定 AI Agent 的上限；Context Engineering 决定 AI Agent 的下限。
 
 ---
 
@@ -96,20 +103,20 @@ flowchart TB
 
 ```mermaid
 graph LR
-    A["第一章<br/>概念 + Demo"] --> B["第二章<br/>君臣佐使思维模型"]
+    A["第一章<br/>LLM + Context 概念"] --> B["第二章<br/>君臣佐使思维模型"]
     B --> C["第三章<br/>MCP 生产实践"]
-    
-    A --- A1["🧠 LLM 核心能力"]
-    A --- A2["📝 提示词工程"]
-    A --- A3["📚 知识库 / RAG"]
-    A --- A4["🔧 工具 / MCP"]
-    A --- A5["📖 技能 Skills"]
-    
+
+    A --- A1["🧠 LLM<br/>模型选型 · 推理范式"]
+    A --- A2["📦 Context 演变<br/>Prompt → Context Engineering"]
+    A --- A3["💬 短期记忆<br/>会话上下文"]
+    A --- A4["📚 长期记忆<br/>RAG · Mem0"]
+    A --- A5["🔧 工具与流程<br/>MCP · Skill"]
+
     B --- B1["👑 君药 = LLM"]
-    B --- B2["💊 臣药 = Prompt"]
-    B --- B3["🌿 佐药 = RAG"]
-    B --- B4["🚀 使药 = MCP"]
-    
+    B --- B2["💊 臣药 = Context Engineering"]
+    B --- B3["🌿 佐药 = 知识库 + 长期记忆"]
+    B --- B4["🚀 使药 = MCP + Skill"]
+
     C --- C1["🏗️ 五大设计模式"]
     C --- C2["⚡ 上下文优化"]
     C --- C3["🧩 MCP + Skills 协同"]

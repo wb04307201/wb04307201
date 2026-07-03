@@ -24,7 +24,7 @@ AI 编排平台 的关键不是'选型'——是**选完之后怎么在 5 个 tr
 
 ---
 
-## 📚 章节导航（4 主线 + 4 文件）
+## 📚 章节导航（5 主线 + 5 文件）
 
 | 主线 | 文件 | 核心内容 |
 |:----|:----|:---------|
@@ -33,6 +33,7 @@ AI 编排平台 的关键不是'选型'——是**选完之后怎么在 5 个 tr
 | **2 字节系生态** | [Coze](coze.md) | 表单/工作流双形态 / Agent 联邦 / 飞书/抖音/豆包深绑定 |
 | **3 代码优先** | [LangGraph](langgraph.md) | StateGraph / Checkpoint / Time Travel / HITL / Supervisor |
 | **4 融合范式** | [BPMN+AI 融合](../../04-architecture/bpmn-ai-integration.md) | 4 模式：fromAi() / Zeebe AI Worker / Engine-as-Tool / HITL |
+| **5 边界决策** | [Spring AI vs 平台](spring-ai-vs-platforms.md) | 代码优先 vs 低代码的 5 维度速查 + 何时选 Dify 何时选 Spring AI（深度版见 [04-architecture/spring-ai-vs-dify.md](../../04-architecture/spring-ai-vs-dify.md)）|
 
 ---
 
@@ -114,12 +115,14 @@ Q1: 项目首要目标？
 ├── 复杂 Agent + 状态可回放 + 代码优先 → LangGraph
 ├── 系统集成 / 跨 SaaS 自动化 → n8n
 ├── 知识库 + 文档问答为主 → FastGPT / RAGFlow
+├── Java 微服务 + 强业务集成 + 同进程审计 → Spring AI（详见 [spring-ai-vs-platforms.md](spring-ai-vs-platforms.md)）
 └── 强治理 / 合规审计 / 需嵌入 BPMN 流程 → BPMN+AI 融合
 
 Q2: 团队技术栈？
 ├── 产品/运营为主，无工程师 → Coze（最易用）
 ├── 全栈/前端，Python 弱 → Dify（低代码）
 ├── Python 强 / 算法 → LangGraph
+├── Java 后端 + Spring Boot 微服务 → Spring AI（深度对比见 [04-architecture/spring-ai-vs-dify.md](../../04-architecture/spring-ai-vs-dify.md)）
 └── DevOps/集成 → n8n
 
 Q3: 部署模式？
@@ -153,6 +156,10 @@ Q4: 是否需要 BPMN 合规？
 | **AI Agent Sub-process** | Camunda 8.5+ 的原生 AI 节点图元 | [BPMN+AI](../../04-architecture/bpmn-ai-integration.md) |
 | **fromAi()** | Camunda 8.5+ 的 FEEL 函数，调用 LLM | [BPMN+AI](../../04-architecture/bpmn-ai-integration.md) |
 | **Zeebe AI Worker** | 自研 Job Worker 包装 LLM/Agent 框架 | [BPMN+AI](../../04-architecture/bpmn-ai-integration.md) |
+| **Spring AI** | Spring 官方 L4 AI 框架，标准化 ChatClient/EmbeddingModel/VectorStore 抽象 | [Spring AI vs 平台](spring-ai-vs-platforms.md) |
+| **Spring AI Alibaba** | 阿里增强版，提供 Graph/Node 显式状态机（Java 版的 LangGraph） | [Spring AI vs Dify](../../04-architecture/spring-ai-vs-dify.md) |
+| **ChatClient** | Spring AI 的统一对话入口，屏蔽模型差异 | [Spring AI vs Dify](../../04-architecture/spring-ai-vs-dify.md) |
+| **VectorStore** | Spring AI 向量库抽象（Qdrant/Milvus/Chroma/PgVector） | [Spring AI vs Dify](../../04-architecture/spring-ai-vs-dify.md) |
 
 ---
 
@@ -164,7 +171,8 @@ Q4: 是否需要 BPMN 合规？
 4. **n8n 是 AI 平台吗？** 本质是**工作流自动化工具**（400+ 集成节点），AI Transform Node 让它"能跑 AI"。适合"系统集成 + 轻量 AI"场景，不适合复杂 Agent。
 5. **MCP 协议有什么价值？** MCP 让**LLM 工具调用协议标准化**——Dify / Coze / Claude Code / Cursor 互通。一个平台写的工具，所有平台都能用，**避免厂商锁定**。
 6. **AI 平台私有化最痛的是什么？** 三个：**LLM 模型私有化**（Qwen/DeepSeek/GLM 适配）、**向量库私有化**（Qdrant/Milvus 自部署）、**可观测性私有化**（LangSmith 自托管或 Helicone）。多数项目卡在第二步。
-7. **如何选择第一平台？** **80% 场景选 Dify**（平衡最好）+ 20% 复杂场景用 LangGraph；**C 端分发选 Coze**；**强治理叠加 Camunda 8 AI**。避免一上来就上 LangGraph 写代码（成本高 + 难招聘）。
+7. **如何选择第一平台？** **80% 场景选 Dify**（平衡最好）+ 20% 复杂场景用 LangGraph；**C 端分发选 Coze**；**强治理叠加 Camunda 8 AI**；**Java 微服务 + 强业务集成选 Spring AI**。避免一上来就上 LangGraph 写代码（成本高 + 难招聘）。
+8. **有了 Dify 为什么还要 Spring AI？** Dify 是 L5 低代码平台，Spring AI 是 L4 Java 框架——抽象层级不同。Java 微服务团队用 Dify 做"业务集成 / 同进程审计 / 自定义 RAG"反而累赘，Spring AI 是正解。**两者通过 MCP 互通**，不必"非此即彼"。详见 [Spring AI vs 平台](spring-ai-vs-platforms.md) 与 [深度对比长文](../../04-architecture/spring-ai-vs-dify.md)。
 
 ---
 
@@ -175,6 +183,8 @@ Q4: 是否需要 BPMN 合规？
 - [Dify](dify.md) — 低代码 DSL 优先 + 私有化首选
 - [Coze](coze.md) — 字节系国内最强生态
 - [LangGraph](langgraph.md) — 代码优先复杂 Agent 框架
+- [Spring AI vs 平台](spring-ai-vs-platforms.md) — Java 代码优先 vs 低代码的边界决策（速查卡）
 - [BPMN+AI 融合](../../04-architecture/bpmn-ai-integration.md) — 4 模式生产级落地
+- [Spring AI vs Dify 深度对比](../../04-architecture/spring-ai-vs-dify.md) — 7 维度决策 + 代码示例 + 混合架构
 - [07 工作流/微服务编排](../../../07.workflow/workflow-and-microservice-orchestration/README.md) — 流程引擎在分布式场景的演化
 - [09.front-end / 09 前端与 AI](../../../09.front-end/09-frontend-and-ai/README.md) — AI SDK / AI Native UI / Vibe Coding：AI 平台的前端落地形态
