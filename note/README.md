@@ -81,7 +81,7 @@ module:
 | 2 | [02 分布式](04.system-design/02-distributed/README.md) | CAP、共识算法、分布式事务、RPC |
 | 3 | [03 高可用](04.system-design/03-high-availability/README.md) | 限流、熔断、重试、降级、冗余、混沌 |
 | 4 | [04 高性能](04.system-design/04-high-performance/README.md) | 负载均衡、CDN、缓存、数据库优化、消息队列、连接池、序列化、Java 优化 |
-| 5 | [05 安全](04.system-design/05-security/README.md) | JWT、OAuth2、API 安全、OWASP、加密、密钥管理 |
+| 5 | [05 安全](04.system-design/05-security/README.md) | Web 攻防、JWT、OAuth2、API 安全、OWASP、加密、密钥管理 |
 | 5a | [访问控制](04.system-design/05-security/access-control/README.md) | 6 大权限模型（DAC/MAC/RBAC/ABAC/ReBAC/混合）与选型决策 |
 | 6 | [06 幂等设计](04.system-design/06-idempotency/README.md) | 幂等键、乐观锁、状态机、去重表、与分布式事务的关系 |
 | 7 | [07 部署与运维](04.system-design/07-deployment/README.md) | 部署架构、可观测性、容量规划 |

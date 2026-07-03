@@ -39,6 +39,7 @@ graph TD
 
     API --> Sign["签名验证<br/>防重放"]
     API --> Mask["数据脱敏<br/>限流防刷"]
+    API --> Web["Web 攻防<br/>XSS/CSRF/XXE/上传"]
     API --> OWASP["OWASP Top 10<br/>10 大安全风险"]
 
     Crypto --> ENC["对称/非对称加密<br/>TLS/HTTPS"]
@@ -55,15 +56,16 @@ graph TD
 | 4 | ↳ | [传统族](access-control/01-traditional/README.md) | DAC / MAC |
 | 5 | ↳ | [角色属性族](access-control/02-role-and-attribute/README.md) | RBAC / ABAC |
 | 6 | ↳ | [关系混合族](access-control/03-relationship-and-hybrid/README.md) | ReBAC / RBAC+ABAC |
-| 7 | 防护 | [API 安全](api-security/README.md) | 签名验证 / 防重放 / 数据脱敏 / 限流 |
-| 8 | 安全标准 | [OWASP Top 10](owasp-top10/README.md) | 2021 版 10 大 Web 安全风险 |
-| 9 | 密码学 | [加密与密钥管理](encryption/README.md) | 对称/非对称/哈希/TLS/KMS |
-| 10 | 密码学 | [密钥凭据管理](secrets-management/README.md) | Vault / KMS / 轮换 / 12-Factor |
+| 7 | 防护 | [Web 安全](web-security/README.md) | XSS / CSRF / SQLi / XXE / 文件上传 / 暴力破解 / HTTP 安全头 |
+| 8 | 防护 | [API 安全](api-security/README.md) | 认证 / 签名验证 / 防重放 / 输入校验 / 脱敏 / 限流 / API Key / 错误处理 |
+| 9 | 安全标准 | [OWASP Top 10](owasp-top10/README.md) | 2021 版 10 大 Web 安全风险 |
+| 10 | 密码学 | [加密与密钥管理](encryption/README.md) | 对称/非对称/哈希/TLS/KMS |
+| 11 | 密码学 | [密钥凭据管理](secrets-management/README.md) | Vault / KMS / 轮换 / 12-Factor |
 
 ## 学习路径
 
 - **入门**：JWT → OAuth2 → 访问控制（鉴权三件套）
-- **进阶**：API 安全 → OWASP Top 10（防护实战）
+- **进阶**：Web 安全 → API 安全 → OWASP Top 10（防护实战）
 - **高级**：加密 → 密钥管理（底层原理）
 
 ## 相关章节
@@ -81,18 +83,18 @@ graph TD
 |:-------|:-----------:|:-----|
 | `05-security/`（本文） | 1 | 顶层 README |
 | ├─ `access-control/` | 4 | 顶层 + 3 子分类（传统/角色属性/关系混合） |
-| ├─ `api-security/` | 1 | 签名 · 防重放 · 脱敏 · 限流 |
+| ├─ `web-security/` | 1 | XSS/CSRF/SQLi/XXE/上传/暴破/安全头 |
+| ├─ `api-security/` | 1 | 认证 · 签名 · 防重放 · 校验 · 脱敏 · 限流 · 错误处理 |
 | ├─ `owasp-top10/` | 1 | 2021 版 10 大风险 |
 | ├─ `encryption/` | 1 | 对称/非对称/哈希/TLS/KMS |
 | ├─ `jwt-security/` | 1 | JWT 结构 / 攻击防御 / 安全存储 / Token 撤销 |
 | ├─ `oauth2-oidc/` | 1 | 授权码 / PKCE / 客户端凭证 |
 | └─ `secrets-management/` | 1 | Vault / KMS / 轮换 / 12-Factor |
-| **leaf README 合计** | 10 depth-2 leaf + 1 顶层 = **11**（另有 6 个非 README leaf .md） | 100% frontmatter |
-| **模块导航行数** | 10（见上方模块导航表） | 含 access-control 3 子项 |
+| **leaf README 合计** | 8 depth-2 子目录 + 3 access-control 子分类 + 1 顶层 = **12** | 100% frontmatter |
+| **模块导航行数** | 11（见上方模块导航表） | 含 access-control 3 子项 |
 | **leaf .md** | 6 | access-control 下的 dac/mac/abac/rbac/rebac/hybrid |
 
-> 数字基线：以 leaf README 数 + 模块导航行数双口径统计
-> ⚠️ 03-encryption / 04-jwt-oauth2 / 05-devsecops 三个空目录为历史遗留，未计入统计；01-web-security / 02-api-security 与 api-security/ 内容重复，待清理（不进本任务范围）。
+> 数字基线：以 leaf README 数 + 模块导航行数双口径统计（`find … -name README.md` 实时校对）。
 
 ---
 
