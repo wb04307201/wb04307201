@@ -1,5 +1,7 @@
 /.idea/
-/.claude/
 
 # Maven build artifacts
 **/target/
+
+# Claude settings (用户/机器级，不应 commit)
+/.claude/settings.local.json
