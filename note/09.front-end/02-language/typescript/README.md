@@ -338,3 +338,7 @@ type Status = typeof STATUS[keyof typeof STATUS]
 - [`02-language/`](../) — 语言总览
 - [`04-engineering/`](../../04-engineering/) — TS 与构建工具集成
 - [`05-architecture/`](../../05-architecture/) — TS 在架构选型中的角色
+
+---
+
+← [返回 语言与运行时](../README.md)

@@ -290,3 +290,7 @@ const byTag = await db.notes.where('tags').equals('pwa').toArray()
 - Canvas 游戏（OfflineCanvas 支持）
 - IndexedDB 存游戏进度
 - 离线可玩
+
+---
+
+← [返回 跨端开发](../README.md)

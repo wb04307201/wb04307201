@@ -203,3 +203,7 @@ onCLS(metric => {
 - [`06-performance/`](../) — 性能总览
 - [`06-performance/monitoring/`](../monitoring/) — 监控体系
 - [`05-architecture/rendering-modes/`](../../05-architecture/rendering-modes/) — 渲染模式影响 LCP
+
+---
+
+← [返回 前端性能](../README.md)

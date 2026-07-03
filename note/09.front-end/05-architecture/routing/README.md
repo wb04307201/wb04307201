@@ -285,3 +285,7 @@ router.beforeEach(async (to, from) => {
 
 - **上游**：[`03-frameworks/`](../../03-frameworks/) / [`05-architecture/state-management/`](../state-management/)
 - **下游**：被 [`05-architecture/`](../)（布局嵌套）、[`06-performance/`](../../06-performance/)（代码分割）复用
+
+---
+
+← [返回 前端架构](../README.md)

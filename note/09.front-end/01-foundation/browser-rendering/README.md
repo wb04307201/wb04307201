@@ -201,3 +201,7 @@ graph LR
 - [`06-performance/`](../../06-performance/) — 性能优化的基础
 - [`06-performance/core-web-vitals/`](../../06-performance/core-web-vitals/) — CLS / LCP 与渲染直接相关
 - [`01-foundation/`](../) — 浏览器基础
+
+---
+
+← [返回 前端基础](../README.md)

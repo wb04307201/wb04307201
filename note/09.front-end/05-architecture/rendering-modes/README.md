@@ -298,3 +298,7 @@ graph TB
 
 - **上游**：[`03-frameworks/`](../../03-frameworks/) / [`04-engineering/`](../../04-engineering/)
 - **下游**：被 [`06-performance/`](../../06-performance/)（性能基线）、[`08-cross-platform/`](../../08-cross-platform/)（跨端渲染策略）直接复用
+
+---
+
+← [返回 前端架构](../README.md)

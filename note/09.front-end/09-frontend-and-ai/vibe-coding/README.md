@@ -227,3 +227,7 @@ graph LR
 
 - **上游**：[`11.ai/`](../../../11.ai/README.md/)（AI 基础）
 - **下游**：影响 [`03-frameworks/`](../../03-frameworks/) / [`04-engineering/`](../../04-engineering/) 的选型（AI 友好度成新维度）
+
+---
+
+← [返回 前端与 AI](../README.md)

@@ -195,3 +195,7 @@ jobs:
 - [`06-performance/`](../) — 性能总览
 - [`06-performance/core-web-vitals/`](../core-web-vitals/) — CWV 指标详解
 - [`04-engineering/`](../../04-engineering/) — CI 集成
+
+---
+
+← [返回 前端性能](../README.md)

@@ -232,3 +232,7 @@ graph TB
 
 - **上游**：[`03-frameworks/`](../../03-frameworks/) / [`02-language/`](../../02-language/)
 - **下游**：被 [`05-architecture/`](../)（渲染架构依赖状态流）、[`06-performance/`](../../06-performance/)（状态粒度影响性能）复用
+
+---
+
+← [返回 前端架构](../README.md)

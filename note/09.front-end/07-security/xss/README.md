@@ -281,3 +281,7 @@ element.innerHTML = cleanHtml
 
 - **上游**：[`07-security/`](../)（安全总览）、[`03-frameworks/`](../../03-frameworks/)（框架默认转义）
 - **下游**：被所有应用层复用（任何接收用户输入的地方）
+
+---
+
+← [返回 前端安全](../README.md)

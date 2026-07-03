@@ -233,3 +233,7 @@ npx changeset publish
 - [`04-engineering/`](../) — 工程化总览
 - [`04-engineering/vite/`](../vite/) — Vite 与 Monorepo 集成
 - [`05.tools/05-monorepo/`](../../../05.tools/05-monorepo/README.md/) — Monorepo 工具链专题
+
+---
+
+← [返回 前端工程化](../README.md)
