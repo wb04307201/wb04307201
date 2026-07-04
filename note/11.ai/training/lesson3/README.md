@@ -55,3 +55,7 @@ module:
 ---
 
 ⬅️ 上一课：[Agent Harness 与控制论](../lesson2/README.md) | ➡️ 下一课：[Java MCP 服务开发](../lesson4/README.md)
+
+---
+
+← [返回 AI Agent 应用开发培训课程](../README.md)

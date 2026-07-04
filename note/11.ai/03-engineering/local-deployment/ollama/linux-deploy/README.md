@@ -129,3 +129,7 @@ curl http://localhost:11434/api/generate -d '{
 *   `stream`: `false` 表示等待模型完全生成后再返回全部结果；`true` 表示以流式方式逐字返回结果。
 
 至此，您已成功在 Linux 服务器上部署了 Qwen3 大模型，并可以通过命令行或 API 的方式与其进行交互。您可以根据业务需求，将此 API 集成到您的应用程序中。
+
+---
+
+← [返回 Ollama](../README.md)

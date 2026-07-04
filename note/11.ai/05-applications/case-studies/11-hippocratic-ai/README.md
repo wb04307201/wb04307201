@@ -92,3 +92,7 @@ Hippocratic AI 留下的方法论，**对所有做"高风险行业 AI 落地"的
 ---
 
 *本文基于 Hippocratic AI 官网与海外独角兽报道整理，感谢分享。*
+
+---
+
+← [返回 AI 应用案例库](../README.md)

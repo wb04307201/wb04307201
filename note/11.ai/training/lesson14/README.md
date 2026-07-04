@@ -104,3 +104,7 @@ flowchart TB
 ---
 
 ⬅️ 上一课：[基于 Spec 的 AI 驱动开发](../lesson13/README.md) | ➡️ 下一课：[AI 原生组织](../lesson15/README.md)
+
+---
+
+← [返回 AI Agent 应用开发培训课程](../README.md)

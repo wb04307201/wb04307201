@@ -337,3 +337,7 @@ module:
 ---
 
 ⬅️ [上一课：Agent 评估方法论](../lesson10/README.md) | ➡️ [下一课：Vibe Coding 与安全审计](../lesson12/README.md)
+
+---
+
+← [返回 AI Agent 应用开发培训课程](../README.md)

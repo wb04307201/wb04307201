@@ -200,3 +200,7 @@ graph TB
 ---
 
 ⬅️ [上一课：Claude Code 工具链](../lesson7/README.md) | ➡️ [下一课：Dify 工作流引擎](../lesson9/README.md)
+
+---
+
+← [返回 AI Agent 应用开发培训课程](../README.md)

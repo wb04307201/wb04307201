@@ -77,3 +77,7 @@ module:
 ---
 
 ⬅️ 上一课：[AI Agent 核心概念](../lesson1/README.md) | ➡️ 下一课：[Spring AI Agent 搭建](../lesson3/README.md)
+
+---
+
+← [返回 AI Agent 应用开发培训课程](../README.md)

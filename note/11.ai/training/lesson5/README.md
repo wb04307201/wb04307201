@@ -107,3 +107,7 @@ module:
 ---
 
 ⬅️ [上一课：Java MCP 开发全流程](../lesson4/README.md) | ➡️ [下一课：多智能体与 A2A 协议](../lesson6/README.md)
+
+---
+
+← [返回 AI Agent 应用开发培训课程](../README.md)

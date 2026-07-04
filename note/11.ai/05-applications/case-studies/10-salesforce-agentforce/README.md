@@ -70,3 +70,7 @@ Agentforce 这个案例最大的启发，是它让我们看清了一件事：**R
 ---
 
 *本文基于 Salesforce 官网产品页（salesforce.com/agentforce）与 scrm.com 2026 年 5 月《Salesforce Agentforce 深度拆解》专题整理，核心数据均来自上述公开渠道的引述与官方披露，感谢原作者的整理与分享。*
+
+---
+
+← [返回 AI 应用案例库](../README.md)

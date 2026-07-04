@@ -143,3 +143,7 @@ graph TB
 ---
 
 ⬅️ 上一课：[AI 原生组织](../lesson15/README.md)
+
+---
+
+← [返回 AI Agent 应用开发培训课程](../README.md)

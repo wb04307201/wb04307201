@@ -56,3 +56,7 @@ module:
 ---
 
 ⬅️ 上一课：[Vibe Coding 与安全审计](../lesson12/README.md) | ➡️ 下一课：[AI 时代的认知债务与深度工作](../lesson14/README.md)
+
+---
+
+← [返回 AI Agent 应用开发培训课程](../README.md)

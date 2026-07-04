@@ -57,3 +57,7 @@ module:
 ---
 
 ⬅️ 上一课：[Skill 编写与设计模式](../lesson5/README.md) | ➡️ 下一课：[Claude Code 工具链](../lesson7/README.md)
+
+---
+
+← [返回 AI Agent 应用开发培训课程](../README.md)

@@ -115,3 +115,7 @@ flowchart LR
 ---
 
 ⬅️ 上一课：[AI 时代的认知债务与深度工作](../lesson14/README.md) | ➡️ 下一课：[LLM 驱动的个人知识库](../lesson16/README.md)
+
+---
+
+← [返回 AI Agent 应用开发培训课程](../README.md)

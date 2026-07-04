@@ -558,3 +558,7 @@ graph TD
 - [Constitutional AI: Harmlessness from AI Feedback — arXiv](https://arxiv.org/abs/2212.08073)
 - [OWASP LLM Top 10: Prompt Injection (2025)](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)
 - [GPTCache: Semantic Cache for LLMs — Zilliz](https://github.com/zilliztech/gptcache)
+
+---
+
+← [返回 L2 技术栈](../README.md)

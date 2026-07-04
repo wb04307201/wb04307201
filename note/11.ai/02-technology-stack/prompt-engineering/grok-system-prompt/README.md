@@ -187,3 +187,7 @@ Explain this X post to me: {{ url }}
 {%- endif %}
 - Exclude post/thread IDs and concluding summaries.
 ```
+
+---
+
+← [返回 Prompt 工程](../README.md)

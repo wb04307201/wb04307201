@@ -220,3 +220,7 @@ $$
 > - [GShard: Scaling Giant Models](https://arxiv.org/abs/2006.16668)：MoE 工程实践
 
 *本文公式基于公开论文与工程实践整理，实际显存受框架实现、CUDA 版本等影响，建议以实测为准。*
+
+---
+
+← [返回 L2 技术栈](../README.md)

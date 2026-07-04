@@ -74,3 +74,7 @@ Duolingo Max 给所有做"AI + 知识传递"产品的团队，提供了一个更
 ---
 
 *本文基于 Duolingo 官方博客《Introducing Duolingo Max, a learning experience powered by GPT-4》（2023 年 3 月 14 日）、Duolingo Max 官方产品页，以及 Duolingo 后续公开的功能发布整理。感谢 Duolingo 团队的分享。*
+
+---
+
+← [返回 AI 应用案例库](../README.md)

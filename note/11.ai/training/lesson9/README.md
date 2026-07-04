@@ -149,3 +149,7 @@ Dify 工作流引擎 · 第九课 是 N 个 JEP / 特性 / 章节的合集。
 ---
 
 ⬅️ 上一课：[AI Agent 设计模式与架构](../lesson8/README.md) | ➡️ 下一课：[Agent 评估方法论](../lesson10/README.md)
+
+---
+
+← [返回 AI Agent 应用开发培训课程](../README.md)

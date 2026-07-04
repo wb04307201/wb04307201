@@ -92,3 +92,7 @@ Ollama为开发者、研究人员和隐私敏感用户提供了一个**免费、
 - 访问GitHub仓库 [ollama/ollama](https://github.com/ollama/ollama) 参与社区贡献。
 - 从轻量级模型（如Phi）开始测试，逐步升级至更大模型。
 - 结合Gradio或Streamlit等工具，快速构建本地AI应用界面。
+
+---
+
+← [返回 Ollama](../README.md)
