@@ -969,3 +969,7 @@ channel.read(buffer, 0, null, new CompletionHandler<Integer, Void>() {
 | `selector.selectedKeys()` | 获取就绪 Key 集合 |
 | `selector.wakeup()` | 唤醒阻塞的 select |
 | `key.cancel()` | 取消注册 |
+
+---
+
+← [返回 I/O](../README.md)

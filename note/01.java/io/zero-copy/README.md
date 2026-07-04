@@ -326,3 +326,7 @@ Netty 通过 `FileRegion` 实现文件零拷贝传输，通过 `CompositeByteBuf
 | 框架层 | `CompositeByteBuf`、`FileRegion`、内存池 | Netty 用户空间零拷贝 |
 
 理解零拷贝机制对于分析高性能中间件（Kafka、RocketMQ、Netty）的底层原理至关重要，也是系统设计和性能调优中的高频考点。
+
+---
+
+← [返回 I/O](../README.md)

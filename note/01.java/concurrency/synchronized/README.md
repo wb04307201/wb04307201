@@ -410,3 +410,7 @@ if (lock.tryLock(3, TimeUnit.SECONDS)) {
 - **特殊需求**：需要超时等待、可中断、公平锁、多条件变量时选择 `ReentrantLock`
 - **性能**：Java 6 之后两者性能差距微乎其微，不再成为选型的主要考量
 - **趋势**：Java 21 虚拟线程（Project Loom）中，`synchronized` 的阻塞成本进一步降低
+
+---
+
+← [返回 Java 并发编程专题导航](../README.md)

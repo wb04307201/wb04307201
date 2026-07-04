@@ -660,3 +660,7 @@ ArrayList<String> list = new ArrayList<>();   // capacity=10
 for (int i = 0; i < 3; i++) list.add("x");    // size=3, capacity=10
 list.trimToSize();                            // capacity=3, 节省 7 个引用空间
 ```
+
+---
+
+← [返回 Java 集合框架](../README.md)

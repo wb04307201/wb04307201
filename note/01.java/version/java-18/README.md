@@ -342,3 +342,7 @@ public class FinalizationDeprecationExample {
 在这个示例中，`BufferedReader` 实现了 `AutoCloseable` 接口，`try-with-resources` 语句会在代码块执行完毕后自动调用 `close()` 方法来释放文件资源，无需手动调用 `finalize()` 方法。
 
 弃用 Finalization 机制有助于提高 Java 程序的可靠性和性能，减少因 Finalization 带来的潜在问题。
+
+---
+
+← [返回 Java 版本特性](../README.md)

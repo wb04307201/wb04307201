@@ -1081,3 +1081,7 @@ int size = map.size();           // 超过 21 亿会截断
 | computeIfAbsent 的 mappingFunction 会执行几次？ | 只执行一次（在 synchronized 内），即使多线程同时调用 |
 | ConcurrentHashMap 的 put 和 get 能保证原子性吗？ | 单个 put/get 是原子的，但 put+get 的复合操作不是（需要用 compute） |
 | 可以用 ConcurrentHashMap 实现一个线程安全的 Set 吗？ | 可以：ConcurrentHashMap.newKeySet()，底层是 CHM + PRESENT 占位值 |
+
+---
+
+← [返回 Java 集合框架](../README.md)

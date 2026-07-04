@@ -198,3 +198,7 @@ System.out.println(person); // toString() 方法
 ## JEP 385: 弃用 RMI 激活以供移除
 
 RMI（Remote Method Invocation）激活是一种用于在分布式系统中启动和管理远程对象的技术。然而，随着现代分布式架构的发展，RMI 激活的使用逐渐减少，并且存在一些安全性和性能方面的问题。Java 15 决定弃用 RMI 激活功能，为未来的移除做准备。
+
+---
+
+← [返回 Java 版本特性](../README.md)

@@ -150,3 +150,7 @@ public static int[] vectorAddWithMask(int[] a, int[] b) {
 ## 总结
 
 Vector API 自 Java 16 孵化以来，经过 11 轮迭代已接近稳定。它为 Java 数值计算提供了接近原生性能的向量化能力，是弥补 Java 在高性能计算领域差距的重要特性。
+
+---
+
+← [返回 功能版本变更历史](../README.md)

@@ -320,3 +320,7 @@ pluginOrder.add("cors");
 // 预计存储 1000 个元素
 Set<String> set = new LinkedHashSet<>((int) (1000 / 0.75f) + 1);
 ```
+
+---
+
+← [返回 Java 集合框架](../README.md)

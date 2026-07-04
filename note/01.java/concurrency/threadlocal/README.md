@@ -808,3 +808,7 @@ private static final ThreadLocal<SimpleDateFormat> SDF =
 ---
 
 > **总结：** ThreadLocal 是 Java 并发编程中的重要工具，理解其底层结构和内存管理机制对于正确使用和排查问题至关重要。核心记住三点：**(1) 每个线程独立副本，(2) Entry 的 key 是弱引用、value 是强引用，(3) 用完必须 remove。**
+
+---
+
+← [返回 Java 并发编程专题导航](../README.md)

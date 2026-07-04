@@ -275,3 +275,7 @@ if (line instanceof Line(Point(var x1, var y1), Point(var x2, var y2))) {
     System.out.println("Line length: " + length);  // 5.0
 }
 ```
+
+---
+
+← [返回 Java 核心概念](../README.md)

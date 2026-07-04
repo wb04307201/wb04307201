@@ -299,3 +299,7 @@ public static <T> List<T> of(T... elements) {
 ```
 
 > **注意**：`@SafeVarargs` 只能用于不可被重写的方法（`static`、`final`、`private` 或构造方法），因为编译器需要确认方法的实现是类型安全的。
+
+---
+
+← [返回 Java 核心概念](../README.md)

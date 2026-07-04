@@ -306,3 +306,7 @@ com.example.impl.AlipayProvider
 - 与 Gradle、Maven 等构建工具无缝集成
 
 这是目前 Java 生态中使用 SPI 的推荐实践，被 Google、Netflix 等公司广泛采用。
+
+---
+
+← [返回 Java 核心概念](../README.md)

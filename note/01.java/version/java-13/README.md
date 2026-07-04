@@ -130,3 +130,7 @@ String html = """
               """;
 System.out.println(html);
 ```
+
+---
+
+← [返回 Java 版本特性](../README.md)

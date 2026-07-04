@@ -165,3 +165,7 @@ String json = STR."""
 ## 总结
 
 Text Blocks 从 Java 13 预览到 Java 15 转正，彻底改变了 Java 中多行字符串的编写体验。它是开发者感知最强的语法改进之一，显著提升了 SQL、JSON、HTML 等文本的可读性。
+
+---
+
+← [返回 功能版本变更历史](../README.md)

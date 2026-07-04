@@ -526,3 +526,7 @@ usersFuture
 ```
 
 > **总结**：`CompletableFuture` 是 JDK 内置的异步编排工具，适合单次异步结果的组合。它与 Stream（数据处理）和 RxJava（事件流）互补而非替代关系。在现代 Java 开发中，三者配合使用可以覆盖绝大多数并发编程场景。
+
+---
+
+← [返回 Java 并发编程专题导航](../README.md)

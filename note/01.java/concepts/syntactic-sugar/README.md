@@ -330,3 +330,7 @@ public sealed class Rectangle extends Shape        // sealed - 继续限制
     permits Square { }
 public non-sealed class Triangle extends Shape { } // non-sealed - 开放继承
 ```
+
+---
+
+← [返回 Java 核心概念](../README.md)

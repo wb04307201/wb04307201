@@ -597,3 +597,7 @@ String result = task.get(); // 获取返回值
 
 推荐优先级：Callable ≈ Runnable > Thread
 ```
+
+---
+
+← [返回 Java 并发编程专题导航](../README.md)

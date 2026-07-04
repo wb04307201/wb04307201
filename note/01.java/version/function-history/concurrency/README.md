@@ -246,3 +246,7 @@ ScopedValue.where(USER, currentUser).run(() -> processRequest());
 ## 总结
 
 Java 并发从 `synchronized` + `Thread` 演进到虚拟线程 + 结构化并发 + 作用域值的现代模型。Java 21+ 的虚拟线程是最大变革——用同步写法获得异步性能，无需再编写复杂的异步回调代码。结构化并发持续迭代预览（Java 26 第六次预览），为正式发布做准备。
+
+---
+
+← [返回 功能版本变更历史](../README.md)

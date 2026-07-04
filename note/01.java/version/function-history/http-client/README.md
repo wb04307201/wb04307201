@@ -182,3 +182,7 @@ HttpClient client = HttpClient.newBuilder()
 ## 总结
 
 HTTP Client 从 Java 9 孵化到 Java 11 转正，提供了现代化的 HTTP/1.1、HTTP/2 和 HTTP/3 客户端能力，完全替代了老旧的 `HttpURLConnection`。Java 21 的虚拟线程集成使其在高并发 HTTP 场景中表现优异，Java 26 的 HTTP/3 支持进一步提升了弱网络环境下的性能。
+
+---
+
+← [返回 功能版本变更历史](../README.md)

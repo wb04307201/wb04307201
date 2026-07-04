@@ -703,3 +703,7 @@ public Set<Map.Entry<K,V>> entrySet()   // 返回 Entry 视图
 ---
 
 *本笔记基于 JDK 8+ 的 `java.util.WeakHashMap` 源码编写*
+
+---
+
+← [返回 Java 集合框架](../README.md)

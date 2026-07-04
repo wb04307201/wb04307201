@@ -161,3 +161,7 @@ String description = switch (shape) {
 ## 总结
 
 Record 从 Java 14 预览到 Java 21 成熟，配合 Record 模式，Java 的模式匹配能力显著增强。
+
+---
+
+← [返回 功能版本变更历史](../README.md)

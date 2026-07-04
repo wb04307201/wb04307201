@@ -294,3 +294,7 @@ Stream.of("a", "b").mapMulti((str, consumer) -> {
     consumer.accept(str.toUpperCase());
 }).forEach(System.out::println); // a, A, b, B
 ```
+
+---
+
+← [返回 Java 版本特性](../README.md)

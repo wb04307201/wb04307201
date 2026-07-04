@@ -299,3 +299,7 @@ public interface Logger {
 | 接口 default 方法 | 接口 | 是 | 通过实现类对象调用 | Java 8 |
 | 接口静态方法 | 接口 | 是 | 通过接口名调用 | Java 8 |
 | 接口 private 方法 | 接口 | 是 | 仅接口内部调用 | Java 9 |
+
+---
+
+← [返回 Java 核心概念](../README.md)

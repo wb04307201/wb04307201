@@ -322,3 +322,7 @@ java -XX:+UnlockExperimentalVMOptions -XX:+UseZGC YourApplication
 ## JEP 336: 弃用 Pack200 工具和 API
 
 该特性将 Pack200 工具和 API 标记为弃用状态。Pack200 是一种用于压缩 JAR 文件的工具，随着网络带宽的增加和应用分发方式的改变，其使用场景越来越少。这一弃用为后续版本中移除 Pack200 做准备。
+
+---
+
+← [返回 Java 版本特性](../README.md)

@@ -136,3 +136,7 @@ byte[] annotatedBytes = cf.transform(classModel,
 ## 总结
 
 Class-File API 从 Java 22 预览到 Java 24 成熟，为 Java 提供了标准化的字节码处理能力，填补了 JDK 长久以来在官方字节码操作 API 上的空白。
+
+---
+
+← [返回 功能版本变更历史](../README.md)

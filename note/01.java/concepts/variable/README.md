@@ -213,3 +213,7 @@ var reader = new BufferedReader(new FileReader("data.txt"));
 - **必须初始化**：`var x;` 是非法的，编译器无法推断类型
 - **不能推断为 `null`**：`var x = null;` 是非法的，`null` 不携带类型信息
 - **不能用于数组字面量**：`var arr = {1, 2, 3};` 是非法的，需改为 `var arr = new int[]{1, 2, 3};`
+
+---
+
+← [返回 Java 核心概念](../README.md)

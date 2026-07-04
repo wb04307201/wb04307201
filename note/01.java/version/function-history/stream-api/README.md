@@ -177,3 +177,7 @@ Stream.of("foo", "bar", "baz", "quux")
 ## 总结
 
 Stream API 从 Java 8 引入以来持续增强，最新的 Stream Gatherers 功能（Java 22-24）代表了重要里程碑，允许创建自定义中间操作，极大扩展了 API 的灵活性。
+
+---
+
+← [返回 功能版本变更历史](../README.md)

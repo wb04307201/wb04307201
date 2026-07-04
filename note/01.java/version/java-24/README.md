@@ -320,3 +320,7 @@ try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
 ## JEP 501: 弃用 32 位 x86 端口以待移除
 
 该特性将 32 位 x86 端口标记为弃用状态，为未来版本中的移除做准备。随着 64 位架构的普及，32 位 x86 端口的使用已经越来越少，移除它可以简化 JDK 的维护负担。
+
+---
+
+← [返回 Java 版本特性](../README.md)

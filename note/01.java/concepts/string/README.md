@@ -245,3 +245,7 @@ String json = """
 - 编译器会自动去除公共前导空白（以最左侧非空行为基准）
 - 文本块内的双引号无需转义
 - 可以使用`String`的所有方法（如`stripIndent()`、`formatted()`等）
+
+---
+
+← [返回 Java 核心概念](../README.md)

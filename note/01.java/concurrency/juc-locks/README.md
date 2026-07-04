@@ -845,3 +845,7 @@ while (!casOperation()) {
 ---
 
 > **总结**：AQS 是 JUC 锁的基石，通过 state + CLH 队列实现了统一的同步器框架。ReentrantLock 在其上实现了可重入独占锁，ReentrantReadWriteLock 拆分了读写场景，StampedLock 进一步提供了乐观读优化。选择锁时，优先考虑简单性（synchronized），在需要高级特性时再使用 Lock 体系。
+
+---
+
+← [返回 Java 并发编程专题导航](../README.md)

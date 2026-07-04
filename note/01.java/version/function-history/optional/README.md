@@ -187,3 +187,7 @@ public Optional<String> processUser(User user) {
 ## 总结
 
 Optional 从 Java 8 引入以来，逐步得到了增强和完善。它为 Java 提供了一种优雅且类型安全的方式来处理可能为空的值，有效减少了 NullPointerException 的发生。随着每个版本的迭代，Optional 的功能越来越丰富，使用起来也越来越便捷。通过合理使用 Optional，开发者可以编写出更加健壮、可读性更高的代码。
+
+---
+
+← [返回 功能版本变更历史](../README.md)

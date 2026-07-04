@@ -330,3 +330,7 @@ if (methodName.startsWith("get") || methodName.startsWith("set")
 当前方案只在方法入口和出口各插一次代码。如果需要方法调用链追踪，
 建议使用成熟的 APM 框架（SkyWalking、Elastic APM 等），
 或使用 ByteBuddy 的 `Advice` API 实现更精细的控制。
+
+---
+
+← [返回 Java Agent 实战目录](../README.md)

@@ -275,3 +275,7 @@ privateMethod.invoke(hero);  // 输出: 我是私有方法
 - **设计替代**：优先考虑接口、抽象类、工厂模式等设计模式；在性能敏感场景（如高频交易）避免反射。
 - **兼容性**：Java 9+引入模块系统（JPMS），反射访问需在`module-info.java`中声明`opens`权限。
 - **工具支持**：使用Lombok、MapStruct等工具减少样板代码，减少手动反射需求。
+
+---
+
+← [返回 Java 核心概念](../README.md)

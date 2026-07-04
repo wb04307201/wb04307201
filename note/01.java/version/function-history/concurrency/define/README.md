@@ -180,3 +180,7 @@ class VolatileExample {
 5. **使用虚拟线程处理 I/O 密集型任务**（Java 21+）
 6. **始终为线程池设置合理的参数**：根据 CPU 密集型或 I/O 密集型选择核心线程数
 7. **正确处理中断**：响应 `InterruptedException`，不吞掉中断信号
+
+---
+
+← [返回 功能版本变更历史](../README.md)

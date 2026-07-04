@@ -179,3 +179,7 @@ BinaryOperator<Integer> adderWithAnnotation = (@NotNull var a, @NotNull var b) -
 ## 总结
 
 从 Java 8 引入 Lambda 表达式以来，该特性经历了持续的完善。Java 8 奠定了函数式编程的基础，Java 9 增强了 Stream API 的函数式操作，Java 11 允许在 Lambda 参数中使用 var 关键字以支持注解。这些改进使 Java 开发者能够编写更加简洁、可读和可维护的代码。
+
+---
+
+← [返回 功能版本变更历史](../README.md)

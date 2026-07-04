@@ -831,3 +831,7 @@ public class ThreadPoolConfig {
 
 > **总结**：线程池是 Java 并发编程的基石。核心要记住一句话——
 > **"永远不要信任 Executors 工厂方法，永远手动创建 ThreadPoolExecutor，永远使用有界队列，永远自定义 ThreadFactory 和拒绝策略。"**
+
+---
+
+← [返回 并发编程基础概念](../README.md)

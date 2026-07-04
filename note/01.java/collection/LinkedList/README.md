@@ -446,3 +446,7 @@ private void writeObject(java.io.ObjectOutputStream s) throws IOException {
 ```
 
 这样做的目的是避免序列化整个链表结构（包含 next/prev 引用），节省空间并避免循环引用问题。
+
+---
+
+← [返回 Java 集合框架](../README.md)

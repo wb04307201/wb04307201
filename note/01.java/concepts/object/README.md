@@ -231,3 +231,7 @@ Objects.nonNull(obj);    // 等价于 obj != null
 - **线程安全**：`wait()/notify()` 需谨慎使用，优先选择 `java.util.concurrent` 中的高级同步工具（如 `CountDownLatch`、`Semaphore`、`BlockingQueue`）。
 - **空值处理**：优先使用 `Objects` 工具类进行空安全操作，而不是手动判空。
 - **Java 8+ 替代方案**：考虑使用 `Optional` 来显式表达可能为空的值，避免 `null` 的隐式传递。
+
+---
+
+← [返回 Java 核心概念](../README.md)

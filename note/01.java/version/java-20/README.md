@@ -155,3 +155,7 @@ result.intoArray(output, 0);
 // 输出结果
 System.out.println(java.util.Arrays.toString(output)); // [6, 8, 10, 12]
 ```
+
+---
+
+← [返回 Java 版本特性](../README.md)
