@@ -50,18 +50,22 @@
 
 基于 Obsidian 维护的体系化技术知识库，涵盖以下方向 → [进入笔记](note/)
 
-| 分类 | 内容概要 |
-|------|---------|
-| **Java** | 集合、JVM、并发、反射、序列化、I/O 与零拷贝、版本新特性 (8→26)、Kotlin |
-| **Spring** | IoC、AOP、事务、Spring Cloud、Batch、Retry、Cache、Reactor |
-| **数据库** | MySQL、索引、SQL 优化、ACID、事务隔离、MVCC、Redis、缓存一致性、连接池 |
-| **系统设计** | DDD、GoF 设计模式、微服务、API 设计、C4 架构模型、云设计模式 |
-| **分布式** | CAP、Paxos、Raft、分布式锁/事务/ID、RPC (Dubbo)、API 网关 |
-| **高可用** | 限流、熔断、弹性架构、冗余设计、代码质量 |
-| **AI** | 神经网络、LLM 技术栈、多模态、Prompt 工程、RAG、MCP、Agent 架构、16 节培训课程 |
-| **工具链** | Git、Docker、Nginx/Pingora、Monorepo、常用 Java 库 |
-| **计算机基础** | 算法与复杂度、网络协议 (HTTP/TCP)、Linux、WCAG 无障碍 |
-| **阿明餐厅** | 以餐厅经营为叙事主线的技术系列，43 篇覆盖架构演进、流量治理、AI Agent 转型等 |
+| 序号 | 分类 | 内容概要 |
+|:----:|------|---------|
+| 01 | **Java** | 集合、JVM、并发、反射、序列化、I/O 与零拷贝、版本新特性 (8→26)、Kotlin |
+| 02 | **计算机基础** | 算法与复杂度、网络协议 (HTTP/TCP)、Linux、WCAG 无障碍 |
+| 03 | **数据库** | MySQL、索引、SQL 优化、ACID、事务隔离、MVCC、Redis、缓存一致性、连接池 |
+| 04 | **系统设计** | DDD、GoF 设计模式、微服务、API 设计、C4 架构模型、云设计模式；内含分布式 (CAP / Paxos / Raft / 分布式锁·事务·ID) 与高可用 (限流·熔断·弹性架构) 子专题 |
+| 05 | **工具链** | Git、Docker、Nginx/Pingora、Monorepo、常用 Java 库 |
+| 06 | **Spring** | IoC、AOP、事务、Spring Cloud、Batch、Retry、Cache、Reactor |
+| 07 | **工作流** | BPMN 流程引擎 (Camunda / Flowable / Activiti) 与事件驱动编排 (EventMesh / Serverless Workflow) 的互补关系 |
+| 08 | **业务应用系统** | 21 个常见业务系统速查 (MES / ERP / SCM / WMS / CRM / OA / BI 等) —— 业务·PM·需求人员认知地图 |
+| 09 | **前端工程** | 从浏览器原理到框架选型、性能、安全、跨端，再到 AI 协同开发的知识地图 |
+| 10 | **大数据** | 数仓架构、Hadoop 生态、实时计算、数据湖、OLAP、调度、数据治理、同步工具 8 大主题 |
+| 11 | **AI** | 神经网络、LLM 技术栈、多模态、Prompt 工程、RAG、MCP、Agent 架构、16 节培训课程 |
+| 12 | **阿明餐厅** | 以餐厅经营为叙事主线的技术系列，43 篇覆盖架构演进、流量治理、AI Agent 转型等 |
+| 13 | **咬文嚼字** | 主模块的"刺刀版" —— 专治面试中"好像懂但说不清"的高频 / 高难度问题 |
+| 14 | **项目管理与成本控制** | 报价拆解、外包避坑、技术选型、AI 研发效能、人力排期、组织拓扑 —— 给 PM / 技术总监的另一只手 |
 
 ## 📬 联系方式
 
