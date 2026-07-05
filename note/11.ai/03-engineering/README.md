@@ -19,7 +19,7 @@ module:
 | [compute-platforms](compute-platforms/) | 计算平台对比 — CUDA / ROCm / CANN | 算力底层 |
 | [local-deployment](local-deployment/) | 本地部署指南 — Ollama (含 Linux 部署方案)、Open WebUI、iFlow CLI | 离线跑模型 |
 | [ai-platforms](ai-platforms/) | AI 平台选购指南 — Dify / Coze / n8n / FastGPT / RAGFlow 对比 | 低代码编排 |
-| [claude-code-practices](claude-code-practices/) | Claude Code 实战 — OpenSpec / Spec Kit / Hooks 实践 | AI 编码工具链 |
+| [claude-code-practices](claude-code-practices/) | Claude Code 实战 — OpenSpec / Spec Kit / Hooks 实践 + **Skill 设计（4 阶段 + 5 反模式 + YAML 模板）+ Skill 命中率（四层模型）** | AI 编码工具链 |
 | [production-agent](production-agent/) | 生产级 Agent 实战 — 编排、监控、错误恢复 | 线上稳定性 |
 | [harness-engineering](harness-engineering/) | **Harness Engineering** — 4 大 Harness 类型（规范/流程/工具/反馈）+ OpenSpec + 4 原则 | Agent 自我约束 |
 | [loop-engineering](loop-engineering/) | **Loop Engineering** — 循环调用 3 大组件 + 4 大失败模式 + 5 大最佳实践 | 探索性任务自动化 |
@@ -74,7 +74,7 @@ graph LR
   - [ollama/linux-deploy](local-deployment/ollama/linux-deploy/) — Linux 部署方案
   - [open-webui](local-deployment/open-webui/) — 可视化 Web UI
 - **[ai-platforms](ai-platforms/)**：Dify / Coze / n8n / FastGPT / RAGFlow 五大平台对比
-- **[claude-code-practices](claude-code-practices/)**：OpenSpec / Spec Kit / Hooks 实践
+- **[claude-code-practices](claude-code-practices/)**：OpenSpec / Spec Kit / Hooks 实践 + Skill 设计方法论 + Skill 命中率（描述/路由/加载/评估 4 层模型）
 - **[production-agent](production-agent/)**：生产级 Agent 编排、监控、错误恢复
 - **[harness-engineering](harness-engineering/)**：4 大 Harness 类型 + OpenSpec + 4 原则
 - **[loop-engineering](loop-engineering/)**：3 大组件 + 4 大失败模式 + 5 大最佳实践
