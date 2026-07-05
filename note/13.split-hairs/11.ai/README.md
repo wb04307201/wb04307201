@@ -22,7 +22,7 @@ question:
 
 ---
 
-## 文章清单（14 题 = 5 篇纯面试题 + 9 篇精炼版）
+## 文章清单（16 题 = 5 篇纯面试题 + 11 篇精炼版）
 
 ### 🎯 真正的面试题（一题一文）
 
@@ -48,6 +48,8 @@ question:
 | [RAG 检索增强生成](rag/) | ⭐⭐⭐⭐⭐ | Embedding + Vector DB + Retrieval + Generation | [07-llmops/01-rag-vs-finetuning](../../11.ai/07-llmops/01-rag-vs-finetuning/README.md) |
 | [Function Calling / Tool Use](function-calling/) | ⭐⭐⭐⭐⭐ | 工具调用原理 / Schema / ReAct Agent 集成 | [02-technology-stack/function-calling](../../11.ai/02-technology-stack/function-calling/README.md) |
 | [Agent DAG vs ReAct](agent-dag-vs-react/) | ⭐⭐⭐⭐⭐ | 复杂 Agent 为什么采用 DAG Workflow | [04-architecture/agent-architecture](../../11.ai/04-architecture/agent-architecture/README.md) |
+| [Skill 设计方法论](skill-design/) | ⭐⭐⭐⭐ | 决策树（写 Skill vs CLAUDE.md / Hook / MCP）+ 6 字段 frontmatter + YAML 模板 | [03-engineering/claude-code-practices/skill-design](../../11.ai/03-engineering/claude-code-practices/skill-design.md) |
+| [Skill 命中率](skill-hit-rate/) | ⭐⭐⭐⭐ | 数量爆炸后 4 层模型（描述 / 路由 / 加载 / 评估）+ 5 大反模式 + 65% → 92% 实战 | [03-engineering/claude-code-practices/skill-hit-rate](../../11.ai/03-engineering/claude-code-practices/skill-hit-rate.md) |
 
 ---
 
