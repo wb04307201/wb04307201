@@ -117,6 +117,7 @@ try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
 | 四 | ThreadLocal 线程局部变量 | 线程封闭技术、内存泄漏问题、InheritableThreadLocal、TransmittableThreadLocal | [threadlocal](./threadlocal/) |
 | 五 | 原子类与 CAS 操作 | `AtomicInteger`、`LongAdder`、`AtomicReference`、Unsafe、CAS 原理与 ABA 问题 | [atomic](./atomic/) |
 | 六 | CompletableFuture 异步编程 | 异步编排、组合、异常处理、虚拟线程集成、与线程池对比 | [completablefuture](./completablefuture/) |
+| 七 | **线程协作**（3 线程按顺序执行） | T1/T2/T3 顺序执行 3 语义 + 8 方案对比（join/CountDownLatch/CompletableFuture/Semaphore…） | [thread-basics/sequential-execution](./thread-basics/sequential-execution.md) |
 
 ---
 
