@@ -155,10 +155,12 @@ Skill 数  命中率  退化原因
 
 **主模块**：
 - [Skill 命中率深度章节](../../../11.ai/03-engineering/claude-code-practices/skill-hit-rate.md) — 四层模型 + 五大反模式 + 实战案例
+- [Skill 设计方法论深度章节](../../../11.ai/03-engineering/claude-code-practices/skill-design.md) — 「写」的姐妹篇：决策树 + 6 字段 + YAML 模板
 - [Claude Code 大型代码库实践](../../../11.ai/03-engineering/claude-code-practices/README.md) — Skill 的"渐进式披露"基础
 - [Harness Engineering 概念辨析](../harness-engineering/README.md) — 上下文工程总论
 
 **同栏目（11.ai 高频面试题）**：
+- [Skill 从 0 到 1 怎么设计？](../skill-design/README.md) — 「写」的面试题（决策树 + 6 字段 + 测试）
 - [为什么 Claude Code 放弃了 RAG？](../claude-code-agentic-search/README.md) — Agentic Search 取代 RAG
 - [Harness Engineering 是什么？](../harness-engineering/README.md) — Harness 体系
 - [Context Engineering 怎么做？](../context-engineering/README.md) — Token 预算
