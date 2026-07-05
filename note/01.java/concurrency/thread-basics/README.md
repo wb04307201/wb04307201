@@ -600,4 +600,14 @@ String result = task.get(); // 获取返回值
 
 ---
 
+## 七、3 线程按顺序执行（实战篇姐妹）
+
+本文 § 三.3 讲了 `Thread.join()` 的**原理**（阻塞调用方线程）；实战中"T1 → T2 → T3 按顺序执行"有 **3 种语义 + 8 种方案**对比，独立章节：
+
+- [sequential-execution.md](sequential-execution.md) — 串行 / 分支 / 汇合 3 语义 + Top 3 推荐方案（join / CountDownLatch / CompletableFuture）+ 8 方案对比表 + 实战模板
+
+**面试配套**：[13.split-hairs/01.java/thread-sequential-execution](../../../13.split-hairs/01.java/thread-sequential-execution/README.md) — 5 题面试题版（语义陷阱 / join 原理 / CountDownLatch 选型 / CompletableFuture 链式 / 生产推荐）
+
+---
+
 ← [返回 Java 并发编程专题导航](../README.md)
