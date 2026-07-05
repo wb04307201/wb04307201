@@ -20,7 +20,7 @@ question:
 
 ---
 
-## 文章清单（共 34 篇）
+## 文章清单（共 35 篇）
 
 ### 集合与数据结构
 | 主题 | 难度 | 核心问题 |
@@ -42,6 +42,7 @@ question:
 | [AQS 框架原理](aqs/) | ⭐⭐⭐⭐⭐ | AbstractQueuedSynchronizer 实现机制 |
 | [线程池 7 大参数](thread-pool/) | ⭐⭐⭐⭐⭐ | ThreadPoolExecutor 核心参数详解 |
 | [Atomic 替代 synchronized](replace-synchronized-with-atomic/) | ⭐⭐⭐ | CAS 无锁编程 |
+| [3 线程按顺序执行](thread-sequential-execution/) | ⭐⭐⭐ | T1→T2→T3 的 3 语义 + 8 方案对比 + Top 3 推荐 |
 
 ### JVM 与类加载
 | 主题 | 难度 | 核心问题 |
