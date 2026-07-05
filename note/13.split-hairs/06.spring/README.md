@@ -20,7 +20,7 @@ question:
 
 ---
 
-## 文章清单（共 13 题）
+## 文章清单（共 14 题）
 
 ### 基础
 | 主题 | 难度 | 核心问题 |
@@ -50,6 +50,11 @@ question:
 | 主题 | 难度 | 核心问题 |
 |------|------|---------|
 | [Spring MVC 请求处理流程](spring-mvc-flow/) | ⭐⭐⭐⭐ | DispatcherServlet → HandlerMapping → HandlerAdapter → ViewResolver |
+
+### 缓存与应急
+| 主题 | 难度 | 核心问题 |
+|------|------|---------|
+| [@Cacheable 降级与恢复](cache-degradation/) | ⭐⭐⭐⭐ | Redis 挂了怎么办？4 大方案 + 自动恢复 + 数据一致性 |
 
 ---
 
