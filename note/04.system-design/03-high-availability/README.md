@@ -45,6 +45,7 @@ graph TD
 | 3 | 流量控制 | [重试](retry/README.md) | 重试策略与退避算法 |
 | 4 | 流量控制 | [超时控制](timeout/README.md) | 超时设置与级联超时 |
 | 5 | 流量控制 | [服务降级](service-degradation/README.md) | 降级策略与降级开关 |
+| 5b | 流量控制 | [秒杀无 Redis 实战](rate-limiting/seckill-without-redis.md) | 500 人 / 2 台服务器 / 库存=1 单机方案 + 5 大方案对比 |
 | 6 | 冗余容灾 | [冗余设计](redundancy-design/README.md) | [集群](redundancy-design/cluster/README.md) · [多活](redundancy-design/multi-site-active-active/README.md) |
 | 7 | 冗余容灾 | [弹性架构](elastic-architecture/README.md) | 自动扩缩容与弹性设计 |
 | 8 | 冗余容灾 | [混沌工程](chaos-engineering/README.md) | Chaos Mesh / 故障注入 / 容灾演练 |
@@ -69,7 +70,7 @@ graph TD
 
 | 子目录 | leaf 主题数 | 备注 |
 |:-------|:-----------:|:-----|
-| `03-high-availability/`（本文） | 9 | 限流 · 熔断 · 重试 · 超时 · 降级 · 冗余 · 弹性 · 混沌 · 代码质量 |
+| `03-high-availability/`（本文） | 10 | 限流 · 熔断 · 重试 · 超时 · 降级 · 冗余 · 弹性 · 混沌 · 代码质量 · 秒杀实战 |
 | ├─ `rate-limiting/` | 1 | 固定窗口/滑动窗口/漏桶/令牌桶 |
 | ├─ `circuit-break/` | 1 | 三态状态机 |
 | ├─ `retry/` | 1 | 重试策略与退避 |
