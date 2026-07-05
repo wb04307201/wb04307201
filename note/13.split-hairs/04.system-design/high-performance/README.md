@@ -20,6 +20,7 @@ question:
 | 锁 | [分布式锁](distributed-lock/README.md) | Redis vs ZooKeeper | ⭐⭐⭐⭐⭐ |
 | MQ | [消息队列](mq/README.md) | 2 篇 | ⭐⭐⭐⭐ |
 | 限流 | [限流算法](rate-limiting/README.md) | 计数器 / 滑动窗口 / 漏桶 / 令牌桶 | ⭐⭐⭐⭐ |
+| 秒杀 | [秒杀无 Redis 刁难题](seckill-without-redis/README.md) | 500 人 / 2 台 / 库存=1 单机方案 + 5 方案对比 | ⭐⭐⭐⭐ |
 
 ## 相关章节
 
