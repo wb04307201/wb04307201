@@ -20,6 +20,7 @@ module:
 | [neural-layers](neural-layers/) | 神经网络内部层次结构：CNN / RNN / Transformer | 深度学习骨架 |
 | [embedding-vs-vectorization](embedding-vs-vectorization/) | 嵌入(Embedding)与向量化的本质区别、流形假说 | 语义空间的数学基础 |
 | [dense-vs-moe](dense-vs-moe/) | 稠密模型 vs 混合专家(MoE)架构对比 | 大模型架构选型 |
+| [dropout-in-llm](dropout-in-llm/) | LLM 为何弃用 Dropout + **单 epoch 时代 + 6 模型 config 考古**（GPT-3/LLaMA/Mistral/Qwen/DeepSeek） | 训练范式 + 实证 |
 
 ### 1.1 学习路径
 
@@ -117,8 +118,8 @@ graph LR
 
 | 维度 | 数字 |
 |------|------|
-| 一级 leaf README 数 | 5（llm-basics / transformer / neural-layers / embedding-vs-vectorization / dense-vs-moe） |
-| 二级 leaf README 数 | 0 |
+| 一级 leaf README 数 | 6（llm-basics / transformer / neural-layers / embedding-vs-vectorization / dense-vs-moe / dropout-in-llm（含单 epoch + config 考古）） |
+| 二级 leaf README 数 | 1（dropout-in-llm/single-epoch-and-config-evidence 实证篇） |
 | 速查表条目数 | 8（ML / SL / UL / RL / DL / Transformer / MoE / Embedding） |
 | 最佳实践条数 | 4 |
 | 常见面试题数 | 7 |
