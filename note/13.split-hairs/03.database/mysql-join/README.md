@@ -172,3 +172,173 @@ SELECT * FROM users u JOIN orders o ON u.phone_number = o.user_phone;
 ## 相关章节
 
 - 深度阅读：[`03.database`](../../03.database/README.md) — 主模块详细内容
+
+---
+
+## 十、大厂实战追问：10 张表 JOIN 怎么拆？
+
+> 本文前面章节讲了**算法原理**（NLJ / BNL / Hash Join）和**简单原则**（小表驱动大表）。本节讲**大厂面试进阶追问**——"**假如线上有 10 张表 JOIN，你怎么优化？**"
+
+### 10.1 追问 1：为什么大厂严禁（严格控制）多表 JOIN？
+
+**5 大理由（实战排序）**：
+
+#### 理由 1：性能瓶颈 —— 笛卡尔积爆炸
+
+```
+10 张表 JOIN 的笛卡尔积倍数：
+每张表 10 万行 → 10 张表 → 10⁵⁰（物理不可能完成）
+```
+
+**真相**：MySQL 优化器会让"10 张表 JOIN"在小数据集上跑通，但**生产数据 1 万起步时必然超时**。
+
+#### 理由 2：索引失效 —— JOIN 顺序错了就全表扫描
+
+**原理**：MySQL 优化器对小数据集的 JOIN 顺序选择经常出错（基于成本估算失误）。
+
+```sql
+-- 假设 a join b on a.id = b.a_id（b.a_id 有索引）
+-- 但执行计划可能选 b 驱动 a（因为 a 行数少）
+-- 此时 a.id 没有索引 → 全表扫描
+```
+
+#### 理由 3：Buffer Pool 抖动 —— 数据库连接被独占
+
+```
+10 表 JOIN 跑 30 秒+
+→ 数据库连接池（默认 10-20 连接）被独占
+→ 其他正常请求排队
+→ 整个服务雪崩
+```
+
+**大厂红线**：**单 SQL 超过 5 秒 = 线上事故**。
+
+#### 理由 4：可维护性 —— SQL 没人敢改
+
+```
+新人接手 10 表 JOIN：
+├─ 不敢改字段 → 业务迭代停滞
+├─ 不敢加索引 → 性能永远优化不了
+└─ 不敢重构 → 代码腐烂
+```
+
+#### 理由 5：分布式场景下彻底失效
+
+```
+MySQL 分库分表后：
+├─ 10 张表分布在 10 个库
+├─ 单库 JOIN 不可能跨库
+└─ 必须用「应用层 JOIN」或「数据仓库」
+```
+
+### 10.2 大厂明文规范引用
+
+| 公司 | 规范 |
+|------|------|
+| **阿里巴巴《Java 开发手册》** | "**超过 3 张表禁止 JOIN**" |
+| **字节跳动 SQL 规范** | "单 SQL JOIN 表数量 **≤ 4**" |
+| **美团技术团队** | "**严禁 5 张表以上的 JOIN**" |
+| **Netflix Data Gateway** | "Microservices 严禁跨服务 JOIN" |
+
+### 10.3 追问 2：10 张表 JOIN 怎么拆？（5 大策略）
+
+#### 策略 1：分步 SQL + 应用层组装（最常用）
+
+```java
+// 错误：10 张表 JOIN
+List<OrderDTO> list = orderDao.join10Tables(userId);
+
+// 正确：分 3 次查询 + 应用层组装
+Map<Long, User> users = userDao.findByIds(orderIds);
+Map<Long, Product> products = productDao.findByIds(productIds);
+List<Order> orders = orderDao.findByUserId(userId);
+// 应用层组装（Stream / Map join）
+List<OrderDTO> result = orders.stream()
+    .map(o -> new OrderDTO(o, users.get(o.getUserId()), products.get(o.getProductId())))
+    .collect(toList());
+```
+
+**性能对比（10 万订单 + 10 张表）**：
+- 10 表 JOIN：30 秒（超时）
+- 分 3 次单表 + 应用层组装：**200ms**
+
+#### 策略 2：冗余字段（适度反范式）
+
+```sql
+ALTER TABLE order ADD COLUMN user_name VARCHAR(50);
+-- 同步方案：双写 / binlog 订阅 / 定时全量
+```
+
+**适用场景**：订单详情 / 商品详情（读多写少、性能要求极高）
+
+#### 策略 3：宽表化（OLAP 场景）
+
+```
+原始：order + user + product + address + payment + ... （10 张）
+宽表：dwd_order_detail（包含所有需要展示的字段，单表 200 列）
+```
+
+**适用场景**：数据仓库 / BI 报表 / 用户画像
+
+#### 策略 4：数据仓库 + OLAP 引擎
+
+```
+MySQL（OLTP）→ Canal → Kafka → Flink → ClickHouse / Doris（OLAP）
+业务查询：
+├─ 简单查询 → MySQL
+└─ 复杂报表（多表 JOIN）→ ClickHouse / Doris
+```
+
+#### 策略 5：业务拆分（领域驱动）
+
+```
+order-service: SELECT * FROM order WHERE user_id = ?;
+user-service:  GET /users/{userId}
+product-service: GET /products/{productId}
+-- 应用层组装
+```
+
+### 10.4 追问 3：JOIN vs 多次单表查询怎么选？
+
+| 场景 | 推荐 | 理由 |
+|------|------|------|
+| 数据量小（< 1 万行）| **单 SQL JOIN** | 数据库优化得更深 |
+| 数据量中（1-100 万行）| **分步 SQL + 应用层组装** | 灵活 + 可缓存 |
+| 数据量大（> 100 万行）| **必须分步 + 冗余/宽表** | 单 SQL 必超时 |
+| 分布式场景 | **API 组合** | JOIN 物理不可能 |
+
+### 10.5 追问 4：面试怎么答"10 张表 JOIN 怎么优化"（60 秒话术）
+
+> "10 张表 JOIN 几乎肯定是反模式。**第一**，我先确认为什么会有 10 张表 JOIN——如果是 OLTP 场景，那一定是设计问题，应该拆成 3-4 个领域服务；如果是 OLAP 场景，那应该走宽表或 ClickHouse。
+>
+> **第二**，如果非要优化现有 10 表 JOIN，我会用 **3 个策略组合**：
+> 1. **分步 SQL + 应用层组装**（最常用，10 万行数据从 30 秒降到 200ms）
+> 2. **冗余字段**（读多写少场景，把 user_name 等常用字段同步到 order 表）
+> 3. **OLAP 引擎**（数据量超千万，走 ClickHouse / Doris）
+>
+> **第三**，我会推动**业务拆分**——10 张表 JOIN 通常意味着 10 个不同领域，领域驱动拆分后每个服务单表，零 JOIN。
+>
+> 核心原则：**OLTP 不做多表 JOIN，复杂查询去 OLAP 引擎**。"
+
+### 10.6 反模式提醒（不要做的事）
+
+| 反模式 | 后果 |
+|--------|------|
+| ❌ "反正能跑通，先不管" | 1 万行数据时雪崩 |
+| ❌ "加更多索引能解决" | 索引过多反而拖慢写 |
+| ❌ "JOIN 比多次查询快" | 数据库压力 = JOIN 笛卡尔积 |
+| ❌ "先跑通再优化" | 10 表 JOIN 一旦上线，重构成本极高 |
+
+---
+
+## 十一、相关章节
+
+**主模块（实战篇）**：
+- [04.system-design/.../sql/README § 四 · 10 张表 JOIN 实战拆分 + 大厂严禁的 5 大理由](../../../../04.system-design/04-high-performance/database-optimization/sql/README.md) — 本文「算法 + 实战追问」的深度支撑（含 10 表拆分实战案例 + 大厂规范引用）
+
+**主模块基础**：
+- [03.database/02-sql（SQL 语法基础）](../../../../03.database/02-sql/README.md) — JOIN 语法 + 执行顺序
+
+**同栏目兄弟**：
+- [MySQL 索引深挖](../bplus-tree/README.md)
+- [MVCC 多版本并发控制](../mvcc/README.md)
