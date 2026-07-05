@@ -480,3 +480,16 @@ SELECT * FROM users WHERE age > 20 ORDER BY create_time DESC LIMIT 10;
 ---
 
 ← [返回 03.database 主模块](../README.md)
+
+---
+
+## 五、SQL 性能优化（兄弟章节）
+
+本文讲 **SQL 语法基础**（JOIN / 子查询 / 执行顺序）；SQL **性能优化**（10 表 JOIN 实战拆分 + 大厂严禁 5 大理由）在独立章节：
+
+- [04.system-design/04-high-performance/database-optimization/sql/README](../../04.system-design/04-high-performance/database-optimization/sql/README.md) — 4 个核心优化手段 + 10 表 JOIN 实战拆分 + 大厂严禁 5 大理由（含阿里/字节/美团规范引用）
+
+**关键引导**：
+- 语法层（JOIN 关键字）→ 本文 § 5 JOIN（连接查询）
+- 性能层（多表 JOIN 优化）→ 兄弟章节 § 三-四（避免多表 JOIN + 10 表实战拆分）
+- 算法层（NLJ / BNL / Hash Join）→ [13.split-hairs/03.database/mysql-join](../../13.split-hairs/03.database/mysql-join/README.md)（面试题）
