@@ -29,6 +29,7 @@ module:
 | [缓存 4 大模式](patterns.md) | Cache-Aside / Read-Through / Write-Through / Write-Behind 怎么选？ | 15 min |
 | [多级缓存与防护](multi-level.md) | L1+L2 架构？穿透/击穿/雪崩如何防御？ | 15 min |
 | [Redis 序列化](serialization.md) | 5 大序列化器怎么选？多态与 Schema 演进？ | 12 min |
+| [@Cacheable 降级与恢复](cache-degradation-and-recovery.md) | Redis 挂了怎么办？4 大方案 + 自动恢复 + 数据一致性 | 18 min |
 
 ---
 
