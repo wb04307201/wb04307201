@@ -5,3 +5,8 @@
 
 # Claude settings (用户/机器级，不应 commit)
 /.claude/settings.local.json
+
+# Python 缓存（脚本运行时产生的临时 .pyc，不应 commit）
+__pycache__/
+*.pyc
+*.pyo
