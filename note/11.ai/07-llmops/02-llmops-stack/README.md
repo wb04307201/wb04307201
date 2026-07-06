@@ -223,6 +223,8 @@ python -m vllm.entrypoints.openai.api_server \
 
 **性能**：vLLM 比 HuggingFace Transformers 快 24 倍（continuous batching）。
 
+> 🆕 **深度解析**：vLLM 的 PagedAttention + 连续批处理 + 4 引擎横向对比（vLLM/TGI/LMDeploy/Ollama）+ 5 分钟选型决策树 + 7 道精选面试题 → 详见 [03-engineering/ai-platforms/vllm-vs-ollama](../../03-engineering/ai-platforms/vllm-vs-ollama/README.md)。
+
 ### 7.3 OpenAI 兼容 API
 
 ```python

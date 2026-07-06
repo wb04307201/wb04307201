@@ -9,7 +9,7 @@ module:
 
 # AI 编排平台
 
-> ⬅️ [返回工程实践](../README.md) | [Dify](dify.md) | [Coze](coze.md) | [LangGraph](langgraph.md) | [BPMN+AI 融合](../../04-architecture/bpmn-ai-integration.md) | [11 AI 知识体系](../../README.md)
+> ⬅️ [返回工程实践](../README.md) | [Dify](dify.md) | [Coze](coze.md) | [LangGraph](langgraph.md) | [vLLM vs Ollama](vllm-vs-ollama/README.md) | [BPMN+AI 融合](../../04-architecture/bpmn-ai-integration.md) | [11 AI 知识体系](../../README.md)
 
 ## 🎯 一句话定位
 
@@ -24,7 +24,7 @@ AI 编排平台 的关键不是'选型'——是**选完之后怎么在 5 个 tr
 
 ---
 
-## 📚 章节导航（5 主线 + 5 文件）
+## 📚 章节导航（5 主线 + 6 文件）
 
 | 主线 | 文件 | 核心内容 |
 |:----|:----|:---------|
@@ -34,6 +34,7 @@ AI 编排平台 的关键不是'选型'——是**选完之后怎么在 5 个 tr
 | **3 代码优先** | [LangGraph](langgraph.md) | StateGraph / Checkpoint / Time Travel / HITL / Supervisor |
 | **4 融合范式** | [BPMN+AI 融合](../../04-architecture/bpmn-ai-integration.md) | 4 模式：fromAi() / Zeebe AI Worker / Engine-as-Tool / HITL |
 | **5 边界决策** | [Spring AI vs 平台](spring-ai-vs-platforms.md) | 代码优先 vs 低代码的 5 维度速查 + 何时选 Dify 何时选 Spring AI（深度版见 [04-architecture/spring-ai-vs-dify.md](../../04-architecture/spring-ai-vs-dify.md)）|
+| **🆕 6 工业部署** | [vLLM vs Ollama](vllm-vs-ollama/README.md) | PagedAttention / 连续批处理 / 量化 / TP+PP+SP+DP / 4 引擎对比 / 5 分钟决策树 + 7 道面试题 |
 
 ---
 
@@ -186,6 +187,7 @@ Q4: 是否需要 BPMN 合规？
 - [Spring AI vs 平台](spring-ai-vs-platforms.md) — Java 代码优先 vs 低代码的边界决策（速查卡）
 - [BPMN+AI 融合](../../04-architecture/bpmn-ai-integration.md) — 4 模式生产级落地
 - [Spring AI vs Dify 深度对比](../../04-architecture/spring-ai-vs-dify.md) — 7 维度决策 + 代码示例 + 混合架构
+- [🆕 vLLM vs Ollama](vllm-vs-ollama/README.md) — 工业级 LLM 推理引擎选型深度（PagedAttention + 连续批处理 + 4 引擎对比 + 7 道面试题）
 - [07 工作流/微服务编排](../../../07.workflow/workflow-and-microservice-orchestration/README.md) — 流程引擎在分布式场景的演化
 - [09.front-end / 09 前端与 AI](../../../09.front-end/09-frontend-and-ai/README.md) — AI SDK / AI Native UI / Vibe Coding：AI 平台的前端落地形态
 

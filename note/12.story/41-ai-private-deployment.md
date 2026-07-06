@@ -773,4 +773,6 @@ API 方案（GPT-4o）：
 - 续集十九：[`45-ai-productivity-paradox`](./45-ai-productivity-paradox.md) —— **私有化的 ROI 真相**：DORA 放大器理论告诉你私有化是否值得
 - 续集十二：[`36b-ai-token-cost-optimization`](./36b-ai-token-cost-optimization.md) —— **私有化的成本优化**：5 层路由 + 3 级缓存 + 4 策略压缩
 
+> 🆕 **阿明餐厅工业部署选型实战**：当连锁开到 30 家（从私部署 Ollama 升级到 vLLM），怎么选推理引擎？→ 详见 [vLLM vs Ollama 工业级选型深度专题](../11.ai/03-engineering/ai-platforms/vllm-vs-ollama/README.md)（PagedAttention 原理 + 4 引擎对比 + 场景化决策树）。
+
 ← [返回系列导读](./index.md)

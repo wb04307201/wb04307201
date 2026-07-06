@@ -34,5 +34,6 @@ graph LR
 - 父级：[L3 工程实践](../README.md) — 框架 / 计算平台 / 本地部署 / AI 平台
 - 关联：[05.tools Docker](../../../05.tools/02-docker/) — 容器化部署基础
 - 关联：[11.ai/training](../../training/README.md) — Spring AI Agent 16 课实战
+- 🆕 **工业部署对比**：[../ai-platforms/vllm-vs-ollama/](../ai-platforms/vllm-vs-ollama/README.md) — Ollama 适合本地/边缘，工业生产用 vLLM；选型决策树 + PagedAttention 原理 + 4 引擎对比
 
 ← [返回: AI 知识体系 · local-deployment](README.md)
