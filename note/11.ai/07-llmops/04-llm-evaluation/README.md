@@ -314,3 +314,9 @@ LLM-as-Judge（GPT-4 评分）：
 ---
 
 ← [返回 AI 知识体系总览](../../README.md) · 📅 2026-06-28
+
+---
+
+## 深度扩展
+
+🆕 **5 大灵魂拷问（重点看 Q5 监控）**：[llm-production-thinking/05-online-monitoring](../../../03-engineering/llm-production-thinking/05-online-monitoring.md) —— 把 6 维评估延伸为线上 4 维监控 + Trace + 黄金集回归 + 漂移检测（含 5 分钟定位实战）。

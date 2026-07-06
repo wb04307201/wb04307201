@@ -23,6 +23,7 @@ module:
 | [production-agent](production-agent/) | 生产级 Agent 实战 — 编排、监控、错误恢复 | 线上稳定性 |
 | [harness-engineering](harness-engineering/) | **Harness Engineering** — 4 大 Harness 类型（规范/流程/工具/反馈）+ OpenSpec + 4 原则 | Agent 自我约束 |
 | [loop-engineering](loop-engineering/) | **Loop Engineering** — 循环调用 3 大组件 + 4 大失败模式 + 5 大最佳实践 | 探索性任务自动化 |
+| [llm-production-thinking](llm-production-thinking/) 🆕 | **大模型思维工程** — 5 大灵魂拷问（Prompt vs if-else / 成本降级 / 一致性 / 超时熔断 / 监控定位）+ 5 层路由 + 双 timeout | LLM 生产工程 |
 
 ### 1.1 学习路径
 
@@ -78,6 +79,7 @@ graph LR
 - **[production-agent](production-agent/)**：生产级 Agent 编排、监控、错误恢复
 - **[harness-engineering](harness-engineering/)**：4 大 Harness 类型 + OpenSpec + 4 原则
 - **[loop-engineering](loop-engineering/)**：3 大组件 + 4 大失败模式 + 5 大最佳实践
+- 🆕 **[llm-production-thinking](llm-production-thinking/)**：5 大灵魂拷问（思维 + 成本 + 一致性 + 熔断 + 监控）+ 5 层路由 + Self-Consistency + 双 timeout
 
 ---
 
@@ -90,7 +92,7 @@ graph LR
 | **本地部署** | Ollama 拉模型 + Open WebUI 可视化 + iFlow CLI Java 集成 |
 | **Harness 设计** | 规范层（OpenSpec）+ 流程层（CI/CD）+ 工具层（MCP）+ 反馈层（红队） |
 | **Loop 设计** | 任务定义 + 验证器（Verifier）+ 反馈机制；设置最大迭代次数防死循环 |
-| **生产稳定性** | 限流 + 重试 + 熔断 + 监控 + 错误恢复（Fallback） |
+| **生产稳定性** | 限流 + 重试 + 熔断 + 监控 + 错误恢复（Fallback） → 详见 [llm-production-thinking](llm-production-thinking/README.md)（思维范式 + 5 层路由 + Self-Consistency + 双 timeout + Trace） |
 
 ---
 
@@ -133,7 +135,7 @@ graph LR
 
 | 维度 | 数字 |
 |------|------|
-| 一级 leaf README 数 | 8（frameworks / compute-platforms / local-deployment / ai-platforms / claude-code-practices / production-agent / harness-engineering / loop-engineering） |
+| 一级 leaf README 数 | 9（frameworks / compute-platforms / local-deployment / ai-platforms / claude-code-practices / production-agent / harness-engineering / loop-engineering / **llm-production-thinking**） |
 | 二级 leaf README 数 | 7（frameworks:3 + local-deployment:4） |
 | 总 leaf README 数 | 15 |
 | 速查表条目数 | 8 |

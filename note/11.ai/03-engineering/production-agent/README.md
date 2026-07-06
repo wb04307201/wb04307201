@@ -99,3 +99,9 @@ Shopify 团队明确指出，目前许多人采用的 **“凭感觉测试（Vib
 ---
 
 ← [返回 L3 工程实践](../README.md)
+
+---
+
+## 深度扩展
+
+🆕 **5 大灵魂拷问**：[llm-production-thinking（思维 + 成本 + 一致性 + 熔断 + 监控）](../llm-production-thinking/README.md) —— 把 production-agent 的工程方法论延伸到 5 大问题的协同回答（含 7 文件 1512 行 + 6 道面试题）。
