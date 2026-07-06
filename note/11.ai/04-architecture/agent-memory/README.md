@@ -295,6 +295,7 @@ Memory 演进是 [驾驭演进主线](../llm-control-evolution/README.md) 的具
 **实战框架**：
 - [LangGraph（Checkpoint）](../../03-engineering/ai-platforms/langgraph.md)
 - [Context Engineering（Memory 是 Context 三大件之一）](../../02-technology-stack/context-engineering/README.md)
+- 🆕 **长上下文全景（Memory 是 6 策略之一）**：[Agent 长上下文架构](../agent-context/README.md) —— Chunking / Memory / RAG / Sliding Window / Sub-Agents / Long-Context LLMs 6 策略组合决策树
 
 **同栏目其他面试题**：
 - [咬文嚼字·11.ai（RAG / Dropout / Harness 等）](../../../README.md)
