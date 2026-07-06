@@ -320,7 +320,7 @@ graph LR
 
 **未上传前：**
 
-![img.png](img.png)
+![img.png](note-11.ai-training-lesson1.png)
 
 **启明11手机介绍：**[qiming11.md](qiming11.md)
 
@@ -328,7 +328,7 @@ graph LR
 
 **上传后：**
 
-![img_1.png](img_1.png)
+![img_1.png](note-11.ai-training-lesson1-01.png)
 [知识库](http://localhost:6333/dashboard)
 
 #### 3.3.2 Mem0 / 用户偏好记忆
@@ -500,11 +500,11 @@ graph LR
 
 **无工具：**
 
-![img_2.png](img_2.png)
+![img_2.png](note-11.ai-training-lesson1-02.png)
 
 **有时间工具：**
 
-![img_3.png](img_3.png)
+![img_3.png](note-11.ai-training-lesson1-03.png)
 
 **一个 MCP 服务至少包含一个工具，并至少配套一个技能，可以试试问问大模型：**
 
@@ -512,7 +512,7 @@ graph LR
 你有哪些可以调用的工具？
 ```
 
-![img_6.png](img_6.png)
+![img_6.png](note-11.ai-training-lesson1-06.png)
 
 也可以约定一个工作流，让大模型逐步执行。例如：
 
@@ -526,8 +526,8 @@ graph LR
 
 **结果：**
 
-![img_4.png](img_4.png)
-![img_5.png](img_5.png)
+![img_4.png](note-11.ai-training-lesson1-04.png)
+![img_5.png](note-11.ai-training-lesson1-05.png)
 
 #### 3.4.2 Skill（技能书）
 
