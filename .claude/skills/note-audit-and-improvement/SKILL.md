@@ -39,6 +39,7 @@ description: Use when user asks "what should be improved in note" or requests a 
 | 1 | **数字一致性** | `grep -rn "篇\|个\|行" note/README.md note/*/README.md` |
 | 2 | **H1 / 标题规范** | `grep -rn "^# " note/*/README.md` |
 | 3 | **回链覆盖率 + 互链双向性** | `grep -rln "← \[返回\|返回.*目录" note/ | wc -l` vs `find note -name README.md \| wc -l`；外加单向链接扫描（child → parent 但 parent 不回链） |
+| 3.5 | **孤岛检测 / 总目录扫描** | 扫描所有新文件（commit 时间 ≤ N 天），验证其：① 链接了 ≥ 2 个旧章节 ② 父 README / 总目录表有反向链接 ③ 同级兄弟有反向链接 |
 | 4 | **索引/入口缺失** | `find note -type d -not -path "*/node_modules/*" \| wc -l` vs README 引用 |
 | 5 | **内容重复** | `find note -name "*.md" \| xargs grep -l "<关键概念>" \| sort -u` |
 | 6 | **内容补充缺口** | 找到深度 ≤ 50 行的 README（可能是占位）|
@@ -292,9 +293,9 @@ grep -rl "\.png" note/ | wc -l  # 引用 PNG 的文件数
 ## Quick Checklist
 
 执行前必过：
-- [ ] Step 1 完成：8 类扫描全跑（grep + find）
+- [ ] Step 1 完成：8 类扫描全跑（grep + find）+ **3.5 孤岛检测**
 - [ ] Step 2 完成：排除本会话已修项
 - [ ] Step 3 完成：ROI 分级（P0/P1/P2/P3）
 - [ ] Step 4 完成：机械 vs 判断分类
 - [ ] Step 5 完成：分批执行计划（4 批）
-- [ ] 输出报告含"总览"+"分类发现"+"分批计划"+"风险"
+- [ ] 输出报告含"总览"+"分类发现"+"分批计划"+"风险" + **孤岛清单**
