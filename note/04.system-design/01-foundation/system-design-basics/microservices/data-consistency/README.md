@@ -453,3 +453,5 @@ class Order:
 - [CAP 定理](../../../../02-distributed/cap-and-base/cap/README.md) — 一致性理论
 - [服务间通信](../service-communication/README.md) — 异步通信与事件驱动
 - [演进与组织](../migration-and-organization/README.md) — 从单体迁移到分布式
+
+← [返回: 系统设计 · data-consistency](README.md)

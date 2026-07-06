@@ -112,3 +112,5 @@ graph TB
 ---
 
 > 🚀 从 [装配与启动](01-assembly-and-startup.md) 开始，了解整合的"骨架"
+
+← [返回: Spring 全家桶 · 03-spring-integration](README.md)

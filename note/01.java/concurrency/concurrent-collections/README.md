@@ -201,3 +201,5 @@ graph TD
 - [并发队列](queue/README.md) — ConcurrentLinkedQueue / BlockingQueue 体系
 - [跳表集合](skip-list/README.md) — ConcurrentSkipListMap / ConcurrentSkipListSet
 - [并发编程总目录](../../README.md)
+
+← [返回: Java 知识体系 · concurrent-collections](README.md)

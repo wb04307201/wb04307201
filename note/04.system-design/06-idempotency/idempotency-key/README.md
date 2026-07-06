@@ -319,3 +319,5 @@ Content-Type: application/json
 - [IETF Draft - The Idempotency-Key HTTP Header Field](https://datatracker.ietf.org/doc/draft-ietf-httpapi-idempotency-key-header/)
 - [Brandur Leach - Idempotency Keys](https://brandur.org/idempotency-keys)
 - [PayPal API - Idempotency](https://developer.paypal.com/api/rest/reference/idempotency/)
+
+← [返回: 系统设计 · idempotency-key](README.md)

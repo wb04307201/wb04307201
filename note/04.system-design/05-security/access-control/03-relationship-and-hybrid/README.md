@@ -52,3 +52,5 @@ DAC ──→ RBAC ──→ ABAC ──→ ReBAC
 - [传统族](../01-traditional/README.md) — 访问控制的两条根本路线
 - [选型总章](../README.md#3-选型决策树) — 何时该选 ReBAC / 混合
 - 05-security：[OAuth2.0 与 OIDC](../../oauth2-oidc/README.md) — OAuth2 资源共享即简化 ReBAC
+
+← [返回: 系统设计 · 03-relationship-and-hybrid](README.md)

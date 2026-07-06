@@ -41,3 +41,5 @@ graph TD
 - 父级：[L3 工程实践](../README.md) — 框架 / 计算平台 / 本地部署 / AI 平台
 - 关联：[11.ai/training Spring AI Agent 实战](../../training/README.md) — 16 课 Spring AI 实战课程
 - 关联：[06.spring](../../../06.spring/) — Spring 全家桶（Spring AI 的底层生态）
+
+← [返回: AI 知识体系 · frameworks](README.md)

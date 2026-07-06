@@ -215,3 +215,5 @@ int[] target = Arrays.copyOf(source, source.length);
 - 深度阅读：[`01.java/核心概念`](../../../01.java/concepts/README.md) — 反射、序列化、SPI
 - 相关：[`13.split-hairs/singleton-pattern`](../singleton-pattern/README.md) — 单例的 5 种实现
 - 相关：[`06.spring/01-core/Bean 生命周期`](../../../06.spring/01-core/ioc/bean-lifecycle.md) — Spring 如何管理 Bean 创建
+
+← [返回: 咬文嚼字 · create-object](README.md)

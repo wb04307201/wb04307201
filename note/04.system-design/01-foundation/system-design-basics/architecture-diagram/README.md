@@ -38,3 +38,5 @@ module:
 - 父级：[系统设计基础](../README.md) — 软件工程 / 设计模式 / 架构视图
 - 关联：[04.system-design 总览](../../../README.md) — 系统设计全景
 - 工具推荐：[Mermaid](https://mermaid.js.org/) — 用代码绘制架构图，版本友好
+
+← [返回: 系统设计 · architecture-diagram](README.md)

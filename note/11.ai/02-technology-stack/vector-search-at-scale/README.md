@@ -355,3 +355,5 @@ GPU 距离计算：512 维 × 1 亿向量 × 8 字节 = 0.5ms（100x）
 ---
 
 > 📅 2026-07-03 · 11.ai/02-technology-stack · ⭐⭐⭐⭐⭐
+
+← [返回: AI 知识体系 · vector-search-at-scale](README.md)

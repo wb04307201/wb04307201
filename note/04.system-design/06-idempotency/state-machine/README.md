@@ -310,3 +310,5 @@ if (order.getStatus() == OrderStatus.PAID) {
 - [Spring Statemachine](https://spring.io/projects/spring-statemachine)
 - [Workflow Patterns](http://www.workflowpatterns.com/)
 - [Coloring Book: Finite State Machines for Designers](https://github.com/isu-quartet/colloquium)
+
+← [返回: 系统设计 · state-machine](README.md)

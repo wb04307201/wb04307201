@@ -224,3 +224,5 @@ SET GLOBAL innodb_long_query_time = 5;
 ---
 
 > 📅 2026-06-28 · 咬文嚼字 · MySQL · ⭐⭐⭐⭐（高频面试 + 实战必会）
+
+← [返回: 咬文嚼字 · large-transaction](README.md)

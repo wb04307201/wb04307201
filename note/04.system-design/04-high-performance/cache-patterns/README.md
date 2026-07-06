@@ -645,3 +645,5 @@ redisTemplate.opsForValue().set(key, value, ttl);
 - [连接池优化](../connection-pool/README.md) — 缓存后端连接 (Redis Lettuce 池)
 - [Java 性能优化](../java/README.md) — 本地缓存 (Caffeine) 的 JVM 调优
 - [Spring Cache 注解与 Caffeine/Redis 集成示例](../../../06.spring/03-data/cache/README.md) — Spring Cache 抽象层与多种缓存实现的可插拔集成
+
+← [返回: 系统设计 · cache-patterns](README.md)

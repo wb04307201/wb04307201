@@ -371,3 +371,5 @@ public User getUserFallback(Long userId, BlockException e) {
 ## 相关章节
 
 - 深度阅读：[`03.database`](../../../03.database/README.md) — 主模块详细内容
+
+← [返回: 咬文嚼字 · cache-penetration-breakdown-avalanche](README.md)

@@ -188,3 +188,5 @@ Q4: 是否需要 BPMN 合规？
 - [Spring AI vs Dify 深度对比](../../04-architecture/spring-ai-vs-dify.md) — 7 维度决策 + 代码示例 + 混合架构
 - [07 工作流/微服务编排](../../../07.workflow/workflow-and-microservice-orchestration/README.md) — 流程引擎在分布式场景的演化
 - [09.front-end / 09 前端与 AI](../../../09.front-end/09-frontend-and-ai/README.md) — AI SDK / AI Native UI / Vibe Coding：AI 平台的前端落地形态
+
+← [返回: AI 知识体系 · ai-platforms](README.md)

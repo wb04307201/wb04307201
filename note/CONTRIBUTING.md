@@ -297,7 +297,7 @@ scope 规范：
 
 **每个子模块的细化规范由作者按对应 SPEC.md 手工落实**。
 
-## 10. frontmatter 规范（已全量落地 619 个 README）
+## 10. frontmatter 规范（已全量落地 638 个 README）
 
 为方便检索、交叉引用与未来工具生成，14 主模块 + 所有子 README 已统一使用 HTML 注释 frontmatter：
 
@@ -307,7 +307,7 @@ scope 规范：
 - **13.split-hairs**：`<!--question:id / topic / difficulty / frequency / scenario_type / tags-->`
 - **14.project-management**：`<!--pm:topic / audience / category / summary-->`
 
-> 📌 **2026-07-01 进展**：原缺失 frontmatter 的 45 个子 README（01.java/collection、01.java/concepts、01.java/version/function-history、06.spring、09.front-end、11.ai 等）已手工补全；当前 `note/` 下 **619 个 README 100% 具备 frontmatter**（0 缺失）。
+> 📌 **2026-07-01 进展**：原缺失 frontmatter 的 45 个子 README（01.java/collection、01.java/concepts、01.java/version/function-history、06.spring、09.front-end、11.ai 等）已手工补全；当前 `note/` 下 **638 个 README 100% 具备 frontmatter**（0 缺失）。
 
 ---
 

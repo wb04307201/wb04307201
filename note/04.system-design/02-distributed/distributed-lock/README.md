@@ -103,3 +103,5 @@ Long result = redisTemplate.execute(new DefaultRedisScript<>(script, Long.class)
 - [Redisson 官方文档](https://redisson.org/docs/)
 - [Redlock 算法原文（Antirez）](https://redis.io/docs/manual/patterns/distributed-locks/)
 - [Apache Curator（ZooKeeper 客户端）](https://curator.apache.org/)
+
+← [返回: 系统设计 · distributed-lock](README.md)

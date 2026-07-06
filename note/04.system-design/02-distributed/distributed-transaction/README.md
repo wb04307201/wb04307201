@@ -114,3 +114,5 @@ module:
 - [Seata 官方文档](https://seata.apache.org/zh-cn/docs/overview/what-is-seata)
 - [Saga 模式论文（Garcia-Molina & Salem, 1987）](https://www.cs.cornell.edu/andru/cs711/2002fa/reading/sagas.pdf)
 - [微服务数据一致性模式](https://microservices.io/patterns/data/transactional-outbox.html)
+
+← [返回: 系统设计 · distributed-transaction](README.md)

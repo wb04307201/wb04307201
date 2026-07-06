@@ -5,7 +5,7 @@
   "showAttachments": false,
   "hideUnresolved": false,
   "showOrphans": true,
-  "collapse-color-groups": true,
+  "collapse-color-groups": false,
   "colorGroups": [
     {
       "query": "path:01.java  ",
@@ -117,5 +117,5 @@
   "linkStrength": 1,
   "linkDistance": 250,
   "scale": 0.36288736930120974,
-  "close": false
+  "close": true
 }

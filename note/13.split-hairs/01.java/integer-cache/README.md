@@ -219,3 +219,5 @@ System.out.println(System.currentTimeMillis() - start);
 
 - 深度阅读：[`01.java/核心概念`](../../../01.java/concepts/README.md) — 基本类型、自动装箱/拆箱
 - 相关：[`13.split-hairs/new-string`](../new-string/README.md) — 字符串常量池（同类型考点）
+
+← [返回: 咬文嚼字 · integer-cache](README.md)

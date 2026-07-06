@@ -340,3 +340,5 @@ def get_weather(city: str, unit: str = "celsius"):
 - 关联：[Context Engineering](../context-engineering/README.md) — 工具定义是 Context 的重要组成
 - 关联：[Agent 架构](../../04-architecture/agent-architecture/README.md) — Function Calling 是 Agent 的核心机制
 - 关联：[RAG](../../07-llmops/01-rag-vs-finetuning/README.md) — RAG 本质是一个 retrieve 工具
+
+← [返回: AI 知识体系 · function-calling](README.md)

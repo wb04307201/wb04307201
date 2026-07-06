@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "b8d995990c2a13a8",
+        "id": "bf0f2af65445c505",
         "type": "tabs",
         "children": [
           {
-            "id": "733464fb4b1288a4",
+            "id": "ad2185ef31b347a0",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -74,8 +74,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "007ad037c1f9d83f",
@@ -146,7 +145,7 @@
             }
           },
           {
-            "id": "0826a28be7054ef9",
+            "id": "edcbe9ac0ca59e15",
             "type": "leaf",
             "state": {
               "type": "outline",
@@ -159,7 +158,8 @@
               "title": "大纲"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -177,8 +177,31 @@
       "bases:新建数据库": false
     }
   },
-  "active": "733464fb4b1288a4",
+  "active": "ad2185ef31b347a0",
   "lastOpenFiles": [
+    "README.md.tmp.44180.6fc6dc4bc119",
+    "README.md.tmp.44180.c9323726796d",
+    "13.split-hairs/README.md.tmp.44180.edcf582d1a58",
+    "CONTRIBUTING.md.tmp.44180.8f5427447241",
+    "11.ai/03-engineering/README.md.tmp.59156.ca9a9d9f3bb5",
+    "13.split-hairs/06.spring/README.md.tmp.59156.3156996d0864",
+    "13.split-hairs/06.spring/README.md.tmp.59156.49aad03b3bc9",
+    "13.split-hairs/01.java/README.md.tmp.59156.c7698e98b320",
+    "13.split-hairs/11.ai/README.md.tmp.59156.ef74401a782d",
+    "13.split-hairs/06.spring/cache-degradation/README.md",
+    "13.split-hairs/06.spring/cache-degradation/README.md.tmp.59156.f847e748ae3d",
+    "13.split-hairs/06.spring/cache-degradation",
+    "06.spring/03-data/cache/cache-degradation-and-recovery.md",
+    "13.split-hairs/04.system-design/high-performance/seckill-without-redis/README.md",
+    "04.system-design/03-high-availability/rate-limiting/seckill-without-redis.md",
+    "13.split-hairs/01.java/thread-sequential-execution/README.md",
+    "01.java/concurrency/thread-basics/sequential-execution.md",
+    "11.ai/01-fundamentals/dropout-in-llm/single-epoch-and-config-evidence.md",
+    "13.split-hairs/11.ai/skill-design/README.md",
+    "11.ai/03-engineering/claude-code-practices/skill-design.md",
+    "12.story/47-skill-scheduling-restaurant.md",
+    "13.split-hairs/11.ai/skill-hit-rate/README.md",
+    "11.ai/03-engineering/claude-code-practices/skill-hit-rate.md",
     "11.ai/05-applications/case-studies/README.md",
     "未命名.canvas",
     "README.md",

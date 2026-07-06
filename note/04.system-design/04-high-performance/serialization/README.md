@@ -369,3 +369,5 @@ kryo.register(Order.class);
 - [缓存设计模式](../cache-patterns/README.md) — Redis 缓存值的序列化方案
 - [连接池优化](../connection-pool/README.md) — 减少序列化次数依赖连接复用
 - [Java 性能优化](../java/README.md) — JVM 层面的序列化对象复用
+
+← [返回: 系统设计 · serialization](README.md)

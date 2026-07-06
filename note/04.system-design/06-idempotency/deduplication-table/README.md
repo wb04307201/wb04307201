@@ -385,3 +385,5 @@ public void onMessage(...) {
 - [RabbitMQ - Reliable Delivery](https://www.rabbitmq.com/docs/confirms)
 - [Bloom Filter 原理与实现](https://llimllib.github.io/bloomfilter-tutorial/)
 - [AWS SQS - Message Deduplication](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-deduplication-id.html)
+
+← [返回: 系统设计 · deduplication-table](README.md)

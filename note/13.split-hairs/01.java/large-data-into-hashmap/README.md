@@ -186,3 +186,5 @@ dataList.parallelStream()
 
 - 深度阅读：[`01.java/集合框架`](../../../01.java/collection/README.md) — HashMap 底层源码
 - 相关：[`13.split-hairs/hashmap-resizing`](../hashmap-resizing/README.md) — HashMap 扩容 · [`13.split-hairs/arrayList-distinct`](../arrayList-distinct/README.md) — 集合去重
+
+← [返回: 咬文嚼字 · large-data-into-hashmap](README.md)

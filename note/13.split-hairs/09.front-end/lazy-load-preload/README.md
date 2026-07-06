@@ -252,3 +252,5 @@ const About = React.lazy(() => import('./pages/About'));
 ---
 
 > 📅 2026-06-28 · 咬文嚼字 · 浏览器机制 · ⭐⭐⭐⭐（高频面试 + 实战必会）
+
+← [返回: 咬文嚼字 · lazy-load-preload](README.md)

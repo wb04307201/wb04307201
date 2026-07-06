@@ -23,3 +23,5 @@ question:
 
 - 返回：[`高性能`](../README.md) → [`04.system-design 总览`](../../README.md)
 - 主模块：[`04.system-design/04-high-performance/mq`](../../../../04.system-design/04-high-performance/mq/README.md) — 消息队列架构全景
+
+← [返回: 咬文嚼字 · mq](README.md)

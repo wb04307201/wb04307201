@@ -567,3 +567,5 @@ spec:
 
 - [部署与发布策略](../deploy/README.md) — 蓝绿/金丝雀等发布策略对容量估算的影响
 - [负载均衡](../../04-high-performance/load-balance/README.md) — 流量切分与负载分配对容量的影响
+
+← [返回: 系统设计 · capacity-planning](README.md)

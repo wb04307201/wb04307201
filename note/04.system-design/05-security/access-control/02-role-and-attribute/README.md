@@ -59,3 +59,5 @@ DAC ──→ RBAC ──→ ABAC ──→ ReBAC
 - [选型总章](../README.md#3-选型决策树) — 何时该选 RBAC/ABAC
 - 05-security：[OAuth2.0 与 OIDC](../../oauth2-oidc/README.md) — OAuth2 scope 是简化版 RBAC
 - 05-security：[JWT 存储安全](../../jwt-security/README.md) — Token 中的 role / claim
+
+← [返回: 系统设计 · 02-role-and-attribute](README.md)

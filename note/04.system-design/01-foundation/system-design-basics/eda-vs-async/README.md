@@ -89,3 +89,5 @@ module:
 - [演进与组织](../microservices/migration-and-organization/README.md) — 事件驱动在微服务演进中的应用
 - [云设计模式](../cloud-design-patterns/README.md) — 异步消息、CQRS、事件溯源等云模式
 - [微服务架构](../microservices/README.md) — 服务间异步通信的工程实践
+
+← [返回: 系统设计 · eda-vs-async](README.md)

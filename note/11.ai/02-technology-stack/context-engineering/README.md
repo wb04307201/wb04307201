@@ -188,3 +188,5 @@ context = get_relevant_files(query)  # 5K tokens
 - 工具调用：[Function Calling](../function-calling/README.md) — 工具定义是 Context 的一部分
 - 检索增强：[RAG](../../07-llmops/01-rag-vs-finetuning/README.md) — 用 RAG 注入检索结果到 Context
 - Memory 维度：[Agent Memory 架构（Memory 是 Context 三大件之一）](../../04-architecture/agent-memory/README.md)
+
+← [返回: AI 知识体系 · context-engineering](README.md)

@@ -31,3 +31,5 @@ module:
 - 父级：[L5 行业应用](../README.md) — 汽车 / 具身智能
 - 关联：[13.split-hairs Transformer 核心](../../../13.split-hairs/11.ai/transformer/README.md) — 智能座舱背后的注意力机制
 - 关联：[12.story #5 具身智能](../../../12.story/39-vector-database-and-embedding.md) — 向量库与嵌入
+
+← [返回: AI 知识体系 · automotive](README.md)

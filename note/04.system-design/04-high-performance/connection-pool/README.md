@@ -311,3 +311,5 @@ spring:
 - [缓存设计模式](../cache-patterns/README.md) — Redis 连接池与缓存策略的搭配
 - [SQL 优化](../database-optimization/sql/README.md) — 减少慢查询以降低连接池压力
 - [Java 性能优化](../java/README.md) — 连接泄漏检测与 JVM 调优
+
+← [返回: 系统设计 · connection-pool](README.md)

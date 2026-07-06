@@ -169,3 +169,5 @@ public class PaymentService {
 - [重试](../retry/README.md) — 重试耗尽后降级返回兜底
 - [超时](../timeout/README.md) — 超时后可选择降级而非立即失败
 - [混沌工程](../chaos-engineering/README.md) — 通过注入故障验证降级预案有效性
+
+← [返回: 系统设计 · service-degradation](README.md)

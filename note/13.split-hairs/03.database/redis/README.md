@@ -41,3 +41,5 @@ graph TB
 - 深度阅读：[`03.database/07-redis`](../../../03.database/07-redis/README.md) — Redis 主模块详细内容
 - 关联：[`03.database/06-cache`](../../../03.database/06-cache/README.md) — 缓存设计原理
 - 关联：[`04.system-design/04-high-performance`](../../../04.system-design/04-high-performance/README.md) — 高性能缓存架构
+
+← [返回: 咬文嚼字 · redis](README.md)

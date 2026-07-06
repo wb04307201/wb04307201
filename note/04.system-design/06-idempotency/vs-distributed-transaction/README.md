@@ -257,3 +257,5 @@ public OrderResult createOrder(@RequestBody @Valid OrderRequest req,
 - [Seata - TCC 模式](https://seata.io/zh-cn/docs/dev/mode/tcc.html)
 - [Microsoft - Idempotency patterns](https://learn.microsoft.com/azure/architecture/microservices/design/idempotency)
 - [BASE: An Acid Alternative](https://queue.acm.org/detail.cfm?id=1394128)
+
+← [返回: 系统设计 · vs-distributed-transaction](README.md)

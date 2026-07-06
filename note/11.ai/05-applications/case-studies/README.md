@@ -96,3 +96,5 @@ graph TB
 
 - 上游：[L4 架构设计](../../04-architecture/) — 系统分层与 AI Agent
 - 同级：[automotive](../automotive/)、[embodied-ai](../embodied-ai/)、[ai-written-prd](../ai-written-prd/)、[shopify-ai-agent](../shopify-ai-agent/)
+
+← [返回: AI 知识体系 · case-studies](README.md)

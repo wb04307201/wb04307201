@@ -119,3 +119,5 @@ OOD 是**战术层面的基础技能**——它教会我们如何写出高内聚
 - [设计模式](../design-patterns/README.md) — GoF 23 种经典模式
 - [架构认知的演进](../architecture-evolution/README.md) — OOD → DDD → TOGAF
 - [领域驱动设计 DDD](../ddd/README.md) — 以业务领域为核心的建模方法
+
+← [返回: 系统设计 · ood](README.md)

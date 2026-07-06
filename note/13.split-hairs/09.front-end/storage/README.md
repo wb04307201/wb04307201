@@ -191,3 +191,5 @@ try {
 
 - 深度阅读：[`09.front-end/01-foundation`](../../../09.front-end/01-foundation/README.md) — 浏览器原理、Web 标准
 - 相关：[`13.split-hairs/event-loop`](../event-loop/README.md) · [`13.split-hairs/closure`](../closure/README.md) — JS 核心机制
+
+← [返回: 咬文嚼字 · storage](README.md)

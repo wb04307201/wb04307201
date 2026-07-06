@@ -421,3 +421,5 @@ package "组合分表示例：用户系统" {
 - [冷热数据分离](../cold-hot-data-separation/README.md) — 历史数据归档存储
 - [SQL 优化](../sql/README.md) — 分库分表前的首要优化手段
 - [数据库优化概览](../README.md)
+
+← [返回: 系统设计 · db-sharding](README.md)

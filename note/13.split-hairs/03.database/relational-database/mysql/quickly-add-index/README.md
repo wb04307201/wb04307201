@@ -205,3 +205,5 @@ RENAME TABLE large_table TO large_table_old,
 
 - 深度阅读：[`03.database/04-index`](../../../../../03.database/04-index/README.md) — B+ 树、索引原理
 - 相关：[`13.split-hairs/mysql/index-failure`](../../../mysql/index-failure/README.md) — 索引失效 10 种场景
+
+← [返回: 咬文嚼字 · quickly-add-index](README.md)

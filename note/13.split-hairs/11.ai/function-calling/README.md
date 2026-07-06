@@ -123,3 +123,5 @@ LLM    →  宿主（选第一家："调用 create_order"）
 ---
 
 > 📅 2026-06-30 · 咬文嚼字 · Agent 核心机制 · ⭐⭐⭐⭐⭐
+
+← [返回: 咬文嚼字 · function-calling](README.md)

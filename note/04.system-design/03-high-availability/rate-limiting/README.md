@@ -162,3 +162,5 @@ graph TD
 - [重试](../retry/README.md) — 限流被拒绝的请求不应进入重试队列
 - [超时](../timeout/README.md) — 限流后端服务的超时需要分级设置
 - [服务降级](../service-degradation/README.md) — 限流触发的兜底响应可走降级逻辑
+
+← [返回: 系统设计 · rate-limiting](README.md)

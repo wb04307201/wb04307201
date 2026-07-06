@@ -227,3 +227,5 @@ module:
 - [重试](../retry/README.md) — 重试间隔必须 ≥ 单次超时，避免快速无效重试
 - [限流](../rate-limiting/README.md) — 超时堆积说明需要限流配合
 - [服务降级](../service-degradation/README.md) — 超时后降级返回兜底数据
+
+← [返回: 系统设计 · timeout](README.md)

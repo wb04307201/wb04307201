@@ -87,3 +87,5 @@ graph TB
 ---
 
 > 建议路径：先看对比表建立选型认知 → 新项目直接看 Nacos 集成 → 遗留项目按需阅读 Eureka/Consul
+
+← [返回: Spring 全家桶 · service-registry](README.md)

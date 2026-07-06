@@ -225,3 +225,5 @@ conn.commit();   // 大事务
 ---
 
 > 📅 2026-06-28 · 咬文嚼字 · MySQL · ⭐⭐⭐⭐（高频面试 + 实战必会）
+
+← [返回: 咬文嚼字 · batch-operation](README.md)

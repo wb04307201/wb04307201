@@ -185,3 +185,5 @@ AI Agent 入职流程：
 - 上一步：[Context Engineering](../../02-technology-stack/context-engineering/README.md) — Harness 约束 Context 的使用方式
 - 关联：[Agent 架构](../../04-architecture/agent-architecture/README.md) — Harness 是 Agent 架构的关键约束层
 - 实战：[Claude Code 实践](../claude-code-practices/README.md) — OpenSpec + Claude Code 的典型 Harness 实现
+
+← [返回: AI 知识体系 · harness-engineering](README.md)

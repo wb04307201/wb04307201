@@ -264,3 +264,5 @@ public boolean trySeckill(Long userId, Long productId) {
 ---
 
 > 📅 2026-07-06 · 咬文嚼字 · 04.system-design · ⭐⭐⭐⭐
+
+← [返回: 咬文嚼字 · seckill-without-redis](README.md)

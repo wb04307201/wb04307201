@@ -496,3 +496,5 @@ ID Token 是一个签名的 JWT，包含用户身份信息：
 - [RFC 8252 - OAuth 2.0 for Native Apps](https://tools.ietf.org/html/rfc8252)
 - [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html)
 - [OAuth 2.1 Draft](https://oauth.net/2.1/)
+
+← [返回: 系统设计 · oauth2-oidc](README.md)

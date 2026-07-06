@@ -160,3 +160,5 @@ List<Integer> deduplicated = list.parallelStream()
 
 - 深度阅读：[`01.java/集合框架`](../../../01.java/collection/README.md) — ArrayList、LinkedList、HashMap 源码
 - 相关：[`13.split-hairs/hashmap-resizing`](../hashmap-resizing/README.md) · [`13.split-hairs/large-data-into-hashmap`](../large-data-into-hashmap/README.md) — HashMap 系列
+
+← [返回: 咬文嚼字 · arrayList-distinct](README.md)

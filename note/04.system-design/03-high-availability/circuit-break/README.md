@@ -99,3 +99,5 @@ CircuitBreakerConfig config = CircuitBreakerConfig.custom()
 - [重试](../retry/README.md) — 熔断 Open 状态期间应直接失败，避免无效重试风暴
 - [超时](../timeout/README.md) — 每次调用的单次超时是熔断器统计错误率的样本
 - [服务降级](../service-degradation/README.md) — 熔断后通过降级返回兜底数据，保证核心链路可用
+
+← [返回: 系统设计 · circuit-break](README.md)

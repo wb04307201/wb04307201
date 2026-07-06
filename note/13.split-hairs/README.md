@@ -27,15 +27,15 @@ module:
 
 | 编号 | 对齐主模块 | 主题方向 | 篇数 | 子入口 |
 |------|-----------|---------|------|-------|
-| 01 | [`01.java`](../01.java/) | Java 基础陷阱 | 34 | [01.java/](01.java/) |
-| 03 | [`03.database`](../03.database/) | 数据库细节 | 22 | [03.database/](03.database/) |
-| 04 | [`04.system-design`](../04.system-design/) | 系统设计难点 | 10 | [04.system-design/](04.system-design/) |
-| 06 | [`06.spring`](../06.spring/) | Spring 面试高频 | 13 | [06.spring/](06.spring/) |
+| 01 | [`01.java`](../01.java/) | Java 基础陷阱 | 35 | [01.java/](01.java/) |
+| 03 | [`03.database`](../03.database/) | 数据库细节 | 29 | [03.database/](03.database/) |
+| 04 | [`04.system-design`](../04.system-design/) | 系统设计难点 | 14 | [04.system-design/](04.system-design/) |
+| 06 | [`06.spring`](../06.spring/) | Spring 面试高频 | 14 | [06.spring/](06.spring/) |
 | 09 | [`09.front-end`](../09.front-end/) | 前端细节 | 25 | [09.front-end/](09.front-end/) |
-| 11 | [`11.ai`](../11.ai/) | AI 面试深挖 | 14 | [11.ai/](11.ai/) |
+| 11 | [`11.ai`](../11.ai/) | AI 面试深挖 | 22 | [11.ai/](11.ai/) |
 | ✦ | [`14.project-management`](../14.project-management/) | **外链**（决策实战，已迁出） | — | [14.project-management/](../14.project-management/) |
 
-**总计：118 篇面试题**（仅"一题一文"题；03.database 另有 7 个二级目录索引页、04.system-design 另有 3 个二级目录索引页）
+**总计：139 篇面试题**（仅"一题一文"题；03.database 另有 7 个二级目录索引页、04.system-design 另有 3 个二级目录索引页）
 
 > 各分类的具体子主题（如 Java 集合 / 并发 / JVM；数据库 SQL 优化 / Redis / MVCC；系统设计 MQ / 缓存 / 分布式等）见子目录 README。
 
@@ -57,10 +57,10 @@ module:
 
 | 目标 | 推荐路径 |
 |------|---------|
-| **Java 后端** | [01.java](01.java/) 34 篇 → [06.spring](06.spring/) 13 篇 → [03.database](03.database/) 22 篇 |
-| **系统设计 / 后端架构** | [04.system-design](04.system-design/) 10 篇 → [03.database](03.database/) 22 篇 |
+| **Java 后端** | [01.java](01.java/) 35 篇 → [06.spring](06.spring/) 14 篇 → [03.database](03.database/) 29 篇 |
+| **系统设计 / 后端架构** | [04.system-design](04.system-design/) 14 篇 → [03.database](03.database/) 29 篇 |
 | **前端** | [09.front-end](09.front-end/) 25 篇（含网络 / CSS / 框架 / 安全 / 工程化） |
-| **AI 方向** | [11.ai](11.ai/) 14 篇 = 5 篇纯面试题 + 9 篇主模块精炼版 |
+| **AI 方向** | [11.ai](11.ai/) 22 篇 = 13 篇主模块精炼版 + 9 篇新增专题题（含 dropout / harness / 上下文工程） |
 
 ### 3.2 按难度刷（按面试倒计时）
 
