@@ -261,16 +261,16 @@ grep -rl "\.png" note/ | wc -l  # 引用 PNG 的文件数
 3. 04.system-design/05-security 重复目录合并（2 小时，🧠）
 
 ### 第二批（P1 机械，2 周）
-4. 455 个 README 补回链（半天，🤖 脚本）
-5. 76 个孤儿 PNG 清理（1 小时，🤖）
+1. 455 个 README 补回链（半天，🤖 脚本）
+2. 76 个孤儿 PNG 清理（1 小时，🤖）
 
 ### 第三批（P1/P2 判断，按需）
-6. 11.ai vs 13.split-hairs 同名目录加前缀（2 小时，🧠）
-7. 13.split-hairs/03.database/ 内部结构重整（半天，🧠）
+1. 11.ai vs 13.split-hairs 同名目录加前缀（2 小时，🧠）
+2. 13.split-hairs/03.database/ 内部结构重整（半天，🧠）
 
 ### 第四批（P3 自优化）
-8. CONTRIBUTING 顶部 TOC（1 小时，🤖）
-9. SPEC 互链（30 分钟，🤖）
+1. CONTRIBUTING 顶部 TOC（1 小时，🤖）
+2. SPEC 互链（30 分钟，🤖）
 
 ## 风险评估
 
