@@ -367,4 +367,11 @@ public User getUserFromRedis(Long id) { ... }
 
 ---
 
+## 🆕 深度扩展：Redis-DB 一致性（Java 后端视角）
+
+完整的 4 策略 + 3 场景 + A/B/C 方案（延迟双删 / Binlog 监听）+ 30 秒话术面试题，已沉淀到：
+
+- **面试题（通用策略）**：[13.split-hairs/04.system-design/high-performance/cache-consistency](../../13.split-hairs/04.system-design/high-performance/cache-consistency/README.md) —— 244 行深度，Java 后端必问。
+- **主模块深度（Java 后端视角）**：[04.system-design/04-high-performance/cache-patterns/#java 后端实战章节](../../04.system-design/04-high-performance/cache-patterns/README.md) —— 253 行，5 大 Spring 注解陷阱 + 多级缓存 + 反模式深度。
+
 ← [返回 03.database 主模块](../README.md)
