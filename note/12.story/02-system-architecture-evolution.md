@@ -823,6 +823,50 @@ graph TD
 - [04-peak-traffic-defense.md](./04-peak-traffic-defense.md) —— 正传 1，架构演进的高可用目标在流量治理中的具体落地：限流、熔断、降级是架构成熟度的试金石
 - [05-observability.md](./05-observability.md) —— 正传 2，架构演进的每一步都需要可观测性验证：拆分是否生效、瓶颈是否转移
 - [06-security-architecture.md](./06-security-architecture.md) —— 正传 3，架构演进必须同步考虑安全：边界扩张的代价是攻击面扩大
+- 🆕 **[02-1 阿明的"AI 架构选型"：从 ReAct 到混合 Agent 模式]** —— 见下文
+
+---
+
+## 阿明的"AI 架构选型"：从 ReAct 到混合 Agent 模式
+
+接上一篇的"前菜 / 云原生"演进，阿明遇到第四个坎——**AI Agent 执行模式选型**。
+
+当连锁升级到 80 家、AI 客服接通后，阿明的工程团队开始尝试更复杂的 AI 任务：**智能投资助手**——用户问"分析一下腾讯股票"，系统要调用 5 个数据源 + 1 个计算 + 1 个总结 + 1 个风险提示，至少 8 步强依赖的链式调用。
+
+CTO 会上，产品同事小王提了第一个问题：「为什么不用 ReAct？ReAct 更灵活，能处理探索性场景。」
+
+但阿明快速判断了 4 种模式，给出反向答案：
+
+**ReAct**（Reasoning + Acting）—— Thought→Action→Observation 三元组循环。最灵活但 Token 失控、路径不可复现、Context 越长越混乱。80 家分店跑下来，**ReAct 跑了 8500 tokens，P95 延迟 12 秒，比 Plan-and-Execute 慢 2 倍**。
+
+**Plan-and-Execute** —— 一次性生成 Plan，逐步执行，失败 RePlan。投资助手这种 5-20 步强依赖任务最合适。**Plan Repair 3 大机制**（Plan Repair / Adaptive / RePlan）从细到粗递进：失败 ≤ 2 用 Repair；3-5 用 Adaptive；> 5 触发 RePlan + 人工。
+
+**DAG** —— 节点 + 边的确定性图。Token 2800 tokens / 99% 完成率，是工业最优。但灵活差，探索场景卡死。
+
+**Multi-Agent** —— 多角色协作。理论强大，但通信开销 + 调试复杂 + Token 12000 tokens，**80% 场景单 Agent 足够**。
+
+阿明的最终选择：**80% DAG 主流程 + Plan-and-Execute 处理复杂子任务 + ReAct 处理未知异常 + Plan Repair 修复失败**（4 模式混合架构）。
+
+3 个月后实测：
+
+- **Token 成本**：8500（DAG+Repair 混合）vs 12000（纯 ReAct）→ 降 29%
+- **P95 延迟**：8s（DAG+Repair）vs 18s（纯 Multi-Agent）→ 降 56%
+- **完成率**：96%（Plan Repair 修复）vs 78%（纯 ReAct）→ 升 18 个百分点
+- **审计**：100%（DAG 节点路径可追溯）vs 60%（ReAct 随机路径）→ 升 40 个百分点
+
+阿明在 CTO 会上画了一张图，告诉小王：
+
+> "**4 模式没有'最强'，只有'最契合'**——ReAct 用于'探索'（路径未知），Plan-and-Execute 用于'复杂多步 + 强依赖'，DAG 用于'确定性'，Multi-Agent 用于'复杂协作'。生产环境 80% 是 DAG + Plan Repair + 局部 ReAct 子节点的混合架构。"
+
+**关键教训**：
+- 不要"挑一个最强"，要"挑场景最契合的"
+- 业务流 ≠ 探索流：DAG vs ReAct 是首要判断
+- Token 失控不是 ReAct 必然后果，是 max_iterations 缺失的后果
+- Multi-Agent 不是越多越强，80% 场景单 Agent 足够
+
+**这是 80 家分店的标准答案** —— 你不需要"全 ReAct"的银弹，你需要"按场景选择" + "混合架构"的工程能力。
+
+> 🆕 **4 模式深度解析**：ReAct Thought/Action/Observation + Plan-and-Execute 3 大重规划 + 4 模式 6 维量化对比 + 5 分钟决策树 → 详见 [Agent 4 大执行模式深度专题](../11.ai/04-architecture/agent-execution-patterns/README.md)（含 5 文件 1107 行）。面试精选 7 道 Q&A 见 [13.split-hairs/11.ai/react-vs-plan-execute](../13.split-hairs/11.ai/react-vs-plan-execute/README.md)。
 
 ---
 
