@@ -255,3 +255,9 @@ ESB（企业服务总线）作为服务间通信的"中介"
 ---
 
 ← [返回系统设计总览](../../README.md) · 📅 2026-06-28
+
+---
+
+## 深度扩展
+
+🆕 **微服务 vs 单体核心优势对比**：[system-design-basics/microservices/ 专题](../system-design-basics/microservices/README.md) —— 6 大核心优势（独立部署 / 独立伸缩 / 技术异构 / 故障隔离 / 团队自治 / 可演进）+ 6 大反模式 + Java Spring Cloud 7 维对比 + 何时该拆 7 维决策。面试精选 7 道 Q&A 见 [13.split-hairs/04.system-design/microservices-vs-monolith](../../../13.split-hairs/04.system-design/microservices-vs-monolith/README.md)。
