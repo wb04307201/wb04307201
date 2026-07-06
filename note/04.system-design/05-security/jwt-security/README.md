@@ -312,6 +312,8 @@ public boolean isRevoked(String jti) {
 - [API 安全](../api-security/README.md) — Token 传输、签名验证、防重放
 - [权限模型 RBAC / ABAC](../access-control/02-role-and-attribute/README.md) — Token 中的角色 / 权限声明如何消费
 - [Spring Cloud Gateway JWT 鉴权实现](../../../06.spring/05-spring-cloud/gateway.md) — 网关层 JWT 校验 Filter 的 Java 实现示例
+- 🆕 [SSO 单点登录专题](../sso/README.md) —— SSO 6 大方案（Cookie/CAS/OAuth2+OIDC/SAML/JWT/代理）选型 + JWT 自签实战 1520 行
+- 🆕 [SSO 面试题 7 道](../../../13.split-hairs/05.security/sso/README.md) —— Spring Security + JWT + Refresh Token Rotate 实战话术
 
 ---
 

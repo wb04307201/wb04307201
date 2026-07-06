@@ -497,4 +497,13 @@ ID Token 是一个签名的 JWT，包含用户身份信息：
 - [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html)
 - [OAuth 2.1 Draft](https://oauth.net/2.1/)
 
+---
+
+## 🆕 深度扩展：单点登录（SSO）6 大方案专题
+
+本章节重点讲 OAuth2/OIDC 协议本身，**SSO 作为设计目标**的 6 大实现方案对比（含 CAS / Cookie / OAuth2+OIDC / SAML 2.0 / JWT / 代理）已沉淀到独立专题：
+
+- **SSO 主模块深度**：[../sso/README.md](../sso/README.md) —— 6 文件 / 1520 行深度（含 Spring Security 实战 + JWT 自签 + 选型决策树）
+- **面试题（5.security 新增）**：[13.split-hairs/05.security/sso](../../../13.split-hairs/05.security/sso/README.md) —— 7 道精选 Q&A + 90 秒话术 + 5 反模式
+
 ← [返回: 系统设计 · oauth2-oidc](README.md)

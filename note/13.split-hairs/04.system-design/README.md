@@ -91,10 +91,11 @@ question:
 ## 相关章节
 
 - 主模块：[`note/04.system-design`](../../04.system-design/) — 系统设计知识体系
-- 相关章节：[`03.database`](../03.database/)（数据库细节）/ [`06.spring`](../06.spring/)（框架实现）
+- 相关章节：[`03.database`](../03.database/)（数据库细节）/ [`06.spring`](../06.spring/)（框架实现）/ 🆕 [`05.security`](../../05.security/)（SSO 单点登录）
 - 待补充主题的深度阅读：
   - 缓存穿透/击穿/雪崩 → [`03.database/06-cache`](../../03.database/06-cache/README.md)
   - 分库分表 → [`03.database`](../../03.database/README.md) 数据迁移与同步
   - 异步化方案 → [`01.java/concurrency`](../../01.java/concurrency/README.md) CompletableFuture
+  - 🆕 单点登录 SSO → [`05.security/sso`](../../05.security/sso/README.md)（7 道精选 Q&A）
 
 ← [返回咬文嚼字（高频面试题）](../README.md)
