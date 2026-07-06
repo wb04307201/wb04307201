@@ -646,4 +646,264 @@ redisTemplate.opsForValue().set(key, value, ttl);
 - [Java 性能优化](../java/README.md) — 本地缓存 (Caffeine) 的 JVM 调优
 - [Spring Cache 注解与 Caffeine/Redis 集成示例](../../../06.spring/03-data/cache/README.md) — Spring Cache 抽象层与多种缓存实现的可插拔集成
 
+---
+
+## 🆕 Java 后端实战：Redis 跟 DB 一致性如何保证？（章节级深度）
+
+> 这一节是 04.system-design 主模块对"**Redis-DB 一致性**"的 Java 后端特定角度扩展。通用策略见 [13.split-hairs/04.system-design/high-performance/cache-consistency](../../../13.split-hairs/04.system-design/high-performance/cache-consistency/README.md)（244 行面试题已有深度），下面聚焦 **Java/Spring 视角 + 多级缓存 + 反模式深度**。
+
+### 9.1 Spring 注解 vs RedisTemplate 手写——隐藏的 5 大陷阱
+
+#### 陷阱 1：@Cacheable 看似原子，实则两步
+
+```java
+@Cacheable(value = "user", key = "#userId")
+public User getUser(Long userId) {
+    return userMapper.findById(userId);  // DB 读
+}
+```
+
+**真相**：Spring Cache 抽象是两步：
+1. 查 Redis → 命中返回
+2. 未命中 → 调原方法 → 返回结果 → **异步回写 Redis**（不同版本实现不同）
+
+**反直觉**：
+- `@Cacheable` 的"读穿透"在 spring-cache-redis 1.x 是**同步回写**（阻塞），2.x 是**异步回写**（不阻塞）
+- 多线程并发同一 key 时，**可能出现回写覆盖**——一个线程写 A 值，另一个线程写 B 值，B 最后写入 Redis，但 A 是更新的数据
+
+#### 陷阱 2：@CachePut + @CacheEvict 组合失效
+
+```java
+// 期望：更新 DB + 删除缓存
+@Transactional
+@CachePut(value = "user", key = "#user.id")
+@CacheEvict(value = "user", key = "#user.id")  // 想删缓存
+public User updateUser(User user) {
+    return userMapper.update(user);
+}
+```
+
+**真相**：
+- `@CachePut` 把方法返回值写回 Redis（覆盖）
+- `@CacheEvict` 删除 Redis key
+- **执行顺序不固定**：有时候 CachePut 先执行（写新值），有时候 CacheEvict 先执行（删除）
+- 如果 CacheEvict 先执行，**后面 CachePut 又写回去了**——结果**没删除**！
+
+**正解**：二选一，不要同时用：
+```java
+@Transactional
+@CacheEvict(value = "user", key = "#user.id")  // 删缓存，不写新值
+public User updateUser(User user) {
+    return userMapper.update(user);
+}
+```
+
+#### 陷阱 3：事务回滚 vs 缓存删除的顺序问题
+
+```java
+@Transactional
+public void updateUserWithCache(Long userId, User user) {
+    userMapper.update(user);        // 1. 更新 DB
+    redisTemplate.delete("user:" + userId);  // 2. 删缓存
+    // 假设此时抛异常或事务回滚？
+}
+```
+
+**问题**：事务回滚发生在 step 1，但 step 2 缓存已删——下次查询会从 DB（旧值）回写缓存。
+
+**后果**：缓存里是**回滚前的值**（已被 step 2 删除，没机会回写），实际是**直接 DB 旧值 + 无缓存**——**这次没问题，但下次读又重新缓存**（DB 旧值持续）。
+
+**正解**：用 Spring 的 `TransactionSynchronization`：
+```java
+TransactionSynchronizationManager.registerSynchronization(
+    new TransactionSynchronization() {
+        @Override
+        public void afterCommit() {
+            redisTemplate.delete(key);  // 仅事务提交后才删缓存
+        }
+    }
+);
+```
+
+#### 陷阱 4：RedisTemplate 默认序列化（Java 序列化）
+
+**真相**：
+- Spring Data Redis 的 `RedisTemplate<Object, Object>` 默认用 **JdkSerializationRedisSerializer**（Java 二进制序列化）
+- 存进去的 key/value 是 `\xAC\xED\x00\x05t...` 这种二进制，**人类不可读**
+- 跨语言（Python 读 Java 写的 Redis）完全不可用
+
+**正解**：用 StringRedisSerializer + JSON：
+```java
+template.setKeySerializer(new StringRedisSerializer());
+template.setValueSerializer(new GenericJackson2JsonRedisSerializer<>());
+```
+
+#### 陷阱 5：Redis Cluster 下 MGET / Pipeline 跨槽失效
+
+**问题**：
+- Redis Cluster 按 key 哈希分配 slot，多 key 操作（MGET / MSET / Pipeline）必须**同 slot**
+- Spring 的 `@Cacheable` 用 `#userId` 作为 key，如果业务需要批量获取，会跨 slot → **报错**
+
+**正解**：`HashTag` 强制同 slot：
+```java
+@Cacheable(value = "user", key = "{user:#userId}")  // 大括号 hash tag
+```
+
+### 9.2 多级缓存一致性（L1 JVM + L2 Redis + L3 DB）
+
+```
+┌──────────────────────────────────────────┐
+│ L1: Caffeine (JVM 本地缓存，< 1ms)        │
+│     ↓ 命中返 / 未命中降级到 L2              │
+├──────────────────────────────────────────┤
+│ L2: Redis (分布式缓存，< 10ms)            │
+│     ↓ 命中返 / 未命中降级到 L3              │
+├──────────────────────────────────────────┤
+│ L3: MySQL (数据库，< 100ms)               │
+└──────────────────────────────────────────┘
+```
+
+#### L1 Caffeine 的一致性难题
+
+**问题 1**：JVM 本地缓存（每实例独立），更新 DB 后无法通知所有 JVM 实例。
+
+**问题 2**：每实例缓存不一致——实例 A 是新值、实例 B 是旧值。
+
+#### 4 大解决方案对比
+
+| 方案 | 实现 | 一致性 | 复杂度 | 适用 |
+|------|------|--------|--------|------|
+| **TTL 短 + 接受不一致** | TTL=1s | 弱 | 低 | 读多写少 |
+| **MQ 广播失效** | 更新 DB 后发 MQ，所有实例订阅失效 | 中 | 中 | 集群小（< 100 实例）|
+| **Redis Pub/Sub 失效** | 用 Redis Pub/Sub 广播失效 | 中 | 中 | 中型集群 |
+| **Zookeeper Watcher** | ZK 节点变更触发所有实例失效 | 强 | 高 | 金融场景 |
+
+**最常用方案**：TTL 短 + Redis Pub/Sub 失效：
+```java
+// L1 本地缓存配置（Caffeine）
+Cache<Long, User> localCache = Caffeine.newBuilder()
+    .expireAfterWrite(Duration.ofSeconds(30))  // 30s TTL
+    .maximumSize(10_000)
+    .build();
+
+// L2 Redis Pub/Sub 监听
+@Configuration
+public class CacheInvalidationSubscriber {
+    @EventListener
+    public void onCacheEvict(CacheEvictEvent event) {
+        localCache.invalidate(event.getKey());
+        redisTemplate.convertAndSend("cache:evict", event.getKey());
+    }
+}
+```
+
+#### 5 大反模式 · 多级缓存视角
+
+##### ⚠️ 反模式 1：Caffeine TTL 太长（> 5 分钟）
+
+- 错：Caffeine TTL = 30 分钟
+- 对：Caffeine 适合秒级 TTL，长 TTL 应用 Redis
+
+##### ⚠️ 反模式 2：L1 失效不通知 L2
+
+- 错：Caffeine 失效但 Redis 不失效
+- 对：失效时双清（L1 + L2 都 invalidate）
+
+##### ⚠️ 反模式 3：L2 读未回写 L1
+
+- 错：L2 命中后不写 L1
+- 对：L2 命中后**异步回写 L1**（双重命中提升）
+
+##### ⚠️ 反模式 4：批量失效用 for 循环
+
+- 错：for (k : keys) localCache.invalidate(k)
+- 对：用 `localCache.invalidateAll(keys)` 原子操作
+
+##### ⚠️ 反模式 5：跨实例失效用 Redis Pub/Sub 不用 Stream
+
+- 错：Redis Pub/Sub 不持久化消息
+- 对：用 Redis Streams（持久化 + 消费者组）
+
+### 9.3 最终一致性 vs 强一致性的取舍
+
+#### 三种一致性级别
+
+| 级别 | 实现 | 性能 | 适用 |
+|------|------|------|------|
+| **强一致** | 同步双写 + 分布式事务（Seata TCC）| 低 | 金融 |
+| **最终一致** | Cache Aside + 延迟双删 / Binlog | 中 | 一般业务 |
+| **弱一致** | 仅 TTL 过期 | 高 | 排行榜 / 评论数 |
+
+#### CAP 视角
+
+```
+强一致性
+↑
+│  CP 系统（如 ZooKeeper / etcd）
+│
+│
+│
+│
+└─────────────→ 可用性
+AP 系统（如 Redis / Cassandra）
+```
+
+**实战选择**：99% 业务选**最终一致 + Binlog 监听**——延迟可容忍，性能高。
+
+### 9.4 选型决策（Java 后端视角）
+
+```
+场景：用户更新数据，DB 改了，缓存怎么办？
+
+Q1：业务能容忍不一致的时间窗口？
+├─ < 1s → 同步双写（不推荐，违反 Cache Aside）
+├─ < 1min → Binlog 监听（推荐 ✅）
+└─ < 数小时 → 仅 TTL 过期（最简单）
+
+Q2：是否需要 Java/Spring 注解？
+├─ 是 → @CacheEvict（仅删，不回写）+ TransactionSynchronization
+└─ 否 → RedisTemplate 手写（更可控）
+
+Q3：是否多级缓存（L1+Caffeine / L2+Redis）？
+├─ 是 → 失效广播（Pub/Sub / Stream）
+└─ 否 → 单 Redis 即可
+
+Q4：是否强一致性需求（金融场景）？
+├─ 是 → Seata TCC / Saga
+└─ 否 → 最终一致性
+
+实战 80%：最终一致 + Cache Aside + Binlog + Spring 注解
+```
+
+### 9.5 实施 Checklist
+
+#### 设计阶段
+- [ ] 选一致性级别（强 / 最终 / 弱）
+- [ ] 决策缓存策略（Cache Aside / Read Through / Write Behind）
+- [ ] 决策是否多级缓存
+
+#### 工程阶段
+- [ ] Spring Cache 注解 vs 手写 RedisTemplate 二选一
+- [ ] 自定义 RedisSerializer（JSON）
+- [ ] 失效广播机制（Pub/Sub / Stream）
+- [ ] 事务后失效（TransactionSynchronization）
+
+#### 运维阶段
+- [ ] 监控缓存命中率 / 不一致告警
+- [ ] 月度不一致率抽样检测
+- [ ] 失效广播链路监控
+
+### 9.6 一句话总结
+
+> **Java 后端 Redis-DB 一致性 = 选对策略（Cache Aside 最终一致）+ 用对 Spring 注解（@CacheEvict + 事务后失效）+ 防反模式（不同时用 CachePut/Evict / 自定义序列化 / 失效广播 / TTL 兜底）。**
+
+---
+
+## 面试精选 & 实战链接
+
+- **面试题（通用策略）**：[13.split-hairs/04.system-design/high-performance/cache-consistency](../../../13.split-hairs/04.system-design/high-performance/cache-consistency/README.md) —— 4 策略 + 3 场景 + A/B/C 方案
+- **面试题（Redis 兄弟篇）**：[13.split-hairs/03.database/redis/cache-penetration-breakdown-avalanche](../../../13.split-hairs/03.database/redis/cache-penetration-breakdown-avalanche/README.md) —— 缓存穿透/击穿/雪崩
+- **Spring Cache 实操**：[06.spring/03-data/cache/](../../../06.spring/03-data/cache/README.md) —— Spring Cache + Caffeine 实战
+- **餐厅叙事**：12.story/04-peak-traffic-defense.md —— 阿明餐厅双 11 高峰缓存实战
+
 ← [返回: 系统设计 · cache-patterns](README.md)
