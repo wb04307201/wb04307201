@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring/mybatis/01-architecture
+  slug: spring/mybatis/01-architecture/06-result-mapping
+  type: topic
+  category: MyBatis 内部原理
+  summary: MyBatis 01-architecture 章节深度 —— Result Mapping
+-->
+
 # 06 关联映射
 
 > 来源:整合自原 08.mybatis/README.md § 四.4.2

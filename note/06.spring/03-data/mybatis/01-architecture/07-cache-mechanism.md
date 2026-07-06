@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring/mybatis/01-architecture
+  slug: spring/mybatis/01-architecture/07-cache-mechanism
+  type: topic
+  category: MyBatis 内部原理
+  summary: MyBatis 01-architecture 章节深度 —— Cache Mechanism
+-->
+
 # 07 缓存机制
 
 > 来源:整合自原 08.mybatis/README.md § 四.4.3 + § 六.6.2

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring/mybatis/02-extension
+  slug: spring/mybatis/02-extension/01-type-handler
+  type: topic
+  category: MyBatis 内部原理
+  summary: MyBatis 02-extension 章节深度 —— Type Handler
+-->
+
 # 01 自定义类型处理器(TypeHandler)
 
 > 来源:整合自原 08.mybatis/README.md § 七.7.1

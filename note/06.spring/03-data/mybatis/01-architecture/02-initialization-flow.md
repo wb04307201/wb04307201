@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring/mybatis/01-architecture
+  slug: spring/mybatis/01-architecture/02-initialization-flow
+  type: topic
+  category: MyBatis 内部原理
+  summary: MyBatis 01-architecture 章节深度 —— Initialization Flow
+-->
+
 # 02 初始化流程
 
 > 来源:整合自原 08.mybatis/README.md § 二.2.1

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring/mybatis/01-architecture
+  slug: spring/mybatis/01-architecture/05-dynamic-sql
+  type: topic
+  category: MyBatis 内部原理
+  summary: MyBatis 01-architecture 章节深度 —— Dynamic Sql
+-->
+
 # 05 动态 SQL
 
 > 来源:整合自原 08.mybatis/README.md § 四.4.1
