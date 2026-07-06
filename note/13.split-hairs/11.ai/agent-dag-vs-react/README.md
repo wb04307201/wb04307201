@@ -141,6 +141,7 @@ Q4: 是否需要灵活性 > 稳定性？
 - 关联：[Function Calling](../function-calling/README.md) — Agent 的"手"
 - 关联：[Loop Engineering](../loop-engineering/README.md) — DAG 的兜底机制
 - 关联：[Harness Engineering](../harness-engineering/README.md) — DAG 是 Harness 的强约束
+- 🆕 **4 模式完整对比**：[ReAct vs Plan-and-Execute](../react-vs-plan-execute/README.md) —— DAG/ReAct/Plan-and-Execute/Multi-Agent 6 维打分 + 3 大重规划机制 + 80% 混合架构实战
 
 ---
 

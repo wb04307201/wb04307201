@@ -199,3 +199,9 @@ Q4: 是否需要灵活性 > 稳定性？
 - 实战：[生产级 Agent](../../03-engineering/production-agent/README.md) — DAG 在生产环境的落地
 
 ← [返回: AI 知识体系 · agent-architecture](README.md)
+
+---
+
+## 深度扩展
+
+🆕 **4 模式 6 维深度对比**：[agent-execution-patterns 专题](../agent-execution-patterns/README.md) —— ReAct Thought/Action/Observation 5 硬伤 + Plan-and-Execute 3 大重规划机制（RePlan / Adaptive / Plan Repair）+ 6 维完整打分 + 5 分钟决策树 + 7 道面试题。
