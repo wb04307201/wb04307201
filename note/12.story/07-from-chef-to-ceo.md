@@ -600,6 +600,37 @@ graph TD
 
 ---
 
+## 阿明的"长菜单挑战"：80 家连锁的 AI Agent 上下文方案
+
+当连锁开到 80 家分店时，阿明遇到了管理上的第二个坎——**长上下文**。
+
+80 家分店 × 每天 500 订单 × 每订单 5 个细节（口味、地址、时间、备注、过敏）= **每天 200k+ token 的实时数据**。再加上 80 个店长的"周报风暴"、总部的"运营 SOP 全集"、顾客的"历史订单 + 偏好"——一个 AI 客服 Agent 要真正"懂"阿明餐厅，会话上下文轻轻松松破 1M。
+
+阿明的第一反应也跟大多数 CTO 一样："买 Gemini 1.5 1M 上下文模型，直接塞。"
+
+但他很快撞上 3 个坑：
+
+1. **Lost in the Middle**：把关键的"过敏信息"放 prompt 中间，AI 推 58% 准确率忽略——直接打给厨房一份"花生酱拌面"，差点出事故。
+2. **成本**：每千次调用 100k token × $1.25/M = $125/天。一个月光客服就 $4000+。
+3. **响应延迟**：100k token 推理要 3-5 秒，每晚高峰 500 并发，GPU 队列堆到 2 分钟。
+
+他最终采纳的方案是「**6 策略组合**」（不是 1 个银弹）：
+
+- **Chunking** —— 把"每家分店 SOP"切成 500 token 块，加上"分店 ID / 菜系 / 城市"3 个 metadata
+- **RAG + Re-rank** —— BGE-large embedding 粗召回 top-50，cross-encoder 重排 top-5
+- **Memory 模块** —— 把"用户过敏信息 / 历史偏好"沉淀到 Semantic Memory（KV 数据库）
+- **Sliding Window** —— 滑动窗口 4096 token + 4 个 sink tokens 保留系统提示
+- **Sub-Agents Hierarchical** —— 主 Agent 看摘要（5k token），子 Agent 分别处理"订单查询"、"投诉建议"、"营养分析"
+- **Long-Context（兜底）** —— 偶尔用户上传长文档（10k+），才用 Long-Context Model 兜底
+
+3 个月后：客服响应延迟 P99 从 5 秒降到 1.2 秒，成本降 60%（RAG + Memory 把 90% 的请求挡在 5k context 内），LTM 准确率从 72% 升到 94%。
+
+**这是 80 家分店的标准答案** —— 你不需要"全塞"的银弹，你需要"按场景组合"的工程能力。
+
+> 🆕 **深度技术**：6 策略组合 + Lost in Middle 缓解 + Chunking/Re-rank/Sub-Agents 工业级实操 → 详见 [Agent 长上下文架构深度专题](../11.ai/04-architecture/agent-context/README.md)（含 8 文件 1571 行）。面试精选 Q&A 见 [13.split-hairs/11.ai/long-context-agent-strategy](../13.split-hairs/11.ai/long-context-agent-strategy/README.md)。
+
+---
+
 ## 结语
 
 阿明从厨师到 CEO 的故事，是所有技术团队成长中都会撞上的墙：**五个人的默契无法复制到五百人 —— 但好的制度可以让五百人像五个人一样协作，且带不走核心资产。**
