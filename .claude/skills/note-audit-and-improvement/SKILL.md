@@ -72,6 +72,51 @@ TOTAL_READMES=$(find note -name "README.md" | wc -l)
 WITH_BACKLINK=$(grep -rl "← \[返回\|← \[主模块\]" note/ | wc -l)
 echo "回链覆盖: $WITH_BACKLINK / $TOTAL_READMES"
 
+# 4.5 单向链接扫描（parent 不回链 child）
+# 原理：find 所有文件中的反向链接，记下每个"被链到"的文件
+# 然后检查每个被链到的文件，是否回链了链接它的源
+echo "=== 单向链接扫描（child → parent 但 parent 不回链）==="
+for child in $(find note -name "*.md"); do
+  # 找 child 文件链到的所有 target（粗略正则，可能有误差，需人工复核）
+  grep -oE '\]\(([^)]+\.md)' "$child" 2>/dev/null | sed 's/](//' | while read target; do
+    # 规范化 target 为绝对路径（去掉 ../ 等相对前缀）
+    abs_target=$(realpath -m --relative-to=. "$(dirname "$child")/$target" 2>/dev/null || echo "$target")
+    [ -f "$abs_target" ] || continue
+    # 检查 target 是否反向链到 child（粗略：包含 child 的 basename）
+    child_base=$(basename "$child")
+    if ! grep -q "$child_base" "$abs_target" 2>/dev/null; then
+      echo "  ⚠ child=$child → target=$target（target 未回链 child）"
+    fi
+  done
+done
+echo "=== 同级兄弟不互链扫描（示例）==="
+# 在某个目录下找兄弟 README，验证是否互相链接
+DIR_TO_CHECK="note/11.ai/07-llmops"
+for sibling in $(find "$DIR_TO_CHECK" -name "README.md" -maxdepth 2 2>/dev/null); do
+  for other in $(find "$DIR_TO_CHECK" -name "README.md" -maxdepth 2 2>/dev/null); do
+    [ "$sibling" = "$other" ] && continue
+    if ! grep -q "$(basename $sibling .md)" "$other" 2>/dev/null; then
+      echo "  ⚠ sibling=$(basename $sibling) 未被 $(basename $other) 链接"
+    fi
+  done
+done
+
+# 4.6 孤岛检测 / 总目录扫描（新文件未被总目录引用）
+# 原理：找最近 N 天新增的 README，验证它们是否被任何总目录表引用
+echo "=== 孤岛检测 / 总目录扫描 ==="
+# 找最近 7 天新增的 README（基于 git log）
+SINCE_DATE=$(date -d "7 days ago" --iso-8601=seconds 2>/dev/null || date -v-7d "+%Y-%m-%dT%H:%M:%S")
+NEW_FILES=$(git log --since="$SINCE_DATE" --diff-filter=A --name-only --pretty=format: 2>/dev/null | grep "\.md$" | sort -u)
+for new_file in $NEW_FILES; do
+  [ -z "$new_file" ] && continue
+  base=$(basename "$new_file" .md)
+  # 检查是否有任何 README / 总目录引用了 base
+  references=$(grep -rl "\[$base\]\|\"$base\"\|/$base" note/ 2>/dev/null | wc -l)
+  if [ "$references" -lt 2 ]; then
+    echo "  ⚠ 新文件 $new_file 仅被 $references 处引用（建议 ≥ 2：1 个父 README + 1 个反向链）"
+  fi
+done
+
 # 5. 内容重复检测（同名目录）
 find note -type d -name "*engineer*" -o -name "*memory*" -o -name "*prompt*" | sort
 
