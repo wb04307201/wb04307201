@@ -38,7 +38,7 @@ description: Use when user asks "what should be improved in note" or requests a 
 |---|------|------------|
 | 1 | **数字一致性** | `grep -rn "篇\|个\|行" note/README.md note/*/README.md` |
 | 2 | **H1 / 标题规范** | `grep -rn "^# " note/*/README.md` |
-| 3 | **回链覆盖率** | `grep -rln "← \[返回\|返回.*目录" note/ | wc -l` vs `find note -name README.md \| wc -l` |
+| 3 | **回链覆盖率 + 互链双向性** | `grep -rln "← \[返回\|返回.*目录" note/ | wc -l` vs `find note -name README.md \| wc -l`；外加单向链接扫描（child → parent 但 parent 不回链） |
 | 4 | **索引/入口缺失** | `find note -type d -not -path "*/node_modules/*" \| wc -l` vs README 引用 |
 | 5 | **内容重复** | `find note -name "*.md" \| xargs grep -l "<关键概念>" \| sort -u` |
 | 6 | **内容补充缺口** | 找到深度 ≤ 50 行的 README（可能是占位）|
@@ -194,6 +194,21 @@ grep -rl "\.png" note/ | wc -l  # 引用 PNG 的文件数
 **症状**：建议"删除 76 个孤儿 PNG"，但没说用哪个 commit
 
 **修复**：每个建议附 commit message（"chore(note): 删除孤儿 PNG"）
+
+### ❌ Mistake 9: 单向链接扫描缺失
+
+**症状**：审计只检查"无回链"（leaf → parent 缺失），不检查"单向回链"（parent → leaf 缺失）。例如：
+
+- `note/11.ai/07-llmops/05-agent-evaluation/README.md` 链到 `07-llmops/README.md` —— 后者**没反向链**到前者
+- `note/11.ai/03-engineering/production-agent/README.md` 链到 `11.ai/README.md` —— 后者**没反向链**到前者
+- `note/11.ai/04-architecture/intelligent-system-layers/README.md` 被 `agent-architecture` 链到 —— **没反向链**
+
+**修复**：
+- **审计类别 #3 升级**："回链覆盖率" → **"回链覆盖率 + 互链双向性"**
+- **Step 1.4.5 新增"单向链接扫描"**：grep 所有 child → target 链接，反查 target 是否含 child basename
+- **Step 1.4.5 附"同级兄弟不互链扫描"**：在某个目录下找所有兄弟 README，验证是否互相引用
+
+**反直觉点**：很多人以为"我加了 2 条反向链就完事" —— 实际上**新内容责任**包括：让被链接的 parent / 同级兄弟**也回链**。双向互链才能让知识网"加密"。
 
 ## Output Format
 
