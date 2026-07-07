@@ -16,11 +16,11 @@ question:
 
 # 系统设计咬文嚼字
 
-> 系统设计高频面试题与难点深挖，对齐主模块 [`04.system-design`](../../04.system-design/)。**11** 篇真题覆盖 MQ / 缓存一致性 / 限流 / 分布式 ID / 事务 / CAP / 锁 / 幂等 / 熔断 / **微服务 vs 单体** 10 大方向。
+> 系统设计高频面试题与难点深挖，对齐主模块 [`04.system-design`](../../04.system-design/)。**12** 篇真题覆盖 MQ / 缓存一致性 / 限流 / 分布式 ID / 事务 / CAP / 锁 / 幂等 / 熔断 / **微服务 vs 单体** / **排查与运维** 11 大方向。
 
 ---
 
-## 文章清单（共 10 题 + 3 个二级目录索引页，2026-06-30 路径整理后）
+## 文章清单（共 12 题 + 3 个二级目录索引页，2026-06-30 路径整理后）
 
 ### 高性能 - 消息队列
 | 主题 | 难度 | 核心问题 |
@@ -52,6 +52,11 @@ question:
 | [幂等性设计 6 大方案](idempotency/) | ⭐⭐⭐⭐⭐ | Token / 状态机 / 唯一索引 / 去重表 |
 | [熔断降级实战](circuit-breaker/) | ⭐⭐⭐⭐ | Sentinel / Resilience4j 落地 |
 | **🆕 [微服务 vs 单体](microservices-vs-monolith/)** | ⭐⭐⭐⭐⭐ | 6 大核心优势 + 6 大反模式 + Spring Cloud 全套 + 何时该拆决策 | [microservices 深度章节](../../04.system-design/01-foundation/system-design-basics/microservices/README.md) |
+
+### 排查与运维
+| 主题 | 难度 | 核心问题 |
+|------|------|---------|
+| [支付消息丢失排查](payment-message-lost/) | ⭐⭐⭐⭐ | 全链路 5 段排查 + 6 种根因 + 短期止血 + 长期方案 |
 
 ### 项目管理（已全部迁走，split-hairs 不再收此分类）
 
