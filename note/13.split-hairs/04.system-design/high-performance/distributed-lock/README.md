@@ -130,6 +130,111 @@ try {
 - ✅ 支持 RedLock
 - ✅ 公平锁 / 读写锁
 
+### 3.4 Redisson 释放机制深度剖析
+
+> 面试官追问："你说 Redisson 看门狗自动续期——它怎么续的？unlock 的时候发生了什么？设置 leaseTime 和不设置有啥区别？"
+
+#### 核心数据结构
+
+Redisson 用 Redis **Hash** 存储锁：
+
+```
+HSET myLock <threadId> <reentrantCount>
+```
+
+- **key**：锁名称（如 `myLock`）
+- **field**：线程标识（UUID + threadId）
+- **value**：重入次数（可重入锁每次 +1）
+
+#### lock() 后看门狗如何续期
+
+```text
+调用 lock.lock()
+  │
+  ├─ 尝试加锁（Lua: HSET + PEXPIRE 30000）
+  │  成功 → 获得锁
+  │
+  └─ 启动看门狗（Watchdog）
+     │
+     ├─ Netty HashedWheelTimer（时间轮定时器）
+     ├─ 每 lockWatchdogTimeout / 3 = 10 秒执行一次
+     ├─ 执行 Lua: PEXPIRE myLock 30000（重置过期时间）
+     └─ 循环直到 unlock() 被调用
+```
+
+**关键细节**：
+- 默认 `lockWatchdogTimeout = 30000ms`（30 秒）
+- 续期间隔 = 30000 / 3 = **10 秒**（即每 10 秒续期一次）
+- 续期操作是**异步**的（Netty EventLoop 执行，不阻塞业务线程）
+- **如果持锁线程结束但没调 unlock()，看门狗也会停止**（通过 Future 关联线程生命周期）
+
+#### unlock() 的 Lua 脚本内部逻辑
+
+```lua
+-- Redisson unlock 的 Lua 脚本（简化版）
+local key = KEYS[1]
+local threadId = ARGV[1]
+
+-- 1. 验证锁归属：检查 Hash 中是否有自己的 field
+if redis.call('hexists', key, threadId) == 0 then
+    return nil  -- 不是自己的锁，返回 nil
+end
+
+-- 2. 重入计数 -1
+local count = redis.call('hincrby', key, threadId, -1)
+
+-- 3. 如果计数 > 0，说明还有重入未释放 → 只减计数，不删锁
+if count > 0 then
+    redis.call('pexpire', key, 30000)  -- 重置过期时间
+    return 0
+end
+
+-- 4. 计数 = 0，完全释放 → 删除锁
+redis.call('del', key)
+
+-- 5. 发布消息通知等待者
+redis.call('publish', 'redisson_lock__channel:{myLock}',
+           'unlock')
+return 1
+```
+
+**5 步流程**：
+1. **验证归属** — `HEXISTS` 检查锁是不是自己的（防止误删他人锁）
+2. **重入计数 -1** — `HINCRBY` 减 1
+3. **计数 > 0** — 还有重入未释放，只重置 TTL，不删锁
+4. **计数 = 0** — 完全释放，`DEL` 删锁
+5. **PubSub 通知** — `PUBLISH` 通知所有等待这把锁的线程
+
+#### 显式 leaseTime vs 默认看门狗
+
+```java
+// 方式 1：默认看门狗（推荐）
+lock.lock();  // 无参 → 启动看门狗自动续期
+
+// 方式 2：显式设置 leaseTime
+lock.lock(10, TimeUnit.SECONDS);  // 10s 后强制过期，不启动看门狗
+```
+
+| 维度 | 无参 lock() | lock(10, SECONDS) |
+|------|-------------|-------------------|
+| **看门狗** | ✅ 启动（每 10s 续期） | ❌ 不启动 |
+| **过期时间** | 永远 30s（不断续期） | 10s 后强制过期 |
+| **业务超时保护** | 无（看门狗一直续） | 有（到时间自动释放） |
+| **风险** | 业务线程卡死 → 看门狗也停 → 30s 后释放 | 业务没执行完 → 锁提前释放 → 并发问题 |
+| **适用** | 大多数场景 | 需要精确控制持锁时长 |
+
+#### 5 个异常场景
+
+| 场景 | 会发生什么 | Redisson 的处理 |
+|------|-----------|----------------|
+| **持锁线程崩溃** | 看门狗随之停止 → 30s TTL 到期自动释放 | ✅ 安全（TTL 兜底） |
+| **JVM 进程宕机** | 看门狗消失 → 30s TTL 到期自动释放 | ✅ 安全（TTL 兜底） |
+| **Redis 主从切换** | 主节点写入后宕机，从节点未同步 → 锁丢失 | ⚠️ 部分安全（RedLock 可解决） |
+| **网络分区** | 续期请求到不了 Redis → 续期失败 → TTL 到期释放 | ✅ 安全（续期失败 = TTL 不刷新） |
+| **看门狗续期失败** | 单次续期失败不影响（下次 10s 后再试）| ✅ 安全（除非连续失败 3 次到 TTL） |
+
+> 📚 **深度阅读**：[`分布式锁主模块`](../../../../04.system-design/02-distributed/distributed-lock/README.md) — 需求/特性/实现方案/选型全景
+
 ---
 
 ## 四、ZooKeeper 分布式锁
@@ -263,6 +368,8 @@ public void process() {
 > - 通用业务 → Redisson 足够
 >
 > **8 个坑**：锁过期、误删、主从丢锁、不可重入、超时难设、客户端崩溃、单点故障、性能压力。Redisson 基本都解决了。
+>
+> **Redisson 释放机制**：lock() 后启动看门狗（Netty 定时器），每 10 秒续期一次（lockWatchdogTimeout / 3）。unlock() 执行 Lua 脚本：验证归属 → 重入计数 -1 → 计数为 0 则删锁 + PubSub 通知等待者。如果线程崩溃，看门狗停止，30 秒 TTL 兜底自动释放。
 >
 > **RedLock**（N/2+1 节点投票）争议较大，工程上用得不多。"
 
