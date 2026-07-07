@@ -27,7 +27,7 @@ question:
     vip_level, vip_expire, total_orders, total_spent,
     preference_json, tags_json, device_info, push_token,
     ... 还有 20 个）
-  
+
 问题：
   1. 查询用户列表（只需 username + avatar + status）→ 全表扫描 50 列
   2. InnoDB 页 16KB，一行 2KB → 一页只能放 8 行
@@ -68,7 +68,7 @@ Buffer Pool 原理：
   InnoDB 把整行数据加载到内存页
   查询 SELECT username, avatar → 仍加载整行 50 列
   → 70% 的内存被冷字段占用 → 热数据命中率低
-  
+
 拆分后：
   热表 user_base（10 列，200B/行）
   → 同样内存可以放 10 倍行数
@@ -86,12 +86,12 @@ Buffer Pool 原理：
 InnoDB 行格式（COMPACT / DYNAMIC）：
   - 行内存储：前 768 字节 inline
   - 超出部分：溢出到 off-page（外部页）
-  
+
 TEXT / BLOB / 大 JSON 字段：
   - 单个 TEXT 最大 64KB → 一定溢出
   - VARCHAR(10000) → 可能溢出
   - JSON 字段如果平均 > 500B → 大概率溢出
-  
+
 溢出代价：
   读一行数据 → 先读主页 → 再读溢出页 → 2 次 I/O
 ```
@@ -105,9 +105,9 @@ TEXT / BLOB / 大 JSON 字段：
   热字段（每次查询都用）：username, avatar, status
   温字段（偶尔用）：email, phone, address
   冷字段（极少用）：id_card, emergency_contact, preference_json
-  
+
 热:温:冷 = 3:7:40
-  
+
 如果热字段 < 30% 总字段 → 拆分收益大
 ```
 
