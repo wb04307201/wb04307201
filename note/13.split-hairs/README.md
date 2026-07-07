@@ -11,7 +11,7 @@ module:
 
 > 一句话定位：**主模块的"刺刀版" —— 专治面试中那些"好像懂但说不清"的高频 / 高难度问题**
 
-本仓库的主模块（`01.java` / `03.database` / `04.system-design` / `06.spring` / `11.ai` / `09.front-end` / `14.project-management`）是**广度知识地图**，每个模块 100-300 行，覆盖一个领域的核心脉络。
+本仓库的主模块（`01.java` / `02.computer-basics` / `03.database` / `04.system-design` / `06.spring` / `11.ai` / `09.front-end` / `14.project-management`）是**广度知识地图**，每个模块 100-300 行，覆盖一个领域的核心脉络。
 
 但面试中总会遇到这些题：
 - "HashMap 扩容为什么是 2 倍？"
@@ -27,7 +27,8 @@ module:
 
 | 编号 | 对齐主模块 | 主题方向 | 篇数 | 子入口 |
 |------|-----------|---------|------|-------|
-| 01 | [`01.java`](../01.java/) | Java 基础陷阱 | 35 | [01.java/](01.java/) |
+| 01 | [`01.java`](../01.java/) | Java 基础陷阱 | 36 | [01.java/](01.java/) |
+| 02 | [`02.computer-basics`](../02.computer-basics/) | 计算机基础（网络 / 操作系统） | 1 | [02.computer-basics/](02.computer-basics/) |
 | 03 | [`03.database`](../03.database/) | 数据库细节 | 29 | [03.database/](03.database/) |
 | 04 | [`04.system-design`](../04.system-design/) | 系统设计难点 | 14 | [04.system-design/](04.system-design/) |
 | 06 | [`06.spring`](../06.spring/) | Spring 面试高频 | 14 | [06.spring/](06.spring/) |
@@ -35,7 +36,7 @@ module:
 | 11 | [`11.ai`](../11.ai/) | AI 面试深挖 | 22 | [11.ai/](11.ai/) |
 | ✦ | [`14.project-management`](../14.project-management/) | **外链**（决策实战，已迁出） | — | [14.project-management/](../14.project-management/) |
 
-**总计：139 篇面试题**（仅"一题一文"题；03.database 另有 7 个二级目录索引页、04.system-design 另有 3 个二级目录索引页）
+**总计：146 篇面试题**（仅"一题一文"题；03.database 另有 7 个二级目录索引页、04.system-design 另有 3 个二级目录索引页）
 
 > 各分类的具体子主题（如 Java 集合 / 并发 / JVM；数据库 SQL 优化 / Redis / MVCC；系统设计 MQ / 缓存 / 分布式等）见子目录 README。
 
