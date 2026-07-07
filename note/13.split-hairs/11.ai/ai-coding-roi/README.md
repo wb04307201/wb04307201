@@ -302,6 +302,8 @@ Review 拒绝率 = 被拒绝合并的 AI 代码 / 总 AI 代码
 - 主模块：[`11.ai/05-applications`](../../../11.ai/05-applications/README.md) — AI 行业应用
 - 故事：[`12.story/45-ai-productivity-paradox`](../../../12.story/45-ai-productivity-paradox.md) — 阿明餐厅复盘
 
+- Token 成本：[`AI 编程 Token 经济学`](../ai-coding-token-economics/README.md) — 杠杆率法则 + Token 悖论 + 企业成本失控案例
+
 ---
 
 > 📅 2026-06-28 · 咬文嚼字 · AI 新概念 · ⭐⭐⭐⭐（2026 面试热点 + 实战必会）

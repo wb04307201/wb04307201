@@ -220,6 +220,8 @@ question:
 - 主模块：[`11.ai/05-applications`](../../../11.ai/05-applications/README.md) — AI 行业应用
 - 故事：[`12.story/45-ai-productivity-paradox`](../../../12.story/45-ai-productivity-paradox.md) — 阿明餐厅复盘
 
+- Token 成本：[`AI 编程 Token 经济学`](../ai-coding-token-economics/README.md) — 9.6 万 Token 中位数 + Agent 工作流消耗机制
+
 ---
 
 > 📅 2026-06-28 · 咬文嚼字 · AI 新概念 · ⭐⭐⭐⭐（2026 面试热点 + 实战必会）

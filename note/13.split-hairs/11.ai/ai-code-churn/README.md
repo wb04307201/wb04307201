@@ -291,6 +291,8 @@ def get_user_orders(user_id):
 - 主模块：[`11.ai/05-applications`](../../../11.ai/05-applications/README.md) — AI 行业应用
 - 故事：[`12.story/45-ai-productivity-paradox`](../../../12.story/45-ai-productivity-paradox.md)
 
+- Token 成本：[`AI 编程 Token 经济学`](../ai-coding-token-economics/README.md) — Token 悖论 + 4 条省钱实践
+
 ---
 
 > 📅 2026-06-28 · 咬文嚼字 · AI 新概念 · ⭐⭐⭐⭐（2026 面试热点）

@@ -127,6 +127,8 @@ PM："……"
 - 关联：[Context Engineering](../context-engineering/README.md) — Context Window 是 Token 上限
 - 关联：[RAG](../rag/README.md) — 用 RAG 减少 Token 消耗
 
+- Token 经济学：[`AI 编程 Token 经济学`](../ai-coding-token-economics/README.md) — 9.6 万 Token 中位数 + 杠杆率 + Token 悖论
+
 ---
 
 > 📅 2026-06-30 · 咬文嚼字 · AI 经济学基础 · ⭐⭐⭐⭐
