@@ -331,4 +331,8 @@ sh mqadmin resetOffsetByTime \
 
 - 深度阅读：[`04.system-design`](../../../../04.system-design/README.md) — 主模块详细内容
 
+## 相关章节
+
+- 排查实战：[`支付消息丢失排查`](../../payment-message-lost/README.md) — MQ 可靠性在支付场景的实战排查
+
 ← [返回: 咬文嚼字 · still-need-rocketmq](README.md)

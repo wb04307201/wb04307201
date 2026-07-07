@@ -360,4 +360,8 @@ public Result register(@Valid @RequestBody UserRegisterRequest req,
 
 - 深度阅读：[`04.system-design`](../../04.system-design/README.md) — 主模块详细内容
 
+## 相关章节
+
+- 排查实战：[`支付消息丢失排查`](../payment-message-lost/README.md) — 幂等误拦截是隐性丢消息的常见根因
+
 ← [返回: 咬文嚼字 · idempotency](README.md)
