@@ -85,12 +85,57 @@ Throwable
 
 ## `Exception`和`Error`的区别
 
+> 🔗 面试深挖版：[`Error vs Exception 面试题`](../../../13.split-hairs/01.java/error-vs-exception/README.md) — 6 维度对比 + 5 反模式 + 面试话术
+
+### 一句话区分
+
+- **Error**：JVM 自身产生的严重故障（内存耗尽、栈溢出、类加载失败），应用程序**无法修复**，只能排查根因 + JVM 调优
+- **Exception**：应用程序代码产生的异常（IO 失败、空指针、参数错误），程序**可以且应该处理**
+
+### 6 维度对比
+
 | 对比维度 | Exception | Error |
 |---------|-----------|-------|
-| **可处理性** | 程序可以捕获和处理 | 程序无法处理，不建议捕获 |
-| **恢复可能性** | 通常可以恢复 | 通常无法恢复 |
-| **常见示例** | `IOException`、`SQLException` | `OutOfMemoryError`、`StackOverflowError` |
-| **处理方式** | 必须处理（受检查）或可选处理（不受检查） | JVM 通常会终止线程 |
+| **设计意图** | 程序逻辑中的异常情况，预期可处理 | JVM 无法继续执行的严重故障 |
+| **产生方** | 应用程序代码（`throw` / `throws`） | JVM 自身（内存管理、类加载等内部机制） |
+| **可恢复性** | 通常可恢复（重试 / 降级 / 用户提示） | 通常不可恢复（OOM 后 JVM 状态不可预测） |
+| **编译器约束** | Checked 必须 catch 或 throws 声明；Unchecked 可选 | 不强制 catch，也不建议 catch |
+| **典型处理策略** | try-catch 处理 / 向上抛出 / 转换为业务异常 | 排查根因 + JVM 调优（`-Xmx`/`-Xss`），不是 catch 能解决的 |
+| **生产影响** | 通常影响单次请求，可降级或重试 | 通常导致线程终止或 JVM 崩溃，需运维介入 |
+
+### 常见反模式
+
+```java
+// ❌ 反模式 1：catch Error —— 吞掉 JVM 致命故障
+try {
+    loadHugeData();
+} catch (OutOfMemoryError e) {
+    log.error("内存不足", e);  // 程序继续跑在不确定状态
+}
+
+// ❌ 反模式 2：catch Throwable —— Error 也被一网打尽
+try {
+    processOrder(order);
+} catch (Throwable t) {
+    log.error("处理失败", t);  // StackOverflowError 也被吞，栈已损坏
+}
+
+// ✅ 正确：只 catch 你能处理的 Exception
+try {
+    processOrder(order);
+} catch (SQLException e) {
+    throw new ServiceException("订单处理失败", e);
+}
+```
+
+### 易混淆：NoClassDefFoundError vs ClassNotFoundException
+
+| 对比 | NoClassDefFoundError | ClassNotFoundException |
+|------|---------------------|----------------------|
+| **类型** | Error | Checked Exception |
+| **触发时机** | 类链接阶段（编译时有，运行时找不到） | `Class.forName()` 等动态加载失败 |
+| **常见原因** | classpath 缺包 / 类加载器隔离 | 类名拼写错误 / 动态插件未部署 |
+| **能否 catch** | 语法上能，但不建议 | 必须 catch（Checked） |
 
 ## Checked Exception 和 Unchecked Exception
 
@@ -347,6 +392,212 @@ try {
 5. **不要用异常做流程控制**：异常处理有性能开销，应该用于真正的异常情况
 6. **尽早抛出，延迟捕获**：在问题发现的地方尽早抛出，在有足够上下文处理的地方捕获
 7. **捕获后不要吞掉异常**：至少要记录日志，或者重新抛出
+
+## 异常设计演进（Java 7 → 21）
+
+Java 异常处理机制在多个版本中持续改进，核心方向是**减少样板代码**和**提升安全性**。
+
+| 版本 | 特性 | 解决的问题 |
+|------|------|-----------|
+| **Java 7** | Multi-Catch（`catch (A \| B e)`） | 多个 catch 块重复逻辑 → 合并为一个 |
+| **Java 7** | try-with-resources | finally 中手动关闭资源 → 自动关闭 |
+| **Java 7** | 精确重抛（Precise Rethrow） | catch 块 rethrow 时编译器能推断具体异常类型 |
+| **Java 9** | TWR 引用 effectively final 变量 | `try(br)` 无需在括号内重新声明 |
+| **Java 14** | 改进 NullPointerException 信息 | NPE 堆栈显示具体哪个变量为 null |
+| **Java 17** | Sealed Classes 限制异常子类 | 可密封异常类型，控制谁能继承 |
+
+### 精确重抛示例（Java 7）
+
+```java
+// Java 7 之前：rethrow 后编译器认为可能抛出 Exception
+public void process() throws IOException, SQLException {
+    try {
+        // 可能抛 IOException 或 SQLException
+    } catch (Exception e) {
+        logger.error("处理失败", e);
+        throw e;  // Java 7+：编译器推断实际类型为 IOException 或 SQLException
+    }
+}
+```
+
+### Java 14+ 改进 NPE 信息
+
+```java
+// Java 14 之前：
+// Exception in thread "main" java.lang.NullPointerException
+
+// Java 14+（默认启用）：
+// Exception in thread "main" java.lang.NullPointerException:
+//   Cannot invoke "String.length()" because "user.getName()" is null
+// 直接告诉你哪个调用链返回了 null，大幅减少调试时间
+```
+
+## 框架层异常处理约定
+
+在企业级开发中，异常处理不仅是语言层面的事，框架层也有自己的约定和最佳实践。
+
+### SLF4J 日志记录约定
+
+```java
+// ✅ 正确：异常作为最后一个参数，SLF4J 会自动打印完整堆栈
+log.error("用户 {} 登录失败", userId, e);
+
+// ❌ 错误：e.getMessage() 只记录消息，丢失堆栈
+log.error("用户 {} 登录失败: {}", userId, e.getMessage());
+
+// ❌ 错误：字符串拼接，性能差且可能丢失异常链
+log.error("用户 " + userId + " 登录失败: " + e);
+```
+
+### Spring 事务与异常
+
+```java
+// Spring 默认行为：
+// - RuntimeException / Error → 自动回滚
+// - Checked Exception → 不回滚（除非显式指定）
+
+@Transactional(rollbackFor = Exception.class)  // ✅ 推荐：所有异常都回滚
+public void transfer(Account from, Account to, BigDecimal amount) {
+    debit(from, amount);
+    credit(to, amount);
+}
+```
+
+> **最佳实践**：始终加 `rollbackFor = Exception.class`，避免 Checked Exception 不回滚导致数据不一致。
+
+## Spring 全局异常处理
+
+Spring MVC 提供了声明式的全局异常处理机制，将异常处理与业务逻辑解耦。
+
+### @ExceptionHandler（Controller 级别）
+
+```java
+@RestController
+public class OrderController {
+
+    @GetMapping("/orders/{id}")
+    public Order getOrder(@PathVariable Long id) {
+        return orderService.findById(id);
+    }
+
+    // 仅处理本 Controller 内的异常
+    @ExceptionHandler(OrderNotFoundException.class)
+    public ResponseEntity<String> handleNotFound(OrderNotFoundException e) {
+        return ResponseEntity.status(404).body(e.getMessage());
+    }
+}
+```
+
+### @ControllerAdvice（全局级别）
+
+```java
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+
+    // 处理所有 Controller 抛出的业务异常
+    @ExceptionHandler(BusinessException.class)
+    public ResponseEntity<ErrorResponse> handleBusiness(BusinessException e) {
+        log.warn("业务异常: {}", e.getMessage());
+        return ResponseEntity.badRequest().body(new ErrorResponse(e.getCode(), e.getMessage()));
+    }
+
+    // 参数校验异常
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ErrorResponse> handleValidation(MethodArgumentNotValidException e) {
+        String message = e.getBindingResult().getFieldErrors().stream()
+            .map(f -> f.getField() + ": " + f.getDefaultMessage())
+            .collect(Collectors.joining("; "));
+        return ResponseEntity.badRequest().body(new ErrorResponse("VALIDATION_ERROR", message));
+    }
+
+    // 兜底：所有未处理的异常
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorResponse> handleGeneral(Exception e) {
+        log.error("未预期异常", e);
+        return ResponseEntity.status(500).body(new ErrorResponse("INTERNAL_ERROR", "服务内部错误"));
+    }
+
+    // ⚠️ 不要加 @ExceptionHandler(Error.class)
+    // Error 应由 JVM 处理，全局处理器无法安全处理 JVM 级故障
+}
+```
+
+> **关键原则**：`@ControllerAdvice` 只处理 Exception 层面，不要加 Error handler。Error 的正确应对是 JVM 调优和运维监控，不是代码 catch。
+
+## JVM 对未捕获异常的处理
+
+当异常没有被任何 catch 块捕获时，JVM 有一套完整的处理链路。
+
+### 传播路径
+
+```
+方法调用栈
+  methodC() 抛出 NullPointerException
+    → methodB() 未 catch
+      → methodA() 未 catch
+        → main() 未 catch
+          → Thread.dispatchUncaughtException()
+            → ThreadGroup.uncaughtException()
+              → Thread.getDefaultUncaughtExceptionHandler()
+                → 默认行为：打印堆栈到 System.err
+```
+
+### UncaughtExceptionHandler
+
+```java
+// 设置线程的未捕获异常处理器
+Thread thread = new Thread(() -> {
+    throw new RuntimeException("线程内部异常");
+});
+
+// 方式 1：实例级别（仅对该线程生效）
+thread.setUncaughtExceptionHandler((t, e) -> {
+    log.error("线程 {} 异常: {}", t.getName(), e.getMessage(), e);
+    // 可在此发送告警通知
+});
+
+// 方式 2：全局默认（对所有线程生效）
+Thread.setDefaultUncaughtExceptionHandler((t, e) -> {
+    log.error("未捕获异常 - 线程: {}, 异常: {}", t.getName(), e.getMessage(), e);
+    // 生产环境：发送告警 + 记录到监控系统
+});
+
+thread.start();
+```
+
+### 线程池中的未捕获异常
+
+```java
+// ⚠️ ExecutorService.submit() 返回 Future，异常被包装在 Future 中
+// 只有调用 future.get() 时才会以 ExecutionException 形式抛出
+Future<?> future = executor.submit(() -> {
+    throw new RuntimeException("任务异常");
+});
+
+try {
+    future.get();  // 这里抛出 ExecutionException，cause 是 RuntimeException
+} catch (ExecutionException e) {
+    log.error("任务执行异常", e.getCause());
+}
+
+// ✅ 推荐：用 execute() 替代 submit()，配合 UncaughtExceptionHandler
+executor.execute(() -> {
+    // 异常直接传播到 UncaughtExceptionHandler
+    throw new RuntimeException("任务异常");
+});
+```
+
+> **生产建议**：线程池应设置 `ThreadFactory`，在其中配置 `UncaughtExceptionHandler`，确保任何未捕获异常都能被日志和监控系统捕获。
+
+---
+
+## 相关章节
+
+> 📚 **概念图**：[异常概念图](exception.mmd) — Throwable 层次、try-catch-finally 执行流程、异常链传播
+
+- 面试深挖版：[`Error vs Exception 面试题`](../../../13.split-hairs/01.java/error-vs-exception/README.md) — 6 维度对比 + 5 陷阱 + 5 最佳实践 + 面试话术
 
 ---
 
