@@ -595,9 +595,7 @@ executor.execute(() -> {
 
 ## 相关章节
 
-> 📚 **概念图**：[异常概念图](exception.mmd) — Throwable 层次、try-catch-finally 执行流程、异常链传播
-
-- 面试深挖版：[`Error vs Exception 面试题`](../../../13.split-hairs/01.java/error-vs-exception/README.md) — 6 维度对比 + 5 陷阱 + 5 最佳实践 + 面试话术
+- 面试深挖版：[`Error vs Exception 面试题`](../../../13.split-hairs/01.java/error-vs-exception/README.md) — 6 维度对比 + 5 反模式 + 面试话术
 
 ---
 
