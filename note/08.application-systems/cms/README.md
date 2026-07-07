@@ -98,7 +98,32 @@ module:
 
 ---
 
-## 八、与其他业务系统的关系
+## 🆕 八、敏感词审查系统：CMS 内容审核的技术核心
+
+CMS 内容审核第 1 步是**敏感词过滤**——这是用户评论 / 文章标题 / 标签的"门神"。高并发场景（评论 1k QPS + 弹幕 10w QPS）的完整方案：
+
+- **核心算法**：AC 自动机（O(n) 多模式匹配）—— 1万词 + 500字 = **~2ms**（朴素 KMP 200x 慢）
+- **Java 实战**：Spring Boot + HanLP 双数组 Trie + Guava Bloom + Caffeine 三件套
+- **架构演进**：单机（5k QPS）→ 分布式集群（10w）→ 多级异步（100w）
+- **核心公式**：**AC 自动机（200x 提升）+ Bloom Filter（10x）+ Caffeine（10x）+ 双数组 Trie（10x 内存）= 100w QPS 不卡顿**
+
+详细深度专题（含完整 Java 实现 + 9 大优化策略 + 5 反模式）见：
+
+- **主模块**：[04.system-design/04-high-performance/sensitive-word-filter](../../04.system-design/04-high-performance/sensitive-word-filter/README.md) —— 5 文件 / 1085 行
+- **算法基础**：[02.computer-basics/02-algorithms/string-algorithms](../../02.computer-basics/02-algorithms/string-algorithms/README.md) —— Trie / KMP / AC 自动机 4 文件 / 1092 行
+- **面试题**：[13.split-hairs/02.computer-basics/sensitive-word-filter](../../13.split-hairs/02.computer-basics/sensitive-word-filter/README.md) —— 7 道精选 Q&A + 90 秒话术
+
+### 反模式速查
+
+1. **朴素 KMP 多次匹配**（500ms 延迟）→ 用 AC 自动机
+2. **每次请求构建 AC**（100ms 启动）→ `@PostConstruct` 单例
+3. **忽略中文分词**（漏检 30%）→ IK Analyzer / HanLP 先分词
+4. **同步阻塞主链路**（用户卡死）→ 同步轻量 + 异步二审
+5. **词典不热更新**（错过监管事件）→ `@Scheduled` 1 分钟 + Nacos watch
+
+---
+
+## 八（保留）、与其他业务系统的关系
 
 | 系统 | 关系 |
 |------|------|
