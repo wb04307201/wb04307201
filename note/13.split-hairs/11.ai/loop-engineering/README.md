@@ -124,9 +124,15 @@ Task → Agent → 检查结果
 ## 七、深度阅读
 
 - 主模块：[Loop Engineering](../../../11.ai/03-engineering/loop-engineering/README.md)
+- 🆕 **Auto-Fix 闭环实战（写代码 → 跑测试 → 自动修复）**：
+  - [auto-fix-strategy](../../../11.ai/03-engineering/loop-engineering/auto-fix-strategy.md) —— 5 修复策略
+  - [verifier-design](../../../11.ai/03-engineering/loop-engineering/verifier-design.md) —— 5 大 Verifier
+  - [ide-case-studies](../../../11.ai/03-engineering/loop-engineering/ide-case-studies.md) —— Claude Code / Cursor / Devin / Aider
+  - [fix-prompt-templates](../../../11.ai/03-engineering/loop-engineering/fix-prompt-templates.md) —— 修复 prompt 4 模板
 - 同栏目：[Harness Engineering](../harness-engineering/README.md)
 - 关联：[Agent 架构](../agent-dag-vs-react/README.md)
 - 实战：[生产级 Agent](../../../11.ai/03-engineering/production-agent/README.md)
+- 餐厅叙事：[12.story/07 阿明餐厅自动修复 50 bug 实战](../../../12.story/07-from-chef-to-ceo.md)
 
 ---
 

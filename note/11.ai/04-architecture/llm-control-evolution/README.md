@@ -79,6 +79,8 @@ Harness Engineering 解决"如何让 Agent 在可控轨道上发挥最大能力"
 
 Loop Engineering 反其道而行之：**小步快跑 + Harness 兜底 + 自动终止**。把"完成任务"分解为多轮"小 Agent 调用"，每轮验证、每轮反馈、每轮终止条件清晰。
 
+🆕 **实战深度**（写代码 → 跑测试 → 自动修复闭环）：见 [loop-engineering/auto-fix-strategy](../../03-engineering/loop-engineering/auto-fix-strategy.md) —— 5 修复策略 + Verifier 5 大源 + Claude Code/Cursor/Devin/Aider 4 IDE 实战 + 修复 prompt 模板。
+
 ---
 
 ## 三、何时该升级到下一阶段（决策树）
