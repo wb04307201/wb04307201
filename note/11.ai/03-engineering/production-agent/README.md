@@ -105,3 +105,5 @@ Shopify 团队明确指出，目前许多人采用的 **“凭感觉测试（Vib
 ## 深度扩展
 
 🆕 **5 大灵魂拷问**：[llm-production-thinking（思维 + 成本 + 一致性 + 熔断 + 监控）](../llm-production-thinking/README.md) —— 把 production-agent 的工程方法论延伸到 5 大问题的协同回答（含 7 文件 1512 行 + 6 道面试题）。
+
+🆕 **评测系统**：[05-agent-evaluation](../05-agent-evaluation/README.md) —— Agent 评测 6 维 + 5 方法 + 4 阶段 Pipeline（黄金集 → CI → A/B → 漂移检测）+ 7 反模式 1511 行。面试精选见 [13.split-hairs Agent 性能评估](../../13.split-hairs/11.ai/agent-performance-evaluation/README.md)。
