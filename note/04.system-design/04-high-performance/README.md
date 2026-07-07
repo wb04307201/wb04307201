@@ -60,6 +60,7 @@ graph TD
 | 9 | 运行时 | [Java 性能优化](java/README.md) | JVM 调优 · 代码级优化 |
 | 10 | 运行时 | [连接池优化](connection-pool/README.md) | HikariCP 参数调优 |
 | 11 | 运行时 | [序列化优化](serialization/README.md) | Protobuf / Kryo / Hessian |
+| 12 | 🆕 业务安全 | [敏感词过滤](sensitive-word-filter/README.md) | AC 自动机 + Bloom + 100w QPS 高并发完整方案 |
 
 ## 学习路径
 
@@ -88,8 +89,9 @@ graph TD
 | ├─ `mq/` | 1 | Kafka / RocketMQ / Pulsar |
 | ├─ `java/` | 1 | JVM 调优 · 代码级优化 |
 | ├─ `connection-pool/` | 1 | HikariCP 参数调优 |
+| ├─ 🆕 `sensitive-word-filter/` | 5 | AC 自动机 + Bloom + Caffeine + 分布式 100w QPS |
 | └─ `serialization/` | 1 | Protobuf / Kryo / Hessian |
-| **leaf README 合计** | 13 depth-2 leaf + 1 顶层 = **14** | 100% frontmatter |
+| **leaf README 合计** | 14 depth-2 leaf + 1 顶层 = **15** | 100% frontmatter |
 | **模块导航行数** | 11（见上方模块导航） | 全部聚合在本章及子 README |
 
 > 数字基线：以 leaf README 数 + 模块导航行数双口径统计
