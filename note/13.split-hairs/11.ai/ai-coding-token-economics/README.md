@@ -22,11 +22,11 @@ question:
 SemiAnalysis 2026 报告：
   分析了 43.2 万个编码 Agent 请求
   中位数输入：9.6 万 Token
-  
+
 9.6 万 Token 是什么概念？
   ≈ 菲茨杰拉德《了不起的盖茨比》全文
   ≈ 一次 Agent 请求 = 读完一本经典小说
-  
+
 结果：
   读完一本书 → 只为了输出一行 color: red;
 ```
@@ -115,15 +115,15 @@ Agent 后台疯狂操作：
   ① 全局检索与上下文构建（RAG & AST）
      → 扫描代码库，找定义、引用、全局变量
      → 消耗：~3 万 Token
-  
+
   ② 规划与思考（Planning & CoT）
      → 生成思考链，规划步骤
      → 消耗：~2 万 Token
-  
+
   ③ 工具调用与自我修正（Self-Correction）
      → 尝试修改 → 调 Lint 检查 → 报错 → 读错误日志 → 重新推理
      → 消耗：~4 万 Token
-  
+
   ④ 最终输出
      → color: red;
      → 消耗：10 Token
@@ -160,7 +160,7 @@ Agent 改按钮颜色：
 
 示例：
   "只看 @src/components/Button.tsx 和 @tailwind.config.js"
-  
+
 上下文越小，Token 越省。
 ```
 
@@ -179,7 +179,7 @@ Agent 改按钮颜色：
 Anthropic / OpenAI 的 Prompt Cache：
   相同前缀（系统提示词 + 项目结构）→ 缓存命中
   缓存部分价格降 80-90%
-  
+
 实践：
   保持对话连续性（同一 session）
   → 系统提示词只算一次
