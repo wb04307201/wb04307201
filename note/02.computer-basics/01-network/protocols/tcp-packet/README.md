@@ -101,5 +101,6 @@ URG  ACK  PSH  RST  SYN  FIN
 - [OSI 模型](../../osi-model/README.md)
 - [TCP/IP 模型](../../tcp-ip-model/README.md)
 - [常见协议](../README.md)
+- 面试深挖版：[`TCP 三次握手四次挥手`](../../../../13.split-hairs/02.computer-basics/tcp-handshake-teardown/README.md) — 状态机 + TIME_WAIT/CLOSE_WAIT + 面试话术
 
 ← [返回: 计算机基础 · tcp-packet](README.md)

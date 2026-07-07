@@ -61,32 +61,95 @@ module:
 
 ## 四、TCP 3 次握手 + 4 次挥手
 
+> 🔗 面试深挖版：[`TCP 三次握手四次挥手`](../../../../13.split-hairs/02.computer-basics/tcp-handshake-teardown/README.md) — 状态机 + 10 个深挖问题 + TIME_WAIT/CLOSE_WAIT 排查
+
 ### 4.1 3 次握手（建立连接）
 
 ```
-客户端               服务端
-  │   SYN, seq=x      →       │  ① 客户端请求连接
-  │   ← SYN+ACK, seq=y, ack=x+1  │  ② 服务端确认
-  │   ACK, seq=x+1, ack=y+1  →   │  ③ 客户端确认
-  │                            │
-  └──── 连接建立 ──────┘
+客户端（CLOSED）                              服务端（LISTEN）
+    │                                            │
+    │  ① SYN, seq=x                              │
+    │  ─────────────────────────────────────────→ │
+    │  状态: SYN-SENT                             │ 状态: SYN-RCVD
+    │                                            │
+    │  ② SYN+ACK, seq=y, ack=x+1                 │
+    │  ←───────────────────────────────────────── │
+    │                                            │
+    │  ③ ACK, seq=x+1, ack=y+1                   │
+    │  ─────────────────────────────────────────→ │
+    │  状态: ESTABLISHED                          │ 状态: ESTABLISHED
+    │                                            │
+    └──────── 连接建立，开始传输数据 ────────────┘
 ```
+
+**为什么是 3 次而不是 2 次？** 两次握手无法确认客户端的接收能力。如果客户端发了一个过期的 SYN，服务端在两次握手中会错误地建立连接并浪费资源。第 3 次 ACK 确保双方都确认了发送和接收能力。
 
 ### 4.2 4 次挥手（断开连接）
 
 ```
-客户端               服务端
-  │   FIN, seq=u       →       │  ① 客户端请求关闭
-  │   ← ACK, seq=v, ack=u+1    │  ② 服务端确认
-  │   ← FIN, seq=w, ack=u+1   │  ③ 服务端也关闭
-  │   ACK, seq=u+1, ack=w+1 →  │  ④ 客户端确认
-  │                            │
-  └──── 连接关闭 ──────┘
+客户端（ESTABLISHED）                          服务端（ESTABLISHED）
+    │                                            │
+    │  ① FIN, seq=u                              │
+    │  ─────────────────────────────────────────→ │
+    │  状态: FIN-WAIT-1                           │ 状态: CLOSE-WAIT
+    │                                            │ （可能还有数据要发）
+    │  ② ACK, seq=v, ack=u+1                     │
+    │  ←───────────────────────────────────────── │
+    │  状态: FIN-WAIT-2                           │
+    │                                            │
+    │  ③ FIN, seq=w, ack=u+1                     │
+    │  ←───────────────────────────────────────── │
+    │                                            │ 状态: LAST-ACK
+    │  ④ ACK, seq=u+1, ack=w+1                   │
+    │  ─────────────────────────────────────────→ │
+    │  状态: TIME-WAIT（2MSL）                     │ 状态: CLOSED
+    │  状态: CLOSED                               │
+    └──────── 连接关闭 ──────────────────────────┘
 ```
 
-**为什么 3 次握手而 4 次挥手？**
-- 握手：SYN + ACK 可以合并（双向）
-- 挥手：FIN + ACK 不能合并（可能还有数据要发）
+**为什么挥手要 4 次而握手只要 3 次？** TCP 是全双工的，每个方向的关闭需要独立确认。握手时 SYN+ACK 可以合并；挥手时被动方收到 FIN 后可能还有数据要发，ACK 和 FIN 不能合并。
+
+### 4.3 TCP 连接状态机
+
+| 状态 | 含义 | 触发条件 |
+|------|------|---------|
+| **CLOSED** | 初始 / 最终状态 | — |
+| **LISTEN** | 服务端等待连接 | `bind()` + `listen()` |
+| **SYN-SENT** | 客户端已发 SYN | 发送 SYN |
+| **SYN-RCVD** | 服务端收到 SYN | 收到 SYN + 发送 SYN+ACK |
+| **ESTABLISHED** | 连接已建立 | 三次握手完成 |
+| **FIN-WAIT-1** | 主动方已发 FIN | 发送 FIN |
+| **FIN-WAIT-2** | 主动方收到 ACK | 收到对方的 ACK |
+| **CLOSE-WAIT** | 被动方等待应用关闭 | 收到 FIN + 发送 ACK |
+| **LAST-ACK** | 被动方已发 FIN | 发送 FIN |
+| **TIME-WAIT** | 主动方等待 2MSL | 收到 FIN + 发送 ACK |
+
+### 4.4 TIME_WAIT 与 CLOSE_WAIT
+
+| 维度 | TIME_WAIT | CLOSE_WAIT |
+|------|-----------|------------|
+| **在哪方** | 主动关闭方 | 被动关闭方 |
+| **持续时长** | 2MSL（60~120 秒） | 直到应用调 `close()` |
+| **大量堆积说明** | 短连接太多（正常） | **代码 bug**（没 close） |
+| **解决方式** | `tcp_tw_reuse` + 连接池 | **修代码**（finally 里 close） |
+
+### 4.5 生产调优
+
+```bash
+# TIME_WAIT 优化（允许复用 TIME_WAIT 状态的端口）
+sysctl -w net.ipv4.tcp_tw_reuse=1
+
+# SYN Flood 防御（默认开启）
+sysctl -w net.ipv4.tcp_syncookies=1
+
+# 半连接队列大小
+sysctl -w net.ipv4.tcp_max_syn_backlog=2048
+
+# 排查 CLOSE_WAIT
+ss -tn state close-wait -p
+```
+
+> ⚠️ `tcp_tw_recycle` 在 Linux 4.12+ 已被移除（NAT 环境下有严重 bug），不要使用。
 
 ---
 
