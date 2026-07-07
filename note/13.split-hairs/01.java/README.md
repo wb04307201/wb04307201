@@ -16,11 +16,11 @@ question:
 
 # Java 咬文嚼字
 
-> Java 高频面试题与细节深挖，对齐主模块 [`01.java`](../../01.java/)。34 篇分集合 / 并发 / JVM / 语言基础 / 对象类型 / 设计模式 / 综合 7 组，覆盖 90% 后端面试 Java 高频题。
+> Java 高频面试题与细节深挖，对齐主模块 [`01.java`](../../01.java/)。36 篇分集合 / 并发 / JVM / 语言基础 / 对象类型 / 设计模式 / 综合 7 组，覆盖 90% 后端面试 Java 高频题。
 
 ---
 
-## 文章清单（共 35 篇）
+## 文章清单（共 36 篇）
 
 ### 集合与数据结构
 | 主题 | 难度 | 核心问题 |
@@ -63,6 +63,7 @@ question:
 | [String/Builder/Buffer](string-builder-buffer/) | ⭐⭐⭐ | 字符串拼接选型指南 |
 | [StringBuilder 重用](reuse-of-stringbuilder/) | ⭐⭐ | 循环中字符串拼接优化 |
 | [final/finally/finalize](final-finally-finalize/) | ⭐⭐⭐ | 三个关键字的区别与用法 |
+| [Error vs Exception](error-vs-exception/) | ⭐⭐⭐ | Error 和 Exception 的 6 维度对比 + 反模式 |
 | [SPI 机制](spi/) | ⭐⭐⭐⭐ | Service Provider Interface 扩展机制 |
 
 ### 对象与类型
