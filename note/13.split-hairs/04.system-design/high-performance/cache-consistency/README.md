@@ -213,21 +213,103 @@ public class CacheSyncConsumer {
 
 ---
 
-## 六、面试话术（30 秒版）
+## 六、面试话术（90 秒版）
 
-> "缓存与 DB 一致性是经典问题。主流方案是 **Cache Aside：先更新 DB，再删缓存**。
+> "**单级缓存**（Redis + DB）：主流方案是 **Cache Aside：先更新 DB，再删缓存**。不一致场景有 3 种：删缓存失败（重试）、先删缓存后更新 DB（绝对避免）、读写并发旧值入缓存（延迟双删或 Binlog 监听）。生产方案：中小企业用 Cache Aside + TTL 兜底，大型企业用 **Canal 监听 Binlog + MQ 异步删缓存**。
 >
-> 不一致场景主要有 3 种：
-> 1. 删缓存失败 → 重试机制
-> 2. 先删缓存后更新 DB → **绝对避免**
-> 3. 读写并发导致旧值入缓存 → 延迟双删或 Binlog 监听
+> **多级缓存**（L1 Caffeine + L2 Redis + L3 DB）：核心难题是 L1 是 JVM 本地缓存，每个实例独立，更新后无法通知其他实例。4 种方案：**短 TTL**（最简单，接受短暂不一致）、**Redis Pub/Sub**（最常用，发布失效消息所有实例订阅清 L1）、**MQ 广播**（RocketMQ 广播消费）、**ZK Watcher**（强一致但复杂）。推荐 Pub/Sub + 短 TTL 兜底。
 >
-> **生产方案**：
-> - 中小项目：Cache Aside + TTL 兜底
-> - 大型企业：**Canal 监听 Binlog + MQ 异步删缓存**，业务无侵入
-> - 强一致场景：避免缓存，直读 DB
+> 写操作顺序：更新 DB → 删 Redis → 发 Pub/Sub 失效消息 → 所有实例清 L1。Pub/Sub 丢消息靠 TTL 兜底，不一致窗口 ≤ TTL 时长。
 >
-> 本质上，**缓存一致性是最终一致**，无法做到强一致，只能在延迟和复杂度间权衡。"
+> 本质上，**缓存一致性是最终一致**，多级缓存只是在'不一致窗口大小'和'系统复杂度'之间权衡。"
+
+---
+
+## 六级进阶：多级缓存一致性（L1 + L2 + L3）
+
+> 上面讲的是 Redis-DB 单级一致性。面试官追问：**"如果加了本地缓存（Caffeine），怎么保证多级缓存一致？"**
+
+### 多级缓存架构
+
+```
+请求 → L1: Caffeine（JVM 本地，< 1ms）
+          ↓ miss
+       L2: Redis（分布式，< 10ms）
+          ↓ miss
+       L3: MySQL（数据库，< 100ms）
+```
+
+### 多级缓存的核心难题
+
+单级缓存（Redis-DB）只有一致性窗口。**多级缓存多了一个维度**：L1 是每个 JVM 实例独立的，更新 DB 后**无法自动通知其他实例的 L1**。
+
+```
+实例 A：更新 DB → 删 Redis → 清自己的 L1 ✅
+实例 B：L1 还是旧值 → 读到过期数据 ❌（直到 TTL 过期）
+```
+
+### 4 种 L1 失效方案
+
+| 方案 | 实现 | 一致性 | 复杂度 | 适用 |
+|------|------|--------|--------|------|
+| **短 TTL** | L1 设 1-30 秒 TTL | 弱（最多 TTL 内不一致） | 低 | 读多写少，可接受短暂不一致 |
+| **Redis Pub/Sub** | 更新后发布失效消息，所有实例订阅并清 L1 | 中 | 中 | **最常用**，中型集群 |
+| **MQ 广播** | 更新后发 MQ（RocketMQ 广播模式），消费者清 L1 | 中 | 中 | 已有 MQ 基础设施 |
+| **Zookeeper Watcher** | ZK 节点变更触发所有实例失效 | 强 | 高 | 金融场景 |
+
+### Redis Pub/Sub 方案（推荐）
+
+```java
+// 1. 更新数据时，发布失效消息
+public void updateUser(User user) {
+    userMapper.update(user);          // 写 DB
+    redis.del("user:" + user.getId()); // 删 L2
+    // 发布失效通知（包括自己和其他实例）
+    redisTemplate.convertAndSend("cache:evict:user", user.getId().toString());
+}
+
+// 2. 所有实例订阅，清理 L1
+@Component
+public class L1CacheEvictListener {
+    @Autowired private Cache<String, Object> caffeineCache;
+
+    @Bean
+    public RedisMessageListenerContainer listenerContainer(
+            RedisConnectionFactory cf) {
+        RedisMessageListenerContainer container = new RedisMessageListenerContainer();
+        container.setConnectionFactory(cf);
+        container.addMessageListener((msg, pattern) -> {
+            String key = new String(msg.getBody());
+            caffeineCache.invalidate("user:" + key);  // 清本地 L1
+        }, new ChannelTopic("cache:evict:user"));
+        return container;
+    }
+}
+```
+
+### 多级缓存的写操作顺序
+
+```text
+推荐顺序（Cache Aside 多级版）：
+1. 更新 DB（先保证持久化）
+2. 删除 L2（Redis DEL）
+3. 发布 Pub/Sub 失效消息 → 所有实例清 L1
+
+注意：
+- 不要先清 L1 再更新 DB（并发读写会导致旧值回填）
+- Pub/Sub 消息是 fire-and-forget，丢消息时靠短 TTL 兜底
+```
+
+### 多级缓存面试加分点
+
+| 问题 | 高分回答 |
+|------|---------|
+| "Pub/Sub 消息丢了怎么办？" | L1 短 TTL（30s）兜底，不一致窗口 ≤ 30 秒 |
+| "实例很多（>100）Pub/Sub 扛得住吗？" | 换 MQ 广播模式（RocketMQ 广播消费），或只对热点 key 做 L1 |
+| "L1 用强一致方案行不行？" | Zookeeper Watcher 可以，但延迟高 + 运维成本大，大多数场景不值得 |
+| "怎么验证多级缓存一致性？" | 监控 L1/L2 命中率 + 定时对账脚本（对比 L1 值 vs DB 值）|
+
+> 📚 **深度阅读**：[`缓存设计模式 §9.2`](../../../../04.system-design/04-high-performance/cache-patterns/README.md) — 5 大反模式 + Java/Spring 视角深度分析 | [`Spring 多级缓存实现`](../../../../06.spring/03-data/cache/multi-level.md) — CompositeCacheManager + 自定义 TwoLevelCache
 
 ---
 
@@ -236,6 +318,9 @@ public class CacheSyncConsumer {
 - 主模块：[`03.database`](../../../03.database/) — 数据库与缓存
 - [缓存穿透/击穿/雪崩](../../../../03.database/06-cache/README.md) — 缓存设计模式与问题解决方案
 - [分布式事务](../../distributed/distributed-transaction/README.md) — 跨服务一致性方案
+- [缓存设计模式 §9.2](../../../../04.system-design/04-high-performance/cache-patterns/README.md) — 多级缓存 5 大反模式 + Java/Spring 深度分析
+- [Spring 多级缓存实现](../../../../06.spring/03-data/cache/multi-level.md) — CompositeCacheManager + TwoLevelCache 代码实现
+- [缓存降级](../../../06.spring/cache-degradation/README.md) — Redis 故障时的降级策略
 
 ## 相关章节
 
