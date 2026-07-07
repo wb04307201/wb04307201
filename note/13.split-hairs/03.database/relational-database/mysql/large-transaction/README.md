@@ -225,4 +225,8 @@ SET GLOBAL innodb_long_query_time = 5;
 
 > 📅 2026-06-28 · 咬文嚼字 · MySQL · ⭐⭐⭐⭐（高频面试 + 实战必会）
 
+## 相关章节
+
+- 扩容实战：[`分表扩容策略`](../../../sharding-resize/README.md) — 迁移过程中的事务控制与数据一致性
+
 ← [返回: 咬文嚼字 · large-transaction](README.md)

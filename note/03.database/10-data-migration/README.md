@@ -484,4 +484,6 @@ FROM source_db.users TABLESAMPLE BERNOULLI(0.1);  -- 0.1% 抽样
 
 ---
 
+**相关面试题**：[`分表扩容策略`](../../13.split-hairs/03.database/sharding-resize/README.md) — 翻倍扩容 + 双写过渡 + 灰度切换
+
 ← [返回 03.database 主模块](../README.md)

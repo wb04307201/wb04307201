@@ -279,5 +279,6 @@ public Product getProductWithRetry(Long productId, int maxRetries) {
 ## 相关章节
 
 - 深度阅读：[`03.database`](../../03.database/README.md) — 主模块详细内容
+- 扩容实战：[`分表扩容策略`](../sharding-resize/README.md) — 增量同步延迟在 resharding 中的影响
 
 ← [返回: 咬文嚼字 · replication-lag](README.md)
