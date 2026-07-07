@@ -16,11 +16,11 @@ question:
 
 # 数据库咬文嚼字
 
-> 数据库高频面试题与细节深挖，对齐主模块 [`03.database`](../../03.database/)。22 篇真题聚焦 MySQL（索引 / 锁 / 事务 / MVCC / JOIN）、Redis（持久化 / 淘汰 / 集群 / 大 Key）、NoSQL 三大方向的高频陷阱。
+> 数据库高频面试题与细节深挖，对齐主模块 [`03.database`](../../03.database/)。23 篇真题聚焦 MySQL（索引 / 锁 / 事务 / MVCC / JOIN）、Redis（持久化 / 淘汰 / 集群 / 大 Key）、NoSQL 三大方向的高频陷阱。
 
 ---
 
-## 文章清单（共 22 题 + 7 个二级目录索引页）
+## 文章清单（共 23 题 + 7 个二级目录索引页）
 
 ### MySQL 关系型数据库
 | 主题 | 难度 | 核心问题 |
@@ -37,6 +37,11 @@ question:
 | [批量插入 batch 性能对比](relational-database/mysql/batch-operation/README.md) | ⭐⭐⭐⭐ | JDBC batch + rewriteBatchedStatements + LOAD DATA |
 | [大事务的危害与拆分](relational-database/mysql/large-transaction/README.md) | ⭐⭐⭐⭐ | 5 大危害（锁/Undo/binlog/连接池/MVCC） + 拆分策略 |
 | [索引失效的 10 种场景](mysql/index-failure/) | ⭐⭐⭐⭐⭐ | LIKE 左通配 / 函数 / 类型转换 / OR / 最左前缀 |
+
+### 分库分表与高可用
+| 主题 | 难度 | 核心问题 |
+|------|------|---------|
+| [分表扩容策略](sharding-resize/) | ⭐⭐⭐⭐⭐ | 翻倍扩容 + 双写过渡 + 灰度切换 + 回滚方案 |
 
 ### MySQL 深入
 | 主题 | 难度 | 核心问题 |
