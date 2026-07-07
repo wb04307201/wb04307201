@@ -16,13 +16,13 @@ question:
 
 # AI 咬文嚼字
 
-> AI 高频面试题与新概念深挖，对齐主模块 [`11.ai`](../../11.ai/)。15 题 = 6 篇纯面试题（幻觉 / 思维 / 生产力悖论 / 代码流失 / ROI / Agent Memory / Agent 性能量化）+ 9 篇主模块配套精炼版（Prompt / Context / Harness / Loop / Transformer / Token / RAG / Function Calling / Agent DAG）。
+> AI 高频面试题与新概念深挖，对齐主模块 [`11.ai`](../../11.ai/)。16 题 = 7 篇纯面试题（幻觉 / 思维 / 生产力悖论 / 代码流失 / ROI / Agent Memory / Agent 性能量化 / Token 经济学）+ 9 篇主模块配套精炼版（Prompt / Context / Harness / Loop / Transformer / Token / RAG / Function Calling / Agent DAG）。
 
 > ⚠️ **定位说明**：本目录所有文章都是**面试深挖版**（陷阱 + 反直觉 + 30 秒话术，50-80 行）。完整概念文档见主模块对应位置（README 末尾"深度阅读"区有链接）。
 
 ---
 
-## 文章清单（17 题 = 6 篇纯面试题 + 11 篇精炼版）
+## 文章清单（18 题 = 7 篇纯面试题 + 11 篇精炼版）
 
 ### 🎯 真正的面试题（一题一文）
 
@@ -35,6 +35,7 @@ question:
 | [AI 编程 ROI 度量](ai-coding-roi/) | ⭐⭐⭐⭐ | DORA 4 指标 + SPACE 5 维度 + 改进策略 |
 | [Agent Memory 分类](agent-memory-classification/) | ⭐⭐⭐⭐ | 时间×认知×工程三维分类法 + 5 大框架 + 30/60/90 秒话术 |
 | [如何量化 Agent 性能](agent-performance-evaluation/) | ⭐⭐⭐⭐⭐ | 6 大指标维度（任务完成率/步骤效率/工具使用/成本/满意度/稳定性）+ 5 种评估方法 |
+| [AI 编程 Token 经济学](ai-coding-token-economics/) | ⭐⭐⭐⭐ | 9.6 万 Token 中位数 + 杠杆率 + Token 悖论 + 企业案例 |
 
 ### 📚 概念精炼版（主模块配套面试深挖）
 
