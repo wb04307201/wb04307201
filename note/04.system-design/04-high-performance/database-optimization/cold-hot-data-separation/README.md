@@ -57,4 +57,6 @@ Hbase（常用）、RocksDB、Doris、Cassandra
 
 ---
 
+**相关面试题**：[`垂直分表拆分判定`](../../../../../13.split-hairs/03.database/vertical-table-split/README.md) — 列级拆分（字段冷热分离）vs 行级冷热分离
+
 ← [返回 数据库优化](../README.md)
