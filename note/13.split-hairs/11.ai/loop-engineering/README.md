@@ -71,6 +71,12 @@ Task → Agent → 检查结果
 ### 陷阱 4：让 Context 累积不重置
 - **真相**：每次循环都把错误堆进 Context，最终超窗口。应该**重置 Context + 关键信息**，而非累积。
 
+### 陷阱 5：以为 Loop 只能累积 Context
+- **真相**：Ralph Wiggum Loop 证明了 **Fresh Context 架构** 完全可行 —— 每轮 Agent 拿到全新 context window，状态靠**文件系统 + git** 持久化，彻底避免 context 退化。
+
+### 陷阱 6：不知道 "Bash Loop vs Plugin" 两种架构
+- **真相**：Agent 循环有两种架构 —— **Bash Loop**（外部 while 循环，每轮 fresh context，如 open-ralph-wiggum）和 **Plugin**（Agent 内部循环，context 累积，如 Claude Code `/loop`）。前者适合长任务，后者设置更简单。
+
 ---
 
 ## 三、4 大失败模式 + 防护
@@ -115,6 +121,8 @@ Task → Agent → 检查结果
 >
 > 4 大失败模式：无限循环、上下文爆炸、幻觉放大、资源耗尽。防护手段：Max attempts + 超时 + Context 重置 + cheaper 模型验证。
 >
+> **实战落地**：Ralph Wiggum Loop 是 2025-2026 最热门的开源实现，核心洞察是 **Fresh Context 架构** —— 每轮 Agent 拿到全新 context window，状态靠文件系统 + git 持久化，彻底避免 context 退化。两种架构：Bash Loop（外部 while 循环，fresh context）vs Plugin（Agent 内部循环，context 累积）。
+>
 > 何时用 Loop vs DAG：模糊探索任务用 Loop，确定性流程用 DAG。复杂业务用 Loop + DAG 混合。
 >
 > 反直觉：Loop 的"重复"不是低效，是数据收集；信任 Agent 但 Verifier 兜底。
@@ -124,6 +132,7 @@ Task → Agent → 检查结果
 ## 七、深度阅读
 
 - 主模块：[Loop Engineering](../../../11.ai/03-engineering/loop-engineering/README.md)
+- 🆕 实战工具：[Ralph Wiggum Loop](../../../11.ai/03-engineering/loop-engineering/ralph-wiggum-loop.md) — Fresh Context 循环 CLI
 - 同栏目：[Harness Engineering](../harness-engineering/README.md)
 - 关联：[Agent 架构](../agent-dag-vs-react/README.md)
 - 实战：[生产级 Agent](../../../11.ai/03-engineering/production-agent/README.md)

@@ -1,0 +1,265 @@
+> ⬅️ [返回目录](README.md)
+
+# Codex CLI 环境安装步骤
+
+> 本文档说明 Codex CLI 如何安装并配置阿里云百炼平台模型 API
+
+百炼提供的 OpenAI 兼容服务支持以下千问系列模型：
+
+| **模型系列**             | **支持的模型名称（model）**                                                                                             |
+|----------------------|----------------------------------------------------------------------------------------------------------------|
+| 千问Max （部分模型支持思考模式）   | qwen3.7-max、qwen3.6-max-preview（支持思考模式）、qwen3-max、qwen3-max-2026-01-23（支持思考模式）                   |
+| 千问Plus               | qwen3.7-plus、qwen3.6-plus、qwen3.5-plus、qwen-plus、qwen-plus-latest              |
+| 千问Flash              | qwen3.6-flash、qwen3.6-flash-2026-04-16、qwen3.5-flash、qwen-flash |
+| 千问Coder （不支持思考模式）    | qwen3-coder-next、qwen3-coder-plus、qwen3-coder-flash                                |
+| 千问VL （不支持思考模式）       | qwen3-vl-plus、qwen3-vl-flash、qwen-vl-max、qwen-vl-plus                                                          |
+| 第三方模型 （仅支持华北2（北京）地域） | kimi-k2.5、kimi-k2-thinking、glm-5.1、glm-5、glm-4.7、MiniMax-M2.5、MiniMax-M2.1                       |
+
+
+## **1. 安装 Codex**
+
+1.  安装或更新 [Node.js](https://nodejs.org/en/download/)（v18.0 或更高版本）。
+    > - windows点击Windows Installer (.msi)即可开始下载
+    > - 除安装位置外不要修改其他配置
+
+2.  Node.js安装后打开终端中并执行下列命令，安装 Codex CLI。
+
+    ```
+    npm install -g @openai/codex
+    ```
+
+3.  运行以下命令验证安装。若有版本号输出，则表示安装成功。
+
+    ```
+    codex --version
+    ```
+
+
+## **2. Codex 常用命令**
+
+### 基本使用
+
+```bash
+# 启动交互式对话
+codex
+
+# 直接传入提示词
+codex "解释 README.md"
+
+# 在当前目录执行编码任务
+codex "给这个项目添加单元测试"
+```
+
+### 常用启动参数
+
+| 参数 | 说明 | 示例 |
+|------|------|------|
+| `-m`, `--model` | 指定模型 | `codex -m qwen3.7-max` |
+| `-q`, `--quiet` | 静默模式，减少输出 | `codex -q "分析代码"` |
+| `--full-auto` | 全自动模式，跳过所有确认 | `codex --full-auto "重构代码"` |
+| `--approval-mode` | 审批模式（suggest/auto-edit/full-auto） | `codex --approval-mode auto-edit` |
+
+### 权限模式说明
+
+Codex 有三种审批模式：
+
+- **suggest**（默认）：每次操作前会提示确认
+- **auto-edit**：文件编辑自动确认，命令执行仍需确认
+- **full-auto**：所有操作自动执行（沙箱内运行）
+
+在交互式使用时建议使用 suggest 模式，在自动化脚本或可信环境中可使用 `--full-auto`。
+
+---
+
+## **3. 配置百炼模型**
+
+1.  编辑配置文件 `~/.codex/config.toml`。
+
+### CMD
+
+1.  创建目录
+
+    ```
+    if not exist "%USERPROFILE%\.codex" mkdir "%USERPROFILE%\.codex"
+    ```
+
+2.  创建并打开文件
+
+    ```
+    notepad "%USERPROFILE%\.codex\config.toml"
+    ```
+
+
+### PowerShell
+    
+1.  创建目录
+    
+    ```
+    mkdir -Force $HOME\.codex
+    ```
+    
+2.  创建并打开文件
+    
+    ```
+    notepad $HOME\.codex\config.toml
+    ```
+
+2.  编辑配置文件。Codex 支持两种 API 接入方式，根据模型选择：
+
+### Responses API（推荐，适用于 qwen3.7-max 等新模型）
+
+```toml
+model_provider = "Model_Studio"
+model = "qwen3.7-max"
+
+[model_providers.Model_Studio]
+name = "Model_Studio"
+base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+env_key = "OPENAI_API_KEY"
+wire_api = "responses"
+```
+
+### Chat/Completions API（适用于 qwen3.6-plus 等其他模型）
+
+> ⚠️ Codex 新版本使用 Responses API，不支持 `wire_api = "chat"`。如需使用 Chat API，需安装旧版本：
+> ```
+> npm install -g @openai/codex@0.80.0
+> ```
+
+```toml
+model_provider = "Model_Studio"
+model = "qwen3.6-plus"
+
+[model_providers.Model_Studio]
+name = "Model_Studio"
+base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+env_key = "OPENAI_API_KEY"
+wire_api = "chat"
+```
+
+3.  配置环境变量。将 YOUR\_API\_KEY 替换为[阿里云百炼 API Key](https://help.aliyun.com/zh/model-studio/get-api-key)。
+
+### Windows（PowerShell）
+
+```powershell
+# 临时设置（当前会话有效）
+$env:OPENAI_API_KEY = "YOUR_API_KEY"
+
+# 永久设置
+[System.Environment]::SetEnvironmentVariable("OPENAI_API_KEY", "YOUR_API_KEY", "User")
+```
+
+### macOS / Linux
+
+```bash
+# 将 YOUR_API_KEY 替换为百炼 API Key
+echo 'export OPENAI_API_KEY="YOUR_API_KEY"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+## **4. 验证配置**
+
+配置完成后，新建终端窗口，执行以下命令启动 Codex：
+
+```
+codex
+```
+
+如果正常进入对话界面，说明配置成功。
+
+## **5. (可选)添加 MCP 工具**
+
+Codex CLI 支持 MCP 协议。打开并编辑配置文件 `~/.codex/config.toml`，在文件末尾添加 MCP 服务器配置：
+
+```toml
+# ... 前面的 model_provider 配置 ...
+
+[mcp_servers.time]
+command = "uvx"
+args = ["mcp-server-time", "--local-timezone=Asia/Shanghai"]
+
+[mcp_servers.playwright]
+command = "npx"
+args = ["-y", "@playwright/mcp@latest"]
+
+[mcp_servers.chrome-devtools]
+command = "npx"
+args = ["-y", "chrome-devtools-mcp@latest"]
+```
+
+MCP 是一种开放协议，只要是符合该协议开发的工具都可以接入 AI Agent，因此可能需要适配多种语言的环境。
+
+### 1. **Node.js + npx**
+
+**npx 说明**
+    - npx 是 Node.js 包执行工具，随 npm 5.2+ 自动安装
+    - 用于直接运行 npm 包而无需全局安装
+    - 示例：`npx @playwright/mcp@latest`
+
+> npx已集成在nodejs中，只需验证安装成功`npx --version`
+
+
+### 2. **Python + uv**
+
+**uv 介绍**
+    - uv 是一个超快速的 Python 包管理器和项目管理器
+    - 比 pip 快 10-100 倍
+    - 支持虚拟环境管理、依赖解析等
+    - 可用于运行 MCP 服务器：`uvx mcp-server-time`
+
+安装 uv：
+```powershell
+pip install uv
+```
+
+验证安装：
+```powershell
+uv --version
+```
+
+### 3. **Java + jbang**
+
+**JBang 介绍**
+    - JBang 允许无需安装 JDK 或配置项目即可运行 Java 代码
+    - 适合快速原型开发和脚本编写
+    - 可直接运行 Maven 坐标的 Java 应用
+
+安装 JBang（PowerShell）：
+```powershell
+iex "& { $(iwr https://ps.jbang.dev) } app setup"
+```
+
+验证安装：
+```powershell
+jbang --version
+```
+
+## **6. 常见问题**
+
+### 报错 `wire_api = chat is no longer supported` 怎么办？
+
+**原因**：Codex 新版本使用 Responses API，不支持 `wire_api = "chat"` 配置。
+
+**解决方案**：
+- 将 `wire_api` 改为 `responses`，并将 `model` 改为支持 Responses API 的模型（如 `qwen3.7-max`）
+- 或降级到旧版本：`npm install -g @openai/codex@0.80.0`
+
+### 报错 `unexpected status 401 Unauthorized` 怎么办？
+
+**原因**：API Key 复制不完整、有空格或拼写错误，或 API Key 已过期。
+
+**解决方案**：
+- 重新复制 API Key，确保完整且无空格
+- 前往[百炼控制台](https://bailian.console.aliyun.com/)确认 API Key 是否有效
+- 如仍报错，可重置 API Key 后重新配置
+
+### 报错 `unexpected status 404 Not Found` 怎么办？
+
+**原因**：配置文件中的 `base_url` 或 `wire_api` 填写错误。
+
+**解决方案**：确认 `base_url` 为 `https://dashscope.aliyuncs.com/compatible-mode/v1`，`wire_api` 与所选模型匹配。
+
+---
+
+> - 📝 Codex 调用阿里云百炼配置：`https://help.aliyun.com/zh/model-studio/codex`
+> - 📘 官方文档：`https://openai.com/index/introducing-codex/`
