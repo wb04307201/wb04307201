@@ -45,6 +45,7 @@ description: Use when user asks "what should be improved in note" or requests a 
 | 6 | **内容补充缺口** | 找到深度 ≤ 50 行的 README（可能是占位）|
 | 7 | **架构/分类/命名** | 目录命名风格不一致 / 编号缺失 |
 | 8 | **其他**（PNG / 脚本 / 杂项）| `find note -name "*.png" \| xargs grep -L "!"` |
+| 9 | **系列完整性** | 扫描"声明了 N 个子章节但实际文件缺失"的系列（见 Step 1.9） |
 
 ## 5 步核心流程
 
@@ -123,6 +124,40 @@ find note -type d -name "*engineer*" -o -name "*memory*" -o -name "*prompt*" | s
 # 6. PNG 孤儿检测
 find note -name "*.png" | wc -l
 grep -rl "\.png" note/ | wc -l  # 引用 PNG 的文件数
+
+# 9. 系列完整性审计（声明了但没写的子章节）
+# 原理：找包含"子章节导航"或目录表的 README，提取声明的文件名，
+# 验证文件是否实际存在
+echo "=== 系列完整性审计 ==="
+for readme in $(grep -rl "子章节导航\|## .*目录\|## .*文章清单\|系列导航" note/ 2>/dev/null); do
+  dir=$(dirname "$readme")
+  # 提取表格中声明的 .md 链接
+  grep -oE '\[.*?\]\(([^)]+\.md)\)' "$readme" 2>/dev/null | \
+    grep -oE '\(([^)]+\.md)\)' | sed 's/[()]//g' | while read target; do
+    abs_target=$(realpath -m "$dir/$target" 2>/dev/null || echo "$dir/$target")
+    if [ ! -f "$abs_target" ]; then
+      echo "  ⚠ $readme 声明了 $target 但文件不存在"
+    fi
+  done
+done
+
+# 9.1 系列内兄弟互链完整性审计
+# 原理：找有编号文件（01-xxx.md）的目录，检查每篇是否链向同目录其他文件
+echo "=== 系列内兄弟互链审计 ==="
+for dir in $(find note -type d -exec sh -c 'ls "$1"/[0-9]*.md 2>/dev/null | head -1 | grep -q . && echo "$1"' _ {} \;); do
+  file_count=$(ls "$dir"/[0-9]*.md 2>/dev/null | wc -l)
+  [ "$file_count" -lt 2 ] && continue
+  echo "系列: $dir ($file_count 篇)"
+  for file in $(ls "$dir"/[0-9]*.md 2>/dev/null); do
+    for other in $(ls "$dir"/[0-9]*.md 2>/dev/null); do
+      [ "$file" = "$other" ] && continue
+      other_base=$(basename "$other")
+      if ! grep -q "$other_base" "$file" 2>/dev/null; then
+        echo "  ⚠ $(basename $file) 未链向 $other_base"
+      fi
+    done
+  done
+done
 ```
 
 ### Step 2: 排除已修复项（避免重复报告）
@@ -142,7 +177,7 @@ grep -rl "\.png" note/ | wc -l  # 引用 PNG 的文件数
 | 等级 | 影响 | 工作量 | 例子 |
 |------|------|--------|------|
 | **P0** | 高（用户易发现硬伤） | 1-2 小时 | 数字不一致 / H1 数字前缀 / 重复目录 / broken link |
-| **P1** | 中（导航友好 / 深度） | 半天 | 回链覆盖率 / 同名目录歧义 / 孤儿 PNG / 双入口 |
+| **P1** | 中（导航友好 / 深度） | 半天 | 回链覆盖率 / 同名目录歧义 / 孤儿 PNG / 双入口 / 系列子章节缺失 / 兄弟不互链 |
 | **P2** | 中（结构优化） | 1 天 | 子目录结构重整 / 占位 README 标注 |
 | **P3** | 低（自阅读） | 1-2 小时 | CONTRIBUTING TOC / SPEC 互链 / 脚本 README |
 
