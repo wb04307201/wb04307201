@@ -67,6 +67,8 @@ Q：在构建 AI Agent 系统时，ReAct 和 Plan-and-Execute 是两种主流的
 | 02 | [Plan-and-Execute 深度](02-plan-and-execute-deep-dive.md) | Plan 怎么做？RePlan / Adaptive / Plan-Repair 怎么选？失败如何修复？ |
 | 03 | [6 维对比](03-six-dimensions-comparison.md) | 4 模式在 6 维度上的完整对比 + 各模式典型代表 |
 | 04 | [选型决策树](04-selection-decision-tree.md) | "我是 X 场景，应该选 Y 模式"的决策流程 + 反模式 |
+| 05 | [DAG 深度](05-dag-deep-dive.md) | 节点设计 + 错误恢复 + Loop 节点 + 反模式 |
+| 06 | [Multi-Agent 深度](06-multi-agent-deep-dive.md) | 通信协议 + 协调者模式 + 循环调用防护 + 反模式 |
 
 ---
 
