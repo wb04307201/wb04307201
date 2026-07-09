@@ -20,12 +20,13 @@ question:
 
 ---
 
-## 文章清单（共 1 题）
+## 文章清单（共 2 题）
 
 ### 网络与协议
 | 主题 | 难度 | 核心问题 |
 |------|------|---------|
 | [TCP 三次握手四次挥手](tcp-handshake-teardown/) | ⭐⭐⭐⭐ | 状态机 + 10 个深挖问题 + TIME_WAIT/CLOSE_WAIT |
+| 🆕 [SSE vs WebSocket](sse-vs-websocket/) | ⭐⭐⭐⭐ | AI 对话为什么选 SSE + 5 维对比 + 4 大理由 + 系统设计 |
 
 ---
 

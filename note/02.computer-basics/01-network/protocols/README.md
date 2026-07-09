@@ -24,6 +24,8 @@ module:
 | **UDP** | 传输层 | 无连接 | 不可靠 | 快 | 视频/游戏/DNS |
 | **HTTP** | 应用层 | 依赖 TCP | 依赖 TCP | — | 非加密网页 |
 | **HTTPS** | 应用层+安全 | 依赖 TCP | 依赖 TCP | 略慢 | 网银/登录/支付 |
+| **SSE** | 应用层 | HTTP 长连接 | 依赖 TCP | 快 | AI 对话流式推送 |
+| **WebSocket** | 应用层 | 独立协议(ws) | 依赖 TCP | 最快 | 聊天/协作/游戏 |
 
 ---
 
@@ -62,7 +64,7 @@ module:
 
 ---
 
-**深入阅读：** [HTTP 1.1→2→3 演进](http-evolution/) · [TCP 数据包结构](tcp-packet/)
+**深入阅读：** [HTTP 1.1→2→3 演进](http-evolution/) · [TCP 数据包结构](tcp-packet/) · 🆕 [SSE vs WebSocket 协议对比](sse-vs-websocket/)
 
 ---
 
