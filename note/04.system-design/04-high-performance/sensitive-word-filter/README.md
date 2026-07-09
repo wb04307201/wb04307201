@@ -11,7 +11,7 @@ module:
 
 > **一句话答案**：高并发敏感词过滤 = **AC 自动机（O(n) 单次扫描）+ 本地缓存（字典 + Bloom Filter）+ 分布式分片 + 异步队列削峰**。1000 QPS 单机够用，10 万 QPS 需要分布式架构。
 
-← [返回: 高性能设计](../README.md) · 算法基础：[string-algorithms/AC 自动机](../../../../02.computer-basics/02-algorithms/string-algorithms/03-ac-automaton.md)
+← [返回: 高性能设计](../README.md) · 算法基础：[string-algorithms/AC 自动机](../../../02.computer-basics/02-algorithms/string-algorithms/03-ac-automaton.md)
 
 ---
 
@@ -339,10 +339,10 @@ tokens.forEach(token -> ac.match(token));
 ## 9. 速查 · 关联资源
 
 - **变体绕过对抗**：[05-anti-evasion.md](05-anti-evasion.md) —— 6 大绕过手法 + 归一化流水线 + Unicode/繁简/谐音处理 + AI 语义兜底
-- **算法基础**：[string-algorithms/AC 自动机](../../../../02.computer-basics/02-algorithms/string-algorithms/03-ac-automaton.md) —— fail 指针构建 + Java 完整实现
+- **算法基础**：[string-algorithms/AC 自动机](../../../02.computer-basics/02-algorithms/string-algorithms/03-ac-automaton.md) —— fail 指针构建 + Java 完整实现
 - **面试题**：[13.split-hairs/02.computer-basics/sensitive-word-filter](../../../13.split-hairs/02.computer-basics/sensitive-word-filter/README.md) —— 5-7 道精选 Q&A
-- **应用场景**：[08.application-systems/cms/README.md](../../../../08.application-systems/cms/README.md) —— 内容管理系统中的内容审核
-- **餐厅叙事**：[12.story 联动](../../../../12.story/01-ai-agent-architecture.md) —— 阿明餐厅评论区敏感词审查
+- **应用场景**：[08.application-systems/cms/README.md](../../../08.application-systems/cms/README.md) —— 内容管理系统中的内容审核
+- **餐厅叙事**：[12.story 联动](../../../12.story/01-ai-agent-architecture.md) —— 阿明餐厅评论区敏感词审查
 
 ---
 
