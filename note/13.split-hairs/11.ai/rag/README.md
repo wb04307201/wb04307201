@@ -134,6 +134,31 @@ RAG 在**文档问答、低频更新场景**是最佳方案，但在 **AI Coding
 
 ---
 
+## 九、权限隔离：企业 RAG 的第一道关
+
+> 🔗 深度面试题：[`RAG 权限隔离设计`](../rag-permission-isolation/README.md) — 4 种隔离方案 + pre/post-filtering + ACL 同步 + 多租户 + 5 反模式
+
+企业 RAG 最容易出事故的不是"答错"，而是"让不该看到的人看到了"。
+
+### 权限过滤的两种核心方案
+
+| 方案 | 时机 | 安全性 | 缺点 |
+|------|------|--------|------|
+| **Pre-filtering** | 检索前加 metadata filter | ✅ 最高（无权文档不进入 Top-K） | 降低召回率 |
+| **Post-filtering** | 检索后剔除无权文档 | ⚠️ 可能泄露标题/摘要 | 结果不稳定 |
+
+**生产推荐**：Pre-filtering 做底线 + Post-filtering 做精校验 + Answer-level gate 防 LLM 推断泄露。
+
+### ACL 同步
+
+RAG 的权限必须与源系统（Google Drive / Slack / Confluence）保持一致：
+- **定时同步**（5 分钟）：拉取权限变更 → 更新向量库 metadata
+- **查询时校验**（兜底）：每次检索实时查权限
+
+> ⚠️ **反模式**：权限只在应用层做、权限不随文档更新、Post-filtering 当唯一方案、测试不覆盖权限场景。
+
+---
+
 > 📅 2026-06-30 · 咬文嚼字 · 企业 LLM 标配 · ⭐⭐⭐⭐⭐
 
 ← [返回: 咬文嚼字 · rag](README.md)

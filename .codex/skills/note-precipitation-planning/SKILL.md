@@ -37,7 +37,7 @@ description: Use when user asks where to add or update a topic in the project's 
 
 ## Project Context（必读）
 
-**note 目录位置**：仓库根目录的 note/（CWD 假设 = 项目根）
+**note 目录位置**：仓库根目录的 note/（assuming CWD = project root）
 
 **14 主模块**：
 - `01.java` / `02.computer-basics` / `03.database` / `04.system-design`
@@ -136,9 +136,9 @@ Commit 2: feat(<module>): 新增'<topic>'深度原理
 Commit 3: refactor(<module>): <related-chapter> 加反向链
 ```
 
-### Step 5: 选项呈现（用 AskUserQuestion，orchestrator 执行）
+### Step 5: 选项呈现（用 ask the user directly，orchestrator 执行）
 
-**关键**：如果作为 subagent 执行，**不能直接调 AskUserQuestion**，必须返回选项让 orchestrator 转交。
+**关键**：如果as a helper task 执行，**不能直接调 ask the user directly**，必须返回选项return structured output for the caller。
 
 **选项呈现要点**：
 1. **2-4 个选项**，每个选项 1-2 句说明
@@ -159,7 +159,7 @@ C. 双层 + 联动（最完整）
 D. 暂不沉淀
 ```
 
-### Step 6: 实施（dispatch subagent）
+### Step 6: 实施（break into sequential helper tasks）
 
 **实施规范**：
 - 严格遵循 plan 中定义的 commit 格式（`refactor(<slug>)` / `feat(<module>)` / `fix(<module>)`）
@@ -214,11 +214,11 @@ D. 暂不沉淀
 
 **修复**：Step 4 决策时**强制要求**双层/三层沉淀带互链；Step 7 自检"至少 2 个旧章节互链"
 
-### ❌ Mistake 5: subagent 调 AskUserQuestion 失败
+### ❌ Mistake 5: helper task 调 ask the user directly 失败
 
-**症状**：subagent 试图调 AskUserQuestion 但工具不可用 → 退化为写实施
+**症状**：helper task 试图调 ask the user directly 但工具不可用 → 退化为写实施
 
-**修复**：subagent **返回结构化选项**（不是直接调工具），让 orchestrator 转交用户
+**修复**：**返回结构化选项**（不是直接调工具），由主任务转交用户
 
 ### ❌ Mistake 6: 缺 commit 策略
 
@@ -283,7 +283,7 @@ done
 
 ## Output Format
 
-**作为 orchestrator**（直接面对用户）：
+**as the main task**（直接面对用户）：
 
 ```
 ## 📋 现状盘点
@@ -298,10 +298,10 @@ done
 ## ❓ 选项
 （2-4 个选项 + 推荐项放第一）
 
-[用 AskUserQuestion 呈现]
+[用 ask the user directly 呈现]
 ```
 
-**作为 subagent**（让 orchestrator 转交）：
+**as a helper task**（return structured output for the caller）：
 
 ```markdown
 ## 报告：<topic> 沉淀分析
@@ -337,7 +337,7 @@ done
 ### 6. 验证清单
 （实施后需检查的 5 项）
 
-[不要用 AskUserQuestion — orchestrator 转交]
+[不要用 ask the user directly — orchestrator 转交]
 ```
 
 ## Real-World Impact

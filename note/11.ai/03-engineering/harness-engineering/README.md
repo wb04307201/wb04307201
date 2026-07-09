@@ -181,6 +181,7 @@ AI Agent 入职流程：
 
 ## 相关章节
 
+- 🆕 工具实战：[Agent Spec Tools](../agent-spec-tools/README.md) — Superpowers / Spec-Kit / OpenSpec 三工具安装 + 对比
 - 同栏目：[Loop Engineering](loop-engineering/README.md) — 循环调用是 Harness 的执行手段
   - 🆕 **Auto-Fix 深度**：[loop-engineering/auto-fix-strategy](loop-engineering/auto-fix-strategy.md) 5 修复策略 + Verifier 设计 + IDE 案例 + prompt 模板 1398 行
 - 上一步：[Context Engineering](../../02-technology-stack/context-engineering/README.md) — Harness 约束 Context 的使用方式

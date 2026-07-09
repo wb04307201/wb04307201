@@ -326,14 +326,14 @@ graph LR
 | 维度 | 数字 |
 |------|------|
 | 顶层文章数（叙事篇数） | 45 段 + 3 个 a/b 拆分 = **48 篇** |
-| 实际 `.md` 文件数（含编号） | **47 个**（见下方明细表） |
+| 实际 `.md` 文件数（含编号） | **48 个**（见下方明细表） |
 | 顶层辅助资料 | **4 个**（cheatsheet / glossary / index / STORY-FORMAT-SPEC） |
-| 顶层总 `.md` | **52 个**（47 文章 + 4 辅助 + 1 README） |
+| 顶层总 `.md` | **53 个**（48 文章 + 4 辅助 + 1 README） |
 | 一级子目录 | **1 个**（scripts/，内含 insert-frontmatter.py + validate.py） |
 | frontmatter 模式 | story/question/pm（适用 12/13/14）|
 | 写作规范 | [STORY-FORMAT-SPEC.md](./STORY-FORMAT-SPEC.md)（章节六段强制）|
 
-### 47 篇文章实际 `.md` 文件明细
+### 48 篇文章实际 `.md` 文件明细
 
 | 类型 | 编号 | 数量 | 文件 |
 |------|------|------|------|

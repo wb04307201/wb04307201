@@ -44,6 +44,8 @@ module:
 | **第四章** | [Skills 深度解析](README4.md) | Skills 如何组织和使用？ | 30 min |
 | **第五章** | [规范驱动开发工具对比](README5.md) | 三大 SDD 工具如何选型？ | 40 min |
 | **第六章** | [Spec-Kit 使用说明](README6.md) | Spec-Kit 工作流如何落地？ | 40 min |
+| **第七章** | [Codex CLI 配置指南](README7.md) | OpenAI Codex 如何配置百炼？ | 20 min |
+| **第八章** | [OpenCode CLI 配置指南](README8.md) | OpenCode 如何配置百炼？ | 20 min |
 | **补充** | [实战 Harness 工程 (PDF)](实战Harness工程 V1.4.pdf) | Superpowers 实战案例 | 20 min |
 
 ---
@@ -138,6 +140,27 @@ module:
 - **最佳实践**：8条实战建议，涵盖从原则制定到任务分解的全流程
 - **常见问题**：安装、使用、企业环境三大类问题解答
 
+### [README7.md](README7.md) - Codex CLI 配置指南
+- **核心内容**：OpenAI Codex CLI 安装与阿里云百炼平台模型 API 配置
+- **关键知识点**：
+  - Node.js 安装与 Codex CLI 部署（`npm install -g @openai/codex`）
+  - 配置文件 `~/.codex/config.toml`（TOML 格式）
+  - 两种 API 接入方式：Responses API（qwen3.7-max）vs Chat/Completions API（其他模型）
+  - 环境变量 `OPENAI_API_KEY` 配置
+  - MCP 工具集成（time、playwright、chrome-devtools）
+  - 常见问题排查（401/404/wire_api 兼容性）
+
+### [README8.md](README8.md) - OpenCode CLI 配置指南
+- **核心内容**：OpenCode CLI 安装与阿里云百炼平台模型 API 配置
+- **关键知识点**：
+  - Node.js 安装与 OpenCode CLI 部署（`npm install -g opencode-ai`）
+  - 配置文件 `~/.config/opencode/opencode.json`（JSON 格式）
+  - Anthropic 兼容 API 接入（`@ai-sdk/anthropic` npm 包）
+  - 三种计费方案配置：按量计费 / Token Plan 团队版 / Coding Plan
+  - 思考模式（thinking）配置与多模态（modalities）设置
+  - MCP 工具集成（time、playwright、chrome-devtools）
+  - 常见问题排查（401/404/模型列表为空）
+
 ### [实战Harness工程 V1.4.pdf](实战Harness工程 V1.4.pdf)
 - **补充资料**：Superpowers 实战工程案例（从第 5 页开始）
 
@@ -147,7 +170,9 @@ module:
 
 ```mermaid
 graph TB
-    A[README1: 环境配置] --> B[README2: MCP工具集成]
+    A[README1: Claude Code 配置] --> B[README2: MCP工具集成]
+    A2[README7: Codex CLI 配置] --> B
+    A3[README8: OpenCode 配置] --> B
     B --> C[README3: 插件系统]
     C --> D[README4: Skills技能]
     D --> E{选择开发范式}
@@ -180,6 +205,8 @@ graph TB
 
 - 🌐 [Claude Code 官方文档](https://docs.anthropic.com/claude-code)
 - 🔧 [阿里云百炼 Claude Code 配置指南](https://help.aliyun.com/zh/model-studio/claude-code)
+- 🔧 [阿里云百炼 Codex 配置指南](https://help.aliyun.com/zh/model-studio/codex)
+- 🔧 [阿里云百炼 OpenCode 配置指南](https://help.aliyun.com/zh/model-studio/opencode)
 - 💬 [Chatbox AI 客户端（支持 Qwen 等 API）](https://chatboxai.app/zh)
 - 📦 [MCP 服务器注册表](https://mcp.so)
 - 🎬 [Spec-Kit 视频概览](https://github.io/spec-kit/video-overview)  <!-- 链接需核实 -->

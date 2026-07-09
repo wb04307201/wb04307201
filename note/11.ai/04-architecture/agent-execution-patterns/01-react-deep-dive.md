@@ -292,4 +292,17 @@ else:
 
 ---
 
+## 系列导航
+
+| # | 章节 | 核心问题 |
+|---|------|---------|
+| **01** | **ReAct 深度（本文）** | Thought/Action/Observation 循环 + Token 失控 |
+| 02 | [Plan-and-Execute 深度](02-plan-and-execute-deep-dive.md) | 规划 + RePlan + Plan Repair |
+| 03 | [6 维对比](03-six-dimensions-comparison.md) | 4 模式完整打分 |
+| 04 | [选型决策树](04-selection-decision-tree.md) | 场景化选型 + checklist |
+| 05 | [DAG 深度](05-dag-deep-dive.md) | 节点设计 + 错误恢复 + Loop 节点 |
+| 06 | [Multi-Agent 深度](06-multi-agent-deep-dive.md) | 通信协议 + 协调者 + 循环防护 |
+
+---
+
 ← [返回: Agent 4 大模式](../README.md) · 下一章：[02-plan-and-execute](02-plan-and-execute-deep-dive.md)

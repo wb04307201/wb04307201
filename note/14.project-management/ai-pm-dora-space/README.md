@@ -1,9 +1,10 @@
 <!--
-pm:
-  topic: AI 项目管理账本
-  audience: CTO / PM / 研发效能负责人
-  category: 决策实战
-  summary: DORA + SPACE + ROI 三件套，AI 时代研发效能度量框架
+module:
+  parent: project-management
+  slug: pm/ai-pm-dora-space
+  type: article
+  category: 主模块子文章
+  summary: DORA + SPACE + ROI 三件套，AI 时代研发效能度量框架。
 -->
 
 # AI 项目管理账本：DORA + SPACE + ROI 三件套

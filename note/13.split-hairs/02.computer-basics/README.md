@@ -26,6 +26,7 @@ question:
 | 主题 | 难度 | 核心问题 |
 |------|------|---------|
 | [TCP 三次握手四次挥手](tcp-handshake-teardown/) | ⭐⭐⭐⭐ | 状态机 + 10 个深挖问题 + TIME_WAIT/CLOSE_WAIT |
+| 🆕 [SSE vs WebSocket](sse-vs-websocket/) | ⭐⭐⭐⭐ | AI 对话为什么选 SSE + 5 维对比 + 4 大理由 + 系统设计 |
 
 ### 字符串算法
 | 主题 | 难度 | 核心问题 |

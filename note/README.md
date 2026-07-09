@@ -241,23 +241,25 @@ module:
 
 > 主模块的"刺刀版" —— 专治面试中那些"好像懂但说不清"的高频 / 高难度问题。
 > 每篇 50-300 行，聚焦单一问题，从原理到陷阱到最佳实践、面试话术一次讲透。
-> 6 大分类共 **127 篇** 深度文章（详见 [QUESTION-FORMAT-SPEC](./13.split-hairs/QUESTION-FORMAT-SPEC.md)），覆盖 Java / 数据库 / 系统设计 / Spring / AI / 前端。
+> 8 大分类共 **151 篇** 深度文章（详见 [QUESTION-FORMAT-SPEC](./13.split-hairs/QUESTION-FORMAT-SPEC.md)），覆盖 Java / 计算机基础 / 数据库 / 系统设计 / 安全 / Spring / 前端 / AI。
 > 写作规范：[QUESTION-FORMAT-SPEC.md](./13.split-hairs/QUESTION-FORMAT-SPEC.md)
 
 ## 分类导航
 
 | 序号 | 主题 | 文章数 | 入口 |
 |------|------|--------|------|
-| 1 | Java 基础陷阱 | 33 | [01.java](13.split-hairs/01.java/README.md) |
-| 2 | 数据库细节 | 29 | [03.database](13.split-hairs/03.database/README.md) |
-| 3 | 系统设计难点 | 13 | [04.system-design](13.split-hairs/04.system-design/README.md) |
-| 4 | Spring 面试高频 | 13 | [06.spring](13.split-hairs/06.spring/README.md) |
-| 5 | AI 新概念 | 14 | [11.ai](13.split-hairs/11.ai/README.md) |
-| 6 | 前端细节 | 25 | [09.front-end](13.split-hairs/09.front-end/README.md) |
+| 1 | Java 基础陷阱 | 36 | [01.java](13.split-hairs/01.java/README.md) |
+| 2 | 计算机基础 | 1 | [02.computer-basics](13.split-hairs/02.computer-basics/README.md) |
+| 3 | 数据库细节 | 29 | [03.database](13.split-hairs/03.database/README.md) |
+| 4 | 系统设计难点 | 14 | [04.system-design](13.split-hairs/04.system-design/README.md) |
+| 5 | 安全 | 1 | [05.security](13.split-hairs/05.security/README.md) |
+| 6 | Spring 面试高频 | 14 | [06.spring](13.split-hairs/06.spring/README.md) |
+| 7 | 前端细节 | 26 | [09.front-end](13.split-hairs/09.front-end/README.md) |
+| 8 | AI 新概念 | 30 | [11.ai](13.split-hairs/11.ai/README.md) |
 
 ---
 
-## 01.java（33 篇）—— Java 基础陷阱
+## 01.java（36 篇）—— Java 基础陷阱
 
 ### 集合与数据结构
 
@@ -281,6 +283,8 @@ module:
 | [线程池 7 大参数](13.split-hairs/01.java/thread-pool/README.md) | ThreadPoolExecutor 核心参数详解 |
 | [Atomic 替代 synchronized](13.split-hairs/01.java/replace-synchronized-with-atomic/README.md) | CAS 无锁编程 |
 | [CompletableFuture 编排](13.split-hairs/01.java/completable-future/README.md) | 异步任务编排 |
+| [父子线程数据传递](13.split-hairs/01.java/parent-child-thread/README.md) | 3 种方案横跨 JDK + 阿里开源 |
+| [三线程顺序执行](13.split-hairs/01.java/thread-sequential-execution/README.md) | T1/T2/T3 保证顺序执行的方案选型 |
 
 ### JVM 与类加载
 
@@ -303,6 +307,7 @@ module:
 | [StringBuilder 重用](13.split-hairs/01.java/reuse-of-stringbuilder/README.md) | 循环中字符串拼接优化 |
 | [final/finally/finalize](13.split-hairs/01.java/final-finally-finalize/README.md) | 三个关键字的区别与用法 |
 | [SPI 机制](13.split-hairs/01.java/spi/README.md) | Service Provider Interface 扩展机制 |
+| [Error vs Exception](13.split-hairs/01.java/error-vs-exception/README.md) | 两者区别深度剖析 |
 
 ### 对象与类型
 
@@ -367,7 +372,7 @@ module:
 | [Redis 集群](13.split-hairs/03.database/redis-cluster/README.md) | Sentinel vs Cluster |
 | [Redis 大 Key 问题](13.split-hairs/03.database/redis-big-key/README.md) | 发现与治理方案 |
 
-## 04.system-design（13 篇）—— 系统设计难点
+## 04.system-design（14 篇）—— 系统设计难点
 
 ### 高性能
 
@@ -394,7 +399,7 @@ module:
 | [幂等性设计 6 大方案](13.split-hairs/04.system-design/idempotency/README.md) | Token / 状态机 / 唯一索引 / 去重表 |
 | [熔断降级实战](13.split-hairs/04.system-design/circuit-breaker/README.md) | Sentinel / Resilience4j 落地 |
 
-## 06.spring（13 篇）—— Spring 面试高频
+## 06.spring（14 篇）—— Spring 面试高频
 
 ### 基础
 
@@ -411,6 +416,7 @@ module:
 | [@Bean vs @Component](13.split-hairs/06.spring/bean-vs-component/README.md) | 两种 Bean 注册方式的区别 |
 | [Spring Boot 自动配置原理](13.split-hairs/06.spring/auto-configuration/README.md) | @EnableAutoConfiguration + 条件注解 |
 | [循环依赖三级缓存](13.split-hairs/06.spring/circular-dependency/README.md) | DefaultSingletonBeanRegistry |
+| [Spring 事件机制](13.split-hairs/06.spring/event-mechanism/README.md) | ApplicationEvent / Listener / 异步事件 |
 
 ### AOP 与事务
 
@@ -427,8 +433,9 @@ module:
 | 主题 | 核心问题 |
 |------|---------|
 | [Spring MVC 请求流程](13.split-hairs/06.spring/spring-mvc-flow/README.md) | DispatcherServlet 9 步流程 |
+| [@Cacheable + Redis 降级](13.split-hairs/06.spring/cache-degradation/README.md) | Redis 挂了怎么降级？如何恢复？ |
 
-## 11.ai（14 篇）—— AI 新概念
+## 11.ai（30 篇）—— AI 新概念
 
 | 主题 | 核心问题 |
 |------|---------|
@@ -439,8 +446,31 @@ module:
 | [Prompt Engineering 技巧](13.split-hairs/11.ai/prompt-engineering/README.md) | 8 种核心技术 + 注入防御 |
 | [LLM 幻觉问题](13.split-hairs/11.ai/hallucination/README.md) | 幻觉成因 / 分类 / 检测与缓解 |
 | [Function Calling / Tool Use](13.split-hairs/11.ai/function-calling/README.md) | 工具调用原理 / Schema 定义 / ReAct Agent |
+| [Agent 架构选型 — DAG vs ReAct](13.split-hairs/11.ai/agent-dag-vs-react/README.md) | Agent 架构选型 — DAG vs ReAct |
+| [Agent Memory 三维分类法](13.split-hairs/11.ai/agent-memory-classification/README.md) | Agent Memory 三维分类法（时间×认知×工程） |
+| [Agent 性能评估](13.split-hairs/11.ai/agent-performance-evaluation/README.md) | 如何量化 Agent 性能 |
+| [AI 代码流失率](13.split-hairs/11.ai/ai-code-churn/README.md) | AI 代码流失率：采纳率 vs 有效率 |
+| [AI 编程生产力悖论](13.split-hairs/11.ai/ai-coding-productivity-paradox/README.md) | AI 编程生产力悖论 + DORA 框架 |
+| [AI 编程 ROI 度量](13.split-hairs/11.ai/ai-coding-roi/README.md) | AI 编程 ROI 度量：DORA + SPACE |
+| [AI 编程 Token 经济学](13.split-hairs/11.ai/ai-coding-token-economics/README.md) | AI 编程 Token 经济学 |
+| [Claude Code Agentic Search](13.split-hairs/11.ai/claude-code-agentic-search/README.md) | Claude Code 放弃 RAG → Agentic Search |
+| [Context Engineering](13.split-hairs/11.ai/context-engineering/README.md) | Context Engineering 4 大范式 |
+| [Dropout 在 LLM 中的弃用](13.split-hairs/11.ai/dropout-in-llm/README.md) | 大模型为什么不用 Dropout |
+| [Harness Engineering](13.split-hairs/11.ai/harness-engineering/README.md) | Harness Engineering — 给 Agent 套缰绳 |
+| [推理引擎选型](13.split-hairs/11.ai/inference-engine-selection/README.md) | vLLM vs Ollama 工业级选型 |
+| [LLM Benchmark 深度剖析](13.split-hairs/11.ai/llm-benchmark/README.md) | LLM Benchmark 深度剖析 |
+| [Agent 长上下文策略](13.split-hairs/11.ai/long-context-agent-strategy/README.md) | Agent 长上下文 6 大策略 |
+| [Loop Engineering](13.split-hairs/11.ai/loop-engineering/README.md) | Loop Engineering — 循环调用 Agent |
+| [大模型思维工程 5 问](13.split-hairs/11.ai/production-thinking-5q/README.md) | 大模型思维工程 5 个灵魂拷问 |
+| [RAG 权限隔离设计](13.split-hairs/11.ai/rag-permission-isolation/README.md) | RAG 权限隔离设计 |
+| [ReAct vs Plan-and-Execute](13.split-hairs/11.ai/react-vs-plan-execute/README.md) | ReAct vs Plan-and-Execute 4 模式选型 |
+| [Skill 从 0 到 1 设计](13.split-hairs/11.ai/skill-design/README.md) | Skill 从 0 到 1 设计 |
+| [Skill 命中率保证](13.split-hairs/11.ai/skill-hit-rate/README.md) | Skill 命中率保证 |
+| [向量检索算法选型](13.split-hairs/11.ai/vector-search-algorithms/README.md) | HNSW vs IVF vs DiskANN 选型 |
+| [大规模向量检索架构](13.split-hairs/11.ai/vector-search-at-scale/README.md) | 10 亿 vs 千亿级向量检索架构演进 |
+| [万亿级向量检索架构](13.split-hairs/11.ai/vector-search-trillion/README.md) | 万亿级向量检索架构思维 |
 
-## 09.front-end（25 篇）—— 前端细节
+## 09.front-end（26 篇）—— 前端细节
 
 ### HTTP / 网络
 
@@ -459,6 +489,9 @@ module:
 | [存储方案](13.split-hairs/09.front-end/storage/README.md) | Cookie / LocalStorage / IndexedDB |
 | [事件循环 Event Loop](13.split-hairs/09.front-end/event-loop/README.md) | 宏任务 / 微任务 / async-await |
 | [从 URL 输入到页面展示](13.split-hairs/09.front-end/from-url-to-page/README.md) | 网络 + 解析 + 渲染全链路 |
+| [回流与重绘](13.split-hairs/09.front-end/reflow-repaint/README.md) | 触发条件 + 性能优化 |
+| [script async / defer](13.split-hairs/09.front-end/script-async-defer/README.md) | 加载时机与 DOMContentLoaded |
+| [懒加载 vs 预加载](13.split-hairs/09.front-end/lazy-load-preload/README.md) | 4 大资源提示的正确姿势 |
 
 ### JavaScript 核心
 
@@ -470,12 +503,15 @@ module:
 | [防抖 + 节流手写](13.split-hairs/09.front-end/debounce-throttle/README.md) | debounce / throttle 实现与应用场景 |
 | [Promise 手写实现](13.split-hairs/09.front-end/promise-handwriting/README.md) | Promise.all / race / allSettled |
 | [深拷贝实现](13.split-hairs/09.front-end/deep-copy/README.md) | 递归 / 循环引用 / 特殊类型处理 |
+| [async/await 必须 try/catch 吗](13.split-hairs/09.front-end/async-await-try-catch/README.md) | 4 种错误处理深挖 |
 
 ### CSS
 
 | 主题 | 核心问题 |
 |------|---------|
 | [BFC 块级格式化上下文](13.split-hairs/09.front-end/bfc/README.md) | 触发条件 / 应用场景 / 边距折叠 |
+| [CSS 按钮几十行写法](13.split-hairs/09.front-end/css-button-styling/README.md) | 8 状态 + 5 大架构 |
+| [CSS 渲染阻塞](13.split-hairs/09.front-end/css-render-blocking/README.md) | CSS 放底部为什么白屏更长 |
 
 ### 框架
 
@@ -490,6 +526,12 @@ module:
 | 主题 | 核心问题 |
 |------|---------|
 | [XSS / CSRF 攻击防御](13.split-hairs/09.front-end/xss-csrf/README.md) | 反射型 / 存储型 / Token / SameSite Cookie |
+
+### 工程化与测试
+
+| 主题 | 核心问题 |
+|------|---------|
+| [Playwright vs Selenium](13.split-hairs/09.front-end/playwright-vs-selenium/README.md) | 2026 Web 自动化测试选型 |
 
 ---
 
