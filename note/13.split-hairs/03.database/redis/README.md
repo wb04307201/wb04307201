@@ -44,7 +44,7 @@ graph TB
 
 ## 🆕 高频面试题·延伸
 
-- **🆕 [Redis-DB 一致性（通用策略）](../../../../04.system-design/high-performance/cache-consistency/README.md)** —— 4 策略 + 3 场景 + A/B/C 方案（含延迟双删 / Binlog 监听）250+ 行深度。
-- **🆕 [Java 后端特定视角](../../../../04.system-design/04-high-performance/cache-patterns/README.md)** —— Spring Cache 注解 5 大陷阱 + 多级缓存一致性 + Java 反模式深度。
+- **🆕 [Redis-DB 一致性（通用策略）](../../04.system-design/high-performance/cache-consistency/README.md)** —— 4 策略 + 3 场景 + A/B/C 方案（含延迟双删 / Binlog 监听）250+ 行深度。
+- **🆕 [Java 后端特定视角](../../../04.system-design/04-high-performance/cache-patterns/README.md)** —— Spring Cache 注解 5 大陷阱 + 多级缓存一致性 + Java 反模式深度。
 
 ← [返回: 咬文嚼字 · redis](README.md)

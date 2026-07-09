@@ -206,4 +206,4 @@ Q4: 是否需要灵活性 > 稳定性？
 
 🆕 **4 模式 6 维深度对比**：[agent-execution-patterns 专题](../agent-execution-patterns/README.md) —— ReAct Thought/Action/Observation 5 硬伤 + Plan-and-Execute 3 大重规划机制（RePlan / Adaptive / Plan Repair）+ 6 维完整打分 + 5 分钟决策树 + 7 道面试题。
 
-🆕 **Agent 评测专题**：[05-agent-evaluation](../05-agent-evaluation/README.md) —— Agent 评测 6 维（任务 40% / 步骤 20% / 工具 10% / 成本 10% / 满意 15% / 稳定 5%）+ 5 种方法 + 4 阶段 Pipeline 1511 行。面试精选 [13.split-hairs Agent 性能评估](../../13.split-hairs/11.ai/agent-performance-evaluation/README.md)。
+🆕 **Agent 评测专题**：[05-agent-evaluation](../../05-agent-evaluation/README.md) —— Agent 评测 6 维（任务 40% / 步骤 20% / 工具 10% / 成本 10% / 满意 15% / 稳定 5%）+ 5 种方法 + 4 阶段 Pipeline 1511 行。面试精选 [13.split-hairs Agent 性能评估](../../../13.split-hairs/11.ai/agent-performance-evaluation/README.md)。

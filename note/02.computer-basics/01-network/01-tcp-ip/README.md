@@ -61,7 +61,7 @@ module:
 
 ## 四、TCP 3 次握手 + 4 次挥手
 
-> 🔗 面试深挖版：[`TCP 三次握手四次挥手`](../../../../13.split-hairs/02.computer-basics/tcp-handshake-teardown/README.md) — 状态机 + 10 个深挖问题 + TIME_WAIT/CLOSE_WAIT 排查
+> 🔗 面试深挖版：[`TCP 三次握手四次挥手`](../../../13.split-hairs/02.computer-basics/tcp-handshake-teardown/README.md) — 状态机 + 10 个深挖问题 + TIME_WAIT/CLOSE_WAIT 排查
 
 ### 4.1 3 次握手（建立连接）
 

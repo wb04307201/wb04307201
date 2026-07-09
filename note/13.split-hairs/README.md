@@ -31,7 +31,7 @@ module:
 | 02 | [`02.computer-basics`](../02.computer-basics/) | 计算机基础（网络 / 操作系统） | 1 | [02.computer-basics/](02.computer-basics/) |
 | 03 | [`03.database`](../03.database/) | 数据库细节 | 29 | [03.database/](03.database/) |
 | 04 | [`04.system-design`](../04.system-design/) | 系统设计难点 | 14 | [04.system-design/](04.system-design/) |
-| 05 | [`05.security`](../05.security/) | 安全 | 1 | [05.security/](05.security/) |
+| 05 | [`05.security`](05.security) | 安全 | 1 | [05.security/](05.security/) |
 | 06 | [`06.spring`](../06.spring/) | Spring 面试高频 | 14 | [06.spring/](06.spring/) |
 | 09 | [`09.front-end`](../09.front-end/) | 前端细节 | 26 | [09.front-end/](09.front-end/) |
 | 11 | [`11.ai`](../11.ai/) | AI 面试深挖 | 30 | [11.ai/](11.ai/) |

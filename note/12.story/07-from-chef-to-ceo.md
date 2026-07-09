@@ -656,7 +656,7 @@ graph TD
 
 这是 80 家分店的标准答案 —— 你不需要"无限信任 AI"，你需要"**目标驱动 + 自动判定 + 自动修复 + 人工兜底**"的工程能力。
 
-> 🆕 **Loop Engineering 实战深度**：[11.ai/03-engineering/loop-engineering/auto-fix-strategy.md](../../11.ai/03-engineering/loop-engineering/auto-fix-strategy.md) 4 子节点（修复策略 + Verifier 设计 + IDE 案例 + prompt 模板）共 1398 行深度 —— 包括 Claude Code / Cursor / Devin / Aider 4 大主流 AI IDE 的 Loop 工程实战。面试精选 5 道 Q&A 见 [13.split-hairs/11.ai/loop-engineering](../../13.split-hairs/11.ai/loop-engineering/README.md)。
+> 🆕 **Loop Engineering 实战深度**：[11.ai/03-engineering/loop-engineering/auto-fix-strategy.md](../11.ai/03-engineering/loop-engineering/auto-fix-strategy.md) 4 子节点（修复策略 + Verifier 设计 + IDE 案例 + prompt 模板）共 1398 行深度 —— 包括 Claude Code / Cursor / Devin / Aider 4 大主流 AI IDE 的 Loop 工程实战。面试精选 5 道 Q&A 见 [13.split-hairs/11.ai/loop-engineering](../13.split-hairs/11.ai/loop-engineering/README.md)。
 
 ---
 
