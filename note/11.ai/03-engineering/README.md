@@ -25,6 +25,7 @@ module:
 | [loop-engineering](loop-engineering/) | **Loop Engineering** — 循环调用 3 大组件 + 4 大失败模式 + 5 大最佳实践 + 🆕 [Ralph Wiggum Loop](loop-engineering/ralph-wiggum-loop.md) | 探索性任务自动化 |
 | [agent-spec-tools](agent-spec-tools/) 🆕 | **Agent Spec Tools** — Superpowers（强制 TDD）/ Spec-Kit（企业 SDD 管线）/ OpenSpec（轻量规范对齐）安装 + 配置 + 对比 | Agent 规范工具链 |
 | [llm-production-thinking](llm-production-thinking/) 🆕 | **大模型思维工程** — 5 大灵魂拷问（Prompt vs if-else / 成本降级 / 一致性 / 超时熔断 / 监控定位）+ 5 层路由 + 双 timeout | LLM 生产工程 |
+| [ai-code-review](ai-code-review/) 🆕 | **AI 代码审核验收** — 6 层审核体系（契约/业务/安全/性能/可测/幻觉）+ 分级门禁矩阵 + 幻觉专项 + 工具链 | AI 产出质量门禁 |
 
 ### 1.1 学习路径
 
@@ -90,6 +91,7 @@ graph LR
   - [spec-kit](agent-spec-tools/spec-kit.md) — GitHub 官方 SDD 管线 + 5 命令 + 30+ Agent
   - [openspec](agent-spec-tools/openspec.md) — 轻量规范对齐 + /opsx 命令 + AGENTS.md
 - 🆕 **[llm-production-thinking](llm-production-thinking/)**：5 大灵魂拷问（思维 + 成本 + 一致性 + 熔断 + 监控）+ 5 层路由 + Self-Consistency + 双 timeout
+- 🆕 **[ai-code-review](ai-code-review/)**：AI 生成后端代码审核验收方法论 — 6 层审核体系 + 分级门禁矩阵 + AI 幻觉 5 形态 + 工具链
 
 ---
 
@@ -119,6 +121,7 @@ graph LR
 | Loop Engineering 4 大失败模式？ | 死循环 / 状态丢失 / 成本失控 / 验证器失效 |
 | Ralph Wiggum Loop 核心洞察？ | Fresh Context 每轮重启 + 文件系统 = 持久记忆 |
 | Superpowers vs Spec-Kit vs OpenSpec？ | 工作流层 vs 规范管线层 vs 规范对齐层；可组合使用 |
+| 用 AI 生成后端接口代码怎么审核验收？ | 6 层审核体系 + 分级门禁 + "绿色测试"陷阱 + 水平越权 |
 
 ---
 
@@ -150,15 +153,15 @@ graph LR
 
 | 维度 | 数字 |
 |------|------|
-| 一级 leaf README 数 | 10（frameworks / compute-platforms / local-deployment / ai-platforms / claude-code-practices / production-agent / harness-engineering / loop-engineering / **agent-spec-tools** / **llm-production-thinking**） |
+| 一级 leaf README 数 | 11（frameworks / compute-platforms / local-deployment / ai-platforms / claude-code-practices / production-agent / harness-engineering / loop-engineering / **agent-spec-tools** / **llm-production-thinking** / **ai-code-review**） |
 | 二级 leaf README 数 | 11（frameworks:3 + local-deployment:4 + loop-engineering:1 + **agent-spec-tools:3**） |
-| 总 leaf README 数 | 20 |
+| 总 leaf README 数 | 21 |
 | 速查表条目数 | 12 |
 | 最佳实践条数 | 7 |
-| 常见面试题数 | 8 |
+| 常见面试题数 | 9 |
 | 开源参考项目数 | 8 类共 31+ 条 |
-| frontmatter 覆盖 | 20 / 20 = 100% |
-| 文末回链覆盖 | 20 / 20 = 100% |
+| frontmatter 覆盖 | 21 / 21 = 100% |
+| 文末回链覆盖 | 21 / 21 = 100% |
 
 ---
 
