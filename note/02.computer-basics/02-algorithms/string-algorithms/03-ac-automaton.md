@@ -284,6 +284,8 @@ ac.insert("fuck");
 
 > **AC 自动机 = Trie（建树）+ fail 指针（类似 KMP 的 next）+ output 链（合并匹配）= 多模式匹配 O(n+Σm+z)。敏感词过滤 99% 用 AC，双数组 Trie 实现可压到 1/10 内存。**
 
+> 🔗 **工程应用**：AC 自动机在高并发敏感词过滤系统中的完整落地（Bloom + 缓存 + 分布式 + [变体绕过对抗](../../../04.system-design/04-high-performance/sensitive-word-filter/05-anti-evasion.md)）见 [04.system-design/sensitive-word-filter 专题](../../../04.system-design/04-high-performance/sensitive-word-filter/README.md)。
+
 ---
 
 ← [返回: string-algorithms 总目录](../README.md) · 上一章：[02-kmp-algorithm](02-kmp-algorithm.md)

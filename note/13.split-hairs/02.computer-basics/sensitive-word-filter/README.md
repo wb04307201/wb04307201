@@ -397,6 +397,7 @@ public void refreshDictionary() {
 - [02-java-implementation](../../../04.system-design/04-high-performance/sensitive-word-filter/02-java-implementation.md) —— Spring Boot + HanLP 完整代码
 - [03-high-concurrency-optimization](../../../04.system-design/04-high-performance/sensitive-word-filter/03-high-concurrency-optimization.md) —— 9 大优化策略
 - [04-selection-decision-tree](../../../04.system-design/04-high-performance/sensitive-word-filter/04-selection-decision-tree.md) —— 5 维选型矩阵
+- [05-anti-evasion](../../../04.system-design/04-high-performance/sensitive-word-filter/05-anti-evasion.md) —— 变体绕过对抗（谐音/拼音/繁简/形近/零宽字符/归一化流水线）
 
 ### 算法基础（02.computer-basics）
 
