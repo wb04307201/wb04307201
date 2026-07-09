@@ -1,5 +1,14 @@
 > ⬅️ [返回目录](README.md)
 
+<!--
+module:
+  parent: ai
+  slug: ai/training/lesson4/mcp-java
+  type: article
+  category: 主模块子文章
+  summary: 使用 Java 开发 MCP 服务并发布到 Maven 中央仓库的完整指南。
+-->
+
 # AI Agent组装——三. 使用 Java 开发 MCP 服务并发布到 Maven 中央仓库完整指南
 
 > 📖 **阅读导航**：本教程约 900 行，建议分 3 次阅读：

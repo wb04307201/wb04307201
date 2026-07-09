@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: java
+  slug: java/jvm/tuning
+  type: article
+  category: 主模块子文章
+  summary: JVM 调优实战——根据服务器配置选择合理的 JVM 启动参数。
+-->
+
 # JVM 调优 — 根据服务器配置选择参数
 
 > 目标：拿到一台服务器，按本文档的步骤和模板，配出合理的 JVM 启动参数。
