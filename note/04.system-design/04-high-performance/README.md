@@ -89,7 +89,7 @@ graph TD
 | ├─ `mq/` | 1 | Kafka / RocketMQ / Pulsar |
 | ├─ `java/` | 1 | JVM 调优 · 代码级优化 |
 | ├─ `connection-pool/` | 1 | HikariCP 参数调优 |
-| ├─ 🆕 `sensitive-word-filter/` | 5 | AC 自动机 + Bloom + Caffeine + 分布式 100w QPS |
+| ├─ 🆕 `sensitive-word-filter/` | 6 | AC 自动机 + Bloom + Caffeine + 分布式 100w QPS + 变体绕过对抗 |
 | └─ `serialization/` | 1 | Protobuf / Kryo / Hessian |
 | **leaf README 合计** | 14 depth-2 leaf + 1 顶层 = **15** | 100% frontmatter |
 | **模块导航行数** | 11（见上方模块导航） | 全部聚合在本章及子 README |

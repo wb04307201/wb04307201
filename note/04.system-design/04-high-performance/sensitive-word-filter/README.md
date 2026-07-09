@@ -265,6 +265,8 @@ String normalize = text.toLowerCase()
     .replace("0", "o").replace("1", "l").replace("3", "e");
 ```
 
+> 变体绕过（谐音/拼音/繁简/形近/零宽字符/夹杂干扰）的完整对抗方案见 [05-anti-evasion.md](05-anti-evasion.md) —— 6 大绕过手法 + 归一化流水线 + AI 语义兜底。
+
 ### ⚠️ 反模式 3：同步阻塞主链路
 
 ```java
@@ -336,6 +338,7 @@ tokens.forEach(token -> ac.match(token));
 
 ## 9. 速查 · 关联资源
 
+- **变体绕过对抗**：[05-anti-evasion.md](05-anti-evasion.md) —— 6 大绕过手法 + 归一化流水线 + Unicode/繁简/谐音处理 + AI 语义兜底
 - **算法基础**：[string-algorithms/AC 自动机](../../../../02.computer-basics/02-algorithms/string-algorithms/03-ac-automaton.md) —— fail 指针构建 + Java 完整实现
 - **面试题**：[13.split-hairs/02.computer-basics/sensitive-word-filter](../../../13.split-hairs/02.computer-basics/sensitive-word-filter/README.md) —— 5-7 道精选 Q&A
 - **应用场景**：[08.application-systems/cms/README.md](../../../../08.application-systems/cms/README.md) —— 内容管理系统中的内容审核
