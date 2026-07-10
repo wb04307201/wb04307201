@@ -82,13 +82,14 @@ find note -name "README.md" -exec grep -L "^<!--" {} \;
 ## 新环境初始化（clone 后必做）
 
 ```bash
-bash setup.sh   # 一键配置 git hooks + 同步 skills
+bash setup.sh   # 一键配置 git hooks + 生成 skill 镜像
 ```
 
 `setup.sh` 会自动：
 1. 配置 `git core.hooksPath → .githooks`（启用 skill 同步 hook）
-2. 运行 `scripts/sync-skills.sh`（同步 skills/ → .claude/skills/ + .codex/skills/）
-3. 验证环境就绪
+2. 运行 `scripts/sync-skills.sh`（从 skills/ 生成 .claude/skills/ + .codex/skills/ 镜像）
+
+**重要**：`.claude/skills/` 和 `.codex/skills/` 已在 `.gitignore` 中，不提交到 git。clone 后必须跑 `setup.sh` 才能使用 skill。
 
 ## CI Workflows
 

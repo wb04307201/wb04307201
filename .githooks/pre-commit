@@ -13,8 +13,6 @@ if [ -f "$SCRIPT" ]; then
   if [ "$STAGED_SKILLS" -gt 0 ]; then
     echo "[pre-commit] skills/ 有变更，同步到 .claude/skills/ 和 .codex/skills/..."
     bash "$SCRIPT"
-
-    # 把同步后的文件也加入暂存
-    git add .claude/skills/ .codex/skills/ 2>/dev/null || true
+    # 注：镜像目录已在 .gitignore 中，无需 git add
   fi
 fi
