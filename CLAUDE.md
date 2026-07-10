@@ -65,14 +65,26 @@ find note -name "README.md" -exec grep -L "^<!--" {} \;
 
 ## Meta-Skills（项目级）
 
-`.claude/skills/` 下 2 个项目共享 skill：
+`skills/` 为 4 个 skill 的**单一来源**，`.claude/skills/` 和 `.codex/skills/` 是自动镜像：
 
 | Skill | 何时用 |
 |-------|--------|
 | `note-precipitation-planning` | 用户问"X 应该沉淀到 note 什么位置？" |
 | `note-audit-and-improvement` | 用户问"note 哪里需要优化？" |
+| `note-content-quality` | 用户问"这篇文章质量怎么样？" |
+| `note-knowledge-qa` | 用户问技术问题，从 note/ 检索回答 |
+
+**改 skill 只改 `skills/`**，pre-commit hook 会自动同步到 `.claude/skills/` 和 `.codex/skills/`。
+手动同步：`bash scripts/sync-skills.sh`
 
 新沉淀主题时，优先用 `note-precipitation-planning` 输出"位置 + 方式"方案。
+
+## 新环境初始化（clone 后必做）
+
+```bash
+# 启用 git hooks（skill 自动同步依赖此配置）
+git config core.hooksPath .githooks
+```
 
 ## CI Workflows
 
