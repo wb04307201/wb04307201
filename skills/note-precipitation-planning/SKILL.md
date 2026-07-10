@@ -1,6 +1,6 @@
 ---
 name: note-precipitation-planning
-description: Use when user asks where to add or update a topic in the project's note/ knowledge base — covers survey of existing 14-module structure, depth analysis, location decision between main module / 13.split-hairs interview layer / 12.story narrative layer, layered precipitation strategy, and reverse-link verification
+description: Use when user asks where to add or update a topic in the project's note/ knowledge base / "X 应该沉淀到 note 什么位置" / "X 怎么归档" / "放在 note 哪个位置" / "如何沉淀 X" / "新增主题到 note" — covers survey of existing 14-module structure, depth analysis, location decision between main module / 13.split-hairs interview layer / 12.story narrative layer, layered precipitation strategy, and reverse-link verification
 ---
 
 # note 沉淀规划
@@ -21,6 +21,35 @@ description: Use when user asks where to add or update a topic in the project's 
 ## Overview
 
 当用户问"这个主题应该新增/更新到 note 的什么位置"时，遵循 7 步流程输出沉淀方案。`note/` 是 14 主模块的体系化技术知识库，含 `01.java` ~ `14.project-management`，每个主模块有 README + 子目录 + 已建立的双层/三层沉淀模式（13.split-hairs 面试题 + 11.ai 主模块 + 12.story 餐厅叙事）。
+
+## Quick Example
+
+```
+用户：我想加 "Claude Code Skills" 章节，怎么沉淀？
+   ↓
+skill 执行：Step 1 现状盘点 → Step 2 深度评估 → Step 3 位置决策 → Step 4 方式 → Step 5 选项
+   ↓
+输出（节选）：
+  ## 📋 现状盘点
+  - note/05.tools/claude-code.md：已有但只覆盖 CLI 命令
+  - note/11.ai/03-engineering/agent-frameworks/：相邻分类
+  - 已有 3 篇 SPL（single page lesson）：SPL-2024-089/-091/-101
+
+  ## 🎯 深度评估（3 信号）
+  - 高频：✅ 多家公司在用（Anthropic 官方推）
+  - 内容深：✅ ≥4 层面（架构/SKILL.md 协议/工具生态/实战）
+  - 缺口真实：✅ note 当前只覆盖用法，未覆盖 SKILL.md 协议本身
+
+  ## 💡 位置 + 方式
+  - 推荐：双层 + 11.ai 联动（推荐项 A）
+
+  ## ❓ 选项
+  A. 双层沉淀 + Claude Code 协议层深度（推荐）→ 3 commit
+  B. 只动 Skills 协议专题（最小改动）→ 1 commit
+  C. 暂不沉淀
+
+不同点：不直接动手 — 先盘点 + 给 2-4 选项让用户决策
+```
 
 ## When to Use
 
@@ -82,9 +111,34 @@ ls note/<target-dir>/[0-9]*.md 2>/dev/null
 # 如果找到编号文件 → 新文章需要：
 #   a. 末尾加"系列导航表"（链向所有兄弟）
 #   b. 所有已有兄弟末尾加/更新"系列导航表"（链向新文件）
+
+# 1.6 总目录入口验证（防"总目录孤岛"，对应反直觉 1）
+# 原理：新文件链到主模块 README，但主模块 README 没在目录表里反向列新文件 →
+#       用户从父 README 读，根本不知道有这个子章节
+# 输出：每个新文件必须在目标模块 README + note/README.md 总目录都登记
+TARGET_README="note/<target-module>/README.md"
+NEW_FILE="note/<target-module>/<topic>.md"
+NEW_BASE=$(basename "$NEW_FILE" .md)
+echo "=== 总目录入口验证 ==="
+if [ -f "$TARGET_README" ] && ! grep -q "\[$NEW_BASE\]" "$TARGET_README" 2>/dev/null; then
+  echo "  ⚠  $NEW_FILE 未在 $TARGET_README 目录表中登记（总目录孤岛）"
+  echo "      修复：在 $TARGET_README 加一行 [标题](相对路径)"
+fi
+if [ -f "note/README.md" ] && ! grep -q "<target-module>" "note/README.md" 2>/dev/null; then
+  echo "  ⚠  目标模块 <target-module> 未在 note/README.md 总目录出现"
+fi
+
+# 1.7 计划阶段预检（commit 前的 sanity check，避免进入 Step 6 后才发现）
+# 输出：PASS / FAIL + 修复清单
+echo "=== Step 1 预检清单 ==="
+echo "  □ 关键词已 grep（1.1）"
+echo "  □ 主题目录已扫（1.2）"
+echo "  □ 13.split-hairs 兄弟已列（1.3）"
+echo "  □ 12.story 联动已查（1.4）"
+echo "  □ 系列结构 / 总目录入口已查（1.5 + 1.6）"
 ```
 
-**输出**：5-10 个相关文件 + 每个文件的"覆盖深度"评估（"已有详细"/"一笔带过"/"完全缺失"）
+**输出**：5-10 个相关文件 + 每个文件的"覆盖深度"评估（"已有详细"/"一笔带过"/"完全缺失"）+ **总目录验证结果**
 
 ### Step 2: 深度评估（值得沉淀吗？）
 
@@ -123,18 +177,30 @@ ls note/<target-dir>/[0-9]*.md 2>/dev/null
 └─ 300+ 行 + 已有餐厅叙事相关章节 → 三层 + 12.story 联动（3+ commit）
 ```
 
-**双层沉淀模板**：
+**双层沉淀模板**（遵循 `note/CONTRIBUTING.md` §3 commit 规范：`<type>(note): <scope-detail> - <描述>`）：
 ```
-Commit 1: feat(13.split-hairs): <module> 新增'<topic>'面试题
-Commit 2: feat(<module>): 新增'<topic>'深度原理
+Commit 1: feat(note): 13.split-hairs/<module> - 新增'<topic>'面试题 + 陷阱表
+Commit 2: feat(note): <module> - 新增'<topic>'深度原理（含源码分析）
 ```
 
 **三层沉淀模板**：
 ```
-Commit 1: feat(13.split-hairs): <module> 新增'<topic>'面试题
-Commit 2: feat(<module>): 新增'<topic>'深度原理
-Commit 3: refactor(<module>): <related-chapter> 加反向链
+Commit 1: feat(note): 13.split-hairs/<module> - 新增'<topic>'面试题
+Commit 2: feat(note): <module> - 新增'<topic>'深度原理
+Commit 3: refactor(note): <related-chapter> - 加反向链（指向新文件）
 ```
+
+**commit 类型说明**（与 CONTRIBUTING §3 一致）：
+| 类型 | 用途 | 例子 |
+|------|------|------|
+| `feat(note)` | 新增章节/文章 | `feat(note): 11.ai - 新增 Claude Code Skills 章节` |
+| `fix(note)` | 修复/数字校对/断链 | `fix(note): 12.story - 数字统一 46→47` |
+| `refactor(note)` | 结构/反向链/结构调整 | `refactor(note): 04.system-design - PNG→Mermaid 迁移` |
+| `style(note)` | 润色/模板清理 | `style(note): 13.split-hairs - 引子格式统一` |
+| `docs(note)` | 文档/CONTRIBUTING 同步 | `docs(note): 同步 CONTRIBUTING §3 commit 规范` |
+| `chore(note)` | 回链/琐事 | `chore(note): 13 主模块补文末回链` |
+
+> **统一性检查**：所有 commit 必须用 `feat/fix/refactor/.../chore(note)` 形式（仓库统一 scope = `note`），不要用 `feat(11.ai)` 这种过细的 scope。
 
 ### Step 5: 选项呈现（用 AskUserQuestion，orchestrator 执行）
 
