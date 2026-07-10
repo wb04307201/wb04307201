@@ -49,3 +49,50 @@ PRs should include a concise description, link related issues, and summarize the
 - New leaf `README.md` files must include a `← [返回: <module>]` back-link.
 - Always verify cross-module links and frontmatter after changes.
 - Do not hardcode statistics (e.g., article counts) -- use `find` to compute them dynamically.
+
+## Skills Reference
+
+`skills/` is the single source of truth for all 4 project skills. `pre-commit` hook (`scripts/sync-skills.sh`) auto-syncs to `.codex/skills/` and `.claude/skills/`. Never edit `.codex/skills/` directly -- always modify `skills/<skill>/SKILL.md`.
+
+| Skill | Trigger |
+|-------|---------|
+| `note-precipitation-planning` | User asks "where should topic X go in note/" |
+| `note-audit-and-improvement` | User asks "what needs improvement in note/" |
+| `note-content-quality` | User asks "how is the quality of this article" |
+| `note-knowledge-qa` | User asks a technical question -- retrieve answer from `note/` |
+
+## Precipitation Modes
+
+Three patterns for adding new content, chosen by scope:
+
+- **Single file** (< 150 lines): place directly as a sub-README under the target module.
+- **Double layer** (most common): `13.split-hairs/<topic>/` + `11.ai/<module>/<topic>/` with cross-links.
+- **Triple layer + story**: double layer + `12.story` chapter with back-references.
+
+## Key Spec References
+
+| Topic | Location |
+|-------|----------|
+| Module naming / template / frontmatter / section style | `note/CONTRIBUTING.md` |
+| Story chapter format | `note/12.story/STORY-FORMAT-SPEC.md` |
+| Interview Q&A format | `note/13.split-hairs/QUESTION-FORMAT-SPEC.md` |
+| Module README standard structure | `note/CONTRIBUTING.md` §12 |
+
+## Standard Precipitation Workflow
+
+When adding a new topic to `note/`, follow this sequence:
+
+1. **Survey**: `grep`/`find` to scan ≥ 5 related files for overlap.
+2. **Depth check**: confirm high-frequency + deep content + real gap (3 signals).
+3. **Location decision**: interview Q&A → `13.split-hairs`; deep principle → `11.ai`; narrative → `12.story`.
+4. **Layer decision**: single / double / triple based on content depth.
+5. **Present options**: give user 2-4 placement choices.
+6. **Implement**: create files, add cross-links, use `feat(<slug>)` commit.
+7. **Verify**: `git diff --check`, spot-check links, validate counts with `find`.
+
+## Common Pitfalls
+
+- Do not hardcode article counts (e.g., "47 articles") -- always compute with `find`.
+- Do not claim file changes in commit messages that `git diff` does not reflect.
+- Do not skip the `note/README.md` top-level index -- every new module/topic needs an anchor line there.
+- Every new leaf `README.md` must include a `← [返回: <module>]` back-link.
