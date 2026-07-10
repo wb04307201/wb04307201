@@ -13,6 +13,13 @@
 set -euo pipefail
 
 REPO_ROOT="$(git rev-parse --show-toplevel)"
+
+# 自动配置 git hooks 路径（首次 clone 后自动生效，无需手动操作）
+CURRENT_HOOKS_PATH=$(git config core.hooksPath 2>/dev/null || echo "")
+if [ "$CURRENT_HOOKS_PATH" != ".githooks" ]; then
+  git config core.hooksPath .githooks
+  echo -e "${GREEN}自动配置: git core.hooksPath → .githooks${NC}"
+fi
 SOURCE="$REPO_ROOT/skills"
 TARGETS=("$REPO_ROOT/.claude/skills" "$REPO_ROOT/.codex/skills")
 

@@ -82,9 +82,13 @@ find note -name "README.md" -exec grep -L "^<!--" {} \;
 ## 新环境初始化（clone 后必做）
 
 ```bash
-# 启用 git hooks（skill 自动同步依赖此配置）
-git config core.hooksPath .githooks
+bash setup.sh   # 一键配置 git hooks + 同步 skills
 ```
+
+`setup.sh` 会自动：
+1. 配置 `git core.hooksPath → .githooks`（启用 skill 同步 hook）
+2. 运行 `scripts/sync-skills.sh`（同步 skills/ → .claude/skills/ + .codex/skills/）
+3. 验证环境就绪
 
 ## CI Workflows
 
