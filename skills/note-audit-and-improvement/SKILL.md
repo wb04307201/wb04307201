@@ -1,6 +1,6 @@
 ---
 name: note-audit-and-improvement
-description: Use when user asks "what should be improved in note" or requests a full audit — covers 8-category scan (numbers / links / index / duplicates / gaps / architecture / style / other), priority ranking (P0-P3 by impact × effort), mechanical vs judgment split, and batched execution plan
+description: Use when user asks "what should be improved in note" / "note 哪里需要优化" / "审计 note 现状" / "note 有哪些问题" / "扫一遍 note 给我建议" / "review note" or requests a full audit — covers 8-category scan (numbers / links / index / duplicates / gaps / architecture / style / other), priority ranking (P0-P3 by impact × effort), mechanical vs judgment split, and batched execution plan
 ---
 
 # note 优化审计
@@ -8,6 +8,23 @@ description: Use when user asks "what should be improved in note" or requests a 
 ## Overview
 
 当用户问"note 哪里需要优化 / 哪里需要补充 / 哪里有索引缺失 / 哪里有问题"时，对仓库根目录下的 note/ 做**系统性审计**（CWD 假设为项目根），输出**优先级分级**的优化建议报告（不是一次性 70+ 改动，而是分批可执行）。
+
+## Quick Example
+
+```
+用户：note 哪里需要优化？
+   ↓
+skill 执行：8 类别扫描 → 排除已修项 → ROI 分级 → 机械/判断分类 → 分批计划
+   ↓
+输出（节选）：
+  P0 数字不一致（12.story 47 vs 46）→ fix(12.story): 数字统一 46→47（🤖）
+  P1 回链覆盖 670/671（仅 1 缺）→ 补最后 1 个 README 回链（🤖）
+  P2 占位 README 标注（深度 ≤ 50 行的）→ 批量打 [TODO] 标签（🤖）
+  P3 CONTRIBUTING TOC → docs(contributing): 加顶部 TOC（🤖）
+分批计划：第一批 P0 数字 + H1（1 周）→ 第二批 P1 机械（2 周）→ ...
+
+不同于："70 个问题全列出让用户决策" — 本 skill 给分批 + 标注机械/判断
+```
 
 ## When to Use
 
@@ -76,12 +93,36 @@ echo "回链覆盖: $WITH_BACKLINK / $TOTAL_READMES"
 # 4.5 单向链接扫描（parent 不回链 child）
 # 原理：find 所有文件中的反向链接，记下每个"被链到"的文件
 # 然后检查每个被链到的文件，是否回链了链接它的源
+#
+# 兼容说明：原版用 `realpath -m --relative-to=.`，macOS BSD realpath 不支持 -m 参数，
+#       部分 Windows 环境 realpath 行为不一致。改用嵌套 cd + pwd 回退到 python3 计算。
+resolve_target() {
+  local child="$1" target="$2"
+  # 方法 1：GNU coreutils realpath（多数 Linux / Git Bash）
+  if command -v realpath >/dev/null 2>&1; then
+    realpath -m --relative-to=. "$(dirname "$child")/$target" 2>/dev/null && return
+  fi
+  # 方法 2：cd + pwd（POSIX 兼容，处理 ../ 与 ./）
+  local abs
+  abs="$(cd "$(dirname "$child")" 2>/dev/null && cd "$(dirname "$target")" 2>/dev/null && pwd -P 2>/dev/null)/$(basename "$target")"
+  [ -n "$abs" ] && [ -e "$abs" ] && echo "$abs" && return
+  # 方法 3：python3 兜底（处理任意深度 ../）
+  if command -v python3 >/dev/null 2>&1; then
+    python3 -c "
+import os, sys
+print(os.path.normpath(os.path.join(os.path.dirname(sys.argv[1]), sys.argv[2])))
+" "$child" "$target" 2>/dev/null && return
+  fi
+  # 方法 4：放弃，按相对路径回退（可能误报，但不会漏报）
+  echo "$target"
+}
+
 echo "=== 单向链接扫描（child → parent 但 parent 不回链）==="
 for child in $(find note -name "*.md"); do
   # 找 child 文件链到的所有 target（粗略正则，可能有误差，需人工复核）
   grep -oE '\]\(([^)]+\.md)' "$child" 2>/dev/null | sed 's/](//' | while read target; do
-    # 规范化 target 为绝对路径（去掉 ../ 等相对前缀）
-    abs_target=$(realpath -m --relative-to=. "$(dirname "$child")/$target" 2>/dev/null || echo "$target")
+    # 规范化 target 为绝对路径（跨平台兼容：realpath → cd+pwd → python3 → 兜底）
+    abs_target=$(resolve_target "$child" "$target")
     [ -f "$abs_target" ] || continue
     # 检查 target 是否反向链到 child（粗略：包含 child 的 basename）
     child_base=$(basename "$child")
@@ -324,11 +365,13 @@ done
 
 ## 3. 回链覆盖率（P1，1 条扫描）
 
-### 3.1 [NEW] 455 / 632 README 缺回链（72%）
-- **证据**：grep 统计
-- **修复**：派 subagent 批量补 `← [返回: <模块>]`
-- **执行模式**：🤖 机械（可脚本）
-- **Commit**：`refactor(note): 全量补回链（455 文件）`
+### 3.1 [NEW] 1 / 671 README 缺回链（99.85%，2026-07-10 实测）
+- **证据**：`for f in $(grep -rl "← \[返回" note/); do [ "$(basename "$f")" = "README.md" ] && echo "$f"; done | wc -l` = 670 / 671
+- **修复**：找具体哪个 README 缺 `← [返回: <模块>]`，单独补 1 条
+- **执行模式**：🤖 机械（单文件可脚本）
+- **Commit**：`fix(note): 补全最后 1 个 README 回链`
+
+> **历史**：早期审计发现 455/632 缺回链（72% 缺失），批量机械化补全后已收敛到 ~99%。
 
 ## 4. 索引缺失（P2，3 条）
 
@@ -378,5 +421,4 @@ done
 - [ ] Step 3 完成：ROI 分级（P0/P1/P2/P3）
 - [ ] Step 4 完成：机械 vs 判断分类
 - [ ] Step 5 完成：分批执行计划（4 批）
-- [ ] 输出报告含"总览"+"分类发现"+"分批计划"+"风险" + **孤岛清单**test-marker
-test-sync-123
+- [ ] 输出报告含"总览"+"分类发现"+"分批计划"+"风险" + **孤岛清单**
