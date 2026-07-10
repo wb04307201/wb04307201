@@ -247,11 +247,43 @@ question:
 - **真相**：用户根本没耐心等完
 - **修复**：6 维加权 + 阈值 0.80
 
+```yaml
+# ❌ 错误：只看任务完成率
+eval:
+  metrics: [task_success_rate]
+  threshold: 0.95  # 只看这一个数
+
+# ✅ 正确：6 维加权评分
+eval:
+  score: 0.4 * task_completion + 0.2 * step_efficiency
+       + 0.1 * tool_accuracy + 0.1 * cost
+       + 0.15 * satisfaction + 0.05 * stability
+  threshold: 0.80  # 综合分 ≥ 0.80 才通过
+```
+
 ### 陷阱 2：上线前跑一次就发布
 
 - **错误**：评测一次高 → 发布 → 出事故
 - **真相**：评测数据 ≠ 生产真实数据
 - **修复**：每次 PR CI + A/B + 在线监控
+
+```yaml
+# ❌ 错误：手动跑一次评测就发布
+deploy:
+  steps:
+    - run: python eval.py  # 跑一次
+    - run: ./deploy.sh     # 直接发
+
+# ✅ 正确：CI 自动评测 + 阈值门禁 + 灰度发布
+deploy:
+  stages: [eval, canary, production]
+  eval:
+    - run: python eval.py --threshold 0.85
+    - fail_if: score < 0.85  # 不达标就阻塞
+  canary:
+    - traffic: 5%            # 先放 5% 流量
+    - duration: 7d           # 观察 7 天
+```
 
 ### 陷阱 3：A/B Test 时间太短
 
