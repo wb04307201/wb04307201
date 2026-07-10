@@ -26,6 +26,7 @@ module:
 | 4 | [AI 项目管理账本：DORA + SPACE + ROI](ai-pm-dora-space/README.md) | DORA 4 指标 + SPACE 5 维度 + 月/季/年实施 | [ai-pm-dora-space](ai-pm-dora-space/README.md) |
 | 5 | [人力配比 + 排期估算：3 倍缓冲原则](team-sizing-3x-buffer/README.md) | 阿里 P5/P6/P7 "2-8-2" + 排期公式 + AI 时代修正 | [team-sizing-3x-buffer](team-sizing-3x-buffer/README.md) |
 | 6 | [康威定律下的团队拓扑](conways-law-team-topologies/README.md) | 康威定律 + Team Topologies 4 类型 + 平台比例 | [conways-law-team-topologies](conways-law-team-topologies/README.md) |
+| 7 | [面试跨专业应届生：问题库与评估指南](interviewing-cross-disciplinary/README.md) 🆕 | 5 大场景 × 降维版+场景版双题库 + 底线加分模型 + 潜力 3 维度 | [interviewing-cross-disciplinary](interviewing-cross-disciplinary/README.md) |
 
 ### 1.1 学习路径
 
@@ -33,6 +34,7 @@ module:
 - **决策进阶**（1 小时）：[self-vs-saas-vs-outsourcing](self-vs-saas-vs-outsourcing/README.md) → [team-sizing-3x-buffer](team-sizing-3x-buffer/README.md) — 选型 + 排期
 - **AI 时代**（1 小时）：[ai-pm-dora-space](ai-pm-dora-space/README.md) — 研发效能度量
 - **组织进阶**（半天）：[conways-law-team-topologies](conways-law-team-topologies/README.md) — 团队拓扑与康威定律
+- **招聘面试**（30 分钟）：[interviewing-cross-disciplinary](interviewing-cross-disciplinary/README.md) — 面试非科班应届生的问题库与评估指南
 
 ### 1.2 候选扩展（待补充）
 
@@ -197,11 +199,11 @@ graph LR
 | 项目 | 数量 | 说明 |
 |------|------|------|
 | 主模块 README | 1 | 本文件 |
-| 顶层分类（实战场景） | 6 | app-quote-breakdown / outsourcing-pitfalls / self-vs-saas-vs-outsourcing / ai-pm-dora-space / team-sizing-3x-buffer / conways-law-team-topologies |
-| 子 README | 6 | 每个顶层分类 1 个 |
+| 顶层分类（实战场景） | 7 | app-quote-breakdown / outsourcing-pitfalls / self-vs-saas-vs-outsourcing / ai-pm-dora-space / team-sizing-3x-buffer / conways-law-team-topologies / interviewing-cross-disciplinary |
+| 子 README | 7 | 每个顶层分类 1 个 |
 | 一页速查 | 1 | [cheatsheet.md](./cheatsheet.md) |
 | 辅助子目录（scripts/） | 1 | 历史脚本占位（保留，未删除） |
-| **README 总数** | **8** | 1 顶层 + 6 子 + 1 cheatsheet |
+| **README 总数** | **9** | 1 顶层 + 7 子 + 1 cheatsheet |
 
 ---
 
