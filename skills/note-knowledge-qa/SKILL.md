@@ -1,15 +1,44 @@
 ---
 name: note-knowledge-qa
-description: Use when user asks a technical question, requests interview prep, wants system design guidance, or needs knowledge from the note/ knowledge base — retrieves relevant articles across 14 modules, follows cross-references, synthesizes comprehensive answers with citations
+description: Use when user asks a technical question / "查 note" / "知识库问答" / "我有问题想问" requests interview prep / "面试题" / "出一道题" / "考考我" / "根据简历出题" / "模拟面试" / "面试非科班" wants system design guidance / "如何设计 X" or needs knowledge from the note/ knowledge base — retrieves relevant articles across 14 modules, follows cross-references, synthesizes comprehensive answers with citations
 ---
 
 # note 知识库问答
 
 ## Overview
 
-把 `note/` 知识库（14 主模块 / 638 README / 900+ .md）变成**可检索的私人智囊**。对用户问题做：关键词提取 → 模块定位 → 文件检索 → 关联追踪 → 整合回答。
+把 `note/` 知识库（14 主模块 / 670 README / 994 .md，2026-07-10 实测 671/996）变成**可检索的私人智囊**。对用户问题做：关键词提取 → 模块定位 → 文件检索 → 关联追踪 → 整合回答。
 
 **核心原则**：**先搜后答** —— 不凭记忆回答，先从 note/ 检索相关内容，确保答案有据可查。
+
+## Quick Example
+
+```
+用户：HashMap 为什么线程不安全？
+   ↓
+skill 执行：A 类型（技术问答）→ grep "HashMap" → 双层检索（01.java + 13.split-hairs）
+   ↓
+输出（节选）：
+  ## HashMap 线程不安全
+
+  HashMap 在并发 put 时可能导致：
+  1. JDK 7 死循环（链表成环，CPU 100%）— 已修复（JDK 8 红黑树）
+  2. JDK 8+ 数据丢失（覆盖 + size 错乱）
+
+  ### 详细解释
+  [源码分析 + JDK 8 修复后的残余风险]
+
+  ### 实战建议
+  1. 多线程场景用 ConcurrentHashMap
+  2. 老代码里 HashMap 套 Collections.synchronizedMap 是性能最低选项
+
+  ### 📚 知识来源
+  | 来源 | 路径 | 覆盖内容 |
+  | HashMap 原理 | note/01.java/collection/hashmap/README.md | 数据结构 + 树化阈值 |
+  | 面试陷阱 | note/13.split-hairs/01.java/hashmap-thread-safe/ | 并发死循环细节 |
+
+不同点：不凭 LLM 训练知识答 — 每条都附 note/ 实际文章路径
+```
 
 ## When to Use
 
@@ -57,24 +86,33 @@ description: Use when user asks a technical question, requests interview prep, w
 └─ 跨领域问题（拆成多个关键词，分别检索）
 ```
 
-**模块速查表**：
+**模块速查表**（按"用户提问频次"降序排列 — 高频模块在前，方便快速定位）：
 
-| 模块 | 擅长回答的问题类型 |
-|------|------------------|
-| `01.java` | Java 语言、JVM、并发、集合、Kotlin |
-| `02.computer-basics` | 网络、算法、数据结构、操作系统 |
-| `03.database` | MySQL、Redis、索引、事务、SQL 优化 |
-| `04.system-design` | 系统设计、高可用、分布式、安全、SSO |
-| `05.tools` | Docker、K8s、Git、CI/CD |
-| `06.spring` | Spring Boot/Cloud、MyBatis、缓存、消息队列 |
-| `07.workflow` | 流程引擎、Camunda、BPMN |
-| `08.application-systems` | ERP、CRM、EAM 等企业系统 |
-| `09.front-end` | JS/TS、React、Web Components、设计系统 |
-| `10.big-data` | Flink、Spark、ClickHouse、数仓 |
-| `11.ai` | LLM、RAG、Agent、Prompt、Token、MCP、AI 工程 |
-| `12.story` | 概念叙事理解（阿明餐厅系列）、架构演进故事 |
-| `13.split-hairs` | 面试精炼版（陷阱+话术）、咬文嚼字 |
-| `14.project-management` | 项目管理、DORA、研发效能、**面试方法论、跨专业候选人评估** |
+| 排名 | 模块 | 擅长回答的问题类型 |
+|:---:|------|------------------|
+| 🥇 | `01.java` | Java 语言、JVM、并发、集合、Kotlin |
+| 🥈 | `11.ai` | LLM、RAG、Agent、Prompt、Token、MCP、AI 工程 |
+| 🥉 | `06.spring` | Spring Boot/Cloud、MyBatis、缓存、消息队列 |
+| 4 | `03.database` | MySQL、Redis、索引、事务、SQL 优化 |
+| 5 | `04.system-design` | 系统设计、高可用、分布式、安全、SSO |
+| 6 | `13.split-hairs` | 面试精炼版（陷阱+话术）、咬文嚼字 |
+| 7 | `02.computer-basics` | 网络、算法、数据结构、操作系统 |
+| 8 | `05.tools` | Docker、K8s、Git、CI/CD |
+| 9 | `14.project-management` | 项目管理、DORA、研发效能、**面试方法论、跨专业候选人评估** |
+| 10 | `12.story` | 概念叙事理解（阿明餐厅系列）、架构演进故事 |
+| 11 | `09.front-end` | JS/TS、React、Web Components、设计系统 |
+| 12 | `08.application-systems` | ERP、CRM、EAM 等企业系统 |
+| 13 | `10.big-data` | Flink、Spark、ClickHouse、数仓 |
+| 14 | `07.workflow` | 流程引擎、Camunda、BPMN |
+
+**排序依据**（参考本仓库 `wb04307201` 项目定位 Java 后端 + AI 工程）：
+- 🥇 Java 后端开发最常用（语言 + 集合 + 并发）
+- 🥈 AI 工程是当前热点（RAG / Agent / Prompt）
+- 🥉 Spring 系是 Java 企业开发的标配
+- 4-5 数据库 + 系统设计 = 后端进阶必问
+- 6-7 面试题 + 科班基础 = 面试 + 校招高频
+- 8-9 DevOps + 面试方法论
+- 10-14 偏垂直领域，按需检索
 
 ### Step 3: 检索 + 关联追踪
 
@@ -97,6 +135,61 @@ find note/<module> -type d -name "*<topic>*" 2>/dev/null
 - 每读一篇，检查其"相关章节"链接，追踪 1-2 篇关联文章
 - 面试题类型（被面试者视角）：同时读 `13.split-hairs` 和主模块（双层检索）
 - 面试官出题类型（G 类型）：**优先读 `14/interviewing-cross-disciplinary`**（问题库），按需引用 `13.split-hairs` 作降维素材
+
+**双层检索 grep 模板**（核心武器，直接复用）：
+
+```bash
+# 用法：bash double_layer_search.sh "<关键词>"
+KEYWORD="${1:?需要 1 个参数：关键词}"
+
+# === 主模块命中（深度原理）===
+echo "═══ 主模块命中（按命中数倒序，最多 10 个）═══"
+grep -rl "$KEYWORD" note/ --include="*.md" 2>/dev/null \
+  | grep -v "/13.split-hairs/" \
+  | xargs -I {} sh -c 'count=$(grep -c "$0" "{}" 2>/dev/null); echo "$count {}"' "$KEYWORD" \
+  | sort -rn \
+  | head -10 \
+  | awk '{print "  " $1 " 处命中  →  " $2}'
+
+# === 13.split-hairs 命中（被面试者视角）===
+echo ""
+echo "═══ 13.split-hairs 命中（面试陷阱版，最多 5 个）═══"
+grep -rl "$KEYWORD" note/13.split-hairs/ 2>/dev/null \
+  | xargs -I {} sh -c 'count=$(grep -c "$0" "{}" 2>/dev/null); echo "$count {}"' "$KEYWORD" \
+  | sort -rn \
+  | head -5 \
+  | awk '{print "  " $1 " 处命中  →  " $2}'
+
+# === 12.story 命中（叙事类比版）===
+echo ""
+echo "═══ 12.story 命中（阿明餐厅版，最多 3 个）═══"
+grep -rl "$KEYWORD" note/12.story/ 2>/dev/null \
+  | head -3 \
+  | awk '{print "  →  " $1}'
+
+# === 14.project-management 命中（仅面试方法论问题）===
+echo ""
+echo "═══ 14.project-management 命中（面试官视角，最多 3 个）═══"
+grep -rl "$KEYWORD" note/14.project-management/ 2>/dev/null \
+  | head -3 \
+  | awk '{print "  →  " $1}'
+
+# === 候选阅读顺序（主模块优先，13.split-hairs 双层，12.story 收尾）===
+echo ""
+echo "═══ 建议阅读顺序：主模块 → 13.split-hairs → 12.story（叙事辅助）═══"
+```
+
+**双层调度决策**（根据问题类型选择检索顺序）：
+
+| 问题类型 | 主模块 | 13.split-hairs | 12.story | 14.project-management |
+|---------|:---:|:---:|:---:|:---:|
+| **A 技术问答** | 第 1 读 | 可选 | 可选 | — |
+| **B 出题** | 第 2 读（参答案） | **第 1 读** | 可选 | — |
+| **C 设计指导** | **第 1 读** | 可选 | 收尾叙事 | — |
+| **D 模拟面试** | **第 1 读** | **第 2 读** | 可选 | — |
+| **E 简历面试** | **第 1 读** | 第 2 读 | 可选 | **第 2 读**（检测专业） |
+| **F 学习路径** | **第 1 读**（Level 1-2） | 第 2 读（验证） | Level 4 收尾 | — |
+| **G 面试官出题** | 第 3 读 | 降维对照 | — | **第 1 读**（问题库） |
 
 **3.3 关联追踪**（跟着链接走）
 
@@ -528,6 +621,85 @@ grep -rl "Redis" note/ | sort
 | JVM 调优 | `note/01.java/jvm/tuning.md` | JVM 参数详解 |
 | Loop Engineering | `note/11.ai/03-engineering/loop-engineering/README.md` | 循环调用原理 |
 ```
+
+## Common Mistakes
+
+**❌ Mistake 1: 直接凭印象答（核心反模式）**
+
+- **症状**：用户问"JVM 参数怎么配"直接答，不 grep note/ → 答的是训练知识，事后与 note/ 不一致
+- **修复**：Step 3.1 必须先 grep，即使是高频问题也要确认 note 怎么写
+
+**❌ Mistake 2: 单一来源 = 薄弱回答**
+
+- **症状**：只读 1 篇就整合；用户问"HashMap 原理"只引一篇
+- **修复**：Step 3.4 终止条件是 ≥ 3 篇深度 + ≥ 1 篇追踪，不达标则继续读
+
+**❌ Mistake 3: 忽略 13.split-hairs 双层（被面试者视角）**
+
+- **症状**：用户出"为什么树化阈值是 8"，只引 01.java 主模块 → 缺面试陷阱视角
+- **修复**：必须同时引 `13.split-hairs/<module>/<topic>/`（面试陷阱版）+ 主模块深度版
+
+**❌ Mistake 4: 漏写知识来源表**
+
+- **症状**：回答末尾没有 📚 知识来源表 → 用户无法追溯 → 失去本 skill 的核心价值
+- **修复**：必填项；输错一步是 invalid output；模板见"引用格式"小节
+
+**❌ Mistake 5: 跨模块问题不拆解**
+
+- **症状**：用户问"如何设计 SSO"，单点答完一个模块就结束 → 漏掉 SAML/CAS 等
+- **修复**：见"当问题跨多个模块时"流程：拆分子问题 → 各自检索 → 标注模块来源
+
+**❌ Mistake 6: 候选人专业漏检（E/G 类型专属）**
+
+- **症状**：简历面试忘了检测非科班 → 自动用科班路线题压人 → 应聘者被错杀
+- **修复**：见 E 类型 Step 0 教育背景检测；非科班自动用 `14/interviewing-cross-disciplinary` 问题库 + 非科班追问链
+
+**❌ Mistake 7: 模拟面试不追问（D/E 类型专属）**
+
+- **症状**：D 模式下一题一答就跳下一题，没追问链 → 失去核心价值（深度评估）
+- **修复**：追问链是 D/E 的差异化能力；每轮必续追问链，最多 3 轮深挖；见"追问链生成规则"
+
+**❌ Mistake 8: 注水重复 cite**
+
+- **症状**：📚 知识来源表里同一篇文章 cite 3 次（基础/进阶/实战都填同一篇）
+- **修复**：每个来源必须覆盖**不同维度**（基础/原理/实战/面试题/故事层各一篇），避免重复
+
+**❌ Mistake 9: G 类型出题用科班题库**
+
+- **症状**：面试非科班候选人，直接搬 13.split-hairs 原题 → 应聘者答不出 → 错杀潜力股
+- **修复**：见 G 模板"降维版为主 + 重点考察自驱力/逻辑思维/跨专业优势"
+
+---
+
+## Real-World Impact
+
+本 skill 是"**非通用 AI**"的区分点 —— 强制 LLM 把 note/ 当作私有知识库使用，而不是凭训练知识答。
+
+**典型场景 + 预期产出**：
+
+| 类型 | 触发场景 | 期望产出 | 耗时 |
+|------|---------|---------|------|
+| **A. 技术问答** | "HashMap 原理" | 找 3+ 篇 + 整合代码示例 + 📚 知识来源 | ~2 分钟 |
+| **B. 出面试题** | "出一道 JVM 题" | 场景化题 + 三层答案 + 90 秒话术 | ~5 分钟 |
+| **C. 设计指导** | "如何设计 SSO" | 3 方案对比表 + 推荐 + 关键设计点 | ~8 分钟 |
+| **D. 模拟面试** | "我来答你出题" | 题目 + 评估 + 追问链 3 轮 + 总结 | 持续 |
+| **E. 简历面试** | "根据简历出 5 题" | 教育检测 + 知识地图 + 5 题清单 + 追问库 | ~10 分钟 |
+| **F. 学习路径** | "怎么学 RAG" | 知识地图（Level 1-4）+ 路径 + 自测题 | ~6 分钟 |
+| **G. 面试官出题** | "面非科班应届" | 候选人画像 + 双题库 + 评估速查表 | ~10 分钟 |
+
+**避免的失败**：
+- ❌ 凭训练知识答（用户事后发现与 note/ 不一致 → Mistake 1）
+- ❌ 漏知识来源表（用户无法自我纠错 → Mistake 4）
+- ❌ 跨模块问题只答一半（如 SSO 只答 OAuth 不答 SAML → Mistake 5）
+- ❌ 简历面试一刀切（科班/非科班混用题库 → Mistake 6/9）
+- ❌ 模拟面试变"答题器"（无追问 → Mistake 7）
+
+**联动 skill**：
+- 上游：`note-precipitation-planning`（每答一次 A 类都暴露缺口 → 触发沉淀新主题）
+- 上游：`note-content-quality`（已沉淀的文章质量验收 → 间接影响本 skill 的答案质量）
+- 下游：`note-audit-and-improvement`（本 skill 暴露的高频"note 未覆盖"主题可作为缺口数据）
+
+---
 
 ## Quick Checklist（回答前必过）
 
