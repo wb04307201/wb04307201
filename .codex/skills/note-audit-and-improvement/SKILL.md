@@ -7,7 +7,7 @@ description: Use when user asks "what should be improved in note" or requests a 
 
 ## Overview
 
-当用户问"note 哪里需要优化 / 哪里需要补充 / 哪里有索引缺失 / 哪里有问题"时，对仓库根目录下的 note/ 做**系统性审计**（assuming CWD = project root），输出**优先级分级**的优化建议报告（不是一次性 70+ 改动，而是分批可执行）。
+当用户问"note 哪里需要优化 / 哪里需要补充 / 哪里有索引缺失 / 哪里有问题"时，对仓库根目录下的 note/ 做**系统性审计**（CWD 假设为项目根），输出**优先级分级**的优化建议报告（不是一次性 70+ 改动，而是分批可执行）。
 
 ## When to Use
 
@@ -24,13 +24,13 @@ description: Use when user asks "what should be improved in note" or requests a 
 
 ## Project Context（必读）
 
-**note 位置**：仓库根目录的 note/（assuming CWD = project root）
+**note 位置**：仓库根目录的 note/（CWD 假设 = 项目根）
 
 **已知已修复的问题**（**扫描时必须排除**，避免重复报告）：
 - ✅ 14 主模块优化（2026-07-01 spec/plan/实施）
 - ✅ 时间戳标记 `最后更新`（commit `785896e`）
 - ✅ `引言：反直觉代码` 模板残留（commit `30f6323`）
-- ✅ Agent Memory / Dropout / Codex CLI / Vector Search 三档专题沉淀
+- ✅ Agent Memory / Dropout / Claude Code / Vector Search 三档专题沉淀
 
 **8 大审计类别**：
 
@@ -185,10 +185,10 @@ done
 
 每个 P0/P1 发现标注 **执行模式**：
 
-- **🤖 机械（可break into sequential helper tasks 批量）**：回链补全 / PNG 清理 / H1 改写 / 占位 README 标注
+- **🤖 机械（可派 subagent 批量）**：回链补全 / PNG 清理 / H1 改写 / 占位 README 标注
 - **🧠 需判断（要 orchestrator 决策）**：目录合并 / 内容合并 / 命名风格统一 / 索引缺失补建
 
-**机械任务**：可一次性break into sequential helper tasks 执行（如"补 455 个 README 的回链"）
+**机械任务**：可一次性派 subagent 执行（如"补 455 个 README 的回链"）
 **判断任务**：必须 orchestrator 与用户决策后逐个处理
 
 ### Step 5: 分批执行计划（关键步骤）
@@ -250,7 +250,7 @@ done
 
 **症状**：让用户决策"455 个 README 补回链"的每一个 → 用户放弃
 
-**修复**：Step 4 必须分类；机械任务自动跑；判断任务才让用户决策
+**修复**：Step 4 必须分类；机械任务让 subagent 自动跑；判断任务才让用户决策
 
 ### ❌ Mistake 5: ROI 标准不清晰
 
@@ -326,7 +326,7 @@ done
 
 ### 3.1 [NEW] 455 / 632 README 缺回链（72%）
 - **证据**：grep 统计
-- **修复**：break into sequential helper tasks 批量补 `← [返回: <模块>]`
+- **修复**：派 subagent 批量补 `← [返回: <模块>]`
 - **执行模式**：🤖 机械（可脚本）
 - **Commit**：`refactor(note): 全量补回链（455 文件）`
 
@@ -368,7 +368,7 @@ done
 - ❌ 70 项一次性报告（用户决策瘫痪）
 - ❌ 数字虚报（与印象不一致）
 - ❌ 已修项重复报告（浪费时间）
-- ❌ 机械任务让用户决策（应该自动跑）
+- ❌ 机械任务让用户决策（应该让 subagent 跑）
 
 ## Quick Checklist
 
@@ -378,4 +378,5 @@ done
 - [ ] Step 3 完成：ROI 分级（P0/P1/P2/P3）
 - [ ] Step 4 完成：机械 vs 判断分类
 - [ ] Step 5 完成：分批执行计划（4 批）
-- [ ] 输出报告含"总览"+"分类发现"+"分批计划"+"风险" + **孤岛清单**
+- [ ] 输出报告含"总览"+"分类发现"+"分批计划"+"风险" + **孤岛清单**test-marker
+test-sync-123

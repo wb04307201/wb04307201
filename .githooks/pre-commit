@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# pre-commit hook: 自动同步 skills/ → .claude/skills/ + .codex/skills/
+#
+# 安装: cp .githooks/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+# 或通过 git config core.hooksPath .githooks（推荐，可追踪）
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+SCRIPT="$REPO_ROOT/scripts/sync-skills.sh"
+
+if [ -f "$SCRIPT" ]; then
+  # 只在 skills/ 有变更时才同步
+  STAGED_SKILLS=$(git diff --cached --name-only | grep "^skills/" | wc -l)
+  if [ "$STAGED_SKILLS" -gt 0 ]; then
+    echo "[pre-commit] skills/ 有变更，同步到 .claude/skills/ 和 .codex/skills/..."
+    bash "$SCRIPT"
+
+    # 把同步后的文件也加入暂存
+    git add .claude/skills/ .codex/skills/ 2>/dev/null || true
+  fi
+fi
