@@ -35,7 +35,7 @@ module:
 | **自定义 Condition** | [custom-condition.md](custom-condition.md) | `@ConditionalOn*` 11 个内置注解无法覆盖时如何扩展 | 20 min |
 | **启动流程** | [startup-flow.md](startup-flow.md) | `SpringApplication.run()` 的 6 个阶段 | 20 min |
 | **启动后钩子** | [application-bootstrap.md](application-bootstrap.md) | `@PostConstruct` / Runner / `ApplicationReadyEvent` 5 种回调 | 15 min |
-| **外部化配置** | [externalized-configuration.md](externalized-configuration.md) | `@Value` / `@ConfigurationProperties` / `@Profile` / `Environment` | 25 min |
+| **外部化配置** | [externalized-configuration.md](boot-externalized-configuration.md) | `@Value` / `@ConfigurationProperties` / `@Profile` / `Environment` | 25 min |
 | **内嵌服务器** | [embedded-server.md](embedded-server.md) | Tomcat / Jetty / Undertow 切换 + SSL | 15 min |
 | **GraalVM Native** | [graalvm-native.md](graalvm-native.md) | Spring Boot 3 AOT 引擎 + Native Image | 15 min |
 
@@ -103,8 +103,8 @@ graph TB
 | **@PostConstruct** | Bean 初始化时执行的方法 | [启动后钩子](application-bootstrap.md) |
 | **ApplicationRunner** | 启动完成后执行的回调（可访问命令行参数） | [启动后钩子](application-bootstrap.md) |
 | **ApplicationReadyEvent** | 应用完全就绪事件（内嵌服务器已启动） | [启动后钩子](application-bootstrap.md) |
-| **@ConfigurationProperties** | 结构化绑定 application.yml 到 POJO，支持嵌套 / 校验 | [外部化配置](externalized-configuration.md) |
-| **@Profile** | 多环境配置切换，配合 `spring.profiles.active` | [外部化配置](externalized-configuration.md) |
+| **@ConfigurationProperties** | 结构化绑定 application.yml 到 POJO，支持嵌套 / 校验 | [外部化配置](boot-externalized-configuration.md) |
+| **@Profile** | 多环境配置切换，配合 `spring.profiles.active` | [外部化配置](boot-externalized-configuration.md) |
 | **ServletWebServerFactoryAutoConfiguration** | 自动装配 Tomcat / Jetty / Undertow | [内嵌服务器](embedded-server.md) |
 | **AOT Engine / Native Image** | Spring Boot 3 + GraalVM，启动从秒级降到毫秒级 | [GraalVM Native](graalvm-native.md) |
 

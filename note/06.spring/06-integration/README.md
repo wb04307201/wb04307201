@@ -29,10 +29,10 @@ module:
 | 组件 | 文件 | 适用场景 | 建议时长 |
 |:----:|:----|:---------|:--------:|
 | **Validation 校验** | [validation/](validation/) | Controller/Service 参数校验 | 25 min |
-| ├─ 注解与使用 | [annotations-and-usage.md](validation/annotations-and-usage.md) | JSR-303/380 注解、Hibernate Validator | 15 min |
+| ├─ 注解与使用 | [annotations-and-usage.md](validation/validation-annotations-and-usage.md) | JSR-303/380 注解、Hibernate Validator | 15 min |
 | ├─ 自定义验证器 | [custom-validator.md](validation/custom-validator.md) | 自定义业务规则注解 | 15 min |
 | └─ 跨字段校验 | [cross-field.md](validation/cross-field.md) | 多字段组合、容器元素校验 | 10 min |
-| **Retry 重试** | [retry.md](retry.md) | 瞬时故障自动重试（网络/数据库） | 20 min |
+| **Retry 重试** | [retry.md](integration-retry.md) | 瞬时故障自动重试（网络/数据库） | 20 min |
 | **StateMachine 状态机** | [statemachine.md](statemachine.md) | 复杂状态流转（订单/工作流/设备控制） | 25 min |
 | **Batch 批处理** | [batch.md](batch.md) | 数据迁移/ETL/定时报表（含分区并行） | 40 min |
 
@@ -53,10 +53,10 @@ module:
 
 | 概念 | 一句话定义 | 章节 |
 |------|----------|:----:|
-| **@Valid / @Validated** | 触发参数校验的注解 | [校验](validation/annotations-and-usage.md) |
-| **@NotNull / @NotBlank** | 基础校验注解 | [校验](validation/annotations-and-usage.md) |
-| **@Retryable** | 声明式重试注解 | [重试](retry.md) |
-| **@Recover** | 重试失败后的兜底方法 | [重试](retry.md) |
+| **@Valid / @Validated** | 触发参数校验的注解 | [校验](validation/validation-annotations-and-usage.md) |
+| **@NotNull / @NotBlank** | 基础校验注解 | [校验](validation/validation-annotations-and-usage.md) |
+| **@Retryable** | 声明式重试注解 | [重试](integration-retry.md) |
+| **@Recover** | 重试失败后的兜底方法 | [重试](integration-retry.md) |
 | **State / Event / Transition** | 状态机的三要素 | [状态机](statemachine.md) |
 | **Guard / Action** | 转换的条件判断与副作用 | [状态机](statemachine.md) |
 | **Job / Step** | 批处理的任务与步骤 | [批处理](batch.md) |
@@ -84,7 +84,7 @@ module:
 
 ---
 
-> 🚀 从 [Validation 校验](validation/annotations-and-usage.md) 开始
+> 🚀 从 [Validation 校验](validation/validation-annotations-and-usage.md) 开始
 
 ---
 

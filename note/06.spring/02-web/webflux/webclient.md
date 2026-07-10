@@ -214,4 +214,4 @@ public interface UserClient {
 - ⬅️ [WebFlux 总览](README.md)
 - [SSE 实时推送](sse.md) — WebClient + Sinks 实战
 - [R2DBC 响应式数据库](r2dbc.md) — 端到端响应式
-- [06 集成组件/Retry](../../06-integration/retry.md) — Resilience4j 重试
+- [06 集成组件/Retry](../../06-integration/integration-retry.md) — Resilience4j 重试

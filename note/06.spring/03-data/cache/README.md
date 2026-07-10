@@ -24,7 +24,7 @@ module:
 
 | 章节 | 核心问题 | 阅读时长 |
 |:-----|:---------|:--------:|
-| [缓存注解与使用](annotations-and-usage.md) | 5 大注解怎么用？SpEL 怎么写？ | 15 min |
+| [缓存注解与使用](cache-annotations-and-usage.md) | 5 大注解怎么用？SpEL 怎么写？ | 15 min |
 | [缓存实现与最佳实践](implementations-and-best-practices.md) | Caffeine/Redis/Ehcache 怎么选？4 大高级特性？ | 15 min |
 | [缓存 4 大模式](patterns.md) | Cache-Aside / Read-Through / Write-Through / Write-Behind 怎么选？ | 15 min |
 | [多级缓存与防护](multi-level.md) | L1+L2 架构？穿透/击穿/雪崩如何防御？ | 15 min |
@@ -124,7 +124,7 @@ public User getById(Long id) {
 | @Caching | 组合多个缓存操作 | - |
 | @CacheConfig | 类级缓存配置 | - |
 
-> 详细用法见 [缓存注解与使用](annotations-and-usage.md)
+> 详细用法见 [缓存注解与使用](cache-annotations-and-usage.md)
 
 ```java
 @Service
@@ -215,7 +215,7 @@ graph TB
 ## 相关章节
 
 - ⬅️ [返回 03 数据层](../README.md)
-- [缓存注解与使用](annotations-and-usage.md)
+- [缓存注解与使用](cache-annotations-and-usage.md)
 - [缓存实现与最佳实践](implementations-and-best-practices.md)
 - [缓存 4 大模式](patterns.md)
 - [多级缓存与防护](multi-level.md)

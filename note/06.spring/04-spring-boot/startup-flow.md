@@ -1,6 +1,6 @@
 # Spring Boot 启动流程（`SpringApplication.run()` 6 阶段）
 
-> ⬅️ [返回 04 Spring Boot](README.md) | [启动后钩子](application-bootstrap.md) | [外部化配置](externalized-configuration.md)
+> ⬅️ [返回 04 Spring Boot](README.md) | [启动后钩子](application-bootstrap.md) | [外部化配置](boot-externalized-configuration.md)
 
 `SpringApplication.run()` 是 Spring Boot 的"魔法入口"——一行代码背后隐藏了 6 个阶段、20+ 个扩展点。本文按时间顺序拆解完整启动流程。
 
@@ -107,7 +107,7 @@ private ConfigurableEnvironment prepareEnvironment(...) {
 }
 ```
 
-**加载顺序**（详见 [externalized-configuration.md](externalized-configuration.md)）：
+**加载顺序**（详见 [externalized-configuration.md](boot-externalized-configuration.md)）：
 1. 默认属性
 2. `@PropertySource`
 3. `application.yml` → `application-{profile}.yml`
@@ -326,7 +326,7 @@ public class ReadyListener implements ApplicationListener<ApplicationReadyEvent>
 
 - ⬅️ [返回 04 Spring Boot](README.md)
 - [启动后钩子](application-bootstrap.md) — `@PostConstruct` / Runner / `ApplicationReadyEvent` 详解
-- [外部化配置](externalized-configuration.md) — Environment 在阶段 2 被构建
+- [外部化配置](boot-externalized-configuration.md) — Environment 在阶段 2 被构建
 - [内嵌服务器](embedded-server.md) — 阶段 4 的 `onRefresh()` 启动 Tomcat
 - [自动配置原理](auto-configuration.md) — 阶段 4 解析 `@SpringBootApplication`
 

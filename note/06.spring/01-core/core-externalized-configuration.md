@@ -370,4 +370,4 @@ public class PaymentService {
 - [@Configuration 进阶](configuration-lite-vs-full.md) — `@EnableConfigurationProperties` 的来源
 - [IoC 总览](ioc/README.md)
 - [Bean 生命周期](ioc/bean-lifecycle.md) — `PropertySourcesPlaceholderConfigurer` 是 `BeanFactoryPostProcessor`
-- [Spring Boot 外部化配置](../04-spring-boot/externalized-configuration.md) — application.yml 加载顺序、spring.config.import
+- [Spring Boot 外部化配置](../04-spring-boot/boot-externalized-configuration.md) — application.yml 加载顺序、spring.config.import

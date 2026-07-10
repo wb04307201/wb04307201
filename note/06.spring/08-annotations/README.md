@@ -46,7 +46,7 @@ module:
 | **缓存** | `@Cacheable` / `@CachePut` / `@CacheEvict` / `@Caching` / `@CacheConfig` / `@EnableCaching` | [cache.md](cache.md) |
 | **调度与异步** | `@Scheduled` / `@Async` / `@EnableScheduling` / `@EnableAsync` | [scheduling-and-async.md](scheduling-and-async.md) |
 | **校验** | `@Valid` / `@Validated` / `@NotNull` / `@NotBlank` / `@Email` / `@Size` / `@Pattern` | [validation.md](validation.md) |
-| **重试** | `@Retryable` / `@Recover` / `@Backoff` / `@EnableRetry` | [retry.md](retry.md) |
+| **重试** | `@Retryable` / `@Recover` / `@Backoff` / `@EnableRetry` | [retry.md](annotations-retry.md) |
 
 ---
 
@@ -60,7 +60,7 @@ module:
 | 多环境切换 | `@Profile` + `application-{profile}.yml` | [Profile](configuration.md#七profile-与环境隔离) |
 | 写事务方法 | `@Transactional` | [事务](transaction.md) |
 | 缓存方法结果 | `@Cacheable` | [缓存](cache.md) |
-| 自动重试 | `@Retryable` + `@Recover` | [重试](retry.md) |
+| 自动重试 | `@Retryable` + `@Recover` | [重试](annotations-retry.md) |
 | 全局异常处理 | `@ControllerAdvice` + `@ExceptionHandler` | [异常](exception.md) |
 | 启动后执行 | `@PostConstruct` / `ApplicationRunner` | [启动](../04-spring-boot/application-bootstrap.md) |
 | 写切面 | `@Aspect` + `@Before`/`@Around` | [AOP](aop.md) |
@@ -138,7 +138,7 @@ graph LR
 | [cache.md](cache.md) | 缓存注解（@Cacheable/@CachePut/@CacheEvict + SpEL） | ✅ |
 | [scheduling-and-async.md](scheduling-and-async.md) | 调度与异步（@Scheduled cron / @Async / 线程池） | ✅ |
 | [validation.md](validation.md) | 校验注解（@Valid/@Validated + JSR-303 约束） | ✅ |
-| [retry.md](retry.md) | 重试注解（@Retryable/@Recover/@Backoff） | ✅ |
+| [retry.md](annotations-retry.md) | 重试注解（@Retryable/@Recover/@Backoff） | ✅ |
 
 ---
 

@@ -18,7 +18,7 @@ module:
 
 | 序号 | 主题 | 核心内容 |
 |------|------|---------|
-| 1 | [annotations-and-usage.md](annotations-and-usage.md) | JSR-303/380 标准注解、Hibernate Validator、`@Valid` vs `@Validated` |
+| 1 | [annotations-and-usage.md](validation-annotations-and-usage.md) | JSR-303/380 标准注解、Hibernate Validator、`@Valid` vs `@Validated` |
 | 2 | [custom-validator.md](custom-validator.md) | 自定义约束注解 + Validator 实现类 + 错误消息 |
 | 3 | [cross-field.md](cross-field.md) | 跨字段组合校验、容器元素校验（`@Valid` 级联）|
 
@@ -76,6 +76,6 @@ graph TB
 
 ---
 
-> 建议路径：从 [注解与使用](annotations-and-usage.md) 开始 → 掌握基础后学习 [自定义验证器](custom-validator.md) → 最后看 [跨字段校验](cross-field.md)
+> 建议路径：从 [注解与使用](validation-annotations-and-usage.md) 开始 → 掌握基础后学习 [自定义验证器](custom-validator.md) → 最后看 [跨字段校验](cross-field.md)
 
 ← [返回: Spring 全家桶 · validation](README.md)

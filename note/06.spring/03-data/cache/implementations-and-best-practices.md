@@ -1,6 +1,6 @@
 # 缓存实现与最佳实践
 
-> ⬅️ [返回缓存总览](README.md) | [缓存注解与使用](annotations-and-usage.md)
+> ⬅️ [返回缓存总览](README.md) | [缓存注解与使用](cache-annotations-and-usage.md)
 
 Spring Cache 提供**统一抽象层**——业务代码用同样的注解，**底层可自由切换** Caffeine / Redis / Ehcache 等多种实现。本文详解 3 种主流实现、4 大高级特性、优缺点对比和 7 条最佳实践。
 
@@ -444,6 +444,6 @@ public void update(User user) {
 ## 相关章节
 
 - ⬅️ [返回缓存总览](README.md)
-- [缓存注解与使用](annotations-and-usage.md) — 5 大注解 + SpEL
+- [缓存注解与使用](cache-annotations-and-usage.md) — 5 大注解 + SpEL
 - [07 可观测性/Micrometer](../../07-observability/micrometer.md) — 缓存命中率监控
 - [08 注解/AOP 注解](../../08-annotations/aop.md) — 缓存本质是 AOP

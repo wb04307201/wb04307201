@@ -12,7 +12,7 @@ module:
 > 一句话定位：Spring Boot 缓存体系的**生产应急方案**。当 Redis 挂掉，**默认行为是抛异常 → 整个请求失败**，本文给出 **4 大降级方案**对比 + **Top 2 推荐实战代码** + **自动恢复机制** + **降级期数据一致性处理**。
 
 > **同模块兄弟**：
-> - [缓存注解与使用](annotations-and-usage.md) — @Cacheable / @CachePut / @CacheEvict 用法
+> - [缓存注解与使用](cache-annotations-and-usage.md) — @Cacheable / @CachePut / @CacheEvict 用法
 > - [缓存实现与最佳实践](implementations-and-best-practices.md) — Redis / Caffeine / Ehcache 对比
 > - [多级缓存（multi-level）](multi-level.md) — 本地 + 分布式缓存架构（一笔带过降级，本文详讲）
 
@@ -574,7 +574,7 @@ public class CacheMetricsCollector {
 ## 十、相关章节
 
 **同模块兄弟**：
-- [缓存注解与使用](annotations-and-usage.md) — @Cacheable / @CachePut / @CacheEvict 用法
+- [缓存注解与使用](cache-annotations-and-usage.md) — @Cacheable / @CachePut / @CacheEvict 用法
 - [缓存实现与最佳实践](implementations-and-best-practices.md) — Redis / Caffeine / Ehcache 对比
 - [多级缓存（multi-level）](multi-level.md) — 本地 + 分布式缓存架构
 

@@ -316,4 +316,4 @@ public void updateUser(User user) {
 - ⬅️ [返回缓存总览](README.md)
 - [多级缓存与防护](multi-level.md) — L1+L2、击穿/穿透/雪崩
 - [序列化](serialization.md) — 缓存对象的序列化方案
-- [缓存注解与使用](annotations-and-usage.md) — `@Cacheable` 默认 Cache-Aside
+- [缓存注解与使用](cache-annotations-and-usage.md) — `@Cacheable` 默认 Cache-Aside
