@@ -137,6 +137,7 @@ def agent_score(trajectory, outcome, cost, feedback):
 | 5 | [阿里一面实战话术](05-ali-interview.md) | 阿里一面原题回答 + 5 反模式 |
 | 6 | [7 大反模式](06-seven-anti-patterns.md) | 单一指标 / 离线一次性 / 忽略工具错误 等 |
 | 7 | [选型决策树](07-selection-decision-tree.md) | 按阶段 / 团队 / 预算选评测方案 |
+| 8 | [实战案例 + CI/CD](08-practical-cases.md) | 客服 Agent / 代码生成 Agent 评估实战 + CI/CD 配置 + 报告模板 |
 
 ---
 

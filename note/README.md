@@ -241,7 +241,7 @@ module:
 
 > 主模块的"刺刀版" —— 专治面试中那些"好像懂但说不清"的高频 / 高难度问题。
 > 每篇 50-300 行，聚焦单一问题，从原理到陷阱到最佳实践、面试话术一次讲透。
-> 8 大分类共 **151 篇** 深度文章（详见 [QUESTION-FORMAT-SPEC](./13.split-hairs/QUESTION-FORMAT-SPEC.md)），覆盖 Java / 计算机基础 / 数据库 / 系统设计 / 安全 / Spring / 前端 / AI。
+> 8 大分类共 **158 篇** 深度文章（详见 [QUESTION-FORMAT-SPEC](./13.split-hairs/QUESTION-FORMAT-SPEC.md)），覆盖 Java / 计算机基础 / 数据库 / 系统设计 / 安全 / Spring / 前端 / AI。
 > 写作规范：[QUESTION-FORMAT-SPEC.md](./13.split-hairs/QUESTION-FORMAT-SPEC.md)
 
 ## 分类导航

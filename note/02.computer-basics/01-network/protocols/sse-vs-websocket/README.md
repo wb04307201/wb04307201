@@ -268,10 +268,10 @@ data: {"text":"你好"} ← 数据（必填，可多行）
 
 ## 八、相关章节
 
-- 面试版：[SSE vs WebSocket 面试题](../../../13.split-hairs/02.computer-basics/sse-vs-websocket/README.md) — 面试话术 + 陷阱 + 90 秒答案
-- HTTP 基础：[HTTP 协议](../02-http/README.md) — HTTP/1.1 长连接与 chunked 传输
-- 前端推送：[网页端消息推送](../../../13.split-hairs/09.front-end/message/README.md) — 轮询/SSE/WebSocket/WebTransport 全景
-- Spring 实现：[WebFlux SSE](../../../06.spring/02-web/webflux/sse.md) — Spring 服务端 SSE 实现
+- 面试版：[SSE vs WebSocket 面试题](../../../../13.split-hairs/02.computer-basics/sse-vs-websocket/README.md) — 面试话术 + 陷阱 + 90 秒答案
+- HTTP 基础：[HTTP 协议](../../02-http/README.md) — HTTP/1.1 长连接与 chunked 传输
+- 前端推送：[网页端消息推送](../../../../13.split-hairs/09.front-end/message/README.md) — 轮询/SSE/WebSocket/WebTransport 全景
+- Spring 实现：[WebFlux SSE](../../../../06.spring/02-web/webflux/sse.md) — Spring 服务端 SSE 实现
 
 ---
 

@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **双内容仓库**：
 - **顶部 README.md** — 个人主页 + 12 个开源项目展示（File View、Spring AI LoomAgent、Flexible Lock 等）
-- **`note/`** — 14 主模块的体系化技术知识库（基于 Obsidian 维护），638 个 README，900 个 .md
+- **`note/`** — 14 主模块的体系化技术知识库（基于 Obsidian 维护），670 个 README，994 个 .md
 
 主体是文档（Markdown），不是源代码。Java/Spring 项目的源码在外部仓库（如 `wb04307201/file-view`）。
 
@@ -108,6 +108,6 @@ find note -name "README.md" -exec grep -L "^<!--" {} \;
 
 ## 关键统计
 
-- 14 主模块 / 638 README / 900 .md
-- frontmatter 覆盖 100%（621/621 main + 13 专题 + 8 12.story）
-- 116 PNG（教学截图保留，其他应 Mermaid 化）
+- 14 主模块 / 670 README / 994 .md
+- frontmatter 覆盖 100%
+- 40 PNG（教学截图保留，其他应 Mermaid 化）
