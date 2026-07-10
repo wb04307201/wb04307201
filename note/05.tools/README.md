@@ -7,7 +7,7 @@ module:
   summary: 后端工程师高频工具链速查手册：Git / Docker / Java 工具库 / Nginx / Monorepo / 阿里微服务
 -->
 
-# 五、[工具链](05.tools/README.md)
+# 五、[工具链](README.md)
 
 > 工欲善其事，必先利其器。本模块覆盖后端开发日常高频工具：版本控制（Git）、容器化（Docker / Podman）、Java 常用工具库、反向代理（Nginx / Pingora）、仓库管理（Monorepo）、阿里微服务全家桶。
 

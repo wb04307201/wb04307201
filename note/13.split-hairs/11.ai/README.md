@@ -33,11 +33,13 @@ question:
 | [AI 编程生产力悖论](ai-coding-productivity-paradox/) | ⭐⭐⭐⭐ | Waydev/GitClear/Faros/Jellyfish 4 大研究 + DORA 框架 |
 | [AI 代码流失率](ai-code-churn/) | ⭐⭐⭐⭐ | 采纳率 80% vs 留存率 30% 的真相 + 6 大改进策略 |
 | [AI 编程 ROI 度量](ai-coding-roi/) | ⭐⭐⭐⭐ | DORA 4 指标 + SPACE 5 维度 + 改进策略 |
+| **🆕 [AI 后端代码审核验收](ai-code-review/)** | ⭐⭐⭐⭐ | 6 层审核体系（契约/业务/安全/性能/可测/幻觉）+ 分级门禁 + "绿色测试"陷阱 |
 | [Agent Memory 分类](agent-memory-classification/) | ⭐⭐⭐⭐ | 时间×认知×工程三维分类法 + 5 大框架 + 30/60/90 秒话术 |
 | [如何量化 Agent 性能](agent-performance-evaluation/) | ⭐⭐⭐⭐⭐ | 6 大指标维度（任务完成率/步骤效率/工具使用/成本/满意度/稳定性）+ 5 种评估方法 |
 | [RAG 权限隔离设计](rag-permission-isolation/) | ⭐⭐⭐⭐⭐ | 4 种隔离方案 + pre/post-filtering + ACL 同步 + 多租户 |
 | [AI 编程 Token 经济学](ai-coding-token-economics/) | ⭐⭐⭐⭐ | 9.6 万 Token 中位数 + 杠杆率 + Token 悖论 + 企业案例 |
 | [LLM Benchmark 深度剖析](llm-benchmark/) | ⭐⭐⭐⭐ | MMLU/HumanEval/Arena ELO + 数据污染 + 5 大问题 |
+| **🆕 [Agent Evaluation 评测系统](agent-performance-evaluation/)** | ⭐⭐⭐⭐⭐ | 阿里一面原题 · 6 大评测维度 + 5 种方法 + 4 阶段 Pipeline + 7 反模式 | [05-agent-evaluation](../../11.ai/05-agent-evaluation/README.md) |
 
 ### 📚 概念精炼版（主模块配套面试深挖）
 
@@ -66,7 +68,7 @@ question:
 1. **入门**（3 天）：AI 思维 + Token 概念 + 基础 Prompt
 2. **进阶**（2 周）：Transformer + RAG + Function Calling
 3. **AI 工程 4 阶段演进**：Prompt → Context → Harness → Loop
-4. **AI 生产力度量**（2026 新增）：生产力悖论 + 代码流失率 + ROI 度量
+4. **AI 生产力度量**（2026 新增）：生产力悖论 + 代码流失率 + ROI 度量 + 后端代码审核验收
 5. **冲刺面试**：重点看"RAG 架构"、"幻觉问题"、"Agent 设计"、"Context/Harness/Loop Engineering"、"DAG vs ReAct"、"AI 编程生产力悖论"
 
 ## 使用建议

@@ -10,7 +10,7 @@ question:
 
 # 500 人抢 1 瓶茅台，2 台服务器，不用 Redis / MQ，秒杀怎么写？
 
-> 一句话定位：**大厂面试经典刁难题**。考察架构师的**应变能力** —— 当主流方案（Redis 分布式锁 / MQ 削峰）被禁用时，怎么用**最朴素的单机工具**解决问题。深度实战见 [主模块深度章节](../../../04.system-design/03-high-availability/rate-limiting/seckill-without-redis.md)。
+> 一句话定位：**大厂面试经典刁难题**。考察架构师的**应变能力** —— 当主流方案（Redis 分布式锁 / MQ 削峰）被禁用时，怎么用**最朴素的单机工具**解决问题。深度实战见 [主模块深度章节](../../../../04.system-design/03-high-availability/rate-limiting/seckill-without-redis.md)。
 
 > **系列定位**：高频刁难题（校招 / 社招都考）。考察"被限制时的工程判断力"。配套兄弟题：[限流原理面试题](../rate-limiting/README.md)。
 
@@ -249,17 +249,17 @@ public boolean trySeckill(Long userId, Long productId) {
 ## 相关章节
 
 **主模块**：
-- [秒杀刁难题深度章节](../../../04.system-design/03-high-availability/rate-limiting/seckill-without-redis.md) — 5 方案对比 + 3 大机制 + 2 台服务器一致性 + 实战模板
-- [限流原理（rate-limiting/README）](../../../04.system-design/03-high-availability/rate-limiting/README.md) — 4 算法 + 4 策略
-- [乐观锁（optimistic-lock）](../../../04.system-design/06-idempotency/optimistic-lock/README.md) — 库存扣减基础
-- [MySQL 行锁原理](../../../01.java/concurrency/juc-locks/README.md) — 乐观锁底层实现
+- [秒杀刁难题深度章节](../../../../04.system-design/03-high-availability/rate-limiting/seckill-without-redis.md) — 5 方案对比 + 3 大机制 + 2 台服务器一致性 + 实战模板
+- [限流原理（rate-limiting/README）](../../../../04.system-design/03-high-availability/rate-limiting/README.md) — 4 算法 + 4 策略
+- [乐观锁（optimistic-lock）](../../../../04.system-design/06-idempotency/optimistic-lock/README.md) — 库存扣减基础
+- [MySQL 行锁原理](../../../../01.java/concurrency/juc-locks/README.md) — 乐观锁底层实现
 
 **同栏目兄弟**：
 - [限流算法面试题](../rate-limiting/README.md) — 通用限流原理面试
 - [缓存一致性面试题](../cache-consistency/README.md) — 缓存场景
 
 **餐厅叙事（12.story）**：
-- [04 · peak-traffic-defense（餐厅流量防御）](../../../12.story/04-peak-traffic-defense.md) — 餐厅流量 = 茅台秒杀的隐喻版
+- [04 · peak-traffic-defense（餐厅流量防御）](../../../../12.story/04-peak-traffic-defense.md) — 餐厅流量 = 茅台秒杀的隐喻版
 
 ---
 

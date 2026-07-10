@@ -362,7 +362,7 @@ evaluation:
 - [Skill 设计面试 5 题](../../../13.split-hairs/11.ai/skill-design/README.md) — 配套面试题
 
 **教学场景**：
-- [training/lesson4 · Skill 编写与设计模式](../../../training/lesson4/README.md) — 教学场景下怎么教新人写 Skill（与本文互补：教学 vs 工程方法论）
+- [training/lesson4 · Skill 编写与设计模式](../../training/lesson4/README.md) — 教学场景下怎么教新人写 Skill（与本文互补：教学 vs 工程方法论）
 
 ---
 

@@ -242,7 +242,7 @@ single_table -[hidden]-> vertical_sharding
 
 ### 垂直分表判定规范
 
-> 🔗 面试深挖版：[`垂直分表拆分判定`](../../../../../13.split-hairs/03.database/vertical-table-split/README.md) — 5 指标判定 + Buffer Pool 原理 + 反模式 + 面试话术
+> 🔗 面试深挖版：[`垂直分表拆分判定`](../../../../13.split-hairs/03.database/vertical-table-split/README.md) — 5 指标判定 + Buffer Pool 原理 + 反模式 + 面试话术
 
 **什么时候该拆？5 个核心指标**：
 

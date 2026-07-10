@@ -46,6 +46,7 @@ module:
 - **数据结构相关** — 堆/栈/队列/树/图
 - **图论算法** — BFS/DFS/最短路径/最小生成树/网络流/拓扑排序
 - **字符串算法** — KMP、Rabin-Karp、Trie、后缀数组
+- 🆕 **[字符串算法深度专题](string-algorithms/README.md)** —— Trie（字典树）/ KMP / AC 自动机（Aho-Corasick）3 大深度 + 完整 Java 实现 + 实战选型决策
 - **智能优化** — 遗传算法/蚁群算法/模拟退火/粒子群
 - **机器学习** — CNN/Transformer/K-Means/决策树
 

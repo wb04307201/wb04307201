@@ -251,7 +251,7 @@ CompletableFuture.allOf(t1, t2)
 - [AQS 是什么？](../aqs/README.md) — 锁底层原理
 
 **主模块其他相关**：
-- [JUC 锁](../juc-locks/README.md) — ReentrantLock / Condition
+- [JUC 锁](../../../01.java/concurrency/juc-locks/README.md) — ReentrantLock / Condition
 
 ---
 

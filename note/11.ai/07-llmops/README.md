@@ -19,7 +19,7 @@ module:
 | 02 | [LLMOps 栈](02-llmops-stack/) | 数据/训练/部署/监控/反馈完整工程栈 | 全链路工程化 |
 | 03 | [向量库 vs 缓存](03-vector-db-vs-cache/) | Embedding 检索 vs KV 缓存的边界与协同 | 存储层选型 |
 | 04 | [LLM 评测](04-llm-evaluation/) | 自动化评测、人工评测、A/B、红队对抗 | 质量保障 |
-| 05 | [Agent 评测](05-agent-evaluation/) | 6 大指标维度（任务完成率/步骤效率/工具使用/成本/满意度/稳定性）+ 5 种评估方法 | Agent 性能量化 |
+| 05 | [Agent 评测](../05-agent-evaluation) | 6 大指标维度（任务完成率/步骤效率/工具使用/成本/满意度/稳定性）+ 5 种评估方法 | Agent 性能量化 |
 | 06 | [LLM 安全](05-llm-security/) | Prompt 注入、越狱、数据泄漏、内容合规 | 风险防控 |
 
 ### 1.1 学习路径
@@ -66,7 +66,7 @@ graph LR
 - **[02-llmops-stack](02-llmops-stack/)**：LLMOps 完整工程栈 — 数据 / 训练 / 部署 / 监控 / 反馈
 - **[03-vector-db-vs-cache](03-vector-db-vs-cache/)**：向量库 vs KV 缓存的边界与协同（语义检索 vs 推理加速）
 - **[04-llm-evaluation](04-llm-evaluation/)**：LLM 评测体系 — 自动化指标（BLEU/ROUGE/BERTScore）+ 人工评测 + A/B 测试 + 红队对抗
-- **[05-agent-evaluation](05-agent-evaluation/)**：Agent 性能评估 — 6 大指标维度（任务完成率/步骤效率/工具使用/成本/满意度/稳定性）+ 5 种评估方法
+- **[05-agent-evaluation](../05-agent-evaluation)**：Agent 性能评估 — 6 大指标维度（任务完成率/步骤效率/工具使用/成本/满意度/稳定性）+ 5 种评估方法
 - **[05-llm-security](05-llm-security/)**：LLM 安全防护 — Prompt 注入 / 越狱 / 数据泄漏 / 内容合规
 
 ---

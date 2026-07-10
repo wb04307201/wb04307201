@@ -381,7 +381,7 @@ Self-Consistency：
 
 - [harness-engineering](../../11.ai/harness-engineering/README.md) —— Agent 行为约束
 - [loop-engineering](../../11.ai/loop-engineering/README.md) —— Loop 失败模式
-- [production-agent](../../../11.ai/production-agent/README.md) —— 生产 Agent 总览
+- [production-agent](../../../11.ai/03-engineering/production-agent/README.md) —— 生产 Agent 总览
 - [hallucination](../../11.ai/hallucination/README.md) —— 幻觉深度检测
 
 ### 主模块兄弟

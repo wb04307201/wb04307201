@@ -141,6 +141,6 @@ question:
 
 ## 相关章节
 
-- 排查实战：[`支付消息丢失排查`](../../payment-message-lost/README.md) — 消息丢失的全链路排查框架
+- 排查实战：[`支付消息丢失排查`](../../../payment-message-lost/README.md) — 消息丢失的全链路排查框架
 
 ← [返回: 咬文嚼字 · mq-backlog](README.md)

@@ -98,7 +98,7 @@ Window + 4 sink tokens：
 | **Sliding Window** | KV cache 总量 | 注意力算法（Mistral 等）|
 | **两者可叠加** | **双重显存优化** | vLLM + Mistral 组合 |
 
-详见 [vllm-vs-ollama 02-kv-cache-management](../../ai-platforms/vllm-vs-ollama/02-kv-cache-management.md)。
+详见 [vllm-vs-ollama 02-kv-cache-management](../../03-engineering/ai-platforms/vllm-vs-ollama/02-kv-cache-management.md)。
 
 ---
 

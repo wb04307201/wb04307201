@@ -246,7 +246,7 @@ v1 模型回答 vs v2 模型回答
 
 ## 九、公开 Benchmark 生态
 
-> 🔗 面试深挖版：[`LLM Benchmark 深度剖析`](../../../../13.split-hairs/11.ai/llm-benchmark/README.md) — 5 大 Benchmark 分类 + ELO 计分原理 + 数据污染 + 刷分手段 + 看榜 checklist
+> 🔗 面试深挖版：[`LLM Benchmark 深度剖析`](../../../13.split-hairs/11.ai/llm-benchmark/README.md) — 5 大 Benchmark 分类 + ELO 计分原理 + 数据污染 + 刷分手段 + 看榜 checklist
 
 ### 9.1 5 大 Benchmark 分类速查
 
@@ -365,7 +365,7 @@ LLM-as-Judge（GPT-4 评分）：
 
 ## 十二、相关章节
 
-- 下游：[Agent 性能评估](../05-agent-evaluation/README.md) — 从 LLM 单次调用评估 → Agent 多步任务评估（6 维度 + 5 方法）
+- 下游：[Agent 性能评估](../../05-agent-evaluation/README.md) — 从 LLM 单次调用评估 → Agent 多步任务评估（6 维度 + 5 方法）
 - 关联：[生产级 Agent 系统](../../03-engineering/production-agent/README.md) — Shopify Sidekick 的评估实践（LLM-as-Judge + 用户模拟）
 - 关联：[Harness Engineering](../../03-engineering/harness-engineering/README.md) — 评估体系的工程化框架
 - 同模块：[LLM 安全](../05-llm-security/README.md) — 评估的另一个维度：安全性
@@ -379,4 +379,4 @@ LLM-as-Judge（GPT-4 评分）：
 
 ## 深度扩展
 
-🆕 **5 大灵魂拷问（重点看 Q5 监控）**：[llm-production-thinking/05-online-monitoring](../../../03-engineering/llm-production-thinking/05-online-monitoring.md) —— 把 6 维评估延伸为线上 4 维监控 + Trace + 黄金集回归 + 漂移检测（含 5 分钟定位实战）。
+🆕 **5 大灵魂拷问（重点看 Q5 监控）**：[llm-production-thinking/05-online-monitoring](../../03-engineering/llm-production-thinking/05-online-monitoring.md) —— 把 6 维评估延伸为线上 4 维监控 + Trace + 黄金集回归 + 漂移检测（含 5 分钟定位实战）。

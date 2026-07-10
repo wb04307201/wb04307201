@@ -630,6 +630,35 @@ graph TD
 > 🆕 **深度技术**：6 策略组合 + Lost in Middle 缓解 + Chunking/Re-rank/Sub-Agents 工业级实操 → 详见 [Agent 长上下文架构深度专题](../11.ai/04-architecture/agent-context/README.md)（含 8 文件 1571 行）。面试精选 Q&A 见 [13.split-hairs/11.ai/long-context-agent-strategy](../13.split-hairs/11.ai/long-context-agent-strategy/README.md)。
 
 ---
+## 阿明的"AI 餐厅自动修复"挑战：Loop Engineering 实战 50 家分店 bug
+
+接上一篇的"长菜单挑战"，阿明遇到了第三个坎——**让 AI 自动修代码 bug**。
+
+当 80 家分店都用着 AI 餐厅系统，bug 报告铺天盖地时（每周 50+ 个），阿明决定让团队用 Claude Code 自动修复——流程：**任务"修订单服务并发 bug" → Agent 写代码 → 跑测试 → 失败 → 自动修复 → 通过 → commit**。
+
+工程方案（4 大支撑）：
+
+1. **5 种修复策略** —— 按错误类型（语法 / 类型 / lint / 测试 / 运行时）选针对性 Prompt
+2. **Verifier 5 大源** —— 测试 / 类型检查 / lint / 编译 / 运行时作为客观"判官"
+3. **重试预算** —— 每策略 ≤ 5 次，总计 ≤ 15 次；超时 / 超限自动转人工
+4. **修复 prompt 5 要素** —— 任务 + 当前代码 + 错误详情 + 历史尝试 + 约束（不让 Agent 凭空）
+
+实战 3 个月 50 个 bug 的数据：
+- **95% 自动修复成功**（48/50）
+- 平均修复轮次 **3.2 次**（单 bug pipeline 内）
+- 人工兜底仅 2 次（复杂业务逻辑跨服务 bug）
+
+**关键教训**：
+- Auto-Fix Loop 不是"放任 Agent 改"——**必须有 Verifier 客观判定通过**
+- 修复 prompt 必须**给完整上下文**（错误 + 代码 + 历史），不能凭空
+- **5 大策略选对，80% bug 修复在 5 轮以内**
+- 超 max_iterations 立即转人工——**不能让 AI 死循环**
+
+这是 80 家分店的标准答案 —— 你不需要"无限信任 AI"，你需要"**目标驱动 + 自动判定 + 自动修复 + 人工兜底**"的工程能力。
+
+> 🆕 **Loop Engineering 实战深度**：[11.ai/03-engineering/loop-engineering/auto-fix-strategy.md](../11.ai/03-engineering/loop-engineering/auto-fix-strategy.md) 4 子节点（修复策略 + Verifier 设计 + IDE 案例 + prompt 模板）共 1398 行深度 —— 包括 Claude Code / Cursor / Devin / Aider 4 大主流 AI IDE 的 Loop 工程实战。面试精选 5 道 Q&A 见 [13.split-hairs/11.ai/loop-engineering](../13.split-hairs/11.ai/loop-engineering/README.md)。
+
+---
 
 ## 结语
 
