@@ -26,6 +26,7 @@ question:
 | 主题 | 难度 | 核心问题 |
 |------|------|---------|
 | [TCP 三次握手四次挥手](tcp-handshake-teardown/) | ⭐⭐⭐⭐ | 状态机 + 10 个深挖问题 + TIME_WAIT/CLOSE_WAIT |
+| 🆕 [单端口多进程监听](port-reuse-so-reuseport/) | ⭐⭐⭐⭐ | SO_REUSEADDR vs SO_REUSEPORT + Linux 3.9 内核 hash 行为 + 5 大实战场景（Nginx/Envoy/K8s/gRPC）+ 90 秒话术 | [TCP/IP 第 11 节](../../02.computer-basics/01-network/01-tcp-ip/README.md) |
 | 🆕 [SSE vs WebSocket](sse-vs-websocket/) | ⭐⭐⭐⭐ | AI 对话为什么选 SSE + 5 维对比 + 4 大理由 + 系统设计 |
 
 ### 字符串算法
