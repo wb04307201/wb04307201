@@ -54,6 +54,7 @@ question:
 | [Token 原理](token/) | ⭐⭐⭐ | BPE / SentencePiece / Tokenizer / 计费模型 | [02-technology-stack/token-billing](../../11.ai/02-technology-stack/token-billing/README.md) |
 | [RAG 检索增强生成](rag/) | ⭐⭐⭐⭐⭐ | Embedding + Vector DB + Retrieval + Generation | [07-llmops/01-rag-vs-finetuning](../../11.ai/07-llmops/01-rag-vs-finetuning/README.md) |
 | [Function Calling / Tool Use](function-calling/) | ⭐⭐⭐⭐⭐ | 工具调用原理 / Schema / ReAct Agent 集成 | [02-technology-stack/function-calling](../../11.ai/02-technology-stack/function-calling/README.md) |
+| 🆕 [Multi-turn Tool Reasoning](multi-turn-tool-reasoning/) | ⭐⭐⭐⭐⭐ | 5 大场景（1 turn 解决不了）+ 6 大编排模式 + 4 大防御 + 90 秒话术 | [Function Calling 深度 第 4 节](../../11.ai/02-technology-stack/function-calling/README.md) |
 | [Agent DAG vs ReAct](agent-dag-vs-react/) | ⭐⭐⭐⭐⭐ | 复杂 Agent 为什么采用 DAG Workflow | [04-architecture/agent-architecture](../../11.ai/04-architecture/agent-architecture/README.md) |
 | **🆕 [ReAct vs Plan-and-Execute](react-vs-plan-execute/)** | ⭐⭐⭐⭐⭐ | 4 模式 6 维打分 + RePlan 3 机制 + 80% 是混合架构 + 7 道 Q&A | [04-architecture/agent-execution-patterns](../../11.ai/04-architecture/agent-execution-patterns/README.md) |
 | [Skill 设计方法论](skill-design/) | ⭐⭐⭐⭐ | 决策树（写 Skill vs CLAUDE.md / Hook / MCP）+ 6 字段 frontmatter + YAML 模板 | [03-engineering/claude-code-practices/skill-design](../../11.ai/03-engineering/claude-code-practices/skill-design.md) |
