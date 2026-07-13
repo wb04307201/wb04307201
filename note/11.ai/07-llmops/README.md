@@ -21,6 +21,7 @@ module:
 | 04 | [LLM 评测](04-llm-evaluation/) | 自动化评测、人工评测、A/B、红队对抗 | 质量保障 |
 | 05 | [Agent 评测](../05-agent-evaluation) | 6 大指标维度（任务完成率/步骤效率/工具使用/成本/满意度/稳定性）+ 5 种评估方法 | Agent 性能量化 |
 | 06 | [LLM 安全](05-llm-security/) | Prompt 注入、越狱、数据泄漏、内容合规 | 风险防控 |
+| 07 | 🆕 [RAG 超范围拒答](06-rag-out-of-domain-rejection/) | 6 大检测机制 + 5 大拒答模式 + 4 步阈值调优 + 6 OSS 实战 | RAG 质量治理 |
 
 ### 1.1 学习路径
 
