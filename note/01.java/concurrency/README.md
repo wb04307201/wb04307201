@@ -67,6 +67,89 @@ Java 并发编程是 Java 平台的核心能力之一，涵盖了从线程创建
 //            真正同时运行
 ```
 
+### 1.3 并发与并行深度展开（Rob Pike 详解 + Java 实战）
+
+> 面试速查版见 [13.split-hairs · concurrency-vs-parallelism](../../13.split-hairs/01.java/concurrency-vs-parallelism/README.md)。
+
+#### 1.3.1 Rob Pike 一句话定义
+
+```text
+Concurrency is about dealing with many things at once.
+Parallelism is about doing many things at once.
+                  —— Rob Pike, "Concurrency is not Parallelism"
+
+并发是「结构」(deal with)：同一时间段处理多个任务的能力
+并行是「执行」(do)：同一时刻多个任务真在跑的事实
+```
+
+#### 1.3.2 咖啡店比喻（高频考点）
+
+```
+[Concurrent] 1 个咖啡师轮流做 5 杯       [Parallel] 5 个咖啡师各做 1 杯
+  单核 × 5 任务（交替）                    多核 × 1 任务/核（真同时）
+  → 提高 CPU 利用率                        → 减少总执行时间
+```
+
+#### 1.3.3 4 维度对比表
+
+| 维度 | 并发 (Concurrency) | 并行 (Parallelism) |
+|------|------------------|-------------------|
+| **核心问题** | 任务**调度** | 任务**执行** |
+| **硬件要求** | 单核即可 | 必须多核 |
+| **提速原理** | 利用 IO 等待时间切换 | 真分核并行 |
+| **Java 实战** | CompletableFuture / NIO | parallelStream / ForkJoinPool |
+| **依赖中间件** | event loop / Netty | multiprocessing / OpenMP |
+
+#### 1.3.4 6 大常见误区
+
+| # | 误区 | 真相 |
+|---|------|------|
+| 1 | ❌ **"多线程 = 并行"** | 单核多线程只是并发，OS 时间片切换 |
+| 2 | ❌ **"并发 = 性能更好"** | CPU 密集型需要并行才能榨干多核 |
+| 3 | ❌ **"异步 ≠ 并发"** | 错！异步是并发的一种实现（Node.js / coroutine） |
+| 4 | ❌ **"并行一定更快"** | Amdahl 定律：加速比上限 = 1/(1-p) |
+| 5 | ❌ **"Goroutine 一定是并行"** | GOMAXPROCS=1 时只并发 |
+| 6 | ❌ **"SIMD 是并行"** | 是，但与应用层线程并行不同层级 |
+
+#### 1.3.5 CPU-bound vs IO-bound 选型（实战核心）
+
+| 任务类型 | 推荐模型 | 反模式 |
+|---------|---------|--------|
+| **IO 密集**（网络/磁盘）| **并发**：CompletableFuture / NIO / Netty reactor | 用 ForkJoinPool = 浪费线程切换 |
+| **CPU 密集**（计算/加密）| **并行**：parallelStream / ForkJoinPool / multiprocessing | 用单线程 reactor = 浪费多核 |
+| **高并发低延迟**（10 万 QPS）| 异步 + 单线程 reactor | 用 1 线程 = 1 请求 |
+| **CPU 极高吞吐**（离线批处理）| 并行 + ForkJoin | 用串行 = 浪费 N-1 核 |
+
+```java
+// IO 密集：用并发
+CompletableFuture<String> u = CompletableFuture.supplyAsync(() -> fetchUser());
+CompletableFuture<String> o = CompletableFuture.supplyAsync(() -> fetchOrders());
+String user = u.join(); String order = o.join();
+
+// CPU 密集：用并行
+List<Integer> result = hugeList.parallelStream()
+                              .map(this::heavyCompute)
+                              .collect(Collectors.toList());
+
+// 反例：把 IO 密集丢进 ForkJoinPool
+//   → 100 线程都在等 IO，全部阻塞 → 无并发提升
+// 反例：把 CPU 密集扔给 NIO 单线程 reactor
+//   → 1 核满载，其余 N-1 核空转
+```
+
+#### 1.3.6 5 大语言模型对照
+
+| 语言 | 并发实现 | 并行实现 | 默认 |
+|------|---------|---------|------|
+| Java | Thread / Executor / CompletableFuture | parallelStream / ForkJoinPool | 多线程 |
+| Go | goroutine + channel | GOMAXPROCS 决定 | NumCPU（自动）|
+| Erlang | process | 多调度器 | 自动并行 |
+| Node.js | async/await 事件循环 | worker_threads / cluster | 单线程 |
+| Rust | tokio async | rayon | 单线程 |
+| Python | asyncio | multiprocessing | GIL 限制 |
+
+> **金句**：**先识别任务类型（IO/CPU），再选并发模型**——这是架构师的核心能力。
+
 ---
 
 ## 二、Java 并发演进历程
