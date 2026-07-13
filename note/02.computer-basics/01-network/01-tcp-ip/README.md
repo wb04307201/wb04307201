@@ -317,4 +317,90 @@ tcpdump -i eth0 -w capture.pcap port 443
 
 ---
 
+## 十一、端口复用机制 · SO_REUSEADDR vs SO_REUSEPORT 深度
+
+> 面试速查版见 [13.split-hairs · port-reuse-so-reuseport](../../../../13.split-hairs/02.computer-basics/port-reuse-so-reuseport/README.md)。
+
+### 11.1 3 大场景速查（核心问题：两进程能同监听吗）
+
+| 场景 | 能否同端口 | 说明 |
+|------|-----------|------|
+| **默认情况** | ❌ 不能 | 第二次 `bind()` 必失败（`EADDRINUSE` 端口已被占用）|
+| **`SO_REUSEADDR`** | ⚠️ 部分 | 只能复用 TIME_WAIT 状态端口，不是真正同监听 |
+| **`SO_REUSEPORT`** | ✅ 可以 | **内核负载均衡**：多进程同 listen，新连接按内核 hash 分发 |
+| **`fork()` 子进程** | ✅ 可以 | 父进程 listen 后 fork，子进程共享 fd |
+
+### 11.2 3 大端口复用机制对比
+
+| 选项 | 用途 | 解决什么问题 | 内核实现 |
+|------|------|------------|---------|
+| `SO_REUSEADDR` | 允许 4-tuple 冲突 | TIME_WAIT 状态端口复用 / 快速重启 | 允许两次 bind |
+| **`SO_REUSEPORT`** | **多进程同 listen** | **负载均衡 + 避免 thundering herd** | **内核 hash + 各自 listen 队列** |
+| `fork()` 共享 fd | 子进程继承 fd | Nginx worker 模型 | fd table 共享 |
+
+### 11.3 Linux 内核行为（3.9+）
+
+```text
+1. 多进程 bind + listen 同一端口（带 SO_REUSEPORT）
+   ↓
+2. 内核为每个进程创建独立的 accept 队列
+   ↓
+3. 新 TCP 连接到达（3 次握手完成）
+   ↓
+4. 内核用 4-tuple (src_ip, src_port, dst_ip, dst_port) 计算 hash
+   ↓
+5. hash 选一个进程，新连接入队
+   ↓
+6. 进程 accept() 返回新 fd
+   ↓
+内核保证：同一 4-tuple 永远到同一进程
+（避免连接乱序）
+```
+
+### 11.4 经典 C 代码（Linux SO_REUSEPORT）
+
+```c
+#include <sys/socket.h>
+
+int server_fd = socket(AF_INET, SOCK_STREAM, 0);
+
+// 关键：开 SO_REUSEPORT
+int opt = 1;
+setsockopt(server_fd, SOL_SOCKET, SO_REUSEPORT, &opt, sizeof(opt));
+
+bind(server_fd, ...port=80, ...);
+listen(server_fd, ...);
+// 多个 fork 出的子进程都可 bind + listen 同一 80 端口
+```
+
+### 11.5 5 大实战场景
+
+| 场景 | 用法 | 为什么 |
+|------|------|--------|
+| **Nginx worker 模型** | 父进程 listen + fork / 或每个 worker 设 SO_REUSEPORT | 多 worker 处理高并发 |
+| **Envoy listener** | 每个 worker 设 SO_REUSEPORT + 内核 hash | 避免单点 accept |
+| **Redis cluster proxy** | multi-port + 4-tuple hash | 让请求稳定到同一 proxy |
+| **K8s service LB** | kube-proxy + iptables/IPVS + SO_REUSEPORT | 高并发 service 转发 |
+| **gRPC server multisocket** | 多 listener + 内核 hash | 吞吐 10x+ |
+
+### 11.6 5 大常见误区
+
+1. ❌ **SO_REUSEADDR = SO_REUSEPORT**（语义完全不同）
+2. ❌ **加 SO_REUSEPORT 后两进程还冲突**（实际都成功，内核 hash 分发）
+3. ❌ **SO_REUSEPORT 用于 TIME_WAIT**（错，那是 SO_REUSEADDR）
+4. ❌ **SO_REUSEPORT 不影响 accept 公平**（内核有 thundering herd 风险要防）
+5. ❌ **Windows 上 SO_REUSEPORT 行为一致**（Windows 语义不同）
+
+### 11.7 SO_REUSEADDR vs SO_REUSEPORT 决策矩阵
+
+| 场景 | 推荐选项 |
+|------|---------|
+| 服务重启时 TIME_WAIT 占用 80 端口 | ✅ `SO_REUSEADDR` |
+| 多个 worker 进程监听同一端口 | ✅ `SO_REUSEPORT` |
+| 高并发 + 多核 accept 瓶颈 | ✅ `SO_REUSEPORT` |
+| 简单单机测试 / 单进程 | ❌ 都不需要（默认即可）|
+| Windows 服务多进程 | ⚠️ Windows 语义不同，谨慎 |
+
+---
+
 ← [返回计算机基础总览](../../README.md) · 📅 2026-06-28
