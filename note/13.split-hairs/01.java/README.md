@@ -41,6 +41,7 @@ question:
 | [volatile 内存语义](volatile/) | ⭐⭐⭐⭐⭐ | volatile 可见性、有序性、原子性 |
 | [AQS 框架原理](aqs/) | ⭐⭐⭐⭐⭐ | AbstractQueuedSynchronizer 实现机制 |
 | [线程池 7 大参数](thread-pool/) | ⭐⭐⭐⭐⭐ | ThreadPoolExecutor 核心参数详解 |
+| 🆕 [并发 vs 并行](concurrency-vs-parallelism/) | ⭐⭐⭐ | Rob Pike 定义 + 6 大误区 + CPU/IO 选型矩阵 + 90 秒话术 | [Java 并发编程导航 第 1.3 节](../../01.java/concurrency/README.md) |
 | [Atomic 替代 synchronized](replace-synchronized-with-atomic/) | ⭐⭐⭐ | CAS 无锁编程 |
 | [3 线程按顺序执行](thread-sequential-execution/) | ⭐⭐⭐ | T1→T2→T3 的 3 语义 + 8 方案对比 + Top 3 推荐 |
 | **🆕 [虚拟线程](virtual-threads/)** | ⭐⭐⭐⭐ | carrier thread / mount-unmount / pinning / ScopedValue |
