@@ -258,6 +258,129 @@ GPU 距离计算：512 维 × 1 亿向量 × 8 字节 = 0.5ms（100x）
 - 策略：双写（old + new 并行服务，逐步切流量）
 ```
 
+### 5.1.1 Incremental Embedding 增量向量化系统设计（深度展开）
+
+> 面试速查版见 [13.split-hairs · incremental-embedding](../../../../13.split-hairs/11.ai/incremental-embedding/README.md)。
+
+#### 5.1.1.1 5 大组件架构（生产级）
+
+```text
+        ┌─────────────────────────────────────────┐
+        │  数据源（DB / 文件 / 流）              │
+        └────────────────┬────────────────────────┘
+                         ↓ CDC / 消息
+        ┌────────────────────────────────────────┐
+        │  Kafka / Pulsar（消息缓冲）           │
+        │  Partition: 按 user_id hash           │
+        └────────────────┬────────────────────────┘
+                         ↓
+        ┌────────────────────────────────────────┐
+        │  GPU Worker Pool（异步 Embedding）    │
+        │  (vLLM + A10/H100 + autoscaling)      │
+        └────────────────┬────────────────────────┘
+                         ↓
+        ┌────────────────────────────────────────┐
+        │  向量存储（双版本 + 热冷分层）         │
+        │  - Hot: HNSW（Qdrant/Milvus/pgvector）│
+        │  - Warm: IVF_PQ（DiskANN）            │
+        │  - Cold: 对象存储 + 压缩归档           │
+        └────────────────┬────────────────────────┘
+                         ↓
+        ┌────────────────────────────────────────┐
+        │  监控 + 漂移检测                       │
+        │  - embedding drift 实时告警           │
+        │  - 4 类 fallback 兜底                 │
+        └────────────────────────────────────────┘
+```
+
+#### 5.1.1.2 5 大增量更新策略
+
+| # | 策略 | 作用 | 延迟 |
+|---|------|------|------|
+| 1 | **异步消息队列** | Kafka/Pulsar 缓冲写入，解耦 | ms |
+| 2 | **异步 Embedding** | GPU worker pool，并发处理 | 1-5 min |
+| 3 | **实时写入 hot tier** | HNSW 内存索引，毫秒级 | ms |
+| 4 | **异步下沉 warm/cold** | IVF_PQ 磁盘索引 | 小时 |
+| 5 | **drift 监控 + 自动告警** | embedding drift 实时检测 | ms |
+
+#### 5.1.1.3 模型版本切换 4 阶段（核心考点）
+
+| 阶段 | 时间 | 动作 | 监控 |
+|------|------|------|------|
+| **双写** | Week 1-2 | v1+v2 同时写入新数据 | 双索引存储利用率 |
+| **异步迁移** | Week 3-6 | Kafka 进度追踪 + 历史回填 | 迁移进度 % |
+| **灰度切流** | Week 7-8 | 按 user_id hash 切查询路由 | v2 NDCG / 切流质量 |
+| **全量切 v2** | Week 9-10 | 全量切 + 下线 v1 | 质量稳定 + 资源回收 |
+
+```python
+# Phase 1: 双写
+def write_vectors(doc_id, content):
+    v1_embedding = embed_v1(content)
+    v2_embedding = embed_v2(content)
+    vector_db.insert(doc_id, v1=v1_embedding, v2=v2_embedding)
+
+# Phase 2: 异步迁移历史
+def migrate_history():
+    docs = db.get_all_docs(not_yet_v2=True)
+    for doc in docs:
+        vector_db.update(doc.id, v2=embed_v2(doc.content))
+
+# Phase 3: 灰度切流
+def query_search(query, user_id):
+    if hash(user_id) % 100 < 10:
+        return vector_db.search(query, version="v2")
+    # else: v1
+```
+
+#### 5.1.1.4 全量重建 vs 增量更新（成本对比）
+
+| 场景 | 全量重建 | 增量更新 |
+|------|---------|---------|
+| 1 亿向量，每周新增 100 万 | 每次 30 小时 GPU | 增量 5 分钟 |
+| 月总成本 | 120 小时 GPU + 双索引期风险 | 1 小时/天 + 稳定 |
+| 成本倍数 | 100x+ | **1x**（推荐）|
+
+**全量重建适用场景**：
+- 数据量 < 10 万向量 / 起步阶段
+- 模型升级兜底（半年一次）
+- 索引严重漂移后的"重置"
+
+#### 5.1.1.5 4 大反模式（高频陷阱）
+
+| # | 反模式 | 后果 | 修复 |
+|---|--------|------|------|
+| 1 | **全量重建频率 > 每周一次** | 成本爆炸 + 索引期不一致 | 改为月级 + 增量为主 |
+| 2 | **没版本管理** | 模型升级 = 搜索质量灾难 | 双版本存储 + 灰度切流 |
+| 3 | **同步编码** | 写入 QPS 阻塞 | 异步 worker + hot tier 实时 |
+| 4 | **缺监控** | embedding drift 不可见 → 质量渐变 | drift 实时告警 + NDCG 监控 |
+
+#### 5.1.1.6 实战 4 类 Fallback（编码失败兜底）
+
+```python
+def fallback_chain(doc):
+    # 1. 重试参数（指数退避）
+    for attempt in range(3):
+        try:
+            return embed_v2(doc.content)
+        except (TimeoutError, RateLimitError):
+            sleep(2 ** attempt)
+
+    # 2. 换 GPU worker
+    try:
+        return embed_v2_alt_gpu(doc.content)
+    except Exception:
+        pass
+
+    # 3. 退化到 CPU 慢路径
+    try:
+        return embed_v2_cpu(doc.content)
+    except Exception:
+        pass
+
+    # 4. 兜底用 v1 旧向量（保证有结果）
+    return doc.v1_embedding  # 至少保证可用
+```
+
 ### 5.2 一致性 / 副本同步
 
 ```
