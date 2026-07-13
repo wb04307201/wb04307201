@@ -253,4 +253,97 @@ def retry_with_backoff(fn, max_retries=3, base_delay=1):
 
 ---
 
-← [返回: 大模型思维工程](../README.md) · 上一章：[02-cost-control](02-cost-control-and-degradation.md) · 下一章：[04-circuit-breaker](04-timeout-and-circuit-breaker.md)
+## 9. Temperature=0 仍可变的 5 大根因 + 3 大防御（高频误区题）
+
+> ⚠️ **常见误区**：很多人以为 Temperature=0 = 完全确定。其实生产中 5 大根因会让输出仍有微小波动。面试速查版见 [13.split-hairs · temperature-zero-myth](../../../../13.split-hairs/11.ai/temperature-zero-myth/README.md)。
+
+### 9.1 5 大根因速查表
+
+| # | 根因 | 影响范围 | 实战表现 |
+|---|------|---------|---------|
+| 1 | **GPU 浮点非结合**（float reduction 顺序） | 所有 GPU 推理 | 同 prompt + 同模型 + 不同 batch size → 1e-7 量级差异 → 偶发 argmax 不同 |
+| 2 | **Provider 默认值覆盖**（OpenAI / Anthropic 默认 ≠ 0） | 商业 API | OpenAI gpt-4 / Anthropic Claude 默认都是 1.0；"0" 在某些 SDK 内部被替换成 0.0001 |
+| 3 | **Seed 字段失效**（OpenAI seed ≠ 跨调用持久化） | OpenAI API | seed 只保证 `best_of` 内一致；跨调用不一定；重启进程就失效 |
+| 4 | **模型版本升级**（API 模型快照漂移） | 商业 API | gpt-4 → gpt-4-0314 → gpt-4-0613 行为不同；gpt-4o 系列每月微调 |
+| 5 | **Router / 负载均衡**（不同 backend 实例） | 大厂 API | OpenAI / Anthropic 多实例路由，同 prompt 命中不同实例 → 不同 KV cache 路径 → 不同输出 |
+
+### 9.2 Provider 默认 Temperature 速查表
+
+| Provider | 模型 | 默认 Temperature | 推荐 |
+|----------|------|-----------------|------|
+| **OpenAI** | gpt-4 / gpt-4o / gpt-3.5 | **1.0** | 显式设 0 + seed 字段 |
+| **Anthropic** | Claude 3 / 3.5 | **1.0** | 显式设 0 |
+| **Google Gemini** | gemini-1.5-pro | **1.0** | 显式设 0 |
+| **Cohere** | command-r-plus | 0.3 | 谨慎 |
+| **OpenRouter** | 任意 | 透传上游 | 看具体上游 |
+| **Ollama**（自托管） | llama3 | 0.8 | 显式设 0 |
+
+⚠️ **商业 API 默认几乎都是 1.0** — 不显式设 = 高随机性。
+
+### 9.3 3 大防御
+
+#### 9.3.1 防御 A：业务容错（90% 场景）
+
+→ 见上文 **第 2、3 节** 的 Self-Consistency 投票 + Judge 模型。
+
+#### 9.3.2 防御 B：自托管确定性推理（关键场景）
+
+```yaml
+# vLLM 部署配置（关键参数）
+vllm:
+  temperature: 0.0
+  seed: 42
+  enforce_eager: true           # 禁用 CUDA graph
+  max_num_seqs: 1               # 固定 batch size = 1（关键！）
+```
+
+```python
+import vllm
+llm = vllm.LLM(model="...", seed=42, enforce_eager=True)
+```
+
+**限制**：
+- ⚠️ 不同 GPU 型号（A100 vs H100）仍有微小差异
+- ⚠️ 不同 vLLM 版本间行为可能漂移
+- ⚠️ batch_size > 1 时浮点非结合问题重现
+
+#### 9.3.3 防御 C：漂移监控（生产必备）
+
+```python
+from sentence_transformers import SentenceTransformer
+import numpy as np
+
+def drift_monitor(prompt, n_samples=10):
+    samples = [llm.invoke(prompt, temperature=0)
+               for _ in range(n_samples)]
+    encoder = SentenceTransformer('all-MiniLM-L6-v2')
+    embeddings = encoder.encode(samples)
+
+    sims = []
+    for i in range(len(samples)):
+        for j in range(i+1, len(samples)):
+            sim = np.dot(embeddings[i], embeddings[j]) / \
+                  (np.linalg.norm(embeddings[i]) * np.linalg.norm(embeddings[j]))
+            sims.append(sim)
+
+    avg_sim = np.mean(sims)
+
+    # SLO: avg_sim > 0.95 算稳定
+    if avg_sim < 0.95:
+        alert(f"⚠️ LLM 输出漂移: avg_sim={avg_sim:.3f}, 触发 SLO")
+    return avg_sim
+```
+
+### 9.4 实战原则（什么时候用什么策略）
+
+| 业务类型 | 策略 | 原因 |
+|---------|------|------|
+| **QA / 摘要 / 抽取** | Temperature=0 + Self-Consistency | 一致性优先 |
+| **聊天 / 客服** | Temperature=0.3-0.7 + 重试 | 自然交互需小幅变化 |
+| **创意 / 写作** | Temperature=0.7-1.0 + 多采样 | 多样性是特征 |
+| **金融 / 法律 / 审计** | 自托管 vLLM + 固定 batch + 漂移监控 | 真确定性 |
+| **Agent 多步决策** | Temperature=0.0 + 业务容错 | Agent 一致性影响动作链 |
+
+---
+
+← [返回: 大模型思维工程](../README.md) · 上一章：[02-cost-control](02-cost-control-and-degradation.md) · 下一章：[04-timeout-and-circuit-breaker](04-timeout-and-circuit-breaker.md)
