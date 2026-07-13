@@ -41,6 +41,7 @@ module:
     - [演进与组织](microservices/migration-and-organization/README.md) — 单体迁移、团队拓扑
     - [微服务与 DDD](microservices/microservices-and-ddd/README.md) — 业务能力 → 限界上下文 → 服务
 - [云设计模式](cloud-design-patterns/README.md) — 云原生架构模式
+- [多租户 SaaS 架构](multi-tenant-architecture/README.md) — 6 大数据隔离模型 + 4 大应用层关注点 + PostgreSQL RLS + 飞书/钉钉/Salesforce 生产实践
 - [事件驱动 vs 异步](eda-vs-async/README.md) — 两种解耦模式的选择
 
 ---
