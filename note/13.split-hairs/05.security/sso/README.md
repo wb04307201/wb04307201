@@ -401,6 +401,10 @@ Keycloak 优势：
 - [04.system-design/05-security/jwt-security](../../../04.system-design/05-security/jwt-security/README.md) —— JWT 完整（325 行）
 - [04.system-design/05-security/access-control](../../../04.system-design/05-security/access-control/README.md) —— RBAC/ABAC
 
+### split-hairs 兄弟
+
+- 🆕 [设计统一权限控制系统](../access-control-design/README.md) — RBAC+ABAC 混合 + 数据模型 + 缓存 + 审计 + 多租户 + 7 道面试题
+
 ### Java 后端（Spring）
 
 - [06.spring/05-spring-cloud/gateway](../../../06.spring/05-spring-cloud/gateway.md) —— Spring Cloud Gateway OAuth2 集成

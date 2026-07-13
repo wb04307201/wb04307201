@@ -117,6 +117,7 @@ DAC ──→ RBAC ──→ ABAC ──→ ReBAC
 
 ## 相关章节
 
+- 🆕 **面试深挖版**：[`设计统一权限控制系统`](../../../13.split-hairs/05.security/access-control-design/README.md) — RBAC+ABAC 混合 + 数据模型 + 缓存 + 审计 + 多租户 + 7 道面试题
 - 05-security 主题：
   - [JWT 存储安全](../jwt-security/README.md) — Token 中的 role / scope 传递
   - [OAuth2.0 与 OIDC](../oauth2-oidc/README.md) — 鉴权协议层的 scope / claim

@@ -119,4 +119,6 @@ module:
 
 ---
 
+> 🔗 **应用场景**：[`短链系统设计`](../../../13.split-hairs/04.system-design/url-shortener/README.md) — Snowflake + Base62 生成短码 + 302 重定向 + 缓存
+
 ← [返回 分布式](../README.md)
