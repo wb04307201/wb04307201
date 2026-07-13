@@ -400,6 +400,7 @@ vs Google TPU v5：
 **同栏目（11.ai 前沿架构面试题）**：
 - [千亿级向量检索](../vector-search-at-scale/README.md)
 - [10亿级向量检索](../vector-search-algorithms/README.md)
+- 🆕 [Incremental Embedding 增量向量化](../incremental-embedding/README.md) — 5 大策略 + 4 版本方案
 
 **驾驭演进视角**：
 - [11.ai/04-architecture/llm-control-evolution](../../../11.ai/04-architecture/llm-control-evolution/README.md)

@@ -291,6 +291,9 @@ results = collection.search(
 - [大模型中为什么不用 Dropout](../dropout-in-llm/README.md)
 - [Claude Code 放弃 RAG 的反直觉](../claude-code-agentic-search/README.md)
 - [Agent Memory 分类](../agent-memory-classification/README.md)
+- [千亿级向量检索](../vector-search-at-scale/README.md) — 5 关键架构转变
+- [万亿级向量检索](../vector-search-trillion/README.md) — 多集群 + 联邦 + TPU
+- 🆕 [Incremental Embedding 增量向量化](../incremental-embedding/README.md) — 5 大策略 + 4 版本方案
 
 **相关 RAG 章节**：
 - [11.ai/07-llmops/agentic-search-vs-rag（为什么大代码库不用 RAG）](../../../11.ai/07-llmops/agentic-search-vs-rag/README.md)

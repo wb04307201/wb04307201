@@ -308,8 +308,10 @@ GPU 距离计算：512 维 × 1 亿向量 × 8 字节 = 0.5ms（100x）
 
 **同栏目（11.ai 高频面试题）**：
 - [10亿级向量检索选型](../vector-search-algorithms/README.md)
+- [万亿级向量检索](../vector-search-trillion/README.md) — 多集群 + 联邦 + TPU
 - [RAG 架构设计](../rag/README.md)
 - [Claude Code 放弃 RAG](../claude-code-agentic-search/README.md)
+- 🆕 [Incremental Embedding 增量向量化](../incremental-embedding/README.md) — 5 大策略 + 4 版本方案
 
 ---
 

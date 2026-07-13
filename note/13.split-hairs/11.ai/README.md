@@ -59,6 +59,9 @@ question:
 | 🆕 [Incremental Embedding 增量向量化](incremental-embedding/) | ⭐⭐⭐⭐ | 5 大增量策略（消息队列/异步/hot-cold/版本/监控）+ 4 大模型升级方案（双写/重读/异步迁移/灰度）+ 4 大反模式 + 90 秒话术 | [vector-search-at-scale 第 5.1 节](../../11.ai/02-technology-stack/vector-search-at-scale/README.md) |
 | [Agent DAG vs ReAct](agent-dag-vs-react/) | ⭐⭐⭐⭐⭐ | 复杂 Agent 为什么采用 DAG Workflow | [04-architecture/agent-architecture](../../11.ai/04-architecture/agent-architecture/README.md) |
 | **🆕 [ReAct vs Plan-and-Execute](react-vs-plan-execute/)** | ⭐⭐⭐⭐⭐ | 4 模式 6 维打分 + RePlan 3 机制 + 80% 是混合架构 + 7 道 Q&A | [04-architecture/agent-execution-patterns](../../11.ai/04-architecture/agent-execution-patterns/README.md) |
+| [10亿级向量检索](vector-search-algorithms/) | ⭐⭐⭐⭐⭐ | HNSW vs IVF vs DiskANN 4 维选型 + 内存/磁盘/QPS/Recall 权衡 | [02-technology-stack/vector-search-algorithms](../../11.ai/02-technology-stack/vector-search-algorithms/README.md) |
+| [千亿级向量检索](vector-search-at-scale/) | ⭐⭐⭐⭐⭐ | 5 关键架构转变 + 业界真实案例 + 5 阶段时延/召回/成本三元权衡 | [02-technology-stack/vector-search-at-scale](../../11.ai/02-technology-stack/vector-search-at-scale/README.md) |
+| [万亿级向量检索](vector-search-trillion/) | ⭐⭐⭐⭐⭐ | 万亿级多集群 + 联邦 + TPU + 极限压缩 | [02-technology-stack/vector-search-trillion](../../11.ai/02-technology-stack/vector-search-trillion/README.md) |
 | [Skill 设计方法论](skill-design/) | ⭐⭐⭐⭐ | 决策树（写 Skill vs CLAUDE.md / Hook / MCP）+ 6 字段 frontmatter + YAML 模板 | [03-engineering/claude-code-practices/skill-design](../../11.ai/03-engineering/claude-code-practices/skill-design.md) |
 | [Skill 命中率](skill-hit-rate/) | ⭐⭐⭐⭐ | 数量爆炸后 4 层模型（描述 / 路由 / 加载 / 评估）+ 5 大反模式 + 65% → 92% 实战 | [03-engineering/claude-code-practices/skill-hit-rate](../../11.ai/03-engineering/claude-code-practices/skill-hit-rate.md) |
 | **🆕 [工业部署推理引擎选型](inference-engine-selection/)** | ⭐⭐⭐⭐⭐ | vLLM vs Ollama 5 大理由 + PagedAttention + 连续批处理 + 4 引擎对比 + 7 道 Q&A | [03-engineering/ai-platforms/vllm-vs-ollama](../../11.ai/03-engineering/ai-platforms/vllm-vs-ollama/README.md) |
