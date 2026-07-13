@@ -191,5 +191,7 @@ try {
 
 - 深度阅读：[`09.front-end/01-foundation`](../../../09.front-end/01-foundation/README.md) — 浏览器原理、Web 标准
 - 相关：[`13.split-hairs/event-loop`](../event-loop/README.md) · [`13.split-hairs/closure`](../closure/README.md) — JS 核心机制
+- 🆕 [JWT 安全深度（localStorage 危险 + 6 方案）](../../../04.system-design/05-security/jwt-security/README.md) —— 「为什么 localStorage 存 JWT 是危险的」+ HttpOnly Cookie 首选 + 双 Token 实战
+- 🆕 [Cookies vs LocalStorage 会话管理（工程实践）](../../../09.front-end/07-security/sessions/README.md) —— SuperTokens 完整翻译稿
 
 ← [返回: 咬文嚼字 · storage](README.md)
