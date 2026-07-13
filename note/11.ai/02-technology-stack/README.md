@@ -21,6 +21,7 @@ module:
 | [prompt-engineering](prompt-engineering/) | **Prompt 工程** — 8 种核心技巧（Zero-shot/Few-shot/CoT）+ 注入防御 + 调试优化 + 子目录：模板/系统提示/创意注释 | LLM 入门第一道 |
 | [context-engineering](context-engineering/) | **Context Engineering** — Prompt → Context 范式转移、4 大原则、Lost in Middle、Context Window 限制 | Agent 时代主流 |
 | [function-calling](function-calling/) | **Function Calling / Tool Use** — OpenAI / Claude 协议对比、多轮编排、5 大场景、5 大安全陷阱 | Agent 工具调用基础 |
+| 🆕 [structured-output](structured-output/) | **结构化输出（JSON）** — 5 种稳定性策略 + response_format + Instructor/Outlines 框架对比 + 反模式 | 工程落地必备 |
 | [token-billing](token-billing/) | **Token 与计费** — BPE / WordPiece / SentencePiece、上下文窗口、计费模型、Token 优化 | 成本控制核心 |
 
 ### 1.1 学习路径

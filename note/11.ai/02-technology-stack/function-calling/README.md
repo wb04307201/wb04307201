@@ -336,6 +336,7 @@ def get_weather(city: str, unit: str = "celsius"):
 
 ## 相关章节
 
+- 🆕 关联：[结构化输出（JSON）](../structured-output/README.md) — FC 是实现稳定 JSON 输出的手段之一
 - 关联：[Prompt Engineering](../prompt-engineering/README.md) — 工具描述本质是结构化 Prompt
 - 关联：[Context Engineering](../context-engineering/README.md) — 工具定义是 Context 的重要组成
 - 关联：[Agent 架构](../../04-architecture/agent-architecture/README.md) — Function Calling 是 Agent 的核心机制

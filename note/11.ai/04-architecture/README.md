@@ -18,6 +18,7 @@ module:
 | [intelligent-system-layers](intelligent-system-layers/) | 智能系统三层架构 — 感知与数据层 / 认知与模型层 / 决策与执行层 · AI 技术栈分层架构全景 | 系统分层方法论 |
 | [agent-architecture](agent-architecture/) | **Agent 架构设计** — ReAct / DAG / Plan-and-Execute / Multi-Agent 4 大架构对比 + 选型决策树 + 真实案例 | Agent 架构选型 |
 | [agent-execution-patterns](agent-execution-patterns/) 🆕 | **Agent 4 大执行模式深度** — ReAct / Plan-and-Execute / DAG / Multi-Agent 6 维对比 + 3 大重规划机制 + 5 分钟决策树 | 执行模式深度 |
+| 🆕 [routing-architecture](routing-architecture/) | **分层路由架构** — 简单问答 Fast Path + 复杂 Agent Path 统一入口 · 3 级复杂度分类器 · 升级/降级机制 · 可观测性 | 请求入口路由 |
 | [agent-memory](agent-memory/) | **Agent Memory 架构** — 时间 × 认知 × 工程三维分类 + 4 类业界框架 + 写读忘设计原则 | Agent 记忆体系 |
 | [agent-context](agent-context/) 🆕 | **Agent 长上下文架构** — 6 大策略组合（Chunking / RAG / Memory / Sliding Window / Sub-Agents / Long-Context）+ 决策树 + 反模式 + 7 道面试题 | 长上下文选型 |
 | [ontology-driven-agent](ontology-driven-agent/) | **本体驱动的智能体** — 让 AI 从"黑箱推理"走向"结构化认知"，融合符号主义与连接主义，构建可信可审计可演化的 AI 系统 | 可信 AI 范式 |
