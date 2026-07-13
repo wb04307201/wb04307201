@@ -552,4 +552,13 @@ volatile 写 → lock 指令 → 刷回主内存 + 发送 Invalid
 
 ---
 
+## 🔗 配套章节
+
+- 🆕 [volatile 内存语义（咬文嚼字 · 13.split-hairs）](../../../../13.split-hairs/01.java/volatile/README.md) —— 面试速查版：引子「诡异死循环」+ JMM 基础 + 内存语义深度 + 经典反模式 + 90 秒话术
+- [synchronized 内存语义与锁升级](../synchronized/README.md) —— 同章节的「锁」维度
+- [JMM 与 happens-before 规则](../jmm/README.md) —— volatile 与 JMM 规则的对应
+- [CAS 与原子类](../atomic/README.md) —— volatile 不足时的补救方案（AtomicInteger）
+
+---
+
 ← [返回 Java 并发编程专题导航](../README.md)
