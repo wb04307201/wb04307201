@@ -243,6 +243,7 @@ public final class SBUtils {
 
 ## 六、交叉引用
 
+- **底层原理**：[String/Builder/Buffer 深度对比](../string-builder-buffer/README.md) - 扩容机制 + 源码拆解 + JIT intrinsic
 - **相关主题**：[new String对象创建](../new-string/README.md) - 字符串常量池
 - **并发编程**：[ThreadLocal](../thread-pool/README.md) - 内存泄漏防范
 - **性能调优**：[JVM调优](../../../01.java/jvm/tuning.md)

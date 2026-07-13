@@ -339,6 +339,8 @@ tokens.forEach(token -> ac.match(token));
 ## 9. 速查 · 关联资源
 
 - **变体绕过对抗**：[05-anti-evasion.md](05-anti-evasion.md) —— 6 大绕过手法 + 归一化流水线 + Unicode/繁简/谐音处理 + AI 语义兜底
+- **同级案例**：[商品搜索系统设计](../product-search/README.md) —— 倒排索引 + BM25 + 多阶段排序 + 数据同步
+- **同级案例**：[大文件上传系统](../file-upload/README.md) —— 分片 + 断点续传 + 秒传 + 对象存储
 - **算法基础**：[string-algorithms/AC 自动机](../../../02.computer-basics/02-algorithms/string-algorithms/03-ac-automaton.md) —— fail 指针构建 + Java 完整实现
 - **面试题**：[13.split-hairs/02.computer-basics/sensitive-word-filter](../../../13.split-hairs/02.computer-basics/sensitive-word-filter/README.md) —— 5-7 道精选 Q&A
 - **应用场景**：[08.application-systems/cms/README.md](../../../08.application-systems/cms/README.md) —— 内容管理系统中的内容审核

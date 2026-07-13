@@ -16,11 +16,11 @@ question:
 
 # 数据库咬文嚼字
 
-> 数据库高频面试题与细节深挖，对齐主模块 [`03.database`](../../03.database/)。24 篇真题聚焦 MySQL（索引 / 锁 / 事务 / MVCC / JOIN）、Redis（持久化 / 淘汰 / 集群 / 大 Key）、NoSQL 三大方向的高频陷阱。
+> 数据库高频面试题与细节深挖，对齐主模块 [`03.database`](../../03.database/)。26 篇真题聚焦 MySQL（索引 / 锁 / 事务 / MVCC / 死锁 / JOIN）、Redis（单线程原理 / 持久化 / 淘汰 / 集群 / 大 Key）、NoSQL 三大方向的高频陷阱。
 
 ---
 
-## 文章清单（共 24 题 + 7 个二级目录索引页）
+## 文章清单（共 26 题 + 7 个二级目录索引页）
 
 ### MySQL 关系型数据库
 | 主题 | 难度 | 核心问题 |
@@ -48,6 +48,7 @@ question:
 | 主题 | 难度 | 核心问题 |
 |------|------|---------|
 | [MVCC 实现原理](mvcc/) | ⭐⭐⭐⭐⭐ | Read View + Undo Log |
+| **🆕 [死锁排查](deadlock/)** | ⭐⭐⭐⭐ | 等待图检测 + SHOW ENGINE INNODB STATUS + 间隙锁死锁 + 5 大预防策略 |
 | [B+ Tree 为什么适合数据库索引](bplus-tree/) | ⭐⭐⭐⭐⭐ | vs B-Tree / Hash |
 | [MySQL 主从复制延迟](replication-lag/) | ⭐⭐⭐⭐ | 延迟原因与解决方案 |
 | [MySQL JOIN 算法](mysql-join/) | ⭐⭐⭐⭐ | NLJ / BNL / Hash Join |
@@ -57,6 +58,7 @@ question:
 |------|------|---------|
 | [Redis 搜索能力](nosql/key-value/redis/search/) | ⭐⭐⭐ | Redis 如何做全文搜索？ |
 | [缓存穿透 / 击穿 / 雪崩](redis/cache-penetration-breakdown-avalanche/) | ⭐⭐⭐⭐⭐ | 面试必考三件套 |
+| **🆕 [单线程为什么快](redis/single-thread/)** | ⭐⭐⭐⭐ | epoll/Reactor + Redis 6.0 多线程 + vs MySQL 对比 |
 
 ### Redis 深入
 | 主题 | 难度 | 核心问题 |

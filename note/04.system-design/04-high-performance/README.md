@@ -61,6 +61,8 @@ graph TD
 | 10 | 运行时 | [连接池优化](connection-pool/README.md) | HikariCP 参数调优 |
 | 11 | 运行时 | [序列化优化](serialization/README.md) | Protobuf / Kryo / Hessian |
 | 12 | 🆕 业务安全 | [敏感词过滤](sensitive-word-filter/README.md) | AC 自动机 + Bloom + 100w QPS 高并发完整方案 |
+| 13 | 🆕 搜索系统 | [商品搜索](product-search/README.md) | 倒排索引 + BM25 + 多阶段排序 + 数据同步 |
+| 14 | 🆕 文件上传 | [大文件上传](file-upload/README.md) | 分片 + 断点续传 + 秒传 + 对象存储 |
 
 ## 学习路径
 
@@ -90,9 +92,11 @@ graph TD
 | ├─ `java/` | 1 | JVM 调优 · 代码级优化 |
 | ├─ `connection-pool/` | 1 | HikariCP 参数调优 |
 | ├─ 🆕 `sensitive-word-filter/` | 6 | AC 自动机 + Bloom + Caffeine + 分布式 100w QPS + 变体绕过对抗 |
+| ├─ 🆕 `product-search/` | 4 | 倒排索引 + IK 分词 + BM25 + 多阶段排序 + 数据同步 |
+| ├─ 🆕 `file-upload/` | 4 | 分片上传 + 断点续传 + 秒传 + 对象存储 + 引用计数 |
 | └─ `serialization/` | 1 | Protobuf / Kryo / Hessian |
-| **leaf README 合计** | 14 depth-2 leaf + 1 顶层 = **15** | 100% frontmatter |
-| **模块导航行数** | 11（见上方模块导航） | 全部聚合在本章及子 README |
+| **leaf README 合计** | 16 depth-2 leaf + 1 顶层 = **17** | 100% frontmatter |
+| **模块导航行数** | 14（见上方模块导航） | 全部聚合在本章及子 README |
 
 > 数字基线：以 leaf README 数 + 模块导航行数双口径统计
 

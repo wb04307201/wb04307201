@@ -278,13 +278,41 @@ application.yml > 自动配置类的默认值
 
 ---
 
-## 六、面试话术（30 秒版）
+## 六、Q&A：什么是"约定优于配置"？
+
+**面试官："Spring Boot 的'约定优于配置'（Convention over Configuration），你怎么理解？"**
+
+**答**：约定优于配置（CoC）是 Spring Boot 的设计哲学——**框架提供合理的默认值，开发者只需覆盖不符合约定的部分**。
+
+### 三个层面
+
+| 层面 | 约定（默认行为） | 可覆盖方式 |
+|------|----------------|-----------|
+| **目录约定** | `application.yml` 在 `src/main/resources/` 下自动加载 | `spring.config.location` 指定其他路径 |
+| **依赖约定** | classpath 有 Tomcat + Spring MVC → 自动配 DispatcherServlet | 排除 starter 或加 `@ConditionalOnMissingBean` 自定义 |
+| **配置约定** | `server.port` 默认 8080，`spring.datasource.url` 无默认值（必须显式配） | `application.yml` 覆盖任何属性 |
+
+### 技术实现
+
+"约定优于配置"不是一个独立机制，而是**三个机制的组合效果**：
+
+1. **自动配置**（`@EnableAutoConfiguration`）：根据 classpath 依赖自动装配 Bean
+2. **条件注解**（`@ConditionalOnMissingBean`）：用户没自定义就用默认的，自定义了就用用户的
+3. **外部化配置**（`application.yml`）：框架默认值 < 配置文件 < 命令行参数（优先级递增）
+
+### 面试话术
+
+> "约定优于配置是 Spring Boot 的设计哲学，不是一个单独的技术机制。它通过自动配置（根据 classpath 依赖自动装配 Bean）+ 条件注解（`@ConditionalOnMissingBean` 让用户自定义优先于默认值）+ 外部化配置（`application.yml` 覆盖默认属性）三个机制的组合来实现。效果是：引入一个 starter 依赖就能开箱即用，需要定制时改配置或自定义 Bean 即可。"
+
+---
+
+## 七、面试话术（30 秒版）
 
 > "Spring Boot 自动配置的核心是 `@EnableAutoConfiguration`，它通过 `@Import(AutoConfigurationImportSelector)` 在启动时扫描 `META-INF/spring.factories`（或 Boot 2.7+ 的 `AutoConfiguration.imports`）拿到所有候选自动配置类。然后对每个配置类应用 `@Conditional` 系列条件注解——比如 `@ConditionalOnClass` 检查 classpath 是否有某个类、`@ConditionalOnMissingBean` 检查用户是否已经自定义了 Bean——只有条件满足时才真正注册 Bean。这样实现了'classpath 有什么就配什么、用户配了什么就不覆盖'的智能装配效果。自定义 Starter 只需要写一个 `@Configuration` 类，打上条件注解，然后在 `spring.factories` 或 `AutoConfiguration.imports` 里注册即可。"
 
 ---
 
-## 七、交叉引用
+## 八、交叉引用
 
 - 主模块：[`06.spring`](../../../06.spring/) — Spring 知识体系
 

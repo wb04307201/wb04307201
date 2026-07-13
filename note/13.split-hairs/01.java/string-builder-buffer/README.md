@@ -165,6 +165,129 @@ for (int i = 0; i < 1000; i++) {
 }
 ```
 
+### 3.3 JDK 9+ AbstractStringBuilder 的 Compact Strings 适配
+
+JDK 9 不仅改了 `String` 的存储，`AbstractStringBuilder` 也同步适配：
+
+```java
+// JDK 8 AbstractStringBuilder
+abstract class AbstractStringBuilder {
+    char[] value;  // 固定 2 字节/字符
+    int count;
+}
+
+// JDK 9+ AbstractStringBuilder
+abstract class AbstractStringBuilder {
+    byte[] value;   // 可 1 字节（LATIN1）或 2 字节（UTF16）/ 字符
+    int count;
+    byte coder;     // 编码标识：LATIN1(0) 或 UTF16(1)
+}
+```
+
+**coder 的作用**：Builder 在 `append()` 时检查输入字符串的 coder，如果当前 Builder 是 LATIN1 但 append 的字符串包含非 LATIN1 字符（如中文），会**自动膨胀为 UTF16**：
+
+```java
+// AbstractStringBuilder.append(String) 简化逻辑
+public AbstractStringBuilder append(String str) {
+    if (str == null) return appendNull();  // 追加 "null" 4 个字符
+    int len = str.length();
+    ensureCapacityInternal(count + len);
+    str.getChars(0, len, value, count);  // 内部处理 coder 膨胀
+    count += len;
+    return this;
+}
+```
+
+**性能影响**：纯 ASCII 场景下，JDK 9+ 的 Builder 内存占用减半（1 字节 vs 2 字节/字符），且 `Arrays.copyOf` 扩容时拷贝量也减半。
+
+### 3.4 append() 各重载的源码拆解
+
+`AbstractStringBuilder` 为不同类型提供了不同的 append 实现：
+
+**1. append(String) — 最常见路径**
+
+```java
+// JDK 17 源码（简化）
+public AbstractStringBuilder append(String str) {
+    if (str == null) {
+        return appendNull();  // 追加 "null" 字符串
+    }
+    int len = str.length();
+    ensureCapacityInternal(count + len);  // 确保容量
+    putStringAt(count, str);              // JDK 17: 直接写入 value[]
+    count += len;
+    return this;
+}
+```
+
+**2. append(int) — 数字转字符串**
+
+```java
+public AbstractStringBuilder append(int i) {
+    if (i == Integer.MIN_VALUE) {
+        return append("-2147483648");  // 特殊处理：取绝对值会溢出
+    }
+    int appendedLength = (i < 0) ? Integer.stringSize(-i) + 1 : Integer.stringSize(i);
+    ensureCapacityInternal(count + appendedLength);
+    Integer.getChars(i, count + appendedLength, value);  // 反向填充数字字符
+    count += appendedLength;
+    return this;
+}
+```
+
+**关键细节**：`Integer.stringSize()` 通过查表快速确定数字位数（避免 `log10` 计算），`Integer.getChars()` 从低位到高位反向写入 `byte[]`，避免先转 String 再拷贝的开销。
+
+**3. append(Object) — 多态分派**
+
+```java
+public AbstractStringBuilder append(Object obj) {
+    return append(String.valueOf(obj));  // 调用 obj.toString()，再走 append(String)
+}
+```
+
+**分派链**：`append(Object)` → `String.valueOf()` → `obj.toString()` → `append(String)`。如果 `obj` 的 `toString()` 返回 `null`，`String.valueOf()` 会返回 `"null"` 字符串，不会触发 NPE。
+
+### 3.5 toString() 实现与 JIT Intrinsic 优化
+
+**toString() 源码**：
+
+```java
+// StringBuilder.toString()
+@Override
+public String toString() {
+    if (isLatin1()) {  // JDK 9+: 检查 coder
+        return new String(value, 0, count, String.LATIN1);
+    }
+    return new String(value, 0, count, String.UTF16);
+}
+```
+
+JDK 9+ 的 `toString()` 直接使用 `byte[]` + coder 构造 String，避免了 JDK 8 中 `char[] → byte[]` 的编码转换开销。JDK 8 的实现则是 `new String(value, 0, count)`，需要拷贝 `char[]`。
+
+**JIT 层面的 @IntrinsicCandidate 优化**：
+
+JVM 对 `StringBuilder` 的关键方法有 intrinsic（内建）优化——JIT 编译器会将特定方法调用替换为**平台相关的汇编指令**，跳过 Java 字节码层：
+
+| 方法 | intrinsic 优化 |
+|------|---------------|
+| `append(String)` | 直接使用 `System.arraycopy` 的 intrinsic（SIMD 指令加速内存拷贝） |
+| `append(int/long)` | 内联数字转字符串逻辑，避免方法调用开销 |
+| `toString()` | 在逃逸分析确认不逃逸时，可能**省略 byte[] 拷贝**（标量替换） |
+
+**逃逸分析优化示例**：
+
+```java
+// 编译器看到的代码
+String s = new StringBuilder().append("hello").append(name).toString();
+
+// JIT 逃逸分析后发现 StringBuilder 不逃逸当前方法
+// → 可能在栈上分配 StringBuilder（而非堆上）
+// → toString() 的 byte[] 拷贝可能被省略
+// → 整个操作退化为一次 byte[] 拼接 + 一次 String 构造
+```
+
+这就是为什么在简单拼接场景中，即使不手动优化 StringBuilder，性能也不会太差——JIT 在背后做了大量消除工作。但**循环中的 `+=` 拼接**（每次循环新建 StringBuilder）仍会超出 JIT 的优化能力，需要手动处理。
+
 ---
 
 ## 四、+ 号编译期优化
@@ -277,9 +400,13 @@ System.out.println(sb.capacity()); // 输出 22（10 * 2 + 2）
 
 > "String 是不可变的，底层在 JDK 8 是 `final char[]`，JDK 9+ 优化为 `final byte[]` + coder 标识。不可变带来的好处是线程安全、hash 可缓存、支持常量池共享。
 >
-> StringBuilder 和 StringBuffer 都是可变的，区别在于 StringBuffer 的方法加了 `synchronized`，线程安全但有性能开销，单线程下 StringBuilder 快 10 倍以上。
+> StringBuilder 和 StringBuffer 都是可变的，底层都继承 `AbstractStringBuilder`，共用 `byte[] value` + `int count` 存储。区别在于 StringBuffer 的方法加了 `synchronized`，线程安全但有性能开销，单线程下 StringBuilder 快 10 倍以上。
 >
-> 编译期会对 `'a' + 'b'` 做常量折叠优化成 `'ab'`，但运行期的拼接（如循环中用 `+=`）会被转成每次新建 StringBuilder，性能极差，应显式使用 StringBuilder 并预估初始容量。
+> StringBuilder 的 `append(String)` 先 `ensureCapacityInternal` 扩容，再写入 `byte[]`；`append(int)` 通过 `Integer.stringSize()` 查表确定位数后反向填充，避免先转 String 的开销。扩容策略是 `×2+2`，预估容量可以避免数组拷贝。
+>
+> `toString()` 在 JDK 9+ 直接用 `byte[]` + coder 构造 String，省去了编码转换。JIT 还会通过 intrinsic 优化和逃逸分析，对不逃逸的 StringBuilder 做栈上分配和省略拷贝。
+>
+> 编译期会对 `'a' + 'b'` 做常量折叠优化成 `'ab'`，但运行期的拼接（如循环中用 `+=`）会被转成每次新建 StringBuilder，性能极差，应显式使用并预估初始容量。
 >
 > 另外，JDK 6 的 `substring()` 共享 char[] 会导致内存泄漏，JDK 7+ 已修复为拷贝子数组。"
 
@@ -289,6 +416,8 @@ System.out.println(sb.capacity()); // 输出 22（10 * 2 + 2）
 
 - 主模块：[`01.java`](../../../01.java/) — Java 知识体系
 - [String](../../../01.java/concepts/string/README.md) — 字符串常量池与 intern 机制
+- [StringBuilder 重用](../reuse-of-stringbuilder/README.md) — ThreadLocal 重用 + `setLength(0)` 优化
+- [new String 创建几个对象](../new-string/README.md) — 字符串常量池 vs 堆
 - [JVM 内存](../../../01.java/jvm/README.md) — JVM 内存模型与 GC
 
 ## 相关章节

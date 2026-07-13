@@ -251,6 +251,7 @@ cf.thenCompose(x -> asyncCall(x))
 
 - 主模块：[`01.java`](../../../01.java/) — Java 知识体系
 - [CompletableFuture](../../../01.java/concurrency/completablefuture/README.md) — JUC CompletableFuture 详解
+- 🆕 [虚拟线程](../virtual-threads/README.md) — 虚拟线程 Executor 替代 commonPool（Java 21+）
 - [并发工具类](../../../01.java/concurrency/utilities/README.md) — JUC 包核心组件
 
 ## 相关章节

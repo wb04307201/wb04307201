@@ -19,6 +19,7 @@ question:
 | 序号 | 主题 | 核心问题 |
 |------|------|---------|
 | 1 | [缓存穿透/击穿/雪崩](cache-penetration-breakdown-avalanche/README.md) | 面试必考三件套：三大问题的原理与防御方案 |
+| 2 | 🆕 [单线程为什么快](single-thread/README.md) | epoll/Reactor + Redis 6.0 多线程 + vs MySQL 对比 |
 
 ---
 

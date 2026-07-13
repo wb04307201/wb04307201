@@ -118,6 +118,7 @@ try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
 | 五 | 原子类与 CAS 操作 | `AtomicInteger`、`LongAdder`、`AtomicReference`、Unsafe、CAS 原理与 ABA 问题 | [atomic](./atomic/) |
 | 六 | CompletableFuture 异步编程 | 异步编排、组合、异常处理、虚拟线程集成、与线程池对比 | [completablefuture](./completablefuture/) |
 | 七 | **线程协作**（3 线程按顺序执行） | T1/T2/T3 顺序执行 3 语义 + 8 方案对比（join/CountDownLatch/CompletableFuture/Semaphore…） | [thread-basics/sequential-execution](./thread-basics/sequential-execution.md) |
+| 八 | 🆕 **虚拟线程**（Java 21+） | carrier thread / mount-unmount / pinning / ScopedValue / 结构化并发 | [virtual-threads](./virtual-threads/) |
 
 ---
 
@@ -552,7 +553,9 @@ concurrency/
 │   └── README.md
 ├── atomic/                ← 原子类与 CAS 操作
 │   └── README.md
-└── completablefuture/     ← CompletableFuture 异步编程
+├── completablefuture/     ← CompletableFuture 异步编程
+│   └── README.md
+└── virtual-threads/       ← 🆕 虚拟线程（Java 21+）
     └── README.md
 ```
 
@@ -569,9 +572,9 @@ concurrency/
 
 | 统计维度 | 数值 | 口径 |
 |----------|------|------|
-| 分类主题数 | 10 | jmm / volatile / synchronized / threadlocal / atomic / completablefuture + juc-locks / thread-basics / utilities / concurrent-collections（含 3 子专题） |
-| 子 README 数 | 13 | 含 concurrent-collections（3 子目录）等深层 leaf |
-| 含 frontmatter 的 README | 14 / 14 | 100% 覆盖（2026-07-01） |
+| 分类主题数 | 11 | jmm / volatile / synchronized / threadlocal / atomic / completablefuture / 🆕 virtual-threads + juc-locks / thread-basics / utilities / concurrent-collections（含 3 子专题） |
+| 子 README 数 | 14 | 含 concurrent-collections（3 子目录）+ virtual-threads 等深层 leaf |
+| 含 frontmatter 的 README | 15 / 15 | 100% 覆盖（2026-07-13） |
 
 > **统计时间戳**：2026-07-01
 

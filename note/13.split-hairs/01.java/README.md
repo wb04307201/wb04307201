@@ -16,11 +16,11 @@ question:
 
 # Java 咬文嚼字
 
-> Java 高频面试题与细节深挖，对齐主模块 [`01.java`](../../01.java/)。36 篇分集合 / 并发 / JVM / 语言基础 / 对象类型 / 设计模式 / 综合 7 组，覆盖 90% 后端面试 Java 高频题。
+> Java 高频面试题与细节深挖，对齐主模块 [`01.java`](../../01.java/)。38 篇分集合 / 并发 / JVM / 语言基础 / 对象类型 / 设计模式 / 综合 7 组，覆盖 90% 后端面试 Java 高频题。
 
 ---
 
-## 文章清单（共 36 篇）
+## 文章清单（共 38 篇）
 
 ### 集合与数据结构
 | 主题 | 难度 | 核心问题 |
@@ -43,6 +43,7 @@ question:
 | [线程池 7 大参数](thread-pool/) | ⭐⭐⭐⭐⭐ | ThreadPoolExecutor 核心参数详解 |
 | [Atomic 替代 synchronized](replace-synchronized-with-atomic/) | ⭐⭐⭐ | CAS 无锁编程 |
 | [3 线程按顺序执行](thread-sequential-execution/) | ⭐⭐⭐ | T1→T2→T3 的 3 语义 + 8 方案对比 + Top 3 推荐 |
+| **🆕 [虚拟线程](virtual-threads/)** | ⭐⭐⭐⭐ | carrier thread / mount-unmount / pinning / ScopedValue |
 
 ### JVM 与类加载
 | 主题 | 难度 | 核心问题 |
@@ -64,6 +65,7 @@ question:
 | [StringBuilder 重用](reuse-of-stringbuilder/) | ⭐⭐ | 循环中字符串拼接优化 |
 | [final/finally/finalize](final-finally-finalize/) | ⭐⭐⭐ | 三个关键字的区别与用法 |
 | [Error vs Exception](error-vs-exception/) | ⭐⭐⭐ | Error 和 Exception 的 6 维度对比 + 反模式 |
+| **🆕 [try-catch 性能](try-catch-performance/)** | ⭐⭐⭐ | 正常路径零开销 / fillInStackTrace / OmitStackTraceInFastThrow |
 | [SPI 机制](spi/) | ⭐⭐⭐⭐ | Service Provider Interface 扩展机制 |
 
 ### 对象与类型

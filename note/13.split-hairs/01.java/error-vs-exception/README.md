@@ -254,6 +254,7 @@ public class MyMegaThrowable extends Throwable { }    // 更不要这样做
 ## 六、相关章节
 
 - 同栏目：[`final/finally/finalize`](../final-finally-finalize/README.md) — finally 块在 Error 场景下的执行行为
+- 🆕 同栏目：[`try-catch 性能`](../try-catch-performance/README.md) — 正常路径零开销 / fillInStackTrace / OmitStackTraceInFastThrow
 - 主模块：[`异常体系`](../../../01.java/concepts/exception/README.md) — Java 异常完整知识体系
 - 关联面试题：[`JVM 内存区域`](../jvm-memory/README.md) — OutOfMemoryError 的内存模型背景
 

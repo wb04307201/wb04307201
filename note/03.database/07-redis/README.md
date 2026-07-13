@@ -46,6 +46,8 @@ module:
 
 > Redis 6.0 引入了**多线程网络 IO**，但命令执行仍是单线程的，保证了原子性。
 
+> 🔗 **面试深挖版**：[`单线程为什么快`](../../../13.split-hairs/03.database/redis/single-thread/README.md) — epoll/Reactor 底层原理 + Redis 6.0 多线程架构 + vs MySQL 对比 + 7 道面试题
+
 ---
 
 ## 二、数据类型与应用场景
