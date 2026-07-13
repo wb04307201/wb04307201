@@ -15,6 +15,20 @@ module:
 
 ---
 
+## 🆕 新增专章
+
+### 专题 09 · Agent A/B Test 系统设计（独立深度专章）
+
+**位置**：[02-ab-testing-design/README.md](02-ab-testing-design/README.md)
+
+**一句话**：**AI 场景 A/B Test = 多指标 + 流量分层 + 离线/在线双轨 + 显著性检验 + 自动决策**——5 大组件 + 4 流量分配 + Bonferroni/Sequential 检验 + 5/10/50/100 灰度 + 3 OSS 实战 + 6 大监控指标。
+
+**适用场景**：新 Planner / Prompt / Model 版本上线 A/B 对照。
+
+**面试速查版**：[13.split-hairs · agent-ab-testing](../../../../13.split-hairs/11.ai/agent-ab-testing/README.md)
+
+---
+
 ## 0. 面试高频拷问
 
 ```
