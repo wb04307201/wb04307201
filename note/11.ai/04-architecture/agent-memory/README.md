@@ -286,6 +286,7 @@ Memory 演进是 [驾驭演进主线](../llm-control-evolution/README.md) 的具
 
 **面试题**：
 - [咬文嚼字·11.ai/agent-memory-classification（30/60/90 秒话术）](../../../13.split-hairs/11.ai/agent-memory-classification/README.md)
+- 🆕 **[咬文嚼字·multi-agent-shared-memory 多 Agent 共享记忆](../../../13.split-hairs/11.ai/multi-agent-shared-memory/README.md)** —— 5 大内容维度 + 3 实现层 + 6 模式 + 5 反模式 + 90 秒话术
 
 **同主模块**：
 - [Agent 执行架构（DAG/ReAct/Plan）](../agent-architecture/README.md)
@@ -296,6 +297,9 @@ Memory 演进是 [驾驭演进主线](../llm-control-evolution/README.md) 的具
 - [LangGraph（Checkpoint）](../../03-engineering/ai-platforms/langgraph.md)
 - [Context Engineering（Memory 是 Context 三大件之一）](../../02-technology-stack/context-engineering/README.md)
 - 🆕 **长上下文全景（Memory 是 6 策略之一）**：[Agent 长上下文架构](../agent-context/README.md) —— Chunking / Memory / RAG / Sliding Window / Sub-Agents / Long-Context LLMs 6 策略组合决策树
+
+**多 Agent 共享专章（跨域交叉）**：
+- 🆕 **[shared-memory.md](./shared-memory.md)** —— 多 Agent 共享记忆：5 大内容维度 + 3 实现层（消息/状态/语义）+ 6 共享模式 + 一致性协议 + 6 实战框架（CrewAI/AutoGen/LangGraph/MetaGPT 等）
 
 **同栏目其他面试题**：
 - [咬文嚼字·11.ai（RAG / Dropout / Harness 等）](../../../README.md)
