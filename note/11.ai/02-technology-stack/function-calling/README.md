@@ -210,6 +210,96 @@ def run_agent(messages, tools, max_turns=5):
 3. **工具结果缓存**：相同参数的调用直接返回缓存
 4. **明确的停止信号**：要求模型获得足够信息后输出最终回答
 
+### 4.1 为什么 1 次 Tool Calling 已经不够？（5 大场景 + 6 大编排模式）
+
+> 面试速查版见 [13.split-hairs · multi-turn-tool-reasoning](../../../13.split-hairs/11.ai/multi-turn-tool-reasoning/README.md)。
+
+**核心区别**：
+
+```text
+1 轮：query → LLM → tool_calls → execute → final answer
+                                  ↑
+                            1 个意图
+
+多轮：循环 N 次，每次回灌工具结果到 messages：
+  query_1 → LLM_1 → tool_calls_1 → execute_1 → 回灌
+                                              ↓
+                                          LLM_2（基于结果再推理）→ tool_calls_2 → ...
+                                              ...
+                                          直到 LLM 输出 final answer
+```
+
+#### 5 大场景速查（1 turn 解决不了）
+
+| # | 场景 | 例子 | 为什么需要多轮 |
+|---|------|------|---------------|
+| 1 | **多源信息聚合** | 订外卖 → 查店铺 + 位置 + 配送时间 | 多 query 结果拼装 |
+| 2 | **复合操作依赖** | 写文章 → 搜索资料 → 大纲 → 填充 | 后一步依赖前一步 |
+| 3 | **错误恢复** | API 失败 → 改参数 / 换工具 | 失败需要 LLM 决策下一步 |
+| 4 | **探索性任务** | 查到关键未知字段 → 再深入 | 路径是动态发现 |
+| 5 | **长链路审批** | 金融转账 / 多步授权 | 多工具结果需中间决策 |
+
+#### 6 大编排模式选型
+
+| # | 模式 | 核心思想 | 代表框架 | 适用 |
+|---|------|---------|---------|------|
+| 1 | **Sequential 串行** | 一个接一个 | LangChain AgentExecutor | 简单链式 |
+| 2 | **Parallel 并行** | 独立工具同调 | RunnableMap | 多源聚合 |
+| 3 | **ReAct loop** | 思考→行动→观察→循环 | BabyAGI / AutoGPT | 探索性 |
+| 4 | **Plan-and-Execute** | 先规划 + 失败 RePlan | LangChain P&E / Devin | 5-20 步强依赖 |
+| 5 | **Reflective** | 工具结果 + 自检 + 纠错 | ReAct + Reflection | 高准确度要求 |
+| 6 | **DAG Workflow** | 节点 + 边的确定性图 | LangGraph / Temporal | 强结构化生产 |
+
+#### 6 维度编排模式选型矩阵
+
+| 维度 | Sequential | Parallel | ReAct | Plan-Exec | Reflective | DAG |
+|------|-----------|---------|-------|-----------|-----------|-----|
+| **步数** | 1-3 | 1 (并行) | 不定 | 5-20 | 不定 | 不定 |
+| **依赖** | 强依赖 | 无依赖 | 弱依赖 | 强依赖 | 弱依赖 | 强依赖 |
+| **预测性** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| **Token 成本** | 低 | 低 | 高（探索多） | 中 | 高（自检） | 中 |
+| **可复现** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐ | ⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐⭐ |
+| **实现复杂度** | 低 | 低 | 中 | 中 | 高 | 高 |
+
+#### 5 类 Fallback 实战（max_turns 用尽时）
+
+```python
+def fallback_chain(query, attempts=3):
+    # 1. 重试参数（仅改参数）
+    for _ in range(attempts):
+        try:
+            return execute(query)
+        except (TimeoutError, RateLimitError):
+            sleep(2 ** _)
+
+    # 2. 换工具（语义最接近的备用）
+    try:
+        return execute_with_alternate(query)
+    except Exception:
+        pass
+
+    # 3. 退化到更小的模型
+    try:
+        return invoke_small_model(query)
+    except Exception:
+        pass
+
+    # 4. 兜底回复
+    return "暂不可用，请稍后重试"
+
+    # 5. 人工接管（生产关键决策，金融/医疗/法律）
+    # escalate_to_human(query, results_so_far)
+```
+
+#### 3 大 OSS 框架对比
+
+| 维度 | LangChain | AutoGen | LangGraph |
+|------|-----------|---------|-----------|
+| **多轮机制** | AgentExecutor ReAct loop | GroupChat message passing | StateGraph 状态机 + DAG |
+| **易用度** | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ |
+| **强结构化** | 中 | 弱 | ⭐⭐⭐⭐⭐ |
+| **代表用户** | LangChain / Anthropic | Microsoft AutoGen | LangChain / LangGraph |
+
 ---
 
 ## 五、实战场景
