@@ -806,6 +806,7 @@ graph TD
 - [传菜窗口的智慧](./20-realtime-eventdriven.md) —— 消息队列是架构从单体走向分布式的关键一步
 - [十家店的烦恼](./18-distributed-puzzles.md) —— 架构演进到分布式后，CAP 定理和一致性问题是必须跨过的坎
 - [阿明的加盟帝国](./19-saas-multitenant.md) —— 架构演进的下一步：从自用系统到 SaaS 平台
+- [多租户 SaaS 架构深度](../04.system-design/01-foundation/system-design-basics/multi-tenant-architecture/README.md) —— 阿明 SaaS 化的技术深度版：6 大隔离模型 + 4 应用层 + 5 反模式 + PostgreSQL RLS
 - [厨房实况直播](./20-realtime-eventdriven.md) —— 事件驱动架构是架构演进的新方向，从请求-响应到事件流
 - [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 架构演进到多端，统一网关和适配层成为新的架构挑战
 - [懂你的菜单](./22-search-recommendation.md) —— 搜索推荐系统是架构成熟后的增值层，从业务系统到智能系统

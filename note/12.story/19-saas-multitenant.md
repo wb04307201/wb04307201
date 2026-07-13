@@ -13,6 +13,10 @@ story:
 
 > **系列定位**：本篇是「阿明餐厅」系列的**番外三**。在[前传](./02-system-architecture-evolution.md)中，阿明完成了从单机到云原生的架构演进。当系统足够成熟后，一个新的商业机会出现了 —— **把这套系统卖给其他餐厅老板**。但"一套系统服务多个客户"远比想象中复杂。
 
+> **📚 配套资源**
+> - **架构深度**：[04.system-design · multi-tenant-architecture](../04.system-design/01-foundation/system-design-basics/multi-tenant-architecture/README.md) — 6 大数据隔离模型 + 4 大应用层关注点 + PostgreSQL RLS + 飞书/钉钉/Salesforce/阿里云生产实践
+> - **面试速查**：[13.split-hairs · multi-tenant-saas](../13.split-hairs/04.system-design/multi-tenant-saas/README.md) — 高频题 + 6 大隔离模型速查 + 90 秒话术 + 5 反模式 + 11 兄弟导航
+
 ---
 
 ## 引言：一套系统，三个世界

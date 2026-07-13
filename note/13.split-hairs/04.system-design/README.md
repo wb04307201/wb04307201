@@ -56,6 +56,7 @@ question:
 | **🆕 [商品搜索系统设计](high-performance/product-search/)** | ⭐⭐⭐⭐ | 倒排索引 + BM25 + 多阶段排序 + 数据同步一致性 |
 | **🆕 [大文件上传系统](high-performance/file-upload/)** | ⭐⭐⭐⭐ | 分片 + 断点续传 + 秒传 + 对象存储 |
 | **🆕 [短链系统设计](url-shortener/)** | ⭐⭐⭐⭐ | Base62 + 发号器 + 302 重定向 + 缓存 + 统计 |
+| **🆕 [多租户 SaaS 系统设计](multi-tenant-saas/)** | ⭐⭐⭐⭐⭐ | 6 大隔离模型 + 4 大应用层关注点 + 5 反模式 + PostgreSQL RLS + noisy neighbor 防御 | [multi-tenant-architecture 深度章节](../../04.system-design/01-foundation/system-design-basics/multi-tenant-architecture/README.md) |
 
 ### 排查与运维
 | 主题 | 难度 | 核心问题 |
