@@ -118,4 +118,4 @@ public class SignupDTO {
 | `@Valid` 容器元素 | 集合/嵌套对象递归 | 低 | 推荐 |
 | `@AssertTrue` 方法 | 简单布尔规则、即时验证 | 低 | 推荐 |
 
-> 多场景分组请结合 [annotations-and-usage.md 第 7 节](annotations-and-usage.md#7-分组校验与-groupsequence)。
+> 多场景分组请结合 [validation-annotations-and-usage.md 第 7 节](validation-annotations-and-usage.md#7-分组校验与-groupsequence)。
