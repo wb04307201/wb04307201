@@ -12,7 +12,7 @@ module:
 
 > 一句话定位：**多租户的难点不在"隔离"，在"隔离强度 × 规模 × 成本"的三角权衡**。面试速查版见 [13.split-hairs · multi-tenant-saas](../../../13.split-hairs/04.system-design/multi-tenant-saas/README.md)。
 
-> **关联章节**：架构演进终局（[12.story · 19-saas-multitenant](../../../../12.story/19-saas-multitenant.md) — 阿明从单店到加盟帝国）、单租户决策 ([14.project-management/self-vs-saas-vs-outsourcing](../../../14.project-management/self-vs-saas-vs-outsourcing/README.md))、架构演进整体路径 ([02-evolution](../02-evolution/01-monolith-to-microservices/README.md))。
+> **关联章节**：架构演进终局（[12.story · 19-saas-multitenant](../../../../12.story/18-saas-multitenant.md) — 阿明从单店到加盟帝国）、单租户决策 ([14.project-management/self-vs-saas-vs-outsourcing](../../../14.project-management/self-vs-saas-vs-outsourcing/README.md))、架构演进整体路径 ([02-evolution](../../02-evolution/01-monolith-to-microservices/README.md))。
 
 ---
 
@@ -394,7 +394,7 @@ SentinelApiClient.registerDynamicRule(...);
 
 | 主题 | 位置 | 互补关系 |
 |------|------|---------|
-| **架构演进（单体 → 微服务）** | [02-evolution](../02-evolution/01-monolith-to-microservices/README.md) | 微服务是 SaaS 化的前置条件 |
+| **架构演进（单体 → 微服务）** | [02-evolution](../../02-evolution/01-monolith-to-microservices/README.md) | 微服务是 SaaS 化的前置条件 |
 | **微服务 vs 单体（面试题）** | [microservices](../microservices/README.md) | 多租户可与微服务结合 |
 | **数据一致性** | [microservices/data-consistency](../microservices/data-consistency/README.md) | 多租户的 Saga / TCC 模式 |
 | **RBAC + ABAC 访问控制** | [../../05-security/access-control](../../05-security/access-control/README.md) | 租户级的访问控制 |
