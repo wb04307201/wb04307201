@@ -8,6 +8,8 @@ question:
   tags: [03.database, MySQL, mysql]
 -->
 
+<!-- index-only -- 此为分类/导览页，链接到下属子章节，非内容占位 -->
+
 # MySQL 细节 — 咬文嚼字
 
 > MySQL 面试高频细节，每篇聚焦一个"看起来简单但陷阱不少"的问题。

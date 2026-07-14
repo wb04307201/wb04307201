@@ -8,6 +8,8 @@ question:
   tags: [04.system-design, high, performance]
 -->
 
+<!-- index-only -- 此为分类/导览页，链接到下属子章节，非内容占位 -->
+
 # 高性能 — 咬文嚼字
 
 > 高性能场景面试细节深挖，每篇聚焦一个核心问题。

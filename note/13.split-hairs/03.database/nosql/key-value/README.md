@@ -8,6 +8,8 @@ question:
   tags: [03.database, key, value]
 -->
 
+<!-- index-only -- 此为分类/导览页，链接到下属子章节，非内容占位 -->
+
 # Key-Value 数据库 — 咬文嚼字
 
 > Key-Value 是最简单的 NoSQL 数据模型：一个 Key 对应一个 Value。但"简单"不等于"没有深度"——Redis 的 5 种基础数据结构、持久化策略、内存淘汰、集群方案，每一个都是面试高频考点。

@@ -8,6 +8,8 @@ question:
   tags: [03.database, MySQL, mysql]
 -->
 
+<!-- index-only -- 此为分类/导览页，链接到下属子章节，非内容占位 -->
+
 # MySQL 细节 — 咬文嚼字
 
 > MySQL 索引相关的面试高频问题。

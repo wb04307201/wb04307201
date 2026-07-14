@@ -8,6 +8,8 @@ question:
   tags: [04.system-design, distributed]
 -->
 
+<!-- index-only -- 此为分类/导览页，链接到下属子章节，非内容占位 -->
+
 # 分布式 — 咬文嚼字
 
 > 分布式系统面试高频细节，聚焦"以为懂但说不清"的核心问题。
