@@ -4,6 +4,25 @@
 
 ---
 
+## 📑 目录（12 节）
+
+| # | 章节 | 核心内容 |
+|---|------|---------|
+| [§1](#1-目录结构规范) | 目录结构规范 | 14 主模块编号 + 子目录命名 |
+| [§2](#2-模块-readme-模板8-section-index-template) | 模块 README 模板（8-section） | frontmatter + 导航 + 知识脉络 + 速查表 + 核心 + 实践 + 面试题 + 相关章节 |
+| [§3](#3-命名规范) | 命名规范 | 中英文 / 数字 / 短横线 / kebab-case |
+| [§4](#4-相关章节规范) | 相关章节规范 | 上游 / 下游 / 关联 / 兄弟 / 对照 |
+| [§5](#5-png--mermaid-迁移清单) | PNG → Mermaid 迁移清单 | 76 → 38 张保留策略 |
+| [§6](#6-commit-规范) | Commit 规范 | `feat(<slug>)` / `fix(<slug>)` / `style(<slug>)` / `docs(<scope>)` / `refactor(<slug>)` |
+| [§7](#7-ci-检查) | CI 检查 | link-check.yml + GRS |
+| [§8](#8-主模块-readme-通用规范人工自检) | 主模块 README 通用规范 | 12 项人工自检 |
+| [§9](#9-各模块的细化规范与通用校验互为补充) | 各模块细化规范 | 01.java / 12.story / 13.split-hairs |
+| [§10](#10-frontmatter-规范已全量落地-697-个-readme) | frontmatter 规范 | `module:` / `question:` / `story:` 三种 |
+| [§11](#11-模块-readme-自检表2026-07-01-务实版) | 模块 README 自检表 | 2026-07-01 务实版 |
+| [§12](#12-模块-readme-标准结构) | 模块 README 标准结构 | 完整章节模板 |
+
+---
+
 ## 1. 目录结构规范
 
 ### 1.1 顶层模块（note/）
@@ -224,7 +243,7 @@ graph TD
 - [ ] apache-eventmesh/cloud-flow (3 张) 未迁
 - [x] 11.ai/training/* 38 张保留（UI 截图）
 - [ ] 其他 25 个文件目录中**有 PNG 文件但 README 未引用**——可考虑作为历史资料保留或清理
-- [ ] 待执行 §2（孤儿 PNG 清理）：见实施计划 `docs/superpowers/plans/2026-07-01-note-optimization.md` Task 3
+- [ ] 待执行 §2（孤儿 PNG 清理）—— 计划文档已于 `cc570324` 删除，本节独立维护
 
 迁移建议：先做 5.2 的 9 张流程图 / 架构图，按"看图 → 写 Mermaid → 删除 PNG"三步走。
 
@@ -361,7 +380,7 @@ scope 规范：
 
 ## 12. 模块 README 标准结构
 
-所有主模块 README 与子目录 README 必须遵循以下模板（详见 `docs/superpowers/specs/2026-07-01-note-optimization-design.md` §4）：
+所有主模块 README 与子目录 README 必须遵循以下模板（详见本文件 §11）：
 
 - 顶层模块 README：必须包含 frontmatter + 一句话导览 + 目录导航表格 + 适用人群（可选）+ 学习路径（可选）
 - 二级子目录 README：必须包含 frontmatter + 1-2 句定位 + 核心内容表格 + 文末回链
