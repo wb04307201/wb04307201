@@ -210,8 +210,8 @@ module:
 | 3 | [L3 工程实践](11.ai/03-engineering/README.md) | 深度学习框架、应用开发框架、计算平台、本地部署、AI 平台对比 |
 | 4 | [L4 架构设计](11.ai/04-architecture/README.md) | 智能系统分层架构、2026 技术趋势 |
 | 5 | [L5 行业应用](11.ai/05-applications/README.md) | 汽车行业落地、具身智能 |
-| 6 | [L6 前沿研究](11.ai/06-research/README.md) | 沉思模型（Rumination）等前沿探索 |
-| 7 | [LLMOps](11.ai/07-llmops/README.md) | RAG vs 微调、LLMOps 栈、向量库 vs 缓存、LLM 评测、LLM 安全 |
+| 6 | [L6 前沿研究](11.ai/07-research/README.md) | 沉思模型（Rumination）等前沿探索 |
+| 7 | [LLMOps](11.ai/08-llmops/README.md) | RAG vs 微调、LLMOps 栈、向量库 vs 缓存、LLM 评测、LLM 安全 |
 | 8 | [教学课程](11.ai/training/README.md) | Spring AI Agent 实战 16 课 |
 
 # 十二、[「阿明餐厅」技术系列](12.story/README.md)
@@ -241,7 +241,7 @@ module:
 
 > 主模块的"刺刀版" —— 专治面试中那些"好像懂但说不清"的高频 / 高难度问题。
 > 每篇 50-300 行，聚焦单一问题，从原理到陷阱到最佳实践、面试话术一次讲透。
-> 8 大分类共 **183 篇** 深度文章（详见 [QUESTION-FORMAT-SPEC](./13.split-hairs/QUESTION-FORMAT-SPEC.md)），覆盖 Java / 计算机基础 / 数据库 / 系统设计 / 安全 / Spring / 前端 / AI。
+> 8 大分类共 **184 篇** 深度文章（详见 [QUESTION-FORMAT-SPEC](./13.split-hairs/QUESTION-FORMAT-SPEC.md)），覆盖 Java / 计算机基础 / 数据库 / 系统设计 / 安全 / Spring / 前端 / AI。
 > 写作规范：[QUESTION-FORMAT-SPEC.md](./13.split-hairs/QUESTION-FORMAT-SPEC.md)
 
 ## 分类导航
@@ -469,6 +469,11 @@ module:
 | [向量检索算法选型](13.split-hairs/11.ai/vector-search-algorithms/README.md) | HNSW vs IVF vs DiskANN 选型 |
 | [大规模向量检索架构](13.split-hairs/11.ai/vector-search-at-scale/README.md) | 10 亿 vs 千亿级向量检索架构演进 |
 | [万亿级向量检索架构](13.split-hairs/11.ai/vector-search-trillion/README.md) | 万亿级向量检索架构思维 |
+
+### 主模块 11.ai 专题（深度沉淀）
+
+> 2026-07 新增 Agent A/B Test 评测体系专题（[主模块深度](../11.ai/06-agent-evaluation/README.md) + [面试题版](13.split-hairs/11.ai/agent-ab-testing/README.md)）。
+> 评测体系覆盖：6 大指标 + 5 种方法 + LLM-as-Judge + Pipeline + 阿里面试 + 7 大反模式 + 选型决策树 + 实战案例。
 
 ## 09.front-end（27 篇）—— 前端细节
 
