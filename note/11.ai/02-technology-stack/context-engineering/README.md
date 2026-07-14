@@ -177,7 +177,7 @@ context = get_relevant_files(query)  # 5K tokens
 
 ## 七、面试陷阱速览
 
-> 完整陷阱 + 反直觉 + 30 秒话术见 [13.split-hairs Context Engineering](../../../13.split-hairs/11.ai/context-engineering/README.md)
+> 完整陷阱 + 反直觉 + 30 秒话术见 [13.split-hairs Context Engineering](../../../13.split-hairs/11.ai/context-engineering-interview/README.md)
 
 ---
 
