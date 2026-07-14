@@ -94,7 +94,7 @@ Attention(Q, K, V) = softmax(Q × K^T / √d) × V
 
 - 主模块：[Transformer 架构](../../../11.ai/01-fundamentals/transformer/README.md)
 - 关联：[Token 与计费](../../../11.ai/02-technology-stack/token-billing/README.md)
-- 应用：[RAG](../../../11.ai/07-llmops/01-rag-vs-finetuning/README.md)
+- 应用：[RAG](../../../11.ai/08-llmops/01-rag-vs-finetuning/README.md)
 
 ---
 

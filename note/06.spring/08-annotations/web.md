@@ -295,4 +295,4 @@ public class CartController { ... }
 - [AOP 注解](aop.md) — 切面常用于 Controller 层
 - [02 Web 层 MVC](../../README.md) — Spring MVC 工作流程
 - [02 Web 层 CORS 与静态资源](../02-web/mvc/cors-and-static.md) — @CrossOrigin 全局配置
-- [06 集成组件/Validation](../06-integration/validation/annotations-and-usage.md) — @Valid 用于 @RequestBody 参数校验
+- [06 集成组件/Validation](../06-integration/validation/validation-annotations-and-usage.md) — @Valid 用于 @RequestBody 参数校验

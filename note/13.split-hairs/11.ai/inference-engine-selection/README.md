@@ -400,7 +400,7 @@ resp = client.chat(model='qwen2.5:7b', messages=[...])
 - [11.ai/03-engineering/ai-platforms/coze](../../../11.ai/03-engineering/ai-platforms/coze.md) —— Coze 平台
 - [11.ai/03-engineering/ai-platforms/dify](../../../11.ai/03-engineering/ai-platforms/dify.md) —— Dify 平台
 - [11.ai/03-engineering/local-deployment/ollama](../../../11.ai/03-engineering/local-deployment/ollama/README.md) —— Ollama 部署
-- [11.ai/07-llmops/02-llmops-stack](../../../11.ai/07-llmops/02-llmops-stack/README.md) —— LLMOps 全景
+- [11.ai/08-llmops/02-llmops-stack](../../../11.ai/08-llmops/02-llmops-stack/README.md) —— LLMOps 全景
 
 ### 实战姐妹（12.story）
 

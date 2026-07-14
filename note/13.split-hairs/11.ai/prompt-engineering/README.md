@@ -84,7 +84,7 @@ question:
 
 - 主模块：[Prompt Engineering](../../../11.ai/02-technology-stack/prompt-engineering/README.md)
 - 演进下一步：[Context Engineering](../../../11.ai/02-technology-stack/context-engineering/README.md)
-- 关联：[RAG](../../../11.ai/07-llmops/01-rag-vs-finetuning/README.md)
+- 关联：[RAG](../../../11.ai/08-llmops/01-rag-vs-finetuning/README.md)
 - 故事版：[12.story #42 Prompt 工程](../../../12.story/40-prompt-engineering.md)
 
 ---

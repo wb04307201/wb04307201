@@ -281,7 +281,7 @@ results = collection.search(
 **主模块**：
 - [11.ai/02-technology-stack/vector-search-algorithms（深度原理）](../../../11.ai/02-technology-stack/vector-search-algorithms/README.md)
 - [11.ai/02-technology-stack/context-engineering（Context Engineering）](../../../11.ai/02-technology-stack/context-engineering/README.md)
-- [11.ai/07-llmops/agentic-search-vs-rag（Agentic Search）](../../../11.ai/07-llmops/agentic-search-vs-rag/README.md)
+- [11.ai/08-llmops/agentic-search-vs-rag（Agentic Search）](../../../11.ai/08-llmops/agentic-search-vs-rag/README.md)
 
 **12.story 实战**：
 - [12.story/37-vector-database-and-embedding（味道仓库 4 大调优）](../../../12.story/37-vector-database-and-embedding.md)
@@ -296,7 +296,7 @@ results = collection.search(
 - 🆕 [Incremental Embedding 增量向量化](../incremental-embedding/README.md) — 5 大策略 + 4 版本方案
 
 **相关 RAG 章节**：
-- [11.ai/07-llmops/agentic-search-vs-rag（为什么大代码库不用 RAG）](../../../11.ai/07-llmops/agentic-search-vs-rag/README.md)
+- [11.ai/08-llmops/agentic-search-vs-rag（为什么大代码库不用 RAG）](../../../11.ai/08-llmops/agentic-search-vs-rag/README.md)
 
 ---
 

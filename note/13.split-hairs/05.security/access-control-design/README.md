@@ -379,8 +379,8 @@ CREATE TABLE audit_log (
 ## 六、交叉引用
 
 - **权限模型理论**：[6 大权限模型](../../../../04.system-design/05-security/access-control/README.md) — DAC / MAC / RBAC / ABAC / ReBAC / 混合
-- **RBAC 深度**：[RBAC 详解](../../../../04.system-design/05-security/access-control/02-role-and-attribute/rbac.md) — 角色继承 / 约束 / 权限分配
-- **ABAC 深度**：[ABAC 详解](../../../../04.system-design/05-security/access-control/02-role-and-attribute/abac.md) — 策略引擎 / 属性表达式
+- **RBAC 深度**：[RBAC 详解](../../../04.system-design/05-security/access-control/02-role-and-attribute/rbac.md) — 角色继承 / 约束 / 权限分配
+- **ABAC 深度**：[ABAC 详解](../../../04.system-design/05-security/access-control/02-role-and-attribute/abac.md) — 策略引擎 / 属性表达式
 - **SSO**：[SSO 单点登录](../sso/README.md) — 6 大方案选型
 - **JWT**：[JWT 安全](../../../../04.system-design/05-security/jwt-security/README.md) — Token 签发与验证
 - **API 安全**：[API 安全](../../../../04.system-design/05-security/api-security/README.md) — 限流 / 签名 / 防重放

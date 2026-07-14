@@ -254,7 +254,7 @@ metrics:
 - [Skill 数量一多，Agent 命中率怎么保证？](../skill-hit-rate/README.md) — "调"的面试题
 - [为什么 Claude Code 放弃了 RAG？](../claude-code-agentic-search/README.md) — Agentic Search 取代 RAG
 - [Harness Engineering 是什么？](../harness-engineering/README.md) — 上下文工程总论
-- [Context Engineering 怎么做？](../context-engineering/README.md) — Token 预算
+- [Context Engineering 怎么做？](../context-engineering-interview/README.md) — Token 预算
 - [Function Calling 怎么设计？](../function-calling/README.md) — 工具调用工程化
 
 **教学场景**：

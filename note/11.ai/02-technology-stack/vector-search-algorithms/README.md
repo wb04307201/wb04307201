@@ -368,8 +368,8 @@ QPS：10K
 - [Function Calling](../function-calling/README.md)
 
 **实战应用**：
-- [11.ai/07-llmops/agentic-search-vs-rag（Agentic Search）](../../07-llmops/agentic-search-vs-rag/README.md)
-- [11.ai/07-llmops/01-rag-vs-finetuning（RAG 架构）](../../07-llmops/01-rag-vs-finetuning/README.md)
+- [11.ai/08-llmops/agentic-search-vs-rag（Agentic Search）](../../08-llmops/agentic-search-vs-rag/README.md)
+- [11.ai/08-llmops/01-rag-vs-finetuning（RAG 架构）](../../08-llmops/01-rag-vs-finetuning/README.md)
 
 ---
 

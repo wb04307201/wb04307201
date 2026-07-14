@@ -233,7 +233,7 @@ Q5：贵司 SaaS 计费是按订阅还是按用量？
 
 ## 🔗 餐厅叙事（12.story）
 
-- [12.story · 19-saas-multitenant](../../../../12.story/18-saas-multitenant.md) —— 阿明的加盟帝国：架构从自用到 SaaS 的多租户化
+- [12.story · 19-saas-multitenant](../../../12.story/18-saas-multitenant.md) —— 阿明的加盟帝国：架构从自用到 SaaS 的多租户化
 
 ---
 

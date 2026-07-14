@@ -163,7 +163,7 @@ Skill 数  命中率  退化原因
 - [Skill 从 0 到 1 怎么设计？](../skill-design/README.md) — 「写」的面试题（决策树 + 6 字段 + 测试）
 - [为什么 Claude Code 放弃了 RAG？](../claude-code-agentic-search/README.md) — Agentic Search 取代 RAG
 - [Harness Engineering 是什么？](../harness-engineering/README.md) — Harness 体系
-- [Context Engineering 怎么做？](../context-engineering/README.md) — Token 预算
+- [Context Engineering 怎么做？](../context-engineering-interview/README.md) — Token 预算
 - [Function Calling 怎么设计？](../function-calling/README.md) — 工具调用工程化
 
 **叙事层（12.story）**：

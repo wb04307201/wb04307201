@@ -386,8 +386,8 @@ Self-Consistency：
 
 ### 主模块兄弟
 
-- [11.ai/07-llmops/04-llm-evaluation](../../../11.ai/07-llmops/04-llm-evaluation/README.md) —— LLM 评估体系 6 维度
-- [11.ai/07-llmops/02-llmops-stack](../../../11.ai/07-llmops/02-llmops-stack/README.md) —— LLMOps 全景
+- [11.ai/08-llmops/04-llm-evaluation](../../../11.ai/08-llmops/04-llm-evaluation/README.md) —— LLM 评估体系 6 维度
+- [11.ai/08-llmops/02-llmops-stack](../../../11.ai/08-llmops/02-llmops-stack/README.md) —— LLMOps 全景
 - [11.ai/03-engineering/ai-platforms/vllm-vs-ollama](../../../11.ai/03-engineering/ai-platforms/vllm-vs-ollama/README.md) —— 推理引擎选型（成本相关）
 
 ### 实战姐妹（12.story）

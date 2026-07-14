@@ -95,7 +95,7 @@ Q5：上线后，怎么检测模型的准确率？幻觉率？怎么快速定位
 - **餐厅叙事**：[12.story/05-observability.md](../../../12.story/05-observability.md) —— 阿明餐厅的"AI 思维工程 5 问"实战
 - **面试题**：[13.split-hairs/11.ai/production-thinking-5q](../../../13.split-hairs/11.ai/production-thinking-5q/README.md) —— 5-7 道精选题
 - **同级兄弟**：[production-agent](../production-agent/README.md) · [harness-engineering](../harness-engineering/README.md) · [loop-engineering](../loop-engineering/README.md)
-- **相关章节**：[llm-evaluation](../../07-llmops/04-llm-evaluation/README.md) · [llmops-stack](../../07-llmops/02-llmops-stack/README.md) · [hallucination](../../../13.split-hairs/11.ai/hallucination/README.md)
+- **相关章节**：[llm-evaluation](../../08-llmops/04-llm-evaluation/README.md) · [llmops-stack](../../08-llmops/02-llmops-stack/README.md) · [hallucination](../../../13.split-hairs/11.ai/hallucination/README.md)
 
 ---
 

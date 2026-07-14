@@ -682,7 +682,7 @@ graph TB
 
 ## 跨章节衔接
 
-- 11.ai/06-research/README.md —— AI 前沿研究 —— 评测工程的最新学术方向（自动评测、人类反馈校准）
+- 11.ai/07-research/README.md —— AI 前沿研究 —— 评测工程的最新学术方向（自动评测、人类反馈校准）
 - 11.ai/03-engineering/ai-platforms/README.md —— AI 平台 —— 评测平台架构与 Harness Eval 流水线的设计参考
 
 ---

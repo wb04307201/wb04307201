@@ -127,12 +127,9 @@ Dify 工作流引擎 · 第九课 是 N 个 JEP / 特性 / 章节的合集。
 - `chatflow-02-canvas.png` - 默认画布结构
 - `chatflow-03-configure-llm.png` - 配置 LLM 提示词
 - `chatflow-04-add-knowledge.png` - 添加知识检索节点
-- `chatflow-05-full-flow.png` - 完整流程图
-- `chatflow-06-preview-panel.png` - 预览面板
 - `chatflow-07-conversation-success.png` - 对话测试成功
 - `chatflow-08-publishing.png` - 发布状态
 - `chatflow-09-api-docs.png` - API 文档页面
-- `chatflow-09-publish-status.png` - 发布状态
 
 ### 其他教程截图（16张）
 - `01-login.png` ~ `16-api-develop-page.png` - 工作流搭建相关截图

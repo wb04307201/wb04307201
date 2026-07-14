@@ -97,7 +97,7 @@ Harness = 规范 + 流程 + 工具 + 反馈
 ## 六、深度阅读
 
 - 主模块：[Harness Engineering](../../../11.ai/03-engineering/harness-engineering/README.md)
-- 上一步：[Context Engineering](../context-engineering/README.md)
+- 上一步：[Context Engineering](../context-engineering-interview/README.md)
 - 关联：[Loop Engineering](../loop-engineering/README.md)
 - 实战：[Claude Code 实践](../../../11.ai/03-engineering/claude-code-practices/README.md)
 

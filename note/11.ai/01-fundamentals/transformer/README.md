@@ -209,6 +209,6 @@ graph LR
 
 - 上游：[LLM 基础](../llm-basics/README.md) — 大语言模型概述
 - 关联：[Token 与计费](../../02-technology-stack/token-billing/README.md) — Transformer 的处理单位
-- 应用：[RAG](../../07-llmops/01-rag-vs-finetuning/README.md) — Transformer 的核心应用场景
+- 应用：[RAG](../../08-llmops/01-rag-vs-finetuning/README.md) — Transformer 的核心应用场景
 
 ← [返回: AI 知识体系 · transformer](README.md)
