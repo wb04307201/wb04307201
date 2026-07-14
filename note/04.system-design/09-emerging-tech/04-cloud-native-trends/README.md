@@ -152,7 +152,7 @@ spec:
 - 复杂问题 → GPT-4 / Claude Opus（慢 + 贵）
 ```
 
-详见 [`11.ai/07-llmops`](../../../11.ai/07-llmops/02-llmops-stack/README.md)
+详见 [`11.ai/08-llmops`](../../../11.ai/08-llmops/02-llmops-stack/README.md)
 
 ### 3.3 国产 GPU 适配
 

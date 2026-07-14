@@ -125,7 +125,7 @@ FilterResult result = sensitiveFilter.filter(clean);
 | L2 | 谐音/形近扩展词典 | 高频变体 | 低（离线扩词） |
 | L3 | **AI 语义审核** | 未知变体 + 上下文语义 | 高（100ms+，仅兜底） |
 
-**L3 的定位**：不是替代词典，而是**对 L1/L2 漏网的、疑似但不确定的内容做异步二审**。详见 [11.ai/07-llmops/05-llm-security](../../../11.ai/07-llmops/05-llm-security/README.md) 的内容审核部分。
+**L3 的定位**：不是替代词典，而是**对 L1/L2 漏网的、疑似但不确定的内容做异步二审**。详见 [11.ai/08-llmops/05-llm-security](../../../11.ai/08-llmops/05-llm-security/README.md) 的内容审核部分。
 
 ---
 
@@ -146,7 +146,7 @@ FilterResult result = sensitiveFilter.filter(clean);
 - 上一章：[04-selection-decision-tree](04-selection-decision-tree.md) —— 5 维选型矩阵
 - 专题首页：[sensitive-word-filter 总目录](README.md) —— AC 自动机 + Bloom + 分布式全景
 - 算法基础：[string-algorithms/AC 自动机](../../../02.computer-basics/02-algorithms/string-algorithms/03-ac-automaton.md) —— 归一化后喂给的匹配引擎
-- AI 兜底：[11.ai/07-llmops/05-llm-security](../../../11.ai/07-llmops/05-llm-security/README.md) —— LLM 内容审核（L3 语义兜底）
+- AI 兜底：[11.ai/08-llmops/05-llm-security](../../../11.ai/08-llmops/05-llm-security/README.md) —— LLM 内容审核（L3 语义兜底）
 - 面试题：[13.split-hairs/02.computer-basics/sensitive-word-filter](../../../13.split-hairs/02.computer-basics/sensitive-word-filter/README.md) —— 变体绕过精选 Q&A
 
 ---
