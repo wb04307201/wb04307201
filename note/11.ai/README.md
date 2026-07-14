@@ -12,7 +12,7 @@ module:
 
 > 从基础概念到行业落地，系统化理解人工智能技术栈。
 
-本目录按 **L1-L6 知识层级递进 + LLMOps 运维 + 教学课程** 八大主题组织，从理论到实践，从底层算法到上层应用。
+本目录按 **L1-L8 知识层级递进 + 教学课程** 九大主题组织，从理论到实践，从底层算法到上层应用。
 
 ---
 
@@ -25,16 +25,17 @@ module:
 | 03 | [L3 工程实践](03-engineering/) | 深度学习/LLM 应用框架 · 计算平台 · 本地部署 · Dify/Coze · Claude Code · Agent 4 阶段 | [子入口](03-engineering/) |
 | 04 | [L4 架构设计](04-architecture/) | 智能系统分层 · AI + BPMN 融合 · DAG vs ReAct · 本体驱动 Agent · 2026 趋势 | [子入口](04-architecture/) |
 | 05 | [L5 行业应用](05-applications/) | 汽车 · 具身智能 · AI 撰写 PRD · Shopify AI · 12 个行业标杆案例 | [子入口](05-applications/) |
-| 06 | [L6 前沿研究](06-research/) | 沉思模型 · 知识蒸馏 · 推理增强 · 多模态融合 | [子入口](06-research/) |
-| 07 | [LLMOps](07-llmops/) | RAG vs 微调 · LLMOps 栈 · 向量库 vs 缓存 · 评测 · 安全 | [子入口](07-llmops/) |
-| 08 | [教学课程](training/) | AI Agent 应用开发 16 课培训（Spring AI · MCP · Skills · 多智能体 · 安全） | [子入口](training/) |
+| 06 | [L6 Agent 评测](06-agent-evaluation/) | 6 大指标 · 5 种方法 · LLM-as-Judge · Pipeline · 阿里面试 · 7 反模式 · 选型决策树 | [子入口](06-agent-evaluation/) |
+| 07 | [L7 前沿研究](07-research/) | 沉思模型 · 知识蒸馏 · 推理增强 · 多模态融合 | [子入口](07-research/) |
+| 08 | [L8 LLMOps](08-llmops/) | RAG vs 微调 · LLMOps 栈 · 向量库 vs 缓存 · 评测 · 安全 | [子入口](08-llmops/) |
+| 09 | [教学课程](training/) | AI Agent 应用开发 16 课培训（Spring AI · MCP · Skills · 多智能体 · 安全） | [子入口](training/) |
 
 ### 1.1 学习路径
 
 - **新人入门**：L1 基础概念 → L2 技术栈 → L3 工程实践
-- **AI 应用工程师**：L2 → L3 → LLMOps
-- **AI 架构师**：L3 → L4 架构设计 → L5 行业应用
-- **前沿研究者**：L1 → L2 → L6 前沿研究 → L4 架构设计
+- **AI 应用工程师**：L2 → L3 → L8 LLMOps
+- **AI 架构师**：L3 → L4 架构设计 → L5 行业应用 → L6 Agent 评测
+- **前沿研究者**：L1 → L2 → L7 前沿研究 → L4 架构设计
 - **教学/培训**：L1 → L2 → 教学课程 16 课
 - **📌 主线推荐**：[LLM 驾驭演进史](04-architecture/llm-control-evolution/README.md) — 理解全貌后跳读 L2/L3 详情
 
@@ -48,8 +49,9 @@ graph TD
     L2 --> L3["L3 工程实践<br/>框架 · 计算平台 · 部署 · Agent 4 阶段"]
     L3 --> L4["L4 架构设计<br/>智能系统分层 · BPMN+AI · DAG vs ReAct"]
     L4 --> L5["L5 行业应用<br/>汽车 · 具身智能 · 12 案例"]
-    L5 --> L6["L6 前沿研究<br/>沉思模型 · 蒸馏"]
-    L2 --> L7["LLMOps<br/>RAG · 向量库 · 评测 · 安全"]
+    L5 --> L6["L6 Agent 评测<br/>6 大指标 · 5 方法 · Pipeline"]
+    L6 --> L7["L7 前沿研究<br/>沉思模型 · 蒸馏"]
+    L2 --> L8["L8 LLMOps<br/>RAG · 向量库 · 评测 · 安全"]
     L3 --> Training["教学课程<br/>16 课 AI Agent 实战"]
 ```
 
@@ -170,8 +172,8 @@ graph TD
 | 03-engineering | 8 | 7 | 15 |
 | 04-architecture | 4 | 0 | 4 |
 | 05-applications | 5 | 16 | 21 |
-| 06-research | 2 | 1 | 3 |
-| 07-llmops | 5 | 0 | 5 |
+| 07-research | 2 | 1 | 3 |
+| 08-llmops | 5 | 0 | 5 |
 | training | 16 | 0 | 16 |
 | **leaf 合计** | **52** | **29** | **81** |
 
