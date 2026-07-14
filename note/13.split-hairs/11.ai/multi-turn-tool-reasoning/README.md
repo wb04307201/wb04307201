@@ -233,7 +233,7 @@ Q5：贵司 Agent 的成功率怎么监控？
 | [agent-memory-classification](../agent-memory-classification/README.md) | Agent 记忆 4 类 | ⭐⭐⭐⭐ |
 | [agent-performance-evaluation](../agent-performance-evaluation/README.md) | Agent 评估指标 | ⭐⭐⭐⭐ |
 | [claude-code-agentic-search](../claude-code-agentic-search/README.md) | Claude Code 搜索模式 | ⭐⭐⭐⭐ |
-| [context-engineering](../context-engineering/README.md) | Context Engineering | ⭐⭐⭐⭐⭐ |
+| [context-engineering](../context-engineering-interview/README.md) | Context Engineering | ⭐⭐⭐⭐⭐ |
 | [function-calling](../function-calling/README.md) | Function Calling / Tool Use | ⭐⭐⭐⭐⭐ |
 | [harness-engineering](../harness-engineering/README.md) | Harness 兜底工程 | ⭐⭐⭐⭐ |
 | [loop-engineering](../loop-engineering/README.md) | Loop Engineering 自循环 | ⭐⭐⭐⭐ |

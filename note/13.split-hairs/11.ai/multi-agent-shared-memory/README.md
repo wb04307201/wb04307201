@@ -10,7 +10,7 @@ question:
 
 # 多 Agent 共享记忆 —— 5 大内容维度 + 3 大实现层 + 6 大模式 + 5 大反模式
 
-> 一句话定位：**单 Agent Memory = 私有上下文；多 Agent 共享记忆 = 跨进程的状态/事实/语义同步，本质是分布式系统问题**。完整深度 + 6 大模式 + 一致性协议见 [主模块 · agent-memory 共享专章](../../../../11.ai/04-architecture/agent-memory/shared-memory.md)。
+> 一句话定位：**单 Agent Memory = 私有上下文；多 Agent 共享记忆 = 跨进程的状态/事实/语义同步，本质是分布式系统问题**。完整深度 + 6 大模式 + 一致性协议见 [主模块 · agent-memory 共享专章](../../../11.ai/04-architecture/agent-memory/shared-memory.md)。
 
 > **系列定位**：Multi-Agent 经典跨域追问（Anthropic / OpenAI / 字节 / 阿里 / 美团 高频）。考察的不是"Memory 怎么分类"，而是 **5 大内容维度怎么共享 + 3 层架构怎么选 + 5 反模式怎么避 + 90 秒话术**。
 
@@ -262,7 +262,7 @@ Q5：共享 Memory 的 4 层延迟分别多少？
 
 ## 🔗 深度版（主模块）
 
-- [11.ai · agent-memory 共享专章](../../../../11.ai/04-architecture/agent-memory/shared-memory.md) — 5 大维度详解 + 3 层架构 + 6 模式实战 + 一致性协议 + 选型决策
+- [11.ai · agent-memory 共享专章](../../../11.ai/04-architecture/agent-memory/shared-memory.md) — 5 大维度详解 + 3 层架构 + 6 模式实战 + 一致性协议 + 选型决策
 
 ---
 

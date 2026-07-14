@@ -10,7 +10,7 @@ question:
 
 # Agent Evaluation 评测系统设计 · 阿里一面题
 
-> 一句话定位：Agent 评测 = **6 大指标（任务 40% + 步骤 20% + 工具 10% + 成本 10% + 满意 15% + 稳定 5%）+ 5 种方法组合 + 4 阶段 Pipeline + 7 反模式**。完整深度见 [主模块 agent-evaluation 专题](../../../11.ai/05-agent-evaluation/README.md)。
+> 一句话定位：Agent 评测 = **6 大指标（任务 40% + 步骤 20% + 工具 10% + 成本 10% + 满意 15% + 稳定 5%）+ 5 种方法组合 + 4 阶段 Pipeline + 7 反模式**。完整深度见 [主模块 agent-evaluation 专题](../../../11.ai/06-agent-evaluation/README.md)。
 
 > **系列定位**：经典阿里 / 字节 / 美团 Agent 岗一面必问。考察的不是"评测是什么"，而是 **6 维量化能力** + **5 方法组合** + **Pipeline 全链路** + **7 反模式避坑**。
 
@@ -111,7 +111,7 @@ question:
 （GPT-4 + Claude + Gemini，去掉最高最低）
 ```
 
-完整见 [主模块 03-llm-as-judge.md](../../../11.ai/05-agent-evaluation/03-llm-as-judge.md)
+完整见 [主模块 03-llm-as-judge.md](../../../11.ai/06-agent-evaluation/03-llm-as-judge.md)
 
 ---
 
@@ -362,18 +362,18 @@ deploy:
 
 ### 主模块深度专题
 
-- [agent-evaluation 总目录](../../../11.ai/05-agent-evaluation/README.md)
-- [01-six-metrics](../../../11.ai/05-agent-evaluation/01-six-metrics.md) —— 6 大评测维度深度
-- [02-five-methods](../../../11.ai/05-agent-evaluation/02-five-methods.md) —— 5 种评测方法
-- [03-llm-as-judge](../../../11.ai/05-agent-evaluation/03-llm-as-judge.md) —— LLM 当裁判
-- [04-evaluation-pipeline](../../../11.ai/05-agent-evaluation/04-evaluation-pipeline.md) —— 4 阶段 Pipeline
-- [05-ali-interview](../../../11.ai/05-agent-evaluation/05-ali-interview.md) —— 阿里一面原题深度
-- [06-seven-anti-patterns](../../../11.ai/05-agent-evaluation/06-seven-anti-patterns.md) —— 7 反模式
-- [07-selection-decision-tree](../../../11.ai/05-agent-evaluation/07-selection-decision-tree.md) —— 5 分钟决策树
+- [agent-evaluation 总目录](../../../11.ai/06-agent-evaluation/README.md)
+- [01-six-metrics](../../../11.ai/06-agent-evaluation/01-six-metrics.md) —— 6 大评测维度深度
+- [02-five-methods](../../../11.ai/06-agent-evaluation/02-five-methods.md) —— 5 种评测方法
+- [03-llm-as-judge](../../../11.ai/06-agent-evaluation/03-llm-as-judge.md) —— LLM 当裁判
+- [04-evaluation-pipeline](../../../11.ai/06-agent-evaluation/04-evaluation-pipeline.md) —— 4 阶段 Pipeline
+- [05-ali-interview](../../../11.ai/06-agent-evaluation/05-ali-interview.md) —— 阿里一面原题深度
+- [06-seven-anti-patterns](../../../11.ai/06-agent-evaluation/06-seven-anti-patterns.md) —— 7 反模式
+- [07-selection-decision-tree](../../../11.ai/06-agent-evaluation/07-selection-decision-tree.md) —— 5 分钟决策树
 
 ### 主模块兄弟
 
-- [11.ai/07-llmops/04-llm-evaluation](../../../11.ai/07-llmops/04-llm-evaluation/README.md) —— LLM 单次评测
+- [11.ai/08-llmops/04-llm-evaluation](../../../11.ai/08-llmops/04-llm-evaluation/README.md) —— LLM 单次评测
 - [11.ai/03-engineering/production-agent](../../../11.ai/03-engineering/production-agent/README.md) —— Shopify Sidekick 实战
 - [11.ai/04-architecture/agent-architecture](../../../11.ai/04-architecture/agent-architecture/README.md) —— Agent 架构总览
 
@@ -385,7 +385,7 @@ deploy:
 
 - [Skill 命中率怎么保证？](../skill-hit-rate/README.md) — Agent 工具选择的量化指标
 - [Harness Engineering 是什么？](../harness-engineering/README.md) — Agent 系统的工程化框架
-- [Context Engineering 怎么做？](../context-engineering/README.md) — Token 预算与成本效益
+- [Context Engineering 怎么做？](../context-engineering-interview/README.md) — Token 预算与成本效益
 
 ### 叙事层（12.story）
 
