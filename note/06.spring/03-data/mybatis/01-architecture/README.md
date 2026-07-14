@@ -114,3 +114,13 @@ mindmap
 ---
 
 ← [返回 MyBatis 总览](../README.md)
+
+---
+
+## 🔗 兄弟主题
+
+- **[02-extension](../02-extension/README.md)** — 扩展能力
+- **[03-spring-integration](../03-spring-integration/README.md)** — Spring 整合
+- **[04-mybatis-plus](../04-mybatis-plus/README.md)** — MyBatis-Plus
+
+← [返回 MyBatis 全栈](../README.md)

@@ -114,3 +114,13 @@ graph TB
 > 🚀 从 [装配与启动](01-assembly-and-startup.md) 开始，了解整合的"骨架"
 
 ← [返回: Spring 全家桶 · 03-spring-integration](README.md)
+
+---
+
+## 🔗 兄弟主题
+
+- **[01-architecture](../01-architecture/README.md)** — 架构与原理
+- **[02-extension](../02-extension/README.md)** — 扩展能力
+- **[04-mybatis-plus](../04-mybatis-plus/README.md)** — MyBatis-Plus
+
+← [返回 MyBatis 全栈](../README.md)

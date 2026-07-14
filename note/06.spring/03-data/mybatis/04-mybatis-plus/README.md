@@ -76,3 +76,13 @@ MyBatis-Plus 是 MyBatis 的增强,与本目录下其他主题紧密相关:
 ---
 
 ← [返回 MyBatis 总览](../README.md)
+
+---
+
+## 🔗 兄弟主题
+
+- **[01-architecture](../01-architecture/README.md)** — 架构与原理
+- **[02-extension](../02-extension/README.md)** — 扩展能力
+- **[03-spring-integration](../03-spring-integration/README.md)** — Spring 整合
+
+← [返回 MyBatis 全栈](../README.md)

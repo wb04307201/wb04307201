@@ -143,3 +143,13 @@ User getUser(@Param("name") String userName);
 ---
 
 ← [返回 MyBatis 总览](../README.md)
+
+---
+
+## 🔗 兄弟主题
+
+- **[01-architecture](../01-architecture/README.md)** — 架构与原理
+- **[03-spring-integration](../03-spring-integration/README.md)** — Spring 整合
+- **[04-mybatis-plus](../04-mybatis-plus/README.md)** — MyBatis-Plus
+
+← [返回 MyBatis 全栈](../README.md)
