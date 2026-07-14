@@ -238,7 +238,7 @@ def test_recommend_for_spicy_lover():
 
 - AI 的输出**不是确定性的** —— 同一个问题问两次，答案不一样
 - AI 的"逻辑"在模型里，**没法看代码、没法打断点**
-- AI 会**一本正经地胡说八道**（详见[续集六 · 30](./30-ai-hallucination-safety.md)）—— 传统断言 `assert output == expected` 完全失效
+- AI 会**一本正经地胡说八道**（详见[续集六 · 30](./28-ai-hallucination-safety.md)）—— 传统断言 `assert output == expected` 完全失效
 - AI 工具调用的**正确性**没法靠类型检查
 
 阿明意识到：**AI 时代需要一套新的测试方法论**。它不是替代传统测试，而是补上传统测试覆盖不到的那一层。
@@ -430,7 +430,7 @@ def test_agent_handles_complex_flow():
 **第三层：异常与对抗测试**
 - Agent 拿到矛盾指令会怎样？（"别退款" + "立即退款"）
 - Agent 工具调用失败会重试吗？
-- Agent 遇到 Prompt 注入会怎么处理？（详见[33 第二章](./33-ai-fatal-trio.md)）
+- Agent 遇到 Prompt 注入会怎么处理？（详见[33 第二章](./31-ai-fatal-trio.md)）
 
 **Agent 测试的金标准是"决策链可回放"**：每个 Agent 的每次运行，都应该被记录成可审计的"决策链日志"，出问题可回放、可归因。
 
@@ -460,7 +460,7 @@ def test_agent_handles_complex_flow():
 
 阿明现在在 **L4 → L5** 之间：CI 集成评测已经稳定，红队流程运转良好，下一步是**让 AI 自己发现新攻击模式、自动补充到黄金集**。
 
-> **AI 时代测试的完整方法论、Eval 平台架构、回归测试、Prompt 工程深度内容，详见[续集十 · 34a/34b · 《AI 评测工程》](./34a-ai-evaluation-fundamentals.md)**。本篇只是提纲挈领，34a/34b 才是工程化实战。
+> **AI 时代测试的完整方法论、Eval 平台架构、回归测试、Prompt 工程深度内容，详见[续集十 · 34a/34b · 《AI 评测工程》](./32a-ai-evaluation-fundamentals.md)**。本篇只是提纲挈领，34a/34b 才是工程化实战。
 
 ---
 
@@ -512,27 +512,27 @@ graph TD
 - [阿明的省钱经](./14-cloud-finops.md) —— 云成本优化与 FinOps，120 万月账单如何降到 68 万
 - [差评危机](./15-incident-response.md) —— 故障复盘与应急响应，从手忙脚乱到 10 分钟止血的方法论
 - [外卖大战](./16-performance-optimization.md) —— 系统性能优化，3 秒生死线下的全链路优化实战
-- [传菜窗口的智慧](./20-realtime-eventdriven.md) —— 消息队列的可靠性测试：消息不丢失、顺序性保证、幂等消费验证
-- [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统的测试挑战：网络分区模拟、脑裂场景、一致性验证
-- [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户测试策略：租户隔离验证、跨租户数据泄露检测
-- [厨房实况直播](./20-realtime-eventdriven.md) —— 实时系统的压力测试：高并发 WebSocket 连接、消息风暴模拟
-- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多端兼容性测试，不同设备和平台的自动化测试矩阵
-- [懂你的菜单](./22-search-recommendation.md) —— 搜索推荐算法的 A/B 测试和效果评估，推荐准确率的测试方法
+- [传菜窗口的智慧](./19-realtime-eventdriven.md) —— 消息队列的可靠性测试：消息不丢失、顺序性保证、幂等消费验证
+- [十家店的烦恼](./17-distributed-puzzles.md) —— 分布式系统的测试挑战：网络分区模拟、脑裂场景、一致性验证
+- [阿明的加盟帝国](./18-saas-multitenant.md) —— 多租户测试策略：租户隔离验证、跨租户数据泄露检测
+- [厨房实况直播](./19-realtime-eventdriven.md) —— 实时系统的压力测试：高并发 WebSocket 连接、消息风暴模拟
+- [一个厨房，四个门面](./20-multiplatform-architecture.md) —— 多端兼容性测试，不同设备和平台的自动化测试矩阵
+- [懂你的菜单](./21-search-recommendation.md) —— 搜索推荐算法的 A/B 测试和效果评估，推荐准确率的测试方法
 - [菜谱标准化之路](./07-from-chef-to-ceo.md) —— 测试用例和测试报告的知识管理，测试文档的标准化
-- [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移的测试策略：数据一致性校验、回滚测试、双写验证
-- [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码生成代码的质量测试，平台组件的单元测试覆盖
-- [阿明出海记](./26-globalization.md) —— 国际化测试：多语言兼容性、多时区正确性、多币种计算验证
-- [厨房大换岗](./27-ai-org-transformation.md) —— AI 转型下的测试策略变化，测试工程师的角色从执行到设计
-- [阿明的二次创业](./28-ai-native-startup.md) —— AI 生成代码的测试挑战，AI 原生创业更需要严格的测试策略
-- [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的质量门是自动化测试的终极形态
-- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉检测是测试策略的新维度，如何测试 AI 的输出质量
+- [仓库搬家不停业](./22-database-migration.md) —— 数据库迁移的测试策略：数据一致性校验、回滚测试、双写验证
+- [预制菜还是现炒](./23-lowcode-platform.md) —— 低代码生成代码的质量测试，平台组件的单元测试覆盖
+- [阿明出海记](./24-globalization.md) —— 国际化测试：多语言兼容性、多时区正确性、多币种计算验证
+- [厨房大换岗](./25-ai-org-transformation.md) —— AI 转型下的测试策略变化，测试工程师的角色从执行到设计
+- [阿明的二次创业](./26-ai-native-startup.md) —— AI 生成代码的测试挑战，AI 原生创业更需要严格的测试策略
+- [会自我进化的厨房](./27-self-evolving-company.md) —— Agent Loop 的质量门是自动化测试的终极形态
+- [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) —— AI 幻觉检测是测试策略的新维度，如何测试 AI 的输出质量
 
 ## 跨章节衔接
 
 - [09-cicd-devops.md](./09-cicd-devops.md) —— 正传 5，测试策略与 CI/CD 强耦合：自动化测试是流水线的质量门
 - [10-api-design.md](./10-api-design.md) —— 正传 6，API 契约测试是测试策略在接口层的具体落地
 - [15-incident-response.md](./15-incident-response.md) —— 正传 9，事故复盘是测试策略的逆向补充：从故障中提取新测试用例
-- [32-agent-harness.md](./32-agent-harness.md) —— 续集八，AI Agent 系统的测试挑战：非确定性输出的断言策略
+- [32-agent-harness.md](./30-agent-harness.md) —— 续集八，AI Agent 系统的测试挑战：非确定性输出的断言策略
 
 ---
 

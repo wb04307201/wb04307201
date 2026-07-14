@@ -404,7 +404,7 @@ resp = client.chat(model='qwen2.5:7b', messages=[...])
 
 ### 实战姐妹（12.story）
 
-- [12.story/41-ai-private-deployment](../../../12.story/41-ai-private-deployment.md) —— 阿明餐厅从 Ollama 试跑到 vLLM 上生产
+- [12.story/39-ai-private-deployment](../../../12.story/39-ai-private-deployment.md) —— 阿明餐厅从 Ollama 试跑到 vLLM 上生产
 
 ---
 

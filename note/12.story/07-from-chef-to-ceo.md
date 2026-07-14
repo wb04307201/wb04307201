@@ -577,26 +577,26 @@ graph TD
 - [阿明的省钱经](./14-cloud-finops.md) —— 云成本优化的决策也需要 ADR 记录"为什么选这个实例规格"
 - [差评危机](./15-incident-response.md) —— 故障复盘的改进项必须包含"更新文档"，这是知识反馈回路的关键
 - [外卖大战](./16-performance-optimization.md) —— 性能优化的经验是最值得沉淀的"隐性知识"
-- [厨房实况直播](./20-realtime-eventdriven.md) —— 异步消息的设计决策需要 ADR 记录，消息格式需要文档化
-- [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统中的跨团队数据一致性，需要明确的 ownership 和协作机制
-- [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户架构的设计决策和运营手册是知识库的核心内容
-- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多端团队的组织协作，独立开发 vs 平台共享的平衡
-- [懂你的菜单](./22-search-recommendation.md) —— 推荐算法的策略文档是"最难写但最有价值"的知识
-- [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移的方案设计和操作手册是 ADR 和 Runbook 的典型应用场景
-- [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台改变了技术团队的角色，从"写代码"到"维护平台"
-- [阿明出海记](./26-globalization.md) —— 国际化涉及的合规知识、本地化经验是知识库中最需要定期更新的内容
-- [厨房大换岗](./27-ai-org-transformation.md) —— AI 时代的团队管理挑战，岗位重塑是康威定律在 AI 时代的新体现
-- [阿明的二次创业](./28-ai-native-startup.md) —— 创始人角色进化，从 CEO 到编排者的管理思维升级
-- [会自我进化的厨房](./29-self-evolving-company.md) —— 自进化组织是团队管理的终极形态，Agent Loop 替代层级管理
-- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉的团队管理视角，如何建立 AI 输出的审核文化
+- [厨房实况直播](./19-realtime-eventdriven.md) —— 异步消息的设计决策需要 ADR 记录，消息格式需要文档化
+- [十家店的烦恼](./17-distributed-puzzles.md) —— 分布式系统中的跨团队数据一致性，需要明确的 ownership 和协作机制
+- [阿明的加盟帝国](./18-saas-multitenant.md) —— 多租户架构的设计决策和运营手册是知识库的核心内容
+- [一个厨房，四个门面](./20-multiplatform-architecture.md) —— 多端团队的组织协作，独立开发 vs 平台共享的平衡
+- [懂你的菜单](./21-search-recommendation.md) —— 推荐算法的策略文档是"最难写但最有价值"的知识
+- [仓库搬家不停业](./22-database-migration.md) —— 数据库迁移的方案设计和操作手册是 ADR 和 Runbook 的典型应用场景
+- [预制菜还是现炒](./23-lowcode-platform.md) —— 低代码平台改变了技术团队的角色，从"写代码"到"维护平台"
+- [阿明出海记](./24-globalization.md) —— 国际化涉及的合规知识、本地化经验是知识库中最需要定期更新的内容
+- [厨房大换岗](./25-ai-org-transformation.md) —— AI 时代的团队管理挑战，岗位重塑是康威定律在 AI 时代的新体现
+- [阿明的二次创业](./26-ai-native-startup.md) —— 创始人角色进化，从 CEO 到编排者的管理思维升级
+- [会自我进化的厨房](./27-self-evolving-company.md) —— 自进化组织是团队管理的终极形态，Agent Loop 替代层级管理
+- [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) —— AI 幻觉的团队管理视角，如何建立 AI 输出的审核文化
 
 > 备注：原《菜谱标准化之路》（23-tech-docs-knowledge）已合并到本篇，详见第四章 ADR/Docs-as-Code 和第五章知识库/Onboarding/度量。
 
 ## 跨章节衔接
 
-- [27-ai-org-transformation.md](./27-ai-org-transformation.md) —— 续集三，从厨师到 CEO 视角下的组织变革：技术决策者如何驱动组织转型
-- [28-ai-native-startup.md](./28-ai-native-startup.md) —— 续集四，CEO 视角下的 AI 原生创业：技术到商业的完整闭环
-- [29-self-evolving-company.md](./29-self-evolving-company.md) —— 续集五，CEO 视角下的自进化组织：组织级 Agent Loop 的治理
+- [27-ai-org-transformation.md](./25-ai-org-transformation.md) —— 续集三，从厨师到 CEO 视角下的组织变革：技术决策者如何驱动组织转型
+- [28-ai-native-startup.md](./26-ai-native-startup.md) —— 续集四，CEO 视角下的 AI 原生创业：技术到商业的完整闭环
+- [29-self-evolving-company.md](./27-self-evolving-company.md) —— 续集五，CEO 视角下的自进化组织：组织级 Agent Loop 的治理
 
 ---
 

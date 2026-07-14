@@ -370,20 +370,20 @@ Google 的 Core Web Vitals 是前端体验的"健康体检"：
 - [阿明的省钱经](./14-cloud-finops.md) —— 云成本优化与 FinOps，120 万月账单如何降到 68 万
 - [差评危机](./15-incident-response.md) —— 故障复盘与应急响应，从手忙脚乱到 10 分钟止血的方法论
 - [外卖大战](./16-performance-optimization.md) —— 系统性能优化，3 秒生死线下的全链路优化实战
-- [传菜窗口的智慧](./20-realtime-eventdriven.md) —— 消息队列的异步模式在前端的应用，EventSource 和 WebSocket 是前端的"传菜窗口"
-- [十家店的烦恼](./18-distributed-puzzles.md) —— 前端如何处理分布式系统的一致性问题，最终一致性的 UI 展示策略
-- [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户前端定制，不同租户的界面风格、主题、组件差异化
-- [厨房实况直播](./20-realtime-eventdriven.md) —— WebSocket 和 SSE 是前端实时更新的两种实现方式
-- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多端架构是前端工程的延伸，跨平台方案的选型与适配
-- [懂你的菜单](./22-search-recommendation.md) —— 搜索推荐的前端交互设计，搜索框、推荐列表、筛选器的 UX 优化
+- [传菜窗口的智慧](./19-realtime-eventdriven.md) —— 消息队列的异步模式在前端的应用，EventSource 和 WebSocket 是前端的"传菜窗口"
+- [十家店的烦恼](./17-distributed-puzzles.md) —— 前端如何处理分布式系统的一致性问题，最终一致性的 UI 展示策略
+- [阿明的加盟帝国](./18-saas-multitenant.md) —— 多租户前端定制，不同租户的界面风格、主题、组件差异化
+- [厨房实况直播](./19-realtime-eventdriven.md) —— WebSocket 和 SSE 是前端实时更新的两种实现方式
+- [一个厨房，四个门面](./20-multiplatform-architecture.md) —— 多端架构是前端工程的延伸，跨平台方案的选型与适配
+- [懂你的菜单](./21-search-recommendation.md) —— 搜索推荐的前端交互设计，搜索框、推荐列表、筛选器的 UX 优化
 - [菜谱标准化之路](./07-from-chef-to-ceo.md) —— 前端技术文档和组件 Storybook，前端知识的沉淀与共享
-- [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移对前端的影响，Schema 变更时前端的兼容处理
-- [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台的可视化编辑器是前端工程化的新方向
-- [阿明出海记](./26-globalization.md) —— 国际化前端适配，多语言 RTL 布局、本地化日期和货币显示
-- [厨房大换岗](./27-ai-org-transformation.md) —— AI 转型对前端工程师的影响，前端需要适配 AI 增强的人机交互
-- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业的前端体验，MVP 的前端是用户的第一接触点
-- [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的用户反馈层，前端是收集用户反馈的核心触点
-- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉在前端的展示，如何在界面上处理 AI 的不确定性
+- [仓库搬家不停业](./22-database-migration.md) —— 数据库迁移对前端的影响，Schema 变更时前端的兼容处理
+- [预制菜还是现炒](./23-lowcode-platform.md) —— 低代码平台的可视化编辑器是前端工程化的新方向
+- [阿明出海记](./24-globalization.md) —— 国际化前端适配，多语言 RTL 布局、本地化日期和货币显示
+- [厨房大换岗](./25-ai-org-transformation.md) —— AI 转型对前端工程师的影响，前端需要适配 AI 增强的人机交互
+- [阿明的二次创业](./26-ai-native-startup.md) —— AI 原生创业的前端体验，MVP 的前端是用户的第一接触点
+- [会自我进化的厨房](./27-self-evolving-company.md) —— Agent Loop 的用户反馈层，前端是收集用户反馈的核心触点
+- [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) —— AI 幻觉在前端的展示，如何在界面上处理 AI 的不确定性
 - [09.front-end / 04 工程化](../09.front-end/04-engineering/README.md) —— Vite / pnpm / Monorepo / 测试体系：前端工程化工具链选型
 - [09.front-end / 06 性能](../09.front-end/06-performance/README.md) —— Core Web Vitals（LCP/INP/CLS）与性能监控体系
 - [09.front-end / 05 架构](../09.front-end/05-architecture/README.md) —— 渲染模式 / 状态管理 / 微前端 / BFF
@@ -391,8 +391,8 @@ Google 的 Core Web Vitals 是前端体验的"健康体检"：
 ## 跨章节衔接
 
 - [10-api-design.md](./10-api-design.md) —— 正传 6，前端工程化与 API 设计的协同：BFF、契约类型生成、Mock 数据
-- [21-multiplatform-architecture.md](./21-multiplatform-architecture.md) —— 正传 13，前端工程化向多端延伸：组件库的跨端复用、构建产物的多平台输出
-- [26-globalization.md](./26-globalization.md) —— 番外六，前端国际化是工程化的重要维度：i18n、文案管理、本地化构建
+- [21-multiplatform-architecture.md](./20-multiplatform-architecture.md) —— 正传 13，前端工程化向多端延伸：组件库的跨端复用、构建产物的多平台输出
+- [26-globalization.md](./24-globalization.md) —— 番外六，前端国际化是工程化的重要维度：i18n、文案管理、本地化构建
 
 ---
 

@@ -155,7 +155,7 @@ P6 是最关键的"主力 + 跳板"。
 ```
 
 → 即使 1 人 + Cursor 写完所有代码，仍需要 **2-3 个工程师 review / 测试 / 部署**。
-→ "团队人数 × AI 效率" 不等于 "产能"。[12.story/45](../../12.story/45-ai-productivity-paradox.md) 数据：AI Coding 工具当年渗透率 80%，但留存率 30%。
+→ "团队人数 × AI 效率" 不等于 "产能"。[12.story/45](../../12.story/43-ai-productivity-paradox.md) 数据：AI Coding 工具当年渗透率 80%，但留存率 30%。
 
 ### 修正 3：人才评估不再是"loc / 人 / 月"
 
@@ -249,7 +249,7 @@ SP-6（小）：0.5 天
 - 本系列：[app-quote-breakdown](../app-quote-breakdown/README.md) — 12 大成本拆解
 - 本系列：[self-vs-saas-vs-outsourcing](../self-vs-saas-vs-outsourcing/README.md) — 自研 / SaaS / 外包
 - 本系列：[ai-pm-dora-space](../ai-pm-dora-space/README.md) — DORA + SPACE + ROI
-- 故事章节：[`12.story/45-ai-productivity-paradox`](../../12.story/45-ai-productivity-paradox.md) — AI Coding 真实数据
+- 故事章节：[`12.story/43-ai-productivity-paradox`](../../12.story/43-ai-productivity-paradox.md) — AI Coding 真实数据
 - 故事章节：[`12.story/07-from-chef-to-ceo`](../../12.story/07-from-chef-to-ceo.md) — 组织管理康威定律
 
 ---

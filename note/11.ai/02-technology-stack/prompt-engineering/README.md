@@ -340,6 +340,6 @@ graph LR
 - 演进下一步：[Context Engineering](../context-engineering/README.md) — 范式二：给 LLM 提供完整上下文
 - 关联：[RAG](../../07-llmops/01-rag-vs-finetuning/README.md) — Prompt 工程在 RAG 中的应用
 - 面试深挖：[13.split-hairs Prompt Engineering](../../../13.split-hairs/11.ai/prompt-engineering/README.md) — 陷阱 + 反直觉 + 30 秒话术
-- 故事版：[12.story #42 Prompt 工程](../../../12.story/42-prompt-engineering.md) — 阿明餐厅叙事版
+- 故事版：[12.story #42 Prompt 工程](../../../12.story/40-prompt-engineering.md) — 阿明餐厅叙事版
 
 ← [返回: AI 知识体系 · prompt-engineering](README.md)

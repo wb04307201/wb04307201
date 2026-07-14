@@ -40,7 +40,7 @@ module:
 
 1. **决策类**：上云 vs 自建机房、微服务 vs 单体的"二次成本"
 2. **执行类**：需求变更控制（MoSCoW / RICE）、项目风险登记册
-3. **风险类**：技术债的财务账本（与 [12.story/46](../12.story/46-tech-debt-career-trap.md) 互补）
+3. **风险类**：技术债的财务账本（与 [12.story/46](../12.story/44-tech-debt-career-trap.md) 互补）
 4. **组织类**：远程团队 / 跨时区协作
 5. **AI 时代**：AI Agent 在 PM 流程中的嵌入（Harness / Verifier / Feedback 3 件套）
 
@@ -176,8 +176,8 @@ graph LR
 - 主模块：[`note/04.system-design`](../04.system-design/README.md) — 技术选型的底层支撑
 - 主模块：[`note/09.front-end`](../09.front-end/README.md) — 移动端跨端架构决策
 - 故事：[`note/12.story/07-from-chef-to-ceo`](../12.story/07-from-chef-to-ceo.md) — 团队管理叙事版
-- 故事：[`note/12.story/45-ai-productivity-paradox`](../12.story/45-ai-productivity-paradox.md) — AI 生产力悖论
-- 故事：[`note/12.story/46-tech-debt-career-trap`](../12.story/46-tech-debt-career-trap.md) — 技术债困局
+- 故事：[`note/12.story/43-ai-productivity-paradox`](../12.story/43-ai-productivity-paradox.md) — AI 生产力悖论
+- 故事：[`note/12.story/44-tech-debt-career-trap`](../12.story/44-tech-debt-career-trap.md) — 技术债困局
 - 面试专题：[`note/13.split-hairs`](../13.split-hairs/README.md) — 技术细节高频坑
 
 ---

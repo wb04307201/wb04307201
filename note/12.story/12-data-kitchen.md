@@ -311,26 +311,26 @@ graph TD
 - [阿明的省钱经](./14-cloud-finops.md) —— 云成本优化与 FinOps，120 万月账单如何降到 68 万
 - [差评危机](./15-incident-response.md) —— 故障复盘与应急响应，从手忙脚乱到 10 分钟止血的方法论
 - [外卖大战](./16-performance-optimization.md) —— 系统性能优化，3 秒生死线下的全链路优化实战
-- [传菜窗口的智慧](./20-realtime-eventdriven.md) —— 消息队列是数据管道的基础设施，事件溯源与数据流的异步传递
-- [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统中的数据一致性问题，10 个节点如何达成"同一个事实"
-- [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户数据架构，租户间的数据隔离与独立分析
-- [厨房实况直播](./20-realtime-eventdriven.md) —— 实时事件流是数据管道的新形态，从批处理到流处理的升级
-- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多端数据的汇聚和融合，不同渠道的数据如何统一入仓
-- [懂你的菜单](./22-search-recommendation.md) —— 搜索推荐依赖数据基础，用户行为数据是推荐算法的燃料
+- [传菜窗口的智慧](./19-realtime-eventdriven.md) —— 消息队列是数据管道的基础设施，事件溯源与数据流的异步传递
+- [十家店的烦恼](./17-distributed-puzzles.md) —— 分布式系统中的数据一致性问题，10 个节点如何达成"同一个事实"
+- [阿明的加盟帝国](./18-saas-multitenant.md) —— 多租户数据架构，租户间的数据隔离与独立分析
+- [厨房实况直播](./19-realtime-eventdriven.md) —— 实时事件流是数据管道的新形态，从批处理到流处理的升级
+- [一个厨房，四个门面](./20-multiplatform-architecture.md) —— 多端数据的汇聚和融合，不同渠道的数据如何统一入仓
+- [懂你的菜单](./21-search-recommendation.md) —— 搜索推荐依赖数据基础，用户行为数据是推荐算法的燃料
 - [菜谱标准化之路](./07-from-chef-to-ceo.md) —— 数据治理中的元数据管理和数据字典，是知识工程在数据领域的应用
-- [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移中的数据治理，迁移过程中的数据映射和转换
-- [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台的数据模型设计，可视化配置背后的数据结构
-- [阿明出海记](./26-globalization.md) —— 多区域数据架构，数据合规和跨境数据流动的管理
-- [厨房大换岗](./27-ai-org-transformation.md) —— AI 组织转型中的数据角色变化，数据团队从报表到 AI 训练数据
-- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业的数据基础，从第一天就建立数据驱动的决策文化
-- [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的传感器层依赖数据架构，数据质量决定 Agent 质量
-- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉与数据质量的关系，GIGO 原则在 AI 幻觉中同样适用
+- [仓库搬家不停业](./22-database-migration.md) —— 数据库迁移中的数据治理，迁移过程中的数据映射和转换
+- [预制菜还是现炒](./23-lowcode-platform.md) —— 低代码平台的数据模型设计，可视化配置背后的数据结构
+- [阿明出海记](./24-globalization.md) —— 多区域数据架构，数据合规和跨境数据流动的管理
+- [厨房大换岗](./25-ai-org-transformation.md) —— AI 组织转型中的数据角色变化，数据团队从报表到 AI 训练数据
+- [阿明的二次创业](./26-ai-native-startup.md) —— AI 原生创业的数据基础，从第一天就建立数据驱动的决策文化
+- [会自我进化的厨房](./27-self-evolving-company.md) —— Agent Loop 的传感器层依赖数据架构，数据质量决定 Agent 质量
+- [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) —— AI 幻觉与数据质量的关系，GIGO 原则在 AI 幻觉中同样适用
 
 ## 跨章节衔接
 
 - [10-api-design.md](./10-api-design.md) —— 正传 6，数据架构通过 API 对外提供服务：内聚数据模型与解耦 API 是良好架构的基础
-- [24-database-migration.md](./24-database-migration.md) —— 正传 14，数据架构演进的具体工程化：分库分表、数据迁移的策略
-- [18-distributed-puzzles.md](./18-distributed-puzzles.md) —— 正传 12，分布式数据一致性的难题：CAP 权衡在数据层的具体体现
+- [24-database-migration.md](./22-database-migration.md) —— 正传 14，数据架构演进的具体工程化：分库分表、数据迁移的策略
+- [18-distributed-puzzles.md](./17-distributed-puzzles.md) —— 正传 12，分布式数据一致性的难题：CAP 权衡在数据层的具体体现
 
 ---
 

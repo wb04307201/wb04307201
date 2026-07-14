@@ -11,7 +11,7 @@ module:
 
 > CTO / PM / 研发效能负责人都面对一个共同问题：**花 50 万买 AI Coding 工具，半年后真的"省了 80 万"吗？应该看哪些指标？**考察的是 **AI 时代的研发效能度量能力**，不是"AI Coding 好不好用"。
 
-> **前置知识**：[12.story/45-ai-productivity-paradox](../../12.story/45-ai-productivity-paradox.md)（Waydev/GitClear 数据真相）、[12.story/31-codebase-cognitive-debt](../../12.story/31-codebase-cognitive-debt.md)（认知债）、[13.split-hairs/09.front-end/this-binding](../../13.split-hairs/09.front-end/this-binding/README.md)等 AI 主题面试题。
+> **前置知识**：[12.story/43-ai-productivity-paradox](../../12.story/43-ai-productivity-paradox.md)（Waydev/GitClear 数据真相）、[12.story/29-codebase-cognitive-debt](../../12.story/29-codebase-cognitive-debt.md)（认知债）、[13.split-hairs/09.front-end/this-binding](../../13.split-hairs/09.front-end/this-binding/README.md)等 AI 主题面试题。
 
 ---
 
@@ -173,7 +173,7 @@ ROI = (业务价值 - 总投入) / 总投入 × 100%
 | **加快 release** | 提前上线的业务收益（GMV）|
 | **减少事故** | 减少的 P0 / P1 损失 |
 
-### 真实案例（用 [12.story/45](../../12.story/45-ai-productivity-paradox.md) 的数据）
+### 真实案例（用 [12.story/45](../../12.story/43-ai-productivity-paradox.md) 的数据）
 
 ```text
 公司半年盘点：
@@ -255,7 +255,7 @@ Waydev 数据：AI 代码采纳率
 
 - [ ] **DORA + SPACE + ROI 三件套全开**
 - [ ] **对外汇报** —— 让 CEO/CFO 看到"AI 投的钱真实回本"
-- [ ] **架构债 / 认知债** —— 同时看 [12.story/31-codebase-cognitive-debt](../../12.story/31-codebase-cognitive-debt.md)
+- [ ] **架构债 / 认知债** —— 同时看 [12.story/29-codebase-cognitive-debt](../../12.story/29-codebase-cognitive-debt.md)
 - [ ] **组织能力评估** —— 用 SPACE 中"沟通 / 协作"维度，结合 [12.story/07-from-chef-to-ceo](../../12.story/07-from-chef-to-ceo.md)
 
 ---
@@ -275,9 +275,9 @@ Waydev 数据：AI 代码采纳率
 ## 相关章节
 
 - 主模块：[`note/14.project-management`](../README.md)（项目管理主页）
-- 故事章节：[`12.story/45-ai-productivity-paradox`](../../12.story/45-ai-productivity-paradox.md) — Waydev/GitClear/Faros/Jellyfish 数据
-- 故事章节：[`12.story/31-codebase-cognitive-debt`](../../12.story/31-codebase-cognitive-debt.md) — AI 时代认知债
-- 故事章节：[`12.story/44-ai-engineer-responsibility`](../../12.story/44-ai-engineer-responsibility.md) — AI 责任金字塔
+- 故事章节：[`12.story/43-ai-productivity-paradox`](../../12.story/43-ai-productivity-paradox.md) — Waydev/GitClear/Faros/Jellyfish 数据
+- 故事章节：[`12.story/29-codebase-cognitive-debt`](../../12.story/29-codebase-cognitive-debt.md) — AI 时代认知债
+- 故事章节：[`12.story/42-ai-engineer-responsibility`](../../12.story/42-ai-engineer-responsibility.md) — AI 责任金字塔
 - 故事章节：[`12.story/07-from-chef-to-ceo`](../../12.story/07-from-chef-to-ceo.md) — 组织管理康威定律
 - 主模块：[`note/11.ai/03-engineering/harness-engineering`](../../11.ai/03-engineering/harness-engineering/README.md) — Harness 工程
 

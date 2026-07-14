@@ -26,35 +26,35 @@
 | 番外二 | [阿明的省钱经](./14-cloud-finops.md) | 云成本优化：120 万月账单降到 68 万 | 省钱不是抠门，是让每分钱花在刀刃上 |
 | 正传 9 | [差评危机](./15-incident-response.md) | 故障应急：从手忙脚乱到 10 分钟止血 | 故障不是意外，准备越充分故障越不可怕 |
 | 正传 10 | [外卖大战](./16-performance-optimization.md) | 性能优化：3 秒生死线下的全链路优化 | 先度量再优化，先系统级再代码级 |
-| 正传 11 | [厨房实况直播](./20-realtime-eventdriven.md) | 异步消息+事件驱动：从 MQ 解耦到 EDA，从事件溯源到 CDC 流处理，让数据自己在系统中流动 | 让等待发生在窗口后面，让数据自己在系统中流动 |
-| 正传 12 | [十家店的烦恼](./18-distributed-puzzles.md) | 分布式难题：CAP、锁、幂等、脑裂，一家店好管十家店全是坑 | 分布式没有银弹，只有取舍 |
-| 番外三 | [阿明的加盟帝国](./19-saas-multitenant.md) | 多租户 SaaS：一套系统服务多个租户，隔离与共享的艺术 | 共享是效率，隔离是底线 |
-| 正传 13 | [一个厨房，四个门面](./21-multiplatform-architecture.md) | 多端架构：BFF + 跨平台 + 离线优先，一套后端四个入口 | 后端统一，前端因地制宜 |
-| 番外四 | [懂你的菜单](./22-search-recommendation.md) | 搜索推荐：倒排索引 + 协同过滤，让系统比顾客更懂自己 | 好的推荐是隐形的服务 |
-| 正传 14 | [仓库搬家不停业](./24-database-migration.md) | 数据库迁移：在线 DDL + 双写 + 影子表，换引擎不停车 | 迁移的风险不在于技术，在于信心 |
-| 番外五 | [预制菜还是现炒](./25-lowcode-platform.md) | 低代码：标准化快速搭建 vs 灵活自主开发，留好逃生通道 | 平台的边界就是自由的起点 |
-| 番外六 | [阿明出海记](./26-globalization.md) | 国际化：i18n + 时区 + 多币种 + 数据合规，出海不是翻译是合规 | 合规不是成本，是入场券 |
-| 续集三 | [厨房大换岗](./27-ai-org-transformation.md) | AI 组织转型：自动化是换岗不是省人，裁员 = 欠技术债 | AI 不是替你把人变少，而是让你的人变强 |
-| 续集四 | [阿明的二次创业](./28-ai-native-startup.md) | AI 原生创业：构思→MVP→发布→规模化，创始人从执行到编排 | 用 AI 放大判断力，而非替代判断力 |
-| 续集五 | [会自我进化的厨房](./29-self-evolving-company.md) | 自进化组织：Agent Loop 五层循环，公司睡觉时也在变好 | 烧 Token，不烧人头 |
-| 续集六 | [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) | AI 信任校准：幻觉分类 + 三层护栏 + HITL，自信地做错最危险 | AI 的信任度应该像新员工的试用期 |
-| 续集七 | [Codebase 认知债](./31-codebase-cognitive-debt.md) | 认知债：规模/一致性/时序/隐式 4 大来源，AI 时代的隐形负债 | 代码能跑只是及格，能被理解才能传承 |
-| 续集八 | [Agent Harness](./32-agent-harness.md) | Harness：Context 治理 + Tool 设计 + Guardrails + Eval，让 AI 从能用到好用 | 没有 Harness，Agent 只是更快的 Bug 制造机 |
-| 续集九 | [AI 致命三件套](./33-ai-fatal-trio.md) | 致命三件套：注入 + 越权 + 泄露，单独 P0 组合一次攻击致命 | 防御不能依赖单一防线，必须纵深防御 + 红队 + AI BOM |
-| 续集十 | [AI 评测工程（基础篇）](./34a-ai-evaluation-fundamentals.md) / [（流水线篇）](./34b-ai-evaluation-pipeline.md) | 评测 = 6 大维度 + 黄金集 + LLM-as-Judge + 5 层流水线 + 红队 + A/B 的闭环工程 | 看不见的成本最可怕，看得见的优化最有效 |
-| 续集十一 a | [MCP 协议（基础篇）](./35a-mcp-protocol.md) | MCP（Model Context Protocol，USB-C）：让 LLM 统一接入"任何工具/任何数据源"，N×M 变 N+M | 不上协议 Agent 就是孤岛，工具永远碎片化 |
-| 续集十一 b | [A2A 协议（进阶篇）](./35b-a2a-protocol.md) | A2A（Agent-to-Agent，SMTP）：让不同厂商的 Agent 互相发现、通信、协作 | 工具能调用是基础，Agent 协同才是群体智能 |
-| 续集十二 | [AI 成本经济学（结构篇）](./36a-ai-token-cost-structure.md) / [（优化篇）](./36b-ai-token-cost-optimization.md) | Token 经济学：6 大组件 + 4 大陷阱 + 5 层路由 + 3 级缓存 + 4 策略压缩 | Token 不会撕账单，但月底会 |
-| 续集十三 | [AI 可观测性](./37-ai-observability.md) | 传统 3 支柱 + AI 特有 4 支柱 = 7 大支柱，让 AI 系统自己告诉你哪里出了问题 | AI 可观测性不是"加分项"，是"入场券" |
-| 续集十四 | [RAG 检索增强生成](./38-rag-retrieval-augmented-generation.md) | 检索 + 增强 + 生成：5 大环节 + 7 大模式，让 AI 基于事实回答 | LLM 没有事实性，RAG 是答案 |
-| 续集十五 | [向量数据库与 Embedding 实战](./39-vector-database-and-embedding.md) | 6 大向量库 + Embedding 选型 + 4 大调优 + 成本监控 | 向量库是 RAG 的"心脏"，不是"附件" |
-| 续集十六 | [AI 合规与监管](./40-ai-compliance-and-regulation.md) | EU AI Act + 中国办法 + GDPR + 4 大支柱 + 4 大体系 + 5 大风险 | 合规不是成本，是商业护城河 |
-| 续集十七 | [AI 模型私有化部署](./41-ai-private-deployment.md) | 5 大形态 + 4 大推理框架 + AWQ/INT4 + LoRA + 5 年 TCO | 短期 API、中期混合、长期核心私有化 |
-| 番外七 | [Prompt 工程深度专题](./42-prompt-engineering.md) | 10 大模式 + 7 大技术 + 4 大优化 + 4 大模板库 + 5 大安全防御 | 每次调整 1 个变量，做 1000 次实验，看数据说话 |
-| 番外八 | [多模态 AI 应用工程](./43-multimodal-ai.md) | 5 大模态 + 3 大融合 + 6 大模型 + 5 大场景 + 5 大挑战 + 评测 | 单模态 LLM 将被淘汰，多模态是入场券 |
-| 续集十八 | [AI 替你写代码，谁替系统负责](./44-ai-engineer-responsibility.md) | 系统责任金字塔 + 4 大岗位重定义 + 6 大新岗位 | AI 是最好的工具，但它不是工程师 |
-| 续集十九 | [AI 提速 3 倍，交付反而慢了](./45-ai-productivity-paradox.md) | 4 大研究数据 + DORA 放大器理论 + 资深 vs 初级鸿沟 | 不要被 AI 的数量迷惑，要看 AI 的价值 |
-| 续集二十 | [你接手的烂代码，正在决定你哪天被淘汰](./46-tech-debt-career-trap.md) | 技术债复利 + 4 判断标准 + 4 增值动作 + 该不该跑决策 | 救火 3 年不如建设 1 年 |
+| 正传 11 | [厨房实况直播](./19-realtime-eventdriven.md) | 异步消息+事件驱动：从 MQ 解耦到 EDA，从事件溯源到 CDC 流处理，让数据自己在系统中流动 | 让等待发生在窗口后面，让数据自己在系统中流动 |
+| 正传 12 | [十家店的烦恼](./17-distributed-puzzles.md) | 分布式难题：CAP、锁、幂等、脑裂，一家店好管十家店全是坑 | 分布式没有银弹，只有取舍 |
+| 番外三 | [阿明的加盟帝国](./18-saas-multitenant.md) | 多租户 SaaS：一套系统服务多个租户，隔离与共享的艺术 | 共享是效率，隔离是底线 |
+| 正传 13 | [一个厨房，四个门面](./20-multiplatform-architecture.md) | 多端架构：BFF + 跨平台 + 离线优先，一套后端四个入口 | 后端统一，前端因地制宜 |
+| 番外四 | [懂你的菜单](./21-search-recommendation.md) | 搜索推荐：倒排索引 + 协同过滤，让系统比顾客更懂自己 | 好的推荐是隐形的服务 |
+| 正传 14 | [仓库搬家不停业](./22-database-migration.md) | 数据库迁移：在线 DDL + 双写 + 影子表，换引擎不停车 | 迁移的风险不在于技术，在于信心 |
+| 番外五 | [预制菜还是现炒](./23-lowcode-platform.md) | 低代码：标准化快速搭建 vs 灵活自主开发，留好逃生通道 | 平台的边界就是自由的起点 |
+| 番外六 | [阿明出海记](./24-globalization.md) | 国际化：i18n + 时区 + 多币种 + 数据合规，出海不是翻译是合规 | 合规不是成本，是入场券 |
+| 续集三 | [厨房大换岗](./25-ai-org-transformation.md) | AI 组织转型：自动化是换岗不是省人，裁员 = 欠技术债 | AI 不是替你把人变少，而是让你的人变强 |
+| 续集四 | [阿明的二次创业](./26-ai-native-startup.md) | AI 原生创业：构思→MVP→发布→规模化，创始人从执行到编排 | 用 AI 放大判断力，而非替代判断力 |
+| 续集五 | [会自我进化的厨房](./27-self-evolving-company.md) | 自进化组织：Agent Loop 五层循环，公司睡觉时也在变好 | 烧 Token，不烧人头 |
+| 续集六 | [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) | AI 信任校准：幻觉分类 + 三层护栏 + HITL，自信地做错最危险 | AI 的信任度应该像新员工的试用期 |
+| 续集七 | [Codebase 认知债](./29-codebase-cognitive-debt.md) | 认知债：规模/一致性/时序/隐式 4 大来源，AI 时代的隐形负债 | 代码能跑只是及格，能被理解才能传承 |
+| 续集八 | [Agent Harness](./30-agent-harness.md) | Harness：Context 治理 + Tool 设计 + Guardrails + Eval，让 AI 从能用到好用 | 没有 Harness，Agent 只是更快的 Bug 制造机 |
+| 续集九 | [AI 致命三件套](./31-ai-fatal-trio.md) | 致命三件套：注入 + 越权 + 泄露，单独 P0 组合一次攻击致命 | 防御不能依赖单一防线，必须纵深防御 + 红队 + AI BOM |
+| 续集十 | [AI 评测工程（基础篇）](./32a-ai-evaluation-fundamentals.md) / [（流水线篇）](./32b-ai-evaluation-pipeline.md) | 评测 = 6 大维度 + 黄金集 + LLM-as-Judge + 5 层流水线 + 红队 + A/B 的闭环工程 | 看不见的成本最可怕，看得见的优化最有效 |
+| 续集十一 a | [MCP 协议（基础篇）](./33a-mcp-protocol.md) | MCP（Model Context Protocol，USB-C）：让 LLM 统一接入"任何工具/任何数据源"，N×M 变 N+M | 不上协议 Agent 就是孤岛，工具永远碎片化 |
+| 续集十一 b | [A2A 协议（进阶篇）](./33b-a2a-protocol.md) | A2A（Agent-to-Agent，SMTP）：让不同厂商的 Agent 互相发现、通信、协作 | 工具能调用是基础，Agent 协同才是群体智能 |
+| 续集十二 | [AI 成本经济学（结构篇）](./34a-ai-token-cost-structure.md) / [（优化篇）](./34b-ai-token-cost-optimization.md) | Token 经济学：6 大组件 + 4 大陷阱 + 5 层路由 + 3 级缓存 + 4 策略压缩 | Token 不会撕账单，但月底会 |
+| 续集十三 | [AI 可观测性](./35-ai-observability.md) | 传统 3 支柱 + AI 特有 4 支柱 = 7 大支柱，让 AI 系统自己告诉你哪里出了问题 | AI 可观测性不是"加分项"，是"入场券" |
+| 续集十四 | [RAG 检索增强生成](./36-rag-retrieval-augmented-generation.md) | 检索 + 增强 + 生成：5 大环节 + 7 大模式，让 AI 基于事实回答 | LLM 没有事实性，RAG 是答案 |
+| 续集十五 | [向量数据库与 Embedding 实战](./37-vector-database-and-embedding.md) | 6 大向量库 + Embedding 选型 + 4 大调优 + 成本监控 | 向量库是 RAG 的"心脏"，不是"附件" |
+| 续集十六 | [AI 合规与监管](./38-ai-compliance-and-regulation.md) | EU AI Act + 中国办法 + GDPR + 4 大支柱 + 4 大体系 + 5 大风险 | 合规不是成本，是商业护城河 |
+| 续集十七 | [AI 模型私有化部署](./39-ai-private-deployment.md) | 5 大形态 + 4 大推理框架 + AWQ/INT4 + LoRA + 5 年 TCO | 短期 API、中期混合、长期核心私有化 |
+| 番外七 | [Prompt 工程深度专题](./40-prompt-engineering.md) | 10 大模式 + 7 大技术 + 4 大优化 + 4 大模板库 + 5 大安全防御 | 每次调整 1 个变量，做 1000 次实验，看数据说话 |
+| 番外八 | [多模态 AI 应用工程](./41-multimodal-ai.md) | 5 大模态 + 3 大融合 + 6 大模型 + 5 大场景 + 5 大挑战 + 评测 | 单模态 LLM 将被淘汰，多模态是入场券 |
+| 续集十八 | [AI 替你写代码，谁替系统负责](./42-ai-engineer-responsibility.md) | 系统责任金字塔 + 4 大岗位重定义 + 6 大新岗位 | AI 是最好的工具，但它不是工程师 |
+| 续集十九 | [AI 提速 3 倍，交付反而慢了](./43-ai-productivity-paradox.md) | 4 大研究数据 + DORA 放大器理论 + 资深 vs 初级鸿沟 | 不要被 AI 的数量迷惑，要看 AI 的价值 |
+| 续集二十 | [你接手的烂代码，正在决定你哪天被淘汰](./44-tech-debt-career-trap.md) | 技术债复利 + 4 判断标准 + 4 增值动作 + 该不该跑决策 | 救火 3 年不如建设 1 年 |
 
 ---
 

@@ -307,20 +307,20 @@ graph TD
 - [阿明的省钱经](./14-cloud-finops.md) —— 云成本优化与 FinOps，120 万月账单如何降到 68 万
 - [差评危机](./15-incident-response.md) —— 故障复盘与应急响应，从手忙脚乱到 10 分钟止血的方法论
 - [外卖大战](./16-performance-optimization.md) —— 系统性能优化，3 秒生死线下的全链路优化实战
-- [传菜窗口的智慧](./20-realtime-eventdriven.md) —— 消息队列的安全性：消息加密、防窃听、防重复消费
-- [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统中的拜占庭问题，节点间通信的安全与防篡改
-- [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户数据隔离是安全架构在 SaaS 场景的延伸
-- [厨房实况直播](./20-realtime-eventdriven.md) —— 实时推送消息的认证和授权，防止未授权的 WebSocket 连接
-- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多端渠道的安全统一管理，不同客户端的认证方式差异
-- [懂你的菜单](./22-search-recommendation.md) —— 搜索推荐系统中的用户隐私保护，推荐数据的脱敏处理
+- [传菜窗口的智慧](./19-realtime-eventdriven.md) —— 消息队列的安全性：消息加密、防窃听、防重复消费
+- [十家店的烦恼](./17-distributed-puzzles.md) —— 分布式系统中的拜占庭问题，节点间通信的安全与防篡改
+- [阿明的加盟帝国](./18-saas-multitenant.md) —— 多租户数据隔离是安全架构在 SaaS 场景的延伸
+- [厨房实况直播](./19-realtime-eventdriven.md) —— 实时推送消息的认证和授权，防止未授权的 WebSocket 连接
+- [一个厨房，四个门面](./20-multiplatform-architecture.md) —— 多端渠道的安全统一管理，不同客户端的认证方式差异
+- [懂你的菜单](./21-search-recommendation.md) —— 搜索推荐系统中的用户隐私保护，推荐数据的脱敏处理
 - [菜谱标准化之路](./07-from-chef-to-ceo.md) —— 安全知识的文档化管理，安全规范和应急响应手册的版本控制
-- [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移中的数据安全，迁移过程中的加密和权限保障
-- [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台的安全挑战：恶意配置防护、沙箱隔离、权限管控
-- [阿明出海记](./26-globalization.md) —— GDPR/APPI 等数据合规法规，是安全架构的法律层面
-- [厨房大换岗](./27-ai-org-transformation.md) —— AI 转型中的权限重设计，岗位变化需要同步调整访问控制
-- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业的安全基线，从第一天就建立 AI 安全实践
-- [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的安全策略层，Agent 的权限边界和安全过滤
-- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉是新的安全挑战，幻觉护栏是安全架构在 AI 时代的延伸
+- [仓库搬家不停业](./22-database-migration.md) —— 数据库迁移中的数据安全，迁移过程中的加密和权限保障
+- [预制菜还是现炒](./23-lowcode-platform.md) —— 低代码平台的安全挑战：恶意配置防护、沙箱隔离、权限管控
+- [阿明出海记](./24-globalization.md) —— GDPR/APPI 等数据合规法规，是安全架构的法律层面
+- [厨房大换岗](./25-ai-org-transformation.md) —— AI 转型中的权限重设计，岗位变化需要同步调整访问控制
+- [阿明的二次创业](./26-ai-native-startup.md) —— AI 原生创业的安全基线，从第一天就建立 AI 安全实践
+- [会自我进化的厨房](./27-self-evolving-company.md) —— Agent Loop 的安全策略层，Agent 的权限边界和安全过滤
+- [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) —— AI 幻觉是新的安全挑战，幻觉护栏是安全架构在 AI 时代的延伸
 
 ## 跨章节衔接
 

@@ -293,7 +293,7 @@ vs Google TPU v5：
 - [千亿级向量检索架构](../vector-search-at-scale/README.md)
 
 **12.story 实战**：
-- [12.story/39-vector-database-and-embedding（味道仓库 第十章反向链）](../../../12.story/39-vector-database-and-embedding.md)
+- [12.story/37-vector-database-and-embedding（味道仓库 第十章反向链）](../../../12.story/37-vector-database-and-embedding.md)
 
 **驾驭演进视角**：
 - [11.ai/04-architecture/llm-control-evolution](../../04-architecture/llm-control-evolution/README.md)

@@ -361,7 +361,7 @@ QPS：10K
 - [咬文嚼字·11.ai/vector-search-algorithms（30/60/90 秒话术）](../../../13.split-hairs/11.ai/vector-search-algorithms/README.md)
 
 **12.story 实战**：
-- [12.story/39-vector-database-and-embedding（味道仓库 4 大调优）](../../../12.story/39-vector-database-and-embedding.md)
+- [12.story/37-vector-database-and-embedding（味道仓库 4 大调优）](../../../12.story/37-vector-database-and-embedding.md)
 
 **同主模块**：
 - [Context Engineering（Context 三件套）](../context-engineering/README.md)

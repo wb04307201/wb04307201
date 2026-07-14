@@ -216,7 +216,7 @@ ROI = (业务价值 - TCO) / TCO × 100%
 
 ### 变量 2：AI 训练/推理的额外成本
 
-- 自研若用 LLM：**推理成本 × 调用次数**（参考 [12.story/36a](../../12.story/36a-ai-token-cost-structure.md)）
+- 自研若用 LLM：**推理成本 × 调用次数**（参考 [12.story/36a](../../12.story/34a-ai-token-cost-structure.md)）
 - SaaS 通常含 LLM：成本打包进订阅费
 - 外包不能碰 LLM：**经常需要二次开发**
 
@@ -257,7 +257,7 @@ ROI = (业务价值 - TCO) / TCO × 100%
 - 本系列：[outsourcing-pitfalls](../outsourcing-pitfalls/README.md) — 外包避坑
 - 主模块：[`09.front-end/08-cross-platform/mobile-tech-stack`](../../09.front-end/08-cross-platform/mobile-tech-stack/README.md) — 前端跨端选型
 - 主模块：[`note/04.system-design`](../../04.system-design/README.md) — 系统设计架构基线
-- 故事章节：[`12.story/45-ai-productivity-paradox`](../../12.story/45-ai-productivity-paradox.md) — AI Coding ROI 数据
+- 故事章节：[`12.story/43-ai-productivity-paradox`](../../12.story/43-ai-productivity-paradox.md) — AI Coding ROI 数据
 - 面试专题：[`13.split-hairs/06.spring/transactional-pitfalls`](../../13.split-hairs/06.spring/transactional-pitfalls/README.md) — 工程实践细节
 
 ---

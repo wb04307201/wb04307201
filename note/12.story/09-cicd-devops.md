@@ -395,26 +395,26 @@ graph LR
 - [阿明的省钱经](./14-cloud-finops.md) —— 云成本优化与 FinOps，120 万月账单如何降到 68 万
 - [差评危机](./15-incident-response.md) —— 故障复盘与应急响应，从手忙脚乱到 10 分钟止血的方法论
 - [外卖大战](./16-performance-optimization.md) —— 系统性能优化，3 秒生死线下的全链路优化实战
-- [传菜窗口的智慧](./20-realtime-eventdriven.md) —— 消息队列的部署和运维，Broker 的高可用部署策略
-- [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统的持续部署，多节点的协调发布和一致性保障
-- [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户 SaaS 的持续交付，租户级别的灰度发布策略
-- [厨房实况直播](./20-realtime-eventdriven.md) —— 实时系统的部署挑战，WebSocket 服务升级不能中断连接
-- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多端应用的 CI/CD，多个客户端的协调发布和版本管理
-- [懂你的菜单](./22-search-recommendation.md) —— 搜索推荐模型的 MLOps，算法更新通过流水线自动上线
+- [传菜窗口的智慧](./19-realtime-eventdriven.md) —— 消息队列的部署和运维，Broker 的高可用部署策略
+- [十家店的烦恼](./17-distributed-puzzles.md) —— 分布式系统的持续部署，多节点的协调发布和一致性保障
+- [阿明的加盟帝国](./18-saas-multitenant.md) —— 多租户 SaaS 的持续交付，租户级别的灰度发布策略
+- [厨房实况直播](./19-realtime-eventdriven.md) —— 实时系统的部署挑战，WebSocket 服务升级不能中断连接
+- [一个厨房，四个门面](./20-multiplatform-architecture.md) —— 多端应用的 CI/CD，多个客户端的协调发布和版本管理
+- [懂你的菜单](./21-search-recommendation.md) —— 搜索推荐模型的 MLOps，算法更新通过流水线自动上线
 - [菜谱标准化之路](./07-from-chef-to-ceo.md) —— 技术文档的版本管理，Docs as Code 让文档也纳入 CI/CD
-- [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移的自动化，Schema 变更的在线发布和回滚策略
-- [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台的发布流程，配置和代码的联合部署
-- [阿明出海记](./26-globalization.md) —— 多区域部署的 CI/CD，跨区域发布的时区选择和时间窗口
-- [厨房大换岗](./27-ai-org-transformation.md) —— AI 转型对 CI/CD 流程的影响，新的角色需要新的交付流程
-- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业的快速迭代，AI 辅助的 CI/CD 加速 MVP 到发布
-- [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的自动部署能力，Agent 可以自主提交和部署修复
-- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 输出的质量验证纳入 CI/CD，AI 产物的自动化校验流水线
+- [仓库搬家不停业](./22-database-migration.md) —— 数据库迁移的自动化，Schema 变更的在线发布和回滚策略
+- [预制菜还是现炒](./23-lowcode-platform.md) —— 低代码平台的发布流程，配置和代码的联合部署
+- [阿明出海记](./24-globalization.md) —— 多区域部署的 CI/CD，跨区域发布的时区选择和时间窗口
+- [厨房大换岗](./25-ai-org-transformation.md) —— AI 转型对 CI/CD 流程的影响，新的角色需要新的交付流程
+- [阿明的二次创业](./26-ai-native-startup.md) —— AI 原生创业的快速迭代，AI 辅助的 CI/CD 加速 MVP 到发布
+- [会自我进化的厨房](./27-self-evolving-company.md) —— Agent Loop 的自动部署能力，Agent 可以自主提交和部署修复
+- [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) —— AI 输出的质量验证纳入 CI/CD，AI 产物的自动化校验流水线
 
 ## 跨章节衔接
 
 - [08-qa-testing-strategy.md](./08-qa-testing-strategy.md) —— 正传 4，CI/CD 是测试自动化的执行载体：测试用例靠流水线串起来才有价值
 - [10-api-design.md](./10-api-design.md) —— 正传 6，API 版本管理与向后兼容的 CI/CD 自动化：契约测试在流水线中的位置
-- [29-self-evolving-company.md](./29-self-evolving-company.md) —— 续集五，CI/CD 是自进化组织的"血液循环"：让变更可被持续、低风险地推送
+- [29-self-evolving-company.md](./27-self-evolving-company.md) —— 续集五，CI/CD 是自进化组织的"血液循环"：让变更可被持续、低风险地推送
 
 ---
 

@@ -427,26 +427,26 @@ graph TD
 - [阿明的省钱经](./14-cloud-finops.md) —— 云成本优化与 FinOps，120 万月账单如何降到 68 万
 - [差评危机](./15-incident-response.md) —— 故障复盘与应急响应，从手忙脚乱到 10 分钟止血的方法论
 - [外卖大战](./16-performance-optimization.md) —— 系统性能优化，3 秒生死线下的全链路优化实战
-- [传菜窗口的智慧](./20-realtime-eventdriven.md) —— 消息队列是流量治理中"队列削峰"的技术实现细节
-- [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统中的限流和幂等性问题，与流量治理密切相关
-- [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户场景的流量隔离，防止一个租户的流量洪峰影响其他租户
-- [厨房实况直播](./20-realtime-eventdriven.md) —— 实时推送替代轮询，用更高效的方式应对突发流量
-- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多端接入需要考虑不同渠道的流量特征和限流策略
-- [懂你的菜单](./22-search-recommendation.md) —— 搜索推荐系统的降级策略，高峰期关闭个性化计算节省资源
+- [传菜窗口的智慧](./19-realtime-eventdriven.md) —— 消息队列是流量治理中"队列削峰"的技术实现细节
+- [十家店的烦恼](./17-distributed-puzzles.md) —— 分布式系统中的限流和幂等性问题，与流量治理密切相关
+- [阿明的加盟帝国](./18-saas-multitenant.md) —— 多租户场景的流量隔离，防止一个租户的流量洪峰影响其他租户
+- [厨房实况直播](./19-realtime-eventdriven.md) —— 实时推送替代轮询，用更高效的方式应对突发流量
+- [一个厨房，四个门面](./20-multiplatform-architecture.md) —— 多端接入需要考虑不同渠道的流量特征和限流策略
+- [懂你的菜单](./21-search-recommendation.md) —— 搜索推荐系统的降级策略，高峰期关闭个性化计算节省资源
 - [菜谱标准化之路](./07-from-chef-to-ceo.md) —— 流量治理的限流阈值和降级规则需要标准化文档记录
-- [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移要避开流量高峰，迁移过程中的流量切换策略
-- [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台的活动页面可能成为流量爆点，需要纳入流量治理体系
-- [阿明出海记](./26-globalization.md) —— 多区域部署的流量治理，不同时区的高峰时段不同，需要独立的限流策略
-- [厨房大换岗](./27-ai-org-transformation.md) —— AI 系统上线后的流量特征变化，人机协同对流量模型的影响
-- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业的流量准备，从 MVP 到规模化的流量治理演进
-- [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 自动化的流量预测和弹性伸缩决策
-- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉导致的异常流量风险，错误推荐可能引发突发流量
+- [仓库搬家不停业](./22-database-migration.md) —— 数据库迁移要避开流量高峰，迁移过程中的流量切换策略
+- [预制菜还是现炒](./23-lowcode-platform.md) —— 低代码平台的活动页面可能成为流量爆点，需要纳入流量治理体系
+- [阿明出海记](./24-globalization.md) —— 多区域部署的流量治理，不同时区的高峰时段不同，需要独立的限流策略
+- [厨房大换岗](./25-ai-org-transformation.md) —— AI 系统上线后的流量特征变化，人机协同对流量模型的影响
+- [阿明的二次创业](./26-ai-native-startup.md) —— AI 原生创业的流量准备，从 MVP 到规模化的流量治理演进
+- [会自我进化的厨房](./27-self-evolving-company.md) —— Agent Loop 自动化的流量预测和弹性伸缩决策
+- [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) —— AI 幻觉导致的异常流量风险，错误推荐可能引发突发流量
 
 ## 跨章节衔接
 
 - [05-observability.md](./05-observability.md) —— 正传 2，流量治理的效果需要可观测性验证：限流后的真实流量分布、熔断触发频次
 - [15-incident-response.md](./15-incident-response.md) —— 正传 9，流量治理与故障应急是同一硬币的两面：限流是事前防御，应急是事后止血
-- [32-agent-harness.md](./32-agent-harness.md) —— 续集八，AI Agent 高并发调用的流量治理：Token 限流、并发控制、调用链追踪
+- [32-agent-harness.md](./30-agent-harness.md) —— 续集八，AI Agent 高并发调用的流量治理：Token 限流、并发控制、调用链追踪
 
 ---
 

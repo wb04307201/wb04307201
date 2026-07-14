@@ -403,20 +403,20 @@ graph LR
 - [阿明的省钱经](./14-cloud-finops.md) —— 云成本优化与 FinOps，120 万月账单如何降到 68 万
 - [差评危机](./15-incident-response.md) —— 故障复盘与应急响应，从手忙脚乱到 10 分钟止血的方法论
 - [外卖大战](./16-performance-optimization.md) —— 系统性能优化，3 秒生死线下的全链路优化实战
-- [传菜窗口的智慧](./20-realtime-eventdriven.md) —— 消息队列的监控指标：积压量、消费延迟、死信队列是可观测性的重要数据源
-- [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统中的链路追踪更加复杂，跨节点的可观测性挑战
-- [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户的可观测性隔离，每个租户只能看到自己的监控数据
-- [厨房实况直播](./20-realtime-eventdriven.md) —— 实时系统的可观测性：WebSocket 连接数、消息延迟、推送成功率
-- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多端性能监控，RUM（真实用户监控）覆盖不同客户端
-- [懂你的菜单](./22-search-recommendation.md) —— 搜索推荐系统的效果监控：搜索准确率、推荐点击率、A/B 测试指标
+- [传菜窗口的智慧](./19-realtime-eventdriven.md) —— 消息队列的监控指标：积压量、消费延迟、死信队列是可观测性的重要数据源
+- [十家店的烦恼](./17-distributed-puzzles.md) —— 分布式系统中的链路追踪更加复杂，跨节点的可观测性挑战
+- [阿明的加盟帝国](./18-saas-multitenant.md) —— 多租户的可观测性隔离，每个租户只能看到自己的监控数据
+- [厨房实况直播](./19-realtime-eventdriven.md) —— 实时系统的可观测性：WebSocket 连接数、消息延迟、推送成功率
+- [一个厨房，四个门面](./20-multiplatform-architecture.md) —— 多端性能监控，RUM（真实用户监控）覆盖不同客户端
+- [懂你的菜单](./21-search-recommendation.md) —— 搜索推荐系统的效果监控：搜索准确率、推荐点击率、A/B 测试指标
 - [菜谱标准化之路](./07-from-chef-to-ceo.md) —— 监控文档和 Runbook 是知识工程的一部分，告警规则也需要标准化
-- [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移过程中的可观测性：数据一致性校验、迁移进度监控
-- [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台本身的可观测性：生成的页面性能、用户行为分析
-- [阿明出海记](./26-globalization.md) —— 多区域部署的监控挑战：跨区域延迟、时区差异对告警的影响
-- [厨房大换岗](./27-ai-org-transformation.md) —— AI 组织转型的度量体系，用可观测性数据验证转型效果
-- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业的可观测性建设，从一开始就建立数据驱动决策
-- [会自我进化的厨房](./29-self-evolving-company.md) —— 监控 Agent 是可观测性的组织级应用，从监控指标到监控决策
-- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉的监控和告警，可观测性是发现 AI 错误的第一道防线
+- [仓库搬家不停业](./22-database-migration.md) —— 数据库迁移过程中的可观测性：数据一致性校验、迁移进度监控
+- [预制菜还是现炒](./23-lowcode-platform.md) —— 低代码平台本身的可观测性：生成的页面性能、用户行为分析
+- [阿明出海记](./24-globalization.md) —— 多区域部署的监控挑战：跨区域延迟、时区差异对告警的影响
+- [厨房大换岗](./25-ai-org-transformation.md) —— AI 组织转型的度量体系，用可观测性数据验证转型效果
+- [阿明的二次创业](./26-ai-native-startup.md) —— AI 原生创业的可观测性建设，从一开始就建立数据驱动决策
+- [会自我进化的厨房](./27-self-evolving-company.md) —— 监控 Agent 是可观测性的组织级应用，从监控指标到监控决策
+- [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) —— AI 幻觉的监控和告警，可观测性是发现 AI 错误的第一道防线
 
 ## 跨章节衔接
 

@@ -65,20 +65,20 @@ module:
 
 | 主题 | 文章 | 一句话 |
 |------|------|--------|
-| 异步+事件驱动 | [正传 11](./20-realtime-eventdriven.md) | 让数据在系统中流动 |
-| 分布式难题 | [正传 12](./18-distributed-puzzles.md) | CAP、锁、幂等、脑裂 |
-| 多端架构 | [正传 13](./21-multiplatform-architecture.md) | BFF + 跨平台 |
-| 数据库迁移 | [正传 14](./24-database-migration.md) | 换仓库不停业 |
+| 异步+事件驱动 | [正传 11](./19-realtime-eventdriven.md) | 让数据在系统中流动 |
+| 分布式难题 | [正传 12](./17-distributed-puzzles.md) | CAP、锁、幂等、脑裂 |
+| 多端架构 | [正传 13](./20-multiplatform-architecture.md) | BFF + 跨平台 |
+| 数据库迁移 | [正传 14](./22-database-migration.md) | 换仓库不停业 |
 
 ### 🟥 组织管理 + ⚪ 番外 + 🟣 AI 时代
 
 | 主题 | 文章 |
 |------|------|
 | 终章 - 从厨师到 CEO | [07](./07-from-chef-to-ceo.md) |
-| 番外 1-6（传统） | [03 重构](./03-refactoring-guide-for-pm.md) / [14 云成本](./14-cloud-finops.md) / [19 SaaS](./19-saas-multitenant.md) / [22 搜索](./22-search-recommendation.md) / [25 低代码](./25-lowcode-platform.md) / [26 国际化](./26-globalization.md) |
-| 番外 7-8（AI） | [42 Prompt](./42-prompt-engineering.md) / [43 多模态](./43-multimodal-ai.md) |
+| 番外 1-6（传统） | [03 重构](./03-refactoring-guide-for-pm.md) / [14 云成本](./14-cloud-finops.md) / [19 SaaS](./18-saas-multitenant.md) / [22 搜索](./21-search-recommendation.md) / [25 低代码](./23-lowcode-platform.md) / [26 国际化](./24-globalization.md) |
+| 番外 7-8（AI） | [42 Prompt](./40-prompt-engineering.md) / [43 多模态](./41-multimodal-ai.md) |
 | 续集 1-17（AI 时代） | [01-41 续集](./README.md#全部四十六篇文章) |
-| **续集 18-20**（AI 责任 / 数据真相 / 个人困局） | **[44 谁负责](./44-ai-engineer-responsibility.md) / [45 生产力](./45-ai-productivity-paradox.md) / [46 困局](./46-tech-debt-career-trap.md)** |
+| **续集 18-20**（AI 责任 / 数据真相 / 个人困局） | **[44 谁负责](./42-ai-engineer-responsibility.md) / [45 生产力](./43-ai-productivity-paradox.md) / [46 困局](./44-tech-debt-career-trap.md)** |
 
 ---
 
@@ -86,9 +86,9 @@ module:
 
 | 主题 | 文章 | 核心问题 |
 |------|------|---------|
-| 🔥 **AI 责任** | [44 谁替系统负责](./44-ai-engineer-responsibility.md) | AI 写代码但代码出错谁负责？系统责任金字塔 + 4 大岗位重定义 |
-| 📊 **AI 数据真相** | [45 生产力悖论](./45-ai-productivity-paradox.md) | 4 大研究数据 + DORA 放大器理论 + 资深 vs 初级差异 |
-| 💼 **AI 与个人** | [46 技术债困局](./46-tech-debt-career-trap.md) | 救火 3 年不如建设 1 年——4 判断标准 + 4 增值动作 |
+| 🔥 **AI 责任** | [44 谁替系统负责](./42-ai-engineer-responsibility.md) | AI 写代码但代码出错谁负责？系统责任金字塔 + 4 大岗位重定义 |
+| 📊 **AI 数据真相** | [45 生产力悖论](./43-ai-productivity-paradox.md) | 4 大研究数据 + DORA 放大器理论 + 资深 vs 初级差异 |
+| 💼 **AI 与个人** | [46 技术债困局](./44-tech-debt-career-trap.md) | 救火 3 年不如建设 1 年——4 判断标准 + 4 增值动作 |
 
 ---
 

@@ -459,7 +459,7 @@ def fallback_chain(doc):
 - [10亿级向量检索选型（HNSW/IVF/DiskANN）](../vector-search-algorithms/README.md)
 
 **12.story 实战**：
-- [12.story/39-vector-database-and-embedding（味道仓库 第九章反向链）](../../../12.story/39-vector-database-and-embedding.md)
+- [12.story/37-vector-database-and-embedding（味道仓库 第九章反向链）](../../../12.story/37-vector-database-and-embedding.md)
 
 **实战框架**：
 - [LangGraph（Checkpoint / Memory）](../../03-engineering/ai-platforms/langgraph.md)

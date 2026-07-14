@@ -356,20 +356,20 @@ graph TD
 - [前厅翻修记](./13-frontend-renovation.md) —— 前端工程化与用户体验，后厨再快，前厅的门进不来一切白搭
 - [阿明的省钱经](./14-cloud-finops.md) —— 云成本优化与 FinOps，120 万月账单如何降到 68 万
 - [差评危机](./15-incident-response.md) —— 故障复盘与应急响应，从手忙脚乱到 10 分钟止血的方法论
-- [传菜窗口的智慧](./20-realtime-eventdriven.md) —— 消息队列的异步解耦本身就是一种性能优化，减少同步等待的延迟
-- [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统中的一致性开销，共识协议带来的性能损耗与权衡
-- [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户系统的性能隔离，防止"吵闹邻居"拖慢其他租户
-- [厨房实况直播](./20-realtime-eventdriven.md) —— 实时推送系统的性能优化，降低消息延迟到毫秒级
-- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多端性能优化，不同设备的计算能力不同需要适配不同的优化策略
-- [懂你的菜单](./22-search-recommendation.md) —— 搜索推荐系统的算法性能优化，索引优化、缓存策略、结果预计算
+- [传菜窗口的智慧](./19-realtime-eventdriven.md) —— 消息队列的异步解耦本身就是一种性能优化，减少同步等待的延迟
+- [十家店的烦恼](./17-distributed-puzzles.md) —— 分布式系统中的一致性开销，共识协议带来的性能损耗与权衡
+- [阿明的加盟帝国](./18-saas-multitenant.md) —— 多租户系统的性能隔离，防止"吵闹邻居"拖慢其他租户
+- [厨房实况直播](./19-realtime-eventdriven.md) —— 实时推送系统的性能优化，降低消息延迟到毫秒级
+- [一个厨房，四个门面](./20-multiplatform-architecture.md) —— 多端性能优化，不同设备的计算能力不同需要适配不同的优化策略
+- [懂你的菜单](./21-search-recommendation.md) —— 搜索推荐系统的算法性能优化，索引优化、缓存策略、结果预计算
 - [菜谱标准化之路](./07-from-chef-to-ceo.md) —— 性能优化的知识共享，避免不同团队重复踩同一个性能坑
-- [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移中的分库分表是数据库层面的性能优化手段
-- [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台的性能上限受限于运行时架构，与手写代码的性能对比
-- [阿明出海记](./26-globalization.md) —— 全球化部署的性能挑战，CDN 和边缘计算降低跨区域延迟
-- [厨房大换岗](./27-ai-org-transformation.md) —— AI 转型后的性能新指标，人机协同的响应效率成为新度量
-- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生产品的性能挑战，AI 推理延迟对用户体验的影响
-- [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的性能优化，Agent 循环的效率决定自进化速度
-- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉检测的性能开销，三层护栏的延迟与准确性权衡
+- [仓库搬家不停业](./22-database-migration.md) —— 数据库迁移中的分库分表是数据库层面的性能优化手段
+- [预制菜还是现炒](./23-lowcode-platform.md) —— 低代码平台的性能上限受限于运行时架构，与手写代码的性能对比
+- [阿明出海记](./24-globalization.md) —— 全球化部署的性能挑战，CDN 和边缘计算降低跨区域延迟
+- [厨房大换岗](./25-ai-org-transformation.md) —— AI 转型后的性能新指标，人机协同的响应效率成为新度量
+- [阿明的二次创业](./26-ai-native-startup.md) —— AI 原生产品的性能挑战，AI 推理延迟对用户体验的影响
+- [会自我进化的厨房](./27-self-evolving-company.md) —— Agent Loop 的性能优化，Agent 循环的效率决定自进化速度
+- [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) —— AI 幻觉检测的性能开销，三层护栏的延迟与准确性权衡
 
 ---
 
@@ -379,10 +379,10 @@ graph TD
 - [厨房装监控 · 可观测性](./05-observability.md) —— 正传 2，性能优化的诊断工具：指标 / 火焰图 / 链路追踪
 - [食安大检查 · 安全架构](./06-security-architecture.md) —— 正传 3，安全机制（限流 / 加密）的性能开销
 - [差评危机 · 故障响应](./15-incident-response.md) —— 正传 9，性能事故的应急响应与全链路压测
-- [仓库搬家不停业 · 数据库迁移](./24-database-migration.md) —— 正传 14，分库分表本身就是数据库层的性能优化
-- [懂你的菜单 · 搜索推荐](./22-search-recommendation.md) —— 番外四，搜索 / 推荐系统的索引与缓存性能
-- [AI 致命三件套](./33-ai-fatal-trio.md) —— 续集九，AI 推理延迟是新形态的性能瓶颈
-- [AI 可观测性](./37-ai-observability.md) —— 续集十三，AI 系统的性能监控（TTFT / TPOT / GPU 利用率）
+- [仓库搬家不停业 · 数据库迁移](./22-database-migration.md) —— 正传 14，分库分表本身就是数据库层的性能优化
+- [懂你的菜单 · 搜索推荐](./21-search-recommendation.md) —— 番外四，搜索 / 推荐系统的索引与缓存性能
+- [AI 致命三件套](./31-ai-fatal-trio.md) —— 续集九，AI 推理延迟是新形态的性能瓶颈
+- [AI 可观测性](./35-ai-observability.md) —— 续集十三，AI 系统的性能监控（TTFT / TPOT / GPU 利用率）
 
 ---
 
@@ -392,7 +392,7 @@ graph TD
 
 本篇与[正传 2《厨房装监控》](./05-observability.md)和[正传 5《从接单到出餐》](./09-cicd-devops.md)密不可分 —— 可观测性是性能分析的数据基础，没有指标、链路追踪、日志体系就无法定位瓶颈；而 CI/CD 流水线是性能测试的载体，性能回归测试必须集成到持续交付流程中，防止"优化了又被改回去"。
 
-本篇与[续集十二](./36a-ai-token-cost-structure.md)（[成本结构](./36a-ai-token-cost-structure.md) / [成本优化](./36b-ai-token-cost-optimization.md)）形成呼应 —— 性能优化的终极目标之一也是成本控制。资源利用率低意味着浪费 GPU、浪费带宽、浪费预算。性能优化与成本优化的交汇点在于"用更少的资源做更多的事"。
+本篇与[续集十二](./34a-ai-token-cost-structure.md)（[成本结构](./34a-ai-token-cost-structure.md) / [成本优化](./34b-ai-token-cost-optimization.md)）形成呼应 —— 性能优化的终极目标之一也是成本控制。资源利用率低意味着浪费 GPU、浪费带宽、浪费预算。性能优化与成本优化的交汇点在于"用更少的资源做更多的事"。
 
 ---
 

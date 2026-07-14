@@ -394,8 +394,8 @@ Long-Context 1M + RAG 双轨 + Sub-Agents + Memory
 ### 实战姐妹（12.story）
 
 - [12.story/07-from-chef-to-ceo](../../../12.story/07-from-chef-to-ceo.md) —— 阿明餐厅 80 家连锁"长菜单与多订单"管理实战
-- [12.story/41-ai-private-deployment](../../../12.story/41-ai-private-deployment.md) —— 私有化部署决策
-- [12.story/32-agent-harness](../../../12.story/32-agent-harness.md) —— Agent Harness 工程
+- [12.story/39-ai-private-deployment](../../../12.story/39-ai-private-deployment.md) —— 私有化部署决策
+- [12.story/30-agent-harness](../../../12.story/30-agent-harness.md) —— Agent Harness 工程
 
 ---
 

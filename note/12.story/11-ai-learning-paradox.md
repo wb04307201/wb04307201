@@ -313,26 +313,26 @@ graph TD
 - [阿明的省钱经](./14-cloud-finops.md) —— 云成本优化与 FinOps，120 万月账单如何降到 68 万
 - [差评危机](./15-incident-response.md) —— 故障复盘与应急响应，从手忙脚乱到 10 分钟止血的方法论
 - [外卖大战](./16-performance-optimization.md) —— 系统性能优化，3 秒生死线下的全链路优化实战
-- [传菜窗口的智慧](./20-realtime-eventdriven.md) —— 异步编程是工程师必须掌握的基本功，回调、Promise、事件驱动的学习之道
-- [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统的基本功：CAP 定理、共识算法是 AI 无法替你理解的底层思维
-- [阿明的加盟帝国](./19-saas-multitenant.md) —— 从技术到创业的知识跨越，SaaS 商业模式需要理解技术和产品的结合
-- [厨房实况直播](./20-realtime-eventdriven.md) —— 实时系统的编程范式，事件驱动架构是"另一种思维方式"的学习
-- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 跨端开发的学习路径，从后端到前端的知识拓展
-- [懂你的菜单](./22-search-recommendation.md) —— 搜索推荐的算法学习，AI 可以辅助实现千人千面，但工程师需理解底层原理
+- [传菜窗口的智慧](./19-realtime-eventdriven.md) —— 异步编程是工程师必须掌握的基本功，回调、Promise、事件驱动的学习之道
+- [十家店的烦恼](./17-distributed-puzzles.md) —— 分布式系统的基本功：CAP 定理、共识算法是 AI 无法替你理解的底层思维
+- [阿明的加盟帝国](./18-saas-multitenant.md) —— 从技术到创业的知识跨越，SaaS 商业模式需要理解技术和产品的结合
+- [厨房实况直播](./19-realtime-eventdriven.md) —— 实时系统的编程范式，事件驱动架构是"另一种思维方式"的学习
+- [一个厨房，四个门面](./20-multiplatform-architecture.md) —— 跨端开发的学习路径，从后端到前端的知识拓展
+- [懂你的菜单](./21-search-recommendation.md) —— 搜索推荐的算法学习，AI 可以辅助实现千人千面，但工程师需理解底层原理
 - [菜谱标准化之路](./07-from-chef-to-ceo.md) —— 知识管理的核心方法论，把隐性知识转化为显性知识的学习之道
-- [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移是考验工程师基本功的高风险操作，AI 不能替你承担决策责任
-- [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码 vs 全手写的学习取舍，工具效率与基础功的平衡
-- [阿明出海记](./26-globalization.md) —— 全球化视野的学习，多区域部署是工程师能力的新维度
-- [厨房大换岗](./27-ai-org-transformation.md) —— AI 学习在组织层面的延伸，学会了还要在组织中落地
-- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业中的人才培养，创始人也需要学会"不依赖 AI"
-- [会自我进化的厨房](./29-self-evolving-company.md) —— 自进化组织中的持续学习，组织也在像个人一样不断成长
-- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉对学习者的挑战，学会辨别 AI 错误是新的学习能力
+- [仓库搬家不停业](./22-database-migration.md) —— 数据库迁移是考验工程师基本功的高风险操作，AI 不能替你承担决策责任
+- [预制菜还是现炒](./23-lowcode-platform.md) —— 低代码 vs 全手写的学习取舍，工具效率与基础功的平衡
+- [阿明出海记](./24-globalization.md) —— 全球化视野的学习，多区域部署是工程师能力的新维度
+- [厨房大换岗](./25-ai-org-transformation.md) —— AI 学习在组织层面的延伸，学会了还要在组织中落地
+- [阿明的二次创业](./26-ai-native-startup.md) —— AI 原生创业中的人才培养，创始人也需要学会"不依赖 AI"
+- [会自我进化的厨房](./27-self-evolving-company.md) —— 自进化组织中的持续学习，组织也在像个人一样不断成长
+- [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) —— AI 幻觉对学习者的挑战，学会辨别 AI 错误是新的学习能力
 
 ## 跨章节衔接
 
-- [27-ai-org-transformation.md](./27-ai-org-transformation.md) —— 续集三，学徒困境在组织层面的映射：组织学习比个人学习更复杂
-- [28-ai-native-startup.md](./28-ai-native-startup.md) —— 续集四，AI 原生创业中的学习悖论：创业者不能全靠 AI
-- [29-self-evolving-company.md](./29-self-evolving-company.md) —— 续集五，自进化组织的学习闭环：组织是更大的"学徒"
+- [27-ai-org-transformation.md](./25-ai-org-transformation.md) —— 续集三，学徒困境在组织层面的映射：组织学习比个人学习更复杂
+- [28-ai-native-startup.md](./26-ai-native-startup.md) —— 续集四，AI 原生创业中的学习悖论：创业者不能全靠 AI
+- [29-self-evolving-company.md](./27-self-evolving-company.md) —— 续集五，自进化组织的学习闭环：组织是更大的"学徒"
 
 ---
 

@@ -167,7 +167,7 @@ Skill 数  命中率  退化原因
 - [Function Calling 怎么设计？](../function-calling/README.md) — 工具调用工程化
 
 **叙事层（12.story）**：
-- [扩招 50 个厨师：Skill 调度的餐厅隐喻](../../../12.story/47-skill-scheduling-restaurant.md) — 餐厅叙事版
+- [扩招 50 个厨师：Skill 调度的餐厅隐喻](../../../12.story/45-skill-scheduling-restaurant.md) — 餐厅叙事版
 
 ---
 

@@ -82,7 +82,7 @@ Q：工业级大模型部署，你为什么优先选 vLLM，而不是极简的 O
 
 ## 5. 速查 · 关联资源
 
-- **餐厅叙事**：[12.story/41-ai-private-deployment.md](../../../../12.story/41-ai-private-deployment.md) —— 阿明餐厅从 Ollama 本地试跑到 vLLM 上生产的演进
+- **餐厅叙事**：[12.story/39-ai-private-deployment.md](../../../../12.story/39-ai-private-deployment.md) —— 阿明餐厅从 Ollama 本地试跑到 vLLM 上生产的演进
 - **面试题**：[13.split-hairs/11.ai/inference-engine-selection](../../../../13.split-hairs/11.ai/inference-engine-selection/README.md) —— 5-7 道精选题
 - **同类平台**：[coze](../coze.md) · [dify](../dify.md) · [langgraph](../langgraph.md) · [spring-ai-vs-platforms](../spring-ai-vs-platforms.md)
 

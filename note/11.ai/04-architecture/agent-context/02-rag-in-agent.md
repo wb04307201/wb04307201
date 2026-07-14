@@ -190,7 +190,7 @@ Q："X 产品的竞品 Y 在 2023 年的销量是什么？"
 ### ⚠️ 反模式 5：RAG 与 Fine-tuning 选错
 
 - 错：用 RAG 给模型加新知识（实则 Fine-tune 才对）
-- 对：详见 [12.story/41-ai-private-deployment](../../../12.story/41-ai-private-deployment.md) 的"先 RAG 再微调"
+- 对：详见 [12.story/39-ai-private-deployment](../../../12.story/39-ai-private-deployment.md) 的"先 RAG 再微调"
 
 ---
 

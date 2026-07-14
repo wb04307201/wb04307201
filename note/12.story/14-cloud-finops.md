@@ -291,24 +291,24 @@ graph TD
 - [前厅翻修记](./13-frontend-renovation.md) —— 前端工程化与用户体验，后厨再快，前厅的门进不来一切白搭
 - [差评危机](./15-incident-response.md) —— 故障复盘与应急响应，从手忙脚乱到 10 分钟止血的方法论
 - [外卖大战](./16-performance-optimization.md) —— 系统性能优化，3 秒生死线下的全链路优化实战
-- [传菜窗口的智慧](./20-realtime-eventdriven.md) —— 消息队列的成本优化：Broker 存储成本、消费计算成本、消息保留策略
-- [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统的多节点成本，节点越多成本越高，需要精细化的资源治理
-- [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户共享基础设施的成本分摊模式，FinOps 在 SaaS 场景的应用
-- [厨房实况直播](./20-realtime-eventdriven.md) —— 实时推送的带宽和服务器成本，推送 vs 轮询的成本效益分析
-- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多端开发的团队和工具成本，跨平台方案的成本效益对比
-- [懂你的菜单](./22-search-recommendation.md) —— 搜索推荐系统的成本收益分析，算法成本 vs 用户转化率提升
+- [传菜窗口的智慧](./19-realtime-eventdriven.md) —— 消息队列的成本优化：Broker 存储成本、消费计算成本、消息保留策略
+- [十家店的烦恼](./17-distributed-puzzles.md) —— 分布式系统的多节点成本，节点越多成本越高，需要精细化的资源治理
+- [阿明的加盟帝国](./18-saas-multitenant.md) —— 多租户共享基础设施的成本分摊模式，FinOps 在 SaaS 场景的应用
+- [厨房实况直播](./19-realtime-eventdriven.md) —— 实时推送的带宽和服务器成本，推送 vs 轮询的成本效益分析
+- [一个厨房，四个门面](./20-multiplatform-architecture.md) —— 多端开发的团队和工具成本，跨平台方案的成本效益对比
+- [懂你的菜单](./21-search-recommendation.md) —— 搜索推荐系统的成本收益分析，算法成本 vs 用户转化率提升
 - [菜谱标准化之路](./07-from-chef-to-ceo.md) —— 知识工程的成本投入和长期收益，技术文档的 ROI 评估
-- [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移的成本评估，新旧系统并行期间的双倍资源开销
-- [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台的成本效益分析，开发效率提升 vs 平台维护成本
-- [阿明出海记](./26-globalization.md) —— 多区域部署的成本差异，海外云资源定价和网络传输成本的管理
-- [厨房大换岗](./27-ai-org-transformation.md) —— AI 算力成本与组织转型，AI 引入后的成本结构重新核算
-- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业的成本意识，AI 工具成本与人力成本的平衡
-- [会自我进化的厨房](./29-self-evolving-company.md) —— Burn Tokens 的成本控制，Agent Loop 的 Token 消耗需要 FinOps 思维
-- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉修复的隐性成本，错误输出的修复成本应纳入成本核算
+- [仓库搬家不停业](./22-database-migration.md) —— 数据库迁移的成本评估，新旧系统并行期间的双倍资源开销
+- [预制菜还是现炒](./23-lowcode-platform.md) —— 低代码平台的成本效益分析，开发效率提升 vs 平台维护成本
+- [阿明出海记](./24-globalization.md) —— 多区域部署的成本差异，海外云资源定价和网络传输成本的管理
+- [厨房大换岗](./25-ai-org-transformation.md) —— AI 算力成本与组织转型，AI 引入后的成本结构重新核算
+- [阿明的二次创业](./26-ai-native-startup.md) —— AI 原生创业的成本意识，AI 工具成本与人力成本的平衡
+- [会自我进化的厨房](./27-self-evolving-company.md) —— Burn Tokens 的成本控制，Agent Loop 的 Token 消耗需要 FinOps 思维
+- [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) —— AI 幻觉修复的隐性成本，错误输出的修复成本应纳入成本核算
 
 ## 跨章节衔接
 
-- [19-saas-multitenant.md](./19-saas-multitenant.md) —— 番外三，SaaS 多租户的成本分摊与 FinOps：每租户的成本可视化、计费基础
+- [19-saas-multitenant.md](./18-saas-multitenant.md) —— 番外三，SaaS 多租户的成本分摊与 FinOps：每租户的成本可视化、计费基础
 - [04-peak-traffic-defense.md](./04-peak-traffic-defense.md) —— 正传 1，弹性伸缩的成本与流量治理的平衡：峰值期的资源成本最贵
 - [05-observability.md](./05-observability.md) —— 正传 2，成本可观测性是 FinOps 的基础：没有指标无法优化成本
 

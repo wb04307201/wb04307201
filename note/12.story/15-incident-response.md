@@ -447,27 +447,27 @@ graph TD
 - [前厅翻修记](./13-frontend-renovation.md) —— 前端工程化与用户体验，后厨再快，前厅的门进不来一切白搭
 - [阿明的省钱经](./14-cloud-finops.md) —— 云成本优化与 FinOps，120 万月账单如何降到 68 万
 - [外卖大战](./16-performance-optimization.md) —— 系统性能优化，3 秒生死线下的全链路优化实战
-- [传菜窗口的智慧](./20-realtime-eventdriven.md) —— 消息队列的故障处理：死信队列、重试风暴、消息积压的应急响应
-- [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统中的故障传播和级联失效，脑裂和网络分区的应急处理
-- [阿明的加盟帝国](./19-saas-multitenant.md) —— 多租户系统的故障影响范围控制，一个租户的故障不能波及其他租户
-- [厨房实况直播](./20-realtime-eventdriven.md) —— 实时系统的故障对用户感知影响最直接，推送中断的应急恢复
-- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多端系统的故障定位，某个渠道的故障需要快速隔离和恢复
-- [懂你的菜单](./22-search-recommendation.md) —— 搜索推荐系统的算法故障，推荐结果异常的应急降级策略
+- [传菜窗口的智慧](./19-realtime-eventdriven.md) —— 消息队列的故障处理：死信队列、重试风暴、消息积压的应急响应
+- [十家店的烦恼](./17-distributed-puzzles.md) —— 分布式系统中的故障传播和级联失效，脑裂和网络分区的应急处理
+- [阿明的加盟帝国](./18-saas-multitenant.md) —— 多租户系统的故障影响范围控制，一个租户的故障不能波及其他租户
+- [厨房实况直播](./19-realtime-eventdriven.md) —— 实时系统的故障对用户感知影响最直接，推送中断的应急恢复
+- [一个厨房，四个门面](./20-multiplatform-architecture.md) —— 多端系统的故障定位，某个渠道的故障需要快速隔离和恢复
+- [懂你的菜单](./21-search-recommendation.md) —— 搜索推荐系统的算法故障，推荐结果异常的应急降级策略
 - [菜谱标准化之路](./07-from-chef-to-ceo.md) —— 故障复盘文档是知识工程的重要产出，Runbook 是应急响应的知识基础
-- [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移是高风险操作，需要回滚预案和故障恢复方案
-- [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码平台的故障定位困难，配置 vs 代码的故障边界模糊
-- [阿明出海记](./26-globalization.md) —— 多区域系统的故障协调，跨区域故障的时差和沟通挑战
-- [厨房大换岗](./27-ai-org-transformation.md) —— AI 转型引发的"组织故障"，人员变动本身就是一种需要应急的事件
-- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业的故障准备，AI 系统也可能出错需要应急
-- [会自我进化的厨房](./29-self-evolving-company.md) —— Agent Loop 的质量门防止故障扩散，监控 Agent 自动修复日常故障
-- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 幻觉引发的故障应急，AI 错误输出是一种需要应急处理的故障类型
+- [仓库搬家不停业](./22-database-migration.md) —— 数据库迁移是高风险操作，需要回滚预案和故障恢复方案
+- [预制菜还是现炒](./23-lowcode-platform.md) —— 低代码平台的故障定位困难，配置 vs 代码的故障边界模糊
+- [阿明出海记](./24-globalization.md) —— 多区域系统的故障协调，跨区域故障的时差和沟通挑战
+- [厨房大换岗](./25-ai-org-transformation.md) —— AI 转型引发的"组织故障"，人员变动本身就是一种需要应急的事件
+- [阿明的二次创业](./26-ai-native-startup.md) —— AI 原生创业的故障准备，AI 系统也可能出错需要应急
+- [会自我进化的厨房](./27-self-evolving-company.md) —— Agent Loop 的质量门防止故障扩散，监控 Agent 自动修复日常故障
+- [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) —— AI 幻觉引发的故障应急，AI 错误输出是一种需要应急处理的故障类型
 
 ## 跨章节衔接
 
 - [04-peak-traffic-defense.md](./04-peak-traffic-defense.md) —— 正传 1，故障应急与流量治理的"事前-事后"配合：限流是事前防御，应急是事后止血
 - [05-observability.md](./05-observability.md) —— 正传 2，可观测性是故障应急的命脉：没有监控的应急就是猜
 - [06-security-architecture.md](./06-security-architecture.md) —— 正传 3，安全事件是特殊的故障类型：安全应急响应流程
-- [32-agent-harness.md](./32-agent-harness.md) —— 续集八，AI Agent 系统的故障模式与传统系统不同：幻觉、超时、Token 溢出
+- [32-agent-harness.md](./30-agent-harness.md) —— 续集八，AI Agent 系统的故障模式与传统系统不同：幻觉、超时、Token 溢出
 
 ---
 

@@ -116,7 +116,7 @@ question:
 - 结果：AI 生成的代码 **2 周内 80% 被重写**
 - 后果：bug 数 +5 倍，事故率 +3 倍
 
-### 3. 阿明餐厅的教训（12.story/45）
+### 3. 阿明餐厅的教训（12.story/43）
 
 - 没 Harness 的团队用 AI → 放大的是"烂"
 - 6 个月后：提交量 +217%，bug +383%，事故 +200%
@@ -219,7 +219,7 @@ question:
 - 同栏目：[`function-calling`](../function-calling/README.md) — Function Calling
 - 同栏目：[`ai-code-review`](../ai-code-review/README.md) — 审核门禁缺失正是"代码量涨 bug 更涨"的根因
 - 主模块：[`11.ai/05-applications`](../../../11.ai/05-applications/README.md) — AI 行业应用
-- 故事：[`12.story/45-ai-productivity-paradox`](../../../12.story/45-ai-productivity-paradox.md) — 阿明餐厅复盘
+- 故事：[`12.story/43-ai-productivity-paradox`](../../../12.story/43-ai-productivity-paradox.md) — 阿明餐厅复盘
 
 - Token 成本：[`AI 编程 Token 经济学`](../ai-coding-token-economics/README.md) — 9.6 万 Token 中位数 + Agent 工作流消耗机制
 

@@ -238,7 +238,7 @@ skills/
 - [Skill 命中率面试 5 题](../../../13.split-hairs/11.ai/skill-hit-rate/README.md) — 配套面试题
 
 **叙事层（12.story）**：
-- [扩招 50 个厨师：Skill 调度的餐厅隐喻](../../../12.story/47-skill-scheduling-restaurant.md) — 餐厅叙事版
+- [扩招 50 个厨师：Skill 调度的餐厅隐喻](../../../12.story/45-skill-scheduling-restaurant.md) — 餐厅叙事版
 
 ---
 

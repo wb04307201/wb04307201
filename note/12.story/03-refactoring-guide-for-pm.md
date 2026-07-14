@@ -465,20 +465,20 @@ graph LR
 - [阿明的省钱经](./14-cloud-finops.md) —— 云成本优化与 FinOps，120 万月账单如何降到 68 万
 - [差评危机](./15-incident-response.md) —— 故障复盘与应急响应，从手忙脚乱到 10 分钟止血的方法论
 - [外卖大战](./16-performance-optimization.md) —— 系统性能优化，3 秒生死线下的全链路优化实战
-- [传菜窗口的智慧](./20-realtime-eventdriven.md) —— 引入消息队列本身就是一种重构，从同步耦合到异步解耦的架构翻新
-- [十家店的烦恼](./18-distributed-puzzles.md) —— 分布式系统的一致性挑战，重构前需要理解 CAP 定理的权衡
-- [阿明的加盟帝国](./19-saas-multitenant.md) —— SaaS 化的多租户重构，从单用户系统到多租户系统的大规模改造
-- [厨房实况直播](./20-realtime-eventdriven.md) —— 实时系统的渐进式重构，从轮询到事件驱动的迁移路径
-- [一个厨房，四个门面](./21-multiplatform-architecture.md) —— 多端项目的重构挑战，多个客户端如何同步翻新
-- [懂你的菜单](./22-search-recommendation.md) —— 搜索推荐系统的技术债管理，算法迭代的渐进式重构
+- [传菜窗口的智慧](./19-realtime-eventdriven.md) —— 引入消息队列本身就是一种重构，从同步耦合到异步解耦的架构翻新
+- [十家店的烦恼](./17-distributed-puzzles.md) —— 分布式系统的一致性挑战，重构前需要理解 CAP 定理的权衡
+- [阿明的加盟帝国](./18-saas-multitenant.md) —— SaaS 化的多租户重构，从单用户系统到多租户系统的大规模改造
+- [厨房实况直播](./19-realtime-eventdriven.md) —— 实时系统的渐进式重构，从轮询到事件驱动的迁移路径
+- [一个厨房，四个门面](./20-multiplatform-architecture.md) —— 多端项目的重构挑战，多个客户端如何同步翻新
+- [懂你的菜单](./21-search-recommendation.md) —— 搜索推荐系统的技术债管理，算法迭代的渐进式重构
 - [菜谱标准化之路](./07-from-chef-to-ceo.md) —— 技术文档是重构决策的知识沉淀，ADR 记录每次"为什么改"
-- [仓库搬家不停业](./24-database-migration.md) —— 数据库迁移是重构中最高风险的操作，在线 Schema 变更方法论
-- [预制菜还是现炒](./25-lowcode-platform.md) —— 低代码 vs 全手写的选型决策，和重构决策一样需要权衡灵活与效率
-- [阿明出海记](./26-globalization.md) —— 国际化重构的系统性规划，翻译只是表面，底层架构需要全面调整
-- [厨房大换岗](./27-ai-org-transformation.md) —— AI 转型时期的组织重构，和系统重构一样需要渐进式推进
-- [阿明的二次创业](./28-ai-native-startup.md) —— AI 原生创业中的架构决策，从第一天就做对还是日后重构
-- [会自我进化的厨房](./29-self-evolving-company.md) —— 自进化组织的重构思维，让系统具备自我修复能力
-- [AI 的"黑暗料理"](./30-ai-hallucination-safety.md) —— AI 输出质量的持续改进，和重构一样是渐进式提升过程
+- [仓库搬家不停业](./22-database-migration.md) —— 数据库迁移是重构中最高风险的操作，在线 Schema 变更方法论
+- [预制菜还是现炒](./23-lowcode-platform.md) —— 低代码 vs 全手写的选型决策，和重构决策一样需要权衡灵活与效率
+- [阿明出海记](./24-globalization.md) —— 国际化重构的系统性规划，翻译只是表面，底层架构需要全面调整
+- [厨房大换岗](./25-ai-org-transformation.md) —— AI 转型时期的组织重构，和系统重构一样需要渐进式推进
+- [阿明的二次创业](./26-ai-native-startup.md) —— AI 原生创业中的架构决策，从第一天就做对还是日后重构
+- [会自我进化的厨房](./27-self-evolving-company.md) —— 自进化组织的重构思维，让系统具备自我修复能力
+- [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) —— AI 输出质量的持续改进，和重构一样是渐进式提升过程
 
 ## 跨章节衔接
 

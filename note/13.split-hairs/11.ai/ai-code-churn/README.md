@@ -290,7 +290,7 @@ def get_user_orders(user_id):
 - 同栏目：[`harness-engineering`](../harness-engineering/README.md) — Harness Engineering
 - 同栏目：[`ai-code-review`](../ai-code-review/README.md) — AI 后端代码审核验收 6 层体系（降低流失率的前置门禁）
 - 主模块：[`11.ai/05-applications`](../../../11.ai/05-applications/README.md) — AI 行业应用
-- 故事：[`12.story/45-ai-productivity-paradox`](../../../12.story/45-ai-productivity-paradox.md)
+- 故事：[`12.story/43-ai-productivity-paradox`](../../../12.story/43-ai-productivity-paradox.md)
 
 - Token 成本：[`AI 编程 Token 经济学`](../ai-coding-token-economics/README.md) — Token 悖论 + 4 条省钱实践
 
