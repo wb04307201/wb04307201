@@ -4,44 +4,132 @@ module:
   slug: ai/open-webui
   type: article
   category: 主模块子文章
-  summary: Open WebUI
+  summary: Open WebUI — Ollama 配套可视化前端（多用户 / RAG / 工具调用）
 -->
 
 # Open WebUI
 
+> ⬅️ [返回本地部署](../README.md)
+
+> **一句话定位**：Open WebUI（前身 Ollama WebUI）= Ollama / OpenAI API 的**自托管 ChatGPT 替代品**——支持多用户、对话历史、知识库（RAG）、工具调用、模型对比，企业内部"私有 ChatGPT"首选。
+
 ---
+
+## 🎯 核心特性
+
+| 特性 | 说明 |
+|------|------|
+| **多模型接入** | Ollama / OpenAI / 任意 OpenAI 兼容 API |
+| **多用户 + 权限** | RBAC、用户组、审计日志 |
+| **对话历史** | 持久化、标签、搜索、导出 |
+| **RAG 知识库** | 上传文档 → 自动 Embedding → 检索增强 |
+| **工具调用** | Function Calling + Web Search + 代码执行 |
+| **Web 浏览** | 内置 Web Search（Serper / SerpAPI / Bing） |
+| **语音输入输出** | Whisper 语音识别 + TTS |
+| **图像生成** | 集成 Stable Diffusion / DALL-E |
+
+---
+
+## 🚀 Docker 部署（5 分钟上线）
+
+```bash
+# GPU 版本（推荐，需要 NVIDIA 驱动）
+docker run -d -p 3000:8080 \
+  --gpus all \
+  -v open-webui-data:/app/backend/data \
+  --name open-webui \
+  --restart always \
+  ghcr.io/open-webui/open-webui:ollama
+
+# 同时启动 Ollama（如果还没有）
+docker run -d -p 11434:11434 \
+  --gpus all \
+  -v ollama-data:/root/.ollama \
+  --name ollama \
+  --restart always \
+  ollama/ollama
+
+# 纯 CPU / 仅 OpenAI API
+docker run -d -p 3000:8080 \
+  -e OPENAI_API_KEY=sk-xxx \
+  -e OPENAI_API_BASE_URL=https://api.openai.com/v1 \
+  -v open-webui-data:/app/backend/data \
+  --name open-webui \
+  ghcr.io/open-webui/open-webui:main
+```
+
+访问 `http://localhost:3000`，首次注册即管理员。
+
+---
+
+## 🧩 RAG 知识库实战
+
+```
+步骤 1: Workspace → Documents → Upload
+步骤 2: 上传 PDF / Word / Markdown / 代码文件
+步骤 3: 系统自动 Embedding（默认 sentence-transformers）
+步骤 4: 在对话中 @ 文件名 即可引用知识库
+步骤 5: 或开启 "Knowledge" 全局检索（对话时自动 RAG）
+```
+
+**支持的文档类型**：PDF、Word、Markdown、TXT、HTML、EPUB、CSV、代码（多语言）。
+
+**高级配置**：
+- **Embedding 模型**：可换 Ollama 的 nomic-embed-text
+- **Chunk 大小**：默认 1000 tokens，重叠 100
+- **检索 Top-K**：默认 4
+
+---
+
+## 🔌 接入多模型示例
+
+```yaml
+# config.yaml
+OLLAMA_BASE_URL: http://ollama:11434
+OPENAI_API_KEY: sk-xxx
+OPENAI_API_BASE_URL: https://api.deepseek.com/v1
+
+# 自定义模型（任意 OpenAI 兼容端点）
+- name: DeepSeek-V3
+  base_url: https://api.deepseek.com/v1
+  api_key: sk-xxx
+  model_id: deepseek-chat
+```
+
+---
+
+## 🔐 企业部署建议
+
+| 部署形态 | 适用 | 关键配置 |
+|---------|------|---------|
+| **单机演示** | 个人 / 团队试点 | Docker 一键 |
+| **生产 K8s** | 企业内多用户 | Helm Chart + 持久化 + LDAP 集成 |
+| **混合云** | 数据敏感 | Open WebUI + 私有 Ollama 集群 |
+
+**安全配置**：
+- `WEBUI_AUTH=true` 开启登录
+- `ENABLE_SIGNUP=false` 关闭公开注册
+- `DEFAULT_USER_ROLE=pending` 默认待审核
+- 配合 Nginx 反代 + HTTPS
+
+---
+
+## 🔗 兄弟章节
+
+- **本地部署**：[Ollama 实战](../README.md)
+- **推理引擎**：[vLLM vs Ollama](../../inference-engine-selection/README.md)
+- **RAG 体系**：[LLMOps 章节](../../08-llmops/README.md)
+- **教学**：[Dify 工作流](../../../../training/lesson9/README.md)（低代码对比）
+
+---
+
+## ⚠️ 常见问题
+
+| 问题 | 原因 | 解决 |
+|------|------|------|
+| 模型列表为空 | Ollama 未连接 | 检查 `OLLAMA_BASE_URL` 网络可达 |
+| RAG 无效果 | Embedding 未完成 | Workspace → Documents 看状态 |
+| 高并发卡顿 | 单实例瓶颈 | K8s 部署多副本 + Redis 会话共享 |
+| 中文回答质量差 | 模型本身弱 | 换 Qwen / DeepSeek 中文强模型 |
 
 ← 返回 [本地部署](../README.md)
-
-#### **定义与核心定位**
-Open WebUI 是一个开源的、可扩展的自托管AI平台，专为生成式大模型（如GPT、BERT、DeepSeek等）设计，旨在通过类ChatGPT的直观界面，实现大模型与Web应用的无缝对接。其核心价值在于**本地化部署能力**，支持数据不出内网，保障隐私安全，同时兼容Ollama、OpenAI API、Groq等主流大模型服务，适用于开发者快速验证模型、企业构建合规AI平台及个人用户探索AI应用。
-
-#### **核心功能特性**
-- **多模态交互支持**：提供自然语言对话界面，支持Markdown渲染、代码高亮、语音转录、图像/文件上传、网页搜索增强等，实现文本、语音、图像的跨模态输入输出。
-- **多轮对话管理**：内置对话历史记录与上下文衔接功能，支持多轮对话连贯性，避免重复输入，并可对历史对话进行归档、导出（JSON/TXT/PDF）、标签分类及搜索。
-- **模型兼容与扩展**：支持本地部署模型（如vLLM、Transformers）及云端API服务（如OpenAI GPT-4、DeepSeek API、Anthropic Claude），通过OpenAPI标准实现与外部工具、SDK的集成，并支持插件生态扩展（如视频生成、语音交互）。
-- **企业级特性**：提供RBAC权限控制、对话审计、Redis Sentinel高可用支持、OpenTelemetry监控等，满足企业级安全与运维需求。
-- **定制化能力**：支持自定义提示词模板、模型参数调整（如温度、Top K/P）、函数调用逻辑配置，并可通过插件系统进行功能定制与二次开发。
-
-#### **典型应用场景**
-- **智能办公**：文档助手、会议纪要生成、自动化流程（如RPA集成）。
-- **教育领域**：AI辅导系统、交互式学习平台、知识图谱构建。
-- **医疗辅助**：病历分析、辅助诊断、医学知识检索增强生成（RAG）。
-- **内容创作**：文案生成、图像/视频生成、多模态内容编辑。
-- **客服系统**：智能客服、用户意图识别、工单自动分类。
-
-#### **最新发展动态（截至2025年）**
-- **版本升级**：Open WebUI v0.6.0发布，转向OpenAPI标准，支持MCP桥接工具（MCPO），实现与OpenAPI兼容工具的无缝集成，新增PDF生成、公共资源共享权限控制、可编辑消息计数器、隐藏基础模型等功能。
-- **生态扩展**：插件系统支持视频生成、语音交互等模块，降低多模态应用开发门槛；支持Docker部署与Kubernetes集群管理，提升大规模部署能力。
-- **性能优化**：引入Redis Sentinel高可用支持、OpenTelemetry监控，增强系统稳定性与可观测性；优化对话侧边栏搜索、Markdown警报渲染、混合搜索并行运行等交互体验。
-
-#### **部署与使用**
-- **本地部署**：通过Docker容器快速搭建，支持CPU/GPU环境，配置参数如`OLLAMA_API_BASE_URL`、`WEBUI_SECRET_KEY`等可自定义。
-- **模型接入**：支持本地模型（如Ollama、vLLM）及云端API（如OpenAI、DeepSeek），通过配置API地址与密钥实现无缝对接。
-- **二次开发**：基于SvelteKit前端与TypeScript后端，支持插件开发与功能扩展，满足定制化需求。
-
-Open WebUI 作为开源大模型交互平台的标杆，通过其强大的功能、灵活的扩展性及对隐私安全的保障，已成为开发者、企业及个人用户构建AI应用的首选工具。随着插件生态的持续扩展与技术迭代，其应用场景将进一步拓宽，推动AI技术的普惠化与场景化落地。
-
----
-
-← [返回 本地部署](../README.md)
