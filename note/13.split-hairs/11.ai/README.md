@@ -22,6 +22,21 @@ question:
 
 ---
 
+## 🎯 读者角色速查（按身份挑题）
+
+> 38 题按难度与场景覆盖 6 类读者角色，按身份挑题效率最高。
+
+| 读者角色 | 推荐题号 | 推荐阅读顺序 | 关键场景 |
+|---------|---------|------------|---------|
+| **Java 后端转 AI 应用** | 6-10, 17, 22-23, 35 | Transformer → Token → Prompt → Context → Function Calling → RAG | 大模型应用整合到现有业务 |
+| **AI 算法工程师** | 1-2, 17, 26, 35 | Transformer → LLM Benchmark → Token 经济学 → RAG → LLM-as-Judge | 模型选型 / 评测 / 优化 |
+| **前端 / 全栈** | 6, 9-10, 17, 32 | Prompt → Context → Function Calling → RAG → Agent Memory | AI 能力嵌入前端 / 全栈产品 |
+| **架构师 / CTO** | 4-5, 8, 24, 28, 33-34 | AI 编程悖论 → AI 代码流失率 → Agent A/B Test → Multi-Agent → Agent Memory | AI 转型战略 / 技术选型 |
+| **产品 / PM / 业务** | 3-5, 8, 24 | AI 思维 → AI 编程悖论 → Agent 性能量化 → Multi-Agent | AI 产品价值评估 / ROI 度量 |
+| **面试高频精刷（校招）** | 1-2, 6-7, 9-10, 17, 32 | AI 思维 → Transformer → Prompt → Context → Function Calling → RAG → Agent Memory | 校招面试核心 8 题 |
+
+---
+
 ## 文章清单（20 题 = 9 篇纯面试题 + 11 篇精炼版）
 
 ### 🎯 真正的面试题（一题一文）
@@ -39,7 +54,7 @@ question:
 | [RAG 权限隔离设计](rag-permission-isolation/) | ⭐⭐⭐⭐⭐ | 4 种隔离方案 + pre/post-filtering + ACL 同步 + 多租户 |
 | [AI 编程 Token 经济学](ai-coding-token-economics/) | ⭐⭐⭐⭐ | 9.6 万 Token 中位数 + 杠杆率 + Token 悖论 + 企业案例 |
 | [LLM Benchmark 深度剖析](llm-benchmark/) | ⭐⭐⭐⭐ | MMLU/HumanEval/Arena ELO + 数据污染 + 5 大问题 |
-| **🆕 [Agent Evaluation 评测系统](agent-performance-evaluation/)** | ⭐⭐⭐⭐⭐ | 阿里一面原题 · 6 大评测维度 + 5 种方法 + 4 阶段 Pipeline + 7 反模式 | [05-agent-evaluation](../../11.ai/05-agent-evaluation/README.md) |
+| **🆕 [Agent Evaluation 评测系统](agent-performance-evaluation/)** | ⭐⭐⭐⭐⭐ | 阿里一面原题 · 6 大评测维度 + 5 种方法 + 4 阶段 Pipeline + 7 反模式 | [06-agent-evaluation](../../11.ai/06-agent-evaluation/README.md) |
 
 ### 📚 概念精炼版（主模块配套面试深挖）
 
@@ -52,14 +67,14 @@ question:
 | [Loop Engineering](loop-engineering/) | ⭐⭐⭐⭐ | 3 大组件 + 6 大陷阱（含 Fresh Context 架构）+ Ralph Wiggum Loop | [03-engineering/loop-engineering](../../11.ai/03-engineering/loop-engineering/README.md) |
 | [Transformer 架构](transformer/) | ⭐⭐⭐⭐⭐ | Self-Attention / QKV / Positional Encoding / FFN | [01-fundamentals/transformer](../../11.ai/01-fundamentals/transformer/README.md) |
 | [Token 原理](token/) | ⭐⭐⭐ | BPE / SentencePiece / Tokenizer / 计费模型 | [02-technology-stack/token-billing](../../11.ai/02-technology-stack/token-billing/README.md) |
-| [RAG 检索增强生成](rag/) | ⭐⭐⭐⭐⭐ | Embedding + Vector DB + Retrieval + Generation | [07-llmops/01-rag-vs-finetuning](../../11.ai/07-llmops/01-rag-vs-finetuning/README.md) |
+| [RAG 检索增强生成](rag/) | ⭐⭐⭐⭐⭐ | Embedding + Vector DB + Retrieval + Generation | [08-llmops/01-rag-vs-finetuning](../../11.ai/08-llmops/01-rag-vs-finetuning/README.md) |
 | [Function Calling / Tool Use](function-calling/) | ⭐⭐⭐⭐⭐ | 工具调用原理 / Schema / ReAct Agent 集成 | [02-technology-stack/function-calling](../../11.ai/02-technology-stack/function-calling/README.md) |
 | 🆕 [Multi-turn Tool Reasoning](multi-turn-tool-reasoning/) | ⭐⭐⭐⭐⭐ | 5 大场景（1 turn 解决不了）+ 6 大编排模式 + 4 大防御 + 90 秒话术 | [Function Calling 深度 第 4 节](../../11.ai/02-technology-stack/function-calling/README.md) |
 | 🆕 [Multi-Agent 系统设计 + 死循环防护](multi-agent-system-design/) | ⭐⭐⭐⭐⭐ | 5 大组件（角色+协调者+通信+状态+终止）+ 3 种通信模式 + 4 大防护机制 + 6 大反模式 + 90 秒话术 | [06-multi-agent-deep-dive](../../11.ai/04-architecture/agent-execution-patterns/06-multi-agent-deep-dive.md) |
 | 🆕 [Incremental Embedding 增量向量化](incremental-embedding/) | ⭐⭐⭐⭐ | 5 大增量策略（消息队列/异步/hot-cold/版本/监控）+ 4 大模型升级方案（双写/重读/异步迁移/灰度）+ 4 大反模式 + 90 秒话术 | [vector-search-at-scale 第 5.1 节](../../11.ai/02-technology-stack/vector-search-at-scale/README.md) |
 | 🆕 [多 Agent 共享记忆](multi-agent-shared-memory/) | ⭐⭐⭐⭐⭐ | 5 大内容维度（上下文/事实/任务/技能/Memory 4 层）+ 3 实现层（消息/状态/语义）+ 6 大共享模式 + 5 大反模式 + 90 秒话术 | [agent-memory 共享专章](../../11.ai/04-architecture/agent-memory/shared-memory.md) |
-| 🆕 [RAG 超范围拒答](rag-out-of-domain-rejection/) | ⭐⭐⭐⭐⭐ | 6 大检测机制（分数/距离/OOD/NLI/Self-Consistency）+ 5 大拒答模式（Hard/Soft/Partial/Deflect/Escalate）+ 4 步阈值调优 + 5 反模式 + 90 秒话术 | [07-llmops/06 专章](../../11.ai/07-llmops/06-rag-out-of-domain-rejection/README.md) |
-| 🆕 [Agent A/B Test 系统设计](agent-ab-testing/) | ⭐⭐⭐⭐⭐ | 5 大组件（流量/配置/指标/统计/决策）+ 4 流量分配（hash/sticky/分层/Holdout）+ 显著性检验（t-test/Bonferroni/Sequential）+ 5 反模式 + 90 秒话术 | [05-agent-evaluation/02 专章](../../11.ai/05-agent-evaluation/02-ab-testing-design/README.md) |
+| 🆕 [RAG 超范围拒答](rag-out-of-domain-rejection/) | ⭐⭐⭐⭐⭐ | 6 大检测机制（分数/距离/OOD/NLI/Self-Consistency）+ 5 大拒答模式（Hard/Soft/Partial/Deflect/Escalate）+ 4 步阈值调优 + 5 反模式 + 90 秒话术 | [08-llmops/06 专章](../../11.ai/08-llmops/06-rag-out-of-domain-rejection/README.md) |
+| 🆕 [Agent A/B Test 系统设计](agent-ab-testing/) | ⭐⭐⭐⭐⭐ | 5 大组件（流量/配置/指标/统计/决策）+ 4 流量分配（hash/sticky/分层/Holdout）+ 显著性检验（t-test/Bonferroni/Sequential）+ 5 反模式 + 90 秒话术 | [06-agent-evaluation/02 专章](../../11.ai/06-agent-evaluation/02-ab-testing-design/README.md) |
 | [Agent DAG vs ReAct](agent-dag-vs-react/) | ⭐⭐⭐⭐⭐ | 复杂 Agent 为什么采用 DAG Workflow | [04-architecture/agent-architecture](../../11.ai/04-architecture/agent-architecture/README.md) |
 | **🆕 [ReAct vs Plan-and-Execute](react-vs-plan-execute/)** | ⭐⭐⭐⭐⭐ | 4 模式 6 维打分 + RePlan 3 机制 + 80% 是混合架构 + 7 道 Q&A | [04-architecture/agent-execution-patterns](../../11.ai/04-architecture/agent-execution-patterns/README.md) |
 | [10亿级向量检索](vector-search-algorithms/) | ⭐⭐⭐⭐⭐ | HNSW vs IVF vs DiskANN 4 维选型 + 内存/磁盘/QPS/Recall 权衡 | [02-technology-stack/vector-search-algorithms](../../11.ai/02-technology-stack/vector-search-algorithms/README.md) |
