@@ -23,6 +23,15 @@ module:
 | [function-calling](function-calling/) | **Function Calling / Tool Use** — OpenAI / Claude 协议对比、多轮编排、5 大场景、5 大安全陷阱 | Agent 工具调用基础 |
 | 🆕 [structured-output](structured-output/) | **结构化输出（JSON）** — 5 种稳定性策略 + response_format + Instructor/Outlines 框架对比 + 反模式 | 工程落地必备 |
 | [token-billing](token-billing/) | **Token 与计费** — BPE / WordPiece / SentencePiece、上下文窗口、计费模型、Token 优化 | 成本控制核心 |
+| 🆕 [llm-inference-optimization](llm-inference-optimization/) | **LLM 推理优化大专题** — 10 章：KV Cache / PagedAttention / Continuous Batching / Speculative / 量化 / MoE / 指标 / 框架 | 生产性能核心 |
+| 🆕 [kv-cache](kv-cache/) | KV Cache 推理核心机制 | 自回归加速 |
+| 🆕 [paged-attention](paged-attention/) | vLLM PagedAttention 解决 KV Cache 碎片 | 显存利用率 40%→96% |
+| 🆕 [continuous-batching](continuous-batching/) | Continuous Batching 动态调度 | 吞吐量 23x |
+| 🆕 [speculative-decoding](speculative-decoding/) | Speculative Decoding 投机解码 | 加速 2-3x |
+| 🆕 [weight-quantization](weight-quantization/) | 权重量化 GPTQ/AWQ/GGUF/NF4 | 显存省 4x |
+| 🆕 [moe-inference](moe-inference/) | MoE 推理优化（DeepSeek-V3 实战）| 671B 8x A100 |
+| 🆕 [inference-metrics](inference-metrics/) | 推理性能指标 TTFT/TPOT/Throughput | 服务质量金三角 |
+| 🆕 [inference-frameworks](inference-frameworks/) | 推理框架对比 vLLM/TGI/SGLang/TRT-LLM | 选型决策树 |
 
 ### 1.1 学习路径
 
