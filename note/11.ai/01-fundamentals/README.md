@@ -17,9 +17,13 @@ module:
 |------|---------|-----------|
 | [llm-basics](llm-basics/) | 大语言模型(LLM)基础定义、核心能力与训练方式 | LLM 入门第一站 |
 | [transformer](transformer/) | **Transformer 架构核心** — Self-Attention / QKV / Multi-Head / Positional Encoding / Encoder-Decoder | 现代所有 LLM 的基石 |
+| [attention-mechanism](attention-mechanism/) | 注意力机制全家桶（Self/Cross/Multi-Head/MQA/GQA/Sparse/Linear）| QKV 推导 + 7 大变体 |
+| [rope-position-encoding](rope-position-encoding/) | RoPE 旋转位置编码 + YaRN/ALiBi/NTK-aware 流派对比 | LLaMA/Qwen 标配 |
+| [flash-attention](flash-attention/) | Flash Attention 2/3：IO 感知 + 分块计算 | 长上下文推理标配 |
 | [neural-layers](neural-layers/) | 神经网络内部层次结构：CNN / RNN / Transformer | 深度学习骨架 |
 | [embedding-vs-vectorization](embedding-vs-vectorization/) | 嵌入(Embedding)与向量化的本质区别、流形假说 | 语义空间的数学基础 |
 | [dense-vs-moe](dense-vs-moe/) | 稠密模型 vs 混合专家(MoE)架构对比 | 大模型架构选型 |
+| [moe-architecture](moe-architecture/) | MoE 架构深度：Mixtral / DeepSeek-V3 / Switch Transformer | 稀疏激活 + 路由机制 |
 | [dropout-in-llm](dropout-in-llm/) | LLM 为何弃用 Dropout + **单 epoch 时代 + 6 模型 config 考古**（GPT-3/LLaMA/Mistral/Qwen/DeepSeek） | 训练范式 + 实证 |
 
 ### 1.1 学习路径
