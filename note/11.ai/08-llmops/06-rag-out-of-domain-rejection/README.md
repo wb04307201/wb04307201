@@ -500,7 +500,7 @@ Q3：用户对拒答接受度？
 - [RAG 架构面试题](../../../../13.split-hairs/11.ai/rag/README.md) —— RAG 基础
 
 **兄弟专题**：
-- [Agent Memory 共享专章](../../../../11.ai/04-architecture/agent-memory/shared-memory.md) —— 多 Agent 共享
+- [Agent Memory 共享专章](../../04-architecture/agent-memory/shared-memory.md) —— 多 Agent 共享
 - [Claude Code Agentic Search 专题](../../../../13.split-hairs/11.ai/claude-code-agentic-search/README.md) —— AI Coding 反 RAG
 
 **LLMOps**：
@@ -512,6 +512,6 @@ Q3：用户对拒答接受度？
 
 ---
 
-> 📅 2026-07-13 · 11.ai/07-llmops · ⭐⭐⭐⭐⭐ · 6 检测机制 + 5 拒答模式 + 4 步阈值 + 6 OSS 实战 + 监控体系
+> 📅 2026-07-13 · 11.ai/08-llmops · ⭐⭐⭐⭐⭐ · 6 检测机制 + 5 拒答模式 + 4 步阈值 + 6 OSS 实战 + 监控体系
 
-← [返回: AI 知识体系 · 07-llmops](README.md)
+← [返回: AI 知识体系 · 08-llmops](README.md)

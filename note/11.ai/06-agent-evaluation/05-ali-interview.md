@@ -1,7 +1,7 @@
 <!--
 module:
-  parent: ai/05-agent-evaluation
-  slug: ai/05-agent-evaluation/05-ali-interview
+  parent: ai/06-agent-evaluation
+  slug: ai/06-agent-evaluation/05-ali-interview
   type: topic
   category: 阿里一面实战
   summary: 阿里一面原题深度回答 —— "设计 Agent Evaluation 评测系统" 4 层框架 + 评分话术

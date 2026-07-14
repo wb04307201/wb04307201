@@ -1,7 +1,7 @@
 <!--
 module:
-  parent: ai/05-agent-evaluation
-  slug: ai/05-agent-evaluation/07-decision-tree
+  parent: ai/06-agent-evaluation
+  slug: ai/06-agent-evaluation/07-decision-tree
   type: topic
   category: 选型决策
   summary: Agent 评测选型决策 —— 按阶段 / 团队 / 预算选评测方案 + checklist

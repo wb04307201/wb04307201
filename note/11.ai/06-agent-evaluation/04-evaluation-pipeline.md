@@ -1,7 +1,7 @@
 <!--
 module:
-  parent: ai/05-agent-evaluation
-  slug: ai/05-agent-evaluation/04-pipeline
+  parent: ai/06-agent-evaluation
+  slug: ai/06-agent-evaluation/04-pipeline
   type: topic
   category: 评测流程
   summary: Agent 评测完整 pipeline —— 黄金集 → 离线 CI → A/B Test → 用户模拟 + 漂移检测

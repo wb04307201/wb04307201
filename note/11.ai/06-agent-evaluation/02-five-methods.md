@@ -1,7 +1,7 @@
 <!--
 module:
-  parent: ai/05-agent-evaluation
-  slug: ai/05-agent-evaluation/02-five-methods
+  parent: ai/06-agent-evaluation
+  slug: ai/06-agent-evaluation/02-five-methods
   type: topic
   category: 5 种评测方法
   summary: 5 种评测方法详解 —— 自动化指标 / 黄金集 / LLM-as-Judge / A/B Test / 用户模拟

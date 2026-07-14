@@ -560,24 +560,24 @@ Day 30   : 长期漂移观察
 - [LLM 评测专题](../../../../13.split-hairs/11.ai/agent-performance-evaluation/README.md) —— 415 行深度
 
 **兄弟评测章节（08 个）**：
-- [01-six-metrics.md](../../01-six-metrics.md)
-- [02-five-methods.md](../../02-five-methods.md)
-- [03-llm-as-judge.md](../../03-llm-as-judge.md)
-- [04-evaluation-pipeline.md](../../04-evaluation-pipeline.md)
-- [05-ali-interview.md](../../05-ali-interview.md)
-- [06-seven-anti-patterns.md](../../06-seven-anti-patterns.md)
-- [07-selection-decision-tree.md](../../07-selection-decision-tree.md)
-- [08-practical-cases.md](../../08-practical-cases.md)
+- [01-six-metrics.md](../01-six-metrics.md)
+- [02-five-methods.md](../02-five-methods.md)
+- [03-llm-as-judge.md](../03-llm-as-judge.md)
+- [04-evaluation-pipeline.md](../04-evaluation-pipeline.md)
+- [05-ali-interview.md](../05-ali-interview.md)
+- [06-seven-anti-patterns.md](../06-seven-anti-patterns.md)
+- [07-selection-decision-tree.md](../07-selection-decision-tree.md)
+- [08-practical-cases.md](../08-practical-cases.md)
 
 **LLMOps**：
-- [LLM Evaluation](../../../../11.ai/07-llmops/04-llm-evaluation/README.md)
-- [RAG 超范围拒答](../../../../11.ai/07-llmops/06-rag-out-of-domain-rejection/README.md)
+- [LLM Evaluation](../../../../11.ai/08-llmops/04-llm-evaluation/README.md)
+- [RAG 超范围拒答](../../08-llmops/06-rag-out-of-domain-rejection/README.md)
 
 **面试速查**：
 - [13.split-hairs · agent-ab-testing](../../../../13.split-hairs/11.ai/agent-ab-testing/README.md) —— 5 组件 + 4 流量 + 90 秒话术 + 11 兄弟导航
 
 ---
 
-> 📅 2026-07-13 · 11.ai/05-agent-evaluation · ⭐⭐⭐⭐⭐ · 5 组件 + 4 流量 + 显著性 + 4 步灰度 + 6 OSS 实战 + 监控体系
+> 📅 2026-07-13 · 11.ai/06-agent-evaluation · ⭐⭐⭐⭐⭐ · 5 组件 + 4 流量 + 显著性 + 4 步灰度 + 6 OSS 实战 + 监控体系
 
-← [返回: AI 知识体系 · 05-agent-evaluation](README.md)
+← [返回: AI 知识体系 · 06-agent-evaluation](README.md)

@@ -365,7 +365,7 @@ LLM-as-Judge（GPT-4 评分）：
 
 ## 十二、相关章节
 
-- 下游：[Agent 性能评估](../../05-agent-evaluation/README.md) — 从 LLM 单次调用评估 → Agent 多步任务评估（6 维度 + 5 方法）
+- 下游：[Agent 性能评估](../../06-agent-evaluation/README.md) — 从 LLM 单次调用评估 → Agent 多步任务评估（6 维度 + 5 方法）
 - 关联：[生产级 Agent 系统](../../03-engineering/production-agent/README.md) — Shopify Sidekick 的评估实践（LLM-as-Judge + 用户模拟）
 - 关联：[Harness Engineering](../../03-engineering/harness-engineering/README.md) — 评估体系的工程化框架
 - 同模块：[LLM 安全](../05-llm-security/README.md) — 评估的另一个维度：安全性
