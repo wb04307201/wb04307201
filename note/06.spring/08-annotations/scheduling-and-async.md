@@ -230,7 +230,7 @@ public class SchedulingConfig implements SchedulingConfigurer {
 ## 深入阅读
 
 - [04-spring-boot/startup-flow](../04-spring-boot/startup-flow.md) — 启动与后台任务线程池
-- [04-spring-boot/externalized-configuration](../04-spring-boot/externalized-configuration.md) — 线程池配置 externalization
+- [04-spring-boot/externalized-configuration](../04-spring-boot/boot-externalized-configuration.md) — 线程池配置 externalization
 
 ## 相关章节
 

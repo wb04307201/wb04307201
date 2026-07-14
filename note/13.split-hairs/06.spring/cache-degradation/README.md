@@ -315,7 +315,7 @@ public class UserService {
 
 **主模块**：
 - [cache-degradation-and-recovery 深度章节](../../../06.spring/03-data/cache/cache-degradation-and-recovery.md) — 4 方案对比 + Top 1 推荐组合 + 自动恢复 3 机制 + 数据一致性 + 监控告警
-- [@Cacheable 注解用法](../../../06.spring/03-data/cache/annotations-and-usage.md) — 注解基础
+- [@Cacheable 注解用法](../../../06.spring/03-data/cache/cache-annotations-and-usage.md) — 注解基础
 - [缓存实现对比](../../../06.spring/03-data/cache/implementations-and-best-practices.md) — Redis / Caffeine / Ehcache
 - [多级缓存架构](../../../06.spring/03-data/cache/multi-level.md) — 本地 + 分布式架构
 
