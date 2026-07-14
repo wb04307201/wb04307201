@@ -38,6 +38,93 @@ skill 执行：A 类型（技术问答）→ grep "HashMap" → 双层检索（0
   | 面试陷阱 | note/13.split-hairs/01.java/hashmap-thread-safe/ | 并发死循环细节 |
 
 不同点：不凭 LLM 训练知识答 — 每条都附 note/ 实际文章路径
+
+## 50+ 新词检索映射表（2026-07-14 新增）
+
+**今天沉淀 50+ AI/ML 词汇**，按检索映射表快速定位：
+
+### LLM 架构层（5 词）
+
+| 词汇 | 主模块 | 13.split-hairs |
+|------|--------|---------------|
+| Transformer | `11.ai/01-fundamentals/transformer` | `13.split-hairs/11.ai/transformer` |
+| 注意力机制 | `11.ai/01-fundamentals/attention-mechanism` | (在 attention-mechanism 中) |
+| MoE 架构 | `11.ai/01-fundamentals/moe-architecture` | (在 moe-architecture 中) |
+| RoPE 位置编码 | `11.ai/01-fundamentals/rope-position-encoding` | (在 rope 中) |
+| Flash Attention | `11.ai/01-fundamentals/flash-attention` | (在 flash-attention 中) |
+
+### LLM 推理优化（10 词）
+
+| 词汇 | 主模块 | 13.split-hairs |
+|------|--------|---------------|
+| KV Cache | `11.ai/02-technology-stack/kv-cache` | `13.split-hairs/11.ai/llm-inference` |
+| PagedAttention | `11.ai/02-technology-stack/paged-attention` | (在 llm-inference 中) |
+| Continuous Batching | `11.ai/02-technology-stack/continuous-batching` | (在 llm-inference 中) |
+| Speculative Decoding | `11.ai/02-technology-stack/speculative-decoding` | (在 llm-inference 中) |
+| 权重量化 | `11.ai/02-technology-stack/weight-quantization` | (在 llm-inference 中) |
+| MoE 推理 | `11.ai/02-technology-stack/moe-inference` | (在 llm-inference 中) |
+| 推理性能指标 (TTFT/TPOT) | `11.ai/02-technology-stack/inference-metrics` | (在 llm-inference 中) |
+| 推理框架对比 | `11.ai/02-technology-stack/inference-frameworks` | (在 llm-inference 中) |
+| LLM 推理优化大专题 | `11.ai/02-technology-stack/llm-inference-optimization` | `12.story/46-llm-inference` |
+| vLLM / TGI / SGLang | `11.ai/02-technology-stack/inference-frameworks` | - |
+
+### LLM 训练与对齐（10 词）
+
+| 词汇 | 主模块 | 13.split-hairs |
+|------|--------|---------------|
+| SFT | `11.ai/03-engineering/llm-alignment/01-sft` | `13.split-hairs/11.ai/llm-alignment` |
+| RLHF | `11.ai/03-engineering/llm-alignment/02-rlhf` | (在 llm-alignment 中) |
+| PPO | (在 RLHF 中) | (在 llm-alignment 中) |
+| Reward Model | (在 RLHF 中) | - |
+| DPO | `11.ai/03-engineering/llm-alignment/03-dpo` | (在 llm-alignment 中) |
+| Constitutional AI | `11.ai/03-engineering/llm-alignment/04-constitutional-ai` | (在 llm-alignment 中) |
+| KTO / IPO / SimPO | `11.ai/03-engineering/llm-alignment/05-newer-methods` | (在 llm-alignment 中) |
+| ORPO / RFT | (在 newer-methods 中) | - |
+| LLM 对齐专题 | `11.ai/03-engineering/llm-alignment` | (在 llm-alignment 中) |
+
+### LLM 应用层（10 词）
+
+| 词汇 | 主模块 | 13.split-hairs |
+|------|--------|---------------|
+| Lost In the Middle | `11.ai/02-technology-stack/lost-in-middle` | (在 context-engineering-interview 中) |
+| YaRN / RoPE 扩展 | `11.ai/02-technology-stack/yarn-context-extension` | (在 llm-benchmark 中) |
+| Chunking 策略 | `11.ai/02-technology-stack/chunking-strategies` | (在 rag 中) |
+| Embedding 模型 | `11.ai/02-technology-stack/embedding-models` | (在 rag 中) |
+| Hybrid Search | `11.ai/02-technology-stack/hybrid-search` | (在 rag 中) |
+| Reranker | `11.ai/02-technology-stack/reranker` | (在 rag 中) |
+| Query Rewrite | `11.ai/02-technology-stack/query-rewrite` | - |
+| RAG Pipeline | `11.ai/02-technology-stack/rag-pipeline` | - |
+| RAG 评估 | `11.ai/06-agent-evaluation/09-rag-evaluation` | - |
+| RAGAS / TruLens | `11.ai/06-agent-evaluation/09-rag-evaluation` | - |
+
+### 传统 ML 算法（10 词）
+
+| 词汇 | 主模块 | 13.split-hairs |
+|------|--------|---------------|
+| K-means | `02.computer-basics/02-algorithms/clustering/k-means` | `13.split-hairs/02.computer-basics/machine-learning` |
+| 梯度下降 | `02.computer-basics/02-algorithms/optimization/gradient-descent` | (在 machine-learning 中) |
+| PCA | `02.computer-basics/02-algorithms/dimensionality-reduction/pca` | (在 machine-learning 中) |
+| 分支界限 | `02.computer-basics/02-algorithms/search/branch-and-bound` | - |
+| ID3 / C4.5 / CART | `02.computer-basics/02-algorithms/decision-tree` | (在 machine-learning 中) |
+| Random Forest | `02.computer-basics/02-algorithms/ensemble` | - |
+| XGBoost / LightGBM | `02.computer-basics/02-algorithms/ensemble` | - |
+| 集成学习 | `02.computer-basics/02-algorithms/ensemble` | - |
+| 评估指标 (F1/AUC) | (在 machine-learning 面试中) | (在 machine-learning 中) |
+| ML 面试 | - | `13.split-hairs/02.computer-basics/machine-learning` |
+
+### 自动触发流程（改进）
+
+**当用户问"X 是什么"时**：
+1. 查本映射表（X → module 路径）
+2. 读主模块深度 + 13.split-hairs 面试版
+3. 综合回答 + 引用
+
+**示例**：
+```
+用户："DPO 是什么？"
+skill：查表 → DPO 在 11.ai/03-engineering/llm-alignment/03-dpo + 13.split-hairs/11.ai/llm-alignment
+回答：包含 SFT/RLHF 上下文 + DPO 数学保证 + vs RLHF 对比 + 5 大反直觉
+```
 ```
 
 ## When to Use
