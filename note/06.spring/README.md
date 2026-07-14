@@ -33,20 +33,20 @@ module:
 ## 🗺️ 目录导航
 
 > 数字基线：以"分类下 leaf MD 数（含所有子目录与子子目录）"为统计口径。
-> 实际结构 = 24 个 README + 109 篇 leaf 文章，共 133 个 .md 文件。
+> 实际结构 = 24 个 README + 110 篇 leaf 文章，共 134 个 .md 文件。
 
 | 序号 | 分类 | 核心内容 | Leaf 数 | 入口 |
 |:----:|:----|:---------|:-------:|:----:|
 | 01 | **核心容器** | IoC/AOP 原理、Bean 生命周期与循环依赖、FactoryBean、依赖注入（构造器/Setter/字段）、@Configuration Lite/Full、外部化配置、Event 机制、模块依赖、手写 mini Spring | **13** | [01-core/README.md](01-core/README.md) |
 | 02 | **Web 层** | Spring MVC 流程、Filter/Interceptor/AOP 顺序、异常/视图/上传/CORS/i18n/异步、WebFlux 响应式（WebClient/R2DBC/Router Functions/测试）、SSE 实时推送 | **13** | [02-web/README.md](02-web/README.md) |
-| 03 | **数据层** | 声明式/编程式事务、多数据源/JTA、JPA 事务、传播/隔离/失效、Spring Cache（4 大模式 + 多级缓存 + 序列化）、[**MyBatis 全栈 4 主题**](03-data/mybatis/README.md)（架构原理 / 扩展能力 / Spring 整合 / MyBatis-Plus） | **39** | [03-data/README.md](03-data/README.md) |
+| 03 | **数据层** | 声明式/编程式事务、多数据源/JTA、JPA 事务、传播/隔离/失效、Spring Cache（4 大模式 + 多级缓存 + 序列化）、[**MyBatis 全栈 4 主题**](03-data/mybatis/README.md)（架构原理 / 扩展能力 / Spring 整合 / MyBatis-Plus） | **40** | [03-data/README.md](03-data/README.md) |
 | 04 | **Spring Boot** | 自动配置原理、自定义 Condition 扩展、Starter 机制、spring.factories 迁移、启动流程、启动后钩子、外部化配置、内嵌服务器切换、GraalVM Native Image | **9** | [04-spring-boot/README.md](04-spring-boot/README.md) |
 | 05 | **Spring Cloud** | 服务注册/配置中心（含加密）/负载均衡 RPC/熔断/网关（JWT 鉴权）/链路追踪/Stream/Bus/Seata 集成/版本对应 | **12** | [05-spring-cloud/README.md](05-spring-cloud/README.md) |
 | 06 | **集成组件** | Validation（分组/跨字段/自定义）、Retry（Reactive）、StateMachine（持久化/并行）、Batch（重试/重启） | **6** | [06-integration/README.md](06-integration/README.md) |
 | 07 | **可观测性** | Actuator 端点、健康探针、Micrometer（OTLP/LongTaskTimer）、Prometheus+Pushgateway、Grafana Alerting、ELK/Loki | **5** | [07-observability/README.md](07-observability/README.md) |
 | 08 | **注解速查** | 事务/缓存/调度/校验/重试/AOP/Web/JPA/测试/配置/异常 等按场景分类的索引 | **12** | [08-annotations/README.md](08-annotations/README.md) |
 
-**合计**：8 大分类 · **24 个 README · 109 篇 leaf 文章**。
+**合计**：8 大分类 · **24 个 README · 110 篇 leaf 文章**。
 
 ### 3.1 MyBatis 全栈专项（4 主题 · 27 篇）
 

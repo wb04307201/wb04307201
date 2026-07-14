@@ -95,7 +95,7 @@ graph TD
 - **L5 行业应用**（5 leaf + 16 deep）：AI 重塑汽车（Automotive 子 4）、具身智能、AI 撰写 PRD、Shopify AI Agent、12 个行业标杆案例（编程/客服/法律/教育/金融/办公/销售/医疗/制造）
 - **L6 前沿研究**（2 leaf + 1 deep）：沉思模型范式、知识蒸馏（Distillation 子 1）
 - **LLMOps**（5 leaf）：RAG vs Fine-tuning vs Prompt 选型、LLMOps 栈、向量库 vs 缓存、评测体系、安全防护
-- **教学课程**（16 leaf + 49 变体）：AI Agent 应用开发 16 课，每课含 README.md（主索引）+ 1-4 个 README1.md/README2.md/README3.md 变体（UI 截图/补充材料）
+- **教学课程**（16 leaf + 50 变体）：AI Agent 应用开发 16 课，每课含 README.md（主索引）+ 1-4 个 README1.md/README2.md/README3.md 变体（UI 截图/补充材料）
 
 ---
 
