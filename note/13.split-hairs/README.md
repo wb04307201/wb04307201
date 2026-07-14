@@ -28,7 +28,7 @@ module:
 | 编号 | 对齐主模块 | 主题方向 | 篇数 | 子入口 |
 |------|-----------|---------|------|-------|
 | 01 | [`01.java`](../01.java/) | Java 基础陷阱 | 36 | [01.java/](01.java/) |
-| 02 | [`02.computer-basics`](../02.computer-basics/) | 计算机基础（网络 / 操作系统） | 1 | [02.computer-basics/](02.computer-basics/) |
+| 02 | [`02.computer-basics`](../02.computer-basics/) | 计算机基础（网络 / 算法设计 / 操作系统） | 5 | [02.computer-basics/](02.computer-basics/) |
 | 03 | [`03.database`](../03.database/) | 数据库细节 | 29 | [03.database/](03.database/) |
 | 04 | [`04.system-design`](../04.system-design/) | 系统设计难点 | 14 | [04.system-design/](04.system-design/) |
 | 05 | [`05.security`](05.security) | 安全 | 1 | [05.security/](05.security/) |
@@ -37,7 +37,7 @@ module:
 | 11 | [`11.ai`](../11.ai/) | AI 面试深挖 | 30 | [11.ai/](11.ai/) |
 | ✦ | [`14.project-management`](../14.project-management/) | **外链**（决策实战，已迁出） | — | [14.project-management/](../14.project-management/) |
 
-**总计：151 篇面试题**（仅"一题一文"题；03.database 另有多个二级目录索引页、04.system-design 另有多个二级目录索引页）
+**总计：155 篇面试题**（仅"一题一文"题；03.database 另有多个二级目录索引页、04.system-design 另有多个二级目录索引页）
 
 > 各分类的具体子主题（如 Java 集合 / 并发 / JVM；数据库 SQL 优化 / Redis / MVCC；系统设计 MQ / 缓存 / 分布式等）见子目录 README。
 

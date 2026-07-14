@@ -47,6 +47,7 @@ module:
 - **图论算法** — BFS/DFS/最短路径/最小生成树/网络流/拓扑排序
 - **字符串算法** — KMP、Rabin-Karp、Trie、后缀数组
 - 🆕 **[字符串算法深度专题](string-algorithms/README.md)** —— Trie（字典树）/ KMP / AC 自动机（Aho-Corasick）3 大深度 + 完整 Java 实现 + 实战选型决策
+- 🆕 **[贪心算法深度专题](greedy-algorithms/README.md)** —— 核心原理 / 正确性证明（交换论证 + 拟阵）/ 6 大经典问题 / 5 大反模式 / 工业应用
 - **智能优化** — 遗传算法/蚁群算法/模拟退火/粒子群
 - **机器学习** — CNN/Transformer/K-Means/决策树
 
@@ -142,13 +143,17 @@ module:
 
 ---
 
-**深入学习：** [复杂度分析](complexity/) — [时间复杂度](complexity/time-complexity/) · [空间复杂度](complexity/space-complexity/) · [取舍策略](complexity/)
+**深入学习：**
+- [复杂度分析](complexity/) — [时间复杂度](complexity/time-complexity/) · [空间复杂度](complexity/space-complexity/) · [取舍策略](complexity/)
+- 🆕 [贪心算法深度专题](greedy-algorithms/README.md) — 局部最优 → 全局最优 · 证明方法 · 经典问题 · 反模式
+- [字符串算法深度专题](string-algorithms/README.md) — Trie / KMP / AC 自动机
 
 ## 相关章节
 
 - 上游：[`02.computer-basics`](../README.md) — 本模块入口
 - 关联：[`03.database`](../../03.database/README.md) — B+Tree 索引、查询优化
 - 关联：[`04.system-design`](../../04.system-design/README.md) — 算法在系统设计中的应用（缓存、负载均衡、一致性哈希）
+- 面试深挖：[`13.split-hairs 贪心算法`](../../13.split-hairs/02.computer-basics/greedy-algorithms/README.md) — 面试题 + 陷阱表 + 90 秒话术
 
 ---
 
