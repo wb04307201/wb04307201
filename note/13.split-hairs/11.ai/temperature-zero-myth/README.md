@@ -10,7 +10,7 @@ question:
 
 # Temperature=0 为什么输出还会不同 —— 5 大根因 + 3 大防御
 
-> 一句话定位：**Temperature=0 ≠ 完全确定**——5 大根因（GPU 浮点 / Provider 默认值 / Seed 失效 / 版本升级 / Router 负载均衡）。完整深度 + 实战修复见 [主模块 · 不一致与失败处理](../../../../11.ai/03-engineering/llm-production-thinking/03-consistency-and-failure-handling.md)。
+> 一句话定位：**Temperature=0 ≠ 完全确定**——5 大根因（GPU 浮点 / Provider 默认值 / Seed 失效 / 版本升级 / Router 负载均衡）。完整深度 + 实战修复见 [主模块 · 不一致与失败处理](../../../11.ai/03-engineering/llm-production-thinking/03-consistency-and-failure-handling.md)。
 
 > **系列定位**：LLM 调参高频误区题（Anthropic / OpenAI / Google 工程师都考过）。考察的不是"Temperature 是什么"，而是 **5 大根因识别 + 3 大实战防御 + Provider 差异**。
 
@@ -119,7 +119,7 @@ def safe_invoke(query, n_samples=3):
     return samples[int(best_idx) - 1]
 ```
 
-详细方案见 [主模块 · 03-consistency-and-failure-handling](../../../../11.ai/03-engineering/llm-production-thinking/03-consistency-and-failure-handling.md)。
+详细方案见 [主模块 · 03-consistency-and-failure-handling](../../../11.ai/03-engineering/llm-production-thinking/03-consistency-and-failure-handling.md)。
 
 ### 2.2 防御 B：自托管确定性推理（关键场景）
 
@@ -254,7 +254,7 @@ Q5：贵司 LLM 是否自托管？用的哪个推理框架？
 | [agent-performance-evaluation](../agent-performance-evaluation/README.md) | Agent 评估指标 | ⭐⭐⭐⭐ |
 | [ai-coding-roi](../ai-coding-roi/README.md) | AI 编程 ROI | ⭐⭐⭐ |
 | [claude-code-agentic-search](../claude-code-agentic-search/README.md) | Claude Code 搜索模式 | ⭐⭐⭐⭐ |
-| [context-engineering](../context-engineering/README.md) | Context Engineering | ⭐⭐⭐⭐⭐ |
+| [context-engineering](../context-engineering-interview/README.md) | Context Engineering | ⭐⭐⭐⭐⭐ |
 | [dropout-in-llm](../dropout-in-llm/README.md) | LLM Dropout | ⭐⭐⭐ |
 | [function-calling](../function-calling/README.md) | Function Calling | ⭐⭐⭐⭐⭐ |
 | [hallucination](../hallucination/README.md) | 幻觉治理 | ⭐⭐⭐⭐⭐ |
@@ -267,13 +267,13 @@ Q5：贵司 LLM 是否自托管？用的哪个推理框架？
 
 ## 🔗 深度版（主模块）
 
-- [11.ai · 03-consistency-and-failure-handling](../../../../11.ai/03-engineering/llm-production-thinking/03-consistency-and-failure-handling.md) — 不一致与失败处理 + 5 大根因 + 实战防御 + Self-Consistency 投票 + Judge 模型
+- [11.ai · 03-consistency-and-failure-handling](../../../11.ai/03-engineering/llm-production-thinking/03-consistency-and-failure-handling.md) — 不一致与失败处理 + 5 大根因 + 实战防御 + Self-Consistency 投票 + Judge 模型
 
 ---
 
 ## 🔗 相关章节（互链）
 
-- [12.story · 02-system-architecture-evolution](../../../../12.story/02-system-architecture-evolution.md) — 餐厅叙事
+- [12.story · 02-system-architecture-evolution](../../../12.story/02-system-architecture-evolution.md) — 餐厅叙事
 - [11.ai · 11.ai/02-technology-stack/prompt-engineering](../../../../11.ai/02-technology-stack/prompt-engineering/README.md) — 温度参数对 Prompt 影响
 
 ---

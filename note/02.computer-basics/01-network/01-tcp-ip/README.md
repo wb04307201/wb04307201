@@ -319,7 +319,7 @@ tcpdump -i eth0 -w capture.pcap port 443
 
 ## 十一、端口复用机制 · SO_REUSEADDR vs SO_REUSEPORT 深度
 
-> 面试速查版见 [13.split-hairs · port-reuse-so-reuseport](../../../../13.split-hairs/02.computer-basics/port-reuse-so-reuseport/README.md)。
+> 面试速查版见 [13.split-hairs · port-reuse-so-reuseport](../../../13.split-hairs/02.computer-basics/port-reuse-so-reuseport/README.md)。
 
 ### 11.1 3 大场景速查（核心问题：两进程能同监听吗）
 

@@ -339,7 +339,7 @@ public void transfer() {
 }
 ```
 
-> 🔗 **面试深挖版**：[`死锁排查面试题`](../../../13.split-hairs/03.database/deadlock/README.md) — 等待图检测原理 + 间隙锁死锁场景 + performance_schema 实时监控 + 线上排查 5 步法
+> 🔗 **面试深挖版**：[`死锁排查面试题`](../../13.split-hairs/03.database/deadlock/README.md) — 等待图检测原理 + 间隙锁死锁场景 + performance_schema 实时监控 + 线上排查 5 步法
 
 ---
 

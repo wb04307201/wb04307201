@@ -10,9 +10,9 @@ module:
 
 # 多租户 SaaS 架构 —— 从"6 大隔离模型"到生产级实现
 
-> 一句话定位：**多租户的难点不在"隔离"，在"隔离强度 × 规模 × 成本"的三角权衡**。面试速查版见 [13.split-hairs · multi-tenant-saas](../../../13.split-hairs/04.system-design/multi-tenant-saas/README.md)。
+> 一句话定位：**多租户的难点不在"隔离"，在"隔离强度 × 规模 × 成本"的三角权衡**。面试速查版见 [13.split-hairs · multi-tenant-saas](../../../../13.split-hairs/04.system-design/multi-tenant-saas/README.md)。
 
-> **关联章节**：架构演进终局（[12.story · 19-saas-multitenant](../../../../12.story/18-saas-multitenant.md) — 阿明从单店到加盟帝国）、单租户决策 ([14.project-management/self-vs-saas-vs-outsourcing](../../../14.project-management/self-vs-saas-vs-outsourcing/README.md))、架构演进整体路径 ([02-evolution](../../02-evolution/01-monolith-to-microservices/README.md))。
+> **关联章节**：架构演进终局（[12.story · 19-saas-multitenant](../../../../12.story/18-saas-multitenant.md) — 阿明从单店到加盟帝国）、单租户决策 ([14.project-management/self-vs-saas-vs-outsourcing](../../../../14.project-management/self-vs-saas-vs-outsourcing/README.md))、架构演进整体路径 ([02-evolution](../../02-evolution/01-monolith-to-microservices/README.md))。
 
 ---
 
@@ -28,7 +28,7 @@ module:
 5. 计费灵活：按订阅 / 按用量 / 按席位定价
 ```
 
-**反面**：单租户（私有部署）在某些场景反而更优 —— **小客户 < 50 / 高合规要求 / 客户要数据独占**。详见 [14.project-management · self-vs-saas-vs-outsourcing](../../../14.project-management/self-vs-saas-vs-outsourcing/README.md)。
+**反面**：单租户（私有部署）在某些场景反而更优 —— **小客户 < 50 / 高合规要求 / 客户要数据独占**。详见 [14.project-management · self-vs-saas-vs-outsourcing](../../../../14.project-management/self-vs-saas-vs-outsourcing/README.md)。
 
 ### 1.2 多租户的核心矛盾
 
@@ -368,7 +368,7 @@ SentinelApiClient.registerDynamicRule(...);
 
 ## 六、面试题与陷阱表
 
-详见 [13.split-hairs · multi-tenant-saas](../../../13.split-hairs/04.system-design/multi-tenant-saas/README.md)（面试速查版）。
+详见 [13.split-hairs · multi-tenant-saas](../../../../13.split-hairs/04.system-design/multi-tenant-saas/README.md)（面试速查版）。
 
 核心考点：
 1. 6 大隔离模型选型
@@ -397,10 +397,10 @@ SentinelApiClient.registerDynamicRule(...);
 | **架构演进（单体 → 微服务）** | [02-evolution](../../02-evolution/01-monolith-to-microservices/README.md) | 微服务是 SaaS 化的前置条件 |
 | **微服务 vs 单体（面试题）** | [microservices](../microservices/README.md) | 多租户可与微服务结合 |
 | **数据一致性** | [microservices/data-consistency](../microservices/data-consistency/README.md) | 多租户的 Saga / TCC 模式 |
-| **RBAC + ABAC 访问控制** | [../../05-security/access-control](../../05-security/access-control/README.md) | 租户级的访问控制 |
+| **RBAC + ABAC 访问控制** | [../../../../../04.system-design/05-security/access-control](../../../../../04.system-design/05-security/access-control/README.md) | 租户级的访问控制 |
 | **云设计模式** | [../cloud-design-patterns](../cloud-design-patterns/README.md) | K8s Namespace 是云原生多租户基础 |
-| **消费侧决策（买 SaaS vs 自研）** | [../../../14.project-management/self-vs-saas-vs-outsourcing](../../../14.project-management/self-vs-saas-vs-outsourcing/README.md) | 与本主题正交互补 |
-| **面试速查版（13.split-hairs）** | [multi-tenant-saas](../../../13.split-hairs/04.system-design/multi-tenant-saas/README.md) | 本章节的浓缩版 |
+| **消费侧决策（买 SaaS vs 自研）** | [../../../../14.project-management/self-vs-saas-vs-outsourcing](../../../../14.project-management/self-vs-saas-vs-outsourcing/README.md) | 与本主题正交互补 |
+| **面试速查版（13.split-hairs）** | [multi-tenant-saas](../../../../13.split-hairs/04.system-design/multi-tenant-saas/README.md) | 本章节的浓缩版 |
 
 ---
 

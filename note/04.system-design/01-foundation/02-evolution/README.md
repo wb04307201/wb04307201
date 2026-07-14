@@ -210,7 +210,7 @@ ESB（企业服务总线）作为服务间通信的"中介"
 | **测试** | 单元 / 集成 | 黄金集 + LLM-as-Judge |
 | **部署** | Docker 镜像 | LLM API + 提示词 |
 
-详见 [`11.ai/07-llmops`](../../../11.ai/07-llmops/README.md)
+详见 [`11.ai/08-llmops`](../../../11.ai/08-llmops/README.md)
 
 ---
 
