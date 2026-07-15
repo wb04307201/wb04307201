@@ -183,30 +183,48 @@ codex
 
 ## **5. (可选)添加 MCP 工具**
 
-Codex CLI 支持 MCP 协议。用 `codex mcp add` 命令逐个添加：
+Codex CLI 支持 MCP 协议。编辑 `~/.codex/config.toml`，在文件末尾添加 MCP 服务器配置：
 
-```bash
-codex mcp add bing-search npx "bing-cn-mcp@latest"
-codex mcp add chrome-devtools npx "chrome-devtools-mcp@latest"
-codex mcp add mcp-npx-fetch npx "@tokenizin/mcp-npx-fetch@latest"
-codex mcp add sequential-thinking npx "@modelcontextprotocol/server-sequential-thinking@latest"
-codex mcp add time uvx "mcp-server-time" "--local-timezone=Asia/Shanghai"
-codex mcp add playwright npx "@playwright/mcp@latest"
-codex mcp add context7 npx "@upstash/context7-mcp@latest"
+```toml
+[mcp_servers.mcp-npx-fetch]
+command = "npx"
+args = ["@tokenizin/mcp-npx-fetch@latest"]
+startup_timeout_sec = 120
+
+[mcp_servers.sequential-thinking]
+command = "npx"
+args = ["@modelcontextprotocol/server-sequential-thinking@latest"]
+startup_timeout_sec = 120
+
+[mcp_servers.context7]
+command = "npx"
+args = ["@upstash/context7-mcp@latest"]
+startup_timeout_sec = 120
+
+[mcp_servers.bing-search]
+command = "npx"
+args = ["bing-cn-mcp@latest"]
+startup_timeout_sec = 120
+
+[mcp_servers.chrome-devtools]
+command = "npx"
+args = ["chrome-devtools-mcp@latest"]
+startup_timeout_sec = 120
+
+[mcp_servers.playwright]
+command = "npx"
+args = ["@playwright/mcp@latest"]
+startup_timeout_sec = 120
+
+[mcp_servers.time]
+command = "uvx"
+args = ["mcp-server-time", "--local-timezone=Asia/Shanghai"]
+startup_timeout_sec = 120
 ```
 
-每条命令执行后会提示 `Added global MCP server 'xxx'`。添加完可用 `codex mcp list` 查看已安装的服务。
-
-> ⚠️ **首次启动超时问题**：npx 首次运行需下载包，默认 30 秒超时不够用。添加完后需手动编辑 `~/.codex/config.toml`，给每个 npx 服务加 `startup_timeout_sec`：
+> 💡 `startup_timeout_sec = 120` 防止 npx 首次下载包时超时（默认 30 秒不够）。首次下载后后续启动会很快。
 >
-> ```toml
-> [mcp_servers.playwright]
-> command = "npx"
-> args = ["@playwright/mcp@latest"]
-> startup_timeout_sec = 120
-> ```
->
-> 建议所有 npx 服务统一设为 120 秒（首次下载后后续启动会很快）。
+> 添加完可用 `codex mcp list` 查看已安装的服务。
 
 > 🔴 **百炼第三方模型 + MCP 兼容性问题**（2026-07 实测）：
 >
