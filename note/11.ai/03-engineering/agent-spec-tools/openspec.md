@@ -170,7 +170,7 @@ openspec init
 - 对比总览：[Agent Spec Tools 三工具对比](README.md)
 - 同栏目：[Superpowers](superpowers.md) / [Spec-Kit](spec-kit.md)
 - 概念层：[Harness Engineering](../harness-engineering/README.md) — OpenSpec 是"反馈型 Harness"
-- 训练材料：[training/lesson7/README6](../../training/lesson7/README6.md) — OpenSpec 实战训练
+- 训练材料：[training/lesson7/sh-03-speckit](../../training/lesson7/sh-03-speckit.md) — OpenSpec 实战训练
 - Claude Code：[Claude Code 实践](../claude-code-practices/README.md) — CLAUDE.md + OpenSpec 配合使用
 
 ---

@@ -36,17 +36,35 @@ module:
 
 ## 章节导航
 
+### Part A：Claude Code
+
 | 章节 | 文件 | 核心问题 | 建议时长 |
 |:----:|:-----|:---------|:--------:|
-| **第一章** | [Claude Code CLI 配置指南](README1.md) | 如何搭建开发环境？ | 30 min |
-| **第二章** | [MCP 推荐](README2.md) | 哪些 MCP 服务器值得用？ | 30 min |
-| **第三章** | [Claude Code 插件系统](README3.md) | 插件如何提升效率？ | 30 min |
-| **第四章** | [Skills 深度解析](README4.md) | Skills 如何组织和使用？ | 30 min |
-| **第五章** | [规范驱动开发工具对比](README5.md) | 三大 SDD 工具如何选型？ | 40 min |
-| **第六章** | [Spec-Kit 使用说明](README6.md) | Spec-Kit 工作流如何落地？ | 40 min |
-| **第七章** | [Codex CLI 配置指南](README7.md) | OpenAI Codex 如何配置百炼？ | 20 min |
-| **第八章** | [OpenCode CLI 配置指南](README8.md) | OpenCode 如何配置百炼？ | 20 min |
-| **补充** | [实战 Harness 工程 (PDF)](实战Harness工程 V1.4.pdf) | Superpowers 实战案例 | 20 min |
+| A-01 | [Claude Code CLI 配置指南](cc-01-cli.md) | 如何搭建 Claude Code 开发环境？ | 30 min |
+| A-02 | [Claude Code 插件系统](cc-02-plugins.md) | 插件如何提升效率？ | 30 min |
+| A-03 | [Claude Code Skills 深度解析](cc-03-skills.md) | Skills 如何组织和使用？ | 30 min |
+
+### Part B：Codex
+
+| 章节 | 文件 | 核心问题 | 建议时长 |
+|:----:|:-----|:---------|:--------:|
+| B-01 | [Codex CLI 配置指南](cx-01-cli.md) | OpenAI Codex 如何配置百炼？ | 20 min |
+| B-02 | [Codex Superpowers 安装与使用](cx-02-superpowers.md) | 🆕 Codex 如何安装和使用 Superpowers？ | 30 min |
+
+### Part C：OpenCode
+
+| 章节 | 文件 | 核心问题 | 建议时长 |
+|:----:|:-----|:---------|:--------:|
+| C-01 | [OpenCode CLI 配置指南](oc-01-cli.md) | OpenCode 如何配置百炼？ | 20 min |
+
+### Part D：通用主题
+
+| 章节 | 文件 | 核心问题 | 建议时长 |
+|:----:|:-----|:---------|:--------:|
+| D-01 | [MCP 推荐](sh-01-mcp.md) | 哪些 MCP 服务器值得用？ | 30 min |
+| D-02 | [规范驱动开发工具对比](sh-02-sdd.md) | 三大 SDD 工具如何选型？ | 40 min |
+| D-03 | [Spec-Kit 使用说明](sh-03-speckit.md) | Spec-Kit 工作流如何落地？ | 40 min |
+| 补充 | [实战 Harness 工程 (PDF)](实战Harness工程 V1.4.pdf) | Superpowers 实战案例 | 20 min |
 
 ---
 
@@ -56,112 +74,54 @@ module:
 
 ## 🗂️ 文档索引
 
-### [README1.md](README1.md) - Claude Code CLI 配置指南
-- **核心内容**：Claude Code 安装与阿里云百炼平台模型 API 配置
-- **关键知识点**：
-  - Node.js 安装与 Claude Code CLI 部署
-  - 百炼模型配置（千问 Max/Plus/Flash/Turbo/Coder/VL 系列）
-  - MCP 工具集成（time、playwright、fetch）
-  - Windows 环境依赖安装（Node.js、Python+uv、Java+jbang）
-  - 插件系统与 Skills 安装入口
+### Part A：Claude Code
 
-### [README2.md](README2.md) - MCP（Model Context Protocol）推荐
-- **核心内容**：MCP 协议生态与热门服务器推荐
-- **分类清单**：
-  - 🏆 综合资源库（awesome-mcp-servers、mcp.so、Awesome-MCP-ZH）
-  - 🌐 信息检索类（Fetch、Brave Search、arXiv、Context7）
-  - 🧠 思维增强类（Sequential Thinking、Memory Bank）
-  - 💻 开发调试类（Chrome DevTools、GitHub、Apifox、Playwright）
-  - 🗄️ 数据知识库类（Qdrant、Chroma、PostgreSQL、SQLite）
-  - 🚀 部署云服务类（EdgeOne Pages、Cloudflare）
+#### [cc-01-cli.md](cc-01-cli.md) - Claude Code CLI 配置指南
+- **核心内容**：Claude Code 安装与阿里云百炼平台模型 API 配置
+- **关键知识点**：Node.js 安装、百炼模型配置（千问全系列）、MCP 工具集成、Windows 环境依赖、插件与 Skills 入口
+
+#### [cc-02-plugins.md](cc-02-plugins.md) - Claude Code 插件系统
+- **核心内容**：官方与社区插件生态详解
+- **官方热门**：`superpowers` / `frontend-design` / `code-review` / `security-audit` / `test-assistant` / `git-flow`
+- **社区精选**：docker-helper / api-docs-gen / tailwind-studio / db-schema-sync 等
+
+#### [cc-03-skills.md](cc-03-skills.md) - Claude Code Skills 深度解析
+- **核心内容**：Skills 系统架构与热门技能推荐
+- **技术要点**：config.yaml + prompt.md + scripts/ + tools.json 结构，安装与管理命令
+- **热门分类**：开发提效 / 代码质量 / 框架专精 / 运维文档 / 高阶扩展
+
+### Part B：Codex
+
+#### [cx-01-cli.md](cx-01-cli.md) - Codex CLI 配置指南
+- **核心内容**：OpenAI Codex CLI 安装与百炼模型配置
+- **关键知识点**：`~/.codex/config.toml`（TOML）、Responses API vs Chat API、MCP 集成、常见问题排查
+
+#### [cx-02-superpowers.md](cx-02-superpowers.md) - 🆕 Codex Superpowers 安装与使用
+- **核心内容**：在 Codex 中安装和使用 Superpowers 技能体系
+- **关键知识点**：Superpowers 适配差异、AGENTS.md 配置、Skills 目录结构、常用技能实战
+
+### Part C：OpenCode
+
+#### [oc-01-cli.md](oc-01-cli.md) - OpenCode CLI 配置指南
+- **核心内容**：OpenCode CLI 安装与百炼模型配置
+- **关键知识点**：`opencode.json`（JSON）、Anthropic 兼容 API、思考模式、MCP 集成
+
+### Part D：通用主题
+
+#### [sh-01-mcp.md](sh-01-mcp.md) - MCP（Model Context Protocol）推荐
+- **核心内容**：MCP 协议生态与热门服务器推荐（适用所有 Agent）
+- **分类清单**：综合资源库 / 信息检索 / 思维增强 / 开发调试 / 数据知识库 / 部署云服务
 - **场景化组合**：实时研究写作、前端开发调试、自动化任务流等 5 大场景推荐
 
-### [README3.md](README3.md) - Claude Code 插件系统
-- **核心内容**：官方与社区插件生态详解
-- **官方热门插件**：
-  - `superpowers`：全栈开发工作流（需求澄清→任务拆解→TDD→代码审查）
-  - `frontend-design`：高颜值 UI/前端生成
-  - `code-review`：自动化 PR/代码审查
-  - `security-audit`：依赖漏洞扫描与安全加固
-  - `test-assistant`：测试生成与覆盖率分析
-  - `git-flow`：分支策略管理与 Changelog 生成
-- **社区精选插件**：docker-helper、api-docs-gen、tailwind-studio、db-schema-sync 等
-- **管理命令**：search/list/info/update/remove 全套操作指南
-
-### [README4.md](README4.md) - Claude Code Skills 深度解析
-- **核心内容**：Skills 系统架构与热门技能推荐
-- **技术要点**：
-  - Skills 结构：config.yaml + prompt.md + scripts/ + tools.json
-  - 安装与管理：CLI 命令与自定义开发流程
-- **热门 Skills 分类**：
-  - 🛠️ 开发提效：git-workflow、docker-helper、ci-cd-automator
-  - 📝 代码质量：code-review-pro、test-generator、security-audit
-  - 🌐 框架专精：react-nextjs、python-fastapi、rust-async
-  - 📚 运维文档：docs-builder、log-analyzer、infra-terraform
-  - 🧩 高阶扩展：mcp-connector、prompt-library
-- **最佳实践**：权限安全、冲突处理、性能优化建议
-
-### [README5.md](README5.md) - 规范驱动开发工具深度对比
-- **核心内容**：Spec-Kit、Kiro、OpenSpec 三大工具横向评测
-- **工具定位**：
-  - **Spec-Kit**：企业级规范治理（项目宪法强制合规）
-  - **Kiro**：代理式 IDE 原型神器（全流程自动化）
-  - **OpenSpec**：棕地项目安全迭代（变更可审计隔离）
-- **Claude 集成机制**：
-  - Spec-Kit：总指挥模式（子代理分工）
-  - Kiro：嵌入式协作者（自然语言连续对话）
-  - OpenSpec：安全审查官（提案机制+Delta 变更）
-- **实战案例**：添加"用户过滤搜索"功能的时间效率对比（15min vs 10min vs 8min）
+#### [sh-02-sdd.md](sh-02-sdd.md) - 规范驱动开发工具深度对比
+- **核心内容**：Spec-Kit / Kiro / OpenSpec 三大工具横向评测
 - **选型决策树**：企业级新项目 → Spec-Kit；个人快速原型 → Kiro；遗留系统维护 → OpenSpec
 
-### [README6.md](README6.md) - Spec-Kit 规范驱动开发（SDD）工具包使用说明
-- **核心内容**：GitHub 官方 Spec-Kit 完整使用指南，包含核心概念、详细工作流程和最佳实践
-- **标准安装流程**：
-  - 前置条件：Python ≥ 3.11、uv/pipx、Git、AI 代理
-  - 安装命令：`uv tool install specify-cli`
-  - 验证与 PATH 配置
-- **核心概念详解**：
-  - 规范驱动开发（SDD）理念与优势
-  - 项目原则（Constitution）：最高指导文件
-  - 功能规范（Specification）：用户故事、需求、成功标准
-  - 技术计划（Implementation Plan）：技术栈、架构、数据模型
-  - 任务列表（Tasks）：依赖关系、并行执行、测试任务
-- **完整工作流程（5步法+可选步骤）**：
-  1. `/speckit-constitution` → 建立项目原则
-  2. `/speckit-specify` → 创建功能规范
-     - 可选：`/speckit-clarify` 澄清需求，消除歧义
-  3. `/speckit-plan` → 创建技术计划
-     - 可选：`/speckit-checklist` 质量检查清单
-  4. `/speckit-tasks` → 分解为任务
-     - 可选：`/speckit-analyze` 一致性分析
-  5. `/speckit-implement` → 执行实现
-- **辅助命令**：clarify（澄清模糊点）、analyze（一致性检查）、checklist（需求验证）
-- **扩展定制**：社区扩展安装、预设模板应用、优先级覆盖机制
-- **最佳实践**：8条实战建议，涵盖从原则制定到任务分解的全流程
-- **常见问题**：安装、使用、企业环境三大类问题解答
+#### [sh-03-speckit.md](sh-03-speckit.md) - Spec-Kit 规范驱动开发（SDD）工具包
+- **核心内容**：GitHub 官方 Spec-Kit 完整使用指南（5 步法 + 辅助命令 + 最佳实践）
+- **工作流程**：Constitution → Specify → Plan → Tasks → Implement
 
-### [README7.md](README7.md) - Codex CLI 配置指南
-- **核心内容**：OpenAI Codex CLI 安装与阿里云百炼平台模型 API 配置
-- **关键知识点**：
-  - Node.js 安装与 Codex CLI 部署（`npm install -g @openai/codex`）
-  - 配置文件 `~/.codex/config.toml`（TOML 格式）
-  - 两种 API 接入方式：Responses API（qwen3.7-max）vs Chat/Completions API（其他模型）
-  - 环境变量 `OPENAI_API_KEY` 配置
-  - MCP 工具集成（time、playwright、chrome-devtools）
-  - 常见问题排查（401/404/wire_api 兼容性）
-
-### [README8.md](README8.md) - OpenCode CLI 配置指南
-- **核心内容**：OpenCode CLI 安装与阿里云百炼平台模型 API 配置
-- **关键知识点**：
-  - Node.js 安装与 OpenCode CLI 部署（`npm install -g opencode-ai`）
-  - 配置文件 `~/.config/opencode/opencode.json`（JSON 格式）
-  - Anthropic 兼容 API 接入（`@ai-sdk/anthropic` npm 包）
-  - 三种计费方案配置：按量计费 / Token Plan 团队版 / Coding Plan
-  - 思考模式（thinking）配置与多模态（modalities）设置
-  - MCP 工具集成（time、playwright、chrome-devtools）
-  - 常见问题排查（401/404/模型列表为空）
-
-### [实战Harness工程 V1.4.pdf](实战Harness工程 V1.4.pdf)
+#### [实战Harness工程 V1.4.pdf](实战Harness工程 V1.4.pdf)
 - **补充资料**：Superpowers 实战工程案例（从第 5 页开始）
 
 ---
@@ -170,23 +130,45 @@ module:
 
 ```mermaid
 graph TB
-    A[README1: Claude Code 配置] --> B[README2: MCP工具集成]
-    A2[README7: Codex CLI 配置] --> B
-    A3[README8: OpenCode 配置] --> B
-    B --> C[README3: 插件系统]
-    C --> D[README4: Skills技能]
-    D --> E{选择开发范式}
-    E -->|企业级规范| F[README5: 工具对比]
-    E -->|快速原型| F
-    F --> G[README6: Spec-Kit实战]
-    G --> H[PDF: Superpowers工程]
+    subgraph Part_A["Part A: Claude Code"]
+        A1[cc-01: CLI 配置]
+        A2[cc-02: 插件系统]
+        A3[cc-03: Skills]
+    end
+    subgraph Part_B["Part B: Codex"]
+        B1[cx-01: CLI 配置]
+        B2[cx-02: Superpowers 🆕]
+    end
+    subgraph Part_C["Part C: OpenCode"]
+        C1[oc-01: CLI 配置]
+    end
+    subgraph Part_D["Part D: 通用"]
+        D1[sh-01: MCP]
+        D2[sh-02: SDD 对比]
+        D3[sh-03: Spec-Kit]
+    end
+
+    A1 --> A2 --> A3
+    B1 --> B2
+    A1 --> D1
+    B1 --> D1
+    C1 --> D1
+    D1 --> D2 --> D3
+    A3 --> D2
+    B2 --> D2
+    D3 --> H[PDF: Superpowers工程]
 ```
 
 ### 推荐学习顺序
-1. **基础篇**（README1-2）：掌握 Claude Code 配置与 MCP 生态
-2. **进阶篇**（README3-4）：深入插件与 Skills 系统，提升开发效率
-3. **专业篇**（README5-6）：理解规范驱动开发理念，掌握 Spec-Kit 工作流
-4. **实战篇**（PDF）：通过 Harness 工程案例巩固所学
+
+按你使用的 Agent 选择对应 Part 开始：
+
+| Agent | 学习路径 |
+|-------|---------|
+| **Claude Code** | Part A（cc-01 → cc-02 → cc-03）→ Part D（sh-01 → sh-02 → sh-03）→ PDF |
+| **Codex** | Part B（cx-01 → cx-02）→ Part D（sh-01 → sh-02 → sh-03）→ PDF |
+| **OpenCode** | Part C（oc-01）→ Part D（sh-01 → sh-02 → sh-03）→ PDF |
+| **全部了解** | Part A → Part B → Part C → Part D → PDF |
 
 ---
 
