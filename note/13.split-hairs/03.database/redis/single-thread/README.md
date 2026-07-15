@@ -12,7 +12,7 @@ question:
 
 > 一句话定位：**Redis 面试第一题**。考察的不是"Redis 用内存所以快"，而是 **5 大因素的系统性理解** + **epoll/Reactor 底层原理** + **Redis 6.0 网络 IO 多线程** + **与 MySQL 多线程的本质区别**。完整 Redis 体系见 [Redis 主模块](../../../../03.database/07-redis/README.md)。
 
-> **系列定位**：高频 Redis 面试题（必考）。配套兄弟题：[缓存三件套](cache-penetration-breakdown-avalanche/README.md)、[Redis 大 Key](../../redis-big-key/README.md)。
+> **系列定位**：高频 Redis 面试题（必考）。配套兄弟题：[缓存三件套](../cache-penetration-breakdown-avalanche/README.md)、[Redis 大 Key](../../redis-big-key/README.md)。
 
 ---
 
@@ -299,7 +299,7 @@ redis-cli --intrinsic-latency 5
 ## 六、交叉引用
 
 - **Redis 体系**：[Redis 主模块](../../../../03.database/07-redis/README.md) — 为什么快 / 数据类型 / 持久化 / 集群
-- **相关面试题**：[缓存三件套](cache-penetration-breakdown-avalanche/README.md) — 穿透/击穿/雪崩
+- **相关面试题**：[缓存三件套](../cache-penetration-breakdown-avalanche/README.md) — 穿透/击穿/雪崩
 - **相关面试题**：[Redis 大 Key](../../redis-big-key/README.md) — 大 Key 阻塞单线程的危害
 - **相关面试题**：[Redis 持久化](../../redis-persistence/README.md) — RDB/AOF 对性能的影响
 - **Java NIO**：[Java NIO](../../../../01.java/io/nio/README.md) — epoll/selector 的 Java 实现
@@ -307,6 +307,6 @@ redis-cli --intrinsic-latency 5
 
 ## 相关章节
 
-- 深度阅读：[`03.database`](../../03.database/README.md) — 主模块详细内容
+- 深度阅读：[`03.database`](../../../../03.database/README.md) — 主模块详细内容
 
 ← [返回: 咬文嚼字 · Redis single-thread](README.md)

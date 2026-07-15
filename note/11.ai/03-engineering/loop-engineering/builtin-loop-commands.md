@@ -176,7 +176,7 @@ Shift+Tab 切换到 Auto Mode（跳过权限确认）
 - 概念层：[Loop Engineering 综述](README.md) — 循环哲学 + 3 大组件 + 4 大失败模式
 - 实战层：[Ralph Wiggum Loop](ralph-wiggum-loop.md) — 第三方 CLI 工具详细用法
 - 面试题：[13.split-hairs Loop Engineering](../../../13.split-hairs/11.ai/loop-engineering/README.md)
-- 关联：[大模型思维工程 5 问](../../../03-engineering/llm-production-thinking/README.md) — 成本 5 层路由（Loop 的成本控制）
+- 关联：[大模型思维工程 5 问](../llm-production-thinking/README.md) — 成本 5 层路由（Loop 的成本控制）
 
 ---
 

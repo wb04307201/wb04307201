@@ -130,7 +130,7 @@ k = np.argmax(cumsum >= 0.95) + 1
 
 - **本目录**：[t-SNE](../) / [LDA](../) / [Kernel PCA](../)
 - **02 同级**：[K-means](../../clustering/k-means/README.md) / [梯度下降](../../optimization/gradient-descent/README.md)
-- **AI 应用**：[向量检索](../../../11.ai/02-technology-stack/vector-search-algorithms/README.md) 顺带提
+- **AI 应用**：[向量检索](../../../../11.ai/02-technology-stack/vector-search-algorithms/README.md) 顺带提
 
 ---
 

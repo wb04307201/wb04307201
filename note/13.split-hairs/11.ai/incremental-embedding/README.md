@@ -10,7 +10,7 @@ question:
 
 # Incremental Embedding 增量向量化 —— 如何避免全量重新编码？
 
-> 一句话定位：**全量重编 = O(N) 成本 + 一致性问题；增量更新 = 消息队列 + 异步编码 + 索引同步 + 版本管理**。完整深度 + 模型版本切换方案见 [主模块 · vector-search-at-scale 第 5.1 节深度扩展](../../../../11.ai/02-technology-stack/vector-search-at-scale/README.md)。
+> 一句话定位：**全量重编 = O(N) 成本 + 一致性问题；增量更新 = 消息队列 + 异步编码 + 索引同步 + 版本管理**。完整深度 + 模型版本切换方案见 [主模块 · vector-search-at-scale 第 5.1 节深度扩展](../../../11.ai/02-technology-stack/vector-search-at-scale/README.md)。
 
 > **系列定位**：RAG 落地高频追问（阿里 / 字节 / Anthropic / OpenAI 工程师都问过）。考察的不是"全量重编 vs 增量"，而是 **5 大增量更新策略 + 4 大版本兼容方案 + 4 大反模式 + 90 秒话术**。
 
@@ -284,7 +284,7 @@ Q5：贵司 Embedding 模型做过几次升级？遇到过什么问题？
 
 ## 🔗 深度版（主模块）
 
-- [11.ai · vector-search-at-scale 第 5.1 节深度](../../../../11.ai/02-technology-stack/vector-search-at-scale/README.md) — 18 行速查 + 本篇新增深度章节
+- [11.ai · vector-search-at-scale 第 5.1 节深度](../../../11.ai/02-technology-stack/vector-search-at-scale/README.md) — 18 行速查 + 本篇新增深度章节
 
 ---
 

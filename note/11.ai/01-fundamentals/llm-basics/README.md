@@ -30,11 +30,11 @@ module:
 
 | 章节 | 核心内容 | 阅读时长 |
 |------|---------|---------|
-| [01 从 N-gram 到 Transformer](01-ngram-to-transformer.md) | 4 个时代演进 + 为什么 RNN/LSTM 被淘汰 | 25 min |
-| [02 Transformer 架构核心](02-transformer-architecture.md) | Self-Attention + QKV + Multi-Head + 位置编码 | 35 min |
-| [03 预训练与微调](03-pretrain-and-finetune.md) | 预训练目标（MLM/CLM）+ SFT + RLHF + DPO | 30 min |
-| [04 Token 与上下文窗口](04-token-and-context.md) | BPE / WordPiece / SentencePiece + 上下文窗口演进 | 25 min |
-| [05 涌现能力与思维链](05-emergent-and-cot.md) | 涌现 vs 滑鼠效应 + CoT / ReAct / ToT | 20 min |
+| **01 从 N-gram 到 Transformer** | 4 个时代演进 + 为什么 RNN/LSTM 被淘汰 | 25 min |
+| **02 Transformer 架构核心** | Self-Attention + QKV + Multi-Head + 位置编码 | 35 min |
+| **03 预训练与微调** | 预训练目标（MLM/CLM）+ SFT + RLHF + DPO | 30 min |
+| **04 Token 与上下文窗口** | BPE / WordPiece / SentencePiece + 上下文窗口演进 | 25 min |
+| **05 涌现能力与思维链** | 涌现 vs 滑鼠效应 + CoT / ReAct / ToT | 20 min |
 
 ---
 

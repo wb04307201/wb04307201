@@ -217,8 +217,8 @@ Q5：贵司 SaaS 计费是按订阅还是按用量？
 |------|---------|------|
 | [cap-theorem](../cap-theorem/README.md) | CAP / BASE 一致性权衡 | ⭐⭐⭐⭐ |
 | [circuit-breaker](../circuit-breaker/README.md) | 熔断降级与故障隔离 | ⭐⭐⭐⭐ |
-| [distributed-id](../distributed-id/README.md) | 雪花 / Leaf / 号段 | ⭐⭐⭐⭐⭐ |
-| [distributed-transaction](../distributed-transaction/README.md) | Saga / Seata / TCC | ⭐⭐⭐⭐⭐ |
+| [distributed-id](../../../04.system-design/02-distributed/distributed-id/README.md) | 雪花 / Leaf / 号段 | ⭐⭐⭐⭐⭐ |
+| [distributed-transaction](../../../04.system-design/02-distributed/distributed-transaction/README.md) | Saga / Seata / TCC | ⭐⭐⭐⭐⭐ |
 | [idempotency](../idempotency/README.md) | 幂等键 / 状态机 | ⭐⭐⭐⭐ |
 | [microservices-vs-monolith](../microservices-vs-monolith/README.md) | 微服务 6 大优势 | ⭐⭐⭐⭐⭐ |
 | [high-performance/product-search](../high-performance/product-search/README.md) | 商品搜索 4 层架构 | ⭐⭐⭐⭐ |

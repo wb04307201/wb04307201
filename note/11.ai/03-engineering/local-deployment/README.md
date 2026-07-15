@@ -103,10 +103,10 @@ curl http://localhost:8000/v1/chat/completions \
 
 | 主题 | 核心内容 | 阅读时长 |
 |------|---------|---------|
-| [Ollama 实战](ollama.md) | 安装 / 模型管理 / API 集成 / 性能调优 | 20 min |
+| [Ollama 实战](ollama/README.md) | 安装 / 模型管理 / API 集成 / 性能调优 | 20 min |
 | [Open WebUI 可视化](open-webui/README.md) | Ollama 配套 Web UI / 多用户 / RAG | 15 min |
-| [vLLM 部署](vllm.md) | 企业级 GPU 推理 + 性能基准 | 30 min |
-| [国产模型对比](chinese-models.md) | Qwen / DeepSeek / GLM / Yi 横向评测 | 25 min |
+| vLLM 部署 | 企业级 GPU 推理 + 性能基准 | 30 min |
+| 国产模型对比 | Qwen / DeepSeek / GLM / Yi 横向评测 | 25 min |
 
 ---
 

@@ -67,10 +67,10 @@ RoPE(x, m) =
 
 | 主题 | 核心内容 | 阅读时长 |
 |------|---------|---------|
-| [01 位置编码发展史](01-position-encoding-history.md) | 绝对 → 相对 → 旋转 4 阶段 | 20 min |
-| [02 RoPE 数学推导](02-rope-math.md) | 旋转矩阵 + 相对位置证明 | 30 min |
-| [03 长度外推技术](03-length-extrapolation.md) | PI / NTK-aware / YaRN / ABF | 25 min |
-| [04 RoPE 变体对比](04-rope-variants.md) | xPos / CoPE / LongRoPE | 20 min |
+| **01 位置编码发展史** | 绝对 → 相对 → 旋转 4 阶段 | 20 min |
+| **02 RoPE 数学推导** | 旋转矩阵 + 相对位置证明 | 30 min |
+| **03 长度外推技术** | PI / NTK-aware / YaRN / ABF | 25 min |
+| **04 RoPE 变体对比** | xPos / CoPE / LongRoPE | 20 min |
 
 ---
 

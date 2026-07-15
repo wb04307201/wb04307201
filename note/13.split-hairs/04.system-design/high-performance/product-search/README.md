@@ -223,7 +223,7 @@ ES 实现用 `function_score` query：
 ## 五、交叉引用
 
 - **深度实战**：[商品搜索系统设计](../../../../04.system-design/04-high-performance/product-search/README.md) — 架构演进 + 源码级实现
-- 🆕 **相关面试题**：[短链系统设计](../url-shortener/README.md) — Base62 + 发号器 + 302 重定向 + 缓存
+- 🆕 **相关面试题**：[短链系统设计](../../url-shortener/README.md) — Base62 + 发号器 + 302 重定向 + 缓存
 - **相关面试题**：[缓存一致性](../cache-consistency/README.md) — 搜索缓存失效策略
 - **相关面试题**：[分布式锁](../distributed-lock/README.md) — 并发写入保护
 - **相关面试题**：[限流算法](../rate-limiting/README.md) — 大促期间搜索限流
@@ -231,6 +231,6 @@ ES 实现用 `function_score` query：
 
 ## 相关章节
 
-- 深度阅读：[`04.system-design`](../../04.system-design/README.md) — 主模块详细内容
+- 深度阅读：[`04.system-design`](../../../../04.system-design/README.md) — 主模块详细内容
 
 ← [返回: 咬文嚼字 · product-search](README.md)

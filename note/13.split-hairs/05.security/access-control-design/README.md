@@ -10,9 +10,9 @@ question:
 
 # 设计一个统一权限控制系统 —— RBAC + ABAC + 缓存 + 审计
 
-> 一句话定位：**系统设计面试经典题**。考察的不是"RBAC 是什么"，而是**数据模型设计** + **权限判定链路** + **缓存策略** + **审计日志** + **多租户隔离**的工程落地。完整权限模型理论见 [访问控制：6 大权限模型](../../../../04.system-design/05-security/access-control/README.md)。
+> 一句话定位：**系统设计面试经典题**。考察的不是"RBAC 是什么"，而是**数据模型设计** + **权限判定链路** + **缓存策略** + **审计日志** + **多租户隔离**的工程落地。完整权限模型理论见 [访问控制：6 大权限模型](../../../04.system-design/05-security/access-control/README.md)。
 
-> **系列定位**：高频系统设计题（社招必考）。配套兄弟题：[SSO 单点登录](../sso/README.md)、[JWT 安全](../../../../04.system-design/05-security/jwt-security/README.md)。
+> **系列定位**：高频系统设计题（社招必考）。配套兄弟题：[SSO 单点登录](../sso/README.md)、[JWT 安全](../../../04.system-design/05-security/jwt-security/README.md)。
 
 ---
 
@@ -49,7 +49,7 @@ question:
 └─ 90% 企业场景 → RBAC + ABAC 混合（粗粒度用角色，细粒度用属性）
 ```
 
-> 📖 **深度阅读**：[6 大权限模型选型指南](../../../../04.system-design/05-security/access-control/README.md) — DAC / MAC / RBAC / ABAC / ReBAC / 混合
+> 📖 **深度阅读**：[6 大权限模型选型指南](../../../04.system-design/05-security/access-control/README.md) — DAC / MAC / RBAC / ABAC / ReBAC / 混合
 
 ### 1.2 推荐方案：RBAC + ABAC 混合
 
@@ -378,13 +378,13 @@ CREATE TABLE audit_log (
 
 ## 六、交叉引用
 
-- **权限模型理论**：[6 大权限模型](../../../../04.system-design/05-security/access-control/README.md) — DAC / MAC / RBAC / ABAC / ReBAC / 混合
+- **权限模型理论**：[6 大权限模型](../../../04.system-design/05-security/access-control/README.md) — DAC / MAC / RBAC / ABAC / ReBAC / 混合
 - **RBAC 深度**：[RBAC 详解](../../../04.system-design/05-security/access-control/02-role-and-attribute/rbac.md) — 角色继承 / 约束 / 权限分配
 - **ABAC 深度**：[ABAC 详解](../../../04.system-design/05-security/access-control/02-role-and-attribute/abac.md) — 策略引擎 / 属性表达式
 - **SSO**：[SSO 单点登录](../sso/README.md) — 6 大方案选型
-- **JWT**：[JWT 安全](../../../../04.system-design/05-security/jwt-security/README.md) — Token 签发与验证
-- **API 安全**：[API 安全](../../../../04.system-design/05-security/api-security/README.md) — 限流 / 签名 / 防重放
-- **主模块**：[`04.system-design/05-security`](../../../../04.system-design/05-security/README.md) — 安全知识体系
+- **JWT**：[JWT 安全](../../../04.system-design/05-security/jwt-security/README.md) — Token 签发与验证
+- **API 安全**：[API 安全](../../../04.system-design/05-security/api-security/README.md) — 限流 / 签名 / 防重放
+- **主模块**：[`04.system-design/05-security`](../../../04.system-design/05-security/README.md) — 安全知识体系
 
 ## 相关章节
 

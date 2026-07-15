@@ -68,10 +68,10 @@ GPU 计算速度是 HBM 带宽的 ~100x，瓶颈是**内存访问**。
 
 | 主题 | 核心内容 | 阅读时长 |
 |------|---------|---------|
-| [01 Attention IO 瓶颈](01-attention-io-bottleneck.md) | Roofline 模型 + 算术强度分析 | 20 min |
-| [02 分块与 Online Softmax](02-tiling-online-softmax.md) | 数学等价性证明 | 30 min |
-| [03 Flash Attention v1/v2](03-flash-v1-v2.md) | 算法迭代 + CUDA 实现 | 30 min |
-| [04 Flash Attention 3](04-flash-v3.md) | FP8 + WGMMA + Hopper 优化 | 25 min |
+| **01 Attention IO 瓶颈** | Roofline 模型 + 算术强度分析 | 20 min |
+| **02 分块与 Online Softmax** | 数学等价性证明 | 30 min |
+| **03 Flash Attention v1/v2** | 算法迭代 + CUDA 实现 | 30 min |
+| **04 Flash Attention 3** | FP8 + WGMMA + Hopper 优化 | 25 min |
 
 ---
 

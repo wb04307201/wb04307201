@@ -504,8 +504,8 @@ Q3：用户对拒答接受度？
 - [Claude Code Agentic Search 专题](../../../13.split-hairs/11.ai/claude-code-agentic-search/README.md) —— AI Coding 反 RAG
 
 **LLMOps**：
-- [LLM Evaluation](../../04-llm-evaluation/README.md)
-- [LLM Security](../../05-llm-security/README.md)
+- [LLM Evaluation](../04-llm-evaluation/README.md)
+- [LLM Security](../05-llm-security/README.md)
 
 **面试速查**：
 - [13.split-hairs · rag-out-of-domain-rejection](../../../13.split-hairs/11.ai/rag-out-of-domain-rejection/README.md) —— 5 拒答模式 + 4 步调优

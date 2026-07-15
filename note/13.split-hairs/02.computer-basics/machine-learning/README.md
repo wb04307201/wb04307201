@@ -105,7 +105,7 @@ question:
 ## 🔗 兄弟章节
 
 - **主模块深度**：[02-algorithms](../../../02.computer-basics/02-algorithms/README.md)
-- **兄弟面试题**：[字符串算法](../string-algorithms/README.md) / [贪心算法](../greedy-algorithms/README.md) / [复杂度分析](../complexity/README.md)
+- **兄弟面试题**：[字符串算法](../../../02.computer-basics/02-algorithms/string-algorithms/README.md) / [贪心算法](../greedy-algorithms/README.md) / [复杂度分析](../../../02.computer-basics/02-algorithms/complexity/README.md)
 - **AI 关联**：[K-means 聚类](../../../02.computer-basics/02-algorithms/clustering/k-means/README.md) / [梯度下降](../../../02.computer-basics/02-algorithms/optimization/gradient-descent/README.md) / [决策树](../../../02.computer-basics/02-algorithms/decision-tree/README.md)
 
 ---

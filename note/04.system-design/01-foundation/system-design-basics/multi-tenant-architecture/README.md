@@ -397,7 +397,7 @@ SentinelApiClient.registerDynamicRule(...);
 | **架构演进（单体 → 微服务）** | [02-evolution](../../02-evolution/01-monolith-to-microservices/README.md) | 微服务是 SaaS 化的前置条件 |
 | **微服务 vs 单体（面试题）** | [microservices](../microservices/README.md) | 多租户可与微服务结合 |
 | **数据一致性** | [microservices/data-consistency](../microservices/data-consistency/README.md) | 多租户的 Saga / TCC 模式 |
-| **RBAC + ABAC 访问控制** | [../../../../../04.system-design/05-security/access-control](../../../../../04.system-design/05-security/access-control/README.md) | 租户级的访问控制 |
+| **RBAC + ABAC 访问控制** | [../../../../../04.system-design/05-security/access-control](../../../05-security/access-control/README.md) | 租户级的访问控制 |
 | **云设计模式** | [../cloud-design-patterns](../cloud-design-patterns/README.md) | K8s Namespace 是云原生多租户基础 |
 | **消费侧决策（买 SaaS vs 自研）** | [../../../../14.project-management/self-vs-saas-vs-outsourcing](../../../../14.project-management/self-vs-saas-vs-outsourcing/README.md) | 与本主题正交互补 |
 | **面试速查版（13.split-hairs）** | [multi-tenant-saas](../../../../13.split-hairs/04.system-design/multi-tenant-saas/README.md) | 本章节的浓缩版 |

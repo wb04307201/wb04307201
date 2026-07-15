@@ -128,7 +128,7 @@ plt.xlabel('K'); plt.ylabel('WCSS')
 
 - **本目录**：[K-medoids](../) / [EM 算法](../) / [DBSCAN](../)
 - **02 同级**：[梯度下降](../../optimization/gradient-descent/README.md) / [PCA](../../dimensionality-reduction/pca/README.md)
-- **13.split-hairs**：[K-means 面试](../../../13.split-hairs/02.computer-basics/machine-learning/k-means-interview/README.md)
+- **13.split-hairs**：K-means 面试
 
 ---
 

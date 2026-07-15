@@ -28,12 +28,12 @@ module:
 
 | 主题 | 核心内容 | 阅读时长 |
 |------|---------|---------|
-| [01 Attention 数学基础](01-attention-math.md) | QKV 推导 + 缩放因子 √d_k + 掩码 | 25 min |
-| [02 Self / Cross / Causal](02-attention-variants.md) | 三种 QKV 来源 + Decoder-only 因果掩码 | 20 min |
-| [03 Multi-Head Attention](03-mha.md) | 多头并行的 4 大优势 | 20 min |
-| [04 MQA / GQA](04-mqa-gqa.md) | KV Cache 加速的工业级方案 | 25 min |
-| [05 Sparse Attention](05-sparse-attention.md) | Longformer / BigBird 稀疏化 | 20 min |
-| [06 Linear Attention](06-linear-attention.md) | O(n) 复杂度的探索 | 20 min |
+| **01 Attention 数学基础** | QKV 推导 + 缩放因子 √d_k + 掩码 | 25 min |
+| **02 Self / Cross / Causal** | 三种 QKV 来源 + Decoder-only 因果掩码 | 20 min |
+| **03 Multi-Head Attention** | 多头并行的 4 大优势 | 20 min |
+| **04 MQA / GQA** | KV Cache 加速的工业级方案 | 25 min |
+| **05 Sparse Attention** | Longformer / BigBird 稀疏化 | 20 min |
+| **06 Linear Attention** | O(n) 复杂度的探索 | 20 min |
 
 ---
 

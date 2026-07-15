@@ -88,7 +88,7 @@ Q3: 部署形态？
 
 - **L2 栈**：[LLM 驾驭演进史](../../04-architecture/llm-control-evolution/README.md)
 - **L3 同级**：[本地部署](../local-deployment/README.md) / [Spring AI vs Dify](../../04-architecture/spring-ai-vs-dify.md)
-- **训练框架**：[推理引擎选型](../inference-engine-selection/README.md) / [本地部署 open-webui](../local-deployment/open-webui/README.md)
+- **训练框架**：[推理引擎选型](../../../13.split-hairs/11.ai/inference-engine-selection/README.md) / [本地部署 open-webui](../local-deployment/open-webui/README.md)
 
 ---
 

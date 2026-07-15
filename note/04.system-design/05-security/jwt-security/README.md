@@ -314,8 +314,8 @@ public boolean isRevoked(String jti) {
 - [Spring Cloud Gateway JWT 鉴权实现](../../../06.spring/05-spring-cloud/gateway.md) — 网关层 JWT 校验 Filter 的 Java 实现示例
 - 🆕 [SSO 单点登录专题](../sso/README.md) —— SSO 6 大方案（Cookie/CAS/OAuth2+OIDC/SAML/JWT/代理）选型 + JWT 自签实战 1520 行
 - 🆕 [SSO 面试题 7 道](../../../13.split-hairs/05.security/sso/README.md) —— Spring Security + JWT + Refresh Token Rotate 实战话术
-- 🆕 [Cookies vs LocalStorage 会话管理（工程实践）](../../../../../09.front-end/07-security/sessions/README.md) —— 通识翻译稿：4 种浏览器存储 × 会话管理的取舍
-- 🆕 [前端存储方式（咬文嚼字）](../../../../../13.split-hairs/09.front-end/storage/README.md) —— 4 种存储对比表 + 「用户认证用 Cookie + HttpOnly」推荐
+- 🆕 [Cookies vs LocalStorage 会话管理（工程实践）](../../../09.front-end/07-security/sessions/README.md) —— 通识翻译稿：4 种浏览器存储 × 会话管理的取舍
+- 🆕 [前端存储方式（咬文嚼字）](../../../13.split-hairs/09.front-end/storage/README.md) —— 4 种存储对比表 + 「用户认证用 Cookie + HttpOnly」推荐
 
 ---
 

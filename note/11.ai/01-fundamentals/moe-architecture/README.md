@@ -68,11 +68,11 @@ output = Σ (g_i · Expert_i(x))  # 加权求和
 
 | 主题 | 核心内容 | 阅读时长 |
 |------|---------|---------|
-| [01 MoE 核心思想](01-moe-fundamentals.md) | 稀疏激活 + 路由 + 专家 | 25 min |
-| [02 路由机制](02-routing-mechanism.md) | Top-K Gating + 负载均衡 | 25 min |
-| [03 训练挑战](03-training-challenges.md) | 路由坍缩 + 通信优化 | 30 min |
-| [04 推理优化](04-moe-inference.md) | 专家并行 + 缓存策略 | 25 min |
-| [05 代表模型对比](05-moe-models.md) | Mixtral / DeepSeek-V3 / Qwen-MoE | 20 min |
+| **01 MoE 核心思想** | 稀疏激活 + 路由 + 专家 | 25 min |
+| **02 路由机制** | Top-K Gating + 负载均衡 | 25 min |
+| **03 训练挑战** | 路由坍缩 + 通信优化 | 30 min |
+| **04 推理优化** | 专家并行 + 缓存策略 | 25 min |
+| **05 代表模型对比** | Mixtral / DeepSeek-V3 / Qwen-MoE | 20 min |
 
 ---
 

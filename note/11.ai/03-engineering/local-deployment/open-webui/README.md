@@ -117,8 +117,8 @@ OPENAI_API_BASE_URL: https://api.deepseek.com/v1
 ## 🔗 兄弟章节
 
 - **本地部署**：[Ollama 实战](../README.md)
-- **推理引擎**：[vLLM vs Ollama](../../inference-engine-selection/README.md)
-- **RAG 体系**：[LLMOps 章节](../../08-llmops/README.md)
+- **推理引擎**：[vLLM vs Ollama](../../../../13.split-hairs/11.ai/inference-engine-selection/README.md)
+- **RAG 体系**：[LLMOps 章节](../../../08-llmops/README.md)
 
 ---
 

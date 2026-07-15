@@ -11,7 +11,7 @@ module:
 
 > **一句话答案**：Agent Evaluation = **6 大评测维度（任务完成率 / 步骤效率 / 工具使用 / 成本 / 满意度 / 稳定性）+ 5 种评测方法（自动化指标 / 黄金集 / LLM-as-Judge / A/B Test / 用户模拟）+ 持续集成 + 7 反模式**。
 
-← [返回: LLMOps](../README.md) · 兄弟：[LLM 评估](../04-llm-evaluation/README.md) · 面试题：[13.split-hairs Agent 性能评估](../../13.split-hairs/11.ai/agent-performance-evaluation/README.md)
+← [返回: LLMOps](../README.md) · 兄弟：[LLM 评估](../04-llm-evaluation/README.md) · 面试题：[13.split-hairs Agent 性能评估](../../../13.split-hairs/11.ai/agent-performance-evaluation/README.md)
 
 ---
 
@@ -43,7 +43,7 @@ module:
 3. **持续流程**：黄金集 + CI 集成 + 漂移检测 + 灰度发布
 4. **反模式**：单一指标 / 离线一次性 / 忽略用户
 
-完整 5-7 道精选面试题见 [13.split-hairs/11.ai/agent-performance-evaluation](../../13.split-hairs/11.ai/agent-performance-evaluation/README.md)。
+完整 5-7 道精选面试题见 [13.split-hairs/11.ai/agent-performance-evaluation](../../../13.split-hairs/11.ai/agent-performance-evaluation/README.md)。
 
 ---
 
@@ -190,9 +190,9 @@ Agent Evaluation 公式：
 ## 8. 速查 · 关联资源
 
 - **LLM 评估**：[LLM 单次调用评估](../04-llm-evaluation/README.md) —— 331 行深度
-- **面试题**：[13.split-hairs/11.ai/agent-performance-evaluation](../../13.split-hairs/11.ai/agent-performance-evaluation/README.md) —— 7 道精选 Q&A
-- **真实案例**：[05-applications/case-studies/10-salesforce-agentforce/](../05-applications/case-studies/10-salesforce-agentforce/README.md) —— Salesforce Agentforce 评测实践
-- **生产级 Agent**：[03-engineering/production-agent/](../03-engineering/production-agent/README.md) —— Shopify Sidekick 评测流程
+- **面试题**：[13.split-hairs/11.ai/agent-performance-evaluation](../../../13.split-hairs/11.ai/agent-performance-evaluation/README.md) —— 7 道精选 Q&A
+- **真实案例**：[05-applications/case-studies/10-salesforce-agentforce/](../../05-applications/case-studies/10-salesforce-agentforce/README.md) —— Salesforce Agentforce 评测实践
+- **生产级 Agent**：[03-engineering/production-agent/](../../03-engineering/production-agent/README.md) —— Shopify Sidekick 评测流程
 
 ---
 
