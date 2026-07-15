@@ -170,10 +170,38 @@ Claude Code 默认有三种权限模式：
 [更多信息请看：Spec-Kit 规范驱动开发（SDD）工具包使用说明](sh-03-speckit.md)
     
 ## **5. (可选)添加MCP工具**
-1. 打开并编辑配置文件`~/.claude.json`，例如添加如下时间、浏览器操作，浏览器开发者工具等mcp服务
+1. 打开并编辑配置文件`~/.claude.json`，例如添加如下搜索、网页抓取、浏览器操作、结构化推理、时间等 MCP 服务
 ```json
 {
   "mcpServers": {
+    "bing-search": {
+      "args": [
+        "-y",
+        "bing-cn-mcp@latest"
+      ],
+      "command": "npx"
+    },
+    "chrome-devtools": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest"
+      ]
+    },
+    "@tokenizin-agency/mcp-npx-fetch": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@tokenizin/mcp-npx-fetch@latest"
+      ]
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking@latest"
+      ]
+    },
     "time": {
       "command": "uvx",
       "args": [
@@ -188,11 +216,11 @@ Claude Code 默认有三种权限模式：
         "@playwright/mcp@latest"
       ]
     },
-    "chrome-devtools": {
+    "context7": {
       "command": "npx",
       "args": [
         "-y",
-        "chrome-devtools-mcp@latest"
+        "@upstash/context7-mcp@latest"
       ]
     }
   }
