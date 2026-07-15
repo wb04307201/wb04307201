@@ -9,7 +9,7 @@ module:
 
 # 梯度下降（Gradient Descent）
 
-> ⬅️ [返回 02 算法](../README.md) | [返回 02.computer-basics](../../README.md)
+> ⬅️ [返回 02 算法](../../README.md) | [返回 02.computer-basics](../../../README.md)
 
 > **一句话定位**：梯度下降 = **沿负梯度方向迭代更新参数**，**深度学习的优化基石**。BGD / SGD / Mini-Batch / Adam 4 大变体覆盖所有训练场景。
 
@@ -123,4 +123,4 @@ Adam:       m ← β1*m + (1-β1)*g      # 一阶动量
 | ❌ 收敛 = 全局最优 | ✅ 仅保证局部最优 |
 | ❌ 凸函数才有唯一最优 | ✅ 非凸问题 Adam 表现更好 |
 
-← [返回 02 算法](../README.md)
+← [返回 02 算法](../../README.md)

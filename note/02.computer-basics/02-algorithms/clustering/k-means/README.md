@@ -9,7 +9,7 @@ module:
 
 # K-means 聚类算法
 
-> ⬅️ [返回 02 算法](../README.md) | [返回 02.computer-basics](../../README.md)
+> ⬅️ [返回 02 算法](../../README.md) | [返回 02.computer-basics](../../../README.md)
 
 > **一句话定位**：K-means = **基于距离的聚类，迭代分配质心 → 重新聚类**。1967 年 Lloyd 提出，**最经典的无监督学习算法**，是 GMM / DBSCAN 等高级算法的基石。
 
@@ -141,4 +141,4 @@ plt.xlabel('K'); plt.ylabel('WCSS')
 | ❌ 距离只能用欧氏距离 | ✅ 也可曼哈顿 / 余弦 |
 | ❌ K-means 可处理大数据 | ✅ 用 Mini-Batch K-means |
 
-← [返回 02 算法](../README.md)
+← [返回 02 算法](../../README.md)

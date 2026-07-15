@@ -9,7 +9,7 @@ module:
 
 # PCA 主成分分析
 
-> ⬅️ [返回 02 算法](../README.md) | [返回 02.computer-basics](../../README.md)
+> ⬅️ [返回 02 算法](../../README.md) | [返回 02.computer-basics](../../../README.md)
 
 > **一句话定位**：PCA = **找方差最大的正交方向做降维**，**保留 90%+ 信息用 10% 维度**。1901 年 Karl Pearson 提出，**降维算法鼻祖**。
 
@@ -143,4 +143,4 @@ k = np.argmax(cumsum >= 0.95) + 1
 | ❌ 降维越多越好 | ✅ K 太小损失信息 |
 | ❌ PCA 需要标准化 | ✅ 强烈建议（避免大值特征主导）|
 
-← [返回 02 算法](../README.md)
+← [返回 02 算法](../../README.md)

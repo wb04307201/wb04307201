@@ -9,7 +9,7 @@ module:
 
 # 分支界限（Branch and Bound）
 
-> ⬅️ [返回 02 算法](../README.md) | [返回 02.computer-basics](../../README.md)
+> ⬅️ [返回 02 算法](../../README.md) | [返回 02.computer-basics](../../../README.md)
 
 > **一句话定位**：分支界限 = **分支 + 剪枝**的精确求解方法，**用上界/下界剪掉不可能最优的分支**。1960 年 Land 和 Doig 提出，**整数规划 / 旅行商问题（TSP）** 的标准精确解法。
 
@@ -142,4 +142,4 @@ def tsp_branch_bound(dist_matrix):
 
 ---
 
-← [返回 02 算法](../README.md)
+← [返回 02 算法](../../README.md)
