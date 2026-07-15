@@ -173,7 +173,13 @@ document.body.appendChild(script);  // 默认异步加载
 
 ---
 
-## 七、面试话术（90 秒版本）
+## 七、面试话术
+
+### 30 秒版
+
+> "三种加载方式：普通 `<script>` 同步阻塞 HTML 解析；`async` 下载不阻塞、下载完立即执行、顺序不保证；`defer` 下载不阻塞、按声明顺序在 DOMContentLoaded 前执行。业务代码用 `defer`（或 `type=module` 默认 defer），独立埋点用 `async`。"
+
+### 90 秒版本
 
 > 三种加载方式：普通 script 同步阻塞、`async` 异步加载但顺序不保证、`defer` 异步加载且按顺序在 DOMContentLoaded 前执行。
 >

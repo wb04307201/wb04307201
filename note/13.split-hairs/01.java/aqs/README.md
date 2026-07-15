@@ -258,9 +258,25 @@ class OneShotLatch {
 
 ---
 
-## 五、面试话术（30 秒版）
+## 五、面试话术
+
+### 30 秒版
 
 > AQS 是 JUC 包的核心框架，用一个 volatile int state 表示同步状态，用 CLH 变体的双向队列管理等待线程。线程获取失败后会被封装成 Node 加入队列尾部，然后通过 LockSupport.park() 阻塞。释放时通过 unpark() 唤醒后继节点。它支持独占和共享两种模式，ReentrantLock、CountDownLatch、Semaphore 都是基于 AQS 实现的。理解 AQS 关键是掌握 state 的 CAS 操作、节点的 waitStatus 状态转换、以及独占/共享的获取释放流程。
+
+### 90 秒版（展开）
+
+> "AQS（AbstractQueuedSynchronizer）是 Doug Lea 设计的同步器骨架，采用**模板方法模式**：框架实现排队/阻塞/唤醒，子类只需实现 `tryAcquire`/`tryRelease`（独占）或 `tryAcquireShared`/`tryReleaseShared`（共享）几个钩子。
+>
+> **状态**：核心是一个 `volatile int state`，通过 CAS 修改——ReentrantLock 用它记重入次数，Semaphore 记许可数，CountDownLatch 记计数。
+>
+> **队列**：获取失败的线程包装成 Node 入 CLH 变体双向队列尾部（CAS 入队），前驱是 SIGNAL 时才 `LockSupport.park()` 挂起；释放时 `unpark` 后继节点。`waitStatus` 标记节点状态（SIGNAL/CANCELLED/CONDITION/PROPAGATE）。
+>
+> **两种模式**：独占（ReentrantLock）一次只放一个；共享（CountDownLatch/Semaphore/读锁）会向后**传播唤醒**。
+>
+> **公平与否**：非公平锁获取时先直接 CAS 抢一次 state，抢不到再排队，吞吐更高但可能饿死；公平锁严格按队列顺序。
+>
+> **Condition**：每个 Condition 有独立的条件队列，`await` 把节点从同步队列转移到条件队列，`signal` 再转回来。理解这套'state + CLH 队列 + 模板方法'就抓住了 JUC 大半。"
 
 ---
 
