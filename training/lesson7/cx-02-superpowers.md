@@ -2,7 +2,7 @@
 
 # Codex Superpowers 安装与使用
 
-> **一句话定位**：Superpowers 是一套跨 Agent 的**结构化开发方法论**（⭐ 255K+ stars）——Codex CLI 和 Codex App 均可通过**官方插件市场**一键安装，也可手动通过 AGENTS.md 集成。
+> **一句话定位**：Superpowers 是一套跨 Agent 的**结构化开发方法论**（⭐ 255K+ stars）——Codex CLI 通过**原生技能发现**（git clone + symlink）安装，Codex App 通过 Plugins UI 安装，也可通过 AGENTS.md 集成。
 
 ← [Codex CLI 配置](cx-01-cli.md) · [Claude Code 插件系统](cc-02-plugins.md) · [MCP 推荐](sh-01-mcp.md)
 
@@ -43,64 +43,69 @@ Superpowers 支持 10+ 个 Agent，以下是三大 Agent 的安装差异：
 
 | 维度 | Claude Code | Codex CLI | OpenCode |
 |------|------------|-----------|----------|
-| **安装命令** | `/plugin install superpowers@claude-plugins-official` | `/plugins` → search `superpowers` → Install | 读取 INSTALL.md 指令 |
+| **安装方式** | `/plugin install superpowers@claude-plugins-official` | git clone + symlink 到 `~/.agents/skills/`（原生技能发现） | 读取 INSTALL.md 指令 |
 | **项目指令文件** | `CLAUDE.md` | `AGENTS.md` | `.opencode/` 配置 |
-| **插件目录** | `.claude-plugin` | `.codex-plugin` | `.opencode` |
-| **技能目录** | `.claude/skills/` | `.codex/skills/` | 通过配置加载 |
-| **插件市场** | 官方 + Superpowers 市场 | 官方市场 | 手动安装 |
+| **技能发现** | `.claude/skills/` 自动扫描 | `~/.agents/skills/` 自动扫描（启动时） | 通过配置加载 |
+| **技能目录** | `.claude/skills/` | `~/.codex/superpowers/skills/`（symlink 暴露） | 通过配置加载 |
+| **桌面 App** | — | Codex App 侧边栏 Plugins UI 可安装 | — |
 | **Hooks 系统** | `settings.json` | 不支持 | 不支持 |
 
-**关键洞察**：三者共享同一套技能文件（`skills/` 目录），差异仅在于**加载机制**。Superpowers 的仓库为每个 Agent 维护独立的插件包装（`.claude-plugin` / `.codex-plugin` / `.opencode` 等）。
+**关键洞察**：三者共享同一套技能文件（`SKILL.md` 格式），差异仅在于**发现机制**（Claude Code 扫 `.claude/skills/`，Codex 扫 `~/.agents/skills/`，OpenCode 通过配置加载）。
 
 ---
 
 ## 二、安装方式
 
-### 方式一：插件市场安装（推荐）
+> ⚠️ **Codex CLI 没有 `/plugins` 命令**。CLI 使用**原生技能发现**机制（启动时自动扫描 `~/.agents/skills/`），安装方式是 git clone + symlink。Codex **桌面 App** 才有 Plugins 侧边栏 UI。
 
-**Codex CLI**：
+### 方式一：让 Codex 自己装（最快）
 
-```bash
-# 1. 打开插件界面
-/plugins
+在 Codex CLI 中直接输入：
 
-# 2. 搜索 superpowers
-superpowers
-
-# 3. 选择 Install Plugin
+```
+Fetch and follow instructions from https://raw.githubusercontent.com/obra/superpowers/refs/heads/main/.codex/INSTALL.md
 ```
 
-**Codex App**（桌面版）：
+Codex 会读取安装脚本并自动执行（clone + symlink + 验证）。
 
-1. 点击侧边栏的 **Plugins**
-2. 在 **Coding** 分类中找到 **Superpowers**
-3. 点击 **+** 安装，按提示操作
-
-### 方式二：手动安装（适合离线 / 自定义）
+### 方式二：手动安装（推荐，可控）
 
 ```bash
-# 在项目根目录 clone superpowers 仓库
-cd your-project/
-git clone https://github.com/obra/superpowers.git .codex/superpowers
+# macOS / Linux
+git clone https://github.com/obra/superpowers.git ~/.codex/superpowers
+mkdir -p ~/.agents/skills
+ln -s ~/.codex/superpowers/skills ~/.agents/skills/superpowers
+
+# Windows (PowerShell)
+git clone https://github.com/obra/superpowers.git "$env:USERPROFILE\.codex\superpowers"
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.agents\skills"
+cmd /c mklink /J "$env:USERPROFILE\.agents\skills\superpowers" "$env:USERPROFILE\.codex\superpowers\skills"
 ```
 
-然后在项目根目录创建 `AGENTS.md`，添加加载指令：
+**原理**：Codex 启动时扫描 `~/.agents/skills/`，发现 `SKILL.md` 文件自动加载。symlink 让 Superpowers 的所有技能对 Codex 可见。
+
+安装后**重启 Codex CLI**，验证：
+
+```bash
+ls -la ~/.agents/skills/superpowers   # 确认 symlink 存在
+```
+
+**Codex App**（桌面版）：侧边栏 **Plugins** → **Coding** → **Superpowers** → 点击 **+** 安装。
+
+### 方式三：AGENTS.md 跨工具方案（项目级）
+
+如果你同时使用多个 Agent（Codex + Cursor + Amp），可以在项目根目录放一个 `AGENTS.md`，所有工具都会读取：
 
 ```markdown
 # AGENTS.md
 
-## Superpowers
-
-你是一个配备了 Superpowers 技能体系的 AI 编码 Agent。
-在开始任何任务前，读取 `.codex/superpowers/skills/` 目录中的技能定义，
-按技能触发条件自动应用对应的工作流程。
-
-核心规则：
-1. 新功能需求 → brainstorming → writing-plans → 执行
-2. 写代码 → TDD（先写测试）
-3. 遇 bug → systematic-debugging
-4. 提交前 → code-review + verification-before-completion
+## 开发规范
+- 所有新功能必须先写设计文档（brainstorming）
+- 代码实现遵循 TDD 红-绿-重构循环
+- 提交前必须通过 code-review
 ```
+
+这个文件会被 Codex、Cursor、Amp 等多个 Agent 自动识别。
 
 ### 方式三：AGENTS.md 跨工具方案
 
@@ -214,11 +219,12 @@ Superpowers **强制** TDD 循环，不允许跳过：
 ### 4.4 更新 Superpowers
 
 ```bash
-# 插件市场安装的
-/plugins → superpowers → Update
+# CLI 安装的（git clone + symlink）
+cd ~/.codex/superpowers && git pull
+# symlink 自动生效，无需重启
 
-# 手动 clone 安装的
-cd .codex/superpowers && git pull
+# Codex App（桌面版）安装的
+# 侧边栏 Plugins → superpowers → Update
 ```
 
 ---
@@ -227,7 +233,8 @@ cd .codex/superpowers && git pull
 
 ### Q1：安装后 Codex 没有自动使用 Superpowers？
 
-- 确认安装成功：`/plugins` 列表中能看到 superpowers
+- 确认 symlink 存在：`ls -la ~/.agents/skills/superpowers`
+- 确认重启过 Codex CLI（技能在启动时发现）
 - 在项目 AGENTS.md 中显式引用："请按 Superpowers 的 brainstorming 流程"
 - 新会话中首次使用时可能需要手动触发
 
