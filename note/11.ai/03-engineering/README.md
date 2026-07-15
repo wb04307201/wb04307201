@@ -26,6 +26,7 @@ module:
 | [agent-spec-tools](agent-spec-tools/) 🆕 | **Agent Spec Tools** — Superpowers（强制 TDD）/ Spec-Kit（企业 SDD 管线）/ OpenSpec（轻量规范对齐）安装 + 配置 + 对比 | Agent 规范工具链 |
 | [llm-production-thinking](llm-production-thinking/) 🆕 | **大模型思维工程** — 5 大灵魂拷问（Prompt vs if-else / 成本降级 / 一致性 / 超时熔断 / 监控定位）+ 5 层路由 + 双 timeout | LLM 生产工程 |
 | [ai-code-review](ai-code-review/) 🆕 | **AI 代码审核验收** — 6 层审核体系（契约/业务/安全/性能/可测/幻觉）+ 分级门禁矩阵 + 幻觉专项 + 工具链 | AI 产出质量门禁 |
+| [llm-alignment](llm-alignment/) 🆕 | **LLM 对齐** — SFT / RLHF / DPO / Constitutional AI / KTO 五大方法 + 3H 原则 + 数学统一视角 | 让模型听话 |
 
 ### 1.1 学习路径
 
@@ -66,6 +67,7 @@ graph LR
 | **Superpowers** | 14 Skill + 强制 TDD + 7 阶段工作流 + 子 Agent 编排 | Agent 工作流约束 |
 | **Spec-Kit** | GitHub 官方 SDD 管线 + 5 命令 + 30+ Agent 兼容 | 企业规范标准化 |
 | **OpenSpec** | 轻量 Markdown 规范 + /opsx 命令 + AGENTS.md | 快速规范对齐 |
+| **LLM 对齐** | SFT → RLHF → DPO → Constitutional AI → KTO/SimPO，3H 原则（Helpful/Harmless/Honest） | 模型输出对齐人类意图 |
 
 ---
 
@@ -92,6 +94,7 @@ graph LR
   - [openspec](agent-spec-tools/openspec.md) — 轻量规范对齐 + /opsx 命令 + AGENTS.md
 - 🆕 **[llm-production-thinking](llm-production-thinking/)**：5 大灵魂拷问（思维 + 成本 + 一致性 + 熔断 + 监控）+ 5 层路由 + Self-Consistency + 双 timeout
 - 🆕 **[ai-code-review](ai-code-review/)**：AI 生成后端代码审核验收方法论 — 6 层审核体系 + 分级门禁矩阵 + AI 幻觉 5 形态 + 工具链
+- 🆕 **[llm-alignment](llm-alignment/)**（+ 5 子）：LLM 对齐 5 大方法（SFT / RLHF / DPO / Constitutional AI / KTO）+ 3H 原则 + 数学统一视角
 
 ---
 
@@ -144,7 +147,7 @@ graph LR
 | 本地部署 | Ollama · Open WebUI · LM Studio · iFlow CLI |
 | 编排平台 | Dify · Coze · n8n · FastGPT · RAGFlow |
 | AI 编码 | Claude Code · Cursor · Cline · Continue |
-| AI 循环工具 | open-ralph-wiggum · Wiggum CLI · ralph-cli (Rust) |
+| AI 循环工具 | Ralph Wiggum Loop（一行 bash）· Claude Code `/goal` · Codex `/goal` |
 | Agent Spec 工具 | Superpowers · Spec-Kit · OpenSpec |
 
 ---
@@ -153,15 +156,15 @@ graph LR
 
 | 维度 | 数字 |
 |------|------|
-| 一级 leaf README 数 | 11（frameworks / compute-platforms / local-deployment / ai-platforms / claude-code-practices / production-agent / harness-engineering / loop-engineering / **agent-spec-tools** / **llm-production-thinking** / **ai-code-review**） |
-| 二级 leaf README 数 | 11（frameworks:3 + local-deployment:4 + loop-engineering:1 + **agent-spec-tools:3**） |
-| 总 leaf README 数 | 21 |
-| 速查表条目数 | 12 |
+| 一级 leaf README 数 | 12（frameworks / compute-platforms / local-deployment / ai-platforms / claude-code-practices / production-agent / harness-engineering / loop-engineering / agent-spec-tools / llm-production-thinking / ai-code-review / **llm-alignment**） |
+| 二级 leaf README 数 | 16（frameworks:3 + local-deployment:4 + loop-engineering:1 + agent-spec-tools:3 + **llm-alignment:5**） |
+| 总 leaf README 数 | 27 |
+| 速查表条目数 | 13 |
 | 最佳实践条数 | 7 |
 | 常见面试题数 | 9 |
 | 开源参考项目数 | 8 类共 31+ 条 |
-| frontmatter 覆盖 | 21 / 21 = 100% |
-| 文末回链覆盖 | 21 / 21 = 100% |
+| frontmatter 覆盖 | 27 / 27 = 100% |
+| 文末回链覆盖 | 27 / 27 = 100% |
 
 ---
 

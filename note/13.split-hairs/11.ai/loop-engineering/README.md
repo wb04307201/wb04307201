@@ -75,7 +75,7 @@ Task → Agent → 检查结果
 - **真相**：Ralph Wiggum Loop 证明了 **Fresh Context 架构** 完全可行 —— 每轮 Agent 拿到全新 context window，状态靠**文件系统 + git** 持久化，彻底避免 context 退化。
 
 ### 陷阱 6：不知道 "Bash Loop vs Plugin" 两种架构
-- **真相**：Agent 循环有两种架构 —— **Bash Loop**（外部 while 循环，每轮 fresh context，如 open-ralph-wiggum）和 **Plugin**（Agent 内部循环，context 累积，如 Claude Code `/loop`）。前者适合长任务，后者设置更简单。
+- **真相**：Agent 循环有两种架构 —— **Bash Loop**（外部 while 循环，每轮 fresh context，即 Ralph Wiggum Loop 模式）和 **Plugin**（Agent 内部循环，context 累积，如 Claude Code `/loop`）。前者适合长任务，后者设置更简单。
 
 ---
 
