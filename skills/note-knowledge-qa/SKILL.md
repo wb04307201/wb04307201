@@ -783,8 +783,8 @@ grep -rl "Redis" note/ | sort
 
 **联动 skill**：
 - 上游：`note-precipitation-planning`（每答一次 A 类都暴露缺口 → 触发沉淀新主题）
-- 上游：`note-content-quality`（已沉淀的文章质量验收 → 间接影响本 skill 的答案质量）
-- 下游：`note-audit-and-improvement`（本 skill 暴露的高频"note 未覆盖"主题可作为缺口数据）
+- 上游：`note-health`（文章质量验收 + 结构体检 → 间接影响本 skill 的答案质量）
+- 下游：`note-health`（本 skill 暴露的高频"note 未覆盖"主题可作为缺口数据）
 
 ---
 

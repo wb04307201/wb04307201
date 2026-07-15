@@ -1,4 +1,4 @@
-> 迁自 note-content-quality，由 note-health/SKILL.md Phase 2 与 health-workflow.js 调用
+> 由 note-health/SKILL.md Phase 2 与 health-workflow.js 调用
 
 # 单篇质量打分（leaf-quality）
 

@@ -1,4 +1,4 @@
-> 迁自 note-audit-and-improvement，由 note-health/SKILL.md Phase 1/4 调用
+> 由 note-health/SKILL.md Phase 1/4 调用
 
 # 结构类审计扫描（structural-checks）
 

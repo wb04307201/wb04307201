@@ -1,4 +1,4 @@
-> 迁自 note-content-quality Step 1.5，新沉淀文件的结构基线；由 note-health/SKILL.md 与 health-workflow.js 在评价"新文件"时参考
+> 新沉淀文件的结构基线；由 note-health/SKILL.md 与 health-workflow.js 在评价"新文件"时参考
 
 # 新文件质量基线（new-file-baseline）
 
