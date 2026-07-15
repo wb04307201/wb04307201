@@ -307,6 +307,22 @@ OpenCode 原生支持 MCP 协议。在配置文件 `~/.config/opencode/opencode.
     }
   },
   "mcpServers": {
+    "bing-search": {
+      "command": "npx",
+      "args": ["-y", "bing-cn-mcp@latest"]
+    },
+    "chrome-devtools": {
+      "command": "npx",
+      "args": ["-y", "chrome-devtools-mcp@latest"]
+    },
+    "@tokenizin-agency/mcp-npx-fetch": {
+      "command": "npx",
+      "args": ["-y", "@tokenizin/mcp-npx-fetch@latest"]
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking@latest"]
+    },
     "time": {
       "command": "uvx",
       "args": ["mcp-server-time", "--local-timezone=Asia/Shanghai"]
@@ -315,9 +331,9 @@ OpenCode 原生支持 MCP 协议。在配置文件 `~/.config/opencode/opencode.
       "command": "npx",
       "args": ["-y", "@playwright/mcp@latest"]
     },
-    "chrome-devtools": {
+    "context7": {
       "command": "npx",
-      "args": ["-y", "chrome-devtools-mcp@latest"]
+      "args": ["-y", "@upstash/context7-mcp@latest"]
     }
   }
 }

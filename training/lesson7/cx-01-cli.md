@@ -188,6 +188,22 @@ Codex CLI 支持 MCP 协议。打开并编辑配置文件 `~/.codex/config.toml`
 ```toml
 # ... 前面的 model_provider 配置 ...
 
+[mcp_servers.bing-search]
+command = "npx"
+args = ["-y", "bing-cn-mcp@latest"]
+
+[mcp_servers.chrome-devtools]
+command = "npx"
+args = ["-y", "chrome-devtools-mcp@latest"]
+
+[mcp_servers."@tokenizin-agency/mcp-npx-fetch"]
+command = "npx"
+args = ["-y", "@tokenizin/mcp-npx-fetch@latest"]
+
+[mcp_servers.sequential-thinking]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-sequential-thinking@latest"]
+
 [mcp_servers.time]
 command = "uvx"
 args = ["mcp-server-time", "--local-timezone=Asia/Shanghai"]
@@ -196,9 +212,9 @@ args = ["mcp-server-time", "--local-timezone=Asia/Shanghai"]
 command = "npx"
 args = ["-y", "@playwright/mcp@latest"]
 
-[mcp_servers.chrome-devtools]
+[mcp_servers.context7]
 command = "npx"
-args = ["-y", "chrome-devtools-mcp@latest"]
+args = ["-y", "@upstash/context7-mcp@latest"]
 ```
 
 MCP 是一种开放协议，只要是符合该协议开发的工具都可以接入 AI Agent，因此可能需要适配多种语言的环境。
