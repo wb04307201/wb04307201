@@ -280,17 +280,17 @@ opencode
 
 ## **5. (可选)添加 MCP 工具**
 
-OpenCode 原生支持 MCP 协议。在配置文件 `~/.config/opencode/opencode.json` 中添加 `mcpServers` 字段：
+OpenCode 原生支持 MCP 协议。在配置文件 `~/.config/opencode/opencode.json` 中添加 `mcp` 字段：
 
 ```json
 {
   "$schema": "https://opencode.ai/config.json",
   "provider": {
-    "bailian-payg": {
+    "bailian-token-plan": {
       "npm": "@ai-sdk/anthropic",
       "name": "Alibaba Cloud Model Studio",
       "options": {
-        "baseURL": "https://dashscope.aliyuncs.com/apps/anthropic/v1",
+        "baseURL": "https://token-plan.cn-beijing.maas.aliyuncs.com/apps/anthropic/v1",
         "apiKey": "YOUR_API_KEY"
       },
       "models": {
@@ -306,38 +306,43 @@ OpenCode 原生支持 MCP 协议。在配置文件 `~/.config/opencode/opencode.
       }
     }
   },
-  "mcpServers": {
+  "mcp": {
     "bing-search": {
-      "command": "npx",
-      "args": ["-y", "bing-cn-mcp@latest"]
+      "type": "local",
+      "command": ["npx", "-y", "bing-cn-mcp@latest"]
     },
     "chrome-devtools": {
-      "command": "npx",
-      "args": ["-y", "chrome-devtools-mcp@latest"]
+      "type": "local",
+      "command": ["npx", "-y", "chrome-devtools-mcp@latest"]
     },
     "mcp-npx-fetch": {
-      "command": "npx",
-      "args": ["-y", "@tokenizin/mcp-npx-fetch@latest"]
+      "type": "local",
+      "command": ["npx", "-y", "@tokenizin/mcp-npx-fetch@latest"]
     },
     "sequential-thinking": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking@latest"]
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-sequential-thinking@latest"]
     },
     "time": {
-      "command": "uvx",
-      "args": ["mcp-server-time", "--local-timezone=Asia/Shanghai"]
+      "type": "local",
+      "command": ["uvx", "mcp-server-time", "--local-timezone=Asia/Shanghai"]
     },
     "playwright": {
-      "command": "npx",
-      "args": ["-y", "@playwright/mcp@latest"]
+      "type": "local",
+      "command": ["npx", "-y", "@playwright/mcp@latest"]
     },
     "context7": {
-      "command": "npx",
-      "args": ["-y", "@upstash/context7-mcp@latest"]
+      "type": "local",
+      "command": ["npx", "-y", "@upstash/context7-mcp@latest"]
     }
   }
 }
 ```
+
+> ⚠️ **注意格式差异**：OpenCode 的 MCP 配置和 Claude Code 不同：
+> - 键名是 `"mcp"`（不是 `"mcpServers"`）
+> - 每个服务必须有 `"type": "local"`
+> - `command` 是**单个数组**（不是 `command` + `args` 分开写）
 
 MCP 是一种开放协议，只要是符合该协议开发的工具都可以接入 AI Agent，因此可能需要适配多种语言的环境。
 
