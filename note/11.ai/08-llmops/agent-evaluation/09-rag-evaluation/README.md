@@ -9,7 +9,7 @@ module:
 
 # RAG 评估指标与工具
 
-> ⬅️ [返回 L6 Agent 评测](../../README.md)
+> ⬅️ [返回 Agent Evaluation](../../README.md)
 
 > **一句话定位**：RAG 评估 = **量化 RAG 系统的检索质量 + 生成质量**。**RAGAS / TruLens / DeepEval** 3 大工具横评，帮你选对评估方案。
 
@@ -205,4 +205,4 @@ metrics = [
 | ❌ 离线评估好线上也好 | ✅ 线上需持续监控 |
 | ❌ RAGAS 工具多就好 | ✅ 选 3-5 个核心指标即可 |
 
-← [返回 L6 Agent 评测](../../README.md)
+← [返回 Agent Evaluation](../../README.md)

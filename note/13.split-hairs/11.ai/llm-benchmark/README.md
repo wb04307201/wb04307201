@@ -248,7 +248,7 @@ LLM-as-Judge 偏差：
 ## 六、相关章节
 
 - 评估方法论：[`LLM 评估体系`](../../../11.ai/08-llmops/04-llm-evaluation/README.md) — 6 大维度 + 5 种评估方法（自动化/黄金集/LLM-as-Judge/人工/A/B）
-- Agent 评测：[`Agent 评测`](../../../11.ai/06-agent-evaluation/README.md) — 6 大指标维度 + 5 种评估方法
+- Agent 评测：[`Agent 评测`](../../../11.ai/08-llmops/agent-evaluation/README.md) — 6 大指标维度 + 5 种评估方法
 - 幻觉问题：[`LLM 幻觉`](../hallucination/README.md) — TruthfulQA 就是测幻觉的 Benchmark
 - Token 经济学：[`AI 编程 Token 经济学`](../ai-coding-token-economics/README.md) — 评测中的成本维度
 

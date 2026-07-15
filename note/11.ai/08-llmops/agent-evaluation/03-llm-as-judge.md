@@ -1,7 +1,7 @@
 <!--
 module:
-  parent: ai/06-agent-evaluation
-  slug: ai/06-agent-evaluation/03-llm-as-judge
+  parent: ai/08-llmops/agent-evaluation
+  slug: ai/08-llmops/agent-evaluation/03-llm-as-judge
   type: topic
   category: LLM-as-Judge
   summary: LLM-as-Judge 详解 —— Judge 4 大维度 + 多模型投票 + 5 反模式

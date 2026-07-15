@@ -163,7 +163,7 @@ class SOTARAG:
 - **本专题**：[Query Rewrite](../query-rewrite/README.md) / [Hybrid Search](../hybrid-search/README.md) / [Reranker](../reranker/README.md) / [Chunking](../chunking-strategies/README.md) / [Embedding](../embedding-models/README.md)
 - **L1**：[Lost in middle](../lost-in-middle/README.md)
 - **咬文嚼字**：[RAG 面试](../../../../../13.split-hairs/11.ai/rag/README.md)
-- **LLMOps**：[RAG 评估](../../../06-agent-evaluation/09-rag-evaluation/README.md)
+- **LLMOps**：[RAG 评估](../../../08-llmops/agent-evaluation/09-rag-evaluation/README.md)
 
 ---
 

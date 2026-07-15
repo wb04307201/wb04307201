@@ -10,7 +10,7 @@ question:
 
 # Agent A/B Test 系统设计 —— 5 大组件 + 4 流量分配 + 显著性检验 + 5 反模式
 
-> 一句话定位：**AI 场景 A/B Test = 多指标 + 流量分层 + 离线/在线双轨 + 显著性检验 + 自动决策**。完整深度 + 5 流量策略 + 3 OSS 实战见 [主模块 · 06-agent-evaluation/02-ab-testing-design 专章](../../../11.ai/06-agent-evaluation/02-ab-testing-design/README.md)。
+> 一句话定位：**AI 场景 A/B Test = 多指标 + 流量分层 + 离线/在线双轨 + 显著性检验 + 自动决策**。完整深度 + 5 流量策略 + 3 OSS 实战见 [主模块 · agent-evaluation/02-ab-testing-design 专章](../../../11.ai/08-llmops/agent-evaluation/02-ab-testing-design/README.md)。
 
 > **系列定位**：AI Production Engineering 经典追问（Anthropic / OpenAI / 阿里 / 字节 / 美团 工程师高频）。考察的不是"A/B Test 是什么"，而是 **5 大核心组件 + 4 流量分配 + 显著性检验 + 5 反模式 + 90 秒话术**。
 
@@ -305,7 +305,7 @@ Q5：怎么防版本迭代后召回率突变？
 
 ## 🔗 深度版（主模块）
 
-- [11.ai · 06-agent-evaluation/02-ab-testing-design 专章](../../../11.ai/06-agent-evaluation/02-ab-testing-design/README.md) —— 完整深度 + 5 流量策略 + 3 OSS 实战 + Python 完整代码
+- [11.ai · agent-evaluation/02-ab-testing-design 专章](../../../11.ai/08-llmops/agent-evaluation/02-ab-testing-design/README.md) —— 完整深度 + 5 流量策略 + 3 OSS 实战 + Python 完整代码
 
 ---
 

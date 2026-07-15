@@ -471,7 +471,7 @@ module:
 
 ### 主模块 11.ai 专题（深度沉淀）
 
-> 2026-07 新增 Agent A/B Test 评测体系专题（[主模块深度](../11.ai/06-agent-evaluation/README.md) + [面试题版](13.split-hairs/11.ai/agent-ab-testing/README.md)）。
+> 2026-07 新增 Agent A/B Test 评测体系专题（[主模块深度](../11.ai/08-llmops/agent-evaluation/README.md) + [面试题版](13.split-hairs/11.ai/agent-ab-testing/README.md)）。
 > 评测体系覆盖：6 大指标 + 5 种方法 + LLM-as-Judge + Pipeline + 阿里面试 + 7 大反模式 + 选型决策树 + 实战案例。
 
 ## 09.front-end（27 篇）—— 前端细节

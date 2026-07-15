@@ -1,7 +1,7 @@
 <!--
 module:
-  parent: ai/06-agent-evaluation
-  slug: ai/06-agent-evaluation/06-anti-patterns
+  parent: ai/08-llmops/agent-evaluation
+  slug: ai/08-llmops/agent-evaluation/06-anti-patterns
   type: topic
   category: 7 反模式
   summary: Agent 评测 7 大反模式 —— 单一指标 / 一次性 / A/B 太短 / 黄金集不更新 / 阈值 100% / 无漂移告警 / 测试集太干净
