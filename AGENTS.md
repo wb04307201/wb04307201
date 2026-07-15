@@ -52,13 +52,12 @@ PRs should include a concise description, link related issues, and summarize the
 
 ## Skills Reference
 
-`skills/` is the single source of truth for all 4 project skills. `pre-commit` hook (`scripts/sync-skills.sh`) auto-syncs to `.codex/skills/` and `.claude/skills/`. Never edit `.codex/skills/` directly -- always modify `skills/<skill>/SKILL.md`.
+`skills/` is the single source of truth for all 3 project skills. `pre-commit` hook (`scripts/sync-skills.sh`) auto-syncs to `.codex/skills/` and `.claude/skills/`. Never edit `.codex/skills/` directly -- always modify `skills/<skill>/SKILL.md`.
 
 | Skill | Trigger |
 |-------|---------|
 | `note-precipitation-planning` | User asks "where should topic X go in note/" |
-| `note-audit-and-improvement` | User asks "what needs improvement in note/" |
-| `note-content-quality` | User asks "how is the quality of this article" |
+| `note-health` | User asks "what needs improvement in note/" / "how is the quality of this article" (structural audit + content scoring) |
 | `note-knowledge-qa` | User asks a technical question -- retrieve answer from `note/` |
 
 ## Precipitation Modes

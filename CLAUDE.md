@@ -22,7 +22,7 @@ note/
 ├── 14.project-management/
 └── .claude/skills/                # 项目级 meta-skill
     ├── note-precipitation-planning/
-    └── note-audit-and-improvement/
+    └── note-health/
 ```
 
 **3 大沉淀模式**（沉淀主题时按规模选）：
@@ -65,13 +65,12 @@ find note -name "README.md" -exec grep -L "^<!--" {} \;
 
 ## Meta-Skills（项目级）
 
-`skills/` 为 4 个 skill 的**单一来源**，`.claude/skills/` 和 `.codex/skills/` 是自动镜像：
+`skills/` 为 3 个 skill 的**单一来源**，`.claude/skills/` 和 `.codex/skills/` 是自动镜像：
 
 | Skill | 何时用 |
 |-------|--------|
 | `note-precipitation-planning` | 用户问"X 应该沉淀到 note 什么位置？" |
-| `note-audit-and-improvement` | 用户问"note 哪里需要优化？" |
-| `note-content-quality` | 用户问"这篇文章质量怎么样？" |
+| `note-health` | 用户问"note 哪里需要优化？" / "这篇文章质量怎么样？"（结构体检 + 内容打分） |
 | `note-knowledge-qa` | 用户问技术问题，从 note/ 检索回答 |
 
 **改 skill 只改 `skills/`**，pre-commit hook 会自动同步到 `.claude/skills/` 和 `.codex/skills/`。
