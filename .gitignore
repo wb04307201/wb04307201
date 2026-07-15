@@ -14,3 +14,6 @@
 __pycache__/
 *.pyc
 *.pyo
+
+# note-health skill 临时目录（体检扫描输出，不应 commit）
+note/.health-tmp/

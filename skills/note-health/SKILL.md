@@ -1,6 +1,6 @@
 ---
 name: note-health
-description: Use when user asks to audit or improve note/ — "note 哪里需要优化" / "note 有哪些问题" / "扫一遍 note" / "review note" / "体检" (structural audit) OR "评价 note 质量" / "这篇文章质量怎么样" / "质量验收" / "评分" (content quality). 单一分层体检：结构机械扫描 + leaf 判断式打分，全库穷举用 Workflow fan-out。
+description: Use when user asks to audit or improve note/ — "note 哪里需要优化" / "note 有哪些问题" / "扫一遍 note" / "review note" / "体检" (structural audit) OR "评价 note 质量" / "这篇文章质量怎么样" / "质量验收" / "评分" OR "刚写的这篇质量如何" / "新写的 README 看看" (new-file quality). 单一分层体检：结构机械扫描 + leaf 判断式打分，全库穷举用 Workflow fan-out。
 ---
 
 # note-health：note 知识库健康检查
@@ -17,11 +17,15 @@ description: Use when user asks to audit or improve note/ — "note 哪里需要
 
 **原则**：单篇请求绝不启动重型机器；leaf 数 < 10 直接手工打分，不开 workflow。
 
+> leaf 数 ≤ 50 → 按单模块（主循环手工切批）；> 50 → 按全库走 health-workflow.js。
+
 **新文件专属入口**：当用户问的是"评价一个新沉淀的文件 / 这篇新写的质量如何"，Phase 2 在打分前必须先读 `references/new-file-baseline.md` 拿到 10 段结构模板 + 快改/深耕写作模式，作为结构基线；再用 `references/leaf-quality.md` 打分。两者结合判断"是否符合新文件基线 + 是否达到 leaf 质量门槛"。
 
 ## 执行引擎：自底向上 4 相
 
 ### Phase 1 — 结构扫描（主循环内，便宜）
+
+> 执行前先建临时目录：`mkdir -p note/.health-tmp`
 
 读 `references/structural-checks.md`，跑机械扫描：frontmatter 覆盖、orphan 目录、孤链、README 总目录章节锚点、模块均分等。**所有大输出重定向到文件**（`> note/.health-tmp/scan-<phase>-<date>.txt`），不堆进对话。Phase 1 不调 workflow。
 
@@ -39,6 +43,8 @@ find note -name "*.md" | python3 -c "import sys,os; [print(l.strip()) for l in s
 **断点续跑**：脚本本身不做状态持久化；如需续跑，由调用方给 Workflow 工具传 `resumeFromRunId`，让 harness 从上次中断的批次开始。本 skill 不写任何续跑逻辑。
 
 ### Phase 3 — 逐层上卷
+
+> 数据来源：Phase 2 的 workflow 返回值 scored[]（全库）或直接打分结果（单篇/单模块）。逐层上卷 = 在主循环内对 scored[] 按 topic 目录 / module 分组聚合，无需重读正文。
 
 把 leaf findings 逐层上卷：
 - **leaf** → 同 topic 兄弟互链 / 系列完整性（来自 Phase 1）
