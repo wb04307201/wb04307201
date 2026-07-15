@@ -197,6 +197,17 @@ codex mcp add context7 npx "@upstash/context7-mcp@latest"
 
 每条命令执行后会提示 `Added global MCP server 'xxx'`。添加完可用 `codex mcp list` 查看已安装的服务。
 
+> ⚠️ **首次启动超时问题**：npx 首次运行需下载包，默认 30 秒超时不够用。添加完后需手动编辑 `~/.codex/config.toml`，给每个 npx 服务加 `startup_timeout_sec`：
+>
+> ```toml
+> [mcp_servers.playwright]
+> command = "npx"
+> args = ["@playwright/mcp@latest"]
+> startup_timeout_sec = 120
+> ```
+>
+> 建议所有 npx 服务统一设为 120 秒（首次下载后后续启动会很快）。
+
 MCP 是一种开放协议，只要是符合该协议开发的工具都可以接入 AI Agent，因此可能需要适配多种语言的环境。
 
 ### 1. **Node.js + npx**
