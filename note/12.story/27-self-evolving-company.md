@@ -512,17 +512,12 @@ graph TD
 ---
 
 
-### 跨章节衔接
-
-- 11.ai/01-fundamentals/README.md —— LLM 基础概念 —— 理解 Agent Loop 五层循环的技术基础
-- 11.ai/02-technology-stack/README.md —— AI 技术栈全景 —— 自我进化型组织的工具栈基础
-
 ## 跨章节衔接
 
 - [01-ai-agent-architecture.md](./01-ai-agent-architecture.md) —— 续集一，自进化组织的多 Agent 架构基础：组织级 Agent 的分层设计
 - [09-cicd-devops.md](./09-cicd-devops.md) —— 正传 5，自进化组织的 CI/CD：组织变更的自动化与可回滚
 - [15-incident-response.md](./15-incident-response.md) —— 正传 9，自进化组织的故障应急：Agent 自我修复与人机协同
-- [28-ai-native-startup.md](./26-ai-native-startup.md) —— 续集四，自进化组织在 AI 原生创业中的形态：天然适配的创业组织
+- [26-ai-native-startup.md](./26-ai-native-startup.md) —— 续集四，自进化组织在 AI 原生创业中的形态：天然适配的创业组织
 
 ---
 
