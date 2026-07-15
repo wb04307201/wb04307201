@@ -17,3 +17,6 @@ __pycache__/
 
 # note-health skill 临时目录（体检扫描输出，不应 commit）
 note/.health-tmp/
+
+# Obsidian 工作区配置（个人/机器级，不应 commit）
+note/.obsidian/
