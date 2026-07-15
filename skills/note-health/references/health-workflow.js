@@ -48,6 +48,7 @@ const scored = await pipeline(
   batches,
   (batch, _orig, idx) => agent(
     `你是 note 内容质量评审。严格按 skills/note-health/references/leaf-quality.md 的规则给下列文件逐篇打分。\n` +
+    `若某文件是新沉淀/新写的（如路径含近期新增、或内容是初稿），先参考 skills/note-health/references/new-file-baseline.md 的 10 段结构基线，再按 leaf-quality.md 打分。\n` +
     `先按路径判断模块类型(A~G)，再用「通用 6 维度 + 该模块专属维度」评分，输出每篇的 total/maxScore/grade + 修复建议 findings。\n` +
     `文件清单(批 ${idx + 1}):\n${batch.map(f => '- ' + f).join('\\n')}`,
     { label: `score:batch-${idx + 1}`, phase: 'Score', schema: SCHEMA }

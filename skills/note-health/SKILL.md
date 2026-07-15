@@ -21,6 +21,8 @@ description: Use when user asks to audit or improve note/ — "note 哪里需要
 
 **新文件专属入口**：当用户问的是"评价一个新沉淀的文件 / 这篇新写的质量如何"，Phase 2 在打分前必须先读 `references/new-file-baseline.md` 拿到 10 段结构模板 + 快改/深耕写作模式，作为结构基线；再用 `references/leaf-quality.md` 打分。两者结合判断"是否符合新文件基线 + 是否达到 leaf 质量门槛"。
 
+> 判定为"新文件"的启发：用户提到"刚写的 / 新沉淀的 / 这次新加的 / 初稿"，或 git 近期新增（git log --since 近几天 --diff-filter=A）。
+
 ## 执行引擎：自底向上 4 相
 
 ### Phase 1 — 结构扫描（主循环内，便宜）
