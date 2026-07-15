@@ -23,10 +23,10 @@ module:
 | 01 | [L1 基础概念](01-fundamentals/) | LLM 定义 · Transformer · 神经网络层次 · Embedding · Dense vs MoE | [子入口](01-fundamentals/) |
 | 02 | [L2 技术栈](02-technology-stack/) | 61 核心概念全景 · 多模态 · Prompt/Context/Harness/Loop · Function Calling · Token 计费 | [子入口](02-technology-stack/) |
 | 03 | [L3 工程实践](03-engineering/) | 深度学习/LLM 应用框架 · 计算平台 · 本地部署 · Dify/Coze · Claude Code · Agent 4 阶段 | [子入口](03-engineering/) |
-| 04 | [L4 架构设计](04-architecture/) | 智能系统分层 · AI + BPMN 融合 · DAG vs ReAct · 本体驱动 Agent · 2026 趋势 | [子入口](04-architecture/) |
+| 04 | [L4 架构设计](04-architecture/) | 智能系统分层 · Agent 架构/上下文/记忆/执行 · 路由架构 · 本体驱动 · 2026 趋势 | [子入口](04-architecture/) |
 | 05 | [L5 行业应用](05-applications/) | 汽车 · 具身智能 · AI 撰写 PRD · Shopify AI · 12 个行业标杆案例 | [子入口](05-applications/) |
 | 06 | [L6 Agent 评测](06-agent-evaluation/) | 6 大指标 · 5 种方法 · LLM-as-Judge · Pipeline · 阿里面试 · 7 反模式 · 选型决策树 | [子入口](06-agent-evaluation/) |
-| 07 | [L7 前沿研究](07-research/) | 沉思模型 · 知识蒸馏 · 推理增强 · 多模态融合 | [子入口](07-research/) |
+| 07 | [L7 前沿研究](07-research/) | 沉思模型 · 知识蒸馏 | [子入口](07-research/) |
 | 08 | [L8 LLMOps](08-llmops/) | RAG vs 微调 · LLMOps 栈 · 向量库 vs 缓存 · 评测 · 安全 | [子入口](08-llmops/) |
 | 09 | [教学课程](training/) | AI Agent 应用开发 16 课培训（Spring AI · MCP · Skills · 多智能体 · 安全） | [子入口](training/) |
 
@@ -47,10 +47,11 @@ module:
 graph TD
     L1["L1 基础概念<br/>AI/ML/DL/LLM 定义 · Transformer"] --> L2["L2 技术栈全景<br/>61 核心概念 · 多模态 · Prompt/Context/Harness/Loop"]
     L2 --> L3["L3 工程实践<br/>框架 · 计算平台 · 部署 · Agent 4 阶段"]
-    L3 --> L4["L4 架构设计<br/>智能系统分层 · BPMN+AI · DAG vs ReAct"]
+    L3 --> L4["L4 架构设计<br/>智能系统分层 · Agent 四维度 · 路由 · 本体驱动"]
     L4 --> L5["L5 行业应用<br/>汽车 · 具身智能 · 12 案例"]
     L5 --> L6["L6 Agent 评测<br/>6 大指标 · 5 方法 · Pipeline"]
     L6 --> L7["L7 前沿研究<br/>沉思模型 · 蒸馏"]
+    L4 --> L7
     L2 --> L8["L8 LLMOps<br/>RAG · 向量库 · 评测 · 安全"]
     L3 --> Training["教学课程<br/>16 课 AI Agent 实战"]
 ```
@@ -90,14 +91,15 @@ graph TD
 
 ## 4. 核心内容（按子模块展开）
 
-- **L1 基础概念**（5 leaf）：AI/ML/DL/LLM 基础定义、Transformer 架构、神经网络层次、Embedding 本质、Dense vs MoE 选型
-- **L2 技术栈**（7 leaf + 5 deep）：61 核心概念全景图、多模态（2 子）、Prompt/Context/Harness/Loop 四阶段演进（Prompt 子 3）、Function Calling、显存估算、Token 计费
-- **L3 工程实践**（8 leaf + 7 deep）：深度学习/大模型应用框架选型（Frameworks 子 3）、CUDA/ROCm/CANN 计算平台对比、Ollama/Open WebUI/iFlow CLI 本地部署（4 子）、Dify/Coze 编排平台、Claude Code 实践、Production Agent
-- **L4 架构设计**（4 leaf + 1 单文件）：智能系统三层分层、Agent 4 大架构对比选型、本体驱动 Agent、2026 AI 技术矩阵；外加 `bpmn-ai-integration.md` 单文件
+- **L1 基础概念**（10 leaf）：AI/ML/DL/LLM 基础定义、Transformer 架构、神经网络层次、Embedding 与向量化、Dense vs MoE 选型、Attention 机制、Flash Attention、Dropout、RoPE 位置编码
+- **L2 技术栈**（28 leaf + 5 deep）：61 核心概念全景图、多模态（2 子）、Prompt Engineering（3 子）、Context/Harness/Loop 演进、Function Calling、RAG Pipeline、向量搜索、Reranker、KV Cache、推理优化、显存估算、Token 计费等
+- **L3 工程实践**（12 leaf + 8 deep）：深度学习/大模型应用框架选型（Frameworks 子 3）、CUDA/ROCm/CANN 计算平台对比、Ollama/Open WebUI/iFlow CLI 本地部署（3 子 + 1 孙）、Dify/Coze AI 平台、Claude Code 实践、Harness/Loop 工程、Production Agent、AI 代码审查、LLM 对齐
+- **L4 架构设计**（9 leaf + 2 单文件）：智能系统分层、Agent 架构/上下文/记忆/执行模式、路由架构、本体驱动 Agent、LLM 驾驭演进、2026 趋势；外加 `bpmn-ai-integration.md`、`spring-ai-vs-dify.md` 单文件
 - **L5 行业应用**（5 leaf + 16 deep）：AI 重塑汽车（Automotive 子 4）、具身智能、AI 撰写 PRD、Shopify AI Agent、12 个行业标杆案例（编程/客服/法律/教育/金融/办公/销售/医疗/制造）
-- **L6 前沿研究**（2 leaf + 1 deep）：沉思模型范式、知识蒸馏（Distillation 子 1）
-- **LLMOps**（5 leaf）：RAG vs Fine-tuning vs Prompt 选型、LLMOps 栈、向量库 vs 缓存、评测体系、安全防护
-- **教学课程**（16 leaf + 50 变体）：AI Agent 应用开发 16 课，每课含 README.md（主索引）+ 1-4 个 README1.md/README2.md/README3.md 变体（UI 截图/补充材料）
+- **L6 Agent 评测**（2 leaf + 8 单文件）：A/B 测试设计、RAG 评测；6 大指标、5 种方法、LLM-as-Judge、评测 Pipeline、阿里面试、7 反模式、选型决策树、实践案例（均为单文件）
+- **L7 前沿研究**（2 leaf + 1 deep）：沉思模型范式、知识蒸馏（Distillation 子 1）
+- **L8 LLMOps**（7 leaf）：RAG vs Fine-tuning vs Prompt 选型、LLMOps 栈、向量库 vs 缓存、评测体系、安全防护、RAG 域外拒识、Agentic Search vs RAG
+- **教学课程**（16 leaf + 42 变体）：AI Agent 应用开发 16 课，每课含 README.md（主索引）+ 1-4 个 README1.md/README2.md/README3.md 变体（UI 截图/补充材料）
 
 ---
 
@@ -156,32 +158,35 @@ graph TD
 
 | 维度 | 数字 |
 |------|------|
-| 一级分类数 | 8（L1-L6 + LLMOps + training） |
-| 总 README 数（仅标准 README.md） | 90（1 顶层 + 8 分类 + 81 leaf） |
-| 总文件数 | 251 |
-| 总目录数 | 158 |
-| 总变体 README 文件数（README1/2/3.md 等） | 49（见下注） |
-| 总 README（含变体） | 139（90 + 49） |
+| 一级分类数 | 9（L1-L8 + training） |
+| 总 README 数（仅标准 README.md） | 131（1 顶层 + 9 模块 + 121 子内容） |
+| 总文件数（.md） | 253 |
+| 总目录数 | 174 |
+| 总变体 README 文件数（README1/2/3.md 等） | 42（见下注） |
+| 总 README（含变体） | 173（131 + 42） |
 
-### 8 分类 leaf 数量明细
+### 9 分类内容数量明细
 
-| 分类 | 一级 leaf | 二级 leaf | 合计 |
-|------|----------|----------|------|
-| 01-fundamentals | 5 | 0 | 5 |
-| 02-technology-stack | 7 | 5 | 12 |
-| 03-engineering | 8 | 7 | 15 |
-| 04-architecture | 4 | 0 | 4 |
-| 05-applications | 5 | 16 | 21 |
-| 07-research | 2 | 1 | 3 |
-| 08-llmops | 5 | 0 | 5 |
-| training | 16 | 0 | 16 |
-| **leaf 合计** | **52** | **29** | **81** |
+| 分类 | 直接子目录 | 单文件 | 深层嵌套 | 子 README 数 |
+|------|----------|--------|---------|-------------|
+| 01-fundamentals | 10 | 0 | 0 | 10 |
+| 02-technology-stack | 28 | 0 | 5 | 33 |
+| 03-engineering | 12 | 0 | 8 | 20 |
+| 04-architecture | 9 | 2 | 0 | 10 |
+| 05-applications | 5 | 0 | 16 | 21 |
+| 06-agent-evaluation | 2 | 8 | 0 | 2 |
+| 07-research | 2 | 0 | 1 | 3 |
+| 08-llmops | 7 | 0 | 0 | 7 |
+| training | 16 | 0 | 43 | 16 |
+| **合计** | **91** | **10** | **73** | **122** |
 
-> 注 1：04-architecture 含 1 个单文件 `bpmn-ai-integration.md`（BPMN + AI 融合），不在 leaf README 计数内
+> 注 1：04-architecture 含 2 个单文件（`bpmn-ai-integration.md` BPMN+AI 融合、`spring-ai-vs-dify.md` Spring AI vs Dify 对比），不在子目录计数内
 >
-> 注 2：教学课程 lesson1-16 内有 README1.md / README2.md / README3.md 变体共 49 个文件，主要承载 UI 截图（Coze/Dify 教程界面，详见 CONTRIBUTING.md §5.3），不计入 leaf README 计数
+> 注 2：06-agent-evaluation 含 8 个单文件（6 大指标 / 5 种方法 / LLM-as-Judge / Pipeline / 阿里面试 / 7 反模式 / 选型决策树 / 实践案例），不在子目录计数内
 >
-> 注 3：frontmatter 覆盖率与文末回链覆盖见各分类 README 自身的"📊 本节统计"段
+> 注 3：教学课程 lesson1-16 内有 README1.md / README2.md / README3.md 变体共 42 个文件，主要承载 UI 截图（Coze/Dify 教程界面，详见 CONTRIBUTING.md §5.3），不计入标准 README 计数
+>
+> 注 4：frontmatter 覆盖率与文末回链覆盖见各分类 README 自身的"📊 本节统计"段
 
 ---
 

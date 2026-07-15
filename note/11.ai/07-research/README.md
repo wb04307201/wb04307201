@@ -30,27 +30,29 @@ module:
 
 ---
 
+> 🚧 本模块仍在建设中。已覆盖：**沉思模型**（rumination-models）、**知识蒸馏**（distillation）。以下方向待补充：CoT / ToT、量化、剪枝、多模态融合、架构创新（MoE / Mamba / RetNet）、安全与对齐（RLHF / DPO / 幻觉治理 / 红队测试）。
+
 ## 2. 研究版图
 
 ```
 AI 前沿研究
 ├── 🧠 推理增强
-│   ├── 沉思模型（Rumination）      ← 从"快速回答"到"深度思考"
-│   ├── Chain-of-Thought (CoT)       ← 思维链推理
-│   └── Tree-of-Thought (ToT)        ← 思维树搜索
+│   ├── 沉思模型（Rumination）      ← 从"快速回答"到"深度思考" ✅
+│   ├── Chain-of-Thought (CoT)       ← 思维链推理（待补充）
+│   └── Tree-of-Thought (ToT)        ← 思维树搜索（待补充）
 ├── 📦 模型效率
-│   ├── 知识蒸馏（Distillation）     ← 大模型 → 小模型
-│   ├── 量化（Quantization）         ← FP32 → INT8/INT4
-│   └── 剪枝（Pruning）             ← 去除冗余参数
-├── 🔀 多模态融合
+│   ├── 知识蒸馏（Distillation）     ← 大模型 → 小模型 ✅
+│   ├── 量化（Quantization）         ← FP32 → INT8/INT4（待补充）
+│   └── 剪枝（Pruning）             ← 去除冗余参数（待补充）
+├── 🔀 多模态融合（待补充）
 │   ├── 视觉-语言模型（VLM）        ← GPT-4V / Gemini / Qwen-VL
 │   ├── 音频-语言模型                ← Whisper + LLM
 │   └── 视频理解                     ← 时序建模 + 多帧推理
-├── 🏗️ 架构创新
+├── 🏗️ 架构创新（待补充）
 │   ├── MoE（Mixture of Experts）    ← 稀疏激活降低推理成本
 │   ├── Mamba / State Space Models   ← 线性复杂度替代 Transformer
 │   └── RetNet                       ← 保留多尺度时序信息
-└── 🛡️ 安全与对齐
+└── 🛡️ 安全与对齐（待补充）
     ├── RLHF / DPO                   ← 人类反馈强化学习
     ├── 幻觉（Hallucination）治理     ← RAG / 事实核查
     └── 红队测试（Red Teaming）       ← 对抗性安全评估
@@ -60,16 +62,16 @@ AI 前沿研究
 
 ## 3. 速查表
 
-| 方向 | 关键进展（2026） | 影响 |
-|------|----------------|------|
-| **推理模型** | o3 / o4-mini、Claude 4、Gemini 2.5 Pro | 代码/数学能力大幅跃升 |
-| **多模态** | GPT-4o、Gemini 2.0、Qwen2.5-VL | 视觉/音频/视频统一理解 |
-| **MoE 架构** | Mixtral、DBRX、Gemma 2 | 稀疏激活降低 60-80% 推理成本 |
-| **长上下文** | 100K-1M+ tokens | 全书摘要、代码库理解 |
-| **Agent 框架** | Claude MCP、OpenAI Assistants | 工具调用 + 多步推理 |
-| **端侧部署** | Phi-3、Gemma 2B、Qwen2-0.5B | 手机/IoT 设备离线推理 |
-| **Mamba/SSM** | Mamba 1/2、RetNet、RWKV | 线性复杂度替代 Transformer |
-| **沉思模型** | GLM-Z1-Rumination | 深度推理 + 自我反思 |
+| 方向 | 关键进展（2026） | 影响 | 状态 |
+|------|----------------|------|------|
+| **推理模型** | o3 / o4-mini、Claude 4、Gemini 2.5 Pro | 代码/数学能力大幅跃升 | ✅ 部分覆盖 |
+| **多模态** | GPT-4o、Gemini 2.0、Qwen2.5-VL | 视觉/音频/视频统一理解 | （待补充） |
+| **MoE 架构** | Mixtral、DBRX、Gemma 2 | 稀疏激活降低 60-80% 推理成本 | （待补充） |
+| **长上下文** | 100K-1M+ tokens | 全书摘要、代码库理解 | （待补充） |
+| **Agent 框架** | Claude MCP、OpenAI Assistants | 工具调用 + 多步推理 | （待补充） |
+| **端侧部署** | Phi-3、Gemma 2B、Qwen2-0.5B | 手机/IoT 设备离线推理 | （待补充） |
+| **Mamba/SSM** | Mamba 1/2、RetNet、RWKV | 线性复杂度替代 Transformer | （待补充） |
+| **沉思模型** | GLM-Z1-Rumination | 深度推理 + 自我反思 | ✅ 已覆盖 |
 
 ---
 
@@ -134,7 +136,7 @@ AI 前沿研究
 | 一级 leaf README 数 | 2（rumination-models / distillation） |
 | 二级 leaf README 数 | 1（distillation/tools） |
 | 总 leaf README 数 | 3 |
-| 前沿方向覆盖 | 5（推理增强 / 模型效率 / 多模态 / 架构创新 / 安全对齐） |
+| 前沿方向覆盖 | 5 方向规划，2 方向已覆盖（推理增强 / 模型效率），3 方向待补充 |
 | 速查表条目数 | 8（前沿进展速览） |
 | 最佳实践条数 | 4 |
 | 常见面试题数 | 6 |

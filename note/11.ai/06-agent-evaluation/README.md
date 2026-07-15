@@ -142,16 +142,27 @@ def agent_score(trajectory, outcome, cost, feedback):
 
 ## 5. 子章节导航
 
+### 系列文章（扁平 .md 文件）
+
 | # | 章节 | 核心问题 |
 |---|------|---------|
-| 1 | [6 大评测维度](01-six-metrics.md) | 任务完成率 / 步骤效率 / 工具使用 / 成本 / 满意度 / 稳定性 详解 |
-| 2 | [5 种评测方法](02-five-methods.md) | 自动化指标 / 黄金集 / LLM-as-Judge / A/B / 用户模拟 |
-| 3 | [LLM-as-Judge 详解](03-llm-as-judge.md) | LLM 当裁判的 4 大维度 + 5 反模式 |
-| 4 | [评测流程](04-evaluation-pipeline.md) | 黄金集 → CI 自动化 → A/B → 用户模拟完整 pipeline |
-| 5 | [阿里一面实战话术](05-ali-interview.md) | 阿里一面原题回答 + 5 反模式 |
-| 6 | [7 大反模式](06-seven-anti-patterns.md) | 单一指标 / 离线一次性 / 忽略工具错误 等 |
-| 7 | [选型决策树](07-selection-decision-tree.md) | 按阶段 / 团队 / 预算选评测方案 |
-| 8 | [实战案例 + CI/CD](08-practical-cases.md) | 客服 Agent / 代码生成 Agent 评估实战 + CI/CD 配置 + 报告模板 |
+| 01 | [6 大评测维度](01-six-metrics.md) | 任务完成率 / 步骤效率 / 工具使用 / 成本 / 满意度 / 稳定性 详解 |
+| 02 | [5 种评测方法](02-five-methods.md) | 自动化指标 / 黄金集 / LLM-as-Judge / A/B / 用户模拟 |
+| 03 | [LLM-as-Judge 详解](03-llm-as-judge.md) | LLM 当裁判的 4 大维度 + 5 反模式 |
+| 04 | [评测流程](04-evaluation-pipeline.md) | 黄金集 → CI 自动化 → A/B → 用户模拟完整 pipeline |
+| 05 | [阿里一面实战话术](05-ali-interview.md) | 阿里一面原题回答 + 5 反模式 |
+| 06 | [7 大反模式](06-seven-anti-patterns.md) | 单一指标 / 离线一次性 / 忽略工具错误 等 |
+| 07 | [选型决策树](07-selection-decision-tree.md) | 按阶段 / 团队 / 预算选评测方案 |
+| 08 | [实战案例 + CI/CD](08-practical-cases.md) | 客服 Agent / 代码生成 Agent 评估实战 + CI/CD 配置 + 报告模板 |
+
+### 深度专章（子目录）
+
+| 专章 | 目录 | 核心问题 |
+|------|------|---------|
+| Agent A/B Test 系统设计 | [02-ab-testing-design/](02-ab-testing-design/README.md) | 多指标 + 流量分层 + 离线/在线双轨 + 显著性检验 + 自动决策 |
+| 🆕 RAG 评估 | [09-rag-evaluation/](09-rag-evaluation/README.md) | RAGAS / TruLens / DeepEval 3 大工具横评 + 检索质量 + 生成质量指标 + 黄金集最佳实践 |
+
+> 💡 **编号说明**：系列文章（01-08）为扁平 `.md` 文件，深度专章为独立子目录。`02-ab-testing-design/` 与 `02-five-methods.md` 共用编号 02 但属于不同类型（目录 vs 文件），不会冲突。
 
 ---
 
