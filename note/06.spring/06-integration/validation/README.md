@@ -65,6 +65,51 @@ graph TB
 | `@Valid` | JSR-303 标准 | 不支持 | 支持（级联）|
 | `@Validated` | Spring 扩展 | 支持（分组）| 需配合 `@Valid` |
 
+## 最小可运行示例（❌/✅ 对比）
+
+**反模式**：Controller / Service 方法参数上**漏加 `@Valid`**，注解完全不会生效！
+
+```java
+// ❌ 反例：注解写了，但参数前未加 @Valid —— 校验永远不触发
+@PostMapping("/users")
+public UserDTO create(@RequestBody UserDTO body) {  // 缺 @Valid
+    return userService.save(body);
+}
+
+public class UserDTO {
+    @NotBlank private String name;                  // 永远不会被检查！
+    @Email    private String email;
+}
+```
+
+```java
+// ✅ 正例：参数前加 @Valid 触发方法参数校验；嵌套对象再加一层 @Valid 级联
+@PostMapping("/users")
+public UserDTO create(@RequestBody @Valid UserDTO body) {
+    return userService.save(body);
+}
+
+public class UserDTO {
+    @NotBlank
+    private String name;
+
+    @Email
+    private String email;
+
+    @Valid
+    @NotNull
+    private AddressDTO address;     // 嵌套对象级联校验
+}
+```
+
+校验失败时 Spring 抛 `MethodArgumentNotValidException`，由 `@RestControllerAdvice` 统一捕获并返回 HTTP 400，详见 [`异常处理`](../../01-core/exception-handling.md)。
+
+## 版本演进与触发原理（一句话定位）
+
+- **JSR-303 → JSR-380**：Bean Validation 从"基础注解集合（`@NotNull`/`@Size`）"演进为"统一规范、明确参数类型约束、跨字段 `@AssertTrue`"；**`Hibernate Validator 6+`** 是当前主流实现。
+- **Controller 触发链**：`@RequestBody` 反序列化完成 → `RequestResponseBodyMethodProcessor` 调用 `Validator` → 失败抛 `MethodArgumentNotValidException`。
+- **方法级触发**：方法参数前加 `@Validated` + Spring AOP 由 **`MethodValidationPostProcessor`** 把 Bean 包装成代理，调用前拦截（注意：**自调用 `this.foo()` 不走代理**，需要通过容器注入引用或 `AopContext.currentProxy()`）。
+
 ---
 
 ## 相关章节
@@ -73,6 +118,7 @@ graph TB
 - 关联：[`02 Web 层`](../../02-web/README.md) — Validation 大量用于 Controller 参数
 - 关联：[`异常处理`](../../01-core/exception-handling.md) — 捕获 `MethodArgumentNotValidException` 返回 400
 - 关联：[`08 注解速查`](../../08-annotations/README.md) — 相关注解索引
+- 下钻：[注解与使用](validation-annotations-and-usage.md) · [自定义验证器](custom-validator.md) · [跨字段校验](cross-field.md)
 
 ---
 

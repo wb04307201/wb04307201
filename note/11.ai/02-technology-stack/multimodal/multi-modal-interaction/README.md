@@ -9,11 +9,60 @@ module:
 
 # 多模态交互体验优化
 
+> 一句话定位：**让视觉/语音/触觉等模态协同互补而非堆砌，在医疗/客服/教育场景创造 1+1>2 的自然交互体验**。
+
 ← 返回 [多模态](../README.md)
 
 清晨，一位用户对着智能设备轻声描述身体不适，同时上传舌苔照片；系统不仅听懂了语音，还通过视觉分析识别出面色暗沉、舌苔厚腻，结合经络检测数据，三分钟内生成一份融合中医辨证与现代健康指标的个性化报告——这不是科幻场景，而是“玄黄识仪”等多模态智能设备正在实现的日常体验。
 
 当单一的点击、输入已无法满足人们对自然交互的渴望，**多模态交互**正成为体验设计的新范式。它不再将用户禁锢于键盘或触屏，而是让技术学会像人类一样，同时调动视觉、听觉、触觉等多种感官通道理解需求、传递信息。真正的体验优化，不在于堆砌技术，而在于让多模态“协同”而非“叠加”，创造1+1>2的自然流畅感。
+
+### 最小代码示例：图像 + 语音双模态调用
+
+```python
+# 伪代码：多模态 LLM 同时接收图像与语音输入
+from openai import OpenAI
+
+client = OpenAI()
+
+def multimodal_consult(image_path: str, audio_path: str) -> str:
+    """图像（舌苔照）+ 语音（自述症状）联合分析"""
+    # 1) 用 STT 把语音转文字
+    with open(audio_path, "rb") as f:
+        transcript = client.audio.transcriptions.create(
+            model="whisper-1", file=f
+        ).text
+
+    # 2) 图像 + 文字联合丢给多模态大模型
+    response = client.chat.completions.create(
+        model="gpt-4o",                       # GPT-4V 类多模态模型
+        messages=[{
+            "role": "user",
+            "content": [
+                {"type": "text", "text": f"用户自述：{transcript}"},
+                {"type": "image_url",
+                 "image_url": {"url": f"file://{image_path}"}}
+            ]
+        }]
+    )
+    return response.choices[0].message.content
+
+# 调用
+print(multimodal_consult("tongue.jpg", "complaint.mp3"))
+```
+
+> 📌 关键不是"喂进去多模态"，而是**让各模态承担互补的信息维度**——图像给客观证据，语音给主观意图，模型做对齐推理。
+
+### 三大场景对比表
+
+| 维度 | 医疗健康 | 客户服务 | 教育领域 |
+|------|---------|---------|---------|
+| **主导模态组合** | 图像 + 语音 + 触觉 | 语音 + 图像 + 文本 | 视觉 + 听觉 + 触觉/手势 |
+| **模态互补点** | 客观体征 vs 主观描述 | 截图/视频定位 + 语音情绪 | 多通道编码强化记忆 |
+| **实时性要求** | 高（秒级反馈）| 高（避免用户等待）| 中（可异步）|
+| **误差代价** | 高（影响诊断）| 中（影响满意度）| 低（鼓励探索）|
+| **典型评估指标** | 准确率 / 召回率 | 一次解决率 / CSAT | 知识留存率 / 任务完成率 |
+| **代表性开源/论文** | Med-PaLM 2（Google）| CLIP（OpenAI） | K-12 Multimodal Tutoring |
 
 ## 一、多模态不是功能堆砌，而是感官的有机融合
 
@@ -80,7 +129,29 @@ module:
 
 ---
 
+## 📚 参考资料（业内公认）
+
+- **CLIP**（OpenAI，2021）— 图像-文本对齐经典工作：[openai.com/index/clip](https://openai.com/index/clip/) · 论文 arXiv:2103.00020
+- **GPT-4V (Vision)**（OpenAI，2023）— 多模态大模型代表：[openai.com/index/gpt-4v-system-card](https://openai.com/index/gpt-4v-system-card/)
+- **Gemini 1.5 / 2.0**（Google DeepMind）— 原生多模态：[deepmind.google/gemini](https://deepmind.google/technologies/gemini/)
+- **LLaVA**（开源）— 视觉-语言助手：[github.com/haotian-liu/LLaVA](https://github.com/haotian-liu/LLaVA)
+- **Whisper**（OpenAI）— 语音识别开源模型：[github.com/openai/whisper](https://github.com/openai/whisper)
+- **CNCF Serverless Workflow**（标准 DSL，事件驱动编排）：[serverlessworkflow.io](https://serverlessworkflow.io/)
+
+> ⚠️ 数字与产品能力随版本变化，使用前请查阅最新官方文档；本节仅给出"公认存在 + 主流可信"的项目，不引用未公开的 benchmark。
+
+---
+
 *注：文中”玄黄识仪”为观薇智能研发的多模态健康检测设备，已在北京怀柔等地实现规模化应用，其技术路径代表了中医智能化与多模态交互融合的前沿探索。*
+
+---
+
+## 🔗 交叉引用
+
+- [`multimodal/`](../) — 多模态总览（感知-认知统一架构）
+- [`cross-modal-alignment/`](../cross-modal-alignment/) — 跨模态对齐（CLIP/对比学习）
+- [`02-technology-stack/`](../../) — AI 技术栈总览
+- [`11.ai/`](../../../README.md) — AI 模块主目录
 
 ---
 

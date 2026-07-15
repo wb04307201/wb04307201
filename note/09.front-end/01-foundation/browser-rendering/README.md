@@ -33,6 +33,33 @@ graph LR
   style F fill:#e8f5e9
 ```
 
+**整条链路（HTML 字节流 → 屏幕像素）**：
+
+```text
+HTML/CSS 字节
+   │  解析 (Parse)
+   ▼
+DOM Tree + CSSOM Tree
+   │  合并
+   ▼
+Render Tree（仅含可见节点）
+   │  布局 (Layout / Reflow)        ← 读几何属性强制同步布局
+   ▼
+Layout Tree（节点几何信息）
+   │  分层 (Layerize)               ← will-change / transform 触发独立层
+   ▼
+Layer Tree
+   │  绘制 (Paint)                  ← 生成绘制指令列表
+   ▼
+Display List
+   │  光栅化 (Rasterize)             ← 合成线程异步光栅化
+   ▼
+位图 Tiles
+   │  合成 (Composite)              ← GPU 按 Z 序合成
+   ▼
+屏幕像素
+```
+
 | 阶段 | 输入 | 输出 | 线程 |
 |------|------|------|------|
 | **1. 解析** | HTML / CSS 字节流 | DOM 树 + CSSOM 树 | 主线程 |
@@ -175,6 +202,18 @@ graph LR
   <script src="app.js" defer></script>
 </head>
 ```
+
+### 7.1 LCP / INP 在不同设备上的量化参考
+
+下表把 Core Web Vitals 的"良好"阈值映射到典型设备，便于做性能基线（数值为业内公认阈值，非实测）。
+
+| 指标 | 衡量什么 | 手机（中端 4G）| 桌面（有线/Wi-Fi）| 主要瓶颈阶段 |
+|------|---------|---------------|------------------|--------------|
+| **LCP**（Largest Contentful Paint）| 首屏最大元素渲染完成 | ≤ 2.5s 良好 / ≤ 4.0s 较差 | ≤ 1.2s 良好 / ≤ 2.5s 较差 | 解析 / 布局 / 绘制 + 资源加载 |
+| **INP**（Interaction to Next Paint）| 交互到下一帧绘制 | ≤ 200ms 良好 / > 500ms 较差 | ≤ 100ms 良好 / > 200ms 较差 | 主线程长任务 / 强制同步布局 |
+| **CLS**（Cumulative Layout Shift）| 视觉稳定性 | ≤ 0.1 良好 / > 0.25 较差 | 同左 | 异步加载资源未预留尺寸 / 字体闪烁 |
+
+> 📌 移动设备 LCP 普遍比桌面慢 1.5-2×：CPU 弱 + 网络抖动 + 屏幕小导致图片相对字节更多。优化时优先压"网络 + 关键资源"，再压"JS 执行"。
 
 ---
 

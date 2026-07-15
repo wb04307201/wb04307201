@@ -20,9 +20,7 @@ module:
 | 序号 | 主题 | 核心内容 |
 |------|------|---------|
 | 1 | [EventMesh 云流程架构图](#1-eventmesh-云流程架构图) | Parallel + 视频转音频/封面生成/码率转换 三分支 |
-
 | 2 | [事件网格与业务流程集成图](#2-事件网格与业务流程集成图) | 云工作流 + FC/MNS/ECS/VOD/FNF 编排 |
-
 | 3 | [Serverless Workflow DSL 执行流程图](#3-serverless-workflow-dsl-执行流程图) | 业务消息分组 + OSS 写入 + 压缩分支 |
 
 
@@ -165,6 +163,100 @@ flowchart TB
     Pass --> End1
     End1 --> End([End])
 ```
+
+---
+
+## 4. Serverless Workflow DSL 最小示例
+
+CNCF Serverless Workflow DSL 用 YAML 描述上图"分组 → OSS → 选择压缩"的逻辑。
+
+```yaml
+# workflow.yaml —— CNCF Serverless Workflow 0.8 语法片段
+id: message-archive-flow
+version: '1.0'
+specVersion: '0.8'
+name: Message Archive Workflow
+start: GroupMessages
+states:
+  # 1) 按业务字段把消息分组
+  - name: GroupMessages
+    type: operation
+    actions:
+      - functionRef:
+          refName: groupMessages      # EventMesh Function Connector
+          arguments:
+            groupBy: '${ .businessKey }'
+    transition: WriteOSS
+
+  # 2) 写入 OSS
+  - name: WriteOSS
+    type: operation
+    actions:
+      - functionRef:
+          refName: putObject          # 阿里云 OSS Connector
+          arguments:
+            bucket: '${ .bucket }'
+            key: '${ .objectKey }'
+    transition: DecideCompress
+
+  # 3) 根据 object_size 决定是否压缩（对应 Choice 节点）
+  - name: DecideCompress
+    type: switch
+    dataConditions:
+      - condition: '${ .object_size >= 1048576 }'   # 1 MiB 阈值
+        transition: Compress
+    defaultCondition:
+      transition: End
+  - name: Compress
+    type: operation
+    actions:
+      - functionRef:
+          refName: gzipAndUpload
+    end: true
+```
+
+> 💡 EventMesh Runtime 通过 `WorkflowResource` 接口加载该 DSL，再由内置的 CloudEvents 总线驱动 State 之间的跳转。
+
+---
+
+## 5. EventMesh Runtime 启动与部署
+
+```bash
+# 1. 下载发行版（替换为当前最新版本）
+wget https://archive.apache.org/dist/eventmesh/1.10.0/apache-eventmesh-1.10.0-bin.tar.gz
+tar -xzf apache-eventmesh-1.10.0-bin.tar.gz && cd apache-eventmesh-1.10.0
+
+# 2. 启动 Runtime（前台运行，便于观察日志）
+bin/eventmesh-start.sh -m runtime
+
+# 3. 加载 Serverless Workflow DSL（HTTP 推送至 Admin API）
+curl -X POST http://127.0.0.1:10106/workflow \
+     -H "Content-Type: application/yaml" \
+     --data-binary @workflow.yaml
+
+# 4. 校验流程已注册
+curl http://127.0.0.1:10106/workflow/list | jq '.data[].name'
+# 期望输出："message-archive-flow"
+```
+
+> 部署模式参考：独立 JVM 进程 / Kubernetes Deployment / Docker Compose 三种均可，区别在于 Connector 注册方式与外部中间件（Kafka/RocketMQ）的网络打通方式。
+
+---
+
+## 6. 同类方案横向对比
+
+| 维度 | Apache EventMesh | Knative Eventing | OpenFunction |
+|------|------------------|------------------|--------------|
+| **定位** | 事件网格 + Serverless Workflow DSL | Kubernetes 原生事件驱动 | FaaS + 函数编排 |
+| **事件标准** | CloudEvents 1.0 | CloudEvents 1.0 | CloudEvents 1.0 |
+| **协议插件** | HTTP / MQTT / gRPC / TCP | HTTP / Kafka | HTTP / Kafka / Dapr |
+| **Workflow 标准** | CNCF Serverless Workflow DSL | 自定义 Sequence / Parallel | 自定义 Workflow CRD + Dapr |
+| **运行依赖** | RocketMQ / Kafka / Pulsar | Kubernetes + Broker | Kubernetes + KubeVirt/OpenFunction |
+| **典型场景** | 跨云事件桥接 + 视频/数据编排 | K8s 应用事件触发 | 云原生函数 + 弹性伸缩 |
+| **运维门槛** | 中（独立 Runtime）| 低（K8s 原生）| 中（依赖 Dapr / K8s）|
+| **生态** | Apache TLP / 阿里云深度集成 | CNCF Graduated | CNCF Sandbox |
+
+> ✅ EventMesh 在"跨云 + 标准 DSL"上更强；Knative Eventing 偏 K8s 内部触发；OpenFunction 更像函数即服务 + 编排。
 
 ---
 

@@ -4,16 +4,191 @@ module:
   slug: java/java-9
   type: article
   category: 主模块子文章
-  summary: Java 9
+  summary: Java 9 核心 JEP 速通：JPMS 模块系统、jshell、Collection 工厂方法、Stream/Optional 增强、Compact Strings、G1 默认 GC、HTTP/2 Client(孵化) 等。
 -->
 
 # Java 9
 
 ## 引言：变更说明
 
-Java 9 是 N 个 JEP / 特性 / 章节的合集。
+Java 9 是首个把 **JPMS 模块系统**引入的版本，也是大量"工程化"特性集中落地的一版：jshell 交互式 REPL、Collection 便利工厂、`Stream`/`Optional` 增强、`Compact Strings` 内存优化、G1 成为默认 GC、HTTP/2 Client 孵化等。
 
-本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
+本篇先**按主题提炼核心 JEP**（含 API 示例 + 一句"影响"），再给出**完整 JEP 列表**（每条一句定位），先读前两节再回扫索引。
+
+---
+
+## 一、核心 JEP 与最小 API 示例
+
+### 1. JEP 261 — JPMS（Java Platform Module System）
+
+**是什么**：JDK 9 的核心变革 —— 给应用引入**模块**（`module`）作为包的命名空间之上的封装。
+
+```java
+// src/com.foo.app/module-info.java
+module com.foo.app {
+    requires java.sql;                // 依赖
+    requires com.foo.core;            // 依赖其它模块
+    exports com.foo.app.api;          // 仅导出包给外部
+    // com.foo.app.internal 不导出 → 默认仅本模块可见
+
+    opens com.foo.app.model;          // 给反射/序列化打开
+}
+```
+
+**为什么**：解决**强类路径（classpath）的 JAR Hell / 依赖冲突 / 内部 API 暴露**三大顽疾；Jdk 自带 `jlink` 按需裁剪运行时镜像，体积更小、启动更快。**影响**：所有 non-modular 项目继续兼容 classpath，但生态向模块化逐步迁移（Spring 6 已基于 Jakarta EE 9 模块化）。
+
+---
+
+### 2. JEP 222 — jshell：Java Shell（REPL）
+
+**是什么**：JDK 自带的交互式 Java 命令行。
+
+```bash
+$ jshell
+jshell> String s = "hello"
+s ==> "hello"
+jshell> s.toUpperCase()
+$2 ==> "HELLO"
+jshell> /exit
+```
+
+**为什么**/**影响**：去掉"写一个 `main` 才能跑一行"的摩擦，**学习 / 调试验证 API / 面试写代码**场景极其顺滑；JDK 9+ 自带，无需外部工具。
+
+---
+
+### 3. JEP 269 — 集合便利工厂方法（`List.of` / `Set.of` / `Map.of`）
+
+**是什么**：为不可变集合提供静态工厂。
+
+```java
+List<String> list = List.of("a", "b", "c");        // 不可变
+Set<Integer> set = Set.of(1, 2, 3);                // 不可变
+Map<String, Integer> map = Map.of("k1", 1, "k2", 2);
+```
+
+**为什么**/**影响**：相比 `Arrays.asList`，`List.of` 真正**不可变**（`add` / `set` 抛 `UnsupportedOperationException`）且**更紧凑**（内部依赖 `ImmutableCollections`，无 `java.util.ArrayList` 包装）。**陷阱**：`Map.of` 不允许 `null` key 或 value；`Set.of`/`List.of` 元素也不允许 `null`。
+
+---
+
+### 4. JEP 269（续）— Stream 增强：`takeWhile` / `dropWhile` / `ofNullable` / `iterate`
+
+**是什么**：短路操作在**有序流**上更顺手；空安全创建流；iterator 替代无种子写法。
+
+```java
+Stream.of(2, 4, 6, 7, 8).takeWhile(n -> n % 2 == 0)  // [2,4,6]  —— 遇 7 终止
+                        .forEach(System.out::println);
+
+Stream.of(2, 4, 6, 7, 8).dropWhile(n -> n % 2 == 0)  // [7,8]    —— 跳过前缀
+
+Stream<String> s = Stream.ofNullable(maybeNull);     // null → 空流，不再 NPE
+Stream.iterate(0, n -> n < 10, n -> n + 1)           // [0,1,...,9] —— 带终止条件
+       .forEach(System.out::println);
+```
+
+**为什么**/**影响**：在 SQL 风格的"遇到第一条不满足即停"场景比 `filter` 更精准（`filter` 会扫完整个流），索引遍历、消费可空值时少 4 行 `if`。
+
+---
+
+### 5. Optional 增强 — `stream()` / `ifPresentOrElse` / `or`
+
+**是什么**：把 `Optional` 真正变成**流式数据源**。
+
+```java
+List<User> admins = Optional.ofNullable(user)
+        .filter(u -> u.isActive())
+        .map(User::getRole)
+        .stream()                                   // Optional → Stream
+        .flatMap(roleRepo::findByRole)
+        .collect(Collectors.toList());
+
+config.computeIfPresent(key, (k, v) -> v);
+```
+
+**为什么**/**影响**：`stream()` 让"可空可选"顺滑接入 Stream pipeline；`ifPresentOrElse` 替代 `isPresent() + if/else` 反模式。
+
+---
+
+### 6. JEP 254 — Compact Strings（紧凑字符串）
+
+**是什么**：`String` 内部存储从 `char[]`（UTF-16，每字符 2 字节）改为 **`byte[] + coder` 字段**，Latin-1 字符仅占 1 字节。
+
+**为什么**/**影响**：堆内存显著下降（多数业务字符串为 Latin-1 / ASCII，**省约一半**）；`String` / `StringBuilder` / `AbstractStringBuilder` 同步重构；UTF-16 时切换到 `coder=1` 双字节存储。**注**：对外 API 不变，老代码无感迁移。
+
+---
+
+### 7. JEP 248 — G1 成为默认 GC
+
+**是什么**：JDK 9 起 `-XX:+UseG1GC` 成为 32/64 位 server 模式**默认**垃圾收集器。
+
+**为什么**/**影响**：G1 把堆划分为多个 Region，**目标是在停顿时间与吞吐量间可控**（`MaxGCPauseMillis` 目标可调），替代了 Parallel GC 在低延迟场景的不足。**注意**：吞吐量优先场景仍可在启动参数显式切回 `-XX:+UseParallelGC`。
+
+---
+
+### 8. JEP 238 — Multi-Release JAR（多版本 JAR）
+
+**是什么**：一个 JAR 内可放**针对不同 Java 版本的同名类**（目录版本号 `META-INF/versions/9/`）。
+
+```text
+foo-1.0.jar
+├── com.app.Foo.class                 (基线，JDK 6+)
+└── META-INF/
+    └── versions/9/com/app/Foo.class  (覆盖，JDK 9+ 调用此版本)
+```
+
+**为什么**/**影响**：库作者不必"为老 JDK 牺牲新 API"——可对外发布一个 JAR，运行时按 class 版本号匹配最高可用实现，**平滑从 JDK 8 迁到 JDK 9+**。
+
+---
+
+### 9. JEP 102 — Process API
+
+**是什么**：`ProcessHandle` 提供本进程与所有进程的句柄、可枚举、父子关系。
+
+```java
+ProcessHandle.current().pid();                                    // 当前进程 PID
+ProcessHandle.allProcesses()                                      // 枚举所有进程
+    .filter(p -> p.info().command().orElse("").contains("nginx"))
+    .forEach(p -> System.out.println(p.pid() + " " + p.info()));
+```
+
+**为什么**/**影响**：传统 `Runtime.exec()` 拿不到自己 PID；新版可**监控/管理子进程树**，与 `java.lang.Process` 配合做进程编排（被运维/CD 工具库广泛使用）。
+
+---
+
+### 10. JEP 110 — HTTP/2 Client（孵化器 `jdk.incubator.http`）
+
+**是什么**：JDK 自带的现代 HTTP 客户端，支持 **HTTP/2**（多路复用、头部压缩、服务器推送）和 WebSocket。
+
+```java
+HttpClient client = HttpClient.newHttpClient();
+HttpRequest req = HttpRequest.newBuilder()
+        .uri(URI.create("https://api.example.com/v1/items"))
+        .header("Content-Type", "application/json")
+        .GET()
+        .build();
+HttpResponse<String> resp = client.send(req, HttpResponse.BodyHandlers.ofString());
+System.out.println(resp.statusCode() + " " + resp.body());
+```
+
+**为什么**/**影响**：取代又老又难用的 `HttpURLConnection`；**孵化器**意味着 API 仍在进化，11 移出 incubator 进入正式 `java.net.http`。在轻量调用场景可少引入 OkHttp/HttpClient 依赖。
+
+---
+
+## 二、按主题分类的核心 JEP 速览
+
+| 主题 | JEP | 一句话影响 |
+|------|------|----------|
+| 模块化 | 200/201/220/261/275/282 | JDK 自身模块化 + JPMS + jlink 裁剪运行时 |
+| 语言/工具 | 213/222/280 | `try-with-resources` 增强 + jshell REPL + `+` 改 invokedynamic |
+| 集合 | 269/266 | `List.of/Map.of` 不可变工厂 + Stream/Optional 增强 |
+| 字符串 | 254 | Latin-1 紧凑字符串，省约一半堆内存 |
+| GC | 248/214/291/271/278 | G1 默认 + 移除旧 GC 组合 + CMS 弃用 + 统一 GC 日志 |
+| IO / 进程 | 102/238/260 | ProcessHandle + 多版本 JAR + 封装内部 API |
+| 网络/安全 | 110/244/249/288 | HTTP/2 Client(孵化) + TLS ALPN + OCSP 装订 + 禁 SHA-1 |
+| 并发 | 143/193/274/285 | 改进锁争用 + VarHandle + 增强 MethodHandle + 自旋提示 |
+| 工具链 | 158/165/228/233/247 | 统一 JVM 日志 + JVMCI(Graal) + `jcmd` 诊断 + AOT |
+| 国际化 | 226/227/252/267 | UTF-8 properties + Unicode 8.0 + 默认 CLDR |
+| 文档 | 221/224/225 | Doclet API 简化 + HTML5 Javadoc + 搜索 |
+| 平台 | 237/283/294/297 | AArch64/s390x/ARM 端口 + GTK 3 集成 |
 
 ---
 
@@ -474,5 +649,12 @@ Java 9 是 N 个 JEP / 特性 / 章节的合集。
 重新组织了JDK文档结构，使其更加清晰易用。
 
 ---
+
+## 相关阅读
+
+- [Java 8 新特性](../java-8/README.md) — Lambda、Stream、Optional 起点
+- [Java 11 LTS 新特性](../java-11/README.md) — HTTP Client 转正、String 新 API
+- [Collection 工厂方法实战](../../collection/README.md) — `List.of` / `Map.of` 选型清单
+- [Java 模块系统专题](../../modules/README.md) — JPMS 实战模式（requires/transports/open）
 
 ← [返回 Java 版本特性](../README.md)

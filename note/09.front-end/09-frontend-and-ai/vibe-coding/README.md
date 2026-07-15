@@ -186,9 +186,38 @@ graph LR
 
 ---
 
-## 8. Vibe Coding 的行业影响
+## 8. Vibe Coding 与前端工程指标
 
-### 8.1 对开发者的影响
+AI 生成的"能跑"的代码，距离"能上 Core Web Vitals 良好阈值"还有三道关。下表把前端工程视角的关键指标映射到 Vibe Coding 常见产物。
+
+| 指标 | AI 默认产物 | 风险点 | 必须人工补 |
+|------|------------|--------|-----------|
+| **LCP** | 同步外链大图 / 字体 | 阻塞首屏 | `<link rel="preload">` + `font-display: swap` |
+| **CLS** | 动态插入的横幅 / 广告位 | 页面跳动 | 显式 `width/height` 或 `aspect-ratio` |
+| **INP** | 同步 `useEffect` + 大量状态更新 | 主线程长任务 | 拆分组件 + `startTransition` |
+| **包体积** | 全量引入 lodash / 图标库 | 首屏 JS 过大 | 按需引入 + 路由懒加载 |
+| **a11y** | 缺 ARIA / 键盘导航 | 不可达 | 跑 axe / Lighthouse a11y 评分 |
+| **SEO** | 缺 meta / 缺结构化数据 | 收录差 | 补 `<title>` / OG / JSON-LD |
+
+**反例 ❌ / 正例 ✅（a11y 视角）**：
+
+```tsx
+// ❌ AI 常见产物：图省事用 div 当按钮
+<div onClick={handleSubmit} className="btn">提交</div>
+
+// ✅ 正确：原生 button + 键盘可达
+<button type="submit" onClick={handleSubmit} aria-label="提交表单">
+  提交
+</button>
+```
+
+> 📌 Vibe Coding 提速的是"从 0 到 1"，不替代"从 60 分到 90 分"。评审清单里至少要过一遍 Lighthouse Performance / Accessibility / SEO 三项分数。
+
+---
+
+## 9. Vibe Coding 的行业影响
+
+### 9.1 对开发者的影响
 
 | 影响 | 说明 |
 |------|------|
@@ -198,7 +227,7 @@ graph LR
 | **架构重要性上升** | AI 写实现，人做架构 |
 | **学习速度加快** | AI 当导师 |
 
-### 8.2 2026 行业趋势
+### 9.2 2026 行业趋势
 
 1. **Vibe Coding 成为默认**：50%+ 新代码由 AI 生成
 2. **AI IDE 成主流开发工具**：Cursor / Claude Code / Windsurf
@@ -208,22 +237,24 @@ graph LR
 
 ---
 
-## 9. 学习路径
+## 10. 学习路径
 
 1. **入门**（1 天）：Cursor Composer / Claude Code 跑通一个 Demo
 2. **进阶**（1 周）：复杂项目实践；学会写好 Prompt
 3. **高级**（持续）：AI 友好代码库设计；团队流程优化
 
-## 10. 交叉引用
+## 11. 交叉引用
 
 - [`09-frontend-and-ai/`](../) — 前端与 AI 总览
 - [`09-frontend-and-ai/ai-sdk/`](../ai-sdk/) — 集成 AI 到产品
 - [`11.ai/`](../../../11.ai/README.md/) — AI 知识体系
 - [`12.story/11-ai-learning-paradox.md`](../../../12.story/11-ai-learning-paradox.md) — AI 时代怎么学
+- [`09.front-end/01-foundation/browser-rendering/`](../../01-foundation/browser-rendering/) — 渲染原理（Vibe Coding 产物的性能根因）
+- [`09.front-end/06-performance/optimization/`](../../06-performance/optimization/) — 性能优化落地清单
 
 ---
 
-## 11. 与其他模块的关系
+## 12. 与其他模块的关系
 
 - **上游**：[`11.ai/`](../../../11.ai/README.md/)（AI 基础）
 - **下游**：影响 [`03-frameworks/`](../../03-frameworks/) / [`04-engineering/`](../../04-engineering/) 的选型（AI 友好度成新维度）
