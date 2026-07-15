@@ -315,7 +315,7 @@ OpenCode 原生支持 MCP 协议。在配置文件 `~/.config/opencode/opencode.
       "command": "npx",
       "args": ["-y", "chrome-devtools-mcp@latest"]
     },
-    "@tokenizin-agency/mcp-npx-fetch": {
+    "mcp-npx-fetch": {
       "command": "npx",
       "args": ["-y", "@tokenizin/mcp-npx-fetch@latest"]
     },

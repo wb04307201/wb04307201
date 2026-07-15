@@ -188,7 +188,7 @@ Claude Code 默认有三种权限模式：
         "chrome-devtools-mcp@latest"
       ]
     },
-    "@tokenizin-agency/mcp-npx-fetch": {
+    "mcp-npx-fetch": {
       "command": "npx",
       "args": [
         "-y",

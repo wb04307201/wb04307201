@@ -196,7 +196,7 @@ args = ["-y", "bing-cn-mcp@latest"]
 command = "npx"
 args = ["-y", "chrome-devtools-mcp@latest"]
 
-[mcp_servers."@tokenizin-agency/mcp-npx-fetch"]
+[mcp_servers.mcp-npx-fetch]
 command = "npx"
 args = ["-y", "@tokenizin/mcp-npx-fetch@latest"]
 
