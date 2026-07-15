@@ -260,7 +260,7 @@ GPU 距离计算：512 维 × 1 亿向量 × 8 字节 = 0.5ms（100x）
 
 ### 5.1.1 Incremental Embedding 增量向量化系统设计（深度展开）
 
-> 面试速查版见 [13.split-hairs · incremental-embedding](../../../../13.split-hairs/11.ai/incremental-embedding/README.md)。
+> 面试速查版见 [13.split-hairs · incremental-embedding](../../../13.split-hairs/11.ai/incremental-embedding/README.md)。
 
 #### 5.1.1.1 5 大组件架构（生产级）
 

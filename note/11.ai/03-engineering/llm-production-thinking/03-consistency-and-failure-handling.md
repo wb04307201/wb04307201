@@ -255,7 +255,7 @@ def retry_with_backoff(fn, max_retries=3, base_delay=1):
 
 ## 9. Temperature=0 仍可变的 5 大根因 + 3 大防御（高频误区题）
 
-> ⚠️ **常见误区**：很多人以为 Temperature=0 = 完全确定。其实生产中 5 大根因会让输出仍有微小波动。面试速查版见 [13.split-hairs · temperature-zero-myth](../../../../13.split-hairs/11.ai/temperature-zero-myth/README.md)。
+> ⚠️ **常见误区**：很多人以为 Temperature=0 = 完全确定。其实生产中 5 大根因会让输出仍有微小波动。面试速查版见 [13.split-hairs · temperature-zero-myth](../../../13.split-hairs/11.ai/temperature-zero-myth/README.md)。
 
 ### 9.1 5 大根因速查表
 

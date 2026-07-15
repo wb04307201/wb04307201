@@ -7,7 +7,7 @@ module:
   summary: AI 前沿研究
 -->
 
-# L6 前沿研究
+# L7 前沿研究
 
 > 探索 AI 技术的前沿方向——从推理增强、模型蒸馏到多模态融合，追踪学术前沿与工业落地的交汇点。
 
@@ -108,7 +108,7 @@ AI 前沿研究
 
 ## 7. 相关章节
 
-- 上游：[L1 基础概念](../01-fundamentals/) → [L2 技术栈](../02-technology-stack/) → **L6 前沿研究**
+- 上游：[L1 基础概念](../01-fundamentals/) → [L2 技术栈](../02-technology-stack/) → **L7 前沿研究**
 - 关联：[12.story #33 AI 致命三件套](../../12.story/31-ai-fatal-trio.md) — AI 幻觉与安全性叙事
 - 关联：[12.story #42 Prompt Engineering](../../12.story/40-prompt-engineering.md) — 提示工程演进
 - 面试题：[13.split-hairs AI 新概念](../../13.split-hairs/11.ai/README.md) — Transformer / Token / RAG / Prompt

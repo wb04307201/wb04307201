@@ -80,7 +80,7 @@ prompt += accept_list
 ## 🔗 兄弟章节
 
 - **本专题**：[KV Cache](../kv-cache/README.md) / [PagedAttention](../paged-attention/README.md) / [推理框架对比](../inference-frameworks/README.md)
-- **咬文嚼字**：[面试深挖版](../../../../../13.split-hairs/11.ai/llm-benchmark/README.md)
+- **咬文嚼字**：[面试深挖版](../../../13.split-hairs/11.ai/llm-benchmark/README.md)
 
 ---
 

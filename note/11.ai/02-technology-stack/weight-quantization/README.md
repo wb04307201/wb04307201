@@ -92,7 +92,7 @@ model.quantize(calibration_data, quant_config={"zero_point": True, "q_group_size
 
 - **本专题**：[KV Cache](../kv-cache/README.md) / [推理框架对比](../inference-frameworks/README.md) / [MoE 推理](../moe-inference/README.md)
 - **L1**：[量化原理](../../01-fundamentals/) 顺带提
-- **咬文嚼字**：[面试深挖版](../../../../../13.split-hairs/11.ai/llm-benchmark/README.md)
+- **咬文嚼字**：[面试深挖版](../../../13.split-hairs/11.ai/llm-benchmark/README.md)
 
 ---
 

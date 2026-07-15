@@ -102,7 +102,7 @@ while :; do cat PROMPT.md | claude ; done
 
 ```bash
 # 任意 Agent 通用
-while :; do cat PROMPT.md | codex --full-auto ; done   # Codex
+while :; do cat PROMPT.md | codex -a never -s danger-full-access ; done   # Codex
 while :; do cat PROMPT.md | opencode ; done            # OpenCode
 ```
 

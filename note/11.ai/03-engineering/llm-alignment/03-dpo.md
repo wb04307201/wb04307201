@@ -133,7 +133,7 @@ trainer.train()
 
 - **本专题**：[RLHF](02-rlhf.md) / [新方法](05-newer-methods.md)
 - **L2 栈**：[推理优化大专题](../../02-technology-stack/llm-inference-optimization/README.md)
-- **咬文嚼字**：[面试深挖](../../../../../13.split-hairs/11.ai/agent-performance-evaluation/README.md)
+- **咬文嚼字**：[面试深挖](../../../13.split-hairs/11.ai/agent-performance-evaluation/README.md)
 
 ---
 

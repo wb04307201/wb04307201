@@ -9,7 +9,7 @@ module:
 
 # 多 Agent 共享记忆 · 深度专章
 
-> 一句话定位：**单 Agent Memory 解决"跨调用"；多 Agent 共享记忆解决"跨进程"，本质是分布式系统问题**。完整体系基于 [主模块 · Agent Memory 架构](README.md)。面试速查版见 [13.split-hairs · multi-agent-shared-memory](../../../../13.split-hairs/11.ai/multi-agent-shared-memory/README.md)。
+> 一句话定位：**单 Agent Memory 解决"跨调用"；多 Agent 共享记忆解决"跨进程"，本质是分布式系统问题**。完整体系基于 [主模块 · Agent Memory 架构](README.md)。面试速查版见 [13.split-hairs · multi-agent-shared-memory](../../../13.split-hairs/11.ai/multi-agent-shared-memory/README.md)。
 
 ---
 
@@ -498,8 +498,8 @@ Q：你的多 Agent 任务是什么类型？
 
 - [主模块 · Agent Memory 架构](README.md) — 316 行深度：单 Agent Memory 3 维度 + 5 反模式
 - [主模块 · Multi-Agent 深度（第 2.3 节黑板模式）](../agent-execution-patterns/06-multi-agent-deep-dive.md#23-黑板模式blackboard--shared-state) — 5 行简述
-- [兄弟题 · agent-memory-classification](../../../../13.split-hairs/11.ai/agent-memory-classification/README.md) — 单 Agent Memory 三维分类
-- [兄弟题 · multi-agent-system-design](../../../../13.split-hairs/11.ai/multi-agent-system-design/README.md) — 5 大组件 + 死循环防护
+- [兄弟题 · agent-memory-classification](../../../13.split-hairs/11.ai/agent-memory-classification/README.md) — 单 Agent Memory 三维分类
+- [兄弟题 · multi-agent-system-design](../../../13.split-hairs/11.ai/multi-agent-system-design/README.md) — 5 大组件 + 死循环防护
 - [主模块 · Agent Context 03-memory-strategies](../agent-context/03-memory-strategies.md) — 4 层协作机制
 
 ---

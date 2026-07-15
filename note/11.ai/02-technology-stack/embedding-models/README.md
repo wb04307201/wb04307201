@@ -158,6 +158,6 @@ response = client.embeddings.create(
 
 - **本专题**：[Chunking 策略](../chunking-strategies/README.md) / [Hybrid Search](../hybrid-search/README.md) / [Reranker](../reranker/README.md) / [RAG 评估](../../../08-llmops/agent-evaluation/09-rag-evaluation/README.md)
 - **L1**：[Embedding vs Vectorization](../../01-fundamentals/embedding-vs-vectorization/README.md)
-- **咬文嚼字**：[RAG 面试](../../../../../13.split-hairs/11.ai/rag/README.md)
+- **咬文嚼字**：[RAG 面试](../../../13.split-hairs/11.ai/rag/README.md)
 
 ← [返回 L2 技术栈](../README.md)

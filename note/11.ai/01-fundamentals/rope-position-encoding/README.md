@@ -78,7 +78,7 @@ RoPE(x, m) =
 
 - **L1 同级**：[Transformer 架构](../transformer/README.md) / [注意力机制](../attention-mechanism/README.md) / [Flash Attention](../flash-attention/README.md)
 - **L2 栈**：[YaRN 长度扩展专题](../../02-technology-stack/yarn-context-extension/README.md)
-- **咬文嚼字**：[Transformer 面试题](../../../../13.split-hairs/11.ai/transformer/README.md)
+- **咬文嚼字**：[Transformer 面试题](../../../13.split-hairs/11.ai/transformer/README.md)
 
 ---
 

@@ -98,7 +98,7 @@ PPO 训练：70B 模型 + 6B RM + 6B Value Model
 
 - **本专题**：[SFT](01-sft.md) / [DPO](03-dpo.md) / [新方法](05-newer-methods.md)
 - **L2 栈**：[推理优化大专题](../../02-technology-stack/llm-inference-optimization/README.md)
-- **咬文嚼字**：[面试深挖](../../../../../13.split-hairs/11.ai/agent-performance-evaluation/README.md)
+- **咬文嚼字**：[面试深挖](../../../13.split-hairs/11.ai/agent-performance-evaluation/README.md)
 
 ---
 

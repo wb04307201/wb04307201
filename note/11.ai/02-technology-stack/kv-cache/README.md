@@ -64,7 +64,7 @@ V 缓存: [num_layers, num_heads, seq_len, head_dim]
 
 - **L1 同级**：[Transformer 架构](../../01-fundamentals/transformer/README.md) / [注意力机制](../../01-fundamentals/attention-mechanism/README.md) / [Flash Attention](../../01-fundamentals/flash-attention/README.md)
 - **本专题**：[PagedAttention](README.md) / [推理性能指标](../inference-metrics/README.md) / [推理框架对比](../inference-frameworks/README.md)
-- **咬文嚼字**：[KV Cache 面试题](../../../../../13.split-hairs/11.ai/llm-benchmark/README.md) 顺带提
+- **咬文嚼字**：[KV Cache 面试题](../../../13.split-hairs/11.ai/llm-benchmark/README.md) 顺带提
 
 ---
 

@@ -80,7 +80,7 @@ output = Σ (g_i · Expert_i(x))  # 加权求和
 
 - **L1 同级**：[Transformer 架构](../transformer/README.md) / [注意力机制](../attention-mechanism/README.md)
 - **L2 栈**：[KV Cache](../../02-technology-stack/kv-cache/README.md) / [MoE 推理优化](../../02-technology-stack/moe-inference/README.md)
-- **咬文嚼字**：[DeepSeek-V3 面试题](../../../../13.split-hairs/11.ai/multi-agent-system-design/README.md) 顺带提
+- **咬文嚼字**：[DeepSeek-V3 面试题](../../../13.split-hairs/11.ai/multi-agent-system-design/README.md) 顺带提
 
 ---
 

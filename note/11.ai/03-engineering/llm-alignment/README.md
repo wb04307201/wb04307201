@@ -72,7 +72,7 @@ KTO:     L = λ_w·σ(r_w) + λ_l·σ(-r_l)  # 价值函数
 - **L1 同级**：[Transformer 架构](../../01-fundamentals/transformer/README.md) / [MoE](../../01-fundamentals/moe-architecture/README.md)
 - **L2 栈**：[推理优化大专题](../../02-technology-stack/llm-inference-optimization/README.md)
 - **LLMOps**：[08-llmops](../../08-llmops/README.md) — 安全 + 评测
-- **咬文嚼字**：[面试深挖](../../../../../13.split-hairs/11.ai/agent-performance-evaluation/README.md) 顺带提
+- **咬文嚼字**：[面试深挖](../../../13.split-hairs/11.ai/agent-performance-evaluation/README.md) 顺带提
 
 ---
 

@@ -146,7 +146,7 @@ for prompt in prompts:
 
 - **本专题**：[RLHF](02-rlhf.md) / [DPO](03-dpo.md) / [新方法](05-newer-methods.md)
 - **LLMOps**：[LLM 安全](../../08-llmops/05-llm-security/README.md) 顺带提
-- **咬文嚼字**：[面试深挖](../../../../../13.split-hairs/11.ai/agent-performance-evaluation/README.md)
+- **咬文嚼字**：[面试深挖](../../../13.split-hairs/11.ai/agent-performance-evaluation/README.md)
 
 ---
 

@@ -68,7 +68,7 @@ Time T+2:  C 完成 → 插入 Req E
 ## 🔗 兄弟章节
 
 - **本专题**：[KV Cache](../kv-cache/README.md) / [PagedAttention](../paged-attention/README.md)
-- **咬文嚼字**：[面试深挖版](../../../../../13.split-hairs/11.ai/llm-benchmark/README.md) 顺带提
+- **咬文嚼字**：[面试深挖版](../../../13.split-hairs/11.ai/llm-benchmark/README.md) 顺带提
 
 ---
 

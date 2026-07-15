@@ -9,7 +9,7 @@ module:
 
 # RAG 超范围检测与拒答策略 · 深度专章
 
-> 一句话定位：**没有拒答机制的 RAG = 强答 = 幻觉 = 信任崩塌**。完整体系基于 [主模块 · RAG vs Fine-tuning 主章节](../01-rag-vs-finetuning/README.md) + [LLM 幻觉防御专题](../../../../13.split-hairs/11.ai/hallucination/README.md)。面试速查版见 [13.split-hairs · rag-out-of-domain-rejection](../../../../13.split-hairs/11.ai/rag-out-of-domain-rejection/README.md)。
+> 一句话定位：**没有拒答机制的 RAG = 强答 = 幻觉 = 信任崩塌**。完整体系基于 [主模块 · RAG vs Fine-tuning 主章节](../01-rag-vs-finetuning/README.md) + [LLM 幻觉防御专题](../../../13.split-hairs/11.ai/hallucination/README.md)。面试速查版见 [13.split-hairs · rag-out-of-domain-rejection](../../../13.split-hairs/11.ai/rag-out-of-domain-rejection/README.md)。
 
 ---
 
@@ -496,19 +496,19 @@ Q3：用户对拒答接受度？
 
 **主模块**：
 - [主模块 · RAG 体系](../01-rag-vs-finetuning/README.md) —— 351 行深度
-- [LLM 幻觉防御专题](../../../../13.split-hairs/11.ai/hallucination/README.md) —— 233 行（生产要素）
-- [RAG 架构面试题](../../../../13.split-hairs/11.ai/rag/README.md) —— RAG 基础
+- [LLM 幻觉防御专题](../../../13.split-hairs/11.ai/hallucination/README.md) —— 233 行（生产要素）
+- [RAG 架构面试题](../../../13.split-hairs/11.ai/rag/README.md) —— RAG 基础
 
 **兄弟专题**：
 - [Agent Memory 共享专章](../../04-architecture/agent-memory/shared-memory.md) —— 多 Agent 共享
-- [Claude Code Agentic Search 专题](../../../../13.split-hairs/11.ai/claude-code-agentic-search/README.md) —— AI Coding 反 RAG
+- [Claude Code Agentic Search 专题](../../../13.split-hairs/11.ai/claude-code-agentic-search/README.md) —— AI Coding 反 RAG
 
 **LLMOps**：
 - [LLM Evaluation](../../04-llm-evaluation/README.md)
 - [LLM Security](../../05-llm-security/README.md)
 
 **面试速查**：
-- [13.split-hairs · rag-out-of-domain-rejection](../../../../13.split-hairs/11.ai/rag-out-of-domain-rejection/README.md) —— 5 拒答模式 + 4 步调优
+- [13.split-hairs · rag-out-of-domain-rejection](../../../13.split-hairs/11.ai/rag-out-of-domain-rejection/README.md) —— 5 拒答模式 + 4 步调优
 
 ---
 

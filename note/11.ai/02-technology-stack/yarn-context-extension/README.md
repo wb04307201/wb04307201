@@ -144,7 +144,7 @@ model.config.rope_scaling = {
 
 - **L1**：[RoPE 位置编码](../../01-fundamentals/rope-position-encoding/README.md)
 - **本专题**：[Lost in middle](../lost-in-middle/README.md) / [KV Cache](../kv-cache/README.md)
-- **咬文嚼字**：[面试深挖](../../../../../13.split-hairs/11.ai/llm-benchmark/README.md)
+- **咬文嚼字**：[面试深挖](../../../13.split-hairs/11.ai/llm-benchmark/README.md)
 
 ---
 

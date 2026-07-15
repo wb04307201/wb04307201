@@ -25,7 +25,7 @@ module:
 
 **适用场景**：新 Planner / Prompt / Model 版本上线 A/B 对照。
 
-**面试速查版**：[13.split-hairs · agent-ab-testing](../../../../13.split-hairs/11.ai/agent-ab-testing/README.md)
+**面试速查版**：[13.split-hairs · agent-ab-testing](../../../13.split-hairs/11.ai/agent-ab-testing/README.md)
 
 ---
 

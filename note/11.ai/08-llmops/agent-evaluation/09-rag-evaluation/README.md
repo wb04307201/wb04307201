@@ -191,7 +191,7 @@ metrics = [
 ## 🔗 兄弟章节
 
 - **本专题**：[RAG Pipeline 综述](../../02-technology-stack/rag-pipeline/README.md) / [Hybrid Search](../../02-technology-stack/hybrid-search/README.md) / [Reranker](../../02-technology-stack/reranker/README.md) / [Query Rewrite](../../02-technology-stack/query-rewrite/README.md)
-- **咬文嚼字**：[RAG 面试](../../../../13.split-hairs/11.ai/rag/README.md)
+- **咬文嚼字**：[RAG 面试](../../../13.split-hairs/11.ai/rag/README.md)
 - **LLMOps**：[08-llmops](../../08-llmops/README.md) — RAG 安全
 
 ---

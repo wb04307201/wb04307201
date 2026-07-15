@@ -76,7 +76,7 @@ module:
 
 - **L1 同级**：[Transformer 架构核心](../transformer/README.md)
 - **L2 技术栈**：[Token 与计费原理](../../02-technology-stack/token-billing/README.md)
-- **咬文嚼字**：[Transformer 架构](../../../../13.split-hairs/11.ai/transformer/README.md) / [Token 原理](../../../../13.split-hairs/11.ai/token/README.md)
+- **咬文嚼字**：[Transformer 架构](../../../13.split-hairs/11.ai/transformer/README.md) / [Token 原理](../../../13.split-hairs/11.ai/token/README.md)
 - **架构演进**：[LLM 驾驭演进史](../../04-architecture/llm-control-evolution/README.md) — L1 → L8 全景图
 
 ---

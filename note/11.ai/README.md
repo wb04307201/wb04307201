@@ -12,7 +12,7 @@ module:
 
 > 从基础概念到行业落地，系统化理解人工智能技术栈。
 
-本目录按 **L1-L8 知识层级递进 + 教学课程** 九大主题组织，从理论到实践，从底层算法到上层应用。
+本目录按 **L1-L8 知识层级递进** 八大主题组织，从理论到实践，从底层算法到上层应用。
 
 ---
 
@@ -49,7 +49,6 @@ graph TD
     L5 --> L7["L7 前沿研究<br/>沉思模型 · 蒸馏"]
     L4 --> L7
     L2 --> L8["L8 LLMOps<br/>RAG · 向量库 · 评测 · Agent 评测 · 安全"]
-    L3 --> Training["教学课程<br/>16 课 AI Agent 实战"]
 ```
 
 ---
@@ -93,8 +92,7 @@ graph TD
 - **L4 架构设计**（9 leaf + 2 单文件）：智能系统分层、Agent 架构/上下文/记忆/执行模式、路由架构、本体驱动 Agent、LLM 驾驭演进、2026 趋势；外加 `bpmn-ai-integration.md`、`spring-ai-vs-dify.md` 单文件
 - **L5 行业应用**（5 leaf + 16 deep）：AI 重塑汽车（Automotive 子 4）、具身智能、AI 撰写 PRD、Shopify AI Agent、12 个行业标杆案例（编程/客服/法律/教育/金融/办公/销售/医疗/制造）
 - **L7 前沿研究**（2 leaf + 1 deep）：沉思模型范式、知识蒸馏（Distillation 子 1）
-- **L8 LLMOps**（9 leaf + 2 deep）：RAG vs Fine-tuning vs Prompt 选型、LLMOps 栈、向量库 vs 缓存、评测体系、安全防护、RAG 域外拒识、Agentic Search vs RAG；Agent 评测（含 A/B 测试设计、RAG 评测 2 子目录）
-- **教学课程**（16 leaf + 42 变体）：AI Agent 应用开发 16 课，每课含 README.md（主索引）+ 1-4 个 README1.md/README2.md/README3.md 变体（UI 截图/补充材料）
+- **L8 LLMOps**（8 leaf + 2 deep）：RAG vs Fine-tuning vs Prompt 选型、LLMOps 栈、向量库 vs 缓存、评测体系、安全防护、RAG 域外拒识、Agentic Search vs RAG；Agent 评测（含 A/B 测试设计、RAG 评测 2 子目录）
 
 ---
 
@@ -154,13 +152,11 @@ graph TD
 | 维度 | 数字 |
 |------|------|
 | 一级分类数 | 7（L1-L5 + L7-L8） |
-| 总 README 数（仅标准 README.md） | 115（1 顶层 + 8 模块 + 106 子内容） |
-| 总文件数（.md） | 253 |
-| 总目录数 | 174 |
-| 总变体 README 文件数（README1/2/3.md 等） | 42（见下注） |
-| 总 README（含变体） | 173（131 + 42） |
+| 总 README 数（仅标准 README.md） | 114（1 顶层 + 7 模块 + 106 子内容） |
+| 总文件数（.md） | 174 |
+| 总目录数 | 114 |
 
-### 8 分类内容数量明细
+### 7 分类内容数量明细
 
 | 分类 | 直接子目录 | 单文件 | 深层嵌套 | 子 README 数 |
 |------|----------|--------|---------|-------------|
@@ -170,14 +166,12 @@ graph TD
 | 04-architecture | 9 | 2 | 0 | 10 |
 | 05-applications | 5 | 0 | 16 | 21 |
 | 07-research | 2 | 0 | 1 | 3 |
-| 08-llmops | 9 | 0 | 2 | 11 |
-| **合计** | **77** | **10** | **32** | **110** |
+| 08-llmops | 8 | 0 | 2 | 11 |
+| **合计** | **74** | **10** | **32** | **110** |
 
 > 注 1：04-architecture 含 2 个单文件（`bpmn-ai-integration.md` BPMN+AI 融合、`spring-ai-vs-dify.md` Spring AI vs Dify 对比），不在子目录计数内
 >
-> 注 2：教学课程 lesson1-16 内有 README1.md / README2.md / README3.md 变体共 42 个文件，主要承载 UI 截图（Coze/Dify 教程界面，详见 CONTRIBUTING.md §5.3），不计入标准 README 计数
->
-> 注 4：frontmatter 覆盖率与文末回链覆盖见各分类 README 自身的"📊 本节统计"段
+> 注 2：frontmatter 覆盖率与文末回链覆盖见各分类 README 自身的"📊 本节统计"段
 
 ---
 
