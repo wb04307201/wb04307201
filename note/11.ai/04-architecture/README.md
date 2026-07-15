@@ -23,6 +23,7 @@ module:
 | [agent-context](agent-context/) 🆕 | **Agent 长上下文架构** — 6 大策略组合（Chunking / RAG / Memory / Sliding Window / Sub-Agents / Long-Context）+ 决策树 + 反模式 + 7 道面试题 | 长上下文选型 |
 | [ontology-driven-agent](ontology-driven-agent/) | **本体驱动的智能体** — 让 AI 从"黑箱推理"走向"结构化认知"，融合符号主义与连接主义，构建可信可审计可演化的 AI 系统 | 可信 AI 范式 |
 | [2026-trends](2026-trends/) | 2026 AI 技术矩阵 — 大模型 / 多模态 / 具身智能 三位一体趋势 | 前沿趋势速览 |
+| [llm-control-evolution](llm-control-evolution/) 🆕 | **LLM 驾驭演进史** — Prompt → Context → Harness → Loop 4 阶段叙事 + 升级决策树 + 反模式 | 驾驭范式演进 |
 | [bpmn-ai-integration.md](bpmn-ai-integration.md) | **AI + BPMN 融合** — 业务流程引擎与 AI Agent 集成（单文件） | 工作流引擎融合 |
 | [spring-ai-vs-dify.md](spring-ai-vs-dify.md) | **Spring AI vs Dify** — Java 代码优先 vs 低代码平台的 7 维度决策 + 代码示例 + 混合架构（单文件） | 抽象层级选型 |
 
@@ -131,15 +132,15 @@ graph TB
 
 | 维度 | 数字 |
 |------|------|
-| 一级 leaf README 数 | 4（intelligent-system-layers / agent-architecture / ontology-driven-agent / 2026-trends） |
+| 一级 leaf README 数 | 9（intelligent-system-layers / agent-architecture / agent-execution-patterns / routing-architecture / agent-memory / agent-context / ontology-driven-agent / 2026-trends / **llm-control-evolution**） |
 | 二级 leaf README 数 | 0 |
 | 单文件章节数 | 2（bpmn-ai-integration.md / spring-ai-vs-dify.md） |
 | 速查表条目数 | 8 |
 | 最佳实践条数 | 5 |
 | 常见面试题数 | 6 |
 | 开源参考项目数 | 5 类共 15+ 条 |
-| frontmatter 覆盖 | 4 / 4 = 100%（单文件 bpmn-ai-integration.md 无 frontmatter 但为单文件章节） |
-| 文末回链覆盖 | 4 / 4 = 100% |
+| frontmatter 覆盖 | 9 / 9 = 100%（单文件 bpmn-ai-integration.md 无 frontmatter 但为单文件章节） |
+| 文末回链覆盖 | 9 / 9 = 100% |
 
 ---
 

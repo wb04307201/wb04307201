@@ -204,7 +204,7 @@ graph TD
 |------|---------|
 | **学习顺序** | 按 1→2→3→4... 顺序学（前置依赖强）；或按三条路线（快速/深度/实战）选学 |
 | **环境准备** | JDK 17+ / Maven 3.8+ / Node.js 18+ / Docker Desktop / Claude Code CLI / 百炼 API Key |
-| **配套视频** | `视频/` 目录有 5 段演示视频（实战 Harness / Claude Code + qwen / MCP 测试 / Spec-Kit 流程 / IDEA 开发） |
+| **配套视频** | `视频/` 目录有 5 段演示视频（实战 Harness / Claude Code + qwen / MCP 测试 / Spec-Kit 流程 / IDEA 开发）（⚠️ 待补充：视频目录尚未创建） |
 | **辅助资料** | lesson1 含 SKILL.md 示例 + qiming11.md RAG 演示文档 + Spring AI Chat Demo |
 | **实战练习** | 每课配 README1-3.md 变体（含 UI 截图/补充材料），动手做一遍效果最好 |
 
@@ -245,6 +245,8 @@ graph TD
 ---
 
 ## 🎬 配套视频
+
+> ⚠️ 注意：以下视频目录尚未创建，视频资源待补充。
 
 视频资源位于 `视频/` 目录：
 

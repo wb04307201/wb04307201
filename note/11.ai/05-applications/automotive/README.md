@@ -167,7 +167,6 @@ ROI：减少 70% 非计划停机，节省 30% 维护成本。
 
 - **行业应用总览**：[L5 行业应用](../README.md)
 - **具身智能**：[embodied-ai](../embodied-ai/README.md)（机器人 + 自动驾驶统一视角）
-- **AI 思维**：[抛硬币问题](../../01-fundamentals/ai-thinking/README.md)
 - **12.story**：[SaaS 多租户架构](../../../12.story/18-saas-multitenant.md)（汽车 SaaS 类似）
 
 ---

@@ -22,6 +22,7 @@ module:
 | 05 | [Agent 评测](../06-agent-evaluation) | 6 大指标维度（任务完成率/步骤效率/工具使用/成本/满意度/稳定性）+ 5 种评估方法 | Agent 性能量化 |
 | 06 | [LLM 安全](05-llm-security/) | Prompt 注入、越狱、数据泄漏、内容合规 | 风险防控 |
 | 07 | 🆕 [RAG 超范围拒答](06-rag-out-of-domain-rejection/) | 6 大检测机制 + 5 大拒答模式 + 4 步阈值调优 + 6 OSS 实战 | RAG 质量治理 |
+| 08 | 🆕 [Agentic Search vs RAG](agentic-search-vs-rag/) | RAG 3 大工程问题 + Agentic Search 3 大优势 + Claude Code 5 大 Harness 扩展点 + 场景化决策矩阵 | AI Coding 检索范式 |
 
 ### 1.1 学习路径
 
@@ -69,6 +70,7 @@ graph LR
 - **[04-llm-evaluation](04-llm-evaluation/)**：LLM 评测体系 — 自动化指标（BLEU/ROUGE/BERTScore）+ 人工评测 + A/B 测试 + 红队对抗
 - **[06-agent-evaluation](../06-agent-evaluation)**：Agent 性能评估 — 6 大指标维度（任务完成率/步骤效率/工具使用/成本/满意度/稳定性）+ 5 种评估方法
 - **[05-llm-security](05-llm-security/)**：LLM 安全防护 — Prompt 注入 / 越狱 / 数据泄漏 / 内容合规
+- 🆕 **[agentic-search-vs-rag](agentic-search-vs-rag/)**：Agentic Search 取代 RAG 的范式革命 — RAG 3 大工程问题 + Agentic Search 3 大优势 + Claude Code 5 大 Harness 扩展点 + 8 场景决策矩阵
 
 ---
 
@@ -123,16 +125,16 @@ graph LR
 
 | 维度 | 数字 |
 |------|------|
-| 一级 leaf README 数 | 6（01-rag-vs-finetuning / 02-llmops-stack / 03-vector-db-vs-cache / 04-llm-evaluation / 06-agent-evaluation / 05-llm-security） |
+| 一级 leaf README 数 | 8（01-rag-vs-finetuning / 02-llmops-stack / 03-vector-db-vs-cache / 04-llm-evaluation / 06-agent-evaluation / 05-llm-security / 06-rag-out-of-domain-rejection / **agentic-search-vs-rag**） |
 | 二级 leaf README 数 | 0 |
-| 总 leaf README 数 | 6 |
+| 总 leaf README 数 | 8 |
 | 学习路径主题数 | 4（应用工程师 / 平台 SRE / 安全合规 / PM） |
 | 速查表条目数 | 8 |
 | 最佳实践条数 | 5 |
 | 常见面试题数 | 6 |
 | 开源参考项目数 | 6 类共 20+ 条 |
-| frontmatter 覆盖 | 5 / 5 = 100% |
-| 文末回链覆盖 | 5 / 5 = 100% |
+| frontmatter 覆盖 | 8 / 8 = 100% |
+| 文末回链覆盖 | 8 / 8 = 100% |
 
 ---
 
