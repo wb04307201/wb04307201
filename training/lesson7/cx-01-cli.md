@@ -183,26 +183,38 @@ codex
 
 ## **5. (可选)添加 MCP 工具**
 
-Codex CLI 支持 MCP 协议。打开并编辑配置文件 `~/.codex/config.toml`，在文件末尾添加 MCP 服务器配置：
+Codex CLI 支持 MCP 协议。推荐用 `codex mcp add` 命令逐个添加：
+
+```bash
+codex mcp add bing-search npx "bing-cn-mcp@latest"
+codex mcp add chrome-devtools npx "chrome-devtools-mcp@latest"
+codex mcp add mcp-npx-fetch npx "@tokenizin/mcp-npx-fetch@latest"
+codex mcp add sequential-thinking npx "@modelcontextprotocol/server-sequential-thinking@latest"
+codex mcp add time uvx "mcp-server-time" "--local-timezone=Asia/Shanghai"
+codex mcp add playwright npx "@playwright/mcp@latest"
+codex mcp add context7 npx "@upstash/context7-mcp@latest"
+```
+
+添加后自动生成到 `~/.codex/config.toml`，格式如下（注意 args 中**无 `-y`**）：
 
 ```toml
 # ... 前面的 model_provider 配置 ...
 
 [mcp_servers.bing-search]
 command = "npx"
-args = ["-y", "bing-cn-mcp@latest"]
+args = ["bing-cn-mcp@latest"]
 
 [mcp_servers.chrome-devtools]
 command = "npx"
-args = ["-y", "chrome-devtools-mcp@latest"]
+args = ["chrome-devtools-mcp@latest"]
 
 [mcp_servers.mcp-npx-fetch]
 command = "npx"
-args = ["-y", "@tokenizin/mcp-npx-fetch@latest"]
+args = ["@tokenizin/mcp-npx-fetch@latest"]
 
 [mcp_servers.sequential-thinking]
 command = "npx"
-args = ["-y", "@modelcontextprotocol/server-sequential-thinking@latest"]
+args = ["@modelcontextprotocol/server-sequential-thinking@latest"]
 
 [mcp_servers.time]
 command = "uvx"
@@ -210,12 +222,14 @@ args = ["mcp-server-time", "--local-timezone=Asia/Shanghai"]
 
 [mcp_servers.playwright]
 command = "npx"
-args = ["-y", "@playwright/mcp@latest"]
+args = ["@playwright/mcp@latest"]
 
 [mcp_servers.context7]
 command = "npx"
-args = ["-y", "@upstash/context7-mcp@latest"]
+args = ["@upstash/context7-mcp@latest"]
 ```
+
+> 💡 也可以手动编辑 `~/.codex/config.toml`，但注意 Codex 的 TOML 格式 args 中**不需要 `-y`**（和 Claude Code 的 JSON 格式不同）。
 
 MCP 是一种开放协议，只要是符合该协议开发的工具都可以接入 AI Agent，因此可能需要适配多种语言的环境。
 
