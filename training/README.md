@@ -225,9 +225,7 @@ graph TD
 
 ## 7. 相关章节
 
-- 上游：[L3 工程实践](../03-engineering/) — AI 工程基础（Spring AI 在此落地）
-- 关联：[06.spring](../../06.spring/) — Spring 生态（Spring AI 底层）
-- 面试：[13.split-hairs AI 新概念](../../13.split-hairs/11.ai/README.md) — AI 面试深挖
+> 相关笔记见 `note/11.ai/` 知识体系（独立仓库）
 
 ---
 

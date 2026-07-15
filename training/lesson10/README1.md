@@ -75,7 +75,7 @@ description: Scaffold a Vite + React + Tailwind demo app...
 | 🔹 环境假设 | 假设空目录、特定包管理器等 |
 | 🔹 执行假设 | 跳过 `npm install`、顺序错误等 |
 
-**自动化准备**：使用 `codex exec --full-auto` 便于脚本化执行
+**自动化准备**：使用 `codex exec -a never -s danger-full-access` 便于脚本化执行
 
 ---
 
@@ -200,10 +200,10 @@ codex exec "Evaluate the demo-app repository..." \
 $skill-creator
 
 # 手动执行技能（允许文件写入）
-codex exec --full-auto 'Use the $setup-demo-app skill...'
+codex exec -a never -s danger-full-access 'Use the $setup-demo-app skill...'
 
 # 自动化评估（输出 JSONL 便于解析）
-codex exec --json --full-auto "<prompt>"
+codex exec -a never -s danger-full-access --json "<prompt>"
 
 # 风格评估（输出结构化 JSON）
 codex exec "<prompt>" --output-schema ./schema.json -o result.json

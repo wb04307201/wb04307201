@@ -14,7 +14,7 @@ module:
 ---
 ## 引言：变更说明
 
-第 15 课：AI 原生组织——从工具到组织架构 是 N 个 JEP / 特性 / 章节的合集。
+第 15 课：AI 原生组织——从工具到组织架构 是 4 个章节的合集。
 
 本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
 
@@ -115,6 +115,15 @@ flowchart LR
 ---
 
 ⬅️ 上一课：[AI 时代的认知债务与深度工作](../lesson14/README.md) | ➡️ 下一课：[LLM 驱动的个人知识库](../lesson16/README.md)
+
+---
+
+## 📎 附件
+
+| 文件 | 说明 |
+|:-----|:-----|
+| [The-Founders-Playbook.pdf](The-Founders-Playbook.pdf) | Anthropic 创始人手册原文 |
+| [The Enterprise AI Transformation Guide.pdf](The%20Enterprise%20AI%20Transformation%20Guide.pdf) | 企业 AI 转型指南原文 |
 
 ---
 

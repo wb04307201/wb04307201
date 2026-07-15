@@ -56,18 +56,32 @@ codex "给这个项目添加单元测试"
 |------|------|------|
 | `-m`, `--model` | 指定模型 | `codex -m qwen3.7-max` |
 | `-q`, `--quiet` | 静默模式，减少输出 | `codex -q "分析代码"` |
-| `--full-auto` | 全自动模式，跳过所有确认 | `codex --full-auto "重构代码"` |
-| `--approval-mode` | 审批模式（suggest/auto-edit/full-auto） | `codex --approval-mode auto-edit` |
+| `-a`, `--ask-for-approval` | 审批策略（suggest/on-request/never） | `codex -a never "重构代码"` |
+| `-s`, `--sandbox` | 沙箱策略（read-only/workspace-write/danger-full-access） | `codex -s danger-full-access` |
 
 ### 权限模式说明
 
-Codex 有三种审批模式：
+Codex 的审批和沙箱是**两个独立维度**：
 
+**审批策略**（`-a` / `--ask-for-approval`）：
 - **suggest**（默认）：每次操作前会提示确认
-- **auto-edit**：文件编辑自动确认，命令执行仍需确认
-- **full-auto**：所有操作自动执行（沙箱内运行）
+- **on-request**：模型自行决定何时请求审批
+- **never**：永不请求审批，执行失败直接返回给模型
 
-在交互式使用时建议使用 suggest 模式，在自动化脚本或可信环境中可使用 `--full-auto`。
+**沙箱策略**（`-s` / `--sandbox`）：
+- **read-only**：只读，不可修改文件
+- **workspace-write**：可写工作区文件
+- **danger-full-access**：完全访问（无沙箱限制）
+
+**全自动组合**（跳过所有确认 + 完全访问）：
+
+```bash
+codex -a never -s danger-full-access "重构代码"
+# 或更极端（跳过一切，仅用于外部沙箱环境）：
+codex --dangerously-bypass-approvals-and-sandbox "重构代码"
+```
+
+> ⚠️ 交互式使用建议用默认 suggest 模式。自动化脚本或 Docker 隔离环境可用 `-a never -s danger-full-access`。
 
 ---
 
