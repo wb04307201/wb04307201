@@ -257,9 +257,6 @@ metrics:
 - [Context Engineering 怎么做？](../context-engineering-interview/README.md) — Token 预算
 - [Function Calling 怎么设计？](../function-calling/README.md) — 工具调用工程化
 
-**教学场景**：
-- [training/lesson4 · Skill 编写与设计模式](../../../11.ai/training/lesson4/README.md) — 教学场景下怎么教新人写 Skill
-
 ---
 
 > 📅 2026-07-06 · 咬文嚼字 · 11.ai · ⭐⭐⭐

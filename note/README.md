@@ -212,7 +212,6 @@ module:
 | 5 | [L5 行业应用](11.ai/05-applications/README.md) | 汽车行业落地、具身智能 |
 | 6 | [L6 前沿研究](11.ai/07-research/README.md) | 沉思模型（Rumination）等前沿探索 |
 | 7 | [LLMOps](11.ai/08-llmops/README.md) | RAG vs 微调、LLMOps 栈、向量库 vs 缓存、LLM 评测、LLM 安全 |
-| 8 | [教学课程](11.ai/training/README.md) | Spring AI Agent 实战 16 课 |
 
 # 十二、[「阿明餐厅」技术系列](12.story/README.md)
 

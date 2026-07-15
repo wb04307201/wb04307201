@@ -93,4 +93,3 @@
 - [LangGraph](langgraph.md) — Python 代码优先复杂 Agent 框架
 - [BPMN+AI 融合](../../04-architecture/bpmn-ai-integration.md) — AI + BPMN 跨界决策范式
 - [大模型应用框架](../frameworks/llm-app/README.md) — Spring AI / LangChain4j / LangChain / LlamaIndex 框架对比
-- [教学课程 lesson1-4](../../training/README.md) — Spring AI 实战教程

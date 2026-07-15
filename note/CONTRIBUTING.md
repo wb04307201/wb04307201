@@ -209,13 +209,13 @@ graph TD
 
 | 文件 | PNG 嵌入数 | 适合 Mermaid？|
 |------|----------|--------------|
-| `11.ai/training/lesson9/README2.md` | 16 | ❌ Dify 教程 UI 截图 |
-| `11.ai/training/lesson1/README1.md` | 7 | ❌ Coze 教程 UI 截图 |
-| `11.ai/training/lesson9/README3.md` | 7 | ❌ Dify 教程 UI 截图 |
+| `training/lesson9/README2.md` | 16 | ❌ Dify 教程 UI 截图 |
+| `training/lesson1/README1.md` | 7 | ❌ Coze 教程 UI 截图 |
+| `training/lesson9/README3.md` | 7 | ❌ Dify 教程 UI 截图 |
 | `07.workflow/process-engine/camunda/camunda-7/README.md` | 4 | ✅ Camunda 7 BPMN 流程图 |
 | `06.spring/03-data/mybatis/01-architecture/README.md` | 1 | ✅ MyBatis 架构图 |
 | `06.spring/03-data/mybatis/04-mybatis-plus/README.md` | 1 | ✅ MyBatis-Plus 架构图 |
-| `11.ai/training/lesson13/README1.md` | 1 | ❌ 占位截图 |
+| `training/lesson13/README1.md` | 1 | ❌ 占位截图 |
 
 ### 5.2 高优先级（适合 Mermaid）—— 共 6 处候选
 
@@ -229,7 +229,7 @@ graph TD
 
 ### 5.3 低优先级（UI 截图，保留 PNG）
 
-`11.ai/training/lesson{1,9,13}/`：教程 UI 截图，**不建议**转 Mermaid，保留 PNG。
+`training/lesson{1,9,13}/`：教程 UI 截图，**不建议**转 Mermaid，保留 PNG。
 ├── `lesson9/README2.md` 16 张
 ├── `lesson9/README3.md` 7 张
 ├── `lesson1/README1.md` 7 张
@@ -241,7 +241,7 @@ graph TD
 - [ ] camunda-7 (4 张) 未迁
 - [ ] camunda-8 (2 张) 未迁
 - [ ] apache-eventmesh/cloud-flow (3 张) 未迁
-- [x] 11.ai/training/* 38 张保留（UI 截图）
+- [x] training/* 38 张保留（UI 截图）
 - [ ] 其他 25 个文件目录中**有 PNG 文件但 README 未引用**——可考虑作为历史资料保留或清理
 - [ ] 待执行 §2（孤儿 PNG 清理）—— 计划文档已于 `cc570324` 删除，本节独立维护
 

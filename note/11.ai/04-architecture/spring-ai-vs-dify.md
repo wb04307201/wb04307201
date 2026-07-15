@@ -499,7 +499,6 @@ public String knowledgeBaseQuery(@ToolParam String question) {
 - [Spring AI 工程](../03-engineering/frameworks/llm-app/README.md)
 - [BPMN+AI 融合](bpmn-ai-integration.md) — 另一种跨界决策范式
 - [大模型应用框架](../03-engineering/frameworks/llm-app/README.md) — Spring AI / LangChain4j / LangChain / LlamaIndex 框架对比
-- [教学课程 lesson1-4](../training/README.md) — Spring AI 实战教程
 - [13.split-hairs/11.ai](../../13.split-hairs/11.ai/README.md) — 面试深挖（建议补充本主题的 3 个高频问题）
 
 ← [返回笔记目录](../../README.md)

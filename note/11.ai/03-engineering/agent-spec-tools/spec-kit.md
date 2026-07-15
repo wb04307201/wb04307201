@@ -175,7 +175,6 @@ specify init
 - 对比总览：[Agent Spec Tools 三工具对比](README.md)
 - 同栏目：[Superpowers](superpowers.md) / [OpenSpec](openspec.md)
 - 概念层：[Harness Engineering](../harness-engineering/README.md) — Spec-Kit 是"规范型 Harness"
-- 训练材料：[training/lesson7/sh-02-sdd](../../training/lesson7/sh-02-sdd.md) — Spec-Kit 实战训练
 - 论文：[Spec Kit Agents (arXiv)](https://arxiv.org/html/2604.05278v1) — 多 Agent 架构形式化
 
 ---

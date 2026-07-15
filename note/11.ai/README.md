@@ -28,7 +28,6 @@ module:
 | 06 | [L6 Agent 评测](06-agent-evaluation/) | 6 大指标 · 5 种方法 · LLM-as-Judge · Pipeline · 阿里面试 · 7 反模式 · 选型决策树 | [子入口](06-agent-evaluation/) |
 | 07 | [L7 前沿研究](07-research/) | 沉思模型 · 知识蒸馏 | [子入口](07-research/) |
 | 08 | [L8 LLMOps](08-llmops/) | RAG vs 微调 · LLMOps 栈 · 向量库 vs 缓存 · 评测 · 安全 | [子入口](08-llmops/) |
-| 09 | [教学课程](training/) | AI Agent 应用开发 16 课培训（Spring AI · MCP · Skills · 多智能体 · 安全） | [子入口](training/) |
 
 ### 1.1 学习路径
 
@@ -36,7 +35,6 @@ module:
 - **AI 应用工程师**：L2 → L3 → L8 LLMOps
 - **AI 架构师**：L3 → L4 架构设计 → L5 行业应用 → L6 Agent 评测
 - **前沿研究者**：L1 → L2 → L7 前沿研究 → L4 架构设计
-- **教学/培训**：L1 → L2 → 教学课程 16 课
 - **📌 主线推荐**：[LLM 驾驭演进史](04-architecture/llm-control-evolution/README.md) — 理解全貌后跳读 L2/L3 详情
 
 ---
@@ -158,14 +156,14 @@ graph TD
 
 | 维度 | 数字 |
 |------|------|
-| 一级分类数 | 9（L1-L8 + training） |
-| 总 README 数（仅标准 README.md） | 131（1 顶层 + 9 模块 + 121 子内容） |
+| 一级分类数 | 8（L1-L8） |
+| 总 README 数（仅标准 README.md） | 115（1 顶层 + 8 模块 + 106 子内容） |
 | 总文件数（.md） | 253 |
 | 总目录数 | 174 |
 | 总变体 README 文件数（README1/2/3.md 等） | 42（见下注） |
 | 总 README（含变体） | 173（131 + 42） |
 
-### 9 分类内容数量明细
+### 8 分类内容数量明细
 
 | 分类 | 直接子目录 | 单文件 | 深层嵌套 | 子 README 数 |
 |------|----------|--------|---------|-------------|
@@ -177,8 +175,7 @@ graph TD
 | 06-agent-evaluation | 2 | 8 | 0 | 2 |
 | 07-research | 2 | 0 | 1 | 3 |
 | 08-llmops | 7 | 0 | 0 | 7 |
-| training | 16 | 0 | 43 | 16 |
-| **合计** | **91** | **10** | **73** | **122** |
+| **合计** | **75** | **10** | **30** | **106** |
 
 > 注 1：04-architecture 含 2 个单文件（`bpmn-ai-integration.md` BPMN+AI 融合、`spring-ai-vs-dify.md` Spring AI vs Dify 对比），不在子目录计数内
 >

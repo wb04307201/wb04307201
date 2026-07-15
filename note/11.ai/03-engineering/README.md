@@ -132,7 +132,6 @@ graph LR
 
 - 上游：[L2 技术栈](../02-technology-stack/) → **L3 工程实践** → [L4 架构设计](../04-architecture/)
 - 关联：[06.spring](../../06.spring/) — Spring 生态（Spring AI 的底层支撑）
-- 关联：[11.ai/training](../training/README.md) — Spring AI Agent 16 课实战
 - 面试：[13.split-hairs AI 新概念](../../13.split-hairs/11.ai/README.md) — Harness / Loop 面试精炼版
 
 ---
