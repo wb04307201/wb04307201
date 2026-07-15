@@ -208,6 +208,16 @@ codex mcp add context7 npx "@upstash/context7-mcp@latest"
 >
 > 建议所有 npx 服务统一设为 120 秒（首次下载后后续启动会很快）。
 
+> 🔴 **百炼第三方模型 + MCP 兼容性问题**（2026-07 实测）：
+>
+> Codex CLI 的 MCP 工具注入目前**只对 OpenAI 原生模型**（GPT-5.x / o-series）生效。使用百炼 Token Plan 接入的 qwen/deepseek 等第三方模型时：
+> - `codex mcp list` 显示服务已连接 ✅
+> - `/mcp` 命令能看到所有工具 ✅
+> - **但模型实际收到的工具列表中没有 MCP 工具** ❌（只有 `web_search`、`shell_command` 等内置工具）
+> - `wire_api = "responses"` 和 `"chat"` 均无法解决
+>
+> **如果你主要用百炼 + MCP**，建议改用 **Claude Code**（MCP 全通）或 **OpenCode**（MCP 正常）。Codex CLI 留作无 MCP 的简单任务使用。
+
 MCP 是一种开放协议，只要是符合该协议开发的工具都可以接入 AI Agent，因此可能需要适配多种语言的环境。
 
 ### 1. **Node.js + npx**
