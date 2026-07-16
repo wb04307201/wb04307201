@@ -17,6 +17,9 @@ module:
 |------|---------|-----------|
 | [rumination-models](rumination-models/) | 沉思模型（Rumination） — GLM-Z1-Rumination 深度推理模型 | 从"快速回答者"到"深度思考者"的范式转变 |
 | [distillation](distillation/) | 知识蒸馏 — 大模型能力向小模型迁移（含 tools 子目录） | 降低推理成本、端侧部署 |
+| [reasoning](reasoning/) | 推理能力增强 — CoT / ToT / ReAct / Self-Consistency | 从"直觉回答"到"系统推理" |
+| [efficiency](efficiency/) | 模型效率优化 — 量化 / 剪枝 / 蒸馏 / 推测解码 | 让大模型跑得更快更省 |
+| [safety](safety/) | 安全与对齐 — RLHF / DPO / 幻觉治理 / 红队测试 | 让 AI 既聪明又可靠 |
 
 ### 1.1 学习路径
 
@@ -30,7 +33,7 @@ module:
 
 ---
 
-> 🚧 本模块仍在建设中。已覆盖：**沉思模型**（rumination-models）、**知识蒸馏**（distillation）。以下方向待补充：CoT / ToT、量化、剪枝、多模态融合、架构创新（MoE / Mamba / RetNet）、安全与对齐（RLHF / DPO / 幻觉治理 / 红队测试）。
+> 📌 本模块已覆盖 5 大前沿方向：**沉思模型**（rumination-models）、**知识蒸馏**（distillation）、**推理增强**（reasoning）、**模型效率**（efficiency）、**安全与对齐**（safety）。以下方向待补充：多模态融合、架构创新（MoE / Mamba / RetNet）。
 
 ## 2. 研究版图
 
@@ -38,12 +41,12 @@ module:
 AI 前沿研究
 ├── 🧠 推理增强
 │   ├── 沉思模型（Rumination）      ← 从"快速回答"到"深度思考" ✅
-│   ├── Chain-of-Thought (CoT)       ← 思维链推理（待补充）
-│   └── Tree-of-Thought (ToT)        ← 思维树搜索（待补充）
+│   ├── Chain-of-Thought (CoT)       ← 思维链推理 ✅
+│   └── Tree-of-Thought (ToT)        ← 思维树搜索 ✅
 ├── 📦 模型效率
 │   ├── 知识蒸馏（Distillation）     ← 大模型 → 小模型 ✅
-│   ├── 量化（Quantization）         ← FP32 → INT8/INT4（待补充）
-│   └── 剪枝（Pruning）             ← 去除冗余参数（待补充）
+│   ├── 量化（Quantization）         ← FP32 → INT8/INT4 ✅
+│   └── 剪枝（Pruning）             ← 去除冗余参数 ✅
 ├── 🔀 多模态融合（待补充）
 │   ├── 视觉-语言模型（VLM）        ← GPT-4V / Gemini / Qwen-VL
 │   ├── 音频-语言模型                ← Whisper + LLM
@@ -52,10 +55,10 @@ AI 前沿研究
 │   ├── MoE（Mixture of Experts）    ← 稀疏激活降低推理成本
 │   ├── Mamba / State Space Models   ← 线性复杂度替代 Transformer
 │   └── RetNet                       ← 保留多尺度时序信息
-└── 🛡️ 安全与对齐（待补充）
-    ├── RLHF / DPO                   ← 人类反馈强化学习
-    ├── 幻觉（Hallucination）治理     ← RAG / 事实核查
-    └── 红队测试（Red Teaming）       ← 对抗性安全评估
+└── 🛡️ 安全与对齐 ✅
+    ├── RLHF / DPO                   ← 人类反馈强化学习 ✅
+    ├── 幻觉（Hallucination）治理     ← RAG / 事实核查 ✅
+    └── 红队测试（Red Teaming）       ← 对抗性安全评估 ✅
 ```
 
 ---
@@ -79,6 +82,9 @@ AI 前沿研究
 
 - **[rumination-models](rumination-models/)**：沉思模型（Rumination）范式 — 让 LLM 主动"慢思考"，包含 GLM-Z1-Rumination 等深度推理模型
 - **[distillation](distillation/)**（+ 1 子 [tools](distillation/tools/)）：知识蒸馏技术 — 大模型能力向小模型迁移的方法论与工具
+- **[reasoning](reasoning/)**：推理能力增强 — CoT / ToT / GoT / ReAct / Self-Consistency 等推理范式
+- **[efficiency](efficiency/)**：模型效率优化 — 量化 / 剪枝 / 蒸馏 / 推测解码 / 模型合并
+- **[safety](safety/)**：安全与对齐 — RLHF / DPO / Constitutional AI / 幻觉治理 / 红队测试
 
 ---
 
@@ -133,16 +139,16 @@ AI 前沿研究
 
 | 维度 | 数字 |
 |------|------|
-| 一级 leaf README 数 | 2（rumination-models / distillation） |
+| 一级 leaf README 数 | 5（rumination-models / distillation / reasoning / efficiency / safety） |
 | 二级 leaf README 数 | 1（distillation/tools） |
-| 总 leaf README 数 | 3 |
-| 前沿方向覆盖 | 5 方向规划，2 方向已覆盖（推理增强 / 模型效率），3 方向待补充 |
+| 总 leaf README 数 | 6 |
+| 前沿方向覆盖 | 5 方向规划，5 方向已覆盖（推理增强 / 模型效率 / 安全与对齐 / 沉思模型 / 知识蒸馏） |
 | 速查表条目数 | 8（前沿进展速览） |
 | 最佳实践条数 | 4 |
 | 常见面试题数 | 6 |
 | 开源参考项目数 | 6 类共 20+ 条 |
-| frontmatter 覆盖 | 3 / 3 = 100% |
-| 文末回链覆盖 | 3 / 3 = 100% |
+| frontmatter 覆盖 | 6 / 6 = 100% |
+| 文末回链覆盖 | 6 / 6 = 100% |
 
 ---
 
