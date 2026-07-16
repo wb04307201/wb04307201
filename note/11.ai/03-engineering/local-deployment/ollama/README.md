@@ -95,4 +95,4 @@ Ollama为开发者、研究人员和隐私敏感用户提供了一个**免费、
 
 ---
 
-← [返回 Ollama](../README.md)
+**部署指南**：[Qwen3 + Ollama Linux 部署](../linux-deploy/README.md)

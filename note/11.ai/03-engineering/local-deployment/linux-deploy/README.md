@@ -9,7 +9,7 @@ module:
 
 # Qwen3 + Ollama Linux 部署指南
 
-← 返回 [Ollama](../README.md)
+← 返回 [Ollama](../ollama/README.md)
 
 ### Qwen3 模型服务器配置建议表 (Ollama GPU 运行)
 

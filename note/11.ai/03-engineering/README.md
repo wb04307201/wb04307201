@@ -81,7 +81,7 @@ graph LR
 - **[local-deployment](local-deployment/)**（+ 4 子）：
   - [iflow-cli](local-deployment/iflow-cli/) — Java 集成 CLI
   - [ollama](local-deployment/ollama/) — Ollama 主指南
-  - [ollama/linux-deploy](local-deployment/ollama/linux-deploy/) — Linux 部署方案
+  - [linux-deploy](local-deployment/linux-deploy/) — Linux 部署方案
   - [open-webui](local-deployment/open-webui/) — 可视化 Web UI
 - **[ai-platforms](ai-platforms/)**：Dify / Coze / n8n / FastGPT / RAGFlow 五大平台对比
 - **[claude-code-practices](claude-code-practices/)**：OpenSpec / Spec Kit / Hooks 实践 + Skill 设计方法论 + Skill 命中率（描述/路由/加载/评估 4 层模型）
