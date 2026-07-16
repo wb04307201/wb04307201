@@ -20,43 +20,39 @@ question:
 
 ---
 
-## 文章清单（共 16 题 + 3 个二级目录索引页，2026-06-30 路径整理后）
-
-### 高性能 - 消息队列
-| 主题 | 难度 | 核心问题 |
-|------|------|---------|
-| [MQ 消息积压](high-performance/mq/mq-backlog/) | ⭐⭐⭐⭐ | 原因分析 + 紧急止血 + 长期优化 |
-| [为什么还要 RocketMQ](high-performance/mq/still-need-rocketmq/) | ⭐⭐⭐ | Kafka vs RocketMQ vs RabbitMQ 选型 |
-
-### 高性能 - 缓存
-| 主题 | 难度 | 核心问题 |
-|------|------|---------|
-| [缓存与数据库双写一致性](high-performance/cache-consistency/) | ⭐⭐⭐⭐⭐ | 延迟双删 vs 监听 binlog |
-
-### 高性能 - 限流
-| 主题 | 难度 | 核心问题 |
-|------|------|---------|
-| [限流算法](high-performance/rate-limiting/) | ⭐⭐⭐⭐ | 计数器 / 滑动窗口 / 漏桶 / 令牌桶 |
+## 文章清单（共 16 题）
 
 ### 分布式
 | 主题 | 难度 | 核心问题 |
 |------|------|---------|
-| [分布式 ID 生成方案](distributed/distributed-id/) | ⭐⭐⭐⭐ | UUID / 数据库 / 雪花算法 / Leaf |
-| [分布式事务](distributed/distributed-transaction/) | ⭐⭐⭐⭐⭐ | 2PC / TCC / Saga / 本地消息表 |
+| [分布式 ID 生成方案](distributed-id/) | ⭐⭐⭐⭐ | UUID / 数据库 / 雪花算法 / Leaf |
+| [分布式事务](distributed-transaction/) | ⭐⭐⭐⭐⭐ | 2PC / TCC / Saga / 本地消息表 |
 | [CAP 定理实际应用](cap-theorem/) | ⭐⭐⭐⭐ | CP vs AP 选型决策 |
-| [分布式锁](high-performance/distributed-lock/) | ⭐⭐⭐⭐⭐ | Redis SETNX / Redisson / ZooKeeper |
+| [分布式锁](distributed-lock/) | ⭐⭐⭐⭐⭐ | Redis SETNX / Redisson / ZooKeeper |
 
-### 高并发
+### 高性能
+| 主题 | 难度 | 核心问题 |
+|------|------|---------|
+| [缓存与数据库双写一致性](cache-consistency/) | ⭐⭐⭐⭐⭐ | 延迟双删 vs 监听 binlog |
+| [限流算法](rate-limiting/) | ⭐⭐⭐⭐ | 计数器 / 滑动窗口 / 漏桶 / 令牌桶 |
+| [无 Redis 秒杀](seckill-without-redis/) | ⭐⭐⭐⭐ | 主流方案被禁用时的单机秒杀策略 |
+| **🆕 [商品搜索系统设计](product-search/)** | ⭐⭐⭐⭐ | 倒排索引 + BM25 + 多阶段排序 + 数据同步一致性 |
+| **🆕 [大文件上传系统](file-upload/)** | ⭐⭐⭐⭐ | 分片 + 断点续传 + 秒传 + 对象存储 |
+
+### 消息队列
+| 主题 | 难度 | 核心问题 |
+|------|------|---------|
+| [MQ 消息积压](mq-backlog/) | ⭐⭐⭐⭐ | 原因分析 + 紧急止血 + 长期优化 |
+| [为什么还要 RocketMQ](still-need-rocketmq/) | ⭐⭐⭐ | Kafka vs RocketMQ vs RabbitMQ 选型 |
+
+### 高并发与架构
 | 主题 | 难度 | 核心问题 |
 |------|------|---------|
 | [幂等性设计 6 大方案](idempotency/) | ⭐⭐⭐⭐⭐ | Token / 状态机 / 唯一索引 / 去重表 |
 | [熔断降级实战](circuit-breaker/) | ⭐⭐⭐⭐ | Sentinel / Resilience4j 落地 |
-| **🆕 [微服务 vs 单体](microservices-vs-monolith/)** | ⭐⭐⭐⭐⭐ | 6 大核心优势 + 6 大反模式 + Spring Cloud 全套 + 何时该拆决策 | [microservices 深度章节](../../04.system-design/01-foundation/system-design-basics/microservices/README.md) |
-| [无 Redis 秒杀](high-performance/seckill-without-redis/) | ⭐⭐⭐⭐ | 主流方案被禁用时的单机秒杀策略 |
-| **🆕 [商品搜索系统设计](high-performance/product-search/)** | ⭐⭐⭐⭐ | 倒排索引 + BM25 + 多阶段排序 + 数据同步一致性 |
-| **🆕 [大文件上传系统](high-performance/file-upload/)** | ⭐⭐⭐⭐ | 分片 + 断点续传 + 秒传 + 对象存储 |
+| **🆕 [微服务 vs 单体](microservices-vs-monolith/)** | ⭐⭐⭐⭐⭐ | 6 大核心优势 + 6 大反模式 + Spring Cloud 全套 + 何时该拆决策 |
 | **🆕 [短链系统设计](url-shortener/)** | ⭐⭐⭐⭐ | Base62 + 发号器 + 302 重定向 + 缓存 + 统计 |
-| **🆕 [多租户 SaaS 系统设计](multi-tenant-saas/)** | ⭐⭐⭐⭐⭐ | 6 大隔离模型 + 4 大应用层关注点 + 5 反模式 + PostgreSQL RLS + noisy neighbor 防御 | [multi-tenant-architecture 深度章节](../../04.system-design/01-foundation/system-design-basics/multi-tenant-architecture/README.md) |
+| **🆕 [多租户 SaaS 系统设计](multi-tenant-saas/)** | ⭐⭐⭐⭐⭐ | 6 大隔离模型 + 4 大应用层关注点 + 5 反模式 + PostgreSQL RLS + noisy neighbor 防御 |
 
 ### 排查与运维
 | 主题 | 难度 | 核心问题 |

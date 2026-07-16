@@ -221,8 +221,8 @@ Q5：贵司 SaaS 计费是按订阅还是按用量？
 | [distributed-transaction](../../../04.system-design/02-distributed/distributed-transaction/README.md) | Saga / Seata / TCC | ⭐⭐⭐⭐⭐ |
 | [idempotency](../idempotency/README.md) | 幂等键 / 状态机 | ⭐⭐⭐⭐ |
 | [microservices-vs-monolith](../microservices-vs-monolith/README.md) | 微服务 6 大优势 | ⭐⭐⭐⭐⭐ |
-| [high-performance/product-search](../high-performance/product-search/README.md) | 商品搜索 4 层架构 | ⭐⭐⭐⭐ |
-| [high-performance/file-upload](../high-performance/file-upload/README.md) | 大文件上传分片 | ⭐⭐⭐ |
+| [product-search](../product-search/README.md) | 商品搜索 4 层架构 | ⭐⭐⭐⭐ |
+| [file-upload](../file-upload/README.md) | 大文件上传分片 | ⭐⭐⭐ |
 | [payment-message-lost](../payment-message-lost/README.md) | 支付消息不丢 | ⭐⭐⭐⭐ |
 | [url-shortener](../url-shortener/README.md) | 短链系统设计 | ⭐⭐⭐⭐ |
 | **multi-tenant-saas**（本篇）| 多租户 6 模型 + 4 关注点 | ⭐⭐⭐⭐⭐ |

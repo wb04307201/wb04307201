@@ -329,7 +329,7 @@ public class UserService {
 - [Spring Bean 生命周期](../bean-lifecycle/README.md) — CacheManager 初始化
 
 **缓存三连**：
-- [缓存穿透/击穿/雪崩](../../../13.split-hairs/03.database/redis/cache-penetration-breakdown-avalanche/README.md) — 互补场景
+- [缓存穿透/击穿/雪崩](../../../13.split-hairs/03.database/cache-penetration-breakdown-avalanche/README.md) — 互补场景
 
 ---
 

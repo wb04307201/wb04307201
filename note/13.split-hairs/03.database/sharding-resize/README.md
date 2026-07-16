@@ -209,9 +209,9 @@ for each binlogEvent:
 
 - 主模块：[`分库分表`](../../../04.system-design/04-high-performance/database-optimization/db-sharding/README.md) — 分库分表全景（垂直/水平/分片算法/分片键选择）
 - 同模块：[`数据迁移与同步`](../../../03.database/10-data-migration/README.md) — DataX / Canal / Flink CDC 迁移工具链
-- 同栏目：[`大事务的危害与拆分`](../relational-database/mysql/large-transaction/README.md) — 迁移过程中的事务控制
+- 同栏目：[`大事务的危害与拆分`](../mysql-large-transaction/README.md) — 迁移过程中的事务控制
 - 同栏目：[`MySQL 主从复制延迟`](../replication-lag/README.md) — 增量同步延迟问题
-- 相关：[`分布式 ID 生成方案`](../../04.system-design/distributed/distributed-id/README.md) — 分表后的全局唯一 ID
+- 相关：[`分布式 ID 生成方案`](../../04.system-design/distributed-id/README.md) — 分表后的全局唯一 ID
 
 ---
 

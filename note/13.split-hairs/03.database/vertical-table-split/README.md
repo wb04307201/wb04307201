@@ -263,8 +263,8 @@ WHERE b.id = ?;
 
 - 主模块：[`分库分表`](../../../04.system-design/04-high-performance/database-optimization/db-sharding/README.md) — 垂直分表 + 水平分表 + 分片算法全景
 - 同模块：[`冷热数据分离`](../../../04.system-design/04-high-performance/database-optimization/cold-hot-data-separation/README.md) — 行级冷热分离（时间维度）
-- 同栏目：[`SQL 调优`](../relational-database/mysql/tuning/README.md) — Explain 分析 + 索引优化
-- 同栏目：[`深分页`](../relational-database/mysql/deep-pagination/README.md) — 大表查询性能优化
+- 同栏目：[`SQL 调优`](../mysql-tuning/README.md) — Explain 分析 + 索引优化
+- 同栏目：[`深分页`](../mysql-deep-pagination/README.md) — 大表查询性能优化
 - 同栏目：[`分表扩容策略`](../sharding-resize/README.md) — 分表后数据膨胀的处理
 
 ---

@@ -90,7 +90,7 @@ kafka-consumer-groups.sh --describe --group payment-group --bootstrap-server loc
 
 **可能发现**：
 - 消息不在 MQ → Broker 丢了（刷盘配置问题 / 主从切换）
-- 消息在 MQ 但消费者 lag 很大 → 消费积压（见 [MQ 消息积压](../high-performance/mq/mq-backlog/)）
+- 消息在 MQ 但消费者 lag 很大 → 消费积压（见 [MQ 消息积压](../mq-backlog/)）
 - 消息在死信队列 → 消费失败多次被丢弃
 
 ### Step 3：确认消费者是否收到
@@ -191,10 +191,10 @@ GET idempotent:pay-notify:12345
 
 ## 六、相关章节
 
-- 同栏目：[`分布式事务`](../distributed/distributed-transaction/README.md) — 本地消息表 / 事务消息的底层方案
+- 同栏目：[`分布式事务`](../distributed-transaction/README.md) — 本地消息表 / 事务消息的底层方案
 - 同栏目：[`幂等性设计`](../idempotency/README.md) — 消费端幂等的 6 大实现方案
-- 同栏目：[`MQ 消息积压`](../high-performance/mq/mq-backlog/README.md) — 消费端积压排查
-- 同栏目：[`Kafka vs RocketMQ`](../high-performance/mq/still-need-rocketmq/README.md) — MQ 选型与可靠性对比
+- 同栏目：[`MQ 消息积压`](../mq-backlog/README.md) — 消费端积压排查
+- 同栏目：[`Kafka vs RocketMQ`](../still-need-rocketmq/README.md) — MQ 选型与可靠性对比
 - 主模块：[`服务通信方式`](../../../04.system-design/01-foundation/system-design-basics/microservices/service-communication/README.md) — 消息可靠性保障体系
 
 ---

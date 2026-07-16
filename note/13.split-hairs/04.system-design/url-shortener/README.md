@@ -12,7 +12,7 @@ question:
 
 > 一句话定位：**系统设计面试最经典题**。考察的不是"长 URL 变短"，而是**短码生成策略选型** + **302 vs 301 重定向** + **高并发缓存** + **统计分析**。分布式 ID 基础见 [分布式 ID 生成](../../../04.system-design/02-distributed/distributed-id/README.md)。
 
-> **系列定位**：高频系统设计题（校招社招都考）。配套兄弟题：[商品搜索](../high-performance/product-search/README.md)、[大文件上传](../high-performance/file-upload/README.md)。
+> **系列定位**：高频系统设计题（校招社招都考）。配套兄弟题：[商品搜索](../product-search/README.md)、[大文件上传](../file-upload/README.md)。
 
 ---
 

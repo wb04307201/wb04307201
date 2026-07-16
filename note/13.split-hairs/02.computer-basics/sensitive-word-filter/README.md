@@ -410,7 +410,7 @@ public void refreshDictionary() {
 
 - [04.system-design/04-high-performance/cache-patterns](../../../04.system-design/04-high-performance/cache-patterns/README.md) —— 缓存一致性
 - [04.system-design/04-high-performance/README](../../../04.system-design/04-high-performance/README.md) —— 高性能模块
-- [08.application-systems/cms/](../../../08.application-systems/cms/README.md) —— 内容审核系统
+- [08.application-systems/cms/](../../../08.application-systems/01-rd-innovation/cms/README.md) —— 内容审核系统
 
 ---
 
