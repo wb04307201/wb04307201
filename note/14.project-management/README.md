@@ -27,6 +27,8 @@ module:
 | 5 | [人力配比 + 排期估算：3 倍缓冲原则](team-sizing-3x-buffer/README.md) | 阿里 P5/P6/P7 "2-8-2" + 排期公式 + AI 时代修正 | [team-sizing-3x-buffer](team-sizing-3x-buffer/README.md) |
 | 6 | [康威定律下的团队拓扑](conways-law-team-topologies/README.md) | 康威定律 + Team Topologies 4 类型 + 平台比例 | [conways-law-team-topologies](conways-law-team-topologies/README.md) |
 | 7 | [面试跨专业应届生：问题库与评估指南](interviewing-cross-disciplinary/README.md) 🆕 | 5 大场景 × 降维版+场景版双题库 + 底线加分模型 + 潜力 3 维度 | [interviewing-cross-disciplinary](interviewing-cross-disciplinary/README.md) |
+| 8 | [项目风险登记册](risk-register/README.md) 🆕 | 风险登记册结构 / MoSCoW / RICE / 4T 应对策略 | [risk-register](risk-register/README.md) |
+| 9 | [敏捷度量实战](agile-metrics/README.md) 🆕 | Velocity / Cycle Time / CFD / WIP Limits / 度量反模式 | [agile-metrics](agile-metrics/README.md) |
 
 ### 1.1 学习路径
 
@@ -35,11 +37,13 @@ module:
 - **AI 时代**（1 小时）：[ai-pm-dora-space](ai-pm-dora-space/README.md) — 研发效能度量
 - **组织进阶**（半天）：[conways-law-team-topologies](conways-law-team-topologies/README.md) — 团队拓扑与康威定律
 - **招聘面试**（30 分钟）：[interviewing-cross-disciplinary](interviewing-cross-disciplinary/README.md) — 面试非科班应届生的问题库与评估指南
+- **风险管控**（30 分钟）：[risk-register](risk-register/README.md) — 风险登记册 + MoSCoW + RICE
+- **敏捷度量**（30 分钟）：[agile-metrics](agile-metrics/README.md) — 超越 DORA/SPACE 的团队效能可视化
 
 ### 1.2 候选扩展（待补充）
 
 1. **决策类**：上云 vs 自建机房、微服务 vs 单体的"二次成本"
-2. **执行类**：需求变更控制（MoSCoW / RICE）、项目风险登记册
+2. **~~执行类~~**：~~需求变更控制（MoSCoW / RICE）、项目风险登记册~~ → ✅ 已沉淀为 [risk-register](risk-register/README.md) + [agile-metrics](agile-metrics/README.md)
 3. **风险类**：技术债的财务账本（与 [12.story/46](../12.story/44-tech-debt-career-trap.md) 互补）
 4. **组织类**：远程团队 / 跨时区协作
 5. **AI 时代**：AI Agent 在 PM 流程中的嵌入（Harness / Verifier / Feedback 3 件套）
@@ -82,6 +86,8 @@ graph LR
 | **研发效能** | DORA 4 + SPACE 5 | 月/季/年三阶段 | [ai-pm-dora-space](ai-pm-dora-space/README.md) |
 | **排期估算** | 3 倍缓冲 + 黄金比例 | 2-8-2 配比 | [team-sizing-3x-buffer](team-sizing-3x-buffer/README.md) |
 | **团队拓扑** | 4 类型 + 比例 | 平台 ≤ 30% | [conways-law-team-topologies](conways-law-team-topologies/README.md) |
+| **风险管理** | 登记册 + MoSCoW + RICE | P×I 矩阵 | [risk-register](risk-register/README.md) |
+| **敏捷度量** | Velocity / Cycle Time / CFD | WIP 限制 | [agile-metrics](agile-metrics/README.md) |
 
 ---
 
@@ -199,11 +205,11 @@ graph LR
 | 项目 | 数量 | 说明 |
 |------|------|------|
 | 主模块 README | 1 | 本文件 |
-| 顶层分类（实战场景） | 7 | app-quote-breakdown / outsourcing-pitfalls / self-vs-saas-vs-outsourcing / ai-pm-dora-space / team-sizing-3x-buffer / conways-law-team-topologies / interviewing-cross-disciplinary |
-| 子 README | 7 | 每个顶层分类 1 个 |
+| 顶层分类（实战场景） | 9 | app-quote-breakdown / outsourcing-pitfalls / self-vs-saas-vs-outsourcing / ai-pm-dora-space / team-sizing-3x-buffer / conways-law-team-topologies / interviewing-cross-disciplinary / risk-register / agile-metrics |
+| 子 README | 9 | 每个顶层分类 1 个 |
 | 一页速查 | 1 | [cheatsheet.md](./cheatsheet.md) |
 | 辅助子目录（scripts/） | 1 | 历史脚本占位（保留，未删除） |
-| **README 总数** | **9** | 1 顶层 + 7 子 + 1 cheatsheet |
+| **README 总数** | **11** | 1 顶层 + 9 子 + 1 cheatsheet |
 
 ---
 
