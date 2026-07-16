@@ -61,7 +61,7 @@ module:
 | 5 | [MySQL](03.database/05-mysql/README.md) | 架构、存储引擎、InnoDB 内部机制、主从复制、日志系统 |
 | 6 | [缓存](03.database/06-cache/README.md) | 缓存分类、穿透/击穿/雪崩、缓存与数据库一致性 |
 | 7 | [Redis](03.database/07-redis/README.md) | 数据类型、持久化、集群高可用、内存管理 |
-| 8 | [NoSQL 数据库](03.database/08-nosql/README.md) | NoSQL 分类、SQL vs NoSQL 对比、选型指南 |
+| 8 | [NoSQL 数据库](03.database/08-nosql/README.md) | NoSQL 分类、SQL vs NoSQL 对比、选型指南；子专题：[MongoDB](03.database/08-nosql/mongodb/README.md) / [Cassandra](03.database/08-nosql/cassandra/README.md) / [Elasticsearch](03.database/08-nosql/elasticsearch/README.md) / [Neo4j](03.database/08-nosql/neo4j/README.md) |
 | 9 | [数据库连接池](03.database/09-connection-pool/README.md) | HikariCP、Druid、参数配置、监控 |
 | 10 | [数据迁移与同步](03.database/10-data-migration/README.md) | DataX 全量同步、Canal/Maxwell Binlog 订阅、Flink CDC |
 | 11 | [数据库监控告警](03.database/11-monitoring/README.md) | Prometheus + Grafana + AlertManager、慢查询分析 |
@@ -92,7 +92,7 @@ module:
 
 # 五、[工具链](05.tools/README.md)
 
-> 工欲善其事，必先利其器。覆盖版本控制（Git）、容器化（Docker/Podman）、反向代理（Nginx/Pingora）、Monorepo、Java 工具库与阿里微服务生态。
+> 工欲善其事，必先利其器。覆盖版本控制（Git）、容器化（Docker/Podman）、反向代理（Nginx/Pingora）、Monorepo、Java 工具库、阿里微服务生态、Kubernetes 容器编排、DevOps CI/CD 工具链。
 
 ## 模块导航
 
@@ -104,6 +104,9 @@ module:
 | 4 | [04 Nginx](05.tools/04-nginx/README.md) | 反向代理/负载均衡、[Pingora](05.tools/04-nginx/pingora/README.md) 新一代代理 |
 | 5 | [05 Monorepo](05.tools/05-monorepo/README.md) | 单仓多项目管理、演进路径、工具选型 |
 | 6 | [06 阿里微服务](05.tools/06-ali-microservices/README.md) | Nacos 服务发现与配置管理、阿里云原生微服务生态 |
+| 7 | [07 Kubernetes](05.tools/kubernetes/README.md) | 容器编排：架构/Pod/Workload、Service/Ingress、Helm、Operator/GitOps |
+| 8 | [08 DevOps](05.tools/devops/README.md) | CI/CD：Jenkins/GitLab CI/GitHub Actions、部署策略、GitOps |
+| 9 | [09 IaC](05.tools/iac/README.md) | Infrastructure as Code：Terraform / Ansible / Pulumi / CDK |
 
 # 六、[Spring](06.spring/README.md)
 
@@ -215,7 +218,7 @@ module:
 
 # 十二、[「阿明餐厅」技术系列](12.story/README.md)
 
-> 以餐厅经营为叙事主线，用 **45 篇** 故事讲透从架构演进到 AI 转型的技术全景。前传 + 续集一 + 正传 14 + 终章 + 番外 6 + 续集 2-17（AI 时代 15 篇）+ 番外 7-8 —— 一篇一个核心主题，篇篇独立又互相串联。
+> 以餐厅经营为叙事主线，用 **48 篇** 故事讲透从架构演进到 AI 转型的技术全景。前传 + 续集一 + 正传 14 + 终章 + 番外 6 + 续集 2-17（AI 时代 15 篇）+ 番外 7-8 —— 一篇一个核心主题，篇篇独立又互相串联。
 >
 > **2026 v2 更新**：评测（34）、协议（35）、Token 经济学（36）三篇已拆分为 a/b 双篇（结构性优化）；新增可观测性、RAG、向量库、AI 合规、AI 私有化、Prompt 工程、多模态 7 个专题。
 
@@ -223,7 +226,7 @@ module:
 
 | 序号 | 主题 | 核心内容 |
 |------|------|----------|
-| 1 | [系列导览](12.story/README.md) | 45 篇全景图 + 4 条主路径 + 13 类角色推荐 + 概念交叉索引 |
+| 1 | [系列导览](12.story/README.md) | 48 篇全景图 + 4 条主路径 + 13 类角色推荐 + 概念交叉索引 |
 | 2 | [前传 · 架构演进](12.story/02-system-architecture-evolution.md) | 架构"长"出来（单机→云原生）+ IT 成熟度 L1-L7 评估 |
 | 3 | [续集一 · AI Agent 架构](12.story/01-ai-agent-architecture.md) | 7 大模块：感知/记忆/规划/工具/协同/反馈/安全（衔接 [11.ai AI 知识体系](11.ai/README.md)）|
 | 4 | [正传 1-14 · 核心工程（14 篇）](12.story/04-peak-traffic-defense.md) | 流量/可观测/安全/QA/CI-CD/API/数据/前端/故障/性能/异步/分布式/多端/数据库迁移 |
@@ -232,7 +235,7 @@ module:
 | 7 | [续集 2-12 · AI 时代上半场（11 篇）](12.story/11-ai-learning-paradox.md) | 学习/组织/创业/自进化/信任/认知债/Harness/致命三件套 + [32a/32b 评测](12.story/32a-ai-evaluation-fundamentals.md) + [33a/33b 协议](12.story/33a-mcp-protocol.md) + [34a/34b Token](12.story/34a-ai-token-cost-structure.md) |
 | 8 | [续集 13-17 · AI 时代下半场（5 篇）](12.story/35-ai-observability.md) | [35 可观测性](12.story/35-ai-observability.md) / [36 RAG](12.story/36-rag-retrieval-augmented-generation.md) / [37 向量库](12.story/37-vector-database-and-embedding.md) / [38 合规](12.story/38-ai-compliance-and-regulation.md) / [39 私有化](12.story/39-ai-private-deployment.md) |
 | 9 | [番外 7-8 · 工程化专题（2 篇）](12.story/40-prompt-engineering.md) | [40 Prompt 工程](12.story/40-prompt-engineering.md) + [41 多模态](12.story/41-multimodal-ai.md) |
-| 10 | [辅助资料 · 速查 + 术语](12.story/cheatsheet.md) | [一页纸速查](12.story/cheatsheet.md)（45 篇心法 + AI 选型 + Agent 工具链）；[术语表](12.story/glossary.md)（340+ 词条 / 40 主题）|
+| 10 | [辅助资料 · 速查 + 术语](12.story/cheatsheet.md) | [一页纸速查](12.story/cheatsheet.md)（48 篇心法 + AI 选型 + Agent 工具链）；[术语表](12.story/glossary.md)（340+ 词条 / 40 主题）|
 
 > 开源参考：12.story 章节本身为本仓库原创叙事，引用开源项目包括 Camunda 7/8、Apache EventMesh、CNCF Serverless Workflow、Dify/Coze/LangGraph、n8n、MCP/A2A、Qwen-VL、GPT-4o、Claude 3.5、LangSmith、vLLM、Qdrant、Milvus、Pinecone 等（详见各文末「延伸阅读」）。
 
@@ -240,25 +243,25 @@ module:
 
 > 主模块的"刺刀版" —— 专治面试中那些"好像懂但说不清"的高频 / 高难度问题。
 > 每篇 50-300 行，聚焦单一问题，从原理到陷阱到最佳实践、面试话术一次讲透。
-> 8 大分类共 **184 篇** 深度文章（详见 [QUESTION-FORMAT-SPEC](./13.split-hairs/QUESTION-FORMAT-SPEC.md)），覆盖 Java / 计算机基础 / 数据库 / 系统设计 / 安全 / Spring / 前端 / AI。
+> 8 大分类共 **174 篇** 深度文章（详见 [QUESTION-FORMAT-SPEC](./13.split-hairs/QUESTION-FORMAT-SPEC.md)），覆盖 Java / 计算机基础 / 数据库 / 系统设计 / 安全 / Spring / 前端 / AI。
 > 写作规范：[QUESTION-FORMAT-SPEC.md](./13.split-hairs/QUESTION-FORMAT-SPEC.md)
 
 ## 分类导航
 
 | 序号 | 主题 | 文章数 | 入口 |
 |------|------|--------|------|
-| 1 | Java 基础陷阱 | 36 | [01.java](13.split-hairs/01.java/README.md) |
-| 2 | 计算机基础 | 1 | [02.computer-basics](13.split-hairs/02.computer-basics/README.md) |
-| 3 | 数据库细节 | 29 | [03.database](13.split-hairs/03.database/README.md) |
-| 4 | 系统设计难点 | 14 | [04.system-design](13.split-hairs/04.system-design/README.md) |
-| 5 | 安全 | 1 | [05.security](13.split-hairs/05.security/README.md) |
-| 6 | Spring 面试高频 | 14 | [06.spring](13.split-hairs/06.spring/README.md) |
+| 1 | Java 基础陷阱 | 39 | [01.java](13.split-hairs/01.java/README.md) |
+| 2 | 计算机基础 | 6 | [02.computer-basics](13.split-hairs/02.computer-basics/README.md) |
+| 3 | 数据库细节 | 26 | [03.database](13.split-hairs/03.database/README.md) |
+| 4 | 系统设计难点 | 19 | [04.system-design](13.split-hairs/04.system-design/README.md) |
+| 5 | 安全 | 2 | [05.security](13.split-hairs/05.security/README.md) |
+| 6 | Spring 面试高频 | 16 | [06.spring](13.split-hairs/06.spring/README.md) |
 | 7 | 前端细节 | 26 | [09.front-end](13.split-hairs/09.front-end/README.md) |
-| 8 | AI 新概念 | 30 | [11.ai](13.split-hairs/11.ai/README.md) |
+| 8 | AI 新概念 | 40 | [11.ai](13.split-hairs/11.ai/README.md) |
 
 ---
 
-## 01.java（40 篇）—— Java 基础陷阱
+## 01.java（39 篇）—— Java 基础陷阱
 
 ### 集合与数据结构
 
@@ -331,7 +334,7 @@ module:
 |------|---------|
 | [高频面试题合集](13.split-hairs/01.java/questions/README.md) | Java 综合高频问题速查 |
 
-## 03.database（34 篇）—— 数据库细节
+## 03.database（26 篇）—— 数据库细节
 
 ### MySQL 基础
 
@@ -371,7 +374,7 @@ module:
 | [Redis 集群](13.split-hairs/03.database/redis-cluster/README.md) | Sentinel vs Cluster |
 | [Redis 大 Key 问题](13.split-hairs/03.database/redis-big-key/README.md) | 发现与治理方案 |
 
-## 04.system-design（21 篇）—— 系统设计难点
+## 04.system-design（19 篇）—— 系统设计难点
 
 ### 高性能
 
@@ -382,6 +385,13 @@ module:
 | [缓存与数据库一致性](13.split-hairs/04.system-design/high-performance/cache-consistency/README.md) | 延迟双删 vs Canal Binlog |
 | [分布式锁](13.split-hairs/04.system-design/high-performance/distributed-lock/README.md) | Redis vs ZooKeeper |
 | [限流算法](13.split-hairs/04.system-design/high-performance/rate-limiting/README.md) | 计数器 / 滑动窗口 / 漏桶 / 令牌桶 |
+| [缓存热点 Key 问题](13.split-hairs/04.system-design/cache-hot-key/README.md) | 本地缓存 + 分布式锁 + Key 拆分 + 热点探测 |
+
+### 数据库扩展
+
+| 主题 | 核心问题 |
+|------|---------|
+| [分库分表策略](13.split-hairs/04.system-design/sharding-strategy/README.md) | 垂直拆分 / 水平分片 / ShardingSphere / 跨库查询 |
 
 ### 分布式
 
@@ -398,7 +408,7 @@ module:
 | [幂等性设计 6 大方案](13.split-hairs/04.system-design/idempotency/README.md) | Token / 状态机 / 唯一索引 / 去重表 |
 | [熔断降级实战](13.split-hairs/04.system-design/circuit-breaker/README.md) | Sentinel / Resilience4j 落地 |
 
-## 06.spring（15 篇）—— Spring 面试高频
+## 06.spring（16 篇）—— Spring 面试高频
 
 ### 基础
 
@@ -434,7 +444,19 @@ module:
 | [Spring MVC 请求流程](13.split-hairs/06.spring/spring-mvc-flow/README.md) | DispatcherServlet 9 步流程 |
 | [@Cacheable + Redis 降级](13.split-hairs/06.spring/cache-degradation/README.md) | Redis 挂了怎么降级？如何恢复？ |
 
-## 11.ai（39 篇）—— AI 新概念
+### Spring Security
+
+| 主题 | 核心问题 |
+|------|---------|
+| [Security 过滤器链 vs Servlet Filter](13.split-hairs/06.spring/security-filter-chain/README.md) | FilterChainProxy / 15+ 过滤器顺序 / Security 6.x |
+
+### Spring Cloud
+
+| 主题 | 核心问题 |
+|------|---------|
+| [注册发现选型：Nacos / Eureka / Consul / ZK](13.split-hairs/06.spring/cloud-registry-comparison/README.md) | CAP 取舍 / 健康检查 / Nacos 推荐 / Eureka 已停维 |
+
+## 11.ai（40 篇）—— AI 新概念
 
 | 主题 | 核心问题 |
 |------|---------|
@@ -474,7 +496,7 @@ module:
 > 2026-07 新增 Agent A/B Test 评测体系专题（[主模块深度](./11.ai/08-llmops/agent-evaluation/README.md) + [面试题版](13.split-hairs/11.ai/agent-ab-testing/README.md)）。
 > 评测体系覆盖：6 大指标 + 5 种方法 + LLM-as-Judge + Pipeline + 阿里面试 + 7 大反模式 + 选型决策树 + 实战案例。
 
-## 09.front-end（27 篇）—— 前端细节
+## 09.front-end（26 篇）—— 前端细节
 
 ### HTTP / 网络
 
