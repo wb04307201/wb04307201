@@ -249,4 +249,4 @@ Java 并发从 `synchronized` + `Thread` 演进到虚拟线程 + 结构化并发
 
 ---
 
-← [返回 功能版本变更历史](../README.md)
+← [返回 Java 版本特性](../README.md)

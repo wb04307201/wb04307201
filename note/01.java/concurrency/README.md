@@ -48,7 +48,16 @@ Java 并发编程是 Java 平台的核心能力之一，涵盖了从线程创建
 
 并发编程的核心目标：在保证**正确性**（数据一致、无竞态）的前提下，最大化**吞吐量**和**响应速度**。
 
-### 1.2 并发 vs 并行
+### 1.2 并发编程解决的核心问题
+
+| 问题维度 | 具体表现 |
+|---------|---------|
+| 正确性 | 多线程对共享资源的读写导致数据不一致 |
+| 活性 | 死锁、饥饿、活锁导致任务无法推进 |
+| 性能 | 线程创建/切换开销、锁竞争导致吞吐量下降 |
+| 复杂性 | 异步回调嵌套、错误传播困难、调试困难 |
+
+### 1.3 并发 vs 并行
 
 | 概念 | 定义 | 关注点 | 示例 |
 |------|------|--------|------|
@@ -67,11 +76,11 @@ Java 并发编程是 Java 平台的核心能力之一，涵盖了从线程创建
 //            真正同时运行
 ```
 
-### 1.3 并发与并行深度展开（Rob Pike 详解 + Java 实战）
+### 1.4 并发与并行深度展开（Rob Pike 详解 + Java 实战）
 
 > 面试速查版见 [13.split-hairs · concurrency-vs-parallelism](../../13.split-hairs/01.java/concurrency-vs-parallelism/README.md)。
 
-#### 1.3.1 Rob Pike 一句话定义
+#### 1.4.1 Rob Pike 一句话定义
 
 ```text
 Concurrency is about dealing with many things at once.
@@ -82,7 +91,7 @@ Parallelism is about doing many things at once.
 并行是「执行」(do)：同一时刻多个任务真在跑的事实
 ```
 
-#### 1.3.2 咖啡店比喻（高频考点）
+#### 1.4.2 咖啡店比喻（高频考点）
 
 ```
 [Concurrent] 1 个咖啡师轮流做 5 杯       [Parallel] 5 个咖啡师各做 1 杯
@@ -90,7 +99,7 @@ Parallelism is about doing many things at once.
   → 提高 CPU 利用率                        → 减少总执行时间
 ```
 
-#### 1.3.3 4 维度对比表
+#### 1.4.3 4 维度对比表
 
 | 维度 | 并发 (Concurrency) | 并行 (Parallelism) |
 |------|------------------|-------------------|
@@ -100,7 +109,7 @@ Parallelism is about doing many things at once.
 | **Java 实战** | CompletableFuture / NIO | parallelStream / ForkJoinPool |
 | **依赖中间件** | event loop / Netty | multiprocessing / OpenMP |
 
-#### 1.3.4 6 大常见误区
+#### 1.4.4 6 大常见误区
 
 | # | 误区 | 真相 |
 |---|------|------|
@@ -111,7 +120,7 @@ Parallelism is about doing many things at once.
 | 5 | ❌ **"Goroutine 一定是并行"** | GOMAXPROCS=1 时只并发 |
 | 6 | ❌ **"SIMD 是并行"** | 是，但与应用层线程并行不同层级 |
 
-#### 1.3.5 CPU-bound vs IO-bound 选型（实战核心）
+#### 1.4.5 CPU-bound vs IO-bound 选型（实战核心）
 
 | 任务类型 | 推荐模型 | 反模式 |
 |---------|---------|--------|
@@ -137,7 +146,7 @@ List<Integer> result = hugeList.parallelStream()
 //   → 1 核满载，其余 N-1 核空转
 ```
 
-#### 1.3.6 5 大语言模型对照
+#### 1.4.6 5 大语言模型对照
 
 | 语言 | 并发实现 | 并行实现 | 默认 |
 |------|---------|---------|------|
@@ -202,6 +211,8 @@ try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
 | 六 | CompletableFuture 异步编程 | 异步编排、组合、异常处理、虚拟线程集成、与线程池对比 | [completablefuture](./completablefuture/) |
 | 七 | **线程协作**（3 线程按顺序执行） | T1/T2/T3 顺序执行 3 语义 + 8 方案对比（join/CountDownLatch/CompletableFuture/Semaphore…） | [thread-basics/sequential-execution](./thread-basics/sequential-execution.md) |
 | 八 | 🆕 **虚拟线程**（Java 21+） | carrier thread / mount-unmount / pinning / ScopedValue / 结构化并发 | [virtual-threads](./virtual-threads/) |
+| 九 | **Java 锁机制** | synchronized 原理、锁升级、ReentrantLock、StampedLock、CAS、AQS | [java-locks](./java-locks/) |
+| 十 | **线程池** | ThreadPoolExecutor 参数详解、工作队列、拒绝策略、ForkJoinPool | [thread-pool](./thread-pool/) |
 
 ---
 
@@ -548,7 +559,26 @@ CompletableFuture.supplyAsync(() -> blockingIoCall(),
 
 ---
 
-## 五、并发编程知识体系全景
+## 五、并发工具类速查
+
+| 工具类 | 用途 | 典型场景 |
+|--------|------|----------|
+| **CountDownLatch** | 等待多个操作完成 | 主线程等待 N 个子任务完成 |
+| **CyclicBarrier** | 多线程 barrier 同步点 | 多线程计算后合并结果 |
+| **Semaphore** | 信号量控制并发访问数 | 限制同时访问资源的线程数 |
+| **Phaser** | 灵活的分阶段同步 | 多阶段并行计算 |
+| **Exchanger** | 线程间数据交换 | 生产者-消费者数据传递 |
+
+## 六、并发集合速查
+
+| 集合类 | 说明 | 适用场景 |
+|--------|------|----------|
+| **ConcurrentHashMap** | 分段锁 / CAS + synchronized | 高并发 key-value 存储 |
+| **CopyOnWriteArrayList** | 写时复制的线程安全 List | 读多写少场景 |
+| **BlockingQueue** | 阻塞队列 | 生产者-消费者模式 |
+| **ConcurrentLinkedQueue** | 无锁并发队列 | 高性能无锁场景 |
+
+## 七、并发编程知识体系全景
 
 ```
 ┌────────────────────────────────────────────────────────────────┐
@@ -593,7 +623,7 @@ CompletableFuture.supplyAsync(() -> blockingIoCall(),
 
 ---
 
-## 六、常见并发问题速查
+## 八、常见并发问题速查
 
 | 问题 | 原因 | 解决方案 |
 |------|------|---------|
@@ -608,7 +638,7 @@ CompletableFuture.supplyAsync(() -> blockingIoCall(),
 
 ---
 
-## 七、最佳实践原则
+## 九、最佳实践原则
 
 1. **优先使用并发库**：`java.util.concurrent` 提供的工具类，而非手动管理线程
 2. **最小化共享状态**：不可变对象 > 线程封闭（ThreadLocal） > 同步访问
@@ -621,7 +651,7 @@ CompletableFuture.supplyAsync(() -> blockingIoCall(),
 
 ---
 
-## 八、专题目录结构
+## 十、专题目录结构
 
 ```
 concurrency/
@@ -638,7 +668,11 @@ concurrency/
 │   └── README.md
 ├── completablefuture/     ← CompletableFuture 异步编程
 │   └── README.md
-└── virtual-threads/       ← 🆕 虚拟线程（Java 21+）
+├── virtual-threads/       ← 🆕 虚拟线程（Java 21+）
+│   └── README.md
+├── java-locks/            ← Java 锁机制（synchronized / ReentrantLock / CAS / AQS）
+│   └── README.md
+└── thread-pool/           ← 线程池（ThreadPoolExecutor / ForkJoinPool）
     └── README.md
 ```
 
@@ -655,9 +689,9 @@ concurrency/
 
 | 统计维度 | 数值 | 口径 |
 |----------|------|------|
-| 分类主题数 | 11 | jmm / volatile / synchronized / threadlocal / atomic / completablefuture / 🆕 virtual-threads + juc-locks / thread-basics / utilities / concurrent-collections（含 3 子专题） |
-| 子 README 数 | 14 | 含 concurrent-collections（3 子目录）+ virtual-threads 等深层 leaf |
-| 含 frontmatter 的 README | 15 / 15 | 100% 覆盖（2026-07-13） |
+| 分类主题数 | 13 | jmm / volatile / synchronized / threadlocal / atomic / completablefuture / 🆕 virtual-threads / java-locks / thread-pool + juc-locks / thread-basics / utilities / concurrent-collections（含 3 子专题） |
+| 子 README 数 | 16 | 含 concurrent-collections（3 子目录）+ virtual-threads / java-locks / thread-pool 等深层 leaf |
+| 含 frontmatter 的 README | 17 / 17 | 100% 覆盖（2026-07-16） |
 
 > **统计时间戳**：2026-07-01
 

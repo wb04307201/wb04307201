@@ -326,7 +326,7 @@ scope 规范：
 - **13.split-hairs**：`<!--question:id / topic / difficulty / frequency / scenario_type / tags-->`
 - **14.project-management**：`<!--pm:topic / audience / category / summary-->`
 
-> 📌 **2026-07-01 进展**：原缺失 frontmatter 的 45 个子 README（01.java/collection、01.java/concepts、01.java/version/function-history、06.spring、09.front-end、11.ai 等）已手工补全；当前 `note/` 下 **697 个 README 100% 具备 frontmatter**（0 缺失）。
+> 📌 **2026-07-01 进展**：原缺失 frontmatter 的 45 个子 README（01.java/collection、01.java/concepts、01.java/version、06.spring、09.front-end、11.ai 等）已手工补全；当前 `note/` 下 **697 个 README 100% 具备 frontmatter**（0 缺失）。
 
 ---
 
