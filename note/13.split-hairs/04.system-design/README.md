@@ -16,11 +16,11 @@ question:
 
 # 系统设计咬文嚼字
 
-> 系统设计高频面试题与难点深挖，对齐主模块 [`04.system-design`](../../04.system-design/)。**16** 篇真题覆盖 MQ / 缓存一致性 / 限流 / 秒杀 / 分布式 ID / 事务 / CAP / 锁 / 幂等 / 熔断 / **微服务 vs 单体** / **搜索系统** / **文件上传** / **短链系统** / **排查与运维** 15 大方向。
+> 系统设计高频面试题与难点深挖，对齐主模块 [`04.system-design`](../../04.system-design/)。**19** 篇真题覆盖 MQ / 缓存一致性 / 缓存热点 Key / 限流 / 秒杀 / 分布式 ID / 事务 / CAP / 锁 / 幂等 / 熔断 / **微服务 vs 单体** / **搜索系统** / **文件上传** / **短链系统** / **分库分表** / **排查与运维** 17 大方向。
 
 ---
 
-## 文章清单（共 16 题）
+## 文章清单（共 19 题）
 
 ### 分布式
 | 主题 | 难度 | 核心问题 |
@@ -34,10 +34,11 @@ question:
 | 主题 | 难度 | 核心问题 |
 |------|------|---------|
 | [缓存与数据库双写一致性](cache-consistency/) | ⭐⭐⭐⭐⭐ | 延迟双删 vs 监听 binlog |
+| [缓存热点 Key 问题](cache-hot-key/) | ⭐⭐⭐⭐ | 本地缓存 + 分布式锁 + Key 拆分 + 热点探测 |
 | [限流算法](rate-limiting/) | ⭐⭐⭐⭐ | 计数器 / 滑动窗口 / 漏桶 / 令牌桶 |
 | [无 Redis 秒杀](seckill-without-redis/) | ⭐⭐⭐⭐ | 主流方案被禁用时的单机秒杀策略 |
-| **🆕 [商品搜索系统设计](product-search/)** | ⭐⭐⭐⭐ | 倒排索引 + BM25 + 多阶段排序 + 数据同步一致性 |
-| **🆕 [大文件上传系统](file-upload/)** | ⭐⭐⭐⭐ | 分片 + 断点续传 + 秒传 + 对象存储 |
+| [商品搜索系统设计](product-search/) | ⭐⭐⭐⭐ | 倒排索引 + BM25 + 多阶段排序 + 数据同步一致性 |
+| [大文件上传系统](file-upload/) | ⭐⭐⭐⭐ | 分片 + 断点续传 + 秒传 + 对象存储 |
 
 ### 消息队列
 | 主题 | 难度 | 核心问题 |
@@ -50,9 +51,14 @@ question:
 |------|------|---------|
 | [幂等性设计 6 大方案](idempotency/) | ⭐⭐⭐⭐⭐ | Token / 状态机 / 唯一索引 / 去重表 |
 | [熔断降级实战](circuit-breaker/) | ⭐⭐⭐⭐ | Sentinel / Resilience4j 落地 |
-| **🆕 [微服务 vs 单体](microservices-vs-monolith/)** | ⭐⭐⭐⭐⭐ | 6 大核心优势 + 6 大反模式 + Spring Cloud 全套 + 何时该拆决策 |
-| **🆕 [短链系统设计](url-shortener/)** | ⭐⭐⭐⭐ | Base62 + 发号器 + 302 重定向 + 缓存 + 统计 |
-| **🆕 [多租户 SaaS 系统设计](multi-tenant-saas/)** | ⭐⭐⭐⭐⭐ | 6 大隔离模型 + 4 大应用层关注点 + 5 反模式 + PostgreSQL RLS + noisy neighbor 防御 |
+| [微服务 vs 单体](microservices-vs-monolith/) | ⭐⭐⭐⭐⭐ | 6 大核心优势 + 6 大反模式 + Spring Cloud 全套 + 何时该拆决策 |
+| [短链系统设计](url-shortener/) | ⭐⭐⭐⭐ | Base62 + 发号器 + 302 重定向 + 缓存 + 统计 |
+| [多租户 SaaS 系统设计](multi-tenant-saas/) | ⭐⭐⭐⭐⭐ | 6 大隔离模型 + 4 大应用层关注点 + 5 反模式 + PostgreSQL RLS + noisy neighbor 防御 |
+
+### 数据库扩展
+| 主题 | 难度 | 核心问题 |
+|------|------|---------|
+| [分库分表策略](sharding-strategy/) | ⭐⭐⭐⭐⭐ | 垂直拆分 / 水平分片 / ShardingSphere / 跨库查询 / 数据迁移 |
 
 ### 排查与运维
 | 主题 | 难度 | 核心问题 |
@@ -71,16 +77,14 @@ question:
 
 ## 待补充的高频面试题
 
-### 缓存（必考）
-- **缓存穿透 / 击穿 / 雪崩**（三件套必问，移至 `03.database`）
-- **缓存热点 Key 问题**（本地缓存 + 分布式锁）
+### 缓存
+- **缓存穿透 / 击穿 / 雪崩**（三件套必问，已移至 [`03.database/cache-penetration-breakdown-avalanche`](../03.database/cache-penetration-breakdown-avalanche/README.md)）
 - **缓存预热策略**
 
 ### 高并发
 - **异步化方案**（CompletableFuture / 消息队列）
 
 ### 数据库扩展
-- **分库分表策略**（ShardingSphere / MyCat）
 - **读写分离方案**
 - **数据迁移方案**
 

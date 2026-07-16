@@ -31,13 +31,15 @@ module:
 | 02 | [`02.computer-basics`](../02.computer-basics/) | 计算机基础（网络 / 算法设计 / 操作系统） | 5 | [02.computer-basics/](02.computer-basics/) |
 | 03 | [`03.database`](../03.database/) | 数据库细节 | 29 | [03.database/](03.database/) |
 | 04 | [`04.system-design`](../04.system-design/) | 系统设计难点 | 14 | [04.system-design/](04.system-design/) |
-| 05 | [`05.security`](05.security) | 安全 | 1 | [05.security/](05.security/) |
+| 05 | [`05.security`](05.security) | 安全（认证 / Web 安全 / 限流 / OWASP） | 10 | [05.security/](05.security/) |
 | 06 | [`06.spring`](../06.spring/) | Spring 面试高频 | 14 | [06.spring/](06.spring/) |
 | 09 | [`09.front-end`](../09.front-end/) | 前端细节 | 26 | [09.front-end/](09.front-end/) |
+| 10 | — | 大数据（Flink / Spark / Hive / Iceberg / Doris / Kafka） | 6 | [10.big-data/](10.big-data/) |
 | 11 | [`11.ai`](../11.ai/) | AI 面试深挖 | 30 | [11.ai/](11.ai/) |
+| ✦ | tools | 开发工具（Git / Docker / Nginx / K8s） | 4 | [tools/](tools/) |
 | ✦ | [`14.project-management`](../14.project-management/) | **外链**（决策实战，已迁出） | — | [14.project-management/](../14.project-management/) |
 
-**总计：155 篇面试题**（仅"一题一文"题；03.database 另有多个二级目录索引页、04.system-design 另有多个二级目录索引页）
+**总计：173 篇面试题**（仅"一题一文"题；03.database 另有多个二级目录索引页、04.system-design 另有多个二级目录索引页）
 
 > 各分类的具体子主题（如 Java 集合 / 并发 / JVM；数据库 SQL 优化 / Redis / MVCC；系统设计 MQ / 缓存 / 分布式等）见子目录 README。
 
@@ -63,6 +65,9 @@ module:
 | **系统设计 / 后端架构** | [04.system-design](04.system-design/) 14 篇 → [03.database](03.database/) 29 篇 |
 | **前端** | [09.front-end](09.front-end/) 26 篇（含网络 / CSS / 框架 / 安全 / 工程化） |
 | **AI 方向** | [11.ai](11.ai/) 30 篇（含主模块精炼版 + 新增专题：dropout / harness / 上下文工程 / RAG / 向量搜索 / Prompt 工程等） |
+| **安全工程师** | [05.security](05.security/) 10 篇（认证 / Web 安全 / 限流 / OWASP） → [04.system-design](04.system-design/) 14 篇 |
+| **大数据 / 数据平台** | [10.big-data](10.big-data/) 6 篇（Flink / Spark / Hive / Iceberg / Doris / Kafka） → [03.database](03.database/) 29 篇 |
+| **DevOps / SRE** | [tools/](tools/) 4 篇（Git / Docker / Nginx / K8s） → [04.system-design](04.system-design/) 14 篇 |
 
 ### 3.2 按难度刷（按面试倒计时）
 
@@ -75,6 +80,7 @@ module:
 - **大厂后端（阿里 / 字节 / 美团）**：重点 [01.java](01.java/) 并发 + [06.spring](06.spring/) 事务失效 + [04.system-design](04.system-design/) 分布式
 - **外企 / 金融**：重点 [03.database](03.database/) MVCC / 事务隔离 + [04.system-design](04.system-design/) CAP / 一致性
 - **AI 创业 / 大模型团队**：重点 [11.ai](11.ai/) 4 阶段工程演进（Prompt → Context → Harness → Loop）+ 幻觉治理
+- **数据平台 / 大数据团队**：重点 [10.big-data](10.big-data/) Flink / Spark / Kafka + [03.database](03.database/) 索引与查询优化
 
 ---
 
@@ -186,6 +192,9 @@ graph TB
 | **系统设计** | MQ 消息积压、限流算法、缓存一致性、分布式 ID / 事务 / 锁 | 高可用 + 高性能 + 分布式经典 |
 | **前端** | Event Loop、闭包、Promise 手写、从 URL 到页面 | 浏览器 + JS 核心 |
 | **AI** | Transformer 架构、Token 计费、RAG 设计、Prompt/Context/Harness/Loop 工程、生产力悖论、Agent DAG/ReAct 选型 | LLM 原理与 AI 工程演进 + Agent 架构选型 + 研发效能度量 |
+| **安全** | JWT vs Session、OAuth2 四种模式、XSS/CSRF/CSP、HTTPS 握手、限流算法、OWASP Top 10 | 认证授权 + Web 安全 + 加密 + 限流 |
+| **大数据** | Flink Checkpoint vs Savepoint、Spark Shuffle 倾斜、Hive 分区 vs 分桶、Iceberg ACID、Doris vs ClickHouse、Kafka Exactly-Once | 流批处理 + 数据湖 + OLAP + 消息队列 |
+| **工具** | Git Rebase vs Merge、Docker 多阶段构建、Nginx 负载均衡、K8s Pod 生命周期 | 工程化 + 容器化 + 编排部署 |
 
 ---
 

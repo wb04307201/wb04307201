@@ -16,11 +16,11 @@ question:
 
 # Spring 咬文嚼字
 
-> Spring 高频面试题与细节深挖，对齐主模块 [`06.spring`](../../06.spring/)。13 篇真题覆盖 IoC / Bean 生命周期 / AOP / @Transactional / 循环依赖 / 自动配置 / Spring MVC / 事件 8 大方向。
+> Spring 高频面试题与细节深挖，对齐主模块 [`06.spring`](../../06.spring/)。16 篇真题覆盖 IoC / Bean 生命周期 / AOP / @Transactional / 循环依赖 / 自动配置 / Spring MVC / 事件 / **Spring Security** / **Spring Cloud** 10 大方向。
 
 ---
 
-## 文章清单（共 14 题）
+## 文章清单（共 16 题）
 
 ### 基础
 | 主题 | 难度 | 核心问题 |
@@ -56,20 +56,27 @@ question:
 |------|------|---------|
 | [@Cacheable 降级与恢复](cache-degradation/) | ⭐⭐⭐⭐ | Redis 挂了怎么办？4 大方案 + 自动恢复 + 数据一致性 |
 
+### Spring Security
+| 主题 | 难度 | 核心问题 |
+|------|------|---------|
+| [Security 过滤器链 vs Servlet Filter](security-filter-chain/) | ⭐⭐⭐⭐ | FilterChainProxy / DelegatingFilterProxy / 15+ 过滤器顺序 / Security 6.x |
+
+### Spring Cloud
+| 主题 | 难度 | 核心问题 |
+|------|------|---------|
+| [注册发现选型：Nacos / Eureka / Consul / ZK](cloud-registry-comparison/) | ⭐⭐⭐⭐ | CAP 取舍 / 健康检查 / 配置中心 / Eureka 已停维 / Nacos 推荐 |
+
 ---
 
 ## 待补充的高频面试题（强烈建议）
 
-### Spring Security（中频）
-- **过滤器链执行顺序** → 深度阅读：[`04.system-design/05-security`](../../04.system-design/05-security/README.md)
+### Spring Security
 - **认证 vs 授权流程** → 深度阅读：[`04.system-design/05-security/access-control`](../../04.system-design/05-security/access-control/README.md)（RBAC/ABAC 6 大模型）
 - **JWT vs Session 方案对比** → 深度阅读：[`04.system-design/05-security`](../../04.system-design/05-security/README.md)（JWT、OAuth2）
 - **CSRF 防护** → 深度阅读：[`09.front-end/07-security`](../../09.front-end/07-security/README.md)（XSS/CSRF/CSP）
 
-### Spring Cloud（中频）
-- **服务注册与发现**（Nacos / Eureka / Consul）→ 深度阅读：[`06.spring/05-spring-cloud`](../../06.spring/05-spring-cloud/README.md)
+### Spring Cloud
 - **负载均衡**（Ribbon / LoadBalancer）→ 深度阅读：[`06.spring/05-spring-cloud`](../../06.spring/05-spring-cloud/README.md)
-- **熔断降级**（Sentinel / Resilience4j）→ 深度阅读：[`04.system-design/03-high-availability`](../../04.system-design/03-high-availability/README.md)
 - **配置中心**（Nacos Config / Spring Cloud Config）→ 深度阅读：[`06.spring/05-spring-cloud`](../../06.spring/05-spring-cloud/README.md)
 
 ---
