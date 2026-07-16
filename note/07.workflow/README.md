@@ -36,6 +36,7 @@ module:
 | └ Zeebe 内核 | [process-engine/camunda/camunda-8/zeebe/README.md](process-engine/camunda/camunda-8/zeebe/README.md) | Client / Gateway / Broker / Exporter 4 大组件 |
 | **2 协作神经** | [workflow-and-microservice-orchestration/README.md](workflow-and-microservice-orchestration/README.md) | 编舞 vs 编排、Zeebe/Conductor/Cadence 三大编排引擎 |
 | **3 事件驱动** | [apache-eventmesh/README.md](apache-eventmesh/README.md) | Serverless Workflow 标准、EventMesh 组件、电商订单落地 |
+| **4 Durable Execution** | [temporal/README.md](temporal/README.md) | Temporal.io Workflow/Activity/Signal/Saga、与 Camunda 对比 |
 
 ---
 

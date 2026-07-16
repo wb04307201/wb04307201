@@ -21,6 +21,7 @@ module:
 |------|------|------|
 | TypeScript 5 | ✓ 已有 | [typescript/](typescript/) — 类型体操 / 泛型 / 装饰器 / 工程配置 |
 | 运行时机制 | ✓ 已有 | [runtime/](runtime/) — V8 / 事件循环 / Node.js 进阶 |
+| Angular | ✓ 已有 | [angular/](angular/) — DI / RxJS / Signals / Standalone / Zoneless |
 
 ### 1.1 学习路径
 

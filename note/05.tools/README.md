@@ -4,12 +4,12 @@ module:
   slug: note/tools
   type: index
   category: 主模块
-  summary: 后端工程师高频工具链速查手册：Git / Docker / Java 工具库 / Nginx / Monorepo / 阿里微服务
+  summary: 后端工程师高频工具链速查手册：Git / Docker / Java 工具库 / Nginx / Monorepo / 阿里微服务 / Kubernetes / DevOps
 -->
 
 # 五、[工具链](README.md)
 
-> 工欲善其事，必先利其器。本模块覆盖后端开发日常高频工具：版本控制（Git）、容器化（Docker / Podman）、Java 常用工具库、反向代理（Nginx / Pingora）、仓库管理（Monorepo）、阿里微服务全家桶。
+> 工欲善其事，必先利其器。本模块覆盖后端开发日常高频工具：版本控制（Git）、容器化（Docker / Podman）、Java 常用工具库、反向代理（Nginx / Pingora）、仓库管理（Monorepo）、阿里微服务全家桶、Kubernetes 容器编排、DevOps CI/CD 工具链。
 
 ---
 
@@ -25,6 +25,8 @@ graph TB
     Root --> Nginx["04 Nginx<br/>反向代理"]
     Root --> Mono["05 Monorepo<br/>仓库管理"]
     Root --> Ali["06 阿里微服务<br/>云原生生态"]
+    Root --> K8s["07 Kubernetes<br/>容器编排"]
+    Root --> DevOps["08 DevOps<br/>CI/CD"]
 
     Git --> G1["命令清单"]
     Git --> G2["Gitea 自建"]
@@ -45,6 +47,14 @@ graph TB
 
     Ali --> A1["Nacos 注册/配置"]
     Ali --> A2["微服务全家桶"]
+
+    K8s --> K1["架构 / Pod / Workload"]
+    K8s --> K2["Service / Ingress / Helm"]
+    K8s --> K3["Operator / GitOps"]
+
+    DevOps --> DO1["Jenkins / GitLab CI"]
+    DevOps --> DO2["GitHub Actions"]
+    DevOps --> DO3["部署策略 / GitOps"]
 ```
 
 ---
@@ -59,6 +69,9 @@ graph TB
 | 04 | [Nginx](04-nginx/README.md) | 反向代理 / 负载均衡配置、Cloudflare Pingora 新一代代理 | [nginx](04-nginx/README.md) · [pingora](04-nginx/pingora/README.md) |
 | 05 | [Monorepo](05-monorepo/README.md) | 单仓多项目管理、演进路径、工具选型（Turborepo / Nx / Bazel） | [monorepo](05-monorepo/README.md) |
 | 06 | [阿里微服务](06-ali-microservices/README.md) | Nacos 服务发现与配置管理、阿里云原生微服务生态 | [ali-microservices](06-ali-microservices/README.md) |
+| 07 | [Kubernetes](kubernetes/README.md) | 容器编排平台：架构、Pod/Workload、Service/Ingress、Helm、Operator/GitOps | [architecture](kubernetes/01-architecture/README.md) · [pod-workload](kubernetes/02-pod-and-workload/README.md) · [service-ingress](kubernetes/03-service-and-ingress/README.md) · [configmap-secret](kubernetes/04-configmap-and-secret/README.md) · [storage-pv](kubernetes/05-storage-and-pv/README.md) · [network-mesh](kubernetes/06-network-and-service-mesh/README.md) · [helm](kubernetes/07-helm/README.md) · [operator-gitops](kubernetes/08-operator-and-gitops/README.md) |
+| 08 | [DevOps](devops/README.md) | CI/CD 工具链：Jenkins / GitLab CI / GitHub Actions / 部署策略 / GitOps | [jenkins](devops/01-jenkins/README.md) · [gitlab-ci](devops/02-gitlab-ci/README.md) · [github-actions](devops/03-github-actions/README.md) · [pipeline-patterns](devops/04-pipeline-patterns/README.md) · [deploy-strategies](devops/05-deploy-strategies/README.md) · [cicd-vs-gitops](devops/06-cicd-vs-gitops/README.md) |
+| 09 | [IaC](iac/README.md) | Infrastructure as Code：Terraform / Ansible / Pulumi / CDK / GitOps | [iac](iac/README.md) |
 
 ---
 
@@ -68,7 +81,9 @@ graph TB
 - **效率提升**：03 Java 工具库 + Lombok — 减少样板代码
 - **微服务方向**：02 Docker → 05 Monorepo → 06 阿里微服务 — 从容器到服务治理
 - **进阶运维**：04 Nginx / Pingora → 05 Monorepo — 深入基础设施
-- **云原生深入**：02 Docker → 04 Nginx → 06 阿里微服务 — 容器化与云原生落地
+- **云原生深入**：02 Docker → 07 Kubernetes → 08 DevOps — 容器编排 + CI/CD 全链路
+- **CI/CD 落地**：08 DevOps → 07 Kubernetes → 04 Nginx — 从流水线到生产部署
+- **全栈 SRE**：07 Kubernetes → 08 DevOps → 04 Nginx / Pingora — 运维自动化与可观测
 
 ---
 
@@ -78,10 +93,13 @@ graph TB
 |------|---------|------|
 | 版本控制 | Git + Gitea/GitHub | 自建选 Gitea，云端选 GitHub |
 | 容器运行时 | Docker / Podman | Podman 无守护进程、rootless |
+| 容器编排 | Kubernetes (K8s) | 云原生标准，EKS/AKS/GKE/ACK |
+| CI/CD | Jenkins / GitLab CI / GitHub Actions | GitLab CI 一体化，GitHub Actions 生态丰富 |
 | 反向代理 | Nginx / Pingora | Pingora 适合 Rust 生态 & 高并发 |
 | 多模块管理 | Monorepo (Turborepo/Nx) | 适合共享代码量大、多团队协作 |
 | Java 效率 | Hutool + Lombok | 国内项目标配 |
 | 微服务注册 | Nacos | 支持 DNS/RPC 双模式，阿里开源 |
+| GitOps | ArgoCD / Flux | K8s 原生，声明式部署 |
 
 ---
 
@@ -95,8 +113,11 @@ graph TB
 | `04-nginx/` | 2 | 顶层 + pingora |
 | `05-monorepo/` | 1 | 顶层 |
 | `06-ali-microservices/` | 1 | 顶层 |
-| **分类 leaf 合计** | **9 depth-2 leaf + 6 顶层 = 15** | 100% frontmatter |
-| **学习路径主题数** | 5 条路径（见上方学习路径） | 新人/效率/微服务/进阶/云原生 |
+| `kubernetes/` | 9 | 顶层 + 01-architecture ~ 08-operator-and-gitops |
+| `devops/` | 7 | 顶层 + 01-jenkins ~ 06-cicd-vs-gitops |
+| `iac/` | 1 | 顶层（Terraform / Ansible / Pulumi / CDK / GitOps） |
+| **分类 leaf 合计** | **23 depth-2 leaf + 9 顶层 = 32** | 100% frontmatter |
+| **学习路径主题数** | 7 条路径（见上方学习路径） | 新人/效率/微服务/进阶/云原生/CI-CD/SRE |
 
 > 数字基线：本节以 leaf README 数 + 学习路径主题数双口径统计
 

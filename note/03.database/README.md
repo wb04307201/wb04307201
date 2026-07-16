@@ -35,6 +35,7 @@ module:
 | 序号 | 分类 | 核心内容 | 子 README |
 |:----:|------|---------|-----------|
 | 05 | [MySQL](05-mysql/README.md) | 架构、InnoDB 内部机制、主从复制、日志系统、备份与 8.0 新特性 | [子入口](05-mysql/README.md) |
+| 13 | [PostgreSQL](13-postgresql/README.md) | MVCC、5 大索引、JSON/JSONB、pgvector、扩展生态、Patroni 高可用 | [子入口](13-postgresql/README.md) |
 | 07 | [Redis](07-redis/README.md) | 数据类型、持久化、集群高可用、内存管理、分布式锁、Pipeline/Lua | [子入口](07-redis/README.md) |
 | 08 | [NoSQL 数据库](08-nosql/README.md) | 5 大类型对比、MongoDB / Cassandra / HBase / ES / Neo4j 与 NewSQL | [子入口](08-nosql/README.md) |
 
