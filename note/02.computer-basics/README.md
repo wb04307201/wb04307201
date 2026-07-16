@@ -23,6 +23,7 @@ module:
 | 03 | [Linux](03-linux/) | 常用命令 · curl 详解 | [03-linux/README](03-linux/README.md) |
 | 04 | [运维](04-operations/) | 服务器性能指标 · 云服务模式 | [04-operations/README](04-operations/README.md) |
 | 05 | [知识产权](05-ipr/) | 专利 vs 软件著作权 | [05-ipr/README](05-ipr/README.md) |
+| 06 | [操作系统](06-operating-system/) | 进程/线程 · 内存管理 · CPU 调度 · 文件系统/I/O | [06-operating-system/README](06-operating-system/README.md) |
 
 ---
 
@@ -37,9 +38,9 @@ module:
 
 ## 🧭 学习路径
 
-- **新人入门**：网络 → 算法 → Linux（搭建"日常开发 + 面试"基础底盘）
-- **运维方向**：Linux → 运维 → 网络（深入协议栈与监控指标）
-- **求职冲刺**：算法（复杂度 + 经典案例）→ 网络（TCP/HTTP/DNS）→ 知识产权（开放题）
+- **新人入门**：网络 → 算法 → Linux → 操作系统（搭建"日常开发 + 面试"基础底盘）
+- **运维方向**：Linux → 运维 → 操作系统（文件系统/I/O） → 网络（深入协议栈与监控指标）
+- **求职冲刺**：算法（复杂度 + 经典案例）→ 网络（TCP/HTTP/DNS）→ 操作系统（进程/内存/I/O 模型）→ 知识产权（开放题）
 - **速查定位**：按需查阅各分类 README 速查表
 
 ---
@@ -54,11 +55,14 @@ graph TB
     Base --> Linux["03 Linux<br/>常用命令 · curl"]
     Base --> Ops["04 运维<br/>性能指标 · 云服务"]
     Base --> IPR["05 知识产权<br/>专利 vs 软著"]
+    Base --> OSys["06 操作系统<br/>进程/内存/调度/文件系统"]
 
     Net --> P["协议族<br/>IP/TCP/UDP/HTTP"]
     Algo --> A["算法基础<br/>时间/空间复杂度"]
     Linux --> L["服务器管理<br/>系统/文件/进程"]
     Ops --> O["监控与云<br/>IaaS/PaaS/SaaS"]
+    OSys --> OS1["进程与线程<br/>IPC · 同步 · 协程"]
+    OSys --> OS2["内存/调度/FS<br/>虚拟内存 · CFS · I/O 模型"]
 ```
 
 ---
@@ -77,6 +81,9 @@ graph TB
 | **时间复杂度** | O(1) < O(log n) < O(n) < O(n log n) < O(n²) | 算法效率评估 |
 | **Linux 权限** | rwx (4+2+1)，chmod/chown/ugo | 文件安全 |
 | **IaaS/PaaS/SaaS** | 基础设施/平台/软件即服务 | 云服务选型 |
+| **进程 vs 线程** | 资源分配单位 vs CPU 调度单位；地址空间独立 vs 共享 | 并发编程 |
+| **虚拟内存** | 每个进程独立虚拟地址空间，通过页表映射物理内存 | 内存隔离 + 按需加载 |
+| **I/O 多路复用** | epoll 单线程监控数万 FD（优于 select/poll） | 高并发网络服务 |
 
 ---
 
@@ -106,12 +113,12 @@ graph TB
 
 | 统计维度 | 数值 | 口径 |
 |----------|------|------|
-| 分类主题数 | 5 | 顶层 5 个分类目录（网络/算法/Linux/运维/知识产权） |
-| 子 README 总数 | 21 | 含 5 个分类 README + 16 个 leaf README（depth ≥ 2） |
+| 分类主题数 | 6 | 顶层 6 个分类目录（网络/算法/Linux/运维/知识产权/操作系统） |
+| 子 README 总数 | 26 | 含 6 个分类 README + 20 个 leaf README（depth ≥ 2），含新增 06-operating-system 5 篇 |
 | 含 frontmatter 的 README | 22 / 22 | 100% 覆盖（2026-07-01，含本顶层 README） |
 | 配套面试题 | 0 篇 | 本模块暂未配套 split-hairs 文章（按需扩展） |
 
-> **统计时间戳**：2026-07-01（与 `note/README.md` 中"二、[计算机基础]"锚点状态一致）
+> **统计时间戳**：2026-07-16（与 `note/README.md` 中"二、[计算机基础]"锚点状态一致）
 
 ---
 
