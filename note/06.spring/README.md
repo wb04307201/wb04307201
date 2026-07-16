@@ -7,18 +7,18 @@ module:
   audience: Java 后端工程师
   category: 后端框架
   type: index
-  summary: 从 IoC/AOP 到 Spring Boot/Cloud/集成组件，Java 最主流框架完整知识体系
+  summary: 从 IoC/AOP 到 Spring Boot/Cloud/Security/集成组件，Java 最主流框架完整知识体系
 -->
 
 # Spring 全家桶
 
-> 一句话导览：从 IoC/AOP 核心容器到 Spring Boot/Cloud 微服务，再到事务/缓存/MyBatis 数据层与可观测性——Java 后端最主流框架的完整知识地图。
+> 一句话导览：从 IoC/AOP 核心容器到 Spring Boot/Cloud 微服务，再到事务/缓存/MyBatis 数据层、Spring Security 安全与可观测性——Java 后端最主流框架的完整知识地图。
 
 ---
 
 ## 🎯 一句话定位
 
-**Spring 全家桶 = 核心容器（IoC/AOP）+ Web（MVC/WebFlux）+ 数据（事务/缓存/MyBatis）+ Boot（约定优于配置）+ Cloud（微服务治理）+ 集成（Validation/Retry/Batch）+ 可观测性（Actuator/Micrometer）+ 注解速查**——按"骨架 → 血肉 → 云原生"层层递进。
+**Spring 全家桶 = 核心容器（IoC/AOP）+ Web（MVC/WebFlux）+ 数据（事务/缓存/MyBatis）+ Boot（约定优于配置）+ Cloud（微服务治理）+ 集成（Validation/Retry/Batch）+ 可观测性（Actuator/Micrometer）+ Security（认证/授权/防护）+ 注解速查**——按"骨架 → 血肉 → 云原生 → 安全"层层递进。
 
 ---
 
@@ -33,7 +33,7 @@ module:
 ## 🗺️ 目录导航
 
 > 数字基线：以"分类下 leaf MD 数（含所有子目录与子子目录）"为统计口径。
-> 实际结构 = 24 个 README + 110 篇 leaf 文章，共 134 个 .md 文件。
+> 实际结构 = 30 个 README + 116 篇 leaf 文章，共 146 个 .md 文件。
 
 | 序号 | 分类 | 核心内容 | Leaf 数 | 入口 |
 |:----:|:----|:---------|:-------:|:----:|
@@ -45,8 +45,9 @@ module:
 | 06 | **集成组件** | Validation（分组/跨字段/自定义）、Retry（Reactive）、StateMachine（持久化/并行）、Batch（重试/重启） | **6** | [06-integration/README.md](06-integration/README.md) |
 | 07 | **可观测性** | Actuator 端点、健康探针、Micrometer（OTLP/LongTaskTimer）、Prometheus+Pushgateway、Grafana Alerting、ELK/Loki | **5** | [07-observability/README.md](07-observability/README.md) |
 | 08 | **注解速查** | 事务/缓存/调度/校验/重试/AOP/Web/JPA/测试/配置/异常 等按场景分类的索引 | **12** | [08-annotations/README.md](08-annotations/README.md) |
+| 09 | **Spring Security** | SecurityFilterChain 架构、认证（密码/JWT/OAuth2）、授权（@PreAuthorize/ACL）、OAuth2 四种授权模式、CORS/CSRF/Session/安全 Header | **6** | [09-security/README.md](09-security/README.md) |
 
-**合计**：8 大分类 · **24 个 README · 110 篇 leaf 文章**。
+**合计**：9 大分类 · **30 个 README · 116 篇 leaf 文章**。
 
 ### 3.1 MyBatis 全栈专项（4 主题 · 27 篇）
 
@@ -75,20 +76,23 @@ module:
 
 **目标**：掌握 Spring 核心机制，能独立搭建 Spring Boot 单体应用。
 
-### 第 2 段：进阶（Boot 精通 → Cloud 微服务）
+### 第 2 段：进阶（Boot 精通 → Cloud 微服务 → Security）
 
 ```
 04-spring-boot/externalized-configuration → 外部化配置
 04-spring-boot/embedded-server → 内嵌服务器切换
+09-security/filter-chain/     → SecurityFilterChain 架构
+09-security/authentication/   → 认证机制（密码/JWT/OAuth2）
+09-security/authorization/    → 授权机制（@PreAuthorize/ACL）
 05-spring-cloud/service-registry/ → 服务注册/发现（Nacos/Consul）
 05-spring-cloud/config-center.md → 配置中心
 05-spring-cloud/gateway.md → API 网关（含 JWT 鉴权）
 05-spring-cloud/circuit-breaker.md → 熔断/限流（Resilience4j/Sentinel）
 ```
 
-**目标**：能设计 Spring Cloud 微服务架构，理解分布式核心问题。
+**目标**：能设计 Spring Cloud 微服务架构，掌握 Spring Security 认证授权，理解分布式核心问题。
 
-### 第 3 段：整合（数据层深化 + 可观测性 + 注解速查）
+### 第 3 段：整合（数据层深化 + 可观测性 + 安全深化 + 注解速查）
 
 ```
 03-data/cache/multi-level.md → 多级缓存架构
@@ -97,6 +101,8 @@ module:
 06-integration/validation/ → 参数校验
 06-integration/batch.md → 批处理
 07-observability/ → Actuator + Micrometer + Prometheus
+09-security/oauth2/ → OAuth2 与 JWT 深入（授权服务器/Token 刷新/SSO）
+09-security/cors-csrf/ → CORS/CSRF/Session/安全 Header 完整防护
 08-annotations/ → 注解速查（按场景分类索引）
 ```
 
@@ -113,6 +119,12 @@ module:
 - [Caffeine](https://github.com/ben-manes/caffeine) —— Java 高性能本地缓存（多级缓存的 L1 选择，参见 [03-data/cache/multi-level.md](03-data/cache/multi-level.md)）
 - [Redis](https://github.com/redis/redis) —— 分布式缓存事实标准（多级缓存的 L2 选择）
 - [JetCache](https://github.com/alibaba/jetcache) —— 阿里开源多级缓存框架（Spring Cache 整合）
+
+### 安全与认证
+
+- [Spring Security](https://github.com/spring-projects/spring-security) —— Spring 生态安全框架（[09-security](09-security/README.md) 研究对象）
+- [Spring Authorization Server](https://github.com/spring-projects/spring-authorization-server) —— OAuth2 授权服务器实现
+- [jjwt](https://github.com/jwtk/jjwt) —— Java JWT 库（JWT 生成/验证/解析）
 
 ### 微服务治理
 
@@ -158,6 +170,7 @@ module:
 | **缓存** | 多级缓存（Caffeine L1 + Redis L2）；`@Cacheable` + 自定义 KeyGenerator；防穿透用空值缓存 |
 | **配置管理** | `@ConfigurationProperties` 替代 `@Value`；多环境 Profile 隔离；敏感配置加密 |
 | **异常处理** | `@RestControllerAdvice` 全局统一；业务异常继承 `RuntimeException`；错误码规范化 |
+| **安全** | `SecurityFilterChain` Bean 方式配置（废弃 `WebSecurityConfigurerAdapter`）；JWT 无状态认证；方法级 `@PreAuthorize`；REST API 禁用 CSRF |
 | **可观测性** | Actuator + Micrometer 指标暴露；分布式追踪（Micrometer Tracing → OTLP）；结构化日志 |
 
 ---
@@ -179,6 +192,8 @@ module:
 - [Spring 官方文档](https://spring.io/docs)
 - [Spring Boot 参考指南](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)
 - [Spring Cloud 参考指南](https://spring.io/projects/spring-cloud)
+- [Spring Security 参考指南](https://docs.spring.io/spring-security/reference/)
+- [Spring Authorization Server](https://docs.spring.io/spring-authorization-server/docs/current/reference/html/)
 - [Spring 全家桶中文文档](https://springdoc.cn/)
 
 ---
