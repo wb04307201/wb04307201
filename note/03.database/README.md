@@ -17,17 +17,42 @@ module:
 
 ## 📚 目录导航
 
+### 🟢 关系型理论基础
+
+> 数据库无关的核心概念，任何 RDBMS 通用的基础知识。
+
 | 序号 | 分类 | 核心内容 | 子 README |
 |:----:|------|---------|-----------|
 | 01 | [数据库基础知识](01-fundamentals/README.md) | 核心概念、ER 图、范式、设计步骤、数据类型与字符集 | [子入口](01-fundamentals/README.md) |
 | 02 | [SQL](02-sql/README.md) | DDL/DML/DQL、语法、执行顺序、慢查询分析与 EXPLAIN、CTE 与窗口函数 | [子入口](02-sql/README.md) |
 | 03 | [事务与并发控制](03-transaction/README.md) | ACID、隔离级别、锁机制、MVCC、死锁、Spring 事务传播 | [子入口](03-transaction/README.md) |
 | 04 | [索引](04-index/README.md) | B+ 树、聚簇/非聚簇索引、覆盖索引、最左前缀、索引失效与 ICP | [子入口](04-index/README.md) |
+
+### 🔵 引擎深潜
+
+> 特定数据库产品的架构与内部机制。
+
+| 序号 | 分类 | 核心内容 | 子 README |
+|:----:|------|---------|-----------|
 | 05 | [MySQL](05-mysql/README.md) | 架构、InnoDB 内部机制、主从复制、日志系统、备份与 8.0 新特性 | [子入口](05-mysql/README.md) |
-| 06 | [缓存](06-cache/README.md) | 三大经典问题、缓存-数据库一致性、布隆过滤器、热点 Key、多级缓存 | [子入口](06-cache/README.md) |
 | 07 | [Redis](07-redis/README.md) | 数据类型、持久化、集群高可用、内存管理、分布式锁、Pipeline/Lua | [子入口](07-redis/README.md) |
 | 08 | [NoSQL 数据库](08-nosql/README.md) | 5 大类型对比、MongoDB / Cassandra / HBase / ES / Neo4j 与 NewSQL | [子入口](08-nosql/README.md) |
+
+### 🟡 数据访问层
+
+> 应用与数据库之间的中间层技术。
+
+| 序号 | 分类 | 核心内容 | 子 README |
+|:----:|------|---------|-----------|
+| 06 | [缓存](06-cache/README.md) | 三大经典问题、缓存-数据库一致性、布隆过滤器、热点 Key、多级缓存 | [子入口](06-cache/README.md) |
 | 09 | [数据库连接池](09-connection-pool/README.md) | HikariCP、Druid、参数配置、监控、连接泄漏、分库分表场景 | [子入口](09-connection-pool/README.md) |
+
+### 🟣 运维与扩展
+
+> 数据库上线后的运营、监控与演进。
+
+| 序号 | 分类 | 核心内容 | 子 README |
+|:----:|------|---------|-----------|
 | 10 | [数据迁移与同步](10-data-migration/README.md) | DataX 全量、Canal/Maxwell Binlog 订阅、Flink CDC、迁移实战要点 | [子入口](10-data-migration/README.md) |
 | 11 | [数据库监控告警](11-monitoring/README.md) | Prometheus + Grafana + AlertManager、慢查询分析、生产事故案例 | [子入口](11-monitoring/README.md) |
 | 12 | [云数据库](12-cloud-database/README.md) | AWS RDS/Aurora、阿里云 PolarDB、TiDB Cloud、自建 vs 云、迁移策略 | [子入口](12-cloud-database/README.md) |
