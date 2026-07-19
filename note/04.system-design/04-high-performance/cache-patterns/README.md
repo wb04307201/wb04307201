@@ -902,7 +902,7 @@ Q4：是否强一致性需求（金融场景）？
 ## 面试精选 & 实战链接
 
 - **面试题（通用策略）**：[13.split-hairs/04.system-design/cache-consistency](../../../13.split-hairs/04.system-design/cache-consistency/README.md) —— 4 策略 + 3 场景 + A/B/C 方案
-- **面试题（Redis 兄弟篇）**：[13.split-hairs/03.database/redis/cache-penetration-breakdown-avalanche](../../../13.split-hairs/03.database/redis/cache-penetration-breakdown-avalanche/README.md) —— 缓存穿透/击穿/雪崩
+- **面试题（Redis 兄弟篇）**：[13.split-hairs/03.database/redis/cache-penetration-breakdown-avalanche](../../../13.split-hairs/03.database/cache-penetration-breakdown-avalanche/README.md) —— 缓存穿透/击穿/雪崩
 - **Spring Cache 实操**：[06.spring/03-data/cache/](../../../06.spring/03-data/cache/README.md) —— Spring Cache + Caffeine 实战
 - **餐厅叙事**：12.story/04-peak-traffic-defense.md —— 阿明餐厅双 11 高峰缓存实战
 

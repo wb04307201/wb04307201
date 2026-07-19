@@ -58,7 +58,7 @@ module:
 
 ## 🔗 兄弟章节
 
-- **02 同级**：[K-means 聚类](../../clustering/k-means/README.md) / [复杂度分析](../../complexity/README.md)
+- **02 同级**：[K-means 聚类](../clustering/k-means/README.md) / [复杂度分析](../complexity/README.md)
 - **13.split-hairs**：[算法面试题](../../../13.split-hairs/02.computer-basics/)
 
 ---

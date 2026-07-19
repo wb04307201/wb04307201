@@ -547,13 +547,13 @@ public class SeckillController {
 - [幂等性（idempotency）](../../06-idempotency/README.md) — 防重复原理
 
 **面试题**：
-- [秒杀刁难题面试 5 题](../../../13.split-hairs/04.system-design/high-performance/seckill-without-redis/README.md) — 5 题配套面试
+- [秒杀刁难题面试 5 题](../../../13.split-hairs/04.system-design/seckill-without-redis/README.md) — 5 题配套面试
 
 **餐厅叙事（12.story）**：
 - [04 · peak-traffic-defense（餐厅流量防御）](../../../12.story/04-peak-traffic-defense.md) — 餐厅流量 = 茅台秒杀的隐喻版
 
 **其他相关**：
-- [限流算法（rate-limiting）面试题](../../../13.split-hairs/04.system-design/high-performance/rate-limiting/README.md) — 互补章节
+- [限流算法（rate-limiting）面试题](../../../13.split-hairs/04.system-design/rate-limiting/README.md) — 互补章节
 - [MySQL 行锁原理](../../../01.java/concurrency/juc-locks/README.md) — 乐观锁底层实现
 
 ---
