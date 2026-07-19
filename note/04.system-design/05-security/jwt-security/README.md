@@ -326,4 +326,4 @@ public boolean isRevoked(String jti) {
 - [OWASP JSON Web Token Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_for_Java_Cheat_Sheet.html)
 - [auth0/java-jwt](https://github.com/auth0/java-jwt)
 
-← [返回: 系统设计 · jwt-security](README.md)
+← [返回 安全篇](../README.md)

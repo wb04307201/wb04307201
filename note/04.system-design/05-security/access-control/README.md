@@ -127,4 +127,4 @@ DAC ──→ RBAC ──→ ABAC ──→ ReBAC
   - [密钥与凭据管理](../secrets-management/README.md)
 - 04-system-design：[分布式 ID](../../02-distributed/distributed-id/README.md) — 权限实体常用雪花 ID
 
-← [返回: 系统设计 · access-control](README.md)
+← [返回 安全篇](../README.md)
