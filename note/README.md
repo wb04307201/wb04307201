@@ -343,11 +343,11 @@ module:
 | [事务隔离机制](13.split-hairs/03.database/mysql-isolation/README.md) | RU / RC / RR / Serializable |
 | [INT(4) 的定义](13.split-hairs/03.database/relational-database/mysql/int(4)-define/README.md) | 显示宽度 vs 存储范围 |
 | [快速加索引](13.split-hairs/03.database/relational-database/mysql/quickly-add-index/README.md) | 大表在线加索引 |
-| [时间类型对比](13.split-hairs/03.database/relational-database/mysql/time-types/README.md) | DATETIME / TIMESTAMP / DATE |
-| [COUNT(*) vs COUNT(1) vs COUNT(字段)](13.split-hairs/03.database/relational-database/mysql/count/README.md) | 性能差异与最佳实践 |
-| [SQL 调优](13.split-hairs/03.database/relational-database/mysql/tuning/README.md) | Explain + 索引优化 |
-| [加什么锁](13.split-hairs/03.database/relational-database/mysql/what-lock/README.md) | 行锁 / 表锁 / 间隙锁 |
-| [索引失效的 10 种场景](13.split-hairs/03.database/mysql/index-failure/README.md) | LIKE 左通配 / 函数 / OR / 最左前缀 |
+| [时间类型对比](13.split-hairs/03.database/mysql-time-types/README.md) | DATETIME / TIMESTAMP / DATE |
+| [COUNT(*) vs COUNT(1) vs COUNT(字段)](13.split-hairs/03.database/mysql-count/README.md) | 性能差异与最佳实践 |
+| [SQL 调优](13.split-hairs/03.database/mysql-tuning/README.md) | Explain + 索引优化 |
+| [加什么锁](13.split-hairs/03.database/mysql-what-lock/README.md) | 行锁 / 表锁 / 间隙锁 |
+| [索引失效的 10 种场景](13.split-hairs/03.database/mysql-index-failure/README.md) | LIKE 左通配 / 函数 / OR / 最左前缀 |
 
 ### MySQL 深入
 
@@ -362,7 +362,7 @@ module:
 
 | 主题 | 核心问题 |
 |------|---------|
-| [Redis 搜索](13.split-hairs/03.database/nosql/key-value/redis/search/README.md) | 全文搜索实现 |
+| [Redis 搜索](13.split-hairs/03.database/redis-search/README.md) | 全文搜索实现 |
 | [缓存穿透 / 击穿 / 雪崩](13.split-hairs/03.database/redis/cache-penetration-breakdown-avalanche/README.md) | 面试必考三件套 |
 
 ### Redis 深入

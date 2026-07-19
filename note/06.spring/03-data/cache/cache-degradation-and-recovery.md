@@ -586,7 +586,7 @@ public class CacheMetricsCollector {
 - [@Cacheable + Redis 挂了 5 题](../../../13.split-hairs/06.spring/cache-degradation/README.md) — 配套面试题
 
 **缓存穿透/击穿/雪崩**：
-- [缓存三连（穿透/击穿/雪崩）](../../../13.split-hairs/03.database/redis/cache-penetration-breakdown-avalanche/README.md) — 互补场景
+- [缓存三连（穿透/击穿/雪崩）](../../../13.split-hairs/03.database/cache-penetration-breakdown-avalanche/README.md) — 互补场景
 
 ---
 

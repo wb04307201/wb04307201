@@ -472,7 +472,7 @@ graph TD
 **配套面试刁难题**：500 人抢 1 瓶茅台，2 台服务器，不用 Redis/MQ，秒杀怎么写？
 
 - [04.system-design/.../seckill-without-redis](../04.system-design/03-high-availability/rate-limiting/seckill-without-redis.md) — **餐厅流量 = 茅台秒杀**的工程化版本：5 大单机方案对比 + 3 大机制（乐观锁 / version / 唯一约束）+ 2 台服务器一致性 + 实战模板
-- [咬文嚼字·seckill-without-redis 面试题](../13.split-hairs/04.system-design/high-performance/seckill-without-redis/README.md) — 5 题配套面试（含 30/60 秒话术 + 踩分点）
+- [咬文嚼字·seckill-without-redis 面试题](../13.split-hairs/04.system-design/seckill-without-redis/README.md) — 5 题配套面试（含 30/60 秒话术 + 踩分点）
 
 **核心洞察**：本餐厅版的"500 桌客满 + 100 桌候补"对应工程版的"500 人抢 1 瓶"——**业务规模决定方案**，500 人级别单机乐观锁完全够用。
 
