@@ -282,4 +282,4 @@ dig example.com | grep "Query time"
 
 ---
 
-← [返回计算机基础总览](../../README.md) · 📅 2026-06-28
+← [返回计算机网络](../README.md) · 📅 2026-06-28
