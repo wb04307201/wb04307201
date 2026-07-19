@@ -159,7 +159,7 @@ Java 核心概念
 | 统计维度 | 数值 | 口径 |
 |----------|------|------|
 | 分类主题数 | 4 组 | 语言基础 / 面向对象 / 类型系统 / 核心机制 |
-| 子 README 数 | 18 | `concepts/` 下 leaf README 数 |
+| 子 README 数 | 18 | [`date-time`](date-time/README.md) 等 `concepts/` 下 leaf README 数 |
 | 含 frontmatter 的 README | 19 / 19 | 100% 覆盖（2026-07-01） |
 
 > **统计时间戳**：2026-07-01
