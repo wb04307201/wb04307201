@@ -1,4 +1,9 @@
-> 由 note-health/SKILL.md Phase 1/4 调用
+> 由 note-health/SKILL.md Phase 1 / Phase 4 调用
+>
+> **章节编号说明**：本文件的 Step 编号早于 SKILL.md 的 Phase 1-4 重构。映射如下：
+> - **Step 1**（现状扫描）= **Phase 1**（结构扫描）
+> - **Step 5.5 / 5.6**（Commit 拆分 / 风险检查）= **执行阶段**（不在 Phase 1-4 范围，属于 Plan → Execute 衔接）
+> - 旧 sub-step 编号（如 Step 1.4.5）保持作为 Phase 1 内的子节锚点
 
 # 结构类审计扫描（structural-checks）
 
@@ -27,9 +32,9 @@
 | 6 | **内容补充缺口** | 找到深度 ≤ 50 行的 README（可能是占位）|
 | 7 | **架构/分类/命名** | 目录命名风格不一致 / 编号缺失 |
 | 8 | **其他**（PNG / 脚本 / 杂项）| `find note -name "*.png" \| xargs grep -L "!"` |
-| 9 | **系列完整性** | 扫描"声明了 N 个子章节但实际文件缺失"的系列（见 Step 1.9） |
+| 9 | **系列完整性** | 扫描"声明了 N 个子章节但实际文件缺失"的系列（见 Phase 1.9） |
 
-## Step 1 现状扫描
+## Phase 1 现状扫描（原 Step 1）
 
 **目的**：用真实命令收集证据，不凭印象
 
@@ -210,7 +215,7 @@ for dir in $(find note -type d -exec sh -c 'ls "$1"/[0-9]*.md 2>/dev/null | head
 done
 ```
 
-### Step 5.5: Commit 拆分模式
+### Commit 拆分模式（原 Step 5.5）
 
 **当用户说"拆分做 commit"时**，触发本模式：
 
@@ -250,7 +255,7 @@ done
 6. fix(13.split-hairs): 新增 05.security 分类 README
 ...（共 18 个）
 
-### Step 5.6: 执行风险检查
+### 执行风险检查（原 Step 5.6）
 
 **执行前先过 6 项风险检查**（避免昨天 .obsidian 误删的教训）：
 
@@ -271,7 +276,7 @@ done
 
 **症状**：扫描出 70 个问题，全部列出让用户决策 → 用户瘫痪
 
-**修复**：Step 5 必须**分批**输出；只 P0 + 关键 P1 进入第一批决策；其他延后
+**修复**：执行阶段（Plan → Execute）必须**分批**输出；只 P0 + 关键 P1 进入第一批决策；其他延后
 
 ### ❌ Mistake 2: 不排除已修复项
 
@@ -283,7 +288,7 @@ done
 
 **症状**：说"应该有 7 个 leaf"但没实际 find → 数字错
 
-**修复**：Step 1 必须用 grep / find / wc 收集证据；每条发现附 file:line
+**修复**：Phase 1 必须用 grep / find / wc 收集证据；每条发现附 file:line
 
 ### ❌ Mistake 4: 不区分机械 vs 判断
 
@@ -338,7 +343,7 @@ git diff --ignore-cr-at-eol --ignore-space-at-eol
 **症状**：自作主张清理 .obsidian 跟踪 + 加 .gitignore，用户后来说"留着它"
 
 **修复**：
-- Step 5.6 风险检查（见上）
+- 执行阶段风险检查（见上）
 - 任何会改 .gitignore / .obsidian / .idea 的操作**必须先确认**
 
 ### ❌ Mistake 9: 单向链接扫描缺失
@@ -351,7 +356,7 @@ git diff --ignore-cr-at-eol --ignore-space-at-eol
 
 **修复**：
 - **审计类别 #3 升级**："回链覆盖率" → **"回链覆盖率 + 互链双向性"**
-- **Step 1.4.5 新增"单向链接扫描"**：grep 所有 child → target 链接，反查 target 是否含 child basename
-- **Step 1.4.5 附"同级兄弟不互链扫描"**：在某个目录下找所有兄弟 README，验证是否互相引用
+- **Phase 1.4.5 新增"单向链接扫描"**：grep 所有 child → target 链接，反查 target 是否含 child basename
+- **Phase 1.4.5 附"同级兄弟不互链扫描"**：在某个目录下找所有兄弟 README，验证是否互相引用
 
 **反直觉点**：很多人以为"我加了 2 条反向链就完事" —— 实际上**新内容责任**包括：让被链接的 parent / 同级兄弟**也回链**。双向互链才能让知识网"加密"。
