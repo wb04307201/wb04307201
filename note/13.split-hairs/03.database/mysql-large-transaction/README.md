@@ -214,11 +214,11 @@ SET GLOBAL innodb_long_query_time = 5;
 
 ## 八、相关章节
 
-- 同栏目：[`select-all-big-table`](../select-all-big-table/README.md) — SELECT 内存陷阱
-- 同栏目：[`deep-pagination`](../deep-pagination/README.md) — 深分页
-- 同栏目：[`batch-operation`](../batch-operation/README.md) — 批量插入
-- 同栏目：[`what-lock`](../what-lock/README.md) — 行锁 / 表锁 / 间隙锁
-- 同栏目：[`isolation`](../isolation/README.md) — 事务隔离级别
+- 同栏目：[`select-all-big-table`](../mysql-select-all-big-table/README.md) — SELECT 内存陷阱
+- 同栏目：[`deep-pagination`](../mysql-deep-pagination/README.md) — 深分页
+- 同栏目：[`batch-operation`](../mysql-batch-operation/README.md) — 批量插入
+- 同栏目：[`what-lock`](../mysql-what-lock/README.md) — 行锁 / 表锁 / 间隙锁
+- 同栏目：[`isolation`](../mysql-isolation/README.md) — 事务隔离级别
 - 主模块：[`03.database/03-transaction`](../../../03.database/03-transaction/README.md) — 事务与并发控制
 
 ---

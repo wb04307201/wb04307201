@@ -284,7 +284,7 @@ DELIMITER ;
 
 ## 六、交叉引用
 
-- **相关主题**：[MySQL 事务隔离级别](../isolation/README.md) - 理解 MVCC 中的版本链与时间戳
+- **相关主题**：[MySQL 事务隔离级别](../mysql-isolation/README.md) - 理解 MVCC 中的版本链与时间戳
 - **性能优化**：[MySQL 索引优化](../../../03.database/04-index/README.md) - 时间字段的索引策略
 - **JVM 关联**：[Java 日期时间API](../../../../../01.java/concepts/date-time/README.md) - Java 层面的时间处理
 

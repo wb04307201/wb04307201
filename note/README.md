@@ -363,7 +363,7 @@ module:
 | 主题 | 核心问题 |
 |------|---------|
 | [Redis 搜索](13.split-hairs/03.database/redis-search/README.md) | 全文搜索实现 |
-| [缓存穿透 / 击穿 / 雪崩](13.split-hairs/03.database/redis/cache-penetration-breakdown-avalanche/README.md) | 面试必考三件套 |
+| [缓存穿透 / 击穿 / 雪崩](13.split-hairs/03.database/cache-penetration-breakdown-avalanche/README.md) | 面试必考三件套 |
 
 ### Redis 深入
 
@@ -380,11 +380,11 @@ module:
 
 | 主题 | 核心问题 |
 |------|---------|
-| [MQ 消息积压](13.split-hairs/04.system-design/high-performance/mq/mq-backlog/README.md) | 紧急止血 + 长期优化 |
-| [为什么还要 RocketMQ](13.split-hairs/04.system-design/high-performance/mq/still-need-rocketmq/README.md) | Kafka vs RocketMQ vs RabbitMQ |
-| [缓存与数据库一致性](13.split-hairs/04.system-design/high-performance/cache-consistency/README.md) | 延迟双删 vs Canal Binlog |
-| [分布式锁](13.split-hairs/04.system-design/high-performance/distributed-lock/README.md) | Redis vs ZooKeeper |
-| [限流算法](13.split-hairs/04.system-design/high-performance/rate-limiting/README.md) | 计数器 / 滑动窗口 / 漏桶 / 令牌桶 |
+| [MQ 消息积压](13.split-hairs/04.system-design/mq-backlog/README.md) | 紧急止血 + 长期优化 |
+| [为什么还要 RocketMQ](13.split-hairs/04.system-design/still-need-rocketmq/README.md) | Kafka vs RocketMQ vs RabbitMQ |
+| [缓存与数据库一致性](13.split-hairs/04.system-design/cache-consistency/README.md) | 延迟双删 vs Canal Binlog |
+| [分布式锁](13.split-hairs/04.system-design/distributed-lock/README.md) | Redis vs ZooKeeper |
+| [限流算法](13.split-hairs/04.system-design/rate-limiting/README.md) | 计数器 / 滑动窗口 / 漏桶 / 令牌桶 |
 | [缓存热点 Key 问题](13.split-hairs/04.system-design/cache-hot-key/README.md) | 本地缓存 + 分布式锁 + Key 拆分 + 热点探测 |
 
 ### 数据库扩展
@@ -397,8 +397,8 @@ module:
 
 | 主题 | 核心问题 |
 |------|---------|
-| [分布式 ID](13.split-hairs/04.system-design/distributed/distributed-id/README.md) | UUID / DB / 雪花算法 / Leaf |
-| [分布式事务](13.split-hairs/04.system-design/distributed/distributed-transaction/README.md) | 2PC / TCC / Saga / 本地消息表 |
+| [分布式 ID](13.split-hairs/04.system-design/distributed-id/README.md) | UUID / DB / 雪花算法 / Leaf |
+| [分布式事务](13.split-hairs/04.system-design/distributed-transaction/README.md) | 2PC / TCC / Saga / 本地消息表 |
 | [CAP 定理实际应用](13.split-hairs/04.system-design/cap-theorem/README.md) | CP vs AP 选型决策 |
 
 ### 高并发

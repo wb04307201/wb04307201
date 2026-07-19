@@ -195,7 +195,7 @@ conn.commit();   // 大事务
 ```
 
 - **问题**：大事务持有锁、Undo Log 大、binlog 大
-- **正确**：每 1000 行一个事务（详见 [`large-transaction`](../large-transaction/README.md)）
+- **正确**：每 1000 行一个事务（详见 [`large-transaction`](../mysql-large-transaction/README.md)）
 
 ---
 
@@ -215,11 +215,11 @@ conn.commit();   // 大事务
 
 ## 七、相关章节
 
-- 同栏目：[`select-all-big-table`](../select-all-big-table/README.md) — SELECT 内存陷阱
-- 同栏目：[`deep-pagination`](../deep-pagination/README.md) — 深分页
-- 同栏目：[`large-transaction`](../large-transaction/README.md) — 大事务
-- 同栏目：[`tuning`](../tuning/README.md) — SQL 调优全流程
-- 同栏目：[`what-lock`](../what-lock/README.md) — 行锁 / 表锁 / 间隙锁
+- 同栏目：[`select-all-big-table`](../mysql-select-all-big-table/README.md) — SELECT 内存陷阱
+- 同栏目：[`deep-pagination`](../mysql-deep-pagination/README.md) — 深分页
+- 同栏目：[`large-transaction`](../mysql-large-transaction/README.md) — 大事务
+- 同栏目：[`tuning`](../mysql-tuning/README.md) — SQL 调优全流程
+- 同栏目：[`what-lock`](../mysql-what-lock/README.md) — 行锁 / 表锁 / 间隙锁
 - 主模块：[`01.java/jdbc`](../../../01.java/jdbc/README.md) — JDBC 核心接口
 
 ---

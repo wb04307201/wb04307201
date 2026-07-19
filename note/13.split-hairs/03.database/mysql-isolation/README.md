@@ -295,8 +295,8 @@ SHOW ENGINE INNODB STATUS\G  -- 查看"LATEST DETECTED DEADLOCK"
 
 ## 六、交叉引用
 
-- **相关主题**：[MySQL COUNT优化](../count/README.md) - MVCC对COUNT的影响
-- **性能调优**：[MySQL慢查询](../tuning/README.md)
+- **相关主题**：[MySQL COUNT优化](../mysql-count/README.md) - MVCC对COUNT的影响
+- **性能调优**：[MySQL慢查询](../mysql-tuning/README.md)
 - **Java关联**：[Spring Data](../../../06.spring/03-data/README.md)
 - **分布式系统**：[分布式事务](../../../04.system-design/02-distributed/distributed-transaction/README.md)
 

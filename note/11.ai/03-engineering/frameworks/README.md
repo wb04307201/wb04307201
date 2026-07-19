@@ -101,3 +101,5 @@ Q3: 部署形态？
 | ❌ Spring AI = LangChain Java 版 | ✅ Spring AI 是 Spring 生态的 LLM 集成，抽象更克制 |
 
 ← 返回 [工程实践](../README.md)
+
+← [返回: AI 知识体系](../README.md)

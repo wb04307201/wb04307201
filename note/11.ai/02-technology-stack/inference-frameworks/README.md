@@ -99,3 +99,5 @@ curl http://localhost:8000/v1/chat/completions \
 | ❌ SGLang 只适合 Agent | ✅ 通用场景也很快，复杂 prompt 模板是其杀手锏 |
 | ❌ TGI 已过时 | ✅ 2.0 后 Rust 重写，性能逼近 vLLM |
 | ❌ llama.cpp 只用于 CPU | ✅ Apple Silicon / 部分 GPU 也很强 |
+
+← [返回: AI 知识体系](../README.md)

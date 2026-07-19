@@ -2,7 +2,7 @@
 question:
   id: 01.java-gc-algorithms
   topic: 01.java
-  difficulty: 未标
+  difficulty: ⭐⭐⭐
   frequency: 中频
   scenario_type: 性能对比
   tags: [01.java, algorithms]

@@ -132,3 +132,5 @@ OPENAI_API_BASE_URL: https://api.deepseek.com/v1
 | 中文回答质量差 | 模型本身弱 | 换 Qwen / DeepSeek 中文强模型 |
 
 ← 返回 [本地部署](../README.md)
+
+← [返回: 本地部署](../README.md)

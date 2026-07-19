@@ -119,3 +119,5 @@ curl http://localhost:8000/v1/chat/completions \
 | **本地部署闭源模型** | 违反许可证 | 选开源（Qwen / Llama） |
 
 ← 返回 [工程实践](../README.md)
+
+← [返回: AI 知识体系](../README.md)
