@@ -39,7 +39,7 @@ module:
 | ✦ | tools | 开发工具（Git / Docker / Nginx / K8s） | 4 | [tools/](tools/) |
 | ✦ | [`14.project-management`](../14.project-management/) | **外链**（决策实战，已迁出） | — | [14.project-management/](../14.project-management/) |
 
-**总计：173 篇面试题**（仅"一题一文"题；03.database 另有多个二级目录索引页、04.system-design 另有多个二级目录索引页）
+**总计：192 篇面试题**（仅"一题一文"题；03.database 另有多个二级目录索引页、04.system-design 另有多个二级目录索引页，2026-07-19 find 校对）
 
 > 各分类的具体子主题（如 Java 集合 / 并发 / JVM；数据库 SQL 优化 / Redis / MVCC；系统设计 MQ / 缓存 / 分布式等）见子目录 README。
 
@@ -61,13 +61,13 @@ module:
 
 | 目标 | 推荐路径 |
 |------|---------|
-| **Java 后端** | [01.java](01.java/) 36 篇 → [06.spring](06.spring/) 14 篇 → [03.database](03.database/) 29 篇 |
-| **系统设计 / 后端架构** | [04.system-design](04.system-design/) 14 篇 → [03.database](03.database/) 29 篇 |
+| **Java 后端** | [01.java](01.java/) 39 篇 → [06.spring](06.spring/) 16 篇 → [03.database](03.database/) 26 篇 |
+| **系统设计 / 后端架构** | [04.system-design](04.system-design/) 19 篇 → [03.database](03.database/) 26 篇 |
 | **前端** | [09.front-end](09.front-end/) 26 篇（含网络 / CSS / 框架 / 安全 / 工程化） |
-| **AI 方向** | [11.ai](11.ai/) 30 篇（含主模块精炼版 + 新增专题：dropout / harness / 上下文工程 / RAG / 向量搜索 / Prompt 工程等） |
-| **安全工程师** | [05.security](05.security/) 10 篇（认证 / Web 安全 / 限流 / OWASP） → [04.system-design](04.system-design/) 14 篇 |
-| **大数据 / 数据平台** | [10.big-data](10.big-data/) 6 篇（Flink / Spark / Hive / Iceberg / Doris / Kafka） → [03.database](03.database/) 29 篇 |
-| **DevOps / SRE** | [tools/](tools/) 4 篇（Git / Docker / Nginx / K8s） → [04.system-design](04.system-design/) 14 篇 |
+| **AI 方向** | [11.ai](11.ai/) 40 篇（含主模块精炼版 + 新增专题：dropout / harness / 上下文工程 / RAG / 向量搜索 / Prompt 工程等） |
+| **安全工程师** | [05.security](05.security/) 10 篇（认证 / Web 安全 / 限流 / OWASP） → [04.system-design](04.system-design/) 19 篇 |
+| **大数据 / 数据平台** | [10.big-data](10.big-data/) 6 篇（Flink / Spark / Hive / Iceberg / Doris / Kafka） → [03.database](03.database/) 26 篇 |
+| **DevOps / SRE** | [tools/](tools/) 4 篇（Git / Docker / Nginx / K8s） → [04.system-design](04.system-design/) 19 篇 |
 
 ### 3.2 按难度刷（按面试倒计时）
 
