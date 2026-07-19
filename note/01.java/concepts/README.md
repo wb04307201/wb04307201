@@ -58,6 +58,12 @@ Java 核心概念 是入门必学的基础概念。
 | [SPI](spi/) | Service Provider Interface、ServiceLoader、插件化扩展 |
 | [语法糖](syntactic-sugar/) | Lambda、Stream、Switch表达式、文本块、Pattern Matching |
 
+## 日期时间
+
+| 专题 | 一句话定位 |
+|------|-----------|
+| [date-time](date-time/README.md) | JDK 8+ `java.time` API（LocalDateTime / Instant / Duration）、Date/Calendar 历史问题、时区与格式化 |
+
 ## 核心概念速查
 
 ### 类 (Class)
