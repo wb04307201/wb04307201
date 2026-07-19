@@ -255,6 +255,18 @@ D. 暂不沉淀
 4. 与模型知识合并 → 写文章时标注"参考来源"章节
 ```
 
+**5 个领域 query 模板**（按主题套用）：
+
+| 领域 | Query 模板 | 示例 |
+|------|----------|------|
+| **AI / LLM** | `<topic> <year> benchmark / comparison` | `DPO vs RLHF 2026 best practice` |
+| **Spring / Java 框架** | `<topic> <version> release notes / migration` | `Spring Boot 3.5 new features` |
+| **云原生 / DevOps** | `<topic> <year> production deployment` | `Kubernetes Gateway API 2026 production` |
+| **数据库 / 缓存** | `<topic> vs <alternative> benchmark` | `Redis vs DragonflyDB 2026 benchmark` |
+| **架构 / 设计** | `<topic> <year> architecture pattern` | `RAG vs Long Context 2026 architecture` |
+
+**筛选优先级**：官方博客（*.<vendor>.com） > arXiv 论文 > InfoQ/DZone/Medium 技术博客 > 个人博客
+
 **文章中的体现**：
 - 末尾增加 `## 📚 参考来源` 章节，列出搜索到的 3-5 篇参考文章（含 URL + 一句话说明）
 - 正文中引用的具体数据/方案标注来源
