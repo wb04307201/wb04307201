@@ -139,10 +139,10 @@ flowchart TD
 
 | 主题 | 难度 | 核心问题 |
 |------|------|---------|
-| [缓存穿透 / 击穿 / 雪崩](../13.split-hairs/03.database/redis/cache-penetration-breakdown-avalanche/) | ⭐⭐⭐⭐⭐ | 面试必考三件套 |
-| [索引失效的 10 种场景](../13.split-hairs/03.database/mysql/index-failure/) | ⭐⭐⭐⭐⭐ | LIKE 左通配 / 函数 / 类型转换 / OR / 最左前缀 |
-| [COUNT(*) vs COUNT(1) vs COUNT(字段)](../13.split-hairs/03.database/relational-database/mysql/count/) | ⭐⭐ | 性能差异 |
-| [事务隔离级别](../13.split-hairs/03.database/relational-database/mysql/isolation/) | ⭐⭐⭐⭐ | RU / RC / RR / Serializable |
+| [缓存穿透 / 击穿 / 雪崩](../13.split-hairs/03.database/cache-penetration-breakdown-avalanche/) | ⭐⭐⭐⭐⭐ | 面试必考三件套 |
+| [索引失效的 10 种场景](../13.split-hairs/03.database/mysql-index-failure/) | ⭐⭐⭐⭐⭐ | LIKE 左通配 / 函数 / 类型转换 / OR / 最左前缀 |
+| [COUNT(*) vs COUNT(1) vs COUNT(字段)](../13.split-hairs/03.database/mysql-count/) | ⭐⭐ | 性能差异 |
+| [事务隔离级别](../13.split-hairs/03.database/mysql-isolation/) | ⭐⭐⭐⭐ | RU / RC / RR / Serializable |
 
 ---
 
