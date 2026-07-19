@@ -679,4 +679,4 @@ BlockingQueue 提供四类方法，行为各不相同：
 - [跳表集合](../skip-list/README.md)
 - [ConcurrentHashMap 专题](../../../../README.md)
 
-← [返回: Java 知识体系 · queue](README.md)
+← [返回: Java 知识体系 · queue](../README.md)

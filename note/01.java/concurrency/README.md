@@ -213,6 +213,9 @@ try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
 | 八 | 🆕 **虚拟线程**（Java 21+） | carrier thread / mount-unmount / pinning / ScopedValue / 结构化并发 | [virtual-threads](./virtual-threads/) |
 | 九 | **Java 锁机制** | synchronized 原理、锁升级、ReentrantLock、StampedLock、CAS、AQS | [java-locks](./java-locks/) |
 | 十 | **线程池** | ThreadPoolExecutor 参数详解、工作队列、拒绝策略、ForkJoinPool | [thread-pool](./thread-pool/) |
+| 十一 | **Java 线程基础** | 线程创建、生命周期、start/run 区别、interrupt 机制 | [thread-basics](./thread-basics/) |
+| 十二 | **JUC 锁体系** | AQS、ReentrantLock / ReentrantReadWriteLock / StampedLock、Condition | [juc-locks](./juc-locks/) |
+| 十三 | **并发工具类** | CountDownLatch、CyclicBarrier、Semaphore、Phaser、Exchanger | [utilities](./utilities/) |
 
 ---
 
