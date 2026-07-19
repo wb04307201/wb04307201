@@ -11,7 +11,7 @@ module:
 
 > **一句话答案**：商品搜索 = **倒排索引（Elasticsearch）+ 中文分词（IK）+ BM25 相关性 + 多阶段排序（召回→粗排→精排）+ 多维筛选（faceted search）+ 数据同步（Canal + MQ）+ 缓存（热门 query 结果缓存）**。10 万 SKU 用单机 ES 即可，百万级需要集群 + 分片。
 
-← [返回: 高性能设计](../README.md) · 面试题：[13.split-hairs/product-search](../../../13.split-hairs/04.system-design/high-performance/product-search/README.md)
+← [返回: 高性能设计](../README.md) · 面试题：[13.split-hairs/product-search](../../../13.split-hairs/04.system-design/product-search/README.md)
 
 ---
 
@@ -30,7 +30,7 @@ Q：商品数据从 MySQL 到 ES 怎么保证同步一致性？
 3. **架构演进**：DB LIKE → 单节点 ES → ES 集群 + 分片 + 缓存
 4. **5 反模式**：DB LIKE 模糊查询 / 不配分词器 / 忽略数据同步延迟 / 排序只用相关性 / 没做 query 缓存
 
-完整面试题见 [13.split-hairs/04.system-design/product-search](../../../13.split-hairs/04.system-design/high-performance/product-search/README.md)。
+完整面试题见 [13.split-hairs/04.system-design/product-search](../../../13.split-hairs/04.system-design/product-search/README.md)。
 
 ---
 

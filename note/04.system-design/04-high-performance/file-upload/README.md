@@ -11,7 +11,7 @@ module:
 
 > **一句话答案**：大文件上传 = **前端分片（5MB/chunk）+ 并发上传 + 后端合并 + MD5 秒传（去重）+ 断点续传（uploadId + offset 续传）**。1GB 文件分 200 片并发上传，断网后只传剩余部分；相同文件秒传（O(1) 返回）。
 
-← [返回: 高性能设计](../README.md) · 面试题：[13.split-hairs/file-upload](../../../13.split-hairs/04.system-design/high-performance/file-upload/README.md)
+← [返回: 高性能设计](../README.md) · 面试题：[13.split-hairs/file-upload](../../../13.split-hairs/04.system-design/file-upload/README.md)
 
 ---
 
@@ -30,7 +30,7 @@ Q：秒传的原理是什么？怎么保证 MD5 不碰撞？
 3. **架构演进**：单机直传 → 分片 + 对象存储 → 分布式 + CDN
 4. **5 反模式**：整文件一次上传 / 分片太大 / 没校验完整性 / 没做秒传 / 没限速
 
-完整面试题见 [13.split-hairs/04.system-design/file-upload](../../../13.split-hairs/04.system-design/high-performance/file-upload/README.md)。
+完整面试题见 [13.split-hairs/04.system-design/file-upload](../../../13.split-hairs/04.system-design/file-upload/README.md)。
 
 ---
 

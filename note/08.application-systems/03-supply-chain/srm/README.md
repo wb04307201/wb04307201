@@ -144,7 +144,7 @@ SRM 侧                    ERP 侧
 
 | 系统 | 定位 | 与 SRM 的关系 |
 |------|------|-------------|
-| [SCM · 供应链管理](../03-supply-chain/scm/README.md) | 端到端链条管理 | SRM 是 SCM 的"前端模块" |
+| [SCM · 供应链管理](../scm/README.md) | 端到端链条管理 | SRM 是 SCM 的"前端模块" |
 | [ERP · 企业资源计划](../../README.md) | 内部资源管理 | SRM 的 PO/对账依赖 ERP 数据 |
 
 ---
