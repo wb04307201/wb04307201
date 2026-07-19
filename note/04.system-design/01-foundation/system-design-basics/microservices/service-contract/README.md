@@ -586,4 +586,4 @@ Link: <https://api.example.com/v2/orders>; rel="successor-version"
 - [OpenAPI 规范](https://swagger.io/specification/) — REST API 契约
 - [Protocol Buffers](https://protobuf.dev/) — gRPC 契约语言
 
-← [返回: 系统设计 · service-contract](README.md)
+← [返回微服务](../README.md)

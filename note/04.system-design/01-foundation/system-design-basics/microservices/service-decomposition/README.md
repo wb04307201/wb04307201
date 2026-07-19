@@ -347,4 +347,4 @@ services/
 - [DDD 限界上下文](../../ddd/README.md) — 服务边界的业务依据
 - [演进与组织](../migration-and-organization/README.md) — 拆分的实施路径
 
-← [返回: 系统设计 · service-decomposition](README.md)
+← [返回微服务](../README.md)

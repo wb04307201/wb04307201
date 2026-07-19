@@ -74,4 +74,4 @@ flowchart TD
 - 关联：[`04.system-design/05-security`](../../../05-security/README.md) — API 安全、JWT、OAuth2
 - 关联：[`06.spring/02-web`](../../../../06.spring/02-web/README.md) — Spring MVC / WebFlux 实现
 
-← [返回: 系统设计 · api](README.md)
+← [返回系统设计基础](../README.md)

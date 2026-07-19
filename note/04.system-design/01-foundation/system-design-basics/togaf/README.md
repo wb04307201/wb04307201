@@ -153,4 +153,4 @@ README（你在这里）  →  第一章（ADM 全貌）
 
 > 🚀 从 [第一章：核心思想 + ADM 详解](adm.md) 开始
 
-← [返回: 系统设计 · togaf](README.md)
+← [返回系统设计基础](../README.md)

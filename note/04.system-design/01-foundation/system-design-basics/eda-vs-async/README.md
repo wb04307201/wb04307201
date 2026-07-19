@@ -90,4 +90,4 @@ module:
 - [云设计模式](../cloud-design-patterns/README.md) — 异步消息、CQRS、事件溯源等云模式
 - [微服务架构](../microservices/README.md) — 服务间异步通信的工程实践
 
-← [返回: 系统设计 · eda-vs-async](README.md)
+← [返回系统设计基础](../README.md)

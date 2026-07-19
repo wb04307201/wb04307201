@@ -254,7 +254,14 @@ ESB（企业服务总线）作为服务间通信的"中介"
 
 ---
 
-← [返回系统设计总览](../../README.md) · 📅 2026-06-28
+## 专题导航
+
+- [单体到微服务](01-monolith-to-microservices/README.md) — 单体拆分策略、迁移步骤与常见陷阱
+- [Serverless 架构](02-serverless-architecture/README.md) — FaaS / BaaS / Knative 全场景实践
+
+---
+
+← [返回基础篇](../README.md) · 📅 2026-06-28
 
 ---
 

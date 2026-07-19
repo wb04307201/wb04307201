@@ -454,4 +454,4 @@ class Order:
 - [服务间通信](../service-communication/README.md) — 异步通信与事件驱动
 - [演进与组织](../migration-and-organization/README.md) — 从单体迁移到分布式
 
-← [返回: 系统设计 · data-consistency](README.md)
+← [返回微服务](../README.md)

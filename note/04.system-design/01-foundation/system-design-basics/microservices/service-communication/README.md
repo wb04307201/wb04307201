@@ -514,4 +514,4 @@ A → B（故障），A 持续重试 → A 资源耗尽
 - [限流/熔断/重试](../../../../03-high-availability/) — 通信的可靠性保障
 - [消息队列](../../../../04-high-performance/mq/) — 异步通信的基础设施
 
-← [返回: 系统设计 · service-communication](README.md)
+← [返回微服务](../README.md)
