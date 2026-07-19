@@ -33,7 +33,7 @@ module:
 ## 🗺️ 目录导航
 
 > 数字基线：以"分类下 leaf MD 数（含所有子目录与子子目录）"为统计口径。
-> 实际结构 = 30 个 README + 116 篇 leaf 文章，共 146 个 .md 文件。
+> 实际结构 = 31 个 README + 21 个 leaf README + 89 个非 README 子文章 = 141 个 .md 文件（2026-07-19 find 校对）。
 
 | 序号 | 分类 | 核心内容 | Leaf 数 | 入口 |
 |:----:|:----|:---------|:-------:|:----:|
@@ -47,7 +47,7 @@ module:
 | 08 | **注解速查** | 事务/缓存/调度/校验/重试/AOP/Web/JPA/测试/配置/异常 等按场景分类的索引 | **12** | [08-annotations/README.md](08-annotations/README.md) |
 | 09 | **Spring Security** | SecurityFilterChain 架构、认证（密码/JWT/OAuth2）、授权（@PreAuthorize/ACL）、OAuth2 四种授权模式、CORS/CSRF/Session/安全 Header | **6** | [09-security/README.md](09-security/README.md) |
 
-**合计**：9 大分类 · **30 个 README · 116 篇 leaf 文章**。
+**合计**：9 大分类 · **31 个 README · 21 个 leaf README · 89 个非 README 子文章**。
 
 ### 3.1 MyBatis 全栈专项（4 主题 · 27 篇）
 
