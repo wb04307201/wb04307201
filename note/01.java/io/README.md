@@ -684,6 +684,15 @@ System.out.println(new String(data));
 
 ---
 
+## I/O 专题导航
+
+| 专题 | 一句话定位 |
+|------|-----------|
+| [nio](nio/README.md) | NIO 三大组件（Buffer/Channel/Selector）、BIO/NIO/AIO 对比、Netty 模型取舍 |
+| [zero-copy](zero-copy/README.md) | 零拷贝原理（mmap/sendfile）、Kafka/RocketMQ/Netty 应用场景 |
+
+---
+
 ## 📊 本节统计
 
 | 统计维度 | 数值 | 口径 |
