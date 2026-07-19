@@ -66,6 +66,10 @@ done
 # ========== 同步逻辑 ==========
 DRIFT=0
 
+# 同步文件类型（白名单）：md / js / py / sh / txt / json / yaml / toml
+# 不复制二进制（png / jpg / pdf 等由 .gitattributes 标记）
+SYNC_GLOBS=(-name "*.md" -o -name "*.js" -o -name "*.py" -o -name "*.sh" -o -name "*.txt" -o -name "*.json" -o -name "*.yaml" -o -name "*.yml" -o -name "*.toml")
+
 for entry in "${AGENT_MAP[@]}"; do
   agent_name="${entry%%|*}"
   target_rel="${entry##*|}"
@@ -89,10 +93,10 @@ for entry in "${AGENT_MAP[@]}"; do
           echo -e "${YELLOW}删除多余: $target_rel/$rel${NC}"
         fi
       fi
-    done < <(find "$target" -type f -name "*.md" 2>/dev/null)
+    done < <(find "$target" -type f \( "${SYNC_GLOBS[@]}" \) 2>/dev/null)
   fi
 
-  # 同步 source → target
+  # 同步 source → target（同时规范化行尾为 LF）
   while IFS= read -r file; do
     rel="${file#$SOURCE/}"
     target_file="$target/$rel"
@@ -103,11 +107,12 @@ for entry in "${AGENT_MAP[@]}"; do
         DRIFT=$((DRIFT + 1))
       else
         mkdir -p "$(dirname "$target_file")"
-        cp "$file" "$target_file"
+        # 用 tr 规范化行尾（去掉 CR），避免 Windows CRLF 漂移到镜像
+        tr -d '\r' < "$file" > "$target_file"
         echo -e "${GREEN}同步: $rel → $target_rel/${NC}"
       fi
     fi
-  done < <(find "$SOURCE" -type f -name "*.md" 2>/dev/null)
+  done < <(find "$SOURCE" -type f \( "${SYNC_GLOBS[@]}" \) 2>/dev/null)
 done
 
 # ========== 结果输出 ==========
