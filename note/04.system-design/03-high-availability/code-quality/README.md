@@ -177,6 +177,10 @@ public class UserServiceImpl implements UserService {
 
 通过遵循这些实践，您可以显著提高Java代码的质量，使其更易于维护、扩展和调试。
 
+## 专题导航
+
+- [2 行/8 行原则](2-lines-8-lines/README.md) — 2 行原则（每个方法不超过 2 个嵌套层级）+ 8 行原则（每个方法不超过 8 个分支）
+
 ---
 
 ← [返回 高可用](../README.md)
