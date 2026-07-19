@@ -54,6 +54,19 @@ Map（接口，键值对）
 
 ---
 
+## 集合专题导航
+
+| 专题 | 一句话定位 |
+|------|-----------|
+| [ArrayList](ArrayList/README.md) | 动态数组底层原理、扩容机制、fail-fast、最佳实践 |
+| [LinkedList](LinkedList/README.md) | 双向链表结构、与 ArrayDeque 对比、迭代器删除陷阱 |
+| [ConcurrentHashMap](ConcurrentHashMap/README.md) | JDK 7 分段锁 / JDK 8 CAS+synchronized、size 计算、并发安全 |
+| [LinkedHashSet](LinkedHashSet/README.md) | 基于 LinkedHashMap 的插入顺序 Set、LruCache 应用 |
+| [TreeMap](TreeMap/README.md) | 红黑树有序 Map、范围查询、Comparable vs Comparator |
+| [WeakHashMap](WeakHashMap/README.md) | 弱引用键、GC 自动回收、缓存场景与陷阱 |
+
+---
+
 ## 二、List / Set / Queue / Map 的核心区别
 
 | 接口 | 特点 | 典型实现 | 线程安全实现 |
