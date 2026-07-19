@@ -429,7 +429,7 @@ List<String> copy = List.copyOf(existingList);
 | 统计维度 | 数值 | 口径 |
 |----------|------|------|
 | 分类主题数 | 4 | List / Set / Queue / Map |
-| 子 README 数 | 6 | `collection/` 下 leaf README（ArrayList / LinkedList / ConcurrentHashMap / LinkedHashSet / TreeMap / WeakHashMap） |
+| 子 README 数 | 6 | [`ArrayList`](ArrayList/README.md) / [`LinkedList`](LinkedList/README.md) / [`ConcurrentHashMap`](ConcurrentHashMap/README.md) / [`LinkedHashSet`](LinkedHashSet/README.md) / [`TreeMap`](TreeMap/README.md) / [`WeakHashMap`](WeakHashMap/README.md) |
 | 含 frontmatter 的 README | 7 / 7 | 100% 覆盖（2026-07-01） |
 
 > **统计时间戳**：2026-07-01
