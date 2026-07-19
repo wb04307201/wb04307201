@@ -143,7 +143,7 @@ restTemplate.getForObject("http://user-service/api/user/" + id, User.class);
 
 - 同栏目：[`自动配置原理`](../auto-configuration/README.md) — Spring Boot 自动配置与 Starter 机制
 - 同栏目：[`CAP 定理`](../../04.system-design/cap-theorem/README.md) — CAP 定理详解与工程实践
-- 主模块：[`Spring Cloud`](../../06.spring/05-spring-cloud/README.md) — Spring Cloud 微服务全家桶
+- 主模块：[`Spring Cloud`](../../../06.spring/05-spring-cloud/README.md) — Spring Cloud 微服务全家桶
 - 主模块：[`微服务架构`](../../04.system-design/README.md) — 微服务设计原则
 
 ← [返回 Spring 咬文嚼字](../README.md)

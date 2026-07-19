@@ -2,7 +2,7 @@
 question:
   id: 03.database-replication-lag
   topic: 03.database
-  difficulty: 未标
+  difficulty: ⭐⭐⭐
   frequency: 中频
   scenario_type: 反直觉代码
   tags: [03.database, MySQL, replication]

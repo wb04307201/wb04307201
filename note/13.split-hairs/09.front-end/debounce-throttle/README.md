@@ -2,7 +2,7 @@
 question:
   id: 09.front-end-debounce-throttle
   topic: 09.front-end
-  difficulty: 未标
+  difficulty: ⭐⭐⭐
   frequency: 中频
   scenario_type: 性能对比
   tags: [09.front-end, debounce, throttle]

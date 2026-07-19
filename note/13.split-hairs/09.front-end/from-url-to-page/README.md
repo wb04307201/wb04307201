@@ -2,7 +2,7 @@
 question:
   id: 09.front-end-from-url-to-page
   topic: 09.front-end
-  difficulty: 未标
+  difficulty: ⭐⭐⭐⭐
   frequency: 中频
   scenario_type: 反直觉代码
   tags: [09.front-end, from, url]

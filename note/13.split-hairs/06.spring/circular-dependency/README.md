@@ -2,7 +2,7 @@
 question:
   id: 06.spring-circular-dependency
   topic: 06.spring
-  difficulty: 未标
+  difficulty: ⭐⭐⭐⭐
   frequency: 中频
   scenario_type: 反直觉代码
   tags: [06.spring, circular, dependency]

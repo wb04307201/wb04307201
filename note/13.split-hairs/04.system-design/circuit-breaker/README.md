@@ -2,7 +2,7 @@
 question:
   id: 04.system-design-circuit-breaker
   topic: 04.system-design
-  difficulty: 未标
+  difficulty: ⭐⭐⭐⭐
   frequency: 中频
   scenario_type: 性能对比
   tags: [04.system-design, circuit, breaker]

@@ -2,7 +2,7 @@
 question:
   id: 06.spring-bean-vs-component
   topic: 06.spring
-  difficulty: 未标
+  difficulty: ⭐⭐
   frequency: 中频
   scenario_type: 架构困境
   tags: [06.spring, Bean, bean]

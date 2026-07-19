@@ -2,7 +2,7 @@
 question:
   id: 09.front-end-get-and-post
   topic: 09.front-end
-  difficulty: 未标
+  difficulty: ⭐⭐
   frequency: 高频
   scenario_type: 反直觉代码
   tags: [09.front-end, HTTP, get]
