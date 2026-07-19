@@ -312,4 +312,4 @@ spring:
 - [SQL 优化](../database-optimization/sql/README.md) — 减少慢查询以降低连接池压力
 - [Java 性能优化](../java/README.md) — 连接泄漏检测与 JVM 调优
 
-← [返回: 系统设计 · connection-pool](README.md)
+← [返回 高性能设计](../README.md)

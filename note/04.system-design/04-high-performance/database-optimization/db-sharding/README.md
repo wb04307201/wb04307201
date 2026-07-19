@@ -489,4 +489,8 @@ package "组合分表示例：用户系统" {
 - [SQL 优化](../sql/README.md) — 分库分表前的首要优化手段
 - [数据库优化概览](../README.md)
 
-← [返回: 系统设计 · db-sharding](README.md)
+## 专题导航
+
+- [ShardingSphere](sharding-sphere/README.md) — Apache ShardingSphere 分库分表与分布式事务实战
+
+← [返回 数据库优化](../README.md)

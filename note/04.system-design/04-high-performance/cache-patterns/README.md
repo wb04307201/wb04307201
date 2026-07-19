@@ -906,4 +906,4 @@ Q4：是否强一致性需求（金融场景）？
 - **Spring Cache 实操**：[06.spring/03-data/cache/](../../../06.spring/03-data/cache/README.md) —— Spring Cache + Caffeine 实战
 - **餐厅叙事**：12.story/04-peak-traffic-defense.md —— 阿明餐厅双 11 高峰缓存实战
 
-← [返回: 系统设计 · cache-patterns](README.md)
+← [返回 高性能设计](../README.md)

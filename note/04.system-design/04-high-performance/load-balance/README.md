@@ -219,4 +219,4 @@ end note
 - [CDN 加速](../cdn/README.md) — 边缘节点的就近负载均衡
 - [Java 性能优化](../java/README.md) — 一致性哈希在客户端负载均衡中的应用
 
-← [返回: 系统设计 · load-balance](README.md)
+← [返回 高性能设计](../README.md)
