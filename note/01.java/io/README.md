@@ -689,7 +689,7 @@ System.out.println(new String(data));
 | 统计维度 | 数值 | 口径 |
 |----------|------|------|
 | 分类主题数 | 2 | NIO / 零拷贝 |
-| 子 README 数 | 2 | `io/` 下 leaf README（nio / zero-copy） |
+| 子 README 数 | 2 | [`nio`](nio/README.md) / [`zero-copy`](zero-copy/README.md) |
 | 含 frontmatter 的 README | 3 / 3 | 100% 覆盖（2026-07-01） |
 
 > **统计时间戳**：2026-07-01
