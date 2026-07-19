@@ -141,4 +141,4 @@ plt.xlabel('K'); plt.ylabel('WCSS')
 | ❌ 距离只能用欧氏距离 | ✅ 也可曼哈顿 / 余弦 |
 | ❌ K-means 可处理大数据 | ✅ 用 Mini-Batch K-means |
 
-← [返回 02 算法](../../README.md)
+← [返回: 聚类算法](../README.md)

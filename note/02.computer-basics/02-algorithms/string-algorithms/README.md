@@ -11,7 +11,7 @@ module:
 
 > **一句话答案**：**单模式匹配（找一个串）用 KMP**；**多模式匹配（同时找多个串）用 AC 自动机（基于 Trie + 失配指针）**；**前缀查询（字典/自动补全）用 Trie**。
 
-← [返回: algorithms 总目录](../../README.md) · 实战：[sensitive-word-filter](../../../04.system-design/04-high-performance/sensitive-word-filter/README.md)
+← [返回: algorithms 总目录](../README.md) · 实战：[sensitive-word-filter](../../../04.system-design/04-high-performance/sensitive-word-filter/README.md)
 
 ---
 
@@ -192,4 +192,4 @@ Q3：实时性要求（每条消息 < 10ms 检测）？
 
 ---
 
-← [返回: algorithms 总目录](../../README.md)
+← [返回: algorithms 总目录](../README.md)
