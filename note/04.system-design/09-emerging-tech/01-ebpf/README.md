@@ -281,4 +281,4 @@ char _license[] SEC("license") = "GPL";
 
 ---
 
-← [返回系统设计总览](../../README.md) · 📅 2026-06-28
+← [返回 新兴技术](../README.md)
