@@ -456,10 +456,16 @@ done
 ## Real-World Impact
 
 5+ 主题已按此流程沉淀，commit 数 0 → 60+：
-- dropout-in-llm（双层）
-- claude-code-agentic-search（双层 + RAG 章节反向链）
-- agent-memory-classification（双层 + 04-architecture 体系补全）
-- vector-search-algorithms / at-scale / trillion（三层 + 12.story 联动 + 10B/100B/1T 阶梯）
+
+| 主题 | 沉淀模式 | 关键 commit（首条 feat） | 验证命令 |
+|------|---------|------------------------|---------|
+| dropout-in-llm | 双层 | `b2f5abcb` | `git log --grep='dropout-in-llm' --oneline` |
+| claude-code-agentic-search | 双层 + RAG 反向链 | `a6ccffe5` | `git log --grep='skill' --oneline \| head -5` |
+| agent-memory-classification | 双层 + 04-architecture 补全 | `da62f4d2` | `git log --grep='agent-memory' --oneline` |
+| vector-search-algorithms | 三层 + 12.story 联动 | `b849389d` | `git log --grep='vector-search' --oneline` |
+| vector-search-at-scale / trillion | 三层 + 10B/100B/1T 阶梯 | `c7e7b439` | `git log --grep='at-scale' --oneline` |
+
+> **可核实性**：每个主题的"关键 commit"是该系列首条 feat commit（绿色奠基性改动）。用户可复制验证命令到本地 `note/..` 仓库核对。
 
 避免的失败：
 - ❌ 没重复沉淀（如 RAG / Dropout 已有 → 不重复）
