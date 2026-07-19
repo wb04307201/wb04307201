@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring/09-security/oauth2
+  type: article
+  category: 主模块子文章
+  summary: OAuth2 四种授权模式 + JWT Token 格式 + Spring Authorization Server，构筑现代应用认证授权基础设施。
+-->
+
 # OAuth2 与 JWT
 
 > ⬅️ [返回 Spring Security](../README.md)

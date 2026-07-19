@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring/09-security/authentication
+  type: article
+  category: 主模块子文章
+  summary: 认证机制解决"你是谁"的问题，由 AuthenticationFilter / AuthenticationManager / AuthenticationProvider / UserDetailsService / PasswordEncoder 五大组件协作完成。
+-->
+
 # 认证机制
 
 > ⬅️ [返回 Spring Security](../README.md)

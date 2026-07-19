@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring/09-security/filter-chain
+  type: article
+  category: 主模块子文章
+  summary: SecurityFilterChain 是 Spring Security 的核心骨架，由 15 个默认 Filter 按顺序组成责任链，决定请求如何被认证、授权、防护。
+-->
+
 # SecurityFilterChain 架构
 
 > ⬅️ [返回 Spring Security](../README.md)
