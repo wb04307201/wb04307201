@@ -73,6 +73,7 @@ flowchart TD
 
 ### 3.1 理论基础
 
+- [CAP & BASE](cap-and-base/README.md) — CAP 定理与 BASE 模型的统一入口
 - [CAP 定理](cap-and-base/cap/README.md) — 一致性 / 可用性 / 分区容错性的三选二
 - [BASE 模型](cap-and-base/base/README.md) — 基本可用 / 软状态 / 最终一致性
 

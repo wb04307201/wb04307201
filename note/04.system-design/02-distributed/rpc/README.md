@@ -98,6 +98,11 @@ sequenceDiagram
 ## 9. 总结
 RPC是分布式系统的核心通信方式，适合内部服务高效协作。选择框架时需权衡性能、语言支持、生态成熟度等因素。对于公开API，REST/GraphQL可能更合适；而内部微服务间通信，gRPC或Dubbo是更优选择。
 
+## 专题导航
+
+- [Apache Dubbo](apache-dubbo/README.md) — 阿里开源高性能 Java RPC 框架（服务治理、负载均衡、集群容错）
+- [RPC 和 REST](rpc-and-rest/README.md) — 两种分布式通信风格的对比与融合
+
 ---
 
 ← [返回 分布式](../README.md)

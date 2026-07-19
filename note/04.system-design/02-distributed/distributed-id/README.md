@@ -104,6 +104,10 @@ module:
 
 > UUID v7 详见 [uuid-v7/README.md](uuid-v7/README.md)；ULID 详见 [ulid/README.md](ulid/README.md)。
 
+## 专题导航
+
+- [UUID](uuid/README.md) — 通用唯一标识符（v1-v5、RFC 9562、Java 用法与陷阱）
+
 ## 五、选型建议
 1. **低并发、简单场景**：数据库自增或UUID。
 2. **高并发、有序ID需求**：Snowflake或Leaf。

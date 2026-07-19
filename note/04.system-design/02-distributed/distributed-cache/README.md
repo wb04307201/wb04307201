@@ -446,4 +446,4 @@ User user = cache.get("user:1", key -> {
 - [分布式锁](../distributed-lock/README.md) — 缓存击穿互斥锁
 - [分布式 ID](../distributed-id/README.md) — 缓存 key 命名与防雪崩 ID 设计
 
-← [返回: 系统设计 · distributed-cache](README.md)
+← [返回分布式系统](../README.md)
