@@ -598,4 +598,4 @@ teamLeader.handleRequest(50000);  // CEO审批通过
 - [创建型模式](../creation/README.md)
 - [结构型模式](../structural/README.md)
 
-← [返回: Java 知识体系 · behavioral](README.md)
+← [返回: Java 知识体系 · behavioral](../README.md)

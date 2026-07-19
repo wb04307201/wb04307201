@@ -362,4 +362,4 @@ WindowListener listener = new WindowAdapter() {
 - [创建型模式](../creation/README.md)
 - [行为型模式](../behavioral/README.md)
 
-← [返回: Java 知识体系 · structural](README.md)
+← [返回: Java 知识体系 · structural](../README.md)
