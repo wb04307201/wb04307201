@@ -36,7 +36,7 @@ DBA："索引已经加满了，单表 2000 万行是 MySQL 的舒适区上限。
 
 ---
 
-> 📚 **前置知识**：[MySQL 索引优化](../../03.database/05-mysql/README.md) | [读写分离](../../03.database/05-mysql/README.md)
+> 📚 **前置知识**：[MySQL 索引优化](../../../03.database/05-mysql/README.md) | [读写分离](../../../03.database/05-mysql/README.md)
 
 ## 一、核心原理
 
@@ -164,7 +164,7 @@ spring:
 
 - 同栏目：[`分布式 ID`](../distributed-id/README.md) — 分库分表后的全局唯一 ID 方案
 - 同栏目：[`分布式事务`](../distributed-transaction/README.md) — 跨分片操作的事务一致性
-- 主模块：[`MySQL`](../../03.database/05-mysql/README.md) — MySQL 索引优化与读写分离
-- 主模块：[`数据库总览`](../../03.database/README.md) — 数据库知识体系
+- 主模块：[`MySQL`](../../../03.database/05-mysql/README.md) — MySQL 索引优化与读写分离
+- 主模块：[`数据库总览`](../../../03.database/README.md) — 数据库知识体系
 
 ← [返回系统设计咬文嚼字](../README.md)

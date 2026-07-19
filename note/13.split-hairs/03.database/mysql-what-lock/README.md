@@ -2,7 +2,7 @@
 question:
   id: 03.database-what-lock
   topic: 03.database
-  difficulty: 未标
+  difficulty: ⭐⭐⭐
   frequency: 中频
   scenario_type: 反直觉代码
   tags: [03.database, MySQL, what]
@@ -289,7 +289,7 @@ JOIN performance_schema.threads t ON w.blocking_thread_id = t.thread_id;
 ## 六、交叉引用
 
 - InnoDB 锁机制详解见 [MySQL 事务核心](../../../03.database/03-transaction/README.md)
-- 索引设计与优化见 [B+树原理](../../bplus-tree/README.md)
+- 索引设计与优化见 [B+树原理](../bplus-tree/README.md)
 - 事务隔离级别见 [隔离级别](../mysql-isolation/README.md)
 
 ## 相关章节

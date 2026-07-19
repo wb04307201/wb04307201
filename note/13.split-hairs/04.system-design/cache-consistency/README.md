@@ -309,7 +309,7 @@ public class L1CacheEvictListener {
 | "L1 用强一致方案行不行？" | Zookeeper Watcher 可以，但延迟高 + 运维成本大，大多数场景不值得 |
 | "怎么验证多级缓存一致性？" | 监控 L1/L2 命中率 + 定时对账脚本（对比 L1 值 vs DB 值）|
 
-> 📚 **深度阅读**：[`缓存设计模式 §9.2`](../../../04.system-design/04-high-performance/cache-patterns/README.md) — 5 大反模式 + Java/Spring 视角深度分析 | [`Spring 多级缓存实现`](../../06.spring/03-data/cache/multi-level.md) — CompositeCacheManager + 自定义 TwoLevelCache
+> 📚 **深度阅读**：[`缓存设计模式 §9.2`](../../../04.system-design/04-high-performance/cache-patterns/README.md) — 5 大反模式 + Java/Spring 视角深度分析 | [`Spring 多级缓存实现`](../../../06.spring/03-data/cache/multi-level.md) — CompositeCacheManager + 自定义 TwoLevelCache
 
 ---
 
@@ -319,7 +319,7 @@ public class L1CacheEvictListener {
 - [缓存穿透/击穿/雪崩](../../../03.database/06-cache/README.md) — 缓存设计模式与问题解决方案
 - [分布式事务](../distributed-transaction/README.md) — 跨服务一致性方案
 - [缓存设计模式 §9.2](../../../04.system-design/04-high-performance/cache-patterns/README.md) — 多级缓存 5 大反模式 + Java/Spring 深度分析
-- [Spring 多级缓存实现](../../06.spring/03-data/cache/multi-level.md) — CompositeCacheManager + TwoLevelCache 代码实现
+- [Spring 多级缓存实现](../../../06.spring/03-data/cache/multi-level.md) — CompositeCacheManager + TwoLevelCache 代码实现
 - [缓存降级](../../06.spring/cache-degradation/README.md) — Redis 故障时的降级策略
 
 ## 相关章节

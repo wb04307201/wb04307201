@@ -384,7 +384,9 @@ Seata 4 种模式对比：
 ### 同栏目（04.system-design）姐妹篇
 
 - [cap-theorem](../cap-theorem/README.md) —— CAP 定理（微服务必知）
-- [distributed](../distributed/README.md) —— 分布式系统基础
+- [distributed-id](../distributed-id/README.md) —— 分布式 ID 方案
+- [distributed-transaction](../distributed-transaction/README.md) —— 分布式事务
+- [distributed-lock](../distributed-lock/README.md) —— 分布式锁
 - [circuit-breaker](../circuit-breaker/README.md) —— 服务熔断
 
 ### 主模块兄弟（Java 后端）

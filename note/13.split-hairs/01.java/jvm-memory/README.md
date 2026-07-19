@@ -2,7 +2,7 @@
 question:
   id: 01.java-jvm-memory
   topic: 01.java
-  difficulty: 未标
+  difficulty: ⭐⭐⭐
   frequency: 中频
   scenario_type: 架构困境
   tags: [01.java, JVM, jvm]

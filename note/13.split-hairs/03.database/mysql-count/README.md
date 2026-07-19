@@ -2,7 +2,7 @@
 question:
   id: 03.database-count
   topic: 03.database
-  difficulty: 未标
+  difficulty: ⭐⭐
   frequency: 中频
   scenario_type: 性能对比
   tags: [03.database, MySQL, count]

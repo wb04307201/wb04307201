@@ -30,7 +30,7 @@ question:
 
 ---
 
-> 📚 **前置知识**：[Redis 集群](../../03.database/07-redis/README.md) | [缓存穿透/击穿/雪崩](../../03.database/06-cache/README.md)
+> 📚 **前置知识**：[Redis 集群](../../../03.database/07-redis/README.md) | [缓存穿透/击穿/雪崩](../../../03.database/06-cache/README.md)
 
 ## 一、核心原理
 
@@ -152,7 +152,7 @@ public class ProductService {
 
 - 同栏目：[`缓存一致性`](../cache-consistency/README.md) — 多级缓存一致性的详细方案
 - 同栏目：[`分布式锁`](../distributed-lock/README.md) — 热点 Key 击穿时的分布式锁防护
-- 主模块：[`缓存穿透/击穿/雪崩`](../../03.database/06-cache/README.md) — 缓存三大问题与解决方案
-- 主模块：[`Redis`](../../03.database/07-redis/README.md) — Redis 集群与分片原理
+- 主模块：[`缓存穿透/击穿/雪崩`](../../../03.database/06-cache/README.md) — 缓存三大问题与解决方案
+- 主模块：[`Redis`](../../../03.database/07-redis/README.md) — Redis 集群与分片原理
 
 ← [返回系统设计咬文嚼字](../README.md)
