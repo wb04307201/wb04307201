@@ -11,7 +11,7 @@ description: Use when user asks to audit or improve note/ — "note 哪里需要
 
 | scope | 触发例 | 行为 |
 |---|---|---|
-| 单篇 / 单目录 | "评价 11.ai/RAG" / "这篇质量怎么样" / "这篇新写的质量如何" | **只跑 Phase 2**：直接 Read + 按 `references/leaf-quality.md` 打分。**不启动 workflow**。**新文件**先读 `references/new-file-baseline.md` 拿到 10 段结构基线。 |
+| 单篇 / 单目录 | "评价 11.ai/RAG" / "这篇质量怎么样" / "这篇新写的质量如何" | **只跑 Phase 2**：直接 Read + 按 `references/leaf-quality.md` 打分。**不启动 workflow**。**新文件**先读 `references/new-file-baseline.md` 拿到 7 必选 + 3 可选结构基线。 |
 | 单模块 | "审一下 06.spring" | Phase 1 扫该模块 + Phase 2 小规模 fan-out（视 leaf 数手工切批，≤ 6 篇/批）。 |
 | 全库 | "note 哪里要优化" / "扫一遍 note" / "体检" | 完整 4 相；Phase 2 用「分层采样 + 优先级列表」策略（关键问题全评 + 各模块代表采样），**不直接走 health-workflow.js 全库穷举**（成本过高）。 |
 
@@ -23,7 +23,7 @@ description: Use when user asks to audit or improve note/ — "note 哪里需要
 > - **不直接走 health-workflow.js 全库 fan-out**：971 leaf × 6/批 ≈ 162 批 ≈ 200+ subagent，token 成本数百万，边际收益低
 > - leaf 数 ≤ 50 → 按单模块（主循环手工切批）
 
-**新文件专属入口**：当用户问的是"评价一个新沉淀的文件 / 这篇新写的质量如何"，Phase 2 在打分前必须先读 `references/new-file-baseline.md` 拿到 10 段结构模板 + 快改/深耕写作模式，作为结构基线；再用 `references/leaf-quality.md` 打分。两者结合判断"是否符合新文件基线 + 是否达到 leaf 质量门槛"。
+**新文件专属入口**：当用户问的是"评价一个新沉淀的文件 / 这篇新写的质量如何"，Phase 2 在打分前必须先读 `references/new-file-baseline.md` 拿到 7 必选 + 3 可选结构模板 + 快改/深耕写作模式，作为结构基线；再用 `references/leaf-quality.md` 打分。两者结合判断"是否符合新文件基线 + 是否达到 leaf 质量门槛"。
 
 > 判定为"新文件"的启发：用户提到"刚写的 / 新沉淀的 / 这次新加的 / 初稿"，或 git 近期新增（git log --since 近几天 --diff-filter=A）。
 
