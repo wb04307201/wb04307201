@@ -258,4 +258,4 @@ public OrderResult createOrder(@RequestBody @Valid OrderRequest req,
 - [Microsoft - Idempotency patterns](https://learn.microsoft.com/azure/architecture/microservices/design/idempotency)
 - [BASE: An Acid Alternative](https://queue.acm.org/detail.cfm?id=1394128)
 
-← [返回: 系统设计 · vs-distributed-transaction](README.md)
+← [返回 幂等设计](../README.md)

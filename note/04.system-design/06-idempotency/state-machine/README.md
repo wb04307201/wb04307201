@@ -311,4 +311,4 @@ if (order.getStatus() == OrderStatus.PAID) {
 - [Workflow Patterns](http://www.workflowpatterns.com/)
 - [Coloring Book: Finite State Machines for Designers](https://github.com/isu-quartet/colloquium)
 
-← [返回: 系统设计 · state-machine](README.md)
+← [返回 幂等设计](../README.md)

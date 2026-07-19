@@ -290,4 +290,4 @@ UPDATE order_item SET order_version=? WHERE order_id=?
 - [MySQL - InnoDB 行锁与版本控制](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html)
 - [JPA @Version 文档](https://docs.jboss.org/hibernate/orm/current/userguide/html_single/Hibernate_User_Guide.html#locking-optimistic)
 
-← [返回: 系统设计 · optimistic-lock](README.md)
+← [返回 幂等设计](../README.md)
