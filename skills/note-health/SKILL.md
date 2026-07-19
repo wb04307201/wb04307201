@@ -17,7 +17,11 @@ description: Use when user asks to audit or improve note/ — "note 哪里需要
 
 **原则**：单篇请求绝不启动重型机器；leaf 数 < 10 直接手工打分，不开 workflow。
 
-> leaf 数 ≤ 50 → 按单模块（主循环手工切批）；> 50 → 按全库走 health-workflow.js。
+> leaf 数 ≤ 50 → 按单模块（主循环手工切批）。
+> leaf 数 > 50 → **分层采样 + 优先级列表** 策略（关键问题全评 + 各模块代表采样）：
+>   - 优先级批：浅 README（< 50 行）+ 无回链 + 无 frontmatter + 全部 broken link 来源
+>   - 采样批：每主模块随机 3-5 篇代表 leaf
+>   - 不直接走 health-workflow.js 全库 fan-out（成本过高，且对小/中仓库边际收益低）
 
 **新文件专属入口**：当用户问的是"评价一个新沉淀的文件 / 这篇新写的质量如何"，Phase 2 在打分前必须先读 `references/new-file-baseline.md` 拿到 10 段结构模板 + 快改/深耕写作模式，作为结构基线；再用 `references/leaf-quality.md` 打分。两者结合判断"是否符合新文件基线 + 是否达到 leaf 质量门槛"。
 
@@ -37,8 +41,10 @@ description: Use when user asks to audit or improve note/ — "note 哪里需要
 - **全库**：先用以下命令枚举 leaf 文件清单，再把清单通过 `args.files` 传给 workflow：
 
 ```bash
-find note -name "*.md" | python3 -c "import sys,os; [print(l.strip()) for l in sys.stdin if l.count('/')>=3]"
+find note -name "*.md" | python -c "import sys,os; [print(l.strip()) for l in sys.stdin if l.count('/')>=3]"
 ```
+
+> 注：Windows 环境用 `python`（3.13+），macOS/Linux 也可用 `python3`。脚本应兼容两者。
 
 然后调用 `references/health-workflow.js`（`args={files:[...], batchSize:6}`）。脚本按 ~6 篇/批 fan-out，每 agent 按 `references/leaf-quality.md` 打分并返回 `{file, moduleClass, total, maxScore, grade, findings}`。
 
