@@ -63,7 +63,7 @@ WITH_BACKLINK=$(grep -rl "← \[返回" note/ 2>/dev/null | wc -l)
 echo "回链覆盖: $WITH_BACKLINK / $TOTAL_READMES"
 
 # 6. broken links（一次 Python 扫描）
-python3 -c "
+python -c "
 import os, re, glob
 def resolve(c, t):
     if t.startswith('/'):
@@ -91,7 +91,7 @@ for d in $(find note -type d -mindepth 2 -maxdepth 4 2>/dev/null); do
 done
 
 # 8. 浅 README（< 50 行 leaf）
-python3 -c "
+python -c "
 import os, glob
 for readme in sorted(glob.glob('note/**/README.md', recursive=True)):
     if os.path.dirname(readme).count(os.sep) < 3: continue
@@ -109,7 +109,7 @@ for readme in sorted(glob.glob('note/**/README.md', recursive=True)):
 # 然后检查每个被链到的文件，是否回链了链接它的源
 #
 # 兼容说明：原版用 `realpath -m --relative-to=.`，macOS BSD realpath 不支持 -m 参数，
-#       部分 Windows 环境 realpath 行为不一致。改用嵌套 cd + pwd 回退到 python3 计算。
+#       部分 Windows 环境 realpath 行为不一致。改用嵌套 cd + pwd 回退到 python 计算。
 resolve_target() {
   local child="$1" target="$2"
   # 方法 1：GNU coreutils realpath（多数 Linux / Git Bash）
@@ -120,8 +120,14 @@ resolve_target() {
   local abs
   abs="$(cd "$(dirname "$child")" 2>/dev/null && cd "$(dirname "$target")" 2>/dev/null && pwd -P 2>/dev/null)/$(basename "$target")"
   [ -n "$abs" ] && [ -e "$abs" ] && echo "$abs" && return
-  # 方法 3：python3 兜底（处理任意深度 ../）
-  if command -v python3 >/dev/null 2>&1; then
+  # 方法 3：python 兜底（处理任意深度 ../，兼容 Windows / macOS / Linux）
+  if command -v python >/dev/null 2>&1; then
+    python -c "
+import os, sys
+print(os.path.normpath(os.path.join(os.path.dirname(sys.argv[1]), sys.argv[2])))
+" "$child" "$target" 2>/dev/null && return
+  elif command -v python3 >/dev/null 2>&1; then
+    # Linux/macOS 环境 fallback 到 python3
     python3 -c "
 import os, sys
 print(os.path.normpath(os.path.join(os.path.dirname(sys.argv[1]), sys.argv[2])))
@@ -135,7 +141,7 @@ echo "=== 单向链接扫描（child → parent 但 parent 不回链）==="
 for child in $(find note -name "*.md"); do
   # 找 child 文件链到的所有 target（粗略正则，可能有误差，需人工复核）
   grep -oE '\]\(([^)]+\.md)' "$child" 2>/dev/null | sed 's/](//' | while read target; do
-    # 规范化 target 为绝对路径（跨平台兼容：realpath → cd+pwd → python3 → 兜底）
+    # 规范化 target 为绝对路径（跨平台兼容：realpath → cd+pwd → python → 兜底）
     abs_target=$(resolve_target "$child" "$target")
     [ -f "$abs_target" ] || continue
     # 检查 target 是否反向链到 child（粗略：包含 child 的 basename）

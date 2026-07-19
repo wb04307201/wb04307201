@@ -115,7 +115,7 @@ Batch 5 (P3 / 亮点): 不动或单列
 "扫一遍 note 看看哪里要优化"
 → Step 0: 全库
 → Phase 1: 跑 structural-checks.md 扫描，结果落 note/.health-tmp/scan-1-<date>.txt
-→ Phase 2: find + python3 枚举 leaf，调 health-workflow.js（args.files=...，batchSize=6）
+→ Phase 2: find + python 枚举 leaf，调 health-workflow.js（args.files=...，batchSize=6）
 → Phase 3: 上卷
 → Phase 4: 写 note/.health-tmp/report-<date>.md
 
