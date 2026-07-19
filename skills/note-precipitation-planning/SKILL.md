@@ -457,15 +457,15 @@ done
 
 5+ 主题已按此流程沉淀，commit 数 0 → 60+：
 
-| 主题 | 沉淀模式 | 关键 commit（首条 feat） | 验证命令 |
-|------|---------|------------------------|---------|
-| dropout-in-llm | 双层 | `b2f5abcb` | `git log --grep='dropout-in-llm' --oneline` |
-| claude-code-agentic-search | 双层 + RAG 反向链 | `a6ccffe5` | `git log --grep='skill' --oneline \| head -5` |
-| agent-memory-classification | 双层 + 04-architecture 补全 | `da62f4d2` | `git log --grep='agent-memory' --oneline` |
-| vector-search-algorithms | 三层 + 12.story 联动 | `b849389d` | `git log --grep='vector-search' --oneline` |
-| vector-search-at-scale / trillion | 三层 + 10B/100B/1T 阶梯 | `c7e7b439` | `git log --grep='at-scale' --oneline` |
+| 主题 | 沉淀模式 | 验证命令（按主题名 grep） |
+|------|---------|--------------------------|
+| dropout-in-llm | 双层 | `git log --grep='dropout-in-llm' --oneline` |
+| claude-code-agentic-search | 双层 + RAG 反向链 | `git log --grep='skill' --oneline \| head -5` |
+| agent-memory-classification | 双层 + 04-architecture 补全 | `git log --grep='agent-memory' --oneline` |
+| vector-search-algorithms | 三层 + 12.story 联动 | `git log --grep='vector-search' --oneline` |
+| vector-search-at-scale / trillion | 三层 + 10B/100B/1T 阶梯 | `git log --grep='at-scale' --oneline` |
 
-> **可核实性**：每个主题的"关键 commit"是该系列首条 feat commit（绿色奠基性改动）。用户可复制验证命令到本地 `note/..` 仓库核对。
+> **可核实性**：每个主题的实际 commit hash 以 `git log --grep="<topic>"` 实时查询为准。上表不再硬编码 commit hash（避免 hash 被回滚后误导用户）。用户复制验证命令到本地 `note/..` 仓库即可查到该系列首条 feat commit。
 
 避免的失败：
 - ❌ 没重复沉淀（如 RAG / Dropout 已有 → 不重复）

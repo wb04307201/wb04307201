@@ -5,6 +5,16 @@
 > - **Step 5.5 / 5.6**（Commit 拆分 / 风险检查）= **执行阶段**（不在 Phase 1-4 范围，属于 Plan → Execute 衔接）
 > - 旧 sub-step 编号（如 Step 1.4.5）保持作为 Phase 1 内的子节锚点
 
+## SKILL.md Phase ↔ 本文件 Step 映射表
+
+| SKILL.md Phase | 本文件 Step | 用途 |
+|---|---|---|
+| Phase 1（结构扫描） | Step 1.X | 机械扫描（frontmatter / broken links / 浅 README / PNG 等）|
+| Phase 2（leaf 打分） | Step 1.4.5 / Step 1.9 等子节 | 内容侧检查（单向链接 / 系列完整性）|
+| Phase 3（逐层上卷）| — | 主循环内聚合，无需读本文件 |
+| Phase 4（综合报告） | Step 5.5 / 5.6 | Commit 拆分 + 风险检查 |
+| 执行阶段（Plan → Execute 衔接）| Step 5.5 / 5.6 | 落 commit 前必过 6 项风险检查 |
+
 # 结构类审计扫描（structural-checks）
 
 本文件保存 note-health skill 调用的**机械扫描 / 风险检查 / commit 拆分**原始命令与分类规则。所有命令原样保留，运行时不修改。
