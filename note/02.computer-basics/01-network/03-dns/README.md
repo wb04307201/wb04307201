@@ -283,3 +283,10 @@ dig example.com | grep "Query time"
 ---
 
 ← [返回计算机网络](../README.md) · 📅 2026-06-28
+### 向上兄弟互链
+
+DNS 是 TCP/IP 应用层协议，与本目录其他协议互补：
+
+- [TCP/IP 四层模型](../tcp-ip-model/README.md) — DNS 使用的 UDP/TCP 协议栈在网络层/传输层的定位
+- [HTTPS/TLS 1.3](../04-https-tls/README.md) — DNS-over-HTTPS (DoH) 与 HTTPS 协议族的协作
+- [HTTP 协议演进](../02-http/README.md) — DNS 与 HTTP 在应用层的互补关系

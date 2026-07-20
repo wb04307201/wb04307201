@@ -314,3 +314,18 @@ Early-Data: 1
 ---
 
 ← [返回计算机网络](../README.md) · 📅 2026-06-28
+### 向上兄弟互链
+
+HTTPS 在 TCP/IP 协议族中的位置：
+
+- [TCP/IP 四层模型](../tcp-ip-model/README.md) — TLS 握手在 TCP 之上工作
+- [DNS 协议详解](../03-dns/README.md) — DNS-over-HTTPS (DoH) 与 SVCB/HTTPS RR 记录
+- [HTTP 协议演进](../02-http/README.md) — HTTPS 是 HTTP 的安全层
+
+### §10 边界情况补充（3 类真实生产陷阱）
+
+1. **证书过期未及时续签**：导致用户浏览器看到 NET::ERR_CERT_DATE_INVALID 错误。解决方案：用监控工具（如 cert-exporter, blackbox_exporter）提前 30 天告警。
+
+2. **SNI 缺失（多域名共享 IP）**：TLS 1.2 起要求服务端配置 SNI，否则返回默认证书（错配）。解决方案：Nginx `ssl_server_name on` + `ssl_certificate` 路径按 `$ssl_server_name` 变量。
+
+3. **协议降级（POODLE/BEAST 类攻击）**：服务端错误接受客户端降级请求。解决方案：Nginx `ssl_protocols TLSv1.2 TLSv1.3;` 显式禁用旧版本。
