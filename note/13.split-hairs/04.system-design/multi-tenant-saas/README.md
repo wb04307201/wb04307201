@@ -239,4 +239,4 @@ Q5：贵司 SaaS 计费是按订阅还是按用量？
 
 > 📅 2026-07-13 · 咬文嚼字 · 04.system-design · ⭐⭐⭐⭐⭐ · 6 隔离模型 + 4 应用层 + 5 反模式 + PostgreSQL RLS + 90 秒话术 + 11 兄弟导航
 
-← [返回: 咬文嚼字 · 04.system-design](README.md)
+← [返回: 咬文嚼字 · 04.system-design](../README.md)

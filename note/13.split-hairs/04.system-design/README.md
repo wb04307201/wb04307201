@@ -71,7 +71,7 @@ question:
 > - `app-quote-breakdown` / `outsourcing-pitfalls` → 新主模块 [`note/14.project-management/`](../../14.project-management/README.md)
 > - `mobile-tech-stack` → 主模块 [`09.front-end/08-cross-platform/mobile-tech-stack/`](../../09.front-end/08-cross-platform/mobile-tech-stack/README.md)
 >
-> 本分类及其目录 [`project-management/`](project-management/) 已删除，split-hairs 不再收"项目管理"类内容。
+> 本分类及其目录 `project-management/` 已删除，split-hairs 不再收"项目管理"类内容。
 
 ---
 

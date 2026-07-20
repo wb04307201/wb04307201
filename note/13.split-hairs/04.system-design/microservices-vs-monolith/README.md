@@ -421,4 +421,4 @@ Q5：贵司服务调用链监控怎么做的？
 
 > 📅 2026-07-06 · 咬文嚼字 · 04.system-design · ⭐⭐⭐⭐⭐ · 7 道精选 Q&A · 含 90 秒话术模板 + 6 大反模式 + 3 工业方案
 
-← [返回: 咬文嚼字 · microservices-vs-monolith](README.md)
+← [返回: 咬文嚼字 · microservices-vs-monolith](../README.md)

@@ -278,10 +278,10 @@ CREATE TABLE click_log (
 - **缓存设计**：[缓存设计模式](../../../04.system-design/04-high-performance/cache-patterns/README.md) — Cache-Aside / Write-Behind
 - **分库分表**：[分库分表](../../../04.system-design/04-high-performance/database-optimization/db-sharding/README.md) — 数据分片策略
 - **CDN**：[CDN 加速](../../../04.system-design/04-high-performance/cdn/README.md) — 边缘缓存
-- **主模块**：[`04.system-design`](../../../../04.system-design/) — 系统设计知识体系
+- **主模块**：[`04.system-design`](../../04.system-design/) — 系统设计知识体系
 
 ## 相关章节
 
 - 深度阅读：[`04.system-design`](../../04.system-design/README.md) — 主模块详细内容
 
-← [返回: 咬文嚼字 · url-shortener](README.md)
+← [返回: 咬文嚼字 · url-shortener](../README.md)

@@ -219,4 +219,4 @@ BASE 理论是对 CAP 中 AP 方案的延伸和工程化指导，由 eBay 架构
 
 - 深度阅读：[`04.system-design`](../../04.system-design/README.md) — 主模块详细内容
 
-← [返回: 咬文嚼字 · cap-theorem](README.md)
+← [返回: 咬文嚼字 · cap-theorem](../README.md)
