@@ -46,7 +46,7 @@ graph TB
 | **表单状态** | 表单字段值、校验状态 | React Hook Form / VeeValidate |
 | **URL 状态** | 路由参数、查询字符串 | Router（Vue Router / React Router） |
 
-> **2026 共识**：**服务端状态 ≠ 客户端状态**。TanStack Query / SWR 已经在 80%+ 场景取代了 Redux 的服务端缓存职责。状态管理库应聚焦于"真正需要全局共享的客户端状态"。
+> **2026 共识（社区观察口径）**：**服务端状态 ≠ 客户端状态**。TanStack Query / SWR 在服务端缓存职责上有较强渗透（具体比例未链接官方调查）。状态管理库应聚焦于"真正需要全局共享的客户端状态"。
 
 ---
 
@@ -71,7 +71,7 @@ graph TB
 | **Pinia** | Vue 官方唯一推荐（替代 Vuex） | ⭐⭐⭐⭐⭐ **首选** |
 | **Vue Reactivity（`reactive` / `ref`）** | 简单场景原生够用 | ⭐⭐⭐⭐⭐ |
 
-> **Vue 2026 共识**：90% 场景用 Vue 3 原生 `reactive`/`ref` + `provide/inject` 即可，复杂项目上 Pinia。**Vuex 已不再推荐**。
+> **Vue 2026 共识（社区观察口径）**：多数场景用 Vue 3 原生 `reactive`/`ref` + `provide/inject` 即可，复杂项目上 Pinia。**Vuex 已不再推荐**（具体场景占比以官方生态调查为准）。
 
 ---
 
