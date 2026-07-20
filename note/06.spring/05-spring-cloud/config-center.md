@@ -109,7 +109,7 @@ public class ConfigController {
 
 ### 5. 多环境隔离
 
-```
+```text
 Nacos Namespace（命名空间）= 环境
 - dev（开发）
 - test（测试）
@@ -251,7 +251,7 @@ spring:
 
 ### 配置推送
 
-```
+```text
 Nacos Server ← → Nacos Client（长轮询，1s 间隔）
               ↓
         推送变更
@@ -265,7 +265,7 @@ Nacos Server ← → Nacos Client（长轮询，1s 间隔）
 
 ### 1. 命名规范
 
-```
+```text
 Data ID: {应用名}-{环境}.{扩展名}
 例：order-service-dev.yaml
 ```
