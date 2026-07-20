@@ -114,7 +114,7 @@ def consistency_check(query, sample_count=3):
 
 ### 3.2 典型 Trace 结构
 
-```
+```text
 [1] POST /chat (总延迟 1200ms)
    ├─ [2] RAG retrieve (50ms) - top_k=10
    │   └─ embedding (30ms)

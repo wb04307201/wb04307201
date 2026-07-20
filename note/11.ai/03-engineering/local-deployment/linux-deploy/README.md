@@ -98,7 +98,7 @@ sudo systemctl status ollama
 
 当您执行 `ollama run` 后，会直接进入一个命令行交互界面。
 
-```
+```text
 >>> Send a message (/? for help)
 ```
 

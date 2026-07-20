@@ -60,7 +60,7 @@ class ClaudeCodeLoop:
 
 ### 1.3 实战示例
 
-```
+```text
 > /loop "实现用户登录 API"
 → Agent 写代码 → run test (失败) → 修复 → run test (失败) → 修复 → 通过
 → 用了 5 轮 Loop，13 秒内完成
@@ -72,7 +72,7 @@ class ClaudeCodeLoop:
 
 ### 2.1 Loop 工程
 
-```
+```text
 ┌─────────────────────────────────────────────────────────┐
 │  Composer (Cursor 的 Loop 引擎)                          │
 │  ┌────────────────────────────────────────────────────┐ │
@@ -94,7 +94,7 @@ class ClaudeCodeLoop:
 
 ### 2.3 实战示例
 
-```
+```text
 > Composer: "重构 user 模块到 DDD"
 → Plan：拆成 5 个子任务（domain/entity, repository, service, controller, test）
 → 串行 Loop：每个子任务独立 verify
@@ -202,7 +202,7 @@ class AiderLoop:
 
 ## 6. 实战选型
 
-```
+```text
 选型决策：
 
 Q1：是 IDE 插件还是独立工具？

@@ -37,7 +37,7 @@ module:
 
 传统 Agent 在单个 session 中长时间运行时，会面临一个根本性问题：
 
-```
+```text
 传统 Agent（单 session 长跑）：
 
 Turn 1:  context = [system prompt + task]              ← 清晰
@@ -53,7 +53,7 @@ Context 越长 → Agent 注意力分散 → 回答质量下降 → "lost in the
 
 ## 三、Ralph Wiggum 的解法：每轮 Fresh Context
 
-```
+```text
 Ralph Wiggum Loop（外循环驱动）：
 
 Iteration 1: fresh context → 读 PROMPT.md + git state → 做 task 1 → commit → exit
