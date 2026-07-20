@@ -86,6 +86,7 @@ module:
 | 续集 | 主题 | 文章 |
 |------|------|------|
 | 一 | 当餐厅长出大脑 | [01 AI Agent 架构](./01-ai-agent-architecture.md) |
+| 二 | 学徒的困境 | [11 AI 学徒危机](./11-ai-learning-paradox.md) |
 
 ---
 
