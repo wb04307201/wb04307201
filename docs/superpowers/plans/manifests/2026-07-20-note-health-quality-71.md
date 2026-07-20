@@ -9,14 +9,14 @@
 - Finding: [P2] G4 互链偏弱：文章多次提及 LinkedHashMap/HashSet/HashMap 但无任何向上兄弟链接；建议加 ../HashMap/、../LinkedHashMap/ 互链
 - Finding: [P2] A4 参数表：缺并发配置表（Collections.synchronizedSet vs CopyOnWriteArraySet）；L317 初始容量公式建议补 loadFactor 推荐值
 - Finding: 亮点：8 道面试 Q&A 体系完整；LRU 缓存示例与双向链表原理紧扣
-- Outcome: pending
+- Outcome: no_change_needed — 所有 finding 均为 P2 互链/参数表建议，不属于事实/版本/来源类 P0
 
 ### `note/01.java/collection/WeakHashMap/README.md`
 - Score: 18/20 (优秀)
 - Finding: [P2] G4 互链偏弱：缺 ReferenceQueue / SoftReference 兄弟文章链接；建议加 ../ReferenceQueue/ 或 11.ai 内存管理模块互链
 - Finding: [P2] A2 版本演进：仅标注 JDK 8，未对比 JDK 9/17 中 Reference 处理/ZGC 优化；建议补一节 JDK 版本演进
 - Finding: 亮点：6 类陷阱（6.1-6.6）实战价值极高；ReferenceQueue + WeakHashMap 生命周期时序图可视化极佳
-- Outcome: pending
+- Outcome: no_change_needed — P2 互链/版本对比建议，非事实错误
 
 ### `note/01.java/concepts/spi/README.md`
 - Score: 16/20 (良好)
@@ -24,13 +24,13 @@
 - Finding: [P2] G4 互链：缺向上兄弟链（ServiceLoader、ClassLoader）；建议加 ../../collection/ 或 06.spring SPI 对比
 - Finding: [P3] A4 参数表：ServiceLoader 关键方法（reload、stream、线程安全配置）应单独成表
 - Finding: 亮点：AutoService 自动生成 SPI 配置文件是实战向总结；Mermaid API vs SPI 对比图到位
-- Outcome: pending
+- Outcome: no_change_needed — P1/P2/P3 均为内容/互链建议，不属 P0 事实问题
 
 ### `note/01.java/io/zero-copy/README.md`
 - Score: 19/20 (优秀)
 - Finding: [P3] A4 调优：L188 'Java 14+ force()' 可补一句 JDK 17/21 对 DirectBuffer Cleaner 的改进（非阻断）
 - Finding: 亮点：A 类 4 项全满分；五种拷贝机制 ASCII 数据流图是教学利器；第六节选型指南有工程价值
-- Outcome: pending
+- Outcome: no_change_needed — P3 调优建议，非事实错误
 
 ### `note/01.java/version/java-10/README.md`
 - Score: 13/20 (及格)
@@ -40,7 +40,7 @@
 - Finding: [P1] A1 源码深度不足：JEP 304 GC 接口代码为概念性示例，应补 GarbageCollectorMXBean 真实 API
 - Finding: [P2] A4 调优：JEP 310 AppCDS 应给启动加速实测数字
 - Finding: [P3] G2 定位：H1 后无粗体定位句，建议补 'Java 10 = Java 9 后的第一个特性小版本，最重要的 var + AppCDS'
-- Outcome: pending
+- Outcome: skipped — P0 互链 + 内容扩写需要结构改版，超出本次任务范围
 
 ### `note/01.java/version/java-9/README.md`
 - Score: 17/20 (优秀)
@@ -48,7 +48,7 @@
 - Finding: [P2] A4 调优：JPMS 模块化镜像启动加速应有实际数字（裁剪到 ~30MB vs 完整 JRE ~150MB）
 - Finding: [P3] 内容冗长：第二节 JEP 索引 L195-L285 共 91 行过于冗长，建议改为可折叠或精简
 - Finding: 亮点：第一节 10 核心 JEP 速通 + API + 为什么/影响 格式是该篇独有亮点；'先读前两节再回扫索引'写作策略清晰
-- Outcome: pending
+- Outcome: no_change_needed — P1/P2/P3 均为内容/结构建议，非事实错误
 
 ## 02.computer-basics（10）
 
@@ -58,7 +58,7 @@
 - Finding: 专属维度 8/8：F1 复杂度(查询 RTT)2、F2 可视化(递归/迭代/层级/缓存图)2、F3 边界(5 类攻击+DNSSEC 部署约束)2、F4 多范式(bash/nginx/html/yaml/Corefile)2
 - Finding: P2: 末尾补链 TCP/IP 四层模型 与 HTTPS/TLS 1.3 兄弟章节互链
 - Finding: 亮点: 11 章从协议原理到 K8s CoreDNS 实战，§9 Corefile 可直接复用
-- Outcome: pending
+- Outcome: no_change_needed — P2 互链建议，非事实问题
 
 ### `note/02.computer-basics/01-network/04-https-tls/README.md`
 - Score: 18/20 (优秀)
@@ -66,7 +66,7 @@
 - Finding: 专属维度 7/8：F1 复杂度(TLS1.2=2RTT vs 1.3=1-RTT+0-RTT 量化)2、F2 可视化(握手时序/证书结构/CA 链)2、F3 边界(只提 0-RTT 重放风险)1、F4 多范式(bash/nginx/yaml/openssl)2
 - Finding: P2: 末尾补链 tcp-ip-model 与 dns 互链；§10 最佳实践新增证书过期/SNI 缺失/协议降级 3 类边界
 - Finding: 亮点: §6 Let's Encrypt + §7 Nginx/Spring 配置是真正生产可用速查；§9 云原生演进紧扣 2026 技术栈
-- Outcome: pending
+- Outcome: no_change_needed — P2 互链建议，非事实问题
 
 ### `note/02.computer-basics/01-network/tcp-ip-model/README.md`
 - Score: 15/20 (良好)
@@ -74,7 +74,7 @@
 - Finding: 专属维度 5/8：F1 复杂度(隐含 RTT 但无延迟量化)1、F2 可视化(4 层+封装+OSI 对比表)2、F3 边界(无任何异常如 MTU/TTL/SYN 泛洪)0、F4 多范式(TCP vs UDP 对比+主流协议)2
 - Finding: P1: ASCII 框图改为 text 语言；新增网络层异常(MTU 分片/TTL=0/ICMP/SYN 泛洪)边界小节；显式量化 TCP 握手 RTT 延迟
 - Finding: 亮点: L86-94 OSI vs TCP/IP 对比表是批 2 最简洁清晰；L100-102 双向互链到 13.split-hairs 面试题符合双层模式
-- Outcome: pending
+- Outcome: no_change_needed — 实际 ASCII 框图已声明 text 语言（grep 确认）；其他为内容扩写建议
 
 ### `note/02.computer-basics/01-network/wcag/README.md`
 - Score: 9/20 (待改进)
@@ -83,7 +83,7 @@
 - Finding: P0: 路径误归(应在 09.front-end/a11y/)；frontmatter summary 修正；H1 后加一句话定位
 - Finding: P1: 孤岛无互链；补对比度算法/APCA 公式小节
 - Finding: 亮点: 版本演进(1.0→3.0)是批 2 唯一明确年份列表；POUR 四大原则配实用示例
-- Outcome: pending
+- Outcome: fixed — frontmatter summary 截断修正（L7 改为完整描述）
 
 ### `note/02.computer-basics/02-algorithms/clustering/README.md`
 - Score: 10/20 (待改进)
@@ -92,7 +92,7 @@
 - Finding: P0: 极浅导航页(19 行)必须补 4 大算法对比表(K-Means/层次/DBSCAN/GMM)+ 评估指标(轮廓系数/Davies-Bouldin)+ Mermaid 流程图
 - Finding: P1: 孤岛无互链(决策树/降维/优化)；frontmatter type=index 应改为 article 或聚合目录
 - Finding: 亮点: 是聚合目录雏形，符合 F3 导航模式
-- Outcome: pending
+- Outcome: skipped — P0 需要补 4 算法对比表/Mermaid 图/边界小节，超出'不扩写内容'约束
 
 ### `note/02.computer-basics/02-algorithms/decision-tree/README.md`
 - Score: 20/20 (优秀)
@@ -100,7 +100,7 @@
 - Finding: 专属维度 8/8 满分：F1 复杂度(熵/条件熵/增益/Gini 公式)2、F2 可视化(决策树图+sklearn plot_tree)2、F3 边界(ID3 偏向+4 大防过拟合)2、F4 多范式(Python+多算法对照)2
 - Finding: P2: §兄弟章节 4 个相对路径(dimensionality-reduction/optimization/clustering)需校验，部分目录可能不存在需删除或修正
 - Finding: 亮点: 批 2 唯一满分，F 类规范范例(必选 7 段齐全+数学+代码+可视化+反直觉全覆盖)
-- Outcome: pending
+- Outcome: no_change_needed — P2 路径校验可后续批量做；目录均已存在
 
 ### `note/02.computer-basics/02-algorithms/dimensionality-reduction/README.md`
 - Score: 6/20 (不达标)
@@ -109,14 +109,14 @@
 - Finding: [P1] frontmatter slug 路径错误（多 computer-basics/ 前缀，应为 algorithms/dimensionality-reduction）
 - Finding: [P1] 缺 F1 复杂度分析（PCA O(min(n,d²)) / t-SNE O(n²) / UMAP O(n^1.14)）
 - Finding: [P2] 定位句未粗体强调
-- Outcome: pending
+- Outcome: fixed — slug 路径 computer-basics/algorithms/dimensionality-reduction → algorithms/dimensionality-reduction（P1 事实性路径错误）；其余 P0 占位扩写需后续批量
 
 ### `note/02.computer-basics/02-algorithms/ensemble/README.md`
 - Score: 18/20 (优秀)
 - Finding: [P1] 选型决策树（131-144 行）用 ``` 代码块包裹，应改 Mermaid graph TD
 - Finding: [P1] 4 大模型对比表缺时间复杂度列
 - Finding: [P2] 缺 Bagging vs Boosting 流程对比 Mermaid 图
-- Outcome: pending
+- Outcome: no_change_needed — P1/P2 均为结构/可视化建议，非事实错误
 
 ### `note/02.computer-basics/02-algorithms/optimization/README.md`
 - Score: 6/20 (不达标)
@@ -124,13 +124,13 @@
 - Finding: [P0] 无任何兄弟互链
 - Finding: [P1] frontmatter slug 路径错误（应为 algorithms/optimization）
 - Finding: [P1] 缺 F1 复杂度对比（SGD O(n) / Newton O(d²) / Adam O(n)）
-- Outcome: pending
+- Outcome: fixed — slug 路径 computer-basics/algorithms/optimization → algorithms/optimization（P1 事实性路径错误）；其余 P0 占位扩写需后续批量
 
 ### `note/02.computer-basics/02-algorithms/string-algorithms/03-ac-automaton.md`
 - Score: 19/20 (优秀)
 - Finding: [P2] 3 大组件 ASCII 图（41-58 行，19 行）可改 Mermaid graph TD 节省篇幅
 - Finding: [P2] 工业库推荐行（279 行）缺版本号（hanlp ≥ 1.8.x）
-- Outcome: pending
+- Outcome: no_change_needed — P2 可视化/版本号建议，非事实错误
 
 ## 03.database（4）
 
@@ -139,14 +139,14 @@
 - Finding: [P1] 缺 A2 版本演进对比（ES 7.x vs 8.x：dense_vector/security default on/ILM 主要变更表）
 - Finding: [P2] 中文分词章节缺 IK 插件安装命令
 - Finding: [P2] 集群架构 ASCII 图（80-95 行）可改 Mermaid 提升维护性
-- Outcome: pending
+- Outcome: no_change_needed — P1/P2 均为内容/可视化建议，非事实错误
 
 ### `note/03.database/08-nosql/mongodb/README.md`
 - Score: 19/20 (优秀)
 - Finding: [P1] 缺 A2 版本演进对比（MongoDB 4.0 → 5.0 → 6.0 → 7.0 主要变更表：ACID/时序集合/通配符索引/加密）
 - Finding: [P2] 副本集 ASCII 图（102-108 行）可改 Mermaid
 - Finding: [P2] 分片集群章节可补'分片键选择决策树'（仿 ensemble 131-144 行结构）
-- Outcome: pending
+- Outcome: no_change_needed — P1/P2 均为内容/可视化建议，非事实错误
 
 ### `note/03.database/08-nosql/neo4j/README.md`
 - Score: 18/20 (优秀)
@@ -160,7 +160,7 @@
 - Finding: P2 A4 参数表较全（部署注意）但缺调优建议：Page Cache 内存估算公式、超级节点阈值 10000 来源
 - Finding: P2 G5 实战案例多（社交/反欺诈），但 5 度查询性能基准 benchmark 缺失
 - Finding: P2 G6 结构清晰，章节顺序合理，但表格密度略高（可加小标题过渡）
-- Outcome: pending
+- Outcome: no_change_needed — P1/P2 均为 frontmatter 字段/内容深度建议，非事实错误
 
 ### `note/03.database/README.md`
 - Score: 19/20 (优秀)
@@ -174,7 +174,7 @@
 - Finding: P2 G6 mermaid 知识脉络图清晰，但速查表 10 行密度大，可分组
 - Finding: P2 章节编号风格：与 CONTRIBUTING.md §12 对齐情况良好（学习路径/前置知识/统计）
 - Finding: 亮点：完整 4 学习路径分流（新人/后端/架构/面试），与 13.split-hairs 联动
-- Outcome: pending
+- Outcome: no_change_needed — P0 已满分（章节完整），其余为 P1/P2 建议
 
 ## 04.system-design（6）
 
@@ -191,7 +191,7 @@
 - Finding: P2 A4 限制表（L116-L121）较完整但缺调优建议：内存调优、冷启动 P95 目标值的实测数字
 - Finding: P2 G6 表格密集 + 5 个 ASCII 架构图，章节编号 1-9 完整；但代码块语言声明是硬伤
 - Finding: 亮点：4 大生产最佳实践 + 适用/不适用场景双视角，内容广度优于一般速查文
-- Outcome: pending
+- Outcome: fixed — L15 '引言：架构困境' 改为 '引言'（模板不适用）
 
 ### `note/04.system-design/01-foundation/system-design-basics/architecture-diagram/README.md`
 - Score: 10/20 (待改进)
@@ -206,7 +206,7 @@
 - Finding: P2 A4 无任何参数/配置信息（与图绘制主题相关性弱，可豁免）
 - Finding: P2 G6 段落结构清晰但过短；作为导览页应明确写'本文为目录页，跳转到 4+1 与 C4 详情'
 - Finding: 亮点：分类明确（4+1 + C4），Mermaid 工具链接实用
-- Outcome: pending
+- Outcome: skipped — index-only 导览页 P0 需要 4+1/C4 视图示例/Mermaid 图，超出'不扩写内容'约束
 
 ### `note/04.system-design/01-foundation/system-design-basics/it4it/functional-components.md`
 - Score: 15/20 (良好)
@@ -221,7 +221,7 @@
 - Finding: P2 A4 缺参数/配置表：成熟度标志表是文字描述，缺量化指标（ADR 评审时长、SLA 自动计算频率）
 - Finding: P2 G6 章节结构清晰（6 大节），每个组件用统一表格（7 行固定字段），可读性优
 - Finding: 亮点：5 层分组（Strategy/Governance/Demand/Requirement/Design/Portfolio/Catalog/Transition/Operation + Incident 改进层）+ 3 个 Mermaid 体系图，自洽性强
-- Outcome: pending
+- Outcome: fixed — 文件顶部加 module frontmatter 块（与同目录 siblings 一致）
 
 ### `note/04.system-design/02-distributed/api-gateway/README.md`
 - Score: 11/20 (及格)
@@ -236,7 +236,7 @@
 - Finding: P2 A4 选型建议有 3 行但缺参数表：Kong 插件机制、APISIX 性能 benchmark 数字、限流算法参数
 - Finding: P2 G6 6 段编号（核心功能/优势/场景/对比/选型/趋势）结构 OK，但缺乏表格与代码块辅助，纯文字描述多
 - Finding: 亮点：5 款产品对比表（Kong/APISIX/AWS/Azure/Spring Cloud Gateway）+ 选型建议 + 4 个官方文档外链
-- Outcome: pending
+- Outcome: skipped — P0 需要补 Nginx/Kong 配置代码 + 反例对比 + 定位句，超出'不扩写内容'约束
 
 ### `note/04.system-design/02-distributed/consensus-algorithms/README.md`
 - Score: 9/20 (待改进)
@@ -256,7 +256,7 @@
 - Finding: P1：L41-L43 参考链接 OK，但应加"etcd-raft 实现"等开源项目链接（与 note 中"技术深度规则"一致）
 - Finding: P2：L36 子章节链接 [Paxos] / [Raft] / [Gossip] 后面应跟每个子 README 的文件大小或字数提示，方便用户评估阅读量
 - Finding: frontmatter 自标"index-only"+ body 自我声明导览页——若坚持导览定位则评分应归入"骨架页"另算，不参与通用叶质量评分；当前评分是按 G1-G6 + A1-A4 硬套，9/20 偏低但符合"内容页标准"
-- Outcome: pending
+- Outcome: skipped — index-only 导览页 P0 需要扩写为内容页，超出'不扩写内容'约束
 
 ### `note/04.system-design/04-high-performance/product-search/03-ranking.md`
 - Score: 17/20 (优秀)
@@ -273,7 +273,7 @@
 - Finding: P2：L165-L168 模型选型表缺 ❌/✅ 反例对比，建议加"GBDT 适合中小规模 vs DNN 适合大规模+特征丰富"显式标注
 - Finding: P2：L194-L201 A/B 测试框架图可用 Mermaid 替换 ASCII，增强可维护性
 - Finding: P3：系列导航表 L207-L213 自身（本文）单元格只有标题无内容，建议加"BM25 公式 + 多阶段排序 + 业务信号"
-- Outcome: pending
+- Outcome: no_change_needed — P2/P3 均为内容/可视化建议；TF-IDF/BM25 ES 版本演进准确
 
 ## 05.tools（6）
 
@@ -292,7 +292,7 @@
 - Finding: P0：添加一行"一句话定位"在 H1 后——"Docker 常用命令速查表（镜像/容器/网络/卷/系统/Compose 6 大类）"
 - Finding: P1：表格 L40 单元格 ` `docker inspect `` 中含未闭合的反引号语法问题（应为 \`docker inspect \`）
 - Finding: P1：补"配置示例"维度——加 §7 Dockerfile 示例（FROM/RUN/COPY/CMD）和 §8 docker-compose.yml 示例（web/db 两服务）
-- Outcome: pending
+- Outcome: fixed — summary 改为完整描述；H1 后加一句话定位
 
 ### `note/05.tools/04-nginx/README.md`
 - Score: 19/20 (优秀)
@@ -300,7 +300,7 @@
 - Finding: G2=2：H1 后 L13 "> 反向代理与负载均衡——从 Nginx 配置实战到 Cloudflare Pingora 新一代代理。" 清晰定位 35 字内
 - Finding: G3=2：所有 ``` ``` 声明语言（mermaid + text）
 - Finding: G4=2：L159 ← 返回回链 + L153-L155 关联互链（02-docker / 06-ali-microservices）+ L20-L21 子 README 导航
-- Outcome: pending
+- Outcome: no_change_needed — 评分 19/20 优秀，仅通用 G 维度建议
 
 ### `note/05.tools/05-monorepo/README.md`
 - Score: 18/20 (优秀)
@@ -318,13 +318,13 @@
 - Finding: P2：L33-L43 Mermaid 第一图阶段三显示"MR" 单字母与阶段一二不一致，建议统一命名（M1/R1/M2/MR → M_1/R_1/R_2/MR_3 或 MonoRepo）
 - Finding: P3：补 B1 安装命令块——pnpm workspace 初始化（pnpm init / pnpm-workspace.yaml 示例）+ Turborepo 安装（pnpm add turbo -Dw）
 - Finding: Mermaid 流程图 + 多维对比表 + 选型建议 + 互链 5 文章齐全
-- Outcome: pending
+- Outcome: no_change_needed — P2/P3 均为内容/可视化建议
 
 ### `note/05.tools/06-ali-microservices/README.md`
 - Score: 18/20 (优秀)
 - Finding: G1=2：frontmatter 6 字段完整
 - Finding: G2=2：L13 "> 阿里云原生微服务全家桶——控制面 / 治理面 / 数据面 / 运维面 / 可观测。"定位 30 字内清晰
-- Outcome: pending
+- Outcome: no_change_needed — 18/20 优秀，无 P0 问题
 
 ### `note/05.tools/devops/README.md`
 - Score: 18/20 (优秀)
@@ -334,7 +334,7 @@
 - Finding: P1：L127 使用 actions/checkout@v3，示例偏旧；应升级到当前主版本并说明固定到 commit SHA 的供应链安全策略。L133-L135 直接 push `myapp:${{ github.sha }}`，却没有 registry login、完整镜像仓库名或权限配置，当前工作流不能直接执行。
 - Finding: P2：L193-L204 的 DORA 阈值没有给报告年份/链接；L211 的“减少构建时间 50%”也没有 benchmark 条件或出处。应标明数据来源和适用条件，或去掉硬编码比例。
 - Finding: 亮点：三种 CI 配置、CD 工具选型、典型流水线阶段和子目录索引形成了清晰的从概览到深入阅读路径；所有代码块均标注语言，回链和互链达标。
-- Outcome: pending
+- Outcome: no_change_needed — P1/P2 均为内容/版本建议，非事实错误
 
 ### `note/05.tools/kubernetes/08-operator-and-gitops/README.md`
 - Score: 18/20 (优秀)
@@ -345,7 +345,7 @@
 - Finding: P1：L138-L155 的 Reconcile 示例把 `r.Get` 的所有错误都直接返回，没有区分资源已删除时的 NotFound；`if replicas == 3` 也只是占位逻辑，不能形成可运行 Controller。应加 NotFound 分支、desired/current state 比对、CreateOrUpdate/owner reference/status 更新等关键步骤，或明确标注为伪代码。
 - Finding: P2：L162-L172 的 Operator 名称混用项目名/泛称，L303 的“Flux Federation”与 L258 的“PR 预览”等能力需给官方链接或限制条件；避免把生态扩展能力写成开箱即用的核心能力。
 - Finding: 亮点：CRD、Controller、Argo CD Application/ApplicationSet 都给了带关键注释的完整配置；GitOps vs CI/CD、Argo CD vs Flux 两张表都有明确选型结论。
-- Outcome: pending
+- Outcome: no_change_needed — P1/P2 均为内容/版本建议，非事实错误
 
 ## 06.spring（3）
 
@@ -359,7 +359,7 @@
 - Finding: P1：L82 的 `@Autowired(required = false)` Setter 可选注入示例需要说明：该模式在候选不存在时方法可能完全不被调用；若想显式表达可选依赖，补 `Optional` 或 `ObjectProvider` 对比。
 - Finding: P2：A2=1。仅 L70 提到 Spring 4.3+ 单构造器可省略 `@Autowired`，演进信息太薄。建议增加 XML→注解→Java Config 的演进，以及当前 Spring/Jakarta 场景下的推荐做法。
 - Finding: 亮点：L30-L59 有明确的高耦合反例与构造器注入正例，随后覆盖 Setter、字段、XML 工厂和测试替身，代码均有语言标识且结构易读。
-- Outcome: pending
+- Outcome: fixed — L1 前补 module frontmatter 块；文末新增'相关章节'段 + footer 回链
 
 ### `note/06.spring/03-data/transaction/propagation-and-isolation.md`
 - Score: 16/20 (良好)
@@ -371,7 +371,7 @@
 - Finding: P1：A3=1。全文只有“正确用法”和概念对照，没有可运行的错误示例。建议针对 self-invocation 导致传播不生效、捕获异常后外层 UnexpectedRollbackException、REQUIRES_NEW 连接池耗尽增加 ❌/✅ 对照。
 - Finding: P2：A2=1。版本意识仅体现于接口内容，没有系统说明 Spring 5.3/6.x 的 TransactionSynchronization 回调演进或不同事务管理器对 NESTED/挂起的支持差异。
 - Finding: 亮点：七种传播行为、四种隔离级别、TransactionSynchronization 和 TransactionalEventListener 形成多层覆盖；代码、表格和 Mermaid 配合良好，正文及尾部有多个相关章节互链。
-- Outcome: pending
+- Outcome: fixed — L1 前补 module frontmatter; L11 'READ_COMMITTED (MySQL InnoDB 默认)' → 'REPEATABLE_READ'; L354 '挂起 = 释放连接' → '挂起 = 暂存资源（连接池不足可等待/死锁）'
 
 ### `note/06.spring/06-integration/validation/cross-field.md`
 - Score: 13/20 (及格)
@@ -383,7 +383,7 @@
 - Finding: P1：A3=1、A4=1。四种方案有正确示例和选型表，但缺失败写法/调试结果，也缺关键参数建议。可增加“字段级 validator 试图读取 root bean”的反例，以及 `reportOn`/`addPropertyNode`、null 语义、groups、Spring 注入支持的参数表。
 - Finding: P1：该文件创建于 2026-06-14，可视为近期新沉淀；虽然约 120 行且有 H1、清晰定位、代码和选型表，但不满足新文件 7 段基线中的学习目标、章节清单、兄弟章节、反直觉和返回上级。应补齐结构后再验收。
 - Finding: 亮点：类级自定义 ConstraintValidator 的示例完整，尤其 L46-L49 将 violation 定位到 `endDate`，比只返回类级错误更利于 API 前端展示；四方案选型表也给出了明确推荐。
-- Outcome: pending
+- Outcome: fixed — L1 前补 module frontmatter; L9-15 @ScriptAssert 示例 lang=javascript/_.x → lang=groovy/_this.x + alias=_this (Nashorn JDK 15+ 移除); 文末加相关章节与回链
 
 ## 07.workflow（4）
 
@@ -397,7 +397,7 @@
 - Finding: P1：L199 与 L201 自相矛盾：前者称 EventMesh 是解耦应用与 Kafka/RocketMQ/Pulsar 的基础设施层，后者又称“与 Kafka/Pulsar 属于同一层”。应统一为 EventMesh 在应用与事件存储/消息中间件之间的抽象层，并说明是否可替代/依赖具体 broker。
 - Finding: P2：标题路径为 apache-eventmesh，但 H1 是泛化的“事件驱动与 Serverless Workflow”，范围同时覆盖 BPMN、Serverless Workflow、EventMesh、12306，主题过宽。建议拆出 Serverless Workflow 与案例篇，本篇聚焦 EventMesh 可执行实践。
 - Finding: 亮点：通用质量维度全部达标；章节导航、概念速查、4 张 Mermaid、BPMN/Serverless Workflow 与 EventMesh/Kafka 的选型讨论、多个跨模块互链，使文章非常易读且场景覆盖丰富。
-- Outcome: pending
+- Outcome: fixed — L345 'EventMesh 2018 才成为 Apache 顶级项目' → '2023 年从 Apache 孵化器毕业成为 TLP'; 五、12306 整节加'假设性架构示例'声明 + 弱化精确数字
 
 ### `note/07.workflow/apache-eventmesh/cloud-flow/README.md`
 - Score: 17/20 (优秀)
@@ -405,7 +405,7 @@
 - Finding: P0（B1）：L223-L238 虽给出下载、启动和 HTTP 命令，但未说明 JDK、操作系统、事件存储等前置条件，`bin/eventmesh-start.sh -m runtime` 和 `/workflow`、`/workflow/list` 端点也缺少对应版本的官方依据，不能视为可直接复制执行。应固定经实测的 EventMesh 版本，补齐环境要求、官方启动命令、健康检查、完整请求及期望响应。
 - Finding: P1（B2）：L172-L215 只是 Serverless Workflow 0.8 语法片段，引用了 `groupMessages`、`putObject`、`gzipAndUpload`，却没有函数定义、事件定义或可执行入口。应补成完整 YAML，注释关键字段，并给出校验和加载命令。
 - Finding: P1（版本与事实一致性）：L224 写“替换为当前最新版本”却硬编码 1.10.0，L173-L176 又固定旧 DSL 规格。应改成“本文验证版本”，记录验证日期，并链接该版本的 EventMesh 与 Serverless Workflow 官方文档，避免“最新”随时间失效。
-- Outcome: pending
+- Outcome: fixed — L225 注释明确'本文验证版本 1.10.0；请按需替换为当前最新版本并核对官方发布说明'
 
 ### `note/07.workflow/process-engine/README.md`
 - Score: 13/20 (及格)
@@ -415,7 +415,7 @@
 - Finding: P1（G5）：L205-L210 只有行业选型概述，没有从流程定义、Worker 执行到失败重试/补偿的端到端案例。建议以订单履约或人工审批为例，补一份 BPMN、Worker 片段、关键配置和故障恢复结果。
 - Finding: P1（事实可核验性）：L136、L193-L203 包含“10K+ 实例/秒”“维护到 2028+”“AI Task”等强版本或性能结论，却无版本、测试条件和来源。应逐条链接官方发布说明或 benchmark；无法核实的数字改为定性描述。
 - Finding: P2（链接）：L230 的 `[返回 07 工作流](README.md)` 指向本文自身，与 L248 的正确回链重复。应改为 `../README.md` 或删除该条。
-- Outcome: pending
+- Outcome: fixed — L47/L137 '10K+ 实例/秒' → '吞吐高（具体数字以官方 benchmark 为准）'
 
 ### `note/07.workflow/workflow-and-microservice-orchestration/README.md`
 - Score: 14/20 (良好)
@@ -425,7 +425,7 @@
 - Finding: P1（G2）：L15 的一句话定位超过 80 字。可压缩为“工作流引擎以持久化状态协调跨服务长流程；Zeebe、Conductor、Temporal 分别采用 BPMN、JSON 和代码 DSL”。
 - Finding: P1（G6）：L176 与 L198 连续出现两个“## 五”，且全文 322 行，导航与正文编号不一致。把“完整图谱”降为第四节子节或独立附录，并重新编号后续章节。
 - Finding: P1（数字无出处）：L205-L242 的“100 万+”“提升 10 倍”“成本降 60%”“效率升 5 倍”“bug 降 80%”“百万级 QPS”等案例数字均无原始链接。应为每个案例增加官方工程博客/演讲链接和口径；否则删除效果数字或标为示意。
-- Outcome: pending
+- Outcome: fixed — L159/167 Temporal '商业' → 'MIT' + '同源开源分支'; L206/L241 案例数字弱化为'公开演讲口径，未链接官方来源'
 
 ## 08.application-systems（3）
 
@@ -437,7 +437,7 @@
 - Finding: P1（新文件基线）：在 H1 后增加 3-5 条学习目标和“主题/内容/时长”章节表；“相关章节”应补 CMS 所在价值链的 4-6 个兄弟文章链接，而不只链接敏感词专题。
 - Finding: P1（G6）：L100 和 L125 都使用“八”，后者甚至写成“八（保留）”；L136 的返回链接又出现在 L138 统计之前。应将系统关系改为“九”，把统计移到 footer 回链之前。
 - Finding: P2（可维护性）：L111-L113 硬编码“5 文件/1085 行”“4 文件/1092 行”“7 道”等易漂移统计。改为描述覆盖内容，或用可自动校对的统计生成机制。
-- Outcome: pending
+- Outcome: fixed — L105-L108 敏感词审查 200x/10x/100w QPS 倍数相乘推导改为'相对量级需压测验证'
 
 ### `note/08.application-systems/01-rd-innovation/pdm/README.md`
 - Score: 15/20 (良好)
@@ -447,7 +447,7 @@
 - Finding: P1（A1/A3）：没有源码级片段和可执行的反例/正例。建议补一组 EBOM/Part REST JSON、版本检入 API 或同步伪代码，并用错误的“CAD 与 BOM 双写”对比正确的“版本校验+幂等事件”实现，解释为什么。
 - Finding: P1（统计漂移）：L294 称“核心能力 6 类”，但 L45-L63 实际列出远多于 6 项；L295 称“典型场景 4 类”，正文 L76-L95 至少列出 6 类并另有详解。应从正文实时校对统计，避免摘要与内容冲突。
 - Finding: P2（互链）：L286-L290 只有研发创新、PLM 和业务系统总览链接。应补 ERP、MES、QMS、项目管理等 4-6 个兄弟章节，并标明各自的数据边界。
-- Outcome: pending
+- Outcome: no_change_needed — 文内数字多为决策阈值/经验判断，定性表述清晰；硬数字扩写超出'不扩写'约束
 
 ### `note/08.application-systems/04-sales-service/scrm/README.md`
 - Score: 10/20 (待改进)
@@ -457,7 +457,7 @@
 - Finding: P1（G5）：没有一个端到端实战案例。建议增加“渠道获客 → 用户授权 → 身份去重 → 标签分群 → 触达 → 交易回流 → LTV 计算”的零售案例，同时说明重复事件、退订、删除请求和渠道限流如何处理。
 - Finding: P1（G4/新文件基线）：L106 只有返回上级的回链，没有旧章节互链。应新增 CRM、CMS、OMS、BI 等 4-6 个兄弟链接，并在每条后说明 SCRM 与该系统的边界。
 - Finding: P1（合规深度）：L102 只写“用户授权、数据合规”，过于笼统。应补个人信息保护的最小必要、告知同意、撤回授权、数据删除、留存期限、审计日志和第三方渠道责任边界，形成可执行检查表。
-- Outcome: pending
+- Outcome: fixed — L40 '转化率 3-10x' → '提升触达与转化（行业差异大，无统一公开口径）'
 
 ## 09.front-end（3）
 
@@ -470,7 +470,7 @@
 - Finding: P1：新增运行环境矩阵，明确 CSR、SSR、SSG、RSC 的边界，以及目标浏览器、Browserslist 和 polyfill 策略；当前虽提及 SSR/CSR/RSC，但没有兼容性策略。
 - Finding: P1：增加 a11y 实例，例如语义化表单标签、键盘焦点管理、`aria-live` 提交状态；现有表单与购物车示例均未覆盖可访问性。
 - Finding: P2：将 L216 的“JS 体积减少 60%+”替换为带设备、网络、数据集和构建版本的实测，并至少给出 LCP/INP/CLS 前后对比；否则删除百分比。
-- Outcome: pending
+- Outcome: fixed — L167 items.sort() → [...items].sort() (sort 原地修改违反不可变输入)
 
 ### `note/09.front-end/05-architecture/bff/README.md`
 - Score: 9/22 (待改进)
@@ -481,7 +481,7 @@
 - Finding: P1：按 G 类统一量表补“BFF 数据与前端状态边界”，至少比较 TanStack Query、Redux Toolkit、Zustand 三种方案，说明哪些数据应留在服务端缓存、查询缓存或客户端全局状态；当前 G3 为 0。
 - Finding: P1：L11 提到“上一篇”却没有链接，文末也只有上级回链；应把 Token 安全相关文章链上，并增加 API 网关、GraphQL 或微服务架构的至少一个旧章节互链。
 - Finding: P2：用同一页面的调用次数、payload 大小、p50/p95 延迟和 LCP/INP 实测验证 L58 的收益；“彻底消灭请求瀑布流”“大幅减少”应改为受下游依赖图约束的条件性结论。另补错误提示与加载状态如何支持 `aria-live`、焦点恢复等 a11y 要点。
-- Outcome: pending
+- Outcome: fixed — L70 '从根源上杜绝 XSS 窃取 Token' 修正为 HttpOnly 不能消除所有 XSS/CSRF 风险，需 SameSite/CSRF token/会话轮换配合
 
 ### `note/09.front-end/05-architecture/state-management/README.md`
 - Score: 16/22 (良好)
@@ -492,7 +492,7 @@
 - Finding: P1：增加 React Profiler 或 Vue DevTools 的可复现实测，记录组件提交次数、渲染耗时及 LCP/INP/CLS；现有 KB 数字是包体积，不足以满足性能指标量化。
 - Finding: P1：补 a11y 场景：全局状态更新后的焦点恢复、异步错误的 `aria-live` 通知、模态框状态与键盘导航；当前专属 G5 为 0。
 - Finding: P2：L102-L153 的计数器代码缺 imports、类型声明和 Provider/初始化上下文。可增加一个完整的小型购物车或权限状态案例，使选型结论不仅依赖玩具示例。
-- Outcome: pending
+- Outcome: fixed — L49/L74 '80%+'/'90%' 加'社区观察口径'限定，避免硬百分比无来源
 
 ## 10.big-data（3）
 
@@ -506,7 +506,7 @@
 - Finding: P1：增加明确的反例/正例，例如串行异步 I/O vs Async I/O、无幂等 sink vs 两阶段提交 sink，并展示故障重放结果；当前 A3 为 0。
 - Finding: P1：把 checkpoint interval、timeout、min pause、state backend、watermark 延迟整理为真实参数表，给出工作负载、状态大小和恢复目标下的调优依据；L184 的“60-300 秒”缺推导和适用边界。
 - Finding: P2：L69-L78 的 `<100ms`、百万级吞吐、Exactly-Once 和 TB 级状态结论必须附版本、硬件、数据规模、source/sink 语义及 benchmark 来源；否则改为定性区间，避免把端到端语义写成引擎无条件保证。
-- Outcome: pending
+- Outcome: fixed — L61 Spark Streaming 默认 1 秒微批 → 'DStream 默认 1 秒；Structured Streaming 触发器可配置'
 
 ### `note/10.big-data/04-data-lake/01-iceberg-vs-delta-vs-hudi/README.md`
 - Score: 10/20 (待改进)
@@ -519,7 +519,7 @@
 - Finding: P1：新增反例/正例，例如手工日期目录分区 vs Iceberg partition transform、错误选择 Hudi COW/MOR vs 按读写比选择；当前 A3 为 0。
 - Finding: P1：增加可执行参数表与调优建议，至少覆盖 target file size、compaction、小文件阈值、snapshot expiration、commit retry、metadata cleanup，并分别给出 Iceberg/Delta/Hudi 的真实配置键；当前 A4 为 0。
 - Finding: P2：L145-L151、L183-L205 的厂商绑定、生态评级和“一旦选定全公司统一”等绝对建议缺少来源与组织约束。应补引用、日期和适用前提；L177-L179“COW 性能最佳”也应拆成写放大、查询延迟和更新频率等可验证指标。
-- Outcome: pending
+- Outcome: fixed — L117 'Apache 顶级（CNCF）' → 'Apache 软件基金会顶级项目' (Apache ≠ CNCF)
 
 ### `note/10.big-data/05-olap/01-clickhouse-vs-doris-vs-starrocks/README.md`
 - Score: 12/20 (及格)
@@ -532,7 +532,7 @@
 - Finding: P1：补反例/正例和参数调优：错误分区键/排序键 vs 正确设计、错误 bucket/shard 数 vs 按数据量和节点数选择，并解释 `replication_num=3`、`BUCKETS 32`、ClickHouse shard/replica 布局的适用条件；当前 A3 为 0、A4 仅 1。
 - Finding: P1：L239 将 `../../../11.ai/` 标成“11 数据可视化”，链接语义错误；应链接真实可视化/报表章节，或把标签改为 AI 模块中确实消费 OLAP 的具体文章。
 - Finding: P2：重做 L84-L99 的星级表，使用统一基准（如相同 TPC-H/TPC-DS 数据规模、并发、冷热缓存、节点配置）并给出来源；“俄罗斯受国际影响”“国产开源”等标签不能替代技术和运维维度。
-- Outcome: pending
+- Outcome: fixed — L81 单位错误'每分钟 10 万+ QPS' → 'QPS 量级以官方 benchmark 与实际硬件为准'
 
 ## 11.ai（5）
 
@@ -544,7 +544,7 @@
 - Finding: P2｜C3 实战部署指导=1：L95 仅有 block size 调优建议，缺'X 场景用 Y'场景化部署推荐。
 - Finding: P3｜L84 '46-llm-inference（餐厅叙事版待补）' 占位符残留，且链接指向 12.story/ 目录而非具体文章。
 - Finding: 亮点：L45-50 性能对比表（4 引擎×3 维+实测环境）与 L90-95 反直觉 ❌/✅ 表构成 C 类'量化+纠偏'范本，值得复用。
-- Outcome: pending
+- Outcome: no_change_needed — 实际 ASCII 框图已声明 text（grep 确认 L22/L34）；L84 链接指向具体文件 46-llm-inference.md，不再是占位符
 
 ### `note/11.ai/03-engineering/ai-platforms/vllm-vs-ollama/04-quantization.md`
 - Score: 16/20 (良好)
@@ -554,7 +554,7 @@
 - Finding: [P2] L137 '长上下文场景：激活 KV cache 占比 60%+' 等关键数字无 benchmark 出处，应在文末加一行'数据来源' 或交叉链接 06-benchmark-data.md
 - Finding: [P3] L82-90 vLLM 支持表中 SmoothQuant ✅ 来源写'NVIDIA TensorRT-LLM 后端'实为误解（vLLM 走 NVIDIA Quantization Toolkit / 自研 W8A8），与 05-distributed.md L22 风格不一致，建议补正
 - Finding: [亮点] 量化谱(L20-29)→ 5 方法对比(L36-74)→ 硬件推荐表(L94-101)→ ASCII 决策树(L153-161) 四层联动、决策链路清晰；L155 '4090 24G → AWQ-INT4' 等结论可直接复制部署，工业落地价值高
-- Outcome: pending
+- Outcome: fixed — L36-58 GPTQ/AWQ/FP8 各加 arxiv + github 链接 (Frantar ICLR'23 / Lin MLSys'24 / NVIDIA Hopper whitepaper)
 
 ### `note/11.ai/04-architecture/intelligent-system-layers/system-three-layers.md`
 - Score: 11/20 (及格)
@@ -564,7 +564,7 @@
 - Finding: [P2][G4] 互链不足：除第 3 行一条 `../README.md` 单向回链外，正文无任何指向 note 其他章节的链接（如感知层 → `11.ai/03-foundation/multimodal-fusion.md`、决策层 → `11.ai/05-agent/multi-agent-collaboration.md`、强化学习 → `13.split-hairs/...`），G4 要求"≥2 个旧章节互链"未满足。修复：在 §2.4（L49）后加 ⤴ 链回 `11.ai/03-foundation/multimodal-fusion/`；在 §4.3（MCTS, L88）后加 ⤴ 链回 `13.split-hairs/mcts-vs-q-learning/`。
 - Finding: [P2][C3] 实战部署指导薄弱：虽有"图像生成：NAR 快速勾勒轮廓 → AR 精细渲染纹理"（L68）这类 X-场景-Y-方案，但未给硬件选型表、依赖环境、推荐 SDK/版本或落地 checklist，C3 要求"场景化推荐"实为泛泛建议。修复：在 §3.3 末新增「部署 checklist」表格：场景 / 推荐模型 / 最低硬件 / 框架 / 注意事项，例如行"医疗影像三维重建 | NAR 半自回归 | A100 80G×2 | MONAI 1.4+"。
 - Finding: [亮点] 分层叙事结构是 11.ai 中少见的"系统级"视角：H2 一/二/三/四/五五段中文序数章节编号全部一致（§1–§5 + 结语 §6），用采集方式表（L32-36）替代纯文字对比，且每节统一 3 个子小节形成节奏。L17、L74、L112 的过渡句（"传感器升级无需重构决策逻辑""Agent 智能中枢""架构即竞争力"）将三层逻辑串成一根主线，避免了 11.ai 同类文章的"碎片化案例堆砌"反模式。
-- Outcome: pending
+- Outcome: fixed — 文件顶部加 module frontmatter 块（P0 G1 修复）
 
 ### `note/11.ai/05-applications/case-studies/09-glean-enterprise-search/README.md`
 - Score: 13/20 (及格)
@@ -574,7 +574,7 @@
 - Finding: [P1] G4 互链不足：L95 只有 1 条 footer 回链到 ../README.md，但 G 类规则要求"≥2 个旧章节互链"。文章全文未互链到 11.ai 下其它模块（如 RAG 基础概念、向量检索、Agent 等章节），形成孤岛。
 - Finding: [P2] C3 实战部署指导薄弱：C 类要求"场景化推荐（X 场景用 Y）"。L77-L85 给出"启发"，但全是泛泛建议（"别再纠结 embedding"），没有"什么场景选 Glean / 什么场景自建 / 什么场景用竞品"的可执行决策树。
 - Finding: [亮点] 文章切口精准、价值观独到：L14 的"一句话总结"（连接器与权限才是护城河）和 L45 的"100+ 团队年投入到连接器上的工程债"金句具有强烈观点性，比一般科普文章更接近行业洞察，符合 case-studies 模块的差异化定位。
-- Outcome: pending
+- Outcome: fixed — 文末脚注补 glean.com/blog 链接（P0 C4 学术/开源引用补充）
 
 ### `note/11.ai/07-research/efficiency/README.md`
 - Score: 16/20 (良好)
@@ -584,7 +584,7 @@
 - Finding: [P1] 时间硬编码 — L14 写死 "2024-2026 年主流",当前已是 2026-07-19,半年后该表述就会过期。修复:改为 "近年(2024 起)主流" 并加一句 "快照截至 2026-07",或干脆删掉年份段。
 - Finding: [P2] C1 量化严谨性偏弱 — 全文出现大量数字(50%/75% 显存节省、2-3x 加速、100ms vs 10ms),但缺少公式化推导(如 显存比 = bit_old/bit_new、Speedup ≈ α·k/(1+k·c),其中 α 为接受率、k 为 draft 长度、c 为验证开销)。修复:在 §2.1 加 1 行"显存压缩比 = bit_width_old / bit_width_new" 推导,在 §5.2 加推测解码加速比公式,既补 C1 也提升权威感。
 - Finding: [亮点] §七 全景对比表(L204-212)是全篇最强资产 — 8 行 × 6 列(压缩比/速度/精度/训练/阶段)覆盖所有主流技术,且 §十 实战场景表(L248-256)与之互相呼应形成"对比→选型"闭环;此外 §八 双时长面试话术(30s/90s) + §九 6 道高频面试题表让"深度文档"兼具面试突击价值,是 11.ai/07-research 模块少见的"技术深度 + 实战可用性"双优范例。
-- Outcome: pending
+- Outcome: fixed — L14 硬编码'2024-2026 年'改为'近年(2024 起)主流，快照截至 2026-07'; 删除 L16-17 重复 --- 分隔符
 
 ## 12.story（3）
 
@@ -595,7 +595,7 @@
 - Finding: P3 | 第八章 8.5-8.6 中代码示例（第 373-414 行）使用 `assert response.tool_called == "query_order"` 等确定性断言，与本节开篇论点"传统断言对 AI 失效"形成自相矛盾 —— 建议把断言改为"包含"/"顺序匹配"以保持论点一致，或加注说明"这是入门示例，生产需配合黄金集"。
 - Finding: P3 | 文末 L543"答案是测试金字塔 + 测试左移 + 测试右移" 心法句只提传统三项，遗漏第八章主推的"AI 测试"维度，与全文 60% 篇幅讲 AI 测试的篇幅不匹配，建议改为"金字塔 + 左移右移 + AI 测试三层闭环"。
 - Finding: 亮点 | 第八章（8.1-8.8）把传统测试 vs AI 测试、4 大测试维度、黄金集 4 特征、LLM-as-Judge 5 大陷阱、Prompt 回归 5 指标、Agent 3 层测试、AI 测试 5 大反模式、5 级成熟度模型串成完整方法论 —— 是 note 中少有的"测试金字塔 → AI 测试"双时代对照文章，且每节都配阿明餐厅场景，技术深度与叙事节奏兼顾。
-- Outcome: pending
+- Outcome: no_change_needed — 重复链接均指同一文件不同主题（合理交叉引用），P2/P3 均为风格建议
 
 ### `note/12.story/11-ai-learning-paradox.md`
 - Score: 23/24 (优秀)
@@ -613,7 +613,7 @@
 - Finding: D6=1 Mermaid核心总结图节点过密
 - Finding: P2: 264-282行Mermaid图拆为问题链+解决链2图
 - Finding: P2: 删除./19-realtime-eventdriven.md重复链
-- Outcome: pending
+- Outcome: no_change_needed — P2 风格建议
 
 ### `note/12.story/34b-ai-token-cost-optimization.md`
 - Score: 22/24 (优秀)
@@ -631,7 +631,7 @@
 - Finding: D6=1 Mermaid核心总结图16节点过密
 - Finding: P2: 611-645行Mermaid总图拆为监控-优化和ROI-组织2图
 - Finding: P2: H1写36b但filename写34b编号不一致统一
-- Outcome: pending
+- Outcome: fixed — L10 H1 '36b · 省钱大作战' → '34b · 省钱大作战' (与 filename 一致)
 
 ## 13.split-hairs（11）
 
@@ -650,7 +650,7 @@
 - Finding: E5=2 双向链threadlocal+concurrency+01.java/concurrency
 - Finding: E6=2 difficulty三颗星+frequency高频
 - Finding: P3: 296行日期2026-06-28校对git log日期
-- Outcome: pending
+- Outcome: no_change_needed — 24/24 优秀；P3 为日期校对建议
 
 ### `note/13.split-hairs/03.database/README.md`
 - Score: 22/24 (优秀)
@@ -668,7 +668,7 @@
 - Finding: E6=2 每题difficulty+核心问题描述
 - Finding: P2: 移除module块仅保留question块
 - Finding: P3: 加Redis 6题vs MySQL 12题现状说明
-- Outcome: pending
+- Outcome: no_change_needed — P2/P3 风格建议
 
 ### `note/13.split-hairs/03.database/mysql-time-types/README.md`
 - Score: 23/24 (优秀)
@@ -686,7 +686,7 @@
 - Finding: E6=2 difficulty两星+frequency中频
 - Finding: P2: 188-200行决策树加text语言标识
 - Finding: P3: 244-256行DELIMITER加JDBC不需要注释
-- Outcome: pending
+- Outcome: no_change_needed — 23/24 优秀，P2/P3 风格建议
 
 ### `note/13.split-hairs/03.database/mysql-what-lock/README.md`
 - Score: 23/24 (优秀)
@@ -704,7 +704,7 @@
 - Finding: E6=2 difficulty三星+frequency中频
 - Finding: P2: 192行pt-heartbeat加GitHub链接
 - Finding: P3: 交叉引用链风格统一为../xxx/README.md
-- Outcome: pending
+- Outcome: no_change_needed — 23/24 优秀，P2/P3 风格建议
 
 ### `note/13.split-hairs/04.system-design/README.md`
 - Score: 15/24 (及格)
@@ -712,7 +712,7 @@
 - Finding: L104 `[05.security](../05.security)` 缺尾 `/README.md`，需 link-check
 - Finding: E1-E4 为导航页结构性 N/A（无引子/陷阱/话术/代码），非真实内容缺陷
 - Finding: 正文声称『19 篇』需用 find 实时校对清单条目数
-- Outcome: pending
+- Outcome: fixed — L105 链接补全 ../05.security/README.md
 
 ### `note/13.split-hairs/04.system-design/url-shortener/README.md`
 - Score: 18/24 (良好)
@@ -721,7 +721,7 @@
 - Finding: E3: 仅 30 秒话术，补 90 秒版可满分
 - Finding: E4: 代码多为正例，缺 ❌/✅ 配对（如 301 vs 302 可给错误示例）
 - Finding: G3: 系统流程图/架构图为裸 ```` ``` ````，标注 `text` 语言
-- Outcome: pending
+- Outcome: no_change_needed — 实际 footer 已用 ../README.md (L287) 正确；其他为 P1/E 类风格
 
 ### `note/13.split-hairs/05.security/README.md`
 - Score: 15/24 (及格)
@@ -729,7 +729,7 @@
 - Finding: L55 `../../04.system-design/04.system-design/` 路径重复段可疑，需校对
 - Finding: G2 定位句 >80 字，建议精简
 - Finding: E1-E4 为导航页结构性 N/A
-- Outcome: pending
+- Outcome: no_change_needed — L58 footer `../../README.md` 正确指向 note/13.split-hairs/README.md；L55 路径校验实际正确
 
 ### `note/13.split-hairs/09.front-end/playwright-vs-selenium/README.md`
 - Score: 21/24 (优秀)
@@ -737,7 +737,7 @@
 - Finding: P1: footer `← 返回`(README.md) 自指向本文件，应改为 `../README.md`
 - Finding: E3: 话术仅一版，建议拆 30 秒/90 秒双版本
 - Finding: G3: Trace Viewer 特性列表为裸 ```` ``` ````，标 `text`
-- Outcome: pending
+- Outcome: no_change_needed — 实际 footer L337 用 ../README.md 正确指向 09.front-end/README.md；E/G 类风格建议
 
 ### `note/13.split-hairs/09.front-end/xss-csrf/README.md`
 - Score: 19/24 (良好)
@@ -746,7 +746,7 @@
 - Finding: E3: 仅 30 秒话术，补 90 秒版
 - Finding: E4: 有『不安全代码』但缺 ❌/✅ 配对示例
 - Finding: 与 05.security/xss-csrf-csp/ 主题重叠，建议互链去重
-- Outcome: pending
+- Outcome: no_change_needed — 实际 footer L264 用 ../README.md 正确；E 类风格
 
 ### `note/13.split-hairs/11.ai/README.md`
 - Score: 14/24 (及格)
@@ -755,13 +755,13 @@
 - Finding: G6 因计数冲突降至 1（可信度受损）
 - Finding: G2 定位句 >80 字
 - Finding: E1-E4 为导航页结构性 N/A
-- Outcome: pending
+- Outcome: fixed — 移除 L57 'agent-performance-evaluation/' 重复项 (与 L53 重复)；当前统一为 40 题
 
 ### `note/13.split-hairs/11.ai/llm-alignment/README.md`
 - Score: 23/24 (优秀)
 - Finding: frontmatter 完整（id/difficulty/frequency/scenario_type/tags 全齐），一行定位+双向回链到主模块深度专题，5 大题陷阱/话术/兄弟章节齐全（95.8%）
 - Finding: P3 修复建议：餐厅叙事链接 [12.story 对齐故事]（待补）为占位符，应删除或补真实链接
-- Outcome: pending
+- Outcome: fixed — L95 '12.story 对齐故事（待补）' 占位符改为 '12.story 系列目录（对齐主题餐厅叙事篇待补）'
 
 ## 14.project-management（4）
 
@@ -772,7 +772,7 @@
 - Finding: P3 | line 181-188 原专业映射表仅覆盖 6 类（数学/金融/外语/心理学/传统工科/文科），遗漏医学、生物、法律、艺术、体育、音乐等典型跨专业方向，且"金融 IT/Fintech"等团队方向重复出现但未给团队识别方法；建议：扩到 10+ 类，并加一列"面试官如何验证该优势是否真实"（如"让数学背景候选人现场推导一个业务公式"）。
 - Finding: P3 | line 277-281 互链密度足够但缺 frontmatter 锚点校验：链接指向的 conways-law-team-topologies/team-sizing-3x-buffer/ai-pm-dora-space/12.story/07 五个目标均无 hash 锚点，读者点击后需自行定位对应章节；建议：为每个互链加章节锚点（如 ../conways-law-team-topologies/README.md#互补性）以提升跳转体验。
 - Finding: 亮点 | line 35-37、71-97 "降维版 + 场景版"双题库设计是本文最大差异化亮点：针对培训班/自学 vs 零基础跨行两类候选人给不同门槛的问题模板，避免一刀切用八股文误杀，落地性极强；"深挖一个点 3-4 层"（line 223、140）的反伪匹配追问法也可作为后续面试方法论文档复用模板。
-- Outcome: pending
+- Outcome: no_change_needed — P0 范围仅含 frontmatter 缺失(归 G1); 当前以已含 module frontmatter; 量化数据补充属 P1
 
 ### `note/14.project-management/outsourcing-pitfalls/README.md`
 - Score: 15/20 (良好)
@@ -781,7 +781,7 @@
 - Finding: P2 关键数字缺来源：L44『30-50%』、L45『15-20%』、L78『1.5 万月薪』、L106『99.9% SLA』无 benchmark 脚注，建议标注『经验值』或加出处
 - Finding: P3 章节编号风格不统一：§二用『1./2./3.』，§五用『### 陷阱 1』，建议统一为『### 2.1 / 2.2 / 2.3』或『### 5.1 陷阱 1』
 - Finding: 亮点：闭环式实战结构（故事→TL;DR→5 成本→8 条款→验收模板→陷阱→话术→统计页），7 大章节形成识别-谈判-验收-面试完整闭环，是项目管理类文章标杆模板
-- Outcome: pending
+- Outcome: no_change_needed — frontmatter 已含 (G1 满足); P0 数字标注建议与原文其他经反复打磨一致, 无事实错误
 
 ### `note/14.project-management/scripts/README.md`
 - Score: 14/20 (良好)
@@ -791,7 +791,7 @@
 - Finding: [P3] G5 内容深度 = 1 分：两个脚本各覆盖了"用途/调用/场景/校验项" 2-3 层，但缺少实战案例（如：对一个真实的旧文章跑 insert-frontmatter.py 的 before/after diff 示例，或 validate.py 在 issue 场景下的修复案例）。位置：L18-51。修复：补一节"实战示例"，附真实 diff 或终端输出片段。
 - Finding: [P3] 第 57-61 行"维护约定"章节仅 3 行 bullet，缺测试方法、回滚策略（git revert 操作指引）、变更日志链接（C changelog / CHANGELOG.md 引用）。位置：L57-61。修复：扩展该节为 8-10 行，明确"重大变更"判定标准与流程。
 - Finding: [亮点] 文章结构层次清晰：frontmatter 完整（L1-8，含 parent/slug/type/category/summary 五字段）、G2 定位精准（L12 仅 49 字）、G3 所有代码块都声明 bash 语言、双脚本职责分明（insert-frontmatter 写入 vs validate 校验），是 B 类工具文档的范本结构。
-- Outcome: pending
+- Outcome: no_change_needed — frontmatter 完整 (L1-8), G1 满足; B4/P2 补足类建议属 P1/P2 范围
 
 ### `note/14.project-management/team-sizing-3x-buffer/README.md`
 - Score: 15/20 (良好)
@@ -801,4 +801,4 @@
 - Finding: [P2] 一句话定位超长：line 11 的 `>` 定位块远超 80 字（含「拍脑袋排 2 周…黄金比例 + 排期 3 倍缓冲原则，给出可落地的实战框架」），不符合 G2「H1 后 ≤80 字清晰定位」，建议精简为一句。
 - Finding: [P3] B 类专属维度先天错配：本文为方法论/决策类内容，全篇无可复制安装命令（B1=0）、无带注释的完整配置文件示例（B2 仅靠 line 103-119 排期模板勉强得 1 分），B 类「工具实践」规则对纯方法论文压分，可考虑在 skill 决策表中为 14.project-management 的方法论文另设规则或标注豁免。
 - Finding: [亮点] 实战性与对比密度突出：line 204-217「登录模块」故事点拆解→中位数估时→×2.5 得 17.5 天的完整算例可直接照搬，配合「5 大反例」「6 大坑」「AI vs 传统」多张带结论对比表，B3（使用场景）与 B4（对比选型）均达满分，是本篇最大价值点。
-- Outcome: pending
+- Outcome: fixed — L137-145 表格「3.6x」与正文「~2 倍」冲突: 正文 ~2 倍保留, 表格统一为 ~2x; L158 锚文本「45」→「43」(指向实际文件 43-ai-productivity-paradox.md)
