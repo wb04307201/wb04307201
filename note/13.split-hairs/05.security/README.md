@@ -52,7 +52,7 @@ question:
 ## 兄弟模块
 
 - **主模块深度**：[`04.system-design/05-security`](../../04.system-design/05-security/) — 访问控制 / JWT / OAuth2 / 加密 / OWASP / SSO 全套专题
-- **同栏目兄弟题**：[`04.system-design`](../../04.system-design/) — 系统设计其他高频题
+- **同栏目兄弟题**：[`04.system-design`](../04.system-design/) — 系统设计其他高频题
 - **写作规范**：[QUESTION-FORMAT-SPEC.md](../../13.split-hairs/QUESTION-FORMAT-SPEC.md)
 
 ← [返回: 咬文嚼字（高频面试题）](../../README.md)
