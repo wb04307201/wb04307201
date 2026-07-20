@@ -40,7 +40,7 @@
 - Finding: [P1] A1 源码深度不足：JEP 304 GC 接口代码为概念性示例，应补 GarbageCollectorMXBean 真实 API
 - Finding: [P2] A4 调优：JEP 310 AppCDS 应给启动加速实测数字
 - Finding: [P3] G2 定位：H1 后无粗体定位句，建议补 'Java 10 = Java 9 后的第一个特性小版本，最重要的 var + AppCDS'
-- Outcome: skipped — P0 互链 + 内容扩写需要结构改版，超出本次任务范围
+- Outcome: skipped — P0 互链扩写 + H1 定位句补充 + AppCDS 实测数字需要内容扩写，超出本任务 fix-only 边界
 
 ### `note/01.java/version/java-9/README.md`
 - Score: 17/20 (优秀)
@@ -92,7 +92,7 @@
 - Finding: P0: 极浅导航页(19 行)必须补 4 大算法对比表(K-Means/层次/DBSCAN/GMM)+ 评估指标(轮廓系数/Davies-Bouldin)+ Mermaid 流程图
 - Finding: P1: 孤岛无互链(决策树/降维/优化)；frontmatter type=index 应改为 article 或聚合目录
 - Finding: 亮点: 是聚合目录雏形，符合 F3 导航模式
-- Outcome: skipped — P0 需要补 4 算法对比表/Mermaid 图/边界小节，超出'不扩写内容'约束
+- Outcome: skipped — index-only 导览页 P0 需要补 4 大算法对比表 + Mermaid 图 + 边界小节，超出 fix-only 约束；当前为聚合目录雏形
 
 ### `note/02.computer-basics/02-algorithms/decision-tree/README.md`
 - Score: 20/20 (优秀)
@@ -206,7 +206,7 @@
 - Finding: P2 A4 无任何参数/配置信息（与图绘制主题相关性弱，可豁免）
 - Finding: P2 G6 段落结构清晰但过短；作为导览页应明确写'本文为目录页，跳转到 4+1 与 C4 详情'
 - Finding: 亮点：分类明确（4+1 + C4），Mermaid 工具链接实用
-- Outcome: skipped — index-only 导览页 P0 需要 4+1/C4 视图示例/Mermaid 图，超出'不扩写内容'约束
+- Outcome: skipped — index-only 导览页 P0 需要 4+1 vs C4 视图示例 + Mermaid 图，超出 fix-only 约束；当前目录结构 OK
 
 ### `note/04.system-design/01-foundation/system-design-basics/it4it/functional-components.md`
 - Score: 15/20 (良好)
@@ -236,7 +236,7 @@
 - Finding: P2 A4 选型建议有 3 行但缺参数表：Kong 插件机制、APISIX 性能 benchmark 数字、限流算法参数
 - Finding: P2 G6 6 段编号（核心功能/优势/场景/对比/选型/趋势）结构 OK，但缺乏表格与代码块辅助，纯文字描述多
 - Finding: 亮点：5 款产品对比表（Kong/APISIX/AWS/Azure/Spring Cloud Gateway）+ 选型建议 + 4 个官方文档外链
-- Outcome: skipped — P0 需要补 Nginx/Kong 配置代码 + 反例对比 + 定位句，超出'不扩写内容'约束
+- Outcome: skipped — P0 需要补 Nginx/Kong 配置代码 + 反例对比 + 定位句，超出 fix-only 约束；产品对比表已含亮点
 
 ### `note/04.system-design/02-distributed/consensus-algorithms/README.md`
 - Score: 9/20 (待改进)
@@ -256,7 +256,7 @@
 - Finding: P1：L41-L43 参考链接 OK，但应加"etcd-raft 实现"等开源项目链接（与 note 中"技术深度规则"一致）
 - Finding: P2：L36 子章节链接 [Paxos] / [Raft] / [Gossip] 后面应跟每个子 README 的文件大小或字数提示，方便用户评估阅读量
 - Finding: frontmatter 自标"index-only"+ body 自我声明导览页——若坚持导览定位则评分应归入"骨架页"另算，不参与通用叶质量评分；当前评分是按 G1-G6 + A1-A4 硬套，9/20 偏低但符合"内容页标准"
-- Outcome: skipped — index-only 导览页 P0 需要扩写为内容页，超出'不扩写内容'约束
+- Outcome: skipped — index-only 导览页 P0 需要扩写为内容页（含容错公式 / Raft 演进动机），超出 fix-only 约束；自标 index-only 状态正确
 
 ### `note/04.system-design/04-high-performance/product-search/03-ranking.md`
 - Score: 17/20 (优秀)
