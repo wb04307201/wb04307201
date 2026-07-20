@@ -158,7 +158,7 @@ public class LoginController {
 
 ### @ResponseBody 工作原理
 
-```
+```text
 Java 对象 → HttpMessageConverter (MappingJackson2HttpMessageConverter) → JSON 字符串 → HTTP 响应体
 ```
 
