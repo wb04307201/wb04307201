@@ -88,7 +88,7 @@ AWS 托管的关系型数据库服务,支持多种引擎。
 
 #### 典型架构
 
-```
+```text
 应用层
   ↓
 RDS Proxy(连接池,减少连接数)
@@ -105,7 +105,7 @@ Aurora 是 AWS 自研的**云原生关系型数据库**,兼容 MySQL/PostgreSQL 
 
 #### 核心架构
 
-```
+```text
          应用层
             ↓
        Aurora Endpoint
@@ -163,7 +163,7 @@ Aurora 价格约为 RDS 的 **1.5-2 倍**,但提供更优性能与可用性。
 
 PolarDB 采用**存储计算分离 + RDMA 网络**:
 
-```
+```text
 应用层
   ↓
 PolarProxy(代理,自动读写分离)
@@ -344,7 +344,7 @@ TiDB Cloud 是 PingCAP 提供的**云原生 NewSQL 数据库**,100% 兼容 MySQL
 
 **生产核心库自建 + 周边业务上云** 是大型企业的常见方案:
 
-```
+```text
 核心交易库(自建 IDC + 异地灾备)
     ↓ Canal/DTS 同步
 周边系统(云上 RDS + 只读副本)
@@ -388,7 +388,7 @@ TiDB Cloud 是 PingCAP 提供的**云原生 NewSQL 数据库**,100% 兼容 MySQL
 
 ### 4. 跨 Region 灾备架构
 
-```
+```text
                    主 Region
                 ┌──────────┐
                 │ RDS 主库 │
