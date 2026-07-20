@@ -29,7 +29,7 @@
 
 每个模块使用 `{nn}.{英文主题}/` 格式，`nn` 为两位数编号：
 
-```
+```text
 note/
 ├── 01.java/
 ├── 02.computer-basics/
@@ -45,7 +45,7 @@ note/
 
 ### 1.2 模块内子目录
 
-```
+```text
 note/03.database/
 ├── README.md              ← 模块入口（必须有）
 ├── 01-fundamentals/       ← 编号前缀子目录
@@ -91,7 +91,7 @@ note/03.database/
 flowchart LR
     A[基础] --> B[进阶]
     B --> C[实战]
-```
+```text
 
 ---
 
@@ -253,7 +253,7 @@ graph TD
 
 使用 Conventional Commits 格式：
 
-```
+```text
 feat(note): 03.database - 新增云数据库子模块 README
 feat(note): 14.project-management - 新增项目管理主模块（6 篇 PM）
 fix(note): 09.front-end - 修正 3 处断链
