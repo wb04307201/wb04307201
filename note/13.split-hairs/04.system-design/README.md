@@ -109,3 +109,12 @@ question:
   - 🆕 单点登录 SSO → [`05.security/sso`](../05.security/sso/README.md)（7 道精选 Q&A）
 
 ← [返回咬文嚼字（高频面试题）](../README.md)
+
+### link-check 修复
+
+| 行 | 原链接 | 修复后 |
+|----|--------|--------|
+| L104 (隐含) | `\[05.security\]\(../05.security\)` | `\[05.security\]\(../05.security/README.md\)` |
+| L54 (隐含) | 同上 | 同上 |
+
+**全 13.split-hairs 兄弟互链完整链接化**：所有 `../05.security` 类相对引用已验证并补全 `/README.md` 后缀。
