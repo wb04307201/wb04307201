@@ -19,7 +19,7 @@ module:
 
 ### 1.1 朴素方案
 
-```
+```text
 patterns = [敏感词 1 万个]
 haystack = 用户评论 1000 字
 
@@ -36,7 +36,7 @@ haystack = 用户评论 1000 字
 
 ## 2. AC 自动机 3 大核心组件
 
-```
+```text
 ┌────────────────────────────────────────────────────────┐
 │ 组件 1：Trie 树                                            │
 │   - 存所有 patterns                                        │
@@ -289,3 +289,17 @@ ac.insert("fuck");
 ---
 
 ← [返回: string-algorithms 总目录](../README.md) · 上一章：[02-kmp-algorithm](02-kmp-algorithm.md)
+
+## 工业级开源库版本推荐
+
+| 库 | 当前版本 | 适用场景 | 性能参考 |
+|----|----------|----------|---------|
+| **HanLP** | hanlp ≥ 1.8.x | 中文综合 NLP | 1.8 起 AhoCorasickDoubleArrayTrie 实现稳定 |
+| **Apache Lucene** | ≥ 9.0 | 全文检索/搜索 | 内置 AhoCorasick automaton |
+| **elasticsearch-analysis-ik** | ≥ 8.0 | ES 中文分词 | 内部 AC 自动机 |
+| **Aho-Corasick Java** | ≥ 1.0 | 纯 AC 库 | 教学/原型 |
+
+**关键避坑**：
+- HanLP 1.7.x 之前 AhoCorasickDoubleArrayTrie 实现有 bug（内存泄漏），建议 1.8+
+- Lucene AC 内置功能有限（不输出 match 元数据），生产建议用 HanLP
+- 性能压测建议在 1M 文本 + 10K 模式串下测试，关注回溯 / 跳转延迟

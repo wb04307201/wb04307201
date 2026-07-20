@@ -168,7 +168,7 @@ public class OrderController {
 ```
 
 日志输出：
-```
+```text
 12:34:56.789 [http-nio-8080-exec-1] INFO [order-service,abc123,def456] c.e.o.controller.OrderController - TraceId: abc123, SpanId: def456
 ```
 
@@ -219,14 +219,14 @@ management:
 
 ## 七、调用链可视化（Zipkin UI）
 
-```
+```text
 访问 http://localhost:9411
 → 点击"Find Traces"
 → 选择服务名、TraceId
 → 查看完整调用链
 ```
 
-```
+```text
 GET /orders/123  (Span: 100ms)
 ├── GET user-service/users/1  (Span: 50ms)
 └── GET inventory-service/inventory/123  (Span: 30ms)
@@ -311,7 +311,7 @@ graph TB
 
 ## 十、完整项目结构
 
-```
+```text
 ├── gateway-service              # 网关（生成 traceId）
 ├── order-service                # 业务服务 A
 │   ├── OpenFeign 调 user-service

@@ -62,7 +62,7 @@ graph TB
 
 ## 核心流程
 
-```
+```text
 配置加载 → 包扫描 → Bean 实例化 → 依赖注入 → 处理器映射 → 启动监听
 ```
 
@@ -79,4 +79,4 @@ graph TB
 
 > 建议路径：先读 [IoC 容器](../ioc/README.md) 理解概念 → 再看 MicroRest 代码 → 对照 Spring 源码验证理解
 
-← [返回: Spring 全家桶 · minispring](README.md)
+← [返回: Spring 全家桶 · minispring](../README.md)

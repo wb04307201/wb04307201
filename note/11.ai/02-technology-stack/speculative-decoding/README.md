@@ -17,7 +17,7 @@ module:
 
 ## 🎯 核心思想
 
-```
+```text
 传统：每步生成 1 个 token，要 1 次大模型 forward
        → 100 token 要 100 次 forward
 

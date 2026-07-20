@@ -64,7 +64,7 @@ docker run -d -p 3000:8080 \
 
 ## 🧩 RAG 知识库实战
 
-```
+```text
 步骤 1: Workspace → Documents → Upload
 步骤 2: 上传 PDF / Word / Markdown / 代码文件
 步骤 3: 系统自动 Embedding（默认 sentence-transformers）

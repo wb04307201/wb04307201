@@ -29,7 +29,7 @@ Spring 提供多层次的外部化配置能力：从简单的 `@Value` 单值注
 
 ### 选型决策
 
-```
+```text
 需要绑定一组相关字段？ ─ 是 ─→ @ConfigurationProperties
               │
               否

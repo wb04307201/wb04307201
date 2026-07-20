@@ -22,7 +22,7 @@ module:
 
 ### 示例
 
-```
+```text
 输入："Hello, world!"
 
 Tokenizer 输出（以 GPT-4 为例）：
@@ -47,7 +47,7 @@ Tokenizer 输出（中文）：
 
 **思想**：从字符级别开始，**合并最频繁的对**，构建词表。
 
-```
+```text
 初始词表：['a', 'b', 'c', ...]
 训练数据："abab abc"
 
@@ -91,7 +91,7 @@ Tokenizer 输出（中文）：
 
 ### 3.2 计费
 
-```
+```text
 计费公式：费用 = (输入 token + 输出 token) × 单价
 
 示例（GPT-4，2024 年价格）：
@@ -148,7 +148,7 @@ def estimate_tokens(text):
 
 ### 5.1 输入端优化
 
-```
+```text
 ❌ 浪费：
 "请根据以下文档回答问题：[5000 字文档]。问题：文档的主题是什么？"
 
@@ -163,7 +163,7 @@ def estimate_tokens(text):
 
 ### 5.2 输出端优化
 
-```
+```text
 ❌ 浪费：
 "请用 300 字总结..."（模型倾向于接近上限）
 
@@ -201,4 +201,4 @@ def estimate_tokens(text):
 - 关联：[RAG](../../08-llmops/01-rag-vs-finetuning/README.md) — 用 RAG 减少 Token 消耗
 - 关联：[Context Engineering](../context-engineering/README.md) — Context Window 是 Token 上限
 
-← [返回: AI 知识体系 · token-billing](README.md)
+← [返回: L2 技术栈](../README.md)

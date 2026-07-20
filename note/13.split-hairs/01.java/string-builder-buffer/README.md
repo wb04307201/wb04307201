@@ -424,4 +424,4 @@ System.out.println(sb.capacity()); // 输出 22（10 * 2 + 2）
 
 - 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容
 
-← [返回: 咬文嚼字 · string-builder-buffer](README.md)
+← [返回: 咬文嚼字 · string-builder-buffer](../README.md)

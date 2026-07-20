@@ -346,7 +346,7 @@ public class LogService {
 
 > 遇到事务不生效时，按这个清单逐项检查：
 
-```
+```text
 ✅ 1. 方法是 public 吗？
 ✅ 2. 是否是自调用？（this.xxx()）
 ✅ 3. 异常被 catch 了吗？有没有重新抛出？

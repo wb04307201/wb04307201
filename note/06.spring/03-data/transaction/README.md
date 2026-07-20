@@ -266,6 +266,7 @@ public List<User> findAllUsers() {
 - [多数据源与 JTA](multi-datasource-and-jta.md)
 - [JPA 事务](jpa-transaction.md) — @Lock / @Version
 - [分布式事务](distributed/theory-and-patterns.md) — 2PC、3PC、Saga、Seata
+- [分布式事务索引](distributed/README.md) — 理论与 Seata 集成总入口
 - [08 注解/配置注解](../../08-annotations/configuration.md) — @EnableTransactionManagement
 
-← [返回: Spring 全家桶 · transaction](README.md)
+← [返回: Spring 全家桶 · transaction](../README.md)

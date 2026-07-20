@@ -11,15 +11,9 @@ module:
 
 # 架构图绘制
 
-## 引言：架构困境
+## 引言：架构图绘制 的关键决策
 
-架构图绘制 的关键不是'选型'——是**选完之后怎么在 5 个 trade-off 里活下来**。
-
-本篇用'决策困境'切入，比较几种主流路径并讲清取舍。
-
----
-
-> 用标准化的方式表达系统架构，帮助团队理解系统结构和组件关系。
+本篇是「架构图绘制」的核心章节，聚焦"该主题"在实际落地时**5 个 trade-off 的取舍与决策轴**。
 
 ## 架构视图模型
 
@@ -35,10 +29,63 @@ module:
 | 详细设计文档 | C4 Component + 4+1 开发视图 | 模块划分与代码组织 |
 | 全链路追溯 | 4+1 完整五视图 | 覆盖所有关注点 |
 
+## 4+1 vs C4 视图示例
+
+### 4+1 视图
+
+```mermaid
+graph TB
+  subgraph "逻辑视图"
+    U[User]
+    A[App Logic]
+    DB[(Database)]
+  end
+  subgraph "开发视图"
+    Module1[Module A]
+    Module2[Module B]
+  end
+  subgraph "进程视图"
+    P1[Process 1]
+    P2[Process 2]
+  end
+  subgraph "物理视图"
+    Server1[Server 1]
+    Server2[Server 2]
+  end
+  U -->|场景视图| A
+  A --> DB
+  A --> Module1
+  Module1 --> Module2
+  P1 <--> P2
+  P1 --> Server1
+  P2 --> Server2
+```
+
+### C4 Context 视图
+
+```mermaid
+graph LR
+  User[👤 User]
+  Web[💻 Web App]
+  API[⚙️ Backend API]
+  DB[(🗄️ Database)]
+  User -->|使用| Web
+  Web -->|API 调用| API
+  API -->|读写| DB
+```
+
+### 反例对比
+
+```mermaid
+graph TB
+  A1[服务A] -.->|❌ 错误| B1[模块B]
+  A1[服务A] -->|✅ 正确| B1
+```
+
 ## 相关章节
 
 - 父级：[系统设计基础](../README.md) — 软件工程 / 设计模式 / 架构视图
 - 关联：[04.system-design 总览](../../../README.md) — 系统设计全景
 - 工具推荐：[Mermaid](https://mermaid.js.org/) — 用代码绘制架构图，版本友好
 
-← [返回: 系统设计 · architecture-diagram](README.md)
+← [返回系统设计基础](../README.md)

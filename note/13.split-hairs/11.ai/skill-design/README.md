@@ -43,7 +43,7 @@ question:
 
 **答**：过决策树 —— 三个判断问题。
 
-```
+```text
 Q1：每次会话都要用 vs 特定场景才用？
 ├─ 每次都要 → 改 CLAUDE.md（不要写 Skill）
 └─ 特定场景 → Q2
@@ -261,4 +261,4 @@ metrics:
 
 > 📅 2026-07-06 · 咬文嚼字 · 11.ai · ⭐⭐⭐
 
-← [返回: 咬文嚼字 · skill-design](README.md)
+← [返回: 咬文嚼字 · skill-design](../README.md)

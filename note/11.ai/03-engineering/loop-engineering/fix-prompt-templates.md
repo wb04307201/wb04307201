@@ -56,7 +56,7 @@ SYNTAX_FIX_PROMPT = """
 当前代码：
 ```{lang}
 {code}
-```
+```text
 
 请修复语法错误，保持代码逻辑不变。
 
@@ -81,7 +81,7 @@ TYPE_FIX_PROMPT = """
 当前代码：
 ```{lang}
 {code}
-```
+```text
 
 类型签名：
 {type_signature}
@@ -110,12 +110,12 @@ Stack trace：
 被测试的函数：
 ```{lang}
 {function_code}
-```
+```text
 
 测试代码：
 ```{lang}
 {test_code}
-```
+```text
 
 请：
 1. 分析失败原因（不是机械改，而是理解）
@@ -143,7 +143,7 @@ Stack trace：
 当前代码：
 ```{lang}
 {code}
-```
+```text
 
 环境信息：{env_info}
 
@@ -203,7 +203,7 @@ def calculate_discount(amount, member_level):
     if amount > 1000:
         return amount * 0.9
     return amount * 0.95
-```
+```text
 
 ## 测试失败
 
@@ -234,35 +234,35 @@ test_calculate_discount_gold_member：
 
 ### 5.1 原则 1：具体 > 抽象
 
-```
+```text
 ❌ "请修复代码"
 ✅ "第 13 行的 TypeError: x is not a function，请改用 .call()"
 ```
 
 ### 5.2 原则 2：完整 > 部分
 
-```
+```text
 ❌ 只传错误信息
 ✅ 错误 + 代码 + 测试 + 历史尝试 + 约束
 ```
 
 ### 5.3 原则 3：结构化 > 自由文本
 
-```
+```text
 ❌ "测试失败了"
 ✅ "test_calculate_discount 失败：expected 1900, actual 1800, at line 42"
 ```
 
 ### 5.4 原则 4：上下文 > 凭空
 
-```
+```text
 ❌ 让 Agent 凭空修复
 ✅ 提供代码 + 错误 + 上次尝试 + 历史
 ```
 
 ### 5.5 原则 5：反馈 > 命令
 
-```
+```text
 ❌ "修复这个 bug"
 ✅ "分析失败原因 + 修改代码 + 验证通过"
 ```
@@ -318,35 +318,35 @@ SCOPED_FIX_PROMPT = """
 
 ### ⚠️ 反模式 1：只传错误信息
 
-```
+```text
 ❌ "fix this: TypeError: x is not a function"
 ✅ 完整 prompt（任务+代码+错误+上下文）
 ```
 
 ### ⚠️ 反模式 2：让 Agent 凭空修复
 
-```
+```text
 ❌ "请修复登录 bug"
 ✅ "测试 test_login 失败，错误信息... 代码..."
 ```
 
 ### ⚠️ 反模式 3：不传上次尝试
 
-```
+```text
 ❌ Agent 第 5 次还尝试同样错误的方法
 ✅ 传 previous_attempts 让 Agent 不要重复
 ```
 
 ### ⚠️ 反模式 4：不限定范围
 
-```
+```text
 ❌ Agent 修改了测试代码蒙混过关
 ✅ 限制"不能修改测试"
 ```
 
 ### ⚠️ 反模式 5：缺口化修复
 
-```
+```text
 ❌ 只让测试通过（不管代码质量）
 ✅ 要求"语义正确，不只是为了过测"
 ```

@@ -56,7 +56,7 @@ question:
 - **索引反映的不是实时代码** —— 检索结果可能误导 AI
 
 实际场景：
-```
+```text
 09:00 工程师 commit 修改了 auth.py 的 50 行
 09:05 工程师问 AI："刚才那个 auth 改动是干嘛的？"
 09:05 AI 检索 RAG 索引 → 返回的是 09:00 之前的内容
@@ -181,4 +181,4 @@ RAG 不是被淘汰，是**场景化**：
 
 > 📅 2026-07-03 · 咬文嚼字 · 11.ai · ⭐⭐⭐⭐⭐
 
-← [返回: 咬文嚼字 · claude-code-agentic-search](README.md)
+← [返回: 咬文嚼字 · claude-code-agentic-search](../README.md)

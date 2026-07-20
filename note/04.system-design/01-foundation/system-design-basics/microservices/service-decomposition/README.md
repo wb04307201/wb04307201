@@ -69,7 +69,7 @@ graph TB
 > **业务能力的精细化**——把每个业务能力进一步细分为**限界上下文**（[../ddd/](../../ddd/README.md)）。
 
 **关系链**：
-```
+```text
 业务能力（TOGAF L1/L2）→ 限界上下文（DDD 战略设计）→ 微服务
 ```
 
@@ -134,7 +134,7 @@ graph TB
 
 ### 3.1 业务能力映射法
 
-```
+```text
 步骤 1：画出业务能力地图（TOGAF L1 + L2）
 步骤 2：每个能力 = 一个候选服务
 步骤 3：检查"过粗"能力（> 50000 行 / 团队 > 15 人）→ 进一步拆分
@@ -259,7 +259,7 @@ graph TB
 
 ### 5.1 初始结构（单体）
 
-```
+```text
 ecommerce-monolith/
 ├── order/         # 订单模块
 ├── payment/       # 支付模块
@@ -271,7 +271,7 @@ ecommerce-monolith/
 
 ### 5.2 第一轮拆分（按业务能力）
 
-```
+```text
 services/
 ├── order-service/         # 订单 CRUD
 ├── payment-service/       # 支付
@@ -283,7 +283,7 @@ services/
 
 ### 5.3 第二轮拆分（按限界上下文）
 
-```
+```text
 services/
 ├── order-service/         # 订单生命周期
 ├── pricing-service/       # 价格计算（独立演化）⭐
@@ -296,7 +296,7 @@ services/
 
 ### 5.4 第三轮拆分（按变化频率）
 
-```
+```text
 services/
 ├── order-service/
 ├── pricing-service/
@@ -347,4 +347,4 @@ services/
 - [DDD 限界上下文](../../ddd/README.md) — 服务边界的业务依据
 - [演进与组织](../migration-and-organization/README.md) — 拆分的实施路径
 
-← [返回: 系统设计 · service-decomposition](README.md)
+← [返回微服务](../README.md)

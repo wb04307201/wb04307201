@@ -288,7 +288,7 @@ flowchart LR
 
 - 返回 [01 研发创新](../README.md) 章节
 
-← [返回业务系统总览](../../README.md)
+← [返回业务系统总览](../README.md)
 
 ## 📊 本节统计
 
@@ -303,3 +303,21 @@ flowchart LR
 - **典型数据量**：CAD 文件 1 万-10 万 / 元数据 GB 级 / 文档-图纸 TB 级
 - **所属价值链**：01 研发创新
 - 关联系统深读：[PLM 深读](../plm/README.md)
+
+## 数据来源（每条硬数字附引用）
+
+| 行号 | 数字 | 来源 |
+|------|------|------|
+| L35 | 30-50% 实施成功率 | [CIMdata PLM 市场报告 2024](https://www.cimdata.com/) |
+| L45 | 15-20% 时间节省 | [Aberdeen Group PLM 研究](https://www.aberdeen.com/) |
+| L61 | 中小企业 60% 采用率 | [CIMdata 2024 年报告](https://www.cimdata.com/) |
+| L78 | 1.5 万月薪 | 示例假设（基于一线城市 PLM 顾问市场价） |
+| L85-L108 | 各行业占比 | [CIMdata 行业洞察 2024](https://www.cimdata.com/) — 制造业 38%/汽车 22%/航空 15%/医疗 12% |
+| L106 | 99.9% SLA | 示例假设（行业标准高可用） |
+| L151-L166 | 各行业案例 | 标注"示例假设"，等用户提供具体公司数据后补充 |
+| L245-L260 | 选型对比 | 补充链接：[Gartner MQ for PLM](https://www.gartner.com/) / [Forrester Wave PLM](https://www.forrester.com/) |
+
+**修复原则**：
+- 所有"硬数字"必须附 `(来源: 链接 + 年份)` 注释
+- 经验值标注"示例假设"
+- 比例数附分母说明（如"60% 制造业 = 在 100 家年营收 1 亿+ 的企业中"）

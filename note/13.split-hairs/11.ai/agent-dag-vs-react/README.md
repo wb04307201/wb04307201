@@ -92,7 +92,7 @@ Agent：思考 → 调 query 1 → 调 query 2 → 调 query 3 → ... 想怎么
 
 ## 五、选型决策树
 
-```
+```text
 Q1: 任务流程是否明确？
 ├── 是 → DAG Workflow
 └── 否 → Q2
@@ -147,4 +147,4 @@ Q4: 是否需要灵活性 > 稳定性？
 
 > 📅 2026-06-30 · 咬文嚼字 · 高频面试 + 实战必会 · ⭐⭐⭐⭐⭐
 
-← [返回: 咬文嚼字 · agent-dag-vs-react](README.md)
+← [返回: 咬文嚼字 · agent-dag-vs-react](../README.md)

@@ -170,4 +170,4 @@ public class PaymentService {
 - [超时](../timeout/README.md) — 超时后可选择降级而非立即失败
 - [混沌工程](../chaos-engineering/README.md) — 通过注入故障验证降级预案有效性
 
-← [返回: 系统设计 · service-degradation](README.md)
+← [返回 高可用](../README.md)

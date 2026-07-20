@@ -73,7 +73,7 @@ WebAssembly（缩写 WASM）是一种**可移植的二进制指令格式**，设
 
 ### 3.2 性能优势
 
-```
+```text
 任务：100 万像素的图像模糊
 
 JavaScript：850ms
@@ -175,7 +175,7 @@ fn main(req: Request) -> Result<Response, Error> {
 
 ### 7.1 传统插件系统的困境
 
-```
+```text
 宿主（Host）需要执行不可信代码：
   - 浏览器执行第三方 JS（XSS 风险）
   - 数据库执行 UDF（SQL 注入）
@@ -184,7 +184,7 @@ fn main(req: Request) -> Result<Response, Error> {
 
 ### 7.2 WASM 插件优势
 
-```
+```text
 WASM 沙箱特性：
   ✅ 线性内存（无法越界）
   ✅ 类型安全
@@ -280,4 +280,4 @@ asc hello.ts --outFile hello.wasm
 
 ---
 
-← [返回系统设计总览](../../README.md) · 📅 2026-06-28
+← [返回 新兴技术](../README.md)

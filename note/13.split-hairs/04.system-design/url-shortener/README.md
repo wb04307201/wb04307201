@@ -41,7 +41,7 @@ question:
 
 ### 1.1 系统流程
 
-```
+```text
 生成短链：
   用户 → POST /api/shorten {longUrl: "https://..."}
        → 生成长 URL 的短码（如 "aB3xK9"）
@@ -64,7 +64,7 @@ question:
 
 **Base62 编码**：用 `0-9 + a-z + A-Z`（62 个字符）编码数字。
 
-```
+```text
 6 位 Base62 = 62^6 ≈ 568 亿个短码（够用 50 年）
 7 位 Base62 = 62^7 ≈ 3.5 万亿个短码
 ```
@@ -91,7 +91,7 @@ public String toBase62(long num) {
 
 ### 2.1 高并发架构
 
-```
+```text
                         ┌──────────────┐
 用户请求 ──────────────→ │   CDN 边缘    │ ← 热门短链缓存（302 响应直接返回）
                         └──────┬───────┘
@@ -213,7 +213,7 @@ while (db.exists(shortCode)) {
 
 **答**：异步收集点击事件——
 
-```
+```text
 用户点击短链 → 302 重定向（同步，低延迟）
             → 同时发送点击事件到 MQ（异步）
             → 消费者批量写入分析表
@@ -278,10 +278,46 @@ CREATE TABLE click_log (
 - **缓存设计**：[缓存设计模式](../../../04.system-design/04-high-performance/cache-patterns/README.md) — Cache-Aside / Write-Behind
 - **分库分表**：[分库分表](../../../04.system-design/04-high-performance/database-optimization/db-sharding/README.md) — 数据分片策略
 - **CDN**：[CDN 加速](../../../04.system-design/04-high-performance/cdn/README.md) — 边缘缓存
-- **主模块**：[`04.system-design`](../../../../04.system-design/) — 系统设计知识体系
+- **主模块**：[`04.system-design`](../../../04.system-design/) — 系统设计知识体系
 
 ## 相关章节
 
-- 深度阅读：[`04.system-design`](../../04.system-design/README.md) — 主模块详细内容
+- 深度阅读：[`04.system-design`](../../../04.system-design/README.md) — 主模块详细内容
 
-← [返回: 咬文嚼字 · url-shortener](README.md)
+← [返回: 咬文嚼字 · url-shortener](../README.md)
+
+## 标准陷阱格式（5 大反模式 → 5 标准陷阱）
+
+| ❌ 反模式 | ✅ 标准陷阱 | 真相 |
+|---------|------------|------|
+| ❌ 直接 MD5 截前 8 位 | ✅ 陷阱 1：哈希冲突 | 不同输入可能产生相同短码（生日悖论：8 位 16^8 = 43 亿，100 万 ID 冲突率 ~1.2%） |
+| ❌ 数据库自增 ID | ✅ 陷阱 2：枚举爬取 | 顺序 ID 易被遍历爬取所有短链（Twitter 2010 危机） |
+| ❌ 单库无分库 | ✅ 陷阱 4：高可用缺失 | 单库宕机 = 短链全失效；必须多库 + 缓存双层 |
+| ❌ 无防刷 | ✅ 陷阱 5：恶意爆破 | 高频短码生成可耗尽 ID；必须限流 + 验证码 |
+| ❌ 无跳转日志 | ✅ 陷阱 3：合规风险 | GDPR / 数据安全要求记录跳转，无法追溯 = 罚款 |
+
+**修复代码示例（陷阱 1 哈希冲突）**：
+
+```java
+// ❌ 反例：MD5 截前 8 位
+String shortCode = DigestUtils.md5Hex(id.toString()).substring(0, 8);
+
+// ✅ 正例：base62 编码 + 重试
+String hash = DigestUtils.sha256Hex(id + salt).substring(0, 8);
+int attempts = 0;
+while (urlRepository.existsByCode(hash) && attempts < 5) {
+    hash = DigestUtils.sha256Hex(id + salt + attempts).substring(0, 8);
+    attempts++;
+}
+```
+
+## 90 秒面试话术模板
+
+> Q: 短链系统 1 万 QPS 怎么设计？
+> A: **3 层架构**：
+> 1. **接入层**：nginx + LVS 负载均衡
+> 2. **缓存层**：Redis 集群（短码→长链映射），命中率 95%
+> 3. **存储层**：MySQL 分库分表（按 hash 拆分）+ 布隆过滤器（防穿透）
+> 
+> 写流程：发号器（Snowflake）→ 写 MySQL → 写 Redis → 返回短码
+> 读流程：查 Redis（命中返回）→ 未命中查 MySQL → 回写 Redis

@@ -17,7 +17,7 @@ module:
 
 ## 1. 优化方向全景
 
-```
+```text
 优化方向 ┬── 算法层（AC / Bloom / 双数组 Trie）
         ├── 缓存层（Caffeine / Redis）
         ├── 架构层（分布式 / 多级）
@@ -38,7 +38,7 @@ module:
 
 ### 2.2 优化 2：Bloom Filter 预检
 
-```
+```text
 朴素：每条文本都过 AC（即使是"今天天气好"等明显无敏感词）
      → 90% 流量做无用功
 
@@ -89,7 +89,7 @@ public List<String> filterWithRedis(String text) {
 
 ### 2.7 优化 7：异步队列削峰
 
-```
+```text
 高峰 100w QPS → 同步过滤 50w → 通过
                       → 50w 命中 → 异步二审（队列缓冲）
                                   → 消费端弹性扩容

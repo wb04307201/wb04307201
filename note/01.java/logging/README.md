@@ -240,7 +240,7 @@ SLF4J（Simple Logging Facade for Java）是一个日志门面，它为各种日
 
 ### 架构设计
 
-```
+```text
 应用程序
     |
     v
@@ -351,7 +351,7 @@ public class Slf4jApiExample {
 
 ### 性能对比（吞吐量，越高越好）
 
-```
+```text
 Log4j 2 (Async)  ████████████████████████████████████████ ~5,000,000 条/秒
 Log4j 2 (Sync)   ███████████████████~ 1,500,000 条/秒
 Logback (Async)  █████████████~       1,200,000 条/秒
@@ -473,7 +473,7 @@ logging:
 
 传统的文本格式适合人类阅读，使用 PatternLayout 定义输出模板：
 
-```
+```text
 2025-06-04 10:30:45.123 [main] INFO  c.e.service.OrderService - 订单 12345 创建成功, 用户: user_001
 ```
 
@@ -559,7 +559,7 @@ JSON 格式适合机器处理，是日志聚合系统（ELK、Splunk）的首选
 
 ### 架构模型
 
-```
+```text
 业务线程                    后台 I/O 线程
    |                            |
    |  1. 创建 LogEvent          |
@@ -623,7 +623,7 @@ JSON 格式适合机器处理，是日志聚合系统（ELK、Splunk）的首选
 
 ### RingBuffer 核心原理
 
-```
+```text
          +---+---+---+---+---+---+---+---+
          | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |  <-- 预分配的数组
          +---+---+---+---+---+---+---+---+
@@ -640,7 +640,7 @@ JSON 格式适合机器处理，是日志聚合系统（ELK、Splunk）的首选
 
 ### 性能影响
 
-```
+```text
 同步写日志: 业务线程 --[写日志 2ms]--> 继续执行
             总耗时: 业务逻辑 + 2ms
 
@@ -803,7 +803,7 @@ public class TraceIdFilter implements Filter {
 
 配合日志格式，每条日志自动带上 traceId：
 
-```
+```text
 2025-06-04 10:30:45.123 [http-8080-1] INFO  OrderService [traceId=a1b2c3d4] - 订单创建成功
 ```
 

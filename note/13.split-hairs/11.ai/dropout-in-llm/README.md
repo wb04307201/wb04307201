@@ -196,4 +196,4 @@ question:
 
 > 📅 2026-07-02 · 咬文嚼字 · 11.ai · ⭐⭐⭐⭐
 
-← [返回: 咬文嚼字 · dropout-in-llm](README.md)
+← [返回: 咬文嚼字 · dropout-in-llm](../README.md)

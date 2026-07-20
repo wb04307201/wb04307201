@@ -73,6 +73,7 @@ flowchart TD
 
 ### 3.1 理论基础
 
+- [CAP & BASE](cap-and-base/README.md) — CAP 定理与 BASE 模型的统一入口
 - [CAP 定理](cap-and-base/cap/README.md) — 一致性 / 可用性 / 分区容错性的三选二
 - [BASE 模型](cap-and-base/base/README.md) — 基本可用 / 软状态 / 最终一致性
 
@@ -136,7 +137,7 @@ flowchart TD
 
 ### 5.1 共识算法怎么选？
 
-```
+```text
 是否强需求：多个节点必须就"一个值"达成一致？
 ├── 是 → 一致性要求？
 │   ├── 极强（金融、配置）→ Raft（etcd / Consul）
@@ -149,7 +150,7 @@ flowchart TD
 
 ### 5.2 分布式 ID 怎么选？
 
-```
+```text
 场景
 ├── 数据库主键 + 趋势递增 + 可排序 → Snowflake / Leaf（雪花算法）
 ├── 全局唯一即可（不在乎顺序）→ UUID v4
@@ -160,7 +161,7 @@ flowchart TD
 
 ### 5.3 分布式事务怎么选？
 
-```
+```text
 一致性要求
 ├── 强一致（钱必须不能错）→ 2PC（Seata AT 模式）/ TCC
 ├── 最终一致（可接受秒级不一致）→ Saga / 本地消息表
@@ -170,7 +171,7 @@ flowchart TD
 
 ### 5.4 分布式锁怎么选？
 
-```
+```text
 场景
 ├── 性能敏感 + 可容忍偶尔失效 → Redis（Redlock）
 ├── 强一致 + 不在意性能 → ZooKeeper / etcd
@@ -182,7 +183,7 @@ flowchart TD
 
 > **KISS 原则：能不上就不上，能用单机用单机。**
 
-```
+```text
 Q1: 单机能扛住吗？
 ├── 是 → 不上
 └── 否 → Q2: 上分布式还是垂直扩展？

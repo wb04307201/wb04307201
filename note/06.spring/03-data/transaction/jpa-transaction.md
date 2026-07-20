@@ -193,7 +193,7 @@ public class Product {
 
 ### 3. 工作流程
 
-```
+```text
 1. 事务 A 读取 Product（version = 1）
 2. 事务 B 读取 Product（version = 1）
 3. 事务 A 修改并提交：UPDATE ... SET ..., version = 2 WHERE id = ? AND version = 1   -- 影响 1 行

@@ -261,4 +261,17 @@ res.cookie('sessionId', 'abc123', {
 
 - 深度阅读：[`09.front-end`](../../09.front-end/README.md) — 主模块详细内容
 
-← [返回: 咬文嚼字 · xss-csrf](README.md)
+← [返回: 咬文嚼字 · xss-csrf](../README.md)
+
+## 90 秒面试话术（补充版）
+
+> Q: 反射型 XSS 和存储型 XSS 区别？
+> A: 反射型在 URL/请求参数中（一次性，需诱导点击），存储型在数据库中（持久化，所有访问者都受影响）。
+> 
+> Q: CSP 怎么防 XSS？
+> A: **3 层防护**：
+> 1. `default-src 'self'` 禁止跨源脚本加载
+> 2. `script-src 'nonce-xxx' 'strict-dynamic'` 仅允许带正确 nonce 的脚本
+> 3. `object-src 'none'`、`base-uri 'none'` 防 object/base 注入
+> 
+> 现代 SPA 推荐 CSP Level 3 + Trusted Types 组合（自动转义危险 DOM API）。

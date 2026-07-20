@@ -107,4 +107,4 @@ end
 - [数据库优化概览](../database-optimization/README.md) — 静态资源与动态请求分离
 - [Java 性能优化](../java/README.md) — 边缘计算的 Java 运行时
 
-← [返回: 系统设计 · cdn](README.md)
+← [返回 高性能设计](../README.md)

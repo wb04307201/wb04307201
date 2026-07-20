@@ -17,7 +17,7 @@ module:
 
 ## 0. 面试高频拷问
 
-```
+```text
 Q：async/await 必须使用 try/catch 吗？
 ```
 
@@ -182,7 +182,7 @@ if (err) {
 
 ## 5. 一句话速查
 
-```
+```text
 async/await 错误处理选择：
 - 需要立即兜底（默认值 / 上报）→ try/catch
 - 需要冒泡给上层 → .catch()

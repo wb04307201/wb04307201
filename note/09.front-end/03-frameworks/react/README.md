@@ -162,9 +162,9 @@ function ProductList({ items, onSelect }) {
 }
 
 // React 19 Compiler 后：无需手动 memo
-// 编译器自动分析依赖、自动 memo
+// 编译器自动分析依赖、自动 memo（仍需遵守 React Compiler 规则，不可变输入）
 function ProductList({ items, onSelect }) {
-  const sorted = items.sort((a, b) => a.price - b.price)
+  const sorted = [...items].sort((a, b) => a.price - b.price)
   return sorted.map(item => <Card key={item.id} item={item} onClick={() => onSelect(item.id)} />)
 }
 ```

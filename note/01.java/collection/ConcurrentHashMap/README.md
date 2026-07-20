@@ -16,7 +16,7 @@ module:
 
 ## 一、为什么需要 ConcurrentHashMap
 
-```
+```text
 单线程场景：HashMap 足矣（O(1) 查找，最快）
 
 多线程场景下三个选择：
@@ -43,7 +43,7 @@ module:
 
 ### 整体架构
 
-```
+```text
 ConcurrentHashMap
 ├── Segment[0]  ── ReentrantLock ── HashEntry[] table ── [e0]→[e1]→null
 ├── Segment[1]  ── ReentrantLock ── HashEntry[] table ── [e0]→null
@@ -74,7 +74,7 @@ V put(K key, int hash, V value, boolean onlyIfAbsent) {
 
 ### 读写策略
 
-```
+```text
 读操作（get）：
   1. 第一次 hash 定位 Segment
   2. 读取 Segment 的 table 引用（volatile）
@@ -92,7 +92,7 @@ V put(K key, int hash, V value, boolean onlyIfAbsent) {
 
 ### JDK 7 的局限性
 
-```
+```text
 1. 并发度固定：最多 16 个线程同时写（Segment 数量在构造时确定）
 2. 内存浪费：16 个 Segment，每个有自己的 HashEntry[] 数组
 3. 锁粒度粗：一个 Segment 包含多个桶，同 Segment 内的写仍然互斥
@@ -107,7 +107,7 @@ V put(K key, int hash, V value, boolean onlyIfAbsent) {
 
 ### 整体架构
 
-```
+```text
 ConcurrentHashMap
 └── Node<K,V>[] table（一个大的 Node 数组，和 HashMap 结构相同）
     ├── table[0]  → null
@@ -135,7 +135,7 @@ ConcurrentHashMap
 | **JVM 优化** | 需要手动 lock/unlock | 偏向锁 → 轻量级锁 → 重量级锁 |
 | **内存开销** | 每个 Segment 有 ReentrantLock 对象 | 每个 Node 内置 mark word 做锁 |
 
-```
+```text
 JDK 6 之后 synchronized 有了重大优化：
   - 偏向锁：无竞争时几乎没有开销
   - 轻量级锁：低竞争时 CAS 自旋
@@ -168,7 +168,7 @@ static final <K,V> void setTabAt(Node<K,V>[] tab, int i, Node<K,V> v) {
 }
 ```
 
-```
+```text
 tabAt()    → Unsafe.getObjectVolatile → volatile 读（确保读到最新值）
 casTabAt() → Unsafe.compareAndSwapObject → CAS 原子写（无锁插入空桶）
 setTabAt() → Unsafe.putObjectVolatile → volatile 写（确保修改立即可见）
@@ -180,7 +180,7 @@ setTabAt() → Unsafe.putObjectVolatile → volatile 写（确保修改立即可
 
 ### Node 体系
 
-```
+```text
 Node 体系（类继承结构）：
 
 Node<K,V>                   ← 基础节点（链表节点）
@@ -234,7 +234,7 @@ static final class ForwardingNode<K,V> extends Node<K,V> {
 
 ### 内存布局示意
 
-```
+```text
 ┌──────────────────────────────────────────────────────────┐
 │                    ConcurrentHashMap                      │
 ├──────────────────────────────────────────────────────────┤
@@ -264,7 +264,7 @@ map.put(key, value);
 // key 或 value 为 null → 立即抛 NullPointerException
 ```
 
-```
+```text
 put(key, value)
   │
   ├─ 1. 计算 spread(hash) = (h ^ (h >>> 16)) & HASH_BITS
@@ -393,7 +393,7 @@ public V get(Object key) {
 }
 ```
 
-```
+```text
 get() 的核心特点：
   1. 全程不加锁
   2. volatile 读保证看到最新值
@@ -404,7 +404,7 @@ get() 的核心特点：
 
 ### 为什么 get() 不需要加锁
 
-```
+```text
 Node 的三个字段设计：
   - hash: final（不可变）
   - key:  final（不可变）
@@ -452,7 +452,7 @@ private final Node<K,V>[] initTable() {
 }
 ```
 
-```
+```text
 初始化策略：
   1. 检查 sizeCtl：如果 < 0，说明有其他线程在初始化 → Thread.yield() 等待
   2. CAS 竞争：将 sizeCtl 设为 -1，CAS 成功则获得初始化权
@@ -467,7 +467,7 @@ private final Node<K,V>[] initTable() {
 
 ### 整体流程
 
-```
+```text
 扩容触发：addCount(1L, binCount) → size >= threshold
 
 步骤：
@@ -496,7 +496,7 @@ private final Node<K,V>[] initTable() {
 
 ### 迁移示意
 
-```
+```text
 旧 table（容量 16）                              新 table（容量 32）
 ┌───┬───┬───┬───┬───┬───┬───┬───┐               ┌───┬───┬───┬───┬───┬───┬───┬───┐
 │ 0 │ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │               │ 0 │ 1 │ 2 │ 3 │ 4 │ 5 │ 6 │ 7 │
@@ -530,7 +530,7 @@ final Node<K,V>[] helpTransfer(Node<K,V>[] tab, Node<K,V> f) {
 }
 ```
 
-```
+```text
 扩容期间 put 的行为：
   遇到 ForwardingNode → 不等待，不阻塞
   → 主动帮忙搬运数据（helpTransfer）
@@ -549,7 +549,7 @@ final Node<K,V>[] helpTransfer(Node<K,V>[] tab, Node<K,V> f) {
 
 ### JDK 7 vs JDK 8
 
-```
+```text
 JDK 7：
   - 每个 Segment 维护自己的 count
   - size() = Σ Segment[i].count
@@ -578,7 +578,7 @@ static final class CounterCell {
 }
 ```
 
-```
+```text
 CounterCell[] 的设计思路（LongAdder 同款）：
 
         baseCount
@@ -631,7 +631,7 @@ private final void addCount(long x, int check) {
 
 ### 为什么不用 AtomicInteger
 
-```
+```text
 AtomicInteger 在高并发下的问题：
   所有线程 CAS 同一个变量 → 大量 CAS 失败 → 自旋重试 → CPU 浪费
 
@@ -658,7 +658,7 @@ public long mappingCount() {
 }
 ```
 
-```
+```text
 sumCount() 的计算：
   long sum = baseCount;
   if ((as = counterCells) != null) {
@@ -679,7 +679,7 @@ sumCount() 的计算：
 
 ### 三者的锁机制
 
-```
+```text
 Hashtable：
   每个 public 方法都加了 synchronized → 全表锁
   put() 时整个 Hashtable 被锁定，其他线程全部阻塞
@@ -709,7 +709,7 @@ ConcurrentHashMap：
 
 ### 性能对比
 
-```
+```text
 假设 16 个线程同时写一个 Map：
 
 Hashtable / synchronizedMap：
@@ -785,7 +785,7 @@ map.putIfAbsent("A", 1);           // 只接受常量值
 map.computeIfAbsent("A", k -> 1);  // 可以接受计算函数（懒执行）
 ```
 
-```
+```text
 computeIfAbsent 的原子性保证：
   1. 检查 key 是否存在
   2. 如果不存在，调用 mappingFunction 计算 value
@@ -811,7 +811,7 @@ map.compute(userId, (k, oldProfile) -> {
 });
 ```
 
-```
+```text
 compute 的执行时机：
   key 不存在：remappingFunction(key, null)
   key 存在：  remappingFunction(key, oldValue)
@@ -836,7 +836,7 @@ map.merge("tags", Set.of("java"), (old, newVal) -> {
 });
 ```
 
-```
+```text
 merge 的执行逻辑：
   key 不存在  → 插入 value
   key 存在    → remappingFunction(oldValue, value) → 更新 value
@@ -886,7 +886,7 @@ int count = map.reduceValues(2, v -> 1, Integer::sum);  // 统计数量
 
 ## 十二、TreeBin 的读写锁机制
 
-```
+```text
 红黑树节点用 TreeBin 包裹，TreeBin 内部使用轻量级读写锁：
 
 锁状态（lockState 的位运算）：
@@ -1010,7 +1010,7 @@ int size = map.size();           // 超过 21 亿会截断
 
 ### 7. 选择合适的并发 Map
 
-```
+```text
 读多写少，元素少且小 → CopyOnWriteArrayList + 手动维护映射
 读多写少，需要有序   → ConcurrentSkipListMap
 读写混合，高并发     → ConcurrentHashMap（首选）

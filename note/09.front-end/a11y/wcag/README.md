@@ -4,7 +4,7 @@ module:
   slug: computer-basics/wcag
   type: article
   category: 主模块子文章
-  summary: WCAG - 网页内容无障碍指南 本应该很简单，- **全称**：Web Content Accessibility Guidelines（网页内容无障碍指南）
+  summary: WCAG（Web Content Accessibility Guidelines）网页内容无障碍指南：POUR 四大原则与 1.0→3.0 版本演进。
 -->
 
 # WCAG - 网页内容无障碍指南

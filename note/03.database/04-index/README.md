@@ -56,7 +56,7 @@ B+ 树是 MySQL InnoDB 引擎使用的核心索引结构。
 - **叶子节点**存储完整数据行，且通过双向链表相连（支持范围查询）
 - 3~4 层的 B+ 树可以索引数千万行数据
 
-```
+```text
               [30, 60]                    ← 非叶子节点（只存键）
              /    |    \
         [10,20]  [40,50]  [70,80,90]      ← 非叶子节点
@@ -134,7 +134,7 @@ SELECT * FROM articles WHERE MATCH(title, content) AGAINST('MySQL 优化');
 
 **回表**：通过非聚簇索引查到主键后，再回到聚簇索引查找完整数据行。两次 B+ 树遍历。
 
-```
+```text
 非聚簇索引：name = '张三' → 找到主键 id = 5
 聚簇索引：id = 5 → 找到完整数据行
 ```
@@ -262,7 +262,7 @@ EXPLAIN SELECT * FROM users WHERE name = '张三' AND age > 25;
 
 联合索引 `(name, age)`,SQL: `SELECT * FROM users WHERE name LIKE '张%' AND age > 25`
 
-```
+```text
 存储引擎:  找到所有 name LIKE '张%' 的索引项
 Server 层: 从聚簇索引回表读取完整行 → 在 Server 层过滤 age > 25
 ```
@@ -271,7 +271,7 @@ Server 层: 从聚簇索引回表读取完整行 → 在 Server 层过滤 age > 
 
 ### 2. 优化后(ICP 启用)
 
-```
+```text
 存储引擎:  找到 name LIKE '张%' 的索引项 → 在存储引擎层用 age > 25 过滤
           → 只回表 200 个真正满足的索引项
 Server 层: 读 200 行,无需再次过滤 age
@@ -310,7 +310,7 @@ SELECT * FROM users WHERE age BETWEEN 20 AND 30;
 
 ### 2. 优化后
 
-```
+```text
 步骤 1: 二级索引找到 1000 个主键
 步骤 2: 在内存中对主键排序 → [id=1, id=5, id=12, id=33, ...]
 步骤 3: 按主键顺序回表 → 顺序 I/O
@@ -373,7 +373,7 @@ MySQL 通过采样估算(非精确),可通过 `ANALYZE TABLE` 刷新统计。
 
 ### 2. 索引选择性公式
 
-```
+```text
 选择性 = Cardinality / 表行数
 ```
 

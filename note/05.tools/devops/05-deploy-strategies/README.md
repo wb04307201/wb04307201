@@ -41,7 +41,7 @@ module:
 
 ## 三、Recreate（停机部署）
 
-```
+```text
 v1 ─────┐
         ↓ 停机
 v2 ─────┘
@@ -56,7 +56,7 @@ v2 ─────┘
 
 ## 四、Rolling Update（滚动更新）— K8s 默认
 
-```
+```text
 v1 [v1] [v1] [v1]
    ↓
 v2 [v2] [v1] [v1]
@@ -86,7 +86,7 @@ spec:
 
 ## 五、Blue-Green（蓝绿部署）
 
-```
+```text
         Load Balancer
              │
    ┌─────────┴─────────┐
@@ -129,7 +129,7 @@ spec:
 
 ## 六、Canary（金丝雀发布）
 
-```
+```text
 v1: [v1] [v1] [v1] [v1]  ← 90% 流量
 v2: [v2]                   ← 10% 流量（金丝雀）
 
@@ -241,7 +241,7 @@ spec:
 
 ## 七、A/B Testing（A/B 测试）
 
-```
+```text
 对照组 v1: 50% 流量
 实验组 v2: 50% 流量
    ↓ 收集数据（转化率、跳出率）
@@ -290,7 +290,7 @@ if (unleash.isEnabled('new-feature', context)) {
 
 ## 九、5 大策略选型决策
 
-```
+```text
 Q1: 能否容忍 1 分钟停机？
 ├── 是 → Recreate
 └── 否 ↓

@@ -18,7 +18,7 @@ module:
 ## 🎯 Bi-Encoder vs Cross-Encoder
 
 **Bi-Encoder（向量检索）**：
-```
+```text
 Query ─┐
        ├─→ [各自 Embedding] → [余弦相似度]
 Doc  ──┘
@@ -27,7 +27,7 @@ Doc  ──┘
 - 缺点：query 和 doc 独立编码，**没看到彼此**
 
 **Cross-Encoder（Reranker）**：
-```
+```text
 Query ─┐
        ├─→ [联合 BERT] → [相关性分数 0-1]
 Doc  ──┘

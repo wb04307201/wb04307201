@@ -17,7 +17,7 @@ module:
 
 ## 1. 整体架构
 
-```
+```text
 ┌──────────────────────────────────────────────────────────┐
 │  Spring Authorization Server (IdP)                       │
 │  - 颁发 Access Token + ID Token (JWT)                     │
@@ -235,7 +235,7 @@ public class UserController {
 
 ### 3.5 测试登录流程
 
-```
+```text
 1. 浏览器访问 https://app-a.com/login
    → 重定向到 https://idp.example.com/oauth2/authorize?response_type=code&...
 
@@ -280,7 +280,7 @@ refreshTokenTimeToLive: 7d    # Refresh Token 7 天
 
 ### 4.3 Scope 设计
 
-```
+```text
 openid    —— OIDC 必选
 profile   —— 用户画像（姓名/头像）
 email     —— 邮箱

@@ -40,7 +40,7 @@ for (int i = 0; i < 1_000_000; i++) {
 HashMap扩容（Resize）是Java集合中最昂贵的操作之一。理解内部机制对设计高性能系统至关重要。
 
 **扩容触发条件：**
-```
+```text
 threshold = capacity * loadFactor  // 默认：16 * 0.75 = 12
 当 size > threshold 时触发扩容
 ```
@@ -80,7 +80,7 @@ newTab[j + oldCap] = hiHead;
 | 线程阻塞 | 可忽略 | 毫秒级 | 请求超时风险高 |
 
 **连锁反应：**
-```
+```text
 扩容触发 → 分配新数组(双倍内存) → 遍历+重哈希+迁移 → 旧数组变垃圾 → 可能触发GC → Stop-The-World → 延迟飙升
 ```
 
@@ -210,7 +210,7 @@ public void analyzeBucketDistribution(HashMap<?,?> map) throws Exception {
 ## 四、最佳实践
 
 **1. 容量规划**
-```
+```text
 需要多少元素？
 ├── <1000 → 默认容量(16)即可
 ├── 1000-10万 → 预分配：expectedSize/0.75*1.3
@@ -309,4 +309,4 @@ public class HashMapResizeBenchmark {
 
 - 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容
 
-← [返回: 咬文嚼字 · hashmap-resizing](README.md)
+← [返回: 咬文嚼字 · hashmap-resizing](../README.md)

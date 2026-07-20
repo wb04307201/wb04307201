@@ -51,7 +51,7 @@ Spring 定义了 **7 种传播行为**，精确控制嵌套事务的归属。
 
 Spring 通过 `AbstractPlatformTransactionManager` 抽象类实现传播行为的控制逻辑，核心流程如下：
 
-```
+```text
 getTransaction() → determinePropagationBehavior() → doBegin() / doSuspend() / doResume()
 ```
 
@@ -370,4 +370,4 @@ public void methodWithCheckedException() throws Exception {
 
 - 深度阅读：[`06.spring`](../../06.spring/README.md) — 主模块详细内容
 
-← [返回: 咬文嚼字 · transactional-propagation](README.md)
+← [返回: 咬文嚼字 · transactional-propagation](../README.md)

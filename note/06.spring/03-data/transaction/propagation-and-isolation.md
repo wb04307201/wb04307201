@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring/transaction/propagation-and-isolation
+  type: article
+  category: 主模块子文章
+  summary: Spring 事务的 7 种传播行为与 4 种隔离级别，含 TransactionSynchronization 与 @TransactionalEventListener。
+-->
+
 # 事务传播行为与隔离级别
 
 > ⬅️ [返回事务总览](README.md) | [事务失效场景](failure-cases.md)
@@ -8,7 +17,7 @@
 
 ## 🎯 一句话定位
 
-**传播行为 = 事务嵌套规则**（7 种），**隔离级别 = 并发安全等级**（4 种）。90% 场景用 `REQUIRED`（默认）+ `READ_COMMITTED`（MySQL InnoDB 默认）即可。
+**传播行为 = 事务嵌套规则**（7 种），**隔离级别 = 并发安全等级**（4 种）。90% 场景用 `REQUIRED`（默认）+ `REPEATABLE_READ`（MySQL InnoDB 默认）即可。
 
 ---
 
@@ -342,7 +351,7 @@ public class OrderEventListener {
 
 ## 🤔 思考
 
-1. **REQUIRES_NEW 为什么要挂起当前事务？** 因为数据库连接绑定在事务上，挂起 = 释放连接，新事务获取新连接。
+1. **REQUIRES_NEW 为什么要挂起当前事务？** 因为数据库连接绑定在事务上，挂起 = 暂存当前事务资源（连接仍可能被持有），新事务需要从连接池获取独立连接；连接池容量不足时可能等待甚至死锁，请确保连接池容量 ≥ 并发线程数。
 2. **NESTED 和 REQUIRES_NEW 区别？** NESTED 是 SAVEPOINT（部分回滚），主事务回滚会连带回滚；REQUIRES_NEW 是完全独立。
 3. **READ_COMMITTED 会有不可重复读吗？** 会，因为同事务内两次读之间，其他事务可能修改并提交。
 4. **为什么默认 REPEATABLE_READ？** MySQL InnoDB 通过 MVCC + 间隙锁在 REPEATABLE_READ 下也基本避免了幻读。

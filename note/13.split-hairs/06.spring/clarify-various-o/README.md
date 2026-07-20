@@ -214,7 +214,7 @@ public interface UserMapper {
 
 ### 4. 命名规范化
 在大型项目中，通过包名和类名强化语义：
-```
+```text
 com.example.user.domain.po.UserPO
 com.example.user.domain.dto.UserDTO
 com.example.user.domain.vo.UserVO
@@ -252,4 +252,4 @@ com.example.user.infrastructure.dao.UserDao
 
 - 深度阅读：[`06.spring`](../../06.spring/README.md) — 主模块详细内容
 
-← [返回: 咬文嚼字 · clarify-various-o](README.md)
+← [返回: 咬文嚼字 · clarify-various-o](../README.md)

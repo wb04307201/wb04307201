@@ -35,7 +35,7 @@ module:
 
 Context ≠ Prompt。Prompt 是用户输入的一句话，Context 是 LLM 看到的**所有信息**：
 
-```
+```text
 Context = 
   + 系统提示（System Prompt）
   + 用户消息历史（Conversation History）
@@ -94,7 +94,7 @@ Context =
 
 LLM 对 Context **开头和结尾的信息记忆最准确**，**中间的信息容易被忽略**：
 
-```
+```text
 [最准确] 系统提示 → 历史最早 → ... → 历史最近 → 当前问题 [最准确]
               ← 容易被忽略 →
 ```
@@ -190,4 +190,4 @@ context = get_relevant_files(query)  # 5K tokens
 - Memory 维度：[Agent Memory 架构（Memory 是 Context 三大件之一）](../../04-architecture/agent-memory/README.md)
 - 🆕 **长上下文策略全景**：[Agent 长上下文架构 6 大策略](../../04-architecture/agent-context/README.md) —— Chunking / RAG / Memory / Sliding Window / Sub-Agents / Long-Context LLMs 组合 + 决策树
 
-← [返回: AI 知识体系 · context-engineering](README.md)
+← [返回: L2 技术栈](../README.md)

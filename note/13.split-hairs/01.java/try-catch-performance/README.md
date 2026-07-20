@@ -64,7 +64,7 @@ for (int i = 0; i < 1_000_000; i++) {
 
 try-catch 在字节码层面**不是指令**，而是一张**异常表**（Exception Table）：
 
-```
+```text
 // 字节码（简化）
   0: iload_1           // 正常路径的指令
   1: iadd
@@ -306,4 +306,4 @@ dao.save(entity);  // 让调用者处理
 
 - 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容
 
-← [返回: 咬文嚼字 · try-catch-performance](README.md)
+← [返回: 咬文嚼字 · try-catch-performance](../README.md)

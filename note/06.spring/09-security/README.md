@@ -78,7 +78,7 @@ graph TB
 
 这是安全领域最基础的概念区分，面试高频考点：
 
-```
+```text
 ┌─────────────────────────────────────────────────────────┐
 │                    Spring Security 安全模型               │
 ├──────────────────────────┬──────────────────────────────┤
@@ -95,7 +95,7 @@ graph TB
 
 **认证流程简化**：
 
-```
+```text
 用户提交凭证 → AuthenticationFilter → AuthenticationManager
                                          ↓
                                     AuthenticationProvider
@@ -212,7 +212,7 @@ void unauthenticatedAccessDenied() throws Exception {
 
 ## 🗺️ 学习路径建议
 
-```
+```text
 第 1 步：filter-chain/     → 理解 SecurityFilterChain 架构（基础中的基础）
 第 2 步：authentication/   → 掌握认证机制（密码/JWT/OAuth2）
 第 3 步：authorization/    → 掌握授权机制（方法级/URL 级/ACL）

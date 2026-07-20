@@ -94,7 +94,7 @@ static final class Node {
 
 ### 2.2 独占 acquire 流程
 
-```
+```text
 tryAcquire(arg)
     └─→ 成功：直接返回
     └─→ 失败：addWaiter(Node.EXCLUSIVE)
@@ -111,7 +111,7 @@ tryAcquire(arg)
 
 ### 2.3 共享 acquire 流程
 
-```
+```text
 tryAcquireShared(arg)
     └─→ >= 0：成功，setHeadAndPropagate(node, arg)
               ├─→ setHead(node)：更新 head
@@ -136,7 +136,7 @@ public final boolean release(int arg) {
 
 ### 2.5 Condition 条件队列
 
-```
+```text
 await() → 将节点从同步队列转移到条件队列 → 释放锁 → park()
 signal() → 从条件队列取首节点 → 重新入同步队列 → 等待 acquire
 ```
@@ -292,4 +292,4 @@ class OneShotLatch {
 
 - 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容
 
-← [返回: 咬文嚼字 · aqs](README.md)
+← [返回: 咬文嚼字 · aqs](../README.md)

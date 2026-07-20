@@ -137,7 +137,7 @@ public interface BeanFactoryPostProcessor {
 
 **执行时机**：
 
-```
+```text
 1. 加载配置 → 解析为 BeanDefinition
 2. ★ 调用所有 BeanFactoryPostProcessor  ← 在这里可以修改 BeanDefinition
 3. 实例化 Bean

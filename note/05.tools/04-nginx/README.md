@@ -17,8 +17,7 @@ module:
 
 | 序号 | 主题 | 核心内容 | 子 README |
 |------|------|---------|-----------|
-| 01 | [Nginx](nginx/) | 反向代理 / 负载均衡配置、与前端配合 | [README](README.md) |
-| 02 | [Pingora](pingora/) | Cloudflare 开源 Rust 代理框架 | [README](pingora/README.md) |
+| 01 | Pingora | Cloudflare 开源 Rust 代理框架 | [README](pingora/README.md) |
 
 ### 1.1 学习路径
 
@@ -157,3 +156,37 @@ Cloudflare 基于 Rust 开源的下一代代理框架。核心优势：单线程
 ---
 
 ← [返回工具链总览](../README.md)
+
+## 配置示例补充（新增 B2 可执行性提升）
+
+### 最小可跑通的反向代理 + 负载均衡
+
+```nginx
+# /etc/nginx/conf.d/myapp.conf
+upstream myapp_backend {
+    server 127.0.0.1:8081 max_fails=3 fail_timeout=30s;
+    server 127.0.0.1:8082 max_fails=3 fail_timeout=30s;
+    keepalive 32;
+}
+
+server {
+    listen 80;
+    server_name myapp.example.com;
+    
+    location / {
+        proxy_pass http://myapp_backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+### 启动与验证
+
+```bash
+nginx -t                              # 测试配置
+systemctl reload nginx              # 重新加载（不中断）
+curl -H "Host: myapp.example.com" http://localhost/health  # 验证
+```

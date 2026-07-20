@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring/validation/cross-field
+  type: article
+  category: 主模块子文章
+  summary: Spring Validation 跨字段与类级别校验：@ScriptAssert / 类级 @Constraint / @Valid 容器元素 / @AssertTrue。
+-->
+
 # 跨字段校验（Cross-Field Validation）
 
 单个字段上的 `@NotBlank`、`@Size` 等注解只能看到自身值，业务中"开始日期必须早于结束日期"、"两次输入密码必须一致"等规则需要**跨字段**或**类级别**校验。本节介绍四种主流方案。
@@ -7,8 +16,9 @@
 `@ScriptAssert` 在类级别用一个脚本引擎（JSR-223，如 JavaScript、Groovy、Kotlin）写出跨字段表达式：
 
 ```java
-@ScriptAssert(lang = "javascript",
-              script = "_.startDate.isBefore(_.endDate)",
+@ScriptAssert(lang = "groovy",
+              script = "_this.startDate.isBefore(_this.endDate)",
+              alias = "_this",
               message = "开始日期必须早于结束日期")
 public class DateRangeDTO {
     private LocalDate startDate;
@@ -16,9 +26,9 @@ public class DateRangeDTO {
 }
 ```
 
-- `_.fieldName` 引用同对象字段。
+- `_this.fieldName` 引用同对象字段（默认别名是 `_this`，不是 `_`）。
 - 失败时抛 `ConstraintViolation` 指向类本身（`propertyPath` 为空）。
-- **优点**：零代码、声明式。**缺点**：脚本无 IDE 支持、调试困难、性能略低（每次校验启动脚本引擎），复杂规则不推荐。
+- **注意**：JDK 15+ 默认不再自带 Nashorn，需额外引入 Groovy/Kotlin 引擎；脚本引擎会引入安全与性能开销，复杂规则不推荐。
 
 ## 二、自定义 ConstraintValidator（**类级别，推荐**）
 
@@ -119,3 +129,11 @@ public class SignupDTO {
 | `@AssertTrue` 方法 | 简单布尔规则、即时验证 | 低 | 推荐 |
 
 > 多场景分组请结合 [validation-annotations-and-usage.md 第 7 节](validation-annotations-and-usage.md#7-分组校验与-groupsequence)。
+
+---
+
+## 相关章节
+
+- ⬅️ [返回 Validation 总览](README.md)
+- [注解与分组校验](validation-annotations-and-usage.md)
+- [自定义校验器（字段级）](custom-validator.md)

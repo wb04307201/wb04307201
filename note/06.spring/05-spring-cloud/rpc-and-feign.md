@@ -325,7 +325,7 @@ public interface UserFeignClient { ... }
 
 ### 1. 命名规范
 
-```
+```text
 FeignClient 接口名 = 目标服务名 + FeignClient
 例：UserFeignClient、OrderFeignClient
 ```

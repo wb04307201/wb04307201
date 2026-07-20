@@ -17,7 +17,7 @@ module:
 
 ## 1. 4 道防线全景
 
-```
+```text
 ┌────────────────────────────────────────────────────────────┐
 │ 防线 1：组件渲染错误                                          │
 │   React: ErrorBoundary / Vue: errorHandler + errorCaptured    │

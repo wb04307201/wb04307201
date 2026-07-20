@@ -19,19 +19,19 @@ module:
 
 RLHF 的目标是最大化：
 
-```
+```text
 max π(y|x) subject to: reward(y|x) 高，KL(π || π_ref) 小
 ```
 
 DPO 的关键证明：**最优策略有闭式解**！
 
-```
+```text
 π*(y|x) ∝ π_ref(y|x) · exp(r(x,y) / β)
 ```
 
 **反推**：给定偏好对，直接用对数似然比就能表达 reward：
 
-```
+```text
 r(x, y) = β · log(π*(y|x) / π_ref(y|x)) + β · log Z(x)
 ```
 

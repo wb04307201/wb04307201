@@ -148,6 +148,17 @@ module:
 - 🆕 [贪心算法深度专题](greedy-algorithms/README.md) — 局部最优 → 全局最优 · 证明方法 · 经典问题 · 反模式
 - [字符串算法深度专题](string-algorithms/README.md) — Trie / KMP / AC 自动机
 
+## 机器学习与高级算法专题导航
+
+| 专题 | 一句话定位 |
+|------|-----------|
+| [聚类算法](clustering/README.md) | 无监督分组——K-Means 迭代划分 · 簇内相似 / 簇间差异 |
+| [决策树](decision-tree/README.md) | ID3 / C4.5 / CART 三大经典模型 · 信息增益 / 增益率 / Gini |
+| [降维算法](dimensionality-reduction/README.md) | PCA 主成分分析 · 高维投影到低维 · 信息保留与可视化 |
+| [集成学习](ensemble/README.md) | Random Forest / XGBoost / LightGBM · 多弱学习器组合成强学习器 |
+| [优化算法](optimization/README.md) | 梯度下降 · 沿负梯度方向迭代 · 凸 / 非凸问题求解 |
+| [搜索算法](search/README.md) | BFS / DFS / 二分 / A* / 分支限界 · 状态空间精确与启发式搜索 |
+
 ## 相关章节
 
 - 上游：[`02.computer-basics`](../README.md) — 本模块入口

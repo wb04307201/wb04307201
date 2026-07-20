@@ -257,7 +257,7 @@ public void incrementViewCount(Long articleId) {
 
 ## 六、模式选型决策树
 
-```
+```text
 你的业务对一致性要求？
 │
 ├─ 强一致（写后立即可读）

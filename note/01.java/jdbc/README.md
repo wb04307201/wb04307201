@@ -16,7 +16,7 @@ JDBC（Java Database Connectivity）是 Java 标准中用于执行 SQL 语句的
 
 ## 一、JDBC 架构
 
-```
+```text
 应用层 → JDBC API (java.sql / javax.sql)
             ↓
         JDBC Driver Manager
@@ -607,7 +607,7 @@ public class UserDao {
 
 ## 十四、JDBC 在技术栈中的位置
 
-```
+```text
 用户代码
     ↓
 ┌─────────────────────────────────┐

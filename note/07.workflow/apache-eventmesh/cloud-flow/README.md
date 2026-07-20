@@ -222,7 +222,7 @@ states:
 ## 5. EventMesh Runtime 启动与部署
 
 ```bash
-# 1. 下载发行版（替换为当前最新版本）
+# 1. 下载发行版（本文验证版本：1.10.0；请按需替换为当前最新版本并核对官方发布说明）
 wget https://archive.apache.org/dist/eventmesh/1.10.0/apache-eventmesh-1.10.0-bin.tar.gz
 tar -xzf apache-eventmesh-1.10.0-bin.tar.gz && cd apache-eventmesh-1.10.0
 
@@ -280,4 +280,4 @@ curl http://127.0.0.1:10106/workflow/list | jq '.data[].name'
 
 > 提示：本目录以 Mermaid 图表为主，建议结合 [事件驱动 README](../README.md) 的 §三 Apache EventMesh 与 §五 12306 案例一起阅读
 
-← [返回 07 工作流](../../../README.md)
+← [返回 07 工作流](../../README.md)

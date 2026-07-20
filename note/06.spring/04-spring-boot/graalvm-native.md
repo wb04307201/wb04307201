@@ -38,7 +38,7 @@ Native Image 的收益：
 
 Spring Boot 3 引入 **Spring AOT Engine**，在 `process-aot` 阶段提前执行所有"运行期反射 / 代理 / Bean 解析"工作，把结果写进 `target/spring-aot/main/` 目录。
 
-```
+```text
 ┌────────────────────────────────────────┐
 │  Maven/Gradle process-aot              │
 │  ├── AOT 引擎扫描所有 @Configuration   │

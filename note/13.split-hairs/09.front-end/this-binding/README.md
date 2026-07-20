@@ -157,7 +157,7 @@ arrow.call({}); // 仍输出外层 this，无法修改
 
 ## 三、优先级
 
-```
+```text
 new 绑定 > 显式绑定 > 隐式绑定 > 默认绑定
 ```
 
@@ -300,4 +300,4 @@ class Component {
 
 - 深度阅读：[`09.front-end`](../../09.front-end/README.md) — 主模块详细内容
 
-← [返回: 咬文嚼字 · this-binding](README.md)
+← [返回: 咬文嚼字 · this-binding](../README.md)

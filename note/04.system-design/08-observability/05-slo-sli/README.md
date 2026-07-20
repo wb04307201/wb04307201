@@ -127,7 +127,7 @@ graph TD
 
 ### 5.1 什么是 Error Budget
 
-```
+```text
 Error Budget = 1 - SLO
 
 示例：SLO = 99.9%

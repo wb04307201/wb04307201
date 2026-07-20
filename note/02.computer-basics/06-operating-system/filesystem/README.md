@@ -15,7 +15,7 @@ module:
 
 ## 一、文件系统层次结构
 
-```
+```text
 ┌───────────────────────────────────────────┐
 │            用户空间应用                      │
 │      (Java / Nginx / MySQL / ...)        │
@@ -82,7 +82,7 @@ df -i
 
 dentry 将**路径名**映射到 **inode**：
 
-```
+```text
 路径解析: /home/user/document.txt
 
 / ──dentry──► inode(dir)
@@ -108,7 +108,7 @@ dentry cache (dcache):
 | **删除原文件** | 仍可通过硬链接访问 | 悬空链接（dangling） |
 | **目录** | 不能硬链接目录 | 可以链接目录 |
 
-```
+```text
 硬链接:
   file_a.txt (dentry) ──► inode 1234 ──► 数据块
   file_b.txt (dentry) ──► inode 1234 ──► 同上（st_nlink = 2）
@@ -124,7 +124,7 @@ dentry cache (dcache):
 
 ### 3.1 文件描述符 (File Descriptor)
 
-```
+```text
 进程的文件描述符表:
 ┌─────┬──────────────────────────┐
 │ FD  │ 指向                      │
@@ -200,7 +200,7 @@ try (InputStream in = new FileInputStream("data.bin")) {
 
 ### 4.2 阻塞 vs 非阻塞 vs 多路复用 示意
 
-```
+```text
 阻塞 I/O (每个连接一个线程):
   Thread-1: read(fd1) ──阻塞──► 数据就绪 ──► 处理
   Thread-2: read(fd2) ──阻塞──► 数据就绪 ──► 处理
@@ -235,7 +235,7 @@ I/O 多路复用 (epoll):
 
 ### 5.2 epoll 工作流程
 
-```
+```text
 1. 创建 epoll 实例
    int epfd = epoll_create(1024);  // 返回 epoll FD
 
@@ -282,7 +282,7 @@ I/O 多路复用 (epoll):
 
 ### 6.1 原理
 
-```
+```text
 写操作:
   应用 ──write()──► Page Cache ──(异步刷盘)──► 磁盘
                    (脏页 dirty page)
@@ -374,7 +374,7 @@ while (true) {
 
 ### 7.3 Netty 的 EventLoop 模型
 
-```
+```text
 Netty EventLoop (1 个线程):
 ┌─────────────────────────────────────┐
 │  EventLoop                          │

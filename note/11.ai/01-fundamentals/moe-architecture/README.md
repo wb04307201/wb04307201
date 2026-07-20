@@ -28,7 +28,7 @@ module:
 
 ### 基础 MoE 层
 
-```
+```text
 输入 x (batch × seq × dim)
   ↓
 Router(x) = softmax(W_g · x)  # 路由分数

@@ -16,7 +16,10 @@ question:
 
 # AI 咬文嚼字
 
-> AI 高频面试题与新概念深挖，对齐主模块 [`11.ai`](../../11.ai/)。18 题 = 9 篇纯面试题（幻觉 / 思维 / 生产力悖论 / 代码流失 / ROI / Agent Memory / Agent 性能量化 / Token 经济学 / LLM Benchmark / RAG 权限隔离）+ 9 篇主模块配套精炼版（Prompt / Context / Harness / Loop / Transformer / Token / RAG / Function Calling / Agent DAG）。
+## H1 后一句话定位
+
+> **AI 咬文嚼字 = 40 题** — 一题一文（幻觉 / 思维 / 生产力悖论 / 代码流失 / ROI / Agent Memory / Agent 性能量化 / Token 经济学 / LLM Benchmark / RAG 权限隔离）+ 主模块配套精炼版（Prompt / Context / Harness / Loop / Transformer / Token / RAG / Function Calling / Agent DAG）。
+> AI 高频面试题与新概念深挖，对齐主模块 [`11.ai`](../../11.ai/)。**40 题**（find 校对 2026-07-19）= 一题一文（幻觉 / 思维 / 生产力悖论 / 代码流失 / ROI / Agent Memory / Agent 性能量化 / Token 经济学 / LLM Benchmark / RAG 权限隔离）+ 主模块配套精炼版（Prompt / Context / Harness / Loop / Transformer / Token / RAG / Function Calling / Agent DAG）。
 
 > ⚠️ **定位说明**：本目录所有文章都是**面试深挖版**（陷阱 + 反直觉 + 30 秒话术，50-80 行）。完整概念文档见主模块对应位置（README 末尾"深度阅读"区有链接）。
 
@@ -24,7 +27,7 @@ question:
 
 ## 🎯 读者角色速查（按身份挑题）
 
-> 38 题按难度与场景覆盖 6 类读者角色，按身份挑题效率最高。
+> **40 题**按难度与场景覆盖 6 类读者角色（find 校对 2026-07-19），按身份挑题效率最高。
 
 | 读者角色 | 推荐题号 | 推荐阅读顺序 | 关键场景 |
 |---------|---------|------------|---------|
@@ -37,7 +40,7 @@ question:
 
 ---
 
-## 文章清单（20 题 = 9 篇纯面试题 + 11 篇精炼版）
+## 文章清单（共 **40 题**，find 校对 2026-07-19）
 
 ### 🎯 真正的面试题（一题一文）
 
@@ -54,7 +57,6 @@ question:
 | [RAG 权限隔离设计](rag-permission-isolation/) | ⭐⭐⭐⭐⭐ | 4 种隔离方案 + pre/post-filtering + ACL 同步 + 多租户 |
 | [AI 编程 Token 经济学](ai-coding-token-economics/) | ⭐⭐⭐⭐ | 9.6 万 Token 中位数 + 杠杆率 + Token 悖论 + 企业案例 |
 | [LLM Benchmark 深度剖析](llm-benchmark/) | ⭐⭐⭐⭐ | MMLU/HumanEval/Arena ELO + 数据污染 + 5 大问题 |
-| **🆕 [Agent Evaluation 评测系统](agent-performance-evaluation/)** | ⭐⭐⭐⭐⭐ | 阿里一面原题 · 6 大评测维度 + 5 种方法 + 4 阶段 Pipeline + 7 反模式 | [agent-evaluation](../../11.ai/08-llmops/agent-evaluation/README.md) |
 
 ### 📚 概念精炼版（主模块配套面试深挖）
 
@@ -62,10 +64,12 @@ question:
 |------|------|---------|----------|
 | [Prompt Engineering](prompt-engineering/) | ⭐⭐⭐⭐ | 8 种核心技巧 + 陷阱 + 注入防御 | [02-technology-stack/prompt-engineering](../../11.ai/02-technology-stack/prompt-engineering/README.md) |
 | 🆕 [Temperature=0 误区](temperature-zero-myth/) | ⭐⭐⭐⭐ | 5 大根因 + 3 大防御 + Provider 差异 + 90 秒面试话术 | [03-consistency-and-failure-handling](../../11.ai/03-engineering/llm-production-thinking/03-consistency-and-failure-handling.md) |
-| [Context Engineering](context-engineering/) | ⭐⭐⭐⭐ | 4 大原则 + Lost in Middle + 演进路径 | [02-technology-stack/context-engineering](../../11.ai/02-technology-stack/context-engineering/README.md) |
+| [Context Engineering](context-engineering-interview/) | ⭐⭐⭐⭐ | 4 大原则 + Lost in Middle + 演进路径 | [02-technology-stack/context-engineering](../../11.ai/02-technology-stack/context-engineering/README.md) |
 | [Harness Engineering](harness-engineering/) | ⭐⭐⭐⭐ | 4 大 Harness 类型 + OpenSpec + 4 原则 | [03-engineering/harness-engineering](../../11.ai/03-engineering/harness-engineering/README.md) |
 | [Loop Engineering](loop-engineering/) | ⭐⭐⭐⭐ | 3 大组件 + 6 大陷阱（含 Fresh Context 架构）+ Ralph Wiggum Loop | [03-engineering/loop-engineering](../../11.ai/03-engineering/loop-engineering/README.md) |
 | [Transformer 架构](transformer/) | ⭐⭐⭐⭐⭐ | Self-Attention / QKV / Positional Encoding / FFN | [01-fundamentals/transformer](../../11.ai/01-fundamentals/transformer/README.md) |
+| [LLM 推理优化](llm-inference/) | ⭐⭐⭐⭐ | Continuous Batching / PagedAttention / KV Cache / 量化 | [02-technology-stack/llm-inference-optimization](../../11.ai/02-technology-stack/llm-inference-optimization/README.md) |
+| [LLM 对齐方法](llm-alignment/) | ⭐⭐⭐⭐ | RLHF / DPO / Constitutional AI / 5 大对齐方法 | [03-engineering/llm-alignment](../../11.ai/03-engineering/llm-alignment/README.md) |
 | [Token 原理](token/) | ⭐⭐⭐ | BPE / SentencePiece / Tokenizer / 计费模型 | [02-technology-stack/token-billing](../../11.ai/02-technology-stack/token-billing/README.md) |
 | [RAG 检索增强生成](rag/) | ⭐⭐⭐⭐⭐ | Embedding + Vector DB + Retrieval + Generation | [08-llmops/01-rag-vs-finetuning](../../11.ai/08-llmops/01-rag-vs-finetuning/README.md) |
 | [Function Calling / Tool Use](function-calling/) | ⭐⭐⭐⭐⭐ | 工具调用原理 / Schema / ReAct Agent 集成 | [02-technology-stack/function-calling](../../11.ai/02-technology-stack/function-calling/README.md) |

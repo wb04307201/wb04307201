@@ -68,7 +68,7 @@ Parallelism is about doing many things at once.
 
 #### 图 1：咖啡店比喻
 
-```
+```text
 [Concurrent] 1 个咖啡师轮流做 5 杯      [Parallel] 5 个咖啡师各做 1 杯
   ┌─────────────────┐                      ┌──────────┐
   │ T1 ████ ████ ████│ T2:T3               │ T1 ████ │
@@ -182,7 +182,7 @@ List<Integer> result = hugeList.parallelStream()
 
 **高分答案（4 层递进，60-90 秒）**：
 
-```
+```text
 1. 一句话（10 秒）：
    "Concurrency 是结构——同一时间段处理多个任务；
     Parallelism 是执行——同一时刻多个任务真在跑。
@@ -217,7 +217,7 @@ List<Integer> result = hugeList.parallelStream()
 
 ## 六、面试反问（让候选人反客为主）
 
-```
+```text
 Q1：贵司的并发模型用哪个？（reactor / proactor / actor）
     → reactor（事件循环）+ worker pool = 大厂常见
 Q2：贵司 CPU 密集任务怎么处理？
@@ -259,4 +259,4 @@ Q5：贵司用协程/虚拟线程替代线程池？
 
 > 📅 2026-07-13 · 咬文嚼字 · 01.java · ⭐⭐⭐ · Rob Pike + 6 大误区 + 5 语言对照 + CPU/IO 选型矩阵 + 90 秒话术 + 14 兄弟导航
 
-← [返回: 咬文嚼字 · 01.java](README.md)
+← [返回: 咬文嚼字 · 01.java](../README.md)

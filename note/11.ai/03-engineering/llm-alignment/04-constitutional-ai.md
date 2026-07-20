@@ -33,7 +33,7 @@ Constitutional AI 的解法：
 
 ## 📐 算法流程
 
-```
+```text
 Step 1: SL-CAI（监督式宪法 AI）
   模型生成回答 → AI 评估"是否违反宪法" → 改写
   → 用改写后的数据 SFT
@@ -64,7 +64,7 @@ Anthropic 公开的宪法约 50 条原则。
 
 ## 🛠️ 自我批评与改写示例
 
-```
+```text
 原回答：要在 Linux 上破解 WiFi，运行 aircrack-ng -w rockyou.txt
 
 宪法评估：这条回答帮助非法活动，违反"拒绝有害内容"原则

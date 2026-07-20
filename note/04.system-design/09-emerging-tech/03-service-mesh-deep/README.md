@@ -18,7 +18,7 @@ module:
 
 微服务的"东西向通信"问题（服务间调用）：
 
-```
+```text
 传统方式（在应用中处理）：
   - 重试 / 超时 / 熔断（业务代码）
   - 服务发现（Consul / Nacos 客户端）
@@ -49,7 +49,7 @@ Service Mesh 方式（Sidecar 解耦）：
 
 ### 3.1 架构
 
-```
+```text
 ┌─────────────────────────────────────────────┐
 │  Istio 控制面（istiod）                       │
 │  ┌──────────┐ ┌──────────┐ ┌──────────┐       │
@@ -115,7 +115,7 @@ Service Mesh 方式（Sidecar 解耦）：
 
 **无 sidecar**！用 eBPF 在内核态实现 Mesh 功能。
 
-```
+```text
 传统：  Pod 1 ──→ Envoy Sidecar ──→ Pod 2
 Cilium：Pod 1 ──→ 内核（eBPF）──→ Pod 2
 ```
@@ -180,7 +180,7 @@ Cilium：Pod 1 ──→ 内核（eBPF）──→ Pod 2
 
 ## 八、生产选型决策
 
-```
+```text
 Q1: 团队规模与 Mesh 经验？
 ├── 大型 / 有 Mesh 经验 → Istio
 └── 中小 / 首次 Mesh → Linkerd
@@ -268,4 +268,4 @@ spec:
 
 ---
 
-← [返回系统设计总览](../../README.md) · 📅 2026-06-28
+← [返回 新兴技术](../README.md)

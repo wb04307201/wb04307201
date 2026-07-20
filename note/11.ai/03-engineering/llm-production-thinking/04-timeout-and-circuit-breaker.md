@@ -81,7 +81,7 @@ def fallback_response(error_type="timeout"):
 
 ### 3.1 状态机
 
-```
+```text
 Closed ──── 错误率 > 阈值 ────→ Open
    ↑                              │
    │                              │ 30 秒冷却
@@ -156,7 +156,7 @@ class FallbackChain:
 
 ## 4. 三层防御
 
-```
+```text
 [Layer 1] 客户端：loading state + cancel button（5s 用户能看到的）
    ↓
 [Layer 2] Edge timeout：CDN/网关层 5s 截断
@@ -174,7 +174,7 @@ class FallbackChain:
 
 ## 5. 超时熔断 vs 重试：协同
 
-```
+```text
 请求触发：
   ↓
 [Circuit] Open? → Yes → 直接 Fallback（不重试）

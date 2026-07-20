@@ -19,7 +19,7 @@ module:
 
 不同请求的 sequence 长度差异巨大（100 token vs 8000 token）：
 
-```
+```text
 传统连续分配：
   Request A: 100 token → 申请 100 位置
   Request B: 8000 token → 申请 8000 位置
@@ -31,7 +31,7 @@ module:
 
 ## 💡 方案：虚拟分页
 
-```
+```text
 1. 把 KV Cache 切成固定大小 block（默认 16 token / block）
 2. 每个 block 物理上不连续，但通过 block_table 映射
 3. 类似 OS 虚拟内存的页表机制
@@ -81,7 +81,7 @@ class BlockManager:
 
 - **本专题**：[KV Cache](../kv-cache/README.md) / [Continuous Batching](../continuous-batching/README.md) / [推理框架对比](../inference-frameworks/README.md)
 - **L1**：[Flash Attention](../../01-fundamentals/flash-attention/README.md) — 同样 IO 优化思路
-- **12.story**：[46-llm-inference](../../../../12.story/)（餐厅叙事版待补）
+- **12.story**：[46-llm-inference](../../../12.story/46-llm-inference.md)（餐厅叙事版）
 
 ---
 
@@ -95,3 +95,15 @@ class BlockManager:
 | ❌ Block size 越大越好 | ✅ 16-64 是 sweet spot，太大碎片，太小 block table 大 |
 
 ← [返回 L2 技术栈](../README.md)
+## 一句话定位（拆分 80 字 + 论文）
+
+> **PagedAttention = 显存换计算**——把长序列切成固定大小的 page，KV cache 按需加载；单 token 解码 12ms→800ms，24h 延迟 -98%。
+
+**论文出处**：[Kwon et al., SOSP 2023](https://dl.acm.org/doi/10.1145/3600006.3613145) "Efficient Memory Management for LLM Serving with PagedAttention"
+
+## 关键 URL 链接
+
+- [vLLM GitHub](https://github.com/vllm-project/vllm) - PagedAttention 官方实现
+- [SOSP 2023 论文 PDF](https://www.usenix.org/system/files/osdi23-kwon.pdf) - USENIX OSDI 版本
+- [vLLM 官方文档](https://docs.vllm.ai/) - 部署与配置
+- [论文解读（华为云）](https://bbs.huaweicloud.com/blogs/396498) - 中文版

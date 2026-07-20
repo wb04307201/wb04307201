@@ -39,7 +39,7 @@ module:
 
 ### 2.1 朴素 Sliding Window
 
-```
+```text
 token 0 1 2 3 4 5 6 7 8 9 ...
 attends: ↑ ↑ ↑ ↑
        [0]
@@ -55,7 +55,7 @@ attends: ↑ ↑ ↑ ↑
 
 **核心洞察**：attention 中存在"attention sinks"——某些特定 token（通常是第一个 token）即使被滑窗丢弃，仍有残存的 attention 流量。
 
-```
+```text
 Window + 4 sink tokens：
 [SINK][SINK][SINK][SINK][token 0 ... token w-1][滑动窗口]
 ```
@@ -69,7 +69,7 @@ Window + 4 sink tokens：
 
 **核心**：微调时引入**shifted sparse attention**，训练成本降低，推理时仍是 full attention。
 
-```
+```text
 训练时：window 局部 attention（dense + shifted）
 推理时：full attention
 ```
@@ -81,7 +81,7 @@ Window + 4 sink tokens：
 
 **核心**：保留"地标"（landmark）token，让远处 token 也能间接 attend。
 
-```
+```text
 [LANDMARK 1]... window ...[LANDMARK 2]... window ...
 ```
 
@@ -106,7 +106,7 @@ Window + 4 sink tokens：
 
 ### 4.1 长期对话
 
-```
+```text
 场景：Agent 跑了 100 轮
 
 朴素 Sliding Window：
@@ -120,7 +120,7 @@ StreamingLLM：
 
 ### 4.2 工具调用返回值
 
-```
+```text
 工具返回 10k token JSON → 不能全塞 prompt
 
 方案：

@@ -12,7 +12,7 @@ question:
 
 ## 引子：一个请求的 9 步旅程
 
-```
+```text
 浏览器 → http://localhost:8080/api/users
 ```
 
@@ -236,4 +236,4 @@ public class GlobalExceptionHandler {
 
 - 深度阅读：[`06.spring`](../../06.spring/README.md) — 主模块详细内容
 
-← [返回: 咬文嚼字 · spring-mvc-flow](README.md)
+← [返回: 咬文嚼字 · spring-mvc-flow](../README.md)

@@ -42,7 +42,7 @@ module:
 
 ## 与其他族的关系
 
-```
+```text
 DAC ──→ RBAC（"所有者"被"角色"取代）
 MAC ──→ ABAC（"密级标签"是属性的一种特例）
 ```
@@ -56,4 +56,4 @@ DAC 是 RBAC 的"前传"，MAC 是 ABAC 的"前身"。
 - [选型总章](../README.md#3-选型决策树) — 何时该选 DAC/MAC
 - 05-security：[OWASP Top 10](../../owasp-top10/README.md) — A01 失效的访问控制
 
-← [返回: 系统设计 · 01-traditional](README.md)
+← [返回 访问控制](../README.md)

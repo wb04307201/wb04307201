@@ -51,7 +51,7 @@ question:
 
 ### 1.2 Mount / Unmount 机制
 
-```
+```text
 虚拟线程执行流程：
 1. mount 到 carrier thread → 执行代码
 2. 遇到 I/O 阻塞 → 自动 unmount（carrier 释放）
@@ -227,4 +227,4 @@ try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
 
 - 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容
 
-← [返回: 咬文嚼字 · virtual-threads](README.md)
+← [返回: 咬文嚼字 · virtual-threads](../README.md)

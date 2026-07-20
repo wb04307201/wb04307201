@@ -55,7 +55,7 @@ module:
 
 ## 📐 架构演进时间线
 
-```
+```text
 2013  Word2Vec           —— 静态词向量
 2014  Seq2Seq + Attention —— 引入注意力机制
 2015  NMT（神经机器翻译）—— RNN + Attention 主导

@@ -17,7 +17,7 @@
 | [§7](#7-ci-检查) | CI 检查 | link-check.yml + GRS |
 | [§8](#8-主模块-readme-通用规范人工自检) | 主模块 README 通用规范 | 12 项人工自检 |
 | [§9](#9-各模块的细化规范与通用校验互为补充) | 各模块细化规范 | 01.java / 12.story / 13.split-hairs |
-| [§10](#10-frontmatter-规范已全量落地-697-个-readme) | frontmatter 规范 | `module:` / `question:` / `story:` 三种 |
+| [§10](#10-frontmatter-规范已全量落地-765-个-readme) | frontmatter 规范 | `module:` / `question:` / `story:` 三种 |
 | [§11](#11-模块-readme-自检表2026-07-01-务实版) | 模块 README 自检表 | 2026-07-01 务实版 |
 | [§12](#12-模块-readme-标准结构) | 模块 README 标准结构 | 完整章节模板 |
 
@@ -29,7 +29,7 @@
 
 每个模块使用 `{nn}.{英文主题}/` 格式，`nn` 为两位数编号：
 
-```
+```text
 note/
 ├── 01.java/
 ├── 02.computer-basics/
@@ -45,7 +45,7 @@ note/
 
 ### 1.2 模块内子目录
 
-```
+```text
 note/03.database/
 ├── README.md              ← 模块入口（必须有）
 ├── 01-fundamentals/       ← 编号前缀子目录
@@ -91,7 +91,7 @@ note/03.database/
 flowchart LR
     A[基础] --> B[进阶]
     B --> C[实战]
-```
+```text
 
 ---
 
@@ -253,7 +253,7 @@ graph TD
 
 使用 Conventional Commits 格式：
 
-```
+```text
 feat(note): 03.database - 新增云数据库子模块 README
 feat(note): 14.project-management - 新增项目管理主模块（6 篇 PM）
 fix(note): 09.front-end - 修正 3 处断链
@@ -316,7 +316,7 @@ scope 规范：
 
 **每个子模块的细化规范由作者按对应 SPEC.md 手工落实**。
 
-## 10. frontmatter 规范（已全量落地 697 个 README）
+## 10. frontmatter 规范（已全量落地 765 个 README，find 校对 2026-07-19）
 
 为方便检索、交叉引用与未来工具生成，14 主模块 + 所有子 README 已统一使用 HTML 注释 frontmatter：
 
@@ -326,7 +326,7 @@ scope 规范：
 - **13.split-hairs**：`<!--question:id / topic / difficulty / frequency / scenario_type / tags-->`
 - **14.project-management**：`<!--pm:topic / audience / category / summary-->`
 
-> 📌 **2026-07-01 进展**：原缺失 frontmatter 的 45 个子 README（01.java/collection、01.java/concepts、01.java/version、06.spring、09.front-end、11.ai 等）已手工补全；当前 `note/` 下 **697 个 README 100% 具备 frontmatter**（0 缺失）。
+> 📌 **2026-07-01 → 2026-07-19 进展**：原缺失 frontmatter 的 45 个子 README（01.java/collection、01.java/concepts、01.java/version、06.spring、09.front-end、11.ai 等）已手工补全；当前 `note/` 下 **765 个 README 100% 具备 frontmatter**（0 缺失，find 校对 2026-07-19）。
 
 ---
 

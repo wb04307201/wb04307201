@@ -27,7 +27,7 @@ module:
 
 浏览器的同源策略（Same-Origin Policy）限制不同源之间的资源访问：
 
-```
+```text
 同源 = 协议 + 域名 + 端口 完全一致
 
 https://api.example.com:443/users  ←→  https://web.example.com:443
@@ -41,7 +41,7 @@ http://localhost:3000  ←→  http://localhost:8080
 
 ### 1.2 CORS 预检请求（Preflight）
 
-```
+```text
 ┌──────────┐                                    ┌──────────────┐
 │  浏览器   │                                    │   服务器      │
 │ web.com  │                                    │  api.com     │
@@ -186,7 +186,7 @@ public class ApiController {
 
 ### 3.1 CSRF 攻击原理
 
-```
+```text
 ┌──────────────────────────────────────────────────────────────────────┐
 │                        CSRF 攻击流程                                   │
 │                                                                        │
@@ -214,7 +214,7 @@ public class ApiController {
 
 ### 3.2 CSRF Token 防御机制
 
-```
+```text
 ┌──────────────────────────────────────────────────────────────────────┐
 │                     CSRF Token 防御流程                                │
 │                                                                        │
@@ -325,7 +325,7 @@ public HttpSessionEventPublisher httpSessionEventPublisher() {
 
 ### 4.3 会话固定攻击防护
 
-```
+```text
 ┌─────────────────────────────────────────────────────────┐
 │              会话固定攻击（Session Fixation）              │
 │                                                           │
@@ -431,7 +431,7 @@ http.headers(headers -> headers
 
 CSP 是防御 XSS 攻击的最有效手段：
 
-```
+```text
 ┌─────────────────────────────────────────────────────────┐
 │              CSP 指令速查                                  │
 ├──────────────────────┬──────────────────────────────────┤

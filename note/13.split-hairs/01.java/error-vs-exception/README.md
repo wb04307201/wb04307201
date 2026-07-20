@@ -43,7 +43,7 @@ public class CatchErrorDemo {
 
 ### 1.1 Throwable 类层次结构
 
-```
+```text
 Throwable
 ├── Error（JVM 层面的严重故障，程序通常无法恢复）
 │   ├── VirtualMachineError

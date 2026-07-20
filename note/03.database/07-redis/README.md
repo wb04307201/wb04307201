@@ -133,7 +133,7 @@ save 60 10000   # 60 秒内至少 10000 次修改
 
 AOF 重写时，前半段为 RDB 格式（恢复快），后半段为 AOF 增量命令（不丢数据）。
 
-```
+```text
 混合文件 = [RDB 快照] + [AOF 增量命令]
 ```
 
@@ -145,7 +145,7 @@ AOF 重写时，前半段为 RDB 格式（恢复快），后半段为 AOF 增量
 
 ### 1. 主从复制
 
-```
+```text
 Master（读写）
     ├── Slave1（只读）
     └── Slave2（只读）
@@ -164,7 +164,7 @@ Sentinel 负责监控 Master 和 Slave 的健康状态，实现**自动故障转
 | 自动故障转移 | Master 宕机 → 选举 Slave 提升为新 Master |
 | 通知 | 故障转移后通知客户端新的 Master 地址 |
 
-```
+```text
 Sentinel1 ──┐
 Sentinel2 ──┼── 监控 ──→ Master / Slave1 / Slave2
 Sentinel3 ──┘
@@ -183,7 +183,7 @@ Redis 3.0+ 原生支持分布式集群，数据自动分片。
 | 自动故障转移 | 主节点故障时从节点自动晋升 |
 | 最低配置 | 3 主 + 3 从（6 节点） |
 
-```
+```text
 客户端 → 任意节点 → 计算 key 的 Slot → 转发到正确节点
                     ↓
               CRC16(key) % 16384 = slot
@@ -295,7 +295,7 @@ redis-rdb-tools（Python）
 ### 1. SDS(简单动态字符串)
 
 `struct sdshdr`:
-```
+```text
 ┌──────────┬─────┬──────┬────────┐
 │  len     │ free│ buf  │  ...   │
 │  已用长度 │ 空闲 │ 字节  │ 实际数据 │
@@ -371,7 +371,7 @@ public void doBusiness() {
 
 ### 4. RedLock 算法(多 Redis 实例强一致锁)
 
-```
+```text
 1. 获取当前时间 T1
 2. 依次向 N(≥3)个独立 Redis 实例申请锁
 3. 计算获取锁总耗时 = T2 - T1
@@ -472,7 +472,7 @@ SLOWLOG LEN
 
 ### 3. 内存碎片率
 
-```
+```text
 mem_fragmentation_ratio = used_memory_rss / used_memory
 ```
 

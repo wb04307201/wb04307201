@@ -28,7 +28,7 @@ module:
 
 ## 原理
 
-```
+```text
                  ┌─────────────────┐
                  │   MQ Consumer   │
                  └────────┬────────┘
@@ -386,4 +386,4 @@ public void onMessage(...) {
 - [Bloom Filter 原理与实现](https://llimllib.github.io/bloomfilter-tutorial/)
 - [AWS SQS - Message Deduplication](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-deduplication-id.html)
 
-← [返回: 系统设计 · deduplication-table](README.md)
+← [返回 幂等设计](../README.md)

@@ -122,7 +122,7 @@ graph TB
 扇出公式：`fanout = floor(page_size / (key_size + pointer_size))`
 
 以 InnoDB 16KB 页为例：`page_size=16384`，`key_size=8`（BIGINT），`pointer_size=6`，则：
-```
+```text
 fanout = floor(16384 / 14) ≈ 1170
 ```
 
@@ -161,7 +161,7 @@ InnoDB 表数据文件按 B+ Tree 组织，使用**主键**作为索引键：
 - **查询需要"回表"**：先在二级索引找主键，再到聚簇索引查完整数据
 - **一张表可有多个二级索引**
 
-```
+```text
 二级索引结构（以 name 列为例）：
 [name: M | name: Z] → [name: F] [name: R] [name: ZZ]
 → [PK=8] [PK=25] [PK=55] [PK=80] [PK=1] [PK=100]
@@ -187,17 +187,17 @@ SELECT name, age, email FROM users WHERE name = 'Alice';  -- 需要回表
 假设：`page_size=16KB=16384`，`key_size=8`（BIGINT），`pointer_size=6`，`data_size=200 bytes`，`n=20,000,000`。
 
 **内部节点扇出**：
-```
+```text
 fanout = floor(16384 / 14) = 1170
 ```
 
 **叶子节点容量**（实际可用约 14KB）：
-```
+```text
 records_per_leaf = floor(14000 / 200) = 70
 ```
 
 **所需叶子节点数**：
-```
+```text
 leaf_count = ceil(20,000,000 / 70) = 285,715
 ```
 
@@ -220,7 +220,7 @@ leaf_count = ceil(20,000,000 / 70) = 285,715
 
 向已满的叶子节点插入新记录时，InnoDB 将节点分裂为两个，各填充约 50%：
 
-```
+```text
 分裂前：[10, 20, 30, 40, 50]  ← 插入 25
 分裂后：[10, 20] + [25, 30, 40, 50]
 ```
@@ -290,4 +290,4 @@ leaf_count = ceil(20,000,000 / 70) = 285,715
 
 - 深度阅读：[`03.database`](../../03.database/README.md) — 主模块详细内容
 
-← [返回: 咬文嚼字 · bplus-tree](README.md)
+← [返回: 咬文嚼字 · bplus-tree](../README.md)

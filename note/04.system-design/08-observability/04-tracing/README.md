@@ -66,7 +66,7 @@ graph TD
 
 ### W3C Trace Context 示例
 
-```
+```text
 # 上游服务发出请求时注入 Header
 GET /api/orders HTTP/1.1
 traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01
@@ -114,7 +114,7 @@ graph LR
 
 ### 4.3 Collector Pipeline
 
-```
+```text
 Receiver (OTLP/Jaeger/Zipkin)
     ↓
 Processor (batch / memory_limiter / filter / tail_sampling)
@@ -208,7 +208,7 @@ graph TD
 
 ### 7.2 Grafana 三支柱联动体验
 
-```
+```text
 1. Grafana Dashboard 看到 HTTP 5xx 指标飙升（Metrics）
    ↓ 点击 Exemplar
 2. 跳转到具体 Trace（Traces）→ 发现 OrderService → PaymentService 超时

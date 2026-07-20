@@ -12,13 +12,9 @@ module:
 > Docker Compose 是 Docker 官方的多容器编排工具，通过 YAML 文件定义和运行复杂应用。本文提供可直接用于开发/测试环境的配置参考。
 
 ---
-## 引言：架构困境
+## 引言：Docker Compose 编排实战 的关键决策
 
-Docker Compose 编排实战 的关键不是'选型'——是**选完之后怎么在 5 个 trade-off 里活下来**。
-
-本篇用'决策困境'切入，比较几种主流路径并讲清取舍。
-
----
+本篇是「Docker Compose 编排实战」的核心章节，聚焦该主题在实际落地时**5 个 trade-off 的取舍与决策轴**。
 
 ## 一、核心概念
 
@@ -234,7 +230,7 @@ docker compose up -d
 ## 六、相关章节
 
 - [Docker 命令速查](../command/README.md) · [镜像构建](../images/README.md) · [Podman](../podman/README.md)
-- 上游：[`05.tools`](../../../../README.md) — 工具链总览
-- 关联：[`06.spring`](../../../../README.md) — Spring Boot 应用容器化
+- 上游：[`05.tools`](../../README.md) — 工具链总览
+- 关联：[`06.spring`](../../../06.spring/README.md) — Spring Boot 应用容器化
 
-← [返回: 工具链 · docker-compose](README.md)
+← [返回: 工具链 · docker-compose](../README.md)

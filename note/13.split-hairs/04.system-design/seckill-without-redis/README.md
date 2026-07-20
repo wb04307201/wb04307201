@@ -47,7 +47,7 @@ question:
 
 **答**：**先问清问题边界** —— 500 人 / 2 台服务器 / 库存=1 是"轻量级秒杀"，**单机方案完全够用**，强行上 Redis 是过度设计。
 
-```
+```text
 问题边界：
 ├─ 人数 = 500（不是 500 万）
 ├─ 服务器 = 2 台（共享 DB）
@@ -118,7 +118,7 @@ WHERE id = #{productId} AND stock > 0 AND version = #{version};
 
 ### 机制 2：version 字段防 ABA
 
-```
+```text
 时间线（无 version）：
 T1: A 读 stock=1
 T2: B 抢到 → stock=0

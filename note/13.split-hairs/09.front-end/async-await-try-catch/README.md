@@ -109,7 +109,7 @@ window.addEventListener('unhandledrejection', (event) => {
 
 **高分答案**（4 层递进，60-90 秒）：
 
-```
+```text
 1. 明确答案（10 秒）：
    "不是必须——4 种错误处理方式都有效。"
 
@@ -136,7 +136,7 @@ window.addEventListener('unhandledrejection', (event) => {
 
 **高分答案**（40 秒）：
 
-```
+```text
 "两者是'局部+全局'的兜底关系。
 
 try/catch 局部处理（同步代码风格，可读性高）；
@@ -156,7 +156,7 @@ unhandledrejection 全局兜底（兜所有漏掉的）。
 
 **高分答案**（30 秒）：
 
-```
+```text
 "能，而且多层 await 错误会自动穿透到最外层 catch。
 
 async function layer1() { throw new Error('layer1'); }
@@ -177,7 +177,7 @@ try {
 
 **高分答案**（35 秒）：
 
-```
+```text
 "错误进 unhandledrejection，但有 5 个坑：
 
 1. console 报警告（不影响流程）
@@ -198,7 +198,7 @@ try {
 
 **高分答案**（40 秒）：
 
-```
+```text
 "❌ 不能！这是 React 异步错误最常见的踩坑。
 
 ErrorBoundary 只 catch 渲染时的 throw：
@@ -220,7 +220,7 @@ ErrorBoundary 只 catch 渲染时的 throw：
 
 **高分答案**（35 秒）：
 
-```
+```text
 "finally 中抛错会覆盖原 try/catch 的错误。
 
 async function submit() {
@@ -244,7 +244,7 @@ async function submit() {
 
 **高分答案**（45 秒）：
 
-```
+```text
 "按场景选 4 种之一：
 
 1. try/catch 局部兜底（80% 场景）：
@@ -420,7 +420,7 @@ if (err) {
 
 ## 六、面试反问（让候选人反客为主）
 
-```
+```text
 Q1：贵司用 React 还是 Vue？是否有 ErrorBoundary？
     → 答：React → ErrorBoundary 限制必须知道；Vue → errorHandler
 Q2：贵司有 Sentry / 监控吗？
@@ -437,4 +437,4 @@ Q5：贵司有取消重复请求的机制吗？
 
 > 📅 2026-07-06 · 咬文嚼字 · 09.front-end · ⭐⭐⭐⭐⭐ · 7 道精选 Q&A · 含 90 秒话术模板 + 5 反模式 + 4 实战方案
 
-← [返回: 咬文嚼字 · async-await-try-catch](README.md)
+← [返回: 咬文嚼字 · async-await-try-catch](../README.md)

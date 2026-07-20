@@ -54,7 +54,7 @@ module:
 
 ### 3.2 架构
 
-```
+```text
 Iceberg Table
 ├── Metadata（manifest list）
 │   ├── Manifest 1（数据文件列表）
@@ -77,7 +77,7 @@ Iceberg Table
 
 ### 4.2 架构
 
-```
+```text
 Delta Table = Parquet Files + Delta Log
 ├── _delta_log/
 │   ├── 00000000000000000000.json
@@ -99,7 +99,7 @@ Delta Table = Parquet Files + Delta Log
 
 ### 5.2 架构
 
-```
+```text
 Hudi Table
 ├── Timeline（时间轴）
 ├── File Groups（数据文件组）
@@ -114,7 +114,7 @@ Hudi Table
 | 维度 | Iceberg | Delta Lake | Hudi |
 |------|---------|-----------|------|
 | **出生** | Netflix 2017 | Databricks 2019 | Uber 2017 |
-| **社区** | Apache 顶级（CNCF）| Databricks 主控 + 开源 | Apache 顶级 |
+| **社区** | Apache 软件基金会顶级项目 | Databricks 主控 + 开源 | Apache 软件基金会顶级项目 |
 | **多引擎** | ✅ Spark/Flink/Trino | ⚠️ Spark 为主 | ✅ Spark/Flink |
 | **ACID** | ✅ | ✅ | ✅ |
 | **Schema 演进** | ✅ 强 | ✅ 强 | ✅ 中 |
@@ -130,7 +130,7 @@ Hudi Table
 
 ## 7. 生产选型决策
 
-```
+```text
 Q1: 主要引擎是？
 ├── Spark 为主 + Databricks → Delta Lake
 ├── Flink 为主 / 跨引擎 → Iceberg
@@ -158,7 +158,7 @@ Q4: 云厂商绑定？
 
 **Iceberg + Flink + Doris 实时数仓**：
 
-```
+```text
 Kafka → Flink（CDC）→ Iceberg（湖仓）→ Doris（查询）
    延迟：分钟级
    优势：流批一体、Schema 演进
@@ -166,7 +166,7 @@ Kafka → Flink（CDC）→ Iceberg（湖仓）→ Doris（查询）
 
 **Delta + Spark 离线数仓**：
 
-```
+```text
 S3 → Delta Lake → Spark SQL → BI
    优势：Spark 生态完整
    限制：跨引擎支持弱
@@ -174,7 +174,7 @@ S3 → Delta Lake → Spark SQL → BI
 
 **Hudi + Flink CDC 入湖**：
 
-```
+```text
 MySQL Binlog → Flink CDC → Hudi（COW）
    优势：记录级 upsert，性能最佳
 ```
@@ -246,4 +246,4 @@ MySQL Binlog → Flink CDC → Hudi（COW）
 
 ---
 
-← [返回数据湖总览](../) · ← [返回大数据总览](../../../README.md)
+← [返回数据湖总览](../) · ← [返回大数据总览](../../README.md)

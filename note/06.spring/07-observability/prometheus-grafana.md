@@ -295,7 +295,7 @@ receivers:
 
 ### 2. 创建 Alert Rule（在 Grafana UI 中）
 
-```
+```text
 路径：Grafana → Alerting → Alert rules → New alert rule
 ```
 
@@ -344,7 +344,7 @@ contactPoints:
 
 生产环境**推荐两者并存**——按职责分工：
 
-```
+```text
                   ┌──────────────────┐
                   │   Prometheus     │
                   │   (指标采集)      │
@@ -391,7 +391,7 @@ contactPoints:
 
 ### 2. 数据流
 
-```
+```text
 ┌──────────┐  push    ┌──────────────┐  scrape   ┌────────────┐
 │  Job/    │ ──────>  │ Pushgateway  │ ───────>  │ Prometheus │
 │  Batch   │  HTTP    │ (中转)        │  :9091    │            │
@@ -525,7 +525,7 @@ spec:
 
 ### 1. 指标命名规范
 
-```
+```text
 http_server_requests_seconds  # 命名空间_对象_单位
 order_created_total            # 业务指标以 _total 结尾（Counter）
 order_create_duration_seconds  # 业务 Timer 以 _seconds 结尾

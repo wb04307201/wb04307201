@@ -662,7 +662,7 @@ async def monitor_retrieval_quality(query, results):
 
 ### 9.1 千亿级核心挑战
 
-```
+```text
 10B（DiskANN 单机）  →  100B（分布式 + 分层）  →  1000B（ScANN + GPU + 联邦）
                        ↑                              ↑
                     5 个架构转变                    5 个架构转变的延续
@@ -706,7 +706,7 @@ async def monitor_retrieval_quality(query, results):
 
 ### 10.1 万亿级核心挑战（5 个）
 
-```
+```text
 10B（DiskANN 单机）  →  100B（分布式 + 分层）  →  1T+（多集群联邦 + TPU + 边缘）
                        ↑                              ↑
                     5 个架构转变                    5 个新挑战
@@ -726,7 +726,7 @@ async def monitor_retrieval_quality(query, results):
 
 ### 10.3 4 层边缘架构
 
-```
+```text
 端侧 cache（30%）→ CDN 边缘（20%）→ 区域集群（30%）→ 全球集群（20%）
 加权平均：27ms 用户感知延迟
 ```

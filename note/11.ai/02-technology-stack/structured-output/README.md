@@ -204,7 +204,7 @@ result = generator("提取人物信息：张三，25 岁，zhang@example.com")
 
 ## 三、策略选型决策树
 
-```
+```text
 你的场景？
 ├─ 使用商业 API（OpenAI / Claude / 通义）
 │   ├─ 需要严格 Schema → response_format（首选）

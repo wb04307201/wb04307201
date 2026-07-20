@@ -17,7 +17,7 @@ module:
 
 ## 1. 为什么需要 Sub-Agents？
 
-```
+```text
 单 Agent 问题（复杂任务）：
 - 任务有 5 个子任务（搜索 / 计算 / 写作 / 验证 / 格式化）
 - 每个子任务产生 10k token 中间结果
@@ -37,7 +37,7 @@ Sub-Agent 架构：
 
 ### 2.1 Hierarchical（层级）
 
-```
+```text
 主 Agent（Orchestrator）
     ├── 子 Agent 1（搜索）
     ├── 子 Agent 2（计算）
@@ -50,7 +50,7 @@ Sub-Agent 架构：
 
 ### 2.2 Collaborative（协作）
 
-```
+```text
 多个 Agent 同级，互相 message
 Agent A ↔ Agent B ↔ Agent C
 ```
@@ -61,7 +61,7 @@ Agent A ↔ Agent B ↔ Agent C
 
 ### 2.3 Sequential（顺序）
 
-```
+```text
 Agent 1 → Agent 2 → Agent 3 → ...
 （前一步输出作为后一步输入）
 ```
@@ -72,7 +72,7 @@ Agent 1 → Agent 2 → Agent 3 → ...
 
 ### 2.4 Mesh（网状）
 
-```
+```text
 Agent A ↔ B
 Agent A ↔ C
 Agent B ↔ C
@@ -102,7 +102,7 @@ Agent B ↔ D
 
 ### 4.1 按"步骤"拆（最常用）
 
-```
+```text
 任务：写一篇技术博客
   - 子任务 1：研究主题（搜索资料）
   - 子任务 2：列大纲（生成结构）
@@ -113,7 +113,7 @@ Agent B ↔ D
 
 ### 4.2 按"角色"拆
 
-```
+```text
 任务：完成产品设计
   - PM Agent：用户需求 / PRD
   - Designer Agent：UX / 视觉
@@ -123,7 +123,7 @@ Agent B ↔ D
 
 ### 4.3 按"数据源"拆
 
-```
+```text
 任务：跨库分析用户行为
   - Sub-Agent 1：读 MySQL
   - Sub-Agent 2：读 ClickHouse

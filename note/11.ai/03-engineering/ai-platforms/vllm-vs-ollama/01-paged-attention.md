@@ -21,7 +21,7 @@ module:
 
 Transformer 自回归推理时，每生成一个新 token 都要把 KV cache 存下来给后续 attention 用。问题：
 
-```
+```text
 ┌─────────────────────────────────────────┐
 │ 序列 A  ┌────┐ ← 输出 token 5            │
 │         │ KV │                            │
@@ -82,7 +82,7 @@ Transformer 自回归推理时，每生成一个新 token 都要把 KV cache 存
 
 ### 3.1 场景
 
-```
+```text
 系统 prompt（500 token）+ 用户问题（50 token）= 共用前缀 500 token
 ```
 

@@ -18,7 +18,7 @@ module:
 
 Pod 是短暂的（IP 变化），微服务之间需要"稳定地址 + 负载均衡"——这就是 Service。
 
-```
+```text
 ┌──────────────────────────────────────┐
 │  Service: nginx-service (ClusterIP)    │  ← 稳定 IP（10.96.0.10）
 │  selector: { app: nginx }              │
@@ -176,7 +176,7 @@ Service 是 4 层（TCP/UDP），但实际业务需要：
 
 ### 6.2 Ingress 架构
 
-```
+```text
                        ┌─────────────────┐
                        │  Ingress Controller │  ← Nginx / Traefik
                        │  （7 层反向代理）   │

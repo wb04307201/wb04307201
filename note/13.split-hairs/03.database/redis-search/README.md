@@ -27,7 +27,7 @@ Redis作为键值存储，原生搜索能力有限。理解各种方案的适用
 **KEYS的致命问题：**单线程阻塞，O(N)复杂度，1亿键可能阻塞数十秒，生产环境禁用。
 
 **SCAN工作原理：**
-```
+```text
 SCAN cursor [MATCH pattern] [COUNT count]
 - 游标迭代：基于游标的增量式迭代，每次返回部分结果和新游标
 - 非严格一致性：迭代期间新增/删除的键可能不会被完整捕获
@@ -178,7 +178,7 @@ public void processKeys(Jedis jedis, String pattern, Consumer<String> handler) {
 ## 四、最佳实践
 
 **1. 选型决策**
-```
+```text
 搜索需求？
 ├── 简单模式匹配：<1万→KEYS；≥1万→SCAN+MATCH
 ├── 集合内搜索→SSCAN/HSCAN/ZSCAN

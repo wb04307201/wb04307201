@@ -26,7 +26,7 @@ module:
 
 ## 原理
 
-```
+```text
 时间线：
                                          
 T1          T2          DB(inventory)
@@ -213,7 +213,7 @@ WHERE product_id = 1001
 
 ### 1. ABA 问题
 
-```
+```text
 T1 读 v=5
 T2 修改后 v=6 → T2 又改回 v=5
 T1 仍然能更新成功（v=5 匹配）
@@ -290,4 +290,4 @@ UPDATE order_item SET order_version=? WHERE order_id=?
 - [MySQL - InnoDB 行锁与版本控制](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html)
 - [JPA @Version 文档](https://docs.jboss.org/hibernate/orm/current/userguide/html_single/Hibernate_User_Guide.html#locking-optimistic)
 
-← [返回: 系统设计 · optimistic-lock](README.md)
+← [返回 幂等设计](../README.md)

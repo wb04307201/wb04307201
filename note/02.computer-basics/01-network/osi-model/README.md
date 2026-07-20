@@ -16,7 +16,7 @@ module:
 
 ## 七层结构总览
 
-```
+```text
 ┌─────────────────────────────────────────────┐
 │ 7. 应用层    Application    HTTP/DNS/SMTP    │  ← 面向用户
 │ 6. 表示层    Presentation   SSL/TLS/JPEG     │  ← 数据格式/加密
@@ -91,7 +91,7 @@ module:
 
 ## 案例：访问网页的数据旅程
 
-```
+```text
 浏览器输入 URL
   → 应用层: HTTP 请求
   → 表示层: TLS 加密

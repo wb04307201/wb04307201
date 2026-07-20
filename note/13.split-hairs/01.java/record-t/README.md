@@ -217,7 +217,7 @@ when(service.getUser(1L)).thenReturn(ServiceResult.ok(real));
 ## 四、最佳实践
 
 **1. 选型决策**
-```
+```text
 需要创建类？
 ├── 需要可变状态？→ 普通class
 ├── 需要继承其他类？→ 普通class
@@ -293,4 +293,4 @@ public record Container<T>(T value) {
 
 - 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容
 
-← [返回: 咬文嚼字 · record-t](README.md)
+← [返回: 咬文嚼字 · record-t](../README.md)

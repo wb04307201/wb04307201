@@ -19,7 +19,7 @@ module:
 
 ### 1.1 平台线程 vs 虚拟线程
 
-```
+```text
 平台线程（Platform Thread）
 ┌──────────────────────────────────┐
 │  1:1 映射到 OS 线程               │
@@ -43,7 +43,7 @@ module:
 
 虚拟线程不直接跑在 CPU 上，而是**挂载**（mount）到 carrier thread（平台线程）上执行：
 
-```
+```text
                     ┌─ Virtual Thread 1 ─┐
                     │ (状态: running)     │
                     └────────┬───────────┘
@@ -278,7 +278,7 @@ try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
 
 ### 6.1 什么时候用虚拟线程
 
-```
+```text
 任务类型？
 ├─ I/O 密集型（HTTP / DB / 文件）→ ✅ 虚拟线程（最佳场景）
 ├─ 高并发请求处理 → ✅ 虚拟线程（每请求一线程）

@@ -152,7 +152,7 @@ private void prepareContext(ConfigurableApplicationContext context, Configurable
 
 这是 Spring Framework 标准的 `AbstractApplicationContext.refresh()` 流程：
 
-```
+```text
 1. prepareRefresh()                  // 准备：设置启动时间、激活状态
 2. obtainFreshBeanFactory()          // 创建/获取 BeanFactory
 3. prepareBeanFactory(beanFactory)   // 配置 ClassLoader、SPEL 解析器、BeanPostProcessor

@@ -40,7 +40,7 @@ module:
 
 **实验**：在 1-30k context 中，模型在"信息在 prompt 中间"时准确率最低，**两端信息利用最佳**。
 
-```
+```text
 [Relevant Info] ... [4000 tokens] ... [Answer needed here] ... [4000 tokens] ... [Relevant Info]
 ```
 

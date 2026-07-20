@@ -11,6 +11,8 @@ module:
 
 > 两个 Python 工具脚本，用于批量维护 `note/14.project-management/` 下的所有 Markdown 文章。
 
+← [返回 14.project-management 总目录](../README.md) · [CONTRIBUTING.md](../../CONTRIBUTING.md)
+
 ---
 
 ## 脚本清单

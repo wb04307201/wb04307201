@@ -16,11 +16,11 @@ question:
 
 # Spring 咬文嚼字
 
-> Spring 高频面试题与细节深挖，对齐主模块 [`06.spring`](../../06.spring/)。16 篇真题覆盖 IoC / Bean 生命周期 / AOP / @Transactional / 循环依赖 / 自动配置 / Spring MVC / 事件 / **Spring Security** / **Spring Cloud** 10 大方向。
+> Spring 高频面试题与细节深挖，对齐主模块 [`06.spring`](../../06.spring/)。16 篇真题覆盖 IoC / Bean 生命周期 / AOP / @Transactional / 循环依赖 / 自动配置 / Spring MVC / 事件 / **Spring Security** / **Spring Cloud** 10 大方向（find 校对 2026-07-19）。
 
 ---
 
-## 文章清单（共 16 题）
+## 文章清单（共 16 题，find 校对 2026-07-19）
 
 ### 基础
 | 主题 | 难度 | 核心问题 |

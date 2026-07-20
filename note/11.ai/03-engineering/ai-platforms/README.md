@@ -16,13 +16,9 @@ module:
 **AI 编排平台 = 把 LLM、工具、知识库、流程组装成可执行 AI 应用的开发平台**——Dify / Coze / LangGraph / n8n 等代表不同抽象层级（低代码 DSL / 字节生态 / 代码优先 / 工作流自动化），本章讲透选型决策与生产级落地。
 
 ---
-## 引言：架构困境
+## 引言：AI 编排平台 的关键决策
 
-AI 编排平台 的关键不是'选型'——是**选完之后怎么在 5 个 trade-off 里活下来**。
-
-本篇用'决策困境'切入，比较几种主流路径并讲清取舍。
-
----
+本篇是「AI 编排平台」的核心章节，聚焦该主题在实际落地时**5 个 trade-off 的取舍与决策轴**。
 
 ## 📚 章节导航（5 主线 + 6 文件）
 
@@ -109,7 +105,7 @@ graph TB
 
 ## 📋 决策树
 
-```
+```text
 Q1: 项目首要目标？
 ├── 快速上线 MVP + 国内 C 端 + 字节生态 → Coze
 ├── 标准化 RAG/Chatbot + 私有化 + DSL 入 Git → Dify
@@ -191,4 +187,4 @@ Q4: 是否需要 BPMN 合规？
 - [07 工作流/微服务编排](../../../07.workflow/workflow-and-microservice-orchestration/README.md) — 流程引擎在分布式场景的演化
 - [09.front-end / 09 前端与 AI](../../../09.front-end/09-frontend-and-ai/README.md) — AI SDK / AI Native UI / Vibe Coding：AI 平台的前端落地形态
 
-← [返回: AI 知识体系 · ai-platforms](README.md)
+← [返回: L3 工程实践](../README.md)

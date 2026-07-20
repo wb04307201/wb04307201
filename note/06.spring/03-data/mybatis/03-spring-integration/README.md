@@ -106,14 +106,14 @@ graph TB
 - [01-architecture/README.md](../01-architecture/README.md) — MyBatis 核心原理与高级特性
 - [02-extension/README.md](../02-extension/README.md) — 拦截器与扩展机制
 - [04-mybatis-plus/README.md](../04-mybatis-plus/README.md) — MyBatis-Plus 增强
-- [transaction/README.md](../../../../README.md) — Spring 事务管理基础
+- [transaction/README.md](../../transaction/README.md) — Spring 事务管理基础
 - [transaction/multi-datasource-and-jta.md](../../transaction/multi-datasource-and-jta.md) — 多数据源事务衔接
 
 ---
 
 > 🚀 从 [装配与启动](01-assembly-and-startup.md) 开始，了解整合的"骨架"
 
-← [返回: Spring 全家桶 · 03-spring-integration](README.md)
+← [返回: Spring 全家桶 · 03-spring-integration](../README.md)
 
 ---
 

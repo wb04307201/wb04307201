@@ -12,7 +12,7 @@ question:
 
 ## 引子：用户点了两次"提交订单"
 
-```
+```text
 用户点击"提交订单"
 → 网络抖动，请求超时
 → 用户以为失败了，又点了一次
@@ -364,4 +364,4 @@ public Result register(@Valid @RequestBody UserRegisterRequest req,
 
 - 排查实战：[`支付消息丢失排查`](../payment-message-lost/README.md) — 幂等误拦截是隐性丢消息的常见根因
 
-← [返回: 咬文嚼字 · idempotency](README.md)
+← [返回: 咬文嚼字 · idempotency](../README.md)

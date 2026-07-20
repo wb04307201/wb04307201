@@ -57,7 +57,7 @@ question:
 
 ### 3.1 路由规则变化
 
-```
+```text
 扩容前：4 张表
   order_0: user_id % 4 == 0
   order_1: user_id % 4 == 1

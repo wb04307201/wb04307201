@@ -39,7 +39,7 @@ module:
 
 ### 1.2 测试金字塔
 
-```
+```text
          /\
         /  \        E2E 测试 (少量)
        /────\
@@ -133,7 +133,7 @@ class LifecycleTest {
 
 执行顺序：
 
-```
+```text
 @BeforeAll
 @BeforeEach --> @Test (testOne) --> @AfterEach
 @BeforeEach --> @Test (testTwo) --> @AfterEach
@@ -781,7 +781,7 @@ jacocoTestCoverageVerification {
 
 ### 5.2 测试命名规范
 
-```
+```text
 应测试的方法_场景或条件_期望结果
 ```
 

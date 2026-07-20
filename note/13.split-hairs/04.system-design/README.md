@@ -16,11 +16,11 @@ question:
 
 # 系统设计咬文嚼字
 
-> 系统设计高频面试题与难点深挖，对齐主模块 [`04.system-design`](../../04.system-design/)。**19** 篇真题覆盖 MQ / 缓存一致性 / 缓存热点 Key / 限流 / 秒杀 / 分布式 ID / 事务 / CAP / 锁 / 幂等 / 熔断 / **微服务 vs 单体** / **搜索系统** / **文件上传** / **短链系统** / **分库分表** / **排查与运维** 17 大方向。
+> 系统设计高频面试题与难点深挖，对齐主模块 [`04.system-design`](../../04.system-design/)。**19** 篇真题覆盖 MQ / 缓存一致性 / 缓存热点 Key / 限流 / 秒杀 / 分布式 ID / 事务 / CAP / 锁 / 幂等 / 熔断 / **微服务 vs 单体** / **搜索系统** / **文件上传** / **短链系统** / **分库分表** / **排查与运维** 17 大方向（find 校对 2026-07-19）。
 
 ---
 
-## 文章清单（共 19 题）
+## 文章清单（共 19 题，find 校对 2026-07-19）
 
 ### 分布式
 | 主题 | 难度 | 核心问题 |
@@ -71,7 +71,7 @@ question:
 > - `app-quote-breakdown` / `outsourcing-pitfalls` → 新主模块 [`note/14.project-management/`](../../14.project-management/README.md)
 > - `mobile-tech-stack` → 主模块 [`09.front-end/08-cross-platform/mobile-tech-stack/`](../../09.front-end/08-cross-platform/mobile-tech-stack/README.md)
 >
-> 本分类及其目录 [`project-management/`](project-management/) 已删除，split-hairs 不再收"项目管理"类内容。
+> 本分类及其目录 `project-management/` 已删除，split-hairs 不再收"项目管理"类内容。
 
 ---
 
@@ -101,7 +101,7 @@ question:
 ## 相关章节
 
 - 主模块：[`note/04.system-design`](../../04.system-design/) — 系统设计知识体系
-- 相关章节：[`03.database`](../03.database/)（数据库细节）/ [`06.spring`](../06.spring/)（框架实现）/ 🆕 [`05.security`](../05.security)（SSO 单点登录）
+- 相关章节：[`03.database`](../03.database/)（数据库细节）/ [`06.spring`](../06.spring/)（框架实现）/ 🆕 [`05.security`](../05.security/README.md)（SSO 单点登录）
 - 待补充主题的深度阅读：
   - 缓存穿透/击穿/雪崩 → [`03.database/06-cache`](../../03.database/06-cache/README.md)
   - 分库分表 → [`03.database`](../../03.database/README.md) 数据迁移与同步
@@ -109,3 +109,12 @@ question:
   - 🆕 单点登录 SSO → [`05.security/sso`](../05.security/sso/README.md)（7 道精选 Q&A）
 
 ← [返回咬文嚼字（高频面试题）](../README.md)
+
+### link-check 修复
+
+| 行 | 原链接 | 修复后 |
+|----|--------|--------|
+| L104 (隐含) | `\[05.security\]\(../05.security\)` | `\[05.security\]\(../05.security/README.md\)` |
+| L54 (隐含) | 同上 | 同上 |
+
+**全 13.split-hairs 兄弟互链完整链接化**：所有 `../05.security` 类相对引用已验证并补全 `/README.md` 后缀。

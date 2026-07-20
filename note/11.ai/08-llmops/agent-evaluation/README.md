@@ -31,7 +31,7 @@ module:
 
 ## 0. 面试高频拷问
 
-```
+```text
 阿里一面：如果让你设计一个 Agent Evaluation（评测系统），你会如何设计
          评测指标与评测流程？
 ```
@@ -106,7 +106,7 @@ def agent_score(trajectory, outcome, cost, feedback):
 
 ## 4. 评测流程全景
 
-```
+```text
 ┌──────────────────────────────────────────────────────────┐
 │  1. 黄金集构建（离线）                                    │
 │     - 真实业务场景 50-200 条                             │
@@ -177,7 +177,7 @@ def agent_score(trajectory, outcome, cost, feedback):
 
 ## 7. 一句话速查
 
-```
+```text
 Agent Evaluation 公式：
   Score = 0.4 任务完成率 + 0.2 步骤效率 + 0.1 工具准确 + 0.1 成本 + 0.15 满意度 + 0.05 稳定性
 评测流程：黄金集（500 条）→ 自动化 CI 评估 → A/B Test → 用户模拟

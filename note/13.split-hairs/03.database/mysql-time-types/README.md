@@ -186,7 +186,7 @@ INSERT INTO users (birthday) VALUES ('0000-00-00');  -- Error
 
 **1. 选型决策树**
 
-```
+```text
 需要存储时间吗？
 ├── 仅需日期 → DATE（生日、节假日）
 ├── 仅需时间 → TIME（营业时间、课程表）
@@ -290,6 +290,17 @@ DELIMITER ;
 
 ## 相关章节
 
-- 深度阅读：[`03.database`](../../../../../03.database/README.md) — 主模块详细内容
+- 深度阅读：[`03.database`](../../../03.database/README.md) — 主模块详细内容
 
 ← [返回数据库咬文嚼字](../README.md)
+
+## 90 秒面试话术（补充版）
+
+> Q: DATETIME vs TIMESTAMP 怎么选？
+> A: 4 维度对比：
+> 1. **范围**：TIMESTAMP 1970-2038，DATETIME 1000-9999
+> 2. **时区**：TIMESTAMP UTC 存储 + 会话时区转换，DATETIME 无时区
+> 3. **存储**：TIMESTAMP 4 字节，DATETIME 8 字节（5.6+ 后 TIMESTAMP 也 8 字节）
+> 4. **自动更新**：TIMESTAMP 可设 DEFAULT CURRENT_TIMESTAMP，DATETIME 需手动
+> 
+> **推荐**：业务时间用 DATETIME（时区无关、未来时间）；日志时间用 TIMESTAMP（自动 UTC）。

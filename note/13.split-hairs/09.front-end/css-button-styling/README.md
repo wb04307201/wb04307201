@@ -150,7 +150,7 @@ question:
 
 ## 三、设计系统的 3 个抽象层
 
-```
+```text
 ┌─────────────────────────────────────┐
 │ Layer 1: Design Tokens（设计变量）   │  ← 全局变量，定义"颜色/间距/字号"
 ├─────────────────────────────────────┤
@@ -275,7 +275,7 @@ const Button = styled.button`
 
 ### 5. 5 大架构选型决策
 
-```
+```text
 Q1: 团队规模？
 ├── 小（< 5 人）→ BEM 或 OOCSS
 ├── 中（5-20 人）→ BEM 或 CSS Modules
@@ -525,4 +525,4 @@ export function Button({
 
 > 📅 2026-06-28 · 咬文嚼字 · 前端 CSS · ⭐⭐⭐（高频实战 + 设计思维）
 
-← [返回: 咬文嚼字 · css-button-styling](README.md)
+← [返回: 咬文嚼字 · css-button-styling](../README.md)

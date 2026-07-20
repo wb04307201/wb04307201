@@ -175,7 +175,7 @@ if (!origin.endsWith("bank.com")) {
 
 ### 5.1 攻击原理
 
-```
+```text
 攻击者 → 提交 URL（http://internal-service:8080/admin）
    → 服务器端请求这个 URL
    → 访问到内网敏感资源

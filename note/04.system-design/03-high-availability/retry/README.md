@@ -140,4 +140,4 @@ module:
 - [超时](../timeout/README.md) — 单次调用超时是触发重试的前置条件
 - [服务降级](../service-degradation/README.md) — 重试耗尽后降级返回兜底数据
 
-← [返回: 系统设计 · retry](README.md)
+← [返回 高可用](../README.md)

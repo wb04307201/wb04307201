@@ -70,7 +70,7 @@ Greedy decoding（temperature = 0）：
 
 ### 1.3 Temperature=0 ≠ 完全确定的直觉图
 
-```
+```text
 你设:    temperature = 0
 API 收到: temperature = 0.0     ← Provider 内部替换成 1e-6？
        ↓
@@ -191,7 +191,7 @@ def drift_monitor(prompt, n_samples=10):
 
 **高分答案（4 层递进，60-90 秒）**：
 
-```
+```text
 1. 一句话定位（10 秒）：
    "Temperature=0 不等于完全确定。
    这是 LLM 工程最常见的误区之一。"
@@ -230,7 +230,7 @@ def drift_monitor(prompt, n_samples=10):
 
 ## 四、面试反问（让候选人反客为主）
 
-```
+```text
 Q1：贵司目前用哪个 Provider？默认 temperature 是多少？
     → 没显式设：追问"意识到默认是 1.0 吗？" = 面试官加分题
 Q2：贵司 LLM 输出有监控吗？用什么指标？
@@ -280,4 +280,4 @@ Q5：贵司 LLM 是否自托管？用的哪个推理框架？
 
 > 📅 2026-07-13 · 咬文嚼字 · 11.ai · ⭐⭐⭐⭐ · 5 大根因 + 3 大防御 + 90 秒话术 + 15 兄弟导航
 
-← [返回: 咬文嚼字 · 11.ai](README.md)
+← [返回: 咬文嚼字 · 11.ai](../README.md)

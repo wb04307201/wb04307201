@@ -44,7 +44,7 @@ module:
 | 引擎 | 架构 | 一句话定义 | 何时选 |
 |:-----|:-----|:----------|:------|
 | **Camunda 7** | 嵌入式 Java + 关系型 DB | 经典 PVM 引擎，企业级生产事实标准 | 强治理 + 国产化 + 存量维护 |
-| **Camunda 8 / Zeebe** | 分布式 + 追加日志 + ES | 云原生 + AI 原生，10K+ 实例/秒 | 新项目默认 / 高吞吐 / AI 集成 |
+| **Camunda 8 / Zeebe** | 分布式 + 追加日志 + ES | 云原生 + AI 原生，吞吐高（具体数字以官方 benchmark 为准） | 新项目默认 / 高吞吐 / AI 集成 |
 | **Flowable** | 嵌入式 Java + CMMN/DMN | 案例管理 + 决策表强 | 需要 CMMN 案例管理 |
 | **Activiti** | 嵌入式 Java | 历史悠久的 BPMN 引擎 | 存量项目（5/6 已 EOL）|
 
@@ -134,7 +134,7 @@ timeline
 | **架构** | 7 = 嵌入式 Java；8 = 分布式 Zeebe | 嵌入式 Java + CMMN | 嵌入式 Java |
 | **标准** | BPMN 2.0 + CMMN + DMN | BPMN 2.0 + CMMN + DMN | BPMN 2.0 |
 | **部署** | 7 单体；8 K8s | K8s / Docker | 单体为主 |
-| **性能** | 8 = 10K+ 实例/秒（Raft + ES） | 中等（K8s 百万级） | 中等 |
+| **性能** | 8 = 高吞吐（Raft + ES，具体以官方 benchmark 为准） | 中等（K8s 部署） | 中等 |
 | **AI 集成** | 8.5+ AI Agent Sub-process 原生 | 通过 Service Task 包装 | 需自研 |
 | **社区活跃度** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐（5/6 已 EOL）|
 | **商业版** | Camunda Cloud / Enterprise | Flowable Work | Alfresco Process Services |
@@ -151,7 +151,7 @@ timeline
 
 ## 四、选型决策树
 
-```
+```text
 Q1: 业务规则是否需要强治理/SOX/HIPAA 合规？
 ├── 是 → Camunda 7/8 或 Flowable（流程实例可审计）
 └── 否 → 继续
@@ -228,9 +228,10 @@ Q5: 国产化 / 信创要求？
 
 ## 相关章节
 
-- ⬅️ [返回 07 工作流](README.md)
+- ⬅️ [返回 07 工作流](../README.md)
 - [工作流定义](../define/README.md) — 业务/技术视角的工作流概念 + BPMN 三要素
 - [Camunda 7 实战](camunda/camunda-7/README.md) — SpringBoot 集成 Camunda 7 全流程
+- [Camunda 引擎对比](camunda/README.md) — Camunda 7 vs 8 快速对比与版本导航
 - [Camunda 8 / Zeebe](camunda/camunda-8/README.md) — 云原生分布式引擎 + AI Agent Sub-process
 - [工作流引擎与微服务编排](../workflow-and-microservice-orchestration/README.md) — 流程引擎在微服务场景的演化
 - [事件驱动与 Serverless Workflow](../apache-eventmesh/README.md) — 事件驱动作为工作流的神经系统

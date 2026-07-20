@@ -29,7 +29,7 @@ module:
 
 ### 1. 专家并行（Expert Parallelism, EP）
 
-```
+```text
 传统张量并行：切分每个专家的权重
 专家并行：每个 GPU 放部分专家，token 跨 GPU 路由
 
@@ -40,7 +40,7 @@ module:
 
 ### 2. 通信优化（DeepSeek-V3 Dual-Pipe）
 
-```
+```text
 Pipe 1: 计算 Expert 1 → 计算 Expert 2
 Pipe 2: 通信 All-to-All（同时进行）
 两管道时间重叠 → 通信开销隐藏
@@ -48,7 +48,7 @@ Pipe 2: 通信 All-to-All（同时进行）
 
 ### 3. 路由缓存（Routing Cache）
 
-```
+```text
 第一次请求：完整路由计算
 后续请求：复用路由决策（特别是 system prompt 相同场景）
 ```

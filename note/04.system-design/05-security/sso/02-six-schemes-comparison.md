@@ -21,7 +21,7 @@ module:
 
 多个子域共享同一个根域的 Cookie。
 
-```
+```text
 [www.example.com]   ← 设置 Cookie：domain=.example.com
 [app.example.com]   ← 自动收到 Cookie
 [admin.example.com] ← 自动收到 Cookie
@@ -65,7 +65,7 @@ Set-Cookie: session_id=xxx; Path=/; Domain=.example.com; HttpOnly; Secure; SameS
 
 中心化认证服务 + Service Ticket（票据）。
 
-```
+```text
 [CAS Server] 中央认证服务
    ↓ 重定向 + 票据
 [App-A]        ← 用户访问 App-A，发现未登录
@@ -77,7 +77,7 @@ Set-Cookie: session_id=xxx; Path=/; Domain=.example.com; HttpOnly; Secure; SameS
 
 ### 2.2 CAS 协议流程
 
-```
+```text
 1. 用户访问 App-A
 2. App-A 重定向到 CAS /login?service=https://app-a.com/callback
 3. 用户输入账号密码
@@ -127,7 +127,7 @@ Set-Cookie: session_id=xxx; Path=/; Domain=.example.com; HttpOnly; Secure; SameS
 
 ### 3.3 OAuth2 授权码模式流程
 
-```
+```text
 ┌─────────┐                ┌─────────┐                  ┌─────────┐
 │  浏览器  │                │ App-A   │                  │ Auth    │
 │         │                │         │                  │ Server  │
@@ -199,7 +199,7 @@ Set-Cookie: session_id=xxx; Path=/; Domain=.example.com; HttpOnly; Secure; SameS
 
 ### 4.3 OIDC 流程（基于授权码）
 
-```
+```text
 1. App-A 重定向用户到 OpenID Provider (OP)：
    ?scope=openid+profile+email   ← 关键是 openid scope
 2. 用户在 OP 登录 + 授权
@@ -231,7 +231,7 @@ Set-Cookie: session_id=xxx; Path=/; Domain=.example.com; HttpOnly; Secure; SameS
 
 ### 5.2 SAML SSO 流程
 
-```
+```text
 1. 用户访问 SP（业务系统）
 2. SP 生成 SAML AuthnRequest（XML）
 3. 浏览器重定向到 IdP（携带 SAMLRequest）
@@ -318,7 +318,7 @@ String jwt = Jwts.builder()
 
 ## 8. 选型决策
 
-```
+```text
 场景：我要做 SSO，怎么选？
 
 Q1：跨主域吗？

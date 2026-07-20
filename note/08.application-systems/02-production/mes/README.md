@@ -335,7 +335,7 @@ timeline
 - 返回 [02 生产制造](../README.md) 章节
 - 关联系统：ERP（[ERP 深读](../../05-operations/erp/README.md)）/ WMS（[WMS 深读](../../03-supply-chain/wms/README.md)）/ SCADA（[SCADA 深读](../scada/README.md)）/ QMS（[QMS 深读](../../05-operations/qms/README.md)）/ APS（[APS 深读](../aps/README.md)）/ PLM（[PLM 深读](../../01-rd-innovation/plm/README.md)）/ PDM（[PDM 深读](../../01-rd-innovation/pdm/README.md)）
 
-← [返回业务系统总览](../../README.md)
+← [返回业务系统总览](../README.md)
 
 ## 📊 本节统计
 

@@ -300,7 +300,7 @@ public class DataSourceConfig {
 
 ### application-{profile}.yml 多环境配置
 
-```
+```text
 src/main/resources/
 ├── application.yml              # 通用配置
 ├── application-dev.yml          # dev 环境

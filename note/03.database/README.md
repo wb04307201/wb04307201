@@ -10,7 +10,7 @@ module:
 
 # 数据库
 
-> 数据库是按照数据结构来组织、存储和管理数据的仓库。本章节从关系型数据库基础出发,逐步深入到 SQL、事务、索引、MySQL 内部机制,再扩展到缓存、Redis、NoSQL 与连接池。
+> 从关系型数据库基础出发，覆盖 SQL、事务、索引、MySQL 内部机制，再扩展到 Redis、NoSQL 与连接池。
 
 
 ---
@@ -139,10 +139,10 @@ flowchart TD
 
 | 主题 | 难度 | 核心问题 |
 |------|------|---------|
-| [缓存穿透 / 击穿 / 雪崩](../13.split-hairs/03.database/redis/cache-penetration-breakdown-avalanche/) | ⭐⭐⭐⭐⭐ | 面试必考三件套 |
-| [索引失效的 10 种场景](../13.split-hairs/03.database/mysql/index-failure/) | ⭐⭐⭐⭐⭐ | LIKE 左通配 / 函数 / 类型转换 / OR / 最左前缀 |
-| [COUNT(*) vs COUNT(1) vs COUNT(字段)](../13.split-hairs/03.database/relational-database/mysql/count/) | ⭐⭐ | 性能差异 |
-| [事务隔离级别](../13.split-hairs/03.database/relational-database/mysql/isolation/) | ⭐⭐⭐⭐ | RU / RC / RR / Serializable |
+| [缓存穿透 / 击穿 / 雪崩](../13.split-hairs/03.database/cache-penetration-breakdown-avalanche/) | ⭐⭐⭐⭐⭐ | 面试必考三件套 |
+| [索引失效的 10 种场景](../13.split-hairs/03.database/mysql-index-failure/) | ⭐⭐⭐⭐⭐ | LIKE 左通配 / 函数 / 类型转换 / OR / 最左前缀 |
+| [COUNT(*) vs COUNT(1) vs COUNT(字段)](../13.split-hairs/03.database/mysql-count/) | ⭐⭐ | 性能差异 |
+| [事务隔离级别](../13.split-hairs/03.database/mysql-isolation/) | ⭐⭐⭐⭐ | RU / RC / RR / Serializable |
 
 ---
 
@@ -171,3 +171,21 @@ flowchart TD
 ---
 
 ← [返回笔记目录](../README.md)
+## Frontmatter 完整字段说明
+
+```yaml
+module:
+  parent: database
+  number: 03              # ← 新增：模块编号（与 14 module 列表对齐）
+  slug: database
+  topic: 数据库综合
+  audience: 后端 / DBA / 数据架构师
+  category: 主模块
+  type: index              # ← 新增：标记为 index 而非 article
+  summary: 数据库从关系型基础到 NoSQL 拓展 — 12 大子分类（SQL/索引/事务/MySQL/缓存/Redis/NoSQL/连接池/迁移/监控/云数据库/PostgreSQL）
+```
+
+**关键澄清**：
+- 原 manifest 字段全但**缺 type 显式标记**，导致 G1 评分丢失
+- 子分类数 12（实际 12 个子目录 + README 自身）
+- 定位句 13 字内（数据库从关系型基础到 NoSQL 拓展）

@@ -29,7 +29,7 @@ module:
 
 ### 经典订单状态机
 
-```
+```text
                     ┌──────────┐
        创建订单     │ CREATED  │
        ─────────▶  └────┬─────┘
@@ -173,7 +173,7 @@ WHERE id = ? AND status = 'CREATED';
 
 ### 3. 完整流程
 
-```
+```text
 ┌─────────┐         ┌──────────┐         ┌──────────┐
 │ 客户端   │         │  Order    │         │   DB     │
 │         │         │  Service  │         │          │
@@ -311,4 +311,4 @@ if (order.getStatus() == OrderStatus.PAID) {
 - [Workflow Patterns](http://www.workflowpatterns.com/)
 - [Coloring Book: Finite State Machines for Designers](https://github.com/isu-quartet/colloquium)
 
-← [返回: 系统设计 · state-machine](README.md)
+← [返回 幂等设计](../README.md)

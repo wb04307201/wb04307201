@@ -28,7 +28,7 @@ module:
 
 **混合 = 互补**：
 
-```
+```text
 向量得分：semantic_similarity(query, doc)
 BM25 得分：keyword_match(query, doc)
 最终得分：α * 向量得分 + (1 - α) * BM25 得分

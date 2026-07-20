@@ -13,7 +13,7 @@ module:
 
 `LinkedList<E>` 的底层是一个**带头结点的双向链表**（实际上没有虚拟头结点，first 和 last 直接指向真实节点）。
 
-```
+```text
 ┌───────┐     ┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
 │ first ├────>│ Node<E>          │<--->│ Node<E>          │<--->│ Node<E>          │<──┐
 └───────┘     │ item | next | prev│     │ item | next | prev│     │ item | next | prev│   │
@@ -95,7 +95,7 @@ void linkLast(E e) {
 }
 ```
 
-```
+```text
 添加前:  [A] <--> [B]         last -> [B]
 添加后:  [A] <--> [B] <--> [C]  last -> [C]
 ```
@@ -181,7 +181,7 @@ list.pollFirst();   // "A" (看头节点，O(1)，移除)
 
 ### 5.1 栈操作 (Stack 语义)
 
-```
+```text
 push(e)  <==>  addFirst(e)
 pop()    <==>  removeFirst()
 peek()   <==>  peekFirst()
@@ -203,7 +203,7 @@ stack.pop();           // NoSuchElementException!
 
 ### 5.2 队列操作 (Queue 语义)
 
-```
+```text
 offer(e)   <==>  addLast(e)
 poll()     <==>  removeFirst()
 peek()     <==>  peekFirst()
@@ -310,7 +310,7 @@ for (Iterator<String> it = list.iterator(); it.hasNext(); ) { }
 | 扩容 | 不需要 | 2 倍扩容 |
 | 是否允许 null | **是** | **否** |
 
-```
+```text
 LinkedList 内存布局 (每个 Node 都是独立对象):
 
 Heap:  [Node@1a2b][Node@3c4d][Node@5e6f] ... (分散)

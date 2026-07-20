@@ -24,6 +24,7 @@ module:
 | 术语速查 | [glossary.md](./glossary.md)（**340+** 术语） |
 | 主题分类 | [下文分类导航](#四分类导航) |
 | 推荐路径 | [下文 4 条主路径 + 13 类角色](#五阅读路径) |
+| 写作规范 | [STORY-FORMAT-SPEC.md](./STORY-FORMAT-SPEC.md)（章节六段强制） |
 
 ---
 
@@ -45,6 +46,7 @@ module:
 
 | 主题 | 文章 | 一句话 |
 |------|------|--------|
+| 架构演进（前传） | [02](./02-system-architecture-evolution.md) | 业务驱动 + IT 成熟度 L1-L7 + 7 阶段架构演进 |
 | 流量治理 | [正传 1](./04-peak-traffic-defense.md) | 五道防线协同作战 |
 | 可观测性 | [正传 2](./05-observability.md) | 日志/指标/追踪三大支柱 |
 | 安全架构 | [正传 3](./06-security-architecture.md) | 六大防线纵深防御 |
@@ -79,6 +81,31 @@ module:
 | 番外 7-8（AI） | [42 Prompt](./40-prompt-engineering.md) / [43 多模态](./41-multimodal-ai.md) |
 | 续集 1-17（AI 时代） | [01-41 续集](./README.md#全部四十六篇文章) |
 | **续集 18-20**（AI 责任 / 数据真相 / 个人困局） | **[44 谁负责](./42-ai-engineer-responsibility.md) / [45 生产力](./43-ai-productivity-paradox.md) / [46 困局](./44-tech-debt-career-trap.md)** |
+
+### 🟣 AI 时代 21 篇（续集一-十七）
+
+| 续集 | 主题 | 文章 |
+|------|------|------|
+| 一 | 当餐厅长出大脑 | [01 AI Agent 架构](./01-ai-agent-architecture.md) |
+| 二 | 学徒的困境 | [11 AI 学徒危机](./11-ai-learning-paradox.md) |
+| 三 | 自动化的本质是换岗 | [27 AI 组织转型](./25-ai-org-transformation.md) |
+| 四 | 智能体替代创始人 | [28 AI 原生创业](./26-ai-native-startup.md) |
+| 五 | 公司是 Agent Loop | [29 自进化组织](./27-self-evolving-company.md) |
+| 六 | 三层护栏 + 信任校准 | [30 AI 幻觉护栏](./28-ai-hallucination-safety.md) |
+| 七 | AI 时代隐形负债 | [31 Codebase 认知债](./29-codebase-cognitive-debt.md) |
+| 八 | Agent 时代操作系统 | [32 Agent Harness](./30-agent-harness.md) |
+| 九 | 注入/越权/泄露 | [33 致命三件套](./31-ai-fatal-trio.md) |
+| 十·a | 6 大评测维度 | [34a AI 评测基础](./32a-ai-evaluation-fundamentals.md) |
+| 十·b | 5 层评测流水线 | [34b AI 评测流水线](./32b-ai-evaluation-pipeline.md) |
+| 十一·a | AI 时代 TCP/IP | [35a MCP 协议](./33a-mcp-protocol.md) |
+| 十一·b | Agent 到 Agent | [35b A2A 协议](./33b-a2a-protocol.md) |
+| 十二·a | Token 经济学结构 | [36a Token 成本结构](./34a-ai-token-cost-structure.md) |
+| 十二·b | Token 成本优化 | [36b Token 成本优化](./34b-ai-token-cost-optimization.md) |
+| 十三 | 3+4=7 支柱 | [37 AI 可观测性](./35-ai-observability.md) |
+| 十四 | 幻觉率 29% → 3% | [38 RAG 检索增强生成](./36-rag-retrieval-augmented-generation.md) |
+| 十五 | 6 大向量库选型 | [39 向量数据库与 Embedding](./37-vector-database-and-embedding.md) |
+| 十六 | EU AI Act / GDPR / PIPL | [40 AI 合规与监管](./38-ai-compliance-and-regulation.md) |
+| 十七 | 3 年回本黄金线 | [41 AI 私有化部署](./39-ai-private-deployment.md) |
 
 ---
 

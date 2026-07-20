@@ -17,7 +17,7 @@ module:
 
 ## 📐 完整 3 步流水线
 
-```
+```text
 Step 1: SFT（监督微调）
    高质量指令-回答对 → 微调 LLM
    ↓
@@ -74,7 +74,7 @@ objective = E[min(ratio * R, clip(ratio, 1-ε, 1+ε) * R)] - β * KL(π || π_re
 
 ## 📈 实战：LLaMA-2 RLHF 训练
 
-```
+```text
 硬件：1024 x A100，训练 21 天
 数据：100 万人类偏好对（HH-RLHF + 自建）
 Reward Model：6B 参数（Vicuna-style ranking）

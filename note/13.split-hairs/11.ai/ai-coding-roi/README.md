@@ -152,7 +152,7 @@ SPACE 框架由 Microsoft Research 提出，专门用于度量开发者生产力
 
 ### 1. 6 周代码留存率（6-Week Code Retention）
 
-```
+```text
 留存率 = 6 周后仍在生产环境的代码 / AI 提交的总代码
 基准：> 50% 为健康
 ```
@@ -163,21 +163,21 @@ SPACE 框架由 Microsoft Research 提出，专门用于度量开发者生产力
 
 ### 3. Token 投入产出比（Token ROI）
 
-```
+```text
 Token ROI = 业务价值 / Token 成本
 基准：根据业务调整
 ```
 
 ### 4. AI 代码 Review 拒绝率
 
-```
+```text
 Review 拒绝率 = 被拒绝合并的 AI 代码 / 总 AI 代码
 基准：> 20% 说明 Harness 不够
 ```
 
 ### 5. AI 陷阱发现率
 
-```
+```text
 陷阱发现率 = review 中发现的 AI 陷阱数 / AI 代码总数
 基准：每 1000 行至少 1 个陷阱被识别
 ```
@@ -309,4 +309,4 @@ Review 拒绝率 = 被拒绝合并的 AI 代码 / 总 AI 代码
 
 > 📅 2026-06-28 · 咬文嚼字 · AI 新概念 · ⭐⭐⭐⭐（2026 面试热点 + 实战必会）
 
-← [返回: 咬文嚼字 · ai-coding-roi](README.md)
+← [返回: 咬文嚼字 · ai-coding-roi](../README.md)

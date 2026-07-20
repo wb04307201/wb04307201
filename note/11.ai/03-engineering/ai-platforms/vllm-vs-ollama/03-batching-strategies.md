@@ -19,7 +19,7 @@ module:
 
 ### 1.1 静态批处理（Static Batching）
 
-```
+```text
 所有序列同步开始 → 等最长序列完成 → 整批返回
 ┌────────────┐
 │ Seq A ▓▓▓▓▓▓│
@@ -35,7 +35,7 @@ module:
 
 ### 1.2 动态批处理（Dynamic Batching）
 
-```
+```text
 到达请求凑满 batch 才开始 → 仍需等齐
 ┌────────────┐
 │ Seq A ▓▓▓▓▓▓│
@@ -51,7 +51,7 @@ module:
 
 ### 1.3 连续批处理（Continuous Batching / Iteration-level Scheduling）
 
-```
+```text
 每个 decoding step 重新拼 batch：
 Step 1: [A, B, C, D]
 Step 2: [B, C, D, E]  ← A 完成，立刻加入新请求 E
@@ -81,7 +81,7 @@ Step 3: [C, D, E, F]  ← B 完成，加入 F
 
 ## 3. 连续批处理的工作流
 
-```
+```text
 请求进入 vLLM 调度器：
   ↓
 [Prefill 阶段] 处理新请求的 prompt（密集计算）
@@ -147,7 +147,7 @@ Ollama 走「**单请求优化**」路线，没做调度器。
 | `--scheduler-delay-factor` | 0.0 | 调度延迟敏感场景调 1.0+ |
 
 **max_num_seqs 估算公式**：
-```
+```text
 max_num_seqs ≈ (总显存 × 0.9 - 模型权重) / 单请求 KV cache
 ```
 

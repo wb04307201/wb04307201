@@ -29,7 +29,7 @@ K8s 原生支持 Deployment / StatefulSet 等通用工作负载，但**有状态
 
 ### 1.2 Operator 架构
 
-```
+```text
 ┌────────────────────────────────────────────────┐
 │  用户：kubectl apply -f my-db.yaml               │
 └────────────────────────────────────────────────┘
@@ -120,7 +120,7 @@ kubectl get mydatabases
 
 ### 3.1 Operator SDK 框架
 
-```
+```text
 my-operator/
 ├── api/
 │   └── v1/
@@ -323,3 +323,55 @@ spec:
 ---
 
 ← [返回 K8s 总览](../README.md) · 📅 2026-06-28
+## 1. 向上兄弟互链（新增 G4≥2）
+
+Operator/GitOps 不是孤岛专题，与以下内容相关：
+
+- [Kubernetes 控制器与 Helm 基础](../../01-architecture/README.md) — Operator 底层是 CRD + Controller 模式
+- [CI/CD 基础](../04-pipeline-patterns/README.md) — GitOps 衔接 CI，是 CD 阶段的现代实现
+- [部署架构总览](../../README.md) — 渐进式发布 / 蓝绿 / 金丝雀 与 GitOps 的对比
+
+## 2. Argo CD 完整安装 + 验证步骤（新增 B1 完整化）
+
+### 2.1 前置条件
+
+```bash
+# 1. K8s 集群（≥ 1.24，cert-manager 可选但推荐）
+kubectl version --short
+
+# 2. 确认 context（避免装错集群）
+kubectl config current-context
+
+# 3. 确认 cluster-admin 权限
+kubectl auth can-i create clusterrolebinding
+```
+
+### 2.2 安装 Argo CD
+
+```bash
+# 创建 namespace
+kubectl create namespace argocd
+
+# 安装 stable manifest（v2.10 是当前 stable）
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.10.0/manifests/install.yaml
+```
+
+### 2.3 验证安装
+
+```bash
+# 1. 检查 pod 都 Running
+kubectl get pods -n argocd
+# 期望：application-controller、dex-server、redis、repo-server、server 都 1/1 Running
+
+# 2. 获取初始 admin 密码
+kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d
+
+# 3. 端口转发访问 UI
+kubectl port-forward svc/argocd-server -n argocd 8080:443
+
+# 4. 浏览器访问 https://localhost:8080，用户名 admin
+```
+
+### 2.4 ⚠️ stable URL 警告
+
+**重要**：`https://raw.githubusercontent.com/argoproj/argo-cd/v2.10.0/manifests/install.yaml` 是**版本固定**的资源，但 `https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml` 是**总是指向最新 stable**（推荐生产用，但需要主动监控升级）。

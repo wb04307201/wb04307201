@@ -23,7 +23,7 @@ module:
 
 ## 一、OAuth2 四种授权模式
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────────┐
 │                    OAuth2 四种授权模式（Grant Types）                    │
 ├────────────────┬──────────────────┬──────────────────┬─────────────────┤
@@ -41,7 +41,7 @@ module:
 
 ### 1.1 授权码模式（Authorization Code）—— 最常用
 
-```
+```text
 ┌──────┐          ┌──────────────┐          ┌──────────────┐
 │Client│          │Authorization │          │   Resource   │
 │(Web) │          │   Server     │          │   Server     │
@@ -91,7 +91,7 @@ module:
 
 PKCE（Proof Key for Code Exchange）为移动 App / SPA 等无法安全存储 `client_secret` 的客户端设计：
 
-```
+```text
 1. 客户端生成 code_verifier（随机字符串，43-128 字符）
 2. 计算 code_challenge = BASE64URL(SHA256(code_verifier))
 3. 授权请求时发送 code_challenge（不发送 verifier）
@@ -116,7 +116,7 @@ RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().to
 
 微服务间调用的标准模式——无用户参与，服务自身作为客户端：
 
-```
+```text
 ┌──────────┐          ┌──────────────┐          ┌──────────┐
 │ Service A│          │Authorization │          │ Service B│
 │ (Client) │          │   Server     │          │(Resource)│
@@ -296,7 +296,7 @@ public class AuthorizationServerConfig {
 
 JWT（JSON Web Token）由三部分组成，用 `.` 分隔：
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────────┐
 │                    JWT = Header.Payload.Signature                    │
 │                                                                       │
@@ -344,7 +344,7 @@ JWT（JSON Web Token）由三部分组成，用 `.` 分隔：
 
 ### 3.3 JWS vs JWE
 
-```
+```text
 JWS（JSON Web Signature）—— 签名，内容可读
 ├── 用途：身份认证、授权（最常见）
 ├── 特点：Payload 是 base64 编码（不是加密！）
@@ -362,7 +362,7 @@ JWE（JSON Web Encryption）—— 加密，内容不可读
 
 ### 4.1 Token 刷新策略
 
-```
+```text
 ┌─────────────────────────────────────────────────────────┐
 │                  Token 刷新策略                           │
 │                                                           │

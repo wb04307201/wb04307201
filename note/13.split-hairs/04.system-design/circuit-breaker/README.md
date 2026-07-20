@@ -12,7 +12,7 @@ question:
 
 ## 引子：一个服务挂掉，拖垮整个系统
 
-```
+```text
 用户请求 → 服务 A → 服务 B → 服务 C（挂了！）
 
 服务 A 还在傻傻等 C 响应（超时 5 秒）
@@ -301,4 +301,4 @@ new DegradeRule("service")
 
 - 深度阅读：[`04.system-design`](../../04.system-design/README.md) — 主模块详细内容
 
-← [返回: 咬文嚼字 · circuit-breaker](README.md)
+← [返回: 咬文嚼字 · circuit-breaker](../README.md)

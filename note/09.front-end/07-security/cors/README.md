@@ -20,7 +20,7 @@ module:
 
 ## Origin
 Origin，翻译为 源（域），在 CORS 上下文中 Origin 由三个元素组成：
-```
+```text
 Origin = 协议 + 域名 + 端口
 ```
 - **协议**：例如 http:// 或 https://          

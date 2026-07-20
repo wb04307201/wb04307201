@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/it4it/functional-components
+  type: article
+  category: 主模块子文章
+  summary: IT4IT 9 大功能组件：战略/治理/需求/实施/组合/目录/转换/运营/请求到保障，每组件含核心活动/数据对象/责任方/成熟度标志。
+-->
+
 # 第二章：功能组件：9 大 IT 能力 + 数据对象
 
 > ⬅️ [返回目录](README.md) | 上一篇：[价值流：从请求到服务的 4 条路](value-streams.md) | 下一篇：[落地：IT4IT × ITIL × DevOps](in-practice.md)

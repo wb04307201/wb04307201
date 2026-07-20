@@ -27,7 +27,7 @@ public User getUserById(Long id) {
 ```
 
 **执行流程**：
-```
+```text
 1. 计算 key（"1"）
 2. 查缓存（"users::1"）
 3. 命中？返回缓存

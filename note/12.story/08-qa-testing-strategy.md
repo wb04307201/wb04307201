@@ -552,3 +552,19 @@ graph TD
 > 好的测试，不是"让代码不出问题"，而是"让问题尽早暴露，降低修复成本"。
 
 ← [返回系列导读](./index.md)
+
+## 第八章 8.5-8.6 代码示例修正
+
+**原代码**（确定性断言与论点矛盾）：
+```python
+assert response.tool_called == "query_order"  # ❌ 确定性断言
+```
+
+**修正后**（软断言 + 黄金集补充）：
+```python
+# AI 测试的入门示例：使用软断言，生产需配合黄金集
+assert "query_order" in response.tool_called_list  # 包含检查
+assert response.tool_call_order_match_rate >= 0.8  # 顺序匹配率 ≥80%
+assert response.tool_call_count == expected_count  # 数量一致
+# 生产推荐：用 golden_dataset.json 维护真实期望，CI 跑回归
+```

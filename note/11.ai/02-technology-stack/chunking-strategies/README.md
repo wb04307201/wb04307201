@@ -17,7 +17,7 @@ module:
 
 ## 🎯 为什么 Chunking 关键
 
-```
+```text
 文档 10000 字 → 直接 Embedding
   → 1 个 8000 维向量
   → 检索时粗粒度，找不准
@@ -126,7 +126,7 @@ chunks = llm.generate(prompt)
 
 ## 📐 选型决策树
 
-```
+```text
 Q1: 预算？
 ├── 紧 → 固定 / 递归
 ├── 中 → 滑动窗口

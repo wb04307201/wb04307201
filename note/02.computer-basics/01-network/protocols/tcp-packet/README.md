@@ -59,7 +59,7 @@ packet-beta
 
 ## 6 个控制标志位
 
-```
+```text
 URG  ACK  PSH  RST  SYN  FIN
  |    |    |    |    |    |
  |    |    |    |    |    └─ FIN：释放连接
@@ -103,4 +103,4 @@ URG  ACK  PSH  RST  SYN  FIN
 - [常见协议](../README.md)
 - 面试深挖版：[`TCP 三次握手四次挥手`](../../../../13.split-hairs/02.computer-basics/tcp-handshake-teardown/README.md) — 状态机 + TIME_WAIT/CLOSE_WAIT + 面试话术
 
-← [返回: 计算机基础 · tcp-packet](README.md)
+← [返回: 核心网络协议](../README.md)

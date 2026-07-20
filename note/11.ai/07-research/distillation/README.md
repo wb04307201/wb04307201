@@ -76,4 +76,8 @@ module:
 
 ---
 
+## 工具与实战
+
+- [模型蒸馏工具](tools/README.md) — LLaMA-Factory / Hugging Face trl / NVIDIA NeMo / OpenVINO 等主流蒸馏工具链全景。
+
 ← [返回 L6 前沿研究](../README.md)

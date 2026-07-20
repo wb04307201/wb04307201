@@ -43,7 +43,7 @@ module:
 
 每次请求都新建连接，开销远大于 SQL 执行本身。连接池通过**复用连接**解决这个问题。
 
-```
+```text
 无连接池：请求 → 创建连接 → 执行 SQL → 关闭连接（每次 3~12ms 开销）
 有连接池：请求 → 从池中获取连接 → 执行 SQL → 归还连接（几乎 0 开销）
 ```
@@ -163,7 +163,7 @@ spring:
 
 **PostgreSQL 官方公式**：
 
-```
+```text
 connections = (core_count * 2) + effective_spindle_count
 ```
 
@@ -269,7 +269,7 @@ hikari:
 ```
 
 日志输出示例:
-```
+```text
 Connection leak detection triggered for connection
 HikariProxyConnection@12345 wrapping com.mysql.cj.jdbc.ConnectionImpl@abc, stack trace follows
     at com.example.UserDao.insert(UserDao.java:42)

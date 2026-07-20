@@ -18,7 +18,7 @@ module:
 
 ### 1.1 写时复制原理
 
-```
+```text
 核心思想：写入时不直接修改原数组，而是创建一份副本，
 在副本上完成修改后，将引用指向新数组。
 
@@ -94,7 +94,7 @@ public class CopyOnWriteArrayList<E> implements List<E> {
 
 ### 1.3 内存开销分析
 
-```
+```text
 每次写操作的内存开销：
 
   原数组大小 = N
@@ -112,7 +112,7 @@ public class CopyOnWriteArrayList<E> implements List<E> {
 
 ### 1.4 适用场景
 
-```
+```text
 最适合的场景（读多写少，写操作极少）：
 
   1. 配置列表：启动时加载一次，运行时几乎不修改
@@ -175,7 +175,7 @@ for (String ip : blackList) {
 
 ### 2.1 原理
 
-```
+```text
 CopyOnWriteArraySet 内部持有一个 CopyOnWriteArrayList，
 通过 addIfAbsent() 去重实现 Set 语义。
 
@@ -260,4 +260,4 @@ concurrentSet.add("B");
 - [并发队列](../queue/README.md)
 - [跳表集合](../skip-list/README.md)
 
-← [返回: Java 知识体系 · copy-on-write](README.md)
+← [返回: Java 知识体系 · copy-on-write](../README.md)

@@ -8,7 +8,7 @@ module:
   summary: 从报价拆解到 AI 时代研发效能度量的项目决策实战手册
 -->
 
-# 十四、[项目管理与成本控制](README.md)
+# 项目管理与成本控制
 
 > 从报价拆解到 AI 时代研发效能度量的项目决策实战手册——给老板 / PM / 技术总监的另一只手
 
@@ -179,6 +179,7 @@ graph LR
 ## 9. 相关章节
 
 - 一页速查：[`cheatsheet.md`](./cheatsheet.md) —— 6 大场景决策矩阵 + 速算公式
+- 维护脚本：[`scripts/README.md`](./scripts/README.md) —— `insert-frontmatter.py` / `validate.py`，用于批量补 frontmatter 和合规性校验
 - 主模块：[`note/04.system-design`](../04.system-design/README.md) — 技术选型的底层支撑
 - 主模块：[`note/09.front-end`](../09.front-end/README.md) — 移动端跨端架构决策
 - 故事：[`note/12.story/07-from-chef-to-ceo`](../12.story/07-from-chef-to-ceo.md) — 团队管理叙事版

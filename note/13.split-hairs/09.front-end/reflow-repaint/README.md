@@ -51,7 +51,7 @@ for (let i = 0; i < 1000; i++) {
 
 ### 渲染流水线
 
-```
+```text
 DOM + CSSOM → Render Tree → Layout（回流）→ Paint（重绘）→ Composite（合成）→ 屏幕
                                        ↑                ↑
                                   几何属性变化      外观属性变化
@@ -230,4 +230,4 @@ for (let i = 0; i < 100; i++) {
 
 > 📅 2026-06-28 · 咬文嚼字 · 浏览器机制 · ⭐⭐⭐⭐（高频面试 + 实战必会）
 
-← [返回: 咬文嚼字 · reflow-repaint](README.md)
+← [返回: 咬文嚼字 · reflow-repaint](../README.md)

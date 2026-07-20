@@ -46,7 +46,7 @@ question:
 
 ## 二、浏览器渲染流水线（3 分钟版本）
 
-```
+```text
 HTML 字节流 → 字符流 → Token → 节点 → DOM Tree ─┐
                                                  ├─→ Render Tree → Layout → Paint → Composite → 屏幕
 CSS 字节流 → CSSOM Tree ─────────────────────────┘
@@ -199,4 +199,4 @@ CSS 字节流 → CSSOM Tree ─────────────────
 
 > 📅 2026-06-28 · 咬文嚼字 · 浏览器机制 · ⭐⭐⭐⭐（高频面试 + 实战必会）
 
-← [返回: 咬文嚼字 · css-render-blocking](README.md)
+← [返回: 咬文嚼字 · css-render-blocking](../README.md)

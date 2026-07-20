@@ -31,7 +31,7 @@ module:
 
 ## 2. 知识脉络
 
-```
+```text
 ┌──────────────────────────────────────┐
 │  Flink Cluster                        │
 │  ┌────────────┐  ┌────────────┐     │
@@ -58,7 +58,7 @@ module:
 ## 3. 速查要点
 
 - **Flink**：流优先 + 事件时间 + Exactly-Once + RocksDB 状态后端
-- **Spark Streaming**：微批（默认 1 秒）+ Structured Streaming + Spark 生态
+- **Spark Streaming**：早期 DStream 为微批（默认 batch interval 1 秒），新版 Structured Streaming 触发器可配置（默认 `micro-batch`，可切到 `continuous`）
 - **Kafka Streams**：流优先库（轻量，无独立集群）
 
 ---
@@ -82,7 +82,7 @@ module:
 
 ## 5. 生产选型决策
 
-```
+```text
 Q1: 延迟要求？
 ├── < 100ms → Flink
 └── 1-10s → Spark Streaming 也可
@@ -157,7 +157,7 @@ result_df.writeStream \
 
 **Flink 实时风控**：
 
-```
+```text
 订单 → Kafka → Flink（CEP 引擎检测异常模式）→ 实时拦截
         ↓
    1. 检测 5 分钟内 5 笔订单 = 异常
@@ -167,7 +167,7 @@ result_df.writeStream \
 
 **Spark Streaming 实时数仓**：
 
-```
+```text
 Kafka → Spark Structured Streaming → Delta Lake → BI
    延迟：30 秒（分钟级报表）
    吞吐：百万级/秒
@@ -223,4 +223,4 @@ Kafka → Spark Structured Streaming → Delta Lake → BI
 
 ---
 
-← [返回实时计算总览](../) · ← [返回大数据总览](../../../README.md)
+← [返回实时计算总览](../) · ← [返回大数据总览](../../README.md)

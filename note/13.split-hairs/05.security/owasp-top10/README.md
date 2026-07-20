@@ -74,7 +74,7 @@ SSRF 3 个：图片上传接口接受 URL，可探测内网
 
 ## 四、最佳实践
 
-```
+```text
 安全左移（Shift Left Security）：
   设计 → 威胁建模（STRIDE）
   编码 → SonarLint + 安全编码规范

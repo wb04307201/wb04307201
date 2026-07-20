@@ -163,7 +163,7 @@ services:
 
 ### 3. Kibana 查询：按 traceId 拉日志
 
-```
+```text
 app: "order-service" AND traceId: "7a3b4c5d6e7f8a9b"
 ```
 
@@ -237,7 +237,7 @@ services:
 
 ## 六、与 Micrometer Tracing 协同
 
-```
+```text
 HTTP 请求 →  Micrometer Tracing 创建 traceId/spanId
             ↓
             自动写入 MDC（traceId, spanId）

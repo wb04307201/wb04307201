@@ -156,7 +156,7 @@ public class RedisHealthIndicator implements HealthIndicator {
 
 ### 机制 2：Resilience4j Half-Open（推荐 · 主动）
 
-```
+```text
 熔断状态机：
 ├─ CLOSED（关闭）→ 正常走 Redis
 ├─ OPEN（打开）→ 30 秒内直接走 DB
@@ -195,7 +195,7 @@ public void checkRedis() {
 
 ### 核心问题
 
-```
+```text
 Redis 挂了，降级期所有读直接走 DB：
 ├─ 问题 1：写操作不更新缓存（@CachePut 失败）
 ├─ 问题 2：下次 Redis 恢复，缓存是旧的脏数据
@@ -258,7 +258,7 @@ public class UserService {
 
 ### 完整方案清单
 
-```
+```text
 必备 4 件套：
 ├─ 1. CacheErrorHandler（统一异常处理）
 ├─ 2. Resilience4j 熔断器（自动恢复）
@@ -335,4 +335,4 @@ public class UserService {
 
 > 📅 2026-07-06 · 咬文嚼字 · 06.spring · ⭐⭐⭐⭐
 
-← [返回: 咬文嚼字 · cache-degradation](README.md)
+← [返回: 咬文嚼字 · cache-degradation](../README.md)

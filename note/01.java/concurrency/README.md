@@ -26,7 +26,7 @@ Java 并发编程是 Java 平台的核心能力之一，涵盖了从线程创建
 
 ### 1.1 为什么需要并发编程
 
-```
+```text
 ┌─────────────────────────────────────────────────────────┐
 │                    并发编程解决的问题                      │
 │                                                         │
@@ -93,7 +93,7 @@ Parallelism is about doing many things at once.
 
 #### 1.4.2 咖啡店比喻（高频考点）
 
-```
+```text
 [Concurrent] 1 个咖啡师轮流做 5 杯       [Parallel] 5 个咖啡师各做 1 杯
   单核 × 5 任务（交替）                    多核 × 1 任务/核（真同时）
   → 提高 CPU 利用率                        → 减少总执行时间
@@ -213,6 +213,9 @@ try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
 | 八 | 🆕 **虚拟线程**（Java 21+） | carrier thread / mount-unmount / pinning / ScopedValue / 结构化并发 | [virtual-threads](./virtual-threads/) |
 | 九 | **Java 锁机制** | synchronized 原理、锁升级、ReentrantLock、StampedLock、CAS、AQS | [java-locks](./java-locks/) |
 | 十 | **线程池** | ThreadPoolExecutor 参数详解、工作队列、拒绝策略、ForkJoinPool | [thread-pool](./thread-pool/) |
+| 十一 | **Java 线程基础** | 线程创建、生命周期、start/run 区别、interrupt 机制 | [thread-basics](./thread-basics/) |
+| 十二 | **JUC 锁体系** | AQS、ReentrantLock / ReentrantReadWriteLock / StampedLock、Condition | [juc-locks](./juc-locks/) |
+| 十三 | **并发工具类** | CountDownLatch、CyclicBarrier、Semaphore、Phaser、Exchanger | [utilities](./utilities/) |
 
 ---
 
@@ -227,7 +230,7 @@ Java 内存模型（Java Memory Model）是并发编程的**理论基础**，定
 - **工作内存**：每个线程私有的变量副本区域
 - **happens-before 原则**：判断数据是否存在竞争的核心规则
 
-```
+```text
 ┌─────────────────────────────────────────────┐
 │              Java 内存模型                    │
 │                                             │
@@ -340,7 +343,7 @@ class BadCounter {
 
 **锁升级过程（重点）：**
 
-```
+```text
 无锁 → 偏向锁 → 轻量级锁（自旋） → 重量级锁（阻塞）
 
 ┌──────────────────────────────────────────────────────────┐
@@ -402,7 +405,7 @@ class Counter {
 
 **数据结构：**
 
-```
+```text
 ThreadLocal 原理图
 
   Thread-1                    Thread-2
@@ -456,7 +459,7 @@ public class ThreadLocalDemo {
 
 **CAS 原理：**
 
-```
+```text
 ┌───────────────────────────────────────────────────────┐
 │                    CAS 操作原理                        │
 │                                                       │
@@ -580,7 +583,7 @@ CompletableFuture.supplyAsync(() -> blockingIoCall(),
 
 ## 七、并发编程知识体系全景
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────┐
 │                    Java 并发编程知识体系                         │
 │                                                                │
@@ -653,7 +656,7 @@ CompletableFuture.supplyAsync(() -> blockingIoCall(),
 
 ## 十、专题目录结构
 
-```
+```text
 concurrency/
 ├── README.md              ← 本文件，专题导航
 ├── jmm/                   ← Java 内存模型

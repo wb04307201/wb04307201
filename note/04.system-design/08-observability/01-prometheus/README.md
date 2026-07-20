@@ -39,7 +39,7 @@ Prometheus 是 CNCF 毕业的开源监控系统，专为云原生和容器化场
 
 ## 二、核心架构
 
-```
+```text
 ┌──────────────────────────────────────────────────┐
 │  应用 / 中间件（暴露 /metrics 端点）                  │
 │  Node Exporter / JVM / MySQL Exporter             │
@@ -93,7 +93,7 @@ http_request_duration_seconds_bucket{le="0.05"}
 ### 3.3 Labels 维度
 
 Labels 是 K-V 对，用于切片：
-```
+```text
 http_requests_total{method="POST", handler="/api", status="200"}  1000
 http_requests_total{method="POST", handler="/api", status="500"}  5
 http_requests_total{method="GET", handler="/api", status="200"}   5000
@@ -312,13 +312,13 @@ receivers:
 
 ### 9.1 单实例 Prometheus（适合中小规模）
 
-```
+```text
 1 Prometheus + 1 Alertmanager + 1 Grafana
 ```
 
 ### 9.2 HA（双实例 + Thanos）
 
-```
+```text
 2 Prometheus（联邦 / HA 模式）
   ↓
 Thanos（长期存储 + 全局查询）

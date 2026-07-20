@@ -64,7 +64,7 @@ module:
 
 ## 🌟 选型决策树
 
-```
+```text
 Q1: 团队主语言？
 ├── Java     → Spring AI
 ├── Python   → Q2
@@ -81,6 +81,16 @@ Q3: 部署形态？
 ├── 私有化        → Dify 社区版 / 自研 LangChain 服务
 └── 端侧 / 边缘   → Ollama + 自研
 ```
+
+---
+
+## 📚 子专题导航
+
+| 专题 | 核心内容 |
+|------|---------|
+| [深度学习框架](deep-learning/README.md) | PyTorch / TensorFlow / MindSpore / PaddlePaddle 对比与选型 |
+| [大模型应用开发框架](llm-app/README.md) | LangChain / LangChain4j / Spring AI / LlamaIndex 选型 |
+| [LangGraph 迁移](langgraph-migration/README.md) | 从 LangChain 线性 Chain 迁移到显式状态图编排 |
 
 ---
 

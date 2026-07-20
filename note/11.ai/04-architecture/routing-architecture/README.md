@@ -35,7 +35,7 @@ module:
 
 ### 1.2 解决方案：入口路由 + 双通道
 
-```
+```text
 用户请求
     │
     ▼
@@ -309,7 +309,7 @@ escalation_total = Counter(
 
 ## 八、与现有架构的关系
 
-```
+```text
 本文（routing-architecture）= 入口层
     │
     ├── Fast Path → 直接 LLM / RAG

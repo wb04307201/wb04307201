@@ -154,4 +154,4 @@ BASE模型是分布式系统在CAP约束下的**实用主义解决方案**，它
 - [Eventually Consistent（Amazon Dynamo 论文）](https://www.allthingsdistributed.com/2008/12/eventually_consistent.html)
 - [CAP 十二年回顾（Brewer 2012）](https://www.infoq.com/articles/cap-twelve-years-later-how-the-rules-have-changed/)
 
-← [返回: 系统设计 · base](README.md)
+← [返回 CAP & BASE](../README.md)

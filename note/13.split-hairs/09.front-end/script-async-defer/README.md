@@ -88,7 +88,7 @@ question:
 
 ## 三、加载 vs 执行时机图
 
-```
+```text
 HTML 解析 ──┬────────────────────────────────────────────┐
             │                                            │
 普通 script │  [下载a][执行a][下载b][执行b]              │
@@ -205,4 +205,4 @@ document.body.appendChild(script);  // 默认异步加载
 
 > 📅 2026-06-28 · 咬文嚼字 · 浏览器机制 · ⭐⭐⭐⭐（高频面试 + 实战必会）
 
-← [返回: 咬文嚼字 · script-async-defer](README.md)
+← [返回: 咬文嚼字 · script-async-defer](../README.md)

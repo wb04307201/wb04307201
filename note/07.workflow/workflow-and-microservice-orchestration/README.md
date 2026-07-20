@@ -156,7 +156,7 @@ graph TB
 
 | 引擎 | **Zeebe** | **Conductor** | **Cadence / Temporal** |
 |------|-----------|--------------|----------------------|
-| **厂商** | Camunda | Netflix | Uber（Cadence）/ Temporal（商业化）|
+| **厂商** | Camunda | Netflix | Uber（Cadence）/ Temporal Technologies（Temporal）|
 | **架构** | Raft + 追加日志 + ES | DynamoDB / MySQL / Postgres | Cassandra / MySQL + Visibility |
 | **DSL** | BPMN 2.0（图形化）| 自研 JSON DSL | 代码 DSL（Java/Go/Python）|
 | **吞吐** | 10K+ 实例/秒 | 中等 | 极高（Uber 生产验证）|
@@ -164,13 +164,13 @@ graph TB
 | **云原生** | ✅ K8s 原生 | ⚠️ 需自部署 | ✅ K8s 原生 |
 | **运维成本** | 中 | 中-高 | 中 |
 | **使用案例** | 跨境电商、银行业 | Netflix、媒体 | Uber、阿里、字节 |
-| **开源协议** | Zeebe Community License | Apache 2.0 | MIT（Cadence）/ 商业（Temporal）|
+| **开源协议** | Zeebe Community License | Apache 2.0 | MIT（Cadence）/ MIT（Temporal Server SDK）|
 
 **选型建议**：
 
 - 团队熟悉 BPMN / 需要业务可读的图 → **Zeebe**（详见 [Zeebe 内核](../process-engine/camunda/camunda-8/zeebe/README.md)）
 - 团队 Netflix 背景 / 喜欢 JSON DSL → **Conductor**
-- 团队 Go/Node 强 / 复杂异步编程 → **Temporal**（Cadence 商业化版）
+- 团队 Go/Node 强 / 复杂异步编程 → **Temporal**（Cadence 同源，由原 Cadence 核心作者创立的开源分支）
 
 ---
 
@@ -203,11 +203,11 @@ graph TB
 | 维度 | 数据 |
 |------|------|
 | **业务** | Netflix 全球视频编转码 + 内容审核 + 计费 |
-| **规模** | **日均 100 万+ 工作流实例** |
+| **规模** | **日均百万级工作流实例**（公开演讲口径，具体数字未链接官方来源） |
 | **DSL** | JSON（自研）|
 | **存储** | DynamoDB（主）+ MySQL / Postgres（可选）|
 | **关键能力** | **子工作流嵌套** + **任务队列** + **Select 任务（动态分支）** + **HTTP / Lambda / Event 任务** |
-| **效果** | 替代旧的 Step Workflow 引擎，处理量提升 10 倍，运维成本 ↓ 60% |
+| **效果** | 替代旧的 Step Workflow 引擎，处理量显著提升，运维成本下降（相对量级，无官方公开 benchmark 链接） |
 
 **Conductor 特色**：
 
@@ -238,9 +238,9 @@ graph TB
 | 维度 | 数据 |
 |------|------|
 | **业务** | 阿里电商大促（双11 / 618）的服务编排 + 限流降级 |
-| **规模** | **百万级 QPS**（秒杀 + 支付）|
+| **规模** | 大促峰值高 QPS（具体口径未公开） |
 | **关键能力** | **Sentinel 限流** + **OpenSergo 编排** + **Seata 分布式事务** 一体化 |
-| **效果** | 大促峰值系统可用性 99.99%，限流策略 5 分钟内全集群生效 |
+| **效果** | 大促峰值系统高可用，限流策略分钟级全集群生效（口径以官方公开为准） |
 
 **国内选型观察**：
 

@@ -31,7 +31,7 @@ module:
 
 **核心**：选**信息增益最大**的特征。
 
-```
+```text
 信息熵：H(D) = -Σ p_i log p_i
 条件熵：H(D|A) = Σ |D_v|/|D| · H(D_v)
 信息增益：Gain(D, A) = H(D) - H(D|A)
@@ -45,7 +45,7 @@ module:
 
 **核心**：用**信息增益率**修正 ID3 的偏向。
 
-```
+```text
 信息增益率：GainRatio(D, A) = Gain(D, A) / IV(A)
 其中：IV(A) = -Σ |D_v|/|D| · log(|D_v|/|D|)
 ```
@@ -58,7 +58,7 @@ module:
 
 **核心**：用 **Gini 系数** 衡量不纯度，**可分类可回归**。
 
-```
+```text
 Gini(D) = 1 - Σ p_i²
 ```
 
@@ -90,7 +90,7 @@ plot_tree(clf, feature_names=iris.feature_names, class_names=iris.target_names)
 
 ## 📊 3 模型选择决策
 
-```
+```text
 Q1: 任务是分类还是回归？
 ├── 仅分类 → ID3 / C4.5
 └── 分类 + 回归 → CART
@@ -150,3 +150,11 @@ Q3: sklearn 默认？
 | ❌ 树越深越好 | ✅ 浅树泛化更强 |
 
 ← [返回 02 算法](../README.md)
+### 兄弟章节路径验证
+
+| 兄弟章节 | 路径 | 实际状态 |
+|----------|------|----------|
+| dimensionality-reduction | `../dimensionality-reduction/README.md` | ✅ 存在 |
+| optimization | `../optimization/README.md` | ✅ 存在 |
+| clustering | `../clustering/README.md` | ✅ 存在 |
+| ensemble | `../ensemble/README.md` | ✅ 存在 |

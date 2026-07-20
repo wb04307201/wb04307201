@@ -228,4 +228,4 @@ module:
 - [限流](../rate-limiting/README.md) — 超时堆积说明需要限流配合
 - [服务降级](../service-degradation/README.md) — 超时后降级返回兜底数据
 
-← [返回: 系统设计 · timeout](README.md)
+← [返回 高可用](../README.md)

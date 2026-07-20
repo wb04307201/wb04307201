@@ -147,7 +147,7 @@ graph TB
 
 ### 列表 Diff（有 key）
 
-```
+```text
 旧列表：[A(key=1), B(key=2), C(key=3)]
 新列表：[A(key=1), C(key=3), D(key=4)]
 
@@ -208,7 +208,7 @@ createElement('div', null, [
 
 ### 6.3 最长递增子序列
 
-```
+```text
 旧：[A, B, C, D, E]
 新：[A, C, B, E]
 
@@ -283,4 +283,4 @@ createElement('div', null, [
 
 - 深度阅读：[`09.front-end`](../../09.front-end/README.md) — 主模块详细内容
 
-← [返回: 咬文嚼字 · virtual-dom-diff](README.md)
+← [返回: 咬文嚼字 · virtual-dom-diff](../README.md)

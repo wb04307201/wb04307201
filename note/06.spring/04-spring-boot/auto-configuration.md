@@ -107,7 +107,7 @@ sequenceDiagram
 
 ### 文件内容（每行一个配置类全限定名）
 
-```
+```text
 # META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports
 org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration
 org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
@@ -284,7 +284,7 @@ debug=true
 
 启动时打印**生效的自动配置**：
 
-```
+```text
 =========================
 AUTO-CONFIGURATION REPORT
 =========================

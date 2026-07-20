@@ -53,7 +53,7 @@ question:
 
 ### 1.2 PagedAttention 原理（vLLM 核心创新）
 
-```
+```text
 操作系统的"虚拟内存分页"思想搬到 KV cache：
 
 - 连续逻辑 KV 切成固定大小"block"（默认 16 token / block）
@@ -74,7 +74,7 @@ question:
 
 ### 1.3 连续批处理（Continuous Batching）
 
-```
+```text
 传统静态批处理：
 [A、B、C 一起开始] → 等最长完成 → 整批返回（短序列 GPU 空转）
 
@@ -89,7 +89,7 @@ question:
 
 ### 1.4 Prefix Sharing（前缀共享）
 
-```
+```text
 场景：系统 prompt 500 token + 用户问题 50 token（多用户共享 system prompt）
 
 vLLM 实现：前 500 token 只存一份物理 block，所有用户共享
@@ -117,7 +117,7 @@ vLLM 实现：前 500 token 只存一份物理 block，所有用户共享
 
 **高分答案**（4 层递进，60-90 秒）：
 
-```
+```text
 1. 场景区分（15 秒）：
    "Ollama 不是被 vLLM 替代——两者服务不同场景。
    Ollama 适合单机 / 边缘 / 开发场景；vLLM 是生产级 GPU 服务引擎。"
@@ -146,7 +146,7 @@ vLLM 实现：前 500 token 只存一份物理 block，所有用户共享
 
 **高分答案**（60 秒）：
 
-```
+```text
 1. 问题定义（10 秒）：
    "传统 LLM 推理时每个序列都要预分配连续显存存 KV cache，
    因序列长度不一致导致 60-80% 显存浪费，70B 模型单请求就占 16 GB。"
@@ -171,7 +171,7 @@ vLLM 实现：前 500 token 只存一份物理 block，所有用户共享
 
 **高分答案**（30 秒）：
 
-```
+```text
 "差 2-5 倍。
 静态批处理：所有序列同步开始 → 等最长的结束 → 整批返回（GPU 空转）
 连续批处理：每个 decoding step 重组 batch，完成一个出队，加入新的
@@ -188,7 +188,7 @@ vLLM 实现：前 500 token 只存一份物理 block，所有用户共享
 
 **高分答案**（45 秒）：
 
-```
+```text
 "70B 用 单机 TP=4 + AWQ-INT4 量化。
 - 显存：72B × 2 字节（FP16）= 144 GB → 4 卡 TP 每卡 36 GB
 - INT4：再降到 18 GB / 卡，余量给 KV cache 和 prefix sharing
@@ -207,7 +207,7 @@ vLLM 实现：前 500 token 只存一份物理 block，所有用户共享
 
 **高分答案**（60 秒）：
 
-```
+```text
 "按 3 维约束选：
 1. 硬件：
    - 国产 GPU（昇腾 / 寒武纪）→ LMDeploy（信创生态）
@@ -234,7 +234,7 @@ vLLM 实现：前 500 token 只存一份物理 block，所有用户共享
 
 **高分答案**（40 秒）：
 
-```
+```text
 "4 个反模式：
 1. 盲目追求 INT3 / INT2：质量掉 1-2%，某些下游任务（数字计算、推理）断崖
 2. 忽略反量化开销：W4A16 推理时反量化权重到 FP16，激活占 60% 时省不了 4x
@@ -253,7 +253,7 @@ vLLM 实现：前 500 token 只存一份物理 block，所有用户共享
 
 **高分答案**（40 秒）：
 
-```
+```text
 "vLLM 原生暴露 Prometheus metrics（端口 8000 的 /metrics）：
 
 核心 SLI：
@@ -412,7 +412,7 @@ resp = client.chat(model='qwen2.5:7b', messages=[...])
 
 面试尾声，候选人主动反问会加分：
 
-```
+```text
 Q1：贵司 LLM 推理是自建还是 SaaS 化（如 OpenAI / 智谱）？
     → 自建 vLLM 是主线；SaaS 则更多聊 Function Calling / RAG
 Q2：贵司对 inference latency 的 P99 SLO 是多少？
@@ -427,4 +427,4 @@ Q4：贵司 LLM 应用 RAG / Agent / Few-shot 哪种多？
 
 > 📅 2026-07-06 · 咬文嚼字 · 11.ai · ⭐⭐⭐⭐⭐ · 7 道精选 Q&A · 含 90 秒话术模板
 
-← [返回: 咬文嚼字 · inference-engine-selection](README.md)
+← [返回: 咬文嚼字 · inference-engine-selection](../README.md)

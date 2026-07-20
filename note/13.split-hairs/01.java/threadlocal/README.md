@@ -70,7 +70,7 @@ static class Entry extends WeakReference<ThreadLocal<?>> {
 
 ### set/get/remove 流程
 
-```
+```text
 set(value):
   1. 获取当前线程的 ThreadLocalMap
   2. 若 Map 不存在则创建
@@ -343,4 +343,4 @@ executor.submit(TtlRunnable.get(() -> {
 
 - 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容
 
-← [返回: 咬文嚼字 · threadlocal](README.md)
+← [返回: 咬文嚼字 · threadlocal](../README.md)

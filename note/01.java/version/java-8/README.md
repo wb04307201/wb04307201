@@ -270,7 +270,7 @@ ZonedDateTime zonedNow = ZonedDateTime.now();
 
 该特性允许通过命令行直接启动 JavaFX 应用程序，简化了 JavaFX 应用的部署和运行过程。
 
-```
+```bash
 java --module-path /path/to/javafx-sdk/lib --add-modules javafx.controls,javafx.fxml -jar MyApp.jar
 ```
 

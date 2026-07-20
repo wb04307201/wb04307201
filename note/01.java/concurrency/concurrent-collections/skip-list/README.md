@@ -16,7 +16,7 @@ module:
 
 ## 一、跳表（Skip List）原理
 
-```
+```text
 跳表是一种可以替代红黑树的概率性数据结构，
 通过多层链表实现 O(log n) 的查找、插入和删除。
 
@@ -46,7 +46,7 @@ ASCII 结构示意（4 层跳表）：
 
 ## 二、随机高度
 
-```
+```text
 每个新节点的高度是随机生成的（概率 1/2 增加一层）：
 
   新节点高度算法（简化）：
@@ -68,7 +68,7 @@ ASCII 结构示意（4 层跳表）：
 
 ## 三、ConcurrentSkipListMap 结构
 
-```
+```text
 ConcurrentSkipListMap 的底层节点结构：
 
   多层索引 + 基础数据层，每层都是单向链表
@@ -96,7 +96,7 @@ ConcurrentSkipListMap 的底层节点结构：
 
 ## 四、无锁操作
 
-```
+```text
 ConcurrentSkipListMap 使用 CAS 实现无锁的插入和删除：
 
   插入流程：
@@ -148,7 +148,7 @@ public class ConcurrentSkipListMap<K,V>
 }
 ```
 
-```
+```text
 性能特征：
 
   操作        | 平均      | 最差
@@ -172,7 +172,7 @@ public class ConcurrentSkipListMap<K,V>
 
 ## 六、ConcurrentSkipListSet
 
-```
+```text
 ConcurrentSkipListSet 内部持有一个 ConcurrentSkipListMap。
 
 public class ConcurrentSkipListSet<E> extends AbstractSet<E>
@@ -223,4 +223,4 @@ NavigableSet<Integer> sub = set.subSet(2, true, 6, true);  // [2, 5]
 - [并发队列](../queue/README.md)
 - [ConcurrentHashMap 专题](../../../../README.md)
 
-← [返回: Java 知识体系 · skip-list](README.md)
+← [返回: Java 知识体系 · skip-list](../README.md)

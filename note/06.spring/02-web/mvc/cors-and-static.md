@@ -102,7 +102,7 @@ public CorsFilter corsFilter() {
 
 Spring Boot 默认从以下位置查找静态资源（按顺序）：
 
-```
+```text
 classpath:/META-INF/resources/
 classpath:/resources/
 classpath:/static/

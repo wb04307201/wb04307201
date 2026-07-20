@@ -16,7 +16,7 @@ module:
 
 ## 四层架构
 
-```
+```text
 ┌─────────────────────────────────────────────────┐
 │ 应用层        HTTP/HTTPS/DNS/FTP/SMTP/SSH        │  消息
 │ 传输层        TCP（可靠）/ UDP（快速）             │  段/数据报
@@ -58,7 +58,7 @@ module:
 
 ## 数据封装过程
 
-```
+```text
 应用数据
   ↓ + TCP/UDP 头部（源端口 + 目的端口）
 传输层段
@@ -102,3 +102,29 @@ module:
 **相关面试题**：[`TCP 三次握手四次挥手`](../../../13.split-hairs/02.computer-basics/tcp-handshake-teardown/README.md) — 状态机 + TIME_WAIT/CLOSE_WAIT 排查
 
 ← [返回 计算机网络](../README.md)
+
+## 边界情况补充：网络层异常
+
+| 异常 | 触发条件 | 默认行为 | 故障排查命令 |
+|------|----------|----------|-------------|
+| **MTU 分片** | IP 包 > 链路 MTU（通常 1500B） | 自动分片（IPv4），发送 ICMP Fragmentation Needed（IPv6 无分片） | `ping -M do -s 1500 <dst>` 测试路径 MTU |
+| **TTL=0** | 包经过 N 跳路由后 TTL 减为 0 | 路由器丢弃包 + 发送 ICMP Time Exceeded | `traceroute <dst>` 跟踪路径 |
+| **SYN Flood** | 大量半开连接占满 SYN backlog | TCP backlog 满后丢弃新 SYN | `netstat -s \| grep SYNs` 看 dropped |
+| **ICMP Redirect** | 路由器发现更优路径 | 主机更新路由表 + ICMP 通知原路由器 | `sysctl net.ipv4.conf.all.accept_redirects` |
+| **Port Unreachable** | UDP 目标端口无服务 | 发送 ICMP Port Unreachable 给源 | `tcpdump icmp` 抓包验证 |
+
+## TCP 握手 RTT 量化对比
+
+| 场景 | RTT | 握手时间（3-way） | 数据传输开始时间 |
+|------|-----|------------------|------------------|
+| 同机房（同 pod 互通） | ~0.5 ms | ~1 ms | 1 ms |
+| 同城 IDC（光纤 5 km） | ~0.1 ms | ~0.3 ms | 0.3 ms |
+| 跨城 BGP（200 km） | ~2 ms | ~6 ms | 6 ms |
+| 跨国海底光缆（8000 km） | ~80 ms | ~240 ms | 240 ms |
+| 卫星（LEO 800 km） | ~5 ms | ~15 ms | 15 ms |
+| 卫星（GEO 36000 km） | ~240 ms | ~720 ms | 720 ms |
+
+**关键启示**：
+- 跨城应用**3-way 握手已占首屏 6ms**，对延迟敏感 API 应启用 TCP Fast Open (TFO) 减少 1 RTT
+- 跨国应用**首次请求 720ms GEO 卫星**，应使用 CDN 或边缘计算
+- TCP 重传超时 (RTO) 至少 = SRTT + 4*RTTVAR，跨城场景重传代价高

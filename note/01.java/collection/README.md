@@ -16,7 +16,7 @@ module:
 
 ## 一、集合框架继承体系
 
-```
+```text
 Collection（接口）
 ├── List（有序、可重复）
 │   ├── ArrayList          ← 动态数组，随机访问 O(1)
@@ -54,6 +54,19 @@ Map（接口，键值对）
 
 ---
 
+## 集合专题导航
+
+| 专题 | 一句话定位 |
+|------|-----------|
+| [ArrayList](ArrayList/README.md) | 动态数组底层原理、扩容机制、fail-fast、最佳实践 |
+| [LinkedList](LinkedList/README.md) | 双向链表结构、与 ArrayDeque 对比、迭代器删除陷阱 |
+| [ConcurrentHashMap](ConcurrentHashMap/README.md) | JDK 7 分段锁 / JDK 8 CAS+synchronized、size 计算、并发安全 |
+| [LinkedHashSet](LinkedHashSet/README.md) | 基于 LinkedHashMap 的插入顺序 Set、LruCache 应用 |
+| [TreeMap](TreeMap/README.md) | 红黑树有序 Map、范围查询、Comparable vs Comparator |
+| [WeakHashMap](WeakHashMap/README.md) | 弱引用键、GC 自动回收、缓存场景与陷阱 |
+
+---
+
 ## 二、List / Set / Queue / Map 的核心区别
 
 | 接口 | 特点 | 典型实现 | 线程安全实现 |
@@ -67,7 +80,7 @@ Map（接口，键值对）
 
 ## 三、选型决策树
 
-```
+```text
 你需要什么？
 │
 ├── 键值对存储（Map）
@@ -105,7 +118,7 @@ Map（接口，键值对）
 
 ### 底层结构
 
-```
+```text
 ArrayList：Object[] 动态数组
 ┌───┬───┬───┬───┬───┬───┬───┬───┐
 │ A │ B │ C │ D │   │   │   │   │  ← 容量 8，size 4
@@ -129,7 +142,7 @@ null ← [prev|A|next] ⇄ [prev|B|next] ⇄ [prev|C|next] → null
 
 ### 实际选择建议
 
-```
+```text
 99% 的场景选 ArrayList，原因：
 1. CPU 缓存友好：数组内存连续，局部性好
 2. 随机访问 O(1)：绝大多数业务都需要按索引访问
@@ -263,7 +276,7 @@ it.next();               // 不抛异常，但可能看不到 "C"
 
 ### 规则
 
-```
+```text
 1. equals() 相等的两个对象，hashCode() 必须相等
 2. hashCode() 相等的两个对象，equals() 不一定相等（哈希冲突）
 3. 重写 equals() 必须同时重写 hashCode()
@@ -410,7 +423,7 @@ List<String> copy = List.copyOf(existingList);
 
 ## 总结
 
-```
+```text
 集合选型核心原则：
 
 1. Map 选 HashMap（无序）/ TreeMap（有序）/ ConcurrentHashMap（并发）
@@ -429,7 +442,7 @@ List<String> copy = List.copyOf(existingList);
 | 统计维度 | 数值 | 口径 |
 |----------|------|------|
 | 分类主题数 | 4 | List / Set / Queue / Map |
-| 子 README 数 | 6 | `collection/` 下 leaf README（ArrayList / LinkedList / ConcurrentHashMap / LinkedHashSet / TreeMap / WeakHashMap） |
+| 子 README 数 | 6 | [`ArrayList`](ArrayList/README.md) / [`LinkedList`](LinkedList/README.md) / [`ConcurrentHashMap`](ConcurrentHashMap/README.md) / [`LinkedHashSet`](LinkedHashSet/README.md) / [`TreeMap`](TreeMap/README.md) / [`WeakHashMap`](WeakHashMap/README.md) |
 | 含 frontmatter 的 README | 7 / 7 | 100% 覆盖（2026-07-01） |
 
 > **统计时间戳**：2026-07-01

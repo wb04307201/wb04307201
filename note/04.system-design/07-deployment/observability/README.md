@@ -46,7 +46,7 @@ module:
 
 可观测性不是替代监控，而是**包含**监控。监控是可观测性的子集：
 
-```
+```text
 ┌─────────────────────────────────┐
 │        可观测性                  │
 │  ┌───────────────────────────┐  │
@@ -65,7 +65,7 @@ module:
 
 ## 三大支柱
 
-```
+```text
          ┌─────────────────┐
          │   可观测性       │
          │  Observability   │
@@ -237,7 +237,7 @@ public class OrderController {
 
 #### Trace 数据结构
 
-```
+```text
 Trace: abc123def456
 ├── Span: span-001 [API Gateway]          0ms ─── 500ms
 │   ├── Span: span-002 [Order Service]    5ms ─── 200ms
@@ -296,7 +296,7 @@ public class OrderController {
 
 三大支柱不是孤立的，它们通过 **TraceID** 串联在一起：
 
-```
+```text
                     TraceID: abc123def456
                           │
               ┌───────────┼───────────┐
@@ -326,7 +326,7 @@ public class OrderController {
 
 在微服务架构中，TraceID 需要在服务之间传递：
 
-```
+```text
 HTTP Header:
   X-Trace-Id: abc123def456
   X-Span-Id: span-002
@@ -381,7 +381,7 @@ SRE 体系下，可观测性的最终目标不是"看见指标"，而是驱动**
 
 **示例**
 
-```
+```text
 SLI_availability = 1 - (错误请求数 / 总请求数)
 SLI_latency_p99  = histogram_quantile(0.99, http_request_duration_seconds)
 ```
@@ -392,7 +392,7 @@ SLI_latency_p99  = histogram_quantile(0.99, http_request_duration_seconds)
 
 **示例**
 
-```
+```text
 SLO：核心订单 API 可用性 ≥ 99.95%（月度）
 SLO：搜索 API P99 延迟 < 200ms（滚动 28 天）
 SLO：支付链路端到端成功率 ≥ 99.99%（季度）
@@ -411,14 +411,14 @@ SLO：支付链路端到端成功率 ≥ 99.99%（季度）
 
 **计算公式**
 
-```
+```text
 Error Budget = (1 - SLO) × 总请求数
             = (1 - SLO) × 时间窗口内的总请求量
 ```
 
 **示例**
 
-```
+```text
 SLO = 99.9% 可用性
 时间窗口 = 30 天
 总请求数 = 1 亿次
@@ -439,7 +439,7 @@ Error Budget = (1 - 0.999) × 1 亿 = 10 万次失败请求
 
 Error Budget 不仅是衡量指标，更是**约束开发节奏的工程工具**：
 
-```
+```text
 ┌──────────────────────────────────────────┐
 │         Error Budget 周期                 │
 │                                          │
@@ -469,7 +469,7 @@ Error Budget 不仅是衡量指标，更是**约束开发节奏的工程工具**
 
 **多窗口、多燃烧率（Multi-Window, Multi-Burn-Rate）告警示例**
 
-```
+```text
 快窗口（1 小时）告警：过去 1 小时消耗月度预算的 2%
   → 提示：短期可能严重故障
 慢窗口（6 小时）告警：过去 6 小时消耗月度预算的 5%
@@ -514,7 +514,7 @@ Error Budget 不仅是衡量指标，更是**约束开发节奏的工程工具**
 
 ### 推荐方案（Java 生态）
 
-```
+```text
 Spring Boot + Micrometer + OpenTelemetry
         │
         ├── Metrics → Prometheus + Grafana
@@ -540,4 +540,4 @@ Spring Boot + Micrometer + OpenTelemetry
 - [部署与发布策略](../deploy/README.md) — 发布过程中的可观测性（错误率、延迟、流量回滚观测）
 - [Spring Boot Actuator / Micrometer / Prometheus 集成](../../../06.spring/07-observability/README.md) — Spring 工程可观测性落地方案
 
-← [返回: 系统设计 · observability](README.md)
+← [返回 部署与运维](../README.md)

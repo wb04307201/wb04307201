@@ -11,13 +11,13 @@ module:
 
 > **一句话答案**：4 大模式**没有绝对优劣**——ReAct 用于"探索"、Plan-and-Execute 用于"复杂任务"、DAG 用于"确定性"、Multi-Agent 用于"复杂协作"。生产环境通常是 **混合（DAG + Loop + Plan Repair）**。
 
-← [返回: Agent 架构](../agent-architecture/README.md) · 同级：[agent-context](../agent-context/README.md) · [agent-memory](../agent-memory/README.md)
+← [返回: L4 架构设计](../README.md) · 同级：[agent-context](../agent-context/README.md) · [agent-memory](../agent-memory/README.md)
 
 ---
 
 ## 0. 面试高频拷问
 
-```
+```text
 Q：在构建 AI Agent 系统时，ReAct 和 Plan-and-Execute 是两种主流的执行模式，
    各有其独特的特点和适用场景。如何选？
 ```
@@ -83,7 +83,7 @@ Q：在构建 AI Agent 系统时，ReAct 和 Plan-and-Execute 是两种主流的
 
 ## 5. 一句话速查
 
-```
+```text
 "Agent 4 大模式选型：
 - 探索 / 未知多 → ReAct
 - 复杂多步 / 目标清晰 → Plan-and-Execute
@@ -104,4 +104,4 @@ Q：在构建 AI Agent 系统时，ReAct 和 Plan-and-Execute 是两种主流的
 
 ---
 
-← [返回: Agent 架构](../agent-architecture/README.md)
+← [返回: L4 架构设计](../README.md)

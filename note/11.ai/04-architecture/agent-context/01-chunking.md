@@ -125,7 +125,7 @@ doc_emb = embed(full_doc)  # sequence-level
 
 ## 4. Chunk Overlap（重叠窗口）
 
-```
+```text
 [----chunk 1----]
             [----chunk 2----]
                   [----chunk 3----]

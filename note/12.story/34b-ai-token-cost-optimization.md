@@ -7,21 +7,21 @@ story:
   audience: AI 工程师 / 架构师
 -->
 
-# 36b · 省钱大作战
+# 34b · 省钱大作战
 
 > 从阿明的"AI 月账单从 5 万涨到 50 万"，看 AI 时代的 FinOps —— Token 经济学**下篇：成本优化与 ROI**
 
-> **系列定位**：本篇是「阿明餐厅」系列的**续集十二（下）**。本篇接续[36a · AI 成本结构（上）](./34a-ai-token-cost-structure.md)，**聚焦"优化成本"**：路由 + 缓存 + 压缩 + 训练优化 + 6 大实战技巧 + ROI 度量 + FinOps 组织。本篇与上篇是一对孪生篇 —— 上篇讲"看见"，下篇讲"赚回"。
+> **系列定位**：本篇是「阿明餐厅」系列的**续集十二（下）**。本篇接续[34a · AI 成本结构（上）](./34a-ai-token-cost-structure.md)，**聚焦"优化成本"**：路由 + 缓存 + 压缩 + 训练优化 + 6 大实战技巧 + ROI 度量 + FinOps 组织。本篇与上篇是一对孪生篇 —— 上篇讲"看见"，下篇讲"赚回"。
 
-> **兄弟篇**：36a · AI 成本结构（[← 点击阅读](./34a-ai-token-cost-structure.md)）
+> **兄弟篇**：34a · AI 成本结构（[← 点击阅读](./34a-ai-token-cost-structure.md)）
 
 ---
 
 ## 引言：从"看见成本"到"优化成本"
 
-> **阿明的厨房类比（开篇场景）**：上篇（36a）阿明看清了"调料账单"，发现每月调料花 5 万。这篇阿明要"省调料"—— 但不是省到菜难吃，而是"用同样的调料做出更多菜"。本章阿明的"省调料绝招"包括：按场景选便宜调料（成本感知路由）、重复用同一瓶调料（缓存）、调料批量采购（压缩）、培训厨师自己种菜（微调）…… 5 大策略，省到 30% 但菜更好吃。
+> **阿明的厨房类比（开篇场景）**：上篇（34a）阿明看清了"调料账单"，发现每月调料花 5 万。这篇阿明要"省调料"—— 但不是省到菜难吃，而是"用同样的调料做出更多菜"。本章阿明的"省调料绝招"包括：按场景选便宜调料（成本感知路由）、重复用同一瓶调料（缓存）、调料批量采购（压缩）、培训厨师自己种菜（微调）…… 5 大策略，省到 30% 但菜更好吃。
 
-[36a · 成本结构（上）](./34a-ai-token-cost-structure.md)讲的是"看见" —— 知道钱花在哪、为什么 AI 成本和云资源成本不同、6 大组件、4 大陷阱、5 大监控指标。
+[34a · 成本结构（上）](./34a-ai-token-cost-structure.md)讲的是"看见" —— 知道钱花在哪、为什么 AI 成本和云资源成本不同、6 大组件、4 大陷阱、5 大监控指标。
 
 **但"看见"只是开始。**
 
@@ -351,7 +351,7 @@ roi_months = training_cost / inference_saving_per_month
 
 ## 第八章：Token 优化的 6 大实战技巧 —— 六个省字绝招，字字用在刀刃上
 
-阿明总结了 6 个**立即可做**的 Token 优化技巧。**剩下的"分块处理长文档 / RAG 替代长上下文 / Function Call Schema 简化 / 僵尸 Prompt 清理"等 4 个技巧**，详见[36a 第三章"4 大隐藏陷阱"](./34a-ai-token-cost-structure.md#第三章token-计费的-4-大隐藏陷阱)和第五章的"5 层路由"，本章聚焦最高频的 6 个。
+阿明总结了 6 个**立即可做**的 Token 优化技巧。**剩下的"分块处理长文档 / RAG 替代长上下文 / Function Call Schema 简化 / 僵尸 Prompt 清理"等 4 个技巧**，详见[34a 第三章"4 大隐藏陷阱"](./34a-ai-token-cost-structure.md#第三章token-计费的-4-大隐藏陷阱)和第五章的"5 层路由"，本章聚焦最高频的 6 个。
 
 ### 8.1 技巧 1：精简 System Prompt
 
@@ -461,7 +461,7 @@ response = await llm_call(batch_prompt, max_tokens=10000)
 
 **节省**：API 调用费（按调用次数收费时），但 token 可能略增。
 
-> 进阶技巧 7-10：长文档分块 Map-Reduce、RAG 替代长上下文、Function Call Schema 动态选择、僵尸 Prompt 清理 —— 这些分别在[36a 第三章 4 大陷阱](./34a-ai-token-cost-structure.md#第三章token-计费的-4-大隐藏陷阱)、第五章 5 层路由有详细展开。
+> 进阶技巧 7-10：长文档分块 Map-Reduce、RAG 替代长上下文、Function Call Schema 动态选择、僵尸 Prompt 清理 —— 这些分别在[34a 第三章 4 大陷阱](./34a-ai-token-cost-structure.md#第三章token-计费的-4-大隐藏陷阱)、第五章 5 层路由有详细展开。
 
 ---
 
@@ -662,7 +662,7 @@ graph TB
 
 ## 延伸阅读
 
-- [36a · AI 成本结构（上篇）](./34a-ai-token-cost-structure.md) —— 成本结构与监控
+- [34a · AI 成本结构（上篇）](./34a-ai-token-cost-structure.md) —— 成本结构与监控
 - [阿明的省钱经](./14-cloud-finops.md) —— 番外二，云资源 FinOps，本篇的"传统版本"
 - [Agent Harness](./30-agent-harness.md) —— 续集八，Agent Loop 的成本护栏
 - [AI 评测工程（基础篇）](./32a-ai-evaluation-fundamentals.md) / [（流水线篇）](./32b-ai-evaluation-pipeline.md) —— 续集十，评测本身有成本（与本篇成本优化的"分层评测"对应）
@@ -727,4 +727,13 @@ graph TB
 
 > 好的成本优化，不是"一刀切换便宜模型"，而是"**该省省、该花花——用缓存减少重复消费，用小模型处理简单任务，用架构思维降低总成本**"。
 
-← [返回系列导读](./index.md) | [上篇：36a 成本结构 →](./34a-ai-token-cost-structure.md)
+← [返回系列导读](./index.md) | [上篇：34a 成本结构 →](./34a-ai-token-cost-structure.md)
+## 系列内前序回链（与 ai-learning-paradox 相同方法论）
+
+补充前序文章回链（series 5/6/9）：
+
+- [§ 5 性能优化](../16-performance-optimization.md) — 性能与成本权衡
+- [§ 6 异步事件驱动](../19-realtime-eventdriven.md) — 异步任务与按需付费
+- [§ 9 分布式难题](../17-distributed-puzzles.md) — 跨节点成本调度
+
+**回链合理性**：本篇"Token 成本优化"与上述性能/事件/分布式专题在生产环境是组合使用（性能优化往往降低 token 成本）。

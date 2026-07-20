@@ -305,7 +305,7 @@ public class ApprovalService {
 
 一个 region 是状态机内部的"子状态机"，每个 region 有自己的初始状态和激活路径，互不干扰。订单场景：
 
-```
+```text
 [订单主状态机]
    ├─ Region A: 支付线  PENDING → PAID → REFUNDED
    └─ Region B: 物流线  PENDING → SHIPPED → DELIVERED

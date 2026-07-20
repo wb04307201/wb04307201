@@ -38,7 +38,7 @@ module:
 
 **核心事实**：训练一次 70B 模型成本 **$1M-$10M**，没人愿意跑第二个 epoch。
 
-```
+```text
 70B 模型训练 1 epoch（2T tokens）：
 - 1024 张 A100 跑 ~30 天
 - 算力成本：~$2M
@@ -51,7 +51,7 @@ module:
 
 **核心事实**：next-token prediction 的训练样本是 **"任意长文本的任意位置"** —— 数据生成速率远大于训练消费速率。
 
-```
+```text
 GPT-3 训练 300B tokens：
 - Common Crawl 一个月就能产出 1T+ 新文本
 - 训练集用完 → 1 个月后又有一批新数据
@@ -93,7 +93,7 @@ GPT-3 训练 300B tokens：
 
 **来源**：[Language Models are Few-Shot Learners (Brown et al., 2020)](https://arxiv.org/abs/2005.14165) Table 2.1
 
-```
+```text
 GPT-3 训练配置（论文原文）：
 - 175B 参数
 - 300B tokens
@@ -141,7 +141,7 @@ GPT-3 训练配置（论文原文）：
 
 **来源**：[meta/llama](https://github.com/meta/llama) 训练日志
 
-```
+```text
 LLaMA-2 70B 训练配置：
 - 总 tokens：2T
 - 总 epoch：~4（2T / 500B 平均 epoch）
@@ -167,7 +167,7 @@ LLaMA-2 70B 训练配置：
 ### 2.6 Qwen / DeepSeek (2024+) — 中国主流 LLM 的配置
 
 **Qwen-2.5 训练配置**（公开 paper）：
-```
+```text
 - 72B 参数
 - 18T tokens
 - dropout: 0.0
@@ -175,7 +175,7 @@ LLaMA-2 70B 训练配置：
 ```
 
 **DeepSeek-V2 训练配置**（公开 paper）：
-```
+```text
 - 236B 总参 / 21B 激活
 - 8.1T tokens
 - dropout: 0.0
@@ -219,7 +219,7 @@ LLaMA-2 70B 训练配置：
 ### 3.3 怎么看"单 epoch vs 多 epoch"
 
 **计算公式**：
-```
+```text
 epoch 数 ≈ 训练总 tokens / 数据集 tokens 数
 ```
 

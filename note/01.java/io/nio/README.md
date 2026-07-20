@@ -24,7 +24,7 @@ Java NIO（New IO / Non-blocking IO）自 JDK 1.4 引入，是对传统 `java.io
 
 ### 面向流的缺陷
 
-```
+```text
 客户端 --[字节流]--> 程序（一次读一个字节/一批字节，无法回头）
 ```
 
@@ -34,7 +34,7 @@ Java NIO（New IO / Non-blocking IO）自 JDK 1.4 引入，是对传统 `java.io
 
 ### 面向缓冲区的优势
 
-```
+```text
 客户端 <===> [Channel] <===> [Buffer] <===> 程序
                          可来回移动 position 指针
 ```
@@ -52,7 +52,7 @@ Buffer 是 NIO 的核心抽象，所有数据传输都经过 Buffer。
 
 ### 2.1 Buffer 继承层次
 
-```
+```text
 Buffer (抽象基类)
   |
   +-- ByteBuffer        (最常用，支持直接/非直接缓冲区)
@@ -102,7 +102,7 @@ System.out.println("是否直接缓冲区: " + buf.isDirect());  // true
 
 ### 3.1 四个核心属性
 
-```
+```text
  0                    position              limit              capacity
  |-----------------------|--------------------|--------------------|
  |    可读/可写区域       |   不可访问区域       |   越界区域          |
@@ -118,7 +118,7 @@ System.out.println("是否直接缓冲区: " + buf.isDirect());  // true
 
 ### 3.2 缓冲区状态转换图
 
-```
+```text
 ┌──────────────────────────────────────────────────────┐
 │                  新建/调用 clear()                     │
 │  position = 0                                         │
@@ -206,7 +206,7 @@ Channel 是对传统流的替代，支持双向读写和非阻塞操作。
 
 ### 4.1 Channel 继承层次
 
-```
+```text
 Channel (接口)
   |
   +-- ReadableByteChannel
@@ -280,7 +280,7 @@ Selector 允许单线程管理多个 Channel，是 NIO 高并发的核心。
 
 ### 5.1 工作原理
 
-```
+```text
                     ┌─────────────────────────────┐
                     │         Selector            │
                     │                             │
@@ -741,7 +741,7 @@ Pipe 创建了两个 Channel 之间的单向数据通道，用于线程间通信
 
 ### 9.1 Pipe 结构
 
-```
+```text
   线程 A                        线程 B
     │                             │
     ▼                             │
@@ -761,7 +761,7 @@ Pipe 创建了两个 Channel 之间的单向数据通道，用于线程间通信
 - **SinkChannel**：写入端，写入数据到 Pipe
 - **SourceChannel**：读取端，从 Pipe 读取数据
 
-```
+```text
 Thread A ──► SinkChannel ──► [Pipe Buffer] ──► SourceChannel ──► Thread B
 ```
 
@@ -852,7 +852,7 @@ public class PipeDemo {
 
 ### 三种 IO 模型形象比喻
 
-```
+```text
 BIO (同步阻塞):
   你去餐厅点餐 → 坐在柜台前等 → 服务员做好后给你 → 才能离开
   (期间什么都干不了)
@@ -913,7 +913,7 @@ channel.read(buffer, 0, null, new CompletionHandler<Integer, Void>() {
 
 ### 性能参考（高并发场景）
 
-```
+```text
 连接数 100     │ BIO ★★★  │ NIO ★★★★★ │ AIO ★★★★
 连接数 1000    │ BIO ★    │ NIO ★★★★★ │ AIO ★★★★
 连接数 10000   │ BIO ✗    │ NIO ★★★★★ │ AIO ★★★★

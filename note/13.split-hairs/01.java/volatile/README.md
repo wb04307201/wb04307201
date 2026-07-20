@@ -47,7 +47,7 @@ class Task {
 
 Java 内存模型定义线程与主内存的关系：所有变量存于**主内存**（共享），每个线程拥有**工作内存**（私有副本）。线程对变量的操作必须在工作内存中进行，不能直接读写主内存。
 
-```
+```text
 ┌──────────────────────────────┐
 │       主内存（Main Memory）     │
 │  var A │ var B │ var C       │
@@ -126,7 +126,7 @@ public class Singleton {
 ```
 
 `new Singleton()` 分三步：
-```
+```text
 1. allocate()              // 分配内存
 2. ctorInstance(memory)    // 初始化对象
 3. instance = memory       // 指向内存地址
@@ -165,7 +165,7 @@ public class VolatileCounter {
 ```
 
 `count++` 包含三步：
-```
+```text
 1. READ:   temp = count      // 从主内存读取
 2. MODIFY: temp = temp + 1   // 工作内存计算
 3. WRITE:  count = temp      // 写回主内存
@@ -173,7 +173,7 @@ public class VolatileCounter {
 
 volatile 只保证第1步读最新、第3步写后可见，但**三步之间无原子性**。竞态演示：
 
-```
+```text
 时间线  线程A                  线程B
 ───────────────────────────────────────
 t1     READ count → 0
@@ -346,4 +346,4 @@ public class AtomicInteger {
 
 - 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容
 
-← [返回: 咬文嚼字 · volatile](README.md)
+← [返回: 咬文嚼字 · volatile](../README.md)

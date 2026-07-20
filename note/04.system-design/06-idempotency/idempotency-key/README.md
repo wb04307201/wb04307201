@@ -28,7 +28,7 @@ module:
 
 ## 原理
 
-```
+```text
 Client                              Server
   │                                    │
   │  POST /payments                    │
@@ -75,7 +75,7 @@ Client                              Server
 
 ### 状态机
 
-```
+```text
                   ┌─────────────┐
                   │   (新 Key)   │
                   └──────┬──────┘
@@ -320,4 +320,4 @@ Content-Type: application/json
 - [Brandur Leach - Idempotency Keys](https://brandur.org/idempotency-keys)
 - [PayPal API - Idempotency](https://developer.paypal.com/api/rest/reference/idempotency/)
 
-← [返回: 系统设计 · idempotency-key](README.md)
+← [返回 幂等设计](../README.md)

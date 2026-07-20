@@ -12,13 +12,9 @@ module:
 > ⬅️ [返回微服务](../README.md) | ⬅️ [数据一致性](../data-consistency/README.md)
 
 ---
-## 引言：架构困境
+## 引言：演进与组织 的关键决策
 
-演进与组织 的关键不是'选型'——是**选完之后怎么在 5 个 trade-off 里活下来**。
-
-本篇用'决策困境'切入，比较几种主流路径并讲清取舍。
-
----
+本篇是「演进与组织」的核心章节，聚焦"该主题"在实际落地时**5 个 trade-off 的取舍与决策轴**。
 
 ## 🎯 一句话定位
 
@@ -44,7 +40,7 @@ module:
 
 > 来自《Building Microservices》作者 Sam Newman：
 
-```
+```text
 微服务前需要：
 ✅ 模块化单体已成功
 ✅ 业务复杂度到了临界点
@@ -154,7 +150,7 @@ graph LR
 
 ### 2.3 演进时间表
 
-```
+```text
 T0 (现在):    模块化单体，识别边界
   ↓
 T+3 月:      拆分 1-2 个高价值服务（如订单、支付）
@@ -203,7 +199,7 @@ T+24 月:     10-20 个服务，完整治理体系
 
 **示例：拆出"通知服务"**
 
-```
+```text
 原单体:  OrderService.sendEmail()  [内部调用]
          ↓
 第一步:  抽象为 NotificationClient 接口
@@ -283,7 +279,7 @@ graph TB
 
 ### 4.4 团队与服务的对应
 
-```
+```text
 理想:  1 个流式团队 → 1-3 个微服务
 反例1: 1 个团队 → 10+ 个服务（人手不足）
 反例2: 5 个团队 → 1 个服务（多团队改同一服务，沟通成本高）
@@ -322,7 +318,7 @@ graph TB
 
 ### 5.2 团队能力雷达图
 
-```
+```text
         业务理解
           |
           |
@@ -441,4 +437,4 @@ graph TB
 - [可观测性](../../../../07-deployment/observability/README.md) — 微服务必备
 - [Chaos Engineering](../../../../03-high-availability/chaos-engineering/README.md) — 故障演练
 
-← [返回: 系统设计 · migration-and-organization](README.md)
+← [返回微服务](../README.md)

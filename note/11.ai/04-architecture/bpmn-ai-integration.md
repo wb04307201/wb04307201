@@ -191,7 +191,7 @@ flowchart LR
 
 ## 三、4 大模式决策树
 
-```
+```text
 Q1: AI 推理复杂度？
 ├── 单步分类 / 提取 → 模式 A（fromAi() Service Task）
 └── 多步推理 / 工具调用 → 继续

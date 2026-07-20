@@ -108,7 +108,7 @@ sequenceDiagram
 ## 四、为什么要三级？二级不行吗？
 
 **只用二级缓存的场景**：
-```
+```text
 A 实例化 → 放入二级缓存 → A 需要 B → 创建 B → B 需要 A → 从二级缓存拿到 A（早期）→ B 完成 → A 完成
 ```
 
@@ -263,4 +263,4 @@ public class B {
 
 - 深度阅读：[`06.spring`](../../06.spring/README.md) — 主模块详细内容
 
-← [返回: 咬文嚼字 · circular-dependency](README.md)
+← [返回: 咬文嚼字 · circular-dependency](../README.md)

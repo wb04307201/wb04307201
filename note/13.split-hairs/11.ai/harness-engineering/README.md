@@ -44,7 +44,7 @@ Harness 是答案——**给 Agent 套上缰绳**：
 | **工具型** | Hooks / Callbacks | 关键节点自动触发检查 |
 | **反馈型** | Evaluation Loop | 持续评估输出质量 |
 
-```
+```text
 Harness = 规范 + 流程 + 工具 + 反馈
 ```
 
@@ -105,4 +105,4 @@ Harness = 规范 + 流程 + 工具 + 反馈
 
 > 📅 2026-06-30 · 咬文嚼字 · 2026 面试热点 · ⭐⭐⭐⭐
 
-← [返回: 咬文嚼字 · harness-engineering](README.md)
+← [返回: 咬文嚼字 · harness-engineering](../README.md)

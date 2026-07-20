@@ -24,7 +24,7 @@ HTTPS 与 TLS 1.3：加密传输的完整机制 的关键不是'防住'——是
 
 HTTPS = HTTP over TLS/SSL，通过 TLS（Transport Layer Security）协议加密 HTTP 流量。
 
-```
+```text
 HTTP：   客户端 ←明文→ 服务端     ← 中间人可窃听
 HTTPS：  客户端 ←密文→ 服务端     ← 中间人看不懂
 ```
@@ -58,7 +58,7 @@ HTTPS：  客户端 ←密文→ 服务端     ← 中间人看不懂
 
 ### 3.1 TLS 1.2 握手（2 RTT）
 
-```
+```text
 客户端                                服务端
   │  ① ClientHello（支持的加密套件）    →
   │  ← ② ServerHello + Certificate + ServerHelloDone
@@ -71,7 +71,7 @@ HTTPS：  客户端 ←密文→ 服务端     ← 中间人看不懂
 
 ### 3.2 TLS 1.3 握手（1-RTT + 0-RTT）
 
-```
+```text
 客户端                                服务端
   │  ① ClientHello + Key Share（提前带）  →
   │  ← ② ServerHello + Key Share + Certificate + Finished
@@ -101,7 +101,7 @@ HTTPS：  客户端 ←密文→ 服务端     ← 中间人看不懂
 
 TLS 1.3 只支持 AEAD（带认证的加密）：
 
-```
+```text
 TLS_AES_256_GCM_SHA384          ← 主流推荐
 TLS_CHACHA20_POLY1305_SHA256    ← ARM 移动端
 TLS_AES_128_GCM_SHA256         ← 性能优先
@@ -115,7 +115,7 @@ TLS_AES_128_GCM_SHA256         ← 性能优先
 
 ### 5.1 证书结构
 
-```
+```text
 ┌─────────────────────────────────────┐
 │  Version（版本）                       │
 ├─────────────────────────────────────┤
@@ -139,7 +139,7 @@ TLS_AES_128_GCM_SHA256         ← 性能优先
 
 ### 5.2 证书层级（CA 信任链）
 
-```
+```text
 根 CA（Root CA）
    ├─ 中间 CA（Intermediate CA）
    │    ├─ example.com 证书
@@ -260,7 +260,7 @@ openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out s
 
 ### 8.2 Session Resumption（会话恢复）
 
-```
+```text
 首次连接：完整握手（1 RTT）
 再次连接：
   ├── Session ID（服务端缓存）
@@ -269,7 +269,7 @@ openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out s
 
 ### 8.3 OCSP Stapling
 
-```
+```text
 传统：客户端 → 查询 CA 的 OCSP 服务器 → 验证证书状态（额外延迟）
 Stapling：服务端定期查询 OCSP → 把结果"装订"在 TLS 握手响应里
   → 客户端零额外查询
@@ -313,4 +313,19 @@ Early-Data: 1
 
 ---
 
-← [返回计算机基础总览](../../README.md) · 📅 2026-06-28
+← [返回计算机网络](../README.md) · 📅 2026-06-28
+### 向上兄弟互链
+
+HTTPS 在 TCP/IP 协议族中的位置：
+
+- [TCP/IP 四层模型](../tcp-ip-model/README.md) — TLS 握手在 TCP 之上工作
+- [DNS 协议详解](../03-dns/README.md) — DNS-over-HTTPS (DoH) 与 SVCB/HTTPS RR 记录
+- [HTTP 协议演进](../02-http/README.md) — HTTPS 是 HTTP 的安全层
+
+### §10 边界情况补充（3 类真实生产陷阱）
+
+1. **证书过期未及时续签**：导致用户浏览器看到 NET::ERR_CERT_DATE_INVALID 错误。解决方案：用监控工具（如 cert-exporter, blackbox_exporter）提前 30 天告警。
+
+2. **SNI 缺失（多域名共享 IP）**：TLS 1.2 起要求服务端配置 SNI，否则返回默认证书（错配）。解决方案：Nginx `ssl_server_name on` + `ssl_certificate` 路径按 `$ssl_server_name` 变量。
+
+3. **协议降级（POODLE/BEAST 类攻击）**：服务端错误接受客户端降级请求。解决方案：Nginx `ssl_protocols TLSv1.2 TLSv1.3;` 显式禁用旧版本。

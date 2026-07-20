@@ -39,7 +39,7 @@ question:
 
 ### 1.1 流程图 + 状态机
 
-```
+```text
 客户端（CLOSED）                              服务端（LISTEN）
     │                                            │
     │  ① SYN, seq=x                              │
@@ -70,7 +70,7 @@ question:
 
 **两次握手的致命问题**：历史连接（stale connection）导致资源浪费。
 
-```
+```text
 场景：客户端发了一个 SYN（seq=100），网络延迟，超时后重发 SYN（seq=200）
 
 两次握手：
@@ -96,7 +96,7 @@ question:
 
 ### 2.1 流程图 + 状态机
 
-```
+```text
 客户端（ESTABLISHED）                          服务端（ESTABLISHED）
     │                                            │
     │  ① FIN, seq=u                              │
@@ -128,7 +128,7 @@ question:
 - 挥手时一方发 FIN 只表示"我不再发数据了"，但**还能收数据**（半关闭状态）
 - 服务端收到 FIN 后可能还有数据要发，所以 ACK 和 FIN **不能合并**
 
-```
+```text
 握手：SYN 和 ACK 可以打包在同一个报文中 → 3 次
 挥手：ACK 和 FIN 通常不能合并（服务端可能还有数据没发完）→ 4 次
 ```
@@ -137,7 +137,7 @@ question:
 
 如果服务端在收到 FIN 时**恰好也没有数据要发**，可以把 ACK 和 FIN 合并发送：
 
-```
+```text
 客户端                 服务端
   │  FIN  →              │
   │  ← FIN+ACK           │  （ACK 和 FIN 合并）
@@ -164,7 +164,7 @@ question:
 **两个核心原因**：
 
 1. **确保最后一个 ACK 到达对方**
-   ```
+   ```text
    如果最后一个 ACK 丢了：
    - 服务端没收到 ACK → 重发 FIN
    - 客户端在 TIME_WAIT 状态 → 能收到重发的 FIN 并重新 ACK
@@ -172,7 +172,7 @@ question:
    ```
 
 2. **防止旧连接的数据包被新连接误收**
-   ```
+   ```text
    场景：
    - 旧连接 A→B（port 8080）关闭
    - 新连接 A→B（port 8080）立即建立
@@ -199,7 +199,7 @@ question:
 
 ### 4.2 大量 CLOSE_WAIT 的根因
 
-```
+```text
 CLOSE_WAIT 大量堆积 = 你的代码没有 close() 连接！
 
 常见原因：

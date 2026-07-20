@@ -92,7 +92,7 @@ question:
 
 - **主模块深度**：[llm-alignment](../../../11.ai/03-engineering/llm-alignment/README.md) — 5 大方法完整版
 - **兄弟面试题**：[Agent 性能评估](../agent-performance-evaluation/README.md) 顺带提
-- **餐厅叙事**：[12.story 对齐故事](../../../12.story/)（待补）
+- **餐厅叙事**：[12.story 系列目录](../../../12.story/README.md)（对齐主题餐厅叙事篇待补）
 
 ---
 

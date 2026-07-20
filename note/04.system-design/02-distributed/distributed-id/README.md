@@ -52,7 +52,7 @@ module:
 
 ### 3. Snowflake（雪花算法）
 - **原理**：Twitter开源的算法，结构如下：
-  ```
+  ```text
   0 | 时间戳（41位） | 工作节点ID（10位） | 序列号（12位）
   ```
     - 时间戳：毫秒级，支持约69年。
@@ -103,6 +103,10 @@ module:
 | Redis自增   | ✅   | ❌   | 中  | 高   | Redis     |
 
 > UUID v7 详见 [uuid-v7/README.md](uuid-v7/README.md)；ULID 详见 [ulid/README.md](ulid/README.md)。
+
+## 专题导航
+
+- [UUID](uuid/README.md) — 通用唯一标识符（v1-v5、RFC 9562、Java 用法与陷阱）
 
 ## 五、选型建议
 1. **低并发、简单场景**：数据库自增或UUID。

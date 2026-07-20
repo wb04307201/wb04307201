@@ -105,7 +105,7 @@ public class StringPoolTest {
 ```
 
 **典型输出**（Java 11 环境）：
-```
+```text
 false
 false
 true
@@ -240,4 +240,4 @@ if (actual.equals("expected")) { ... }
 
 - 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容
 
-← [返回: 咬文嚼字 · new-string](README.md)
+← [返回: 咬文嚼字 · new-string](../README.md)

@@ -125,7 +125,7 @@ public class DynamicAgeValidator implements ConstraintValidator<AgeRange, Intege
 
 按 Hibernate Validator 约定，默认查找 `ValidationMessages` 主名：
 
-```
+```text
 src/main/resources/
 ├── ValidationMessages.properties              # 默认（兜底）
 ├── ValidationMessages_zh_CN.properties         # 简体中文

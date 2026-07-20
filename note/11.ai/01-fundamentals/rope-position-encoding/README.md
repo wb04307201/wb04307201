@@ -30,13 +30,13 @@ module:
 
 对位置为 m 的 query 向量 q，旋转角度 mθ：
 
-```
+```text
 q_rotated = [q_0 cos(mθ) - q_1 sin(mθ), q_0 sin(mθ) + q_1 cos(mθ)]
 ```
 
 ### 完整公式（每个维度独立旋转）
 
-```
+```text
 RoPE(x, m) = 
   x_0 cos(mθ_0) - x_1 sin(mθ_0)
   x_1 cos(mθ_1) - x_2 sin(mθ_1)

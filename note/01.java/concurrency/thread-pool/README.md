@@ -54,7 +54,7 @@ public void handleRequest(Request req) {
 
 ### 1.3 线程池的价值
 
-```
+```text
 ┌─────────────────────────────────────────────────┐
 │                  线程池                          │
 │  ┌───────────────────────────────────────────┐  │
@@ -149,7 +149,7 @@ public class NamedThreadFactory implements ThreadFactory {
 
 ### 3.1 任务提交流程图
 
-```
+```text
               提交任务 (execute/submit)
                       │
                       ▼
@@ -182,7 +182,7 @@ public class NamedThreadFactory implements ThreadFactory {
 
 ### 3.2 文字版流程说明
 
-```
+```text
 Step 1: 核心线程未满
     → 创建核心线程执行任务
     → 结束
@@ -510,7 +510,7 @@ ScheduledExecutorService scheduled = Executors.newScheduledThreadPool(5);
 | `newCachedThreadPool` | `maximumPoolSize = Integer.MAX_VALUE` | 线程无限创建 → OOM / CPU 100% |
 | `newScheduledThreadPool` | `maximumPoolSize = Integer.MAX_VALUE` + 无界延迟队列 | 同上 |
 
-```
+```text
 ┌────────────────────────────────────────────────────────────┐
 │  Executors.newFixedThreadPool(10) 的隐藏风险                │
 │                                                            │
@@ -562,7 +562,7 @@ boolean terminated = executor.isTerminated();     // 是否已终止
 
 ### 7.2 监控看板设计
 
-```
+```text
 ┌────────────────── 线程池监控面板 ──────────────────┐
 │                                                    │
 │  Pool: biz-order-pool                              │
@@ -694,7 +694,7 @@ int ioPoolSize = cpuCores * (1 + 3);  // = cpuCores * 4
 
 ### 8.2 队列选择决策树
 
-```
+```text
                 任务是否需要立即执行？
                 /                    \
               YES                    NO
@@ -814,7 +814,7 @@ public class ThreadPoolConfig {
 
 ### 8.6 线程池检查清单
 
-```
+```text
 [ ] 是否手动创建 ThreadPoolExecutor（不使用 Executors 工厂）
 [ ] corePoolSize 和 maximumPoolSize 是否合理（基于 CPU/IO 类型）
 [ ] 是否使用了有界队列（ArrayBlockingQueue 或指定容量的 LinkedBlockingQueue）

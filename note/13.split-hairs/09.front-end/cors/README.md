@@ -12,7 +12,7 @@ question:
 
 ## 引子：前端最头疼的报错
 
-```
+```text
 Access to fetch at 'http://api.example.com/data' 
 from origin 'http://localhost:3000' 
 has been blocked by CORS policy: 
@@ -49,7 +49,7 @@ No 'Access-Control-Allow-Origin' header is present...
 
 ### 1.2 跨域场景举例
 
-```
+```text
 同源示例：
   https://www.example.com/page  ↔  https://www.example.com/api/data   ✅
 
@@ -97,7 +97,7 @@ CORS 的出现，正是为了给这些例外提供一套**可控、规范**的�
 
 预检请求携带的关键头部：
 
-```
+```text
 OPTIONS /api/data HTTP/1.1
 Origin: https://www.example.com
 Access-Control-Request-Method: PUT
@@ -372,4 +372,4 @@ fetch('https://api.example.com/data', {
 
 - 深度阅读：[`09.front-end`](../../09.front-end/README.md) — 主模块详细内容
 
-← [返回: 咬文嚼字 · cors](README.md)
+← [返回: 咬文嚼字 · cors](../README.md)

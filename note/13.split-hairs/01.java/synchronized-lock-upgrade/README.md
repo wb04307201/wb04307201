@@ -68,7 +68,7 @@ stateDiagram-v2
 
 以下是 HotSpot VM 中 64 位 Mark Word 的详细布局（大端序视角）：
 
-```
+```text
 |---------------------------------------------------------------|
 |                     Unused: 25 bits                           |
 |---------------------------------------------------------------|
@@ -269,4 +269,4 @@ public int lockElimination() {
 
 - 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容
 
-← [返回: 咬文嚼字 · synchronized-lock-upgrade](README.md)
+← [返回: 咬文嚼字 · synchronized-lock-upgrade](../README.md)

@@ -224,4 +224,4 @@ graph TB
 - [08 注解/AOP 注解](../../08-annotations/aop.md) — 缓存本质是 AOP
 - [04 系统设计/缓存设计模式](../../../04.system-design/04-high-performance/cache-patterns/README.md) — 缓存架构与高可用场景见 04.sysdes，本节聚焦 Spring Cache 注解与 Redis/Caffeine 实现
 
-← [返回: Spring 全家桶 · cache](README.md)
+← [返回: Spring 全家桶 · cache](../README.md)

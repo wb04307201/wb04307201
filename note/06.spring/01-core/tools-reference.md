@@ -214,7 +214,7 @@ System.err.println(isUrl) ;
 ```
 
 输出结果：
-```
+```text
 true
 false
 true
@@ -269,7 +269,7 @@ System.err.println(prop);
 ```
 
 输出结果：
-```
+```text
 {pack.app.version=1.0.0, pack.app.title=xxxooo}
 {pack.app.version=1.0.0, pack.app.title=xxxooo}
 ```

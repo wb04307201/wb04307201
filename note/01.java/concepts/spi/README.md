@@ -117,13 +117,13 @@ public class WechatProvider implements PaymentProvider {
 
 在实现类的 jar 包中创建配置文件：
 
-```
+```text
 META-INF/services/com.example.PaymentProvider
 ```
 
 文件内容为实现类的全限定名，每行一个：
 
-```
+```text
 com.example.impl.AlipayProvider
 com.example.impl.WechatProvider
 ```
@@ -295,7 +295,7 @@ public class AlipayProvider implements PaymentProvider {
 
 编译时 AutoService 会自动生成 `META-INF/services/com.example.PaymentProvider` 文件，内容为：
 
-```
+```text
 com.example.impl.AlipayProvider
 ```
 
@@ -310,3 +310,27 @@ com.example.impl.AlipayProvider
 ---
 
 ← [返回 Java 核心概念](../README.md)
+
+## 向上兄弟互链
+
+本篇是 SPI 基础篇，相关 Java 集合类（ServiceLoader 通过 Map 接口工作）和 Spring 框架（深度使用 SPI）都是值得互链的：
+
+- [ServiceLoader 详解（Java 集合）](../../collection/ServiceLoader-dive-into.md) — 暂无独立文件，可参考 [LinkedHashSet 双向链表原理](../../collection/LinkedHashSet/README.md) 理解 ServiceLoader 底层
+- [Spring SPI 对比（06.spring 专题）](../../../06.spring/spi/README.md) — Spring Framework 的 SpringFactoriesLoader 与 JDK ServiceLoader 异同
+- [Collection 总览](../../collection/README.md) — ServiceLoader 通过 Map 索引实现
+
+## ServiceLoader 关键方法参数表
+
+| 方法 | 签名 | 关键参数说明 |
+|------|------|-------------|
+| `ServiceLoader.load(Class<S> service)` | 线程上下文类加载器加载 | 默认使用 Thread.currentThread().getContextClassLoader() |
+| `ServiceLoader.load(Class<S> service, ClassLoader loader)` | 指定类加载器 | 用于模块化系统（OSGi、Java Module System） |
+| `ServiceLoader.load(ModuleLayer, Class<S>)` | 模块层加载（Java 9+） | JPMS 模块化场景 |
+| `ServiceLoader.loadInstalled(Class<S>)` | 已安装扩展加载器 | Java 平台 SPI 用法 |
+| `iterator()` | 返回迭代器 | lazy 加载，按需实例化 |
+| `reload()` | 清空缓存重新加载 | 用于运行时新增实现 |
+| `stream()` | 返回 Stream（Java 9+） | 函数式 API |
+| `findFirst()` | 返回 Optional（Java 9+） | 便捷获取第一个实现 |
+| `S provider()` | 获取当前元素实现（Java 9+） | Stream.forEach 中使用 |
+
+**线程安全**：`ServiceLoader` 实例**不是线程安全**的；多线程下每个线程应使用独立实例，或使用 `ServiceLoader.loadStatic()`（Java 9+ 试验性）。

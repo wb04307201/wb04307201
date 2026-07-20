@@ -76,7 +76,7 @@ module:
 
 > **幂等性是分布式事务的"安全网"**。
 
-```
+```text
 客户端                  服务A                  服务B
    │                      │                      │
    │  POST /order         │                      │
@@ -108,7 +108,7 @@ module:
 
 ## 三者如何协作
 
-```
+```text
 ┌────────────────────────────────────────────────────┐
 │              完整的可靠调用链                       │
 ├────────────────────────────────────────────────────┤
@@ -138,7 +138,7 @@ module:
 
 ### 业务流
 
-```
+```text
 用户下单
   │
   ├── 创建订单 (Order Service)
@@ -149,7 +149,7 @@ module:
 
 ### 朴素版（无幂等无事务）的问题
 
-```
+```text
 A: 创建订单成功
 B: 扣减库存失败 → 抛错给用户
 但订单已创建, 库存未扣, 状态不一致
@@ -258,4 +258,4 @@ public OrderResult createOrder(@RequestBody @Valid OrderRequest req,
 - [Microsoft - Idempotency patterns](https://learn.microsoft.com/azure/architecture/microservices/design/idempotency)
 - [BASE: An Acid Alternative](https://queue.acm.org/detail.cfm?id=1394128)
 
-← [返回: 系统设计 · vs-distributed-transaction](README.md)
+← [返回 幂等设计](../README.md)

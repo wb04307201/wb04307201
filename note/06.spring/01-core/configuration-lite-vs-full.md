@@ -229,7 +229,7 @@ public class App { ... }
 
 ## 六、ASCII 流程：Full Mode vs Lite Mode
 
-```
+```text
 @Configuration 类（Full Mode）
 └── 容器启动时 CGLIB 增强，生成子类
     ├── @Bean 方法被调用时，先查容器

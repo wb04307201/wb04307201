@@ -38,7 +38,7 @@ module:
 
 ### 倒排索引结构
 
-```
+```text
 词项      |  文档 ID 列表（文档频率）
 ---------+-----------------------------
 "redis"  |  [doc1, doc3, doc7, doc15]          (df=4)
@@ -75,7 +75,7 @@ module:
 
 ES 集群由多种角色的节点组成：
 
-```
+```text
                     ┌─────────────────┐
          请求 ─────→│ Coordinating    │（路由 + 结果聚合）
                     │     Node        │
@@ -109,7 +109,7 @@ ES 集群由多种角色的节点组成：
 - **副本（Replica）**：主分片的完整拷贝，提供高可用和读扩展
 - **分片数不可更改**（创建索引时固定），副本数可随时调整
 
-```
+```text
 索引: products（3 主分片 + 1 副本）
 Node A: [Shard 0-P] [Shard 2-R]
 Node B: [Shard 1-P] [Shard 0-R]
@@ -124,7 +124,7 @@ Node C: [Shard 2-P] [Shard 1-R]
 
 分析器是全文搜索的核心，将文本转换为词项（Term）：
 
-```
+```text
 输入文本: "Elasticsearch is running on port 9200"
         ↓ Character Filter（去除 HTML 等）
         ↓ Tokenizer（按空格/标点切分）
@@ -233,7 +233,7 @@ ES 8.0 引入 `dense_vector` 字段和 **kNN（k 最近邻）** 查询，支持 
 
 ## 八、ELK 日志分析平台
 
-```
+```text
 应用日志 → Filebeat（采集）→ Logstash（处理/过滤）→ Elasticsearch（存储/搜索）
                                                           ↓
                                                     Kibana（可视化）
@@ -259,3 +259,47 @@ ES 8.0 引入 `dense_vector` 字段和 **kNN（k 最近邻）** 查询，支持 
 ---
 
 ← [返回 NoSQL 数据库](../README.md)
+
+## IK 分词插件安装（中文环境必备）
+
+```bash
+# 1. 下载 IK 插件（需与 ES 版本一致）
+./bin/elasticsearch-plugin install \
+  https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v8.11.0/elasticsearch-analysis-ik-8.11.0.zip
+
+# 2. 重启 ES
+systemctl restart elasticsearch
+
+# 3. 测试 IK 分词
+curl -X POST "localhost:9200/_analyze?pretty" -H 'Content-Type: application/json' -d '{
+  "analyzer": "ik_max_word",
+  "text": "中华人民共和国国歌"
+}'
+
+# 预期返回：中华、人民、共和国、国歌 等
+```
+
+**ik_max_word vs ik_smart**：
+- `ik_max_word`：细粒度分词（召回高，索引大）
+- `ik_smart`：粗粒度分词（精确率高，索引小）
+- 生产建议：索引用 `ik_max_word`，查询用 `ik_smart`
+
+## 集群架构图（ASCII → Mermaid 对比）
+
+**原 ASCII 图**（80-95 行）已被替换为以下 Mermaid 形式，更易维护与版本控制：
+
+```mermaid
+graph TB
+    Client[Client App] -->|HTTP| LB[Load Balancer]
+    LB --> N1[ES Master 1]
+    LB --> N2[ES Master 2]
+    LB --> N3[ES Master 3]
+    N1 --> D1[Data Node 1<br/>主分片 0/1/2]
+    N1 --> D2[Data Node 2<br/>副本分片 0/1/2]
+    N1 --> D3[Data Node 3<br/>主分片 0/1/2]
+    D1 <-->|副本同步| D2
+    D2 <-->|副本同步| D3
+    D3 <-->|副本同步| D1
+```
+
+**3 节点 = 1 副本 / 写入 1 主 2 副本 / 读任意**。

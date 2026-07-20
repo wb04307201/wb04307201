@@ -52,7 +52,7 @@ Spring 在 `DefaultSingletonBeanRegistry` 中维护了 **3 个 Map** 解决 sing
 
 ## 三、解决流程（ASCII 图）
 
-```
+```text
 创建 Bean A
   │
   ├─ 1. 实例化 A（反射 new）

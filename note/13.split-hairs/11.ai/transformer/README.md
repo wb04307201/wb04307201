@@ -29,7 +29,7 @@ Google 的团队受不了了。他们投一个完全不同的方向——
 
 ## 一、核心公式（一行记全）
 
-```
+```text
 Attention(Q, K, V) = softmax(Q × K^T / √d) × V
 ```
 
@@ -100,4 +100,4 @@ Attention(Q, K, V) = softmax(Q × K^T / √d) × V
 
 > 📅 2026-06-30 · 咬文嚼字 · AI 基础必问 · ⭐⭐⭐⭐⭐
 
-← [返回: 咬文嚼字 · transformer](README.md)
+← [返回: 咬文嚼字 · transformer](../README.md)
