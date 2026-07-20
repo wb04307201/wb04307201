@@ -21,7 +21,7 @@ module:
 
 ### 1.1 RAG 工作流
 
-```
+```text
 文档语料 → 切分 → 嵌入 → 存入向量库 → 查询时向量检索 → 注入 Prompt → LLM 生成
 ```
 
@@ -64,7 +64,7 @@ class RAGPipeline:
 
 向量检索返回"语义相似"的代码片段。但工程师实际需要的是：
 
-```
+```text
 工程师需要："auth.py 第 50 行的函数怎么用？"
 
 RAG 返回：所有包含 "auth" 关键词的代码片段（语义相似，但工程不相关）
@@ -93,7 +93,7 @@ RAG 在代码库上的持续成本：
 
 ### 3.1 Agentic Search 工作流
 
-```
+```text
 Agent 接收任务 → 循环：
   ├─ 调用 grep / read / glob / LSP 等工具
   ├─ 分析工具返回结果
@@ -217,7 +217,7 @@ Anthropic 官方原话："**围绕模型构建的生态系统（Harness）对 Cl
 
 ### 5.2 Hybrid 方案（实战推荐）
 
-```
+```text
 用户问 → Agent 接收
   ├─ Step 1: 快速 RAG 检索找大致范围（粗排）
   ├─ Step 2: Agentic Search 精细定位（精排）

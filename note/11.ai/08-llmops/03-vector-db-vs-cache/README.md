@@ -42,7 +42,7 @@ LLM 推理成本高昂：
 
 ### 3.1 原理
 
-```
+```text
 请求：prompt = "什么是 RAG？"
    ↓
 Redis GET key=hash(prompt)
@@ -93,7 +93,7 @@ def cached_llm_call(prompt: str) -> str:
 
 ### 4.1 原理
 
-```
+```text
 请求：prompt = "什么是 RAG？"
    ↓
 计算 prompt 的 Embedding 向量
@@ -152,7 +152,7 @@ if similar_prompts and similar_prompts[0].distance < 0.1:  # 0.1 = 极相似
 
 ### 5.1 原理
 
-```
+```text
 Prompt 结构：
 [系统提示：500 tokens] ← 共享前缀
 [Few-shot 示例：1000 tokens] ← 共享前缀
@@ -218,7 +218,7 @@ response = client.messages.create(
 
 ## 七、缓存策略选型
 
-```
+```text
 Q1: 输入完全相同（标准化指令）？
 ├── 是 → 精确缓存
 └── 否 ↓
@@ -242,7 +242,7 @@ Q4: 答案时效性要求？
 
 ### 8.1 多级缓存
 
-```
+```text
 请求
   ↓
 L1 精确缓存（Redis，< 1ms）

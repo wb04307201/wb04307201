@@ -163,7 +163,7 @@ print(metric.score, metric.reason)
 
 ### 1. 准备黄金集
 
-```
+```text
 100-500 条 (question, ground_truth, contexts) 黄金集
 覆盖：简单 / 复杂 / 边界 / 错误 4 类问题
 ```
@@ -181,7 +181,7 @@ metrics = [
 
 ### 3. 持续监控
 
-```
+```text
 每周对线上 100 条 query 跑评估
 指标下降 > 5% 告警
 ```

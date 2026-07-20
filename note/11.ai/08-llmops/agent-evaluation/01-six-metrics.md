@@ -21,7 +21,7 @@ module:
 
 ### 1.1 公式
 
-```
+```text
 完成率 = 完成的任务数 / 总任务数
 
 分类：
@@ -64,7 +64,7 @@ def task_completion(task, agent_output):
 
 ### 2.1 公式
 
-```
+```text
 步骤效率 = 最优步骤数 / 实际步骤数
            ↑
            baseline（理想情况）
@@ -98,7 +98,7 @@ def step_efficiency(trajectory):
 
 ### 3.1 公式
 
-```
+```text
 工具准确率 = 正确的工具调用 / 总工具调用
 
 分类：
@@ -135,7 +135,7 @@ def param_accuracy(trajectory, expected_params):
 
 ### 4.1 公式
 
-```
+```text
 单任务成本 = input_tokens × input_price + output_tokens × output_price
 
 总成本 = Σ 所有任务成本
@@ -163,7 +163,7 @@ def param_accuracy(trajectory, expected_params):
 
 ### 5.1 公式
 
-```
+```text
 CSAT = 满意用户数 / 总用户数 × 100%
 
 Net Promoter Score (NPS):
@@ -196,7 +196,7 @@ def infer_satisfaction(session):
 
 ### 6.1 公式
 
-```
+```text
 成功率方差 = Var([任务 t1 跑 10 次的成功率, 任务 t2 跑 10 次的成功率, ...])
 
 异常退出率 = 异常退出（OOM / 工具超时）次数 / 总次数
