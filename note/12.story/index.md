@@ -97,6 +97,7 @@ module:
 | 十·a | 6 大评测维度 | [34a AI 评测基础](./32a-ai-evaluation-fundamentals.md) |
 | 十·b | 5 层评测流水线 | [34b AI 评测流水线](./32b-ai-evaluation-pipeline.md) |
 | 十一·a | AI 时代 TCP/IP | [35a MCP 协议](./33a-mcp-protocol.md) |
+| 十一·b | Agent 到 Agent | [35b A2A 协议](./33b-a2a-protocol.md) |
 
 ---
 
