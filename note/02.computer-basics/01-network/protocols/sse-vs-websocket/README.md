@@ -32,7 +32,7 @@ module:
 
 ### SSE：标准 HTTP 请求
 
-```
+```text
 Client → Server:
 GET /api/events HTTP/1.1
 Host: example.com
@@ -56,7 +56,7 @@ data: second message
 
 ### WebSocket：协议升级
 
-```
+```text
 Client → Server:
 GET /ws HTTP/1.1
 Host: example.com
@@ -82,7 +82,7 @@ Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
 
 ### SSE 帧格式（纯文本）
 
-```
+```text
 event: message        ← 事件类型（可选）
 id: 42                ← 事件 ID（可选，用于重连）
 retry: 3000           ← 重连间隔毫秒（可选）
@@ -98,7 +98,7 @@ data: {"text":"你好"} ← 数据（必填，可多行）
 
 ### WebSocket 帧格式（二进制）
 
-```
+```text
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+---+-+-+-------------+-------------------------------+
@@ -123,7 +123,7 @@ data: {"text":"你好"} ← 数据（必填，可多行）
 
 ### SSE：内置自动重连
 
-```
+```text
 连接断开
   ↓
 浏览器等待 retry 毫秒（默认 ~3 秒）
@@ -140,7 +140,7 @@ data: {"text":"你好"} ← 数据（必填，可多行）
 
 ### WebSocket：需自行实现
 
-```
+```text
 连接断开
   ↓
 应用层检测到 ws.onclose 事件
@@ -173,7 +173,7 @@ data: {"text":"你好"} ← 数据（必填，可多行）
 
 ## 六、选型决策树
 
-```
+```text
 你的场景是什么？
 │
 ├─ 纯文本流式输出（ChatGPT 式问答/通知/行情）
@@ -212,7 +212,7 @@ data: {"text":"你好"} ← 数据（必填，可多行）
 
 ### 通信模型
 
-```
+```text
 用户输入 "什么是 HashMap"
          │
          ▼

@@ -59,7 +59,7 @@ packet-beta
 
 ## 6 个控制标志位
 
-```
+```text
 URG  ACK  PSH  RST  SYN  FIN
  |    |    |    |    |    |
  |    |    |    |    |    └─ FIN：释放连接
