@@ -30,7 +30,7 @@ module:
 
 ### 1.2 经典案例
 
-```
+```text
 Exception in thread "main" java.lang.NoSuchMethodError:
   com.google.common.collect.ImmutableList.of(Ljava/lang/Object;)Lcom/google/common/collect/ImmutableList;
 ```
@@ -143,7 +143,7 @@ open module com.example.app {
 
 ### 3.4 反射访问决策流程
 
-```
+```text
 模块A 访问 模块B 的某个类
     |
     ├── 编译时：检查 exports（或 qualified exports）
@@ -180,7 +180,7 @@ module com.example.service {
 
 ### 4.3 常见模块依赖图
 
-```
+```text
 com.example.web
     ├── requires com.example.service
     └── requires java.servlet
@@ -257,7 +257,7 @@ module com.example.user.api {
 
 ### 5.4 过度使用传递依赖的风险
 
-```
+```java
 ❌ 不推荐：
 requires transitive guava;           // guava 是内部实现细节
 requires transitive spring.context;  // 框架依赖不应传递
@@ -449,7 +449,7 @@ jlink --module-path $JAVA_HOME/jmods:mods \
 
 ### 8.4 体积对比示例
 
-```
+```text
 完整 JDK (jdk-17)          ~300MB
 jlink (java.base + app)    ~30MB    ← 缩减约 90%
 jlink + 压缩 + 裁剪        ~20MB    ← 最小化
@@ -467,7 +467,7 @@ jlink + 压缩 + 裁剪        ~20MB    ← 最小化
 
 ### 9.1 迁移路径
 
-```
+```text
 [classpath 应用]
       │
       ▼
@@ -499,13 +499,13 @@ jlink + 压缩 + 裁剪        ~20MB    ← 最小化
 ### 9.3 渐进式迁移策略
 
 **策略一：自动模块过渡**
-```
+```text
 不急于写 module-info.java，先将依赖 JAR 放到 module-path 上，
 Java 会自动为它们创建自动模块。验证兼容性后再逐个添加 module-info.java。
 ```
 
 **策略二：MANIFEST.MF 声明模块名**
-```
+```text
 为 JAR 添加 MANIFEST.MF 条目：
 Automatic-Module-Name: com.example.mymodule
 
@@ -550,7 +550,7 @@ jdeps --generate-module-info out myapp.jar
 
 ### 10.2 推荐的模块分层结构
 
-```
+```text
 ┌─────────────────────────────────────────┐
 │           com.example.web               │  ← HTTP 层
 ├─────────────────────────────────────────┤
@@ -591,7 +591,7 @@ module com.example.order.service {
 
 ### 10.4 命名约定
 
-```
+```text
 ✅ 推荐：
 com.example.project.api          # 公共接口模块
 com.example.project.impl         # 实现模块（可不导出）
