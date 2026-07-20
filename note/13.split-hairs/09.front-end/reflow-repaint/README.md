@@ -51,7 +51,7 @@ for (let i = 0; i < 1000; i++) {
 
 ### 渲染流水线
 
-```
+```text
 DOM + CSSOM → Render Tree → Layout（回流）→ Paint（重绘）→ Composite（合成）→ 屏幕
                                        ↑                ↑
                                   几何属性变化      外观属性变化

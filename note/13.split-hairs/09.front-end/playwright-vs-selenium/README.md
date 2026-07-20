@@ -113,7 +113,7 @@ page.frame_locator("iframe").locator("#submit").click()
 
 Playwright 内置 Trace Viewer，能录制完整的执行过程：
 
-```
+```text
 - 截图（每一步）
 - DOM 快照
 - 网络请求

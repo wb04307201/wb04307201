@@ -12,7 +12,7 @@ question:
 
 ## 引子：一把锁 🦒 是怎么保证你的密码不被窃听的？
 
-```
+```text
 浏览器 → https://bank.com/login
 用户名：alice
 密码：123456
@@ -128,7 +128,7 @@ HTTPS 的信任模型建立在 PKI（Public Key Infrastructure）体系之上，
 
 **证书链结构：**
 
-```
+```text
 Root CA（根证书，自签名，预置于操作系统/浏览器）
   └─ Intermediate CA（中间证书，由 Root CA 签名）
        └─ Server Certificate（服务器证书，由 Intermediate CA 签名）

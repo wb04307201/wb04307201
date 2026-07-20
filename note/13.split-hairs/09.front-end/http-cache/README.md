@@ -12,7 +12,7 @@ question:
 
 ## 引子：为什么刷新页面有时快有时慢？
 
-```
+```text
 第一次访问：加载 2 秒
 Ctrl+F5 强制刷新：还是 2 秒
 普通刷新（F5）：0.5 秒！
@@ -71,7 +71,7 @@ HTTP 缓存的核心思想是**"能不用网络就不用网络"**，分为两个
 
 `Expires` 是 HTTP/1.0 的产物，值为一个绝对的 GMT 时间字符串，例如：
 
-```
+```text
 Expires: Wed, 21 Oct 2026 07:28:00 GMT
 ```
 
@@ -92,11 +92,11 @@ Expires: Wed, 21 Oct 2026 07:28:00 GMT
 
 **工作流程**：
 1. 首次请求：服务端返回资源时，计算内容的哈希值（或采用版本号等策略），放入响应头 `ETag`。
-   ```
+   ```text
    ETag: "a1b2c3d4e5f6"
    ```
 2. 后续请求（强缓存过期后）：浏览器在请求头中携带 `If-None-Match`，值为上次收到的 ETag。
-   ```
+   ```text
    If-None-Match: "a1b2c3d4e5f6"
    ```
 3. 服务端比对：如果当前资源的 ETag 与 `If-None-Match` 匹配，返回 `304 Not Modified`；否则返回 `200 OK` 和新资源。
@@ -113,11 +113,11 @@ Expires: Wed, 21 Oct 2026 07:28:00 GMT
 
 **工作流程**：
 1. 首次请求：服务端返回资源的最后修改时间。
-   ```
+   ```text
    Last-Modified: Wed, 21 Oct 2026 07:28:00 GMT
    ```
 2. 后续请求：浏览器携带 `If-Modified-Since`，值为上次收到的 Last-Modified。
-   ```
+   ```text
    If-Modified-Since: Wed, 21 Oct 2026 07:28:00 GMT
    ```
 3. 服务端比对文件的最后修改时间：如果未变化，返回 `304`；否则返回 `200` 和新资源。
@@ -223,7 +223,7 @@ location /api/ {
 
 CDN 作为共享缓存，需要显式设置 `public` 指令：
 
-```
+```text
 Cache-Control: public, max-age=86400, s-maxage=604800
 ```
 

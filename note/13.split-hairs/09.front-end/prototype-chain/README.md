@@ -99,7 +99,7 @@ Animal.prototype.speak = function() {
 
 访问 `obj.foo` 时，引擎按以下顺序查找：
 
-```
+```text
 obj.foo → obj 自身 → obj.__proto__ → ... → Object.prototype → null → undefined
 ```
 
