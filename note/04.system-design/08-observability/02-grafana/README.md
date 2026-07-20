@@ -31,7 +31,7 @@ Grafana 是开源的可视化与监控平台，支持 30+ 数据源（Prometheus
 
 ## 二、Grafana 核心架构
 
-```
+```text
 ┌─────────────────────────────────────────────────┐
 │  Grafana Server                                    │
 │  ┌────────────┐ ┌────────────┐ ┌────────────┐     │
@@ -76,7 +76,7 @@ helm install grafana grafana/grafana \
 
 ### 4.1 Prometheus 数据源
 
-```
+```text
 Configuration → Data Sources → Add data source
 - Type: Prometheus
 - URL: http://prometheus:9090
@@ -85,14 +85,14 @@ Configuration → Data Sources → Add data source
 
 ### 4.2 Loki 数据源（日志）
 
-```
+```text
 - Type: Loki
 - URL: http://loki:3100
 ```
 
 ### 4.3 Tempo 数据源（链路追踪）
 
-```
+```text
 - Type: Tempo
 - URL: http://tempo:3100
 ```
@@ -146,7 +146,7 @@ rate(http_requests_total{job="$job", instance=~"$instance"}[$interval])
 
 ### 6.2 变量级联
 
-```
+```text
 $datacenter（北京 / 上海 / 广州）
   → $cluster（根据 $datacenter 过滤）
     → $instance（根据 $cluster 过滤）
@@ -191,7 +191,7 @@ $datacenter（北京 / 上海 / 广州）
 
 ### 8.2 导入方式
 
-```
+```text
 Dashboard → Import → 输入 Dashboard ID → Load
 ```
 
@@ -201,7 +201,7 @@ Dashboard → Import → 输入 Dashboard ID → Load
 
 ### 9.1 配置告警（统一告警）
 
-```
+```text
 Alerting → Alert rules → New alert rule
 - Query: sum(rate(http_requests_total{status="500"}[5m]))
 - Condition: IS ABOVE 10
@@ -225,7 +225,7 @@ Alerting → Alert rules → New alert rule
 
 ### 10.1 多租户架构
 
-```
+```text
 Organization（组织）
 ├── Team A（团队）
 │   ├── Folder 1（文件夹）

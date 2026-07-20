@@ -40,7 +40,7 @@ Loki 是 Grafana Labs 出品的云原生日志聚合系统，灵感来自 Promet
 
 ## 二、Loki 架构
 
-```
+```text
 ┌──────────────────────────────────────────────────┐
 │  应用 / Pod（输出 stdout/stderr 日志）              │
 │       ↓                                             │
@@ -207,7 +207,7 @@ loki.write "default" {
 
 Alloy 自动发现 K8s Pod 日志（带 pod / namespace / container 标签）：
 
-```
+```text
 {loki}/logs?query={namespace="production", container="myapp"}
 ```
 
