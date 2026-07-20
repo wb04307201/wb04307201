@@ -312,4 +312,4 @@ vs Google TPU v5：
 
 > 📅 2026-07-03 · 11.ai/02-technology-stack · ⭐⭐⭐⭐⭐
 
-← [返回: AI 知识体系 · vector-search-trillion](README.md)
+← [返回: L2 技术栈](../README.md)

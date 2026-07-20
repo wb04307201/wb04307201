@@ -432,4 +432,4 @@ def get_weather(city: str, unit: str = "celsius"):
 - 关联：[Agent 架构](../../04-architecture/agent-architecture/README.md) — Function Calling 是 Agent 的核心机制
 - 关联：[RAG](../../08-llmops/01-rag-vs-finetuning/README.md) — RAG 本质是一个 retrieve 工具
 
-← [返回: AI 知识体系 · function-calling](README.md)
+← [返回: L2 技术栈](../README.md)

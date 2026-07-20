@@ -342,4 +342,4 @@ graph LR
 - 面试深挖：[13.split-hairs Prompt Engineering](../../../13.split-hairs/11.ai/prompt-engineering/README.md) — 陷阱 + 反直觉 + 30 秒话术
 - 故事版：[12.story #42 Prompt 工程](../../../12.story/40-prompt-engineering.md) — 阿明餐厅叙事版
 
-← [返回: AI 知识体系 · prompt-engineering](README.md)
+← [返回: L2 技术栈](../README.md)

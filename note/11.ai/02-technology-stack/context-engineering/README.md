@@ -190,4 +190,4 @@ context = get_relevant_files(query)  # 5K tokens
 - Memory 维度：[Agent Memory 架构（Memory 是 Context 三大件之一）](../../04-architecture/agent-memory/README.md)
 - 🆕 **长上下文策略全景**：[Agent 长上下文架构 6 大策略](../../04-architecture/agent-context/README.md) —— Chunking / RAG / Memory / Sliding Window / Sub-Agents / Long-Context LLMs 组合 + 决策树
 
-← [返回: AI 知识体系 · context-engineering](README.md)
+← [返回: L2 技术栈](../README.md)
