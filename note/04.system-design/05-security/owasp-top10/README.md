@@ -34,7 +34,7 @@ module:
 
 **示例攻击**：
 
-```
+```text
 正常用户 Alice 登录后看到：
 GET /api/users/1001/orders        # 自己的订单
 
@@ -374,7 +374,7 @@ public class SecurityAuditAspect {
 
 **示例攻击**：
 
-```
+```text
 POST /api/avatar/fetch
 { "url": "http://169.254.169.254/latest/meta-data/iam/security-credentials/" }
 → 服务端把云 IAM 凭据回显给攻击者

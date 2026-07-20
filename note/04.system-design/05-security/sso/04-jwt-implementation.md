@@ -30,7 +30,7 @@ module:
 
 ## 2. JWT 3 段结构
 
-```
+```text
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyLTEyMyIsIm5hbWUiOiJaaGFuZ3NhbiIsInJvbGUiOiJBRE1JTiIsImV4cCI6MTY5MzAwMDAwMH0.7s5fz3Ik_vd3P0Eq5TLfBTjKxE5dUKj-7wDJr5L4c1Q
 └─────── Header ──────────┘  └────────────── Payload (Claims) ──────────────┘  └───── Signature ─────┘
 ```

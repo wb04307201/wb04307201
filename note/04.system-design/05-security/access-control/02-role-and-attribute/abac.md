@@ -121,7 +121,7 @@ public class Policy {
 
 ### 策略表达式示例（XACML / Rego 风格）
 
-```
+```text
 策略 1: 工作时间限制
 ─────────────────────────
 PERMIT IF

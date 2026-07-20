@@ -37,7 +37,7 @@ module:
 
 ## 与其他族的关系
 
-```
+```text
 DAC ──→ RBAC ──→ ABAC ──→ ReBAC
               │        │
               └── 混合 ┘

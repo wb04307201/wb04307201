@@ -189,7 +189,7 @@ public boolean constantTimeEquals(byte[] a, byte[] b) {
 
 ### TLS 握手流程（简化）
 
-```
+```text
 Client                                  Server
   │                                       │
   │── ClientHello (支持的版本/密码套件) ──▶│
@@ -239,7 +239,7 @@ ssl_session_tickets off;
 
 ### 模式 1：信封加密（推荐）
 
-```
+```text
 应用                   KMS / HSM              数据库
  │                       │                     │
  │ 1. 请求生成 DEK        │                     │

@@ -36,7 +36,7 @@ API 安全 的关键不是'防住'——是**出事后 5 分钟内能定位**。
 
 ## API 安全的 7 层防护
 
-```
+```text
 ┌─────────────────────────────────────┐
 │  1. 传输层：HTTPS / TLS 1.2+          │
 ├─────────────────────────────────────┤
@@ -92,7 +92,7 @@ API 签名用于保证：
 
 ### 签名生成算法
 
-```
+```text
 签名串 = AppKey + "\n" + Timestamp + "\n" + Nonce + "\n" + RequestBody
 签名   = HMAC-SHA256(签名串, AppSecret)
 ```
@@ -229,7 +229,7 @@ public class ApiSignatureInterceptor implements HandlerInterceptor {
 
 这是最常见的防重放方案，结合签名使用：
 
-```
+```text
 请求参数:
   X-Timestamp: 当前时间戳
   X-Nonce:     随机字符串（UUID 或随机字符串）
@@ -672,7 +672,7 @@ public boolean verifyApiKey(String apiKey) {
 
 证书锁定是一种增强安全性的技术，客户端在建立 HTTPS 连接时，不仅验证证书链的有效性，还将服务器证书的公钥（或证书本身）与预存的预期值进行比对。
 
-```
+```text
 普通 HTTPS:
   客户端 → 验证证书链 → 信任 CA 签发的任何证书
 

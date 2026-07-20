@@ -23,7 +23,7 @@ module:
 
 访问控制模型按"决策依据"形成 3 大家族：
 
-```
+```text
                   访问控制（Access Control）
                           │
         ┌─────────────────┼─────────────────┐
@@ -54,7 +54,7 @@ module:
 
 ## 3. 选型决策树
 
-```
+```text
 问 1: 业务有清晰组织架构吗？
   ├─ 是 → 问 2
   └─ 否 → 问 4
@@ -94,7 +94,7 @@ module:
 
 ### 演进路径
 
-```
+```text
 DAC ──→ RBAC ──→ ABAC ──→ ReBAC
                        │
                        └──→ 混合（RBAC+ABAC，最常见实战）
@@ -109,7 +109,7 @@ DAC ──→ RBAC ──→ ABAC ──→ ReBAC
 
 **RBAC 做功能权限 + ABAC 做数据权限**（详见 [hybrid](03-relationship-and-hybrid/hybrid.md)）：
 
-```
+```text
 请求 ──▶ RBAC 检查（能否访问订单管理？）──▶ ABAC 检查（能否看到这笔订单？）──▶ 允许/拒绝
 ```
 

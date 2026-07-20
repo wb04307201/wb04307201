@@ -13,7 +13,7 @@
 
 ## 2. 核心模型图
 
-```
+```text
         ┌──────────────┐
         │   User:alice │
         └──────┬───────┘
@@ -58,7 +58,7 @@ CREATE TABLE rebac_relation (
 
 ### Zanzibar 风格：把每条关系建模为 (object#relation@user) 元组
 
-```
+```yaml
 doc:readme#owner@user:alice
 doc:readme#viewer@user:bob
 group:editor#member@user:carol
