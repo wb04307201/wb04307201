@@ -1,9 +1,10 @@
 <!--
-pm:
-  topic: 人力配比 + 排期
-  audience: PM / 创业公司 CTO
+module:
+  parent: project-management
+  slug: pm/team-sizing-3x-buffer
+  type: article
   category: 决策实战
-  summary: 团队配比模型 + 排期 3 倍缓冲原则
+  summary: 团队配比模型 + 排期 3 倍缓冲原则（PM 和创业公司 CTO 都常踩的坑：拍脑袋排 2 周实际做 6 周）
 -->
 
 # 人力配比 + 排期估算：3 倍缓冲原则
