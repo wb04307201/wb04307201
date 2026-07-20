@@ -32,7 +32,7 @@ module:
 
 ### 1.1 序列化在系统中的位置
 
-```
+```text
 客户端请求 → [反序列化] → 业务逻辑 → [序列化] → 响应/消息/缓存
               ↑                              ↑
            性能损耗                        性能损耗
@@ -82,7 +82,7 @@ module:
 
 ### 2.2 选型建议
 
-```
+```text
 对外 API / 调试友好 → JSON (Jackson/Fastjson2)
 内部 RPC / 高性能通信 → Protobuf / Kryo
 跨语言 RPC → Protobuf / gRPC
@@ -165,7 +165,7 @@ Protobuf 使用 **VarInt + Tag** 编码：
 - 数值使用 VarInt 压缩（小数字只用 1 个字节）
 - 字段按 tag 排序存储，不保证顺序
 
-```
+```text
 示例: int32 id = 1, 值为 1001
 Tag: (1 << 3) | 0 = 0x08  (varint 类型)
 Value: 1001 → VarInt 编码为 0xE9 0x07
@@ -321,7 +321,7 @@ public class KryoRedisSerializer implements RedisSerializer<Object> {
 
 ### 5.1 选型决策树
 
-```
+```text
 是否需要跨语言?
   ├── 是 → 是否需要 Schema 管理?
   │         ├── 是 → Protobuf (推荐 gRPC)

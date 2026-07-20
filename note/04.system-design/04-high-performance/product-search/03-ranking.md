@@ -19,7 +19,7 @@ module:
 
 ### 1.1 TF-IDF（ES 5.x 之前默认）
 
-```
+```text
 score(D, Q) = Σ TF(qi, D) × IDF(qi)
 
 TF(qi, D)  = 词 qi 在文档 D 中出现的次数（归一化后）
@@ -30,7 +30,7 @@ IDF(qi)    = log(N / df(qi))  ← N=总文档数, df=包含该词的文档数
 
 ### 1.2 BM25（ES 5.x+ 默认，Best Matching 25）
 
-```
+```text
 score(D, Q) = Σ IDF(qi) × [f(qi,D) × (k1+1)] / [f(qi,D) + k1 × (1 - b + b × |D|/avgdl)]
 ```
 
@@ -44,7 +44,7 @@ score(D, Q) = Σ IDF(qi) × [f(qi,D) × (k1+1)] / [f(qi,D) + k1 × (1 - b + b ×
 
 **BM25 vs TF-IDF 对比**：
 
-```
+```text
 词频 → 得分
   1    TF-IDF: 1.0   BM25: 0.8
   5    TF-IDF: 5.0   BM25: 2.1    ← BM25 饱和效应
@@ -93,7 +93,7 @@ score(D, Q) = Σ IDF(qi) × [f(qi,D) × (k1+1)] / [f(qi,D) + k1 × (1 - b + b ×
 
 **解决**：逐层过滤，每层用更重的模型但更少的候选：
 
-```
+```text
 全量索引（100 万 SKU）
     │
     ▼ 召回层（BM25 + 筛选条件）—— 毫秒级
@@ -118,7 +118,7 @@ score(D, Q) = Σ IDF(qi) × [f(qi,D) × (k1+1)] / [f(qi,D) + k1 × (1 - b + b ×
 - **筛选条件**：品牌、价格区间、分类（ES filter，不参与评分）
 - **向量召回**（可选）：用户 embedding × 商品 embedding，topK 补充
 
-```
+```text
 // ES 召回查询
 {
   "bool": {
@@ -139,7 +139,7 @@ score(D, Q) = Σ IDF(qi) × [f(qi,D) × (k1+1)] / [f(qi,D) + k1 × (1 - b + b ×
 
 **模型**：线性加权（function_score）
 
-```
+```text
 粗排分 = BM25 × 0.4 + log(sales+1) × 0.3 + rating × 0.15 + freshness × 0.1 + promo × 0.05
 ```
 
@@ -191,7 +191,7 @@ score(D, Q) = Σ IDF(qi) × [f(qi,D) × (k1+1)] / [f(qi,D) + k1 × (1 - b + b ×
 
 ### 3.2 A/B 测试框架
 
-```
+```text
 用户请求 → Hash(user_id) % 100
 ├─ 0-49: 对照组（当前排序模型）
 └─ 50-99: 实验组（新排序模型）

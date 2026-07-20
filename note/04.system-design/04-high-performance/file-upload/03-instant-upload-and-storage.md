@@ -19,7 +19,7 @@ module:
 
 ### 1.1 流程
 
-```
+```sql
 用户上传文件
     │
     ▼ 前端计算 MD5（WebWorker 不阻塞 UI）
@@ -89,7 +89,7 @@ if (existing != null) {
 
 ### 2.1 存储模型
 
-```
+```text
 物理存储（OSS）：
 /objects/abc123def456    ← 只存一份物理文件
 
@@ -151,7 +151,7 @@ public void gcOrphanObjects() {
 
 ### 3.2 分片存储路径设计
 
-```
+```text
 chunks/{uploadId}/{chunkIndex}     ← 临时分片（合并后删除）
 objects/{md5}                       ← 合并后的完整文件（内容寻址）
 thumbnails/{md5}/                   ← 缩略图 / 预览

@@ -19,7 +19,7 @@ module:
 
 ### 1.1 API 设计
 
-```
+```text
 POST /api/upload/init
 Body: {filename, fileSize, md5, totalChunks}
 Response: {uploadId, uploadedChunks: []}  // 秒传检查 + 初始化
@@ -178,7 +178,7 @@ public class UploadController {
 
 ### 2.1 原理
 
-```
+```text
 第 1 次上传：
   chunk 0 ✅ → chunk 1 ✅ → ... → chunk 99 ✅ → 断网！
 

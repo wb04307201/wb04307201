@@ -407,7 +407,7 @@ mysqldumpslow -s c /var/log/mysql/mysql-slow.log  # 按出现次数排序
 
 #### 理由 4：可维护性 —— SQL 没人敢改
 
-```
+```text
 新人接手看到 10 张表 JOIN：
 ├─ 不敢改字段 → 业务迭代停滞
 ├─ 不敢加索引 → 性能永远优化不了
@@ -418,7 +418,7 @@ mysqldumpslow -s c /var/log/mysql/mysql-slow.log  # 按出现次数排序
 
 #### 理由 5：分布式场景下彻底失效
 
-```
+```text
 MySQL 分库分表后：
 ├─ 10 张表分布在 10 个库
 ├─ 单库 JOIN 不可能跨库
@@ -483,7 +483,7 @@ SELECT * FROM order WHERE user_id = ?;  -- 直接拿到 user_name
 
 #### 策略 3：宽表化（OLAP 场景）
 
-```
+```text
 原始：order 表 + user 表 + product 表 + address 表 + payment 表 + ... （10 张）
 宽表：dwd_order_detail（包含所有需要展示的字段，单表 200 列）
 
@@ -499,7 +499,7 @@ SELECT * FROM order WHERE user_id = ?;  -- 直接拿到 user_name
 
 #### 策略 4：数据仓库 + OLAP 引擎
 
-```
+```text
 MySQL（OLTP）→ Canal / Debezium → Kafka → Flink → ClickHouse / Doris（OLAP）
 
 业务查询：
@@ -567,7 +567,7 @@ List<OrderDTO> dtos = orders.stream()
 
 ### 4.5 决策树：什么时候用什么策略
 
-```
+```text
 10 张表 JOIN？
 ├─ OLTP 场景（实时业务）？
 │   ├─ 性能要求极高（< 50ms）→ 策略 2 冗余字段

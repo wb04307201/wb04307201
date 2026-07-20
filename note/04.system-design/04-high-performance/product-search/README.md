@@ -17,7 +17,7 @@ module:
 
 ## 0. 面试高频拷问
 
-```
+```text
 Q：设计一个商品搜索系统，支持关键词搜索 + 多维筛选 + 排序，QPS 1 万？
 Q：Elasticsearch 的倒排索引是怎么工作的？BM25 和 TF-IDF 有什么区别？
 Q：商品数据从 MySQL 到 ES 怎么保证同步一致性？
@@ -72,7 +72,7 @@ SELECT * FROM products WHERE title LIKE '%运动鞋%' ORDER BY sales DESC;
 
 ### 2.2 阶段 2：单节点 Elasticsearch（1 万 ~ 50 万 SKU）
 
-```
+```text
 MySQL → Canal → MQ → ES Index
 用户 → Search API → ES Query → 排序 → 返回
 ```
@@ -81,7 +81,7 @@ MySQL → Canal → MQ → ES Index
 
 ### 2.3 阶段 3：ES 集群 + 缓存（50 万 ~ 千万 SKU）
 
-```
+```text
 用户 → CDN → Search API → Query 缓存 → ES 集群（多分片）→ 排序 → 返回
                                       → MQ → 数据同步
 ```
@@ -99,7 +99,7 @@ MySQL → Canal → MQ → ES Index
 
 > 📖 **深度阅读**：[02-inverted-index.md](02-inverted-index.md) — 倒排索引 + 分词 + 多维筛选详解
 
-```
+```text
 文档："Nike 红色运动鞋 42 码"
      ↓ IK 分词
 Terms: [nike, 红色, 运动鞋, 42, 码]
@@ -120,7 +120,7 @@ nike → doc1, doc5, doc99
 
 **BM25 公式**（简化版）：
 
-```
+```text
 score(D, Q) = Σ IDF(qi) × f(qi,D) × (k1+1) / (f(qi,D) + k1×(1 - b + b×|D|/avgdl))
 ```
 
@@ -130,7 +130,7 @@ score(D, Q) = Σ IDF(qi) × f(qi,D) × (k1+1) / (f(qi,D) + k1×(1 - b + b×|D|/a
 
 **多阶段排序管道**：
 
-```
+```text
 全量索引（100 万）
     ↓ 召回（BM25 + 筛选条件）
 候选集（1000 条）
@@ -146,7 +146,7 @@ score(D, Q) = Σ IDF(qi) × f(qi,D) × (k1+1) / (f(qi,D) + k1×(1 - b + b×|D|/a
 
 商品数据的主存储在 MySQL，搜索索引在 ES，需要保证两者一致：
 
-```
+```text
 MySQL (主存储)
     ↓ Canal 监听 binlog
 MQ (RocketMQ / Kafka)
@@ -185,14 +185,14 @@ WHERE title LIKE '%运动鞋%'
 
 ### 5.3 排序只用相关性
 
-```
+```text
 // ❌ 纯 BM25 排序 → 销量 0 的新品排第一
 // ✅ 混合排序 = BM25 × 0.4 + 销量分 × 0.3 + 评分 × 0.2 + 新鲜度 × 0.1
 ```
 
 ### 5.4 忽略数据同步延迟
 
-```
+```text
 用户刚改了商品标题 → 立即搜索 → 还是旧标题 → "搜索有 bug！"
 ```
 
@@ -202,7 +202,7 @@ WHERE title LIKE '%运动鞋%'
 
 ### 5.5 没做 Query 缓存
 
-```
+```text
 "运动鞋" 这个 query 每秒被搜索 500 次，每次都打到 ES → 浪费
 ```
 

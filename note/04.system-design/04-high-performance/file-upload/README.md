@@ -17,7 +17,7 @@ module:
 
 ## 0. 面试高频拷问
 
-```
+```text
 Q：设计一个大文件上传系统，支持 10GB 文件、断点续传、秒传？
 Q：分片上传的协议怎么设计？断网后怎么续传？
 Q：秒传的原理是什么？怎么保证 MD5 不碰撞？
@@ -61,7 +61,7 @@ Q：秒传的原理是什么？怎么保证 MD5 不碰撞？
 
 ### 2.1 完整上传流程
 
-```
+```text
 前端                                    后端
  │                                       │
  │  1. 计算文件 MD5                       │
@@ -112,7 +112,7 @@ for (let i = 0; i < totalChunks; i++) {
 
 > 📖 **深度阅读**：[03-instant-upload-and-storage.md](03-instant-upload-and-storage.md) — 秒传原理 + 存储后端详解
 
-```
+```text
 用户 A 上传 "movie.mp4"（MD5: abc123）
     → 存储到 OSS: /objects/abc123
     → DB 记录: file_id=1, md5=abc123, path=/objects/abc123
@@ -125,7 +125,7 @@ for (let i = 0; i < totalChunks; i++) {
 
 ### 3.3 断点续传
 
-```
+```text
 用户上传 1GB 文件（200 片），传到第 100 片时断网
     → 重连后 POST /api/upload/check
     → 后端返回: {uploadId: "xxx", uploadedChunks: [0,1,...,99]}
@@ -140,7 +140,7 @@ for (let i = 0; i < totalChunks; i++) {
 
 ### 4.1 阶段 1：单机直传
 
-```
+```text
 浏览器 → Spring MVC MultipartFile → 本地磁盘
 ```
 
@@ -148,14 +148,14 @@ for (let i = 0; i < totalChunks; i++) {
 
 ### 4.2 阶段 2：分片 + 对象存储
 
-```
+```text
 浏览器 → API Gateway → Upload Service → 分片写入 OSS/S3
                                        → 元数据写入 MySQL
 ```
 
 ### 4.3 阶段 3：分布式 + CDN
 
-```
+```text
 浏览器 → CDN（边缘加速）→ Upload Service → 分片写入 OSS（多区域）
                                           → Redis 缓存 uploadId 状态
                                           → 异步合并 + 内容审核
@@ -167,7 +167,7 @@ for (let i = 0; i < totalChunks; i++) {
 
 ### 5.1 整文件一次上传
 
-```
+```html
 // ❌ 10GB 文件一次 POST → 超时/内存溢出
 <form enctype="multipart/form-data">
     <input type="file" name="file"/>
@@ -186,7 +186,7 @@ for (let i = 0; i < totalChunks; i++) {
 
 ### 5.3 没做完整性校验
 
-```
+```text
 // ❌ 分片合并后不校验 → 损坏文件
 mergeChunks(uploadId);
 return fileUrl;
@@ -201,14 +201,14 @@ if (!actualMd5.equals(expectedMd5)) {
 
 ### 5.4 没做秒传
 
-```
+```text
 // ❌ 每个用户都上传完整文件 → 存储浪费 + 带宽浪费
 // ✅ 上传前查 MD5 → 已存在则直接引用
 ```
 
 ### 5.5 没有限速/限流
 
-```
+```text
 // ❌ 单用户占满带宽 → 其他用户无法上传
 // ✅ 令牌桶限流：每用户最大 10MB/s
 ```
