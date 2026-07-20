@@ -162,7 +162,7 @@ public class AppProperties {
 
 启动若失败：
 
-```
+```text
 ***************************
 APPLICATION FAILED TO START
 ***************************
@@ -278,7 +278,7 @@ java -Dspring.profiles.active=prod -jar app.jar
 
 ### 3. profile-specific 配置文件
 
-```
+```text
 src/main/resources/
 ├── application.yml              # 公共配置
 ├── application-dev.yml          # 开发环境
