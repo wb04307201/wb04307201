@@ -21,7 +21,7 @@ module:
 
 ## 二、BI 系统的 4 大模块
 
-```
+```text
 数据源 ─→ 数据仓库 ─→ 数据分析 ─→ 数据可视化
  ERP         ODS          OLAP         报表
  CRM         DWD          数据挖掘      大屏
