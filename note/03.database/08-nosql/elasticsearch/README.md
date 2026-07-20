@@ -38,7 +38,7 @@ module:
 
 ### 倒排索引结构
 
-```
+```text
 词项      |  文档 ID 列表（文档频率）
 ---------+-----------------------------
 "redis"  |  [doc1, doc3, doc7, doc15]          (df=4)
@@ -75,7 +75,7 @@ module:
 
 ES 集群由多种角色的节点组成：
 
-```
+```text
                     ┌─────────────────┐
          请求 ─────→│ Coordinating    │（路由 + 结果聚合）
                     │     Node        │
@@ -109,7 +109,7 @@ ES 集群由多种角色的节点组成：
 - **副本（Replica）**：主分片的完整拷贝，提供高可用和读扩展
 - **分片数不可更改**（创建索引时固定），副本数可随时调整
 
-```
+```text
 索引: products（3 主分片 + 1 副本）
 Node A: [Shard 0-P] [Shard 2-R]
 Node B: [Shard 1-P] [Shard 0-R]
@@ -124,7 +124,7 @@ Node C: [Shard 2-P] [Shard 1-R]
 
 分析器是全文搜索的核心，将文本转换为词项（Term）：
 
-```
+```text
 输入文本: "Elasticsearch is running on port 9200"
         ↓ Character Filter（去除 HTML 等）
         ↓ Tokenizer（按空格/标点切分）
@@ -233,7 +233,7 @@ ES 8.0 引入 `dense_vector` 字段和 **kNN（k 最近邻）** 查询，支持 
 
 ## 八、ELK 日志分析平台
 
-```
+```text
 应用日志 → Filebeat（采集）→ Logstash（处理/过滤）→ Elasticsearch（存储/搜索）
                                                           ↓
                                                     Kibana（可视化）
