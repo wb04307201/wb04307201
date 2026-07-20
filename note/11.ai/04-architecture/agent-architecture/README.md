@@ -198,7 +198,7 @@ Q4: 是否需要灵活性 > 稳定性？
 - 关联：[Harness Engineering](../../03-engineering/harness-engineering/README.md) — DAG 是 Harness 的强约束
 - 实战：[生产级 Agent](../../03-engineering/production-agent/README.md) — DAG 在生产环境的落地
 
-← [返回: AI 知识体系 · agent-architecture](README.md)
+← [返回: L4 架构设计](../README.md)
 
 ---
 
