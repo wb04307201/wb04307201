@@ -13,7 +13,7 @@ module:
 
 ArrayList 的核心是一个动态数组, 通过 `transient Object[] elementData` 字段存储元素。
 
-```
+```text
 ┌─────────────────────────────────────────────┐
 │                 ArrayList                    │
 ├─────────────────────────────────────────────┤
@@ -59,7 +59,7 @@ public ArrayList() {
 
 不会立即分配 10 个元素的数组, 而是指向一个**共享的空数组**。真正的第一次 `add()` 时才会扩容到 `DEFAULT_CAPACITY = 10`。这是懒加载策略, 避免构造后未使用造成的内存浪费。
 
-```
+```text
 构造后:    elementData ──► []  (共享空数组, size=0)
 首次add(): elementData ──► [null, null, null, null, null, null, null, null, null, null]  (扩容到10)
 ```
@@ -123,7 +123,7 @@ private void add(E e, Object[] elementData, int s) {
 }
 ```
 
-```
+```text
 add(e) 执行流程:
 ┌──────────┐    ┌──────────────┐    ┌────────────────┐    ┌──────────────┐
 │ modCount++│───►│ s == length? │──是─►│ grow(s+1) 扩容 │───►│ elementData[s]=e │
@@ -179,7 +179,7 @@ private Object[] grow(int minCapacity) {
 
 **容量增长序列:** 10 → 15 → 22 → 33 → 49 → 73 → 109 → 163 → ...
 
-```
+```text
 扩容过程 (Arrays.copyOf 底层调用 System.arraycopy):
 
 旧数组: [A][B][C][D][E]          capacity=5, size=5
@@ -249,7 +249,7 @@ public E remove(int index) {
 }
 ```
 
-```
+```text
 remove(1) 过程 (删除 index=1 的 B):
 
 删除前: [A][B][C][D][E]    size=5
@@ -329,7 +329,7 @@ final void checkForComodification() {
 }
 ```
 
-```
+```text
 并发修改检测:
 
 迭代器创建时: expectedModCount = modCount = 5
@@ -375,7 +375,7 @@ public List<E> subList(int fromIndex, int toIndex) {
 }
 ```
 
-```
+```text
 subList 视图结构:
 
 原列表: [0:A][1:B][2:C][3:D][4:E][5:F]   size=6
@@ -511,7 +511,7 @@ set.addIfAbsent(element);          // 原子 check-and-set
 
 ### 8.1 数据结构对比
 
-```
+```text
 ArrayList (动态数组):
 ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐
 │ A │ B │ C │ D │ E │   │   │   │   │   │
@@ -547,7 +547,7 @@ LinkedList (双向链表):
 
 ### 8.3 内存占用对比
 
-```
+```text
 存储 N 个元素:
 
 ArrayList:
@@ -563,7 +563,7 @@ LinkedList:
 
 ### 8.4 缓存局部性
 
-```
+```text
 CPU Cache 影响:
 
 ArrayList: [A][B][C][D][E][F]

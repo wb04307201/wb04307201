@@ -8,7 +8,7 @@
 
 ### JDK 7：Segment 分段锁
 
-```
+```text
 ConcurrentHashMap
 ├── Segment[0]  ← 每个 Segment 继承自 ReentrantLock
 │   └── HashEntry[] table（独立的小 HashMap）
@@ -25,7 +25,7 @@ ConcurrentHashMap
 
 ### JDK 8：CAS + synchronized
 
-```
+```text
 ConcurrentHashMap
 └── Node[] table（一个大的数组，和 HashMap 结构类似）
     ├── table[0] → null
@@ -86,7 +86,7 @@ static class Node<K,V> {
 map.put(key, value);
 ```
 
-```
+```text
 put(key, value)
   │
   ├─ 1. 计算 hash
@@ -117,7 +117,7 @@ put(key, value)
 
 ### 为什么不允许 null 键/值
 
-```
+```text
 HashMap 允许 null 键（hash 固定为 0，放在 table[0]）
 HashMap 允许 null 值
 
@@ -136,7 +136,7 @@ ConcurrentHashMap 不允许 null，原因：
 
 ## 三、size() 怎么在并发下保证准确
 
-```
+```text
 JDK 7：先不加锁尝试 3 次，如果 modCount 变化则加锁统计
 JDK 8：baseCount + CounterCell[]（类似 LongAdder 的分段计数）
 ```
@@ -148,7 +148,7 @@ JDK 8：baseCount + CounterCell[]（类似 LongAdder 的分段计数）
 // 核心字段
 private transient volatile long baseCount;           // 基础计数
 private transient volatile CounterCell[] counterCells; // 分段计数数组
-```
+```text
 
 ```text
 // 计数逻辑（伪代码）
@@ -159,11 +159,11 @@ addCount(1L, resizeThreshold):
 
 // size() = baseCount + sum(counterCells)
 // mappingCount() 返回 long，size() 返回 int（可能溢出）
-```
+```text
 ```
 
 **为什么不用 AtomicInteger**：
-```
+```text
 AtomicInteger 在高并发下 CAS 竞争激烈。
 CounterCell[] 把计数分散到多个槽位，减少竞争。
 这和 LongAdder 的思路一样：空间换时间。
@@ -177,7 +177,7 @@ CounterCell[] 把计数分散到多个槽位，减少竞争。
 
 这是 ConcurrentHashMap 最复杂的部分。当 table 需要扩容时，多个线程可以同时参与迁移。
 
-```
+```text
 扩容过程：
   1. 第一个触发扩容的线程：
      - 创建新 table（容量翻倍）
@@ -197,7 +197,7 @@ CounterCell[] 把计数分散到多个槽位，减少竞争。
 
 ### 扩容期间 put 遇到 ForwardingNode 怎么办
 
-```
+```text
 put() 定位到某个桶 → 发现是 ForwardingNode（该桶已迁移）
   → 调用 helpTransfer() 协助扩容（帮忙迁移其他桶）
   → 扩容完成后重试 put()
@@ -263,7 +263,7 @@ map.putIfAbsent("A", 1);
 
 ### 原理
 
-```
+```text
 读操作：无锁，直接读内部数组
 写操作：加锁，复制整个数组，修改副本，替换引用
 
@@ -315,7 +315,7 @@ public E get(int index) {
 
 ### 适用场景
 
-```
+```text
 ✅ 适合：
   - 事件监听器列表（注册少，触发多）
   - 配置列表（修改少，读取多）
@@ -335,7 +335,7 @@ public E get(int index) {
 
 ### 选型决策
 
-```
+```text
 你需要什么？
 │
 ├── 有界队列（防止 OOM）
@@ -427,7 +427,7 @@ String task = queue.poll(); // 出队（空时返回 null，不阻塞）
 
 ### 跳表结构
 
-```
+```text
 Level 3:  1 ──────────────────────── 9
 Level 2:  1 ──── 3 ──────────────── 9
 Level 1:  1 ── 3 ── 5 ── 7 ────── 9

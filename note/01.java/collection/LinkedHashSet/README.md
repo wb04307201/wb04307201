@@ -84,7 +84,7 @@ static class Entry<K,V> extends HashMap.Node<K,V> {
 
 ### 链表结构示意图
 
-```
+```text
 head → [Entry1] ↔ [Entry2] ↔ [Entry3] ↔ [Entry4] → tail
         (先插入)                            (后插入)
 ```
