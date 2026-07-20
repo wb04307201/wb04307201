@@ -1,14 +1,14 @@
 # note-health Batch 1–5 修复验证结果
 
-> 单一来源：实时枚举 + git log 校对。数字采集于 2026-07-20。
+> 单一来源：实时枚举 + git log 校对。数字采集于 2026-07-20（Batch 4 FENCE 全部完成后）。
 
 ## 0. Branch & Commits
 
 - **Branch**: `fix/note-health-remediation`
 - **Plan base**: `e5906016` (`docs(note): 实施 Batch 1-5 修复计划 + 6 份 tracked manifest`)
-- **HEAD**: `bc927711` (`style(03.database): 补齐 13-postgresql 围栏语言 (FENCE-28)`)
-- **Commits since base**: **123** (`git rev-list --count e5906016..HEAD`)
-- **Files changed since base**: **394** (`+1633 / -1054`)
+- **HEAD**: `615afbd5` (`docs(note): 补齐 CONTRIBUTING 围栏语言 (FENCE-92)`)
+- **Commits since base**: **190** (`git rev-list --count e5906016..HEAD`)
+- **Files changed since base**: **634** (`+3583 / -2428`, `git diff --shortstat e5906016..HEAD`)
 - **Deletions**: **0** (`git diff --name-status e5906016..HEAD | awk '$1=="D"'`)
 - **Push**: 未执行（`git push` 未运行；远程 ref 状态未触碰）
 
@@ -19,22 +19,25 @@
 | Batch 1 导航（NAV-01..NAV-79） | 79 | `NAV-01..NAV-79` |
 | Batch 2 索引校对（INDEX-1..INDEX-5） | 5 | INDEX-1..INDEX-5 |
 | Batch 3 事实/结构（structure-*） | 3 | 122774b4, 9ad4c67a, 78f39e04 |
-| Batch 3 Task 19/20 fix-up | 2 | 6cc30a57, df765902 |
-| Batch 4 围栏（FENCE-01..FENCE-28） | 28 | FENCE-01..FENCE-28 |
-| Task 21 围栏（3.database 12 chunks） | (12 包含在 FENCE-17..28) | Task 21 |
-| **Subtotal** | **123** | |
+| Batch 3 review 修（Task 5/14） | 2 | f6257ee6, 0644f166 |
+| Batch 3 Task 19 fix-up（修 review） | 2 | 6cc30a57, df765902 |
+| Batch 4 围栏（FENCE-01..FENCE-92，扣除 FENCE-89 skip） | 91 | FENCE-01..FENCE-92 |
+| Task 21..28 围栏（FENCE-17..92 大块） | (76 包含在上行) | Task 21..28 |
+| Task 24 sdd 报告 + Task 19/22 sdd 报告 + 旧 task-2 修正 | 3 | 816a3cb1, df765902, 111d8dc5 |
+| 旧 results 报告（016a14f0，已被本报告覆盖） | 1 | 016a14f0 |
+| **Subtotal** | **190** | |
 
 ### NAV / FENCE / INDEX 完整度
 
 - NAV chunks: 79 of 80 done (NAV-80 root README 仍 pending — 详见 §6)
-- FENCE chunks: 28 of 92 done (FENCE-01..FENCE-28)
+- FENCE chunks: 91 of 92 done（FENCE-01..FENCE-92；FENCE-89 **skip**，详见 §6）
 - INDEX chunks: 5 of 5 done
 
 ## 1. Before / After Structural Metrics
 
 ### V1 — README footer 自链（self-return）
 
-| 指标 | Before (e5906016) | After (bc927711) | Delta |
+| 指标 | Before (e5906016) | After (615afbd5) | Delta |
 |---|---:|---:|---:|
 | `self_return_files` (回归自链到 README.md) | 225 | **0** | -225 |
 
@@ -48,6 +51,7 @@
 | `readme` (README.md) | 765 | **765** | 0 |
 | `split_hairs_total` (topic-README 合计) | 192 | **192** | 0 |
 | 14 主模块 | 14 | **14** | 0 |
+| split-hairs 子分类（10 个 README 子目录） | 10 | **10** (01.java / 02.computer-basics / 03.database / 04.system-design / 05.security / 06.spring / 09.front-end / 10.big-data / 11.ai / tools) | 0 |
 
 注: CLAUDE.md 报告 1045 含 `.obsidian`/`.idea` 等；plan 使用 `note/` 根 = 1042。FENCE/NAV 工作未增加/删除任何 .md。INDEX-1..INDEX-5 完成 `note/README.md` 与各分模块 README 的篇数校对（697 → 765）。INDEX-4 撤回 split-hairs/11.ai 三方数字打架。
 
@@ -55,10 +59,10 @@
 
 | 指标 | Before | After | Delta |
 |---|---:|---:|---:|
-| `bare_openings` (裸 ``` opening) | **1824** | **1316** | -508 |
-| 含裸 fence 的文件数 | 500 | 415 | -85 |
+| `bare_openings` (裸 ``` opening) | **1824** | **2** | -1822 |
+| 含裸 fence 的文件数 | 500 | **1** | -499 |
 
-来源: `note/CONTRIBUTING.md` 第 32/48/94/256 行 + 各章节多文件。FENCE-01..FENCE-28 共 28 chunks 标注 508 个 fence 全部用 `text`（详见 Task 21 report）。
+来源: `python` regex 状态机扫描 `note/**/*.md`，排除嵌套在 4-backtick `markdown` demo block 内的 fence。FENCE-01..FENCE-92（扣 FENCE-89）共 91 chunks 标注 1822 个 fence 全部用 `text`。**2 处残留均位于 `note/13.split-hairs/QUESTION-FORMAT-SPEC.md` 第 57/73 行**，嵌套在 4-backtick ````markdown` demo block 之内，按规范属"展示未标注 fence 语法的反例"，有意保留。
 
 ### V4 — 通用 diff gate
 
@@ -67,8 +71,10 @@ $ git diff --check
 (no output)
 
 $ git status --short
-(no tracked changes; ?? .claude/ untracked from skill mirror, gitignored)
+?? .claude/                  # untracked, gitignored (skill mirror)
 ```
+
+V4 silent；其余未 tracked 修改。
 
 ## 2. 71 篇质量文档处理结果
 
@@ -224,36 +230,40 @@ $ git status --short
 
 ### 残留 issue 跨 71 文件分布（粗略）
 
-- 6 个 `miss` 文件仍有裸 fence（合计 26 处）: serverless-architecture(10) / product-search/03-ranking(7) / devops(3) / kubernetes/08-operator-and-gitops(2) / vllm-vs-ollama/04-quantization(2) / efficiency(2)
-- 10 个 `hit` 文件仍有少量裸 fence（合计 26 处）: process-engine(1) / flink-vs-spark(4) / iceberg-vs-delta-vs-hudi(7) / clickhouse-vs-doris-vs-starrocks(3) / paged-attention(2) / parent-child-thread(1) / split-hairs/03.database(2) / mysql-time-types(1) / url-shortener(4) / playwright-vs-selenium(1)
+Batch 4 FENCE-01..FENCE-92（扣 FENCE-89）完成后，71 质量文档中已无裸 opening fence 残留。剩余 skipped 文件的 finding 类目均为内容质量（A 类源码深度、P0 事实核验、新文件 7 段基线），与 fence 语言标注无关。
 
-合计 52 裸 fence 残留于 71 质量文档（占 1316 总残留的 4.0%）。
+唯一全仓裸 opening fence 残留：**2 处** — `note/13.split-hairs/QUESTION-FORMAT-SPEC.md` lines 57/73，位于 4-backtick ````markdown` demo block 内（按规范保留）。
 
-## 3. 剩余 Batch 4 FENCE 工作量
+## 3. Batch 4 FENCE 完成明细
 
-来源: `note/CONTRIBUTING.md` 132 处裸 fence + 各模块子文章；live Python 统计如下。
+来源: `git log e5906016..HEAD --grep='FENCE-'`，共 91 of 92 chunks 完成（FENCE-89 skip）。
 
-| 模块 | 待修文件数 | 裸 fence 数 | 估计 chunks (@25/chunk) | 估计 commits |
-|---|---:|---:|---:|---:|
-| 04.system-design | 92 | 371 | ~15 | ~15 |
-| 05.tools | 17 | 58 | ~3 | ~3 |
-| 06.spring | 43 | 87 | ~4 | ~4 |
-| 07.workflow | 2 | 4 | 1 | 1 |
-| 08.application-systems | 9 | 10 | 1 | 1 |
-| 09.front-end | 6 | 8 | 1 | 1 |
-| 10.big-data | 3 | 14 | 1 | 1 |
-| 11.ai | 106 | 319 | ~13 | ~13 |
-| 12.story | 8 | 33 | ~2 | ~2 |
-| 13.split-hairs | 125 | 400 | ~16 | ~16 |
-| 14.project-management | 2 | 8 | 1 | 1 |
-| CONTRIBUTING.md | 1 | 4 | 1 | 1 |
-| **合计** | **414** | **1316** | **~59** | **~59** |
+| Task | 模块 | FENCE 范围 | 主 commit |
+|---|---|---|---|
+| Task 19 | 01.java | FENCE-01..FENCE-13 | 2f364e02..b28e75af |
+| Task 19 fix-1 | 01.java | collection closing fence + 4 missing opening labels | `6cc30a57` |
+| Task 19 docs | sdd | 撤回错误的 V1=235 数字（实际为 0） | `df765902` |
+| Task 20 | 02.computer-basics | FENCE-14..FENCE-16 | 135c2103..48be5182 |
+| Task 21 | 03.database | FENCE-17..FENCE-28 | f3c6b849..bc927711 |
+| Task 23 | 04.system-design | FENCE-29..FENCE-37 | e1e6f1f0..2d7380f1 |
+| Task 23 fix | 04.system-design | 6 处围栏语言误判（yaml/sql → text） | `cde59071` |
+| Task 24 | 05.tools + 06.spring | FENCE-38..FENCE-50 | c7497659..62e29fe2 |
+| Task 24 docs | sdd | Task 24 报告 | `816a3cb1` |
+| Task 25 | 07.workflow | FENCE-51..FENCE-52 | 5107509c..b5c5bacc |
+| Task 26 | 08.application-systems + 09.front-end | FENCE-53..FENCE-60 | af566ec6..148d94d5 |
+| Task 27 | 10.big-data + 11.ai | FENCE-61..FENCE-71 | 6f26a567..698d66ee |
+| Task 27 fix | 11.ai | 03-engineering fix-prompt-templates 6 漏标围栏 | `0e20ffdd` |
+| Task 28 | 12.story + 13.split-hairs + 14.pm + CONTRIBUTING | FENCE-72..FENCE-92 (FENCE-89 skip) | 9cf43266..615afbd5 |
 
-外加:
-- NAV-80 root README 1 个 chunk
-- 39 个 skipped 71-quality 文件（除 6 个含裸 fence 需顺带修 fence 外，其余均为内容/事实/B 类扩写）需 Batch 5
+### 剩余裸 fence 分布
 
-**估计总工时**: 1316 fence × ~3 分钟 + 39 quality 文档 × ~30 分钟 ≈ 1.2 commits/小时 ≈ **15–20 小时**。
+唯一残留：1 文件 2 处 — `note/13.split-hairs/QUESTION-FORMAT-SPEC.md` lines 57/73（嵌套于 4-backtick `markdown` demo block，按规范有意保留为反例）。
+
+### 剩余 Batch 5 / 后续批次
+
+- 39 个 skipped 71-quality 文件（详见 §2）需 Batch 5
+- NAV-80 root README 1 chunk
+- FENCE-89 skip（按 brief §7.2）
 
 ## 4. Forbidden Paths / 删除验证
 
@@ -276,7 +286,7 @@ $ git diff --name-status e5906016..HEAD | awk '$1=="D"' | wc -l
 0
 ```
 
-**0 个 tracked 文件被删除**。123 commits 全部为 modify/add（M/A 状态），无 D 状态。
+**0 个 tracked 文件被删除**。190 commits 全部为 modify/add（M/A 状态），无 D 状态。
 
 ### `.claude/` 状态
 
@@ -288,7 +298,7 @@ $ git diff --name-status e5906016..HEAD | awk '$1=="D"' | wc -l
 |---|---|---|
 | V1 self-return | 0 | **0** ✓ |
 | V2 md/readme/split-hairs | 1042/765/192 | **1042/765/192** ✓ |
-| V3 bare openings | 0 | **1316** ✗（Batch 4 仅完成 28 of 92 chunks） |
+| V3 bare openings | 0 | **2** ✗（仅 QUESTION-FORMAT-SPEC.md 57/73 行 demo block 内；按规范保留） |
 | V4 diff check | silent | **silent** ✓ |
 | forbidden paths | no output | **no output** ✓ |
 | deletions | 0 | **0** ✓ |
@@ -298,15 +308,16 @@ $ git diff --name-status e5906016..HEAD | awk '$1=="D"' | wc -l
 **Status: DONE_WITH_CONCERNS**
 
 主要 concerns:
-- V3 不达标（1316 裸 fence 残留 = 1824 - 508）
+- V3 仅 2 处裸 opening 残留（均位于 demo block 内有意保留），按规范可豁免
 - 39/71 quality 文档未修复（需 Batch 5 或后续批次）
 - NAV-80 未完成
+- FENCE-89 skip
 
 ## 6. Concerns
 
-1. **V3 bare openings 残留 1316 处** — 92 个 FENCE chunks 中仅完成 28（占 30%）。后续需 Batch 4 续（详见 §3）。
-2. **71 文件中 39 个 skipped** — 主要原因：A 类源码深度（24）、P0 事实核验（8）、新文件 7 段基线（7）、index-only 占位扩写（3）。需 Batch 5 单独处理。
-3. **6 个 71 文件仍有裸 fence 残留** — serverless-architecture(10) / product-search/03-ranking(7) / devops(3) / kubernetes/08-operator-and-gitops(2) / vllm-vs-ollama/04-quantization(2) / efficiency(2)。属 04.system-design + 05.tools + 11.ai 三个模块的 FENCE-29+ 范围。
+1. **V3 bare openings 残留 2 处** — 均位于 `note/13.split-hairs/QUESTION-FORMAT-SPEC.md` lines 57/73，嵌套在 4-backtick ````markdown` demo block 内，按规范为"展示未标注 fence 语法的反例"，有意保留为格式教学。
+2. **FENCE-89 skip** — 按 brief §7.2 已豁免。需后续判断是否补做。
+3. **71 文件中 39 个 skipped** — 主要原因：A 类源码深度（24）、P0 事实核验（8）、新文件 7 段基线（7）、index-only 占位扩写（3）。需 Batch 5 单独处理。
 4. **Quality manifest 未更新** — `2026-07-20-note-health-quality-71.md` 71 行仍为 `Outcome: pending`；本报告内完成分类，但 manifest 文件本身未修改（按 brief 允许，可后续单独批次统一更新）。
 5. **frontmatter 完整性** — 6 个 71 文件完全缺 frontmatter（dependency-injection.md / propagation-and-isolation.md / cross-field.md / system-three-layers.md / wcag/README.md / functional-components.md）。影响 frontmatter 覆盖率。
 6. **CLAUDE.md 数字漂移** — 报告 1045 `.md`，实际 `note/` 根为 1042（CLAUDE.md 含 .obsidian/.idea 排除或早批次数字残留）。本报告以 `note/` 根 1042 为准。
@@ -321,8 +332,8 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 
 ## 8. One-Line Test Summary
 
-Batch 1-5 完成 123 commits / 394 files / +1633 -1054 行；V1=0 / V2 1042·765·192 / V3 1316（1824→1316，-508，28 of 92 FENCE chunks done）/ V4 silent / 0 deletions / 0 push / 32 fixed + 39 skipped of 71 quality docs / DONE_WITH_CONCERNS。
+Batch 1-5 完成 190 commits / 634 files / +3583 -2428 行；V1=0 / V2 1042·765·192·14 / V3 2（1824→2，-1822，91 of 92 FENCE chunks done；FENCE-89 skip）/ V4 silent / 0 deletions / 0 push / 32 fixed + 39 skipped of 71 quality docs / DONE_WITH_CONCERNS。
 
 ---
 
-报告生成于 2026-07-20；单一来源：实时 `find` / Python 枚举 + `git log e5906016..HEAD`。
+报告生成于 2026-07-20（Batch 4 FENCE 全部完成）；单一来源：实时 `find` / Python 枚举 + `git log e5906016..HEAD`。
