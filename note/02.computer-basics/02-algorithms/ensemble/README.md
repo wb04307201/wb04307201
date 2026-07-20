@@ -163,3 +163,46 @@ Q3: 调参时间？
 | ❌ 树模型不需要特征工程 | ✅ 树模型对特征工程不敏感，但好特征仍重要 |
 
 ← [返回 02 算法](../README.md)
+## 4 大模型时间复杂度对比（新增列）
+
+| 算法 | 训练复杂度 | 预测复杂度 | 可解释性 |
+|------|----------|----------|----------|
+| Random Forest | O(n·√d·log n) | O(√d·log n) | 中（特征重要性可读） |
+| GBDT (XGBoost) | O(n·d·T·log n) | O(d·T) | 中（特征重要性可读） |
+| LightGBM | O(n·d·T·log n) | O(d·T) | 中（特征重要性可读） |
+| Stacking | O(n·d·K·log n) | O(d·K) | 低（多层模型） |
+
+其中 n=样本数, d=特征数, T=树数, K=基学习器数。
+
+## Bagging vs Boosting 流程对比（新增 Mermaid 图）
+
+```mermaid
+graph TB
+    subgraph Bagging_["Bagging (并行)"]
+        D1[原始数据] -->|bootstrap 采样| S1[子集 1]
+        D1 -->|bootstrap 采样| S2[子集 2]
+        D1 -->|bootstrap 采样| S3[子集 3]
+        S1 --> M1[模型 1]
+        S2 --> M2[模型 2]
+        S3 --> M3[模型 3]
+        M1 -->|投票/平均| F1[最终预测]
+        M2 --> F1
+        M3 --> F1
+    end
+
+    subgraph Boosting_["Boosting (串行)"]
+        D2[原始数据] --> M4[弱模型 1]
+        M4 -->|错分样本加权| D2w[加权数据]
+        D2w --> M5[弱模型 2]
+        M5 -->|再加权| D2ww
+        D2ww --> M6[弱模型 N]
+        M4 -->|加权平均| F2[最终预测]
+        M5 --> F2
+        M6 --> F2
+    end
+```
+
+**关键差异**：
+- **Bagging**：模型独立训练，**可并行**，主要减少方差
+- **Boosting**：模型串行训练，**必须串行**，主要减少偏差
+- **Bagging + Boosting 组合**：随机森林（Bagging）+ GBDT（Boosting）是工业界主流

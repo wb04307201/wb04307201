@@ -150,3 +150,11 @@ Q3: sklearn 默认？
 | ❌ 树越深越好 | ✅ 浅树泛化更强 |
 
 ← [返回 02 算法](../README.md)
+### 兄弟章节路径验证
+
+| 兄弟章节 | 路径 | 实际状态 |
+|----------|------|----------|
+| dimensionality-reduction | `../dimensionality-reduction/README.md` | ✅ 存在 |
+| optimization | `../optimization/README.md` | ✅ 存在 |
+| clustering | `../clustering/README.md` | ✅ 存在 |
+| ensemble | `../ensemble/README.md` | ✅ 存在 |
