@@ -19,7 +19,7 @@ module:
 
 ### 1.1 流程
 
-```sql
+```text
 用户上传文件
     │
     ▼ 前端计算 MD5（WebWorker 不阻塞 UI）

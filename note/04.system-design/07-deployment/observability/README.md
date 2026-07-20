@@ -296,7 +296,7 @@ public class OrderController {
 
 三大支柱不是孤立的，它们通过 **TraceID** 串联在一起：
 
-```yaml
+```text
                     TraceID: abc123def456
                           │
               ┌───────────┼───────────┐

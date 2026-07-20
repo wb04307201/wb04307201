@@ -180,7 +180,7 @@ Cilium：Pod 1 ──→ 内核（eBPF）──→ Pod 2
 
 ## 八、生产选型决策
 
-```yaml
+```text
 Q1: 团队规模与 Mesh 经验？
 ├── 大型 / 有 Mesh 经验 → Istio
 └── 中小 / 首次 Mesh → Linkerd

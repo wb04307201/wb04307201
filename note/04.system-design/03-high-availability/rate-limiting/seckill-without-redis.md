@@ -305,7 +305,7 @@ T3: A 用 version=1 提交 → 影响 0 行（A 失败）✅
 ```
 
 **没有 version** 的情况：
-```yaml
+```text
 T1: A 读 stock=1
 T2: B 抢到 → stock=0
 T3: 退货 → stock=1（ABA 问题：A 看到的和现在一样）

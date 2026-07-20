@@ -306,7 +306,7 @@ Step 5: 是否被幂等误拦截？→ 查幂等表 + 对比订单表
 
 ### 4.1 为什么需要版本管理
 
-```yaml
+```text
 v1: GET /orders
 v2: GET /orders（参数变化）
 v3: GET /orders（结构变化）
@@ -338,7 +338,7 @@ v3: GET /orders（结构变化）
 
 ### 4.4 弃用流程
 
-```yaml
+```text
 ## API 弃用时间表
 - 2026-01: 标记 v1 为 deprecated（在响应 Header 中提示）
 - 2026-03: 在文档中明确标注，给出迁移指南
