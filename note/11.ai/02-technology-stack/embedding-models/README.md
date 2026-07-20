@@ -30,7 +30,7 @@ module:
 
 ## 🆚 选型决策
 
-```
+```text
 Q1: 预算？
 ├── 紧 → BGE-M3（开源免费）/ M3E
 └── 充足 → OpenAI / Qwen3-8B

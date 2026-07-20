@@ -28,7 +28,7 @@ module:
 
 ## 🏆 选型决策树
 
-```
+```text
 Q1: 硬件？
 ├── NVIDIA A100/H100 → 全部可用
 ├── AMD MI300 → vLLM / SGLang

@@ -46,7 +46,7 @@ module:
 
 ## 🎯 选型速查
 
-```
+```text
 生产 LLM 服务 = vLLM + Continuous Batching + PagedAttention + INT4 量化
 长上下文 = + Flash Attention + GQA
 Agent / 复杂 prompt = + SGLang RadixAttention

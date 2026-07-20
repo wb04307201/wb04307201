@@ -35,7 +35,7 @@ module:
 
 Context ≠ Prompt。Prompt 是用户输入的一句话，Context 是 LLM 看到的**所有信息**：
 
-```
+```text
 Context = 
   + 系统提示（System Prompt）
   + 用户消息历史（Conversation History）
@@ -94,7 +94,7 @@ Context =
 
 LLM 对 Context **开头和结尾的信息记忆最准确**，**中间的信息容易被忽略**：
 
-```
+```text
 [最准确] 系统提示 → 历史最早 → ... → 历史最近 → 当前问题 [最准确]
               ← 容易被忽略 →
 ```

@@ -27,7 +27,7 @@ module:
 
 ## 🧮 关系公式
 
-```
+```text
 总延迟 = TTFT + (output_tokens - 1) × TPOT
 例：100 token 输出，TTFT 200ms + TPOT 50ms
    = 200 + 99 × 50 = 5150 ms ≈ 5 秒

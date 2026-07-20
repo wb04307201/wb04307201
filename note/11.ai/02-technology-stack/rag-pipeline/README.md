@@ -17,7 +17,7 @@ module:
 
 ## 📐 5 阶段 SOTA 架构
 
-```
+```text
 User Query
    ↓
 [Stage 1] Query Rewrite       ← 多轮融合 / HyDE / Multi-Query

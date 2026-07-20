@@ -25,14 +25,14 @@ module:
 
 每生成 1 个 token，需要在显存缓存：
 
-```
+```text
 K 缓存: [num_layers, num_heads, seq_len, head_dim]
 V 缓存: [num_layers, num_heads, seq_len, head_dim]
 ```
 
 **单 token 占用**：
 
-```
+```text
 2 × num_layers × num_heads × head_dim × dtype_size
 = 2 × 32 × 32 × 128 × 2 bytes (FP16)
 = 0.5 MB / token

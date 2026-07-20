@@ -35,7 +35,7 @@ module:
 - **代表模型**：CLIP（Contrastive Language-Image Pre-training）
 - **原理**：通过对比损失函数，拉近正样本对（匹配的图文对）的距离，推远负样本对的距离
 - **损失函数**：
-  ```
+  ```text
   L_contrast = -1/(2N) Σ[log(e^⟨v_i,t_i⟩/τ / Σ_j e^⟨v_i,t_j⟩/τ) + ...]
   ```
   其中τ为温度系数，v_i和t_i分别为图像和文本特征

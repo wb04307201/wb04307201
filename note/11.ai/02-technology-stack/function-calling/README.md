@@ -20,7 +20,7 @@ module:
 
 Function Calling 的本质不是让 LLM 直接执行代码，而是让模型**输出结构化的工具调用请求**。流程分为四个阶段：
 
-```
+```text
 用户请求 → LLM 分析意图 → 输出 tool_calls(JSON) → 外部执行器解析并执行 → 结果回传 LLM → LLM 生成最终回答
 ```
 
@@ -360,7 +360,7 @@ def execute_python(code: str) -> str:
 
 用户提问："帮我分析一下上个月销售额最高的产品，并查一下它的库存情况"
 
-```
+```text
 第 1 轮：query_sales_ranking(period="last_month", top_n=1) → {"product_id": "P12345", "revenue": 128000}
 第 2 轮：get_inventory(product_id="P12345") → {"stock": 450, "warehouse": "WH-Shanghai"}
 第 3 轮：模型综合生成回答

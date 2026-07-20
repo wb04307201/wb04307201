@@ -19,7 +19,7 @@ module:
 
 不同请求的 sequence 长度差异巨大（100 token vs 8000 token）：
 
-```
+```text
 传统连续分配：
   Request A: 100 token → 申请 100 位置
   Request B: 8000 token → 申请 8000 位置
@@ -31,7 +31,7 @@ module:
 
 ## 💡 方案：虚拟分页
 
-```
+```text
 1. 把 KV Cache 切成固定大小 block（默认 16 token / block）
 2. 每个 block 物理上不连续，但通过 block_table 映射
 3. 类似 OS 虚拟内存的页表机制

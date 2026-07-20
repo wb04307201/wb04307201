@@ -19,7 +19,7 @@ module:
 
 传统 Static Batching：
 
-```
+```text
 Batch = [Req A (100 token), Req B (1000 token), Req C (50 token)]
 必须等 B 全部完成才能返回
 GPU 在 B 长尾生成时空转（A 和 C 已完成）
@@ -31,7 +31,7 @@ GPU 在 B 长尾生成时空转（A 和 C 已完成）
 
 ## 💡 方案：Continuous Batching
 
-```
+```text
 Time T+0:  Batch = [A(50), B(800), C(20)]
 Time T+1:  A 完成 → 插入 Req D
            Batch = [B(799), C(19), D(0)]
