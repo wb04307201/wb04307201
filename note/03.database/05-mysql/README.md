@@ -50,7 +50,7 @@ MySQL 采用**两层架构**，Server 层与存储引擎层分离。
 
 负责数据的存储和提取，支持插件式切换。
 
-```
+```text
 客户端 → 连接器 → 分析器 → 优化器 → 执行器 → 存储引擎 → 磁盘
                               ↓
                          查询缓存（8.0 前）
@@ -88,7 +88,7 @@ ALTER TABLE users ENGINE = InnoDB;
 
 Buffer Pool 是 InnoDB 的核心组件，位于内存中，缓存磁盘数据页。
 
-```
+```text
 读操作：磁盘 → 加载到 Buffer Pool → 返回数据（后续读直接命中内存）
 写操作：修改 Buffer Pool 中的页 → 刷盘（异步）
 ```
@@ -118,7 +118,7 @@ InnoDB 使用多种日志协同工作：
 
 #### Redo Log 写入流程（WAL）
 
-```
+```text
 事务执行 → 修改 Buffer Pool → 写 Redo Log（prepare 状态）→ binlog 写入 → Redo Log 改为 commit 状态
 ```
 
@@ -128,7 +128,7 @@ InnoDB 使用多种日志协同工作：
 
 Redo Log 是**固定大小的环形文件**（如 2 个文件，各 1GB），循环写入。
 
-```
+```text
 [文件1] [文件2]
   ↓write_pos        ↓checkpoint
   |---已写---|---可写---|
@@ -156,7 +156,7 @@ Redo Log 是**固定大小的环形文件**（如 2 个文件，各 1GB），循
 
 ### 1. 复制原理
 
-```
+```text
 Master                          Slave
 ┌─────────┐                    ┌─────────┐
 │ 写操作   │                    │ IO 线程  │ ← 拉取 binlog
@@ -194,7 +194,7 @@ Master                          Slave
 
 ### 4. 读写分离
 
-```
+```text
 应用层 → 读写分离中间件（如 ShardingSphere、ProxySQL）
            ├── 写请求 → Master
            └── 读请求 → Slave1 / Slave2（负载均衡）
