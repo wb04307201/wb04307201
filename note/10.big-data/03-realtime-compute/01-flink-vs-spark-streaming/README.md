@@ -31,7 +31,7 @@ module:
 
 ## 2. 知识脉络
 
-```
+```text
 ┌──────────────────────────────────────┐
 │  Flink Cluster                        │
 │  ┌────────────┐  ┌────────────┐     │
@@ -82,7 +82,7 @@ module:
 
 ## 5. 生产选型决策
 
-```
+```text
 Q1: 延迟要求？
 ├── < 100ms → Flink
 └── 1-10s → Spark Streaming 也可
@@ -157,7 +157,7 @@ result_df.writeStream \
 
 **Flink 实时风控**：
 
-```
+```text
 订单 → Kafka → Flink（CEP 引擎检测异常模式）→ 实时拦截
         ↓
    1. 检测 5 分钟内 5 笔订单 = 异常
@@ -167,7 +167,7 @@ result_df.writeStream \
 
 **Spark Streaming 实时数仓**：
 
-```
+```text
 Kafka → Spark Structured Streaming → Delta Lake → BI
    延迟：30 秒（分钟级报表）
    吞吐：百万级/秒
