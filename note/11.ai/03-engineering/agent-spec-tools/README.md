@@ -120,4 +120,4 @@ module:
 - 实战：[生产级 Agent](../production-agent/README.md) — 生产环境的 Agent 工程实践
 - 循环：[Loop Engineering](../loop-engineering/README.md) — Agent 循环调用 + [Ralph Wiggum Loop](../loop-engineering/ralph-wiggum-loop.md)
 
-← [返回: AI 知识体系 · agent-spec-tools](README.md)
+← [返回: L3 工程实践](../README.md)

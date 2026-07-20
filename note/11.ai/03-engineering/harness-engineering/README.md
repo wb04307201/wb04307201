@@ -188,4 +188,4 @@ AI Agent 入职流程：
 - 关联：[Agent 架构](../../04-architecture/agent-architecture/README.md) — Harness 是 Agent 架构的关键约束层
 - 实战：[Claude Code 实践](../claude-code-practices/README.md) — OpenSpec + Claude Code 的典型 Harness 实现
 
-← [返回: AI 知识体系 · harness-engineering](README.md)
+← [返回: L3 工程实践](../README.md)

@@ -105,6 +105,8 @@ curl http://localhost:8000/v1/chat/completions \
 |------|---------|---------|
 | [Ollama 实战](ollama/README.md) | 安装 / 模型管理 / API 集成 / 性能调优 | 20 min |
 | [Open WebUI 可视化](open-webui/README.md) | Ollama 配套 Web UI / 多用户 / RAG | 15 min |
+| [iFlow CLI](iflow-cli/README.md) | 终端智能体安装、模型接入与自动化工作流 | 15 min |
+| [Qwen3 + Ollama Linux 部署](linux-deploy/README.md) | Linux GPU 环境、模型选型与 API 服务化 | 20 min |
 | vLLM 部署 | 企业级 GPU 推理 + 性能基准 | 30 min |
 | 国产模型对比 | Qwen / DeepSeek / GLM / Yi 横向评测 | 25 min |
 

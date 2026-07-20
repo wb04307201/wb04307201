@@ -84,6 +84,16 @@ Q3: 部署形态？
 
 ---
 
+## 📚 子专题导航
+
+| 专题 | 核心内容 |
+|------|---------|
+| [深度学习框架](deep-learning/README.md) | PyTorch / TensorFlow / MindSpore / PaddlePaddle 对比与选型 |
+| [大模型应用开发框架](llm-app/README.md) | LangChain / LangChain4j / Spring AI / LlamaIndex 选型 |
+| [LangGraph 迁移](langgraph-migration/README.md) | 从 LangChain 线性 Chain 迁移到显式状态图编排 |
+
+---
+
 ## 🔗 兄弟章节
 
 - **L2 栈**：[LLM 驾驭演进史](../../04-architecture/llm-control-evolution/README.md)
