@@ -30,7 +30,7 @@ module:
 
 ### 2.1 切分方式
 
-```
+```text
 原始 FFN：y = x @ W1 → GeLU → @ W2（单卡）
 
 TP=2 后：
@@ -64,7 +64,7 @@ python -m vllm.entrypoints.openai.api_server \
 
 ### 3.1 切分方式
 
-```
+```text
 Layer 0-21 → 节点 A（4 张 H100）
 Layer 22-43 → 节点 B（4 张 H100）
 Layer 44-79 → 节点 C（4 张 H100）
@@ -161,7 +161,7 @@ python -m vllm.entrypoints.openai.api_server \
 ## 8. 速查 · 多卡切分公式
 
 **TP 大小估算**：
-```
+```text
 min_TP = ceil(模型权重显存 / 单卡可用显存)
 ```
 例如：72B BF16 = 144 GB，A100 80GB → min_TP = 2，常配 TP=4 给 KV 留余地。

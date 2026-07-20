@@ -17,7 +17,7 @@ module:
 
 ## 1. KV cache 显存占用公式
 
-```
+```text
 KV cache 大小 ≈ 2 × num_layers × num_heads × head_dim × seq_len × batch_size × dtype_bytes
 ```
 
@@ -65,7 +65,7 @@ vLLM 默认 LRU；自研引擎可定制。
 
 Beam search 在每个 step 保留 top-k 候选，所有候选都要 KV cache：
 
-```
+```text
 beam_size=4, seq_len=2048, LLaMA-7B:
 单 beam KV cache = 1.6 GB
 4 个 beam = 6.4 GB（不考虑共享）

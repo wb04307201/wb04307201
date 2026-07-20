@@ -109,7 +109,7 @@ graph TB
 
 ## 📋 决策树
 
-```
+```text
 Q1: 项目首要目标？
 ├── 快速上线 MVP + 国内 C 端 + 字节生态 → Coze
 ├── 标准化 RAG/Chatbot + 私有化 + DSL 入 Git → Dify

@@ -53,7 +53,7 @@ openspec init
 
 ### 2.3 目录结构
 
-```
+```text
 openspec/
 ├── project/
 │   └── project.md       # 项目全局上下文（架构 / 技术栈 / 约定）
@@ -108,7 +108,7 @@ OpenSpec 的关键配置文件 —— 定义 Agent 必须遵守的约定：
 
 ### 核心工作流：4 步循环
 
-```
+```text
 1. /opsx:propose ──── 写变更提案（问题 + 方案 + 影响）
        ↓  人 review + 修改
 2. /opsx:apply ────── Agent 按 spec 实现代码

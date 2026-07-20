@@ -33,7 +33,7 @@ module:
 
 ## 2. 5 层路由降级策略
 
-```
+```text
 请求进来 ↓
    ↓
 [Layer 1] 规则+缓存（5ms）—— 命中走 cached_answer

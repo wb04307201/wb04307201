@@ -56,7 +56,7 @@ module:
 
 所有对齐方法本质是 **学习一个 reward 函数**：
 
-```
+```text
 SFT:     L = -log π(y|x)            # 最大似然
 RLHF:    L = -E[log π(y|x)] + β·KL  # 期望奖励 + KL 约束
 DPO:     L = -log σ(β·log(π_ref/π)·(y_w - y_l))  # 偏好对

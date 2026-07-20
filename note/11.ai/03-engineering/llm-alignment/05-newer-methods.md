@@ -120,7 +120,7 @@ L_OR = -log σ(log_odds_chosen - log_odds_rejected)
 
 **流程**：
 
-```
+```text
 Step 1: SFT 模型生成 K 个候选回答
 Step 2: Reward Model 打分排序
 Step 3: 选 Top-1（好）和 Bottom-1（差）作为偏好对
@@ -139,7 +139,7 @@ Step 4: 用 DPO 训练
 
 ## 🎯 选型决策树
 
-```
+```text
 Q1: 有偏好对（chosen + rejected）？
 ├── 是 → DPO（标准）/ IPO（防过拟合）/ SimPO（省显存）
 └── 否（只有好/坏标注）→ KTO

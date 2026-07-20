@@ -19,7 +19,7 @@ module:
 
 ### 1.1 Skill 的"自然增长曲线"
 
-```
+```text
 项目初期：    3-5 个 Skill （足够覆盖 80% 任务）
 ├─ git-commit / lint-fix / pr-review / test-gen / doc-update
 成长期：      10-20 个 Skill （按业务线 / 技术栈扩）
@@ -32,7 +32,7 @@ module:
 
 ### 1.2 命中率（Hit Rate）的定义
 
-```
+```text
 命中率 = Agent 在正确 Skill 上调用的次数 / Agent 总任务次数
 ```
 
@@ -98,7 +98,7 @@ Skill 命中后，**怎么把 Skill 上下文喂给 Agent**：
 | **分层加载**（描述 → 摘要 → 全量，三级渐进）| 中 | **推荐** |
 
 **分层加载示意**：
-```
+```text
 Prompt 启动：注入所有 Skill 的「描述」（< 100 tokens / Skill）
 Agent 判断命中 → 调用 load_skill_summary(name) → 注入摘要
 Agent 需要细节 → 调用 load_skill_full(name) → 全量加载
@@ -108,7 +108,7 @@ Agent 需要细节 → 调用 load_skill_full(name) → 全量加载
 
 **没有评估 = 盲飞**。必须建评测集：
 
-```
+```text
 eval_set/
 ├── scenarios.jsonl     # 100+ 用户 query + 期望 Skill
 ├── judge_prompt.md     # 让另一个 LLM 判断：Agent 选对没
@@ -206,7 +206,7 @@ description: 调用第三方 API 获取数据
 
 ### 最终结构
 
-```
+```text
 skills/
 ├── core/         (10 个，描述常驻)
 ├── extended/     (40 个，描述按需)

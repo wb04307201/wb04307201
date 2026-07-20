@@ -64,7 +64,7 @@ module:
 
 ## 🌟 选型决策树
 
-```
+```text
 Q1: 团队主语言？
 ├── Java     → Spring AI
 ├── Python   → Q2
