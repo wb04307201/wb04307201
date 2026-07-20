@@ -151,7 +151,7 @@ timeline
 
 ## 四、选型决策树
 
-```
+```text
 Q1: 业务规则是否需要强治理/SOX/HIPAA 合规？
 ├── 是 → Camunda 7/8 或 Flowable（流程实例可审计）
 └── 否 → 继续
