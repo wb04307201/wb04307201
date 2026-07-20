@@ -312,7 +312,7 @@ flowchart LR
 
 - 返回 [03 供应链](../README.md) 章节
 
-← [返回业务系统总览](../../README.md)
+← [返回业务系统总览](../README.md)
 
 ## 📊 本节统计
 
