@@ -222,7 +222,7 @@ states:
 ## 5. EventMesh Runtime 启动与部署
 
 ```bash
-# 1. 下载发行版（替换为当前最新版本）
+# 1. 下载发行版（本文验证版本：1.10.0；请按需替换为当前最新版本并核对官方发布说明）
 wget https://archive.apache.org/dist/eventmesh/1.10.0/apache-eventmesh-1.10.0-bin.tar.gz
 tar -xzf apache-eventmesh-1.10.0-bin.tar.gz && cd apache-eventmesh-1.10.0
 
