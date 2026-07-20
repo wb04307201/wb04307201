@@ -101,6 +101,7 @@ module:
 | 十二·a | Token 经济学结构 | [36a Token 成本结构](./34a-ai-token-cost-structure.md) |
 | 十二·b | Token 成本优化 | [36b Token 成本优化](./34b-ai-token-cost-optimization.md) |
 | 十三 | 3+4=7 支柱 | [37 AI 可观测性](./35-ai-observability.md) |
+| 十四 | 幻觉率 29% → 3% | [38 RAG 检索增强生成](./36-rag-retrieval-augmented-generation.md) |
 
 ---
 
