@@ -230,4 +230,4 @@ for (let i = 0; i < 100; i++) {
 
 > 📅 2026-06-28 · 咬文嚼字 · 浏览器机制 · ⭐⭐⭐⭐（高频面试 + 实战必会）
 
-← [返回: 咬文嚼字 · reflow-repaint](README.md)
+← [返回: 咬文嚼字 · reflow-repaint](../README.md)

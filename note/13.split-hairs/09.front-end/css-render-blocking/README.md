@@ -199,4 +199,4 @@ CSS 字节流 → CSSOM Tree ─────────────────
 
 > 📅 2026-06-28 · 咬文嚼字 · 浏览器机制 · ⭐⭐⭐⭐（高频面试 + 实战必会）
 
-← [返回: 咬文嚼字 · css-render-blocking](README.md)
+← [返回: 咬文嚼字 · css-render-blocking](../README.md)

@@ -334,4 +334,4 @@ with sync_playwright() as p:
 
 > 📅 2026-06-28 · 咬文嚼字 · 前端工具 · ⭐⭐⭐（工程必知 + 选型决策）
 
-← [返回: 咬文嚼字 · playwright-vs-selenium](README.md)
+← [返回: 咬文嚼字 · playwright-vs-selenium](../README.md)
