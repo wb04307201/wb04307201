@@ -16,7 +16,7 @@ question:
 
 # 安全咬文嚼字
 
-> 安全设计高频面试题与难点深挖（**认证 / 加密 / Web 安全 / 限流 / OWASP**），对齐主模块 [`04.system-design/05-security`](../../04.system-design/05-security/)。**10** 篇真题覆盖**权限系统设计** + **单点登录 6 方案** + **JWT vs Session** + **OAuth2 四种模式** + **XSS/CSRF/CSP** + **HTTPS 握手优化** + **传输 vs 存储加密** + **CORS 预检优化** + **限流算法选型** + **OWASP Top 10** 10 大方向。
+> 安全设计高频面试题与难点深挖（**认证 / 加密 / Web 安全 / 限流 / OWASP**），对齐主模块 [`04.system-design/05-security`](../../04.system-design/05-security/)。**10** 篇真题（find 校对 2026-07-19）覆盖**权限系统设计** + **单点登录 6 方案** + **JWT vs Session** + **OAuth2 四种模式** + **XSS/CSRF/CSP** + **HTTPS 握手优化** + **传输 vs 存储加密** + **CORS 预检优化** + **限流算法选型** + **OWASP Top 10** 10 大方向。
 
 ---
 
