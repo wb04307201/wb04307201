@@ -29,7 +29,7 @@ K8s 原生支持 Deployment / StatefulSet 等通用工作负载，但**有状态
 
 ### 1.2 Operator 架构
 
-```
+```text
 ┌────────────────────────────────────────────────┐
 │  用户：kubectl apply -f my-db.yaml               │
 └────────────────────────────────────────────────┘
@@ -120,7 +120,7 @@ kubectl get mydatabases
 
 ### 3.1 Operator SDK 框架
 
-```
+```text
 my-operator/
 ├── api/
 │   └── v1/

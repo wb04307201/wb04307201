@@ -18,7 +18,7 @@ module:
 
 Helm 是 K8s 的"应用包管理器"，相当于 Linux 的 `apt` / `yum` / K8s 的"应用商店"。
 
-```
+```text
 传统部署：写一堆 YAML 文件（Deployment + Service + ConfigMap + ...）
        ↓
 Helm 部署：一个 Chart 包（含模板 + 默认值），一行命令安装
@@ -38,7 +38,7 @@ Helm 部署：一个 Chart 包（含模板 + 默认值），一行命令安装
 
 ## 三、Chart 结构
 
-```
+```text
 mychart/
 ├── Chart.yaml              # Chart 元数据（名称/版本）
 ├── values.yaml             # 默认配置（可被覆盖）
@@ -170,7 +170,7 @@ helm install my-release mychart \
 
 ### 5.3 多环境架构
 
-```
+```text
 charts/
 ├── values-dev.yaml        # 开发环境
 ├── values-staging.yaml    # 测试环境

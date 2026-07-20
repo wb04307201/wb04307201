@@ -28,7 +28,7 @@ CNI 是 K8s 与网络插件之间的标准接口，负责 Pod 网络配置。
 
 ### 2.1 CNI 工作流程
 
-```
+```text
 Pod 启动 → kubelet → CRI 创建容器 → CNI 插件配置网络
                               ↓
                     Pod 获得 IP（加入 Pod 网络）
@@ -122,7 +122,7 @@ K8s 默认 DNS 插件，为 Service 提供 DNS 解析。
 
 **DNS 命名规则**：
 
-```
+```text
 <svc-name>.<namespace>.svc.cluster.local
 
 示例：
@@ -168,7 +168,7 @@ curl mysql-0.mysql-headless.default.svc.cluster.local
 
 ### 7.2 Istio 架构
 
-```
+```text
 ┌────────────────────────────────────────────────────────┐
 │  Istio 控制平面（Control Plane）                          │
 │  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐    │

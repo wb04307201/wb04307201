@@ -18,7 +18,7 @@ module:
 
 容器化部署的核心原则：**配置与镜像分离**。
 
-```
+```text
 ❌ 错误做法：把配置硬编码到镜像里
    FROM myapp:1.0
    COPY config.yml /app/config.yml   # 每次改配置都要重新构建镜像
