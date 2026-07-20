@@ -26,7 +26,7 @@ module:
 
 ## 原理
 
-```
+```text
 时间线：
                                          
 T1          T2          DB(inventory)
@@ -213,7 +213,7 @@ WHERE product_id = 1001
 
 ### 1. ABA 问题
 
-```
+```text
 T1 读 v=5
 T2 修改后 v=6 → T2 又改回 v=5
 T1 仍然能更新成功（v=5 匹配）

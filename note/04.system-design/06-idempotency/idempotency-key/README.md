@@ -28,7 +28,7 @@ module:
 
 ## 原理
 
-```
+```text
 Client                              Server
   │                                    │
   │  POST /payments                    │
@@ -75,7 +75,7 @@ Client                              Server
 
 ### 状态机
 
-```
+```text
                   ┌─────────────┐
                   │   (新 Key)   │
                   └──────┬──────┘
