@@ -12,8 +12,9 @@ module:
 > 一份从入门到实战的 K8s 完整速查手册：从"容器化部署"到"云原生架构"。
 
 ---
-## 引言：架构困境
-Kubernetes 的核心张力不是"要不要用 K8s"——而是**抽象红利、运维复杂度、生态锁定三者的取舍**。K8s 提供跨云一致的调度/自愈/服务发现能力，但 CRD/Operator/Service Mesh/Ingress 的学习曲线陡峭；轻量场景直接用 Docker Compose 反而更经济。本篇围绕"控制平面 vs 工作节点"、"Deployment vs StatefulSet vs DaemonSet"、"自建 vs 托管（EKS/GKE/AKS）"三条主线，把容器编排的 5 大核心 trade-off 讲清楚。
+## 引言：Kubernetes 架构 的关键决策
+
+本篇是「Kubernetes 架构」的核心章节，聚焦该主题在实际落地时**5 个 trade-off 的取舍与决策轴**：抽象红利 vs 运维复杂度、CRD/Operator 自建 vs Service Mesh 托管、控制平面 vs 工作节点、Deployment vs StatefulSet vs DaemonSet、自建 vs 托管（EKS/GKE/AKS）。
 
 ---
 
