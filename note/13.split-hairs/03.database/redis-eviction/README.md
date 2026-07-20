@@ -293,4 +293,4 @@ SET user:1001 "{...}"  # 没有 EX/PX 参数
 
 - 深度阅读：[`03.database`](../../03.database/README.md) — 主模块详细内容
 
-← [返回: 咬文嚼字 · redis-eviction](README.md)
+← [返回: 咬文嚼字 · redis-eviction](../README.md)

@@ -296,4 +296,4 @@ Cluster 中 `MULTI/EXEC` 只能操作**同槽内的 Key**。
 
 - 深度阅读：[`03.database`](../../03.database/README.md) — 主模块详细内容
 
-← [返回: 咬文嚼字 · redis-cluster](README.md)
+← [返回: 咬文嚼字 · redis-cluster](../README.md)

@@ -294,6 +294,6 @@ JOIN performance_schema.threads t ON w.blocking_thread_id = t.thread_id;
 
 ## 相关章节
 
-- 深度阅读：[`03.database`](../../../../../03.database/README.md) — 主模块详细内容
+- 深度阅读：[`03.database`](../../../03.database/README.md) — 主模块详细内容
 
 ← [返回数据库咬文嚼字](../README.md)
