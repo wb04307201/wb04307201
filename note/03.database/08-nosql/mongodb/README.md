@@ -225,3 +225,38 @@ db.users.aggregate([
 ---
 
 ← [返回 NoSQL 数据库](../README.md)
+
+## 副本集架构图（ASCII → Mermaid）
+
+```mermaid
+graph TB
+    App[MongoDB Client] -->|Read/Write Primary| P[Primary<br/>mongod]
+    App -->|Read| S1[Secondary 1]
+    App -->|Read| S2[Secondary 2]
+    P -->|oplog 复制| S1
+    P -->|oplog 复制| S2
+    S1 -.->|可参与选举| P
+    S2 -.->|可参与选举| P
+```
+
+**节点类型**：
+- **Primary**（1 个）：唯一接收写入，定期写 oplog
+- **Secondary**（1+ 个）：异步复制 oplog，提供读扩展
+- **Arbiter**（可选）：轻量投票节点，不存数据
+
+## 分片键选择决策树（新增）
+
+```
+Q1: 数据访问是否以范围查询为主（如时间范围、地理位置）？
+  ├─ 是 → Q2: 范围字段是否单调递增/递减？
+  │        ├─ 是 → 使用范围分片键（如 timestamp、_id）→ 高效范围扫描
+  │        └─ 否 → 复合分片键（范围+哈希前缀）→ 平衡范围和分布
+  └─ 否 → Q3: 写入是否均匀分布？
+           ├─ 是 → 哈希分片键（{field: hashed}）→ 完全分布
+           └─ 否 → 复合分片键（{highCardinality: 1, lowCardinality: hashed}）→ 解决热点
+```
+
+**反模式警告**：
+- ❌ 单调递增字段（如 `_id` 单独哈希）→ 写热点集中在最新 chunk
+- ❌ 低基数字段（如 status 0/1/2）→ 分片不均，部分分片过载
+- ✅ 组合分片键（如 `{userId: hashed, timestamp: 1}`）→ 用户级聚合 + 时间排序
