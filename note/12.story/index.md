@@ -24,6 +24,7 @@ module:
 | 术语速查 | [glossary.md](./glossary.md)（**340+** 术语） |
 | 主题分类 | [下文分类导航](#四分类导航) |
 | 推荐路径 | [下文 4 条主路径 + 13 类角色](#五阅读路径) |
+| 写作规范 | [STORY-FORMAT-SPEC.md](./STORY-FORMAT-SPEC.md)（章节六段强制） |
 
 ---
 
