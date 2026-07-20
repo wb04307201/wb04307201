@@ -41,7 +41,7 @@ IaC（基础设施即代码）是云原生时代的基石实践。2026 年，几
 
 ### 幂等性
 
-```
+```text
 幂等：无论执行多少次，结果都一致
 
 # 幂等 ✅
@@ -58,7 +58,7 @@ aws ec2 run-instances --image-id ami-12345 --instance-type t3.micro
 
 ### 漂移检测
 
-```
+```text
 漂移（Drift）：实际基础设施状态偏离了代码定义的状态
 
 检测方式：
@@ -164,7 +164,7 @@ terraform import aws_instance.web i-0123456789abcdef0
 
 ### 模块化
 
-```
+```text
 terraform/
 ├── modules/
 │   ├── vpc/          # 网络模块
@@ -259,7 +259,7 @@ module "ecs" {
 
 ### Role 结构
 
-```
+```text
 roles/
 └── web-app/
     ├── tasks/
@@ -389,7 +389,7 @@ class MyStack extends TerraformStack {
 
 ### ArgoCD + Terraform
 
-```
+```text
 ┌──────────┐    push     ┌──────────┐    detect    ┌──────────┐
 │ Developer│ ──────────→ │   Git    │ ──────────→  │  ArgoCD  │
 │          │             │  Repo    │              │ (K8s)    │
