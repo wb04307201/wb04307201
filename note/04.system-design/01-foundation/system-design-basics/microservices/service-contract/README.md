@@ -24,7 +24,7 @@ module:
 
 ### 1.1 没有契约的协作
 
-```
+```text
 服务 A：我觉得"用户"应该有 name 和 email
 服务 B：我觉得"用户"应该有 id 和 phone
 
@@ -499,14 +499,14 @@ def test_order_service_honors_contract():
 
 #### 策略 1：版本共存（推荐）
 
-```
+```text
 /v1/orders（保留 12-18 个月）
 /v2/orders（新版本）
 ```
 
 #### 策略 2：渐进式迁移
 
-```
+```text
 1. v2 上线，v1 标 deprecated
 2. 监控 v1 调用量
 3. 推动消费者迁移
@@ -515,7 +515,7 @@ def test_order_service_honors_contract():
 
 #### 策略 3：语义化版本（SemVer）
 
-```
+```text
 v1.0.0 → v1.1.0（兼容新增） → v2.0.0（破坏性）
 ```
 

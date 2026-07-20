@@ -14,14 +14,14 @@
 
 ### 1.1 长期被问错的问题
 
-```
+```text
 ❌ "我应该用 ArchiMate 还是 C4？"
 ❌ "TOGAF 和 DDD 哪个更对？"
 ```
 
 这类问题本质是**用错**了——四者不是**竞争关系**而是**互补关系**。真正的提问方式是：
 
-```
+```text
 ✅ "在这个场景下，ArchiMate 画企业层、C4 画系统层、DDD 建模、TOGAF 跑流程，
     四个工具的边界怎么切、产出物怎么串？"
 ```
@@ -100,7 +100,7 @@ TOGAF 10 ADM 的每个阶段都有对应的 ArchiMate 视点作为**交付物模
 
 对一个中型系统（5-20 个应用、3-5 个团队）做企业架构治理，**最少需要这 7 张图**：
 
-```
+```text
 01_组织协作图.architecture     →  Organization 视点
 02_业务流程协作图.architecture →  Business Process Cooperation 视点
 03_业务能力地图.architecture   →  Capability Map 视点
@@ -212,7 +212,7 @@ graph TB
 
 ### 4.2 接力示例：ArchiMate 找系统 → C4 看系统
 
-```
+```text
 Step 1: ArchiMate 应用协作图 (Application Cooperation 视点)
         ↓ 找到订单服务 是 8 个核心系统之一
 Step 2: ArchiMate 应用结构图 (Application Structure 视点)
@@ -305,7 +305,7 @@ Step 5: 切到 C4 - Level 4 (Code 视图)
 
 如果你想**本季度**就在团队里把 ArchiMate 用起来，按这 3 步走：
 
-```
+```text
 ┌─────────────────────────────────────────────┐
 │  Step 1: 建模型（2 周）                       │
 ├─────────────────────────────────────────────┤

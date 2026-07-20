@@ -48,7 +48,7 @@ Serverless 不是"没有服务器"，而是**"开发者不需要管理服务器"
 
 ### 形态 1：FaaS（Function as a Service）
 
-```
+```text
 事件触发 → 函数执行 → 计费
    ↓
 例：图片上传 → 触发 resize 函数 → 保存缩略图
@@ -64,7 +64,7 @@ Serverless 不是"没有服务器"，而是**"开发者不需要管理服务器"
 
 ### 形态 2：BaaS（Backend as a Service）
 
-```
+```text
 后端服务完全托管：
   - 数据库（DynamoDB / Firebase）
   - 消息队列（SQS / Pub-Sub）
@@ -74,7 +74,7 @@ Serverless 不是"没有服务器"，而是**"开发者不需要管理服务器"
 
 ### 形态 3：Serverless 容器（Knative / KEDA）
 
-```
+```text
 K8s 上的 Serverless：
   - 流量为 0 → Pod 缩容到 0
   - 流量来 → 1 秒内启动 Pod
@@ -136,7 +136,7 @@ def lambda_handler(event, context):
 
 ### 4.1 核心组件
 
-```
+```text
 ┌──────────────────────────────────────┐
 │  Knative Serving                        │
 │  ┌─────────┐  ┌─────────┐             │
@@ -283,7 +283,7 @@ async function handleRequest(request) {
 
 ### 6.4 成本优化
 
-```
+```text
 Serverless 成本陷阱：
   - 调用次数多 → 费用高
   - 长时间运行 → 费用高
@@ -326,31 +326,31 @@ Serverless 成本陷阱：
 
 ### 模式 1：API Backend
 
-```
+```text
 用户 → API Gateway → Lambda → DynamoDB
 ```
 
 ### 模式 2：事件流处理
 
-```
+```text
 S3 上传 → Lambda 触发 → Rekognition（图像识别）→ DynamoDB
 ```
 
 ### 模式 3：定时任务
 
-```
+```text
 EventBridge（cron）→ Lambda → 清理数据
 ```
 
 ### 模式 4：Chatbot
 
-```
+```text
 用户 → API Gateway → Lambda → 调用 LLM API → 返回
 ```
 
 ### 模式 5：WebSocket
 
-```
+```text
 WebSocket 连接 → Lambda（长连接）→ 实时通信
 ```
 
