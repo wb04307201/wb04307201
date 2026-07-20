@@ -99,6 +99,7 @@ module:
 | 十一·a | AI 时代 TCP/IP | [35a MCP 协议](./33a-mcp-protocol.md) |
 | 十一·b | Agent 到 Agent | [35b A2A 协议](./33b-a2a-protocol.md) |
 | 十二·a | Token 经济学结构 | [36a Token 成本结构](./34a-ai-token-cost-structure.md) |
+| 十二·b | Token 成本优化 | [36b Token 成本优化](./34b-ai-token-cost-optimization.md) |
 
 ---
 
