@@ -103,7 +103,7 @@ module:
 
 ## 6. 生产选型决策
 
-```
+```text
 Q1: 主要场景？
 ├── 单表大宽表分析 → ClickHouse（极致性能）
 ├── 多表 JOIN + 高并发 → StarRocks（首选）
@@ -193,14 +193,14 @@ JOIN products p ON o.product_id = p.id;
 
 **MySQL → OLAP**：
 
-```
+```text
 MySQL → DataX / Flink CDC → Kafka → Doris/StarRocks → BI
    异步复制（不影响线上 MySQL）
 ```
 
 **Hive → 实时 OLAP**：
 
-```
+```text
 Hive → Spark → Iceberg → Doris/StarRocks
    或
 Hive → Presto/Trino（过渡）
