@@ -160,6 +160,7 @@ class SOTARAG:
 
 ## 🔗 兄弟章节
 
+- **演进主线**：[RAG 范式演进四阶段](../rag-paradigm-evolution/README.md) — 本 5 阶段 Pipeline 正是 **Advanced RAG** 阶段的工程化落地
 - **本专题**：[Query Rewrite](../query-rewrite/README.md) / [Hybrid Search](../hybrid-search/README.md) / [Reranker](../reranker/README.md) / [Chunking](../chunking-strategies/README.md) / [Embedding](../embedding-models/README.md)
 - **L1**：[Lost in middle](../lost-in-middle/README.md)
 - **咬文嚼字**：[RAG 面试](../../../13.split-hairs/11.ai/rag/README.md)

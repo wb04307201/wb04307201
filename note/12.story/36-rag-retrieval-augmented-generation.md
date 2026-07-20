@@ -747,4 +747,11 @@ GraphRAG：实体关系
 
 > 好的 RAG 不是"加个向量库就完事"，而是"5 大环节 + 7 大高级模式 + 评测 + 生产化"的完整工程。这是 AI 时代**事实性应用**的基石。
 
+---
+
+## 📚 深度阅读
+
+- 范式代际：[RAG 范式演进四阶段](../11.ai/02-technology-stack/rag-paradigm-evolution/README.md) — Naive→Advanced→Modular→Agentic，本文的 5 环节 + 7 模式即 Advanced/Modular 阶段的落地
+- 面试深挖：[RAG 咬文嚼字](../13.split-hairs/11.ai/rag/README.md)
+
 ← [返回系列导读](./index.md)
