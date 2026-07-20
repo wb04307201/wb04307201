@@ -114,3 +114,42 @@ module:
 - **典型行业**：5 类（美妆服饰 / 母婴教育 / 餐饮零售 / B2B / 医美健康）
 - **厂商分类**：5 类（综合型 / 垂直型 / 微信生态原生 / SaaS 新势力 / 国际型）
 - **所属价值链**：04 销售服务
+## 数字定语修正
+
+| 行 | 原表述 | 修正后 |
+|----|--------|--------|
+| L39 | "转化率 3-10x" | "转化率提升（具体数字因行业/客单价/触达频率而异，无统一公开基准）" |
+| L41 | "私域复购率 30%" | "高复购行业案例显示私域复购率显著高于公域（具体数字依赖品牌私域运营成熟度）" |
+
+**关键事实**（无倍数表达）：
+- 私域运营与公域投放是不同触达模型
+- 私域 ROI 受品牌力、用户画像精准度、内容质量三大因素影响
+- 复购率与产品类目强相关（高频消费品高，低频耐用品低）
+
+## Headless CMS 最小实战
+
+```yaml
+# content-model.yaml
+apiVersion: headless-cms/v1
+kind: ContentModel
+metadata:
+  name: product
+spec:
+  fields:
+    - name: title
+      type: string
+      required: true
+    - name: slug
+      type: string
+      pattern: "^[a-z0-9-]+$"
+    - name: price
+      type: decimal
+      min: 0
+    - name: publishedAt
+      type: datetime
+      validation: not_future
+```
+
+**反例 vs 正例**：
+- ❌ 反例：未验证字段直接发布 → 线上出现未来日期
+- ✅ 正例：CMS 在保存前触发 schema validation，slug 重复拒绝，price 负数拒绝

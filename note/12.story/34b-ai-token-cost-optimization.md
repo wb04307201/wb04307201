@@ -728,3 +728,12 @@ graph TB
 > 好的成本优化，不是"一刀切换便宜模型"，而是"**该省省、该花花——用缓存减少重复消费，用小模型处理简单任务，用架构思维降低总成本**"。
 
 ← [返回系列导读](./index.md) | [上篇：34a 成本结构 →](./34a-ai-token-cost-structure.md)
+## 系列内前序回链（与 ai-learning-paradox 相同方法论）
+
+补充前序文章回链（series 5/6/9）：
+
+- [§ 5 性能优化](../16-performance-optimization.md) — 性能与成本权衡
+- [§ 6 异步事件驱动](../19-realtime-eventdriven.md) — 异步任务与按需付费
+- [§ 9 分布式难题](../17-distributed-puzzles.md) — 跨节点成本调度
+
+**回链合理性**：本篇"Token 成本优化"与上述性能/事件/分布式专题在生产环境是组合使用（性能优化往往降低 token 成本）。

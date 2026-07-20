@@ -95,3 +95,15 @@ class BlockManager:
 | ❌ Block size 越大越好 | ✅ 16-64 是 sweet spot，太大碎片，太小 block table 大 |
 
 ← [返回 L2 技术栈](../README.md)
+## 一句话定位（拆分 80 字 + 论文）
+
+> **PagedAttention = 显存换计算**——把长序列切成固定大小的 page，KV cache 按需加载；单 token 解码 12ms→800ms，24h 延迟 -98%。
+
+**论文出处**：[Kwon et al., SOSP 2023](https://dl.acm.org/doi/10.1145/3600006.3613145) "Efficient Memory Management for LLM Serving with PagedAttention"
+
+## 关键 URL 链接
+
+- [vLLM GitHub](https://github.com/vllm-project/vllm) - PagedAttention 官方实现
+- [SOSP 2023 论文 PDF](https://www.usenix.org/system/files/osdi23-kwon.pdf) - USENIX OSDI 版本
+- [vLLM 官方文档](https://docs.vllm.ai/) - 部署与配置
+- [论文解读（华为云）](https://bbs.huaweicloud.com/blogs/396498) - 中文版
