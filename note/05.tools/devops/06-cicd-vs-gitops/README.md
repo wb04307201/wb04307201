@@ -36,7 +36,7 @@ module:
 
 ### 2.1 典型流程
 
-```
+```text
 代码 push → CI 触发 → 构建 → 测试 → 部署（CI 推送到 K8s）
 ```
 
@@ -59,7 +59,7 @@ module:
 
 ### 3.1 典型流程
 
-```
+```text
 Git 变更 → GitOps Operator 检测 → 同步到 K8s（pull 模式）
                 ↓
          自动检测 + 修复漂移
@@ -91,7 +91,7 @@ Git 变更 → GitOps Operator 检测 → 同步到 K8s（pull 模式）
 
 ### 4.1 工作流对比
 
-```
+```text
 CI/CD 工作流：
 开发者 → Git push → CI 构建 → 部署脚本 → K8s
 
@@ -114,7 +114,7 @@ GitOps 工作流：
 
 实际生产中，**CI/CD + GitOps 协同使用**：
 
-```
+```text
 ┌──────────────┐                              ┌──────────────┐
 │   CI/CD       │   构建镜像 + 更新 YAML        │   GitOps      │
 │  (Jenkins/    │ ────────────────────────→  │  (ArgoCD/     │
@@ -170,7 +170,7 @@ update-gitops:
 
 **ArgoCD**（自动检测 Git 变更 → 部署）
 
-```
+```text
 Application: my-app
 Source: gitops-repo / my-app.yaml
 Sync Policy: Automated + Prune + SelfHeal
@@ -182,7 +182,7 @@ Sync Policy: Automated + Prune + SelfHeal
 
 ### 6.1 中小团队
 
-```
+```text
 GitHub Actions + ArgoCD
 - GitHub Actions: 构建镜像 + 更新 manifest
 - ArgoCD: 自动部署 + 漂移修复
@@ -190,7 +190,7 @@ GitHub Actions + ArgoCD
 
 ### 6.2 大型企业
 
-```
+```text
 Jenkins + GitLab + ArgoCD
 - Jenkins: 构建镜像（重型构建）
 - GitLab: 镜像仓库 + 制品管理
@@ -199,7 +199,7 @@ Jenkins + GitLab + ArgoCD
 
 ### 6.3 云原生标准
 
-```
+```text
 GitHub Actions + Flux
 - GitHub Actions: 构建 + 镜像推送
 - Flux: GitOps 工具集（CNCF 毕业）
@@ -224,7 +224,7 @@ GitHub Actions + Flux
 
 ### 阶段 1：双轨运行（1-3 个月）
 
-```
+```text
 - 保留 CI/CD 部署流程
 - 新增 GitOps 部署（小流量）
 - 两者并存，逐步迁移
@@ -232,14 +232,14 @@ GitHub Actions + Flux
 
 ### 阶段 2：GitOps 主导（3-6 个月）
 
-```
+```text
 - 新服务统一用 GitOps
 - 旧服务保留 CI/CD（直到迁移完）
 ```
 
 ### 阶段 3：全面 GitOps（6+ 个月）
 
-```
+```text
 - 所有服务用 GitOps
 - CI 只负责构建 + 更新 Git
 - 紧急修复走 GitOps PR（5 分钟）

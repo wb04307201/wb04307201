@@ -16,7 +16,7 @@ module:
 
 ## 一、CI/CD 是什么？
 
-```
+```text
 CI（Continuous Integration，持续集成）
   └─ 开发者频繁合并代码 → 自动化构建 + 测试
 
@@ -30,7 +30,7 @@ CD（Continuous Delivery / Deployment，持续交付/部署）
 
 ## 二、CI/CD 工具全景图
 
-```
+```text
 代码托管 → 触发构建 → 编译/测试 → 打包镜像 → 部署 → 监控
    │         │            │           │         │        │
  GitHub     Jenkins     Maven/      Docker   K8s/    Prometheus
@@ -167,7 +167,7 @@ jobs:
 
 ## 六、CI/CD 流水线典型阶段
 
-```
+```text
 ① 代码扫描（SAST）
    └─ SonarQube / Snyk / GitHub Code Scanning
 ② 依赖检查

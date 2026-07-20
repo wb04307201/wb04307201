@@ -53,7 +53,7 @@ GitHub Actions 是 GitHub 内置的 CI/CD 工具，与 GitHub 代码托管无缝
 
 ### 3.1 文件位置
 
-```
+```text
 .github/workflows/ci.yml
 ```
 
@@ -241,7 +241,7 @@ test:
 
 ### 7.1 Secrets（密钥）
 
-```
+```text
 Settings → Secrets and variables → Actions → New repository secret
 - DOCKER_PASSWORD
 - KUBE_CONFIG_PROD
@@ -255,7 +255,7 @@ steps:
 
 ### 7.2 Environment（环境）
 
-```
+```text
 Settings → Environments → New environment
 - staging: 需要 reviewer（可选）
 - production: 需要 2 个 reviewer
