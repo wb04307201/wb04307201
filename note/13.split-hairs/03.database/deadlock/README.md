@@ -25,7 +25,7 @@ question:
 
 凌晨 2 点，告警群炸了：
 
-```
+```text
 ERROR 1213 (40001): Deadlock found when trying to get lock; try restarting transaction
 ```
 
@@ -50,7 +50,7 @@ ERROR 1213 (40001): Deadlock found when trying to get lock; try restarting trans
 
 **InnoDB 的死锁检测**：维护一张**等待图**（wait-for graph），每个事务是一个节点，"事务 X 等待事务 Y 持有的锁"是一条边。当图中出现**环**时，检测到死锁。
 
-```
+```text
 等待图示例：
   TX-100 ──等待──→ TX-200 ──等待──→ TX-100
                         ↑              │
@@ -157,7 +157,7 @@ KILL <blocking_thread_id>;
 
 **答**：关注 4 个区块——
 
-```
+```text
 LATEST DETECTED DEADLOCK
   *** (1) TRANSACTION:       ← 事务 1 的 SQL + 持有的锁 + 等待的锁
   *** (2) TRANSACTION:       ← 事务 2 的 SQL + 持有的锁 + 等待的锁

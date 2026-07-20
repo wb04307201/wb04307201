@@ -74,7 +74,7 @@ question:
 
 ### RDBMS 核心概念树
 
-```
+```text
 关系型数据库
 ├── 存储引擎
 │   ├── InnoDB     ← MySQL 默认，支持事务、行锁、外键
@@ -116,7 +116,7 @@ question:
 
 ### Redis 核心知识图谱
 
-```
+```text
 Redis
 ├── 数据结构
 │   ├── String  → SDS（Simple Dynamic String）

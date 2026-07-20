@@ -199,7 +199,7 @@ EXPLAIN SELECT * FROM users WHERE name = '张三';
 
 ### 常见 type 优劣
 
-```
+```text
 system > const > eq_ref > ref > range > index > ALL
 （最好）                                    （最差）
 ```

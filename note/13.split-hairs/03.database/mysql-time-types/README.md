@@ -186,7 +186,7 @@ INSERT INTO users (birthday) VALUES ('0000-00-00');  -- Error
 
 **1. 选型决策树**
 
-```
+```text
 需要存储时间吗？
 ├── 仅需日期 → DATE（生日、节假日）
 ├── 仅需时间 → TIME（营业时间、课程表）

@@ -12,7 +12,7 @@ question:
 
 ## 引子：Redis 重启后，数据去哪了？
 
-```
+```text
 Redis 是内存数据库。
 如果服务器宕机、Redis 进程被 kill——
 内存里的数据就全没了？
@@ -45,7 +45,7 @@ Redis 提供两种持久化方式：
 
 ### 2.1 bgsave 流程（fork + COW）
 
-```
+```text
 1. 主进程 fork() 创建子进程（阻塞，采用 COW 机制）
 2. 子进程遍历数据库，序列化 key-value 写入临时 RDB 文件
 3. 完成后原子替换旧 RDB 文件
@@ -82,7 +82,7 @@ save 60 10000  # 60秒内至少10000个key被修改
 
 ### 2.4 RDB 文件格式
 
-```
+```text
 +------------------+
 |  REDIS           |  ← Magic String (5字节)
 +------------------+
@@ -117,7 +117,7 @@ save 60 10000  # 60秒内至少10000个key被修改
 
 ### 3.1 工作机制与配置
 
-```
+```text
 客户端写命令 → 主进程执行 → 追加到 aof_buf → 根据 appendfsync 刷盘
 ```
 
@@ -145,7 +145,7 @@ aof-use-rdb-preamble yes
 **触发**：手动 `BGREWRITEAOF` 或自动（超过阈值且 > 64MB）。
 
 **流程**：
-```
+```text
 1. 主进程 fork() 创建子进程
 2. 子进程遍历内存，为每个 key 生成 SET/HSET 等写入临时文件
 3. 主进程继续接收写命令，追加到原 AOF 和 aof_rewrite_buf
@@ -183,7 +183,7 @@ redis-check-aof --fix appendonly.aof # 修复（截断损坏部分）
 aof-use-rdb-preamble yes  # Redis 4.0+ 默认开启
 ```
 
-```
+```text
 +---------------------------+
 |   RDB preamble（基线）     |  ← RDB 快照
 +---------------------------+
@@ -195,7 +195,7 @@ aof-use-rdb-preamble yes  # Redis 4.0+ 默认开启
 
 ### 4.3 加载顺序
 
-```
+```text
 1. AOF 开启？→ 是 → 加载 AOF
    ├── 有 RDB preamble → 先加载 RDB 基线，再重放 AOF 增量
    └── 无 → 纯 AOF 逐条重放
@@ -228,7 +228,7 @@ aof-use-rdb-preamble yes  # Redis 4.0+ 默认开启
 
 ### 5.2 选型决策树
 
-```
+```text
 数据丢失容忍度？
 ├── 完全不能容忍 → AOF always + 主从集群
 ├── 可容忍秒级丢失 → AOF everysec（默认）

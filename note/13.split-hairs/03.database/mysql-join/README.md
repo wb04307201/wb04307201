@@ -185,7 +185,7 @@ SELECT * FROM users u JOIN orders o ON u.phone_number = o.user_phone;
 
 #### 理由 1：性能瓶颈 —— 笛卡尔积爆炸
 
-```
+```text
 10 张表 JOIN 的笛卡尔积倍数：
 每张表 10 万行 → 10 张表 → 10⁵⁰（物理不可能完成）
 ```
@@ -204,7 +204,7 @@ SELECT * FROM users u JOIN orders o ON u.phone_number = o.user_phone;
 
 #### 理由 3：Buffer Pool 抖动 —— 数据库连接被独占
 
-```
+```text
 10 表 JOIN 跑 30 秒+
 → 数据库连接池（默认 10-20 连接）被独占
 → 其他正常请求排队
@@ -215,7 +215,7 @@ SELECT * FROM users u JOIN orders o ON u.phone_number = o.user_phone;
 
 #### 理由 4：可维护性 —— SQL 没人敢改
 
-```
+```text
 新人接手 10 表 JOIN：
 ├─ 不敢改字段 → 业务迭代停滞
 ├─ 不敢加索引 → 性能永远优化不了
@@ -224,7 +224,7 @@ SELECT * FROM users u JOIN orders o ON u.phone_number = o.user_phone;
 
 #### 理由 5：分布式场景下彻底失效
 
-```
+```text
 MySQL 分库分表后：
 ├─ 10 张表分布在 10 个库
 ├─ 单库 JOIN 不可能跨库
@@ -273,7 +273,7 @@ ALTER TABLE order ADD COLUMN user_name VARCHAR(50);
 
 #### 策略 3：宽表化（OLAP 场景）
 
-```
+```text
 原始：order + user + product + address + payment + ... （10 张）
 宽表：dwd_order_detail（包含所有需要展示的字段，单表 200 列）
 ```
@@ -282,7 +282,7 @@ ALTER TABLE order ADD COLUMN user_name VARCHAR(50);
 
 #### 策略 4：数据仓库 + OLAP 引擎
 
-```
+```text
 MySQL（OLTP）→ Canal → Kafka → Flink → ClickHouse / Doris（OLAP）
 业务查询：
 ├─ 简单查询 → MySQL
@@ -291,7 +291,7 @@ MySQL（OLTP）→ Canal → Kafka → Flink → ClickHouse / Doris（OLAP）
 
 #### 策略 5：业务拆分（领域驱动）
 
-```
+```sql
 order-service: SELECT * FROM order WHERE user_id = ?;
 user-service:  GET /users/{userId}
 product-service: GET /products/{productId}
