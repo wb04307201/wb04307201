@@ -150,4 +150,4 @@ map.entrySet().stream()
 - 深度阅读：[`01.java/集合框架`](../../../01.java/collection/README.md) — TreeMap、LinkedHashMap 源码
 - 相关：[`13.split-hairs/hashmap-resizing`](../hashmap-resizing/README.md) — HashMap 扩容
 
-← [返回: 咬文嚼字 · sort-map](README.md)
+← [返回: 咬文嚼字 · sort-map](../README.md)

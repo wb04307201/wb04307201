@@ -147,4 +147,4 @@ public class UserController {
 - 深度阅读：[`01.java/设计模式`](../../../01.java/design-patterns/README.md) — GoF 23 种设计模式
 - 相关：[`06.spring/01-core`](../../../06.spring/01-core/README.md) — Spring 单例 Bean（容器管理单例）
 
-← [返回: 咬文嚼字 · singleton-pattern](README.md)
+← [返回: 咬文嚼字 · singleton-pattern](../README.md)
