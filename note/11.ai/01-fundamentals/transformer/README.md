@@ -14,11 +14,9 @@ module:
 > Transformer 是 2017 年 Google 论文 *"Attention is All You Need"* 提出的架构，抛弃 RNN，完全基于注意力机制，是 GPT / BERT / Claude / LLaMA 等所有现代大模型的基石。
 
 ---
-## 引言：架构困境
+## 引言：Transformer 架构核心 的关键决策
 
-Transformer 不是"唯一正确答案"——它用 O(n²) 自注意力换来了**长距离依赖建模 + 高度并行训练**。代价是序列长度受限、推理显存爆炸、对位置信息需额外建模。本篇围绕"自注意力 vs RNN/CNN"、"绝对位置 vs 旋转位置编码"、"Encoder-only vs Decoder-only vs Encoder-Decoder"三条主线，把现代 LLM 架构的 5 大核心 trade-off 讲清楚。
-
----
+本篇是「Transformer 架构核心」的核心章节，聚焦该主题在实际落地时**5 个 trade-off 的取舍与决策轴**。
 
 ## 一、Transformer 解决了什么问题
 
