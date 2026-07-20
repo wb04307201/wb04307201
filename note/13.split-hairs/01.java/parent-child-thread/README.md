@@ -287,11 +287,11 @@ public void auditLog(String action) {
 ## 九、相关章节
 
 - 同栏目：[`threadlocal`](../threadlocal/README.md) — ThreadLocal 原理与内存泄漏
-- 同栏目：[`concurrency/`](../concurrency/) — 并发编程系列
+- 同栏目：[`concurrency-vs-parallelism/`](../concurrency-vs-parallelism/) — 并发编程系列
 - 主模块：[`01.java/concurrency`](../../../01.java/concurrency/README.md) — Java 并发编程
 
 ---
 
 > 📅 2026-06-28 · 咬文嚼字 · Java 基础陷阱 · ⭐⭐⭐（高频面试 + 实战必会）
 
-← [返回: 咬文嚼字 · parent-child-thread](README.md)
+← [返回: 咬文嚼字 · parent-child-thread](../README.md)
