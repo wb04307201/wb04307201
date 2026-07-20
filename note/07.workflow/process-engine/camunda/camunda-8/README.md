@@ -326,7 +326,7 @@ public void handle(final JobClient client, final ActivatedJob job) {
 2. **AI Agent Sub-process 是不是 LangGraph 的 BPMN 翻版？** 形态相似（都是图状编排），但 Camunda 强调**确定性骨架 + 可审计 + 合规**；LangGraph 强调**代码灵活性 + Python 原生**。生产落地用 Camunda 8.5+，原型探索用 LangGraph。
 3. **社区版 vs 企业版怎么选？** 商业产品的核心价值在 Operate（运维面板）+ Tasklist（人工待办）+ Optimize（流程分析）。如果只跑引擎 + 自研 UI，社区版够用。
 4. **Zeebe 的 Raft 复制为什么不用 Kafka？** Zeebe 早期版本用过 Kafka 作为日志后端，但 Raft 共识 + 内置日志的耦合度更高、延迟更低；Kafka 适合跨系统消息总线，Zeebe 适合单工作流引擎内部。
-5. **Camunda 8 + 自研 LLM 怎么集成？** 两种方式：① Camunda 8.5+ 用 AI Agent Sub-process + fromAi() FEEL 表达式（见 [Camunda 8](README.md) §三）；② 在 Zeebe Job Worker 中包装 LLM 客户端（见 [Zeebe](zeebe/README.md) §🤔 思考）。BPMN 管确定性骨架，LLM 管推理节点，互为补充。
+5. **Camunda 8 + 自研 LLM 怎么集成？** 两种方式：① Camunda 8.5+ 用 AI Agent Sub-process + fromAi() FEEL 表达式（见 [Camunda 8](#三85-ai-agent-sub-process-模式) §三）；② 在 Zeebe Job Worker 中包装 LLM 客户端（见 [Zeebe](zeebe/README.md) §🤔 思考）。BPMN 管确定性骨架，LLM 管推理节点，互为补充。
 6. **Camunda 8 vs Temporal 怎么选？** Temporal 的 async/await 模型对工程师更友好（写代码像写同步程序），Cadence 在 Uber 跑了 7 年验证过 PB 级流量。**Camunda 8 强在 BPMN 业务可读 + 合规**，Temporal 强在代码灵活 + 长期状态。**大型组织选 Camunda 8，初创/强工程团队选 Temporal**。
 
 ---

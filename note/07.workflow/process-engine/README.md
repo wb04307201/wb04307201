@@ -228,9 +228,10 @@ Q5: 国产化 / 信创要求？
 
 ## 相关章节
 
-- ⬅️ [返回 07 工作流](README.md)
+- ⬅️ [返回 07 工作流](../README.md)
 - [工作流定义](../define/README.md) — 业务/技术视角的工作流概念 + BPMN 三要素
 - [Camunda 7 实战](camunda/camunda-7/README.md) — SpringBoot 集成 Camunda 7 全流程
+- [Camunda 引擎对比](camunda/README.md) — Camunda 7 vs 8 快速对比与版本导航
 - [Camunda 8 / Zeebe](camunda/camunda-8/README.md) — 云原生分布式引擎 + AI Agent Sub-process
 - [工作流引擎与微服务编排](../workflow-and-microservice-orchestration/README.md) — 流程引擎在微服务场景的演化
 - [事件驱动与 Serverless Workflow](../apache-eventmesh/README.md) — 事件驱动作为工作流的神经系统
