@@ -18,7 +18,7 @@ module:
 
 ### 1.1 无锁算法基础
 
-```
+```text
 ConcurrentLinkedQueue 使用 CAS（Compare-And-Swap）实现无锁队列，
 不依赖任何锁（synchronized / ReentrantLock 都没有）。
 
@@ -35,7 +35,7 @@ ConcurrentLinkedQueue 使用 CAS（Compare-And-Swap）实现无锁队列，
 
 ### 1.2 ConcurrentLinkedQueue 结构
 
-```
+```text
 入队示意（Michael-Scott 无锁队列算法）：
 
   初始状态：
@@ -143,7 +143,7 @@ public class ConcurrentLinkedQueue<E> extends AbstractQueue<E> {
 
 ### 1.4 ConcurrentLinkedDeque
 
-```
+```text
 ConcurrentLinkedDeque 是双端队列版本，支持从两端入队和出队。
 
 操作对比：
@@ -165,7 +165,7 @@ ConcurrentLinkedDeque 是双端队列版本，支持从两端入队和出队。
 
 ### 1.5 性能特征
 
-```
+```text
 ConcurrentLinkedQueue vs BlockingQueue（如 LinkedBlockingQueue）：
 
   ┌────────────────────────┬─────────────────────┬──────────────────────┐
@@ -189,7 +189,7 @@ ConcurrentLinkedQueue vs BlockingQueue（如 LinkedBlockingQueue）：
 
 ## 二、BlockingQueue 体系
 
-```
+```text
 BlockingQueue 接口定义了支持阻塞操作的队列，
 核心特征：队列空时 take 阻塞，队列满时 put 阻塞。
 
@@ -212,7 +212,7 @@ BlockingQueue 继承体系：
 
 ### 2.1 ArrayBlockingQueue（有界数组阻塞队列）
 
-```
+```text
 结构：
 
   ArrayBlockingQueue（容量固定，单 ReentrantLock）
@@ -271,7 +271,7 @@ public class ArrayBlockingQueue<E> extends AbstractQueue<E>
 }
 ```
 
-```
+```text
 特点：
   1. 有界：构造时必须指定容量，满了就不能再放
   2. 单锁：读写共用一把锁，put 和 take 不能并行
@@ -282,7 +282,7 @@ public class ArrayBlockingQueue<E> extends AbstractQueue<E>
 
 ### 2.2 LinkedBlockingQueue（可选有界链表阻塞队列）
 
-```
+```text
 结构：
 
   LinkedBlockingQueue（可选容量上限，默认 Integer.MAX_VALUE，双锁）
@@ -355,7 +355,7 @@ public class LinkedBlockingQueue<E> extends AbstractQueue<E>
 }
 ```
 
-```
+```text
 ArrayBlockingQueue vs LinkedBlockingQueue：
 
   维度              | ArrayBlockingQueue       | LinkedBlockingQueue
@@ -371,7 +371,7 @@ ArrayBlockingQueue vs LinkedBlockingQueue：
 
 ### 2.3 PriorityBlockingQueue（优先级阻塞队列）
 
-```
+```text
 结构：
 
   PriorityBlockingQueue（无界，基于二叉堆数组，单锁）
@@ -428,7 +428,7 @@ queue.take();  // → "普通任务"
 
 ### 2.4 DelayQueue（延迟队列）
 
-```
+```text
 结构：
 
   DelayQueue（基于 PriorityBlockingQueue，元素实现 Delayed 接口）
@@ -499,7 +499,7 @@ delayQueue.add(new DelayedTask("任务C", 15, TimeUnit.SECONDS));
 // 先取出 B（5s），再 A（10s），最后 C（15s）
 ```
 
-```
+```text
 典型场景：
   1. 缓存过期：放入时设 TTL，到期自动取出并清理
   2. 定时任务：延迟执行的任务放入队列，到期后触发
@@ -509,7 +509,7 @@ delayQueue.add(new DelayedTask("任务C", 15, TimeUnit.SECONDS));
 
 ### 2.5 SynchronousQueue（同步队列，零容量）
 
-```
+```text
 核心特征：不存储元素，每个 put 必须等待一个 take，反之亦然。
 
   SynchronousQueue
@@ -569,7 +569,7 @@ new Thread(() -> {
 }).start();
 ```
 
-```
+```text
 适用场景：
   1. 线程池：Executors.newCachedThreadPool() 使用 SynchronousQueue
      → 每个任务直接交给空闲线程，没有空闲就创建新线程
@@ -585,7 +585,7 @@ new Thread(() -> {
 
 ### 2.6 LinkedTransferQueue（传输队列）
 
-```
+```text
 LinkedTransferQueue 是最强大的阻塞队列，
 结合了 SynchronousQueue 的直接传递和传统队列的缓冲能力。
 
@@ -630,7 +630,7 @@ boolean success = ltq.tryTransfer("quick");  // 无消费者 → false
 
 ### 2.7 BlockingQueue 方法对比
 
-```
+```text
 BlockingQueue 提供四类方法，行为各不相同：
 
   ┌────────────┬──────────┬───────────┬─────────────┬─────────────────┐

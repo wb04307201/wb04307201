@@ -164,7 +164,7 @@ ThreadPoolExecutor executor = new ThreadPoolExecutor(
 
 Java 线程共有 **6 种状态**，定义在 `Thread.State` 枚举中：
 
-```
+```text
                   ┌──────────┐
                   │   NEW    │  新建状态，调用了 new 但尚未调用 start()
                   └────┬─────┘
@@ -393,7 +393,7 @@ System.out.println("t2 优先级: " + t2.getPriority()); // 10
 
 ### 优先级规则
 
-```
+```text
 优先级范围:
   1 (MIN) ◀──────────────────────────────▶ 10 (MAX)
   │         │                  │          │
@@ -454,7 +454,7 @@ synchronized (lock) {
 
 **Java 内存模型（JMM）中的可见性问题：**
 
-```
+```text
 ┌──────────────────────────────────────────────┐
 │                   主内存                      │
 │              sharedVar = 0                    │
@@ -507,7 +507,7 @@ JMM 定义了 happens-before 规则来保证有序性和可见性：
 
 ### 三要素总结
 
-```
+```text
                 ┌─────────────────────┐
                 │    线程安全三要素     │
                 ├─────────────────────┤
@@ -582,7 +582,7 @@ String result = task.get(); // 获取返回值
 
 ### 选择建议
 
-```
+```text
 是否需要返回值？
     ├─ 是 → 使用 Callable + FutureTask / 线程池.submit()
     └─ 否

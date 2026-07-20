@@ -49,7 +49,7 @@ module:
 
 ### 1.3 工作原理
 
-```
+```text
 主线程                         工作线程1    工作线程2    工作线程3
   |                               |            |            |
   |-- new CountDownLatch(3)       |            |            |
@@ -156,7 +156,7 @@ public class CountDownLatchDemo {
 
 ### 2.3 工作原理
 
-```
+```text
 线程 A ───▶ await() ──┐
                        │
 线程 B ───▶ await() ──┼──▶ [屏障点] ──▶ 执行 barrierAction ──▶ 全部释放 ──▶ 屏障自动重置
@@ -277,7 +277,7 @@ public class CyclicBarrierDemo {
 
 ### 3.3 工作原理
 
-```
+```text
                    Semaphore(permits=3)
                     ┌──────────────┐
                     │  可用许可: 3  │
@@ -429,7 +429,7 @@ public class SemaphoreDemo {
 
 ### 4.3 工作原理
 
-```
+```text
                 Phase 0           Phase 1           Phase 2
               ┌────────┐        ┌────────┐        ┌────────┐
               │ Phaser │        │ Phaser │        │ Phaser │
@@ -557,7 +557,7 @@ public class PhaserDemo {
 
 ### 5.3 工作原理
 
-```
+```text
 线程 A (生产者)                  Exchanger                 线程 B (消费者)
       │                              │                          │
       │   bufferA = 填充数据          │                          │
@@ -675,7 +675,7 @@ public class ExchangerDemo {
 
 ### 6.2 场景决策图
 
-```
+```text
 你的并发需求是什么?
 │
 ├── "我需要一个/多个线程等待其他线程完成"

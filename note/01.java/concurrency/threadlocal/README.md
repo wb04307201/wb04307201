@@ -33,7 +33,7 @@ module:
 
 ThreadLocal 的核心思想是**空间换时间**——通过为每个线程提供一份独立的变量副本，避免了多线程竞争时的同步开销。
 
-```
+```text
 传统共享变量方式:
   Thread1 ──┐
   Thread2 ──┼──► Shared Variable ──► 需要同步 (synchronized / Lock)
@@ -70,7 +70,7 @@ ThreadLocal 方式:
 
 ### 2.1 整体关系
 
-```
+```text
 ┌─────────────────────────────────────────────────────────┐
 │                        Thread                            │
 │                                                         │
@@ -145,7 +145,7 @@ static class ThreadLocalMap {
 
 与 HashMap 使用链地址法不同，ThreadLocalMap 使用**开放定址法**解决哈希冲突。
 
-```
+```text
 假设 hash(ThreadLocalA) % 16 = 2，hash(ThreadLocalB) % 16 = 2 (冲突)
 
 索引:  0    1    2         3         4    5
@@ -185,7 +185,7 @@ public void set(T value) {
 }
 ```
 
-```
+```text
 set 流程图:
                     ┌──────────────────┐
                     │ 获取当前线程 t    │
@@ -255,7 +255,7 @@ public T get() {
 }
 ```
 
-```
+```text
 get 流程图:
                     ┌──────────────────┐
                     │ 获取当前线程 t    │
@@ -298,7 +298,7 @@ public void remove() {
 }
 ```
 
-```
+```text
 remove 流程图:
                     ┌──────────────────┐
                     │ 获取当前线程的    │
@@ -345,7 +345,7 @@ remove 流程图:
 
 ThreadLocalMap 中 Entry 的 key 是弱引用，但 value 是强引用。当 ThreadLocal 实例失去外部强引用后：
 
-```
+```text
 正常情况 (有外部强引用):
   ┌──────────────┐
   │ ThreadLocal  │──强引用──► (存活)
@@ -392,7 +392,7 @@ public class LeakExample {
 
 ### 4.3 为什么在线程池场景下尤其严重
 
-```
+```text
 线程池场景下的累积效应:
 
 时间线:
@@ -424,7 +424,7 @@ public class LeakExample {
 
 ### 5.1 如果 key 用强引用
 
-```
+```text
 key 强引用的情况:
   ┌──────────────┐
   │ ThreadLocal  │──外部强引用 (可被代码置 null)
@@ -444,7 +444,7 @@ key 强引用的情况:
 
 ### 5.2 使用弱引用的好处
 
-```
+```text
 key 弱引用的情况:
   ┌──────────────┐
   │ ThreadLocal  │──外部强引用 (可被代码置 null)
@@ -516,7 +516,7 @@ public class InheritableThreadLocal<T> extends ThreadLocal<T> {
 
 ### 6.3 值传递时机
 
-```
+```text
 InheritableThreadLocal 值传递时机:
 
   ┌──────────────────┐
@@ -585,7 +585,7 @@ Maven 依赖：
 
 TTL 通过**装饰器模式**包装 Runnable/Callable/ThreadPoolExecutor，在任务执行时捕获父线程的上下文，并在任务执行前传递到子线程。
 
-```
+```text
 TTL 工作流程:
 
 主线程 (调用 submit/execute):

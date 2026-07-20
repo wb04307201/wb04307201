@@ -497,7 +497,7 @@ CompletableFuture<String> summary = userFuture
 
 ### 8.3 三者选择决策树
 
-```
+```text
 是否处理数据集合？
   |-- 是 --> 使用 Stream API
   |-- 否 --> 是否产生连续事件流？
