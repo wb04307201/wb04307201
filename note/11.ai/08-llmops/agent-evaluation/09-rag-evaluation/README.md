@@ -4,7 +4,7 @@ module:
   slug: ai/rag-evaluation
   type: article
   category: 主模块子文章
-  summary: RAG 评估指标 + RAGAS / TruLens / DeepEval 工具对比
+  summary: RAG 评估指标（检索×生成×系统 三维度）+ RAGAS / TruLens / DeepEval 工具对比 + Agentic RAG 评估补充
 -->
 
 # RAG 评估指标与工具
@@ -188,10 +188,39 @@ metrics = [
 
 ---
 
+## 🏗️ 系统工程指标（第 3 维度：跑得稳不稳）
+
+> 前两节的检索/生成指标只看"文本质量"，生产落地还要看**工程表现**。RAG 评估的完整拆解是 **检索 × 生成 × 系统** 三维度。
+
+| 指标 | 含义 | 参考位置 |
+|------|------|---------|
+| **Latency** | 首字响应 TTFT + 端到端总时延 | [推理性能指标](../../../02-technology-stack/inference-metrics/README.md) |
+| **Cost** | 单次查询 Token 数（输入上下文 + 输出）及 API 成本 | [Token 与计费](../../../02-technology-stack/token-billing/README.md) |
+| **User Feedback** | 显式（👍/👎）+ 隐式（会话中止率 / 追问率） | 线上埋点 |
+
+> 💡 **性价比最高的切入点**：初期优先监控 **Faithfulness（安全底线）** + **Context Recall（能力上限）** 两个指标，再叠加系统工程维度。
+
+---
+
+## 🤖 Agentic RAG 评估补充（多步智能体场景）
+
+> 当 RAG 演进到 [Agentic 阶段](../../../02-technology-stack/rag-paradigm-evolution/README.md)（Agent 自主拆解任务、多步检索），传统 RAG 指标不够用，需叠加**智能体维度**：
+
+| 指标 | 含义 |
+|------|------|
+| **Task Success Rate（任务完成率）** | 是否通过多步规划 + 工具调用最终达成复杂目标 |
+| **Tool Call Accuracy（工具调用准确率）** | 选检索/查库/执行工具及其参数是否正确 |
+| **Self-Correction Rate（自我修正率）** | 首次检索/生成失败后，能否通过反思自主调整并输出正确结果 |
+
+> 🔗 这三个指标的通用母体（完整公式 + 阈值）见 [Agent 6 大评测维度](../01-six-metrics.md)；面试话术见 [如何量化 Agent 性能](../../../../13.split-hairs/11.ai/agent-performance-evaluation/README.md)。
+
+---
+
 ## 🔗 兄弟章节
 
-- **本专题**：[RAG Pipeline 综述](../../../02-technology-stack/rag-pipeline/README.md) / [Hybrid Search](../../../02-technology-stack/hybrid-search/README.md) / [Reranker](../../../02-technology-stack/reranker/README.md) / [Query Rewrite](../../../02-technology-stack/query-rewrite/README.md)
-- **咬文嚼字**：[RAG 面试](../../../../13.split-hairs/11.ai/rag/README.md)
+- **本专题**：[RAG Pipeline 综述](../../../02-technology-stack/rag-pipeline/README.md) / [RAG 范式演进四阶段](../../../02-technology-stack/rag-paradigm-evolution/README.md) / [Hybrid Search](../../../02-technology-stack/hybrid-search/README.md) / [Reranker](../../../02-technology-stack/reranker/README.md) / [Query Rewrite](../../../02-technology-stack/query-rewrite/README.md)
+- **评估维度**：[Agent 6 大评测维度](../01-six-metrics.md) / [5 种评估方法](../02-five-methods.md)
+- **咬文嚼字**：[RAG 面试](../../../../13.split-hairs/11.ai/rag/README.md) / [Agent 性能量化](../../../../13.split-hairs/11.ai/agent-performance-evaluation/README.md)
 - **LLMOps**：[08-llmops](../../README.md) — RAG 安全
 
 ---
