@@ -233,7 +233,7 @@ curl -X POST http://localhost:8080/actuator/loggers/com.example.service \
 
 ## 八、与 Micrometer / Prometheus 的协作
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────┐
 │  Spring Boot 应用                                            │
 │  ┌──────────┐   ┌──────────────┐   ┌──────────────────┐    │

@@ -177,7 +177,7 @@ public class BatchImportService {
 
 **输出指标**（Prometheus 格式）：
 
-```
+```text
 batch_import_duration_active_count    3    # 当前正在执行的任务数
 batch_import_duration_duration_sum     12.5 # 所有活跃任务已运行的总秒数
 batch_import_duration_max              8.1  # 当前活跃任务中最长的已运行时间
@@ -518,7 +518,7 @@ public MeterFilter meterFilter() {
 
 **数据流**：
 
-```
+```text
 Micrometer Tracing API
     └─ bridge-otel → OpenTelemetry SDK
                        └─ OTLP/gRPC(4317) / OTLP/HTTP(4318)
