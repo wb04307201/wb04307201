@@ -16,7 +16,7 @@ question:
 
 # AI 咬文嚼字
 
-> AI 高频面试题与新概念深挖，对齐主模块 [`11.ai`](../../11.ai/)。18 题 = 9 篇纯面试题（幻觉 / 思维 / 生产力悖论 / 代码流失 / ROI / Agent Memory / Agent 性能量化 / Token 经济学 / LLM Benchmark / RAG 权限隔离）+ 9 篇主模块配套精炼版（Prompt / Context / Harness / Loop / Transformer / Token / RAG / Function Calling / Agent DAG）。
+> AI 高频面试题与新概念深挖，对齐主模块 [`11.ai`](../../11.ai/)。**40 题**（find 校对 2026-07-19）= 一题一文（幻觉 / 思维 / 生产力悖论 / 代码流失 / ROI / Agent Memory / Agent 性能量化 / Token 经济学 / LLM Benchmark / RAG 权限隔离）+ 主模块配套精炼版（Prompt / Context / Harness / Loop / Transformer / Token / RAG / Function Calling / Agent DAG）。
 
 > ⚠️ **定位说明**：本目录所有文章都是**面试深挖版**（陷阱 + 反直觉 + 30 秒话术，50-80 行）。完整概念文档见主模块对应位置（README 末尾"深度阅读"区有链接）。
 
@@ -24,7 +24,7 @@ question:
 
 ## 🎯 读者角色速查（按身份挑题）
 
-> 38 题按难度与场景覆盖 6 类读者角色，按身份挑题效率最高。
+> **40 题**按难度与场景覆盖 6 类读者角色（find 校对 2026-07-19），按身份挑题效率最高。
 
 | 读者角色 | 推荐题号 | 推荐阅读顺序 | 关键场景 |
 |---------|---------|------------|---------|
@@ -37,7 +37,7 @@ question:
 
 ---
 
-## 文章清单（20 题 = 9 篇纯面试题 + 11 篇精炼版）
+## 文章清单（共 **40 题**，find 校对 2026-07-19）
 
 ### 🎯 真正的面试题（一题一文）
 
