@@ -40,7 +40,7 @@ GPU 计算速度是 HBM 带宽的 ~100x，瓶颈是**内存访问**。
 
 ### Flash Attention 解法
 
-```
+```text
 1. 把 Q/K/V 分成 16x16 的小块（block）
 2. 在 SRAM（片上缓存，极快）里逐块算
 3. 用 Online Softmax 累积结果

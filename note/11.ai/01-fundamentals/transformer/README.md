@@ -80,7 +80,7 @@ graph LR
 ```
 
 **公式**：
-```
+```text
 Attention(Q, K, V) = softmax(Q × K^T / √d) × V
 ```
 
