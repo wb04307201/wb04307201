@@ -66,7 +66,7 @@ module:
 
 ### 第 1 段：基础（IoC/AOP → Boot 入门）
 
-```
+```text
 01-core/ioc/                  → IoC 容器、Bean 生命周期、循环依赖
 01-core/aop/                  → AOP 切面编程与代理机制
 02-web/mvc/                   → Spring MVC 请求处理
@@ -78,7 +78,7 @@ module:
 
 ### 第 2 段：进阶（Boot 精通 → Cloud 微服务 → Security）
 
-```
+```text
 04-spring-boot/externalized-configuration → 外部化配置
 04-spring-boot/embedded-server → 内嵌服务器切换
 09-security/filter-chain/     → SecurityFilterChain 架构
@@ -94,7 +94,7 @@ module:
 
 ### 第 3 段：整合（数据层深化 + 可观测性 + 安全深化 + 注解速查）
 
-```
+```text
 03-data/cache/multi-level.md → 多级缓存架构
 03-data/transaction/distributed/ → 分布式事务（Seata AT/TCC/Saga）
 03-data/mybatis/03-spring-integration/ → Spring × MyBatis 工程整合
