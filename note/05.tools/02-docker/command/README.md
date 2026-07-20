@@ -130,3 +130,8 @@ module:
 ---
 
 ← [返回 Docker](../README.md)
+## 一句话定位
+
+> **Docker 命令 = 镜像/容器/网络/卷/系统/Compose 6 大类**——本指南按场景分类，覆盖所有日常 docker CLI 用法（100+ 命令 + 5 个 Compose 实战模板）。
+
+**摘要补充**：`Docker 命令` 不仅是 `docker run`，还包含 `docker build`（镜像构建）、`docker exec`（容器内执行）、`docker logs`（日志查看）、`docker volume`（数据卷）、`docker network`（容器网络）、`docker-compose`（多容器编排）6 大领域。

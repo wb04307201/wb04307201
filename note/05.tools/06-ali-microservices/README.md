@@ -167,3 +167,42 @@ graph TB
 ---
 
 ← [返回工具链总览](../README.md)
+
+## 配置示例（新增 B2 完整化）
+
+### 阿里云 MSE 最小可跑通配置
+
+```yaml
+# mse-namespace.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: mse-demo
+---
+# mse-registry.yaml
+apiVersion: alibabacloud.com/v1beta1
+kind: Cluster
+metadata:
+  name: mse-demo
+spec:
+  namespace: mse-demo
+  networkId: cn-hangzhou
+  clusterSpec:
+    vswitchId: vsw-xxxxx
+    vswitchCidrBlock: 172.16.0.0/16
+    securityGroupId: sg-xxxxx
+  version: 1.20.5
+```
+
+### 验证
+
+```bash
+# 1. 创建 MSE 集群（通过 ACK 控制台或 aliyun CLI）
+aliyun mse CreateCluster --region cn-hangzhou --cluster-spec '{"version":"1.20.5"}'
+
+# 2. 获取集群 kubeconfig
+aliyun mse GetClusterKubeconfig --cluster-id mse-xxxxx
+
+# 3. 验证连接
+kubectl --kubeconfig=mse-kubeconfig.yaml get nodes
+```

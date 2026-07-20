@@ -218,3 +218,31 @@ DORA 4 大指标（来自 Google DORA 报告）：
 ---
 
 ← [返回工具链总览](../README.md) · 📅 2026-06-28
+## 1. 学习目标（新增 3-5 条）
+
+完成本文后，你能：
+1. 在 30 分钟内为新项目搭建一条可工作的 CI/CD 流水线
+2. 理解 Jenkins / GitLab CI / GitHub Actions / Argo CD 之间的取舍
+3. 排查 90% 流水线失败根因（缓存键、密钥注入、并发冲突）
+4. 在 Kubernetes 上部署 GitOps 闭环（commit → apply → sync）
+5. 评估团队规模与 CI 工具的匹配度
+
+## 2. 章节清单 + 阅读时长
+
+| 章节 | 内容 | 预计时长 |
+|------|------|----------|
+| 三大主流 CI 工具对比 | Jenkins / GitLab CI / GitHub Actions | 8 分钟 |
+| 4 套实战流水线 | Java/Node/Python/Multi-Service | 25 分钟 |
+| GitOps 与 Argo CD | K8s 上的声明式部署 | 15 分钟 |
+| 故障排查手册 | 9 大常见错误 | 10 分钟 |
+| 未来趋势 | AI 辅助 / Serverless CI | 5 分钟 |
+
+**总计：~1 小时**
+
+## 3. 反直觉判断（新增 4-5 条）
+
+1. **更快的 CI ≠ 更好的 CI**：从 10 分钟压到 3 分钟，工程价值不高；不如把测试覆盖率从 60% 提到 80%
+2. **更多工具 ≠ 更优工具**：3 套 CI 工具够用，引入第 4 套的复杂度成本通常超过收益
+3. **GitOps 不适合所有项目**：< 5 个服务的项目用 GitOps 是 over-engineering，直接 kubectl apply 更简单
+4. **CI 缓存键不是越细越好**：太细的缓存键（如按 PR 哈希）反而导致缓存命中率下降
+5. **Argo CD 漂移检测是双刃剑**：自动 sync 会让错误配置快速传播；生产建议 manual sync + 监控
