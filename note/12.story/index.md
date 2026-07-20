@@ -45,6 +45,7 @@ module:
 
 | 主题 | 文章 | 一句话 |
 |------|------|--------|
+| 架构演进（前传） | [02](./02-system-architecture-evolution.md) | 业务驱动 + IT 成熟度 L1-L7 + 7 阶段架构演进 |
 | 流量治理 | [正传 1](./04-peak-traffic-defense.md) | 五道防线协同作战 |
 | 可观测性 | [正传 2](./05-observability.md) | 日志/指标/追踪三大支柱 |
 | 安全架构 | [正传 3](./06-security-architecture.md) | 六大防线纵深防御 |
