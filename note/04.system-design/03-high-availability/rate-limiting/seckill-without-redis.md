@@ -21,7 +21,7 @@ module:
 
 很多人一上来就答"用 Redis 分布式锁"，但**面试官问"不用 Redis"**——必须先确认边界：
 
-```
+```text
 500 人抢 1 瓶茅台
 ├─ 库存 = 1（最关键的边界）
 ├─ 人数 = 500（不是 500 万）
@@ -297,7 +297,7 @@ WHERE id = ? AND stock > 0 AND version = ?;
 
 ### 4.2 防 ABA：用 version 字段
 
-```
+```text
 时间线：
 T1: A 读 stock=1, version=1
 T2: B 抢到 → stock=0, version=2
@@ -305,7 +305,7 @@ T3: A 用 version=1 提交 → 影响 0 行（A 失败）✅
 ```
 
 **没有 version** 的情况：
-```
+```yaml
 T1: A 读 stock=1
 T2: B 抢到 → stock=0
 T3: 退货 → stock=1（ABA 问题：A 看到的和现在一样）
@@ -336,7 +336,7 @@ CREATE TABLE seckill_order (
 
 ### 5.1 主从读写分离
 
-```
+```text
 写流量：服务器 A + 服务器 B → 写主 DB
 读流量：服务器 A + 服务器 B → 读从 DB（最终一致）
 
@@ -347,7 +347,7 @@ CREATE TABLE seckill_order (
 
 ### 5.2 同步方案（避免主从延迟）
 
-```
+```text
 方案 1：强制读主
   ├─ 所有请求走主 DB（牺牲读扩展性）
   └─ 简单可靠
@@ -365,7 +365,7 @@ CREATE TABLE seckill_order (
 
 ### 5.3 双写方案（避免单 DB 单点）
 
-```
+```text
 主 DB ← 同步 ← 从 DB
 ├─ 主 DB 写：服务器 A 写主，服务器 B 写主
 ├─ 主 DB 故障 → 从 DB 升级为主
@@ -481,7 +481,7 @@ public class SeckillController {
 
 ### 6.4 性能估算
 
-```
+```text
 500 人 / 2 台服务器 / 库存=1：
 - 每台服务器 ~250 请求
 - DB 写 1 次成功 + 499 次失败
