@@ -52,7 +52,7 @@ question:
 
 ### 1.2 思维范式 4 信号
 
-```
+```text
 用 LLM 的 4 信号（满足 ≥ 3 个才上）：
 1. 输入是非结构化（自然语言）
 2. 规则难以枚举（> 100 条）
@@ -65,7 +65,7 @@ question:
 
 ### 1.3 成本 5 层路由
 
-```
+```text
 Layer 1：缓存 + 规则（5ms）—— 80% 请求
    ↓ 未命中
 Layer 2：Cheap 小模型（200ms，$0.0001）—— 15%
@@ -87,7 +87,7 @@ best = judge_llm.choose_best(query, samples)
 
 ### 1.5 熔断 3 道防线
 
-```
+```text
 [客户端] loading state（5s 用户能看到的）
    ↓
 [Edge Timeout] CDN/网关层 5s 截断
@@ -105,7 +105,7 @@ best = judge_llm.choose_best(query, samples)
 
 ### 1.6 监控 4 维 + Trace
 
-```
+```text
 4 维：延迟 + 成本 + 质量 + 一致性
 Trace：5 分钟定位根因（vs 1-3 天经验排查）
 黄金集：每月 / 每次模型升级回归
@@ -122,7 +122,7 @@ Trace：5 分钟定位根因（vs 1-3 天经验排查）
 
 **高分答案**（4 层递进，60-90 秒）：
 
-```
+```text
 1. 思维转换（15 秒）：
    "LLM 是'柔性 if-else'——处理自然语言模糊性专用工具，
    不是通用计算器。能用规则就别用 LLM（成本 × 5、错误率 × 0）。"
@@ -146,7 +146,7 @@ Trace：5 分钟定位根因（vs 1-3 天经验排查）
 
 **高分答案**（60 秒）：
 
-```
+```text
 "LLM 成本必须硬上限 + 自动降级，3 道 quota + 5 层路由：
 
 3 道 quota（防爆）：
@@ -172,7 +172,7 @@ P99 单请求 $0.05 触发降级。"
 
 **高分答案**（60 秒）：
 
-```
+```text
 "raw 重试不解决一致性问题——LLM 是概率模型，3 次重试可能都错。
 
 正解：Self-Consistency 投票 + Judge 模型 + 重试预算。
@@ -199,7 +199,7 @@ Self-Consistency：
 
 **高分答案**（60 秒）：
 
-```
+```text
 "必须有三层超时熔断：
 
 1. 双 Timeout：
@@ -226,7 +226,7 @@ Self-Consistency：
 
 **高分答案**（60 秒）：
 
-```
+```text
 "4 维监控体系 + Trace + 黄金集回归。
 
 4 维指标：
@@ -264,7 +264,7 @@ Self-Consistency：
 
 **高分答案**（45 秒）：
 
-```
+```text
 "上线前必须全部 4 维：
 1. 思维范式（设计阶段）
 2. 成本 5 层路由（设计阶段）
@@ -329,7 +329,7 @@ Self-Consistency：
 
 ### 方案 A：客服 Agent（高频 B2C）
 
-```
+```text
 - 思维：80% 规则 + 20% LLM
 - 成本：缓存 + Cheap 主导 ($0.001/次)
 - 一致性：Self-Consistency + 客服领域 Judge
@@ -341,7 +341,7 @@ Self-Consistency：
 
 ### 方案 B：金融分析师（高风险 B2B）
 
-```
+```text
 - 思维：规则优先 + LLM 兜底
 - 成本：Big 模型 + 审计（人审）+ 5 层路由
 - 一致性：3 供应商投票（GPT-4 / Claude / Gemini）
@@ -353,7 +353,7 @@ Self-Consistency：
 
 ### 方案 C：代码助手（中等 QPS B2C）
 
-```
+```text
 - 思维：LLM 主 + Linter 规则
 - 成本：Big 模型 + Cache（IDE session 复用）
 - 一致性：Self-Reflection（重新生成 if 测试失败）
@@ -399,7 +399,7 @@ Self-Consistency：
 
 ## 六、面试反问（让候选人反客为主）
 
-```
+```text
 Q1：贵司 LLM 接 API 还是自部署？单供应商还是多？
     → 决定 5 层路由的复杂度
 Q2：贵司对延迟的 P99 SLO 是多少？

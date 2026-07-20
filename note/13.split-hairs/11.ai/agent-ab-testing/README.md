@@ -237,7 +237,7 @@ result = llm.invoke(query, **config)
 
 **高分答案（4 层递进，60-90 秒）**：
 
-```
+```text
 1. 一句话（10 秒）：
    "AI 场景 A/B Test ≠ 传统 A/B。
     输出非确定 + 多指标 + 长期漂移。
@@ -272,7 +272,7 @@ result = llm.invoke(query, **config)
 
 ## 八、面试反问
 
-```
+```text
 Q1：贵司 Agent 上线怎么验证？
     → 答 5 组件 + 灰度 = 高分
 Q2：A/B 用多少流量？

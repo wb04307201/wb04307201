@@ -176,7 +176,7 @@ def fallback_chain(query, attempt=0):
 
 **高分答案（4 层递进，60-90 秒）**：
 
-```
+```text
 1. 一句话（10 秒）：
    "1 轮 = 1 个意图。多轮 = 多个意图 + 中间结果 +
     状态管理 + 错误恢复。
@@ -210,7 +210,7 @@ def fallback_chain(query, attempt=0):
 
 ## 五、面试反问（让候选人反客为主）
 
-```
+```text
 Q1：贵司 Agent 用 max_turns = 多少？为何是这个值？
     → 答 3-5 + 业务依据 = 高分
 Q2：贵司 Agent 遇到死循环怎么兜底？

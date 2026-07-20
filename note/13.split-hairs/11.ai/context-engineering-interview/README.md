@@ -41,7 +41,7 @@ Context Engineering 是：**在有限的 Context Window 里，把对的信息在
 
 ## 一、Context 是什么（一图记全）
 
-```
+```text
 Context = System Prompt + 历史消息 + Tools Schema + RAG 文档 + 长期记忆 + 环境变量
 ```
 

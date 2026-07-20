@@ -36,7 +36,7 @@ RAG 不是"让 LLM 变聪明"，而是"**给 LLM 装一个能查事实的工具*
 
 ## 一、核心流程（一图记全）
 
-```
+```text
 离线索引：文档 → Chunking → Embedding → 向量数据库
 在线查询：问题 → Embedding → 检索 Top-K → 拼接 Prompt → LLM 生成
 ```

@@ -37,7 +37,7 @@ PM："……"
 
 **Token ≠ 字符 ≠ 单词**：是分词算法（Tokenizer）处理后的最小单元。
 
-```
+```text
 "Hello, world!" → ["Hello", ",", " world", "!"] → 4 token
 "我爱中国"      → ["我", "爱", "中国"]          → 3 token
 ```

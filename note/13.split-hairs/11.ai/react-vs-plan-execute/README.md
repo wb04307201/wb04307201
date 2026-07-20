@@ -62,7 +62,7 @@ question:
 
 ### 1.3 ReAct 本质（Thought + Action + Observation）
 
-```
+```text
 Thought: 我需要先查询腾讯股票
 Action:  getStockPrice(symbol="0700.HK")
 Observation: 当前价 350 HKD
@@ -77,7 +77,7 @@ Observation: 营收 6000 亿
 
 ### 1.4 Plan-and-Execute 本质（两步走）
 
-```
+```text
 Stage 1 Planner：一次生成 Plan = [Step1, Step2, Step3]
    ↓
 Stage 2 Executor：逐步执行
@@ -112,7 +112,7 @@ Stage 2 Executor：逐步执行
 
 **高分答案**（4 层递进，60-90 秒）：
 
-```
+```text
 1. 场景区分（15 秒）：
    "ReAct 用于'探索'（路径未知），Plan-and-Execute 用于'复杂多步 + 强依赖'。
    两者不是替代，是不同场景的工具。"
@@ -141,7 +141,7 @@ Stage 2 Executor：逐步执行
 
 **高分答案**（60 秒）：
 
-```
+```text
 "Plan-and-Execute 失败有 3 大修复机制（按粒度）：
 
 1. Plan Repair（推荐）：
@@ -170,7 +170,7 @@ Stage 2 Executor：逐步执行
 
 **高分答案**（45 秒）：
 
-```
+```text
 "ReAct Token 失控的 5 大解决方案：
 
 1. 设置 max_iterations 上限（10-30）
@@ -194,7 +194,7 @@ Stage 2 Executor：逐步执行
 
 **高分答案**（40 秒）：
 
-```
+```text
 "ReAct vs DAG 决策：
 1. 任务流程是否明确？
    - 完全明确 → DAG
@@ -220,7 +220,7 @@ Stage 2 Executor：逐步执行
 
 **高分答案**（40 秒）：
 
-```
+```text
 "Multi-Agent 不一定比单 Agent 强。Multi-Agent 平均分 3.5（4 模式最低）。
 
 3 大问题：
@@ -242,7 +242,7 @@ Stage 2 Executor：逐步执行
 
 **高分答案**（45 秒）：
 
-```
+```text
 "生产环境 80% 是混合架构，不是单一模式：
 
 工业标准：DAG + Plan-and-Execute + ReAct 兜底
@@ -264,7 +264,7 @@ Stage 2 Executor：逐步执行
 
 **高分答案**（40 秒）：
 
-```
+```text
 "Multi-Agent 通信开销是最大性能瓶颈。3 大优化：
 
 1. 摘要传递：
@@ -339,7 +339,7 @@ Stage 2 Executor：逐步执行
 
 ### 方案 A：客服对话（ReAct 主导）
 
-```
+```text
 - 模式：ReAct + 温度=0
 - 工具：≤ 10 个高频
 - 优化：max_iterations=15 + Summary
@@ -348,7 +348,7 @@ Stage 2 Executor：逐步执行
 
 ### 方案 B：投资分析（Plan-and-Execute 主导）
 
-```
+```text
 - 模式：Plan-and-Execute + DAG 子节点
 - 规划：5-10 高层步骤
 - 修复：Plan Repair 2 次 → Adaptive 1 次 → RePlan
@@ -357,7 +357,7 @@ Stage 2 Executor：逐步执行
 
 ### 方案 C：退款业务流（DAG 主导）
 
-```
+```text
 - 模式：DAG + 错误处理节点
 - 节点：query_order → check_eligibility → process_refund → notify
 - 错误：每个节点加 Error Handler
@@ -366,7 +366,7 @@ Stage 2 Executor：逐步执行
 
 ### 方案 D：AI 软件团队（Multi-Agent）
 
-```
+```text
 - 模式：CrewAI + Hierarchical
 - 角色：PM / Designer / Engineer / Reviewer
 - 通信：摘要传递（不是完整 prompt）
@@ -418,7 +418,7 @@ Stage 2 Executor：逐步执行
 
 ## 六、面试反问（让候选人反客为主）
 
-```
+```text
 Q1：贵司 Agent 是业务流程（退款 / 订单）还是探索研究？
     → 业务流 DAG，探索 ReAct
 Q2：贵司任务典型步骤数？

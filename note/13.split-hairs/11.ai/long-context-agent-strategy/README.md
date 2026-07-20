@@ -91,7 +91,7 @@ question:
 
 **高分答案**（4 层递进，60-90 秒）：
 
-```
+```text
 1. 场景澄清（15 秒）：
    "1M 文档直接塞进 Gemini 1.5 听上去可行，但评测显示有效长度只有 100-200k，
    而且 Lost in the Middle 让 P50 准确率掉 30%。
@@ -127,7 +127,7 @@ question:
 
 **高分答案**（45 秒）：
 
-```
+```text
 "4 大 Chunking 策略选型：
 1. Fixed：按 500 字切（图省事用，但切断句子）
 2. Recursive：按段落/句子回退（Markdown 推荐）
@@ -148,7 +148,7 @@ Overlap：10-20%（500 字 → 50-100 字重叠）
 
 **高分答案**（40 秒）：
 
-```
+```text
 "我的决策顺序：
 
 1. 默认 RAG：成本低、召回可控、能用 Re-rank 优化
@@ -171,7 +171,7 @@ Overlap：10-20%（500 字 → 50-100 字重叠）
 
 **高分答案**（50 秒）：
 
-```
+```text
 "Agent 4 层记忆架构：
 1. Working Memory：当前会话激活上下文（prompt 内）
    - 用 Sliding Window + Summary 控制 size
@@ -195,7 +195,7 @@ Overlap：10-20%（500 字 → 50-100 字重叠）
 
 **高分答案**（40 秒）：
 
-```
+```text
 "Sub-Agents 是"主 Agent 看摘要，子 Agent 看自己上下文"的拆分。
 
 何时用：
@@ -223,7 +223,7 @@ Overlap：10-20%（500 字 → 50-100 字重叠）
 
 **高分答案**（35 秒）：
 
-```
+```text
 "Lost in the Middle：模型对 prompt 中间信息利用最差（准确率 58%），
 两端最好（85% / 80%）。Liu 2023 论文验证。
 
@@ -244,7 +244,7 @@ Overlap：10-20%（500 字 → 50-100 字重叠）
 
 **高分答案**（35 秒）：
 
-```
+```text
 "Sliding Window 解决 KV cache 显存问题：
 - 100k context 用 sliding w=4k 显存等价 4k context
 - 训练技巧：StreamingLLM（sink tokens）+ LongLoRA
@@ -312,7 +312,7 @@ Overlap：10-20%（500 字 → 50-100 字重叠）
 
 ### 方案 A：客服 Agent（推荐组合）
 
-```
+```text
 Memory（用户画像）+ RAG（知识库）+ Sliding Window（会话）+ 偶尔 Long-Context
 
 实施：
@@ -326,7 +326,7 @@ Memory（用户画像）+ RAG（知识库）+ Sliding Window（会话）+ 偶尔
 
 ### 方案 B：研究 Agent（推荐 Sub-Agents）
 
-```
+```text
 Sub-Agents Hierarchical + RAG + Memory
 
 子 Agent 拆分：
@@ -340,7 +340,7 @@ Sub-Agents Hierarchical + RAG + Memory
 
 ### 方案 C：金融分析师（极致准确）
 
-```
+```text
 Long-Context 1M + RAG 双轨 + Sub-Agents + Memory
 
 - RAG 先检索 top-10
@@ -401,7 +401,7 @@ Long-Context 1M + RAG 双轨 + Sub-Agents + Memory
 
 ## 六、面试反问（让候选人反客为主）
 
-```
+```text
 Q1：贵司 Agent 是客服 / 研究 / 代码 / 数据分析哪种？
     → 不同场景策略侧重不同
 Q2：贵司对延迟的 P99 SLO 是多少？

@@ -46,7 +46,7 @@ Loop Engineering = **让 Agent 智能地循环**：
 2. **Verifier（验证函数）**：自动化、ground-truth
 3. **Feedback（反馈循环）**：具体、可操作
 
-```
+```text
 Task → Agent → 检查结果
   ↑                  │
   └──── 不通过 ←─────┘

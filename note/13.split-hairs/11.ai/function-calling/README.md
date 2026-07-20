@@ -43,7 +43,7 @@ LLM    →  宿主（选第一家："调用 create_order"）
 
 ## 一、核心流程（一图记全）
 
-```
+```text
 用户请求 → LLM 分析意图 → 输出 tool_calls(JSON)
                                     ↓
                           宿主程序解析并执行
@@ -134,7 +134,7 @@ LLM    →  宿主（选第一家："调用 create_order"）
 
 **满分回答模板（4 层递进，60-90 秒）**：
 
-```
+```text
 1. 【一句话定义 · 10 秒】
 "Function Calling 是让 LLM 输出结构化 JSON 来声明要调用的工具，
 不是让模型直接执行代码 —— LLM 没有执行能力。"
@@ -186,7 +186,7 @@ LLM    →  宿主（选第一家："调用 create_order"）
 
 **高分答案**（45 秒）：
 
-```
+```text
 "本质相同，都是 LLM 输出结构化工具调用请求。
 
 但术语有差异：
@@ -206,7 +206,7 @@ LLM    →  宿主（选第一家："调用 create_order"）
 
 **高分答案**（45 秒）：
 
-```
+```text
 "Function Calling 支持并行——模型一次性输出多个 tool_calls，然后
 host 程序并发执行（asyncio.gather / Promise.all）。
 
@@ -229,7 +229,7 @@ host 程序并发执行（asyncio.gather / Promise.all）。
 
 **高分答案**（40 秒）：
 
-```
+```text
 "Function Calling 本身有 3 层防护：
 1. 结构化输出：模型只能生成 JSON，不是自然语言，无法'绕过'
 2. Schema 验证：host 用 JSON Schema 严格校验参数
@@ -250,7 +250,7 @@ host 程序并发执行（asyncio.gather / Promise.all）。
 
 **高分答案**（40 秒）：
 
-```
+```text
 "Function Calling 是 LLM 输出'调什么工具'的机制。
 MCP 是 Anthropic 2024-11 提出的协议：标准化 LLM 与工具 / 数据源的连接。
 

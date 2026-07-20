@@ -179,7 +179,7 @@ result = crew.kickoff(inputs={"context": "..."})
 
 **高分答案（4 层递进，60-90 秒）**：
 
-```
+```text
 1. 一句话定位（10 秒）：
    "Multi-Agent 不是'多搞几个 Agent'，
     而是 5 大组件 + 3 种通信模式 + 死循环 4 兜底 的系统工程。"
@@ -213,7 +213,7 @@ result = crew.kickoff(inputs={"context": "..."})
 
 ## 七、面试反问（让候选人反客为主）
 
-```
+```text
 Q1：贵司的 Multi-Agent 在哪个业务场景？为什么选 Multi-Agent 不选单 Agent？
     → 答角色化分工必要性 = 高分
 Q2：贵司 max_turns 设多少？依据是什么？
