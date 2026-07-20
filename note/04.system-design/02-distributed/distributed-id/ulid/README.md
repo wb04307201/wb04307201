@@ -17,7 +17,7 @@ module:
 
 2. **字典序排序**  
    时间戳位于标识符前半部分，使 ULID 可按生成时间排序。例如：
-   ```
+   ```text
    01F9Z3NDEKTSV4RRFFQ69G5FAV（较早）  
    01F9Z3NDEKTSV4RRFFQ69G5FBW（较晚）
    ```

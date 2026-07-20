@@ -23,7 +23,7 @@ module:
 2. **发现(Discover)**：服务调用方从注册中心查询目标服务的可用实例列表
 3. **健康检查(Health Check)**：注册中心定期检查服务实例是否存活，剔除不健康的实例
 
-```
+```text
 ┌──────────┐   注册    ┌─────────────────┐   查询    ┌──────────┐
 │ Service A│──────────>│  注册中心        │<──────────│ Service B│
 │ (Provider)│          │ (Registry)      │          │(Consumer)│
@@ -41,7 +41,7 @@ module:
 
 服务调用方自己从注册中心查询实例列表，并自行决定负载均衡策略。
 
-```
+```text
 Service B                          Service A
  (Consumer)       Registry         (Provider)
      │               │                │
@@ -60,7 +60,7 @@ Service B                          Service A
 
 调用方不直接感知注册中心，而是通过一个负载均衡器（如 API 网关）转发请求。
 
-```
+```text
 Service B          Load Balancer        Service A
  (Consumer)        / API Gateway        (Provider)
      │                   │                │
@@ -109,7 +109,7 @@ Service B          Load Balancer        Service A
 
 ### 健康检查时序图
 
-```
+```text
 注册中心                              服务实例
    │                                    │
    │──── HTTP GET /health ────────────>│
@@ -140,7 +140,7 @@ Service B          Load Balancer        Service A
 2. **等待已有请求完成**：等待 N 秒让正在处理的请求完成
 3. **关闭资源**：关闭连接池、线程池等
 
-```
+```text
 服务下线流程:
 
   注销注册 ──> 等待处理中请求 ──> 关闭连接池 ──> 关闭进程
@@ -191,7 +191,7 @@ public NacosServiceRegistry nacosServiceRegistry() {
 
 在大规模系统中，注册中心分层部署：
 
-```
+```text
                     ┌──────────────┐
                     │ 全局注册中心   │
                     └──────┬───────┘
@@ -210,7 +210,7 @@ public NacosServiceRegistry nacosServiceRegistry() {
 
 将服务发现下沉到 Sidecar 代理（如 Istio/Envoy），服务本身不感知注册中心。
 
-```
+```text
 Service A          Sidecar A     Sidecar B         Service B
   业务代码          (Envoy)       (Envoy)           业务代码
      │               │             │                  │
