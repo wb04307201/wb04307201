@@ -214,7 +214,7 @@ public interface UserMapper {
 
 ### 4. 命名规范化
 在大型项目中，通过包名和类名强化语义：
-```
+```text
 com.example.user.domain.po.UserPO
 com.example.user.domain.dto.UserDTO
 com.example.user.domain.vo.UserVO

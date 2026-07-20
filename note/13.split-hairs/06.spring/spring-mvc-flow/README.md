@@ -12,7 +12,7 @@ question:
 
 ## 引子：一个请求的 9 步旅程
 
-```
+```text
 浏览器 → http://localhost:8080/api/users
 ```
 

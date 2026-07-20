@@ -136,7 +136,7 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 
 **Boot 2.7+（推荐）** — 读取 `META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports`：
 
-```
+```text
 # AutoConfiguration.imports
 org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
 org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration
@@ -217,7 +217,7 @@ public class MyProperties {
 
 **方式一（推荐，Boot 2.7+）**：在 `src/main/resources/META-INF/spring/` 下创建文件 `org.springframework.boot.autoconfigure.AutoConfiguration.imports`：
 
-```
+```text
 com.example.MyAutoConfiguration
 ```
 
@@ -261,7 +261,7 @@ public class FullConfig {
 
 ### 5.2 配置优先级
 
-```
+```text
 用户自定义 @Bean > 自动配置类 @Bean（@ConditionalOnMissingBean 保证）
 application.yml > 自动配置类的默认值
 ```
