@@ -106,7 +106,7 @@ Map（接口，键值对）
     ├── 优先级队列 → PriorityQueue
     ├── 阻塞队列（生产者-消费者）→ [详见并发集合文档](concurrent.md)
     └── 延迟队列 → DelayQueue
-```text
+```
 
 > **一句话原则**：不知道选什么就选 `HashMap` / `ArrayList` / `ArrayDeque`，等遇到具体需求再换。
 
@@ -118,7 +118,7 @@ Map（接口，键值对）
 
 ### 底层结构
 
-```
+```text
 ArrayList：Object[] 动态数组
 ┌───┬───┬───┬───┬───┬───┬───┬───┐
 │ A │ B │ C │ D │   │   │   │   │  ← 容量 8，size 4
@@ -126,7 +126,7 @@ ArrayList：Object[] 动态数组
 
 LinkedList：双向链表
 null ← [prev|A|next] ⇄ [prev|B|next] ⇄ [prev|C|next] → null
-```text
+```
 
 ### 性能对比
 
@@ -142,7 +142,7 @@ null ← [prev|A|next] ⇄ [prev|B|next] ⇄ [prev|C|next] → null
 
 ### 实际选择建议
 
-```
+```text
 99% 的场景选 ArrayList，原因：
 1. CPU 缓存友好：数组内存连续，局部性好
 2. 随机访问 O(1)：绝大多数业务都需要按索引访问
@@ -257,7 +257,7 @@ map.put("B", 2);
 Iterator<String> it = map.keySet().iterator();
 map.put("C", 3);         // 修改了集合
 it.next();               // 不抛异常，但可能看不到 "C"
-```text
+```
 
 **原理**：迭代器基于集合的快照或当前状态，不抛异常，但**不保证能看到修改**。
 
@@ -276,7 +276,7 @@ it.next();               // 不抛异常，但可能看不到 "C"
 
 ### 规则
 
-```
+```text
 1. equals() 相等的两个对象，hashCode() 必须相等
 2. hashCode() 相等的两个对象，equals() 不一定相等（哈希冲突）
 3. 重写 equals() 必须同时重写 hashCode()
@@ -409,7 +409,7 @@ Map<String, Integer> map2 = Map.ofEntries(              // 超过 10 个元素
 
 // 从已有集合创建不可变副本
 List<String> copy = List.copyOf(existingList);
-```text
+```
 
 **特点**：
 - 不可添加、删除、修改元素
@@ -423,7 +423,7 @@ List<String> copy = List.copyOf(existingList);
 
 ## 总结
 
-```
+```text
 集合选型核心原则：
 
 1. Map 选 HashMap（无序）/ TreeMap（有序）/ ConcurrentHashMap（并发）
