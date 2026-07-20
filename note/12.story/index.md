@@ -95,6 +95,7 @@ module:
 | 八 | Agent 时代操作系统 | [32 Agent Harness](./30-agent-harness.md) |
 | 九 | 注入/越权/泄露 | [33 致命三件套](./31-ai-fatal-trio.md) |
 | 十·a | 6 大评测维度 | [34a AI 评测基础](./32a-ai-evaluation-fundamentals.md) |
+| 十·b | 5 层评测流水线 | [34b AI 评测流水线](./32b-ai-evaluation-pipeline.md) |
 
 ---
 
