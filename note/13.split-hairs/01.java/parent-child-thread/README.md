@@ -295,3 +295,14 @@ public void auditLog(String action) {
 > 📅 2026-06-28 · 咬文嚼字 · Java 基础陷阱 · ⭐⭐⭐（高频面试 + 实战必会）
 
 ← [返回: 咬文嚼字 · parent-child-thread](../README.md)
+
+## 90 秒面试话术（补充版）
+
+> Q: InheritableThreadLocal 的局限性？
+> A: 仅在父线程创建子线程时复制（构造时一次性），**线程池复用线程时不触发**——这是线上最常见 bug 根因。
+> 
+> Q: 如何在线程池场景下传递上下文？
+> A: 3 方案：
+> 1. **TransmittableThreadLocal（TTL）**：阿里开源，自动 capture + replay
+> 2. **Transmitter 包**：任务提交时 capture，execute 前 replay
+> 3. **Spring RequestContextHolder**：基于 ThreadLocal + Spring 拦截器自动管理

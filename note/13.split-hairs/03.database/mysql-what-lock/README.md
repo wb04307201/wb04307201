@@ -297,3 +297,17 @@ JOIN performance_schema.threads t ON w.blocking_thread_id = t.thread_id;
 - 深度阅读：[`03.database`](../../../03.database/README.md) — 主模块详细内容
 
 ← [返回数据库咬文嚼字](../README.md)
+
+## 90 秒面试话术（补充版）
+
+> Q: UPDATE 为什么会锁住整个表？
+> A: 3 个隐藏机制：
+> 1. **间隙锁（Gap Lock）**：RR 隔离级别下，索引范围扫描时会锁住索引区间，防止幻读
+> 2. **临键锁（Next-Key Lock）**：gap + record lock，锁住"已存在记录 + 记录之间的间隙"
+> 3. **插入意向锁（Insert Intention Lock）**：插入新行前需等待 gap lock
+> 
+> **修复**：
+> 1. 改用 RC 隔离级别（无 gap lock）
+> 2. 索引设计让 UPDATE 走精确点（避免范围扫描）
+> 3. 拆分大事务为小事务
+> 4. 使用 `SELECT ... FOR UPDATE SKIP LOCKED` 跳过锁
