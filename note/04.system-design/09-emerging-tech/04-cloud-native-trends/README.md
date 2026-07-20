@@ -83,7 +83,7 @@ spec:
 
 ### 3.1 GPU 池化
 
-```
+```text
 传统：1 个 Pod 绑 1 张 GPU（浪费）
 现代：GPU 共享 / 切分（MIG / vGPU / time-slicing）
 ```
@@ -171,7 +171,7 @@ spec:
 
 **内部开发者平台（IDP）**：让开发者自助完成"非业务工作"（部署 / 监控 / 密钥），专注业务代码。
 
-```
+```text
 传统：开发者要懂 K8s / Docker / CI / 监控
   ↓
 平台工程：内部平台封装复杂性，开发者点几个按钮即可
@@ -214,7 +214,7 @@ spec:
 
 ### 4.4 IDP 黄金路径
 
-```
+```text
 开发者 → IDP 平台 → 选择模板 → 填表单 → 自动创建
    ↓
   Git 仓库 + K8s 部署 + 监控 + 域名 + 文档
@@ -230,7 +230,7 @@ spec:
 
 ### 5.1 OpenTelemetry（OTel）一统江湖
 
-```
+```text
 传统：
   - Prometheus（指标）
   - Jaeger（链路追踪）
@@ -245,7 +245,7 @@ OpenTelemetry（OTel）：
 
 ### 5.2 OTel + eBPF 自动埋点
 
-```
+```text
 传统：业务代码手动加 SDK
   ↓
 eBPF 自动埋点：
