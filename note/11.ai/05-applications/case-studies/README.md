@@ -55,18 +55,18 @@ graph TB
 
 | # | 标题 | 行业 | 一句话总结 | 核心机制 |
 |---|------|------|-----------|---------|
-| 01 | Anthropic Claude Code | 编程 | AI 写 AI 的飞轮 | 内部对 Agent 输出的 review 机制 |
-| 02 | Cursor Tab | 编程 | 预测你的下一次编辑 | 编辑级预测 + 克制设计 |
-| 03 | Klarna AI 客服 | 客服 | 先激进、后回调 | 情绪劳动是 AI 盲区 |
-| 04 | Harvey AI | 法律 | 30% 员工是律师 | 垂直 know-how 是壁垒 |
-| 05 | Khanmigo | 教育 | 苏格拉底式导师 | 不直接给答案的产品哲学 |
-| 06 | Duolingo Max | 教育 | GPT-4 陪练角色 | 练习密度无限化 |
-| 07 | JPMorgan COiN | 金融 | 36 万小时→秒级 | LLM 时代前的"白领流水线"先驱 |
-| 08 | Microsoft 365 Copilot | 办公 | 工具→协作者 | 存量 SaaS 的 AI 升级路径 |
-| 09 | Glean | 办公 | 散落知识一站搜 | RAG 的真正杀手场景 |
-| 10 | Salesforce Agentforce | 销售 | 销售 Agent 自主跟进 | RPA → 自主 Agent 跃迁 |
-| 11 | Hippocratic AI | 医疗 | 不替代医生的护理 Agent | 高风险行业的边界设计 |
-| 12 | Siemens Industrial Copilot | 制造 | 自然语言生成 PLC | 工业 know-how > 模型 |
+| 01 | [Anthropic Claude Code](01-anthropic-claude-code/README.md) | 编程 | AI 写 AI 的飞轮 | 内部对 Agent 输出的 review 机制 |
+| 02 | [Cursor Tab](02-cursor-tab/README.md) | 编程 | 预测你的下一次编辑 | 编辑级预测 + 克制设计 |
+| 03 | [Klarna AI 客服](03-klarna-ai-customer-service/README.md) | 客服 | 先激进、后回调 | 情绪劳动是 AI 盲区 |
+| 04 | [Harvey AI](04-harvey-ai-legal/README.md) | 法律 | 30% 员工是律师 | 垂直 know-how 是壁垒 |
+| 05 | [Khanmigo](05-khan-academy-khanmigo/README.md) | 教育 | 苏格拉底式导师 | 不直接给答案的产品哲学 |
+| 06 | [Duolingo Max](06-duolingo-max/README.md) | 教育 | GPT-4 陪练角色 | 练习密度无限化 |
+| 07 | [JPMorgan COiN](07-jpmorgan-coin/README.md) | 金融 | 36 万小时→秒级 | LLM 时代前的"白领流水线"先驱 |
+| 08 | [Microsoft 365 Copilot](08-microsoft-365-copilot/README.md) | 办公 | 工具→协作者 | 存量 SaaS 的 AI 升级路径 |
+| 09 | [Glean](09-glean-enterprise-search/README.md) | 办公 | 散落知识一站搜 | RAG 的真正杀手场景 |
+| 10 | [Salesforce Agentforce](10-salesforce-agentforce/README.md) | 销售 | 销售 Agent 自主跟进 | RPA → 自主 Agent 跃迁 |
+| 11 | [Hippocratic AI](11-hippocratic-ai/README.md) | 医疗 | 不替代医生的护理 Agent | 高风险行业的边界设计 |
+| 12 | [Siemens Industrial Copilot](12-siemens-industrial-copilot/README.md) | 制造 | 自然语言生成 PLC | 工业 know-how > 模型 |
 
 ## 横向对比维度
 
@@ -97,4 +97,4 @@ graph TB
 - 上游：[L4 架构设计](../../04-architecture/) — 系统分层与 AI Agent
 - 同级：[automotive](../automotive/)、[embodied-ai](../embodied-ai/)、[ai-written-prd](../ai-written-prd/)、[shopify-ai-agent](../shopify-ai-agent/)
 
-← [返回: AI 知识体系 · case-studies](README.md)
+← [返回: L5 行业应用](../README.md)
