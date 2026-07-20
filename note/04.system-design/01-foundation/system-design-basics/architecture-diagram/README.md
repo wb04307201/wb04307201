@@ -29,6 +29,59 @@ module:
 | 详细设计文档 | C4 Component + 4+1 开发视图 | 模块划分与代码组织 |
 | 全链路追溯 | 4+1 完整五视图 | 覆盖所有关注点 |
 
+## 4+1 vs C4 视图示例
+
+### 4+1 视图
+
+```mermaid
+graph TB
+  subgraph "逻辑视图"
+    U[User]
+    A[App Logic]
+    DB[(Database)]
+  end
+  subgraph "开发视图"
+    Module1[Module A]
+    Module2[Module B]
+  end
+  subgraph "进程视图"
+    P1[Process 1]
+    P2[Process 2]
+  end
+  subgraph "物理视图"
+    Server1[Server 1]
+    Server2[Server 2]
+  end
+  U -->|场景视图| A
+  A --> DB
+  A --> Module1
+  Module1 --> Module2
+  P1 <--> P2
+  P1 --> Server1
+  P2 --> Server2
+```
+
+### C4 Context 视图
+
+```mermaid
+graph LR
+  User[👤 User]
+  Web[💻 Web App]
+  API[⚙️ Backend API]
+  DB[(🗄️ Database)]
+  User -->|使用| Web
+  Web -->|API 调用| API
+  API -->|读写| DB
+```
+
+### 反例对比
+
+```mermaid
+graph TB
+  A1[服务A] -.->|❌ 错误| B1[模块B]
+  A1[服务A] -->|✅ 正确| B1
+```
+
 ## 相关章节
 
 - 父级：[系统设计基础](../README.md) — 软件工程 / 设计模式 / 架构视图
