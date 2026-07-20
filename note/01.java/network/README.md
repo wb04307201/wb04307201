@@ -15,7 +15,7 @@ module:
 
 Socket 是操作系统提供的进程间通信机制，是 TCP/IP 网络通信的端点抽象。Java 中通过 `java.net` 包提供 Socket 编程支持。
 
-```
+```text
   ┌─────────────┐         TCP/IP 网络         ┌─────────────┐
   │   Client    │  ────────────────────────▶  │   Server    │
   │   Socket    │  ◀────────────────────────  │  ServerSocket│
@@ -156,7 +156,7 @@ public class BioThreadPoolServer {
 
 ### 2.3 BIO 模型局限性
 
-```
+```text
   线程数 vs 连接数
   ┌──────────────────────────────────────┐
   │  连接数   线程数    内存消耗    CPU 利用率  │
@@ -440,7 +440,7 @@ public class AioCallbackServer {
 
 理解 I/O 模型的关键在于两个维度：
 
-```
+```text
   同步 vs 异步
   ┌────────────────────────────────────────────────────┐
   │  同步 (Synchronous) : 调用者主动参与 I/O 操作      │
@@ -497,7 +497,7 @@ Reactor 是一种事件驱动的网络编程设计模式，核心思想是将 I/
 
 ### 6.2 单线程 Reactor
 
-```
+```text
   ┌─────────────────────────────────────────┐
   │          Single Thread Reactor          │
   │                                         │
@@ -522,7 +522,7 @@ Reactor 是一种事件驱动的网络编程设计模式，核心思想是将 I/
 
 ### 6.3 多线程 Reactor
 
-```
+```text
   ┌─────────────────────────────────────────────────┐
   │           Multi-Thread Reactor                   │
   │                                                  │
@@ -555,7 +555,7 @@ Reactor 是一种事件驱动的网络编程设计模式，核心思想是将 I/
 
 ### 6.4 主从多线程 Reactor（Master-Slave）
 
-```
+```text
   ┌───────────────────────────────────────────────────────────┐
   │              Master-Slave Multi-Thread Reactor            │
   │                                                           │
@@ -735,7 +735,7 @@ HttpRequest uploadReq = HttpRequest.newBuilder()
 
 ### 8.2 Netty 核心概念
 
-```
+```text
   Netty 架构分层
   ┌────────────────────────────────────────────┐
   │              Application Layer             │
