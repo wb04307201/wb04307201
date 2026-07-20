@@ -17,7 +17,6 @@ module:
 
 | 序号 | 主题 | 核心内容 | 子 README |
 |------|------|---------|-----------|
-| 01 | [阿里微服务](ali-microservices/) | Nacos 服务发现 + 配置管理 + Sentinel + Seata 等 | [README](README.md) |
 
 ### 1.1 学习路径
 
