@@ -97,7 +97,7 @@ Java 版本特性 是 N 个 JEP / 特性 / 章节的合集。
 
 ## 知识图谱
 
-```
+```text
 版本特性 (version)
 ├── 功能变更历史
 │   ├── 语言特性: Lambda / Switch / instanceof / Text Blocks / Record / Sealed Classes
