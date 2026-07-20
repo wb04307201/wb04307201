@@ -58,7 +58,7 @@ module:
 ## 3. 速查要点
 
 - **Flink**：流优先 + 事件时间 + Exactly-Once + RocksDB 状态后端
-- **Spark Streaming**：微批（默认 1 秒）+ Structured Streaming + Spark 生态
+- **Spark Streaming**：早期 DStream 为微批（默认 batch interval 1 秒），新版 Structured Streaming 触发器可配置（默认 `micro-batch`，可切到 `continuous`）
 - **Kafka Streams**：流优先库（轻量，无独立集群）
 
 ---

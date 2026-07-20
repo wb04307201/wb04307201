@@ -78,7 +78,7 @@ module:
 
 - 复杂多表 JOIN（电商订单 + 用户 + 商品）
 - 实时数据仓库（替代 ClickHouse + Druid）
-- 高并发实时查询（每分钟 10 万+ QPS）
+- 高并发实时查询（QPS 量级以官方 benchmark 与实际硬件为准）
 
 ---
 

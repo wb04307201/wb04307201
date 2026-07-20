@@ -114,7 +114,7 @@ Hudi Table
 | 维度 | Iceberg | Delta Lake | Hudi |
 |------|---------|-----------|------|
 | **出生** | Netflix 2017 | Databricks 2019 | Uber 2017 |
-| **社区** | Apache 顶级（CNCF）| Databricks 主控 + 开源 | Apache 顶级 |
+| **社区** | Apache 软件基金会顶级项目 | Databricks 主控 + 开源 | Apache 软件基金会顶级项目 |
 | **多引擎** | ✅ Spark/Flink/Trino | ⚠️ Spark 为主 | ✅ Spark/Flink |
 | **ACID** | ✅ | ✅ | ✅ |
 | **Schema 演进** | ✅ 强 | ✅ 强 | ✅ 中 |
