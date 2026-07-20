@@ -18,7 +18,7 @@ module:
 
 ## 一、项目结构
 
-```
+```text
 monitor-agent/
 ├── pom.xml
 └── src/main/java/com/pack/agent/
@@ -287,7 +287,7 @@ curl http://localhost:8080/demos/index
 
 ### 预期输出
 
-```
+```text
 [MonitorAgent] === Agent 已启动 ===
 index 耗时:0 ms
 index 耗时:0 ms
