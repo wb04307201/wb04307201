@@ -532,7 +532,7 @@ public class GlobalExceptionHandler {
 
 ### 传播路径
 
-```
+```text
 方法调用栈
   methodC() 抛出 NullPointerException
     → methodB() 未 catch

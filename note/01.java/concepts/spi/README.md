@@ -117,13 +117,13 @@ public class WechatProvider implements PaymentProvider {
 
 在实现类的 jar 包中创建配置文件：
 
-```
+```text
 META-INF/services/com.example.PaymentProvider
 ```
 
 文件内容为实现类的全限定名，每行一个：
 
-```
+```text
 com.example.impl.AlipayProvider
 com.example.impl.WechatProvider
 ```
@@ -295,7 +295,7 @@ public class AlipayProvider implements PaymentProvider {
 
 编译时 AutoService 会自动生成 `META-INF/services/com.example.PaymentProvider` 文件，内容为：
 
-```
+```text
 com.example.impl.AlipayProvider
 ```
 
