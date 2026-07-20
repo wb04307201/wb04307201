@@ -48,7 +48,7 @@ question:
 
 ### 1.2 AC 自动机 3 大核心组件
 
-```
+```text
 ┌──────────────────────────────────────┐
 │ 1. Trie（字典树）—— 存所有 patterns    │
 │   "apple" / "app" / "apply" 共享 'app'  │
@@ -68,7 +68,7 @@ question:
 
 ### 1.3 AC 自动机匹配流程
 
-```
+```text
 扫描 "hello":
 h → 命中 Trie 节点 h
 e → 沿 fail 跳到 e（假设 e 是 fail 的 child）
@@ -82,7 +82,7 @@ O(n) 单次扫描，找到所有匹配 patterns
 
 ### 1.4 生产环境核心公式
 
-```
+```text
 AC 自动机 + Bloom Filter + Caffeine + 分布式 + 异步队列
 = 100w QPS 不卡顿
 
@@ -103,7 +103,7 @@ AC 自动机 + Bloom Filter + Caffeine + 分布式 + 异步队列
 
 **高分答案**（4 层递进，60-90 秒）：
 
-```
+```text
 1. 场景区分（10 秒）：
    "敏感词过滤典型场景：评论 / 弹幕 / 商品 / 私信。
    QPS 跨度 1k-100w，词典 1万-100万。
@@ -130,7 +130,7 @@ AC 自动机 + Bloom Filter + Caffeine + 分布式 + 异步队列
 
 **高分答案**（50 秒）：
 
-```
+```text
 "fail 指针构建分 3 步：
 
 1. 初始化：根节点的 fail = 根，第一层 child 的 fail = 根
@@ -150,7 +150,7 @@ Java 实现见 HanLP AhoCorasickDoubleArrayTrie，< 100 行代码。"
 
 **高分答案**（45 秒）：
 
-```
+```text
 "AC 自动机 = Trie + fail 指针（类似 KMP 的 next）。
 KMP 处理单 needle，AC 处理多 needle。
 
@@ -174,7 +174,7 @@ AC 自动机：
 
 **高分答案**（50 秒）：
 
-```
+```text
 "Trie 节点 2 个关键字段：
 - children（子节点字典 / 数组）
 - isEnd（是否单词结尾）
@@ -200,7 +200,7 @@ Java 两种实现：
 
 **高分答案**（60 秒）：
 
-```
+```text
 "3 阶段架构演进：
 
 阶段 1（1k QPS）：单机
@@ -236,7 +236,7 @@ Java 实战：HanLP DAT + Guava Bloom + Caffeine 三件套。"
 
 **高分答案**（40 秒）：
 
-```
+```text
 "Bloom Filter 用于'预筛不可能含敏感词的文本'。
 
 原理：把文本切成 5-10 字符块加入 Bloom。
@@ -257,7 +257,7 @@ Java 实现：com.google.guava BloomFilter。
 
 **高分答案**（50 秒）：
 
-```
+```text
 "5 大反模式（生产事故老坑）：
 
 1. 每次请求构建 AC：
@@ -416,7 +416,7 @@ public void refreshDictionary() {
 
 ## 六、面试反问（让候选人反客为主）
 
-```
+```text
 Q1：贵司 QPS 量级？词典大小？
     → < 1k：单机；1k-10w：分布式；> 10w：多级
 Q2：贵司延迟要求？

@@ -150,7 +150,7 @@ listen(server_fd, ...);
 
 **高分答案（4 层递进，60-90 秒）**：
 
-```
+```text
 1. 一句话（10 秒）：
    "默认不能。但用 SO_REUSEPORT（Linux 3.9+）
     可以让多进程同 listen，内核自动做负载均衡。"
@@ -179,7 +179,7 @@ listen(server_fd, ...);
 
 ## 五、面试反问（让候选人反客为主）
 
-```
+```text
 Q1：贵司线上 nginx/redis 用 SO_REUSEPORT 吗？为什么？
     → 答用了 + 理由 = 高分
 Q2：SO_REUSEADDR vs SO_REUSEPORT 的核心区别？

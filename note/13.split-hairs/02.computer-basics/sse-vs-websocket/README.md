@@ -12,7 +12,7 @@ question:
 
 ## 引子：面试官的追问
 
-```
+```text
 候选人：SSE 是单向的，WebSocket 是双向的。
 面试官：那 ChatGPT、Claude、通义千问的 AI 对话，为什么全用 SSE 不用 WebSocket？
 候选人：……
@@ -38,7 +38,7 @@ question:
 
 ### SSE 数据格式
 
-```
+```text
 HTTP/1.1 200 OK
 Content-Type: text/event-stream
 
@@ -59,7 +59,7 @@ data: [DONE]
 
 ### WebSocket 数据格式
 
-```
+```text
 Client → Server:  HTTP GET + Upgrade: websocket
 Server → Client:  101 Switching Protocols
 （之后双向二进制/文本帧通信）
@@ -71,7 +71,7 @@ Server → Client:  101 Switching Protocols
 
 ### 理由 1：通信模式完美匹配
 
-```
+```text
 AI 对话的通信特征：
 用户发送一条消息（短请求，标准 HTTP POST）
   ↓
