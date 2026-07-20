@@ -352,6 +352,7 @@ graph TB
 - [工作流定义](../define/README.md) — BPMN 三要素
 - [流程引擎](../process-engine/README.md) — Camunda 7/8 / Zeebe 流程引擎
 - [微服务编排](../workflow-and-microservice-orchestration/README.md) — 编舞 vs 编排
+- [EventMesh 云流程（可视化架构图）](cloud-flow/README.md) — Serverless Workflow DSL + FC/MNS/VOD/FNF 编排图
 - [04 系统设计/02 分布式](../../04.system-design/02-distributed/README.md) — CAP/共识理论基础
 - [04 系统设计/06 幂等](../../04.system-design/06-idempotency/README.md) — 事件驱动必配的幂等设计
 

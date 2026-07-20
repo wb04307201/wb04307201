@@ -280,4 +280,4 @@ curl http://127.0.0.1:10106/workflow/list | jq '.data[].name'
 
 > 提示：本目录以 Mermaid 图表为主，建议结合 [事件驱动 README](../README.md) 的 §三 Apache EventMesh 与 §五 12306 案例一起阅读
 
-← [返回 07 工作流](../../../README.md)
+← [返回 07 工作流](../../README.md)
