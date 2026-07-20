@@ -211,4 +211,4 @@ Q5：thundering herd 在 SO_REUSEPORT 下还存在吗？
 
 > 📅 2026-07-13 · 咬文嚼字 · 02.computer-basics · ⭐⭐⭐⭐ · 3 机制 + 4 误区 + 5 实战场景 + 90 秒话术 + 4 兄弟导航
 
-← [返回: 咬文嚼字 · 02.computer-basics](README.md)
+← [返回: 咬文嚼字 · 02.computer-basics](../README.md)
