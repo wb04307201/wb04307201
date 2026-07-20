@@ -80,6 +80,12 @@ module:
 | 续集 1-17（AI 时代） | [01-41 续集](./README.md#全部四十六篇文章) |
 | **续集 18-20**（AI 责任 / 数据真相 / 个人困局） | **[44 谁负责](./42-ai-engineer-responsibility.md) / [45 生产力](./43-ai-productivity-paradox.md) / [46 困局](./44-tech-debt-career-trap.md)** |
 
+### 🟣 AI 时代 21 篇（续集一-十七）
+
+| 续集 | 主题 | 文章 |
+|------|------|------|
+| 一 | 当餐厅长出大脑 | [01 AI Agent 架构](./01-ai-agent-architecture.md) |
+
 ---
 
 ## 四、AI 时代专题（2026 新增 3 篇 · 必读）
