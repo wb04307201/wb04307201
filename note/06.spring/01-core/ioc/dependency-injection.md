@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring/ioc/dependency-injection
+  type: article
+  category: 主模块子文章
+  summary: Spring 依赖注入 4 种方式：构造器、Setter、字段、@Bean/工厂方法。
+-->
+
 # 依赖注入
 
 > ⬅️ [返回 IoC 总览](README.md) | [Bean 生命周期](bean-lifecycle.md) | [作用域与线程安全](scopes-and-thread-safety.md)
@@ -220,3 +229,12 @@ public class DefaultServiceFactory {
 ## 七、总结
 
 构造器注入是依赖注入中最清晰、最安全的方式，尤其适合需要强制依赖或不可变对象的场景。它通过显式声明依赖关系，提升了代码的健壮性和可测试性，是现代软件开发中的最佳实践之一。工厂方法注入主要存在于遗留 XML 配置中，新项目应优先使用 `@Bean`。
+
+---
+
+## 相关章节
+
+- ⬅️ [返回 IoC 总览](README.md)
+- [Bean 生命周期](bean-lifecycle.md)
+- [作用域与线程安全](scopes-and-thread-safety.md)
+- [循环依赖与三级缓存](circular-dependency.md)

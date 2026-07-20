@@ -1,7 +1,7 @@
 <!--
 module:
   parent: computer-basics
-  slug: computer-basics/algorithms/dimensionality-reduction
+  slug: algorithms/dimensionality-reduction
   type: index
   category: 主模块子文章
   summary: 降维算法——在保留关键信息的同时减少特征维度
