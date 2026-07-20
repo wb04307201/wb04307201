@@ -16,9 +16,7 @@ module:
 ---
 ## 引言：架构困境
 
-Transformer 架构核心 的关键不是'选型'——是**选完之后怎么在 5 个 trade-off 里活下来**。
-
-本篇用'决策困境'切入，比较几种主流路径并讲清取舍。
+Transformer 不是"唯一正确答案"——它用 O(n²) 自注意力换来了**长距离依赖建模 + 高度并行训练**。代价是序列长度受限、推理显存爆炸、对位置信息需额外建模。本篇围绕"自注意力 vs RNN/CNN"、"绝对位置 vs 旋转位置编码"、"Encoder-only vs Decoder-only vs Encoder-Decoder"三条主线，把现代 LLM 架构的 5 大核心 trade-off 讲清楚。
 
 ---
 

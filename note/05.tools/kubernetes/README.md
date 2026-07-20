@@ -13,9 +13,7 @@ module:
 
 ---
 ## 引言：架构困境
-Kubernetes · 云原生编排平台 的关键不是'选型'——是**选完之后怎么在 5 个 trade-off 里活下来**。
-
-本篇用'决策困境'切入，比较几种主流路径并讲清取舍。
+Kubernetes 的核心张力不是"要不要用 K8s"——而是**抽象红利、运维复杂度、生态锁定三者的取舍**。K8s 提供跨云一致的调度/自愈/服务发现能力，但 CRD/Operator/Service Mesh/Ingress 的学习曲线陡峭；轻量场景直接用 Docker Compose 反而更经济。本篇围绕"控制平面 vs 工作节点"、"Deployment vs StatefulSet vs DaemonSet"、"自建 vs 托管（EKS/GKE/AKS）"三条主线，把容器编排的 5 大核心 trade-off 讲清楚。
 
 ---
 
