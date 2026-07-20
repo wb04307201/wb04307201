@@ -163,4 +163,8 @@ graph TD
 - [超时](../timeout/README.md) — 限流后端服务的超时需要分级设置
 - [服务降级](../service-degradation/README.md) — 限流触发的兜底响应可走降级逻辑
 
+## 实战案例
+
+- [秒杀无 Redis 实战](seckill-without-redis.md) — 500 人 / 2 台服务器 / 库存=1 单机方案 + 5 大方案对比
+
 ← [返回 高可用](../README.md)

@@ -179,7 +179,7 @@ public class UserServiceImpl implements UserService {
 
 ## 专题导航
 
-- [2 行/8 行原则](2-lines-8-lines/README.md) — 2 行原则（每个方法不超过 2 个嵌套层级）+ 8 行原则（每个方法不超过 8 个分支）
+- [2 行/8 行原则](2-lines-8-lines/README.md) — **2 行/8 行原则** — 用约 2 行表达 Happy Path，以约 8 行处理鲁棒性与边界情况（功能与鲁棒性约 1:4 投入）
 
 ---
 
