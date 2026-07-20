@@ -93,6 +93,7 @@ module:
 | 六 | 三层护栏 + 信任校准 | [30 AI 幻觉护栏](./28-ai-hallucination-safety.md) |
 | 七 | AI 时代隐形负债 | [31 Codebase 认知债](./29-codebase-cognitive-debt.md) |
 | 八 | Agent 时代操作系统 | [32 Agent Harness](./30-agent-harness.md) |
+| 九 | 注入/越权/泄露 | [33 致命三件套](./31-ai-fatal-trio.md) |
 
 ---
 
