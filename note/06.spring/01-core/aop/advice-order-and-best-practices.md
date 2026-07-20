@@ -168,7 +168,7 @@ public class SecurityAspect {
 
 ### 3. 执行结果
 
-```
+```text
 INFO  LoggingAspect: Logging before method execution
 INFO  SecurityAspect: Performing security check before method execution
 INFO  LoggingAspect: Logging after method execution

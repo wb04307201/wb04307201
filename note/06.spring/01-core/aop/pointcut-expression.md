@@ -16,7 +16,7 @@ Spring AOP 使用 **AspectJ 风格的表达式**来定义切入点（Pointcut）
 
 ### execution 表达式（最常用）
 
-```
+```text
 execution(modifiers? return_type method_name(param_type1, param_type2, …))
 ```
 
@@ -40,13 +40,13 @@ execution(modifiers? return_type method_name(param_type1, param_type2, …))
 
 ### 1. 精确匹配
 
-```
+```text
 execution(public void com.pack.service.UserService.doSomething())
 ```
 
 ### 2. 使用通配符
 
-```
+```text
 execution(* com.pack.service.*.*(..))
 ```
 
