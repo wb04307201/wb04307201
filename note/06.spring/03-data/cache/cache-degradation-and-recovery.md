@@ -41,7 +41,7 @@ public User getUser(Long userId) {
 
 ### 真正的应急方案应该是
 
-```
+```text
 Redis 挂了的预期行为：
 1. @Cacheable 自动跳过 Redis 查询
 2. 直接走 DB 查询
@@ -196,7 +196,7 @@ public class UserService {
 
 **关键能力：自动恢复**：
 
-```
+```text
 Redis 状态变化：
 ├─ 正常 → 走 Redis
 ├─ 失败率 > 50% → 熔断（30 秒）
@@ -279,7 +279,7 @@ public class UserService {
 
 **选型决策树**：
 
-```
+```text
 你的项目情况？
 ├─ 简单 Spring Boot / 不想引入额外依赖
 │   └─ CacheErrorHandler + Resilience4j（轻量组合）
@@ -408,7 +408,7 @@ public class RedisHealthIndicator implements HealthIndicator {
 
 ### 方案 B：Resilience4j Half-Open（推荐 · 主动）
 
-```
+```text
 熔断状态机：
 ├─ CLOSED（关闭）→ 正常走 Redis
 ├─ OPEN（打开）→ 30 秒内直接走 DB
@@ -448,7 +448,7 @@ public void checkRedis() {
 
 ### 6.1 降级期的核心问题
 
-```
+```text
 Redis 挂了，降级期所有读直接走 DB：
 ├─ 问题 1：写操作不更新缓存（Redis 挂时 @CachePut 失败）
 ├─ 问题 2：下次 Redis 恢复，缓存是旧的脏数据

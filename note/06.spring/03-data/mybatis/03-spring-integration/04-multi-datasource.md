@@ -42,7 +42,7 @@
 
 ### 1. 项目结构
 
-```
+```text
 src/main/java/com/example/
 ├── mapper/
 │   ├── order/         # 订单库 Mapper

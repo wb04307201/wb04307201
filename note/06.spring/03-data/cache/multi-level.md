@@ -49,7 +49,7 @@ graph LR
 
 ### 读流程（Cache-Aside）
 
-```
+```text
 1. 查 L1 → 命中 → 返回
 2. 查 L1 → 未命中 → 查 L2
 3. 查 L2 → 命中 → 回填 L1 → 返回
@@ -59,7 +59,7 @@ graph LR
 
 ### 写流程
 
-```
+```text
 1. 写 DB
 2. 失效 L2（Redis DEL）
 3. 失效 L1（本地 Caffeine evict，可选：消息广播给其他实例）

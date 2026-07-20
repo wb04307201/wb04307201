@@ -355,7 +355,7 @@ class UserServiceCacheTest {
 
 ## 六、典型项目结构
 
-```
+```text
 src/main/java/
 ├── com.example.demo
 │   ├── config
@@ -375,7 +375,7 @@ src/main/java/
 ### Q1：缓存不生效？
 
 **排查清单**：
-```
+```text
 ✅ 1. 检查是否添加了 @EnableCaching（Spring Boot 自动添加）
 ✅ 2. 确认方法被 Spring 管理（有 @Service 等注解）
 ✅ 3. 检查缓存名称（cacheNames）是否正确

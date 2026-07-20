@@ -355,7 +355,7 @@ public class MyBatisConfig {
 
 ### 2. Mapper XML 与接口同包（推荐）
 
-```
+```text
 src/main/java/com/example/mapper/
 ├── UserMapper.java          ← 接口
 src/main/resources/com/example/mapper/
