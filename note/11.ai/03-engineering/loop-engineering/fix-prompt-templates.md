@@ -56,7 +56,7 @@ SYNTAX_FIX_PROMPT = """
 当前代码：
 ```{lang}
 {code}
-```
+```text
 
 请修复语法错误，保持代码逻辑不变。
 
@@ -81,7 +81,7 @@ TYPE_FIX_PROMPT = """
 当前代码：
 ```{lang}
 {code}
-```
+```text
 
 类型签名：
 {type_signature}
@@ -110,12 +110,12 @@ Stack trace：
 被测试的函数：
 ```{lang}
 {function_code}
-```
+```text
 
 测试代码：
 ```{lang}
 {test_code}
-```
+```text
 
 请：
 1. 分析失败原因（不是机械改，而是理解）
@@ -143,7 +143,7 @@ Stack trace：
 当前代码：
 ```{lang}
 {code}
-```
+```text
 
 环境信息：{env_info}
 
@@ -203,7 +203,7 @@ def calculate_discount(amount, member_level):
     if amount > 1000:
         return amount * 0.9
     return amount * 0.95
-```
+```text
 
 ## 测试失败
 
