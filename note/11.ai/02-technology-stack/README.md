@@ -42,6 +42,7 @@ module:
 | 目录 | 核心内容 | 一句话定位 |
 |------|---------|-----------|
 | **RAG 管线** | | |
+| 🆕 [rag-paradigm-evolution](rag-paradigm-evolution/) | **RAG 范式演进四阶段** — Naive→Advanced→Modular→Agentic 核心能力递进 + 对比表 + 选型决策树 | 代际主线（先读） |
 | [rag-pipeline](rag-pipeline/) | RAG 完整 Pipeline 综述 — 5 阶段 SOTA 架构 | 全链路总览 |
 | [chunking-strategies](chunking-strategies/) | 5 大 Chunking 策略对比（固定/递归/语义/滑动/Agentic） | 检索质量 20-40% |
 | [query-rewrite](query-rewrite/) | Query Rewrite 查询改写提升 RAG 召回 10-20% | 多轮对话必备 |
@@ -70,6 +71,7 @@ graph LR
     F --> G[token-billing<br/>成本控制]
 
     A --> R[rag-pipeline<br/>全链路综述]
+    EV[rag-paradigm-evolution<br/>四阶段代际主线] --> R
     R --> R1[query-rewrite<br/>查询改写]
     R --> R2[hybrid-search<br/>混合检索]
     R --> R3[reranker<br/>重排序]
@@ -96,6 +98,7 @@ graph LR
 | **多模态** | VLM（视觉-语言）/ 音频 / 视频统一表征 | 跨模态任务 |
 | **显存估算** | 模型参数 + 优化器 + 激活 + KV Cache | 训练/推理资源规划 |
 | **MCP** | Model Context Protocol，标准化工具接入 | 跨厂商 Agent 互操作 |
+| **RAG 演进四阶段** | Naive（能跑通）→ Advanced（更精准）→ Modular（更灵活）→ Agentic（会思考） | RAG 代际选型 |
 | **RAG Pipeline** | Query Rewrite → Hybrid Search → Rerank → Generation | 知识检索增强生成 |
 | **Query Rewrite** | LLM 改写口语化 / 不完整 query | 多轮对话 RAG |
 | **Hybrid Search** | 向量（语义）+ BM25（关键词）RRF 融合 | 生产环境标配 |
@@ -122,6 +125,7 @@ graph LR
 - **[context-engineering](context-engineering/)**：Lost in Middle、4 大原则、Context Window 限制
 - **[function-calling](function-calling/)**：5 大场景（搜索/计算/API/数据库/文件操作）+ 5 大安全陷阱
 - **[token-billing](token-billing/)**：BPE / WordPiece / SentencePiece 对比；Token 优化技巧
+- **[rag-paradigm-evolution](rag-paradigm-evolution/)**：RAG 范式演进四阶段（Naive→Advanced→Modular→Agentic），核心能力递进 + 与 5 阶段 Pipeline 正交关系澄清 + 选型决策树
 - **[rag-pipeline](rag-pipeline/)**：5 阶段 SOTA 架构（Query Rewrite → Hybrid Search → Rerank → Context Compression → Generation）
 - **[chunking-strategies](chunking-strategies/)**：5 大策略对比（固定 / 递归 / 语义 / 滑动窗口 / Agentic），直接影响检索质量
 - **[query-rewrite](query-rewrite/)**：LLM 改写用户 query，多轮对话指代消解，召回率提升 10-20%
@@ -160,6 +164,7 @@ graph LR
 | 显存估算公式？ | 模型参数 × 精度字节数 + 优化器状态 + 激活 + KV Cache |
 | Lost in Middle 问题？ | 长上下文中部信息被忽略，结构化排版可缓解 |
 | MCP 协议价值？ | 跨厂商 Agent 工具互操作标准 |
+| RAG 演进四阶段核心能力？ | Naive 能跑通 / Advanced 更精准 / Modular 更灵活 / Agentic 会思考（继承非替代） |
 | RAG Pipeline 5 阶段？ | Query Rewrite → Hybrid Search → Rerank → Context Compression → Generation |
 | Bi-Encoder vs Cross-Encoder？ | 独立编码快速 vs 联合编码精确，Reranker 用 Cross-Encoder |
 | HNSW vs IVF vs DiskANN 选型？ | 内存图高召回 / 聚类省内存 / 磁盘友好，按规模选 |
@@ -196,16 +201,16 @@ graph LR
 
 | 维度 | 数字 |
 |------|------|
-| 一级子目录数 | 28 |
-| 一级 leaf README 数 | 28 |
+| 一级子目录数 | 29 |
+| 一级 leaf README 数 | 29 |
 | 二级 leaf README 数 | 5（multimodal:2 + prompt-engineering:3） |
-| 总 leaf README 数 | 33 |
-| 速查表条目数 | 16 |
+| 总 leaf README 数 | 34 |
+| 速查表条目数 | 17 |
 | 最佳实践条数 | 6 |
-| 常见面试题数 | 11 |
+| 常见面试题数 | 12 |
 | 开源参考项目数 | 10 类共 25+ 条 |
-| frontmatter 覆盖 | 33 / 33 = 100% |
-| 文末回链覆盖 | 33 / 33 = 100% |
+| frontmatter 覆盖 | 34 / 34 = 100% |
+| 文末回链覆盖 | 34 / 34 = 100% |
 
 ---
 
