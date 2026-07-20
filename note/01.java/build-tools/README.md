@@ -216,7 +216,7 @@ mvn package -DskipTests      # 打包但跳过测试
 
 多模块项目通过 parent pom 统一管理多个子模块：
 
-```
+```text
 my-project/
 ├── pom.xml                    # 父 POM
 ├── my-app-core/
@@ -327,12 +327,12 @@ my-project/
 
 依赖树中路径最短的版本胜出：
 
-```
+```text
 A -> B -> C -> D(1.0)      路径长度为 3
 A -> E -> D(2.0)           路径长度为 2  ← 胜出
 ```
 
-```
+```text
 项目 A
 ├── 依赖 B
 │   └── 依赖 C 1.0 ──→ commons-lang3 3.8   (路径长度 3)
