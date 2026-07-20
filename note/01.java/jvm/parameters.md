@@ -251,7 +251,7 @@ java \
 
 **选择决策**：
 
-```
+```text
 JDK 版本？
 ├── JDK ≤ 8 → 延迟敏感？
 │   ├── 是 → -XX:+UseConcMarkSweepGC（CMS）
@@ -343,7 +343,7 @@ JDK 版本？
 
 ### 日志中看什么
 
-```
+```text
 # JDK 9+ 格式示例
 [2024-01-15T10:30:05.123+0800][12.345s][info][gc] GC(0) Pause Young (Normal) (G1 Evacuation Pause) 209M->45M(2048M) 8.234ms
                                                     ↑        ↑              ↑                     ↑      ↑
@@ -369,7 +369,7 @@ Java 有四种引用类型，GC 对它们的回收策略完全不同。理解这
 | **虚引用** | `PhantomReference<Object> pr = new PhantomReference<>(obj, queue)` | 随时可回收，无法通过引用获取对象 | 跟踪对象被回收的时机（资源清理） |
 
 **GC 回收优先级**：
-```
+```text
 强引用 → 永不回收（OOM 也不回收）
   ↓ 失去强引用后
 软引用 → 内存不足时回收（GC 会尽量保留）
