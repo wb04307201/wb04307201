@@ -62,10 +62,12 @@ question:
 |------|------|---------|----------|
 | [Prompt Engineering](prompt-engineering/) | ⭐⭐⭐⭐ | 8 种核心技巧 + 陷阱 + 注入防御 | [02-technology-stack/prompt-engineering](../../11.ai/02-technology-stack/prompt-engineering/README.md) |
 | 🆕 [Temperature=0 误区](temperature-zero-myth/) | ⭐⭐⭐⭐ | 5 大根因 + 3 大防御 + Provider 差异 + 90 秒面试话术 | [03-consistency-and-failure-handling](../../11.ai/03-engineering/llm-production-thinking/03-consistency-and-failure-handling.md) |
-| [Context Engineering](context-engineering/) | ⭐⭐⭐⭐ | 4 大原则 + Lost in Middle + 演进路径 | [02-technology-stack/context-engineering](../../11.ai/02-technology-stack/context-engineering/README.md) |
+| [Context Engineering](context-engineering-interview/) | ⭐⭐⭐⭐ | 4 大原则 + Lost in Middle + 演进路径 | [02-technology-stack/context-engineering](../../11.ai/02-technology-stack/context-engineering/README.md) |
 | [Harness Engineering](harness-engineering/) | ⭐⭐⭐⭐ | 4 大 Harness 类型 + OpenSpec + 4 原则 | [03-engineering/harness-engineering](../../11.ai/03-engineering/harness-engineering/README.md) |
 | [Loop Engineering](loop-engineering/) | ⭐⭐⭐⭐ | 3 大组件 + 6 大陷阱（含 Fresh Context 架构）+ Ralph Wiggum Loop | [03-engineering/loop-engineering](../../11.ai/03-engineering/loop-engineering/README.md) |
 | [Transformer 架构](transformer/) | ⭐⭐⭐⭐⭐ | Self-Attention / QKV / Positional Encoding / FFN | [01-fundamentals/transformer](../../11.ai/01-fundamentals/transformer/README.md) |
+| [LLM 推理优化](llm-inference/) | ⭐⭐⭐⭐ | Continuous Batching / PagedAttention / KV Cache / 量化 | [02-technology-stack/llm-inference-optimization](../../11.ai/02-technology-stack/llm-inference-optimization/README.md) |
+| [LLM 对齐方法](llm-alignment/) | ⭐⭐⭐⭐ | RLHF / DPO / Constitutional AI / 5 大对齐方法 | [03-engineering/llm-alignment](../../11.ai/03-engineering/llm-alignment/README.md) |
 | [Token 原理](token/) | ⭐⭐⭐ | BPE / SentencePiece / Tokenizer / 计费模型 | [02-technology-stack/token-billing](../../11.ai/02-technology-stack/token-billing/README.md) |
 | [RAG 检索增强生成](rag/) | ⭐⭐⭐⭐⭐ | Embedding + Vector DB + Retrieval + Generation | [08-llmops/01-rag-vs-finetuning](../../11.ai/08-llmops/01-rag-vs-finetuning/README.md) |
 | [Function Calling / Tool Use](function-calling/) | ⭐⭐⭐⭐⭐ | 工具调用原理 / Schema / ReAct Agent 集成 | [02-technology-stack/function-calling](../../11.ai/02-technology-stack/function-calling/README.md) |

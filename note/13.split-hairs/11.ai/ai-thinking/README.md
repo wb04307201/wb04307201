@@ -201,4 +201,4 @@ P(100次全正面 | 公平硬币) = 7.89e-31
 
 - 深度阅读：[`11.ai`](../../11.ai/README.md) — 主模块详细内容
 
-← [返回: 咬文嚼字 · ai-thinking](README.md)
+← [返回: 咬文嚼字 · ai-thinking](../README.md)

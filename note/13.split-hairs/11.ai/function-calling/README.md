@@ -392,4 +392,4 @@ tool_choice = "auto"  # 让模型自决
 
 > **Function Calling 是让 LLM 通过结构化 JSON 声明工具调用（不是执行），4 阶段流程：用户→LLM→host→LLM→用户；5 原则：安全/Schema/Host 控制/消息协议/max_turns 防循环；3 反模式：描述含糊/无 max_turns/串行调用。腾讯 / 字节 / 阿里一面必问。**
 
-← [返回: 咬文嚼字 · function-calling](README.md)
+← [返回: 咬文嚼字 · function-calling](../README.md)

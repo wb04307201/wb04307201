@@ -181,4 +181,4 @@ RAG 不是被淘汰，是**场景化**：
 
 > 📅 2026-07-03 · 咬文嚼字 · 11.ai · ⭐⭐⭐⭐⭐
 
-← [返回: 咬文嚼字 · claude-code-agentic-search](README.md)
+← [返回: 咬文嚼字 · claude-code-agentic-search](../README.md)
