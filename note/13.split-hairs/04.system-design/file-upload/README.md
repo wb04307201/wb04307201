@@ -49,7 +49,7 @@ question:
 
 ### 1.2 完整流程
 
-```
+```text
 1. 前端计算文件 MD5
 2. POST /init {md5, size} → 秒传检查
 3. 秒传命中 → 完成（O(1)）
@@ -141,21 +141,21 @@ xhr.upload.onprogress = (e) => {
 
 **陷阱 1：分片不校验 MD5**
 
-```
+```text
 // ❌ 分片传输损坏但没发现 → 合并后文件损坏
 // ✅ 每片上传时校验 chunk MD5，不匹配则重传
 ```
 
 **陷阱 2：uploadId 不设过期**
 
-```
+```text
 // ❌ 用户上传一半放弃 → 临时分片永久占用存储
 // ✅ Redis TTL 24h + 定时清理 orphan chunks
 ```
 
 **陷阱 3：秒传只查 MD5 不查文件大小**
 
-```
+```text
 // ❌ MD5 碰撞（极低概率）→ 返回错误文件
 // ✅ WHERE md5 = ? AND file_size = ?
 ```

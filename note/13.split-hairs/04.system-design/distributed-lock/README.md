@@ -138,7 +138,7 @@ try {
 
 Redisson 用 Redis **Hash** 存储锁：
 
-```
+```text
 HSET myLock <threadId> <reentrantCount>
 ```
 

@@ -81,7 +81,7 @@ sequenceDiagram
 
 ### 场景 1：删除缓存失败
 
-```
+```text
 1. 更新 DB 成功
 2. 删缓存失败（网络抖动 / Redis 宕机）
 3. 下次读到旧数据 → 不一致
@@ -193,7 +193,7 @@ public class CacheSyncConsumer {
 
 ### 方案 C：订阅 key 过期事件（兜底）
 
-```
+```text
 设置缓存 TTL → key 过期自动删除 → 下次读从 DB 加载
 ```
 
@@ -231,7 +231,7 @@ public class CacheSyncConsumer {
 
 ### 多级缓存架构
 
-```
+```text
 请求 → L1: Caffeine（JVM 本地，< 1ms）
           ↓ miss
        L2: Redis（分布式，< 10ms）
@@ -243,7 +243,7 @@ public class CacheSyncConsumer {
 
 单级缓存（Redis-DB）只有一致性窗口。**多级缓存多了一个维度**：L1 是每个 JVM 实例独立的，更新 DB 后**无法自动通知其他实例的 L1**。
 
-```
+```text
 实例 A：更新 DB → 删 Redis → 清自己的 L1 ✅
 实例 B：L1 还是旧值 → 读到过期数据 ❌（直到 TTL 过期）
 ```

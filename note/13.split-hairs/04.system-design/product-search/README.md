@@ -41,7 +41,7 @@ question:
 
 ### 1.1 架构选型决策树
 
-```
+```text
 搜索需求？
 ├─ SKU < 1 万 + QPS < 100 → DB LIKE（MVP 够用）
 ├─ SKU 1 万~50 万 + QPS < 5000 → 单节点 ES
@@ -54,7 +54,7 @@ question:
 **正排索引**：doc → terms（已知文档查内容）
 **倒排索引**：term → docs（已知关键词查文档）
 
-```
+```text
 商品标题："Nike 红色运动鞋"
     ↓ IK 分词
 Terms: [nike, 红色, 运动鞋]
@@ -75,7 +75,7 @@ nike     → [doc1, doc5, ...]
 | 直觉符合度 | 差（100 次 = 10 倍得分） | 好（5 次以后几乎不加分） |
 
 **BM25 公式**（简化版）：
-```
+```text
 score(D, Q) = Σ IDF(qi) × f(qi,D) × (k1+1) / [f(qi,D) + k1 × (1 - b + b × |D|/avgdl)]
 ```
 
@@ -125,7 +125,7 @@ score(D, Q) = Σ IDF(qi) × f(qi,D) × (k1+1) / [f(qi,D) + k1 × (1 - b + b × |
 
 **混合排序方案**：
 
-```
+```text
 最终得分 = BM25 × 0.4 + log(sales+1) × 0.3 + rating × 0.15 + freshness × 0.1 + promo × 0.05
 ```
 
@@ -199,7 +199,7 @@ ES 实现用 `function_score` query：
 
 **陷阱 3：数据同步不做幂等**
 
-```
+```text
 // ❌ 消息重试导致 ES 写入旧数据
 // ✅ 用 ES 的 version 或 external version 做乐观锁
 ```

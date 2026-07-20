@@ -90,7 +90,7 @@ SELECT LAST_INSERT_ID();
 
 **高可用方案**：双主模式（两台 MySQL 互为主从，auto_increment_increment=2）
 
-```
+```text
 Master A: 1, 3, 5, 7, 9, ...
 Master B: 2, 4, 6, 8, 10, ...
 ```
@@ -112,7 +112,7 @@ graph LR
   style E fill:#f3e5f5
 ```
 
-```
+```text
 0 | 41 bit 时间戳 | 10 bit 机器ID | 12 bit 序列号
 ```
 
@@ -189,7 +189,7 @@ graph TB
 - 内存中分发，用完再取
 - DB 压力降低 N 倍
 
-```
+```text
 应用 A 获取号段：[1, 1000]
 应用 B 获取号段：[1001, 2000]
 ```
@@ -227,7 +227,7 @@ graph TB
 - 预留 bit 位应对回拨
 
 ### 2. 号段模式双 buffer
-```
+```text
 当前号段：[1, 1000]（使用中）
 下一个号段：[1001, 2000]（预加载）
 ```
