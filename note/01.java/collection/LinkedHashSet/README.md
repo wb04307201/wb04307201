@@ -22,6 +22,9 @@ public class LinkedHashSet<E>
     public LinkedHashSet(int initialCapacity, float loadFactor) {
         super(initialCapacity, loadFactor, true); // true 表示使用 LinkedHashMap
     }
+
+**初始容量公式**：`initialCapacity = (期望元素数 / loadFactor) + 1`（loadFactor 默认 0.75，期望 1000 元素时建议设 1334）
+    }
 }
 ```
 
@@ -324,3 +327,13 @@ Set<String> set = new LinkedHashSet<>((int) (1000 / 0.75f) + 1);
 ---
 
 ← [返回 Java 集合框架](../README.md)
+
+## 并发配置表
+
+| 实现 | 读性能 | 写性能 | 迭代顺序 | 适用场景 |
+|------|--------|--------|----------|----------|
+| `Collections.synchronizedSet(new LinkedHashSet<>())` | 中（加锁） | 慢（加锁） | 按插入顺序 | 兼容旧代码；已有同步框架时 |
+| `ConcurrentSkipListSet` + 包装 | 高（无锁读） | 中（CAS 写） | 按 Key 排序 | 高并发 + 自然排序 |
+| `LinkedHashSet`（裸用） | 极快 | 极快 | 按插入顺序 | **单线程或读多写少**；如配置加载、缓存 |
+
+**注意**：`LinkedHashSet` 本身**不是线程安全**的。多线程下必须用 `Collections.synchronizedSet` 或迁移到 `ConcurrentSkipListSet`。
