@@ -12,7 +12,7 @@ module:
 
 # Spring 全家桶
 
-> 一句话导览：从 IoC/AOP 核心容器到 Spring Boot/Cloud 微服务，再到事务/缓存/MyBatis 数据层、Spring Security 安全与可观测性——Java 后端最主流框架的完整知识地图。
+> Spring 全家桶完整图谱：IoC/AOP 核心 + Boot/Cloud 微服务 + 数据/缓存/MyBatis + Security。
 
 ---
 
