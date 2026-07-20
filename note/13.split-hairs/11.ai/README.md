@@ -54,7 +54,6 @@ question:
 | [RAG 权限隔离设计](rag-permission-isolation/) | ⭐⭐⭐⭐⭐ | 4 种隔离方案 + pre/post-filtering + ACL 同步 + 多租户 |
 | [AI 编程 Token 经济学](ai-coding-token-economics/) | ⭐⭐⭐⭐ | 9.6 万 Token 中位数 + 杠杆率 + Token 悖论 + 企业案例 |
 | [LLM Benchmark 深度剖析](llm-benchmark/) | ⭐⭐⭐⭐ | MMLU/HumanEval/Arena ELO + 数据污染 + 5 大问题 |
-| **🆕 [Agent Evaluation 评测系统](agent-performance-evaluation/)** | ⭐⭐⭐⭐⭐ | 阿里一面原题 · 6 大评测维度 + 5 种方法 + 4 阶段 Pipeline + 7 反模式 | [agent-evaluation](../../11.ai/08-llmops/agent-evaluation/README.md) |
 
 ### 📚 概念精炼版（主模块配套面试深挖）
 
