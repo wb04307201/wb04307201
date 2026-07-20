@@ -25,7 +25,7 @@ module:
 
 Spring Security 在 `FilterChainProxy` 中注册了一组默认的 Filter，按以下顺序执行：
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────────────┐
 │                SecurityFilterChain 默认 Filter 执行顺序                  │
 ├────┬──────────────────────────────────────────────┬─────────────────────┤
@@ -252,7 +252,7 @@ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
 Spring Security 提供两种安全配置入口，适用于不同场景：
 
-```
+```text
 ┌─────────────────────────────────────────────────────────┐
 │                  安全配置两种入口                          │
 ├──────────────────────────┬──────────────────────────────┤
@@ -286,7 +286,7 @@ public WebSecurityCustomizer webSecurityCustomizer() {
 
 ### 选择决策树
 
-```
+```text
 请求是否需要安全检查？
 ├── 不需要（静态资源/健康检查/公开 API）
 │   └── WebSecurityCustomizer.ignoring()
@@ -307,7 +307,7 @@ public WebSecurityCustomizer webSecurityCustomizer() {
 
 `FilterChainProxy` 是 Spring Security 与 Servlet 容器之间的桥梁：
 
-```
+```text
 ┌────────────────────────────────────────────────────────────────────┐
 │                       Servlet Container                            │
 │                                                                    │
@@ -373,7 +373,7 @@ logging:
 ```
 
 日志输出示例：
-```
+```text
 DEBUG FilterChainProxy - Securing GET /api/users
 DEBUG FilterChainProxy - Secured GET /api/users
 TRACE FilterChainProxy - Invoking HeaderWriterFilter (1/16)
