@@ -17,8 +17,7 @@ module:
 
 | 序号 | 主题 | 核心内容 | 子 README |
 |------|------|---------|-----------|
-| 01 | [Nginx](nginx/) | 反向代理 / 负载均衡配置、与前端配合 | [README](README.md) |
-| 02 | [Pingora](pingora/) | Cloudflare 开源 Rust 代理框架 | [README](pingora/README.md) |
+| 01 | Pingora | Cloudflare 开源 Rust 代理框架 | [README](pingora/README.md) |
 
 ### 1.1 学习路径
 
