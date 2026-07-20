@@ -104,6 +104,7 @@ module:
 | 十四 | 幻觉率 29% → 3% | [38 RAG 检索增强生成](./36-rag-retrieval-augmented-generation.md) |
 | 十五 | 6 大向量库选型 | [39 向量数据库与 Embedding](./37-vector-database-and-embedding.md) |
 | 十六 | EU AI Act / GDPR / PIPL | [40 AI 合规与监管](./38-ai-compliance-and-regulation.md) |
+| 十七 | 3 年回本黄金线 | [41 AI 私有化部署](./39-ai-private-deployment.md) |
 
 ---
 
