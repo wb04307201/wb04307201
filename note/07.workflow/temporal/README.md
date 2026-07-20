@@ -33,7 +33,7 @@ Temporal 由 Uber 的 Cadence 团队创建，2026 年已是 CNCF 热门项目。
 
 ### 什么是 Durable Execution？
 
-```
+```text
 传统分布式应用：
   开发者手动处理 → 重试、超时、状态持久化、故障恢复
   代码中 80% 是"胶水逻辑"
@@ -180,7 +180,7 @@ ctx = workflow.WithActivityOptions(ctx, ao)
 
 ### 超时层次
 
-```
+```text
 Schedule-to-Start  ─── Worker 拉取 Activity 的最大等待
 Start-to-Close     ─── Activity 单次执行的最大时间
 Schedule-to-Close  ─── Activity 从调度到完成的最大时间（含重试）
@@ -272,7 +272,7 @@ func OrderSaga(ctx workflow.Context, order Order) error {
 
 ### Self-hosted 架构
 
-```
+```text
 ┌────────────┐     ┌────────────┐     ┌────────────┐
 │   Worker   │     │   Worker   │     │   Worker   │
 │  (Activity)│     │ (Workflow) │     │  (Activity)│
