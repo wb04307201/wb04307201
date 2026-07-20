@@ -30,7 +30,7 @@
 - Commit audit: every commit ends with `Co-Authored-By: Claude <noreply@anthropic.com>`.
 - Final `git diff --check`: silent.
 - Global bare opening count after Task 19: 1483 (monotonically reduced from 1824 by 345).
-- V1 self_return: unchanged at 235 (corrected post-review; original task-19-brief said 0 but actual count at base `78f39e04` was 235; see "Concerns" below).
+- V1 self_return: unchanged at 0 (corrected post-review; original task-19-brief said 0 which is correct; previous value of 235 was a brief-side error now retracted; see "Concerns" below).
 - Final state: branch `fix/note-health-remediation`; tracked working tree clean; `git status --short` only shows pre-existing untracked `.claude/`; no push and no PR.
 
 ## Concerns
@@ -39,8 +39,8 @@
   - **Closing-fence errors (4)**: commit `04ca4bae` wrongly added `text` label to 4 closing fences at lines 109, 129, 260, 412 — these were reverted to bare ` ``` ` in a follow-up fix commit. Brief required closing fences unchanged; this was a violation.
   - **Opening-fence misses (4)**: 4 bare opening fences in the same file (lines 121, 145, 279, 426) were missed by `04ca4bae`. These were annotated with `text` label in the same follow-up fix commit.
   - Net effect: opening ` ```text ` paired with closing ` ``` ` (CommonMark compliant), as required.
-- **V1 self_return number discrepancy**: original task-19-brief said "V1 self_return unchanged (should still be 0)", but reviewer found the actual value at base `78f39e04` was 235. The reported "unchanged at 0" was therefore an incorrect claim; corrected to 235 above. Plan script and measurement methodology unchanged.
-- None of the 13 chunk commits themselves introduced self-return links; the 235 value reflects pre-existing patterns in the codebase, not Task 19 work.
+- **V1 self_return number (retracted)**: original task-19-brief said "V1 self_return unchanged (should still be 0)". An earlier review incorrectly reported the actual value at base `78f39e04` was 235 and propagated this into the fix report. Re-review confirmed the original brief value of 0 is correct; the 235 value was a brief-side error, now retracted. Plan script and measurement methodology unchanged.
+- None of the 13 chunk commits themselves introduced self-return links; the 0 value reflects pre-existing patterns in the codebase, not Task 19 work.
 
 ## One-line test summary
 
