@@ -51,7 +51,7 @@ question:
 
 ### 1.2 Mount / Unmount 机制
 
-```
+```text
 虚拟线程执行流程：
 1. mount 到 carrier thread → 执行代码
 2. 遇到 I/O 阻塞 → 自动 unmount（carrier 释放）

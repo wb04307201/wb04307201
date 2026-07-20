@@ -37,7 +37,7 @@ Java面试考察知识点理解和实际应用能力。按题型分类应对：
 | **设计型** | 架构思考 | 权衡分析+选型 | "如何选择消息队列？" |
 
 **STAR回答框架：**
-```
+```text
 S (Situation)   - 场景描述
 T (Theory)      - 理论原理
 A (Application) - 实际应用
@@ -45,7 +45,7 @@ R (Recommendation) - 推荐建议
 ```
 
 **知识体系：**
-```
+```text
 Java面试知识体系
 ├── Java基础：面向对象、集合框架、泛型反射、String
 ├── 并发编程：线程、同步(synchronized/Lock/CAS)、线程池、JUC
@@ -156,27 +156,27 @@ public class LifecycleDemo implements BeanNameAware, ApplicationContextAware, In
 ## 三、常见陷阱
 
 **陷阱1：背答案不理解原理**
-```
+```text
 ❌ "HashMap线程不安全，ConcurrentHashMap线程安全"
 ✅ "HashMap在JDK8之前多线程扩容可能死循环（链表成环）；JDK8修复但仍有数据覆盖风险。
    ConcurrentHashMap通过CAS+synchronized实现线程安全，JDK8将锁粒度从Segment细化到桶头节点。"
 ```
 
 **陷阱2：忽略版本差异**
-```
+```text
 ❌ "StringBuffer线程安全，StringBuilder不是"（无版本背景）
 ✅ "StringBuffer从JDK1.0就有，方法用synchronized修饰；StringBuilder是JDK1.5引入，去掉同步开销，单线程性能更好。"
 ```
 
 **陷阱3：只说理论没实践**
-```
+```text
 ❌ "线程池可以提高性能，复用线程"
 ✅ "我们处理订单批量导入，最初每次创建新线程导致OOM。改用ThreadPoolExecutor，核心8最大16，队列500，CallerRunsPolicy拒绝策略。
    压测TPS从200提升到1500。CPU密集型设N+1，IO密集型设2N。"
 ```
 
 **陷阱4：混淆相似概念**
-```
+```text
 ❌ "volatile保证原子性"
 ✅ "volatile保证可见性和有序性，但不保证原子性。i++包含读-改-写三步，即使volatile也不能保证原子执行。要用AtomicInteger或synchronized。"
 ```
@@ -184,7 +184,7 @@ public class LifecycleDemo implements BeanNameAware, ApplicationContextAware, In
 ## 四、最佳实践
 
 **1. 面试准备清单**
-```
+```text
 基础知识
 ├── JDK核心类源码（HashMap、ArrayList、ConcurrentHashMap）
 ├── JVM内存模型和GC算法
@@ -204,7 +204,7 @@ public class LifecycleDemo implements BeanNameAware, ApplicationContextAware, In
 ```
 
 **2. 回答技巧**
-```
+```text
 听到问题后：
 1. 确认理解（复述问题）
 2. 思考5-10秒组织思路
@@ -236,7 +236,7 @@ public class LifecycleDemo implements BeanNameAware, ApplicationContextAware, In
 
 **面试官：请介绍你自己。**
 
-```
+```text
 模板（1-2分钟）：
 "您好，我是XXX，X年Java开发经验。目前在XX公司负责XX系统后端，技术栈Spring Boot+MySQL+Redis。
 我印象最深的项目是XX系统，我负责XX模块设计。解决了高并发下库存超卖问题，通过Redis分布式锁+Lua脚本，
@@ -245,7 +245,7 @@ QPS从XX提升到XX。我对分布式系统/性能优化感兴趣，持续学习
 
 **面试官：你最大的缺点是什么？**
 
-```
+```text
 策略：真实缺点+改进行动
 "我之前公开演讲能力弱，意识到后主动做技术分享，参加Toastmasters。
 现在能从容进行30分钟技术分享。这个经历让我明白刻意练习可以克服局限。"
@@ -253,7 +253,7 @@ QPS从XX提升到XX。我对分布式系统/性能优化感兴趣，持续学习
 
 **面试官：有什么问题想问我们？**
 
-```
+```text
 推荐问题：
 ✅ "团队目前最大的技术挑战是什么？"
 ✅ "这个岗位的日常工作内容？"

@@ -57,7 +57,7 @@ m.invoke(s);  // "hacked!" ？？？
 
 ### 1.2 反射 API 体系
 
-```
+```text
 java.lang.Class<T>          ← 入口：描述类的元数据
 ├── java.lang.reflect.Field     ← 字段（get/set/getName/getType）
 ├── java.lang.reflect.Method    ← 方法（invoke/getName/getParameterTypes/getReturnType）
@@ -89,7 +89,7 @@ Object result = method.invoke(instance, 1L);
 ```
 
 **底层链路**：
-```
+```text
 Method.invoke()
   → DelegatingMethodAccessorImpl.invoke()   ← 委派层（前 15 次走 NativeAccessor）
     → NativeMethodAccessorImpl.invoke0()    ← JNI 调用（解释执行，极慢）

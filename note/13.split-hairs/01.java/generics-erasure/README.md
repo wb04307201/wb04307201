@@ -132,7 +132,7 @@ class Child extends Parent<String> {
 
 编译后，`Child` 类中实际存在两个 `getData` 方法：
 
-```
+```java
 // 桥方法（由编译器生成）
 public Object getData() {
     return this.getData(); // 调用下方的具体方法

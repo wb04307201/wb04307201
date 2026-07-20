@@ -64,7 +64,7 @@ for (int i = 0; i < 1_000_000; i++) {
 
 try-catch 在字节码层面**不是指令**，而是一张**异常表**（Exception Table）：
 
-```
+```text
 // 字节码（简化）
   0: iload_1           // 正常路径的指令
   1: iadd

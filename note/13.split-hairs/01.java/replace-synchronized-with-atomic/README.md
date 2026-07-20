@@ -56,14 +56,14 @@ public class AtomicCounter {
 | **高竞争性能** | 较好 | 差（CPU空转） |
 
 **CAS（Compare-And-Swap）原理：**
-```
+```text
 三要素：V(内存值)、A(预期值)、B(新值)
 if (V == A) { V = B; return true; } else { return false; }
 // 映射到CPU的CMPXCHG指令，硬件保证原子性
 ```
 
 **锁升级机制（Java 1.6+）：**
-```
+```text
 无锁 → 偏向锁 → 轻量级锁 → 重量级锁
 
 1. 偏向锁：单线程访问时Mark Word记录线程ID，后续进入无需CAS
@@ -224,7 +224,7 @@ record User(String name, int age) {}
 ## 四、最佳实践
 
 **1. 选型决策**
-```
+```text
 并发控制需求？
 ├── 单变量原子操作
 │   ├── 低/中竞争 → AtomicInteger/AtomicReference

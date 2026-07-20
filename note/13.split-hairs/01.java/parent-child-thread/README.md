@@ -143,7 +143,7 @@ pool.submit(TtlRunnable.get(() -> {
 
 ### 2. 工作原理（3 步）
 
-```
+```text
 任务提交时：
   ① capture()：从当前线程捕获 TTL 值到 holder
   ② 包装成 TtlRunnable，把 holder 传过去

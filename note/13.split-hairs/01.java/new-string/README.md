@@ -105,7 +105,7 @@ public class StringPoolTest {
 ```
 
 **典型输出**（Java 11 环境）：
-```
+```text
 false
 false
 true

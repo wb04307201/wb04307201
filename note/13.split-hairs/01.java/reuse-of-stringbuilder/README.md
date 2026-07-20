@@ -186,7 +186,7 @@ String.join(", ", names);
 ## 四、最佳实践
 
 **1. 选型决策**
-```
+```text
 拼接需求？
 ├── 固定少量(≤5) → +运算符（编译器优化）
 ├── 循环内 → StringBuilder + setLength(0)

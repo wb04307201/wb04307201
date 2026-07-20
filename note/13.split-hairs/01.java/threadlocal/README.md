@@ -70,7 +70,7 @@ static class Entry extends WeakReference<ThreadLocal<?>> {
 
 ### set/get/remove 流程
 
-```
+```text
 set(value):
   1. 获取当前线程的 ThreadLocalMap
   2. 若 Map 不存在则创建
