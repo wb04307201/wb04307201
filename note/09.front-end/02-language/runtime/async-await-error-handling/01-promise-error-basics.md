@@ -17,7 +17,7 @@ module:
 
 ## 1. Promise 的 3 大状态
 
-```
+```text
 pending ──── resolve() ────→ fulfilled（成功）
    │
    └──── reject()  ────→ rejected（失败）
