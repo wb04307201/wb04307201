@@ -44,7 +44,7 @@ System prompt 包含角色定义、输出格式、约束规则——这些是固
 
 ### 2.1 传统 RAG（被动）
 
-```
+```text
 Query → Embed → 检索 top-k → 拼接到 prompt → LLM
 ```
 
@@ -52,7 +52,7 @@ Query → Embed → 检索 top-k → 拼接到 prompt → LLM
 
 ### 2.2 Agentic RAG（主动）
 
-```
+```text
 Query → Agent 决策：
   ├─ 检索？→ 改写 query → 检索 → 判断是否够 → 不够继续改写
   ├─ 直接回答？→ 跳过 RAG
@@ -79,7 +79,7 @@ Query → Agent 决策：
 
 ### 3.1 模式 A：RAG 兜底 + Long-Context 优先
 
-```
+```text
 Agent 收到长输入 → 优先塞进 prompt（用 100k+ 模型）
   ↓
 答案质量不够？→ 触发 RAG 检索补充
@@ -90,7 +90,7 @@ Agent 收到长输入 → 优先塞进 prompt（用 100k+ 模型）
 
 ### 3.2 模式 B：Long-Context 兜底 + RAG 优先
 
-```
+```text
 Agent 收到问题 → 先 RAG 检索 top-k
   ↓
 RAG 结果不足 → 把 top-k + 完整文档（受 long-context 限制）都给 LLM
@@ -101,7 +101,7 @@ RAG 结果不足 → 把 top-k + 完整文档（受 long-context 限制）都给
 
 ### 3.3 模式 C：双轨（Hybrid）
 
-```
+```text
 并行执行：
 - 路径 1：RAG（top-k 检索）
 - 路径 2：Long-Context（直接塞）
@@ -154,7 +154,7 @@ hits = sorted(zip(hits, scores), key=lambda x: -x[1])[:5]
 
 **场景**：问题涉及多个文档交叉
 
-```
+```text
 Q："X 产品的竞品 Y 在 2023 年的销量是什么？"
   - 跳 1：检索 X 产品的竞品 → Y
   - 跳 2：检索 Y 在 2023 年的销量

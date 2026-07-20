@@ -17,7 +17,7 @@ module:
 
 ## 1. ReAct 的本质（Thought + Action + Observation 三元组）
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────┐
 │  Thought: 我需要先查询订单                                   │
 │  Action:  getOrder(order_id="20260628")                    │
@@ -68,7 +68,7 @@ agent.run("帮用户查询订单 20260628 并判断是否已支付")
 
 ### 2.2 ReAct Prompt 模板（LangChain 内置）
 
-```
+```text
 Answer the following questions as best you can. You have access to the following tools:
 
 {tools}
@@ -121,7 +121,7 @@ action_match = re.match(
 
 ### 4.1 硬伤 1：Token 消耗不可控
 
-```
+```text
 单次循环：
   Thought: 200 tokens
   Action: 20 tokens
@@ -137,7 +137,7 @@ vs DAG 同等任务 = 2000 tokens（每个节点 200 tokens × 10）
 
 ### 4.2 硬伤 2：执行路径不可复现
 
-```
+```text
 同一问题：
   "帮用户退款"
    - ReAct 第 1 次：Thought1 → Action1 → Observation1 → Thought2 → Action2
@@ -150,7 +150,7 @@ vs DAG 同等任务 = 2000 tokens（每个节点 200 tokens × 10）
 
 ### 4.3 硬伤 3：Context 越长越混乱
 
-```
+```text
 循环 30 次：
   Thought×30 + Action×30 + Observation×30
   = 60-90 段历史消息
@@ -162,7 +162,7 @@ vs DAG 同等任务 = 2000 tokens（每个节点 200 tokens × 10）
 ### 4.4 硬伤 4："迷路"问题
 
 经典失败模式：
-```
+```text
 Thought: 我应该先查询订单
 Action: getOrder(order_id="ABC")
 Observation: 找不到订单 ABC
@@ -179,7 +179,7 @@ Action: searchOrder("ABC")
 
 金融 / 医疗 / 法律场景要求 Agent 行为可审计：
 
-```
+```text
 ReAct 路径："随便走"
 DAG 路径："固定节点 + 边，可完整审计"
 ```

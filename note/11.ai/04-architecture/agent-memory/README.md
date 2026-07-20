@@ -37,7 +37,7 @@ Memory 决定 Agent 的 3 大能力：
 
 ### 2.1 维度 1：时间维度（最直觉）
 
-```
+```text
 ┌─────────────────────────────────────────────────────────┐
 │  短期（Short-term）                                       │
 │  - 容量：4K-200K tokens（受 context window 限制）         │
@@ -209,7 +209,7 @@ memory = ChatMemoryBuffer.from_defaults(
 
 ### 5.1 与已有架构组件的关系
 
-```
+```text
 Agent 整体架构：
 ├── LLM（推理）
 ├── Tools（行动）

@@ -17,7 +17,7 @@ module:
 
 ## 0. 面试高频拷问
 
-```
+```text
 Q：在构建 AI Agent 系统时，ReAct 和 Plan-and-Execute 是两种主流的执行模式，
    各有其独特的特点和适用场景。如何选？
 ```
@@ -83,7 +83,7 @@ Q：在构建 AI Agent 系统时，ReAct 和 Plan-and-Execute 是两种主流的
 
 ## 5. 一句话速查
 
-```
+```text
 "Agent 4 大模式选型：
 - 探索 / 未知多 → ReAct
 - 复杂多步 / 目标清晰 → Plan-and-Execute

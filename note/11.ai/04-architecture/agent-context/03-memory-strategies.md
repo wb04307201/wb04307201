@@ -148,7 +148,7 @@ agent:
 
 ## 7. 4 层协作：信息流
 
-```
+```text
        User Query
             ↓
    [Working Memory] ← 当前会话激活上下文

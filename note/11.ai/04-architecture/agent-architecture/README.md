@@ -33,7 +33,7 @@ module:
 
 ReAct（Reasoning + Acting）是最经典的 Agent 循环模式：
 
-```
+```text
 Thought: 我需要先查询订单
 Action: getOrder(order_id="20260628")
 Observation: 订单状态：已支付
@@ -70,7 +70,7 @@ while not task_completed:
 
 DAG（Directed Acyclic Graph）是把任务拆成节点，用有向无环图组织：
 
-```
+```text
 [用户输入]
     ↓
 [意图识别] ─→ [订单查询] ─→ [结果格式化] ─→ [返回]
@@ -162,7 +162,7 @@ DAG 的执行路径可以用 Trace 工具完整记录，ReAct 循环的路径难
 
 ## 七、何时选 DAG vs ReAct？
 
-```
+```text
 Q1: 任务流程是否明确？
 ├── 是 → DAG Workflow
 └── 否 → Q2

@@ -17,7 +17,7 @@ module:
 
 ## 1. Plan-and-Execute 的本质
 
-```
+```text
 ┌──────────────────────────────────────────────────────────┐
 │ Stage 1：Planner（规划）                                  │
 │   输入：用户问题                                          │
@@ -82,7 +82,7 @@ class PlanStep:
 
 ### 3.2 规划 Prompt 模板
 
-```
+```text
 请将以下任务拆解为可执行步骤：
 
 任务：{user_query}
@@ -110,7 +110,7 @@ class PlanStep:
 
 ### 4.1 RePlan（重新规划）
 
-```
+```text
 原始 Plan: [Step1, Step2, Step3, Step4]
 执行到 Step3 失败
 ↓
@@ -124,7 +124,7 @@ class PlanStep:
 
 ### 4.2 Adaptive Plan（自适应规划）
 
-```
+```text
 原始 Plan: [Step1, Step2, Step3, Step4]
 Step3 失败
 ↓
@@ -138,7 +138,7 @@ Step3 失败
 
 ### 4.3 Plan Repair（计划修复）—— 推荐
 
-```
+```text
 原始 Plan: [Step1, Step2, Step3, Step4]
 Step3 失败（具体错误：参数 X 不存在）
 ↓
@@ -264,7 +264,7 @@ workflow.add_conditional_edges("executor", should_replan)
 
 ### 7.1 分层规划
 
-```
+```text
 Stage 1: Global Planner（粗粒度规划 5-10 高层步骤）
 Stage 2: Sub-Planner（每个粗粒度步骤展开 3-5 细粒度步骤）
 Stage 3: Executor（执行细粒度步骤）
