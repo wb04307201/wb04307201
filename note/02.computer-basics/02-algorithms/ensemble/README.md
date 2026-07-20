@@ -128,7 +128,7 @@ model.fit(X_train, y_train)
 
 ## 📊 4 大模型选型
 
-```
+```text
 Q1: 数据规模？
 ├── 小（< 10K）→ Random Forest（基线）
 ├── 中（10K-1M）→ XGBoost / LightGBM

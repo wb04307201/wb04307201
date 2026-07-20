@@ -19,7 +19,7 @@ module:
 
 目标：最小化损失函数 L(θ)
 
-```
+```text
 θ_new = θ_old - lr * ∇L(θ_old)
 ```
 
@@ -62,7 +62,7 @@ for epoch in range(100):
 
 ## 📊 4 大优化器动量对比
 
-```
+```text
 SGD:        θ ← θ - lr * g
 SGD+M:      v ← μ*v + g
             θ ← θ - lr * v

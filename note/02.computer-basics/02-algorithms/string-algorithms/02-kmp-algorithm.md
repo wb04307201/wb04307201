@@ -17,7 +17,7 @@ module:
 
 ## 1. 朴素算法的问题
 
-```
+```text
 haystack = "ABABCABAB"
 needle   = "ABAB"
 
@@ -31,7 +31,7 @@ needle   = "ABAB"
 
 **关键洞察**：匹配失败时，**needle 指针不一定要回到 0**——可以利用**已匹配的部分**跳过不可能匹配的位置。
 
-```
+```text
 needle = "ABAB"
 已匹配 "AB"，剩下的 "AB" 是 needle 的前缀
 → 移动 needle，让前缀对齐到后缀，从 'A' 继续比对
@@ -45,7 +45,7 @@ needle = "ABAB"
 
 ### 3.1 定义
 
-```
+```text
 next[i] = needle[0..i-1] 的最长前后缀长度
 
 needle = "ABAB"
@@ -147,7 +147,7 @@ while (j > 0 && ...);  // 必须先检查 j > 0
 
 ### ⚠️ 反模式 2：next 数组含义记错
 
-```
+```text
 next[i] 是 needle[0..i-1] 的最长前后缀长度 —— 注意是 i-1！
 不是 needle[0..i] 的最长前后缀长度
 ```
