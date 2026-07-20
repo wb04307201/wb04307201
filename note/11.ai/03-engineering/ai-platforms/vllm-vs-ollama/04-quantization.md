@@ -40,6 +40,7 @@ module:
 - **算法**：二阶优化（OBD），最小化量化前后输出误差
 - **数据**：需校准集（128-256 条）
 - **耗时**：单卡几十分钟
+- **论文/库**：[Frantar et al., ICLR 2023](https://arxiv.org/abs/2210.17323)；[AutoGPTQ](https://github.com/AutoGPTQ/AutoGPTQ)
 - **缺点**：4bit 以下的细粒度（小模型）容易掉点
 
 ### 2.2 AWQ
@@ -49,6 +50,7 @@ module:
 - **算法**：保护「高频激活对应权重」，避开敏感 1% 权重
 - **数据**：需校准集
 - **优势**：4bit 质量优于 GPTQ，推理速度接近 FP16
+- **论文/库**：[Lin et al., MLSys 2024](https://arxiv.org/abs/2306.00978)；[mit-han-lab/llm-awq](https://github.com/mit-han-lab/llm-awq)
 - **趋势**：2024 后主流方案
 
 ### 2.3 FP8（E4M3 / E5M2）
@@ -57,6 +59,7 @@ module:
 - **硬件**：H100 / H200 原生支持（Tensor Core FP8）
 - **算法**：直接量化，无需复杂校准
 - **优势**：硬件原生加速，无反量化开销
+- **参考**：[NVIDIA Hopper FP8 whitepaper](https://www.nvidia.com/en-us/data-center/h100/)
 - **趋势**：2024 推理引擎默认支持（H100 时代）
 
 ### 2.4 SmoothQuant
