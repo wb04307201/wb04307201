@@ -193,4 +193,4 @@ graph TB
 - [FactoryBean](FactoryBean.md)
 - [08 注解/Bean 注解](../../08-annotations/bean-and-ioc.md)
 
-← [返回: Spring 全家桶 · ioc](README.md)
+← [返回: Spring 全家桶 · ioc](../README.md)
