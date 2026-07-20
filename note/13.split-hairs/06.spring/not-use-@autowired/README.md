@@ -153,4 +153,4 @@ public class OrderService {
 - 深度阅读：[`06.spring/01-core`](../../../06.spring/01-core/README.md) — IoC 容器、依赖注入方式
 - 相关：[`13.split-hairs/bean-lifecycle`](../bean-lifecycle/README.md) — Bean 生命周期 12 步
 
-← [返回: 咬文嚼字 · not-use-@autowired](README.md)
+← [返回: 咬文嚼字 · not-use-@autowired](../README.md)
