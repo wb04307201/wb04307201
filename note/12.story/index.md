@@ -88,6 +88,7 @@ module:
 | 一 | 当餐厅长出大脑 | [01 AI Agent 架构](./01-ai-agent-architecture.md) |
 | 二 | 学徒的困境 | [11 AI 学徒危机](./11-ai-learning-paradox.md) |
 | 三 | 自动化的本质是换岗 | [27 AI 组织转型](./25-ai-org-transformation.md) |
+| 四 | 智能体替代创始人 | [28 AI 原生创业](./26-ai-native-startup.md) |
 
 ---
 
