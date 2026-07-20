@@ -9,7 +9,7 @@ module:
 
 # RAG 评估指标与工具
 
-> ⬅️ [返回 Agent Evaluation](../../README.md)
+> ⬅️ [返回 Agent Evaluation](../README.md)
 
 > **一句话定位**：RAG 评估 = **量化 RAG 系统的检索质量 + 生成质量**。**RAGAS / TruLens / DeepEval** 3 大工具横评，帮你选对评估方案。
 

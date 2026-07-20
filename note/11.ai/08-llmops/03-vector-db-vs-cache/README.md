@@ -313,4 +313,4 @@ cache_key = f"rag:{hashlib.md5((query + top_k_docs_hash).encode()).hexdigest()}"
 
 ---
 
-← [返回 AI 知识体系总览](../../README.md) · 📅 2026-06-28
+← [返回: L8 LLMOps](../README.md) · 📅 2026-06-28
