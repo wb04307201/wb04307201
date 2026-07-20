@@ -51,7 +51,7 @@ question:
 
 ### 2.1 PKCE 流程
 
-```
+```text
 ① Client 生成 code_verifier（随机 43-128 字符）
 ② 计算 code_challenge = BASE64URL(SHA256(code_verifier))
 ③ 授权请求带 code_challenge
@@ -80,7 +80,7 @@ question:
 
 ## 四、最佳实践
 
-```
+```text
 选型决策树：
   有用户参与？
   ├─ 否 → Client Credentials（服务间调用）

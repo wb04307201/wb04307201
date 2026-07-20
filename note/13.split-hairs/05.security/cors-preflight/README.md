@@ -83,7 +83,7 @@ fetch(url, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JS
 
 ## 四、最佳实践
 
-```
+```text
 消除 Preflight 的 3 种策略：
 ① 构造 Simple Request：GET/POST + text/plain + 无自定义 Header
 ② 最大化 Preflight 缓存：Access-Control-Max-Age: 86400

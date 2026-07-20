@@ -80,7 +80,7 @@ ssl_early_data on;          # TLS 1.3 0-RTT
 keepalive_timeout 65;
 ```
 
-```
+```text
 客户端优化：HTTP/2 多路复用 + 连接池（OkHttp 默认 5 连接 / 5 分钟）+ TLS 1.3 优先
 
 优化效果量化：

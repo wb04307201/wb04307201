@@ -78,7 +78,7 @@ http.headers(h -> h.contentSecurityPolicy(csp -> csp
 
 ## 四、最佳实践
 
-```
+```text
 纵深防御 6 层：
 ① 输入验证 — 白名单校验（拒绝 <script> 等）
 ② 输出转义 — HTML 实体编码（OWASP Java Encoder）

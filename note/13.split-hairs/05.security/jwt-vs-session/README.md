@@ -79,7 +79,7 @@ public TokenResponse login(@RequestBody LoginRequest req) {
 
 ## 四、最佳实践
 
-```
+```text
 选型决策树：
   需要服务端强制控制（踢人 / 单设备登录）？ → Session + Redis
   微服务间调用 / 移动端？ → JWT（短过期 + Refresh Token Rotate）

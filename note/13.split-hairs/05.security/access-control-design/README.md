@@ -41,7 +41,7 @@ question:
 
 ### 1.1 模型选型决策树
 
-```
+```text
 业务场景？
 ├─ 内部系统 + 固定组织架构 → RBAC（角色 = 岗位）
 ├─ 多租户 SaaS + 细粒度控制 → ABAC（属性 + 策略表达式）
@@ -53,7 +53,7 @@ question:
 
 ### 1.2 推荐方案：RBAC + ABAC 混合
 
-```
+```text
 用户(User)
   │
   ├── 角色(Role) ← RBAC 层：粗粒度权限（如"管理员"、"编辑者"）
@@ -130,7 +130,7 @@ CREATE TABLE sys_policy (
 
 ### 2.2 权限判定流程
 
-```
+```text
 用户请求（user_id=100, resource="order", action="delete"）
     │
     ▼ 1. 查询用户角色
@@ -168,7 +168,7 @@ AND p.resource_code = 'order' AND p.action_code = 'delete'
 
 **答**：3 层缓存策略——
 
-```
+```text
 层 1：本地缓存（Caffeine，5 分钟 TTL）
   → 用户权限集合 Set<String>，每次请求直接查本地
 
@@ -259,7 +259,7 @@ public void deleteOrder(Long orderId) { ... }
 
 **答**：4 层审计——
 
-```
+```text
 层 1：操作日志（每次权限判定记录）
   → who: user_id, what: resource:action, when: timestamp
   → result: ALLOW/DENY, reason: role/ABAC/默认拒绝
@@ -330,7 +330,7 @@ CREATE TABLE audit_log (
 
 **答**：RBAC + ABAC 混合——
 
-```
+```text
 粗粒度（RBAC）：角色 "订单管理员" → 权限 "order:*"
 细粒度（ABAC）：策略 "订单管理员只能删除自己创建的订单"
 ```

@@ -77,7 +77,7 @@ public class FieldEncryptor {
 
 ## 四、最佳实践
 
-```
+```text
 全链路加密策略：
   外部流量：HTTPS / TLS 1.3
   内部流量：mTLS（服务网格自动管理）
