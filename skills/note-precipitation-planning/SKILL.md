@@ -255,6 +255,12 @@ D. 暂不沉淀
 4. 与模型知识合并 → 写文章时标注"参考来源"章节
 ```
 
+> **抓取受阻 fallback**（企业网络/沙箱常见）：`WebFetch` 可能因企业策略拦截官方文档域名（如实测 `github.github.com` 被 WebFetch 拒但可访问）。此时按序降级：
+> 1. `chrome-devtools` MCP `navigate_page` **重试**（首次超时常可二次成功）+ `evaluate_script` 取 `document.body.innerText`
+> 2. `bing-search` MCP 搜索 → `crawl_webpage` 抓取高质量二手深度文（如掘金/InfoQ 深度对比）交叉核实
+> 3. 用户已在 prompt 中提供的权威命令/参数列表 = 一手依据
+> **务必**：二手来源核实的关键语义（如某命令的迭代循环行为）要在文末「参考来源」标注来源级别，并提示用户对照官方复核存疑点。
+
 **5 个领域 query 模板**（按主题套用）：
 
 | 领域 | Query 模板 | 示例 |

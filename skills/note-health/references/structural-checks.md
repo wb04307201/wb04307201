@@ -26,6 +26,10 @@
 - ✅ 时间戳标记 `最后更新`（commit `785896e`）
 - ✅ `引言：反直觉代码` 模板残留（commit `30f6323`）
 - ✅ Agent Memory / Dropout / Claude Code / Vector Search 三档专题沉淀
+- ✅ RAG 范式演进四阶段 + RAG 评估三维度 + Spec-Kit 命令集对齐官方（2026-07-21）
+- ✅ 12 条 broken links 清零（2026-07-21：12.story/kubernetes 路径前缀 + spi/network/a11y 目标缺失）
+- ✅ WCAG computer-basics→front-end 迁移遗留补全（2026-07-21：frontmatter parent + 回链 + 新建 a11y/README）
+- ✅ 12.story 42-46 补入 note/README 导航 + 篇数 48→49 校对（2026-07-21）
 
 > 报告每条发现时标注 `[NEW]`（本会话未触及）或 `[已修]`（本会话已修）。本清单会随时间增补。
 
@@ -37,6 +41,8 @@
 | 2 | **H1 / 标题规范** | `grep -rn "^# " note/*/README.md` |
 | 3 | **回链覆盖率 + 互链双向性** | `grep -rln "← \[返回\|返回.*目录" note/ | wc -l` vs `find note -name README.md \| wc -l`；外加单向链接扫描（child → parent 但 parent 不回链） |
 | 3.5 | **孤岛检测 / 总目录扫描** | 扫描所有新文件（commit 时间 ≤ N 天），验证其：① 链接了 ≥ 2 个旧章节 ② 父 README / 总目录表有反向链接 ③ 同级兄弟有反向链接 |
+| 3.6 | **总目录反向完整性**（文件存在但未被声明）| 全量反查每个 leaf 是否被上级 README/总目录引用（补 3.5 的 git-time 盲区，见 Phase 9.2）|
+| 3.7 | **跨模块迁移遗留** | frontmatter `parent`/`slug` 与实际所在模块不一致（主题搬家后的 stale 元数据 + 错回链，见 Phase 9.3）|
 | 4 | **索引/入口缺失** | `find note -type d -not -path "*/node_modules/*" \| wc -l` vs README 引用 |
 | 5 | **内容重复** | `find note -name "*.md" \| xargs grep -l "<关键概念>" \| sort -u` |
 | 6 | **内容补充缺口** | 找到深度 ≤ 50 行的 README（可能是占位）|
@@ -229,6 +235,58 @@ for dir in $(find note -type d -exec sh -c 'ls "$1"/[0-9]*.md 2>/dev/null | head
     done
   done
 done
+
+# 9.2 总目录反向完整性审计（文件存在但未被任何总目录/父 README 声明）
+# 原理：3.5 孤岛检测只查"近 N 天新文件"，git-time 老文件会漏网（如 12.story 42-46
+#       文件早已存在但从未加进 note/README 导航表 → 静默孤岛）。
+#       本检查不看 git 时间，全量反查"每个 leaf 是否被上级 README 引用"。
+echo "=== 9.2 总目录反向完整性（exists-but-not-indexed）==="
+python -c "
+import os, re, glob
+# 收集所有 README/index 里引用的 .md 路径（basename 级）
+referenced=set()
+for idx in glob.glob('note/**/README.md', recursive=True):
+    try: c=open(idx,encoding='utf-8',errors='ignore').read()
+    except: continue
+    for m in re.finditer(r'\]\(([^)#]+\.md)', c):
+        referenced.add(os.path.basename(m.group(1)))
+# 反查：每个非 README 叙事/文章 .md 是否被引用
+for f in glob.glob('note/**/*.md', recursive=True):
+    b=os.path.basename(f)
+    if b in ('README.md','index.md','cheatsheet.md','glossary.md') or b.endswith('SPEC.md'): continue
+    if b not in referenced:
+        print(f'  [!] 未被任何总目录/父 README 引用: {f}')
+"
+
+# 9.3 跨模块迁移遗留检测（frontmatter parent ↔ 实际路径不一致）
+# 原理：把一个主题从 A 模块移到 B 模块后，常遗留：① frontmatter parent/slug 还写旧模块
+#       ② 文末回链文案还是旧模块（如 WCAG 移到 09.front-end 后回链仍写"返回 计算机网络"）
+#       ③ 旧模块 README 仍链接它。本检查扫 ① —— parent 与实际路径首段模块不符。
+echo "=== 9.3 迁移遗留：frontmatter parent 指向另一个模块 ==="
+python -c "
+import os, re, glob
+# 顶层模块 stripped 名集合（01.java→java / 11.ai→ai / 09.front-end→front-end）
+mods=set()
+for d in glob.glob('note/*/'):
+    name=d.replace(os.sep,'/').rstrip('/').split('/')[-1]
+    if '.' in name: mods.add(name.split('.',1)[1])
+# 只报【parent 指向另一个存在的模块】的情况（真跨模块迁移遗留）；
+# parent=子分类名 / note / null 等是合法变体，不报，避免噪声。
+hits=0
+for f in glob.glob('note/*/**/README.md', recursive=True):
+    parts=f.replace(os.sep,'/').split('/')
+    if len(parts)<3: continue
+    want=parts[1].split('.',1)[1] if '.' in parts[1] else parts[1]
+    try: c=open(f,encoding='utf-8',errors='ignore').read()
+    except: continue
+    m=re.search(r'parent:\s*([\w.-]+)', c)
+    if not m: continue
+    p=m.group(1)
+    if p in mods and p!=want:
+        hits+=1
+        print(f'  [!] {f}: frontmatter parent={p} 但位于模块 {want}（跨模块迁移遗留，核对回链文案 + 旧模块是否仍链接）')
+print(f'  跨模块迁移遗留: {hits} 处')
+"
 ```
 
 ### Commit 拆分模式（原 Step 5.5）
