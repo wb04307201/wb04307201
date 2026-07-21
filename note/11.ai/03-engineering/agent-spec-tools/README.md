@@ -23,7 +23,7 @@ module:
 | **创造者** | Jesse Vincent (obra) | GitHub 官方 | Fission AI |
 | **一句话定位** | 工作流执行引擎（怎么干活） | 企业级规范管线（写什么规范） | 轻量规范对齐协议（确认写什么） |
 | **安装方式** | Claude Code 插件 | Python CLI（uv） | npm CLI |
-| **Agent 支持** | Claude Code / Cursor | 30+ Agent（Copilot / Claude / Cursor / Gemini…） | Claude Code / Cursor / 通用 |
+| **Agent 支持** | Claude Code / Cursor | 35 集成（Copilot / Claude / Cursor / Gemini…） | Claude Code / Cursor / 通用 |
 | **核心命令数** | 14 个 Skill | 9 个 `/speckit.*`（短路径 5 / 全路径 9） | 9 个 `/opsx:*` 命令 |
 | **TDD 强制** | ✅ 必须 RED→GREEN | ❌ 不强制 | ❌ 不强制 |
 | **子 Agent 编排** | ✅ 内置并行分发 | ❌ | ❌ |
@@ -66,7 +66,7 @@ module:
 │   → Superpowers（唯一强制 TDD 的工具）
 │
 ├─ "我的团队用多种 Agent，需要统一规范流程"
-│   → Spec-Kit（支持 30+ Agent，GitHub 生态集成）
+│   → Spec-Kit（支持 35 集成，GitHub 生态集成）
 │
 ├─ "我想最快上手，轻量就好"
 │   → OpenSpec（npm install + 4 个核心命令）

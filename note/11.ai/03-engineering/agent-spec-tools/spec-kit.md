@@ -4,14 +4,14 @@ module:
   slug: ai/agent-spec-tools/spec-kit
   type: article
   category: 主模块子文章
-  summary: Spec-Kit：GitHub 官方的 SDD 工具包，5 命令管线 + 30+ Agent 兼容 + 企业级规范。
+  summary: Spec-Kit：GitHub 官方的 SDD 工具包，9 命令管线（短/全两条路径）+ 35 集成 + 企业级规范。
 -->
 
 # Spec-Kit — GitHub 官方 SDD 管线
 
 ← 返回 [Agent Spec Tools 对比](README.md)
 
-> [GitHub 官方开源](https://github.com/github/spec-kit)，2025 年 9 月发布。Spec-Driven Development（SDD）的企业级实现 —— 先写规范，再让 Agent 实现，支持 30+ AI 编码 Agent。
+> [GitHub 官方开源](https://github.com/github/spec-kit)，2025 年 9 月发布。Spec-Driven Development（SDD）的企业级实现 —— 先写规范，再让 Agent 实现，支持 35 种 AI 编码 Agent 集成。
 
 ---
 ---
@@ -23,7 +23,7 @@ module:
 | **是什么** | GitHub 官方 SDD 工具包，斜杠命令构成规范管线 |
 | **核心理念** | Spec = 单一真实来源（人和 Agent 都从 Spec 获取信息） |
 | **两条路径** | 短路径（小功能）5 步 / 全路径（生产级）9 步含 3 道质量门 |
-| **Agent 支持** | 30+（Copilot / Claude Code / Cursor / Gemini CLI / Codex…） |
+| **Agent 支持** | 35 集成（Copilot / Claude Code / Cursor / Gemini CLI / Codex / Zed / Kiro…） |
 | **CLI 工具** | `specify-cli`（Python / uv 安装） |
 | **适合谁** | 企业团队 + 多 Agent 标准化场景 |
 
@@ -34,8 +34,8 @@ module:
 ### 2.1 安装 CLI
 
 ```bash
-# 持久安装（推荐）
-uv tool install specify-cli --from git+https://github.com/github/spec-kit
+# 持久安装（推荐，已上 PyPI）
+uv tool install specify-cli
 
 # 一次性运行（类似 npx）
 uvx --from git+https://github.com/github/spec-kit specify-cli
@@ -46,11 +46,11 @@ uvx --from git+https://github.com/github/spec-kit specify-cli
 ### 2.2 项目初始化
 
 ```bash
-cd your-project
-specify init
+specify init taskify              # 或 specify init . 用当前目录
+specify init . --integration copilot   # 显式指定 Agent（不传则交互式选择）
 ```
 
-`specify init` 创建 `.specify/` 目录，包含模板和配置。
+`specify init` 创建 `.specify/` 目录（含模板 + 配置），并用 `.specify/feature.json` 追踪当前活跃功能（**不依赖 git 分支**）。
 
 ### 2.3 Agent 配置
 
@@ -89,9 +89,9 @@ Spec-Kit 的核心是一条从"项目原则"到"代码收敛"的命令管线。*
 | `/speckit.plan` | How/Tech | 读 Spec + Constitution，生成技术实现计划（架构 / 选型 / 依赖） | 两者 |
 | `/speckit.checklist` | 质量门 2 | 生成自定义质量检查清单（"需求的单元测试"） | 全路径 |
 | `/speckit.tasks` | 拆解 | 把计划拆成可执行 task 列表 | 两者 |
-| `/speckit.analyze` | 质量门 3 | 跨工件一致性 + 覆盖率分析（**tasks 后、implement 前**） | 全路径 |
+| `/speckit.analyze` | 质量门 3 | 跨工件（spec/plan/tasks）一致性 + 覆盖率分析，**只读**（**tasks 后、implement 前**） | 全路径 |
 | `/speckit.implement` | 执行 | 按 task 列表实际构建功能（生成代码） | 两者 |
-| `/speckit.converge` | 收敛 | 校验实现与 Spec 对齐，收敛残差 | 两者 |
+| `/speckit.converge` | 收敛 | 校验代码 vs spec/plan/tasks，**有缺口就追加新 task 到 tasks.md，循环 implement + converge 直到报告 converged** | 两者 |
 
 ### 3.3 关键步骤详解
 
@@ -121,7 +121,7 @@ Spec-Kit 的核心是一条从"项目原则"到"代码收敛"的命令管线。*
 
 - **`/speckit.clarify`**：Agent 主动识别 Spec 模糊点逐个提问，答案直接烘焙进 Spec，避免后续歧义。
 - **`/speckit.checklist`**：把规范本身当被测对象，生成"这个需求写全了吗"的检查清单。
-- **`/speckit.analyze`**：在动手写代码前，做 spec / plan / tasks 三份工件的**一致性与覆盖率**交叉检查，发现遗漏或冲突。
+- **`/speckit.analyze`**：在动手写代码前，对 spec / plan / tasks 三份工件做**一致性与覆盖率**交叉检查，报告冲突/遗漏/歧义。**只读** —— 发现问题回到源头修正后重跑。
 
 #### `/speckit.tasks` — 可执行任务
 
@@ -138,8 +138,8 @@ Spec-Kit 的核心是一条从"项目原则"到"代码收敛"的命令管线。*
 
 #### `/speckit.implement` + `/speckit.converge` — 执行与收敛
 
-- `implement`：Agent 遍历 `tasks.md` 逐个实现（可结合 Superpowers 强制 TDD）。
-- `converge`：实现完成后校验产物与 Spec / 验收标准是否对齐，收敛残余偏差 —— SDD"实现不漂移"的最后一道保障。
+- `implement`：Agent 按依赖顺序遍历 `tasks.md` 逐个实现（可结合 Superpowers 强制 TDD）；大功能可分阶段 scope。
+- `converge`：把代码与 spec/plan/tasks 对照，**发现缺口就把新 task 追加进 `tasks.md`，然后再跑 `implement` + `converge`，如此循环直到报告 `converged`** —— SDD"实现不漂移"的最后一道闭环保障。收敛后即可 review / 开 PR。
 
 ---
 
@@ -161,7 +161,7 @@ Spec-Kit 最大的企业优势 —— **同一个 Spec 文件，不同 Agent 都
 
 ```bash
 # 1. 初始化项目
-specify init            # 或 specify init my-app --ai claude
+specify init            # 或 specify init taskify --integration copilot
 
 # 2a. 短路径（小功能）——在 Claude Code / Copilot 中：
 /speckit.specify "Build user auth with JWT"
@@ -198,8 +198,8 @@ specify init            # 或 specify init my-app --ai claude
 ## 📚 参考来源
 
 - [GitHub Spec Kit 官方仓库](https://github.com/github/spec-kit) — 命令定义与 CLI
-- [Spec Kit Quickstart / 文档站](https://github.github.io/spec-kit/) — 短路径 vs 全路径命令序列
-- [AI 编程三剑客：Spec-Kit / OpenSpec / Superpowers 深度对比](https://juejin.cn/post/7605494530017165352) — 命令语义、目录结构、安装流程交叉核实
+- [Spec Kit 官方文档站 · Quickstart](https://github.github.com/spec-kit/quickstart.html) — 短路径 vs 全路径 9 步命令序列（本次更新的一手来源）
+- [AI 编程三剑客：Spec-Kit / OpenSpec / Superpowers 深度对比](https://juejin.cn/post/7605494530017165352) — 目录结构、安装流程交叉核实
 
 ---
 
