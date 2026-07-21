@@ -1,7 +1,7 @@
 <!--
 module:
-  parent: computer-basics
-  slug: computer-basics/wcag
+  parent: front-end
+  slug: front-end/a11y/wcag
   type: article
   category: 主模块子文章
   summary: WCAG（Web Content Accessibility Guidelines）网页内容无障碍指南：POUR 四大原则与 1.0→3.0 版本演进。
@@ -81,4 +81,4 @@ module:
 
 ---
 
-← [返回 计算机网络](../README.md)
+← [返回 无障碍 a11y](../README.md)
