@@ -503,3 +503,7 @@ trace com.example.Service getUser '#cost > 100'  # 方法耗时追踪
 sc -d com.example.Service  # 查看类加载信息
 jad com.example.Service    # 反编译（确认线上代码版本）
 ```
+
+---
+
+← [返回 JVM 主篇](README.md)
