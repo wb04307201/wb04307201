@@ -359,8 +359,8 @@ graph TD
 
 补充前序文章回链（series 5/6/9 是 12.story 正传章节，与 AI 时代系列有方法论关联）：
 
-- [§ 5 性能优化](../../../12.story/16-performance-optimization.md) — 系统级性能 vs 模型级性能
-- [§ 6 异步事件驱动](../../../12.story/19-realtime-eventdriven.md) — 事件驱动 AI 训练管线
-- [§ 9 分布式难题](../../../12.story/17-distributed-puzzles.md) — 分布式 AI 训练
+- [§ 5 性能优化](16-performance-optimization.md) — 系统级性能 vs 模型级性能
+- [§ 6 异步事件驱动](19-realtime-eventdriven.md) — 事件驱动 AI 训练管线
+- [§ 9 分布式难题](17-distributed-puzzles.md) — 分布式 AI 训练
 
 **回链合理性**：本篇"AI 学习悖论"是从人脑学习机制角度分析 AI 应如何学，与上述性能/事件/分布式专题互补（人 vs AI 学习机制对比）。

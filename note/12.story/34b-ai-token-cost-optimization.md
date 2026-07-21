@@ -732,8 +732,8 @@ graph TB
 
 补充前序文章回链（series 5/6/9）：
 
-- [§ 5 性能优化](../16-performance-optimization.md) — 性能与成本权衡
-- [§ 6 异步事件驱动](../19-realtime-eventdriven.md) — 异步任务与按需付费
-- [§ 9 分布式难题](../17-distributed-puzzles.md) — 跨节点成本调度
+- [§ 5 性能优化](16-performance-optimization.md) — 性能与成本权衡
+- [§ 6 异步事件驱动](19-realtime-eventdriven.md) — 异步任务与按需付费
+- [§ 9 分布式难题](17-distributed-puzzles.md) — 跨节点成本调度
 
 **回链合理性**：本篇"Token 成本优化"与上述性能/事件/分布式专题在生产环境是组合使用（性能优化往往降低 token 成本）。

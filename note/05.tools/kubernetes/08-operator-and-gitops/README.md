@@ -327,8 +327,8 @@ spec:
 
 Operator/GitOps 不是孤岛专题，与以下内容相关：
 
-- [Kubernetes 控制器与 Helm 基础](../../01-architecture/README.md) — Operator 底层是 CRD + Controller 模式
-- [CI/CD 基础](../04-pipeline-patterns/README.md) — GitOps 衔接 CI，是 CD 阶段的现代实现
+- [Kubernetes 控制器与 Helm 基础](../01-architecture/README.md) — Operator 底层是 CRD + Controller 模式
+- [CI/CD 基础](../../devops/04-pipeline-patterns/README.md) — GitOps 衔接 CI，是 CD 阶段的现代实现
 - [部署架构总览](../../README.md) — 渐进式发布 / 蓝绿 / 金丝雀 与 GitOps 的对比
 
 ## 2. Argo CD 完整安装 + 验证步骤（新增 B1 完整化）
