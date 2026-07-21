@@ -370,6 +370,7 @@ deploy:
 - [05-ali-interview](../../../11.ai/08-llmops/agent-evaluation/05-ali-interview.md) —— 阿里一面原题深度
 - [06-seven-anti-patterns](../../../11.ai/08-llmops/agent-evaluation/06-seven-anti-patterns.md) —— 7 反模式
 - [07-selection-decision-tree](../../../11.ai/08-llmops/agent-evaluation/07-selection-decision-tree.md) —— 5 分钟决策树
+- [09-rag-evaluation](../../../11.ai/08-llmops/agent-evaluation/09-rag-evaluation/README.md) —— 本文 6 大指标（任务完成率/工具调用/自我修正）应用到 Agentic RAG 评估语境
 
 ### 主模块兄弟
 
