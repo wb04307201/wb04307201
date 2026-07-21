@@ -6,14 +6,14 @@ module:
   topic: 「阿明餐厅」技术系列
   audience: 工程师 / 架构师 / SRE / AI 工程师 / CTO / 创业者 / PM
   category: 主模块
-  summary: 用开餐厅的故事讲明白 48 篇技术文章，覆盖传统工程 25 篇 + AI 时代 23 篇（续集一 + 续集二-二十 + 番外七/八/九），篇篇独立又互相串联。
+  summary: 用开餐厅的故事讲明白 49 篇技术文章，覆盖传统工程与 AI 时代（续集一 + 续集二-二十 + 番外七/八/九 + LLM 推理），篇篇独立又互相串联。
 -->
 
 # 「阿明餐厅」技术系列
 
-> 用开餐厅的故事，讲明白四十八篇技术大事 —— 从架构演进到 AI 智能体，从流量治理到 AI 私有化部署。
+> 用开餐厅的故事，讲明白四十九篇技术大事 —— 从架构演进到 AI 智能体，从流量治理到 AI 私有化部署。
 
-本系列按**叙事逻辑**组织（**前传 → 续集一 → 正传 → 终章 → 番外 → 续集二十**），每篇标注文件编号方便检索。原编号 17 / 23 已合并到相邻主题（原 17 并入现 17-distributed-puzzles，原 23 并入现 22-database-migration），重编号后编号连续无跳跃。**最新追加番外九「扩招 50 个厨师」（2026-07-06）**，总篇数升至 **48 篇**：45 个叙事段中，32 / 33 / 34 各含 2 个子文件（a / b），故实际 `.md` 文件共 **48 个**（45 段 + 3 个拆分）。
+本系列按**叙事逻辑**组织（**前传 → 续集一 → 正传 → 终章 → 番外 → 续集二十**），每篇标注文件编号方便检索。原编号 17 / 23 已合并到相邻主题（原 17 并入现 17-distributed-puzzles，原 23 并入现 22-database-migration），重编号后编号连续无跳跃。**番外九「扩招 50 个厨师」+ LLM 推理优化篇陆续追加**，总篇数升至 **49 篇**：46 个叙事段中，32 / 33 / 34 各含 2 个子文件（a / b），故实际 `.md` 文件共 **49 个**（46 段 + 3 个拆分）。
 
 ---
 
@@ -21,7 +21,7 @@ module:
 
 ### 1.1 七大叙事集群
 
-本系列**只有顶层结构，无子目录分类**（按故事叙事而非按主题分目录，48 篇文章平铺于顶层）。下列 7 个集群由浅入深、由传统到 AI：
+本系列**只有顶层结构，无子目录分类**（按故事叙事而非按主题分目录，49 篇文章平铺于顶层）。下列 7 个集群由浅入深、由传统到 AI：
 
 | 集群 | 篇数 | 编号区间 | 一句话 |
 |------|------|----------|--------|
@@ -31,16 +31,16 @@ module:
 | 正传 7-10 · 工程质量 | 4 | [12](./12-data-kitchen.md) / [13](./13-frontend-renovation.md) / [15](./15-incident-response.md) / [16](./16-performance-optimization.md) | 数据 / 前端 / 故障 / 性能 |
 | 正传 11-14 · 系统进阶 | 4 | [20](./19-realtime-eventdriven.md) / [18](./17-distributed-puzzles.md) / [21](./20-multiplatform-architecture.md) / [24](./22-database-migration.md) | 异步 / 分布式 / 多端 / 数据库迁移 |
 | 终章 · 组织管理 | 1 | [07](./07-from-chef-to-ceo.md) | 从厨师到 CEO，500 人像 5 人协作 |
-| 番外 · 专题拓展 | 8 | [03](./03-refactoring-guide-for-pm.md) / [14](./14-cloud-finops.md) / [19](./18-saas-multitenant.md) / [22](./21-search-recommendation.md) / [25](./23-lowcode-platform.md) / [26](./24-globalization.md) / [42](./40-prompt-engineering.md) / [43](./41-multimodal-ai.md) | 重构 / FinOps / SaaS / 搜索 / 低代码 / 国际化 / Prompt / 多模态 |
+| 番外 · 专题拓展 | 10 | [03](./03-refactoring-guide-for-pm.md) / [14](./14-cloud-finops.md) / [19](./18-saas-multitenant.md) / [22](./21-search-recommendation.md) / [25](./23-lowcode-platform.md) / [26](./24-globalization.md) / [42](./40-prompt-engineering.md) / [43](./41-multimodal-ai.md) / [番外九 Skill 调度](./45-skill-scheduling-restaurant.md) / [LLM 推理优化](./46-llm-inference.md) | 重构 / FinOps / SaaS / 搜索 / 低代码 / 国际化 / Prompt / 多模态 / Skill 调度 / LLM 推理 |
 | 续集 2-20 · AI 时代 | 22 | [11](./11-ai-learning-paradox.md) ~ [46](./44-tech-debt-career-trap.md)（含 [34a](./32a-ai-evaluation-fundamentals.md) / [34b](./32b-ai-evaluation-pipeline.md) / [35a](./33a-mcp-protocol.md) / [35b](./33b-a2a-protocol.md) / [36a](./34a-ai-token-cost-structure.md) / [36b](./34b-ai-token-cost-optimization.md)） | AI 时代 22 大主题 |
-| **合计** | **48** | — | 45 叙事段 + 3 个 a/b 拆分 |
+| **合计** | **49** | — | 46 叙事段 + 3 个 a/b 拆分 |
 
 ### 1.2 辅助资料
 
 | 资料 | 作用 |
 |------|------|
 | [术语表](./glossary.md) | **340+** 词条速查，按 47 大主题分类 |
-| [一页纸速查](./cheatsheet.md) | 48 篇文章核心概念 + 关键决策表 + 金句心法 |
+| [一页纸速查](./cheatsheet.md) | 49 篇文章核心概念 + 关键决策表 + 金句心法 |
 | [故事集目录](./index.md) | 按主题分类 + 4 条主路径 + 13 类角色推荐阅读路线 |
 | [故事格式规范](./STORY-FORMAT-SPEC.md) | 章节六段强制（作者撰稿依据） |
 
@@ -325,15 +325,15 @@ graph LR
 
 | 维度 | 数字 |
 |------|------|
-| 顶层文章数（叙事篇数） | 45 段 + 3 个 a/b 拆分 = **48 篇** |
-| 实际 `.md` 文件数（含编号） | **48 个**（见下方明细表） |
+| 顶层文章数（叙事篇数） | 46 段 + 3 个 a/b 拆分 = **49 篇** |
+| 实际 `.md` 文件数（含编号） | **49 个**（见下方明细表） |
 | 顶层辅助资料 | **4 个**（cheatsheet / glossary / index / STORY-FORMAT-SPEC） |
-| 顶层总 `.md` | **53 个**（48 文章 + 4 辅助 + 1 README） |
+| 顶层总 `.md` | **54 个**（49 文章 + 4 辅助 + 1 README） |
 | 一级子目录 | **1 个**（scripts/，内含 insert-frontmatter.py + validate.py） |
 | frontmatter 模式 | story/question/pm（适用 12/13/14）|
 | 写作规范 | [STORY-FORMAT-SPEC.md](./STORY-FORMAT-SPEC.md)（章节六段强制）|
 
-### 48 篇文章实际 `.md` 文件明细
+### 49 篇文章实际 `.md` 文件明细
 
 | 类型 | 编号 | 数量 | 文件 |
 |------|------|------|------|
@@ -348,7 +348,7 @@ graph LR
 | 续集十-十二（拆分） | 34a/b / 35a/b / 36a/b | 6 | 34a / 34b / 35a / 35b / 36a / 36b |
 | 续集十三-十七 | 37-41 | 5 | 37 / 38 / 39 / 40 / 41 |
 | 续集十八-二十 | 44 / 45 / 46 | 3 | 44 / 45 / 46 |
-| **文章合计** | — | **47** | — |
+| **文章合计** | — | **49** | — |
 
 > 注：原编号 17 / 23 已合并；19 既是正传序列又是番外三（按叙事归"阿明的加盟帝国"番外）；11 = 续集二（同篇文章编号复用：续集二也是编号 11）。
 

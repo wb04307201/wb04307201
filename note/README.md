@@ -218,7 +218,7 @@ module:
 
 # 十二、[「阿明餐厅」技术系列](12.story/README.md)
 
-> 以餐厅经营为叙事主线，用 **48 篇** 故事讲透从架构演进到 AI 转型的技术全景。前传 + 续集一 + 正传 14 + 终章 + 番外 6 + 续集 2-17（AI 时代 15 篇）+ 番外 7-8 —— 一篇一个核心主题，篇篇独立又互相串联。
+> 以餐厅经营为叙事主线，用 **49 篇** 故事讲透从架构演进到 AI 转型的技术全景。传统工程（前传 / 续集一 / 正传 14 / 终章 / 番外）+ AI 时代续集（含评测 / 协议 / Token 三组 a/b 拆分）—— 一篇一个核心主题，篇篇独立又互相串联。
 >
 > **2026 v2 更新**：评测（34）、协议（35）、Token 经济学（36）三篇已拆分为 a/b 双篇（结构性优化）；新增可观测性、RAG、向量库、AI 合规、AI 私有化、Prompt 工程、多模态 7 个专题。
 
@@ -226,7 +226,7 @@ module:
 
 | 序号 | 主题 | 核心内容 |
 |------|------|----------|
-| 1 | [系列导览](12.story/README.md) | 48 篇全景图 + 4 条主路径 + 13 类角色推荐 + 概念交叉索引 |
+| 1 | [系列导览](12.story/README.md) | 49 篇全景图 + 4 条主路径 + 13 类角色推荐 + 概念交叉索引 |
 | 2 | [前传 · 架构演进](12.story/02-system-architecture-evolution.md) | 架构"长"出来（单机→云原生）+ IT 成熟度 L1-L7 评估 |
 | 3 | [续集一 · AI Agent 架构](12.story/01-ai-agent-architecture.md) | 7 大模块：感知/记忆/规划/工具/协同/反馈/安全（衔接 [11.ai AI 知识体系](11.ai/README.md)）|
 | 4 | [正传 1-14 · 核心工程（14 篇）](12.story/04-peak-traffic-defense.md) | 流量/可观测/安全/QA/CI-CD/API/数据/前端/故障/性能/异步/分布式/多端/数据库迁移 |
@@ -235,7 +235,8 @@ module:
 | 7 | [续集 2-12 · AI 时代上半场（11 篇）](12.story/11-ai-learning-paradox.md) | 学习/组织/创业/自进化/信任/认知债/Harness/致命三件套 + [32a/32b 评测](12.story/32a-ai-evaluation-fundamentals.md) + [33a/33b 协议](12.story/33a-mcp-protocol.md) + [34a/34b Token](12.story/34a-ai-token-cost-structure.md) |
 | 8 | [续集 13-17 · AI 时代下半场（5 篇）](12.story/35-ai-observability.md) | [35 可观测性](12.story/35-ai-observability.md) / [36 RAG](12.story/36-rag-retrieval-augmented-generation.md) / [37 向量库](12.story/37-vector-database-and-embedding.md) / [38 合规](12.story/38-ai-compliance-and-regulation.md) / [39 私有化](12.story/39-ai-private-deployment.md) |
 | 9 | [番外 7-8 · 工程化专题（2 篇）](12.story/40-prompt-engineering.md) | [40 Prompt 工程](12.story/40-prompt-engineering.md) + [41 多模态](12.story/41-multimodal-ai.md) |
-| 10 | [辅助资料 · 速查 + 术语](12.story/cheatsheet.md) | [一页纸速查](12.story/cheatsheet.md)（48 篇心法 + AI 选型 + Agent 工具链）；[术语表](12.story/glossary.md)（340+ 词条 / 40 主题）|
+| 10 | [续集 18-20 + 番外九 + 推理（5 篇）](12.story/42-ai-engineer-responsibility.md) | [42 AI 责任](12.story/42-ai-engineer-responsibility.md) / [43 生产力悖论](12.story/43-ai-productivity-paradox.md) / [44 技术债困局](12.story/44-tech-debt-career-trap.md) / [45 Skill 调度](12.story/45-skill-scheduling-restaurant.md) / [46 LLM 推理优化](12.story/46-llm-inference.md) |
+| 11 | [辅助资料 · 速查 + 术语](12.story/cheatsheet.md) | [一页纸速查](12.story/cheatsheet.md)（49 篇心法 + AI 选型 + Agent 工具链）；[术语表](12.story/glossary.md)（340+ 词条 / 40 主题）|
 
 > 开源参考：12.story 章节本身为本仓库原创叙事，引用开源项目包括 Camunda 7/8、Apache EventMesh、CNCF Serverless Workflow、Dify/Coze/LangGraph、n8n、MCP/A2A、Qwen-VL、GPT-4o、Claude 3.5、LangSmith、vLLM、Qdrant、Milvus、Pinecone 等（详见各文末「延伸阅读」）。
 
