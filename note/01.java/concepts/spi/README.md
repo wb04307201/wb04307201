@@ -315,8 +315,8 @@ com.example.impl.AlipayProvider
 
 本篇是 SPI 基础篇，相关 Java 集合类（ServiceLoader 通过 Map 接口工作）和 Spring 框架（深度使用 SPI）都是值得互链的：
 
-- [ServiceLoader 详解（Java 集合）](../../collection/ServiceLoader-dive-into.md) — 暂无独立文件，可参考 [LinkedHashSet 双向链表原理](../../collection/LinkedHashSet/README.md) 理解 ServiceLoader 底层
-- [Spring SPI 对比（06.spring 专题）](../../../06.spring/spi/README.md) — Spring Framework 的 SpringFactoriesLoader 与 JDK ServiceLoader 异同
+- ServiceLoader 详解（Java 集合）：暂无独立文件，可参考 [LinkedHashSet 双向链表原理](../../collection/LinkedHashSet/README.md) 理解 ServiceLoader 底层
+- [Spring SPI 对比（06.spring 专题）](../../../06.spring/04-spring-boot/spring-factories-migration.md) — Spring Framework 的 SpringFactoriesLoader 与 JDK ServiceLoader 异同
 - [Collection 总览](../../collection/README.md) — ServiceLoader 通过 Map 索引实现
 
 ## ServiceLoader 关键方法参数表
