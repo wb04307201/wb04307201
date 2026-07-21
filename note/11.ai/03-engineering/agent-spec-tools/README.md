@@ -24,7 +24,7 @@ module:
 | **一句话定位** | 工作流执行引擎（怎么干活） | 企业级规范管线（写什么规范） | 轻量规范对齐协议（确认写什么） |
 | **安装方式** | Claude Code 插件 | Python CLI（uv） | npm CLI |
 | **Agent 支持** | Claude Code / Cursor | 30+ Agent（Copilot / Claude / Cursor / Gemini…） | Claude Code / Cursor / 通用 |
-| **核心命令数** | 14 个 Skill | 5 个 `/speckit.*` 命令 | 9 个 `/opsx:*` 命令 |
+| **核心命令数** | 14 个 Skill | 9 个 `/speckit.*`（短路径 5 / 全路径 9） | 9 个 `/opsx:*` 命令 |
 | **TDD 强制** | ✅ 必须 RED→GREEN | ❌ 不强制 | ❌ 不强制 |
 | **子 Agent 编排** | ✅ 内置并行分发 | ❌ | ❌ |
 | **GitHub Stars** | 89K+ | GitHub 官方项目 | 社区增长中 |
@@ -98,8 +98,8 @@ module:
 |------|-------------|----------|----------|
 | **Specify** | `brainstorming` skill | `/speckit.specify` | `/opsx:propose` |
 | **Plan** | `writing-plans` skill | `/speckit.plan` | `/opsx:propose`（内含计划） |
-| **Execute** | `dispatching-parallel-agents` + TDD | `/speckit.tasks` → Agent 实现 | `/opsx:apply` |
-| **Verify** | `verification-before-completion` | （Agent 自验） | `/opsx:verify` |
+| **Execute** | `dispatching-parallel-agents` + TDD | `/speckit.tasks` → `/speckit.implement` | `/opsx:apply` |
+| **Verify** | `verification-before-completion` | `/speckit.analyze` + `/speckit.converge` | `/opsx:verify` |
 
 ---
 
