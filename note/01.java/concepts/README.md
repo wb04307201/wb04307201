@@ -37,6 +37,7 @@ Java 核心概念 是入门必学的基础概念。
 | [面向对象基础](oop/) | 三大特征（封装/继承/多态）、深浅拷贝、接口与抽象类、hashCode |
 | [Object 类](object/) | 所有类的根类、equals/hashCode/toString、Objects工具类 |
 | [内部类](inner-class/) | 成员内部类、静态内部类、局部内部类、匿名内部类 |
+| [多态](polymorphism/) | 重载 vs 重写 + 编译时 vs 运行时分派 + vtable + 默认方法 + 协变返回（深度专题） |
 
 ### 类型系统
 
@@ -165,10 +166,10 @@ Java 核心概念
 | 统计维度 | 数值 | 口径 |
 |----------|------|------|
 | 分类主题数 | 4 组 | 语言基础 / 面向对象 / 类型系统 / 核心机制 |
-| 子 README 数 | 18 | [`date-time`](date-time/README.md) 等 `concepts/` 下 leaf README 数 |
-| 含 frontmatter 的 README | 19 / 19 | 100% 覆盖（2026-07-01） |
+| 子 README 数 | 19 | [`date-time`](date-time/README.md) 等 `concepts/` 下 leaf README 数 |
+| 含 frontmatter 的 README | 20 / 20 | 100% 覆盖（2026-07-22） |
 
-> **统计时间戳**：2026-07-01
+> **统计时间戳**：2026-07-22
 
 ---
 
