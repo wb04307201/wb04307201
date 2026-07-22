@@ -215,6 +215,44 @@ AES-128 能阻止直接下载裸片段，但密钥交付后仍可能被录制；
 
 ---
 
+## 4.5 HLS AES-128 加密实战（key + keyinfo + ffmpeg）
+
+**3 步链路**：
+
+```bash
+# Step 1: 生成 16 字节密钥（rand 生成随机字节）
+openssl rand 16 > /keys/enc.key
+
+# Step 2: 创建 keyinfo 文件（3 行固定格式）
+cat > /keys/enc.keyinfo <<EOF
+http://cdn.example.com/hls/enc.key          # 公网可访问的密钥 URL
+/keys/enc.key                               # ffmpeg 读取的本地路径
+$(openssl rand -hex 16)                    # 16 字节 IV（可选但推荐）
+EOF
+
+# Step 3: ffmpeg 转码 + AES-128 加密 + HLS 切片
+ffmpeg -i source.mp4 \
+  -c:v libx264 -crf 22 -preset medium \
+  -hls_time 6 -hls_playlist_type vod \
+  -hls_key_info_file /keys/enc.keyinfo \
+  -hls_enc true \
+  -hls_segment_filename "seg_%03d.ts" \
+  stream.m3u8
+```
+
+**关键约束**：
+- **密钥 URL 必须 HTTPS + 独立鉴权服务**（API 网关防爬虫爆破）
+- **每视频独立密钥**（共用密钥被拖库即全平台失守）
+- **IV 16 字节随机**（ECB 模式下相同明文密文一致，反推风险）
+- **密钥 90 天轮换**（长期密钥泄露风险累积）
+
+**反模式**：
+- ❌ 密钥 URL 公开 + 无鉴权 → 攻击者直接拉密钥
+- ❌ 多视频共用密钥 → 一泄露失守全平台
+- ❌ 静态 IV → 密码学反推攻击风险
+
+---
+
 ## 五、高可用 4 层防线
 
 | 层 | 故障域 | 防御手段 |
@@ -223,6 +261,15 @@ AES-128 能阻止直接下载裸片段，但密钥交付后仍可能被录制；
 | L2 服务端 | 服务宕机 | LB + 多机房 + 限流熔断 |
 | L3 CDN 边缘 | 边缘节点宕机 | 多 CDN 厂商 + 智能选路 + HTTP/3 |
 | L4 跨区域复制 | 机房断电 | 异地多活 + OSS 双写 + 异步复制 |
+
+### 5.0 4 层防线详细表（实战对照）
+
+| 层 | 故障域 | 实测概率 | 防御手段 + 实操工具 | 验证方式 |
+|----|--------|---------|-------------------|---------|
+| **L1 客户端** | 网络抖动 / 断网 | 用户场景 ~5% | 3 次重试 + 指数退避（1s/3s/9s + random jitter） + 断点续传（uploadId + chunk index + ETag） + 客户端本地缓存已上传 chunks | 弱网模拟（Charles / Network Link Conditioner） |
+| **L2 服务端** | 服务宕机 / 限流 | 服务可用性 99.9%~99.99% | Nginx SLB / ALB + K8s 多 Pod + Sentinel/Resilience4j 限流熔断 + HPA 弹性扩容 + 健康检查 | chaos engineering（ChaosBlade / Chaos Monkey） |
+| **L3 CDN 边缘** | 边缘节点宕机 / 回源过慢 | CDN 厂商 SLA 99.95% | 多 CDN 厂商（阿里云 + 腾讯云）+ GSLB 智能 DNS + HTTP/3 + QUIC + Origin Shield 回源配额 + 客户端备用域名 | 主动探测（合成监控） + 厂商故障演练 |
+| **L4 跨区域复制** | 机房断电 / 自然灾害 | 同城 RPO=0 / 跨区域 RPO 几秒-RPO 分钟 | 异地多活 + OSS 双写同 region + S3 Cross-Region Replication 异步 + 冷备份定期 + DNS 切换流量 | 跨区域 failover 演练（季度） |
 
 ### 5.1 L1：客户端韧性
 
@@ -349,6 +396,11 @@ graph TD
 4. [FFmpeg 官方文档](https://ffmpeg.org/documentation.html)
 5. [WebP 官方文档](https://developers.google.com/speed/webp) 与 [AOMedia AV1](https://aomedia.org/av1-features/)
 
+- **DRM 协议**：
+  - [Apple FairPlay Streaming](https://developer.apple.com/streaming/fps/) — iOS 端 DRM 加密（HSM 密钥托管）
+  - [Google Widevine](https://www.widevine.com/) — Chrome / Android DRM（3 级安全级别）
+  - [Microsoft PlayReady](https://learn.microsoft.com/en-us/playready/) — Edge / 部分智能电视
+
 版本、浏览器覆盖率和云服务价格会持续变化，落地时应以目标用户数据和厂商最新文档为准。
 
 ---
@@ -365,6 +417,7 @@ graph TD
 
 - [限流](../../03-high-availability/rate-limiting/README.md) — 令牌桶、漏桶与分布式限流
 - [高可用](../../03-high-availability/README.md) — 容灾、降级与故障演练
+- 容量规划：[07-deployment/capacity-planning](../../07-deployment/capacity-planning/README.md) — 媒体存储容量预测（热 SSD / 温 Standard-IA / 冷 Glacier 3 层迁移策略 + 媒体增长曲线）
 - [冷热数据分离](../database-optimization/cold-hot-data-separation/README.md) — 分层思想与迁移策略
 - [消息队列](../mq/README.md) — 异步转码、重试与削峰
 - [负载均衡](../load-balance/README.md) — 多实例与流量调度
