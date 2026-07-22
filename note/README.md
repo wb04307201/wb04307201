@@ -244,25 +244,27 @@ module:
 
 > 主模块的"刺刀版" —— 专治面试中那些"好像懂但说不清"的高频 / 高难度问题。
 > 每篇 50-300 行，聚焦单一问题，从原理到陷阱到最佳实践、面试话术一次讲透。
-> 8 大分类共 **192 篇** 深度文章（详见 [QUESTION-FORMAT-SPEC](./13.split-hairs/QUESTION-FORMAT-SPEC.md)，find 校对 2026-07-19），覆盖 Java / 计算机基础 / 数据库 / 系统设计 / 安全 / Spring / 前端 / AI。
+> 10 大分类共 **210 篇** 深度文章（详见 [QUESTION-FORMAT-SPEC](./13.split-hairs/QUESTION-FORMAT-SPEC.md)，find 校对 2026-07-23），覆盖 Java / 计算机基础 / 数据库 / 系统设计 / 安全 / Spring / 前端 / 大数据 / AI / 工具。
 > 写作规范：[QUESTION-FORMAT-SPEC.md](./13.split-hairs/QUESTION-FORMAT-SPEC.md)
 
 ## 分类导航
 
 | 序号 | 主题 | 文章数 | 入口 |
 |------|------|--------|------|
-| 1 | Java 基础陷阱 | 39 | [01.java](13.split-hairs/01.java/README.md) |
-| 2 | 计算机基础 | 6 | [02.computer-basics](13.split-hairs/02.computer-basics/README.md) |
-| 3 | 数据库细节 | 26 | [03.database](13.split-hairs/03.database/README.md) |
-| 4 | 系统设计难点 | 19 | [04.system-design](13.split-hairs/04.system-design/README.md) |
-| 5 | 安全 | 10 | [05.security](13.split-hairs/05.security/README.md) |
-| 6 | Spring 面试高频 | 16 | [06.spring](13.split-hairs/06.spring/README.md) |
-| 7 | 前端细节 | 26 | [09.front-end](13.split-hairs/09.front-end/README.md) |
-| 8 | AI 新概念 | 40 | [11.ai](13.split-hairs/11.ai/README.md) |
+| 1 | Java 基础陷阱 | 41 | [01.java](13.split-hairs/01.java/README.md) |
+| 2 | 计算机基础 | 7 | [02.computer-basics](13.split-hairs/02.computer-basics/README.md) |
+| 3 | 数据库细节 | 27 | [03.database](13.split-hairs/03.database/README.md) |
+| 4 | 系统设计难点 | 22 | [04.system-design](13.split-hairs/04.system-design/README.md) |
+| 5 | 安全 | 11 | [05.security](13.split-hairs/05.security/README.md) |
+| 6 | Spring 面试高频 | 17 | [06.spring](13.split-hairs/06.spring/README.md) |
+| 7 | 前端细节 | 27 | [09.front-end](13.split-hairs/09.front-end/README.md) |
+| 8 | 大数据 | 7 | [10.big-data](13.split-hairs/10.big-data/README.md) |
+| 9 | AI 新概念 | 45 | [11.ai](13.split-hairs/11.ai/README.md) |
+| 10 | 工具链 | 5 | [tools](13.split-hairs/tools/README.md) |
 
 ---
 
-## 01.java（39 篇）—— Java 基础陷阱
+## 01.java（41 篇）—— Java 基础陷阱
 
 ### 集合与数据结构
 
@@ -335,7 +337,7 @@ module:
 |------|---------|
 | [高频面试题合集](13.split-hairs/01.java/questions/README.md) | Java 综合高频问题速查 |
 
-## 03.database（26 篇）—— 数据库细节
+## 03.database（27 篇）—— 数据库细节
 
 ### MySQL 基础
 
@@ -375,7 +377,7 @@ module:
 | [Redis 集群](13.split-hairs/03.database/redis-cluster/README.md) | Sentinel vs Cluster |
 | [Redis 大 Key 问题](13.split-hairs/03.database/redis-big-key/README.md) | 发现与治理方案 |
 
-## 04.system-design（19 篇）—— 系统设计难点
+## 04.system-design（22 篇）—— 系统设计难点
 
 ### 高性能
 
@@ -409,7 +411,7 @@ module:
 | [幂等性设计 6 大方案](13.split-hairs/04.system-design/idempotency/README.md) | Token / 状态机 / 唯一索引 / 去重表 |
 | [熔断降级实战](13.split-hairs/04.system-design/circuit-breaker/README.md) | Sentinel / Resilience4j 落地 |
 
-## 06.spring（16 篇）—— Spring 面试高频
+## 06.spring（17 篇）—— Spring 面试高频
 
 ### 基础
 
@@ -457,7 +459,7 @@ module:
 |------|---------|
 | [注册发现选型：Nacos / Eureka / Consul / ZK](13.split-hairs/06.spring/cloud-registry-comparison/README.md) | CAP 取舍 / 健康检查 / Nacos 推荐 / Eureka 已停维 |
 
-## 11.ai（40 篇）—— AI 新概念
+## 11.ai（45 篇）—— AI 新概念
 
 | 主题 | 核心问题 |
 |------|---------|
@@ -497,7 +499,7 @@ module:
 > 2026-07 新增 Agent A/B Test 评测体系专题（[主模块深度](./11.ai/08-llmops/agent-evaluation/README.md) + [面试题版](13.split-hairs/11.ai/agent-ab-testing/README.md)）。
 > 评测体系覆盖：6 大指标 + 5 种方法 + LLM-as-Judge + Pipeline + 阿里面试 + 7 大反模式 + 选型决策树 + 实战案例。
 
-## 09.front-end（26 篇）—— 前端细节
+## 09.front-end（27 篇）—— 前端细节
 
 ### HTTP / 网络
 
