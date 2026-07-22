@@ -63,6 +63,7 @@ graph TD
 | 12 | 🆕 业务安全 | [敏感词过滤](sensitive-word-filter/README.md) | AC 自动机 + Bloom + 100w QPS 高并发完整方案 |
 | 13 | 🆕 搜索系统 | [商品搜索](product-search/README.md) | 倒排索引 + BM25 + 多阶段排序 + 数据同步 |
 | 14 | 🆕 文件上传 | [大文件上传](file-upload/README.md) | 分片 + 断点续传 + 秒传 + 对象存储 |
+| 14b | 🆕 媒体上传 | [media-upload-storage](media-upload-storage/README.md) | 图片 WebP/AVIF + 视频 HLS/DASH + 冷热分层 + 高可用 4 层防线 + 防盗链 DRM | 媒体上传存储系统 |
 
 ## 学习路径
 
