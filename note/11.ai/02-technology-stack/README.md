@@ -45,6 +45,7 @@ module:
 | 🆕 [rag-paradigm-evolution](rag-paradigm-evolution/) | **RAG 范式演进四阶段** — Naive→Advanced→Modular→Agentic 核心能力递进 + 对比表 + 选型决策树 | 代际主线（先读） |
 | [rag-pipeline](rag-pipeline/) | RAG 完整 Pipeline 综述 — 5 阶段 SOTA 架构 | 全链路总览 |
 | [chunking-strategies](chunking-strategies/) | 5 大 Chunking 策略对比（固定/递归/语义/滑动/Agentic） | 检索质量 20-40% |
+| 🆕 [knowledge-ingestion-pipeline](knowledge-ingestion-pipeline/) | 企业级入库 8 阶段全链路（多源连接 + 解析 + 清洗 + 去重 + CDC 增量 + 元数据） | ingest-time 视角 |
 | [query-rewrite](query-rewrite/) | Query Rewrite 查询改写提升 RAG 召回 10-20% | 多轮对话必备 |
 | [reranker](reranker/) | Cross-Encoder Reranker 重排序，精确率高 15-30% | 精排核心 |
 | [hybrid-search](hybrid-search/) | 向量 + BM25 混合检索，召回率高 15-25% | 生产标配 |
