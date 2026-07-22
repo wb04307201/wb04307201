@@ -159,4 +159,17 @@ for prompt in prompts:
 | ❌ 宪法越多越好 | ✅ 50 条已是上限，多了易冲突 |
 | ❌ Constitutional AI 让模型变木讷 | ✅ 适当调整原则可保持对话能力 |
 
+---
+
+## 🔗 本专题兄弟章节
+
+| # | 章节 | 一句话定位 |
+|---|------|-----------|
+| 1 | [SFT](01-sft.md) | 监督微调 = 所有对齐方法的基础（InstructGPT 2022） |
+| 2 | [RLHF](02-rlhf.md) | Reward Model + PPO 强化学习（4 模型协同） |
+| 3 | [DPO](03-dpo.md) | 直接偏好优化，跳过 Reward Model（闭式解） |
+| 4 | [Constitutional AI](04-constitutional-ai.md) | 用 AI 原则替代人类反馈（Anthropic 2022） |
+| 5 | [新方法](05-newer-methods.md) | KTO/IPO/SimPO/ORPO 2024+ |
+| 6 | [PEFT/LoRA](06-peft-lora.md) | 参数高效微调 = 用 <1% 参数适配大模型（DoRA 强 LoRA 5-10%） |
+
 ← [返回 LLM 对齐专题](../README.md)

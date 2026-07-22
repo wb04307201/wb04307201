@@ -111,4 +111,17 @@ PPO 训练：70B 模型 + 6B RM + 6B Value Model
 | ❌ PPO 一定优于 DPO | ✅ DPO 在小模型上已接近 PPO |
 | ❌ RLHF 训练完还需要 SFT | ✅ 顺序是 SFT → RM → PPO，不是循环 |
 
+---
+
+## 🔗 本专题兄弟章节
+
+| # | 章节 | 一句话定位 |
+|---|------|-----------|
+| 1 | [SFT](01-sft.md) | 监督微调 = 所有对齐方法的基础（InstructGPT 2022） |
+| 2 | [RLHF](02-rlhf.md) | Reward Model + PPO 强化学习（4 模型协同） |
+| 3 | [DPO](03-dpo.md) | 直接偏好优化，跳过 Reward Model（闭式解） |
+| 4 | [Constitutional AI](04-constitutional-ai.md) | 用 AI 原则替代人类反馈（Anthropic 2022） |
+| 5 | [新方法](05-newer-methods.md) | KTO/IPO/SimPO/ORPO 2024+ |
+| 6 | [PEFT/LoRA](06-peft-lora.md) | 参数高效微调 = 用 <1% 参数适配大模型（DoRA 强 LoRA 5-10%） |
+
 ← [返回 LLM 对齐专题](../README.md)

@@ -138,9 +138,17 @@ trainer.train()
 
 ---
 
-## 🔗 兄弟章节
+## 🔗 本专题兄弟章节
 
-- **本专题**：[RLHF](02-rlhf.md) / [DPO](03-dpo.md) / [新方法](05-newer-methods.md)
+| # | 章节 | 一句话定位 |
+|---|------|-----------|
+| 1 | [SFT](01-sft.md) | 监督微调 = 所有对齐方法的基础（InstructGPT 2022） |
+| 2 | [RLHF](02-rlhf.md) | Reward Model + PPO 强化学习（4 模型协同） |
+| 3 | [DPO](03-dpo.md) | 直接偏好优化，跳过 Reward Model（闭式解） |
+| 4 | [Constitutional AI](04-constitutional-ai.md) | 用 AI 原则替代人类反馈（Anthropic 2022） |
+| 5 | [新方法](05-newer-methods.md) | KTO/IPO/SimPO/ORPO 2024+ |
+| 6 | [PEFT/LoRA](06-peft-lora.md) | 参数高效微调 = 用 <1% 参数适配大模型（DoRA 强 LoRA 5-10%） |
+
 - **L3 同级**：[Harness Engineering](../harness-engineering/README.md) 顺带提
 - **咬文嚼字**：[面试深挖](../../../13.split-hairs/11.ai/agent-performance-evaluation/README.md)
 
