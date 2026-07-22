@@ -56,6 +56,7 @@ module:
 | [embedding-models](embedding-models/) | BGE / M3E / Qwen / OpenAI 4 大 Embedding 模型横评 | 选对提升 20-30% |
 | [lost-in-middle](lost-in-middle/) | Lost In the Middle 现象 + 6 大缓解方案 | 长 Context 必修 |
 | [yarn-context-extension](yarn-context-extension/) | YaRN / RoPE 长度扩展 2K → 128K-1M | 长上下文基础 |
+| 🆕 [long-document-processing](long-document-processing/) | 长 PDF/合同场景 4 大策略整合（智能分块 + 检索增强 + 上下文压缩 + 长度扩展） | 长文档应用视角 |
 
 ---
 
