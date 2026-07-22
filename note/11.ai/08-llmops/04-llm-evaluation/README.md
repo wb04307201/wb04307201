@@ -373,10 +373,21 @@ LLM-as-Judge（GPT-4 评分）：
 
 ---
 
-← [返回: L8 LLMOps](../README.md) · 📅 2026-06-28
-
----
-
 ## 深度扩展
 
 🆕 **5 大灵魂拷问（重点看 Q5 监控）**：[llm-production-thinking/05-online-monitoring](../../03-engineering/llm-production-thinking/05-online-monitoring.md) —— 把 6 维评估延伸为线上 4 维监控 + Trace + 黄金集回归 + 漂移检测（含 5 分钟定位实战）。
+
+---
+
+## 🔗 本专题兄弟章节
+
+| # | 章节 | 一句话定位 |
+|---|------|-----------|
+| 1 | [RAG vs Fine-tuning vs Prompt](../01-rag-vs-finetuning/README.md) | 三大定制策略对比与选型决策 |
+| 2 | [LLMOps 栈](../02-llmops-stack/README.md) | 数据/训练/部署/监控/反馈全链路工程栈 |
+| 3 | [向量库 vs 缓存](../03-vector-db-vs-cache/README.md) | Embedding 检索 vs KV 缓存边界与协同 |
+| 4 | [LLM 评测](../04-llm-evaluation/README.md) | 自动化指标 + 人工评测 + A/B + 红队对抗 |
+| 5 | [LLM 安全](../05-llm-security/README.md) | OWASP LLM Top 10 + 6 层防御 + Guardrails 实战 |
+| 6 | [RAG 超范围拒答](../06-rag-out-of-domain-rejection/README.md) | 6 大检测机制 + 5 大拒答模式 + 4 步调优 |
+
+← [返回: L8 LLMOps](../README.md) · 📅 2026-06-28
