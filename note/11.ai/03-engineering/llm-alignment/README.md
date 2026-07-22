@@ -7,15 +7,15 @@ module:
   summary: LLM 对齐专题（RLHF / DPO / PPO / Reward Model / Constitutional AI）
 -->
 
-# LLM 对齐专题（5 大方法）
+# LLM 对齐专题（6 大方法）
 
 > ⬅️ [返回 L3 工程实践](../README.md)
 
-> **一句话定位**：LLM 对齐 = **让模型输出符合人类意图**。5 大方法：SFT → RLHF → DPO → Constitutional AI → KTO/IPO/SimPO。从"鹦鹉学舌"到"理解意图"的演进。
+> **一句话定位**：LLM 对齐 = **让模型输出符合人类意图**。6 大方法：SFT → RLHF → DPO → Constitutional AI → KTO/IPO/SimPO → PEFT/LoRA。从"鹦鹉学舌"到"理解意图"的演进。
 
 ---
 
-## 📚 5 大方法目录
+## 📚 6 大方法目录
 
 | # | 章节 | 核心思想 | 论文 | 年份 |
 |---|------|---------|------|------|
@@ -24,6 +24,7 @@ module:
 | 3 | [DPO](03-dpo.md) | 直接偏好优化，跳过 Reward Model | Stanford | 2023 |
 | 4 | [Constitutional AI](04-constitutional-ai.md) | 用 AI 原则替代人类反馈 | Anthropic | 2022 |
 | 5 | [KTO/IPO/SimPO](05-newer-methods.md) | 2024-2025 新对齐算法 | 多家 | 2024+ |
+| 6 | [PEFT/LoRA/QLoRA](06-peft-lora.md) | 参数高效微调，0.2% 参数接近全参效果 | He et al. 2022 | 2022 |
 
 ---
 
@@ -40,7 +41,7 @@ module:
 
 ---
 
-## 📊 5 大方法横评
+## 📊 6 大方法横评
 
 | 方法 | 训练成本 | 实施难度 | 效果 | 代表模型 |
 |------|---------|---------|------|---------|
@@ -49,6 +50,7 @@ module:
 | DPO | 低 | ⭐⭐ | 接近 RLHF | Llama-3 / Qwen2 |
 | Constitutional AI | 高 | ⭐⭐⭐ | 强（无害性） | Claude 2+ |
 | KTO/IPO/SimPO | 低 | ⭐⭐ | 接近 DPO | Mistral / Qwen2.5 |
+| **PEFT/LoRA** | **低** | **⭐⭐** | **接近全参** | **LLaMA-2 / Qwen2.5** |
 
 ---
 
@@ -64,6 +66,8 @@ KTO:     L = λ_w·σ(r_w) + λ_l·σ(-r_l)  # 价值函数
 ```
 
 核心都是：**让"好的回答"概率高，"坏的回答"概率低**。
+
+**横向关联**：所有对齐方法（SFT/RLHF/DPO/KTO）都依赖 **PEFT/LoRA** 才能在消费级显卡上平民化，详见 [PEFT/LoRA/QLoRA 章节](06-peft-lora.md)。
 
 ---
 
