@@ -286,6 +286,32 @@ D. 暂不沉淀
 - 路径深度必须从目标文件向上数（`../` 数量 = 层级差）
 - 若 Step 5.5 触发了网络搜索，文章末尾必须有 `## 📚 参考来源` 章节
 
+**subagent "silent failure" 防御（强约束）**：
+
+> ⚠️ 历史教训：曾出现多次 subagent 报告 "11/11 PASS" 但 `git status --short` 为空 / `ls file` 不存在（commit 1 subagent 多次完全无动作）。**subagent 自我报告 ≠ 实际落地**。
+
+- **强制使用 Write 工具**：subagent 必须**实际调用 Write 工具**写入完整文件内容（不允许 placeholder / 占位符 / 仅创建空目录）
+- **commit 前三步验证**：
+  1. `ls -la FILE` 确认文件**真实存在**且**非空**（用 `wc -c` 验证文件大小 > 100 字节）
+  2. `git status --short` 确认 staged/unstaged 状态**符合预期**
+  3. `git log --oneline -3` 确认 commit 实际**落地**（前 3 commit 含本次 commit hash）
+- **commit hash 必传**：subagent final report 必含**真实 commit hash**（不是"已 commit" 而是 `7e2cab99 refactor(note): ...`）。缺失则视为 commit 失败
+- **失败检测规则**：如果 subagent 报告完成但 `git log` 没新 commit → 立即 abort + 重派，不要信任 subagent 自我报告
+- **commit 1 必含文件创建**：commit 1 必须新增 1+ 个文件（不能用 pure README 修改代替），`find note -name "<topic>.md" -newer <commit-base>` 验证
+
+### Step 6.5: 并发 peer session 协调（共享 worktree）
+
+> 历史教训：多 session 在同一 worktree 并发工作时，peer 可能修改 subagent 写过的文件而不 commit，或写文件后不 commit，需要协调。
+
+- **commit hash 必须可验证**：每次 session 派发后保留 agentId 列表 + 期望 commit hash，便于后续核对
+- **peer 报告需独立验证**：
+  - peer 报告"commit X 已落地" → `git log --grep="<topic>" --oneline` 独立验证
+  - peer 报告"working tree 干净" → `git status -s` 独立验证
+- **冲突协调**：当 commit 已被 peer 部分覆盖 + working tree 还有 modifications：
+  - 检查 peer 修改是否被 commit（`git log` + `git diff`）
+  - 如 peer 已 commit + working tree 还有未提交修改 → 询问用户偏好（reset 重写 vs polish commit）
+- **不接受 floating peer 报告**：peer 报告后用 `git log --oneline` 独立核对才声明 final pass
+
 ### Step 7: 验证 + 自检（必做）
 
 **自检清单**：
@@ -296,6 +322,10 @@ D. 暂不沉淀
 - [ ] 数字校对：声明篇数与 find 实际结果一致
 - [ ] 互链成网：新内容与至少 2 个旧章节互链（避免孤儿）
 - [ ] **互链双向性扫描**：每个反向链接的 parent / 同级兄弟**必须回链**到新文件（避免"单向链接"）
+- [ ] **每个 PASS 都有证据**：附 commit hash + `wc -l` 输出 + 行号引用，不接受泛泛"全部 PASS"
+- [ ] **严格对照用户原规格**：用户原文提到的具体链接（如 `capacity-planning` / `widevine` / `keyinfo`）必须 grep 验证
+- [ ] **代码示例若规格要求**：bash / ffmpeg / openssl 等必须**实际代码块**而非文字描述
+- [ ] **数字实时核对**：subagent 报告行数必须 orchestrator 独立 `wc -l` 校验，不接受 subagent 自我声明
 
 ## Quick Reference
 
@@ -399,6 +429,33 @@ for dir in $(find note -type d -exec sh -c 'ls "$1"/[0-9]*.md 2>/dev/null | head
   done
 done
 ```
+
+### ❌ Mistake 11：subagent silent failure（自报 PASS 但文件不存在）
+
+**症状**：subagent 报告 "X/Y self-check PASS" / "11/11 PASS" / "全部完成"，但 `git status --short` 为空、`git log` 无新 commit、目标文件不存在
+
+**修复**：
+- orchestrator 不能相信 subagent 自我报告，必须独立验证：`ls -la FILE` + `git status --short` + `git log --oneline -3`
+- subagent 报告缺失 commit hash → 视为 commit 失败，立即 abort + 重派
+- 注意 commit 1 章节的 subagent 失败概率最高（首次创建文件复杂操作）
+
+### ❌ Mistake 12：git reset --soft + git commit --amend 错位
+
+**症状**：`git reset --soft BASE` 撤销 3 个 commit 后重新 commit 1/2/3，HEAD 此时在 commit 3。后续 `git commit --amend` **修改的 HEAD（commit 3）**，而非你以为的 commit 1。结果 3 个 commit hash 全变
+
+**修复**：
+- reset 后**不要使用 `git commit --amend`**——直接 `git commit -m "..."` 创建新 commit
+- 如必须 amend 早 commit，先 `git reset --soft TARGET_COMMIT^` + 重新 stage → commit（不复用 amend）
+- 每次 reset 后**用 `git log --oneline` 确认 HEAD 位置**再决定 amend / commit
+
+### ❌ Mistake 13：过度宣称 PASS（"所有项 PASS" 但用户规格未对齐）
+
+**症状**：final report 宣告"11 项 PASS"、"全部完成"，但 peer 严格审计后发现用户原规格中的具体细节（特定链接 / 特定工具 / 特定代码示例）缺失
+
+**修复**：
+- orchestrator 的 final report **必须**逐项对照用户原始 question，把用户提到的每个具体名词 grep 验证
+- 例：用户问"高可用高并发图片视频" → final report 必须 grep `WebP`、`AVIF`、`HLS`、`DRM`、`高可用`、`4 层防线` 全部存在
+- 反例：final 报告"10 节齐全 PASS" 实际未 grep "4 层防线" "AES-128 "代码示例"" 实际是否落地
 
 ## Output Format
 
