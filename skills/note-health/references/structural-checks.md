@@ -78,27 +78,43 @@ TOTAL_READMES=$(find note -name "README.md" | wc -l)
 WITH_BACKLINK=$(grep -rl "← \[返回" note/ 2>/dev/null | wc -l)
 echo "回链覆盖: $WITH_BACKLINK / $TOTAL_READMES"
 
-# 6. broken links（一次 Python 扫描）
+# 6. broken links（一次 Python 扫描 —— 修正：regex 支持 `../` + `absolute` + Windows GBK hint）
 python -c "
-import os, re, glob
+import sys, os, re, glob
+# Windows GBK hint：路径含中文时强制 UTF-8 stdout（否则 cmd 显示乱码误判）
+if sys.platform == 'win32':
+    try: sys.stdout.reconfigure(encoding='utf-8')
+    except: pass
 def resolve(c, t):
+    # 旧（bug）：`[^)#]+\.md` 把 `../` 也算 target 一部分，导致 target_abs 起始路径错误
+    # 新：regex `\\]\\((.+?\\.md)(#...)?\\)` 正确捕获（含 ../ 相对 + 绝对）
     if t.startswith('/'):
         return os.path.normpath(os.path.join('note', t.lstrip('/')))
     return os.path.normpath(os.path.join(os.path.dirname(c), t))
 real_broken = 0
+broken_list = []
+PLACEHOLDERS = ['x/README', 'xxx', 'xx/yy']  # SPEC 模板占位符排除
 for readme in glob.glob('note/**/*.md', recursive=True):
     try:
         with open(readme, 'r', encoding='utf-8', errors='ignore') as f:
             content = f.read()
     except: continue
-    for m in re.finditer(r'\]\(([^)#]+\.md)(?:#[^)]*)?\)', content):
-        target_rel = m.group(1)
-        if target_rel.startswith('http'): continue
+    # 修正：从 `([^)#]+\.md)` 改为 `(.+?\.md)` —— 支持 `../polymorphism/README.md` 这类路径
+    for m in re.finditer(r'\]\((.+?\.md)(?:#[^)]*)?\)', content):
+        target_rel = m.group(1).strip()
+        if target_rel.startswith(('http', 'mailto:', '#')): continue
+        if any(p in target_rel for p in PLACEHOLDERS): continue
         target_abs = resolve(readme, target_rel)
         if not os.path.isfile(target_abs):
-            if 'xxx' not in target_rel and 'x/README' not in target_rel and 'xx/yy' not in target_rel:
-                real_broken += 1
+            real_broken += 1
+            broken_list.append((readme, target_rel))
 print(f'broken links: {real_broken}')
+for src, tgt in broken_list[:30]:
+    # Windows GBK 中文路径 → 强制 UTF-8 输出（subagent 看时不乱码）
+    try:
+        print(f'  {src} -> {tgt}')
+    except UnicodeEncodeError:
+        print(f'  {src} (encoded) -> {tgt} (encoded)')
 "
 
 # 7. 索引缺失
@@ -286,6 +302,70 @@ for f in glob.glob('note/*/**/README.md', recursive=True):
         hits+=1
         print(f'  [!] {f}: frontmatter parent={p} 但位于模块 {want}（跨模块迁移遗留，核对回链文案 + 旧模块是否仍链接）')
 print(f'  跨模块迁移遗留: {hits} 处')
+"
+
+echo "=== 9.4 数字一致性扫描（note/README.md 声明篇数 vs find 实际数）==="
+# 教训：note/README.md 经常写过时篇数（"49 篇"、"192 篇"）。
+#      本检查：find 各模块实际 README 数 → 与 note/README.md 声明对比 → 偏差即 P1 必修。
+python -c "
+import re, os, glob
+
+def count_actual(mod_dir):
+    if not os.path.isdir(mod_dir): return 0
+    n = 0
+    for sub in os.listdir(mod_dir):
+        sub_path = os.path.join(mod_dir, sub)
+        if os.path.isdir(sub_path):
+            md_files = [f for f in os.listdir(sub_path) if f.endswith('.md') and f != 'README.md']
+            n += len(md_files)
+    return n
+
+actual = {
+    '01.java':         count_actual('note/13.split-hairs/01.java'),
+    '02.computer-basics': count_actual('note/13.split-hairs/02.computer-basics'),
+    '03.database':     count_actual('note/13.split-hairs/03.database'),
+    '04.system-design': count_actual('note/13.split-hairs/04.system-design'),
+    '05.security':     count_actual('note/13.split-hairs/05.security'),
+    '06.spring':       count_actual('note/13.split-hairs/06.spring'),
+    '09.front-end':    count_actual('note/13.split-hairs/09.front-end'),
+    '10.big-data':     count_actual('note/13.split-hairs/10.big-data'),
+    '11.ai':           count_actual('note/13.split-hairs/11.ai'),
+    'tools':           count_actual('note/13.split-hairs/tools'),
+    '12.story':        len([f for f in glob.glob('note/12.story/[0-9]*.md') if 'STORY-FORMAT-SPEC' not in f]),
+}
+
+print('=== 实际篇数（find -maxdepth 3）===')
+total = 0
+for k, v in actual.items():
+    total += v
+    print(f'  {k}: {v}')
+print(f'13题 + tools 总题数: {total}')
+print(f'12.story 篇数: {actual[\"12.story\"]}')
+
+print('\\n=== note/README.md 声明数字 vs 实际 ===')
+with open('note/README.md', encoding='utf-8') as f:
+    content = f.read()
+mismatch = 0
+for mod in actual.keys():
+    pattern = mod + r'（(\d+) 篇）'
+    m = re.search(pattern, content)
+    if m:
+        decl = int(m.group(1))
+        actual_n = actual[mod]
+        status = '✓' if decl == actual_n else f'✗ 偏差 {decl - actual_n:+d}'
+        if decl != actual_n: mismatch += 1
+        print(f'  {mod}: 声明 {decl} vs 实际 {actual_n} → {status}')
+
+# 13题总篇数校验
+m = re.search(r'(\d+) 篇.*?深度文章', content)
+if m:
+    decl_total = int(m.group(1))
+    real_13q = sum(v for k, v in actual.items() if k != '12.story')
+    status = '✓' if decl_total == real_13q else f'✗ 偏差 {decl_total - real_13q:+d}'
+    print(f'  13题总篇数: 声明 {decl_total} vs 实际 {real_13q} → {status}')
+    if decl_total != real_13q: mismatch += 1
+
+print(f'\\n总计偏差: {mismatch} 处（P1 必修，须出 fix(note) commit）')
 "
 ```
 
