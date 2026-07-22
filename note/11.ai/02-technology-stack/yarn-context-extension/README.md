@@ -145,6 +145,8 @@ model.config.rope_scaling = {
 - **L1**：[RoPE 位置编码](../../01-fundamentals/rope-position-encoding/README.md)
 - **本专题**：[Lost in middle](../lost-in-middle/README.md) / [KV Cache](../kv-cache/README.md)
 - **咬文嚼字**：[面试深挖](../../../13.split-hairs/11.ai/llm-benchmark/README.md)
+- **应用场景**：[long-document-processing](../long-document-processing/README.md) — Qwen3.5/Llama-3.1-1M 实战 + 长 PDF 决策树
+- **咬文嚼字**：[long-document-pdf 长文档面试](../../../13.split-hairs/11.ai/long-document-pdf/README.md) — Q3 上下文扩展深挖（YaRN/LongRoPE 对比）
 
 ---
 
