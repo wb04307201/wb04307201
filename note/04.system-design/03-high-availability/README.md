@@ -36,6 +36,12 @@ graph TD
     Quality --> CQ["代码质量<br/>2行/8行原则"]
 ```
 
+## 业务层风控
+
+高可用 8 件套是**技术层**防御，业务层还需要风控引擎：
+
+- 🆕 [risk-control-engine](risk-control-engine/README.md) — 5 层架构 + 砍一刀病毒 K-Factor + 黑产 7 类对抗 + 评分卡实战
+
 ## 模块导航
 
 | 序号 | 分类 | 主题 | 核心内容 |

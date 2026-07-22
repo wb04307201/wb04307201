@@ -792,4 +792,6 @@ public class GlobalExceptionHandler {
 - [RFC 2104 - HMAC](https://tools.ietf.org/html/rfc2104)
 - [Spring Security Documentation](https://docs.spring.io/spring-security/reference/)
 
+- 业务层风控：[risk-control-engine](../../03-high-availability/risk-control-engine/README.md) — 风控引擎 5 层架构 + 黑产 7 类对抗 + 评分卡实战（API 安全是技术层防线，风控是业务层防线）
+
 ← [返回 安全篇](../README.md)

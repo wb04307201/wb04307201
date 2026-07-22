@@ -167,4 +167,6 @@ graph TD
 
 - [秒杀无 Redis 实战](seckill-without-redis.md) — 500 人 / 2 台服务器 / 库存=1 单机方案 + 5 大方案对比
 
+- 业务层风控：[risk-control-engine](../risk-control-engine/README.md) — 风控引擎 5 层架构 + 砍一刀 K-Factor + 黑产对抗（限流是入口层第一道防线，风控是业务层防线，二者组合形成完整防御链）
+
 ← [返回 高可用](../README.md)
