@@ -901,5 +901,6 @@ Q4：是否强一致性需求（金融场景）？
 - **面试题（Redis 兄弟篇）**：[13.split-hairs/03.database/redis/cache-penetration-breakdown-avalanche](../../../13.split-hairs/03.database/cache-penetration-breakdown-avalanche/README.md) —— 缓存穿透/击穿/雪崩
 - **Spring Cache 实操**：[06.spring/03-data/cache/](../../../06.spring/03-data/cache/README.md) —— Spring Cache + Caffeine 实战
 - **餐厅叙事**：12.story/04-peak-traffic-defense.md —— 阿明餐厅双 11 高峰缓存实战
+- **媒体专项**：[media-upload-storage](../media-upload-storage/README.md) — 媒体上传场景的 Cache-Aside 缓存策略（原图 + 5 尺寸 + 转码结果）
 
 ← [返回 高性能设计](../README.md)

@@ -242,5 +242,6 @@ if (!actualMd5.equals(expectedMd5)) {
 
 - 面试题：[`13.split-hairs/04.system-design`](../../../13.split-hairs/04.system-design/README.md) — 系统设计面试题全集
 - 深度阅读：[`04.system-design`](../../README.md) — 系统设计主模块
+- **媒体专项**：[media-upload-storage](../media-upload-storage/README.md) — 图片视频上传（HLS/DASH 转码 + 防盗链 + 高可用 4 层防线，与通用文件上传互补）
 
 ← [返回: 高性能设计](../README.md)
