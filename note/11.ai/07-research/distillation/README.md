@@ -76,6 +76,11 @@ module:
 
 ---
 
+## 🔗 相关主题
+
+- **兄弟对齐专题**：[LLM 对齐专题](../../03-engineering/llm-alignment/README.md) — SFT / RLHF / DPO / Constitutional AI。蒸馏的数据源常包含对齐后的指令/偏好数据，反过来蒸馏小模型后也常走对齐流水线对齐（教科书级搭配）。
+- **同模块蒸馏工具**：[模型蒸馏工具](tools/README.md) — LLaMA-Factory / Hugging Face trl / NVIDIA NeMo / OpenVINO 等主流蒸馏工具链全景。
+
 ## 工具与实战
 
 - [模型蒸馏工具](tools/README.md) — LLaMA-Factory / Hugging Face trl / NVIDIA NeMo / OpenVINO 等主流蒸馏工具链全景。
