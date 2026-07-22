@@ -380,6 +380,8 @@ public int hashCode() {
 }
 ```
 
+- **深度专题**：[polymorphism](polymorphism/README.md) — 多态深度专题：重载 vs 重写 + 编译时 vs 运行时分派 + vtable + 默认方法 + 协变返回（本章节 line 137 多态 14 行基础是其概述）
+
 ---
 
 ← [返回 Java 核心概念](../README.md)

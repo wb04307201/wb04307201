@@ -201,6 +201,7 @@ Comparator<String> methodRef = Comparator.comparingInt(String::length);
 1. **序列化问题**：内部类（尤其是非静态内部类）不建议实现`Serializable`，因为编译器生成的合成字段在不同编译器实现中可能不同
 2. **内存泄漏**：非静态内部类持有外部类的引用，如果内部类生命周期比外部类长，可能导致外部类无法被回收
 3. **优先使用静态内部类**：如果内部类不需要访问外部类的实例成员，应声明为`static`，避免不必要的引用持有
+- **多态应用**：[polymorphism](polymorphism/README.md) — 匿名内部类即一种多态形态（创建匿名子类实现多态分派）
 
 ---
 
