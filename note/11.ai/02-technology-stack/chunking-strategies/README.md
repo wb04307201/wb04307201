@@ -167,6 +167,7 @@ RAG 检索质量（nDCG@10）：
 - **咬文嚼字**：[RAG 面试](../../../13.split-hairs/11.ai/rag/README.md)
 - **应用场景**：[long-document-processing](../long-document-processing/README.md) — 长 PDF/合同实战视角（4 大策略整合）
 - **咬文嚼字**：[long-document-pdf 长文档面试](../../../13.split-hairs/11.ai/long-document-pdf/README.md) — 4 题面试深挖（含分块实战）
+- **入库侧**：[knowledge-ingestion-pipeline](../knowledge-ingestion-pipeline/README.md) — 入库时分块策略选型（在 8 阶段流水线的"智能分块"环节落地）
 
 ---
 

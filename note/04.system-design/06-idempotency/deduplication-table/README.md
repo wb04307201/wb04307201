@@ -377,6 +377,7 @@ public void onMessage(...) {
 - [乐观锁 / Version](../optimistic-lock/README.md) — 并发更新场景
 - [状态机](../state-machine/README.md) — 状态流转场景
 - [与分布式事务的关系](../vs-distributed-transaction/README.md) — 消息 + 事务协调
+- **应用场景**：[knowledge-ingestion-pipeline](../../../11.ai/02-technology-stack/knowledge-ingestion-pipeline/README.md) — 入库流水线的 3 层去重（URL hash + SimHash 内容 + 向量近似）
 
 ## 参考资料
 

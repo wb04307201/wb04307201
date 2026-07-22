@@ -166,6 +166,7 @@ class SOTARAG:
 - **咬文嚼字**：[RAG 面试](../../../13.split-hairs/11.ai/rag/README.md)
 - **LLMOps**：[RAG 评估](../../08-llmops/agent-evaluation/09-rag-evaluation/README.md)
 - **应用场景**：[long-document-processing](../long-document-processing/README.md) — RAG Pipeline 在长 PDF/合同场景的 5 阶段实战（含 Docling 解析）
+- **入库侧**：[knowledge-ingestion-pipeline](../knowledge-ingestion-pipeline/README.md) — 企业入库 8 阶段（连接 → 解析 → 清洗 → 去重 → Embedding → 入库 → CDC 增量）
 
 ---
 
