@@ -50,6 +50,7 @@ graph TD
 | 7 | 冗余容灾 | [弹性架构](elastic-architecture/README.md) | 自动扩缩容与弹性设计 |
 | 8 | 冗余容灾 | [混沌工程](chaos-engineering/README.md) | Chaos Mesh / 故障注入 / 容灾演练 |
 | 9 | 质量保障 | [代码质量](code-quality/README.md) | [2 行/8 行原则](code-quality/2-lines-8-lines/README.md) |
+| 10 | 业务防御 | [风控引擎](risk-control-engine/README.md) | 5 层架构（数据/特征/规则/模型/处置）+ 砍一刀 K-Factor + 7 类黑产对抗 |
 
 ## 学习路径
 
