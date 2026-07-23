@@ -71,10 +71,21 @@ question:
 
 ## 三、常见陷阱
 
-- **SPA 用 Implicit Flow**：OAuth 2.1 已废弃 → 改用 Authorization Code + PKCE
-- **不校验 State 参数**：CSRF 攻击者把自己的 Code 注入受害者浏览器
-- **微服务间用 Authorization Code**：无用户参与时应选 Client Credentials
-- **Refresh Token 不设过期且不 Rotate**：被盗后可无限续命
+### 陷阱 1：SPA 用 Implicit Flow
+
+- **真相**：OAuth 2.1 已废弃 → 改用 Authorization Code + PKCE
+
+### 陷阱 2：不校验 State 参数
+
+- **真相**：CSRF 攻击者把自己的 Code 注入受害者浏览器
+
+### 陷阱 3：微服务间用 Authorization Code
+
+- **真相**：无用户参与时应选 Client Credentials
+
+### 陷阱 4：Refresh Token 不设过期且不 Rotate
+
+- **真相**：被盗后可无限续命
 
 ---
 

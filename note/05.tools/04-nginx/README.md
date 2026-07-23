@@ -153,10 +153,6 @@ Cloudflare 基于 Rust 开源的下一代代理框架。核心优势：单线程
 - 关联：[`02-docker`](../02-docker/README.md) — Docker 容器化部署时 Nginx 常作前置网关
 - 关联：[`06-ali-microservices`](../06-ali-microservices/README.md) — Higress / Envoy 等云原生网关与 Nginx 同源
 
----
-
-← [返回工具链总览](../README.md)
-
 ## 配置示例补充（新增 B2 可执行性提升）
 
 ### 最小可跑通的反向代理 + 负载均衡
@@ -190,3 +186,7 @@ nginx -t                              # 测试配置
 systemctl reload nginx              # 重新加载（不中断）
 curl -H "Host: myapp.example.com" http://localhost/health  # 验证
 ```
+
+---
+
+← [返回工具链总览](../README.md)

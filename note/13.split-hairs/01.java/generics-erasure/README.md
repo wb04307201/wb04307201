@@ -10,6 +10,8 @@ question:
 
 # Java 泛型擦除深度剖析
 
+> 一句话定位：Java 泛型采用类型擦除实现——运行时不感知泛型类型，这是编译错误/桥方法/PECS 等所有"诡异现象"的根源。完整泛型体系见 [主模块泛型](../../../01.java/concepts/generics/README.md)。
+
 ## 引子：一个让你怀疑人生的编译错误
 
 ```java
@@ -194,7 +196,7 @@ Object obj = list.get(0); // OK：只能保证是 Object
 
 ## 五、常见陷阱
 
-### 5.1 `List<Object>` 不能赋值给 `List<String>`
+### 陷阱 1：`List<Object>` 不能赋值给 `List<String>`
 
 ```java
 List<String> strings = new ArrayList<>();
@@ -202,9 +204,9 @@ List<String> strings = new ArrayList<>();
 // 如果允许，就可以 objects.add(1)，导致 strings 中混入非 String 类型
 ```
 
-泛型是**不变的（Invariant）**，即使 `String` 是 `Object` 的子类，`List<String>` 也不是 `List<Object>` 的子类。这是为了保障类型安全。
+- **真相**：泛型是**不变的（Invariant）**，即使 `String` 是 `Object` 的子类，`List<String>` 也不是 `List<Object>` 的子类。这是为了保障类型安全。
 
-### 5.2 反射获取泛型类型
+### 陷阱 2：反射获取泛型类型的限制
 
 虽然运行时泛型被擦除，但通过 `getGenericSuperclass()` 和 `ParameterizedType` 可以在某些场景下恢复泛型信息：
 
@@ -230,22 +232,32 @@ class UserDao extends GenericDao<User> {}
 // new UserDao().getEntityClass() → User.class
 ```
 
-这种技巧广泛用于 DAO 框架和序列化库中，但前提是泛型信息在类定义时被具体化（即子类继承时指定了具体类型）。
+- **真相**：这种技巧广泛用于 DAO 框架和序列化库中，但前提是泛型信息在类定义时被具体化（即子类继承时指定了具体类型）。如果直接 `new GenericDao<String>()` 则无法恢复。
 
 ---
 
-## 六、面试话术（30 秒版）
+## 六、面试话术
+
+### 30 秒版
 
 "Java 泛型采用类型擦除实现，编译后所有类型参数都被替换为上界或 Object，JVM 运行时不感知泛型。这导致不能 new T()、不能用 instanceof 检查泛型类型、不能创建泛型数组。当子类覆盖父类泛型方法时，编译器会生成桥方法维持多态性。PECS 原则指导我们：生产者用 extends 保证只读，消费者用 super 保证只写。虽然泛型被擦除，但通过反射的 ParameterizedType 可以在子类继承具体化类型时恢复泛型信息。"
+
+### 90 秒版
+
+> "Java 泛型的本质是**类型擦除**——JDK 5 引入泛型时，为了兼容已有字节码，编译器在编译期完成类型检查后，将所有类型参数替换为其上界或 Object，并插入强制转换。JVM 运行时完全不知道泛型的存在。
+>
+> 这导致 4 个主要后果：不能 new T()、不能 instanceof 泛型类型、不能创建泛型数组、静态成员不能用类型参数。当子类覆盖父类泛型方法时，编译器生成**桥方法**维持多态性——通过反射可以看到 isBridge=true 的方法。
+>
+> 通配符方面，**PECS 原则**：Producer Extends（只读用 extends）、Consumer Super（只写用 super）。这是由泛型的不变性决定的——List<String> 不是 List<Object> 的子类。
+>
+> 虽然运行时泛型被擦除，但通过反射的 ParameterizedType 可以在子类继承具体化类型时恢复泛型信息——这是 DAO 框架和序列化库的核心技巧。"
 
 ---
 
 ## 七、交叉引用
 
-- 主模块：[`01.java`](../../../01.java/) — Java 知识体系
-
-## 相关章节
-
-- 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容
+- 主模块：[`泛型`](../../../01.java/concepts/generics/README.md) — Java 泛型完整体系
+- 相关：[`通配符 PECS`](../wildcard-pecs/README.md) — 通配符深入讨论（若存在）
+- 相关：[`桥方法`](../bridge-method/README.md) — 桥方法专题（若存在）
 
 ← [返回: 咬文嚼字 · generics-erasure](../README.md)
