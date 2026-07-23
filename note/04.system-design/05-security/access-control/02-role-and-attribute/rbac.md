@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/security/access-control/rbac
+  type: article
+  category: 主模块子文章
+  summary: RBAC 基于角色的访问控制——User→Role→Permission 三层间接模型 + 4 变体 + 5 表 SQL 落地。
+-->
+
 # RBAC（Role-Based Access Control，基于角色的访问控制）
 
 > 一句话定位：RBAC 把权限从用户身上抽到"角色"中介，权限不直接分配给用户，而是分配给角色再分配给用户。

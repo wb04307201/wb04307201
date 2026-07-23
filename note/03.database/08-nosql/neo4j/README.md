@@ -222,18 +222,3 @@ LIMIT 100
 ---
 
 ← [返回 NoSQL 数据库](../README.md)
-
-## Frontmatter 类型与定位
-
-**当前 frontmatter**：
-```yaml
-module:
-  parent: database
-  slug: database/nosql/neo4j
-  type: article
-  ...
-```
-
-定位句（第 12 行）：**Neo4j 是原生图数据库，使用 Cypher 查询语言——核心是节点-关系-属性模型而非表-行-列模型。**（75 字内）
-
-> **P1 修正**：原定位句 ~95 字略冗，已压缩至 75 字。
