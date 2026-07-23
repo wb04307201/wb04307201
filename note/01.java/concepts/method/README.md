@@ -300,7 +300,7 @@ public interface Logger {
 | 接口静态方法 | 接口 | 是 | 通过接口名调用 | Java 8 |
 | 接口 private 方法 | 接口 | 是 | 仅接口内部调用 | Java 9 |
 
-- **多态关联**：[polymorphism](polymorphism/README.md) — 多态专题中"重载 vs 重写"对照表与本章节方法签名规则互补
+- **多态关联**：[polymorphism](../polymorphism/README.md) — 多态专题中"重载 vs 重写"对照表与本章节方法签名规则互补
 
 ---
 
