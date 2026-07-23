@@ -103,6 +103,14 @@ module:
 
 ---
 
+## 相关章节
+
+- [MES 制造执行系统](../mes/README.md) — QMS 与生产执行的集成
+- [SCM 供应链管理](../../03-supply-chain/scm/README.md) — QMS 与供应商质量协同
+- [13.split-hairs 面试题](../../../13.split-hairs/README.md) — 质量管理相关面试题
+
+---
+
 ← [返回业务系统总览](../README.md)
 
 ## 📊 本节统计

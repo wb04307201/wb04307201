@@ -128,7 +128,8 @@ public int strStr(String haystack, String needle) {
 ## 7. Java 标准库
 
 ```java
-// Java String.indexOf() 内部实现就是 KMP（简化的 Boyer-Moore）
+// Java String.indexOf() 使用朴素暴力匹配（双循环），不是 KMP 也不是 Boyer-Moore
+// KMP 在长文本 + 有重复前缀场景更优，但 Java 标准库未采用
 String haystack = "ABABCABAB";
 String needle = "ABAB";
 int idx = haystack.indexOf(needle);  // = 0

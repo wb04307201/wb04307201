@@ -209,4 +209,12 @@ enum OrderStatus {
 
 ---
 
+## 相关章节
+
+- [REST API 设计](../rest/README.md) — GraphQL 的对比方案
+- [RPC 与 gRPC](../rpc/README.md) — 另一种 API 风格
+- [API 网关](../../03-high-availability/api-gateway/README.md) — API 的统一入口
+
+---
+
 ← [返回 API 设计](../README.md)
