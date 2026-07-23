@@ -30,6 +30,11 @@
 - ✅ 12 条 broken links 清零（2026-07-21：12.story/kubernetes 路径前缀 + spi/network/a11y 目标缺失）
 - ✅ WCAG computer-basics→front-end 迁移遗留补全（2026-07-21：frontmatter parent + 回链 + 新建 a11y/README）
 - ✅ 12.story 42-46 补入 note/README 导航 + 篇数 48→49 校对（2026-07-21）
+- ✅ 6 条 broken links 清零（2026-07-23：polymorphism 兄弟相对路径 4 条 + 12.story 跨模块路径 2 条）
+- ✅ cap-and-base frontmatter summary 截断修复（2026-07-23）
+- ✅ 数字一致性校对 210→209（2026-07-23：含根 README 计数）
+- ✅ 3 个浅 README 扩充（2026-07-23：clustering/dimensionality-reduction/optimization）
+- ✅ 1 个孤儿 PNG 删除（2026-07-23：architecture-flow.png）
 
 > 报告每条发现时标注 `[NEW]`（本会话未触及）或 `[已修]`（本会话已修）。本清单会随时间增补。
 
@@ -73,12 +78,13 @@ grep -rn "篇\|个\|行" note/README.md 2>/dev/null | grep -E "[0-9]+\s*(篇|个
 # 4. H1 数字编号违规
 grep -rn "^# [一二三四五六七八九十]、\|^# [0-9][0-9]\." note/*/README.md 2>/dev/null | head -10
 
-# 5. 回链覆盖率
+# 5. 回链覆盖率（匹配两种格式：`← [返回` 和 `← 返回`）
 TOTAL_READMES=$(find note -name "README.md" | wc -l)
-WITH_BACKLINK=$(grep -rl "← \[返回" note/ 2>/dev/null | wc -l)
+WITH_BACKLINK=$(grep -rl "← \[返回\|← 返回" note/ 2>/dev/null | wc -l)
 echo "回链覆盖: $WITH_BACKLINK / $TOTAL_READMES"
 
-# 6. broken links（一次 Python 扫描 —— 修正：regex 支持 `../` + `absolute` + Windows GBK hint）
+# 6. broken links（严格 regex —— 匹配完整 markdown link `[text](target.md)`）
+# ⚠️ 旧 regex `\]\((.+?\.md)(?:#[^)]*)?\)` 会跨表格单元格匹配，产生大量假阳性
 python -c "
 import sys, os, re, glob
 # Windows GBK hint：路径含中文时强制 UTF-8 stdout（否则 cmd 显示乱码误判）
@@ -86,8 +92,6 @@ if sys.platform == 'win32':
     try: sys.stdout.reconfigure(encoding='utf-8')
     except: pass
 def resolve(c, t):
-    # 旧（bug）：`[^)#]+\.md` 把 `../` 也算 target 一部分，导致 target_abs 起始路径错误
-    # 新：regex `\\]\\((.+?\\.md)(#...)?\\)` 正确捕获（含 ../ 相对 + 绝对）
     if t.startswith('/'):
         return os.path.normpath(os.path.join('note', t.lstrip('/')))
     return os.path.normpath(os.path.join(os.path.dirname(c), t))
@@ -99,20 +103,22 @@ for readme in glob.glob('note/**/*.md', recursive=True):
         with open(readme, 'r', encoding='utf-8', errors='ignore') as f:
             content = f.read()
     except: continue
-    # 修正：从 `([^)#]+\.md)` 改为 `(.+?\.md)` —— 支持 `../polymorphism/README.md` 这类路径
-    for m in re.finditer(r'\]\((.+?\.md)(?:#[^)]*)?\)', content):
-        target_rel = m.group(1).strip()
+    # 严格 regex：匹配完整 markdown link `[text](target.md)`
+    # 旧（bug）：`\]\((.+?\.md)` 会跨表格匹配，捕获 `dir/) | 关键词 | [text](../README.md`
+    for m in re.finditer(r'\[([^\]]*)\]\(([^)]+?\.md)(?:#[^)]*)?\)', content):
+        target_rel = m.group(2).strip()
         if target_rel.startswith(('http', 'mailto:', '#')): continue
         if any(p in target_rel for p in PLACEHOLDERS): continue
         target_abs = resolve(readme, target_rel)
         if not os.path.isfile(target_abs):
             real_broken += 1
-            broken_list.append((readme, target_rel))
+            broken_list.append((readme, target_rel, m.group(1)[:60]))
 print(f'broken links: {real_broken}')
-for src, tgt in broken_list[:30]:
+for src, tgt, text in broken_list[:30]:
     # Windows GBK 中文路径 → 强制 UTF-8 输出（subagent 看时不乱码）
     try:
         print(f'  {src} -> {tgt}')
+        print(f'    text: {text}')
     except UnicodeEncodeError:
         print(f'  {src} (encoded) -> {tgt} (encoded)')
 "
@@ -122,14 +128,30 @@ for d in $(find note -type d -mindepth 2 -maxdepth 4 2>/dev/null); do
   if [ ! -f "$d/README.md" ]; then echo "缺 README: $d"; fi
 done
 
-# 8. 浅 README（< 50 行 leaf）
+# 8. 浅 README（< 50 行 leaf，区分 index vs article）
+# ⚠️ 索引页（type: index）< 50 行可能正常（只有导航表格），不算"浅"
 python -c "
-import os, glob
+import os, glob, re
+shallow = []
 for readme in sorted(glob.glob('note/**/README.md', recursive=True)):
     if os.path.dirname(readme).count(os.sep) < 3: continue
     with open(readme, 'r', encoding='utf-8', errors='ignore') as f:
-        lines = sum(1 for _ in f)
-    if lines < 50: print(f'  {lines:3d}行  {readme}')
+        content = f.read()
+        lines = content.count('\n') + 1
+    # 检查 frontmatter 中的 type
+    is_index = False
+    m = re.search(r'type:\s*index', content)
+    if m:
+        is_index = True
+    # 检查是否有 index-only 标记
+    if '<!-- index-only' in content:
+        is_index = True
+    if lines < 50:
+        tag = '[index]' if is_index else '[article]'
+        shallow.append((lines, readme, tag))
+print(f'浅 README (< 50 行): {len(shallow)} 篇')
+for lines, path, tag in shallow:
+    print(f'  {lines:3d}行  {tag:10s}  {path}')
 "
 ```
 
@@ -214,9 +236,41 @@ done
 # 5. 内容重复检测（同名目录）
 find note -type d -name "*engineer*" -o -name "*memory*" -o -name "*prompt*" | sort
 
-# 6. PNG 孤儿检测
-find note -name "*.png" | wc -l
-grep -rl "\.png" note/ | wc -l  # 引用 PNG 的文件数
+# 6. PNG 孤儿检测（用 markdown 图片语法 `![](path)` 检测引用）
+# ⚠️ 简单 grep 文件名可能误报（路径含文件名但非图片引用）
+python -c "
+import sys, os, glob, re
+if sys.platform == 'win32':
+    try: sys.stdout.reconfigure(encoding='utf-8')
+    except: pass
+# 收集所有 PNG 文件
+pngs = glob.glob('note/**/*.png', recursive=True)
+# 收集所有 .md 文件中的图片引用（markdown 图片语法）
+img_refs = set()
+for md in glob.glob('note/**/*.md', recursive=True):
+    try:
+        with open(md, 'r', encoding='utf-8', errors='ignore') as f:
+            content = f.read()
+    except: continue
+    # 匹配 ![alt](path) 格式
+    for m in re.finditer(r'!\[[^\]]*\]\(([^)]+)\)', content):
+        img_path = m.group(1).strip()
+        # 解析为绝对路径
+        if img_path.startswith(('http', 'mailto:')): continue
+        abs_path = os.path.normpath(os.path.join(os.path.dirname(md), img_path))
+        img_refs.add(abs_path)
+# 找孤儿
+orphans = []
+for png in pngs:
+    abs_png = os.path.normpath(png)
+    if abs_png not in img_refs:
+        orphans.append(png)
+print(f'PNG 总数: {len(pngs)}')
+print(f'被引用: {len(img_refs)}')
+print(f'孤儿: {len(orphans)}')
+for o in orphans:
+    print(f'  [!] {o}')
+"
 
 # 9. 系列完整性审计（声明了但没写的子章节）
 # 原理：找包含"子章节导航"或目录表的 README，提取声明的文件名，
@@ -307,34 +361,39 @@ print(f'  跨模块迁移遗留: {hits} 处')
 echo "=== 9.4 数字一致性扫描（note/README.md 声明篇数 vs find 实际数）==="
 # 教训：note/README.md 经常写过时篇数（"49 篇"、"192 篇"）。
 #      本检查：find 各模块实际 README 数 → 与 note/README.md 声明对比 → 偏差即 P1 必修。
+# ⚠️ 2026-07-23 教训：计数口径必须与 note/README.md 分类导航表一致。
+#      note/README.md 声明的是**含根 README** 的总数（如 01.java: 41 含根），
+#      所以脚本必须用 os.walk 遍历所有 README.md（含根），不能排除根。
 python -c "
-import re, os, glob
+import re, os, glob, sys
+if sys.platform == 'win32':
+    try: sys.stdout.reconfigure(encoding='utf-8')
+    except: pass
 
-def count_actual(mod_dir):
+def count_all_readmes(mod_dir):
+    \"\"\"计数目录下所有 README.md（含根 README）—— 与 note/README.md 分类导航表口径一致\"\"\"
     if not os.path.isdir(mod_dir): return 0
-    n = 0
-    for sub in os.listdir(mod_dir):
-        sub_path = os.path.join(mod_dir, sub)
-        if os.path.isdir(sub_path):
-            md_files = [f for f in os.listdir(sub_path) if f.endswith('.md') and f != 'README.md']
-            n += len(md_files)
-    return n
+    count = 0
+    for root, dirs, files in os.walk(mod_dir):
+        if 'README.md' in files:
+            count += 1
+    return count
 
 actual = {
-    '01.java':         count_actual('note/13.split-hairs/01.java'),
-    '02.computer-basics': count_actual('note/13.split-hairs/02.computer-basics'),
-    '03.database':     count_actual('note/13.split-hairs/03.database'),
-    '04.system-design': count_actual('note/13.split-hairs/04.system-design'),
-    '05.security':     count_actual('note/13.split-hairs/05.security'),
-    '06.spring':       count_actual('note/13.split-hairs/06.spring'),
-    '09.front-end':    count_actual('note/13.split-hairs/09.front-end'),
-    '10.big-data':     count_actual('note/13.split-hairs/10.big-data'),
-    '11.ai':           count_actual('note/13.split-hairs/11.ai'),
-    'tools':           count_actual('note/13.split-hairs/tools'),
+    '01.java':         count_all_readmes('note/13.split-hairs/01.java'),
+    '02.computer-basics': count_all_readmes('note/13.split-hairs/02.computer-basics'),
+    '03.database':     count_all_readmes('note/13.split-hairs/03.database'),
+    '04.system-design': count_all_readmes('note/13.split-hairs/04.system-design'),
+    '05.security':     count_all_readmes('note/13.split-hairs/05.security'),
+    '06.spring':       count_all_readmes('note/13.split-hairs/06.spring'),
+    '09.front-end':    count_all_readmes('note/13.split-hairs/09.front-end'),
+    '10.big-data':     count_all_readmes('note/13.split-hairs/10.big-data'),
+    '11.ai':           count_all_readmes('note/13.split-hairs/11.ai'),
+    'tools':           count_all_readmes('note/13.split-hairs/tools'),
     '12.story':        len([f for f in glob.glob('note/12.story/[0-9]*.md') if 'STORY-FORMAT-SPEC' not in f]),
 }
 
-print('=== 实际篇数（find -maxdepth 3）===')
+print('=== 实际篇数（含根 README）===')
 total = 0
 for k, v in actual.items():
     total += v
@@ -346,18 +405,29 @@ print('\\n=== note/README.md 声明数字 vs 实际 ===')
 with open('note/README.md', encoding='utf-8') as f:
     content = f.read()
 mismatch = 0
+
+# 分类导航表：匹配表格行中的数字（格式如 '| X | ... | N |'）
+# note/README.md 分类导航表用表格格式，数字在第三列
 for mod in actual.keys():
-    pattern = mod + r'（(\d+) 篇）'
-    m = re.search(pattern, content)
-    if m:
-        decl = int(m.group(1))
-        actual_n = actual[mod]
-        status = '✓' if decl == actual_n else f'✗ 偏差 {decl - actual_n:+d}'
-        if decl != actual_n: mismatch += 1
-        print(f'  {mod}: 声明 {decl} vs 实际 {actual_n} → {status}')
+    if mod == '12.story': continue
+    # 找分类导航表中该模块对应的行
+    # 表格格式：| 序号 | 主题 | 文章数 | 入口 |
+    # 匹配策略：找包含模块路径的行，提取文章数
+    mod_path = f'13.split-hairs/{mod}/README.md'
+    for line in content.split('\\n'):
+        if mod_path in line:
+            # 提取 | N | 中的数字
+            m = re.search(r'\|\s*(\d+)\s*\|', line)
+            if m:
+                decl = int(m.group(1))
+                actual_n = actual[mod]
+                status = '✓' if decl == actual_n else f'✗ 偏差 {decl - actual_n:+d}'
+                if decl != actual_n: mismatch += 1
+                print(f'  {mod}: 声明 {decl} vs 实际 {actual_n} → {status}')
+            break
 
 # 13题总篇数校验
-m = re.search(r'(\d+) 篇.*?深度文章', content)
+m = re.search(r'(\d+) [篇个].*?深度文章', content)
 if m:
     decl_total = int(m.group(1))
     real_13q = sum(v for k, v in actual.items() if k != '12.story')
