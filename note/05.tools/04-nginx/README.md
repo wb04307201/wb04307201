@@ -62,7 +62,49 @@ graph TB
 
 ---
 
-## 4. 核心内容
+## 四、安装方式
+
+> **前置条件**：
+> - Linux 系统（Ubuntu / CentOS / Debian）或 macOS（brew）
+> - 80/443 端口未被占用
+> - sudo 权限
+
+### 4.1 Ubuntu / Debian
+
+```bash
+sudo apt update
+sudo apt install nginx -y
+sudo systemctl enable nginx
+sudo systemctl start nginx
+```
+
+### 4.2 CentOS / RHEL
+
+```bash
+sudo yum install epel-release -y
+sudo yum install nginx -y
+sudo systemctl enable nginx
+sudo systemctl start nginx
+```
+
+### 4.3 macOS（开发环境）
+
+```bash
+brew install nginx
+brew services start nginx
+# 默认配置文件：/opt/homebrew/etc/nginx/nginx.conf
+```
+
+### 4.4 验证
+
+```bash
+nginx -v                    # 查看版本
+curl http://localhost       # 默认欢迎页
+```
+
+---
+
+## 5. 核心内容
 
 ### 4.1 Nginx 配置文件结构
 

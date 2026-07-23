@@ -75,6 +75,11 @@ aws ec2 run-instances --image-id ami-12345 --instance-type t3.micro
 
 ## 二、Terraform
 
+> **前置条件**：
+> - 云厂商账号（AWS / Azure / GCP 等）+ 已配置 CLI 凭证（如 `aws configure`）
+> - Terraform >= 1.5（`brew install terraform` 或 `choco install terraform`）
+> - 了解目标云资源的基本概念（VPC / EC2 / S3 等）
+
 ### HCL 语法
 
 ```hcl

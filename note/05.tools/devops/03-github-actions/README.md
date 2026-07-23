@@ -280,6 +280,12 @@ deploy-prod:
 
 ### 8.2 添加 Runner
 
+> **前置条件**：
+> - GitHub org/repo admin 权限
+> - Runner 机器需能访问 github.com（443 端口）
+> - 建议配置：2C4G+（自托管 Runner）
+> - 已安装 git / Docker（按需）
+
 ```bash
 # 在你的服务器上
 mkdir actions-runner && cd actions-runner
