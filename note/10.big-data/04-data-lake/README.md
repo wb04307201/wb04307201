@@ -79,6 +79,7 @@ CREATE TABLE orders.iceberg_orders (
 PARTITIONED BY (days(dt))
 TBLPROPERTIES (
     'write.format.default' = 'parquet',
+    // 为什么 128MB？HDFS block 默认 128MB，对齐后可充分利用 HDFS 存储；小文件多则 IO 开销大，大文件少则并发读取能力弱
     'write.target-file-size-bytes' = '134217728',  -- 128 MB
     'commit.manifest.min-count-to-merge' = '5'
 );

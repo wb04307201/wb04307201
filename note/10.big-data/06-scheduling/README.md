@@ -76,7 +76,9 @@ from datetime import datetime, timedelta
 
 default_args = {
     'owner': 'data-eng',
+    // 为什么 retries=3？经验值：1 次偶发失败（网络抖动）+ 1 次资源不足 + 1 次兜底；核心任务可设 5
     'retries': 3,
+    // 为什么 retry_delay=5min？给下游系统恢复时间；过短会导致连续失败，过长会拉长整体 DAG 执行时间
     'retry_delay': timedelta(minutes=5),
     'execution_timeout': timedelta(hours=2),
 }
