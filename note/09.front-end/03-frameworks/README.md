@@ -106,6 +106,23 @@ flowchart TD
 - **面试题数**:5
 - **数据快照**:2026-06
 
+## 📝 可访问性（a11y）最佳实践
+
+| 框架 | a11y 支持 | 推荐工具 | 关键实践 |
+|------|----------|---------|---------|
+| **React 19** | 原生支持 `aria-*` props | `eslint-plugin-jsx-a11y` / `react-aria` | 组件库优先选 WAI-ARIA 合规的（如 Radix UI / Reach UI） |
+| **Vue 3.4+** | 内置 a11y 规则 | `eslint-plugin-vue` + `vue-axe` | 使用 `<button>` / `<nav>` 等语义化标签；避免 `div` 模拟按钮 |
+| **Svelte 5** | 编译器内置 a11y 警告 | `svelte-a11y` | 运行时自动检测缺失的 `alt` / `aria-label` |
+| **Solid** | 原生支持 | `solid-aria` | 类似 React，但更轻量 |
+| **Astro** | 静态 HTML 天然友好 | `astro-aria` |  islands 架构需确保动态部分有 `aria-live` |
+| **htmx** | 服务端渲染友好 | 无 | 需手动添加 ARIA；htmx 请求后需更新 `aria-live` 区域 |
+
+**通用建议**：
+- 键盘导航：所有交互元素可通过 Tab / Enter / Esc 操作
+- 颜色对比：文本与背景对比度 ≥ 4.5:1（WCAG AA）
+- 屏幕阅读器：测试 VoiceOver / NVDA / JAWS
+- 自动化检测：Lighthouse a11y 审计 ≥ 90 分
+
 ---
 
 ← [返回前端工程总览](../README.md)

@@ -171,6 +171,21 @@ npm run dev:mp-weixin
 - [`08-cross-platform/react-native/`](../react-native/) — RN（另一种跨端形态）
 - [`12.story/20-multiplatform-architecture.md`](../../../12.story/20-multiplatform-architecture.md) — 阿明餐厅多端架构
 
+## 9. 可访问性（a11y）
+
+小程序的 a11y 支持相对 Web 较弱，但仍需关注：
+
+- **语义化组件**：优先使用 `<button>` / `<view role="button">` / `<text>` 而非 `<div>` + `onTap`
+- **屏幕阅读器**：微信小程序支持"旁白"模式（iOS）/ TalkBack（Android），需确保 `aria-label` / `aria-role` 正确
+- **键盘导航**：小程序不支持传统键盘导航，但需确保焦点顺序合理（`focus` / `blur` 事件）
+- **颜色对比**：文本与背景对比度 ≥ 4.5:1（与 Web 一致）
+- **表单无障碍**：`<input>` 需配 `<label>` 或 `aria-label`；错误提示用 `aria-describedby` 关联
+- **跨端框架**：Taro / Uni-app 的组件会自动映射到原生小程序组件，a11y 属性需按平台分别处理
+
+**检测工具**：
+- 微信开发者工具 → "调试器" → "Audits" → "Accessibility"
+- 真机测试：开启 iOS 旁白 / Android TalkBack 验证
+
 ---
 
 ← [返回 跨端开发](../README.md)

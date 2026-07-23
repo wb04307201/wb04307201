@@ -221,6 +221,15 @@ interface ImportMeta {
 - [`04-engineering/monorepo-practice/`](../monorepo-practice/) — Vite 在 Monorepo 的应用
 - [`06-performance/`](../../06-performance/) — 构建与性能
 
+## 11. 可访问性（a11y）
+
+Vite 构建产物对可访问性的影响：
+
+- **语义化 HTML**：Vite 不破坏 HTML 结构，但需确保组件库输出语义化标签（`<button>` / `<nav>` / `<main>`）
+- **插件支持**：`vite-plugin-aria` 自动注入 ARIA 属性；`eslint-plugin-jsx-a11y` 集成到 Vite 的 ESLint 配置
+- **构建优化**：代码分割不影响屏幕阅读器，但需确保动态导入的组件有 `aria-live` 区域提示加载状态
+- **测试集成**：`vitest` + `@testing-library/react` 的 `a11y` 插件可在 CI 中检测可访问性问题
+
 ---
 
 ← [返回 前端工程化](../README.md)

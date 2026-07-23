@@ -291,6 +291,31 @@ const byTag = await db.notes.where('tags').equals('pwa').toArray()
 - IndexedDB 存游戏进度
 - 离线可玩
 
+## 15. 可访问性（a11y）
+
+PWA 的 a11y 需关注以下方面：
+
+- **通知无障碍**：
+  - Push Notification 的 `body` / `title` 需简洁明确
+  - Action 按钮需有 `aria-label`（如"标记已读" / "稍后提醒"）
+  - 避免仅用颜色传达信息（如红色=紧急）
+
+- **安装提示**：
+  - `beforeinstallprompt` 触发时需有明确的"安装"按钮 + 文字说明
+  - 安装后图标 / 名称需在 Manifest 中配置 `name` / `short_name` / `description`
+
+- **离线状态**：
+  - 离线页面需有 `aria-live="polite"` 区域提示"当前离线，部分功能不可用"
+  - 网络恢复后自动更新状态（`navigator.onLine` + `online` / `offline` 事件）
+
+- **Service Worker 更新**：
+  - 新版本就绪时，用 `aria-live` 区域提示"有新版本，点击刷新"
+  - 避免强制刷新打断用户操作
+
+- **屏幕阅读器**：
+  - 测试 VoiceOver / TalkBack 下的 PWA 交互
+  - 确保所有交互元素有 `role` / `aria-label`
+
 ---
 
 ← [返回 跨端开发](../README.md)
