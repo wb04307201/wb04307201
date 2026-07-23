@@ -4,7 +4,7 @@ module:
   slug: system-design/cap-and-base
   type: article
   category: 主模块子文章
-  summary: ⬅️ [返回分布式](../README.md) | [共识算法](../consensus-algorithms/README.md) | [分布式事务](....
+  summary: "CAP 定理（三选二不可能兼得）与 BASE 理论（放弃强一致性换取可用性）的工程实践。"
 -->
 
 # CAP & BASE
