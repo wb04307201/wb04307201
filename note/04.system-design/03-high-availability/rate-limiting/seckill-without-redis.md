@@ -124,14 +124,16 @@ public class AtomicSeckill {
 
 ```java
 public class SemaphoreSeckill {
-    private final Semaphore stockSemaphore = new Semaphore(1);  // 库存 1
+    // 为什么 permits=1？库存只有 1 件；如果库存是 N，permits 设为 N
+    // 为什么用 Semaphore 而非 AtomicInteger？—— Semaphore 天然支持阻塞/非阻塞获取，AtomicInteger 需要 CAS 重试
+    private final Semaphore stockSemaphore = new Semaphore(1);
     private final Set<Long> winners = ConcurrentHashMap.newKeySet();
 
     public boolean trySeckill(Long userId) {
         if (winners.contains(userId)) {
             return false;
         }
-        // 非阻塞获取许可
+        // 为什么用 tryAcquire() 而非 acquire()？—— 非阻塞，抢不到立即返回 false，避免线程阻塞导致吞吐量下降
         if (!stockSemaphore.tryAcquire()) {
             return false;  // 已抢完
         }
@@ -456,7 +458,8 @@ public class SeckillController {
     @Autowired
     private SeckillService seckillService;
 
-    // Semaphore 限流（单机 500 容量足够）
+    // 为什么 500？按 QPS 峰值 × 平均响应时间（秒）估算；如 1000 QPS × 0.5s = 500 并发许可
+    // 为什么 Semaphore 而非 Guava RateLimiter？—— Semaphore 控制并发数，RateLimiter 控制速率，秒杀场景并发控制更关键
     private final Semaphore rateLimiter = new Semaphore(500);
 
     @PostMapping("/seckill/{productId}")

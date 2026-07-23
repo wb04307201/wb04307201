@@ -224,20 +224,20 @@ CoreDNS（K8s 默认 DNS）自动补全：
 ```yaml
 # Corefile
 .:53 {
-  errors
+  errors  # 为什么开 errors？生产必开，方便排查 DNS 解析失败
   health {
-    lameduck 5s
+    lameduck 5s  # 为什么 5s？Pod 下线前优雅等待，让 kube-proxy 更新 endpoints
   }
-  ready
+  ready  # 为什么开 ready？K8s readiness probe 用，确保 CoreDNS 完全启动再接收请求
   kubernetes cluster.local in-addr.arpa ip6.arpa {
-    pods insecure
-    fallthrough in-addr.arpa ip6.arpa
+    pods insecure  # 为什么 insecure？允许 pod 名称直接解析（A 记录），生产可选 verified 模式
+    fallthrough in-addr.arpa ip6.arpa  # 为什么 fallthrough？未匹配的 PTR 查询继续转发，避免 NXDOMAIN
   }
-  forward . 1.1.1.1
-  cache 30
-  loop
-  reload
-  loadbalance
+  forward . 1.1.1.1  # 为什么 1.1.1.1？Cloudflare 公共 DNS，国内可换 223.5.5.5（阿里）
+  cache 30  # 为什么 30s？平衡缓存命中率与数据新鲜度，TTL 过短增加上游压力
+  loop  # 为什么开 loop？检测转发环路，防止配置错误导致无限循环
+  reload  # 为什么开 reload？Corefile 变更后自动热加载，无需重启 Pod
+  loadbalance  # 为什么开 loadbalance？多 A 记录时轮询，分散流量
 }
 ```
 

@@ -292,7 +292,9 @@ public class CacheConfig {
     public CacheManager cacheManager() {
         CaffeineCacheManager mgr = new CaffeineCacheManager();
         mgr.setCaffeine(Caffeine.newBuilder()
+            // 为什么 10_000？按热点数据量 × 1.5 估算；过大会占 JVM 堆内存，过小会频繁淘汰
             .maximumSize(10_000)
+            // 为什么 60s？L1 短 TTL 保证与其他节点的最终一致性；L2 可设更长（如 600s）
             .expireAfterWrite(60, TimeUnit.SECONDS));
         return mgr;
     }

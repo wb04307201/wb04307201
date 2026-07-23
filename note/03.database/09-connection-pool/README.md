@@ -77,11 +77,16 @@ spring:
     username: root
     password: 123456
     hikari:
-      maximum-pool-size: 20          # 最大连接数
-      minimum-idle: 5                # 最小空闲连接
-      idle-timeout: 600000           # 空闲连接超时（10分钟）
-      max-lifetime: 1800000          # 连接最大生命周期（30分钟）
-      connection-timeout: 30000      # 获取连接超时（30秒）
+      # 为什么 20？PostgreSQL 公式：(CPU 核数 × 2) + 磁盘数；MySQL 类似，4 核 SSD 推荐 10-20
+      maximum-pool-size: 20
+      # 为什么 5？预留突发流量缓冲，但不宜过小（否则冷启动慢）
+      minimum-idle: 5
+      # 为什么 10min？空闲连接回收，避免长时间占用 DB 资源
+      idle-timeout: 600000
+      # 为什么 30min 且必须 < wait_timeout？MySQL 默认 wait_timeout=8h，设 30min 防止连接被 DB 侧静默关闭后池中还引用
+      max-lifetime: 1800000
+      # 为什么 30s？业界标准，超过说明连接池打满或 DB 慢查询
+      connection-timeout: 30000
       pool-name: MyHikariPool
 ```
 

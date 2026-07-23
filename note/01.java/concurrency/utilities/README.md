@@ -354,16 +354,18 @@ public class SemaphoreDemo {
 
     /**
      * 流量控制示例: 限制每秒请求数
+     * 为什么用 Semaphore 而非 ReentrantLock？—— 允许多个并发许可，适合限流场景
      */
     public static void rateLimitDemo() throws InterruptedException {
         Semaphore semaphore = new Semaphore(100); // 令牌桶: 最多100个令牌
-
-        // 定时补充令牌的线程
+        
+        // 为什么用 tryAcquire 而非 acquire？—— 避免无限阻塞，可设置超时或快速失败
+        // 为什么定时补充令牌？—— 模拟令牌桶算法，每秒最多补充10个令牌
         Thread tokenRefiller = new Thread(() -> {
             while (!Thread.currentThread().isInterrupted()) {
                 try {
                     int current = semaphore.availablePermits();
-                    int toAdd = Math.min(10, 100 - current);
+                    int toAdd = Math.min(10, 100 - current); // 为什么 min(10, ...)? 限制补充速率，避免突发流量
                     if (toAdd > 0) {
                         semaphore.release(toAdd);
                     }
@@ -374,7 +376,7 @@ public class SemaphoreDemo {
                 }
             }
         }, "TokenRefiller");
-        tokenRefiller.setDaemon(true);
+        tokenRefiller.setDaemon(true); // 为什么 setDaemon(true)? 主线程退出时自动终止，避免内存泄漏
         tokenRefiller.start();
     }
 }
