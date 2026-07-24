@@ -190,3 +190,17 @@ inline fun <reified T : Any> Gson.fromJson(json: String): T =
 
 val user: User = gson.fromJson(json)   // 无需传入 Class 参数
 ```
+
+---
+
+## 系列导航
+
+| 序号 | 主题 | 核心问题 |
+|------|------|---------|
+| 01 | [基础语法](01-basics.md) | 基础语法、类型系统、空安全、控制流、异常 |
+| 02 | [面向对象](02-oop.md) | 类与对象、泛型、继承、可见性 |
+| 03 | [函数式](03-functional.md) | 函数、集合、函数式、作用域函数 |
+| 04 | [高级特性](04-advanced.md) | 扩展、委托、操作符、内联、值类、DSL |
+| 05 | [协程](05-coroutines.md) | 协程、Flow、Channel、结构化并发 |
+
+← [返回: Kotlin](../README.md)
