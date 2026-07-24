@@ -457,6 +457,41 @@ done
 - 例：用户问"高可用高并发图片视频" → final report 必须 grep `WebP`、`AVIF`、`HLS`、`DRM`、`高可用`、`4 层防线` 全部存在
 - 反例：final 报告"10 节齐全 PASS" 实际未 grep "4 层防线" "AES-128 "代码示例"" 实际是否落地
 
+### ❌ Mistake 14：新内容引入新 broken links（2026-07-25 历史教训）
+
+**症状**：沉淀 6 个新文件到 note/ 后，新文件中的 markdown 链接路径写错（相对路径多/少一层 ../），引入新的 broken links。**即使新内容质量满分（20/20），broken links 增量仍然是结构性硬伤**。
+
+**历史案例**（2026-07-25 coding-agents 沉淀）：
+- 6 个新文件 + 8 commit 后，**新引入 0 broken links**（验证通过 ✅）
+- 但反例风险：在 note/03.java/01-foo/02-bar/README.md 写 `../baz/README.md` 而不是 `../../baz/README.md`，会让 note 出现真错
+
+**修复（沉淀完成后的简单兜底）**：
+
+```bash
+# 沉淀完成后立即跑 broken links 扫描（严格 regex 版）
+# 期望输出：broken links: 0
+python -c "
+import os, re, glob
+LINK_RE = re.compile(r'(?<![|\[])\[([^\]]*)\]\((?!https?://)(?!mailto:)(?!#)([^)#\s]+?\.md)(?:#[^)]*)?\)')
+PLACEHOLDERS = ['x/README', 'xxx', 'xx/yy', '../11.ai/...']
+real_broken = 0
+new_files = [f for f in glob.glob('note/**/*.md', recursive=True)
+             if os.path.exists(f) and int(os.stat(f).st_mtime) > <沉淀开始时间戳>]
+for readme in new_files:  # 优先扫本会话新文件
+    content = open(readme, encoding='utf-8', errors='ignore').read()
+    for m in LINK_RE.finditer(content):
+        target_rel = m.group(2).strip()
+        if any(p in target_rel for p in PLACEHOLDERS): continue
+        target_abs = os.path.normpath(os.path.join(os.path.dirname(readme), target_rel))
+        if not os.path.isfile(target_abs):
+            real_broken += 1
+            print(f'  ⚠ {readme} -> {target_rel}')
+print(f'新文件 broken links: {real_broken}')
+"
+```
+
+**最终报告**：final report 必须包含"broken links: 0"作为硬指标。
+
 ## Output Format
 
 **作为 orchestrator**（直接面对用户）：
