@@ -16,7 +16,7 @@ module:
 
 ---
 
-## 1. 模块导航
+## 一、模块导航
 
 | 序号 | 主题 | 核心内容 | 子 README |
 |------|------|---------|-----------|
@@ -40,7 +40,7 @@ module:
 
 ---
 
-## 2. 知识脉络
+## 二、知识脉络
 
 ```mermaid
 graph TD
@@ -55,7 +55,7 @@ graph TD
 
 ---
 
-## 3. 速查表 / Cheat Sheet
+## 三、速查表 / Cheat Sheet
 
 ### 3.1 核心概念
 
@@ -86,7 +86,7 @@ graph TD
 
 ---
 
-## 4. 核心内容（按子模块展开）
+## 四、核心内容（按子模块展开）
 
 - **L1 基础概念**（10 leaf）：AI/ML/DL/LLM 基础定义、Transformer 架构、神经网络层次、Embedding 与向量化、Dense vs MoE 选型、Attention 机制、Flash Attention、Dropout、RoPE 位置编码
 - **L2 技术栈**（28 leaf + 5 deep）：61 核心概念全景图、多模态（2 子）、Prompt Engineering（3 子）、Context/Harness/Loop 演进、Function Calling、RAG Pipeline、向量搜索、Reranker、KV Cache、推理优化、显存估算、Token 计费等
@@ -98,7 +98,7 @@ graph TD
 
 ---
 
-## 5. 最佳实践
+## 五、最佳实践
 
 | 场景 | 实践要点 |
 |------|---------|
@@ -111,7 +111,7 @@ graph TD
 
 ---
 
-## 6. 常见面试题
+## 六、常见面试题
 
 | 题目 | 核心考点 |
 |------|---------|
@@ -125,7 +125,7 @@ graph TD
 
 ---
 
-## 7. 相关章节
+## 七、相关章节
 
 - 上游：[`04.system-design`](../04.system-design/) — 通用系统设计（AI 系统也遵循分布式/高可用原则）
 - 上游：[`06.spring`](../06.spring/) — Spring 生态（Spring AI 的底层支撑）
@@ -136,7 +136,7 @@ graph TD
 
 ---
 
-## 8. 开源参考
+## 八、开源参考
 
 | 类别 | 项目 |
 |------|------|
