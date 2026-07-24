@@ -123,7 +123,7 @@ graph TB
 
 ---
 
-## 7. 相关章节
+## 七、相关章节
 
 - 上游：[`01.java`](../01.java/README.md) — Java 语言基础（工具库的宿主语言）
 - 下游：[`06.spring`](../06.spring/README.md) — Spring 全家桶（工具链的核心应用场景）
@@ -132,7 +132,7 @@ graph TB
 
 ---
 
-## 8. 开源参考
+## 八、开源参考
 
 - [Hutool](https://gitee.com/dromara/hutool) — 国产 Java 工具集
 - [Guava](https://github.com/google/guava) — Google Java 核心库
