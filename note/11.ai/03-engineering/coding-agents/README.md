@@ -323,6 +323,7 @@ mcp:
 - 循环层：[Loop Engineering](../loop-engineering/README.md) — Agent 循环调用 + Ralph Wiggum Loop
 - 实战层：[Production Agent](../production-agent/README.md) — 生产环境的 Agent 工程实践
 - 编码质量：[AI Code Review](../ai-code-review/README.md) — AI 生成代码审核验收方法论
+- 面试精炼：[Coding Agent 选型与模式选择](../../../13.split-hairs/11.ai/coding-agent-mode-selection/README.md) — 4 agent × 7 mode 选型决策 + 5 道面试陷阱 + 90 秒面试话术
 
 ---
 
