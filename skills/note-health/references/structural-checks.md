@@ -460,6 +460,63 @@ print(f'\\n总计偏差: {mismatch} 处（P1 必修，须出 fix(note) commit）
 "
 ```
 
+# 9.5 同 README 内重复表格检测（2026-07-25 新增）
+# 历史教训：12.story/README.md 历史上同时维护 8 集群目录表 + 49 篇明细表，100% 重叠。体检只扫跨文件重复，未扫同文件内冗余。
+python << 'PYEOF'
+import sys, os, re, glob
+if sys.platform == 'win32':
+    try: sys.stdout.reconfigure(encoding='utf-8')
+    except: pass
+
+def find_tables(content):
+    """找到所有 markdown 表格位置"""
+    tables = []
+    lines = content.split('
+')
+    in_table = False
+    header_line = -1
+    for i, line in enumerate(lines):
+        stripped = line.strip()
+        if stripped.startswith('|') and '|' in line[1:]:
+            if not in_table:
+                in_table = True
+                header_line = i
+                cols = [c.strip() for c in line.strip('|').split('|') if c.strip()]
+                header_set = set(cols)
+        elif in_table:
+            tables.append((header_line, header_set))
+            in_table = False
+            header_line = -1
+    if in_table:
+        tables.append((header_line, header_set))
+    return tables
+
+print('=== 9.5 同 README 内重复表格检测（>= 2 张表 + 表头重叠 >= 50%）===')
+issues = []
+for f in glob.glob('note/**/*.md', recursive=True):
+    try: c = open(f, encoding='utf-8', errors='ignore').read()
+    except: continue
+    tables = find_tables(c)
+    if len(tables) < 2: continue
+    for i in range(len(tables)):
+        for j in range(i+1, len(tables)):
+            h1, s1 = tables[i]
+            h2, s2 = tables[j]
+            if not s1 or not s2: continue
+            overlap = len(s1 & s2)
+            smaller = min(len(s1), len(s2))
+            if smaller == 0: continue
+            rate = overlap / smaller
+            if rate >= 0.5 and overlap >= 2:
+                issues.append((f, h1+1, h2+1, s1, s2, rate))
+
+print(f'同 README 重复表格问题: {len(issues)} 处')
+for f, h1, h2, s1, s2, rate in issues[:20]:
+    print(f'  {f} line {h1} & {h2} 重叠率={rate:.0%}')
+    print(f'    表1: {sorted(s1)}')
+    print(f'    表2: {sorted(s2)}')
+PYEOF
+
 ### Commit 拆分模式（原 Step 5.5）
 
 **当用户说"拆分做 commit"时**，触发本模式：
