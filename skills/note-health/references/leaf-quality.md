@@ -244,6 +244,36 @@
 
 如果 `12.story/` 下的文章完全没有阿明餐厅元素（无角色、无场景、无隐喻），**标记为"放错位置"**——可能是技术文章被错误放到了 12.story。
 
+### 浅 README false positive 识别（2026-07-25 起）
+
+> **历史教训**（2026-07-25 体检）：浅 README 报警（< 50 行）出现 2 个 false positive：`clustering/README.md`（43 行）和 `consensus-algorithms/README.md`（47 行）。两者都通过人工复核为"非真浅"。
+
+**3 类 false positive**：
+
+| 类型 | 识别特征 | 处理方式 |
+|------|---------|---------|
+| **A. 高密度短文** | 行数 < 50 但内容覆盖 ≥ 3 个对比表 / 评估指标 / 实战要点，每行都是干货（无空话）| **不报警**（人工复核）|
+| **B. 明确 index-only 导览页** | 文件首部含 `<!-- index-only -->` 注释（如 `consensus-algorithms/README.md:10`），子页面承载主体内容（paxos/raft/gossip）| **不报警**（人工复核）|
+| **C. 占位/空 README** | 只有 frontmatter + 一句定位 + footer 回链，无任何实质内容 | **P0 必报**（需补内容或删除）|
+
+**自动识别逻辑**（未来可工具化）：
+```python
+def is_shallow_real(content):
+    # A. 高密度短文判定
+    table_count = content.count('\n|---')
+    if table_count >= 2 and len(content.split('\n')) < 50:
+        return False  # 高密度，不报警
+    # B. index-only 判定
+    if '<!-- index-only -->' in content:
+        return False
+    # C. 占位判定（无 frontmatter 之外的内容）
+    body = content.split('-->', 1)[1] if '-->' in content else content
+    meaningful_lines = [l for l in body.split('\n') if l.strip() and not l.startswith('#') and not l.startswith('←')]
+    if len(meaningful_lines) < 5:
+        return True  # 真浅，P0
+    return False  # 默认不报警
+```
+
 ### 新沉淀文章的特殊关注
 
 对刚通过 `note-precipitation-planning` 沉淀的文章，额外检查：

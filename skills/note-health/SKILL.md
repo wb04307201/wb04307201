@@ -31,11 +31,14 @@ description: Use when user asks to audit or improve note/ — "note 哪里需要
 
 ## 执行引擎：自底向上 4 相
 
-### Phase 1 — 结构扫描（主循环内，便宜）
+### Phase 1 — 结构扫描（主循环内，便贵）
 
 > 执行前先建临时目录：`mkdir -p note/.health-tmp`
 
-读 `references/structural-checks.md`，跑机械扫描：frontmatter 覆盖、orphan 目录、孤链、README 总目录章节锚点、模块均分等。**所有大输出重定向到文件**（`> note/.health-tmp/scan-<phase>-<date>.txt`），不堆进对话。Phase 1 不调 workflow。
+读 `references/structural-checks.md`，跑机械扫描：**frontmatter 覆盖、orphan 目录、孤链、README 总目录章节锚点、模块均分 + 单向链接扫描 + 系列完整性审计 + 数字一致性**等。
+**所有大输出重定向到文件**（`> note/.health-tmp/scan-<phase>-<date>.txt`），不堆进对话。Phase 1 不调 workflow。
+
+> **2026-07-25 起**：单向链接扫描（`Step 4.5`）+ 系列完整性审计（`Step 9` + `9.1`）从深度模式提升为默认 Phase 1.8 / 1.9 / 1.10 —— Mistake 9（parent 不回链 = 隐性孤岛）是历史教训，全库 781 README 的体检默认应该跑，下次不会再忘。
 
 ### Phase 2 — Leaf 质量 fan-out
 

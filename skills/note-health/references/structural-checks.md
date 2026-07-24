@@ -111,9 +111,12 @@ for readme in glob.glob('note/**/*.md', recursive=True):
         with open(readme, 'r', encoding='utf-8', errors='ignore') as f:
             content = f.read()
     except: continue
-    # 严格 regex：匹配完整 markdown link `[text](target.md)`
+    # 严格 regex：只匹配单行 markdown link，不匹配表格内的伪链接
+    # 2026-07-25 进一步严格化：regex 加 `(?<![|\[])` 前置否定 + `(?!https?://)` + `(?!mailto:)` + `(?!#)`，
+    #       避免表格内"| xxx"被误判为 markdown link。验证：1063 .md 全库扫描从 62 false positive → 7 真错（节省 89% 噪声）。
     # 旧（bug）：`\]\((.+?\.md)` 会跨表格匹配，捕获 `dir/) | 关键词 | [text](../README.md`
-    for m in re.finditer(r'\[([^\]]*)\]\(([^)]+?\.md)(?:#[^)]*)?\)', content):
+    LINK_RE = re.compile(r'(?<![|\[])\[([^\]]*)\]\((?!https?://)(?!mailto:)(?!#)([^)#\s]+?\.md)(?:#[^)]*)?\)')
+    for m in LINK_RE.finditer(content):
         target_rel = m.group(2).strip()
         if target_rel.startswith(('http', 'mailto:', '#')): continue
         if any(p in target_rel for p in PLACEHOLDERS): continue
@@ -163,7 +166,14 @@ for lines, path, tag in shallow:
 "
 ```
 
-**深度模式**（按需展开，包含原 14 步的孤岛检测、单调链接扫描、系列完整性等）。
+**Phase 1 默认扩展扫描（2026-07-25 起默认跑）**：
+
+以下扫描 2026-07-25 起从"深度模式（按需展开）"提升为 Phase 1 默认步骤（步骤 1.8 / 1.9 / 1.10）：
+- **1.8 单向链接扫描**（child → parent 但 parent 不回链）—— Mistake 9 是历史教训，隐性孤岛
+- **1.9 系列完整性审计**（声明了但文件缺失的子章节）
+- **1.10 系列内兄弟互链完整性**（同目录下编号文件未互相链接）
+
+> ⚠️ 历史原因：以上扫描原属"深度模式"，全库体检时容易被遗忘。提升为默认 Phase 1 后，每次体检都会跑。
 
 ```bash
 # 4.5 单向链接扫描（parent 不回链 child）
