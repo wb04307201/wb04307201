@@ -85,7 +85,7 @@ flowchart LR
 
 ---
 
-## 3. 模块简介
+## 三、模块简介
 
 ### 3.1 基础
 浏览器解析 HTML、构建 DOM/CSSOM、布局、合成、绘制的流水线——理解这条流水线才能解释卡顿、白屏、动画掉帧。HTML 语义化与无障碍(a11y)是把"页面"升级为"应用"的起点,CSS 工程化(PostCSS / CSS Modules / Tailwind / CSS-in-JS 的取舍)决定大型项目的样式可维护性。
@@ -116,7 +116,7 @@ Vercel AI SDK / Anthropic SDK / OpenAI SDK 把 LLM 调用抽象为 `streamText` 
 
 ---
 
-## 4. 最佳实践
+## 四、最佳实践
 
 | 场景 | 实践要点 |
 |------|---------|
@@ -129,7 +129,7 @@ Vercel AI SDK / Anthropic SDK / OpenAI SDK 把 LLM 调用抽象为 `streamText` 
 
 ---
 
-## 5. 常见面试题
+## 五、常见面试题
 
 - **浏览器渲染流水线**:从 URL 输入到页面可交互的完整过程,关键优化点是什么?
 - **React Fiber 与 Vue 响应式原理差异**:为什么 Vue 3 用 Proxy,React 19 的 Compiler 解决了什么?
@@ -142,7 +142,7 @@ Vercel AI SDK / Anthropic SDK / OpenAI SDK 把 LLM 调用抽象为 `streamText` 
 
 ---
 
-## 6. 相关章节
+## 六、相关章节
 
 - 上游:[`02.computer-basics/01-network`](../02.computer-basics/01-network/) — HTTP 协议族
 - 下游:[`06.spring`](../06.spring/) / [`11.ai`](../11.ai/) — 后端与 AI 知识体系
@@ -153,7 +153,7 @@ Vercel AI SDK / Anthropic SDK / OpenAI SDK 把 LLM 调用抽象为 `streamText` 
 
 ---
 
-## 7. 开源参考
+## 七、开源参考
 
 | 类别 | 项目 | 关联模块 |
 |------|------|---------|
