@@ -257,7 +257,5 @@ class UserDao extends GenericDao<User> {}
 ## 七、交叉引用
 
 - 主模块：[`泛型`](../../../01.java/concepts/generics/README.md) — Java 泛型完整体系
-- 相关：[`通配符 PECS`](../wildcard-pecs/README.md) — 通配符深入讨论（若存在）
-- 相关：[`桥方法`](../bridge-method/README.md) — 桥方法专题（若存在）
 
 ← [返回: 咬文嚼字 · generics-erasure](../README.md)
