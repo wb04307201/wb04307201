@@ -222,7 +222,65 @@ mcp:
 
 ---
 
-## 五、与 spec 工具的关系
+## 五、4 大 Agent 运行模式横对比（重点）
+
+> ⚠️ 这是 4 个 Coding Agent **架构差异最大**的维度。除了 Claude Code 有 3 档渐进权限模式、OMP 有 Build/Plan/Goal/Handoff/Session tree 五件套外，**Goal Mode、Handoff、Session tree 都是 OMP 独家**。
+
+### 5.1 模式矩阵
+
+| 模式 | [Claude Code](claude-code.md) | [Codex](codex.md) | [OpenCode](opencode.md) | [OMP](omp.md) |
+|------|------------|-------|----------|-----|
+| **Build（可编辑 + 执行）** | ✅ Default（手动批准）| ✅ 交互模式 | ✅ Build Mode（Tab 切）| ✅ Build（默认）|
+| **Accept Edits（自动接受文件）** | ✅ Shift+Tab 2 档 | ❌ | ❌ | ❌ |
+| **Plan Mode（只读规划）** | ✅ Shift+Tab 3 档 | ✅ 桌面端"计划模式" | ✅ 默认启动 + Tab 切 | ✅ `/plan` + per-role 模型 |
+| **Goal Mode（长任务循环到 verifier）** | ❌ | ✅ 桌面端"追求目标" + `/goal` | ✅ oh-my-opencode ultrawork | ✅ `/goal` 内置 verifier |
+| **Handoff（会话移交）** | ❌ | ❌ | ❌ | ✅ `/handoff` |
+| **Session branch/fork/tree** | ❌ | ❌ | ❌ | ✅ git-like JSONL |
+| **Bypass Permissions** | ✅ `--dangerously-skip-permissions` | ✅ `--approval-mode full-auto` | ✅ `permissions.ask: false` | ❌（dry by default）|
+
+### 5.2 按模式选型决策树
+
+```text
+你需要哪种"自主程度"？
+│
+├─ "我要渐进式权限（Default → Accept Edits → Plan → Bypass）"
+│   → Claude Code（Shift+Tab 平滑切换，独家）
+│
+├─ "我要最强 Goal Mode（长任务循环）+ Handoff + Session 分支"
+│   → OMP（5 件套独家：/plan /goal /handoff /branch /fork）
+│
+├─ "我要 OpenAI 官方 + 命令/交互双模式 + 桌面端 Plan/Goal"
+│   → Codex（命令模式 / 交互模式 / 桌面端 Plan+Goal）
+│
+└─ "我要最简明（Plan + Build Tab 切换）+ oh-my-opencode 多 Agent"
+    → OpenCode（最简双模式 + ultrawork 多 Agent 插件）
+```
+
+### 5.3 模式组合最佳实践
+
+| 任务类型 | 推荐 Agent + 模式组合 |
+|---------|---------------------|
+| **日常编码** | Claude Code Accept Edits 模式 / OMP Build / OpenCode Build |
+| **架构设计** | Claude Code Plan Mode / OMP `/plan` / OpenCode Plan / Codex 桌面端 Plan |
+| **批量重构** | Claude Code Bypass Permissions / OMP `/goal` / OpenCode ultrawork |
+| **长任务自动化** | OMP `/goal`（独家）/ Codex 桌面端 Goal Mode |
+| **多 Agent 流水线** | OMP `/handoff` / OpenCode ultrawork（Sisyphus 主 Agent + 4 子 Agent）|
+| **跨会话继续** | OMP `/branch` `/fork` `/tree`（独家）|
+| **CI/CD 自动化** | Claude Code `--dangerously-skip-permissions` / Codex `--approval-mode full-auto` |
+
+### 5.4 模式维度对比小结
+
+- **唯一 3 档渐进权限**：**Claude Code**（Default / Accept Edits / Plan）
+- **唯一 Bypass 模式**：**Claude Code**（`--dangerously-skip-permissions`）
+- **唯一命令/交互双模式**：**Codex**（命令模式一次性 + 交互模式长期）
+- **唯一 Plan + Build Tab 切**：**OpenCode**（最简双模式）
+- **唯一 Goal Mode + Handoff + Session tree 五件套**：**OMP**（`/plan` `/goal` `/handoff` `/branch` `/fork`）
+
+> 📖 **每个 Agent 详细页的 §六"运行模式详解"** 含完整使用示例： [Claude Code](claude-code.md#六运行模式详解核心章节) · [Codex](codex.md#六运行模式详解核心章节) · [OpenCode](opencode.md#六运行模式详解核心章节) · [OMP](omp.md#六运行模式详解核心章节)
+
+---
+
+## 六、与 spec 工具的关系
 
 ```text
 ┌──────────────────────────────────────────────────────────┐
@@ -246,7 +304,7 @@ mcp:
 
 ---
 
-## 六、4 个 Coding Agent 速查
+## 七、4 个 Coding Agent 速查
 
 | 工具 | 详情 |
 |------|------|
@@ -257,7 +315,7 @@ mcp:
 
 ---
 
-## 七、与其他章节的关系
+## 八、与其他章节的关系
 
 - 规范层：[Agent Spec Tools](../agent-spec-tools/README.md) — Superpowers / Spec-Kit / OpenSpec 三件套（**与本目录正交**）
 - 单工具深度：[Claude Code Practices](../claude-code-practices/README.md) — Claude Code 单工具深度（CLAUDE.md / Skills / Hooks / Plugins）

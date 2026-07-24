@@ -359,7 +359,99 @@ opencode mcp debug <name>       # 调试连接 + OAuth 流程
 
 ---
 
-## 六、oh-my-opencode（多 Agent 插件）
+## 六、运行模式详解（核心章节）
+
+> OpenCode 是 4 大 Agent 中**模式最简明**的 —— 仅 Plan / Build 两种模式，Tab 键一键切换。配合 oh-my-opencode 的 ultrawork 关键词实现多 Agent 协作。
+
+### 6.1 Plan Mode（默认启动）
+
+**功能**：不直接修改代码，只输出**自然语言形式的实施计划**。**架构师视角**。
+
+**触发方式**：
+```bash
+$ opencode
+# 默认进入 Plan Mode
+> 在终端输入需求后，agent 分析 @src 中的文件，提出修改建议
+# 不会立即修改文件
+
+# 反复修正计划
+> 继续对话修正，直到 Plan 完美
+```
+
+**适用场景**：
+- 探索不熟悉的代码库
+- 架构设计、项目方案讨论
+- 重大改动前的计划确认
+
+### 6.2 Build Mode（工程师视角）
+
+**功能**：基于 Plan 阶段确定的路径，**执行具体的代码编写与文件修改**。
+
+**触发方式**：
+```bash
+$ opencode
+# 默认在 Plan Mode，按 Tab 键切到 Build Mode
+# 状态栏右下角显示 "Build"
+
+> 确认计划无误后，按下 Tab 键或输入 /build，将上下文切换至执行状态
+# 上下文切换至执行状态
+
+# agent 开始生成 Diff 并写入文件
+```
+
+**适用场景**：
+- 已批准计划后的执行
+- 日常编码、改 Bug
+- 批量文件修改
+
+### 6.3 标准 3 步工作流（SOP）
+
+为了最大化 AI 的逻辑准确性，OpenCode 推荐"**三步走**"工作流：
+
+```text
+启动与规划（Plan）→ 模式切换（Tab → Build）→ 代码落地（Build）
+```
+
+**操作技巧**：
+- 若发现 AI 理解有误，**继续在 Plan 模式对话修正**，直到 Plan 完美
+- Plan 完美后才切到 Build，避免改完又回滚
+
+### 6.4 oh-my-opencode ultrawork（多 Agent 模式）
+
+OpenCode 配套 **oh-my-opencode** 插件，提供类似 Goal Mode 的多 Agent 自动化：
+
+```bash
+# 安装 oh-my-opencode（让 OpenCode 自动完成）
+> 按照以下说明安装和配置 oh-my-opencode：
+  https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/docs/guide/installation.md
+
+# 用 ultrawork 关键词触发完整多 Agent 自动化
+> ultrawork: 帮我实现一个 React 组件，支持暗黑模式
+
+# 或简写
+> ulw: 把整个项目迁移到 TypeScript
+```
+
+**与 Goal Mode 区别**：
+
+| 维度 | OMP Goal Mode | OpenCode ultrawork |
+|------|---------------|---------------------|
+| 触发命令 | `/goal` | `ultrawork` / `ulw` 关键词 |
+| 模式 | 内置 run mode | oh-my-opencode 插件 |
+| Agent 派发 | 手动（subagent IRC bus）| 自动（Sisyphus 主 Agent + Oracle/Librarian/Frontend/Explore）|
+| 多模型调度 | per-role 4 模型 | 自动分配（Gemini 前端 + Claude 规划）|
+
+### 6.5 OpenCode 模式对比
+
+| 模式 | 是否修改文件 | 切换方式 | 适用 |
+|------|------------|---------|------|
+| **Plan**（默认）| ❌ | 默认 | 探索、计划 |
+| **Build** | ✅ | Tab 键或 `/build` | 执行、修改 |
+| **ultrawork** | ✅（多 Agent 自动）| 关键词触发 | 复杂任务自动化 |
+
+---
+
+## 七、oh-my-opencode（多 Agent 插件）
 
 **oh-my-opencode**（[code-yeongyu/oh-my-opencode](https://github.com/code-yeongyu/oh-my-opencode)）是 OpenCode 的多 Agent 插件，**把单个 Agent 升级为多 Agent 协作团队**：
 
@@ -381,7 +473,7 @@ oh-my-opencode 会自动分配任务给最适合的 Agent（Gemini 处理前端�
 
 ---
 
-## 七、与其他 3 个 Agent 的差异
+## 八、与其他 3 个 Agent 的差异
 
 | 维度 | OpenCode 优势 | OpenCode 劣势 |
 |------|--------------|--------------|
@@ -391,7 +483,7 @@ oh-my-opencode 会自动分配任务给最适合的 Agent（Gemini 处理前端�
 
 ---
 
-## 八、适用场景
+## 九、适用场景
 
 - ✅ **多 LLM 策略**：想根据任务切换 Claude / GPT / DeepSeek / Ollama
 - ✅ **多 Agent 协作**：需要 Sisyphus / Oracle / Frontend Engineer 等专业 Agent 分工
@@ -407,7 +499,7 @@ oh-my-opencode 会自动分配任务给最适合的 Agent（Gemini 处理前端�
 
 ---
 
-## 九、相关章节
+## 十、相关章节
 
 - **横向对比**：[Coding Agents README](README.md)
 - **Harness 概念**：[Harness Engineering](../harness-engineering/README.md)

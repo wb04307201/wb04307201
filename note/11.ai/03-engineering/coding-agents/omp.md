@@ -219,7 +219,170 @@ OMP 支持**全局 + per-agent**双层启用，参考 opencode 的 glob 模式�
 
 ---
 
-## 六、13 大特性速览
+## 六、运行模式详解（核心章节）
+
+> OMP 是 4 大 Coding Agent 中**唯一同时拥有 Build / Plan / Goal / Handoff + Session tree 五件套**的。模式间通过斜杠命令切换，会话可跨模式分支保留。
+
+### 6.1 Build Mode（默认）
+
+**功能**：正常对话 + 编辑文件 + 执行命令 + 调所有 32 内置工具。**全权限**模式。
+
+**触发方式**：
+```bash
+$ omp                 # 不加任何参数，默认 Build 模式
+> 帮我重构 src/auth.ts 里所有 JWT 验证逻辑
+
+# 非交互模式（CI/脚本用）
+$ omp -p "在当前项目加一个 /api/v2/users 接口"
+# 输出结果后退出
+```
+
+**权限行为**：
+- 文件编辑：Bash / Edit / Write 默认 ask（需用户批准）
+- 网络请求：默认 allow
+- Subagent 派发：默认 allow
+
+### 6.2 Plan Mode（沙盒规划）
+
+**功能**：把规划回合**隔离**到独立 planner 模型（config.yml 里 `models.plan`），**不修改任何文件**。用户审批后才执行。
+
+**触发方式**：
+```bash
+$ omp
+> /plan 我想给项目加 GraphQL 支持
+# omp 切到 Plan Mode，问 planner 模型（默认 Claude Opus 4.5）
+# 输出完整计划（不动文件）
+# 等待你审批：
+>   ✓ Approve and execute
+>   ✗ Reject and revise
+>   ✎ Edit the plan
+
+# CLI 模式直接规划
+$ omp -p --plan "把 Express 迁移到 Fastify"
+```
+
+**三种审批选项**：
+1. **Execute and purge** — 执行规划，然后清空 plan transcript
+2. **Keep transcript** — 执行规划，保留 transcript 作为上下文
+3. **Compact context** — 执行规划 + 压缩当前上下文
+
+**与其他 Agent 的 Plan 差异**：
+| Agent | Plan Mode 行为 |
+|-------|---------------|
+| Claude Code | Shift+Tab 切；用同一个模型；审批选项 3 档 |
+| Codex | 桌面端有"计划模式"；CLI 用 `--approval-mode` 模拟 |
+| OpenCode | 默认 Plan；Tab 切到 Build；用同一个模型 |
+| **OMP** | **`/plan` 触发；per-role planner 模型（独立配置）；3 档审批** |
+
+**适用场景**：重大重构前 / 多文件改动前 / 探索性任务（先想清楚再动手）
+
+### 6.3 Goal Mode（目标模式 / 长任务循环）
+
+**功能**：长任务自动化 —— 把"目标"丢给 agent，**循环执行直到 verifier 通过**。类似 Ralph Wiggum Loop 的 Fresh Context 循环，但 goal mode 用同一个会话。
+
+**触发方式**：
+```bash
+$ omp
+> /goal 把这个项目的所有 TODO 解决掉，并确保 npm test 全绿
+# omp 进入 Goal Mode：
+#   1. 扫描所有 TODO
+#   2. 规划修复顺序
+#   3. 逐个修复 + 跑测试
+#   4. 如果失败 → 重试（受 max_iterations 限制）
+#   5. 所有 TODO 解决 + 测试通过 → Done
+```
+
+**核心机制**：
+- 自动 Verifier（默认 `npm test` / 用户自定义命令）
+- 失败时反馈错误信息给 agent 重试
+- 支持 `max_iterations` / `max_duration` 终止条件
+- 与 Subagent IRC bus 协作（子 agent 报告进度）
+
+**适用场景**：
+- "清空所有 TODO"
+- "把所有测试补到 80% 覆盖"
+- "迁移整个项目到 TypeScript"
+- "修复所有 lint 错误"
+
+### 6.4 Handoff（会话移交）
+
+**功能**：把当前会话**移交**给另一个角色（agent 模式 / subagent / 人类协作者），保留上下文。
+
+**触发方式**：
+```bash
+# Agent → Agent 移交（接力）
+> /handoff code-reviewer
+# 当前 session 状态发给 code-reviewer subagent
+# reviewer 接手审查刚才写的代码
+
+# Agent → 人 移交（暂停 + 等人类介入）
+> /handoff @teammate
+# 生成可分享链接（用 /collab）
+# 人类在浏览器接管
+
+# Agent → Subagent 移交（任务分发）
+> /handoff explorer "找一下项目里所有用 express 的地方"
+# explorer subagent 接手执行
+
+# 接回（resume）
+$ omp -c <session-id>
+```
+
+**适用场景**：
+- Agent 达到能力边界（需要业务确认）
+- Subagent 接力（explorer → coder → reviewer）
+- 人类临时介入（review 复杂改动）
+- 长任务跨会话继续（handoff 后 `/tree` 看会话树）
+
+### 6.5 Session Branch / Fork / Tree（git-like 会话管理）
+
+不是独立 run mode，但和 modes 强耦合 —— 你可以在任何 mode 下用 `/branch` `/fork` 创建新分支。
+
+**触发方式**：
+```bash
+# 当前会话卡住了，试试另一个思路
+> /branch "试试用 RxJS 重构这段代码"
+# 在同一个 JSONL 文件里分叉出新叶
+
+# 完全独立的尝试
+> /fork "尝试用 Rust 重写这个工具"
+# 派生新 JSONL 文件
+
+# 看会话树
+> /tree
+# 显示：
+#   main
+#   ├─ 01 原始任务
+#   ├─ 02 /branch (RxJS 思路)
+#   └─ 03 /fork (Rust 思路)
+
+# 回到主线
+$ omp -r  # 弹出选择器
+
+# 合并分支
+> /merge 02  # 把 RxJS 分支合回主线
+```
+
+**适用场景**：
+- 多思路并行探索
+- 长任务跨会话继续
+- 失败回滚（`/branch` 后可丢弃）
+- 与 Subagent 协作（fork 给子 agent 独立尝试）
+
+### 6.6 OMP 模式组合最佳实践
+
+| 场景 | 推荐组合 |
+|------|---------|
+| **日常编码** | Build Mode 默认 |
+| **重大重构** | `/plan` → 审批 → Build 执行 |
+| **长任务清理** | `/goal "..."` 让它循环到完成 |
+| **多 Agent 流水线** | Build 主导 → `/handoff reviewer` 接力审查 |
+| **探索未知需求** | Build + `/branch` 多思路并行 → 选最优合并 |
+| **跨会话继续** | Build + `/handoff @human` 暂停 → 人类介入 → `/resume` 接回 |
+
+---
+
+## 七、13 大特性速览
 
 | # | 特性 | 一句话 |
 |---|------|--------|
@@ -239,7 +402,7 @@ OMP 支持**全局 + per-agent**双层启用，参考 opencode 的 glob 模式�
 
 ---
 
-## 七、与其他 3 个 Agent 的差异
+## 八、与其他 3 个 Agent 的差异
 
 | 维度 | OMP 优势 | 适用人群 |
 |------|---------|----------|
@@ -249,7 +412,7 @@ OMP 支持**全局 + per-agent**双层启用，参考 opencode 的 glob 模式�
 
 ---
 
-## 八、适用场景
+## 九、适用场景
 
 - ✅ **终端深度用户**：每天 8h 在 terminal，要 IDE 级代码智能
 - ✅ **Windows 用户**：不想用 WSL，想要原生体验
@@ -265,7 +428,7 @@ OMP 支持**全局 + per-agent**双层启用，参考 opencode 的 glob 模式�
 
 ---
 
-## 九、相关章节
+## 十、相关章节
 
 - 横向对比：[Coding Agents README](README.md) — 4 agent 选型决策树 + 模型/MCP 配置对比
 - 单工具深度（Claude Code）：[Claude Code Practices](../claude-code-practices/README.md)

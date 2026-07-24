@@ -220,23 +220,100 @@ Claude Code 有官方 **Plugin marketplace**，包含：
 
 ---
 
-## 六、5 大 Harness 扩展点（速览）
+## 六、运行模式详解（核心章节）
 
-> 深度版见 [Claude Code Practices](../claude-code-practices/README.md)
+> Claude Code 是 4 大 Agent 中**唯一有 3 档渐进式权限模式**的 —— Shift+Tab 在 Default / Accept Edits / Plan Mode 间平滑循环。锁定 Anthropic 模型换来官方生态深度。
 
-| # | 扩展点 | 是什么 | 何时加载 |
-|---|--------|--------|----------|
-| 1 | **CLAUDE.md** | 自动读取的上下文文件 | 每次会话 |
-| 2 | **Hooks** | 关键时刻运行的脚本 | 事件触发 |
-| 3 | **Skills** | 特定任务的打包指令 | 按需加载 |
-| 4 | **Plugins** | skills/hooks/MCP 打包 | 配置后可用 |
-| 5 | **LSP** | 语言服务器（符号级导航）| 配置后可用 |
-| ⊕ | **Subagents** | 独立上下文窗口的子 Claude 实例 | 调用时 |
-| ⊕ | **MCP** | 外部工具 / 数据源 | 配置后可用 |
+### 6.1 Default Mode（手动批准）
+
+**功能**：每次文件编辑、命令执行前都需要你手动批准（Y/N/跳过）。**最安全、最谨慎**。
+
+**触发方式**：
+```bash
+# 启动时默认就是 Default Mode
+$ claude
+> 帮我分析这个项目结构
+# 每次 Edit / Write / Bash 都会弹确认：
+#   Yes, and auto-accept edits
+#   Yes, and manually approve edits
+#   No, and provide feedback
+```
+
+**适用场景**：
+- 学习阶段、不熟悉的项目
+- 重要 / 敏感修改
+- 需要精细控制
+
+### 6.2 Accept Edits Mode（自动接受文件）
+
+**功能**：自动接受所有文件读写修改，但 Shell 命令仍需手动批准。**效率高，适合批量生成**。
+
+**触发方式**：
+```bash
+# Shift+Tab 循环切换：normal → accept edits → plan → normal
+$ claude
+# 按 Shift+Tab 一次，状态栏变 "accept edits on"
+> 把整个 src/ 目录重构为 TypeScript
+# 文件编辑自动接受，但 npm install / npm test 还会问
+```
+
+**适用场景**：
+- 信任 AI 的日常开发
+- 批量生成 / 修改代码
+- 写测试、生成样板代码
+
+### 6.3 Plan Mode（只读规划）
+
+**功能**：只读、只讨论，不修改任何文件、不执行任何命令。**完全保护代码，只做头脑风暴**。
+
+**触发方式**：
+```bash
+# Shift+Tab 循环到第 3 档 "plan mode on"
+$ claude
+# 按 Shift+Tab 两次
+> 设计一个 Redis 缓存层架构
+# Claude 只输出方案、代码示例、架构分析，不动文件
+
+# 退出 Plan Mode 后可选：
+#   ✓ Yes, and auto-accept edits → 直接执行
+#   ✓ Yes, and manually approve edits → 执行但保留审批
+#   ✎ Type here to tell Claude what to change → 修改方案
+```
+
+**适用场景**：
+- 架构设计、项目方案讨论
+- 复杂功能开发、数据库迁移
+- 生产级关键文件变更
+
+### 6.4 Bypass Permissions（黑客模式）
+
+**功能**：完全跳过所有权限检查。**所有命令直接执行**。
+
+**触发方式**：
+```bash
+# CLI 启动时
+$ claude --dangerously-skip-permissions
+
+# 或在交互模式中 Shift+Tab 到 "bypass permissions on"
+```
+
+**适用场景**：
+- 完全自动化的 CI/CD 管道
+- 容器环境（沙盒已隔离）
+- ⚠️ **危险**：生产环境绝对不要用
+
+### 6.5 Claude Code 模式对比
+
+| 模式 | 文件编辑 | 命令执行 | 适用场景 |
+|------|---------|---------|---------|
+| **Default** | 每次 ask | 每次 ask | 学习、精细控制 |
+| **Accept Edits** | 自动 | 每次 ask | 批量生成、信任 AI |
+| **Plan Mode** | ❌ 不执行 | ❌ 不执行 | 架构设计、只讨论 |
+| **Bypass** | 自动 | 自动 | CI/CD、容器沙盒 |
 
 ---
 
-## 七、与其他 3 个 Agent 的差异
+## 七、5 大 Harness 扩展点（速览）
 
 | 维度 | Claude Code 优势 | Claude Code 劣势 |
 |------|----------------|----------------|
@@ -246,7 +323,17 @@ Claude Code 有官方 **Plugin marketplace**，包含：
 
 ---
 
-## 八、适用场景
+## 八、与其他 3 个 Agent 的差异
+
+| 维度 | Claude Code 优势 | Claude Code 劣势 |
+|------|----------------|----------------|
+| **vs OMP** | ✅ Harness 5 扩展点最成熟 · ✅ 官方 Skill marketplace · ✅ LSP 集成开箱 | ❌ 锁定 Anthropic · ❌ 无 per-role 模型 · ❌ 无 DAP |
+| **vs Codex** | ✅ 多 provider 路径（CLAUDE.md/Hooks/Skills/Plugins）· ✅ MCP 生态更丰富 | ❌ 不能用 GPT-5 · ❌ 无云端并行沙盒 |
+| **vs OpenCode** | ✅ 官方背书 · ✅ 文档最全 · ✅ 5 大 Harness 文档化最好 | ❌ 不能用 75+ providers · ❌ 无 OAuth 自动注册 |
+
+---
+
+## 九、适用场景
 
 - ✅ **Anthropic 生态**：Claude Pro/Max / API 订阅已有，想深度用
 - ✅ **大代码库 monorepo**：5 大 Harness 扩展点针对此优化（LSP + Skills + CLAUDE.md 分层）
@@ -261,7 +348,7 @@ Claude Code 有官方 **Plugin marketplace**，包含：
 
 ---
 
-## 九、相关章节
+## 十、相关章节
 
 - **深度版**：[Claude Code Practices](../claude-code-practices/README.md) — Harness 5 扩展点 + 3 大部署模式 + DRI 治理
 - **Skill 设计**：[Skill 设计方法论](../claude-code-practices/skill-design.md) / [Skill 命中率](../claude-code-practices/skill-hit-rate.md)

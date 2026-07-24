@@ -222,7 +222,121 @@ headers = { CONTEXT7_API_KEY = "${env:CONTEXT7_API_KEY}" }
 
 ---
 
-## 六、特色能力
+## 六、运行模式详解（核心章节）
+
+> Codex 有**两种使用模式**（命令 / 交互）+ **`--approval-mode` 三档授权策略** + **桌面端独有的 Plan Mode + Goal Mode**。CLI 偏命令模式 + 交互模式，桌面 App 偏 Plan Mode + Goal Mode（长任务循环到 verifier 通过）。
+
+### 6.1 命令模式（一次性调用）
+
+**功能**：单次输入 → 单次输出 → 退出。**没有上下文，不能连续迭代**。本质是一次性 AI。
+
+**触发方式**：
+```bash
+# 一次性 CLI 调用（适合 CI / 脚本）
+$ codex "帮我写一个 FastAPI 接口"
+# 输出代码 → 退出
+
+# CI 自动化
+$ codex exec "跑测试并修复失败用例"
+# 执行 + 输出结果（无交互）
+
+# 完全自动（full-auto 模式）
+$ codex --approval-mode full-auto "生成一个带 UI 的 ML 应用"
+# Codex 会：创建项目结构 / 写代码 / 安装依赖 / 生成可运行程序
+```
+
+**适用场景**：
+- CI/CD 自动化管道
+- 快速生成代码片段
+- 简单一次性任务
+- ⚠️ 缺点：无上下文、不能连续迭代、每次要重新解释需求
+
+### 6.2 交互模式（长期 Agent）
+
+**功能**：进入 TUI 后持续对话，**有上下文、能连续迭代、能执行命令 + 读项目 + 改文件**。**官方推荐**。
+
+**触发方式**：
+```bash
+$ codex
+# 进入交互 TUI（类似 ChatGPT 但能改文件 + 跑命令）
+
+> 帮我分析这个项目结构
+> 给这个服务加缓存
+> 写单元测试
+> 跑测试并修复错误
+# Codex 会连续完成所有任务，保留上下文
+```
+
+**适用场景**：
+- 真实开发流程
+- 复杂工程任务
+- 持续迭代
+- 多步骤重构
+
+### 6.3 Approval Mode（3 档授权策略）
+
+Codex CLI 用 `--approval-mode` 控制 agent 的自主程度：
+
+| Mode | 文件编辑 | 命令执行 | 网络访问 | 适用场景 |
+|------|---------|---------|---------|---------|
+| **suggest** | 每次 ask | 每次 ask | 每次 ask | 学习阶段（最谨慎）|
+| **auto-edit** | 自动 | 每次 ask | 每次 ask | 批量生成 |
+| **full-auto** | 自动 | 自动 | 自动 | CI/CD（最高效）|
+
+**触发方式**：
+```bash
+# CLI 启动时指定
+$ codex --approval-mode suggest "..."
+$ codex --approval-mode auto-edit "..."
+$ codex --approval-mode full-auto "..."
+
+# 也可在交互模式中切
+> /approvals
+# 弹交互式选择面板
+```
+
+### 6.4 桌面端 Plan Mode + Goal Mode（独家）
+
+Codex **桌面 App** 有两个独家模式（CLI 没有）：
+
+**Plan Mode（计划模式）**：
+```bash
+# 桌面 App 配置
+设置 → 工作区 → 启用"计划模式"
+# agent 先输出完整方案 → 用户审批 → 才执行
+```
+
+**Goal Mode（追求目标 / 长任务循环）**：
+```bash
+# 桌面 App 配置
+设置 → 工作区 → 启用"追求目标"
+> 把这个项目的所有 TODO 解决掉
+# agent 持续执行到 verifier 通过（类似 OMP /goal，但用同一个会话）
+```
+
+**与 OMP 对比**：
+
+| 维度 | Codex 桌面端 | OMP |
+|------|-------------|-----|
+| Plan Mode | ✅ 桌面端配置 | ✅ `/plan` + per-role 模型 |
+| Goal Mode | ✅ 桌面端"追求目标" | ✅ `/goal` |
+| Handoff | ❌ | ✅ `/handoff` |
+| Session tree | ❌ | ✅ |
+
+### 6.5 Codex 模式对比
+
+| 模式 | 触发方式 | 持续性 | 自主程度 | 适用 |
+|------|---------|--------|---------|------|
+| **命令模式 + suggest** | `codex "..."` | 一次性 | 最谨慎 | 学习 |
+| **命令模式 + full-auto** | `codex --approval-mode full-auto "..."` | 一次性 | 最高 | CI/CD |
+| **交互模式 + suggest** | `codex` + suggest | 长期 | 中 | 真实开发 |
+| **交互模式 + full-auto** | `codex` + full-auto | 长期 | 最高 | 长任务自动化 |
+| **桌面端 Plan Mode** | App 配置 | 长期 | 中 | 方案设计 |
+| **桌面端 Goal Mode** | App 配置 | 长期 | 高 | 长任务循环 |
+
+---
+
+## 七、特色能力
 
 ### 6.1 云端并行沙盒
 
@@ -240,7 +354,7 @@ Codex Pro 用户可在 ChatGPT 网页直接派发 Codex 任务，手机端也能
 
 ---
 
-## 七、与其他 3 个 Agent 的差异
+## 八、与其他 3 个 Agent 的差异
 
 | 维度 | Codex 优势 | Codex 劣势 |
 |------|-----------|-----------|
@@ -250,7 +364,7 @@ Codex Pro 用户可在 ChatGPT 网页直接派发 Codex 任务，手机端也能
 
 ---
 
-## 八、适用场景
+## 九、适用场景
 
 - ✅ **OpenAI 生态**：ChatGPT Plus/Pro / API Key 已有
 - ✅ **最强单模型**：GPT-5.3 Codex 是当前代码能力顶级
@@ -266,7 +380,7 @@ Codex Pro 用户可在 ChatGPT 网页直接派发 Codex 任务，手机端也能
 
 ---
 
-## 九、相关章节
+## 十、相关章节
 
 - **横向对比**：[Coding Agents README](README.md) — 4 agent 选型决策树 + wire_api/base_url 全套配置对比
 - **循环调用**：[Loop Engineering](../loop-engineering/README.md) — Ralph Wiggum Loop（Codex 也支持 `/goal` 长任务）
