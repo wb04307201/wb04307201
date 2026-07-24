@@ -83,8 +83,11 @@ echo "无 frontmatter: $no_fm / $(find note -name "README.md" | wc -l)"
 # 3. 数字一致性扫描
 grep -rn "篇\|个\|行" note/README.md 2>/dev/null | grep -E "[0-9]+\s*(篇|个|行)" | head -30
 
-# 4. H1 数字编号违规
-grep -rn "^# [一二三四五六七八九十]、\|^# [0-9][0-9]\." note/*/README.md 2>/dev/null | head -10
+# 4. H1 数字编号违规（2026-07-25 修正：扫描全级别 H1+H2）
+# 历史 bug：原 regex `^#` 只扫顶级 H1，但 note 里实际不规范的是 H2（## N. 章节标题）
+# 修正后扫 H1 (#) + H2 (##) 全级别数字编号（中文数字或阿拉伯数字）
+# 验证：1063 .md 体检发现 42 处不规范（首次报告只看到 5 处，全因 H2 未扫）
+grep -rnE "^# [0-9]+\\.|^## [0-9]+\\." note/**/*.md 2>/dev/null | grep -v "node_modules\\|.git" | head -30
 
 # 5. 回链覆盖率（匹配两种格式：`← [返回` 和 `← 返回`）
 TOTAL_READMES=$(find note -name "README.md" | wc -l)
