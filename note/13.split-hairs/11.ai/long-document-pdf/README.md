@@ -250,3 +250,5 @@ question:
 5. [LongLLMLingua / RECOMP 论文（Microsoft 2023）](https://arxiv.org/abs/2310.04836) — Prompt 压缩 20x / RAG 检索压缩代表方法
 
 ← 返回 [AI 咬文嚼字](../README.md)
+
+← [返回: 咬文嚼字 · 11.ai](../README.md)
