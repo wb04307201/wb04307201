@@ -119,5 +119,6 @@ module:
 - 同栏目：[Claude Code 实践](../claude-code-practices/README.md) — Skill 设计方法论 + Hit Rate 优化
 - 实战：[生产级 Agent](../production-agent/README.md) — 生产环境的 Agent 工程实践
 - 循环：[Loop Engineering](../loop-engineering/README.md) — Agent 循环调用 + [Ralph Wiggum Loop](../loop-engineering/ralph-wiggum-loop.md)
+- **正交关系**：[Coding Agents](../coding-agents/README.md) — Superpowers / Spec-Kit / OpenSpec 都**运行在** Coding Agent 上（Claude Code / Codex / OpenCode / OMP）
 
 ← [返回: L3 工程实践](../README.md)

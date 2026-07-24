@@ -107,6 +107,7 @@ Claude Code 在大型代码库中的成功部署并非仅靠模型能力，而�
 - 🆕 工具实战：[Agent Spec Tools](../agent-spec-tools/README.md) — Superpowers（Skill 插件）/ Spec-Kit / OpenSpec 安装 + 对比
 - 概念层：[Harness Engineering](../harness-engineering/README.md) — Claude Code 的 5 大扩展点都是 Harness 实现
 - Skill 深化：[Skill 设计方法论](skill-design.md) / [Skill 命中率](skill-hit-rate.md)
+- 横向对比：[Coding Agents](../coding-agents/README.md) — Claude Code / Codex / OpenCode / OMP 4 大编程 Agent 横对比 + 选型决策树（含 `.mcp.json` 模型/MCP 配置 schema）
 
 ---
 

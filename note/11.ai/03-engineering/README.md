@@ -24,6 +24,7 @@ module:
 | [harness-engineering](harness-engineering/) | **Harness Engineering** — 4 大 Harness 类型（规范/流程/工具/反馈）+ OpenSpec + 4 原则 | Agent 自我约束 |
 | [loop-engineering](loop-engineering/) | **Loop Engineering** — 循环调用 3 大组件 + 4 大失败模式 + 5 大最佳实践 + 🆕 [Ralph Wiggum Loop](loop-engineering/ralph-wiggum-loop.md) | 探索性任务自动化 |
 | [agent-spec-tools](agent-spec-tools/) 🆕 | **Agent Spec Tools** — Superpowers（强制 TDD）/ Spec-Kit（企业 SDD 管线）/ OpenSpec（轻量规范对齐）安装 + 配置 + 对比 | Agent 规范工具链 |
+| [coding-agents](coding-agents/) 🆕 | **Coding Agents** — Claude Code / Codex / OpenCode / OMP 4 大编程 Agent 横对比 + 选型决策树 + 模型/MCP 配置 schema | 编程 Agent 工具链 |
 | [llm-production-thinking](llm-production-thinking/) 🆕 | **大模型思维工程** — 5 大灵魂拷问（Prompt vs if-else / 成本降级 / 一致性 / 超时熔断 / 监控定位）+ 5 层路由 + 双 timeout | LLM 生产工程 |
 | [ai-code-review](ai-code-review/) 🆕 | **AI 代码审核验收** — 6 层审核体系（契约/业务/安全/性能/可测/幻觉）+ 分级门禁矩阵 + 幻觉专项 + 工具链 | AI 产出质量门禁 |
 | [llm-alignment](llm-alignment/) 🆕 | **LLM 对齐** — SFT / RLHF / DPO / Constitutional AI / KTO 五大方法 + 3H 原则 + 数学统一视角 | 让模型听话 |
@@ -67,6 +68,10 @@ graph LR
 | **Superpowers** | 14 Skill + 强制 TDD + 7 阶段工作流 + 子 Agent 编排 | Agent 工作流约束 |
 | **Spec-Kit** | GitHub 官方 SDD 管线 + 5 命令 + 30+ Agent 兼容 | 企业规范标准化 |
 | **OpenSpec** | 轻量 Markdown 规范 + /opsx 命令 + AGENTS.md | 快速规范对齐 |
+| **Claude Code** | 🔒 锁定 Anthropic + CLAUDE.md/Hooks/Skills/Plugins/LSP/MCP 五大 Harness 扩展点 | 单工具深度（商用） |
+| **Codex** | OpenAI 官方 + GPT-5.3 Codex + wire_api/base_url 转 OpenAI 兼容网关 | 单工具深度（OpenAI 生态）|
+| **OpenCode** | 75+ providers + oh-my-opencode 多 Agent + MCP OAuth 自动注册 | 多 LLM 灵活（开源）|
+| **OMP (oh my pi)** | 100k Rust LOC + Hashline 编辑 + per-role 4 模型 + 进程内 LSP/DAP | 终端深度（原生 Rust）|
 | **LLM 对齐** | SFT → RLHF → DPO → Constitutional AI → KTO/SimPO，3H 原则（Helpful/Harmless/Honest） | 模型输出对齐人类意图 |
 
 ---
@@ -92,6 +97,11 @@ graph LR
   - [superpowers](agent-spec-tools/superpowers.md) — 14 内置 Skill + 强制 TDD + 7 阶段工作流
   - [spec-kit](agent-spec-tools/spec-kit.md) — GitHub 官方 SDD 管线 + 5 命令 + 30+ Agent
   - [openspec](agent-spec-tools/openspec.md) — 轻量规范对齐 + /opsx 命令 + AGENTS.md
+- 🆕 **[coding-agents](coding-agents/)**（+ 4 子）：4 大编程 Agent 横向对比 + 选型决策树
+  - [claude-code](coding-agents/claude-code.md) — Anthropic 官方 · 锁定 Claude · CLAUDE.md/Skills/Plugins
+  - [codex](coding-agents/codex.md) — OpenAI 官方 · wire_api/base_url 转 OpenAI 兼容网关
+  - [opencode](coding-agents/opencode.md) — 75+ providers · oh-my-opencode 多 Agent
+  - [omp](coding-agents/omp.md) — 100k Rust LOC · Hashline · per-role 4 模型 · 进程内 LSP/DAP
 - 🆕 **[llm-production-thinking](llm-production-thinking/)**：5 大灵魂拷问（思维 + 成本 + 一致性 + 熔断 + 监控）+ 5 层路由 + Self-Consistency + 双 timeout
 - 🆕 **[ai-code-review](ai-code-review/)**：AI 生成后端代码审核验收方法论 — 6 层审核体系 + 分级门禁矩阵 + AI 幻觉 5 形态 + 工具链
 - 🆕 **[llm-alignment](llm-alignment/)**（+ 5 子）：LLM 对齐 5 大方法（SFT / RLHF / DPO / Constitutional AI / KTO）+ 3H 原则 + 数学统一视角
@@ -108,6 +118,7 @@ graph LR
 | **Harness 设计** | 规范层（OpenSpec）+ 流程层（CI/CD）+ 工具层（MCP）+ 反馈层（红队） |
 | **Loop 设计** | 任务定义 + 验证器（Verifier）+ 反馈机制；设置最大迭代次数防死循环 |
 | **Agent Spec Tools** | 轻量选 OpenSpec / 企业选 Spec-Kit / TDD 选 Superpowers；可组合使用 |
+| **Coding Agent 选型** | Anthropic 选 Claude Code · OpenAI 选 Codex · 多 provider 选 OpenCode · 终端深度选 OMP | 与 Spec Tools 正交 |
 | **生产稳定性** | 限流 + 重试 + 熔断 + 监控 + 错误恢复（Fallback） → 详见 [llm-production-thinking](llm-production-thinking/README.md)（思维范式 + 5 层路由 + Self-Consistency + 双 timeout + Trace） |
 
 ---
@@ -145,7 +156,7 @@ graph LR
 | 计算平台 | CUDA (NVIDIA) · ROCm (AMD) · CANN (Huawei) |
 | 本地部署 | Ollama · Open WebUI · LM Studio · iFlow CLI |
 | 编排平台 | Dify · Coze · n8n · FastGPT · RAGFlow |
-| AI 编码 | Claude Code · Cursor · Cline · Continue |
+| AI 编码 | Claude Code · Codex · OpenCode · OMP（[4 agent 横对比](coding-agents/README.md)）|
 | AI 循环工具 | Ralph Wiggum Loop（一行 bash）· Claude Code `/goal` · Codex `/goal` |
 | Agent Spec 工具 | Superpowers · Spec-Kit · OpenSpec |
 

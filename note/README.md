@@ -210,7 +210,7 @@ module:
 | **驾驭演进史** | [11.ai/04-architecture/llm-control-evolution](11.ai/04-architecture/llm-control-evolution/README.md) | Prompt → Context → Harness → Loop 的 4 阶段叙事 | ⭐ |
 | 1 | [L1 基础概念](11.ai/01-fundamentals/README.md) | 大语言模型基础、神经网络层次、嵌入 vs 向量化、稠密模型 vs MoE |
 | 2 | [L2 技术栈](11.ai/02-technology-stack/README.md) | 61 核心概念全景、多模态、Prompt 工程、显存估算 |
-| 3 | [L3 工程实践](11.ai/03-engineering/README.md) | 深度学习框架、应用开发框架、计算平台、本地部署、AI 平台对比 |
+| 3 | [L3 工程实践](11.ai/03-engineering/README.md) | 深度学习框架、应用开发框架、计算平台、本地部署、AI 平台、🆕 [Coding Agents 横对比](11.ai/03-engineering/coding-agents/README.md)（Claude Code / Codex / OpenCode / OMP） |
 | 4 | [L4 架构设计](11.ai/04-architecture/README.md) | 智能系统分层架构、2026 技术趋势 |
 | 5 | [L5 行业应用](11.ai/05-applications/README.md) | 汽车行业落地、具身智能 |
 | 6 | [L6 前沿研究](11.ai/07-research/README.md) | 沉思模型（Rumination）等前沿探索 |
