@@ -403,15 +403,33 @@ D. 暂不沉淀
 
 ### ❌ Mistake 10: 系列内兄弟不互链
 
-**症状**：向已有系列添加新文章后，新文件只链回 README，已有兄弟也不知道新成员的存在。例如：
-- agent-execution-patterns 系列有 01-react / 02-plan-execute，新增 05-dag / 06-multi-agent
-- 但 01 和 02 的文件末尾**没有链向** 05 和 06 —— 同系列 6 篇文章各自孤立
+**症状**（两种场景）：
+- **场景 A**：向已有系列添加新文章后，新文件只链回 README，已有兄弟也不知道新成员的存在。
+  - 例：agent-execution-patterns 系列有 01-react / 02-plan-execute，新增 05-dag / 06-multi-agent
+  - 但 01 和 02 的文件末尾**没有链向** 05 和 06 —— 同系列 6 篇文章各自孤立
+- **场景 B（2026-07-25 新增）**：**历史遗留**——已有编号系列，但所有文件**历史都没加过"系列导航表"**。
+  - 例：`note/01.java/kotlin/` 有 01-basics.md / 02-oop.md / 03-functional.md / 04-advanced.md / 05-coroutines.md 共 5 篇，**全部缺链**（没有任何一篇末尾有"系列导航表"）
+  - 这类问题体检时通过 `Phase 1.9 系列完整性` 扫描可发现
 
 **修复**：
 - **强制规则**：向已有系列新增文章时，**每篇文件末尾必须有"系列导航表"**
 - 系列导航表 = 一个表格，列出系列内所有文件 + 一句话核心问题
 - 新文件加导航表 + 所有已有兄弟加/更新导航表
 - Step 7 自检加「系列导航表完整性」项
+
+**批量修复脚本**（场景 B 适用）：
+```bash
+# 找所有有编号系列的目录，补齐每个系列所有文件的"系列导航表"
+for dir in $(find note -type d -exec sh -c 'ls "$1"/[0-9]*.md 2>/dev/null | wc -l | grep -q "^[2-9]" && echo "$1"' _ {} \;); do
+  files=$(ls "$dir"/[0-9]*.md 2>/dev/null)
+  # 检查哪些文件没有"系列导航表"
+  for f in $files; do
+    if ! grep -q "## 系列导航" "$f"; then
+      echo "缺系列导航表: $f"
+    fi
+  done
+done
+```
 
 **检测方法**：
 ```bash
@@ -590,3 +608,6 @@ print(f'新文件 broken links: {real_broken}')
 - [ ] **父 README / 总目录表已加新文件链接**（避免"总目录孤岛"）
 - [ ] **总目录数字（题目数 / leaf 数）已同步更新**（避免数字不一致）
 - [ ] **系列内所有文件都有"系列导航表"**（当目标目录已有编号系列时，见 Mistake 10）
+- [ ] **新 README 文末必须含 `← [返回:` footer 回链**（避免格式约定违反，2026-07-25 教训：本会话新文件 coding-agent-mode-selection 漏 footer 回链）
+  - 自检命令：`grep -L "← \[返回:" $(find note -name "README.md" -newer <commit-base>)`
+  - **新 README 必须有**，根目录 README（`note/README.md`）除外
