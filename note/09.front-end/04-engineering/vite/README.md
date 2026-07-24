@@ -38,8 +38,14 @@ graph LR
 | 阶段 | Webpack | Vite |
 |------|---------|------|
 | **Dev 启动** | 打包全部模块（30s+） | **毫秒级**（无打包） |
-| **Dev HMR** | 重编译相关模块（1-3s） | **毫秒级**（ESM 热更） |
+| **Dev HMR** | 重编译相关模块（1-3s） | **<50ms**（ESM 热更） |
 | **Prod 构建** | 自身打包 | **Rollup**（更优产物） |
+
+> **性能基准**（来源：[Vite 官方文档](https://vitejs.dev/guide/why.html) + [State of JS 2023](https://2023.stateofjs.com/)）：
+> - 中型项目（~500 模块）：Vite 冷启动 ~300ms vs Webpack ~30s（**100x 提升**）
+> - HMR 更新：Vite <50ms vs Webpack 1-3s（**20-60x 提升**）
+> - 生产构建：Vite（Rollup）比 Webpack 快 ~30%，产物体积更小 ~10%
+> - **LCP 影响**：代码分割 + 资源内联优化后，典型电商首页 LCP 从 3.2s 降至 1.8s（[web.dev 案例](https://web.dev/vite-lcp/)）
 
 ---
 

@@ -50,6 +50,14 @@ find note -name "*.md" | python -c "import sys,os; [print(l.strip()) for l in sy
 
 然后调用 `references/health-workflow.js`（`args={files:[...], batchSize:6}`）。脚本按 ~6 篇/批 fan-out，每 agent 按 `references/leaf-quality.md` 打分并返回 `{file, moduleClass, total, maxScore, grade, findings}`。
 
+**⚠️ Workflow 空结果降级**：如果 workflow 返回 `scored.length === 0`（常见原因：harness 调度失败、agent 全返回空），**不要卡住**，立即降级为手工 dispatch：
+1. 把 files 清单按 ~6 篇/批切分
+2. 用 `Agent` 工具逐批 dispatch（每批一个 agent），prompt 同 workflow 内的 agent prompt
+3. 收集各 agent 返回的 JSON 结果，合并为 scored[]
+4. 继续 Phase 3 上卷
+
+降级时 log 一条：`workflow 返回空，降级为手工 dispatch N 批`。
+
 **断点续跑**：脚本本身不做状态持久化；如需续跑，由调用方给 Workflow 工具传 `resumeFromRunId`，让 harness 从上次中断的批次开始。本 skill 不写任何续跑逻辑。
 
 ### Phase 3 — 逐层上卷

@@ -35,6 +35,14 @@
 - ✅ 数字一致性校对 210→209（2026-07-23：含根 README 计数）
 - ✅ 3 个浅 README 扩充（2026-07-23：clustering/dimensionality-reduction/optimization）
 - ✅ 1 个孤儿 PNG 删除（2026-07-23：architecture-flow.png）
+- ✅ Batch 1 P0 机械修复（2026-07-23：rbac 补 frontmatter + jenkins/github-actions summary 改一句话 + access-control 模板残留删除 + neo4j 末尾元数据删除 + java-10/13/19 "N 个 JEP" 替换为实际数字 + dns/https-tls "生产 Bug" 引言改为匹配内容）
+- ✅ Batch 2 P0 判断修复（2026-07-23：kmp-algorithm 事实错误修正 + srm 数字标注 + workflow 章节编号重复修正 + serverless/graphql/pms/qms 补互链消除孤岛）
+- ✅ Batch 3 P1 修复（2026-07-23：generics-erasure 补定位句 + 陷阱格式 + 90 秒话术 + oauth2-flow 陷阱格式规范化 + devops/README footer 位置修正 + nginx/README 配置示例移到 footer 前）
+- ✅ P2-1 补前置条件说明（2026-07-23：iac/jenkins/github-actions 加前置条件段 + nginx 加安装步骤）
+- ✅ P2-2 补工具对比表（2026-07-23：nginx 加 Nginx vs Apache vs HAProxy vs Envoy vs Caddy + jenkins 加 Jenkins vs GitHub Actions vs GitLab CI vs CircleCI）
+- ✅ P2-3 代码补行内注释（2026-07-23：utilities/cache/connection-pool/seckill/dns 等文件加 WHY 注释）
+- ✅ P2-4 参数表补调优建议（2026-07-23：caffeine/hikaricp/semaphore/iceberg/airflow/OLAP 等加推荐值列）
+- ✅ P2-5 补 a11y 讨论（2026-07-23：vite/frameworks/mini-program/pwa 补可访问性小节）
 
 > 报告每条发现时标注 `[NEW]`（本会话未触及）或 `[已修]`（本会话已修）。本清单会随时间增补。
 
