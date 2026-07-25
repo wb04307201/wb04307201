@@ -219,7 +219,7 @@ question:
 
 - **协议层深度**：[`acp-protocol.md`](../../../11.ai/02-technology-stack/context-engineering/acp-protocol/README.md) — ACP 架构 + JSON-RPC 2.0 扩展 + Python SDK 示例 + 与 MCP/A2A/ANP 完整对比
 - **概念地图**：[`concept-map.md`](../../../11.ai/02-technology-stack/concept-map/README.md) — ACP 在 Agent 协议族中的位置
-- **MCP 对比**：[`mcp.md`](../../../11.ai/02-technology-stack/context-engineering/mcp.md) — Agent ↔ 工具协议
+- **MCP 对比**：[`mcp`](../../../11.ai/02-technology-stack/context-engineering/README.md#mcp-model-context-protocol) — Agent ↔ 工具协议（在 context-engineering README 中描述）
 - **A2A 对比**：[Google A2A](https://google.github.io/A2A/) — Agent ↔ Agent 协议
 
 ### 6.2 同栏目（11.ai 系列面试题）

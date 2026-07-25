@@ -446,8 +446,8 @@ LSP 的 stdio/HTTP 请求-响应**无法表达**这种多轮流式 + 权限审�
 
 - [`concept-map.md`](../../concept-map/README.md) — ACP 在 Agent 协议族中的位置（line 260、232、235、263 等）
 - [`context-engineering.md`](../../context-engineering/README.md) — 上下文工程总览（含 MCP 等协议）
-- [`mcp.md`](../../context-engineering/mcp.md) — Agent ↔ 工具协议（MCP）
-- [`multi-agent-system-design`](../../../03-engineering/multi-agent-system-design/README.md) — 多 Agent 协作（含 A2A）
+- [`mcp.md`](../../context-engineering/README.md#mcp-model-context-protocol) — Agent ↔ 工具协议（MCP，在 context-engineering README 中描述）
+- [`multi-agent-system-design`](../../../../13.split-hairs/11.ai/multi-agent-system-design/README.md) — 多 Agent 协作（含 A2A）
 - [`coding-agents`](../../../03-engineering/coding-agents/README.md) — 4 个 Coding Agent 横向对比（Claude Code / Codex / OpenCode / OMP）
 
 ### 10.2 面试精炼
