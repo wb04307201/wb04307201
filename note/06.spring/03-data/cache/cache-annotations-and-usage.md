@@ -339,3 +339,6 @@ public class MyApplication {
 - [缓存实现与最佳实践](implementations-and-best-practices.md) — Caffeine/Redis/Ehcache
 - [08 注解/AOP 注解](../../08-annotations/aop.md) — 缓存本质是 AOP 切面
 - [01 核心容器/AOP 通知顺序](../../01-core/aop/advice-order-and-best-practices.md) — @Cacheable 顺序
+
+- [cache-degradation-and-recovery](cache-degradation-and-recovery.md)
+- [patterns](patterns.md)

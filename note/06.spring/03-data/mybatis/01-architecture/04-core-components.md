@@ -122,3 +122,7 @@ List<User> users = sqlSession.selectList("com.example.UserMapper.findAll");
 long duration = System.currentTimeMillis() - start;
 System.out.println("SQL 执行耗时: " + duration + "ms");
 ```
+
+## 反向链
+
+- [08-class-diagram](08-class-diagram.md)

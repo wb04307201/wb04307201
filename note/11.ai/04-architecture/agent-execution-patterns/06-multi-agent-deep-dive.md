@@ -264,4 +264,6 @@ result = crew.kickoff()
 
 ---
 
+
+- [shared-memory](../agent-memory/shared-memory.md)
 ← [返回: Agent 4 大模式](../README.md) · 上一章：[05-dag](05-dag-deep-dive.md)

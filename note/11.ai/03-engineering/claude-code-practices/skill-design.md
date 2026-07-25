@@ -363,4 +363,9 @@ evaluation:
 
 ---
 
+## 反向链
+
+- [superpowers](../agent-spec-tools/superpowers.md)
+- [claude-code](../coding-agents/claude-code.md)
+
 ← [返回 Claude Code 实践总览](README.md)

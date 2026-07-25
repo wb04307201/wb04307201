@@ -238,3 +238,7 @@ public class DefaultServiceFactory {
 - [Bean 生命周期](bean-lifecycle.md)
 - [作用域与线程安全](scopes-and-thread-safety.md)
 - [循环依赖与三级缓存](circular-dependency.md)
+
+- [configuration-lite-vs-full](../configuration-lite-vs-full.md)
+- [FactoryBean](FactoryBean.md)
+- [bean-and-ioc](../../08-annotations/bean-and-ioc.md)

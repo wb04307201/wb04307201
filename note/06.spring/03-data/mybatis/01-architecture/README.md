@@ -107,6 +107,9 @@ mindmap
 
 ---
 
+
+- [01-assembly-and-startup](../03-spring-integration/01-assembly-and-startup.md)
+- [05-secondary-cache-integration](../03-spring-integration/05-secondary-cache-integration.md)
 ← [返回 MyBatis 总览](../README.md)
 
 ---

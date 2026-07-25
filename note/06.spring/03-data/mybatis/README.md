@@ -93,6 +93,9 @@ graph LR
 
 ---
 
+
+- [08-class-diagram](01-architecture/08-class-diagram.md)
+- [06-pagination](04-mybatis-plus/06-pagination.md)
 ## 📊 本专题统计（leaf MD 数）
 
 | 主题 | 目录 | 篇数 |

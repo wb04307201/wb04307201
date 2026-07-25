@@ -177,4 +177,9 @@ graph TD
 
 ---
 
+## 反向链
+
+- [spring-ai-vs-platforms](03-engineering/ai-platforms/spring-ai-vs-platforms.md)
+- [index](../12.story/index.md)
+
 ← [返回笔记目录](../README.md)

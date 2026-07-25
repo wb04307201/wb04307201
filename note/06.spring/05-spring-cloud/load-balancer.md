@@ -285,3 +285,6 @@ public class MetadataLoadBalancer implements ReactorServiceInstanceLoadBalancer 
 - [服务注册](service-registry/) — LoadBalancer 依赖服务注册中心
 - [RPC 与 Feign](rpc-and-feign.md) — LoadBalancer 与 Feign 集成
 - [熔断降级](circuit-breaker.md) — 调用失败时的兜底
+
+- [config-center](config-center.md)
+- [gateway](gateway.md)

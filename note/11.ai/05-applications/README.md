@@ -204,4 +204,9 @@ graph TB
 
 ---
 
+## 反向链
+
+- [43-ai-productivity-paradox](../../12.story/43-ai-productivity-paradox.md)
+- [44-tech-debt-career-trap](../../12.story/44-tech-debt-career-trap.md)
+
 ← [返回 AI 知识体系](../README.md)

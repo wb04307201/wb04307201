@@ -207,3 +207,10 @@ spring:
 启动后所有 `@NotBlank(message="用户名不能为空")` 注解都会按 `Locale` 自动查表；Controller 无需手动传 `Locale`，由 `LocaleResolver` 决定（详见 02-web 的 i18n 配置）。
 
 > **注意**：Bean Validation 默认查找 `ValidationMessages` 主名，Spring 接管后才会去 `messages` 基名下找。混用时可在 `Validator` 中同时指定 `setValidationMessageSource(...)`。
+
+## 反向链
+
+- [06-integration](../README.md)
+- [cross-field](cross-field.md)
+- [validation](README.md)
+- [validation](../../08-annotations/validation.md)

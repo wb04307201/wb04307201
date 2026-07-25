@@ -122,4 +122,8 @@ curl http://localhost:8000/v1/chat/completions \
 
 ← 返回 [工程实践](../README.md)
 
+## 反向链
+
+- [opencode](../coding-agents/opencode.md)
+
 ← [返回: AI 知识体系](../README.md)

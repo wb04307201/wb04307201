@@ -192,3 +192,5 @@ graph LR
 - [Dify](dify.md) — DSL 入 Git + 私有化首选
 - [LangGraph](langgraph.md) — 代码优先复杂 Agent 框架
 - [BPMN+AI 融合](../../04-architecture/bpmn-ai-integration.md) — Coze + Camunda 8 混合架构（适合国内企业落地）
+
+- [spring-ai-vs-platforms](spring-ai-vs-platforms.md)

@@ -11,6 +11,10 @@ module:
 
 > **一句话答案**：LLM 生产稳定性不是"Prompt 写得更好"那么简单——而是**5 大工程问题的协同回答**：①Prompt vs if-else 思维转换 ②成本上限与自动降级 ③连续不一致的多结果投票 ④超时熔断 ⑤线上监控与快速定位。
 
+## 反向链
+
+- [builtin-loop-commands](../loop-engineering/builtin-loop-commands.md)
+
 ← [返回: 工程实践](../README.md) · 同级：[production-agent](../production-agent/README.md) · [harness-engineering](../harness-engineering/README.md) · [loop-engineering](../loop-engineering/README.md)
 
 ---

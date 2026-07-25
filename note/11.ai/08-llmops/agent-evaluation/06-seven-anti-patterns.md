@@ -11,6 +11,10 @@ module:
 
 > **一句话**：Agent 评测 7 大常见坑都是"看起来对"——单一指标 / 一次性 / A/B 太短 / 黄金集不更新 / 阈值不合理 / 无漂移告警 / 测试集太干净。每个都是生产踩过的雷。
 
+## 反向链
+
+- [08-practical-cases](08-practical-cases.md)
+
 ← [返回: Agent Evaluation 总目录](../README.md)
 
 ---

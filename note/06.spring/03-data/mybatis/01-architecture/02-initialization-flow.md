@@ -56,3 +56,6 @@ flowchart TD
 
 - 前置：[`01 框架本质`](01-framework-essence.md)
 - 深入：[`05 执行流程`](../02-extension/README.md) — SQL 执行全链路
+
+- [08-class-diagram](08-class-diagram.md)
+- [03-database-vendor](../02-extension/03-database-vendor.md)

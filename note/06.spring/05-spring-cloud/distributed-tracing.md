@@ -340,3 +340,8 @@ Zipkin / Jaeger                  # 收集所有 Span
 - [配置中心](config-center.md) — 追踪采样率配置
 - [网关](gateway.md) — 网关作为追踪入口
 - [07 可观测性/Micrometer](../07-observability/micrometer.md) — 指标 + 追踪统一
+
+- [actuator](../07-observability/actuator.md)
+- [health-probes](../07-observability/health-probes.md)
+- [log-aggregation](../07-observability/log-aggregation.md)
+- [prometheus-grafana](../07-observability/prometheus-grafana.md)

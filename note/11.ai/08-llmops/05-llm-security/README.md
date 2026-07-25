@@ -420,4 +420,9 @@ define flow harmful
 | 5 | [LLM 安全](../05-llm-security/README.md) | OWASP LLM Top 10 + 6 层防御 + Guardrails 实战 |
 | 6 | [RAG 超范围拒答](../06-rag-out-of-domain-rejection/README.md) | 6 大检测机制 + 5 大拒答模式 + 4 步调优 |
 
+## 反向链
+
+- [05-anti-evasion](../../../04.system-design/04-high-performance/sensitive-word-filter/05-anti-evasion.md)
+- [04-constitutional-ai](../../03-engineering/llm-alignment/04-constitutional-ai.md)
+
 ← [返回: L8 LLMOps](../README.md) · 📅 2026-06-28

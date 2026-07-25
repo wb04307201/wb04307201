@@ -207,4 +207,6 @@ graph LR
 - 关联：[Token 与计费](../../02-technology-stack/token-billing/README.md) — Transformer 的处理单位
 - 应用：[RAG](../../08-llmops/01-rag-vs-finetuning/README.md) — Transformer 的核心应用场景
 
+
+- [single-epoch-and-config-evidence](../dropout-in-llm/single-epoch-and-config-evidence.md)
 ← [返回: L1 基础概念](../README.md)

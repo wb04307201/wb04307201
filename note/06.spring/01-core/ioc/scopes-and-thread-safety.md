@@ -265,3 +265,6 @@ private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-M
 - [Bean 生命周期](bean-lifecycle.md) — 4 个阶段
 - [依赖注入](dependency-injection.md) — 4 种注入方式
 - [08 注解/Bean 注解](../../08-annotations/bean-and-ioc.md#四bean-作用域) — @Scope 用法
+
+- [circular-dependency](circular-dependency.md)
+- [FactoryBean](FactoryBean.md)

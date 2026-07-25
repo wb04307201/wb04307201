@@ -157,3 +157,8 @@ public class AsyncInitializer implements ApplicationRunner {
 }
 ```
 **注意**：需在主类启用 `@EnableAsync`。
+
+## 反向链
+
+- [auto-configuration](auto-configuration.md)
+- [config-center](../05-spring-cloud/config-center.md)

@@ -339,6 +339,8 @@ public RedisMessageListenerContainer redisContainer(
 - [序列化](serialization.md) — Redis 序列化方案
 - [缓存实现](implementations-and-best-practices.md) — Caffeine/Redis 配置
 
+
+- [cache](../../08-annotations/cache.md)
 ## 🚨 Redis 挂了怎么办？（应急降级实战）
 
 本文 § 3 表格里写"熔断降级：Redis 故障时返回 DB 直查"是**原则**，**完整实战方案**（4 大降级方案 + Top 1 推荐组合 + 自动恢复 + 数据一致性）独立章节：

@@ -183,4 +183,6 @@ graph TB
 - [08 注解/Web 注解](../../08-annotations/web.md) — @RequestMapping、@RestController 详解
 - [04 Spring Boot/自定义 Starter](../../04-spring-boot/custom-starter.md) — spring-boot-starter-web 详解
 
+
+- [router-functions](../webflux/router-functions.md)
 ← [返回: Spring 全家桶 · mvc](../README.md)

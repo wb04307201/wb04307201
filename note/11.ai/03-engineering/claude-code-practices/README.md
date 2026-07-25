@@ -111,4 +111,8 @@ Claude Code 在大型代码库中的成功部署并非仅靠模型能力，而�
 
 ---
 
+
+- [openspec](../agent-spec-tools/openspec.md)
+- [claude-code](../coding-agents/claude-code.md)
+- [omp](../coding-agents/omp.md)
 ← [返回 L3 工程实践](../README.md)

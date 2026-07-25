@@ -178,4 +178,25 @@ graph LR
 
 ---
 
+## 反向链
+
+- [coze](ai-platforms/coze.md)
+- [langgraph](ai-platforms/langgraph.md)
+- [01-sft](llm-alignment/01-sft.md)
+- [02-rlhf](llm-alignment/02-rlhf.md)
+- [03-dpo](llm-alignment/03-dpo.md)
+- [04-constitutional-ai](llm-alignment/04-constitutional-ai.md)
+- [05-newer-methods](llm-alignment/05-newer-methods.md)
+- [06-peft-lora](llm-alignment/06-peft-lora.md)
+- [01-thinking-paradigm](llm-production-thinking/01-thinking-paradigm.md)
+- [02-cost-control-and-degradation](llm-production-thinking/02-cost-control-and-degradation.md)
+- [03-consistency-and-failure-handling](llm-production-thinking/03-consistency-and-failure-handling.md)
+- [04-timeout-and-circuit-breaker](llm-production-thinking/04-timeout-and-circuit-breaker.md)
+- [05-online-monitoring](llm-production-thinking/05-online-monitoring.md)
+- [06-decision-tree](llm-production-thinking/06-decision-tree.md)
+- [auto-fix-strategy](loop-engineering/auto-fix-strategy.md)
+- [fix-prompt-templates](loop-engineering/fix-prompt-templates.md)
+- [ide-case-studies](loop-engineering/ide-case-studies.md)
+- [verifier-design](loop-engineering/verifier-design.md)
+
 ← [返回 AI 知识体系](../README.md)

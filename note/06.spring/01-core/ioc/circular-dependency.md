@@ -282,3 +282,6 @@ The dependencies of some of the beans in the application context form a cycle:
 - [Bean 生命周期](bean-lifecycle.md) — 实例化后才可曝光
 - [依赖注入](dependency-injection.md) — 4 种注入方式对循环依赖的影响
 - [作用域与线程安全](scopes-and-thread-safety.md) — singleton vs prototype
+
+- [FactoryBean](FactoryBean.md)
+- [bean-and-ioc](../../08-annotations/bean-and-ioc.md)

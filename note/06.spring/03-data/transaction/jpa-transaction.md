@@ -301,3 +301,6 @@ public class UserService {
 - ⬅️ [返回事务总览](README.md)
 - [事务失效场景](failure-cases.md) — 自调用、异常吞掉
 - [Spring Data JPA 实战](https://spring.io/projects/spring-data-jpa) — JPA 上层封装
+
+- [08-class-diagram](../mybatis/01-architecture/08-class-diagram.md)
+- [jpa](../../08-annotations/jpa.md)

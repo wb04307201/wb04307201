@@ -336,3 +336,5 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 - [03 数据层 JPA 事务](../03-data/transaction/jpa-transaction.md) — JPA 事务与锁
 - [Bean 注解](bean-and-ioc.md) — @Repository（DAO 层）
 - [13 辨析/PO-VO-DTO-BO-DAO-POJO 语义辨析](../../13.split-hairs/06.spring/clarify-various-o/README.md)
+
+- [configuration](configuration.md)

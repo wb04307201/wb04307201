@@ -272,6 +272,10 @@ Loop 假设 Agent 能完成任务，但 Verifier 确保它真的完成了。这�
 
 ---
 
+
+- [codex](../coding-agents/codex.md)
+- [omp](../coding-agents/omp.md)
+- [opencode](../coding-agents/opencode.md)
 ## 🆕 Loop Engineering 实战：写代码 → 跑测试 → 自动修复闭环
 
 > 上一节是 Loop Engineering 的**综述**（循环调用 + Verifier + Harness 兜底）。本节聚焦**用户最关心的问题**——"**写代码 → 跑测试 → 自动修复**"这个具体闭环。这是现代 AI IDE（Claude Code / Cursor / Devin / Aider）的核心技术。

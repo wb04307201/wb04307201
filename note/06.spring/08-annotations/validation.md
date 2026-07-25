@@ -232,3 +232,5 @@ public class UserController {
 - ⬅️ [返回注解速查](../README.md)
 - [Web 注解](web.md) — @RequestBody + @Valid
 - [异常处理](exception.md) — @ControllerAdvice 统一处理校验异常
+
+- [annotations-retry](annotations-retry.md)

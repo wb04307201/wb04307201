@@ -177,4 +177,6 @@ Loop Engineering 反其道而行之：**小步快跑 + Harness 兜底 + 自动�
 - 上下文子：[Prompt Engineering](../../02-technology-stack/prompt-engineering/README.md) · [Context Engineering](../../02-technology-stack/context-engineering/README.md)
 - 实战叙事：[12.story #42 Prompt 工程](../../../12.story/40-prompt-engineering.md) · [38 RAG](../../../12.story/36-rag-retrieval-augmented-generation.md)
 
+
+- [single-epoch-and-config-evidence](../../01-fundamentals/dropout-in-llm/single-epoch-and-config-evidence.md)
 ← [返回: L4 架构设计](../README.md)

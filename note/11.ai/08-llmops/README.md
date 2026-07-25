@@ -138,4 +138,14 @@ graph LR
 
 ---
 
+## 反向链
+
+- [01-six-metrics](agent-evaluation/01-six-metrics.md)
+- [02-five-methods](agent-evaluation/02-five-methods.md)
+- [03-llm-as-judge](agent-evaluation/03-llm-as-judge.md)
+- [04-evaluation-pipeline](agent-evaluation/04-evaluation-pipeline.md)
+- [05-ali-interview](agent-evaluation/05-ali-interview.md)
+- [06-seven-anti-patterns](agent-evaluation/06-seven-anti-patterns.md)
+- [07-selection-decision-tree](agent-evaluation/07-selection-decision-tree.md)
+
 ← [返回 AI 知识体系](../README.md)

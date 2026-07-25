@@ -296,3 +296,8 @@ public class CartController { ... }
 - [02 Web 层 MVC](../../README.md) — Spring MVC 工作流程
 - [02 Web 层 CORS 与静态资源](../02-web/mvc/cors-and-static.md) — @CrossOrigin 全局配置
 - [06 集成组件/Validation](../06-integration/validation/validation-annotations-and-usage.md) — @Valid 用于 @RequestBody 参数校验
+
+- [dispatch-flow](../02-web/mvc/dispatch-flow.md)
+- [configuration](configuration.md)
+- [exception](exception.md)
+- [validation](validation.md)

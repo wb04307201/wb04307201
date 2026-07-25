@@ -569,3 +569,9 @@ Micrometer Tracing API
 - [Prometheus + Grafana](prometheus-grafana.md) — 可视化 + 告警
 - [Spring Boot Actuator](actuator.md) — 指标暴露端点
 - [分布式追踪](../05-spring-cloud/distributed-tracing.md) — Tracing + Metrics 统一
+
+- [implementations-and-best-practices](../03-data/cache/implementations-and-best-practices.md)
+- [rpc-and-feign](../05-spring-cloud/rpc-and-feign.md)
+- [batch](../06-integration/batch.md)
+- [integration-retry](../06-integration/integration-retry.md)
+- [log-aggregation](log-aggregation.md)

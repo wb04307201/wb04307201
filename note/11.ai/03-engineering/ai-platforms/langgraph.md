@@ -267,3 +267,5 @@ app = swarm.compile()
 - [Dify](dify.md) — 低代码 DSL 优先
 - [Coze](coze.md) — 字节系 Agent 平台
 - [BPMN+AI 融合](../../04-architecture/bpmn-ai-integration.md) — LangGraph + Camunda 8 混合架构（生产级落地）
+
+- [spring-ai-vs-platforms](spring-ai-vs-platforms.md)

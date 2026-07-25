@@ -176,3 +176,6 @@ WebFlux + SSE（Server-Sent Events）是 Spring 实现**高并发实时推送**�
 - [R2DBC 响应式数据库](r2dbc.md) — 响应式持久层
 - [WebFlux 测试](testing.md) — WebTestClient 与 @WebFluxTest
 - [01 核心容器/异常处理](../../01-core/exception-handling.md) — 通用异常机制
+
+- [async-mvc](../mvc/async-mvc.md)
+- [router-functions](router-functions.md)

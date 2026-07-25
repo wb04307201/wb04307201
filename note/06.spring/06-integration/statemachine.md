@@ -366,3 +366,8 @@ public void configure(StateMachineTransitionConfigurer<States, Events> t) throws
 | Spring 注解 | `.parent(...)` 嵌套 | `.region(...)` 平级 |
 
 > 简记："层次是嵌套，区域是并列；层次只走一条路，区域同时走多条"。
+
+## 反向链
+
+- [batch](batch.md)
+- [06-integration](README.md)

@@ -137,3 +137,5 @@ public class SignupDTO {
 - ⬅️ [返回 Validation 总览](README.md)
 - [注解与分组校验](validation-annotations-and-usage.md)
 - [自定义校验器（字段级）](custom-validator.md)
+
+- [validation](../../08-annotations/validation.md)

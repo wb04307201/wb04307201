@@ -241,3 +241,5 @@ txTemplate.execute(status -> {
 - ⬅️ [返回事务总览](README.md)
 - [传播行为与隔离级别](propagation-and-isolation.md) — REQUIRED/REQUIRES_NEW 传播行为
 - [事务失效场景](failure-cases.md) — 异常吞掉、自调用等陷阱
+
+- [jpa-transaction](jpa-transaction.md)

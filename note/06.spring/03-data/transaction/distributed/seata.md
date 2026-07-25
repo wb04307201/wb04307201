@@ -353,3 +353,11 @@ Seata 提供了 AT、TCC、SAGA 和 XA 四种分布式事务模式，可以满�
 
 **参考资料**：
 - [Seata 官方文档](https://seata.io/zh-cn/docs/overview/what-is-seata.html)
+
+## 反向链
+
+- [03-data](../../README.md)
+- [04-multi-datasource](../../mybatis/03-spring-integration/04-multi-datasource.md)
+- [multi-datasource-and-jta](../multi-datasource-and-jta.md)
+- [distributed](README.md)
+- [seata-integration](../../../05-spring-cloud/seata-integration.md)

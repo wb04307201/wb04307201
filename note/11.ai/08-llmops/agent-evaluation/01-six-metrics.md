@@ -11,6 +11,10 @@ module:
 
 > **一句话**：Agent 评测不是"完成率一个指标"——必须 **6 维度量化**（任务 / 步骤 / 工具 / 成本 / 满意度 / 稳定性），每个维度有具体公式与可操作阈值。
 
+## 反向链
+
+- [08-practical-cases](08-practical-cases.md)
+
 ← [返回: Agent Evaluation 总目录](../README.md)
 
 ---

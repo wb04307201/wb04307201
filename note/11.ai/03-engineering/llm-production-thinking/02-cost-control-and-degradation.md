@@ -11,6 +11,10 @@ module:
 
 > **一句话**：LLM 成本像电费——**没硬上限一定爆**。用「5 层路由」（cheap 模型 → small 模型 → big 模型 → SaaS → 人工）+ 单请求 quota + 实时告警，三道防线保成本可控。
 
+## 反向链
+
+- [05-online-monitoring](05-online-monitoring.md)
+
 ← [返回: 大模型思维工程](../README.md)
 
 ---

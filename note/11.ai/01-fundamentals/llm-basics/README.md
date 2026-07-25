@@ -92,4 +92,8 @@ module:
 
 ← 返回 [基础概念](../README.md)
 
+## 反向链
+
+- [single-epoch-and-config-evidence](../dropout-in-llm/single-epoch-and-config-evidence.md)
+
 ← [返回: 基础概念](../README.md)

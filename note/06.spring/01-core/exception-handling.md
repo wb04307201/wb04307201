@@ -367,3 +367,6 @@ public class GlobalExceptionHandler {
 - [02 Web/MVC 组件执行顺序](../02-web/mvc/components-order.md) — Filter 异常不经过 DispatcherServlet，所以 @ControllerAdvice 抓不到，详见该文
 - [事务失效场景](../03-data/transaction/failure-cases.md) — 异常被吞导致事务失效
 - [06 集成组件/Validation](../06-integration/validation/validation-annotations-and-usage.md) — 校验异常处理
+
+- [exception-resolver](../02-web/mvc/exception-resolver.md)
+- [sse](../02-web/webflux/sse.md)

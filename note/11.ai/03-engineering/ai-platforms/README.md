@@ -187,4 +187,13 @@ Q4: 是否需要 BPMN 合规？
 - [07 工作流/微服务编排](../../../07.workflow/workflow-and-microservice-orchestration/README.md) — 流程引擎在分布式场景的演化
 - [09.front-end / 09 前端与 AI](../../../09.front-end/09-frontend-and-ai/README.md) — AI SDK / AI Native UI / Vibe Coding：AI 平台的前端落地形态
 
+
+- [01-paged-attention](vllm-vs-ollama/01-paged-attention.md)
+- [02-kv-cache-management](vllm-vs-ollama/02-kv-cache-management.md)
+- [03-batching-strategies](vllm-vs-ollama/03-batching-strategies.md)
+- [04-quantization](vllm-vs-ollama/04-quantization.md)
+- [05-distributed-inference](vllm-vs-ollama/05-distributed-inference.md)
+- [06-benchmark-data](vllm-vs-ollama/06-benchmark-data.md)
+- [07-vs-tgi-lmdeploy](vllm-vs-ollama/07-vs-tgi-lmdeploy.md)
+- [08-decision-tree](vllm-vs-ollama/08-decision-tree.md)
 ← [返回: L3 工程实践](../README.md)

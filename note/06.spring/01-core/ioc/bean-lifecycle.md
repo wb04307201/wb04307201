@@ -264,3 +264,6 @@ protected Object doCreateBean(final String beanName, final RootBeanDefinition mb
 - [依赖注入](dependency-injection.md) — 4 种注入方式
 - [作用域与线程安全](scopes-and-thread-safety.md) — singleton/prototype 作用域
 - [01 核心容器/AOP](../../01-core/aop/README.md) — AOP 代理在 postProcessAfterInitialization 中创建
+
+- [core-externalized-configuration](../core-externalized-configuration.md)
+- [circular-dependency](circular-dependency.md)

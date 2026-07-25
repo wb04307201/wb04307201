@@ -142,6 +142,8 @@ User getUser(@Param("name") String userName);
 
 ---
 
+
+- [02-initialization-flow](../01-architecture/02-initialization-flow.md)
 ← [返回 MyBatis 总览](../README.md)
 
 ---

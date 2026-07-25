@@ -61,4 +61,11 @@ Agent / 复杂 prompt = + SGLang RadixAttention
 - **LLMOps**：[08-llmops](../../08-llmops/README.md) — 监控 + 安全
 - **咬文嚼字**：[13.split-hairs/11.ai](../../../13.split-hairs/11.ai/README.md) — 面试深挖版
 
+## 反向链
+
+- [02-rlhf](../../03-engineering/llm-alignment/02-rlhf.md)
+- [03-dpo](../../03-engineering/llm-alignment/03-dpo.md)
+- [05-newer-methods](../../03-engineering/llm-alignment/05-newer-methods.md)
+- [46-llm-inference](../../../12.story/46-llm-inference.md)
+
 ← [返回: AI 知识体系](../README.md)

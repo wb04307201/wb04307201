@@ -317,4 +317,8 @@ Agent 每轮读这个文件 → 选一个未完成的 task → 实现 → commit
 
 > 📅 2026-07-15 · AI 工程实践 · Ralph Wiggum Loop · Fresh Context 循环模式
 
+## 反向链
+
+- [superpowers](../agent-spec-tools/superpowers.md)
+
 ← [返回: Loop Engineering](README.md)

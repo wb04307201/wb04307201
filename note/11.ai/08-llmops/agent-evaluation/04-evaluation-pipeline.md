@@ -11,6 +11,10 @@ module:
 
 > **一句话**：评测不是"上线前跑一次"——是 **黄金集 + CI 自动化 + A/B Test + 用户模拟 + 漂移检测** 的连续 pipeline，每个环节都有进入下环节 / 阻塞发布 / 回滚 的触发条件。
 
+## 反向链
+
+- [08-practical-cases](08-practical-cases.md)
+
 ← [返回: Agent Evaluation 总目录](../README.md)
 
 ---

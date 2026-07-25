@@ -447,3 +447,9 @@ public void update(User user) {
 - [缓存注解与使用](cache-annotations-and-usage.md) — 5 大注解 + SpEL
 - [07 可观测性/Micrometer](../../07-observability/micrometer.md) — 缓存命中率监控
 - [08 注解/AOP 注解](../../08-annotations/aop.md) — 缓存本质是 AOP
+
+- [cache-degradation-and-recovery](cache-degradation-and-recovery.md)
+- [multi-level](multi-level.md)
+- [patterns](patterns.md)
+- [serialization](serialization.md)
+- [05-secondary-cache-integration](../mybatis/03-spring-integration/05-secondary-cache-integration.md)

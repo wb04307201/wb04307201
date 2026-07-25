@@ -404,3 +404,9 @@ DB_PWD=xxx java -jar app.jar --spring.profiles.active=prod
 - [04 Spring Boot/外部化配置](../04-spring-boot/boot-externalized-configuration.md) — 多环境配置 externalization
 - [Bean 注解](bean-and-ioc.md) — @Bean、@Component
 - [Web 注解](web.md) — @Controller、@RestController
+
+- [propagation-and-isolation](../03-data/transaction/propagation-and-isolation.md)
+- [auto-configuration](../04-spring-boot/auto-configuration.md)
+- [aop](aop.md)
+- [scheduling-and-async](scheduling-and-async.md)
+- [test](test.md)

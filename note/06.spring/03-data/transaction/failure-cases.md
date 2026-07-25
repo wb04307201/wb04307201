@@ -405,3 +405,10 @@ public void testRollback() {
 - [传播行为与隔离级别](propagation-and-isolation.md) — 7 种传播 + 4 种隔离
 - [03 数据层/分布式事务](distributed/theory-and-patterns.md) — Seata、2PC、3PC、Saga
 - [01 核心容器/AOP 通知顺序](../../01-core/aop/advice-order-and-best-practices.md) — 自调用问题详解
+
+- [exception-handling](../../01-core/exception-handling.md)
+- [pointcut-expression](../../01-core/aop/pointcut-expression.md)
+- [03-transaction-boundary](../mybatis/03-spring-integration/03-transaction-boundary.md)
+- [jpa-transaction](jpa-transaction.md)
+- [programmatic-transaction](programmatic-transaction.md)
+- [transaction](../../08-annotations/transaction.md)

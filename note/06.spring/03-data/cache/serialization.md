@@ -278,3 +278,6 @@ public class User {
 - [缓存模式](patterns.md) — 4 大模式
 - [多级缓存](multi-level.md) — L1+L2 架构
 - [缓存实现](implementations-and-best-practices.md) — Redis 配置
+
+- [05-secondary-cache-integration](../mybatis/03-spring-integration/05-secondary-cache-integration.md)
+- [cache](../../08-annotations/cache.md)

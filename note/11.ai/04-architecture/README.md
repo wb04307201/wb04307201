@@ -144,4 +144,22 @@ graph TB
 
 ---
 
+## 反向链
+
+- [01-chunking](agent-context/01-chunking.md)
+- [02-rag-in-agent](agent-context/02-rag-in-agent.md)
+- [03-memory-strategies](agent-context/03-memory-strategies.md)
+- [04-sliding-window-attention](agent-context/04-sliding-window-attention.md)
+- [05-sub-agents-decomposition](agent-context/05-sub-agents-decomposition.md)
+- [06-long-context-models](agent-context/06-long-context-models.md)
+- [07-decision-tree](agent-context/07-decision-tree.md)
+- [01-react-deep-dive](agent-execution-patterns/01-react-deep-dive.md)
+- [02-plan-and-execute-deep-dive](agent-execution-patterns/02-plan-and-execute-deep-dive.md)
+- [03-six-dimensions-comparison](agent-execution-patterns/03-six-dimensions-comparison.md)
+- [04-selection-decision-tree](agent-execution-patterns/04-selection-decision-tree.md)
+- [05-dag-deep-dive](agent-execution-patterns/05-dag-deep-dive.md)
+- [06-multi-agent-deep-dive](agent-execution-patterns/06-multi-agent-deep-dive.md)
+- [system-three-layers](intelligent-system-layers/system-three-layers.md)
+- [42-ai-engineer-responsibility](../../12.story/42-ai-engineer-responsibility.md)
+
 ← [返回 AI 知识体系](../README.md)

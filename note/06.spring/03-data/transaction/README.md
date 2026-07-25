@@ -269,4 +269,6 @@ public List<User> findAllUsers() {
 - [分布式事务索引](distributed/README.md) — 理论与 Seata 集成总入口
 - [08 注解/配置注解](../../08-annotations/configuration.md) — @EnableTransactionManagement
 
+
+- [r2dbc](../../02-web/webflux/r2dbc.md)
 ← [返回: Spring 全家桶 · transaction](../README.md)

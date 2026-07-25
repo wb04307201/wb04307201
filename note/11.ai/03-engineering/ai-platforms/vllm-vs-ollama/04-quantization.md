@@ -11,6 +11,10 @@ module:
 
 > **一句话**：量化是把「显存宽裕度」变成「吞吐量」的 4-8x 杠杆 —— 关键选「4 bit 还是 8 bit」、用什么方法（GPTQ / AWQ / FP8 / GGUF）。
 
+## 反向链
+
+- [08-decision-tree](08-decision-tree.md)
+
 ← [返回: vLLM vs Ollama](../README.md)
 
 ---

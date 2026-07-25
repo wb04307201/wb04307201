@@ -11,6 +11,12 @@ module:
 
 > **一句话**：4 模式在 6 维度上的完整打分（10 分制）——ReAct 灵活但贵、DAG 稳定但缺灵活、Plan-and-Execute 平衡、Multi-Agent 强大但复杂。
 
+## 反向链
+
+- [01-react-deep-dive](01-react-deep-dive.md)
+- [05-dag-deep-dive](05-dag-deep-dive.md)
+- [06-multi-agent-deep-dive](06-multi-agent-deep-dive.md)
+
 ← [返回: Agent 4 大模式](../README.md)
 
 ---

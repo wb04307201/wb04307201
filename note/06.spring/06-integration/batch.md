@@ -749,4 +749,6 @@ public Step masterStep() {
 - [大数据任务调度](../../10.big-data/06-scheduling/README.md) — Airflow、DolphinScheduler、Azkaban 的编排选型
 - [高可用设计](../../04.system-design/03-high-availability/README.md) — 幂等、重试、降级与故障恢复
 
+
+- [annotations-retry](../08-annotations/annotations-retry.md)
 ← [返回 Spring 集成组件](README.md) · [返回 Spring 顶层](../README.md)

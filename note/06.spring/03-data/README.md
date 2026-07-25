@@ -137,6 +137,9 @@ graph TB
 
 ---
 
+
+- [08-class-diagram](mybatis/01-architecture/08-class-diagram.md)
+- [jpa](../08-annotations/jpa.md)
 ## 📊 本节统计（leaf MD 数）
 
 | 子目录 | 篇数 |

@@ -11,6 +11,10 @@ module:
 
 > **一句话**：Agent 评测不是单一方法——必须 **5 种方法组合**（自动化指标 + 黄金集 + LLM-as-Judge + A/B Test + 用户模拟），每种方法解决不同维度的问题。
 
+## 反向链
+
+- [08-practical-cases](08-practical-cases.md)
+
 ← [返回: Agent Evaluation 总目录](../README.md)
 
 ---

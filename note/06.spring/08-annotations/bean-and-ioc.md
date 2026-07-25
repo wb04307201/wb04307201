@@ -331,3 +331,6 @@ public class LogAspect { ... }
 - [13 辨析/为什么不推荐 @Autowired 字段注入](../../13.split-hairs/06.spring/not-use-@autowired/README.md)
 - [配置注解](configuration.md) — @Configuration + @Bean
 - [Web 注解](web.md) — @Controller 用法
+
+- [scopes-and-thread-safety](../01-core/ioc/scopes-and-thread-safety.md)
+- [jpa](jpa.md)

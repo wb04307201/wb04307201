@@ -242,3 +242,5 @@ sequenceDiagram
 - [依赖注入](dependency-injection.md) — FactoryBean 产生的对象如何被注入
 - [循环依赖](circular-dependency.md) — FactoryBean 的早期引用处理
 - [作用域与线程安全](scopes-and-thread-safety.md) — FactoryBean 与单例
+
+- [configuration-lite-vs-full](../configuration-lite-vs-full.md)

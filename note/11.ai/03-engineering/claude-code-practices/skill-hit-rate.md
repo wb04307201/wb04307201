@@ -242,4 +242,9 @@ skills/
 
 ---
 
+## 反向链
+
+- [skill-design](skill-design.md)
+- [claude-code](../coding-agents/claude-code.md)
+
 ← [返回 Claude Code 实践总览](README.md)

@@ -237,3 +237,5 @@ public class SchedulingConfig implements SchedulingConfigurer {
 - ⬅️ [返回注解速查](../README.md)
 - [事务注解](transaction.md) — @Async 与 @Transactional 的线程边界
 - [配置注解](configuration.md) — @EnableScheduling / @EnableAsync
+
+- [batch](../06-integration/batch.md)

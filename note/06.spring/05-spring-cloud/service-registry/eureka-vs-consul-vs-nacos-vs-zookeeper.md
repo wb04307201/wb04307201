@@ -36,3 +36,7 @@
    - 阿里开源，兼顾 **服务发现** 和 **配置中心**，支持 **动态 DNS** 和 **流量管理**。
    - 提供 **AP/CP 模式切换**（通过 `nacos.core.protocol.raft.data.consistency.type` 配置）。
 
+## 反向链
+
+- [05-spring-cloud](../README.md)
+- [service-registry](README.md)

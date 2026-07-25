@@ -11,6 +11,10 @@ module:
 
 > **一句话答案**：4 大模式**没有绝对优劣**——ReAct 用于"探索"、Plan-and-Execute 用于"复杂任务"、DAG 用于"确定性"、Multi-Agent 用于"复杂协作"。生产环境通常是 **混合（DAG + Loop + Plan Repair）**。
 
+## 反向链
+
+- [ralph-wiggum-loop](../../03-engineering/loop-engineering/ralph-wiggum-loop.md)
+
 ← [返回: L4 架构设计](../README.md) · 同级：[agent-context](../agent-context/README.md) · [agent-memory](../agent-memory/README.md)
 
 ---

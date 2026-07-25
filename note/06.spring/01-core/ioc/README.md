@@ -193,4 +193,9 @@ graph TB
 - [FactoryBean](FactoryBean.md)
 - [08 注解/Bean 注解](../../08-annotations/bean-and-ioc.md)
 
+
+- [configuration-lite-vs-full](../configuration-lite-vs-full.md)
+- [core-externalized-configuration](../core-externalized-configuration.md)
+- [event](../event.md)
+- [module](../module.md)
 ← [返回: Spring 全家桶 · ioc](../README.md)

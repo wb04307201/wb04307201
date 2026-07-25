@@ -11,6 +11,10 @@ module:
 
 > **一句话**：Auto-Fix 不是"错了就改"——**按错误类型选择策略**（语法 vs 类型 vs 测试 vs 运行时），让 Agent 拿到**针对性 prompt + 特定上下文**，避免在错误方向上循环。
 
+## 反向链
+
+- [07-from-chef-to-ceo](../../../12.story/07-from-chef-to-ceo.md)
+
 ← [返回: Loop Engineering 总目录](../README.md)
 
 ---

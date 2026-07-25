@@ -284,3 +284,6 @@ nodes:
 - [Coze（扣子）](coze.md) — 字节系国内最强生态
 - [LangGraph](langgraph.md) — 代码优先复杂 Agent 框架
 - [BPMN+AI 融合](../../04-architecture/bpmn-ai-integration.md) — Dify + Camunda 8 混合架构
+
+- [spring-ai-vs-platforms](spring-ai-vs-platforms.md)
+- [spring-ai-vs-dify](../../04-architecture/spring-ai-vs-dify.md)

@@ -75,6 +75,11 @@ MyBatis-Plus 是 MyBatis 的增强,与本目录下其他主题紧密相关:
 
 ---
 
+## 反向链
+
+- [02-mapper-and-boot](../03-spring-integration/02-mapper-and-boot.md)
+- [04-multi-datasource](../03-spring-integration/04-multi-datasource.md)
+
 ← [返回 MyBatis 总览](../README.md)
 
 ---

@@ -11,6 +11,10 @@ module:
 
 > **一句话**：工业部署下 KV cache 占显存 60-80%，管理策略直接决定并发上限。三大技术点：分页（PagedAttention）+ 共享（Prefix Sharing）+ 替换（Eviction Policy）。
 
+## 反向链
+
+- [04-sliding-window-attention](../../../04-architecture/agent-context/04-sliding-window-attention.md)
+
 ← [返回: vLLM vs Ollama](../README.md)
 
 ---

@@ -121,4 +121,11 @@ module:
 - 循环：[Loop Engineering](../loop-engineering/README.md) — Agent 循环调用 + [Ralph Wiggum Loop](../loop-engineering/ralph-wiggum-loop.md)
 - **正交关系**：[Coding Agents](../coding-agents/README.md) — Superpowers / Spec-Kit / OpenSpec 都**运行在** Coding Agent 上（Claude Code / Codex / OpenCode / OMP）
 
+## 反向链
+
+- [claude-code](../coding-agents/claude-code.md)
+- [codex](../coding-agents/codex.md)
+- [omp](../coding-agents/omp.md)
+- [opencode](../coding-agents/opencode.md)
+
 ← [返回: L3 工程实践](../README.md)

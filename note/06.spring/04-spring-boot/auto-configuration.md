@@ -359,3 +359,7 @@ Spring Boot 生成 `target/classes/META-INF/spring-autoconfigure-metadata.proper
 - [spring.factories 迁移](spring-factories-migration.md) — 2.x → 3.x 迁移指南
 - [启动流程](application-bootstrap.md) — Spring Boot 启动时发生了什么
 - [08 注解/配置注解](../08-annotations/configuration.md) — @Configuration、@ConditionalOn* 详解
+
+- [boot-externalized-configuration](boot-externalized-configuration.md)
+- [embedded-server](embedded-server.md)
+- [startup-flow](startup-flow.md)

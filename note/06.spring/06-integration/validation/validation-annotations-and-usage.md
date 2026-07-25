@@ -156,3 +156,12 @@ RESTful 风格中 `POST /users` 与 `PUT /users/{id}` 共用 `UserDTO` 是常见
 通过分组，两套规则合并到同一 DTO 上，避免维护 `UserCreateDTO` / `UserUpdateDTO` 重复代码。
 
 > **跨字段校验**请参考 [cross-field.md](cross-field.md)。
+
+## 反向链
+
+- [exception-handling](../../01-core/exception-handling.md)
+- [06-integration](../README.md)
+- [validation](README.md)
+- [exception](../../08-annotations/exception.md)
+- [validation](../../08-annotations/validation.md)
+- [web](../../08-annotations/web.md)

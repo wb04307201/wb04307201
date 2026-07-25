@@ -11,6 +11,13 @@ module:
 
 > **一句话**：4 模式没有"最强"——只有「**场景 × 灵活性 × 成本**」3 维约束下的最优组合。给一张「5 分钟决策树」+「实施 checklist」。
 
+## 反向链
+
+- [01-react-deep-dive](01-react-deep-dive.md)
+- [02-plan-and-execute-deep-dive](02-plan-and-execute-deep-dive.md)
+- [05-dag-deep-dive](05-dag-deep-dive.md)
+- [06-multi-agent-deep-dive](06-multi-agent-deep-dive.md)
+
 ← [返回: Agent 4 大模式](../README.md)
 
 ---

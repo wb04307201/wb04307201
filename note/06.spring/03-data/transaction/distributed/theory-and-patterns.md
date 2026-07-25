@@ -74,3 +74,12 @@
 - **监控与调试**：通过Seata控制台或日志追踪事务状态，快速定位问题。
 
 通过系统掌握这些方案，可有效应对Spring分布式事务的挑战，保障跨服务数据一致性，同时平衡性能与可靠性。
+
+## 反向链
+
+- [04-multi-datasource](../../mybatis/03-spring-integration/04-multi-datasource.md)
+- [failure-cases](../failure-cases.md)
+- [multi-datasource-and-jta](../multi-datasource-and-jta.md)
+- [propagation-and-isolation](../propagation-and-isolation.md)
+- [circuit-breaker](../../../05-spring-cloud/circuit-breaker.md)
+- [seata-integration](../../../05-spring-cloud/seata-integration.md)

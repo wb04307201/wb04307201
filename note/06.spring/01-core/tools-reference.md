@@ -399,3 +399,7 @@ StringUtils.containsWhitespace(s);
 /**3.将集合转换为字符串数组*/
 StringUtils.toStringArray(List.of("a", "b","c"));
 ```
+
+## 反向链
+
+- [01-core](README.md)

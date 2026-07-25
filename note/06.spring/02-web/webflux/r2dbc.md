@@ -197,3 +197,5 @@ public class OrderService {
 - ⬅️ [WebFlux 总览](README.md)
 - [WebClient 调用](webclient.md) — 端到端响应式
 - [03 数据层/事务](../../03-data/transaction/README.md) — 事务管理
+
+- [sse](sse.md)

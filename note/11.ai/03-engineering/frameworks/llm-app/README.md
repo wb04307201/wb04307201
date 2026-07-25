@@ -103,4 +103,9 @@ module:
 
 ---
 
+## 反向链
+
+- [spring-ai-vs-platforms](../../ai-platforms/spring-ai-vs-platforms.md)
+- [spring-ai-vs-dify](../../../04-architecture/spring-ai-vs-dify.md)
+
 ← [返回 AI 框架选型](../README.md)

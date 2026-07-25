@@ -296,3 +296,5 @@ public class OrderService {
 - ⬅️ [返回事务总览](README.md)
 - [分布式事务](distributed/theory-and-patterns.md) — 2PC/3PC/TCC/Saga 理论
 - [Seata](distributed/seata.md) — 现代分布式事务方案
+
+- [04-multi-datasource](../mybatis/03-spring-integration/04-multi-datasource.md)

@@ -100,4 +100,8 @@ MoE 模型将网络中的某些层（通常是 FFN 层）替换为 **多个“�
 
 ---
 
+## 反向链
+
+- [single-epoch-and-config-evidence](../dropout-in-llm/single-epoch-and-config-evidence.md)
+
 ← [返回 L1 基础概念](../README.md)

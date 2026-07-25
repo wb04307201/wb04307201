@@ -202,4 +202,22 @@ module:
 
 ---
 
+## 反向链
+
+- [pointcut-expression](01-core/aop/pointcut-expression.md)
+- [01-framework-essence](03-data/mybatis/01-architecture/01-framework-essence.md)
+- [embedded-server](04-spring-boot/embedded-server.md)
+- [annotations-retry](08-annotations/annotations-retry.md)
+- [aop](08-annotations/aop.md)
+- [bean-and-ioc](08-annotations/bean-and-ioc.md)
+- [cache](08-annotations/cache.md)
+- [configuration](08-annotations/configuration.md)
+- [exception](08-annotations/exception.md)
+- [jpa](08-annotations/jpa.md)
+- [scheduling-and-async](08-annotations/scheduling-and-async.md)
+- [test](08-annotations/test.md)
+- [transaction](08-annotations/transaction.md)
+- [validation](08-annotations/validation.md)
+- [web](08-annotations/web.md)
+
 ← [返回笔记目录](../README.md)

@@ -34,3 +34,9 @@ module:
 ```
 - **标签体系**：`<if>`、`<where>`、`<foreach>` 等标签实现逻辑分支
 - **OGNL 表达式**：通过 `test` 属性进行条件判断
+
+## 反向链
+
+- [08-class-diagram](08-class-diagram.md)
+- [03-database-vendor](../02-extension/03-database-vendor.md)
+- [04-lambda-wrapper](../04-mybatis-plus/04-lambda-wrapper.md)

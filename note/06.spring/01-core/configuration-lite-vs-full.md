@@ -260,3 +260,5 @@ public class App { ... }
 - [FactoryBean](ioc/FactoryBean.md) — 复杂对象的工厂化创建
 - [依赖注入](ioc/dependency-injection.md) — `@Bean` 方法返回值的注入
 - [08 注解速查](../../README.md) — `@Configuration` / `@Import` 注解细节
+
+- [core-externalized-configuration](core-externalized-configuration.md)

@@ -184,3 +184,7 @@ public class OrderServiceImpl implements OrderService {
 - ⬅️ [返回注解速查](../README.md)
 - [AOP 注解](aop.md) — @Transactional 基于 AOP 代理实现
 - [JPA 注解](jpa.md) — 实体 + Repository 与事务配合
+
+- [annotations-retry](annotations-retry.md)
+- [cache](cache.md)
+- [scheduling-and-async](scheduling-and-async.md)

@@ -214,3 +214,5 @@ spring:
 - [文件上传](file-upload.md) — MultipartFile 落盘
 - [异常处理](exception-resolver.md) — 静态资源 404 处理
 - [组件对比与场景](components-order.md) — Filter 与静态资源
+
+- [web](../../08-annotations/web.md)

@@ -131,3 +131,5 @@ public class CacheClearListener {
 - [Config 中心](config-center.md) — Spring Cloud Config + Bus 经典组合
 - [Spring Cloud Stream](stream.md) — 业务消息驱动
 - [Spring Cloud 与 Alibaba 关系](README.md#spring-cloud-与-spring-cloud-alibaba-关系)
+
+- [config-encryption](config-encryption.md)

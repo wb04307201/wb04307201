@@ -11,6 +11,10 @@ module:
 
 > **一句话**：Agent 不是 stateless——必须有"持久记忆"才能在长会话跨任务保持连贯。4 层记忆架构（working / episodic / semantic / procedural）是工业级方案。
 
+## 反向链
+
+- [shared-memory](../agent-memory/shared-memory.md)
+
 ← [返回: Agent 长上下文架构](../README.md)
 
 ---
