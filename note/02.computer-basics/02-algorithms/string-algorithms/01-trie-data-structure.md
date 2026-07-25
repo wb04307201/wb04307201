@@ -11,7 +11,7 @@ module:
 
 > **一句话**：Trie 是**为前缀查询优化的树**——插入 / 查 O(len)，与字典大小无关。Java 实现 50 行（数组版）或 80 行（HashMap 版）。
 
-← [返回: string-algorithms 总目录](../README.md)
+← [返回: 字符串算法](../README.md) | [返回: 算法](../README.md) | [返回: 计算机基础](../../README.md)
 
 ---
 
@@ -926,4 +926,9 @@ int cp = word.codePointAt(i);
 
 ---
 
-← [返回: string-algorithms 总目录](../README.md) · 下一章：[02-kmp-algorithm](02-kmp-algorithm.md)
+← [返回: 字符串算法](../README.md) | [返回: 算法](../README.md) | [返回: 计算机基础](../../README.md)
+
+相关章节：
+- [KMP 算法](02-kmp-algorithm.md)（单模式匹配）
+- [AC 自动机](03-ac-automaton.md)（Trie + fail 指针的多模式匹配）
+- [Z 算法](04-z-algorithm.md)（若该章节已创建）
