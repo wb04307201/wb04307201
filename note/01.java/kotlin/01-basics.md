@@ -170,5 +170,6 @@ fun fail(message: String): Nothing {
 | 03 | [函数式](03-functional.md) | 函数、集合、函数式、作用域函数 |
 | 04 | [高级特性](04-advanced.md) | 扩展、委托、操作符、内联、值类、DSL |
 | 05 | [协程](05-coroutines.md) | 协程、Flow、Channel、结构化并发 |
+| 06 | [工程实践](06-engineering.md) | Java 互操作、KMP、构建工具、迁移策略 |
 
 ← [返回: Kotlin](../README.md)
