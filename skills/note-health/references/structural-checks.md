@@ -103,9 +103,12 @@ if sys.platform == 'win32':
     try: sys.stdout.reconfigure(encoding='utf-8')
     except: pass
 def resolve(c, t):
+    # 2026-07-25 修复：Windows 下混合 / \ 分隔符导致 normpath 计算错误
+    # 先统一 target 的分隔符为 os.sep（Windows 是 \\）
+    t_unified = t.replace('/', os.sep)
     if t.startswith('/'):
-        return os.path.normpath(os.path.join('note', t.lstrip('/')))
-    return os.path.normpath(os.path.join(os.path.dirname(c), t))
+        return os.path.normpath(os.path.join('note', t_unified.lstrip('/')))
+    return os.path.normpath(os.path.join(os.path.dirname(c), t_unified))
 real_broken = 0
 broken_list = []
 PLACEHOLDERS = ['x/README', 'xxx', 'xx/yy']  # SPEC 模板占位符排除
