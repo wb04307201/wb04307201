@@ -837,4 +837,4 @@ flowchart LR
 - **常见误解**：10 项（EAM≠台账 / 上线即见效 / PM 越多越好 / 备件越多越安全 / PdM 取代 PM / EAM 与 ERP 二选一 / CMMS=EAM / OEE 高=管得好 / Maximo 适合所有 / IoT 越多越好）
 - **成功要素**：6 大关键（数据基础 + 流程重塑 + 组织变革 + PdM 小步快跑 + 深度集成 + 选型匹配）
 - **所属价值链**：05 运营管理
-- **关联系统**：[MES 深读](../../02-production/mes/README.md) / [SCADA 深读](../../02-production/scada/README.md) / [OA 深读](../oa/README.md) / [ERP 深读](../erp/README.md) / [ITSM 深读](../../06-specialized/itsm/README.md) / [BI 深读](../bi/README.md) / [CMDB 深读](../../06-specialized/cmdb/README.md)
+- **关联系统**：[MES 深读](../../02-production/mes/README.md) / [SCADA 深读](../../02-production/scada/README.md) / [OA 深读](../oa/README.md) / [ERP 深读](../erp/README.md) / [ITSM 深读](../../06-specialized/itsm/README.md)（含 CMDB）/ [BI 深读](../bi/README.md)

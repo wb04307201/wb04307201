@@ -563,7 +563,7 @@ SQM 是 QMS 的"**源头延伸**"——70% 的质量缺陷来自供应商（参�
 ## 相关章节
 
 - [MES 制造执行系统](../../02-production/mes/README.md) — QMS 与生产执行的集成
-- [LIMS 实验室信息管理系统](../06-specialized/lims/README.md) — QMS 与实验室检测的协同
+- [LIMS 实验室信息管理系统](../../06-specialized/lims/README.md) — QMS 与实验室检测的协同
 - [SCM 供应链管理](../../03-supply-chain/scm/README.md) — QMS 与供应商质量协同
 - [E-Signature 电子签](../e-signature/README.md) — 检验报告 / 体系文件电子签署
 - [OA 办公自动化](../oa/README.md) — 质量审批流 / CAPA 流程协同
