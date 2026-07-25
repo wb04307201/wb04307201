@@ -11,7 +11,7 @@ module:
 
 > **一句话**：搜索排序 = **BM25 文本相关性（召回层）+ 业务信号混合（粗排层）+ ML 精排模型（精排层）**，3 层管道从 100 万候选筛到 20 条结果。
 
-← [返回: product-search 总目录](README.md)
+← [返回: product-search](../README.md)
 
 ---
 
@@ -82,6 +82,144 @@ score(D, Q) = Σ IDF(qi) × [f(qi,D) × (k1+1)] / [f(qi,D) + k1 × (1 - b + b ×
 | 评分 | 0.15 | 4.5+ 加分 |
 | 新鲜度（高斯衰减） | 0.1 | 30 天内新品加分 |
 | 促销标记 | 0.05 | 大促期间加权 |
+
+### 1.4 字段长度归一化：错误配置 vs 调优后配置
+
+BM25 的字段长度归一化会比较 `|D| / avgdl`。如果同一业务语义在不同商品上的 `title` 长度跨度为 5～50 个 token，长标题即使命中同一个关键词，也会因长度惩罚得到更低分；若再把 `title` 与 `description` 不加区分地混在同一字段中，分数偏差会进一步放大。
+
+#### ❌ 错误：字段未归一化，所有文本挤进一个字段
+
+下面的配置可以直接创建索引，但 `title` 既承载商品名，又混入卖点和属性；同一个 `title` 字段长度从 5 到 50 个 token，BM25 的长度归一化会让短标题天然占优。
+
+```json
+PUT /products_bad
+{
+  "settings": {
+    "index": {
+      "similarity": {
+        "product_bm25": {
+          "type": "BM25",
+          "k1": 1.2,
+          "b": 0.75
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "title": {
+        "type": "text",
+        "analyzer": "ik_max_word",
+        "search_analyzer": "ik_smart",
+        "similarity": "product_bm25"
+      },
+      "sales": { "type": "long" },
+      "rating": { "type": "float" }
+    }
+  }
+}
+
+POST /products_bad/_bulk?refresh=true
+{"index":{"_id":"short-title"}}
+{"title":"耐克 男 跑步鞋 透气","sales":800,"rating":4.7}
+{"index":{"_id":"long-title"}}
+{"title":"耐克 官方旗舰 男士 春夏 轻便 透气 缓震 防滑 网面 运动 休闲 马拉松 专业 跑步鞋 黑白 多尺码","sales":800,"rating":4.7}
+
+GET /products_bad/_search
+{
+  "query": {
+    "match": {
+      "title": "耐克 透气 跑步鞋"
+    }
+  }
+}
+```
+
+> 两条商品的销量、评分和核心词命中相同，长标题却会受到更强的 BM25 长度惩罚。不要靠把 `b` 直接调成 `0` 掩盖建模问题，否则会同时丢失合理的长度归一化。
+
+#### ✅ 正确：字段语义归一化，再做权重均衡
+
+把稳定、短小的商品名放入 `title`，把卖点与规格拆到 `subtitle`、`attributes_text`；查询时用 `cross_fields` 平衡跨字段命中，并为标题保留适度权重。以下请求可直接在已安装 IK 分词器的 Elasticsearch 上运行。
+
+```json
+PUT /products_v2
+{
+  "settings": {
+    "index": {
+      "similarity": {
+        "title_bm25": {
+          "type": "BM25",
+          "k1": 1.2,
+          "b": 0.3
+        },
+        "content_bm25": {
+          "type": "BM25",
+          "k1": 1.2,
+          "b": 0.75
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "title": {
+        "type": "text",
+        "analyzer": "ik_max_word",
+        "search_analyzer": "ik_smart",
+        "similarity": "title_bm25"
+      },
+      "subtitle": {
+        "type": "text",
+        "analyzer": "ik_max_word",
+        "search_analyzer": "ik_smart",
+        "similarity": "content_bm25"
+      },
+      "attributes_text": {
+        "type": "text",
+        "analyzer": "ik_max_word",
+        "search_analyzer": "ik_smart",
+        "similarity": "content_bm25"
+      },
+      "sales": { "type": "long" },
+      "rating": { "type": "float" }
+    }
+  }
+}
+
+POST /products_v2/_bulk?refresh=true
+{"index":{"_id":"short-title"}}
+{"title":"耐克男士跑步鞋","subtitle":"春夏轻便透气缓震","attributes_text":"网面 防滑 黑白 多尺码","sales":800,"rating":4.7}
+{"index":{"_id":"long-title"}}
+{"title":"耐克男士跑步鞋","subtitle":"官方旗舰春夏专业马拉松款","attributes_text":"轻便 透气 缓震 防滑 网面 黑白 多尺码","sales":800,"rating":4.7}
+
+GET /products_v2/_search
+{
+  "query": {
+    "multi_match": {
+      "query": "耐克 透气 跑步鞋",
+      "type": "cross_fields",
+      "fields": [
+        "title^2.0",
+        "subtitle^1.0",
+        "attributes_text^0.8"
+      ],
+      "operator": "and"
+    }
+  }
+}
+```
+
+**调优原则**：
+
+| 项目 | ❌ 未归一化 | ✅ 归一化 + 权重均衡 |
+|------|-------------|----------------------|
+| 字段职责 | 商品名、卖点、属性全塞进 `title` | `title` / `subtitle` / `attributes_text` 各司其职 |
+| 长度分布 | `title` 约 5～50 token，BM25 偏向短标题 | `title` 保持短且稳定，长文本独立归一化 |
+| BM25 参数 | 所有字段统一 `b=0.75` | 短标题 `b=0.3`，正文类字段 `b=0.75` |
+| 查询权重 | 单字段匹配，无法表达业务优先级 | `title^2.0`、`subtitle^1.0`、`attributes_text^0.8` |
+| 验收方式 | 凭单条 `_score` 调参 | 固定标注集上比较 NDCG@10，并用 `_explain` 抽查分数组成 |
+
+> `b=0.3` 与字段权重只是可复现实验起点，不是通用最优值。上线前应统计每个字段的 token 长度分布，在同一份 query-document 标注集上做网格搜索，再通过 A/B 测试确认 CTR 与转化率没有退化。
 
 ---
 
@@ -181,13 +319,17 @@ score(D, Q) = Σ IDF(qi) × [f(qi,D) × (k1+1)] / [f(qi,D) + k1 × (1 - b + b ×
 
 ### 3.1 搜索质量指标
 
-| 指标 | 含义 | 目标 |
-|------|------|------|
-| **NDCG@K** | 归一化折损累积增益（排序质量） | > 0.8 |
+| 指标 | 含义 | 参考值（示例） |
+|------|------|----------------|
+| **NDCG@10** | 归一化折损累积增益（离线排序质量） | > 0.8 |
 | **MRR** | 首个相关结果的排名倒数的均值 | > 0.7 |
 | **CTR** | 搜索结果点击率 | > 15% |
 | **无结果率** | 搜索返回 0 条的比例 | < 5% |
-| **搜索转化率** | 搜索 → 购买的比例 | 持续提升 |
+| **搜索转化率** | 搜索 → 购买的比例 | 相对业务基线持续提升 |
+
+> 上表是用于演示指标方向的**参考值，不是公开 SOTA 或通用上线门槛**。NDCG / MRR 必须注明标注数据集、相关性等级、查询分布和 `K`；CTR / 转化率必须注明曝光口径、位置偏差、端别、品类、时间窗及当前线上基线。不同数据集和业务之间不能直接横向比较。
+
+一个可审计的目标定义应写成：`内部 5 万条头部/腰部/长尾查询标注集（0～3 级相关性），NDCG@10 从 0.76 提升到 0.78；移动端自然搜索流量 14 天 A/B，CTR 相对线上基线提升 ≥ 2%，且转化率不下降`。若没有公开论文或生产报告来源，应明确标为“内部示例”，不要写成“SOTA 指标”。
 
 ### 3.2 A/B 测试框架
 
@@ -201,17 +343,6 @@ score(D, Q) = Σ IDF(qi) × [f(qi,D) × (k1+1)] / [f(qi,D) + k1 × (1 - b + b ×
 ```
 
 ---
-
-## 4. 系列导航
-
-| 文章 | 核心内容 |
-|------|---------|
-| [总目录](README.md) | 需求分析 + 架构概览 + 面试话术 |
-| [架构演进](01-architecture.md) | 3 阶段架构 + 5 大组件 |
-| [倒排索引与分词](02-inverted-index.md) | 倒排索引原理 + IK 分词 + 多维筛选 |
-| **本文** | BM25 公式 + 多阶段排序 + 业务信号 |
-
-← [返回: product-search 总目录](README.md)
 
 ## 5. 工业级 BM25 调参实践
 
@@ -269,3 +400,16 @@ final_score(D, Q) = α × BM25(D, Q) + β × business_score(D)
 - 启动期：α=0.7, β=0.3（让相关性主导）
 - 成熟期：α=0.4, β=0.6（让业务信号主导）
 - 季节性促销：临时提升 β 至 0.8
+
+---
+
+## 7. 系列导航
+
+| 文章 | 核心内容 |
+|------|---------|
+| [总目录](../README.md) | 需求分析 + 架构概览 + 面试话术 |
+| [架构演进](01-architecture.md) | 3 阶段架构 + 5 大组件 |
+| [倒排索引与分词](02-inverted-index.md) | 倒排索引原理 + IK 分词 + 多维筛选 |
+| **本文** | BM25 公式 + 多阶段排序 + 业务信号 |
+
+← [返回: product-search](../README.md) | [返回: 04-high-performance](../../README.md) | [返回: 04.system-design](../../../README.md)

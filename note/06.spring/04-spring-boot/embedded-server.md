@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: spring
+  slug: spring-boot/embedded-server
+  type: article
+  category: 主模块子文章
+  summary: Spring Boot 内嵌 Servlet 服务器原理、Tomcat/Jetty/Undertow 切换、HTTPS 与生产连接调优。
+-->
+
 # Spring Boot 内嵌服务器切换（Tomcat / Jetty / Undertow）
 
 > ⬅️ [返回 04 Spring Boot](README.md) | [启动流程](startup-flow.md) | [GraalVM Native](graalvm-native.md)
@@ -95,7 +104,90 @@ Jetty 适合**长连接 / WebSocket** 场景（Jetty 的 NIO 实现更轻量）�
 
 Undertow 适合**高并发 / 低延迟**场景（Red Hat 出品，WildFly 默认容器）。
 
-### 3. 对比
+### 3. 🔧 A3 ❌/✅ 切换反例：只添加新 starter 不会替换 Tomcat
+
+Spring Boot 的切换动作不是“把目标容器加进 classpath”这么简单，而是要**移除默认容器，再加入目标容器**。`spring-boot-starter-web` 会传递依赖 `spring-boot-starter-tomcat`；如果 Tomcat 仍在 classpath，Tomcat 自动配置可能先创建 `ServletWebServerFactory`，Jetty / Undertow 的自动配置随后因 `@ConditionalOnMissingBean(ServletWebServerFactory.class)` 退避。
+
+#### 切换到 Jetty
+
+```xml
+<!-- ❌ 反例：Tomcat 仍由 starter-web 传递引入，只是额外添加 Jetty -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-jetty</artifactId>
+</dependency>
+```
+
+```xml
+<!-- ✅ 正例：先排除 spring-boot-starter-tomcat，再引入 Jetty -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+    <exclusions>
+        <exclusion>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-jetty</artifactId>
+</dependency>
+```
+
+#### 切换到 Undertow
+
+```xml
+<!-- ❌ 反例：只加 Undertow，Tomcat 仍在依赖树中 -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-undertow</artifactId>
+</dependency>
+```
+
+```xml
+<!-- ✅ 正例：排除 Tomcat 后再引入 Undertow -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+    <exclusions>
+        <exclusion>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-undertow</artifactId>
+</dependency>
+```
+
+**为什么 ❌ 不会切换？**
+
+1. `starter-web` 的传递依赖仍把 Tomcat 核心、WebSocket 等包带入运行时 classpath。
+2. Spring Boot 根据 classpath 条件导入 Tomcat / Jetty / Undertow 配置；多个容器同时存在时，并不是通过 `server.*` 属性选择，而是由哪个 `ServletWebServerFactory` 先注册决定。
+3. 一旦 Tomcat 工厂已经注册，其他工厂的 `@ConditionalOnMissingBean` 条件不满足，应用仍会启动 Tomcat；“能加载 Jetty 类”不等于“正在使用 Jetty”。
+4. 用 `mvn dependency:tree`（或 `./gradlew dependencies`）确认切换结果：目标是运行时只保留一个 Servlet 容器 starter。Spring Boot 官方也将该操作定义为 **swap the default dependencies**，而不是并列添加依赖。
+
+---
+
+### 4. 切换后的配置边界
+
+`server.tomcat.*` 只会作用于 Tomcat。切换到 Jetty / Undertow 后，应改用对应的 `server.jetty.*` / `server.undertow.*` 属性或其专用 `WebServerFactoryCustomizer`；不要因为保留了一段 `server.tomcat.*` 配置，就误以为它仍在调节实际运行的容器。
+
+---
+
+### 5. 对比
 
 | 特性 | Tomcat | Jetty | Undertow |
 |------|:------:|:-----:|:--------:|

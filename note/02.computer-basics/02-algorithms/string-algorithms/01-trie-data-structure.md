@@ -184,7 +184,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public final class ArrayTrie {
+public final class ArrayTrie implements TrieApi {
     private static final class Node {
         private final Node[] children = new Node[26];
         private int terminalCount;
@@ -302,7 +302,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public final class MapTrie {
+public final class MapTrie implements TrieApi {
     private static final class Node {
         private final Map<Character, Node> children = new HashMap<>();
         private int terminalCount;
@@ -610,22 +610,30 @@ Trie 的 bug 通常不在“沿边走”这条主路径，而在 root、终点�
 
 ```java
 import static org.junit.jupiter.api.Assertions.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.Stream;
 
+interface TrieApi {
+    void insert(String word);
+    boolean search(String word);
+    boolean startsWith(String prefix);
+    boolean delete(String word);
+    List<String> wordsWithPrefix(String prefix);
+}
+
 class TrieContractTest {
-    static Stream<Supplier<Object>> implementations() {
+    static Stream<Supplier<TrieApi>> implementations() {
         return Stream.of(ArrayTrie::new, MapTrie::new);
     }
 
     @ParameterizedTest
     @MethodSource("implementations")
-    void emptyStringIsARealWord(Supplier<Object> factory) {
-        // 实际项目中可让 Supplier 的泛型指向统一的 Trie 接口。
-        TrieApi trie = (TrieApi) factory.get();
+    void emptyStringIsARealWord(Supplier<TrieApi> factory) {
+        TrieApi trie = factory.get();
         assertTrue(trie.startsWith(""));
         assertFalse(trie.search(""));
         trie.insert("");
@@ -637,8 +645,8 @@ class TrieContractTest {
 
     @ParameterizedTest
     @MethodSource("implementations")
-    void duplicateInsertRequiresDuplicateDelete(Supplier<Object> factory) {
-        TrieApi trie = (TrieApi) factory.get();
+    void duplicateInsertRequiresDuplicateDelete(Supplier<TrieApi> factory) {
+        TrieApi trie = factory.get();
         trie.insert("app");
         trie.insert("app");
         trie.insert("apple");
@@ -652,19 +660,20 @@ class TrieContractTest {
 
     @ParameterizedTest
     @MethodSource("implementations")
-    void deletingMissingWordDoesNotMutateTheTrie(Supplier<Object> factory) {
-        TrieApi trie = (TrieApi) factory.get();
+    void deletingMissingWordDoesNotMutateTheTrie(Supplier<TrieApi> factory) {
+        TrieApi trie = factory.get();
         trie.insert("cat");
         assertFalse(trie.delete("car"));
         assertTrue(trie.search("cat"));
         assertTrue(trie.startsWith("ca"));
-        assertFalse(trie.delete("cat")); // 第二次删除同一个词
+        assertTrue(trie.delete("cat"));
+        assertFalse(trie.delete("cat"));
     }
 
     @ParameterizedTest
     @MethodSource("implementations")
-    void prefixAndSingleCharacterCases(Supplier<Object> factory) {
-        TrieApi trie = (TrieApi) factory.get();
+    void prefixAndSingleCharacterCases(Supplier<TrieApi> factory) {
+        TrieApi trie = factory.get();
         trie.insert("a");
         trie.insert("ab");
         assertTrue(trie.search("a"));
@@ -719,8 +728,8 @@ def test_delete_missing_is_noop(trie):
     assert not trie.delete("car")
     assert trie.search("cat")
     assert trie.starts_with("ca")
-    assert not trie.delete("cat") is False  # 第一次删除应成功
-    assert not trie.delete("cat")          # 第二次才失败
+    assert trie.delete("cat") is True  # 第一次删除应成功
+    assert trie.delete("cat") is False # 第二次删除应失败
 
 
 def test_single_character_and_prefix_results(trie):
@@ -744,14 +753,14 @@ def test_array_version_rejects_unsupported_charset():
 
 ## 5. Trie 应用场景（前缀查询、词频与路由）
 
-### 3.1 自动补全（搜索框 / IDE）
+### 5.1 自动补全（搜索框 / IDE）
 
 ```java
 // 搜索 "app" 时，建议 ["app", "apple", "apply", "applet"]
 List<String> suggestions = trie.getWordsWithPrefix("app");
 ```
 
-### 3.2 词频统计（搜索热词）
+### 5.2 词频统计（搜索热词）
 
 ```java
 // 插入时累加 count
@@ -760,14 +769,14 @@ trie.insert("搜索");
 trie.insert("搜索");  // count=3
 ```
 
-### 3.3 IP 路由最长前缀匹配
+### 5.3 IP 路由最长前缀匹配
 
 ```java
 // IP 路由表存储在 Trie 中，查询时沿 Trie 走到最深
 // 这是 Linux 内核 FIB 的核心
 ```
 
-### 3.4 敏感词过滤（AC 自动机前置）
+### 5.4 敏感词过滤（AC 自动机前置）
 
 ```java
 // 先用 Trie 存所有敏感词
@@ -776,7 +785,7 @@ trie.insert("搜索");  // count=3
 
 ---
 
-## 4. 复杂度分析
+## 6. 复杂度分析
 
 | 操作 | 时间复杂度 | 空间复杂度 |
 |------|-----------|-----------|
@@ -790,7 +799,86 @@ trie.insert("搜索");  // count=3
 
 ---
 
-## 5. 反模式 · 5 个常见错
+## 7. 🚨 实战陷阱：能跑不等于能上线
+
+### 陷阱 1：数组节点空间浪费，词典一大就 OOM
+
+`new TrieNode[26]` 看起来只有 26 个槽位，但每个槽位都是一个引用；当节点数达到百万级时，空引用本身和 Node 对象、对象对齐、GC 元数据都会叠加。词典若高度稀疏（例如大量域名、长 ID、随机字符串），数组版的“常数 26”会远大于实际分支数。
+
+```text
+总字符数 = 1,000,000，只是上界，不代表数组版只占 1,000,000 个引用
+数组版：节点数 × 26 × 引用大小 + 节点对象开销
+HashMap：实际边数 × entry 开销 + 每个 Map 的桶/对象开销
+```
+
+- **诊断**：压测同时记录节点数、每节点平均出度、堆峰值和 GC 暂停；不要只测查询耗时。
+- **改法**：小写英文且节点出度高时保留数组；稀疏动态词典用 HashMap；只读词典改 Double-Array Trie、LOUDS 或 radix tree。
+- **取舍**：压缩结构构建和更新更复杂，不能把“节省内存”当成免费收益。
+
+### 陷阱 2：字符集写死，输入一换就错
+
+数组版的 `c - 'a'` 只对连续的 `a..z` 成立。直接把同一段代码用于大写、数字、中文或 emoji，会越界、碰撞或把一个 Unicode 字符拆成两个 UTF-16 code unit。
+
+```java
+// ❌ 未声明字符集，输入 'A' / '中' 时可能越界
+int index = c - 'a';
+
+// ✅ 数组版显式拒绝，调用方再决定降级到 MapTrie
+if (c < 'a' || c > 'z') {
+    throw new IllegalArgumentException("unsupported character: " + c);
+}
+```
+
+上线前要明确三件事：是否大小写不敏感（先 `Locale.ROOT` 转换）、是否做 Unicode NFC/NFKC 规范化、是否按 code point 而不是 UTF-16 `char` 遍历。规范化策略必须在插入和查询两端一致，否则“看起来一样”的词会落到两条路径。
+
+### 陷阱 3：中文 Trie 不等于中文分词
+
+中文可以按“字”逐个建 Trie，适合敏感词精确匹配和前缀搜索；但搜索“人工智能”与文本“人工智能技术”时，字符 Trie 能找到连续字符，不代表它理解了词法边界。反过来，依赖分词器又会引入版本、词典和错分风险。
+
+| 目标 | 建议 | 注意 |
+|------|------|------|
+| 敏感词连续命中 | 字符级 HashMap Trie / AC 自动机 | 先统一全角半角、大小写和空白 |
+| 搜索联想与分词召回 | 分词器输出 token，再建 token Trie 或倒排索引 | 分词版本升级需要回归测试 |
+| 以字为单位的前缀补全 | 字符级 Trie，节点 key 使用 code point | 限制单次枚举结果，防止返回过多 |
+| 拼音、繁简、同义词 | 预处理生成规范化候选 | 记录原词，避免结果无法展示 |
+
+不要用“Trie 支持 Unicode”替代业务层的语言处理设计。中文、日文、emoji 混合输入还要考虑 code point、组合字符和用户可见 grapheme cluster 的差异。
+
+### 陷阱 4：自动补全一次返回整个子树
+
+`wordsWithPrefix("a")` 可能命中数十万词。即使 Trie 查找只需 O(L)，DFS 收集和序列化结果仍需要 O(K)，网络响应、JSON 序列化和客户端渲染才是瓶颈。
+
+- API 必须有 `limit`（例如默认 20，最大 100）和稳定排序键（热度、更新时间或字典序）。
+- 节点保存 `maxScore` / top-K 候选时，查询可以避免扫描整个子树，但写入要维护排名。
+- 结果应分页或使用游标；禁止把“前缀存在”接口和“返回全部词”接口混成一个方法。
+- DFS 递归深度由词长决定，超长词典需要显式栈或迭代器，避免栈溢出。
+
+### 陷阱 5：持久化 Trie 的快照、删除和并发没有设计
+
+Trie 节点是对象图，直接 Java 序列化或 `pickle` 并不等于可演进的持久化格式：类字段变更、字符集变更、不同语言读取和部分写入失败都会让词典不可恢复。
+
+```text
+推荐的只读发布流程：
+在线写入层（HashMap Trie）
+        │ 批量构建 / 校验 / checksum
+        ▼
+版本化快照（节点数组 + 边表 + metadata）
+        │ 原子 rename 或 manifest 切换
+        ▼
+只读查询层（Double-Array / mmap / LOUDS）
+```
+
+- **版本化**：快照头保存 schema version、字符集、规范化规则、词条数和 checksum；加载前校验，不要半加载后对外服务。
+- **原子切换**：新快照写临时文件并 `fsync`，校验通过后原子 rename；读请求持有旧快照引用，避免边改边读。
+- **删除语义**：在线层记录 tombstone 或版本号，重建快照时再物理回收；不要在 mmap 的只读结构里原地删除。
+- **并发安全**：读多写少优先 copy-on-write / RCU；频繁更新才考虑分片锁，否则全局锁会抵消 Trie 的查询优势。
+- **恢复演练**：至少测试损坏快照、旧版本回滚、空词典和超大快照启动耗时。
+
+这些陷阱的共同点是：算法复杂度只描述“沿节点走”的核心循环，生产系统还要把内存、字符规范、输出规模、快照生命周期和并发模型纳入设计。
+
+---
+
+## 8. 反模式 · 5 个常见错
 
 ### ⚠️ 反模式 1：用 HashMap 嵌套 HashMap 而不是 Trie
 
@@ -832,7 +920,7 @@ int cp = word.codePointAt(i);
 
 ---
 
-## 6. 一句话总结
+## 9. 一句话总结
 
 > **Trie 是前缀树——查找 O(len(word)) 与字典大小无关，Java 50 行实现；自动补全 / 词频统计 / IP 路由 / AC 自动机基础都用它。**
 
