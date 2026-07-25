@@ -147,4 +147,8 @@ Task → Agent → 检查结果
 
 > 📅 2026-06-30 · 咬文嚼字 · AI 新概念 · ⭐⭐⭐⭐
 
+## 反向链
+
+- [builtin-loop-commands](../../../11.ai/03-engineering/loop-engineering/builtin-loop-commands.md)
+
 ← [返回: 咬文嚼字 · loop-engineering](../README.md)

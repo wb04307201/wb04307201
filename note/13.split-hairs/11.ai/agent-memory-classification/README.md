@@ -186,4 +186,8 @@ question:
 
 > 📅 2026-07-03 · 咬文嚼字 · 11.ai · ⭐⭐⭐⭐
 
+## 反向链
+
+- [shared-memory](../../../11.ai/04-architecture/agent-memory/shared-memory.md)
+
 ← [返回: 咬文嚼字 · agent-memory-classification](../README.md)

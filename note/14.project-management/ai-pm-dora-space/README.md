@@ -283,4 +283,6 @@ Waydev 数据：AI 代码采纳率
 
 ---
 
+
+- [cheatsheet](../cheatsheet.md)
 ← [返回项目管理主页](../README.md)

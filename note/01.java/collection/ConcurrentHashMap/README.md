@@ -1084,4 +1084,8 @@ int size = map.size();           // 超过 21 亿会截断
 
 ---
 
+## 反向链
+
+- [concurrent](../concurrent.md)
+
 ← [返回 Java 集合框架](../README.md)

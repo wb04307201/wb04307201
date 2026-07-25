@@ -262,4 +262,6 @@ ROI = (业务价值 - TCO) / TCO × 100%
 
 ---
 
+
+- [cheatsheet](../cheatsheet.md)
 ← [返回项目管理主页](../README.md)

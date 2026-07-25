@@ -256,4 +256,6 @@ AI 时代：5 人小团队 + AI 助手 ≈ 传统 15 人团队
 
 ---
 
+
+- [cheatsheet](../cheatsheet.md)
 ← [返回项目管理主页](../README.md)

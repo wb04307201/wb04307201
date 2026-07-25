@@ -717,4 +717,6 @@ list.trimToSize();                            // capacity=3, 节省 7 个引用�
 - [ConcurrentHashMap JDK7 分段锁 vs JDK8 CAS+synchronized](../ConcurrentHashMap/README.md) — 并发场景替代 ArrayList 的首选
 - [Java 集合框架总览](../README.md) — 集合体系全貌与选型指南
 
+
+- [concurrent](../concurrent.md)
 ← [返回 Java 集合框架](../README.md)

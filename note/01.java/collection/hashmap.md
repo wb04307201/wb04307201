@@ -441,3 +441,14 @@ map.replaceAll((k, v) -> v * 2);
 | HashMap 和 ConcurrentHashMap | ConcurrentHashMap JDK 7 分段锁 / JDK 8 CAS+synchronized，线程安全 → [详见](concurrent.md) |
 | 为什么 HashMap 允许 null 键 | 特殊处理：null 键的 hash 固定为 0，放在 table[0] |
 | 可变对象能作 key 吗 | 技术上可以，但如果 put 后修改了 key 的 hashCode 字段，get() 会找不到（hash 变了，去了不同的桶） |
+
+## 反向链
+
+- [ArrayList](ArrayList/README.md)
+- [arrayList-distinct](../../13.split-hairs/01.java/arrayList-distinct/README.md)
+- [concurrent-hashmap](../../13.split-hairs/01.java/concurrent-hashmap/README.md)
+- [equals-hashcode](../../13.split-hairs/01.java/equals-hashcode/README.md)
+- [hashmap-resizing](../../13.split-hairs/01.java/hashmap-resizing/README.md)
+- [large-data-into-hashmap](../../13.split-hairs/01.java/large-data-into-hashmap/README.md)
+- [replace-linkedlist-with-hashset](../../13.split-hairs/01.java/replace-linkedlist-with-hashset/README.md)
+- [sort-map](../../13.split-hairs/01.java/sort-map/README.md)

@@ -247,6 +247,23 @@ module:
 > 10 大分类共 **210 篇** 深度文章（详见 [QUESTION-FORMAT-SPEC](./13.split-hairs/QUESTION-FORMAT-SPEC.md)，find 校对 2026-07-25），覆盖 Java / 计算机基础 / 数据库 / 系统设计 / 安全 / Spring / 前端 / 大数据 / AI / 工具。
 > 写作规范：[QUESTION-FORMAT-SPEC.md](./13.split-hairs/QUESTION-FORMAT-SPEC.md)
 
+
+- [concurrent](01.java/collection/concurrent.md)
+- [03-ranking](04.system-design/04-high-performance/product-search/03-ranking.md)
+- [configuration-lite-vs-full](06.spring/01-core/configuration-lite-vs-full.md)
+- [pointcut-expression](06.spring/01-core/aop/pointcut-expression.md)
+- [01-assembly-and-startup](06.spring/03-data/mybatis/03-spring-integration/01-assembly-and-startup.md)
+- [02-mapper-and-boot](06.spring/03-data/mybatis/03-spring-integration/02-mapper-and-boot.md)
+- [03-transaction-boundary](06.spring/03-data/mybatis/03-spring-integration/03-transaction-boundary.md)
+- [05-secondary-cache-integration](06.spring/03-data/mybatis/03-spring-integration/05-secondary-cache-integration.md)
+- [aop](06.spring/08-annotations/aop.md)
+- [bean-and-ioc](06.spring/08-annotations/bean-and-ioc.md)
+- [cache](06.spring/08-annotations/cache.md)
+- [configuration](06.spring/08-annotations/configuration.md)
+- [transaction](06.spring/08-annotations/transaction.md)
+- [web](06.spring/08-annotations/web.md)
+- [spring-ai-vs-dify](11.ai/04-architecture/spring-ai-vs-dify.md)
+- [index](12.story/index.md)
 ## 分类导航
 
 | 序号 | 主题 | 文章数 | 入口 |

@@ -186,4 +186,8 @@ class SparkSubmitOperator(BaseOperator):
 
 ---
 
+## 反向链
+
+- [batch](../../06.spring/06-integration/batch.md)
+
 ← [返回大数据总览](../../README.md)

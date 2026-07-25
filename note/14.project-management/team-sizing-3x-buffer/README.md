@@ -255,4 +255,6 @@ SP-6（小）：0.5 天
 
 ---
 
+
+- [cheatsheet](../cheatsheet.md)
 ← [返回项目管理主页](../README.md)

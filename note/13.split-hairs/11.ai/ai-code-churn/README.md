@@ -298,4 +298,8 @@ def get_user_orders(user_id):
 
 > 📅 2026-06-28 · 咬文嚼字 · AI 新概念 · ⭐⭐⭐⭐（2026 面试热点）
 
+## 反向链
+
+- [glossary](../../../12.story/glossary.md)
+
 ← [返回: 咬文嚼字 · ai-code-churn](../README.md)

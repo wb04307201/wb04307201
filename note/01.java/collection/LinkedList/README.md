@@ -449,4 +449,8 @@ private void writeObject(java.io.ObjectOutputStream s) throws IOException {
 
 ---
 
+## 反向链
+
+- [concurrent](../concurrent.md)
+
 ← [返回 Java 集合框架](../README.md)

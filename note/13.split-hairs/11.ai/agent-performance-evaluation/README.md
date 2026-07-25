@@ -413,4 +413,12 @@ Q5：贵司的黄金集多久更新一次？
 
 > 📅 2026-07-10 · 咬文嚼字 · 11.ai · ⭐⭐⭐⭐⭐ · 6 道精选 Q&A · 含阿里一面原题深度回答话术 + 7 反模式 + 4 工业方案
 
+## 反向链
+
+- [01-sft](../../../11.ai/03-engineering/llm-alignment/01-sft.md)
+- [02-rlhf](../../../11.ai/03-engineering/llm-alignment/02-rlhf.md)
+- [03-dpo](../../../11.ai/03-engineering/llm-alignment/03-dpo.md)
+- [04-constitutional-ai](../../../11.ai/03-engineering/llm-alignment/04-constitutional-ai.md)
+- [05-newer-methods](../../../11.ai/03-engineering/llm-alignment/05-newer-methods.md)
+
 ← [返回: 咬文嚼字 · 11.ai](../README.md)

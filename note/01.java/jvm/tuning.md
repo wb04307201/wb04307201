@@ -858,3 +858,12 @@ YGC 频率：从 30 秒 → 25 秒（新生代小了一点，略频繁，可接�
 | JDK 21 → 25 | 值类型预览、ZGC 分代成默认、持续性能改进 |
 
 > **版本选择结论**：新项目选 JDK 21（当前最佳平衡点）。JDK 8 存量项目优先升 17（最稳），有条件直接上 21。JDK 25 等生态稳定后再跟进。
+
+## 反向链
+
+- [final-finally-finalize](../../13.split-hairs/01.java/final-finally-finalize/README.md)
+- [gc-algorithms](../../13.split-hairs/01.java/gc-algorithms/README.md)
+- [hashmap-resizing](../../13.split-hairs/01.java/hashmap-resizing/README.md)
+- [questions](../../13.split-hairs/01.java/questions/README.md)
+- [reuse-of-stringbuilder](../../13.split-hairs/01.java/reuse-of-stringbuilder/README.md)
+- [try-catch-performance](../../13.split-hairs/01.java/try-catch-performance/README.md)

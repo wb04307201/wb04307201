@@ -105,4 +105,8 @@ flowchart TD
 
 ---
 
+## 反向链
+
+- [20-multiplatform-architecture](../../12.story/20-multiplatform-architecture.md)
+
 ← [返回前端工程总览](../README.md)

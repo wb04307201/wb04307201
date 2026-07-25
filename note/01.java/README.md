@@ -117,4 +117,13 @@ graph TB
 
 ---
 
+## 反向链
+
+- [concurrent](collection/concurrent.md)
+- [01-basics](kotlin/01-basics.md)
+- [02-oop](kotlin/02-oop.md)
+- [03-functional](kotlin/03-functional.md)
+- [04-advanced](kotlin/04-advanced.md)
+- [05-coroutines](kotlin/05-coroutines.md)
+
 ← [返回笔记目录](../README.md)

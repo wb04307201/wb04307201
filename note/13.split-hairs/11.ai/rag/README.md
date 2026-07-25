@@ -185,4 +185,8 @@ RAG 的权限必须与源系统（Google Drive / Slack / Confluence）保持一�
 
 > 📅 2026-06-30 · 咬文嚼字 · 企业 LLM 标配 · ⭐⭐⭐⭐⭐
 
+## 反向链
+
+- [36-rag-retrieval-augmented-generation](../../../12.story/36-rag-retrieval-augmented-generation.md)
+
 ← [返回: 咬文嚼字 · rag](../README.md)

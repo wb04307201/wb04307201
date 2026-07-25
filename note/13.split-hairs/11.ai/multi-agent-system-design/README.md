@@ -254,4 +254,8 @@ Q5：贵司 Agent 通信怎么防 Token 爆炸？
 
 > 📅 2026-07-13 · 咬文嚼字 · 11.ai · ⭐⭐⭐⭐⭐ · 5 组件 + 3 通信模式 + 4 兜底 + 6 反模式 + 90 秒话术 + 13 兄弟导航
 
+## 反向链
+
+- [shared-memory](../../../11.ai/04-architecture/agent-memory/shared-memory.md)
+
 ← [返回: 咬文嚼字 · 11.ai](../README.md)

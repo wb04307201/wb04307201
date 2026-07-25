@@ -168,6 +168,10 @@ module:
 
 ---
 
+
+- [01-trie-data-structure](string-algorithms/01-trie-data-structure.md)
+- [02-kmp-algorithm](string-algorithms/02-kmp-algorithm.md)
+- [03-ac-automaton](string-algorithms/03-ac-automaton.md)
 ## 📊 本节统计
 
 | 统计维度 | 数值 | 口径 |

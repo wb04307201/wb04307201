@@ -122,4 +122,8 @@ graph TB
 
 ---
 
+## 反向链
+
+- [01-trie-data-structure](02-algorithms/string-algorithms/01-trie-data-structure.md)
+
 ← [返回笔记目录](../README.md)

@@ -343,4 +343,6 @@ executor.submit(TtlRunnable.get(() -> {
 
 - 深度阅读：[`01.java`](../../01.java/README.md) — 主模块详细内容
 
+
+- [sequential-execution](../../../01.java/concurrency/thread-basics/sequential-execution.md)
 ← [返回: 咬文嚼字 · threadlocal](../README.md)

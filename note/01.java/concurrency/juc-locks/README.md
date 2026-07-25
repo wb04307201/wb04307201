@@ -848,4 +848,9 @@ while (!casOperation()) {
 
 ---
 
+## 反向链
+
+- [sequential-execution](../thread-basics/sequential-execution.md)
+- [seckill-without-redis](../../../04.system-design/03-high-availability/rate-limiting/seckill-without-redis.md)
+
 ← [返回 Java 并发编程专题导航](../README.md)

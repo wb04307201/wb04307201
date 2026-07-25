@@ -111,4 +111,6 @@ question:
 - 主模块：[`note/11.ai`](../../11.ai/) — AI 知识体系完整内容
 - 相关章节：[`09.front-end`](../09.front-end/)（前端集成 AI）
 
+
+- [spring-ai-vs-dify](../../11.ai/04-architecture/spring-ai-vs-dify.md)
 ← [返回咬文嚼字（高频面试题）](../README.md)
