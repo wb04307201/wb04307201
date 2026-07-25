@@ -9,7 +9,7 @@ module:
 
 # 不用 Redis / MQ，秒杀怎么写？（5 大单机方案对比）
 
-> 一句话定位：面试官刁难场景 —— **500 人抢 1 瓶茅台 / 2 台服务器 / 不用 Redis / MQ**。主流方案都假设有分布式组件，**强制不用**就要走单机方案。本文给出 **5 大单机方案**对比 + **库存=1 特殊处理** + **2 台服务器一致性** + **实战模板**。
+> 一句话定位：面试官刁难场景 —— **500 人抢 1 瓶茅台 / 2 台服务器 / 不用 Redis / MQ**。主流方案都假设有分布式组件，**强制不用**就要走单机方案。本文给出 **5 大单机方案**对比 + **库存=1 特殊处理** + **2 台服务器一致性** + **实战模板**（事务边界 + 事务外转换重复请求）。
 
 > **同模块兄弟**：
 > - [限流原理（rate-limiting/README）](README.md) — 通用限流原理（4 算法 + 4 策略）
@@ -155,9 +155,11 @@ public class SemaphoreSeckill {
 
 ---
 
-### 方案 4：单节点乐观锁（DB 行锁 + 唯一约束）
+### 方案 4：单节点条件原子更新（DB 行锁 + 唯一约束，**生产首选**）
 
-**原理**：用数据库**唯一索引**保证幂等，用**乐观锁**防止超卖，**2 台服务器共享同一 DB** 自动解决一致性问题。
+**原理**：用数据库**唯一索引**保证幂等，用**条件原子更新**（`stock > 0`）防止超卖 —— **2 台服务器共享同一 DB** 自动解决一致性问题。
+
+> **注意**：这里的防超卖是**条件原子更新**（`UPDATE ... WHERE stock > 0`），不是 `version` 乐观锁。ABA 风险通过"库存单调递减 + 后续唯一约束"组合解决（详见 §4）。
 
 ```sql
 CREATE TABLE seckill_order (
@@ -169,37 +171,32 @@ CREATE TABLE seckill_order (
 ```
 
 ```java
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public boolean trySeckill(Long userId, Long productId) {
-    // 1. 乐观锁扣减库存
+    // 1. 条件原子扣减库存（防超卖）
     int updated = productMapper.deductStock(productId);
     if (updated == 0) {
         return false;  // 库存不足
     }
 
-    // 2. 插入订单（靠唯一约束防重复）
-    try {
-        orderMapper.insert(new Order(userId, productId));
-        return true;
-    } catch (DuplicateKeyException e) {
-        // 触发唯一约束 → 用户重复抢
-        // 回滚库存
-        productMapper.addStock(productId, 1);
-        return false;
-    }
+    // 2. 插入订单（靠唯一约束防重复）—— 同一事务内，整体回滚
+    orderMapper.insert(new Order(userId, productId));
+    return true;
 }
 ```
 
 ```sql
--- 乐观锁 SQL（关键）
-UPDATE product SET stock = stock - 1, version = version + 1
-WHERE id = #{productId} AND stock > 0 AND version = #{version};
+-- 条件原子更新 SQL（关键）
+-- 为什么是 stock > 0 而不是 version=?？因为秒杀场景的 ABA 风险（库存被扣完又回滚）由后续唯一约束兜底，
+-- 单纯靠 stock>0 即可防止超卖（扣成负数）；若需严格防 ABA，可改为乐观锁（见 06-idempotency/optimistic-lock）
+UPDATE product SET stock = stock - 1
+WHERE id = #{productId} AND stock > 0;
 ```
 
 **优点**：
 - ✅ **2 台服务器共享 DB → 自动解决一致性问题**
 - ✅ **唯一约束**防止用户重复抢
-- ✅ **乐观锁**防止超卖
+- ✅ **条件原子更新**防止超卖（扣成负数）
 - ✅ 简单可靠（生产可用）
 
 **缺点**：
@@ -210,62 +207,135 @@ WHERE id = #{productId} AND stock > 0 AND version = #{version};
 
 ---
 
-### 方案 5：内存队列（Disruptor / LinkedBlockingQueue）
+### 方案 5：内存队列（LinkedBlockingQueue + 单消费者，**真正串行**）
 
-**原理**：把请求入队，**单消费者**异步处理，保证**串行扣减**。
+**原理**：把请求真正入队（**不直接扣库存**），**唯一消费者线程**串行取出处理，**避免并发扣减把库存扣成负数**。这是方案 5 与方案 2 的关键区别 —— 方案 2 让 500 个线程同时 CAS 自旋扣库存，方案 5 让请求排队，单线程顺序扣。
 
 ```java
 public class QueueSeckill {
+
+    /** 请求真正进入队列（核心：LinkedBlockingQueue.put 是阻塞入队）*/
     private final BlockingQueue<SeckillRequest> queue = new LinkedBlockingQueue<>(1000);
+
+    /** 库存与中奖名单 —— 只被唯一消费者线程访问，无需加锁 */
     private final AtomicInteger stock = new AtomicInteger(1);
     private final Set<Long> winners = ConcurrentHashMap.newKeySet();
 
+    /** 唯一消费者线程（单线程串行处理）*/
+    private final Thread consumer;
+
     public QueueSeckill() {
-        // 单消费者线程
-        new Thread(this::consume).start();
+        this.consumer = new Thread(this::consumeLoop, "seckill-consumer");
+        this.consumer.setDaemon(true);
+        this.consumer.start();
     }
 
-    public boolean trySeckill(Long userId) {
+    /**
+     * 生产者：把请求真正塞进队列，O(1)。
+     * 注意：这里不做任何业务判断（不查 winners、不扣库存），
+     * 全部交给消费者串行处理，避免并发扣库存扣成负数。
+     */
+    public boolean trySeckill(Long userId, long timeoutMs) {
         SeckillRequest req = new SeckillRequest(userId);
-        // 异步提交，结果通过 Future 返回
-        Future<Boolean> future = executor.submit(() -> {
-            try {
-                return process(req);
-            } catch (Exception e) {
-                return false;
-            }
-        });
+        boolean offered = queue.offer(req);  // 非阻塞入队
+        if (!offered) {
+            return false;  // 队列满 → 拒绝（背压）
+        }
+        // 等消费者处理结果（这里用 CountDownLatch 简化）
         try {
-            return future.get(100, TimeUnit.MILLISECONDS);
+            return req.getResult(timeoutMs, TimeUnit.MILLISECONDS);
         } catch (TimeoutException e) {
-            return false;  // 超时未抢到
+            return false;  // 超时未抢到（消费者太慢或队列堆积）
         }
     }
 
-    private boolean process(SeckillRequest req) {
-        if (winners.contains(req.userId)) {
-            return false;
+    /**
+     * 唯一消费者线程：take() 阻塞取请求，串行处理。
+     * 由于只有这一个线程访问 stock 和 winners，无需任何锁/CAS。
+     */
+    private void consumeLoop() {
+        while (true) {
+            try {
+                SeckillRequest req = queue.take();  // 阻塞取，队列空则等待
+                process(req);                       // 串行执行
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                break;
+            } catch (Exception e) {
+                // 单条请求处理失败不影响整体（已在 process 内标记 result）
+            }
         }
-        if (stock.get() <= 0) {
-            return false;
+    }
+
+    /** 串行处理（单线程执行 → 无并发问题）*/
+    private void process(SeckillRequest req) {
+        try {
+            if (winners.contains(req.userId)) {
+                req.markResult(false);  // 重复抢
+                return;
+            }
+            if (stock.get() <= 0) {
+                req.markResult(false);  // 已抢完
+                return;
+            }
+            stock.decrementAndGet();   // 串行环境下 get-then-set 是安全的
+            winners.add(req.userId);
+            req.markResult(true);
+        } catch (Exception e) {
+            req.markResult(false);
         }
-        stock.decrementAndGet();
-        winners.add(req.userId);
-        return true;
+    }
+
+    /** 请求载体（用户ID + 结果回执）*/
+    private static class SeckillRequest {
+        final Long userId;
+        private final CountDownLatch latch = new CountDownLatch(1);
+        private volatile boolean result = false;
+
+        SeckillRequest(Long userId) {
+            this.userId = userId;
+        }
+
+        void markResult(boolean r) {
+            this.result = r;
+            this.latch.countDown();
+        }
+
+        boolean getResult(long timeout, TimeUnit unit) throws TimeoutException {
+            if (!latch.await(timeout, unit)) {
+                throw new TimeoutException();
+            }
+            return result;
+        }
     }
 }
 ```
 
+**为什么这次不会扣成负数？**
+```text
+方案 2（AtomicInteger 自旋）：500 个线程同时 CAS 扣 stock
+├─ T1 读到 stock=1 → CAS stock=0 成功
+├─ T2 读到 stock=0 → CAS 失败，返回 false ✅
+└─ 安全但 CAS 自旋有 CPU 空转
+
+方案 5（本节，单消费者）：500 个请求排队进 BlockingQueue
+├─ 唯一消费者线程串行 take() → process()
+├─ 第 1 个请求：stock=1 → 扣成 stock=0，winners 加入 user1，返回 true
+├─ 第 2~500 个请求：stock=0 → 直接返回 false
+└─ 永远不会出现"两个线程同时看到 stock=1 都去扣"的情况 → 库存绝对不会扣成负数
+```
+
 **优点**：
-- ✅ **单消费者线程**保证原子性（无需锁）
+- ✅ **真正串行处理**（请求真正入队 + 唯一消费者）→ 库存不会扣成负数
 - ✅ **背压机制**（队列满则拒绝）
-- ✅ Disruptor 性能极高（百万 TPS）
+- ✅ 无 CAS 自旋（消费者串行处理）
 
 **缺点**：
-- ❌ **单 JVM 限制**，2 台服务器依然超卖
-- ❌ 队列满会丢失请求（需监控）
+- ❌ **单 JVM 限制**，2 台服务器依然超卖（每台 JVM 各一个独立队列）
+- ❌ 队列满会丢失请求（需监控 + 报警）
+- ❌ 消费者单线程是吞吐瓶颈（高并发下需用 Disruptor 多生产者单消费者提升）
 
-**适用**：单机 + 高吞吐；**2 台服务器需要 MQ 或共享队列**（违背限制）。
+**适用**：单机 + 高吞吐 + 库存不允许超扣；**2 台服务器需要 MQ 或共享队列**（违背限制）。
 
 ---
 
@@ -276,45 +346,45 @@ public class QueueSeckill {
 | **synchronized** | ⭐ | ⭐⭐ | ❌ 超卖 | ⚠️ 单 JVM | ⚠️ 内存 | ⭐ |
 | **AtomicInteger** | ⭐⭐ | ⭐⭐⭐ | ❌ 超卖 | ⚠️ 单 JVM | ⚠️ 内存 | ⭐⭐ |
 | **Semaphore** | ⭐⭐ | ⭐⭐⭐ | ❌ 超卖 | ⚠️ 单 JVM | ⚠️ 内存 | ⭐⭐ |
-| **乐观锁 + 唯一约束** | ⭐⭐⭐ | ⭐⭐⭐⭐ | ✅ **生产可用** | ✅ DB 唯一 | ✅ 唯一索引 | ⭐⭐⭐⭐⭐ |
-| **内存队列** | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ❌ 超卖 | ⚠️ 单 JVM | ⚠️ 内存 | ⭐⭐⭐ |
+| **条件原子更新 + 唯一约束** | ⭐⭐⭐ | ⭐⭐⭐⭐ | ✅ **生产可用** | ✅ DB 唯一 | ✅ 唯一索引 | ⭐⭐⭐⭐⭐ |
+| **内存队列（单消费者）** | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ❌ 超卖 | ✅ **串行保证** | ⚠️ 内存 | ⭐⭐⭐ |
 
-**关键洞察**：**只有方案 4（乐观锁 + 唯一约束）能解决 2 台服务器一致性问题** —— 其他 4 个都是单 JVM 方案。
+**关键洞察**：**只有方案 4（条件原子更新 + 唯一约束）能解决 2 台服务器一致性问题** —— 其他 4 个都是单 JVM 方案。
 
 ---
 
 ## 四、库存=1 的特殊处理（防超卖 / ABA / 重复扣减）
 
-### 4.1 防超卖：乐观锁 SQL
+### 4.1 防超卖：条件原子更新 SQL
 
 ```sql
--- 关键：stock > 0 条件 + version 字段
+-- 关键：WHERE stock > 0 —— 防止扣成负数
 UPDATE product
-SET stock = stock - 1, version = version + 1
-WHERE id = ? AND stock > 0 AND version = ?;
--- 影响行数 = 1 成功；= 0 失败（库存不足或 version 不对）
+SET stock = stock - 1
+WHERE id = ? AND stock > 0;
+-- 影响行数 = 1 成功；= 0 失败（库存不足）
 ```
 
-**反直觉点**：**光靠 `UPDATE product SET stock = stock - 1` 不够** —— 必须带 `stock > 0` 条件，否则可能扣成负数。
+**反直觉点**：**光靠 `UPDATE product SET stock = stock - 1` 不够** —— 必须带 `stock > 0` 条件，否则可能扣成负数（MySQL 默认 0 也允许扣，扣成 -1 / -2 都不报错）。
 
-### 4.2 防 ABA：用 version 字段
+### 4.2 关于 ABA 问题：秒杀场景的边界澄清
 
 ```text
-时间线：
+标准 ABA 场景（version 乐观锁）：
 T1: A 读 stock=1, version=1
 T2: B 抢到 → stock=0, version=2
-T3: A 用 version=1 提交 → 影响 0 行（A 失败）✅
+T3: 退货 → stock=1（ABA：A 看到的和现在一样）
+T4: A 用 version=1 提交 → 失败（version 不匹配）✅
+
+秒杀场景的实际情况：
+- 库存只减不增（不会"退货补库存"）
+- 即使真的"扣减又回滚"，库存依然是单调递减
+- 唯一约束兜底：重复 user+product 的订单会被 MySQL 拒绝
 ```
 
-**没有 version** 的情况：
-```text
-T1: A 读 stock=1
-T2: B 抢到 → stock=0
-T3: 退货 → stock=1（ABA 问题：A 看到的和现在一样）
-T4: A 用 stock=1 提交 → 成功扣减 ❌（A 应该失败）
-```
+**结论**：**秒杀场景下 `WHERE stock > 0` 的条件原子更新足够**，ABA 风险通过业务特性（库存只减不增）+ 后续唯一约束组合消除。**不需要在 deductStock 中校验 version 字段**。
 
-**结论**：**乐观锁必须带 version 字段**（或在 UPDATE 中带原始 stock 值）。
+> 如果你的业务是**通用库存系统**（需要"扣减 / 回滚 / 退货补库存"等完整生命周期），请改用 [乐观锁](../../06-idempotency/optimistic-lock/README.md) 的 `version` 方案。
 
 ### 4.3 防重复抢：唯一索引
 
@@ -328,7 +398,7 @@ CREATE TABLE seckill_order (
 );
 ```
 
-**插入冲突 → DuplicateKeyException → 回滚库存**。
+**插入冲突 → DuplicateKeyException → 整个事务回滚**（库存扣减也撤销）。
 
 **反直觉点**：**靠代码判重（`if (exists)` + `insert`）有 TOCTOU 问题**，**靠唯一索引 100% 防重**。
 
@@ -383,12 +453,11 @@ CREATE TABLE seckill_order (
 ### 6.1 数据库准备
 
 ```sql
--- 商品表（带 version）
+-- 商品表
 CREATE TABLE product (
     id BIGINT PRIMARY KEY,
     name VARCHAR(100),
-    stock INT NOT NULL DEFAULT 0,
-    version INT NOT NULL DEFAULT 0
+    stock INT NOT NULL DEFAULT 0
 );
 
 -- 订单表（带唯一约束）
@@ -396,61 +465,166 @@ CREATE TABLE seckill_order (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     user_id BIGINT NOT NULL,
     product_id BIGINT NOT NULL,
+    order_no VARCHAR(64) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    UNIQUE KEY uk_user_product (user_id, product_id)
+    UNIQUE KEY uk_user_product (user_id, product_id),
+    UNIQUE KEY uk_order_no (order_no)
 );
 
 -- 初始化库存
 INSERT INTO product (id, name, stock) VALUES (1, '茅台', 1);
 ```
 
-### 6.2 Java 代码（生产级）
+### 6.2 SeckillService（核心：事务边界 + 事务外转换重复请求）
+
+> **关键设计**：**库存扣减 + 订单插入必须在同一事务内**，事务提交后才能对外宣称"秒杀成功"。**DuplicateKeyException 必须在事务外捕获** —— 事务内捕获会导致手工补库存（虚增风险）。
 
 ```java
 @Service
 public class SeckillService {
+
     @Autowired
     private ProductMapper productMapper;
 
     @Autowired
     private OrderMapper orderMapper;
 
+    /**
+     * 入口：事务外捕获重复请求异常，返回"已存在订单ID"
+     */
+    public SeckillResult trySeckill(Long userId, Long productId) {
+        try {
+            return doSeckillInTx(userId, productId);  // 内部事务
+        } catch (DuplicateKeyException e) {
+            // 事务外捕获：唯一约束触发 → 该用户已抢过
+            // 不补库存！让数据库事务自己回滚（已经回滚了）
+            Order existing = orderMapper.findByUserAndProduct(userId, productId);
+            return SeckillResult.duplicate(existing != null ? existing.getId() : null);
+        }
+    }
+
+    /**
+     * 内部事务：库存扣减 + 订单插入 在同一事务内
+     */
     @Transactional(rollbackFor = Exception.class)
-    public boolean trySeckill(Long userId, Long productId) {
-        // 1. 乐观锁扣减库存（防超卖）
+    public SeckillResult doSeckillInTx(Long userId, Long productId) {
+        // 1. 条件原子扣减库存（防超卖）
         int rows = productMapper.deductStock(productId);
         if (rows == 0) {
-            return false;  // 库存不足
+            return SeckillResult.outOfStock();  // 库存不足
         }
 
         // 2. 插入订单（靠唯一约束防重复抢）
-        try {
-            Order order = new Order();
-            order.setUserId(userId);
-            order.setProductId(productId);
-            orderMapper.insert(order);
-            return true;
-        } catch (DuplicateKeyException e) {
-            // 用户重复抢 → 回滚库存
-            productMapper.addStock(productId, 1);
-            return false;
-        }
+        //    重复插入会抛 DuplicateKeyException → 整个事务回滚 → 库存扣减撤销
+        Order order = new Order();
+        order.setUserId(userId);
+        order.setProductId(productId);
+        order.setOrderNo(generateOrderNo());
+        orderMapper.insert(order);
+        return SeckillResult.success(order.getId());
     }
 }
 
 @Mapper
 public interface ProductMapper {
-    @Update("UPDATE product SET stock = stock - 1, version = version + 1 " +
+    // 条件原子更新（防超卖）：不是 version 乐观锁，单纯 stock > 0 条件即可
+    @Update("UPDATE product SET stock = stock - 1 " +
             "WHERE id = #{productId} AND stock > 0")
     int deductStock(Long productId);
+}
 
-    @Update("UPDATE product SET stock = stock + #{delta}, version = version + 1 " +
-            "WHERE id = #{productId}")
-    int addStock(@Param("productId") Long productId, @Param("delta") int delta);
+@Mapper
+public interface OrderMapper {
+    @Insert("INSERT INTO seckill_order(user_id, product_id, order_no) " +
+            "VALUES(#{userId}, #{productId}, #{orderNo})")
+    @Options(useGeneratedKeys = true, keyProperty = "id")
+    void insert(Order order);
+
+    @Select("SELECT * FROM seckill_order WHERE user_id = #{userId} " +
+            "AND product_id = #{productId} LIMIT 1")
+    Order findByUserAndProduct(@Param("userId") Long userId,
+                                @Param("productId") Long productId);
 }
 ```
 
-### 6.3 Controller 层（加限流防雪崩）
+### 6.3 A3 反例 vs 正例：DuplicateKeyException 的处理位置
+
+**❌ 反例：事务内 catch DuplicateKeyException → 手工补库存（库存虚增风险）**
+
+```java
+@Transactional(rollbackFor = Exception.class)
+public boolean trySeckill_WRONG(Long userId, Long productId) {
+    int rows = productMapper.deductStock(productId);
+    if (rows == 0) return false;
+
+    try {
+        orderMapper.insert(new Order(userId, productId));
+        return true;
+    } catch (DuplicateKeyException e) {
+        // ❌ 错点 1：事务内捕获异常 → 框架不知道发生了异常
+        // ❌ 错点 2：手工补库存 → 与原本已扣减的库存抵消，看似 OK
+        // ❌ 错点 3：如果 addStock 失败（DB 抖动），库存永久虚减
+        productMapper.addStock(productId, 1);
+        return false;
+    }
+}
+```
+
+**为什么错？**
+
+```text
+风险链路：
+1. 用户 A 抢到 → deductStock 扣 1 → stock=0
+2. 用户 A 重复抢 → insert 抛 DuplicateKeyException
+3. catch 住 → addStock 加 1 → stock=1（看似恢复）
+4. 但如果第 3 步 addStock 失败（DB 抖动 / 网络超时） → stock 永远停在 0
+5. 即使第 3 步成功，addStock 也是脏写 —— 在事务回滚的语义里，"补回去"是手动补偿而不是原子回滚
+
+更隐蔽的并发问题：
+- 假设用户 A 抢到（stock 1→0）
+- 用户 A 重复抢 → catch → addStock 1（stock 0→1）
+- 此时用户 B 刚好挤进来 → 看到 stock=1 → 抢到（stock 1→0）
+- 用户 A 的 addStock（库存虚增）已被用户 B 消费 → 最终用户 A 和 B 都"成功" → 超卖
+```
+
+**✅ 正例：让 MySQL 整体回滚 + 事务外根据主键查询已存在订单**
+
+```java
+// 事务外：捕获 DuplicateKeyException → 查已存在订单 → 返回该订单ID
+public SeckillResult trySeckill_RIGHT(Long userId, Long productId) {
+    try {
+        return doSeckillInTx(userId, productId);  // 内部 @Transactional
+    } catch (DuplicateKeyException e) {
+        // ✅ 正确 1：让数据库事务整体回滚（库存扣减自动撤销）
+        // ✅ 正确 2：事务外根据唯一键查询已存在订单 → 返回同一订单ID
+        // ✅ 正确 3：幂等语义 —— 用户重复抢，返回同一个订单，不扣第二次库存
+        Order existing = orderMapper.findByUserAndProduct(userId, productId);
+        return SeckillResult.duplicate(existing != null ? existing.getId() : null);
+    }
+}
+```
+
+**为什么对？**
+
+```text
+正确链路：
+1. 用户 A 抢到 → deductStock 扣 1（stock=0）→ insert order → 事务提交 ✅
+2. 用户 A 重复抢 → deductStock 扣 1（stock=0，WHERE stock>0 失败，rows=0）
+   等等 —— 如果 stock>0 失败，应该早就 return false 了
+3. 真实并发场景：用户 A 和 B 同时抢（都在 stock=1 时进来）
+   ├─ A 先抢到 → deductStock(stock=0) → insert 成功 → 事务提交
+   └─ B 后到 → deductStock(stock=0, rows=0) → 直接返回 outOfStock
+4. 真正的 DuplicateKeyException 触发场景：A 已经成功一次，再次重试
+   ├─ A 第二次进 → deductStock(stock=0, rows=0) → 直接返回 outOfStock
+   └─ 不应该走到 insert 才对！
+
+那 DuplicateKeyException 什么时候触发？
+- 答：竞争窗口极小 —— A 已经过 deductStock（stock=0）→ insert 还没提交 → B 抢到时间片也过 deductStock（rows=0）→ return
+- 实际触发 DuplicateKeyException 的典型场景：A 用客户端重试（deductStock 还没提交时重试又来一次）→ 两次都过 deductStock（都看到 stock=1）→ 一个 insert 成功，一个 insert 失败
+- 此时事务回滚（库存扣减撤销）→ 事务外捕获 → 返回已存在订单 ✅
+```
+
+### 6.4 Controller 层（加限流防雪崩）
 
 ```java
 @RestController
@@ -472,9 +646,14 @@ public class SeckillController {
         }
 
         try {
-            // 2. 秒杀
-            boolean success = seckillService.trySeckill(userId, productId);
-            return success ? Result.ok() : Result.fail("已抢完或重复抢");
+            // 2. 秒杀（事务外捕获重复请求）
+            SeckillResult result = seckillService.trySeckill(userId, productId);
+            switch (result.getStatus()) {
+                case SUCCESS:      return Result.ok(result.getOrderId());
+                case DUPLICATE:    return Result.ok(result.getOrderId());  // 幂等返回同一订单
+                case OUT_OF_STOCK: return Result.fail("已抢完");
+                default:           return Result.fail("系统异常");
+            }
         } finally {
             rateLimiter.release();
         }
@@ -482,13 +661,13 @@ public class SeckillController {
 }
 ```
 
-### 6.4 性能估算
+### 6.5 性能估算
 
 ```text
 500 人 / 2 台服务器 / 库存=1：
 - 每台服务器 ~250 请求
 - DB 写 1 次成功 + 499 次失败
-- 总耗时：~500ms（乐观锁 + 唯一索引）
+- 总耗时：~500ms（条件原子更新 + 唯一索引）
 
 远超用户感知（用户可接受 1-3 秒） ✅
 ```
@@ -520,22 +699,25 @@ public class SeckillController {
 | 反模式 | 后果 |
 |--------|------|
 | ❌ 强行上 Redis | 运维成本 +10，单机方案本来够用 |
-| ❌ `UPDATE product SET stock = stock - 1` 不带 `WHERE stock > 0` | 超卖 |
-| ❌ 不用 version 字段 | ABA 问题 |
+| ❌ `UPDATE product SET stock = stock - 1` 不带 `WHERE stock > 0` | 超卖（扣成负数） |
+| ❌ 事务内 catch DuplicateKeyException 后手工 addStock | 库存虚增 + 超卖（详见 §6.3） |
+| ❌ 用 version 乐观锁处理秒杀 | 过度设计 —— 秒杀库存只减不增，stock>0 已足够 |
 | ❌ 用代码判重（if exists + insert）| TOCTOU 漏洞 |
 | ❌ 把库存扣减和下单放 2 个事务 | 一致性问题 |
+| ❌ 方案 5 让消费者多线程并发扣库存 | 库存扣成负数（必须唯一消费者串行） |
 
 ---
 
 ## 九、可复用 Checklist（秒杀方案自查）
 
 - [ ] 确认问题边界：人数 / 服务器数 / 库存数 / 限制条件
-- [ ] 库存=1 → 必须乐观锁 + 唯一约束
+- [ ] 库存=1 → 必须条件原子更新 + 唯一约束
 - [ ] 2 台服务器 → 共享 DB 自动解决一致性
 - [ ] 500 人级别 → 单机方案够用，**不要过度设计**
-- [ ] `WHERE stock > 0` 必备
-- [ ] `version` 字段必备（防 ABA）
+- [ ] `WHERE stock > 0` 必备（防扣成负数）
 - [ ] 唯一索引必备（防重复抢）
+- [ ] **事务边界**：库存扣减 + 订单插入 同一事务
+- [ ] **异常处理**：DuplicateKeyException 在事务外捕获 → 查询已存在订单返回
 - [ ] 限流防雪崩（Semaphore 即可）
 - [ ] Controller 层 try-finally 释放许可
 - [ ] 监控：库存剩余 / QPS / 超卖告警
@@ -546,7 +728,7 @@ public class SeckillController {
 
 **同模块原理**：
 - [限流原理（rate-limiting/README）](README.md) — 4 大算法 + 4 大策略
-- [乐观锁（optimistic-lock）](../../06-idempotency/optimistic-lock/README.md) — 库存扣减基础
+- [乐观锁（optimistic-lock）](../../06-idempotency/optimistic-lock/README.md) — 通用库存系统的 version 方案
 - [幂等性（idempotency）](../../06-idempotency/README.md) — 防重复原理
 
 **面试题**：

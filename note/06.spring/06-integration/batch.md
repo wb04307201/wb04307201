@@ -9,6 +9,8 @@ module:
 
 # Spring Batch 批处理
 
+> Spring Batch 是 Spring 生态的批处理框架，提供 Job/Step/ItemReader/ItemProcessor/ItemWriter 的标准化抽象。
+
 ## 一、Spring Batch 概述
 Spring Batch 是 Spring 生态系统中专门为批处理设计的轻量级框架，适用于数据迁移、ETL（Extract-Transform-Load）、定时报表生成等场景。其核心设计理念是通过分层架构实现高内聚低耦合，支持从单线程到分布式的大规模数据处理。
 
@@ -42,6 +44,28 @@ graph TB
 1. **应用层**：开发者自定义批处理逻辑
 2. **核心层**：框架控制流（JobLauncher启动任务，JobRepository持久化元数据）
 3. **基础设施层**：数据读写组件和事务管理
+
+### 版本演进：3.x → 4.x → 5.x
+
+| 版本 | 发布日期 | 技术基线 | 关键变化 |
+|------|----------|----------|----------|
+| **3.0** | 2014-05-22 | Spring Framework 4.x、Java 7 | `@EnableBatchProcessing` 成为 Java Config 的标准入口；增强 JSR-352 支持，并开始从 XML 配置迁移到注解与 Builder API。 |
+| **4.0** | 2017-11-28 | Spring Framework 5.x、Java 8 | 以 Java 8 为最低版本，利用泛型、lambda 等能力改进 API；提供返回 `Future` 的异步 Processor/Writer，并可配合 Reactor 包装开展响应式管道探索，但核心仍是阻塞式 chunk 模型。 |
+| **5.0** | 2022-11-24 | Spring Framework 6.x、Java 17、Jakarta EE 9+ | 全面切换 `javax.*` → `jakarta.*`；完善 JSR-352/Jakarta Batch 兼容能力；移除 `JobBuilderFactory`、`StepBuilderFactory` 自动注入方式，改为显式传入 `JobRepository` 与 `PlatformTransactionManager`。 |
+
+> **迁移重点**：从 4.x 升级 5.x 时，先处理 Java 17 与 Jakarta 包名，再把 `jobBuilderFactory.get("job")` 改为 `new JobBuilder("job", jobRepository)`，把 `stepBuilderFactory.get("step")` 改为 `new StepBuilder("step", jobRepository)`；Spring Batch 不是原生响应式框架，若数据源是 R2DBC，应谨慎评估阻塞边界。
+
+```java
+// Spring Batch 4.x：Factory 由框架注入
+return jobBuilderFactory.get("importJob")
+        .start(importStep())
+        .build();
+
+// Spring Batch 5.x：基础设施依赖显式传入
+return new JobBuilder("importJob", jobRepository)
+        .start(importStep(jobRepository, transactionManager))
+        .build();
+```
 
 ## 二、核心组件详解
 
@@ -387,7 +411,68 @@ public class OrderedAggregateWriter implements ItemWriter<List<Order>> {
 2. **实战教程**：[Spring Batch Parallel Processing](https://spring.io/guides/gs/batch-processing/)
 3. **性能测试**：[Partitioning Benchmark](https://github.com/spring-projects/spring-batch/tree/main/spring-batch-samples/src/main/java/org/springframework/batch/sample/partitioning)
 
-## 九、失败重试与跳过
+## 九、实战反例：按类型路由多个 Writer
+
+当一个 Step 需要把正常数据、告警数据写入不同目标时，不要在单个 Writer 中堆叠类型判断和多套 I/O 逻辑。这样会让事务边界、重试策略和测试职责纠缠在一起。
+
+### ❌ 反例：单个 Writer 承担所有分支
+
+```java
+@Bean
+public ItemWriter<Notification> mixedWriter() {
+    return chunk -> {
+        for (Notification item : chunk) {
+            if (item.channel() == Channel.EMAIL) {
+                emailClient.send(item);       // 外部 HTTP 调用
+            } else if (item.channel() == Channel.SMS) {
+                smsClient.send(item);         // 另一套失败语义
+            } else {
+                jdbcTemplate.update("insert into inbox ...", item.id());
+            }
+        }
+    };
+}
+```
+
+问题在于：新增渠道必须修改同一个类；任一目标失败会回滚并重放整个 chunk；不同渠道无法独立配置重试、限流与监控。
+
+### ✅ 正例：ClassifierCompositeItemWriter 路由到专用 Writer
+
+```java
+@Bean
+public ItemWriter<Notification> routingWriter(
+        ItemWriter<Notification> emailWriter,
+        ItemWriter<Notification> smsWriter,
+        ItemWriter<Notification> inboxWriter) {
+
+    ClassifierCompositeItemWriter<Notification> writer =
+            new ClassifierCompositeItemWriter<>();
+    writer.setClassifier(item -> switch (item.channel()) {
+        case EMAIL -> emailWriter;
+        case SMS -> smsWriter;
+        case INBOX -> inboxWriter;
+    });
+    return writer;
+}
+```
+
+```java
+@Bean
+public Step dispatchStep(JobRepository jobRepository,
+                         PlatformTransactionManager transactionManager,
+                         ItemReader<Notification> reader,
+                         ItemWriter<Notification> routingWriter) {
+    return new StepBuilder("dispatchStep", jobRepository)
+            .<Notification, Notification>chunk(100, transactionManager)
+            .reader(reader)
+            .writer(routingWriter)
+            .build();
+}
+```
+
+`ClassifierCompositeItemWriter` 只负责路由，每个委托 Writer 专注一个目标，便于单测和独立演进。注意它不会自动提供跨外部系统的原子事务：对于 HTTP、短信等非事务目标，应增加幂等键、Outbox 或补偿机制；相关可靠性设计参见[高可用设计](../../04.system-design/03-high-availability/README.md)。
+
+## 十、失败重试与跳过
 
 Spring Batch 在 chunk 处理中提供**容错**机制：通过 `faultTolerant()` 进入容错模式，配合 `skip` / `retry` / `noSkip` / `noRetry` 分类异常，决定"哪些异常可以跳过"、"哪些异常可以重试"、"哪些异常必须立刻失败"。
 
@@ -479,7 +564,7 @@ public SkipPolicy skipPolicy() {
 - 单次外部 API/HTTP 调用 → Spring Retry `@Retryable`（精细控制每个请求）。
 - 二者可同时存在：chunk 内部 Processor 调用外部 API 时，外层 `@Retryable` + 内层 chunk retry 互不干扰。
 
-## 十、Job 调度与重启
+## 十一、Job 调度与重启
 
 批处理 Job 通常由调度系统周期性触发。Spring Batch 通过 `JobLauncher` + `JobParameters` 控制启动行为，结合 `JobRepository` 持久化元数据，实现可重启、可恢复的执行模型。
 
@@ -652,3 +737,16 @@ public Step masterStep() {
 详细对比参见 [Spring Batch 官方 Scalability 章节](https://docs.spring.io/spring-batch/docs/current/reference/html/scalability.html)。
 
 > 监控与告警建议接入 07-observability 中的 [Micrometer](../07-observability/micrometer.md) 与 [Actuator](../07-observability/actuator.md)。
+
+---
+
+## 相关章节
+
+- [Spring Cloud Task：短生命周期任务](https://spring.io/projects/spring-cloud-task) — 将 Batch Job 封装为可独立部署、执行后退出的任务进程
+- [Spring 调度与异步注解](../08-annotations/scheduling-and-async.md) — `@Scheduled`、`@Async` 与线程池配置
+- [Spring Retry](integration-retry.md) — 区分方法级重试与 Batch chunk 级容错
+- [Spring StateMachine](statemachine.md) — 复杂 Job 状态流转与业务状态建模
+- [大数据任务调度](../../10.big-data/06-scheduling/README.md) — Airflow、DolphinScheduler、Azkaban 的编排选型
+- [高可用设计](../../04.system-design/03-high-availability/README.md) — 幂等、重试、降级与故障恢复
+
+← [返回 Spring 集成组件](README.md) · [返回 Spring 顶层](../README.md)

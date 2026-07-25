@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/togaf/business-capability
+  type: article
+  category: 主模块子文章
+  summary: BCAT 四层架构 + 业务能力地图 + 价值流建模，业务能力→DDD 限界上下文→微服务的翻译层；附 TOGAF 9 vs 10 演进时间线、ArchiMate 建模示例、能力差距分析矩阵。
+-->
+
 # 第二章：BCAT + 业务能力 + 价值流
 
 > ⬅️ [返回目录](README.md) | 上一篇：[核心思想 + ADM 详解](adm.md) | 下一篇：[康威定律 + 团队拓扑](conway-and-team-topology.md)
@@ -235,12 +244,368 @@ graph LR
 
 ---
 
-## 七、章节思考
+## 七、源码片段：业务能力建模实战
+
+> 🔧 **A1 源码片段**——本章给出业务能力 → 应用系统 → 限界上下文的**真实建模示例**，包括 ArchiMate 3.2 模型伪代码、JSON 能力元数据 schema，以及 Go/Java 风格的能力差距分析代码。
+
+### 7.1 战略能力 → 运营能力 → 支撑能力的层级关系
+
+业务能力地图遵循**三层层级**（Strategic → Operational → Supporting），这是 TOGAF Series Guide Business Capability Planning（2023）的官方推荐结构：
+
+```mermaid
+graph TB
+    subgraph SL["🎯 战略能力层 (Strategic Capabilities)"]
+        S1["客户体验 (Customer Experience)"]
+        S2["供应链韧性 (Supply Chain Resilience)"]
+        S3["数据驱动决策 (Data-Driven Decision)"]
+    end
+
+    subgraph OL["⚙️ 运营能力层 (Operational Capabilities)"]
+        O1["订单履约"]
+        O2["库存管理"]
+        O3["需求预测"]
+        O4["客户洞察"]
+    end
+
+    subgraph X1["🧱 支撑能力层 (Supporting Capabilities)"]
+        X1A["财务核算"]
+        X1B["人力资源"]
+        X1C["IT 运维"]
+        X1D["合规审计"]
+    end
+
+    S1 -.->|"支撑"| O1
+    S1 -.->|"支撑"| O4
+    S2 -.->|"支撑"| O1
+    S2 -.->|"支撑"| O2
+    S2 -.->|"支撑"| O3
+    S3 -.->|"支撑"| O3
+    S3 -.->|"支撑"| O4
+
+    O1 -.->|"依赖"| X1A
+    O1 -.->|"依赖"| X1C
+    O2 -.->|"依赖"| X1C
+    O3 -.->|"依赖"| X1B
+    O4 -.->|"依赖"| X1D
+
+    classDef strategic fill:#fce4ec,stroke:#c2185b,stroke-width:2px
+    classDef operational fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    classDef supporting fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    class S1,S2,S3 strategic
+    class O1,O2,O3,O4 operational
+    class X1A,X1B,X1C,X1D supporting
+```
+
+**层级关系的核心规则**：
+
+| 关系 | 方向 | 含义 |
+|------|------|------|
+| 战略 → 运营 | dashed（虚线） | 战略能力**分解**为运营能力（"客户体验"需要"订单履约"） |
+| 运营 → 支撑 | dashed（虚线） | 运营能力**依赖**支撑能力（"订单履约"需要"IT 运维"） |
+| 同层能力 | 不连线 | 同层能力之间是**协作关系**，通过价值流串联 |
+
+### 7.2 ArchiMate 3.2 建模示例
+
+ArchiMate 是 The Open Group 的**架构描述语言**（与 TOGAF 同源），用于把业务能力图变成可机读模型。下面用 ArchiMate 3.2 的伪 XML 描述"订单履约"这个能力的建模：
+
+```xml
+<!-- ArchiMate 3.2 建模：订单履约能力的完整示例 -->
+<archi:model xmlns:archi="http://www.opengroup.org/xsd/archimate/3.2/">
+
+  <!-- 1. 业务能力 (Business Capability) -->
+  <archi:element xsi:type="Capability" name="订单履约" id="cap-order-fulfillment">
+    <archi:properties>
+      <archi:property key="layer" value="Operational"/>
+      <archi:property key="maturity.current" value="L3"/>
+      <archi:property key="maturity.target" value="L5"/>
+      <archi:property key="owner" value="order@company.com"/>
+    </archi:properties>
+  </archi:element>
+
+  <!-- 2. 上游战略能力（realization 关系） -->
+  <archi:realization source="cap-customer-experience" target="cap-order-fulfillment"/>
+
+  <!-- 3. 服务的应用组件 (Application Component) -->
+  <archi:element xsi:type="ApplicationComponent" name="订单中心 OMS" id="app-oms">
+    <archi:properties>
+      <archi:property key="tech-stack" value="Spring Boot 3.x + PostgreSQL"/>
+    </archi:properties>
+  </archi:element>
+
+  <!-- 4. 应用服务 (Application Service) -->
+  <archi:element xsi:type="ApplicationService" name="订单服务" id="svc-order-api"/>
+
+  <!-- 5. 能力 → 应用服务 → 应用组件 的三层映射 -->
+  <archi:composition source="cap-order-fulfillment" target="svc-order-api"/>
+  <archi:realization source="svc-order-api" target="app-oms"/>
+
+  <!-- 6. 数据对象 (Data Object) -->
+  <archi:element xsi:type="DataObject" name="订单 Order" id="data-order">
+    <archi:properties>
+      <archi:property key="aggregate.root" value="true"/>
+      <archi:property key="bounded-context" value="Order"/>
+    </archi:properties>
+  </archi:element>
+
+  <!-- 7. 应用组件操作数据对象 -->
+  <archi:access source="app-oms" target="data-order" kind="write"/>
+
+</archi:model>
+```
+
+> 📌 **关键洞察**：在 ArchiMate 中，**业务能力是稳定的"为什么"**，**应用服务是"做什么"**，**应用组件是"用什么做"**。三层解耦让组织重构、业务调整时，能力地图不变，仅调整应用层即可。
+
+### 7.3 JSON 能力元数据 Schema
+
+如果团队没有 ArchiMate 工具链，可以用 JSON 元数据驱动能力地图（工具友好、易于导入 BI / Grafana）：
+
+```json
+{
+  "capabilities": [
+    {
+      "id": "cap-order-fulfillment",
+      "name": "订单履约",
+      "layer": "Operational",
+      "parent": "cap-customer-experience",
+      "maturity": { "current": 3, "target": 5, "gap": 2 },
+      "owner": "order@company.com",
+      "realizesApplicationServices": ["svc-order-api", "svc-inventory-api"],
+      "supportsValueStreams": ["vs-order-to-cash"],
+      "metrics": {
+        "leadTimeHours": 24,
+        "stockoutRate": 0.03,
+        "fulfillmentAccuracy": 0.985
+      }
+    },
+    {
+      "id": "cap-inventory-management",
+      "name": "库存管理",
+      "layer": "Operational",
+      "parent": "cap-supply-chain-resilience",
+      "maturity": { "current": 2, "target": 4, "gap": 2 },
+      "owner": "supply-chain@company.com",
+      "realizesApplicationServices": ["svc-wms-api"],
+      "supportsValueStreams": ["vs-order-to-cash"],
+      "metrics": {
+        "inventoryTurnover": 8.5,
+        "stockoutRate": 0.07
+      }
+    }
+  ]
+}
+```
+
+> 🎯 **使用建议**：把这份 JSON 导入 Archi 工具（如 Archi 5）即可一键生成可视化能力地图，导入 BI 工具可生成能力成熟度热力图。
+
+### 7.4 能力差距分析代码示例（Go）
+
+把"能力差距分析矩阵"自动化——读 JSON 元数据，自动计算差距并按投资优先级排序：
+
+```go
+// capability_gap.go —— TOGAF 10 能力差距分析
+package main
+
+import (
+    "encoding/json"
+    "fmt"
+    "sort"
+)
+
+type Capability struct {
+    ID       string  `json:"id"`
+    Name     string  `json:"name"`
+    Layer    string  `json:"layer"`
+    Maturity struct {
+        Current int `json:"current"`
+        Target  int `json:"target"`
+        Gap     int `json:"gap"`
+    } `json:"maturity"`
+    StrategicValue int `json:"strategicValue"` // 1-5，由战略委员会打分
+    Owner         string `json:"owner"`
+}
+
+// InvestmentPriority 投资优先级 = 战略价值 × 差距
+func (c *Capability) InvestmentPriority() int {
+    return c.StrategicValue * c.Maturity.Gap
+}
+
+func AnalyzeGap(data []byte) {
+    var caps []Capability
+    json.Unmarshal(data, &caps)
+
+    // 按投资优先级降序排序
+    sort.Slice(caps, func(i, j int) bool {
+        return caps[i].InvestmentPriority() > caps[j].InvestmentPriority()
+    })
+
+    fmt.Printf("%-30s %-8s %-8s %-6s %-8s\n",
+        "Capability", "Current", "Target", "Gap", "Priority")
+    fmt.Println("---------------------------------------------------------------------")
+    for _, c := range caps {
+        fmt.Printf("%-30s L%-7d L%-7d %-6d %-8d  (owner: %s)\n",
+            c.Name, c.Maturity.Current, c.Maturity.Target,
+            c.Maturity.Gap, c.InvestmentPriority(), c.Owner)
+    }
+}
+
+// 业务洞察：能力投资决策的 4 个原则
+// 1. 优先级 = 战略价值 × 差距（不仅是差距）
+// 2. L1→L3 的成本远低于 L4→L5（数字化的成本是指数增长）
+// 3. 能力地图每年至少复盘一次，与战略对齐
+// 4. 能力差距分析要进入投资委员会评审流程
+```
+
+### 7.5 能力 → 微服务的映射代码（Java 风格伪代码）
+
+业务能力落地为微服务时，常用的"1 个能力 = 1-3 个服务"模式：
+
+```java
+// CapabilityToMicroserviceMapping.java —— 业务能力 → 微服务的映射示例
+// 原则：按能力纵向切分，避免横向"数据服务/业务服务"
+
+public class OrderFulfillmentCapability implements BusinessCapability {
+
+    @Override
+    public String getName() { return "订单履约"; }
+
+    @Override
+    public List<Microservice> mapToMicroservices() {
+        return List.of(
+            // ❌ 错误做法：按技术分层划分（数据服务、业务服务）
+            // new Microservice("OrderDataService"),
+            // new Microservice("OrderBusinessService"),
+
+            // ✅ 正确做法：按业务能力纵向切分
+            new Microservice("OrderCommandService",   // 写操作
+                new Responsibility("下单、改单、取消")),
+            new Microservice("OrderQueryService",      // 读操作（CQRS）
+                new Responsibility("订单查询、状态追踪")),
+            new Microservice("OrderSagaService",       // 跨能力编排
+                new Responsibility("订单-支付-物流协同"))
+        );
+    }
+}
+
+// 康威定律校验：每个能力 → 1 个独立团队（Stream-aligned Team）
+// 团队规模 = 团队拓扑的 4 种类型之一（详见 [第三章：康威定律](conway-and-team-topology.md)）
+```
+
+> 🎯 **关键洞察**：业务能力稳定（5-10 年），但微服务可重构（1-2 年）。**让稳定的"能力"决定边界，让可变的"服务"快速迭代**——这是 TOGAF + DDD 联动给架构师的最大价值。
+
+---
+
+## 八、TOGAF 9 vs TOGAF 10 演进时间线
+
+> 🛠️ **A2 版本演进**——BCAT 字母排序的历史由来、Series Guide 的引入、数字化能力扩展，TOGAF 9 到 10 不是"版本号变化"，是**建模思维的根本转变**。
+
+### 8.1 TOGAF 演进大事记
+
+```mermaid
+timeline
+    title TOGAF 版本演进与业务能力建模的关键节点
+    1995 : TOGAF 1.0（美国国防部发布）
+    2009 : TOGAF 9.0 正式发布（商业化里程碑）
+    2011 : TOGAF 9.1（增量更新）
+    2016 : TOGAF 9.2 候选版
+    2018 : TOGAF 9.2 正式发布（最后一版单体文档）
+    2022 : TOGAF 10 发布（模块化重构 + AsciiDoc + Git）
+    2023 : Series Guide: Business Capability Planning
+    2023 : Series Guide: Information Architecture (BI & Analytics)
+    2023 : Series Guide: Information Architecture (Metadata Mgmt)
+    2024 : Series Guide: Environmentally Sustainable Info Systems
+    2024 : Series Guide: Architecture Roles and Skills
+    2024 : Series Guide: Selecting Building Blocks
+```
+
+> 📌 **来源**：The Open Group 官方发布记录（[pubs.opengroup.org/togaf-standard](https://pubs.opengroup.org/togaf-standard/)）
+
+### 8.2 BCAT 字母排序的历史由来
+
+**问题**：BCAT 的字母顺序是 **B → C → A → T**，不符合"业务先行"的逻辑顺序，为什么这么排？
+
+**答案**：这是 **TOGAF 9.0（2009）之前的历史遗留**，源自 Zachman Framework 的分类惯性：
+
+| 时代 | 排序来源 | 含义 |
+|------|---------|------|
+| **Zachman Framework（1987）** | 数据 → 功能 → 网络 → 人员 → 时间 → 动机 | 偏 IT 实现视角，**C 在 A 之前** |
+| **TOGAF 早期版本** | 直接借用了 Zachman 的"先数据后应用"思路 | "Data（信息系统）→ Application（应用）" |
+| **TOGAF 9.2（2018）** | 仍保留 BCAT 字母序，但强调 **B→C→A→T** 理解顺序 | 字母是历史，理解要反向 |
+| **TOGAF 10（2022）** | Series Guide 引入 **Business Capability Planning**，业务先行成为**显式方法论** | 业务能力图作为一切架构活动的起点 |
+
+> 🎯 **历史教训**：很多团队照搬 "B→C→A→T" 字母顺序建模，结果先做技术架构再补业务，**架构成了"先造后想"的产物**。TOGAF 10 用 Series Guide 把业务能力提到与 ADM 同等地位，正是为了修正这个偏差。
+
+### 8.3 Series Guide 引入时间线
+
+TOGAF 10 的最大创新是**模块化**——核心内容（Fundamental Content）稳定不变，扩展内容（Series Guide）持续增加：
+
+| Series Guide | 发布时间 | 解决的问题 |
+|-------------|:-------:|----------|
+| **Business Capability Planning** | 2023-12 | 业务能力识别的标准化 4 步法（识别→评估→差距→投资） |
+| **Value Stream** | 2023 | 价值流建模与业务能力的"穿越-支撑"关系 |
+| **Information Architecture: BI & Analytics** | 2023 | 把 BI/分析纳入架构治理 |
+| **Information Architecture: Metadata Management** | 2023 | 元数据治理标准化 |
+| **Environmentally Sustainable Information Systems** | 2024 | 可持续 IT（绿色数据中心、碳足迹） |
+| **Architecture Roles and Skills** | 2024 | 架构师能力模型与岗位定义 |
+| **Selecting Building Blocks** | 2024 | 构建块选型方法论 |
+
+> 📌 **关键洞察**：TOGAF 10 = 核心方法论（稳定）+ Series Guide（持续扩展）。**这与 DDD 的"核心域 + 支撑域"思想异曲同工**——核心不变，外延可扩展。
+
+### 8.4 TOGAF 9 vs TOGAF 10 关键差异对比
+
+| 维度 | TOGAF 9.x（2009-2018） | **TOGAF 10（2022）** | 演进意义 |
+|------|---------------------|---------------------|---------|
+| **发布** | 2009（9.0）/ 2018（9.2） | 2022-04 | 9 → 10 跨越 13 年，是方法论的**重大重构** |
+| **结构** | 单体 PDF（700+ 页） | **模块化**：Fundamental Content + Series Guides | 从"一本书"到"生态"，扩展性指数级提升 |
+| **业务能力定位** | 业务能力是 ADM 的一个 Phase E 产物 | **独立 Series Guide + 贯穿 ADM** | 业务能力从"可选项"升为"核心建模工具" |
+| **价值流** | 几乎不涉及 | **独立 Series Guide** | 与业务能力并列的核心建模工具 |
+| **BCAT 字母序** | 严格 B→C→A→T 字母顺序 | 字母顺序保留但强调**业务先行** | 显式纠正"先技术后业务"的反模式 |
+| **文档源** | Word + DocBook（编译慢、协作差） | **AsciiDoc + Git**（版本可控、社区协作） | 适配现代研发协作模式 |
+| **敏捷支持** | 偏瀑布，敏捷是"补丁" | **内置敏捷/数字化转型支持** + Open Agile Architecture Series | 拥抱 DevOps / Agile 主流 |
+| **数字化能力** | 几乎不涉及 | **新增数字开放标准组合**（IT4IT、ArchiMate 3.2、Open Agile Architecture） | 从"传统 EA"到"数字化 EA" |
+| **认证** | TOGAF 9 Certified | **TOGAF Enterprise Architecture Foundation / Practitioner** | 认证分层，适配不同角色 |
+| **总认证数** | 150,000+（171 个国家） | 持续增长（2025 已超 16,000+ 10.x 认证） | 用户群扩张 |
+
+### 8.5 数字化能力扩展：TOGAF 10 的"标准组合"
+
+TOGAF 10 把 The Open Group 的**数字开放标准组合**纳入整体方法论：
+
+```mermaid
+graph TB
+    T10["🏛️ TOGAF Standard v10<br/>（架构治理 + 业务能力建模）"]
+    T10 --> EA["📐 ArchiMate 3.2<br/>架构描述语言"]
+    T10 --> IT4IT["🔄 IT4IT 3.0<br/>IT 价值流参考架构"]
+    T10 --> OAA["🌊 Open Agile Architecture<br/>敏捷架构"]
+    T10 --> DDD["📦 DDD（外部参考）<br/>领域驱动设计"]
+
+    EA -.->|"为业务能力图提供建模语法"| T10
+    IT4IT -.->|"为 IT 能力建设提供价值流视角"| T10
+    OAA -.->|"为业务能力迭代提供敏捷节奏"| T10
+    DDD -.->|"为业务能力落地提供限界上下文"| T10
+
+    classDef core fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    classDef ext fill:#fff3e0,stroke:#f57c00
+    class T10,EA,IT4IT core
+    class OAA,DDD ext
+```
+
+| 标准 | 关注点 | 与 TOGAF 的关系 |
+|------|--------|---------------|
+| **ArchiMate 3.2** | 架构图可视化、模型交换 | 业务能力图的"标准语法"（详见 §7.2 建模示例） |
+| **IT4IT 3.0** | IT 部门自身的价值流（Request to Fulfill 等 4 流） | 业务能力图 + IT 能力图 = 完整能力地图（参考 [IT4IT 功能组件](../it4it/functional-components.md)） |
+| **Open Agile Architecture** | 敏捷环境下的架构实践 | 业务能力的**迭代节奏**与 Sprint 对齐 |
+| **DDD（外部参考）** | 领域驱动设计（Eric Evans 2003） | 业务能力 → 限界上下文 → 微服务的翻译（详见 [DDD](../ddd/README.md)） |
+
+> 🎯 **关键洞察**：TOGAF 10 不再是孤立的"EA 框架"，而是 **Open Group 标准生态的"治理入口"**。业务能力图与 ArchiMate 建模、IT4IT 价值流、DDD 限界上下文形成完整闭环。
+
+---
+
+## 九、章节思考
 
 1. **你的业务能力图能画出来吗**：先尝试列出 L1（5-10 个业务域）。如果列不出，组织的战略对齐有问题。
 2. **能力 vs 组织**：你的能力图是否被组织结构"污染"了？例如出现"产品部-研发部"这种"非能力"。
 3. **能力差距分析**：你对每个能力的成熟度有数吗？还是只能凭感觉说"这块不行"？
 4. **价值流 vs 流程图**：你的流程图是从客户价值出发，还是从部门职责出发？
+5. **TOGAF 9 → 10 的升级**：你的组织是否还在用"先技术后业务"的旧思路？业务能力图是否进入 ADM 的 Phase A（架构愿景）？
 
 ---
 
@@ -251,3 +616,11 @@ graph LR
 - ➡️ [下一篇：康威定律 + 团队拓扑](conway-and-team-topology.md)
 - [领域驱动设计 DDD](../ddd/README.md) — 业务能力 → 限界上下文的落地
 - [微服务架构](../microservices/README.md) — 能力拆分的服务化映射
+- [IT4IT 功能组件](../it4it/functional-components.md) — IT 能力的 9 大组件建模（与业务能力并列）
+- [ArchiMate 架构描述](../archimate/README.md) — 业务能力图的标准建模语言（见 §7.2 实战示例）
+- [架构认知的演进](../architecture-evolution/README.md) — OOD → DDD → TOGAF 的认知升级之路
+- [面向对象设计 OOD](../ood/README.md) — 业务能力最终落到类与方法的设计模式
+
+---
+
+← [返回: togaf](../README.md) | [返回: system-design-basics](../README.md) | [返回: 04.system-design](../../README.md)

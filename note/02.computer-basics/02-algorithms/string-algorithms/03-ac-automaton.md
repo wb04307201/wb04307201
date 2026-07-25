@@ -9,7 +9,7 @@ module:
 
 # AC 自动机（Aho-Corasick）· 多模式匹配
 
-> **一句话**：AC 自动机 = Trie（存所有 patterns）+ fail 指针（类似 KMP 的 next，单次扫描 O(n) 找出所有 patterns）。**敏感词过滤 99% 用这个**——10 万词典也能毫秒级匹配。
+> **一句话**：AC 自动机 = [Trie](01-trie-data-structure.md)（存所有 patterns）+ fail 指针（类似 [KMP](02-kmp-algorithm.md) 的 next），构建完成后只需扫描文本一次，即可找出所有模式串。
 
 ← [返回: string-algorithms 总目录](../README.md)
 
@@ -30,7 +30,23 @@ haystack = 用户评论 1000 字
 
 ### 1.2 AC 自动机方案
 
-**一次扫描**找出所有匹配 patterns → **O(n + Σ m + z)**（n=haystack 长度，Σ m = patterns 总长，z = 匹配数）
+一次扫描找出所有匹配。先定义变量：
+
+- `P = Σ|pattern_i|`：所有模式串的总长度
+- `n = |text|`：待匹配文本长度
+- `σ`：字符集大小（数组子节点实现中，每个节点预留 `σ` 个槽位）
+- `V`：Trie 节点数，最坏 `V ≤ P + 1`
+- `z`：输出的匹配结果数量
+
+在本文使用的 `HashMap` 子节点 + fail 链实现中，插入 Trie 访问每个模式字符一次；BFS 构建 fail 指针时，每个节点入队一次，失配跳转的代价按实现与输入分布而定。若使用完整转移表，把每个节点的 `σ` 个转移都预计算出来，则：
+
+| 阶段 | 时间复杂度 | 空间复杂度 | 推导 |
+|------|-----------|-----------|------|
+| 构建 | **O(P × σ)** | **O(P × σ)** | 最多 `P + 1` 个节点；每个节点初始化/补齐 `σ` 个转移 |
+| 匹配 | **O(n + z)** | O(1) 额外游标空间 | 每个文本字符只做一次状态转移；枚举命中结果另需 O(z) |
+| 仅判断是否命中 | **O(n)** | O(1) | 找到首个输出即可返回，不枚举全部结果 |
+
+因此，若不计输出结果，常写成“构建 `O(P × σ)`、匹配 `O(n)`、空间 `O(P × σ)`”；若必须返回全部命中，则总时间应写为 **O(P × σ + n + z)**。稀疏 `HashMap` 实现不为不存在的边分配槽位，节点与边主体空间可降为 O(P)，但常数、哈希开销和最坏跳转行为需要单独基准验证。
 
 ---
 
@@ -202,23 +218,31 @@ public class AhoCorasick {
 
 ---
 
-## 6. 性能基准
+## 6. 性能基准（保守口径）
 
-### 6.1 典型场景
+AC 自动机适合“百万级文本 + 千级模式串”的批量多模式匹配场景。此类场景中，**实测匹配时间常见于 5-50 ms**，但该区间只用于量级判断，不能当作跨环境承诺；结果取决于 CPU、内存、JVM 版本与 GC、字符集实现、词典前缀共享度、模式长度分布、文本命中率以及输出数量。
 
-| 场景 | 词典大小 | 文本长度 | AC 耗时 | 朴素耗时 |
-|------|---------|---------|---------|----------|
-| 评论过滤 | 10k | 500 | **2 ms** | 500 ms |
-| 弹幕审核 | 100k | 50 | **0.5 ms** | 200 ms |
-| 日志告警 | 1k | 10000 | **10 ms** | 5000 ms |
+可复现基准应至少记录：
 
-**性能提升 100-500x**。
+- 硬件：CPU 型号、核心数、内存容量
+- 运行时：JDK/JVM 版本、堆大小、GC 参数
+- 数据集：文本字符数、模式串数量、`P`、长度分布、字符分布与命中率
+- 方法：预热次数、正式迭代次数、吞吐量，以及 P50/P95/P99 延迟
+- 边界：构建耗时与匹配耗时分开统计，避免把词典加载混入单次查询
 
-### 6.2 内存占用
+以下 JMH 骨架展示统计口径；具体数字必须以目标机器和真实数据集的结果为准：
 
-- 词典 10k：~50 MB（朴素 Trie）
-- 词典 100k：~500 MB
-- **生产推荐**：用**双数组 Trie**（DoubleArrayTrie）压缩到 1/10
+```java
+@Benchmark
+public List<String> matchMillionCharacters(BenchmarkState state) {
+    // state.ac 已在 @Setup 中完成词典插入和 build，避免重复计入构建时间
+    return state.ac.match(state.text);
+}
+```
+
+### 6.1 内存评估
+
+内存不能仅由“词典条数”推出：同样是千级模式串，前缀共享度、平均长度、字符集和节点容器实现不同，节点数 `V` 与对象开销会显著变化。评估时应记录实际 `V`，并分别测量数组转移表、`HashMap` 稀疏边和双数组 Trie；生产选型以堆转储或 JOL/JMH 实测为准。
 
 ---
 
@@ -243,19 +267,23 @@ ac.match(text);
 child.output.addAll(child.fail.output);
 ```
 
-### ⚠️ 反模式 3：朴素 Trie（不压缩）
+### ⚠️ 反模式 3：未经测量就认定朴素 Trie 内存过高
 
 ```java
-// 词典 100k → 500 MB 内存
-// 生产必上：DoubleArrayTrie / AhoCorasickDoubleArrayTrie（hanlp）
+// 错：仅凭词典条数断言固定内存占用
+// 对：统计节点数 V，并在真实词典上比较 HashMap、数组转移表与双数组 Trie
 ```
 
-### ⚠️ 反模式 4：忘记中文分词
+### ⚠️ 反模式 4：把分词当作绕过字符的归一化
 
 ```java
-// 敏感词是 "黄色电影"，文本是 "黄 色 电 影"（带空格）→ 直接匹配失败
-// 解：在 Trie 建树前对文本做中文分词（IK Analyzer / HanLP）
+// 敏感词是 "黄色电影"，文本是 "黄​色 电 影"（零宽空格 + 分隔符）
+// 错：中文分词不能保证恢复被拆散的敏感词，分词边界反而可能继续保留拆分
+// 对：建树前与匹配前采用同一管线：Unicode NFKC 归一化、同形字符映射、
+//     移除业务允许忽略的分隔符（如零宽空格），同时保存原始位置映射供审计
 ```
+
+NFKC 只能折叠部分兼容字符，**不能自动解决所有跨文字系统同形字符**（如拉丁字母与西里尔字母的视觉混淆），因此同形字符映射必须基于业务风险维护白名单；移除分隔符也要限制范围，避免把正常文本拼接成误报。更完整的对抗策略见[变体绕过对抗](../../../04.system-design/04-high-performance/sensitive-word-filter/05-anti-evasion.md)。
 
 ### ⚠️ 反模式 5：忽略大小写 / 简繁
 
@@ -282,24 +310,10 @@ ac.insert("fuck");
 
 ## 9. 一句话总结
 
-> **AC 自动机 = Trie（建树）+ fail 指针（类似 KMP 的 next）+ output 链（合并匹配）= 多模式匹配 O(n+Σm+z)。敏感词过滤 99% 用 AC，双数组 Trie 实现可压到 1/10 内存。**
+> **AC 自动机 = Trie 建树 + fail 指针复用后缀状态 + output 输出命中。**完整转移表的构建与空间上界均为 O(P × σ)，匹配扫描为 O(n)，返回全部结果时还需 O(z)；真实性能必须在目标硬件、JVM 和数据分布上测量。
 
 > 🔗 **工程应用**：AC 自动机在高并发敏感词过滤系统中的完整落地（Bloom + 缓存 + 分布式 + [变体绕过对抗](../../../04.system-design/04-high-performance/sensitive-word-filter/05-anti-evasion.md)）见 [04.system-design/sensitive-word-filter 专题](../../../04.system-design/04-high-performance/sensitive-word-filter/README.md)。
 
 ---
 
-← [返回: string-algorithms 总目录](../README.md) · 上一章：[02-kmp-algorithm](02-kmp-algorithm.md)
-
-## 工业级开源库版本推荐
-
-| 库 | 当前版本 | 适用场景 | 性能参考 |
-|----|----------|----------|---------|
-| **HanLP** | hanlp ≥ 1.8.x | 中文综合 NLP | 1.8 起 AhoCorasickDoubleArrayTrie 实现稳定 |
-| **Apache Lucene** | ≥ 9.0 | 全文检索/搜索 | 内置 AhoCorasick automaton |
-| **elasticsearch-analysis-ik** | ≥ 8.0 | ES 中文分词 | 内部 AC 自动机 |
-| **Aho-Corasick Java** | ≥ 1.0 | 纯 AC 库 | 教学/原型 |
-
-**关键避坑**：
-- HanLP 1.7.x 之前 AhoCorasickDoubleArrayTrie 实现有 bug（内存泄漏），建议 1.8+
-- Lucene AC 内置功能有限（不输出 match 元数据），生产建议用 HanLP
-- 性能压测建议在 1M 文本 + 10K 模式串下测试，关注回溯 / 跳转延迟
+← [返回: string-algorithms 总目录](../README.md) · 上一章：[KMP 算法](02-kmp-algorithm.md) · 基础：[Trie 数据结构](01-trie-data-structure.md)
