@@ -149,21 +149,21 @@ module:
 
 # 八、[业务应用系统](08.application-systems/README.md)
 
-> 一份按业务价值链梳理的业务系统速查手册，覆盖 21 个常见业务系统（MES · ERP · SCM · WMS · APS · SCADA · PLM · PDM · QMS · CRM · EAM · SRM · OMS · SCRM · OA · MOM · TMS · LIMS · CMS · BI · PMS），帮助业务/产品/需求人员快速建立完整的业务系统认知地图，并具备日常速查能力。
+> 一份按业务价值链梳理的业务系统速查手册，覆盖 **31 个常见业务系统**（MES · ERP · SCM · WMS · APS · SCADA · PLM · PDM · QMS · CRM · EAM · SRM · OMS · SCRM · OA · MOM · TMS · LIMS · CMS · BI · PMS · HR · BPM · RPA · ITSM · MDM · 数据中台 · 电子签 · KM · 客服系统 · 低代码），帮助业务/产品/需求人员快速建立完整的业务系统认知地图，并具备日常速查能力。
 
 ## 章节导航
 
 | 序号 | 主题 | 核心内容 |
 |------|------|----------|
 | 1 | [业务价值链全景图](08.application-systems/README.md#-业务价值链全景图) | 研发创新 → 生产制造 → 供应链 → 销售服务 → 运营管理 → 专项支持 |
-| 2 | [01 研发创新](08.application-systems/README.md#01-研发创新) | PLM · PDM · CMS |
+| 2 | [01 研发创新](08.application-systems/README.md#01-研发创新) | PLM · PDM · CMS · **KM** |
 | 3 | [02 生产制造](08.application-systems/README.md#02-生产制造) | MES · MOM · APS · SCADA |
 | 4 | [03 供应链](08.application-systems/README.md#03-供应链) | SCM · SRM · WMS · TMS |
-| 5 | [04 销售服务](08.application-systems/README.md#04-销售服务) | CRM · SCRM · OMS |
-| 6 | [05 运营管理](08.application-systems/README.md#05-运营管理) | ERP · BI · EAM · OA · QMS |
-| 7 | [06 专项支持](08.application-systems/README.md#06-专项支持) | LIMS · PMS |
+| 5 | [04 销售服务](08.application-systems/README.md#04-销售服务) | CRM · SCRM · OMS · **客服系统** |
+| 6 | [05 运营管理](08.application-systems/README.md#05-运营管理) | ERP · BI · EAM · OA · QMS · **HR · BPM · RPA · MDM · 数据中台 · 电子签 · 低代码** |
+| 7 | [06 专项支持](08.application-systems/README.md#06-专项支持) | LIMS · PMS · **ITSM** |
 | 8 | [系统集成模式](08.application-systems/README.md#-系统集成模式) | 跨系统集成架构与模式 |
-| 9 | [系统速查表 + 学习路线](08.application-systems/README.md#-系统速查表) | 21 业务系统速查 + 入门/进阶/精通三段式学习路径 |
+| 9 | [系统速查表 + 学习路线](08.application-systems/README.md#-系统速查表) | **31 业务系统速查** + 入门/进阶/精通三段式学习路径 |
 
 # 九、[前端工程](09.front-end/README.md)
 

@@ -12,7 +12,7 @@ module:
 
 > 一份按业务价值链梳理的业务系统速查手册，帮助业务/产品/需求人员快速建立完整的业务系统认知地图，并具备日常速查能力。
 >
-> 覆盖 21 个常见业务系统：MES · ERP · SCM · WMS · APS · SCADA · PLM · PDM · QMS · CRM · EAM · SRM · OMS · SCRM · OA · MOM · TMS · LIMS · CMS · BI · PMS
+> 覆盖 **31 个常见业务系统**：MES · ERP · SCM · WMS · APS · SCADA · PLM · PDM · QMS · CRM · EAM · SRM · OMS · SCRM · OA · MOM · TMS · LIMS · CMS · BI · PMS · **HR · BPM · RPA · ITSM · MDM · 数据中台 · 电子签 · KM · 客服系统 · 低代码**
 
 ## 📑 目录
 
@@ -41,11 +41,11 @@ module:
 
 ```mermaid
 flowchart LR
-    A[01 研发创新<br/>PLM · PDM · CMS] --> B[02 生产制造<br/>MES · MOM · APS · SCADA]
+    A[01 研发创新<br/>PLM · PDM · CMS · KM] --> B[02 生产制造<br/>MES · MOM · APS · SCADA]
     B --> C[03 供应链<br/>SCM · SRM · WMS · TMS]
-    C --> D[04 销售服务<br/>CRM · SCRM · OMS]
-    D --> E[05 运营管理<br/>ERP · BI · EAM · OA · QMS]
-    E --> F[06 专项支持<br/>LIMS · PMS]
+    C --> D[04 销售服务<br/>CRM · SCRM · OMS · 客服系统]
+    D --> E[05 运营管理<br/>ERP · BI · EAM · OA · QMS<br/>HR · BPM · RPA<br/>MDM · 数据中台 · 电子签 · 低代码]
+    E --> F[06 专项支持<br/>LIMS · PMS · ITSM]
 ```
 
 业务价值链从"研发创新"出发，经"生产制造 → 供应链 → 销售服务"，收敛到"运营管理"，最后挂载"专项支持"作为跨场景补充。
@@ -56,12 +56,12 @@ flowchart LR
 
 | 编号 | 分组 | 系统 | 深读链接 |
 |------|------|------|---------|
-| 01 | [研发创新](./01-rd-innovation/README.md) | PLM · PDM · CMS | [PLM](./01-rd-innovation/plm/) · [PDM](./01-rd-innovation/pdm/) · [CMS](./01-rd-innovation/cms/) |
+| 01 | [研发创新](./01-rd-innovation/README.md) | PLM · PDM · CMS · **KM** | [PLM](./01-rd-innovation/plm/) · [PDM](./01-rd-innovation/pdm/) · [CMS](./01-rd-innovation/cms/) · **[KM](./01-rd-innovation/km/)** |
 | 02 | [生产制造](./02-production/README.md) | MES · MOM · APS · SCADA | [MES](./02-production/mes/) · [MOM](./02-production/mom/) · [APS](./02-production/aps/) · [SCADA](./02-production/scada/) |
 | 03 | [供应链](./03-supply-chain/README.md) | SCM · SRM · WMS · TMS | [SCM](./03-supply-chain/scm/) · [SRM](./03-supply-chain/srm/) · [WMS](./03-supply-chain/wms/) · [TMS](./03-supply-chain/tms/) |
-| 04 | [销售服务](./04-sales-service/README.md) | CRM · SCRM · OMS | [CRM](./04-sales-service/crm/) · [SCRM](./04-sales-service/scrm/) · [OMS](./04-sales-service/oms/) |
-| 05 | [运营管理](./05-operations/README.md) | ERP · BI · EAM · OA · QMS | [ERP](./05-operations/erp/) · [BI](./05-operations/bi/) · [EAM](./05-operations/eam/) · [OA](./05-operations/oa/) · [QMS](./05-operations/qms/) |
-| 06 | [专项支持](./06-specialized/README.md) | LIMS · PMS | [LIMS](./06-specialized/lims/) · [PMS](./06-specialized/pms/) |
+| 04 | [销售服务](./04-sales-service/README.md) | CRM · SCRM · OMS · **客服系统** | [CRM](./04-sales-service/crm/) · [SCRM](./04-sales-service/scrm/) · [OMS](./04-sales-service/oms/) · **[客服系统](./04-sales-service/call-center/)** |
+| 05 | [运营管理](./05-operations/README.md) | ERP · BI · EAM · OA · QMS · **HR · BPM · RPA · MDM · 数据中台 · 电子签 · 低代码** | [ERP](./05-operations/erp/) · [BI](./05-operations/bi/) · [EAM](./05-operations/eam/) · [OA](./05-operations/oa/) · [QMS](./05-operations/qms/) · **[HR](./05-operations/hr/)** · **[BPM](./05-operations/bpm/)** · **[RPA](./05-operations/rpa/)** · **[MDM](./05-operations/mdm/)** · **[数据中台](./05-operations/data-mesh/)** · **[电子签](./05-operations/e-signature/)** · **[低代码](./05-operations/low-code/)** |
+| 06 | [专项支持](./06-specialized/README.md) | LIMS · PMS · **ITSM** | [LIMS](./06-specialized/lims/) · [PMS](./06-specialized/pms/) · **[ITSM](./06-specialized/itsm/)** |
 
 ---
 
@@ -144,23 +144,33 @@ flowchart LR
 | 缩写 | 全称 | 一句话定位 | 价值链分组 | 📚 深读 |
 |---|---|---|---|---|
 | APS | Advanced Planning and Scheduling | 高级计划与排程 | 02 生产制造 | — |
-| BI | Business Intelligence | 商业智能/数据分析 | 05 运营管理 | — |
+| BI | Business Intelligence | 商业智能/数据分析 | 05 运营管理 | [深读](./05-operations/bi/) |
+| BPM | Business Process Management | 业务流程管理（流程引擎） | 05 运营管理 | [深读](./05-operations/bpm/) |
+| Call Center | Customer Service Center | 客服系统 / 多渠道接入 + 工单 + AI | 04 销售服务 | [深读](./04-sales-service/call-center/) |
 | CMS | Content Management System | 内容管理 | 01 研发创新 | — |
 | CRM | Customer Relationship Management | 客户关系管理 | 04 销售服务 | [深读](./04-sales-service/crm/) |
-| EAM | Enterprise Asset Management | 企业资产管理 | 05 运营管理 | — |
+| Data Mesh | Data Middle Platform | 数据中台（数据要素资产化） | 05 运营管理 | [深读](./05-operations/data-mesh/) |
+| EAM | Enterprise Asset Management | 企业资产管理 | 05 运营管理 | [深读](./05-operations/eam/) |
+| E-Signature | Electronic Signature | 电子签 / 电子签名（含 CA + 存证） | 05 运营管理 | [深读](./05-operations/e-signature/) |
 | ERP | Enterprise Resource Planning | 企业资源计划（核心） | 05 运营管理 | [深读](./05-operations/erp/) |
-| LIMS | Laboratory Information Management System | 实验室信息管理 | 06 专项支持 | — |
+| HR / HCM | Human Capital Management | 人力资本管理（员工全生命周期） | 05 运营管理 | [深读](./05-operations/hr/) |
+| ITSM | IT Service Management | IT 服务管理（IT 部门 ERP / ITIL 4） | 06 专项支持 | [深读](./06-specialized/itsm/) |
+| KM | Knowledge Management | 知识管理（Nonaka SECI / 知识图谱） | 01 研发创新 | [深读](./01-rd-innovation/km/) |
+| LIMS | Laboratory Information Management System | 实验室信息管理 | 06 专项支持 | [深读](./06-specialized/lims/) |
+| Low-Code | Low-Code Development Platform | 低代码 / aPaaS（可视化应用搭建） | 05 运营管理 | [深读](./05-operations/low-code/) |
+| MDM | Master Data Management | 主数据管理（客户/物料单一可信源） | 05 运营管理 | [深读](./05-operations/mdm/) |
 | MES | Manufacturing Execution System | 制造执行系统 | 02 生产制造 | [深读](./02-production/mes/) |
 | MOM | Manufacturing Operation Management | 制造运营管理 | 02 生产制造 | — |
-| OA | Office Automation | 办公自动化 | 05 运营管理 | — |
+| OA | Office Automation | 办公自动化 | 05 运营管理 | [深读](./05-operations/oa/) |
 | OMS | Order Management System | 订单管理 | 04 销售服务 | — |
 | PDM | Product Data Management | 产品数据管理 | 01 研发创新 | [深读](./01-rd-innovation/pdm/) |
 | PLM | Product Lifecycle Management | 产品生命周期管理 | 01 研发创新 | [深读](./01-rd-innovation/plm/) |
 | PMS | Project Management System | 项目管理 | 06 专项支持 | — |
-| QMS | Quality Management System | 质量管理 | 05 运营管理 | — |
+| QMS | Quality Management System | 质量管理 | 05 运营管理 | [深读](./05-operations/qms/) |
+| RPA | Robotic Process Automation | 机器人流程自动化（最后一公里） | 05 运营管理 | [深读](./05-operations/rpa/) |
 | SCADA | Supervisory Control And Data Acquisition | 设备监控与数据采集 | 02 生产制造 | — |
 | SCRM | Social Customer Relationship Management | 社交化客户关系 | 04 销售服务 | — |
-| SCM | Supply Chain Management | 供应链管理 | 03 供应链 | — |
+| SCM | Supply Chain Management | 供应链管理 | 03 供应链 | [深读](./03-supply-chain/scm/) |
 | SRM | Supplier Relationship Management | 供应商关系管理 | 03 供应链 | — |
 | TMS | Transportation Management System | 运输管理 | 03 供应链 | — |
 | WMS | Warehouse Management System | 仓储管理 | 03 供应链 | [深读](./03-supply-chain/wms/) |
