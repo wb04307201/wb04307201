@@ -54,6 +54,53 @@ class TrieNode {
 }
 ```
 
+### 1.4 节点结构图：共享前缀如何落到节点
+
+Trie 的根节点不代表任何字符，只负责保存第一层入口；真正的单词从根向下的一条路径表示。`isEnd` 必须放在节点上，而不是边上，因为 `app` 既可能是完整单词，也可能只是 `apple` 的前缀。
+
+```mermaid
+classDiagram
+    class Trie {
+        -TrieNode root
+        +insert(word)
+        +search(word) bool
+        +startsWith(prefix) bool
+        +delete(word) bool
+    }
+    class TrieNode {
+        +TrieNode[] children26
+        +Map~Character, TrieNode~ childrenMap
+        +boolean isEnd
+        +int terminalCount
+    }
+    Trie --> TrieNode : root
+    TrieNode "1" --> "0..26" TrieNode : children[26]（数组版）
+    TrieNode "1" --> "0..*" TrieNode : childrenMap（HashMap 版）
+```
+
+> `children26` 与 `childrenMap` 是两种互斥的子节点表示，不应在同一个生产节点里同时分配。`terminalCount` 比单独的 `isEnd` 多表达一层语义：重复插入同一个词时可以按次数删除；`terminalCount > 0` 等价于 `isEnd = true`。
+
+```mermaid
+flowchart LR
+    R[Root 根节点] --> A[字符 a]
+    A --> P[字符 p]
+    P --> E1[字符 p<br/>terminalCount=1]
+    E1 --> L[字符 l]
+    L --> E2[字符 e<br/>terminalCount=1]
+    E1 --> Y[字符 y<br/>terminalCount=1]
+    E1 -. 共享前缀 .-> E2
+```
+
+上图插入 `app`、`apple`、`apply` 后，`app` 节点同时是一个终点和两个更长单词的分叉点。查询 `app` 不能因为它还有子节点就返回 false；删除 `app` 也不能把 `a-p-p` 节点直接剪掉，否则会误删 `apple` 和 `apply`。
+
+| 选择 | 子节点表达 | 单次转移 | 空间特征 | 适合场景 |
+|------|-----------|---------|---------|----------|
+| 数组版 | `children[26]`，字符映射到 `0..25` | O(1) | 每个节点预留 26 个引用，稀疏节点浪费明显 | 仅小写英文、极致吞吐、AC 自动机 |
+| HashMap 版 | `Map<Character, Node>` | 平均 O(1) | 只为实际存在的边分配，节点对象和哈希表有额外开销 | 中文、Unicode、字符集动态变化 |
+| 压缩版 | radix edge / Double-Array Trie | 近似 O(1) | 合并单分支路径，构建复杂但内存更低 | 只读大词典、服务启动后不频繁修改 |
+
+一个容易忽略的空间公式是：数组版空间约为 `节点数 × 26 × 引用大小`，并不是 `词条总长度`；HashMap 版空间约为“实际边数 + 每个节点的对象/桶开销”。因此“数组访问快”不等于“数组版总是更省内存”。
+
 ---
 
 ## 2. Trie 完整实现（HashMap 版 / Java）

@@ -1,6 +1,17 @@
+<!--
+module:
+  parent: java
+  slug: java/collection/concurrent
+  type: article
+  category: 主模块子文章
+  summary: Java 并发集合原理与选型，覆盖 ConcurrentHashMap、CopyOnWriteArrayList、阻塞队列及常见并发陷阱。
+-->
+
 # 并发集合
 
 > 目标：搞懂 ConcurrentHashMap 的实现原理，以及 Java 并发场景下各种集合类的选型。
+>
+> **系列导航**：[collection 系列索引](README.md) · [ArrayList](ArrayList/README.md) · [HashMap](hashmap.md) · [LinkedList](LinkedList/README.md) · [ConcurrentHashMap 专题](ConcurrentHashMap/README.md)
 
 ---
 
@@ -144,25 +155,44 @@ JDK 8：baseCount + CounterCell[]（类似 LongAdder 的分段计数）
 ### JDK 8 的计数机制
 
 ```java
-```java
-// 核心字段
-private transient volatile long baseCount;           // 基础计数
-private transient volatile CounterCell[] counterCells; // 分段计数数组
-```text
+// OpenJDK 8 ConcurrentHashMap 的核心计数字段
+private transient volatile long baseCount;
+private transient volatile CounterCell[] counterCells;
+
+// size() 先汇总计数，再把结果截断到 int 范围
+public int size() {
+    long n = sumCount();
+    return ((n < 0L) ? 0 :
+            (n > (long) Integer.MAX_VALUE) ? Integer.MAX_VALUE :
+            (int) n);
+}
+
+final long sumCount() {
+    CounterCell[] as = counterCells;
+    long sum = baseCount;
+    if (as != null) {
+        for (CounterCell a : as) {
+            if (a != null)
+                sum += a.value;
+        }
+    }
+    return sum;
+}
+```
 
 ```text
-// 计数逻辑（伪代码）
-addCount(1L, resizeThreshold):
+addCount(1L, resizeThreshold)：
   1. 先 CAS 更新 baseCount
   2. 如果 CAS 失败（有竞争）→ 使用 CounterCell[] 分段计数
   3. 如果 CounterCell 也竞争失败 → 扩容 CounterCell 数组
-
-// size() = baseCount + sum(counterCells)
-// mappingCount() 返回 long，size() 返回 int（可能溢出）
-```text
 ```
 
+**准确性边界要看源码语义**：`size()` 的确调用 `sumCount()` 汇总 `baseCount + Σ CounterCell.value`，不是抽样估算；但汇总过程没有锁住所有写线程。读取不同 cell 之间仍可发生 `put/remove`，所以并发更新期间返回值是一个**瞬时观测值**，不承诺对应某个全局线性化时刻。它适合监控和容量观察，不适合用作“先判断再执行”的并发控制条件。
+
+`mappingCount()` 使用同一份 `sumCount()`，只是不把结果截断为 `Integer.MAX_VALUE`，并不因此获得更强的一致性保证。
+
 **为什么不用 AtomicInteger**：
+
 ```text
 AtomicInteger 在高并发下 CAS 竞争激烈。
 CounterCell[] 把计数分散到多个槽位，减少竞争。
@@ -281,29 +311,69 @@ map.putIfAbsent("A", 1);
 新读线程看到新数组。
 ```
 
-### 源码关键（JDK 8 实现，JDK 11+ 改用 synchronized + CAS）
+### 写锁演进：JDK 8 vs JDK 11+
+
+写时复制策略没有改变，变化的是**写操作的互斥实现**。JDK 8 使用 `ReentrantLock`；JDK 11 将锁字段改为普通 `Object`，写方法使用 JVM 内置的 `synchronized`。这里没有用 CAS 完成整次写入：复制数组与发布新数组必须作为一个互斥临界区，否则两个写线程可能基于同一旧数组复制，造成更新丢失。
 
 ```java
-// JDK 8 写操作（以 add 为例）
+// OpenJDK 8：显式 ReentrantLock
+final transient ReentrantLock lock = new ReentrantLock();
+
 public boolean add(E e) {
     final ReentrantLock lock = this.lock;
     lock.lock();
     try {
-        Object[] elements = getArray();       // 获取当前数组
-        Object[] newElements = Arrays.copyOf(elements, len + 1);  // 复制
-        newElements[len] = e;                  // 修改副本
-        setArray(newElements);                 // volatile 写，替换引用
+        Object[] elements = getArray();
+        int len = elements.length;
+        Object[] newElements = Arrays.copyOf(elements, len + 1);
+        newElements[len] = e;
+        setArray(newElements);       // volatile 发布新数组
         return true;
     } finally {
         lock.unlock();
     }
 }
+```
 
-// 读操作
-public E get(int index) {
-    return get(getArray(), index);  // 直接读，无锁
+```java
+// OpenJDK 11+：普通锁对象 + synchronized
+final transient Object lock = new Object();
+
+public boolean add(E e) {
+    synchronized (lock) {
+        Object[] es = getArray();
+        int len = es.length;
+        es = Arrays.copyOf(es, len + 1);
+        es[len] = e;
+        setArray(es);                // volatile 发布新数组
+        return true;
+    }
 }
 ```
+
+| 对比项 | JDK 8 | JDK 11+ |
+|---|---|---|
+| 锁字段 | `ReentrantLock` | `Object` |
+| 写入临界区 | `lock()/unlock()` + `finally` | `synchronized (lock)` |
+| 公平锁/可中断锁能力 | 实现中未开放给调用方 | 不提供 |
+| 核心语义 | 锁内复制并发布 | 锁内复制并发布 |
+
+> **演进原因**：该内部锁只需要不可重入控制之外的基本互斥，不使用 `Condition`、公平性、可中断获取等 `ReentrantLock` 扩展能力；改用 `synchronized` 可简化代码，并直接受益于 JVM 对内置锁的持续优化。不要据此推导“所有场景 synchronized 都一定更快”，性能仍需按目标 JDK 和负载用 JMH 验证。
+
+### 读操作与快照迭代器
+
+```java
+public E get(int index) {
+    return elementAt(getArray(), index);  // volatile 读数组引用，无锁
+}
+
+// 迭代器创建时捕获当时的数组引用
+public Iterator<E> iterator() {
+    return new COWIterator<E>(getArray(), 0);
+}
+```
+
+普通 `get()` 每次读取当前数组；迭代器则固定遍历创建时捕获的不可变数组快照。因此后续写入不会抛 `ConcurrentModificationException`，也一定不会出现在这个既有迭代器里。它常被笼统归入 fail-safe/弱一致遍历，但语义上要与 `ConcurrentHashMap` 区分：前者是**固定快照**，后者的弱一致迭代可能观察到部分并发更新。
 
 ### 优缺点
 
@@ -477,47 +547,90 @@ map.subMap("apple", "cherry");   // {apple=1, banana=2}
 
 ---
 
-## 十一、常见误区
+## 十一、实战陷阱
 
-### 1. size() 的值可能迅速过期
-
-```java
-// size() 返回的是调用瞬间的精确快照（baseCount + Σ CounterCell），不是近似计算
-// 但在高并发下，返回后这个值可能已经被其他线程修改了
-// 元素可能超过 int 范围时用 mappingCount()（返回 long，避免溢出）
-long count = map.mappingCount();
-```
-
-### 2. 迭代器是弱一致性的
+### 1. 把 size() 当作并发控制条件
 
 ```java
-// 遍历时其他线程修改不会抛 ConcurrentModificationException
-// 但可能看到也可能看不到修改
-for (String key : map.keySet()) {
-    // key 可能在遍历时被其他线程删除或修改
+// ❌ 错误：size() 与后续 put 是两个独立操作，且并发汇总不提供全局快照
+if (map.size() < limit) {
+    map.put(key, value);             // 多个线程都可能通过检查，最终突破 limit
+}
+
+// ✅ 正确：容量是硬约束时，在同一把锁/信号量协议下完成判断与占位
+if (permits.tryAcquire()) {
+    V old = map.putIfAbsent(key, value);
+    if (old != null) {
+        permits.release();           // key 已存在，没有新增槽位
+    }
 }
 ```
 
-### 3. 复合操作不是原子的
+源码中的 `size()` 汇总 `baseCount + Σ CounterCell.value`，所以它不是随机近似值；但遍历计数槽时写线程仍可更新不同槽位，结果不承诺是线性一致快照。`mappingCount()` 解决的是 `int` 上限问题，不解决一致性问题。
+
+### 2. 混淆两类并发迭代器
 
 ```java
-// 错误：check-then-act 不是原子的
-if (map.containsKey("A")) {
-    map.put("A", map.get("A") + 1);  // 两步之间可能被其他线程修改
-}
+CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
+list.add("A");
+Iterator<String> snapshot = list.iterator();
+list.add("B");
+// snapshot 只遍历创建时数组中的 "A"，一定看不到后来加入的 "B"
 
-// 正确：用原子方法
-map.compute("A", (k, v) -> v == null ? 1 : v + 1);
-// 或
+ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
+map.put("A", 1);
+Iterator<String> weak = map.keySet().iterator();
+map.put("B", 2);
+// weak 不抛 CME；可能看到也可能看不到并发加入的 "B"
+```
+
+两者都不会抛 `ConcurrentModificationException`，但保证不同：CopyOnWriteArrayList 是**确定的旧快照**；ConcurrentHashMap 是**弱一致遍历**，会反映迭代器创建时或创建后的部分状态，而且元素不会被重复返回。
+
+### 3. 误以为线程安全集合让复合操作自动原子化
+
+```java
+// ❌ 错误：get 与 put 各自线程安全，组合后仍会丢更新
+map.put("A", map.getOrDefault("A", 0) + 1);
+
+// ✅ 正确：把读-改-写交给容器的原子方法
 map.merge("A", 1, Integer::sum);
+map.compute("B", (k, v) -> v == null ? 1 : v + 1);
 ```
 
-### 4. 不要用 Collections.synchronizedMap 包 ConcurrentHashMap
+`compute*` / `merge` 的回调在原子更新协议内执行，应保持短小，避免阻塞 I/O、递归更新同一个 key 或执行不可控的用户代码。
+
+### 4. 给 ConcurrentHashMap 再套 synchronizedMap
 
 ```java
-// 错误：无意义的包装，反而降低性能
-Map<String, Integer> badMap = Collections.synchronizedMap(new ConcurrentHashMap<>());
+// ❌ 无意义的全表包装，增加锁竞争
+Map<String, Integer> badMap =
+        Collections.synchronizedMap(new ConcurrentHashMap<>());
 
-// 正确：ConcurrentHashMap 本身已经线程安全，直接用即可
-Map<String, Integer> goodMap = new ConcurrentHashMap<>();
+// ✅ 直接使用容器提供的并发与原子 API
+ConcurrentHashMap<String, Integer> goodMap = new ConcurrentHashMap<>();
 ```
+
+### 5. 忽视负载模型，凭“线程安全”三个字选集合
+
+| 负载 | 推荐 | 原因与代价 |
+|---|---|---|
+| List 读远多于写、规模可控 | `CopyOnWriteArrayList` | 读无锁、快照迭代；每次写 O(n) 复制并产生旧数组垃圾 |
+| List 写频繁或数组很大 | 锁保护的 `ArrayList`，或重审数据结构 | 避免每次写全量复制；遍历时必须遵守同一锁协议 |
+| Map 高并发读写 | `ConcurrentHashMap` | 读基本无锁、桶级写协调；批量快照需另行同步 |
+| 有界生产者-消费者 | `ArrayBlockingQueue` | 固定容量提供背压，数组复用、GC 压力较低 |
+| 非阻塞事件缓冲 | `ConcurrentLinkedQueue` | CAS 高吞吐，但没有容量背压，消费者需处理空轮询 |
+
+性能不能只比较单次 `get()`：CopyOnWriteArrayList 的一次写会分配并复制 `n + 1` 长度数组，旧迭代器还会延长旧数组生命周期；写比例、集合规模、分配率和 GC 暂停必须一起衡量。应针对目标 JDK 用 JMH 模拟真实读写比例，而不是引用脱离环境的固定倍数。
+
+---
+
+## 十二、章节互链
+
+- 先读 [ArrayList 源码剖析](ArrayList/README.md)，对比普通动态数组与 CopyOnWriteArrayList 的复制成本、fail-fast / 快照迭代语义。
+- 结合 [HashMap 深入](hashmap.md)，理解 ConcurrentHashMap 为什么沿用“数组 + 链表 + 红黑树”又必须改造写入、扩容和计数协议。
+- 对照 [LinkedList 源码剖析](LinkedList/README.md)，区分普通双向链表、`ConcurrentLinkedDeque` 与阻塞队列的场景边界。
+- 完整专题入口见 [Java collection 系列索引](README.md)，ConcurrentHashMap 的独立展开见 [ConcurrentHashMap 专题](ConcurrentHashMap/README.md)。
+
+---
+
+← [返回: collection](../README.md) | [返回: 01.java](../../README.md)
