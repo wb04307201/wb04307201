@@ -931,4 +931,5 @@ int cp = word.codePointAt(i);
 相关章节：
 - [KMP 算法](02-kmp-algorithm.md)（单模式匹配）
 - [AC 自动机](03-ac-automaton.md)（Trie + fail 指针的多模式匹配）
-- [Z 算法](04-z-algorithm.md)（若该章节已创建）
+
+<!-- 04-z-algorithm.md 暂未创建，后续按系列扩展需要时再补充。 -->
