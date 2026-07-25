@@ -819,6 +819,11 @@ graph TD
 - [会自我进化的厨房](./27-self-evolving-company.md) —— Agent Loop 驱动的架构自演进，系统可以自我修复和优化
 - [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) —— AI 幻觉对架构设计的影响，需要在架构层面预留 AI 安全护栏
 
+
+- [29-codebase-cognitive-debt](29-codebase-cognitive-debt.md)
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
+- [STORY-FORMAT-SPEC](STORY-FORMAT-SPEC.md)
 ## 跨章节衔接
 
 - [04-peak-traffic-defense.md](./04-peak-traffic-defense.md) —— 正传 1，架构演进的高可用目标在流量治理中的具体落地：限流、熔断、降级是架构成熟度的试金石

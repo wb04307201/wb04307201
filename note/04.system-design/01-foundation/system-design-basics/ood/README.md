@@ -120,4 +120,8 @@ OOD 是**战术层面的基础技能**——它教会我们如何写出高内聚
 - [架构认知的演进](../architecture-evolution/README.md) — OOD → DDD → TOGAF
 - [领域驱动设计 DDD](../ddd/README.md) — 以业务领域为核心的建模方法
 
+
+- [functional-components](../it4it/functional-components.md)
+- [architecture-governance](../togaf/architecture-governance.md)
+- [business-capability](../togaf/business-capability.md)
 ← [返回系统设计基础](../README.md)

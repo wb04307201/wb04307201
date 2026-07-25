@@ -328,6 +328,17 @@ graph TD
 - [会自我进化的厨房](./27-self-evolving-company.md) —— 自进化组织中的持续学习，组织也在像个人一样不断成长
 - [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) —— AI 幻觉对学习者的挑战，学会辨别 AI 错误是新的学习能力
 
+
+- [note](../README.md)
+- [vibe-coding](../09.front-end/09-frontend-and-ai/vibe-coding/README.md)
+- [30-agent-harness](30-agent-harness.md)
+- [32b-ai-evaluation-pipeline](32b-ai-evaluation-pipeline.md)
+- [33a-mcp-protocol](33a-mcp-protocol.md)
+- [33b-a2a-protocol](33b-a2a-protocol.md)
+- [34b-ai-token-cost-optimization](34b-ai-token-cost-optimization.md)
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
+- [12.story](README.md)
 ## 跨章节衔接
 
 - [27-ai-org-transformation.md](./25-ai-org-transformation.md) —— 续集三，学徒困境在组织层面的映射：组织学习比个人学习更复杂

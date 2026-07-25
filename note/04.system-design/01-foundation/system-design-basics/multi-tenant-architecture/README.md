@@ -406,4 +406,8 @@ SentinelApiClient.registerDynamicRule(...);
 
 > 📅 2026-07-13 · 主模块 · 04.system-design · ⭐⭐⭐⭐⭐ · 6 隔离模型 + 4 应用层 + 5 反模式 + PostgreSQL RLS + 4 大厂实战 + 6 参考来源
 
+## 反向链
+
+- [02-system-architecture-evolution](../../../../12.story/02-system-architecture-evolution.md)
+
 ← [返回: 系统设计基础](../README.md)

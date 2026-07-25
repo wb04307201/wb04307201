@@ -488,6 +488,12 @@ ID Token 是一个签名的 JWT，包含用户身份信息：
 - [API 安全](../api-security/README.md) — Bearer Token 传输、签名验证、防重放
 - [权限模型 RBAC / ABAC](../access-control/02-role-and-attribute/README.md) — Token 中携带的 scope / role 如何消费
 
+
+- [dac](../access-control/01-traditional/dac.md)
+- [abac](../access-control/02-role-and-attribute/abac.md)
+- [rbac](../access-control/02-role-and-attribute/rbac.md)
+- [rebac](../access-control/03-relationship-and-hybrid/rebac.md)
+- [gateway](../../../06.spring/05-spring-cloud/gateway.md)
 ## 参考资料
 
 - [RFC 6749 - The OAuth 2.0 Authorization Framework](https://tools.ietf.org/html/rfc6749)

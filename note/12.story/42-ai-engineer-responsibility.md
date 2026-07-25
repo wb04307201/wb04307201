@@ -178,4 +178,12 @@ story:
 
 > 📅 2026-06-28 · 续集 18 · AI 时代反思 · 阿明餐厅
 
+## 反向链
+
+- [25-ai-org-transformation](25-ai-org-transformation.md)
+- [39-ai-private-deployment](39-ai-private-deployment.md)
+- [41-multimodal-ai](41-multimodal-ai.md)
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
+
 ← [返回系列导读](./index.md)

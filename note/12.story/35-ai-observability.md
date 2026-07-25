@@ -486,6 +486,16 @@ graph TB
 
 ---
 
+
+- [16-performance-optimization](16-performance-optimization.md)
+- [36-rag-retrieval-augmented-generation](36-rag-retrieval-augmented-generation.md)
+- [37-vector-database-and-embedding](37-vector-database-and-embedding.md)
+- [38-ai-compliance-and-regulation](38-ai-compliance-and-regulation.md)
+- [39-ai-private-deployment](39-ai-private-deployment.md)
+- [40-prompt-engineering](40-prompt-engineering.md)
+- [41-multimodal-ai](41-multimodal-ai.md)
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
 ## 跨章节衔接
 
 - 11.ai/02-technology-stack/README.md —— AI 技术栈 —— AI Observability 在 AI 技术栈中的位置

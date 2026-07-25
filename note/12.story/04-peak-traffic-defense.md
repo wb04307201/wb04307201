@@ -442,6 +442,9 @@ graph TD
 - [会自我进化的厨房](./27-self-evolving-company.md) —— Agent Loop 自动化的流量预测和弹性伸缩决策
 - [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) —— AI 幻觉导致的异常流量风险，错误推荐可能引发突发流量
 
+
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
 ## 跨章节衔接
 
 - [05-observability.md](./05-observability.md) —— 正传 2，流量治理的效果需要可观测性验证：限流后的真实流量分布、熔断触发频次

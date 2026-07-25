@@ -317,6 +317,19 @@ graph TD
 - [会自我进化的厨房](./27-self-evolving-company.md) —— Agent Loop 是 Agent 架构从单体到自进化的组织级延伸
 - [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) —— AI 幻觉与安全护栏，Agent 第七章安全层的深入展开
 
+
+- [note](../README.md)
+- [sensitive-word-filter](../04.system-design/04-high-performance/sensitive-word-filter/README.md)
+- [05-applications](../11.ai/05-applications/README.md)
+- [29-codebase-cognitive-debt](29-codebase-cognitive-debt.md)
+- [31-ai-fatal-trio](31-ai-fatal-trio.md)
+- [32a-ai-evaluation-fundamentals](32a-ai-evaluation-fundamentals.md)
+- [32b-ai-evaluation-pipeline](32b-ai-evaluation-pipeline.md)
+- [33a-mcp-protocol](33a-mcp-protocol.md)
+- [33b-a2a-protocol](33b-a2a-protocol.md)
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
+- [12.story](README.md)
 ## 跨章节衔接
 
 - [32-agent-harness.md](./30-agent-harness.md) —— 续集八，Agent 架构在工程化 Harness 中的落地：上下文管理、工具调用、循环控制

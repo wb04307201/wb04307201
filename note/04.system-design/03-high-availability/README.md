@@ -73,6 +73,8 @@ graph TD
 
 ---
 
+
+- [batch](../../06.spring/06-integration/batch.md)
 ## 📊 本节统计
 
 | 子目录 | leaf 主题数 | 备注 |

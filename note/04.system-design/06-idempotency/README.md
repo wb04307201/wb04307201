@@ -126,6 +126,8 @@ module:
 
 ---
 
+
+- [seckill-without-redis](../03-high-availability/rate-limiting/seckill-without-redis.md)
 ## 📊 本节统计
 
 | 子目录 | leaf 主题数 | 备注 |

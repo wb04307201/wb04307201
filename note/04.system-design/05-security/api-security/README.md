@@ -786,6 +786,10 @@ public class GlobalExceptionHandler {
 - [加密与密钥管理](../encryption/README.md) — HTTPS / 签名背后的密码学基础
 - [Spring Cloud Gateway JWT 鉴权实现](../../../06.spring/05-spring-cloud/gateway.md) — 网关层接入点与上下文透传实战
 
+
+- [dac](../access-control/01-traditional/dac.md)
+- [abac](../access-control/02-role-and-attribute/abac.md)
+- [rbac](../access-control/02-role-and-attribute/rbac.md)
 ## 参考资料
 
 - [OWASP API Security Top 10](https://owasp.org/www-project-api-security/)

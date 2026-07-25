@@ -326,6 +326,13 @@ graph TD
 - [会自我进化的厨房](./27-self-evolving-company.md) —— Agent Loop 的工具层 API，Agent 通过确定性 API 与世界交互
 - [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) —— AI 幻觉对 API 响应的影响，API 设计需要预留 AI 错误的处理空间
 
+
+- [29-codebase-cognitive-debt](29-codebase-cognitive-debt.md)
+- [30-agent-harness](30-agent-harness.md)
+- [31-ai-fatal-trio](31-ai-fatal-trio.md)
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
+- [12.story](README.md)
 ## 跨章节衔接
 
 - [08-qa-testing-strategy.md](./08-qa-testing-strategy.md) —— 正传 4，API 契约测试是测试策略的接口层落地：契约即文档，文档即测试

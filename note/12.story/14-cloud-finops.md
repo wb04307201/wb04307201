@@ -306,6 +306,12 @@ graph TD
 - [会自我进化的厨房](./27-self-evolving-company.md) —— Burn Tokens 的成本控制，Agent Loop 的 Token 消耗需要 FinOps 思维
 - [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) —— AI 幻觉修复的隐性成本，错误输出的修复成本应纳入成本核算
 
+
+- [34a-ai-token-cost-structure](34a-ai-token-cost-structure.md)
+- [34b-ai-token-cost-optimization](34b-ai-token-cost-optimization.md)
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
+- [12.story](README.md)
 ## 跨章节衔接
 
 - [19-saas-multitenant.md](./18-saas-multitenant.md) —— 番外三，SaaS 多租户的成本分摊与 FinOps：每租户的成本可视化、计费基础

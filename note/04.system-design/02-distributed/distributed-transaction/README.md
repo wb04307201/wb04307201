@@ -109,6 +109,8 @@ module:
 - [分布式 ID](../distributed-id/README.md) — 事务/消息的唯一标识
 - Spring 集成与 Seata 配置示例见 [06.spring/03-data/transaction/distributed/](../../../06.spring/03-data/transaction/distributed/) 章节
 
+
+- [theory-and-patterns](../../../06.spring/03-data/transaction/distributed/theory-and-patterns.md)
 ## 参考链接
 
 - [Seata 官方文档](https://seata.apache.org/zh-cn/docs/overview/what-is-seata)

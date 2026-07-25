@@ -710,6 +710,19 @@ graph TD
 - 11.ai/03-engineering/ai-platforms/README.md —— Dify/Coze/LangGraph 平台对比 —— Harness 设计可借鉴的工程化思路
 - 11.ai/04-architecture/bpmn-ai-integration.md —— BPMN+AI 融合 —— Agent Harness 在工作流引擎中的落地形态
 
+
+- [23-lowcode-platform](23-lowcode-platform.md)
+- [31-ai-fatal-trio](31-ai-fatal-trio.md)
+- [32a-ai-evaluation-fundamentals](32a-ai-evaluation-fundamentals.md)
+- [32b-ai-evaluation-pipeline](32b-ai-evaluation-pipeline.md)
+- [33a-mcp-protocol](33a-mcp-protocol.md)
+- [33b-a2a-protocol](33b-a2a-protocol.md)
+- [34a-ai-token-cost-structure](34a-ai-token-cost-structure.md)
+- [34b-ai-token-cost-optimization](34b-ai-token-cost-optimization.md)
+- [35-ai-observability](35-ai-observability.md)
+- [45-skill-scheduling-restaurant](45-skill-scheduling-restaurant.md)
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
 ## 跨章节衔接
 
 - [01-ai-agent-architecture.md](./01-ai-agent-architecture.md) —— 续集一，Harness 是 Agent 架构的工程化封装：架构到 Harness 的工程实现

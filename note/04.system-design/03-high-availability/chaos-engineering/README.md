@@ -299,4 +299,6 @@ Step 6: 总结复盘
 
 ---
 
+
+- [in-practice](../../01-foundation/system-design-basics/it4it/in-practice.md)
 ← [返回 高可用](../README.md)

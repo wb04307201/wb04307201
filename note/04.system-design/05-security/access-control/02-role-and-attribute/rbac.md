@@ -274,3 +274,6 @@ public class UserController {
 - 05-security 主题：[OAuth2.0 与 OIDC](../../oauth2-oidc/README.md) — OAuth2 的 scope 是"角色化权限"的一种
 - 05-security 主题：[API 安全](../../api-security/README.md) — 接口层 RBAC 拦截
 - 05-security 主题：[OWASP Top 10](../../owasp-top10/README.md) — A01 失效的访问控制
+
+- [hybrid](../03-relationship-and-hybrid/hybrid.md)
+- [rebac](../03-relationship-and-hybrid/rebac.md)

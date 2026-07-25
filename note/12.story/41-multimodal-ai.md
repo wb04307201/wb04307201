@@ -592,6 +592,9 @@ ROI：
 
 ---
 
+
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
 ## 跨章节衔接
 
 - 11.ai/02-technology-stack/README.md —— AI 技术栈 —— 多模态 AI 位置

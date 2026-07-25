@@ -420,6 +420,12 @@ config = {
 [2] {{doc2.title}}: {{doc2.content}}
 [3] {{doc3.title}}: {{doc3.content}}
 
+
+- [39-ai-private-deployment](39-ai-private-deployment.md)
+- [40-prompt-engineering](40-prompt-engineering.md)
+- [41-multimodal-ai](41-multimodal-ai.md)
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
 ## 用户问题：
 {{user_query}}
 

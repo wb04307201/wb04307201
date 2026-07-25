@@ -179,6 +179,10 @@ module:
 - [数据一致性](data-consistency/README.md) — 怎么管数据？
 - [演进与组织](migration-and-organization/README.md) — 怎么演进？
 
+
+- [functional-components](../it4it/functional-components.md)
+- [architecture-governance](../togaf/architecture-governance.md)
+- [business-capability](../togaf/business-capability.md)
 ## 章节索引
 
 - [架构认知的演进](../architecture-evolution/README.md) — OOD → DDD → 微服务的认知升级

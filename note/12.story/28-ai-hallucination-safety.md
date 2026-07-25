@@ -518,6 +518,15 @@ graph TD
 - 11.ai/01-fundamentals/README.md —— LLM 基础概念 —— 理解幻觉产生原理的技术根因
 - 11.ai/07-research/README.md —— AI 前沿研究 —— 幻觉与信任校准的最新学术进展
 
+
+- [29-codebase-cognitive-debt](29-codebase-cognitive-debt.md)
+- [32a-ai-evaluation-fundamentals](32a-ai-evaluation-fundamentals.md)
+- [32b-ai-evaluation-pipeline](32b-ai-evaluation-pipeline.md)
+- [34b-ai-token-cost-optimization](34b-ai-token-cost-optimization.md)
+- [36-rag-retrieval-augmented-generation](36-rag-retrieval-augmented-generation.md)
+- [45-skill-scheduling-restaurant](45-skill-scheduling-restaurant.md)
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
 ## 跨章节衔接
 
 - [06-security-architecture.md](./06-security-architecture.md) —— 正传 3，AI 幻觉是新型安全威胁：幻觉护栏是安全架构在 AI 时代的延伸

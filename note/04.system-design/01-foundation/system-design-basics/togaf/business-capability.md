@@ -623,4 +623,6 @@ graph TB
 
 ---
 
+
+- [architecture-governance](architecture-governance.md)
 ← [返回: togaf](../README.md) | [返回: system-design-basics](../README.md) | [返回: 04.system-design](../../README.md)

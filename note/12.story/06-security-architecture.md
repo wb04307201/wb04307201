@@ -322,6 +322,12 @@ graph TD
 - [会自我进化的厨房](./27-self-evolving-company.md) —— Agent Loop 的安全策略层，Agent 的权限边界和安全过滤
 - [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) —— AI 幻觉是新的安全挑战，幻觉护栏是安全架构在 AI 时代的延伸
 
+
+- [30-agent-harness](30-agent-harness.md)
+- [31-ai-fatal-trio](31-ai-fatal-trio.md)
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
+- [12.story](README.md)
 ## 跨章节衔接
 
 - [02-system-architecture-evolution.md](./02-system-architecture-evolution.md) —— 前传，架构演进与安全架构协同：每一次架构升级都需重新评估安全边界

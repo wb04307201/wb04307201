@@ -676,6 +676,15 @@ graph TB
 
 ---
 
+
+- [35-ai-observability](35-ai-observability.md)
+- [36-rag-retrieval-augmented-generation](36-rag-retrieval-augmented-generation.md)
+- [37-vector-database-and-embedding](37-vector-database-and-embedding.md)
+- [39-ai-private-deployment](39-ai-private-deployment.md)
+- [40-prompt-engineering](40-prompt-engineering.md)
+- [41-multimodal-ai](41-multimodal-ai.md)
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
 ## 跨章节衔接
 
 - 11.ai/02-technology-stack/README.md —— AI 技术栈中的推理/Embedding/向量库 —— 6 大成本组件的技术解构

@@ -531,6 +531,9 @@ Spring Boot + Micrometer + OpenTelemetry
 - [Grafana Loki](https://grafana.com/oss/loki/)
 - [Jaeger](https://www.jaegertracing.io/)
 
+
+- [in-practice](../../01-foundation/system-design-basics/it4it/in-practice.md)
+- [actuator](../../../06.spring/07-observability/actuator.md)
 ## 相关章节
 
 - [熔断降级](../../03-high-availability/circuit-break/README.md) — 触发熔断时通常依赖告警（状态变化、错误率）

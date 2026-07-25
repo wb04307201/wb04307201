@@ -592,6 +592,16 @@ graph TD
 
 > 备注：原《菜谱标准化之路》（23-tech-docs-knowledge）已合并到本篇，详见第四章 ADR/Docs-as-Code 和第五章知识库/Onboarding/度量。
 
+
+- [29-codebase-cognitive-debt](29-codebase-cognitive-debt.md)
+- [30-agent-harness](30-agent-harness.md)
+- [31-ai-fatal-trio](31-ai-fatal-trio.md)
+- [32b-ai-evaluation-pipeline](32b-ai-evaluation-pipeline.md)
+- [33a-mcp-protocol](33a-mcp-protocol.md)
+- [33b-a2a-protocol](33b-a2a-protocol.md)
+- [34b-ai-token-cost-optimization](34b-ai-token-cost-optimization.md)
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
 ## 跨章节衔接
 
 - [27-ai-org-transformation.md](./25-ai-org-transformation.md) —— 续集三，从厨师到 CEO 视角下的组织变革：技术决策者如何驱动组织转型

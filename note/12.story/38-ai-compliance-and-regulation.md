@@ -634,6 +634,12 @@ P3（低）：
 
 ---
 
+
+- [39-ai-private-deployment](39-ai-private-deployment.md)
+- [41-multimodal-ai](41-multimodal-ai.md)
+- [46-llm-inference](46-llm-inference.md)
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
 ## 跨章节衔接
 
 - 11.ai/02-technology-stack/README.md —— AI 技术栈 —— 合规技术栈

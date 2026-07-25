@@ -264,3 +264,7 @@ Skill frontmatter + 关键词规则路由 + 分层加载 + 离线评测集
 ---
 
 > 📅 2026-07-06 · 阿明餐厅 · 第 47 篇 · 番外
+
+## 反向链
+
+- [46-llm-inference](46-llm-inference.md)

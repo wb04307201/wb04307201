@@ -721,6 +721,11 @@ API 方案（GPT-4o）：
 
 ---
 
+
+- [02-rag-in-agent](../11.ai/04-architecture/agent-context/02-rag-in-agent.md)
+- [41-multimodal-ai](41-multimodal-ai.md)
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
 ## 跨章节衔接
 
 - 11.ai/02-technology-stack/README.md —— AI 技术栈 —— 推理框架选型

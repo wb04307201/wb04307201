@@ -569,6 +569,9 @@ graph TD
 - [09.front-end / 05 架构 / BFF](../09.front-end/05-architecture/bff/README.md) —— BFF 模式详细实践：本章 BFF 概念的工程化落地
 - [09.front-end / 09 前端与 AI](../09.front-end/09-frontend-and-ai/README.md) —— AI Native UI / AI SDK / Vibe Coding
 
+
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
 ## 跨章节衔接
 
 - [13-frontend-renovation.md](./13-frontend-renovation.md) —— 正传 8，多端架构与前端工程化的关系：组件库、设计系统、构建产物

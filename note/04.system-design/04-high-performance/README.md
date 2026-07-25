@@ -80,6 +80,12 @@ graph TD
 
 ---
 
+
+- [03-ranking](product-search/03-ranking.md)
+- [01-architecture](sensitive-word-filter/01-architecture.md)
+- [02-java-implementation](sensitive-word-filter/02-java-implementation.md)
+- [03-high-concurrency-optimization](sensitive-word-filter/03-high-concurrency-optimization.md)
+- [04-selection-decision-tree](sensitive-word-filter/04-selection-decision-tree.md)
 ## 📊 本节统计
 
 | 子目录 | leaf 主题数 | 备注 |

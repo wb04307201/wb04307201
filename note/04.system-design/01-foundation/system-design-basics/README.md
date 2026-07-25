@@ -48,4 +48,9 @@ module:
 
 ---
 
+## 反向链
+
+- [functional-components](it4it/functional-components.md)
+- [business-capability](togaf/business-capability.md)
+
 ← [返回 基础篇](../README.md)

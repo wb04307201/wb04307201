@@ -813,6 +813,9 @@ prompt = template.format(
 
 ---
 
+
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
 ## 跨章节衔接
 
 - 06.llm/06-prompt-engineering-basics/README.md —— Prompt 基础 —— 入门必读

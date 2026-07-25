@@ -338,6 +338,9 @@ graph TD
 - 11.ai/03-engineering/ai-platforms/README.md —— Dify/Coze/LangGraph AI 平台对比 —— 创业工具矩阵的技术选型依据
 - 11.ai/02-technology-stack/README.md —— AI 技术栈 61 核心概念全景 —— 创业者的 AI 知识地图
 
+
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
 ## 跨章节衔接
 
 - [01-ai-agent-architecture.md](./01-ai-agent-architecture.md) —— 续集一，AI 原生创业的 Agent 架构基线：多 Agent 协作的产品化

@@ -100,4 +100,7 @@ CircuitBreakerConfig config = CircuitBreakerConfig.custom()
 - [超时](../timeout/README.md) — 每次调用的单次超时是熔断器统计错误率的样本
 - [服务降级](../service-degradation/README.md) — 熔断后通过降级返回兜底数据，保证核心链路可用
 
+
+- [in-practice](../../01-foundation/system-design-basics/it4it/in-practice.md)
+- [cache-degradation-and-recovery](../../../06.spring/03-data/cache/cache-degradation-and-recovery.md)
 ← [返回 高可用](../README.md)

@@ -499,6 +499,9 @@ graph TD
 - 11.ai/01-fundamentals/README.md —— LLM/AI Agent 能力边界 —— 理解 AI 能做什么、不能做什么，是"换岗不换人"的前提
 - 11.ai/04-architecture/README.md —— 智能系统分层架构 —— 组织转型的技术架构蓝本
 
+
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
 ## 跨章节衔接
 
 - [01-ai-agent-architecture.md](./01-ai-agent-architecture.md) —— 续集一，组织转型中的 Agent 架构：技术架构变革是组织变革的载体

@@ -90,4 +90,8 @@ graph LR
 
 ---
 
+## 反向链
+
+- [business-capability](system-design-basics/togaf/business-capability.md)
+
 ← [返回 04.system-design 主模块](../README.md)

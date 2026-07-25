@@ -716,6 +716,17 @@ graph TD
 - [会自我进化的厨房](./27-self-evolving-company.md) —— Agent Loop 中的异步消息传递
 - [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) —— AI 输出的异步校验
 
+
+- [11-ai-learning-paradox](11-ai-learning-paradox.md)
+- [13-frontend-renovation](13-frontend-renovation.md)
+- [14-cloud-finops](14-cloud-finops.md)
+- [23-lowcode-platform](23-lowcode-platform.md)
+- [24-globalization](24-globalization.md)
+- [29-codebase-cognitive-debt](29-codebase-cognitive-debt.md)
+- [34b-ai-token-cost-optimization](34b-ai-token-cost-optimization.md)
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
+- [12.story](README.md)
 ## 跨章节衔接
 
 - [18-distributed-puzzles.md](./17-distributed-puzzles.md) —— 正传 12，事件驱动是分布式一致性的关键解法：最终一致性通过事件流转实现

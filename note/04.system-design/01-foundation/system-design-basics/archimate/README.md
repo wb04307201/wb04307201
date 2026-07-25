@@ -171,4 +171,9 @@ README（你在这里）  →  第一章（语言基础）
 
 > 🚀 从 [第一章：建模语言：层、方面、关系](language.md) 开始
 
+## 反向链
+
+- [functional-components](../it4it/functional-components.md)
+- [business-capability](../togaf/business-capability.md)
+
 ← [返回系统设计基础](../README.md)

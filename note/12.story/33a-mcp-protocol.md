@@ -648,6 +648,13 @@ graph TB
 
 ---
 
+
+- [34a-ai-token-cost-structure](34a-ai-token-cost-structure.md)
+- [34b-ai-token-cost-optimization](34b-ai-token-cost-optimization.md)
+- [35-ai-observability](35-ai-observability.md)
+- [38-ai-compliance-and-regulation](38-ai-compliance-and-regulation.md)
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
 ## 跨章节衔接
 
 - 11.ai/03-engineering/ai-platforms/README.md —— Dify/Coze/LangGraph 平台实现 —— MCP/A2A 协议在主流平台中的落地

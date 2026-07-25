@@ -226,6 +226,8 @@ Service A          Sidecar A     Sidecar B         Service B
 - [HashiCorp Consul](https://www.consul.io/)
 - [Apache ZooKeeper](https://zookeeper.apache.org/)
 
+
+- [in-practice](../../01-foundation/system-design-basics/it4it/in-practice.md)
 ## 相关章节
 
 - [API 网关](../api-gateway/README.md) — 与服务端发现模式结合实现统一入口

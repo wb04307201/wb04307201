@@ -254,4 +254,11 @@ story:
 
 > 📅 2026-06-28 · 续集 20 · 职业发展反思 · 阿明餐厅
 
+## 反向链
+
+- [25-ai-org-transformation](25-ai-org-transformation.md)
+- [46-llm-inference](46-llm-inference.md)
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
+
 ← [返回系列导读](./index.md)

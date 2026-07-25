@@ -512,6 +512,18 @@ graph TD
 ---
 
 
+
+- [29-codebase-cognitive-debt](29-codebase-cognitive-debt.md)
+- [30-agent-harness](30-agent-harness.md)
+- [31-ai-fatal-trio](31-ai-fatal-trio.md)
+- [32b-ai-evaluation-pipeline](32b-ai-evaluation-pipeline.md)
+- [33a-mcp-protocol](33a-mcp-protocol.md)
+- [33b-a2a-protocol](33b-a2a-protocol.md)
+- [34b-ai-token-cost-optimization](34b-ai-token-cost-optimization.md)
+- [35-ai-observability](35-ai-observability.md)
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
+- [12.story](README.md)
 ## 跨章节衔接
 
 - [01-ai-agent-architecture.md](./01-ai-agent-architecture.md) —— 续集一，自进化组织的多 Agent 架构基础：组织级 Agent 的分层设计

@@ -780,6 +780,11 @@ async def monitor_retrieval_quality(query, results):
 
 ---
 
+
+- [39-ai-private-deployment](39-ai-private-deployment.md)
+- [40-prompt-engineering](40-prompt-engineering.md)
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
 ## 跨章节衔接
 
 - 11.ai/02-technology-stack/README.md —— AI 技术栈 —— 向量数据库在 AI 技术栈中的位置

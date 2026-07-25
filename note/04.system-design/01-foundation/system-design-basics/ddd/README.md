@@ -131,4 +131,11 @@ DDD 分为两大设计层次，二者紧密配合：**战略设计回答”系�
 
 ---
 
+## 反向链
+
+- [functional-components](../it4it/functional-components.md)
+- [in-practice](../it4it/in-practice.md)
+- [architecture-governance](../togaf/architecture-governance.md)
+- [business-capability](../togaf/business-capability.md)
+
 ← [返回 系统设计基础](../README.md)

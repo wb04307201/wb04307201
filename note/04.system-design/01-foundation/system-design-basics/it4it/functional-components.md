@@ -611,4 +611,8 @@ graph TB
 
 > ➡️ 下一篇：[第三章：落地：IT4IT × ITIL × DevOps](in-practice.md)
 
+## 反向链
+
+- [business-capability](../togaf/business-capability.md)
+
 ← [返回 IT4IT 目录](README.md) | ← [返回系统设计基础](../README.md)

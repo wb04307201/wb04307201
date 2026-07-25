@@ -284,6 +284,8 @@ UPDATE order_item SET order_version=? WHERE order_id=?
 - [与分布式事务的关系](../vs-distributed-transaction/README.md) — 何时升级到 TCC
 - [02 分布式 / 分布式锁](../../02-distributed/distributed-lock/README.md) — 悲观锁与分布式锁
 
+
+- [seckill-without-redis](../../03-high-availability/rate-limiting/seckill-without-redis.md)
 ## 参考资料
 
 - [Martin Fowler - Patterns of Enterprise Application Architecture - Optimistic Offline Lock](https://martinfowler.com/eaaCatalog/optimisticOfflineLock.html)

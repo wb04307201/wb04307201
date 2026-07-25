@@ -188,3 +188,5 @@ PERMIT IF
 - 跨族：[混合模型](../03-relationship-and-hybrid/hybrid.md) — 实战黄金组合：RBAC + ABAC
 - 05-security 主题：[OAuth2.0 与 OIDC](../../oauth2-oidc/README.md) — OAuth2 的 claim 即 ABAC 的"主体属性"
 - 05-security 主题：[API 安全](../../api-security/README.md)
+
+- [rebac](../03-relationship-and-hybrid/rebac.md)

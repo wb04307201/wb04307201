@@ -521,6 +521,9 @@ graph TD
 - [会自我进化的厨房](./27-self-evolving-company.md) —— Agent Loop 的多租户隔离，不同租户的 Agent 循环独立运行
 - [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) —— AI 幻觉在多租户场景的治理，不同租户的 AI 护栏策略差异化
 
+
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
 ## 跨章节衔接
 
 - [14-cloud-finops.md](./14-cloud-finops.md) —— 番外二，多租户的成本分摊与 FinOps 协同：每租户的资源使用可视化

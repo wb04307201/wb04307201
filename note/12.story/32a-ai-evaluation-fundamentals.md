@@ -591,6 +591,17 @@ graph TB
 
 ---
 
+
+- [33a-mcp-protocol](33a-mcp-protocol.md)
+- [33b-a2a-protocol](33b-a2a-protocol.md)
+- [34a-ai-token-cost-structure](34a-ai-token-cost-structure.md)
+- [34b-ai-token-cost-optimization](34b-ai-token-cost-optimization.md)
+- [35-ai-observability](35-ai-observability.md)
+- [37-vector-database-and-embedding](37-vector-database-and-embedding.md)
+- [38-ai-compliance-and-regulation](38-ai-compliance-and-regulation.md)
+- [40-prompt-engineering](40-prompt-engineering.md)
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
 ## 跨章节衔接
 
 - 11.ai/07-research/README.md —— AI 前沿研究 —— 评测工程的最新学术方向（自动评测、人类反馈校准）

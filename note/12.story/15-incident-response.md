@@ -462,6 +462,16 @@ graph TD
 - [会自我进化的厨房](./27-self-evolving-company.md) —— Agent Loop 的质量门防止故障扩散，监控 Agent 自动修复日常故障
 - [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) —— AI 幻觉引发的故障应急，AI 错误输出是一种需要应急处理的故障类型
 
+
+- [29-codebase-cognitive-debt](29-codebase-cognitive-debt.md)
+- [31-ai-fatal-trio](31-ai-fatal-trio.md)
+- [32b-ai-evaluation-pipeline](32b-ai-evaluation-pipeline.md)
+- [33a-mcp-protocol](33a-mcp-protocol.md)
+- [33b-a2a-protocol](33b-a2a-protocol.md)
+- [35-ai-observability](35-ai-observability.md)
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
+- [12.story](README.md)
 ## 跨章节衔接
 
 - [04-peak-traffic-defense.md](./04-peak-traffic-defense.md) —— 正传 1，故障应急与流量治理的"事前-事后"配合：限流是事前防御，应急是事后止血

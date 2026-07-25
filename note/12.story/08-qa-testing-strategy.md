@@ -527,6 +527,13 @@ graph TD
 - [会自我进化的厨房](./27-self-evolving-company.md) —— Agent Loop 的质量门是自动化测试的终极形态
 - [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) —— AI 幻觉检测是测试策略的新维度，如何测试 AI 的输出质量
 
+
+- [29-codebase-cognitive-debt](29-codebase-cognitive-debt.md)
+- [32b-ai-evaluation-pipeline](32b-ai-evaluation-pipeline.md)
+- [36-rag-retrieval-augmented-generation](36-rag-retrieval-augmented-generation.md)
+- [cheatsheet](cheatsheet.md)
+- [glossary](glossary.md)
+- [12.story](README.md)
 ## 跨章节衔接
 
 - [09-cicd-devops.md](./09-cicd-devops.md) —— 正传 5，测试策略与 CI/CD 强耦合：自动化测试是流水线的质量门
