@@ -284,7 +284,43 @@ D. 暂不沉淀
 - 互链必须在 commit 中明示（"新增章节 + 加反向链"）
 - 数字声明必须在 commit 前重新数（避免虚报）
 - 路径深度必须从目标文件向上数（`../` 数量 = 层级差）
+- **目标路径必须实际验证**（2026-07-25 ACP 教训）：写链接前用 `find note -name "<target>" -type f` 或 `ls -la <path>` 确认目标存在，不凭脑补
+- **每文件 commit 后立即跑 broken links 扫描**（2026-07-25 ACP 教训）：commit 完不要等最后才检查，发现新引入立刻修，避免累计 3+ 处后才补
 - 若 Step 5.5 触发了网络搜索，文章末尾必须有 `## 📚 参考来源` 章节
+
+**每 commit 后 broken links 扫描脚本**（Mistake 14 + 8 联合防御）：
+
+```bash
+# 每文件 commit 后立即跑（应在 Step 6 每次 git commit 后调用）
+python << 'PYEOF'
+import sys, os, re, glob
+if sys.platform == 'win32':
+    try: sys.stdout.reconfigure(encoding='utf-8')
+    except: pass
+
+# 严格 regex
+LINK_RE = re.compile(r'(?<![|\[])\[([^\]]*)\]\((?!https?://)(?!mailto:)(?!#)([^)#\s]+?\.md)(?:#[^)]*)?\)')
+PLACEHOLDERS = ['x/README', 'xxx', 'xx/yy', '../11.ai/...']
+real_broken = 0
+# 只扫本会话新文件（按时间戳或 git diff --name-only）
+new_files = subprocess.check_output(['git', 'diff', '--name-only', '--since=<本次沉淀开始时间>'], cwd='.').decode().splitlines()
+for f in [x for x in new_files if x.endswith('.md')]:
+    try: c = open(f, encoding='utf-8', errors='ignore').read()
+    except: continue
+    for m in LINK_RE.finditer(c):
+        target_rel = m.group(2).strip()
+        if any(p in target_rel for p in PLACEHOLDERS): continue
+        # Windows 路径处理：统一分隔符
+        target_sep = target_rel.replace('/', os.sep)
+        target_abs = os.path.normpath(os.path.join(os.path.dirname(f), target_sep))
+        if not os.path.isfile(target_abs):
+            real_broken += 1
+            print(f'  ⚠ {f} -> {target_rel}')
+print(f'新文件 broken links: {real_broken}')
+PYEOF
+```
+
+如果 `real_broken > 0`，**立即修复下一个 commit**，不要等到沉淀结束。
 
 **subagent "silent failure" 防御（强约束）**：
 
@@ -381,11 +417,20 @@ D. 暂不沉淀
 
 **修复**：Step 6 数字声明必须由 implementer 用 `find` / `wc -l` 重新数；不允许估算
 
-### ❌ Mistake 8: 路径深度错误
+### ❌ Mistake 8: 路径深度错误（2026-07-25 强化）
 
 **症状**：12.story 链接 `../../11.ai/13.split-hairs/11.ai/...`（多一层）→ broken link
 
-**修复**：Step 6 实施时**手动数层级**（从源文件向上数 `../` 数量 = 目标深度差）
+**历史案例**（2026-07-25 ACP 沉淀）：
+- ❌ `mcp.md` —— 以为是独立文件，实际 MCP 在 `context-engineering/README.md` 内联
+- ❌ `multi-agent-system-design` 在 `../../../03-engineering/...` —— 实际在 `13.split-hairs/11.ai/`
+- 根因：**没实际验证目标路径就写**
+
+**修复（4 步强制）**：
+1. **目标路径必须实际验证**：用 `find note -name "<target>" -type f` 或 `ls -la <path>` 确认目标存在
+2. **手动数层级**：从源文件向上数 `../` 数量 = 目标深度差（注意 note/ 跨模块跳数）
+3. **每文件 commit 后立即跑 broken links 扫描**（见 Step 6.5）
+4. **不依赖"记忆"**：每次都 grep/find 验证，不要凭印象写路径
 
 ### ❌ Mistake 9: 单向链接（child 链 parent，parent 不回链）
 
