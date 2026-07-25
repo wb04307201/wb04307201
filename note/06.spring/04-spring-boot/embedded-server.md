@@ -209,10 +209,11 @@ Spring Boot 的切换动作不是“把目标容器加进 classpath”这么简�
 server:
   tomcat:
     threads:
-      # 官方默认 200；生产起步建议 200-800，经验公式：CPU 核数 × 100
+      # 官方默认 200；生产起步建议 200-800，候选经验值为 CPU 核数 × 100
       # 例如 4 核先从 400 开始，压测后再调整
       max: 400
-    # 官方默认 10s；慢客户端防护建议显式设为 20-30s
+    # Spring Boot 未预设该属性；Tomcat Connector 默认 60s，标准 server.xml 常见 20s
+    # 普通 API 为防慢连接占用，建议显式设为 20-30s
     connection-timeout: 25s
     # 官方默认 8192；连接数确有瓶颈且文件描述符/内存足够时可升至 16384
     max-connections: 16384
@@ -222,7 +223,7 @@ server:
 
 | 参数 | 官方默认 | 生产推荐起点 | 调优含义与依据 |
 |------|:--------:|:------------:|----------------|
-| `server.tomcat.threads.max` | 200 | **200-800**（CPU 核数 × 100 作为起点） | 决定同时处理请求的最大工作线程数。Tomcat 文档说明它决定可处理的并发请求数；不要把它当作越大越好，需与下游连接池和接口阻塞时间匹配。虚拟线程启用时该属性不生效。 |
+| `server.tomcat.threads.max` | 200 | **200-800**（候选经验值：CPU 核数 × 100） | 决定同时处理请求的最大工作线程数。Tomcat 文档说明它决定可处理的并发请求数；不要把它当作越大越好，需与下游连接池和接口阻塞时间匹配。虚拟线程启用时该属性不生效。 |
 | `server.tomcat.connection-timeout` | Spring Boot 当前未强制写入默认；Tomcat Connector 默认 60s，标准 `server.xml` 常见 20s | **20-30s**，常用 25s | 连接建立后等待请求 URI 行的最长时间，防止慢连接长期占用连接资源。文件上传/长轮询需单独评估，不应盲目套用。 |
 | `server.tomcat.max-connections` | **8192** | 默认足够；高并发连接型服务可 **16384** | Tomcat 同时接受并处理的最大连接数。达到上限后，操作系统仍可能按 `accept-count` 排队；提高前先检查文件描述符、堆外内存和负载均衡连接复用。 |
 | `server.tomcat.accept-count` | **100** | 通常保持 **100**；突发流量可结合压测适度增大 | 当所有工作线程都忙时，操作系统连接队列的最大长度；队列满后新连接可能被主动拒绝或超时。它不是“额外工作线程数”，盲目增大只会拉长排队延迟。 |
@@ -230,10 +231,10 @@ server:
 ### 一次调优的顺序
 
 1. **先测基线**：记录吞吐、P95/P99、活动线程、连接数、队列长度、5xx/拒绝和下游连接池等待。
-2. **先改 `threads.max`**：以 `CPU 核数 × 100` 作为起点（例如 4 核 → 400），逐步压测；若 CPU 已满或上下文切换升高，立即回退。
+2. **先改 `threads.max`**：以 `CPU 核数 × 100` 作为候选起点并限制在 200-800（例如 4 核 → 400），逐步压测；这不是 Tomcat 官方公式。若 CPU 已满或上下文切换升高，立即回退。
 3. **再看 `max-connections`**：只有长连接/Keep-Alive 数量触顶时才从 8192 调到 16384，并同步检查 OS 文件描述符和容器限制。
 4. **最后看 `accept-count`**：它只吸收短时突发，队列持续增长说明应用或下游已经处理不过来，应扩容、限流或优化慢接口，而不是无限加队列。
-5. **设置连接超时**：普通 API 建议 20-30 秒；慢上传、SSE、长轮询按业务协议单独配置，并配合网关的 idle timeout。
+5. **设置连接超时**：普通 API 建议 20-30 秒；它限制的是连接被接受后等待请求行的时间。慢上传、SSE、长轮询还会受上传/Keep-Alive/网关 idle timeout 等其他超时约束，应按业务协议分别校准。
 
 > **边界提醒**：Tomcat 的 `max-connections`、`accept-count` 和线程池不是三个独立的“并发倍增器”。请求处理线程耗尽后先进入等待队列；连接数和 OS backlog 都有上限，最终效果取决于协议（NIO/NIO2）、Keep-Alive、网关重试和下游资源。
 
@@ -370,17 +371,28 @@ graph LR
 ## 🤔 思考
 
 1. **为什么要支持切换内嵌服务器？** 不同场景对**长连接 / 高并发 / 内存占用**有不同偏好；切换比"自己重写"成本低。
-2. **Spring Boot 怎么决定用哪个服务器？** `ServletWebServerFactoryAutoConfiguration` 用 `@ConditionalOnClass` 检测 classpath——谁的 starter 在就用谁。
+2. **Spring Boot 怎么决定用哪个服务器？** 自动配置用 `@ConditionalOnClass` 检查 classpath，再用 `@ConditionalOnMissingBean(ServletWebServerFactory.class)` 退避；因此应只保留一个目标容器 starter，不要让多个实现竞争工厂 Bean。
 3. **生产环境还用内嵌吗？** 主流是**内嵌 + 容器化**（jar 包 → Docker / K8s）。少数传统企业仍部署到外部 Tomcat WAR。
 4. **HTTPS 证书怎么管理？** 容器化场景下推荐 cert-manager + K8s Secret 挂载，证书变更无需重新打包。
+
+---
+
+## 参考资料
+
+- [Spring Boot：Embedded Web Servers](https://docs.spring.io/spring-boot/how-to/webserver.html) — 官方切换服务器示例强调排除默认 Tomcat，再引入 Jetty。
+- [Spring Boot：Application Properties / Server](https://docs.spring.io/spring-boot/appendix/application-properties/index.html#appendix.application-properties.server) — `threads.max`、`max-connections`、`accept-count` 的属性语义与默认值。
+- [Apache Tomcat 10.1：HTTP Connector](https://tomcat.apache.org/tomcat-10.1-doc/config/http.html) — `maxThreads`、`maxConnections`、`acceptCount`、`connectionTimeout` 的 Connector 定义。
 
 ---
 
 ## 相关章节
 
 - ⬅️ [返回 04 Spring Boot](README.md)
-- [启动流程](startup-flow.md) — 内嵌服务器在 refresh 阶段被启动
-- [GraalVM Native](graalvm-native.md) — Native Image 下需特殊处理反射，Tomcat 9+ 才完整支持
+- [启动流程](startup-flow.md) — 内嵌服务器在 `refresh()` 的 `onRefresh()` 阶段启动
+- [自动配置原理](auto-configuration.md) — `@ConditionalOnClass` 与 `@ConditionalOnMissingBean` 如何决定工厂 Bean
+- [外部化配置](boot-externalized-configuration.md) — `server.*` 属性如何进入 `Environment` 并绑定
+- [GraalVM Native](graalvm-native.md) — Native Image 下的服务器与 AOT 约束
 
 ---
 
+← [返回: 04 Spring Boot](README.md) | [返回: 06 Spring](../README.md)

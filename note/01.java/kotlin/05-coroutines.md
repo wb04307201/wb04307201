@@ -1,4 +1,15 @@
+<!--
+module:
+  parent: java/kotlin
+  slug: java/kotlin/coroutines
+  type: article
+  category: Kotlin 协程
+  summary: Kotlin 协程的挂起恢复机制、调度器实现、结构化并发、Flow 与 Channel。
+-->
+
 # Kotlin 协程与异步
+
+> **一句话定位**：Kotlin 协程通过挂起函数与调度器实现轻量级并发，并以结构化并发约束任务生命周期。
 
 ## 一、协程基础
 
@@ -12,10 +23,12 @@ new Thread(() -> {
 ```
 
 ```kotlin
-// Kotlin — 协程开销仅几 KB
-GlobalScope.launch {
-    delay(1000)              // 非阻塞挂起，不占用线程
-    println("Hello after 1s")
+// Kotlin — 协程对象通常远小于平台线程，但实际占用取决于捕获状态
+coroutineScope {
+    launch {
+        delay(1000)              // 非阻塞挂起，不占用线程
+        println("Hello after 1s")
+    }
 }
 ```
 
