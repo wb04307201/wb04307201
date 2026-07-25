@@ -172,6 +172,7 @@ context = get_relevant_files(query)  # 5K tokens
 | MemGPT | 长期记忆管理 |
 | Cursor | IDE 级 Context（项目代码 + 文件 + 终端） |
 | Claude Code | Agent 级 Context（代码 + 历史 + 工具） |
+| 🆕 [ACP（Agent Client Protocol）](acp-protocol/README.md) | **编辑器 ↔ Coding Agent 标准化通信**（Zed 出品 Apache 2.0）—— 类似 LSP 对语言服务器的角色 |
 
 ---
 

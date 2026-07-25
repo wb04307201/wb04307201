@@ -112,6 +112,7 @@ module:
 | **MCP (模型上下文协议)** | 由 Anthropic 提出的开放标准，规范 Agent 与外部工具/数据源的连接方式（Agent-to-Tool）。 | 🟢 |
 | **A2A (Agent-to-Agent 协议)** | 由 Google 提出的开放协议，规范不同 Agent 之间的任务委派与协调（Agent-to-Agent）。 | 🔵 |
 | **ACP (Agent 通信协议)** | 面向通用 Agent 间通信的协议，支持跨框架、跨平台的 Agent 互操作。 | 🔵 |
+| 🆕 [ACP 深度](context-engineering/acp-protocol/README.md) | **ACP 是 Zed 出品的'编辑器 ↔ Coding Agent'标准化协议**（Apache 2.0，2025-10 JetBrains 官方合作） | 🔵 |
 | **ANP (Agent 网络协议)** | 面向去中心化、互联网级别的 Agent 网络通信协议，构建"Agent 互联网"。 | 🔵 |
 | **提示工程 (Prompt Engineering)** | 设计输入提示以引导模型生成更精确、可控输出的技术。 | 🟢 |
 | **上下文工程 (Context Engineering)** | 系统性地设计、管理和优化送入模型的全部上下文信息（包括提示、检索结果、工具描述、记忆、对话历史），是 Agent 时代 Prompt Engineering 的进化形态。 | 🟡 |
@@ -258,6 +259,7 @@ module:
 | **MCP** | Agent ↔ Tool | 工具连接标准（"AI 的 USB-C"） | Anthropic |
 | **A2A** | Agent ↔ Agent | 企业级多 Agent 任务委派 | Google |
 | **ACP** | Agent ↔ Agent | 通用跨框架 Agent 通信 | IBM/社区 |
+| → [ACP 深度解读](context-engineering/acp-protocol/README.md) | Agent ↔ **编辑器** | Coding Agent 标准化（Zed 出品） | Zed 官方 |
 | **ANP** | Agent ↔ Agent (互联网) | 去中心化 Agent 网络 | 开源社区 |
 
 > 这四个协议是**互补关系**而非竞争关系：MCP 解决 Agent 与工具的连接，A2A/ACP 解决 Agent 间协作，ANP 解决互联网级 Agent 发现与通信。
