@@ -87,7 +87,33 @@ grep -rn "篇\|个\|行" note/README.md 2>/dev/null | grep -E "[0-9]+\s*(篇|个
 # 历史 bug：原 regex `^#` 只扫顶级 H1，但 note 里实际不规范的是 H2（## N. 章节标题）
 # 修正后扫 H1 (#) + H2 (##) 全级别数字编号（中文数字或阿拉伯数字）
 # 验证：1063 .md 体检发现 42 处不规范（首次报告只看到 5 处，全因 H2 未扫）
-grep -rnE "^# [0-9]+\\.|^## [0-9]+\\." note/**/*.md 2>/dev/null | grep -v "node_modules\\|.git" | head -30
+# 🆕 2026-07-25 修正 #2：必须**排除代码块内**（故障复盘模板示例、bash/python 示例注释）
+# 历史误报（Batch 4）：12.story/15-incident-response.md 内 `## 1. 故障摘要` 是 markdown 代码块示例，不是真标题
+python -c "
+import sys, os, re, glob
+if sys.platform == 'win32':
+    try: sys.stdout.reconfigure(encoding='utf-8')
+    except: pass
+violations = []
+for f in glob.glob('note/**/*.md', recursive=True):
+    if '/.health-tmp/' in f.replace(os.sep, '/'): continue
+    try:
+        with open(f, 'r', encoding='utf-8', errors='ignore') as fh:
+            lines = fh.readlines()
+    except: continue
+    in_code = False
+    for i, line in enumerate(lines):
+        if line.strip().startswith('\`\`\`'):
+            in_code = not in_code
+            continue
+        if in_code:
+            continue
+        if re.match(r'^# [0-9]+\\.|^## [0-9]+\\.', line):
+            violations.append((f, i+1, line.rstrip()))
+print(f'真违规（代码块外）: {len(violations)}')
+for f, line_no, content in violations[:30]:
+    print(f'  {f}:{line_no} {content[:80]}')
+"
 
 # 5. 回链覆盖率（匹配两种格式：`← [返回` 和 `← 返回`）
 TOTAL_READMES=$(find note -name "README.md" | wc -l)

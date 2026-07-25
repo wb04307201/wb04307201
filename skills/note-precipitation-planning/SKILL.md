@@ -325,6 +325,8 @@ PYEOF
 **subagent "silent failure" 防御（强约束）**：
 
 > ⚠️ 历史教训：曾出现多次 subagent 报告 "11/11 PASS" 但 `git status --short` 为空 / `ls file` 不存在（commit 1 subagent 多次完全无动作）。**subagent 自我报告 ≠ 实际落地**。
+>
+> 🆕 **2026-07-25 升级**（Phase 4 体检 + Batch 1-5 修复经验）：~6 个 subagent **修改了文件但没 commit**（"完成"报告但 `git log` 无 commit），需 orchestrator 收尾 commit。本条防御至关重要。
 
 - **强制使用 Write 工具**：subagent 必须**实际调用 Write 工具**写入完整文件内容（不允许 placeholder / 占位符 / 仅创建空目录）
 - **commit 前三步验证**：
@@ -332,8 +334,39 @@ PYEOF
   2. `git status --short` 确认 staged/unstaged 状态**符合预期**
   3. `git log --oneline -3` 确认 commit 实际**落地**（前 3 commit 含本次 commit hash）
 - **commit hash 必传**：subagent final report 必含**真实 commit hash**（不是"已 commit" 而是 `7e2cab99 refactor(note): ...`）。缺失则视为 commit 失败
+- **🆕 final report 必含 4 项命令输出**（避免"修改但未 commit" silent failure）：
+  1. `git log --oneline -1` 的**完整输出**（不是只贴 hash）
+  2. `git status --short` 的**完整输出**（working tree 状态）
+  3. 实际修改文件的 `wc -l FILE` 输出
+  4. 修改文件列表（`git diff --name-only HEAD~1 HEAD`）
+- **🆕 orchestrator 收尾协议**：subagent 报告"完成"但 `git log` 无新 commit → **立即 abort + 收尾 commit**（不信任 subagent 自我报告）
 - **失败检测规则**：如果 subagent 报告完成但 `git log` 没新 commit → 立即 abort + 重派，不要信任 subagent 自我报告
 - **commit 1 必含文件创建**：commit 1 必须新增 1+ 个文件（不能用 pure README 修改代替），`find note -name "<topic>.md" -newer <commit-base>` 验证
+
+### Step 6.6: Git author 一致性（subagent 必须用主账号）
+
+> 🆕 **2026-07-25 升级**（Phase 4 体检 + Batch 1-5 修复经验）：peer subagent 自动注入 fallback user `note-health-batch3 <note-health@local>`，导致 2 个 commit author 错误，需 rebase 修正。
+
+- **subagent prompt 必含**：
+  ```bash
+  export GIT_AUTHOR_NAME="吴博"
+  export GIT_AUTHOR_EMAIL="wubo_aaa@163.com"
+  export GIT_COMMITTER_NAME="吴博"
+  export GIT_COMMITTER_EMAIL="wubo_aaa@163.com"
+  ```
+  或在 Agent prompt 中显式要求"git commit 前必须设置 author 为 `吴博 <wubo_aaa@163.com>`"
+- **subagent final report 必含 author 验证**：
+  ```bash
+  git log -1 --format="%an <%ae>" -- FILE
+  ```
+  输出必含 `吴博 <wubo_aaa@163.com>`，否则视为 author 错误
+- **修复方法**（如果 author 已错误）：
+  ```bash
+  # 修正最近 N 个 commit 的 author
+  GIT_AUTHOR_NAME="吴博" GIT_AUTHOR_EMAIL="wubo_aaa@163.com" \
+    git rebase -i HEAD~N --exec 'git commit --amend --no-edit --reset-author'
+  ```
+  ⚠️ 注意 rebase 会改 commit hash，原预期 hash 会失效
 
 ### Step 6.5: 并发 peer session 协调（共享 worktree）
 
