@@ -166,7 +166,583 @@ public class Trie {
 
 ---
 
-## 3. Trie 应用场景
+## 3. 数组版 vs HashMap 版：Java / Python 完整实现
+
+前面的节点片段只展示了字段；下面的 4 个实现都包含插入、精确查询、前缀查询、删除一次和前缀枚举，可以直接复制运行。实现统一采用两个计数：
+
+- `terminalCount`：该节点作为完整单词结尾的次数。重复插入不会创建重复节点，但会增加这个计数。
+- `passCount`：有多少次插入的单词经过该节点。删除一次时沿路径递减，只有 `passCount == 0` 且不是单词结尾的节点才允许回收。
+
+本节约定：`null` / `None` 视为非法输入并抛异常；空字符串是合法单词，存放在 root 的 `terminalCount` 中；`startsWith("")` 按数学定义返回 `true`，因为空串是所有字符串的前缀。业务若不允许空词，应在 API 边界统一拒绝，不要让四个实现各自采用不同策略。
+
+### 3.1 Java 数组版：固定 26 个小写英文字母
+
+数组版以 `c - 'a'` 完成字符到槽位的映射。`checkIndex` 是边界的一部分：不校验字符就会把大写字母、数字或中文映射到错误下标，甚至触发 `ArrayIndexOutOfBoundsException`。
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+public final class ArrayTrie {
+    private static final class Node {
+        private final Node[] children = new Node[26];
+        private int terminalCount;
+        private int passCount;
+    }
+
+    private final Node root = new Node();
+
+    private static int checkIndex(char c) {
+        if (c < 'a' || c > 'z') {
+            throw new IllegalArgumentException(
+                "ArrayTrie only accepts lowercase a-z: " + c);
+        }
+        return c - 'a';
+    }
+
+    public void insert(String word) {
+        Objects.requireNonNull(word, "word");
+        Node node = root;
+        node.passCount++;
+        for (int i = 0; i < word.length(); i++) {
+            int index = checkIndex(word.charAt(i));
+            if (node.children[index] == null) {
+                node.children[index] = new Node();
+            }
+            node = node.children[index];
+            node.passCount++;
+        }
+        node.terminalCount++;
+    }
+
+    public boolean search(String word) {
+        Node node = find(word);
+        return node != null && node.terminalCount > 0;
+    }
+
+    public boolean startsWith(String prefix) {
+        Objects.requireNonNull(prefix, "prefix");
+        return prefix.isEmpty() || find(prefix) != null;
+    }
+
+    private Node find(String text) {
+        Objects.requireNonNull(text, "text");
+        Node node = root;
+        for (int i = 0; i < text.length(); i++) {
+            int index = checkIndex(text.charAt(i));
+            node = node.children[index];
+            if (node == null) return null;
+        }
+        return node;
+    }
+
+    /** 删除一次插入；同一个词插入两次时第一次删除后仍可 search。 */
+    public boolean delete(String word) {
+        Objects.requireNonNull(word, "word");
+        List<Node> path = new ArrayList<>();
+        path.add(root);
+        Node node = root;
+        for (int i = 0; i < word.length(); i++) {
+            int index = checkIndex(word.charAt(i));
+            node = node.children[index];
+            if (node == null) return false;
+            path.add(node);
+        }
+        if (node.terminalCount == 0) return false;
+
+        node.terminalCount--;
+        for (Node visited : path) visited.passCount--;
+
+        // 从叶子向上剪枝；共享前缀仍被其他词引用时不会误删。
+        for (int i = word.length() - 1; i >= 0; i--) {
+            Node parent = path.get(i);
+            int index = checkIndex(word.charAt(i));
+            Node child = parent.children[index];
+            if (child.passCount == 0 && child.terminalCount == 0) {
+                parent.children[index] = null;
+            } else {
+                break;
+            }
+        }
+        return true;
+    }
+
+    public List<String> wordsWithPrefix(String prefix) {
+        Objects.requireNonNull(prefix, "prefix");
+        Node start = find(prefix);
+        List<String> result = new ArrayList<>();
+        if (start == null) return result;
+        dfs(start, new StringBuilder(prefix), result);
+        return result;
+    }
+
+    private void dfs(Node node, StringBuilder word, List<String> result) {
+        if (node.terminalCount > 0) result.add(word.toString());
+        for (int i = 0; i < 26; i++) {
+            if (node.children[i] == null) continue;
+            word.append((char) ('a' + i));
+            dfs(node.children[i], word, result);
+            word.deleteCharAt(word.length() - 1);
+        }
+    }
+}
+```
+
+**数组版读代码要点**：`passCount` 不是为了查询精确词而存在，而是为了安全删除和统计前缀词数；如果只需要静态字典的 `search` / `startsWith`，可以删掉计数，把节点进一步压缩。上面的 DFS 按 `a..z` 扫描，因此结果天然是字典序；若改成 HashMap，遍历顺序默认不应当被当作业务排序。
+
+### 3.2 Java HashMap 版：支持动态字符集
+
+HashMap 版不把字符集写死在节点中。它支持中文、数字和符号，但 Java 的 `char` 是 UTF-16 code unit；若要把一个 Unicode code point（例如部分 emoji）视为一个字符，应改用 `codePoints()` 并把 key 改为 `Integer`，不能误以为 `char` 永远等于用户看到的一个字符。
+
+```java
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+
+public final class MapTrie {
+    private static final class Node {
+        private final Map<Character, Node> children = new HashMap<>();
+        private int terminalCount;
+        private int passCount;
+    }
+
+    private final Node root = new Node();
+
+    public void insert(String word) {
+        Objects.requireNonNull(word, "word");
+        Node node = root;
+        node.passCount++;
+        for (int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
+            node = node.children.computeIfAbsent(c, ignored -> new Node());
+            node.passCount++;
+        }
+        node.terminalCount++;
+    }
+
+    public boolean search(String word) {
+        Node node = find(word);
+        return node != null && node.terminalCount > 0;
+    }
+
+    public boolean startsWith(String prefix) {
+        Objects.requireNonNull(prefix, "prefix");
+        return prefix.isEmpty() || find(prefix) != null;
+    }
+
+    private Node find(String text) {
+        Objects.requireNonNull(text, "text");
+        Node node = root;
+        for (int i = 0; i < text.length(); i++) {
+            node = node.children.get(text.charAt(i));
+            if (node == null) return null;
+        }
+        return node;
+    }
+
+    public boolean delete(String word) {
+        Objects.requireNonNull(word, "word");
+        List<Node> path = new ArrayList<>();
+        path.add(root);
+        Node node = root;
+        for (int i = 0; i < word.length(); i++) {
+            node = node.children.get(word.charAt(i));
+            if (node == null) return false;
+            path.add(node);
+        }
+        if (node.terminalCount == 0) return false;
+
+        node.terminalCount--;
+        for (Node visited : path) visited.passCount--;
+        for (int i = word.length() - 1; i >= 0; i--) {
+            Node parent = path.get(i);
+            char c = word.charAt(i);
+            Node child = parent.children.get(c);
+            if (child.passCount == 0 && child.terminalCount == 0) {
+                parent.children.remove(c);
+            } else {
+                break;
+            }
+        }
+        return true;
+    }
+
+    public List<String> wordsWithPrefix(String prefix) {
+        Objects.requireNonNull(prefix, "prefix");
+        Node start = find(prefix);
+        List<String> result = new ArrayList<>();
+        if (start == null) return result;
+        dfs(start, new StringBuilder(prefix), result);
+        return result;
+    }
+
+    private void dfs(Node node, StringBuilder word, List<String> result) {
+        if (node.terminalCount > 0) result.add(word.toString());
+        for (Map.Entry<Character, Node> entry : node.children.entrySet()) {
+            word.append(entry.getKey());
+            dfs(entry.getValue(), word, result);
+            word.deleteCharAt(word.length() - 1);
+        }
+    }
+}
+```
+
+### 3.3 Python 数组版：同一套语义
+
+Python 版本使用 `list[Node | None]` 模拟 26 个指针。类型标注需要 Python 3.10+；若项目版本更低，可删去联合类型标注，不影响算法。数组版仍然只接受 `a-z`，所以中文输入应主动报错，而不是静默丢失。
+
+```python
+from __future__ import annotations
+
+
+class ArrayTrie:
+    class _Node:
+        def __init__(self) -> None:
+            self.children: list[ArrayTrie._Node | None] = [None] * 26
+            self.terminal_count = 0
+            self.pass_count = 0
+
+    def __init__(self) -> None:
+        self.root = self._Node()
+
+    @staticmethod
+    def _index(ch: str) -> int:
+        if not ('a' <= ch <= 'z'):
+            raise ValueError(f"ArrayTrie only accepts lowercase a-z: {ch!r}")
+        return ord(ch) - ord('a')
+
+    def insert(self, word: str) -> None:
+        if word is None:
+            raise TypeError("word must not be None")
+        node = self.root
+        node.pass_count += 1
+        for ch in word:
+            index = self._index(ch)
+            if node.children[index] is None:
+                node.children[index] = self._Node()
+            node = node.children[index]
+            node.pass_count += 1
+        node.terminal_count += 1
+
+    def _find(self, text: str) -> _Node | None:
+        node = self.root
+        for ch in text:
+            node = node.children[self._index(ch)]
+            if node is None:
+                return None
+        return node
+
+    def search(self, word: str) -> bool:
+        node = self._find(word)
+        return node is not None and node.terminal_count > 0
+
+    def starts_with(self, prefix: str) -> bool:
+        return prefix == "" or self._find(prefix) is not None
+
+    def delete(self, word: str) -> bool:
+        path = [self.root]
+        node = self.root
+        for ch in word:
+            node = node.children[self._index(ch)]
+            if node is None:
+                return False
+            path.append(node)
+        if node.terminal_count == 0:
+            return False
+        node.terminal_count -= 1
+        for visited in path:
+            visited.pass_count -= 1
+        for position in range(len(word) - 1, -1, -1):
+            parent = path[position]
+            index = self._index(word[position])
+            child = parent.children[index]
+            if child.pass_count == 0 and child.terminal_count == 0:
+                parent.children[index] = None
+            else:
+                break
+        return True
+
+    def words_with_prefix(self, prefix: str) -> list[str]:
+        start = self._find(prefix)
+        result: list[str] = []
+        if start is None:
+            return result
+        buffer = list(prefix)
+
+        def dfs(node: ArrayTrie._Node) -> None:
+            if node.terminal_count > 0:
+                result.append(''.join(buffer))
+            for index, child in enumerate(node.children):
+                if child is not None:
+                    buffer.append(chr(ord('a') + index))
+                    dfs(child)
+                    buffer.pop()
+
+        dfs(start)
+        return result
+```
+
+### 3.4 Python HashMap 版：`dict` 只保存实际存在的边
+
+```python
+from __future__ import annotations
+
+
+class MapTrie:
+    class _Node:
+        def __init__(self) -> None:
+            self.children: dict[str, MapTrie._Node] = {}
+            self.terminal_count = 0
+            self.pass_count = 0
+
+    def __init__(self) -> None:
+        self.root = self._Node()
+
+    def insert(self, word: str) -> None:
+        if word is None:
+            raise TypeError("word must not be None")
+        node = self.root
+        node.pass_count += 1
+        for ch in word:
+            node = node.children.setdefault(ch, self._Node())
+            node.pass_count += 1
+        node.terminal_count += 1
+
+    def _find(self, text: str) -> _Node | None:
+        node = self.root
+        for ch in text:
+            node = node.children.get(ch)
+            if node is None:
+                return None
+        return node
+
+    def search(self, word: str) -> bool:
+        node = self._find(word)
+        return node is not None and node.terminal_count > 0
+
+    def starts_with(self, prefix: str) -> bool:
+        return prefix == "" or self._find(prefix) is not None
+
+    def delete(self, word: str) -> bool:
+        path = [self.root]
+        node = self.root
+        for ch in word:
+            node = node.children.get(ch)
+            if node is None:
+                return False
+            path.append(node)
+        if node.terminal_count == 0:
+            return False
+        node.terminal_count -= 1
+        for visited in path:
+            visited.pass_count -= 1
+        for position in range(len(word) - 1, -1, -1):
+            parent = path[position]
+            ch = word[position]
+            child = parent.children[ch]
+            if child.pass_count == 0 and child.terminal_count == 0:
+                del parent.children[ch]
+            else:
+                break
+        return True
+
+    def words_with_prefix(self, prefix: str) -> list[str]:
+        start = self._find(prefix)
+        result: list[str] = []
+        if start is None:
+            return result
+        buffer = list(prefix)
+
+        def dfs(node: MapTrie._Node) -> None:
+            if node.terminal_count > 0:
+                result.append(''.join(buffer))
+            for ch, child in node.children.items():
+                buffer.append(ch)
+                dfs(child)
+                buffer.pop()
+
+        dfs(start)
+        return result
+```
+
+### 3.5 两种实现的选型与复杂度对照
+
+| 维度 | 数组版 | HashMap 版 |
+|------|--------|------------|
+| 字符集 | 代码固定 `a-z`，扩展需改映射和数组大小 | `Character` / Python `str`，自然支持中文和动态字符 |
+| 单字符转移 | 严格 O(1)，一次下标访问 | 平均 O(1)，哈希、桶和装箱有常数开销 |
+| 插入 / 精确查询 | O(L) | 平均 O(L) |
+| 删除一次 | O(L)，另加 O(L) 回收路径 | 平均 O(L)，另加 O(L) 删除边 |
+| 前缀枚举 | O(P + K)，P 为前缀长度，K 为输出节点数 | 平均 O(P + K)，遍历顺序不保证字典序 |
+| 节点额外空间 | 每个节点 26 个引用，即使为空也占位 | 只存实际边，但每个 Map 有对象/桶开销 |
+| 典型选择 | 小写词典、AC 自动机、极致低延迟 | 中文、Unicode、配置可变、快速迭代 |
+
+这里的 `L` 是输入字符串长度，`K` 是输出词条总长度级别，而不是仅仅“词条数量”：自动补全输出 10 万个长词时，算法不可能少于构造这些结果的成本。若词典只读，可以把节点编号化、使用 Double-Array Trie 或 LOUDS；若词典频繁写入，先用 HashMap 版验证功能，再针对 profile 结果优化，避免过早压缩导致维护成本上升。
+
+---
+
+## 4. 边界测试用例：先定义语义，再验证删除
+
+Trie 的 bug 通常不在“沿边走”这条主路径，而在 root、终点标记、重复计数和删除剪枝。下面的测试约定与四个实现保持一致：空串合法；重复插入两次需要删除两次才消失；删除不存在的词返回 `false` 且不能改变其他词；前缀枚举不应返回前缀之外的词。
+
+### 4.1 五类必测边界
+
+| 类别 | 输入 | 预期 | 容易写错的实现 |
+|------|------|------|----------------|
+| 空字符串 | `insert("")`、`search("")`、`startsWith("")`、`delete("")` | root 的终点计数变化；空前缀永远为 true；删除一次只减少一次 | 直接 `word.charAt(0)`，或把空串当成“无效词”但没有在 API 说明 |
+| 单字符 | `"a"`、`"中"` | 数组版 `a` 可用；HashMap 版中文可用；删除后不影响同前缀长词 | 删除时把 root 或共享节点一起删掉 |
+| 重复插入 | `insert("app")` 两次，再 `delete("app")` 一次 | 第一次删除后 `search("app") == true`，第二次才为 false；`apple` 始终存在 | 只用 `boolean isEnd`，无法表达多次插入 |
+| 删除不存在 | 删除未插入词、已删除词、存在词的非终点前缀 | 返回 false，树和其他查询结果完全不变 | 先无条件递减 `passCount`，造成计数为负或误剪枝 |
+| 超大词典 | 10 万至 100 万词、长公共前缀与高度稀疏词混合 | 正确性不变；记录节点数、堆内存、构建耗时；必要时换压缩 Trie | 数组版每节点 26 槽导致内存爆炸；DFS 一次性返回海量结果 |
+
+再补三类线上经常出现的输入：
+
+- **非 ASCII 字符**：数组版应明确抛 `IllegalArgumentException` / `ValueError`；HashMap 版可以接受中文，但需要统一大小写、Unicode 规范化和空白策略。
+- **超长词**：例如长度 1、10、10 万的单词，验证递归 DFS 不会因为 Java/Python 调用栈溢出；生产代码可改显式栈。
+- **前缀关系**：先插入 `a`、`ab`、`abc`，按逆序删除，确认每次只移除一个终点；再按正序删除，确认共享节点只在最后一个引用消失时回收。
+
+### 4.2 Java 参数化测试示例（JUnit 5）
+
+数组版和 HashMap 版都应跑同一组契约测试，避免“一个实现修了边界，另一个实现仍有旧语义”。下面用工厂注入被测实现；两个 Trie 都实现相同的 5 个公开方法即可复用。
+
+```java
+import static org.junit.jupiter.api.Assertions.*;
+import java.util.List;
+import java.util.function.Supplier;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+import java.util.stream.Stream;
+
+class TrieContractTest {
+    static Stream<Supplier<Object>> implementations() {
+        return Stream.of(ArrayTrie::new, MapTrie::new);
+    }
+
+    @ParameterizedTest
+    @MethodSource("implementations")
+    void emptyStringIsARealWord(Supplier<Object> factory) {
+        // 实际项目中可让 Supplier 的泛型指向统一的 Trie 接口。
+        TrieApi trie = (TrieApi) factory.get();
+        assertTrue(trie.startsWith(""));
+        assertFalse(trie.search(""));
+        trie.insert("");
+        assertTrue(trie.search(""));
+        assertTrue(trie.delete(""));
+        assertFalse(trie.search(""));
+        assertFalse(trie.delete(""));
+    }
+
+    @ParameterizedTest
+    @MethodSource("implementations")
+    void duplicateInsertRequiresDuplicateDelete(Supplier<Object> factory) {
+        TrieApi trie = (TrieApi) factory.get();
+        trie.insert("app");
+        trie.insert("app");
+        trie.insert("apple");
+        assertTrue(trie.delete("app"));
+        assertTrue(trie.search("app"));
+        assertTrue(trie.search("apple"));
+        assertTrue(trie.delete("app"));
+        assertFalse(trie.search("app"));
+        assertTrue(trie.search("apple"));
+    }
+
+    @ParameterizedTest
+    @MethodSource("implementations")
+    void deletingMissingWordDoesNotMutateTheTrie(Supplier<Object> factory) {
+        TrieApi trie = (TrieApi) factory.get();
+        trie.insert("cat");
+        assertFalse(trie.delete("car"));
+        assertTrue(trie.search("cat"));
+        assertTrue(trie.startsWith("ca"));
+        assertFalse(trie.delete("cat")); // 第二次删除同一个词
+    }
+
+    @ParameterizedTest
+    @MethodSource("implementations")
+    void prefixAndSingleCharacterCases(Supplier<Object> factory) {
+        TrieApi trie = (TrieApi) factory.get();
+        trie.insert("a");
+        trie.insert("ab");
+        assertTrue(trie.search("a"));
+        assertTrue(trie.startsWith("a"));
+        assertEquals(List.of("a", "ab"), trie.wordsWithPrefix("a"));
+        assertTrue(trie.delete("a"));
+        assertFalse(trie.search("a"));
+        assertTrue(trie.search("ab"));
+    }
+}
+```
+
+> 示例中的 `TrieApi` 是测试契约接口，而不是额外的第三套实现；如果现有类尚未 `implements TrieApi`，把 `Supplier<Object>` 改为两个独立的 `@MethodSource`，或为四个实现补一个只含 `insert/search/startsWith/delete/wordsWithPrefix` 的接口即可。测试重点是语义复用，不是框架样板。
+
+### 4.3 Python `pytest` 参数化测试示例
+
+```python
+import pytest
+
+from trie import ArrayTrie, MapTrie
+
+
+@pytest.fixture(params=[ArrayTrie, MapTrie])
+def trie(request):
+    return request.param()
+
+
+def test_empty_string(trie):
+    assert trie.starts_with("")
+    assert not trie.search("")
+    trie.insert("")
+    assert trie.search("")
+    assert trie.delete("")
+    assert not trie.search("")
+    assert not trie.delete("")
+
+
+def test_duplicate_insert_and_delete(trie):
+    trie.insert("app")
+    trie.insert("app")
+    trie.insert("apple")
+    assert trie.delete("app")
+    assert trie.search("app")
+    assert trie.search("apple")
+    assert trie.delete("app")
+    assert not trie.search("app")
+    assert trie.search("apple")
+
+
+def test_delete_missing_is_noop(trie):
+    trie.insert("cat")
+    assert not trie.delete("car")
+    assert trie.search("cat")
+    assert trie.starts_with("ca")
+    assert not trie.delete("cat") is False  # 第一次删除应成功
+    assert not trie.delete("cat")          # 第二次才失败
+
+
+def test_single_character_and_prefix_results(trie):
+    trie.insert("a")
+    trie.insert("ab")
+    assert trie.words_with_prefix("a") == ["a", "ab"]
+    assert trie.delete("a")
+    assert not trie.search("a")
+    assert trie.search("ab")
+
+
+def test_array_version_rejects_unsupported_charset():
+    with pytest.raises(ValueError):
+        ArrayTrie().insert("中文")
+    assert MapTrie().search("中文") is False
+```
+
+上面的 `test_delete_missing_is_noop` 有意先删除一次再删第二次，验证“删除存在词”和“删除不存在词”两个分支；如果希望断言更直观，可以拆成 `assert trie.delete("cat") is True` 与 `assert trie.delete("cat") is False`。超大词典测试不应硬编码某台机器的毫秒数，而应记录基准：词条数量、总字符数、节点数、峰值 RSS/堆、P50/P99 查询延迟，并在同一运行环境下比较数组版和 HashMap 版。
+
+---
+
+## 5. Trie 应用场景（前缀查询、词频与路由）
 
 ### 3.1 自动补全（搜索框 / IDE）
 
