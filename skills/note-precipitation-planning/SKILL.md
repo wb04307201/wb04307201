@@ -432,6 +432,12 @@ PYEOF
 3. **每文件 commit 后立即跑 broken links 扫描**（见 Step 6.5）
 4. **不依赖"记忆"**：每次都 grep/find 验证，不要凭印象写路径
 
+**🆕 强化（2026-07-25 经验）**：
+- subagent 写完每个 `[...](./xxx/README.md)` 链接后**必须**用 `find note -name "xxx" -type d` 验证目标目录存在
+- 如目标目录不存在，使用**替代方案三选一**：① 删除链接 ② 改为指向父系统（如 CMDB → ITSM with 注释）③ 新建对应 README（如确有需求）
+- subagent prompt 模板**强制要求**：每个深读链接必须在最终报告里列出 `find` 命令的实际输出
+- 历史案例（2026-07-25 业务系统补深）：QMS 引用 `../06-specialized/lims/README.md`（少一层 `../`，正确应是 `../../06-specialized/lims/README.md`），独立 `find` 验证 + 修复为正确路径
+
 ### ❌ Mistake 9: 单向链接（child 链 parent，parent 不回链）
 
 **症状**：新文件链接到 parent / 同级兄弟，但**parent / 同级兄弟没有反向链**到新文件。例如：
@@ -502,6 +508,11 @@ done
 - subagent 报告缺失 commit hash → 视为 commit 失败，立即 abort + 重派
 - 注意 commit 1 章节的 subagent 失败概率最高（首次创建文件复杂操作）
 
+**🆕 红旗识别（2026-07-25 经验）**：
+- subagent 最终报告出现 **"如果需要...我可以..."** / **"可以..."** / **"建议你..."** / **"等你下一步指令"** 等委婉语 → **silent failure 红旗**，**立即 abort + 重派**，不需要等 `ls -la` 验证（红旗本身已足够判定）
+- 真实 commit 完成的报告必含**实际 commit hash + `ls -la` / `wc -l` 命令输出**（不是"已完成"等模糊表述）
+- 历史案例（2026-07-25 客服系统首次 subagent）：报告结尾"如果需要，我可以接着..."，但 `git log` 显示无新 commit、`ls -la call-center/README.md` 显示文件不存在 → 1 次重派即成功
+
 ### ❌ Mistake 12：git reset --soft + git commit --amend 错位
 
 **症状**：`git reset --soft BASE` 撤销 3 个 commit 后重新 commit 1/2/3，HEAD 此时在 commit 3。后续 `git commit --amend` **修改的 HEAD（commit 3）**，而非你以为的 commit 1。结果 3 个 commit hash 全变
@@ -527,6 +538,11 @@ done
 **历史案例**（2026-07-25 coding-agents 沉淀）：
 - 6 个新文件 + 8 commit 后，**新引入 0 broken links**（验证通过 ✅）
 - 但反例风险：在 note/03.java/01-foo/02-bar/README.md 写 `../baz/README.md` 而不是 `../../baz/README.md`，会让 note 出现真错
+
+**🆕 强化（2026-07-25 经验）**：
+- subagent 写新 README 引用任何系统前**必须**先 `grep -r "<system>" note/08.application-systems/` 确认该系统是否独立存在
+- 如果**不是独立系统**（如 CMDB 是 ITSM 子模块、APR/MRP 是 ERP 子模块），应使用替代方案：① 删除链接 ② 改为指向父系统 with 注释（如 `[ITSM 深读](../../06-specialized/itsm/README.md)`（含 CMDB））
+- 历史案例（2026-07-25 业务系统补深）：EAM 引用 `../../06-specialized/cmdb/README.md`（CMDB 不是独立系统，是 ITSM 子模块），独立验证 `ls -la note/08.application-systems/06-specialized/` 发现 cmdb 目录不存在 → 修复为 ITSM with 注释
 
 **修复（沉淀完成后的简单兜底）**：
 
