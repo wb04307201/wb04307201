@@ -16,11 +16,11 @@ question:
 
 # 数据库咬文嚼字
 
-> 数据库高频面试题与细节深挖，对齐主模块 [`03.database`](../../03.database/)。26 篇真题聚焦 MySQL（索引 / 锁 / 事务 / MVCC / 死锁 / JOIN）、Redis（单线程原理 / 持久化 / 淘汰 / 集群 / 大 Key）、NoSQL 三大方向的高频陷阱（find 校对 2026-07-19）。
+> 数据库高频面试题与细节深挖，对齐主模块 [`03.database`](../../03.database/)。27 篇真题聚焦 MySQL（索引 / 锁 / 事务 / MVCC / 死锁 / JOIN）、Redis（单线程原理 / 持久化 / 淘汰 / 集群 / 大 Key）、NoSQL 三大方向的高频陷阱（find 校对 2026-07-26）。
 
 ---
 
-## 文章清单（共 26 题，find 校对 2026-07-19）
+## 文章清单（共 27 题，find 校对 2026-07-26）
 
 ### MySQL 基础
 | 主题 | 难度 | 核心问题 |
@@ -41,6 +41,7 @@ question:
 | [批量插入 batch 性能对比](mysql-batch-operation/) | ⭐⭐⭐⭐ | JDBC batch + rewriteBatchedStatements + LOAD DATA |
 | [大事务的危害与拆分](mysql-large-transaction/) | ⭐⭐⭐⭐ | 5 大危害（锁/Undo/binlog/连接池/MVCC） + 拆分策略 |
 | [索引失效的 10 种场景](mysql-index-failure/) | ⭐⭐⭐⭐⭐ | LIKE 左通配 / 函数 / 类型转换 / OR / 最左前缀 |
+| **🆕 [联合索引 + filesort](composite-index-filesort/)** | ⭐⭐⭐⭐ | 5 大原因 + EXPLAIN 排查 + 修复方案 |
 
 ### MySQL 深入
 | 主题 | 难度 | 核心问题 |

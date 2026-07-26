@@ -31,6 +31,7 @@ module:
 | 十一、Index Merge | 多个单列索引合并 | Intersection / Union / Sort-Union |
 | 十二、Cardinality 与索引选择性 | 索引列唯一值数量 | 选择性 > 0.1 才有价值 |
 | 十三、Online DDL | INPLACE / INSTANT | pt-osc / gh-ost |
+| **🆕 十四、联合索引 + filesort** | 5 大原因 + EXPLAIN 排查 | 排序方向 / 范围截断 / 类型转换 / collation / 列不连续 |
 
 ---
 
