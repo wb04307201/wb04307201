@@ -205,16 +205,16 @@ graph LR
 
 | 维度 | 数字 |
 |------|------|
-| 一级子目录数 | 29 |
-| 一级 leaf README 数 | 29 |
+| 一级子目录数 | 30 |
+| 一级 leaf README 数 | 30 |
 | 二级 leaf README 数 | 5（multimodal:2 + prompt-engineering:3） |
-| 总 leaf README 数 | 34 |
+| 总 leaf README 数 | 35 |
 | 速查表条目数 | 17 |
 | 最佳实践条数 | 6 |
 | 常见面试题数 | 12 |
 | 开源参考项目数 | 10 类共 25+ 条 |
-| frontmatter 覆盖 | 34 / 34 = 100% |
-| 文末回链覆盖 | 34 / 34 = 100% |
+| frontmatter 覆盖 | 35 / 35 = 100% |
+| 文末回链覆盖 | 35 / 35 = 100% |
 
 ---
 
