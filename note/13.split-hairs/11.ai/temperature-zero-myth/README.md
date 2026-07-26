@@ -262,7 +262,8 @@ Q5：贵司 LLM 是否自托管？用的哪个推理框架？
 | [prompt-engineering](../prompt-engineering/README.md) | 8 种核心技巧 + 注入防御 | ⭐⭐⭐⭐ |
 | [rag](../rag/README.md) | RAG 架构 | ⭐⭐⭐⭐⭐ |
 | [transformer](../transformer/README.md) | Transformer 原理 | ⭐⭐⭐⭐⭐ |
-| [production-thinking-5q](../production-thinking-5q/README.md) | 5 个灵魂拷问 | ⭐⭐⭐⭐⭐ |
+| [思维范式：Prompt vs if-else](../llm-thinking-paradigm/README.md) | 4 信号决策 | ⭐⭐⭐⭐⭐ |
+| [一致性：Self-Consistency](../llm-consistency/README.md) | 语义投票 + Judge | ⭐⭐⭐⭐⭐ |
 | **temperature-zero-myth**（本篇）| Temperature=0 仍变化的 5 大根因 | ⭐⭐⭐⭐ |
 
 ## 🔗 深度版（主模块）

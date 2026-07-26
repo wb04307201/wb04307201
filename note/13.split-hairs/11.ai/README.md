@@ -69,7 +69,7 @@ question:
 | [Loop Engineering](loop-engineering/) | ⭐⭐⭐⭐ | 3 大组件 + 6 大陷阱（含 Fresh Context 架构）+ Ralph Wiggum Loop | [03-engineering/loop-engineering](../../11.ai/03-engineering/loop-engineering/README.md) |
 | [Transformer 架构](transformer/) | ⭐⭐⭐⭐⭐ | Self-Attention / QKV / Positional Encoding / FFN | [01-fundamentals/transformer](../../11.ai/01-fundamentals/transformer/README.md) |
 | [LLM 推理优化](llm-inference/) | ⭐⭐⭐⭐ | Continuous Batching / PagedAttention / KV Cache / 量化 | [02-technology-stack/llm-inference-optimization](../../11.ai/02-technology-stack/llm-inference-optimization/README.md) |
-| [LLM 对齐方法](llm-alignment/) | ⭐⭐⭐⭐ | RLHF / DPO / Constitutional AI / 5 大对齐方法 | [03-engineering/llm-alignment](../../11.ai/03-engineering/llm-alignment/README.md) |
+| [LLM 对齐方法](llm-alignment/) | ⭐⭐⭐⭐ | RLHF / DPO / Constitutional AI / 5 大对齐方法 | [07-research/alignment](../../11.ai/07-research/alignment/README.md) |
 | [Token 原理](token/) | ⭐⭐⭐ | BPE / SentencePiece / Tokenizer / 计费模型 | [02-technology-stack/token-billing](../../11.ai/02-technology-stack/token-billing/README.md) |
 | [RAG 检索增强生成](rag/) | ⭐⭐⭐⭐⭐ | Embedding + Vector DB + Retrieval + Generation | [08-llmops/01-rag-vs-finetuning](../../11.ai/08-llmops/01-rag-vs-finetuning/README.md) |
 | [Function Calling / Tool Use](function-calling/) | ⭐⭐⭐⭐⭐ | 工具调用原理 / Schema / ReAct Agent 集成 | [02-technology-stack/function-calling](../../11.ai/02-technology-stack/function-calling/README.md) |
@@ -88,7 +88,11 @@ question:
 | [Skill 命中率](skill-hit-rate/) | ⭐⭐⭐⭐ | 数量爆炸后 4 层模型（描述 / 路由 / 加载 / 评估）+ 5 大反模式 + 65% → 92% 实战 | [03-engineering/claude-code-practices/skill-hit-rate](../../11.ai/03-engineering/claude-code-practices/skill-hit-rate.md) |
 | **🆕 [工业部署推理引擎选型](inference-engine-selection/)** | ⭐⭐⭐⭐⭐ | vLLM vs Ollama 5 大理由 + PagedAttention + 连续批处理 + 4 引擎对比 + 7 道 Q&A | [03-engineering/ai-platforms/vllm-vs-ollama](../../11.ai/03-engineering/ai-platforms/vllm-vs-ollama/README.md) |
 | **🆕 [Agent 长上下文策略](long-context-agent-strategy/)** | ⭐⭐⭐⭐⭐ | 6 大策略组合（Chunking / RAG / Memory / Sliding Window / Sub-Agents / Long-Context）+ Lost in Middle + 7 道 Q&A | [04-architecture/agent-context](../../11.ai/04-architecture/agent-context/README.md) |
-| **🆕 [大模型思维工程 5 问](production-thinking-5q/)** | ⭐⭐⭐⭐⭐ | 5 大灵魂拷问（Prompt vs if-else / 成本降级 / 一致性 / 超时熔断 / 监控定位）+ 5 层路由 + 双 timeout + 6 道 Q&A | [03-engineering/llm-production-thinking](../../11.ai/03-engineering/llm-production-thinking/README.md) |
+| **🆕 [思维范式：Prompt vs if-else](llm-thinking-paradigm/)** | ⭐⭐⭐⭐⭐ | 4 信号决策 + 80/20 协同 + 60 秒话术 | [01-thinking-paradigm](../../11.ai/03-engineering/llm-production-thinking/01-thinking-paradigm.md) |
+| **🆕 [成本控制：5 层路由](llm-cost-control/)** | ⭐⭐⭐⭐⭐ | 3 道 quota + 5 层降级 + 60 秒话术 | [02-cost-control-and-degradation](../../11.ai/03-engineering/llm-production-thinking/02-cost-control-and-degradation.md) |
+| **🆕 [一致性：Self-Consistency 投票](llm-consistency/)** | ⭐⭐⭐⭐⭐ | 语义投票 + Judge + 重试预算 + 60 秒话术 | [03-consistency-and-failure-handling](../../11.ai/03-engineering/llm-production-thinking/03-consistency-and-failure-handling.md) |
+| **🆕 [超时熔断：双 Timeout](llm-timeout-circuit-breaker/)** | ⭐⭐⭐⭐⭐ | 软/硬限 + Circuit Breaker + Fallback 链 | [04-timeout-and-circuit-breaker](../../11.ai/03-engineering/llm-production-thinking/04-timeout-and-circuit-breaker.md) |
+| **🆕 [监控定位：4 维 + Trace](llm-monitoring/)** | ⭐⭐⭐⭐⭐ | 质量/延迟/成本/一致性 + Trace + 黄金集 | [05-online-monitoring](../../11.ai/03-engineering/llm-production-thinking/05-online-monitoring.md) |
 
 ---
 

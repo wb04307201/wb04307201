@@ -470,7 +470,7 @@ graph LR
 
 **关键教训**：阿明把"5 问"写进了团队 wiki 新人入职清单——**每个 AI 工程师入职第一周必修课，是回答这 5 个问题能落地。**
 
-> 🆕 **5 问完整技术解析**：Prompt vs if-else 4 信号决策 + 5 层路由 + Self-Consistency + 双 timeout + Trace 监控 → 详见 [大模型思维工程专题](../11.ai/03-engineering/llm-production-thinking/README.md)（含 7 文件 1512 行）。面试精选 6 道 Q&A 见 [13.split-hairs/11.ai/production-thinking-5q](../13.split-hairs/11.ai/production-thinking-5q/README.md)。
+> 🆕 **5 问完整技术解析**：Prompt vs if-else 4 信号决策 + 5 层路由 + Self-Consistency + 双 timeout + Trace 监控 → 详见 [大模型思维工程专题](../11.ai/08-llmops/production-stability/README.md)（含 7 文件 1512 行）。面试精选 5 题（拆分独立版）见 [思维范式](../13.split-hairs/11.ai/llm-thinking-paradigm/) · [成本控制](../13.split-hairs/11.ai/llm-cost-control/) · [一致性](../13.split-hairs/11.ai/llm-consistency/) · [超时熔断](../13.split-hairs/11.ai/llm-timeout-circuit-breaker/) · [监控](../13.split-hairs/11.ai/llm-monitoring/)。
 
 ---
 

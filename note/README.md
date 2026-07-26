@@ -502,7 +502,11 @@ module:
 | [LLM Benchmark 深度剖析](13.split-hairs/11.ai/llm-benchmark/README.md) | LLM Benchmark 深度剖析 |
 | [Agent 长上下文策略](13.split-hairs/11.ai/long-context-agent-strategy/README.md) | Agent 长上下文 6 大策略 |
 | [Loop Engineering](13.split-hairs/11.ai/loop-engineering/README.md) | Loop Engineering — 循环调用 Agent |
-| [大模型思维工程 5 问](13.split-hairs/11.ai/production-thinking-5q/README.md) | 大模型思维工程 5 个灵魂拷问 |
+| [思维范式：Prompt vs if-else](13.split-hairs/11.ai/llm-thinking-paradigm/README.md) | 4 信号决策 |
+| [成本控制：5 层路由](13.split-hairs/11.ai/llm-cost-control/README.md) | 3 道 quota + 5 层降级 |
+| [一致性：Self-Consistency](13.split-hairs/11.ai/llm-consistency/README.md) | 语义投票 + Judge |
+| [超时熔断：双 Timeout](13.split-hairs/11.ai/llm-timeout-circuit-breaker/README.md) | 软/硬限 + Circuit Breaker |
+| [监控定位：4 维 + Trace](13.split-hairs/11.ai/llm-monitoring/README.md) | 质量/延迟/成本/一致性 + Trace |
 | [RAG 权限隔离设计](13.split-hairs/11.ai/rag-permission-isolation/README.md) | RAG 权限隔离设计 |
 | [ReAct vs Plan-and-Execute](13.split-hairs/11.ai/react-vs-plan-execute/README.md) | ReAct vs Plan-and-Execute 4 模式选型 |
 | [Skill 从 0 到 1 设计](13.split-hairs/11.ai/skill-design/README.md) | Skill 从 0 到 1 设计 |
