@@ -73,6 +73,7 @@ Q：在构建 AI Agent 系统时，ReAct 和 Plan-and-Execute 是两种主流的
 | 04 | [选型决策树](04-selection-decision-tree.md) | "我是 X 场景，应该选 Y 模式"的决策流程 + 反模式 |
 | 05 | [DAG 深度](05-dag-deep-dive.md) | 节点设计 + 错误恢复 + Loop 节点 + 反模式 |
 | 06 | [Multi-Agent 深度](06-multi-agent-deep-dive.md) | 通信协议 + 协调者模式 + 循环调用防护 + 反模式 |
+| 🆕 07 | [Planning/Acting/Monitoring 三阶段闭环](planning-acting-monitoring/README.md) | 三阶段定义 + 6 大反模式 + 工具链选型 + 客服 Agent 实战 |
 
 ---
 
