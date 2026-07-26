@@ -25,6 +25,7 @@ module:
 | [dense-vs-moe](dense-vs-moe/) | 稠密模型 vs 混合专家(MoE)架构对比 | 大模型架构选型 |
 | [moe-architecture](moe-architecture/) | MoE 架构深度：Mixtral / DeepSeek-V3 / Switch Transformer | 稀疏激活 + 路由机制 |
 | [dropout-in-llm](dropout-in-llm/) | LLM 为何弃用 Dropout + **单 epoch 时代 + 6 模型 config 考古**（GPT-3/LLaMA/Mistral/Qwen/DeepSeek） | 训练范式 + 实证 |
+| **🆕 [Transformer 长上下文性能](transformer-long-context-performance/)** | O(n²) 根因 + KV Cache 膨胀 + 6 大优化方案（Flash/Sparse/Linear/MQA/GQA/Ring） | 超长上下文为什么慢 + 怎么选 |
 
 ### 1.1 学习路径
 
