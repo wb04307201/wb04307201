@@ -232,6 +232,7 @@ WHERE title LIKE '%运动鞋%'
 - 主模块：[`04.system-design`](../../README.md) — 系统设计知识体系
 - 同级案例：[敏感词过滤](../sensitive-word-filter/README.md) — AC 自动机 + 高并发过滤系统设计
 - 同级案例：[大文件上传](../file-upload/README.md) — 分片 + 断点续传 + 秒传 + 对象存储
+- 同级案例：[多字段动态排名](../multi-field-ranking/README.md) — 归一化方法论 + 加权公式 + 动态权重（非搜索场景的通用排名设计）
 - 缓存模式：[缓存设计模式](../cache-patterns/README.md) — Cache-Aside / Write-Behind
 - 消息队列：[消息队列](../mq/README.md) — 数据同步的 MQ 选型
 - 数据库：[分库分表](../database-optimization/db-sharding/README.md) — 数据规模扩大后的分片策略

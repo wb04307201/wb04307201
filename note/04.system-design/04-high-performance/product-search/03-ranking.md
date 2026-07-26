@@ -403,6 +403,12 @@ final_score(D, Q) = α × BM25(D, Q) + β × business_score(D)
 
 ---
 
+## 6.5 扩展到非搜索场景
+
+本文聚焦搜索排序（query-dependent），但粗排层的 `function_score` 混合思路可直接复用到**非搜索场景**的多字段排名（排行榜、Feed 排序、信用评分等）。通用设计模式见 [多字段动态排名](../multi-field-ranking/README.md) —— 归一化方法论 + 加权公式 + 动态权重策略 + 6 大典型场景。
+
+---
+
 ## 7. 系列导航
 
 | 文章 | 核心内容 |
