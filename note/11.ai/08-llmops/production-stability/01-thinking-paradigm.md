@@ -1,7 +1,7 @@
 <!--
 module:
-  parent: ai/llm-production-thinking
-  slug: ai/llm-production-thinking/01-thinking-paradigm
+  parent: ai/08-llmops/production-stability
+  slug: ai/llmops/production-stability/01-thinking-paradigm
   type: topic
   category: 思维范式
   summary: Prompt vs if-else —— 何时用 LLM、何时用规则的 4 维决策矩阵 + 反模式

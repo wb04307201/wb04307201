@@ -63,7 +63,7 @@ question:
 | 主题 | 难度 | 核心问题 | 主模块位置 |
 |------|------|---------|----------|
 | [Prompt Engineering](prompt-engineering/) | ⭐⭐⭐⭐ | 8 种核心技巧 + 陷阱 + 注入防御 | [02-technology-stack/prompt-engineering](../../11.ai/02-technology-stack/prompt-engineering/README.md) |
-| 🆕 [Temperature=0 误区](temperature-zero-myth/) | ⭐⭐⭐⭐ | 5 大根因 + 3 大防御 + Provider 差异 + 90 秒面试话术 | [03-consistency-and-failure-handling](../../11.ai/03-engineering/llm-production-thinking/03-consistency-and-failure-handling.md) |
+| 🆕 [Temperature=0 误区](temperature-zero-myth/) | ⭐⭐⭐⭐ | 5 大根因 + 3 大防御 + Provider 差异 + 90 秒面试话术 | [03-consistency-and-failure-handling](../../11.ai/08-llmops/production-stability/03-consistency-and-failure-handling.md) |
 | [Context Engineering](context-engineering-interview/) | ⭐⭐⭐⭐ | 4 大原则 + Lost in Middle + 演进路径 | [02-technology-stack/context-engineering](../../11.ai/02-technology-stack/context-engineering/README.md) |
 | [Harness Engineering](harness-engineering/) | ⭐⭐⭐⭐ | 4 大 Harness 类型 + OpenSpec + 4 原则 | [03-engineering/harness-engineering](../../11.ai/03-engineering/harness-engineering/README.md) |
 | [Loop Engineering](loop-engineering/) | ⭐⭐⭐⭐ | 3 大组件 + 6 大陷阱（含 Fresh Context 架构）+ Ralph Wiggum Loop | [03-engineering/loop-engineering](../../11.ai/03-engineering/loop-engineering/README.md) |
@@ -88,11 +88,11 @@ question:
 | [Skill 命中率](skill-hit-rate/) | ⭐⭐⭐⭐ | 数量爆炸后 4 层模型（描述 / 路由 / 加载 / 评估）+ 5 大反模式 + 65% → 92% 实战 | [03-engineering/claude-code-practices/skill-hit-rate](../../11.ai/03-engineering/claude-code-practices/skill-hit-rate.md) |
 | **🆕 [工业部署推理引擎选型](inference-engine-selection/)** | ⭐⭐⭐⭐⭐ | vLLM vs Ollama 5 大理由 + PagedAttention + 连续批处理 + 4 引擎对比 + 7 道 Q&A | [03-engineering/ai-platforms/vllm-vs-ollama](../../11.ai/03-engineering/ai-platforms/vllm-vs-ollama/README.md) |
 | **🆕 [Agent 长上下文策略](long-context-agent-strategy/)** | ⭐⭐⭐⭐⭐ | 6 大策略组合（Chunking / RAG / Memory / Sliding Window / Sub-Agents / Long-Context）+ Lost in Middle + 7 道 Q&A | [04-architecture/agent-context](../../11.ai/04-architecture/agent-context/README.md) |
-| **🆕 [思维范式：Prompt vs if-else](llm-thinking-paradigm/)** | ⭐⭐⭐⭐⭐ | 4 信号决策 + 80/20 协同 + 60 秒话术 | [01-thinking-paradigm](../../11.ai/03-engineering/llm-production-thinking/01-thinking-paradigm.md) |
-| **🆕 [成本控制：5 层路由](llm-cost-control/)** | ⭐⭐⭐⭐⭐ | 3 道 quota + 5 层降级 + 60 秒话术 | [02-cost-control-and-degradation](../../11.ai/03-engineering/llm-production-thinking/02-cost-control-and-degradation.md) |
-| **🆕 [一致性：Self-Consistency 投票](llm-consistency/)** | ⭐⭐⭐⭐⭐ | 语义投票 + Judge + 重试预算 + 60 秒话术 | [03-consistency-and-failure-handling](../../11.ai/03-engineering/llm-production-thinking/03-consistency-and-failure-handling.md) |
-| **🆕 [超时熔断：双 Timeout](llm-timeout-circuit-breaker/)** | ⭐⭐⭐⭐⭐ | 软/硬限 + Circuit Breaker + Fallback 链 | [04-timeout-and-circuit-breaker](../../11.ai/03-engineering/llm-production-thinking/04-timeout-and-circuit-breaker.md) |
-| **🆕 [监控定位：4 维 + Trace](llm-monitoring/)** | ⭐⭐⭐⭐⭐ | 质量/延迟/成本/一致性 + Trace + 黄金集 | [05-online-monitoring](../../11.ai/03-engineering/llm-production-thinking/05-online-monitoring.md) |
+| **🆕 [思维范式：Prompt vs if-else](llm-thinking-paradigm/)** | ⭐⭐⭐⭐⭐ | 4 信号决策 + 80/20 协同 + 60 秒话术 | [01-thinking-paradigm](../../11.ai/08-llmops/production-stability/01-thinking-paradigm.md) |
+| **🆕 [成本控制：5 层路由](llm-cost-control/)** | ⭐⭐⭐⭐⭐ | 3 道 quota + 5 层降级 + 60 秒话术 | [02-cost-control-and-degradation](../../11.ai/08-llmops/production-stability/02-cost-control-and-degradation.md) |
+| **🆕 [一致性：Self-Consistency 投票](llm-consistency/)** | ⭐⭐⭐⭐⭐ | 语义投票 + Judge + 重试预算 + 60 秒话术 | [03-consistency-and-failure-handling](../../11.ai/08-llmops/production-stability/03-consistency-and-failure-handling.md) |
+| **🆕 [超时熔断：双 Timeout](llm-timeout-circuit-breaker/)** | ⭐⭐⭐⭐⭐ | 软/硬限 + Circuit Breaker + Fallback 链 | [04-timeout-and-circuit-breaker](../../11.ai/08-llmops/production-stability/04-timeout-and-circuit-breaker.md) |
+| **🆕 [监控定位：4 维 + Trace](llm-monitoring/)** | ⭐⭐⭐⭐⭐ | 质量/延迟/成本/一致性 + Trace + 黄金集 | [05-online-monitoring](../../11.ai/08-llmops/production-stability/05-online-monitoring.md) |
 
 ---
 

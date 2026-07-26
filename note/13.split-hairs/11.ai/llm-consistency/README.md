@@ -10,7 +10,7 @@ question:
 
 # 模型连续 3 次给出不一致的结果 —— Self-Consistency 投票
 
-> 一句话定位：raw 重试不解决一致性问题——LLM 是概率模型，3 次重试可能都错。完整深度见 [主模块 · 不一致与失败处理](../../../11.ai/03-engineering/llm-production-thinking/03-consistency-and-failure-handling.md)。
+> 一句话定位：raw 重试不解决一致性问题——LLM 是概率模型，3 次重试可能都错。完整深度见 [主模块 · 不一致与失败处理](../../../11.ai/08-llmops/production-stability/03-consistency-and-failure-handling.md)。
 
 > **系列定位**：AI 生产工程面试题（Anthropic / OpenAI 高频）。考察的是**Self-Consistency 投票 + Judge 模型 + 重试预算**的协同方案。
 
@@ -114,8 +114,8 @@ Q2：贵司是否有回归测试流程？
 
 ## 五、相关章节
 
-- [主模块 · 不一致与失败处理](../../../11.ai/03-engineering/llm-production-thinking/03-consistency-and-failure-handling.md) —— 深度内容
-- [主模块 · llm-production-thinking 总目录](../../../11.ai/03-engineering/llm-production-thinking/README.md)
+- [主模块 · 不一致与失败处理](../../../11.ai/08-llmops/production-stability/03-consistency-and-failure-handling.md) —— 深度内容
+- [主模块 · llm-production-thinking 总目录](../../../11.ai/08-llmops/production-stability/README.md)
 - [Temperature=0 误区](../temperature-zero-myth/README.md) —— 相关的一致性根因分析
 
 ---

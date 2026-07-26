@@ -10,7 +10,7 @@ question:
 
 # 上线后怎么检测准确率与幻觉率 —— Trace + 4 维监控 + 漂移检测
 
-> 一句话定位：只监控 HTTP 200 + latency 是不够的——质量掉到 70% 用户狂喷。完整深度见 [主模块 · 线上监控与定位](../../../11.ai/03-engineering/llm-production-thinking/05-online-monitoring.md)。
+> 一句话定位：只监控 HTTP 200 + latency 是不够的——质量掉到 70% 用户狂喷。完整深度见 [主模块 · 线上监控与定位](../../../11.ai/08-llmops/production-stability/05-online-monitoring.md)。
 
 > **系列定位**：AI 生产工程面试题（Anthropic / Google 高频）。考察的是**可观测性工程**：4 维指标 + Trace 链路 + 黄金集回归 + 漂移检测。
 
@@ -119,9 +119,9 @@ question:
 
 ## 四、相关章节
 
-- [主模块 · 线上监控与定位](../../../11.ai/03-engineering/llm-production-thinking/05-online-monitoring.md) —— 深度内容
-- [主模块 · llm-production-thinking 总目录](../../../11.ai/03-engineering/llm-production-thinking/README.md)
-- [主模块 · 决策树](../../../11.ai/03-engineering/llm-production-thinking/06-decision-tree.md)
+- [主模块 · 线上监控与定位](../../../11.ai/08-llmops/production-stability/05-online-monitoring.md) —— 深度内容
+- [主模块 · llm-production-thinking 总目录](../../../11.ai/08-llmops/production-stability/README.md)
+- [主模块 · 决策树](../../../11.ai/08-llmops/production-stability/06-decision-tree.md)
 - [12.story · 05-observability](../../../12.story/05-observability.md) —— 阿明餐厅的可观测性实战
 
 ---

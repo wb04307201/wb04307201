@@ -87,15 +87,15 @@ skill 执行：A 类型（技术问答）→ grep "HashMap" → 双层检索（0
 
 | 词汇 | 主模块 | 13.split-hairs |
 |------|--------|---------------|
-| SFT | `11.ai/03-engineering/llm-alignment/01-sft` | `13.split-hairs/11.ai/llm-alignment` |
-| RLHF | `11.ai/03-engineering/llm-alignment/02-rlhf` | (在 llm-alignment 中) |
+| SFT | `11.ai/07-research/alignment/01-sft` | `13.split-hairs/11.ai/llm-alignment` |
+| RLHF | `11.ai/07-research/alignment/02-rlhf` | (在 llm-alignment 中) |
 | PPO | (在 RLHF 中) | (在 llm-alignment 中) |
 | Reward Model | (在 RLHF 中) | - |
-| DPO | `11.ai/03-engineering/llm-alignment/03-dpo` | (在 llm-alignment 中) |
-| Constitutional AI | `11.ai/03-engineering/llm-alignment/04-constitutional-ai` | (在 llm-alignment 中) |
-| KTO / IPO / SimPO | `11.ai/03-engineering/llm-alignment/05-newer-methods` | (在 llm-alignment 中) |
+| DPO | `11.ai/07-research/alignment/03-dpo` | (在 llm-alignment 中) |
+| Constitutional AI | `11.ai/07-research/alignment/04-constitutional-ai` | (在 llm-alignment 中) |
+| KTO / IPO / SimPO | `11.ai/07-research/alignment/05-newer-methods` | (在 llm-alignment 中) |
 | ORPO / RFT | (在 newer-methods 中) | - |
-| LLM 对齐专题 | `11.ai/03-engineering/llm-alignment` | (在 llm-alignment 中) |
+| LLM 对齐专题 | `11.ai/07-research/alignment` | (在 llm-alignment 中) |
 
 ### LLM 应用层（10 词）
 
@@ -137,7 +137,7 @@ skill 执行：A 类型（技术问答）→ grep "HashMap" → 双层检索（0
 **示例**：
 ```
 用户："DPO 是什么？"
-skill：查表 → DPO 在 11.ai/03-engineering/llm-alignment/03-dpo + 13.split-hairs/11.ai/llm-alignment
+skill：查表 → DPO 在 11.ai/07-research/alignment/03-dpo + 13.split-hairs/11.ai/llm-alignment
 回答：包含 SFT/RLHF 上下文 + DPO 数学保证 + vs RLHF 对比 + 5 大反直觉
 ```
 ```

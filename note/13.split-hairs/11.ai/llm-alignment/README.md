@@ -10,7 +10,7 @@ question:
 
 # LLM 对齐面试深挖（5 大核心）
 
-> ⬅️ [返回 AI 咬文嚼字](../README.md) | [主模块深度专题](../../../11.ai/03-engineering/llm-alignment/README.md)
+> ⬅️ [返回 AI 咬文嚼字](../README.md) | [主模块深度专题](../../../11.ai/07-research/alignment/README.md)
 
 > **一句话定位**：5 大 LLM 对齐方法**面试深挖版**：SFT / RLHF / DPO / Constitutional AI / SimPO。
 
@@ -90,7 +90,7 @@ question:
 
 ## 🔗 兄弟章节
 
-- **主模块深度**：[llm-alignment](../../../11.ai/03-engineering/llm-alignment/README.md) — 5 大方法完整版
+- **主模块深度**：[llm-alignment](../../../11.ai/07-research/alignment/README.md) — 5 大方法完整版
 - **兄弟面试题**：[Agent 性能评估](../agent-performance-evaluation/README.md) 顺带提
 - **餐厅叙事**：[12.story 系列目录](../../../12.story/README.md)（对齐主题餐厅叙事篇待补）
 

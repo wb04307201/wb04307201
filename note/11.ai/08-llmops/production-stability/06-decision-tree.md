@@ -1,7 +1,7 @@
 <!--
 module:
-  parent: ai/llm-production-thinking
-  slug: ai/llm-production-thinking/06-decision-tree
+  parent: ai/08-llmops/production-stability
+  slug: ai/llmops/production-stability/06-decision-tree
   type: topic
   category: 5 大问题决策树
   summary: 5 大问题场景化决策树 + 反模式 + checklist + 一句话总结

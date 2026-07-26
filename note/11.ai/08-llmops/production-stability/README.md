@@ -13,7 +13,7 @@ module:
 
 ## 反向链
 
-- [builtin-loop-commands](../loop-engineering/builtin-loop-commands.md)
+- [builtin-loop-commands](../../03-engineering/loop-engineering/builtin-loop-commands.md)
 
 ← [返回: LLMOps](../README.md) · 同级：[llm-evaluation](../04-llm-evaluation/README.md) · [llmops-stack](../02-llmops-stack/README.md)
 

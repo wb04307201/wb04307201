@@ -58,6 +58,7 @@ module:
 | [lost-in-middle](lost-in-middle/) | Lost In the Middle 现象 + 6 大缓解方案 | 长 Context 必修 |
 | [yarn-context-extension](yarn-context-extension/) | YaRN / RoPE 长度扩展 2K → 128K-1M | 长上下文基础 |
 | 🆕 [long-document-processing](long-document-processing/) | 长 PDF/合同场景 4 大策略整合（智能分块 + 检索增强 + 上下文压缩 + 长度扩展） | 长文档应用视角 |
+| 🆕 [agentic-search-vs-rag](agentic-search-vs-rag/) | **Agentic Search vs RAG** — AI Coding 场景下 Agentic 检索取代 RAG 的范式转变 + 场景决策矩阵 | AI Coding 检索范式 |
 
 ---
 
@@ -139,6 +140,7 @@ graph LR
 - **[embedding-models](embedding-models/)**：BGE-M3 / M3E / Qwen3-Embedding / OpenAI text-embedding-3 横评
 - **[lost-in-middle](lost-in-middle/)**：U 型曲线现象 + 6 大缓解方案（结构化排版 / 重复 / Self-Ask 等）
 - **[yarn-context-extension](yarn-context-extension/)**：YaRN = 频率基数 + NTK-aware + 注意力缩放，2K → 128K-1M
+- 🆕 **[agentic-search-vs-rag](agentic-search-vs-rag/)**：Agentic Search 取代 RAG 的范式转变 — RAG 3 大工程问题 + Agentic Search 3 大优势 + Claude Code 5 大 Harness 扩展点 + 8 场景决策矩阵
 
 ---
 

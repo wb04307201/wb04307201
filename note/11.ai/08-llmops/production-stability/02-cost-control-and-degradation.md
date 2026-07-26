@@ -1,7 +1,7 @@
 <!--
 module:
-  parent: ai/llm-production-thinking
-  slug: ai/llm-production-thinking/02-cost-control-and-degradation
+  parent: ai/08-llmops/production-stability
+  slug: ai/llmops/production-stability/02-cost-control-and-degradation
   type: topic
   category: 成本控制
   summary: 5 层路由降级策略 + 硬成本上限 + 单请求 quota + 实时成本监控 + 反模式

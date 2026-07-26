@@ -15,6 +15,7 @@ module:
 
 | 目录 | 核心内容 | 一句话定位 |
 |------|---------|-----------|
+| [alignment](alignment/) | LLM 对齐 — SFT / RLHF / DPO / Constitutional AI / KTO 五大方法 + 3H 原则 | 让模型输出符合人类意图 |
 | [rumination-models](rumination-models/) | 沉思模型（Rumination） — GLM-Z1-Rumination 深度推理模型 | 从"快速回答者"到"深度思考者"的范式转变 |
 | [distillation](distillation/) | 知识蒸馏 — 大模型能力向小模型迁移（含 tools 子目录） | 降低推理成本、端侧部署 |
 | [reasoning](reasoning/) | 推理能力增强 — CoT / ToT / ReAct / Self-Consistency | 从"直觉回答"到"系统推理" |
@@ -33,7 +34,7 @@ module:
 
 ---
 
-> 📌 本模块已覆盖 5 大前沿方向：**沉思模型**（rumination-models）、**知识蒸馏**（distillation）、**推理增强**（reasoning）、**模型效率**（efficiency）、**安全与对齐**（safety）。以下方向待补充：多模态融合、架构创新（MoE / Mamba / RetNet）。
+> 📌 本模块已覆盖 6 大前沿方向：**LLM 对齐**（alignment）、**沉思模型**（rumination-models）、**知识蒸馏**（distillation）、**推理增强**（reasoning）、**模型效率**（efficiency）、**安全与对齐**（safety）。以下方向待补充：多模态融合、架构创新（MoE / Mamba / RetNet）。
 
 ## 2. 研究版图
 
@@ -80,6 +81,7 @@ AI 前沿研究
 
 ## 4. 核心内容（按子模块展开）
 
+- **[alignment](alignment/)**（+ 5 子）：LLM 对齐方法论 — SFT / RLHF / DPO / Constitutional AI / KTO 五大方法 + 3H 原则
 - **[rumination-models](rumination-models/)**：沉思模型（Rumination）范式 — 让 LLM 主动"慢思考"，包含 GLM-Z1-Rumination 等深度推理模型
 - **[distillation](distillation/)**（+ 1 子 [tools](distillation/tools/)）：知识蒸馏技术 — 大模型能力向小模型迁移的方法论与工具
 - **[reasoning](reasoning/)**：推理能力增强 — CoT / ToT / GoT / ReAct / Self-Consistency 等推理范式
@@ -139,9 +141,9 @@ AI 前沿研究
 
 | 维度 | 数字 |
 |------|------|
-| 一级 leaf README 数 | 5（rumination-models / distillation / reasoning / efficiency / safety） |
-| 二级 leaf README 数 | 1（distillation/tools） |
-| 总 leaf README 数 | 6 |
+| 一级 leaf README 数 | 6（alignment / rumination-models / distillation / reasoning / efficiency / safety） |
+| 二级 leaf README 数 | 7（alignment:5 + distillation/tools:1） |
+| 总 leaf README 数 | 12 |
 | 前沿方向覆盖 | 5 方向规划，5 方向已覆盖（推理增强 / 模型效率 / 安全与对齐 / 沉思模型 / 知识蒸馏） |
 | 速查表条目数 | 8（前沿进展速览） |
 | 最佳实践条数 | 4 |

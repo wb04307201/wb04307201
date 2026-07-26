@@ -10,7 +10,7 @@ question:
 
 # Prompt 可能不如 if-else —— 大模型思维范式如何养成
 
-> 一句话定位：LLM 不是万能解——能用规则就别用 LLM（5ms if-else 变 500ms + $0.01）。完整深度见 [主模块 · 思维范式](../../../11.ai/03-engineering/llm-production-thinking/01-thinking-paradigm.md)。
+> 一句话定位：LLM 不是万能解——能用规则就别用 LLM（5ms if-else 变 500ms + $0.01）。完整深度见 [主模块 · 思维范式](../../../11.ai/08-llmops/production-stability/01-thinking-paradigm.md)。
 
 > **系列定位**：AI 生产工程面试题（字节 / 阿里高频）。考察的不是"Prompt 怎么写"，而是**何时该用 LLM、何时用规则**的思维范式。
 
@@ -97,10 +97,10 @@ LLM 是处理自然语言模糊性专用工具，不是通用计算器。核心�
 
 ## 四、相关章节
 
-- [主模块 · 思维范式](../../../11.ai/03-engineering/llm-production-thinking/01-thinking-paradigm.md) —— 深度内容
-- [主模块 · llm-production-thinking 总目录](../../../11.ai/03-engineering/llm-production-thinking/README.md)
-- [主模块 · 成本 5 层路由](../../../11.ai/03-engineering/llm-production-thinking/02-cost-control-and-degradation.md)
-- [主模块 · 决策树](../../../11.ai/03-engineering/llm-production-thinking/06-decision-tree.md)
+- [主模块 · 思维范式](../../../11.ai/08-llmops/production-stability/01-thinking-paradigm.md) —— 深度内容
+- [主模块 · llm-production-thinking 总目录](../../../11.ai/08-llmops/production-stability/README.md)
+- [主模块 · 成本 5 层路由](../../../11.ai/08-llmops/production-stability/02-cost-control-and-degradation.md)
+- [主模块 · 决策树](../../../11.ai/08-llmops/production-stability/06-decision-tree.md)
 - [12.story · 05-observability](../../../12.story/05-observability.md) —— 阿明餐厅的 5 问实战
 
 ---

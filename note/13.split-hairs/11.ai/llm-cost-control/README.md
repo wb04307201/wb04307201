@@ -10,7 +10,7 @@ question:
 
 # 模型调用的成本上限是多少 —— 5 层路由 + 3 道 Quota
 
-> 一句话定位：LLM 成本必须硬上限 + 自动降级，循环 bug 会 1 小时烧 $1000。完整深度见 [主模块 · 成本控制与降级](../../../11.ai/03-engineering/llm-production-thinking/02-cost-control-and-degradation.md)。
+> 一句话定位：LLM 成本必须硬上限 + 自动降级，循环 bug 会 1 小时烧 $1000。完整深度见 [主模块 · 成本控制与降级](../../../11.ai/08-llmops/production-stability/02-cost-control-and-degradation.md)。
 
 > **系列定位**：AI 生产工程面试题（字节 / 阿里 / 美团高频）。考察的是**成本上限设计 + 5 层降级路由**能力。
 
@@ -98,9 +98,9 @@ P99 单请求 $0.05 触发降级。"
 
 ## 四、相关章节
 
-- [主模块 · 成本控制与降级](../../../11.ai/03-engineering/llm-production-thinking/02-cost-control-and-degradation.md) —— 深度内容
-- [主模块 · llm-production-thinking 总目录](../../../11.ai/03-engineering/llm-production-thinking/README.md)
-- [主模块 · 决策树](../../../11.ai/03-engineering/llm-production-thinking/06-decision-tree.md)
+- [主模块 · 成本控制与降级](../../../11.ai/08-llmops/production-stability/02-cost-control-and-degradation.md) —— 深度内容
+- [主模块 · llm-production-thinking 总目录](../../../11.ai/08-llmops/production-stability/README.md)
+- [主模块 · 决策树](../../../11.ai/08-llmops/production-stability/06-decision-tree.md)
 - [11.ai · vLLM vs Ollama](../../../11.ai/03-engineering/ai-platforms/vllm-vs-ollama/README.md) —— 推理引擎选型（成本相关）
 
 ---

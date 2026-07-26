@@ -265,7 +265,7 @@ async def handle_with_fallback(query: str) -> Response:
         )
 ```
 
-> 🔗 **深度阅读**：[成本控制与降级策略](../../03-engineering/llm-production-thinking/02-cost-control-and-degradation.md) — 5 层成本级联（规则→小模型→大模型→SaaS→人工）
+> 🔗 **深度阅读**：[成本控制与降级策略](../../08-llmops/production-stability/02-cost-control-and-degradation.md) — 5 层成本级联（规则→小模型→大模型→SaaS→人工）
 
 ---
 
@@ -327,7 +327,7 @@ escalation_total = Counter(
 ## 九、交叉引用
 
 - [Agent 4 大执行模式](../agent-execution-patterns/README.md) — ReAct / Plan-and-Execute / DAG / Multi-Agent 选型
-- [成本控制与降级](../../03-engineering/llm-production-thinking/02-cost-control-and-degradation.md) — 5 层成本级联（规则→小模型→大模型→SaaS→人工）
+- [成本控制与降级](../../08-llmops/production-stability/02-cost-control-and-degradation.md) — 5 层成本级联（规则→小模型→大模型→SaaS→人工）
 - [Agent 记忆管理](../agent-memory/README.md) — Agent Path 的上下文与记忆
 - [Agent 上下文工程](../agent-context/README.md) — Agent Path 的 context 构建
 - [Function Calling](../../02-technology-stack/function-calling/README.md) — Fast Path 单次工具调用

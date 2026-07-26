@@ -198,6 +198,6 @@ AI Agent 入职流程：
 - [codex](../coding-agents/codex.md)
 - [omp](../coding-agents/omp.md)
 - [opencode](../coding-agents/opencode.md)
-- [01-sft](../llm-alignment/01-sft.md)
+- [01-sft](../07-research/alignment/01-sft.md)
 - [ralph-wiggum-loop](../loop-engineering/ralph-wiggum-loop.md)
 ← [返回: L3 工程实践](../README.md)

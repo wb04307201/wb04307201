@@ -423,6 +423,6 @@ define flow harmful
 ## 反向链
 
 - [05-anti-evasion](../../../04.system-design/04-high-performance/sensitive-word-filter/05-anti-evasion.md)
-- [04-constitutional-ai](../../03-engineering/llm-alignment/04-constitutional-ai.md)
+- [04-constitutional-ai](../../07-research/alignment/04-constitutional-ai.md)
 
 ← [返回: L8 LLMOps](../README.md) · 📅 2026-06-28

@@ -77,7 +77,7 @@ Naive RAG          Advanced RAG         Modular RAG          Agentic RAG
 - **关键技术**：意图理解 → 任务拆解 → 多步工具调用 → 自我反思与修正（Self-RAG / Corrective RAG / ReAct 循环）。
 - **优势**：能处理高度复杂、需多轮推理和动态探索的开放式任务。
 - **局限**：延迟高、Token 成本高、稳定性/可控性挑战大，需终止条件 + 死循环防护。
-- 🔗 相关：[Agentic Search vs RAG](../../08-llmops/agentic-search-vs-rag/README.md)（AI Coding 场景下 Agentic 检索**取代** RAG 索引的极端案例）
+- 🔗 相关：[Agentic Search vs RAG](../agentic-search-vs-rag/README.md)（AI Coding 场景下 Agentic 检索**取代** RAG 索引的极端案例）
 
 ---
 
@@ -138,7 +138,7 @@ Naive RAG          Advanced RAG         Modular RAG          Agentic RAG
 ## 🔗 兄弟章节
 
 - **本专题（Advanced 落地）**：[RAG Pipeline 5 阶段](../rag-pipeline/README.md) / [Query Rewrite](../query-rewrite/README.md) / [Hybrid Search](../hybrid-search/README.md) / [Reranker](../reranker/README.md) / [Chunking](../chunking-strategies/README.md)
-- **Agentic 方向**：[Agentic Search vs RAG](../../08-llmops/agentic-search-vs-rag/README.md) / [Agent 执行模式](../../04-architecture/agent-execution-patterns/README.md)
+- **Agentic 方向**：[Agentic Search vs RAG](../agentic-search-vs-rag/README.md) / [Agent 执行模式](../../04-architecture/agent-execution-patterns/README.md)
 - **LLMOps**：[RAG vs Fine-tuning](../../08-llmops/01-rag-vs-finetuning/README.md) / [RAG 评估](../../08-llmops/agent-evaluation/09-rag-evaluation/README.md)
 - **咬文嚼字**：[RAG 面试深挖](../../../13.split-hairs/11.ai/rag/README.md)（含演进四阶段面试题）
 - **餐厅叙事**：[开卷考试 · RAG](../../../12.story/36-rag-retrieval-augmented-generation.md)

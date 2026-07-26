@@ -1,7 +1,7 @@
 <!--
 module:
   parent: ai
-  slug: ai/llm-alignment
+  slug: ai/research/alignment
   type: index
   category: 主模块子文章
   summary: LLM 对齐专题（RLHF / DPO / PPO / Reward Model / Constitutional AI）
@@ -9,7 +9,7 @@ module:
 
 # LLM 对齐专题（6 大方法）
 
-> ⬅️ [返回 L3 工程实践](../README.md)
+> ⬅️ [返回 L7 前沿研究](../README.md)
 
 > **一句话定位**：LLM 对齐 = **让模型输出符合人类意图**。6 大方法：SFT → RLHF → DPO → Constitutional AI → KTO/IPO/SimPO → PEFT/LoRA。从"鹦鹉学舌"到"理解意图"的演进。
 
@@ -91,4 +91,4 @@ KTO:     L = λ_w·σ(r_w) + λ_l·σ(-r_l)  # 价值函数
 | ❌ 对齐后模型变笨 | ✅ 正确对齐让模型更"听话"但不变笨 |
 | ❌ 偏好数据越多越好 | ✅ 5-10 万高质量 > 百万低质量 |
 
-← [返回 L3 工程实践](../README.md)
+← [返回 L7 前沿研究](../README.md)

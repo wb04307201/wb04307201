@@ -25,9 +25,7 @@ module:
 | [loop-engineering](loop-engineering/) | **Loop Engineering** — 循环调用 3 大组件 + 4 大失败模式 + 5 大最佳实践 + 🆕 [Ralph Wiggum Loop](loop-engineering/ralph-wiggum-loop.md) | 探索性任务自动化 |
 | [agent-spec-tools](agent-spec-tools/) 🆕 | **Agent Spec Tools** — Superpowers（强制 TDD）/ Spec-Kit（企业 SDD 管线）/ OpenSpec（轻量规范对齐）安装 + 配置 + 对比 | Agent 规范工具链 |
 | [coding-agents](coding-agents/) 🆕 | **Coding Agents** — Claude Code / Codex / OpenCode / OMP 4 大编程 Agent 横对比 + 选型决策树 + 模型/MCP 配置 schema | 编程 Agent 工具链 |
-| [llm-production-thinking](llm-production-thinking/) 🆕 | **大模型思维工程** — 5 大灵魂拷问（Prompt vs if-else / 成本降级 / 一致性 / 超时熔断 / 监控定位）+ 5 层路由 + 双 timeout | LLM 生产工程 |
 | [ai-code-review](ai-code-review/) 🆕 | **AI 代码审核验收** — 6 层审核体系（契约/业务/安全/性能/可测/幻觉）+ 分级门禁矩阵 + 幻觉专项 + 工具链 | AI 产出质量门禁 |
-| [llm-alignment](llm-alignment/) 🆕 | **LLM 对齐** — SFT / RLHF / DPO / Constitutional AI / KTO 五大方法 + 3H 原则 + 数学统一视角 | 让模型听话 |
 
 ### 1.1 学习路径
 
@@ -102,9 +100,7 @@ graph LR
   - [codex](coding-agents/codex.md) — OpenAI 官方 · wire_api/base_url 转 OpenAI 兼容网关
   - [opencode](coding-agents/opencode.md) — 75+ providers · oh-my-opencode 多 Agent
   - [omp](coding-agents/omp.md) — 100k Rust LOC · Hashline · per-role 4 模型 · 进程内 LSP/DAP
-- 🆕 **[llm-production-thinking](llm-production-thinking/)**：5 大灵魂拷问（思维 + 成本 + 一致性 + 熔断 + 监控）+ 5 层路由 + Self-Consistency + 双 timeout
 - 🆕 **[ai-code-review](ai-code-review/)**：AI 生成后端代码审核验收方法论 — 6 层审核体系 + 分级门禁矩阵 + AI 幻觉 5 形态 + 工具链
-- 🆕 **[llm-alignment](llm-alignment/)**（+ 5 子）：LLM 对齐 5 大方法（SFT / RLHF / DPO / Constitutional AI / KTO）+ 3H 原则 + 数学统一视角
 
 ---
 
@@ -119,7 +115,7 @@ graph LR
 | **Loop 设计** | 任务定义 + 验证器（Verifier）+ 反馈机制；设置最大迭代次数防死循环 |
 | **Agent Spec Tools** | 轻量选 OpenSpec / 企业选 Spec-Kit / TDD 选 Superpowers；可组合使用 |
 | **Coding Agent 选型** | Anthropic 选 Claude Code · OpenAI 选 Codex · 多 provider 选 OpenCode · 终端深度选 OMP | 与 Spec Tools 正交 |
-| **生产稳定性** | 限流 + 重试 + 熔断 + 监控 + 错误恢复（Fallback） → 详见 [llm-production-thinking](llm-production-thinking/README.md)（思维范式 + 5 层路由 + Self-Consistency + 双 timeout + Trace） |
+| **生产稳定性** | 限流 + 重试 + 熔断 + 监控 + 错误恢复（Fallback） → 详见 [llmops/production-stability](../08-llmops/production-stability/README.md)（思维范式 + 5 层路由 + Self-Consistency + 双 timeout + Trace） |
 
 ---
 
@@ -166,9 +162,9 @@ graph LR
 
 | 维度 | 数字 |
 |------|------|
-| 一级 leaf README 数 | 12（frameworks / compute-platforms / local-deployment / ai-platforms / claude-code-practices / production-agent / harness-engineering / loop-engineering / agent-spec-tools / llm-production-thinking / ai-code-review / **llm-alignment**） |
-| 二级 leaf README 数 | 16（frameworks:3 + local-deployment:4 + loop-engineering:1 + agent-spec-tools:3 + **llm-alignment:5**） |
-| 总 leaf README 数 | 27 |
+| 一级 leaf README 数 | 10（frameworks / compute-platforms / local-deployment / ai-platforms / claude-code-practices / production-agent / harness-engineering / loop-engineering / agent-spec-tools / ai-code-review） |
+| 二级 leaf README 数 | 11（frameworks:3 + local-deployment:4 + loop-engineering:1 + agent-spec-tools:3） |
+| 总 leaf README 数 | 21 |
 | 速查表条目数 | 13 |
 | 最佳实践条数 | 7 |
 | 常见面试题数 | 9 |
@@ -182,18 +178,6 @@ graph LR
 
 - [coze](ai-platforms/coze.md)
 - [langgraph](ai-platforms/langgraph.md)
-- [01-sft](llm-alignment/01-sft.md)
-- [02-rlhf](llm-alignment/02-rlhf.md)
-- [03-dpo](llm-alignment/03-dpo.md)
-- [04-constitutional-ai](llm-alignment/04-constitutional-ai.md)
-- [05-newer-methods](llm-alignment/05-newer-methods.md)
-- [06-peft-lora](llm-alignment/06-peft-lora.md)
-- [01-thinking-paradigm](llm-production-thinking/01-thinking-paradigm.md)
-- [02-cost-control-and-degradation](llm-production-thinking/02-cost-control-and-degradation.md)
-- [03-consistency-and-failure-handling](llm-production-thinking/03-consistency-and-failure-handling.md)
-- [04-timeout-and-circuit-breaker](llm-production-thinking/04-timeout-and-circuit-breaker.md)
-- [05-online-monitoring](llm-production-thinking/05-online-monitoring.md)
-- [06-decision-tree](llm-production-thinking/06-decision-tree.md)
 - [auto-fix-strategy](loop-engineering/auto-fix-strategy.md)
 - [fix-prompt-templates](loop-engineering/fix-prompt-templates.md)
 - [ide-case-studies](loop-engineering/ide-case-studies.md)
