@@ -271,6 +271,7 @@ result = client.chat.completions.create(
 - [Prompt Engineering](../prompt-engineering/README.md) — 提示词工程（策略 3 的基础）
 - [Context Engineering](../context-engineering/README.md) — 上下文工程
 - [LLM 幻觉](../../../13.split-hairs/11.ai/hallucination/README.md) — 输出不可靠的另一面
+- 🆕 **面试题**：[Structured Output 面试题](../../../13.split-hairs/11.ai/structured-output/README.md) — 3 大陷阱 + JSON Mode 过时 + 5 层策略
 - 主模块：[`11.ai`](../../README.md) — AI 知识体系
 
 ---
