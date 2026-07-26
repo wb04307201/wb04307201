@@ -93,6 +93,8 @@ question:
 | **🆕 [一致性：Self-Consistency 投票](llm-consistency/)** | ⭐⭐⭐⭐⭐ | 语义投票 + Judge + 重试预算 + 60 秒话术 | [03-consistency-and-failure-handling](../../11.ai/08-llmops/production-stability/03-consistency-and-failure-handling.md) |
 | **🆕 [超时熔断：双 Timeout](llm-timeout-circuit-breaker/)** | ⭐⭐⭐⭐⭐ | 软/硬限 + Circuit Breaker + Fallback 链 | [04-timeout-and-circuit-breaker](../../11.ai/08-llmops/production-stability/04-timeout-and-circuit-breaker.md) |
 | **🆕 [监控定位：4 维 + Trace](llm-monitoring/)** | ⭐⭐⭐⭐⭐ | 质量/延迟/成本/一致性 + Trace + 黄金集 | [05-online-monitoring](../../11.ai/08-llmops/production-stability/05-online-monitoring.md) |
+| **🆕 [Structured Output 结构化输出](structured-output/)** | ⭐⭐⭐⭐ | JSON Mode 已过时 + 5 层策略 + 3 大陷阱 | [02-technology-stack/structured-output](../../11.ai/02-technology-stack/structured-output/README.md) |
+| **🆕 [Planning/Acting/Monitoring 三阶段闭环](planning-acting-monitoring/)** | ⭐⭐⭐⭐⭐ | 6 大反模式 + 工具链选型 + 90 秒话术 | [04-architecture/agent-execution-patterns/planning-acting-monitoring](../../11.ai/04-architecture/agent-execution-patterns/planning-acting-monitoring/README.md) |
 
 ---
 
