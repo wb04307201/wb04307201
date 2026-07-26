@@ -70,6 +70,7 @@ graph LR
 - **[04-llm-evaluation](04-llm-evaluation/)**：LLM 评测体系 — 自动化指标（BLEU/ROUGE/BERTScore）+ 人工评测 + A/B 测试 + 红队对抗
 - **[agent-evaluation](agent-evaluation/)**：Agent 性能评估 — 6 大指标维度（任务完成率/步骤效率/工具使用/成本/满意度/稳定性）+ 5 种评估方法
 - **[05-llm-security](05-llm-security/)**：LLM 安全防护 — Prompt 注入 / 越狱 / 数据泄漏 / 内容合规
+- 🆕 **[production-stability](production-stability/)**：生产稳定性 — 5 大灵魂拷问（思维 + 成本 + 一致性 + 熔断 + 监控）+ 5 层路由 + 双 timeout
 
 ---
 
