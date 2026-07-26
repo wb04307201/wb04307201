@@ -16,11 +16,11 @@ question:
 
 # Java 咬文嚼字
 
-> Java 高频面试题与细节深挖，对齐主模块 [`01.java`](../../01.java/)。39 篇分集合 / 并发 / JVM / 语言基础 / 对象类型 / 设计模式 / 综合 7 组（find 校对 2026-07-19），覆盖 90% 后端面试 Java 高频题。
+> Java 高频面试题与细节深挖，对齐主模块 [`01.java`](../../01.java/)。40 篇分集合 / 并发 / JVM / 语言基础 / 对象类型 / 设计模式 / 综合 7 组（find 校对 2026-07-26），覆盖 90% 后端面试 Java 高频题。
 
 ---
 
-## 文章清单（共 39 篇，find 校对 2026-07-19）
+## 文章清单（共 40 篇，find 校对 2026-07-26）
 
 ### 集合与数据结构
 | 主题 | 难度 | 核心问题 |
@@ -45,6 +45,7 @@ question:
 | [Atomic 替代 synchronized](replace-synchronized-with-atomic/) | ⭐⭐⭐ | CAS 无锁编程 |
 | [3 线程按顺序执行](thread-sequential-execution/) | ⭐⭐⭐ | T1→T2→T3 的 3 语义 + 8 方案对比 + Top 3 推荐 |
 | **🆕 [虚拟线程](virtual-threads/)** | ⭐⭐⭐⭐ | carrier thread / mount-unmount / pinning / ScopedValue |
+| **🆕 [Excel 导出 OOM](excel-export-oom/)** | ⭐⭐⭐⭐ | 3 大根因 + 流式写入 + 分批查询 + 多线程分片 + 内存改善原理 |
 
 ### JVM 与类加载
 | 主题 | 难度 | 核心问题 |
