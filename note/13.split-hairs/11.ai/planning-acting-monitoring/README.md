@@ -122,13 +122,13 @@ Q：Monitoring 阶段具体监控什么？
 ## 💡 90 秒面试话术
 
 > "Agent 三阶段闭环是 **Planning → Acting → Monitoring** 的完整循环：
-> 
+>
 > **Planning 阶段**：把用户的高层目标分解为可执行的子任务 + 依赖图。工具选型：LangGraph（状态图 + 条件分支）或 Temporal（工作流引擎 + 持久化）。关键设计：任务分解策略、依赖图构建、失败回退机制。
-> 
+>
 > **Acting 阶段**：按 Planning 输出的依赖图，依次执行子任务。工具选型：Function Calling（工具调用 + Schema 约束）或 MCP（标准化工具接口）。关键设计：工具调用机制、状态流转、错误恢复（指数退避 + 降级方案）。
-> 
+>
 > **Monitoring 阶段**：采集 Agent 运行指标 + 检测异常 + 反馈修正。监控 4 维度：任务完成率、执行延迟、工具调用成本、错误率。工具选型：Langfuse（Trace + 评估）或 Helicone（日志 + 指标 + 告警）。关键设计：阈值告警、趋势告警、根因定位、自动修复。
-> 
+>
 > **6 大反模式**：
 > 1. 只有 Acting，没有 Planning → Agent 乱执行
 > 2. 只有 Planning + Acting，没有 Monitoring → Agent 失控
@@ -136,7 +136,7 @@ Q：Monitoring 阶段具体监控什么？
 > 4. Acting 不做错误恢复 → 一次失败整个任务失败
 > 5. Monitoring 只看延迟 → 无法全面评估质量
 > 6. Monitoring 不做反馈修正 → 同样错误反复出现
-> 
+>
 > **一句话总结**：任何一阶段缺失都会导致 Agent 失控。"
 
 ---

@@ -76,17 +76,17 @@ Q：为什么 JSON Mode 已经被淘汰了？
 ## 💡 30 秒面试话术
 
 > "让 LLM 稳定输出 JSON 需要 5 层工程策略：
-> 
+>
 > **第一层**：response_format 参数（API 层面约束）。2024-08 OpenAI 推出 Structured Outputs，支持 JSON Schema，100% 合规。**JSON Mode 已过时**，因为它只保证合法 JSON，不保证符合 Schema。
-> 
+>
 > **第二层**：Function Calling。把 JSON 格式伪装成'工具'，利用 FC 的 Schema 约束能力。
-> 
+>
 > **第三层**：Prompt 指令 + 格式示例。灵活但不可靠（~90% 成功率）。
-> 
+>
 > **第四层**：解析重试兜底。不管用什么策略，必须有 3 次重试机制：直接解析 → 提取代码块 → 提取 JSON 块 → 让 LLM 修复。
-> 
+>
 > **第五层**：Constrained Decoding（自部署模型）。在推理层面强制每个 token 符合 Schema，100% 合法。
-> 
+>
 > 框架选型：商业 API 用 Instructor（自动重试 + Pydantic 校验），自部署用 Outlines（Constrained Decoding）。"
 
 ---
