@@ -216,6 +216,7 @@ try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
 | 十一 | **Java 线程基础** | 线程创建、生命周期、start/run 区别、interrupt 机制 | [thread-basics](./thread-basics/) |
 | 十二 | **JUC 锁体系** | AQS、ReentrantLock / ReentrantReadWriteLock / StampedLock、Condition | [juc-locks](./juc-locks/) |
 | 十三 | **并发工具类** | CountDownLatch、CyclicBarrier、Semaphore、Phaser、Exchanger | [utilities](./utilities/) |
+| 十四 | **🆕 大数据量 Excel 导出 OOM** | 4 大解决方案（流式写入 / 分批查询 / 多线程分片 / 内存优化）+ 性能对比 | [excel-export-oom](./excel-export-oom/) |
 
 ---
 
