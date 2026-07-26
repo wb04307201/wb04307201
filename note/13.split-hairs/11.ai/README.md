@@ -95,6 +95,7 @@ question:
 | **🆕 [监控定位：4 维 + Trace](llm-monitoring/)** | ⭐⭐⭐⭐⭐ | 质量/延迟/成本/一致性 + Trace + 黄金集 | [05-online-monitoring](../../11.ai/08-llmops/production-stability/05-online-monitoring.md) |
 | **🆕 [Structured Output 结构化输出](structured-output/)** | ⭐⭐⭐⭐ | JSON Mode 已过时 + 5 层策略 + 3 大陷阱 | [02-technology-stack/structured-output](../../11.ai/02-technology-stack/structured-output/README.md) |
 | **🆕 [Planning/Acting/Monitoring 三阶段闭环](planning-acting-monitoring/)** | ⭐⭐⭐⭐⭐ | 6 大反模式 + 工具链选型 + 90 秒话术 | [04-architecture/agent-execution-patterns/planning-acting-monitoring](../../11.ai/04-architecture/agent-execution-patterns/planning-acting-monitoring/README.md) |
+| **🆕 [Transformer 长上下文性能](transformer-long-context-performance/)** | ⭐⭐⭐⭐⭐ | O(n²) 根因 + KV Cache 膨胀 + 6 大优化方案 + 选型指南 | [01-fundamentals/transformer-long-context-performance](../../11.ai/01-fundamentals/transformer-long-context-performance/README.md) |
 
 ---
 
