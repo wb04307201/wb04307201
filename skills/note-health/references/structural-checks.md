@@ -46,7 +46,7 @@
 
 > 报告每条发现时标注 `[NEW]`（本会话未触及）或 `[已修]`（本会话已修）。本清单会随时间增补。
 
-## 8 大审计类别
+## 11 大审计类别
 
 | # | 类别 | 扫描命令示例 |
 |---|------|------------|
@@ -62,6 +62,8 @@
 | 7 | **架构/分类/命名** | 目录命名风格不一致 / 编号缺失 |
 | 8 | **其他**（PNG / 脚本 / 杂项）| `find note -name "*.png" \| xargs grep -L "!"` |
 | 9 | **系列完整性** | 扫描"声明了 N 个子章节但实际文件缺失"的系列（见 Phase 1.9） |
+| 10 | **归属合理性**（🆕 2026-07-26）| 检查子目录内容是否匹配父目录定位（见 Phase 1.10）：训练方法论应在 07-research 而非 03-engineering，运维监控应在 08-llmops 而非 03-engineering |
+| 11 | **合并检测**（🆕 2026-07-26）| 检测"多主题错误合并"：单文件 > 300 行 + 包含多个独立 H2 章节 + 多个"反模式/陷阱"章节（见 Phase 1.11）|
 
 ## Phase 1 现状扫描（原 Step 1）
 
@@ -559,6 +561,145 @@ print(f'同 README 重复表格问题: {len(issues)} 处（加白名单 + 距离
 for f, h1, h2, s1, s2, rate, dist in issues[:20]:
     print(f'  {f} line {h1} & {h2} 重叠率={rate:.0%} 距离={dist}')
 PYEOF
+
+### 10. 归属合理性审计（2026-07-26 新增）
+
+**历史教训**（2026-07-26 llm-production-thinking 重构）：
+- `llm-alignment`（RLHF/DPO/训练方法论）放在 `03-engineering/`（工程实践）→ 应归 `07-research/alignment/`（研究层）
+- `llm-production-thinking`（成本/监控/熔断）放在 `03-engineering/`（工程实践）→ 应归 `08-llmops/production-stability/`（运维层）
+- `agentic-search-vs-rag`（架构选型）放在 `08-llmops/`（运维层）→ 应归 `02-technology-stack/`（技术层）
+
+**原理**：每个一级子目录有明确的定位（从父 README 的 summary 提取），子目录内容应与定位匹配。
+
+**目录定位参照表**（11.ai 模块）：
+
+| 目录 | 定位 | 核心问题 |
+|------|------|---------|
+| 01-fundamentals | 理论层 | 是什么、为什么 |
+| 02-technology-stack | 技术层 | 用什么 |
+| 03-engineering | 工程层 | 怎么建 |
+| 04-architecture | 架构层 | 怎么组织 |
+| 05-applications | 应用层 | 用在哪 |
+| 07-research | 研究层 | 前沿探索 / 训练方法论 |
+| 08-llmops | 运维层 | 怎么运营 / 监控 / 评估 |
+
+**检查方法**：
+
+```bash
+# 10. 归属合理性审计
+# 原理：提取每个子目录 README 的 summary 字段，与目录定位参照表比对
+echo "=== 10. 归属合理性审计 ==="
+python << 'PYEOF'
+import sys, os, re, glob
+if sys.platform == 'win32':
+    try: sys.stdout.reconfigure(encoding='utf-8')
+    except: pass
+
+# 目录定位关键词（summary 中出现这些词说明归属可能不对）
+MISMATCH_RULES = {
+    '03-engineering': {
+        'should_not_contain': ['训练方法论', 'RLHF', 'DPO', '对齐', '微调', 'SFT', '成本监控', '漂移检测', 'Trace'],
+        'reason': '03-engineering 是工程层（怎么建），训练方法论/运维监控应归 07-research / 08-llmops'
+    },
+    '08-llmops': {
+        'should_not_contain': ['架构选型', 'vs RAG', '取代 RAG', '反直觉革命'],
+        'reason': '08-llmops 是运维层（怎么运营），架构选型应归 02-technology-stack / 04-architecture'
+    },
+    '07-research': {
+        'should_not_contain': ['部署', '运维', '监控', '生产环境'],
+        'reason': '07-research 是研究层（前沿探索），部署运维应归 03-engineering / 08-llmops'
+    },
+}
+
+issues = []
+for readme in glob.glob('note/11.ai/*/**/README.md', recursive=True):
+    parts = readme.replace(os.sep, '/').split('/')
+    if len(parts) < 4: continue
+    parent_dir = parts[2]  # 03-engineering / 07-research / 08-llmops 等
+    
+    if parent_dir not in MISMATCH_RULES: continue
+    
+    try:
+        with open(readme, 'r', encoding='utf-8', errors='ignore') as f:
+            content = f.read()
+    except: continue
+    
+    # 提取 summary
+    m = re.search(r'summary:\s*(.+?)(?:\n|$)', content)
+    if not m: continue
+    summary = m.group(1)
+    
+    # 检查是否包含不应出现的关键词
+    rule = MISMATCH_RULES[parent_dir]
+    for keyword in rule['should_not_contain']:
+        if keyword in summary:
+            issues.append((readme, parent_dir, keyword, rule['reason']))
+            break
+
+print(f'归属合理性问题: {len(issues)} 处')
+for path, parent, keyword, reason in issues:
+    print(f'  ⚠ {path}')
+    print(f'    位于 {parent}，但 summary 含 "{keyword}"')
+    print(f'    原因: {reason}')
+PYEOF
+```
+
+### 11. 合并检测（2026-07-26 新增）
+
+**历史教训**（2026-07-26 production-thinking-5q）：
+- `production-thinking-5q/README.md` 419 行，包含 5 个独立主题
+- 每个主题都可以独立成文（有完整的原理+实现+反模式）
+- 后续不得不拆分成 5 个独立面试题目录
+
+**检测信号**：
+
+```bash
+# 11. 合并检测（多主题错误合并成一个文件）
+echo "=== 11. 合并检测 ==="
+python << 'PYEOF'
+import sys, os, re, glob
+if sys.platform == 'win32':
+    try: sys.stdout.reconfigure(encoding='utf-8')
+    except: pass
+
+issues = []
+
+for readme in glob.glob('note/**/*.md', recursive=True):
+    if '/.health-tmp/' in readme.replace(os.sep, '/'): continue
+    
+    try:
+        with open(readme, 'r', encoding='utf-8', errors='ignore') as f:
+            content = f.read()
+            lines = content.count('\n') + 1
+    except: continue
+    
+    # 信号 1: 文件过大（> 300 行）
+    if lines < 300: continue
+    
+    # 信号 2: 包含多个独立 H2 章节（>= 5 个）
+    h2_matches = re.findall(r'^## (.+)$', content, re.MULTILINE)
+    if len(h2_matches) < 5: continue
+    
+    # 信号 3: 每个 H2 章节可以独立成文（有完整的原理+实现+反模式）
+    # 简化检测：检查是否有多个"反模式"/"常见错误"/"陷阱"章节
+    anti_pattern_count = len(re.findall(r'反模式|常见错误|陷阱|anti.?pattern', content, re.IGNORECASE))
+    if anti_pattern_count < 3: continue
+    
+    # 信号 4: 文件名或目录名含数字（"5q" / "3 patterns" / "N 种"）
+    basename = os.path.basename(readme)
+    dirname = os.path.basename(os.path.dirname(readme))
+    has_number = bool(re.search(r'\d+q|\d+\s*(种|个|大|pattern)', basename + dirname, re.IGNORECASE))
+    
+    if has_number or anti_pattern_count >= 5:
+        issues.append((readme, lines, len(h2_matches), anti_pattern_count))
+
+print(f'可能多主题合并的文件: {len(issues)} 处')
+for path, lines, h2_count, anti_count in issues:
+    print(f'  ⚠ {path}')
+    print(f'    {lines} 行, {h2_count} 个 H2 章节, {anti_count} 处"反模式/陷阱"')
+    print(f'    建议: 检查是否可以拆分为多个独立文件')
+PYEOF
+```
 
 ### Commit 拆分模式（原 Step 5.5）
 
