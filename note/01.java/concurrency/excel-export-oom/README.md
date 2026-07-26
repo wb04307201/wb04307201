@@ -34,18 +34,18 @@ module:
 public void exportUsers(HttpServletResponse response) throws IOException {
     // 1. 一次性查询所有数据
     List<User> users = userMapper.selectAll();  // 100 万条 → OOM
-    
+
     // 2. 创建 Excel
     XSSFWorkbook workbook = new XSSFWorkbook();  // 全量加载 → OOM
     XSSFSheet sheet = workbook.createSheet("用户列表");
-    
+
     // 3. 写入数据
     for (int i = 0; i < users.size(); i++) {
         XSSFRow row = sheet.createRow(i);  // 100 万行全部在内存
         row.createCell(0).setCellValue(users.get(i).getName());
         row.createCell(1).setCellValue(users.get(i).getEmail());
     }
-    
+
     // 4. 输出
     response.setContentType("application/vnd.ms-excel");
     workbook.write(response.getOutputStream());
@@ -90,7 +90,7 @@ XSSFWorkbook 内存模型：
 // XSSFWorkbook 内部结构
 public class XSSFWorkbook {
     private List<XSSFSheet> sheets = new ArrayList<>();
-    
+
     public XSSFSheet createSheet() {
         XSSFSheet sheet = new XSSFSheet(this);
         sheets.add(sheet);  // 所有 Sheet 都在内存
@@ -100,7 +100,7 @@ public class XSSFWorkbook {
 
 public class XSSFSheet {
     private TreeMap<Integer, XSSFRow> rows = new TreeMap<>();
-    
+
     public XSSFRow createRow(int rownum) {
         XSSFRow row = new XSSFRow(this, rownum);
         rows.put(rownum, row);  // 所有行都在内存
@@ -126,14 +126,14 @@ List<User> users = userMapper.selectAll();  // 100 万条全部加载到 JVM
 public <E> List<E> selectList(String statement, Object parameter) {
     // 1. 执行 SQL
     ResultSet rs = pstmt.executeQuery();
-    
+
     // 2. 逐行读取，全部加载到 List
     List<E> list = new ArrayList<>();
     while (rs.next()) {
         E obj = rowMapper.mapRow(rs);  // 每行创建一个对象
         list.add(obj);  // 全部保留在内存
     }
-    
+
     return list;  // 返回完整 List
 }
 ```
@@ -152,11 +152,11 @@ public void export() {
     List<User> batch1 = queryBatch1();  // 10 万条
     writeToExcel(batch1);
     // batch1 没有释放，仍然在内存
-    
+
     List<User> batch2 = queryBatch2();  // 10 万条
     writeToExcel(batch2);
     // batch1 + batch2 都在内存
-    
+
     // ... 持续查询，所有 batch 都在内存
     // 最终 OOM
 }
@@ -209,33 +209,33 @@ public void export() {
 // ✅ 正确示例：EasyExcel 流式写入
 @Service
 public class ExcelExportService {
-    
+
     @Autowired
     private UserMapper userMapper;
-    
+
     public void exportUsers(String filePath) {
         // 1. 创建 ExcelWriter
         try (ExcelWriter writer = EasyExcel.write(filePath, User.class).build()) {
             WriteSheet sheet = EasyExcel.writerSheet("用户列表").build();
-            
+
             // 2. 流式查询 + 分批写入
             int batchSize = 10000;
             int offset = 0;
-            
+
             while (true) {
                 // 分页查询
                 List<User> batch = userMapper.selectPage(offset, batchSize);
-                
+
                 if (batch.isEmpty()) {
                     break;  // 查询完毕
                 }
-                
+
                 // 写入当前批次
                 writer.write(batch, sheet);
-                
+
                 // 及时释放
                 batch.clear();
-                
+
                 offset += batchSize;
             }
         }
@@ -258,35 +258,35 @@ public void exportUsers(String filePath) throws IOException {
     // 1. 创建 SXSSFWorkbook（只保留 100 行在内存）
     try (SXSSFWorkbook workbook = new SXSSFWorkbook(100)) {
         workbook.setCompressTempFiles(true);  // 压缩临时文件
-        
+
         SXSSFSheet sheet = workbook.createSheet("用户列表");
-        
+
         // 2. 分批查询 + 写入
         int batchSize = 10000;
         int offset = 0;
         int rowIndex = 0;
-        
+
         while (true) {
             List<User> batch = userMapper.selectPage(offset, batchSize);
-            
+
             if (batch.isEmpty()) {
                 break;
             }
-            
+
             // 写入当前批次
             for (User user : batch) {
                 SXSSFRow row = sheet.createRow(rowIndex++);
                 row.createCell(0).setCellValue(user.getName());
                 row.createCell(1).setCellValue(user.getEmail());
             }
-            
+
             // 清理临时文件
             workbook.dispose();
-            
+
             batch.clear();
             offset += batchSize;
         }
-        
+
         // 3. 输出到文件
         try (FileOutputStream fos = new FileOutputStream(filePath)) {
             workbook.write(fos);
@@ -327,11 +327,11 @@ public void exportUsers(String filePath) throws IOException {
 ```java
 @Mapper
 public interface UserMapper {
-    
+
     // 分页查询
     @Select("SELECT * FROM users LIMIT #{offset}, #{limit}")
     List<User> selectPage(@Param("offset") int offset, @Param("limit") int limit);
-    
+
     // 总数查询
     @Select("SELECT COUNT(*) FROM users")
     int selectCount();
@@ -342,34 +342,34 @@ public interface UserMapper {
 ```java
 @Service
 public class ExcelExportService {
-    
+
     @Autowired
     private UserMapper userMapper;
-    
+
     public void exportUsers(String filePath) {
         try (ExcelWriter writer = EasyExcel.write(filePath, User.class).build()) {
             WriteSheet sheet = EasyExcel.writerSheet("用户列表").build();
-            
+
             int batchSize = 10000;
             int offset = 0;
-            
+
             while (true) {
                 List<User> batch = userMapper.selectPage(offset, batchSize);
-                
+
                 if (batch.isEmpty()) {
                     break;
                 }
-                
+
                 writer.write(batch, sheet);
-                
+
                 // 及时释放
                 batch.clear();
-                
+
                 // 每 10 批次提示 GC（可选）
                 if (offset % (batchSize * 10) == 0) {
                     System.gc();
                 }
-                
+
                 offset += batchSize;
             }
         }
@@ -383,7 +383,7 @@ public class ExcelExportService {
 ```java
 @Mapper
 public interface UserMapper {
-    
+
     // 游标查询（流式）
     @Select("SELECT * FROM users")
     @Options(fetchSize = 10000)  // 每次从数据库读取 10000 行
@@ -395,28 +395,28 @@ public interface UserMapper {
 ```java
 @Service
 public class ExcelExportService {
-    
+
     @Autowired
     private UserMapper userMapper;
-    
+
     public void exportUsers(String filePath) {
         try (ExcelWriter writer = EasyExcel.write(filePath, User.class).build()) {
             WriteSheet sheet = EasyExcel.writerSheet("用户列表").build();
-            
+
             // 游标查询，逐行处理
             try (Cursor<User> cursor = userMapper.selectCursor()) {
                 List<User> batch = new ArrayList<>(10000);
-                
+
                 for (User user : cursor) {
                     batch.add(user);
-                    
+
                     // 每 10000 条写入一次
                     if (batch.size() >= 10000) {
                         writer.write(batch, sheet);
                         batch.clear();
                     }
                 }
-                
+
                 // 写入剩余数据
                 if (!batch.isEmpty()) {
                     writer.write(batch, sheet);
@@ -458,7 +458,7 @@ public class ExcelExportService {
 └──────────┘  └──────────┘  └──────────┘
      ↓              ↓              ↓
   临时文件 1      临时文件 2      临时文件 3
-  
+
 合并：临时文件 1 + 2 + 3 → 最终文件
 ```
 
@@ -467,73 +467,73 @@ public class ExcelExportService {
 ```java
 @Service
 public class ExcelExportService {
-    
+
     @Autowired
     private UserMapper userMapper;
-    
+
     private final ExecutorService executor = Executors.newFixedThreadPool(10);
-    
+
     public void exportUsersMultiThread(String outputPath) throws Exception {
         // 1. 查询总数
         int totalRows = userMapper.selectCount();
         int shardSize = 100000;  // 每个线程处理 10 万条
         int shardCount = (totalRows + shardSize - 1) / shardSize;  // 向上取整
-        
+
         // 2. 提交任务
         List<Future<File>> futures = new ArrayList<>();
-        
+
         for (int i = 0; i < shardCount; i++) {
             final int shardIndex = i;
-            
+
             Future<File> future = executor.submit(() -> {
                 return exportShard(shardIndex, shardSize);
             });
-            
+
             futures.add(future);
         }
-        
+
         // 3. 收集结果
         List<File> tempFiles = new ArrayList<>();
         for (Future<File> future : futures) {
             tempFiles.add(future.get());  // 阻塞等待
         }
-        
+
         // 4. 合并文件
         mergeExcelFiles(tempFiles, outputPath);
-        
+
         // 5. 清理临时文件
         tempFiles.forEach(File::delete);
     }
-    
+
     private File exportShard(int shardIndex, int shardSize) throws IOException {
         // 计算偏移量
         int offset = shardIndex * shardSize;
-        
+
         // 查询当前分片
         List<User> batch = userMapper.selectPage(offset, shardSize);
-        
+
         // 创建临时文件
         File tempFile = File.createTempFile("export_" + shardIndex + "_", ".xlsx");
-        
+
         // 写入 Excel
         EasyExcel.write(tempFile, User.class)
             .sheet("Sheet" + shardIndex)
             .doWrite(batch);
-        
+
         return tempFile;
     }
-    
+
     private void mergeExcelFiles(List<File> tempFiles, String outputPath) throws IOException {
         try (ExcelWriter writer = EasyExcel.write(outputPath, User.class).build()) {
             WriteSheet sheet = EasyExcel.writerSheet("用户列表").build();
-            
+
             for (File tempFile : tempFiles) {
                 // 读取临时文件
                 List<User> data = EasyExcel.read(tempFile)
                     .head(User.class)
                     .sheet()
                     .doReadSync();
-                
+
                 // 写入最终文件
                 writer.write(data, sheet);
             }
@@ -549,14 +549,14 @@ public class ExcelExportService {
 private File exportShard(int shardIndex, int shardSize) throws IOException {
     int offset = shardIndex * shardSize;
     List<User> batch = userMapper.selectPage(offset, shardSize);
-    
+
     File tempFile = File.createTempFile("export_" + shardIndex + "_", ".xlsx");
-    
+
     try (ExcelWriter writer = EasyExcel.write(tempFile, User.class).build()) {
         WriteSheet sheet = EasyExcel.writerSheet("Sheet" + shardIndex).build();
         writer.write(batch, sheet);
     }
-    
+
     return tempFile;
 }
 ```
@@ -573,18 +573,18 @@ public void exportUsers(String filePath) {
     // 复用 ExcelWriter
     try (ExcelWriter writer = EasyExcel.write(filePath, User.class).build()) {
         WriteSheet sheet = EasyExcel.writerSheet("用户列表").build();
-        
+
         int batchSize = 10000;
         int offset = 0;
-        
+
         while (true) {
             List<User> batch = userMapper.selectPage(offset, batchSize);
-            
+
             if (batch.isEmpty()) break;
-            
+
             writer.write(batch, sheet);
             batch.clear();
-            
+
             offset += batchSize;
         }
     }
@@ -598,25 +598,25 @@ public void exportUsers(String filePath) {
 public void exportUsers(String filePath) {
     try (ExcelWriter writer = EasyExcel.write(filePath, User.class).build()) {
         WriteSheet sheet = EasyExcel.writerSheet("用户列表").build();
-        
+
         int batchSize = 10000;
         int offset = 0;
         int batchCount = 0;
-        
+
         while (true) {
             List<User> batch = userMapper.selectPage(offset, batchSize);
-            
+
             if (batch.isEmpty()) break;
-            
+
             writer.write(batch, sheet);
             batch.clear();
-            
+
             // 每 10 批次提示 GC
             batchCount++;
             if (batchCount % 10 == 0) {
                 System.gc();  // 提示 GC（不保证立即执行）
             }
-            
+
             offset += batchSize;
         }
     }
@@ -629,14 +629,14 @@ public void exportUsers(String filePath) {
 // ✅ 高级示例：使用 WeakReference 管理大对象
 public class LargeDataProcessor {
     private WeakReference<List<User>> dataRef;
-    
+
     public void processData() {
         List<User> data = queryLargeData();
         dataRef = new WeakReference<>(data);
-        
+
         // 处理数据
         process(data);
-        
+
         // 释放引用，允许 GC 回收
         data = null;
         dataRef.clear();
@@ -696,14 +696,14 @@ public class LargeDataProcessor {
 // ✅ 正确示例：使用 try-with-resources + finally 清理
 public void exportUsers(String filePath) {
     List<File> tempFiles = new ArrayList<>();
-    
+
     try {
         // 导出逻辑
         for (int i = 0; i < 10; i++) {
             File tempFile = exportShard(i);
             tempFiles.add(tempFile);
         }
-        
+
         mergeFiles(tempFiles, filePath);
     } finally {
         // 清理临时文件
@@ -723,10 +723,10 @@ public void exportUsers(String filePath) {
 public void exportUsers(String filePath) {
     try (ExcelWriter writer = EasyExcel.write(filePath, User.class).build()) {
         WriteSheet sheet = EasyExcel.writerSheet("用户列表").build();
-        
+
         // 导出逻辑
         // ...
-        
+
     } catch (Exception e) {
         log.error("导出失败", e);
         throw new RuntimeException("导出失败: " + e.getMessage(), e);
@@ -740,20 +740,20 @@ public void exportUsers(String filePath) {
 // ✅ 正确示例：限流控制
 public void exportUsers(String filePath) {
     RateLimiter rateLimiter = RateLimiter.create(10.0);  // 每秒 10 个请求
-    
+
     int batchSize = 10000;
     int offset = 0;
-    
+
     while (true) {
         rateLimiter.acquire();  // 获取许可
-        
+
         List<User> batch = userMapper.selectPage(offset, batchSize);
-        
+
         if (batch.isEmpty()) break;
-        
+
         writer.write(batch, sheet);
         batch.clear();
-        
+
         offset += batchSize;
     }
 }
@@ -766,21 +766,21 @@ public void exportUsers(String filePath) {
 public void exportUsers(String filePath, Consumer<Integer> progressCallback) {
     int totalRows = userMapper.selectCount();
     int processedRows = 0;
-    
+
     int batchSize = 10000;
     int offset = 0;
-    
+
     while (true) {
         List<User> batch = userMapper.selectPage(offset, batchSize);
-        
+
         if (batch.isEmpty()) break;
-        
+
         writer.write(batch, sheet);
-        
+
         processedRows += batch.size();
         int progress = (processedRows * 100) / totalRows;
         progressCallback.accept(progress);  // 回调进度
-        
+
         batch.clear();
         offset += batchSize;
     }
@@ -799,41 +799,41 @@ public void exportUsers(String filePath, Consumer<Integer> progressCallback) {
 ```java
 @Service
 public class OrderExportService {
-    
+
     @Autowired
     private OrderMapper orderMapper;
-    
+
     private final ExecutorService executor = Executors.newFixedThreadPool(10);
-    
+
     public void exportOrders(Date startDate, Date endDate, String outputPath) {
         // 1. 查询总数
         int totalRows = orderMapper.selectCountByDateRange(startDate, endDate);
         int shardSize = 100000;
         int shardCount = (totalRows + shardSize - 1) / shardSize;
-        
+
         // 2. 多线程分片导出
         List<Future<File>> futures = new ArrayList<>();
-        
+
         for (int i = 0; i < shardCount; i++) {
             final int shardIndex = i;
-            
+
             Future<File> future = executor.submit(() -> {
                 int offset = shardIndex * shardSize;
                 List<Order> orders = orderMapper.selectPageByDateRange(
                     startDate, endDate, offset, shardSize
                 );
-                
+
                 File tempFile = File.createTempFile("orders_" + shardIndex + "_", ".xlsx");
                 EasyExcel.write(tempFile, Order.class)
                     .sheet("订单" + shardIndex)
                     .doWrite(orders);
-                
+
                 return tempFile;
             });
-            
+
             futures.add(future);
         }
-        
+
         // 3. 合并文件
         List<File> tempFiles = futures.stream()
             .map(f -> {
@@ -841,9 +841,9 @@ public class OrderExportService {
                 catch (Exception e) { throw new RuntimeException(e); }
             })
             .collect(Collectors.toList());
-        
+
         mergeExcelFiles(tempFiles, outputPath);
-        
+
         // 4. 清理
         tempFiles.forEach(File::delete);
     }
@@ -858,32 +858,32 @@ public class OrderExportService {
 ```java
 @Service
 public class LogExportService {
-    
+
     @Autowired
     private LogMapper logMapper;
-    
+
     public void exportLogs(Date startDate, Date endDate, String outputPath) {
         try (ExcelWriter writer = EasyExcel.write(outputPath, Log.class).build()) {
             WriteSheet sheet = EasyExcel.writerSheet("日志").build();
-            
+
             // 游标查询
             try (Cursor<Log> cursor = logMapper.selectCursorByDateRange(startDate, endDate)) {
                 List<Log> batch = new ArrayList<>(10000);
-                
+
                 for (Log log : cursor) {
                     batch.add(log);
-                    
+
                     if (batch.size() >= 10000) {
                         writer.write(batch, sheet);
                         batch.clear();
-                        
+
                         // 每 10 批次提示 GC
                         if (batch.isEmpty() && System.currentTimeMillis() % 10 == 0) {
                             System.gc();
                         }
                     }
                 }
-                
+
                 if (!batch.isEmpty()) {
                     writer.write(batch, sheet);
                 }

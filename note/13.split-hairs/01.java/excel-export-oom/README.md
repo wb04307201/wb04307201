@@ -118,7 +118,7 @@ SXSSFSheet sheet = workbook.createSheet();
 for (int i = 0; i < 1000000; i++) {
     SXSSFRow row = sheet.createRow(i);
     row.createCell(0).setCellValue("data");
-    
+
     // 每 1000 行刷盘一次
     if (i % 1000 == 0) {
         workbook.dispose();  // 清理临时文件
@@ -137,18 +137,18 @@ int offset = 0;
 
 while (true) {
     List<User> batch = userMapper.selectPage(offset, batchSize);
-    
+
     if (batch.isEmpty()) {
         break;  // 查询完毕
     }
-    
+
     // 写入当前批次
     writeBatchToExcel(batch, sheet);
-    
+
     // 及时释放
     batch.clear();
     System.gc();  // 提示 GC（可选）
-    
+
     offset += batchSize;
 }
 ```
@@ -179,20 +179,20 @@ List<Future<File>> futures = new ArrayList<>();
 
 for (int i = 0; i < shardCount; i++) {
     final int shardIndex = i;
-    
+
     Future<File> future = executor.submit(() -> {
         // 每个线程独立查询 + 写入
         int offset = shardIndex * shardSize;
         List<User> batch = userMapper.selectPage(offset, shardSize);
-        
+
         File tempFile = File.createTempFile("export_" + shardIndex, ".xlsx");
         EasyExcel.write(tempFile, User.class)
             .sheet("Sheet" + shardIndex)
             .doWrite(batch);
-        
+
         return tempFile;
     });
-    
+
     futures.add(future);
 }
 
@@ -224,26 +224,26 @@ public void exportExcel() {
     // 1. 复用 Workbook 对象
     try (ExcelWriter writer = EasyExcel.write("output.xlsx").build()) {
         WriteSheet sheet = EasyExcel.writerSheet("用户列表").build();
-        
+
         // 2. 分批查询 + 写入
         int batchSize = 10000;
         int offset = 0;
-        
+
         while (true) {
             List<User> batch = userMapper.selectPage(offset, batchSize);
-            
+
             if (batch.isEmpty()) break;
-            
+
             writer.write(batch, sheet);
-            
+
             // 3. 及时释放
             batch.clear();
-            
+
             // 4. 每 10 批次提示 GC
             if (offset % (batchSize * 10) == 0) {
                 System.gc();
             }
-            
+
             offset += batchSize;
         }
     }
@@ -271,7 +271,7 @@ public void exportExcel() {
      ↓              ↓              ↓
   独立写入        独立写入        独立写入
   Sheet 1        Sheet 2        Sheet 3
-  
+
 总内存：10 × 50 MB = 500 MB（可控）
 ```
 
