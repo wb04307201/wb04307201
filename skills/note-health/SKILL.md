@@ -20,7 +20,7 @@ description: Use when user asks to audit or improve note/ — "note 哪里需要
 > **全库策略**（leaf > 50）：
 > - **优先级批**：浅 README（< 50 行）+ 无回链 + 无 frontmatter + 全部 broken link 来源（必评）
 > - **采样批**：每主模块随机 3-5 篇代表 leaf
-> - **不直接走 health-workflow.js 全库 fan-out**：971 leaf × 6/批 ≈ 162 批 ≈ 200+ subagent，token 成本数百万，边际收益低
+> - **不直接走 health-workflow.js 全库 fan-out**：1019 leaf × 6/批 ≈ 170 批 ≈ 200+ subagent，token 成本数百万，边际收益低
 > - leaf 数 ≤ 50 → 按单模块（主循环手工切批）
 
 > ⚠️ **边缘 case：兄弟相对路径（如 polymorphism）**：当新增子目录（如 `polymorphism/README.md`），兄弟章节用 `[polymorphism](polymorphism/README.md)` 形式链接近似安全 —— 但 markdown 严格按相对路径解析，**从 `inner-class/README.md` 应解析到 `inner-class/polymorphism/README.md`**（不存在）。**Phase 1 §6 broken-links 扫描命中后需人工二次确认**「同目录」vs「跨目录」归属，特别是 polymorphism / distillation 这类子目录的兄弟链。**Obsidian / GitHub 可能因 auto-resolve 显示为 OK，但严格 markdown 规范下是 broken**。Phase 4 综合报告必须标 `[同目录-边缘]` 而非纯 `[真错]`。
@@ -38,9 +38,7 @@ description: Use when user asks to audit or improve note/ — "note 哪里需要
 读 `references/structural-checks.md`，跑机械扫描：**frontmatter 覆盖、orphan 目录、孤链、README 总目录章节锚点、模块均分 + 单向链接扫描 + 系列完整性审计 + 数字一致性 + 归属合理性 + 合并检测**等。
 **所有大输出重定向到文件**（`> note/.health-tmp/scan-<phase>-<date>.txt`），不堆进对话。Phase 1 不调 workflow。
 
-> **2026-07-25 起**：单向链接扫描（`Step 4.5`）+ 系列完整性审计（`Step 9` + `9.1`）从深度模式提升为默认 Phase 1.8 / 1.9 / 1.10 —— Mistake 9（parent 不回链 = 隐性孤岛）是历史教训，全库 781 README 的体检默认应该跑，下次不会再忘。
-
-> **🆕 2026-07-26 起**：归属合理性审计（`Step 10`）+ 合并检测（`Step 11`）从深度模式提升为默认 Phase 1.11 / 1.12 —— 主题放错位置（如训练方法论放工程层）和多主题错误合并（如 5 个灵魂拷问合成一个文件）是结构性问题，体检默认应该跑。
+> **2026-07-25 起**：单向链接扫描（`Step 4.5`）+ 系列完整性审计（`Step 9` + `9.1`）从深度模式提升为默认 Phase 1.8 / 1.9 / 1.10 —— Mistake 9（parent 不回链 = 隐性孤岛）是历史教训，全库 808 README 的体检默认应该跑，下次不会再忘。
 
 > **🆕 2026-07-26 起**：归属合理性审计（`Step 10`）+ 合并检测（`Step 11`）从深度模式提升为默认 Phase 1.11 / 1.12 —— 主题放错位置（如训练方法论放工程层）和多主题错误合并（如 5 个灵魂拷问合成一个文件）是结构性问题，体检默认应该跑。
 
@@ -80,6 +78,56 @@ find note -name "*.md" | python -c "import sys,os; [print(l.strip()) for l in sy
 ### Phase 4 — 综合输出
 
 把结构 findings（Phase 1）+ 质量 findings（Phase 2/3）合并成统一报告，写到 `note/.health-tmp/report-<date>.md`。详见下文「Output Format」。
+
+### Phase 5 — 修复后验证（2026-07-27 新增）
+
+> 执行 Batch 1+ 修复后必跑，确保修复实际落地而非"报告完成但 git 没 commit"。
+
+**标准化验证流程**：
+
+1. **commit 落地确认**：
+   ```bash
+   git log --oneline -N   # N = 本轮 commit 数，确认每条 commit 都有真实 hash
+   ```
+
+2. **工作树干净**：
+   ```bash
+   git status --short     # 应输出空（无 unstaged/untracked）
+   ```
+
+3. **内容质量达标**：
+   ```bash
+   wc -l FILE             # 扩充后文件行数 ≥ 目标值（如 ≥ 300 行）
+   ```
+
+4. **无新断链**：
+   ```bash
+   # 对本轮修改的每个文件跑 broken links 扫描
+   python << 'PYEOF'
+   import sys, os, re, glob
+   if sys.platform == 'win32':
+       try: sys.stdout.reconfigure(encoding='utf-8')
+       except: pass
+   LINK_RE = re.compile(r'(?<![|\[])\[([^\]]*)\]\((?!https?://)(?!mailto:)(?!#)([^)#\s]+?\.md)(?:#[^)]*)?\)')
+   for f in <本轮修改的文件列表>:
+       c = open(f, encoding='utf-8', errors='ignore').read()
+       for m in LINK_RE.finditer(c):
+           target_abs = os.path.normpath(os.path.join(os.path.dirname(f), m.group(2).replace('/', os.sep)))
+           if not os.path.isfile(target_abs):
+               print(f'  ⚠ {f} -> {m.group(2)}')
+   PYEOF
+   ```
+
+**验证通过标准**：
+- ✅ 每条 commit 有真实 hash（不是"已 commit" 文字）
+- ✅ `git status --short` 输出为空
+- ✅ 扩充后行数 ≥ 300 行（或目标值）
+- ✅ broken links 扫描输出为空（或只有预期的边缘 case）
+
+**验证失败处理**：
+- commit hash 缺失 → 立即补 commit
+- 工作树有未提交修改 → 决定是否 commit 或 discard
+- broken links → 立即修复，不要累积
 
 ## Output Format（统一报告骨架）
 
