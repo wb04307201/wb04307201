@@ -66,6 +66,7 @@ question:
 | [Redis 搜索能力](redis-search/) | ⭐⭐⭐ | Redis 如何做全文搜索？ |
 | [Redis 持久化](redis-persistence/) | ⭐⭐⭐⭐ | RDB / AOF / 混合持久化 |
 | [Redis 内存淘汰策略](redis-eviction/) | ⭐⭐⭐⭐ | 8 种淘汰策略详解 |
+| [Redis 过期 Key 实时释放内存吗](redis-expiry-deletion/) | ⭐⭐ | 惰性删除 + 定期删除 + UNLINK |
 | [Redis 集群](redis-cluster/) | ⭐⭐⭐⭐ | Sentinel vs Cluster |
 | [Redis 大 Key 问题](redis-big-key/) | ⭐⭐⭐⭐ | 发现与治理方案 |
 
