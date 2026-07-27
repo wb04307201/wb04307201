@@ -337,5 +337,6 @@ Auto-Fix Loop = Task 描述 + Verifier（测试/lint/编译）+ Agent + 反馈�
 - **面试题**：[13.split-hairs Loop Engineering](../../../13.split-hairs/11.ai/loop-engineering/README.md)
 - **餐厅叙事**：12.story 加"AI 餐厅用 Loop 自动修复 50 家分店代码"反向链（待补）
 - **编程 Agent 横对比**：[Coding Agents](../coding-agents/README.md) — Claude Code / Codex / OpenCode / OMP 4 大编程 Agent 横向对比（含 OMP `/branch` / `/fork` / `/tree` 等 loop 命令）
+- 🆕 **[Agent 可靠性](../agent-reliability/README.md)** — 4 层防护体系（Prompt 约束 / Verifier 检测 / 状态回滚 / 成本熔断）防跑偏/死循环
 
 ← [返回: L3 工程实践](../README.md)

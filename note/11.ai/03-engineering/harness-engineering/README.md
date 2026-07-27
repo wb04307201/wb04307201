@@ -200,4 +200,5 @@ AI Agent 入职流程：
 - [opencode](../coding-agents/opencode.md)
 - [01-sft](../../07-research/alignment/01-sft.md)
 - [ralph-wiggum-loop](../loop-engineering/ralph-wiggum-loop.md)
+- 🆕 [Agent 可靠性](../agent-reliability/README.md) — 4 层防护体系防跑偏/死循环
 ← [返回: L3 工程实践](../README.md)

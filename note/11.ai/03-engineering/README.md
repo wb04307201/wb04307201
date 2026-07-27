@@ -23,6 +23,7 @@ module:
 | [production-agent](production-agent/) | 生产级 Agent 实战 — 编排、监控、错误恢复 | 线上稳定性 |
 | [harness-engineering](harness-engineering/) | **Harness Engineering** — 4 大 Harness 类型（规范/流程/工具/反馈）+ OpenSpec + 4 原则 | Agent 自我约束 |
 | [loop-engineering](loop-engineering/) | **Loop Engineering** — 循环调用 3 大组件 + 4 大失败模式 + 5 大最佳实践 + 🆕 [Ralph Wiggum Loop](loop-engineering/ralph-wiggum-loop.md) | 探索性任务自动化 |
+| [agent-reliability](agent-reliability/) 🆕 | **Agent 可靠性** — 4 层防护体系（Prompt 约束 / Verifier 检测 / 状态回滚 / 成本熔断）防跑偏/死循环 | Agent 可靠性工程防线 |
 | [agent-spec-tools](agent-spec-tools/) 🆕 | **Agent Spec Tools** — Superpowers（强制 TDD）/ Spec-Kit（企业 SDD 管线）/ OpenSpec（轻量规范对齐）安装 + 配置 + 对比 | Agent 规范工具链 |
 | [coding-agents](coding-agents/) 🆕 | **Coding Agents** — Claude Code / Codex / OpenCode / OMP 4 大编程 Agent 横对比 + 选型决策树 + 模型/MCP 配置 schema | 编程 Agent 工具链 |
 | [ai-code-review](ai-code-review/) 🆕 | **AI 代码审核验收** — 6 层审核体系（契约/业务/安全/性能/可测/幻觉）+ 分级门禁矩阵 + 幻觉专项 + 工具链 | AI 产出质量门禁 |
