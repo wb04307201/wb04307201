@@ -78,7 +78,7 @@ GPU 计算速度是 HBM 带宽的 ~100x，瓶颈是**内存访问**。
 ## 🔗 兄弟章节
 
 - **L1 同级**：[Transformer 架构](../transformer/README.md) / [注意力机制](../attention-mechanism/README.md) / [RoPE 位置编码](../rope-position-encoding/README.md)
-- **L2 栈**：[KV Cache](../../02-technology-stack/kv-cache/README.md) / [PagedAttention](../../02-technology-stack/paged-attention/README.md) / [推理性能指标](../../02-technology-stack/inference-metrics/README.md)
+- **L2 栈**：[KV Cache](../../02-technology-stack/kv-cache/README.md)（推理复杂度 + MQA/GQA/MLA 对比） / [PagedAttention](../../02-technology-stack/paged-attention/README.md) / [推理性能指标](../../02-technology-stack/inference-metrics/README.md)
 - **工程**：[vLLM 部署](../../02-technology-stack/inference-frameworks/README.md)
 
 ---

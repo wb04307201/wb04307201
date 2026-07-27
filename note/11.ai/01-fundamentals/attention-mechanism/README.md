@@ -51,7 +51,7 @@ module:
 ## 🔗 兄弟章节
 
 - **L1 同级**：[Transformer 架构](../transformer/README.md) / [位置编码 RoPE](../rope-position-encoding/README.md) / [MoE 架构](../moe-architecture/README.md) / [Flash Attention](../flash-attention/README.md)
-- **L2 栈**：[KV Cache](../../02-technology-stack/kv-cache/README.md)
+- **L2 栈**：[KV Cache](../../02-technology-stack/kv-cache/README.md)（推理复杂度 + MQA/GQA/MLA 对比）
 - **咬文嚼字**：[Transformer 面试题](../../../13.split-hairs/11.ai/transformer/README.md)
 
 ---
