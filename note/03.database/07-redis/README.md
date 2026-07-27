@@ -23,6 +23,7 @@ module:
 | 三、持久化机制 | RDB / AOF / 混合持久化 | 推荐 AOF everysec + 混合 |
 | 四、集群与高可用 | 主从 / 哨兵 / Cluster | Cluster 16384 slot |
 | 五、内存管理 | 8 种淘汰策略 + 大 Key / 热 Key | 默认 allkeys-lru |
+| 五-B、过期 Key 删除机制 | 惰性删除 + 定期删除 + DEL vs UNLINK + 生产堆积排查 | 过期 ≠ 立即释放，83 分钟清理案例 |
 | 六、Redis vs Memcached | 数据结构 / 持久化 / 集群 / 线程模型 | Redis 功能更丰富 |
 | 七、缓存选型对比 | Caffeine / Ehcache / Redis / Memcached / Dragonfly | 单机选 Caffeine,分布式选 Redis |
 | 八、Redis 底层数据结构 | SDS / ziplist / skiplist / quicklist | 7.0 起 List 统一 quicklist |
@@ -252,6 +253,114 @@ redis-rdb-tools（Python）
 | 本地缓存 | 热点数据缓存在应用进程内存（Caffeine） |
 | 读写分离 | 分散读请求到多个 Slave |
 | Key 拆分 | 将 `product:1001` 拆分为 `product:1001:1`、`product:1001:2` |
+
+### 五-B、过期 Key 删除机制
+
+#### 1. 两种删除策略并行工作
+
+Redis 的过期 key 删除不是单一的，而是**惰性删除**和**定期删除**并行工作：
+
+| 策略 | 触发时机 | 工作方式 | 优缺点 |
+|------|---------|---------|--------|
+| **惰性删除（Lazy Expiration）** | 客户端访问 key 时 | GET/SET/HGET 等命令执行时检查 TTL，过期则删除 | CPU 友好，但可能长期占用内存 |
+| **定期删除（Active Expiration）** | Redis 每秒 10 次（每 100ms 一次） | 随机抽样 20 个带 TTL 的 key，删除已过期的；若过期比例 > 25%，继续抽样（最多占用 25% CPU） | 主动释放内存，但有 CPU 开销 |
+
+```bash
+# 定期删除频率配置（server.hz）
+CONFIG SET hz 10          # 默认值：每秒 10 次扫描
+CONFIG SET hz 100         # 高频模式：每秒 100 次扫描
+```
+
+#### 2. 定期删除流程（activeExpireCycle）
+
+```text
+定期删除流程（activeExpireCycle）：
+1. 每 100ms 执行一次（由 server.hz 配置，默认 10 → 每秒 10 次）
+2. 从每个 db 随机取 20 个带 TTL 的 key
+3. 删除其中已过期的
+4. 如果过期比例 > 25% → 继续抽样（但有上限，避免长期占用 CPU）
+5. 每次抽样最多占用 25% CPU 时间
+```
+
+#### 3. 内存释放时机（核心问题）
+
+**关键结论：过期 key ≠ 立即释放内存**
+
+```text
+key 过期 → 惰性删除（访问时）或 定期删除（后台扫描）→ 内存释放
+                    ↓
+    但如果 key 从未被访问 + 定期删除没抽到 → 内存持续占用
+```
+
+| 场景 | 删除触发 | 内存释放时机 |
+|------|---------|-------------|
+| **key 被访问** | 惰性删除立即触发 | 立即释放 |
+| **key 未被访问但被定期删除抽到** | 后台删除 | 释放 |
+| **key 未被访问且未被抽到** | 等待抽中或淘汰策略触发 | 持续占用内存 |
+
+#### 4. 生产问题：大量过期 Key 堆积
+
+**典型场景**：业务设置了 100 万个 key，TTL 1 小时。1 小时后，100 万 key 全部过期，但：
+
+```text
+定期删除每秒检查量 = 20 个/次 × 10 次/秒 = 200 个/秒
+清理 100 万 key 需要 = 1,000,000 / 200 = 5,000 秒 ≈ 83 分钟
+→ 这期间内存持续被占用！
+```
+
+**解决方案**：
+
+| 方案 | 操作 | 效果 |
+|------|------|------|
+| **提高 hz** | `CONFIG SET hz 100` | 每秒扫描从 200 → 2,000 个 key，清理时间缩短 10 倍 |
+| **主动删除** | 业务层用 `UNLINK` 异步删除 | 不阻塞主线程，后台释放内存 |
+| **合理设置 TTL** | 避免大量 key 同时过期，加随机偏移 | 减少峰值堆积 |
+| **监控 expired_keys** | `INFO stats` 中查看 `expired_keys` 指标 | 及时发现堆积异常 |
+
+```bash
+# 加随机偏移避免同时过期
+SET session:abc value EX 3600          # 固定 1 小时
+SET session:abc value EX $((3600+RANDOM%300))  # 1~1.08 小时随机（推荐）
+
+# 监控过期 key 数量
+redis-cli INFO stats | grep expired_keys
+```
+
+#### 5. DEL vs UNLINK（Redis 4.0+）
+
+| 命令 | 删除方式 | 阻塞主线程 | 适用场景 |
+|------|---------|:----------:|---------|
+| `DEL` | 同步删除 | 是 | 小 key（< 1MB） |
+| `UNLINK` | 异步删除（后台线程） | 否 | 大 key（> 1MB），批量删除 |
+
+```bash
+# 大 key 用 UNLINK
+UNLINK user:session:massive-data   # 后台线程释放内存，主线程立即返回
+
+# 批量删除 1000 个 key（用 UNLINK 替代 DEL）
+EVAL "local keys = redis.call('keys', ARGV[1]) for i,k in ipairs(keys) do redis.call('unlink', k) end return #keys" 0 "session:*"
+```
+
+#### 6. 反直觉点
+
+| 误区 | 实际行为 |
+|------|---------|
+| ❌ "key 过期了内存就立即释放" | ✅ 惰性删除 + 定期删除，可能延迟数分钟甚至更久 |
+| ❌ "设置 TTL 就够了" | ✅ 大量 key 同时过期 → 内存峰值 → 需要主动 UNLINK + 提高 hz |
+| ❌ "定期删除能清理所有过期 key" | ✅ 每秒最多 200 个（默认），100 万个需要 83 分钟 |
+
+#### 7. 与淘汰策略的关系
+
+```text
+内存管理三层防线：
+1. 过期删除（TTL 到期 → 惰性/定期删除）— 主动清理
+2. 内存淘汰（maxmemory 触发 → 8 种策略）— 被动兜底
+3. 主动清理（UNLINK / 业务层定时清理）— 工程干预
+```
+
+> 🔗 **面试深挖版**：[过期删除 vs 淘汰策略](../../13.split-hairs/03.database/redis-expiry-deletion/README.md) — 惰性删除 + 定期删除底层原理 + 生产堆积排查
+> 🔗 **相关章节**：[大 Key 优化](../../13.split-hairs/03.database/redis-big-key/README.md) — UNLINK 异步删除实战
+> 🔗 **本章关联**：[九、Redis 分布式锁](#九redis-分布式锁) — TTL 防死锁机制
 
 ---
 
@@ -524,7 +633,7 @@ Grafana 官方提供 Redis 仪表盘,关键告警指标:
 ## 📊 本节统计
 
 - **leaf README 数**：1（本文即为分类 leaf，单 README 长文聚合 13 主题）
-- **本节主题数**：13（为什么快、数据类型、持久化、集群、内存管理、vs Memcached、缓存选型、底层数据结构、分布式锁、Pipeline/事务/Lua、客户端对比、监控、7.0 新特性）
+- **本节主题数**：14（为什么快、数据类型、持久化、集群、内存管理、过期 Key 删除机制、vs Memcached、缓存选型、底层数据结构、分布式锁、Pipeline/事务/Lua、客户端对比、监控、7.0 新特性）
 - **frontmatter 状态**：✅ 已对齐 CONTRIBUTING §12 标准（summary ≤ 80 字 / type=index）
 - **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README
 
