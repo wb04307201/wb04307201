@@ -572,6 +572,19 @@ PYEOF
 - subagent prompt 模板**强制要求**：每个深读链接必须在最终报告里列出 `find` 命令的实际输出
 - 历史案例（2026-07-25 业务系统补深）：QMS 引用 `../06-specialized/lims/README.md`（少一层 `../`，正确应是 `../../06-specialized/lims/README.md`），独立 `find` 验证 + 修复为正确路径
 
+**🆕 强化（2026-07-27 经验 — 父 README 目录表更新）**：
+- 当 subagent 更新**父 README 目录表**（如 `13.split-hairs/11.ai/README.md` 添加新面试题条目）时，目录表中的深读链接路径最易出错
+- 历史案例（2026-07-27 Batch 1）：`13.split-hairs/11.ai/README.md` 目录表新增 agent-reliability 条目，subagent 写 `../../../11.ai/03-engineering/agent-reliability/README.md`（3 层 `../`），但 `13.split-hairs/11.ai/` 到 `note/11.ai/` 只需 2 层 `../../`
+- **防御规则**：更新父 README 目录表时，用 Python 验证路径：
+  ```python
+  import os
+  src_dir = 'note/13.split-hairs/11.ai'  # 父 README 所在目录
+  tgt = 'note/11.ai/03-engineering/agent-reliability/README.md'
+  rel = os.path.relpath(tgt, src_dir)  # 自动计算正确相对路径
+  print(rel)  # 输出: ../../11.ai/03-engineering/agent-reliability/README.md
+  ```
+- 不要手动数 `../` 层数，用 `os.path.relpath` 自动计算
+
 ### ❌ Mistake 9: 单向链接（child 链 parent，parent 不回链）
 
 **症状**：新文件链接到 parent / 同级兄弟，但**parent / 同级兄弟没有反向链**到新文件。例如：

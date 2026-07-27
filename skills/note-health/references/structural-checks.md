@@ -43,6 +43,7 @@
 - ✅ P2-3 代码补行内注释（2026-07-23：utilities/cache/connection-pool/seckill/dns 等文件加 WHY 注释）
 - ✅ P2-4 参数表补调优建议（2026-07-23：caffeine/hikaricp/semaphore/iceberg/airflow/OLAP 等加推荐值列）
 - ✅ P2-5 补 a11y 讨论（2026-07-23：vite/frameworks/mini-program/pwa 补可访问性小节）
+- ✅ 5 处 broken links 清零（2026-07-27：clustering 距离度量链接目标不存在 / a11y 语义化HTML+表单设计链接目标不存在 / 13.split-hairs/11.ai agent-reliability+kv-cache 路径深度错误 `../../../11.ai` → `../../11.ai`）
 
 > 报告每条发现时标注 `[NEW]`（本会话未触及）或 `[已修]`（本会话已修）。本清单会随时间增补。
 
