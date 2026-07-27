@@ -642,7 +642,7 @@ Gap(k) = E[log(SSE_ref(k))] - log(SSE(k))
 
 - [K-Means 详解](k-means/README.md) — K-Means 算法深入推导 + K-Means++ 初始化
 - [降维算法](../dimensionality-reduction/README.md) — PCA / t-SNE 聚类前预处理
-- [距离度量](../similarity-measures/README.md) — 欧氏 / 曼哈顿 / 余弦 / Jaccard
+- 距离度量 — 欧氏 / 曼哈顿 / 余弦 / Jaccard
 
 ---
 

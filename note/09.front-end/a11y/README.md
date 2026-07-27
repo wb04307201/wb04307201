@@ -396,8 +396,8 @@ async function auditAccessibility(url) {
 ## 🔗 相关章节
 
 - [WCAG 无障碍指南](wcag/README.md) — POUR 四大原则详解 + 12+ 条成功标准
-- [语义化 HTML](../html/semantic-html/README.md) — 语义化标签与文档结构
-- [表单设计](../forms/README.md) — 表单可访问性最佳实践
+- 语义化 HTML — 语义化标签与文档结构
+- 表单设计 — 表单可访问性最佳实践
 
 ---
 
