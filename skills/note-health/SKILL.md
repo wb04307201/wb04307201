@@ -20,7 +20,7 @@ description: Use when user asks to audit or improve note/ — "note 哪里需要
 > **全库策略**（leaf > 50）：
 > - **优先级批**：浅 README（< 50 行）+ 无回链 + 无 frontmatter + 全部 broken link 来源（必评）
 > - **采样批**：每主模块随机 3-5 篇代表 leaf
-> - **不直接走 health-workflow.js 全库 fan-out**：1019 leaf × 6/批 ≈ 170 批 ≈ 200+ subagent，token 成本数百万，边际收益低
+> - **不直接走 health-workflow.js 全库 fan-out**：1000+ leaf × 6/批 ≈ 170+ 批 ≈ 200+ subagent，token 成本数百万，边际收益低
 > - leaf 数 ≤ 50 → 按单模块（主循环手工切批）
 
 > ⚠️ **边缘 case：兄弟相对路径（如 polymorphism）**：当新增子目录（如 `polymorphism/README.md`），兄弟章节用 `[polymorphism](polymorphism/README.md)` 形式链接近似安全 —— 但 markdown 严格按相对路径解析，**从 `inner-class/README.md` 应解析到 `inner-class/polymorphism/README.md`**（不存在）。**Phase 1 §6 broken-links 扫描命中后需人工二次确认**「同目录」vs「跨目录」归属，特别是 polymorphism / distillation 这类子目录的兄弟链。**Obsidian / GitHub 可能因 auto-resolve 显示为 OK，但严格 markdown 规范下是 broken**。Phase 4 综合报告必须标 `[同目录-边缘]` 而非纯 `[真错]`。
@@ -38,7 +38,7 @@ description: Use when user asks to audit or improve note/ — "note 哪里需要
 读 `references/structural-checks.md`，跑机械扫描：**frontmatter 覆盖、orphan 目录、孤链、README 总目录章节锚点、模块均分 + 单向链接扫描 + 系列完整性审计 + 数字一致性 + 归属合理性 + 合并检测**等。
 **所有大输出重定向到文件**（`> note/.health-tmp/scan-<phase>-<date>.txt`），不堆进对话。Phase 1 不调 workflow。
 
-> **2026-07-25 起**：单向链接扫描（`Step 4.5`）+ 系列完整性审计（`Step 9` + `9.1`）从深度模式提升为默认 Phase 1.8 / 1.9 / 1.10 —— Mistake 9（parent 不回链 = 隐性孤岛）是历史教训，全库 808 README 的体检默认应该跑，下次不会再忘。
+> **2026-07-25 起**：单向链接扫描（`Step 4.5`）+ 系列完整性审计（`Step 9` + `9.1`）从深度模式提升为默认 Phase 1.8 / 1.9 / 1.10 —— Mistake 9（parent 不回链 = 隐性孤岛）是历史教训，全库 800+ README 的体检默认应该跑，下次不会再忘。
 
 > **🆕 2026-07-26 起**：归属合理性审计（`Step 10`）+ 合并检测（`Step 11`）从深度模式提升为默认 Phase 1.11 / 1.12 —— 主题放错位置（如训练方法论放工程层）和多主题错误合并（如 5 个灵魂拷问合成一个文件）是结构性问题，体检默认应该跑。
 
