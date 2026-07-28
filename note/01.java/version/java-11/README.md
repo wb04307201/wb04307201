@@ -1,19 +1,25 @@
 <!--
 module:
   parent: java
-  slug: java/java-11
+  slug: java/version/java-11
   type: article
   category: 主模块子文章
-  summary: Java 11
+  summary: Java 11 (LTS)：17 个 JEP，含嵌套访问控制、HTTP 客户端正式版、ZGC 实验性、单文件源启动
 -->
 
 # Java 11
 
 ## 引言：变更说明
 
-Java 11 是 N 个 JEP / 特性 / 章节的合集。
+Java 11 是 17 个 JEP 的合集。
 
 本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
+
+---
+
+### 相关阅读
+
+← [Java 10](../java-10/README.md) · [Java 12](../java-12/README.md) · [Java 全部版本](../README.md)
 
 ---
 
@@ -322,6 +328,98 @@ java -XX:+UnlockExperimentalVMOptions -XX:+UseZGC YourApplication
 ## JEP 336: 弃用 Pack200 工具和 API
 
 该特性将 Pack200 工具和 API 标记为弃用状态。Pack200 是一种用于压缩 JAR 文件的工具，随着网络带宽的增加和应用分发方式的改变，其使用场景越来越少。这一弃用为后续版本中移除 Pack200 做准备。
+
+---
+
+## 其他新特性（非 JEP）
+
+Java 11 还包含多项非 JEP 的改进，以下列出对开发者最实用的特性：
+
+### 核心 API
+
+#### Collection.toArray(IntFunction) Default Method
+
+`Collection` 接口新增默认方法 `toArray(IntFunction)`，允许将集合元素传输到指定运行时类型的新数组。
+
+```java
+List<String> list = List.of("a", "b", "c");
+
+// 新方式：指定数组类型
+String[] arr = list.toArray(String[]::new);
+
+// 等价于旧方式
+String[] arr2 = list.toArray(new String[0]);
+```
+
+> ⚠️ **源码不兼容**：`coll.toArray(null)` 现在会导致编译错误（歧义）。修复方式：强制转型 `toArray((Object[])null)`。
+
+### 国际化
+
+#### Updated Locale Data to Unicode CLDR v33
+
+语言环境数据更新到 Unicode CLDR v33 版本。
+
+### JVM / HotSpot
+
+#### Lazy Allocation of Compiler Threads（动态编译器线程）
+
+新增 `-XX:+UseDynamicNumberOfCompilerThreads` 标志（默认开启），动态控制编译器线程数量。以前 VM 启动时会启动大量编译器线程，现在动态按需分配，减少空闲线程的内存浪费。
+
+```bash
+# 默认已启用，无需额外配置
+java MyApp
+
+# 显式禁用（不推荐）
+java -XX:-UseDynamicNumberOfCompilerThreads MyApp
+```
+
+### 安全
+
+#### Brainpool EC Support（Brainpool 椭圆曲线支持）
+
+SunEC 提供者新增 4 条 Brainpool 曲线（RFC 5639）：`brainpoolP256r1`、`brainpoolP320r1`、`brainpoolP384r1`、`brainpoolP512r1`。
+
+```java
+KeyPairGenerator kpg = KeyPairGenerator.getInstance("EC");
+kpg.initialize(new ECGenParameterSpec("brainpoolP256r1"));
+KeyPair kp = kpg.generateKeyPair();
+```
+
+#### Enhanced KeyStore Mechanisms（KeyStore 增强）
+
+新增安全属性 `jceks.key.serialFilter`，JCEKS KeyStore 在反序列化加密 Key 对象时使用此过滤器。
+
+#### RSASSA-PSS Signature Support in SunMSCAPI
+
+SunMSCAPI 提供者新增 RSASSA-PSS 签名算法支持。
+
+#### AES Encryption with HMAC-SHA2 for Kerberos 5（RFC 8009）
+
+Kerberos 5 新增 `aes128-cts-hmac-sha256-128` 和 `aes256-cts-hmac-sha384-192` 加密类型。
+
+### 重要打包/分发变更
+
+| 变更 | 说明 |
+|------|------|
+| **JavaFX 移出 JDK** | JavaFX 模块从 JDK 中移除，需从 openjfx.io 单独下载 |
+| **JMC 移出 Oracle JDK** | Java Mission Control 需单独下载 |
+| **不再提供 JRE / Server JRE** | 只提供 JDK，可用 `jlink` 创建自定义运行时 |
+| **自动更新不再可用** | Windows/macOS 上 JRE 安装的自动更新已移除 |
+| **Windows 打包格式** | 从 `.tar.gz` 改为 `.zip` |
+| **macOS 打包格式** | 从 `.app` 改为 `.dmg` |
+| **多语言翻译减少** | 只保留英语、日语、简体中文 |
+
+### 移除的 API / 模块
+
+| 移除项 | 替代方案 |
+|--------|----------|
+| `com.sun.awt.AWTUtilities` | 无（JDK 10 已弃用） |
+| Lucida Fonts | 依赖操作系统安装字体 |
+| `appletviewer` 工具 | 无（JDK 9 已弃用） |
+| `sun.misc.Unsafe.defineClass` | `java.lang.invoke.MethodHandles.Lookup.defineClass`（Java 9+） |
+| `Thread.destroy()` / `Thread.stop(Throwable)` | 无（已弃用多版本） |
+| SNMP Agent | 使用 JMX |
+| `javax.imageio` JPEG alpha 支持 | 无 |
 
 ---
 

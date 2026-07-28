@@ -1,7 +1,7 @@
 <!--
 module:
   parent: java
-  slug: java/java-9
+  slug: java/version/java-9
   type: article
   category: 主模块子文章
   summary: Java 9 核心 JEP 速通：JPMS 模块系统、jshell、Collection 工厂方法、Stream/Optional 增强、Compact Strings、G1 默认 GC、HTTP/2 Client(孵化) 等。
@@ -647,6 +647,113 @@ System.out.println(resp.statusCode() + " " + resp.body());
 ## JEP 299: 重新组织文档
 
 重新组织了JDK文档结构，使其更加清晰易用。
+
+---
+
+## 其他新特性（非 JEP）
+
+Java 9 还包含多项非 JEP 的改进，以下列出对开发者最实用的特性：
+
+### 核心库
+
+#### UTF-8 属性文件
+
+ResourceBundle 现在支持 UTF-8 编码的属性文件，并自动回退到 ISO-8859-1。无需再进行 native2ascii 转换。
+
+#### NIO 临时缓冲区缓存容量限制
+
+新系统属性 `jdk.nio.maxCachedBufferSize` 限制每线程直接缓冲区缓存使用的内存。适用于启动时使用大型多兆字节缓冲区进行 I/O，之后使用小缓冲区的应用程序。
+
+#### Windows 上的 TransmitFile
+
+系统属性 `jdk.nio.enableFastFileTransfer` 启用 Windows TransmitFile，用于 `FileChannel.transferTo`，使用 Windows 缓存管理器通过套接字进行高性能文件传输。默认禁用。
+
+#### Windows 上的 SIO_LOOPBACK_FAST_PATH
+
+系统属性 `jdk.net.useFastTcpLoopback` 在 Windows 服务器版本上启用 SIO_LOOPBACK_FAST_PATH，改善回环连接延迟/性能。默认禁用。
+
+#### IBM1166 字符集
+
+新增哈萨克斯坦西里尔多语言（含欧元）字符集。别名：cp1166, ibm1166。
+
+### 安全
+
+#### DSA/ECDSA P1363 格式签名
+
+支持 IEEE P1363 的非 ASN.1 编码 DSA/ECDSA 签名（r 和 s 拼接）。新增算法字符串：`NONEwithDSAinP1363Format`、`SHA256withDSAinP1363Format` 等。
+
+#### CertPath jdkCA 约束
+
+`jdk.certpath.disabledAlgorithms` 属性新增 `jdkCA` 约束，仅在证书链终止于 `lib/security/cacerts` 中的信任锚时限制算法。
+
+#### DHE 最高 8192 位 / DSA 最高 3072 位
+
+扩展支持 3072 位 Diffie-Hellman 和 DSA 参数生成，预计算 DH 参数最高 8192 位，预计算 DSA 参数最高 3072 位。
+
+#### 可定制默认密码套件
+
+系统属性 `jdk.tls.client.cipherSuites` 和 `jdk.tls.server.cipherSuites` 允许逗号分隔列表自定义客户端/服务端 TLS 连接的默认启用密码套件。
+
+#### JarSigner API
+
+新增 `jdk.security.jarsigner.JarSigner` API（在 `jdk.jartool` 模块中），用于程序化 JAR 文件签名。
+
+#### XML 签名安全验证策略
+
+新安全属性 `jdk.xml.dsig.secureValidationPolicy` 配置 XML 签名安全验证模式的限制。
+
+#### krb5.conf 增强
+
+- 支持 `include FILENAME` 和 `includedir DIRNAME` 指令
+- 布尔值设置接受 "yes" 和 "no"（除 "true" 和 "false" 外）
+
+### HotSpot / JVM
+
+#### G1 不可达巨型对象回收
+
+G1 现在在年轻代回收期间回收不可达的巨型对象（原始类型）。
+
+#### 原生线程名称传播
+
+`Thread.setName()` 现在在支持的平台上也设置操作系统级别的原生线程名称，但仅当由当前线程调用且仅针对通过 `java.lang.Thread` 启动的线程。
+
+#### ExitOnOutOfMemoryError / CrashOnOutOfMemoryError
+
+两个新 JVM 标志：
+- `-XX:+ExitOnOutOfMemoryError` — JVM 在首次 OOM 时退出
+- `-XX:+CrashOnOutOfMemoryError` — JVM 在 OOM 时崩溃并生成崩溃文件
+
+### 工具
+
+#### javac @deprecated 警告
+
+当使用 `@deprecated` javadoc 标签但没有匹配的 `@Deprecated` 注解时，编译器发出警告。
+
+#### JShell REPL 工具
+
+交互式 REPL 工具，用于计算 Java 声明、语句和表达式。接受代码片段（包括无需封闭类的变量/方法声明）并立即显示结果。
+
+#### java 启动器 @-file 参数支持
+
+`java` 启动器现在支持从"参数文件"读取参数（如 `java @args.txt`），以绕过操作系统命令行长度限制。
+
+#### JDK_JAVA_OPTIONS 环境变量
+
+新环境变量 `JDK_JAVA_OPTIONS` 将选项前置到命令行。相比旧版 `_JAVA_OPTIONS` 的优势：支持 java 启动器选项和 @file 语法。
+
+### XML / JAXP
+
+#### XPath ANY 类型支持
+
+新增 `evaluateExpression` 方法支持 ANY 返回类型。返回 `XPathEvaluationResult`，包含 `XPathResultType` 枚举。
+
+#### XML Catalog API
+
+标准 API 支持 OASIS XML Catalogs v1.1。定义可用作 JAXP 处理器内在或外部解析器的目录和目录解析器抽象。
+
+#### maxXMLNameLimit 属性
+
+新 JAXP 属性限制 XML 名称的最大大小（元素名、属性名、命名空间前缀/URI）。帮助快速捕获格式错误的 XML。
 
 ---
 

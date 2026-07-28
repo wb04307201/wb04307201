@@ -1,19 +1,23 @@
 <!--
 module:
   parent: java
-  slug: java/java-25
+  slug: java/version/java-25
   type: article
   category: 主模块子文章
-  summary: Java 25
+  summary: Java 25 (LTS)：18 个 JEP，含 PEM 编码加密对象、原始方法句、值类预览
 -->
 
 # Java 25
 
 ## 引言：变更说明
 
-Java 25 是 N 个 JEP / 特性 / 章节的合集。
+Java 25 是 18 个 JEP 的合集。
 
 本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
+
+### 相关阅读
+
+← [Java 24](../java-24/README.md) · [Java 26](../java-26/README.md)
 
 ---
 
@@ -282,6 +286,163 @@ JFR 方法计时与追踪功能允许开发者记录方法的执行时间和调�
 分代式 Shenandoah 是一种改进的垃圾回收算法，它结合了分代收集和 Shenandoah 垃圾回收器的优点，提高了垃圾回收的效率和性能。
 
 分代式 Shenandoah 将堆内存分为不同的代，例如年轻代和老年代，并针对不同代的特点采用不同的垃圾回收策略。这样可以更有效地回收垃圾，减少垃圾回收的停顿时间，提高应用程序的响应速度。
+
+---
+
+## 其他新特性（非 JEP）
+
+Java 25 还包含多项非 JEP 的改进，以下列出对开发者最实用的特性：
+
+### 核心 API
+
+#### CharSequence.getChars(int, int, char[], int)
+
+`CharSequence` 和 `CharBuffer` 新增批量读取方法，将序列中指定区域的字符读入 `char[]`。`String`、`StringBuilder`、`CharBuffer` 均已实现。不再需要强制转型为 `String` 才能批量读取。
+
+#### stdin.encoding 系统属性
+
+新增标准系统属性 `stdin.encoding`，包含推荐的 `Charset`（用于 `InputStreamReader` 或 `Scanner` 读取 `System.in`）。默认与操作系统相关，可通过 `-Dstdin.encoding=UTF-8` 覆盖。可能与 `file.encoding` 和 `native.encoding` 不同。
+
+#### HttpClient: BodyHandlers.limiting()
+
+`HttpClient` API 新增 `BodyHandlers.limiting()` / `BodySubscribers.limiting()` 方法，限制响应体的最大字节数。达到上限时抛出 `IOException`，取消订阅并丢弃后续字节。
+
+```java
+HttpClient client = HttpClient.newHttpClient();
+HttpRequest request = HttpRequest.newBuilder()
+    .uri(URI.create("https://example.com/large-file"))
+    .build();
+
+// 限制响应体最大 1MB
+HttpResponse<String> response = client.send(request,
+    HttpResponse.BodyHandlers.limiting(HttpResponse.BodyHandlers.ofString(), 1_048_576));
+```
+
+#### HttpResponse.connectionLabel()
+
+新增方法返回不透明的连接标签，用于关联响应与其承载的 HTTP 连接。可用于判断两个请求是否共享同一连接。
+
+### NIO / ZIP
+
+#### 只读 ZIP 文件系统
+
+ZIP 文件系统提供者现在支持 `accessMode` 属性，值为 `readOnly` 或 `readWrite`（默认）。
+
+```java
+FileSystem zipfs = FileSystems.newFileSystem(pathToZipFile, Map.of("accessMode", "readOnly"));
+```
+
+### 并发
+
+#### ForkJoinPool 实现 ScheduledExecutorService
+
+`ForkJoinPool` 现在实现 `ScheduledExecutorService` 接口，支持延迟任务处理。新增 `submitWithTimeout()` 方法提交带超时的任务。
+
+`CompletableFuture` 和 `SubmissionPublisher` 的所有无显式 `Executor` 的异步方法现在统一使用 `ForkJoinPool` 公共池。
+
+#### Inflater / Deflater 实现 AutoCloseable
+
+`java.util.zip.Inflater` 和 `Deflater` 现在实现 `AutoCloseable`，可用于 try-with-resources。
+
+```java
+try (Deflater deflater = new Deflater()) {
+    deflater.setInput(data);
+    deflater.finish();
+    // ...
+} // 自动调用 end() 释放资源
+```
+
+### 工具与诊断
+
+#### 线程转储包含锁信息
+
+`HotSpotDiagnosticMXBean.dumpThreads` API 和 `jcmd Thread.dump_to_file` 现在在线程转储中包含锁信息。`dumpThreads` 还链接到 JSON 格式线程转储的 JSON Schema。
+
+#### jar --validate 增强
+
+`jar --validate` 现在会警告：
+- 重复条目名
+- 含驱动器/设备字母、前导斜杠、反斜杠、`.` 或 `..` 路径元素的条目名
+- LOC 和 CEN 头之间的条目顺序不一致
+
+#### ClassFile API: CodeModel 传递自定义属性
+
+遍历 `CodeModel` 时，`CustomAttribute` 和 `UnknownAttribute` 现在会被传递（之前仅在 `ClassModel`、`FieldModel`、`MethodModel` 中可用）。
+
+### 垃圾回收
+
+#### G1 GC: 共享卡片集
+
+G1 将可能一起回收的区域分组为共享 `G1CardSet` 结构，减少 Mixed GC 期间的内存开销和合并时间。
+
+#### G1 GC: 改进区域选择
+
+G1 更好地估算每个区域的回收成本，跳过代价高的区域，减少 Mixed GC 周期末端的停顿时间尖峰。
+
+#### Serial / Parallel GC: 消除 JNI 相关 OOM
+
+Serial 和 Parallel GC 在发起回收前等待所有线程退出 JNI 临界区，消除了过早的 `OutOfMemoryError`。`GCLockerRetryAllocationCount` 标志已移除。
+
+#### ZGC: 字符串去重跳过短命字符串
+
+ZGC 不再对年轻的短命字符串进行去重，改善了频繁分配临时字符串的应用程序性能。
+
+### JFR（飞行记录器）
+
+#### @Contextual 注解
+
+新增 `@Contextual` 注解，用于标记自定义 JFR 事件中包含上下文信息的字段（如 URL、trace ID）。工具现在可以将高级信息与低级事件（如锁竞争、I/O、异常）配对。`jfr print` 会显示此上下文。
+
+### 安全
+
+#### java.security.debug 增强输出
+
+调试输出现在始终包含线程 ID、调用者信息、源文件:行号和时间戳。格式：`componentValue[threadId|threadName|sourceCodeLocation|timestamp]: <debug statement>`。
+
+#### SHAKE128/256 MessageDigest
+
+SUN 提供者新增 SHAKE XOF 的固定长度版本（NIST FIPS 202）：`SHAKE128-256` 和 `SHAKE256-512`。
+
+#### SunPKCS11 HKDF 支持
+
+SunPKCS11 提供者通过密钥派生函数 API（JEP 510）支持 HKDF-SHA256/384/512。
+
+#### XML Security 更新
+
+更新到 Santuario 3.0.5，新增 4 个基于 SHA-3 的 ECDSA `SignatureMethod` 算法。
+
+#### TLS 密钥导出器
+
+`ExtendedSSLSession` 新增两个 API：
+- `exportKeyingMaterialKey(String keyAlg, String label, byte[] context, int length)`
+- `exportKeyingMaterialData(String label, byte[] context, int length)`
+
+支持 RFC 5705（TLS 1.0-1.2）和 RFC 8446（TLS 1.3）的 IANA TLS Exporter Labels。
+
+#### 按 TLS 范围禁用签名方案
+
+`jdk.tls.disabledAlgorithms` 现在支持 `UsageConstraint`，包含 `HandshakeSignature` 和 `CertificateSignature` 类型，可在特定 TLS 上下文中限制算法。
+
+### HotSpot / Runtime
+
+#### UseCompactObjectHeaders 成为产品选项
+
+`-XX:+/-UseCompactObjectHeaders` 不再需要 `-XX:+UnlockExperimentalVMOptions`。新增两个 CDS 归档（`classes_coh.jsa` 和 `classes_nocoops_coh.jsa`），确保启用紧凑头时的启动性能。
+
+```bash
+# 直接启用，无需实验性标志
+java -XX:+UseCompactObjectHeaders MyApp
+```
+
+#### JVMTI ClassFileLoadHook 字节码验证
+
+通过 `ClassFileLoadHook` 提供的字节码现在由类文件验证器验证，无论 `-Xverify` 设置如何。
+
+### 国际化
+
+#### 日本皇历异常变更
+
+`Calendar.computeTime()` 在 `ERA` 过大时现在抛出 `IllegalArgumentException`（之前是 `ArrayIndexOutOfBoundsException`）。
 
 ---
 

@@ -1,19 +1,25 @@
 <!--
 module:
   parent: java
-  slug: java/java-13
+  slug: java/version/java-13
   type: article
   category: 主模块子文章
-  summary: Java 13
+  summary: Java 13：5 个 JEP，含动态 CDS 归档、ZGC 释放未用内存、Text Blocks 预览
 -->
 
 # Java 13
 
 ## 引言：变更说明
 
-Java 13 是 5 个 JEP / 特性 / 章节的合集。
+Java 13 是 5 个 JEP 的合集。
 
 本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
+
+---
+
+### 相关阅读
+
+← [Java 12](../java-12/README.md) · [Java 14](../java-14/README.md) · [Java 全部版本](../README.md)
 
 ---
 
@@ -130,6 +136,117 @@ String html = """
               """;
 System.out.println(html);
 ```
+
+---
+
+## 其他新特性（非 JEP）
+
+Java 13 还包含多项非 JEP 的改进，以下列出对开发者最实用的特性：
+
+### 核心库
+
+#### Unicode 12.1 支持
+
+`Character` 类支持 Unicode 12.1（137,928 个字符、150 种文字、61 个新表情符号）。
+
+#### 新日本年号 Reiwa
+
+新增代表令和时代的 `JapaneseEra` 实例。可通过 `JapaneseEra.of(3)` 或 `JapaneseEra.valueOf("Reiwa")` 获取。占位名 "NewEra" 已替换为官方名称。
+
+#### FileSystems.newFileSystem(Path, Map) 方法
+
+`FileSystems` 新增三个方法简化文件作为文件系统的使用：`newFileSystem(Path)`、`newFileSystem(Path, Map)`、`newFileSystem(Path, Map, ClassLoader)`。
+
+#### ByteBuffer 批量 get/put 方法
+
+`ByteBuffer` 和其他缓冲类型新增绝对批量 get/put 方法，传输连续字节序列而不影响缓冲区位置。
+
+#### Windows Developer Mode 符号链接
+
+在 Windows 上，`Files.createSymbolicLink` 现在可以在进程未提升但用户运行在"开发者模式"时创建符号链接。
+
+#### CLDR v35.1 支持
+
+语言环境数据升级到 CLDR v35.1，包括日本新年号令和的本地化显示名称。
+
+#### Runtime trace 方法移除
+
+`Runtime` 中过时的 `traceInstructions(boolean)` 和 `traceMethodCalls(boolean)` 方法移除。它们多个版本已无功能；JVMTI 提供替代。
+
+#### Pre-JDK 1.4 SocketImpl 移除
+
+移除了针对 Java SE 1.3 及更早版本编译的自定义 `SocketImpl` 实现支持。对 Java SE 1.4 或更新版本编译的实现无影响。
+
+### 安全
+
+#### CRL 可配置读取超时
+
+新系统属性 `com.sun.security.crl.readtimeout` 设置 CRL 检索的最大读取超时（秒）。默认 15 秒；0 表示无限超时。
+
+#### keytool -showinfo -tls 命令
+
+新 `keytool -showinfo -tls` 命令显示 TLS 配置信息。
+
+#### SASL 机制限制
+
+新安全属性 `jdk.sasl.disabledMechanisms` 允许禁用 SASL 机制。
+
+#### MS CNG 支持
+
+SunMSCAPI 提供者现在支持读取 CNG 格式的私钥。RSA 和 EC 密钥（CNG 格式）可从 Windows 密钥库加载。
+
+#### SunPKCS11 升级到 PKCS#11 v2.40
+
+新增 AES/GCM/NoPadding 密码、使用 SHA-2 家族的 DSA 签名和 RSASSA-PSS 签名支持。
+
+#### TLS 中的 X25519 和 X448
+
+命名椭圆曲线组 x25519 和 x448 可用于 JSSE 密钥协商（TLS 1.0-1.3）。x25519 是最首选的默认值。
+
+#### 无状态会话恢复
+
+服务端 JSSE 可以使用加密会话票据无状态运行（TLS 1.2 的 RFC 5077，TLS 1.3 的 RFC 8446）。新系统属性：`jdk.tls.client.enableSessionTicketExtension` 和 `jdk.tls.server.enableSessionTicketExtension`。
+
+#### 移除遗留 com.sun.net.ssl 包
+
+内部兼容包移除；自 Java SE 1.4 起标准替代在 `javax.net.ssl` 中可用。
+
+#### Kerberos 跨域转介 (RFC 6806)
+
+Kerberos 客户端支持主体名规范化和跨域转介。默认启用，最多 5 跳转介。
+
+#### 移除的根证书
+
+移除多个过期根证书：T-Systems Deutsche Telekom Root CA 2、DocuSign、Comodo 等。
+
+### HotSpot / JVM
+
+#### -XX:SoftMaxHeapSize 标志
+
+新可管理标志 `-XX:SoftMaxHeapSize=<bytes>`（目前仅 ZGC 有效）。GC 努力不使堆增长超过此大小，除非必须避免 OOM。可通过 `jcmd VM.set_flag` 或 HotSpot MXBean 在运行时调整。
+
+#### ZGC 最大堆大小增加
+
+ZGC 支持的最大堆大小从 4TB 增加到 16TB。
+
+### 工具
+
+#### javadoc 移除旧功能
+
+移除：(1) HTML 4 文档生成（HTML 5 自 JDK 11 起默认），(2) 旧 javadoc API（`com.sun.javadoc`），(3) HTML 框架支持（由搜索功能替代），(4) `--no-module-directories` 选项。
+
+### XML / JAXP
+
+#### DOM 和 SAX 工厂方法支持命名空间
+
+新增 `newDefaultNSInstance()`、`newNSInstance()`、`newNSInstance(String, ClassLoader)` 方法，默认实例化支持命名空间的 DOM 和 SAX 工厂。
+
+### 兼容性变更
+
+| 变更 | 详情 |
+|------|------|
+| `-XX:+AggressiveOpts` 错误 | JDK 11 弃用，JDK 12 忽略；现在导致 VM 初始化错误 |
+| IANA 时区数据 2019b | JDK 13 包含 IANA 时区数据 2019b 版本 |
 
 ---
 

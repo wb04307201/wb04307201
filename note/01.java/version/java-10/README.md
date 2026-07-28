@@ -1,19 +1,17 @@
 <!--
 module:
   parent: java
-  slug: java/java-10
+  slug: java/version/java-10
   type: article
   category: 主模块子文章
-  summary: Java 10
+  summary: Java 10：12 个 JEP，含 var 局部变量类型推断、AppCDS 类数据共享、GC 接口化
 -->
 
 # Java 10
 
-> 一句话定位：Java 9 后的第一个特性小版本，**最重要的 var 局部变量类型推断 + AppCDS 类数据共享**——也是 6 个月大版本节奏的起点（2018-03）。
-
 ## 引言：变更说明
 
-Java 10 是 13 个 JEP / 特性 / 章节的合集。
+Java 10 是 12 个 JEP 的合集。
 
 本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
 
@@ -177,6 +175,180 @@ List<String> immutableList = Stream.of("a", "b", "c")
     .collect(Collectors.toUnmodifiableList());
 // immutableList.add("d"); // 抛出 UnsupportedOperationException
 ```
+
+---
+
+## 其他新特性（非 JEP）
+
+Java 10 还包含多项非 JEP 的改进，以下列出对开发者最实用的特性：
+
+### 核心库
+
+#### Optional.orElseThrow()
+
+`Optional` 新增 `orElseThrow()` 方法，与现有 `get()` 同义但更推荐使用。
+
+```java
+Optional<String> opt = Optional.of("hello");
+String value = opt.orElseThrow(); // 替代 get()
+```
+
+#### 不可变集合工厂方法
+
+新增 `List.copyOf`、`Set.copyOf`、`Map.copyOf` 工厂方法，用于从现有集合创建不可变副本。
+
+```java
+List<String> original = new ArrayList<>(List.of("a", "b", "c"));
+List<String> copy = List.copyOf(original); // 不可变副本
+```
+
+#### FileInputStream/FileOutputStream finalize 放宽
+
+规范变更：`finalize` 不再直接调用 `close`，除非影响覆盖 `close` 的子类。资源释放由实现特定处理。
+
+### 安全
+
+#### JMX Agent 密码哈希
+
+`jmxremote.password` 中的明文密码现在会被 SHA3-512 哈希覆盖。可通过 `com.sun.management.jmxremote.password.toHashes` 属性控制。
+
+#### TLS FFDHE 支持 (RFC 7919)
+
+SunJSSE 支持 TLS FFDHE（有限域 Diffie-Hellman Ephemeral）机制。可通过 `jdk.tls.namedGroups` 自定义或通过 `jsse.enableFFDHEExtension` 系统属性禁用。
+
+#### TLS 会话哈希和扩展主密钥 (RFC 7627)
+
+JSSE 支持 RFC 7627 会话哈希和扩展主密钥扩展。可通过 `jdk.tls.useExtendedMasterSecret`、`jdk.tls.allowLegacyResumption` 和 `jdk.tls.allowLegacyMasterSecret` 系统属性控制。
+
+### HotSpot / JVM
+
+#### Docker 容器支持
+
+JVM 现在检测 Docker 容器并提取容器特定的 CPU/内存配置（而非 OS 配置）。新增选项：
+- `-XX:ActiveProcessorCount` — 指定活跃处理器数量
+- `-XX:InitialRAMPercentage`、`-XX:MaxRAMPercentage`、`XX:MinRAMPercentage`（替代已弃用的 Fraction 形式）
+
+默认启用；可通过 `-XX:-UseContainerSupport` 禁用。
+
+```bash
+# Docker 容器中自动检测 CPU 和内存限制
+docker run --cpus=2 --memory=4g myapp:latest
+```
+
+#### BiasedLockingStartupDelay 默认改为 0
+
+默认值从 4000ms 改为 0；性能测试显示无差异，且延迟会导致额外 VM 工作。
+
+#### Unified Logging 改进
+
+`TraceYoungGenTime` 和 `TraceOldGenTime` 标志移除；相同信息现可通过 Unified Logging 使用 `gc+heap+exit` 标签集在 debug 级别获取。
+
+### 编译器 (javac)
+
+#### 增强 for 循环字节码生成
+
+迭代器变量现在声明在 for 循环外部，允许 GC 在循环完成后通过置空引用来更早回收未使用的内存。
+
+#### IllegalAccessError 错误消息改进
+
+当 `javac` 类被多个类加载器加载时，提供更好的错误消息。
+
+### Javadoc 工具
+
+#### 多样式表支持
+
+新增 `--add-stylesheet` 选项；现有 `-stylesheetfile` 别名为 `--main-stylesheet`。
+
+#### {@summary} 注释标签
+
+新增内联标签，用于显式指定 API 摘要文本，替代基于 `BreakIterator` 的首句检测启发式方法。
+
+```java
+/**
+ * {@summary 这是一个用户服务类，提供用户注册和认证功能。}
+ * 更多详细说明...
+ */
+public class UserService { }
+```
+
+#### 覆盖方法处理
+
+新增 `--overridden-methods=value` 选项，将未修改规范的覆盖方法与继承方法分组，而非单独记录。
+
+### JShell
+
+#### 启动性能
+
+显著减少启动时间，特别是包含大量片段的启动文件。
+
+### 平台特定 / 客户端
+
+#### Swing/AWT 触摸键盘
+
+Windows 8+ 上，当没有硬件键盘连接时，Swing/AWT 文本组件会自动显示触摸键盘。可通过 `awt.touchKeyboardAutoShowIsEnabled` 控制（默认启用）。
+
+#### TrayIcon macOS 重新实现
+
+使用 `NSUserNotification` API 通过标准 macOS 通知中心显示消息，替代自定义窗口。
+
+### API 更新 (java.xml / JAXP)
+
+#### java.xml 泛型修复
+
+更新 `javax.xml.namespace.NamespaceContext`、`javax.xml.xpath.XPathFunction` 和 `org.xml.sax.helpers.NamespaceSupport`，为之前使用原始类型的方法添加正确的类型参数。
+
+#### 系统默认解析器
+
+JDK 的 `Transform`、`Validation` 和 `XPath` 现在使用系统默认解析器，即使类路径上有第三方解析器。可通过 `jdk.xml.overrideDefaultParser` 系统属性覆盖。
+
+### 管理 / 监控
+
+#### 禁用 JRE 最后使用跟踪
+
+新系统属性 `jdk.disableLastUsageTracking` 禁用运行 VM 的 JRE 最后使用跟踪。
+
+#### JMX 连接反序列化过滤器
+
+新增 `RMIConnectorServer.CREDENTIALS_FILTER_PATTERN` 和 `RMIConnectorServer.SERIAL_FILTER_PATTERN` 属性，用于指定 RMI 连接的反序列化过滤器模式。
+
+### 弃用与移除
+
+#### 移除项
+
+| 移除项 | 类别 |
+|--------|------|
+| 旧 LookAndFeel 支持 | 客户端库 |
+| `Runtime.getLocalizedInputStream`/`getLocalizedOutputStream` | core-libs |
+| RMI 服务端多路复用协议 | core-libs |
+| Common DOM API | deploy/plugin |
+| FlatProfiler（`-Xprof` 仍识别但警告） | HotSpot |
+| 过时 `-X` 选项（`-Xoss`、`-Xsqnopause`、`-Xoptimize` 等） | HotSpot |
+| JavaFX 中 `HostServices.getWebContext` | JavaFX |
+| JavaFX 中 T2K 光栅化和 ICU 布局引擎 | JavaFX |
+| JavaFX 中 VP6/FXM/FLV 编解码 | JavaFX |
+| 旧 SecurityManager 方法和字段 | security-libs |
+| `com.sun.security.auth.*` 弃用类 | security-libs |
+| 旧标准 Doclet（JDK 6/7/8 时代） | javadoc |
+| Java 启动器数据模型选项 `-d32`/`-d64` | tools |
+
+#### 标记 forRemoval 的弃用项
+
+| 弃用项 | 替代方案 |
+|--------|----------|
+| `java.security.{Certificate, Identity, IdentityScope, Signer}` | 无 |
+| `java.security.acl` APIs | 无 |
+| `javax.security.auth.Policy` | `java.security.Policy` |
+| SNMP 监控支持 (`jdk.snmp`) | JMX |
+
+### 其他
+
+#### 类文件版本号 54.0
+
+类文件版本从 53 增加到 54（44 + 10）。基于时间的发布模型意味着版本始终为 `44 + $FEATURE`。
+
+#### Java Web Start 弃用警告
+
+首次通过 Java Web Start 启动应用程序时显示警告对话框。
 
 ---
 

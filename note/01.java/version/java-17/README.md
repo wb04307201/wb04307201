@@ -1,17 +1,17 @@
 <!--
 module:
   parent: java
-  slug: java/java-17
+  slug: java/version/java-17
   type: article
   category: 主模块子文章
-  summary: Java 17
+  summary: Java 17 (LTS)：14 个 JEP，含密封类、switch 模式匹配预览、强力封装内部元素、macOS/AArch64 原生支持
 -->
 
 # Java 17
 
 ## 引言：变更说明
 
-Java 17 是 N 个 JEP / 特性 / 章节的合集。
+Java 17 是 14 个 JEP 的合集，于 2021 年 9 月发布，是继 Java 11 之后的第二个 LTS（长期支持）版本。
 
 本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
 
@@ -108,6 +108,8 @@ String result = switch (obj) {
 System.out.println(result);
 ```
 
+> **相关章节**：[switch 表达式](../java-14/README.md#jep-361-switch-表达式)（Java 14 引入）| [instanceof 模式匹配](../java-16/README.md#jep-394-instanceof-模式匹配)（Java 16 引入）
+
 ## JEP 407: 移除 RMI 激活
 
 远程方法调用（RMI）激活是 RMI 机制中的一个功能，它允许远程对象在需要时被激活（创建和初始化）。然而，随着分布式计算技术的发展，RMI 激活的使用越来越少，而且该功能存在一些安全风险和复杂性。
@@ -134,6 +136,8 @@ final class Rectangle extends Shape {
     // 类体
 }
 ```
+
+> **相关章节**：[Record 类](../record/README.md)（与密封类配合实现代数数据类型）| [模式匹配](../java-16/README.md#jep-394-instanceof-模式匹配)（Java 16 引入的 instanceof 模式匹配）
 
 ## JEP 410: 移除实验性的 AOT 和 JIT 编译器
 
@@ -178,6 +182,8 @@ public class ForeignFunctionExample {
 }
 ```
 
+> **相关章节**：[JEP 419](../java-22/README.md#jep-419-外部函数与内存-api第二次预览)（Java 22 第二次预览）| [JEP 424](../java-22/README.md#jep-424-外部函数与内存-api)（Java 22 正式发布）
+
 ## JEP 414: 向量 API（第二次孵化）
 
 向量 API 旨在提供一种高效的方式来处理向量计算。向量计算在科学计算、机器学习、图形处理等领域有着广泛的应用。通过利用硬件的向量指令集（如 SIMD 指令），向量 API 可以显著提高计算性能。
@@ -200,6 +206,8 @@ for (int i = 0; i < a.length; i += SPECIES.length()) {
 
 System.out.println(java.util.Arrays.toString(result));
 ```
+
+> **相关章节**：[JEP 338](../java-16/README.md#jep-338-向量-api孵化)（Java 16 第一次孵化）| [JEP 417](../java-18/README.md#jep-417-向量-api第三次孵化)（Java 18 第三次孵化）
 
 ## JEP 415: 上下文特定反序列化过滤器
 
@@ -236,6 +244,136 @@ public class DeserializationExample {
         }
     }
 }
+```
+
+---
+
+## 其他新特性（非 JEP）
+
+Java 17 还包含 65+ 项非 JEP 的改进，以下列出对开发者最实用的特性：
+
+### 核心 API
+
+#### Hex Formatting and Parsing Utility（十六进制格式化与解析工具）
+
+`java.util.HexFormat` 提供了十六进制的转换、格式化和解析功能，支持分隔符、前缀、后缀等选项。
+
+```java
+HexFormat hex = HexFormat.ofDelimiter(":").withPrefix("0x");
+byte[] bytes = {0x0A, 0x1B, 0x2C};
+String formatted = hex.formatHex(bytes);  // "0x0A:0x1B:0x2C"
+byte[] parsed = hex.parseHex("0x0A:0x1B:0x2C");
+```
+
+#### Console Charset API（控制台字符集 API）
+
+`java.io.Console` 新增 `charset()` 方法，返回控制台使用的 `Charset`，可能与默认字符集不同。
+
+```java
+Console console = System.console();
+if (console != null) {
+    Charset consoleCharset = console.charset();
+    System.out.println("Console charset: " + consoleCharset);
+}
+```
+
+#### Add java.time.InstantSource（新增 InstantSource 接口）
+
+`java.time.InstantSource` 是 `java.time.Clock` 的抽象，只关注当前时刻，便于测试时 mock 时间。
+
+```java
+InstantSource source = InstantSource.system();
+Instant now = source.instant();
+
+// 测试时可 mock
+InstantSource fixedSource = InstantSource.fixed(Instant.parse("2021-09-14T00:00:00Z"));
+```
+
+### 网络
+
+#### DatagramSocket Can Be Used Directly to Join Multicast Groups（DatagramSocket 直接加入多播组）
+
+`java.net.DatagramSocket` 新增 `joinGroup()` 和 `leaveGroup()` 方法，无需再使用 `MulticastSocket`。
+
+```java
+// Java 17 之前必须用 MulticastSocket
+try (MulticastSocket socket = new MulticastSocket(1234)) {
+    socket.joinGroup(groupAddress);
+    // ...
+}
+
+// Java 17 可以直接用 DatagramSocket
+try (DatagramSocket socket = new DatagramSocket(1234)) {
+    socket.joinGroup(groupAddress);
+    // ...
+}
+```
+
+### 文件系统
+
+#### Add support for UserDefinedFileAttributeView on macOS（macOS 支持用户自定义文件属性）
+
+macOS 文件系统提供者现在支持扩展属性（extended attributes），可使用 `UserDefinedFileAttributeView` 读写自定义元数据。
+
+### 系统属性
+
+#### System Property for Native Character Encoding Name（原生字符编码名称系统属性）
+
+新增 `native.encoding` 系统属性，提供主机环境的原生字符编码名称。
+
+```java
+String nativeEncoding = System.getProperty("native.encoding");
+// 在中文 Windows 上通常是 "GBK"
+// 在 Linux/macOS 上通常是 "UTF-8"
+```
+
+### 监控与诊断
+
+#### JDK Flight Recorder Event for Deserialization（JFR 反序列化事件）
+
+JFR 现在可以监控对象反序列化过程，帮助检测反序列化安全问题和性能瓶颈。
+
+#### Unified Logging Supports Asynchronous Log Flushing（统一日志支持异步刷新）
+
+避免日志写入时的线程延迟，可通过 `-Xlog:async` 启用异步日志模式。
+
+### 安全
+
+#### SunJCE Provider Supports KW and KWP Modes With AES Cipher（AES Key Wrap 支持）
+
+SunJCE 提供者现在支持 AES Key Wrap（RFC 3394）和 AES Key Wrap with Padding（RFC 5649）算法。
+
+#### SunPKCS11 Provider Supports ChaCha20-Poly1305 Cipher（PKCS11 支持 ChaCha20-Poly1305）
+
+当底层 PKCS11 库支持时，SunPKCS11 提供者现在支持 ChaCha20-Poly1305 加密算法。
+
+### 工具改进
+
+#### Source Details in Error Messages（JavaDoc 错误信息包含源代码详情）
+
+JavaDoc 报告问题时，会显示问题所在的源代码行和指向该位置的插入符号（^），便于定位问题。
+
+#### New Page for "New API" and Improved "Deprecated" Page（JavaDoc 新增 API 页面）
+
+JavaDoc 可以生成总结近期 API 变更的页面，使用 `--since` 选项指定要包含的版本。
+
+#### Modernization of Ideal Graph Visualizer（IGV 现代化）
+
+HotSpot C2 JIT 编译器的可视化调试工具 IGV 进行了现代化改造，支持更直观的 IR 图探索。
+
+#### Experimental Compiler Blackholes Support（实验性编译器黑盒支持）
+
+新增编译器黑盒（Compiler Blackholes）的实验性支持，用于低层级基准测试，避免关键代码被死代码消除优化掉。
+
+### Swing/UI
+
+#### New API for Accessing Large Icons（大图标访问新 API）
+
+`javax.swing.filechooser.FileSystemView.getSystemIcon(File, int, int)` 新方法支持访问更高质量的大图标，适用于 HighDPI 环境。Windows 平台完整实现，其他平台后续增强。
+
+```java
+FileSystemView fsv = FileSystemView.getFileSystemView();
+Icon icon = fsv.getSystemIcon(new File("application.exe"), 64, 64);
 ```
 
 ---

@@ -1,19 +1,23 @@
 <!--
 module:
   parent: java
-  slug: java/java-14
+  slug: java/version/java-14
   type: article
   category: 主模块子文章
-  summary: Java 14
+  summary: Java 14：16 个 JEP，含 Records 预览、instanceof 模式匹配预览、switch 表达式正式版、Helpful NPE
 -->
 
 # Java 14
 
 ## 引言：变更说明
 
-Java 14 是 N 个 JEP / 特性 / 章节的合集。
+Java 14 是 16 个 JEP 的合集。
 
 本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
+
+### 相关阅读
+
+← [Java 13](../java-13/README.md) · [Java 15](../java-15/README.md)
 
 ---
 
@@ -142,6 +146,150 @@ String html = """
 ## JEP 370: 外部内存访问 API（孵化器）
 
 外部内存访问 API 提供了一种统一的方式来访问和管理堆外内存（如本地内存、直接缓冲区等）。它简化了与本地代码交互的过程，并提高了内存访问的性能和安全性。该特性是外部内存访问 API 的孵化器版本，旨在收集反馈并进一步改进 API 的设计。
+
+---
+
+## 其他新特性（非 JEP）
+
+Java 14 还包含多项非 JEP 的改进，以下列出对开发者最实用的特性：
+
+### 核心库
+
+#### 会计货币格式支持
+
+通过 `"u-cf-account"` Unicode 语言环境扩展调用 `NumberFormat.getCurrencyInstance(Locale)` 可获取会计样式的货币格式实例。例如在 `Locale.US` 中格式化为 `"($3.27)"` 而不是 `"-$3.27"`。
+
+#### CompactNumberFormat 复数支持
+
+`CompactNumberFormat` 现在可以处理复数形式。例如 2,000,000 在德语中格式化为 `"2 Millionen"`（LONG 样式），而 1,000,000 格式化为 `"1 Million"`。
+
+#### 线程中断状态始终可用
+
+`Thread` 的中断状态现在始终可用。如果在启动之前或终止之后中断线程，`t.isInterrupted()` 将返回 true。
+
+#### Thread.suspend/resume 弃用待移除
+
+以下方法终弃：`Thread.suspend()`、`Thread.resume()`、`ThreadGroup.suspend()`、`ThreadGroup.resume()`、`ThreadGroup.allowThreadSuspension(boolean)`。
+
+#### 序列化过滤器处理改进
+
+`jdk.serialFilter` 系统属性只能在命令行设置。如果未在命令行设置，可通过 `java.io.ObjectInputFilter.Config.setSerialFilter` 设置。通过 `System.setProperty` 设置无效。
+
+#### Zip 文件系统抛出 NoSuchFileException
+
+当 `FileSystems.newFileSystem` 被调用且指定的 Zip/JAR 文件不存在且 `create` 不为 `true` 时，Zip 文件系统现在抛出 `NoSuchFileException`。
+
+#### Runtime.exec 和 ProcessBuilder 参数限制
+
+收紧了对 `Runtime.exec` 和 `ProcessBuilder` 创建的进程参数引号的约束。可能影响使用安全管理器部署的 Windows 应用程序。
+
+#### DatagramSocket.send 抛出 IllegalArgumentException
+
+如果套接字未连接且 `DatagramPacket` 不包含地址，`send` 方法现在抛出 `IllegalArgumentException`（而不是 `NullPointerException`）。
+
+#### InetSocketAddress.toString 格式变更
+
+IPv6 字面量现在按 RFC 2732 用方括号括起来。未解析的地址现在使用 `<unresolved>` 标记。
+
+#### 容器内 OperatingSystemMXBean 方法返回容器特定数据
+
+以下方法在容器中执行时现在返回容器特定信息：`getFreePhysicalMemorySize()`、`getTotalPhysicalMemorySize()`、`getFreeSwapSpaceSize()`、`getTotalSwapSpaceSize()`、`getSystemCpuLoad()`。
+
+### 安全
+
+#### 弱命名曲线默认禁用
+
+47 条弱命名曲线通过新 `jdk.disabled.namedCurves` 安全属性默认禁用，可使用 `include` 关键字包含在 `disabledAlgorithms` 属性中。
+
+#### 可信 TLS 服务器证书需要精确匹配
+
+TLS 服务器证书必须与客户端上的可信证书精确匹配才能被信任。
+
+#### 信任锚证书的新检查
+
+信任锚必须包含 `cA=true` 的基本约束扩展，如果存在密钥用法扩展，则必须设置 `keyCertSign` 位。新系统属性 `jdk.security.allowNonCaAnchor` 恢复先前行为。
+
+#### 移除 SSLv2Hello 和 SSLv3
+
+SSLv2Hello 和 SSLv3 从默认启用的 TLS 协议中移除。
+
+#### 无状态恢复默认启用
+
+服务端 JSSE 现在默认以无状态模式运行（TLS 1.2 的 RFC 5077，TLS 1.3 的 RFC 8446）。加密会话票据发送给客户端用于会话恢复，改善性能和内存使用。
+
+#### 移除过时的 NIST EC 曲线
+
+sect283k1、sect283r1、sect409k1、sect409r1、sect571k1、sect571r1 和 secp256k1 从默认命名组中移除。
+
+#### 弃用遗留椭圆曲线
+
+47 条遗留命名椭圆曲线在 `SunEC` 提供者中弃用（brainpoolP*、secp*、sect*、X9.62 曲线）。
+
+#### 弃用 OracleUcrypto JCE 提供者
+
+`OracleUcrypto` JCE 提供者和 `jdk.crypto.ucrypto` 模块弃用待移除。
+
+#### 新增根证书
+
+新增 LuxTrust Global Root 2 和 4 个 Amazon Root CA 证书。
+
+### HotSpot / JVM
+
+#### NullPointerException 详细消息
+
+新 JVM 选项 `-XX:+ShowCodeDetailsInExceptionMessages` 分析程序以确定哪个引用为 null，并在 `NullPointerException.getMessage()` 中提供详细信息，包括方法、文件名和行号。
+
+```bash
+# 启用详细 NPE 消息（默认启用）
+java -XX:+ShowCodeDetailsInExceptionMessages MyApp
+```
+
+#### AOT 默认关闭
+
+`UseAOT` 默认从 `enabled` 改为 `disabled`。`UseAOT`、`PrintAOT`、`AOTLibrary` 标志改为实验性。
+
+#### Parallel GC 改进
+
+Parallel GC 采用与其他收集器相同的任务管理机制来调度并行任务。可能导致显著的性能改进。
+
+#### Shenandoah 自修复屏障
+
+LRB 现在在同一代码路径上自修复转发引用，消除热访问的持续解析。
+
+#### Shenandoah 并发类卸载
+
+Shenandoah GC 现在支持完全并发类卸载，最小化 Final Mark 暂停期间的类卸载工作。
+
+### 工具
+
+#### 可发现的 javac 插件默认调用
+
+`javac` 插件现在可以通过实现 `Plugin.isDefault()` 返回 `true` 来选择默认启动。
+
+#### 注解对象 toString 一致
+
+核心反射和 `javac` 注解处理中注解对象的 `toString` 输出现在遵循相同约定，允许输出在源代码中使用。
+
+### XML / JAXP
+
+#### SAX ContentHandler 新方法
+
+`SAX ContentHandler` 新增 `declaration` 方法接收 XML 声明通知。应用可以准确接收声明的版本、编码和独立属性。
+
+### 国际化
+
+#### CLDR v36 支持
+
+语言环境数据升级到 Unicode Consortium 的 CLDR v36。
+
+### 移除
+
+| 移除项 | 详情 |
+|--------|------|
+| `sun.nio.cs.map` 系统属性 | 移除。应用必须根据需求指定正确的字符集名称 |
+| `netscape.javascript.JSObject.getWindow` 方法 | 移除。JDK 9 弃用，JDK 11 起始终返回 null |
+| 弃用的 `java.security.acl` API | 移除 `Acl`、`AclEntry`、`AclNotFoundException`、`Group` 等类 |
+| 默认 `keytool -keyalg` 值 | 必须显式指定 `-keyalg` 选项 |
 
 ---
 

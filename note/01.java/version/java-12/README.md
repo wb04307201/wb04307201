@@ -1,19 +1,25 @@
 <!--
 module:
   parent: java
-  slug: java/java-12
+  slug: java/version/java-12
   type: article
   category: 主模块子文章
-  summary: Java 12
+  summary: Java 12：8 个 JEP，含 switch 表达式预览、G1 改进、微基准套件
 -->
 
 # Java 12
 
 ## 引言：变更说明
 
-Java 12 是 N 个 JEP / 特性 / 章节的合集。
+Java 12 是 8 个 JEP 的合集。
 
 本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
+
+---
+
+### 相关阅读
+
+← [Java 11](../java-11/README.md) · [Java 13](../java-13/README.md) · [Java 全部版本](../README.md)
 
 ---
 
@@ -109,6 +115,117 @@ G1（Garbage-First）垃圾收集器是一种面向服务器的垃圾收集器�
 该特性改进了 G1 垃圾收集器的内存管理机制，使其能够及时返回未使用的已提交内存给操作系统。在传统的垃圾收集器中，已提交的内存通常会在 JVM 运行期间一直保留，即使部分内存不再使用。
 
 通过及时返回未使用的已提交内存，G1 垃圾收集器可以减少 JVM 的内存占用，提高系统的资源利用率。这对于内存敏感的应用程序和云计算环境非常重要，可以节省成本并提高性能。
+
+---
+
+## 其他新特性（非 JEP）
+
+Java 12 还包含多项非 JEP 的改进，以下列出对开发者最实用的特性：
+
+### 核心库
+
+#### Unicode 11 支持
+
+新增 684 个字符（含 66 个表情符号）、11 个新文字区块和 7 种新文字。
+
+#### POSIX_SPAWN 进程启动选项
+
+`jdk.lang.Process.launchMechanism` 属性现可设为 `POSIX_SPAWN`，缓解 Linux 上生成子进程的罕见病态情况。默认值（`VFORK`）不变。
+
+#### 紧凑数字格式化
+
+`NumberFormat` 新增 `getCompactNumberInstance()` 方法，以简短、人类可读的形式格式化数字（如 1000 → "1K"，1000000 → "1M"）。
+
+```java
+NumberFormat fmt = NumberFormat.getCompactNumberInstance(Locale.US, NumberFormat.Style.SHORT);
+System.out.println(fmt.format(1_000_000)); // "1M"
+```
+
+#### Properties.loadFromXML 规范合规
+
+XML 解析器现在拒绝不合规的 XML 文档，抛出 `InvalidPropertiesFormatException`。
+
+#### 日本新年号支持
+
+支持 2019 年 5 月开始的日本新年号方块字符 U+32FF。`JapaneseEra.of()`、`valueOf()` 和 `values()` 已澄清适应未来日本年号添加的方式。
+
+#### finalize 方法移除
+
+`FileInputStream`/`FileOutputStream` 和 `ZipFile`/`Inflater`/`Deflater` 的 `finalize` 方法（JDK 9 已弃用）现已移除。
+
+### 安全
+
+#### TLS ChaCha20-Poly1305 密码套件
+
+新增密码套件（默认启用）：
+- TLS 1.3: `TLS_CHACHA20_POLY1305_SHA256`
+- TLS 1.2: `TLS_ECDHE_ECDSA/RSA/DHE_RSA_WITH_CHACHA20_POLY1305_SHA256`
+
+#### 禁用 TLS 匿名和 NULL 密码套件
+
+匿名和 NULL 密码套件已添加到 `jdk.tls.disabledAlgorithms` 并默认禁用。
+
+#### 禁用所有 DES TLS 密码套件
+
+所有基于 DES 的 TLS 密码套件通过 `jdk.tls.disabledAlgorithms` 中的 "DES" 标识默认停用。
+
+#### 移除 TLS v1 和 v1.1 必需支持
+
+`SSLContext` API 不再要求所有 SE 实现必须支持 TLSv1 和 TLSv1.1。
+
+#### java.security.manager 新选项
+
+`java.security.manager` 系统属性新增 "disallow" 令牌选项，阻止 `System.setSecurityManager` 使用，提升不使用安全管理器的应用性能。
+
+#### keytool -groupname 选项
+
+`keytool -genkeypair` 新增 `-groupname` 选项指定命名曲线（如 `secp384r1`），优先于 `-keysize`。
+
+#### JFR 安全事件
+
+新增 4 个 JFR 事件：`jdk.SecurityPropertyModification`、`jdk.TLSHandshake`、`jdk.X509Validation`、`jdk.X509Certificate`。默认禁用。
+
+#### X25519/X448 私钥编码格式修正
+
+私钥编码修正为使用 RFC 8410 标准格式。不向后兼容；需替换不兼容的存储密钥。
+
+### HotSpot / JVM
+
+#### ZGC 并发类卸载
+
+ZGC 现在支持并发类卸载，释放未使用类的数据结构，降低应用占用。对 GC 停顿时间零影响。
+
+#### G1 标记周期释放内存
+
+G1 现在可以在任何并发标记周期内将 Java 堆内存归还操作系统。可通过设置 `-Xms` 等于 `-Xmx` 禁用。
+
+#### 老年代分配到替代内存设备
+
+G1 和 Parallel GC 的实验性功能，通过 `-XX:AllocateOldGenAt=<path>` 将老年代分配到 NV-DIMM。
+
+#### `-XX:+ExtensiveErrorReports` 标志
+
+新标志用于 `hs_err<pid>.log` 中更详细的崩溃报告。产品构建中默认禁用。
+
+### 工具
+
+#### jdeps 传递依赖分析
+
+`--print-module-deps`、`--list-deps` 和 `--list-reduce-deps` 现在执行传递模块依赖分析。`--no-recursive` 用于非传递分析。
+
+#### javac 移除 Java 6 支持
+
+已移除对 `-source`、`-target` 和 `--release` 值 `6`/`1.6` 的支持。
+
+### 客户端库
+
+#### 文件规范化缓存默认禁用
+
+文件规范化缓存（存在长期正确性问题）现默认禁用。可通过 `sun.io.useCanonCaches` 系统属性重新启用。
+
+#### Swing GTK 3.20+ 兼容性
+
+Swing GTK Look and Feel 在 GTK+ 3.20+ 上无法渲染部分 UI 组件。可使用 `-Djdk.gtk.version=2.2` 请求 GTK2+ 渲染。
 
 ---
 

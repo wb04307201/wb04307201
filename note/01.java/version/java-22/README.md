@@ -1,19 +1,23 @@
 <!--
 module:
   parent: java
-  slug: java/java-22
+  slug: java/version/java-22
   type: article
   category: 主模块子文章
-  summary: Java 22
+  summary: Java 22：12 个 JEP，含外部函数与内存 API 正式版、未命名变量预览、G1 区域固定、字符串模板预览
 -->
 
 # Java 22
 
 ## 引言：变更说明
 
-Java 22 是 N 个 JEP / 特性 / 章节的合集。
+Java 22 是 12 个 JEP 的合集。
 
 本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
+
+### 相关阅读
+
+← [Java 21](../java-21/README.md) · [Java 23](../java-23/README.md)
 
 ---
 
@@ -258,6 +262,188 @@ ScopedValue.where(USER_NAME, "Alice")
                System.out.println("Hello, " + USER_NAME.get());
            });
 ```
+
+---
+
+## 其他新特性（非 JEP）
+
+Java 22 还包含大量非 JEP 的改进，以下列出对开发者最实用的特性：
+
+### 核心库
+
+#### Unicode 15.1 支持
+
+`Character` 类升级到 Unicode 15.1，新增 627 个字符（总计 149,813）和一个新 `UnicodeBlock`（GB 18030 的 CJK 表意文字）。
+
+#### UTF-32 字符集常量
+
+`StandardCharsets` 新增三个常量：`UTF_32`、`UTF_32BE`、`UTF_32LE`，补充现有的 8 位和 16 位等效项。
+
+#### ListFormat 本地化列表格式
+
+新类 `java.text.ListFormat` 处理本地化列表模式。例如 ["Foo", "Bar", "Baz"] 格式化为 "Foo, Bar, and Baz"（美式英语）或 "Foo, Bar et Baz"（法语）。支持三种连接类型：`STANDARD`、`OR` 和 `UNIT`。
+
+```java
+List<String> items = List.of("Foo", "Bar", "Baz");
+String formatted = ListFormat.getInstance(Locale.US, ListFormat.Type.STANDARD, ListFormat.Width.WIDE).format(items);
+// "Foo, Bar, and Baz"
+```
+
+#### RandomGenerator.equiDoubles() 方法
+
+新增 `equiDoubles()` 方法保证均匀分布，比现有 `doubles()`/`nextDouble()` 更密集。返回 `DoubleStream`。
+
+#### BasicFileAttributes.creationTime() Linux 上返回出生时间
+
+在 Linux（内核 4.11+，glibc 2.28+）上，`BasicFileAttributes.creationTime()` 现在通过 `struct statx` 的 `stx_btime` 返回文件出生时间。之前返回最后修改时间。
+
+#### java.io.File 丢弃 Windows 长路径前缀
+
+在 Windows 上，从带长路径前缀（`\\?\` 或 `\\?\UNC`）的路径创建 `File` 现在会剥离前缀。与 `java.nio.file.Path` 行为对齐。
+
+#### JLine 作为默认控制台提供者
+
+- `System.console()` 现在返回具有增强编辑功能的 `Console`
+- 即使标准流重定向或连接到虚拟终端，`System.console()` 现在也返回 `Console` 对象（之前返回 `null`）
+- 新方法 `Console.isTerminal()` 测试是否连接到终端
+- 系统属性 `-Djdk.console=java.base` 恢复遗留行为
+
+#### TCP Keepalive 扩展套接字选项 Windows 支持
+
+`ExtendedSocketOptions.TCP_KEEPIDLE` 和 `TCP_KEEPINTERVAL` 在 Windows 10 版本 1709+ 上受支持。`TCP_KEEPCOUNT` 在 Windows 10 版本 1703+ 上受支持。
+
+#### ZIP64 额外字段验证改进
+
+`ZipFile` 和 Zip FileSystem 提供者现在提供 ZIP64 额外字段的额外验证。可通过系统属性 `jdk.util.zip.disableZip64ExtraFieldValidation=true` 禁用。
+
+#### newConstructorForSerialization 用方法句柄重新实现
+
+`ReflectionFactory::newConstructorForSerialization` 用方法句柄重新实现。现在当声明类不是目标的超类时抛出 `UnsupportedOperationException`。
+
+### HotSpot / JVM
+
+#### G1: 快速回收疏散失败区域
+
+G1 现在在下一次垃圾回收中回收疏散失败的区域。大幅减少回收几乎为空区域的时间，减少堆压力。
+
+#### Parallel: 大对象数组的精确并行扫描
+
+Parallel GC 工作器现在将工作限制在其 64kB 条带，只处理大对象数组的有趣部分。改善并行性，减少工作窃取。存在大对象数组时 GC 暂停与 G1 相当（某些情况下减少 4-5 倍）。
+
+#### Serial: 稀疏脏卡片的更好 GC 吞吐量
+
+改进对象起始查找和脏卡片搜索。使用大对象数组的基准测试中 Young-GC 暂停减少约 40%。
+
+#### G1: 平衡代码根扫描阶段
+
+G1 现在在区域内多个线程之间分配代码根扫描工作，消除编译代码中 Java 对象引用分布不均时的可扩展性瓶颈。
+
+#### 两阶段分段堆转储
+
+堆转储分为两个阶段：(1) 并发线程写入分段堆文件（应用暂停），(2) 合并到完整文件（应用恢复）。显著减少应用暂停时间。
+
+#### -Xshare:dump 的 JIT 编译
+
+现在可以在使用 `-Xshare:dump` 创建 CDS 归档时通过添加 `-Xmixed` 启用 JIT 编译。加速大类列表的归档创建。
+
+#### hs_err 文件现在打印锁栈
+
+线程本地锁栈部分添加到 `hs_err` 报告文件。仅在启用轻量级锁定模式（`-XX:LockingMode=2`）时打印。
+
+#### NMT 峰值值在发布版本中可用
+
+NMT 报告现在显示所有类别的峰值（JVM 生命周期内最高的已提交内存）。
+
+#### 新 System.map 和 System.dump_map 诊断命令
+
+新 `jcmd System.map` 和 `jcmd System.dump_map` 命令打印 JVM 进程的虚拟内存映射及 NMT 信息。
+
+### 安全
+
+#### -XshowSettings 新安全类别
+
+`-XshowSettings` 启动器选项新增 `security` 类别。子类别：`all`、`properties`、`providers`、`tls`。
+
+#### HSS/LMS: keytool 和 jarsigner 变更
+
+`jarsigner` 和 `keytool` 现在支持分层签名系统/Leighton-Micali 签名（HSS/LMS）算法。
+
+#### XML Security 更新到 Santuario 3.0.3
+
+新增四个基于 SHA-3 的 RSA-MGF1 `SignatureMethod` 算法。
+
+#### 新增根 CA 证书
+
+新增多个根 CA 证书：Certigna Root CA、DigiCert CS ECC/RSA Root G5、emSign Root CA、Telia Root CA v2、ISRG Root X2（Let's Encrypt）。
+
+#### 独立 TLS 服务器/客户端证书链长度属性
+
+两个新系统属性：
+- `jdk.tls.server.maxInboundCertificateChainLength`（默认 8）
+- `jdk.tls.client.maxInboundCertificateChainLength`（默认 10）
+
+#### KRB5 includedir 文件按字母数字顺序读取
+
+`krb5.conf` `includedir` 目录中的文件现在按字母数字顺序读取（与 MIT krb5 1.17 一致）。
+
+### 工具
+
+#### javadoc @inheritDoc 标签变更
+
+`@inheritDoc` 标签新增可选参数指定继承文档搜索的超类型。算法修改以更好地与 JLS 方法继承/覆盖规则对齐。
+
+#### 弃用方法的 JFR 事件
+
+新 JFR 事件 `jdk.DeprecatedInvocation` 检测弃用 JDK 方法的使用。必须通过命令行上的 `-XX:StartFlightRecording` 启用。
+
+#### javac 受限方法 Lint 警告
+
+新 `-Xlint:restricted` lint 选项在编译时警告调用受限 FFM API 方法。可用 `@SuppressWarnings("restricted")` 抑制。
+
+#### --release N 模块版本变更
+
+使用 `--release N` 时，系统模块描述符现在包含 `N` 作为模块版本（无论当前 JDK 版本如何都一致）。
+
+#### -XshowSettings:locale 选项
+
+`-XshowSettings` 不再默认打印语言环境信息。使用 `-XshowSettings:locale` 查看可用语言环境。
+
+### 国际化
+
+#### CLDR v44 支持
+
+语言环境数据升级到 CLDR 44。主要变更：墨西哥和拉美国家时间格式从 24 小时制改为 12 小时制；澳大利亚和英国 `FULL` 日期格式在工作日后不再有逗号。
+
+#### 通过 CLDR 数据获取格里高利时代名称
+
+`java.time.format` API 现在从 CLDR 语言环境数据获取格里高利时代名称（之前使用遗留 COMPAT 数据）。ROOT 语言环境返回 "BCE"/"CE" 而不是 "BC"/"AD"。
+
+### 移除
+
+| 移除项 | 详情 |
+|--------|------|
+| `sun.misc.Unsafe.shouldBeInitialized`/`ensureClassInitialized` | 自 JDK 15 弃用，现移除。替代：`MethodHandles.Lookup.ensureInitialized(Class)` |
+| `Thread.countStackFrames()` | 自 JDK 1.2 弃用，自 Java 9 弃用待移除，现移除。替代：`StackWalker` |
+| 旧核心反射实现 | 旧核心反射实现移除。`-Djdk.reflect.useDirectMethodHandle=false` 现在是无操作 |
+| `jdeps -profile`/`-P` 选项 | 自 JDK 21 弃用，现移除。紧凑配置文件自 Java 9 起已过时 |
+
+### 弃用待移除
+
+| 弃用项 | 详情 |
+|--------|------|
+| `sun.misc.Unsafe` 方法 | `park`、`unpark`、`getLoadAverage`、`loadFence`、`storeFence`、`fullFence` 弃用待移除 |
+| `-Xnoagent` 选项 | 多个版本被忽略，现在生成弃用警告 |
+| `jdk.crypto.ec` 模块 | SunEC JCE 提供者移至 `java.base` 模块。空模块存在用于过渡 |
+| `-Xdebug`/`-debug` 选项 | 多个版本被忽略，现在生成弃用警告 |
+
+### 已知问题
+
+| 问题 | 详情 |
+|------|------|
+| Apple Silicon + macOS 14.4 意外终止 | 已修复：Apple macOS 14.4 Sonoma 最终版本导致 M1/M2/M3 上的 Java 意外终止 |
+| `Files.readString` UTF-16 可能返回不正确字符串 | 解决方法：使用 `-XX:-CompactStrings` 禁用紧凑字符串 |
+| ZGC 非默认 ObjectAlignmentInBytes 崩溃 | 已知问题 |
+| JFR 增加启动时间 | 小应用使用 `-XX:StartFlightRecording` 时启动时间增加 |
 
 ---
 

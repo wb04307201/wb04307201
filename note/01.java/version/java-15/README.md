@@ -1,19 +1,23 @@
 <!--
 module:
   parent: java
-  slug: java/java-15
+  slug: java/version/java-15
   type: article
   category: 主模块子文章
-  summary: Java 15
+  summary: Java 15：14 个 JEP，含密封类预览、EdDSA 签名、ZGC/Shenandoah 正式版、Text Blocks 正式版
 -->
 
 # Java 15
 
 ## 引言：变更说明
 
-Java 15 是 N 个 JEP / 特性 / 章节的合集。
+Java 15 是 14 个 JEP 的合集。
 
 本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
+
+### 相关阅读
+
+← [Java 14](../java-14/README.md) · [Java 16](../java-16/README.md)
 
 ---
 
@@ -198,6 +202,138 @@ System.out.println(person); // toString() 方法
 ## JEP 385: 弃用 RMI 激活以供移除
 
 RMI（Remote Method Invocation）激活是一种用于在分布式系统中启动和管理远程对象的技术。然而，随着现代分布式架构的发展，RMI 激活的使用逐渐减少，并且存在一些安全性和性能方面的问题。Java 15 决定弃用 RMI 激活功能，为未来的移除做准备。
+
+---
+
+## 其他新特性（非 JEP）
+
+Java 15 还包含多项非 JEP 的改进，以下列出对开发者最实用的特性：
+
+### 核心库
+
+#### CharSequence.isEmpty() 默认方法
+
+`CharSequence` 新增默认 `isEmpty()` 方法，测试字符序列是否为空。可用作方法引用。
+
+#### Unicode 13.0 支持
+
+`Character` 支持 Unicode 13.0（5,930 个新字符，总计 143,859；4 种新文字；55 个新表情符号）。
+
+#### 优化的空子串处理
+
+`String.substring`、`stripLeading` 和 `stripTrailing` 不再冗余创建新的空 `String`。
+
+#### Lookup::defineClass 链接类
+
+`Lookup::defineClass` 现在在返回前实际链接类，符合规范说明。
+
+#### 序列化过滤器处理改进
+
+`ObjectInputStream.setObjectInputFilter` 现在必须在从流中读取任何对象之前调用。
+
+#### TreeMap 方法专门化实现
+
+`TreeMap` 现在覆盖 `putIfAbsent`、`computeIfAbsent`、`computeIfPresent`、`compute` 和 `merge` 以获得更好性能。
+
+#### SO_INCOMING_NAPI_ID 套接字选项
+
+新增 Linux 特定套接字选项 `SO_INCOMING_NAPI_ID`，添加到 `jdk.net.ExtendedSocketOptions`。允许查询底层设备队列的 NAPI ID。
+
+#### HttpClient 不再覆盖 SSLContext 默认协议
+
+当未显式提供 `SSLParameters` 时，`HttpClient` 在 TLS 握手期间使用 `SSLContext` 的默认协议集。
+
+#### DecimalFormat 货币分组分隔符
+
+`DecimalFormat`/`DecimalFormatSymbols` 现在可以处理货币值的分组分隔符。
+
+#### localizedBy() 修复
+
+`DateTimeFormatter.localizedBy(Locale)` 现在正确地尊重指定语言环境的默认值。
+
+### 安全
+
+#### jarsigner 撤销检查
+
+`jarsigner` 新增 `-revCheck` 选项启用证书撤销检查。
+
+#### 弱算法警告
+
+`keytool` 和 `jarsigner` 使用弱加密算法时发出警告。本版本对 SHA-1 和 1024 位 RSA/DSA 密钥发出警告。
+
+#### SunJCE SHA-3 Hmac 算法
+
+SunJCE 现支持 `HmacSHA3-224`、`HmacSHA3-256`、`HmacSHA3-384` 和 `HmacSHA3-512`。
+
+#### TLS 签名方案系统属性
+
+新增 `jdk.tls.client.SignatureSchemes` 和 `jdk.tls.server.SignatureSchemes` 自定义 TLS 签名方案。
+
+#### TLS 1.3 certificate_authorities 扩展
+
+支持可选的 TLS 1.3 `certificate_authorities` 扩展。
+
+#### SSLEngine 默认服务器角色
+
+`SSLEngine` 现在默认为服务器模式（JDK 11+ 之前是客户端模式）。
+
+#### Kerberos canonicalize 支持
+
+`krb5.conf` 中的 `canonicalize` 标志现在受支持。
+
+### HotSpot / JVM
+
+#### 字段布局计算变更
+
+更积极的优化以避免实例中未使用的间隙。可通过 `-XX:-UseEmptySlotsInSupers` 禁用。
+
+####  Helpful NPE 消息默认启用
+
+JEP 358 的有帮助的 `NullPointerException` 消息现在默认打印，显示 NPE 发生位置的代码片段。
+
+#### 偏向锁禁用和弃用
+
+偏向锁默认禁用。`UseBiasedLocking` 及相关标志弃用。
+
+#### G1 堆区域大小改进的人体工程学
+
+G1 堆区域大小计算更改为默认返回更大的区域。区域大小现在向上舍入到最近的 2 的幂。
+
+#### jhsdb debugd 新选项
+
+三个新选项：`--rmiport`、`--registryport`、`--hostname`。
+
+### 工具
+
+#### jcmd GC.heap_dump gz 选项
+
+新整数选项 `gz` 启用堆转储的 gzip 压缩。值为压缩级别（1=最快到 9=最佳压缩）。
+
+```bash
+jcmd <pid> GC.heap_dump filename=/tmp/heap.hprof gz=1
+```
+
+#### jstatd -r 选项
+
+`jstatd` 新增 `-r <port>` 选项指定 RMI 连接器端口。
+
+#### jpackage macOS 公证支持
+
+`jpackage` 现在可以在 macOS 上创建适用于公证的包。
+
+### 国际化
+
+#### CLDR v37 支持
+
+语言环境数据升级到 Unicode CLDR v37。
+
+### 移除
+
+| 移除项 | 详情 |
+|--------|------|
+| Nashorn JavaScript 引擎 | Nashorn 脚本引擎、API 和 `jjs` 工具已移除 |
+| RMI 静态存根编译器 (`rmic`) | 自 JDK 13 弃用待移除，现移除 |
+| Solaris 特定 SO_FLOW_SLA 套接字选项 | 随 Solaris 端口移除 |
 
 ---
 

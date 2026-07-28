@@ -1,19 +1,23 @@
 <!--
 module:
   parent: java
-  slug: java/java-18
+  slug: java/version/java-18
   type: article
   category: 主模块子文章
-  summary: Java 18
+  summary: Java 18：9 个 JEP，含 UTF-8 默认编码、简单 Web 服务器、Code Snippets API 孵化
 -->
 
 # Java 18
 
 ## 引言：变更说明
 
-Java 18 是 N 个 JEP / 特性 / 章节的合集。
+Java 18 是 9 个 JEP 的合集。
 
 本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
+
+### 相关阅读
+
+← [Java 17](../java-17/README.md) · [Java 19](../java-19/README.md)
 
 ---
 
@@ -342,6 +346,137 @@ public class FinalizationDeprecationExample {
 在这个示例中，`BufferedReader` 实现了 `AutoCloseable` 接口，`try-with-resources` 语句会在代码块执行完毕后自动调用 `close()` 方法来释放文件资源，无需手动调用 `finalize()` 方法。
 
 弃用 Finalization 机制有助于提高 Java 程序的可靠性和性能，减少因 Finalization 带来的潜在问题。
+
+---
+
+## 其他新特性（非 JEP）
+
+Java 18 还包含多项非 JEP 的改进，以下列出对开发者最实用的特性：
+
+### HotSpot / JVM
+
+#### ZGC/SerialGC/ParallelGC 支持字符串去重
+
+ZGC、Serial GC 和 Parallel GC 现在支持字符串去重（JEP 192）。
+
+#### 可配置卡片表卡片大小
+
+新 VM 选项 `-XX:GCCardSizeInBytes` 设置卡片表条目大小（128、256、512 字节适用于所有平台；1024 字节仅适用于 64 位）。默认保持 512 字节。
+
+#### G1 堆区域最大 512MB
+
+G1 允许的最大堆区域大小从 32MB 扩展到 512MB。通过 `-XX:G1HeapRegionSize` 手动选择。
+
+#### JFR Finalization 事件
+
+新 `jdk.FinalizerStatistics` 事件在运行时识别具有非空 `finalize()` 方法的类。在 default.jfc 和 profile.jfc 中默认启用。
+
+#### OperatingSystemMXBean.getProcessCpuLoad 容器感知
+
+对于容器中的 JVM，`getProcessCpuLoad` 现在只考虑容器 CPU 资源，而不是所有主机 CPU。
+
+### 核心库
+
+#### PrintWriter 默认字符集
+
+采用 `OutputStream`（无字符集）的 `PrintWriter` 构造函数现在在输出流为 `PrintStream` 时继承字符集。新增 `PrintStream.charset()` 方法。
+
+#### Charset.forName() 带回退默认值
+
+新重载 `Charset.forName(String, Charset)` 方法在命名字符集不可用或非法时返回回退字符集。
+
+```java
+Charset cs = Charset.forName("INVALID", StandardCharsets.UTF_8); // 回退到 UTF-8
+```
+
+#### Zip 文件系统拒绝 "." 或 ".." 条目
+
+ZIP 文件系统提供者现在对名称元素中包含 "." 或 ".." 的条目抛出 `ZipException`。
+
+#### JAR 索引支持禁用
+
+JAR 索引禁用（INDEX.LIST 文件被忽略）。可临时通过 `jdk.net.URLClassPath.enableJarIndex=true` 重新启用。
+
+#### HttpURLConnection 头部字段顺序保留
+
+`getHeaderFields()` 和 `getRequestProperties()` 现在按添加顺序返回头部值（符合 RFC2616）。
+
+#### 时区数据更新到 2021c
+
+IANA 时区数据库更新到 2021c 版本（包括 2021b 变更）。
+
+#### Messager 新方法
+
+`Messager` 接口新增 `printError()`、`printWarning()` 和 `printNote()` 方法，供注解处理器直接报告错误、警告和注释。
+
+#### Elements.getOutermostTypeElement
+
+`Elements` 工具接口新增 `getOutermostTypeElement(Element)` 方法获取最外层封闭类/接口。
+
+### 安全
+
+#### 安全管理器默认改为 disallow
+
+`java.security.manager` 系统属性默认改为 `disallow`。除非设置 `-Djava.security.manager=allow`，否则 `System.setSecurityManager()` 带非 null 参数抛出 `UnsupportedOperationException`。
+
+#### Subject.getSubject/doAs 弃用待移除
+
+`javax.security.auth.Subject::doAs` 弃用待移除，作为安全管理器 API 移除工作的一部分。
+
+#### 新 Subject.current/callAs API
+
+新 `Subject.current()` 和 `Subject.callAs()` 方法替代 `getSubject()` 和 `doAs()`（不依赖安全管理器 API）。
+
+#### SunPKCS11 支持 PKCS#11 v3.0 API
+
+SunPKCS11 提供者更新以支持 PKCS#11 v3.0 API（新函数入口点、AEAD 密码的基于消息的加密）。
+
+#### cacerts 从 JKS 迁移到无密码 PKCS12
+
+`cacerts` 密钥库文件现在是无密码 PKCS #12 文件（无加密、无 MacData）。JKS 加载仍然互操作。
+
+#### SHA-1 签名 JAR 禁用
+
+使用 SHA-1 算法签名的 JAR 现在默认受限（视为未签名）。例外：2019 年 1 月 1 日之前时间戳的 JAR。
+
+#### 弱 Kerberos 加密类型移除
+
+DES、3DES 和 RC4 加密类型从默认 krb5 etype 列表中移除。
+
+#### 移除的根证书
+
+移除 IdenTrust Root CA（DST Root CA X3）和 Google GlobalSign Root CA（R2）。
+
+### 工具
+
+#### keytool/jarsigner -version 选项
+
+`keytool` 和 `jarsigner` 命令新增 `-version` 选项打印程序版本。
+
+#### javadoc --add-script 选项
+
+Standard Doclet 支持 `--add-script` 在生成的文档中包含外部脚本文件引用。
+
+#### @SuppressWarnings 用于 DocLint
+
+`@SuppressWarnings` 注解现在可以抑制文档注释中的 DocLint 消息。
+
+#### DocLint 报告缺失描述
+
+DocLint 现在检测并报告块标签前缺少描述的文档注释。
+
+#### serial Lint 警告扩展
+
+`serial` lint 警告现在也警告导致静默序列化忽略的声明（如错误声明的 `readObject`、`writeObject`）。
+
+### 移除
+
+| 移除项 | 详情 |
+|--------|------|
+| `java.desktop` 中的空 `finalize()` 方法 | 移除 |
+| JDK 1.4 之前的 `DatagramSocketImpl` 支持 | 移除 |
+| `InetAddress` 的 `impl.prefix` 系统属性 | 移除 |
+| 遗留 `PlainSocketImpl`/`PlainDatagramSocketImpl` | 移除 |
 
 ---
 

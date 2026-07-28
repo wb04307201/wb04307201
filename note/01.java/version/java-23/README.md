@@ -1,19 +1,23 @@
 <!--
 module:
   parent: java
-  slug: java/java-23
+  slug: java/version/java-23
   type: article
   category: 主模块子文章
-  summary: Java 23
+  summary: Java 23：12 个 JEP，含基本类型模式匹配预览、Markdown 文档注释、可控流式 IO 孵化
 -->
 
 # Java 23
 
 ## 引言：变更说明
 
-Java 23 是 N 个 JEP / 特性 / 章节的合集。
+Java 23 是 12 个 JEP 的合集。
 
 本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
+
+### 相关阅读
+
+← [Java 22](../java-22/README.md) · [Java 24](../java-24/README.md)
 
 ---
 
@@ -186,6 +190,157 @@ class Child extends Parent {
     }
 }
 ```
+
+---
+
+## 其他新特性（非 JEP）
+
+Java 23 还包含大量非 JEP 的改进，以下列出对开发者最实用的特性：
+
+### 核心库
+
+#### Console 显式 Locale 方法
+
+`java.io.Console` 新增 4 个接受 `java.util.Locale` 的方法：`format(Locale, ...)`、`printf(Locale, ...)`、`readLine(Locale, ...)`、`readPassword(Locale, ...)`。
+
+```java
+Console console = System.console();
+console.printf(Locale.FRANCE, "Prix: %, .2f €\n", 1234.56);
+```
+
+#### JFR 序列化误声明事件
+
+新增 `jdk.SerializationMisdeclaration` JFR 事件，在序列化相关字段/方法声明不当时触发（如 `writeObject()` 声明为 `public` 而非 `private`）。
+
+#### WatchService 最大事件数
+
+新系统属性 `jdk.nio.file.WatchService.maxEventsPerPoll` 设置发出 OVERFLOW 事件前的最大待处理 WatchService 事件数。
+
+#### Instant.until(Instant)
+
+新增 `Instant.until(Instant)` 方法获取到指定 `Instant` 的 `Duration`。比 `Duration.between()` 更方便。
+
+```java
+Instant start = Instant.now();
+// ...
+Duration elapsed = start.until(Instant.now());
+```
+
+#### HttpServer 缓冲响应头
+
+`HttpServer` 不再在分块模式或存在响应体时立即发送响应头，而是缓冲并与响应体一起发送，改善性能。
+
+#### DecimalFormat 转义修复
+
+`MessageFormat.toPattern()` 现在正确转义嵌套格式子模式中的单引号。
+
+### 安全
+
+#### java.security.debug 增强
+
+`java.security.debug` 系统属性现接受 `+timestamp` 和 `+thread` 后缀，添加时间戳、线程 ID、线程名和调用者信息。
+
+```bash
+-Djava.security.debug=all+timestamp+thread
+```
+
+#### KeychainStore-ROOT 密钥库
+
+Apple "KeychainStore" 现支持两种密钥库类型：`KeychainStore`（用户当前钥匙串）和 `KeychainStore-ROOT`（系统根证书钥匙串）。
+
+#### Kerberos 大小写敏感查找
+
+新安全属性 `jdk.security.krb5.name.caseSensitive` 控制 keytab 和凭证缓存中主体名查找的大小写敏感性。默认 `false`。
+
+#### SunPKCS11 遗留机制检查增强
+
+SunPKCS11 遗留机制检查现在具有服务类型粒度。新配置属性 `allowLegacy`（默认 `false`）。
+
+#### CipherInputStream 缓冲区增大
+
+`CipherInputStream` 内部缓冲区从 512 字节增加到 8192 字节，提升性能。
+
+#### PKCS12 自定义迭代次数
+
+新系统属性 `keystore.pkcs12.certPbagIterationCount`（默认 50,000）和 `keystore.pkcs12.keyPbagIterationCount`（默认 100,000）。
+
+#### Certainly 根证书
+
+新增两个根证书：`certainlyrootr1` 和 `certainlyroote1`。
+
+### 工具
+
+#### javac 注解处理默认禁用
+
+javac 中的注解处理现在仅在显式配置或显式请求时运行。使用 `-proc:full` 保留旧行为。
+
+#### javac -Xlint:dangling-doc-comments
+
+新增 lint 子选项检测错误放置或意外的文档注释。
+
+#### javadoc 结构化导航改进
+
+生成的 API 文档增强导航：当前页面目录侧边栏、页面头部面包屑导航、TOC 文本过滤、折叠/展开按钮。
+
+#### javadoc JavaScript 模块支持
+
+`javadoc --add-script` 现支持 JavaScript 模块（按文件扩展名或内容自动检测）。
+
+#### javap -verify
+
+新增 `javap -verify` 选项打印额外的类验证信息。
+
+### XML / JAXP
+
+#### 严格 JAXP 配置模板
+
+新模板文件 `$JAVA_HOME/conf/jaxp-strict.properties.template`，用于使用更严格的 XML 处理设置测试应用。
+
+### HotSpot
+
+#### Parallel GC 新 Full GC 算法
+
+Parallel GC 现在使用与 Serial GC 和 G1 GC 相同的 Full GC 算法。新算法对有问题的负载表现显著更好，并消除 1.5% 堆外内存开销。
+
+#### GetObjectMonitorUsage 不再支持虚拟线程
+
+JVM TI `GetObjectMonitorUsage` 重新规范：不再在监视器由虚拟线程拥有时返回监视器信息。
+
+#### -Xnoagent 移除
+
+`-Xnoagent` java 启动器选项（之前弃用待移除）现已移除。使用它将导致错误。
+
+### 国际化
+
+#### Unicode 16.0
+
+支持 Unicode 16.0 标准。
+
+#### CLDR v46
+
+语言环境数据更新到 Unicode CLDR v46 版本。
+
+### 移除特性
+
+| 移除项 | 详情 |
+|--------|------|
+| `Thread.suspend()`/`resume()` | 自 JDK 1.2 弃用，Java 19/20 退化为 UnsupportedOperationException，现完全移除 |
+| `ThreadGroup.stop()` | 自 JDK 1.2 弃用，Java 20 退化，现完全移除 |
+| VarHandle 对齐访问模式 | `byteArrayViewVarHandle` 不再支持原子访问模式 |
+| `jdk.random` 模块 | RandomGenerator 算法实现移至 `java.base` |
+| 遗留 JRE/COMPAT 语言环境数据 | CLDR 语言环境数据现在是唯一选项 |
+| JMX Subject 委托 | `JMXConnector.getMBeanServerConnection(Subject)` 抛 UnsupportedOperationException |
+| JMX 管理 Applet (m-let) | `MLet`、`MLetContent`、`PrivateMLet`、`MLetMBean` 移除 |
+
+### 弃用特性
+
+| 弃用项 | 详情 |
+|--------|------|
+| `java.beans.beancontext` 包 | 整包弃用待移除 |
+| `PreserveAllAnnotations` VM 选项 | 弃用，将被废弃并移除 |
+| `DontYieldALot` 标志 | 弃用 |
+| `UseEmptySlotsInSupers` | 弃用，JDK 24 废弃 |
+| `UseNotificationThread` | 弃用 |
 
 ---
 

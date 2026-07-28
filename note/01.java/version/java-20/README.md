@@ -1,19 +1,23 @@
 <!--
 module:
   parent: java
-  slug: java/java-20
+  slug: java/version/java-20
   type: article
   category: 主模块子文章
-  summary: Java 20
+  summary: Java 20：7 个 JEP，含作用域值孵化、记录模式预览、虚拟线程预览
 -->
 
 # Java 20
 
 ## 引言：变更说明
 
-Java 20 是 N 个 JEP / 特性 / 章节的合集。
+Java 20 是 7 个 JEP 的合集。
 
 本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
+
+### 相关阅读
+
+← [Java 19](../java-19/README.md) · [Java 21](../java-21/README.md)
 
 ---
 
@@ -155,6 +159,120 @@ result.intoArray(output, 0);
 // 输出结果
 System.out.println(java.util.Arrays.toString(output)); // [6, 8, 10, 12]
 ```
+
+---
+
+## 其他新特性（非 JEP）
+
+Java 20 还包含多项非 JEP 的改进，以下列出对开发者最实用的特性：
+
+### 核心库
+
+#### Unicode 15.0 支持
+
+`java.lang.Character` 升级到 Unicode 15.0，新增 4,489 个字符（总计 149,186）、2 种新文字、20 个新表情符号和 4,193 个 CJK 汉字。
+
+#### Thread.suspend/resume 改为抛异常
+
+`Thread.suspend()` 和 `Thread.resume()` 现在抛出 `UnsupportedOperationException`。这些方法自 JDK 1.2 起就因死锁倾向被弃用。
+
+#### Thread.stop 改为抛异常
+
+`Thread.stop()` 现在抛出 `UnsupportedOperationException`。通过抛出 `ThreadDeath` 停止线程本质上是不安全的。
+
+#### URL 构造函数弃用
+
+URL 构造函数已弃用。请使用 `java.net.URI` 解析/构造 URL。新增 `URL::of(URI, URLStreamHandler)` 方法。
+
+#### HTTP Client 改进
+
+- 默认 Keep Alive 时间从 1200 秒减少到 30 秒
+- HTTP 响应输入流在线程中断时抛出 `IOException`
+- HTTP/2 空闲连接超时：新增 `jdk.httpclient.keepalivetimeout.h2` 属性
+
+```java
+// URL 构造函数替代方案
+URL url = URL.of(URI.create("https://example.com"), null);
+```
+
+#### macOS 不再规范化文件路径为 Unicode 格式 D
+
+macOS 上的文件名不再规范化为 Apple 的 Unicode Normalization Format D 变体。可通过 `jdk.nio.path.useNormalizationFormD=true` 重新启用。
+
+#### BreakIterator 字形支持
+
+`BreakIterator` 字符边界分析现在符合 Unicode 标准附件 #29 的扩展字形簇。
+
+#### CLDR v42 支持
+
+语言环境数据升级到 Unicode CLDR v42。主要变更：NBSP/NNBSP 前缀到 AM/PM 时间格式、中国每周第一天修正。
+
+### 安全
+
+#### TLS 密钥交换命名组
+
+新增 API `SSLParameters.getNamedGroups()` 和 `SSLParameters.setNamedGroups()` 自定义 TLS/DTLS 连接的密钥交换命名组。
+
+#### 禁用 TLS_ECDH 密码套件
+
+TLS_ECDH 密码套件默认禁用（添加到 `jdk.tls.disabledAlgorithms` 中的 "ECDH"），不保持前向保密。
+
+#### Poly1305/ChaCha20 硬件加速
+
+- x86_64 AVX512 平台上的 Poly1305 MAC 算法优化
+- x86_64（AVX/AVX2/AVX512）和 aarch64（Advanced SIMD）上的 ChaCha20 密码优化
+
+#### JNDI LDAP 对象反序列化默认禁用
+
+`com.sun.jndi.ldap.object.trustSerialData` 默认改为 `false`。透明反序列化现在需要显式启用。
+
+#### JFR 安全事件
+
+新增 `jdk.InitialSecurityProperty`（默认启用）和 `jdk.SecurityProviderService`（默认禁用）JFR 事件。
+
+#### DTLS 恢复使用 HelloVerifyRequest
+
+SunJSSE DTLS 实现现在默认对所有握手（新建和恢复）交换 cookie。
+
+### HotSpot / JVM
+
+#### G1 垃圾回收改进
+
+- 新增 "G1 Concurrent GC" `GarbageCollectorMXBean`，报告 Remark 和 Cleanup GC 暂停
+- 改进 G1 并发细化线程控制，通常分配更少线程
+- G1 预防性 GC 默认禁用
+
+#### 遗留并行类加载工作区弃用
+
+HotSpot 中自 JDK 6 以来的非并行类加载器遗留工作区现在弃用并默认禁用。受影响加载器可能看到 `LinkageError`。可通过 `-XX:+EnableWaitForParallelLoad` 临时重新启用。
+
+### 工具
+
+#### javac 复合赋值有损转换警告
+
+新增 `-Xlint:lossy-conversions` 选项警告复合赋值中可能有损的类型转换。
+
+#### javac 移除 Java 7 支持
+
+已移除对 `-source`、`-target` 和 `--release` 值 `7`/`1.7` 的支持。
+
+#### jmod --compress 选项
+
+`jmod` 工具现接受 `--compress=zip-[0-9]` 指定 JMOD 存档压缩级别。
+
+### 管理
+
+#### JMX 连接使用 ObjectInputFilter
+
+默认 JMX 代理现在在 RMI 连接上设置 `ObjectInputFilter` 以限制反序列化类型。
+
+#### JMX 管理 Applet 弃用
+
+JMX 管理 Applet（m-let）功能弃用待移除。`MLet`、`MLetContent`、`PrivateMLet`、`MLetMBean` 受影响。
+
+#### JDI setValue 禁止修改 final 字段
+
+规范更新要求 `setValue()` 目标字段为非 final（静态和实例）。
 
 ---
 

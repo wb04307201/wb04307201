@@ -1,19 +1,23 @@
 <!--
 module:
   parent: java
-  slug: java/java-24
+  slug: java/version/java-24
   type: article
   category: 主模块子文章
-  summary: Java 24
+  summary: Java 24：24 个 JEP，含分代式 Shenandoah 实验性、紧凑对象头实验性、结构化并发孵化
 -->
 
 # Java 24
 
 ## 引言：变更说明
 
-Java 24 是 N 个 JEP / 特性 / 章节的合集。
+Java 24 是 24 个 JEP 的合集。
 
 本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
+
+### 相关阅读
+
+← [Java 23](../java-23/README.md) · [Java 25](../java-25/README.md)
 
 ---
 
@@ -320,6 +324,166 @@ try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
 ## JEP 501: 弃用 32 位 x86 端口以待移除
 
 该特性将 32 位 x86 端口标记为弃用状态，为未来版本中的移除做准备。随着 64 位架构的普及，32 位 x86 端口的使用已经越来越少，移除它可以简化 JDK 的维护负担。
+
+---
+
+## 其他新特性（非 JEP）
+
+Java 24 还包含大量非 JEP 的改进，以下列出对开发者最实用的特性：
+
+### 核心库
+
+#### Reader.of(CharSequence)
+
+新静态工厂方法从 `CharSequence`（如 `String`、`StringBuilder`）获取 `Reader`。在某些情况下比 `StringReader` 更高效。
+
+```java
+Reader reader = Reader.of("Hello, World!");
+Reader reader2 = Reader.of(stringBuilder);
+```
+
+#### Unicode 16.0 支持
+
+升级到 Unicode 16.0，新增 5,185 个字符（总计 154,998）。7 种新文字：Garay、Gurung Khema、Kirat Rai、Ol Onal、Sunuwar、Todhri、Tulu-Tigalari。
+
+#### Process.waitFor(Duration)
+
+新增使用 `java.time.Duration` 的重载方法，替代原始超时值+单位，减少用户困惑。
+
+```java
+Process process = new ProcessBuilder("long-task").start();
+process.waitFor(Duration.ofSeconds(30));
+```
+
+#### ProcessBuilder Windows 引号扩展
+
+扩展参数字符串引号以包含所有 Unicode 空格分隔符字符（`Character.isSpaceChar`）。
+
+#### HTTP 最大头部大小限制
+
+`HttpURLConnection` 和 `HttpClient` 的默认最大响应头部大小为 384kB。可通过 `jdk.http.maxHeaderSize` 系统属性配置。
+
+#### HttpClient 改进
+
+- 中间响应限制：`jdk.httpclient.maxNonFinalResponses`（默认 8）
+- HPack 动态表限制：`jdk.httpclient.maxLiteralWithIndexing`（默认 512）
+- `Expect: 100-Continue` 行为对齐 RFC 9110
+- 用户设置的 `Authorization`/`Proxy-Authorization` 头部不再被认证器覆盖
+
+#### Socket.connect 行为变更
+
+如果连接无法建立或超时，`Socket.connect()` 现在关闭 Socket。之前它使 Socket 保持"无用"状态。
+
+#### VirtualThreadSchedulerMXBean
+
+新增 JMX 监控/管理接口，用于虚拟线程调度器。支持监控目标并行度、使用线程数、排队虚拟线程数，以及动态更改目标并行度。
+
+### 安全
+
+#### java.security 文件包含
+
+`java.security` 属性文件现支持 `include <path>` 指令包含其他属性文件。
+
+#### SHA3 性能提升
+
+SHA3-224/256/384/512 改进 6-27%。AVX-512 平台通过新内在实现额外提升 30-40%。
+
+#### TLS 会话票据计数
+
+新系统属性 `jdk.tls.server.newSessionTicketCount`（0-10，默认 1）设置每个会话发送的 TLSv1.3 恢复票据数量。
+
+#### TLS 密码套件通配符禁用
+
+`jdk.tls.disabledAlgorithms` 现支持 `*` 通配符（如 `TLS_RSA_*` 禁用所有以该前缀开头的密码套件）。
+
+#### TLS_RSA 密码套件默认禁用
+
+`TLS_RSA_*` 默认添加到 `jdk.tls.disabledAlgorithms`，缺乏前向保密。
+
+#### Entrust 证书不信任
+
+2024 年 11 月 11 日后由 Entrust/AffirmTrust 根证书签发的 TLS 服务器证书将被拒绝。
+
+#### SunPKCS11 AES CTS 支持
+
+新增 AES/CTS/NoPadding 变换支持。新 `cipherTextStealingVariant` 配置属性（CS1/CS2/CS3）。
+
+### HotSpot / JVM
+
+#### Unified Logging 多行解析
+
+多行日志消息中的换行后输出特殊空装饰器 `[ ]` 加空格，用于无歧义解析。
+
+#### LockingMode 标志弃用
+
+`LockingMode` 标志、`LM_LEGACY`（1）和 `LM_MONITOR`（0）弃用。仅支持 `LM_LIGHTWEIGHT`（JDK 23 起默认）。
+
+#### RedefineClasses 始终验证
+
+在 `RedefineClasses` 期间，类字节码现在由类文件验证器验证，无论已弃用的 `-Xverify` 设置如何。
+
+### 工具
+
+#### jar --keep-old-files / -k
+
+`jar xkf foo.jar` 或 `jar --extract --keep-old-files --file foo.jar` 防止提取时覆盖现有文件。
+
+#### jar --dir / -C
+
+`jar -xf foo.jar -C /tmp/bar/` 指定提取目标目录。
+
+#### jcmd 虚拟线程诊断
+
+新增两个 `jcmd` 命令：
+- `Thread.vthread_scheduler` — 打印调度器信息
+- `Thread.vthread_pollers` — 打印阻塞网络 I/O 的 I/O 轮询器
+
+#### javadoc 外部规范摘要页
+
+API 文档新增摘要页，列出 Java SE 和 JDK API 引用的外部规范。
+
+#### jpackage WiX v4/v5 支持
+
+`jpackage` 在 Windows 上支持 WiX v4 和 v5（除 v3 外）。自动选择最新安装版本。
+
+#### javac 局部类静态上下文强制
+
+在静态上下文中创建内部局部类实例的 `new` 表达式必须出现在同一静态上下文中。
+
+#### jlink ALL-MODULE-PATH 需要 --module-path
+
+`jlink --add-modules ALL-MODULE-PATH` 现在需要显式 `--module-path` 选项。
+
+#### 移除和弃用的启动器选项
+
+- **移除**: `-t`、`-tm`、`-Xfuture`、`-checksource`、`-cs`、`-noasyncgc`
+- **弃用**: `-verbosegc`、`-noclassgc`、`-verify`、`-verifyremote`、`-ss`、`-ms`、`-mx`
+
+### XML / JAXP
+
+#### XML Catalog 扩展
+
+JDK 内置 XML Catalog 现包含 W3C DTD/XSD：`xml:` 命名空间、XML Schema Part 1 & 2、XHTML 1.0 & 1.1。本地加载无需网络访问。
+
+#### XSLT/XPath 扩展函数默认禁用
+
+`jdk.xml.enableExtensionFunctions` 默认从 `true` 改为 `false`。
+
+#### JAXP 限制调整
+
+默认实体扩展限制减少到 2500。可通过 `jdk.xml.entityExpansionLimit` 配置。
+
+### JNDI
+
+#### JNDI 远程代码下载永久禁用
+
+LDAP 和 RMI 提供者的远程代码下载永久禁用。`com.sun.jndi.rmi.object.trustURLCodebase` 和 `com.sun.jndi.ldap.object.trustURLCodebase` 系统属性移除。
+
+### 客户端库
+
+#### GTK 2 支持移除
+
+`java.desktop` 模块移除 GTK 2 互操作。`jdk.gtk.version=2` 或 `2.2` 不再有效；始终加载 GTK 3。
 
 ---
 

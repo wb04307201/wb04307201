@@ -1,19 +1,23 @@
 <!--
 module:
   parent: java
-  slug: java/java-16
+  slug: java/version/java-16
   type: article
   category: 主模块子文章
-  summary: Java 16
+  summary: Java 16：17 个 JEP，含 Records 正式版、instanceof 模式匹配正式版、Vector API 孵化、Unix Domain Socket
 -->
 
 # Java 16
 
 ## 引言：变更说明
 
-Java 16 是 N 个 JEP / 特性 / 章节的合集。
+Java 16 是 17 个 JEP 的合集。
 
 本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
+
+### 相关阅读
+
+← [Java 15](../java-15/README.md) · [Java 17](../java-17/README.md)
 
 ---
 
@@ -294,6 +298,141 @@ Stream.of("a", "b").mapMulti((str, consumer) -> {
     consumer.accept(str.toUpperCase());
 }).forEach(System.out::println); // a, A, b, B
 ```
+
+---
+
+## 其他新特性（非 JEP）
+
+Java 16 还包含多项非 JEP 的改进，以下列出对开发者最实用的特性：
+
+### 核心库
+
+#### 默认强封装 JDK 内部元素
+
+JDK 内部 API 默认强封装。`--illegal-access` 选项从 `permit`（JDK 9-15 默认）改为 `deny`。需要访问内部 API 时可使用 `--add-opens` 显式打开。
+
+#### 新 Day Period 支持
+
+`java.time.format.DateTimeFormatter` 新增对 Day Period（如"上午"/"下午"、"早上"/"晚上"）的支持。新增 `B` 模式字母。
+
+```java
+DateTimeFormatter fmt = DateTimeFormatter.ofPattern("B h:mm a");
+System.out.println(LocalTime.of(8, 30).format(fmt)); // 上午 8:30
+```
+
+#### Stream.toList() 不可变列表
+
+`Stream` 新增 `toList()` 方法返回不可变列表。与 `collect(Collectors.toList())` 不同，返回的列表不可修改。
+
+```java
+List<String> names = Stream.of("Alice", "Bob").toList();
+// names.add("Charlie"); // 抛出 UnsupportedOperationException
+```
+
+#### Stream.mapMulti() 方法
+
+新增 `mapMulti()` 方法，是 `flatMap()` 在简单场景下的高效替代。将每个元素转换为零个或多个元素。
+
+```java
+Stream.of("a", "b").mapMulti((str, consumer) -> {
+    consumer.accept(str);
+    consumer.accept(str.toUpperCase());
+}).forEach(System.out::println); // a, A, b, B
+```
+
+#### DateTimeFormatter 本地化模式
+
+`DateTimeFormatter` 新增 `ofLocalizedPattern(String)` 方法，提供灵活的本地化日期/时间格式化。
+
+#### Vector API 改进
+
+向量 API 的第四次孵化版本，改进了 API 设计和性能。
+
+#### 外部内存访问 API 改进
+
+外部内存访问 API 的第三次孵化版本，进一步完善了功能和性能。
+
+### 安全
+
+#### 默认禁用弱命名曲线
+
+47 条弱命名曲线默认禁用。可通过 `jdk.disabled.namedCurves` 安全属性配置。
+
+#### 新增根证书
+
+新增多个根证书到 cacerts 密钥库。
+
+#### SunEC 提供者改进
+
+SunEC 提供者改进了对现代曲线公式的实现。
+
+### HotSpot / JVM
+
+#### 默认启用有帮助的 NullPointerException
+
+JEP 358 的有帮助的 `NullPointerException` 消息现在默认启用，显示 NPE 发生位置的代码片段。
+
+```bash
+# 默认启用，无需额外标志
+java MyApp
+
+# 禁用（不推荐）
+java -XX:-ShowCodeDetailsInExceptionMessages MyApp
+```
+
+#### ZGC 并发类卸载
+
+ZGC 现在支持并发类卸载，释放未使用类的数据结构。
+
+#### ZGC 字符串去重
+
+ZGC 现在支持字符串去重（JEP 192）。
+
+#### G1 改进
+
+- G1 堆区域大小人体工程学改进
+- G1 现在可以在标记周期中将未使用的堆内存取消提交回操作系统
+
+#### 偏向锁弃用
+
+偏向锁默认禁用并弃用。`UseBiasedLocking` 及相关标志弃用。
+
+### 工具
+
+#### jpackage 改进
+
+`jpackage` 工具改进了应用打包功能，支持更多平台和配置。
+
+#### jcmd GC.heap_dump 压缩
+
+`jcmd` 的 `GC.heap_dump` 命令新增 `gz` 选项启用 gzip 压缩。
+
+```bash
+jcmd <pid> GC.heap_dump filename=/tmp/heap.hprof gz=1
+```
+
+#### javac 改进
+
+- 支持 `-source 16` 和 `-target 16`
+- 改进了类型推断和错误消息
+
+### 国际化
+
+#### CLDR v38 支持
+
+语言环境数据升级到 Unicode Consortium 的 CLDR v38。
+
+#### 时区数据更新到 2020e
+
+IANA 时区数据库更新到 2020e 版本。
+
+### 移除
+
+| 移除项 | 详情 |
+|--------|------|
+| `java.security.acl` 包 | 自 JDK 9 弃用，现移除 |
+| RMI Activation | 弃用待移除 |
+| `rmic` 工具 | 自 JDK 13 弃用，现移除 |
 
 ---
 

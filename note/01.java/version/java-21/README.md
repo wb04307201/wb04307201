@@ -1,21 +1,23 @@
 <!--
 module:
   parent: java
-  slug: java/java-21
+  slug: java/version/java-21
   type: article
   category: 主模块子文章
-  summary: Java 21 LTS 全景：15 个 JEP 深度解读 + JDK 17→21 迁移指南
+  summary: Java 21 (LTS)：15 个 JEP，含虚拟线程、顺序集合、分代 ZGC、Record 模式、switch 模式匹配正式版、结构化并发预览
 -->
 
 # Java 21
 
-> Java 21 是 2023 年 9 月发布的 LTS 版本，15 个 JEP 覆盖虚拟线程、模式匹配、序列化集合等核心特性。
-
 ## 引言：变更说明
 
-Java 21 是 N 个 JEP / 特性 / 章节的合集。
+Java 21 是 15 个 JEP 的合集。
 
 本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
+
+### 相关阅读
+
+← [Java 20](../java-20/README.md) · [Java 22](../java-22/README.md)
 
 ---
 
@@ -435,6 +437,116 @@ try (var scope = new StructuredTaskScope<Object>()) {
 │  └── 外部函数 API —— 等正式化                     │
 └─────────────────────────────────────────────────┘
 ```
+
+---
+
+## 其他新特性（非 JEP）
+
+Java 21 还包含 84+ 项非 JEP 的改进，以下列出对开发者最实用的特性：
+
+### 核心 API
+
+#### Math.clamp() and StrictMath.clamp() Methods（clamp 方法）
+
+新增 `Math.clamp()` 和 `StrictMath.clamp()` 方法，用于将值限制在指定范围内。
+
+```java
+int value = 150;
+int clamped = Math.clamp(value, 0, 100);  // 100
+
+double d = -0.5;
+double clampedD = Math.clamp(d, 0.0, 1.0);  // 0.0
+```
+
+#### New String indexOf Methods（String 新的 indexOf 方法）
+
+`String` 和 `StringBuilder` 新增支持范围索引的 `indexOf(int, int, int)` 和 `indexOf(String, int, int)` 方法。
+
+```java
+String text = "Hello World Hello";
+int idx = text.indexOf("Hello", 0, 10);  // 0（只在 0-10 范围内搜索）
+```
+
+#### splitWithDelimiters() Methods（splitWithDelimiters 方法）
+
+`String` 和 `java.util.regex.Pattern` 新增 `splitWithDelimiters()` 方法，保留分隔符。
+
+```java
+String csv = "a,b,,c";
+String[] parts = csv.splitWithDelimiters(",", -1);
+// ["a", ",", "b", ",", "", ",", "c"]
+```
+
+#### StringBuilder and StringBuffer repeat Methods（StringBuilder/StringBuffer repeat 方法）
+
+`StringBuilder` 和 `StringBuffer` 新增 `repeat()` 方法。
+
+```java
+StringBuilder sb = new StringBuilder("ab");
+sb.repeat(3);  // "ababab"
+```
+
+### 网络
+
+#### HttpClient Is Now AutoCloseable（HttpClient 支持 AutoCloseable）
+
+`java.net.http.HttpClient` 现在实现了 `AutoCloseable`，可以使用 try-with-resources。
+
+```java
+try (HttpClient client = HttpClient.newHttpClient()) {
+    // 使用 client
+}  // 自动关闭资源
+```
+
+### 字符编码
+
+#### Support for GB18030-2022（支持 GB18030-2022）
+
+新增对 GB18030-2022 字符编码标准的支持，适用于中文环境。
+
+#### Unicode Emoji Properties（Unicode Emoji 属性）
+
+增强了对 Unicode Emoji 属性的支持，包括正则表达式中的 emoji 相关二进制属性。
+
+### 安全
+
+#### Support for HSS/LMS Signature Verification（HSS/LMS 签名验证）
+
+支持 HSS/LMS（Hash-based Signature Scheme）签名验证，这是后量子密码学的一部分。
+
+#### Password-Based Cryptography in SunPKCS11（SunPKCS11 支持基于密码的加密）
+
+SunPKCS11 提供者现在支持基于密码的加密算法。
+
+### 工具
+
+#### New JFR View Command（新的 JFR view 命令）
+
+JDK Flight Recorder 新增 `jfr view` 命令，提供更便捷的 JFR 数据查看功能。
+
+#### javac Warning for Overridable Methods in Constructors（javac 警告：构造器中调用可重写方法）
+
+当在构造器中调用可重写方法时，`javac` 会发出警告，避免潜在的初始化问题。
+
+#### Output File Clash Warning（输出文件冲突警告）
+
+编译期间输出文件被覆盖时，`javac` 会生成"output file clash"警告。
+
+### GC 与性能
+
+#### Last Resort G1 Full GC Moves Humongous Objects（G1 Full GC 移动大对象）
+
+G1 Full GC 现在可以移动大对象（Humongous Objects），减少内存碎片。
+
+### Swing/UI
+
+#### Runtime.exec and ProcessBuilder Logging（Runtime.exec 和 ProcessBuilder 日志）
+
+`Runtime.exec` 和 `ProcessBuilder` 现在可以记录命令参数的日志，便于调试和审计。
+
+#### System.exit() and Runtime.exit() Logging（System.exit/Runtime.exit 日志）
+
+`System.exit()` 和 `Runtime.exit()` 调用现在可以被记录日志，便于跟踪应用退出原因。
 
 ---
 
