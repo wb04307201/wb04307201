@@ -44,6 +44,7 @@
 - ✅ P2-4 参数表补调优建议（2026-07-23：caffeine/hikaricp/semaphore/iceberg/airflow/OLAP 等加推荐值列）
 - ✅ P2-5 补 a11y 讨论（2026-07-23：vite/frameworks/mini-program/pwa 补可访问性小节）
 - ✅ 5 处 broken links 清零（2026-07-27：clustering 距离度量链接目标不存在 / a11y 语义化HTML+表单设计链接目标不存在 / 13.split-hairs/11.ai agent-reliability+kv-cache 路径深度错误 `../../../11.ai` → `../../11.ai`）
+- ✅ Java 版本特性核对（2026-07-28：18 个版本 Java 8-26，330 个 JEP 100% 匹配官方 / Java 8 补 19 个 JEP 详情 / Java 13/19 模板残留修复 / Java 11 重复回链修复 / 18 版本补前后导航互链 / 6 版本移除不一致的"定位"块 / Java 19 frontmatter 修复）
 
 > 报告每条发现时标注 `[NEW]`（本会话未触及）或 `[已修]`（本会话已修）。本清单会随时间增补。
 
@@ -65,6 +66,9 @@
 | 9 | **系列完整性** | 扫描"声明了 N 个子章节但实际文件缺失"的系列（见 Phase 1.9） |
 | 10 | **归属合理性**（🆕 2026-07-26）| 检查子目录内容是否匹配父目录定位（见 Phase 1.10）：训练方法论应在 07-research 而非 03-engineering，运维监控应在 08-llmops 而非 03-engineering |
 | 11 | **合并检测**（🆕 2026-07-26）| 检测"多主题错误合并"：单文件 > 300 行 + 包含多个独立 H2 章节 + 多个"反模式/陷阱"章节（见 Phase 1.11）|
+| 12 | **版本序列导航**（🆕 2026-07-28）| 按版本组织的系列（如 `java/version/java-8/` ~ `java-26/`），每个版本应有前后版本导航链接（见 Phase 1.12）|
+| 13 | **模板残留检测**（🆕 2026-07-28）| 检测 `N 个 X / 特性 / 章节的合集` 等未替换的模板占位文本（见 Phase 1.13）|
+| 14 | **同系列格式一致性**（🆕 2026-07-28）| 同一系列目录下文件的可选格式元素（如 `> **定位**` 块、副标题）应统一——要么全有要么全无（见 Phase 1.14）|
 
 ## Phase 1 现状扫描（原 Step 1）
 
@@ -699,6 +703,161 @@ for path, lines, h2_count, anti_count in issues:
     print(f'  ⚠ {path}')
     print(f'    {lines} 行, {h2_count} 个 H2 章节, {anti_count} 处"反模式/陷阱"')
     print(f'    建议: 检查是否可以拆分为多个独立文件')
+PYEOF
+```
+
+### 12. 版本序列导航检查（2026-07-28 新增）
+
+**历史教训**（2026-07-28 Java 版本体检）：
+- `note/01.java/version/` 下 18 个 Java 版本文件（java-8/ ~ java-26/），15 个缺少前后版本导航链接
+- 只有 java-9、java-10、java-17 有导航，其余版本各自孤立
+- 作为系列文章，每个版本应至少有 `← [Java N-1] | [Java N+1] →` 的导航链
+
+**原理**：按版本组织的系列目录（如 `java/version/`、`spring-boot/version/`），每个版本文件应有前后版本的导航链接，形成版本链。
+
+**检查方法**：
+
+```bash
+# 12. 版本序列导航检查
+# 原理：找按版本命名的子目录（如 java-8/, java-9/），检查每个版本是否有前后版本导航
+echo "=== 12. 版本序列导航检查 ==="
+python << 'PYEOF'
+import sys, os, re, glob
+if sys.platform == 'win32':
+    try: sys.stdout.reconfigure(encoding='utf-8')
+    except: pass
+
+# 找所有按版本命名的目录（格式：*-N/ 或 *-N.N/）
+version_dirs = []
+for d in glob.glob('note/**/java-*/', recursive=True):
+    version_dirs.append(d)
+for d in glob.glob('note/**/v[0-9]*/', recursive=True):
+    version_dirs.append(d)
+
+if not version_dirs:
+    print('未找到版本序列目录')
+else:
+    # 按父目录分组
+    from collections import defaultdict
+    series = defaultdict(list)
+    for d in version_dirs:
+        parent = os.path.dirname(d.rstrip('/'))
+        series[parent].append(os.path.basename(d.rstrip('/')))
+    
+    issues = []
+    for parent, versions in series.items():
+        if len(versions) < 2: continue
+        versions.sort()
+        for i, v in enumerate(versions):
+            readme = os.path.join(parent, v, 'README.md')
+            if not os.path.isfile(readme): continue
+            try:
+                with open(readme, 'r', encoding='utf-8', errors='ignore') as f:
+                    content = f.read()
+            except: continue
+            
+            # 检查是否有前后版本导航（常见格式：← [Java N] 或 → [Java N]）
+            has_prev = bool(re.search(r'[←<]\s*\[.*?\].*?' + versions[i-1] if i > 0 else r'IMPOSSIBLE', content))
+            has_next = bool(re.search(r'[→>]\s*\[.*?\].*?' + versions[i+1] if i < len(versions)-1 else r'IMPOSSIBLE', content))
+            
+            # 宽松检测：只要包含相邻版本名就算有导航
+            if i > 0 and versions[i-1] not in content:
+                issues.append((readme, f'缺少前版本 {versions[i-1]} 导航'))
+            if i < len(versions)-1 and versions[i+1] not in content:
+                issues.append((readme, f'缺少后版本 {versions[i+1]} 导航'))
+    
+    print(f'版本序列导航问题: {len(issues)} 处')
+    for path, issue in issues[:20]:
+        print(f'  ⚠ {path}: {issue}')
+PYEOF
+```
+
+### 13. 模板残留检测（2026-07-28 新增）
+
+**历史教训**（2026-07-28 Java 版本体检）：
+- Java 13 第 16 行：`Java 13 是 5 个 JEP / 特性 / 章节的合集` — 模板占位文本未替换
+- Java 19 第 14 行：`Java 19 是 7 个 JEP / 特性 / 章节的合集` — 同样问题
+- 正确格式应为 `Java 13 是 5 个 JEP 的合集`（无 `/ 特性 / 章节`）
+
+**原理**：模板中常有占位文本（如 `N 个 X / 特性 / 章节的合集`），实际沉淀时应替换为具体数字。未替换的残留是 P0 机械问题。
+
+**检查方法**：
+
+```bash
+# 13. 模板残留检测
+echo "=== 13. 模板残留检测 ==="
+# 常见模板残留模式
+grep -rn "是.*个 .* / 特性 / 章节的合集" note/ 2>/dev/null | head -20
+grep -rn "是 N 个" note/ 2>/dev/null | head -10
+grep -rn "<N> 个" note/ 2>/dev/null | head -10
+grep -rn "TODO\|FIXME\|PLACEHOLDER" note/ --include="*.md" 2>/dev/null | grep -v ".health-tmp" | head -10
+echo "=== 模板残留检测完成 ==="
+```
+
+### 14. 同系列格式一致性检查（2026-07-28 新增）
+
+**历史教训**（2026-07-28 Java 版本体检）：
+- 18 个 Java 版本文件中，6 个有 `> **定位**：` 块，12 个没有
+- 1 个有 `> 一句话定位：` 副标题，其他没有
+- 同系列文件格式不统一影响阅读体验
+
+**原理**：同一目录下的系列文件（如 `java-8/` ~ `java-26/`），可选格式元素（如 `> **定位**` 块、副标题、特殊引言格式）应统一——要么全有要么全无。
+
+**检查方法**：
+
+```bash
+# 14. 同系列格式一致性检查
+echo "=== 14. 同系列格式一致性检查 ==="
+python << 'PYEOF'
+import sys, os, re, glob
+from collections import defaultdict
+if sys.platform == 'win32':
+    try: sys.stdout.reconfigure(encoding='utf-8')
+    except: pass
+
+# 找所有按版本命名的目录
+version_dirs = []
+for d in glob.glob('note/**/java-*/', recursive=True):
+    version_dirs.append(d)
+
+if not version_dirs:
+    print('未找到版本序列目录')
+else:
+    # 按父目录分组
+    series = defaultdict(list)
+    for d in version_dirs:
+        parent = os.path.dirname(d.rstrip('/'))
+        series[parent].append(d.rstrip('/'))
+    
+    for parent, dirs in series.items():
+        if len(dirs) < 3: continue  # 至少 3 个版本才检查一致性
+        
+        # 检查格式元素
+        has_location = []
+        has_subtitle = []
+        for d in sorted(dirs):
+            readme = os.path.join(d, 'README.md')
+            if not os.path.isfile(readme): continue
+            try:
+                with open(readme, 'r', encoding='utf-8', errors='ignore') as f:
+                    content = f.read()
+            except: continue
+            
+            if '> **定位**' in content or '>**定位**' in content:
+                has_location.append(os.path.basename(d))
+            if '> 一句话定位' in content or '>一句话定位' in content:
+                has_subtitle.append(os.path.basename(d))
+        
+        # 报告不一致
+        if has_location and len(has_location) < len(dirs):
+            print(f'  ⚠ {parent}: 定位块不统一')
+            print(f'    有定位块: {", ".join(has_location)}')
+            print(f'    无定位块: {", ".join(set(os.path.basename(d) for d in dirs) - set(has_location))}')
+        if has_subtitle and len(has_subtitle) < len(dirs):
+            print(f'  ⚠ {parent}: 副标题不统一')
+            print(f'    有副标题: {", ".join(has_subtitle)}')
+
+print('=== 同系列格式一致性检查完成 ===')
 PYEOF
 ```
 

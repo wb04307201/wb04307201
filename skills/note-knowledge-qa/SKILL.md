@@ -7,7 +7,7 @@ description: Use when user asks a technical question / "查 note" / "知识库�
 
 ## Overview
 
-把 `note/` 知识库（14 主模块 / 765 README / 1045 .md，2026-07-19 find 校对）变成**可检索的私人智囊**。对用户问题做：关键词提取 → 模块定位 → 文件检索 → 关联追踪 → 整合回答。
+把 `note/` 知识库（14 主模块 / 781 README / 1066 .md，2026-07-25 find 校对）变成**可检索的私人智囊**。对用户问题做：关键词提取 → 模块定位 → 文件检索 → 关联追踪 → 整合回答。
 
 > ⚠️ **数字校对**：本文件使用 `find` 实测数字，避免 hardcode 漂移。统计命令：
 > ```bash
