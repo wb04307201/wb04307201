@@ -11,7 +11,7 @@ module:
 
 ## 引言：变更说明
 
-Foreign Function & Memory API (FFM) 是 N 个 JEP / 特性 / 章节的合集。
+Foreign Function & Memory API (FFM) 是 Java 22 预览特性，替代 JNI 调用 native 库。
 
 本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
 
@@ -170,5 +170,12 @@ FFM API 成为标准特性，不再需要 `--enable-preview`。完整替代了 J
 FFM API 从 Java 16 孵化到 Java 22 转正，为 Java 提供了安全、高效的原生代码调用和堆外内存操作能力，是 JNI 的现代化替代方案。纯 Java 即可调用原生库，无需编写 C 代码。
 
 ---
+
+
+## 相关章节
+
+- [Synchronized](../../concurrency/synchronized/README.md)
+- [跳表集合](../../concurrency/concurrent-collections/skip-list/README.md)
+- [并发](../concurrency/README.md)
 
 ← [返回 功能版本变更历史](../README.md)

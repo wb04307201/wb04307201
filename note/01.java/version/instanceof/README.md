@@ -11,7 +11,7 @@ module:
 
 ## 引言：变更说明
 
-instanceof 是 N 个 JEP / 特性 / 章节的合集。
+instanceof 模式匹配是 Java 16 引入的特性，免去强制类型转换。
 
 本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
 
@@ -226,5 +226,12 @@ instanceof 操作符从 Java 8 到 Java 26 经历了显著的演进：
 这些改进使 instanceof 操作符变得更加强大、简洁和安全，减少了传统 instanceof 使用中的样板代码，同时提供了更强大的模式匹配能力，使代码更加清晰和易读。基本类型模式匹配的引入进一步完善了 Java 的模式匹配体系，为开发者提供了更加一致和强大的类型检查与转换能力。
 
 ---
+
+
+## 相关章节
+
+- [Record](../record/README.md)
+- [基本数据类型](../../concepts/data-types/README.md)
+- [Java 线程基础](../../concurrency/thread-basics/README.md)
 
 ← [返回 功能版本变更历史](../README.md)

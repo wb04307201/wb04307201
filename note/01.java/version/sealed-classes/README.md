@@ -1,17 +1,18 @@
-<!--
-module:
+<!--module:
   parent: java
-  slug: java/sealed-classes
+  slug: 01.java/version/sealed-classes
   type: article
   category: 主模块子文章
-  summary: Sealed Classes
+  summary: Sealed Classes（Java 17）：密封类，限制哪些类可以继承。
 -->
 
 # Sealed Classes
 
+> **定位**：Sealed Classes 的核心原理、实现与最佳实践。
+
 ## 引言：变更说明
 
-Sealed Classes 是 N 个 JEP / 特性 / 章节的合集。
+Sealed Classes 是 Java 17 引入的密封类特性，限制哪些类可以继承。
 
 本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
 

@@ -1,17 +1,18 @@
-<!--
-module:
+<!--module:
   parent: java
-  slug: java/switch
+  slug: 01.java/version/switch
   type: article
   category: 主模块子文章
-  summary: Switch
+  summary: Switch 表达式（Java 14+）：箭头标签、返回值、模式匹配。
 -->
 
 # Switch
 
+> **定位**：Switch 的核心原理、实现与最佳实践。
+
 ## 引言：变更说明
 
-Switch 是 N 个 JEP / 特性 / 章节的合集。
+Switch 表达式是 Java 14+ 引入的增强型 switch 语法，支持箭头标签与返回值。
 
 本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
 

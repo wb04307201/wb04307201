@@ -11,7 +11,7 @@ module:
 
 ## 引言：变更说明
 
-VarHandle 是 N 个 JEP / 特性 / 章节的合集。
+VarHandle 是 Java 9 引入的轻量级字段/数组访问机制，替代反射。
 
 本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
 
@@ -181,5 +181,12 @@ VarHandle 的原子操作在虚拟线程环境中自动适配，无需修改代�
 VarHandle 从 Java 9 引入以来，为 Java 提供了安全的高性能变量访问能力。它是 Unsafe 的标准化替代方案，支持多种内存序和原子操作，是并发工具开发和底层编程的核心 API。
 
 ---
+
+
+## 相关章节
+
+- [Sealed Classes](../sealed-classes/README.md)
+- [Java 线程基础](../../concurrency/thread-basics/README.md)
+- [Java 版本特性](../README.md)
 
 ← [返回 功能版本变更历史](../README.md)

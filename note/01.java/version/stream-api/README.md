@@ -9,9 +9,11 @@ module:
 
 # Stream API
 
+> **定位**：Java 8 Stream API：函数式集合操作、并行流与性能陷阱。 的核心原理、实现与最佳实践。
+
 ## 引言：变更说明
 
-Stream API 是 N 个 JEP / 特性 / 章节的合集。
+Stream API 是 Java 8 引入的函数式集合操作工具，支持并行流与性能优化。
 
 本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
 
@@ -179,5 +181,12 @@ Stream.of("foo", "bar", "baz", "quux")
 Stream API 从 Java 8 引入以来持续增强，最新的 Stream Gatherers 功能（Java 22-24）代表了重要里程碑，允许创建自定义中间操作，极大扩展了 API 的灵活性。
 
 ---
+
+
+## 相关章节
+
+- [Java 集合框架](../../collection/README.md)
+- [JVM 调优 — 根据服务器配置选择参数](../../jvm/tuning.md)
+- [反射](../../concepts/reflection/README.md)
 
 ← [返回 功能版本变更历史](../README.md)

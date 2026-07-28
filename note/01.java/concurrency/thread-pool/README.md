@@ -9,10 +9,12 @@ module:
 
 # Java 线程池（ThreadPoolExecutor）学习笔记
 
+> **定位**：Java 线程池（ThreadPoolExecutor）学习笔记 的核心原理、实现与最佳实践。
+
 ---
 ## 引言：变更说明
 
-Java 线程池（ThreadPoolExecutor）学习笔记 是 N 个 JEP / 特性 / 章节的合集。
+全面梳理线程池原理、参数调优、拒绝策略与生产实践。
 
 本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
 

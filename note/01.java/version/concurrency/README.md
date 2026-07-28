@@ -11,7 +11,7 @@ module:
 
 ## 引言：变更说明
 
-并发 是 N 个 JEP / 特性 / 章节的合集。
+全面梳理 Java 并发演进：synchronized → Lock → CompletableFuture → Virtual Threads。
 
 本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
 

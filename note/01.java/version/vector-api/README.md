@@ -9,9 +9,11 @@ module:
 
 # Vector API
 
+> **定位**：Java 16+ Vector API（孵化）：SIMD 加速数值计算。 的核心原理、实现与最佳实践。
+
 ## 引言：变更说明
 
-Vector API 是 N 个 JEP / 特性 / 章节的合集。
+Vector API 是 Java 16+ 孵化特性，提供 SIMD 加速数值计算能力。
 
 本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
 
@@ -152,5 +154,12 @@ public static int[] vectorAddWithMask(int[] a, int[] b) {
 Vector API 自 Java 16 孵化以来，经过 11 轮迭代已接近稳定。它为 Java 数值计算提供了接近原生性能的向量化能力，是弥补 Java 在高性能计算领域差距的重要特性。
 
 ---
+
+
+## 相关章节
+
+- [Kotlin 工程实践](../../kotlin/06-engineering.md)
+- [Class-File API](../class-file-api/README.md)
+- [Java 线程基础](../../concurrency/thread-basics/README.md)
 
 ← [返回 功能版本变更历史](../README.md)
