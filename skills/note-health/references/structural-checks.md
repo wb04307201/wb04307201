@@ -45,6 +45,9 @@
 - ✅ P2-5 补 a11y 讨论（2026-07-23：vite/frameworks/mini-program/pwa 补可访问性小节）
 - ✅ 5 处 broken links 清零（2026-07-27：clustering 距离度量链接目标不存在 / a11y 语义化HTML+表单设计链接目标不存在 / 13.split-hairs/11.ai agent-reliability+kv-cache 路径深度错误 `../../../11.ai` → `../../11.ai`）
 - ✅ Java 版本特性核对（2026-07-28：18 个版本 Java 8-26，330 个 JEP 100% 匹配官方 / Java 8 补 19 个 JEP 详情 / Java 13/19 模板残留修复 / Java 11 重复回链修复 / 18 版本补前后导航互链 / 6 版本移除不一致的"定位"块 / Java 19 frontmatter 修复）
+- ✅ 18 个文件模板残留清零（2026-07-29：version/* 14 + concurrency/* 2 的 `N 个 JEP / 特性 / 章节的合集` 替换为实际描述 + sealed-classes/switch frontmatter summary 同步修复）
+- ✅ 数字一致性 8 处偏差修复（2026-07-29：13.split-hairs 总篇数 210→224 + 01.java 41→42 + 03.database 27→29 + 04.system-design 22→23 + 11.ai 46→56 + 6 处 H2 标题移除 `（N 篇）` 编号）
+- ✅ Step 9.1/9.5/11 阈值优化（2026-07-29：兄弟互链识别线性导航 / 重复表格阈值提高到 80%+4列 / 合并检测阈值提高到 >500+≥8H2+≥8反模式）
 
 > 报告每条发现时标注 `[NEW]`（本会话未触及）或 `[已修]`（本会话已修）。本清单会随时间增补。
 
@@ -65,7 +68,7 @@
 | 8 | **其他**（PNG / 脚本 / 杂项）| `find note -name "*.png" \| xargs grep -L "!"` |
 | 9 | **系列完整性** | 扫描"声明了 N 个子章节但实际文件缺失"的系列（见 Phase 1.9） |
 | 10 | **归属合理性**（🆕 2026-07-26）| 检查子目录内容是否匹配父目录定位（见 Phase 1.10）：训练方法论应在 07-research 而非 03-engineering，运维监控应在 08-llmops 而非 03-engineering |
-| 11 | **合并检测**（🆕 2026-07-26）| 检测"多主题错误合并"：单文件 > 300 行 + 包含多个独立 H2 章节 + 多个"反模式/陷阱"章节（见 Phase 1.11）|
+| 11 | **合并检测**（🆕 2026-07-26，v2 2026-07-29）| 检测"多主题错误合并"：单文件 > 500 行 + ≥8 个 H2 章节 + ≥8 处"反模式/陷阱"章节（P2 参考级，见 Phase 1.11）|
 | 12 | **版本序列导航**（🆕 2026-07-28）| 按版本组织的系列（如 `java/version/java-8/` ~ `java-26/`），每个版本应有前后版本导航链接（见 Phase 1.12）|
 | 13 | **模板残留检测**（🆕 2026-07-28）| 检测 `N 个 X / 特性 / 章节的合集` 等未替换的模板占位文本（见 Phase 1.13）|
 | 14 | **同系列格式一致性**（🆕 2026-07-28）| 同一系列目录下文件的可选格式元素（如 `> **定位**` 块、副标题）应统一——要么全有要么全无（见 Phase 1.14）|
@@ -347,19 +350,33 @@ done
 
 # 9.1 系列内兄弟互链完整性审计
 # 原理：找有编号文件（01-xxx.md）的目录，检查每篇是否链向同目录其他文件
+# ⚠️ 2026-07-29 更新：识别线性导航（上一章/下一章）为合法模式，只标记完全没有兄弟导航的文件
+# 历史误报：sensitive-word-filter/ 5 篇文件已有"上一章/下一章"顺序导航，被误报为"未互链"
 echo "=== 系列内兄弟互链审计 ==="
 for dir in $(find note -type d -exec sh -c 'ls "$1"/[0-9]*.md 2>/dev/null | head -1 | grep -q . && echo "$1"' _ {} \;); do
   file_count=$(ls "$dir"/[0-9]*.md 2>/dev/null | wc -l)
   [ "$file_count" -lt 2 ] && continue
   echo "系列: $dir ($file_count 篇)"
   for file in $(ls "$dir"/[0-9]*.md 2>/dev/null); do
+    # 检查是否有线性导航（上一章/下一章）或返回链接
+    has_linear_nav=$(grep -c "上一章\|下一章\|← \[返回" "$file" 2>/dev/null || echo 0)
+    if [ "$has_linear_nav" -gt 0 ]; then
+      # 有线性导航，视为合法（不要求全互链）
+      continue
+    fi
+    # 无导航，检查是否至少链向一个兄弟
+    has_any_sibling=false
     for other in $(ls "$dir"/[0-9]*.md 2>/dev/null); do
       [ "$file" = "$other" ] && continue
       other_base=$(basename "$other")
-      if ! grep -q "$other_base" "$file" 2>/dev/null; then
-        echo "  ⚠ $(basename $file) 未链向 $other_base"
+      if grep -q "$other_base" "$file" 2>/dev/null; then
+        has_any_sibling=true
+        break
       fi
     done
+    if [ "$has_any_sibling" = "false" ]; then
+      echo "  ⚠ $(basename $file) 无任何兄弟导航（既无 上一章/下一章，也未链向任何兄弟）"
+    fi
   done
 done
 
@@ -496,11 +513,14 @@ print(f'\\n总计偏差: {mismatch} 处（P1 必修，须出 fix(note) commit）
 "
 ```
 
-# 9.5 同 README 内重复表格检测（2026-07-25 新增）
+# 9.5 同 README 内重复表格检测（2026-07-25 新增，2026-07-29 优化）
 # 历史教训：12.story/README.md 历史上同时维护 8 集群目录表 + 49 篇明细表，100% 重叠。体检只扫跨文件重复，未扫同文件内冗余。
 # v3 优化：1) find_tables 严格按 markdown table 语法（header + |---| + 数据行）识别表
 #         2) 加白名单跳过 wiki 风格总目录（note/README.md / note/CONTRIBUTING.md）
 #         3) 加距离阈值过滤（< 100 行的同模板 Q&A 表视为合理结构，不算冗余）
+# v4 优化（2026-07-29）：
+#         4) 重叠率阈值从 0.5 提高到 0.8（不同章节复用对比表是合理结构，如 HashMap vs TreeMap 对比在多处出现）
+#         5) 最小列数要求从 2 提高到 4（2-3 列的通用表头如"维度/方案A/方案B"误报率极高）
 # 已知局限：同文件内不同章节同主题对比表（如 collection/HashMap vs HashTable vs ConcurrentHashMap 对比）仍会误报（不同章节合理重复）—— 留给人工复核
 python << 'PYEOF'
 import sys, os, re, glob
@@ -541,6 +561,8 @@ def find_tables(content):
 print('=== 9.5 同 README 内重复表格检测 ===')
 WHITELIST = ['note' + chr(92) + 'README.md', 'note' + chr(92) + 'CONTRIBUTING.md']
 DISTANCE_THRESHOLD = 100
+OVERLAP_THRESHOLD = 0.8   # v4: 从 0.5 提高到 0.8（不同章节复用对比表是合理结构）
+MIN_COLS = 4              # v4: 从 2 提高到 4（2-3 列通用表头误报率极高）
 issues = []
 for f in glob.glob('note/**/*.md', recursive=True):
     if f in WHITELIST: continue
@@ -553,16 +575,18 @@ for f in glob.glob('note/**/*.md', recursive=True):
             h1, s1 = tables[i]
             h2, s2 = tables[j]
             if not s1 or not s2: continue
+            # v4: 最小列数过滤
+            if len(s1) < MIN_COLS or len(s2) < MIN_COLS: continue
             overlap = len(s1 & s2)
             smaller = min(len(s1), len(s2))
             if smaller == 0: continue
             rate = overlap / smaller
             distance = abs(h2 - h1)
-            # 加距离阈值：< 100 行的同表头视为合理模板
-            if rate >= 0.5 and overlap >= 2 and distance >= DISTANCE_THRESHOLD:
+            # v4: 重叠率阈值从 0.5 提高到 0.8
+            if rate >= OVERLAP_THRESHOLD and overlap >= MIN_COLS and distance >= DISTANCE_THRESHOLD:
                 issues.append((f, h1+1, h2+1, s1, s2, rate, distance))
 
-print(f'同 README 重复表格问题: {len(issues)} 处（加白名单 + 距离阈值 >= 100 行）')
+print(f'同 README 重复表格问题: {len(issues)} 处（v4: 重叠率≥{OVERLAP_THRESHOLD:.0%} + 列数≥{MIN_COLS} + 距离≥{DISTANCE_THRESHOLD} 行）')
 for f, h1, h2, s1, s2, rate, dist in issues[:20]:
     print(f'  {f} line {h1} & {h2} 重叠率={rate:.0%} 距离={dist}')
 PYEOF
@@ -649,17 +673,27 @@ for path, parent, keyword, reason in issues:
 PYEOF
 ```
 
-### 11. 合并检测（2026-07-26 新增）
+### 11. 合并检测（2026-07-26 新增，2026-07-29 优化阈值）
 
 **历史教训**（2026-07-26 production-thinking-5q）：
 - `production-thinking-5q/README.md` 419 行，包含 5 个独立主题
 - 每个主题都可以独立成文（有完整的原理+实现+反模式）
 - 后续不得不拆分成 5 个独立面试题目录
 
+**⚠️ 2026-07-29 优化**：v1 阈值（>300 行 + ≥5 H2 + ≥3 反模式）误报率极高。2026-07-29 体检 91 候选全为合理深度文章（ArrayList 源码剖析、单体到微服务演进、RAG 专题等）。v2 大幅提高阈值：
+- 行数：>300 → **>500**
+- H2 章节：≥5 → **≥8**
+- 反模式数：≥3 → **≥8**
+- 文件名含数字信号：从 `has_number or anti_pattern_count >= 5` 改为 `anti_pattern_count >= 10`
+
+**此扫描为 P2 参考级**，不作为 P0/P1 必修项。命中后需人工判断是"错误合并"还是"合理深度文章"。
+
 **检测信号**：
 
 ```bash
 # 11. 合并检测（多主题错误合并成一个文件）
+# ⚠️ P2 参考级：误报率较高，命中后需人工复核是否为合理深度文章
+# v2（2026-07-29）：阈值从 >300/≥5H2/≥3反模式 提高到 >500/≥8H2/≥8反模式
 echo "=== 11. 合并检测 ==="
 python << 'PYEOF'
 import sys, os, re, glob
@@ -678,31 +712,29 @@ for readme in glob.glob('note/**/*.md', recursive=True):
             lines = content.count('\n') + 1
     except: continue
     
-    # 信号 1: 文件过大（> 300 行）
-    if lines < 300: continue
+    # v2: 信号 1: 文件过大（> 500 行，从 300 提高）
+    if lines < 500: continue
     
-    # 信号 2: 包含多个独立 H2 章节（>= 5 个）
+    # v2: 信号 2: 包含多个独立 H2 章节（>= 8 个，从 5 提高）
     h2_matches = re.findall(r'^## (.+)$', content, re.MULTILINE)
-    if len(h2_matches) < 5: continue
+    if len(h2_matches) < 8: continue
     
-    # 信号 3: 每个 H2 章节可以独立成文（有完整的原理+实现+反模式）
+    # v2: 信号 3: 每个 H2 章节可以独立成文（有完整的原理+实现+反模式）
     # 简化检测：检查是否有多个"反模式"/"常见错误"/"陷阱"章节
     anti_pattern_count = len(re.findall(r'反模式|常见错误|陷阱|anti.?pattern', content, re.IGNORECASE))
-    if anti_pattern_count < 3: continue
+    # v2: 从 >= 3 提高到 >= 8
+    if anti_pattern_count < 8: continue
     
-    # 信号 4: 文件名或目录名含数字（"5q" / "3 patterns" / "N 种"）
-    basename = os.path.basename(readme)
-    dirname = os.path.basename(os.path.dirname(readme))
-    has_number = bool(re.search(r'\d+q|\d+\s*(种|个|大|pattern)', basename + dirname, re.IGNORECASE))
-    
-    if has_number or anti_pattern_count >= 5:
+    # v2: 信号 4: 简化判断逻辑，去掉文件名含数字的信号（误报率高）
+    # 改为纯反模式计数阈值
+    if anti_pattern_count >= 10:
         issues.append((readme, lines, len(h2_matches), anti_pattern_count))
 
-print(f'可能多主题合并的文件: {len(issues)} 处')
+print(f'可能多主题合并的文件: {len(issues)} 处（v2: >500行 + ≥8H2 + ≥8反模式，P2 参考级）')
 for path, lines, h2_count, anti_count in issues:
     print(f'  ⚠ {path}')
     print(f'    {lines} 行, {h2_count} 个 H2 章节, {anti_count} 处"反模式/陷阱"')
-    print(f'    建议: 检查是否可以拆分为多个独立文件')
+    print(f'    建议: 人工复核——是错误合并还是合理深度文章？')
 PYEOF
 ```
 
