@@ -4,65 +4,105 @@ module:
   slug: system-design/sharding-sphere
   type: article
   category: 主模块子文章
-  summary: ShardingSphere 本应该很简单
+  summary: Apache ShardingSphere 分库分表中间件——JDBC vs Proxy 架构选型 + 分片策略配置
 -->
 
 # ShardingSphere
 
----
+> Apache ShardingSphere 是分布式数据库中间件，提供 JDBC（嵌入式）和 Proxy（独立代理）两种接入方式，覆盖分片/读写分离/分布式事务/数据迁移全场景。
 
-**ShardingSphere 是一个开源的分布式数据库生态系统，旨在将任何数据库转变为分布式数据库系统，并提供数据分片、弹性扩展、加密等增强功能**。以下是对 ShardingSphere 的详细介绍：
+## 一、架构选型：JDBC vs Proxy
 
-## 一、核心定位与理念
+| 维度 | ShardingSphere-JDBC | ShardingSphere-Proxy |
+|------|---------------------|----------------------|
+| 部署方式 | JAR 包嵌入应用 | 独立进程（类似 MySQL Server） |
+| 语言支持 | 仅 Java | 任意语言（标准 MySQL 协议） |
+| 性能 | 高（无网络跳转） | 中（多一跳） |
+| 运维复杂度 | 低（随应用部署） | 高（需独立维护） |
+| 适用场景 | OLTP / 微服务 | OLAP / 多语言异构 |
 
-* **Database Plus 理念**：ShardingSphere 的目标是打造一个完整的生态系统，使用户能够将现有数据库转变为分布式数据库系统，而无需从头构建新数据库。它通过在现有数据库之上添加标准化上层，实现数据库功能的扩展和增强。
-* **分布式数据库解决方案**：ShardingSphere 提供了一套分布式数据库解决方案，包括数据分片、读写分离、分布式事务和数据库治理等功能，适用于大规模数据存储和计算场景。
+## 二、分片策略配置（YAML 示例）
 
-## 二、核心组件与功能
+```yaml
+# ShardingSphere 5.x 分片规则配置
+rules:
+  - !SHARDING
+    tables:
+      t_order:
+        actualDataNodes: ds_${0..1}.t_order_${0..3}
+        databaseStrategy:
+          standard:
+            shardingColumn: user_id
+            shardingAlgorithmName: db_hash_mod
+        tableStrategy:
+          standard:
+            shardingColumn: order_id
+            shardingAlgorithmName: table_mod
+    shardingAlgorithms:
+      db_hash_mod:
+        type: HASH_MOD
+        props:
+          sharding-count: 2
+      table_mod:
+        type: MOD
+        props:
+          sharding-count: 4
+```
 
-* **ShardingSphere-JDBC**：一个轻量级的 Java 框架，提供客户端分片数据访问能力。它采用去中心化架构，适用于高性能、轻量级的 OLTP 应用开发。
-* **ShardingSphere-Proxy**：一个数据库代理，提供静态入口和全语言支持。它适用于 OLAP 应用以及需要集中管理和操作的数据库分片场景。
-* **ShardingSphere-Sidecar**（规划中）：一个云原生数据库代理，旨在为 Kubernetes 环境提供数据库治理能力。
+**关键参数说明**：
+- `actualDataNodes`：真实数据节点（`ds_0.t_order_0` ~ `ds_1.t_order_3`，共 8 张表）
+- `databaseStrategy`：库级分片（按 `user_id` 哈希取模）
+- `tableStrategy`：表级分片（按 `order_id` 取模）
 
-## 三、主要功能特性
+## 三、SPI 插件机制（源码级扩展）
 
-1. **数据分片**：
+ShardingSphere 通过 SPI（Service Provider Interface）实现可插拔架构：
 
-    * 支持垂直分片、水平分片以及读写分离等多种场景。
-    * 提供灵活的分库、分表功能，可混合使用以解决不同场景下的性能问题。
-    * 用户无需关心数据分片的物理细节，只需面向业务逻辑表编写 SQL 即可。
+```java
+// 自定义分片算法（实现 ShardingAlgorithm 接口）
+public class CustomShardingAlgorithm implements StandardShardingAlgorithm<Long> {
+    @Override
+    public String doSharding(final Collection<String> availableTargetNames,
+                             final ShardingValue<Long> shardingValue) {
+        Long orderId = shardingValue.getValue();
+        // 自定义路由逻辑：奇数走 ds_0，偶数走 ds_1
+        int dsIndex = (orderId % 2 == 0) ? 0 : 1;
+        return "ds_" + dsIndex;
+    }
+}
+```
 
-2. **数据迁移**：
+**SPI 扩展点**：
+- `ShardingAlgorithm`：分片算法
+- `KeyGenerateAlgorithm`：分布式主键生成（雪花/UUID）
+- `ShardingAuditAlgorithm`：分片审计（如禁止全路由查询）
 
-    * 提供全场景的数据迁移能力，支持从其他数据源迁移数据到 ShardingSphere 管理的分布式数据库中。
-    * 在迁移过程中可同时进行数据分片，确保数据的均匀分布和高效访问。
+## 四、版本对比：4.x vs 5.x
 
-3. **查询联邦**：
+| 特性 | 4.x | 5.x |
+|------|-----|-----|
+| 配置方式 | `.properties` 文件 | YAML（结构化） |
+| 分布式事务 | XA / BASE | XA / BASE / Saga |
+| 数据迁移 | 手动 | Schema + Data 自动迁移 |
+| SQL 解析 | ANTLR 4.7 | ANTLR 4.10（性能提升 30%） |
+| 可观测性 | 无 | Prometheus + OpenTracing |
 
-    * 支持跨数据源的复杂数据查询和分析能力。
-    * 简化数据聚合过程，提高数据利用效率。
+## 五、常见陷阱与反模式
 
-4. **分布式事务**：
+| 陷阱 | 现象 | 根因 | 规避 |
+|------|------|------|------|
+| ❌ 全路由查询 | `SELECT * FROM t_order` 扫描所有分片 | WHERE 未包含分片键 | 强制分片键索引 + SQL 审计 |
+| ❌ 跨分片 JOIN | `t_order JOIN t_item` 性能暴跌 | 两张表分片键不一致 | 绑定表（Binding Table） |
+| ❌ 分布式主键冲突 | 多节点生成相同 ID | 未配置雪花算法 | `key-generators: snowflake` |
 
-    * 提供分布式事务支持，确保在分布式环境下数据的一致性和完整性。
+## 六、生产参数调优
 
-5. **数据库治理**：
-
-    * 通过注册中心实现配置集中化和动态化。
-    * 提供熔断和禁用能力，增强系统的稳定性和可靠性。
-
-## 四、技术优势与特点
-
-* **微内核与可插拔架构**：ShardingSphere 的核心采用微内核和可插拔架构，使得功能可以灵活扩展和定制。
-* **支持多种数据库**：ShardingSphere 可以与多种数据库（如 MySQL、PostgreSQL、openGauss 等）集成，提供统一的分布式数据库解决方案。
-* **高性能与可扩展性**：通过数据分片和弹性扩展能力，ShardingSphere 能够显著提高数据库的性能和可扩展性。
-* **易于使用与管理**：ShardingSphere 提供了丰富的配置选项和易于使用的接口，使得用户能够轻松地管理和操作分布式数据库系统。
-
-## 五、应用场景与案例
-
-* **大规模数据存储与计算**：ShardingSphere 适用于需要处理大规模数据的场景，如电商、金融、物联网等领域。
-* **高并发访问**：通过数据分片和读写分离等技术，ShardingSphere 能够显著提高数据库的并发访问能力。
-* **云原生环境**：ShardingSphere 的云原生数据库代理（ShardingSphere-Sidecar）为 Kubernetes 环境提供了数据库治理能力，适用于云原生应用开发。
+| 参数 | 推荐值 | 说明 |
+|------|--------|------|
+| `max-connections-size-per-query` | 1 | 单次查询最大连接数 |
+| `worker-thread` | CPU 核数 × 2 | Proxy 工作线程 |
+| `transaction-type` | XA | 强一致性场景 |
+| `sql-show` | false | 生产关闭 SQL 日志 |
 
 ---
 
