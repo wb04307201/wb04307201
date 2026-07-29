@@ -27,7 +27,7 @@ question:
 
 **真相**：100 万次 INSERT = 100 万次 RTT（网络往返）。
 - 单条 INSERT：~600 秒
-- JDBC batch 默认：~30 秒（仍然是 N 个独立 INSERT）
+- JDBC batch 默认：~30 秒（仍然是多个独立 INSERT）
 - **JDBC batch + `rewriteBatchedStatements=true`**：~3 秒（驱动自动合成 multi-value INSERT）
 - LOAD DATA INFILE：~1 秒
 
@@ -82,7 +82,7 @@ for (User user : users) {
 int[] results = ps.executeBatch();   // 一次性发送
 ```
 
-**默认行为**：把 N 个 INSERT 打包成一个网络包发送，但**仍然是 N 个独立的 INSERT 语句**。
+**默认行为**：把多个 INSERT 打包成一个网络包发送，但**仍然是多个独立的 INSERT 语句**。
 
 服务端需要：
 - 解析 N 次 SQL
@@ -203,7 +203,7 @@ conn.commit();   // 大事务
 
 > 单条 INSERT 慢是因为每次都要走"客户端发送 → 服务端解析 → 服务端写入 → 返回"的完整流程，100 万行就是 100 万次 RTT。
 >
-> JDBC batch 默认是把 N 个 INSERT 打包发送，但**还是 N 个独立的 INSERT**，服务端仍然要解析 N 次。
+> JDBC batch 默认是把多个 INSERT 打包发送，但**还是多个独立的 INSERT**，服务端仍然要解析多次。
 >
 > 真正起飞的是 `rewriteBatchedStatements=true`，驱动会把 N 个 INSERT 自动重写成一个 multi-value INSERT（`INSERT INTO t VALUES (...), (...), (...)`），减少 90% 的 RTT 和解析开销。
 >
