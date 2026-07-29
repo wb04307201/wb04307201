@@ -9,6 +9,8 @@ module:
 
 # LinkedHashSet 学习笔记
 
+> 底层基于 LinkedHashMap 的有序 Set 实现，保证插入顺序的同时提供 O(1) 查找性能。
+
 ## 一、底层 LinkedHashMap 实现
 
 `LinkedHashSet` 的底层完全依赖 `LinkedHashMap` 实现。从源码可以看出，它继承自 `HashSet`，但构造函数中传入的是 `LinkedHashMap` 实例：
@@ -22,11 +24,10 @@ public class LinkedHashSet<E>
     public LinkedHashSet(int initialCapacity, float loadFactor) {
         super(initialCapacity, loadFactor, true); // true 表示使用 LinkedHashMap
     }
-
-**初始容量公式**：`initialCapacity = (期望元素数 / loadFactor) + 1`（loadFactor 默认 0.75，期望 1000 元素时建议设 1334）
-    }
 }
 ```
+
+**初始容量公式**：`initialCapacity = (期望元素数 / loadFactor) + 1`（loadFactor 默认 0.75，期望 1000 元素时建议设 1334）
 
 `HashSet` 内部有一个 `HashMap` 类型的成员 `map`，所有元素都作为 `map` 的 key 存储，value 统一为一个静态常量 `PRESENT`：
 

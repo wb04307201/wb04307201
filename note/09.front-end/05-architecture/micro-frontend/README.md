@@ -4,10 +4,12 @@ module:
   slug: front-end/micro-frontend
   type: article
   category: 主模块子文章
-  summary: 微前端
+  summary: 微前端架构——Single-SPA/Qiankun/Module Federation 选型 + 沙箱隔离 + 通信机制
 -->
 
 # 微前端
+
+> 将大型前端应用拆分为多个独立开发部署的子应用，通过技术隔离与统一集成实现渐进式升级。
 
 ---
 
