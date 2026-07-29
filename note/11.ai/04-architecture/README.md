@@ -21,6 +21,7 @@ module:
 | [agent-memory](agent-memory/) | **Agent Memory 架构** — 时间 × 认知 × 工程三维分类 + 4 类业界框架 + 写读忘设计原则 | Agent 记忆体系 |
 | [agent-context](agent-context/) 🆕 | **Agent 长上下文架构** — 6 大策略组合（Chunking / RAG / Memory / Sliding Window / Sub-Agents / Long-Context）+ 决策树 + 反模式 + 7 道面试题 | 长上下文选型 |
 | [ontology-driven-agent](ontology-driven-agent/) | **本体驱动的智能体** — 让 AI 从"黑箱推理"走向"结构化认知"，融合符号主义与连接主义，构建可信可审计可演化的 AI 系统 | 可信 AI 范式 |
+| 🆕 [production-agent-system-design](production-agent-system-design/) | **生产级 Agent 端到端搭建** — 8 步流水线串联 8 大组件（需求→架构→Harness→Loop→可靠性→Memory→评测→监控） | 端到端搭建指南 |
 | [2026-trends](2026-trends/) | 2026 AI 技术矩阵 — 大模型 / 多模态 / 具身智能 三位一体趋势 | 前沿趋势速览 |
 | [llm-control-evolution](llm-control-evolution/) 🆕 | **LLM 驾驭演进史** — Prompt → Context → Harness → Loop 4 阶段叙事 + 升级决策树 + 反模式 | 驾驭范式演进 |
 | [bpmn-ai-integration.md](bpmn-ai-integration.md) | **AI + BPMN 融合** — 业务流程引擎与 AI Agent 集成（单文件） | 工作流引擎融合 |
@@ -67,6 +68,7 @@ graph TB
 - **[agent-memory](agent-memory/)**：时间 × 认知 × 工程三维分类 + 4 类业界框架（LangChain / LangGraph / Mem0 / LlamaIndex）+ 写读忘设计原则
 - 🆕 **[agent-context](agent-context/)**：Agent 长上下文 6 大策略组合（Chunking / RAG / Memory / Sliding Window / Sub-Agents / Long-Context LLMs）+ 5 分钟决策树 + 80 家连锁实战
 - **[ontology-driven-agent](ontology-driven-agent/)**：融合符号主义（本体、知识图谱）与连接主义（LLM），构建可信可审计可演化系统
+- 🆕 **[production-agent-system-design](production-agent-system-design/)**：8 步流水线串联 8 大组件（需求→架构→Harness→Loop→可靠性→Memory→评测→监控）+ 端到端 checklist
 - **[2026-trends](2026-trends/)**：2026 AI 技术矩阵 — 大模型 / 多模态 / 具身智能三位一体趋势
 - **[bpmn-ai-integration.md](bpmn-ai-integration.md)**：BPMN 业务流程引擎与 AI Agent 集成模式（单文件章节）
 - **[spring-ai-vs-dify.md](spring-ai-vs-dify.md)**：Spring AI 与 Dify 在企业知识库系统场景的 7 维度决策对比、代码示例、混合架构范式（单文件章节）

@@ -18,8 +18,8 @@ question:
 
 ## H1 后一句话定位
 
-> **AI 咬文嚼字 = 40 题** — 一题一文（幻觉 / 思维 / 生产力悖论 / 代码流失 / ROI / Agent Memory / Agent 性能量化 / Token 经济学 / LLM Benchmark / RAG 权限隔离）+ 主模块配套精炼版（Prompt / Context / Harness / Loop / Transformer / Token / RAG / Function Calling / Agent DAG）。
-> AI 高频面试题与新概念深挖，对齐主模块 [`11.ai`](../../11.ai/)。**40 题**（find 校对 2026-07-19）= 一题一文（幻觉 / 思维 / 生产力悖论 / 代码流失 / ROI / Agent Memory / Agent 性能量化 / Token 经济学 / LLM Benchmark / RAG 权限隔离）+ 主模块配套精炼版（Prompt / Context / Harness / Loop / Transformer / Token / RAG / Function Calling / Agent DAG）。
+> **AI 咬文嚼字 = 41 题** — 一题一文（幻觉 / 思维 / 生产力悖论 / 代码流失 / ROI / Agent Memory / Agent 性能量化 / Token 经济学 / LLM Benchmark / RAG 权限隔离）+ 主模块配套精炼版（Prompt / Context / Harness / Loop / Transformer / Token / RAG / Function Calling / Agent DAG / 端到端 Agent 系统设计）。
+> AI 高频面试题与新概念深挖，对齐主模块 [`11.ai`](../../11.ai/)。**41 题**（find 校对 2026-07-29）= 一题一文（幻觉 / 思维 / 生产力悖论 / 代码流失 / ROI / Agent Memory / Agent 性能量化 / Token 经济学 / LLM Benchmark / RAG 权限隔离）+ 主模块配套精炼版（Prompt / Context / Harness / Loop / Transformer / Token / RAG / Function Calling / Agent DAG / 端到端 Agent 系统设计）。
 
 > ⚠️ **定位说明**：本目录所有文章都是**面试深挖版**（陷阱 + 反直觉 + 30 秒话术，50-80 行）。完整概念文档见主模块对应位置（README 末尾"深度阅读"区有链接）。
 
@@ -40,7 +40,7 @@ question:
 
 ---
 
-## 文章清单（共 **40 题**，find 校对 2026-07-19）
+## 文章清单（共 **41 题**，find 校对 2026-07-29）
 
 ### 🎯 真正的面试题（一题一文）
 
@@ -98,6 +98,7 @@ question:
 | **🆕 [Structured Output 结构化输出](structured-output/)** | ⭐⭐⭐⭐ | JSON Mode 已过时 + 5 层策略 + 3 大陷阱 | [02-technology-stack/structured-output](../../11.ai/02-technology-stack/structured-output/README.md) |
 | **🆕 [Planning/Acting/Monitoring 三阶段闭环](planning-acting-monitoring/)** | ⭐⭐⭐⭐⭐ | 6 大反模式 + 工具链选型 + 90 秒话术 | [04-architecture/agent-execution-patterns/planning-acting-monitoring](../../11.ai/04-architecture/agent-execution-patterns/planning-acting-monitoring/README.md) |
 | **🆕 [Transformer 长上下文性能](transformer-long-context-performance/)** | ⭐⭐⭐⭐⭐ | O(n²) 根因 + KV Cache 膨胀 + 6 大优化方案 + 选型指南 | [01-fundamentals/transformer-long-context-performance](../../11.ai/01-fundamentals/transformer-long-context-performance/README.md) |
+| **🆕 [生产级 Agent 端到端搭建](production-agent-system-design/)** | ⭐⭐⭐⭐⭐ | 8 步流水线（需求→架构→Harness→Loop→可靠性→Memory→评测→监控）+ 8 大组件串联 + 端到端 checklist | [04-architecture/production-agent-system-design](../../11.ai/04-architecture/production-agent-system-design/README.md) |
 
 ---
 
