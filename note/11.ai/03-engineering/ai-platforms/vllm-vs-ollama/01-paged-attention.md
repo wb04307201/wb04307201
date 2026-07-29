@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 问题：KV cache 显存碎片化
-
+## 问题：KV cache 显存碎片化
 ### 1.1 传统方案的困境
 
 Transformer 自回归推理时，每生成一个新 token 都要把 KV cache 存下来给后续 attention 用。问题：
@@ -49,8 +48,7 @@ Transformer 自回归推理时，每生成一个新 token 都要把 KV cache 存
 
 ---
 
-## 2. 解法：PagedAttention（vLLM SOSP'23）
-
+## 解法：PagedAttention（vLLM SOSP'23）
 ### 2.1 核心类比
 
 | OS 虚拟内存 | vLLM KV cache |
@@ -78,8 +76,7 @@ Transformer 自回归推理时，每生成一个新 token 都要把 KV cache 存
 
 ---
 
-## 3. 进阶：Prefix Sharing（共享前缀）
-
+## 进阶：Prefix Sharing（共享前缀）
 ### 3.1 场景
 
 ```text
@@ -104,16 +101,14 @@ Transformer 自回归推理时，每生成一个新 token 都要把 KV cache 存
 
 ---
 
-## 4. 反模式 · 这些情况下 PagedAttention 优势变小
-
+## 反模式 · 这些情况下 PagedAttention 优势变小
 - ⚠️ **极短序列（< 100 token）**：block 切得再细也有固定开销，命中率提升 < 2x
 - ⚠️ **小模型（< 1B 参数）+ 大 batch**：HuggingFace 静态方案差距 30% 以内
 - ⚠️ **CPU 推理**：Ollama/llama.cpp 在 CPU 上反而比 vLLM 快（vLLM 强依赖 CUDA）
 
 ---
 
-## 5. 速查 · 关键算子
-
+## 速查 · 关键算子
 - **`block_size`**：默认 16，可调至 8 / 32。越小越细，浪费越少但 block table 越大
 - **`num_gpu_blocks`**：总物理 block 数 = 显存预算 / 单 block 大小
 - **`max_num_seqs`**：并发上限，受 num_gpu_blocks 约束
@@ -121,8 +116,7 @@ Transformer 自回归推理时，每生成一个新 token 都要把 KV cache 存
 
 ---
 
-## 6. 一句话总结
-
+## 一句话总结
 > **PagedAttention 把显存从「独占连续块」改成「共享离散块」，让 KV cache 显存利用率从 20-40% 跃升到 96%+，这是 vLLM 14-24x 吞吐提升的根因。**
 
 ---

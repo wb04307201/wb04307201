@@ -11,8 +11,7 @@ module:
 
 > 人工智能的底层原理：从机器学习到神经网络，从稠密模型到混合专家。
 
-## 1. 目录导航
-
+## 目录导航
 | 目录 | 核心内容 | 一句话定位 |
 |------|---------|-----------|
 | [llm-basics](llm-basics/) | 大语言模型(LLM)基础定义、核心能力与训练方式 | LLM 入门第一站 |
@@ -34,8 +33,7 @@ module:
 
 ---
 
-## 2. 知识脉络
-
+## 知识脉络
 ```mermaid
 graph LR
     A[AI 基础原理] --> B[机器学习<br/>监督/无监督/强化]
@@ -49,8 +47,7 @@ graph LR
 
 ---
 
-## 3. 速查表
-
+## 速查表
 | 概念 | 核心要点 | 典型场景 |
 |------|---------|---------|
 | **机器学习** | 从数据中学习规律，不依赖硬编码规则 | 分类、回归、聚类 |
@@ -64,8 +61,7 @@ graph LR
 
 ---
 
-## 4. 核心内容（按子模块展开）
-
+## 核心内容（按子模块展开）
 - **[llm-basics](llm-basics/)**：大语言模型基础定义、核心能力、训练范式（预训练/微调/RLHF）
 - **[transformer](transformer/)**：Self-Attention 数学推导、QKV 拆解、Multi-Head 机制、位置编码、Encoder-Decoder 变体
 - **[neural-layers](neural-layers/)**：CNN 卷积层 / RNN 循环层 / Transformer 自注意力层的对比
@@ -74,8 +70,7 @@ graph LR
 
 ---
 
-## 5. 最佳实践
-
+## 最佳实践
 | 场景 | 实践要点 |
 |------|---------|
 | **入门 Transformer** | 先看 Self-Attention 的 QKV 拆解（数学本质），再理解多头与位置编码 |
@@ -85,8 +80,7 @@ graph LR
 
 ---
 
-## 6. 常见面试题
-
+## 常见面试题
 | 题目 | 核心考点 |
 |------|---------|
 | 机器学习 vs 深度学习的本质？ | 特征工程自动化 vs 手工设计 |
@@ -99,16 +93,14 @@ graph LR
 
 ---
 
-## 7. 相关章节
-
+## 相关章节
 - 上层：[`L2 技术栈`](../02-technology-stack/) — Token / Prompt / Context / Function Calling
 - 关联：[`13.split-hairs Transformer`](../../13.split-hairs/11.ai/transformer/README.md) — 面试深挖版
 - 父级：[`11.ai` 总览](../README.md) — AI 知识体系
 
 ---
 
-## 8. 开源参考
-
+## 开源参考
 | 类别 | 项目 |
 |------|------|
 | 深度学习 | PyTorch · TensorFlow · Hugging Face Transformers |

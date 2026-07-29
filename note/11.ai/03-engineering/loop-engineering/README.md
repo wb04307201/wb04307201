@@ -1,7 +1,6 @@
-<!--
-module:
+<!--module:
   parent: ai
-  slug: ai/loop-engineering
+  slug: 11.ai/03-engineering/loop-engineering
   type: article
   category: 主模块子文章
   summary: Loop Engineering：循环调用 Agent 直到任务完成的反直觉哲学。

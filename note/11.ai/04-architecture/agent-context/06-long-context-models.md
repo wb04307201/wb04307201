@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 主流长上下文模型（2024-2025）
-
+## 主流长上下文模型（2024-2025）
 | 模型 | 上下文长度 | 评测实测有效长度 | 价格（输入/百万 token）|
 |------|-----------|------------------|------------------------|
 | **Gemini 1.5 Pro** | 1M | **100-200k** | $1.25 |
@@ -34,8 +33,7 @@ module:
 
 ---
 
-## 2. Lost in the Middle 现象
-
+## Lost in the Middle 现象
 **核心论文**：Liu et al., "Lost in the Middle" (2023)
 
 **实验**：在 1-30k context 中，模型在"信息在 prompt 中间"时准确率最低，**两端信息利用最佳**。
@@ -54,8 +52,7 @@ module:
 
 ---
 
-## 3. 训练技巧（让模型用好长上下文）
-
+## 训练技巧（让模型用好长上下文）
 ### 3.1 Position Interpolation (PI)
 
 - Microsoft Research, 2023
@@ -82,8 +79,7 @@ module:
 
 ---
 
-## 4. 实战：Agent 在 100k+ 上下文的玩法
-
+## 实战：Agent 在 100k+ 上下文的玩法
 ### 4.1 文档问答（一次性）
 
 ```python
@@ -122,8 +118,7 @@ response = llm.invoke(messages)
 
 ---
 
-## 5. Lost in the Middle 的 6 个缓解技巧
-
+## Lost in the Middle 的 6 个缓解技巧
 ### 5.1 重要信息放两端
 
 ```python
@@ -170,8 +165,7 @@ prompt = "[位置 A] 这是事实 1\n[位置 B] 这是事实 2\n[位置 C] 这�
 
 ---
 
-## 6. 何时用 Long-Context vs RAG？
-
+## 何时用 Long-Context vs RAG？
 | 场景 | Long-Context 优先 | RAG 优先 |
 |------|-------------------|-----------|
 | 单次文档问答 | ✅ 文档 < 32k | ✅ 文档 > 100k |
@@ -185,8 +179,7 @@ prompt = "[位置 A] 这是事实 1\n[位置 B] 这是事实 2\n[位置 C] 这�
 
 ---
 
-## 7. 反模式 · 5 个常见错
-
+## 反模式 · 5 个常见错
 ### ⚠️ 反模式 1：盲目追求 1M context
 
 - 错："用 Gemini 1.5 1M，直接塞"
@@ -214,8 +207,7 @@ prompt = "[位置 A] 这是事实 1\n[位置 B] 这是事实 2\n[位置 C] 这�
 
 ---
 
-## 8. 一句话总结
-
+## 一句话总结
 > **Long-Context Models 是"能力"——但 Lost in the Middle 是"局限"。Agent 部署长上下文要算 5 笔账：上下文长度 / 有效长度 / Lost in Middle 风险 / 成本 / 与其他策略的协同。**
 
 ---

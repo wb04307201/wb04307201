@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 为什么需要 Sliding Window？
-
+## 为什么需要 Sliding Window？
 **全注意力（Full Attention）的成本**：
 - Context = n 时，每个 token 的 attention 计算 O(n)
 - 单 token 存储 KV cache 占用 ~0.4 MB（LLaMA-7B FP16）
@@ -35,8 +34,7 @@ module:
 
 ---
 
-## 2. 4 大 Sliding Window 技术
-
+## 4 大 Sliding Window 技术
 ### 2.1 朴素 Sliding Window
 
 ```text
@@ -90,8 +88,7 @@ Window + 4 sink tokens：
 
 ---
 
-## 3. 与 PagedAttention 的关系
-
+## 与 PagedAttention 的关系
 | 技术 | 解决问题 | 层级 |
 |------|---------|------|
 | **PagedAttention** | KV cache 碎片化 | 显存分配（vLLM 0.4+）|
@@ -102,8 +99,7 @@ Window + 4 sink tokens：
 
 ---
 
-## 4. Agent 场景的应用
-
+## Agent 场景的应用
 ### 4.1 长期对话
 
 ```text
@@ -130,8 +126,7 @@ StreamingLLM：
 
 ---
 
-## 5. 反模式 · 5 个常见错
-
+## 反模式 · 5 个常见错
 ### ⚠️ 反模式 1：window size 调太小
 
 - 错：w=128（信息丢失率高）
@@ -159,8 +154,7 @@ StreamingLLM：
 
 ---
 
-## 6. 速查 · 选型决策
-
+## 速查 · 选型决策
 | 模型 | 默认 attention | 推荐用法 |
 |------|----------------|---------|
 | LLaMA 2 | Full | 加 streamingLLM 改造 |
@@ -171,8 +165,7 @@ StreamingLLM：
 
 ---
 
-## 7. 一句话总结
-
+## 一句话总结
 > **Sliding Window Attention 是"减显存不减太多质量"的工程权衡——StreamingLLM + sink tokens 让 32k 部署成本降到 4k 等价；Agent 场景需配合 Memory 模块补早期信息损失。**
 
 ---

@@ -19,8 +19,7 @@ module:
 
 ---
 
-## 1. 方法 1：自动化指标（最低成本、最快）
-
+## 方法 1：自动化指标（最低成本、最快）
 **适用**：有明确 ground truth 的任务（订机票 / 退款 / 查数据）
 
 ```python
@@ -47,8 +46,7 @@ class AutomatedEvaluator:
 
 ---
 
-## 2. 方法 2：黄金集评估（离线核心）
-
+## 方法 2：黄金集评估（离线核心）
 **适用**：已知正确答案的测试集
 
 ### 2.1 构建黄金集
@@ -93,8 +91,7 @@ def eval_golden_set(agent, golden_set):
 
 ---
 
-## 3. 方法 3：LLM-as-Judge（GPT-4 当裁判）
-
+## 方法 3：LLM-as-Judge（GPT-4 当裁判）
 **适用**：开放式输出 / Agent 整体行为评估
 
 ### 3.1 核心 Prompt 模板
@@ -137,8 +134,7 @@ def multi_judge(task, agent_output, judges=['gpt-4', 'claude', 'gemini']):
 
 ---
 
-## 4. 方法 4：A/B Test（生产环境金标准）
-
+## 方法 4：A/B Test（生产环境金标准）
 **适用**：上线前 / 灰度发布
 
 ### 4.1 流量分配
@@ -176,8 +172,7 @@ A/B Test 监控面板：
 
 ---
 
-## 5. 方法 5：用户模拟（大规模压测）
-
+## 方法 5：用户模拟（大规模压测）
 **适用**：并发能力 / 极端场景 / 压力测试
 
 ### 5.1 用 LLM 模拟用户
@@ -211,8 +206,7 @@ async def user_simulation_test(agent, users, max_concurrent=100):
 
 ---
 
-## 6. 5 种方法对比
-
+## 5 种方法对比
 | 方法 | 客观度 | 速度 | 成本 | 适用 |
 |------|--------|------|------|------|
 | **1 自动化指标** | ⭐⭐⭐⭐⭐ | 极快（ms）| 低 | 有 ground truth |
@@ -228,8 +222,7 @@ async def user_simulation_test(agent, users, max_concurrent=100):
 
 ---
 
-## 7. 反模式 · 5 个常见错
-
+## 反模式 · 5 个常见错
 ### ⚠️ 反模式 1：只信赖 LLM-as-Judge
 
 - 错：仅用 GPT-4 judge，overfit 到 GPT-4 偏好
@@ -257,8 +250,7 @@ async def user_simulation_test(agent, users, max_concurrent=100):
 
 ---
 
-## 8. 一句话总结
-
+## 一句话总结
 > **5 种方法组合 = 自动化指标（核心）+ 黄金集（核心）+ LLM-as-Judge（开放）+ A/B Test（上线）+ 用户模拟（压测）。实战 80% 自动化，20% LLM-judge 兜底。**
 
 ---

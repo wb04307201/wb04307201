@@ -1,7 +1,6 @@
-<!--
-module:
+<!--module:
   parent: front-end
-  slug: front-end/a11y
+  slug: 09.front-end/a11y
   type: article
   category: 主模块子文章
   summary: Web 无障碍（a11y）核心原则、ARIA 属性、键盘导航、测试工具与实战案例
@@ -400,5 +399,12 @@ async function auditAccessibility(url) {
 - 表单设计 — 表单可访问性最佳实践
 
 ---
+
+
+## 相关章节
+
+- [Vite 构建工具](../04-engineering/vite/README.md)
+- [06 性能](../06-performance/README.md)
+- [03 框架](../03-frameworks/README.md)
 
 ← [返回 09.front-end](../README.md)

@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 模块导航
-
+## 模块导航
 | 主题 | 状态 | 说明 |
 |------|------|------|
 | AI SDK | ✓ 已有 | [ai-sdk/](ai-sdk/) — Vercel AI SDK / Anthropic SDK / 流式响应 |
@@ -31,8 +30,7 @@ module:
 
 ---
 
-## 2. 知识脉络
-
+## 知识脉络
 ```mermaid
 flowchart TD
     A[AI 集成选型] --> B{目标场景?}
@@ -44,8 +42,7 @@ flowchart TD
 
 ---
 
-## 3. 速查要点
-
+## 速查要点
 - **AI 编码工具不是银弹**:复杂业务逻辑仍需人工设计;AI 擅长样板代码、单元测试、文档生成
 - **AI SDK 选型**:Vercel AI SDK(多模型统一接口)/ Anthropic SDK(直接对接 Claude)/ LangChain(复杂 Agent)
 - **流式响应是标配**:SSE / WebSocket;2026 起所有 LLM 应用都应支持流式
@@ -53,8 +50,7 @@ flowchart TD
 
 ---
 
-## 4. 工具与 SDK 对比
-
+## 工具与 SDK 对比
 | 工具 | 形态 | 模型 | 适用 |
 |------|------|------|------|
 | Cursor | IDE | 多模型 | AI 编码主战场 |
@@ -66,8 +62,7 @@ flowchart TD
 
 ---
 
-## 5. 最佳实践
-
+## 最佳实践
 - AI 集成优先流式响应(SSE / WebStream),离线式"长等"是 UX 反模式
 - 多模型架构用 Vercel AI SDK 抽象,避免绑定单一厂商
 - AI IDE 辅助编码(Cursor / Claude Code)+ Vibe Coding 适用原型,生产代码需人工审查
@@ -76,8 +71,7 @@ flowchart TD
 
 ---
 
-## 6. 常见面试题
-
+## 常见面试题
 - 流式响应 SSE 与 WebSocket 的取舍:断线重连 / 单向 / 双向差异
 - Vercel AI SDK 的 `streamText` / `useChat` / `generateObject` 三个 API 适用场景
 - MCP(Model Context Protocol)与传统 Function Calling 的本质区别
@@ -86,8 +80,7 @@ flowchart TD
 
 ---
 
-## 7. 与其他模块的关系
-
+## 与其他模块的关系
 - **上游**:[02-language](../02-language/) / [03-frameworks](../03-frameworks/)
 - **下游**:所有 AI 集成的 Web 应用
 - **横向**:[11.ai](../../11.ai/) 关注 AI 知识体系,[09 前端与 AI] 关注 AI 在前端的落地

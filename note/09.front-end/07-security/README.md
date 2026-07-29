@@ -1,10 +1,9 @@
-<!--
-module:
+<!--module:
   parent: note
-  slug: 09.front-end/security
+  slug: 09.front-end/07-security
   type: article
   category: 主模块子文章
-  summary: 前端 07 安全
+  summary: 本模块覆盖 6 大前端安全主题:XSS / CSRF / CSP / CORS / 会话管理 / 依赖供应链,每个都有完整的攻击场景、防御手段、实战代码。
 -->
 
 # 07 安全
@@ -15,8 +14,7 @@ module:
 
 ---
 
-## 1. 模块导航
-
+## 模块导航
 | 主题 | 状态 | 说明 |
 |------|------|------|
 | XSS | ✓ 已有 | [xss/](xss/) — Reflected / Stored / DOM-based / 防御 |
@@ -34,8 +32,7 @@ module:
 
 ---
 
-## 2. 知识脉络
-
+## 知识脉络
 ```mermaid
 flowchart TD
     A[安全防护优先级] --> B{P0 必须}
@@ -51,8 +48,7 @@ flowchart TD
 
 ---
 
-## 3. 速查要点
-
+## 速查要点
 - **CSP 是 XSS 的最后防线**:即使有 XSS 漏洞,CSP 也能阻止脚本执行
 - **SameSite cookie**:默认 `Lax`,防止 CSRF;高敏感操作加 `SameSite=Strict`
 - **JWT 不存敏感信息**:JWT payload 是 base64 编码,不是加密;敏感数据放服务端
@@ -60,8 +56,7 @@ flowchart TD
 
 ---
 
-## 4. 核心威胁与防御
-
+## 核心威胁与防御
 | 威胁 | 防御手段 | 优先级 |
 |------|---------|-------|
 | XSS(反射/存储/DOM 型) | 输入过滤 + 框架默认转义 + DOMPurify + CSP nonce | P0 |
@@ -73,8 +68,7 @@ flowchart TD
 
 ---
 
-## 5. 最佳实践
-
+## 最佳实践
 - CSP + SRI 标配:`script-src 'self' 'nonce-...'` + CDN 资源 `integrity="sha384-..."`
 - XSS 防御优先用框架内置转义(React JSX / Vue 模板),不要自己拼字符串 HTML
 - CSRF Token 用 SameSite + 双重提交 Cookie 双保险,避免依赖单一机制
@@ -84,8 +78,7 @@ flowchart TD
 
 ---
 
-## 6. 常见面试题
-
+## 常见面试题
 - XSS 三种类型(反射 / 存储 / DOM)的攻击场景与防御差异
 - CSRF 与 XSS 的本质区别:CSRF 借用户权限,XSS 偷用户数据
 - SameSite 三种取值(Strict / Lax / None)的 CSRF 防护差异
@@ -94,8 +87,7 @@ flowchart TD
 
 ---
 
-## 7. 与其他模块的关系
-
+## 与其他模块的关系
 - **上游**:[01-foundation](../01-foundation/)(浏览器原理)
 - **下游**:所有前端项目都必须考虑
 - **横向**:[06-performance](../06-performance/) 关注体验,[07 安全] 关注防护

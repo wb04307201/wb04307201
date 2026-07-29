@@ -16,8 +16,7 @@ TypeScript 在 2026 年已经是 85%+ 新项目的默认选择。但"会用 TS"�
 ---
 ---
 
-## 1. TypeScript 类型层级
-
+## TypeScript 类型层级
 ```mermaid
 graph TB
   A[Top Type<br/>unknown / any] --> B[结构化类型<br/>interface / type]
@@ -37,8 +36,7 @@ graph TB
 
 ---
 
-## 2. 类型体操：实用工具
-
+## 类型体操：实用工具
 ### 2.1 内置工具类型
 
 ```typescript
@@ -85,8 +83,7 @@ type Paths<T, D = 10> = [D] extends [never]
 
 ---
 
-## 3. 泛型模式
-
+## 泛型模式
 ### 3.1 基础泛型
 
 ```typescript
@@ -134,8 +131,7 @@ function groupBy<T, K extends string>(
 
 ---
 
-## 4. 条件类型与 `infer`
-
+## 条件类型与 `infer`
 ```typescript
 // 条件类型
 type IsString<T> = T extends string ? true : false
@@ -158,8 +154,7 @@ type B = UnwrapPromise<number>           // number
 
 ---
 
-## 5. 模板字面量类型
-
+## 模板字面量类型
 ```typescript
 // 字符串拼接类型
 type EventName = `on${Capitalize<'click' | 'hover' | 'focus'>}`
@@ -183,8 +178,7 @@ type P = ExtractRouteParams<'/users/:id/posts/:postId'>
 
 ---
 
-## 6. 类型守卫（Type Guards）
-
+## 类型守卫（Type Guards）
 ```typescript
 // is 关键字（类型谓词）
 function isUser(obj: unknown): obj is User {
@@ -220,8 +214,7 @@ function handle(result: Result<User>) {
 
 ---
 
-## 7. tsconfig 工程配置
-
+## tsconfig 工程配置
 ```json
 {
   "compilerOptions": {
@@ -269,8 +262,7 @@ function handle(result: Result<User>) {
 
 ---
 
-## 8. 类型与运行时：Zod 验证
-
+## 类型与运行时：Zod 验证
 **类型是编译时的，运行时输入必须校验**：
 
 ```typescript
@@ -303,8 +295,7 @@ if (result.success) {
 
 ---
 
-## 9. 常见反模式
-
+## 常见反模式
 | 反模式 | 症状 | 正确做法 |
 |--------|------|---------|
 | **any 泛滥** | 失去类型保护 | 用 `unknown` + 类型守卫 |
@@ -327,14 +318,12 @@ type Status = typeof STATUS[keyof typeof STATUS]
 
 ---
 
-## 10. 学习路径
-
+## 学习路径
 1. **入门**（1 周）：基础类型 + interface + 函数类型
 2. **进阶**（2 周）：泛型 + 类型守卫 + tsconfig 工程配置
 3. **高级**（持续）：条件类型 + `infer` + Zod 运行时校验
 
-## 11. 交叉引用
-
+## 交叉引用
 - [`02-language/`](../) — 语言总览
 - [`04-engineering/`](../../04-engineering/) — TS 与构建工具集成
 - [`05-architecture/`](../../05-architecture/) — TS 在架构选型中的角色

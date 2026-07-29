@@ -11,8 +11,7 @@ module:
 
 > 从智能系统分层到技术趋势，系统级架构设计参考。
 
-## 1. 目录导航
-
+## 目录导航
 | 目录 / 文件 | 核心内容 | 一句话定位 |
 |------------|---------|-----------|
 | [intelligent-system-layers](intelligent-system-layers/) | 智能系统三层架构 — 感知与数据层 / 认知与模型层 / 决策与执行层 · AI 技术栈分层架构全景 | 系统分层方法论 |
@@ -33,8 +32,7 @@ module:
 
 ---
 
-## 2. 知识脉络
-
+## 知识脉络
 ```mermaid
 graph TB
     A[智能系统三层<br/>感知 · 认知 · 决策] --> B[Agent 架构<br/>ReAct / DAG / Plan-Execute]
@@ -47,8 +45,7 @@ graph TB
 
 ---
 
-## 3. 速查表
-
+## 速查表
 | 概念 | 核心要点 | 典型场景 |
 |------|---------|---------|
 | **智能系统三层** | 感知层（数据采集）/ 认知层（模型推理）/ 决策层（行动执行） | 通用 AI 系统分层 |
@@ -63,8 +60,7 @@ graph TB
 
 ---
 
-## 4. 核心内容（按子模块展开）
-
+## 核心内容（按子模块展开）
 - **[intelligent-system-layers](intelligent-system-layers/)**：感知与数据层 / 认知与模型层 / 决策与执行层；与一般软件架构对应
 - **[agent-architecture](agent-architecture/)**：ReAct / DAG / Plan-and-Execute / Multi-Agent 4 大架构对比 + 选型决策树
 - 🆕 **[agent-execution-patterns](agent-execution-patterns/)**：4 模式深度（ReAct 5 硬伤 / Plan-and-Execute 3 大重规划机制 / 6 维对比 / 决策树）
@@ -77,8 +73,7 @@ graph TB
 
 ---
 
-## 5. 最佳实践
-
+## 最佳实践
 | 场景 | 实践要点 |
 |------|---------|
 | **Agent 架构选型** | 确定性流程 → DAG（可控可审计）；探索性任务 → ReAct（灵活但难调试）；复杂多步 → Plan-and-Execute；大规模协同 → Multi-Agent |
@@ -91,8 +86,7 @@ graph TB
 
 ---
 
-## 6. 常见面试题
-
+## 常见面试题
 | 题目 | 核心考点 |
 |------|---------|
 | 智能系统三层架构如何划分？ | 感知 / 认知 / 决策，对应数据 / 模型 / 行动 |
@@ -105,8 +99,7 @@ graph TB
 
 ---
 
-## 7. 相关章节
-
+## 相关章节
 - 上游：[L3 工程实践](../03-engineering/) → **L4 架构设计** → [L5 行业应用](../05-applications/)
 - 关联：[04.system-design](../../04.system-design/) — 通用系统设计方法论（DDD、分布式、高可用）
 - 关联：[07.workflow](../../07.workflow/README.md) — 工作流引擎与 AI Agent 集成（BPMN）
@@ -116,8 +109,7 @@ graph TB
 
 ---
 
-## 8. 开源参考
-
+## 开源参考
 | 类别 | 项目 |
 |------|------|
 | Agent 框架 | LangGraph · AutoGen · CrewAI · Semantic Kernel |

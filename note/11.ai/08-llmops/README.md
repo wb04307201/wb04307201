@@ -11,8 +11,7 @@ module:
 
 > 从 RAG vs 微调选型，到 LLMOps 栈搭建、向量库与缓存协同、评测体系、安全防护，一站式梳理 LLM 上线全链路。
 
-## 1. 目录导航
-
+## 目录导航
 | 序号 | 主题 | 核心内容 | 一句话定位 |
 |------|------|---------|-----------|
 | 01 | [RAG vs Fine-tuning vs Prompt](01-rag-vs-finetuning/) | 三大定制策略对比、选型决策、组合使用 | 定制选型第一站 |
@@ -33,8 +32,7 @@ module:
 
 ---
 
-## 2. 知识脉络
-
+## 知识脉络
 ```mermaid
 graph LR
     A[定制选型<br/>RAG vs FT vs Prompt] --> B[工程栈<br/>LLMOps]
@@ -47,8 +45,7 @@ graph LR
 
 ---
 
-## 3. 速查表
-
+## 速查表
 | 概念 | 核心要点 | 典型场景 |
 |------|---------|---------|
 | **RAG** | 检索增强生成（外挂知识库） | 知识密集 / 时效性 |
@@ -62,8 +59,7 @@ graph LR
 
 ---
 
-## 4. 核心内容（按子模块展开）
-
+## 核心内容（按子模块展开）
 - **[01-rag-vs-finetuning](01-rag-vs-finetuning/)**：RAG vs Fine-tuning vs Prompt Engineering 三大定制策略深度对比与选型决策
 - **[02-llmops-stack](02-llmops-stack/)**：LLMOps 完整工程栈 — 数据 / 训练 / 部署 / 监控 / 反馈
 - **[03-vector-db-vs-cache](03-vector-db-vs-cache/)**：向量库 vs KV 缓存的边界与协同（语义检索 vs 推理加速）
@@ -74,8 +70,7 @@ graph LR
 
 ---
 
-## 5. 最佳实践
-
+## 最佳实践
 | 场景 | 实践要点 |
 |------|---------|
 | **定制选型** | 知识更新频繁 → RAG；风格/任务定制 → FT；通用任务 → Prompt；可组合使用 |
@@ -86,8 +81,7 @@ graph LR
 
 ---
 
-## 6. 常见面试题
-
+## 常见面试题
 | 题目 | 核心考点 |
 |------|---------|
 | RAG vs Fine-tuning vs Prompt 选型？ | 知识更新 / 风格定制 / 通用任务三类决策 |
@@ -99,8 +93,7 @@ graph LR
 
 ---
 
-## 7. 相关章节
-
+## 相关章节
 - 上游：[L2 技术栈](../02-technology-stack/) → [L3 工程实践](../03-engineering/) → **LLMOps**
 - 关联：[03.database](../../03.database/README.md) — 向量数据库底层（Milvus/Qdrant 实现）
 - 关联：[04.system-design](../../04.system-design/README.md) — 系统设计（监控、可观测性）
@@ -108,8 +101,7 @@ graph LR
 
 ---
 
-## 8. 开源参考
-
+## 开源参考
 | 类别 | 项目 |
 |------|------|
 | 编排框架 | LangChain · LlamaIndex · Haystack |

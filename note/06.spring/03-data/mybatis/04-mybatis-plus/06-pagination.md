@@ -11,8 +11,7 @@ module:
 
 > 来源:整合自原 `08.mybatis/mybatis-plus/README.md` L164-194(§三.4 分页插件)
 
-## 6.1 配置分页插件
-
+## 配置分页插件
 ```java
 @Configuration
 public class MybatisPlusConfig {
@@ -26,8 +25,7 @@ public class MybatisPlusConfig {
 }
 ```
 
-## 6.2 使用分页
-
+## 使用分页
 ```java
 // 查询第1页,每页10条
 Page<User> page = new Page<>(1, 10);

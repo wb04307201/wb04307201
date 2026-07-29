@@ -114,4 +114,11 @@ Paxos 是分布式共识理论的奠基性算法，它证明了一致性是**可
 
 ---
 
+
+## 相关章节
+
+- [JWT 自建 SSO · Token + Redis 黑名单实战](../../../05-security/sso/04-jwt-implementation.md)
+- [部署与运维篇](../../../07-deployment/README.md)
+- [共识算法](../README.md)
+
 ← [返回 共识算法](../README.md)

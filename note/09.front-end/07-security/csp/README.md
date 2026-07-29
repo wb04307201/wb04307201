@@ -24,8 +24,7 @@ CSP（内容安全策略）与 SRI（子资源完整性） 的关键不是'防�
 
 ---
 
-## 1. CSP 解决的问题
-
+## CSP 解决的问题
 ```mermaid
 graph TB
   A[攻击者找到 XSS] --> B{有没有 CSP?}
@@ -45,8 +44,7 @@ graph TB
 
 ---
 
-## 2. CSP 指令分类
-
+## CSP 指令分类
 | 指令类别 | 指令 | 作用 |
 |---------|------|------|
 | **资源加载** | `default-src` | 所有资源的默认白名单 |
@@ -71,8 +69,7 @@ graph TB
 
 ---
 
-## 3. CSP 配置示例
-
+## CSP 配置示例
 ### 严格策略（现代站点推荐）
 
 ```http
@@ -127,8 +124,7 @@ echo -n "console.log('hello')" | openssl dgst -sha256 -binary | openssl base64
 
 ---
 
-## 4. CSP 汇报：发现策略中的漏洞
-
+## CSP 汇报：发现策略中的漏洞
 **CSP 最大挑战**：配置不当会让正常功能失效。所以**先用汇报模式调试，再强制启用**。
 
 ```http
@@ -155,8 +151,7 @@ app.post('/csp-report', express.json({ type: 'application/csp-report' }), (req, 
 
 ---
 
-## 5. CSP 与常见框架的协作
-
+## CSP 与常见框架的协作
 | 框架 | CSP 注意事项 |
 |------|------------|
 | **React (CRA)** | 默认生成内联脚本，需要 nonce 或 `'unsafe-inline'` |
@@ -167,8 +162,7 @@ app.post('/csp-report', express.json({ type: 'application/csp-report' }), (req, 
 
 ---
 
-## 6. SRI（子资源完整性）
-
+## SRI（子资源完整性）
 ### 是什么？
 
 SRI（Subresource Integrity）让浏览器校验外部脚本 / 样式的**内容哈希**。如果 CDN 被篡改，哈希不匹配，浏览器拒绝加载。
@@ -211,8 +205,7 @@ npx sri-toolbox generate --files=react.min.js
 
 ---
 
-## 7. CSP vs 其他安全头
-
+## CSP vs 其他安全头
 | 安全头 | 作用 | 配置示例 |
 |--------|------|---------|
 | **CSP** | 资源加载白名单 | `Content-Security-Policy: default-src 'self'` |
@@ -246,8 +239,7 @@ app.use(helmet({
 
 ---
 
-## 8. CSP 最佳实践
-
+## CSP 最佳实践
 1. **从严格策略开始**：`default-src 'self'; object-src 'none'`
 2. **使用 nonce / hash，避免 `'unsafe-inline'`**：内联脚本是 XSS 的温床
 3. **永远不要用 `'unsafe-eval'`**：`eval` 让 CSP 形同虚设
@@ -258,8 +250,7 @@ app.use(helmet({
 
 ---
 
-## 9. CSP 的局限
-
+## CSP 的局限
 | 局限 | 说明 |
 |------|------|
 | ** `'unsafe-inline'` 泛滥** | 很多应用为了兼容 Tailwind / styled-components 不得不放开 |
@@ -269,8 +260,7 @@ app.use(helmet({
 
 ---
 
-## 10. 实战检查清单
-
+## 实战检查清单
 - [ ] 所有响应设置 `Content-Security-Policy` 头
 - [ ] 优先用 `nonce` / `hash`，避免 `'unsafe-inline'` / `'unsafe-eval'`
 - [ ] 外部脚本 / 样式使用 SRI `integrity`
@@ -284,8 +274,7 @@ app.use(helmet({
 
 ---
 
-## 11. 交叉引用
-
+## 交叉引用
 - [`07-security/xss/`](../xss/) — CSP 是 XSS 的最后一道防线
 - [`07-security/cors/`](../cors/) — CSP `connect-src` 与 CORS 互补
 - [`06-performance/`](../../06-performance/) — CSP 可能影响加载性能
@@ -293,8 +282,7 @@ app.use(helmet({
 
 ---
 
-## 12. 与其他模块的关系
-
+## 与其他模块的关系
 - **上游**：[`07-security/xss/`](../xss/)
 - **下游**：被所有对外发布的应用复用
 

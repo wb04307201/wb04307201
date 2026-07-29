@@ -1,10 +1,9 @@
-<!--
-module:
+<!--module:
   parent: tools
-  slug: tools/lombok
+  slug: 05.tools/03-java/lombok
   type: article
   category: 主模块子文章
-  summary: Lombok
+  summary: ---
 -->
 
 # Lombok

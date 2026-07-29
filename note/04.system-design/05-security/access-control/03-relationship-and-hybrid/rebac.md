@@ -2,8 +2,7 @@
 
 > 一句话定位：ReBAC 以实体间关系（共享、好友、协作者）作为决策依据，Google Zanzibar 是工业级经典实现。
 
-## 1. 概念与起源
-
+## 概念与起源
 **ReBAC** 把"权限"建模为**实体间的关系图**——回答"用户 S 与资源 R 之间是否存在一条满足条件的关系路径"。它是 ABAC 的特例（关系本身就是一种属性），但在分布式授权场景中独立成族。
 
 - **历史背景**：2019 年 Google 发表《Zanzibar: Google's Consistent, Global Authorization System》论文，公开支撑 Google Docs / Drive / Cloud 等全部产品的统一权限系统
@@ -11,8 +10,7 @@
 
 **与 ABAC 的关键区别**：ABAC 用"属性 + 策略表达式"；ReBAC 用"关系图 + 关系查询"。ReBAC 表达"Alice 共享了 doc:1 给 Bob 的整个团队"很自然，ABAC 需要复杂表达式。
 
-## 2. 核心模型图
-
+## 核心模型图
 ```text
         ┌──────────────┐
         │   User:alice │
@@ -38,8 +36,7 @@
        alice → owner(doc:readme) → 有 viewer 权限 → PERMIT
 ```
 
-## 3. 表/数据结构
-
+## 表/数据结构
 ### 关系表（最朴素实现）
 
 ```sql
@@ -65,8 +62,7 @@ group:editor#member@user:carol
 doc:readme#viewer@group:editor#member
 ```
 
-## 4. 代码/伪代码示例
-
+## 代码/伪代码示例
 ```java
 // 朴素 ReBAC：递归查询关系图
 public class RebacEngine {
@@ -111,8 +107,7 @@ PermissionResponse resp = client.check(
 // resp.getPermissionship() == Permissionship.PERMISSIONSHIP_HAS_PERMISSION
 ```
 
-## 5. 优缺点
-
+## 优缺点
 **优点**:
 - 表达"共享、好友、协作者"等关系型权限最自然
 - 支持关系继承（用户继承所在组的权限）
@@ -125,8 +120,7 @@ PermissionResponse resp = client.check(
 - 不适合表达"工作时间内"等环境属性（用 ABAC）
 - 学习成本高（团队需理解 Zanzibar / SpiceDB 概念）
 
-## 6. 适用与不适用场景
-
+## 适用与不适用场景
 **适用**:
 - 文档协作（Google Docs、Notion、飞书文档）
 - 社交网络（"仅好友可见"）

@@ -11,8 +11,7 @@ module:
 
 > 探索 AI 技术的前沿方向——从推理增强、模型蒸馏到多模态融合，追踪学术前沿与工业落地的交汇点。
 
-## 1. 目录导航
-
+## 目录导航
 | 目录 | 核心内容 | 一句话定位 |
 |------|---------|-----------|
 | [alignment](alignment/) | LLM 对齐 — SFT / RLHF / DPO / Constitutional AI / KTO 五大方法 + 3H 原则 | 让模型输出符合人类意图 |
@@ -36,8 +35,7 @@ module:
 
 > 📌 本模块已覆盖 6 大前沿方向：**LLM 对齐**（alignment）、**沉思模型**（rumination-models）、**知识蒸馏**（distillation）、**推理增强**（reasoning）、**模型效率**（efficiency）、**安全与对齐**（safety）。以下方向待补充：多模态融合、架构创新（MoE / Mamba / RetNet）。
 
-## 2. 研究版图
-
+## 研究版图
 ```text
 AI 前沿研究
 ├── 🧠 推理增强
@@ -64,8 +62,7 @@ AI 前沿研究
 
 ---
 
-## 3. 速查表
-
+## 速查表
 | 方向 | 关键进展（2026） | 影响 | 状态 |
 |------|----------------|------|------|
 | **推理模型** | o3 / o4-mini、Claude 4、Gemini 2.5 Pro | 代码/数学能力大幅跃升 | ✅ 部分覆盖 |
@@ -79,8 +76,7 @@ AI 前沿研究
 
 ---
 
-## 4. 核心内容（按子模块展开）
-
+## 核心内容（按子模块展开）
 - **[alignment](alignment/)**（+ 5 子）：LLM 对齐方法论 — SFT / RLHF / DPO / Constitutional AI / KTO 五大方法 + 3H 原则
 - **[rumination-models](rumination-models/)**：沉思模型（Rumination）范式 — 让 LLM 主动"慢思考"，包含 GLM-Z1-Rumination 等深度推理模型
 - **[distillation](distillation/)**（+ 1 子 [tools](distillation/tools/)）：知识蒸馏技术 — 大模型能力向小模型迁移的方法论与工具
@@ -90,8 +86,7 @@ AI 前沿研究
 
 ---
 
-## 5. 最佳实践
-
+## 最佳实践
 | 场景 | 实践要点 |
 |------|---------|
 | **模型蒸馏** | Teacher-Student 架构；用 Logit 蒸馏 + Feature 蒸馏 + Attention 蒸馏多管齐下 |
@@ -101,8 +96,7 @@ AI 前沿研究
 
 ---
 
-## 6. 常见面试题
-
+## 常见面试题
 | 题目 | 核心考点 |
 |------|---------|
 | 知识蒸馏的核心思想？ | Teacher-Student 架构，让小模型学习大模型的软标签（Logits） |
@@ -114,8 +108,7 @@ AI 前沿研究
 
 ---
 
-## 7. 相关章节
-
+## 相关章节
 - 上游：[L1 基础概念](../01-fundamentals/) → [L2 技术栈](../02-technology-stack/) → **L7 前沿研究**
 - 关联：[12.story #33 AI 致命三件套](../../12.story/31-ai-fatal-trio.md) — AI 幻觉与安全性叙事
 - 关联：[12.story #42 Prompt Engineering](../../12.story/40-prompt-engineering.md) — 提示工程演进
@@ -124,8 +117,7 @@ AI 前沿研究
 
 ---
 
-## 8. 开源参考
-
+## 开源参考
 | 类别 | 项目 |
 |------|------|
 | 推理模型 | OpenAI o-series · Claude 4 · Gemini 2.5 Pro · GLM-Z1-Rumination |

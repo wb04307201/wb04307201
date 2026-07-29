@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 4 道防线全景
-
+## 4 道防线全景
 ```text
 ┌────────────────────────────────────────────────────────────┐
 │ 防线 1：组件渲染错误                                          │
@@ -39,8 +38,7 @@ module:
 
 ---
 
-## 2. 防线 1：React ErrorBoundary
-
+## 防线 1：React ErrorBoundary
 ### 2.1 ErrorBoundary 基础组件
 
 ```jsx
@@ -109,8 +107,7 @@ function UserProfile({ userId }) {
 
 ---
 
-## 3. 防线 2：Vue errorHandler + errorCaptured
-
+## 防线 2：Vue errorHandler + errorCaptured
 ### 3.1 全局 errorHandler
 
 ```js
@@ -153,8 +150,7 @@ export default {
 
 ---
 
-## 4. 防线 3：axios 拦截器
-
+## 防线 3：axios 拦截器
 ### 4.1 response 拦截器（4xx/5xx）
 
 ```js
@@ -233,8 +229,7 @@ axios.interceptors.response.use(
 
 ---
 
-## 5. 防线 4：全局 unhandledrejection
-
+## 防线 4：全局 unhandledrejection
 ```js
 window.addEventListener('unhandledrejection', (event) => {
   event.preventDefault();
@@ -253,8 +248,7 @@ window.addEventListener('unhandledrejection', (event) => {
 
 ---
 
-## 6. 完整链路示例（React + axios）
-
+## 完整链路示例（React + axios）
 ```jsx
 // App.jsx
 function App() {
@@ -289,8 +283,7 @@ function UserList() {
 
 ---
 
-## 7. 选型决策
-
+## 选型决策
 | 场景 | 推荐组合 |
 |------|---------|
 | **React 项目** | ErrorBoundary + axios 拦截器 + try/catch + unhandledrejection |
@@ -301,8 +294,7 @@ function UserList() {
 
 ---
 
-## 8. 一句话总结
-
+## 一句话总结
 > **React/Vue 异步错误 = 4 道防线全链路：组件渲染（ErrorBoundary/errorHandler）+ 异步操作（try/catch）+ 网络层（axios 拦截器）+ 全局兜底（unhandledrejection）—— 缺一不可。**
 
 ---

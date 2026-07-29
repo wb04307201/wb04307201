@@ -9,14 +9,15 @@ module:
 
 # Transformer 超长上下文性能瓶颈：根因分析 + 6 大优化方案
 
+> **定位**：Transformer 处理超长上下文变慢的根因分析（Attention O(n²) + KV Cache 内存）+ 6 大优化方案对比 + 实际案例 的核心原理、实现与最佳实践。
+
 ← [返回: L1 基础概念](../README.md)
 
 > **一句话定位**：Transformer 处理超长上下文变慢的根因是 **Self-Attention 的 O(n²) 时间/空间复杂度 + KV Cache 线性膨胀**，优化方案包括 Flash Attention / Sparse Attention / Linear Attention / MQA / GQA / Ring Attention。本文系统分析根因 + 对比方案 + 给出选型指南。
 
 ---
 
-## 0. 问题背景
-
+## 问题背景
 ### 典型场景
 
 ```text
@@ -40,8 +41,7 @@ module:
 
 ---
 
-## 1. 根因 1：Self-Attention 的 O(n²) 复杂度
-
+## 根因 1：Self-Attention 的 O(n²) 复杂度
 ### 1.1 标准 Attention 计算过程
 
 ```python
@@ -113,8 +113,7 @@ n = 1M, heads = 80:
 
 ---
 
-## 2. 根因 2：KV Cache 线性膨胀
-
+## 根因 2：KV Cache 线性膨胀
 ### 2.1 什么是 KV Cache？
 
 **自回归生成的特性**：每次生成一个新 token，都需要重新计算之前所有 token 的 K、V。
@@ -180,8 +179,7 @@ seq_len = 1M:
 
 ---
 
-## 3. 6 大优化方案对比
-
+## 6 大优化方案对比
 ### 3.1 方案概览
 
 | 方案 | 核心思路 | 时间复杂度 | 空间复杂度 | 适用场景 |
@@ -397,8 +395,7 @@ Step 5：累积结果（Online Softmax）
 
 ---
 
-## 4. 选型指南
-
+## 选型指南
 ### 4.1 决策树
 
 ```text
@@ -457,8 +454,7 @@ Gemini 1.5:
 
 ---
 
-## 5. 实战案例
-
+## 实战案例
 ### 案例 1：128K 代码库问答
 
 ```text
@@ -497,8 +493,7 @@ Gemini 1.5:
 
 ---
 
-## 6. 一句话速查
-
+## 一句话速查
 ```text
 "Transformer 处理超长上下文变慢的根因：
 1. Self-Attention 的 O(n²) 复杂度（每个 token 看所有其他 token）
@@ -521,8 +516,7 @@ Gemini 1.5:
 
 ---
 
-## 7. 交叉引用
-
+## 交叉引用
 - **同模块兄弟**：
   - [Transformer 架构核心](./transformer/) — Self-Attention + QKV + Multi-Head
   - [Attention 机制全家桶](./attention-mechanism/) — MHA / MQA / GQA / Sparse / Linear

@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 0. 面试高频拷问
-
+## 面试高频拷问
 ```text
 Q：Java 后端如何高并发设计敏感词过滤系统？
    从字典树到多模式匹配完整落地方案？
@@ -33,8 +32,7 @@ Q：Java 后端如何高并发设计敏感词过滤系统？
 
 ---
 
-## 1. 3 大场景与性能要求
-
+## 3 大场景与性能要求
 | 场景 | QPS | 延迟要求 | 词典大小 |
 |------|-----|---------|----------|
 | **评论过滤** | 1000-10k | < 50ms | 1万-10万词 |
@@ -44,8 +42,7 @@ Q：Java 后端如何高并发设计敏感词过滤系统？
 
 ---
 
-## 2. 系统架构全景
-
+## 系统架构全景
 ```text
 ┌─────────────────────────────────────────────────────────────┐
 │                     客户端 / API Gateway                       │
@@ -73,8 +70,7 @@ Q：Java 后端如何高并发设计敏感词过滤系统？
 
 ---
 
-## 3. 5 大核心组件
-
+## 5 大核心组件
 ### 3.1 核心：AC 自动机匹配引擎
 
 ```java
@@ -176,8 +172,7 @@ public void refreshDictionary() {
 
 ---
 
-## 4. 架构演进 3 阶段
-
+## 架构演进 3 阶段
 ### 4.1 阶段 1：单机（1k QPS）
 
 ```text
@@ -227,8 +222,7 @@ public void refreshDictionary() {
 
 ---
 
-## 5. 4 维选型决策
-
+## 4 维选型决策
 | Q | 选项 | 选 |
 |---|------|-----|
 | **词典大小** | < 1k / 1k-100k / > 100k | 决定算法 + 内存 |
@@ -240,8 +234,7 @@ public void refreshDictionary() {
 
 ---
 
-## 6. 5 大反模式
-
+## 5 大反模式
 ### ⚠️ 反模式 1：每次请求都重新构建 AC 自动机
 
 ```java
@@ -304,8 +297,7 @@ tokens.forEach(token -> ac.match(token));
 
 ---
 
-## 7. 性能 benchmark（实测）
-
+## 性能 benchmark（实测）
 ### 7.1 单实例性能
 
 | 词典 | 文本 | Bloom | AC 自动机 |
@@ -325,8 +317,7 @@ tokens.forEach(token -> ac.match(token));
 
 ---
 
-## 8. 工业级方案对比
-
+## 工业级方案对比
 | 方案 | 词典能力 | QPS | 复杂度 | 适用 |
 |------|---------|-----|--------|------|
 | 朴素 KMP 多次 | < 100 | < 100 | 低 | 小项目 |
@@ -336,8 +327,7 @@ tokens.forEach(token -> ac.match(token));
 
 ---
 
-## 9. 速查 · 关联资源
-
+## 速查 · 关联资源
 - **变体绕过对抗**：[05-anti-evasion.md](05-anti-evasion.md) —— 6 大绕过手法 + 归一化流水线 + Unicode/繁简/谐音处理 + AI 语义兜底
 - **同级案例**：[商品搜索系统设计](../product-search/README.md) —— 倒排索引 + BM25 + 多阶段排序 + 数据同步
 - **同级案例**：[大文件上传系统](../file-upload/README.md) —— 分片 + 断点续传 + 秒传 + 对象存储
@@ -347,5 +337,12 @@ tokens.forEach(token -> ac.match(token));
 - **餐厅叙事**：[12.story 联动](../../../12.story/01-ai-agent-architecture.md) —— 阿明餐厅评论区敏感词审查
 
 ---
+
+
+## 相关章节
+
+- [云设计模式](../../01-foundation/system-design-basics/cloud-design-patterns/README.md)
+- [Serverless 架构：FaaS / BaaS / Knative 全场景实战](../../01-foundation/02-evolution/02-serverless-architecture/README.md)
+- [冗余设计](../../03-high-availability/redundancy-design/README.md)
 
 ← [返回: 高性能设计](../README.md)

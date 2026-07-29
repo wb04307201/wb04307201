@@ -13,8 +13,7 @@ module:
 
 ---
 
-## 1. 模块导航
-
+## 模块导航
 | 序号 | 主题 | 核心内容 | 子 README |
 |------|------|---------|-----------|
 
@@ -25,8 +24,7 @@ module:
 
 ---
 
-## 2. 知识脉络
-
+## 知识脉络
 ```mermaid
 graph TB
     Ali["阿里微服务"]
@@ -60,8 +58,7 @@ graph TB
 
 ---
 
-## 3. 速查表 / Cheat Sheet
-
+## 速查表 / Cheat Sheet
 | 概念 | 解释 | 典型场景 |
 |------|------|---------|
 | **Nacos** | 动态服务发现 + 配置管理 + DNS/RPC 双模式 | 微服务注册中心 / 配置中心 |
@@ -79,8 +76,7 @@ graph TB
 
 ---
 
-## 4. 核心内容
-
+## 核心内容
 ### 4.1 控制面 — Nacos / OpenSergo
 
 **Nacos** 提供服务发现、配置管理、DNS 服务、服务元数据管理四大能力。服务注册支持 DNS 与 RPC 双模式；健康检查支持传输层（PING/TCP）与应用层（HTTP/MySQL）；配置管理支持版本跟踪、金丝雀发布、一键回滚。
@@ -123,8 +119,7 @@ graph TB
 
 ---
 
-## 5. 最佳实践
-
+## 最佳实践
 - **Spring Cloud Alibaba 一站式**：Spring 生态首选 SCA（含 Nacos / Sentinel / Seata 等）
 - **Dubbo 高性能 RPC**：追求低延迟场景选 Dubbo，生态完整
 - **Sentinel 限流前置**：所有外部入口必须配 Sentinel 限流 + 熔断
@@ -133,8 +128,7 @@ graph TB
 
 ---
 
-## 6. 常见面试题
-
+## 常见面试题
 - Nacos 的 AP / CP 模式如何切换？
 - Sentinel 限流算法有哪些？各自优缺点？
 - Seata AT 模式的工作原理？
@@ -158,8 +152,7 @@ graph TB
 
 ---
 
-## 7. 相关章节
-
+## 相关章节
 - 上游：[`工具链`](../README.md)
 - 关联：[`06.spring`](../../06.spring/README.md) — Spring Cloud Alibaba 落地集成
 - 关联：[`04.system-design`](../../04.system-design/README.md) — 微服务架构设计同源

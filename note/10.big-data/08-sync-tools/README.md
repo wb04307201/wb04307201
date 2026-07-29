@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 模块导航
-
+## 模块导航
 | 主题 | 状态 | 说明 |
 |------|------|------|
 | DataX | ✅ 离线主流 | 阿里开源 / 离线批量 |
@@ -34,8 +33,7 @@ module:
 
 ---
 
-## 2. 知识脉络
-
+## 知识脉络
 ```mermaid
 flowchart TD
     A[同步工具选型] --> B{实时性?}
@@ -51,8 +49,7 @@ flowchart TD
 
 ---
 
-## 3. 速查要点
-
+## 速查要点
 - **DataX 架构**：Reader（数据读取）+ Channel（缓冲）+ Writer（数据写入）+ Framework（调度）
 - **SeaTunnel 优势**：Zeta 引擎（自研）+ CDC 支持 + 实时+离线统一
 - **Sqoop 适用**：Hadoop 生态内 MySQL/Oracle ↔ HDFS/Hive 批量同步
@@ -67,8 +64,7 @@ flowchart TD
 
 ---
 
-## 4. 核心内容
-
+## 核心内容
 ### 4.1 DataX 实战（MySQL → Hive）
 
 ```json
@@ -173,8 +169,7 @@ sqoop import --incremental lastmodified --check-column update_time \
 
 ---
 
-## 5. 最佳实践
-
+## 最佳实践
 | 实践 | 说明 |
 |------|------|
 | 离线批量 | DataX（MySQL → Hive）+ ORC 压缩 + 并发限速 |
@@ -185,8 +180,7 @@ sqoop import --incremental lastmodified --check-column update_time \
 
 ---
 
-## 6. 常见面试题
-
+## 常见面试题
 | 题目 | 核心考点 |
 |------|---------|
 | DataX 与 Sqoop 区别？ | Reader/Writer 插件 vs MapReduce；单机 vs Hadoop |
@@ -198,8 +192,7 @@ sqoop import --incremental lastmodified --check-column update_time \
 
 ---
 
-## 7. 与其他模块的关系
-
+## 与其他模块的关系
 - **上游**：所有外部数据源（MySQL/Oracle/Kafka/日志）
 - **下游**：被 [01 数仓架构](../01-data-warehouse/) / [04 数据湖](../04-data-lake/) 消费
 - **横向**：[06 调度](../06-scheduling/) 触发同步任务

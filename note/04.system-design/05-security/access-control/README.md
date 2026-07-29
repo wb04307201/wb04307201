@@ -19,8 +19,7 @@ module:
 
 > 一句话定位：访问控制是把「谁能对什么做什么」这一决策工程化的学科。
 
-## 1. 谱系与心智模型
-
+## 谱系与心智模型
 访问控制模型按"决策依据"形成 3 大家族：
 
 ```text
@@ -46,14 +45,12 @@ module:
 | ReBAC | 实体间关系 | 细 | 复杂 | 文档共享、社交网络 |
 | 混合 | RBAC+ABAC 双层 | 中-细 | 中 | 90% 企业业务系统 |
 
-## 2. 三大族索引
-
+## 三大族索引
 - **传统族**：身份即权限，不引入中间抽象 → [01-traditional](01-traditional/README.md)
 - **角色属性族**：把权限从人身上抽到中介（角色/属性）→ [02-role-and-attribute](02-role-and-attribute/README.md)
 - **关系与混合族**：关系图与实战组合 → [03-relationship-and-hybrid](03-relationship-and-hybrid/README.md)
 
-## 3. 选型决策树
-
+## 选型决策树
 ```text
 问 1: 业务有清晰组织架构吗？
   ├─ 是 → 问 2
@@ -79,8 +76,7 @@ module:
 - 想"协作" → ReBAC
 - 想"不踩坑" → 混合
 
-## 4. 横向对比表（含主流实现）
-
+## 横向对比表（含主流实现）
 | 模型 | 主流实现 / 代表产品 |
 |------|---------------------|
 | DAC | UNIX 文件权限 / Windows NTFS / Web 资源 owner |
@@ -90,8 +86,7 @@ module:
 | ReBAC | Google Zanzibar (SpiceDB) / Auth0 FGA / Permify |
 | 混合 | MyBatis-Plus DataPermission / Spring Security + SpEL |
 
-## 5. 演进路径与混合策略
-
+## 演进路径与混合策略
 ### 演进路径
 
 ```text

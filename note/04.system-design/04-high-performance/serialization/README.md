@@ -28,8 +28,7 @@ module:
 
 ---
 
-## 1. 为什么需要关注序列化性能
-
+## 为什么需要关注序列化性能
 ### 1.1 序列化在系统中的位置
 
 ```text
@@ -65,8 +64,7 @@ module:
 
 ---
 
-## 2. 主流序列化方案对比
-
+## 主流序列化方案对比
 ### 2.1 综合对比表
 
 | 特性 | JSON(Jackson) | Protobuf | Kryo | Hessian | MessagePack |
@@ -92,8 +90,7 @@ Dubbo 框架 → Hessian2 (默认) / Protobuf (可切换)
 
 ---
 
-## 3. Protobuf 使用指南
-
+## Protobuf 使用指南
 Protocol Buffers 是 Google 开源的二进制序列化方案，以高性能和小体积著称。
 
 ### 3.1 .proto 文件定义
@@ -203,8 +200,7 @@ private UserServiceGrpc.UserServiceStub userServiceStub;
 
 ---
 
-## 4. Kryo 使用指南
-
+## Kryo 使用指南
 Kryo 是 Java 专用的快速序列化框架，序列化和反序列化速度极快。
 
 ### 4.1 基本使用
@@ -317,8 +313,7 @@ public class KryoRedisSerializer implements RedisSerializer<Object> {
 
 ---
 
-## 5. 序列化最佳实践
-
+## 序列化最佳实践
 ### 5.1 选型决策树
 
 ```text

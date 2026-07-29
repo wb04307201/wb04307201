@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 01.java
+  slug: 01.java/kotlin/03-functional
+  type: article
+  category: 主模块子文章
+  summary: Kotlin 的默认参数替代 Java 的方法重载，命名参数提升可读性。
+-->
+
 # Kotlin 函数式
 
 ## 一、函数特性

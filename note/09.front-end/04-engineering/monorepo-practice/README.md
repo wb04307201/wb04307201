@@ -16,8 +16,7 @@ Monorepo 是把多个包（apps / packages）放在一个 Git 仓库中统一管
 ---
 ---
 
-## 1. Monorepo 的核心价值
-
+## Monorepo 的核心价值
 | 价值 | 说明 |
 |------|------|
 | **代码共享** | UI 库 / 工具库直接 import，无需发包 |
@@ -28,8 +27,7 @@ Monorepo 是把多个包（apps / packages）放在一个 Git 仓库中统一管
 
 ---
 
-## 2. 典型目录结构
-
+## 典型目录结构
 ```text
 monorepo/
 ├── apps/                       # 应用
@@ -50,8 +48,7 @@ monorepo/
 
 ---
 
-## 3. pnpm workspaces 配置
-
+## pnpm workspaces 配置
 ```yaml
 # pnpm-workspace.yaml
 packages:
@@ -83,8 +80,7 @@ pnpm -r build
 
 ---
 
-## 4. Turborepo：构建编排
-
+## Turborepo：构建编排
 ```json
 // turbo.json
 {
@@ -122,8 +118,7 @@ turbo build --remote-only
 
 ---
 
-## 5. Nx：企业级 Monorepo
-
+## Nx：企业级 Monorepo
 | 特性 | Turborepo | Nx |
 |------|----------|-----|
 | **学习曲线** | 低 | 高 |
@@ -135,8 +130,7 @@ turbo build --remote-only
 
 ---
 
-## 6. 共享配置实战
-
+## 共享配置实战
 ### 共享 TSConfig
 ```json
 // packages/config-ts/base.json
@@ -173,8 +167,7 @@ module.exports = {
 
 ---
 
-## 7. 包发布策略
-
+## 包发布策略
 | 策略 | 适用 | 工具 |
 |------|------|------|
 | **内部包（不发布）** | 内部共享 | `private: true` |
@@ -194,8 +187,7 @@ npx changeset publish
 
 ---
 
-## 8. CI 优化
-
+## CI 优化
 ```yaml
 # GitHub Actions
 - name: Cache Turbo
@@ -210,8 +202,7 @@ npx changeset publish
 
 ---
 
-## 9. 常见陷阱
-
+## 常见陷阱
 | 陷阱 | 解决 |
 |------|------|
 | **幽灵依赖** | pnpm 严格模式 + `pnpm.strict-peer-dependencies` |
@@ -222,14 +213,12 @@ npx changeset publish
 
 ---
 
-## 10. 学习路径
-
+## 学习路径
 1. **入门**（3 天）：pnpm workspaces 搭建最小 monorepo
 2. **进阶**（1 周）：Turborepo 集成 + 共享配置
 3. **高级**（持续）：远程缓存、CI 优化、Nx 企业级方案
 
-## 11. 交叉引用
-
+## 交叉引用
 - [`04-engineering/`](../) — 工程化总览
 - [`04-engineering/vite/`](../vite/) — Vite 与 Monorepo 集成
 - [`05.tools/05-monorepo/`](../../../05.tools/05-monorepo/README.md/) — Monorepo 工具链专题

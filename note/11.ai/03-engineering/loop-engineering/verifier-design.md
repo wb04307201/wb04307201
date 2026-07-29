@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 5 大 Verifier 类型
-
+## 5 大 Verifier 类型
 | 类型 | 工具 | 信号 | 客观程度 |
 |------|------|------|---------|
 | **测试** | Jest / pytest / JUnit / Go test | pass / fail | ⭐⭐⭐⭐⭐ |
@@ -27,8 +26,7 @@ module:
 
 ---
 
-## 2. 测试 Verifier（最重要的客观源）
-
+## 测试 Verifier（最重要的客观源）
 ### 2.1 单元测试用例示例
 
 ```python
@@ -81,8 +79,7 @@ def test_login():
 
 ---
 
-## 3. 类型检查 Verifier
-
+## 类型检查 Verifier
 ### 3.1 TypeScript 实战
 
 ```python
@@ -112,8 +109,7 @@ def check_types(code):
 
 ---
 
-## 4. Lint Verifier（完全自动）
-
+## Lint Verifier（完全自动）
 ```python
 def fix_lint(code):
     """无需 Agent 介入"""
@@ -128,8 +124,7 @@ def fix_lint(code):
 
 ---
 
-## 5. 编译 Verifier（绝对客观）
-
+## 编译 Verifier（绝对客观）
 ```python
 def check_compile(code):
     result = subprocess.run(
@@ -146,8 +141,7 @@ def check_compile(code):
 
 ---
 
-## 6. 运行时 Verifier（最复杂）
-
+## 运行时 Verifier（最复杂）
 ```python
 def check_runtime(code, test_input):
     """执行代码 + 捕获异常"""
@@ -171,8 +165,7 @@ def check_runtime(code, test_input):
 
 ---
 
-## 7. 复合 Verifier 设计
-
+## 复合 Verifier 设计
 ```python
 class CompositeVerifier:
     """组合多个 Verifier 形成评分"""
@@ -195,8 +188,7 @@ class CompositeVerifier:
 
 ---
 
-## 8. 评分函数 vs 通过判定
-
+## 评分函数 vs 通过判定
 ```python
 # 二值（pass/fail）
 def check(code):
@@ -217,8 +209,7 @@ def score(code):
 
 ---
 
-## 9. 反模式 · 5 个常见错
-
+## 反模式 · 5 个常见错
 ### ⚠️ 反模式 1：单 Verifier（仅 1 个）
 
 - 错：只用"测试通过"作为信号
@@ -246,8 +237,7 @@ def score(code):
 
 ---
 
-## 10. 一句话总结
-
+## 一句话总结
 > **Verifier = Agent 改完后的客观"判官"——5 大源（测试/类型/lint/编译/运行时）+ 复合评分 + 详细错误反馈。Auto-Fix Loop 没有 Verifier 就是盲改。**
 
 ---

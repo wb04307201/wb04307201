@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 模块导航
-
+## 模块导航
 | 主题 | 状态 | 说明 |
 |------|------|------|
 | Apache Airflow | ✅ 事实标准 | Python DAG / 中心化 |
@@ -33,8 +32,7 @@ module:
 
 ---
 
-## 2. 知识脉络
-
+## 知识脉络
 ```mermaid
 flowchart LR
     DAG[DAG 文件] --> Scheduler[Scheduler]
@@ -48,8 +46,7 @@ flowchart LR
 
 ---
 
-## 3. 速查要点
-
+## 速查要点
 - **Airflow 架构**：Scheduler + Executor + Webserver + Metadata DB
 - **DolphinScheduler 优势**：去中心化（Worker 节点独立）、租户隔离、可视化 DAG
 - **任务依赖**：上游成功 → 下游执行；失败重试 + 告警
@@ -64,8 +61,7 @@ flowchart LR
 
 ---
 
-## 4. 核心内容
-
+## 核心内容
 ### 4.1 Airflow DAG 示例
 
 ```python
@@ -137,8 +133,7 @@ class SparkSubmitOperator(BaseOperator):
 
 ---
 
-## 5. 最佳实践
-
+## 最佳实践
 | 实践 | 说明 |
 |------|------|
 | Executor 选择 | 云原生 → KubernetesExecutor（动态伸缩 60% 节省） |
@@ -149,8 +144,7 @@ class SparkSubmitOperator(BaseOperator):
 
 ---
 
-## 6. 常见面试题
-
+## 常见面试题
 | 题目 | 核心考点 |
 |------|---------|
 | Airflow vs DolphinScheduler？ | Python DAG vs 可视化 DAG；中心化 vs 去中心化 |
@@ -162,8 +156,7 @@ class SparkSubmitOperator(BaseOperator):
 
 ---
 
-## 7. 与其他模块的关系
-
+## 与其他模块的关系
 - **上游**：所有任务模块（02-05, 08）
 - **下游**：触发实际计算任务
 - **横向**：[07 数据治理](../07-data-governance/)（任务血缘）

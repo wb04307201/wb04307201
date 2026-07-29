@@ -348,6 +348,13 @@ Step 5: 切到 C4 - Level 4 (Code 视图)
 5. **5 大反模式要避**：模型沉睡、元素爆炸、关系滥用、标准漂移、工具切换
 6. **3 步启动模板**：2 周建模 → 2 周接流程 → 持续扩规模
 
+
+## 相关章节
+
+- [领域驱动设计](../ddd/README.md)
+- [高并发敏感词过滤系统 · 完整落地方案](../../../04-high-performance/sensitive-word-filter/README.md)
+- [服务间通信](../microservices/service-communication/README.md)
+
 ---
 
 > 🎯 **实战建议**：先回到 [README 总览](README.md) 的"Top 8 高频视点"选 1-2 个最贴你当前项目的视点，**今天就开始画**。比读完整本笔记再动手重要得多。

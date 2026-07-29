@@ -1,7 +1,6 @@
-<!--
-module:
+<!--module:
   parent: system-design
-  slug: system-design/architecture-diagram
+  slug: 04.system-design/01-foundation/system-design-basics/architecture-diagram
   type: article
   category: 主模块子文章
   summary: 架构图绘制 的用标准化的方式表达系统架构，帮助团队理解系统结构和组件关系

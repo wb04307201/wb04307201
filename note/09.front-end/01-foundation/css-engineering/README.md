@@ -16,8 +16,7 @@ CSS 是前端最"反直觉"的工程语言：声明式、级联、继承、无�
 ---
 ---
 
-## 1. CSS 工程化的四大支柱
-
+## CSS 工程化的四大支柱
 | 支柱 | 核心问题 | 解决方案 |
 |------|---------|---------|
 | **布局** | 元素怎么放 | Flexbox / Grid / Container Queries |
@@ -27,8 +26,7 @@ CSS 是前端最"反直觉"的工程语言：声明式、级联、继承、无�
 
 ---
 
-## 2. 盒模型与 BFC
-
+## 盒模型与 BFC
 ### 盒模型（Box Model）
 
 ```mermaid
@@ -70,8 +68,7 @@ graph TB
 
 ---
 
-## 3. Flexbox 与 Grid
-
+## Flexbox 与 Grid
 ### Flexbox（一维布局）
 
 ```css
@@ -127,8 +124,7 @@ graph TB
 
 ---
 
-## 4. CSS 作用域方案演进
-
+## CSS 作用域方案演进
 ```mermaid
 graph LR
   A[全局 CSS<br/>2005-] --> B[BEM 命名空间<br/>2010-]
@@ -169,8 +165,7 @@ import styles from './Button.module.css'
 
 ---
 
-## 5. Tailwind CSS（2026 主流方案）
-
+## Tailwind CSS（2026 主流方案）
 **理念**：原子类（Utility Classes）直接写在 HTML，无需写 CSS 文件。
 
 ```html
@@ -209,8 +204,7 @@ import styles from './Button.module.css'
 
 ---
 
-## 6. CSS 预处理器（Sass / Less）
-
+## CSS 预处理器（Sass / Less）
 | 特性 | Sass | Less |
 |------|------|------|
 | 语法 | SCSS（CSS 超集）/ SASS（缩进） | CSS 超集 |
@@ -241,8 +235,7 @@ $primary: #1976d2;
 
 ---
 
-## 7. CSS 新特性（2024-2026）
-
+## CSS 新特性（2024-2026）
 | 特性 | 作用 | 浏览器支持 |
 |------|------|----------|
 | **Container Queries** | 基于父容器宽度响应式 | ✅ 所有主流 |
@@ -266,8 +259,7 @@ $primary: #1976d2;
 
 ---
 
-## 8. Design Token 与主题
-
+## Design Token 与主题
 ```css
 /* tokens.css */
 :root {
@@ -297,14 +289,12 @@ $primary: #1976d2;
 
 ---
 
-## 9. 学习路径
-
+## 学习路径
 1. **入门**（1 周）：盒模型 + Flex + Grid 三大基础
 2. **进阶**（2 周）：BFC + CSS Modules + Tailwind 实战
 3. **高级**（持续）：Container Queries + Cascade Layers + Design Token 体系
 
-## 10. 交叉引用
-
+## 交叉引用
 - [`05-architecture/design-system/`](../../05-architecture/design-system/) — Design Token 与主题系统
 - [`06-performance/`](../../06-performance/) — CSS 对性能的影响
 - [`01-foundation/browser-rendering/`](../browser-rendering/) — CSS 解析与渲染流水线

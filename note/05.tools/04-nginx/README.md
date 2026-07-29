@@ -13,8 +13,7 @@ module:
 
 ---
 
-## 1. 模块导航
-
+## 模块导航
 | 序号 | 主题 | 核心内容 | 子 README |
 |------|------|---------|-----------|
 | 01 | Pingora | Cloudflare 开源 Rust 代理框架 | [README](pingora/README.md) |
@@ -26,8 +25,7 @@ module:
 
 ---
 
-## 2. 知识脉络
-
+## 知识脉络
 ```mermaid
 graph TB
     Nginx["Nginx"]
@@ -47,8 +45,7 @@ graph TB
 
 ---
 
-## 2.5 同类工具对比
-
+## 同类工具对比
 | 维度 | Nginx | Apache | HAProxy | Envoy | Caddy |
 |------|-------|--------|---------|-------|-------|
 | **架构模型** | 事件驱动 / 异步非阻塞 | 进程/线程模型（prefork/worker/event） | 事件驱动 / 异步非阻塞 | 事件驱动 / xDS API 动态配置 | 事件驱动 / Go 实现 |
@@ -70,8 +67,7 @@ graph TB
 
 ---
 
-## 3. 速查表 / Cheat Sheet
-
+## 速查表 / Cheat Sheet
 | 概念 | 解释 | 典型场景 |
 |------|------|---------|
 | **worker_processes** | Nginx 工作进程数，建议 CPU 核心数 1-2 倍 | 高并发调优 |
@@ -127,8 +123,7 @@ curl http://localhost       # 默认欢迎页
 
 ---
 
-## 5. 核心内容
-
+## 核心内容
 ### 4.1 Nginx 配置文件结构
 
 Nginx 配置文件主要由三部分组成：全局块、events 块和 http 块。http 块中可以嵌套多个 server 块，每个 server 块又可包含多个 location 块。
@@ -177,8 +172,7 @@ Cloudflare 基于 Rust 开源的下一代代理框架。核心优势：单线程
 
 ---
 
-## 5. 最佳实践
-
+## 最佳实践
 - **连接调优**：`worker_processes = CPU 核数`，`worker_connections = 1024 * 核数`
 - **反向代理头**：始终透传 `Host` / `X-Real-IP` / `X-Forwarded-For`，否则后端无法获真实信息
 - **动静分离**：静态资源走 Nginx，动态请求 proxy_pass 到后端应用
@@ -188,8 +182,7 @@ Cloudflare 基于 Rust 开源的下一代代理框架。核心优势：单线程
 
 ---
 
-## 6. 常见面试题
-
+## 常见面试题
 - Nginx 和 Apache 的核心差异？
 - 什么是 epoll 模型？为什么 Nginx 高并发能力强？
 - nginx -s reload 与 restart 的区别？
@@ -212,8 +205,7 @@ Cloudflare 基于 Rust 开源的下一代代理框架。核心优势：单线程
 
 ---
 
-## 7. 相关章节
-
+## 相关章节
 - 上游：[`工具链`](../README.md)
 - 关联：[`02-docker`](../02-docker/README.md) — Docker 容器化部署时 Nginx 常作前置网关
 - 关联：[`06-ali-microservices`](../06-ali-microservices/README.md) — Higress / Envoy 等云原生网关与 Nginx 同源

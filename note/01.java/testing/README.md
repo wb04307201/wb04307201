@@ -989,4 +989,11 @@ class OrderServiceTest {
 
 ---
 
+
+## 相关章节
+
+- [零拷贝](../io/zero-copy/README.md)
+- [并发集合](../collection/concurrent.md)
+- [并发队列](../concurrency/concurrent-collections/queue/README.md)
+
 ← [返回 01.java 主模块](../README.md)

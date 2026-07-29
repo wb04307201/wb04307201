@@ -54,8 +54,7 @@ else 资源未缓存
     cdn -> u : 返回资源 (200 OK)
 end
 @enduml
-```
-
+```text
 ### 找到最合适的 CDN 节点
 #### 节点选择机制
 1. DNS解析调度
@@ -91,8 +90,7 @@ else 节点A不可用
     u -> nodeB : 请求资源
 end
 @enduml
-```
-
+```text
 ## 防止静态资源被盗用
 1. Referer 防盗链:配置 Request Header 中 referer 黑白名单，从而限制来源。
 2. 时间戳防盗链:设置密钥，配合签名过期时间来控制资源内容的访问时限。

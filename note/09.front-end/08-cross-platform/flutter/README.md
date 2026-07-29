@@ -13,12 +13,10 @@ module:
 
 > 一句话定位：**Flutter — 一码三端的跨端 UI 框架（iOS / Android / Web / Desktop）**
 
-## 1. 一句话定位
-
+## 一句话定位
 Flutter 是 Google 2018 年开源的跨端 UI 框架，使用 Dart 语言 + Skia 自绘引擎，实现 iOS / Android / Web / Desktop 一码多端。本文档聚焦 Flutter 3.x 工程实践。
 
-## 2. 核心能力
-
+## 核心能力
 - **Widget 体系**：万物皆 Widget（StatefulWidget / StatelessWidget）
 - **Skia 渲染**：自绘引擎，不依赖平台原生控件
 - **Hot Reload**：亚秒级热重载，提升开发效率
@@ -26,8 +24,7 @@ Flutter 是 Google 2018 年开源的跨端 UI 框架，使用 Dart 语言 + Skia
 - **Impeller 渲染引擎**（iOS 默认）：性能优于 Skia
 - **Null Safety**：Dart 2.12+ 空安全
 
-## 3. 生态速查
-
+## 生态速查
 | 类别 | 推荐 | 备选 |
 |------|------|------|
 | 状态管理 | Riverpod 2 | Provider / Bloc / GetX |
@@ -39,8 +36,7 @@ Flutter 是 Google 2018 年开源的跨端 UI 框架，使用 Dart 语言 + Skia
 | 测试 | flutter_test | mocktail |
 | CI/CD | Codemagic / Fastlane | GitHub Actions |
 
-## 4. 选型建议
-
+## 选型建议
 ```mermaid
 flowchart TD
     A[跨端选型] --> B{目标平台?}
@@ -51,8 +47,7 @@ flowchart TD
     B -->|仅 Web| G[React/Vue + PWA]
 ```
 
-## 5. 性能优化
-
+## 性能优化
 - **Impeller 引擎**（iOS 默认启用，Android 2024 启用）
 - **const Widget**：编译期常量
 - **ListView.builder**：列表懒构建
@@ -60,27 +55,23 @@ flowchart TD
 - **Isolate**：Dart 多线程（计算密集型任务）
 - **包大小优化**：R8 / ProGuard 混淆 + 资源压缩 + ABI split
 
-## 6. 混合开发
-
+## 混合开发
 - **Add-to-App**：原生应用嵌入 Flutter Module
 - **FlutterBoost**：阿里开源的混合栈
 - **Platform View**：在 Flutter 中嵌入原生 View（如地图）
 
-## 7. 实战案例
-
+## 实战案例
 - **某电商 App**：Flutter 3.x，5 万行代码，iOS + Android 包大小 30MB
 - **某金融 App**：Flutter + 加密原生插件，安全合规通过
 - **某 IoT App**：Flutter 控制智能家居，跨 iOS/Android/Web
 
-## 8. 学习资源
-
+## 学习资源
 - 官方文档：https://flutter.dev/
 - 中文社区：https://flutter.cn/
 - pub.dev：https://pub.dev/（包仓库）
 - 实战：Todo List → 新闻 App → 电商 App
 
-## 9. 关键术语
-
+## 关键术语
 | 术语 | 解释 |
 |------|------|
 | Widget | Flutter UI 基本单元 |
@@ -91,8 +82,7 @@ flowchart TD
 | Isolate | Dart 多线程 |
 | AOT | Ahead-of-Time 编译 |
 
-## 10. Platform Channels 代码示例
-
+## Platform Channels 代码示例
 ### 10.1 MethodChannel 双向通信
 
 ```dart
@@ -158,8 +148,7 @@ import Flutter
 }
 ```
 
-## 11. Isolate 多线程
-
+## Isolate 多线程
 ### 11.1 compute() 简单场景
 
 ```dart
@@ -188,8 +177,7 @@ Future<String> parseBigJson(String jsonString) async {
 }
 ```
 
-## 12. 动画深入
-
+## 动画深入
 ### 12.1 AnimationController 基础
 
 ```dart
@@ -260,8 +248,7 @@ class CircleChartPainter extends CustomPainter {
 }
 ```
 
-## 13. Impeller vs Skia 对比
-
+## Impeller vs Skia 对比
 | 维度 | Skia | Impeller |
 |------|------|----------|
 | 架构 | CPU 录制命令 | 预编译 Metal/Vulkan |
@@ -271,8 +258,7 @@ class CircleChartPainter extends CustomPainter {
 | 自定义着色器 | SkSL | GLSL（编译时转换） |
 | 内存占用 | 较高 | 更低 |
 
-## 14. 真实案例
-
+## 真实案例
 ### 14.1 IoT 智能家居
 
 - 单一 Flutter 端控制 iOS/Android/Web 设备

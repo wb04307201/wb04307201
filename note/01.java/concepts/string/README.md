@@ -1,10 +1,9 @@
-<!--
-module:
+<!--module:
   parent: java
-  slug: java/string
+  slug: 01.java/concepts/string
   type: article
   category: 主模块子文章
-  summary: String
+  summary: String 是入门必学的基础概念。
 -->
 
 # String

@@ -101,6 +101,13 @@ module:
 
 **相关面试题**：[`TCP 三次握手四次挥手`](../../../13.split-hairs/02.computer-basics/tcp-handshake-teardown/README.md) — 状态机 + TIME_WAIT/CLOSE_WAIT 排查
 
+
+## 相关章节
+
+- [OSI 七层模型](../osi-model/README.md)
+- [计算机网络基础](../README.md)
+- [时间复杂度](../../02-algorithms/complexity/time-complexity/README.md)
+
 ← [返回 计算机网络](../README.md)
 
 ## 边界情况补充：网络层异常

@@ -16,8 +16,7 @@ React Native（RN）是 Meta 开源的跨平台移动框架，让 Web 开发者�
 ---
 ---
 
-## 1. RN 的核心价值
-
+## RN 的核心价值
 | 价值 | 说明 |
 |------|------|
 | **代码复用** | 70-90% 业务代码 iOS / Android 共享 |
@@ -27,8 +26,7 @@ React Native（RN）是 Meta 开源的跨平台移动框架，让 Web 开发者�
 
 ---
 
-## 2. 架构演进
-
+## 架构演进
 ```mermaid
 graph LR
   A[旧架构<br/>Bridge] --> B[新架构<br/>Fabric + TurboModules]
@@ -45,8 +43,7 @@ graph LR
 
 ---
 
-## 3. 主流技术栈（2026）
-
+## 主流技术栈（2026）
 | 类别 | 推荐 | 说明 |
 |------|------|------|
 | **框架** | Expo SDK 52+ | **首选**，开发体验最佳 |
@@ -60,8 +57,7 @@ graph LR
 
 ---
 
-## 4. Expo vs 裸 RN
-
+## Expo vs 裸 RN
 | 维度 | Expo | 裸 React Native |
 |------|------|----------------|
 | **开发体验** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ |
@@ -74,8 +70,7 @@ graph LR
 
 ---
 
-## 5. 代码示例
-
+## 代码示例
 ```tsx
 // App.tsx (Expo)
 import { View, Text, StyleSheet } from 'react-native'
@@ -116,8 +111,7 @@ export default function Card() {
 
 ---
 
-## 6. 性能优化
-
+## 性能优化
 | 优化项 | 说明 |
 |--------|------|
 | **FlashList** | 替代 FlatList，性能提升 5-10x |
@@ -128,8 +122,7 @@ export default function Card() {
 
 ---
 
-## 7. RN vs Flutter
-
+## RN vs Flutter
 | 维度 | React Native | Flutter |
 |------|-------------|---------|
 | **语言** | JavaScript / TypeScript | Dart |
@@ -143,14 +136,12 @@ export default function Card() {
 
 ---
 
-## 8. 学习路径
-
+## 学习路径
 1. **入门**（1 周）：Expo 基础 + RN 组件 + 导航
 2. **进阶**（2 周）：NativeWind + Reanimated + 原生模块
 3. **高级**（持续）：性能优化 + 自定义原生模块 + EAS 部署
 
-## 9. 交叉引用
-
+## 交叉引用
 - [`08-cross-platform/`](../) — 跨端总览
 - [`08-cross-platform/mini-program/`](../mini-program/) — 小程序（另一种跨端形态）
 - [`03-frameworks/`](../../03-frameworks/) — React 生态

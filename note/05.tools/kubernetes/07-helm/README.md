@@ -1,10 +1,9 @@
-<!--
-module:
+<!--module:
   parent: tools
-  slug: tools/helm
+  slug: 05.tools/kubernetes/07-helm
   type: article
   category: 主模块子文章
-  summary: Helm
+  summary: ---
 -->
 
 # Helm · K8s 应用包管理工具

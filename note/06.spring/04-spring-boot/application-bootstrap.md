@@ -6,8 +6,7 @@
 
 ---
 
-## 1. **使用 `@PostConstruct` 注解**
-在Bean初始化完成后执行（依赖注入完成后，但在服务启动前）。
+## **使用 `@PostConstruct` 注解**在Bean初始化完成后执行（依赖注入完成后，但在服务启动前）。
 ```java
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
@@ -27,8 +26,7 @@ public class InitializerBean {
 - 适用于单个Bean的初始化。
 - 在依赖注入完成后立即执行。
 
-## 2. **实现 `ApplicationRunner` 或 `CommandLineRunner` 接口**
-在Spring Boot启动完成后执行（所有Bean初始化之后，但在应用就绪前）。
+## **实现 `ApplicationRunner` 或 `CommandLineRunner` 接口**在Spring Boot启动完成后执行（所有Bean初始化之后，但在应用就绪前）。
 
 ### **方式一：`ApplicationRunner`**
 ```java
@@ -72,8 +70,7 @@ public class CmdStartupRunner implements CommandLineRunner {
   public class FirstRunner implements ApplicationRunner { ... }
   ```
 
-## 3. **监听应用事件（`ApplicationReadyEvent`）**
-通过监听Spring事件，在应用完全就绪后执行。
+## **监听应用事件（`ApplicationReadyEvent`）**通过监听Spring事件，在应用完全就绪后执行。
 
 ```java
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -95,8 +92,7 @@ public class AppReadyListener {
 - 确保所有处理（包括内嵌服务器启动）已完成。
 - 适合需要等待应用完全就绪的任务（如发送通知）。
 
-## 4. **使用 `InitializingBean` 接口**
-在Bean属性设置完成后执行（类似 `@PostConstruct`，但通过接口实现）。
+## **使用 `InitializingBean` 接口**在Bean属性设置完成后执行（类似 `@PostConstruct`，但通过接口实现）。
 
 ```java
 import org.springframework.beans.factory.InitializingBean;
@@ -115,8 +111,7 @@ public class InitBean implements InitializingBean {
 
 **注意**：不推荐优先使用，`@PostConstruct` 更简洁。
 
-## 5. **通过 `SmartInitializingSingleton` 接口**
-在所有单例Bean初始化完成后执行（适合需要所有Bean就绪的场景）。
+## **通过 `SmartInitializingSingleton` 接口**在所有单例Bean初始化完成后执行（适合需要所有Bean就绪的场景）。
 
 ```java
 import org.springframework.context.SmartInitializingSingleton;

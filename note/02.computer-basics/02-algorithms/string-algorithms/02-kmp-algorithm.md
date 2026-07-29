@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 朴素算法的问题
-
+## 朴素算法的问题
 ```text
 haystack = "ABABABC"
 needle   = "ABABC"
@@ -33,8 +32,7 @@ KMP：保留 i=4，利用 "ABAB" 的最长相等真前后缀 "AB"，只回退模
 
 ---
 
-## 2. KMP 核心思想
-
+## KMP 核心思想
 **关键洞察**：失配时，`needle` 指针不一定回到 0。已经匹配的部分同时包含某个相等的前缀和后缀，可以把前缀直接对齐到后缀，跳过不可能成为答案的起点。
 
 ```text
@@ -54,8 +52,7 @@ needle 已匹配部分 = "ABAB"
 
 ---
 
-## 3. next / LPS 数组详解
-
+## next / LPS 数组详解
 ### 3.1 定义：本文统一采用“长度 + 0 下标”约定
 
 对 0 下标模式串 `needle`，本文定义：
@@ -155,8 +152,7 @@ public int[] buildNext(String needle) {
 
 ---
 
-## 4. KMP 完整匹配
-
+## KMP 完整匹配
 ### 4.1 📌 一次完整失配与 LPS 回退
 
 仍取：
@@ -231,8 +227,7 @@ public int strStr(String haystack, String needle) {
 
 ---
 
-## 5. 时间与空间复杂度：为什么是 O(n+m)
-
+## 时间与空间复杂度：为什么是 O(n+m)
 设文本长度为 `n`，模式串长度为 `m`。
 
 ### 5.1 构建 next：O(m)
@@ -263,8 +258,7 @@ public int strStr(String haystack, String needle) {
 
 ---
 
-## 6. KMP vs 朴素匹配
-
+## KMP vs 朴素匹配
 | 维度 | 朴素匹配 | KMP |
 |------|----------|-----|
 | 最坏时间 | O(nm) | O(n+m) |
@@ -275,8 +269,7 @@ public int strStr(String haystack, String needle) {
 
 ---
 
-## 7. 🛠️ 边界用例
-
+## 🛠️ 边界用例
 本文实现约定输入对象非 `null`；空模式串遵循 Java `String.indexOf("") == 0` 的语义。
 
 | 类别 | `haystack` | `needle` | 期望结果 | 要验证的点 |
@@ -307,8 +300,7 @@ assertEquals(-1, strStr(longText, longNeedle));
 
 ---
 
-## 8. Java 标准库
-
+## Java 标准库
 ```java
 // Java String.indexOf() 使用朴素暴力匹配（双循环），不是 KMP 也不是 Boyer-Moore
 // KMP 在长文本 + 有重复前缀场景更优，但 Java 标准库未采用
@@ -321,8 +313,7 @@ int idx = haystack.indexOf(needle); // 0
 
 ---
 
-## 9. 🚨 实战陷阱 · 5 类
-
+## 🚨 实战陷阱 · 5 类
 ### ⚠️ 陷阱 1：把 LPS 长度约定与 `-1` 约定混用
 
 KMP 常见两套 `next` 定义，它们都能工作，但数组含义和回退公式不同：
@@ -397,8 +388,7 @@ H_next = (((H - old × base^(m-1)) mod mod + mod) mod mod
 
 ---
 
-## 10. 一句话总结
-
+## 一句话总结
 > **KMP = LPS 长度数组 + 主串指针不回退。本文统一 `next[i] = needle[0..i]` 的最长相等真前后缀长度，失配执行 `j = next[j-1]`；构建 O(m)、匹配 O(n)、空间 O(m)。单模式用 KMP，多模式转向 AC 自动机。**
 
 ---

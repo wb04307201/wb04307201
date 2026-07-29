@@ -6,8 +6,7 @@ Spring Framework 自发布以来经过多个大版本迭代，目前主流使用
 
 ---
 
-## 1. Spring 4.x 模块结构
-
+## Spring 4.x 模块结构
 ### 1.1 Spring 4.x 模块总览
 
 ```mermaid
@@ -87,8 +86,7 @@ graph TB
 
 ---
 
-## 2. Spring 各个模块的依赖关系
-
+## Spring 各个模块的依赖关系
 ```mermaid
 graph BT
     Core["spring-core"]
@@ -106,8 +104,7 @@ graph BT
 
 ---
 
-## 3. 核心容器层（Core Container）
-
+## 核心容器层（Core Container）
 Spring 框架的核心模块，也可以说是基础模块，主要提供 IoC 依赖注入功能的支持，Spring 其他所有的功能基本都需要依赖于该模块。
 
 ### 3.1 Spring-Core
@@ -130,8 +127,7 @@ Spring 框架的核心模块，也可以说是基础模块，主要提供 IoC �
 
 ---
 
-## 4. AOP
-
+## AOP
 ### 4.1 spring-aspects
 
 该模块为与 AspectJ 的集成提供支持。
@@ -150,8 +146,7 @@ Spring 框架的核心模块，也可以说是基础模块，主要提供 IoC �
 
 ---
 
-## 5. 数据访问层（Data Access/Integration）
-
+## 数据访问层（Data Access/Integration）
 ### 5.1 spring-jdbc
 
 提供了对数据库访问的抽象 JDBC。不同的数据库都有自己独立的 API 用于操作数据库，而 Java 程序只需要和 JDBC API 交互，这样就屏蔽了数据库的影响。
@@ -174,8 +169,7 @@ Spring 框架的核心模块，也可以说是基础模块，主要提供 IoC �
 
 ---
 
-## 6. Web 应用层（Spring Web）
-
+## Web 应用层（Spring Web）
 ### 6.1 spring-web
 
 对 Web 功能的实现提供一些最基础的支持。
@@ -198,14 +192,12 @@ Spring 框架的核心模块，也可以说是基础模块，主要提供 IoC �
 
 ---
 
-## 7. Messaging
-
+## Messaging
 `spring-messaging` 是从 Spring 4.0 开始新加入的一个模块，主要职责是为 Spring 框架集成一些基础的报文传送应用。
 
 ---
 
-## 8. Spring Test
-
+## Spring Test
 Spring 团队提倡测试驱动开发（TDD）。
 
 Spring 的测试模块对 JUnit（单元测试框架）、TestNG（类似 JUnit）、Mockito（主要用来 Mock 对象）、PowerMock（解决 Mockito 的问题比如无法模拟 final, static， private 方法）等等常用的测试框架支持的都比较好。

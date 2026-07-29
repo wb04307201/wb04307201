@@ -16,8 +16,7 @@ module:
 ---
 ---
 
-## 1. 渲染流水线 6 阶段
-
+## 渲染流水线 6 阶段
 ```mermaid
 graph LR
   A[1. 解析<br/>Parse] --> B[2. 样式计算<br/>Style]
@@ -71,8 +70,7 @@ Display List
 
 ---
 
-## 2. DOM + CSSOM → Render Tree
-
+## DOM + CSSOM → Render Tree
 ```mermaid
 graph TB
   A[HTML] --> B[DOM 树]
@@ -91,8 +89,7 @@ graph TB
 
 ---
 
-## 3. 布局（Layout）= 重排（Reflow）
-
+## 布局（Layout）= 重排（Reflow）
 布局阶段计算每个节点的**几何信息**（x, y, width, height）。
 
 **触发布局的操作**：
@@ -119,8 +116,7 @@ widths.forEach((w, i) => {
 
 ---
 
-## 4. 绘制与合成
-
+## 绘制与合成
 **绘制（Paint）**：生成绘制指令列表（Draw List）。
 
 **合成（Composite）**：
@@ -140,8 +136,7 @@ graph TB
 
 ---
 
-## 5. 性能优化：把操作下推到合成层
-
+## 性能优化：把操作下推到合成层
 ```mermaid
 graph LR
   A[Layout + Paint + Composite<br/>最贵] -->|transform/opacity| B[仅 Composite<br/>最便宜]
@@ -169,8 +164,7 @@ graph LR
 
 ---
 
-## 6. Chrome 多进程架构
-
+## Chrome 多进程架构
 | 进程 | 作用 | 崩溃影响 |
 |------|------|---------|
 | **Browser Process** | 地址栏、书签、前后退、网络 | 整个浏览器退出 |
@@ -183,8 +177,7 @@ graph LR
 
 ---
 
-## 7. 关键渲染路径（Critical Rendering Path）
-
+## 关键渲染路径（Critical Rendering Path）
 **首屏速度的决定因素**：
 - HTML 解析遇到 `<script>` → 阻塞 DOM 解析（除非 `defer` / `async`）
 - CSS 阻塞渲染（必须构建 CSSOM 才能 Render Tree）
@@ -217,8 +210,7 @@ graph LR
 
 ---
 
-## 8. 调试工具
-
+## 调试工具
 | 工具 | 用途 |
 |------|------|
 | **DevTools Performance** | 录制主线程活动，分析 Long Task |
@@ -229,14 +221,12 @@ graph LR
 
 ---
 
-## 9. 学习路径
-
+## 学习路径
 1. **入门**（3 天）：理解渲染流水线 6 阶段，能在 DevTools Performance 面板识别 Layout / Paint 时间
 2. **进阶**（1 周）：强制同步布局识别与修复，动画性能优化
 3. **高级**（持续）：Chrome 渲染源码阅读（Blink / V8 / CC）
 
-## 10. 交叉引用
-
+## 交叉引用
 - [`06-performance/`](../../06-performance/) — 性能优化的基础
 - [`06-performance/core-web-vitals/`](../../06-performance/core-web-vitals/) — CLS / LCP 与渲染直接相关
 - [`01-foundation/`](../) — 浏览器基础

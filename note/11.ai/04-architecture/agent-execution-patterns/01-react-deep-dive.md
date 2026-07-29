@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. ReAct 的本质（Thought + Action + Observation 三元组）
-
+## ReAct 的本质（Thought + Action + Observation 三元组）
 ```text
 ┌─────────────────────────────────────────────────────────────┐
 │  Thought: 我需要先查询订单                                   │
@@ -40,8 +39,7 @@ module:
 
 ---
 
-## 2. LangChain ReAct 实现
-
+## LangChain ReAct 实现
 ### 2.1 基础代码
 
 ```python
@@ -106,8 +104,7 @@ action_match = re.match(
 
 ---
 
-## 3. ReAct 的 4 大优势
-
+## ReAct 的 4 大优势
 | 优势 | 说明 |
 |------|------|
 | **灵活** | LLM 自己决定下一步，应对未知场景 |
@@ -117,8 +114,7 @@ action_match = re.match(
 
 ---
 
-## 4. ReAct 的 5 大硬伤
-
+## ReAct 的 5 大硬伤
 ### 4.1 硬伤 1：Token 消耗不可控
 
 ```text
@@ -186,8 +182,7 @@ DAG 路径："固定节点 + 边，可完整审计"
 
 ---
 
-## 5. ReAct 适用场景 vs 不适用场景
-
+## ReAct 适用场景 vs 不适用场景
 ### 5.1 适用 ✅
 
 | 场景 | 原因 |
@@ -210,8 +205,7 @@ DAG 路径："固定节点 + 边，可完整审计"
 
 ---
 
-## 6. ReAct 优化方向（5 个实战技巧）
-
+## ReAct 优化方向（5 个实战技巧）
 ### 6.1 设置 max_iterations
 
 ```python
@@ -257,8 +251,7 @@ else:
 
 ---
 
-## 7. 反模式 · 5 个常见错
-
+## 反模式 · 5 个常见错
 ### ⚠️ 反模式 1：业务流强用 ReAct
 
 - 错：退款流程用 ReAct 循环
@@ -286,8 +279,7 @@ else:
 
 ---
 
-## 8. 一句话总结
-
+## 一句话总结
 > **ReAct 是最经典的 Agent 循环模式——Thought/Action/Observation 三元组 + LLM 自己决策 = 灵活但 Token 不可控。生产场景需配合 max_iterations + Summary + 兜底模式（Plan-and-Execute 或 DAG）。**
 
 ---

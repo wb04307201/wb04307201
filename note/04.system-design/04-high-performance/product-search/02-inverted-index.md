@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 倒排索引原理
-
+## 倒排索引原理
 ### 1.1 正排索引 vs 倒排索引
 
 **正排索引**（Forward Index）：doc → terms
@@ -73,8 +72,7 @@ ES 用**跳表**（skip list）加速 posting list 的交集运算，大列表�
 
 ---
 
-## 2. 中文分词
-
+## 中文分词
 ### 2.1 为什么中文分词比英文难？
 
 ```text
@@ -153,8 +151,7 @@ curl -X POST "localhost:9200/_plugins/_ik/hot_update"
 
 ---
 
-## 3. 多维筛选（Faceted Search）
-
+## 多维筛选（Faceted Search）
 ### 3.1 什么是 Faceted Search？
 
 用户搜索"运动鞋"后，左侧显示筛选面板：
@@ -218,8 +215,7 @@ curl -X POST "localhost:9200/_plugins/_ik/hot_update"
 
 ---
 
-## 4. 搜索建议与纠错
-
+## 搜索建议与纠错
 ### 4.1 Completion Suggester（搜索建议）
 
 ```json
@@ -268,8 +264,7 @@ curl -X POST "localhost:9200/_plugins/_ik/hot_update"
 
 ---
 
-## 5. 系列导航
-
+## 系列导航
 | 文章 | 核心内容 |
 |------|---------|
 | [总目录](README.md) | 需求分析 + 架构概览 + 面试话术 |

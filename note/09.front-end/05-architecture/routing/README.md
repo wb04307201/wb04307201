@@ -16,8 +16,7 @@ module:
 ---
 ---
 
-## 1. 路由的三层职责
-
+## 路由的三层职责
 ```mermaid
 graph TB
   A[路由] --> B[URL 匹配<br/>path → route]
@@ -38,8 +37,7 @@ graph TB
 
 ---
 
-## 2. 三大主流路由对比（2026）
-
+## 三大主流路由对比（2026）
 ### 2.1 React Router v7
 
 | 维度 | 现状 |
@@ -122,8 +120,7 @@ function UserComponent() {
 
 ---
 
-## 3. 路由范式演进
-
+## 路由范式演进
 ```mermaid
 graph LR
   A[配置式路由<br/>React Router v5<br/>Vue Router 3] --> B[声明式路由<br/>React Router v6]
@@ -137,8 +134,7 @@ graph LR
 
 ---
 
-## 4. 路由模式对比
-
+## 路由模式对比
 | 模式 | 实现 | URL 形态 | 适用 |
 |------|------|---------|------|
 | **History 模式** | HTML5 History API | `/users/123` | **首选**，URL 干净 |
@@ -152,8 +148,7 @@ graph LR
 
 ---
 
-## 5. 路由级代码分割
-
+## 路由级代码分割
 ```typescript
 // React + React Router v7
 const UserPage = lazy(() => import('./pages/UserPage'))
@@ -188,8 +183,7 @@ const routes = [
 
 ---
 
-## 6. URL 状态 vs 全局状态
-
+## URL 状态 vs 全局状态
 | 状态类型 | 该放哪 | 例子 |
 |---------|--------|------|
 | **分页 / 筛选 / 排序** | URL search params | `?page=2&sort=asc` |
@@ -203,8 +197,7 @@ const routes = [
 
 ---
 
-## 7. 路由守卫与权限控制
-
+## 路由守卫与权限控制
 ```typescript
 // React Router v7 - loader 拦截
 const protectedRoute = {
@@ -233,8 +226,7 @@ router.beforeEach(async (to, from) => {
 
 ---
 
-## 8. 路由测试策略
-
+## 路由测试策略
 | 测试类型 | 工具 | 测试什么 |
 |---------|------|---------|
 | **单元测试** | Vitest + Testing Library | 组件渲染、路由参数读取 |
@@ -243,8 +235,7 @@ router.beforeEach(async (to, from) => {
 
 ---
 
-## 9. 2026 趋势
-
+## 2026 趋势
 1. **类型安全路由成为标配**：TanStack Router 的类型推导理念会下沉到 React Router
 2. **路由与数据加载绑定**：`loader` / `action` 模式成主流
 3. **Search Params 一等公民**：URL search params 是状态的"天然归属"
@@ -253,8 +244,7 @@ router.beforeEach(async (to, from) => {
 
 ---
 
-## 10. 选型决策表
-
+## 选型决策表
 | 场景 | 推荐方案 | 理由 |
 |------|---------|------|
 | **Next.js / Nuxt 项目** | 框架内置路由 | 无需选择，与 SSR/SSG 集成 |
@@ -266,14 +256,12 @@ router.beforeEach(async (to, from) => {
 
 ---
 
-## 11. 学习路径建议
-
+## 学习路径建议
 1. **入门**（3 天）：跑通 Vue Router 4 / React Router v7 的基础配置、动态参数、嵌套路由
 2. **进阶**（1 周）：路由守卫 + 懒加载 + loader 数据模式
 3. **高级**（持续）：TanStack Router 类型安全；Search Params 作为状态；嵌套布局优化
 
-## 12. 交叉引用
-
+## 交叉引用
 - [`05-architecture/state-management/`](../state-management/) — 路由状态 vs 全局状态
 - [`05-architecture/rendering-modes/`](../rendering-modes/) — 路由与 SSR/SSG 的协作
 - [`04-engineering/`](../../04-engineering/) — 路由级代码分割
@@ -281,8 +269,7 @@ router.beforeEach(async (to, from) => {
 
 ---
 
-## 13. 与其他模块的关系
-
+## 与其他模块的关系
 - **上游**：[`03-frameworks/`](../../03-frameworks/) / [`05-architecture/state-management/`](../state-management/)
 - **下游**：被 [`05-architecture/`](../)（布局嵌套）、[`06-performance/`](../../06-performance/)（代码分割）复用
 

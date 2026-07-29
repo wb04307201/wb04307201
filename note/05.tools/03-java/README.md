@@ -13,8 +13,7 @@ module:
 
 ---
 
-## 1. 模块导航
-
+## 模块导航
 | 序号 | 主题 | 核心内容 | 子 README |
 |------|------|---------|-----------|
 | 01 | [工具库](tool-library/) | Hutool / Apache Commons / Guava 三大工具集对比 | [README](tool-library/README.md) |
@@ -27,8 +26,7 @@ module:
 
 ---
 
-## 2. 知识脉络
-
+## 知识脉络
 ```mermaid
 graph TB
     Java["Java 工具库"]
@@ -47,8 +45,7 @@ graph TB
 
 ---
 
-## 3. 速查表 / Cheat Sheet
-
+## 速查表 / Cheat Sheet
 | 概念 | 解释 | 典型场景 |
 |------|------|---------|
 | **Hutool** | 国产轻量工具库，静态方法封装 JDK 底层 | 中小型项目快速开发，中文文档友好 |
@@ -62,8 +59,7 @@ graph TB
 
 ---
 
-## 4. 核心内容
-
+## 核心内容
 ### 4.1 工具集对比
 
 三大工具库各有侧重：Hutool 以场景全覆盖和中文生态取胜，适合国内快速开发；Apache Commons 模块化设计、接口稳定、兼容老版本 Java，适合传统企业系统；Guava 在集合类革新和并发工具（CacheBuilder/RateLimiter/EventBus）上领先，适合高性能场景。三者非互斥，可按需组合使用。
@@ -74,8 +70,7 @@ Lombok 通过编译期注解处理器（JSR 269）修改抽象语法树生成代
 
 ---
 
-## 5. 最佳实践
-
+## 最佳实践
 - **国内项目标配**：Hutool + Lombok，开发效率最大化
 - **不可变优先**：使用 @Value 替代 @Data 定义值对象，提升线程安全性
 - **构造器注入**：配合 @RequiredArgsConstructor + final 字段，推荐 Spring 构造器注入
@@ -83,8 +78,7 @@ Lombok 通过编译期注解处理器（JSR 269）修改抽象语法树生成代
 
 ---
 
-## 6. 常见面试题
-
+## 常见面试题
 - Hutool、Commons、Guava 各自的核心优势？
 - Lombok 的工作原理是什么？会影响运行时吗？
 - @Data 和 @Value 的区别？
@@ -107,8 +101,7 @@ Lombok 通过编译期注解处理器（JSR 269）修改抽象语法树生成代
 
 ---
 
-## 7. 相关章节
-
+## 相关章节
 - 上游：[`工具链`](../README.md)
 - 关联：[`01.java`](../../01.java/README.md) — Java 语言基础
 - 关联：[`06.spring`](../../06.spring/README.md) — Spring 开发中大量使用这些工具

@@ -11,8 +11,7 @@ module:
 
 > 来源:整合自原 08.mybatis/README.md § 七.7.1
 
-## 7.1 自定义类型处理器（TypeHandler）
-
+## 自定义类型处理器（TypeHandler）
 ```java
 public class DateTypeHandler extends BaseTypeHandler<Date> {
     @Override

@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 4 种并行维度
-
+## 4 种并行维度
 | 维度 | 切分对象 | 切分方式 | 通信开销 |
 |------|---------|---------|---------|
 | **TP (Tensor Parallel)** | 单层权重矩阵按行 / 列切 | attention / FFN 内部分布到 N 张卡 | 高（每 step AllReduce）|
@@ -26,8 +25,7 @@ module:
 
 ---
 
-## 2. 张量并行 TP（最常用）
-
+## 张量并行 TP（最常用）
 ### 2.1 切分方式
 
 ```text
@@ -60,8 +58,7 @@ python -m vllm.entrypoints.openai.api_server \
 
 ---
 
-## 3. 流水线并行 PP
-
+## 流水线并行 PP
 ### 3.1 切分方式
 
 ```text
@@ -87,8 +84,7 @@ python -m vllm.entrypoints.openai.api_server \
 
 ---
 
-## 4. 序列并行 SP
-
+## 序列并行 SP
 ### 4.1 场景
 
 - 超长上下文（32k+）
@@ -103,8 +99,7 @@ python -m vllm.entrypoints.openai.api_server \
 
 ---
 
-## 5. 数据并行 DP（请求级并行）
-
+## 数据并行 DP（请求级并行）
 ### 5.1 场景
 
 - 模型已能单卡放下（如 7B / 13B）
@@ -123,8 +118,7 @@ python -m vllm.entrypoints.openai.api_server \
 
 ---
 
-## 6. Ollama / llama.cpp 怎么做分布式？
-
+## Ollama / llama.cpp 怎么做分布式？
 | 引擎 | 支持情况 | 限制 |
 |------|---------|------|
 | Ollama | 朴素多 GPU（模型层间分流） | 不支持 TP / PP / SP，分卡策略固定 |
@@ -137,8 +131,7 @@ python -m vllm.entrypoints.openai.api_server \
 
 ---
 
-## 7. 工业部署范式
-
+## 工业部署范式
 ### 7.1 推荐组合
 
 | 模型规模 | 推荐方案 |
@@ -158,8 +151,7 @@ python -m vllm.entrypoints.openai.api_server \
 
 ---
 
-## 8. 速查 · 多卡切分公式
-
+## 速查 · 多卡切分公式
 **TP 大小估算**：
 ```text
 min_TP = ceil(模型权重显存 / 单卡可用显存)
@@ -173,8 +165,7 @@ min_TP = ceil(模型权重显存 / 单卡可用显存)
 
 ---
 
-## 9. 一句话总结
-
+## 一句话总结
 > **TP 切权重救显存，PP 切层数救模型规模，SP 切序列救长上下文，DP 切请求救并发——维度正交，但工业上常常组合使用并配 NVLink 互联。**
 
 ---

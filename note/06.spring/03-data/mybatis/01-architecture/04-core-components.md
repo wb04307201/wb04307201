@@ -11,8 +11,7 @@ module:
 
 > 来源:整合自原 08.mybatis/README.md § 三 + § 五.5.3 + § 九(已去重)
 
-## 4.1 SqlSessionFactory / MappedStatement
-
+## SqlSessionFactory / MappedStatement
 > 来源:原 § 三(排除 §3.2 Executor 表格,在 4.2 详谈)
 
 ### 3.1 SqlSessionFactory
@@ -35,8 +34,7 @@ SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(input
 - **SQL 封装**：包含 SQL 语句、参数类型、结果映射等元数据
 - **ID 唯一性**：由 `namespace.id` 组合构成，如 `com.example.UserMapper.selectUser`
 
-## 4.2 Executor 类型详谈
-
+## Executor 类型详谈
 > 来源:原 § 九(完整保留,Executor 类型表格已在此处统一)
 
 ### 1. 执行器概述
@@ -107,8 +105,7 @@ public interface Executor {
 4. 缓存处理
 5. 事务管理
 
-## 4.3 调试技巧
-
+## 调试技巧
 > 来源:原 § 五.5.3
 
 ```java

@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 模块导航
-
+## 模块导航
 | 主题 | 状态 | 说明 | 子 README |
 |------|------|------|-----------|
 | Apache Doris | ✅ 国产主流 | MPP / MySQL 兼容 | [01-clickhouse-vs-doris-vs-starrocks](./01-clickhouse-vs-doris-vs-starrocks/) |
@@ -34,8 +33,7 @@ module:
 
 ---
 
-## 2. 知识脉络
-
+## 知识脉络
 ```mermaid
 flowchart TD
     A[OLAP 引擎] --> B{查询模式?}
@@ -49,8 +47,7 @@ flowchart TD
 
 ---
 
-## 3. 速查要点
-
+## 速查要点
 | 引擎 | 架构 | 擅长场景 | JOIN 能力 | 实时写入 |
 |------|------|---------|----------|---------|
 | Doris | MPP | 大宽表+聚合 | 强 | ✓ |
@@ -65,8 +62,7 @@ flowchart TD
 
 ---
 
-## 4. 核心内容
-
+## 核心内容
 ### 4.1 Doris 表模型
 
 - **Duplicate Key**：明细表，保留所有列
@@ -124,8 +120,7 @@ WHERE o.dt BETWEEN '2026-06-01' AND '2026-06-25';
 
 ---
 
-## 5. 最佳实践
-
+## 最佳实践
 | 实践 | 说明 |
 |------|------|
 | OLAP 选型 | 高并发点查 → Doris/StarRocks；Ad-hoc → ClickHouse/Trino |
@@ -136,8 +131,7 @@ WHERE o.dt BETWEEN '2026-06-01' AND '2026-06-25';
 
 ---
 
-## 6. 常见面试题
-
+## 常见面试题
 | 题目 | 核心考点 |
 |------|---------|
 | Doris / StarRocks / ClickHouse 怎么选？ | JOIN 复杂度 / 大宽表 / 国产化 |
@@ -149,8 +143,7 @@ WHERE o.dt BETWEEN '2026-06-01' AND '2026-06-25';
 
 ---
 
-## 7. 与其他模块的关系
-
+## 与其他模块的关系
 - **上游**：[04 数据湖](../04-data-lake/) / [03 实时计算](../03-realtime-compute/)（数据写入）
 - **下游**：被 [11 数据可视化](../../11.ai/) / 报表工具消费
 - **横向**：[02 Hadoop 生态](../02-hadoop-ecosystem/)（Presto/Trino 联邦）

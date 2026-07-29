@@ -11,8 +11,7 @@ module:
 
 > 从模型架构到应用编排，全景理解大语言模型生态。
 
-## 1. 目录导航
-
+## 目录导航
 | 目录 | 核心内容 | 一句话定位 |
 |------|---------|-----------|
 | [concept-map](concept-map/) | **LLM 技术栈全景** — 6大层 61 个核心概念，含 Mermaid 架构图、选型指南、生产部署检查清单 | 全局认知地图 |
@@ -62,8 +61,7 @@ module:
 
 ---
 
-## 2. 知识脉络
-
+## 知识脉络
 ```mermaid
 graph LR
     A[concept-map<br/>61 核心概念全景] --> B[multimodal<br/>感知扩展]
@@ -90,8 +88,7 @@ graph LR
 
 ---
 
-## 3. 速查表
-
+## 速查表
 | 概念 | 核心要点 | 典型场景 |
 |------|---------|---------|
 | **Prompt Engineering** | Zero-shot / Few-shot / CoT / Role / 模板 | 单轮 LLM 调用 |
@@ -114,8 +111,7 @@ graph LR
 
 ---
 
-## 4. 核心内容（按子模块展开）
-
+## 核心内容（按子模块展开）
 - **[concept-map](concept-map/)**：6 大层 61 核心概念全景图（模型基础 / 训练优化 / 推理加速 / 检索知识 / 应用编排 / 治理运维）
 - **[multimodal](multimodal/)**（+ 2 子）：
   - [cross-modal-alignment](multimodal/cross-modal-alignment/) — 跨模态特征对齐
@@ -144,8 +140,7 @@ graph LR
 
 ---
 
-## 5. 最佳实践
-
+## 最佳实践
 | 场景 | 实践要点 |
 |------|---------|
 | **Prompt → Context 演进** | 单轮 Prompt 已不够；Agent 时代用 Context Engineering 提供完整上下文 |
@@ -157,8 +152,7 @@ graph LR
 
 ---
 
-## 6. 常见面试题
-
+## 常见面试题
 | 题目 | 核心考点 |
 |------|---------|
 | BPE / WordPiece / SentencePiece 区别？ | 字节级 vs 词级 vs 字符级分词 |
@@ -176,16 +170,14 @@ graph LR
 
 ---
 
-## 7. 相关章节
-
+## 相关章节
 - 上游：[L1 基础概念](../01-fundamentals/) → **L2 技术栈** → [L3 工程实践](../03-engineering/)
 - 关联：[04.system-design](../../04.system-design/) — 系统设计（AI 系统也遵循通用设计原则）
 - 面试：[13.split-hairs AI 新概念](../../13.split-hairs/11.ai/README.md) — AI 面试深挖（精炼版）
 
 ---
 
-## 8. 开源参考
-
+## 开源参考
 | 类别 | 项目 |
 |------|------|
 | 概念全景 | [LLM 技术栈全景图 (61 核心概念)](concept-map/) |

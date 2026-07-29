@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 整体 Maven 依赖
-
+## 整体 Maven 依赖
 ```xml
 <dependencies>
     <!-- Spring Boot Starter -->
@@ -49,8 +48,7 @@ module:
 
 ---
 
-## 2. 完整核心代码
-
+## 完整核心代码
 ### 2.1 SensitiveFilter 核心
 
 ```java
@@ -152,8 +150,7 @@ public class FilterResult {
 
 ---
 
-## 3. Spring Boot 集成
-
+## Spring Boot 集成
 ### 3.1 Filter / HandlerInterceptor
 
 ```java
@@ -238,8 +235,7 @@ public Comment postComment(@RequestBody CommentDTO dto) {
 
 ---
 
-## 4. 替换策略实现
-
+## 替换策略实现
 ### 4.1 4 大替换策略
 
 ```java
@@ -285,8 +281,7 @@ public boolean isWordBoundary(String text, int begin, int end) {
 
 ---
 
-## 5. 5 大优化技巧
-
+## 5 大优化技巧
 ### 5.1 双数组 Trie 压缩（10x 内存下降）
 
 ```java
@@ -346,8 +341,7 @@ public class GrayscaleDictionary {
 
 ---
 
-## 6. 监控埋点
-
+## 监控埋点
 ```java
 @Component
 public class FilterMetrics {
@@ -367,8 +361,7 @@ public class FilterMetrics {
 
 ---
 
-## 7. 一句话总结
-
+## 一句话总结
 > **Java 实战 = Spring Boot + HanLP 双数组 Trie + Bloom Filter + Caffeine 三层架构。100 行可上线，100w QPS 需要分布式 + 灰度。**
 
 ---

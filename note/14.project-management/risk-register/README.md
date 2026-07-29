@@ -188,6 +188,13 @@ graph TD
 
 ---
 
+
+## 相关章节
+
+- [AI 项目管理账本：DORA + SPACE + ROI 三件套](../ai-pm-dora-space/README.md)
+- [项目管理与成本控制](../README.md)
+- [5万 vs 50万 App 报价差在哪：12 大成本维度拆解](../app-quote-breakdown/README.md)
+
 ← [返回: 项目管理与成本控制](../README.md)
 
 ## 📊 本节统计

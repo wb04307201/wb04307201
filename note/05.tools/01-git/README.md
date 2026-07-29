@@ -13,8 +13,7 @@ module:
 
 ---
 
-## 1. 模块导航
-
+## 模块导航
 | 序号 | 主题 | 核心内容 | 子 README |
 |------|------|---------|-----------|
 | 01 | [命令清单](command/) | 配置/分支/提交/远程/撤销/子模块 | [README](command/README.md) |
@@ -27,8 +26,7 @@ module:
 
 ---
 
-## 2. 知识脉络
-
+## 知识脉络
 ```mermaid
 graph TB
     Git["Git 版本控制"]
@@ -49,8 +47,7 @@ graph TB
 
 ---
 
-## 3. 速查表 / Cheat Sheet
-
+## 速查表 / Cheat Sheet
 | 概念 | 解释 | 典型场景 |
 |------|------|---------|
 | **git switch** | 切换/创建分支（Git 2.23+ 替代 checkout） | 分支操作 |
@@ -64,8 +61,7 @@ graph TB
 
 ---
 
-## 4. 核心内容
-
+## 核心内容
 ### 4.1 命令清单
 
 按功能分为八大类：基础配置、仓库操作、文件管理、提交与历史、分支管理、远程协作、撤销回退、高级工具（stash/bisect/cherry-pick/reflog）。采用现代 Git 语法（switch/restore 替代 checkout）。
@@ -76,8 +72,7 @@ graph TB
 
 ---
 
-## 5. 最佳实践
-
+## 最佳实践
 - **分支策略**：主分支保护，功能分支开发，PR 合并，rebase 保持历史线性
 - **提交规范**：使用 Conventional Commits（feat/fix/docs/refactor）
 - **安全推送**：使用 `--force-with-lease` 替代 `--force`，防止覆盖他人提交
@@ -85,8 +80,7 @@ graph TB
 
 ---
 
-## 6. 常见面试题
-
+## 常见面试题
 - git merge 和 git rebase 的区别？各自适用场景？
 - git reset --soft / --mixed / --hard 的区别？
 - force-with-lease 为什么比 force 更安全？
@@ -109,8 +103,7 @@ graph TB
 
 ---
 
-## 7. 相关章节
-
+## 相关章节
 - 上游：[`工具链`](../README.md)
 - 关联：[`05-monorepo`](../05-monorepo/README.md) — Monorepo 仓库管理依赖 Git 子模块/worktree
 

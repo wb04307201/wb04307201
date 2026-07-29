@@ -2,8 +2,7 @@
 
 > 来源:整合自原 08.mybatis/README.md § 七.7.3
 
-## 1. 核心机制
-
+## 核心机制
 `DatabaseIdProvider` 允许 MyBatis 根据当前数据库类型执行不同的 SQL 语句，实现**一套代码适配多种数据库**。
 
 工作原理：
@@ -11,8 +10,7 @@
 2. 将产品名映射为简短的 `databaseId`（如 `MySQL` → `mysql`）
 3. 加载 Mapper XML 时，优先匹配 `databaseId` 一致的语句；无匹配则加载无 `databaseId` 的通用语句
 
-## 2. 配置方式
-
+## 配置方式
 ### 2.1 mybatis-config.xml 配置
 
 ```xml
@@ -36,8 +34,7 @@ mybatis-plus:
         Oracle: oracle
 ```
 
-## 3. 使用方式
-
+## 使用方式
 ```xml
 <!-- MySQL 专用：使用 LIMIT -->
 <select id="selectTopUsers" resultType="User" databaseId="mysql">
@@ -57,16 +54,14 @@ mybatis-plus:
 </select>
 ```
 
-## 4. 匹配优先级
-
+## 匹配优先级
 | 优先级 | 条件 | 说明 |
 |--------|------|------|
 | 1（最高） | `databaseId` 匹配当前数据库 | 专用 SQL |
 | 2 | 无 `databaseId` 属性 | 通用 SQL 兜底 |
 | 3（不会加载） | `databaseId` 不匹配 | 被忽略 |
 
-## 5. 适用场景与注意事项
-
+## 适用场景与注意事项
 | 场景 | 建议 |
 |------|------|
 | 单数据库项目 | 不需要 `DatabaseIdProvider`，增加复杂度 |

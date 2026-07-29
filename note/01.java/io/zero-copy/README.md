@@ -329,4 +329,11 @@ Netty 通过 `FileRegion` 实现文件零拷贝传输，通过 `CompositeByteBuf
 
 ---
 
+
+## 相关章节
+
+- [Java 23](../../version/java-23/README.md)
+- [Java 25](../../version/java-25/README.md)
+- [Java 15](../../version/java-15/README.md)
+
 ← [返回 I/O](../README.md)

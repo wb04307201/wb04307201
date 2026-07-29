@@ -19,8 +19,7 @@ module:
 
 ---
 
-## 1. KV cache 显存占用公式
-
+## KV cache 显存占用公式
 ```text
 KV cache 大小 ≈ 2 × num_layers × num_heads × head_dim × seq_len × batch_size × dtype_bytes
 ```
@@ -35,8 +34,7 @@ KV cache 大小 ≈ 2 × num_layers × num_heads × head_dim × seq_len × batch
 
 ---
 
-## 2. 三大核心机制
-
+## 三大核心机制
 ### 2.1 分页（PagedAttention）
 
 详见 [01-paged-attention](01-paged-attention.md)。核心是**逻辑连续 / 物理离散 + 共享 block 池**。
@@ -63,8 +61,7 @@ vLLM 默认 LRU；自研引擎可定制。
 
 ---
 
-## 3. 反模式 · Beam Search 显存爆炸
-
+## 反模式 · Beam Search 显存爆炸
 ### 3.1 问题
 
 Beam search 在每个 step 保留 top-k 候选，所有候选都要 KV cache：
@@ -90,8 +87,7 @@ beam_size=4, seq_len=2048, LLaMA-7B:
 
 ---
 
-## 4. 长上下文策略
-
+## 长上下文策略
 ### 4.1 显存瓶颈
 
 | 上下文长度 | LLaMA-7B KV cache |
@@ -113,8 +109,7 @@ beam_size=4, seq_len=2048, LLaMA-7B:
 
 ---
 
-## 5. 速查 · 关键参数
-
+## 速查 · 关键参数
 | 参数 | 默认 | 含义 |
 |------|------|------|
 | `--gpu-memory-utilization` | 0.9 | 显存利用率上限 |
@@ -126,8 +121,7 @@ beam_size=4, seq_len=2048, LLaMA-7B:
 
 ---
 
-## 6. 反模式 · 调参陷阱
-
+## 反模式 · 调参陷阱
 - ⚠️ **`gpu-memory-utilization=1.0`**：会导致 OOM，预留 5-10% 给 CUDA context
 - ⚠️ **`block-size` 越小越好**：太小（4 以下）block table 过大，吞吐反而下降
 - ⚠️ **max-num-seqs 越大越好**：超过 KV 容量会触发 swap，反而降速
@@ -135,8 +129,7 @@ beam_size=4, seq_len=2048, LLaMA-7B:
 
 ---
 
-## 7. 一句话总结
-
+## 一句话总结
 > **KV cache 管理 = 分页（利用率）+ 共享（命中率）+ 替换（淘汰策略），三机制叠加才能撑住工业级并发。**
 
 ---

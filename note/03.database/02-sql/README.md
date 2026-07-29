@@ -9,6 +9,8 @@ module:
 
 # SQL
 
+> **定位**：SQL 涵盖分类、语法、执行顺序、慢查询分析与 EXPLAIN，并补充 CTE 与窗口函数等 MySQL 8.0+ 高级特性。 的核心原理、实现与最佳实践。
+
 > SQL(Structured Query Language)是用于管理关系型数据库的标准语言,本文涵盖 SQL 分类、核心语法、执行顺序与慢查询分析与优化。
 
 

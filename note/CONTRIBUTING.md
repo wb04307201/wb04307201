@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: note
+  slug: CONTRIBUTING
+  type: article
+  category: 主模块子文章
+  summary: ---
+-->
+
 # 笔记写作规范
 
 > 本文档定义 note 知识库的目录结构、README 模板、命名规范与图表约定，方便后续维护与扩展。

@@ -1,7 +1,6 @@
-<!--
-module:
+<!--module:
   parent: split-hairs
-  slug: 05.security
+  slug: 13.split-hairs/05.security
   type: article
   category: 高频面试题
   summary: 安全设计高频面试题与难点深挖（认证 / 加密 / Web 安全 / 限流 / OWASP）

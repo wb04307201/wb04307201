@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. Claude Code（Anthropic）
-
+## Claude Code（Anthropic）
 ### 1.1 Loop 工程
 
 ```python
@@ -68,8 +67,7 @@ class ClaudeCodeLoop:
 
 ---
 
-## 2. Cursor
-
+## Cursor
 ### 2.1 Loop 工程
 
 ```text
@@ -103,8 +101,7 @@ class ClaudeCodeLoop:
 
 ---
 
-## 3. Devin（Cognition AI）
-
+## Devin（Cognition AI）
 ### 3.1 Loop 工程（Plan-and-Execute 范式）
 
 ```python
@@ -148,8 +145,7 @@ class DevinLoop:
 
 ---
 
-## 4. Aider（开源）
-
+## Aider（开源）
 ### 4.1 Loop 工程（最简）
 
 ```python
@@ -186,8 +182,7 @@ class AiderLoop:
 
 ---
 
-## 5. 4 大 IDE Loop 对比
-
+## 4 大 IDE Loop 对比
 | 维度 | Claude Code | Cursor | Devin | Aider |
 |------|-------------|--------|-------|-------|
 | **Loop 触发** | `/loop` 命令 | Composer | 全自动 | 全自动 |
@@ -200,8 +195,7 @@ class AiderLoop:
 
 ---
 
-## 6. 实战选型
-
+## 实战选型
 ```text
 选型决策：
 
@@ -224,8 +218,7 @@ Q4：开源优先？
 
 ---
 
-## 7. 反模式 · 5 个常见错
-
+## 反模式 · 5 个常见错
 ### ⚠️ 反模式 1：跳过 Verifier 信任 Agent
 
 - 错：Agent 说"我改完了"就直接 commit
@@ -253,8 +246,7 @@ Q4：开源优先？
 
 ---
 
-## 8. 一句话总结
-
+## 一句话总结
 > **4 大 IDE 都是 Loop Engineering 范式：Plan → Generate → Verify → Fix 循环。Claude Code 重交互 / Cursor 重 Plan / Devin 重 Long-running / Aider 重 Git-aware。实战按场景选 + 不跳过 Verifier + 不超 max_iterations。**
 
 ---

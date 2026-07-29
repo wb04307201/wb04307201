@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 为什么"重试"解决不了一致性问题？
-
+## 为什么"重试"解决不了一致性问题？
 ```text
 用户问："北京人口多少？"
 
@@ -35,8 +34,7 @@ module:
 
 ---
 
-## 2. Self-Consistency 投票：3 重机制
-
+## Self-Consistency 投票：3 重机制
 ### 2.1 机制 1：多次采样
 
 ```python
@@ -83,8 +81,7 @@ def semantic_vote(samples, judge_llm):
 
 ---
 
-## 3. 实战：3 个采样策略
-
+## 实战：3 个采样策略
 ### 3.1 高温度采样（Creative tasks）
 
 ```python
@@ -119,8 +116,7 @@ def hybrid_vote(query, judge_llm):
 
 ---
 
-## 4. Judge 模型设计
-
+## Judge 模型设计
 ### 4.1 选择 Judge 模型
 
 | 场景 | Judge 选择 |
@@ -164,8 +160,7 @@ def safe_judge(query, samples, judge_llm, fallback_model):
 
 ---
 
-## 5. 重试预算
-
+## 重试预算
 ### 5.1 区分重试类型
 
 ```python
@@ -206,8 +201,7 @@ def retry_with_backoff(fn, max_retries=3, base_delay=1):
 
 ---
 
-## 6. 5 大失败模式
-
+## 5 大失败模式
 | 模式 | 触发 | 修复 |
 |------|------|------|
 | **幻觉** | 模型自由发挥 | Self-Consistency + Judge + RAG 兜底 |
@@ -218,8 +212,7 @@ def retry_with_backoff(fn, max_retries=3, base_delay=1):
 
 ---
 
-## 7. 反模式 · 5 个常见错
-
+## 反模式 · 5 个常见错
 ### ⚠️ 反模式 1：所有失败都盲目重试
 
 - 错：网络错 + 幻觉都重试 3 次
@@ -247,14 +240,12 @@ def retry_with_backoff(fn, max_retries=3, base_delay=1):
 
 ---
 
-## 8. 一句话总结
-
+## 一句话总结
 > **LLM 一致性 ≠ 重试——raw 重试失败，**Self-Consistency 投票 + Judge 模型**才能挑出最佳。3 次不一致不可怕，可怕的是没有 Judge / 没有重试预算。
 
 ---
 
-## 9. Temperature=0 仍可变的 5 大根因 + 3 大防御（高频误区题）
-
+## Temperature=0 仍可变的 5 大根因 + 3 大防御（高频误区题）
 > ⚠️ **常见误区**：很多人以为 Temperature=0 = 完全确定。其实生产中 5 大根因会让输出仍有微小波动。面试速查版见 [13.split-hairs · temperature-zero-myth](../../../13.split-hairs/11.ai/temperature-zero-myth/README.md)。
 
 ### 9.1 5 大根因速查表

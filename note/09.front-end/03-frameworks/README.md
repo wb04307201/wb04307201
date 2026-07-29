@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 模块导航
-
+## 模块导航
 | 主题 | 状态 | 说明 |
 |------|------|------|
 | React 19 | ✓ 已有 | [react/](react/) — Hooks / RSC / Server Actions / Compiler |
@@ -34,8 +33,7 @@ module:
 
 ---
 
-## 2. 知识脉络
-
+## 知识脉络
 ```mermaid
 flowchart TD
     A[框架选型] --> B{需要 SEO?}
@@ -48,8 +46,7 @@ flowchart TD
 
 ---
 
-## 3. 速查要点
-
+## 速查要点
 - **选框架先看 SEO**:需要 SEO 选 Next / Nuxt / SvelteKit;不需要选 Vite + React / Vue
 - **看团队熟悉度**:React 团队学 Vue 上手 1-2 周;Vue 团队学 React 同样 1-2 周
 - **看应用规模**:10 万行代码以上 → React(生态)/ Vue 3.4(DX);5 万行以下 → Svelte(DX + 性能)
@@ -57,8 +54,7 @@ flowchart TD
 
 ---
 
-## 4. 核心框架
-
+## 核心框架
 | 框架 | 范式 | 渲染策略 | 状态管理 | 学习曲线 | 适用场景 |
 |------|------|---------|---------|---------|---------|
 | React 19 | 声明式/函数式 | 客户端 + RSC | 外部库 | 中 | 大型应用 / 生态丰富 |
@@ -70,8 +66,7 @@ flowchart TD
 
 ---
 
-## 5. 最佳实践
-
+## 最佳实践
 - 选框架以「团队规模 × 渲染策略 × 生态适配」三维决策,避免单纯技术崇拜
 - React 项目坚持「RSC 优先」,数据密集型场景用 Server Components
 - Vue 3.4+ 项目首选 `<script setup>` + Pinia,避免 Options API 残留
@@ -79,8 +74,7 @@ flowchart TD
 
 ---
 
-## 6. 常见面试题
-
+## 常见面试题
 - React Fiber 架构解决了什么问题?为什么需要可中断渲染?
 - Vue 3 的 Proxy 响应式相比 Vue 2 的 defineProperty 解决了哪些局限?
 - RSC(Server Components)与 SSR 的本质区别?什么时候必须用 Client Component?
@@ -89,8 +83,7 @@ flowchart TD
 
 ---
 
-## 7. 与其他模块的关系
-
+## 与其他模块的关系
 - **上游**:[01-foundation](../01-foundation/) / [02-language](../02-language/)
 - **下游**:被 [04-engineering](../04-engineering/) / [05-architecture](../05-architecture/) / [06-performance](../06-performance/) / [08-cross-platform](../08-cross-platform/) 依赖
 - **横向**:[05-architecture](../05-architecture/) 关注架构选型([03] 框架 + [05] 架构 + [04] 工程化共同决定)

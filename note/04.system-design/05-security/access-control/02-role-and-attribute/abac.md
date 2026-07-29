@@ -2,8 +2,7 @@
 
 > 一句话定位：ABAC 基于主体/客体/环境/动作四类属性，由策略引擎动态评估，灵活度最高。
 
-## 1. 概念与起源
-
+## 概念与起源
 **ABAC** 又称 **PBAC（Policy-Based Access Control）** 或 **CBAC（Claims-Based Access Control）**。它的核心思想是：**不再把权限绑死到"角色"，而是基于"属性 + 策略表达式"在每次访问时动态评估**。
 
 - **历史背景**：2000 年代由 OASIS 的 XACML（eXtensible Access Control Markup Language）标准化；2014 年 NIST 发布 SP 800-162 指南
@@ -11,8 +10,7 @@
 
 **与 RBAC 的关键区别**：RBAC 用"角色"这一个间接层；ABAC 用"任意属性"作为决策依据，理论上可表达任意复杂规则。
 
-## 2. 核心模型图
-
+## 核心模型图
 ```mermaid
 graph TD
     PEP["策略执行点 PEP<br/>(拦截请求)"] -->|请求| PDP["策略决策点 PDP<br/>(策略引擎)"]
@@ -36,8 +34,7 @@ graph TD
 - **操作（Action）**：用户试图对资源进行的操作（读取、写入、编辑、复制、删除）
 - **环境（Environment）**：访问请求的上下文（时间、位置、设备、通信协议、加密强度）
 
-## 3. 表/数据结构
-
+## 表/数据结构
 ```sql
 -- 用户属性
 CREATE TABLE user_attribute (
@@ -68,8 +65,7 @@ CREATE TABLE abac_policy (
 );
 ```
 
-## 4. 代码/伪代码示例
-
+## 代码/伪代码示例
 ```java
 // ABAC 策略引擎
 public class AbacEngine {
@@ -145,8 +141,7 @@ PERMIT IF
   AND environment.ip NOT IN blacklist
 ```
 
-## 5. 优缺点
-
+## 优缺点
 **优点**:
 - 极高的灵活性，可表达任意复杂规则
 - 上下文感知（时间、地点、设备、网络）
@@ -160,8 +155,7 @@ PERMIT IF
 - 策略冲突排查困难（多条策略可能同时匹配）
 - 对开发/运维要求高
 
-## 6. 适用与不适用场景
-
+## 适用与不适用场景
 **适用**:
 - 金融行业（基于客户资产等级、风险等级的差异化数据访问）
 - 医疗行业（HIPAA 合规，基于患者同意状态的数据共享）

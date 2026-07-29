@@ -63,4 +63,11 @@ module:
 
 ---
 
+
+## 相关章节
+
+- [AC 自动机（Aho-Corasick）· 多模式匹配](../string-algorithms/03-ac-automaton.md)
+- [TCP/IP 协议族：4 层模型 + 核心机制详解](../../01-network/01-tcp-ip/README.md)
+- [PCA 主成分分析](../dimensionality-reduction/pca/README.md)
+
 ← [返回: 算法概述](../README.md)

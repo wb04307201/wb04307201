@@ -141,4 +141,11 @@ graph TB
 
 ---
 
+
+## 相关章节
+
+- [Gitea](01-git/gitea/README.md)
+- [阿里微服务](06-ali-microservices/README.md)
+- [Java 工具库](03-java/README.md)
+
 ← [返回笔记目录](../README.md)

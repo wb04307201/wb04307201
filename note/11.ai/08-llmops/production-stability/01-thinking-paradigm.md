@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 决策矩阵：什么时候用 LLM？
-
+## 决策矩阵：什么时候用 LLM？
 | 场景特征 | 用规则 | 用 LLM | 原因 |
 |---------|--------|--------|------|
 | 输入是结构化数据 | ✅ | ❌ | if-else + 正则就够 |
@@ -30,8 +29,7 @@ module:
 
 ---
 
-## 2. 4 维决策：何时 LLM 划算？
-
+## 4 维决策：何时 LLM 划算？
 ```text
                 用 LLM 的 4 信号（满足 ≥ 3 个才上）：
                 ┌─────────────────────────┐
@@ -97,8 +95,7 @@ LLM 上限：2 天的开发 ROI 就打平
 
 ---
 
-## 3. LLM + 规则协同模式
-
+## LLM + 规则协同模式
 ### 3.1 规则优先 + LLM 兜底
 
 ```python
@@ -151,8 +148,7 @@ def handle_query(query):
 
 ---
 
-## 4. 反模式 · 5 个常见错
-
+## 反模式 · 5 个常见错
 ### ⚠️ 反模式 1：所有逻辑都用 LLM
 
 - 错：金额校验、电话校验、UUID 校验全 LLM
@@ -180,8 +176,7 @@ def handle_query(query):
 
 ---
 
-## 5. 实操决策脚本
-
+## 实操决策脚本
 ```python
 def should_use_llm(input_text, expected_qps, accuracy_required):
     # 信号 1：是否自然语言
@@ -211,8 +206,7 @@ def should_use_llm(input_text, expected_qps, accuracy_required):
 
 ---
 
-## 6. 一句话总结
-
+## 一句话总结
 > **Prompt vs if-else：能用规则就别用 LLM（成本 × 5、错误率 × 0）。LLM 是处理自然语言模糊性的专业工具，不是 if-else 的替代品。决策公式：4 信号满足 ≥ 3 个才上 LLM。**
 
 ---

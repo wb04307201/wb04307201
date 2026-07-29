@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 问题：从多模式匹配到 AC 自动机
-
+## 问题：从多模式匹配到 AC 自动机
 ### 1.1 朴素方案
 
 ```text
@@ -50,8 +49,7 @@ haystack = 用户评论 1000 字
 
 ---
 
-## 2. AC 自动机 3 大核心组件
-
+## AC 自动机 3 大核心组件
 ```text
 ┌────────────────────────────────────────────────────────┐
 │ 组件 1：Trie 树                                            │
@@ -76,8 +74,7 @@ haystack = 用户评论 1000 字
 
 ---
 
-## 3. fail 指针构建（BFS）
-
+## fail 指针构建（BFS）
 ```java
 // BFS 构建 fail 指针
 Queue<TrieNode> queue = new LinkedList<>();
@@ -117,8 +114,7 @@ while (!queue.isEmpty()) {
 
 ---
 
-## 4. AC 自动机匹配
-
+## AC 自动机匹配
 ```java
 public List<String> match(String text) {
     List<String> matches = new ArrayList<>();
@@ -144,8 +140,7 @@ public List<String> match(String text) {
 
 ---
 
-## 5. AC 自动机完整实现
-
+## AC 自动机完整实现
 ```java
 public class AhoCorasick {
     private final TrieNode root = new TrieNode();
@@ -218,8 +213,7 @@ public class AhoCorasick {
 
 ---
 
-## 6. 性能基准（保守口径）
-
+## 性能基准（保守口径）
 AC 自动机适合“百万级文本 + 千级模式串”的批量多模式匹配场景。此类场景中，**实测匹配时间常见于 5-50 ms**，但该区间只用于量级判断，不能当作跨环境承诺；结果取决于 CPU、内存、JVM 版本与 GC、字符集实现、词典前缀共享度、模式长度分布、文本命中率以及输出数量。
 
 可复现基准应至少记录：
@@ -246,8 +240,7 @@ public List<String> matchMillionCharacters(BenchmarkState state) {
 
 ---
 
-## 7. 反模式 · 5 个常见错
-
+## 反模式 · 5 个常见错
 ### ⚠️ 反模式 1：忘记构建 fail 指针
 
 ```java
@@ -295,8 +288,7 @@ ac.insert("fuck");
 
 ---
 
-## 8. 工业级开源库
-
+## 工业级开源库
 | 库 | 语言 | 备注 |
 |----|------|------|
 | **AhoCorasickDoubleArrayTrie** | Java | hanlp 出品，工业首选 ✅ |
@@ -308,8 +300,7 @@ ac.insert("fuck");
 
 ---
 
-## 9. 一句话总结
-
+## 一句话总结
 > **AC 自动机 = Trie 建树 + fail 指针复用后缀状态 + output 输出命中。**完整转移表的构建与空间上界均为 O(P × σ)，匹配扫描为 O(n)，返回全部结果时还需 O(z)；真实性能必须在目标硬件、JVM 和数据分布上测量。
 
 > 🔗 **工程应用**：AC 自动机在高并发敏感词过滤系统中的完整落地（Bloom + 缓存 + 分布式 + [变体绕过对抗](../../../04.system-design/04-high-performance/sensitive-word-filter/05-anti-evasion.md)）见 [04.system-design/sensitive-word-filter 专题](../../../04.system-design/04-high-performance/sensitive-word-filter/README.md)。

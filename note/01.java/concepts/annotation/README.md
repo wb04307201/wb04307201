@@ -272,4 +272,11 @@ void testAdd() {
 
 ---
 
+
+## 相关章节
+
+- [三个线程 T1、T2、T3 怎么确保按顺序执行？8 方案对比](../../concurrency/thread-basics/sequential-execution.md)
+- [实战：统计 API 接口调用耗时](../../java-agent/api/README.md)
+- [Java 锁机制详解](../../concurrency/java-locks/README.md)
+
 ← [返回 Java 核心概念](../README.md)

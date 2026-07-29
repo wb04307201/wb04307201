@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 0. 面试高频拷问
-
+## 面试高频拷问
 ```text
 Q：你的 Agent 如何处理长上下文？1M token 的文档怎么让 LLM 准确回答？
 ```
@@ -32,8 +31,7 @@ Q：你的 Agent 如何处理长上下文？1M token 的文档怎么让 LLM 准�
 
 ---
 
-## 1. 长上下文的 3 类场景
-
+## 长上下文的 3 类场景
 | 场景 | 特征 | 典型长度 | 主流策略 |
 |------|------|---------|---------|
 | **A. 长输入**（一次输入）| 用户粘 100k token 文件 | 100k-1M | Sliding Window / Long-Context Model |
@@ -46,8 +44,7 @@ Q：你的 Agent 如何处理长上下文？1M token 的文档怎么让 LLM 准�
 
 ---
 
-## 2. 6 大策略速览
-
+## 6 大策略速览
 | # | 策略 | 核心思想 | 适用场景 | 成本 |
 |---|------|---------|---------|------|
 | 1 | **Chunking 切片** | 把长文本切成小块，按块传 LLM | 长输入 / 长检索 | 低 |
@@ -61,8 +58,7 @@ Q：你的 Agent 如何处理长上下文？1M token 的文档怎么让 LLM 准�
 
 ---
 
-## 3. 子章节导航
-
+## 子章节导航
 | # | 章节 | 核心问题 |
 |---|------|---------|
 | 01 | [Chunking 切片](01-chunking.md) | 文本 / semantic / agentic / late chunking 怎么选？chunk size 多少？ |
@@ -75,16 +71,14 @@ Q：你的 Agent 如何处理长上下文？1M token 的文档怎么让 LLM 准�
 
 ---
 
-## 4. 反直觉点
-
+## 反直觉点
 - ⚠️ **"模型上下文越长越好"是错觉** —— Gemini 1.5 Pro 1M token 看起来美好，但**Lost in the Middle** 现象显著（P50 准确率掉 30%+），长上下文是「成本 + 注意力衰减」双刃剑
 - ⚠️ **"RAG 万能"也是错觉** —— Agent 场景下，**RAG 不能取代所有长上下文**——RAG 解决"召回"，但**会话上下文、多轮反馈、用户意图追踪**这些只有 prompt 内的 sliding window + memory 能解决
 - ⚠️ **"Sub-Agents 是未来"是营销话术** —— 任务拆分有"通信成本"，子 Agent 之间传信息本身就需要长上下文，单层 Agent + chunking + RAG 通常更稳
 
 ---
 
-## 5. 一句话速查
-
+## 一句话速查
 ```text
 "我的 Agent 处理长上下文用 6 策略组合（不是单选）：
 - 长输入 → Sliding Window + Long-Context Model
@@ -96,8 +90,7 @@ Q：你的 Agent 如何处理长上下文？1M token 的文档怎么让 LLM 准�
 
 ---
 
-## 6. 速查 · 关联资源
-
+## 速查 · 关联资源
 - **餐厅叙事**：[12.story/07-from-chef-to-ceo.md](../../../12.story/07-from-chef-to-ceo.md) —— 阿明餐厅 80 家连锁的"长菜单与多订单管理"实战
 - **面试题**：[13.split-hairs/11.ai/long-context-agent-strategy](../../../13.split-hairs/11.ai/long-context-agent-strategy/README.md) —— 5-7 道精选题
 - **同级兄弟**：[agent-memory](../agent-memory/README.md) · [agent-architecture](../agent-architecture/README.md)

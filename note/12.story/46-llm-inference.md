@@ -1,4 +1,13 @@
-# 46. LLM 推理优化——阿明餐厅的"上菜革命"
+<!--
+module:
+  parent: 12.story
+  slug: 12.story/46-llm-inference
+  type: article
+  category: 主模块子文章
+  summary: ---
+-->
+
+# LLM 推理优化——阿明餐厅的"上菜革命"
 
 > 阿明餐厅 24 小时营业，客人络绎不绝。但最近老板遇到难题：**客人点菜太多，后厨出菜太慢**。
 >

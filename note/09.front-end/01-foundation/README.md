@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 模块导航
-
+## 模块导航
 | 主题 | 状态 | 说明 |
 |------|------|------|
 | 浏览器渲染原理 | ✓ 已有 | [browser-rendering/](browser-rendering/) — 进程模型 / 渲染流水线 / 事件循环 / V8 引擎 |
@@ -32,8 +31,7 @@ module:
 
 ---
 
-## 2. 知识脉络
-
+## 知识脉络
 ```mermaid
 flowchart LR
     A[HTML 解析] --> B[DOM 树]
@@ -47,8 +45,7 @@ flowchart LR
 
 ---
 
-## 3. 速查要点
-
+## 速查要点
 - **渲染流水线顺序**:DOM → CSSOM → Render Tree → Layout → Paint → Composite(理解这 6 步是性能优化前提)
 - **JS 单线程事件循环**:宏任务 + 微任务,理解 await / Promise 的执行时机
 - **CSS 布局演进**:Float → Flex(2009)→ Grid(2017)→ Container Queries(2023),新项目直接 Flex / Grid
@@ -56,8 +53,7 @@ flowchart LR
 
 ---
 
-## 4. 选型建议
-
+## 选型建议
 ```mermaid
 flowchart TD
     A[CSS 方案选型] --> B{项目规模?}
@@ -70,8 +66,7 @@ flowchart TD
 
 ---
 
-## 5. 最佳实践
-
+## 最佳实践
 - 任何性能问题先回到浏览器渲染流水线找根因(白屏 / 卡顿 / 掉帧)
 - CSS 新特性优先 Flex / Grid,避免 Float 布局
 - 第三方 UI 库的 CSS 体积用 PurgeCSS / UnoCSS 裁剪
@@ -79,8 +74,7 @@ flowchart TD
 
 ---
 
-## 6. 常见面试题
-
+## 常见面试题
 - 从输入 URL 到页面渲染,经历了哪些阶段?每个阶段的优化空间在哪里?
 - 重排(reflow)与重绘(repaint)的区别?如何最小化触发?
 - CSS 盒模型的 box-sizing 三个取值与适用场景
@@ -89,8 +83,7 @@ flowchart TD
 
 ---
 
-## 7. 与其他模块的关系
-
+## 与其他模块的关系
 - **上游**:无(基础层)
 - **下游**:被 [02-language](../02-language/) / [03-frameworks](../03-frameworks/) / [05-architecture](../05-architecture/) / [06-performance](../06-performance/) 复用
 - **横向**:[06-performance](../06-performance/) 关注运行时性能,[01 基础] 关注浏览器原理

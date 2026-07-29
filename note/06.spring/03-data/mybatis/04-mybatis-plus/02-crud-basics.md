@@ -2,8 +2,7 @@
 
 > 来源:整合自原 `08.mybatis/mybatis-plus/README.md` L83-151(§三.1 CRUD + §三.2 条件构造器基础)
 
-## 2.1 插入数据
-
+## 插入数据
 ```java
 User user = new User();
 user.setName("Tom");
@@ -11,8 +10,7 @@ user.setAge(25);
 userMapper.insert(user); // 返回插入的记录数
 ```
 
-## 2.2 更新数据
-
+## 更新数据
 ```java
 User user = new User();
 user.setId(1L);
@@ -20,8 +18,7 @@ user.setName("Jerry");
 userMapper.updateById(user); // 根据ID更新
 ```
 
-## 2.3 查询数据
-
+## 查询数据
 ```java
 // 根据ID查询
 User user = userMapper.selectById(1L);
@@ -35,8 +32,7 @@ wrapper.eq("name", "Tom").gt("age", 20);
 List<User> users = userMapper.selectList(wrapper);
 ```
 
-## 2.4 删除数据
-
+## 删除数据
 ```java
 // 根据ID删除
 userMapper.deleteById(1L);
@@ -47,8 +43,7 @@ wrapper.eq("name", "Tom");
 userMapper.delete(wrapper);
 ```
 
-## 2.5 Wrapper 常用方法
-
+## Wrapper 常用方法
 MyBatis-Plus 提供了两种条件构造器:
 - `QueryWrapper`:用于查询条件构造
 - `UpdateWrapper`:用于更新条件构造

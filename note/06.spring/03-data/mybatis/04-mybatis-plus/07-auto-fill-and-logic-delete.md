@@ -2,8 +2,7 @@
 
 > 来源:整合自原 `08.mybatis/mybatis-plus/README.md` L196-241(§三.5 自动填充 + §三.6 逻辑删除)
 
-## 7.1 自动填充功能
-
+## 自动填充功能
 ### 创建 MetaObjectHandler 实现类
 
 ```java
@@ -23,8 +22,7 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
 }
 ```
 
-## 7.2 逻辑删除
-
+## 逻辑删除
 ### 实体类添加注解
 
 ```java

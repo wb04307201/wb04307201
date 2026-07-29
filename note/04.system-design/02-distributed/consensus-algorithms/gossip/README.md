@@ -1,7 +1,6 @@
-<!--
-module:
+<!--module:
   parent: system-design
-  slug: system-design/gossip
+  slug: 04.system-design/02-distributed/consensus-algorithms/gossip
   type: article
   category: 主模块子文章
   summary: Gossip协议：分布式系统中的高效信息传播机制 本应该很简单，Gossip协议（八卦协议）通过模仿人类社会中“流言传播”的方式，实现分布式系统中信息的快速同步...
@@ -83,5 +82,12 @@ Gossip协议因其高效性和容错性，被广泛应用于以下领域：
 Gossip协议通过模拟人际传播的简单机制，为分布式系统提供了一种高效、容错的信息同步方案。其核心优势在于去中心化设计和指数级扩散能力，适用于大规模、动态变化的网络环境。尽管存在延迟和带宽消耗等缺点，但通过模式选择和优化策略，Gossip协议已成为云计算、区块链、分布式数据库等领域的基石技术。未来，随着5G、物联网等技术的发展，Gossip协议在超大规模分布式系统中的应用前景将更加广阔。
 
 ---
+
+
+## 相关章节
+
+- [Serverless 架构：FaaS / BaaS / Knative 全场景实战](../../../01-foundation/02-evolution/02-serverless-architecture/README.md)
+- [演进与组织](../../../01-foundation/system-design-basics/microservices/migration-and-organization/README.md)
+- [4+1 视图](../../../01-foundation/system-design-basics/architecture-diagram/4+1/README.md)
 
 ← [返回 共识算法](../README.md)

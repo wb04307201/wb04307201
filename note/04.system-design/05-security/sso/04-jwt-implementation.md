@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. JWT vs IdP 模式对比
-
+## JWT vs IdP 模式对比
 | 维度 | JWT 自建 | OAuth2 + OIDC |
 |------|---------|--------------|
 | 颁发 | 自建服务 | 第三方 IdP（Keycloak 等）|
@@ -28,8 +27,7 @@ module:
 
 ---
 
-## 2. JWT 3 段结构
-
+## JWT 3 段结构
 ```text
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyLTEyMyIsIm5hbWUiOiJaaGFuZ3NhbiIsInJvbGUiOiJBRE1JTiIsImV4cCI6MTY5MzAwMDAwMH0.7s5fz3Ik_vd3P0Eq5TLfBTjKxE5dUKj-7wDJr5L4c1Q
 └─────── Header ──────────┘  └────────────── Payload (Claims) ──────────────┘  └───── Signature ─────┘
@@ -43,8 +41,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyLTEyMyIsIm5hbWUiOiJaaGFuZ3N
 
 ---
 
-## 3. JWT 实战代码
-
+## JWT 实战代码
 ### 3.1 颁发 JWT
 
 ```java
@@ -148,8 +145,7 @@ public ResponseEntity<TokenPair> refresh(@RequestBody RefreshRequest req) {
 
 ---
 
-## 4. 5 大反模式
-
+## 5 大反模式
 ### ⚠️ 反模式 1：JWT 一旦颁发，无法撤销
 
 - **错**：JWT 默认无黑名单机制
@@ -182,8 +178,7 @@ public ResponseEntity<TokenPair> refresh(@RequestBody RefreshRequest req) {
 
 ---
 
-## 5. Redis 黑名单设计
-
+## Redis 黑名单设计
 ### 5.1 选型：为什么用 Redis
 
 - 内存 KV 存储，TTL 自动过期
@@ -246,8 +241,7 @@ public ResponseEntity<?> logout(HttpServletRequest req) {
 
 ---
 
-## 6. JwtFilter + Spring Security 整合
-
+## JwtFilter + Spring Security 整合
 ```java
 @Configuration
 @EnableWebSecurity
@@ -277,8 +271,7 @@ public class SecurityConfig {
 
 ---
 
-## 7. JWT vs OAuth2 + OIDC 选型
-
+## JWT vs OAuth2 + OIDC 选型
 | 维度 | JWT 自建 | OAuth2 + OIDC |
 |------|---------|--------------|
 | **完整 SSO** | ❌（需自建登录页 / 用户管理） | ✅ |
@@ -294,8 +287,7 @@ public class SecurityConfig {
 
 ---
 
-## 8. 一句话总结
-
+## 一句话总结
 > **JWT 自建 SSO = 自签发 + 黑名单撤销 + Refresh Token Rotate + RS256 + HTTPS。简单但需自建登录页 + 用户管理——仅适合微服务内部，互联网首选 OAuth2+OIDC。**
 
 ---

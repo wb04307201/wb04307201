@@ -29,8 +29,7 @@ module:
 
 ---
 
-## 0. 面试高频拷问
-
+## 面试高频拷问
 ```text
 阿里一面：如果让你设计一个 Agent Evaluation（评测系统），你会如何设计
          评测指标与评测流程？
@@ -47,8 +46,7 @@ module:
 
 ---
 
-## 1. Agent 评测 vs LLM 评测
-
+## Agent 评测 vs LLM 评测
 | 维度 | LLM 评测（已有）| **Agent 评测（本专题）** |
 |------|----------------|----------------------|
 | 输入 | 单次 prompt | 多轮 / 多工具调用 |
@@ -61,8 +59,7 @@ module:
 
 ---
 
-## 2. 6 大评测维度
-
+## 6 大评测维度
 | # | 维度 | 核心指标 | 评估方式 | 重要性 |
 |---|------|----------|----------|--------|
 | 1 | **任务完成率** | 任务成功率 / 部分完成率 | 黄金集 + 自动化断言 | ⭐⭐⭐⭐⭐ |
@@ -90,8 +87,7 @@ def agent_score(trajectory, outcome, cost, feedback):
 
 ---
 
-## 3. 5 种评测方法
-
+## 5 种评测方法
 | # | 方法 | 适用 | 成本 |
 |---|------|------|------|
 | 1 | **自动化指标** | 任务成功率 / 工具调用正确性 | 低 |
@@ -104,8 +100,7 @@ def agent_score(trajectory, outcome, cost, feedback):
 
 ---
 
-## 4. 评测流程全景
-
+## 评测流程全景
 ```text
 ┌──────────────────────────────────────────────────────────┐
 │  1. 黄金集构建（离线）                                    │
@@ -140,8 +135,7 @@ def agent_score(trajectory, outcome, cost, feedback):
 
 ---
 
-## 5. 子章节导航
-
+## 子章节导航
 ### 系列文章（扁平 .md 文件）
 
 | # | 章节 | 核心问题 |
@@ -166,8 +160,7 @@ def agent_score(trajectory, outcome, cost, feedback):
 
 ---
 
-## 6. 反直觉点
-
+## 反直觉点
 - ⚠️ **"Agent 评测 = LLM 评测"是错觉** —— Agent 是多步任务，必须有 **trajectory + task-level** 评估
 - ⚠️ **"GPT-4 Judge 就够"是错觉** —— LLM-as-Judge 有偏见（位置偏好 / 长度偏好），必须 **多模型投票**
 - ⚠️ **"一次性评估就够"是错觉** —— Agent 行为有漂移，需 **持续监控 + 漂移告警**
@@ -175,8 +168,7 @@ def agent_score(trajectory, outcome, cost, feedback):
 
 ---
 
-## 7. 一句话速查
-
+## 一句话速查
 ```text
 Agent Evaluation 公式：
   Score = 0.4 任务完成率 + 0.2 步骤效率 + 0.1 工具准确 + 0.1 成本 + 0.15 满意度 + 0.05 稳定性
@@ -187,8 +179,7 @@ Agent Evaluation 公式：
 
 ---
 
-## 8. 速查 · 关联资源
-
+## 速查 · 关联资源
 - **LLM 评估**：[LLM 单次调用评估](../04-llm-evaluation/README.md) —— 331 行深度
 - **面试题**：[13.split-hairs/11.ai/agent-performance-evaluation](../../../13.split-hairs/11.ai/agent-performance-evaluation/README.md) —— 7 道精选 Q&A
 - **真实案例**：[05-applications/case-studies/10-salesforce-agentforce/](../../05-applications/case-studies/10-salesforce-agentforce/README.md) —— Salesforce Agentforce 评测实践

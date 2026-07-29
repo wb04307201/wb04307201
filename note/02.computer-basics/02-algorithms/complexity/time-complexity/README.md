@@ -81,4 +81,11 @@ def binary_search(arr, target):
 
 ← [复杂度取舍策略](../) · [空间复杂度](../space-complexity/) →
 
+
+## 相关章节
+
+- [决策树 3 大经典模型（ID3 / C4.5 / CART）](../../decision-tree/README.md)
+- [K-means 聚类算法](../../clustering/k-means/README.md)
+- [SSE vs WebSocket —— 协议深度对比](../../../01-network/protocols/sse-vs-websocket/README.md)
+
 ← [返回: 复杂度分析](../README.md)

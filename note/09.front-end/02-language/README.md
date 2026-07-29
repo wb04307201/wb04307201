@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 模块导航
-
+## 模块导航
 | 主题 | 状态 | 说明 |
 |------|------|------|
 | TypeScript 5 | ✓ 已有 | [typescript/](typescript/) — 类型体操 / 泛型 / 装饰器 / 工程配置 |
@@ -31,8 +30,7 @@ module:
 
 ---
 
-## 2. 知识脉络
-
+## 知识脉络
 ```mermaid
 flowchart LR
     A[ES2024+] --> B[TypeScript 5]
@@ -45,8 +43,7 @@ flowchart LR
 
 ---
 
-## 3. 速查要点
-
+## 速查要点
 - **ES2024-2026 新特性**:Array.groupBy、Array.toSorted、Promise.withResolvers、Iterator helpers、Records & Tuples(Stage 2)
 - **TypeScript 类型体操边界**:超过 3 层嵌套的 Conditional Type 应拆分;类型不必要时用 `unknown` 替代 `any`
 - **Node.js 异步演进**:Callback → Promise → async/await → Worker Threads → 模块联邦
@@ -54,8 +51,7 @@ flowchart LR
 
 ---
 
-## 4. 选型建议
-
+## 选型建议
 ```mermaid
 flowchart TD
     A[TypeScript vs JavaScript] --> B{新项目?}
@@ -67,8 +63,7 @@ flowchart TD
 
 ---
 
-## 5. 最佳实践
-
+## 最佳实践
 - 新项目直接 TypeScript 5 strict 模式,而不是 JS + JSDoc
 - 类型不必要时优先 `unknown` + 类型守卫,而非 `any` 静默吞错
 - Node.js 异步演进路线:Callback → Promise → async/await → Worker Threads
@@ -76,8 +71,7 @@ flowchart TD
 
 ---
 
-## 6. 常见面试题
-
+## 常见面试题
 - ES Module 与 CommonJS 的循环依赖处理差异
 - Promise A+ 规范:thenable / 微任务队列 / 错误冒泡
 - TypeScript `unknown` 与 `any` 的本质区别,何时用判别联合?
@@ -86,8 +80,7 @@ flowchart TD
 
 ---
 
-## 7. 与其他模块的关系
-
+## 与其他模块的关系
 - **上游**:[01-foundation](../01-foundation/)(浏览器原理)
 - **下游**:被 [03-frameworks](../03-frameworks/) / [04-engineering](../04-engineering/) / [09-frontend-and-ai](../09-frontend-and-ai/) 依赖
 - **横向**:[05-architecture](../05-architecture/) 关注架构选型,[02 语言] 关注语言本身

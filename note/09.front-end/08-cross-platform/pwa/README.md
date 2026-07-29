@@ -13,12 +13,10 @@ module:
 
 > 一句话定位：**PWA — 渐进式 Web 应用，离线优先 + 安装到桌面/主屏**
 
-## 1. 一句话定位
-
+## 一句话定位
 PWA 是 Google 2015 年提出的 Web 应用形态，通过 Service Worker / Web App Manifest / Push API 等浏览器能力，让 Web 应用具备类似原生应用的体验：离线访问、桌面图标、推送通知。
 
-## 2. 核心能力
-
+## 核心能力
 - **Service Worker**：浏览器后台脚本，拦截网络请求实现离线缓存
 - **Web App Manifest**：JSON 配置文件，定义应用名称、图标、主题色
 - **Push API**：服务器推送通知到用户
@@ -26,8 +24,7 @@ PWA 是 Google 2015 年提出的 Web 应用形态，通过 Service Worker / Web 
 - **Cache API**：编程式缓存管理
 - **IndexedDB**：客户端 NoSQL 存储
 
-## 3. 生态速查
-
+## 生态速查
 | 类别 | 推荐 | 备选 |
 |------|------|------|
 | Service Worker 库 | Workbox | 手动实现 |
@@ -37,8 +34,7 @@ PWA 是 Google 2015 年提出的 Web 应用形态，通过 Service Worker / Web 
 | 工具 | PWA Builder | - |
 | 状态检测 | navigator.onLine | - |
 
-## 4. 选型建议
-
+## 选型建议
 ```mermaid
 flowchart TD
     A[需要 PWA?] --> B{需要离线访问?}
@@ -51,8 +47,7 @@ flowchart TD
     G -->|否| I[基础 PWA]
 ```
 
-## 5. 缓存策略
-
+## 缓存策略
 | 策略 | 适用 | 说明 |
 |------|------|------|
 | Cache First | 静态资源 | 优先用缓存，后台更新 |
@@ -61,27 +56,23 @@ flowchart TD
 | Network Only | 实时数据 | 不缓存 |
 | Cache Only | 预编译资源 | 仅用缓存 |
 
-## 6. 实战场景
-
+## 实战场景
 - **某新闻 App**：PWA 离线阅读，已读文章本地缓存
 - **某电商 App**：PWA + 推送，转化率提升 20%
 - **某 SaaS 工具**：PWA 安装到桌面，使用体验接近原生
 
-## 7. PWA 局限
-
+## PWA 局限
 - **iOS Push 限制**：iOS Safari 16.4+ 才支持 Web Push，且必须先安装到主屏
 - **iOS 后台限制**：iOS 严格限制 Service Worker 生命周期
 - **权限受限**：无法访问部分系统能力（NFC、蓝牙等）
 - **不是 App Store 应用**：无法上架 App Store（除非用 PWABuilder 打包）
 
-## 8. 学习资源
-
+## 学习资源
 - MDN PWA 指南：https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps
 - Web.dev PWA：https://web.dev/progressive-web-apps/
 - Workbox 文档：https://developer.chrome.com/docs/workbox
 
-## 9. 关键术语
-
+## 关键术语
 | 术语 | 解释 |
 |------|------|
 | PWA | Progressive Web App |
@@ -91,8 +82,7 @@ flowchart TD
 | FCM | Firebase Cloud Messaging |
 | Background Sync | 后台同步 API |
 
-## 10. Service Worker 代码示例
-
+## Service Worker 代码示例
 ### 10.1 Workbox 配置
 
 ```javascript
@@ -156,8 +146,7 @@ async function staleWhileRevalidate(request) {
 }
 ```
 
-## 11. Web App Manifest 完整配置
-
+## Web App Manifest 完整配置
 ```json
 {
   "name": "MyApp - 全称",
@@ -187,8 +176,7 @@ async function staleWhileRevalidate(request) {
 }
 ```
 
-## 12. Push API + FCM 集成
-
+## Push API + FCM 集成
 ### 12.1 Service Worker 接收推送
 
 ```javascript
@@ -236,8 +224,7 @@ await fetch('/api/push/subscribe', {
 })
 ```
 
-## 13. IndexedDB 实战（Dexie.js）
-
+## IndexedDB 实战（Dexie.js）
 ```javascript
 import Dexie from 'dexie'
 
@@ -259,8 +246,7 @@ const recent = await db.notes.where('createdAt').above(Date.now() - 86400000).to
 const byTag = await db.notes.where('tags').equals('pwa').toArray()
 ```
 
-## 14. 真实案例
-
+## 真实案例
 ### 14.1 新闻 App
 
 - Service Worker 缓存已读文章
@@ -291,8 +277,7 @@ const byTag = await db.notes.where('tags').equals('pwa').toArray()
 - IndexedDB 存游戏进度
 - 离线可玩
 
-## 15. 可访问性（a11y）
-
+## 可访问性（a11y）
 PWA 的 a11y 需关注以下方面：
 
 - **通知无障碍**：

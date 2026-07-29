@@ -1,7 +1,6 @@
-<!--
-module:
+<!--module:
   parent: ai/04-architecture
-  slug: ai/agent-architecture/agent-execution-patterns
+  slug: 11.ai/04-architecture/agent-execution-patterns
   type: deep-dive
   category: Agent 执行模式
   summary: AI Agent 4 大执行模式深度对比 —— ReAct / Plan-and-Execute / DAG / Multi-Agent 的 6 维对比 + 场景化选型 + Plan-and-Execute 重规划机制
@@ -19,8 +18,7 @@ module:
 
 ---
 
-## 0. 面试高频拷问
-
+## 面试高频拷问
 ```text
 Q：在构建 AI Agent 系统时，ReAct 和 Plan-and-Execute 是两种主流的执行模式，
    各有其独特的特点和适用场景。如何选？
@@ -37,8 +35,7 @@ Q：在构建 AI Agent 系统时，ReAct 和 Plan-and-Execute 是两种主流的
 
 ---
 
-## 1. 4 大模式速览
-
+## 4 大模式速览
 | 模式 | 全称 | 核心思想 | 代表项目 | 适用 |
 |------|------|---------|---------|------|
 | **ReAct** | Reasoning + Acting | 思考→行动→观察→循环 | BabyAGI, AutoGPT, ReAct paper | 探索 / 未知场景 |
@@ -48,8 +45,7 @@ Q：在构建 AI Agent 系统时，ReAct 和 Plan-and-Execute 是两种主流的
 
 ---
 
-## 2. 6 维核心对比
-
+## 6 维核心对比
 | 维度 | ReAct | Plan-and-Execute | DAG | Multi-Agent |
 |------|-------|------------------|-----|-------------|
 | **灵活性** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐ |
@@ -63,8 +59,7 @@ Q：在构建 AI Agent 系统时，ReAct 和 Plan-and-Execute 是两种主流的
 
 ---
 
-## 3. 子章节导航
-
+## 子章节导航
 | # | 章节 | 核心问题 |
 |---|------|---------|
 | 01 | [ReAct 深度](01-react-deep-dive.md) | ReAct 怎么"循环"？何时不可控？Token 失控的场景？ |
@@ -77,8 +72,7 @@ Q：在构建 AI Agent 系统时，ReAct 和 Plan-and-Execute 是两种主流的
 
 ---
 
-## 4. 反直觉点
-
+## 反直觉点
 - ⚠️ **"ReAct 等于 Agent"是错觉** —— ReAct 是**模式**之一，不是唯一。70%+ 复杂 Agent 是 ReAct + 其他模式混合
 - ⚠️ **"Plan-and-Execute 不灵活"是错觉** —— 现代 Plan-and-Execute 支持 **Plan Repair**（失败修复），并不死板
 - ⚠️ **"DAG 不能处理未知"是错觉** —— DAG 配合 **Loop 节点** + **Plan Repair 节点**可处理动态场景
@@ -86,8 +80,7 @@ Q：在构建 AI Agent 系统时，ReAct 和 Plan-and-Execute 是两种主流的
 
 ---
 
-## 5. 一句话速查
-
+## 一句话速查
 ```text
 "Agent 4 大模式选型：
 - 探索 / 未知多 → ReAct
@@ -99,8 +92,7 @@ Q：在构建 AI Agent 系统时，ReAct 和 Plan-and-Execute 是两种主流的
 
 ---
 
-## 6. 速查 · 关联资源
-
+## 速查 · 关联资源
 - 🆕 **入口路由**：[分层路由架构](../routing-architecture/README.md) —— 简单问答 Fast Path + 复杂 Agent Path 的统一入口设计
 - **餐厅叙事**：[12.story/02-system-architecture-evolution.md](../../../12.story/02-system-architecture-evolution.md) —— 阿明餐厅选型 ReAct vs Plan-and-Execute 实战
 - **面试题**：[13.split-hairs/11.ai/react-vs-plan-execute](../../../13.split-hairs/11.ai/react-vs-plan-execute/README.md) —— 5-7 道精选题

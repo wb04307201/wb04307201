@@ -9,6 +9,8 @@ module:
 
 # 跳表集合
 
+> **定位**：跳表集合 的核心原理、实现与最佳实践。
+
 > 目标：理解 ConcurrentSkipListMap 和 ConcurrentSkipListSet 的跳表数据结构、无锁操作实现及有序并发场景应用。
 
 ---

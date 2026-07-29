@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 01.java
+  slug: 01.java/collection/hashmap
+  type: article
+  category: 主模块子文章
+  summary: ---
+-->
+
 # HashMap 深入
 
 > 目标：彻底搞懂 HashMap 的底层实现，包括 put 流程、扩容机制、哈希函数设计、线程安全问题。

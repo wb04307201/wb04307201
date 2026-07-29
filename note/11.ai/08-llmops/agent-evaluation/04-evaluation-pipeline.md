@@ -19,8 +19,7 @@ module:
 
 ---
 
-## 1. 完整 Pipeline（4 阶段）
-
+## 完整 Pipeline（4 阶段）
 ```text
 ┌────────────────────────────────────────────────────────────┐
 │ 阶段 1：黄金集构建（持续）                                  │
@@ -57,8 +56,7 @@ module:
 
 ---
 
-## 2. CI 集成最佳实践
-
+## CI 集成最佳实践
 ```yaml
 # .github/workflows/agent-eval.yml
 name: Agent Evaluation
@@ -83,8 +81,7 @@ jobs:
 
 ---
 
-## 3. A/B Test 关键参数
-
+## A/B Test 关键参数
 | 参数 | 推荐值 |
 |------|--------|
 | 流量比例 | 5% → 25% → 50% → 100% |
@@ -96,8 +93,7 @@ jobs:
 
 ---
 
-## 4. 漂移检测（Drift Detection）
-
+## 漂移检测（Drift Detection）
 ```python
 def detect_drift(historical_scores, current_score):
     """检测模型输出漂移"""
@@ -122,8 +118,7 @@ def daily_drift_check():
 
 ---
 
-## 5. 黄金集维护
-
+## 黄金集维护
 ```python
 GOLDEN_SET_LIFECYCLE = """
 1. 初始：业务专家手工标注 500 条（含难 / 中 / 易）
@@ -138,8 +133,7 @@ GOLDEN_SET_LIFECYCLE = """
 
 ---
 
-## 6. Pipeline 反模式 · 5 个常见错
-
+## Pipeline 反模式 · 5 个常见错
 ### ⚠️ 反模式 1：上线前跑一次就发布
 
 - **错**：评测一次高就发版
@@ -167,8 +161,7 @@ GOLDEN_SET_LIFECYCLE = """
 
 ---
 
-## 7. 一句话总结
-
+## 一句话总结
 > **Agent 评测 Pipeline = 黄金集（500 条持续维护）→ CI 自动化（PR 触发 + 阈值 0.85）→ A/B Test（5% 流量 → 7 天 → 全量）→ 漂移检测（每日快测 + KS 检验 + 自动告警）→ 回滚机制。任何环节缺失都是定时炸弹。**
 
 ---

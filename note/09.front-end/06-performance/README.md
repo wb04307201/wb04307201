@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 模块导航
-
+## 模块导航
 | 主题 | 状态 | 说明 |
 |------|------|------|
 | Core Web Vitals | ✓ 已有 | [core-web-vitals/](core-web-vitals/) — LCP / INP / CLS 详解 |
@@ -31,8 +30,7 @@ module:
 
 ---
 
-## 2. 知识脉络
-
+## 知识脉络
 ```mermaid
 flowchart TD
     A[性能问题诊断] --> B{LCP > 2.5s?}
@@ -46,8 +44,7 @@ flowchart TD
 
 ---
 
-## 3. 速查要点
-
+## 速查要点
 - **LCP 目标 < 2.5s**:首屏最大内容绘制时间,影响用户感知速度
 - **INP 目标 < 200ms**:交互响应时间,2024 起替代 FID
 - **CLS 目标 < 0.1**:累计布局偏移,视觉稳定性
@@ -55,8 +52,7 @@ flowchart TD
 
 ---
 
-## 4. 核心优化手段
-
+## 核心优化手段
 | 优化层 | 手段 | 典型实现 |
 |--------|------|---------|
 | 加载层 | Code Splitting / Lazy Load | Vite / Webpack 动态导入 + React.lazy |
@@ -67,8 +63,7 @@ flowchart TD
 
 ---
 
-## 5. 最佳实践
-
+## 最佳实践
 - 性能预算固化:JS < 170KB / 图片 < 300KB / 字体 < 100KB(首次加载)
 - 图片:AVIF / WebP + `<img loading="lazy" decoding="async">` + `width/height` 防 CLS
 - 字体:`font-display: swap` + 子集化 + preload 关键字体
@@ -78,8 +73,7 @@ flowchart TD
 
 ---
 
-## 6. 常见面试题
-
+## 常见面试题
 - LCP / INP / CLS 三个指标分别测量什么?INP 为什么替代 FID?
 - 长任务(Long Task)对 INP 的影响,如何用 `scheduler.yield()` 切片?
 - 图片优化三件套:`loading="lazy"` / `decoding="async"` / `width+height` 防 CLS,各自原理
@@ -88,8 +82,7 @@ flowchart TD
 
 ---
 
-## 7. 与其他模块的关系
-
+## 与其他模块的关系
 - **上游**:[01-foundation](../01-foundation/)(浏览器原理)/ [03-frameworks](../03-frameworks/)
 - **下游**:支撑所有前端项目的性能优化
 - **横向**:[07-security](../07-security/) 关注安全,[06 性能] 关注体验

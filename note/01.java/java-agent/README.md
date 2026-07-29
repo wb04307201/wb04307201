@@ -528,4 +528,11 @@ new AgentBuilder.Default()
 
 ---
 
+
+## 相关章节
+
+- [Sealed Classes](../version/sealed-classes/README.md)
+- [JVM — 讲明白 Java 虚拟机](../jvm/README.md)
+- [String](../concepts/string/README.md)
+
 ← [返回 01.java 主模块](../README.md)

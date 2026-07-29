@@ -1,10 +1,9 @@
-<!--
-module:
+<!--module:
   parent: front-end
-  slug: front-end/state-management
+  slug: 09.front-end/05-architecture/state-management
   type: article
   category: 主模块子文章
-  summary: 状态管理
+  summary: 前端状态管理是 2015 年至今最"内卷"的领域之一。从 Redux 一家独大 → MobX 二分天下 → 2023 后 Zustand / Jotai ...
 -->
 
 # 状态管理
@@ -16,8 +15,7 @@ module:
 ---
 ---
 
-## 1. 状态管理的本质问题
-
+## 状态管理的本质问题
 ```mermaid
 graph TB
   A[UI] -->|用户操作| B[State]
@@ -36,8 +34,7 @@ graph TB
 
 ---
 
-## 2. 状态分类
-
+## 状态分类
 | 状态类型 | 例子 | 管理方式 |
 |---------|------|---------|
 | **UI 状态** | 弹窗开关、hover、折叠展开 | 组件内 `useState` / `ref` |
@@ -50,8 +47,7 @@ graph TB
 
 ---
 
-## 3. 主流方案对比（2026）
-
+## 主流方案对比（2026）
 ### 3.1 React 生态
 
 | 库 | 范式 | 学习曲线 | 包体积 | 2026 使用趋势 | 适用 |
@@ -75,8 +71,7 @@ graph TB
 
 ---
 
-## 4. 范式对比：Flux vs 原子化 vs 响应式
-
+## 范式对比：Flux vs 原子化 vs 响应式
 ```mermaid
 graph TB
   A[三大范式] --> B[Flux / 单一 Store]
@@ -98,8 +93,7 @@ graph TB
 
 ---
 
-## 5. 代码示例对比
-
+## 代码示例对比
 ### Redux Toolkit（Flux 范式）
 ```typescript
 // store.ts
@@ -155,8 +149,7 @@ export const useCounter = defineStore('counter', () => {
 
 ---
 
-## 6. 服务端状态：TanStack Query
-
+## 服务端状态：TanStack Query
 **2026 共识**：**服务端状态（API 数据）不应该用 Redux / Zustand 管理**。
 
 | 维度 | TanStack Query | SWR | Redux RTK Query |
@@ -179,8 +172,7 @@ const { data, isLoading, error } = useQuery({
 
 ---
 
-## 7. 选型决策树
-
+## 选型决策树
 ```mermaid
 graph TB
   A[需要状态管理?] -->|是| B{状态类型?}
@@ -201,8 +193,7 @@ graph TB
 
 ---
 
-## 8. 反模式清单
-
+## 反模式清单
 | 反模式 | 症状 | 正确做法 |
 |--------|------|---------|
 | **把所有状态塞全局 store** | store 臃肿、重渲染失控 | 区分 UI / 客户端 / 服务端状态 |
@@ -213,14 +204,12 @@ graph TB
 
 ---
 
-## 9. 学习路径建议
-
+## 学习路径建议
 1. **入门**（3 天）：掌握 Vue 3 原生响应式（`ref` / `reactive` / `computed`）或 React `useState` + Context
 2. **进阶**（1 周）：Zustand 或 Pinia 跑一个真实项目；TanStack Query 替代 API 状态管理
 3. **高级**（持续）：原子化（Jotai / Nano Stores）在大型项目的应用；自定义 middleware；DevTools 深入
 
-## 10. 交叉引用
-
+## 交叉引用
 - [`03-frameworks/`](../../03-frameworks/) — 框架选型决定状态管理选型
 - [`05-architecture/routing/`](../routing/) — 路由状态 vs 全局状态
 - [`06-performance/`](../../06-performance/) — 重渲染是性能杀手
@@ -228,8 +217,7 @@ graph TB
 
 ---
 
-## 11. 与其他模块的关系
-
+## 与其他模块的关系
 - **上游**：[`03-frameworks/`](../../03-frameworks/) / [`02-language/`](../../02-language/)
 - **下游**：被 [`05-architecture/`](../)（渲染架构依赖状态流）、[`06-performance/`](../../06-performance/)（状态粒度影响性能）复用
 

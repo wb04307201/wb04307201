@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 修复 prompt 5 大要素
-
+## 修复 prompt 5 大要素
 ```python
 fix_prompt = f"""
 [任务背景] {task_description}
@@ -44,8 +43,7 @@ fix_prompt = f"""
 
 ---
 
-## 2. 4 类常见错误的 prompt 模板
-
+## 4 类常见错误的 prompt 模板
 ### 2.1 语法错误
 
 ```python
@@ -158,8 +156,7 @@ Stack trace：
 
 ---
 
-## 3. 通用结构模板
-
+## 通用结构模板
 ```python
 GENERIC_FIX_TEMPLATE = """
 ## 任务
@@ -189,8 +186,7 @@ GENERIC_FIX_TEMPLATE = """
 
 ---
 
-## 4. 实战示例：Python 修复 prompt
-
+## 实战示例：Python 修复 prompt
 ```python
 # Agent 失败的 python 修复任务
 fix_prompt = """
@@ -230,8 +226,7 @@ test_calculate_discount_gold_member：
 
 ---
 
-## 5. 5 大设计原则
-
+## 5 大设计原则
 ### 5.1 原则 1：具体 > 抽象
 
 ```text
@@ -269,8 +264,7 @@ test_calculate_discount_gold_member：
 
 ---
 
-## 6. 实战技巧
-
+## 实战技巧
 ### 6.1 技巧 1：失败历史
 
 ```python
@@ -314,8 +308,7 @@ SCOPED_FIX_PROMPT = """
 
 ---
 
-## 7. 反模式 · 5 个常见错
-
+## 反模式 · 5 个常见错
 ### ⚠️ 反模式 1：只传错误信息
 
 ```text
@@ -353,8 +346,7 @@ SCOPED_FIX_PROMPT = """
 
 ---
 
-## 8. 一句话总结
-
+## 一句话总结
 > **修复 prompt 模板 5 要素：任务 + 当前代码 + 错误详情 + 历史尝试 + 约束。4 类模板（语法/类型/测试/运行时）+ 5 大原则（具体/完整/结构化/上下文/反馈）= Agent 一次到位修复率 +50%。**
 
 ---

@@ -11,8 +11,7 @@ module:
 
 > API 是系统对外交互的接口，良好的 API 设计直接影响系统的可用性、可维护性和开发者体验。
 
-## 1. 设计方式对比
-
+## 设计方式对比
 | 特性 | RESTful | GraphQL | RPC |
 |------|---------|---------|-----|
 | 协议 | HTTP/1.1 | HTTP/1.1 | 多种(HTTP/2, TCP) |
@@ -24,8 +23,7 @@ module:
 | 适用场景 | 公开 API / CRUD | 前端数据聚合 | 内部微服务调用 |
 | 代表技术 | Spring MVC | Apollo Server | gRPC / Dubbo |
 
-## 2. 选型决策
-
+## 选型决策
 ```mermaid
 flowchart TD
     A["API 类型选择"] --> B{"调用方是谁？"}
@@ -38,8 +36,7 @@ flowchart TD
     F -->|一般| H["RESTful / Feign"]
 ```
 
-## 3. API 设计最佳实践
-
+## API 设计最佳实践
 | 实践 | 说明 |
 |------|------|
 | **版本控制** | URL 路径版本（`/api/v1/users`）或 Header 版本（`Accept: application/vnd.api+json;version=1`） |
@@ -50,8 +47,7 @@ flowchart TD
 | **HATEOAS** | 响应中嵌入关联资源链接，实现 API 自描述 |
 | **文档** | OpenAPI 3.0（Swagger）自动生成文档 + 交互式测试 |
 
-## 4. 认证方案对比
-
+## 认证方案对比
 | 方案 | 适用场景 | 安全性 | 复杂度 |
 |------|---------|--------|--------|
 | **API Key** | 服务端对服务端 | 中（需 HTTPS） | 低 |

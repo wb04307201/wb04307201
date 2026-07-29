@@ -16,8 +16,7 @@ module:
 ---
 ---
 
-## 1. AI SDK 选型对比
-
+## AI SDK 选型对比
 | SDK | 优势 | 适用 | 2026 状态 |
 |-----|------|------|----------|
 | **Vercel AI SDK** | 多模型统一接口 / 流式 SSR / React hooks | Next.js 项目首选 | ⭐⭐⭐⭐⭐ 主流 |
@@ -27,8 +26,7 @@ module:
 
 ---
 
-## 2. Vercel AI SDK 核心能力
-
+## Vercel AI SDK 核心能力
 ### 2.1 多模型统一接口
 
 ```typescript
@@ -128,8 +126,7 @@ console.log(result.text)
 
 ---
 
-## 3. AI Native UI 模式
-
+## AI Native UI 模式
 | 模式 | 实现 | 适用 |
 |------|------|------|
 | **流式渲染** | `useChat()` + SSE | 实时对话 |
@@ -159,8 +156,7 @@ function Message({ content }: { content: string }) {
 
 ---
 
-## 4. 结构化输出（Structured Output）
-
+## 结构化输出（Structured Output）
 ```typescript
 import { generateObject } from 'ai'
 import { anthropic } from '@ai-sdk/anthropic'
@@ -182,8 +178,7 @@ console.log(object.name)  // "John Doe"
 
 ---
 
-## 5. RAG（检索增强生成）
-
+## RAG（检索增强生成）
 ```typescript
 import { generateText } from 'ai'
 import { anthropic } from '@ai-sdk/anthropic'
@@ -204,8 +199,7 @@ const { text } = await generateText({
 
 ---
 
-## 6. 安全与成本
-
+## 安全与成本
 | 关注点 | 实践 |
 |--------|------|
 | **API Key 保护** | 永远放服务端，不在客户端暴露 |
@@ -216,14 +210,12 @@ const { text } = await generateText({
 
 ---
 
-## 7. 学习路径
-
+## 学习路径
 1. **入门**（3 天）：跑通 `useChat()` 流式对话 Demo
 2. **进阶**（1 周）：Function Calling + 多模型切换
 3. **高级**（持续）：RAG 集成 + AI Native UI + Eval 体系
 
-## 8. 交叉引用
-
+## 交叉引用
 - [`09-frontend-and-ai/`](../) — 前端与 AI 总览
 - [`09-frontend-and-ai/vibe-coding/`](../vibe-coding/) — AI 辅助开发
 - [`11.ai/01-fundamentals/llm-basics/`](../../../11.ai/01-fundamentals/llm-basics/README.md/) — LLM 基础

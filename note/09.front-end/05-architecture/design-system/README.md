@@ -16,8 +16,7 @@ module:
 ---
 ---
 
-## 1. 设计系统的层次
-
+## 设计系统的层次
 ```mermaid
 graph TB
   A[设计语言<br/>品牌 / 调性 / 原则] --> B[Design Token<br/>颜色 / 字体 / 间距 / 阴影]
@@ -43,8 +42,7 @@ graph TB
 
 ---
 
-## 2. Design Token —— 设计系统的基石
-
+## Design Token —— 设计系统的基石
 ### Token 是什么？
 
 Token 是**设计决策的抽象化命名**，把"色号 #1976d2"变成 `color-primary`，把"16px"变成 `spacing-md`。
@@ -103,8 +101,7 @@ graph LR
 
 ---
 
-## 3. 主题系统
-
+## 主题系统
 ### 主题 = Token 的"多套实现"
 
 ```css
@@ -150,8 +147,7 @@ function ThemeToggle() {
 
 ---
 
-## 4. 主流 UI 组件库（2026）
-
+## 主流 UI 组件库（2026）
 ### 4.1 React 生态
 
 | 库 | 风格 | 2026 定位 | 适用 |
@@ -191,8 +187,7 @@ npx shadcn@latest add button
 
 ---
 
-## 5. Headless UI —— 行为与样式分离
-
+## Headless UI —— 行为与样式分离
 **Headless UI** = 只负责**行为 + 可访问性**，不写任何样式。
 
 ```mermaid
@@ -235,8 +230,7 @@ function MyDialog() {
 
 ---
 
-## 6. 文档与可视化
-
+## 文档与可视化
 | 工具 | 作用 | 适用 |
 |------|------|------|
 | **Storybook** | 组件隔离开发 + 可视化文档 | **首选**，开源 |
@@ -280,8 +274,7 @@ export const Secondary: Story = {
 
 ---
 
-## 7. 设计系统的治理
-
+## 设计系统的治理
 ### 贡献流程
 
 ```mermaid
@@ -307,8 +300,7 @@ graph LR
 
 ---
 
-## 8. 设计系统 vs 组件库
-
+## 设计系统 vs 组件库
 | 维度 | 组件库 | 设计系统 |
 |------|--------|---------|
 | **范围** | 代码组件 | 设计语言 + Token + 组件 + 文档 + 治理 |
@@ -320,8 +312,7 @@ graph LR
 
 ---
 
-## 9. 2026 趋势
-
+## 2026 趋势
 1. **shadcn/ui 引领"代码即组件库"**：npm 依赖模式式微，代码复制模式兴起
 2. **Design Token 标准化**：W3C Design Token Community Group 推进标准
 3. **Headless + Tailwind 成默认组合**：行为与样式彻底分离
@@ -330,8 +321,7 @@ graph LR
 
 ---
 
-## 10. 选型决策表
-
+## 选型决策表
 | 场景 | 推荐方案 |
 |------|---------|
 | **新项目 React + Tailwind** | shadcn/ui + Radix UI |
@@ -343,14 +333,12 @@ graph LR
 
 ---
 
-## 11. 学习路径建议
-
+## 学习路径建议
 1. **入门**（1 周）：跑通 shadcn/ui + Tailwind，理解 Headless UI 理念
 2. **进阶**（2 周）：搭建 Storybook + Chromatic 视觉回归；设计 Token 体系
 3. **高级**（持续）：多品牌主题；Design Token 工作流；治理流程设计
 
-## 12. 交叉引用
-
+## 交叉引用
 - [`01-foundation/`](../../01-foundation/) — CSS 工程化（CSS Variables / Sass）
 - [`05-architecture/`](../) — 组件架构与复用
 - [`08-cross-platform/`](../../08-cross-platform/) — 跨端设计系统（React Native / Flutter）
@@ -358,8 +346,7 @@ graph LR
 
 ---
 
-## 13. 与其他模块的关系
-
+## 与其他模块的关系
 - **上游**：[`01-foundation/`](../../01-foundation/) / [`03-frameworks/`](../../03-frameworks/)
 - **下游**：被所有应用层复用；[`08-cross-platform/`](../../08-cross-platform/) 复用设计系统
 

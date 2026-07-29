@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 方式 A 深度：try/catch
-
+## 方式 A 深度：try/catch
 ### 1.1 基础用法
 
 ```js
@@ -72,8 +71,7 @@ async function load() {
 
 ---
 
-## 2. 方式 B 深度：.catch()
-
+## 方式 B 深度：.catch()
 ### 2.1 基础用法
 
 ```js
@@ -108,8 +106,7 @@ function loadUserWithPosts(id) {
 
 ---
 
-## 3. 方式 C 深度：unhandledrejection 全局兜底
-
+## 方式 C 深度：unhandledrejection 全局兜底
 ### 3.1 基础用法
 
 ```js
@@ -161,8 +158,7 @@ window.addEventListener('unhandledrejection', (event) => {
 
 ---
 
-## 4. 方式 D 深度：Result 模式
-
+## 方式 D 深度：Result 模式
 ### 4.1 基础模式
 
 ```js
@@ -220,8 +216,7 @@ if (err) {
 
 ---
 
-## 5. 4 种方式组合实战
-
+## 4 种方式组合实战
 ### 5.1 双保险组合（最推荐）
 
 ```js
@@ -273,8 +268,7 @@ async function loadUser() {
 
 ---
 
-## 6. 一句话总结
-
+## 一句话总结
 > **没有"必须 try/catch"——4 种方式按场景选：局部兜底用 try/catch，纯转发用 .catch()，最后防线用 unhandledrejection，函数式用 Result。推荐组合：try/catch 局部 + unhandledrejection 全局。**
 
 ---

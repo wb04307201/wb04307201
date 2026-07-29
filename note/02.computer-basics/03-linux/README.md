@@ -124,4 +124,11 @@ ssh-copy-id user@remote-server  # 上传公钥
 
 ---
 
+
+## 相关章节
+
+- [字符串算法 · 3 大深度（Trie / KMP / AC 自动机）](../02-algorithms/string-algorithms/README.md)
+- [操作系统基础](../06-operating-system/README.md)
+- [搜索算法](../02-algorithms/search/README.md)
+
 ← [返回 02.computer-basics 主模块](../README.md)

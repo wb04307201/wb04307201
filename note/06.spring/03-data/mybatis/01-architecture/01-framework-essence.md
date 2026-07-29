@@ -11,8 +11,7 @@ module:
 
 > 来源:整合自原 08.mybatis/README.md § 一
 
-## 1. 框架本质
-
+## 框架本质
 MyBatis 是基于 **ORM（对象关系映射）** 思想的**半自动**持久层框架，其核心价值在于：
 
 - **SQL 定制化**：允许开发者直接编写原生 SQL，支持存储过程、动态 SQL 生成
@@ -30,8 +29,7 @@ MyBatis 是基于 **ORM（对象关系映射）** 思想的**半自动**持久�
 | 适用场景 | 复杂 SQL、存量库改造 | CRUD 为主的新项目 |
 | 学习曲线 | 低（SQL 基础即可） | 高（HQL/缓存策略） |
 
-## 2. 三层架构
-
+## 三层架构
 ```mermaid
 graph TD
     A["Controller 层<br/>接收 HTTP 请求"] --> B["Service 层<br/>业务逻辑编排"]
@@ -44,8 +42,7 @@ graph TD
 - **Service**：实现业务逻辑，事务管理（`@Transactional`），协调多个 Dao 操作
 - **Dao / Mapper**：定义数据访问接口，由 MyBatis 通过动态代理生成实现类
 
-## 3. 核心设计模式
-
+## 核心设计模式
 | 模式 | 在 MyBatis 中的应用 |
 |------|-------------------|
 | **工厂模式** | `SqlSessionFactory` 创建 `SqlSession` |

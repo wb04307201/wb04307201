@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 0. 面试高频拷问
-
+## 面试高频拷问
 ```text
 Q：async/await 必须使用 try/catch 吗？
 ```
@@ -32,8 +31,7 @@ Q：async/await 必须使用 try/catch 吗？
 
 ---
 
-## 1. async/await 本质回顾
-
+## async/await 本质回顾
 ```js
 async function fetchUser() {
   const res = await fetch('/api/user');   // ① await 抛出 reject → 抛 Error
@@ -50,8 +48,7 @@ function fetchUser() {
 
 ---
 
-## 2. 4 种错误处理方式
-
+## 4 种错误处理方式
 ### 2.1 方式 A：try/catch（最常用）
 
 ```js
@@ -157,8 +154,7 @@ if (err) {
 
 ---
 
-## 3. 4 种方式对比
-
+## 4 种方式对比
 | 维度 | try/catch | .catch() | unhandledrejection | Result 模式 |
 |------|-----------|----------|---------------------|-------------|
 | **可读性** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐ |
@@ -169,8 +165,7 @@ if (err) {
 
 ---
 
-## 4. 子章节导航
-
+## 子章节导航
 | # | 章节 | 核心问题 |
 |---|------|---------|
 | 01 | [Promise 错误基础](01-promise-error-basics.md) | Promise reject + 异常抛出机制 |
@@ -180,8 +175,7 @@ if (err) {
 
 ---
 
-## 5. 一句话速查
-
+## 一句话速查
 ```text
 async/await 错误处理选择：
 - 需要立即兜底（默认值 / 上报）→ try/catch
@@ -193,8 +187,7 @@ async/await 错误处理选择：
 
 ---
 
-## 6. 速查 · 关联资源
-
+## 速查 · 关联资源
 - **事件循环**（执行顺序视角）：[event-loop](../../../../13.split-hairs/09.front-end/event-loop/README.md)
 - **Promise 手写**（then/catch 实现）：[promise-handwriting](../../../../13.split-hairs/09.front-end/promise-handwriting/README.md)
 - **面试题**：[13.split-hairs/09.front-end/async-await-try-catch](../../../../13.split-hairs/09.front-end/async-await-try-catch/README.md)

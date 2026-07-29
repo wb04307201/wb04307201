@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.system-design
+  slug: 04.system-design/01-foundation/system-design-basics/archimate/viewpoints
+  type: article
+  category: 主模块子文章
+  summary: ---
+-->
+
 # 第二章：视点：给不同人看不同的图
 
 > ⬅️ [返回目录](README.md) | 上一篇：[建模语言：层、方面、关系](language.md) | 下一篇：[落地：ArchiMate × TOGAF × C4 × DDD](in-practice.md)

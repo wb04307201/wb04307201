@@ -2,8 +2,7 @@
 
 > 来源:整合自原 `08.mybatis/mybatis-plus/README.md` L243-315(§四 高级特性)
 
-## 8.1 动态表名
-
+## 动态表名
 实现 `TableNameHandler` 接口可以实现动态表名:
 
 ```java
@@ -31,8 +30,7 @@ public MybatisPlusInterceptor mybatisPlusInterceptor() {
 }
 ```
 
-## 8.2 性能分析插件
-
+## 性能分析插件
 ```java
 @Bean
 public MybatisPlusInterceptor mybatisPlusInterceptor() {
@@ -49,8 +47,7 @@ public MybatisPlusInterceptor mybatisPlusInterceptor() {
 }
 ```
 
-## 8.3 SQL 注入器
-
+## SQL 注入器
 自定义 SQL 方法:
 
 ```java

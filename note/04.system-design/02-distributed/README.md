@@ -288,4 +288,11 @@ Q1: 单机能扛住吗？
 
 ---
 
+
+## 相关章节
+
+- [负载均衡](../04-high-performance/load-balance/README.md)
+- [SSO 6 大方案详解 · 主流协议对比](../05-security/sso/02-six-schemes-comparison.md)
+- [Raft算法](consensus-algorithms/raft/README.md)
+
 ← [返回 04.system-design 主模块](../README.md)

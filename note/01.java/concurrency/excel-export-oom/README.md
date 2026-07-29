@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 0. 问题背景
-
+## 问题背景
 ### 典型场景
 
 ```text
@@ -60,8 +59,7 @@ public void exportUsers(HttpServletResponse response) throws IOException {
 
 ---
 
-## 1. OOM 根因深度分析
-
+## OOM 根因深度分析
 ### 根因 1：POI 全量加载（XSSFWorkbook）
 
 **问题**：Apache POI 的 `XSSFWorkbook` 会把整个 Excel 文件加载到内存。
@@ -169,8 +167,7 @@ public void export() {
 
 ---
 
-## 2. 解决方案 1：流式写入（EasyExcel / SXSSF）
-
+## 解决方案 1：流式写入（EasyExcel / SXSSF）
 ### 方案原理
 
 **流式写入**：边写边刷盘，不在内存中保留所有行。
@@ -302,8 +299,7 @@ public void exportUsers(String filePath) throws IOException {
 
 ---
 
-## 3. 解决方案 2：分批查询（游标查询 / 分页查询）
-
+## 解决方案 2：分批查询（游标查询 / 分页查询）
 ### 方案原理
 
 **分批查询**：不一次性加载所有数据，分批查询 + 分批写入。
@@ -434,8 +430,7 @@ public class ExcelExportService {
 
 ---
 
-## 4. 解决方案 3：多线程分片
-
+## 解决方案 3：多线程分片
 ### 方案原理
 
 **多线程分片**：将数据分片，每个线程独立处理一个 Sheet 或文件，最后合并。
@@ -563,8 +558,7 @@ private File exportShard(int shardIndex, int shardSize) throws IOException {
 
 ---
 
-## 5. 解决方案 4：内存优化
-
+## 解决方案 4：内存优化
 ### 技巧 1：对象复用
 
 ```java
@@ -646,8 +640,7 @@ public class LargeDataProcessor {
 
 ---
 
-## 6. 性能对比
-
+## 性能对比
 ### 测试环境
 
 - CPU：8 核
@@ -688,8 +681,7 @@ public class LargeDataProcessor {
 
 ---
 
-## 7. 生产环境注意事项
-
+## 生产环境注意事项
 ### 7.1 临时文件清理
 
 ```java
@@ -789,8 +781,7 @@ public void exportUsers(String filePath, Consumer<Integer> progressCallback) {
 
 ---
 
-## 8. 实战案例
-
+## 实战案例
 ### 案例 1：电商订单导出
 
 **需求**：导出 100 万订单数据到 Excel
@@ -895,8 +886,7 @@ public class LogExportService {
 
 ---
 
-## 9. 一句话速查
-
+## 一句话速查
 ```text
 "大数据量 Excel 导出 OOM 解决方案：
 1. 流式写入：EasyExcel / SXSSF，边写边刷盘
@@ -909,8 +899,7 @@ public class LogExportService {
 
 ---
 
-## 10. 交叉引用
-
+## 交叉引用
 - **同模块兄弟**：
   - [thread-pool](./thread-pool/) — 线程池 7 大参数详解
   - [completablefuture](./completablefuture/) — 异步编排

@@ -27,8 +27,7 @@ module:
 
 ---
 
-## 1. 供应链攻击的类型
-
+## 供应链攻击的类型
 ```mermaid
 graph TB
   A[供应链攻击] --> B[恶意包<br/>Typosquatting]
@@ -54,8 +53,7 @@ graph TB
 
 ---
 
-## 2. 第一道防线：`npm audit`
-
+## 第一道防线：`npm audit`
 ```bash
 # 检查已知漏洞
 npm audit
@@ -80,8 +78,7 @@ npm audit --json
 
 ---
 
-## 3. 第二道防线：Snyk / Socket / Guardian
-
+## 第二道防线：Snyk / Socket / Guardian
 | 工具 | 类型 | 核心价值 | 适用 |
 |------|------|---------|------|
 | **Snyk** | SCA（Software Composition Analysis） | CVE + 许可证 + 恶意包检测 | 企业首选 |
@@ -111,8 +108,7 @@ graph LR
 
 ---
 
-## 4. 第三道防线：锁文件（Lock File）
-
+## 第三道防线：锁文件（Lock File）
 ### 锁文件的作用
 
 | 文件 | 包管理器 | 内容 |
@@ -141,8 +137,7 @@ graph LR
 
 ---
 
-## 5. 第四道防线：私有 Registry
-
+## 第四道防线：私有 Registry
 ### 私有 Registry 的作用
 
 | 作用 | 说明 |
@@ -192,8 +187,7 @@ packages:
 
 ---
 
-## 6. 第五道防线：`postinstall` 脚本控制
-
+## 第五道防线：`postinstall` 脚本控制
 **危险**：`postinstall` 在安装时执行，可运行任意脚本。
 - 合法用途：`esbuild`、`core-js` 用 `postinstall` 下载二进制
 - 恶意用途：窃取环境变量、下载后门
@@ -224,8 +218,7 @@ npm config set ignore-scripts true
 
 ---
 
-## 7. 许可证合规
-
+## 许可证合规
 | 许可证 | 类型 | 商用 | 修改开源 | 专利授权 |
 |--------|------|------|---------|---------|
 | **MIT** | 宽松 | ✅ | ❌ 不必 | ❌ 无 |
@@ -253,8 +246,7 @@ npx license-checker --failOn 'GPL-3.0;AGPL-3.0'
 
 ---
 
-## 8. CI 集成最佳实践
-
+## CI 集成最佳实践
 ```yaml
 # GitHub Actions 示例
 name: Security
@@ -290,8 +282,7 @@ jobs:
 
 ---
 
-## 9. 2026 趋势
-
+## 2026 趋势
 1. **Socket 成为供应链安全新标准**：行为分析 > CVE 列表
 2. **pnpm 默认禁止 postinstall**：安全基线提高
 3. **SBOM（Software Bill of Materials）**：法规要求生成依赖清单
@@ -300,8 +291,7 @@ jobs:
 
 ---
 
-## 10. 实战检查清单
-
+## 实战检查清单
 ### 安装阶段
 - [ ] 所有依赖通过私有 Registry 代理（防御依赖混淆）
 - [ ] 锁文件必须提交 Git
@@ -323,8 +313,7 @@ jobs:
 
 ---
 
-## 11. 交叉引用
-
+## 交叉引用
 - [`04-engineering/`](../../04-engineering/) — 包管理工具
 - [`04-engineering/monorepo/`](../../../05.tools/05-monorepo/README.md/) — Monorepo 的依赖治理
 - [`07-security/`](../) — 安全总览
@@ -332,8 +321,7 @@ jobs:
 
 ---
 
-## 12. 与其他模块的关系
-
+## 与其他模块的关系
 - **上游**：[`04-engineering/`](../../04-engineering/)（包管理工具链）
 - **下游**：贯穿所有对外发布的应用
 

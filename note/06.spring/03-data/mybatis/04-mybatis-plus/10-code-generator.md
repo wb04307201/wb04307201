@@ -4,16 +4,14 @@
 
 MyBatis-Plus Generator 是 MyBatis-Plus 提供的代码生成器,能够快速生成 Entity、Mapper、Service、Controller 等层代码,极大提升开发效率,避免重复劳动。
 
-## 10.1 核心功能
-
+## 核心功能
 1. **自动生成实体类**:基于数据库表生成对应的 Java Bean
 2. **生成 Mapper 接口**:包含基础 CRUD 方法
 3. **生成 XML 映射文件**:包含 SQL 语句
 4. **生成 Service 层**:基础业务逻辑接口和实现
 5. **生成 Controller 层**:RESTful API 接口
 
-## 10.2 快速入门
-
+## 快速入门
 ### 10.2.1 添加依赖
 
 ```xml
@@ -82,8 +80,7 @@ public class CodeGenerator {
 }
 ```
 
-## 10.3 高级配置
-
+## 高级配置
 ### 10.3.1 自定义模板
 
 1. 在 `resources/templates` 下创建自定义模板
@@ -121,8 +118,7 @@ strategy.entityBuilder()
     .addIgnoreColumns("delete_flag"); // 忽略字段
 ```
 
-## 10.4 常用注解说明
-
+## 常用注解说明
 1. **实体类注解**:
    - `@TableName`:指定表名
    - `@TableId`:指定主键
@@ -134,24 +130,21 @@ strategy.entityBuilder()
    - `@Mapper`:标识为 MyBatis Mapper 接口
    - `@Select`、`@Insert` 等:SQL 注解(生成器默认使用 XML 方式)
 
-## 10.5 最佳实践
-
+## 最佳实践
 1. **分层生成**:建议只生成 Entity 和 Mapper,Service 和 Controller 手动编写更灵活
 2. **版本控制**:生成的代码建议纳入版本控制,便于团队同步
 3. **模板定制**:根据项目规范定制模板,保持代码风格统一
 4. **多环境配置**:不同环境使用不同的配置文件
 5. **增量生成**:修改配置后只生成新增表,避免覆盖已有修改
 
-## 10.6 常见问题
-
+## 常见问题
 1. **生成代码不完整**:检查策略配置中的表名是否正确
 2. **中文乱码**:确保数据库连接字符串包含 `useUnicode=true&characterEncoding=UTF-8`
 3. **Lombok 不生效**:检查 IDE 是否安装了 Lombok 插件
 4. **Swagger 注解缺失**:确保添加了 Swagger 依赖
 5. **XML 文件位置错误**:检查 PackageConfig 中的 pathInfo 配置
 
-## 10.7 扩展工具
-
+## 扩展工具
 1. **MyBatisX**:IDEA 插件,可视化生成代码
 2. **MyBatis-Plus Generator UI**:提供 Web 界面操作生成代码
 3. **结合 Velocity 模板**:替代 Freemarker,提供更多语法支持

@@ -1,10 +1,9 @@
-<!--
-module:
+<!--module:
   parent: java
-  slug: java/syntax
+  slug: 01.java/concepts/syntax
   type: article
   category: 主模块子文章
-  summary: 基本语法
+  summary: 基本语法 是入门必学的基础概念。
 -->
 
 # 基本语法

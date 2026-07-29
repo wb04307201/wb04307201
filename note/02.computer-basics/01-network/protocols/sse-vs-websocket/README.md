@@ -50,8 +50,7 @@ data: first message
 
 data: second message
 ...（连接保持，持续推送）
-```
-
+```text
 **关键**：SSE 就是一个**永远不结束的 HTTP 响应**。服务器用 `Transfer-Encoding: chunked` 持续发送数据块。
 
 ### WebSocket：协议升级
@@ -72,8 +71,7 @@ Connection: Upgrade
 Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
 
 （之后切换为 WebSocket 二进制帧协议）
-```
-
+```text
 **关键**：WebSocket 先用 HTTP 握手，然后**协议升级**为独立的二进制帧协议。升级后不再是 HTTP。
 
 ---
@@ -88,8 +86,7 @@ id: 42                ← 事件 ID（可选，用于重连）
 retry: 3000           ← 重连间隔毫秒（可选）
 data: {"text":"你好"} ← 数据（必填，可多行）
                       ← 空行 = 帧结束
-```
-
+```json
 **特点**：
 - 纯文本，人可读
 - 每帧以 `\n\n` 结束
@@ -109,8 +106,7 @@ data: {"text":"你好"} ← 数据（必填，可多行）
 +-+-+-+-+-+-+-+-+---+-+-+-------------+ - - - - - - - - - - - - - -+
 |     Masking-key (0 or 4 bytes)      |      Payload Data         |
 +-------------------------------------+ - - - - - - - - - - - - - +
-```
-
+```text
 **特点**：
 - 二进制帧，人不可读
 - 帧头 2-14 字节（FIN + opcode + mask + length）
@@ -134,8 +130,7 @@ data: {"text":"你好"} ← 数据（必填，可多行）
 服务器收到 Last-Event-ID，从 ID=43 开始发送
   ↓
 客户端无缝恢复
-```
-
+```text
 **代码层面零成本**——浏览器 EventSource API 自动处理所有重连逻辑。
 
 ### WebSocket：需自行实现
@@ -153,8 +148,7 @@ data: {"text":"你好"} ← 数据（必填，可多行）
 重新建立 WebSocket 连接（完整握手）
   ↓
 自行恢复消息状态（需应用层序号机制）
-```
-
+```text
 ---
 
 ## 五、代理 / 负载均衡 / CDN 影响
@@ -195,8 +189,7 @@ data: {"text":"你好"} ← 数据（必填，可多行）
 └─ 低频通知（每分钟几次）
     └─ 长轮询 / 短轮询
         理由：最简单，无需长连接
-```
-
+```text
 ### 大厂真实选型原则
 
 | 场景 | 选型 | 理由 |
@@ -235,8 +228,7 @@ data: {"text":"你好"} ← 数据（必填，可多行）
          ▼
     POST /api/abort   ← 另一个 HTTP 请求（不是 SSE 通道）
     {"session_id": "xxx"}
-```
-
+```json
 **核心洞察**：AI 对话看似"双向"，实际是**多个"一问一答"的串联**。每个"问"是独立 HTTP 请求，每个"答"是独立 SSE 流。不需要 WebSocket 的持续双向通道。
 
 ### 为什么不选 WebSocket？

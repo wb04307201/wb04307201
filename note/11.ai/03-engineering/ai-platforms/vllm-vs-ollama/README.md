@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 0. 面试高频拷问
-
+## 面试高频拷问
 ```text
 Q：工业级大模型部署，你为什么优先选 vLLM，而不是极简的 Ollama？
 ```
@@ -32,8 +31,7 @@ Q：工业级大模型部署，你为什么优先选 vLLM，而不是极简的 O
 
 ---
 
-## 1. 子章节导航
-
+## 子章节导航
 | # | 章节 | 核心问题 |
 |---|------|---------|
 | 01 | [PagedAttention 原理](01-paged-attention.md) | vLLM 为什么比传统方案快 14-24 倍？KV cache 显存碎片化怎么解？ |
@@ -47,8 +45,7 @@ Q：工业级大模型部署，你为什么优先选 vLLM，而不是极简的 O
 
 ---
 
-## 2. 一句话选型速查
-
+## 一句话选型速查
 | 场景 | 推荐引擎 | 配置示例 |
 |------|---------|---------|
 | 个人开发机 / 笔记本 | **Ollama** | `ollama run qwen2.5:7b` |
@@ -62,16 +59,14 @@ Q：工业级大模型部署，你为什么优先选 vLLM，而不是极简的 O
 
 ---
 
-## 3. 反直觉点
-
+## 反直觉点
 - ⚠️ **Ollama 不是"低配版 vLLM"**：底层 llama.cpp（C++），优化方向是「单进程 CPU/GPU 混合推理 + 模型量化的极致压缩」。vLLM 底层是 PyTorch + 自定义 CUDA 算子（PagedAttention + FlashAttention），优化方向是「高并发 GPU 服务化」。
 - ⚠️ **「Ollama 简单」不等于「Ollama 慢」**：在 4090 单卡 7B 模型上 Ollama 和 vLLM 差距 < 30%；一旦上多卡 + 高并发，vLLM 反超 Ollama 14-24 倍（参考 [06-benchmark](06-benchmark-data.md)）。
 - ⚠️ **「vLLM 工业级」不代表「永远最优」**：LMDeploy 在中文模型上有时比 vLLM 快（TurboMind 自研 kernel）；TGI 在 transformers 集成度上最丝滑。
 
 ---
 
-## 4. 关键源头引用
-
+## 关键源头引用
 - [vLLM Paper (SOSP'23)](https://arxiv.org/abs/2309.06180) —— PagedAttention 原始论文
 - [vLLM 官方文档](https://docs.vllm.ai/) —— 含 benchmark + 部署指南
 - [Ollama 官方文档](https://ollama.com/) —— 模型库 + REST API
@@ -80,8 +75,7 @@ Q：工业级大模型部署，你为什么优先选 vLLM，而不是极简的 O
 
 ---
 
-## 5. 速查 · 关联资源
-
+## 速查 · 关联资源
 - **餐厅叙事**：[12.story/39-ai-private-deployment.md](../../../../12.story/39-ai-private-deployment.md) —— 阿明餐厅从 Ollama 本地试跑到 vLLM 上生产的演进
 - **面试题**：[13.split-hairs/11.ai/inference-engine-selection](../../../../13.split-hairs/11.ai/inference-engine-selection/README.md) —— 5-7 道精选题
 - **同类平台**：[coze](../coze.md) · [dify](../dify.md) · [langgraph](../langgraph.md) · [spring-ai-vs-platforms](../spring-ai-vs-platforms.md)

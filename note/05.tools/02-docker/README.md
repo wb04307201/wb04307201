@@ -13,8 +13,7 @@ module:
 
 ---
 
-## 1. 模块导航
-
+## 模块导航
 | 序号 | 主题 | 核心内容 | 子 README |
 |------|------|---------|-----------|
 | 01 | [命令速查](command/) | 镜像/容器/网络/卷/系统操作命令 | [README](command/README.md) |
@@ -29,8 +28,7 @@ module:
 
 ---
 
-## 2. 知识脉络
-
+## 知识脉络
 ```mermaid
 graph TB
     Docker["Docker 容器化"]
@@ -54,8 +52,7 @@ graph TB
 
 ---
 
-## 3. 速查表 / Cheat Sheet
-
+## 速查表 / Cheat Sheet
 | 概念 | 解释 | 典型场景 |
 |------|------|---------|
 | **docker run** | 创建并启动容器 | 快速运行任意镜像 |
@@ -69,8 +66,7 @@ graph TB
 
 ---
 
-## 4. 核心内容
-
+## 核心内容
 ### 4.1 命令速查
 
 覆盖镜像（pull/build/save/load）、容器（run/exec/logs/cp）、网络（create/connect/disconnect）、卷（create/inspect/mount）、系统（info/prune）五大类操作，是日常使用频率最高的参考。
@@ -89,8 +85,7 @@ Red Hat 主导的无守护进程容器引擎，支持 Rootless 模式和原生 P
 
 ---
 
-## 5. 最佳实践
-
+## 最佳实践
 - **数据持久化**：数据库/中间件务必使用 Volume 或 bind mount，避免容器删除后数据丢失
 - **资源限制**：生产环境使用 `--memory` 和 `--cpus` 限制容器资源
 - **镜像优化**：使用多阶段构建（multi-stage build）减小最终镜像体积
@@ -98,8 +93,7 @@ Red Hat 主导的无守护进程容器引擎，支持 Rootless 模式和原生 P
 
 ---
 
-## 6. 常见面试题
-
+## 常见面试题
 - Docker 和虚拟机的区别是什么？
 - Docker Compose v1 和 v2 的命令差异？
 - Podman 为什么不需要守护进程？
@@ -124,8 +118,7 @@ Red Hat 主导的无守护进程容器引擎，支持 Rootless 模式和原生 P
 
 ---
 
-## 7. 相关章节
-
+## 相关章节
 - 上游：[`工具链`](../README.md)
 - 关联：[`04-nginx`](../04-nginx/README.md) — Nginx 反向代理常与 Docker 配合部署
 - 关联：[`06-ali-microservices`](../06-ali-microservices/README.md) — 微服务容器化部署

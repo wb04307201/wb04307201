@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. Promise 的 3 大状态
-
+## Promise 的 3 大状态
 ```text
 pending ──── resolve() ────→ fulfilled（成功）
    │
@@ -27,8 +26,7 @@ pending ──── resolve() ────→ fulfilled（成功）
 
 ---
 
-## 2. 三种抛出错误的方式
-
+## 三种抛出错误的方式
 ### 2.1 方式 1：new Promise 时 reject
 
 ```js
@@ -59,8 +57,7 @@ async function foo() {
 
 ---
 
-## 3. async/await 错误传播
-
+## async/await 错误传播
 ### 3.1 同步抛出 → 立即 reject
 
 ```js
@@ -106,8 +103,7 @@ main();  // main: layer1
 
 ---
 
-## 4. 5 大误区（必避）
-
+## 5 大误区（必避）
 ### 误区 1：async 函数 throw vs return error
 
 ```js
@@ -204,8 +200,7 @@ function step1() {
 
 ---
 
-## 5. 一句话总结
-
+## 一句话总结
 > **Promise 错误核心：async 函数总是返回 Promise，内部 throw = 自动 reject；多层 await 错误自动"穿透"到最外层 try/catch。**
 
 ---

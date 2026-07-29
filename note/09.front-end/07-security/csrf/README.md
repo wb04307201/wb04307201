@@ -22,8 +22,7 @@ CSRF（跨站请求伪造） 的关键不是'防住'——是**出事后 5 分�
 
 ---
 
-## 1. 攻击流程
-
+## 攻击流程
 ```mermaid
 sequenceDiagram
   participant U as 用户浏览器
@@ -49,8 +48,7 @@ sequenceDiagram
 
 ---
 
-## 2. 攻击触发方式
-
+## 攻击触发方式
 | 方式 | 特点 | 适用 |
 |------|------|------|
 | **GET 触发** | `<img src="...">` / `<link href="...">` | 仅对 GET 类接口有效（查询、转账等） |
@@ -70,8 +68,7 @@ sequenceDiagram
 
 ---
 
-## 3. CSRF 防御体系
-
+## CSRF 防御体系
 ```mermaid
 graph TB
   A[CSRF 防御] --> B[SameSite Cookie<br/>浏览器层面]
@@ -171,8 +168,7 @@ def verify_origin(request):
 
 ---
 
-## 4. 防御方案对比
-
+## 防御方案对比
 | 方案 | 实施成本 | 可靠性 | 兼容性 | 推荐度 |
 |------|---------|--------|--------|--------|
 | **SameSite=Lax** | ⭐ 零成本（默认） | ⭐⭐⭐⭐ 高 | ⭐⭐⭐⭐⭐ 现代浏览器 | ⭐⭐⭐⭐⭐ **首选** |
@@ -184,8 +180,7 @@ def verify_origin(request):
 
 ---
 
-## 5. CSRF vs XSS 关系
-
+## CSRF vs XSS 关系
 | 维度 | CSRF | XSS |
 |------|------|------|
 | 攻击目标 | 服务端（冒名操作） | 用户（窃取数据） |
@@ -196,8 +191,7 @@ def verify_origin(request):
 
 ---
 
-## 6. 现代框架的 CSRF 防护
-
+## 现代框架的 CSRF 防护
 ### Spring Security（Java）
 ```java
 // 默认启用 CSRF 防护
@@ -239,8 +233,7 @@ export async function POST(request: Request) {
 
 ---
 
-## 7. API 接口的 CSRF 防护
-
+## API 接口的 CSRF 防护
 **现代 SPA + REST/GraphQL API 的 CSRF 防护**：
 
 | 方案 | 实现 |
@@ -269,8 +262,7 @@ fetch('/api/data', {
 
 ---
 
-## 8. 测试 CSRF 防护
-
+## 测试 CSRF 防护
 | 工具 | 类型 |
 |------|------|
 | **OWASP ZAP** | 自动化扫描 CSRF 漏洞 |
@@ -279,8 +271,7 @@ fetch('/api/data', {
 
 ---
 
-## 9. 实战检查清单
-
+## 实战检查清单
 - [ ] Cookie 默认 `SameSite=Lax`
 - [ ] 关键操作（转账、修改密码）使用 CSRF Token
 - [ ] API 接口强制 `Content-Type: application/json` + 自定义头
@@ -291,8 +282,7 @@ fetch('/api/data', {
 
 ---
 
-## 10. 交叉引用
-
+## 交叉引用
 - [`07-security/xss/`](../xss/) — XSS 是 CSRF 防护的前提
 - [`07-security/cors/`](../cors/) — CORS 限制了跨域响应读取
 - [`07-security/sessions/`](../sessions/) — Cookie 属性设置
@@ -300,8 +290,7 @@ fetch('/api/data', {
 
 ---
 
-## 11. 与其他模块的关系
-
+## 与其他模块的关系
 - **上游**：[`07-security/xss/`](../xss/) / [`07-security/cors/`](../cors/)
 - **下游**：被所有涉及 Cookie 的应用复用
 

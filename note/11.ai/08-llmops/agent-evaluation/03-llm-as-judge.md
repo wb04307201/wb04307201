@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. LLM-as-Judge 4 大评估维度
-
+## LLM-as-Judge 4 大评估维度
 | 维度 | 评估内容 | 重要性 |
 |------|----------|--------|
 | **1 任务完成度** | Agent 是否真正完成任务 | ⭐⭐⭐⭐⭐ |
@@ -26,8 +25,7 @@ module:
 
 ---
 
-## 2. Judge Prompt 模板
-
+## Judge Prompt 模板
 ### 2.1 基础模板
 
 ```python
@@ -85,8 +83,7 @@ JUDGE_PROMPT_AGENT = """
 
 ---
 
-## 3. 5 大反模式（必避）
-
+## 5 大反模式（必避）
 ### ⚠️ 反模式 1：单一 LLM 评判（最常见）
 
 - **错**：只用 GPT-4 当 judge
@@ -127,8 +124,7 @@ def multi_judge(trajectory, judges):
 
 ---
 
-## 4. 实战配置
-
+## 实战配置
 ```python
 JUDGE_CONFIG = {
     'judges': ['gpt-4-turbo', 'claude-3-opus', 'gemini-1.5-pro'],
@@ -141,8 +137,7 @@ JUDGE_CONFIG = {
 
 ---
 
-## 5. 一句话总结
-
+## 一句话总结
 > **LLM-as-Judge = 用强 LLM 当裁判，4 大维度（任务 / 输出 / 工具 / 鲁棒），多模型投票 + 截尾均值避免偏见，5 反模式必避（单一 Judge / Prompt 简单 / 同源 / 无 ground truth / 不抽检）。**
 
 ---

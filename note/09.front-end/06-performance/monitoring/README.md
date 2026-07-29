@@ -22,8 +22,7 @@ module:
 
 ---
 
-## 1. 监控体系三层架构
-
+## 监控体系三层架构
 ```mermaid
 graph TB
   A[1. 数据采集层<br/>web-vitals / Performance API] --> B[2. 后端聚合层<br/>Prometheus / InfluxDB]
@@ -41,8 +40,7 @@ graph TB
 
 ---
 
-## 2. RUM vs 合成监控
-
+## RUM vs 合成监控
 | 类型 | 说明 | 工具 | 适用 |
 |------|------|------|------|
 | **RUM**（真实用户监控） | 真实用户浏览器采集 | web-vitals + 自建 / DataDog RUM / Sentry | **生产首选** |
@@ -55,8 +53,7 @@ graph TB
 
 ---
 
-## 3. web-vitals.js 生产集成
-
+## web-vitals.js 生产集成
 ```typescript
 // lib/metrics.ts
 import { onLCP, onINP, onCLS, onFCP, onTTFB } from 'web-vitals'
@@ -85,8 +82,7 @@ onTTFB(metric => sendToAnalytics('TTFB', metric.value, metric.rating))
 
 ---
 
-## 4. Performance API 高级采集
-
+## Performance API 高级采集
 ```typescript
 // 自定义性能标记
 performance.mark('feature-start')
@@ -121,8 +117,7 @@ resourceObserver.observe({ entryTypes: ['resource'] })
 
 ---
 
-## 5. 报警策略
-
+## 报警策略
 | 指标 | 阈值（P75） | 阈值（P95） | 报警级别 |
 |------|------------|------------|---------|
 | **LCP** | > 2.5s | > 4s | P1（严重） |
@@ -137,8 +132,7 @@ resourceObserver.observe({ entryTypes: ['resource'] })
 
 ---
 
-## 6. SaaS 监控工具
-
+## SaaS 监控工具
 | 工具 | 优势 | 适用 |
 |------|------|------|
 | **DataDog RUM** | 全栈监控一体 | 企业级 |
@@ -149,8 +143,7 @@ resourceObserver.observe({ entryTypes: ['resource'] })
 
 ---
 
-## 7. 自建监控栈
-
+## 自建监控栈
 ```mermaid
 graph LR
   A[web-vitals.js<br/>浏览器采集] -->|POST| B[API Server<br/>Node.js]
@@ -164,8 +157,7 @@ graph LR
 
 ---
 
-## 8. 性能回归防护
-
+## 性能回归防护
 ```yaml
 # lighthouse-ci.yml
 name: Lighthouse CI
@@ -184,14 +176,12 @@ jobs:
 
 ---
 
-## 9. 学习路径
-
+## 学习路径
 1. **入门**（3 天）：理解 web-vitals 三大指标采集
 2. **进阶**（1 周）：集成 Performance API + 自定义指标
 3. **高级**（持续）：自建 RUM 栈 + 性能预算 + AB 实验
 
-## 10. 交叉引用
-
+## 交叉引用
 - [`06-performance/`](../) — 性能总览
 - [`06-performance/core-web-vitals/`](../core-web-vitals/) — CWV 指标详解
 - [`04-engineering/`](../../04-engineering/) — CI 集成

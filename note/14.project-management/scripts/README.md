@@ -1,13 +1,12 @@
-<!--
-module:
+<!--module:
   parent: project-management
-  slug: scripts
+  slug: 14.project-management/scripts
   type: article
   category: 工具脚本
   summary: 14.project-management 维护脚本（insert-frontmatter / validate）
 -->
 
-# 14.project-management 维护脚本
+# project-management 维护脚本
 
 > 两个 Python 工具脚本，用于批量维护 `note/14.project-management/` 下的所有 Markdown 文章。
 
@@ -61,5 +60,12 @@ python note/14.project-management/scripts/validate.py
 - 脚本无外部依赖（仅 Python 3.8+ 标准库），可独立运行
 - 修改脚本后请同步测试 `note/14.project-management/` 至少 1 个 leaf README
 - 重大变更请更新本 README
+
+
+## 相关章节
+
+- [AI 项目管理账本：DORA + SPACE + ROI 三件套](../ai-pm-dora-space/README.md)
+- [人力配比 + 排期估算：3 倍缓冲原则](../team-sizing-3x-buffer/README.md)
+- [5万 vs 50万 App 报价差在哪：12 大成本维度拆解](../app-quote-breakdown/README.md)
 
 ← [返回: 项目管理](../README.md)

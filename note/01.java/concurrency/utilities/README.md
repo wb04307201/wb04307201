@@ -820,4 +820,11 @@ public class CombinedPatternDemo {
 
 - [sequential-execution](../thread-basics/sequential-execution.md)
 
+
+## 相关章节
+
+- [volatile 关键字深度解析](../volatile/README.md)
+- [虚拟线程（Virtual Threads）—— Java 并发编程最大变革](../virtual-threads/README.md)
+- [Java 15](../../version/java-15/README.md)
+
 ← [返回 Java 并发编程专题导航](../README.md)

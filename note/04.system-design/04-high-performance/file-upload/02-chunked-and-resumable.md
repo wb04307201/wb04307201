@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 分片上传协议
-
+## 分片上传协议
 ### 1.1 API 设计
 
 ```text
@@ -174,8 +173,7 @@ public class UploadController {
 
 ---
 
-## 2. 断点续传
-
+## 断点续传
 ### 2.1 原理
 
 ```text
@@ -224,8 +222,7 @@ public void cleanExpiredUploads() {
 
 ---
 
-## 3. 合并与校验
-
+## 合并与校验
 ```java
 @Component
 public class FileMerger {
@@ -268,8 +265,7 @@ public class FileMerger {
 
 ---
 
-## 4. 系列导航
-
+## 系列导航
 | 文章 | 核心内容 |
 |------|---------|
 | [总目录](README.md) | 需求分析 + 架构概览 + 面试话术 |

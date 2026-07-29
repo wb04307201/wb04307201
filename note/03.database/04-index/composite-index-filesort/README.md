@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 0. 面试高频拷问
-
+## 面试高频拷问
 ```text
 Q：联合索引 (a, b, c)，查询 WHERE a = 1 ORDER BY b，为什么还会 Using filesort？
 Q：怎么排查 EXPLAIN 中的 Using filesort？
@@ -33,8 +32,7 @@ Q：联合索引覆盖了 WHERE 和 ORDER BY，为什么还慢？
 
 ---
 
-## 1. 背景知识
-
+## 背景知识
 ### 1.1 什么是 filesort？
 
 **filesort** 是 MySQL 的一种排序方式，表示**无法利用索引完成排序**，需要额外的排序操作。
@@ -59,8 +57,7 @@ Q：联合索引覆盖了 WHERE 和 ORDER BY，为什么还慢？
 
 ---
 
-## 2. 5 大原因详解
-
+## 5 大原因详解
 ### 原因 1：排序方向不一致（ASC vs DESC）
 
 **场景**：
@@ -241,8 +238,7 @@ SELECT * FROM t WHERE a = 1 ORDER BY c;
 
 ---
 
-## 3. 排查步骤（4 步）
-
+## 排查步骤（4 步）
 ### Step 1：看 EXPLAIN
 
 ```sql
@@ -286,8 +282,7 @@ EXPLAIN FORMAT=JSON SELECT * FROM t WHERE a = 1 ORDER BY b;
 
 ---
 
-## 4. 实战案例
-
+## 实战案例
 ### 案例 1：电商订单查询
 
 **场景**：
@@ -370,8 +365,7 @@ ORDER BY create_time;
 
 ---
 
-## 5. 一句话速查
-
+## 一句话速查
 ```text
 "联合索引 + filesort 5 大原因：
 1. 排序方向不一致（ASC vs DESC）
@@ -384,8 +378,7 @@ ORDER BY create_time;
 
 ---
 
-## 6. 交叉引用
-
+## 交叉引用
 - **同模块兄弟**：
   - [mysql-index-failure 面试题](../../../13.split-hairs/03.database/mysql-index-failure/) — 10 种索引失效场景
   - [mysql-tuning 面试题](../../../13.split-hairs/03.database/mysql-tuning/) — SQL 调优

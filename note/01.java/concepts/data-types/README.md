@@ -9,6 +9,8 @@ module:
 
 # 基本数据类型
 
+> **定位**：Java 基本数据类型：8 大类型、自动装箱、缓存池。 的核心原理、实现与最佳实践。
+
 ## 引言：基础概念
 
 基本数据类型 是入门必学的基础概念。
@@ -213,5 +215,12 @@ System.out.println(result);
 > `BigInteger`和`BigDecimal`运算效率相对较低，适用于对精度要求高于性能要求的场景（如金融计算）。
 
 ---
+
+
+## 相关章节
+
+- [Java 并发工具类 (java.util.concurrent)](../../concurrency/utilities/README.md)
+- [ThreadLocal 原理与最佳实践](../../concurrency/threadlocal/README.md)
+- [LinkedList 源码剖析与最佳实践](../../collection/LinkedList/README.md)
 
 ← [返回 Java 核心概念](../README.md)

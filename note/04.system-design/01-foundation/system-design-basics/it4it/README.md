@@ -9,6 +9,8 @@ module:
 
 # IT 价值流参考架构（IT4IT 3.0）
 
+> **定位**：**IT4IT**（Information Technology Infrastructure Library for IT, "IT 的 ITIL"）是 Th... 的核心原理、实现与最佳实践。
+
 > **IT4IT**（Information Technology Infrastructure Library for IT, "IT 的 ITIL"）是 The Open Group 维护的**IT 运营价值流参考架构**。  
 > 与 TOGAF（治理方法论）、ArchiMate（建模语言）并列为"数字开放标准组合"第三件套。  
 > 最新版本是 **IT4IT 3.0**（2024 年发布），相比 2.x 强化了**数字产品交付**和**云原生**适配。  

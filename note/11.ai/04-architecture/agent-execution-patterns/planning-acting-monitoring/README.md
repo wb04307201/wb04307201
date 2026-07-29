@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 0. 面试高频拷问
-
+## 面试高频拷问
 ```text
 Q：Agent 如何实现 Planning、Acting、Monitoring 三阶段闭环？
 Q：为什么只让 Agent "思考 + 行动" 不够？
@@ -31,8 +30,7 @@ Q：Monitoring 阶段具体监控什么？
 
 ---
 
-## 1. 三阶段定义
-
+## 三阶段定义
 ### 1.1 Planning（规划阶段）
 
 **核心任务**：把用户的高层目标分解为可执行的子任务 + 依赖关系。
@@ -96,8 +94,7 @@ for task in topo_sort(dag):
 
 ---
 
-## 2. 6 大反模式
-
+## 6 大反模式
 ### ❌ 反模式 1：只有 Acting，没有 Planning
 
 **症状**：Agent 收到任务就"想到什么做什么"，没有任务分解
@@ -185,8 +182,7 @@ for task in topo_sort(dag):
 
 ---
 
-## 3. 工具链选型
-
+## 工具链选型
 | 阶段 | 推荐工具 | 核心能力 | 适用场景 |
 |------|---------|---------|---------|
 | **Planning** | LangGraph | 状态图 + 条件分支 + 循环 | 复杂多步任务 |
@@ -199,8 +195,7 @@ for task in topo_sort(dag):
 
 ---
 
-## 4. 实战案例：客服 Agent
-
+## 实战案例：客服 Agent
 ```text
 用户问题："我的订单什么时候到？"
 
@@ -236,8 +231,7 @@ for task in topo_sort(dag):
 
 ---
 
-## 5. 一句话速查
-
+## 一句话速查
 ```text
 "Agent 三阶段闭环：
 - Planning：任务分解 + 依赖图（LangGraph / Temporal）
@@ -248,8 +242,7 @@ for task in topo_sort(dag):
 
 ---
 
-## 6. 交叉引用
-
+## 交叉引用
 - **同系列兄弟**：
   - [ReAct 深度](../01-react-deep-dive.md) — ReAct 循环机制
   - [Plan-and-Execute 深度](../02-plan-and-execute-deep-dive.md) — Plan Repair 机制

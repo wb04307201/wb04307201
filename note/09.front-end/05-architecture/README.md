@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 模块导航
-
+## 模块导航
 | 主题 | 状态 | 说明 |
 |------|------|------|
 | 渲染模式 | ✓ 已有 | [rendering-modes/](rendering-modes/) — CSR / SSR / SSG / ISR / RSC / Islands 全景 |
@@ -35,8 +34,7 @@ module:
 
 ---
 
-## 2. 知识脉络
-
+## 知识脉络
 ```mermaid
 flowchart TD
     A[应用层架构] --> B{应用规模?}
@@ -49,8 +47,7 @@ flowchart TD
 
 ---
 
-## 3. 速查要点
-
+## 速查要点
 - **微前端不是银弹**:只在 50+ 团队 / 多技术栈场景下用;小团队用 Monorepo 即可
 - **BFF 边界**:BFF 是为前端优化的后端,不替代主后端;典型场景是聚合多服务 + 适配前端数据结构
 - **设计系统先于组件库**:先定 Token(颜色 / 字体 / 间距),再开发组件库;shadcn/ui / Ant Design 都是这个模式
@@ -58,8 +55,7 @@ flowchart TD
 
 ---
 
-## 4. 选型建议
-
+## 选型建议
 | 规模 | 推荐架构 | 关键工具 |
 |------|---------|---------|
 | 小型 (< 5 万行) | Vite 单体 + 组件库 | Vite + React / Vue + 状态管理 |
@@ -69,8 +65,7 @@ flowchart TD
 
 ---
 
-## 5. 最佳实践
-
+## 最佳实践
 - 渲染模式按 SEO + 首屏 + 数据实时性三维决策,不要单一押注
 - 状态管理分层:服务端(TanStack Query / SWR)/ 客户端(Zustand / Pinia)/ URL(路由参数),各司其职
 - 微前端仅在多团队 / 多技术栈的巨型应用中使用,中型团队 Monorepo 已足够
@@ -79,8 +74,7 @@ flowchart TD
 
 ---
 
-## 6. 常见面试题
-
+## 常见面试题
 - CSR / SSR / SSG / ISR / RSC 五种渲染模式的 SEO 与首屏权衡
 - 微前端三种实现:qiankun / single-spa / Module Federation 的隔离粒度差异
 - 状态管理分层:服务端状态为什么优先 TanStack Query 而非 Redux?
@@ -89,8 +83,7 @@ flowchart TD
 
 ---
 
-## 7. 与其他模块的关系
-
+## 与其他模块的关系
 - **上游**:[03-frameworks](../03-frameworks/) / [04-engineering](../04-engineering/)
 - **下游**:被 [06-performance](../06-performance/) / [07-security](../07-security/) / [08-cross-platform](../08-cross-platform/) 复用
 - **横向**:[03-frameworks](../03-frameworks/) 关注 UI 层,[05 架构] 关注应用层

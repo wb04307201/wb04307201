@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 方案 A：Cookie 共享（同根域）
-
+## 方案 A：Cookie 共享（同根域）
 ### 1.1 核心思想
 
 多个子域共享同一个根域的 Cookie。
@@ -59,8 +58,7 @@ Set-Cookie: session_id=xxx; Path=/; Domain=.example.com; HttpOnly; Secure; SameS
 
 ---
 
-## 2. 方案 B：CAS（Central Authentication Service）
-
+## 方案 B：CAS（Central Authentication Service）
 ### 2.1 核心思想
 
 中心化认证服务 + Service Ticket（票据）。
@@ -110,8 +108,7 @@ Set-Cookie: session_id=xxx; Path=/; Domain=.example.com; HttpOnly; Secure; SameS
 
 ---
 
-## 3. 方案 C：OAuth2
-
+## 方案 C：OAuth2
 ### 3.1 核心思想
 
 **OAuth2 = 授权框架**（不是认证）—— 但配合 OIDC 后**完整支持 SSO**。
@@ -182,8 +179,7 @@ Set-Cookie: session_id=xxx; Path=/; Domain=.example.com; HttpOnly; Secure; SameS
 
 ---
 
-## 4. 方案 D：OpenID Connect（OIDC）
-
+## 方案 D：OpenID Connect（OIDC）
 ### 4.1 核心思想
 
 **OAuth2 + 身份层** = OIDC。补充 ID Token（JWT 格式），让 OAuth2 也能传递身份。
@@ -223,8 +219,7 @@ Set-Cookie: session_id=xxx; Path=/; Domain=.example.com; HttpOnly; Secure; SameS
 
 ---
 
-## 5. 方案 E：SAML 2.0
-
+## 方案 E：SAML 2.0
 ### 5.1 核心思想
 
 基于 XML 断言的 SAML 协议，由 IdP 签名后 SP 验证。
@@ -263,8 +258,7 @@ Set-Cookie: session_id=xxx; Path=/; Domain=.example.com; HttpOnly; Secure; SameS
 
 ---
 
-## 6. 方案 F：JWT 自建
-
+## 方案 F：JWT 自建
 ### 6.1 核心思想
 
 颁发 JWT（自签含 Claims），子系统验签即可。
@@ -301,8 +295,7 @@ String jwt = Jwts.builder()
 
 ---
 
-## 7. 6 大方案对比表
-
+## 6 大方案对比表
 | 维度 | Cookie | CAS | OAuth2 | OIDC ⭐ | SAML | JWT |
 |------|--------|-----|--------|---------|------|------|
 | 跨域 | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ |
@@ -316,8 +309,7 @@ String jwt = Jwts.builder()
 
 ---
 
-## 8. 选型决策
-
+## 选型决策
 ```text
 场景：我要做 SSO，怎么选？
 
@@ -346,8 +338,7 @@ Q5：内部微服务（API 调用）？
 
 ---
 
-## 9. 一句话总结
-
+## 一句话总结
 > **6 大方案选型公式：现代互联网选 OAuth2+OIDC；跨国企业选 SAML；Java EE 老系统选 CAS；微服务内部选 JWT；同公司同根域选 Cookie。**
 
 ---

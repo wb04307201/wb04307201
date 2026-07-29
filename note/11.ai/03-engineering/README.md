@@ -11,8 +11,7 @@ module:
 
 > 从框架选型到本地部署，AI 工程落地的实用指南。
 
-## 1. 目录导航
-
+## 目录导航
 | 目录 | 核心内容 | 一句话定位 |
 |------|---------|-----------|
 | [frameworks](frameworks/) | **深度学习框架** (PyTorch/TensorFlow/MindSpore/PaddlePaddle) · **大模型应用框架** (LangChain/LangChain4j/Spring AI/LlamaIndex) | 框架选型地图 |
@@ -34,8 +33,7 @@ module:
 
 ---
 
-## 2. 知识脉络
-
+## 知识脉络
 ```mermaid
 graph LR
     A[frameworks<br/>深度学习 + LLM 应用] --> B[compute-platforms<br/>CUDA / ROCm / CANN]
@@ -51,8 +49,7 @@ graph LR
 
 ---
 
-## 3. 速查表
-
+## 速查表
 | 概念 | 核心要点 | 典型场景 |
 |------|---------|---------|
 | **PyTorch** | 动态图 + Pythonic，研究首选 | 模型训练/研究 |
@@ -75,8 +72,7 @@ graph LR
 
 ---
 
-## 4. 核心内容（按子模块展开）
-
+## 核心内容（按子模块展开）
 - **[frameworks](frameworks/)**（+ 3 子）：
   - [deep-learning](frameworks/deep-learning/) — 深度学习框架对比
   - [llm-app](frameworks/llm-app/) — LLM 应用框架对比
@@ -105,8 +101,7 @@ graph LR
 
 ---
 
-## 5. 最佳实践
-
+## 最佳实践
 | 场景 | 实践要点 |
 |------|---------|
 | **框架选型** | 研究用 PyTorch；Java 企业用 Spring AI / LangChain4j；RAG 专精用 LlamaIndex |
@@ -120,8 +115,7 @@ graph LR
 
 ---
 
-## 6. 常见面试题
-
+## 常见面试题
 | 题目 | 核心考点 |
 |------|---------|
 | PyTorch vs TensorFlow 选型？ | 动态图 vs 静态图、研究 vs 生产 |
@@ -136,16 +130,14 @@ graph LR
 
 ---
 
-## 7. 相关章节
-
+## 相关章节
 - 上游：[L2 技术栈](../02-technology-stack/) → **L3 工程实践** → [L4 架构设计](../04-architecture/)
 - 关联：[06.spring](../../06.spring/) — Spring 生态（Spring AI 的底层支撑）
 - 面试：[13.split-hairs AI 新概念](../../13.split-hairs/11.ai/README.md) — Harness / Loop 面试精炼版
 
 ---
 
-## 8. 开源参考
-
+## 开源参考
 | 类别 | 项目 |
 |------|------|
 | 深度学习框架 | PyTorch · TensorFlow · MindSpore · PaddlePaddle · JAX |

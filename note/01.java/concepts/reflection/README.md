@@ -278,4 +278,11 @@ privateMethod.invoke(hero);  // 输出: 我是私有方法
 
 ---
 
+
+## 相关章节
+
+- [枚举（Enum）](../enum/README.md)
+- [I/O](../../io/README.md)
+- [语法糖](../syntactic-sugar/README.md)
+
 ← [返回 Java 核心概念](../README.md)

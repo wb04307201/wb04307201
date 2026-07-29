@@ -24,8 +24,7 @@ module:
 
 > 一句话总结：**质量差的代码会让所有 HA 模式形同虚设。** 本章梳理的是基础质量，建议在阅读 [限流](../rate-limiting/README.md)、[熔断](../circuit-break/README.md)、[重试](../retry/README.md)、[超时](../timeout/README.md)、[降级](../service-degradation/README.md) 之前先扫一遍。
 
-## 1. 代码可读性
-
+## 代码可读性
 - **命名规范**：
     - 类名使用大驼峰（UpperCamelCase）
     - 方法名和变量名使用小驼峰（lowerCamelCase）
@@ -42,8 +41,7 @@ module:
     - 使用Javadoc为公共API编写文档
     - 避免冗余注释（代码本身应清晰表达意图）
 
-## 2. 代码结构
-
+## 代码结构
 - **单一职责原则**：每个类/方法只做一件事
 - **小方法**：方法长度建议不超过20行
 - **避免深层嵌套**：控制if/for嵌套层级（通常不超过3层）
@@ -55,15 +53,13 @@ module:
   }
   ```
 
-## 3. 异常处理
-
+## 异常处理
 - 不要捕获并忽略异常（至少记录日志）
 - 避免过于宽泛的异常捕获（如`catch (Exception e)`）
 - 自定义异常应继承自`RuntimeException`或`Exception`
 - 优先使用特定异常而非通用异常
 
-## 4. 性能考虑
-
+## 性能考虑
 - 优先使用StringBuilder进行字符串拼接（在循环中）
 - 合理使用集合框架（ArrayList vs LinkedList, HashMap vs TreeMap）
 - 避免在循环中创建对象
@@ -74,22 +70,19 @@ module:
   }
   ```
 
-## 5. 并发编程
-
+## 并发编程
 - 使用线程安全集合（如`ConcurrentHashMap`）
 - 避免共享可变状态
 - 使用`volatile`、`synchronized`或`Lock`正确处理同步
 - 考虑使用`java.util.concurrent`包中的高级并发工具
 
-## 6. 测试实践
-
+## 测试实践
 - 编写单元测试（JUnit/TestNG）
 - 测试覆盖率目标至少70-80%
 - 使用Mockito进行mock测试
 - 实践测试驱动开发(TDD)
 
-## 7. 工具支持
-
+## 工具支持
 - **静态代码分析**：
     - SonarQube
     - Checkstyle
@@ -103,14 +96,12 @@ module:
 - **构建工具集成**：
     - Maven/Gradle的代码质量插件
 
-## 8. 设计模式应用
-
+## 设计模式应用
 - 适当使用设计模式（如单例、工厂、策略等）
 - 避免过度设计
 - 理解模式适用场景
 
-## 9. 现代Java特性
-
+## 现代Java特性
 - 使用Optional处理null值
 - 利用Java 8+特性：
     - Lambda表达式
@@ -118,8 +109,7 @@ module:
     - 方法引用
     - 新日期时间API
 
-## 10. 代码审查
-
+## 代码审查
 - 定期进行同行代码审查
 - 使用Pull Request/Merge Request流程
 - 建立代码质量检查清单

@@ -384,4 +384,11 @@ public int hashCode() {
 
 ---
 
+
+## 相关章节
+
+- [Java 日志学习笔记](../../logging/README.md)
+- [Vector API](../../version/vector-api/README.md)
+- [Java 线程基础](../../concurrency/thread-basics/README.md)
+
 ← [返回 Java 核心概念](../README.md)

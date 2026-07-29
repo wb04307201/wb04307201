@@ -215,8 +215,7 @@ AES-128 能阻止直接下载裸片段，但密钥交付后仍可能被录制；
 
 ---
 
-## 4.5 HLS AES-128 加密实战（key + keyinfo + ffmpeg）
-
+## HLS AES-128 加密实战（key + keyinfo + ffmpeg）
 **3 步链路**：
 
 ```bash

@@ -2,8 +2,7 @@
 
 > 来源:整合自原 08.mybatis/README.md § 八
 
-## 8.1 基本调用方式
-
+## 基本调用方式
 ```xml
 <!-- 调用无返回值的存储过程 -->
 <select id="callProcedure" statementType="CALLABLE">
@@ -17,16 +16,14 @@
 </select>
 ```
 
-## 8.2 参数模式说明
-
+## 参数模式说明
 | 模式 | 说明 | 示例 |
 |------|------|------|
 | IN | 输入参数 | `#{param,mode=IN}` |
 | OUT | 输出参数 | `#{param,mode=OUT}` |
 | INOUT | 输入输出参数 | `#{param,mode=INOUT}` |
 
-## 8.3 复杂存储过程处理
-
+## 复杂存储过程处理
 ```xml
 <!-- 调用带游标的存储过程 -->
 <select id="callCursorProcedure" statementType="CALLABLE" resultMap="userResultMap">
@@ -42,8 +39,7 @@
 </resultMap>
 ```
 
-## 8.4 Java代码调用示例
-
+## Java代码调用示例
 ```java
 // 无返回值调用
 SqlSession sqlSession = sqlSessionFactory.openSession();

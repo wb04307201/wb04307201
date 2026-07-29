@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 反模式 1：未捕获的 async 异常
-
+## 反模式 1：未捕获的 async 异常
 ### 现象
 
 ```js
@@ -59,8 +58,7 @@ async function safeLoadUser(id) {
 
 ---
 
-## 2. 反模式 2：try/catch 静默吞错
-
+## 反模式 2：try/catch 静默吞错
 ### 现象
 
 ```js
@@ -88,8 +86,7 @@ try {
 
 ---
 
-## 3. 反模式 3：finally 中抛错覆盖原错误
-
+## 反模式 3：finally 中抛错覆盖原错误
 ### 现象
 
 ```js
@@ -143,8 +140,7 @@ async function submit() {
 
 ---
 
-## 4. 反模式 4：async 函数未 await
-
+## 反模式 4：async 函数未 await
 ### 现象
 
 ```js
@@ -184,8 +180,7 @@ async function sync() {
 
 ---
 
-## 5. 反模式 5：错误污染（async function 串接 catch 错位置）
-
+## 反模式 5：错误污染（async function 串接 catch 错位置）
 ### 现象
 
 ```js
@@ -228,8 +223,7 @@ async function step2() {
 
 ---
 
-## 6. 5 大反模式速查
-
+## 5 大反模式速查
 | 反模式 | 现象 | 修复 |
 |--------|------|------|
 | **未捕获** | 错误进 unhandledrejection | try/catch 或全局兜底 |
@@ -240,8 +234,7 @@ async function step2() {
 
 ---
 
-## 7. 一句话总结
-
+## 一句话总结
 > **5 大反模式都是"错误消失"陷阱——用 try/catch 必须 log/上报/UI 三件套；finally 单独 try/catch；async 必须 await；catch 不抛等于吞错。**
 
 ---

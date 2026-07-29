@@ -1,13 +1,14 @@
-<!--
-module:
+<!--module:
   parent: java
-  slug: java/completablefuture
+  slug: 01.java/concurrency/completablefuture
   type: article
   category: 主模块子文章
-  summary: CompletableFuture 完整笔记
+  summary: 在 Java 8 引入 `CompletableFuture` 之前，异步编程主要依赖 `java.util.concurrent.Future` 接口。...
 -->
 
 # CompletableFuture 完整笔记
+
+> **定位**：CompletableFuture 完整笔记 的核心原理、实现与最佳实践。
 
 ## 一、Future 的局限性
 

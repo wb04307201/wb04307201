@@ -1,7 +1,6 @@
-<!--
-module:
+<!--module:
   parent: algorithms/string-algorithms
-  slug: algorithms/string-algorithms/01-trie
+  slug: 02.computer-basics/02-algorithms/string-algorithms/01-trie-data-structure
   type: topic
   category: Trie 字典树
   summary: Trie 数据结构 —— Java 数组实现 + HashMap 实现 + 自动补全实战
@@ -15,8 +14,7 @@ module:
 
 ---
 
-## 1. Trie 节点设计
-
+## Trie 节点设计
 ### 1.1 数组实现（紧凑 + 快速）
 
 ```java
@@ -103,8 +101,7 @@ flowchart LR
 
 ---
 
-## 2. Trie 完整实现（HashMap 版 / Java）
-
+## Trie 完整实现（HashMap 版 / Java）
 ```java
 public class Trie {
     private TrieNode root = new TrieNode();
@@ -166,8 +163,7 @@ public class Trie {
 
 ---
 
-## 3. 数组版 vs HashMap 版：Java / Python 完整实现
-
+## 数组版 vs HashMap 版：Java / Python 完整实现
 前面的节点片段只展示了字段；下面的 4 个实现都包含插入、精确查询、前缀查询、删除一次和前缀枚举，可以直接复制运行。实现统一采用两个计数：
 
 - `terminalCount`：该节点作为完整单词结尾的次数。重复插入不会创建重复节点，但会增加这个计数。
@@ -584,8 +580,7 @@ class MapTrie:
 
 ---
 
-## 4. 边界测试用例：先定义语义，再验证删除
-
+## 边界测试用例：先定义语义，再验证删除
 Trie 的 bug 通常不在“沿边走”这条主路径，而在 root、终点标记、重复计数和删除剪枝。下面的测试约定与四个实现保持一致：空串合法；重复插入两次需要删除两次才消失；删除不存在的词返回 `false` 且不能改变其他词；前缀枚举不应返回前缀之外的词。
 
 ### 4.1 五类必测边界
@@ -751,8 +746,7 @@ def test_array_version_rejects_unsupported_charset():
 
 ---
 
-## 5. Trie 应用场景（前缀查询、词频与路由）
-
+## Trie 应用场景（前缀查询、词频与路由）
 ### 5.1 自动补全（搜索框 / IDE）
 
 ```java
@@ -785,8 +779,7 @@ trie.insert("搜索");  // count=3
 
 ---
 
-## 6. 复杂度分析
-
+## 复杂度分析
 | 操作 | 时间复杂度 | 空间复杂度 |
 |------|-----------|-----------|
 | 插入 | O(len(word)) | O(len) |
@@ -799,8 +792,7 @@ trie.insert("搜索");  // count=3
 
 ---
 
-## 7. 🚨 实战陷阱：能跑不等于能上线
-
+## 🚨 实战陷阱：能跑不等于能上线
 ### 陷阱 1：数组节点空间浪费，词典一大就 OOM
 
 `new TrieNode[26]` 看起来只有 26 个槽位，但每个槽位都是一个引用；当节点数达到百万级时，空引用本身和 Node 对象、对象对齐、GC 元数据都会叠加。词典若高度稀疏（例如大量域名、长 ID、随机字符串），数组版的“常数 26”会远大于实际分支数。
@@ -878,8 +870,7 @@ Trie 节点是对象图，直接 Java 序列化或 `pickle` 并不等于可演�
 
 ---
 
-## 8. 反模式 · 5 个常见错
-
+## 反模式 · 5 个常见错
 ### ⚠️ 反模式 1：用 HashMap 嵌套 HashMap 而不是 Trie
 
 ```java
@@ -920,8 +911,7 @@ int cp = word.codePointAt(i);
 
 ---
 
-## 9. 一句话总结
-
+## 一句话总结
 > **Trie 是前缀树——查找 O(len(word)) 与字典大小无关，Java 50 行实现；自动补全 / 词频统计 / IP 路由 / AC 自动机基础都用它。**
 
 ---

@@ -315,6 +315,13 @@ Cycle Time = 从"开始开发"到"交付上线"的时间
 
 ---
 
+
+## 相关章节
+
+- [AI 项目管理账本：DORA + SPACE + ROI 三件套](../ai-pm-dora-space/README.md)
+- [外包项目避坑：5 大隐性成本 + 合同 8 条必看](../outsourcing-pitfalls/README.md)
+- [项目管理与成本控制](../README.md)
+
 ← [返回: 项目管理与成本控制](../README.md)
 
 ## 📊 本节统计

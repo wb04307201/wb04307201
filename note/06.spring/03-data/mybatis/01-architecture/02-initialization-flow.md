@@ -11,8 +11,7 @@ module:
 
 > 来源:整合自原 08.mybatis/README.md § 二.2.1
 
-## 1. 初始化流程图
-
+## 初始化流程图
 ```mermaid
 flowchart TD
     A["1. 加载 mybatis-config.xml"] --> B["2. 解析 environments / settings / typeAliases"]
@@ -23,8 +22,7 @@ flowchart TD
     F --> G["7. 打开 SqlSession<br/>（Executor + Transaction）"]
 ```
 
-## 2. 各步骤详解
-
+## 各步骤详解
 ### 2.1 配置解析
 - 通过 DOM4J / SAX 解析 XML 文件，构建全局配置对象 `Configuration`
 - 解析内容：`<environments>`（数据源）、`<settings>`（全局开关）、`<typeAliases>`（别名）
@@ -41,8 +39,7 @@ flowchart TD
 - `SqlSessionFactoryBuilder.build(configuration)` → `DefaultSqlSessionFactory`
 - 工厂是线程安全的，**全局单例**；`SqlSession` 是线程不安全的，**每次请求创建**
 
-## 3. 与 Spring 整合后的变化
-
+## 与 Spring 整合后的变化
 | 原生 MyBatis | Spring 整合后 |
 |-------------|--------------|
 | `SqlSessionFactoryBuilder` | `SqlSessionFactoryBean`（FactoryBean） |

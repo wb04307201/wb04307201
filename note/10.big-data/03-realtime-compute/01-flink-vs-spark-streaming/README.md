@@ -13,8 +13,7 @@ module:
 
 ---
 
-## 1. 模块导航
-
+## 模块导航
 | 引擎 | 模型 | 延迟 | 吞吐 | 适用 |
 |------|------|------|------|------|
 | **Apache Flink** | 流优先（native streaming）| 毫秒级 | 高 | 实时风控 / 实时推荐 |
@@ -29,8 +28,7 @@ module:
 
 ---
 
-## 2. 知识脉络
-
+## 知识脉络
 ```text
 ┌──────────────────────────────────────┐
 │  Flink Cluster                        │
@@ -55,16 +53,14 @@ module:
 
 ---
 
-## 3. 速查要点
-
+## 速查要点
 - **Flink**：流优先 + 事件时间 + Exactly-Once + RocksDB 状态后端
 - **Spark Streaming**：早期 DStream 为微批（默认 batch interval 1 秒），新版 Structured Streaming 触发器可配置（默认 `micro-batch`，可切到 `continuous`）
 - **Kafka Streams**：流优先库（轻量，无独立集群）
 
 ---
 
-## 4. 10 维度深度对比
-
+## 10 维度深度对比
 | 维度 | Flink | Spark Streaming |
 |------|-------|-----------------|
 | **处理模型** | 流优先（native）| 微批（micro-batch）|
@@ -80,8 +76,7 @@ module:
 
 ---
 
-## 5. 生产选型决策
-
+## 生产选型决策
 ```text
 Q1: 延迟要求？
 ├── < 100ms → Flink
@@ -107,8 +102,7 @@ Q5: 实时数仓 / 准实时？
 
 ---
 
-## 6. 生产实战
-
+## 生产实战
 ### 6.1 Flink Checkpoint 配置
 
 ```yaml
@@ -153,8 +147,7 @@ result_df.writeStream \
 
 ---
 
-## 7. 典型案例
-
+## 典型案例
 **Flink 实时风控**：
 
 ```text
@@ -175,8 +168,7 @@ Kafka → Spark Structured Streaming → Delta Lake → BI
 
 ---
 
-## 8. 最佳实践
-
+## 最佳实践
 | 实践 | 说明 |
 |------|------|
 | Flink 语言选型 | Java / Scala（性能最佳） |
@@ -188,8 +180,7 @@ Kafka → Spark Structured Streaming → Delta Lake → BI
 
 ---
 
-## 9. 常见面试题
-
+## 常见面试题
 | 题目 | 核心考点 |
 |------|---------|
 | Flink 与 Spark Streaming 本质区别？ | 流式 vs 微批；延迟与吞吐 trade-off |
@@ -200,8 +191,7 @@ Kafka → Spark Structured Streaming → Delta Lake → BI
 
 ---
 
-## 10. 与其他模块的关系
-
+## 与其他模块的关系
 - **上游**：[03-realtime-compute](../)（实时计算总览）
 - **下游**：被 [04 数据湖](../../04-data-lake/) / [05 OLAP](../../05-olap/) 消费
 - **横向**：[02 Hadoop 生态](../../02-hadoop-ecosystem/) 离线批处理互补

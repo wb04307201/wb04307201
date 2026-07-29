@@ -1,13 +1,14 @@
-<!--
-module:
+<!--module:
   parent: database
-  slug: database/fundamentals
+  slug: 03.database/01-fundamentals
   type: index
   category: 主模块子文章
   summary: 数据库基础概念、ER 图、范式与设计步骤、数据类型与字符集，是后续 SQL、事务、索引、MySQL 等高级主题的基石。
 -->
 
 # 数据库基础知识
+
+> **定位**：数据库基础概念、ER 图、范式与设计步骤、数据类型与字符集，是后续 SQL、事务、索引、MySQL 等高级主题的基石。 的核心原理、实现与最佳实践。
 
 > 数据库基础知识涵盖核心概念、关系模型、ER 图、范式与设计步骤,是后续 SQL、事务、索引、MySQL 等高级主题的基石。
 

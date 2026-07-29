@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 为什么 LLM 必须有熔断？
-
+## 为什么 LLM 必须有熔断？
 **真实事故**：
 - 2024 Q2 某 AI 公司接入某大模型 API，对方短暂故障（30 分钟）
 - 失败模式：每个请求都卡 60 秒然后超时
@@ -27,8 +26,7 @@ module:
 
 ---
 
-## 2. 双 Timeout 设计
-
+## 双 Timeout 设计
 ### 2.1 软超时（5s）+ 硬超时（30s）
 
 ```python
@@ -77,8 +75,7 @@ def fallback_response(error_type="timeout"):
 
 ---
 
-## 3. Circuit Breaker（熔断器）
-
+## Circuit Breaker（熔断器）
 ### 3.1 状态机
 
 ```text
@@ -154,8 +151,7 @@ class FallbackChain:
 
 ---
 
-## 4. 三层防御
-
+## 三层防御
 ```text
 [Layer 1] 客户端：loading state + cancel button（5s 用户能看到的）
    ↓
@@ -172,8 +168,7 @@ class FallbackChain:
 
 ---
 
-## 5. 超时熔断 vs 重试：协同
-
+## 超时熔断 vs 重试：协同
 ```text
 请求触发：
   ↓
@@ -194,8 +189,7 @@ class FallbackChain:
 
 ---
 
-## 6. 监控指标
-
+## 监控指标
 | 指标 | 公式 | 阈值 |
 |------|------|------|
 | **P50/P99 响应时间** | percentile(latency) | P99 < 10s |
@@ -206,8 +200,7 @@ class FallbackChain:
 
 ---
 
-## 7. 反模式 · 5 个常见错
-
+## 反模式 · 5 个常见错
 ### ⚠️ 反模式 1：只设一个 timeout
 
 - 错：timeout=30s 一刀切
@@ -235,8 +228,7 @@ class FallbackChain:
 
 ---
 
-## 8. 一句话总结
-
+## 一句话总结
 > **LLM 超时熔断 = 双 timeout（5s 软限 partial + 30s 硬限 fallback）+ Circuit Breaker（熔断 + 探针）+ Fallback 模型链。事故复盘的根因 80% 都是"没熔断"。**
 
 ---

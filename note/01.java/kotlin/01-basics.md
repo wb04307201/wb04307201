@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 01.java
+  slug: 01.java/kotlin/01-basics
+  type: article
+  category: 主模块子文章
+  summary: Kotlin 区分只读与可变变量，Java 通过 `final` 实现只读。
+-->
+
 # Kotlin 基础
 
 ## 一、变量声明

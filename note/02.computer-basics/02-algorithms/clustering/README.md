@@ -1,7 +1,6 @@
-<!--
-module:
+<!--module:
   parent: computer-basics/algorithms
-  slug: computer-basics/algorithms/clustering
+  slug: 02.computer-basics/02-algorithms/clustering
   type: article
   category: 主模块子文章
   summary: 聚类算法——将数据自动分组的无监督学习方法，覆盖 K-Means / DBSCAN / 层次聚类 / GMM 的原理、实现与选型

@@ -60,8 +60,7 @@ graph TB
 
 ---
 
-## 1. EventMesh 云流程架构图
-
+## EventMesh 云流程架构图
 Parallel 编排器触发 3 条并行分支：视频转音频 / 视频封面生成 / 视频码率转换，最终汇聚到 HTTP 后端。
 
 ```mermaid
@@ -104,8 +103,7 @@ flowchart TB
     SendToBackend --> End([END])
 ```
 
-## 2. 事件网格与业务流程集成图
-
+## 事件网格与业务流程集成图
 云工作流与 EventMesh 集成，自建机房/ECS VPC 通过 MNS 拉取任务，公共云 FC 调用 VOD/FNF 等服务。
 
 ```mermaid
@@ -147,8 +145,7 @@ flowchart LR
     User -->|汇报任务结果| FC1
 ```
 
-## 3. Serverless Workflow DSL 执行流程图
-
+## Serverless Workflow DSL 执行流程图
 业务消息分组后写入 OSS，根据数据大小决策是否压缩。
 
 ```mermaid
@@ -166,8 +163,7 @@ flowchart TB
 
 ---
 
-## 4. Serverless Workflow DSL 最小示例
-
+## Serverless Workflow DSL 最小示例
 CNCF Serverless Workflow DSL 用 YAML 描述上图"分组 → OSS → 选择压缩"的逻辑。
 
 ```yaml
@@ -219,8 +215,7 @@ states:
 
 ---
 
-## 5. EventMesh Runtime 启动与部署
-
+## EventMesh Runtime 启动与部署
 ```bash
 # 1. 下载发行版（本文验证版本：1.10.0；请按需替换为当前最新版本并核对官方发布说明）
 wget https://archive.apache.org/dist/eventmesh/1.10.0/apache-eventmesh-1.10.0-bin.tar.gz
@@ -243,8 +238,7 @@ curl http://127.0.0.1:10106/workflow/list | jq '.data[].name'
 
 ---
 
-## 6. 同类方案横向对比
-
+## 同类方案横向对比
 | 维度 | Apache EventMesh | Knative Eventing | OpenFunction |
 |------|------------------|------------------|--------------|
 | **定位** | 事件网格 + Serverless Workflow DSL | Kubernetes 原生事件驱动 | FaaS + 函数编排 |

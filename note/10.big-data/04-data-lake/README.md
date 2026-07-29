@@ -1,7 +1,6 @@
-<!--
-module:
+<!--module:
   parent: big-data
-  slug: big-data/data-lake
+  slug: 10.big-data/04-data-lake
   type: index
   category: 主模块子文章
   summary: Iceberg / Hudi / Delta Lake——存算分离的现代数据湖表格式
@@ -15,8 +14,7 @@ module:
 
 ---
 
-## 1. 模块导航
-
+## 模块导航
 | 主题 | 状态 | 说明 | 子 README |
 |------|------|------|-----------|
 | Apache Iceberg | ✅ 主流 | 隐藏分区 / 多引擎 | [01-iceberg-vs-delta-vs-hudi](./01-iceberg-vs-delta-vs-hudi/) |
@@ -34,8 +32,7 @@ module:
 
 ---
 
-## 2. 知识脉络
-
+## 知识脉络
 ```mermaid
 flowchart LR
     Spark[Spark] --> Iceberg[Iceberg Catalog]
@@ -48,8 +45,7 @@ flowchart LR
 
 ---
 
-## 3. 速查要点
-
+## 速查要点
 | 能力 | Iceberg | Hudi | Delta Lake |
 |------|---------|------|------------|
 | ACID | ✓ | ✓ | ✓ |
@@ -65,8 +61,7 @@ flowchart LR
 
 ---
 
-## 4. 核心内容
-
+## 核心内容
 ### 4.1 Iceberg 实战
 
 ```sql
@@ -135,8 +130,7 @@ flowchart TD
 
 ---
 
-## 5. 最佳实践
-
+## 最佳实践
 | 实践 | 说明 |
 |------|------|
 | 表格式选型 | 多引擎 → Iceberg；CDC → Hudi；Databricks → Delta |
@@ -147,8 +141,7 @@ flowchart TD
 
 ---
 
-## 6. 常见面试题
-
+## 常见面试题
 | 题目 | 核心考点 |
 |------|---------|
 | Iceberg 隐藏分区原理？ | partition transform 不依赖目录名 |
@@ -160,8 +153,7 @@ flowchart TD
 
 ---
 
-## 7. 与其他模块的关系
-
+## 与其他模块的关系
 - **上游**：[02 Hadoop 生态](../02-hadoop-ecosystem/)（对象存储）
 - **下游**：被 [05 OLAP](../05-olap/) / [03 实时计算](../03-realtime-compute/) 消费
 - **横向**：[01 数仓架构](../01-data-warehouse/) 湖仓一体范式
@@ -182,5 +174,12 @@ flowchart TD
 | 文末回链覆盖 | 2 / 2 = 100% |
 
 ---
+
+
+## 相关章节
+
+- [Iceberg vs Delta Lake vs Apache Hudi：数据湖三剑客深度对比](01-iceberg-vs-delta-vs-hudi/README.md)
+- [03 实时计算](../03-realtime-compute/README.md)
+- [大数据](../README.md)
 
 ← [返回大数据总览](../../README.md)

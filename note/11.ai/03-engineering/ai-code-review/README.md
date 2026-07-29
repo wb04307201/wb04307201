@@ -21,8 +21,7 @@ AI Coding 把"写代码"的成本压到接近零，但**审核成本没变**，�
 
 ---
 
-## 1. 为什么后端代码需要专门的审核体系
-
+## 为什么后端代码需要专门的审核体系
 前端代码错了，用户会看到、会反馈、可热修；后端接口代码错了，后果是**不可逆**的三类：
 
 | 出错维度 | 典型后果 | 可逆性 |
@@ -35,8 +34,7 @@ AI 生成后端代码的**根本矛盾**：AI 按"单请求 / 串行 / happy pat
 
 ---
 
-## 2. 6 层审核体系（核心）
-
+## 6 层审核体系（核心）
 按"离故障有多近"从外到内分 6 层。每层给出**必查清单**。
 
 ### 2.1 第 ① 层：接口契约
@@ -94,8 +92,7 @@ if (ok == 0) throw new BizException("余额不足");
 
 ---
 
-## 3. 分级门禁矩阵
-
+## 分级门禁矩阵
 不是所有接口用同一把尺子。**按风险等级配门禁**，把有限的人审预算花在刀刃上：
 
 | 风险级 | 接口类型 | 机器门禁 | 人审要求 | AI 可否独立完成 |
@@ -108,8 +105,7 @@ if (ok == 0) throw new BizException("余额不足");
 
 ---
 
-## 4. AI 幻觉在后端代码的 5 种典型形态
-
+## AI 幻觉在后端代码的 5 种典型形态
 | 形态 | 例子 | 识别方法 |
 |------|------|---------|
 | 虚构 API/方法 | 调用不存在的 `repository.findByXxx()` | IDE 报错 / 编译期暴露 |
@@ -122,8 +118,7 @@ if (ok == 0) throw new BizException("余额不足");
 
 ---
 
-## 5. 工具链（机器先过，人再审）
-
+## 工具链（机器先过，人再审）
 ```mermaid
 graph LR
     A[AI 生成 PR] --> B[静态扫描<br/>SonarQube/Semgrep]
@@ -147,8 +142,7 @@ graph LR
 
 ---
 
-## 6. 落地流程
-
+## 落地流程
 1. **生成前**：在 `.claude/rules.md` 写清编码规范、库版本、禁用清单、风险分级（Harness 优先，见 [harness-engineering](../harness-engineering/README.md)）。
 2. **生成后**：AI 先跑本地 CI（静态 + 安全 + 测试），红的自己修。
 3. **PR 模板**：强制勾选 6 层 checklist + 标注接口风险级。
@@ -157,8 +151,7 @@ graph LR
 
 ---
 
-## 7. 相关章节
-
+## 相关章节
 - 面试精炼版：[`13.split-hairs/11.ai/ai-code-review`](../../../13.split-hairs/11.ai/ai-code-review/README.md) — 6 层体系 + "绿色测试"陷阱 + 90 秒话术
 - 上游：[`harness-engineering`](../harness-engineering/README.md) — 用规范/流程/工具约束 AI 产出（审核的前置）
 - 关联：[`claude-code-practices`](../claude-code-practices/README.md) — AI 编码工具链实践

@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 为什么 Chunking 如此重要？
-
+## 为什么 Chunking 如此重要？
 RAG 召回的"最小单元"就是 chunk——切得太粗，召回噪声大；切得太细，跨段语义丢失。
 
 | 切分粒度 | 召回准确率 | 上下文效率 | 推荐度 |
@@ -28,8 +27,7 @@ RAG 召回的"最小单元"就是 chunk——切得太粗，召回噪声大；�
 
 ---
 
-## 2. 4 大 Chunking 策略
-
+## 4 大 Chunking 策略
 ### 2.1 Fixed Chunking（固定切分）
 
 ```python
@@ -110,8 +108,7 @@ doc_emb = embed(full_doc)  # sequence-level
 
 ---
 
-## 3. Chunk Size 选型决策
-
+## Chunk Size 选型决策
 | chunk size | 适用 | 召回 | 成本 |
 |-----------|------|------|------|
 | 100-200 token | 精确问答（数字 / 时间）| 80% | 高（块多）|
@@ -123,8 +120,7 @@ doc_emb = embed(full_doc)  # sequence-level
 
 ---
 
-## 4. Chunk Overlap（重叠窗口）
-
+## Chunk Overlap（重叠窗口）
 ```text
 [----chunk 1----]
             [----chunk 2----]
@@ -141,8 +137,7 @@ doc_emb = embed(full_doc)  # sequence-level
 
 ---
 
-## 5. Chunk 元数据增强
-
+## Chunk 元数据增强
 每个 chunk 加 metadata：
 
 ```json
@@ -168,8 +163,7 @@ doc_emb = embed(full_doc)  # sequence-level
 
 ---
 
-## 6. 反模式 · 5 个常见错
-
+## 反模式 · 5 个常见错
 ### ⚠️ 反模式 1：固定 500 字符切，不分文档类型
 
 - 错：所有文档统一 fixed chunk 500 字符
@@ -197,8 +191,7 @@ doc_emb = embed(full_doc)  # sequence-level
 
 ---
 
-## 7. 一句话总结
-
+## 一句话总结
 > **Chunking = 召回准确率的根——选对策略（semantic / agentic）+ 选对 size（500-1000）+ 加 overlap（10-20%）+ 加 metadata（4 个字段），RAG 准确率才能跑出来。**
 
 ---

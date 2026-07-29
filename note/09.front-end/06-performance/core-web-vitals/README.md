@@ -22,8 +22,7 @@ Core Web Vitals 优化 的关键不是'快'——是**什么时候慢、慢多�
 
 ---
 
-## 1. 三大指标速查
-
+## 三大指标速查
 | 指标 | 全称 | 衡量 | 好阈值 | 差阈值 |
 |------|------|------|--------|--------|
 | **LCP** | Largest Contentful Paint | 最大内容渲染时间 | < 2.5s | > 4s |
@@ -43,8 +42,7 @@ graph TB
 
 ---
 
-## 2. LCP 优化
-
+## LCP 优化
 **LCP** = 视口内最大元素（通常是图片 / 标题 / 视频）渲染完成的时刻。
 
 ### 优化路径
@@ -67,8 +65,7 @@ graph TB
 
 ---
 
-## 3. INP 优化
-
+## INP 优化
 **INP** = 用户交互（点击 / 输入）到浏览器绘制下一帧的延迟。
 
 ### 影响因素
@@ -104,8 +101,7 @@ button.addEventListener('click', async () => {
 
 ---
 
-## 4. CLS 优化
-
+## CLS 优化
 **CLS** = 页面元素意外移动的累计分数。
 
 ### 常见原因
@@ -133,8 +129,7 @@ button.addEventListener('click', async () => {
 
 ---
 
-## 5. 度量工具
-
+## 度量工具
 | 工具 | 类型 | 适用 |
 |------|------|------|
 | **Chrome DevTools** | 本地调试 | 开发者 |
@@ -163,8 +158,7 @@ onCLS(metric => {
 
 ---
 
-## 6. 性能预算（Performance Budget）
-
+## 性能预算（Performance Budget）
 | 类型 | 示例 | 监控方式 |
 |------|------|---------|
 | **指标预算** | LCP < 2.5s, INP < 200ms | RUM 报警 |
@@ -192,14 +186,12 @@ onCLS(metric => {
 
 ---
 
-## 7. 学习路径
-
+## 学习路径
 1. **入门**（3 天）：理解三大指标 + DevTools Performance 面板
 2. **进阶**（1 周）：web-vitals 上报 + Lighthouse CI
 3. **高级**（持续）：RUM 体系搭建 + 性能预算 + AB 实验
 
-## 8. 交叉引用
-
+## 交叉引用
 - [`06-performance/`](../) — 性能总览
 - [`06-performance/monitoring/`](../monitoring/) — 监控体系
 - [`05-architecture/rendering-modes/`](../../05-architecture/rendering-modes/) — 渲染模式影响 LCP

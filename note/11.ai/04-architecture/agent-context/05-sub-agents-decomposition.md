@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 为什么需要 Sub-Agents？
-
+## 为什么需要 Sub-Agents？
 ```text
 单 Agent 问题（复杂任务）：
 - 任务有 5 个子任务（搜索 / 计算 / 写作 / 验证 / 格式化）
@@ -33,8 +32,7 @@ Sub-Agent 架构：
 
 ---
 
-## 2. 4 种 Sub-Agent 模式
-
+## 4 种 Sub-Agent 模式
 ### 2.1 Hierarchical（层级）
 
 ```text
@@ -85,8 +83,7 @@ Agent B ↔ D
 
 ---
 
-## 3. 主流框架对比
-
+## 主流框架对比
 | 框架 | 模式 | 特点 | 适用 |
 |------|------|------|------|
 | **LangGraph** | Hierarchical | StateGraph 显式状态 | 生产级最稳定 |
@@ -98,8 +95,7 @@ Agent B ↔ D
 
 ---
 
-## 4. 任务拆分策略
-
+## 任务拆分策略
 ### 4.1 按"步骤"拆（最常用）
 
 ```text
@@ -133,8 +129,7 @@ Agent B ↔ D
 
 ---
 
-## 5. 通信协议（关键难点）
-
+## 通信协议（关键难点）
 ### 5.1 主-子通信
 
 ```python
@@ -164,8 +159,7 @@ response = subagent.invoke(
 
 ---
 
-## 6. 实战：LangGraph Hierarchical
-
+## 实战：LangGraph Hierarchical
 ```python
 from langgraph.graph import StateGraph, START, END
 from typing import TypedDict
@@ -207,8 +201,7 @@ workflow.add_edge("summarizer", END)
 
 ---
 
-## 7. 反模式 · Multi-Agent 的 5 个错
-
+## 反模式 · Multi-Agent 的 5 个错
 ### ⚠️ 反模式 1：拆太细
 
 - 错：拆 20 个子 Agent，每个只做 1 步
@@ -236,8 +229,7 @@ workflow.add_edge("summarizer", END)
 
 ---
 
-## 8. 一句话总结
-
+## 一句话总结
 > **Sub-Agents = 把"上下文压力"切给子 Agent——主 Agent 只看摘要 + 状态。Hierarchical 模式 80% 场景够用，3-5 个子 Agent 是 sweet spot。**
 
 ---

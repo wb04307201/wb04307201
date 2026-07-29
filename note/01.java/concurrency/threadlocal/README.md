@@ -811,4 +811,11 @@ private static final ThreadLocal<SimpleDateFormat> SDF =
 
 ---
 
+
+## 相关章节
+
+- [并发队列](../concurrent-collections/queue/README.md)
+- [Java 24](../../version/java-24/README.md)
+- [Synchronized](../synchronized/README.md)
+
 ← [返回 Java 并发编程专题导航](../README.md)

@@ -1,7 +1,6 @@
-<!--
-module:
+<!--module:
   parent: system-design
-  slug: system-design/4+1
+  slug: 04.system-design/01-foundation/system-design-basics/architecture-diagram/4+1
   type: article
   category: 主模块子文章
   summary: 4+1 视图 本应该很简单，```mermaid
@@ -132,5 +131,12 @@ graph TD
 > - **工具和方法的支持**：尽管4+1视图模型在理论上具有优势，但在实际应用中，可能缺乏足够的工具和方法支持。这可能会增加实现的难度和复杂性，需要开发团队具备较高的技能和经验。
 
 ---
+
+
+## 相关章节
+
+- [架构演进史：30 年互联网架构的演进全景](../../../02-evolution/README.md)
+- [数据一致性](../../microservices/data-consistency/README.md)
+- [服务间通信](../../microservices/service-communication/README.md)
 
 ← [返回 架构图](../README.md)

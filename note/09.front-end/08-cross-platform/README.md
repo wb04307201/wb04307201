@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 模块导航
-
+## 模块导航
 | 主题 | 状态 | 说明 |
 |------|------|------|
 | 跨端选型决策 | ✓ 已有 | [mobile-tech-stack/](mobile-tech-stack/) — 原生 vs Flutter vs RN vs H5 vs 小程序 综合决策矩阵 |
@@ -34,8 +33,7 @@ module:
 
 ---
 
-## 2. 知识脉络
-
+## 知识脉络
 ```mermaid
 flowchart TD
     A[跨端需求] --> B{目标平台?}
@@ -51,8 +49,7 @@ flowchart TD
 
 ---
 
-## 3. 速查要点
-
+## 速查要点
 - **跨端不是银弹**:性能敏感场景(游戏 / 视频编辑)优先原生
 - **Flutter vs React Native**:UI 一致性要求高选 Flutter;JS 团队 + 生态丰富选 RN
 - **Tauri vs Electron**:包大小敏感(< 10MB)选 Tauri;兼容性要求选 Electron
@@ -60,8 +57,7 @@ flowchart TD
 
 ---
 
-## 4. 方案对比
-
+## 方案对比
 | 方案 | 渲染 | 性能 | 包大小 | 平台覆盖 | 适用场景 |
 |------|------|------|-------|---------|---------|
 | React Native | Native | 中 | 中 | iOS / Android | 移动 App 主流 |
@@ -73,8 +69,7 @@ flowchart TD
 
 ---
 
-## 5. 最佳实践
-
+## 最佳实践
 - 移动端优先 React Native / Flutter,二者满足 90% 跨端需求
 - 桌面端:Tauri(轻量,+10MB)/ Electron(兼容性,生态丰富)按需选择
 - 小程序:跨端框架用 Taro / uni-app,避免每个平台单独维护
@@ -83,8 +78,7 @@ flowchart TD
 
 ---
 
-## 6. 常见面试题
-
+## 常见面试题
 - React Native 的 New Architecture:Fabric 渲染器 + TurboModule 与旧架构差异
 - Flutter 的 Skia 自绘 vs React Native 的 Bridge / JSI 性能差异
 - Tauri 为什么比 Electron 包小?Rust 内核 + WebView 共享的系统 WebView 优势
@@ -93,8 +87,7 @@ flowchart TD
 
 ---
 
-## 7. 与其他模块的关系
-
+## 与其他模块的关系
 - **上游**:[03-frameworks](../03-frameworks/)(React / Vue 基础)
 - **下游**:支撑所有跨端项目
 - **横向**:[05-architecture](../05-architecture/) 关注 Web 架构,[08 跨端] 关注多端架构

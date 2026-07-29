@@ -19,8 +19,7 @@ module:
 
 ---
 
-## 1. 为什么 Agent 需要记忆？
-
+## 为什么 Agent 需要记忆？
 无状态 LLM 在多轮场景的问题：
 - 第 10 轮忘了用户在第 1 轮说的偏好
 - 跨 session 没法积累用户画像
@@ -30,8 +29,7 @@ module:
 
 ---
 
-## 2. 4 层记忆架构
-
+## 4 层记忆架构
 | 层级 | 时长 | 内容 | 存储 | 写入时机 |
 |------|------|------|------|---------|
 | **Working**（工作记忆）| 当前会话 | 当前任务上下文 | Prompt context | 实时 |
@@ -41,8 +39,7 @@ module:
 
 ---
 
-## 3. Working Memory（工作记忆）
-
+## Working Memory（工作记忆）
 **作用**：当前会话的"激活上下文"。
 
 **实现要点**：
@@ -66,8 +63,7 @@ def working_memory(messages, max_turns=10):
 
 ---
 
-## 4. Episodic Memory（情景记忆）
-
+## Episodic Memory（情景记忆）
 **作用**：记录"发生过什么"——用户交互历史、任务执行轨迹。
 
 **数据结构**：
@@ -97,8 +93,7 @@ def working_memory(messages, max_turns=10):
 
 ---
 
-## 5. Semantic Memory（语义记忆）
-
+## Semantic Memory（语义记忆）
 **作用**：长期沉淀的"事实"——用户画像、偏好、知识图谱。
 
 **实现方式**：
@@ -125,8 +120,7 @@ semantic_memory = {
 
 ---
 
-## 6. Procedural Memory（程序记忆）
-
+## Procedural Memory（程序记忆）
 **作用**：固定的工作方式——输出格式、工具调用偏好、安全约束。
 
 **示例**：
@@ -150,8 +144,7 @@ agent:
 
 ---
 
-## 7. 4 层协作：信息流
-
+## 4 层协作：信息流
 ```text
        User Query
             ↓
@@ -179,8 +172,7 @@ agent:
 
 ---
 
-## 8. 记忆检索策略
-
+## 记忆检索策略
 ### 8.1 何时检索 episodic vs semantic？
 
 | 查询类型 | 检索层 | 例 |
@@ -207,8 +199,7 @@ def retrieve_context(query, user_id):
 
 ---
 
-## 9. 反模式 · Agent 记忆的 5 个错
-
+## 反模式 · Agent 记忆的 5 个错
 ### ⚠️ 反模式 1：所有信息塞进 working memory
 
 - 错：把 100 轮对话全塞 prompt
@@ -236,8 +227,7 @@ def retrieve_context(query, user_id):
 
 ---
 
-## 10. 一句话总结
-
+## 一句话总结
 > **Agent 记忆 = Working（实时）+ Episodic（事件）+ Semantic（事实）+ Procedural（流程）4 层协作——不是单一存储，是分层架构，每层有自己的写入时机和检索方式。**
 
 ---

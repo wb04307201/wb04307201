@@ -25,8 +25,7 @@ Java代码性能优化 的关键不是'快'——是**什么时候慢、慢多�
 
 相关章节: [03 高可用 code-quality](../../03-high-availability/code-quality/README.md)。
 
-## 1. 代码逻辑与算法优化
-- **减少重复计算**：将循环内不变的表达式提取到外部。
+## 代码逻辑与算法优化- **减少重复计算**：将循环内不变的表达式提取到外部。
   ```java
   // 优化前
   for (int i = 0; i < list.size(); i++) {
@@ -51,8 +50,7 @@ Java代码性能优化 的关键不是'快'——是**什么时候慢、慢多�
   int sum = 0; // 优于Integer sum = 0;
   ```
 
-## 2. JVM调优
-- **堆内存设置**：根据应用需求调整`-Xms`（初始堆）和`-Xmx`（最大堆），避免频繁GC。
+## JVM调优- **堆内存设置**：根据应用需求调整`-Xms`（初始堆）和`-Xmx`（最大堆），避免频繁GC。
   ```bash
   java -Xms512m -Xmx2048m -jar app.jar
   ```
@@ -64,8 +62,7 @@ Java代码性能优化 的关键不是'快'——是**什么时候慢、慢多�
 
 - **启用JIT编译优化**：使用`-XX:+TieredCompilation`（默认开启）结合解释执行与编译执行，提升热点代码性能。
 
-## 3. 并发编程优化
-- **线程池合理配置**：避免线程过多导致上下文切换开销。
+## 并发编程优化- **线程池合理配置**：避免线程过多导致上下文切换开销。
   ```java
   // 使用ThreadPoolExecutor，设置核心线程数、最大线程数、队列容量
   ExecutorService executor = new ThreadPoolExecutor(
@@ -85,8 +82,7 @@ Java代码性能优化 的关键不是'快'——是**什么时候慢、慢多�
 
 - **减少锁粒度**：使用分段锁（如`ConcurrentHashMap`）或锁升级（偏向锁→轻量级锁→重量级锁）。
 
-## 4. I/O与网络优化
-- **使用缓冲流**：减少I/O次数，提升文件读写效率。
+## I/O与网络优化- **使用缓冲流**：减少I/O次数，提升文件读写效率。
   ```java
   try (BufferedReader reader = new BufferedReader(new FileReader("file.txt"))) {
       String line;
@@ -104,8 +100,7 @@ Java代码性能优化 的关键不是'快'——是**什么时候慢、慢多�
   serverChannel.register(selector, SelectionKey.OP_ACCEPT);
   ```
 
-## 5. 内存与对象管理
-- **对象复用**：对昂贵对象（如数据库连接、线程）使用对象池（如`HikariCP`连接池）。
+## 内存与对象管理- **对象复用**：对昂贵对象（如数据库连接、线程）使用对象池（如`HikariCP`连接池）。
   ```java
   // HikariCP连接池配置
   HikariConfig config = new HikariConfig();
@@ -116,8 +111,7 @@ Java代码性能优化 的关键不是'快'——是**什么时候慢、慢多�
 
 - **避免内存泄漏**：及时释放资源（如`Closeable`接口的`close()`方法），使用弱引用（`WeakReference`）管理缓存。
 
-## 6. 工具辅助分析
-- **性能分析工具**：
+## 工具辅助分析- **性能分析工具**：
     - **JProfiler/VisualVM**：分析CPU、内存、GC、线程等指标。
     - **JMH（Java Microbenchmark Harness）**：精准测量代码微基准性能。
     - **Arthas**：在线诊断工具，支持堆栈跟踪、内存泄漏检测。
@@ -127,8 +121,7 @@ Java代码性能优化 的关键不是'快'——是**什么时候慢、慢多�
   log.debug("Processing order: {}", orderId); // 优于log.debug("Processing order: " + orderId);
   ```
 
-## 7. 其他高级优化
-- **编译优化**：使用GraalVM提前编译（AOT）为本地镜像，减少启动时间。
+## 其他高级优化- **编译优化**：使用GraalVM提前编译（AOT）为本地镜像，减少启动时间。
 - **序列化优化**：使用Kryo、Protobuf等高效序列化框架，替代Java原生序列化。
 - **缓存策略**：本地缓存（如Guava Cache）或分布式缓存（如Redis）减少重复计算。
 

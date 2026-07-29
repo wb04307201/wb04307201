@@ -64,8 +64,7 @@ graph TB
     class BL,P,C bl
     class OPS,T,O ops
     class IM,I im
-```
-
+```text
 > ⚠️ **注**：IT4IT 3.0 的 9 大组件在不同文档里有 2 种编号方式（7+2 或 9 平铺）。本章采用 **9 平铺 + 5 层分组** 方式（Strategy、Governance、Demand、Requirement、Design、Portfolio、Catalog、Transition、Operation + Incident 改进层），更便于工程理解。
 
 ---
@@ -251,8 +250,7 @@ graph LR
     class D2C_OBJ,O10,O11,O12,O13 d2c
     class P2D_OBJ,O14,O15,O16,O17 p2d
     class CAT_OBJ,O18 cat
-```
-
+```text
 ### 3.2 Top 10 高频数据对象详解
 
 | 数据对象 | 所在流 | 关键字段 | 生命周期 | 责任人 |
@@ -322,8 +320,7 @@ public record ServiceDefinition(
                 && !slos.isEmpty();
     }
 }
-```
-
+```java
 ```java
 // 为什么 SLO 用单独类：SLA 是法律/合同概念，SLO 是技术指标；IT4IT 规范里两者是独立数据对象
 package com.example.it4it.catalog.domain;
@@ -341,8 +338,7 @@ public record ServiceLevelObjective(
         double threshold,        // 阈值（如 99.95 / 200 / 0.001）
         Duration measurementWindow // 测量窗口（如 30 天滚动）
 ) {}
-```
-
+```text
 ```java
 // 为什么枚举单独定义：IT4IT 3.0 严格规定服务生命周期 4 状态，避免状态机混乱
 package com.example.it4it.catalog.domain;
@@ -357,8 +353,7 @@ public enum ServiceStatus {
     /** 已下线 — 完全从目录移除，但保留历史以供追溯 */
     RETIRED
 }
-```
-
+```text
 ### 3.5 Catalog Item 持久化示例（伪代码 + SQL）
 
 > 📌 **为什么给 SQL 而不是 JPA 注解**：IT4IT 规范对 Catalog 数据结构有明确字段约束（Open Group 标准），SQL 表达更直接，便于 DBA / 数据架构师 review schema 是否符合规范。
@@ -389,8 +384,7 @@ CREATE INDEX idx_catalog_item_status ON catalog_item(status) WHERE status = 'ACT
 CREATE INDEX idx_catalog_item_category ON catalog_item(category);
 
 -- 为什么加 status 过滤索引：Catalog 80% 查询是"找 ACTIVE 服务"，部分索引省空间
-```
-
+```text
 ```text
 # Catalog Item 持久化的"插入 + 查询"伪代码（Spring Boot 风格）
 
@@ -421,8 +415,7 @@ fun searchConsumableServices(category: String?): List<CatalogItem> {
     )
     // 100% 走索引（idx_catalog_item_status 部分索引）
 }
-```
-
+```text
 ### 3.6 Request to Fulfill（R2F）9 阶段完整流程图
 
 > 📌 **为什么用 sequenceDiagram**：R2F 是"接力赛"——9 个阶段顺序推进、责任方轮换，sequenceDiagram 比 flowchart 更直观表达"谁在何时做什么"。
@@ -458,8 +451,7 @@ sequenceDiagram
     end
 
     Note over BRM,SRE: 每个阶段产物都有唯一 ID，可双向追溯（Service Backbone 核心）
-```
-
+```text
 ---
 
 ## 四、4 层参考架构（Reference Architecture）
@@ -485,8 +477,7 @@ graph TB
     class L2 l2
     class L3 l3
     class L4 l4
-```
-
+```text
 ### 4.1 4 层关系
 
 | 层 | 关注问题 | 产出物 | 谁关心 |

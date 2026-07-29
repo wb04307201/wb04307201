@@ -27,8 +27,7 @@ module:
 
 本篇是「缓存设计模式」的核心章节，聚焦"该主题"在实际落地时**5 个 trade-off 的取舍与决策轴**。
 
-## 1. 缓存模式概览
-
+## 缓存模式概览
 四种经典缓存模式的核心区别在于 **谁负责读写缓存** 以及 **写操作的同步/异步性**。
 
 | 模式 | 读操作 | 写操作 | 缓存一致性 | 实现复杂度 | 典型场景 |
@@ -40,8 +39,7 @@ module:
 
 ---
 
-## 2. Cache-Aside 旁路缓存模式
-
+## Cache-Aside 旁路缓存模式
 Cache-Aside 是最常用的缓存模式，应用代码直接管理缓存和数据库。
 
 ### 2.1 原理
@@ -170,8 +168,7 @@ public class UserService {
 
 ---
 
-## 3. Read-Through 读穿透模式
-
+## Read-Through 读穿透模式
 Read-Through 将"缓存未命中时回源查数据库"的逻辑封装到缓存层内部，对应用透明。
 
 ### 3.1 原理
@@ -227,8 +224,7 @@ public class ReadThroughService {
 
 ---
 
-## 4. Write-Through 写穿透模式
-
+## Write-Through 写穿透模式
 Write-Through 确保写操作同时更新缓存和数据库，由缓存层负责同步写入。
 
 ### 4.1 原理
@@ -289,8 +285,7 @@ public class WriteThroughCache<K, V> {
 
 ---
 
-## 5. Write-Behind 写回模式
-
+## Write-Behind 写回模式
 Write-Behind（也叫 Write-Back / 异步写）是 Write-Through 的异步版本。
 
 ### 5.1 原理
@@ -365,8 +360,7 @@ public class WriteBehindCache<K, V> {
 
 ---
 
-## 6. 多级缓存设计
-
+## 多级缓存设计
 ### 6.1 L1 + L2 架构
 
 ```text
@@ -440,8 +434,7 @@ public class MultiLevelCacheService {
 
 ---
 
-## 7. 缓存预热策略
-
+## 缓存预热策略
 缓存预热是在系统启动或流量高峰前，提前将热点数据加载到缓存中。
 
 ### 7.1 预热策略
@@ -491,8 +484,7 @@ public class CacheWarmUpRunner implements ApplicationRunner {
 
 ---
 
-## 8. 缓存三大问题
-
+## 缓存三大问题
 使用缓存时最常遇到的三个经典问题：**缓存穿透**、**缓存击穿**、**缓存雪崩**。
 
 ### 8.1 缓存穿透 (Cache Penetration)

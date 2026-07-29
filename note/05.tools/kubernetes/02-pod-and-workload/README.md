@@ -1,10 +1,9 @@
-<!--
-module:
+<!--module:
   parent: tools
-  slug: tools/k8s-pod
+  slug: 05.tools/kubernetes/02-pod-and-workload
   type: article
   category: 主模块子文章
-  summary: K8s Pod 与工作负载
+  summary: ---
 -->
 
 # K8s Pod 与工作负载：Deployment / StatefulSet / DaemonSet

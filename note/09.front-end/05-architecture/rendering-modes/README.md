@@ -18,8 +18,7 @@ module:
 
 本篇是「渲染模式全景」的核心章节，聚焦该主题在实际落地时**5 个 trade-off 的取舍与决策轴**。
 
-## 1. 六种模式速查
-
+## 六种模式速查
 | 模式 | 渲染在哪 | 生成时机 | 首屏速度 | SEO | 交互性 | 代表框架 |
 |------|---------|---------|---------|-----|--------|---------|
 | **CSR** | 浏览器 | 运行时 | ⭐⭐ 慢 | ❌ 差 | ⭐⭐⭐⭐⭐ 完整 | React (CRA)、Vue CLI |
@@ -31,8 +30,7 @@ module:
 
 ---
 
-## 2. 渲染模式演进
-
+## 渲染模式演进
 ```mermaid
 graph LR
   A[CSR<br/>2013-2020<br/>SPA 时代] --> B[SSR<br/>2016+<br/>SEO 回归]
@@ -52,8 +50,7 @@ graph LR
 
 ---
 
-## 3. 六种模式详解
-
+## 六种模式详解
 ### 3.1 CSR（Client-Side Rendering）
 
 **流程**：浏览器下载 HTML → 下载 JS bundle → JS 执行 → 调用 API → 渲染 DOM。
@@ -202,8 +199,7 @@ graph TB
 
 ---
 
-## 4. 六大模式决策表
-
+## 六大模式决策表
 | 业务场景 | 推荐模式 | 理由 |
 |---------|---------|------|
 | **个人博客 / 文档站** | SSG / Islands | 零 JS、CDN 最快、SEO 最佳 |
@@ -217,8 +213,7 @@ graph TB
 
 ---
 
-## 5. Hydration：贯穿所有模式的共同难题
-
+## Hydration：贯穿所有模式的共同难题
 ```mermaid
 graph TB
   A[HTML 到达浏览器] --> B{模式?}
@@ -243,8 +238,7 @@ graph TB
 
 ---
 
-## 6. 元框架与渲染模式的关系
-
+## 元框架与渲染模式的关系
 | 元框架 | 默认模式 | 支持的模式 |
 |--------|---------|----------|
 | **Next.js App Router** | RSC + Streaming SSR | RSC / SSR / SSG / ISR |
@@ -260,8 +254,7 @@ graph TB
 
 ---
 
-## 7. 性能对比（典型电商场景）
-
+## 性能对比（典型电商场景）
 | 模式 | FCP | LCP | TTI | JS 体积 | 服务端成本 |
 |------|-----|-----|-----|--------|----------|
 | CSR | 1.8s | 3.5s | 4.2s | 500KB | 低 |
@@ -275,14 +268,12 @@ graph TB
 
 ---
 
-## 8. 学习路径建议
-
+## 学习路径建议
 1. **入门**（3 天）：理解 CSR / SSR / SSG 三种基础模式，手写一个 Next.js `getStaticProps` + `getServerSideProps` 对比 Demo
 2. **进阶**（1 周）：理解 ISR / RSC / Islands 的设计动机，跑通 Next.js App Router 的 `'use client'` / `'use server'` 边界
 3. **高级**（持续）：深入 Streaming SSR、Partial Hydration、Resumability 的底层实现
 
-## 9. 交叉引用
-
+## 交叉引用
 - [`06-performance/`](../../06-performance/) — 渲染模式直接决定 LCP / TTI 基线
 - [`03-frameworks/`](../../03-frameworks/) — 元框架与渲染模式的绑定关系
 - [`09-frontend-and-ai/`](../../09-frontend-and-ai/) — RSC 与 AI 流式输出的天然契合
@@ -290,8 +281,7 @@ graph TB
 
 ---
 
-## 10. 与其他模块的关系
-
+## 与其他模块的关系
 - **上游**：[`03-frameworks/`](../../03-frameworks/) / [`04-engineering/`](../../04-engineering/)
 - **下游**：被 [`06-performance/`](../../06-performance/)（性能基线）、[`08-cross-platform/`](../../08-cross-platform/)（跨端渲染策略）直接复用
 

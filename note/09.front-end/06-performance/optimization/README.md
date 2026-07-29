@@ -19,12 +19,10 @@ module:
 
 > 一句话定位：**性能优化——从加载到运行时的 4 大类手段与实战代码**
 
-## 1. 一句话定位
-
+## 一句话定位
 性能优化分为 4 大类：加载优化、运行时优化、资源优化、网络优化。本文档给出每类优化的具体手段、适用场景、实战代码。
 
-## 2. 加载优化
-
+## 加载优化
 ### 2.1 Code Splitting
 
 ```javascript
@@ -64,8 +62,7 @@ const routes = [
 const Heavy = lazy(() => import('./Heavy'))
 ```
 
-## 3. 运行时优化
-
+## 运行时优化
 ### 3.1 虚拟列表
 
 - react-window / react-virtuoso（React）
@@ -92,8 +89,7 @@ const throttled = throttle(fn, 300)
 - Canvas 渲染放 OffscreenCanvas
 - 不阻塞主线程
 
-## 4. 资源优化
-
+## 资源优化
 ### 4.1 图片优化
 
 | 格式 | 适用 |
@@ -123,8 +119,7 @@ const throttled = throttle(fn, 300)
 }
 ```
 
-## 5. 网络优化
-
+## 网络优化
 ### 5.1 HTTP/3 + QUIC
 
 - HTTP/3 基于 QUIC（UDP），0-RTT 握手
@@ -146,8 +141,7 @@ const throttled = throttle(fn, 300)
 - Brotli（比 Gzip 小 15%）
 - 服务器启用 `Content-Encoding: br`
 
-## 6. 性能监控闭环
-
+## 性能监控闭环
 ```mermaid
 flowchart LR
     A[Lighthouse CI<br/>实验室数据] --> B[卡阈值]
@@ -157,8 +151,7 @@ flowchart LR
     F --> G[持续优化]
 ```
 
-## 7. 性能预算
-
+## 性能预算
 - JS < 170KB（gzip 后）
 - CSS < 50KB
 - 图片 < 300KB（首屏）
@@ -167,8 +160,7 @@ flowchart LR
 - INP < 200ms
 - CLS < 0.1
 
-## 8. 关键术语
-
+## 关键术语
 | 术语 | 解释 |
 |------|------|
 | LCP | Largest Contentful Paint |
@@ -179,8 +171,7 @@ flowchart LR
 | FOIT | Flash of Invisible Text |
 | FOUT | Flash of Unstyled Text |
 
-## 9. 框架特定优化
-
+## 框架特定优化
 ### 9.1 React Compiler
 
 - React 19 自动 memo，无需手写 useMemo/useCallback
@@ -199,8 +190,7 @@ flowchart LR
 - 只更新变化的 DOM 节点
 - JSX 语法但响应式粒度更细
 
-## 10. SSR 注水优化
-
+## SSR 注水优化
 ### 10.1 Partial Hydration
 
 ```mermaid
@@ -229,8 +219,7 @@ import { Suspense } from 'react'
 </Suspense>
 ```
 
-## 11. 网络优化深入
-
+## 网络优化深入
 ### 11.1 HTTP/3 + QUIC
 
 - 基于 UDP 的传输层协议（QUIC）

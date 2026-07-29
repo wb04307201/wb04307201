@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 整体架构
-
+## 整体架构
 ```text
 ┌──────────────────────────────────────────────────────────┐
 │  Spring Authorization Server (IdP)                       │
@@ -36,8 +35,7 @@ module:
 
 ---
 
-## 2. IdP：Spring Authorization Server 配置
-
+## IdP：Spring Authorization Server 配置
 ### 2.1 添加依赖
 
 ```xml
@@ -142,8 +140,7 @@ public class IdpApplication {
 
 ---
 
-## 3. 资源服务器（业务系统）：Spring Security 配置
-
+## 资源服务器（业务系统）：Spring Security 配置
 ### 3.1 添加依赖
 
 ```xml
@@ -256,8 +253,7 @@ public class UserController {
 
 ---
 
-## 4. 4 大关键配置
-
+## 4 大关键配置
 ### 4.1 PKCE（强制）
 
 ```yaml
@@ -307,8 +303,7 @@ server:
 
 ---
 
-## 5. 6 大生产坑
-
+## 6 大生产坑
 ### 坑 1：JWT 默认 HS256 + 单一 secret
 
 **错**：所有子系统共享一个 HS256 secret（密钥泄露风险高）
@@ -372,8 +367,7 @@ public CorsConfigurationSource corsConfigurationSource() {
 
 ---
 
-## 6. Spring Authorization Server vs Keycloak 选型
-
+## Spring Authorization Server vs Keycloak 选型
 | 维度 | Spring Authorization Server | Keycloak |
 |------|------------------------------|----------|
 | 类型 | Java 框架 | 完整产品 |
@@ -387,10 +381,16 @@ public CorsConfigurationSource corsConfigurationSource() {
 
 ---
 
-## 7. 一句话总结
-
+## 一句话总结
 > **Spring Security SSO = Spring Authorization Server（IdP）+ Spring Security OAuth2 Resource Server（SP）+ PKCE + RS256 + HTTPS + Refresh Token Rotate。配置 100-200 行，企业级 SSO 闭环。**
 
 ---
+
+
+## 相关章节
+
+- [微服务架构（Microservices）](../../01-foundation/system-design-basics/microservices/README.md)
+- [第二章：视点：给不同人看不同的图](../../01-foundation/system-design-basics/archimate/viewpoints.md)
+- [单体到微服务的演进：5 大策略与 6 大陷阱](../../01-foundation/02-evolution/01-monolith-to-microservices/README.md)
 
 ← [返回: SSO 总目录](../README.md) · 上一章：[02-six-schemes-comparison](02-six-schemes-comparison.md) · 下一章：[04-jwt-implementation](04-jwt-implementation.md)

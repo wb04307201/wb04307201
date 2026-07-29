@@ -1,7 +1,6 @@
-<!--
-module:
+<!--module:
   parent: big-data
-  slug: big-data/iceberg-vs-delta-vs-hudi
+  slug: 10.big-data/04-data-lake/01-iceberg-vs-delta-vs-hudi
   type: article
   category: 主模块子文章
   summary: Iceberg vs Delta Lake vs Hudi——数据湖三剑客深度对比
@@ -9,12 +8,13 @@ module:
 
 # Iceberg vs Delta Lake vs Apache Hudi：数据湖三剑客深度对比
 
+> **定位**：Iceberg vs Delta Lake vs Hudi——数据湖三剑客深度对比 的核心原理、实现与最佳实践。
+
 > 一份按场景梳理的数据湖格式速查手册：从架构原理到生产选型的完整对比。
 
 ---
 
-## 1. 模块导航
-
+## 模块导航
 | 格式 | 出生 | 主导方 | 核心理念 |
 |------|------|--------|---------|
 | **Apache Iceberg** | 2017 | Netflix → Apache | 隐藏分区 + ACID + 多引擎 |
@@ -29,8 +29,7 @@ module:
 
 ---
 
-## 2. 为什么需要数据湖三件套？
-
+## 为什么需要数据湖三件套？
 传统 Hive 格式（Parquet / ORC）的痛点：
 
 - 不支持 ACID（并发写会冲突）
@@ -42,8 +41,7 @@ module:
 
 ---
 
-## 3. Apache Iceberg 详解
-
+## Apache Iceberg 详解
 ### 3.1 核心特性
 
 - **隐藏分区**：用户写 `WHERE date >= '2025-01-01'`，Iceberg 自动转换
@@ -65,8 +63,7 @@ Iceberg Table
 
 ---
 
-## 4. Delta Lake 详解
-
+## Delta Lake 详解
 ### 4.1 核心特性
 
 - **ACID 事务**：基于 Optimistic Concurrency Control
@@ -88,8 +85,7 @@ Delta Table = Parquet Files + Delta Log
 
 ---
 
-## 5. Apache Hudi 详解
-
+## Apache Hudi 详解
 ### 5.1 核心特性
 
 - **记录级 CDC**：高效的增删改（upsert / delete）
@@ -109,8 +105,7 @@ Hudi Table
 
 ---
 
-## 6. 12 维度深度对比
-
+## 12 维度深度对比
 | 维度 | Iceberg | Delta Lake | Hudi |
 |------|---------|-----------|------|
 | **出生** | Netflix 2017 | Databricks 2019 | Uber 2017 |
@@ -128,8 +123,7 @@ Hudi Table
 
 ---
 
-## 7. 生产选型决策
-
+## 生产选型决策
 ```text
 Q1: 主要引擎是？
 ├── Spark 为主 + Databricks → Delta Lake
@@ -154,8 +148,7 @@ Q4: 云厂商绑定？
 
 ---
 
-## 8. 生产实战对比
-
+## 生产实战对比
 **Iceberg + Flink + Doris 实时数仓**：
 
 ```text
@@ -181,8 +174,7 @@ MySQL Binlog → Flink CDC → Hudi（COW）
 
 ---
 
-## 9. 主流厂商选型
-
+## 主流厂商选型
 | 厂商 | 推荐 |
 |------|------|
 | **Netflix** | Iceberg（自家出品）|
@@ -196,8 +188,7 @@ MySQL Binlog → Flink CDC → Hudi（COW）
 
 ---
 
-## 10. 最佳实践
-
+## 最佳实践
 | 实践 | 说明 |
 |------|------|
 | 优先 Iceberg | 跨引擎最灵活、云原生标准 |
@@ -209,8 +200,7 @@ MySQL Binlog → Flink CDC → Hudi（COW）
 
 ---
 
-## 11. 常见面试题
-
+## 常见面试题
 | 题目 | 核心考点 |
 |------|---------|
 | 三种数据湖格式核心差异？ | 多引擎 / CDC / Spark 生态 |
@@ -222,8 +212,7 @@ MySQL Binlog → Flink CDC → Hudi（COW）
 
 ---
 
-## 12. 与其他模块的关系
-
+## 与其他模块的关系
 - **上游**：[04-data-lake](../)（数据湖总览）
 - **下游**：被 [05 OLAP](../../05-olap/) / [03 实时计算](../../03-realtime-compute/) 消费
 - **横向**：[01 数仓架构](../../01-data-warehouse/) 湖仓一体范式
@@ -245,5 +234,12 @@ MySQL Binlog → Flink CDC → Hudi（COW）
 | 文末回链覆盖 | 1 / 1 = 100% |
 
 ---
+
+
+## 相关章节
+
+- [03 实时计算](../../03-realtime-compute/README.md)
+- [05 OLAP](../../05-olap/README.md)
+- [04 数据湖](../README.md)
 
 ← [返回数据湖总览](../) · ← [返回大数据总览](../../README.md)

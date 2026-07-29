@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. Plan-and-Execute 的本质
-
+## Plan-and-Execute 的本质
 ```text
 ┌──────────────────────────────────────────────────────────┐
 │ Stage 1：Planner（规划）                                  │
@@ -42,8 +41,7 @@ module:
 
 ---
 
-## 2. 4 大对比优势（vs ReAct）
-
+## 4 大对比优势（vs ReAct）
 | 维度 | ReAct | Plan-and-Execute |
 |------|-------|------------------|
 | **决策次数** | 每步都让 LLM 决策 | 一次性规划，逐步执行 |
@@ -56,8 +54,7 @@ module:
 
 ---
 
-## 3. 规划方法论（Plan 的 5 大要素）
-
+## 规划方法论（Plan 的 5 大要素）
 ```python
 @dataclass
 class PlanStep:
@@ -106,8 +103,7 @@ class PlanStep:
 
 ---
 
-## 4. 3 大重规划机制（核心！）
-
+## 3 大重规划机制（核心！）
 ### 4.1 RePlan（重新规划）
 
 ```text
@@ -164,8 +160,7 @@ Plan: [Step1, Step2, Step3-fixed, Step4]
 
 ---
 
-## 5. LangChain / LangGraph 实现
-
+## LangChain / LangGraph 实现
 ### 5.1 LangChain 基础实现
 
 ```python
@@ -238,8 +233,7 @@ workflow.add_conditional_edges("executor", should_replan)
 
 ---
 
-## 6. Plan-and-Execute 适用场景 vs 不适用场景
-
+## Plan-and-Execute 适用场景 vs 不适用场景
 ### 6.1 适用 ✅
 
 | 场景 | 原因 |
@@ -260,8 +254,7 @@ workflow.add_conditional_edges("executor", should_replan)
 
 ---
 
-## 7. Plan-and-Execute 优化方向
-
+## Plan-and-Execute 优化方向
 ### 7.1 分层规划
 
 ```text
@@ -294,8 +287,7 @@ if query_similarity(new_query, past_query) > 0.9:
 
 ---
 
-## 8. 反模式 · 5 个常见错
-
+## 反模式 · 5 个常见错
 ### ⚠️ 反模式 1：一次性规划 50 步
 
 - 错：让 LLM 一次输出 50 步 Plan
@@ -323,8 +315,7 @@ if query_similarity(new_query, past_query) > 0.9:
 
 ---
 
-## 9. Plan-and-Execute vs ReAct 选型矩阵
-
+## Plan-and-Execute vs ReAct 选型矩阵
 | 任务特征 | ReAct | Plan-and-Execute |
 |---------|-------|------------------|
 | 步骤数 ≤ 5 + 路径未知 | ✅ | ⚠️ |
@@ -338,8 +329,7 @@ if query_similarity(new_query, past_query) > 0.9:
 
 ---
 
-## 10. 一句话总结
-
+## 一句话总结
 > **Plan-and-Execute = 一次性规划 + 逐步执行 + 失败 RePlan/Repair——比 ReAct 更可控，适合 5-20 步复杂任务。三大重规划机制（RePlan / Adaptive / Plan Repair）从粗到细，工业级方案是 Plan Repair + 分层规划。**
 
 ---

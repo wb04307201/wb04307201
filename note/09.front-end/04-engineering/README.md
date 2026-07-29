@@ -15,8 +15,7 @@ module:
 
 ---
 
-## 1. 模块导航
-
+## 模块导航
 | 主题 | 状态 | 说明 |
 |------|------|------|
 | Vite 5+ | ✓ 已有 | [vite/](vite/) — 构建工具首选 / HMR / 插件体系 |
@@ -33,8 +32,7 @@ module:
 
 ---
 
-## 2. 知识脉络
-
+## 知识脉络
 ```mermaid
 flowchart LR
     A[代码] --> B[构建工具]
@@ -47,8 +45,7 @@ flowchart LR
 
 ---
 
-## 3. 速查要点
-
+## 速查要点
 - **构建工具选型**:新项目直接 Vite;Webpack 5 迁移用 Rspack;Next.js 15+ 用 Turbopack
 - **包管理选型**:monorepo 首选 pnpm(硬链接 + 工作区);单仓 npm 即可
 - **Monorepo 工具**:轻量用 pnpm workspace;中量用 Turborepo;复杂用 Nx
@@ -56,8 +53,7 @@ flowchart LR
 
 ---
 
-## 4. 选型建议
-
+## 选型建议
 ```mermaid
 flowchart TD
     A[构建工具选型] --> B{项目类型?}
@@ -69,8 +65,7 @@ flowchart TD
 
 ---
 
-## 5. 最佳实践
-
+## 最佳实践
 - 构建工具新项目直接 Vite,Webpack 迁移用 Rspack 平滑过渡
 - Monorepo 首选 pnpm workspaces + Turborepo,避免 npm workspaces 的兼容陷阱
 - Lint 用 ESLint 9 flat config + Prettier + lint-staged,提交前自动格式化
@@ -79,8 +74,7 @@ flowchart TD
 
 ---
 
-## 6. 常见面试题
-
+## 常见面试题
 - Vite 为什么比 Webpack 快?ESM + esbuild 预构建的原理
 - pnpm workspace 与 npm / yarn workspace 的关键差异(硬链接 / 幽灵依赖)
 - Turborepo 的增量构建与远端缓存如何加速 CI?
@@ -89,8 +83,7 @@ flowchart TD
 
 ---
 
-## 7. 与其他模块的关系
-
+## 与其他模块的关系
 - **上游**:[02-language](../02-language/) / [03-frameworks](../03-frameworks/)
 - **下游**:支撑所有前端项目的构建 / 测试 / CI
 - **横向**:[05-architecture](../05-architecture/) 关注应用层架构,[04 工程化] 关注工程基础设施

@@ -1,7 +1,6 @@
-<!--
-module:
+<!--module:
   parent: ai
-  slug: ai/research/alignment
+  slug: 11.ai/07-research/alignment
   type: index
   category: 主模块子文章
   summary: LLM 对齐专题（RLHF / DPO / PPO / Reward Model / Constitutional AI）

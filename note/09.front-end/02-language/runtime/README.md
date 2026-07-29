@@ -16,8 +16,7 @@ JavaScript 不再只是"浏览器的语言"。2026 年，Node.js / Deno / Bun �
 ---
 ---
 
-## 1. 三大运行时概览
-
+## 三大运行时概览
 | 维度 | Node.js | Deno | Bun |
 |------|---------|------|-----|
 | **首发** | 2009 | 2018（1.0 在 2021） | 2022 |
@@ -30,8 +29,7 @@ JavaScript 不再只是"浏览器的语言"。2026 年，Node.js / Deno / Bun �
 
 ---
 
-## 2. Node.js：行业事实标准
-
+## Node.js：行业事实标准
 ### 优势
 - ✅ 生态最完整（200万+ npm 包）
 - ✅ 文档最全、社区最大
@@ -52,8 +50,7 @@ JavaScript 不再只是"浏览器的语言"。2026 年，Node.js / Deno / Bun �
 
 ---
 
-## 3. Deno：Ryan Dahl 的"修正版"
-
+## Deno：Ryan Dahl 的"修正版"
 ### 优势
 - ✅ **原生 TypeScript**：无需 `ts-node`，直接 `deno run app.ts`
 - ✅ **安全沙箱**：默认无权限，需显式 `--allow-read` / `--allow-net`
@@ -74,8 +71,7 @@ JavaScript 不再只是"浏览器的语言"。2026 年，Node.js / Deno / Bun �
 
 ---
 
-## 4. Bun：极速新贵
-
+## Bun：极速新贵
 ### 优势
 - ✅ **启动快 4 倍**：JavaScriptCore + Zig 优化
 - ✅ **安装快 25 倍**：全局缓存 + 硬链接
@@ -96,8 +92,7 @@ JavaScript 不再只是"浏览器的语言"。2026 年，Node.js / Deno / Bun �
 
 ---
 
-## 5. 性能对比
-
+## 性能对比
 ### HTTP 吞吐量
 
 | 运行时 | 请求/秒 | 相对 Node |
@@ -124,8 +119,7 @@ JavaScript 不再只是"浏览器的语言"。2026 年，Node.js / Deno / Bun �
 
 ---
 
-## 6. Edge Runtime：运行时的第四形态
-
+## Edge Runtime：运行时的第四形态
 **Edge Runtime** = 轻量级 V8 环境，运行在 CDN 边缘节点。
 
 | 平台 | 运行时 | 限制 |
@@ -148,8 +142,7 @@ JavaScript 不再只是"浏览器的语言"。2026 年，Node.js / Deno / Bun �
 
 ---
 
-## 7. Web Platform APIs：运行时的未来
-
+## Web Platform APIs：运行时的未来
 2026 年，三大运行时都在**向 Web 标准靠拢**：
 
 | API | Node | Deno | Bun |
@@ -166,8 +159,7 @@ JavaScript 不再只是"浏览器的语言"。2026 年，Node.js / Deno / Bun �
 
 ---
 
-## 8. 选型决策
-
+## 选型决策
 | 场景 | 推荐运行时 | 理由 |
 |------|----------|------|
 | **企业生产** | Node.js LTS | 生态 + 稳定性 |
@@ -179,8 +171,7 @@ JavaScript 不再只是"浏览器的语言"。2026 年，Node.js / Deno / Bun �
 
 ---
 
-## 9. 跨运行时开发建议
-
+## 跨运行时开发建议
 1. **优先使用 Web Platform APIs**（fetch / URL / Crypto 等）
 2. **避免 Node 特有 API**（`fs` / `path` / `child_process`），用 `node:fs/promises` 显式导入
 3. **用 `import.meta`** 替代 `__dirname` / `__filename`
@@ -189,14 +180,12 @@ JavaScript 不再只是"浏览器的语言"。2026 年，Node.js / Deno / Bun �
 
 ---
 
-## 10. 学习路径
-
+## 学习路径
 1. **入门**（3 天）：Node.js 基础（fs / http / npm）
 2. **进阶**（1 周）：Bun / Deno 上手；Web APIs 在运行时的应用
 3. **高级**（持续）：Edge Runtime；跨运行时库开发；性能调优
 
-## 11. 交叉引用
-
+## 交叉引用
 - [`02-language/`](../) — 语言基础
 - [`05-architecture/bff/`](../../05-architecture/bff/) — BFF 通常跑在 Node / Bun
 - [`09-frontend-and-ai/ai-sdk/`](../../09-frontend-and-ai/ai-sdk/) — AI SDK 在各运行时的支持

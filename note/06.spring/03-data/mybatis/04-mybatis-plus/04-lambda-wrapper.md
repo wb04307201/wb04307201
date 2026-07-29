@@ -2,8 +2,7 @@
 
 > 来源:整合自原 `08.mybatis/mybatis-plus/README.md` L153-162(§三.3 Lambda 构造器)
 
-## 1. 核心优势
-
+## 核心优势
 使用 Lambda 表达式可以避免字段名硬编码，**编译期类型安全**，重构时 IDE 自动追踪。
 
 | 构造器类型 | 用途 | 对应操作 |
@@ -12,8 +11,7 @@
 | `LambdaUpdateWrapper` | 更新条件 | UPDATE / SET / WHERE |
 | `LambdaChainWrapper` | 链式调用 | 无需注入 Mapper |
 
-## 2. 查询示例
-
+## 查询示例
 ```java
 // 基础查询：name = 'Tom' AND age > 20
 LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<User>()
@@ -35,8 +33,7 @@ LambdaQueryWrapper<User> dynamic = new LambdaQueryWrapper<User>()
     .ge(User::getAge, 18);
 ```
 
-## 3. 更新示例
-
+## 更新示例
 ```java
 // LambdaUpdateWrapper：SET name = 'NewName' WHERE id = 1
 LambdaUpdateWrapper<User> updateWrapper = new LambdaUpdateWrapper<User>()
@@ -52,8 +49,7 @@ userMapper.update(user, new LambdaUpdateWrapper<User>()
     .eq(User::getId, 1));
 ```
 
-## 4. 常用条件方法速查
-
+## 常用条件方法速查
 | 方法 | SQL | 示例 |
 |------|-----|------|
 | `eq` | `= value` | `.eq(User::getStatus, 1)` |
@@ -65,8 +61,7 @@ userMapper.update(user, new LambdaUpdateWrapper<User>()
 | `orderByDesc` | `ORDER BY ... DESC` | `.orderByDesc(User::getCreateTime)` |
 | `select` | 指定列 | `.select(User::getId, User::getName)` |
 
-## 5. 注意事项
-
+## 注意事项
 - **Lambda 引用的是 getter 方法**，不是字段名；确保 Lombok `@Data` 已生成 getter
 - **`last()` 方法有 SQL 注入风险**，仅用于固定 LIMIT 等场景，不要拼接用户输入
 - **嵌套条件**用 `and(w -> w...)` 或 `or(w -> w...)` 实现括号包裹
