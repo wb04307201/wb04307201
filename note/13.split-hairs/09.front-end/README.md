@@ -20,7 +20,7 @@ question:
 
 ---
 
-## 文章清单（共 28 题，find 校对 2026-07-30）
+## 文章清单（共 29 题，find 校对 2026-07-30）
 
 ### JavaScript 核心
 | 主题 | 难度 | 核心问题 |
@@ -73,6 +73,7 @@ question:
 | 主题 | 难度 | 核心问题 |
 |------|------|---------|
 | [XSS / CSRF 攻击防御](xss-csrf/) | ⭐⭐⭐⭐ | 反射型 / 存储型 / Token / SameSite Cookie |
+| **🆕 [用户登录 Token 存储安全](token-storage-security/)** | ⭐⭐⭐⭐ | localStorage / sessionStorage / HttpOnly Cookie + 双 Token 方案 |
 
 ### 工具方法
 | 主题 | 难度 | 核心问题 |

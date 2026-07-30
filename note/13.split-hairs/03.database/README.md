@@ -20,7 +20,7 @@ question:
 
 ---
 
-## 文章清单（共 28 题，find 校对 2026-07-30）
+## 文章清单（共 31 题，find 校对 2026-07-30）
 
 ### MySQL 基础
 | 主题 | 难度 | 核心问题 |
@@ -57,6 +57,7 @@ question:
 |------|------|---------|
 | [分表扩容策略](sharding-resize/) | ⭐⭐⭐⭐⭐ | 翻倍扩容 + 双写过渡 + 灰度切换 + 回滚方案 |
 | **🆕 [分库分表分布式事务](sharding-distributed-tx/)** | ⭐⭐⭐⭐⭐ | 分库后跨库事务 4 大方案 + Seata + 本地消息表 |
+| **🆕 [分库分表分页查询](sharding-pagination/)** | ⭐⭐⭐⭐ | 全局视野法 / ES / 冗余汇总 + 4 大陷阱 |
 | [垂直分表判定规范](vertical-table-split/) | ⭐⭐⭐⭐ | 30 字段拆不拆 + 5 指标判定 + Buffer Pool 原理 + 反模式 |
 
 ### Redis
@@ -70,6 +71,7 @@ question:
 | [Redis 过期 Key 实时释放内存吗](redis-expiry-deletion/) | ⭐⭐ | 惰性删除 + 定期删除 + UNLINK |
 | [Redis 集群](redis-cluster/) | ⭐⭐⭐⭐ | Sentinel vs Cluster |
 | [Redis 大 Key 问题](redis-big-key/) | ⭐⭐⭐⭐ | 发现与治理方案 |
+| **🆕 [Redis 分布式锁 3 大坑](redis-distributed-lock/)** | ⭐⭐⭐⭐⭐ | 锁提前过期 / 误删他人锁 / 不可重入 + Redisson 看门狗 |
 
 ---
 
