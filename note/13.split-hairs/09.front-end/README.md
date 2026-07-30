@@ -16,7 +16,7 @@ question:
 
 # 前端咬文嚼字
 
-> 前端高频面试题与细节深挖，对齐主模块 [`09.front-end`](../../09.front-end/)。26 篇真题覆盖 JS 核心 / HTTP / CSS / 浏览器机制 / 工具测试 / 框架 / 安全 / Promise 8 大方向（find 校对 2026-07-19）。
+> 前端高频面试题与细节深挖，对齐主模块 [`09.front-end`](../../09.front-end/)。27 篇真题覆盖 JS 核心 / HTTP / CSS / 浏览器机制 / 工具测试 / 框架 / 安全 / 工程迁移 / Promise 9 大方向（find 校对 2026-07-30）。
 
 ---
 
@@ -30,6 +30,7 @@ question:
 | [原型链与继承](prototype-chain/) | ⭐⭐⭐⭐ | `__proto__` vs `prototype` / 继承方案 |
 | [this 绑定规则](this-binding/) | ⭐⭐⭐⭐ | 默认 / 隐式 / 显式 / new / 箭头函数 |
 | [防抖 + 节流手写](debounce-throttle/) | ⭐⭐⭐⭐ | debounce / throttle 实现与应用场景 |
+| [防抖流式场景不合适](debounce-streaming/) | ⭐⭐⭐⭐ | AI/SSE 流式输出中的 3 大问题 + 正确方案 |
 
 ### HTTP 与网络
 | 主题 | 难度 | 核心问题 |
@@ -77,6 +78,11 @@ question:
 | 主题 | 难度 | 核心问题 |
 |------|------|---------|
 | [深拷贝实现](deep-copy/) | ⭐⭐⭐⭐ | 递归 / 循环引用 / 特殊类型处理 |
+
+### 工程迁移
+| 主题 | 难度 | 核心问题 |
+|------|------|---------|
+| [Webpack → Vite/Rspack 迁移坑](webpack-vite-migration/) | ⭐⭐⭐⭐ | CJS vs ESM / Tree-Shaking 差异 / 环境变量迁移 |
 
 ### Promise 专题
 | 主题 | 难度 | 核心问题 |
