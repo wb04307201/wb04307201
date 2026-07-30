@@ -482,6 +482,32 @@ PYEOF
   - 如 peer 已 commit + working tree 还有未提交修改 → 询问用户偏好（reset 重写 vs polish commit）
 - **不接受 floating peer 报告**：peer 报告后用 `git log --oneline` 独立核对才声明 final pass
 
+### Step 6.7: 并行 subagent 共享文件协调（2026-07-30 新增）
+
+> 🆕 **2026-07-30 教训**（Batch 3）：3 个 subagent 并行时，#5 和 #7 共享同一个父 README（`13.split-hairs/09.front-end/README.md`）。#7 subagent 完成了 feat commit 但**反向链变更未 commit**（留在 working tree），且题数没有更新到正确值（27→28）。
+
+**规则**：
+1. **识别共享文件**：派发前检查哪些父 README 会被多个 subagent 修改
+2. **共享文件由 orchestrator 统一更新**：subagent prompt 中明确要求"**不要修改 `<父 README 路径>`**，该文件由 orchestrator 统一更新"
+3. **Orchestrator 收尾 commit**：所有 subagent 完成后，orchestrator 检查 `git status --short`，将未提交的变更（反向链 + 题数修正）统一 commit
+
+**Subagent prompt 模板**（并行派发时）：
+```
+**重要**：以下文件由 orchestrator 统一更新，你**不要修改**：
+- `note/13.split-hairs/<module>/README.md`（父 README 目录表）
+- 任何其他 subagent 可能修改的文件
+
+你只需负责：
+1. 创建新 README 文件
+2. 给**非共享**的兄弟 README 添加反向链
+3. Commit 上述变更
+```
+
+**Orchestrator 收尾检查清单**：
+- [ ] `git status --short` 检查是否有未提交变更
+- [ ] 父 README 题数是否与实际目录数一致
+- [ ] 所有反向链是否已 commit（不是只留在 working tree）
+
 ### Step 7: 验证 + 自检（必做）
 
 **自检清单**：
@@ -781,6 +807,40 @@ done
 - 已沉淀 2 个双层主题 + 还有第 3 个待处理 → 建议分批
 - 每个主题涉及跨模块链接（路径验证成本高）→ 建议分批
 - 需要更新多个父 README（每个 +0.5 复杂度）→ 建议分批
+
+### ❌ Mistake 18：并行 subagent 共享父 README 导致题数漂移（2026-07-30 历史教训）
+
+**症状**：多个 subagent 并行工作时，各自更新**同一个父 README** 的题数计数器。后完成的 subagent 看不到先完成的 subagent 的修改，导致题数不一致（如两个新文件已添加，但题数只 +1）。
+
+**历史案例**（2026-07-30 Batch 3）：
+- 3 个 subagent 并行：#5 debounce-streaming / #6 async-vs-multithread / #7 webpack-vite-migration
+- #5 和 #7 都更新 `note/13.split-hairs/09.front-end/README.md`
+- #5 subagent 更新题数 26→27 ✅
+- #7 subagent 添加了条目但**题数仍是 27**（应为 28）
+- Orchestrator 收尾时发现并修正 27→28
+
+**根因**：并行 subagent 基于"旧版本"的父 README 工作，后完成的 subagent 的 `git diff` 看不到先完成的 subagent 已 commit 的修改。
+
+**修复（orchestrator 必做）**：
+1. **父 README 题数更新由 orchestrator 统一收尾**，不在 subagent prompt 中要求
+2. **subagent 只负责**：创建新文件 + 添加反向链到**非共享文件**（兄弟 README、主模块子文章）
+3. **Orchestrator 收尾步骤**：
+   ```bash
+   # 1. 统计实际目录数
+   ACTUAL_COUNT=$(ls note/13.split-hairs/<module>/ | grep -v README | wc -l)
+   # 2. 对比父 README 中的题数
+   DECLARED_COUNT=$(grep -oP '共 \K\d+' note/13.split-hairs/<module>/README.md)
+   # 3. 如不一致，orchestrator 修正 + commit
+   if [ "$ACTUAL_COUNT" != "$DECLARED_COUNT" ]; then
+     # sed 替换题数
+     git commit -m "fix(note): <module> - 修正题数 ${DECLARED_COUNT}→${ACTUAL_COUNT}"
+   fi
+   ```
+4. **或者**：如果并行 subagent 涉及共享父 README，**改为串行执行**（#5 完成 → #7 开始）
+
+**检测信号**：
+- `ls note/<module>/ | grep -v README | wc -l` ≠ 父 README 中"共 N 题"
+- `grep -c "^| \[" note/<module>/README.md` ≠ 父 README 中"共 N 题"
 
 ## Output Format
 
