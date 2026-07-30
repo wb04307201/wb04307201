@@ -104,5 +104,6 @@ flowchart TD
 ## 反向链
 
 - [13-frontend-renovation](../../12.story/13-frontend-renovation.md)
+- [Webpack → Vite/Rspack 迁移坑](../../../13.split-hairs/09.front-end/webpack-vite-migration/README.md) — 迁移实战坑（CJS vs ESM / Tree-Shaking）
 
 ← [返回前端工程总览](../README.md)

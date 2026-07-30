@@ -216,6 +216,7 @@ interface ImportMeta {
 - [`04-engineering/`](../) — 工程化总览
 - [`04-engineering/monorepo-practice/`](../monorepo-practice/) — Vite 在 Monorepo 的应用
 - [`06-performance/`](../../06-performance/) — 构建与性能
+- [Webpack → Vite/Rspack 迁移坑](../../../13.split-hairs/09.front-end/webpack-vite-migration/README.md) — 迁移实战坑（CJS vs ESM / Tree-Shaking）
 
 ## 可访问性（a11y）
 Vite 构建产物对可访问性的影响：
