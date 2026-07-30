@@ -302,6 +302,7 @@ public class HashMapResizeBenchmark {
 ## 六、交叉引用
 
 - **延伸学习**：[ConcurrentHashMap](../concurrent-hashmap/README.md) - 高并发最佳实践
+- **关联知识**：[HashMap 线程不安全](../hashmap-thread-unsafe/) — 3 大不安全表现 + 源码分析 + 4 大解决方案
 - **性能优化**：[JVM调优](../../../01.java/jvm/tuning.md) - 减少扩容引发的GC
 - **关联知识**：[Atomic替代synchronized](../replace-synchronized-with-atomic/README.md)
 

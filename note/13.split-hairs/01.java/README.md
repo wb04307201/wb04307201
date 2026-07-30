@@ -30,6 +30,7 @@ question:
 | [ArrayList 去重](arrayList-distinct/) | ⭐⭐ | ArrayList 如何去重？LinkedHashSet vs Stream |
 | [HashSet 替代 LinkedList 查找](replace-linkedlist-with-hashset/) | ⭐⭐ | 什么时候该换数据结构？ |
 | [HashMap 扩容](hashmap-resizing/) | ⭐⭐⭐⭐ | 1GB 的 HashMap 扩容会发生什么？ |
+| [HashMap 线程不安全](hashmap-thread-unsafe/) | ⭐⭐⭐⭐ | 3 大不安全表现 + 源码分析 + 4 大解决方案 |
 | [快速插入大量数据到 HashMap](large-data-into-hashmap/) | ⭐⭐⭐ | 初始化容量 + 负载因子的权衡 |
 | [快速给 Map 排序](sort-map/) | ⭐⭐ | TreeMap vs LinkedHashMap 选型 |
 
