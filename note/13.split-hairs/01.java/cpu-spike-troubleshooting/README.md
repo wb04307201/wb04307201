@@ -328,6 +328,7 @@ done
 - [JVM 内存区域](../jvm-memory/) — JVM 运行时数据区详解
 - [JVM 内存配置踩坑](../jvm-memory-pitfall/) — -Xmx 超过系统可用内存导致启动失败
 - [GC 算法与收集器](../gc-algorithms/) — GC 算法与各类收集器对比
+- [Full GC 排查](../full-gc-troubleshooting/) — 线上频繁 Full GC 排查全链路
 - [类加载机制](../class-loading/) — 类加载过程与双亲委派
 
 ## 相关章节
