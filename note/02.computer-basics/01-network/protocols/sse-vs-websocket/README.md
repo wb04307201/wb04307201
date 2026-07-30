@@ -269,4 +269,6 @@ data: {"text":"你好"} ← 数据（必填，可多行）
 
 > 📅 2026-07-09 · 网络协议 · SSE vs WebSocket · 深度对比
 
+- 实战落地：[消息已读未读功能设计](../../../../../13.split-hairs/04.system-design/message-read-status/README.md) — 推送协议在 IM 已读未读场景的实际落地
+
 ← [返回: 网络协议](../README.md)

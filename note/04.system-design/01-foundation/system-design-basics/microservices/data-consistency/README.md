@@ -453,5 +453,6 @@ class Order:
 - [CAP 定理](../../../../02-distributed/cap-and-base/cap/README.md) — 一致性理论
 - [服务间通信](../service-communication/README.md) — 异步通信与事件驱动
 - [演进与组织](../migration-and-organization/README.md) — 从单体迁移到分布式
+- 实战落地：[消息已读未读功能设计](../../../../../13.split-hairs/04.system-design/message-read-status/README.md) — 最终一致性在 IM 已读未读场景的实际落地
 
 ← [返回微服务](../README.md)
