@@ -533,5 +533,6 @@ usersFuture
 ## 反向链
 
 - [sequential-execution](../thread-basics/sequential-execution.md)
+- [异步 vs 多线程](../../../13.split-hairs/01.java/async-vs-multithread/README.md) — 概念辨析：异步 ≠ 多线程
 
 ← [返回 Java 并发编程专题导航](../README.md)

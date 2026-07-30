@@ -49,6 +49,7 @@ question:
 | [3 线程按顺序执行](thread-sequential-execution/) | ⭐⭐⭐ | T1→T2→T3 的 3 语义 + 8 方案对比 + Top 3 推荐 |
 | **🆕 [虚拟线程](virtual-threads/)** | ⭐⭐⭐⭐ | carrier thread / mount-unmount / pinning / ScopedValue |
 | **🆕 [Excel 导出 OOM](excel-export-oom/)** | ⭐⭐⭐⭐ | 3 大根因 + 流式写入 + 分批查询 + 多线程分片 + 内存改善原理 |
+| **🆕 [异步 vs 多线程](async-vs-multithread/)** | ⭐⭐⭐ | 执行顺序 vs 执行主体 + 4 种组合模式 + 4 大误区 + 30 秒话术 |
 
 ### JVM 与类加载
 | 主题 | 难度 | 核心问题 |
