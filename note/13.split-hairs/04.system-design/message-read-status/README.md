@@ -315,10 +315,10 @@ pipe.execute()  # 1 次网络往返
 
 ## 八、相关章节
 
-- 同栏目：[`SSE vs WebSocket 面试题`](../../../../02.computer-basics/protocols/sse-vs-websocket/README.md) — 推送协议选型依据
+- 同栏目：[`SSE vs WebSocket 面试题`](../../../../02.computer-basics/01-network/protocols/sse-vs-websocket/README.md) — 推送协议选型依据
 - 同栏目：[`缓存与数据库双写一致性`](../cache-consistency/README.md) — 已读状态异步落库的一致性保障
 - 同栏目：[`幂等性设计 6 大方案`](../idempotency/README.md) — 已读操作重复上报的幂等处理
-- 主模块：[`数据一致性`](../../../04.system-design/01-foundation/system-design-basics/microservices/data-consistency/README.md) — 最终一致性在 IM 场景的落地
+- 主模块：[`数据一致性`](../../../../04.system-design/01-foundation/system-design-basics/microservices/data-consistency/README.md) — 最终一致性在 IM 场景的落地
 - 主模块：[`网络协议`](../../../02.computer-basics/01-network/protocols/sse-vs-websocket/README.md) — WebSocket/SSE 协议层对比
 
 ---
