@@ -211,6 +211,7 @@ for each binlogEvent:
 - 同模块：[`数据迁移与同步`](../../../03.database/10-data-migration/README.md) — DataX / Canal / Flink CDC 迁移工具链
 - 同栏目：[`大事务的危害与拆分`](../mysql-large-transaction/README.md) — 迁移过程中的事务控制
 - 同栏目：[`MySQL 主从复制延迟`](../replication-lag/README.md) — 增量同步延迟问题
+- 同栏目：[**🆕 分库分表分布式事务**](../sharding-distributed-tx/) — 分库后跨库事务 4 大方案 + Seata + 本地消息表
 - 相关：[`分布式 ID 生成方案`](../../04.system-design/distributed-id/README.md) — 分表后的全局唯一 ID
 
 ---
