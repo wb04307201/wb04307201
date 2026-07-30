@@ -155,6 +155,7 @@ SELECT * FROM user WHERE id IN (
 - 同栏目：[`tuning`](../mysql-tuning/README.md) — SQL 调优全流程
 - 同栏目：[`index-failure`](../mysql-index-failure/README.md) — 索引失效的 10 种场景
 - 主模块：[`03.database/02-sql`](../../../03.database/02-sql/README.md) — SQL 优化原则
+- 同栏目：[分库分表分页查询](../sharding-pagination/) — 分库分表后分页 4 大方案 + 生产推荐
 
 ---
 

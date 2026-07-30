@@ -186,6 +186,7 @@ Seata 是阿里开源的分布式事务框架，支持 4 种模式：
 
 - 通用方案：[分布式事务](../../04.system-design/distributed-transaction/) — 微服务视角的分布式事务 4 方案
 - 同模块：[分表扩容策略](../sharding-resize/) — 分库分表 + 在线 resharding 方案
+- 同模块：[分库分表分页查询](../sharding-pagination/) — 分库分表后分页 4 大方案 + 生产推荐
 - 跨模块：[微服务数据一致性](../../../04.system-design/01-foundation/system-design-basics/microservices/data-consistency/) — 微服务间数据一致性保障
 
 ## 相关章节
