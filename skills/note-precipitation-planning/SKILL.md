@@ -508,6 +508,39 @@ PYEOF
 - [ ] 父 README 题数是否与实际目录数一致
 - [ ] 所有反向链是否已 commit（不是只留在 working tree）
 
+### Step 6.8: Subagent 父 README 更新职责（2026-07-30 新增）
+
+> 🆕 **2026-07-30 教训**（消息已读未读面试题）：subagent 创建了新文件但没有更新父 README 的题数和条目。父 README 显示"共 20 题"，实际应该是 23 题（包含历史遗留的 media-upload、砍一刀算法等）。
+
+**规则**：
+1. **单个 subagent 也必须更新父 README**：创建新文件后，必须同时更新父 README 的题数计数器和条目列表
+2. **更新前验证准确性**：先统计实际目录数，再更新题数（避免"旧账新账一起算"）
+3. **Orchestrator 最终验证**：所有 subagent 完成后，orchestrator 必须验证父 README 的准确性
+
+**Subagent prompt 模板**（单个任务）：
+```
+**父 README 更新职责**：
+1. 创建新 README 文件后，更新父 README：
+   - 题数计数器：`## 文章清单（共 N 题，find 校对 YYYY-MM-DD）`
+   - 添加新条目到对应分类表格
+2. 更新前验证：
+   ```bash
+   # 统计实际目录数
+   ACTUAL_COUNT=$(ls note/13.split-hairs/<module>/ | grep -v README | wc -l)
+   # 对比父 README 中的题数
+   DECLARED_COUNT=$(grep -oP '共 \K\d+' note/13.split-hairs/<module>/README.md)
+   # 如果不一致，先修正历史遗留问题
+   ```
+3. 添加新条目：
+   - 找到合适的分类（如"业务系统设计"）
+   - 添加一行：`| [新文件标题](新目录名/) | ⭐⭐⭐⭐ | 核心问题描述 |`
+```
+
+**Orchestrator 最终验证清单**：
+- [ ] 父 README 题数 = 实际目录数
+- [ ] 父 README 条目列表完整（无遗漏）
+- [ ] 所有新文件都已添加到父 README
+
 ### Step 7: 验证 + 自检（必做）
 
 **自检清单**：
@@ -841,6 +874,70 @@ done
 **检测信号**：
 - `ls note/<module>/ | grep -v README | wc -l` ≠ 父 README 中"共 N 题"
 - `grep -c "^| \[" note/<module>/README.md` ≠ 父 README 中"共 N 题"
+
+### ❌ Mistake 19：父 README 历史遗留问题（2026-07-30 新增）
+
+**症状**：执行沉淀任务时，发现父 README 的题数计数器和实际目录数不一致，且缺少历史条目。执行后"旧账新账一起算"，导致最终状态混乱。
+
+**历史案例**（2026-07-30 消息已读未读面试题）：
+- 父 README 显示"共 20 题"
+- 实际目录数：23 个（包含 media-upload、砍一刀算法等历史遗留）
+- 缺少 3 个条目：media-upload、砍一刀算法、message-read-status
+- Subagent 只添加了 message-read-status，没有发现历史遗留问题
+- Orchestrator 收尾时发现并统一修正
+
+**根因**：subagent 没有在执行前验证父 README 的准确性，只关注"新增"而忽略"存量"。
+
+**修复（执行前必做）**：
+1. **Step 1 现状盘点必须包含父 README 验证**：
+   ```bash
+   # 1. 统计实际目录数
+   ACTUAL_COUNT=$(ls note/13.split-hairs/<module>/ | grep -v README | wc -l)
+   
+   # 2. 读取父 README 声明的题数
+   DECLARED_COUNT=$(grep -oP '共 \K\d+' note/13.split-hairs/<module>/README.md)
+   
+   # 3. 对比并记录差异
+   if [ "$ACTUAL_COUNT" != "$DECLARED_COUNT" ]; then
+     echo "⚠️  父 README 题数不一致：声明 $DECLARED_COUNT，实际 $ACTUAL_COUNT"
+     echo "   历史遗留问题：$(($ACTUAL_COUNT - $DECLARED_COUNT)) 个条目缺失"
+   fi
+   
+   # 4. 列出实际目录 vs 父 README 条目，找出缺失项
+   ls note/13.split-hairs/<module>/ | grep -v README | sort > /tmp/actual.txt
+   grep -oP '\[.*?\]\(([^)]+)/\)' note/13.split-hairs/<module>/README.md | \
+     grep -oP '(?<=\()[^)]+(?=/)' | sort > /tmp/declared.txt
+   comm -23 /tmp/actual.txt /tmp/declared.txt  # 实际有但父 README 没有的
+   ```
+
+2. **Orchestrator 必须在 Step 6 前明确告知 subagent**：
+   - 如果发现历史遗留问题，subagent 应该一并修正（不仅是新增）
+   - 或者 orchestrator 在收尾时统一处理
+
+3. **Subagent prompt 模板**：
+   ```
+   **执行前验证**：
+   1. 统计实际目录数：ACTUAL_COUNT
+   2. 读取父 README 题数：DECLARED_COUNT
+   3. 如果不一致，列出缺失条目并一并添加
+   
+   **示例输出**：
+   - 实际目录数：23
+   - 父 README 题数：20
+   - 缺失条目：media-upload、砍一刀算法
+   - 本次新增：message-read-status
+   - 最终题数：23
+   ```
+
+**检测信号**：
+- `ls note/<module>/ | grep -v README | wc -l` ≠ 父 README 中"共 N 题"
+- 缺失条目数 = 实际目录数 - 父 README 题数
+
+**预防措施**：
+- 在 Step 1 现状盘点中加入"父 README 准确性验证"步骤
+- 在 Step 7 验证中加入"父 README 完整性检查"
+
+---
 
 ## Output Format
 
