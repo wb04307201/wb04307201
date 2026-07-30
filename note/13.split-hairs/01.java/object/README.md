@@ -196,5 +196,6 @@ Integer[] objects = new Integer[1_000_000];
 
 - 深度阅读：[`01.java/核心概念`](../../../01.java/concepts/README.md) — 包装类、泛型、类型系统
 - 相关：[`13.split-hairs/integer-cache`](../integer-cache/README.md) — Integer 缓存（同类考点）
+- 相关：[`13.split-hairs/interface-vs-abstract`](../interface-vs-abstract/) — 6 维对比 + 设计哲学 + 选择原则
 
 ← [返回: 咬文嚼字 · object](../README.md)

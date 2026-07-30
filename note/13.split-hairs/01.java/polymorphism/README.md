@@ -128,6 +128,7 @@ question:
 
 - 主模块深度链：[01.java/concepts/polymorphism](../../../01.java/concepts/polymorphism/README.md) — 多态专题（重载 vs 重写 + 编译时 vs 运行时分派 + vtable + default + 协变返回）
 - 兄弟面试题：
+  - [interface-vs-abstract](../interface-vs-abstract/) — 6 维对比 + 设计哲学 + 选择原则
   - [object](../object/README.md) — 为什么需要 Integer / Double 包装类？
   - [reflection](../reflection/README.md) — Reflection API 使用与性能开销
   - [final-finally-finalize](../final-finally-finalize/README.md) — 三个关键字的区别与用法
