@@ -118,6 +118,51 @@ find note -name "*.md" | python -c "import sys,os; [print(l.strip()) for l in sy
    PYEOF
    ```
 
+### Phase 6 — 5 维评分（用户提的"过于简单"判定）
+
+> 🆕 **2026-08-10 新增**：当用户问"X 题是否过于简单"或"split-hairs 哪些该迁出"时，触发本阶段。在 Phase 1/2/5 之上做**内容质量评分**，与 E1-E6 格式完整性互补。
+
+**5 维度定义**（每维 0-2 分，总分 0-10）：
+
+| 维度 | 含义 |
+|------|------|
+| **D1 知识深度** | 源码级 + JVM/字节码 + 版本演进 |
+| **D2 知识广度** | 跨主模块联动 |
+| **D3 面试频次** | 真实面试出现频率 |
+| **D4 追问空间** | 面试官可追问几层 |
+| **D5 反直觉/陷阱** | 反直觉陷阱 / 生产事故案例 |
+
+**阈值**：≥7 保留 / 4-6 灰色 / ≤3 迁出
+
+**配套 E7-E11 评分表**：见 `references/leaf-quality.md` 末尾（E7-E11 节）。
+
+**4 个实战教训**（2026-08-10 总结）：
+
+1. **⚠️ 标题/文件名预筛 false positive 高达 70%**——`closure`、`prototype-chain`、`mysql-int-define`、`redis-eviction` 等看着基础但实际深度评分 8-10。**禁止仅基于文件名/行数判定**，必须 Read 全文。
+
+2. **frontmatter `difficulty` 标记偏乐观**——本次发现 19 处 frontmatter difficulty 与实际内容深度不一致（16 处低估 + 3 处高估）。Phase 1 应加 **frontmatter 一致性校准**（见 structural-checks.md Step 15）。
+
+3. **按子目录分批 dispatch 是高效模式**——避免单 agent 全库评估时的疲劳偏差（11.ai 体量大易被误杀）。按子目录 6-15 篇/agent，每个 agent 上下文清晰。
+
+4. **灰色地带处置模式**——4-6 分的题有 3 种处置：① 保留（内容够）② 加 frontmatter 校准（difficulty 反映实际深度）③ 拆分综述（多主题合并文件违反 split-hairs 单点深挖定位）④ 迁出（保留 30s/90s 话术作为"速记卡"追加主模块）
+
+### Phase 7 — 拆分检测（多主题错误合并）
+
+> 🆕 **2026-08-10 新增**：原 split-hairs `02.computer-basics/machine-learning/README.md` 是 6 大算法综述（违反 split-hairs 单点深挖定位），已拆分为 6 个 single-topic deep-dive。
+
+**判定标准**（任一为是 → 拆分）：
+
+| 信号 | 阈值 |
+|------|------|
+| 文件覆盖 ≥3 个互不相关子主题 | 30s 话术对应不同子主题 |
+| 标题过于宽泛 | "X 是什么"、"X 综述"、"X 全景"、"X 6 大" |
+| 每个子主题都合格 | 但合并后违反单点定位 |
+
+**拆分后**：
+- 每个子主题 → 独立 `<topic>/README.md` + frontmatter（question 类型）
+- 原综述文件删除（或保留为索引页，引用 6 个 deep-dive）
+- 父 README 目录表更新
+
 **验证通过标准**：
 - ✅ 每条 commit 有真实 hash（不是"已 commit" 文字）
 - ✅ `git status --short` 输出为空

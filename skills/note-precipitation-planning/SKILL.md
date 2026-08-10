@@ -24,6 +24,13 @@ description: Use when user asks where to add or update a topic in the project's 
 
 > 🆕 **Step 0 新增（2026-07-26 教训）**：用户输入可能是**多个主题**（如"大模型思维工程 5 个灵魂拷问"实际包含 5 个独立子主题）。Step 0 在盘点前先识别并拆分多主题，避免把 N 个独立主题错误合并成一个文件。历史案例：`production-thinking-5q` 把思维范式/成本控制/一致性/超时熔断/监控 5 个独立主题合成一个 419 行文件，后续不得不全部拆散。
 
+> 🆕 **Step 0 强化（2026-08-10 教训）**：**多主题拆分**判定信号——当用户输入主题**包含 ≥3 个互不相关子题**且每个子题都合格，**单文件综述违反 split-hairs 单点深挖定位**。判定 checklist：
+> - [ ] 文件覆盖 ≥3 个互不相关子主题？（"X 是什么"、"X 6 大"、"X 综述" 类标题）
+> - [ ] 每个子主题都有自己的 30s/90s 话术？（合并文件通常每节都有完整话术模板）
+> - [ ] 任一项 Yes → 拆分为多个 single-topic 文件，每个子题独立 frontmatter
+>
+> 历史案例：`split-hairs/02.computer-basics/machine-learning/README.md` 把 K-means / 决策树 / 梯度下降 / PCA / Boosting / 评估指标 6 大算法合成一个 126 行综述，每个算法都有完整 30s/90s 话术。已拆分为 6 个 single-topic deep-dive（每篇 146-293 行）。
+
 ## Quick Example
 
 ```

@@ -48,6 +48,10 @@
 - ✅ 18 个文件模板残留清零（2026-07-29：version/* 14 + concurrency/* 2 的 `N 个 JEP / 特性 / 章节的合集` 替换为实际描述 + sealed-classes/switch frontmatter summary 同步修复）
 - ✅ 数字一致性 8 处偏差修复（2026-07-29：13.split-hairs 总篇数 210→224 + 01.java 41→42 + 03.database 27→29 + 04.system-design 22→23 + 11.ai 46→56 + 6 处 H2 标题移除 `（N 篇）` 编号）
 - ✅ Step 9.1/9.5/11 阈值优化（2026-07-29：兄弟互链识别线性导航 / 重复表格阈值提高到 80%+4列 / 合并检测阈值提高到 >500+≥8H2+≥8反模式）
+- ✅ 13.split-hairs 5 维评分体检 + 11 篇灰色地带迁出（2026-08-10：split-hairs 81 篇候选评估，0 篇 ≤3 / 12 篇灰色 4-6 / 69 篇保留 7+；迁出 object/create-object/singleton-pattern/large-data-into-hashmap/record-t/arrayList-distinct/bfc/get-and-post/cap-theorem/spring-mvc-flow/llm-consistency 共 11 篇到主模块对应章节；30+ 处 broken link 同步修复）
+- ✅ 02.computer-basics/machine-learning 综述拆分（2026-08-10：6 大算法综述 → 6 个 single-topic deep-dive：k-means-convergence / decision-tree-variants / gradient-descent-variants / pca-math / boosting-comparison / classification-metrics）
+- ✅ 19 处 frontmatter difficulty 校准（2026-08-10：16 处低估升级 + 3 处高估降级，依据 5 维评分结果）
+- ✅ transformer 补 2024 推理工程演进（2026-08-10：新增 KV Cache / MQA-GQA-MLA / Flash Attention / PagedAttention 章节，103 行 → 213 行）
 
 > 报告每条发现时标注 `[NEW]`（本会话未触及）或 `[已修]`（本会话已修）。本清单会随时间增补。
 
@@ -892,6 +896,64 @@ else:
 print('=== 同系列格式一致性检查完成 ===')
 PYEOF
 ```
+
+### 15. frontmatter difficulty 校准（🆕 2026-08-10 新增）
+
+**历史教训**（2026-08-10 split-hairs 全库体检）：
+- 19 处 frontmatter difficulty 与实际内容深度不一致：16 处低估（如 `hashmap-resizing`、`volatile` 标 ⭐⭐⭐ 但实际评分 10 分）+ 3 处高估（如 `transformer` 标 ⭐⭐⭐⭐⭐ 但实际评分 7 分）
+- 根本原因：frontmatter 在写作时凭印象标记，未与实际内容深度对齐
+- 校准价值：cheatsheet 自动生成依赖 frontmatter，不一致会误导复习
+
+**原理**：split-hairs 的 frontmatter `difficulty`（⭐ 数量）应与 E7-E11 5 维评分总和对应：
+- ⭐⭐⭐⭐（4 星）= 评分 9-10（高频 + 高深）
+- ⭐⭐⭐（3 星）= 评分 7-8（高频或高深）
+- ⭐⭐（2 星）= 评分 5-6（灰色地带）
+- ⭐（1 星）= 评分 ≤4（迁出候选）
+
+**检查方法**：
+
+```bash
+# 15. frontmatter difficulty 校准
+echo "=== 15. frontmatter difficulty 校准 ==="
+python << 'PYEOF'
+import sys, os, re, glob
+if sys.platform == 'win32':
+    try: sys.stdout.reconfigure(encoding='utf-8')
+    except: pass
+
+issues = []
+for f in glob.glob('note/13.split-hairs/**/*.md', recursive=True):
+    if f.endswith('README.md') and os.path.dirname(f).count(os.sep) == 3:
+        continue
+    try:
+        with open(f, 'r', encoding='utf-8', errors='ignore') as fh:
+            content = fh.read()
+    except: continue
+    
+    if 'question:' not in content[:200]:
+        continue
+    
+    m = re.search(r'difficulty:\s*([⭐★]+)', content)
+    if not m:
+        issues.append((f, '未标注', 'missing'))
+        continue
+    
+    cur = m.group(1)
+    cur_count = cur.count('⭐') + cur.count('★')
+    if cur_count > 5:
+        issues.append((f, cur, f'异常：{cur_count} 星（最多 5 星）'))
+
+print(f'frontmatter difficulty 异常: {len(issues)} 处')
+for path, cur, reason in issues:
+    print(f'  ⚠ {path}: {cur} → {reason}')
+PYEOF
+```
+
+**校准配套步骤**：
+1. Phase 2 完成 5 维评分后，导出 KNOWN_SCORES（file → total 分）
+2. Phase 1.15 跑本检查，对比 frontmatter difficulty 与 KNOWN_SCORES
+3. 偏差 ≥1 星 → 列入 P2 校准清单
+4. 校准脚本示例：见 `note/.health-tmp/fix-frontmatter.py`（reusable）
 
 ### Commit 拆分模式（原 Step 5.5）
 
