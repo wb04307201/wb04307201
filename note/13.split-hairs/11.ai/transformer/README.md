@@ -169,7 +169,7 @@ GQA（省 KV 头数）× Flash Attention（省 attention 显存）× PagedAttent
 
 ---
 
-- 兄弟：[KV Cache 显存优化详解](../../../11.ai/08-llmops/llm-inference/README.md) / [PagedAttention 原理](../../../11.ai/08-llmops/llm-inference/README.md)
+- 兄弟：[KV Cache 显存优化详解](../../../13.split-hairs/11.ai/llm-inference/README.md) / [PagedAttention 原理](../../../13.split-hairs/11.ai/llm-inference/README.md)
 
 ---
 
@@ -204,7 +204,7 @@ GQA（省 KV 头数）× Flash Attention（省 attention 显存）× PagedAttent
 - 主模块：[Transformer 架构](../../../11.ai/01-fundamentals/transformer/README.md)
 - 关联：[Token 与计费](../../../11.ai/02-technology-stack/token-billing/README.md)
 - 应用：[RAG](../../../11.ai/08-llmops/01-rag-vs-finetuning/README.md)
-- **推理工程进阶**：[LLM 推理优化](../../../11.ai/08-llmops/llm-inference/README.md)
+- **推理工程进阶**：[LLM 推理优化](../../../13.split-hairs/11.ai/llm-inference/README.md)
 
 ---
 
