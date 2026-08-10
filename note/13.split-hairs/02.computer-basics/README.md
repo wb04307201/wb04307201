@@ -38,7 +38,13 @@ question:
 | 主题 | 难度 | 核心问题 |
 |------|------|---------|
 | **🆕 [贪心算法](greedy-algorithms/)** | ⭐⭐⭐⭐ | 贪心选择性质证明 + 交换论证 + 5 大经典题 + 5 大失效反模式 + 贪心 vs DP 决策 + 90 秒话术 |
-| [传统机器学习深挖](machine-learning/) | ⭐⭐⭐ | 6 大 ML 算法：K-means / 决策树 / 梯度下降 / PCA / 集成学习 / 评估指标 |
+| **🆕 传统机器学习 6 大算法**（已拆分为单点 deep-dive） |||
+| &nbsp;&nbsp;└ [K-means 收敛性 + K-means++](machine-learning/k-means-convergence/) | ⭐⭐⭐ | WCSS 收敛证明 + K-means++ D² 概率 + 4 大反直觉陷阱 |
+| &nbsp;&nbsp;└ [决策树 ID3/C4.5/CART](machine-learning/decision-tree-variants/) | ⭐⭐⭐ | 信息增益 vs 信息增益率 vs Gini 公式对比 + 5 大陷阱 |
+| &nbsp;&nbsp;└ [梯度下降 SGD/BGD/Adam/AdamW](machine-learning/gradient-descent-variants/) | ⭐⭐⭐ | Adam 完整公式 + AdamW 权重衰减解耦 + 5 大陷阱 + LLM 训练标配 |
+| &nbsp;&nbsp;└ [PCA 数学本质 + SVD](machine-learning/pca-math/) | ⭐⭐⭐⭐ | 拉格朗日推导 + 协方差特征向量 + 6 大陷阱（标准化/无监督/线性等） |
+| &nbsp;&nbsp;└ [XGBoost/LightGBM/CatBoost 横评](machine-learning/boosting-comparison/) | ⭐⭐⭐⭐ | XGBoost 二阶泰勒 + LightGBM 直方图/leaf-wise + CatBoost ordered boosting + 选型决策树 |
+| &nbsp;&nbsp;└ [分类评估指标 5 大金刚](machine-learning/classification-metrics/) | ⭐⭐⭐ | 准确率/精确率/召回率/F1/AUC + 不均衡陷阱 + 场景化选型 |
 
 ---
 
