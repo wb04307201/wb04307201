@@ -149,7 +149,7 @@ Q3: 调参时间？
 
 - **本目录**：[决策树](../decision-tree/README.md) / [SVM](../) / [AdaBoost](../)
 - **02 同级**：[K-means](../clustering/k-means/README.md) / [PCA](../dimensionality-reduction/pca/README.md)
-- **13.split-hairs**：[机器学习面试](../../../13.split-hairs/02.computer-basics/machine-learning/README.md)
+- **13.split-hairs**：[机器学习面试](../../../13.split-hairs/02.computer-basics/README.md)
 
 ---
 

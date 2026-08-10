@@ -215,7 +215,7 @@ Q5：贵司 SaaS 计费是按订阅还是按用量？
 
 | 章节 | 核心考点 | 频率 |
 |------|---------|------|
-| [cap-theorem](../cap-theorem/README.md) | CAP / BASE 一致性权衡 | ⭐⭐⭐⭐ |
+| [cap-theorem](../../../04.system-design/02-distributed/cap-and-base/README.md) | CAP / BASE 一致性权衡 | ⭐⭐⭐⭐ |
 | [circuit-breaker](../circuit-breaker/README.md) | 熔断降级与故障隔离 | ⭐⭐⭐⭐ |
 | [distributed-id](../../../04.system-design/02-distributed/distributed-id/README.md) | 雪花 / Leaf / 号段 | ⭐⭐⭐⭐⭐ |
 | [distributed-transaction](../../../04.system-design/02-distributed/distributed-transaction/README.md) | Saga / Seata / TCC | ⭐⭐⭐⭐⭐ |

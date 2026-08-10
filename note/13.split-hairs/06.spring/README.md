@@ -46,11 +46,6 @@ question:
 | [@Async 失效 4 种场景](async-pitfalls/) | ⭐⭐⭐⭐ | 同类调用 / 非 @Bean / 线程池缺失 / 内部方法调用 |
 | [Spring 事件机制](event-mechanism/) | ⭐⭐⭐⭐ | ApplicationEvent / ApplicationListener / @EventListener |
 
-### Spring MVC
-| 主题 | 难度 | 核心问题 |
-|------|------|---------|
-| [Spring MVC 请求处理流程](spring-mvc-flow/) | ⭐⭐⭐⭐ | DispatcherServlet → HandlerMapping → HandlerAdapter → ViewResolver |
-
 ### 缓存与应急
 | 主题 | 难度 | 核心问题 |
 |------|------|---------|

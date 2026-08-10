@@ -20,13 +20,14 @@ module:
 |------|------|------|
 | 浏览器渲染原理 | ✓ 已有 | [browser-rendering/](browser-rendering/) — 进程模型 / 渲染流水线 / 事件循环 / V8 引擎 |
 | CSS 工程化 | ✓ 已有 | [css-engineering/](css-engineering/) — 盒模型 / Flex / Grid / Tailwind / CSS Modules |
+| CSS 布局 | ✓ 已有 | [css-layout/](css-layout/) — BFC 触发条件 / 三大应用场景 / IFC/FFC/GFC 对比 |
 | HTML 语义化 | 📝 速查 | 顶层覆盖，详见顶层模块 |
 | Web 标准 | 📝 速查 | W3C / TC39 / WHATWG 流程，详见顶层模块 |
 
 ### 1.1 学习路径
 
 - **入门**：先理解「**浏览器做了什么**」(渲染流水线 / 事件循环)，再学 CSS 方案
-- **路径**：[browser-rendering](browser-rendering/) → [css-engineering](css-engineering/)
+- **路径**：[browser-rendering](browser-rendering/) → [css-engineering](css-engineering/) / [css-layout](css-layout/)
 - **资源**：MDN Web Docs / web.dev / Chrome DevTools 文档
 
 ---
@@ -92,12 +93,12 @@ flowchart TD
 
 ## 📊 本节统计
 
-- **主题数**:4(浏览器渲染 / CSS 工程化 / HTML 语义化 / Web 标准)
-- **子 README 数**:2 + 1 顶层 = 3
-- **模块导航行数**:4(2 已有 + 2 速查占位)
+- **主题数**:5(浏览器渲染 / CSS 工程化 / CSS 布局 / HTML 语义化 / Web 标准)
+- **子 README 数**:3 + 1 顶层 = 4
+- **模块导航行数**:5(3 已有 + 2 速查占位)
 - **学习路径主题数**:2(入门 / 进阶)
 - **面试题数**:5
-- **数据快照**:2026-06
+- **数据快照**:2026-08
 
 ---
 

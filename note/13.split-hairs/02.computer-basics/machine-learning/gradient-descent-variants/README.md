@@ -153,8 +153,8 @@ SGD + Momentum 在 CV / CNN 任务上仍常占优：虽然前期收敛慢，但�
 ## 六、交叉引用
 
 - **主模块**：[`02-algorithms/optimization/gradient-descent`](../../../../02.computer-basics/02-algorithms/optimization/gradient-descent/README.md) — 梯度下降的几何直觉与收敛条件
-- **兄弟**：[`k-means-convergence`](../k-means-convergence/README.md) / [`peft-lora`](../../../11.ai/peft-lora/README.md) — AdamW 在 LLM 参数高效微调中的应用 / [`llm-alignment`](../../../11.ai/llm-alignment/README.md)
-- **反向**：[`02.computer-basics`](../README.md) — 传统 ML 面试综述 Q3
+- **兄弟**：[`k-means-convergence`](../k-means-convergence/README.md) / [`peft-lora`](../../../../13.split-hairs/11.ai/peft-lora/README.md) — AdamW 在 LLM 参数高效微调中的应用 / [`llm-alignment`](../../../../13.split-hairs/11.ai/llm-alignment/README.md)
+- **反向**：[`02.computer-basics`](../../README.md) — 传统 ML 面试综述 Q3
 
 ---
 

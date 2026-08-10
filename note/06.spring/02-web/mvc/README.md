@@ -166,6 +166,88 @@ graph TB
 
 ---
 
+## 速记卡：split-hairs 视角
+
+> 本节为 split-hairs 迁出内容（2026-08-10），保留面试深挖价值，避免与上方概念铺陈重复。
+
+### 30 秒面试话术（9 步流程版）
+
+> "Spring MVC 流程分 9 步：
+>
+> 1. 请求到 **DispatcherServlet**
+> 2. 调用 **HandlerMapping** 找 Controller（返回 HandlerExecutionChain + 拦截器）
+> 3. 调用 **HandlerAdapter** 执行 Controller 方法
+> 4. Controller 返回 **ModelAndView**
+> 5. **ViewResolver** 解析视图名 → 实际 View
+> 6. View 渲染，返回响应
+>
+> **@RestController 简化**：返回对象 → **HttpMessageConverter** 序列化为 JSON，直接响应，**不经过 ViewResolver**。
+>
+> **三大核心组件**：
+> - DispatcherServlet：前端控制器
+> - HandlerMapping：URL → Controller
+> - HandlerAdapter：调用 Controller
+>
+> **拦截器**在 HandlerExecutionChain 中执行：preHandle → Controller → postHandle → afterCompletion。"
+
+### 3 大反直觉陷阱
+
+| 陷阱 | 直觉以为 | 实际真相 |
+|------|---------|---------|
+| **"9 步流程每次都跑完整"** | 9 步是固定路径 | `@ResponseBody` / `@RestController` **跳过 ViewResolver**，直接走 HttpMessageConverter 序列化 |
+| **"拦截器 = 过滤器"** | 两者功能等价 | 拦截器在 **HandlerExecutionChain 中**（Spring MVC 范围）；过滤器是 **Servlet 规范**，作用范围更广 |
+| **"HandlerMapping = 路由表"** | 一次性查表 | 实际是**链式查找**——多个 HandlerMapping 都有机会匹配，按顺序返回首个 |
+
+### 关键组件速查（面试高频追问）
+
+**HandlerMapping 实现**：
+
+| 实现 | 匹配方式 | 示例 |
+|------|---------|------|
+| **RequestMappingHandlerMapping** | `@RequestMapping` 注解（默认） | `@GetMapping("/users")` |
+| SimpleUrlHandlerMapping | URL 显式配置 | `<property name="urlMap">` |
+| BeanNameUrlMapping | Bean 名称为 URL | `<bean name="/users">` |
+
+**HandlerAdapter 实现**：
+
+| 实现 | 适用场景 |
+|------|---------|
+| **RequestMappingHandlerAdapter** | `@RequestMapping` 注解（最常用） |
+| HttpRequestHandlerAdapter | 实现 `HttpRequestHandler` 接口 |
+| SimpleControllerHandlerAdapter | 实现 `Controller` 接口（老式） |
+
+### 拦截器 vs 过滤器（一表打尽）
+
+| 维度 | 过滤器（Filter） | 拦截器（Interceptor） |
+|------|----------------|---------------------|
+| **规范** | Servlet 规范 | Spring 规范 |
+| **配置** | `web.xml` / `@WebFilter` | Spring MVC 配置 |
+| **作用范围** | 所有请求（含静态资源） | 仅 DispatcherServlet 分发的请求 |
+| **依赖** | 不依赖 Spring 容器 | 依赖 Spring 容器 |
+| **执行时机** | DispatcherServlet **之前** | HandlerMapping **之后** |
+
+### 异常处理顺序（@ExceptionHandler 链）
+
+```text
+1. Controller 内 @ExceptionHandler       ← 最先匹配
+2. @ControllerAdvice 全局处理            ← 二级兜底
+3. SimpleMappingExceptionResolver        ← 视图异常处理
+4. 默认处理（返回 500）                  ← 最后兜底
+```
+
+### 面试反问模板
+
+```text
+Q1：@RestController 和 @Controller 选哪个？
+    → 前端分离/纯 API 用 @RestController；要返回 JSP/Thymeleaf 用 @Controller
+Q2：拦截器和过滤器哪个先执行？
+    → 过滤器（Filter）在 DispatcherServlet 之前；拦截器（Interceptor）在 HandlerMapping 之后
+Q3：如何做接口超时控制？
+    → 拦截器 preHandle 里检查；或用 Async 拦截器（AsyncHandlerInterceptor）
+```
+
+---
+
 ## 🤔 思考
 
 1. **Spring MVC 是同步的还是异步的？** 同步为主，但支持异步（SSE、WebAsyncTask、DeferredResult、Reactive）。

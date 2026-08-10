@@ -237,7 +237,7 @@ Q5：贵司用协程/虚拟线程替代线程池？
 | 章节 | 核心考点 | 频率 |
 |------|---------|------|
 | [aqs](../aqs/README.md) | AQS 同步器原理 | ⭐⭐⭐⭐⭐ |
-| [arrayList-distinct](../arrayList-distinct/README.md) | ArrayList 去重陷阱 | ⭐⭐⭐ |
+| [arrayList-distinct](../../../01.java/collection/arraylist-distinct.md) | ArrayList 去重陷阱 | ⭐⭐⭐ |
 | [class-loading](../class-loading/README.md) | 类加载机制 | ⭐⭐⭐⭐⭐ |
 | [completable-future](../completable-future/README.md) | CompletableFuture 实战 | ⭐⭐⭐⭐ |
 | [concurrent-hashmap](../concurrent-hashmap/README.md) | ConcurrentHashMap 演进 | ⭐⭐⭐⭐⭐ |

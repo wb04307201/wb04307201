@@ -223,4 +223,51 @@ System.out.println(result);
 - [ThreadLocal 原理与最佳实践](../../concurrency/threadlocal/README.md)
 - [LinkedList 源码剖析与最佳实践](../../collection/LinkedList/README.md)
 
+## 速记卡：split-hairs 视角 — 为什么需要包装类？
+
+> 本节由 `13.split-hairs/01.java/object/` 迁出，整合"为什么需要 Integer/Double 这类包装类"的 7 大设计动机（主模块已讲过基本类型 vs 包装类型对比，本节聚焦**why**）。
+
+**7 大设计动机速记：**
+
+| # | 动机 | 本质 |
+|---|------|------|
+| 1 | 泛型约束：`List<int>` 不合法 | 基本类型无法作为类型参数 |
+| 2 | 集合元素：`Map<K, Integer>` | 集合框架只接受对象 |
+| 3 | null 支持：`Integer age = null` | 基本类型有默认值 0，无法表达"未赋值" |
+| 4 | OOP 特性：`Integer.parseInt()`、`MAX_VALUE` | 对象能调用方法、暴露常量、继承多态 |
+| 5 | 反射机制：`Integer.class` vs `int.class` | 反射需要 `Class` 对象 |
+| 6 | 泛型擦除兼容：`List<Integer>` 擦除为 `Object` | 基本类型无法参与擦除规则 |
+| 7 | ORM 映射：`@Column(nullable=true) Integer age` | 区分"0"和"null"，数据库字段语义 |
+
+**一句话总结**：「Java 设计者知道 `int` 比 `Integer` 快 5 倍，但为了**纯面向对象一致性**，宁可承担装箱开销——性能问题用 `Integer.valueOf()` 缓存 + 逃逸分析去优化。」
+
+### 3 大反直觉陷阱
+
+```java
+// 陷阱 1：NullPointerException — 自动拆箱的隐形 NPE
+Integer num = getNullableInteger();  // 可能返回 null
+int value = num;                     // ❌ NPE！拆箱 null → int 失败
+
+// 陷阱 2：== 比较超范围 Integer
+Integer a = 1000, b = 1000;
+System.out.println(a == b);          // ❌ false（超出 -128~127 缓存，不同对象）
+System.out.println(a.equals(b));     // ✅ true
+
+// 陷阱 3：WeakHashMap + Integer key → 缓存被 GC 静默回收
+Map<Integer, String> cache = new WeakHashMap<>();
+cache.put(new Integer(1), "value");  // ❌ Integer 是 final，JVM 可能缓存，也可能 GC 回收
+```
+
+### 30 秒面试话术
+
+> "Java 用包装类解决 3 个核心问题：**泛型参数必须是对象**（`List<int>` 编译报错）、**支持 null 表达"无值"**（基本类型只能用默认值 0）、**集合框架只接受对象**。代价是装箱/拆箱开销，JVM 通过 `Integer.valueOf()` 缓存 [-128,127] 和逃逸分析做优化。"
+
+### 面试反问（高频追问）
+
+- **Q：`Integer a = 1000; Integer b = 1000; a == b` 为什么是 false？** A：超出 `Integer.IntegerCache.high`（默认 127）范围时，`valueOf()` 不会从缓存池拿，会 `new` 新对象，所以 `==` 比较的是不同对象地址。
+- **Q：能不能扩大缓存范围？** A：可以，通过 JVM 参数 `-XX:AutoBoxCacheMax=1000`（仅 Integer 有效），但需谨慎，可能撑爆 metaspace/堆。
+- **Q：包装类在 JPA 实体里必须用基本类型还是包装类？** A：**包装类**——JPA 需要用 `null` 表达"未赋值"状态，基本类型 0 无法与 null 区分。
+
+---
+
 ← [返回 Java 核心概念](../README.md)

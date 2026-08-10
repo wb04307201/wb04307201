@@ -88,9 +88,79 @@ Q5：上线后，怎么检测模型的准确率？幻觉率？怎么快速定位
 
 ---
 
+## 速记卡：split-hairs 视角
+
+> 本节为 split-hairs 迁出内容（2026-08-10），保留面试深挖价值（60 秒话术 + 反模式），避免与上方"Q3 5 大问题"重复。
+
+### 60 秒面试话术（连续 3 次不一致）
+
+> **题目**：如果模型连续 3 次给出不一致的结果，系统如何反应？
+
+> **高分答案**（60 秒）：
+>
+> ```text
+> raw 重试不解决一致性问题——LLM 是概率模型，3 次重试可能都错。
+>
+> 正解：Self-Consistency 投票 + Judge 模型 + 重试预算。
+>
+> Self-Consistency：
+> - 多采样（5-7 次）
+> - 用 Judge 模型（GPT-4 或业务 fine-tune）选最佳
+> - 离散答案可字符串投票，开放回答必须语义投票
+>
+> 重试预算：
+> - 网络错误：3 次（指数退避）
+> - 限流：5 次（退避）
+> - 校验失败：2 次（重新生成）
+> - 一致性：3 次（这是采样数，不是重试数）
+>
+> 失败模式：
+> - 幻觉 → Self-Consistency
+> - 格式错 → Output Parser + 重试 with format hint
+> - 超时 → 双 timeout + 降级
+> - 成本爆炸 → 3 道 quota 强制
+> ```
+
+### 3 大反直觉陷阱（核心雷区）
+
+| 陷阱 | 直觉以为 | 实际真相 | 代价 |
+|------|---------|---------|------|
+| **raw 重试幻觉** | "3 次失败重试 3 次会好" | LLM 是概率模型，幻觉重试**还是幻觉** | 浪费 3x 成本，答案还是错 |
+| **缺 Judge 模型** | 字符串投票就够 | 离散答案可字符串投票；**开放回答必须语义投票**（用 LLM/LLM-as-Judge 选最佳） | 投票出来的答案质量差 |
+| **缺重试预算分级** | 重试越多越好 | 重试必须**按失败类型分级**：网络错误 3 次、限流 5 次、校验失败 2 次、一致性 3 次 | 成本失控 / 雪崩 |
+
+### 失败模式对应方案（一表打尽）
+
+| 失败模式 | 解决手段 | 关键工具 |
+|---------|---------|---------|
+| **幻觉** | Self-Consistency | 多采样 + Judge 模型 |
+| **格式错** | Output Parser + 重试 | Pydantic / Zod + format hint |
+| **超时** | 双 timeout + 降级 | 软限 5s / 硬限 30s + Fallback 模型 |
+| **成本爆炸** | 3 道 quota 强制 | 用户级 / 接口级 / 全局级 |
+
+### 面试反问模板
+
+```text
+Q1：贵司对答案准确性的要求？
+    → 金融/医疗用 5 投票；一般用 Self-Consistency 即可
+Q2：贵司是否有回归测试流程？
+    → 黄金集 + 漂移检测必须有
+Q3：Judge 模型用什么？
+    → 离线用 GPT-4（强但贵），线上用业务 fine-tune 的小模型（快且省）
+```
+
+### 与本目录其他"灵魂拷问"的协同
+
+- **Q1 思维范式**：本节方案仅在"必须用 LLM"时启用——能用规则就别用 LLM（成本 × 5）
+- **Q2 成本控制**：Self-Consistency 多采样会让成本翻 5-7 倍，必须配合 5 层路由
+- **Q4 超时熔断**：一致性投票的单次超时必须设短（5s），否则总时延爆炸
+- **Q5 监控定位**：必须监控"**一致性指标**"（多次回答分歧度），不是只看延迟
+
+---
+
 ## 速查 · 关联资源
 - **餐厅叙事**：[12.story/05-observability.md](../../../12.story/05-observability.md) —— 阿明餐厅的"AI 思维工程 5 问"实战
-- **面试题**：[思维范式](../../../13.split-hairs/11.ai/llm-thinking-paradigm/) · [成本控制](../../../13.split-hairs/11.ai/llm-cost-control/) · [一致性](../../../13.split-hairs/11.ai/llm-consistency/) · [超时熔断](../../../13.split-hairs/11.ai/llm-timeout-circuit-breaker/) · [监控](../../../13.split-hairs/11.ai/llm-monitoring/) — 拆分为 5 个独立面试题
+- **面试题**：[思维范式](../../../13.split-hairs/11.ai/llm-thinking-paradigm/) · [成本控制](../../../13.split-hairs/11.ai/llm-cost-control/) · 一致性（本节速记卡） · [超时熔断](../../../13.split-hairs/11.ai/llm-timeout-circuit-breaker/) · [监控](../../../13.split-hairs/11.ai/llm-monitoring/) — 拆分为 5 个独立面试题
 - **同级兄弟**：[llm-evaluation](../04-llm-evaluation/README.md) · [llmops-stack](../02-llmops-stack/README.md)
 - **相关章节**：[production-agent](../../03-engineering/production-agent/README.md) · [harness-engineering](../../03-engineering/harness-engineering/README.md) · [loop-engineering](../../03-engineering/loop-engineering/README.md) · [hallucination](../../../13.split-hairs/11.ai/hallucination/README.md)
 

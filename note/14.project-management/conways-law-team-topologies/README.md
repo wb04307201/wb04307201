@@ -252,7 +252,7 @@ AI 时代：5 人小团队 + AI 助手 ≈ 传统 15 人团队
 - 本系列：[ai-pm-dora-space](../ai-pm-dora-space/README.md) — DORA + SPACE + ROI
 - 故事章节：[`12.story/07-from-chef-to-ceo`](../../12.story/07-from-chef-to-ceo.md) — 终章康威定律 + SECI / ADR / Docs-as-Code
 - 主模块：[`note/04.system-design`](../../04.system-design/README.md) — 系统设计架构基线
-- 面试专题：[`13.split-hairs/04.system-design/cap-theorem`](../../13.split-hairs/04.system-design/cap-theorem/README.md) — CAP 经典问题
+- 面试专题：[`13.split-hairs/04.system-design/cap-theorem`](../../04.system-design/02-distributed/cap-and-base/README.md) — CAP 经典问题
 
 ---
 

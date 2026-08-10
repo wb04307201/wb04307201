@@ -18,20 +18,18 @@ question:
 
 > **定位**：Java 高频面试题与细节深挖（集合 / 并发 / JVM / 类型 / 设计模式） 的核心原理、实现与最佳实践。
 
-> Java 高频面试题与细节深挖，对齐主模块 [`01.java`](../../01.java/)。44 篇分集合 / 并发 / JVM / 语言基础 / 对象类型 / 设计模式 / 综合 7 组（find 校对 2026-07-30），覆盖 90% 后端面试 Java 高频题。
+> Java 高频面试题与细节深挖，对齐主模块 [`01.java`](../../01.java/)。39 篇分集合 / 并发 / JVM / 语言基础 / 对象类型 / 设计模式 / 综合 7 组（find 校对 2026-08-10；2026-08-10 迁出 6 篇灰色地带面试题到主模块 [01.java](../../01.java/)：`object` → `concepts/data-types`，`create-object` → `concepts/object`，`singleton-pattern` → `design-patterns/creation/singleton.md`，`large-data-into-hashmap` → `collection/hashmap-performance.md`，`record-t` → `concepts/record`，`arrayList-distinct` → `collection/arraylist-distinct.md`），覆盖 90% 后端面试 Java 高频题。
 
 ---
 
-## 文章清单（共 44 篇，find 校对 2026-07-30）
+## 文章清单（共 39 篇，find 校对 2026-08-10）
 
 ### 集合与数据结构
 | 主题 | 难度 | 核心问题 |
 |------|------|---------|
-| [ArrayList 去重](arrayList-distinct/) | ⭐⭐ | ArrayList 如何去重？LinkedHashSet vs Stream |
 | [HashSet 替代 LinkedList 查找](replace-linkedlist-with-hashset/) | ⭐⭐ | 什么时候该换数据结构？ |
 | [HashMap 扩容](hashmap-resizing/) | ⭐⭐⭐⭐ | 1GB 的 HashMap 扩容会发生什么？ |
 | [HashMap 线程不安全](hashmap-thread-unsafe/) | ⭐⭐⭐⭐ | 3 大不安全表现 + 源码分析 + 4 大解决方案 |
-| [快速插入大量数据到 HashMap](large-data-into-hashmap/) | ⭐⭐⭐ | 初始化容量 + 负载因子的权衡 |
 | [快速给 Map 排序](sort-map/) | ⭐⭐ | TreeMap vs LinkedHashMap 选型 |
 
 ### 并发与线程
@@ -79,16 +77,12 @@ question:
 | 主题 | 难度 | 核心问题 |
 |------|------|---------|
 | [接口 vs 抽象类](interface-vs-abstract/) | ⭐⭐⭐ | 6 维对比 + 设计哲学 + JDK 8+ 变化 + 选择原则 |
-| [创建对象](create-object/) | ⭐⭐ | Java 创建对象的 5 种方式 |
-| [基础类型封装为对象](object/) | ⭐⭐ | 为什么需要 Integer / Double 包装类？ |
 | [Integer 缓存](integer-cache/) | ⭐⭐⭐ | -128 到 127 的复用机制与陷阱 |
 | [new String("123") 创建几个对象](new-string/) | ⭐⭐⭐⭐ | 字符串常量池 vs 堆 |
-| [Record 与泛型](record-t/) | ⭐⭐⭐ | Java 14+ Record 可以用泛型吗？ |
 
 ### 设计模式与技巧
 | 主题 | 难度 | 核心问题 |
 |------|------|---------|
-| [单例模式](singleton-pattern/) | ⭐⭐⭐ | 5 种实现方式 + 反射 / 序列化破坏 |
 | [switch 前用 if 优化](if-before-switch/) | ⭐⭐⭐ | 热点状态的快速路径优化 |
 
 ### 综合
@@ -100,8 +94,8 @@ question:
 
 ## 学习路径
 
-1. **入门**（1 周）：集合去重 + 对象创建 + Integer 缓存 + String 相关
-2. **进阶**（2 周）：HashMap 扩容 + 并发线程 + JVM 内存 + 设计模式
+1. **入门**（1 周）：集合去重 + Integer 缓存 + String 相关 + 主模块 [`concepts/data-types`](../../01.java/concepts/data-types/README.md) + [`concepts/object`](../../01.java/concepts/object/README.md)
+2. **进阶**（2 周）：HashMap 扩容 + 并发线程 + JVM 内存 + 设计模式（单例见主模块 [`design-patterns/creation/singleton`](../../01.java/design-patterns/creation/singleton.md)）
 3. **冲刺面试**（1 周）：AQS + 锁升级 + GC 算法 + 类加载 + 高频面试题合集
 
 ## 相关章节

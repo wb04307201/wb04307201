@@ -27,7 +27,6 @@ question:
 |------|------|---------|
 | [分布式 ID 生成方案](distributed-id/) | ⭐⭐⭐⭐ | UUID / 数据库 / 雪花算法 / Leaf |
 | [分布式事务](distributed-transaction/) | ⭐⭐⭐⭐⭐ | 2PC / TCC / Saga / 本地消息表 |
-| [CAP 定理实际应用](cap-theorem/) | ⭐⭐⭐⭐ | CP vs AP 选型决策 |
 | [分布式锁](distributed-lock/) | ⭐⭐⭐⭐⭐ | Redis SETNX / Redisson / ZooKeeper |
 
 ### 高性能

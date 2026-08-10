@@ -41,7 +41,7 @@ public class JwtAuthFilter implements Filter {
 
 ---
 
-> 📚 **前置知识**：[Spring MVC 请求流程](../spring-mvc-flow/README.md) | [AOP 原理](../aop-principle/README.md)
+> 📚 **前置知识**：[Spring MVC 请求流程](../../../06.spring/02-web/mvc/README.md) | [AOP 原理](../aop-principle/README.md)
 
 ## 一、核心原理
 
@@ -184,7 +184,7 @@ http.cors(Customizer.withDefaults())
 
 - 同栏目：[`Bean 生命周期`](../bean-lifecycle/README.md) — Spring Bean 的创建顺序与生命周期钩子
 - 同栏目：[`自动配置原理`](../auto-configuration/README.md) — Spring Boot 自动配置如何注册 SecurityFilterChain
-- 同栏目：[`Spring MVC 请求流程`](../spring-mvc-flow/README.md) — 请求从 DispatcherServlet 到 Controller 的完整链路
+- 同栏目：[`Spring MVC 请求流程`](../../../06.spring/02-web/mvc/README.md) — 请求从 DispatcherServlet 到 Controller 的完整链路
 - 主模块：[`安全架构`](../../../04.system-design/05-security/README.md) — 认证授权原理
 
 ← [返回 Spring 咬文嚼字](../README.md)

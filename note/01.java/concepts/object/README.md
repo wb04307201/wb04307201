@@ -235,4 +235,83 @@ Objects.nonNull(obj);    // 等价于 obj != null
 
 ---
 
+## 创建对象的 7 种方式（split-hairs 视角）
+
+> 本节由 `13.split-hairs/01.java/create-object/` 迁出，按"常规 → 黑科技"序列，覆盖 Java 创建对象的 7 种典型手段（主模块已讲 Object.clone()，本节聚焦 5 种以上替代方案）。
+
+### 1. `new` 关键字（最常见）
+
+```java
+Person p = new Person("Alice");
+```
+
+### 2. 反射（Reflection）— 框架设计的底层
+
+```java
+Person p = Person.class.getDeclaredConstructor().newInstance();
+// 或：Person.class.getConstructor(String.class).newInstance("Alice");
+```
+
+常用于 Spring Bean 工厂、ORM 加载、动态代理、JDK Proxy、Jackson 反序列化。
+
+### 3. `Clone()`（浅拷贝/深拷贝）
+
+须先实现 `Cloneable` 标记接口并重写 `clone()` 方法：
+
+```java
+class Animal implements Cloneable {
+    @Override public Animal clone() throws CloneNotSupportedException {
+        return (Animal) super.clone();  // 浅拷贝；引用类型字段需深拷贝
+    }
+}
+```
+
+### 4. 反序列化（`ObjectInputStream.readObject()`）
+
+```java
+try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("person.ser"))) {
+    Person p = (Person) ois.readObject();
+}
+```
+
+⚠️ **绕过构造器的副作用**：反序列化创建的对象**不调用任何构造方法**，可能绕过单例的私有构造检查。Effective Java 推荐枚举单例防此问题。
+
+### 5. 工厂模式 / 建造者模式
+
+将对象创建逻辑封装到工厂类，提升灵活性（详见 [创建型模式](../../design-patterns/creation/README.md)）。
+
+### 6. 依赖注入（Spring `@Autowired` / 构造器注入）
+
+Spring 容器管理 Bean 创建，业务代码无需手动 `new`：
+
+```java
+@Component
+public class Car {
+    private final Engine engine;
+    @Autowired
+    public Car(Engine engine) { this.engine = engine; }
+}
+```
+
+### 7. `Unsafe.allocateInstance()`（黑科技 — 不调构造器）
+
+```java
+sun.misc.Unsafe unsafe = getUnsafe();
+Person p = (Person) unsafe.allocateInstance(Person.class);
+// 完全跳过构造器！可用于绕过安全检查或构造不可实例化类
+```
+
+⚠️ JDK 内部使用，外部代码谨慎，会绕过 `final` 字段初始化，可能导致 NPE。
+
+### 选型速查
+
+| 场景 | 推荐方式 | 理由 |
+|------|---------|------|
+| 普通业务对象 | `new` | 直观、性能最好 |
+| 动态加载类（框架） | 反射 | 运行时才知道类型 |
+| 对象复制（原型模式） | `clone()` | 不调构造器更高效 |
+| 网络/磁盘传输 | 反序列化 | 通用持久化 |
+| 复杂对象构造 | 工厂 / 建造者 | 可读性 + 可测试性 |
+| Spring 项目 | DI | 解耦 + 容器管理生命周期 |
+
 ← [返回 Java 核心概念](../README.md)

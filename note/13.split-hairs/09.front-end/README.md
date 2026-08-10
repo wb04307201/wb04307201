@@ -16,11 +16,11 @@ question:
 
 # 前端咬文嚼字
 
-> 前端高频面试题与细节深挖，对齐主模块 [`09.front-end`](../../09.front-end/)。27 篇真题覆盖 JS 核心 / HTTP / CSS / 浏览器机制 / 工具测试 / 框架 / 安全 / 工程迁移 / Promise 9 大方向（find 校对 2026-07-30）。
+> 前端高频面试题与细节深挖，对齐主模块 [`09.front-end`](../../09.front-end/)。27 篇真题覆盖 JS 核心 / HTTP / CSS / 浏览器机制 / 工具测试 / 框架 / 安全 / 工程迁移 / Promise 9 大方向（find 校对 2026-08-10；BFC / GET vs POST 已迁出至主模块）。
 
 ---
 
-## 文章清单（共 29 题，find 校对 2026-07-30）
+## 文章清单（共 27 题，find 校对 2026-08-10）
 
 ### JavaScript 核心
 | 主题 | 难度 | 核心问题 |
@@ -35,7 +35,6 @@ question:
 ### HTTP 与网络
 | 主题 | 难度 | 核心问题 |
 |------|------|---------|
-| [GET vs POST](get-and-post/) | ⭐⭐ | 7 大差异 + 幂等性 + 安全性 |
 | [HTTP 缓存机制](http-cache/) | ⭐⭐⭐⭐ | 强缓存 Cache-Control / 协商缓存 ETag |
 | [CORS 跨域详解](cors/) | ⭐⭐⭐⭐ | 简单请求 / 预检请求 / 常见头部 |
 | [HTTPS 握手过程](https-handshake/) | ⭐⭐⭐⭐⭐ | TLS 1.2 vs 1.3 / 证书验证 |
@@ -43,7 +42,6 @@ question:
 ### CSS
 | 主题 | 难度 | 核心问题 |
 |------|------|---------|
-| [BFC 块级格式化上下文](bfc/) | ⭐⭐⭐ | 触发条件 / 应用场景 / 边距折叠 |
 | [按钮 CSS 几十行](css-button-styling/) | ⭐⭐⭐ | 8 状态 + 3 抽象层 + 5 大架构方案 |
 
 ### 浏览器机制
@@ -94,7 +92,7 @@ question:
 
 ## 学习路径
 
-1. **入门**（3 天）：GET vs POST + 存储方案 + 消息机制
+1. **入门**（3 天）：存储方案 + 消息机制（GET vs POST 已迁出至 [主模块](../../09.front-end/03-network/http-protocol/get-vs-post.md)）
 2. **进阶**（2 周）：事件循环 + 闭包 + 原型链 + this 绑定 + Promise 手写 + 🆕 **async/await 错误处理**
 3. **冲刺面试**：重点看"从 URL 输入到页面展示"、"HTTPS 握手"、"Virtual DOM Diff"、"Vue 响应式原理"、"CSS 渲染阻塞"、"回流与重绘"、"Playwright vs Selenium"、🆕 **"async/await 必须 try/catch 吗"**
 

@@ -383,7 +383,7 @@ Seata 4 种模式对比：
 
 ### 同栏目（04.system-design）姐妹篇
 
-- [cap-theorem](../cap-theorem/README.md) —— CAP 定理（微服务必知）
+- [cap-theorem](../../../04.system-design/02-distributed/cap-and-base/README.md) —— CAP 定理（微服务必知）
 - [distributed-id](../distributed-id/README.md) —— 分布式 ID 方案
 - [distributed-transaction](../distributed-transaction/README.md) —— 分布式事务
 - [distributed-lock](../distributed-lock/README.md) —— 分布式锁

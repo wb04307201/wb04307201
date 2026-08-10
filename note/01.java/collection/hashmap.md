@@ -454,10 +454,10 @@ map.replaceAll((k, v) -> v * 2);
 ## 反向链
 
 - [ArrayList](ArrayList/README.md)
-- [arrayList-distinct](../../13.split-hairs/01.java/arrayList-distinct/README.md)
+- [arrayList-distinct](arraylist-distinct.md)
 - [concurrent-hashmap](../../13.split-hairs/01.java/concurrent-hashmap/README.md)
 - [equals-hashcode](../../13.split-hairs/01.java/equals-hashcode/README.md)
 - [hashmap-resizing](../../13.split-hairs/01.java/hashmap-resizing/README.md)
-- [large-data-into-hashmap](../../13.split-hairs/01.java/large-data-into-hashmap/README.md)
+- [large-data-into-hashmap](hashmap-performance.md)
 - [replace-linkedlist-with-hashset](../../13.split-hairs/01.java/replace-linkedlist-with-hashset/README.md)
 - [sort-map](../../13.split-hairs/01.java/sort-map/README.md)

@@ -92,7 +92,6 @@ question:
 | **🆕 [Agent 长上下文策略](long-context-agent-strategy/)** | ⭐⭐⭐⭐⭐ | 6 大策略组合（Chunking / RAG / Memory / Sliding Window / Sub-Agents / Long-Context）+ Lost in Middle + 7 道 Q&A | [04-architecture/agent-context](../../11.ai/04-architecture/agent-context/README.md) |
 | **🆕 [思维范式：Prompt vs if-else](llm-thinking-paradigm/)** | ⭐⭐⭐⭐⭐ | 4 信号决策 + 80/20 协同 + 60 秒话术 | [01-thinking-paradigm](../../11.ai/08-llmops/production-stability/01-thinking-paradigm.md) |
 | **🆕 [成本控制：5 层路由](llm-cost-control/)** | ⭐⭐⭐⭐⭐ | 3 道 quota + 5 层降级 + 60 秒话术 | [02-cost-control-and-degradation](../../11.ai/08-llmops/production-stability/02-cost-control-and-degradation.md) |
-| **🆕 [一致性：Self-Consistency 投票](llm-consistency/)** | ⭐⭐⭐⭐⭐ | 语义投票 + Judge + 重试预算 + 60 秒话术 | [03-consistency-and-failure-handling](../../11.ai/08-llmops/production-stability/03-consistency-and-failure-handling.md) |
 | **🆕 [超时熔断：双 Timeout](llm-timeout-circuit-breaker/)** | ⭐⭐⭐⭐⭐ | 软/硬限 + Circuit Breaker + Fallback 链 | [04-timeout-and-circuit-breaker](../../11.ai/08-llmops/production-stability/04-timeout-and-circuit-breaker.md) |
 | **🆕 [监控定位：4 维 + Trace](llm-monitoring/)** | ⭐⭐⭐⭐⭐ | 质量/延迟/成本/一致性 + Trace + 黄金集 | [05-online-monitoring](../../11.ai/08-llmops/production-stability/05-online-monitoring.md) |
 | **🆕 [Structured Output 结构化输出](structured-output/)** | ⭐⭐⭐⭐ | JSON Mode 已过时 + 5 层策略 + 3 大陷阱 | [02-technology-stack/structured-output](../../11.ai/02-technology-stack/structured-output/README.md) |

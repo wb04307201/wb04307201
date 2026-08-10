@@ -288,10 +288,10 @@
 
 | 主题 | 核心问题 |
 |------|---------|
-| [ArrayList 去重](13.split-hairs/01.java/arrayList-distinct/README.md) | LinkedHashSet vs Stream |
+| [ArrayList 去重](01.java/collection/arraylist-distinct.md) | LinkedHashSet vs Stream |
 | [HashSet 替代 LinkedList 查找](13.split-hairs/01.java/replace-linkedlist-with-hashset/README.md) | 什么时候该换数据结构？ |
 | [HashMap 扩容](13.split-hairs/01.java/hashmap-resizing/README.md) | 1GB 的 HashMap 扩容会发生什么？ |
-| [快速插入大量数据到 HashMap](13.split-hairs/01.java/large-data-into-hashmap/README.md) | 初始化容量 + 负载因子的权衡 |
+| [快速插入大量数据到 HashMap](01.java/collection/hashmap-performance.md) | 初始化容量 + 负载因子的权衡 |
 | [快速给 Map 排序](13.split-hairs/01.java/sort-map/README.md) | TreeMap vs LinkedHashMap 选型 |
 
 ### 并发与线程
@@ -336,17 +336,17 @@
 
 | 主题 | 核心问题 |
 |------|---------|
-| [创建对象](13.split-hairs/01.java/create-object/README.md) | Java 创建对象的 5 种方式 |
-| [基础类型封装为对象](13.split-hairs/01.java/object/README.md) | 为什么需要 Integer / Double 包装类？ |
+| [创建对象](01.java/concepts/object/README.md) | Java 创建对象的 5 种方式 |
+| [基础类型封装为对象](01.java/concepts/data-types/README.md) | 为什么需要 Integer / Double 包装类？ |
 | [Integer 缓存](13.split-hairs/01.java/integer-cache/README.md) | -128 到 127 的复用机制与陷阱 |
 | [new String("123")](13.split-hairs/01.java/new-string/README.md) | 字符串常量池 vs 堆 |
-| [Record 与泛型](13.split-hairs/01.java/record-t/README.md) | Java 14+ Record 可以用泛型吗？ |
+| [Record 与泛型](01.java/concepts/record/README.md) | Java 14+ Record 可以用泛型吗？ |
 
 ### 设计模式与技巧
 
 | 主题 | 核心问题 |
 |------|---------|
-| [单例模式](13.split-hairs/01.java/singleton-pattern/README.md) | 5 种实现方式 + 反射 / 序列化破坏 |
+| [单例模式](01.java/design-patterns/creation/singleton.md) | 5 种实现方式 + 反射 / 序列化破坏 |
 | [switch 前用 if 优化](13.split-hairs/01.java/if-before-switch/README.md) | 热点状态的快速路径优化 |
 
 ### 综合
@@ -420,7 +420,7 @@
 |------|---------|
 | [分布式 ID](13.split-hairs/04.system-design/distributed-id/README.md) | UUID / DB / 雪花算法 / Leaf |
 | [分布式事务](13.split-hairs/04.system-design/distributed-transaction/README.md) | 2PC / TCC / Saga / 本地消息表 |
-| [CAP 定理实际应用](13.split-hairs/04.system-design/cap-theorem/README.md) | CP vs AP 选型决策 |
+| [CAP 定理实际应用](04.system-design/02-distributed/cap-and-base/README.md) | CP vs AP 选型决策 |
 
 ### 高并发
 
@@ -462,7 +462,7 @@
 
 | 主题 | 核心问题 |
 |------|---------|
-| [Spring MVC 请求流程](13.split-hairs/06.spring/spring-mvc-flow/README.md) | DispatcherServlet 9 步流程 |
+| [Spring MVC 请求流程](06.spring/02-web/mvc/README.md) | DispatcherServlet 9 步流程 |
 | [@Cacheable + Redis 降级](13.split-hairs/06.spring/cache-degradation/README.md) | Redis 挂了怎么降级？如何恢复？ |
 
 ### Spring Security
@@ -505,7 +505,7 @@
 | [Loop Engineering](13.split-hairs/11.ai/loop-engineering/README.md) | Loop Engineering — 循环调用 Agent |
 | [思维范式：Prompt vs if-else](13.split-hairs/11.ai/llm-thinking-paradigm/README.md) | 4 信号决策 |
 | [成本控制：5 层路由](13.split-hairs/11.ai/llm-cost-control/README.md) | 3 道 quota + 5 层降级 |
-| [一致性：Self-Consistency](13.split-hairs/11.ai/llm-consistency/README.md) | 语义投票 + Judge |
+| [一致性：Self-Consistency](11.ai/08-llmops/production-stability/README.md) | 语义投票 + Judge |
 | [超时熔断：双 Timeout](13.split-hairs/11.ai/llm-timeout-circuit-breaker/README.md) | 软/硬限 + Circuit Breaker |
 | [监控定位：4 维 + Trace](13.split-hairs/11.ai/llm-monitoring/README.md) | 质量/延迟/成本/一致性 + Trace |
 | [RAG 权限隔离设计](13.split-hairs/11.ai/rag-permission-isolation/README.md) | RAG 权限隔离设计 |
@@ -527,7 +527,7 @@
 
 | 主题 | 核心问题 |
 |------|---------|
-| [GET vs POST](13.split-hairs/09.front-end/get-and-post/README.md) | 7 大差异 + 幂等性 |
+| [GET vs POST](09.front-end/03-network/http-protocol/get-vs-post.md) | 7 大差异 + 幂等性 |
 | [HTTP 缓存机制](13.split-hairs/09.front-end/http-cache/README.md) | 强缓存 Cache-Control / 协商缓存 ETag |
 | [CORS 跨域详解](13.split-hairs/09.front-end/cors/README.md) | 简单请求 / 预检请求 / 常见头部 |
 | [HTTPS 握手过程](13.split-hairs/09.front-end/https-handshake/README.md) | TLS 1.2 vs 1.3 / 证书验证 |
@@ -560,7 +560,7 @@
 
 | 主题 | 核心问题 |
 |------|---------|
-| [BFC 块级格式化上下文](13.split-hairs/09.front-end/bfc/README.md) | 触发条件 / 应用场景 / 边距折叠 |
+| [BFC 块级格式化上下文](09.front-end/01-foundation/css-layout/bfc.md) | 触发条件 / 应用场景 / 边距折叠 |
 | [CSS 按钮几十行写法](13.split-hairs/09.front-end/css-button-styling/README.md) | 8 状态 + 5 大架构 |
 | [CSS 渲染阻塞](13.split-hairs/09.front-end/css-render-blocking/README.md) | CSS 放底部为什么白屏更长 |
 

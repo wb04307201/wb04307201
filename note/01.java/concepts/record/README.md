@@ -280,4 +280,111 @@ if (line instanceof Line(Point(var x1, var y1), Point(var x2, var y2))) {
 
 ---
 
+## Record + 泛型：split-hairs 视角
+
+> 本节由 `13.split-hairs/01.java/record-t/` 迁出，专注 **Record 与泛型的结合 + 5 大陷阱 + 30s 话术**。Record 基础语法见上文。
+
+### Record 与泛型对比
+
+| 特性 | Record | 普通 Class |
+|------|--------|-----------|
+| 不可变性 | 字段隐式 `final` | 可变 |
+| 构造函数 | 自动生成 | 需手动 |
+| 访问器 | `fieldName()` | `getX()`/`setX()` |
+| `equals`/`hashCode` | 自动生成 | 需手动或 Lombok |
+| 泛型 | ✅ 完全支持 | ✅ 同样支持 |
+| 继承 | 隐式继承 `java.lang.Record` | 可继承任意类 |
+
+### 5 大反直觉陷阱
+
+```java
+// 陷阱 1：误以为 Record 字段可变 → 编译错误
+public record Box(int value) {}
+// box.value = 100;    // ❌ Cannot assign to final field
+box = new Box(100);   // ✅ 创建新实例
+
+// 陷阱 2：泛型数组创建错误 → 用 List 代替
+public record Pair<T>(T first, T second) {}
+// private T[] arr = new T[10];                // ❌ Cannot create generic array of T
+public record Better<T>(List<T> items) {}    // ✅ 用 List
+
+// 陷阱 3：重写 equals 破坏契约 → hashCode 必须同步
+public record Point(int x, int y) {
+    @Override public boolean equals(Object o) {
+        return o instanceof Point p && x == p.x;  // ❌ 只比较 x，但 hashCode 用 x+y
+    }
+}
+// ✅ 修正：同时重写 hashCode
+@Override public int hashCode() { return Objects.hash(x, y); }
+
+// 陷阱 4：忽略泛型擦除 → 运行时类型信息不可用
+// ❌ 运行时无法区分 Box<String> 与 Box<Integer>（都被擦除为 Box<Object>）
+// ✅ 传递 Class 对象：public record TypedPair<T,U>(T first, Class<T> firstType)
+
+// 陷阱 5：某些 Mockito 版本无法 mock record（final 类）
+// ✅ 推荐用真实 record 实例（record 本就是数据载体，不该 mock）
+when(mockService.getUser(1L)).thenReturn(ServiceResult.ok(
+    new UserDTO(1L, "test", "test@example.com")  // ✅ 真实对象，不 mock
+));
+```
+
+### 4 大场景话术
+
+| 面试官提问 | 答题框架 |
+|----------|---------|
+| "Record 能用泛型吗？" | **能**：`record Result<T>(boolean success, T data, String error) {}`，泛型擦除规则与普通类一致 |
+| "Record 适合什么场景？" | **DTO/VO/响应封装**——不可变 + 自动生成 equals/hashCode。**不适合 JPA Entity**（需可变） |
+| "Record vs Lombok @Value？" | Record 是 JDK 原生（无依赖），Lombok 需插件；Record 自动 final，Lombok @Value 也 final 但还需 `makeFinal=true` |
+| "Record 如何做防御性拷贝？" | 重写 accessor + 在紧凑构造方法中 `List.copyOf(items)` |
+
+### Record vs 普通类：1 行 vs 50 行
+
+```java
+// Record：1 行
+public record Result<T>(boolean success, T data, String error) {}
+
+// 普通类：约 50 行（构造方法 + getter + equals + hashCode + toString）
+public class Result<T> {
+    private final boolean success;
+    private final T data;
+    private final String error;
+    // 构造方法、getter、equals、hashCode、toString 等...
+}
+```
+
+### 实战组合（Sealed + Record = ADT）
+
+```java
+public sealed interface Result<T> permits Success, Failure { T getOrNull(); }
+public record Success<T>(T value) implements Result<T> { public T getOrNull() { return value; } }
+public record Failure<T>(Exception error) implements Result<T> { public T getOrNull() { return null; } }
+
+// Pattern Matching (Java 21+)
+String process(Result<?> r) {
+    return switch (r) {
+        case Success<?> s -> "Success: " + s.value();
+        case Failure<?> f -> "Failure: " + f.error().getMessage();
+    };
+}
+```
+
+### Spring Boot 应用示例
+
+```java
+public record ServiceResult<T>(boolean success, T data, String errorCode) {
+    public static <T> ServiceResult<T> ok(T d) { return new ServiceResult<>(true, d, null); }
+    public static <T> ServiceResult<T> fail(String c) { return new ServiceResult<>(false, null, c); }
+}
+public record UserDTO(Long id, String username, String email) {}
+
+@RestController
+@RequestMapping("/api/users")
+public class UserController {
+    @GetMapping("/{id}")
+    public ResponseEntity<ServiceResult<UserDTO>> get(@PathVariable Long id) { ... }
+}
+```
+
+---
+
 ← [返回 Java 核心概念](../README.md)
