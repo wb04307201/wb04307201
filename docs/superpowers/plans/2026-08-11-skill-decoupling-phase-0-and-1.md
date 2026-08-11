@@ -246,7 +246,7 @@ git commit -m "feat(note-temp): 13 模块占位骨架"
 ```markdown
 # SPEC for note-temp/01.java-and-jvm/
 
-> **Inherits from**: [../../SPEC.md](../../SPEC.md)
+> **Inherits from**: [../SPEC.md](../SPEC.md)
 > **Mode**: append + override
 > **Updated**: 2026-08-11
 
@@ -303,7 +303,7 @@ dimensions="$4"
 cat > "$module_name/SPEC.md" << INNER
 # SPEC for note-temp/$module_name/
 
-> **Inherits from**: [../../SPEC.md](../../SPEC.md)
+> **Inherits from**: [../SPEC.md](../SPEC.md)
 > **Mode**: append + override
 > **Updated**: 2026-08-11
 
@@ -574,7 +574,7 @@ cd ../../..
 ```markdown
 # SPEC for note-temp/08.ai-foundations/
 
-> **Inherits from**: [../../SPEC.md](../../SPEC.md)
+> **Inherits from**: [../SPEC.md](../SPEC.md)
 > **Mode**: append + override
 > **Updated**: 2026-08-11
 
@@ -687,7 +687,7 @@ cd ../../..
 ```markdown
 # SPEC for note-temp/09.ai-applications/
 
-> **Inherits from**: [../../SPEC.md](../../SPEC.md)
+> **Inherits from**: [../SPEC.md](../SPEC.md)
 > **Mode**: append + override
 > **Updated**: 2026-08-11
 
