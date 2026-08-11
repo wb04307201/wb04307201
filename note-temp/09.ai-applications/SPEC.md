@@ -8,7 +8,7 @@
 
 ## 模块定位
 
-AI 应用（RAG + Agent + Prompt Engineering + 多模态 + 行业落地）。
+AI 应用层：RAG、Agent、Prompt、LLM 推理工程、Fine-tuning、Eval。
 
 ## 从 L0 继承
 
@@ -22,16 +22,23 @@ AI 应用（RAG + Agent + Prompt Engineering + 多模态 + 行业落地）。
 
 | # | 维度 | 2 分 | 1 分 | 0 分 |
 |---|------|------|------|------|
-| A1 | 端到端案例 | 有完整代码 + 评估指标 | 有片段无评估 | 无 |
-| A2 | 成本/延迟数据 | 有 token/ $/延迟实测 | 有数字无场景 | 无 |
-| A3 | ❌/✅ 反例对比 | 有失败案例 + 改进路径 | 只有成功案例 | 无对比 |
-| A4 | 提示词版本管理 | 有版本对比 + A/B 数据 | 有提示无对比 | 无 |
-| A5 | 安全/合规 | 有 PII/越狱防护 + 审计 | 有提及无方案 | 无 |
+| C4 | 实战部署指导 | 有场景化推荐（"X 场景用 Y"） | 有泛泛建议 | 无部署 |
+| C5 | 框架对比 | 多框架横向对比 + 选型建议 | 有对比无建议 | 无对比 |
+| C6 | 性能基准 | 有 benchmark 数据 + 调优前后对比 | 有数据无对比 | 无基准 |
 
-### 写作要求
+### MOC 子目录约定
 
-（待 Phase X 填实）
+复杂主题用 MOC 目录：
+- `rag/` — RAG 全景（检索 / rerank / 生成 / 评估 / 生产 / 前沿）
+- `agent/` — Agent 框架（ReAct / Plan-Execute / Multi-Agent）
+- `prompts/` — Prompt 工程
+- `llm-inference/` — LLM 推理优化
+- `fine-tuning/` — 微调方法
+- `eval/` — 评估方法
 
-### 子目录约定
+每个 MOC 目录下用数字编号原子笔记（如 `01-retrieval.md`）。
 
-（待 Phase X 填实）
+### 互链要求
+
+- MOC 的 README.md 必须链向所有原子笔记
+- 每个原子笔记必须回链 MOC README + 至少 2 个相关原子
