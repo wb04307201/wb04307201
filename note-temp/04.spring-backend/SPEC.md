@@ -1,6 +1,6 @@
 # SPEC for note-temp/04.spring-backend/
 
-> **Inherits from**: [../../SPEC.md](../../SPEC.md)
+> **Inherits from**: [../SPEC.md](../SPEC.md)
 > **Mode**: append + override
 > **Updated**: 2026-08-11
 

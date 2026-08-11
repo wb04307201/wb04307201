@@ -1,6 +1,6 @@
 # SPEC for note-temp/09.ai-applications/
 
-> **Inherits from**: [../../SPEC.md](../../SPEC.md)
+> **Inherits from**: [../SPEC.md](../SPEC.md)
 > **Mode**: append + override
 > **Updated**: 2026-08-11
 
