@@ -197,13 +197,13 @@ graph LR
 
 ## 七、面试陷阱速览
 
-> 完整陷阱 + 反直觉 + 30 秒话术见 [13.split-hairs Transformer](../../../13.split-hairs/11.ai/transformer/README.md)
+> 完整陷阱 + 反直觉 + 30 秒话术见 [13.split-hairs Transformer](../../../note/13.split-hairs/11.ai/transformer/README.md)
 
 ---
 
 ## 相关章节
 
-- 上游：[LLM 基础](../llm-basics/README.md) — 大语言模型概述
+- 上游：[LLM 基础](../04-llm/README.md) — 大语言模型概述
 - 关联：[Token 与计费](../../02-technology-stack/token-billing/README.md) — Transformer 的处理单位
 - 应用：[RAG](../../08-llmops/01-rag-vs-finetuning/README.md) — Transformer 的核心应用场景
 
