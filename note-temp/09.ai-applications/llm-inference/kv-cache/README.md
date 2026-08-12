@@ -211,7 +211,7 @@ GQA 是 MQA 的**泛化**：当 n_groups = 1 时，GQA 退化为 MQA。工业上
 
 ## 🔗 兄弟章节
 
-- **L1 同级**：[Transformer 架构](../../../../08.ai-foundations/03-transformer/transformer-architecture.md) / [注意力机制](../../../../08.ai-foundations/03-transformer/attention-mechanism.md) / [Flash Attention](../flash-attention/README.md)
+- **L1 同级**：[Transformer 架构](../../../08.ai-foundations/03-transformer/transformer-architecture.md) / [注意力机制](../../../08.ai-foundations/03-transformer/attention-mechanism.md) / [Flash Attention](../flash-attention/README.md)
 - **本专题**：[PagedAttention](../paged-attention/README.md) / [推理性能指标](../inference-metrics/README.md) / [推理框架对比](../inference-frameworks/README.md)
 - **咬文嚼字**：KV Cache + MQA/GQA/MLA 面试题（⚠️ 待 Phase 1+ 迁入；占位 `../../../../12.interview/11.ai/kv-cache-mqa-gqa-mla/`）
 
