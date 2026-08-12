@@ -81,7 +81,7 @@ class BlockManager:
 
 - **本专题**：[KV Cache](../kv-cache/README.md)（推理复杂度 + MQA/GQA/MLA） / [Continuous Batching](../continuous-batching/README.md) / [推理框架对比](../inference-frameworks/README.md)
 - **L1**：[Flash Attention](../flash-attention/README.md) — 同样 IO 优化思路
-- **12.story**：[46-llm-inference](../../../../note/12.story/46-llm-inference.md)（餐厅叙事版）
+- **12.story**：46-llm-inference（⚠️ 待 Phase 1+ 迁入；占位 `../../../../13.story/46-llm-inference.md`）（餐厅叙事版）
 
 ---
 

@@ -12,7 +12,7 @@
 
 ## 反向链
 
-- [ralph-wiggum-loop](../../../../note/11.ai/03-engineering/loop-engineering/ralph-wiggum-loop.md)
+- ⚠️ ralph-wiggum-loop — Phase 8 后路径：`../../../../03-engineering/loop-engineering/ralph-wiggum-loop.md`（pre-existing in `note/`，合并前不动）
 
 ← [返回 Agent MOC](../README.md) · 同级：[agent-context](../agent-context/README.md) · [agent-memory](../agent-memory/README.md)
 
@@ -31,7 +31,7 @@ Q：在构建 AI Agent 系统时，ReAct 和 Plan-and-Execute 是两种主流的
 3. **重规划机制**：Plan-and-Execute 的核心是"Plan Repair"能力
 4. **何时反选**：什么场景下 ReAct 比 Plan-and-Execute 更优
 
-完整 5-7 道精选面试题见 [13.split-hairs/11.ai/react-vs-plan-execute](../../../../note/13.split-hairs/11.ai/react-vs-plan-execute/README.md)。
+完整 5-7 道精选面试题见 [13.split-hairs/11.ai/react-vs-plan-execute](../../../../12.interview/11.ai/react-vs-plan-execute/README.md)（⚠️ 待 Phase 1+ 迁入）。
 
 ---
 
@@ -93,9 +93,9 @@ Q：在构建 AI Agent 系统时，ReAct 和 Plan-and-Execute 是两种主流的
 ---
 
 ## 速查 · 关联资源
-- 🆕 **入口路由**：[分层路由架构](../../../../note/11.ai/04-architecture/routing-architecture/README.md) —— 简单问答 Fast Path + 复杂 Agent Path 的统一入口设计
-- **餐厅叙事**：[12.story/02-system-architecture-evolution.md](../../../../note/12.story/02-system-architecture-evolution.md) —— 阿明餐厅选型 ReAct vs Plan-and-Execute 实战
-- **面试题**：[13.split-hairs/11.ai/react-vs-plan-execute](../../../../note/13.split-hairs/11.ai/react-vs-plan-execute/README.md) —— 5-7 道精选题
+- 🆕 **入口路由**：分层路由架构（⚠️ 待 Phase 1+ 迁入；占位 `[../architecture/routing-architecture/](../architecture/routing-architecture/README.md)`）
+- **餐厅叙事**：⚠️ 待 Phase 1+ 迁入（占位 `[../../../../13.story/02-system-architecture-evolution.md](../../../../13.story/02-system-architecture-evolution.md)`）
+- **面试题**：[13.split-hairs/11.ai/react-vs-plan-execute](../../../../12.interview/11.ai/react-vs-plan-execute/README.md) —— 5-7 道精选题（⚠️ 待 Phase 1+ 迁入）
 - **同级**：[agent-architecture](../agent-architecture/README.md) —— 4 模式综述 + DAG 决策树
 - **相关**：[agent-context/05-sub-agents](../agent-context/05-sub-agents-decomposition.md) —— Multi-Agent Sub-Agents 实战
 

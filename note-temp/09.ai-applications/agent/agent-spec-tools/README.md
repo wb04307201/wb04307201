@@ -115,10 +115,10 @@ module:
 
 ## 六、与其他章节的关系
 
-- 概念层：[Harness Engineering](../../../../note/11.ai/03-engineering/harness-engineering/README.md) — 这三个工具都是 Harness 的具体实现
-- 同栏目：[Claude Code 实践](../../../../note/11.ai/03-engineering/claude-code-practices/README.md) — Skill 设计方法论 + Hit Rate 优化
+- 概念层：Harness Engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../execution-patterns/harness-engineering/]`） — 这三个工具都是 Harness 的具体实现
+- 同栏目：Claude Code 实践（⚠️ 待 Phase 1+ 迁入；占位 `[../coding-agents/claude-code-practices/]`） — Skill 设计方法论 + Hit Rate 优化
 - 实战：[生产级 Agent](../production-agent/README.md) — 生产环境的 Agent 工程实践
-- 循环：[Loop Engineering](../../../../note/11.ai/03-engineering/loop-engineering/README.md) — Agent 循环调用 + [Ralph Wiggum Loop](../../../../note/11.ai/03-engineering/loop-engineering/ralph-wiggum-loop.md)
+- 循环：Loop Engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../execution-patterns/loop-engineering/]`）— Agent 循环调用 + Ralph Wiggum Loop（pre-existing in `note/`，保持 unstaged）
 - **正交关系**：[Coding Agents](../coding-agents/README.md) — Superpowers / Spec-Kit / OpenSpec 都**运行在** Coding Agent 上（Claude Code / Codex / OpenCode / OMP）
 
 ## 反向链

@@ -197,15 +197,15 @@ graph LR
 
 ## 七、面试陷阱速览
 
-> 完整陷阱 + 反直觉 + 30 秒话术见 [13.split-hairs Transformer](../../../note/13.split-hairs/11.ai/transformer/README.md)
+> 完整陷阱 + 反直觉 + 30 秒话术见 [13.split-hairs Transformer](../../../12.interview/11.ai/transformer/README.md)（⚠️ 待 Phase 1+ 迁入）
 
 ---
 
 ## 相关章节
 
 - 上游：[LLM 基础](../04-llm/README.md) — 大语言模型概述
-- 关联：[Token 与计费](../../02-technology-stack/token-billing/README.md) — Transformer 的处理单位
-- 应用：[RAG](../../08-llmops/01-rag-vs-finetuning/README.md) — Transformer 的核心应用场景
+- 关联：Token 与计费 — ⚠️ 待 Phase 1+ 迁入（[`../../09.ai-applications/llm-inference/token-billing/README.md`](../../09.ai-applications/llm-inference/token-billing/README.md) 占位）
+- 应用：[RAG](../../09.ai-applications/rag/README.md) — Transformer 的核心应用场景
 
 
 - [single-epoch-and-config-evidence](../dropout-in-llm/single-epoch-and-config-evidence.md)

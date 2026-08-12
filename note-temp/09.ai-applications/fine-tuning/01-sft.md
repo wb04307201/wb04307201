@@ -149,7 +149,7 @@ trainer.train()
 | 5 | [新方法](05-newer-methods.md) | KTO/IPO/SimPO/ORPO 2024+ |
 | 6 | [PEFT/LoRA](06-peft-lora.md) | 参数高效微调 = 用 <1% 参数适配大模型（DoRA 强 LoRA 5-10%） |
 
-- **L3 同级**：[Harness Engineering](../../../note/11.ai/03-engineering/harness-engineering/README.md) 顺带提
-- **咬文嚼字**：[面试深挖](../../../note/13.split-hairs/11.ai/agent-performance-evaluation/README.md)
+- **L3 同级**：Harness Engineering（⚠️ 待 Phase 1+ 迁入；占位 `../agent/execution-patterns/harness-engineering/`） 顺带提
+- **咬文嚼字**：面试深挖（⚠️ 待 Phase 1+ 迁入；占位 `../../../12.interview/11.ai/agent-performance-evaluation/`）
 
 ← [返回 09.ai-applications/fine-tuning](../README.md)

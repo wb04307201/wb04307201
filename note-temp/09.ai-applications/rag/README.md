@@ -38,9 +38,9 @@
 
 ## 尚未迁移的 RAG 子环节
 
-以下检索链路子章节仍在 `note/11.ai/02-technology-stack/`，待后续任务迁入本 MOC：
+以下检索链路子章节占位路径已映射（`./<topic>/`），待 Phase 1+ 迁入本 MOC：
 
-[Query Rewrite](../../../note/11.ai/02-technology-stack/query-rewrite/README.md) · [Hybrid Search](../../../note/11.ai/02-technology-stack/hybrid-search/README.md) · [Reranker](../../../note/11.ai/02-technology-stack/reranker/README.md) · [Chunking](../../../note/11.ai/02-technology-stack/chunking-strategies/README.md) · [Embedding Models](../../../note/11.ai/02-technology-stack/embedding-models/README.md) · [Lost in Middle](../../../note/11.ai/02-technology-stack/lost-in-middle/README.md) · [知识入库流水线](../../../note/11.ai/02-technology-stack/knowledge-ingestion-pipeline/README.md) · [长文档处理](../../../note/11.ai/02-technology-stack/long-document-processing/README.md)
+⚠️ [Query Rewrite](./query-rewrite/README.md) · ⚠️ [Hybrid Search](./hybrid-search/README.md) · ⚠️ [Reranker](./reranker/README.md) · ⚠️ [Chunking](./chunking-strategies/README.md) · ⚠️ [Embedding Models](./embedding-models/README.md) · ⚠️ [Lost in Middle](./lost-in-middle/README.md) · ⚠️ [知识入库流水线](./knowledge-ingestion-pipeline/README.md) · ⚠️ [长文档处理](./long-document-processing/README.md)
 
 ---
 

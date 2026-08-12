@@ -91,8 +91,8 @@ model.quantize(calibration_data, quant_config={"zero_point": True, "q_group_size
 ## 🔗 兄弟章节
 
 - **本专题**：[KV Cache](../kv-cache/README.md) / [推理框架对比](../inference-frameworks/README.md) / [MoE 推理](../moe-inference/README.md)
-- **L1**：[量化原理](../../../../note/11.ai/01-fundamentals/) 顺带提
-- **咬文嚼字**：[面试深挖版](../../../../note/13.split-hairs/11.ai/llm-benchmark/README.md)
+- **L1**：量化原理（⚠️ 待 Phase 1+ 迁入；占位 `../../../../08.ai-foundations/02-deep-learning/`） 顺带提
+- **咬文嚼字**：面试深挖版（⚠️ 待 Phase 1+ 迁入；占位 `../../../../12.interview/11.ai/llm-benchmark/`）
 
 ---
 

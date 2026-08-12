@@ -502,9 +502,9 @@ oh-my-opencode 会自动分配任务给最适合的 Agent（Gemini 处理前端�
 ## 十、相关章节
 
 - **横向对比**：[Coding Agents README](README.md)
-- **Harness 概念**：[Harness Engineering](../../../../note/11.ai/03-engineering/harness-engineering/README.md)
-- **循环调用**：[Loop Engineering](../../../../note/11.ai/03-engineering/loop-engineering/README.md)
-- **本地部署**：[Local Deployment](../../../../note/11.ai/03-engineering/local-deployment/README.md) — Ollama 与 OpenCode 集成
+- **Harness 概念**：Harness Engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../../execution-patterns/harness-engineering/]`）
+- **循环调用**：Loop Engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../../execution-patterns/loop-engineering/]`）
+- **本地部署**：Local Deployment（⚠️ 待 Phase 1+ 迁入；占位 `./local-deployment/README.md`） — Ollama 与 OpenCode 集成
 - **规范工具**：[Agent Spec Tools](../agent-spec-tools/README.md)
 
 ← [返回: Coding Agents 对比](README.md)

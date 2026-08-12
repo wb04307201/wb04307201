@@ -11,7 +11,7 @@ module:
 
 > ⬅️ [返回 RAG MOC](./README.md)
 
-> 一句话定位：**没有拒答机制的 RAG = 强答 = 幻觉 = 信任崩塌**。完整体系基于 [主模块 · RAG vs Fine-tuning 主章节](./03-rag-vs-finetuning.md) + [LLM 幻觉防御专题](../../../note/13.split-hairs/11.ai/hallucination/README.md)。面试速查版见 [13.split-hairs · rag-out-of-domain-rejection](../../../note/13.split-hairs/11.ai/rag-out-of-domain-rejection/README.md)。
+> 一句话定位：**没有拒答机制的 RAG = 强答 = 幻觉 = 信任崩塌**。完整体系基于 [主模块 · RAG vs Fine-tuning 主章节](./03-rag-vs-finetuning.md) + [LLM 幻觉防御专题](../../../12.interview/11.ai/hallucination/README.md)（⚠️ 待 Phase 1+ 迁入）。面试速查版见 [13.split-hairs · rag-out-of-domain-rejection](../../../12.interview/11.ai/rag-out-of-domain-rejection/README.md)（⚠️ 待 Phase 1+ 迁入）。
 
 ---
 
@@ -498,19 +498,19 @@ Q3：用户对拒答接受度？
 
 **主模块**：
 - [RAG vs Fine-tuning 主章节](./03-rag-vs-finetuning.md) —— 三大定制策略选型
-- [LLM 幻觉防御专题](../../../note/13.split-hairs/11.ai/hallucination/README.md) —— 233 行（生产要素）
-- [RAG 架构面试题](../../../note/13.split-hairs/11.ai/rag/README.md) —— RAG 基础
+- LLM 幻觉防御专题（⚠️ 待 Phase 1+ 迁入；占位 `../../../12.interview/11.ai/hallucination/`） —— 233 行（生产要素）
+- RAG 架构面试题（⚠️ 待 Phase 1+ 迁入；占位 `../../../12.interview/11.ai/rag/`） —— RAG 基础
 
 **兄弟专题**：
 - [Agent Memory 共享专章](../agent/agent-memory/shared-memory.md) —— 多 Agent 共享
-- [Claude Code Agentic Search 专题](../../../note/13.split-hairs/11.ai/claude-code-agentic-search/README.md) —— AI Coding 反 RAG
+- Claude Code Agentic Search 专题（⚠️ 待 Phase 1+ 迁入；占位 `../../../12.interview/11.ai/claude-code-agentic-search/`） —— AI Coding 反 RAG
 
 **LLMOps**：
 - [LLM Evaluation](../eval/README.md)
-- [LLM Security](../../../note/11.ai/08-llmops/05-llm-security/README.md)
+- LLM Security（⚠️ 待 Phase 1+ 迁入；占位 `../../llm-inference/llmops/05-llm-security/`）
 
 **面试速查**：
-- [13.split-hairs · rag-out-of-domain-rejection](../../../note/13.split-hairs/11.ai/rag-out-of-domain-rejection/README.md) —— 5 拒答模式 + 4 步调优
+- [13.split-hairs · rag-out-of-domain-rejection](../../../12.interview/11.ai/rag-out-of-domain-rejection/README.md) —— 5 拒答模式 + 4 步调优（⚠️ 待 Phase 1+ 迁入）
 
 ---
 
@@ -529,6 +529,6 @@ Q3：用户对拒答接受度？
 | 5 | RAG 超范围拒答（本篇） | 6 大检测机制 + 5 大拒答模式 + 4 步调优 |
 | 6 | [Agentic RAG](./06-agentic-rag.md) | Agentic Search 取代 RAG 索引的极端形态 |
 
-**原 LLMOps 兄弟章节**：[LLMOps 栈](../../../note/11.ai/08-llmops/02-llmops-stack/README.md) / [向量库 vs 缓存](../../../note/11.ai/08-llmops/03-vector-db-vs-cache/README.md) / [LLM 评测](../eval/README.md) / [LLM 安全](../../../note/11.ai/08-llmops/05-llm-security/README.md)
+**原 LLMOps 兄弟章节**：LLMOps 栈 / 向量库 vs 缓存 / LLM 安全（⚠️ 待 Phase 1+ 迁入；占位 `../../llm-inference/llmops/02-llmops-stack/` / `../../llm-inference/llmops/03-vector-db-vs-cache/` / `../../llm-inference/llmops/05-llm-security/`） / [LLM 评测](../eval/README.md)
 
 ← [返回 RAG MOC](./README.md)

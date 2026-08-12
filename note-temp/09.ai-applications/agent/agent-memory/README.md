@@ -13,7 +13,7 @@ module:
 
 > Agent Memory 是 LLM Agent 的核心架构组件。本文从**时间维度**（短期/中期/长期）、**认知科学维度**（情景/语义/程序性）、**工程实现维度**（向量/结构化/文件系统）3 个维度系统讲清楚分类体系，并梳理业界框架（LangChain/LangGraph/Mem0/Letta）的实现差异。
 
-> **面试场景**：这是高频 AI 架构面试题——很多人只想到"对话历史=Memory"，但完整分类是 3 维度、5 大类。面试版（30/60/90 秒话术）见 [咬文嚼字·11.ai/agent-memory-classification](../../../../note/13.split-hairs/11.ai/agent-memory-classification/README.md)。
+> **面试场景**：这是高频 AI 架构面试题——很多人只想到"对话历史=Memory"，但完整分类是 3 维度、5 大类。面试版（30/60/90 秒话术）见 [咬文嚼字·11.ai/agent-memory-classification](../../../../12.interview/11.ai/agent-memory-classification/README.md)（⚠️ 待 Phase 1+ 迁入）。
 
 ---
 
@@ -230,7 +230,7 @@ Agent 整体架构：
 
 ### 5.3 Memory × 驾驭演进主线
 
-Memory 演进是 [驾驭演进主线](../../../../note/11.ai/04-architecture/llm-control-evolution/README.md) 的具体展开：
+Memory 演进是 驾驭演进主线 的具体展开（⚠️ 待 Phase 1+ 迁入；占位 `[../architecture/llm-control-evolution/](../architecture/llm-control-evolution/README.md)`）：
 
 | 驾驭阶段 | Memory 形态 |
 |---------|------------|
@@ -285,17 +285,17 @@ Memory 演进是 [驾驭演进主线](../../../../note/11.ai/04-architecture/llm
 ## 八、相关章节
 
 **面试题**：
-- [咬文嚼字·11.ai/agent-memory-classification（30/60/90 秒话术）](../../../../note/13.split-hairs/11.ai/agent-memory-classification/README.md)
-- 🆕 **[咬文嚼字·multi-agent-shared-memory 多 Agent 共享记忆](../../../../note/13.split-hairs/11.ai/multi-agent-shared-memory/README.md)** —— 5 大内容维度 + 3 实现层 + 6 模式 + 5 反模式 + 90 秒话术
+- 咬文嚼字·11.ai/agent-memory-classification（30/60/90 秒话术） — ⚠️ 待 Phase 1+ 迁入（占位 `[../../../../12.interview/11.ai/agent-memory-classification/](../../../../12.interview/11.ai/agent-memory-classification/README.md)`）
+- 🆕 **咬文嚼字·multi-agent-shared-memory 多 Agent 共享记忆** — ⚠️ 待 Phase 1+ 迁入（占位 `[../../../../12.interview/11.ai/multi-agent-shared-memory/](../../../../12.interview/11.ai/multi-agent-shared-memory/README.md)`）—— 5 大内容维度 + 3 实现层 + 6 模式 + 5 反模式 + 90 秒话术
 
 **同主模块**：
 - [Agent 执行架构（DAG/ReAct/Plan）](../agent-architecture/README.md)
-- [驾驭演进主线（Prompt→Context→Harness→Loop）](../../../../note/11.ai/04-architecture/llm-control-evolution/README.md)
-- [智能系统分层架构](../../../../note/11.ai/04-architecture/intelligent-system-layers/README.md)
+- 驾驭演进主线（Prompt→Context→Harness→Loop） — ⚠️ 待 Phase 1+ 迁入（占位 `[../architecture/llm-control-evolution/](../architecture/llm-control-evolution/README.md)`）
+- 智能系统分层架构 — ⚠️ 待 Phase 1+ 迁入（占位 `[../architecture/intelligent-system-layers/](../architecture/intelligent-system-layers/README.md)`）
 
 **实战框架**：
-- [LangGraph（Checkpoint）](../../../../note/11.ai/03-engineering/ai-platforms/langgraph.md)
-- [Context Engineering（Memory 是 Context 三大件之一）](../../../../note/11.ai/02-technology-stack/context-engineering/README.md)
+- LangGraph（Checkpoint） — ⚠️ 待 Phase 1+ 迁入（占位 `[../../spec-tools/ai-platforms/langgraph/](../../spec-tools/ai-platforms/langgraph/README.md)`）
+- Context Engineering（Memory 是 Context 三大件之一） — ⚠️ 待 Phase 1+ 迁入（占位 `[../../spec-tools/context-engineering/](../../spec-tools/context-engineering/README.md)` 或 `../../../prompts/context-engineering/`）
 - 🆕 **长上下文全景（Memory 是 6 策略之一）**：[Agent 长上下文架构](../agent-context/README.md) —— Chunking / Memory / RAG / Sliding Window / Sub-Agents / Long-Context LLMs 6 策略组合决策树
 
 **多 Agent 共享专章（跨域交叉）**：

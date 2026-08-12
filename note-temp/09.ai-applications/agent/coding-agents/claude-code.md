@@ -13,7 +13,7 @@ module:
 
 > Anthropic 官方 CLI（商业闭源）。**唯一锁定单一提供商**的 Coding Agent —— 只能用 Claude 模型，但换来 5 大 Harness 扩展点（CLAUDE.md / Hooks / Skills / Plugins / LSP / MCP）最成熟的生态。
 
-> 📖 **深度版**：Claude Code 的 Harness 5 大扩展点完整细节见 [Claude Code Practices](../../../../note/11.ai/03-engineering/claude-code-practices/README.md)（112 行深度文）。本篇聚焦速查 + 模型/MCP 配置 + 与其他 agent 对比。
+> 📖 **深度版**：Claude Code 的 Harness 5 大扩展点完整细节见 Claude Code Practices（⚠️ 待 Phase 1+ 迁入；占位 `./claude-code-practices/README.md`）（112 行深度文）。本篇聚焦速查 + 模型/MCP 配置 + 与其他 agent 对比。
 
 ---
 
@@ -350,11 +350,11 @@ $ claude --dangerously-skip-permissions
 
 ## 十、相关章节
 
-- **深度版**：[Claude Code Practices](../../../../note/11.ai/03-engineering/claude-code-practices/README.md) — Harness 5 扩展点 + 3 大部署模式 + DRI 治理
-- **Skill 设计**：[Skill 设计方法论](../../../../note/11.ai/03-engineering/claude-code-practices/skill-design.md) / [Skill 命中率](../../../../note/11.ai/03-engineering/claude-code-practices/skill-hit-rate.md)
+- **深度版**：Claude Code Practices（⚠️ 待 Phase 1+ 迁入；占位 `./claude-code-practices/README.md`） — Harness 5 扩展点 + 3 大部署模式 + DRI 治理
+- **Skill 设计**：Skill 设计方法论 / Skill 命中率（⚠️ 待 Phase 1+ 迁入；占位 `./claude-code-practices/skill-design.md` / `./claude-code-practices/skill-hit-rate.md`）
 - **横向对比**：[Coding Agents README](README.md)
 - **规范工具**：[Agent Spec Tools](../agent-spec-tools/README.md) — Superpowers / Spec-Kit / OpenSpec（Claude Code 是这 3 工具的主要载体）
-- **Harness 概念**：[Harness Engineering](../../../../note/11.ai/03-engineering/harness-engineering/README.md) — Claude Code 5 扩展点都是 Harness 实现
-- **代码审核**：[AI Code Review](../../../../note/11.ai/03-engineering/ai-code-review/README.md) — Claude Code 生成的代码怎么审核
+- **Harness 概念**：Harness Engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../../execution-patterns/harness-engineering/]`） — Claude Code 5 扩展点都是 Harness 实现
+- **代码审核**：AI Code Review（⚠️ 待 Phase 1+ 迁入；占位 `./ai-code-review/README.md`） — Claude Code 生成的代码怎么审核
 
 ← [返回: Coding Agents 对比](README.md)

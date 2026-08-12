@@ -13,7 +13,7 @@ module:
 
 > 2025 年 AI Coding 领域最大的范式转变：Claude Code 等主流工具**主动放弃 RAG**，改用 Agentic Search。本文从工程问题、检索范式、Harness 设计、场景边界 4 个层面系统讲清楚。
 
-> **面试场景**：这是反直觉的高频 AI 面试题——很多人以为 RAG 是 AI Coding 标配，但 Claude Code 官方明确否定。面试版（30/60/90 秒话术）见 [咬文嚼字·11.ai/claude-code-agentic-search](../../../note/13.split-hairs/11.ai/claude-code-agentic-search/README.md)。
+> **面试场景**：这是反直觉的高频 AI 面试题——很多人以为 RAG 是 AI Coding 标配，但 Claude Code 官方明确否定。面试版（30/60/90 秒话术）见 [咬文嚼字·11.ai/claude-code-agentic-search](../../../12.interview/11.ai/claude-code-agentic-search/README.md)（⚠️ 待 Phase 1+ 迁入）。
 
 ---
 
@@ -229,7 +229,7 @@ Anthropic 官方原话："**围绕模型构建的生态系统（Harness）对 Cl
 
 ## 六、与"驾驭演进"主线的关联
 
-Agentic Search 是 AI Coding 检索范式的演进，**与 [驾驭演进主线（Prompt → Context → Harness → Loop）](../../../note/11.ai/04-architecture/llm-control-evolution/README.md) 同源**：
+Agentic Search 是 AI Coding 检索范式的演进，**与 驾驭演进主线（Prompt → Context → Harness → Loop）（⚠️ 待 Phase 1+ 迁入；占位 `../../agent/architecture/llm-control-evolution/`） 同源**：
 
 | 阶段 | 类比 |
 |------|------|
@@ -243,14 +243,14 @@ Agentic Search 是 AI Coding 检索范式的演进，**与 [驾驭演进主线�
 ## 七、相关章节
 
 **面试题**：
-- [咬文嚼字·11.ai/claude-code-agentic-search（30/60/90 秒话术）](../../../note/13.split-hairs/11.ai/claude-code-agentic-search/README.md)
+- 咬文嚼字·11.ai/claude-code-agentic-search（30/60/90 秒话术）（⚠️ 待 Phase 1+ 迁入；占位 `../../../12.interview/11.ai/claude-code-agentic-search/`）
 
 **同主模块**：
-- [Claude Code 最佳实践](../../../note/11.ai/03-engineering/claude-code-practices/README.md)
+- Claude Code 最佳实践（⚠️ 待 Phase 1+ 迁入；占位 `../../agent/coding-agents/claude-code-practices/`）
 - [RAG vs Finetuning](./03-rag-vs-finetuning.md)
 
 **架构视角**：
-- [11.ai 驾驭演进主线](../../../note/11.ai/04-architecture/llm-control-evolution/README.md)
+- 11.ai 驾驭演进主线（⚠️ 待 Phase 1+ 迁入；占位 `../../agent/architecture/llm-control-evolution/`）
 - [RAG 范式演进四阶段](./02-paradigm-evolution.md) — Agentic Search 是 Agentic RAG 阶段在 AI Coding 场景的极端形态
 - [RAG Pipeline 5 阶段](./01-pipeline.md) — 被 Agentic Search 取代的那条索引链路
 

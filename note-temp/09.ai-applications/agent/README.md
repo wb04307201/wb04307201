@@ -49,12 +49,12 @@
 
 ## 尚未迁移的 Agent 相关章节
 
-以下 Agent 相关主题仍在 `note/11.ai/`，待后续任务迁入本 MOC：
+以下 Agent 相关主题将在 Phase 1+ 迁入本 MOC（占位路径已映射）：
 
-- `note/11.ai/02-technology-stack/function-calling/` — Function Calling 工具调用
-- `note/11.ai/02-technology-stack/context-engineering/` — Context Engineering
-- `note/11.ai/04-architecture/routing-architecture/` — 入口路由架构
-- `note/11.ai/04-architecture/intelligent-system-layers/` — 智能系统分层
+- ⚠️ Function Calling 工具调用 — [`./spec-tools/function-calling/`](./spec-tools/function-calling/README.md)
+- ⚠️ Context Engineering — [`../prompts/context-engineering/`](../prompts/context-engineering/README.md)
+- ⚠️ 入口路由架构 — [`./architecture/routing-architecture/`](./architecture/routing-architecture/README.md)
+- ⚠️ 智能系统分层 — [`./architecture/intelligent-system-layers/`](./architecture/intelligent-system-layers/README.md)
 
 ---
 

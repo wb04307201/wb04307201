@@ -86,8 +86,8 @@ curl http://localhost:8000/v1/chat/completions \
 ## 🔗 兄弟章节
 
 - **本专题**：[KV Cache](../kv-cache/README.md) / [PagedAttention](../paged-attention/README.md) / [推理指标](../inference-metrics/README.md)
-- **L1**：[MoE 架构](../../../../note/11.ai/01-fundamentals/moe-architecture/README.md) / [Flash Attention](../flash-attention/README.md)
-- **LLMOps**：[推理监控](../../../../note/11.ai/08-llmops/) 顺带提
+- **L1**：MoE 架构（⚠️ 待 Phase 1+ 迁入；占位 `../../../../08.ai-foundations/02-deep-learning/moe-architecture/`） / [Flash Attention](../flash-attention/README.md)
+- **LLMOps**：推理监控（⚠️ 待 Phase 1+ 迁入；占位 `../llmops/`） 顺带提
 
 ---
 

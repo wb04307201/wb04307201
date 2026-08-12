@@ -96,8 +96,8 @@ vllm serve DeepSeek-V3 \
 
 ## 🔗 兄弟章节
 
-- **L1**：[MoE 架构](../../../../note/11.ai/01-fundamentals/moe-architecture/README.md)
+- **L1**：MoE 架构（⚠️ 待 Phase 1+ 迁入；占位 `../../../../08.ai-foundations/02-deep-learning/moe-architecture/`）
 - **本专题**：[KV Cache](../kv-cache/README.md) / [PagedAttention](../paged-attention/README.md) / [推理框架对比](../inference-frameworks/README.md)
-- **LLMOps**：[推理部署](../../../../note/11.ai/08-llmops/) 顺带提
+- **LLMOps**：推理部署（⚠️ 待 Phase 1+ 迁入；占位 `../llmops/`） 顺带提
 
 ← [返回 LLM Inference MOC](../README.md)

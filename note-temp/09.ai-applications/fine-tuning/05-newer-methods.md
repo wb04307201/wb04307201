@@ -194,7 +194,7 @@ AlpacaEval 2.0（越高越好）：
 | 6 | [PEFT/LoRA](06-peft-lora.md) | 参数高效微调 = 用 <1% 参数适配大模型（DoRA 强 LoRA 5-10%） |
 
 - **L2 栈**：[推理优化大专题](../llm-inference/llm-inference-optimization/README.md)
-- **咬文嚼字**：[面试深挖](../../../note/13.split-hairs/11.ai/agent-performance-evaluation/README.md)
+- **咬文嚼字**：面试深挖（⚠️ 待 Phase 1+ 迁入；占位 `../../../12.interview/11.ai/agent-performance-evaluation/`）
 
 ---
 

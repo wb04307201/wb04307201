@@ -431,9 +431,9 @@ $ omp -r  # 弹出选择器
 ## 十、相关章节
 
 - 横向对比：[Coding Agents README](README.md) — 4 agent 选型决策树 + 模型/MCP 配置对比
-- 单工具深度（Claude Code）：[Claude Code Practices](../../../../note/11.ai/03-engineering/claude-code-practices/README.md)
-- 循环调用：[Loop Engineering](../../../../note/11.ai/03-engineering/loop-engineering/README.md) — Ralph Wiggum Loop（Fresh Context + 文件系统持久记忆）
+- 单工具深度（Claude Code）：Claude Code Practices（⚠️ 待 Phase 1+ 迁入；占位 `./claude-code-practices/README.md`）
+- 循环调用：Loop Engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../../execution-patterns/loop-engineering/]`） — Ralph Wiggum Loop（Fresh Context + 文件系统持久记忆，pre-existing in `note/`，保持 unstaged）
 - 规范工具：[Agent Spec Tools](../agent-spec-tools/README.md) — Superpowers / Spec-Kit / OpenSpec
-- 概念层：[Harness Engineering](../../../../note/11.ai/03-engineering/harness-engineering/README.md)
+- 概念层：Harness Engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../../execution-patterns/harness-engineering/]`）
 
 ← [返回: Coding Agents 对比](README.md)

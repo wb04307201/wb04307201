@@ -190,7 +190,7 @@ specify init            # 或 specify init taskify --integration copilot
 
 - 对比总览：[Agent Spec Tools 三工具对比](README.md)
 - 同栏目：[Superpowers](superpowers.md) / [OpenSpec](openspec.md)
-- 概念层：[Harness Engineering](../../../../note/11.ai/03-engineering/harness-engineering/README.md) — Spec-Kit 是"规范型 Harness"
+- 概念层：Harness Engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../execution-patterns/harness-engineering/]`） — Spec-Kit 是"规范型 Harness"
 - 论文：[Spec Kit Agents (arXiv)](https://arxiv.org/html/2604.05278v1) — 多 Agent 架构形式化
 
 ---

@@ -337,7 +337,7 @@ graph TB
 
 ## 面试陷阱速览
 
-> 完整陷阱 + 反直觉 + 30 秒话术见 [13.split-hairs RAG](../../../note/13.split-hairs/11.ai/rag/README.md)
+> 完整陷阱 + 反直觉 + 30 秒话术见 [13.split-hairs RAG](../../../12.interview/11.ai/rag/README.md)（⚠️ 待 Phase 1+ 迁入）
 
 ---
 
@@ -346,8 +346,8 @@ graph TB
 RAG 适合**低频更新、结构化内容**（FAQ / 文档 / 合规），但**不适合高频更新的代码库**——Claude Code 等主流 AI Coding 工具主动放弃了 RAG，改用 Agentic Search。
 
 - 深度原理：[Agentic Search vs RAG](./06-agentic-rag.md)
-- 面试题（高频反直觉）：[为什么 Claude Code 放弃了 RAG](../../../note/13.split-hairs/11.ai/claude-code-agentic-search/README.md)
-- 实践原文：[Claude Code 最佳实践](../../../note/11.ai/03-engineering/claude-code-practices/README.md)
+- 面试题（高频反直觉）：为什么 Claude Code 放弃了 RAG（⚠️ 待 Phase 1+ 迁入；占位 `../../../12.interview/11.ai/claude-code-agentic-search/`）
+- 实践原文：Claude Code 最佳实践（⚠️ 待 Phase 1+ 迁入；占位 `../../agent/coding-agents/claude-code-practices/`）
 
 ---
 
@@ -362,6 +362,6 @@ RAG 适合**低频更新、结构化内容**（FAQ / 文档 / 合规），但**�
 | 5 | [RAG 超范围拒答](./05-out-of-domain-rejection.md) | 6 大检测机制 + 5 大拒答模式 + 4 步调优 |
 | 6 | [Agentic RAG](./06-agentic-rag.md) | Agentic Search 取代 RAG 索引的极端形态 |
 
-**原 LLMOps 兄弟章节**：[LLMOps 栈](../../../note/11.ai/08-llmops/02-llmops-stack/README.md) / [向量库 vs 缓存](../../../note/11.ai/08-llmops/03-vector-db-vs-cache/README.md) / [LLM 评测](../eval/README.md) / [LLM 安全](../../../note/11.ai/08-llmops/05-llm-security/README.md)
+**原 LLMOps 兄弟章节**：LLMOps 栈 / 向量库 vs 缓存 / LLM 安全（⚠️ 待 Phase 1+ 迁入；占位 `../../llm-inference/llmops/02-llmops-stack/` / `../../llm-inference/llmops/03-vector-db-vs-cache/` / `../../llm-inference/llmops/05-llm-security/`） / [LLM 评测](../eval/README.md)
 
 ← [返回 RAG MOC](./README.md) · 📅 2026-06-28 · 更新：2026-07-03

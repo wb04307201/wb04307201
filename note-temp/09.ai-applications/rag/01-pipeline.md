@@ -39,21 +39,21 @@ Answer + 引用
 
 ### Stage 1: Query Rewrite
 
-详见 [Query Rewrite 章节](../../../note/11.ai/02-technology-stack/query-rewrite/README.md)
+详见 Query Rewrite 章节（⚠️ 待 Phase 1+ 迁入；占位 `../query-rewrite/`）
 - 多轮对话 → 上下文融合
 - 口语化 → 关键词改写
 - 模糊问题 → Multi-Query
 
 ### Stage 2: Hybrid Search
 
-详见 [Hybrid Search 章节](../../../note/11.ai/02-technology-stack/hybrid-search/README.md)
+详见 Hybrid Search 章节（⚠️ 待 Phase 1+ 迁入；占位 `../hybrid-search/`）
 - 向量（语义） + BM25（关键词）
 - RRF 融合
 - 召回率 +15-25%
 
 ### Stage 3: Rerank
 
-详见 [Reranker 章节](../../../note/11.ai/02-technology-stack/reranker/README.md)
+详见 Reranker 章节（⚠️ 待 Phase 1+ 迁入；占位 `../reranker/`）
 - Bi-Encoder 召回 Top-100
 - Cross-Encoder 重排 Top-10
 - 精确率 +15-30%
@@ -162,11 +162,11 @@ class SOTARAG:
 
 - **演进主线**：[RAG 范式演进四阶段](./02-paradigm-evolution.md) — 本 5 阶段 Pipeline 正是 **Advanced RAG** 阶段的工程化落地
 - **本原子笔记**：[RAG 评估](./04-evaluation.md) — 5 阶段各环节的量化指标 / [Agentic RAG](./06-agentic-rag.md) — Pipeline 被 Agent 自主编排的极端形态
-- **待迁移子环节**：[Query Rewrite](../../../note/11.ai/02-technology-stack/query-rewrite/README.md) / [Hybrid Search](../../../note/11.ai/02-technology-stack/hybrid-search/README.md) / [Reranker](../../../note/11.ai/02-technology-stack/reranker/README.md) / [Chunking](../../../note/11.ai/02-technology-stack/chunking-strategies/README.md) / [Embedding](../../../note/11.ai/02-technology-stack/embedding-models/README.md)
-- **L1**：[Lost in middle](../../../note/11.ai/02-technology-stack/lost-in-middle/README.md)
-- **咬文嚼字**：[RAG 面试](../../../note/13.split-hairs/11.ai/rag/README.md)
-- **应用场景**：[long-document-processing](../../../note/11.ai/02-technology-stack/long-document-processing/README.md) — RAG Pipeline 在长 PDF/合同场景的 5 阶段实战（含 Docling 解析）
-- **入库侧**：[knowledge-ingestion-pipeline](../../../note/11.ai/02-technology-stack/knowledge-ingestion-pipeline/README.md) — 企业入库 8 阶段（连接 → 解析 → 清洗 → 去重 → Embedding → 入库 → CDC 增量）
+- **待迁移子环节**：Query Rewrite / Hybrid Search / Reranker / Chunking / Embedding（⚠️ 待 Phase 1+ 迁入；占位 `../query-rewrite/` `../hybrid-search/` `../reranker/` `../chunking-strategies/` `../embedding-models/`）
+- **L1**：Lost in middle（⚠️ 待 Phase 1+ 迁入；占位 `../lost-in-middle/`）
+- **咬文嚼字**：RAG 面试（⚠️ 待 Phase 1+ 迁入；占位 `../../../12.interview/11.ai/rag/`）
+- **应用场景**：long-document-processing（⚠️ 待 Phase 1+ 迁入；占位 `../long-document-processing/`） — RAG Pipeline 在长 PDF/合同场景的 5 阶段实战（含 Docling 解析）
+- **入库侧**：knowledge-ingestion-pipeline（⚠️ 待 Phase 1+ 迁入；占位 `../knowledge-ingestion-pipeline/`） — 企业入库 8 阶段（连接 → 解析 → 清洗 → 去重 → Embedding → 入库 → CDC 增量）
 
 ---
 

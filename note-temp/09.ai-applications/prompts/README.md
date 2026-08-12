@@ -40,10 +40,10 @@
 
 ## 尚未迁移的 Prompt 相关章节
 
-以下 Prompt 相关主题仍在 `note/11.ai/`，待后续任务迁入本 MOC：
+以下 Prompt 相关主题仍在迁移前位置（Phase 8 后将切到 `note-temp/<planned-path>` 占位），待后续任务迁入本 MOC：
 
-- `note/11.ai/02-technology-stack/function-calling/` — Function Calling（结构化 Prompt 输出）
-- `note/11.ai/02-technology-stack/context-engineering/` — Context Engineering（广义 Prompt 设计）
+- ⚠️ Function Calling（结构化 Prompt 输出） — `[../agent/spec-tools/function-calling/](../agent/spec-tools/function-calling/README.md)`（待 Phase 1+ 迁入）
+- ⚠️ Context Engineering（广义 Prompt 设计） — `[./context-engineering/](./context-engineering/README.md)`（待 Phase 1+ 迁入）
 
 ---
 

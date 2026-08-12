@@ -383,8 +383,8 @@ Codex Pro 用户可在 ChatGPT 网页直接派发 Codex 任务，手机端也能
 ## 十、相关章节
 
 - **横向对比**：[Coding Agents README](README.md) — 4 agent 选型决策树 + wire_api/base_url 全套配置对比
-- **循环调用**：[Loop Engineering](../../../../note/11.ai/03-engineering/loop-engineering/README.md) — Ralph Wiggum Loop（Codex 也支持 `/goal` 长任务）
-- **Harness 概念**：[Harness Engineering](../../../../note/11.ai/03-engineering/harness-engineering/README.md)
+- **循环调用**：Loop Engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../../execution-patterns/loop-engineering/]`） — Ralph Wiggum Loop（Codex 也支持 `/goal` 长任务，pre-existing in `note/`，保持 unstaged）
+- **Harness 概念**：Harness Engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../../execution-patterns/harness-engineering/]`）
 - **规范工具**：[Agent Spec Tools](../agent-spec-tools/README.md) — Spec-Kit 35 集成兼容 Codex
 
 ← [返回: Coding Agents 对比](README.md)

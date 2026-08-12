@@ -16,7 +16,7 @@ module:
 ## 反向链
 
 - [agent-architecture](../agent-architecture/README.md)
-- [harness-engineering](../../../../note/11.ai/03-engineering/harness-engineering/README.md)
+- harness-engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../../execution-patterns/harness-engineering/]`）
 
 ← [返回: L4 架构设计](../README.md)
 
@@ -29,12 +29,12 @@ module:
 | # | 组件 | 文章 | 解决什么 |
 |---|------|------|---------|
 | 1 | 架构选型 | [agent-architecture](../agent-architecture/README.md) | DAG vs ReAct vs Plan-Execute |
-| 2 | Harness 约束 | [harness-engineering](../../../../note/11.ai/03-engineering/harness-engineering/README.md) | Prompt/工具/输出约束 |
-| 3 | Loop 兜底 | [loop-engineering](../../../../note/11.ai/03-engineering/loop-engineering/README.md) | 循环调用 + Verifier |
+| 2 | Harness 约束 | harness-engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../../execution-patterns/harness-engineering/]`） | Prompt/工具/输出约束 |
+| 3 | Loop 兜底 | loop-engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../../execution-patterns/loop-engineering/]`） | 循环调用 + Verifier |
 | 4 | 可靠性 | [agent-reliability](../agent-reliability/README.md) | 4 层防线防跑偏 |
 | 5 | Memory | [agent-memory](../agent-memory/README.md) | 短期/长期/工作记忆 |
 | 6 | 评测 | [agent-evaluation](../agent-evaluation/README.md) | 6 维评测体系 |
-| 7 | 监控 | [production-stability](../../../../note/11.ai/08-llmops/production-stability/README.md) | 4 维监控 + Trace |
+| 7 | 监控 | production-stability（⚠️ 待 Phase 1+ 迁入；占位 `[../../llm-inference/llmops/production-stability/]`） | 4 维监控 + Trace |
 | 8 | 执行模式 | [agent-execution-patterns](../agent-execution-patterns/README.md) | 4 模式 6 维对比 |
 
 **问题**：知道每个组件 ≠ 知道怎么串起来。本文给**8 步流水线** + **每步 checklist**。
@@ -109,7 +109,7 @@ Q4: 是否需要灵活性 > 稳定性？
 | 输出约束 | 格式 + Schema | "必须返回 JSON，包含 code + explanation" |
 | 流程约束 | 节点顺序 + 分支条件 | "intent_classify → query_order → format_response" |
 
-**深读**：[harness-engineering §三 4 大 Harness 类型](../../../../note/11.ai/03-engineering/harness-engineering/README.md)
+**深读**：harness-engineering §三 4 大 Harness 类型（⚠️ 待 Phase 1+ 迁入；占位 `[../../execution-patterns/harness-engineering/]`）
 
 ---
 
@@ -131,7 +131,7 @@ Q4: 是否需要灵活性 > 稳定性？
 - 语义检查：逻辑一致性 / 业务规则
 - 空结果检测：搜索返回空 → 换策略
 
-**深读**：[loop-engineering §三 3 大核心组件](../../../../note/11.ai/03-engineering/loop-engineering/README.md)
+**深读**：loop-engineering §三 3 大核心组件（⚠️ 待 Phase 1+ 迁入；占位 `[../../execution-patterns/loop-engineering/]`）
 
 ---
 
@@ -205,7 +205,7 @@ Q4: 是否需要灵活性 > 稳定性？
 | 成本 | 单次任务成本 | > $0.10 |
 | 稳定性 | 漂移率 / 错误率 | 漂移 > 0.05 / 错误 > 5% |
 
-**深读**：[production-stability §二 4 维监控](../../../../note/11.ai/08-llmops/production-stability/README.md)
+**深读**：production-stability §二 4 维监控（⚠️ 待 Phase 1+ 迁入；占位 `[../../llm-inference/llmops/production-stability/]`）
 
 ---
 
@@ -278,19 +278,19 @@ Q4: 是否需要灵活性 > 稳定性？
 ### 8 大组件（按流水线顺序）
 
 1. [agent-architecture](../agent-architecture/README.md) — DAG vs ReAct vs Plan-Execute
-2. [harness-engineering](../../../../note/11.ai/03-engineering/harness-engineering/README.md) — 4 大 Harness 类型
-3. [loop-engineering](../../../../note/11.ai/03-engineering/loop-engineering/README.md) — 循环调用 + Verifier
+2. harness-engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../../execution-patterns/harness-engineering/]`） — 4 大 Harness 类型
+3. loop-engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../../execution-patterns/loop-engineering/]`） — 循环调用 + Verifier
 4. [agent-reliability](../agent-reliability/README.md) — 4 层防线
 5. [agent-memory](../agent-memory/README.md) — 4 类 Memory
 6. [agent-evaluation](../agent-evaluation/README.md) — 6 维评测
-7. [production-stability](../../../../note/11.ai/08-llmops/production-stability/README.md) — 4 维监控
+7. production-stability（⚠️ 待 Phase 1+ 迁入；占位 `[../../llm-inference/llmops/production-stability/]`） — 4 维监控
 8. [agent-execution-patterns](../agent-execution-patterns/README.md) — 4 模式 6 维对比
 
 ### 面试题
 
-- [agent-dag-vs-react](../../../../note/13.split-hairs/11.ai/agent-dag-vs-react/README.md) — 架构选型陷阱
-- [agent-reliability](../../../../note/13.split-hairs/11.ai/agent-reliability/README.md) — 4 层防线速查
-- [production-agent-system-design](../../../../note/13.split-hairs/11.ai/production-agent-system-design/README.md) — 端到端综合设计题
+- agent-dag-vs-react — ⚠️ 待 Phase 1+ 迁入（占位 `[../../../../12.interview/11.ai/agent-dag-vs-react/]`） — 架构选型陷阱
+- agent-reliability — ⚠️ 待 Phase 1+ 迁入（占位 `[../../../../12.interview/11.ai/agent-reliability/]`） — 4 层防线速查
+- production-agent-system-design — ⚠️ 待 Phase 1+ 迁入（占位 `[../../../../12.interview/11.ai/production-agent-system-design/]`） — 端到端综合设计题
 
 ---
 

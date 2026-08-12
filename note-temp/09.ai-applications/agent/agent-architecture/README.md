@@ -186,16 +186,16 @@ Q4: 是否需要灵活性 > 稳定性？
 
 ## 八、面试陷阱速览
 
-> 完整陷阱 + 反直觉 + 30 秒话术见 [13.split-hairs Agent 架构](../../../../note/13.split-hairs/11.ai/agent-dag-vs-react/README.md)
+> 完整陷阱 + 反直觉 + 30 秒话术见 [13.split-hairs Agent 架构](../../../../12.interview/11.ai/agent-dag-vs-react/README.md)（⚠️ 待 Phase 1+ 迁入）
 
 ---
 
 ## 相关章节
 
-- 上游：[智能系统分层](../../../../note/11.ai/04-architecture/intelligent-system-layers/README.md) — Agent 在分层架构中的位置
+- 上游：智能系统分层（⚠️ 待 Phase 1+ 迁入；占位 `[../architecture/intelligent-system-layers/](../architecture/intelligent-system-layers/README.md)`） — Agent 在分层架构中的位置
 - 关联：[Agent Memory 架构](../agent-memory/README.md) — Memory × Agent 执行架构（DAG/ReAct/Plan 的 Memory 特殊要求）
-- 关联：[Loop Engineering](../../../../note/11.ai/03-engineering/loop-engineering/README.md) — DAG 的兜底机制
-- 关联：[Harness Engineering](../../../../note/11.ai/03-engineering/harness-engineering/README.md) — DAG 是 Harness 的强约束
+- 关联：Loop Engineering — ⚠️ 待 Phase 1+ 迁入（占位 `[../execution-patterns/loop-engineering/](../execution-patterns/loop-engineering/README.md)`） — DAG 的兜底机制
+- 关联：Harness Engineering — ⚠️ 待 Phase 1+ 迁入（占位 `[../execution-patterns/harness-engineering/](../execution-patterns/harness-engineering/README.md)`） — DAG 是 Harness 的强约束
 - 实战：[生产级 Agent](../production-agent/README.md) — DAG 在生产环境的落地
 
 ← [返回 Agent MOC](../README.md)
@@ -206,4 +206,4 @@ Q4: 是否需要灵活性 > 稳定性？
 
 🆕 **4 模式 6 维深度对比**：[agent-execution-patterns 专题](../agent-execution-patterns/README.md) —— ReAct Thought/Action/Observation 5 硬伤 + Plan-and-Execute 3 大重规划机制（RePlan / Adaptive / Plan Repair）+ 6 维完整打分 + 5 分钟决策树 + 7 道面试题。
 
-🆕 **Agent 评测专题**：[../agent-evaluation/](../agent-evaluation/README.md) —— Agent 评测 6 维（任务 40% / 步骤 20% / 工具 10% / 成本 10% / 满意 15% / 稳定 5%）+ 5 种方法 + 4 阶段 Pipeline 1511 行。面试精选 [13.split-hairs Agent 性能评估](../../../../note/13.split-hairs/11.ai/agent-performance-evaluation/README.md)。
+🆕 **Agent 评测专题**：[../agent-evaluation/](../agent-evaluation/README.md) —— Agent 评测 6 维（任务 40% / 步骤 20% / 工具 10% / 成本 10% / 满意 15% / 稳定 5%）+ 5 种方法 + 4 阶段 Pipeline 1511 行。面试精选 [13.split-hairs Agent 性能评估](../../../../12.interview/11.ai/agent-performance-evaluation/README.md)（⚠️ 待 Phase 1+ 迁入）。

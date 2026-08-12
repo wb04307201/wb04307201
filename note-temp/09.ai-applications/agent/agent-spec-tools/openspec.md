@@ -169,8 +169,8 @@ openspec init
 
 - 对比总览：[Agent Spec Tools 三工具对比](README.md)
 - 同栏目：[Superpowers](superpowers.md) / [Spec-Kit](spec-kit.md)
-- 概念层：[Harness Engineering](../../../../note/11.ai/03-engineering/harness-engineering/README.md) — OpenSpec 是"反馈型 Harness"
-- Claude Code：[Claude Code 实践](../../../../note/11.ai/03-engineering/claude-code-practices/README.md) — CLAUDE.md + OpenSpec 配合使用
+- 概念层：Harness Engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../execution-patterns/harness-engineering/]`） — OpenSpec 是"反馈型 Harness"
+- Claude Code：Claude Code 实践（⚠️ 待 Phase 1+ 迁入；占位 `[../coding-agents/claude-code-practices/]`） — CLAUDE.md + OpenSpec 配合使用
 
 ---
 

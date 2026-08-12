@@ -318,12 +318,12 @@ mcp:
 ## 八、与其他章节的关系
 
 - 规范层：[Agent Spec Tools](../agent-spec-tools/README.md) — Superpowers / Spec-Kit / OpenSpec 三件套（**与本目录正交**）
-- 单工具深度：[Claude Code Practices](../../../../note/11.ai/03-engineering/claude-code-practices/README.md) — Claude Code 单工具深度（CLAUDE.md / Skills / Hooks / Plugins）
-- 概念层：[Harness Engineering](../../../../note/11.ai/03-engineering/harness-engineering/README.md) — 4 大 Harness 类型
-- 循环层：[Loop Engineering](../../../../note/11.ai/03-engineering/loop-engineering/README.md) — Agent 循环调用 + Ralph Wiggum Loop
+- 单工具深度：Claude Code Practices（⚠️ 待 Phase 1+ 迁入；占位 `[../coding-agents/claude-code-practices/]`） — Claude Code 单工具深度（CLAUDE.md / Skills / Hooks / Plugins）
+- 概念层：Harness Engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../execution-patterns/harness-engineering/]`） — 4 大 Harness 类型
+- 循环层：Loop Engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../execution-patterns/loop-engineering/]`） — Agent 循环调用 + Ralph Wiggum Loop（pre-existing in `note/`，保持 unstaged）
 - 实战层：[Production Agent](../production-agent/README.md) — 生产环境的 Agent 工程实践
-- 编码质量：[AI Code Review](../../../../note/11.ai/03-engineering/ai-code-review/README.md) — AI 生成代码审核验收方法论
-- 面试精炼：[Coding Agent 选型与模式选择](../../../../note/13.split-hairs/11.ai/coding-agent-mode-selection/README.md) — 4 agent × 7 mode 选型决策 + 5 道面试陷阱 + 90 秒面试话术
+- 编码质量：AI Code Review（⚠️ 待 Phase 1+ 迁入；占位 `[./ai-code-review/]`） — AI 生成代码审核验收方法论
+- 面试精炼：Coding Agent 选型与模式选择（⚠️ 待 Phase 1+ 迁入；占位 `[../../../../12.interview/11.ai/coding-agent-mode-selection/]`） — 4 agent × 7 mode 选型决策 + 5 道面试陷阱 + 90 秒面试话术
 
 ---
 

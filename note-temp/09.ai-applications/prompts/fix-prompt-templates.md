@@ -351,4 +351,4 @@ SCOPED_FIX_PROMPT = """
 
 ---
 
-← [返回 Prompts MOC](../README.md) · 上一章：[ide-case-studies](../../../note/11.ai/03-engineering/loop-engineering/ide-case-studies.md) · 专题结束
+← [返回 Prompts MOC](../README.md) · 上一章：ide-case-studies（⚠️ 待 Phase 1+ 迁入；占位 `../ide-case-studies.md`） · 专题结束
