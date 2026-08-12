@@ -9,7 +9,7 @@ module:
 
 # RAG 范式演进四阶段（Naive → Advanced → Modular → Agentic）
 
-> ⬅️ [返回 L2 技术栈](../README.md)
+> ⬅️ [返回 RAG MOC](./README.md)
 
 > **一句话定位**：RAG 不是一种架构，而是**一条演进主线**。四阶段核心能力依次递进：**能跑通（Naive）→ 更精准（Advanced）→ 更灵活（Modular）→ 会思考（Agentic）**。四者是**继承与发展**关系，不是替代关系 —— 工程落地通常以 Advanced + Modular 组合为高性价比基线，必要时引入 Agentic。
 
@@ -59,7 +59,7 @@ Naive RAG          Advanced RAG         Modular RAG          Agentic RAG
   - **Post**：Reranking（Cross-Encoder 重排）、上下文压缩（LLMLingua）
 - **目标**：最大化语义对齐、过滤无关信息，显著降低幻觉。
 - **局限**：本质仍是**固定的单轮检索流程** —— 无法根据查询动态改变检索策略，遇到需要多跳推理的问题仍会失败。
-- 🔗 这一阶段的完整链路见 [RAG Pipeline 5 阶段 SOTA 架构](../rag-pipeline/README.md)（Advanced RAG 的工程化落地）
+- 🔗 这一阶段的完整链路见 [RAG Pipeline 5 阶段 SOTA 架构](./01-pipeline.md)（Advanced RAG 的工程化落地）
 
 ### 3. Modular RAG（模块化 RAG）—— 组件解耦编排
 
@@ -77,13 +77,13 @@ Naive RAG          Advanced RAG         Modular RAG          Agentic RAG
 - **关键技术**：意图理解 → 任务拆解 → 多步工具调用 → 自我反思与修正（Self-RAG / Corrective RAG / ReAct 循环）。
 - **优势**：能处理高度复杂、需多轮推理和动态探索的开放式任务。
 - **局限**：延迟高、Token 成本高、稳定性/可控性挑战大，需终止条件 + 死循环防护。
-- 🔗 相关：[Agentic Search vs RAG](../agentic-search-vs-rag/README.md)（AI Coding 场景下 Agentic 检索**取代** RAG 索引的极端案例）
+- 🔗 相关：[Agentic Search vs RAG](./06-agentic-rag.md)（AI Coding 场景下 Agentic 检索**取代** RAG 索引的极端案例）
 
 ---
 
 ## 🧭 关键澄清：演进四阶段 ≠ 5 阶段 Pipeline
 
-> ⚠️ 最常见的混淆：把"四阶段演进"和 [rag-pipeline 的 5 阶段](../rag-pipeline/README.md) 混为一谈。两者是**正交**维度：
+> ⚠️ 最常见的混淆：把"四阶段演进"和 [rag-pipeline 的 5 阶段](./01-pipeline.md) 混为一谈。两者是**正交**维度：
 
 | 维度 | 说的是 | 例子 |
 |------|-------|------|
@@ -137,12 +137,12 @@ Naive RAG          Advanced RAG         Modular RAG          Agentic RAG
 
 ## 🔗 兄弟章节
 
-- **本专题（Advanced 落地）**：[RAG Pipeline 5 阶段](../rag-pipeline/README.md) / [Query Rewrite](../query-rewrite/README.md) / [Hybrid Search](../hybrid-search/README.md) / [Reranker](../reranker/README.md) / [Chunking](../chunking-strategies/README.md)
-- **Agentic 方向**：[Agentic Search vs RAG](../agentic-search-vs-rag/README.md) / [Agent 执行模式](../../04-architecture/agent-execution-patterns/README.md)
-- **LLMOps**：[RAG vs Fine-tuning](../../08-llmops/01-rag-vs-finetuning/README.md) / [RAG 评估](../../08-llmops/agent-evaluation/09-rag-evaluation/README.md)
-- **咬文嚼字**：[RAG 面试深挖](../../../13.split-hairs/11.ai/rag/README.md)（含演进四阶段面试题）
-- **餐厅叙事**：[开卷考试 · RAG](../../../12.story/36-rag-retrieval-augmented-generation.md)
+- **本原子笔记**：[RAG Pipeline 5 阶段](./01-pipeline.md)（Advanced 落地） / [Agentic Search vs RAG](./06-agentic-rag.md)（Agentic 方向） / [RAG vs Fine-tuning](./03-rag-vs-finetuning.md) / [RAG 评估](./04-evaluation.md)
+- **待迁移子环节**：[Query Rewrite](../../../note/11.ai/02-technology-stack/query-rewrite/README.md) / [Hybrid Search](../../../note/11.ai/02-technology-stack/hybrid-search/README.md) / [Reranker](../../../note/11.ai/02-technology-stack/reranker/README.md) / [Chunking](../../../note/11.ai/02-technology-stack/chunking-strategies/README.md)
+- **Agent 架构**：[Agent 执行模式](../../../note/11.ai/04-architecture/agent-execution-patterns/README.md)
+- **咬文嚼字**：[RAG 面试深挖](../../../note/13.split-hairs/11.ai/rag/README.md)（含演进四阶段面试题）
+- **餐厅叙事**：[开卷考试 · RAG](../../../note/12.story/36-rag-retrieval-augmented-generation.md)
 
 ---
 
-← [返回 L2 技术栈](../README.md)
+← [返回 RAG MOC](./README.md)

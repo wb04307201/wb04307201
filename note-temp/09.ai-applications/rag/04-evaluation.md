@@ -9,7 +9,7 @@ module:
 
 # RAG 评估指标与工具
 
-> ⬅️ [返回 Agent Evaluation](../README.md)
+> ⬅️ [返回 RAG MOC](./README.md)
 
 > **一句话定位**：RAG 评估 = **量化 RAG 系统的检索质量 + 生成质量**。**RAGAS / TruLens / DeepEval** 3 大工具横评，帮你选对评估方案。
 
@@ -194,8 +194,8 @@ metrics = [
 
 | 指标 | 含义 | 参考位置 |
 |------|------|---------|
-| **Latency** | 首字响应 TTFT + 端到端总时延 | [推理性能指标](../../../02-technology-stack/inference-metrics/README.md) |
-| **Cost** | 单次查询 Token 数（输入上下文 + 输出）及 API 成本 | [Token 与计费](../../../02-technology-stack/token-billing/README.md) |
+| **Latency** | 首字响应 TTFT + 端到端总时延 | [推理性能指标](../../../note/11.ai/02-technology-stack/inference-metrics/README.md) |
+| **Cost** | 单次查询 Token 数（输入上下文 + 输出）及 API 成本 | [Token 与计费](../../../note/11.ai/02-technology-stack/token-billing/README.md) |
 | **User Feedback** | 显式（👍/👎）+ 隐式（会话中止率 / 追问率） | 线上埋点 |
 
 > 💡 **性价比最高的切入点**：初期优先监控 **Faithfulness（安全底线）** + **Context Recall（能力上限）** 两个指标，再叠加系统工程维度。
@@ -204,7 +204,7 @@ metrics = [
 
 ## 🤖 Agentic RAG 评估补充（多步智能体场景）
 
-> 当 RAG 演进到 [Agentic 阶段](../../../02-technology-stack/rag-paradigm-evolution/README.md)（Agent 自主拆解任务、多步检索），传统 RAG 指标不够用，需叠加**智能体维度**：
+> 当 RAG 演进到 [Agentic 阶段](./02-paradigm-evolution.md)（Agent 自主拆解任务、多步检索），传统 RAG 指标不够用，需叠加**智能体维度**：
 
 | 指标 | 含义 |
 |------|------|
@@ -212,16 +212,17 @@ metrics = [
 | **Tool Call Accuracy（工具调用准确率）** | 选检索/查库/执行工具及其参数是否正确 |
 | **Self-Correction Rate（自我修正率）** | 首次检索/生成失败后，能否通过反思自主调整并输出正确结果 |
 
-> 🔗 这三个指标的通用母体（完整公式 + 阈值）见 [Agent 6 大评测维度](../01-six-metrics.md)；面试话术见 [如何量化 Agent 性能](../../../../13.split-hairs/11.ai/agent-performance-evaluation/README.md)。
+> 🔗 这三个指标的通用母体（完整公式 + 阈值）见 [Agent 6 大评测维度](../../../note/11.ai/08-llmops/agent-evaluation/01-six-metrics.md)；面试话术见 [如何量化 Agent 性能](../../../note/13.split-hairs/11.ai/agent-performance-evaluation/README.md)。
 
 ---
 
 ## 🔗 兄弟章节
 
-- **本专题**：[RAG Pipeline 综述](../../../02-technology-stack/rag-pipeline/README.md) / [RAG 范式演进四阶段](../../../02-technology-stack/rag-paradigm-evolution/README.md) / [Hybrid Search](../../../02-technology-stack/hybrid-search/README.md) / [Reranker](../../../02-technology-stack/reranker/README.md) / [Query Rewrite](../../../02-technology-stack/query-rewrite/README.md)
-- **评估维度**：[Agent 6 大评测维度](../01-six-metrics.md) / [5 种评估方法](../02-five-methods.md)
-- **咬文嚼字**：[RAG 面试](../../../../13.split-hairs/11.ai/rag/README.md) / [Agent 性能量化](../../../../13.split-hairs/11.ai/agent-performance-evaluation/README.md)
-- **LLMOps**：[08-llmops](../../README.md) — RAG 安全
+- **本原子笔记**：[RAG Pipeline 综述](./01-pipeline.md) / [RAG 范式演进四阶段](./02-paradigm-evolution.md) / [RAG 超范围拒答](./05-out-of-domain-rejection.md)（Faithfulness 的生产落地）
+- **待迁移子环节**：[Hybrid Search](../../../note/11.ai/02-technology-stack/hybrid-search/README.md) / [Reranker](../../../note/11.ai/02-technology-stack/reranker/README.md) / [Query Rewrite](../../../note/11.ai/02-technology-stack/query-rewrite/README.md)
+- **评估维度**：[Agent 6 大评测维度](../../../note/11.ai/08-llmops/agent-evaluation/01-six-metrics.md) / [5 种评估方法](../../../note/11.ai/08-llmops/agent-evaluation/02-five-methods.md)
+- **咬文嚼字**：[RAG 面试](../../../note/13.split-hairs/11.ai/rag/README.md) / [Agent 性能量化](../../../note/13.split-hairs/11.ai/agent-performance-evaluation/README.md)
+- **LLMOps**：[08-llmops](../../../note/11.ai/08-llmops/README.md) — RAG 安全
 
 ---
 
@@ -234,4 +235,4 @@ metrics = [
 | ❌ 离线评估好线上也好 | ✅ 线上需持续监控 |
 | ❌ RAGAS 工具多就好 | ✅ 选 3-5 个核心指标即可 |
 
-← [返回 Agent Evaluation](../../README.md)
+← [返回 RAG MOC](./README.md)

@@ -9,7 +9,7 @@ module:
 
 # RAG Pipeline（完整流水线综述）
 
-> ⬅️ [返回 L2 技术栈](../README.md)
+> ⬅️ [返回 RAG MOC](./README.md)
 
 > **一句话定位**：RAG Pipeline = **Query Rewrite → Hybrid Search → Rerank → Generation** 全链路。**2024 SOTA 5 阶段架构**，召回率 +30%、精确率 +25%。
 
@@ -39,21 +39,21 @@ Answer + 引用
 
 ### Stage 1: Query Rewrite
 
-详见 [Query Rewrite 章节](../query-rewrite/README.md)
+详见 [Query Rewrite 章节](../../../note/11.ai/02-technology-stack/query-rewrite/README.md)
 - 多轮对话 → 上下文融合
 - 口语化 → 关键词改写
 - 模糊问题 → Multi-Query
 
 ### Stage 2: Hybrid Search
 
-详见 [Hybrid Search 章节](../hybrid-search/README.md)
+详见 [Hybrid Search 章节](../../../note/11.ai/02-technology-stack/hybrid-search/README.md)
 - 向量（语义） + BM25（关键词）
 - RRF 融合
 - 召回率 +15-25%
 
 ### Stage 3: Rerank
 
-详见 [Reranker 章节](../reranker/README.md)
+详见 [Reranker 章节](../../../note/11.ai/02-technology-stack/reranker/README.md)
 - Bi-Encoder 召回 Top-100
 - Cross-Encoder 重排 Top-10
 - 精确率 +15-30%
@@ -160,13 +160,13 @@ class SOTARAG:
 
 ## 🔗 兄弟章节
 
-- **演进主线**：[RAG 范式演进四阶段](../rag-paradigm-evolution/README.md) — 本 5 阶段 Pipeline 正是 **Advanced RAG** 阶段的工程化落地
-- **本专题**：[Query Rewrite](../query-rewrite/README.md) / [Hybrid Search](../hybrid-search/README.md) / [Reranker](../reranker/README.md) / [Chunking](../chunking-strategies/README.md) / [Embedding](../embedding-models/README.md)
-- **L1**：[Lost in middle](../lost-in-middle/README.md)
-- **咬文嚼字**：[RAG 面试](../../../13.split-hairs/11.ai/rag/README.md)
-- **LLMOps**：[RAG 评估](../../08-llmops/agent-evaluation/09-rag-evaluation/README.md)
-- **应用场景**：[long-document-processing](../long-document-processing/README.md) — RAG Pipeline 在长 PDF/合同场景的 5 阶段实战（含 Docling 解析）
-- **入库侧**：[knowledge-ingestion-pipeline](../knowledge-ingestion-pipeline/README.md) — 企业入库 8 阶段（连接 → 解析 → 清洗 → 去重 → Embedding → 入库 → CDC 增量）
+- **演进主线**：[RAG 范式演进四阶段](./02-paradigm-evolution.md) — 本 5 阶段 Pipeline 正是 **Advanced RAG** 阶段的工程化落地
+- **本原子笔记**：[RAG 评估](./04-evaluation.md) — 5 阶段各环节的量化指标 / [Agentic RAG](./06-agentic-rag.md) — Pipeline 被 Agent 自主编排的极端形态
+- **待迁移子环节**：[Query Rewrite](../../../note/11.ai/02-technology-stack/query-rewrite/README.md) / [Hybrid Search](../../../note/11.ai/02-technology-stack/hybrid-search/README.md) / [Reranker](../../../note/11.ai/02-technology-stack/reranker/README.md) / [Chunking](../../../note/11.ai/02-technology-stack/chunking-strategies/README.md) / [Embedding](../../../note/11.ai/02-technology-stack/embedding-models/README.md)
+- **L1**：[Lost in middle](../../../note/11.ai/02-technology-stack/lost-in-middle/README.md)
+- **咬文嚼字**：[RAG 面试](../../../note/13.split-hairs/11.ai/rag/README.md)
+- **应用场景**：[long-document-processing](../../../note/11.ai/02-technology-stack/long-document-processing/README.md) — RAG Pipeline 在长 PDF/合同场景的 5 阶段实战（含 Docling 解析）
+- **入库侧**：[knowledge-ingestion-pipeline](../../../note/11.ai/02-technology-stack/knowledge-ingestion-pipeline/README.md) — 企业入库 8 阶段（连接 → 解析 → 清洗 → 去重 → Embedding → 入库 → CDC 增量）
 
 ---
 
@@ -179,4 +179,4 @@ class SOTARAG:
 | ❌ 召回率 100% 才好 | ✅ 95% 已足够，最终靠 LLM |
 | ❌ RAG 替代 fine-tune | ✅ RAG 适合知识更新场景，FT 适合技能固化 |
 
-← [返回 L2 技术栈](../README.md)
+← [返回 RAG MOC](./README.md)

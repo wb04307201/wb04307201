@@ -9,7 +9,9 @@ module:
 
 # RAG 超范围检测与拒答策略 · 深度专章
 
-> 一句话定位：**没有拒答机制的 RAG = 强答 = 幻觉 = 信任崩塌**。完整体系基于 [主模块 · RAG vs Fine-tuning 主章节](../01-rag-vs-finetuning/README.md) + [LLM 幻觉防御专题](../../../13.split-hairs/11.ai/hallucination/README.md)。面试速查版见 [13.split-hairs · rag-out-of-domain-rejection](../../../13.split-hairs/11.ai/rag-out-of-domain-rejection/README.md)。
+> ⬅️ [返回 RAG MOC](./README.md)
+
+> 一句话定位：**没有拒答机制的 RAG = 强答 = 幻觉 = 信任崩塌**。完整体系基于 [主模块 · RAG vs Fine-tuning 主章节](./03-rag-vs-finetuning.md) + [LLM 幻觉防御专题](../../../note/13.split-hairs/11.ai/hallucination/README.md)。面试速查版见 [13.split-hairs · rag-out-of-domain-rejection](../../../note/13.split-hairs/11.ai/rag-out-of-domain-rejection/README.md)。
 
 ---
 
@@ -495,20 +497,20 @@ Q3：用户对拒答接受度？
 ## 📚 相关章节
 
 **主模块**：
-- [主模块 · RAG 体系](../01-rag-vs-finetuning/README.md) —— 351 行深度
-- [LLM 幻觉防御专题](../../../13.split-hairs/11.ai/hallucination/README.md) —— 233 行（生产要素）
-- [RAG 架构面试题](../../../13.split-hairs/11.ai/rag/README.md) —— RAG 基础
+- [RAG vs Fine-tuning 主章节](./03-rag-vs-finetuning.md) —— 三大定制策略选型
+- [LLM 幻觉防御专题](../../../note/13.split-hairs/11.ai/hallucination/README.md) —— 233 行（生产要素）
+- [RAG 架构面试题](../../../note/13.split-hairs/11.ai/rag/README.md) —— RAG 基础
 
 **兄弟专题**：
-- [Agent Memory 共享专章](../../04-architecture/agent-memory/shared-memory.md) —— 多 Agent 共享
-- [Claude Code Agentic Search 专题](../../../13.split-hairs/11.ai/claude-code-agentic-search/README.md) —— AI Coding 反 RAG
+- [Agent Memory 共享专章](../../../note/11.ai/04-architecture/agent-memory/shared-memory.md) —— 多 Agent 共享
+- [Claude Code Agentic Search 专题](../../../note/13.split-hairs/11.ai/claude-code-agentic-search/README.md) —— AI Coding 反 RAG
 
 **LLMOps**：
-- [LLM Evaluation](../04-llm-evaluation/README.md)
-- [LLM Security](../05-llm-security/README.md)
+- [LLM Evaluation](../../../note/11.ai/08-llmops/04-llm-evaluation/README.md)
+- [LLM Security](../../../note/11.ai/08-llmops/05-llm-security/README.md)
 
 **面试速查**：
-- [13.split-hairs · rag-out-of-domain-rejection](../../../13.split-hairs/11.ai/rag-out-of-domain-rejection/README.md) —— 5 拒答模式 + 4 步调优
+- [13.split-hairs · rag-out-of-domain-rejection](../../../note/13.split-hairs/11.ai/rag-out-of-domain-rejection/README.md) —— 5 拒答模式 + 4 步调优
 
 ---
 
@@ -516,15 +518,17 @@ Q3：用户对拒答接受度？
 
 ---
 
-## 🔗 本专题兄弟章节
+## 🔗 RAG 原子笔记导航
 
 | # | 章节 | 一句话定位 |
 |---|------|-----------|
-| 1 | [RAG vs Fine-tuning vs Prompt](../01-rag-vs-finetuning/README.md) | 三大定制策略对比与选型决策 |
-| 2 | [LLMOps 栈](../02-llmops-stack/README.md) | 数据/训练/部署/监控/反馈全链路工程栈 |
-| 3 | [向量库 vs 缓存](../03-vector-db-vs-cache/README.md) | Embedding 检索 vs KV 缓存边界与协同 |
-| 4 | [LLM 评测](../04-llm-evaluation/README.md) | 自动化指标 + 人工评测 + A/B + 红队对抗 |
-| 5 | [LLM 安全](../05-llm-security/README.md) | OWASP LLM Top 10 + 6 层防御 + Guardrails 实战 |
-| 6 | [RAG 超范围拒答](../06-rag-out-of-domain-rejection/README.md) | 6 大检测机制 + 5 大拒答模式 + 4 步调优 |
+| 1 | [RAG Pipeline 5 阶段](./01-pipeline.md) | Query Rewrite → Hybrid Search → Rerank → 压缩 → 生成 |
+| 2 | [RAG 范式演进四阶段](./02-paradigm-evolution.md) | Naive → Advanced → Modular → Agentic |
+| 3 | [RAG vs Fine-tuning vs Prompt](./03-rag-vs-finetuning.md) | 三大定制策略对比与选型决策 |
+| 4 | [RAG 评估](./04-evaluation.md) | 检索×生成×系统 三维度 + RAGAS / TruLens |
+| 5 | RAG 超范围拒答（本篇） | 6 大检测机制 + 5 大拒答模式 + 4 步调优 |
+| 6 | [Agentic RAG](./06-agentic-rag.md) | Agentic Search 取代 RAG 索引的极端形态 |
 
-← [返回: L8 LLMOps](../README.md)
+**原 LLMOps 兄弟章节**（尚未迁移）：[LLMOps 栈](../../../note/11.ai/08-llmops/02-llmops-stack/README.md) / [向量库 vs 缓存](../../../note/11.ai/08-llmops/03-vector-db-vs-cache/README.md) / [LLM 评测](../../../note/11.ai/08-llmops/04-llm-evaluation/README.md) / [LLM 安全](../../../note/11.ai/08-llmops/05-llm-security/README.md)
+
+← [返回 RAG MOC](./README.md)
