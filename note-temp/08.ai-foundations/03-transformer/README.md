@@ -8,6 +8,7 @@
 | 标题 | 路径 | 摘要 |
 |------|------|------|
 | 注意力机制（Attention Mechanism） | [attention-mechanism.md](./attention-mechanism.md) | 系统梳理 Self/Cross/Multi-Head、Sparse、Linear、MQA 与 GQA 等注意力变体及其工程价值。 |
+| Transformer 架构 | [transformer-architecture.md](./transformer-architecture.md) | 架构详解 / Self-Attention 代码 |
 
 ---
 
