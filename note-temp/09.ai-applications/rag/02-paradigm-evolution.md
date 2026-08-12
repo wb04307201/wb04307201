@@ -139,7 +139,7 @@ Naive RAG          Advanced RAG         Modular RAG          Agentic RAG
 
 - **本原子笔记**：[RAG Pipeline 5 阶段](./01-pipeline.md)（Advanced 落地） / [Agentic Search vs RAG](./06-agentic-rag.md)（Agentic 方向） / [RAG vs Fine-tuning](./03-rag-vs-finetuning.md) / [RAG 评估](./04-evaluation.md)
 - **待迁移子环节**：[Query Rewrite](../../../note/11.ai/02-technology-stack/query-rewrite/README.md) / [Hybrid Search](../../../note/11.ai/02-technology-stack/hybrid-search/README.md) / [Reranker](../../../note/11.ai/02-technology-stack/reranker/README.md) / [Chunking](../../../note/11.ai/02-technology-stack/chunking-strategies/README.md)
-- **Agent 架构**：[Agent 执行模式](../../../note/11.ai/04-architecture/agent-execution-patterns/README.md)
+- **Agent 架构**：[Agent 执行模式](../agent/agent-execution-patterns/README.md)
 - **咬文嚼字**：[RAG 面试深挖](../../../note/13.split-hairs/11.ai/rag/README.md)（含演进四阶段面试题）
 - **餐厅叙事**：[开卷考试 · RAG](../../../note/12.story/36-rag-retrieval-augmented-generation.md)
 

@@ -362,6 +362,6 @@ RAG 适合**低频更新、结构化内容**（FAQ / 文档 / 合规），但**�
 | 5 | [RAG 超范围拒答](./05-out-of-domain-rejection.md) | 6 大检测机制 + 5 大拒答模式 + 4 步调优 |
 | 6 | [Agentic RAG](./06-agentic-rag.md) | Agentic Search 取代 RAG 索引的极端形态 |
 
-**原 LLMOps 兄弟章节**（尚未迁移）：[LLMOps 栈](../../../note/11.ai/08-llmops/02-llmops-stack/README.md) / [向量库 vs 缓存](../../../note/11.ai/08-llmops/03-vector-db-vs-cache/README.md) / [LLM 评测](../../../note/11.ai/08-llmops/04-llm-evaluation/README.md) / [LLM 安全](../../../note/11.ai/08-llmops/05-llm-security/README.md)
+**原 LLMOps 兄弟章节**：[LLMOps 栈](../../../note/11.ai/08-llmops/02-llmops-stack/README.md) / [向量库 vs 缓存](../../../note/11.ai/08-llmops/03-vector-db-vs-cache/README.md) / [LLM 评测](../eval/README.md) / [LLM 安全](../../../note/11.ai/08-llmops/05-llm-security/README.md)
 
 ← [返回 RAG MOC](./README.md) · 📅 2026-06-28 · 更新：2026-07-03

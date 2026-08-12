@@ -502,11 +502,11 @@ Q3：用户对拒答接受度？
 - [RAG 架构面试题](../../../note/13.split-hairs/11.ai/rag/README.md) —— RAG 基础
 
 **兄弟专题**：
-- [Agent Memory 共享专章](../../../note/11.ai/04-architecture/agent-memory/shared-memory.md) —— 多 Agent 共享
+- [Agent Memory 共享专章](../agent/agent-memory/shared-memory.md) —— 多 Agent 共享
 - [Claude Code Agentic Search 专题](../../../note/13.split-hairs/11.ai/claude-code-agentic-search/README.md) —— AI Coding 反 RAG
 
 **LLMOps**：
-- [LLM Evaluation](../../../note/11.ai/08-llmops/04-llm-evaluation/README.md)
+- [LLM Evaluation](../eval/README.md)
 - [LLM Security](../../../note/11.ai/08-llmops/05-llm-security/README.md)
 
 **面试速查**：
@@ -529,6 +529,6 @@ Q3：用户对拒答接受度？
 | 5 | RAG 超范围拒答（本篇） | 6 大检测机制 + 5 大拒答模式 + 4 步调优 |
 | 6 | [Agentic RAG](./06-agentic-rag.md) | Agentic Search 取代 RAG 索引的极端形态 |
 
-**原 LLMOps 兄弟章节**（尚未迁移）：[LLMOps 栈](../../../note/11.ai/08-llmops/02-llmops-stack/README.md) / [向量库 vs 缓存](../../../note/11.ai/08-llmops/03-vector-db-vs-cache/README.md) / [LLM 评测](../../../note/11.ai/08-llmops/04-llm-evaluation/README.md) / [LLM 安全](../../../note/11.ai/08-llmops/05-llm-security/README.md)
+**原 LLMOps 兄弟章节**：[LLMOps 栈](../../../note/11.ai/08-llmops/02-llmops-stack/README.md) / [向量库 vs 缓存](../../../note/11.ai/08-llmops/03-vector-db-vs-cache/README.md) / [LLM 评测](../eval/README.md) / [LLM 安全](../../../note/11.ai/08-llmops/05-llm-security/README.md)
 
 ← [返回 RAG MOC](./README.md)

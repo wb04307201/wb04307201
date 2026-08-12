@@ -11,7 +11,7 @@ module:
 
 > **一句话答案**：Agent Evaluation = **6 大评测维度（任务完成率 / 步骤效率 / 工具使用 / 成本 / 满意度 / 稳定性）+ 5 种评测方法（自动化指标 / 黄金集 / LLM-as-Judge / A/B Test / 用户模拟）+ 持续集成 + 7 反模式**。
 
-← [返回 Agent MOC](../README.md) · 兄弟：[LLM 评估](../../../../note/11.ai/08-llmops/04-llm-evaluation/README.md) · 面试题：[13.split-hairs Agent 性能评估](../../../../note/13.split-hairs/11.ai/agent-performance-evaluation/README.md)
+← [返回 Agent MOC](../README.md) · 兄弟：[LLM 评估](../../eval/README.md) · 面试题：[13.split-hairs Agent 性能评估](../../../../note/13.split-hairs/11.ai/agent-performance-evaluation/README.md)
 
 ---
 
@@ -180,7 +180,7 @@ Agent Evaluation 公式：
 ---
 
 ## 速查 · 关联资源
-- **LLM 评估**：[LLM 单次调用评估](../../../../note/11.ai/08-llmops/04-llm-evaluation/README.md) —— 331 行深度
+- **LLM 评估**：[LLM 单次调用评估](../../eval/README.md) —— 331 行深度
 - **RAG 评估**：[../../rag/04-evaluation.md](../../rag/04-evaluation.md) —— RAGAS / TruLens / DeepEval 3 大工具横评
 - **面试题**：[13.split-hairs/11.ai/agent-performance-evaluation](../../../../note/13.split-hairs/11.ai/agent-performance-evaluation/README.md) —— 7 道精选 Q&A
 - **真实案例**：[Salesforce Agentforce 评测实践](../case-studies/10-salesforce-agentforce/README.md)

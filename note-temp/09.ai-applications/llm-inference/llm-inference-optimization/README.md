@@ -63,9 +63,9 @@ Agent / 复杂 prompt = + SGLang RadixAttention
 
 ## 反向链
 
-- [02-rlhf](../../../../note/11.ai/07-research/alignment/02-rlhf.md)
-- [03-dpo](../../../../note/11.ai/07-research/alignment/03-dpo.md)
-- [05-newer-methods](../../../../note/11.ai/07-research/alignment/05-newer-methods.md)
+- [02-rlhf](../../fine-tuning/02-rlhf.md)
+- [03-dpo](../../fine-tuning/03-dpo.md)
+- [05-newer-methods](../../fine-tuning/05-newer-methods.md)
 - [46-llm-inference](../../../../note/12.story/46-llm-inference.md)
 
 ← [返回 LLM Inference MOC](../README.md)

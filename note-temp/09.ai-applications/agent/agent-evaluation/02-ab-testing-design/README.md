@@ -570,7 +570,7 @@ Day 30   : 长期漂移观察
 - [08-practical-cases.md](../08-practical-cases.md)
 
 **LLMOps**：
-- [LLM Evaluation](../../../../../note/11.ai/08-llmops/04-llm-evaluation/README.md)
+- [LLM Evaluation](../../../eval/README.md)
 - [RAG 超范围拒答](../../../rag/05-out-of-domain-rejection.md)
 
 **面试速查**：
