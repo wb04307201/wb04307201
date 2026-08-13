@@ -1,0 +1,197 @@
+<!--
+question:
+  id: 09.front-end-storage
+  topic: 09.front-end
+  difficulty: ⭐⭐
+  frequency: 中频
+  scenario_type: 性能对比
+  tags: [09.front-end, storage]
+-->
+
+# 前端存储方式
+
+## 一、核心存储方式对比
+| **特性**     | **Cookie**             | **localStorage** | **sessionStorage** | **IndexedDB**  |
+|------------|------------------------|------------------|--------------------|----------------|
+| **存储容量**   | 4KB（单个）                | 5MB+（浏览器差异）      | 5MB+（浏览器差异）        | 理论上无上限（依赖硬盘空间） |
+| **生命周期**   | 可设置过期时间                | 永久存储（手动清除）       | 会话级（标签页关闭后清除）      | 永久存储（手动清除）     |
+| **数据共享范围** | 跨页面、跨标签页（同源）           | 跨页面、跨标签页（同源）     | 仅当前标签页（同源）         | 跨页面、跨标签页（同源）   |
+| **数据类型**   | 字符串（需手动序列化复杂对象）        | 字符串（需手动序列化复杂对象）  | 字符串（需手动序列化复杂对象）    | 支持二进制、对象等复杂数据  |
+| **与服务端交互** | 自动携带在HTTP请求头中          | 不交互              | 不交互                | 不交互            |
+| **操作复杂度**  | 低（原生API需字符串拼接）         | 低（键值对API）        | 低（键值对API）          | 高（需处理事务、索引等）   |
+| **安全性**    | 存在CSRF风险（需HttpOnly等配置） | 仅客户端存储，无传输风险     | 仅客户端存储，无传输风险       | 仅客户端存储，无传输风险   |
+
+## 二、核心差异解析
+1. **存储容量与性能**
+    - **Cookie**：容量极小（4KB），频繁请求会携带冗余数据，增加带宽消耗，适合存储少量会话标识（如SessionID）。
+    - **Web Storage（localStorage/sessionStorage）**：容量提升至5MB+，适合存储用户偏好、表单草稿等中等规模数据。
+    - **IndexedDB**：支持海量数据存储（如离线应用数据库），但需处理异步操作和事务，性能开销较大。
+
+2. **生命周期与作用域**
+    - **Cookie**：通过`expires`或`max-age`控制过期时间，适合长期有效的用户令牌（如JWT）。
+    - **sessionStorage**：标签页关闭后数据自动清除，适合存储临时会话数据（如单页应用路由状态）。
+    - **localStorage**：数据持久化，适合存储长期不变的数据（如应用主题配置）。
+    - **IndexedDB**：数据永久存储，需手动删除，适合构建客户端数据库（如笔记应用）。
+
+3. **数据类型与操作**
+    - **Cookie/Web Storage**：仅支持字符串，复杂对象需通过`JSON.stringify()`序列化。
+    - **IndexedDB**：支持原生JavaScript对象、文件、二进制数据，提供索引和事务支持，适合复杂查询场景。
+
+4. **安全模型**
+    - **Cookie**：需配置`Secure`（仅HTTPS）、`HttpOnly`（禁止JS访问）、`SameSite`（防止CSRF）等属性防范XSS/CSRF攻击。
+    - **Web Storage/IndexedDB**：数据仅在客户端存储，无传输风险，但需防范XSS攻击（如通过`eval()`注入恶意代码）。
+
+## 三、场景化推荐方案
+1. **用户认证与会话管理**
+    - **推荐**：Cookie（配合HttpOnly、Secure属性）
+    - **理由**：HTTP协议原生支持，兼容性极佳，适合存储SessionID或JWT令牌。
+    - **示例**：
+      ```javascript
+      // 设置HttpOnly Cookie（需服务端配合）
+      document.cookie = `token=${jwtToken}; Secure; HttpOnly; Path=/; SameSite=Strict`;
+      ```
+
+2. **用户偏好与持久化配置**
+    - **推荐**：localStorage
+    - **理由**：数据持久化，容量充足，适合存储主题、语言等长期不变的设置。
+    - **示例**：
+      ```javascript
+      // 存储用户主题偏好
+      localStorage.setItem('theme', 'dark');
+      const theme = localStorage.getItem('theme');
+      ```
+
+3. **单页应用（SPA）临时状态**
+    - **推荐**：sessionStorage
+    - **理由**：标签页关闭后自动清理，避免内存泄漏，适合存储路由历史或表单草稿。
+    - **示例**：
+      ```javascript
+      // 存储当前页面滚动位置
+      sessionStorage.setItem('scrollPos', window.scrollY.toString());
+      ```
+
+4. **离线应用与复杂数据缓存**
+    - **推荐**：IndexedDB
+    - **理由**：支持事务、索引和异步查询，适合构建客户端数据库（如PWA应用的缓存层）。
+    - **示例**：
+      ```javascript
+      // 打开数据库并存储数据
+      const request = indexedDB.open('MyDatabase', 1);
+      request.onupgradeneeded = (e) => {
+        const db = e.target.result;
+        db.createObjectStore('posts', { keyPath: 'id' });
+      };
+      request.onsuccess = (e) => {
+        const db = e.target.result;
+        const tx = db.transaction('posts', 'readwrite');
+        tx.objectStore('posts').add({ id: 1, title: 'Hello World' });
+      };
+      ```
+
+## 四、进阶优化建议
+1. **容量监控**：通过`navigator.storage.estimate()`预估剩余空间，避免存储溢出。
+2. **数据同步**：结合Service Worker实现IndexedDB与网络请求的智能缓存（如Cache-First策略）。
+3. **封装库**：使用`localForage`（基于IndexedDB的Promise封装）简化异步操作：
+   ```javascript
+   import localForage from 'localforage';
+   localForage.setItem('user', { name: 'Alice' }).then(() => {
+     console.log('Data saved!');
+   });
+   ```
+
+## 五、常见陷阱
+
+### 陷阱1：localStorage阻塞主线程
+
+localStorage是同步API，大量读写操作会阻塞主线程，导致页面卡顿。
+
+```javascript
+// 糟糕：大数据量时阻塞主线程
+for (let i = 0; i < 10000; i++) {
+    localStorage.setItem(`key${i}`, JSON.stringify(largeObject));
+}
+
+// 更好：使用IndexedDB（异步）或批量处理
+const dbRequest = indexedDB.open('myDB', 1);
+dbRequest.onsuccess = () => {
+    const db = dbRequest.result;
+    const tx = db.transaction('store', 'readwrite');
+    // 异步操作，不阻塞主线程
+};
+```
+
+### 陷阱2：JSON序列化丢失数据类型
+
+```javascript
+// Date对象序列化为字符串，反序列化后不再是Date
+const obj = { date: new Date(), regex: /test/, undef: undefined };
+localStorage.setItem('obj', JSON.stringify(obj));
+const restored = JSON.parse(localStorage.getItem('obj'));
+console.log(typeof restored.date); // "string"，不是"object"
+console.log(restored.regex); // undefined，正则表达式丢失
+console.log(restored.undef); // undefined被JSON.stringify忽略
+```
+
+**解决方案：** 自定义序列化/反序列化函数，或使用专门的库如`flatted`。
+
+### 陷阱3：跨标签页通信问题
+
+同一域名下的多个标签页共享localStorage，可能导致数据竞争。
+
+```javascript
+// 监听其他标签页的storage变化
+window.addEventListener('storage', (e) => {
+    if (e.key === 'sharedState') {
+        console.log('Other tab updated:', e.newValue);
+    }
+});
+// 注意：只有其他标签页触发storage事件，当前标签页不会收到
+```
+
+### 陷阱4：隐私模式下的QuotaExceededError
+
+Safari隐私模式下localStorage可能不可用或容量为0。
+
+```javascript
+try {
+    localStorage.setItem('test', 'value');
+} catch (e) {
+    if (e.name === 'QuotaExceededError') {
+        // 降级方案：使用内存存储或cookie
+        console.warn('localStorage不可用，使用备用方案');
+        window.fallbackStorage = {};
+    }
+}
+```
+
+## 六、新兴存储方案
+
+除了传统的四种存储方式，现代浏览器还提供了新的存储选项：
+
+| 方案 | 特点 | 适用场景 |
+|------|------|---------|
+| **Cache API** | Service Worker配套，存储HTTP响应 | PWA离线缓存 |
+| **File System Access API** | 直接读写本地文件系统 | 在线编辑器、文件管理应用 |
+| **Web SQL**（已废弃） | 基于SQLite，不推荐使用 | - |
+| **OPFS (Origin Private File System)** | 高性能文件存储 | 视频编辑、大型游戏资源 |
+
+## 七、总结
+- **轻量级需求**：优先选择Cookie（会话）或Web Storage（持久化/临时）。
+- **复杂数据场景**：采用IndexedDB构建客户端数据库，平衡容量与性能。
+- **安全关键场景**：Cookie需严格配置安全属性，Web Storage/IndexedDB需防范XSS注入。
+
+通过结合数据规模、生命周期和交互需求，可精准选择最优存储方案，显著提升前端应用性能与用户体验。
+
+**面试要点：**
+1. 四种存储方式的容量、生命周期、作用域对比
+2. localStorage的同步阻塞问题和解决方案
+3. Cookie的安全属性（Secure、HttpOnly、SameSite）
+4. IndexedDB的事务机制和异步特性
+5. 隐私模式下的存储兼容性问题## 相关章节
+
+- 深度阅读：[`09.front-end/01-foundation`](../../../../note/09.front-end/01-foundation/README.md) — 浏览器原理、Web 标准
+- 相关：[`13.split-hairs/event-loop`](../event-loop/README.md) · [`13.split-hairs/closure`](../closure/README.md) — JS 核心机制
+- 🆕 [JWT 安全深度（localStorage 危险 + 6 方案）](../../../../note/04.system-design/05-security/jwt-security/README.md) —— 「为什么 localStorage 存 JWT 是危险的」+ HttpOnly Cookie 首选 + 双 Token 实战
+- 🆕 [Cookies vs LocalStorage 会话管理（工程实践）](../../../../note/09.front-end/07-security/sessions/README.md) —— SuperTokens 完整翻译稿
+
+← [返回: 咬文嚼字 · storage](../README.md)
