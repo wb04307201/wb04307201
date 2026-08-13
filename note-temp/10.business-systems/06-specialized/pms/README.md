@@ -112,9 +112,9 @@ module:
 
 ## 相关章节
 
-- [工作流引擎](../../../07.workflow/README.md) — PMS 的流程自动化
-- [项目管理度量](../../../14.project-management/agile-metrics/README.md) — PMS 的数据分析
-- [风险登记册](../../../14.project-management/risk-register/README.md) — PMS 的风险管理模块
+- [工作流引擎](../../../../note/07.workflow/README.md) — PMS 的流程自动化
+- [项目管理度量](../../../../note/14.project-management/agile-metrics/README.md) — PMS 的数据分析
+- [风险登记册](../../../../note/14.project-management/risk-register/README.md) — PMS 的风险管理模块
 
 ---
 

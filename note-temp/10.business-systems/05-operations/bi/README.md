@@ -399,7 +399,7 @@ BI 项目未达预期通常不是“图表不够漂亮”，而是四类系统�
 | [EAM · 设备管理](../eam/README.md) | 设备全生命周期 | BI 分析 OEE、维护成本、故障趋势与设备 ROI |
 | [QMS · 质量管理](../qms/README.md) | 质量过程与闭环 | BI 分析不良率、质量成本、供应商质量与趋势 |
 | [MDM · 主数据管理](../../README.md) | 企业数据标准与编码治理 | MDM 统一客户/物料/组织等维度，避免 BI 跨系统关联失真 |
-| [数据仓库](../../../10.big-data/01-data-warehouse/README.md) | 分析数据存储与分层底座 | 为 BI 提供 ODS/DWD/DWS/ADS 和稳定事实/维度模型 |
+| [数据仓库](../../../../note/10.big-data/01-data-warehouse/README.md) | 分析数据存储与分层底座 | 为 BI 提供 ODS/DWD/DWS/ADS 和稳定事实/维度模型 |
 | [05 运营管理父目录](../README.md) | 同级系统导航 | 返回 BI 所在父目录 |
 | [业务应用系统主目录](../../README.md) | 08 模块总览 | 查看全价值链、系统集成与开源参考 |
 
@@ -429,4 +429,4 @@ BI 项目未达预期通常不是“图表不够漂亮”，而是四类系统�
 - **实施反模式**：10 类（性能 / 模型 / 指标 / 自助治理 / 刷新 / 移动安全 / 中台边界 / AI / 价值 / 期望）
 - **分层建模**：4 层（ODS / DWD / DWS / ADS）
 - **所属价值链**：05 运营管理
-- **关联系统**：[ERP](../erp/README.md) / [CRM](../../04-sales-service/crm/README.md) / [HR](../hr/README.md) / [BPM](../bpm/README.md) / [RPA](../rpa/README.md) / [OA](../oa/README.md) / [EAM](../eam/README.md) / [QMS](../qms/README.md) / [数据仓库](../../../10.big-data/01-data-warehouse/README.md)
+- **关联系统**：[ERP](../erp/README.md) / [CRM](../../04-sales-service/crm/README.md) / [HR](../hr/README.md) / [BPM](../bpm/README.md) / [RPA](../rpa/README.md) / [OA](../oa/README.md) / [EAM](../eam/README.md) / [QMS](../qms/README.md) / [数据仓库](../../../../note/10.big-data/01-data-warehouse/README.md)
