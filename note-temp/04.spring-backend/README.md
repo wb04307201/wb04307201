@@ -1,18 +1,19 @@
 <!--
 module:
   parent: null
-  number: 06
-  slug: spring
-  topic: Spring 全家桶
-  audience: Java 后端工程师
+  number: 04
+  slug: spring-backend
+  topic: Spring 生态 + 后端框架
+  audience: Java 后端工程师 / 求职面试者
   category: 后端框架
   type: index
-  summary: 从 IoC/AOP 到 Spring Boot/Cloud/Security/集成组件，Java 最主流框架完整知识体系
+  summary: Spring 生态完整知识体系：核心容器 / Boot / Cloud / 数据 / Web / 集成 / 可观测性 / Security / 注解速查
 -->
 
-# Spring 全家桶
+# 04. Spring Backend（Spring 生态 + 后端框架）
 
-> Spring 全家桶完整图谱：IoC/AOP 核心 + Boot/Cloud 微服务 + 数据/缓存/MyBatis + Security。
+> Spring 生态完整图谱：IoC/AOP 核心 + Boot/Cloud 微服务 + 数据/缓存/MyBatis + Security。
+> **继承规范**：[SPEC.md](./SPEC.md)
 
 ---
 
@@ -26,14 +27,14 @@ module:
 
 - **Java 后端工程师**：掌握 Spring 是入行必备，本文档提供深度细节与踩坑点
 - **Spring 学习者**：从 IoC/AOP 基础到 Cloud 微服务，3 段式学习路径覆盖完整知识体系
-- **面试备战者**：配合 `13.split-hairs/04.spring-backend` 的"咬文嚼字"专题，吃透高频考点
+- **面试备战者**：配合 `13.split-hairs/06.spring` 的"咬文嚼字"专题，吃透高频考点
 
 ---
 
 ## 🗺️ 目录导航
 
 > 数字基线：以"分类下 leaf MD 数（含所有子目录与子子目录）"为统计口径。
-> 实际结构 = 31 个 README + 21 个 leaf README + 89 个非 README 子文章 = 141 个 .md 文件（2026-07-19 find 校对）。
+> 实际结构 = 31 个 README + 111 个非 README 子文章 = 142 个 .md 文件（2026-08-13 find 校对，含 1 个 SPEC.md 占位）。
 
 | 序号 | 分类 | 核心内容 | Leaf 数 | 入口 |
 |:----:|:----|:---------|:-------:|:----:|
@@ -47,7 +48,7 @@ module:
 | 08 | **注解速查** | 事务/缓存/调度/校验/重试/AOP/Web/JPA/测试/配置/异常 等按场景分类的索引 | **12** | [08-annotations/README.md](08-annotations/README.md) |
 | 09 | **Spring Security** | SecurityFilterChain 架构、认证（密码/JWT/OAuth2）、授权（@PreAuthorize/ACL）、OAuth2 四种授权模式、CORS/CSRF/Session/安全 Header | **6** | [09-security/README.md](09-security/README.md) |
 
-**合计**：9 大分类 · **31 个 README · 21 个 leaf README · 89 个非 README 子文章**。
+**合计**：9 大分类 · **31 个 README · 111 个非 README 子文章**（含 1 个 SPEC.md 占位，共 142 个 .md 文件）。
 
 ### 3.1 MyBatis 全栈专项（4 主题 · 27 篇）
 
@@ -154,10 +155,10 @@ module:
 
 ## 🔗 相关章节
 
-- ⬆️ [返回笔记目录](../README.md)
-- ↔️ [01.java](../01.java/README.md) —— Java 语言基础（Spring 的语言载体）
-- ↔️ [04.system-design](../04.system-design/README.md) —— 系统设计（Spring Cloud 的理论基础）
-- ↔️ [13.split-hairs/04.spring-backend](../../note/13.split-hairs/04.spring-backend/README.md) —— Spring 咬文嚼字（高频面试考点）
+- ⬆️ [返回 note-temp 总目录](../README.md)
+- ↔️ [01.java-and-jvm](../01.java-and-jvm/README.md) —— Java 语言基础（Spring 的语言载体）
+- ↔️ [04.system-design](../../note/04.system-design/README.md) —— 系统设计（Spring Cloud 的理论基础）
+- ↔️ [13.split-hairs/06.spring](../../note/13.split-hairs/06.spring/README.md) —— Spring 咬文嚼字（高频面试考点）
 
 ---
 
@@ -177,13 +178,13 @@ module:
 
 ## 🎯 高频面试题（咬文嚼字）
 
-针对面试中反复深挖的细节问题，见 [13.split-hairs/04.spring-backend](../../note/13.split-hairs/04.spring-backend/)：
+针对面试中反复深挖的细节问题，见 [13.split-hairs/06.spring](../../note/13.split-hairs/06.spring/)：
 
 | 主题 | 难度 | 核心问题 |
 |------|:----:|:---------|
-| [@Transactional 失效 8 种场景](../../note/13.split-hairs/04.spring-backend/transactional-pitfalls/) | ⭐⭐⭐⭐⭐ | 同类调用 / 异常类型 / 多线程 / 传播行为 |
-| [Bean 生命周期详解](../../note/13.split-hairs/04.spring-backend/bean-lifecycle/) | ⭐⭐⭐⭐ | 实例化 → 注入 → 初始化 → 销毁 12 步 |
-| [为什么不推荐 @Autowired](../../note/13.split-hairs/04.spring-backend/not-use-@autowired/) | ⭐⭐⭐ | 字段注入 vs 构造器注入 |
+| [@Transactional 失效 8 种场景](../../note/13.split-hairs/06.spring/transactional-pitfalls/) | ⭐⭐⭐⭐⭐ | 同类调用 / 异常类型 / 多线程 / 传播行为 |
+| [Bean 生命周期详解](../../note/13.split-hairs/06.spring/bean-lifecycle/) | ⭐⭐⭐⭐ | 实例化 → 注入 → 初始化 → 销毁 12 步 |
+| [为什么不推荐 @Autowired](../../note/13.split-hairs/06.spring/not-use-@autowired/) | ⭐⭐⭐ | 字段注入 vs 构造器注入 |
 
 ---
 
@@ -220,4 +221,4 @@ module:
 - [validation](08-annotations/validation.md)
 - [web](08-annotations/web.md)
 
-← [返回笔记目录](../README.md)
+← [返回 note-temp 总目录](../README.md)

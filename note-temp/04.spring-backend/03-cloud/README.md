@@ -92,7 +92,7 @@ graph TB
 - ⬅️ [返回 Spring 顶层](../README.md)
 - ⬅️ [04 Spring Boot](../02-boot/README.md) — Spring Cloud 基于 Spring Boot
 - ➡️ [03 数据层/分布式事务/理论](../04-data/transaction/distributed/theory-and-patterns.md) — 分布式事务是云端关键问题
-- [04.system-design/01-foundation/microservices](../../04.system-design/01-foundation/system-design-basics/microservices/README.md) — 微服务架构理论基础
+- [04.system-design/01-foundation/microservices](../../../note/04.system-design/01-foundation/system-design-basics/microservices/README.md) — 微服务架构理论基础
 
 ---
 

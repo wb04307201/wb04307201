@@ -545,4 +545,4 @@ public List<User> searchInTx(UserQuery query) {
 - ➡️ [04 多数据源路由](04-multi-datasource.md)
 - [transaction/README.md](../../../../README.md) — Spring 事务基础
 - [transaction/failure-cases.md](../../transaction/failure-cases.md) — 事务失效场景全集
-- [13.split-hairs/04.spring-backend/transactional-pitfalls/README.md](../../../../../note/13.split-hairs/04.spring-backend/transactional-pitfalls/README.md) — @Transactional 失效 8 种场景
+- [13.split-hairs/06.spring/transactional-pitfalls/README.md](../../../../../note/13.split-hairs/06.spring/transactional-pitfalls/README.md) — @Transactional 失效 8 种场景

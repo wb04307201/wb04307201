@@ -470,7 +470,7 @@ public Step dispatchStep(JobRepository jobRepository,
 }
 ```
 
-`ClassifierCompositeItemWriter` 只负责路由，每个委托 Writer 专注一个目标，便于单测和独立演进。注意它不会自动提供跨外部系统的原子事务：对于 HTTP、短信等非事务目标，应增加幂等键、Outbox 或补偿机制；相关可靠性设计参见[高可用设计](../../04.system-design/03-high-availability/README.md)。
+`ClassifierCompositeItemWriter` 只负责路由，每个委托 Writer 专注一个目标，便于单测和独立演进。注意它不会自动提供跨外部系统的原子事务：对于 HTTP、短信等非事务目标，应增加幂等键、Outbox 或补偿机制；相关可靠性设计参见[高可用设计](../../../note/04.system-design/03-high-availability/README.md)。
 
 ## 十、失败重试与跳过
 
@@ -746,8 +746,8 @@ public Step masterStep() {
 - [Spring 调度与异步注解](../08-annotations/scheduling-and-async.md) — `@Scheduled`、`@Async` 与线程池配置
 - [Spring Retry](integration-retry.md) — 区分方法级重试与 Batch chunk 级容错
 - [Spring StateMachine](statemachine.md) — 复杂 Job 状态流转与业务状态建模
-- [大数据任务调度](../../10.big-data/06-scheduling/README.md) — Airflow、DolphinScheduler、Azkaban 的编排选型
-- [高可用设计](../../04.system-design/03-high-availability/README.md) — 幂等、重试、降级与故障恢复
+- [大数据任务调度](../../03.data-stack/02-big-data/06-scheduling/README.md) — Airflow、DolphinScheduler、Azkaban 的编排选型
+- [高可用设计](../../../note/04.system-design/03-high-availability/README.md) — 幂等、重试、降级与故障恢复
 
 
 - [annotations-retry](../08-annotations/annotations-retry.md)

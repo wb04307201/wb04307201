@@ -153,7 +153,7 @@ flowchart LR
 
 选型不是“谁更高级”：需要精确控制 SQL、充分利用数据库能力时优先 MyBatis；需要实体状态管理与对象关系导航时考虑 JPA/Hibernate。Spring Boot 只负责自动装配，最终仍落到 MyBatis 或 JDBC 的执行模型。
 
-相关基础可先读[框架本质与三层架构](01-framework-essence.md)、[初始化流程](02-initialization-flow.md)、[核心组件](04-core-components.md)与[动态 SQL](05-dynamic-sql.md)。跨技术边界参见[Spring 数据访问总览](../../README.md)、[JPA 事务](../../transaction/jpa-transaction.md)和[JDBC 基础](../../../../01.java/jdbc/README.md)。
+相关基础可先读[框架本质与三层架构](01-framework-essence.md)、[初始化流程](02-initialization-flow.md)、[核心组件](04-core-components.md)与[动态 SQL](05-dynamic-sql.md)。跨技术边界参见[Spring 数据访问总览](../../README.md)、[JPA 事务](../../transaction/jpa-transaction.md)和[JDBC 基础](../../../../01.java-and-jvm/jdbc/README.md)。
 
 ## 🔧 9 大核心类职责详解
 
@@ -882,7 +882,7 @@ TypeHandler 的三种读取重载都应实现，因为列名映射、列序号�
 - [MyBatis Java API 文档](https://mybatis.org/mybatis-3/zh_CN/java-api.html) — SqlSessionFactory、SqlSession、ExecutorType。
 - [Spring Boot JDBC / 数据访问总览](../../README.md) — Spring 数据访问边界与子主题入口。
 - [Hibernate/JPA 事务边界](../../transaction/jpa-transaction.md) — 与持久化上下文模型对照。
-- [JDBC 基础](../../../../01.java/jdbc/README.md) — PreparedStatement、ResultSet 与事务底座。
+- [JDBC 基础](../../../../01.java-and-jvm/jdbc/README.md) — PreparedStatement、ResultSet 与事务底座。
 - [01 框架本质](01-framework-essence.md) — MyBatis 与 ORM 的边界。
 - [02 初始化流程](02-initialization-flow.md) — SqlSessionFactory 构建过程。
 - [04 核心组件](04-core-components.md) — Executor 类型与 API。
