@@ -214,8 +214,8 @@ Q3: 业务复杂度？
 
 ## 七、相关章节
 
-- 关联：[`app-quote-breakdown`](../../../14.project-management/app-quote-breakdown/README.md) — App 报价 12 大差异
-- 关联：[`outsourcing-pitfalls`](../../../14.project-management/outsourcing-pitfalls/README.md) — 外包避坑指南
+- 关联：[`app-quote-breakdown`](../../../../note/14.project-management/app-quote-breakdown/README.md) — App 报价 12 大差异
+- 关联：[`outsourcing-pitfalls`](../../../../note/14.project-management/outsourcing-pitfalls/README.md) — 外包避坑指南
 - 主模块：[`09.front-end/08-cross-platform`](../README.md) — 跨端开发
 
 ---

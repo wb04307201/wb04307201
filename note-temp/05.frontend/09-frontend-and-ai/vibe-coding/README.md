@@ -236,15 +236,15 @@ AI 生成的"能跑"的代码，距离"能上 Core Web Vitals 良好阈值"还�
 ## 交叉引用
 - [`09-frontend-and-ai/`](../) — 前端与 AI 总览
 - [`09-frontend-and-ai/ai-sdk/`](../ai-sdk/) — 集成 AI 到产品
-- [`11.ai/`](../../../11.ai/README.md/) — AI 知识体系
-- [`12.story/11-ai-learning-paradox.md`](../../../12.story/11-ai-learning-paradox.md) — AI 时代怎么学
+- [`11.ai/`](../../../../note/11.ai/README.md/) — AI 知识体系
+- [`12.story/11-ai-learning-paradox.md`](../../../../note/12.story/11-ai-learning-paradox.md) — AI 时代怎么学
 - [`09.front-end/01-foundation/browser-rendering/`](../../01-foundation/browser-rendering/) — 渲染原理（Vibe Coding 产物的性能根因）
 - [`09.front-end/06-performance/optimization/`](../../06-performance/optimization/) — 性能优化落地清单
 
 ---
 
 ## 与其他模块的关系
-- **上游**：[`11.ai/`](../../../11.ai/README.md/)（AI 基础）
+- **上游**：[`11.ai/`](../../../../note/11.ai/README.md/)（AI 基础）
 - **下游**：影响 [`03-frameworks/`](../../03-frameworks/) / [`04-engineering/`](../../04-engineering/) 的选型（AI 友好度成新维度）
 
 ---

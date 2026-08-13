@@ -83,7 +83,7 @@ flowchart TD
 ## 与其他模块的关系
 - **上游**:[02-language](../02-language/) / [03-frameworks](../03-frameworks/)
 - **下游**:所有 AI 集成的 Web 应用
-- **横向**:[11.ai](../../11.ai/) 关注 AI 知识体系,[09 前端与 AI] 关注 AI 在前端的落地
+- **横向**:[11.ai](../../../note/11.ai/) 关注 AI 知识体系,[09 前端与 AI] 关注 AI 在前端的落地
 
 ---
 
@@ -100,6 +100,6 @@ flowchart TD
 
 ## 反向链
 
-- [20-multiplatform-architecture](../../12.story/20-multiplatform-architecture.md)
+- [20-multiplatform-architecture](../../../note/12.story/20-multiplatform-architecture.md)
 
 ← [返回前端工程总览](../README.md)

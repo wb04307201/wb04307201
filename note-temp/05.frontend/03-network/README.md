@@ -18,8 +18,8 @@ module:
 | 主题 | 状态 | 说明 |
 |------|------|------|
 | [HTTP 协议 · GET vs POST](http-protocol/get-vs-post.md) | ✓ 已有 | 9 大差异 + 幂等性 + 语义本质 |
-| HTTP 缓存机制 | 📝 速查 | 详见 [13.split-hairs/09.front-end/http-cache](../../../13.split-hairs/09.front-end/http-cache/) |
-| HTTPS 握手 | 📝 速查 | 详见 [13.split-hairs/09.front-end/https-handshake](../../../13.split-hairs/09.front-end/https-handshake/) |
+| HTTP 缓存机制 | 📝 速查 | 详见 [13.split-hairs/09.front-end/http-cache](../../../../note/13.split-hairs/09.front-end/http-cache/) |
+| HTTPS 握手 | 📝 速查 | 详见 [13.split-hairs/09.front-end/https-handshake](../../../../note/13.split-hairs/09.front-end/https-handshake/) |
 | CORS 跨域 | 📝 速查 | 详见 [07-security/cors](../../07-security/cors/) |
 
 ### 学习路径
@@ -32,7 +32,7 @@ module:
 
 ## 与其他模块的关系
 
-- **上游**：[`02.computer-basics/01-network`](../../../02.computer-basics/01-network/) — HTTP 协议族（TCP/IP / DNS / TLS）
+- **上游**：[`02.computer-basics/01-network`](../../../../note/02.computer-basics/01-network/) — HTTP 协议族（TCP/IP / DNS / TLS）
 - **横向**：[`07-security`](../../07-security/) — CORS / CSRF / CSP 安全相关
 - **下游**：[`05-architecture/bff`](../../05-architecture/bff/) — BFF 层网络优化
 
