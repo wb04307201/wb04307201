@@ -1,3 +1,11 @@
+<!--module:
+  parent: ai-applications
+  slug: ai-applications/agent
+  type: index
+  category: AI 应用子 MOC
+  summary: Agent 主题索引——架构 / 上下文 / 评测 / 执行模式 / 记忆 / 可靠性 / Spec 工具 / 案例 / 编程 Agent / 本体驱动 / 生产实践。
+-->
+
 # Agent（智能体）
 
 > **定位**：MOC——Agent 主题索引，覆盖架构 / 上下文 / 评测 / 执行模式 / 记忆 / 可靠性 / Spec 工具 / 案例 / 编程 Agent / 本体驱动 / 生产实践 / 系统设计。

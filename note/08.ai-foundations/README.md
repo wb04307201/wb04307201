@@ -1,3 +1,13 @@
+<!--
+module:
+  number: 08
+  slug: ai-foundations
+  topic: AI Foundations（机器学习 / 深度学习 / Transformer / LLM 基础 / Tokenization）
+  audience: AI 工程师 / 算法工程师 / 后端转 AI / 求职面试者
+  category: 主模块
+  summary: AI 基础层——传统 ML 算法、深度学习原理、Transformer 架构、LLM 基础、Tokenization 与 Embedding。
+-->
+
 # 08. AI Foundations
 
 > **定位**：AI 基础——传统 ML、深度学习、Transformer、LLM 基础、Tokenization/Embedding。

@@ -1,3 +1,14 @@
+<!--
+module:
+  number: 00
+  slug: note-root
+  topic: note 总目录（L0 导航）
+  type: index
+  audience: 所有读者
+  category: 主入口
+  summary: 14 个主模块的知识库总目录，含全局 SPEC 规范、模块导航、写作规范与 README 模板。
+-->
+
 # note 总目录
 
 > **定位**：13 模块新结构实验目录（最终替换 note/）

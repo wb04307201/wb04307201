@@ -1,3 +1,11 @@
+<!--module:
+  parent: ai-foundations
+  slug: ai-foundations/01-ml
+  type: index
+  category: AI 基础子模块
+  summary: 传统机器学习算法——监督学习、无监督学习与强化学习的核心方法与演进。
+-->
+
 # 01. 传统机器学习
 
 > **定位**：传统 ML 算法——监督学习、无监督学习与强化学习的核心方法。

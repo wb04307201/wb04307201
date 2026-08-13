@@ -1,3 +1,11 @@
+<!--module:
+  parent: ai-applications
+  slug: ai-applications/llm-inference
+  type: index
+  category: AI 应用子 MOC
+  summary: LLM 推理工程——KV Cache / Flash Attention / Paged Attention / 推测解码 / 连续批处理 / 权重量化 11 大主题。
+-->
+
 # LLM Inference（LLM 推理工程）
 
 > **定位**：MOC——LLM 推理工程主题索引，覆盖 KV Cache / Flash Attention / 推理框架 / 推理指标 / 推理优化 / vLLM vs Ollama / MoE 推理 / Paged Attention / 推测解码 / 连续批处理 / 权重量化。

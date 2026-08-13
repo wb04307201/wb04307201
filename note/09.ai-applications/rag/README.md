@@ -1,3 +1,11 @@
+<!--module:
+  parent: ai-applications
+  slug: ai-applications/rag
+  type: index
+  category: AI 应用子 MOC
+  summary: RAG 全景——Pipeline / 范式演进 / 选型 / 评估 / 超范围拒答 / Agentic RAG 六主题。
+-->
+
 # RAG（Retrieval-Augmented Generation）
 
 > **定位**：MOC——RAG 主题索引，覆盖流水线 / 范式演进 / 选型 / 评估 / 生产治理 / 前沿。

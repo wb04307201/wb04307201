@@ -1,3 +1,11 @@
+<!--module:
+  parent: ai-applications/agent
+  slug: ai-applications/agent/case-studies
+  type: index
+  category: AI 应用子 MOC（案例库）
+  summary: Agent 真实企业案例——Salesforce Agentforce、Shopify AI Agent 等落地实践。
+-->
+
 # Agent 真实案例
 
 > **定位**：Agent 主题下的真实企业案例库。

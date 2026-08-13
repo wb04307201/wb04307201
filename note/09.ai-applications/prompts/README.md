@@ -1,3 +1,11 @@
+<!--module:
+  parent: ai-applications
+  slug: ai-applications/prompts
+  type: index
+  category: AI 应用子 MOC
+  summary: Prompt 工程——Prompt 设计方法 / 模板 / 实战 / 系统提示词 4 大主题。
+-->
+
 # Prompts（Prompt 工程）
 
 > **定位**：MOC——Prompt 工程主题索引，覆盖 Prompt 设计方法 / 模板 / 实战 / 系统提示词。

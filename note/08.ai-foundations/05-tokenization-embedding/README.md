@@ -1,3 +1,11 @@
+<!--module:
+  parent: ai-foundations
+  slug: ai-foundations/05-tokenization-embedding
+  type: index
+  category: AI 基础子模块
+  summary: Tokenization 与 Embedding——文本切分算法、向量表示、流形假说与语义空间。
+-->
+
 # 05. Tokenization 与 Embedding
 
 > **定位**：Tokenization 与 Embedding 基础——理解文本切分、向量表示及其语义空间。

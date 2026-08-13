@@ -1,3 +1,13 @@
+<!--
+module:
+  number: 09
+  slug: ai-applications
+  topic: AI Applications（RAG / Agent / Prompt / LLM 推理 / Fine-tuning / Eval）
+  audience: AI 应用工程师 / 后端转 AI / 创业团队 / 求职面试者
+  category: 主模块
+  summary: AI 应用层——RAG、Agent 框架、Prompt 工程、LLM 推理优化、Fine-tuning、Eval 六大主题。
+-->
+
 # 09. AI Applications
 
 > **定位**：AI 应用层——RAG、Agent、Prompt、LLM 推理工程、Fine-tuning、Eval。
