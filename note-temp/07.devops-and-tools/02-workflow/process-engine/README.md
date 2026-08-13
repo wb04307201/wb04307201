@@ -212,7 +212,7 @@ Q5: 国产化 / 信创要求？
 
 **选型一句话**：
 
-> 2026 年新项目默认选 **Camunda 8 / Zeebe**（除非强治理 / 国产化约束 Camunda 7）；AI 节点用 **fromAi() / 自研 Zeebe AI Worker**；复杂 Agent 编排用 **LangGraph**（详见 [BPMN+AI 融合](../../../../../note/11.ai/04-architecture/bpmn-ai-integration.md)）。
+> 2026 年新项目默认选 **Camunda 8 / Zeebe**（除非强治理 / 国产化约束 Camunda 7）；AI 节点用 **fromAi() / 自研 Zeebe AI Worker**；复杂 Agent 编排用 **LangGraph**（详见 [BPMN+AI 融合](../../../../note/11.ai/04-architecture/bpmn-ai-integration.md)）。
 
 ---
 

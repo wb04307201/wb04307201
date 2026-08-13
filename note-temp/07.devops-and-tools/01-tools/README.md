@@ -125,10 +125,10 @@ graph TB
 
 ## 七、相关章节
 
-- 上游：[`01.java`](../../../../note/01.java/README.md) — Java 语言基础（工具库的宿主语言）
-- 下游：[`06.spring`](../../../../note/06.spring/README.md) — Spring 全家桶（工具链的核心应用场景）
-- 关联：[`10.big-data`](../../../../note/10.big-data/README.md) — 大数据生态（Docker 部署、数据同步工具）
-- 关联：[`04.system-design`](../../../../note/04.system-design/README.md) — 系统设计（Nginx 反向代理、Monorepo 架构）
+- 上游：[`01.java`](../../../note/01.java/README.md) — Java 语言基础（工具库的宿主语言）
+- 下游：[`06.spring`](../../../note/06.spring/README.md) — Spring 全家桶（工具链的核心应用场景）
+- 关联：[`10.big-data`](../../../note/10.big-data/README.md) — 大数据生态（Docker 部署、数据同步工具）
+- 关联：[`04.system-design`](../../../note/04.system-design/README.md) — 系统设计（Nginx 反向代理、Monorepo 架构）
 
 ---
 

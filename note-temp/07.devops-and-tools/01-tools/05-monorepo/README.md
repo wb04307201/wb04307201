@@ -142,8 +142,8 @@ graph LR
 
 ## 相关章节
 - 上游：[`工具链`](../README.md)
-- 关联：[`04.system-design`](../../../../../note/04.system-design/README.md) — 多仓 vs 单仓架构决策
-- 关联：[`06.spring`](../../../../../note/06.spring/README.md) — Spring Boot 微服务拆分决策同源
+- 关联：[`04.system-design`](../../../../note/04.system-design/README.md) — 多仓 vs 单仓架构决策
+- 关联：[`06.spring`](../../../../note/06.spring/README.md) — Spring Boot 微服务拆分决策同源
 
 ---
 

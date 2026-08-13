@@ -490,7 +490,7 @@ jobs:
 - **Docker**：[02-docker](../02-docker/README.md) — 容器化（IaC 管理的核心资源之一）
 - **Kubernetes**：[kubernetes](../kubernetes/README.md) — 容器编排（GitOps 的主要目标平台）
 - **DevOps**：[devops](../devops/README.md) — CI/CD 工具链（IaC 的执行环境）
-- **系统设计**：[04.system-design](../../../../../note/04.system-design/README.md) — 基础设施架构设计
+- **系统设计**：[04.system-design](../../../../note/04.system-design/README.md) — 基础设施架构设计
 
 ---
 

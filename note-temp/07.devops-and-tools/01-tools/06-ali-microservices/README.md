@@ -154,8 +154,8 @@ graph TB
 
 ## 相关章节
 - 上游：[`工具链`](../README.md)
-- 关联：[`06.spring`](../../../../../note/06.spring/README.md) — Spring Cloud Alibaba 落地集成
-- 关联：[`04.system-design`](../../../../../note/04.system-design/README.md) — 微服务架构设计同源
+- 关联：[`06.spring`](../../../../note/06.spring/README.md) — Spring Cloud Alibaba 落地集成
+- 关联：[`04.system-design`](../../../../note/04.system-design/README.md) — 微服务架构设计同源
 
 ---
 
