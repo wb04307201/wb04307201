@@ -166,7 +166,7 @@ graph TD
 
 ## 八、与 12.story 的联动
 
-> 本节风险管理的叙事版本见 [`12.story/44-tech-debt-career-trap`](../../12.story/44-tech-debt-career-trap.md)——技术债就是一种典型的"已接受风险"。
+> 本节风险管理的叙事版本见 [`12.story/44-tech-debt-career-trap`](../../../note/12.story/44-tech-debt-career-trap.md)——技术债就是一种典型的"已接受风险"。
 
 | 本章概念 | 12.story 对应 |
 |---------|-------------|

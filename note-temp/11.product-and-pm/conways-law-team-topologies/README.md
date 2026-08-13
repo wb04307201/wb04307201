@@ -10,7 +10,7 @@ pm:
 
 > 架构师 / CTO 都遇到：换组织架构，系统就跟着崩；或者反过来，系统改造完了，组织不跟进就低效。本文用 **康威定律 + Team Topologies 4 类型**，讲清楚组织结构与系统架构怎么一一映射。
 
-> **前置知识**：[12.story/07-from-chef-to-ceo](../../12.story/07-from-chef-to-ceo.md)（终章康威定律 + SECI / ADR / Docs-as-Code）、[self-vs-saas-vs-outsourcing](../self-vs-saas-vs-outsourcing/README.md)（自研组织能力）、[team-sizing-3x-buffer](../team-sizing-3x-buffer/README.md)（阿里 2-8-2 模型）。
+> **前置知识**：[12.story/07-from-chef-to-ceo](../../../note/12.story/07-from-chef-to-ceo.md)（终章康威定律 + SECI / ADR / Docs-as-Code）、[self-vs-saas-vs-outsourcing](../self-vs-saas-vs-outsourcing/README.md)（自研组织能力）、[team-sizing-3x-buffer](../team-sizing-3x-buffer/README.md)（阿里 2-8-2 模型）。
 
 ---
 
@@ -250,9 +250,9 @@ AI 时代：5 人小团队 + AI 助手 ≈ 传统 15 人团队
 - 本系列：[self-vs-saas-vs-outsourcing](../self-vs-saas-vs-outsourcing/README.md) — 自研团队能力评估
 - 本系列：[team-sizing-3x-buffer](../team-sizing-3x-buffer/README.md) — 阿里 2-8-2 配比
 - 本系列：[ai-pm-dora-space](../ai-pm-dora-space/README.md) — DORA + SPACE + ROI
-- 故事章节：[`12.story/07-from-chef-to-ceo`](../../12.story/07-from-chef-to-ceo.md) — 终章康威定律 + SECI / ADR / Docs-as-Code
-- 主模块：[`note/04.system-design`](../../04.system-design/README.md) — 系统设计架构基线
-- 面试专题：[`13.split-hairs/04.system-design/cap-theorem`](../../04.system-design/02-distributed/cap-and-base/README.md) — CAP 经典问题
+- 故事章节：[`12.story/07-from-chef-to-ceo`](../../../note/12.story/07-from-chef-to-ceo.md) — 终章康威定律 + SECI / ADR / Docs-as-Code
+- 主模块：[`note/04.system-design`](../../../note/04.system-design/README.md) — 系统设计架构基线
+- 面试专题：[`13.split-hairs/04.system-design/cap-theorem`](../../../note/04.system-design/02-distributed/cap-and-base/README.md) — CAP 经典问题
 
 ---
 
