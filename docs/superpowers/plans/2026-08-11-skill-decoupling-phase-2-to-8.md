@@ -474,9 +474,118 @@ git commit -m "feat(note-temp): 11 个模块 README.md 填实"
 
 ---
 
+## Phase 6.5：L2 SPEC.md 按需补（Task 16）
+
+### Task 16: L2 SPEC.md 按需补（强特异性子目录）
+
+**Files:**
+- Create: 5 个 L2 SPEC.md（`01.java-and-jvm/02-jvm/SPEC.md`、`01.java-and-jvm/04-patterns/SPEC.md`、`01.java-and-jvm/testing/SPEC.md`、`09.ai-applications/rag/SPEC.md`、`09.ai-applications/agent/SPEC.md`）
+
+**目的:** 给强特异性子目录补 L2 SPEC.md，含独特的评估维度 + 写作要求。
+
+- [ ] **Step 1: 扫描需要 L2 SPEC.md 的子目录**
+
+按以下判断清单：
+- 子目录有独特评估维度（L1 G + A/B/C 类不够）
+- 子目录有专门写作要求
+- 子目录内容跨多学科融合
+
+```bash
+for sub in note-temp/01.java-and-jvm/02-jvm \
+          note-temp/01.java-and-jvm/04-patterns \
+          note-temp/01.java-and-jvm/testing \
+          note-temp/09.ai-applications/rag \
+          note-temp/09.ai-applications/agent; do
+  echo "=== $sub ==="
+  # 检查内容是否够丰富（≥5 篇 leaf 文章）
+  count=$(find "$sub" -maxdepth 2 -name "*.md" -not -name "README.md" 2>/dev/null | wc -l)
+  echo "  leaf count: $count"
+done
+```
+
+- [ ] **Step 2: 起草 5 个 L2 SPEC.md**
+
+每个 SPEC.md 结构：
+- 顶部 `Inherits from: [../../../SPEC.md]`（或 `../../SPEC.md`，按深度）
+- 子目录定位
+- 从 L1 继承段
+- 本子目录评估维度（强特异性）
+- 写作要求（专门规则）
+- 互链要求
+
+参考示例：`note-temp/09.ai-applications/rag/SPEC.md`（如已存在则跳过）
+
+- [ ] **Step 3: 写 5 个 SPEC.md**
+
+每个 L2 SPEC.md 模板：
+
+```markdown
+# SPEC for note-temp/<module>/<sub>/
+
+> **Inherits from**: [../../../SPEC.md](../../../SPEC.md)（或 ../）
+> **Mode**: append + override
+> **Updated**: 2026-08-13
+
+---
+
+## 子目录定位
+
+（1-2 句话说明这个子目录专注于什么）
+
+## 从 L1 继承
+
+（继承自 L1 的 G1-G6 + 模块专属 A/B/C 维度）
+
+## 本子目录规则（强特异性）
+
+### 评估维度（追加 L1 维度后）
+
+| # | 维度 | 2 分 | 1 分 | 0 分 |
+|---|------|------|------|------|
+| X1 | {维度名} | {2 分标准} | {1 分标准} | {0 分标准} |
+| X2 | {维度名} | ... | ... | ... |
+
+### 写作要求
+
+- {专门规则 1}
+- {专门规则 2}
+- {专门规则 3}
+```
+
+- [ ] **Step 4: 验证 Inherits 路径**
+
+每个 L2 SPEC.md 的 `Inherits from` 路径必须正确解析到 L0 SPEC.md。
+
+```bash
+# 验证 02-jvm 路径
+echo "test: [../../../SPEC.md]" | grep -oE "\[([^]]+)\]\(([^)]+)\)"
+```
+
+- [ ] **Step 5: Commit**
+
+```bash
+git add note-temp/
+git commit -m "feat(note-temp): 5 个 L2 SPEC.md（强特异性子目录：jvm/patterns/testing/rag/agent）"
+```
+
+**全局约束**：
+- 不纳入 pre-existing `note/.../ralph-wiggum-loop.md`
+- 不修改 L0/L1 SPEC.md（只新增 L2）
+
+**报告文件**：`.superpowers/sdd/2026-08-11-skill-decoupling-phase-2-to-8/task-16-report.md`
+
+**报告契约**：
+- 状态
+- commit hash
+- 5 个 L2 SPEC.md 的内容摘要（每个 1-2 行）
+- Inherits 路径验证结果
+- concerns
+
+---
+
 ## Phase 7：健康检查 + 修复
 
-### Task 14: 全库健康检查
+### Task 14: 全库健康检查（注意：原编号 Task 15 改为 Phase 8 Task 15）
 
 **目的:** 跑所有健康检查，识别 P1/P2 问题。
 
