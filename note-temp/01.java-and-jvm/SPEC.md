@@ -2,7 +2,7 @@
 
 > **Inherits from**: [../SPEC.md](../SPEC.md)
 > **Mode**: append + override
-> **Updated**: 2026-08-11
+> **Updated**: 2026-08-13
 
 ---
 
@@ -33,7 +33,7 @@ Java 语言基础 + JVM 原理 + 并发编程 + 设计模式。
 - 反模式用 ❌ 标识
 - 至少 1 个生产实践案例
 
-### 子目录约定（待 Phase 2 填实）
+### 子目录约定
 
 - `01-fundamentals/` 语言基础
 - `02-jvm/` JVM 原理

@@ -2,7 +2,7 @@
 
 > **Inherits from**: [../SPEC.md](../SPEC.md)
 > **Mode**: append + override
-> **Updated**: 2026-08-11
+> **Updated**: 2026-08-13
 
 ---
 
@@ -30,8 +30,18 @@ Spring 生态 + 后端框架（Spring Boot / Spring Cloud / 微服务框架）�
 
 ### 写作要求
 
-（待 Phase X 填实）
+- 所有 Spring 示例注明 Boot/Spring Framework/Cloud 版本与关键依赖。
+- 自动配置、事务、连接池、序列化和异步边界须展示生效条件与常见陷阱。
+- 配置示例使用可复制的 YAML/Java 片段，并解释为什么选择该值。
+- 至少给出一个生产场景的启动时间、内存、吞吐或故障恢复观测结果。
 
 ### 子目录约定
 
-（待 Phase X 填实）
+- `01-core/`：IoC、AOP、事件、资源、事务与核心扩展点。
+- `02-boot/`：自动配置、配置管理、打包、测试和 Actuator。
+- `02-web/`：Web MVC/WebFlux、HTTP、参数校验与异常处理。
+- `03-cloud/`：服务治理、配置中心、服务发现与云端集成。
+- `04-data/`：Spring Data、数据访问、缓存与消息抽象。
+- `06-integration/`：消息、批处理、远程调用与外部系统集成。
+- `07-observability/`：指标、日志、链路追踪和健康检查。
+- `08-annotations/`、`09-security/`：常用注解、认证授权与安全实践。
