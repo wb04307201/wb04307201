@@ -330,7 +330,7 @@ graph TD
 
 
 - [note](../README.md)
-- [vibe-coding](../09.front-end/09-frontend-and-ai/vibe-coding/README.md)
+- [vibe-coding](../../note/09.front-end/09-frontend-and-ai/vibe-coding/README.md)
 - [30-agent-harness](30-agent-harness.md)
 - [32b-ai-evaluation-pipeline](32b-ai-evaluation-pipeline.md)
 - [33a-mcp-protocol](33a-mcp-protocol.md)

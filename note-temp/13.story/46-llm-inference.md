@@ -167,11 +167,11 @@ LLM 推理优化不是"一项技术"，而是**5 项技术的组合**：
 
 ## 🔗 兄弟章节
 
-- **主模块深度**：[11.ai/02-technology-stack/llm-inference-optimization](../11.ai/02-technology-stack/llm-inference-optimization/README.md)
-- **面试深挖**：[13.split-hairs/11.ai/llm-inference](../13.split-hairs/11.ai/llm-inference/README.md)
-- **上集**：[45-skill-scheduling-restaurant](../12.story/45-skill-scheduling-restaurant.md)
-- **下集**：[44-tech-debt-career-trap](../12.story/44-tech-debt-career-trap.md)（已在前面章节）
+- **主模块深度**：[11.ai/02-technology-stack/llm-inference-optimization](../../note/11.ai/02-technology-stack/llm-inference-optimization/README.md)
+- **面试深挖**：[13.split-hairs/11.ai/llm-inference](../../note-temp/12.interview/11.ai/llm-inference/README.md)
+- **上集**：[45-skill-scheduling-restaurant](/45-skill-scheduling-restaurant.md)
+- **下集**：[44-tech-debt-career-trap](/44-tech-debt-career-trap.md)（已在前面章节）
 
 ---
 
-**番外预告**：下篇讲"AI 餐厅的边界——哪些菜不能做"（AI 合规与对齐）→ [38-ai-compliance](../12.story/38-ai-compliance-and-regulation.md)
+**番外预告**：下篇讲"AI 餐厅的边界——哪些菜不能做"（AI 合规与对齐）→ [38-ai-compliance](/38-ai-compliance-and-regulation.md)

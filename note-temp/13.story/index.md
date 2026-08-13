@@ -11,7 +11,7 @@ module:
 
 > 「阿明餐厅」系列 **48 篇** 技术故事完整导航 —— 按主题分类、按叙事顺序、按角色推荐多维入口（含 34/35/36 三个 a/b 拆分双篇）。
 
-← [返回笔记目录](../README.md)
+← [返回 note-temp 总目录](../../note/README.md)
 
 ---
 
@@ -142,9 +142,9 @@ module:
 
 ## 六、相关章节
 
-- 主模块：[`11.ai`](../11.ai/README.md) — AI 知识体系
-- 主模块：[`13.split-hairs`](../13.split-hairs/README.md) — 面试题深度剖析
-- 技术基础：[`01.java`](../01.java/) · [`04.system-design`](../04.system-design/) · [`06.spring`](../06.spring/) · [`09.front-end`](../09.front-end/)
+- 主模块：[`11.ai`](../../note/11.ai/README.md) — AI 知识体系
+- 主模块：[`13.split-hairs`](../../note-temp/12.interview/README.md) — 面试题深度剖析
+- 技术基础：[`01.java`](../../note/01.java/) · [`04.system-design`](../../note/04.system-design/) · [`06.spring`](../../note/06.spring/) · [`09.front-end`](../../note/09.front-end/)
 
 ---
 

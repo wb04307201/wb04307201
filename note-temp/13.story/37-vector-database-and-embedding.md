@@ -619,7 +619,7 @@ async def monitor_retrieval_quality(query, results):
 - 第四章（4 大调优）：HNSW 参数调优
 - **第八章（本节）：算法选型决策**（HNSW vs IVF vs DiskANN）
 
-完整内容见 [11.ai/02-technology-stack/vector-search-algorithms](../11.ai/02-technology-stack/vector-search-algorithms/README.md) 与 [咬文嚼字·11.ai/vector-search-algorithms（面试版）](../13.split-hairs/11.ai/vector-search-algorithms/README.md)。
+完整内容见 [11.ai/02-technology-stack/vector-search-algorithms](../../note/11.ai/02-technology-stack/vector-search-algorithms/README.md) 与 [咬文嚼字·11.ai/vector-search-algorithms（面试版）](../../note-temp/12.interview/11.ai/vector-search-algorithms/README.md)。
 
 ### 8.1 10 亿级向量检索的规模挑战
 
@@ -652,7 +652,7 @@ async def monitor_retrieval_quality(query, results):
 | **DiskANN** | **10-50 GB** | **2K-10K** | **> 95%** | **1-100 亿** ⭐ |
 | DiskANN + 分布式 | 每节点 10-50 GB | 10K+ | > 95% | > 10 亿 |
 
-**关键洞察**：HNSW 在 10 亿级**内存放不下**（4TB 单机放不下），必须换 DiskANN。详细原理、参数调优、业界库对比、3 个生产案例（电商/RAG/图像搜索）见 [11.ai/02-technology-stack/vector-search-algorithms](../11.ai/02-technology-stack/vector-search-algorithms/README.md)。
+**关键洞察**：HNSW 在 10 亿级**内存放不下**（4TB 单机放不下），必须换 DiskANN。详细原理、参数调优、业界库对比、3 个生产案例（电商/RAG/图像搜索）见 [11.ai/02-technology-stack/vector-search-algorithms](../../note/11.ai/02-technology-stack/vector-search-algorithms/README.md)。
 
 ---
 
@@ -670,7 +670,7 @@ async def monitor_retrieval_quality(query, results):
 
 **关键洞察**：千亿级是**质变**，不是 10 亿级 × 100。
 
-完整内容见 [11.ai/02-technology-stack/vector-search-at-scale](../11.ai/02-technology-stack/vector-search-at-scale/README.md) + [咬文嚼字·11.ai/vector-search-at-scale（面试版）](../13.split-hairs/11.ai/vector-search-at-scale/README.md) + [第八章反向链（10亿级）](./README.md#第八章10亿级毫秒级检索hnsw-vs-ivf-vs-diskann-选型逻辑)。
+完整内容见 [11.ai/02-technology-stack/vector-search-at-scale](../../note/11.ai/02-technology-stack/vector-search-at-scale/README.md) + [咬文嚼字·11.ai/vector-search-at-scale（面试版）](../../note-temp/12.interview/11.ai/vector-search-at-scale/README.md) + [第八章反向链（10亿级）](./README.md#第八章10亿级毫秒级检索hnsw-vs-ivf-vs-diskann-选型逻辑)。
 
 ### 9.2 5 个架构转变速览
 
@@ -714,7 +714,7 @@ async def monitor_retrieval_quality(query, results):
 
 **关键洞察**：万亿级是**另一个世界**，不是千亿级 × 10。
 
-完整内容见 [11.ai/02-technology-stack/vector-search-trillion](../11.ai/02-technology-stack/vector-search-trillion/README.md) + [咬文嚼字·11.ai/vector-search-trillion（面试版）](../13.split-hairs/11.ai/vector-search-trillion/README.md) + [第九章反向链（千亿级 vs 10 亿级）](./README.md#第九章10亿-vs-千亿级向量检索5-个架构转变)。
+完整内容见 [11.ai/02-technology-stack/vector-search-trillion](../../note/11.ai/02-technology-stack/vector-search-trillion/README.md) + [咬文嚼字·11.ai/vector-search-trillion（面试版）](../../note-temp/12.interview/11.ai/vector-search-trillion/README.md) + [第九章反向链（千亿级 vs 10 亿级）](./README.md#第九章10亿-vs-千亿级向量检索5-个架构转变)。
 
 ### 10.2 5 个新挑战速览
 

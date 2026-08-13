@@ -474,14 +474,14 @@ graph TD
 
 **配套面试刁难题**：500 人抢 1 瓶茅台，2 台服务器，不用 Redis/MQ，秒杀怎么写？
 
-- [04.system-design/.../seckill-without-redis](../04.system-design/03-high-availability/rate-limiting/seckill-without-redis.md) — **餐厅流量 = 茅台秒杀**的工程化版本：5 大单机方案对比 + 3 大机制（乐观锁 / version / 唯一约束）+ 2 台服务器一致性 + 实战模板
-- [咬文嚼字·seckill-without-redis 面试题](../13.split-hairs/04.system-design/seckill-without-redis/README.md) — 5 题配套面试（含 30/60 秒话术 + 踩分点）
+- [04.system-design/.../seckill-without-redis](../../note/04.system-design/03-high-availability/rate-limiting/seckill-without-redis.md) — **餐厅流量 = 茅台秒杀**的工程化版本：5 大单机方案对比 + 3 大机制（乐观锁 / version / 唯一约束）+ 2 台服务器一致性 + 实战模板
+- [咬文嚼字·seckill-without-redis 面试题](../../note-temp/12.interview/04.system-design/seckill-without-redis/README.md) — 5 题配套面试（含 30/60 秒话术 + 踩分点）
 
 **核心洞察**：本餐厅版的"500 桌客满 + 100 桌候补"对应工程版的"500 人抢 1 瓶"——**业务规模决定方案**，500 人级别单机乐观锁完全够用。
 
 ## 🔗 业务拓展（风控与营销）
 
-- 业务风控引擎：[risk-control-engine](../04.system-design/03-high-availability/risk-control-engine/README.md) — 当阿明餐厅也想做"老带新砍价"营销活动时，怎么防薅羊毛、防黑产、防自动化脚本？5 层架构 + 7 类对抗完整方案。
-- 风控业务建模面试：[砍一刀算法面试深挖](../13.split-hairs/04.system-design/砍一刀算法/README.md) — 4 道风控面试题（K-Factor / 业务建模 / 风控架构 / 黑产对抗）
+- 业务风控引擎：[risk-control-engine](../../note/04.system-design/03-high-availability/risk-control-engine/README.md) — 当阿明餐厅也想做"老带新砍价"营销活动时，怎么防薅羊毛、防黑产、防自动化脚本？5 层架构 + 7 类对抗完整方案。
+- 风控业务建模面试：[砍一刀算法面试深挖](../../note-temp/12.interview/04.system-design/砍一刀算法/README.md) — 4 道风控面试题（K-Factor / 业务建模 / 风控架构 / 黑产对抗）
 
 ← [返回系列导读](./index.md)

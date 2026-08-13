@@ -757,7 +757,7 @@ GraphRAG：实体关系
 
 ## 📚 深度阅读
 
-- 范式代际：[RAG 范式演进四阶段](../11.ai/02-technology-stack/rag-paradigm-evolution/README.md) — Naive→Advanced→Modular→Agentic，本文的 5 环节 + 7 模式即 Advanced/Modular 阶段的落地
-- 面试深挖：[RAG 咬文嚼字](../13.split-hairs/11.ai/rag/README.md)
+- 范式代际：[RAG 范式演进四阶段](../../note/11.ai/02-technology-stack/rag-paradigm-evolution/README.md) — Naive→Advanced→Modular→Agentic，本文的 5 环节 + 7 模式即 Advanced/Modular 阶段的落地
+- 面试深挖：[RAG 咬文嚼字](../../note-temp/12.interview/11.ai/rag/README.md)
 
 ← [返回系列导读](./index.md)

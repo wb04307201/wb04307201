@@ -390,7 +390,7 @@ graph TD
 - [cheatsheet](cheatsheet.md)
 - [glossary](glossary.md)
 - [12.story](README.md)
-- [agent-performance-evaluation](../13.split-hairs/11.ai/agent-performance-evaluation/README.md)
+- [agent-performance-evaluation](../../note-temp/12.interview/11.ai/agent-performance-evaluation/README.md)
 ## 跨章节衔接
 
 本篇与[正传 1《高峰保卫战》](./04-peak-traffic-defense.md)紧密关联 —— 流量治理是性能优化的上游防线，高峰期流量过载会直接压垮系统，限流、熔断、降级策略与性能优化的并发控制相辅相成。性能优化的前提是不让系统过载，而过载的根源往往在流量层。

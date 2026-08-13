@@ -565,9 +565,9 @@ graph TD
 - [阿明的二次创业](./26-ai-native-startup.md) —— AI 原生创业的多端覆盖策略，AI 辅助快速适配多个平台
 - [会自我进化的厨房](./27-self-evolving-company.md) —— Agent Loop 的跨端协作，Agent 需要统一处理多端输入输出
 - [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) —— AI 幻觉在不同端的表现，多端场景的幻觉检测和展示策略差异化
-- [09.front-end / 08 跨端](../09.front-end/08-cross-platform/README.md) —— 移动 / 桌面 / 小程序 / PWA：跨端形态全景与选型
-- [09.front-end / 05 架构 / BFF](../09.front-end/05-architecture/bff/README.md) —— BFF 模式详细实践：本章 BFF 概念的工程化落地
-- [09.front-end / 09 前端与 AI](../09.front-end/09-frontend-and-ai/README.md) —— AI Native UI / AI SDK / Vibe Coding
+- [09.front-end / 08 跨端](../../note/09.front-end/08-cross-platform/README.md) —— 移动 / 桌面 / 小程序 / PWA：跨端形态全景与选型
+- [09.front-end / 05 架构 / BFF](../../note/09.front-end/05-architecture/bff/README.md) —— BFF 模式详细实践：本章 BFF 概念的工程化落地
+- [09.front-end / 09 前端与 AI](../../note/09.front-end/09-frontend-and-ai/README.md) —— AI Native UI / AI SDK / Vibe Coding
 
 
 - [cheatsheet](cheatsheet.md)

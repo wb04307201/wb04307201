@@ -251,15 +251,15 @@ Skill frontmatter + 关键词规则路由 + 分层加载 + 离线评测集
 ## 六、相关章节
 
 **深度原理（11.ai 主模块）**：
-- [Skill 命中率深度章节](../11.ai/03-engineering/claude-code-practices/skill-hit-rate.md) — 四层模型 + 五大反模式 + 工程实战
+- [Skill 命中率深度章节](../../note/11.ai/03-engineering/claude-code-practices/skill-hit-rate.md) — 四层模型 + 五大反模式 + 工程实战
 
 **面试题（13.split-hairs）**：
-- [Skill 数量一多，Agent 命中率怎么保证？](../13.split-hairs/11.ai/skill-hit-rate/README.md) — 5 题配套面试
+- [Skill 数量一多，Agent 命中率怎么保证？](../../note-temp/12.interview/11.ai/skill-hit-rate/README.md) — 5 题配套面试
 
 **同模块相邻章节**：
-- [32 · Agent Harness](../12.story/30-agent-harness.md) — Harness 餐厅版（厨师 + 工具 + 流程）
-- [33 · AI 致命三胞胎](../12.story/31-ai-fatal-trio.md) — 三胞胎与餐厅 SOP
-- [30 · AI 幻觉与安全](../12.story/28-ai-hallucination-safety.md) — 幻觉与"厨师瞎做"
+- [32 · Agent Harness](/30-agent-harness.md) — Harness 餐厅版（厨师 + 工具 + 流程）
+- [33 · AI 致命三胞胎](/31-ai-fatal-trio.md) — 三胞胎与餐厅 SOP
+- [30 · AI 幻觉与安全](/28-ai-hallucination-safety.md) — 幻觉与"厨师瞎做"
 
 ---
 
