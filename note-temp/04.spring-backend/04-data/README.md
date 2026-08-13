@@ -127,7 +127,7 @@ graph TB
 
 - ⬅️ [返回 Spring 顶层](../README.md)
 - ⬅️ [01 核心容器](../01-core/README.md) — 事务和缓存都基于 AOP 实现
-- ➡️ [04 Spring Boot](../04-spring-boot/README.md) — Spring Data JPA 简化数据访问
+- ➡️ [04 Spring Boot](../02-boot/README.md) — Spring Data JPA 简化数据访问
 - [04.system-design/02-distributed/distributed-transaction](../../04.system-design/02-distributed/distributed-transaction/README.md) — 分布式事务理论
 - [MyBatis 全栈](mybatis/README.md) — MyBatis 核心原理与 Spring 整合
 
@@ -144,7 +144,7 @@ graph TB
 
 | 子目录 | 篇数 |
 |:------|:----:|
-| `03-data/`（本目录直接） | 0 |
+| `04-data/`（本目录直接） | 0 |
 | ├─ `cache/` | 5 |
 | ├─ `transaction/` | 7 |
 | └─ `mybatis/`（重点项目） | 27 |

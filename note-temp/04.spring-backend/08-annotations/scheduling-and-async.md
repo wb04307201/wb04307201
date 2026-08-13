@@ -2,7 +2,7 @@
 
 > ⬅️ [返回注解速查](../README.md) | [事务注解](transaction.md)
 
-本节是 `@Scheduled` / `@Async` / `@EnableScheduling` / `@EnableAsync` 的速查手册——定时任务、异步方法、线程池配置。**深读请前往 [04-spring-boot/startup-flow](../04-spring-boot/startup-flow.md)**。
+本节是 `@Scheduled` / `@Async` / `@EnableScheduling` / `@EnableAsync` 的速查手册——定时任务、异步方法、线程池配置。**深读请前往 [02-boot/startup-flow](../02-boot/startup-flow.md)**。
 
 ---
 
@@ -229,8 +229,8 @@ public class SchedulingConfig implements SchedulingConfigurer {
 
 ## 深入阅读
 
-- [04-spring-boot/startup-flow](../04-spring-boot/startup-flow.md) — 启动与后台任务线程池
-- [04-spring-boot/externalized-configuration](../04-spring-boot/boot-externalized-configuration.md) — 线程池配置 externalization
+- [02-boot/startup-flow](../02-boot/startup-flow.md) — 启动与后台任务线程池
+- [02-boot/externalized-configuration](../02-boot/boot-externalized-configuration.md) — 线程池配置 externalization
 
 ## 相关章节
 

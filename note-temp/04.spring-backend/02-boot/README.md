@@ -127,7 +127,7 @@ graph TB
 - ⬅️ [返回 Spring 顶层](../README.md)
 - ⬅️ [01 核心容器](../01-core/README.md) — Spring Boot 基于核心容器
 - ⬅️ [02 Web 层](../02-web/README.md) — spring-boot-starter-web 集成 MVC
-- ➡️ [05 Spring Cloud](../05-spring-cloud/README.md) — Spring Cloud 基于 Spring Boot
+- ➡️ [05 Spring Cloud](../03-cloud/README.md) — Spring Cloud 基于 Spring Boot
 - ➡️ [07 可观测性](../07-observability/README.md) — Actuator 是 Boot 的核心生产特性
 
 ---
@@ -140,7 +140,7 @@ graph TB
 
 | 子目录 | 篇数 |
 |:------|:----:|
-| `04-spring-boot/`（本目录直接） | 9 |
+| `02-boot/`（本目录直接） | 9 |
 | ├─ 子目录 | 0 |
 | **合计** | **9** |
 

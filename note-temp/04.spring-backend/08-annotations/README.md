@@ -62,7 +62,7 @@ module:
 | 缓存方法结果 | `@Cacheable` | [缓存](cache.md) |
 | 自动重试 | `@Retryable` + `@Recover` | [重试](annotations-retry.md) |
 | 全局异常处理 | `@ControllerAdvice` + `@ExceptionHandler` | [异常](exception.md) |
-| 启动后执行 | `@PostConstruct` / `ApplicationRunner` | [启动](../04-spring-boot/application-bootstrap.md) |
+| 启动后执行 | `@PostConstruct` / `ApplicationRunner` | [启动](../02-boot/application-bootstrap.md) |
 | 写切面 | `@Aspect` + `@Before`/`@Around` | [AOP](aop.md) |
 | Bean 作用域 | `@Scope("singleton")` / `"prototype"` | [Bean](bean-and-ioc.md) |
 | 启用异步 | `@EnableAsync` + `@Async` | [异步](scheduling-and-async.md) |
@@ -147,10 +147,10 @@ graph LR
 - ⬅️ [返回 Spring 顶层](../README.md)
 - [01 核心容器](../01-core/README.md) — Bean 相关注解
 - [02 Web 层](../02-web/README.md) — MVC/WebFlux 相关注解
-- [03 数据层](../03-data/README.md) — 事务/缓存相关注解
+- [03 数据层](../04-data/README.md) — 事务/缓存相关注解
 - [06 集成组件](../06-integration/README.md) — Validation/Retry/StateMachine 相关注解
-- [13 辨析/为什么不推荐 @Autowired 字段注入](../../13.split-hairs/06.spring/not-use-@autowired/README.md) — 字段注入 vs 构造器注入
-- [13 辨析/PO-VO-DTO-BO-DAO-POJO 语义辨析](../../13.split-hairs/06.spring/clarify-various-o/README.md) — 各层对象语义
+- [13 辨析/为什么不推荐 @Autowired 字段注入](../../../note/13.split-hairs/04.spring-backend/not-use-@autowired/README.md) — 字段注入 vs 构造器注入
+- [13 辨析/PO-VO-DTO-BO-DAO-POJO 语义辨析](../../../note/13.split-hairs/04.spring-backend/clarify-various-o/README.md) — 各层对象语义
 
 ---
 

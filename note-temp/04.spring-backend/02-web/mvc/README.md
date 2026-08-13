@@ -263,7 +263,7 @@ Q3：如何做接口超时控制？
 - [DispatcherServlet 与 9 大组件](dispatch-flow.md)
 - [组件对比与场景](components-order.md)
 - [08 注解/Web 注解](../../08-annotations/web.md) — @RequestMapping、@RestController 详解
-- [04 Spring Boot/自定义 Starter](../../04-spring-boot/custom-starter.md) — spring-boot-starter-web 详解
+- [04 Spring Boot/自定义 Starter](../../02-boot/custom-starter.md) — spring-boot-starter-web 详解
 
 
 - [router-functions](../webflux/router-functions.md)

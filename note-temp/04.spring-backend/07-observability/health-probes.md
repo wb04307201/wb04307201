@@ -201,4 +201,4 @@ spec:
 - ⬅️ [返回 07 可观测性](README.md)
 - [Actuator](actuator.md) — 端点暴露与安全加固
 - [Micrometer](micrometer.md) — HealthIndicator 自定义
-- [分布式追踪](../05-spring-cloud/distributed-tracing.md) — 链路 ID 注入到日志（与探针互补）
+- [分布式追踪](../03-cloud/distributed-tracing.md) — 链路 ID 注入到日志（与探针互补）

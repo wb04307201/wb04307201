@@ -617,4 +617,4 @@ graph TB
 - ⬅️ [返回 07 可观测性](README.md)
 - [Micrometer](micrometer.md) — 指标采集
 - [Spring Boot Actuator](actuator.md) — 指标暴露端点
-- [分布式追踪](../05-spring-cloud/distributed-tracing.md) — Tracing + Metrics 统一
+- [分布式追踪](../03-cloud/distributed-tracing.md) — Tracing + Metrics 统一

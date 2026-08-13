@@ -269,4 +269,4 @@ HTTP 请求 →  Micrometer Tracing 创建 traceId/spanId
 - ⬅️ [返回 07 可观测性](README.md)
 - [Actuator](actuator.md) — `/actuator/loggers` 动态日志级别
 - [Micrometer](micrometer.md) — Micrometer Tracing 桥接
-- [分布式追踪](../05-spring-cloud/distributed-tracing.md) — traceId 透传与采样策略
+- [分布式追踪](../03-cloud/distributed-tracing.md) — traceId 透传与采样策略

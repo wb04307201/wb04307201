@@ -34,7 +34,7 @@ module:
 | **OAuth2 与 JWT** | [oauth2/README.md](oauth2/README.md) | OAuth2 四种授权模式 / Spring Authorization Server / JWT 结构 | 40 min |
 | **CORS 与 CSRF** | [cors-csrf/README.md](cors-csrf/README.md) | 同源策略 / CORS 预检 / CSRF 防御 / Session 管理 / 安全 Header | 30 min |
 
-> 📌 **范围说明**：本节聚焦 Spring Security 核心机制。Spring Cloud Gateway 的 JWT 鉴权见 [05-spring-cloud/gateway.md](../05-spring-cloud/gateway.md)；OAuth2 在微服务间的 Token 传递见 [05-spring-cloud](../05-spring-cloud/README.md)。
+> 📌 **范围说明**：本节聚焦 Spring Security 核心机制。Spring Cloud Gateway 的 JWT 鉴权见 [03-cloud/gateway.md](../03-cloud/gateway.md)；OAuth2 在微服务间的 Token 传递见 [03-cloud](../03-cloud/README.md)。
 
 ---
 
@@ -225,9 +225,9 @@ void unauthenticatedAccessDenied() throws Exception {
 ## 🔗 相关章节
 
 - ⬆️ [返回 Spring 顶层](../README.md)
-- ↔️ [05-spring-cloud/gateway.md](../05-spring-cloud/gateway.md) —— 网关 JWT 鉴权
+- ↔️ [03-cloud/gateway.md](../03-cloud/gateway.md) —— 网关 JWT 鉴权
 - ↔️ [02-web/mvc/cors-and-static.md](../02-web/mvc/cors-and-static.md) —— MVC 层 CORS 配置
-- ↔️ [13.split-hairs](../../13.split-hairs/) —— 面试咬文嚼字
+- ↔️ [13.split-hairs](../../../note/13.split-hairs/) —— 面试咬文嚼字
 
 ---
 

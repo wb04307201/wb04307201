@@ -325,16 +325,16 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 3. **@OneToMany 和 @ManyToOne 怎么选？** 看维护关系的一方：多方维护用 `@ManyToOne`（推荐，性能更好），一方维护用 `@OneToMany`。
 4. **@Transient 字段能参与业务逻辑吗？** 可以，它仅是不持久化到数据库。
 5. **@Version 字段要不要手动 set？** **不要**。Hibernate 在每次 update 时自动递增，**手动改会破坏 CAS 逻辑**。
-6. **@Entity / @Repository / @Table 的关系？** `@Entity` 声明是 JPA 实体；`@Table` 映射到具体表；`@Repository` 声明数据访问层。👉 PO/VO/DTO/BO/DAO/POJO 语义辨析见 [13 辨析/PO-VO-DTO-BO-DAO-POJO 语义辨析](../../13.split-hairs/06.spring/clarify-various-o/README.md)。
+6. **@Entity / @Repository / @Table 的关系？** `@Entity` 声明是 JPA 实体；`@Table` 映射到具体表；`@Repository` 声明数据访问层。👉 PO/VO/DTO/BO/DAO/POJO 语义辨析见 [13 辨析/PO-VO-DTO-BO-DAO-POJO 语义辨析](../../../note/13.split-hairs/04.spring-backend/clarify-various-o/README.md)。
 
 ---
 
 ## 相关章节
 
 - ⬅️ [返回注解速查](../README.md)
-- [03 数据层](../03-data/README.md) — Spring Data JPA
-- [03 数据层 JPA 事务](../03-data/transaction/jpa-transaction.md) — JPA 事务与锁
+- [03 数据层](../04-data/README.md) — Spring Data JPA
+- [03 数据层 JPA 事务](../04-data/transaction/jpa-transaction.md) — JPA 事务与锁
 - [Bean 注解](bean-and-ioc.md) — @Repository（DAO 层）
-- [13 辨析/PO-VO-DTO-BO-DAO-POJO 语义辨析](../../13.split-hairs/06.spring/clarify-various-o/README.md)
+- [13 辨析/PO-VO-DTO-BO-DAO-POJO 语义辨析](../../../note/13.split-hairs/04.spring-backend/clarify-various-o/README.md)
 
 - [configuration](configuration.md)

@@ -33,9 +33,9 @@ module:
 | **Prometheus + Grafana** | [prometheus-grafana.md](prometheus-grafana.md) | 完整的指标采集与可视化方案 | 30 min |
 | **健康检查三探针** | [health-probes.md](health-probes.md) | K8s liveness / readiness / startup 探针配置 | 15 min |
 | **日志聚合** | [log-aggregation.md](log-aggregation.md) | ELK / Loki / Fluentd 方案与 MDC 链路透传 | 20 min |
-| **链路追踪** | [分布式追踪（05-spring-cloud）](../05-spring-cloud/distributed-tracing.md) | Micrometer Tracing 深度（Tracing 探针、采样率） | 20 min |
+| **链路追踪** | [分布式追踪（03-cloud）](../03-cloud/distributed-tracing.md) | Micrometer Tracing 深度（Tracing 探针、采样率） | 20 min |
 
-> 📌 **范围说明**：本节聚焦 **Metrics + Actuator + Prometheus + 日志聚合**；**链路追踪（Tracing）** 的深度内容（Brave/Zipkin、采样策略、跨服务 Trace 传播）见 [05-spring-cloud/distributed-tracing.md](../05-spring-cloud/distributed-tracing.md)，本节不重复展开。
+> 📌 **范围说明**：本节聚焦 **Metrics + Actuator + Prometheus + 日志聚合**；**链路追踪（Tracing）** 的深度内容（Brave/Zipkin、采样策略、跨服务 Trace 传播）见 [03-cloud/distributed-tracing.md](../03-cloud/distributed-tracing.md)，本节不重复展开。
 
 ---
 
@@ -63,7 +63,7 @@ graph LR
 |:-----|:-------|:----------|:--------|
 | **指标 Metrics** | Micrometer + Prometheus + Grafana | 系统现在的状态是什么？（QPS/延迟/错误率） | [micrometer](micrometer.md) · [prometheus-grafana](prometheus-grafana.md) |
 | **日志 Logs** | Logback + ELK / Loki + Fluentd | 系统发生了什么？（错误堆栈、业务事件） | [log-aggregation](log-aggregation.md) |
-| **追踪 Tracing** | Micrometer Tracing + Jaeger / Zipkin | 请求经过了哪些服务？（调用链、瓶颈） | [05-spring-cloud/distributed-tracing](../05-spring-cloud/distributed-tracing.md) |
+| **追踪 Tracing** | Micrometer Tracing + Jaeger / Zipkin | 请求经过了哪些服务？（调用链、瓶颈） | [03-cloud/distributed-tracing](../03-cloud/distributed-tracing.md) |
 | **健康探针** | Actuator Health + K8s Probe | 应用是否存活 / 就绪 / 启动完成？ | [health-probes](health-probes.md) |
 
 ---
@@ -106,8 +106,8 @@ graph LR
 ## 相关章节
 
 - ⬅️ [返回 Spring 顶层](../README.md)
-- ⬅️ [04 Spring Boot](../04-spring-boot/README.md) — Actuator 是 Boot 的核心模块
-- ➡️ [05 Spring Cloud](../05-spring-cloud/README.md) — 链路追踪是微服务必备
+- ⬅️ [04 Spring Boot](../02-boot/README.md) — Actuator 是 Boot 的核心模块
+- ➡️ [05 Spring Cloud](../03-cloud/README.md) — 链路追踪是微服务必备
 - [04.system-design/07-deployment/observability](../../04.system-design/07-deployment/observability/README.md) — 监控体系理论（SLO/Error Budget/USE/RED 全局视角）
 
 > 💡 **理论/全局视角见 `04.system-design/07-deployment/observability`**（SLO、Error Budget、USE、RED 等方法论）；**本文档聚焦 Spring 实现细节**。

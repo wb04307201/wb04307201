@@ -305,7 +305,7 @@ public class OrderService {
 - ⬅️ [返回 AOP 总览](README.md)
 - [切点表达式语法](pointcut-expression.md)
 - [08 注解/AOP 注解](../../08-annotations/aop.md)
-- [01 核心容器/事务/事务失效](../../03-data/transaction/failure-cases.md) — 自调用导致事务失效
+- [01 核心容器/事务/事务失效](../../04-data/transaction/failure-cases.md) — 自调用导致事务失效
 
 - [components-order](../../02-web/mvc/components-order.md)
-- [cache-annotations-and-usage](../../03-data/cache/cache-annotations-and-usage.md)
+- [cache-annotations-and-usage](../../04-data/cache/cache-annotations-and-usage.md)

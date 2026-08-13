@@ -2,7 +2,7 @@
 
 > ⬅️ [返回 05 Spring Cloud](README.md) | [Config 中心](config-center.md) | [熔断降级](circuit-breaker.md)
 
-本文档聚焦 **Spring Cloud Alibaba 集成 Seata 的工程实践**——`@GlobalTransactional` 在微服务调用链中的落地、与 OpenFeign / Nacos 的协同。Seata 框架原理（TC/TM/RM 三角色、AT 模式回滚日志）请见 [03-data/transaction/distributed/seata.md](../03-data/transaction/distributed/seata.md)。
+本文档聚焦 **Spring Cloud Alibaba 集成 Seata 的工程实践**——`@GlobalTransactional` 在微服务调用链中的落地、与 OpenFeign / Nacos 的协同。Seata 框架原理（TC/TM/RM 三角色、AT 模式回滚日志）请见 [04-data/transaction/distributed/seata.md](../04-data/transaction/distributed/seata.md)。
 
 ---
 
@@ -152,8 +152,8 @@ store.mode: db    # file / db / redis
 
 ## 七、与本书其他章节的关系
 
-- **原理篇**：[Seata 框架原理](../03-data/transaction/distributed/seata.md) — AT 模式回滚日志、TC 集群选举
-- **理论篇**：[分布式事务理论与模式](../03-data/transaction/distributed/theory-and-patterns.md) — CAP / BASE / 2PC / 3PC
+- **原理篇**：[Seata 框架原理](../04-data/transaction/distributed/seata.md) — AT 模式回滚日志、TC 集群选举
+- **理论篇**：[分布式事务理论与模式](../04-data/transaction/distributed/theory-and-patterns.md) — CAP / BASE / 2PC / 3PC
 - **熔断篇**：[熔断降级](circuit-breaker.md) — Seata 与 Sentinel 的协同（异常触发降级 vs 回滚）
 
 ---
@@ -163,4 +163,4 @@ store.mode: db    # file / db / redis
 - ⬅️ [返回 05 Spring Cloud](README.md)
 - [Config 中心](config-center.md) — Seata 配置接入 Nacos
 - [熔断降级](circuit-breaker.md) — 微服务容错组合拳
-- ➡️ [Seata 框架原理](../03-data/transaction/distributed/seata.md)
+- ➡️ [Seata 框架原理](../04-data/transaction/distributed/seata.md)

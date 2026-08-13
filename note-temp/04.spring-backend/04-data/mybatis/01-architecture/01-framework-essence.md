@@ -57,6 +57,6 @@ graph TD
 
 - 深入：[`02 初始化流程`](02-initialization-flow.md) — SqlSessionFactory 创建全过程
 - 扩展：[`03 数据库厂商扩展`](../02-extension/03-database-vendor.md) — 多数据库适配
-- 对比：[`06.spring/03-data`](../../../README.md) — Spring 数据层全景
+- 对比：[`04.spring-backend/04-data`](../../../README.md) — Spring 数据层全景
 
 - [08-class-diagram](08-class-diagram.md)

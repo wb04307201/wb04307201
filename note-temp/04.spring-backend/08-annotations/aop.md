@@ -178,7 +178,7 @@ sequenceDiagram
 - [01 核心容器/AOP 通知顺序](../01-core/aop/advice-order-and-best-practices.md) — 多切面排序
 - [配置注解](configuration.md) — @Configuration
 
-- [cache-annotations-and-usage](../03-data/cache/cache-annotations-and-usage.md)
-- [implementations-and-best-practices](../03-data/cache/implementations-and-best-practices.md)
+- [cache-annotations-and-usage](../04-data/cache/cache-annotations-and-usage.md)
+- [implementations-and-best-practices](../04-data/cache/implementations-and-best-practices.md)
 - [test](test.md)
 - [transaction](transaction.md)

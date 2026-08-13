@@ -210,7 +210,7 @@ graph TB
 - [切点表达式语法](pointcut-expression.md)
 - [通知顺序与最佳实践](advice-order-and-best-practices.md)
 - [08 注解/AOP 注解](../../08-annotations/aop.md)
-- [03 数据层/事务](../../03-data/transaction/README.md) — 事务是 AOP 的经典应用
+- [03 数据层/事务](../../04-data/transaction/README.md) — 事务是 AOP 的经典应用
 
 
 - [event](../event.md)

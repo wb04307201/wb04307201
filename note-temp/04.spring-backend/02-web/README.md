@@ -127,7 +127,7 @@ graph TB
 
 - ⬅️ [返回 Spring 顶层](../README.md)
 - ⬅️ [01 核心容器](../01-core/README.md) — MVC 依赖 IoC 容器管理 Controller/Service/Repository；通用异常分层见 [异常处理](../01-core/exception-handling.md)
-- ➡️ [03 数据层](../03-data/README.md) — Controller 调用 Service 操作数据
+- ➡️ [03 数据层](../04-data/README.md) — Controller 调用 Service 操作数据
 - ➡️ [06 集成组件](../06-integration/README.md) — Validation 用于 Controller 参数校验
 - [08 注解速查：Web](../08-annotations/README.md) — @RequestMapping、@RestController 等
 

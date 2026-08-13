@@ -76,5 +76,5 @@
 - [failure-cases](../failure-cases.md)
 - [multi-datasource-and-jta](../multi-datasource-and-jta.md)
 - [propagation-and-isolation](../propagation-and-isolation.md)
-- [circuit-breaker](../../../05-spring-cloud/circuit-breaker.md)
-- [seata-integration](../../../05-spring-cloud/seata-integration.md)
+- [circuit-breaker](../../../03-cloud/circuit-breaker.md)
+- [seata-integration](../../../03-cloud/seata-integration.md)

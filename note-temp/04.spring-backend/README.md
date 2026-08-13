@@ -26,7 +26,7 @@ module:
 
 - **Java 后端工程师**：掌握 Spring 是入行必备，本文档提供深度细节与踩坑点
 - **Spring 学习者**：从 IoC/AOP 基础到 Cloud 微服务，3 段式学习路径覆盖完整知识体系
-- **面试备战者**：配合 `13.split-hairs/06.spring` 的"咬文嚼字"专题，吃透高频考点
+- **面试备战者**：配合 `13.split-hairs/04.spring-backend` 的"咬文嚼字"专题，吃透高频考点
 
 ---
 
@@ -39,9 +39,9 @@ module:
 |:----:|:----|:---------|:-------:|:----:|
 | 01 | **核心容器** | IoC/AOP 原理、Bean 生命周期与循环依赖、FactoryBean、依赖注入（构造器/Setter/字段）、@Configuration Lite/Full、外部化配置、Event 机制、模块依赖、手写 mini Spring | **13** | [01-core/README.md](01-core/README.md) |
 | 02 | **Web 层** | Spring MVC 流程、Filter/Interceptor/AOP 顺序、异常/视图/上传/CORS/i18n/异步、WebFlux 响应式（WebClient/R2DBC/Router Functions/测试）、SSE 实时推送 | **13** | [02-web/README.md](02-web/README.md) |
-| 03 | **数据层** | 声明式/编程式事务、多数据源/JTA、JPA 事务、传播/隔离/失效、Spring Cache（4 大模式 + 多级缓存 + 序列化）、[**MyBatis 全栈 4 主题**](03-data/mybatis/README.md)（架构原理 / 扩展能力 / Spring 整合 / MyBatis-Plus） | **40** | [03-data/README.md](03-data/README.md) |
-| 04 | **Spring Boot** | 自动配置原理、自定义 Condition 扩展、Starter 机制、spring.factories 迁移、启动流程、启动后钩子、外部化配置、内嵌服务器切换、GraalVM Native Image | **9** | [04-spring-boot/README.md](04-spring-boot/README.md) |
-| 05 | **Spring Cloud** | 服务注册/配置中心（含加密）/负载均衡 RPC/熔断/网关（JWT 鉴权）/链路追踪/Stream/Bus/Seata 集成/版本对应 | **12** | [05-spring-cloud/README.md](05-spring-cloud/README.md) |
+| 03 | **数据层** | 声明式/编程式事务、多数据源/JTA、JPA 事务、传播/隔离/失效、Spring Cache（4 大模式 + 多级缓存 + 序列化）、[**MyBatis 全栈 4 主题**](04-data/mybatis/README.md)（架构原理 / 扩展能力 / Spring 整合 / MyBatis-Plus） | **40** | [04-data/README.md](04-data/README.md) |
+| 04 | **Spring Boot** | 自动配置原理、自定义 Condition 扩展、Starter 机制、spring.factories 迁移、启动流程、启动后钩子、外部化配置、内嵌服务器切换、GraalVM Native Image | **9** | [02-boot/README.md](02-boot/README.md) |
+| 05 | **Spring Cloud** | 服务注册/配置中心（含加密）/负载均衡 RPC/熔断/网关（JWT 鉴权）/链路追踪/Stream/Bus/Seata 集成/版本对应 | **12** | [03-cloud/README.md](03-cloud/README.md) |
 | 06 | **集成组件** | Validation（分组/跨字段/自定义）、Retry（Reactive）、StateMachine（持久化/并行）、Batch（重试/重启） | **6** | [06-integration/README.md](06-integration/README.md) |
 | 07 | **可观测性** | Actuator 端点、健康探针、Micrometer（OTLP/LongTaskTimer）、Prometheus+Pushgateway、Grafana Alerting、ELK/Loki | **5** | [07-observability/README.md](07-observability/README.md) |
 | 08 | **注解速查** | 事务/缓存/调度/校验/重试/AOP/Web/JPA/测试/配置/异常 等按场景分类的索引 | **12** | [08-annotations/README.md](08-annotations/README.md) |
@@ -51,14 +51,14 @@ module:
 
 ### 3.1 MyBatis 全栈专项（4 主题 · 27 篇）
 
-03 数据层下设重点项目 [MyBatis 全栈](03-data/mybatis/README.md)，按 4 主题组织：
+03 数据层下设重点项目 [MyBatis 全栈](04-data/mybatis/README.md)，按 4 主题组织：
 
 | 主题 | 目录 | 核心问题 | 篇数 |
 |:----:|:----|:---------|:----:|
-| 一、架构与原理 | [01-architecture/](03-data/mybatis/01-architecture/) | MyBatis 框架的内部机制：初始化、执行、组件、SQL、缓存、类图 | 8 |
-| 二、扩展能力 | [02-extension/](03-data/mybatis/02-extension/) | TypeHandler / Interceptor / DatabaseIdProvider / 存储过程 | 4 |
-| 三、Spring 整合 | [03-spring-integration/](03-data/mybatis/03-spring-integration/) | SqlSessionFactory / Mapper 扫描 / 事务 / 多数据源 / 二级缓存 | 5 |
-| 四、MyBatis-Plus | [04-mybatis-plus/](03-data/mybatis/04-mybatis-plus/) | CRUD / Wrapper / 分页 / 代码生成器 | 10 |
+| 一、架构与原理 | [01-architecture/](04-data/mybatis/01-architecture/) | MyBatis 框架的内部机制：初始化、执行、组件、SQL、缓存、类图 | 8 |
+| 二、扩展能力 | [02-extension/](04-data/mybatis/02-extension/) | TypeHandler / Interceptor / DatabaseIdProvider / 存储过程 | 4 |
+| 三、Spring 整合 | [03-spring-integration/](04-data/mybatis/03-spring-integration/) | SqlSessionFactory / Mapper 扫描 / 事务 / 多数据源 / 二级缓存 | 5 |
+| 四、MyBatis-Plus | [04-mybatis-plus/](04-data/mybatis/04-mybatis-plus/) | CRUD / Wrapper / 分页 / 代码生成器 | 10 |
 
 ---
 
@@ -70,8 +70,8 @@ module:
 01-core/ioc/                  → IoC 容器、Bean 生命周期、循环依赖
 01-core/aop/                  → AOP 切面编程与代理机制
 02-web/mvc/                   → Spring MVC 请求处理
-03-data/transaction/          → 声明式事务
-04-spring-boot/auto-configuration → 自动配置原理
+04-data/transaction/          → 声明式事务
+02-boot/auto-configuration → 自动配置原理
 ```
 
 **目标**：掌握 Spring 核心机制，能独立搭建 Spring Boot 单体应用。
@@ -79,15 +79,15 @@ module:
 ### 第 2 段：进阶（Boot 精通 → Cloud 微服务 → Security）
 
 ```text
-04-spring-boot/externalized-configuration → 外部化配置
-04-spring-boot/embedded-server → 内嵌服务器切换
+02-boot/externalized-configuration → 外部化配置
+02-boot/embedded-server → 内嵌服务器切换
 09-security/filter-chain/     → SecurityFilterChain 架构
 09-security/authentication/   → 认证机制（密码/JWT/OAuth2）
 09-security/authorization/    → 授权机制（@PreAuthorize/ACL）
-05-spring-cloud/service-registry/ → 服务注册/发现（Nacos/Consul）
-05-spring-cloud/config-center.md → 配置中心
-05-spring-cloud/gateway.md → API 网关（含 JWT 鉴权）
-05-spring-cloud/circuit-breaker.md → 熔断/限流（Resilience4j/Sentinel）
+03-cloud/service-registry/ → 服务注册/发现（Nacos/Consul）
+03-cloud/config-center.md → 配置中心
+03-cloud/gateway.md → API 网关（含 JWT 鉴权）
+03-cloud/circuit-breaker.md → 熔断/限流（Resilience4j/Sentinel）
 ```
 
 **目标**：能设计 Spring Cloud 微服务架构，掌握 Spring Security 认证授权，理解分布式核心问题。
@@ -95,9 +95,9 @@ module:
 ### 第 3 段：整合（数据层深化 + 可观测性 + 安全深化 + 注解速查）
 
 ```text
-03-data/cache/multi-level.md → 多级缓存架构
-03-data/transaction/distributed/ → 分布式事务（Seata AT/TCC/Saga）
-03-data/mybatis/03-spring-integration/ → Spring × MyBatis 工程整合
+04-data/cache/multi-level.md → 多级缓存架构
+04-data/transaction/distributed/ → 分布式事务（Seata AT/TCC/Saga）
+04-data/mybatis/03-spring-integration/ → Spring × MyBatis 工程整合
 06-integration/validation/ → 参数校验
 06-integration/batch.md → 批处理
 07-observability/ → Actuator + Micrometer + Prometheus
@@ -116,7 +116,7 @@ module:
 
 ### 缓存与性能
 
-- [Caffeine](https://github.com/ben-manes/caffeine) —— Java 高性能本地缓存（多级缓存的 L1 选择，参见 [03-data/cache/multi-level.md](03-data/cache/multi-level.md)）
+- [Caffeine](https://github.com/ben-manes/caffeine) —— Java 高性能本地缓存（多级缓存的 L1 选择，参见 [04-data/cache/multi-level.md](04-data/cache/multi-level.md)）
 - [Redis](https://github.com/redis/redis) —— 分布式缓存事实标准（多级缓存的 L2 选择）
 - [JetCache](https://github.com/alibaba/jetcache) —— 阿里开源多级缓存框架（Spring Cache 整合）
 
@@ -135,7 +135,7 @@ module:
 
 ### 数据访问
 
-- [MyBatis](https://github.com/mybatis/mybatis-3) —— 半自动 ORM（[MyBatis 全栈](03-data/mybatis/README.md) 专题研究对象）
+- [MyBatis](https://github.com/mybatis/mybatis-3) —— 半自动 ORM（[MyBatis 全栈](04-data/mybatis/README.md) 专题研究对象）
 - [MyBatis-Plus](https://github.com/baomidou/mybatis-plus) —— MyBatis 增强工具集（CRUD/Wrapper/代码生成器）
 - [HikariCP](https://github.com/brettwooldridge/HikariCP) —— Spring Boot 默认连接池
 
@@ -144,7 +144,7 @@ module:
 - [Micrometer](https://github.com/micrometer-metrics/micrometer) —— 指标门面库（类似 SLF4J 之于日志）
 - [Prometheus](https://github.com/prometheus/prometheus) —— 指标采集与告警
 - [Grafana](https://github.com/grafana/grafana) —— 指标可视化与 Dashboard
-- [Jaeger](https://github.com/jaegertracing/jaeger) —— 分布式链路追踪（[05-spring-cloud/distributed-tracing.md](05-spring-cloud/distributed-tracing.md) 配合 Micrometer Tracing）
+- [Jaeger](https://github.com/jaegertracing/jaeger) —— 分布式链路追踪（[03-cloud/distributed-tracing.md](03-cloud/distributed-tracing.md) 配合 Micrometer Tracing）
 
 ### 工具与教学
 
@@ -157,7 +157,7 @@ module:
 - ⬆️ [返回笔记目录](../README.md)
 - ↔️ [01.java](../01.java/README.md) —— Java 语言基础（Spring 的语言载体）
 - ↔️ [04.system-design](../04.system-design/README.md) —— 系统设计（Spring Cloud 的理论基础）
-- ↔️ [13.split-hairs/06.spring](../13.split-hairs/06.spring/README.md) —— Spring 咬文嚼字（高频面试考点）
+- ↔️ [13.split-hairs/04.spring-backend](../../note/13.split-hairs/04.spring-backend/README.md) —— Spring 咬文嚼字（高频面试考点）
 
 ---
 
@@ -177,13 +177,13 @@ module:
 
 ## 🎯 高频面试题（咬文嚼字）
 
-针对面试中反复深挖的细节问题，见 [13.split-hairs/06.spring](../13.split-hairs/06.spring/)：
+针对面试中反复深挖的细节问题，见 [13.split-hairs/04.spring-backend](../../note/13.split-hairs/04.spring-backend/)：
 
 | 主题 | 难度 | 核心问题 |
 |------|:----:|:---------|
-| [@Transactional 失效 8 种场景](../13.split-hairs/06.spring/transactional-pitfalls/) | ⭐⭐⭐⭐⭐ | 同类调用 / 异常类型 / 多线程 / 传播行为 |
-| [Bean 生命周期详解](../13.split-hairs/06.spring/bean-lifecycle/) | ⭐⭐⭐⭐ | 实例化 → 注入 → 初始化 → 销毁 12 步 |
-| [为什么不推荐 @Autowired](../13.split-hairs/06.spring/not-use-@autowired/) | ⭐⭐⭐ | 字段注入 vs 构造器注入 |
+| [@Transactional 失效 8 种场景](../../note/13.split-hairs/04.spring-backend/transactional-pitfalls/) | ⭐⭐⭐⭐⭐ | 同类调用 / 异常类型 / 多线程 / 传播行为 |
+| [Bean 生命周期详解](../../note/13.split-hairs/04.spring-backend/bean-lifecycle/) | ⭐⭐⭐⭐ | 实例化 → 注入 → 初始化 → 销毁 12 步 |
+| [为什么不推荐 @Autowired](../../note/13.split-hairs/04.spring-backend/not-use-@autowired/) | ⭐⭐⭐ | 字段注入 vs 构造器注入 |
 
 ---
 
@@ -205,8 +205,8 @@ module:
 ## 反向链
 
 - [pointcut-expression](01-core/aop/pointcut-expression.md)
-- [01-framework-essence](03-data/mybatis/01-architecture/01-framework-essence.md)
-- [embedded-server](04-spring-boot/embedded-server.md)
+- [01-framework-essence](04-data/mybatis/01-architecture/01-framework-essence.md)
+- [embedded-server](02-boot/embedded-server.md)
 - [annotations-retry](08-annotations/annotations-retry.md)
 - [aop](08-annotations/aop.md)
 - [bean-and-ioc](08-annotations/bean-and-ioc.md)

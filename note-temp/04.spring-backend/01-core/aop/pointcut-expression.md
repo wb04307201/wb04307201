@@ -423,7 +423,7 @@ public class OrderService {
 - ⬅️ [返回 AOP 总览](README.md)
 - [通知顺序与最佳实践](advice-order-and-best-practices.md) — 多切面顺序 + `@Order` + 自调用失效
 - [08 注解/AOP 注解](../../08-annotations/aop.md) — `@Aspect` / `@Pointcut` 注解全解
-- [03 数据层/事务失效](../../03-data/transaction/failure-cases.md) — 自调用绕过代理导致 `@Transactional` 失效
+- [03 数据层/事务失效](../../04-data/transaction/failure-cases.md) — 自调用绕过代理导致 `@Transactional` 失效
 - [01.java/并发总览](../../../01.java/concurrency/README.md) — AOP 代理与并发原语都涉及"对象语义 vs 运行时语义"的区分
 
-← [返回: aop](../README.md) | [返回: 01-core](../../README.md) | [返回: 06.spring](../../../README.md)
+← [返回: aop](../README.md) | [返回: 01-core](../../README.md) | [返回: 04.spring-backend](../../../README.md)

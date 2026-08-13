@@ -156,4 +156,4 @@ public class AsyncInitializer implements ApplicationRunner {
 ## 反向链
 
 - [auto-configuration](auto-configuration.md)
-- [config-center](../05-spring-cloud/config-center.md)
+- [config-center](../03-cloud/config-center.md)

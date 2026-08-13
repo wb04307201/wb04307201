@@ -104,4 +104,4 @@ Hoxton → 2020.0.x → 2021.0.x → 2022.0.x → 2023.0.x
 
 - ⬅️ [返回 05 Spring Cloud](README.md)
 - [Spring Cloud 与 Alibaba 关系](README.md#spring-cloud-与-spring-cloud-alibaba-关系) — 版本矩阵
-- ➡️ [04 Spring Boot](../04-spring-boot/) — 基础底座版本
+- ➡️ [04 Spring Boot](../02-boot/) — 基础底座版本

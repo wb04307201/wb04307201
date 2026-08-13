@@ -168,7 +168,7 @@ WebFlux + SSE（Server-Sent Events）是 Spring 实现**高并发实时推送**�
 
 ## 相关章节
 
-- 🆕 面试视角：[SSE vs WebSocket —— AI 对话为什么选 SSE](../../../13.split-hairs/02.computer-basics/sse-vs-websocket/README.md) — 协议对比 + 系统设计选型
+- 🆕 面试视角：[SSE vs WebSocket —— AI 对话为什么选 SSE](../../../../note/13.split-hairs/02.computer-basics/sse-vs-websocket/README.md) — 协议对比 + 系统设计选型
 - 🆕 协议深度：[SSE vs WebSocket 协议对比](../../../02.computer-basics/01-network/protocols/sse-vs-websocket/README.md) — 连接建立 + 帧格式 + 重连机制
 - ⬅️ [返回 02 Web 层](../README.md)
 - [WebFlux 总览](README.md) — Mono/Flux/背压/线程模型/选型决策

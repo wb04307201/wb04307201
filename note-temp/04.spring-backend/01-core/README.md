@@ -98,7 +98,7 @@ graph LR
 
 - ⬅️ [返回 Spring 顶层](../README.md)
 - ➡️ [02 Web 层](../02-web/README.md) — Spring MVC 大量依赖 IoC 容器
-- ➡️ [04 Spring Boot](../04-spring-boot/README.md) — 基于核心容器的"约定优于配置"
+- ➡️ [04 Spring Boot](../02-boot/README.md) — 基于核心容器的"约定优于配置"
 - [08 注解速查](../08-annotations/README.md) — IoC/AOP 相关注解
 
 ---

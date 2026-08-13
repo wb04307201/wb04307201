@@ -528,7 +528,7 @@ Micrometer Tracing API
 
 **演进方向**：Brave 进入维护模式（不再大版本迭代），OpenTelemetry 是**未来标准**。新项目建议直接选 `bridge-otel`。
 
-> 📌 **本节仅概述**。依赖坐标、application.yml 配置、OpenTelemetry SDK 自定义 Bean、OTLP/gRPC vs HTTP 协议对比、docker-compose 实战（Collector + Jaeger）、与 Prometheus 的混合架构等完整内容见 [05-spring-cloud/distributed-tracing.md](../05-spring-cloud/distributed-tracing.md)。
+> 📌 **本节仅概述**。依赖坐标、application.yml 配置、OpenTelemetry SDK 自定义 Bean、OTLP/gRPC vs HTTP 协议对比、docker-compose 实战（Collector + Jaeger）、与 Prometheus 的混合架构等完整内容见 [03-cloud/distributed-tracing.md](../03-cloud/distributed-tracing.md)。
 
 ---
 
@@ -568,10 +568,10 @@ Micrometer Tracing API
 - ⬅️ [返回 07 可观测性](README.md)
 - [Prometheus + Grafana](prometheus-grafana.md) — 可视化 + 告警
 - [Spring Boot Actuator](actuator.md) — 指标暴露端点
-- [分布式追踪](../05-spring-cloud/distributed-tracing.md) — Tracing + Metrics 统一
+- [分布式追踪](../03-cloud/distributed-tracing.md) — Tracing + Metrics 统一
 
-- [implementations-and-best-practices](../03-data/cache/implementations-and-best-practices.md)
-- [rpc-and-feign](../05-spring-cloud/rpc-and-feign.md)
+- [implementations-and-best-practices](../04-data/cache/implementations-and-best-practices.md)
+- [rpc-and-feign](../03-cloud/rpc-and-feign.md)
 - [batch](../06-integration/batch.md)
 - [integration-retry](../06-integration/integration-retry.md)
 - [log-aggregation](log-aggregation.md)
