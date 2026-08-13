@@ -345,7 +345,7 @@ public class OrderService {
 
 ## 相关章节
 
-- 深度阅读：[`06.spring`](06.spring/README.md) — 主模块详细内容
+- 深度阅读：[`06.spring`](../../../04.spring-backend/README.md) — 主模块详细内容
 
 
 - [03-transaction-boundary](../../../04.spring-backend/04-data/mybatis/03-spring-integration/03-transaction-boundary.md)

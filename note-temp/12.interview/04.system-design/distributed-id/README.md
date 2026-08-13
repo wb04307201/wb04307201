@@ -369,6 +369,6 @@ long safeOrderId = maskedId * 10 + random(0, 9);  // 加随机尾数
 
 ## 相关章节
 
-- 深度阅读：[`04.system-design`](04.system-design/README.md) — 主模块详细内容
+- 深度阅读：[`04.system-design`](../../../06.distributed-systems/README.md) — 主模块详细内容
 
 ← [返回系统设计咬文嚼字](../README.md)

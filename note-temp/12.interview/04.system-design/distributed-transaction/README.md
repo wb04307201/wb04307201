@@ -332,7 +332,7 @@ graph TB
 
 ## 相关章节
 
-- 深度阅读：[`04.system-design`](04.system-design/README.md) — 主模块详细内容
+- 深度阅读：[`04.system-design`](../../../06.distributed-systems/README.md) — 主模块详细内容
 - 排查实战：[`支付消息丢失排查`](../payment-message-lost/README.md) — 全链路 5 段排查框架 + 6 种根因
 
 ← [返回系统设计咬文嚼字](../README.md)

@@ -284,7 +284,7 @@ graph LR
 
 ## 相关章节
 
-- 深度阅读：[`04.system-design`](04.system-design/README.md) — 主模块详细内容
+- 深度阅读：[`04.system-design`](../../../06.distributed-systems/README.md) — 主模块详细内容
 
 
 - [seckill-without-redis](../../../06.distributed-systems/03-high-availability/rate-limiting/seckill-without-redis.md)

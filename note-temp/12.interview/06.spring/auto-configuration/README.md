@@ -318,6 +318,6 @@ application.yml > 自动配置类的默认值
 
 ## 相关章节
 
-- 深度阅读：[`06.spring`](06.spring/README.md) — 主模块详细内容
+- 深度阅读：[`06.spring`](../../../04.spring-backend/README.md) — 主模块详细内容
 
 ← [返回: 咬文嚼字 · auto-configuration](../README.md)

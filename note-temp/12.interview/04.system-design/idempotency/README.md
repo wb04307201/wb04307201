@@ -358,7 +358,7 @@ public Result register(@Valid @RequestBody UserRegisterRequest req,
 
 ## 相关章节
 
-- 深度阅读：[`04.system-design`](04.system-design/README.md) — 主模块详细内容
+- 深度阅读：[`04.system-design`](../../../06.distributed-systems/README.md) — 主模块详细内容
 
 ## 相关章节
 
