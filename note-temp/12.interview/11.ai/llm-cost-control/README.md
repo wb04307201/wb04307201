@@ -101,7 +101,7 @@ P99 单请求 $0.05 触发降级。"
 - [主模块 · 成本控制与降级](../../../../note/11.ai/08-llmops/production-stability/02-cost-control-and-degradation.md) —— 深度内容
 - [主模块 · llm-production-thinking 总目录](../../../../note/11.ai/08-llmops/production-stability/README.md)
 - [主模块 · 决策树](../../../../note/11.ai/08-llmops/production-stability/06-decision-tree.md)
-- [11.ai · vLLM vs Ollama](../../../../note/11.ai/03-engineering/ai-platforms/vllm-vs-ollama/README.md) —— 推理引擎选型（成本相关）
+- [11.ai · vLLM vs Ollama](../../../09.ai-applications/llm-inference/vllm-vs-ollama/README.md) —— 推理引擎选型（成本相关）
 
 ---
 

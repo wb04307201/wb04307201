@@ -46,7 +46,7 @@ module:
 
 1. **决策类**：上云 vs 自建机房、微服务 vs 单体的"二次成本"
 2. **~~执行类~~**：~~需求变更控制（MoSCoW / RICE）、项目风险登记册~~ → ✅ 已沉淀为 [risk-register](risk-register/README.md) + [agile-metrics](agile-metrics/README.md)
-3. **风险类**：技术债的财务账本（与 [`12.story/44-tech-debt-career-trap`](../../note/12.story/44-tech-debt-career-trap.md) 互补）
+3. **风险类**：技术债的财务账本（与 [`12.story/44-tech-debt-career-trap`](../13.story/44-tech-debt-career-trap.md) 互补）
 4. **组织类**：远程团队 / 跨时区协作
 5. **AI 时代**：AI Agent 在 PM 流程中的嵌入（Harness / Verifier / Feedback 3 件套）
 
@@ -157,7 +157,7 @@ graph LR
 
 ## 七、常见面试题
 
-> 本模块主要面向业务决策者，技术面试高频问题请见 [`13.split-hairs`](../../note/13.split-hairs/README.md)。
+> 本模块主要面向业务决策者，技术面试高频问题请见 [`13.split-hairs`](../12.interview/README.md)。
 
 | 场景 | 典型问题 | 参考答案 |
 |------|----------|----------|
@@ -182,12 +182,12 @@ graph LR
 
 - 一页速查：[`cheatsheet.md`](./cheatsheet.md) —— 6 大场景决策矩阵 + 速算公式
 - 维护脚本：[`scripts/README.md`](./scripts/README.md) —— `insert-frontmatter.py` / `validate.py`，用于批量补 frontmatter 和合规性校验
-- 主模块：[`note/04.system-design`](../../note/04.system-design/README.md) — 技术选型的底层支撑
+- 主模块：[`note/04.system-design`](../06.distributed-systems/README.md) — 技术选型的底层支撑
 - 主模块：[`note/09.front-end`](../../note/09.front-end/README.md) — 移动端跨端架构决策
-- 故事：[`note/12.story/07-from-chef-to-ceo`](../../note/12.story/07-from-chef-to-ceo.md) — 团队管理叙事版
-- 故事：[`note/12.story/43-ai-productivity-paradox`](../../note/12.story/43-ai-productivity-paradox.md) — AI 生产力悖论
-- 故事：[`note/12.story/44-tech-debt-career-trap`](../../note/12.story/44-tech-debt-career-trap.md) — 技术债困局
-- 面试专题：[`note/13.split-hairs`](../../note/13.split-hairs/README.md) — 技术细节高频坑
+- 故事：[`note/12.story/07-from-chef-to-ceo`](../13.story/07-from-chef-to-ceo.md) — 团队管理叙事版
+- 故事：[`note/12.story/43-ai-productivity-paradox`](../13.story/43-ai-productivity-paradox.md) — AI 生产力悖论
+- 故事：[`note/12.story/44-tech-debt-career-trap`](../13.story/44-tech-debt-career-trap.md) — 技术债困局
+- 面试专题：[`note/13.split-hairs`](../12.interview/README.md) — 技术细节高频坑
 
 ---
 
@@ -199,7 +199,7 @@ graph LR
 | DORA | DevOps Research & Assessment | [dora.dev](https://dora.dev) |
 | SPACE 框架 | 开发者生产力多维度量 | [queue.acm.org](https://queue.acm.org/detail.cfm?id=3454122) |
 | 阿里 P 序列 | 阿里 P5/P6/P7 职级体系 | 行业通行参考 |
-| 12 Story 餐厅系列 | 阿明餐厅团队管理叙事 | [`12.story/07`](../../note/12.story/07-from-chef-to-ceo.md) |
+| 12 Story 餐厅系列 | 阿明餐厅团队管理叙事 | [`12.story/07`](../13.story/07-from-chef-to-ceo.md) |
 
 ---
 

@@ -354,7 +354,7 @@ public Result register(@Valid @RequestBody UserRegisterRequest req,
 ## 七、交叉引用
 
 - 主模块：[`04.system-design`](../../../../note/04.system-design/) — 系统设计知识体系
-- [分布式锁](../../../../note/04.system-design/02-distributed/distributed-lock/README.md) — 分布式锁实现详解
+- [分布式锁](../../../06.distributed-systems/02-distributed/distributed-lock/README.md) — 分布式锁实现详解
 
 ## 相关章节
 

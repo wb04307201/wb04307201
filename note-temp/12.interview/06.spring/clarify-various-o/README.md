@@ -243,10 +243,10 @@ com.example.user.infrastructure.dao.UserDao
 
 ## 六、交叉引用
 
-- JPA 注解详解（`@Entity`、`@Repository`、`@OneToMany`）见 [JPA 注解](../../../../note/06.spring/08-annotations/jpa.md)
-- MyBatis ResultMap 映射配置见 [MyBatis](../../../../note/06.spring/03-data/README.md)
-- MapStruct 使用指南见 [对象转换](../../../../note/01.java/design-patterns/README.md)
-- DDD 领域对象设计见 [DDD](../../../../note/04.system-design/01-foundation/system-design-basics/ddd/README.md)
+- JPA 注解详解（`@Entity`、`@Repository`、`@OneToMany`）见 [JPA 注解](../../../04.spring-backend/08-annotations/jpa.md)
+- MyBatis ResultMap 映射配置见 [MyBatis](../../../04.spring-backend/04-data/README.md)
+- MapStruct 使用指南见 [对象转换](../../../01.java-and-jvm/04-patterns/README.md)
+- DDD 领域对象设计见 [DDD](../../../06.distributed-systems/01-foundation/system-design-basics/ddd/README.md)
 
 ## 相关章节
 

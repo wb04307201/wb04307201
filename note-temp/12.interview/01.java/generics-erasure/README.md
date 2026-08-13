@@ -10,7 +10,7 @@ question:
 
 # Java 泛型擦除深度剖析
 
-> 一句话定位：Java 泛型采用类型擦除实现——运行时不感知泛型类型，这是编译错误/桥方法/PECS 等所有"诡异现象"的根源。完整泛型体系见 [主模块泛型](../../../../note/01.java/concepts/generics/README.md)。
+> 一句话定位：Java 泛型采用类型擦除实现——运行时不感知泛型类型，这是编译错误/桥方法/PECS 等所有"诡异现象"的根源。完整泛型体系见 [主模块泛型](../../../01.java-and-jvm/01-language/generics/README.md)。
 
 ## 引子：一个让你怀疑人生的编译错误
 
@@ -40,7 +40,7 @@ public class Test {
 
 ## 一、核心原理
 
-> 📚 **前置知识**：[泛型](../../../../note/01.java/concepts/generics/README.md)
+> 📚 **前置知识**：[泛型](../../../01.java-and-jvm/01-language/generics/README.md)
 
 泛型的本质是**编译期概念**。Java 在 JDK 5 引入泛型时，为了保证与已有字节码的向后兼容，选择了**类型擦除（Type Erasure）**方案：编译器在编译阶段完成类型检查后，将所有类型参数 `T`、`E`、`K`、`V` 等替换为其上界（若未指定上界则替换为 `Object`），并在必要时插入强制类型转换指令。这意味着 JVM 在运行时根本不知道泛型的存在。
 
@@ -256,6 +256,6 @@ class UserDao extends GenericDao<User> {}
 
 ## 七、交叉引用
 
-- 主模块：[`泛型`](../../../../note/01.java/concepts/generics/README.md) — Java 泛型完整体系
+- 主模块：[`泛型`](../../../01.java-and-jvm/01-language/generics/README.md) — Java 泛型完整体系
 
 ← [返回: 咬文嚼字 · generics-erasure](../README.md)

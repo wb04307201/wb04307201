@@ -10,7 +10,7 @@ question:
 
 # XGBoost / LightGBM / CatBoost：三大 Boosting 库的工程取舍
 
-> ⬅️ [返回: 02.computer-basics 综述](../README.md) | [主模块: ensemble](../../../../../note/02.computer-basics/02-algorithms/ensemble/README.md)
+> ⬅️ [返回: 02.computer-basics 综述](../README.md) | [主模块: ensemble](../../../../02.cs-foundations/01-algorithms/ensemble/README.md)
 
 > **一句话定位**：3 个 GBDT 实现库（XGBoost / LightGBM / CatBoost）的**工程取舍对比**——面试"选型对比"型经典题，考察的不是"都是 Boosting"，而是**目标函数、近似算法、类别处理**三大差异。
 
@@ -184,7 +184,7 @@ base_params = dict(
 
 ## 六、交叉引用
 
-- **主模块**：[`02-algorithms/ensemble`](../../../../../note/02.computer-basics/02-algorithms/ensemble/README.md) — 集成学习原理（含 Boosting 推导）
+- **主模块**：[`02-algorithms/ensemble`](../../../../02.cs-foundations/01-algorithms/ensemble/README.md) — 集成学习原理（含 Boosting 推导）
 - **兄弟面试题**：[`decision-tree-variants`](../decision-tree-variants/README.md) — ID3/C4.5/CART 划分准则（基学习器 = CART） / [`classification-metrics`](../classification-metrics/README.md)
 - **反向链接**：[`02.computer-basics 综述`](../README.md) — 6 大核心题速查表
 

@@ -10,7 +10,7 @@ question:
 
 # Multi-Agent 系统设计 + 死循环防护 —— 5 大组件 + 4 大兜底 + 6 大反模式
 
-> 一句话定位：**1 个 Agent = 1 个工具；Multi-Agent = 多角色分工 + 协调者 + 状态共享；死循环 = max_turns + max_depth + Token 预算兜底**。完整深度 + CrewAI 代码见 [主模块 · 06-multi-agent-deep-dive](../../../../note/11.ai/04-architecture/agent-execution-patterns/06-multi-agent-deep-dive.md)。
+> 一句话定位：**1 个 Agent = 1 个工具；Multi-Agent = 多角色分工 + 协调者 + 状态共享；死循环 = max_turns + max_depth + Token 预算兜底**。完整深度 + CrewAI 代码见 [主模块 · 06-multi-agent-deep-dive](../../../09.ai-applications/agent/agent-execution-patterns/06-multi-agent-deep-dive.md)。
 
 > **系列定位**：AI Agent 经典综合题（字节 / 阿里 / Anthropic / OpenAI 高频）。考察的不是"Multi-Agent 是什么"，而是 **5 大组件设计 + 3 种通信模式选型 + 死循环 4 大兜底机制 + 6 大反模式识别**。
 
@@ -248,7 +248,7 @@ Q5：贵司 Agent 通信怎么防 Token 爆炸？
 
 ## 🔗 深度版（主模块）
 
-- [11.ai · 06-multi-agent-deep-dive](../../../../note/11.ai/04-architecture/agent-execution-patterns/06-multi-agent-deep-dive.md) —— 267 行深度：3 种通信模式 + 协调者 3 调度策略 + 4 大防护机制详解 + CrewAI 示例 + 5 个反模式 + 一句话总结
+- [11.ai · 06-multi-agent-deep-dive](../../../09.ai-applications/agent/agent-execution-patterns/06-multi-agent-deep-dive.md) —— 267 行深度：3 种通信模式 + 协调者 3 调度策略 + 4 大防护机制详解 + CrewAI 示例 + 5 个反模式 + 一句话总结
 
 ---
 
@@ -256,6 +256,6 @@ Q5：贵司 Agent 通信怎么防 Token 爆炸？
 
 ## 反向链
 
-- [shared-memory](../../../../note/11.ai/04-architecture/agent-memory/shared-memory.md)
+- [shared-memory](../../../09.ai-applications/agent/agent-memory/shared-memory.md)
 
 ← [返回: 咬文嚼字 · 11.ai](../README.md)

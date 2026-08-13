@@ -35,7 +35,7 @@ console.log(counter())  // 3
 
 ---
 
-> 📚 **前置知识**：[JavaScript 基础](../../../../note/09.front-end/02-language/README.md)
+> 📚 **前置知识**：[JavaScript 基础](../../../05.frontend/02-language/README.md)
 
 ## 一、核心原理
 

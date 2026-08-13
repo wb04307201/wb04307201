@@ -10,7 +10,7 @@ question:
 
 # Agent 架构选型 — DAG vs ReAct 面试深挖
 
-> 一句话定位：复杂 Agent 为什么越来越多采用 DAG？核心是生产环境的稳定性、成本、可观测性、合规需求。完整概念见 [主模块 Agent 架构](../../../../note/11.ai/04-architecture/agent-architecture/README.md)。
+> 一句话定位：复杂 Agent 为什么越来越多采用 DAG？核心是生产环境的稳定性、成本、可观测性、合规需求。完整概念见 [主模块 Agent 架构](../../../09.ai-applications/agent/agent-architecture/README.md)。
 
 ---
 
@@ -137,7 +137,7 @@ Q4: 是否需要灵活性 > 稳定性？
 
 ## 八、深度阅读
 
-- 主模块：[Agent 架构](../../../../note/11.ai/04-architecture/agent-architecture/README.md)
+- 主模块：[Agent 架构](../../../09.ai-applications/agent/agent-architecture/README.md)
 - 关联：[Function Calling](../function-calling/README.md) — Agent 的"手"
 - 关联：[Loop Engineering](../loop-engineering/README.md) — DAG 的兜底机制
 - 关联：[Harness Engineering](../harness-engineering/README.md) — DAG 是 Harness 的强约束
@@ -149,6 +149,6 @@ Q4: 是否需要灵活性 > 稳定性？
 
 ## 反向链
 
-- [42-ai-engineer-responsibility](../../../../note/12.story/42-ai-engineer-responsibility.md)
+- [42-ai-engineer-responsibility](../../../13.story/42-ai-engineer-responsibility.md)
 
 ← [返回: 咬文嚼字 · agent-dag-vs-react](../README.md)

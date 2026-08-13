@@ -10,7 +10,7 @@ question:
 
 # 虚拟线程 —— Java 21 最大变革：同步写法 + 异步性能
 
-> 一句话定位：**Java 21 面试高频题**。考察的不是"虚拟线程怎么用"，而是 **carrier thread 调度原理** + **pinning 问题** + **ThreadLocal 替代方案** + **适用场景判断**。深度实战见 [主模块深度章节](../../../../note/01.java/concurrency/virtual-threads/README.md)。
+> 一句话定位：**Java 21 面试高频题**。考察的不是"虚拟线程怎么用"，而是 **carrier thread 调度原理** + **pinning 问题** + **ThreadLocal 替代方案** + **适用场景判断**。深度实战见 [主模块深度章节](../../../01.java-and-jvm/03-concurrency/virtual-threads/README.md)。
 
 > **系列定位**：Java 并发高频题（社招必考）。配套兄弟题：[CompletableFuture](../completable-future/README.md)、[ThreadLocal](../threadlocal/)、[synchronized](../synchronized-lock-upgrade/)。
 
@@ -217,11 +217,11 @@ try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
 
 ## 五、交叉引用
 
-- **深度实战**：[虚拟线程深度解析](../../../../note/01.java/concurrency/virtual-threads/README.md) — carrier thread + pinning + 结构化并发 + 框架集成
+- **深度实战**：[虚拟线程深度解析](../../../01.java-and-jvm/03-concurrency/virtual-threads/README.md) — carrier thread + pinning + 结构化并发 + 框架集成
 - **相关面试题**：[CompletableFuture](../completable-future/README.md) — 异步编排 + 虚拟线程集成
 - **相关面试题**：[synchronized 锁升级](../synchronized-lock-upgrade/) — pinning 的根因
 - **相关面试题**：[ThreadLocal 原理](../threadlocal/) — 虚拟线程下的内存问题
-- **主模块**：[`01.java/concurrency`](../../../../note/01.java/concurrency/README.md) — 并发编程专题导航
+- **主模块**：[`01.java/concurrency`](../../../01.java-and-jvm/03-concurrency/README.md) — 并发编程专题导航
 
 ## 相关章节
 

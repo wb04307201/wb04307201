@@ -10,7 +10,7 @@ question:
 
 # RAG 如何检测超范围并拒答？—— 6 大检测机制 + 5 大拒答模式 + 4 步阈值调优
 
-> 一句话定位：**拒答 = 检索分数 < 阈值 + OOD 检测 + 5 大拒答模式 + 兜底话术**。完整深度 + 6 OSS 实战 + 4 步阈值调优见 [主模块 · 08-llmops/06-rag-out-of-domain-rejection 专章](../../../../note/11.ai/08-llmops/06-rag-out-of-domain-rejection/README.md)。
+> 一句话定位：**拒答 = 检索分数 < 阈值 + OOD 检测 + 5 大拒答模式 + 兜底话术**。完整深度 + 6 OSS 实战 + 4 步阈值调优见 [主模块 · 08-llmops/06-rag-out-of-domain-rejection 专章](../../../09.ai-applications/rag/05-out-of-domain-rejection.md)。
 
 > **系列定位**：RAG 落地经典追问（Anthropic / OpenAI / 阿里 / 字节 / 美团 工程师高频）。考察的不是"RAG 是什么"，而是 **6 大检测机制 + 5 大拒答模式 + 4 步阈值调优 + 5 反模式 + 90 秒话术**。
 
@@ -309,7 +309,7 @@ Q5：高风险领域（医疗/法律）怎么特别处理？
 
 ## 🔗 深度版（主模块）
 
-- [11.ai/08-llmops · 06-rag-out-of-domain-rejection 专章](../../../../note/11.ai/08-llmops/06-rag-out-of-domain-rejection/README.md) —— 完整深度：6 检测 + 5 拒答模式 + 4 步阈值 + 6 OSS 实战 + 监控体系
+- [11.ai/08-llmops · 06-rag-out-of-domain-rejection 专章](../../../09.ai-applications/rag/05-out-of-domain-rejection.md) —— 完整深度：6 检测 + 5 拒答模式 + 4 步阈值 + 6 OSS 实战 + 监控体系
 
 ---
 

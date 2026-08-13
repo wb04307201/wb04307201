@@ -252,7 +252,7 @@ Kafka Exactly-Once 使用决策树：
 - **同栏目**：[`Flink Checkpoint vs Savepoint`](../flink-checkpoint-vs-savepoint/README.md) — Flink + Kafka 的端到端 Exactly-Once 联动
 - **同栏目**：[`Iceberg ACID`](../iceberg-acid/README.md) — 数据湖层面的事务保障对比
 - **同栏目**：[`Doris vs ClickHouse`](../doris-vs-clickhouse/README.md) — Doris Routine Load 的 Exactly-Once 导入
-- **主模块**：[`04.system-design`](../../../../note/04.system-design/README.md) — 分布式事务与一致性模式
+- **主模块**：[`04.system-design`](../../../06.distributed-systems/README.md) — 分布式事务与一致性模式
 
 ---
 

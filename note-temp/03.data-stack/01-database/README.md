@@ -124,12 +124,12 @@ flowchart TD
 
 ## 🔗 相关章节
 
-数据库章节的多个主题与 [04.system-design](../../../note/04.system-design/README.md) 深度联动:
+数据库章节的多个主题与 [04.system-design](../../06.distributed-systems/README.md) 深度联动:
 
-- **缓存**: [04.system-design · 缓存设计模式](../../../note/04.system-design/04-high-performance/cache-patterns/README.md) 详解 Cache-Aside/Read-Through/Write-Through/Write-Behind
-- **Redis**: [04.system-design · 分布式缓存](../../../note/04.system-design/02-distributed/distributed-cache/README.md) 讲解缓存架构
-- **连接池**: [04.system-design · 连接池](../../../note/04.system-design/04-high-performance/connection-pool/README.md) 架构视角的调优
-- **主从复制**: 与 [04.system-design · CAP 定理](../../../note/04.system-design/02-distributed/cap-and-base/cap/README.md) 共同理解分布式一致性
+- **缓存**: [04.system-design · 缓存设计模式](../../06.distributed-systems/04-high-performance/cache-patterns/README.md) 详解 Cache-Aside/Read-Through/Write-Through/Write-Behind
+- **Redis**: [04.system-design · 分布式缓存](../../06.distributed-systems/02-distributed/distributed-cache/README.md) 讲解缓存架构
+- **连接池**: [04.system-design · 连接池](../../06.distributed-systems/04-high-performance/connection-pool/README.md) 架构视角的调优
+- **主从复制**: 与 [04.system-design · CAP 定理](../../06.distributed-systems/02-distributed/cap-and-base/cap/README.md) 共同理解分布式一致性
 
 ---
 

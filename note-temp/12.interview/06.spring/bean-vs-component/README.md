@@ -41,7 +41,7 @@ public ObjectMapper objectMapper() {
 
 ---
 
-> 📚 **前置知识**：[IOC](../../../../note/06.spring/01-core/ioc/README.md) | [@Component 与 @Bean](../../../../note/06.spring/08-annotations/bean-and-ioc.md)
+> 📚 **前置知识**：[IOC](../../../04.spring-backend/01-core/ioc/README.md) | [@Component 与 @Bean](../../../04.spring-backend/08-annotations/bean-and-ioc.md)
 
 ## 一、核心原理
 
@@ -341,10 +341,10 @@ public class ComponentWithBean {
 ## 八、交叉引用
 
 - 主模块：[`06.spring`](../../../../note/06.spring/) — Spring 知识体系
-- [Spring AOP](../../../../note/06.spring/08-annotations/aop.md) — CGLIB 代理机制深入
-- [Bean 生命周期](../../../../note/06.spring/01-core/ioc/bean-lifecycle.md) — Bean 从创建到销毁的全过程
-- [自动配置原理](../../../../note/06.spring/04-spring-boot/auto-configuration.md) — Spring Boot 如何发现并加载 Bean
-- [@Conditional 条件注解](../../../../note/06.spring/08-annotations/configuration.md) — 按需注册 Bean
+- [Spring AOP](../../../04.spring-backend/08-annotations/aop.md) — CGLIB 代理机制深入
+- [Bean 生命周期](../../../04.spring-backend/01-core/ioc/bean-lifecycle.md) — Bean 从创建到销毁的全过程
+- [自动配置原理](../../../04.spring-backend/02-boot/auto-configuration.md) — Spring Boot 如何发现并加载 Bean
+- [@Conditional 条件注解](../../../04.spring-backend/08-annotations/configuration.md) — 按需注册 Bean
 
 ## 相关章节
 

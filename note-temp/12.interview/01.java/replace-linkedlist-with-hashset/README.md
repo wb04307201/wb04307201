@@ -30,7 +30,7 @@ boolean exists = set.contains("target");   // 直接定位，耗时约 1 毫秒
 
 ---
 
-> 📚 **前置知识**：[HashMap](../../../../note/01.java/collection/hashmap.md) | [LinkedList](../../../../note/01.java/collection/LinkedList/README.md)
+> 📚 **前置知识**：[HashMap](../../../01.java-and-jvm/collection/hashmap.md) | [LinkedList](../../../01.java-and-jvm/collection/LinkedList/README.md)
 
 ## 一、核心原理
 
@@ -288,9 +288,9 @@ boolean mightExist = bloom.mightContain("user_123"); // true（可能误判）
 
 ## 六、交叉引用
 
-- HashMap/HashSet 源码分析见 [集合框架](../../../../note/01.java/collection/hashmap.md)
-- hashCode 和 equals 契约见 [Java 对象方法](../../../../note/01.java/concepts/object/README.md)
-- 并发安全的 Set 实现见 [并发容器](../../../../note/01.java/concurrency/concurrent-collections/README.md)
+- HashMap/HashSet 源码分析见 [集合框架](../../../01.java-and-jvm/collection/hashmap.md)
+- hashCode 和 equals 契约见 [Java 对象方法](../../../01.java-and-jvm/01-language/object/README.md)
+- 并发安全的 Set 实现见 [并发容器](../../../01.java-and-jvm/03-concurrency/concurrent-collections/README.md)
 
 ## 相关章节
 

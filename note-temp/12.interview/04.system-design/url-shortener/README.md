@@ -10,7 +10,7 @@ question:
 
 # 设计一个短链系统 —— Base62 + 发号器 + 302 重定向 + 缓存
 
-> 一句话定位：**系统设计面试最经典题**。考察的不是"长 URL 变短"，而是**短码生成策略选型** + **302 vs 301 重定向** + **高并发缓存** + **统计分析**。分布式 ID 基础见 [分布式 ID 生成](../../../../note/04.system-design/02-distributed/distributed-id/README.md)。
+> 一句话定位：**系统设计面试最经典题**。考察的不是"长 URL 变短"，而是**短码生成策略选型** + **302 vs 301 重定向** + **高并发缓存** + **统计分析**。分布式 ID 基础见 [分布式 ID 生成](../../../06.distributed-systems/02-distributed/distributed-id/README.md)。
 
 > **系列定位**：高频系统设计题（校招社招都考）。配套兄弟题：[商品搜索](../product-search/README.md)、[大文件上传](../file-upload/README.md)。
 
@@ -274,15 +274,15 @@ CREATE TABLE click_log (
 
 ## 六、交叉引用
 
-- **分布式 ID**：[分布式 ID 生成](../../../../note/04.system-design/02-distributed/distributed-id/README.md) — Snowflake / UUID / Leaf（短码生成基础）
-- **缓存设计**：[缓存设计模式](../../../../note/04.system-design/04-high-performance/cache-patterns/README.md) — Cache-Aside / Write-Behind
-- **分库分表**：[分库分表](../../../../note/04.system-design/04-high-performance/database-optimization/db-sharding/README.md) — 数据分片策略
-- **CDN**：[CDN 加速](../../../../note/04.system-design/04-high-performance/cdn/README.md) — 边缘缓存
+- **分布式 ID**：[分布式 ID 生成](../../../06.distributed-systems/02-distributed/distributed-id/README.md) — Snowflake / UUID / Leaf（短码生成基础）
+- **缓存设计**：[缓存设计模式](../../../06.distributed-systems/04-high-performance/cache-patterns/README.md) — Cache-Aside / Write-Behind
+- **分库分表**：[分库分表](../../../06.distributed-systems/04-high-performance/database-optimization/db-sharding/README.md) — 数据分片策略
+- **CDN**：[CDN 加速](../../../06.distributed-systems/04-high-performance/cdn/README.md) — 边缘缓存
 - **主模块**：[`04.system-design`](../../../../note/04.system-design/) — 系统设计知识体系
 
 ## 相关章节
 
-- 深度阅读：[`04.system-design`](../../../../note/04.system-design/README.md) — 主模块详细内容
+- 深度阅读：[`04.system-design`](../../../06.distributed-systems/README.md) — 主模块详细内容
 
 ← [返回: 咬文嚼字 · url-shortener](../README.md)
 

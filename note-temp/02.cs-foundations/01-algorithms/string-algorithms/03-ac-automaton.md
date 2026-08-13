@@ -276,7 +276,7 @@ child.output.addAll(child.fail.output);
 //     移除业务允许忽略的分隔符（如零宽空格），同时保存原始位置映射供审计
 ```
 
-NFKC 只能折叠部分兼容字符，**不能自动解决所有跨文字系统同形字符**（如拉丁字母与西里尔字母的视觉混淆），因此同形字符映射必须基于业务风险维护白名单；移除分隔符也要限制范围，避免把正常文本拼接成误报。更完整的对抗策略见[变体绕过对抗](../../../04.system-design/04-high-performance/sensitive-word-filter/05-anti-evasion.md)。
+NFKC 只能折叠部分兼容字符，**不能自动解决所有跨文字系统同形字符**（如拉丁字母与西里尔字母的视觉混淆），因此同形字符映射必须基于业务风险维护白名单；移除分隔符也要限制范围，避免把正常文本拼接成误报。更完整的对抗策略见[变体绕过对抗](../../../06.distributed-systems/04-high-performance/sensitive-word-filter/05-anti-evasion.md)。
 
 ### ⚠️ 反模式 5：忽略大小写 / 简繁
 
@@ -303,7 +303,7 @@ ac.insert("fuck");
 ## 一句话总结
 > **AC 自动机 = Trie 建树 + fail 指针复用后缀状态 + output 输出命中。**完整转移表的构建与空间上界均为 O(P × σ)，匹配扫描为 O(n)，返回全部结果时还需 O(z)；真实性能必须在目标硬件、JVM 和数据分布上测量。
 
-> 🔗 **工程应用**：AC 自动机在高并发敏感词过滤系统中的完整落地（Bloom + 缓存 + 分布式 + [变体绕过对抗](../../../04.system-design/04-high-performance/sensitive-word-filter/05-anti-evasion.md)）见 [04.system-design/sensitive-word-filter 专题](../../../04.system-design/04-high-performance/sensitive-word-filter/README.md)。
+> 🔗 **工程应用**：AC 自动机在高并发敏感词过滤系统中的完整落地（Bloom + 缓存 + 分布式 + [变体绕过对抗](../../../06.distributed-systems/04-high-performance/sensitive-word-filter/05-anti-evasion.md)）见 [04.system-design/sensitive-word-filter 专题](../../../06.distributed-systems/04-high-performance/sensitive-word-filter/README.md)。
 
 ---
 

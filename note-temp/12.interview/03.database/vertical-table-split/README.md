@@ -10,7 +10,7 @@ question:
 
 # 30 个热点字段拆不拆：垂直分表判定规范全解
 
-> 经典数据库面试题（表设计 / DBA 高频）。考察的不是"什么是垂直分表"，而是 **什么时候该拆** + **为什么拆** + **拆了有什么代价** + **InnoDB 底层原理**。完整概念见 [分库分表](../../../../note/04.system-design/04-high-performance/database-optimization/db-sharding/README.md)。
+> 经典数据库面试题（表设计 / DBA 高频）。考察的不是"什么是垂直分表"，而是 **什么时候该拆** + **为什么拆** + **拆了有什么代价** + **InnoDB 底层原理**。完整概念见 [分库分表](../../../06.distributed-systems/04-high-performance/database-optimization/db-sharding/README.md)。
 
 > **系列定位**：中高级后端 / DBA 面试题。考察的是"从 Buffer Pool 命中率到行溢出"的**底层理解**，而不是纸上谈兵。
 
@@ -261,8 +261,8 @@ WHERE b.id = ?;
 
 ## 七、相关章节
 
-- 主模块：[`分库分表`](../../../../note/04.system-design/04-high-performance/database-optimization/db-sharding/README.md) — 垂直分表 + 水平分表 + 分片算法全景
-- 同模块：[`冷热数据分离`](../../../../note/04.system-design/04-high-performance/database-optimization/cold-hot-data-separation/README.md) — 行级冷热分离（时间维度）
+- 主模块：[`分库分表`](../../../06.distributed-systems/04-high-performance/database-optimization/db-sharding/README.md) — 垂直分表 + 水平分表 + 分片算法全景
+- 同模块：[`冷热数据分离`](../../../06.distributed-systems/04-high-performance/database-optimization/cold-hot-data-separation/README.md) — 行级冷热分离（时间维度）
 - 同栏目：[`SQL 调优`](../mysql-tuning/README.md) — Explain 分析 + 索引优化
 - 同栏目：[`深分页`](../mysql-deep-pagination/README.md) — 大表查询性能优化
 - 同栏目：[`分表扩容策略`](../sharding-resize/README.md) — 分表后数据膨胀的处理

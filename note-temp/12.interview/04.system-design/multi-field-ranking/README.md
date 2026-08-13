@@ -10,7 +10,7 @@ question:
 
 # 多字段动态排名该怎么设计？ —— 从归一化到动态权重的完整方案
 
-> 一句话定位：**系统设计面试高频题**。考察的不是"ORDER BY 多个字段"，而是**归一化方法论** + **加权公式设计** + **动态权重策略** + **工程实现权衡**。深度实战见 [主模块深度章节](../../../../note/04.system-design/04-high-performance/multi-field-ranking/README.md)。
+> 一句话定位：**系统设计面试高频题**。考察的不是"ORDER BY 多个字段"，而是**归一化方法论** + **加权公式设计** + **动态权重策略** + **工程实现权衡**。深度实战见 [主模块深度章节](../../../06.distributed-systems/04-high-performance/multi-field-ranking/README.md)。
 
 > **系列定位**：高频系统设计题（社招必考）。配套兄弟题：[商品搜索系统设计](../product-search/README.md)、[缓存热点 Key](../cache-hot-key/README.md)、[限流算法](../rate-limiting/README.md)。
 
@@ -205,7 +205,7 @@ Redis ZADD / DB UPDATE
 
 ## 六、深度阅读
 
-- [主模块深度章节](../../../../note/04.system-design/04-high-performance/multi-field-ranking/README.md) — 归一化方法论 + 加权公式 + 动态权重 + 6 大典型场景 + 6 大反模式
+- [主模块深度章节](../../../06.distributed-systems/04-high-performance/multi-field-ranking/README.md) — 归一化方法论 + 加权公式 + 动态权重 + 6 大典型场景 + 6 大反模式
 - [商品搜索排序](../product-search/README.md) — 搜索场景的排序策略（BM25 + 多阶段管道）
 
 ---

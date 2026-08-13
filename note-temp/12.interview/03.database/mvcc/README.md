@@ -35,7 +35,7 @@ COMMIT;
 
 ---
 
-> 📚 **前置知识**：[事务](../../../../note/03.database/03-transaction/README.md) | [隔离级别](../mysql-isolation/README.md)
+> 📚 **前置知识**：[事务](../../../03.data-stack/01-database/03-transaction/README.md) | [隔离级别](../mysql-isolation/README.md)
 
 ## 一、核心原理
 
@@ -225,9 +225,9 @@ MVCC 的可见性判断仅适用于**快照读**（Snapshot Read），即普通�
 ## 七、交叉引用
 
 - **主模块**：[`03.database`](../../../../note/03.database/) — 数据库知识体系
-- **相关**：[事务隔离](../../../../note/03.database/03-transaction/README.md) — 事务隔离级别详解
+- **相关**：[事务隔离](../../../03.data-stack/01-database/03-transaction/README.md) — 事务隔离级别详解
 - 🆕 **相关面试题**：[死锁排查](../deadlock/README.md) — 等待图检测 + 间隙锁死锁 + 线上排查 5 步法
-- **延伸**：[MySQL 核心](../../../../note/03.database/05-mysql/README.md) — InnoDB 锁机制与 MVCC
+- **延伸**：[MySQL 核心](../../../03.data-stack/01-database/05-mysql/README.md) — InnoDB 锁机制与 MVCC
 
 ## 相关章节
 

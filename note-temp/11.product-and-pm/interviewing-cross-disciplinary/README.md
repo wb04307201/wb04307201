@@ -9,7 +9,7 @@ module:
 
 # 面试跨专业应届生：问题库与评估指南
 
-← [返回: 项目管理与成本控制](../README.md) · 对照：[科班面试题](../../../note/13.split-hairs/README.md)
+← [返回: 项目管理与成本控制](../README.md) · 对照：[科班面试题](../../12.interview/README.md)
 
 > 一句话定位：面对非计算机专业的应届生，**不要用八股文淘汰他们，要用场景题挖掘他们的自驱力和工程潜力**。本文提供 5 大场景 × 每场景"降维版 + 场景版"双题库 + 底线加分评估模型。
 
@@ -97,7 +97,7 @@ module:
 
 **优秀答案信号**：能想到"分组""索引""不要每次全部遍历"。
 
-**科班对照**：[HashMap 扩容机制](../../../note/13.split-hairs/01.java/hashmap-resizing/README.md)（2 倍扩容 + 红黑树阈值）
+**科班对照**：[HashMap 扩容机制](../../12.interview/01.java/hashmap-resizing/README.md)（2 倍扩容 + 红黑树阈值）
 
 #### 场景版 Q1：通讯录设计
 
@@ -292,8 +292,8 @@ module:
 - 团队管理：[康威定律下的团队拓扑](../conways-law-team-topologies/README.md) — 团队互补的理论基础
 - 人力配比：[3 倍缓冲排期](../team-sizing-3x-buffer/README.md) — P5/P6/P7 配比与新人培养周期
 - 效能度量：[AI 项目管理 DORA + SPACE](../ai-pm-dora-space/README.md) — 评估新人产出效率
-- 故事联动：[12.story/07 从厨师到 CEO](../../../note/12.story/07-from-chef-to-ceo.md) — 阿明餐厅的团队建设叙事
-- 科班面试题：[13.split-hairs](../../../note/13.split-hairs/README.md) — 158 篇技术面试题（科班视角对照）
+- 故事联动：[12.story/07 从厨师到 CEO](../../13.story/07-from-chef-to-ceo.md) — 阿明餐厅的团队建设叙事
+- 科班面试题：[13.split-hairs](../../12.interview/README.md) — 158 篇技术面试题（科班视角对照）
 
 ---
 

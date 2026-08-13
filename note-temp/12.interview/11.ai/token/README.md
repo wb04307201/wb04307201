@@ -123,7 +123,7 @@ PM："……"
 ## 八、深度阅读
 
 - 主模块：[Token 与计费](../../../../note/11.ai/02-technology-stack/token-billing/README.md)
-- 上游：[Transformer 架构](../../../../note/11.ai/01-fundamentals/transformer/README.md)
+- 上游：[Transformer 架构](../../../08.ai-foundations/03-transformer/README.md)
 - 关联：[Context Engineering](../context-engineering-interview/README.md) — Context Window 是 Token 上限
 - 关联：[RAG](../rag/README.md) — 用 RAG 减少 Token 消耗
 

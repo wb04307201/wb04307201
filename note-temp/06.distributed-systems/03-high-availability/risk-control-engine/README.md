@@ -380,7 +380,7 @@ IP 命中代理池                     25 分   命中
 
 - 高可用 8 件套：[限流](../rate-limiting/README.md) · [熔断](../circuit-break/README.md) · [服务降级](../service-degradation/README.md) · [弹性架构](../elastic-architecture/README.md) · [混沌工程](../chaos-engineering/README.md)
 - API 安全：[05-security/api-security](../../05-security/api-security/README.md) — 接口层风控
-- 餐厅叙事：[12.story/04-peak-traffic-defense](../../../12.story/04-peak-traffic-defense.md) — 大促流量防线
+- 餐厅叙事：[12.story/04-peak-traffic-defense](../../../13.story/04-peak-traffic-defense.md) — 大促流量防线
 - 咬文嚼字：[13.split-hairs/04.system-design/砍一刀算法](../../../13.split-hairs/04.system-design/砍一刀算法/README.md)
 
 ---

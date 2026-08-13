@@ -157,8 +157,8 @@ module:
 
 - ⬆️ [返回 note-temp 总目录](../README.md)
 - ↔️ [01.java-and-jvm](../01.java-and-jvm/README.md) —— Java 语言基础（Spring 的语言载体）
-- ↔️ [04.system-design](../../note/04.system-design/README.md) —— 系统设计（Spring Cloud 的理论基础）
-- ↔️ [13.split-hairs/06.spring](../../note/13.split-hairs/06.spring/README.md) —— Spring 咬文嚼字（高频面试考点）
+- ↔️ [04.system-design](../06.distributed-systems/README.md) —— 系统设计（Spring Cloud 的理论基础）
+- ↔️ [13.split-hairs/06.spring](../12.interview/06.spring/README.md) —— Spring 咬文嚼字（高频面试考点）
 
 ---
 

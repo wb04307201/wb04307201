@@ -82,7 +82,7 @@ graph TB
 - 上游：[`05 Spring Cloud`](../README.md) — 7 大组件各管什么
 - 关联：[`负载均衡`](../load-balancer.md) — 服务发现是负载均衡的前置
 - 关联：[`配置中心`](../config-center.md) — Nacos 同时提供注册 + 配置
-- 关联：[`04 系统设计/微服务`](../../../../note/04.system-design/01-foundation/system-design-basics/microservices/README.md) — 微服务架构理论基础
+- 关联：[`04 系统设计/微服务`](../../../06.distributed-systems/01-foundation/system-design-basics/microservices/README.md) — 微服务架构理论基础
 
 ---
 

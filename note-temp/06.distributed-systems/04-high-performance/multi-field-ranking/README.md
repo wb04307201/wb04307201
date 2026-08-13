@@ -510,9 +510,9 @@ LIMIT 20 OFFSET 0;
 ## 交叉引用
 - 搜索排序深度：[03-ranking.md](../product-search/03-ranking.md) — BM25 + 多阶段排序管道
 - 商品搜索系统：[product-search](../product-search/README.md) — 搜索系统完整方案
-- ES 基础：[elasticsearch](../../../03.database/08-nosql/elasticsearch/README.md) — 倒排索引 + BM25 原理
+- ES 基础：[elasticsearch](../../../03.data-stack/01-database/08-nosql/elasticsearch/README.md) — 倒排索引 + BM25 原理
 - 缓存模式：[cache-patterns](../cache-patterns/README.md) — 排名缓存设计
-- Redis 排序：[redis](../../../03.database/07-redis/README.md) — Sorted Set 底层原理
-- 面试题：[13.split-hairs/multi-field-ranking](../../../13.split-hairs/04.system-design/multi-field-ranking/README.md) — 面试高频拷问
+- Redis 排序：[redis](../../../03.data-stack/01-database/07-redis/README.md) — Sorted Set 底层原理
+- 面试题：[13.split-hairs/multi-field-ranking](../../../12.interview/04.system-design/multi-field-ranking/README.md) — 面试高频拷问
 
 ← [返回: 04-high-performance](../README.md) | [返回: 04.system-design](../../README.md)

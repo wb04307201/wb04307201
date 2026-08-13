@@ -10,7 +10,7 @@ question:
 
 # 并发 vs 并行 —— Rob Pike 经典定义 + 6 大误区 + 90 秒话术
 
-> 一句话定位：**Concurrency 是结构（同一时间段处理多任务），Parallelism 是执行（同一时刻真跑多个）**——Rob Pike 名言。完整深度 + Java 实战见 [主模块 · Java 并发编程专题导航 第 1.3 节](../../../../note/01.java/concurrency/README.md)。
+> 一句话定位：**Concurrency 是结构（同一时间段处理多任务），Parallelism 是执行（同一时刻真跑多个）**——Rob Pike 名言。完整深度 + Java 实战见 [主模块 · Java 并发编程专题导航 第 1.3 节](../../../01.java-and-jvm/03-concurrency/README.md)。
 
 > **系列定位**：Java 高频基础题（校招 70%+ 出题率 / 社招 50%）。考察的不是"听上去差不多"，而是 **Rob Pike 经典定义 + 6 大常见误区 + 多语言对照 + CPU-bound vs IO-bound 选型**。
 
@@ -237,7 +237,7 @@ Q5：贵司用协程/虚拟线程替代线程池？
 | 章节 | 核心考点 | 频率 |
 |------|---------|------|
 | [aqs](../aqs/README.md) | AQS 同步器原理 | ⭐⭐⭐⭐⭐ |
-| [arrayList-distinct](../../../../note/01.java/collection/arraylist-distinct.md) | ArrayList 去重陷阱 | ⭐⭐⭐ |
+| [arrayList-distinct](../../../01.java-and-jvm/collection/arraylist-distinct.md) | ArrayList 去重陷阱 | ⭐⭐⭐ |
 | [class-loading](../class-loading/README.md) | 类加载机制 | ⭐⭐⭐⭐⭐ |
 | [completable-future](../completable-future/README.md) | CompletableFuture 实战 | ⭐⭐⭐⭐ |
 | [concurrent-hashmap](../concurrent-hashmap/README.md) | ConcurrentHashMap 演进 | ⭐⭐⭐⭐⭐ |
@@ -253,7 +253,7 @@ Q5：贵司用协程/虚拟线程替代线程池？
 
 ## 🔗 深度版（主模块）
 
-- [01.java · Java 并发编程专题导航 第 1.3 节深展](../../../../note/01.java/concurrency/README.md#一三-并发与并行深度展开rob-pike-详解--java-实战) — Rob Pike 5 张图详解 + Go 比喻 + 6 大误区清单 + Java ForkJoinPool / CompletableFuture 实战
+- [01.java · Java 并发编程专题导航 第 1.3 节深展](../../../01.java-and-jvm/03-concurrency/README.md) — Rob Pike 5 张图详解 + Go 比喻 + 6 大误区清单 + Java ForkJoinPool / CompletableFuture 实战
 
 ---
 

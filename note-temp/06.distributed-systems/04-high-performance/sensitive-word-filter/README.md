@@ -11,7 +11,7 @@ module:
 
 > **一句话答案**：高并发敏感词过滤 = **AC 自动机（O(n) 单次扫描）+ 本地缓存（字典 + Bloom Filter）+ 分布式分片 + 异步队列削峰**。1000 QPS 单机够用，10 万 QPS 需要分布式架构。
 
-← [返回: 高性能设计](../README.md) · 算法基础：[string-algorithms/AC 自动机](../../../02.computer-basics/02-algorithms/string-algorithms/03-ac-automaton.md)
+← [返回: 高性能设计](../README.md) · 算法基础：[string-algorithms/AC 自动机](../../../02.cs-foundations/01-algorithms/string-algorithms/03-ac-automaton.md)
 
 ---
 
@@ -28,7 +28,7 @@ Q：Java 后端如何高并发设计敏感词过滤系统？
 3. **架构演进**：单机 → 分布式 → 多级缓存
 4. **5 反模式**：明文传输 / 没前缀处理 / 同步阻塞 / 单点 IdP
 
-完整 5-7 道精选面试题见 [13.split-hairs/02.computer-basics/sensitive-word-filter](../../../13.split-hairs/02.computer-basics/sensitive-word-filter/README.md)。
+完整 5-7 道精选面试题见 [13.split-hairs/02.computer-basics/sensitive-word-filter](../../../12.interview/02.computer-basics/sensitive-word-filter/README.md)。
 
 ---
 
@@ -331,10 +331,10 @@ tokens.forEach(token -> ac.match(token));
 - **变体绕过对抗**：[05-anti-evasion.md](05-anti-evasion.md) —— 6 大绕过手法 + 归一化流水线 + Unicode/繁简/谐音处理 + AI 语义兜底
 - **同级案例**：[商品搜索系统设计](../product-search/README.md) —— 倒排索引 + BM25 + 多阶段排序 + 数据同步
 - **同级案例**：[大文件上传系统](../file-upload/README.md) —— 分片 + 断点续传 + 秒传 + 对象存储
-- **算法基础**：[string-algorithms/AC 自动机](../../../02.computer-basics/02-algorithms/string-algorithms/03-ac-automaton.md) —— fail 指针构建 + Java 完整实现
-- **面试题**：[13.split-hairs/02.computer-basics/sensitive-word-filter](../../../13.split-hairs/02.computer-basics/sensitive-word-filter/README.md) —— 5-7 道精选 Q&A
-- **应用场景**：[08.application-systems/cms/README.md](../../../08.application-systems/01-rd-innovation/cms/README.md) —— 内容管理系统中的内容审核
-- **餐厅叙事**：[12.story 联动](../../../12.story/01-ai-agent-architecture.md) —— 阿明餐厅评论区敏感词审查
+- **算法基础**：[string-algorithms/AC 自动机](../../../02.cs-foundations/01-algorithms/string-algorithms/03-ac-automaton.md) —— fail 指针构建 + Java 完整实现
+- **面试题**：[13.split-hairs/02.computer-basics/sensitive-word-filter](../../../12.interview/02.computer-basics/sensitive-word-filter/README.md) —— 5-7 道精选 Q&A
+- **应用场景**：[08.application-systems/cms/README.md](../../../10.business-systems/01-rd-innovation/cms/README.md) —— 内容管理系统中的内容审核
+- **餐厅叙事**：[12.story 联动](../../../13.story/01-ai-agent-architecture.md) —— 阿明餐厅评论区敏感词审查
 
 ---
 

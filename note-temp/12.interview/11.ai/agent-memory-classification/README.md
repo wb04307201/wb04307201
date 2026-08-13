@@ -10,7 +10,7 @@ question:
 
 # Agent 的 Memory 分哪几类？ — 时间×认知×工程三维分类法
 
-> 一句话定位：Agent Memory 是 LLM Agent 的核心架构概念，从**时间维度**（短期/长期）、**认知科学**（情景/语义/程序）、**工程实现**（向量/结构化/文件系统）3 个维度形成完整分类。深度原理见 [主模块 Agent Memory 架构](../../../../note/11.ai/04-architecture/agent-memory/README.md) + [Agent 执行架构对比](../../../../note/11.ai/04-architecture/agent-architecture/README.md)。
+> 一句话定位：Agent Memory 是 LLM Agent 的核心架构概念，从**时间维度**（短期/长期）、**认知科学**（情景/语义/程序）、**工程实现**（向量/结构化/文件系统）3 个维度形成完整分类。深度原理见 [主模块 Agent Memory 架构](../../../09.ai-applications/agent/agent-memory/README.md) + [Agent 执行架构对比](../../../09.ai-applications/agent/agent-architecture/README.md)。
 
 > **系列定位**：经典 AI 架构面试题（高频）。考察的不是"Memory 是什么"，而是 **三维分类体系的完整度** + **场景适配的选择能力** + **业界框架的能力边界**。
 
@@ -167,8 +167,8 @@ question:
 ## 四、相关章节
 
 **主模块**：
-- [11.ai/04-architecture/agent-memory（深度原理）](../../../../note/11.ai/04-architecture/agent-memory/README.md)
-- [11.ai/04-architecture/agent-architecture（执行架构对比）](../../../../note/11.ai/04-architecture/agent-architecture/README.md)
+- [11.ai/04-architecture/agent-memory（深度原理）](../../../09.ai-applications/agent/agent-memory/README.md)
+- [11.ai/04-architecture/agent-architecture（执行架构对比）](../../../09.ai-applications/agent/agent-architecture/README.md)
 - [11.ai/04-architecture/llm-control-evolution（驾驭演进）](../../../../note/11.ai/04-architecture/llm-control-evolution/README.md)
 - [11.ai/02-technology-stack/context-engineering（Context Engineering）](../../../../note/11.ai/02-technology-stack/context-engineering/README.md)
 
@@ -188,6 +188,6 @@ question:
 
 ## 反向链
 
-- [shared-memory](../../../../note/11.ai/04-architecture/agent-memory/shared-memory.md)
+- [shared-memory](../../../09.ai-applications/agent/agent-memory/shared-memory.md)
 
 ← [返回: 咬文嚼字 · agent-memory-classification](../README.md)

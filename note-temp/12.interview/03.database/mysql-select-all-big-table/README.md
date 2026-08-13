@@ -236,11 +236,11 @@ stmt.setFetchSize(100);  // 在非游标模式下，这个值被驱动「软忽�
 
 ## 七、相关章节
 
-- 主模块：[`03.database/02-sql`](../../../../note/03.database/02-sql/README.md) — SQL 优化原则「少取/少传」
-- 主模块：[`03.database/05-mysql`](../../../../note/03.database/05-mysql/README.md) — MySQL 架构与 InnoDB
+- 主模块：[`03.database/02-sql`](../../../03.data-stack/01-database/02-sql/README.md) — SQL 优化原则「少取/少传」
+- 主模块：[`03.database/05-mysql`](../../../03.data-stack/01-database/05-mysql/README.md) — MySQL 架构与 InnoDB
 - 同栏目：[`tuning`](../mysql-tuning/README.md) — SQL 调优全流程
 - 同栏目：[`count`](../mysql-count/README.md) — COUNT 性能差异
-- 关联：[`01.java/jdbc`](../../../../note/01.java/jdbc/README.md) — JDBC 核心接口与连接池
+- 关联：[`01.java/jdbc`](../../../01.java-and-jvm/jdbc/README.md) — JDBC 核心接口与连接池
 
 ---
 

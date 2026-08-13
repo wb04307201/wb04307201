@@ -171,5 +171,5 @@ public class PaymentService {
 - [混沌工程](../chaos-engineering/README.md) — 通过注入故障验证降级预案有效性
 
 
-- [cache-degradation-and-recovery](../../../06.spring/03-data/cache/cache-degradation-and-recovery.md)
+- [cache-degradation-and-recovery](../../../04.spring-backend/04-data/cache/cache-degradation-and-recovery.md)
 ← [返回 高可用](../README.md)

@@ -647,6 +647,6 @@ public class UserDao {
 
 ## 反向链
 
-- [08-class-diagram](../../../note/06.spring/03-data/mybatis/01-architecture/08-class-diagram.md)
+- [08-class-diagram](../../04.spring-backend/04-data/mybatis/01-architecture/08-class-diagram.md)
 
 ← [返回 01.java 主模块](../README.md)

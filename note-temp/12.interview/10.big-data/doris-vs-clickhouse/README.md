@@ -220,7 +220,7 @@ OLAP 引擎选型决策树：
 - **同栏目**：[`Hive 分区 vs 分桶`](../hive-partition-vs-bucket/README.md) — 分区/分桶是 OLAP 引擎优化的基础
 - **同栏目**：[`Iceberg ACID`](../iceberg-acid/README.md) — Doris 可直接查询 Iceberg 表（Lakehouse 模式）
 - **同栏目**：[`Kafka Exactly-Once`](../kafka-exactly-once/README.md) — 实时导入的端到端一致性
-- **主模块**：[`03.database`](../../../../note/03.database/README.md) — 数据库引擎与查询优化基础
+- **主模块**：[`03.database`](../../../03.data-stack/01-database/README.md) — 数据库引擎与查询优化基础
 
 ---
 

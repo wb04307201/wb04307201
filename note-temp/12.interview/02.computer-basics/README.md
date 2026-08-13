@@ -51,9 +51,9 @@ question:
 ## 相关章节
 
 - 主模块：[`note/02.computer-basics`](../../../note/02.computer-basics/) — 计算机基础知识体系
-- 算法深度：[`02-algorithms/string-algorithms`](../../../note/02.computer-basics/02-algorithms/string-algorithms/README.md) —— Trie / KMP / AC 自动机 4 文件 1092 行
-- 高并发实战：[`04.system-design/04-high-performance/sensitive-word-filter`](../../../note/04.system-design/04-high-performance/sensitive-word-filter/README.md) —— 5 文件 1085 行
-- 应用场景：[`08.application-systems/cms`](../../../note/08.application-systems/01-rd-innovation/cms/README.md) —— CMS 内容审核
+- 算法深度：[`02-algorithms/string-algorithms`](../../02.cs-foundations/01-algorithms/string-algorithms/README.md) —— Trie / KMP / AC 自动机 4 文件 1092 行
+- 高并发实战：[`04.system-design/04-high-performance/sensitive-word-filter`](../../06.distributed-systems/04-high-performance/sensitive-word-filter/README.md) —— 5 文件 1085 行
+- 应用场景：[`08.application-systems/cms`](../../10.business-systems/01-rd-innovation/cms/README.md) —— CMS 内容审核
 - 相关：[`01.java`](01.java/)（Java 并发 / JVM）/ [`04.system-design`](04.system-design/)（系统设计）
 
 ← [返回咬文嚼字（高频面试题）](../README.md)

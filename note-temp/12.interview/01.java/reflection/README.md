@@ -42,7 +42,7 @@ m.invoke(s);  // "hacked!" ？？？
 
 ## 一、核心原理
 
-> 📚 **前置知识**：[反射](../../../../note/01.java/concepts/reflection/README.md)
+> 📚 **前置知识**：[反射](../../../01.java-and-jvm/01-language/reflection/README.md)
 
 ### 1.1 Class 对象的四种获取方式
 
@@ -281,10 +281,10 @@ passwordField.set(user, "hacked");  // 绕过所有业务逻辑直接修改
 
 - 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
 - 相关主题：
-  - [JVM 类加载](../../../../note/01.java/jvm/README.md) — 类加载机制与双亲委派
-  - [volatile 与内存模型](../../../../note/01.java/concurrency/volatile/README.md) — volatile 与内存模型
-  - [代理模式](../../../../note/01.java/design-patterns/README.md) — 代理模式与动态代理
-  - [Spring AOP](../../../../note/06.spring/08-annotations/aop.md) — Spring AOP 实现原理
+  - [JVM 类加载](../../../01.java-and-jvm/02-jvm/README.md) — 类加载机制与双亲委派
+  - [volatile 与内存模型](../../../01.java-and-jvm/03-concurrency/volatile/README.md) — volatile 与内存模型
+  - [代理模式](../../../01.java-and-jvm/04-patterns/README.md) — 代理模式与动态代理
+  - [Spring AOP](../../../04.spring-backend/08-annotations/aop.md) — Spring AOP 实现原理
 
 ## 相关章节
 

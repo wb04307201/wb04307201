@@ -10,7 +10,7 @@ question:
 
 # 传输加密 vs 存储加密怎么选？—— 数据全生命周期加密策略
 
-> 一句话定位：传输加密保护"数据在路上"，存储加密保护"数据在磁盘上"——两者**必须同时部署**，关键差异在密钥管理。完整加密体系见 [主模块加密](../../../../note/04.system-design/05-security/encryption/README.md)。
+> 一句话定位：传输加密保护"数据在路上"，存储加密保护"数据在磁盘上"——两者**必须同时部署**，关键差异在密钥管理。完整加密体系见 [主模块加密](../../../06.distributed-systems/05-security/encryption/README.md)。
 
 > **系列定位**：经典安全架构面试题。考察 **Data at Rest vs In Transit 分层** + **信封加密** + **KMS/HSM 密钥管理**。
 
@@ -108,7 +108,7 @@ public class FieldEncryptor {
 - [HTTPS 握手性能优化](../https-handshake/README.md) — TLS 性能优化详解
 - [JWT vs Session](../jwt-vs-session/README.md) — Token 传输安全
 - [OWASP Top 10](../owasp-top10/README.md) — 敏感数据暴露防护
-- [主模块 04.system-design/05-security](../../../../note/04.system-design/05-security/README.md) — 安全知识体系
+- [主模块 04.system-design/05-security](../../../06.distributed-systems/05-security/README.md) — 安全知识体系
 
 ---
 

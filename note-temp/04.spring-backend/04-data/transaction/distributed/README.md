@@ -11,7 +11,7 @@ module:
 
 > ⬅️ [返回 03 数据层/事务](../README.md) | [返回 Spring 主页](../../README.md)
 
-> **一句话定位**：单库事务用 `@Transactional`，**跨库跨服务事务**用 **Seata + Saga/TCC/2PC** 三件套。本节聚焦 Spring 集成层，理论深度见 [`04.system-design/02-distributed/distributed-transaction`](../../../../../note/04.system-design/02-distributed/distributed-transaction/README.md)。
+> **一句话定位**：单库事务用 `@Transactional`，**跨库跨服务事务**用 **Seata + Saga/TCC/2PC** 三件套。本节聚焦 Spring 集成层，理论深度见 [`04.system-design/02-distributed/distributed-transaction`](../../../../06.distributed-systems/02-distributed/distributed-transaction/README.md)。
 
 ---
 
@@ -37,10 +37,10 @@ module:
 
 ## 🔗 兄弟章节
 
-- **理论深度**：[`04.system-design/02-distributed/distributed-transaction`](../../../../../note/04.system-design/02-distributed/distributed-transaction/README.md) — 共识算法 / CAP / BASE 理论
-- **工作流视角**：[`07.workflow`](../../../../../note/07.workflow/README.md) — Saga/TCC 也是分布式协作模式
-- **咬文嚼字**：[`13.split-hairs/03.database`](../../../../../note/13.split-hairs/03.database/README.md) — 数据库事务隔离级别
-- **面试深挖**：[`13.split-hairs/06.spring`](../../../../../note/13.split-hairs/06.spring/README.md) — Spring 事务高频题
+- **理论深度**：[`04.system-design/02-distributed/distributed-transaction`](../../../../06.distributed-systems/02-distributed/distributed-transaction/README.md) — 共识算法 / CAP / BASE 理论
+- **工作流视角**：[`07.workflow`](../../../../07.devops-and-tools/02-workflow/README.md) — Saga/TCC 也是分布式协作模式
+- **咬文嚼字**：[`13.split-hairs/03.database`](../../../../12.interview/03.database/README.md) — 数据库事务隔离级别
+- **面试深挖**：[`13.split-hairs/06.spring`](../../../../12.interview/06.spring/README.md) — Spring 事务高频题
 
 ---
 

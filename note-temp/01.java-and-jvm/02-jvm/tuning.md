@@ -861,9 +861,9 @@ YGC 频率：从 30 秒 → 25 秒（新生代小了一点，略频繁，可接�
 
 ## 反向链
 
-- [final-finally-finalize](../../../note/13.split-hairs/01.java/final-finally-finalize/README.md)
-- [gc-algorithms](../../../note/13.split-hairs/01.java/gc-algorithms/README.md)
-- [hashmap-resizing](../../../note/13.split-hairs/01.java/hashmap-resizing/README.md)
-- [questions](../../../note/13.split-hairs/01.java/questions/README.md)
-- [reuse-of-stringbuilder](../../../note/13.split-hairs/01.java/reuse-of-stringbuilder/README.md)
-- [try-catch-performance](../../../note/13.split-hairs/01.java/try-catch-performance/README.md)
+- [final-finally-finalize](../../12.interview/01.java/final-finally-finalize/README.md)
+- [gc-algorithms](../../12.interview/01.java/gc-algorithms/README.md)
+- [hashmap-resizing](../../12.interview/01.java/hashmap-resizing/README.md)
+- [questions](../../12.interview/01.java/questions/README.md)
+- [reuse-of-stringbuilder](../../12.interview/01.java/reuse-of-stringbuilder/README.md)
+- [try-catch-performance](../../12.interview/01.java/try-catch-performance/README.md)

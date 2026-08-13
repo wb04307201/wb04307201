@@ -301,7 +301,7 @@ Review 拒绝率 = 被拒绝合并的 AI 代码 / 总 AI 代码
 - 同栏目：[`harness-engineering`](../harness-engineering/README.md) — Harness Engineering
 - 同栏目：[`ai-code-review`](../ai-code-review/README.md) — 验收成本要计入 AI 编程真实 ROI
 - 主模块：[`11.ai/05-applications`](../../../../note/11.ai/05-applications/README.md) — AI 行业应用
-- 故事：[`12.story/43-ai-productivity-paradox`](../../../../note/12.story/43-ai-productivity-paradox.md) — 阿明餐厅复盘
+- 故事：[`12.story/43-ai-productivity-paradox`](../../../13.story/43-ai-productivity-paradox.md) — 阿明餐厅复盘
 
 - Token 成本：[`AI 编程 Token 经济学`](../ai-coding-token-economics/README.md) — 杠杆率法则 + Token 悖论 + 企业成本失控案例
 
@@ -311,6 +311,6 @@ Review 拒绝率 = 被拒绝合并的 AI 代码 / 总 AI 代码
 
 ## 反向链
 
-- [glossary](../../../../note/12.story/glossary.md)
+- [glossary](../../../13.story/glossary.md)
 
 ← [返回: 咬文嚼字 · ai-coding-roi](../README.md)

@@ -107,6 +107,6 @@ Harness = 规范 + 流程 + 工具 + 反馈
 
 ## 反向链
 
-- [42-ai-engineer-responsibility](../../../../note/12.story/42-ai-engineer-responsibility.md)
+- [42-ai-engineer-responsibility](../../../13.story/42-ai-engineer-responsibility.md)
 
 ← [返回: 咬文嚼字 · harness-engineering](../README.md)

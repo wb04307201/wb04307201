@@ -37,7 +37,7 @@ public void createOrder(Order order) {
 
 ---
 
-> 📚 **前置知识**：[事件机制](../../../../note/06.spring/01-core/event.md)
+> 📚 **前置知识**：[事件机制](../../../04.spring-backend/01-core/event.md)
 
 ## 一、核心原理
 
@@ -327,9 +327,9 @@ public void handle(OrderCreatedEvent event) {
 ## 八、交叉引用
 
 - 主模块：[`06.spring`](../../../../note/06.spring/) — Spring 知识体系
-- [Spring 事务](../../../../note/06.spring/03-data/transaction/README.md) — Spring 事务管理机制
-- [Spring 事件](../../../../note/06.spring/01-core/event.md) — Spring 异步编程模型
-- [设计模式](../../../../note/01.java/design-patterns/README.md) — 观察者模式详解
+- [Spring 事务](../../../04.spring-backend/04-data/transaction/README.md) — Spring 事务管理机制
+- [Spring 事件](../../../04.spring-backend/01-core/event.md) — Spring 异步编程模型
+- [设计模式](../../../01.java-and-jvm/04-patterns/README.md) — 观察者模式详解
 
 ## 相关章节
 

@@ -36,7 +36,7 @@ String、StringBuilder、StringBuffer——三个名字相近的类，底层设�
 
 ## 一、核心原理
 
-> 📚 **前置知识**：[String](../../../../note/01.java/concepts/string/README.md)
+> 📚 **前置知识**：[String](../../../01.java-and-jvm/01-language/string/README.md)
 
 Java 中的字符串处理涉及三个核心类，其设计哲学截然不同：
 
@@ -415,10 +415,10 @@ System.out.println(sb.capacity()); // 输出 22（10 * 2 + 2）
 ## 七、交叉引用
 
 - 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
-- [String](../../../../note/01.java/concepts/string/README.md) — 字符串常量池与 intern 机制
+- [String](../../../01.java-and-jvm/01-language/string/README.md) — 字符串常量池与 intern 机制
 - [StringBuilder 重用](../reuse-of-stringbuilder/README.md) — ThreadLocal 重用 + `setLength(0)` 优化
 - [new String 创建几个对象](../new-string/README.md) — 字符串常量池 vs 堆
-- [JVM 内存](../../../../note/01.java/jvm/README.md) — JVM 内存模型与 GC
+- [JVM 内存](../../../01.java-and-jvm/02-jvm/README.md) — JVM 内存模型与 GC
 
 ## 相关章节
 

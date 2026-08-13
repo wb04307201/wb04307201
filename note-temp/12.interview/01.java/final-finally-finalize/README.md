@@ -357,7 +357,7 @@ public class DirectMemoryBuffer implements AutoCloseable {
 ## 七、交叉引用
 
 - 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
-- [JVM 调优](../../../../note/01.java/jvm/tuning.md) — GC 算法与内存管理
+- [JVM 调优](../../../01.java-and-jvm/02-jvm/tuning.md) — GC 算法与内存管理
 
 ## 相关章节
 

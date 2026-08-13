@@ -287,5 +287,5 @@ graph LR
 - 深度阅读：[`04.system-design`](04.system-design/README.md) — 主模块详细内容
 
 
-- [seckill-without-redis](../../../../note/04.system-design/03-high-availability/rate-limiting/seckill-without-redis.md)
+- [seckill-without-redis](../../../06.distributed-systems/03-high-availability/rate-limiting/seckill-without-redis.md)
 ← [返回系统设计咬文嚼字](../README.md)

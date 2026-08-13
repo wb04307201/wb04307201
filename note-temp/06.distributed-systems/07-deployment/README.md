@@ -67,8 +67,8 @@ graph TD
 
 - 上游：[`03-high-availability`](../03-high-availability/README.md) — 高可用（部署架构是高可用的物理保障）
 - 平行：[`04-high-performance`](../04-high-performance/README.md) — 高性能（容量规划与性能的交叉）
-- 工具：[`06.spring/07-observability`](../../06.spring/07-observability/README.md) — Spring Boot 可观测性实现
-- 工具：[`05.tools`](../../05.tools/README.md) — Docker / Nginx 部署工具
+- 工具：[`06.spring/07-observability`](../../04.spring-backend/07-observability/README.md) — Spring Boot 可观测性实现
+- 工具：[`05.tools`](../../07.devops-and-tools/01-tools/README.md) — Docker / Nginx 部署工具
 
 ---
 

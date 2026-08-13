@@ -10,7 +10,7 @@ question:
 
 # XSS、CSRF、CSP 三件套怎么防？—— Web 安全三道防线
 
-> 一句话定位：XSS 是"注入恶意脚本"，CSRF 是"伪造用户请求"，CSP 是"浏览器端的脚本白名单"——三者构成**纵深防御**。完整 Web 安全见 [主模块 Web 安全](../../../../note/04.system-design/05-security/web-security/README.md)。
+> 一句话定位：XSS 是"注入恶意脚本"，CSRF 是"伪造用户请求"，CSP 是"浏览器端的脚本白名单"——三者构成**纵深防御**。完整 Web 安全见 [主模块 Web 安全](../../../06.distributed-systems/05-security/web-security/README.md)。
 
 > **系列定位**：经典前端 + 后端安全面试题。考察 **3 种攻击的区分** + **多层防御组合** + **CSP 策略实战配置**。
 
@@ -105,7 +105,7 @@ CSP 渐进上线：先 Report-Only 观察 → 分析违规报告 → 切 Enforce
 - [单点登录 6 大方案](../sso/README.md) — OAuth2 中的 State 参数防 CSRF
 - [JWT vs Session](../jwt-vs-session/README.md) — Cookie 安全属性配置
 - [OWASP Top 10](../owasp-top10/README.md) — XSS 和注入在 OWASP 中的排名
-- [主模块 04.system-design/05-security](../../../../note/04.system-design/05-security/README.md) — 安全知识体系
+- [主模块 04.system-design/05-security](../../../06.distributed-systems/05-security/README.md) — 安全知识体系
 
 ---
 

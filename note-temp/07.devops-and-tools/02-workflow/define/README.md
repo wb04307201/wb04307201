@@ -228,7 +228,7 @@ flowchart LR
 - [流程引擎](../process-engine/README.md) — BPMN 引擎工作原理、发展史、选型
 - [工作流引擎与微服务编排](../workflow-and-microservice-orchestration/README.md) — 流程引擎在微服务场景的演化
 - [事件驱动与 Serverless Workflow](../apache-eventmesh/README.md) — 事件驱动作为工作流的神经系统
-- [04 系统设计/02 分布式](../../../../note/04.system-design/02-distributed/README.md) — 分布式系统的协作模式
+- [04 系统设计/02 分布式](../../../06.distributed-systems/02-distributed/README.md) — 分布式系统的协作模式
 
 ---
 

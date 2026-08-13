@@ -187,6 +187,6 @@ private Object readResolve() { return INSTANCE; }
 
 - [创建型模式总览](./README.md) — 单例 / 工厂 / 建造者
 - [设计模式主文档](../README.md) — GoF 23 种模式选型
-- [`06.spring/01-core` 容器单例](../../../../note/06.spring/01-core/README.md) — Spring Bean 默认 scope=singleton
+- [`06.spring/01-core` 容器单例](../../../04.spring-backend/01-core/README.md) — Spring Bean 默认 scope=singleton
 
 ← [返回 创建型模式](./README.md)

@@ -42,7 +42,7 @@ question:
 | [volatile 内存语义](volatile/) | ⭐⭐⭐⭐⭐ | volatile 可见性、有序性、原子性 |
 | [AQS 框架原理](aqs/) | ⭐⭐⭐⭐⭐ | AbstractQueuedSynchronizer 实现机制 |
 | [线程池 7 大参数](thread-pool/) | ⭐⭐⭐⭐⭐ | ThreadPoolExecutor 核心参数详解 |
-| 🆕 [并发 vs 并行](concurrency-vs-parallelism/) | ⭐⭐⭐ | Rob Pike 定义 + 6 大误区 + CPU/IO 选型矩阵 + 90 秒话术 | [Java 并发编程导航 第 1.3 节](../../../note/01.java/concurrency/README.md) |
+| 🆕 [并发 vs 并行](concurrency-vs-parallelism/) | ⭐⭐⭐ | Rob Pike 定义 + 6 大误区 + CPU/IO 选型矩阵 + 90 秒话术 | [Java 并发编程导航 第 1.3 节](../../01.java-and-jvm/03-concurrency/README.md) |
 | [Atomic 替代 synchronized](replace-synchronized-with-atomic/) | ⭐⭐⭐ | CAS 无锁编程 |
 | [3 线程按顺序执行](thread-sequential-execution/) | ⭐⭐⭐ | T1→T2→T3 的 3 语义 + 8 方案对比 + Top 3 推荐 |
 | **🆕 [虚拟线程](virtual-threads/)** | ⭐⭐⭐⭐ | carrier thread / mount-unmount / pinning / ScopedValue |
@@ -94,8 +94,8 @@ question:
 
 ## 学习路径
 
-1. **入门**（1 周）：集合去重 + Integer 缓存 + String 相关 + 主模块 [`concepts/data-types`](../../../note/01.java/concepts/data-types/README.md) + [`concepts/object`](../../../note/01.java/concepts/object/README.md)
-2. **进阶**（2 周）：HashMap 扩容 + 并发线程 + JVM 内存 + 设计模式（单例见主模块 [`design-patterns/creation/singleton`](../../../note/01.java/design-patterns/creation/singleton.md)）
+1. **入门**（1 周）：集合去重 + Integer 缓存 + String 相关 + 主模块 [`concepts/data-types`](../../01.java-and-jvm/01-language/data-types/README.md) + [`concepts/object`](../../01.java-and-jvm/01-language/object/README.md)
+2. **进阶**（2 周）：HashMap 扩容 + 并发线程 + JVM 内存 + 设计模式（单例见主模块 [`design-patterns/creation/singleton`](../../01.java-and-jvm/04-patterns/creation/singleton.md)）
 3. **冲刺面试**（1 周）：AQS + 锁升级 + GC 算法 + 类加载 + 高频面试题合集
 
 ## 相关章节

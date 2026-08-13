@@ -535,7 +535,7 @@ SHOW SLAVE STATUS;  -- Seconds_Behind_Master: 300s
 - [Redis](../07-redis/README.md) — 持久化、集群
 - [数据库连接池](../09-connection-pool/README.md) — 连接池监控指标
 - [数据迁移与同步](../10-data-migration/README.md) — Canal/Maxwell 监控
-- [系统设计 · 可观测性](../../../../note/04.system-design/07-deployment/observability/README.md) — 系统全局监控
+- [系统设计 · 可观测性](../../../06.distributed-systems/07-deployment/observability/README.md) — 系统全局监控
 
 ---
 

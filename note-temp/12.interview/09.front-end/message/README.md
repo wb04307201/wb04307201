@@ -294,9 +294,9 @@ public class PushMetrics {
 ## 六、交叉引用
 
 - 🆕 **AI 场景**：[SSE vs WebSocket —— AI 对话为什么选 SSE](02.computer-basics/sse-vs-websocket/README.md) — 面试高频题 + 系统设计视角
-- **相关主题**：[Redis发布订阅](../../../../note/03.database/07-redis/README.md)
-- **延伸学习**：[Spring Web](../../../../note/06.spring/02-web/README.md)
-- **分布式架构**：[消息队列对比](../../../../note/04.system-design/04-high-performance/mq/README.md)
+- **相关主题**：[Redis发布订阅](../../../03.data-stack/01-database/07-redis/README.md)
+- **延伸学习**：[Spring Web](../../../04.spring-backend/02-web/README.md)
+- **分布式架构**：[消息队列对比](../../../06.distributed-systems/04-high-performance/mq/README.md)
 
 ## 相关章节
 

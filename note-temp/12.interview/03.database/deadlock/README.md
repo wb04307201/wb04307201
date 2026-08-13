@@ -10,7 +10,7 @@ question:
 
 # 数据库死锁 —— 产生原理 + 线上排查 + 5 大预防策略
 
-> 一句话定位：**MySQL 面试高频题 + 线上必备排查技能**。考察的不是"死锁是什么"，而是 **InnoDB 等待图检测原理** + **间隙锁死锁场景** + **SHOW ENGINE INNODB STATUS 日志解读** + **performance_schema 实时监控**。完整事务体系见 [事务主模块](../../../../note/03.database/03-transaction/README.md)。
+> 一句话定位：**MySQL 面试高频题 + 线上必备排查技能**。考察的不是"死锁是什么"，而是 **InnoDB 等待图检测原理** + **间隙锁死锁场景** + **SHOW ENGINE INNODB STATUS 日志解读** + **performance_schema 实时监控**。完整事务体系见 [事务主模块](../../../03.data-stack/01-database/03-transaction/README.md)。
 
 > **系列定位**：高频数据库面试题。配套兄弟题：[MVCC](../mvcc/README.md)、[MySQL 索引](../mysql-index-failure/README.md)。
 
@@ -310,10 +310,10 @@ INSERT INTO orders (id) VALUES (3);             -- 插入意向锁冲突
 
 ## 七、交叉引用
 
-- **事务体系**：[事务](../../../../note/03.database/03-transaction/README.md) — ACID / 隔离级别 / 锁机制 / MVCC / 死锁实战
+- **事务体系**：[事务](../../../03.data-stack/01-database/03-transaction/README.md) — ACID / 隔离级别 / 锁机制 / MVCC / 死锁实战
 - **相关面试题**：[MVCC](../mvcc/README.md) — 读写不阻塞的原理
 - **相关面试题**：[MySQL 索引](../mysql-index-failure/README.md) — 索引对锁范围的影响
-- **监控**：[数据库监控](../../../../note/03.database/11-monitoring/README.md) — 锁等待监控
+- **监控**：[数据库监控](../../../03.data-stack/01-database/11-monitoring/README.md) — 锁等待监控
 - **主模块**：[`03.database`](../../../../note/03.database/) — 数据库知识体系
 
 ## 相关章节

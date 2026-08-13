@@ -110,7 +110,7 @@ module:
 - Spring 集成与 Seata 配置示例见 [06.spring/03-data/transaction/distributed/](../../../06.spring/03-data/transaction/distributed/) 章节
 
 
-- [theory-and-patterns](../../../06.spring/03-data/transaction/distributed/theory-and-patterns.md)
+- [theory-and-patterns](../../../04.spring-backend/04-data/transaction/distributed/theory-and-patterns.md)
 ## 参考链接
 
 - [Seata 官方文档](https://seata.apache.org/zh-cn/docs/overview/what-is-seata)

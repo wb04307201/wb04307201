@@ -72,8 +72,8 @@ graph TD
 
 - 上游：[`02-distributed`](../02-distributed/README.md) — 分布式基础（安全通信的前提）
 - 平行：[`03-high-availability`](../03-high-availability/README.md) — 高可用（安全与可用的平衡）
-- 前端安全：[`09.front-end/07-security`](../../09.front-end/07-security/README.md) — XSS/CSRF/CSP 前端安全
-- 面试：[`13.split-hairs/04.system-design`](../../13.split-hairs/04.system-design/README.md) — 系统设计面试题
+- 前端安全：[`09.front-end/07-security`](../../05.frontend/07-security/README.md) — XSS/CSRF/CSP 前端安全
+- 面试：[`13.split-hairs/04.system-design`](../../12.interview/04.system-design/README.md) — 系统设计面试题
 
 ---
 

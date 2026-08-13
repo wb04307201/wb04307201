@@ -383,7 +383,7 @@ spring:
 - **异步编排**：[CompletableFuture](../completablefuture/README.md) — 虚拟线程集成 + 对比
 - **版本演进**：[Java 21](../../version/java-21/README.md) — JEP 444 全景 + 迁移指南
 - **并发演进**：[并发功能历史](../../version/03-concurrency/README.md) — JEP 425→444→491 完整演进链
-- **面试题**：[13.split-hairs/virtual-threads](../../../../note/13.split-hairs/01.java/virtual-threads/README.md) — 7 道精选 Q&A
+- **面试题**：[13.split-hairs/virtual-threads](../../../12.interview/01.java/virtual-threads/README.md) — 7 道精选 Q&A
 
 ## 相关章节
 

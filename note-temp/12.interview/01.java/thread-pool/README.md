@@ -36,7 +36,7 @@ new ThreadPoolExecutor(
 
 ## 一、核心原理
 
-> 📚 **前置知识**：[线程池](../../../../note/01.java/concurrency/README.md)
+> 📚 **前置知识**：[线程池](../../../01.java-and-jvm/03-concurrency/README.md)
 
 `ThreadPoolExecutor` 是 Java 并发包中最核心的线程池实现，其构造函数包含 7 个参数，共同定义了线程池的资源分配策略和拒绝行为。
 
@@ -369,14 +369,14 @@ ThreadFactory namedFactory = new ThreadFactoryBuilder()
 
 - 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
 - [AQS](../aqs/README.md) — AbstractQueuedSynchronizer 详解
-- [并发容器](../../../../note/01.java/concurrency/concurrent-collections/README.md) — BlockingQueue 实现原理
-- [JVM 内存](../../../../note/01.java/jvm/README.md) — OOM 类型与排查
-- [Spring 异步](../../../../note/06.spring/08-annotations/scheduling-and-async.md) — @Async 线程池配置
+- [并发容器](../../../01.java-and-jvm/03-concurrency/concurrent-collections/README.md) — BlockingQueue 实现原理
+- [JVM 内存](../../../01.java-and-jvm/02-jvm/README.md) — OOM 类型与排查
+- [Spring 异步](../../../04.spring-backend/08-annotations/scheduling-and-async.md) — @Async 线程池配置
 
 ## 相关章节
 
 - 深度阅读：[`01.java`](01.java/README.md) — 主模块详细内容
 
 
-- [sequential-execution](../../../../note/01.java/concurrency/thread-basics/sequential-execution.md)
+- [sequential-execution](../../../01.java-and-jvm/03-concurrency/thread-basics/sequential-execution.md)
 ← [返回: 咬文嚼字 · thread-pool](../README.md)

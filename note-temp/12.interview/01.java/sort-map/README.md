@@ -29,7 +29,7 @@ map.entrySet().stream()
 
 ---
 
-> 📚 **前置知识**：[HashMap](../../../../note/01.java/collection/hashmap.md) | [TreeMap](../../../../note/01.java/collection/TreeMap/README.md)
+> 📚 **前置知识**：[HashMap](../../../01.java-and-jvm/collection/hashmap.md) | [TreeMap](../../../01.java-and-jvm/collection/TreeMap/README.md)
 
 ## 一、核心问题分析
 - **Map特性**：Java的`HashMap`无序，`TreeMap`基于红黑树实现自动排序（插入时排序），但插入1亿数据的时间复杂度为`O(n log n)`，且内存占用高（每个节点存储键值+指针，约48-64字节/节点，1亿节点需4.8-6.4GB内存）。
@@ -147,7 +147,7 @@ map.entrySet().stream()
 
 通过分块+外部排序，可在有限内存下高效处理1亿数据，同时利用多核并行加速。实际执行时需根据硬件资源（内存、CPU核心数）调整分块大小和并行度。## 相关章节
 
-- 深度阅读：[`01.java/集合框架`](../../../../note/01.java/collection/README.md) — TreeMap、LinkedHashMap 源码
+- 深度阅读：[`01.java/集合框架`](../../../01.java-and-jvm/collection/README.md) — TreeMap、LinkedHashMap 源码
 - 相关：[`13.split-hairs/hashmap-resizing`](../hashmap-resizing/README.md) — HashMap 扩容
 
 ← [返回: 咬文嚼字 · sort-map](../README.md)

@@ -784,7 +784,7 @@ public class GlobalExceptionHandler {
 - [OWASP Top 10](../owasp-top10/README.md) — 应用安全风险全景
 - [Web 安全](../web-security/README.md) — XSS / CSRF / SQLi / XXE 攻防实战
 - [加密与密钥管理](../encryption/README.md) — HTTPS / 签名背后的密码学基础
-- [Spring Cloud Gateway JWT 鉴权实现](../../../06.spring/05-spring-cloud/gateway.md) — 网关层接入点与上下文透传实战
+- [Spring Cloud Gateway JWT 鉴权实现](../../../04.spring-backend/03-cloud/gateway.md) — 网关层接入点与上下文透传实战
 
 
 - [dac](../access-control/01-traditional/dac.md)

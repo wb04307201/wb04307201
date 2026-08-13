@@ -10,7 +10,7 @@ question:
 
 # 微服务 vs 单体：核心优势深挖
 
-> 一句话定位：微服务核心优势不是"技术先进"——而是**用服务边界承载业务边界、用独立部署承载团队自治**。完整深度见 [主模块 microservices-vs-monolith 章节](../../../../note/04.system-design/01-foundation/system-design-basics/microservices/README.md)。
+> 一句话定位：微服务核心优势不是"技术先进"——而是**用服务边界承载业务边界、用独立部署承载团队自治**。完整深度见 [主模块 microservices-vs-monolith 章节](../../../06.distributed-systems/01-foundation/system-design-basics/microservices/README.md)。
 
 > **系列定位**：Java 后端高频面试题（字节 / 阿里 / 美团 / 滴滴 出题率 80%+）。考察的不是"微服务是什么"，而是 **6 大核心优势 + 6 个反模式 + 单体 vs 微服务权衡能力** + **Spring Cloud 全套实战经验**。
 
@@ -373,17 +373,17 @@ Seata 4 种模式对比：
 
 ### 主模块深度专题
 
-- [microservices 总目录](../../../../note/04.system-design/01-foundation/system-design-basics/microservices/README.md)
-- [service-decomposition](../../../../note/04.system-design/01-foundation/system-design-basics/microservices/service-decomposition/README.md) —— 怎么拆
-- [service-communication](../../../../note/04.system-design/01-foundation/system-design-basics/microservices/service-communication/README.md) —— 怎么通信
-- [service-contract](../../../../note/04.system-design/01-foundation/system-design-basics/microservices/service-contract/README.md) —— 怎么定契约
-- [data-consistency](../../../../note/04.system-design/01-foundation/system-design-basics/microservices/data-consistency/README.md) —— 怎么管数据
-- [migration-and-organization](../../../../note/04.system-design/01-foundation/system-design-basics/microservices/migration-and-organization/README.md) —— 怎么演进
-- [01-monolith-to-microservices](../../../../note/04.system-design/01-foundation/02-evolution/01-monolith-to-microservices/README.md) —— 单体到微服务演进
+- [microservices 总目录](../../../06.distributed-systems/01-foundation/system-design-basics/microservices/README.md)
+- [service-decomposition](../../../06.distributed-systems/01-foundation/system-design-basics/microservices/service-decomposition/README.md) —— 怎么拆
+- [service-communication](../../../06.distributed-systems/01-foundation/system-design-basics/microservices/service-communication/README.md) —— 怎么通信
+- [service-contract](../../../06.distributed-systems/01-foundation/system-design-basics/microservices/service-contract/README.md) —— 怎么定契约
+- [data-consistency](../../../06.distributed-systems/01-foundation/system-design-basics/microservices/data-consistency/README.md) —— 怎么管数据
+- [migration-and-organization](../../../06.distributed-systems/01-foundation/system-design-basics/microservices/migration-and-organization/README.md) —— 怎么演进
+- [01-monolith-to-microservices](../../../06.distributed-systems/01-foundation/02-evolution/01-monolith-to-microservices/README.md) —— 单体到微服务演进
 
 ### 同栏目（04.system-design）姐妹篇
 
-- [cap-theorem](../../../../note/04.system-design/02-distributed/cap-and-base/README.md) —— CAP 定理（微服务必知）
+- [cap-theorem](../../../06.distributed-systems/02-distributed/cap-and-base/README.md) —— CAP 定理（微服务必知）
 - [distributed-id](../distributed-id/README.md) —— 分布式 ID 方案
 - [distributed-transaction](../distributed-transaction/README.md) —— 分布式事务
 - [distributed-lock](../distributed-lock/README.md) —— 分布式锁
@@ -391,14 +391,14 @@ Seata 4 种模式对比：
 
 ### 主模块兄弟（Java 后端）
 
-- [06.spring/05-spring-cloud/](../../../../note/06.spring/05-spring-cloud/README.md) —— Spring Cloud 全套实战
-- [06.spring/05-spring-cloud/seata-integration](../../../../note/06.spring/05-spring-cloud/seata-integration.md) —— Seata 分布式事务
-- [06.spring/05-spring-cloud/service-registry](../../../../note/06.spring/05-spring-cloud/service-registry/README.md) —— 注册中心 Nacos
+- [06.spring/05-spring-cloud/](../../../04.spring-backend/03-cloud/README.md) —— Spring Cloud 全套实战
+- [06.spring/05-spring-cloud/seata-integration](../../../04.spring-backend/03-cloud/seata-integration.md) —— Seata 分布式事务
+- [06.spring/05-spring-cloud/service-registry](../../../04.spring-backend/03-cloud/service-registry/README.md) —— 注册中心 Nacos
 
 ### 实战姐妹（12.story）
 
-- [12.story/02-system-architecture-evolution](../../../../note/12.story/02-system-architecture-evolution.md) —— 阿明餐厅从单体到微服务演进
-- [12.story/04-peak-traffic-defense](../../../../note/12.story/04-peak-traffic-defense.md) —— 高峰流量治理
+- [12.story/02-system-architecture-evolution](../../../13.story/02-system-architecture-evolution.md) —— 阿明餐厅从单体到微服务演进
+- [12.story/04-peak-traffic-defense](../../../13.story/04-peak-traffic-defense.md) —— 高峰流量治理
 
 ---
 

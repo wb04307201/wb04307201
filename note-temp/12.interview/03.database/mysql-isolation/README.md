@@ -35,7 +35,7 @@ MySQL 用 **4 种隔离级别** 解决这些问题。
 
 ---
 
-> 📚 **前置知识**：[事务](../../../../note/03.database/03-transaction/README.md)
+> 📚 **前置知识**：[事务](../../../03.data-stack/01-database/03-transaction/README.md)
 
 ## 一、核心原理
 
@@ -297,11 +297,11 @@ SHOW ENGINE INNODB STATUS\G  -- 查看"LATEST DETECTED DEADLOCK"
 
 - **相关主题**：[MySQL COUNT优化](../mysql-count/README.md) - MVCC对COUNT的影响
 - **性能调优**：[MySQL慢查询](../mysql-tuning/README.md)
-- **Java关联**：[Spring Data](../../../../note/06.spring/03-data/README.md)
-- **分布式系统**：[分布式事务](../../../../note/04.system-design/02-distributed/distributed-transaction/README.md)
+- **Java关联**：[Spring Data](../../../04.spring-backend/04-data/README.md)
+- **分布式系统**：[分布式事务](../../../06.distributed-systems/02-distributed/distributed-transaction/README.md)
 
 ## 相关章节
 
-- 深度阅读：[`03.database`](../../../../note/03.database/README.md) — 主模块详细内容
+- 深度阅读：[`03.database`](../../../03.data-stack/01-database/README.md) — 主模块详细内容
 
 ← [返回数据库咬文嚼字](../README.md)

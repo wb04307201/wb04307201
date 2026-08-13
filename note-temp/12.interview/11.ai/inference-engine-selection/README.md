@@ -10,7 +10,7 @@ question:
 
 # 工业级大模型部署：为什么优先选 vLLM 而非 Ollama？
 
-> 一句话定位：工业部署下 vLLM 凭借 PagedAttention + 连续批处理 + 分布式 4 引擎领先 Ollama 5-24x，但 Ollama 在单机 / 边缘 / 开发场景仍是首选。完整深度见 [主模块 vllm-vs-ollama 深度专题](../../../../note/11.ai/03-engineering/ai-platforms/vllm-vs-ollama/README.md)。
+> 一句话定位：工业部署下 vLLM 凭借 PagedAttention + 连续批处理 + 分布式 4 引擎领先 Ollama 5-24x，但 Ollama 在单机 / 边缘 / 开发场景仍是首选。完整深度见 [主模块 vllm-vs-ollama 深度专题](../../../09.ai-applications/llm-inference/vllm-vs-ollama/README.md)。
 
 > **系列定位**：经典大模型部署选型面试题（字节 / 阿里 / 美团 / 智谱高频）。考察的不是「vLLM 比 Ollama 强几个点」，而是 **PagedAttention 显存机制** + **连续批处理调度原理** + **4 引擎场景化选型能力**。
 
@@ -378,15 +378,15 @@ resp = client.chat(model='qwen2.5:7b', messages=[...])
 
 ### 主模块深度专题
 
-- [11.ai vllm-vs-ollama 总目录](../../../../note/11.ai/03-engineering/ai-platforms/vllm-vs-ollama/README.md)
-- [01-paged-attention](../../../../note/11.ai/03-engineering/ai-platforms/vllm-vs-ollama/01-paged-attention.md) —— vLLM 核心创新原理
-- [02-kv-cache-management](../../../../note/11.ai/03-engineering/ai-platforms/vllm-vs-ollama/02-kv-cache-management.md) —— KV cache 显存管理
-- [03-batching-strategies](../../../../note/11.ai/03-engineering/ai-platforms/vllm-vs-ollama/03-batching-strategies.md) —— 连续批处理
-- [04-quantization](../../../../note/11.ai/03-engineering/ai-platforms/vllm-vs-ollama/04-quantization.md) —— 量化与显存估算
-- [05-distributed-inference](../../../../note/11.ai/03-engineering/ai-platforms/vllm-vs-ollama/05-distributed-inference.md) —— TP/PP/SP/DP
-- [06-benchmark-data](../../../../note/11.ai/03-engineering/ai-platforms/vllm-vs-ollama/06-benchmark-data.md) —— 实测数据
-- [07-vs-tgi-lmdeploy](../../../../note/11.ai/03-engineering/ai-platforms/vllm-vs-ollama/07-vs-tgi-lmdeploy.md) —— 4 引擎对比
-- [08-decision-tree](../../../../note/11.ai/03-engineering/ai-platforms/vllm-vs-ollama/08-decision-tree.md) —— 5 分钟决策树
+- [11.ai vllm-vs-ollama 总目录](../../../09.ai-applications/llm-inference/vllm-vs-ollama/README.md)
+- [01-paged-attention](../../../09.ai-applications/llm-inference/vllm-vs-ollama/01-paged-attention.md) —— vLLM 核心创新原理
+- [02-kv-cache-management](../../../09.ai-applications/llm-inference/vllm-vs-ollama/02-kv-cache-management.md) —— KV cache 显存管理
+- [03-batching-strategies](../../../09.ai-applications/llm-inference/vllm-vs-ollama/03-batching-strategies.md) —— 连续批处理
+- [04-quantization](../../../09.ai-applications/llm-inference/vllm-vs-ollama/04-quantization.md) —— 量化与显存估算
+- [05-distributed-inference](../../../09.ai-applications/llm-inference/vllm-vs-ollama/05-distributed-inference.md) —— TP/PP/SP/DP
+- [06-benchmark-data](../../../09.ai-applications/llm-inference/vllm-vs-ollama/06-benchmark-data.md) —— 实测数据
+- [07-vs-tgi-lmdeploy](../../../09.ai-applications/llm-inference/vllm-vs-ollama/07-vs-tgi-lmdeploy.md) —— 4 引擎对比
+- [08-decision-tree](../../../09.ai-applications/llm-inference/vllm-vs-ollama/08-decision-tree.md) —— 5 分钟决策树
 
 ### 同栏目（11.ai）姐妹篇
 
@@ -404,7 +404,7 @@ resp = client.chat(model='qwen2.5:7b', messages=[...])
 
 ### 实战姐妹（12.story）
 
-- [12.story/39-ai-private-deployment](../../../../note/12.story/39-ai-private-deployment.md) —— 阿明餐厅从 Ollama 试跑到 vLLM 上生产
+- [12.story/39-ai-private-deployment](../../../13.story/39-ai-private-deployment.md) —— 阿明餐厅从 Ollama 试跑到 vLLM 上生产
 
 ---
 

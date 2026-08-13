@@ -102,5 +102,5 @@ CircuitBreakerConfig config = CircuitBreakerConfig.custom()
 
 
 - [in-practice](../../01-foundation/system-design-basics/it4it/in-practice.md)
-- [cache-degradation-and-recovery](../../../06.spring/03-data/cache/cache-degradation-and-recovery.md)
+- [cache-degradation-and-recovery](../../../04.spring-backend/04-data/cache/cache-degradation-and-recovery.md)
 ← [返回 高可用](../README.md)

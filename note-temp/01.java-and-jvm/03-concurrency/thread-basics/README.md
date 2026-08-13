@@ -606,7 +606,7 @@ String result = task.get(); // 获取返回值
 
 - [sequential-execution.md](sequential-execution.md) — 串行 / 分支 / 汇合 3 语义 + Top 3 推荐方案（join / CountDownLatch / CompletableFuture）+ 8 方案对比表 + 实战模板
 
-**面试配套**：[13.split-hairs/01.java/thread-sequential-execution](../../../../note/13.split-hairs/01.java/thread-sequential-execution/README.md) — 5 题面试题版（语义陷阱 / join 原理 / CountDownLatch 选型 / CompletableFuture 链式 / 生产推荐）
+**面试配套**：[13.split-hairs/01.java/thread-sequential-execution](../../../12.interview/01.java/thread-sequential-execution/README.md) — 5 题面试题版（语义陷阱 / join 原理 / CountDownLatch 选型 / CompletableFuture 链式 / 生产推荐）
 
 ---
 

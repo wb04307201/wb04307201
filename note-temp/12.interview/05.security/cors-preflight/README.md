@@ -10,7 +10,7 @@ question:
 
 # CORS 预检请求的性能陷阱怎么解？—— Simple Request 与 Preflight 的 RTT 优化
 
-> 一句话定位：跨域"非简单请求"会触发 **OPTIONS 预检请求**，额外增加一个 RTT——通过构造 Simple Request 或缓存 Preflight 可消除。完整 Web 安全见 [主模块 Web 安全](../../../../note/04.system-design/05-security/web-security/README.md)。
+> 一句话定位：跨域"非简单请求"会触发 **OPTIONS 预检请求**，额外增加一个 RTT——通过构造 Simple Request 或缓存 Preflight 可消除。完整 Web 安全见 [主模块 Web 安全](../../../06.distributed-systems/05-security/web-security/README.md)。
 
 > **系列定位**：前端 + 后端交叉面试题（中高频）。考察 **Simple Request 触发条件** + **Preflight 缓存策略** + **如何避免不必要的预检**。
 
@@ -115,7 +115,7 @@ fetch(url, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JS
 - [HTTPS 握手性能优化](../https-handshake/README.md) — 另一个 RTT 优化维度
 - [XSS、CSRF、CSP 三件套](../xss-csrf-csp/README.md) — CORS 与 CSRF 的关系
 - [令牌桶 vs 漏桶](../rate-limiting-algorithms/README.md) — API 网关性能优化
-- [主模块 04.system-design/05-security](../../../../note/04.system-design/05-security/README.md) — 安全知识体系
+- [主模块 04.system-design/05-security](../../../06.distributed-systems/05-security/README.md) — 安全知识体系
 
 ---
 

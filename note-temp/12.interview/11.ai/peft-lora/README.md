@@ -10,7 +10,7 @@ question:
 
 # PEFT / LoRA / QLoRA 面试深挖（4 大核心）
 
-> ⬅️ [返回 AI 咬文嚼字](../README.md) | [主模块深度专题](../../../../note/11.ai/07-research/alignment/06-peft-lora.md)
+> ⬅️ [返回 AI 咬文嚼字](../README.md) | [主模块深度专题](../../../09.ai-applications/fine-tuning/06-peft-lora.md)
 
 > **一句话定位**：4 大核心 PEFT 题**面试深挖版**：LoRA 数学 / QLoRA NF4 / DoRA / Full-FT vs PEFT 选型。
 
@@ -76,10 +76,10 @@ question:
 
 ## 🔗 兄弟章节
 
-- **主模块深度**：[PEFT / LoRA / QLoRA 深度专题](../../../../note/11.ai/07-research/alignment/06-peft-lora.md) — 4 大方法完整版 + DoRA/AdaLoRA/LoRA+/LongLoRA 2024-2026 新方法
+- **主模块深度**：[PEFT / LoRA / QLoRA 深度专题](../../../09.ai-applications/fine-tuning/06-peft-lora.md) — 4 大方法完整版 + DoRA/AdaLoRA/LoRA+/LongLoRA 2024-2026 新方法
 - **兄弟面试题**：[LLM 对齐方法深挖](../llm-alignment/README.md) — SFT/RLHF/DPO/Constitutional AI 5 大对齐方法（SFT/DPO 几乎必须配合 LoRA 使用）
 - **兄弟面试题**：[LLM 推理优化深挖](../llm-inference/README.md) — Continuous Batching / PagedAttention / KV Cache / 量化（量化基础）
-- **餐厅叙事**：[12.story 系列目录](../../../../note/12.story/README.md)（PEFT 主题餐厅叙事篇待补）
+- **餐厅叙事**：[12.story 系列目录](../../../13.story/README.md)（PEFT 主题餐厅叙事篇待补）
 
 ---
 

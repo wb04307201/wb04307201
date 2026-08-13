@@ -518,8 +518,8 @@ export function Button({
 
 ## 九、相关章节
 
-- 同栏目：[`bfc`](../../../../note/09.front-end/01-foundation/css-layout/bfc.md) — BFC 块级格式化上下文
-- 主模块：[`09.front-end/05-architecture`](../../../../note/09.front-end/05-architecture/README.md) — 前端架构
+- 同栏目：[`bfc`](../../../05.frontend/01-foundation/css-layout/bfc.md) — BFC 块级格式化上下文
+- 主模块：[`09.front-end/05-architecture`](../../../05.frontend/05-architecture/README.md) — 前端架构
 
 ---
 

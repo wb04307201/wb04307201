@@ -33,7 +33,7 @@ StringBuilder 已经够快了，还能更快吗？
 
 ---
 
-> 📚 **前置知识**：[String](../../../../note/01.java/concepts/string/README.md)
+> 📚 **前置知识**：[String](../../../01.java-and-jvm/01-language/string/README.md)
 
 ## 一、核心原理
 
@@ -246,7 +246,7 @@ public final class SBUtils {
 - **底层原理**：[String/Builder/Buffer 深度对比](../string-builder-buffer/README.md) - 扩容机制 + 源码拆解 + JIT intrinsic
 - **相关主题**：[new String对象创建](../new-string/README.md) - 字符串常量池
 - **并发编程**：[ThreadLocal](../thread-pool/README.md) - 内存泄漏防范
-- **性能调优**：[JVM调优](../../../../note/01.java/jvm/tuning.md)
+- **性能调优**：[JVM调优](../../../01.java-and-jvm/02-jvm/tuning.md)
 - **关联知识**：[HashMap扩容](../hashmap-resizing/README.md) - 预分配容量
 
 ## 相关章节

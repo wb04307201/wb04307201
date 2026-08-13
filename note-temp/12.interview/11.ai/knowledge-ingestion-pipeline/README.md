@@ -123,7 +123,7 @@ question:
 
 - **主模块深度**：[企业级 Knowledge Ingestion Pipeline](../../../../note/11.ai/02-technology-stack/knowledge-ingestion-pipeline/README.md) — 8 阶段全链路：连接、解析、清洗、分块、Embedding、入库与 CDC。
 - **兄弟面试题**：[长文档与 PDF 面试深挖](../long-document-pdf/README.md) — 分块、Lost-in-Middle、上下文扩展与长合同 Pipeline。
-- **餐厅叙事**：[12.story 36 — RAG 检索增强生成](../../../../note/12.story/36-rag-retrieval-augmented-generation.md) — 用阿明餐厅串起 RAG 的入库、检索与回答全流程。
+- **餐厅叙事**：[12.story 36 — RAG 检索增强生成](../../../13.story/36-rag-retrieval-augmented-generation.md) — 用阿明餐厅串起 RAG 的入库、检索与回答全流程。
 
 ---
 

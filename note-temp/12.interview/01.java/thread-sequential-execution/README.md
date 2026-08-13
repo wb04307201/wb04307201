@@ -10,7 +10,7 @@ question:
 
 # 三个线程 T1、T2、T3 怎么确保它们按顺序执行？
 
-> 一句话定位：**Java 面试经典 Top 10**。考察的不是"会用 join"，而是**3 种语义**（串行 / 分支 / 汇合）+ **8 种方案对比** + **实战选型**。深度原理见 [主模块深度章节](../../../../note/01.java/concurrency/thread-basics/sequential-execution.md)。
+> 一句话定位：**Java 面试经典 Top 10**。考察的不是"会用 join"，而是**3 种语义**（串行 / 分支 / 汇合）+ **8 种方案对比** + **实战选型**。深度原理见 [主模块深度章节](../../../01.java-and-jvm/03-concurrency/thread-basics/sequential-execution.md)。
 
 > **系列定位**：高频 Java 面试题（校招 / 社招均考）。考察工程化判断力 + 多线程协作能力。配套同栏目兄弟题：[ThreadPool 面试题](../thread-pool/README.md) / [ThreadLocal 面试题](../threadlocal/README.md)。
 
@@ -240,10 +240,10 @@ CompletableFuture.allOf(t1, t2)
 ## 相关章节
 
 **主模块**：
-- [三个线程按顺序执行深度章节](../../../../note/01.java/concurrency/thread-basics/sequential-execution.md) — 8 方案对比 + 实战模板 + 选型决策树
-- [Thread 基础（thread-basics/README）](../../../../note/01.java/concurrency/thread-basics/README.md) — `Thread.join()` / 中断机制
-- [JUC 工具类](../../../../note/01.java/concurrency/utilities/README.md) — CountDownLatch / CyclicBarrier / Semaphore
-- [CompletableFuture 深度章节](../../../../note/01.java/concurrency/completablefuture/README.md) — 异步编排全貌
+- [三个线程按顺序执行深度章节](../../../01.java-and-jvm/03-concurrency/thread-basics/sequential-execution.md) — 8 方案对比 + 实战模板 + 选型决策树
+- [Thread 基础（thread-basics/README）](../../../01.java-and-jvm/03-concurrency/thread-basics/README.md) — `Thread.join()` / 中断机制
+- [JUC 工具类](../../../01.java-and-jvm/03-concurrency/utilities/README.md) — CountDownLatch / CyclicBarrier / Semaphore
+- [CompletableFuture 深度章节](../../../01.java-and-jvm/03-concurrency/completablefuture/README.md) — 异步编排全貌
 
 **同栏目（01.java 高频面试题）**：
 - [ThreadPool 为什么用线程池？](../thread-pool/README.md) — 线程池原理
@@ -251,7 +251,7 @@ CompletableFuture.allOf(t1, t2)
 - [AQS 是什么？](../aqs/README.md) — 锁底层原理
 
 **主模块其他相关**：
-- [JUC 锁](../../../../note/01.java/concurrency/juc-locks/README.md) — ReentrantLock / Condition
+- [JUC 锁](../../../01.java-and-jvm/03-concurrency/juc-locks/README.md) — ReentrantLock / Condition
 
 ---
 

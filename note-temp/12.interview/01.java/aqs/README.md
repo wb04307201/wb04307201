@@ -29,7 +29,7 @@ Doug Lea 用一个抽象框架，就支撑起了整个 `java.util.concurrent.loc
 
 ## 一、核心原理
 
-> 📚 **前置知识**：[JUC 锁](../../../../note/01.java/concurrency/juc-locks/README.md) | [volatile](../../../../note/01.java/concurrency/volatile/README.md)
+> 📚 **前置知识**：[JUC 锁](../../../01.java-and-jvm/03-concurrency/juc-locks/README.md) | [volatile](../../../01.java-and-jvm/03-concurrency/volatile/README.md)
 
 AQS（AbstractQueuedSynchronizer）由 Doug Lea 设计，其核心思想是将同步状态的原子操作与线程排队解耦。
 
@@ -284,9 +284,9 @@ class OneShotLatch {
 
 - 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
 - 相关主题：
-  - [ReentrantLock](../../../../note/01.java/concurrency/juc-locks/README.md) — ReentrantLock 源码解析
-  - [JUC 工具类](../../../../note/01.java/concurrency/utilities/README.md) — JUC 工具类汇总
-  - [Java 内存模型](../../../../note/01.java/concurrency/jmm/README.md) — Java 内存模型与 volatile
+  - [ReentrantLock](../../../01.java-and-jvm/03-concurrency/juc-locks/README.md) — ReentrantLock 源码解析
+  - [JUC 工具类](../../../01.java-and-jvm/03-concurrency/utilities/README.md) — JUC 工具类汇总
+  - [Java 内存模型](../../../01.java-and-jvm/03-concurrency/jmm/README.md) — Java 内存模型与 volatile
 
 ## 相关章节
 

@@ -370,8 +370,8 @@ WebSocket 连接 → Lambda（长连接）→ 实时通信
 
 ## 相关章节
 
-- [Kubernetes 容器编排](../../../../05.tools/kubernetes/README.md) — Serverless 的互补方案
-- [消息队列](../../../../07.workflow/apache-eventmesh/README.md) — 事件驱动架构的核心组件
+- [Kubernetes 容器编排](../../../../07.devops-and-tools/01-tools/kubernetes/README.md) — Serverless 的互补方案
+- [消息队列](../../../../07.devops-and-tools/02-workflow/apache-eventmesh/README.md) — 事件驱动架构的核心组件
 - [微服务架构](../../system-design-basics/microservices/README.md) — Serverless 的适用场景
 
 ---

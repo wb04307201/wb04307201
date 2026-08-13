@@ -10,7 +10,7 @@ question:
 
 # Error 和 Exception 的区别深度剖析
 
-> 一句话定位：Throwable 的两条分支决定了"能不能救"和"该不该救" —— 搞混了轻则代码冗余，重则掩盖 JVM 致命故障。完整概念见 [异常](../../../../note/01.java/concepts/exception/README.md)。
+> 一句话定位：Throwable 的两条分支决定了"能不能救"和"该不该救" —— 搞混了轻则代码冗余，重则掩盖 JVM 致命故障。完整概念见 [异常](../../../01.java-and-jvm/01-language/exception/README.md)。
 
 > **系列定位**：经典 Java 面试题（异常处理、JVM 高频）。考察的不是"Error 严重 Exception 不严重"，而是 **类层次设计意图** + **JVM 行为差异** + **可恢复性判断** + **实战反模式**。
 
@@ -255,7 +255,7 @@ public class MyMegaThrowable extends Throwable { }    // 更不要这样做
 
 - 同栏目：[`final/finally/finalize`](../final-finally-finalize/README.md) — finally 块在 Error 场景下的执行行为
 - 🆕 同栏目：[`try-catch 性能`](../try-catch-performance/README.md) — 正常路径零开销 / fillInStackTrace / OmitStackTraceInFastThrow
-- 主模块：[`异常体系`](../../../../note/01.java/concepts/exception/README.md) — Java 异常完整知识体系
+- 主模块：[`异常体系`](../../../01.java-and-jvm/01-language/exception/README.md) — Java 异常完整知识体系
 - 关联面试题：[`JVM 内存区域`](../jvm-memory/README.md) — OutOfMemoryError 的内存模型背景
 
 ---

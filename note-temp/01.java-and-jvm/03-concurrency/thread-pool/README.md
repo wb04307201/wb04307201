@@ -840,4 +840,4 @@ public class ThreadPoolConfig {
 
 ## 反向链
 
-- [异步 vs 多线程](../../../../note/13.split-hairs/01.java/async-vs-multithread/README.md) — 概念辨析：异步 ≠ 多线程（线程池 + Future.get() 是多线程但同步）
+- [异步 vs 多线程](../../../12.interview/01.java/async-vs-multithread/README.md) — 概念辨析：异步 ≠ 多线程（线程池 + Future.get() 是多线程但同步）

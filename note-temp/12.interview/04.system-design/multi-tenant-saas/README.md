@@ -10,7 +10,7 @@ question:
 
 # 多租户 SaaS 系统设计 —— 6 大隔离模型 + 4 大应用层关注点 + 5 大陷阱
 
-> 一句话定位：**多租户不是"加分项"——是 SaaS 商业模型的工程前提**。完整深度见 [主模块 multi-tenant-architecture 章节](../../../../note/04.system-design/01-foundation/system-design-basics/multi-tenant-architecture/README.md)。
+> 一句话定位：**多租户不是"加分项"——是 SaaS 商业模型的工程前提**。完整深度见 [主模块 multi-tenant-architecture 章节](../../../06.distributed-systems/01-foundation/system-design-basics/multi-tenant-architecture/README.md)。
 
 > **系列定位**：系统设计高频题（阿里云 / 钉钉 / 飞书 / Notion / Salesforce 全部考过）。考察的不是"什么是多租户"，而是 **6 大数据隔离模型选型 + 4 大应用层关注点 + 5 大反模式 + 实生产陷阱**。
 
@@ -215,10 +215,10 @@ Q5：贵司 SaaS 计费是按订阅还是按用量？
 
 | 章节 | 核心考点 | 频率 |
 |------|---------|------|
-| [cap-theorem](../../../../note/04.system-design/02-distributed/cap-and-base/README.md) | CAP / BASE 一致性权衡 | ⭐⭐⭐⭐ |
+| [cap-theorem](../../../06.distributed-systems/02-distributed/cap-and-base/README.md) | CAP / BASE 一致性权衡 | ⭐⭐⭐⭐ |
 | [circuit-breaker](../circuit-breaker/README.md) | 熔断降级与故障隔离 | ⭐⭐⭐⭐ |
-| [distributed-id](../../../../note/04.system-design/02-distributed/distributed-id/README.md) | 雪花 / Leaf / 号段 | ⭐⭐⭐⭐⭐ |
-| [distributed-transaction](../../../../note/04.system-design/02-distributed/distributed-transaction/README.md) | Saga / Seata / TCC | ⭐⭐⭐⭐⭐ |
+| [distributed-id](../../../06.distributed-systems/02-distributed/distributed-id/README.md) | 雪花 / Leaf / 号段 | ⭐⭐⭐⭐⭐ |
+| [distributed-transaction](../../../06.distributed-systems/02-distributed/distributed-transaction/README.md) | Saga / Seata / TCC | ⭐⭐⭐⭐⭐ |
 | [idempotency](../idempotency/README.md) | 幂等键 / 状态机 | ⭐⭐⭐⭐ |
 | [microservices-vs-monolith](../microservices-vs-monolith/README.md) | 微服务 6 大优势 | ⭐⭐⭐⭐⭐ |
 | [product-search](../product-search/README.md) | 商品搜索 4 层架构 | ⭐⭐⭐⭐ |
@@ -229,11 +229,11 @@ Q5：贵司 SaaS 计费是按订阅还是按用量？
 
 ## 🔗 深度版（主模块）
 
-- [04.system-design · multi-tenant-architecture](../../../../note/04.system-design/01-foundation/system-design-basics/multi-tenant-architecture/README.md) — 6 大隔离模型 + 4 大应用层 + 5 反模式 + PostgreSQL RLS + 飞书/钉钉/Salesforce 生产实践
+- [04.system-design · multi-tenant-architecture](../../../06.distributed-systems/01-foundation/system-design-basics/multi-tenant-architecture/README.md) — 6 大隔离模型 + 4 大应用层 + 5 反模式 + PostgreSQL RLS + 飞书/钉钉/Salesforce 生产实践
 
 ## 🔗 餐厅叙事（12.story）
 
-- [12.story · 19-saas-multitenant](../../../../note/12.story/18-saas-multitenant.md) —— 阿明的加盟帝国：架构从自用到 SaaS 的多租户化
+- [12.story · 19-saas-multitenant](../../../13.story/18-saas-multitenant.md) —— 阿明的加盟帝国：架构从自用到 SaaS 的多租户化
 
 ---
 

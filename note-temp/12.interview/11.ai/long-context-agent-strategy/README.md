@@ -10,7 +10,7 @@ question:
 
 # Agent 长上下文处理：6 大策略选型深挖
 
-> 一句话定位：Agent 长上下文不是单一策略能解决——必须 Chunking / RAG / Memory / Sliding Window / Sub-Agents / Long-Context Models 6 大策略组合。完整深度见 [主模块 agent-context 深度专题](../../../../note/11.ai/04-architecture/agent-context/README.md)。
+> 一句话定位：Agent 长上下文不是单一策略能解决——必须 Chunking / RAG / Memory / Sliding Window / Sub-Agents / Long-Context Models 6 大策略组合。完整深度见 [主模块 agent-context 深度专题](../../../09.ai-applications/agent/agent-context/README.md)。
 
 > **系列定位**：经典 AI Agent 架构面试题（字节 / 阿里 / 美团 / Anthropic 高频）。考察的不是「哪个策略最好」，而是 **6 策略场景化组合能力** + **Lost in Middle 等 5 大反模式** + **何时反选 RAG / Long-Context**。
 
@@ -58,7 +58,7 @@ question:
 | 5 | **Sub-Agents 任务拆分** | 拆子任务给子 Agent | 高 |
 | 6 | **Long-Context LLMs 直塞** | 用 100k+ 上下文模型 | 中 |
 
-完整对比见 [07-decision-tree](../../../../note/11.ai/04-architecture/agent-context/07-decision-tree.md)。
+完整对比见 [07-decision-tree](../../../09.ai-applications/agent/agent-context/07-decision-tree.md)。
 
 ### 1.3 Lost in the Middle 现象
 
@@ -368,14 +368,14 @@ Long-Context 1M + RAG 双轨 + Sub-Agents + Memory
 
 ### 主模块深度专题
 
-- [11.ai agent-context 总目录](../../../../note/11.ai/04-architecture/agent-context/README.md)
-- [01-chunking](../../../../note/11.ai/04-architecture/agent-context/01-chunking.md) —— 文本切片 4 大策略
-- [02-rag-in-agent](../../../../note/11.ai/04-architecture/agent-context/02-rag-in-agent.md) —— RAG 在 Agent 角色
-- [03-memory-strategies](../../../../note/11.ai/04-architecture/agent-context/03-memory-strategies.md) —— 4 层记忆架构
-- [04-sliding-window-attention](../../../../note/11.ai/04-architecture/agent-context/04-sliding-window-attention.md) —— Sliding Window Attention
-- [05-sub-agents-decomposition](../../../../note/11.ai/04-architecture/agent-context/05-sub-agents-decomposition.md) —— Multi-Agent 拆分
-- [06-long-context-models](../../../../note/11.ai/04-architecture/agent-context/06-long-context-models.md) —— Long-Context Models 实测
-- [07-decision-tree](../../../../note/11.ai/04-architecture/agent-context/07-decision-tree.md) —— 6 策略决策树
+- [11.ai agent-context 总目录](../../../09.ai-applications/agent/agent-context/README.md)
+- [01-chunking](../../../09.ai-applications/agent/agent-context/01-chunking.md) —— 文本切片 4 大策略
+- [02-rag-in-agent](../../../09.ai-applications/agent/agent-context/02-rag-in-agent.md) —— RAG 在 Agent 角色
+- [03-memory-strategies](../../../09.ai-applications/agent/agent-context/03-memory-strategies.md) —— 4 层记忆架构
+- [04-sliding-window-attention](../../../09.ai-applications/agent/agent-context/04-sliding-window-attention.md) —— Sliding Window Attention
+- [05-sub-agents-decomposition](../../../09.ai-applications/agent/agent-context/05-sub-agents-decomposition.md) —— Multi-Agent 拆分
+- [06-long-context-models](../../../09.ai-applications/agent/agent-context/06-long-context-models.md) —— Long-Context Models 实测
+- [07-decision-tree](../../../09.ai-applications/agent/agent-context/07-decision-tree.md) —— 6 策略决策树
 
 ### 同栏目（11.ai）姐妹篇
 
@@ -388,14 +388,14 @@ Long-Context 1M + RAG 双轨 + Sub-Agents + Memory
 ### 主模块兄弟
 
 - [11.ai/02-technology-stack/context-engineering](../../../../note/11.ai/02-technology-stack/context-engineering/README.md) —— Context Engineering 综述
-- [11.ai/04-architecture/agent-memory](../../../../note/11.ai/04-architecture/agent-memory/README.md) —— Agent 记忆架构
-- [11.ai/04-architecture/agent-architecture](../../../../note/11.ai/04-architecture/agent-architecture/README.md) —— Agent 架构总览
+- [11.ai/04-architecture/agent-memory](../../../09.ai-applications/agent/agent-memory/README.md) —— Agent 记忆架构
+- [11.ai/04-architecture/agent-architecture](../../../09.ai-applications/agent/agent-architecture/README.md) —— Agent 架构总览
 
 ### 实战姐妹（12.story）
 
-- [12.story/07-from-chef-to-ceo](../../../../note/12.story/07-from-chef-to-ceo.md) —— 阿明餐厅 80 家连锁"长菜单与多订单"管理实战
-- [12.story/39-ai-private-deployment](../../../../note/12.story/39-ai-private-deployment.md) —— 私有化部署决策
-- [12.story/30-agent-harness](../../../../note/12.story/30-agent-harness.md) —— Agent Harness 工程
+- [12.story/07-from-chef-to-ceo](../../../13.story/07-from-chef-to-ceo.md) —— 阿明餐厅 80 家连锁"长菜单与多订单"管理实战
+- [12.story/39-ai-private-deployment](../../../13.story/39-ai-private-deployment.md) —— 私有化部署决策
+- [12.story/30-agent-harness](../../../13.story/30-agent-harness.md) —— Agent Harness 工程
 
 ---
 

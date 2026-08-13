@@ -24,7 +24,7 @@ question:
 
 ## 一、核心原理
 
-> 📚 **前置知识**：[String](../../../../note/01.java/concepts/string/README.md) | [JVM 内存](../../../../note/01.java/jvm/README.md)
+> 📚 **前置知识**：[String](../../../01.java-and-jvm/01-language/string/README.md) | [JVM 内存](../../../01.java-and-jvm/02-jvm/README.md)
 
 `String str = new String("123");` 是 Java 面试中的经典题目，考察对**字符串常量池（String Pool）**、**堆内存布局**和**JVM 优化机制**的理解。答案取决于执行时的上下文环境：
 
@@ -233,8 +233,8 @@ if (actual.equals("expected")) { ... }
 
 ## 六、交叉引用
 
-- String 源码分析见 [Java 核心类库](../../../../note/01.java/concepts/string/README.md)
-- StringBuilder 性能分析见 [集合与工具类](../../../../note/01.java/collection/README.md)
+- String 源码分析见 [Java 核心类库](../../../01.java-and-jvm/01-language/string/README.md)
+- StringBuilder 性能分析见 [集合与工具类](../../../01.java-and-jvm/collection/README.md)
 
 ## 相关章节
 

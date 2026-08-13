@@ -260,15 +260,15 @@ data: {"text":"你好"} ← 数据（必填，可多行）
 
 ## 八、相关章节
 
-- 面试版：[SSE vs WebSocket 面试题](../../../../../note/13.split-hairs/02.computer-basics/sse-vs-websocket/README.md) — 面试话术 + 陷阱 + 90 秒答案
+- 面试版：[SSE vs WebSocket 面试题](../../../../12.interview/02.computer-basics/sse-vs-websocket/README.md) — 面试话术 + 陷阱 + 90 秒答案
 - HTTP 基础：[HTTP 协议](../../02-http/README.md) — HTTP/1.1 长连接与 chunked 传输
-- 前端推送：[网页端消息推送](../../../../../note/13.split-hairs/09.front-end/message/README.md) — 轮询/SSE/WebSocket/WebTransport 全景
-- Spring 实现：[WebFlux SSE](../../../../06.spring/02-web/webflux/sse.md) — Spring 服务端 SSE 实现
+- 前端推送：[网页端消息推送](../../../../12.interview/09.front-end/message/README.md) — 轮询/SSE/WebSocket/WebTransport 全景
+- Spring 实现：[WebFlux SSE](../../../../04.spring-backend/02-web/webflux/sse.md) — Spring 服务端 SSE 实现
 
 ---
 
 > 📅 2026-07-09 · 网络协议 · SSE vs WebSocket · 深度对比
 
-- 实战落地：[消息已读未读功能设计](../../../../../note/13.split-hairs/04.system-design/message-read-status/README.md) — 推送协议在 IM 已读未读场景的实际落地
+- 实战落地：[消息已读未读功能设计](../../../../12.interview/04.system-design/message-read-status/README.md) — 推送协议在 IM 已读未读场景的实际落地
 
 ← [返回: 网络协议](../README.md)

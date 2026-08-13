@@ -313,7 +313,7 @@ public void exportExcel() {
 
 ## 📚 深度阅读
 
-- [主模块深度文章](../../../../note/01.java/concurrency/excel-export-oom/README.md) — 完整代码示例 + 性能对比 + 生产环境注意事项
+- [主模块深度文章](../../../01.java-and-jvm/03-concurrency/excel-export-oom/README.md) — 完整代码示例 + 性能对比 + 生产环境注意事项
 - [线程池 7 大参数](../thread-pool/) — ThreadPoolExecutor 核心参数详解
 - [JVM 内存区域](../jvm-memory/) — JVM 内存模型 + GC 算法
 

@@ -10,7 +10,7 @@ question:
 
 # Transformer 架构 — Self-Attention 面试深挖
 
-> 一句话定位：Transformer 是 2017 年 Google "Attention is All You Need" 提出的架构，核心创新是 Self-Attention。完整概念见 [主模块 Transformer](../../../../note/11.ai/01-fundamentals/transformer/README.md)。
+> 一句话定位：Transformer 是 2017 年 Google "Attention is All You Need" 提出的架构，核心创新是 Self-Attention。完整概念见 [主模块 Transformer](../../../08.ai-foundations/03-transformer/README.md)。
 
 ---
 
@@ -169,7 +169,7 @@ GQA（省 KV 头数）× Flash Attention（省 attention 显存）× PagedAttent
 
 ---
 
-- 兄弟：[KV Cache 显存优化详解](../../../../note/13.split-hairs/11.ai/llm-inference/README.md) / [PagedAttention 原理](../../../../note/13.split-hairs/11.ai/llm-inference/README.md)
+- 兄弟：[KV Cache 显存优化详解](../llm-inference/README.md) / [PagedAttention 原理](../llm-inference/README.md)
 
 ---
 
@@ -201,10 +201,10 @@ GQA（省 KV 头数）× Flash Attention（省 attention 显存）× PagedAttent
 
 ## 七、深度阅读
 
-- 主模块：[Transformer 架构](../../../../note/11.ai/01-fundamentals/transformer/README.md)
+- 主模块：[Transformer 架构](../../../08.ai-foundations/03-transformer/README.md)
 - 关联：[Token 与计费](../../../../note/11.ai/02-technology-stack/token-billing/README.md)
-- 应用：[RAG](../../../../note/11.ai/08-llmops/01-rag-vs-finetuning/README.md)
-- **推理工程进阶**：[LLM 推理优化](../../../../note/13.split-hairs/11.ai/llm-inference/README.md)
+- 应用：[RAG](../../../09.ai-applications/rag/03-rag-vs-finetuning.md)
+- **推理工程进阶**：[LLM 推理优化](../llm-inference/README.md)
 
 ---
 

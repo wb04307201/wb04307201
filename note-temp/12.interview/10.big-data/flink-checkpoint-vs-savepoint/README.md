@@ -201,7 +201,7 @@ flink run -s hdfs:///savepoints/upgrade-v2/savepoint-xxxxx myapp-v2.jar
 
 - **同栏目**：[`Kafka Exactly-Once`](../kafka-exactly-once/README.md) — 端到端 Exactly-Once 需要 Flink + Kafka 联动
 - **同栏目**：[`Spark Shuffle 优化`](../spark-shuffle-optimization/README.md) — 批处理场景的容错对比
-- **主模块**：[`03.database`](../../../../note/03.database/README.md) — 数据库事务与 ACID 基础
+- **主模块**：[`03.database`](../../../03.data-stack/01-database/README.md) — 数据库事务与 ACID 基础
 
 ---
 

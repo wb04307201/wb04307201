@@ -161,7 +161,7 @@ npm run dev:mp-weixin
 ## 交叉引用
 - [`08-cross-platform/`](../) — 跨端总览
 - [`08-cross-platform/react-native/`](../react-native/) — RN（另一种跨端形态）
-- [`12.story/20-multiplatform-architecture.md`](../../../../note/12.story/20-multiplatform-architecture.md) — 阿明餐厅多端架构
+- [`12.story/20-multiplatform-architecture.md`](../../../13.story/20-multiplatform-architecture.md) — 阿明餐厅多端架构
 
 ## 可访问性（a11y）
 小程序的 a11y 支持相对 Web 较弱，但仍需关注：

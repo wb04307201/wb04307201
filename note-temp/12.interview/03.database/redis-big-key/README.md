@@ -24,7 +24,7 @@ Redis 是**单线程**的。操作这个大 key 时，比如 `DEL`、`HGETALL`�
 
 ---
 
-> 📚 **前置知识**：[Redis](../../../../note/03.database/07-redis/README.md)
+> 📚 **前置知识**：[Redis](../../../03.data-stack/01-database/07-redis/README.md)
 
 ## 一、核心原理
 
@@ -292,8 +292,8 @@ groups:
 ## 七、交叉引用
 
 - 主模块：[`03.database`](../../../../note/03.database/) — 数据库知识体系
-- [Redis](../../../../note/03.database/07-redis/README.md) — Redis 详解
-- [分布式锁](../../../../note/04.system-design/02-distributed/distributed-lock/README.md) — 分布式锁实现
+- [Redis](../../../03.data-stack/01-database/07-redis/README.md) — Redis 详解
+- [分布式锁](../../../06.distributed-systems/02-distributed/distributed-lock/README.md) — 分布式锁实现
 
 ## 相关章节
 

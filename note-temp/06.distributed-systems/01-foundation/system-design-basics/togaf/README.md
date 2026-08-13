@@ -153,6 +153,6 @@ README（你在这里）  →  第一章（ADM 全貌）
 
 - [functional-components](../it4it/functional-components.md)
 - [in-practice](../it4it/in-practice.md)
-- [02-system-architecture-evolution](../../../../12.story/02-system-architecture-evolution.md)
+- [02-system-architecture-evolution](../../../../13.story/02-system-architecture-evolution.md)
 
 ← [返回系统设计基础](../README.md)

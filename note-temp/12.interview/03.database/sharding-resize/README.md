@@ -10,7 +10,7 @@ question:
 
 # 分表后数据膨胀如何调整分表策略
 
-> 经典数据库面试题（分库分表、架构演进高频）。考察的不是"分表怎么分"，而是 **分完之后怎么扩** —— 在线 resharding 方案设计 + 数据一致性保障 + 业务无感切换。完整概念见 [分库分表](../../../../note/04.system-design/04-high-performance/database-optimization/db-sharding/README.md)。
+> 经典数据库面试题（分库分表、架构演进高频）。考察的不是"分表怎么分"，而是 **分完之后怎么扩** —— 在线 resharding 方案设计 + 数据一致性保障 + 业务无感切换。完整概念见 [分库分表](../../../06.distributed-systems/04-high-performance/database-optimization/db-sharding/README.md)。
 
 > **系列定位**：中高级后端面试题（架构师必考）。考察的是"从 4 库扩到 8 库"这种**真实生产场景**的工程能力，而不是纸上谈兵。
 
@@ -41,7 +41,7 @@ question:
 | **磁盘空间** | > 80% | 扩容前预留空间 |
 | **写入 TPS** | 接近单表极限 | 锁竞争加剧 |
 
-**扩容前确认**：先排查是否是"假膨胀"—— 大量冷数据？→ 先做[冷热分离](../../../../note/04.system-design/04-high-performance/database-optimization/cold-hot-data-separation/README.md)，可能不需要扩容。
+**扩容前确认**：先排查是否是"假膨胀"—— 大量冷数据？→ 先做[冷热分离](../../../06.distributed-systems/04-high-performance/database-optimization/cold-hot-data-separation/README.md)，可能不需要扩容。
 
 ## 二、5 种扩容方案对比
 
@@ -207,8 +207,8 @@ for each binlogEvent:
 
 ## 八、相关章节
 
-- 主模块：[`分库分表`](../../../../note/04.system-design/04-high-performance/database-optimization/db-sharding/README.md) — 分库分表全景（垂直/水平/分片算法/分片键选择）
-- 同模块：[`数据迁移与同步`](../../../../note/03.database/10-data-migration/README.md) — DataX / Canal / Flink CDC 迁移工具链
+- 主模块：[`分库分表`](../../../06.distributed-systems/04-high-performance/database-optimization/db-sharding/README.md) — 分库分表全景（垂直/水平/分片算法/分片键选择）
+- 同模块：[`数据迁移与同步`](../../../03.data-stack/01-database/10-data-migration/README.md) — DataX / Canal / Flink CDC 迁移工具链
 - 同栏目：[`大事务的危害与拆分`](../mysql-large-transaction/README.md) — 迁移过程中的事务控制
 - 同栏目：[`MySQL 主从复制延迟`](../replication-lag/README.md) — 增量同步延迟问题
 - 同栏目：[**🆕 分库分表分布式事务**](../sharding-distributed-tx/) — 分库后跨库事务 4 大方案 + Seata + 本地消息表

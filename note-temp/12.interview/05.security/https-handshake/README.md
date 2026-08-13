@@ -10,7 +10,7 @@ question:
 
 # HTTPS 握手过程有哪些性能优化点？—— TLS 1.2 vs 1.3 与连接复用
 
-> 一句话定位：TLS 1.2 完整握手 **2-RTT**，TLS 1.3 降到 **1-RTT**，Session Resumption + 0-RTT 可到 **0-RTT**。完整 TLS 协议见 [主模块加密通信](../../../../note/04.system-design/05-security/encryption/README.md)。
+> 一句话定位：TLS 1.2 完整握手 **2-RTT**，TLS 1.3 降到 **1-RTT**，Session Resumption + 0-RTT 可到 **0-RTT**。完整 TLS 协议见 [主模块加密通信](../../../06.distributed-systems/05-security/encryption/README.md)。
 
 > **系列定位**：经典性能优化面试题（字节 / 美团高频）。考察 **握手 RTT 优化** + **连接复用** + **OCSP Stapling**。
 
@@ -105,7 +105,7 @@ keepalive_timeout 65;
 
 - [传输加密 vs 存储加密](../encryption-at-rest-transit/README.md) — TLS 在加密体系中的定位
 - [CORS 预检请求优化](../cors-preflight/README.md) — 另一个 RTT 优化维度
-- [主模块 04.system-design/05-security](../../../../note/04.system-design/05-security/README.md) — 安全知识体系
+- [主模块 04.system-design/05-security](../../../06.distributed-systems/05-security/README.md) — 安全知识体系
 
 ---
 

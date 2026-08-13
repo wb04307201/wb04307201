@@ -358,6 +358,6 @@ SHOW TABLE STATUS LIKE 'users';        -- 查看数据量、索引大小
 
 ## 相关章节
 
-- 深度阅读：[`03.database`](../../../../note/03.database/README.md) — 主模块详细内容
+- 深度阅读：[`03.database`](../../../03.data-stack/01-database/README.md) — 主模块详细内容
 
 ← [返回数据库咬文嚼字](../README.md)

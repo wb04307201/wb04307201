@@ -338,8 +338,8 @@ add_header Content-Security-Policy "default-src 'self';" always;
 
 - 标准清单：[OWASP Top 10（2021）](../owasp-top10/README.md) — 10 大风险的权威索引与逐项防御
 - 接口防护：[API 安全](../api-security/README.md) — 签名 / 防重放 / 脱敏 / 限流 / 认证 / 校验
-- 前端视角：[`09.front-end/07-security`](../../../09.front-end/07-security/README.md) — XSS / CSRF / CSP 前端防御
-- 面试：[`13.split-hairs/04.system-design`](../../../13.split-hairs/04.system-design/README.md) — 系统设计面试题
+- 前端视角：[`09.front-end/07-security`](../../../05.frontend/07-security/README.md) — XSS / CSRF / CSP 前端防御
+- 面试：[`13.split-hairs/04.system-design`](../../../12.interview/04.system-design/README.md) — 系统设计面试题
 
 ---
 

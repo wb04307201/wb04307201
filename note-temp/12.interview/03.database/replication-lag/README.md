@@ -28,7 +28,7 @@ User u = userMapper.selectById(user.getId());  // null ？？？
 
 ---
 
-> 📚 **前置知识**：[MySQL](../../../../note/03.database/05-mysql/README.md)
+> 📚 **前置知识**：[MySQL](../../../03.data-stack/01-database/05-mysql/README.md)
 
 ## 一、核心原理
 
@@ -274,7 +274,7 @@ public Product getProductWithRetry(Long productId, int maxRetries) {
 ## 七、交叉引用
 
 - 主模块：[`03.database`](../../../../note/03.database/) — 数据库知识体系
-- 相关主题：[MySQL 核心知识](../../../../note/03.database/05-mysql/README.md)、[MVCC 原理](../mvcc/README.md)、[索引优化](../../../../note/03.database/04-index/README.md)
+- 相关主题：[MySQL 核心知识](../../../03.data-stack/01-database/05-mysql/README.md)、[MVCC 原理](../mvcc/README.md)、[索引优化](../../../../note/03.database/04-index/README.md)
 
 ## 相关章节
 

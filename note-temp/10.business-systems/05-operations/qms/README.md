@@ -683,7 +683,7 @@ QMS 项目 5 年 TCO 通常按以下比例拆分（参考 EAM 同类项目基准
 - [SCM 供应链管理](../../03-supply-chain/scm/README.md) — QMS 与供应商质量协同
 - [E-Signature 电子签](../e-signature/README.md) — 检验报告 / 体系文件电子签署
 - [OA 办公自动化](../oa/README.md) — 质量审批流 / CAPA 流程协同
-- [13.split-hairs 面试题](../../../../note/13.split-hairs/README.md) — 质量管理相关面试题
+- [13.split-hairs 面试题](../../../12.interview/README.md) — 质量管理相关面试题
 
 ---
 

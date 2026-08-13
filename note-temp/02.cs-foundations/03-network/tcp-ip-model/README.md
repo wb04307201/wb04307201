@@ -99,7 +99,7 @@ module:
 
 ---
 
-**相关面试题**：[`TCP 三次握手四次挥手`](../../../../note/13.split-hairs/02.computer-basics/tcp-handshake-teardown/README.md) — 状态机 + TIME_WAIT/CLOSE_WAIT 排查
+**相关面试题**：[`TCP 三次握手四次挥手`](../../../12.interview/02.computer-basics/tcp-handshake-teardown/README.md) — 状态机 + TIME_WAIT/CLOSE_WAIT 排查
 
 
 ## 相关章节

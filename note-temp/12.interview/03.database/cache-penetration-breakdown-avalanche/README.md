@@ -27,7 +27,7 @@ question:
 
 ---
 
-> 📚 **前置知识**：[Redis](../../../../note/03.database/07-redis/README.md) | [缓存](../../../../note/03.database/06-cache/README.md)
+> 📚 **前置知识**：[Redis](../../../03.data-stack/01-database/07-redis/README.md) | [缓存](../../../03.data-stack/01-database/06-cache/README.md)
 
 ## 一、核心概念
 
@@ -366,12 +366,12 @@ public User getUserFallback(Long userId, BlockException e) {
 ## 八、交叉引用
 
 - 主模块：[`03.database`](../../../../note/03.database/) — 数据库知识体系
-- [Redis](../../../../note/03.database/07-redis/README.md) — Redis 详解
+- [Redis](../../../03.data-stack/01-database/07-redis/README.md) — Redis 详解
 
 ## 相关章节
 
-- 深度阅读：[`03.database`](../../../../note/03.database/README.md) — 主模块详细内容
+- 深度阅读：[`03.database`](../../../03.data-stack/01-database/README.md) — 主模块详细内容
 
 
-- [cache-degradation-and-recovery](../../../../note/06.spring/03-data/cache/cache-degradation-and-recovery.md)
+- [cache-degradation-and-recovery](../../../04.spring-backend/04-data/cache/cache-degradation-and-recovery.md)
 ← [返回数据库咬文嚼字](../README.md)

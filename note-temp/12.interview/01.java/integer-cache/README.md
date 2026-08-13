@@ -40,7 +40,7 @@ System.out.println(a == b); // 这次呢？
 
 ## 一、核心原理
 
-> 📚 **前置知识**：[基本数据类型与包装类](../../../../note/01.java/concepts/data-types/README.md)
+> 📚 **前置知识**：[基本数据类型与包装类](../../../01.java-and-jvm/01-language/data-types/README.md)
 
 1. **缓存范围**
     - 默认缓存 **-128 到 127** 之间的整数对象。该范围基于实际开发中高频使用的小整数场景设计。
@@ -217,7 +217,7 @@ System.out.println(System.currentTimeMillis() - start);
 4. 缓存带来的性能提升原理
 5. 常见的Integer比较陷阱## 相关章节
 
-- 深度阅读：[`01.java/核心概念`](../../../../note/01.java/concepts/README.md) — 基本类型、自动装箱/拆箱
+- 深度阅读：[`01.java/核心概念`](../../../01.java-and-jvm/01-language/README.md) — 基本类型、自动装箱/拆箱
 - 相关：[`13.split-hairs/new-string`](../new-string/README.md) — 字符串常量池（同类型考点）
 
 ← [返回: 咬文嚼字 · integer-cache](../README.md)

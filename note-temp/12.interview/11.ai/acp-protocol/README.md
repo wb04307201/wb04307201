@@ -232,7 +232,7 @@ question:
 ### 6.3 关联主模块
 
 - **Agent 通信协议家族**：MCP（Anthropic）/ ACP（Zed）/ A2A（Google）/ ANP（社区）
-- **Coding Agent 集成**：[`coding-agents`](../../../../note/11.ai/03-engineering/coding-agents/README.md) — 4 个 Coding Agent 横向对比
+- **Coding Agent 集成**：[`coding-agents`](../../../09.ai-applications/agent/coding-agents/README.md) — 4 个 Coding Agent 横向对比
 
 ---
 

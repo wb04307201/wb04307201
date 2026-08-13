@@ -294,7 +294,7 @@ class Component {
 ## 七、交叉引用
 
 - 主模块：[`09.front-end`](../../../../note/09.front-end/) — 前端知识体系
-- [语言基础](../../../../note/09.front-end/02-language/README.md) — JavaScript 核心概念
+- [语言基础](../../../05.frontend/02-language/README.md) — JavaScript 核心概念
 
 ## 相关章节
 

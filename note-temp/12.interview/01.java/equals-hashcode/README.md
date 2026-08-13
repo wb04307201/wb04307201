@@ -46,7 +46,7 @@ System.out.println(set.size()); // 2 ？？？明明是同一个人！
 
 ## 一、核心原理
 
-> 📚 **前置知识**：[Object 类](../../../../note/01.java/concepts/object/README.md) | [String](../../../../note/01.java/concepts/string/README.md)
+> 📚 **前置知识**：[Object 类](../../../01.java-and-jvm/01-language/object/README.md) | [String](../../../01.java-and-jvm/01-language/string/README.md)
 
 在 Java 中，对象比较存在三个维度的概念：`==` 运算符、`equals()` 方法以及 `hashCode()` 方法。理解三者的区别与联系，是避免集合类 Bug 的关键。
 
@@ -262,8 +262,8 @@ Java 规定：如果两个对象 `equals` 相等，它们的 `hashCode` 必须�
 ## 七、交叉引用
 
 - 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
-- [HashMap](../../../../note/01.java/collection/hashmap.md) — HashMap 底层原理详解
-- [String](../../../../note/01.java/concepts/string/README.md) — 字符串常量池与 intern 机制
+- [HashMap](../../../01.java-and-jvm/collection/hashmap.md) — HashMap 底层原理详解
+- [String](../../../01.java-and-jvm/01-language/string/README.md) — 字符串常量池与 intern 机制
 
 ## 相关章节
 

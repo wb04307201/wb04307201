@@ -10,7 +10,7 @@ question:
 
 # 设计一个商品搜索系统 —— 从 DB LIKE 到 Elasticsearch 完整方案
 
-> 一句话定位：**后端 / 架构面试经典系统设计题**。考察的不是"Elasticsearch 怎么用"，而是 **架构演进判断** + **搜索引擎原理** + **排序策略设计** + **数据一致性**。深度实战见 [主模块深度章节](../../../../note/04.system-design/04-high-performance/product-search/README.md)。
+> 一句话定位：**后端 / 架构面试经典系统设计题**。考察的不是"Elasticsearch 怎么用"，而是 **架构演进判断** + **搜索引擎原理** + **排序策略设计** + **数据一致性**。深度实战见 [主模块深度章节](../../../06.distributed-systems/04-high-performance/product-search/README.md)。
 
 > **系列定位**：高频系统设计题（社招必考）。配套兄弟题：[缓存一致性](../cache-consistency/README.md)、[分布式锁](../distributed-lock/README.md)。
 
@@ -236,7 +236,7 @@ ES 实现用 `function_score` query：
 
 ## 五、交叉引用
 
-- **深度实战**：[商品搜索系统设计](../../../../note/04.system-design/04-high-performance/product-search/README.md) — 架构演进 + 源码级实现
+- **深度实战**：[商品搜索系统设计](../../../06.distributed-systems/04-high-performance/product-search/README.md) — 架构演进 + 源码级实现
 - 🆕 **相关面试题**：[短链系统设计](../url-shortener/README.md) — Base62 + 发号器 + 302 重定向 + 缓存
 - **相关面试题**：[缓存一致性](../cache-consistency/README.md) — 搜索缓存失效策略
 - **相关面试题**：[分布式锁](../distributed-lock/README.md) — 并发写入保护

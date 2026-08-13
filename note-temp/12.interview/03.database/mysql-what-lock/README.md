@@ -27,7 +27,7 @@ MySQL 的锁机制很复杂——行锁、表锁、间隙锁、临键锁……�
 
 ---
 
-> 📚 **前置知识**：[MySQL](../../../../note/03.database/05-mysql/README.md) | [索引](../../../../note/03.database/04-index/README.md)
+> 📚 **前置知识**：[MySQL](../../../03.data-stack/01-database/05-mysql/README.md) | [索引](../../../../note/03.database/04-index/README.md)
 
 ## 一、核心原理
 
@@ -288,13 +288,13 @@ JOIN performance_schema.threads t ON w.blocking_thread_id = t.thread_id;
 
 ## 六、交叉引用
 
-- InnoDB 锁机制详解见 [MySQL 事务核心](../../../../note/03.database/03-transaction/README.md)
+- InnoDB 锁机制详解见 [MySQL 事务核心](../../../03.data-stack/01-database/03-transaction/README.md)
 - 索引设计与优化见 [B+树原理](../bplus-tree/README.md)
 - 事务隔离级别见 [隔离级别](../mysql-isolation/README.md)
 
 ## 相关章节
 
-- 深度阅读：[`03.database`](../../../../note/03.database/README.md) — 主模块详细内容
+- 深度阅读：[`03.database`](../../../03.data-stack/01-database/README.md) — 主模块详细内容
 
 ← [返回数据库咬文嚼字](../README.md)
 

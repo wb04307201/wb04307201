@@ -10,7 +10,7 @@ question:
 
 # OWASP Top 10 面试怎么答？—— 10 大安全风险速记与防御策略
 
-> 一句话定位：OWASP Top 10 是 Web 安全的"体检清单"——面试不是背 10 个名词，而是展示**风险评估能力**和**纵深防御思维**。完整 Web 安全见 [主模块 Web 安全](../../../../note/04.system-design/05-security/web-security/README.md)。
+> 一句话定位：OWASP Top 10 是 Web 安全的"体检清单"——面试不是背 10 个名词，而是展示**风险评估能力**和**纵深防御思维**。完整 Web 安全见 [主模块 Web 安全](../../../06.distributed-systems/05-security/web-security/README.md)。
 
 > **系列定位**：经典安全面试题（大厂必问）。考察 **Top 3 风险深度理解** + **防御方案落地** + **安全左移工程实践**。
 
@@ -112,7 +112,7 @@ SSRF 3 个：图片上传接口接受 URL，可探测内网
 - [令牌桶 vs 漏桶](../rate-limiting-algorithms/README.md) — API 安全与 DDoS 防护
 - [统一权限控制系统](../access-control-design/README.md) — A01 访问控制
 - [单点登录 6 大方案](../sso/README.md) — A07 认证架构
-- [主模块 04.system-design/05-security](../../../../note/04.system-design/05-security/README.md) — 安全知识体系
+- [主模块 04.system-design/05-security](../../../06.distributed-systems/05-security/README.md) — 安全知识体系
 
 ---
 

@@ -198,7 +198,7 @@ put 流程：
 
 - [HashMap 扩容机制](../hashmap-resizing/) — 扩容原理 + Java 8 高位迁移算法
 - [ConcurrentHashMap 原理](../concurrent-hashmap/) — JDK 7 分段锁 vs JDK 8 CAS+synchronized
-- 主模块：[`HashMap 原理`](../../../../note/01.java/collection/hashmap.md) — HashMap 核心数据结构
+- 主模块：[`HashMap 原理`](../../../01.java-and-jvm/collection/hashmap.md) — HashMap 核心数据结构
 
 ## 相关章节
 

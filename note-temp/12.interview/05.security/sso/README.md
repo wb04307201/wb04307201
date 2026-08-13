@@ -10,7 +10,7 @@ question:
 
 # 单点登录（SSO）· 6 大方案选型深挖
 
-> 一句话定位：单点登录不是单一技术，是**设计目标**——6 大方案（Cookie 共享 / CAS / OAuth2 + OIDC / SAML 2.0 / JWT / 代理）的核心都是"**如何把首次登录态安全传递给其他子系统**"。完整深度见 [主模块 sso 专题](../../../../note/04.system-design/05-security/sso/README.md)。
+> 一句话定位：单点登录不是单一技术，是**设计目标**——6 大方案（Cookie 共享 / CAS / OAuth2 + OIDC / SAML 2.0 / JWT / 代理）的核心都是"**如何把首次登录态安全传递给其他子系统**"。完整深度见 [主模块 sso 专题](../../../06.distributed-systems/05-security/sso/README.md)。
 
 > **系列定位**：经典 Java 后端安全面试题（字节 / 阿里 / 美团 / 360 / 蚂蚁 出题率 80%+）。考察的不是"SSO 是什么"，而是 **6 方案场景化对比能力** + **OAuth2+OIDC 流程深度** + **Spring Security 实战** + **JWT 撤销机制**。
 
@@ -388,18 +388,18 @@ Keycloak 优势：
 
 ### 主模块深度专题
 
-- [sso 总目录](../../../../note/04.system-design/05-security/sso/README.md)
-- [01-sso-concept](../../../../note/04.system-design/05-security/sso/01-sso-concept.md) —— SSO 原理 + 3 大角色 + 6 反模式
-- [02-six-schemes-comparison](../../../../note/04.system-design/05-security/sso/02-six-schemes-comparison.md) —— Cookie/CAS/OAuth2/OIDC/SAML/JWT 详解
-- [03-spring-security-implementation](../../../../note/04.system-design/05-security/sso/03-spring-security-implementation.md) —— Spring Authorization Server 实战
-- [04-jwt-implementation](../../../../note/04.system-design/05-security/sso/04-jwt-implementation.md) —— JWT + Redis 黑名单实战
-- [05-selection-decision-tree](../../../../note/04.system-design/05-security/sso/05-selection-decision-tree.md) —— 5 分钟决策树
+- [sso 总目录](../../../06.distributed-systems/05-security/sso/README.md)
+- [01-sso-concept](../../../06.distributed-systems/05-security/sso/01-sso-concept.md) —— SSO 原理 + 3 大角色 + 6 反模式
+- [02-six-schemes-comparison](../../../06.distributed-systems/05-security/sso/02-six-schemes-comparison.md) —— Cookie/CAS/OAuth2/OIDC/SAML/JWT 详解
+- [03-spring-security-implementation](../../../06.distributed-systems/05-security/sso/03-spring-security-implementation.md) —— Spring Authorization Server 实战
+- [04-jwt-implementation](../../../06.distributed-systems/05-security/sso/04-jwt-implementation.md) —— JWT + Redis 黑名单实战
+- [05-selection-decision-tree](../../../06.distributed-systems/05-security/sso/05-selection-decision-tree.md) —— 5 分钟决策树
 
 ### 主模块兄弟
 
-- [04.system-design/05-security/oauth2-oidc](../../../../note/04.system-design/05-security/oauth2-oidc/README.md) —— OAuth2/OIDC 完整（500 行）
-- [04.system-design/05-security/jwt-security](../../../../note/04.system-design/05-security/jwt-security/README.md) —— JWT 完整（325 行）
-- [04.system-design/05-security/access-control](../../../../note/04.system-design/05-security/access-control/README.md) —— RBAC/ABAC
+- [04.system-design/05-security/oauth2-oidc](../../../06.distributed-systems/05-security/oauth2-oidc/README.md) —— OAuth2/OIDC 完整（500 行）
+- [04.system-design/05-security/jwt-security](../../../06.distributed-systems/05-security/jwt-security/README.md) —— JWT 完整（325 行）
+- [04.system-design/05-security/access-control](../../../06.distributed-systems/05-security/access-control/README.md) —— RBAC/ABAC
 
 ### split-hairs 兄弟
 
@@ -407,8 +407,8 @@ Keycloak 优势：
 
 ### Java 后端（Spring）
 
-- [06.spring/05-spring-cloud/gateway](../../../../note/06.spring/05-spring-cloud/gateway.md) —— Spring Cloud Gateway OAuth2 集成
-- [06.spring/05-spring-cloud/README](../../../../note/06.spring/05-spring-cloud/README.md) —— Spring Cloud 全套
+- [06.spring/05-spring-cloud/gateway](../../../04.spring-backend/03-cloud/gateway.md) —— Spring Cloud Gateway OAuth2 集成
+- [06.spring/05-spring-cloud/README](../../../04.spring-backend/03-cloud/README.md) —— Spring Cloud 全套
 
 ---
 

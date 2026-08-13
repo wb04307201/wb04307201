@@ -242,7 +242,7 @@ single_table -[hidden]-> vertical_sharding
 
 ### 垂直分表判定规范
 
-> 🔗 面试深挖版：[`垂直分表拆分判定`](../../../../13.split-hairs/03.database/vertical-table-split/README.md) — 5 指标判定 + Buffer Pool 原理 + 反模式 + 面试话术
+> 🔗 面试深挖版：[`垂直分表拆分判定`](../../../../12.interview/03.database/vertical-table-split/README.md) — 5 指标判定 + Buffer Pool 原理 + 反模式 + 面试话术
 
 **什么时候该拆？5 个核心指标**：
 
@@ -441,7 +441,7 @@ package "组合分表示例：用户系统" {
    分库分表会导致常规聚合查询操作，如 group by，order by 等变得异常复杂。这是因为这些操作需要在多个分片上进行数据汇总和排序，而不是在单个数据库上进行。为了实现这些操作，需要编写复杂的业务代码，或者使用中间件来协调分片间的通信和数据传输。这样会增加开发和维护的成本，以及影响查询的性能和可扩展性。
 5. 数据迁移与扩容
 
-   > 🔗 面试深挖版：[`分表扩容策略`](../../../../13.split-hairs/03.database/sharding-resize/README.md) — 5 种方案对比 + 翻倍扩容 6 步法 + 双写过渡 + 面试话术
+   > 🔗 面试深挖版：[`分表扩容策略`](../../../../12.interview/03.database/sharding-resize/README.md) — 5 种方案对比 + 翻倍扩容 6 步法 + 双写过渡 + 面试话术
 
    随着数据量增长，分片需要重新分布（例如从 4 库扩容到 8 库）。这是分库分表方案中最复杂的环节之一。
 

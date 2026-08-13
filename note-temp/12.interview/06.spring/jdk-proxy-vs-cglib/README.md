@@ -47,7 +47,7 @@ class UserServiceImpl$$EnhancerByCGLIB extends UserServiceImpl {
 
 ---
 
-> 📚 **前置知识**：[AOP](../../../../note/06.spring/01-core/aop/README.md)
+> 📚 **前置知识**：[AOP](../../../04.spring-backend/01-core/aop/README.md)
 
 ## 一、核心原理
 
@@ -316,7 +316,7 @@ public class TxService {
 ## 七、交叉引用
 
 - **主模块**：[`06.spring`](../../../../note/06.spring/)
-- **相关**：[AOP 原理](../../../../note/06.spring/08-annotations/aop.md) | [事务传播](../../../../note/06.spring/03-data/transaction/propagation-and-isolation.md) | [Bean 生命周期](../../../../note/06.spring/01-core/ioc/bean-lifecycle.md)
+- **相关**：[AOP 原理](../../../04.spring-backend/08-annotations/aop.md) | [事务传播](../../../04.spring-backend/04-data/transaction/propagation-and-isolation.md) | [Bean 生命周期](../../../04.spring-backend/01-core/ioc/bean-lifecycle.md)
 - **延伸**：[cglib](https://github.com/cglib/cglib) | [Spring AOP](https://docs.spring.io/spring-framework/reference/core/aop.html)
 
 ---

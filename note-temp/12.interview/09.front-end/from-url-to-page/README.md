@@ -217,7 +217,7 @@ graph LR
 ## 五、交叉引用
 
 - 主模块：[`09.front-end`](../../../../note/09.front-end/) — 前端知识体系
-- [浏览器渲染](../../../../note/09.front-end/01-foundation/browser-rendering/README.md) — 浏览器渲染原理详解
+- [浏览器渲染](../../../05.frontend/01-foundation/browser-rendering/README.md) — 浏览器渲染原理详解
 
 ## 相关章节
 

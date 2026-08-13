@@ -10,7 +10,7 @@ question:
 
 # 分类评估指标 5 大金刚：什么时候用 F1，什么时候用 AUC？
 
-> ⬅️ [返回: machine-learning 综述](../README.md) | [主模块: 02-algorithms 评估指标](../../../../../note/02.computer-basics/02-algorithms/README.md)
+> ⬅️ [返回: machine-learning 综述](../README.md) | [主模块: 02-algorithms 评估指标](../../../../02.cs-foundations/01-algorithms/README.md)
 
 > **一句话定位**：分类模型的 5 大评估指标（准确率 / 精确率 / 召回率 / F1 / AUC）—— 考察的不是"公式怎么写"，而是 **场景化选型** + **不均衡数据陷阱** + **阈值依赖性** + **LogLoss 概率校准**。
 

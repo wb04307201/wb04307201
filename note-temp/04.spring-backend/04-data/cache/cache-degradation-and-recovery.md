@@ -579,14 +579,14 @@ public class CacheMetricsCollector {
 - [多级缓存（multi-level）](multi-level.md) — 本地 + 分布式缓存架构
 
 **服务降级（04.system-design）**：
-- [服务降级原理](../../../../note/04.system-design/03-high-availability/service-degradation/README.md) — Sentinel / Resilience4j 通用降级
-- [熔断原理](../../../../note/04.system-design/03-high-availability/circuit-break/README.md) — 熔断器原理
+- [服务降级原理](../../../06.distributed-systems/03-high-availability/service-degradation/README.md) — Sentinel / Resilience4j 通用降级
+- [熔断原理](../../../06.distributed-systems/03-high-availability/circuit-break/README.md) — 熔断器原理
 
 **面试题**：
-- [@Cacheable + Redis 挂了 5 题](../../../../note/13.split-hairs/06.spring/cache-degradation/README.md) — 配套面试题
+- [@Cacheable + Redis 挂了 5 题](../../../12.interview/06.spring/cache-degradation/README.md) — 配套面试题
 
 **缓存穿透/击穿/雪崩**：
-- [缓存三连（穿透/击穿/雪崩）](../../../../note/13.split-hairs/03.database/cache-penetration-breakdown-avalanche/README.md) — 互补场景
+- [缓存三连（穿透/击穿/雪崩）](../../../12.interview/03.database/cache-penetration-breakdown-avalanche/README.md) — 互补场景
 
 ---
 

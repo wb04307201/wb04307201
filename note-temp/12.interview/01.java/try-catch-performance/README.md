@@ -10,7 +10,7 @@ question:
 
 # try-catch 会影响性能吗？—— 正常路径零开销，异常抛出才贵
 
-> 一句话定位：**Java 性能面试题经典**。考察的不是"try-catch 慢不慢"，而是**区分正常路径和异常路径的开销差异** + **fillInStackTrace 的根因** + **JIT 快速抛出优化** + **替代方案选型**。完整异常体系见 [异常主模块](../../../../note/01.java/concepts/exception/README.md)。
+> 一句话定位：**Java 性能面试题经典**。考察的不是"try-catch 慢不慢"，而是**区分正常路径和异常路径的开销差异** + **fillInStackTrace 的根因** + **JIT 快速抛出优化** + **替代方案选型**。完整异常体系见 [异常主模块](../../../01.java-and-jvm/01-language/exception/README.md)。
 
 > **系列定位**：中高频性能面试题。配套兄弟题：[Error vs Exception](../error-vs-exception/README.md)、[StringBuilder 重用](../reuse-of-stringbuilder/README.md)。
 
@@ -296,10 +296,10 @@ dao.save(entity);  // 让调用者处理
 
 ## 五、交叉引用
 
-- **异常体系**：[异常](../../../../note/01.java/concepts/exception/README.md) — 异常层次 / checked vs unchecked / try-with-resources / Spring 全局处理
+- **异常体系**：[异常](../../../01.java-and-jvm/01-language/exception/README.md) — 异常层次 / checked vs unchecked / try-with-resources / Spring 全局处理
 - **相关面试题**：[Error vs Exception](../error-vs-exception/README.md) — 6 维度对比 + 反模式
 - **相关面试题**：[StringBuilder 重用](../reuse-of-stringbuilder/README.md) — 同类性能优化思维
-- **JVM 调优**：[JVM 调优](../../../../note/01.java/jvm/tuning.md) — OmitStackTraceInFastThrow 等 JVM 参数
+- **JVM 调优**：[JVM 调优](../../../01.java-and-jvm/02-jvm/tuning.md) — OmitStackTraceInFastThrow 等 JVM 参数
 - **主模块**：[`01.java`](../../../../note/01.java/) — Java 知识体系
 
 ## 相关章节

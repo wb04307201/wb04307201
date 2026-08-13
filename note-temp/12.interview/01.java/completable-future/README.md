@@ -43,7 +43,7 @@ CompletableFuture.supplyAsync(() -> queryUser(id))
 
 ## 一、核心原理
 
-> 📚 **前置知识**：[CompletableFuture](../../../../note/01.java/concurrency/completablefuture/README.md)
+> 📚 **前置知识**：[CompletableFuture](../../../01.java-and-jvm/03-concurrency/completablefuture/README.md)
 
 CompletableFuture 同时实现 `Future<V>` 和 `CompletionStage<V>` 两个接口，兼具"获取结果"与"事件驱动回调"双重身份。
 
@@ -250,9 +250,9 @@ cf.thenCompose(x -> asyncCall(x))
 ## 七、交叉引用
 
 - 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
-- [CompletableFuture](../../../../note/01.java/concurrency/completablefuture/README.md) — JUC CompletableFuture 详解
+- [CompletableFuture](../../../01.java-and-jvm/03-concurrency/completablefuture/README.md) — JUC CompletableFuture 详解
 - 🆕 [虚拟线程](../virtual-threads/README.md) — 虚拟线程 Executor 替代 commonPool（Java 21+）
-- [并发工具类](../../../../note/01.java/concurrency/utilities/README.md) — JUC 包核心组件
+- [并发工具类](../../../01.java-and-jvm/03-concurrency/utilities/README.md) — JUC 包核心组件
 
 ## 相关章节
 

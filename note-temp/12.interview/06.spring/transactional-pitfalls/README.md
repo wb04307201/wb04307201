@@ -39,7 +39,7 @@ public class OrderService {
 
 ---
 
-> 📚 **前置知识**：[AOP](../../../../note/06.spring/01-core/aop/README.md) | [事务](../../../../note/06.spring/03-data/transaction/README.md) | [事务失效](../../../../note/06.spring/03-data/transaction/failure-cases.md)
+> 📚 **前置知识**：[AOP](../../../04.spring-backend/01-core/aop/README.md) | [事务](../../../04.spring-backend/04-data/transaction/README.md) | [事务失效](../../../04.spring-backend/04-data/transaction/failure-cases.md)
 
 ## 一、核心原理
 
@@ -340,7 +340,7 @@ public class OrderService {
 ## 五、交叉引用
 
 - 主模块：[`06.spring`](../../../../note/06.spring/) — Spring 知识体系
-- [AOP 原理](../../../../note/06.spring/08-annotations/aop.md) — AOP 原理详解
+- [AOP 原理](../../../04.spring-backend/08-annotations/aop.md) — AOP 原理详解
 - [@Autowired 推荐用法](../not-use-@autowired/README.md) — @Autowired 推荐用法
 
 ## 相关章节
@@ -348,5 +348,5 @@ public class OrderService {
 - 深度阅读：[`06.spring`](06.spring/README.md) — 主模块详细内容
 
 
-- [03-transaction-boundary](../../../../note/06.spring/03-data/mybatis/03-spring-integration/03-transaction-boundary.md)
+- [03-transaction-boundary](../../../04.spring-backend/04-data/mybatis/03-spring-integration/03-transaction-boundary.md)
 ← [返回: 咬文嚼字 · transactional-pitfalls](../README.md)

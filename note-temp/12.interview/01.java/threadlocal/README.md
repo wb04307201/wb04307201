@@ -38,7 +38,7 @@ pool.submit(() -> {
 
 ## 一、核心原理
 
-> 📚 **前置知识**：[ThreadLocal](../../../../note/01.java/concurrency/threadlocal/README.md) | [线程基础](../../../../note/01.java/concurrency/thread-basics/README.md)
+> 📚 **前置知识**：[ThreadLocal](../../../01.java-and-jvm/03-concurrency/threadlocal/README.md) | [线程基础](../../../01.java-and-jvm/03-concurrency/thread-basics/README.md)
 
 ThreadLocal 的核心设计思想是**空间换时间**：为每个线程维护一份独立的变量副本，避免多线程竞争带来的同步开销。其底层依赖 `java.lang.Thread` 类中的两个字段：
 
@@ -334,9 +334,9 @@ executor.submit(TtlRunnable.get(() -> {
 ## 六、交叉引用
 
 - 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
-- [并发基础](../../../../note/01.java/concurrency/README.md) — 线程与锁机制
+- [并发基础](../../../01.java-and-jvm/03-concurrency/README.md) — 线程与锁机制
 - 🆕 [虚拟线程](../virtual-threads/README.md) — ScopedValue 替代 ThreadLocal（Java 25+）
-- [JVM 内存](../../../../note/01.java/jvm/README.md) — 垃圾回收与引用类型
+- [JVM 内存](../../../01.java-and-jvm/02-jvm/README.md) — 垃圾回收与引用类型
 - [线程池](../thread-pool/README.md) — 线程池原理与实践
 
 ## 相关章节
@@ -344,5 +344,5 @@ executor.submit(TtlRunnable.get(() -> {
 - 深度阅读：[`01.java`](01.java/README.md) — 主模块详细内容
 
 
-- [sequential-execution](../../../../note/01.java/concurrency/thread-basics/sequential-execution.md)
+- [sequential-execution](../../../01.java-and-jvm/03-concurrency/thread-basics/sequential-execution.md)
 ← [返回: 咬文嚼字 · threadlocal](../README.md)

@@ -242,7 +242,7 @@ SHOW INDEX FROM t;
 
 ## 📚 深度阅读
 
-- [主模块深度文章](../../../../note/03.database/04-index/composite-index-filesort/README.md) — 5 大原因详解 + EXPLAIN 排查 + 修复方案
+- [主模块深度文章](../../../03.data-stack/01-database/04-index/composite-index-filesort/README.md) — 5 大原因详解 + EXPLAIN 排查 + 修复方案
 - [mysql-index-failure](../mysql-index-failure/) — 10 种索引失效场景
 
 ---

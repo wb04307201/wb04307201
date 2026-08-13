@@ -30,7 +30,7 @@ MySQL 有 5 种时间类型，选错了：
 
 ---
 
-> 📚 **前置知识**：[MySQL](../../../../note/03.database/05-mysql/README.md)
+> 📚 **前置知识**：[MySQL](../../../03.data-stack/01-database/05-mysql/README.md)
 
 ## 一、核心原理
 
@@ -286,11 +286,11 @@ DELIMITER ;
 
 - **相关主题**：[MySQL 事务隔离级别](../mysql-isolation/README.md) - 理解 MVCC 中的版本链与时间戳
 - **性能优化**：[MySQL 索引优化](../../../../note/03.database/04-index/README.md) - 时间字段的索引策略
-- **JVM 关联**：[Java 日期时间API](../../../../note/01.java/concepts/date-time/README.md) - Java 层面的时间处理
+- **JVM 关联**：[Java 日期时间API](../../../01.java-and-jvm/01-language/date-time/README.md) - Java 层面的时间处理
 
 ## 相关章节
 
-- 深度阅读：[`03.database`](../../../../note/03.database/README.md) — 主模块详细内容
+- 深度阅读：[`03.database`](../../../03.data-stack/01-database/README.md) — 主模块详细内容
 
 ← [返回数据库咬文嚼字](../README.md)
 

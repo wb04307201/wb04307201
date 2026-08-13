@@ -10,7 +10,7 @@ question:
 
 # JWT vs Session 认证怎么选？—— Stateless 与 Stateful 的工程权衡
 
-> 一句话定位：JWT 和 Session 不是"哪个更好"，而是**无状态 vs 有状态**的架构选型。完整认证理论见 [主模块 JWT 安全](../../../../note/04.system-design/05-security/jwt-security/README.md)。
+> 一句话定位：JWT 和 Session 不是"哪个更好"，而是**无状态 vs 有状态**的架构选型。完整认证理论见 [主模块 JWT 安全](../../../06.distributed-systems/05-security/jwt-security/README.md)。
 
 > **系列定位**：经典后端安全面试题（字节 / 阿里 / 美团高频）。考察 **Stateless vs Stateful 的架构影响** + **Token 撤销方案** + **CSRF 攻击面差异**。
 
@@ -104,7 +104,7 @@ Session 安全加固：HttpOnly + Secure + SameSite=Lax + 登录成功后 regene
 - [单点登录 6 大方案](../sso/README.md) — JWT 在 SSO 中的定位
 - [统一权限控制系统](../access-control-design/README.md) — RBAC + ABAC 与认证的关系
 - [XSS、CSRF、CSP 三件套](../xss-csrf-csp/README.md) — Cookie 安全详解
-- [主模块 JWT 安全](../../../../note/04.system-design/05-security/jwt-security/README.md) — JWT 签发与验证全流程
+- [主模块 JWT 安全](../../../06.distributed-systems/05-security/jwt-security/README.md) — JWT 签发与验证全流程
 
 ---
 

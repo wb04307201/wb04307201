@@ -375,8 +375,8 @@ value.makeSound();             // 重写再看对象的实际类型
   - [object 类](../object/README.md) — 多态的最终基类
   - [method 方法](../method/README.md) — 方法签名 / 重载规则
   - [inner-class 内部类](../inner-class/README.md) — 匿名内部类即一种多态
-- **咬文嚼字**：[polymorphism 面试](../../../../note/13.split-hairs/01.java/polymorphism/README.md)（commit 2 创建）
+- **咬文嚼字**：[polymorphism 面试](../../../12.interview/01.java/polymorphism/README.md)（commit 2 创建）
 - **JVM 原理**：[JVM — 讲明白 Java 虚拟机](../../02-jvm/README.md) — 字节码、类加载与执行引擎
-- **故事联动**：[阿明餐厅](../../../../note/12.story/README.md) — 用餐厅角色协作理解面向对象的扩展与替换
+- **故事联动**：[阿明餐厅](../../../13.story/README.md) — 用餐厅角色协作理解面向对象的扩展与替换
 
 ← [返回 concepts](../README.md)

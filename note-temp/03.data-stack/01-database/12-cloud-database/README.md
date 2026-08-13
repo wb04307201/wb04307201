@@ -424,7 +424,7 @@ TiDB Cloud 是 PingCAP 提供的**云原生 NewSQL 数据库**,100% 兼容 MySQL
 - [NoSQL](../08-nosql/README.md) — 自建 NoSQL 选型
 - [数据迁移与同步](../10-data-migration/README.md) — 上云迁移工具
 - [数据库监控告警](../11-monitoring/README.md) — 云监控与自建监控
-- [系统设计 · 高可用](../../../../note/04.system-design/03-high-availability/README.md) — 多 AZ、异地容灾
+- [系统设计 · 高可用](../../../06.distributed-systems/03-high-availability/README.md) — 多 AZ、异地容灾
 
 ---
 

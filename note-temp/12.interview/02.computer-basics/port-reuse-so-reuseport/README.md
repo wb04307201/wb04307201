@@ -10,7 +10,7 @@ question:
 
 # 两个程序能同时监听一个端口吗？—— SO_REUSEPORT 端口复用机制
 
-> 一句话定位：**默认不能；SO_REUSEADDR 复用 TIME_WAIT 端口；SO_REUSEPORT 让多进程同 listen + 内核负载均衡**。完整深度 + 内核行为见 [主模块 · TCP/IP 第 11 节深度](../../../../note/02.computer-basics/01-network/01-tcp-ip/README.md)。
+> 一句话定位：**默认不能；SO_REUSEADDR 复用 TIME_WAIT 端口；SO_REUSEPORT 让多进程同 listen + 内核负载均衡**。完整深度 + 内核行为见 [主模块 · TCP/IP 第 11 节深度](../../../02.cs-foundations/03-network/01-tcp-ip/README.md)。
 
 > **系列定位**：网络 + 系统设计经典面试题（Nginx / Envoy / Redis cluster 高频）。考察的不是"能不能同时"，而是 **3 大机制对比 + 4 大误区 + Linux 内核行为 + 5 大实战场景**。
 
@@ -205,7 +205,7 @@ Q5：thundering herd 在 SO_REUSEPORT 下还存在吗？
 
 ## 🔗 深度版（主模块）
 
-- [02.computer-basics · TCP/IP 第 11 节深度](../../../../note/02.computer-basics/01-network/01-tcp-ip/README.md#十一端口复用机制-so_reuseaddr-vs-so_reuseport-深度) — 3 大机制对比 + Linux 内核行为 + 5 大实战场景 + C 代码
+- [02.computer-basics · TCP/IP 第 11 节深度](../../../02.cs-foundations/03-network/01-tcp-ip/README.md) — 3 大机制对比 + Linux 内核行为 + 5 大实战场景 + C 代码
 
 ---
 

@@ -194,7 +194,7 @@ Iceberg 使用决策树：
 - **同栏目**：[`Hive 分区 vs 分桶`](../hive-partition-vs-bucket/README.md) — 传统分区与 Iceberg 演进分区的对比
 - **同栏目**：[`Kafka Exactly-Once`](../kafka-exactly-once/README.md) — 流式写入 Iceberg 的事务保障
 - **同栏目**：[`Flink Checkpoint vs Savepoint`](../flink-checkpoint-vs-savepoint/README.md) — Flink 写 Iceberg 时的 Checkpoint 联动
-- **主模块**：[`03.database`](../../../../note/03.database/README.md) — 传统数据库 ACID 事务基础
+- **主模块**：[`03.database`](../../../03.data-stack/01-database/README.md) — 传统数据库 ACID 事务基础
 
 ---
 

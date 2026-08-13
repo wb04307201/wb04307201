@@ -137,11 +137,11 @@ Task → Agent → 检查结果
   - [auto-fix-strategy](../../../../note/11.ai/03-engineering/loop-engineering/auto-fix-strategy.md) —— 5 修复策略
   - [verifier-design](../../../../note/11.ai/03-engineering/loop-engineering/verifier-design.md) —— 5 大 Verifier
   - [ide-case-studies](../../../../note/11.ai/03-engineering/loop-engineering/ide-case-studies.md) —— Claude Code / Cursor / Devin / Aider
-  - [fix-prompt-templates](../../../../note/11.ai/03-engineering/loop-engineering/fix-prompt-templates.md) —— 修复 prompt 4 模板
+  - [fix-prompt-templates](../../../09.ai-applications/prompts/fix-prompt-templates.md) —— 修复 prompt 4 模板
 - 同栏目：[Harness Engineering](../harness-engineering/README.md)
 - 关联：[Agent 架构](../agent-dag-vs-react/README.md)
-- 实战：[生产级 Agent](../../../../note/11.ai/03-engineering/production-agent/README.md)
-- 餐厅叙事：[12.story/07 阿明餐厅自动修复 50 bug 实战](../../../../note/12.story/07-from-chef-to-ceo.md)
+- 实战：[生产级 Agent](../../../09.ai-applications/agent/production-agent/README.md)
+- 餐厅叙事：[12.story/07 阿明餐厅自动修复 50 bug 实战](../../../13.story/07-from-chef-to-ceo.md)
 
 ---
 

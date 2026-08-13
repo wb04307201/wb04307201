@@ -233,7 +233,7 @@ lock.lock(10, TimeUnit.SECONDS);  // 10s 后强制过期，不启动看门狗
 | **网络分区** | 续期请求到不了 Redis → 续期失败 → TTL 到期释放 | ✅ 安全（续期失败 = TTL 不刷新） |
 | **看门狗续期失败** | 单次续期失败不影响（下次 10s 后再试）| ✅ 安全（除非连续失败 3 次到 TTL） |
 
-> 📚 **深度阅读**：[`分布式锁主模块`](../../../../note/04.system-design/02-distributed/distributed-lock/README.md) — 需求/特性/实现方案/选型全景
+> 📚 **深度阅读**：[`分布式锁主模块`](../../../06.distributed-systems/02-distributed/distributed-lock/README.md) — 需求/特性/实现方案/选型全景
 
 ---
 
@@ -378,7 +378,7 @@ public void process() {
 ## 八、交叉引用
 
 - 主模块：[`04.system-design`](../../../../note/04.system-design/) — 系统设计
-- [缓存穿透/击穿/雪崩](../../../../note/03.database/06-cache/README.md) — 缓存击穿中的分布式锁应用
+- [缓存穿透/击穿/雪崩](../../../03.data-stack/01-database/06-cache/README.md) — 缓存击穿中的分布式锁应用
 - [Redis 分布式锁 3 大坑](03.database/redis-distributed-lock/README.md) — Redis 实现细节（看门狗 + Lua + 可重入）
 
 ## 相关章节

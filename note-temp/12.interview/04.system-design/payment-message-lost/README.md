@@ -195,7 +195,7 @@ GET idempotent:pay-notify:12345
 - 同栏目：[`幂等性设计`](../idempotency/README.md) — 消费端幂等的 6 大实现方案
 - 同栏目：[`MQ 消息积压`](../mq-backlog/README.md) — 消费端积压排查
 - 同栏目：[`Kafka vs RocketMQ`](../still-need-rocketmq/README.md) — MQ 选型与可靠性对比
-- 主模块：[`服务通信方式`](../../../../note/04.system-design/01-foundation/system-design-basics/microservices/service-communication/README.md) — 消息可靠性保障体系
+- 主模块：[`服务通信方式`](../../../06.distributed-systems/01-foundation/system-design-basics/microservices/service-communication/README.md) — 消息可靠性保障体系
 
 ---
 

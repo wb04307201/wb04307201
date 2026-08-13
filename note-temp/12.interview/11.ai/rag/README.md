@@ -10,7 +10,7 @@ question:
 
 # RAG 架构设计 — 检索增强生成面试深挖
 
-> 一句话定位：RAG（Retrieval-Augmented Generation）让 LLM 基于私有/实时数据回答 —— 是 2026 年企业 LLM 应用的事实标准。完整概念见 [主模块 RAG vs Fine-tuning](../../../../note/11.ai/08-llmops/01-rag-vs-finetuning/README.md)。
+> 一句话定位：RAG（Retrieval-Augmented Generation）让 LLM 基于私有/实时数据回答 —— 是 2026 年企业 LLM 应用的事实标准。完整概念见 [主模块 RAG vs Fine-tuning](../../../09.ai-applications/rag/03-rag-vs-finetuning.md)。
 
 ---
 
@@ -117,7 +117,7 @@ RAG 不是"让 LLM 变聪明"，而是"**给 LLM 装一个能查事实的工具*
 
 ## 七、深度阅读
 
-- 主模块：[RAG vs Fine-tuning](../../../../note/11.ai/08-llmops/01-rag-vs-finetuning/README.md)
+- 主模块：[RAG vs Fine-tuning](../../../09.ai-applications/rag/03-rag-vs-finetuning.md)
 - 关联：[Function Calling](../function-calling/README.md) — RAG 本质是 retrieve 工具
 - 关联：[Token 与计费](../token/README.md) — RAG 减少 Token 消耗
 - 关联：[LLM 幻觉](../hallucination/README.md) — RAG 是抗幻觉主流方案
@@ -129,7 +129,7 @@ RAG 不是"让 LLM 变聪明"，而是"**给 LLM 装一个能查事实的工具*
 RAG 在**文档问答、低频更新场景**是最佳方案，但在 **AI Coding 大规模代码库场景下 RAG 容易失败**——Claude Code 等主流 AI Coding 工具主动放弃 RAG，改用 Agentic Search。
 
 - 兄弟面试题（高频反直觉）：[为什么 Claude Code 放弃了 RAG](../claude-code-agentic-search/README.md)
-- 深度原理：[Agentic Search vs RAG](../../../../note/11.ai/02-technology-stack/agentic-search-vs-rag/README.md)
+- 深度原理：[Agentic Search vs RAG](../../../09.ai-applications/rag/06-agentic-rag.md)
 - 实践原文：[Claude Code 最佳实践](../../../../note/11.ai/03-engineering/claude-code-practices/README.md)
 
 ---
@@ -161,7 +161,7 @@ RAG 的权限必须与源系统（Google Drive / Slack / Confluence）保持一�
 
 ## 十、RAG 演进四阶段（Naive → Advanced → Modular → Agentic）
 
-> 🔗 深度原理：[`RAG 范式演进四阶段`](../../../../note/11.ai/02-technology-stack/rag-paradigm-evolution/README.md) — 每阶段核心能力/关键技术/局限 + 对比表 + 选型决策树 + 与 5 阶段 Pipeline 正交关系澄清
+> 🔗 深度原理：[`RAG 范式演进四阶段`](../../../09.ai-applications/rag/02-paradigm-evolution.md) — 每阶段核心能力/关键技术/局限 + 对比表 + 选型决策树 + 与 5 阶段 Pipeline 正交关系澄清
 
 **面试高频问法**："RAG 有哪几代？怎么演进的？" —— 一句话记忆四阶段核心能力：
 
@@ -187,6 +187,6 @@ RAG 的权限必须与源系统（Google Drive / Slack / Confluence）保持一�
 
 ## 反向链
 
-- [36-rag-retrieval-augmented-generation](../../../../note/12.story/36-rag-retrieval-augmented-generation.md)
+- [36-rag-retrieval-augmented-generation](../../../13.story/36-rag-retrieval-augmented-generation.md)
 
 ← [返回: 咬文嚼字 · rag](../README.md)

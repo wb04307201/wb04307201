@@ -180,6 +180,6 @@ List<Integer> deduplicated = list.parallelStream()
 - [集合框架总览](./README.md) — 集合体系、选型决策树
 - [ArrayList 源码分析](./ArrayList/README.md) — 扩容、fail-fast、最佳实践
 - [HashMap 大数据插入](./hashmap-performance.md) — 类似的"大数据 + 性能"案例
-- [split-hairs/hashmap-resizing](../../../note/13.split-hairs/01.java/hashmap-resizing/README.md) — HashMap 扩容原理
+- [split-hairs/hashmap-resizing](../../12.interview/01.java/hashmap-resizing/README.md) — HashMap 扩容原理
 
 ← [返回 集合框架](./README.md)

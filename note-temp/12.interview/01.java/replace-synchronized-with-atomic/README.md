@@ -36,7 +36,7 @@ public class AtomicCounter {
 
 ---
 
-> 📚 **前置知识**：[Atomic](../../../../note/01.java/concurrency/atomic/README.md) | [synchronized](../../../../note/01.java/concurrency/synchronized/README.md)
+> 📚 **前置知识**：[Atomic](../../../01.java-and-jvm/03-concurrency/atomic/README.md) | [synchronized](../../../01.java-and-jvm/03-concurrency/synchronized/README.md)
 
 ## 一、核心原理
 
@@ -289,8 +289,8 @@ public class ConcurrencyMetrics {
 
 - **相关主题**：[HashMap扩容](../hashmap-resizing/README.md) - ConcurrentHashMap并发扩容
 - **延伸学习**：[Java synchronized锁升级](../synchronized-lock-upgrade/README.md) - 偏向锁/轻量级锁/重量级锁
-- **数据库关联**：[MySQL事务隔离](../../../../note/03.database/03-transaction/README.md)
-- **分布式扩展**：[分布式锁](../../../../note/04.system-design/02-distributed/distributed-lock/README.md) - Redis/ZooKeeper
+- **数据库关联**：[MySQL事务隔离](../../../03.data-stack/01-database/03-transaction/README.md)
+- **分布式扩展**：[分布式锁](../../../06.distributed-systems/02-distributed/distributed-lock/README.md) - Redis/ZooKeeper
 
 ## 相关章节
 

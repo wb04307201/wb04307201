@@ -104,7 +104,7 @@ Lombok 通过编译期注解处理器（JSR 269）修改抽象语法树生成代
 ## 相关章节
 - 上游：[`工具链`](../README.md)
 - 关联：[`01.java`](../../../../note/01.java/README.md) — Java 语言基础
-- 关联：[`06.spring`](../../../../note/06.spring/README.md) — Spring 开发中大量使用这些工具
+- 关联：[`06.spring`](../../../04.spring-backend/README.md) — Spring 开发中大量使用这些工具
 
 ---
 

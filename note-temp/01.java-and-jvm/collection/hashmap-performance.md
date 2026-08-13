@@ -134,6 +134,6 @@ List<Entry<K, V>> batch = data.subList(i, end);  // ❌ 原 List 修改时抛 CM
 
 - [HashMap 源码剖析](./hashmap.md) — 数组 + 链表 + 红黑树、扩容机制
 - [集合框架总览](./README.md)
-- [split-hairs/hashmap-resizing 扩容原理](../../../note/13.split-hairs/01.java/hashmap-resizing/README.md)
+- [split-hairs/hashmap-resizing 扩容原理](../../12.interview/01.java/hashmap-resizing/README.md)
 
 ← [返回 集合框架](./README.md)

@@ -460,7 +460,7 @@ FROM source_db.users TABLESAMPLE BERNOULLI(0.1);  -- 0.1% 抽样
 - [MySQL](../05-mysql/README.md) — Binlog 格式、主从复制
 - [事务与并发控制](../03-transaction/README.md) — 一致性与并发同步
 - [缓存](../06-cache/README.md) — 缓存预热与 Canal 协同
-- [系统设计 · 分布式事务](../../../../note/04.system-design/02-distributed/distributed-transaction/README.md) — 数据一致性理论
+- [系统设计 · 分布式事务](../../../06.distributed-systems/02-distributed/distributed-transaction/README.md) — 数据一致性理论
 
 ---
 
@@ -484,6 +484,6 @@ FROM source_db.users TABLESAMPLE BERNOULLI(0.1);  -- 0.1% 抽样
 
 ---
 
-**相关面试题**：[`分表扩容策略`](../../../../note/13.split-hairs/03.database/sharding-resize/README.md) — 翻倍扩容 + 双写过渡 + 灰度切换
+**相关面试题**：[`分表扩容策略`](../../../12.interview/03.database/sharding-resize/README.md) — 翻倍扩容 + 双写过渡 + 灰度切换
 
 ← [返回 01-database 主模块](../README.md)

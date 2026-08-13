@@ -11,7 +11,7 @@ module:
 
 > **一句话答案**：贪心算法在每一步都选择**局部最优解**，期望最终得到**全局最优解**——关键在于证明**贪心选择性质**和**最优子结构**。
 
-← [返回: algorithms 总目录](../README.md) · 面试题：[13.split-hairs 贪心算法](../../../../note/13.split-hairs/02.computer-basics/greedy-algorithms/README.md) · 相关：[字符串算法](../string-algorithms/README.md)
+← [返回: algorithms 总目录](../README.md) · 面试题：[13.split-hairs 贪心算法](../../../12.interview/02.computer-basics/greedy-algorithms/README.md) · 相关：[字符串算法](../string-algorithms/README.md)
 
 ---
 
@@ -241,8 +241,8 @@ flowchart TD
 - 上游：[`02-algorithms`](../README.md) — 算法总览（分类 / 排序 / 查找）
 - 同级：[`string-algorithms`](../string-algorithms/README.md) — 字符串算法 3 大深度
 - 关联：[`complexity`](../complexity/) — 时间 / 空间复杂度分析
-- 面试深挖：[`13.split-hairs 贪心算法`](../../../../note/13.split-hairs/02.computer-basics/greedy-algorithms/README.md)
-- 关联：[`04.system-design`](../../../04.system-design/README.md) — 算法在系统设计中的应用
+- 面试深挖：[`13.split-hairs 贪心算法`](../../../12.interview/02.computer-basics/greedy-algorithms/README.md)
+- 关联：[`04.system-design`](../../../06.distributed-systems/README.md) — 算法在系统设计中的应用
 
 ---
 

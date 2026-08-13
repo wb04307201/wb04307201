@@ -195,7 +195,7 @@ SET hive.input.format = org.apache.hadoop.hive.ql.io.CombineHiveInputFormat;
 
 - **同栏目**：[`Spark Shuffle 优化`](../spark-shuffle-optimization/README.md) — Shuffle 优化与分桶的关系
 - **同栏目**：[`Iceberg ACID`](../iceberg-acid/README.md) — 数据湖对分区/分桶的演进
-- **主模块**：[`03.database`](../../../../note/03.database/README.md) — 数据库索引与分区基础
+- **主模块**：[`03.database`](../../../03.data-stack/01-database/README.md) — 数据库索引与分区基础
 
 ---
 

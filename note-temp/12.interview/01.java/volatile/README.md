@@ -41,7 +41,7 @@ class Task {
 
 ## 一、核心原理
 
-> 📚 **前置知识**：[volatile](../../../../note/01.java/concurrency/volatile/README.md) | [JMM](../../../../note/01.java/concurrency/jmm/README.md)
+> 📚 **前置知识**：[volatile](../../../01.java-and-jvm/03-concurrency/volatile/README.md) | [JMM](../../../01.java-and-jvm/03-concurrency/jmm/README.md)
 
 ### 1.1 JMM 基础
 
@@ -337,10 +337,10 @@ public class AtomicInteger {
 ## 六、交叉引用
 
 - 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
-- [synchronized](../../../../note/01.java/concurrency/synchronized/README.md) — synchronized 内存语义与锁升级
-- [并发工具类](../../../../note/01.java/concurrency/utilities/README.md) — java.util.concurrent 包详解
-- [JMM](../../../../note/01.java/concurrency/jmm/README.md) — Java 内存模型与 happens-before 规则
-- [CAS 与原子类](../../../../note/01.java/concurrency/atomic/README.md) — AtomicInteger 与 CAS 乐观锁
+- [synchronized](../../../01.java-and-jvm/03-concurrency/synchronized/README.md) — synchronized 内存语义与锁升级
+- [并发工具类](../../../01.java-and-jvm/03-concurrency/utilities/README.md) — java.util.concurrent 包详解
+- [JMM](../../../01.java-and-jvm/03-concurrency/jmm/README.md) — Java 内存模型与 happens-before 规则
+- [CAS 与原子类](../../../01.java-and-jvm/03-concurrency/atomic/README.md) — AtomicInteger 与 CAS 乐观锁
 
 ## 相关章节
 

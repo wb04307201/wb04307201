@@ -10,7 +10,7 @@ question:
 
 # Coding Agent 选型与模式选择：4 大编程 Agent + 7 大模式决策框架
 
-> 一句话定位：2026 年 AI 工程师面试必问 —— 4 个主流 coding agent（Claude Code / Codex / OpenCode / OMP）怎么选、7 种运行模式（Build / Accept Edits / Plan / Goal / Handoff / Session tree / Bypass）怎么配。深度对比见 [Coding Agents 横向对比](../../../../note/11.ai/03-engineering/coding-agents/README.md) + [Coding Agents 运行模式详解](../../../../note/11.ai/03-engineering/coding-agents/README.md#五4-大-agent-运行模式横对比重点)。
+> 一句话定位：2026 年 AI 工程师面试必问 —— 4 个主流 coding agent（Claude Code / Codex / OpenCode / OMP）怎么选、7 种运行模式（Build / Accept Edits / Plan / Goal / Handoff / Session tree / Bypass）怎么配。深度对比见 [Coding Agents 横向对比](../../../09.ai-applications/agent/coding-agents/README.md) + [Coding Agents 运行模式详解](../../../09.ai-applications/agent/coding-agents/README.md)。
 
 > **系列定位**：经典 AI 工程师面试题（高频、选型向必考）。考察的不是"哪个 agent 最好"，而是 **多维度选型决策框架** + **模式与场景匹配** + **团队标准化落地**。
 
@@ -293,11 +293,11 @@ Q: explorer → coder → reviewer 三段流水线 —— 怎么实现？
 
 ### 6.1 主模块（Coding Agents 横向对比 + 运行模式详解）
 
-- 横向对比（4 agent 选型 + 模型/MCP 配置）：[`coding-agents/README.md`](../../../../note/11.ai/03-engineering/coding-agents/README.md)
-- Claude Code 速查（含 Plan Mode / Bypass）：[`coding-agents/claude-code.md`](../../../../note/11.ai/03-engineering/coding-agents/claude-code.md#六运行模式详解核心章节)
-- Codex 速查（含命令/交互 + approval-mode + 桌面端 Plan/Goal）：[`coding-agents/codex.md`](../../../../note/11.ai/03-engineering/coding-agents/codex.md#六运行模式详解核心章节)
-- OpenCode 速查（含 Plan/Build + ultrawork）：[`coding-agents/opencode.md`](../../../../note/11.ai/03-engineering/coding-agents/opencode.md#六运行模式详解核心章节)
-- OMP 速查（含 5 件套运行模式）：[`coding-agents/omp.md`](../../../../note/11.ai/03-engineering/coding-agents/omp.md#六运行模式详解核心章节)
+- 横向对比（4 agent 选型 + 模型/MCP 配置）：[`coding-agents/README.md`](../../../09.ai-applications/agent/coding-agents/README.md)
+- Claude Code 速查（含 Plan Mode / Bypass）：[`coding-agents/claude-code.md`](../../../09.ai-applications/agent/coding-agents/claude-code.md)
+- Codex 速查（含命令/交互 + approval-mode + 桌面端 Plan/Goal）：[`coding-agents/codex.md`](../../../09.ai-applications/agent/coding-agents/codex.md)
+- OpenCode 速查（含 Plan/Build + ultrawork）：[`coding-agents/opencode.md`](../../../09.ai-applications/agent/coding-agents/opencode.md)
+- OMP 速查（含 5 件套运行模式）：[`coding-agents/omp.md`](../../../09.ai-applications/agent/coding-agents/omp.md)
 
 ### 6.2 同栏目（11.ai 系列面试题）
 
@@ -313,7 +313,7 @@ Q: explorer → coder → reviewer 三段流水线 —— 怎么实现？
 
 - Harness Engineering：[`harness-engineering`](../../../../note/11.ai/03-engineering/harness-engineering/README.md) — Claude Code 5 扩展点都是 Harness 实现
 - Loop Engineering：[`loop-engineering`](../../../../note/11.ai/03-engineering/loop-engineering/README.md) — 长任务自动化循环
-- Agent Spec Tools：[`agent-spec-tools`](../../../../note/11.ai/03-engineering/agent-spec-tools/README.md) — Superpowers / Spec-Kit / OpenSpec（在 Agent 上跑的规范）
+- Agent Spec Tools：[`agent-spec-tools`](../../../09.ai-applications/agent/agent-spec-tools/README.md) — Superpowers / Spec-Kit / OpenSpec（在 Agent 上跑的规范）
 
 ---
 

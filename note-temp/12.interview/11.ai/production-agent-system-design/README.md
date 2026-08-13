@@ -39,7 +39,7 @@ question:
 - [ ] 成本预算：单次任务 Token 上限？
 - [ ] 失败容忍度：允许重试几次？
 
-**深读**：[agent-architecture §七 何时选 DAG vs ReAct](../../../../note/11.ai/04-architecture/agent-architecture/README.md#七何时选-dag-vs-react)
+**深读**：[agent-architecture §七 何时选 DAG vs ReAct](../../../09.ai-applications/agent/agent-architecture/README.md)
 
 ---
 
@@ -68,7 +68,7 @@ Q4: 是否需要灵活性 > 稳定性？
 └── 否 → DAG Workflow
 ```
 
-**深读**：[agent-execution-patterns §四 6 维完整打分](../../../../note/11.ai/04-architecture/agent-execution-patterns/README.md)
+**深读**：[agent-execution-patterns §四 6 维完整打分](../../../09.ai-applications/agent/agent-execution-patterns/README.md)
 
 ---
 
@@ -126,7 +126,7 @@ Q4: 是否需要灵活性 > 稳定性？
 | L3 | 状态回滚 | 连续失败 3 次 → 回滚到成功快照 |
 | L4 | 成本熔断 | Token 上限 50K + 80% 告警 |
 
-**深读**：[agent-reliability §三 4 层工程防线](../../../../note/11.ai/03-engineering/agent-reliability/README.md)
+**深读**：[agent-reliability §三 4 层工程防线](../../../09.ai-applications/agent/agent-reliability/README.md)
 
 ---
 
@@ -144,7 +144,7 @@ Q4: 是否需要灵活性 > 稳定性？
 | 长期记忆 | 历史经验 | Vector Store |
 | 外部记忆 | 知识库 | RAG / 数据库 |
 
-**深读**：[agent-memory §二 4 类 Memory](../../../../note/11.ai/04-architecture/agent-memory/README.md)
+**深读**：[agent-memory §二 4 类 Memory](../../../09.ai-applications/agent/agent-memory/README.md)
 
 ---
 
@@ -164,7 +164,7 @@ Q4: 是否需要灵活性 > 稳定性？
 | 用户满意 | 15% | 评分 / NPS |
 | 稳定性 | 5% | 一致性 / 漂移率 |
 
-**深读**：[agent-evaluation §二 6 维评测体系](../../../../note/11.ai/08-llmops/agent-evaluation/README.md)
+**深读**：[agent-evaluation §二 6 维评测体系](../../../09.ai-applications/agent/agent-evaluation/README.md)
 
 ---
 
@@ -313,7 +313,7 @@ Q5：贵司 Agent 系统的可靠性防线是几层？
 
 ## 🔗 深度版（主模块）
 
-- [11.ai · production-agent-system-design](../../../../note/11.ai/04-architecture/production-agent-system-design/README.md) —— 8 步流水线详细 checklist + 真实案例（电商客服 Agent）
+- [11.ai · production-agent-system-design](../../../09.ai-applications/agent/production-agent-system-design/README.md) —— 8 步流水线详细 checklist + 真实案例（电商客服 Agent）
 
 ---
 

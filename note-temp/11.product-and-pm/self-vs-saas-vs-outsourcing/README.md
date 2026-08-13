@@ -10,7 +10,7 @@ pm:
 
 > CTO / 技术总监最常拍板的一类决策：花 50 万买 SaaS / 花 30 万外包 / 花 200 万自研，到底哪个 ROI 最高？考察的是 **全生命周期 TCO 计算 + 决策树判断 + AI 时代的额外变量**。
 
-> **前置知识**：[app-quote-breakdown](../app-quote-breakdown/README.md)（项目成本拆解）、[outsourcing-pitfalls](../outsourcing-pitfalls/README.md)（外包隐性成本）、[mobile-tech-stack](../../../note/09.front-end/08-cross-platform/mobile-tech-stack/README.md)（前端跨端选型）。
+> **前置知识**：[app-quote-breakdown](../app-quote-breakdown/README.md)（项目成本拆解）、[outsourcing-pitfalls](../outsourcing-pitfalls/README.md)（外包隐性成本）、[mobile-tech-stack](../../05.frontend/08-cross-platform/mobile-tech-stack/README.md)（前端跨端选型）。
 
 ---
 
@@ -216,7 +216,7 @@ ROI = (业务价值 - TCO) / TCO × 100%
 
 ### 变量 2：AI 训练/推理的额外成本
 
-- 自研若用 LLM：**推理成本 × 调用次数**（参考 [12.story/36a](../../../note/12.story/34a-ai-token-cost-structure.md)）
+- 自研若用 LLM：**推理成本 × 调用次数**（参考 [12.story/36a](../../13.story/34a-ai-token-cost-structure.md)）
 - SaaS 通常含 LLM：成本打包进订阅费
 - 外包不能碰 LLM：**经常需要二次开发**
 
@@ -255,10 +255,10 @@ ROI = (业务价值 - TCO) / TCO × 100%
 - 主模块：[`note/14.project-management`](../README.md)（项目管理主页）
 - 本系列：[app-quote-breakdown](../app-quote-breakdown/README.md) — 12 大成本维度
 - 本系列：[outsourcing-pitfalls](../outsourcing-pitfalls/README.md) — 外包避坑
-- 主模块：[`09.front-end/08-cross-platform/mobile-tech-stack`](../../../note/09.front-end/08-cross-platform/mobile-tech-stack/README.md) — 前端跨端选型
-- 主模块：[`note/04.system-design`](../../../note/04.system-design/README.md) — 系统设计架构基线
-- 故事章节：[`12.story/43-ai-productivity-paradox`](../../../note/12.story/43-ai-productivity-paradox.md) — AI Coding ROI 数据
-- 面试专题：[`13.split-hairs/06.spring/transactional-pitfalls`](../../../note/13.split-hairs/06.spring/transactional-pitfalls/README.md) — 工程实践细节
+- 主模块：[`09.front-end/08-cross-platform/mobile-tech-stack`](../../05.frontend/08-cross-platform/mobile-tech-stack/README.md) — 前端跨端选型
+- 主模块：[`note/04.system-design`](../../06.distributed-systems/README.md) — 系统设计架构基线
+- 故事章节：[`12.story/43-ai-productivity-paradox`](../../13.story/43-ai-productivity-paradox.md) — AI Coding ROI 数据
+- 面试专题：[`13.split-hairs/06.spring/transactional-pitfalls`](../../12.interview/06.spring/transactional-pitfalls/README.md) — 工程实践细节
 
 ---
 

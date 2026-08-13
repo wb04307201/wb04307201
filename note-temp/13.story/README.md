@@ -296,10 +296,10 @@ graph LR
 
 ## 七、相关章节
 
-- 上游：[`01.java`](../../note/01.java/README.md) · [`04.system-design`](../../note/04.system-design/README.md) · [`06.spring`](../../note/06.spring/README.md) — 工程基础
-- 关联：[`07.workflow`](../../note/07.workflow/README.md) — BPMN 流程引擎（与 AI Agent 融合）
+- 上游：[`01.java`](../../note/01.java/README.md) · [`04.system-design`](../06.distributed-systems/README.md) · [`06.spring`](../04.spring-backend/README.md) — 工程基础
+- 关联：[`07.workflow`](../07.devops-and-tools/02-workflow/README.md) — BPMN 流程引擎（与 AI Agent 融合）
 - 关联：[`09.front-end`](../../note/09.front-end/README.md) — 前端工程化
-- 关联：[`10.big-data`](../../note/10.big-data/README.md) — 大数据（LLM 训练 / 实时特征）
+- 关联：[`10.big-data`](../03.data-stack/02-big-data/README.md) — 大数据（LLM 训练 / 实时特征）
 - 关联：[`11.ai`](../../note/11.ai/README.md) — AI 知识体系（本系列的 AI 理论支撑）
 
 ---

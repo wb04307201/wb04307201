@@ -10,7 +10,7 @@ question:
 
 # ReAct vs Plan-and-Execute · 4 模式选型深挖
 
-> 一句话定位：Agent 架构选型不是"哪个最好"，而是 **4 模式 6 维对比 + 场景化选型**——ReAct 灵活但贵、Plan-and-Execute 平衡、DAG 稳定但工程重、Multi-Agent 强大但复杂。完整深度见 [主模块 agent-execution-patterns 专题](../../../../note/11.ai/04-architecture/agent-execution-patterns/README.md)。
+> 一句话定位：Agent 架构选型不是"哪个最好"，而是 **4 模式 6 维对比 + 场景化选型**——ReAct 灵活但贵、Plan-and-Execute 平衡、DAG 稳定但工程重、Multi-Agent 强大但复杂。完整深度见 [主模块 agent-execution-patterns 专题](../../../09.ai-applications/agent/agent-execution-patterns/README.md)。
 
 > **系列定位**：经典 AI Agent 架构面试题（Anthropic / OpenAI / LangChain / 字节 / 阿里 / 美团 高频）。考察的不是"哪个模式最强"，而是 **6 维场景化对比能力** + **Plan Repair 三机制** + **混合架构实战**。
 
@@ -58,7 +58,7 @@ question:
 | **工程复杂度** | 8 | 5 | 4 | 2 |
 | **平均** | 4.8 | **6.2** | **7.7** | 3.5 |
 
-完整对比见 [03-six-dimensions-comparison](../../../../note/11.ai/04-architecture/agent-execution-patterns/03-six-dimensions-comparison.md)。
+完整对比见 [03-six-dimensions-comparison](../../../09.ai-applications/agent/agent-execution-patterns/03-six-dimensions-comparison.md)。
 
 ### 1.3 ReAct 本质（Thought + Action + Observation）
 
@@ -391,28 +391,28 @@ Stage 2 Executor：逐步执行
 
 ### 主模块深度专题
 
-- [agent-execution-patterns 总目录](../../../../note/11.ai/04-architecture/agent-execution-patterns/README.md)
-- [01-react-deep-dive](../../../../note/11.ai/04-architecture/agent-execution-patterns/01-react-deep-dive.md) —— ReAct 深度 + 5 硬伤
-- [02-plan-and-execute-deep-dive](../../../../note/11.ai/04-architecture/agent-execution-patterns/02-plan-and-execute-deep-dive.md) —— 规划方法 + 3 大修复机制
-- [03-six-dimensions-comparison](../../../../note/11.ai/04-architecture/agent-execution-patterns/03-six-dimensions-comparison.md) —— 4 模式 6 维对比
-- [04-selection-decision-tree](../../../../note/11.ai/04-architecture/agent-execution-patterns/04-selection-decision-tree.md) —— 5 分钟决策树
+- [agent-execution-patterns 总目录](../../../09.ai-applications/agent/agent-execution-patterns/README.md)
+- [01-react-deep-dive](../../../09.ai-applications/agent/agent-execution-patterns/01-react-deep-dive.md) —— ReAct 深度 + 5 硬伤
+- [02-plan-and-execute-deep-dive](../../../09.ai-applications/agent/agent-execution-patterns/02-plan-and-execute-deep-dive.md) —— 规划方法 + 3 大修复机制
+- [03-six-dimensions-comparison](../../../09.ai-applications/agent/agent-execution-patterns/03-six-dimensions-comparison.md) —— 4 模式 6 维对比
+- [04-selection-decision-tree](../../../09.ai-applications/agent/agent-execution-patterns/04-selection-decision-tree.md) —— 5 分钟决策树
 
 ### 同栏目（11.ai）姐妹篇
 
 - [agent-dag-vs-react](11.ai/agent-dag-vs-react/README.md) —— DAG vs ReAct 已有深度
-- [agent-architecture](../../../../note/11.ai/04-architecture/agent-architecture/README.md) —— 4 模式综述
+- [agent-architecture](../../../09.ai-applications/agent/agent-architecture/README.md) —— 4 模式综述
 - [loop-engineering](11.ai/loop-engineering/README.md) —— Loop Engineering 失败模式
 - [harness-engineering](11.ai/harness-engineering/README.md) —— Harness 是 DAG 的强约束
 
 ### 主模块兄弟
 
-- [11.ai/04-architecture/agent-architecture](../../../../note/11.ai/04-architecture/agent-architecture/README.md) —— Agent 架构总览
-- [11.ai/04-architecture/agent-context/05-sub-agents-decomposition](../../../../note/11.ai/04-architecture/agent-context/05-sub-agents-decomposition.md) —— Multi-Agent Sub-Agents 实战
+- [11.ai/04-architecture/agent-architecture](../../../09.ai-applications/agent/agent-architecture/README.md) —— Agent 架构总览
+- [11.ai/04-architecture/agent-context/05-sub-agents-decomposition](../../../09.ai-applications/agent/agent-context/05-sub-agents-decomposition.md) —— Multi-Agent Sub-Agents 实战
 
 ### 实战姐妹（12.story）
 
-- [12.story/02-system-architecture-evolution](../../../../note/12.story/02-system-architecture-evolution.md) —— 阿明餐厅选型 ReAct vs Plan-and-Execute 实战
-- [12.story/05-observability](../../../../note/12.story/05-observability.md) —— AI 思维工程 5 问（监控）
+- [12.story/02-system-architecture-evolution](../../../13.story/02-system-architecture-evolution.md) —— 阿明餐厅选型 ReAct vs Plan-and-Execute 实战
+- [12.story/05-observability](../../../13.story/05-observability.md) —— AI 思维工程 5 问（监控）
 
 ---
 

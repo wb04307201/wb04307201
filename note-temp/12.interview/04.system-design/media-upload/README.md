@@ -10,7 +10,7 @@ question:
 
 # 媒体上传面试深挖 —— 图片转码 / 视频 HLS / CDN 边缘 / 高可用容灾
 
-> ⬅️ [返回系统设计咬文嚼字](../README.md) | [主模块深度专题](../../../../note/04.system-design/04-high-performance/media-upload-storage/README.md)
+> ⬅️ [返回系统设计咬文嚼字](../README.md) | [主模块深度专题](../../../06.distributed-systems/04-high-performance/media-upload-storage/README.md)
 
 > 一句话定位：**4 大核心图片视频上传面试深挖**（大厂系统设计高频）：图片转码 / 视频 HLS / CDN 边缘优化 / 高可用 4 层防线。
 
@@ -213,7 +213,7 @@ ffmpeg -i source.mp4 \
 
 ## 交叉引用
 
-- **深度实战**：[媒体上传存储系统](../../../../note/04.system-design/04-high-performance/media-upload-storage/README.md) — 图片 WebP/AVIF + 视频 HLS/DASH + 冷热分层 + 高可用 4 层防线 + 防盗链 DRM
+- **深度实战**：[媒体上传存储系统](../../../06.distributed-systems/04-high-performance/media-upload-storage/README.md) — 图片 WebP/AVIF + 视频 HLS/DASH + 冷热分层 + 高可用 4 层防线 + 防盗链 DRM
 - **兄弟面试题**：[文件上传](../file-upload/README.md) — 通用分片上传（断点续传 + 秒传）
 - **兄弟面试题**：[商品搜索](../product-search/README.md) — 搜索系统设计案例
 - **兄弟面试题**：[缓存一致性](../cache-consistency/README.md) — Redis 状态管理

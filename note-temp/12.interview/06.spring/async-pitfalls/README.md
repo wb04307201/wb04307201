@@ -34,7 +34,7 @@ System.out.println("主线程继续执行");  // 结果：打印的还是主线�
 
 ---
 
-> 📚 **前置知识**：[AOP](../../../../note/06.spring/01-core/aop/README.md)
+> 📚 **前置知识**：[AOP](../../../04.spring-backend/01-core/aop/README.md)
 
 ## 一、核心原理
 
@@ -357,8 +357,8 @@ public void sendNotification() {
 ## 七、交叉引用
 
 - 主模块：[`06.spring`](../../../../note/06.spring/) — Spring 知识体系
-- [事务传播](../../../../note/06.spring/03-data/transaction/propagation-and-isolation.md) — @Transactional 事务传播机制
-- [线程池核心原理](../../../../note/01.java/concurrency/thread-basics/README.md) — 线程池调优实战
+- [事务传播](../../../04.spring-backend/04-data/transaction/propagation-and-isolation.md) — @Transactional 事务传播机制
+- [线程池核心原理](../../../01.java-and-jvm/03-concurrency/thread-basics/README.md) — 线程池调优实战
 
 ## 相关章节
 

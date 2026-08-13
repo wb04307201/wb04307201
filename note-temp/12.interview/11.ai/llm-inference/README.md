@@ -10,7 +10,7 @@ question:
 
 # LLM 推理优化面试深挖（5 大核心）
 
-> ⬅️ [返回 AI 咬文嚼字](../README.md) | [主模块深度专题](../../../../note/11.ai/02-technology-stack/llm-inference-optimization/README.md)
+> ⬅️ [返回 AI 咬文嚼字](../README.md) | [主模块深度专题](../../../09.ai-applications/llm-inference/llm-inference-optimization/README.md)
 
 > **一句话定位**：5 大 LLM 推理优化技术的**面试深挖版**（每题陷阱 + 反直觉 + 30 秒话术 + 90 秒话术）。
 
@@ -118,9 +118,9 @@ question:
 
 ## 🔗 兄弟章节
 
-- **主模块深度**：[llm-inference-optimization](../../../../note/11.ai/02-technology-stack/llm-inference-optimization/README.md) — 10 章完整版
+- **主模块深度**：[llm-inference-optimization](../../../09.ai-applications/llm-inference/llm-inference-optimization/README.md) — 10 章完整版
 - **兄弟面试题**：[Transformer 架构](../transformer/README.md) / [MoE 架构](../multi-agent-system-design/README.md) 顺带提
-- **餐厅叙事**：[12.story LLM 推理故事](../../../../note/12.story/46-llm-inference.md)（续集/番外待补）
+- **餐厅叙事**：[12.story LLM 推理故事](../../../13.story/46-llm-inference.md)（续集/番外待补）
 
 ---
 

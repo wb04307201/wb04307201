@@ -176,7 +176,7 @@ search("login API") → 空
 
 ## 七、交叉引用
 
-- 深度阅读：[Agent 可靠性工程防线](../../../../note/11.ai/03-engineering/agent-reliability/README.md)
+- 深度阅读：[Agent 可靠性工程防线](../../../09.ai-applications/agent/agent-reliability/README.md)
 - 相关面试题：[Loop Engineering](../loop-engineering/README.md) / [Harness Engineering](../harness-engineering/README.md)
 - 相关：[Multi-Agent 死循环防护](../multi-agent-system-design/README.md)
 

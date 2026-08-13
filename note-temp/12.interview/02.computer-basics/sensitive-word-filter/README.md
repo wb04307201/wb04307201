@@ -10,7 +10,7 @@ question:
 
 # 高并发敏感词过滤：字典树到多模式匹配深挖
 
-> 一句话定位：敏感词过滤 = **AC 自动机（多模式匹配 O(n)）+ Bloom Filter + 本地缓存 + 分布式架构**——从 Trie 原理到 100w QPS 高并发完整落地。完整深度见 [主模块 sensitive-word-filter 专题](../../../../note/04.system-design/04-high-performance/sensitive-word-filter/README.md) + [字符串算法专题 AC 自动机](../../../../note/02.computer-basics/02-algorithms/string-algorithms/03-ac-automaton.md)。
+> 一句话定位：敏感词过滤 = **AC 自动机（多模式匹配 O(n)）+ Bloom Filter + 本地缓存 + 分布式架构**——从 Trie 原理到 100w QPS 高并发完整落地。完整深度见 [主模块 sensitive-word-filter 专题](../../../06.distributed-systems/04-high-performance/sensitive-word-filter/README.md) + [字符串算法专题 AC 自动机](../../../02.cs-foundations/01-algorithms/string-algorithms/03-ac-automaton.md)。
 
 > **系列定位**：经典 Java 后端高频题（字节 / 阿里 / 美团 / 拼多多 80%+ 出现率）。考察的不是"用什么算法"，而是 **3 大核心组件**（AC + Bloom + 缓存）+ **5 反模式** + **架构 3 阶段** + **Java 完整实战**。
 
@@ -392,25 +392,25 @@ public void refreshDictionary() {
 
 ### 主模块深度专题
 
-- [sensitive-word-filter 总目录](../../../../note/04.system-design/04-high-performance/sensitive-word-filter/README.md)
-- [01-architecture](../../../../note/04.system-design/04-high-performance/sensitive-word-filter/01-architecture.md) —— 3 阶段架构演进
-- [02-java-implementation](../../../../note/04.system-design/04-high-performance/sensitive-word-filter/02-java-implementation.md) —— Spring Boot + HanLP 完整代码
-- [03-high-concurrency-optimization](../../../../note/04.system-design/04-high-performance/sensitive-word-filter/03-high-concurrency-optimization.md) —— 9 大优化策略
-- [04-selection-decision-tree](../../../../note/04.system-design/04-high-performance/sensitive-word-filter/04-selection-decision-tree.md) —— 5 维选型矩阵
-- [05-anti-evasion](../../../../note/04.system-design/04-high-performance/sensitive-word-filter/05-anti-evasion.md) —— 变体绕过对抗（谐音/拼音/繁简/形近/零宽字符/归一化流水线）
+- [sensitive-word-filter 总目录](../../../06.distributed-systems/04-high-performance/sensitive-word-filter/README.md)
+- [01-architecture](../../../06.distributed-systems/04-high-performance/sensitive-word-filter/01-architecture.md) —— 3 阶段架构演进
+- [02-java-implementation](../../../06.distributed-systems/04-high-performance/sensitive-word-filter/02-java-implementation.md) —— Spring Boot + HanLP 完整代码
+- [03-high-concurrency-optimization](../../../06.distributed-systems/04-high-performance/sensitive-word-filter/03-high-concurrency-optimization.md) —— 9 大优化策略
+- [04-selection-decision-tree](../../../06.distributed-systems/04-high-performance/sensitive-word-filter/04-selection-decision-tree.md) —— 5 维选型矩阵
+- [05-anti-evasion](../../../06.distributed-systems/04-high-performance/sensitive-word-filter/05-anti-evasion.md) —— 变体绕过对抗（谐音/拼音/繁简/形近/零宽字符/归一化流水线）
 
 ### 算法基础（02.computer-basics）
 
-- [string-algorithms 总目录](../../../../note/02.computer-basics/02-algorithms/string-algorithms/README.md) —— 3 大字符串算法综述
-- [01-trie-data-structure](../../../../note/02.computer-basics/02-algorithms/string-algorithms/01-trie-data-structure.md) —— Trie 字典树
-- [02-kmp-algorithm](../../../../note/02.computer-basics/02-algorithms/string-algorithms/02-kmp-algorithm.md) —— KMP 单模式匹配
-- [03-ac-automaton](../../../../note/02.computer-basics/02-algorithms/string-algorithms/03-ac-automaton.md) —— AC 自动机
+- [string-algorithms 总目录](../../../02.cs-foundations/01-algorithms/string-algorithms/README.md) —— 3 大字符串算法综述
+- [01-trie-data-structure](../../../02.cs-foundations/01-algorithms/string-algorithms/01-trie-data-structure.md) —— Trie 字典树
+- [02-kmp-algorithm](../../../02.cs-foundations/01-algorithms/string-algorithms/02-kmp-algorithm.md) —— KMP 单模式匹配
+- [03-ac-automaton](../../../02.cs-foundations/01-algorithms/string-algorithms/03-ac-automaton.md) —— AC 自动机
 
 ### 主模块兄弟
 
-- [04.system-design/04-high-performance/cache-patterns](../../../../note/04.system-design/04-high-performance/cache-patterns/README.md) —— 缓存一致性
-- [04.system-design/04-high-performance/README](../../../../note/04.system-design/04-high-performance/README.md) —— 高性能模块
-- [08.application-systems/cms/](../../../../note/08.application-systems/01-rd-innovation/cms/README.md) —— 内容审核系统
+- [04.system-design/04-high-performance/cache-patterns](../../../06.distributed-systems/04-high-performance/cache-patterns/README.md) —— 缓存一致性
+- [04.system-design/04-high-performance/README](../../../06.distributed-systems/04-high-performance/README.md) —— 高性能模块
+- [08.application-systems/cms/](../../../10.business-systems/01-rd-innovation/cms/README.md) —— 内容审核系统
 
 ---
 

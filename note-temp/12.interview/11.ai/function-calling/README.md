@@ -394,6 +394,6 @@ tool_choice = "auto"  # 让模型自决
 
 ## 反向链
 
-- [42-ai-engineer-responsibility](../../../../note/12.story/42-ai-engineer-responsibility.md)
+- [42-ai-engineer-responsibility](../../../13.story/42-ai-engineer-responsibility.md)
 
 ← [返回: 咬文嚼字 · function-calling](../README.md)

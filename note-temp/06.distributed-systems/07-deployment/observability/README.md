@@ -533,7 +533,7 @@ Spring Boot + Micrometer + OpenTelemetry
 
 
 - [in-practice](../../01-foundation/system-design-basics/it4it/in-practice.md)
-- [actuator](../../../06.spring/07-observability/actuator.md)
+- [actuator](../../../04.spring-backend/07-observability/actuator.md)
 ## 相关章节
 
 - [熔断降级](../../03-high-availability/circuit-break/README.md) — 触发熔断时通常依赖告警（状态变化、错误率）
@@ -541,6 +541,6 @@ Spring Boot + Micrometer + OpenTelemetry
 - [超时控制](../../03-high-availability/timeout/README.md) — 超时率、慢调用比例等关键监控指标
 - [缓存设计模式](../../04-high-performance/cache-patterns/README.md) — 缓存命中率、击穿/雪崩的监控指标
 - [部署与发布策略](../deploy/README.md) — 发布过程中的可观测性（错误率、延迟、流量回滚观测）
-- [Spring Boot Actuator / Micrometer / Prometheus 集成](../../../06.spring/07-observability/README.md) — Spring 工程可观测性落地方案
+- [Spring Boot Actuator / Micrometer / Prometheus 集成](../../../04.spring-backend/07-observability/README.md) — Spring 工程可观测性落地方案
 
 ← [返回 部署与运维](../README.md)

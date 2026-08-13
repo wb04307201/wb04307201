@@ -21,7 +21,7 @@ SET session:user:1 "data" EX 3600
 
 **答案**：❌ 不是。过期 ≠ 立即释放。Redis 用**惰性删除 + 定期删除**双机制，可能延迟数分钟甚至数小时。
 
-> 📚 **前置知识**：[Redis](../../../../note/03.database/07-redis/README.md)
+> 📚 **前置知识**：[Redis](../../../03.data-stack/01-database/07-redis/README.md)
 
 ---
 

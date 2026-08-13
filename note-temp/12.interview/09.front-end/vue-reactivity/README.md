@@ -382,7 +382,7 @@ form.age = 25
 ## 八、交叉引用
 
 - 主模块：[`09.front-end`](../../../../note/09.front-end/) — 前端知识体系
-- [Vue 核心](../../../../note/09.front-end/03-frameworks/README.md) — Vue 框架详解
+- [Vue 核心](../../../05.frontend/03-frameworks/README.md) — Vue 框架详解
 
 ## 相关章节
 

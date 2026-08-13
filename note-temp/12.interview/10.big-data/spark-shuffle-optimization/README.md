@@ -231,7 +231,7 @@ SELECT * FROM orders_bucketed o JOIN merchants_bucketed m ON o.merchant_id = m.i
 
 - **同栏目**：[`Hive 分区 vs 分桶`](../hive-partition-vs-bucket/README.md) — 分桶是 Map-Side Join 的基础
 - **同栏目**：[`Flink Checkpoint vs Savepoint`](../flink-checkpoint-vs-savepoint/README.md) — 流处理的容错对比
-- **主模块**：[`03.database`](../../../../note/03.database/README.md) — 数据库层面的查询优化
+- **主模块**：[`03.database`](../../../03.data-stack/01-database/README.md) — 数据库层面的查询优化
 
 ---
 

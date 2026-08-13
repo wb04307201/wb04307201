@@ -30,7 +30,7 @@ Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test"
 
 ## 一、核心原理
 
-> 📚 **前置知识**：[SPI](../../../../note/01.java/concepts/spi/README.md) | [类加载](../class-loading/README.md)
+> 📚 **前置知识**：[SPI](../../../01.java-and-jvm/01-language/spi/README.md) | [类加载](../class-loading/README.md)
 
 **SPI 是什么？**
 
@@ -215,8 +215,8 @@ http=com.apache.dubbo.rpc.protocol.http.HttpProtocol
 
 - 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
 - [类加载机制](../class-loading/README.md) — 类加载与双亲委派
-- [JDBC](../../../../note/01.java/jdbc/README.md) — JDBC 深入
-- [SPI 设计模式](../../../../note/01.java/concepts/spi/README.md) — SPI 机制详解
+- [JDBC](../../../01.java-and-jvm/jdbc/README.md) — JDBC 深入
+- [SPI 设计模式](../../../01.java-and-jvm/01-language/spi/README.md) — SPI 机制详解
 
 ## 相关章节
 

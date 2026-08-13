@@ -274,8 +274,8 @@ Q5：贵司 LLM 是否自托管？用的哪个推理框架？
 
 ## 🔗 相关章节（互链）
 
-- [12.story · 02-system-architecture-evolution](../../../../note/12.story/02-system-architecture-evolution.md) — 餐厅叙事
-- [11.ai · 11.ai/02-technology-stack/prompt-engineering](../../../../note/11.ai/02-technology-stack/prompt-engineering/README.md) — 温度参数对 Prompt 影响
+- [12.story · 02-system-architecture-evolution](../../../13.story/02-system-architecture-evolution.md) — 餐厅叙事
+- [11.ai · 11.ai/02-technology-stack/prompt-engineering](../../../09.ai-applications/prompts/prompt-engineering/README.md) — 温度参数对 Prompt 影响
 
 ---
 

@@ -256,7 +256,7 @@ res.cookie('sessionId', 'abc123', {
 
 - [用户登录 Token 存储安全](../token-storage-security/README.md) — Token 存储的 3 种方式 + 双 Token 方案
 - 主模块：[`09.front-end`](../../../../note/09.front-end/) — 前端知识体系
-- 相关主题：[前端安全](../../../../note/09.front-end/07-security/README.md)
+- 相关主题：[前端安全](../../../05.frontend/07-security/README.md)
 
 ## 相关章节
 

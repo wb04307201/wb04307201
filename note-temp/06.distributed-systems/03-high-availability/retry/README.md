@@ -141,5 +141,5 @@ module:
 - [服务降级](../service-degradation/README.md) — 重试耗尽后降级返回兜底数据
 
 
-- [integration-retry](../../../06.spring/06-integration/integration-retry.md)
+- [integration-retry](../../../04.spring-backend/06-integration/integration-retry.md)
 ← [返回 高可用](../README.md)

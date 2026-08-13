@@ -10,7 +10,7 @@ question:
 
 # TCP 三次握手与四次挥手深度剖析
 
-> 一句话定位：三次握手建连接、四次挥手断连接 —— 搞不清状态机和 seq/ack，面试必翻车，生产必踩坑。完整概念见 [TCP/IP 协议族](../../../../note/02.computer-basics/01-network/01-tcp-ip/README.md)。
+> 一句话定位：三次握手建连接、四次挥手断连接 —— 搞不清状态机和 seq/ack，面试必翻车，生产必踩坑。完整概念见 [TCP/IP 协议族](../../../02.cs-foundations/03-network/01-tcp-ip/README.md)。
 
 > **系列定位**：经典计算机网络面试题（后端 / 前端 / 通用高频）。考察的不是"SYN-ACK-SYN"背诵，而是 **状态机转换** + **seq/ack 计算** + **TIME_WAIT / CLOSE_WAIT 生产问题** + **安全攻防**。
 
@@ -278,9 +278,9 @@ grep -rn "\.close()" src/ --include="*.java"
 
 ## 八、相关章节
 
-- 主模块：[`TCP/IP 协议族`](../../../../note/02.computer-basics/01-network/01-tcp-ip/README.md) — TCP 完整知识体系（协议栈 + 可靠性机制 + 拥塞控制）
-- 同模块：[`TCP 报文结构`](../../../../note/02.computer-basics/01-network/protocols/tcp-packet/README.md) — TCP 头部字段 + 6 个控制标志位详解
-- 同模块：[`TCP/IP 四层模型`](../../../../note/02.computer-basics/01-network/tcp-ip-model/README.md) — 网络分层架构
+- 主模块：[`TCP/IP 协议族`](../../../02.cs-foundations/03-network/01-tcp-ip/README.md) — TCP 完整知识体系（协议栈 + 可靠性机制 + 拥塞控制）
+- 同模块：[`TCP 报文结构`](../../../02.cs-foundations/03-network/protocols/tcp-packet/README.md) — TCP 头部字段 + 6 个控制标志位详解
+- 同模块：[`TCP/IP 四层模型`](../../../02.cs-foundations/03-network/tcp-ip-model/README.md) — 网络分层架构
 - 相关面试题：[`HTTPS 握手`](09.front-end/https-handshake/README.md) — TLS 在 TCP 之上的握手过程
 
 ---

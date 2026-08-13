@@ -47,7 +47,7 @@ module:
 
 > Redis 6.0 引入了**多线程网络 IO**，但命令执行仍是单线程的，保证了原子性。
 
-> 🔗 **面试深挖版**：[`单线程为什么快`](../../../../note/13.split-hairs/03.database/redis-single-thread/README.md) — epoll/Reactor 底层原理 + Redis 6.0 多线程架构 + vs MySQL 对比 + 7 道面试题
+> 🔗 **面试深挖版**：[`单线程为什么快`](../../../12.interview/03.database/redis-single-thread/README.md) — epoll/Reactor 底层原理 + Redis 6.0 多线程架构 + vs MySQL 对比 + 7 道面试题
 
 ---
 
@@ -358,8 +358,8 @@ EVAL "local keys = redis.call('keys', ARGV[1]) for i,k in ipairs(keys) do redis.
 3. 主动清理（UNLINK / 业务层定时清理）— 工程干预
 ```
 
-> 🔗 **面试深挖版**：[过期删除 vs 淘汰策略](../../../../note/13.split-hairs/03.database/redis-expiry-deletion/README.md) — 惰性删除 + 定期删除底层原理 + 生产堆积排查
-> 🔗 **相关章节**：[大 Key 优化](../../../../note/13.split-hairs/03.database/redis-big-key/README.md) — UNLINK 异步删除实战
+> 🔗 **面试深挖版**：[过期删除 vs 淘汰策略](../../../12.interview/03.database/redis-expiry-deletion/README.md) — 惰性删除 + 定期删除底层原理 + 生产堆积排查
+> 🔗 **相关章节**：[大 Key 优化](../../../12.interview/03.database/redis-big-key/README.md) — UNLINK 异步删除实战
 > 🔗 **本章关联**：[九、Redis 分布式锁](#九redis-分布式锁) — TTL 防死锁机制
 
 ---
@@ -626,7 +626,7 @@ Grafana 官方提供 Redis 仪表盘,关键告警指标:
 - [MySQL](../05-mysql/README.md) — MySQL 主从复制与 Redis 集群对比
 - [缓存](../06-cache/README.md) — 缓存三大问题与一致性
 - [NoSQL](../08-nosql/README.md) — Redis 是 NoSQL 键值存储代表
-- [系统设计 · 分布式锁](../../../../note/04.system-design/02-distributed/distributed-lock/README.md) — Redis 分布式锁深入
+- [系统设计 · 分布式锁](../../../06.distributed-systems/02-distributed/distributed-lock/README.md) — Redis 分布式锁深入
 
 ---
 

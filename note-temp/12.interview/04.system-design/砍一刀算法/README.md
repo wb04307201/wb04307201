@@ -10,7 +10,7 @@ question:
 
 # 砍一刀算法：从病毒裂变到黑产风控
 
-> ⬅️ [返回系统设计咬文嚼字](../README.md) | [主模块深度专题](../../../../note/04.system-design/03-high-availability/risk-control-engine/README.md)
+> ⬅️ [返回系统设计咬文嚼字](../README.md) | [主模块深度专题](../../../06.distributed-systems/03-high-availability/risk-control-engine/README.md)
 
 > 一句话定位：**4 大核心砍一刀算法面试深挖**（拼多多病毒营销模型 + 风控层为重点）：K-Factor / 砍价业务建模 / 风控架构 / 黑产对抗
 
@@ -115,9 +115,9 @@ question:
 
 ## 🔗 兄弟章节
 
-- **主模块深度**：[风控引擎架构](../../../../note/04.system-design/03-high-availability/risk-control-engine/README.md) — 5 层架构 + 设备指纹 + 风险评分卡
+- **主模块深度**：[风控引擎架构](../../../06.distributed-systems/03-high-availability/risk-control-engine/README.md) — 5 层架构 + 设备指纹 + 风险评分卡
 - **兄弟面试题**：[秒杀无 Redis 刁难](../seckill-without-redis/README.md) · [限流算法](../rate-limiting/README.md) · [熔断](../circuit-breaker/README.md)
-- **餐厅叙事**：[餐厅午高峰](../../../../note/12.story/04-peak-traffic-defense.md) — 用餐厅流量防线理解高可用与风控协作
+- **餐厅叙事**：[餐厅午高峰](../../../13.story/04-peak-traffic-defense.md) — 用餐厅流量防线理解高可用与风控协作
 
 ---
 

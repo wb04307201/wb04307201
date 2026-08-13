@@ -420,7 +420,7 @@ graph TD
 - [冷热数据分离](../database-optimization/cold-hot-data-separation/README.md) — 分层思想与迁移策略
 - [消息队列](../mq/README.md) — 异步转码、重试与削峰
 - [负载均衡](../load-balance/README.md) — 多实例与流量调度
-- **咬文嚼字**：[media-upload 面试](../../../13.split-hairs/04.system-design/media-upload/README.md)
+- **咬文嚼字**：[media-upload 面试](../../../12.interview/04.system-design/media-upload/README.md)
 
 ---
 

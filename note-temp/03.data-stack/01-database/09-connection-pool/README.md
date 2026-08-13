@@ -475,7 +475,7 @@ public void syncMethod() {
 - [数据库基础知识](../01-fundamentals/README.md) — 数据库核心概念
 - [MySQL](../05-mysql/README.md) — MySQL `wait_timeout` 与连接池参数协调
 - [事务与并发控制](../03-transaction/README.md) — 事务与连接池的协作
-- [系统设计 · 连接池](../../../../note/04.system-design/04-high-performance/connection-pool/README.md) — 架构视角的连接池调优
+- [系统设计 · 连接池](../../../06.distributed-systems/04-high-performance/connection-pool/README.md) — 架构视角的连接池调优
 
 ---
 

@@ -203,7 +203,7 @@ export default defineConfig({
 
 ## 五、交叉引用
 
-- [Vite 构建工具](../../../../note/09.front-end/04-engineering/vite/README.md) — Vite 核心原理
+- [Vite 构建工具](../../../05.frontend/04-engineering/vite/README.md) — Vite 核心原理
 - 主模块：[`09.front-end`](../../../../note/09.front-end/) — 前端知识体系
 
 ## 相关章节

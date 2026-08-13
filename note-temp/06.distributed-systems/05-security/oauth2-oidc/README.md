@@ -493,7 +493,7 @@ ID Token 是一个签名的 JWT，包含用户身份信息：
 - [abac](../access-control/02-role-and-attribute/abac.md)
 - [rbac](../access-control/02-role-and-attribute/rbac.md)
 - [rebac](../access-control/03-relationship-and-hybrid/rebac.md)
-- [gateway](../../../06.spring/05-spring-cloud/gateway.md)
+- [gateway](../../../04.spring-backend/03-cloud/gateway.md)
 ## 参考资料
 
 - [RFC 6749 - The OAuth 2.0 Authorization Framework](https://tools.ietf.org/html/rfc6749)
@@ -510,6 +510,6 @@ ID Token 是一个签名的 JWT，包含用户身份信息：
 本章节重点讲 OAuth2/OIDC 协议本身，**SSO 作为设计目标**的 6 大实现方案对比（含 CAS / Cookie / OAuth2+OIDC / SAML 2.0 / JWT / 代理）已沉淀到独立专题：
 
 - **SSO 主模块深度**：[../sso/README.md](../sso/README.md) —— 6 文件 / 1520 行深度（含 Spring Security 实战 + JWT 自签 + 选型决策树）
-- **面试题（5.security 新增）**：[13.split-hairs/05.security/sso](../../../13.split-hairs/05.security/sso/README.md) —— 7 道精选 Q&A + 90 秒话术 + 5 反模式
+- **面试题（5.security 新增）**：[13.split-hairs/05.security/sso](../../../12.interview/05.security/sso/README.md) —— 7 道精选 Q&A + 90 秒话术 + 5 反模式
 
 ← [返回 安全篇](../README.md)

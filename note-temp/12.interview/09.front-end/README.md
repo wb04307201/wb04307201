@@ -92,7 +92,7 @@ question:
 
 ## 学习路径
 
-1. **入门**（3 天）：存储方案 + 消息机制（GET vs POST 已迁出至 [主模块](../../../note/09.front-end/03-network/http-protocol/get-vs-post.md)）
+1. **入门**（3 天）：存储方案 + 消息机制（GET vs POST 已迁出至 [主模块](../../05.frontend/03-network/http-protocol/get-vs-post.md)）
 2. **进阶**（2 周）：事件循环 + 闭包 + 原型链 + this 绑定 + Promise 手写 + 🆕 **async/await 错误处理**
 3. **冲刺面试**：重点看"从 URL 输入到页面展示"、"HTTPS 握手"、"Virtual DOM Diff"、"Vue 响应式原理"、"CSS 渲染阻塞"、"回流与重绘"、"Playwright vs Selenium"、🆕 **"async/await 必须 try/catch 吗"**
 

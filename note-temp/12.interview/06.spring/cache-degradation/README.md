@@ -10,7 +10,7 @@ question:
 
 # @Cacheable + Redis 挂了怎么办？如何降级？如何恢复？
 
-> 一句话定位：**Spring Boot 项目生产必问** —— 当 Redis 挂了，**默认行为是抛异常 → 整个请求失败**。考察的不是"会用 @Cacheable"，而是**应急降级 + 自动恢复**的工程能力。深度实战见 [主模块深度章节](../../../../note/06.spring/03-data/cache/cache-degradation-and-recovery.md)。
+> 一句话定位：**Spring Boot 项目生产必问** —— 当 Redis 挂了，**默认行为是抛异常 → 整个请求失败**。考察的不是"会用 @Cacheable"，而是**应急降级 + 自动恢复**的工程能力。深度实战见 [主模块深度章节](../../../04.spring-backend/04-data/cache/cache-degradation-and-recovery.md)。
 
 > **系列定位**：高频生产应急题（社招 / 资深工程师必问）。考察"系统设计"能力 + 应急思维。配套兄弟题：[事务陷阱](../transactional-pitfalls/README.md) / [AOP 原理](../aop-principle/README.md)。
 
@@ -314,14 +314,14 @@ public class UserService {
 ## 相关章节
 
 **主模块**：
-- [cache-degradation-and-recovery 深度章节](../../../../note/06.spring/03-data/cache/cache-degradation-and-recovery.md) — 4 方案对比 + Top 1 推荐组合 + 自动恢复 3 机制 + 数据一致性 + 监控告警
-- [@Cacheable 注解用法](../../../../note/06.spring/03-data/cache/cache-annotations-and-usage.md) — 注解基础
-- [缓存实现对比](../../../../note/06.spring/03-data/cache/implementations-and-best-practices.md) — Redis / Caffeine / Ehcache
-- [多级缓存架构](../../../../note/06.spring/03-data/cache/multi-level.md) — 本地 + 分布式架构
+- [cache-degradation-and-recovery 深度章节](../../../04.spring-backend/04-data/cache/cache-degradation-and-recovery.md) — 4 方案对比 + Top 1 推荐组合 + 自动恢复 3 机制 + 数据一致性 + 监控告警
+- [@Cacheable 注解用法](../../../04.spring-backend/04-data/cache/cache-annotations-and-usage.md) — 注解基础
+- [缓存实现对比](../../../04.spring-backend/04-data/cache/implementations-and-best-practices.md) — Redis / Caffeine / Ehcache
+- [多级缓存架构](../../../04.spring-backend/04-data/cache/multi-level.md) — 本地 + 分布式架构
 
 **服务降级（04.system-design）**：
-- [服务降级原理](../../../../note/04.system-design/03-high-availability/service-degradation/README.md) — Sentinel / Resilience4j 通用降级
-- [熔断原理](../../../../note/04.system-design/03-high-availability/circuit-break/README.md) — 熔断器原理
+- [服务降级原理](../../../06.distributed-systems/03-high-availability/service-degradation/README.md) — Sentinel / Resilience4j 通用降级
+- [熔断原理](../../../06.distributed-systems/03-high-availability/circuit-break/README.md) — 熔断器原理
 
 **同栏目兄弟**：
 - [事务陷阱](../transactional-pitfalls/README.md) — Spring 事务常见坑
@@ -329,7 +329,7 @@ public class UserService {
 - [Spring Bean 生命周期](../bean-lifecycle/README.md) — CacheManager 初始化
 
 **缓存三连**：
-- [缓存穿透/击穿/雪崩](../../../../note/13.split-hairs/03.database/cache-penetration-breakdown-avalanche/README.md) — 互补场景
+- [缓存穿透/击穿/雪崩](../../03.database/cache-penetration-breakdown-avalanche/README.md) — 互补场景
 
 ---
 

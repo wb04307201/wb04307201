@@ -29,7 +29,7 @@ Q：什么是单点登录（SSO）？以及实现流程？
 3. **6 大方案对比**：CAS / Cookie / OAuth2+OIDC / SAML / JWT / 代理
 4. **实战选型**：电商用 OAuth2+Redis，企业内部用 SAML，跨域用 OIDC
 
-完整 5-7 道精选面试题见 [13.split-hairs/05.security/sso](../../../13.split-hairs/05.security/sso/README.md)。
+完整 5-7 道精选面试题见 [13.split-hairs/05.security/sso](../../../12.interview/05.security/sso/README.md)。
 
 ---
 
@@ -90,7 +90,7 @@ SSO 选型公式：
 ## 速查 · 关联资源
 - **OAuth2 深度**：[oauth2-oidc](../oauth2-oidc/README.md) —— 500 行深度 + 流程图
 - **JWT 深度**：[jwt-security](../jwt-security/README.md) —— 325 行深度
-- **面试题**：[13.split-hairs/05.security/sso](../../../13.split-hairs/05.security/sso/README.md) —— 5-7 道精选题
+- **面试题**：[13.split-hairs/05.security/sso](../../../12.interview/05.security/sso/README.md) —— 5-7 道精选题
 
 ---
 

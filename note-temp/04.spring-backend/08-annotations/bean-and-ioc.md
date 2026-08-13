@@ -315,7 +315,7 @@ public class LogAspect { ... }
 ## 🤔 思考
 
 1. **@Component 家族（@Service/@Repository/@Controller）为什么功能等价还要分？** 业务语义化 + 未来扩展点（@Repository 自动转换异常）。
-2. **构造器注入还是字段注入？** Spring 官方推荐**构造器注入**（强制依赖、利于测试、支持 final）。👉 详见 [为什么不推荐 @Autowired 字段注入](../../../note/13.split-hairs/06.spring/not-use-@autowired/README.md)。
+2. **构造器注入还是字段注入？** Spring 官方推荐**构造器注入**（强制依赖、利于测试、支持 final）。👉 详见 [为什么不推荐 @Autowired 字段注入](../../12.interview/06.spring/not-use-@autowired/README.md)。
 3. **@Autowired 找不到 Bean 怎么办？** 检查包路径（是否在 @ComponentScan 范围）、@Service 是否漏写、依赖是否冲突。
 4. **为什么 singleton Bean 要避免可变成员变量？** 多个线程共享同一实例，可变状态会引发数据竞争。
 5. **@Primary vs @Qualifier？** @Primary 是"约定"（默认选谁），@Qualifier 是"显式指定"。多团队协作时优先用 `@Qualifier` 显式声明，避免隐式行为。
@@ -328,7 +328,7 @@ public class LogAspect { ... }
 - [01 核心容器/IoC](../../README.md) — Bean 生命周期
 - [01 核心容器/依赖注入](../01-core/ioc/dependency-injection.md) — 3 种注入方式详解
 - [01 核心容器/循环依赖](../01-core/ioc/circular-dependency.md) — @Lazy 解决循环依赖
-- [13 辨析/为什么不推荐 @Autowired 字段注入](../../../note/13.split-hairs/06.spring/not-use-@autowired/README.md)
+- [13 辨析/为什么不推荐 @Autowired 字段注入](../../12.interview/06.spring/not-use-@autowired/README.md)
 - [配置注解](configuration.md) — @Configuration + @Bean
 - [Web 注解](web.md) — @Controller 用法
 

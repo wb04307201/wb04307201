@@ -61,7 +61,7 @@ module:
 
 ## 四、TCP 3 次握手 + 4 次挥手
 
-> 🔗 面试深挖版：[`TCP 三次握手四次挥手`](../../../../note/13.split-hairs/02.computer-basics/tcp-handshake-teardown/README.md) — 状态机 + 10 个深挖问题 + TIME_WAIT/CLOSE_WAIT 排查
+> 🔗 面试深挖版：[`TCP 三次握手四次挥手`](../../../12.interview/02.computer-basics/tcp-handshake-teardown/README.md) — 状态机 + 10 个深挖问题 + TIME_WAIT/CLOSE_WAIT 排查
 
 ### 4.1 3 次握手（建立连接）
 
@@ -319,7 +319,7 @@ tcpdump -i eth0 -w capture.pcap port 443
 
 ## 十一、端口复用机制 · SO_REUSEADDR vs SO_REUSEPORT 深度
 
-> 面试速查版见 [13.split-hairs · port-reuse-so-reuseport](../../../../note/13.split-hairs/02.computer-basics/port-reuse-so-reuseport/README.md)。
+> 面试速查版见 [13.split-hairs · port-reuse-so-reuseport](../../../12.interview/02.computer-basics/port-reuse-so-reuseport/README.md)。
 
 ### 11.1 3 大场景速查（核心问题：两进程能同监听吗）
 

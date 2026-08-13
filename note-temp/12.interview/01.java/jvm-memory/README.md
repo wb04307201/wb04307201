@@ -31,7 +31,7 @@ Object obj = new Object();
 
 ## 一、核心原理
 
-> 📚 **前置知识**：[JVM](../../../../note/01.java/jvm/README.md)
+> 📚 **前置知识**：[JVM](../../../01.java-and-jvm/02-jvm/README.md)
 
 JVM 运行时数据区（Runtime Data Area）是 Java 虚拟机规范定义的核心内存模型，分为线程共享区和线程私有区两大类。
 

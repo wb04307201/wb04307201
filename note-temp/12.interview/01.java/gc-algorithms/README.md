@@ -29,7 +29,7 @@ question:
 
 ## 一、核心原理
 
-> 📚 **前置知识**：[JVM](../../../../note/01.java/jvm/README.md)
+> 📚 **前置知识**：[JVM](../../../01.java-and-jvm/02-jvm/README.md)
 
 垃圾回收（Garbage Collection）的本质是解决三个问题：**哪些对象可以回收**、**何时回收**、**如何回收**。前两个问题由引用计数、可达性分析等判定算法解决，而"如何回收"则依赖以下四种基础算法：
 
@@ -261,8 +261,8 @@ Full GC 是性能杀手，常见触发场景包括：
 ## 七、交叉引用
 
 - 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
-- [JVM 内存](../../../../note/01.java/jvm/README.md) — JVM 内存模型
-- [JVM 调优](../../../../note/01.java/jvm/tuning.md) — JVM 调优实战
+- [JVM 内存](../../../01.java-and-jvm/02-jvm/README.md) — JVM 内存模型
+- [JVM 调优](../../../01.java-and-jvm/02-jvm/tuning.md) — JVM 调优实战
 - [Full GC 排查](../full-gc-troubleshooting/) — 线上频繁 Full GC 排查全链路
 
 ## 相关章节

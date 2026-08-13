@@ -43,7 +43,7 @@ Spring 定义了 **7 种传播行为**，精确控制嵌套事务的归属。
 
 ---
 
-> 📚 **前置知识**：[事务](../../../../note/06.spring/03-data/transaction/README.md) | [传播行为](../../../../note/06.spring/03-data/transaction/propagation-and-isolation.md)
+> 📚 **前置知识**：[事务](../../../04.spring-backend/04-data/transaction/README.md) | [传播行为](../../../04.spring-backend/04-data/transaction/propagation-and-isolation.md)
 
 ## 一、核心原理
 
@@ -363,8 +363,8 @@ public void methodWithCheckedException() throws Exception {
 
 - 主模块：[`06.spring`](../../../../note/06.spring/) — Spring 知识体系
 - [事务失效场景](../transactional-pitfalls/README.md) — @Transactional 失效场景
-- [事务传播](../../../../note/06.spring/03-data/transaction/propagation-and-isolation.md) — 事务传播与隔离级别详解
-- [分布式事务](../../../../note/04.system-design/02-distributed/distributed-transaction/README.md) — 分布式事务方案对比
+- [事务传播](../../../04.spring-backend/04-data/transaction/propagation-and-isolation.md) — 事务传播与隔离级别详解
+- [分布式事务](../../../06.distributed-systems/02-distributed/distributed-transaction/README.md) — 分布式事务方案对比
 
 ## 相关章节
 

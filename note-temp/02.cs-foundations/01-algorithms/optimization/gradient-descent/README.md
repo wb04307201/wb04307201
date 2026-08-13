@@ -110,7 +110,7 @@ Adam:       m ← β1*m + (1-β1)*g      # 一阶动量
 
 - **本目录**：[Newton 法](../) / [LBFGS](../)
 - **02 同级**：[K-means](../../clustering/k-means/README.md) / [PCA](../../dimensionality-reduction/pca/README.md)
-- **AI 训练**：[SFT 训练](../../../../note-temp/09.ai-applications/fine-tuning/01-sft.md) / [RLHF PPO](../../../../note-temp/09.ai-applications/fine-tuning/02-rlhf.md)
+- **AI 训练**：[SFT 训练](../../../../09.ai-applications/fine-tuning/01-sft.md) / [RLHF PPO](../../../../09.ai-applications/fine-tuning/02-rlhf.md)
 
 ---
 

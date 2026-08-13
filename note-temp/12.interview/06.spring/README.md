@@ -66,13 +66,13 @@ question:
 ## 待补充的高频面试题（强烈建议）
 
 ### Spring Security
-- **认证 vs 授权流程** → 深度阅读：[`04.system-design/05-security/access-control`](../../../note/04.system-design/05-security/access-control/README.md)（RBAC/ABAC 6 大模型）
-- **JWT vs Session 方案对比** → 深度阅读：[`04.system-design/05-security`](../../../note/04.system-design/05-security/README.md)（JWT、OAuth2）
-- **CSRF 防护** → 深度阅读：[`09.front-end/07-security`](../../../note/09.front-end/07-security/README.md)（XSS/CSRF/CSP）
+- **认证 vs 授权流程** → 深度阅读：[`04.system-design/05-security/access-control`](../../06.distributed-systems/05-security/access-control/README.md)（RBAC/ABAC 6 大模型）
+- **JWT vs Session 方案对比** → 深度阅读：[`04.system-design/05-security`](../../06.distributed-systems/05-security/README.md)（JWT、OAuth2）
+- **CSRF 防护** → 深度阅读：[`09.front-end/07-security`](../../05.frontend/07-security/README.md)（XSS/CSRF/CSP）
 
 ### Spring Cloud
-- **负载均衡**（Ribbon / LoadBalancer）→ 深度阅读：[`06.spring/05-spring-cloud`](../../../note/06.spring/05-spring-cloud/README.md)
-- **配置中心**（Nacos Config / Spring Cloud Config）→ 深度阅读：[`06.spring/05-spring-cloud`](../../../note/06.spring/05-spring-cloud/README.md)
+- **负载均衡**（Ribbon / LoadBalancer）→ 深度阅读：[`06.spring/05-spring-cloud`](../../04.spring-backend/03-cloud/README.md)
+- **配置中心**（Nacos Config / Spring Cloud Config）→ 深度阅读：[`06.spring/05-spring-cloud`](../../04.spring-backend/03-cloud/README.md)
 
 ---
 

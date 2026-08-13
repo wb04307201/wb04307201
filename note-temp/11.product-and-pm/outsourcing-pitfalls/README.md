@@ -192,8 +192,8 @@ module:
 ## 七、相关章节
 
 - 同栏目：[`app-quote-breakdown`](../app-quote-breakdown/README.md) — App 报价 12 大差异
-- 同栏目：[`mobile-tech-stack`](../../../note/09.front-end/08-cross-platform/mobile-tech-stack/README.md) — App 技术栈选型
-- 主模块：[`04.system-design/01-foundation`](../../../note/04.system-design/01-foundation/README.md) — 软件工程基础
+- 同栏目：[`mobile-tech-stack`](../../05.frontend/08-cross-platform/mobile-tech-stack/README.md) — App 技术栈选型
+- 主模块：[`04.system-design/01-foundation`](../../06.distributed-systems/01-foundation/README.md) — 软件工程基础
 
 ---
 

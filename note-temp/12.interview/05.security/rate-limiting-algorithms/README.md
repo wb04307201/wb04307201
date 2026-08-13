@@ -10,7 +10,7 @@ question:
 
 # 令牌桶 vs 漏桶 vs 滑动窗口怎么选？—— 4 大限流算法对比
 
-> 一句话定位：**令牌桶允许突发**，**漏桶强制平滑**，**滑动窗口精确计数**，**固定窗口最简单但有边界问题**。完整 API 安全见 [主模块 API 安全](../../../../note/04.system-design/05-security/api-security/README.md)。
+> 一句话定位：**令牌桶允许突发**，**漏桶强制平滑**，**滑动窗口精确计数**，**固定窗口最简单但有边界问题**。完整 API 安全见 [主模块 API 安全](../../../06.distributed-systems/05-security/api-security/README.md)。
 
 > **系列定位**：经典系统设计面试题（高频）。考察 **4 种算法适用场景** + **Redis 分布式实现** + **边界条件处理**。
 
@@ -123,7 +123,7 @@ return 1  -- 拒绝
 - [HTTPS 握手性能优化](../https-handshake/README.md) — 连接层性能优化
 - [OWASP Top 10](../owasp-top10/README.md) — API 安全与限流
 - [统一权限控制系统](../access-control-design/README.md) — 权限维度的访问控制
-- [主模块 04.system-design/05-security](../../../../note/04.system-design/05-security/README.md) — 安全知识体系
+- [主模块 04.system-design/05-security](../../../06.distributed-systems/05-security/README.md) — 安全知识体系
 
 ---
 

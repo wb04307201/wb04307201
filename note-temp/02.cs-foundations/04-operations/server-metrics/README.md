@@ -226,10 +226,10 @@ module:
 
 ## 相关章节
 
-- [Prometheus 指标采集](../../../04.system-design/08-observability/01-prometheus/README.md) — 主机/应用指标如何落库与告警
-- [Grafana 可视化](../../../04.system-design/08-observability/02-grafana/README.md) — 把上面这些指标做成看板
-- [高性能架构总览](../../../04.system-design/04-high-performance/README.md) — 在数据库、缓存、连接池维度同样适用
-- [数据库监控](../../../03.database/11-monitoring/README.md) — 慢 SQL / 连接数等数据库侧指标
+- [Prometheus 指标采集](../../../06.distributed-systems/08-observability/01-prometheus/README.md) — 主机/应用指标如何落库与告警
+- [Grafana 可视化](../../../06.distributed-systems/08-observability/02-grafana/README.md) — 把上面这些指标做成看板
+- [高性能架构总览](../../../06.distributed-systems/04-high-performance/README.md) — 在数据库、缓存、连接池维度同样适用
+- [数据库监控](../../../03.data-stack/01-database/11-monitoring/README.md) — 慢 SQL / 连接数等数据库侧指标
 
 ---
 

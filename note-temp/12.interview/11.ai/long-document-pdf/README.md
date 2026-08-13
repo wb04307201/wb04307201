@@ -226,7 +226,7 @@ question:
 - **兄弟面试题**：[Prompt Injection 面试深挖](../prompt-injection/README.md) — 长合同场景下 RAG 的间接注入风险
 - **兄弟面试题**：[RAG 面试深挖](../rag/README.md) — RAG Pipeline 通用模板
 - **兄弟面试题**：[长上下文 Agent 策略](../long-context-agent-strategy/README.md) — Agent 视角的长上下文利用
-- **餐厅叙事**：[12.story 36 — RAG 检索增强生成](../../../../note/12.story/36-rag-retrieval-augmented-generation.md) — 用阿明餐厅串起 RAG 全流程
+- **餐厅叙事**：[12.story 36 — RAG 检索增强生成](../../../13.story/36-rag-retrieval-augmented-generation.md) — 用阿明餐厅串起 RAG 全流程
 
 ---
 

@@ -108,6 +108,6 @@ BFF 模式是微服务架构发展到一定阶段，为了解决前后端协作�
 ## 反向链
 
 - [bpmn-ai-integration](../../../../note/11.ai/04-architecture/bpmn-ai-integration.md)
-- [20-multiplatform-architecture](../../../../note/12.story/20-multiplatform-architecture.md)
+- [20-multiplatform-architecture](../../../13.story/20-multiplatform-architecture.md)
 
 ← [返回 前端架构](../README.md)

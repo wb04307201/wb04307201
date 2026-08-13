@@ -35,7 +35,7 @@ for (int i = 0; i < 1_000_000; i++) {
 
 ## 一、核心原理
 
-> 📚 **前置知识**：[HashMap](../../../../note/01.java/collection/hashmap.md)
+> 📚 **前置知识**：[HashMap](../../../01.java-and-jvm/collection/hashmap.md)
 
 HashMap扩容（Resize）是Java集合中最昂贵的操作之一。理解内部机制对设计高性能系统至关重要。
 
@@ -303,7 +303,7 @@ public class HashMapResizeBenchmark {
 
 - **延伸学习**：[ConcurrentHashMap](../concurrent-hashmap/README.md) - 高并发最佳实践
 - **关联知识**：[HashMap 线程不安全](../hashmap-thread-unsafe/) — 3 大不安全表现 + 源码分析 + 4 大解决方案
-- **性能优化**：[JVM调优](../../../../note/01.java/jvm/tuning.md) - 减少扩容引发的GC
+- **性能优化**：[JVM调优](../../../01.java-and-jvm/02-jvm/tuning.md) - 减少扩容引发的GC
 - **关联知识**：[Atomic替代synchronized](../replace-synchronized-with-atomic/README.md)
 
 ## 相关章节

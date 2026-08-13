@@ -108,7 +108,7 @@ graph LR
 - ⬅️ [返回 Spring 顶层](../README.md)
 - ⬅️ [04 Spring Boot](../02-boot/README.md) — Actuator 是 Boot 的核心模块
 - ➡️ [05 Spring Cloud](../03-cloud/README.md) — 链路追踪是微服务必备
-- [04.system-design/07-deployment/observability](../../../note/04.system-design/07-deployment/observability/README.md) — 监控体系理论（SLO/Error Budget/USE/RED 全局视角）
+- [04.system-design/07-deployment/observability](../../06.distributed-systems/07-deployment/observability/README.md) — 监控体系理论（SLO/Error Budget/USE/RED 全局视角）
 
 > 💡 **理论/全局视角见 `04.system-design/07-deployment/observability`**（SLO、Error Budget、USE、RED 等方法论）；**本文档聚焦 Spring 实现细节**。
 

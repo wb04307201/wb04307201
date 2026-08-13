@@ -10,7 +10,7 @@ question:
 
 # 贪心算法深度剖析：什么时候局部最优等于全局最优？
 
-> 一句话定位：贪心算法是面试算法设计的**核心策略之一**——关键不是"会写贪心"，而是能**证明贪心选择性质**、**区分贪心 vs DP**、**识别贪心失效场景**。完整深度见 [主模块贪心算法](../../../../note/02.computer-basics/02-algorithms/greedy-algorithms/README.md)。
+> 一句话定位：贪心算法是面试算法设计的**核心策略之一**——关键不是"会写贪心"，而是能**证明贪心选择性质**、**区分贪心 vs DP**、**识别贪心失效场景**。完整深度见 [主模块贪心算法](../../../02.cs-foundations/01-algorithms/greedy-algorithms/README.md)。
 
 > **系列定位**：经典 CS 面试题（字节 / 阿里 / 美团 / Google / Meta 高频）。考察的不是"贪心怎么写"，而是 **贪心性质证明** + **贪心 vs DP 决策** + **5 大失效反模式** + **工业级应用**。
 
@@ -207,9 +207,9 @@ return totalSum >= 0 ? start : -1;
 
 ## 六、相关章节
 
-- 主模块深度：[`02-algorithms/greedy-algorithms`](../../../../note/02.computer-basics/02-algorithms/greedy-algorithms/README.md) —— 完整原理 + 6 大经典问题 + 拟阵理论
-- 字符串算法：[`string-algorithms`](../../../../note/02.computer-basics/02-algorithms/string-algorithms/README.md) —— Trie / KMP / AC 自动机
-- 复杂度分析：[`complexity`](../../../../note/02.computer-basics/02-algorithms/complexity/README.md) —— 时间 / 空间复杂度
+- 主模块深度：[`02-algorithms/greedy-algorithms`](../../../02.cs-foundations/01-algorithms/greedy-algorithms/README.md) —— 完整原理 + 6 大经典问题 + 拟阵理论
+- 字符串算法：[`string-algorithms`](../../../02.cs-foundations/01-algorithms/string-algorithms/README.md) —— Trie / KMP / AC 自动机
+- 复杂度分析：[`complexity`](../../../02.cs-foundations/01-algorithms/complexity/README.md) —— 时间 / 空间复杂度
 - 同栏目：[`sensitive-word-filter`](../sensitive-word-filter/README.md) —— AC 自动机面试题
 - 返回：[`02.computer-basics`](../README.md) —— 计算机基础面试题目录
 

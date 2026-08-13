@@ -113,8 +113,8 @@ LocalStorage 也可以用于会话存储，但**这种方式通常安全性较�
 
 ## 🔗 配套章节
 
-- 🆕 [JWT 安全深度](../../../../note/04.system-design/05-security/jwt-security/README.md) —— 「为什么 localStorage 存 JWT 是危险的」+ 6 大方案对比表 + HttpOnly Cookie 首选 + 双 Token（内存 + Refresh Cookie）实战代码
-- 🆕 [前端存储方式（咬文嚼字）](../../../../note/13.split-hairs/09.front-end/storage/README.md) —— 4 种存储对比 + 场景化推荐（用户认证与会话管理 → Cookie + HttpOnly）
+- 🆕 [JWT 安全深度](../../../06.distributed-systems/05-security/jwt-security/README.md) —— 「为什么 localStorage 存 JWT 是危险的」+ 6 大方案对比表 + HttpOnly Cookie 首选 + 双 Token（内存 + Refresh Cookie）实战代码
+- 🆕 [前端存储方式（咬文嚼字）](../../../12.interview/09.front-end/storage/README.md) —— 4 种存储对比 + 场景化推荐（用户认证与会话管理 → Cookie + HttpOnly）
 
 ---
 

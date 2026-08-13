@@ -123,7 +123,7 @@ question:
 
 **主模块**：
 - [11.ai/01-fundamentals/dropout-in-llm（深度原理）](../../../../note/11.ai/01-fundamentals/dropout-in-llm/README.md)
-- [11.ai/01-fundamentals/llm-basics（LLM 训练基础）](../../../../note/11.ai/01-fundamentals/llm-basics/README.md)
+- [11.ai/01-fundamentals/llm-basics（LLM 训练基础）](../../../08.ai-foundations/04-llm/README.md)
 - [11.ai/01-fundamentals/neural-layers（神经网络层原理）](../../../../note/11.ai/01-fundamentals/neural-layers/README.md)
 
 **同栏目（11.ai 高频面试题）**：

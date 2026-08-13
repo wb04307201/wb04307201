@@ -219,7 +219,7 @@ CAP 定理由 Eric Brewer（2000 年）提出，分布式系统**最多同时满
 - [数据库基础知识](../01-fundamentals/README.md) — 关系型 vs 非关系型基础
 - [SQL](../02-sql/README.md) — SQL 查询范式
 - [Redis](../07-redis/README.md) — Redis 作为键值型 NoSQL
-- [系统设计 · 分布式缓存](../../../../note/04.system-design/02-distributed/distributed-cache/README.md) — 缓存架构深入
+- [系统设计 · 分布式缓存](../../../06.distributed-systems/02-distributed/distributed-cache/README.md) — 缓存架构深入
 
 ---
 

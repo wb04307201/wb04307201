@@ -28,7 +28,7 @@ QPS：50 万（超过单机性能上限）
 
 ---
 
-> 📚 **前置知识**：[Redis](../../../../note/03.database/07-redis/README.md)
+> 📚 **前置知识**：[Redis](../../../03.data-stack/01-database/07-redis/README.md)
 
 ## 一、核心原理
 
@@ -290,7 +290,7 @@ Cluster 中 `MULTI/EXEC` 只能操作**同槽内的 Key**。
   - [Redis 大Key问题](../redis-big-key/README.md)
   - [Redis 持久化机制](../redis-persistence/README.md)
   - [Redis 缓存穿透/击穿/雪崩](../cache-penetration-breakdown-avalanche/README.md)
-  - [分布式锁实现](../../../../note/04.system-design/02-distributed/distributed-lock/README.md)
+  - [分布式锁实现](../../../06.distributed-systems/02-distributed/distributed-lock/README.md)
 
 ## 相关章节
 

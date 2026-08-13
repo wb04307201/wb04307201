@@ -10,7 +10,7 @@ question:
 
 # 决策树 ID3 / C4.5 / CART：三种划分准则的本质区别
 
-> ⬅️ [返回: 02.computer-basics 综述](../README.md) | [主模块: decision-tree](../../../../../note/02.computer-basics/02-algorithms/decision-tree/README.md)
+> ⬅️ [返回: 02.computer-basics 综述](../README.md) | [主模块: decision-tree](../../../../02.cs-foundations/01-algorithms/decision-tree/README.md)
 
 > **一句话定位**：3 个决策树"前现代"算法（ID3 / C4.5 / CART）的**划分准则差异**——是面试"概念辨析"型经典题。
 
@@ -138,7 +138,7 @@ clf = DecisionTreeClassifier(
 
 ## 六、交叉引用
 
-- **主模块**：[`02-algorithms/decision-tree`](../../../../../note/02.computer-basics/02-algorithms/decision-tree/README.md) — 决策树原理深度（含 CART 推导）
+- **主模块**：[`02-algorithms/decision-tree`](../../../../02.cs-foundations/01-algorithms/decision-tree/README.md) — 决策树原理深度（含 CART 推导）
 - **兄弟面试题**：[`boosting-comparison`](../boosting-comparison/README.md) — XGBoost/LightGBM/CatBoost 横评（基学习器 = CART） / [`k-means-convergence`](../k-means-convergence/README.md) / [`pca-math`](../pca-math/README.md)
 - **反向链接**：[`02.computer-basics 综述`](../README.md) — 6 大核心题速查表
 

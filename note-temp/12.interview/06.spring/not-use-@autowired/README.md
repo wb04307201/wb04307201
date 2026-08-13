@@ -42,7 +42,7 @@ public class OrderService {
 
 ---
 
-> 📚 **前置知识**：[IOC](../../../../note/06.spring/01-core/ioc/README.md) | [依赖注入](../../../../note/06.spring/01-core/ioc/dependency-injection.md)
+> 📚 **前置知识**：[IOC](../../../04.spring-backend/01-core/ioc/README.md) | [依赖注入](../../../04.spring-backend/01-core/ioc/dependency-injection.md)
 
 ---
 
@@ -148,9 +148,9 @@ public class OrderService {
 
 ---
 
-> Spring 完整注解速查（包含 @Lazy / @Primary / @DependsOn 等）见 [Bean 与 IoC](../../../../note/06.spring/08-annotations/bean-and-ioc.md)。## 相关章节
+> Spring 完整注解速查（包含 @Lazy / @Primary / @DependsOn 等）见 [Bean 与 IoC](../../../04.spring-backend/08-annotations/bean-and-ioc.md)。## 相关章节
 
-- 深度阅读：[`06.spring/01-core`](../../../../note/06.spring/01-core/README.md) — IoC 容器、依赖注入方式
+- 深度阅读：[`06.spring/01-core`](../../../04.spring-backend/01-core/README.md) — IoC 容器、依赖注入方式
 - 相关：[`13.split-hairs/bean-lifecycle`](../bean-lifecycle/README.md) — Bean 生命周期 12 步
 
 ← [返回: 咬文嚼字 · not-use-@autowired](../README.md)

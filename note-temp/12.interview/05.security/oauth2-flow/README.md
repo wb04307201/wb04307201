@@ -10,7 +10,7 @@ question:
 
 # OAuth2 四种授权模式分别适用什么场景？—— Grant Type 选型与 PKCE 加固
 
-> 一句话定位：OAuth2 的 4 种 Grant Type 本质是**"谁来证明身份、在哪里证明"**的不同组合。完整 OAuth2 协议见 [主模块 OAuth2/OIDC](../../../../note/04.system-design/05-security/oauth2-oidc/README.md)。
+> 一句话定位：OAuth2 的 4 种 Grant Type 本质是**"谁来证明身份、在哪里证明"**的不同组合。完整 OAuth2 协议见 [主模块 OAuth2/OIDC](../../../06.distributed-systems/05-security/oauth2-oidc/README.md)。
 
 > **系列定位**：经典安全面试题（大厂高频）。考察 **4 种模式场景化对比** + **PKCE 为什么取代 Implicit** + **Authorization Code 拦截攻击**。
 
@@ -115,7 +115,7 @@ question:
 - [单点登录 6 大方案](../sso/README.md) — OAuth2 在 SSO 中的角色
 - [JWT vs Session](../jwt-vs-session/README.md) — Token 存储与传递
 - [XSS、CSRF、CSP 三件套](../xss-csrf-csp/README.md) — State 参数与 CSRF 防护
-- [主模块 OAuth2/OIDC](../../../../note/04.system-design/05-security/oauth2-oidc/README.md) — 协议深度 + Spring 实现
+- [主模块 OAuth2/OIDC](../../../06.distributed-systems/05-security/oauth2-oidc/README.md) — 协议深度 + Spring 实现
 
 ---
 

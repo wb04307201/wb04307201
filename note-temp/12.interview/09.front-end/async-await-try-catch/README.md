@@ -10,7 +10,7 @@ question:
 
 # async/await 必须 try/catch 吗？4 种错误处理深挖
 
-> 一句话定位：**必须 try/catch 吗？不是！** 4 种错误处理方式（try/catch、.catch()、unhandledrejection、Result 模式）都有效——按场景选最合适的。完整深度见 [主模块 async-await-error-handling 专题](../../../../note/09.front-end/02-language/runtime/async-await-error-handling/README.md)。
+> 一句话定位：**必须 try/catch 吗？不是！** 4 种错误处理方式（try/catch、.catch()、unhandledrejection、Result 模式）都有效——按场景选最合适的。完整深度见 [主模块 async-await-error-handling 专题](../../../05.frontend/02-language/runtime/async-await-error-handling/README.md)。
 
 > **系列定位**：经典前端面试题（字节 / 阿里 / 美团 / 滴滴 / 拼多多 出题率 80%+）。考察的不是"try/catch 怎么写"，而是 **4 种错误处理方式** + **5 大反模式** + **React/Vue 异步错误全链路**。
 
@@ -396,11 +396,11 @@ if (err) {
 
 ### 主模块深度专题
 
-- [async-await-error-handling 总目录](../../../../note/09.front-end/02-language/runtime/async-await-error-handling/README.md)
-- [01-promise-error-basics](../../../../note/09.front-end/02-language/runtime/async-await-error-handling/01-promise-error-basics.md) —— Promise reject 机制
-- [02-four-error-handlers](../../../../note/09.front-end/02-language/runtime/async-await-error-handling/02-four-error-handlers.md) —— 4 种错误处理深度
-- [03-react-vue-production](../../../../note/09.front-end/02-language/runtime/async-await-error-handling/03-react-vue-production.md) —— React/Vue 实战
-- [04-five-anti-patterns](../../../../note/09.front-end/02-language/runtime/async-await-error-handling/04-five-anti-patterns.md) —— 5 反模式
+- [async-await-error-handling 总目录](../../../05.frontend/02-language/runtime/async-await-error-handling/README.md)
+- [01-promise-error-basics](../../../05.frontend/02-language/runtime/async-await-error-handling/01-promise-error-basics.md) —— Promise reject 机制
+- [02-four-error-handlers](../../../05.frontend/02-language/runtime/async-await-error-handling/02-four-error-handlers.md) —— 4 种错误处理深度
+- [03-react-vue-production](../../../05.frontend/02-language/runtime/async-await-error-handling/03-react-vue-production.md) —— React/Vue 实战
+- [04-five-anti-patterns](../../../05.frontend/02-language/runtime/async-await-error-handling/04-five-anti-patterns.md) —— 5 反模式
 
 ### 同栏目（09.front-end）姐妹篇
 
@@ -410,7 +410,7 @@ if (err) {
 
 ### 主模块兄弟
 
-- [09.front-end/02-language/runtime/README](../../../../note/09.front-end/02-language/runtime/README.md) —— JS 运行时
+- [09.front-end/02-language/runtime/README](../../../05.frontend/02-language/runtime/README.md) —— JS 运行时
 
 ### 实战姐妹（12.story）
 

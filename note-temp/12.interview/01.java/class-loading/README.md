@@ -31,7 +31,7 @@ JVM 偷偷加载了 JDK 自带的 `java.lang.String`。为什么？
 
 ## 一、核心原理
 
-> 📚 **前置知识**：[JVM](../../../../note/01.java/jvm/README.md)
+> 📚 **前置知识**：[JVM](../../../01.java-and-jvm/02-jvm/README.md)
 
 ### 类的生命周期（7 阶段）
 
@@ -293,7 +293,7 @@ graph LR
 ## 七、交叉引用
 
 - 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
-- [JVM 内存](../../../../note/01.java/jvm/README.md) — JVM 内存模型
+- [JVM 内存](../../../01.java-and-jvm/02-jvm/README.md) — JVM 内存模型
 - [SPI 机制](../spi/README.md) — SPI 机制详解
 
 ## 相关章节

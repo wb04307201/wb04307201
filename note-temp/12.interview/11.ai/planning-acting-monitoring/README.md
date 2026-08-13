@@ -143,7 +143,7 @@ Q：Monitoring 阶段具体监控什么？
 
 ## 📚 深度阅读
 
-- [主模块深度文章](../../../../note/11.ai/04-architecture/agent-execution-patterns/planning-acting-monitoring/README.md) — 三阶段定义 + 6 反模式 + 工具链选型 + 实战案例
+- [主模块深度文章](../../../09.ai-applications/agent/agent-execution-patterns/planning-acting-monitoring/README.md) — 三阶段定义 + 6 反模式 + 工具链选型 + 实战案例
 - [ReAct vs Plan-and-Execute](../react-vs-plan-execute/) — 执行模式选型
 
 ---

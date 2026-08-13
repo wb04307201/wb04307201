@@ -119,10 +119,10 @@ Q4 ──┤       Q7,Q8 ────┤           Q4 ──────┤  K2,
 
 ## 六、交叉引用
 
-- 深度阅读：[KV Cache 深度原理](../../../../note/11.ai/02-technology-stack/kv-cache/README.md) — 推理复杂度 + MQA/GQA/MLA 对比专章
-- 相关：[注意力机制](../../../../note/11.ai/01-fundamentals/attention-mechanism/README.md) — MQA/GQA 原理
-- 相关：[PagedAttention](../../../../note/11.ai/02-technology-stack/paged-attention/README.md) — KV Cache 碎片优化
-- 相关：[Flash Attention](../../../../note/11.ai/01-fundamentals/flash-attention/README.md) — Attention IO 优化
+- 深度阅读：[KV Cache 深度原理](../../../09.ai-applications/llm-inference/kv-cache/README.md) — 推理复杂度 + MQA/GQA/MLA 对比专章
+- 相关：[注意力机制](../../../08.ai-foundations/03-transformer/attention-mechanism.md) — MQA/GQA 原理
+- 相关：[PagedAttention](../../../09.ai-applications/llm-inference/paged-attention/README.md) — KV Cache 碎片优化
+- 相关：[Flash Attention](../../../09.ai-applications/llm-inference/flash-attention/README.md) — Attention IO 优化
 - 相关面试题：[Transformer 架构](../transformer/README.md) / [LLM 推理优化](../llm-inference/README.md)
 
 ## 七、追加问题（面试官可能会追问）

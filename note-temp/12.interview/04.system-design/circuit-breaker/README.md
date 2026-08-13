@@ -28,7 +28,7 @@ question:
 
 ---
 
-> 📚 **前置知识**：[熔断器](../../../../note/04.system-design/03-high-availability/circuit-break/README.md)
+> 📚 **前置知识**：[熔断器](../../../06.distributed-systems/03-high-availability/circuit-break/README.md)
 
 ## 一、核心原理
 

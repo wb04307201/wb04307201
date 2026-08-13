@@ -122,7 +122,7 @@ question:
 - [主模块 · 线上监控与定位](../../../../note/11.ai/08-llmops/production-stability/05-online-monitoring.md) —— 深度内容
 - [主模块 · llm-production-thinking 总目录](../../../../note/11.ai/08-llmops/production-stability/README.md)
 - [主模块 · 决策树](../../../../note/11.ai/08-llmops/production-stability/06-decision-tree.md)
-- [12.story · 05-observability](../../../../note/12.story/05-observability.md) —— 阿明餐厅的可观测性实战
+- [12.story · 05-observability](../../../13.story/05-observability.md) —— 阿明餐厅的可观测性实战
 
 ---
 

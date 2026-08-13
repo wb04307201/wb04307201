@@ -433,11 +433,11 @@ CompletableFuture.allOf(t1, t2)
 - [CompletableFuture](../completablefuture/README.md) — 异步编排全貌
 
 **面试题（13.split-hairs）**：
-- [三个线程按顺序执行面试 5 题](../../../../note/13.split-hairs/01.java/thread-sequential-execution/README.md) — 本文实战模板的面试题版
+- [三个线程按顺序执行面试 5 题](../../../12.interview/01.java/thread-sequential-execution/README.md) — 本文实战模板的面试题版
 
 **相关主题**：
-- [线程池](../../../../note/13.split-hairs/01.java/thread-pool/README.md) — 多线程管理
-- [ThreadLocal](../../../../note/13.split-hairs/01.java/threadlocal/README.md) — 线程局部变量
+- [线程池](../../../12.interview/01.java/thread-pool/README.md) — 多线程管理
+- [ThreadLocal](../../../12.interview/01.java/threadlocal/README.md) — 线程局部变量
 
 ---
 

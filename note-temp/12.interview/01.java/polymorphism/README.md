@@ -10,7 +10,7 @@ question:
 
 # Java 多态面试深挖（4 大核心）
 
-> ⬅️ [返回 Java 咬文嚼字](../README.md) | [主模块深度专题](../../../../note/01.java/concepts/polymorphism/README.md)
+> ⬅️ [返回 Java 咬文嚼字](../README.md) | [主模块深度专题](../../../01.java-and-jvm/01-language/polymorphism/README.md)
 
 > **一句话定位**：**4 大核心 Java 多态面试深挖**（校招+社招高频）：编译时 vs 运行时 / 重载 vs 重写 / vtable super / 接口 default 冲突。
 
@@ -126,10 +126,10 @@ question:
 
 ## 🔗 兄弟章节
 
-- 主模块深度链：[01.java/concepts/polymorphism](../../../../note/01.java/concepts/polymorphism/README.md) — 多态专题（重载 vs 重写 + 编译时 vs 运行时分派 + vtable + default + 协变返回）
+- 主模块深度链：[01.java/concepts/polymorphism](../../../01.java-and-jvm/01-language/polymorphism/README.md) — 多态专题（重载 vs 重写 + 编译时 vs 运行时分派 + vtable + default + 协变返回）
 - 兄弟面试题：
   - [interface-vs-abstract](../interface-vs-abstract/) — 6 维对比 + 设计哲学 + 选择原则
-  - [object](../../../../note/01.java/concepts/data-types/README.md) — 为什么需要 Integer / Double 包装类？
+  - [object](../../../01.java-and-jvm/01-language/data-types/README.md) — 为什么需要 Integer / Double 包装类？
   - [reflection](../reflection/README.md) — Reflection API 使用与性能开销
   - [final-finally-finalize](../final-finally-finalize/README.md) — 三个关键字的区别与用法
   - [equals-hashcode](../equals-hashcode/README.md) — 相等性判断契约与陷阱

@@ -222,7 +222,7 @@ question:
 
 ---
 
-## 与 [`12.story`](../../note/12.story/STORY-FORMAT-SPEC.md) 的对比
+## 与 [`12.story`](../13.story/STORY-FORMAT-SPEC.md) 的对比
 | 维度 | story（叙事） | split-hairs（刺刀） |
 |------|--------------|-------------------|
 | **目标读者** | 系统学习者 | 求职者 / 面试准备 |

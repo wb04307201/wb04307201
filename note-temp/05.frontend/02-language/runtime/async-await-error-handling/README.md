@@ -11,7 +11,7 @@ module:
 
 > **一句话答案**：**必须 try/catch 吗？不是！** 4 种错误处理方式都有效：try/catch（局部）、.catch()（链式）、全局兜底（unhandledrejection）、Result 模式（不抛异常）。**实战推荐 try/catch + 全局兜底 组合**。
 
-← [返回: runtime 总目录](../README.md) · 同级：[promise-handwriting](../../../../../note/13.split-hairs/09.front-end/promise-handwriting/README.md) · [event-loop](../../../../../note/13.split-hairs/09.front-end/event-loop/README.md)
+← [返回: runtime 总目录](../README.md) · 同级：[promise-handwriting](../../../../12.interview/09.front-end/promise-handwriting/README.md) · [event-loop](../../../../12.interview/09.front-end/event-loop/README.md)
 
 ---
 
@@ -27,7 +27,7 @@ Q：async/await 必须使用 try/catch 吗？
 3. **何时用哪个**：根据错误是否可恢复、调用层级、是否需要冒泡
 4. **5 大反模式**：未捕获 / 静默吞掉 / 在 finally 抛 / 异步函数未 await
 
-完整 5-7 道精选面试题见 [13.split-hairs/09.front-end/async-await-try-catch](../../../../../note/13.split-hairs/09.front-end/async-await-try-catch/README.md)。
+完整 5-7 道精选面试题见 [13.split-hairs/09.front-end/async-await-try-catch](../../../../12.interview/09.front-end/async-await-try-catch/README.md)。
 
 ---
 
@@ -188,9 +188,9 @@ async/await 错误处理选择：
 ---
 
 ## 速查 · 关联资源
-- **事件循环**（执行顺序视角）：[event-loop](../../../../../note/13.split-hairs/09.front-end/event-loop/README.md)
-- **Promise 手写**（then/catch 实现）：[promise-handwriting](../../../../../note/13.split-hairs/09.front-end/promise-handwriting/README.md)
-- **面试题**：[13.split-hairs/09.front-end/async-await-try-catch](../../../../../note/13.split-hairs/09.front-end/async-await-try-catch/README.md)
+- **事件循环**（执行顺序视角）：[event-loop](../../../../12.interview/09.front-end/event-loop/README.md)
+- **Promise 手写**（then/catch 实现）：[promise-handwriting](../../../../12.interview/09.front-end/promise-handwriting/README.md)
+- **面试题**：[13.split-hairs/09.front-end/async-await-try-catch](../../../../12.interview/09.front-end/async-await-try-catch/README.md)
 
 ---
 

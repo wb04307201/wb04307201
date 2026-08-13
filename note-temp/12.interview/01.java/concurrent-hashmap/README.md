@@ -31,7 +31,7 @@ Map<String, Integer> concurrentMap = new ConcurrentHashMap<>();  // ✅ 快且�
 
 ## 一、核心原理
 
-> 📚 **前置知识**：[ConcurrentHashMap](../../../../note/01.java/collection/ConcurrentHashMap/README.md) | [HashMap](../../../../note/01.java/collection/hashmap.md)
+> 📚 **前置知识**：[ConcurrentHashMap](../../../01.java-and-jvm/collection/ConcurrentHashMap/README.md) | [HashMap](../../../01.java-and-jvm/collection/hashmap.md)
 
 ### JDK 7：分段锁（Segment）架构
 
@@ -347,12 +347,12 @@ map.merge(key, 1, Integer::sum);
 
 - 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
 - 相关主题：
-  - [HashMap 原理](../../../../note/01.java/collection/hashmap.md) — 对比理解非线程安全的哈希表实现
+  - [HashMap 原理](../../../01.java-and-jvm/collection/hashmap.md) — 对比理解非线程安全的哈希表实现
   - [HashMap 线程不安全](../hashmap-thread-unsafe/) — 3 大不安全表现 + 源码分析 + 4 大解决方案
-  - [ReentrantLock 原理](../../../../note/01.java/concurrency/juc-locks/README.md) — JDK 7 Segment 的锁实现基础
-  - [CAS 与原子类](../../../../note/01.java/concurrency/atomic/README.md) — JDK 8 CAS 操作的底层原理
-  - [synchronized 锁升级](../../../../note/01.java/concurrency/synchronized/README.md) — JDK 8 为何选择 synchronized
-  - [TreeMap 原理](../../../../note/01.java/collection/TreeMap/README.md) — JDK 8 树化机制的数据结构基础
+  - [ReentrantLock 原理](../../../01.java-and-jvm/03-concurrency/juc-locks/README.md) — JDK 7 Segment 的锁实现基础
+  - [CAS 与原子类](../../../01.java-and-jvm/03-concurrency/atomic/README.md) — JDK 8 CAS 操作的底层原理
+  - [synchronized 锁升级](../../../01.java-and-jvm/03-concurrency/synchronized/README.md) — JDK 8 为何选择 synchronized
+  - [TreeMap 原理](../../../01.java-and-jvm/collection/TreeMap/README.md) — JDK 8 树化机制的数据结构基础
 
 ## 相关章节
 

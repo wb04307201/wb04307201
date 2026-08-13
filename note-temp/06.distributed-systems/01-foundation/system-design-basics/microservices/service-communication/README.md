@@ -249,7 +249,7 @@ sequenceDiagram
 
 ### 3.3 消息可靠性保障
 
-> 🔗 面试深挖版：[`支付消息丢失排查`](../../../../../13.split-hairs/04.system-design/payment-message-lost/README.md) — 全链路 5 段排查 + 6 种根因 + 面试话术
+> 🔗 面试深挖版：[`支付消息丢失排查`](../../../../../12.interview/04.system-design/payment-message-lost/README.md) — 全链路 5 段排查 + 6 种根因 + 面试话术
 
 消息从生产到消费经过 3 段链路，每段都可能丢消息，需要**三段式确认**：
 

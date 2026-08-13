@@ -792,7 +792,7 @@ graph TD
 - [厨房装监控](./05-observability.md) —— 系统拆成微服务后，出了问题怎么查？日志、指标、链路追踪
 - [食安大检查](./06-security-architecture.md) —— 服务多了、接口多了，安全怎么保障？认证、权限、加密、零信任
 - [从厨师到 CEO](./07-from-chef-to-ceo.md) —— 架构拆了，团队也要拆。康威定律、技术雷达、平台工程
-- [企业架构 TOGAF](../../note/04.system-design/01-foundation/system-design-basics/togaf/README.md) —— TOGAF 详细参考：ADM 流程、业务能力地图、逆康威定律实践
+- [企业架构 TOGAF](../06.distributed-systems/01-foundation/system-design-basics/togaf/README.md) —— TOGAF 详细参考：ADM 流程、业务能力地图、逆康威定律实践
 - [给产品经理的重构说明书](./03-refactoring-guide-for-pm.md) —— 架构演进的过程中，技术债怎么管理？
 - [厨房质检员](./08-qa-testing-strategy.md) —— 微服务架构下的测试策略：单元测试 + 契约测试 + E2E 测试
 - [从接单到出餐](./09-cicd-devops.md) —— 架构演进后的持续交付：灰度发布、蓝绿部署、金丝雀发布
@@ -806,7 +806,7 @@ graph TD
 - [传菜窗口的智慧](./19-realtime-eventdriven.md) —— 消息队列是架构从单体走向分布式的关键一步
 - [十家店的烦恼](./17-distributed-puzzles.md) —— 架构演进到分布式后，CAP 定理和一致性问题是必须跨过的坎
 - [阿明的加盟帝国](./18-saas-multitenant.md) —— 架构演进的下一步：从自用系统到 SaaS 平台
-- [多租户 SaaS 架构深度](../../note/04.system-design/01-foundation/system-design-basics/multi-tenant-architecture/README.md) —— 阿明 SaaS 化的技术深度版：6 大隔离模型 + 4 应用层 + 5 反模式 + PostgreSQL RLS
+- [多租户 SaaS 架构深度](../06.distributed-systems/01-foundation/system-design-basics/multi-tenant-architecture/README.md) —— 阿明 SaaS 化的技术深度版：6 大隔离模型 + 4 应用层 + 5 反模式 + PostgreSQL RLS
 - [厨房实况直播](./19-realtime-eventdriven.md) —— 事件驱动架构是架构演进的新方向，从请求-响应到事件流
 - [一个厨房，四个门面](./20-multiplatform-architecture.md) —— 架构演进到多端，统一网关和适配层成为新的架构挑战
 - [懂你的菜单](./21-search-recommendation.md) —— 搜索推荐系统是架构成熟后的增值层，从业务系统到智能系统
@@ -872,7 +872,7 @@ CTO 会上，产品同事小王提了第一个问题：「为什么不用 ReAct�
 
 **这是 80 家分店的标准答案** —— 你不需要"全 ReAct"的银弹，你需要"按场景选择" + "混合架构"的工程能力。
 
-> 🆕 **4 模式深度解析**：ReAct Thought/Action/Observation + Plan-and-Execute 3 大重规划 + 4 模式 6 维量化对比 + 5 分钟决策树 → 详见 [Agent 4 大执行模式深度专题](../../note/11.ai/04-architecture/agent-execution-patterns/README.md)（含 5 文件 1107 行）。面试精选 7 道 Q&A 见 [13.split-hairs/11.ai/react-vs-plan-execute](../../note-temp/12.interview/11.ai/react-vs-plan-execute/README.md)。
+> 🆕 **4 模式深度解析**：ReAct Thought/Action/Observation + Plan-and-Execute 3 大重规划 + 4 模式 6 维量化对比 + 5 分钟决策树 → 详见 [Agent 4 大执行模式深度专题](../09.ai-applications/agent/agent-execution-patterns/README.md)（含 5 文件 1107 行）。面试精选 7 道 Q&A 见 [13.split-hairs/11.ai/react-vs-plan-execute](../../note-temp/12.interview/11.ai/react-vs-plan-execute/README.md)。
 
 ---
 

@@ -269,9 +269,9 @@ QPS从XX提升到XX。我对分布式系统/性能优化感兴趣，持续学习
 
 - **Java基础**：[HashMap扩容](../hashmap-resizing/README.md) - 集合底层原理
 - **并发编程**：[Atomic替代synchronized](../replace-synchronized-with-atomic/README.md)
-- **JVM调优**：[JVM调优](../../../../note/01.java/jvm/tuning.md)
-- **数据库**：[MySQL事务隔离](../../../../note/03.database/03-transaction/README.md)
-- **分布式系统**：[分布式锁](../../../../note/04.system-design/02-distributed/distributed-lock/README.md)
+- **JVM调优**：[JVM调优](../../../01.java-and-jvm/02-jvm/tuning.md)
+- **数据库**：[MySQL事务隔离](../../../03.data-stack/01-database/03-transaction/README.md)
+- **分布式系统**：[分布式锁](../../../06.distributed-systems/02-distributed/distributed-lock/README.md)
 - **前端知识**：[消息推送](09.front-end/message/README.md)
 - **数据持久化**：[StringBuilder重用](../reuse-of-stringbuilder/README.md)
 
