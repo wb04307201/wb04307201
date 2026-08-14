@@ -156,7 +156,7 @@ response = client.embeddings.create(
 
 ## 🔗 兄弟章节
 
-- **本专题**：[Chunking 策略](../chunking-strategies/README.md) / [Hybrid Search](../hybrid-search/README.md) / [Reranker](../reranker/README.md) / [RAG 评估](../../../09.ai-applications/rag/04-evaluation.md)
+- **本专题**：[Chunking 策略](../chunking-strategies/README.md) / [Hybrid Search](../hybrid-search/README.md) / [Reranker](../reranker/README.md) / [RAG 评估](.././04-evaluation.md)
 - **L1**：[Embedding vs Vectorization](../../01-fundamentals/embedding-vs-vectorization/README.md)
 - **咬文嚼字**：[RAG 面试](../../../12.interview/11.ai/rag/README.md)
 - **入库侧**：[knowledge-ingestion-pipeline](../knowledge-ingestion-pipeline/README.md) — Embedding 模型选型（在"Embedding"环节批量调用 + 异步写入）

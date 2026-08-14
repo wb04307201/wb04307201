@@ -232,7 +232,7 @@ skills/
 **主模块内**：
 - [Claude Code 大型代码库实践](README.md) — Skill 的"渐进式披露"基础
 - [Harness Engineering](../agent-reliability/harness-engineering/README.md) — 上下文工程的总论
-- [Context Engineering](../../02-technology-stack/context-engineering/README.md) — Token 预算与上下文压缩
+- [Context Engineering](../../agent/agent-context/context-engineering/README.md) — Token 预算与上下文压缩
 
 **面试题层（13.split-hairs）**：
 - [Skill 命中率面试 5 题](../../../12.interview/11.ai/skill-hit-rate/README.md) — 配套面试题

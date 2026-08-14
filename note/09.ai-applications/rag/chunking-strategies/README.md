@@ -162,7 +162,7 @@ RAG 检索质量（nDCG@10）：
 
 ## 🔗 兄弟章节
 
-- **本专题**：[Embedding 模型](../embedding-models/README.md) / [Hybrid Search](../hybrid-search/README.md) / [Reranker](../reranker/README.md) / [RAG 评估](../../../09.ai-applications/rag/04-evaluation.md)
+- **本专题**：[Embedding 模型](../embedding-models/README.md) / [Hybrid Search](../hybrid-search/README.md) / [Reranker](../reranker/README.md) / [RAG 评估](.././04-evaluation.md)
 - **L1**：[Lost in middle](../lost-in-middle/README.md)
 - **咬文嚼字**：[RAG 面试](../../../12.interview/11.ai/rag/README.md)
 - **应用场景**：[long-document-processing](../long-document-processing/README.md) — 长 PDF/合同实战视角（4 大策略整合）

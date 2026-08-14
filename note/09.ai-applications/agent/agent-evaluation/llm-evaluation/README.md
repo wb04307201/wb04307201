@@ -367,8 +367,8 @@ LLM-as-Judge（GPT-4 评分）：
 
 - 下游：[Agent 性能评估](../agent-evaluation/README.md) — 从 LLM 单次调用评估 → Agent 多步任务评估（6 维度 + 5 方法）
 - 关联：[生产级 Agent 系统](../../03-engineering/production-agent/README.md) — Shopify Sidekick 的评估实践（LLM-as-Judge + 用户模拟）
-- 关联：[Harness Engineering](../../03-engineering/harness-engineering/README.md) — 评估体系的工程化框架
-- 同模块：[LLM 安全](../llm-security/README.md) — 评估的另一个维度：安全性
+- 关联：[Harness Engineering](../../agent/agent-reliability/harness-engineering/README.md) — 评估体系的工程化框架
+- 同模块：[LLM 安全](./llm-security/README.md) — 评估的另一个维度：安全性
 - 面试：[如何量化 Agent 性能](../../../13.split-hairs/11.ai/agent-performance-evaluation/README.md) — 面试题版本
 
 ---
@@ -383,11 +383,11 @@ LLM-as-Judge（GPT-4 评分）：
 
 | # | 章节 | 一句话定位 |
 |---|------|-----------|
-| 1 | [RAG vs Fine-tuning vs Prompt](../01-rag-vs-finetuning/README.md) | 三大定制策略对比与选型决策 |
-| 2 | [LLMOps 栈](../02-llmops-stack/README.md) | 数据/训练/部署/监控/反馈全链路工程栈 |
-| 3 | [向量库 vs 缓存](../03-vector-db-vs-cache/README.md) | Embedding 检索 vs KV 缓存边界与协同 |
-| 4 | [LLM 评测](../04-llm-evaluation/README.md) | 自动化指标 + 人工评测 + A/B + 红队对抗 |
-| 5 | [LLM 安全](../llm-security/README.md) | OWASP LLM Top 10 + 6 层防御 + Guardrails 实战 |
-| 6 | [RAG 超范围拒答](../06-rag-out-of-domain-rejection/README.md) | 6 大检测机制 + 5 大拒答模式 + 4 步调优 |
+| 1 | [RAG vs Fine-tuning vs Prompt](./01-pipeline.mdREADME.md) | 三大定制策略对比与选型决策 |
+| 2 | [LLMOps 栈](./README.md) | 数据/训练/部署/监控/反馈全链路工程栈 |
+| 3 | [向量库 vs 缓存](./README.md) | Embedding 检索 vs KV 缓存边界与协同 |
+| 4 | [LLM 评测](./README.md) | 自动化指标 + 人工评测 + A/B + 红队对抗 |
+| 5 | [LLM 安全](./llm-security/README.md) | OWASP LLM Top 10 + 6 层防御 + Guardrails 实战 |
+| 6 | [RAG 超范围拒答](./README.md) | 6 大检测机制 + 5 大拒答模式 + 4 步调优 |
 
 ← [返回: L8 LLMOps](../README.md) · 📅 2026-06-28

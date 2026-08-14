@@ -154,9 +154,9 @@ def agent_score(trajectory, outcome, cost, feedback):
 | 专章 | 目录 | 核心问题 |
 |------|------|---------|
 | Agent A/B Test 系统设计 | [02-ab-testing-design/](02-ab-testing-design/README.md) | 多指标 + 流量分层 + 离线/在线双轨 + 显著性检验 + 自动决策 |
-| RAG 评估 | [../../../09.ai-applications/rag/04-evaluation.md](../../../09.ai-applications/rag/04-evaluation.md) | RAGAS / TruLens / DeepEval 3 大工具横评 + 检索质量 + 生成质量指标 + 黄金集最佳实践 |
+| RAG 评估 | [.././04-evaluation.md](.././04-evaluation.md) | RAGAS / TruLens / DeepEval 3 大工具横评 + 检索质量 + 生成质量指标 + 黄金集最佳实践 |
 
-> ⚠️ **断号说明**：系列文章原为 01–09 连续编号，第 09 章 `09-rag-evaluation` 已由 Task 13 迁至 RAG MOC（`../../../09.ai-applications/rag/04-evaluation.md`），本目录系列现为 01–08。`02-ab-testing-design/` 与 `02-five-methods.md` 共用编号 02 但属于不同类型（目录 vs 文件），不会冲突。
+> ⚠️ **断号说明**：系列文章原为 01–09 连续编号，第 09 章 `09-rag-evaluation` 已由 Task 13 迁至 RAG MOC（`.././04-evaluation.md`），本目录系列现为 01–08。`02-ab-testing-design/` 与 `02-five-methods.md` 共用编号 02 但属于不同类型（目录 vs 文件），不会冲突。
 
 ---
 
@@ -181,7 +181,7 @@ Agent Evaluation 公式：
 
 ## 速查 · 关联资源
 - **LLM 评估**：[LLM 单次调用评估](../../eval/README.md) —— 331 行深度
-- **RAG 评估**：[../../../09.ai-applications/rag/04-evaluation.md](../../../09.ai-applications/rag/04-evaluation.md) —— RAGAS / TruLens / DeepEval 3 大工具横评
+- **RAG 评估**：[.././04-evaluation.md](.././04-evaluation.md) —— RAGAS / TruLens / DeepEval 3 大工具横评
 - **面试题**：[13.split-hairs/11.ai/agent-performance-evaluation](../../../../12.interview/11.ai/agent-performance-evaluation/README.md) —— 7 道精选 Q&A（⚠️ 待 Phase 1+ 迁入）
 - **真实案例**：[Salesforce Agentforce 评测实践](../case-studies/10-salesforce-agentforce/README.md)
 - **生产级 Agent**：[Shopify Sidekick 评测流程](../production-agent/README.md)

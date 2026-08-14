@@ -404,7 +404,7 @@ define flow harmful
 ## 🔗 相关主题
 
 - **研究线综述**：[L7 前沿研究 - 安全与对齐](../../07-research/safety/README.md) — RLHF/DPO/Constitutional AI 对齐原理 + 幻觉治理 + 红队研究综述（本文是工程实战向）
-- **餐厅叙事**：[12.story - AI 致命三件套](../../../12.story/31-ai-fatal-trio.md) — 注入 + 越权 + 泄露 协同攻击叙事（868 行，含 4 层防护 + 红队 + AI BOM）
+- **餐厅叙事**：[12.story - AI 致命三件套](../../../13.story/31-ai-fatal-trio.md) — 注入 + 越权 + 泄露 协同攻击叙事（868 行，含 4 层防护 + 红队 + AI BOM）
 - **面试深挖**：[13.split-hairs - prompt-injection](../../../13.split-hairs/11.ai/prompt-injection/README.md) — 4 题面试深挖（含 EchoLeak CVE-2025-32711 + OWASP LLM01:2025）
 
 ---
@@ -413,12 +413,12 @@ define flow harmful
 
 | # | 章节 | 一句话定位 |
 |---|------|-----------|
-| 1 | [RAG vs Fine-tuning vs Prompt](../01-rag-vs-finetuning/README.md) | 三大定制策略对比与选型决策 |
-| 2 | [LLMOps 栈](../02-llmops-stack/README.md) | 数据/训练/部署/监控/反馈全链路工程栈 |
-| 3 | [向量库 vs 缓存](../03-vector-db-vs-cache/README.md) | Embedding 检索 vs KV 缓存边界与协同 |
-| 4 | [LLM 评测](../04-llm-evaluation/README.md) | 自动化指标 + 人工评测 + A/B + 红队对抗 |
-| 5 | [LLM 安全](../llm-security/README.md) | OWASP LLM Top 10 + 6 层防御 + Guardrails 实战 |
-| 6 | [RAG 超范围拒答](../06-rag-out-of-domain-rejection/README.md) | 6 大检测机制 + 5 大拒答模式 + 4 步调优 |
+| 1 | [RAG vs Fine-tuning vs Prompt](./01-pipeline.mdREADME.md) | 三大定制策略对比与选型决策 |
+| 2 | [LLMOps 栈](./README.md) | 数据/训练/部署/监控/反馈全链路工程栈 |
+| 3 | [向量库 vs 缓存](./README.md) | Embedding 检索 vs KV 缓存边界与协同 |
+| 4 | [LLM 评测](./README.md) | 自动化指标 + 人工评测 + A/B + 红队对抗 |
+| 5 | [LLM 安全](./llm-security/README.md) | OWASP LLM Top 10 + 6 层防御 + Guardrails 实战 |
+| 6 | [RAG 超范围拒答](./README.md) | 6 大检测机制 + 5 大拒答模式 + 4 步调优 |
 
 ## 反向链
 

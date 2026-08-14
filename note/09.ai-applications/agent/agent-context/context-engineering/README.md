@@ -22,8 +22,8 @@ module:
 |------|--------|--------|
 | Prompt Engineering | 怎么写好一句提示 | 人类 |
 | **Context Engineering** | 怎么给 LLM 提供完整的"上下文" | Agent |
-| [Harness Engineering](../../03-engineering/harness-engineering/README.md) | 怎么约束 Agent 行为 | 规范/流程 |
-| [Loop Engineering](../../03-engineering/loop-engineering/README.md) | 怎么循环调用 Agent 直到任务完成 | Agent + Harness |
+| [Harness Engineering](../../agent/agent-reliability/harness-engineering/README.md) | 怎么约束 Agent 行为 | 规范/流程 |
+| [Loop Engineering](../../agent/loop-engineering/README.md) | 怎么循环调用 Agent 直到任务完成 | Agent + Harness |
 
 > 一句话：**Context Engineering 的核心是"在 Context Window 限制下，把对的信息在对的时间给 LLM"**。
 
@@ -185,9 +185,9 @@ context = get_relevant_files(query)  # 5K tokens
 ## 相关章节
 
 - 上一步：[Prompt Engineering](../prompt-engineering/README.md) — Prompt 是 Context 的子集
-- 下一步：[Harness Engineering](../../03-engineering/harness-engineering/README.md) — 约束 Agent 行为
-- 工具调用：[Function Calling](../function-calling/README.md) — 工具定义是 Context 的一部分
-- 检索增强：[RAG](../../08-llmops/01-rag-vs-finetuning/README.md) — 用 RAG 注入检索结果到 Context
+- 下一步：[Harness Engineering](../../agent/agent-reliability/harness-engineering/README.md) — 约束 Agent 行为
+- 工具调用：[Function Calling](./function-calling/README.md) — 工具定义是 Context 的一部分
+- 检索增强：[RAG](../../rag/01-pipeline.mdREADME.md) — 用 RAG 注入检索结果到 Context
 - Memory 维度：[Agent Memory 架构（Memory 是 Context 三大件之一）](../../04-architecture/agent-memory/README.md)
 - 🆕 **长上下文策略全景**：[Agent 长上下文架构 6 大策略](../../04-architecture/agent-context/README.md) —— Chunking / RAG / Memory / Sliding Window / Sub-Agents / Long-Context LLMs 组合 + 决策树
 

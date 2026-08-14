@@ -12,7 +12,7 @@
 
 ## 反向链
 
-- ⚠️ ralph-wiggum-loop — Phase 8 后路径：`../../../../03-engineering/loop-engineering/ralph-wiggum-loop.md`（pre-existing in `note/`，合并前不动）
+- ⚠️ ralph-wiggum-loop — Phase 8 后路径：`../../../../agent/loop-engineering/ralph-wiggum-loop.md`（pre-existing in `note/`，合并前不动）
 
 ← [返回 Agent MOC](../README.md) · 同级：[agent-context](../agent-context/README.md) · [agent-memory](../agent-memory/README.md)
 

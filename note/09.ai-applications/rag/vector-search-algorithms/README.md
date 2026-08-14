@@ -344,7 +344,7 @@ QPS：10K
 
 ## 九、与"驾驭演进"主线的关联
 
-向量检索算法演进是 [驾驭演进主线](../../../09.ai-applications/agent/agent-architecture/llm-control-evolution.md) 在 RAG 领域的具体体现：
+向量检索算法演进是 [驾驭演进主线](../../agent/agent-architecture/llm-control-evolution.md) 在 RAG 领域的具体体现：
 
 | 阶段 | 向量检索 | 适配规模 |
 |------|---------|---------|
@@ -364,12 +364,12 @@ QPS：10K
 - [12.story/37-vector-database-and-embedding（味道仓库 4 大调优）](../../../13.story/37-vector-database-and-embedding.md)
 
 **同主模块**：
-- [Context Engineering（Context 三件套）](../../09.ai-applications/agent/agent-context/context-engineering.md)
-- [Function Calling](../function-calling/README.md)
+- [Context Engineering（Context 三件套）](../../agent/agent-context/context-engineering.md)
+- [Function Calling](./function-calling/README.md)
 
 **实战应用**：
 - [11.ai/02-technology-stack/agentic-search-vs-rag（Agentic Search）](../agentic-search-vs-rag/README.md)
-- [11.ai/08-llmops/01-rag-vs-finetuning（RAG 架构）](../../08-llmops/01-rag-vs-finetuning/README.md)
+- [11.ai/08-llmops/01-rag-vs-finetuning（RAG 架构）](../../rag/01-pipeline.mdREADME.md)
 
 ---
 
