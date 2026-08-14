@@ -211,8 +211,8 @@ flowchart LR
 - 架构设计：[`06.distributed-systems`](../06.distributed-systems/README.md) — 分布式、高可用、高性能设计模式
 - 流程引擎：[`07.devops-and-tools`](../07.devops-and-tools/02-workflow/README.md) — BPMN 工作流（ERP/MES/CRM 中的审批流、业务流）
 - 大数据：[`03.data-stack`](../03.data-stack/02-big-data/README.md) — 数据仓库、BI、数据治理（支撑 BI/ERP 数据分析）
-- 前端：[`05.frontend`](../../note/09.front-end/README.md) — 业务系统前端工程化
-- AI 落地：[`09.ai-applications`](../../note/11.ai/README.md) — AI Agent + RAG 在客服、KM、ERP 中的应用
+- 前端：[`05.frontend`](../05.frontend/README.md) — 业务系统前端工程化
+- AI 落地：[`09.ai-applications`](../09.ai-applications/README.md) — AI Agent + RAG 在客服、KM、ERP 中的应用
 - 面试题：[`12.interview`](../12.interview/README.md) — 高频面试题（系统设计、数据库等）
 
 ---

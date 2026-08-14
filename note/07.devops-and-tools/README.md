@@ -105,11 +105,11 @@ flowchart TB
 
 ## 🔗 相关章节
 
-- 上游：[`01.java-and-jvm`](../../note/01.java/README.md) — Java 工具库的宿主语言
+- 上游：[`01.java-and-jvm`](../01.java-and-jvm/README.md) — Java 工具库的宿主语言
 - 下游：[`04.spring-backend`](../04.spring-backend/README.md) — Spring 全家桶（工具链的核心应用场景）
 - 横向：[`03.data-stack`](../03.data-stack/01-database/README.md) — 数据库（部署 / 备份 / 监控）
 - 横向：[`06.distributed-systems`](../06.distributed-systems/README.md) — 分布式系统（K8s/Nginx/Monorepo 架构决策）
-- 横向：[`08.ai-foundations`](../../note/11.ai/README.md) — AI 工程（bpmn-ai-integration）
+- 横向：[`08.ai-foundations`](../08.ai-foundations/README.md) — AI 工程（bpmn-ai-integration）
 - 业务：[`10.business-systems`](../10.business-systems/README.md) — 业务系统（流程引擎在 ERP/MES/CRM 中的应用）
 
 ---

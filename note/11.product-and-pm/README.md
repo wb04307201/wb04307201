@@ -183,7 +183,7 @@ graph LR
 - 一页速查：[`cheatsheet.md`](./cheatsheet.md) —— 6 大场景决策矩阵 + 速算公式
 - 维护脚本：[`scripts/README.md`](./scripts/README.md) —— `insert-frontmatter.py` / `validate.py`，用于批量补 frontmatter 和合规性校验
 - 主模块：[`note/04.system-design`](../06.distributed-systems/README.md) — 技术选型的底层支撑
-- 主模块：[`note/09.front-end`](../../note/09.front-end/README.md) — 移动端跨端架构决策
+- 主模块：[`note/05.frontend`](../05.frontend/README.md) — 移动端跨端架构决策
 - 故事：[`note/12.story/07-from-chef-to-ceo`](../13.story/07-from-chef-to-ceo.md) — 团队管理叙事版
 - 故事：[`note/12.story/43-ai-productivity-paradox`](../13.story/43-ai-productivity-paradox.md) — AI 生产力悖论
 - 故事：[`note/12.story/44-tech-debt-career-trap`](../13.story/44-tech-debt-career-trap.md) — 技术债困局
