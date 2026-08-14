@@ -391,9 +391,9 @@ Seata 4 种模式对比：
 
 ### 主模块兄弟（Java 后端）
 
-- [06.spring/05-spring-cloud/](../../../04.spring-backend/03-cloud/README.md) —— Spring Cloud 全套实战
-- [06.spring/05-spring-cloud/seata-integration](../../../04.spring-backend/03-cloud/seata-integration.md) —— Seata 分布式事务
-- [06.spring/05-spring-cloud/service-registry](../../../04.spring-backend/03-cloud/service-registry/README.md) —— 注册中心 Nacos
+- [../04.spring-backend/05-spring-cloud/](../../../04.spring-backend/03-cloud/README.md) —— Spring Cloud 全套实战
+- [../04.spring-backend/05-spring-cloud/seata-integration](../../../04.spring-backend/03-cloud/seata-integration.md) —— Seata 分布式事务
+- [../04.spring-backend/05-spring-cloud/service-registry](../../../04.spring-backend/03-cloud/service-registry/README.md) —— 注册中心 Nacos
 
 ### 实战姐妹（12.story）
 

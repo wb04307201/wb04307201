@@ -75,7 +75,7 @@ question:
 ### 项目管理（已全部迁走，split-hairs 不再收此分类）
 
 > 2026-06-30 路径整理：本类目的 3 题已**全部迁移**：
-> - `app-quote-breakdown` / `outsourcing-pitfalls` → 新主模块 [`note/14.project-management/`](../../../note/14.project-management/README.md)
+> - `app-quote-breakdown` / `outsourcing-pitfalls` → 新主模块 [`note/11.product-and-pm/`](../../11.product-and-pm/README.md)
 > - `mobile-tech-stack` → 主模块 [`09.front-end/08-cross-platform/mobile-tech-stack/`](../../05.frontend/08-cross-platform/mobile-tech-stack/README.md)
 >
 > 本分类及其目录 `project-management/` 已删除，split-hairs 不再收"项目管理"类内容。
@@ -85,7 +85,7 @@ question:
 ## 待补充的高频面试题
 
 ### 缓存
-- **缓存穿透 / 击穿 / 雪崩**（三件套必问，已移至 [`03.database/cache-penetration-breakdown-avalanche`](03.database/cache-penetration-breakdown-avalanche/README.md)）
+- **缓存穿透 / 击穿 / 雪崩**（三件套必问，已移至 [`03.database/cache-penetration-breakdown-avalanche`](../03.database/cache-penetration-breakdown-avalanche/README.md)）
 - **缓存预热策略**
 
 ### 高并发
@@ -103,17 +103,17 @@ question:
 2. **进阶**（2 周）：缓存一致性 + 限流算法 + 分布式 ID + 分布式锁 + 幂等性设计
 3. **冲刺面试**：重点看"分布式事务"、"熔断降级"、"分布式锁"、"幂等性设计"
 
-> 📌 **2026-06-30 路径整理**：原项目管理的 3 题全部迁走（"5万 vs 50万 App 报价"、"外包避坑指南"→ [`note/14.project-management/`](../../../note/14.project-management/README.md)；"App 技术栈选型"→ [`09.front-end/08-cross-platform/mobile-tech-stack/`](../../05.frontend/08-cross-platform/mobile-tech-stack/README.md)）。split-hairs 不再收"项目管理"类内容。
+> 📌 **2026-06-30 路径整理**：原项目管理的 3 题全部迁走（"5万 vs 50万 App 报价"、"外包避坑指南"→ [`note/11.product-and-pm/`](../../11.product-and-pm/README.md)；"App 技术栈选型"→ [`09.front-end/08-cross-platform/mobile-tech-stack/`](../../05.frontend/08-cross-platform/mobile-tech-stack/README.md)）。split-hairs 不再收"项目管理"类内容。
 
 ## 相关章节
 
 - 主模块：[`note/04.system-design`](../../../note/04.system-design/) — 系统设计知识体系
-- 相关章节：[`03.database`](03.database/)（数据库细节）/ [`06.spring`](06.spring/)（框架实现）/ 🆕 [`05.security`](05.security/README.md)（SSO 单点登录）
+- 相关章节：[`03.database`](03.database/)（数据库细节）/ [`06.spring`](../04.spring-backend/)（框架实现）/ 🆕 [`05.security`](../05.security/README.md)（SSO 单点登录）
 - 待补充主题的深度阅读：
   - 缓存穿透/击穿/雪崩 → [`03.database/06-cache`](../../03.data-stack/01-database/06-cache/README.md)
   - 分库分表 → [`03.database`](../../03.data-stack/01-database/README.md) 数据迁移与同步
   - 异步化方案 → [`01.java/concurrency`](../../01.java-and-jvm/03-concurrency/README.md) CompletableFuture
-  - 🆕 单点登录 SSO → [`05.security/sso`](05.security/sso/README.md)（7 道精选 Q&A）
+  - 🆕 单点登录 SSO → [`05.security/sso`](../05.security/sso/README.md)（7 道精选 Q&A）
 
 ← [返回咬文嚼字（高频面试题）](../README.md)
 
@@ -121,7 +121,7 @@ question:
 
 | 行 | 原链接 | 修复后 |
 |----|--------|--------|
-| L104 (隐含) | `\[05.security\]\(../05.security\)` | `\[05.security\]\(../05.security/README.md\)` |
+| L104 (隐含) | `\[05.security\]\(../05.security\)` | `\[05.security\]\(../../05.security/README.md\)` |
 | L54 (隐含) | 同上 | 同上 |
 
 **全 13.split-hairs 兄弟互链完整链接化**：所有 `../05.security` 类相对引用已验证并补全 `/README.md` 后缀。

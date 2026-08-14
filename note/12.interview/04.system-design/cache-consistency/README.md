@@ -320,7 +320,7 @@ public class L1CacheEvictListener {
 - [分布式事务](../distributed-transaction/README.md) — 跨服务一致性方案
 - [缓存设计模式 §9.2](../../../06.distributed-systems/04-high-performance/cache-patterns/README.md) — 多级缓存 5 大反模式 + Java/Spring 深度分析
 - [Spring 多级缓存实现](../../../04.spring-backend/04-data/cache/multi-level.md) — CompositeCacheManager + TwoLevelCache 代码实现
-- [缓存降级](06.spring/cache-degradation/README.md) — Redis 故障时的降级策略
+- [缓存降级](../../../04.spring-backend/04-data/cache/cache-degradation-and-recovery.md) — Redis 故障时的降级策略
 
 ## 相关章节
 

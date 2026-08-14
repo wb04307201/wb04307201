@@ -379,7 +379,7 @@ public void process() {
 
 - 主模块：[`04.system-design`](../../../../note/04.system-design/) — 系统设计
 - [缓存穿透/击穿/雪崩](../../../03.data-stack/01-database/06-cache/README.md) — 缓存击穿中的分布式锁应用
-- [Redis 分布式锁 3 大坑](03.database/redis-distributed-lock/README.md) — Redis 实现细节（看门狗 + Lua + 可重入）
+- [Redis 分布式锁 3 大坑](../../03.database/redis-distributed-lock/README.md) — Redis 实现细节（看门狗 + Lua + 可重入）
 
 ## 相关章节
 
