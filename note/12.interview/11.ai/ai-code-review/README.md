@@ -159,7 +159,7 @@ if (!ALLOWED_SORT.contains(sortField)) throw new BizException("非法排序字�
 - 同栏目：[`ai-coding-productivity-paradox`](../ai-coding-productivity-paradox/README.md) — 代码量 +217% 但 bug +383%，审核门禁缺失的代价
 - 同栏目：[`ai-coding-roi`](../ai-coding-roi/README.md) — 验收成本要计入 AI 编程的真实 ROI
 - 同栏目：[`hallucination`](../hallucination/README.md) — AI 幻觉成因（第 ⑥ 层的底层原理）
-- 主模块：[`11.ai/03-engineering/ai-code-review`](../../../../03-engineering/ai-code-review/README.md) — 审核验收方法论完整版（6 层清单 + 门禁矩阵 + 工具链）
+- 主模块：[`11.ai/03-engineering/ai-code-review`](../../../ai-code-review/README.md) — 审核验收方法论完整版（6 层清单 + 门禁矩阵 + 工具链）
 
 ---
 

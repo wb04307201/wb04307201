@@ -10,7 +10,7 @@ question:
 
 # 大模型中为什么不用 Dropout？ — 训练范式与正则化策略深度剖析
 
-> 一句话定位：Dropout 在 CV 小模型时代是标配，但在 LLM 大模型时代被弃用 —— 因为训练范式、任务特性、规模效应三方面都不再需要它。深度原理见 [主模块 Dropout 原理](../../../../01-fundamentals/dropout-in-llm/README.md)。
+> 一句话定位：Dropout 在 CV 小模型时代是标配，但在 LLM 大模型时代被弃用 —— 因为训练范式、任务特性、规模效应三方面都不再需要它。深度原理见 [主模块 Dropout 原理](../../../../08.ai-foundations/04-llm/dropout-in-llm/README.md)。
 
 > **系列定位**：经典 AI 面试题（中频、高频都考）。考察的不是"Dropout 是什么"，而是 **训练范式差异** + **规模与正则的反比关系** + **替代方案的工程选择**。
 
@@ -122,9 +122,9 @@ question:
 ## 四、相关章节
 
 **主模块**：
-- [11.ai/01-fundamentals/dropout-in-llm（深度原理）](../../../../01-fundamentals/dropout-in-llm/README.md)
+- [11.ai/01-fundamentals/dropout-in-llm（深度原理）](../../../../08.ai-foundations/04-llm/dropout-in-llm/README.md)
 - [11.ai/01-fundamentals/llm-basics（LLM 训练基础）](../../../08.ai-foundations/04-llm/README.md)
-- [11.ai/01-fundamentals/neural-layers（神经网络层原理）](../../../../01-fundamentals/neural-layers/README.md)
+- [11.ai/01-fundamentals/neural-layers（神经网络层原理）](../../../../08.ai-foundations/neural-layers/README.md)
 
 **同栏目（11.ai 高频面试题）**：
 - [Transformer 架构深挖](../transformer/README.md)
@@ -186,7 +186,7 @@ question:
 ---
 
 **主模块（实证篇）**：
-- [单 epoch 时代 + config 考古实锤](../../../../01-fundamentals/dropout-in-llm/single-epoch-and-config-evidence.md) — 本面试题 Q5/Q6 的深度支撑（含 6 个模型 config 全文 + 怎么看 training_config 方法论）
+- [单 epoch 时代 + config 考古实锤](../../../../08.ai-foundations/04-llm/dropout-in-llm/single-epoch-and-config-evidence.md) — 本面试题 Q5/Q6 的深度支撑（含 6 个模型 config 全文 + 怎么看 training_config 方法论）
 
 ---
 

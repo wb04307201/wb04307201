@@ -180,7 +180,7 @@ question:
 - [Claude Code 放弃 RAG 的反直觉](../claude-code-agentic-search/README.md)
 
 **实战框架**：
-- [11.ai/03-engineering/ai-platforms/langgraph（MemorySaver）](../../../../03-engineering/ai-platforms/langgraph.md)
+- [11.ai/03-engineering/ai-platforms/langgraph（MemorySaver）](../../../agent/ai-platforms/langgraph.md)
 
 ---
 

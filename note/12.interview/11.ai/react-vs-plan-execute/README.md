@@ -399,10 +399,10 @@ Stage 2 Executor：逐步执行
 
 ### 同栏目（11.ai）姐妹篇
 
-- [agent-dag-vs-react](11.ai/agent-dag-vs-react/README.md) —— DAG vs ReAct 已有深度
+- [agent-dag-vs-react](../agent-dag-vs-react/README.md) —— DAG vs ReAct 已有深度
 - [agent-architecture](../../../09.ai-applications/agent/agent-architecture/README.md) —— 4 模式综述
-- [loop-engineering](11.ai/loop-engineering/README.md) —— Loop Engineering 失败模式
-- [harness-engineering](11.ai/harness-engineering/README.md) —— Harness 是 DAG 的强约束
+- [loop-engineering](../loop-engineering/README.md) —— Loop Engineering 失败模式
+- [harness-engineering](../harness-engineering/README.md) —— Harness 是 DAG 的强约束
 
 ### 主模块兄弟
 
