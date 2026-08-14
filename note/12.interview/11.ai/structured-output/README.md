@@ -93,7 +93,7 @@ Q：为什么 JSON Mode 已经被淘汰了？
 
 ## 📚 深度阅读
 
-- [主模块深度文章](../../../../note/11.ai/02-technology-stack/structured-output/README.md) — 5 种策略 + 框架对比 + 5 大反模式
+- [主模块深度文章](./structured-output/README.md) — 5 种策略 + 框架对比 + 5 大反模式
 
 ---
 

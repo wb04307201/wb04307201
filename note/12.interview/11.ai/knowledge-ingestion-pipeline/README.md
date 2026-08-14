@@ -10,7 +10,7 @@ question:
 
 # 知识入库流水线面试深挖（4 大核心）
 
-> ⬅️ [返回 AI 咬文嚼字](../README.md) | [主模块深度专题](../../../../note/11.ai/02-technology-stack/knowledge-ingestion-pipeline/README.md)
+> ⬅️ [返回 AI 咬文嚼字](../README.md) | [主模块深度专题](../../../../02-technology-stack/knowledge-ingestion-pipeline/README.md)
 
 > **一句话定位**：**4 大核心知识入库面试深挖**：多源连接 / 复杂文档解析 / 去重与 CDC / 亿级 Chunk 性能。
 
@@ -121,7 +121,7 @@ question:
 
 ## 🔗 兄弟章节
 
-- **主模块深度**：[企业级 Knowledge Ingestion Pipeline](../../../../note/11.ai/02-technology-stack/knowledge-ingestion-pipeline/README.md) — 8 阶段全链路：连接、解析、清洗、分块、Embedding、入库与 CDC。
+- **主模块深度**：[企业级 Knowledge Ingestion Pipeline](../../../../02-technology-stack/knowledge-ingestion-pipeline/README.md) — 8 阶段全链路：连接、解析、清洗、分块、Embedding、入库与 CDC。
 - **兄弟面试题**：[长文档与 PDF 面试深挖](../long-document-pdf/README.md) — 分块、Lost-in-Middle、上下文扩展与长合同 Pipeline。
 - **餐厅叙事**：[12.story 36 — RAG 检索增强生成](../../../13.story/36-rag-retrieval-augmented-generation.md) — 用阿明餐厅串起 RAG 的入库、检索与回答全流程。
 

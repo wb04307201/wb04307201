@@ -10,7 +10,7 @@ question:
 
 # Context Engineering — 4 大范式之二面试深挖
 
-> 一句话定位：Context Engineering 是"在 Context Window 限制下，把对的信息在对的时间给 LLM"。完整概念见 [主模块 Context Engineering](../../../../note/11.ai/02-technology-stack/context-engineering/README.md)。
+> 一句话定位：Context Engineering 是"在 Context Window 限制下，把对的信息在对的时间给 LLM"。完整概念见 [主模块 Context Engineering](./context-engineering-interview/README.md)。
 
 ---
 
@@ -96,7 +96,7 @@ Context = System Prompt + 历史消息 + Tools Schema + RAG 文档 + 长期记�
 
 ## 六、深度阅读
 
-- 主模块：[Context Engineering](../../../../note/11.ai/02-technology-stack/context-engineering/README.md)
+- 主模块：[Context Engineering](./context-engineering-interview/README.md)
 - 上一步：[Prompt Engineering](../prompt-engineering/README.md)
 - 下一步：[Harness Engineering](../harness-engineering/README.md)
 - 工具调用：[Function Calling](../function-calling/README.md)

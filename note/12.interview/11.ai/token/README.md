@@ -10,7 +10,7 @@ question:
 
 # Token 与计费 — LLM 经济学面试深挖
 
-> 一句话定位：Token 是 LLM 的最小处理单位，直接决定费用、速度和上下文窗口 —— 是所有 LLM 应用的底层经济学基础。完整概念见 [主模块 Token 与计费](../../../../note/11.ai/02-technology-stack/token-billing/README.md)。
+> 一句话定位：Token 是 LLM 的最小处理单位，直接决定费用、速度和上下文窗口 —— 是所有 LLM 应用的底层经济学基础。完整概念见 [主模块 Token 与计费](../../../../09.ai-applications/llm-inference/token-billing/README.md)。
 
 ---
 
@@ -122,7 +122,7 @@ PM："……"
 
 ## 八、深度阅读
 
-- 主模块：[Token 与计费](../../../../note/11.ai/02-technology-stack/token-billing/README.md)
+- 主模块：[Token 与计费](../../../../09.ai-applications/llm-inference/token-billing/README.md)
 - 上游：[Transformer 架构](../../../08.ai-foundations/03-transformer/README.md)
 - 关联：[Context Engineering](../context-engineering-interview/README.md) — Context Window 是 Token 上限
 - 关联：[RAG](../rag/README.md) — 用 RAG 减少 Token 消耗

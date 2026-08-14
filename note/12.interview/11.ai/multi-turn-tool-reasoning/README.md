@@ -10,7 +10,7 @@ question:
 
 # Multi-turn Tool Reasoning 多轮工具推理 —— 为什么 1 次 Tool Calling 已经不够？
 
-> 一句话定位：**1 turn = 1 个意图；多轮 = 多个意图 + 中间结果 + 状态管理 + 错误恢复**。完整深度 + OSS 实战见 [主模块 · Function Calling 第 4.1 节深度](../../../../note/11.ai/02-technology-stack/function-calling/README.md)。
+> 一句话定位：**1 turn = 1 个意图；多轮 = 多个意图 + 中间结果 + 状态管理 + 错误恢复**。完整深度 + OSS 实战见 [主模块 · Function Calling 第 4.1 节深度](./function-calling/README.md)。
 
 > **系列定位**：AI Agent 经典追问题（Anthropic / OpenAI / LangChain / 字节 / 阿里 / 美团 高频）。考察的不是"能不能多次调用"，而是 **5 大场景识别 + 6 大编排模式选型 + 4 大防御 + OSS 实战**。
 
@@ -244,7 +244,7 @@ Q5：贵司 Agent 的成功率怎么监控？
 
 ## 🔗 深度版（主模块）
 
-- [11.ai · Function Calling 第 4.1 节深度 + 6 大场景 + 6 大编排模式 + OSS 实战](../../../../note/11.ai/02-technology-stack/function-calling/README.md) — 多轮编排深度版
+- [11.ai · Function Calling 第 4.1 节深度 + 6 大场景 + 6 大编排模式 + OSS 实战](./function-calling/README.md) — 多轮编排深度版
 
 ---
 

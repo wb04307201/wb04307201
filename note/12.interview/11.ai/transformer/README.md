@@ -202,7 +202,7 @@ GQA（省 KV 头数）× Flash Attention（省 attention 显存）× PagedAttent
 ## 七、深度阅读
 
 - 主模块：[Transformer 架构](../../../08.ai-foundations/03-transformer/README.md)
-- 关联：[Token 与计费](../../../../note/11.ai/02-technology-stack/token-billing/README.md)
+- 关联：[Token 与计费](../../../../09.ai-applications/llm-inference/token-billing/README.md)
 - 应用：[RAG](../../../09.ai-applications/rag/03-rag-vs-finetuning.md)
 - **推理工程进阶**：[LLM 推理优化](../llm-inference/README.md)
 

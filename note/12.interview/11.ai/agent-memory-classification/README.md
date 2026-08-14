@@ -169,8 +169,8 @@ question:
 **主模块**：
 - [11.ai/04-architecture/agent-memory（深度原理）](../../../09.ai-applications/agent/agent-memory/README.md)
 - [11.ai/04-architecture/agent-architecture（执行架构对比）](../../../09.ai-applications/agent/agent-architecture/README.md)
-- [11.ai/04-architecture/llm-control-evolution（驾驭演进）](../../../../note/11.ai/04-architecture/llm-control-evolution/README.md)
-- [11.ai/02-technology-stack/context-engineering（Context Engineering）](../../../../note/11.ai/02-technology-stack/context-engineering/README.md)
+- [11.ai/04-architecture/llm-control-evolution（驾驭演进）](../../../../09.ai-applications/agent/agent-architecture/llm-control-evolution/README.md)
+- [11.ai/02-technology-stack/context-engineering（Context Engineering）](./context-engineering-interview/README.md)
 
 **同栏目（11.ai 高频面试题）**：
 - [Transformer 架构深挖](../transformer/README.md)
@@ -180,7 +180,7 @@ question:
 - [Claude Code 放弃 RAG 的反直觉](../claude-code-agentic-search/README.md)
 
 **实战框架**：
-- [11.ai/03-engineering/ai-platforms/langgraph（MemorySaver）](../../../../note/11.ai/03-engineering/ai-platforms/langgraph.md)
+- [11.ai/03-engineering/ai-platforms/langgraph（MemorySaver）](../../../../03-engineering/ai-platforms/langgraph.md)
 
 ---
 

@@ -397,10 +397,10 @@ resp = client.chat(model='qwen2.5:7b', messages=[...])
 
 ### 主模块兄弟
 
-- [11.ai/03-engineering/ai-platforms/coze](../../../../note/11.ai/03-engineering/ai-platforms/coze.md) —— Coze 平台
-- [11.ai/03-engineering/ai-platforms/dify](../../../../note/11.ai/03-engineering/ai-platforms/dify.md) —— Dify 平台
-- [11.ai/03-engineering/local-deployment/ollama](../../../../note/11.ai/03-engineering/local-deployment/ollama/README.md) —— Ollama 部署
-- [11.ai/08-llmops/02-llmops-stack](../../../../note/11.ai/08-llmops/02-llmops-stack/README.md) —— LLMOps 全景
+- [11.ai/03-engineering/ai-platforms/coze](../../../../03-engineering/ai-platforms/coze.md) —— Coze 平台
+- [11.ai/03-engineering/ai-platforms/dify](../../../../03-engineering/ai-platforms/dify.md) —— Dify 平台
+- [11.ai/03-engineering/local-deployment/ollama](../../../../03-engineering/local-deployment/ollama/README.md) —— Ollama 部署
+- [11.ai/08-llmops/02-llmops-stack](../../../../08-llmops/02-llmops-stack/README.md) —— LLMOps 全景
 
 ### 实战姐妹（12.story）
 

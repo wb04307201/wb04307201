@@ -222,12 +222,12 @@ Query → Generator LLM → Draft Answer
 
 ## 七、交叉引用
 
-- 主模块：[`11.ai`](../../../../note/11.ai/) — AI 知识体系
+- 主模块：[`11.ai`](../../../../) — AI 知识体系
 - [RAG](../rag/README.md) — 检索增强生成
 - [Prompt Engineering](../../../09.ai-applications/prompts/prompt-engineering/README.md) — 提示工程技巧
 
 ## 相关章节
 
-- 深度阅读：[`11.ai`](../../../../note/11.ai/README.md) — 主模块详细内容
+- 深度阅读：[`11.ai`](../../../../08.ai-foundations/README.md) — 主模块详细内容
 
 ← [返回: 咬文嚼字 · hallucination](../README.md)

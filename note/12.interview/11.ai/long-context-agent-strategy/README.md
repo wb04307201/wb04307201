@@ -387,7 +387,7 @@ Long-Context 1M + RAG 双轨 + Sub-Agents + Memory
 
 ### 主模块兄弟
 
-- [11.ai/02-technology-stack/context-engineering](../../../../note/11.ai/02-technology-stack/context-engineering/README.md) —— Context Engineering 综述
+- [11.ai/02-technology-stack/context-engineering](./context-engineering-interview/README.md) —— Context Engineering 综述
 - [11.ai/04-architecture/agent-memory](../../../09.ai-applications/agent/agent-memory/README.md) —— Agent 记忆架构
 - [11.ai/04-architecture/agent-architecture](../../../09.ai-applications/agent/agent-architecture/README.md) —— Agent 架构总览
 

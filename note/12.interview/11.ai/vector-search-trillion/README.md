@@ -10,7 +10,7 @@ question:
 
 # 万亿级向量检索：多集群 + 联邦 + TPU + 极限压缩——架构思维而非落地指南
 
-> 一句话定位：万亿级（1T / 1000B+）向量检索是**千亿级的再质变**——需要**多集群 + 跨数据中心联邦 + 专用硬件（TPU/ASIC）+ 极限压缩 + 边缘计算**。但**真实工程细节几乎都是商业秘密**（Google / Meta / Microsoft 不公开）。深度原理见 [主模块万亿级专题](../../../../note/11.ai/02-technology-stack/vector-search-trillion/README.md) + [千亿级专题（兄弟）](../../../../note/11.ai/02-technology-stack/vector-search-at-scale/README.md)。
+> 一句话定位：万亿级（1T / 1000B+）向量检索是**千亿级的再质变**——需要**多集群 + 跨数据中心联邦 + 专用硬件（TPU/ASIC）+ 极限压缩 + 边缘计算**。但**真实工程细节几乎都是商业秘密**（Google / Meta / Microsoft 不公开）。深度原理见 [主模块万亿级专题](../../../../02-technology-stack/vector-search-trillion/README.md) + [千亿级专题（兄弟）](./vector-search-at-scale/README.md)。
 
 > **系列定位**：前沿架构面试题（低频、专家级）。考察的不是"万亿级怎么落地"，而是 **架构思维的深度** + **公开案例的知识面** + **诚实面对"商业秘密"局限**。
 
@@ -390,9 +390,9 @@ vs Google TPU v5：
 ## 八、相关章节
 
 **主模块**：
-- [11.ai/02-technology-stack/vector-search-trillion（深度原理）](../../../../note/11.ai/02-technology-stack/vector-search-trillion/README.md)
-- [11.ai/02-technology-stack/vector-search-at-scale（千亿级专题，兄弟）](../../../../note/11.ai/02-technology-stack/vector-search-at-scale/README.md)
-- [11.ai/02-technology-stack/vector-search-algorithms（10亿级专题，叔叔）](../../../../note/11.ai/02-technology-stack/vector-search-algorithms/README.md)
+- [11.ai/02-technology-stack/vector-search-trillion（深度原理）](../../../../02-technology-stack/vector-search-trillion/README.md)
+- [11.ai/02-technology-stack/vector-search-at-scale（千亿级专题，兄弟）](./vector-search-at-scale/README.md)
+- [11.ai/02-technology-stack/vector-search-algorithms（10亿级专题，叔叔）](./vector-search-algorithms/README.md)
 
 **12.story 实战**：
 - [12.story/37-vector-database-and-embedding（味道仓库 第十章反向链）](../../../13.story/37-vector-database-and-embedding.md)
@@ -403,7 +403,7 @@ vs Google TPU v5：
 - 🆕 [Incremental Embedding 增量向量化](../incremental-embedding/README.md) — 5 大策略 + 4 版本方案
 
 **驾驭演进视角**：
-- [11.ai/04-architecture/llm-control-evolution](../../../../note/11.ai/04-architecture/llm-control-evolution/README.md)
+- [11.ai/04-architecture/llm-control-evolution](../../../../09.ai-applications/agent/agent-architecture/llm-control-evolution/README.md)
 
 ---
 

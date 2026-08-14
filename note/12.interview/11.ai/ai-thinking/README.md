@@ -195,10 +195,10 @@ P(100次全正面 | 公平硬币) = 7.89e-31
 
 ## 六、交叉引用
 
-- AI 基础知识见 [AI 模块主目录](../../../../note/11.ai/README.md)
+- AI 基础知识见 [AI 模块主目录](../../../../08.ai-foundations/README.md)
 
 ## 相关章节
 
-- 深度阅读：[`11.ai`](../../../../note/11.ai/README.md) — 主模块详细内容
+- 深度阅读：[`11.ai`](../../../../08.ai-foundations/README.md) — 主模块详细内容
 
 ← [返回: 咬文嚼字 · ai-thinking](../README.md)

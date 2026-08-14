@@ -273,8 +273,8 @@ SaaS RAG 平台（如 Notion AI / Confluence AI）：
 ## 七、相关章节
 
 - RAG 架构：[`RAG 架构设计`](../rag/README.md) — 完整 RAG 流程（Chunking/Embedding/检索/生成）
-- 企业案例：[`Glean 企业搜索`](../../../../note/11.ai/05-applications/case-studies/09-glean-enterprise-search/README.md) — 权限模型三层实践（源系统镜像/实时重算/答案门控）
-- LLM 安全：[`LLM 安全`](../../../../note/11.ai/08-llmops/05-llm-security/README.md) — Agent 最小权限原则
+- 企业案例：[`Glean 企业搜索`](../../../../05-applications/case-studies/09-glean-enterprise-search/README.md) — 权限模型三层实践（源系统镜像/实时重算/答案门控）
+- LLM 安全：[`LLM 安全`](../../../../09.ai-applications/agent/agent-reliability/llm-security/README.md) — Agent 最小权限原则
 - Agentic Search：[`Agentic Search vs RAG`](../../../09.ai-applications/rag/06-agentic-rag.md) — 权限过滤在不同搜索模式中的差异
 - 幻觉问题：[`LLM 幻觉`](../hallucination/README.md) — RAG 减少幻觉，但权限不当会引入"信息泄露"
 

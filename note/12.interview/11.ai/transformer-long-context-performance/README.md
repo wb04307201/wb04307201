@@ -232,10 +232,10 @@ Ring Attention（8 卡）：每卡 86 GB（可行）
 
 ## 📚 深度阅读
 
-- [主模块深度文章](../../../../note/11.ai/01-fundamentals/transformer-long-context-performance/README.md) — 完整根因分析 + 6 大方案对比 + 选型指南
-- [Transformer 架构核心](../../../../note/11.ai/01-fundamentals/transformer/) — Self-Attention + QKV + Multi-Head
-- [Attention 机制全家桶](../../../../note/11.ai/01-fundamentals/attention-mechanism/) — MHA / MQA / GQA / Sparse / Linear
-- [Flash Attention](../../../../note/11.ai/01-fundamentals/flash-attention/) — 分块计算 + IO 感知详解
+- [主模块深度文章](../../../../01-fundamentals/transformer-long-context-performance/README.md) — 完整根因分析 + 6 大方案对比 + 选型指南
+- [Transformer 架构核心](../../../../01-fundamentals/transformer/) — Self-Attention + QKV + Multi-Head
+- [Attention 机制全家桶](../../../../01-fundamentals/attention-mechanism/) — MHA / MQA / GQA / Sparse / Linear
+- [Flash Attention](../../../../01-fundamentals/flash-attention/) — 分块计算 + IO 感知详解
 - [Agent 长上下文策略](../long-context-agent-strategy/) — Agent 层面的长上下文处理
 
 ---
