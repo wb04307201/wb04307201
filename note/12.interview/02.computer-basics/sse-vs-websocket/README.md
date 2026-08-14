@@ -198,7 +198,7 @@ WebSocket 需要：协议升级处理 + 连接管理器 + 心跳线程 + 消息�
 ## 六、相关章节
 
 - 协议深度：[SSE vs WebSocket 协议深度对比](../../../02.cs-foundations/03-network/protocols/sse-vs-websocket/README.md)
-- 前端推送：[网页端消息推送方式](09.front-end/message/README.md) — 轮询/SSE/WebSocket/WebTransport 全景对比
+- 前端推送：[网页端消息推送方式](../../09.front-end/message/README.md) — 轮询/SSE/WebSocket/WebTransport 全景对比
 - Spring 实现：[WebFlux SSE 实时推送](../../../04.spring-backend/02-web/webflux/sse.md) — Spring 服务端 SSE 实现
 - 网络基础：[HTTP 协议](../../../02.cs-foundations/03-network/02-http/README.md) — HTTP/1.1 长连接基础
 
@@ -206,4 +206,4 @@ WebSocket 需要：协议升级处理 + 连接管理器 + 心跳线程 + 消息�
 
 > 📅 2026-07-09 · 咬文嚼字 · 网络协议 · ⭐⭐⭐⭐
 
-← [返回: 咬文嚼字 · 02.computer-basics](../README.md)
+← [返回: 咬文嚼字 · 02.computer-basics](../../README.md)

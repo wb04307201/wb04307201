@@ -202,7 +202,7 @@ print(pca.explained_variance_ratio_.sum())  # 0.9999999... 而非 1.0
 - **同栏目**：[`k-means-convergence`](../k-means-convergence/README.md) — K-means 与 PCA 是**两种范式**（聚类 vs 投影）
 - **主模块**：[`02-algorithms/dimensionality-reduction/pca`](../../../../02.cs-foundations/01-algorithms/dimensionality-reduction/pca/README.md) — PCA 完整原理 + 实战代码
 - **11.ai 关联**：[`embedding-vs-vectorization`](../../../../08.ai-foundations/05-tokenization-embedding/embedding.md) — BERT/LLM Embedding 高维（768-4096 维），实战中常用 PCA→128 维再入库做 ANN 检索
-- **反向链接**：[`02.computer-basics`](../README.md) — 计算机基础咬文嚼字主目录
+- **反向链接**：[`02.computer-basics`](../../README.md) — 计算机基础咬文嚼字主目录
 
 ---
 

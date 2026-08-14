@@ -56,4 +56,4 @@ question:
 - 应用场景：[`08.application-systems/cms`](../../10.business-systems/01-rd-innovation/cms/README.md) —— CMS 内容审核
 - 相关：[`01.java`](01.java/)（Java 并发 / JVM）/ [`04.system-design`](04.system-design/)（系统设计）
 
-← [返回咬文嚼字（高频面试题）](../README.md)
+← [返回咬文嚼字（高频面试题）](../../README.md)

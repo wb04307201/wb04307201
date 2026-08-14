@@ -211,10 +211,10 @@ return totalSum >= 0 ? start : -1;
 - 字符串算法：[`string-algorithms`](../../../02.cs-foundations/01-algorithms/string-algorithms/README.md) —— Trie / KMP / AC 自动机
 - 复杂度分析：[`complexity`](../../../02.cs-foundations/01-algorithms/complexity/README.md) —— 时间 / 空间复杂度
 - 同栏目：[`sensitive-word-filter`](../sensitive-word-filter/README.md) —— AC 自动机面试题
-- 返回：[`02.computer-basics`](../README.md) —— 计算机基础面试题目录
+- 返回：[`02.computer-basics`](../../README.md) —— 计算机基础面试题目录
 
 ---
 
 > 📅 2026-07-14 · 咬文嚼字 · 贪心算法 · ⭐⭐⭐⭐
 
-← [返回计算机基础面试题](../README.md)
+← [返回计算机基础面试题](../../README.md)

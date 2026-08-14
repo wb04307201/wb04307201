@@ -281,10 +281,10 @@ grep -rn "\.close()" src/ --include="*.java"
 - 主模块：[`TCP/IP 协议族`](../../../02.cs-foundations/03-network/01-tcp-ip/README.md) — TCP 完整知识体系（协议栈 + 可靠性机制 + 拥塞控制）
 - 同模块：[`TCP 报文结构`](../../../02.cs-foundations/03-network/protocols/tcp-packet/README.md) — TCP 头部字段 + 6 个控制标志位详解
 - 同模块：[`TCP/IP 四层模型`](../../../02.cs-foundations/03-network/tcp-ip-model/README.md) — 网络分层架构
-- 相关面试题：[`HTTPS 握手`](09.front-end/https-handshake/README.md) — TLS 在 TCP 之上的握手过程
+- 相关面试题：[`HTTPS 握手`](../../09.front-end/https-handshake/README.md) — TLS 在 TCP 之上的握手过程
 
 ---
 
 > 📅 2026-07-07 · 咬文嚼字 · TCP 三次握手四次挥手 · ⭐⭐⭐⭐（高频面试 + 生产排查必备）
 
-← [返回计算机基础咬文嚼字](../README.md)
+← [返回计算机基础咬文嚼字](../../README.md)

@@ -202,7 +202,7 @@ P(x 被选为下一个质心) = D(x)² / Σ_{x'} D(x')²
 
 ### 反向链
 
-- [`02.computer-basics`](../README.md) — 计算机基础咬文嚼字总目录
+- [`02.computer-basics`](../../README.md) — 计算机基础咬文嚼字总目录
 - [`machine-learning`](README.md) — 传统 ML 6 大核心面试题（Q1 K-means 收敛）
 
 ---
