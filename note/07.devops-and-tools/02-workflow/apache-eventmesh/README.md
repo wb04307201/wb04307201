@@ -191,7 +191,7 @@ states:
 - **阿里云 Serverless 工作流**：国内最早商用，2024+ 服务百万级企业用户
 - **Apache EventMesh Runtime**：v1.5+ 内置 Serverless Workflow DSL 执行
 
-**2026 趋势**：Serverless Workflow 1.0 GA + CNCF 成熟 + 与 AI 编排融合（详见 [11.ai 编排平台](../../../../09.ai-applications/agent/ai-platforms/README.md)）
+**2026 趋势**：Serverless Workflow 1.0 GA + CNCF 成熟 + 与 AI 编排融合（详见 [11.ai 编排平台](../../../09.ai-applications/agent/ai-platforms/README.md)）
 
 ---
 

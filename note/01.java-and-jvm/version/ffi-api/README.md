@@ -176,6 +176,6 @@ FFM API 从 Java 16 孵化到 Java 22 转正，为 Java 提供了安全、高效
 
 - [Synchronized](../../03-concurrency/synchronized/README.md)
 - [跳表集合](../../03-concurrency/concurrent-collections/skip-list/README.md)
-- [并发](../03-concurrency/README.md)
+- [并发](../../03-concurrency/README.md)
 
 ← [返回 功能版本变更历史](../README.md)

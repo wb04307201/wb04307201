@@ -106,7 +106,7 @@ module:
 
 - [OSI 七层模型](../osi-model/README.md)
 - [计算机网络基础](../README.md)
-- [时间复杂度](../01-algorithms/complexity/time-complexity/README.md)
+- [时间复杂度](../../01-algorithms/complexity/time-complexity/README.md)
 
 ← [返回 计算机网络](../README.md)
 

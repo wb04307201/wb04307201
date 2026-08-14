@@ -75,8 +75,8 @@ module:
 
 ## 相关章节
 
-- [TCP/IP 四层模型](../03-network/tcp-ip-model/README.md)
-- [贪心算法 · 深度原理（局部最优 → 全局最优）](../01-algorithms/greedy-algorithms/README.md)
-- [文件系统与 I/O](../02-os/filesystem/README.md)
+- [TCP/IP 四层模型](../../03-network/tcp-ip-model/README.md)
+- [贪心算法 · 深度原理（局部最优 → 全局最优）](../../01-algorithms/greedy-algorithms/README.md)
+- [文件系统与 I/O](../../02-os/filesystem/README.md)
 
 ← [返回 运维](../README.md)

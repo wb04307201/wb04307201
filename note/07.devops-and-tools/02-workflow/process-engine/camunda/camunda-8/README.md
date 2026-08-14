@@ -302,7 +302,7 @@ public void handle(final JobClient client, final ActivatedJob job) {
 - **2026-H2**：原生小模型集成（Phi-3 / Qwen2.5-7B），降低 AI 节点成本
 - **2027+**：**AI-native BPMN** —— 流程定义可用自然语言生成，AI 实时优化流程
 
-**对比 AI 平台**（与 [11.ai 编排平台](../../../../../../09.ai-applications/agent/ai-platforms/README.md) 互补）：
+**对比 AI 平台**（与 [11.ai 编排平台](../../../../../09.ai-applications/agent/ai-platforms/README.md) 互补）：
 
 | 场景 | Camunda 8 + AI | Dify / Coze / LangGraph |
 |------|----------------|-------------------------|
