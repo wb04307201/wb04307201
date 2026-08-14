@@ -21,6 +21,9 @@
 | 4 | 评估 | [04-evaluation.md](./04-evaluation.md) | 检索 × 生成 × 系统 三维度 + RAGAS / TruLens / DeepEval |
 | 5 | 超范围拒答 | [05-out-of-domain-rejection.md](./05-out-of-domain-rejection.md) | 6 大检测机制 + 5 大拒答模式 + 4 步阈值调优 + 监控 |
 | 6 | Agentic RAG | [06-agentic-rag.md](./06-agentic-rag.md) | Agentic Search 取代 RAG 索引（AI Coding 场景） |
+| 7 | 向量检索算法 | [vector-search-algorithms/](./vector-search-algorithms/README.md) | HNSW vs IVF vs DiskANN 4 维权衡（内存/磁盘/QPS/Recall） |
+| 8 | 千亿级向量检索 | [vector-search-at-scale/](./vector-search-at-scale/README.md) | 5 关键架构转变 + 业界真实案例 + 5 阶段时延/召回/成本三元权衡 |
+| 9 | 万亿级向量检索 | [vector-search-trillion/](./vector-search-trillion/README.md) | 万亿级多集群 + 联邦 + TPU + 极限压缩 |
 
 ## 阅读路径
 
