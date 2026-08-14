@@ -311,8 +311,8 @@ Q: explorer → coder → reviewer 三段流水线 —— 怎么实现？
 
 ### 6.3 关联主模块
 
-- Harness Engineering：[`harness-engineering`](./harness-engineering/README.md) — Claude Code 5 扩展点都是 Harness 实现
-- Loop Engineering：[`loop-engineering`](./loop-engineering/README.md) — 长任务自动化循环
+- Harness Engineering：[`harness-engineering`](../harness-engineering/README.md) — Claude Code 5 扩展点都是 Harness 实现
+- Loop Engineering：[`loop-engineering`](../loop-engineering/README.md) — 长任务自动化循环
 - Agent Spec Tools：[`agent-spec-tools`](../../../09.ai-applications/agent/agent-spec-tools/README.md) — Superpowers / Spec-Kit / OpenSpec（在 Agent 上跑的规范）
 
 ---

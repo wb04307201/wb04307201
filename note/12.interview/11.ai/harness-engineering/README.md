@@ -10,7 +10,7 @@ question:
 
 # Harness Engineering — 给 Agent 套上缰绳面试深挖
 
-> 一句话定位：Harness Engineering 是"用规范和流程约束 Agent"的工程实践，让 Agent 在可控轨道上发挥更强能力。完整概念见 [主模块 Harness Engineering](./harness-engineering/README.md)。
+> 一句话定位：Harness Engineering 是"用规范和流程约束 Agent"的工程实践，让 Agent 在可控轨道上发挥更强能力。完整概念见 [主模块 Harness Engineering](../harness-engineering/README.md)。
 
 ---
 
@@ -96,10 +96,10 @@ Harness = 规范 + 流程 + 工具 + 反馈
 
 ## 六、深度阅读
 
-- 主模块：[Harness Engineering](./harness-engineering/README.md)
+- 主模块：[Harness Engineering](../harness-engineering/README.md)
 - 上一步：[Context Engineering](../context-engineering-interview/README.md)
 - 关联：[Loop Engineering](../loop-engineering/README.md)
-- 实战：[Claude Code 实践](./claude-code-practices/README.md)
+- 实战：[Claude Code 实践](../claude-code-practices/README.md)
 
 ---
 

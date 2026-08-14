@@ -10,7 +10,7 @@ question:
 
 # Loop Engineering — 循环调用 Agent 面试深挖
 
-> 一句话定位：Loop Engineering 是"信任 Agent，让它循环重试直到任务完成"——前提是 Harness 兜底防止失控。完整概念见 [主模块 Loop Engineering](./loop-engineering/README.md)。
+> 一句话定位：Loop Engineering 是"信任 Agent，让它循环重试直到任务完成"——前提是 Harness 兜底防止失控。完整概念见 [主模块 Loop Engineering](../loop-engineering/README.md)。
 
 ---
 
@@ -131,7 +131,7 @@ Task → Agent → 检查结果
 
 ## 七、深度阅读
 
-- 主模块：[Loop Engineering](./loop-engineering/README.md)
+- 主模块：[Loop Engineering](../loop-engineering/README.md)
 - 🆕 实战工具：[Ralph Wiggum Loop](../loop-engineering/ralph-wiggum-loop.md) — Fresh Context 循环 CLI
 - 🆕 **Auto-Fix 闭环实战（写代码 → 跑测试 → 自动修复）**：
   - [auto-fix-strategy](../loop-engineering/auto-fix-strategy.md) —— 5 修复策略

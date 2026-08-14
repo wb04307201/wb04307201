@@ -10,7 +10,7 @@ question:
 
 # AI 编程 Token 经济学：9.6 万 Token 改一行 CSS
 
-> AI 编程工具的成本真相 —— 考察的不是"AI 贵不贵"，而是 **杠杆率思维** + **Token 悖论** + **Agent 工作流消耗机制** + **企业级成本失控案例**。完整 Token 基础见 [Token 与计费](../../../../09.ai-applications/llm-inference/token-billing/README.md)。
+> AI 编程工具的成本真相 —— 考察的不是"AI 贵不贵"，而是 **杠杆率思维** + **Token 悖论** + **Agent 工作流消耗机制** + **企业级成本失控案例**。完整 Token 基础见 [Token 与计费](../../../09.ai-applications/llm-inference/token-billing/README.md)。
 
 > **系列定位**：AI 工程成本面试题（CTO / 技术负责人必考）。覆盖从个人开发者"微观算账"到科技巨头"宏观账单"的完整 Token 经济学。
 
@@ -252,7 +252,7 @@ Anthropic / OpenAI 的 Prompt Cache：
 - ROI 度量：[`AI 编程 ROI`](../ai-coding-roi/README.md) — DORA 4 指标 + SPACE 5 维度
 - 生产力悖论：[`AI 编程生产力悖论`](../ai-coding-productivity-paradox/README.md) — 代码量 +217% 但 bug +383%
 - 代码质量：[`AI 代码流失率`](../ai-code-churn/README.md) — 6 周留存率仅 10-30%
-- 主模块：[`Token 与计费原理`](../../../../09.ai-applications/llm-inference/token-billing/README.md) — 分词算法 + 上下文窗口 + 计费公式
+- 主模块：[`Token 与计费原理`](../../../09.ai-applications/llm-inference/token-billing/README.md) — 分词算法 + 上下文窗口 + 计费公式
 
 ---
 

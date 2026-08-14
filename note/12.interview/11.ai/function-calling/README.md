@@ -10,7 +10,7 @@ question:
 
 # Function Calling / Tool Use — Agent 核心机制面试深挖
 
-> 一句话定位：Function Calling 是让 LLM 输出结构化 JSON 来声明要调用的工具（而非直接执行），是 AI Agent 的核心机制。完整概念见 [主模块 Function Calling](./function-calling/README.md)。
+> 一句话定位：Function Calling 是让 LLM 输出结构化 JSON 来声明要调用的工具（而非直接执行），是 AI Agent 的核心机制。完整概念见 [主模块 Function Calling](../function-calling/README.md)。
 
 ---
 
@@ -115,7 +115,7 @@ LLM    →  宿主（选第一家："调用 create_order"）
 
 ## 七、深度阅读
 
-- 主模块：[Function Calling](./function-calling/README.md)
+- 主模块：[Function Calling](../function-calling/README.md)
 - 关联：[Agent 架构](../agent-dag-vs-react/README.md)
 - 关联：[RAG](../rag/README.md) — RAG 即 retrieve 工具
 - 实战：[Loop Engineering](../loop-engineering/README.md) — 多轮编排的兜底

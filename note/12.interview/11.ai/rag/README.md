@@ -130,7 +130,7 @@ RAG 在**文档问答、低频更新场景**是最佳方案，但在 **AI Coding
 
 - 兄弟面试题（高频反直觉）：[为什么 Claude Code 放弃了 RAG](../claude-code-agentic-search/README.md)
 - 深度原理：[Agentic Search vs RAG](../../../09.ai-applications/rag/06-agentic-rag.md)
-- 实践原文：[Claude Code 最佳实践](./claude-code-practices/README.md)
+- 实践原文：[Claude Code 最佳实践](../claude-code-practices/README.md)
 
 ---
 

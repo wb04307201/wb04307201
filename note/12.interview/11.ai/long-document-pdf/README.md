@@ -10,7 +10,7 @@ question:
 
 # 长文档与 PDF 面试深挖（4 大核心）
 
-> ⬅️ [返回 AI 咬文嚼字](../README.md) | [主模块深度专题](../../../rag/long-document-processing/README.md)
+> ⬅️ [返回 AI 咬文嚼字](../README.md) | [主模块深度专题](../../../09.ai-applications/rag/long-document-processing/README.md)
 
 > **一句话定位**：**4 大核心长文档/PDF 面试深挖**：分块策略 / 中间丢失 / 上下文扩展 / 长合同实战。
 
@@ -221,7 +221,7 @@ question:
 
 ## 🔗 兄弟章节
 
-- **主模块深度**：[长文档处理（几百页 PDF 合同）](../../../rag/long-document-processing/README.md) — 4 大策略整合 + 实战选型决策树
+- **主模块深度**：[长文档处理（几百页 PDF 合同）](../../../09.ai-applications/rag/long-document-processing/README.md) — 4 大策略整合 + 实战选型决策树
 - **兄弟面试题**：[LLM 对齐面试深挖](../llm-alignment/README.md) — 训练阶段如何影响长文档能力
 - **兄弟面试题**：[Prompt Injection 面试深挖](../prompt-injection/README.md) — 长合同场景下 RAG 的间接注入风险
 - **兄弟面试题**：[RAG 面试深挖](../rag/README.md) — RAG Pipeline 通用模板

@@ -382,12 +382,12 @@ Long-Context 1M + RAG 双轨 + Sub-Agents + Memory
 - [context-engineering](../context-engineering-interview/README.md) —— Context Engineering 4 大原则
 - [agent-memory-classification](../agent-memory-classification/README.md) —— Agent 记忆分类
 - [rag](../rag/README.md) —— RAG 面试深挖
-- [transformer](../../08.ai-foundations/03-transformer/README.md) —— Self-Attention 原理
+- [transformer](../../../08.ai-foundations/03-transformer/README.md) —— Self-Attention 原理
 - [function-calling](../function-calling/README.md) —— Tool Use
 
 ### 主模块兄弟
 
-- [11.ai/02-technology-stack/context-engineering](./context-engineering-interview/README.md) —— Context Engineering 综述
+- [11.ai/02-technology-stack/context-engineering](../context-engineering-interview/README.md) —— Context Engineering 综述
 - [11.ai/04-architecture/agent-memory](../../../09.ai-applications/agent/agent-memory/README.md) —— Agent 记忆架构
 - [11.ai/04-architecture/agent-architecture](../../../09.ai-applications/agent/agent-architecture/README.md) —— Agent 架构总览
 

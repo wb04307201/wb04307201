@@ -10,7 +10,7 @@ question:
 
 # Prompt Injection 面试深挖（4 大核心）
 
-> ⬅️ [返回 AI 咬文嚼字](../README.md) | [主模块深度专题](../../../../09.ai-applications/agent/agent-reliability/llm-security/README.md)
+> ⬅️ [返回 AI 咬文嚼字](../README.md) | [主模块深度专题](../../../09.ai-applications/agent/agent-reliability/llm-security/README.md)
 
 > **一句话定位**：**4 大核心 prompt injection 题面试深挖版**：直接注入 / 间接注入 / 6 层防御 / 红队测试。
 
@@ -53,7 +53,7 @@ question:
 > “6 层 = **网络 / 输入 / 模型 / 输出 / 工具 / 审计**。任何一层被攻破，其他层兜底。”
 
 **90 秒话术**：
-> “参考主模块 [LLM 安全攻防实战](../../../../09.ai-applications/agent/agent-reliability/llm-security/README.md) 第七节。网络层限制来源与出口；输入层识别越狱、编码与外部恶意内容；模型层强化指令层级和安全对齐；输出层检测敏感信息与危险内容；工具层落实最小权限、白名单与二次确认；审计层记录 prompt、检索、模型响应和工具调用。”
+> “参考主模块 [LLM 安全攻防实战](../../../09.ai-applications/agent/agent-reliability/llm-security/README.md) 第七节。网络层限制来源与出口；输入层识别越狱、编码与外部恶意内容；模型层强化指令层级和安全对齐；输出层检测敏感信息与危险内容；工具层落实最小权限、白名单与二次确认；审计层记录 prompt、检索、模型响应和工具调用。”
 >
 > “**关键原则：① 输入 / 指令严格分离**（用 messages 而非字符串拼接）；**② 外部内容当数据**（不进 system prompt）；**③ 工具白名单 + 权限门禁**（敏感操作需二次确认）；**④ 输入 + 输出双侧审核**（OpenAI Moderation / 自建分类器）；**⑤ 完整审计日志**（事后 5 分钟定位）。”
 >
@@ -155,8 +155,8 @@ Agent 自动读取内部资料并调用外发工具
 
 ## 🔗 兄弟章节
 
-- **主模块深度**：[LLM 安全攻防实战，403 行](../../../../09.ai-applications/agent/agent-reliability/llm-security/README.md) — 注入、越权、泄露与 6 层纵深防御
-- **研究线深度**：[安全与对齐研究综述](../../../safety/README.md) — 对齐、红队与安全研究全景
+- **主模块深度**：[LLM 安全攻防实战，403 行](../../../09.ai-applications/agent/agent-reliability/llm-security/README.md) — 注入、越权、泄露与 6 层纵深防御
+- **研究线深度**：[安全与对齐研究综述](../../../09.ai-applications/fine-tuning/safety/README.md) — 对齐、红队与安全研究全景
 - **兄弟面试题**：[LLM 对齐面试深挖](../llm-alignment/README.md) — Q4 红队失败样例转 DPO / RLHF 数据的训练闭环
 - **餐厅叙事致命三件套**：[AI 致命三件套：注入 + 越权 + 泄露](../../../13.story/31-ai-fatal-trio.md) — 用阿明餐厅串起完整攻击链
 

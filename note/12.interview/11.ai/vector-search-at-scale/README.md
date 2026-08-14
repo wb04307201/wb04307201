@@ -10,7 +10,7 @@ question:
 
 # 10亿 vs 千亿级向量检索：架构演进 + 5 个关键转变
 
-> 一句话定位：10B（十亿）级用 DiskANN 单机多盘可解；100B-1000B（千亿）级必须**分布式 + 分层索引 + 2 跳检索 + GPU 加速**——是**完全不同的技术栈**。深度原理见 [主模块千亿级专题](./vector-search-at-scale/README.md) + [10亿级专题（兄弟）](./vector-search-algorithms/README.md)。
+> 一句话定位：10B（十亿）级用 DiskANN 单机多盘可解；100B-1000B（千亿）级必须**分布式 + 分层索引 + 2 跳检索 + GPU 加速**——是**完全不同的技术栈**。深度原理见 [主模块千亿级专题](../vector-search-at-scale/README.md) + [10亿级专题（兄弟）](../vector-search-algorithms/README.md)。
 
 > **系列定位**：经典 AI 架构面试题（中高频、架构师级）。考察的不是"千亿级能不能做"，而是 **5 个关键架构转变** + **业界真实案例** + **延迟 vs 召回 vs 成本三元权衡**。
 
@@ -300,8 +300,8 @@ GPU 距离计算：512 维 × 1 亿向量 × 8 字节 = 0.5ms（100x）
 ## 七、相关章节
 
 **主模块**：
-- [11.ai/02-technology-stack/vector-search-at-scale（深度原理）](./vector-search-at-scale/README.md)
-- [11.ai/02-technology-stack/vector-search-algorithms（10亿级专题，兄弟）](./vector-search-algorithms/README.md)
+- [11.ai/02-technology-stack/vector-search-at-scale（深度原理）](../vector-search-at-scale/README.md)
+- [11.ai/02-technology-stack/vector-search-algorithms（10亿级专题，兄弟）](../vector-search-algorithms/README.md)
 
 **12.story 实战**：
 - [12.story/37-vector-database-and-embedding（味道仓库 4 大调优 + 第八章反向链）](../../../13.story/37-vector-database-and-embedding.md)

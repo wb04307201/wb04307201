@@ -83,7 +83,7 @@ question:
 ## 五、深度阅读
 
 - 主模块：[Prompt Engineering](../../../09.ai-applications/prompts/prompt-engineering/README.md)
-- 演进下一步：[Context Engineering](./context-engineering-interview/README.md)
+- 演进下一步：[Context Engineering](../context-engineering-interview/README.md)
 - 关联：[RAG](../../../09.ai-applications/rag/03-rag-vs-finetuning.md)
 - 故事版：[12.story #42 Prompt 工程](../../../13.story/40-prompt-engineering.md)
 

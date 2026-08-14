@@ -228,6 +228,6 @@ Query → Generator LLM → Draft Answer
 
 ## 相关章节
 
-- 深度阅读：[`11.ai`](../../../../08.ai-foundations/README.md) — 主模块详细内容
+- 深度阅读：[`11.ai`](../../../08.ai-foundations/README.md) — 主模块详细内容
 
 ← [返回: 咬文嚼字 · hallucination](../README.md)

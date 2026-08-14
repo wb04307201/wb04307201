@@ -86,7 +86,7 @@ Q4: 是否需要灵活性 > 稳定性？
 | 输出约束 | 格式 + Schema | "必须返回 JSON，包含 code + explanation" |
 | 流程约束 | 节点顺序 + 分支条件 | "intent_classify → query_order → format_response" |
 
-**深读**：[harness-engineering §三 4 大 Harness 类型](./harness-engineering/README.md)
+**深读**：[harness-engineering §三 4 大 Harness 类型](../harness-engineering/README.md)
 
 ---
 
@@ -108,7 +108,7 @@ Q4: 是否需要灵活性 > 稳定性？
 - 语义检查：逻辑一致性 / 业务规则
 - 空结果检测：搜索返回空 → 换策略
 
-**深读**：[loop-engineering §三 3 大核心组件](./loop-engineering/README.md)
+**深读**：[loop-engineering §三 3 大核心组件](../loop-engineering/README.md)
 
 ---
 
@@ -182,7 +182,7 @@ Q4: 是否需要灵活性 > 稳定性？
 | 成本 | 单次任务成本 | > $0.10 |
 | 稳定性 | 漂移率 / 错误率 | 漂移 > 0.05 / 错误 > 5% |
 
-**深读**：[production-stability §二 4 维监控](../../../../09.ai-applications/agent/production-stability/README.md)
+**深读**：[production-stability §二 4 维监控](../../../09.ai-applications/agent/production-stability/README.md)
 
 ---
 
