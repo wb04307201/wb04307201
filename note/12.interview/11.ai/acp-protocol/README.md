@@ -10,7 +10,7 @@ question:
 
 # ACP（Agent Client Protocol）面试题：4 大 Agent 通信协议辨析 + Zed 集成反直觉点
 
-> 一句话定位：ACP（Zed 出品 Apache 2.0）是**编辑器 ↔ Coding Agent** 的标准化通信协议，类似 LSP 对语言服务器的角色。深度原理见 协议层深度 + [概念地图 ACP 条目](../../../concept-map/README.md#四-核心组件)。
+> 一句话定位：ACP（Zed 出品 Apache 2.0）是**编辑器 ↔ Coding Agent** 的标准化通信协议，类似 LSP 对语言服务器的角色。深度原理见 协议层深度 + [概念地图 ACP 条目](../../../09.ai-applications/prompts/context-engineering/concept-map.md#四-核心组件)。
 
 > **系列定位**：AI 工程面试新增考点（2025 新兴协议）。考察的不是"ACP 是什么"，而是 **Agent 通信协议家族辨析**（MCP vs ACP vs A2A vs ANP）+ **为什么 ACP 用 JSON-RPC 而不是 gRPC** + **与 LSP 角色类比的反直觉点**。
 

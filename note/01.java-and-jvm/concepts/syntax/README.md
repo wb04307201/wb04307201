@@ -183,7 +183,7 @@ var map = new HashMap<String, Integer>(); // 推断为 HashMap<String, Integer>
 
 > **注意**：上表将 `var` 归入"受限关键字"是宽松分类。严格来说，按 JLS（Java 语言规范），`var` 不是关键字，而是**受限标识符（restricted identifier）**——它在局部变量声明上下文中具有特殊含义，但在其他位置仍可作为普通标识符使用。
 >
-> 完整说明（适用场景、使用限制、与 `final` 结合等）参见 [variable/README.md](../variable/README.md#var-局部变量类型推断java-10)。
+> 完整说明（适用场景、使用限制、与 `final` 结合等）参见 [variable/README.md](../../01-language/variable/README.md#var-局部变量类型推断java-10)。
 
 ## `continue`、`break`和`return`的区别
 
