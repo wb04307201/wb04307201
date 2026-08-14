@@ -359,7 +359,7 @@ evaluation:
 - [Harness Engineering 体系](../agent-reliability/harness-engineering/README.md) — 上下文工程总论
 
 **面试题（13.split-hairs）**：
-- [Skill 设计面试 5 题](../../../13.split-hairs/11.ai/skill-design/README.md) — 配套面试题
+- [Skill 设计面试 5 题](../../../12.interview/11.ai/skill-design/README.md) — 配套面试题
 
 ---
 

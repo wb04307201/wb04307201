@@ -357,7 +357,7 @@ records = [
 - [12.story/36-rag-retrieval-augmented-generation](../../../12.story/36-rag-retrieval-augmented-generation.md) — RAG 餐厅故事
 
 **咬文嚼字**：
-- [long-document-pdf](../../../13.split-hairs/11.ai/long-document-pdf/README.md) — 长文档 PDF 面试题（Commit 2 创建）
+- [long-document-pdf](../../../12.interview/11.ai/long-document-pdf/README.md) — 长文档 PDF 面试题（Commit 2 创建）
 - **入库集成**：[knowledge-ingestion-pipeline](../knowledge-ingestion-pipeline/README.md) — 长 PDF 在入库流水线的"格式解析"环节集成 Docling
 
 ---

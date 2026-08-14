@@ -13,7 +13,7 @@ module:
 
 > 千亿级（100B / 1000B）向量检索是 10B 的**质变**。本文从**5 个架构转变**（单跳→2 跳、单一→分层、单机→分布式、CPU→GPU、通用→路由）+ **分层索引架构** + **业界算法**（ScANN / Faiss / SPANN / Falcon）+ **真实案例**系统讲清楚千亿级向量检索。
 
-> **面试场景**：这是架构师级面试题——很多人学完 10B 选型后以为"千亿 = 加机器"。面试版（30/60/90 秒话术）见 [咬文嚼字·11.ai/vector-search-at-scale](../../../13.split-hairs/11.ai/vector-search-at-scale/README.md)。
+> **面试场景**：这是架构师级面试题——很多人学完 10B 选型后以为"千亿 = 加机器"。面试版（30/60/90 秒话术）见 [咬文嚼字·11.ai/vector-search-at-scale](../../../12.interview/11.ai/vector-search-at-scale/README.md)。
 
 > **兄弟章节**：[10亿级向量检索选型](../vector-search-algorithms/README.md)（HNSW/IVF/DiskANN 详解）
 
@@ -260,7 +260,7 @@ GPU 距离计算：512 维 × 1 亿向量 × 8 字节 = 0.5ms（100x）
 
 ### 5.1.1 Incremental Embedding 增量向量化系统设计（深度展开）
 
-> 面试速查版见 [13.split-hairs · incremental-embedding](../../../13.split-hairs/11.ai/incremental-embedding/README.md)。
+> 面试速查版见 [13.split-hairs · incremental-embedding](../../../12.interview/11.ai/incremental-embedding/README.md)。
 
 #### 5.1.1.1 5 大组件架构（生产级）
 
@@ -438,7 +438,7 @@ def fallback_chain(doc):
 
 ## 七、与"驾驭演进"主线的关联
 
-向量检索规模演进是 [驾驭演进主线](../../04-architecture/llm-control-evolution/README.md) 在检索领域的体现：
+向量检索规模演进是 [驾驭演进主线](../../agent/agent-architecture/llm-control-evolution/README.md) 在检索领域的体现：
 
 | 驾驭阶段 | 向量检索规模 | 适配 |
 |---------|------------|------|
@@ -453,7 +453,7 @@ def fallback_chain(doc):
 ## 八、相关章节
 
 **面试题**：
-- [咬文嚼字·11.ai/vector-search-at-scale（30/60/90 秒话术）](../../../13.split-hairs/11.ai/vector-search-at-scale/README.md)
+- [咬文嚼字·11.ai/vector-search-at-scale（30/60/90 秒话术）](../../../12.interview/11.ai/vector-search-at-scale/README.md)
 
 **兄弟专题**：
 - [10亿级向量检索选型（HNSW/IVF/DiskANN）](../vector-search-algorithms/README.md)

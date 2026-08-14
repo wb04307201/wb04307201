@@ -235,7 +235,7 @@ skills/
 - [Context Engineering](../../02-technology-stack/context-engineering/README.md) — Token 预算与上下文压缩
 
 **面试题层（13.split-hairs）**：
-- [Skill 命中率面试 5 题](../../../13.split-hairs/11.ai/skill-hit-rate/README.md) — 配套面试题
+- [Skill 命中率面试 5 题](../../../12.interview/11.ai/skill-hit-rate/README.md) — 配套面试题
 
 **叙事层（12.story）**：
 - [扩招 50 个厨师：Skill 调度的餐厅隐喻](../../../13.story/45-skill-scheduling-restaurant.md) — 餐厅叙事版

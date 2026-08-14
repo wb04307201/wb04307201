@@ -15,7 +15,7 @@ module:
 
 > **重要**：万亿级真实工程细节几乎都是商业秘密。本文聚焦**架构原理 + 公开案例 + 反常识反思**，不假装"可落地"。
 
-> **面试场景**：这是前沿架构面试题（低频、专家级）。面试版见 [咬文嚼字·11.ai/vector-search-trillion](../../../13.split-hairs/11.ai/vector-search-trillion/README.md)。
+> **面试场景**：这是前沿架构面试题（低频、专家级）。面试版见 [咬文嚼字·11.ai/vector-search-trillion](../../../12.interview/11.ai/vector-search-trillion/README.md)。
 
 > **兄弟专题**：[千亿级向量检索架构](../vector-search-at-scale/README.md) + [10亿级向量检索选型](../vector-search-algorithms/README.md)
 
@@ -272,7 +272,7 @@ vs Google TPU v5：
 
 ## 七、与"驾驭演进"主线的关联
 
-向量检索规模演进是 [驾驭演进主线](../../04-architecture/llm-control-evolution/README.md) 在检索领域的体现：
+向量检索规模演进是 [驾驭演进主线](../../agent/agent-architecture/llm-control-evolution/README.md) 在检索领域的体现：
 
 | 驾驭阶段 | 向量检索规模 | 适配 |
 |---------|------------|------|
@@ -286,7 +286,7 @@ vs Google TPU v5：
 ## 八、相关章节
 
 **面试题**：
-- [咬文嚼字·11.ai/vector-search-trillion（30/60/90 秒话术）](../../../13.split-hairs/11.ai/vector-search-trillion/README.md)
+- [咬文嚼字·11.ai/vector-search-trillion（30/60/90 秒话术）](../../../12.interview/11.ai/vector-search-trillion/README.md)
 
 **兄弟专题（10亿 / 千亿）**：
 - [10亿级向量检索选型](../vector-search-algorithms/README.md)
@@ -296,7 +296,7 @@ vs Google TPU v5：
 - [12.story/37-vector-database-and-embedding（味道仓库 第十章反向链）](../../../13.story/37-vector-database-and-embedding.md)
 
 **驾驭演进视角**：
-- [11.ai/04-architecture/llm-control-evolution](../../04-architecture/llm-control-evolution/README.md)
+- [11.ai/04-architecture/llm-control-evolution](../../agent/agent-architecture/llm-control-evolution/README.md)
 
 ---
 

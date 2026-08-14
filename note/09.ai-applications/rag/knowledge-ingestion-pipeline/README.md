@@ -392,7 +392,7 @@ graph TD
 - **入库去重**：[deduplication-table](../../../04.system-design/06-idempotency/deduplication-table/README.md)
 - **AI 平台**：[ai-platforms](../../03-engineering/ai-platforms/README.md)
 - **餐厅叙事**：[12.story/36-rag-retrieval-augmented-generation](../../../12.story/36-rag-retrieval-augmented-generation.md)
-- **咬文嚼字**：[knowledge-ingestion-pipeline 面试](../../../13.split-hairs/11.ai/knowledge-ingestion-pipeline/README.md)（commit 2 创建）
+- **咬文嚼字**：[knowledge-ingestion-pipeline 面试](../../../12.interview/11.ai/knowledge-ingestion-pipeline/README.md)（commit 2 创建）
 
 ---
 

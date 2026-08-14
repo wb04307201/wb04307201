@@ -162,11 +162,11 @@ RAG 检索质量（nDCG@10）：
 
 ## 🔗 兄弟章节
 
-- **本专题**：[Embedding 模型](../embedding-models/README.md) / [Hybrid Search](../hybrid-search/README.md) / [Reranker](../reranker/README.md) / [RAG 评估](../../08-llmops/agent-evaluation/09-rag-evaluation/README.md)
+- **本专题**：[Embedding 模型](../embedding-models/README.md) / [Hybrid Search](../hybrid-search/README.md) / [Reranker](../reranker/README.md) / [RAG 评估](../../rag/04-evaluation/README.md)
 - **L1**：[Lost in middle](../lost-in-middle/README.md)
-- **咬文嚼字**：[RAG 面试](../../../13.split-hairs/11.ai/rag/README.md)
+- **咬文嚼字**：[RAG 面试](../../../12.interview/11.ai/rag/README.md)
 - **应用场景**：[long-document-processing](../long-document-processing/README.md) — 长 PDF/合同实战视角（4 大策略整合）
-- **咬文嚼字**：[long-document-pdf 长文档面试](../../../13.split-hairs/11.ai/long-document-pdf/README.md) — 4 题面试深挖（含分块实战）
+- **咬文嚼字**：[long-document-pdf 长文档面试](../../../12.interview/11.ai/long-document-pdf/README.md) — 4 题面试深挖（含分块实战）
 - **入库侧**：[knowledge-ingestion-pipeline](../knowledge-ingestion-pipeline/README.md) — 入库时分块策略选型（在 8 阶段流水线的"智能分块"环节落地）
 
 ---

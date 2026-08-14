@@ -13,7 +13,7 @@ module:
 
 > 向量检索是 RAG / 推荐系统 / 语义搜索的核心组件。本文从 **HNSW / IVF / DiskANN** 3 大算法的原理、规模边界、4 维权衡（内存/磁盘/QPS/Recall）系统讲清楚向量检索选型决策。
 
-> **面试场景**：这是 AI 架构师高频面试题——很多人只学 HNSW，但 10 亿级必须换算法。面试版（30/60/90 秒话术）见 [咬文嚼字·11.ai/vector-search-algorithms](../../../13.split-hairs/11.ai/vector-search-algorithms/README.md)。
+> **面试场景**：这是 AI 架构师高频面试题——很多人只学 HNSW，但 10 亿级必须换算法。面试版（30/60/90 秒话术）见 [咬文嚼字·11.ai/vector-search-algorithms](../../../12.interview/11.ai/vector-search-algorithms/README.md)。
 
 ---
 
@@ -344,7 +344,7 @@ QPS：10K
 
 ## 九、与"驾驭演进"主线的关联
 
-向量检索算法演进是 [驾驭演进主线](../../04-architecture/llm-control-evolution/README.md) 在 RAG 领域的具体体现：
+向量检索算法演进是 [驾驭演进主线](../../agent/agent-architecture/llm-control-evolution/README.md) 在 RAG 领域的具体体现：
 
 | 阶段 | 向量检索 | 适配规模 |
 |------|---------|---------|
@@ -358,7 +358,7 @@ QPS：10K
 ## 十、相关章节
 
 **面试题**：
-- [咬文嚼字·11.ai/vector-search-algorithms（30/60/90 秒话术）](../../../13.split-hairs/11.ai/vector-search-algorithms/README.md)
+- [咬文嚼字·11.ai/vector-search-algorithms（30/60/90 秒话术）](../../../12.interview/11.ai/vector-search-algorithms/README.md)
 
 **12.story 实战**：
 - [12.story/37-vector-database-and-embedding（味道仓库 4 大调优）](../../../13.story/37-vector-database-and-embedding.md)
