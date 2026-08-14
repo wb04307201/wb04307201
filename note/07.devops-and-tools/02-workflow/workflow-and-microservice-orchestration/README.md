@@ -311,7 +311,7 @@ class ResearchAgent:
 ---
 
 
-- [bpmn-ai-integration](../architecture/bpmn-ai-integration.md)
+- [bpmn-ai-integration](./architecture/bpmn-ai-integration.md)
 ## 📊 本节统计
 
 | 维度 | 数据 |

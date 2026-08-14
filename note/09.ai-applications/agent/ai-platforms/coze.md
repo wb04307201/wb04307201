@@ -1,6 +1,6 @@
 # Coze（扣子）
 
-> ⬅️ [返回 AI 平台](README.md) | [Dify](dify.md) | [LangGraph](langgraph.md) | [BPMN+AI 融合](../architecture/bpmn-ai-integration.md) | [11 AI 知识体系](../README.md)
+> ⬅️ [返回 AI 平台](README.md) | [Dify](dify.md) | [LangGraph](langgraph.md) | [BPMN+AI 融合](./architecture/bpmn-ai-integration.md) | [11 AI 知识体系](../README.md)
 
 ## 🎯 一句话定位
 
@@ -191,6 +191,6 @@ graph LR
 - [11 AI 知识体系](../README.md) — 章节根目录
 - [Dify](dify.md) — DSL 入 Git + 私有化首选
 - [LangGraph](langgraph.md) — 代码优先复杂 Agent 框架
-- [BPMN+AI 融合](../architecture/bpmn-ai-integration.md) — Coze + Camunda 8 混合架构（适合国内企业落地）
+- [BPMN+AI 融合](./architecture/bpmn-ai-integration.md) — Coze + Camunda 8 混合架构（适合国内企业落地）
 
 - [spring-ai-vs-platforms](spring-ai-vs-platforms.md)

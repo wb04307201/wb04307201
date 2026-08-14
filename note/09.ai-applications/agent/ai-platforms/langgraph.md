@@ -1,6 +1,6 @@
 # LangGraph
 
-> ⬅️ [返回 AI 平台](README.md) | [Dify](dify.md) | [Coze](coze.md) | [BPMN+AI 融合](../architecture/bpmn-ai-integration.md) | [11 AI 知识体系](../README.md)
+> ⬅️ [返回 AI 平台](README.md) | [Dify](dify.md) | [Coze](coze.md) | [BPMN+AI 融合](./architecture/bpmn-ai-integration.md) | [11 AI 知识体系](../README.md)
 
 ## 🎯 一句话定位
 
@@ -256,7 +256,7 @@ app = swarm.compile()
 2. **StateGraph 是不是过度设计？** 对**单轮对话**是的；对**多步推理 / 长期状态 / 可重放**——它是**唯一成熟方案**。Checkpointer + Time Travel 是杀手锏。
 3. **HITL 的关键不是技术是 UX？** 对。`interrupt()` API 简单，难的是**前端审核界面**——需要把 state 渲染成可读 UI、把人工决策通过 `Command` 传回图执行。多数项目 UI 工作量 > 后端。
 4. **Supervisor vs Swarm 选哪个？** 90% 用 **Supervisor**（中心化决策更可控）；**Swarm** 适合"开放式讨论"（创意发散、多方案对比），但**调试难度指数级上升**。
-5. **LangGraph 会被 BPMN 取代吗？** 不会。两者解决不同问题——LangGraph 服务于"快速试错 + 复杂推理"；BPMN 服务于"确定性 + 合规审计"。**生产中常组合**（详见 [BPMN+AI 融合](../architecture/bpmn-ai-integration.md)）。
+5. **LangGraph 会被 BPMN 取代吗？** 不会。两者解决不同问题——LangGraph 服务于"快速试错 + 复杂推理"；BPMN 服务于"确定性 + 合规审计"。**生产中常组合**（详见 [BPMN+AI 融合](./architecture/bpmn-ai-integration.md)）。
 
 ---
 
@@ -266,6 +266,6 @@ app = swarm.compile()
 - [11 AI 知识体系](../README.md) — 章节根目录
 - [Dify](dify.md) — 低代码 DSL 优先
 - [Coze](coze.md) — 字节系 Agent 平台
-- [BPMN+AI 融合](../architecture/bpmn-ai-integration.md) — LangGraph + Camunda 8 混合架构（生产级落地）
+- [BPMN+AI 融合](./architecture/bpmn-ai-integration.md) — LangGraph + Camunda 8 混合架构（生产级落地）
 
 - [spring-ai-vs-platforms](spring-ai-vs-platforms.md)
