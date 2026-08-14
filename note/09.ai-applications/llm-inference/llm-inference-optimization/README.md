@@ -59,7 +59,7 @@ Agent / 复杂 prompt = + SGLang RadixAttention
 
 - **L1**：[Transformer](../../../08.ai-foundations/03-transformer/transformer-architecture.md) / [注意力机制](../../../08.ai-foundations/03-transformer/attention-mechanism.md) / MoE（⚠️ 待 Phase 1+ 迁入；占位 `../../../../08.ai-foundations/02-deep-learning/moe-architecture/`）
 - **LLMOps**：08-llmops（⚠️ 待 Phase 1+ 迁入；占位 `../llmops/`） — 监控 + 安全
-- **咬文嚼字**：[13.split-hairs/11.ai](../../../../12.interview/11.ai/README.md) — 面试深挖版（⚠️ 待 Phase 1+ 迁入）
+- **咬文嚼字**：13.split-hairs/11.ai — 面试深挖版（⚠️ 待 Phase 1+ 迁入）
 
 ## 反向链
 

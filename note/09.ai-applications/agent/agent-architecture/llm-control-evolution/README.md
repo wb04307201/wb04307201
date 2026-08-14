@@ -20,10 +20,10 @@ module:
 
 | 阶段 | 主导者 | 工具 | 何时需要升级 |
 |------|--------|------|-------------|
-| [Prompt Engineering](../../prompts/prompt-engineering/README.md) | 人类 | 提示词技巧（8 大核心） | 一句话能搞定时 |
-| [Context Engineering](../../agent/agent-context/context-engineering/README.md) | Agent | RAG + Memory + Tools | 需要长期记忆/工具时 |
-| [Harness Engineering](../../agent/agent-reliability/harness-engineering/README.md) | 规范/流程 | OpenSpec / Spec-Kit / CLAUDE.md | Agent 行为不可控时 |
-| [Loop Engineering](../../agent/loop-engineering/README.md) | 调度器 | 状态机 + 重试 + 终止条件 | 任务超长复杂时 |
+| Prompt Engineering | 人类 | 提示词技巧（8 大核心） | 一句话能搞定时 |
+| Context Engineering | Agent | RAG + Memory + Tools | 需要长期记忆/工具时 |
+| Harness Engineering | 规范/流程 | OpenSpec / Spec-Kit / CLAUDE.md | Agent 行为不可控时 |
+| Loop Engineering | 调度器 | 状态机 + 重试 + 终止条件 | 任务超长复杂时 |
 
 > 一句话：**人类 → Agent → 规范 → 调度器**，驾驭责任逐级上移。
 
@@ -79,7 +79,7 @@ Harness Engineering 解决"如何让 Agent 在可控轨道上发挥最大能力"
 
 Loop Engineering 反其道而行之：**小步快跑 + Harness 兜底 + 自动终止**。把"完成任务"分解为多轮"小 Agent 调用"，每轮验证、每轮反馈、每轮终止条件清晰。
 
-🆕 **实战深度**（写代码 → 跑测试 → 自动修复闭环）：见 [loop-engineering/auto-fix-strategy](../../agent/loop-engineering/auto-fix-strategy.md) —— 5 修复策略 + Verifier 5 大源 + Claude Code/Cursor/Devin/Aider 4 IDE 实战 + 修复 prompt 模板。
+🆕 **实战深度**（写代码 → 跑测试 → 自动修复闭环）：见 loop-engineering/auto-fix-strategy —— 5 修复策略 + Verifier 5 大源 + Claude Code/Cursor/Devin/Aider 4 IDE 实战 + 修复 prompt 模板。
 
 ---
 
@@ -120,7 +120,7 @@ Loop Engineering 反其道而行之：**小步快跑 + Harness 兜底 + 自动�
 - **11.ai L2 技术栈** → 单一阶段的实现细节（如 Prompt 8 大技巧、Context 5 原则）
 - **本 README** → 全局演化的架构视角（推荐先读）
 - **11.ai L3 工程实践** → 工程化生产落地的具体抓手（Claude Code / Production Agent / Loop）
-- **12.story 系列** → 餐厅叙事的实战案例（[38 RAG](../../../13.story/36-rag-retrieval-augmented-generation.md) / [41 私有化](../../../13.story/39-ai-private-deployment.md) / [42 Prompt 工程](../../../13.story/40-prompt-engineering.md) 等）
+- **12.story 系列** → 餐厅叙事的实战案例（38 RAG / 41 私有化 / 42 Prompt 工程 等）
 
 ### 阅读路径建议
 
@@ -170,13 +170,13 @@ Loop Engineering 反其道而行之：**小步快跑 + Harness 兜底 + 自动�
 
 ## 相关章节
 
-- 同分类：[Agent 架构（DAG vs ReAct）](../agent-architecture/README.md) — 4 阶段落地的具体架构
-- 同分类：[Agent Memory 架构](../agent-memory/README.md) — Memory 演进（Prompt 期无 → Context 期短期 → Harness 期长期 → Loop 期自动分层）
-- 同分类：[智能系统分层](../intelligent-system-layers/README.md) — Harness / Loop 在系统中的位置
-- 兄弟子：[Harness Engineering](../../agent/agent-reliability/harness-engineering/README.md) · [Loop Engineering](../../agent/loop-engineering/README.md)
-- 上下文子：[Prompt Engineering](../../prompts/prompt-engineering/README.md) · [Context Engineering](../../agent/agent-context/context-engineering/README.md)
-- 实战叙事：[12.story #42 Prompt 工程](../../../13.story/40-prompt-engineering.md) · [38 RAG](../../../13.story/36-rag-retrieval-augmented-generation.md)
+- 同分类：Agent 架构（DAG vs ReAct） — 4 阶段落地的具体架构
+- 同分类：Agent Memory 架构 — Memory 演进（Prompt 期无 → Context 期短期 → Harness 期长期 → Loop 期自动分层）
+- 同分类：智能系统分层 — Harness / Loop 在系统中的位置
+- 兄弟子：Harness Engineering · Loop Engineering
+- 上下文子：Prompt Engineering · Context Engineering
+- 实战叙事：12.story #42 Prompt 工程 · 38 RAG
 
 
-- [single-epoch-and-config-evidence](../../01-fundamentals/dropout-in-llm/single-epoch-and-config-evidence.md)
+- single-epoch-and-config-evidence
 ← [返回: L4 架构设计](../README.md)

@@ -156,7 +156,7 @@ Agent 自动读取内部资料并调用外发工具
 ## 🔗 兄弟章节
 
 - **主模块深度**：[LLM 安全攻防实战，403 行](../../../09.ai-applications/agent/agent-reliability/llm-security/README.md) — 注入、越权、泄露与 6 层纵深防御
-- **研究线深度**：[安全与对齐研究综述](../../../09.ai-applications/fine-tuning/safety/README.md) — 对齐、红队与安全研究全景
+- **研究线深度**：安全与对齐研究综述 — 对齐、红队与安全研究全景
 - **兄弟面试题**：[LLM 对齐面试深挖](../llm-alignment/README.md) — Q4 红队失败样例转 DPO / RLHF 数据的训练闭环
 - **餐厅叙事致命三件套**：[AI 致命三件套：注入 + 越权 + 泄露](../../../13.story/31-ai-fatal-trio.md) — 用阿明餐厅串起完整攻击链
 

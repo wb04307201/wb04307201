@@ -212,7 +212,7 @@ metrics = [
 | **Tool Call Accuracy（工具调用准确率）** | 选检索/查库/执行工具及其参数是否正确 |
 | **Self-Correction Rate（自我修正率）** | 首次检索/生成失败后，能否通过反思自主调整并输出正确结果 |
 
-> 🔗 这三个指标的通用母体（完整公式 + 阈值）见 [Agent 6 大评测维度](../agent/agent-evaluation/01-six-metrics.md)；面试话术见 [如何量化 Agent 性能](../../../12.interview/11.ai/agent-performance-evaluation/README.md)（⚠️ 待 Phase 1+ 迁入）。
+> 🔗 这三个指标的通用母体（完整公式 + 阈值）见 [Agent 6 大评测维度](../agent/agent-evaluation/01-six-metrics.md)；面试话术见 如何量化 Agent 性能（⚠️ 待 Phase 1+ 迁入）。
 
 ---
 

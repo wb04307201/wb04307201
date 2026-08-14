@@ -261,15 +261,15 @@ epoch 数 ≈ 训练总 tokens / 数据集 tokens 数
 - [LLM 中的 Dropout（基础原理）](README.md) — 训练范式反转 + 替代方案
 
 **同模块相关**：
-- [Transformer 架构深挖](../../01-fundamentals/transformer/README.md) — 注意力 + FFN 结构
-- [Dense vs MoE](../../01-fundamentals/dense-vs-moe/README.md) — MoE 稀疏激活也是正则化
-- [LLM 基础概念](../../01-fundamentals/llm-basics/README.md) — 训练数据 + 规模定律
+- Transformer 架构深挖 — 注意力 + FFN 结构
+- Dense vs MoE — MoE 稀疏激活也是正则化
+- LLM 基础概念 — 训练数据 + 规模定律
 
 **架构视角**：
-- [LLM 驾驭演进主线](../../agent/agent-architecture/llm-control-evolution/README.md) — 训练范式是 Context 维度的新形态
+- LLM 驾驭演进主线 — 训练范式是 Context 维度的新形态
 
 **面试题**：
-- [大模型为什么不用 Dropout（基础 4 题）](../../../13.split-hairs/11.ai/dropout-in-llm/README.md) — 基础题
+- 大模型为什么不用 Dropout（基础 4 题） — 基础题
 - 同栏目 6 题（含本文对应的 Q5/Q6 进阶题）
 
 ---

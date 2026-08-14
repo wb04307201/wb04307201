@@ -10,7 +10,7 @@ question:
 
 # ACP（Agent Client Protocol）面试题：4 大 Agent 通信协议辨析 + Zed 集成反直觉点
 
-> 一句话定位：ACP（Zed 出品 Apache 2.0）是**编辑器 ↔ Coding Agent** 的标准化通信协议，类似 LSP 对语言服务器的角色。深度原理见 [协议层深度](../context-engineering-interview/acp-protocol/README.md) + [概念地图 ACP 条目](../../../concept-map/README.md#四-核心组件)。
+> 一句话定位：ACP（Zed 出品 Apache 2.0）是**编辑器 ↔ Coding Agent** 的标准化通信协议，类似 LSP 对语言服务器的角色。深度原理见 协议层深度 + [概念地图 ACP 条目](../../../concept-map/README.md#四-核心组件)。
 
 > **系列定位**：AI 工程面试新增考点（2025 新兴协议）。考察的不是"ACP 是什么"，而是 **Agent 通信协议家族辨析**（MCP vs ACP vs A2A vs ANP）+ **为什么 ACP 用 JSON-RPC 而不是 gRPC** + **与 LSP 角色类比的反直觉点**。
 
@@ -217,8 +217,8 @@ question:
 
 ### 6.1 主模块（协议层深度 + 工具）
 
-- **协议层深度**：[`acp-protocol.md`](../context-engineering-interview/acp-protocol/README.md) — ACP 架构 + JSON-RPC 2.0 扩展 + Python SDK 示例 + 与 MCP/A2A/ANP 完整对比
-- **概念地图**：[`concept-map.md`](../../../concept-map/README.md) — ACP 在 Agent 协议族中的位置
+- **协议层深度**：`acp-protocol.md` — ACP 架构 + JSON-RPC 2.0 扩展 + Python SDK 示例 + 与 MCP/A2A/ANP 完整对比
+- **概念地图**：`concept-map.md` — ACP 在 Agent 协议族中的位置
 - **MCP 对比**：[`mcp`](../context-engineering-interview/README.md#mcp-model-context-protocol) — Agent ↔ 工具协议（在 context-engineering README 中描述）
 - **A2A 对比**：[Google A2A](https://google.github.io/A2A/) — Agent ↔ Agent 协议
 

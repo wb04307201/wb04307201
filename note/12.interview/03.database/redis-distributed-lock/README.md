@@ -225,7 +225,7 @@ HDEL order:123 thread-a:1  // 第二次释放，计数 = 0，删除锁
 
 ## 五、交叉引用
 
-- [分布式锁设计](04.system-design/distributed-lock/README.md) — 通用分布式锁设计（ZooKeeper / Redis / 数据库）
+- 分布式锁设计 — 通用分布式锁设计（ZooKeeper / Redis / 数据库）
 - [Redis 单线程模型](../redis-single-thread/README.md) — Redis 为什么快
 - [Redis 过期删除策略](../redis-expiry-deletion/README.md) — Redis 如何删除过期 key
 - 主模块：[`03.database`](../../../../note/03.database/) — 数据库知识体系

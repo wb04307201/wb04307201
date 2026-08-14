@@ -10,7 +10,7 @@ question:
 
 # 为什么 Claude Code 放弃了 RAG？ — Agentic Search 取代 RAG 的反直觉革命
 
-> 一句话定位：Claude Code（Anthropic 2025 CLI 工具）在大型代码库场景下**主动放弃了 RAG**，改用 Agentic Search —— 这是 AI Coding 范式的根本转变。深度原理见 [主模块 Agentic Search vs RAG](../../../09.ai-applications/rag/06-agentic-rag.md) + [Claude Code 实践](../../09.ai-applications/agent/coding-agents/claude-code-practices/README.md)。
+> 一句话定位：Claude Code（Anthropic 2025 CLI 工具）在大型代码库场景下**主动放弃了 RAG**，改用 Agentic Search —— 这是 AI Coding 范式的根本转变。深度原理见 [主模块 Agentic Search vs RAG](../../../09.ai-applications/rag/06-agentic-rag.md) + Claude Code 实践。
 
 > **系列定位**：经典 AI 面试题（高频、反直觉必考）。考察的不是"RAG 是什么"，而是 **AI Coding 检索范式的演进** + **RAG 在工程实践中的边界** + **Harness 取代索引的范式转变**。
 
@@ -165,7 +165,7 @@ RAG 不是被淘汰，是**场景化**：
 
 **主模块**：
 - [11.ai/02-technology-stack/agentic-search-vs-rag（深度原理）](../../../09.ai-applications/rag/06-agentic-rag.md)
-- [11.ai/03-engineering/claude-code-practices（Claude Code 实践）](../../09.ai-applications/agent/coding-agents/claude-code-practices/README.md)
+- 11.ai/03-engineering/claude-code-practices（Claude Code 实践）
 - [11.ai/08-llmops/01-rag-vs-finetuning（RAG vs Finetuning）](../../../09.ai-applications/rag/03-rag-vs-finetuning.md)
 
 **同栏目（11.ai 高频面试题）**：
@@ -175,7 +175,7 @@ RAG 不是被淘汰，是**场景化**：
 - [大模型中为什么不用 Dropout](../dropout-in-llm/README.md)
 
 **架构视角**：
-- [11.ai/04-architecture/llm-control-evolution（驾驭演进主线）](../../../09.ai-applications/agent/agent-architecture/llm-control-evolution.md) — Agentic Search 是"Context"维度的新形态
+- 11.ai/04-architecture/llm-control-evolution（驾驭演进主线） — Agentic Search 是"Context"维度的新形态
 
 ---
 

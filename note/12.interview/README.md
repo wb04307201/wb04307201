@@ -158,7 +158,7 @@ graph TB
 
 | 类型 | 例子 | 应该归到 |
 |------|------|----------|
-| **决策实战 + 管理学** | App 报价拆解 / 外包避坑 / App 跨端技术栈选型 | [`note/11.product-and-pm/`](../11.product-and-pm/README.md) / 主模块 [`05.frontend/05-architecture/08-cross-platform/`](../05.frontend/05-architecture/08-cross-platform/README.md) |
+| **决策实战 + 管理学** | App 报价拆解 / 外包避坑 / App 跨端技术栈选型 | [`note/11.product-and-pm/`](../11.product-and-pm/README.md) / 主模块 `05.frontend/05-architecture/08-cross-platform/` |
 | **主模块已经深度覆盖的"广度"** | 4 种创建线程方式 / SQL 调优总览 | 主模块对应章节，split-hairs 不重复广度 |
 | **概念定义 + 全景图** | Transformer 是什么 / Java 反射的整体框架 | 主模块 [`01-fundamentals/transformer/`](../08.ai-foundations/03-transformer/README.md)，split-hairs 只做精炼版 |
 | **前端工程化 / 浏览器"广度"知识** | URL 到渲染全链路 | 主模块 [`09.front-end/01-foundation/browser-rendering/`](../05.frontend/01-foundation/browser-rendering/README.md) |

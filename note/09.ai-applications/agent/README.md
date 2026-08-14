@@ -59,10 +59,10 @@
 
 以下 Agent 相关主题将在 Phase 1+ 迁入本 MOC（占位路径已映射）：
 
-- ⚠️ Function Calling 工具调用 — [`./agent-spec-tools/function-calling/`](./agent-spec-tools/function-calling/README.md)
-- ⚠️ Context Engineering — [`../prompts/context-engineering/`](../../prompts/context-engineering/README.md)
-- ⚠️ 入口路由架构 — [`./architecture/routing-architecture/`](./architecture/routing-architecture/README.md)
-- ⚠️ 智能系统分层 — [`./architecture/intelligent-system-layers/`](./architecture/intelligent-system-layers/README.md)
+- ⚠️ Function Calling 工具调用 — `./agent-spec-tools/function-calling/`
+- ⚠️ Context Engineering — `../prompts/context-engineering/`
+- ⚠️ 入口路由架构 — `./architecture/routing-architecture/`
+- ⚠️ 智能系统分层 — `./architecture/intelligent-system-layers/`
 
 ---
 

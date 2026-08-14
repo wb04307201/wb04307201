@@ -50,8 +50,8 @@
 
 以下 Prompt 相关主题仍在迁移前位置（Phase 8 后将切到 `note/<planned-path>` 占位），待后续任务迁入本 MOC：
 
-- ⚠️ Function Calling（结构化 Prompt 输出） — `[../agent/spec-tools/function-calling/](../agent/spec-tools/function-calling/README.md)`（待 Phase 1+ 迁入）
-- ⚠️ Context Engineering（广义 Prompt 设计） — `[./context-engineering/](./context-engineering/README.md)`（待 Phase 1+ 迁入）
+- ⚠️ Function Calling（结构化 Prompt 输出） — `../agent/spec-tools/function-calling/`（待 Phase 1+ 迁入）
+- ⚠️ Context Engineering（广义 Prompt 设计） — `./context-engineering/`（待 Phase 1+ 迁入）
 
 ---
 

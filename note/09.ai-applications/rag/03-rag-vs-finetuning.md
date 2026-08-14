@@ -337,7 +337,7 @@ graph TB
 
 ## 面试陷阱速览
 
-> 完整陷阱 + 反直觉 + 30 秒话术见 [13.split-hairs RAG](../../../12.interview/11.ai/rag/README.md)（⚠️ 待 Phase 1+ 迁入）
+> 完整陷阱 + 反直觉 + 30 秒话术见 13.split-hairs RAG（⚠️ 待 Phase 1+ 迁入）
 
 ---
 

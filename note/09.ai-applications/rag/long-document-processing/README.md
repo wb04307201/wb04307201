@@ -85,7 +85,7 @@ clauses = re.findall(pattern, text, flags=re.S)
 
 ### 🔍 策略 2：检索增强（RAG）
 
-> 详见 [rag-pipeline](./01-pipeline.md)
+> 详见 rag-pipeline
 
 **针对长合同场景的 Pipeline**：
 
@@ -123,7 +123,7 @@ graph LR
 
 ### 📦 策略 3：上下文压缩（Context Compression）
 
-> 详见 [context-engineering](../../agent/agent-context/context-engineering.md)
+> 详见 context-engineering
 
 **上下文压缩流程**：
 
@@ -154,7 +154,7 @@ Top-10 条款 → LongLLMLingua / RECOMP / 摘要压缩
 
 ### 📏 策略 4：长度扩展（Context Extension）
 
-> 详见 [yarn-context-extension](../yarn-context-extension/README.md)
+> 详见 yarn-context-extension
 
 **核心问题**：基础模型只支持 4K-32K，要处理 100K+ 文档怎么办？
 
@@ -343,15 +343,15 @@ records = [
 **工具视角三件套**：
 - [chunking-strategies](../chunking-strategies/README.md) — 5 大分块策略（直接决定检索质量）
 - [lost-in-middle](../lost-in-middle/README.md) — 长 Context 中段遗忘现象与 6 大缓解
-- [yarn-context-extension](../yarn-context-extension/README.md) — YaRN / RoPE 长度扩展 2K → 128K
+- yarn-context-extension — YaRN / RoPE 长度扩展 2K → 128K
 
 **系统视角**：
-- [rag-pipeline](./01-pipeline.md) — RAG 5 阶段 SOTA 架构总览
-- [rag-paradigm-evolution](../rag-paradigm-evolution/README.md) — RAG 四阶段演进（Naive→Advanced→Modular→Agentic）
-- [context-engineering](../../agent/agent-context/context-engineering.md) — Context Engineering 4 大原则
+- rag-pipeline — RAG 5 阶段 SOTA 架构总览
+- rag-paradigm-evolution — RAG 四阶段演进（Naive→Advanced→Modular→Agentic）
+- context-engineering — Context Engineering 4 大原则
 
 **多模态**：
-- [multimodal](../multimodal/README.md) — 含文档理解（PDF/扫描件 OCR）
+- multimodal — 含文档理解（PDF/扫描件 OCR）
 
 **实战工具**：
 - [12.story/36-rag-retrieval-augmented-generation](../../../13.story/36-rag-retrieval-augmented-generation.md) — RAG 餐厅故事

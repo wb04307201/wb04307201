@@ -230,7 +230,7 @@ Agent 整体架构：
 
 ### 5.3 Memory × 驾驭演进主线
 
-Memory 演进是 驾驭演进主线 的具体展开（⚠️ 待 Phase 1+ 迁入；占位 `[../architecture/llm-control-evolution/](../architecture/llm-control-evolution/README.md)`）：
+Memory 演进是 驾驭演进主线 的具体展开（⚠️ 待 Phase 1+ 迁入；占位 `../architecture/llm-control-evolution/`）：
 
 | 驾驭阶段 | Memory 形态 |
 |---------|------------|
@@ -286,16 +286,16 @@ Memory 演进是 驾驭演进主线 的具体展开（⚠️ 待 Phase 1+ 迁入
 
 **面试题**：
 - 咬文嚼字·11.ai/agent-memory-classification（30/60/90 秒话术） — ⚠️ 待 Phase 1+ 迁入（占位 `[../../../12.interview/11.ai/agent-memory-classification/](../../../12.interview/11.ai/agent-memory-classification/README.md)`）
-- 🆕 **咬文嚼字·multi-agent-shared-memory 多 Agent 共享记忆** — ⚠️ 待 Phase 1+ 迁入（占位 `[../../../../12.interview/11.ai/multi-agent-shared-memory/](../../../../12.interview/11.ai/multi-agent-shared-memory/README.md)`）—— 5 大内容维度 + 3 实现层 + 6 模式 + 5 反模式 + 90 秒话术
+- 🆕 **咬文嚼字·multi-agent-shared-memory 多 Agent 共享记忆** — ⚠️ 待 Phase 1+ 迁入（占位 `../../../../12.interview/11.ai/multi-agent-shared-memory/`）—— 5 大内容维度 + 3 实现层 + 6 模式 + 5 反模式 + 90 秒话术
 
 **同主模块**：
 - [Agent 执行架构（DAG/ReAct/Plan）](../agent-architecture/README.md)
-- 驾驭演进主线（Prompt→Context→Harness→Loop） — ⚠️ 待 Phase 1+ 迁入（占位 `[../architecture/llm-control-evolution/](../architecture/llm-control-evolution/README.md)`）
-- 智能系统分层架构 — ⚠️ 待 Phase 1+ 迁入（占位 `[../architecture/intelligent-system-layers/](../architecture/intelligent-system-layers/README.md)`）
+- 驾驭演进主线（Prompt→Context→Harness→Loop） — ⚠️ 待 Phase 1+ 迁入（占位 `../architecture/llm-control-evolution/`）
+- 智能系统分层架构 — ⚠️ 待 Phase 1+ 迁入（占位 `../architecture/intelligent-system-layers/`）
 
 **实战框架**：
-- LangGraph（Checkpoint） — ⚠️ 待 Phase 1+ 迁入（占位 `[../../spec-tools/ai-platforms/langgraph/](../../spec-tools/ai-platforms/langgraph/README.md)`）
-- Context Engineering（Memory 是 Context 三大件之一） — ⚠️ 待 Phase 1+ 迁入（占位 `[../../spec-tools/context-engineering/](../../spec-tools/context-engineering/README.md)` 或 `../../../prompts/context-engineering/`）
+- LangGraph（Checkpoint） — ⚠️ 待 Phase 1+ 迁入（占位 `../../spec-tools/ai-platforms/langgraph/`）
+- Context Engineering（Memory 是 Context 三大件之一） — ⚠️ 待 Phase 1+ 迁入（占位 `../../spec-tools/context-engineering/` 或 `../../../prompts/context-engineering/`）
 - 🆕 **长上下文全景（Memory 是 6 策略之一）**：[Agent 长上下文架构](../agent-context/README.md) —— Chunking / Memory / RAG / Sliding Window / Sub-Agents / Long-Context LLMs 6 策略组合决策树
 
 **多 Agent 共享专章（跨域交叉）**：

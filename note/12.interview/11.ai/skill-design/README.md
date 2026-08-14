@@ -10,7 +10,7 @@ question:
 
 # Skill 从 0 到 1：怎么设计一个能用的 Skill？
 
-> 一句话定位：**写 Skill 不是写教程**。面试官考察的不是"Skill 是什么"（基础），而是"**怎么判断该不该写 Skill / 怎么写一个能用的 Skill**"。深度方法论见 [主模块 Skill 设计章节](../../09.ai-applications/agent/coding-agents/claude-code-practices/skill-design.md)。
+> 一句话定位：**写 Skill 不是写教程**。面试官考察的不是"Skill 是什么"（基础），而是"**怎么判断该不该写 Skill / 怎么写一个能用的 Skill**"。深度方法论见 主模块 Skill 设计章节。
 
 > **系列定位**：高频 AI 工程面试题（中级到高级）。考察工程化判断力 + YAML 细节把控。配套姐妹题 [Skill 命中率 5 题](../skill-hit-rate/README.md)——本文讲"**写**"，姐妹题讲"**调**"。
 
@@ -246,9 +246,9 @@ metrics:
 ## 相关章节
 
 **主模块**：
-- [Skill 设计方法论深度章节](../../09.ai-applications/agent/coding-agents/claude-code-practices/skill-design.md) — 决策树 + 4 阶段 + 5 反模式 + YAML 模板
-- [Claude Code 大型代码库实践](../../09.ai-applications/agent/coding-agents/claude-code-practices/README.md) — Skill 渐进式披露基础
-- [Skill 命中率深度章节](../../09.ai-applications/agent/coding-agents/claude-code-practices/skill-hit-rate.md) — "写"的姐妹篇："调"
+- Skill 设计方法论深度章节 — 决策树 + 4 阶段 + 5 反模式 + YAML 模板
+- Claude Code 大型代码库实践 — Skill 渐进式披露基础
+- Skill 命中率深度章节 — "写"的姐妹篇："调"
 
 **同栏目（11.ai 高频面试题）**：
 - [Skill 数量一多，Agent 命中率怎么保证？](../skill-hit-rate/README.md) — "调"的面试题

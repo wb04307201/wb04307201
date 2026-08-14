@@ -208,5 +208,5 @@ graph LR
 - 应用：[RAG](../../09.ai-applications/rag/README.md) — Transformer 的核心应用场景
 
 
-- [single-epoch-and-config-evidence](../dropout-in-llm/single-epoch-and-config-evidence.md)
+- single-epoch-and-config-evidence
 ← [返回: L1 基础概念](../README.md)

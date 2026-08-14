@@ -54,9 +54,9 @@
 
 - ✅ Attention 机制基础 — [`../../08.ai-foundations/03-transformer/attention-mechanism.md`](../../08.ai-foundations/03-transformer/attention-mechanism.md)
 - ✅ Transformer 架构 — [`../../08.ai-foundations/03-transformer/transformer-architecture.md`](../../08.ai-foundations/03-transformer/transformer-architecture.md)
-- ⚠️ MoE 架构基础 — [`../../08.ai-foundations/02-deep-learning/moe-architecture/`](../../08.ai-foundations/02-deep-learning/moe-architecture/README.md)（待 Phase 1+ 迁入）
-- ⚠️ RoPE 位置编码 — [`../../08.ai-foundations/03-transformer/rope-position-encoding/`](../../08.ai-foundations/03-transformer/rope-position-encoding/README.md)（待 Phase 1+ 迁入）
-- ⚠️ LLM 控制演进 — [`../agent/architecture/llm-control-evolution/`](../agent/architecture/llm-control-evolution/README.md)（待 Phase 1+ 迁入）
+- ⚠️ MoE 架构基础 — `../../08.ai-foundations/02-deep-learning/moe-architecture/`（待 Phase 1+ 迁入）
+- ⚠️ RoPE 位置编码 — `../../08.ai-foundations/03-transformer/rope-position-encoding/`（待 Phase 1+ 迁入）
+- ⚠️ LLM 控制演进 — `../agent/architecture/llm-control-evolution/`（待 Phase 1+ 迁入）
 
 ---
 

@@ -95,7 +95,7 @@ throughput_counter = Counter(
 ## 🔗 兄弟章节
 
 - **本专题**：[KV Cache](../kv-cache/README.md) / [PagedAttention](../paged-attention/README.md) / [Speculative Decoding](../speculative-decoding/README.md) / [推理框架对比](../inference-frameworks/README.md)
-- **LLMOps**：[推理部署实战](.././05-out-of-domain-rejection.md) 顺带提
+- **LLMOps**：推理部署实战 顺带提
 
 ---
 

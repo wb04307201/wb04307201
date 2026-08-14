@@ -191,14 +191,14 @@ def estimate_tokens(text):
 
 ## 七、面试陷阱速览
 
-> 完整陷阱 + 反直觉 + 30 秒话术见 [13.split-hairs Token](../../../13.split-hairs/11.ai/token/README.md)
+> 完整陷阱 + 反直觉 + 30 秒话术见 13.split-hairs Token
 
 ---
 
 ## 相关章节
 
-- 上游：[Transformer 架构](../../01-fundamentals/transformer/README.md) — Token 的处理单元
-- 关联：[RAG](./01-pipeline.md) — 用 RAG 减少 Token 消耗
-- 关联：[Context Engineering](../context-engineering/README.md) — Context Window 是 Token 上限
+- 上游：Transformer 架构 — Token 的处理单元
+- 关联：RAG — 用 RAG 减少 Token 消耗
+- 关联：Context Engineering — Context Window 是 Token 上限
 
 ← [返回: L2 技术栈](../README.md)

@@ -399,8 +399,8 @@ resp = client.chat(model='qwen2.5:7b', messages=[...])
 
 - [11.ai/03-engineering/ai-platforms/coze](../../../09.ai-applications/agent/ai-platforms/coze.md) —— Coze 平台
 - [11.ai/03-engineering/ai-platforms/dify](../../../09.ai-applications/agent/ai-platforms/dify.md) —— Dify 平台
-- [11.ai/03-engineering/local-deployment/ollama](../../../09.ai-applications/agent/coding-agents/ollama/README.md) —— Ollama 部署
-- [11.ai/08-llmops/02-llmops-stack](../../../09.ai-applications/agent/llmops-stack/README.md) —— LLMOps 全景
+- 11.ai/03-engineering/local-deployment/ollama —— Ollama 部署
+- 11.ai/08-llmops/02-llmops-stack —— LLMOps 全景
 
 ### 实战姐妹（12.story）
 

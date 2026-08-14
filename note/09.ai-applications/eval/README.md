@@ -247,7 +247,7 @@ v1 模型回答 vs v2 模型回答
 
 ## 九、公开 Benchmark 生态
 
-> 🔗 面试深挖版：[`LLM Benchmark 深度剖析`](../../../12.interview/11.ai/llm-benchmark/README.md) — 5 大 Benchmark 分类 + ELO 计分原理 + 数据污染 + 刷分手段 + 看榜 checklist（⚠️ 待 Phase 1+ 迁入）
+> 🔗 面试深挖版：`LLM Benchmark 深度剖析` — 5 大 Benchmark 分类 + ELO 计分原理 + 数据污染 + 刷分手段 + 看榜 checklist（⚠️ 待 Phase 1+ 迁入）
 
 ### 9.1 5 大 Benchmark 分类速查
 
@@ -370,7 +370,7 @@ LLM-as-Judge（GPT-4 评分）：
 - 关联：[生产级 Agent 系统](../agent/production-agent/README.md) — Shopify Sidekick 的评估实践（LLM-as-Judge + 用户模拟）
 - 关联：Harness Engineering（⚠️ 待 Phase 1+ 迁入；占位 `../agent/execution-patterns/harness-engineering/`） — 评估体系的工程化框架
 - 同模块：LLM 安全（⚠️ 待 Phase 1+ 迁入；占位 `../llm-inference/llmops/05-llm-security/`） — 评估的另一个维度：安全性
-- 面试：[如何量化 Agent 性能](../../../12.interview/11.ai/agent-performance-evaluation/README.md) — 面试题版本（⚠️ 待 Phase 1+ 迁入）
+- 面试：如何量化 Agent 性能 — 面试题版本（⚠️ 待 Phase 1+ 迁入）
 
 ---
 

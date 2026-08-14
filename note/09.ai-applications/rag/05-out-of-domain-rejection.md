@@ -11,7 +11,7 @@ module:
 
 > ⬅️ [返回 RAG MOC](./README.md)
 
-> 一句话定位：**没有拒答机制的 RAG = 强答 = 幻觉 = 信任崩塌**。完整体系基于 [主模块 · RAG vs Fine-tuning 主章节](./03-rag-vs-finetuning.md) + [LLM 幻觉防御专题](../../../12.interview/11.ai/hallucination/README.md)（⚠️ 待 Phase 1+ 迁入）。面试速查版见 [13.split-hairs · rag-out-of-domain-rejection](../../../12.interview/11.ai/rag-out-of-domain-rejection/README.md)（⚠️ 待 Phase 1+ 迁入）。
+> 一句话定位：**没有拒答机制的 RAG = 强答 = 幻觉 = 信任崩塌**。完整体系基于 [主模块 · RAG vs Fine-tuning 主章节](./03-rag-vs-finetuning.md) + LLM 幻觉防御专题（⚠️ 待 Phase 1+ 迁入）。面试速查版见 13.split-hairs · rag-out-of-domain-rejection（⚠️ 待 Phase 1+ 迁入）。
 
 ---
 
@@ -510,7 +510,7 @@ Q3：用户对拒答接受度？
 - LLM Security（⚠️ 待 Phase 1+ 迁入；占位 `../../llm-inference/llmops/05-llm-security/`）
 
 **面试速查**：
-- [13.split-hairs · rag-out-of-domain-rejection](../../../12.interview/11.ai/rag-out-of-domain-rejection/README.md) —— 5 拒答模式 + 4 步调优（⚠️ 待 Phase 1+ 迁入）
+- 13.split-hairs · rag-out-of-domain-rejection —— 5 拒答模式 + 4 步调优（⚠️ 待 Phase 1+ 迁入）
 
 ---
 

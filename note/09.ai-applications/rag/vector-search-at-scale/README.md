@@ -438,7 +438,7 @@ def fallback_chain(doc):
 
 ## 七、与"驾驭演进"主线的关联
 
-向量检索规模演进是 [驾驭演进主线](../../agent/agent-architecture/llm-control-evolution.md) 在检索领域的体现：
+向量检索规模演进是 驾驭演进主线 在检索领域的体现：
 
 | 驾驭阶段 | 向量检索规模 | 适配 |
 |---------|------------|------|
@@ -462,8 +462,8 @@ def fallback_chain(doc):
 - [12.story/37-vector-database-and-embedding（味道仓库 第九章反向链）](../../../13.story/37-vector-database-and-embedding.md)
 
 **实战框架**：
-- [LangGraph（Checkpoint / Memory）](../../03-engineering/ai-platforms/langgraph.md)
-- [Context Engineering](../../agent/agent-context/context-engineering.md)
+- LangGraph（Checkpoint / Memory）
+- Context Engineering
 
 ---
 

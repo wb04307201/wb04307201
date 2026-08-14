@@ -186,16 +186,16 @@ Q4: 是否需要灵活性 > 稳定性？
 
 ## 八、面试陷阱速览
 
-> 完整陷阱 + 反直觉 + 30 秒话术见 [13.split-hairs Agent 架构](../../../../12.interview/11.ai/agent-dag-vs-react/README.md)（⚠️ 待 Phase 1+ 迁入）
+> 完整陷阱 + 反直觉 + 30 秒话术见 13.split-hairs Agent 架构（⚠️ 待 Phase 1+ 迁入）
 
 ---
 
 ## 相关章节
 
-- 上游：智能系统分层（⚠️ 待 Phase 1+ 迁入；占位 `[../architecture/intelligent-system-layers/](../architecture/intelligent-system-layers/README.md)`） — Agent 在分层架构中的位置
+- 上游：智能系统分层（⚠️ 待 Phase 1+ 迁入；占位 `../architecture/intelligent-system-layers/`） — Agent 在分层架构中的位置
 - 关联：[Agent Memory 架构](../agent-memory/README.md) — Memory × Agent 执行架构（DAG/ReAct/Plan 的 Memory 特殊要求）
-- 关联：Loop Engineering — ⚠️ 待 Phase 1+ 迁入（占位 `[../agent-execution-patterns/loop-engineering/](../agent-execution-patterns/loop-engineering/README.md)`） — DAG 的兜底机制
-- 关联：Harness Engineering — ⚠️ 待 Phase 1+ 迁入（占位 `[../agent-execution-patterns/harness-engineering/](../agent-execution-patterns/harness-engineering/README.md)`） — DAG 是 Harness 的强约束
+- 关联：Loop Engineering — ⚠️ 待 Phase 1+ 迁入（占位 `../agent-execution-patterns/loop-engineering/`） — DAG 的兜底机制
+- 关联：Harness Engineering — ⚠️ 待 Phase 1+ 迁入（占位 `../agent-execution-patterns/harness-engineering/`） — DAG 是 Harness 的强约束
 - 实战：[生产级 Agent](../production-agent/README.md) — DAG 在生产环境的落地
 
 ← [返回 Agent MOC](../README.md)

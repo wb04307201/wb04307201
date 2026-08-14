@@ -13,7 +13,7 @@ module:
 
 > 2025 年 AI Coding 领域最大的范式转变：Claude Code 等主流工具**主动放弃 RAG**，改用 Agentic Search。本文从工程问题、检索范式、Harness 设计、场景边界 4 个层面系统讲清楚。
 
-> **面试场景**：这是反直觉的高频 AI 面试题——很多人以为 RAG 是 AI Coding 标配，但 Claude Code 官方明确否定。面试版（30/60/90 秒话术）见 [咬文嚼字·11.ai/claude-code-agentic-search](../../../12.interview/11.ai/claude-code-agentic-search/README.md)（⚠️ 待 Phase 1+ 迁入）。
+> **面试场景**：这是反直觉的高频 AI 面试题——很多人以为 RAG 是 AI Coding 标配，但 Claude Code 官方明确否定。面试版（30/60/90 秒话术）见 咬文嚼字·11.ai/claude-code-agentic-search（⚠️ 待 Phase 1+ 迁入）。
 
 ---
 

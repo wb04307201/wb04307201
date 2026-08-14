@@ -10,7 +10,7 @@
 
 > 两个 Python 工具脚本，用于批量维护 `note/14.project-management/` 下的所有 Markdown 文章。
 
-← [返回 11.product-and-pm 总目录](../README.md) · [CONTRIBUTING.md](../../../note/CONTRIBUTING.md)
+← [返回 11.product-and-pm 总目录](../README.md) · CONTRIBUTING.md
 
 ---
 
@@ -36,7 +36,7 @@ python note/14.project-management/scripts/insert-frontmatter.py --dry-run
 
 ### 2. `validate.py` — 校验合规性
 
-**用途**：检查 `note/11.product-and-pm/**/*.md` 是否符合 11.product-and-pm 写作规范（详见 [`../../../note/CONTRIBUTING.md`](../../../note/CONTRIBUTING.md)）。
+**用途**：检查 `note/11.product-and-pm/**/*.md` 是否符合 11.product-and-pm 写作规范（详见 `../../../note/CONTRIBUTING.md`）。
 
 **校验项**：
 1. ✓ frontmatter 注释块（`pm:` + `topic` / `audience` / `summary` 字段）

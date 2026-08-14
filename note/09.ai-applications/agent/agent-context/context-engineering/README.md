@@ -22,12 +22,12 @@ module:
 |------|--------|--------|
 | Prompt Engineering | 怎么写好一句提示 | 人类 |
 | **Context Engineering** | 怎么给 LLM 提供完整的"上下文" | Agent |
-| [Harness Engineering](../../agent/agent-reliability/harness-engineering/README.md) | 怎么约束 Agent 行为 | 规范/流程 |
-| [Loop Engineering](../../agent/loop-engineering/README.md) | 怎么循环调用 Agent 直到任务完成 | Agent + Harness |
+| Harness Engineering | 怎么约束 Agent 行为 | 规范/流程 |
+| Loop Engineering | 怎么循环调用 Agent 直到任务完成 | Agent + Harness |
 
 > 一句话：**Context Engineering 的核心是"在 Context Window 限制下，把对的信息在对的时间给 LLM"**。
 
-📌 **驾驭演进主线**：[LLM 驾驭演进史（Prompt → Context → Harness → Loop）](../../agent/agent-architecture/llm-control-evolution/README.md)
+📌 **驾驭演进主线**：LLM 驾驭演进史（Prompt → Context → Harness → Loop）
 
 ---
 
@@ -172,25 +172,25 @@ context = get_relevant_files(query)  # 5K tokens
 | MemGPT | 长期记忆管理 |
 | Cursor | IDE 级 Context（项目代码 + 文件 + 终端） |
 | Claude Code | Agent 级 Context（代码 + 历史 + 工具） |
-| 🆕 [ACP（Agent Client Protocol）](acp-protocol/README.md) | **编辑器 ↔ Coding Agent 标准化通信**（Zed 出品 Apache 2.0）—— 类似 LSP 对语言服务器的角色 |
+| 🆕 ACP（Agent Client Protocol） | **编辑器 ↔ Coding Agent 标准化通信**（Zed 出品 Apache 2.0）—— 类似 LSP 对语言服务器的角色 |
 
 ---
 
 ## 七、面试陷阱速览
 
-> 完整陷阱 + 反直觉 + 30 秒话术见 [13.split-hairs Context Engineering](../../../13.split-hairs/11.ai/context-engineering-interview/README.md)
+> 完整陷阱 + 反直觉 + 30 秒话术见 13.split-hairs Context Engineering
 
 ---
 
 ## 相关章节
 
-- 上一步：[Prompt Engineering](../prompt-engineering/README.md) — Prompt 是 Context 的子集
-- 下一步：[Harness Engineering](../../agent/agent-reliability/harness-engineering/README.md) — 约束 Agent 行为
-- 工具调用：[Function Calling](./function-calling/README.md) — 工具定义是 Context 的一部分
-- 检索增强：[RAG](./01-pipeline.md) — 用 RAG 注入检索结果到 Context
-- Memory 维度：[Agent Memory 架构（Memory 是 Context 三大件之一）](../../04-architecture/agent-memory/README.md)
-- 🆕 **长上下文策略全景**：[Agent 长上下文架构 6 大策略](../../04-architecture/agent-context/README.md) —— Chunking / RAG / Memory / Sliding Window / Sub-Agents / Long-Context LLMs 组合 + 决策树
+- 上一步：Prompt Engineering — Prompt 是 Context 的子集
+- 下一步：Harness Engineering — 约束 Agent 行为
+- 工具调用：Function Calling — 工具定义是 Context 的一部分
+- 检索增强：RAG — 用 RAG 注入检索结果到 Context
+- Memory 维度：Agent Memory 架构（Memory 是 Context 三大件之一）
+- 🆕 **长上下文策略全景**：Agent 长上下文架构 6 大策略 —— Chunking / RAG / Memory / Sliding Window / Sub-Agents / Long-Context LLMs 组合 + 决策树
 
 
-- [skill-hit-rate](../../03-engineering/claude-code-practices/skill-hit-rate.md)
+- skill-hit-rate
 ← [返回: L2 技术栈](../README.md)

@@ -10,7 +10,7 @@ question:
 
 # 等不及模型思考 —— 双 Timeout + Circuit Breaker 熔断
 
-> 一句话定位：单 timeout 一刀切让用户体验崩塌，必须双 timeout + 熔断器 + Fallback 链。完整深度见 [主模块 · 超时熔断](../../../../09.ai-applications/agent/production-stability/04-timeout-and-circuit-breaker.md)。
+> 一句话定位：单 timeout 一刀切让用户体验崩塌，必须双 timeout + 熔断器 + Fallback 链。完整深度见 主模块 · 超时熔断。
 
 > **系列定位**：AI 生产工程面试题（字节 / 美团高频）。考察的是**可用性工程**：双 timeout + Circuit Breaker + Fallback 模型链的协同。
 
@@ -109,7 +109,7 @@ Half-Open 探针：成功 50% → Closed（恢复）
 
 ## 四、相关章节
 
-- [主模块 · 超时熔断](../../../../09.ai-applications/agent/production-stability/04-timeout-and-circuit-breaker.md) —— 深度内容
+- 主模块 · 超时熔断 —— 深度内容
 - [主模块 · llm-production-thinking 总目录](../../../09.ai-applications/agent/production-stability/README.md)
 - [主模块 · 决策树](../../../09.ai-applications/agent/production-stability/06-decision-tree.md)
 

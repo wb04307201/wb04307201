@@ -1,6 +1,6 @@
 # AI + BPMN 融合
 
-> ⬅️ [返回 AI 平台](../ai-platforms/README.md) | [Dify](../ai-platforms/dify.md) | [Coze](../ai-platforms/coze.md) | [LangGraph](../ai-platforms/langgraph.md) | [Camunda 8](../../07.devops-and-tools/02-workflow/process-engine/camunda/camunda-8/README.md) | [11 AI 知识体系](../README.md) | [07 工作流](../../07.devops-and-tools/02-workflow/README.md)
+> ⬅️ [返回 AI 平台](../ai-platforms/README.md) | [Dify](../ai-platforms/dify.md) | [Coze](../ai-platforms/coze.md) | [LangGraph](../ai-platforms/langgraph.md) | Camunda 8 | [11 AI 知识体系](../README.md) | 07 工作流
 
 ## 🎯 一句话定位
 
@@ -329,13 +329,13 @@ Q4: 是否需要人工审核？
 
 - ⬅️ [返回 AI 平台](../ai-platforms/README.md) — 6 大平台对比与决策树
 - [11 AI 知识体系](../README.md) — 章节根目录
-- [07 工作流](../../07.devops-and-tools/02-workflow/README.md) — 章节根目录
+- 07 工作流 — 章节根目录
 - [Dify](../ai-platforms/dify.md) — 模式 A/B 中 LLM 推理的常见载体
 - [LangGraph](../ai-platforms/langgraph.md) — 模式 B/C 中 Agent 框架的工业界主流
-- [Camunda 8](../../07.devops-and-tools/02-workflow/process-engine/camunda/camunda-8/README.md) — 模式 A 8.5+ AI Agent Sub-process 详解
-- [Zeebe](../../07.devops-and-tools/02-workflow/process-engine/camunda/camunda-8/zeebe/README.md) — 模式 B Zeebe AI Worker 实现
-- [微服务编排](../../07.devops-and-tools/02-workflow/workflow-and-microservice-orchestration/README.md) — 流程引擎在微服务场景的演化
-- [05.frontend / 05 架构 / BFF](../../../../05.frontend/05-architecture/bff/README.md) — BFF 模式详解：与 AI 融合中的"端侧适配层"实践
+- Camunda 8 — 模式 A 8.5+ AI Agent Sub-process 详解
+- Zeebe — 模式 B Zeebe AI Worker 实现
+- 微服务编排 — 流程引擎在微服务场景的演化
+- 05.frontend / 05 架构 / BFF — BFF 模式详解：与 AI 融合中的"端侧适配层"实践
 
 - [spring-ai-vs-platforms](../ai-platforms/spring-ai-vs-platforms.md)
-- [spring-ai-vs-dify](spring-ai-vs-dify.md)
+- spring-ai-vs-dify

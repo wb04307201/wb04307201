@@ -356,16 +356,16 @@ evaluation:
 
 **同模块基础**：
 - [Claude Code 大型代码库实践](README.md) — Skill 的"渐进式披露"基础
-- [Harness Engineering 体系](../agent-reliability/harness-engineering/README.md) — 上下文工程总论
+- Harness Engineering 体系 — 上下文工程总论
 
 **面试题（13.split-hairs）**：
-- [Skill 设计面试 5 题](../../../12.interview/11.ai/skill-design/README.md) — 配套面试题
+- Skill 设计面试 5 题 — 配套面试题
 
 ---
 
 ## 反向链
 
-- [superpowers](../agent-spec-tools/superpowers.md)
-- [claude-code](../coding-agents/claude-code.md)
+- superpowers
+- claude-code
 
 ← [返回 Claude Code 实践总览](README.md)

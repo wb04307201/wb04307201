@@ -248,7 +248,7 @@ story:
 - 续集七：[`31-codebase-cognitive-debt`](./29-codebase-cognitive-debt.md) —— 老厨房认知债：菜谱看不懂，技术视角
 - 续集八：[`32-agent-harness`](./30-agent-harness.md) —— AI 厨师 Harness：工程视角的解药
 - 番外一：[`03-refactoring-guide-for-pm.md`](./03-refactoring-guide-for-pm.md) —— 老厨房改造指南：PM 视角
-- 主模块：[`11.ai/05-applications`](../../09.ai-applications/agent/case-studies/README.md) —— AI 行业应用
+- 主模块：`11.ai/05-applications` —— AI 行业应用
 
 ---
 

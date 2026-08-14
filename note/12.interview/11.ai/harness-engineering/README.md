@@ -99,7 +99,7 @@ Harness = 规范 + 流程 + 工具 + 反馈
 - 主模块：[Harness Engineering](../harness-engineering/README.md)
 - 上一步：[Context Engineering](../context-engineering-interview/README.md)
 - 关联：[Loop Engineering](../loop-engineering/README.md)
-- 实战：[Claude Code 实践](../../09.ai-applications/agent/coding-agents/claude-code-practices/README.md)
+- 实战：Claude Code 实践
 
 ---
 

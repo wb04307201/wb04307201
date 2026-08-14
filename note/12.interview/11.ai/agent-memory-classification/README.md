@@ -169,7 +169,7 @@ question:
 **主模块**：
 - [11.ai/04-architecture/agent-memory（深度原理）](../../../09.ai-applications/agent/agent-memory/README.md)
 - [11.ai/04-architecture/agent-architecture（执行架构对比）](../../../09.ai-applications/agent/agent-architecture/README.md)
-- [11.ai/04-architecture/llm-control-evolution（驾驭演进）](../../../09.ai-applications/agent/agent-architecture/llm-control-evolution.md)
+- 11.ai/04-architecture/llm-control-evolution（驾驭演进）
 - [11.ai/02-technology-stack/context-engineering（Context Engineering）](../context-engineering-interview/README.md)
 
 **同栏目（11.ai 高频面试题）**：
