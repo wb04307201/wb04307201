@@ -189,7 +189,7 @@ graph TB
 ---
 
 
-- [bpmn-ai-integration](../../../note/11.ai/04-architecture/bpmn-ai-integration.md)
+- [bpmn-ai-integration](../../../09.ai-applications/agent/bpmn-ai-integration.md)
 ## 六、真实落地案例
 
 ### 案例 1：银行业信贷审批（Camunda 7）

@@ -279,7 +279,7 @@ Waydev 数据：AI 代码采纳率
 - 故事章节：[`12.story/29-codebase-cognitive-debt`](../../13.story/29-codebase-cognitive-debt.md) — AI 时代认知债
 - 故事章节：[`12.story/42-ai-engineer-responsibility`](../../13.story/42-ai-engineer-responsibility.md) — AI 责任金字塔
 - 故事章节：[`12.story/07-from-chef-to-ceo`](../../13.story/07-from-chef-to-ceo.md) — 组织管理康威定律
-- 主模块：[`note/11.ai/03-engineering/harness-engineering`](../../../note/11.ai/03-engineering/harness-engineering/README.md) — Harness 工程
+- 主模块：[`note/11.ai/03-engineering/harness-engineering`](../../../09.ai-applications/agent/harness-engineering/README.md) — Harness 工程
 
 ---
 
