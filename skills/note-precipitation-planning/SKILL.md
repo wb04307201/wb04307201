@@ -42,7 +42,7 @@ skill 执行：Step 1 现状盘点 → Step 2 深度评估 → Step 3 位置决�
    ↓
 输出（节选）：
   ## 📋 现状盘点
-  - note/05.tools/claude-code.md：已有但只覆盖 CLI 命令
+  - note/07.devops-and-tools/claude-code.md：已有但只覆盖 CLI 命令
   - note/08.ai-foundations/03-engineering/agent-frameworks/：相邻分类
   - 已有 3 篇 SPL（single page lesson）：SPL-2024-089/-091/-101
 
