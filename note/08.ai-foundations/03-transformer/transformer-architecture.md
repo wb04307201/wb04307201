@@ -197,7 +197,7 @@ graph LR
 
 ## 七、面试陷阱速览
 
-> 完整陷阱 + 反直觉 + 30 秒话术见 [13.split-hairs Transformer](../../../12.interview/11.ai/transformer/README.md)（⚠️ 待 Phase 1+ 迁入）
+> 完整陷阱 + 反直觉 + 30 秒话术见 [13.split-hairs Transformer](../../08.ai-foundations/03-transformer/README.md)（⚠️ 待 Phase 1+ 迁入）
 
 ---
 

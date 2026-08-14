@@ -27,7 +27,7 @@ MySQL 的锁机制很复杂——行锁、表锁、间隙锁、临键锁……�
 
 ---
 
-> 📚 **前置知识**：[MySQL](../../../03.data-stack/01-database/05-mysql/README.md) | [索引](../../../../note/03.database/04-index/README.md)
+> 📚 **前置知识**：[MySQL](../../../03.data-stack/01-database/05-mysql/README.md) | [索引](../../../../03.data-stack/01-database/04-index/README.md)
 
 ## 一、核心原理
 

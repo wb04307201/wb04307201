@@ -30,7 +30,7 @@ B+ Tree 的精妙设计：**非叶子节点只存键（不存数据）+ 叶子�
 
 ---
 
-> 📚 **前置知识**：[数据库索引](../../../../note/03.database/04-index/README.md)
+> 📚 **前置知识**：[数据库索引](../../../../03.data-stack/01-database/04-index/README.md)
 
 ## 一、核心原理
 
@@ -284,7 +284,7 @@ leaf_count = ceil(20,000,000 / 70) = 285,715
 ## 七、交叉引用
 
 - 主模块：[`03.database`](../../../../note/03.database/) — 数据库知识体系
-- [索引设计](../../../../note/03.database/04-index/README.md) — 索引设计原则与最佳实践
+- [索引设计](../../../../03.data-stack/01-database/04-index/README.md) — 索引设计原则与最佳实践
 
 ## 相关章节
 

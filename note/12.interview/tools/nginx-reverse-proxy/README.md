@@ -127,7 +127,7 @@ upstream backend {
 - 同栏目：[Docker 多阶段构建](../docker-multi-stage/README.md) — 容器化部署
 - 同栏目：[K8s Pod 生命周期](../k8s-pod-lifecycle/README.md) — 容器编排（K8s Service 自带负载均衡）
 - 同栏目：[Git Rebase vs Merge](../git-rebase-vs-merge/README.md) — 版本管理
-- 系统设计：[限流算法](04.system-design/rate-limiting/README.md) — Nginx 限流配合
+- 系统设计：[限流算法](../../../../06.distributed-systems/01-foundation/02-rate-limiting/README.md) — Nginx 限流配合
 - 系统设计：[熔断降级](04.system-design/circuit-breaker/README.md) — 后端保护机制
 
 ---

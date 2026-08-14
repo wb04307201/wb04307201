@@ -138,7 +138,7 @@ COPY --from=builder /app/server /server
 - 同栏目：[Git Rebase vs Merge](../git-rebase-vs-merge/README.md) — 版本管理工具链
 - 同栏目：[Nginx 反向代理](../nginx-reverse-proxy/README.md) — 容器化后的流量入口
 - 同栏目：[K8s Pod 生命周期](../k8s-pod-lifecycle/README.md) — 容器编排与调度
-- 系统设计：[限流算法](04.system-design/rate-limiting/README.md) — 系统设计高频题
+- 系统设计：[限流算法](../../../../06.distributed-systems/01-foundation/02-rate-limiting/README.md) — 系统设计高频题
 
 ---
 

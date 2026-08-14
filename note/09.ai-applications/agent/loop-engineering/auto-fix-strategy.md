@@ -13,7 +13,7 @@ module:
 
 ## 反向链
 
-- [07-from-chef-to-ceo](../../../12.story/07-from-chef-to-ceo.md)
+- [07-from-chef-to-ceo](../../../13.story/07-from-chef-to-ceo.md)
 
 ← [返回: Loop Engineering 总目录](../README.md)
 

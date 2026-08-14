@@ -261,7 +261,7 @@ client.newWorker()
     .open();
 ```
 
-> 📌 完整 Zeebe AI Worker 模式见 [BPMN+AI 融合 §模式 B](../../../../../../../note/11.ai/04-architecture/bpmn-ai-integration.md#22-模式-b自研-zeebe-ai-worker)。
+> 📌 完整 Zeebe AI Worker 模式见 [BPMN+AI 融合 §模式 B](../../../../architecture/bpmn-ai-integration.md#22-模式-b自研-zeebe-ai-worker)。
 
 ---
 

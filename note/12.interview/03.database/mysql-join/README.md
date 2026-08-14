@@ -34,7 +34,7 @@ MySQL 的 JOIN 算法有 3 种：NLJ、BNL、Hash Join。优化器会根据数�
 
 ---
 
-> 📚 **前置知识**：[MySQL](../../../03.data-stack/01-database/05-mysql/README.md) | [索引](../../../../note/03.database/04-index/README.md)
+> 📚 **前置知识**：[MySQL](../../../03.data-stack/01-database/05-mysql/README.md) | [索引](../../../../03.data-stack/01-database/04-index/README.md)
 
 ## 一、核心原理
 
@@ -166,7 +166,7 @@ SELECT * FROM users u JOIN orders o ON u.phone_number = o.user_phone;
 ## 九、交叉引用
 
 - 主模块：[`03.database`](../../../../note/03.database/) — 数据库知识体系
-- [索引优化](../../../../note/03.database/04-index/README.md) — MySQL 索引数据结构与优化
+- [索引优化](../../../../03.data-stack/01-database/04-index/README.md) — MySQL 索引数据结构与优化
 - [MySQL 核心](../../../03.data-stack/01-database/05-mysql/README.md) — EXPLAIN 执行计划与锁机制
 
 ## 相关章节
