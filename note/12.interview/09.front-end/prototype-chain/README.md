@@ -336,6 +336,6 @@ ES5 最优方案是**寄生组合式继承**：用 `Object.create` 建立原型�
 
 ## 相关章节
 
-- 深度阅读：[`09.front-end`](09.front-end/README.md) — 主模块详细内容
+- 深度阅读：[`05.frontend`](../../../05.frontend/README.md) — 主模块详细内容
 
 ← [返回: 咬文嚼字 · prototype-chain](../README.md)

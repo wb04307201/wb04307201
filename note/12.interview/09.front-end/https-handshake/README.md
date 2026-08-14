@@ -31,7 +31,7 @@ question:
 
 ---
 
-> 📚 **前置知识**：[CORS](09.front-end/cors/README.md)
+> 📚 **前置知识**：[CORS](../cors/README.md)
 
 ## 一、核心原理
 
@@ -196,7 +196,7 @@ HTTPS 就是在 TCP 和 HTTP 之间加了 TLS 层，用三种技术保证安全�
 
 ## 相关章节
 
-- 深度阅读：[`09.front-end`](09.front-end/README.md) — 主模块详细内容
-- TCP 基础：[`TCP 三次握手四次挥手`](02.computer-basics/tcp-handshake-teardown/README.md) — HTTPS 握手的底层 TCP 连接建立与断开
+- 深度阅读：[`05.frontend`](../../../05.frontend/README.md) — 主模块详细内容
+- TCP 基础：[`TCP 三次握手四次挥手`](../../02.computer-basics/tcp-handshake-teardown/README.md) — HTTPS 握手的底层 TCP 连接建立与断开
 
 ← [返回: 咬文嚼字 · https-handshake](../README.md)
