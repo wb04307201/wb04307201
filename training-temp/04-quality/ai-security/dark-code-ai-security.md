@@ -1,4 +1,4 @@
-> ⬅️ [返回目录](../README.md)
+> ⬅️ [返回目录](README.md)
 
 # 暗代码（Dark Code）：AI时代的安全新挑战
 ## —— 解读Sarah Guo推文核心观点

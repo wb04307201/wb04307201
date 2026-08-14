@@ -4,10 +4,10 @@ module:
   slug: training/02-tools
   type: index
   category: 主模块子文章
-  summary: Tools：开发工具与框架
+  summary: Tools：Spring AI / MCP / Skill / Multi-Agent / Coding Agents
 -->
 
-# Tools：开发工具与框架
+# Tools：Spring AI / MCP / Skill / Multi-Agent / Coding Agents
 
-> spring-ai / mcp / skill-design / multi-agent / coding-agents 五个子主题
+> AI Agent 培训内容沉淀
 

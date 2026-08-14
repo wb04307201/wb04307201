@@ -4,10 +4,10 @@ module:
   slug: training/03-application
   type: index
   category: 主模块子文章
-  summary: Application：架构模式与平台
+  summary: Application：Agent 设计模式 + Dify + 生成式编码
 -->
 
-# Application：架构模式与平台
+# Application：Agent 设计模式 + Dify + 生成式编码
 
-> agent-design-patterns / dify 两个子主题
+> AI Agent 培训内容沉淀
 

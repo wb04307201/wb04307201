@@ -9,5 +9,5 @@ module:
 
 # Foundations：核心概念与 Harness 控制论
 
-> agent-basics / harness-cybernetics 两个子主题
+> AI Agent 培训内容沉淀
 

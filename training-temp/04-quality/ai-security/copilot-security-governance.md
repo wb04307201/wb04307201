@@ -1,4 +1,4 @@
-> ⬅️ [返回目录](../README.md)
+> ⬅️ [返回目录](README.md)
 
 # GitHub Copilot 安全风险与治理实践：企业如何平衡效率与安全
 
