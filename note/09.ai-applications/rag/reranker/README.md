@@ -146,7 +146,7 @@ answer = llm.generate(f"Context: {context}\nQ: {query}\nA:")
 
 ## 🔗 兄弟章节
 
-- **本专题**：[Hybrid Search](../hybrid-search/README.md) / [Embedding 模型](../embedding-models/README.md) / [RAG 评估](../../rag/04-evaluation/README.md)
+- **本专题**：[Hybrid Search](../hybrid-search/README.md) / [Embedding 模型](../embedding-models/README.md) / [RAG 评估](../../../09.ai-applications/rag/04-evaluation/README.md)
 - **咬文嚼字**：[RAG 面试](../../../12.interview/11.ai/rag/README.md)
 
 ---

@@ -26,7 +26,7 @@ ALTER TABLE huge_table ADD INDEX idx_user_id (user_id);
 
 ---
 
-> 📚 **前置知识**：[MySQL 索引](../../../../03.data-stack/01-database/04-index/README.md)
+> 📚 **前置知识**：[MySQL 索引](../../../03.data-stack/01-database/04-index/README.md)
 
 ## 一、使用在线DDL操作（MySQL 5.6+）
 
@@ -203,7 +203,7 @@ RENAME TABLE large_table TO large_table_old,
 2. pt-osc vs gh-ost（触发器 vs binlog同步）
 3. 如何评估DDL对主从复制的影响## 相关章节
 
-- 深度阅读：[`03.database/04-index`](../../../../03.data-stack/01-database/04-index/README.md) — B+ 树、索引原理
+- 深度阅读：[`03.database/04-index`](../../../03.data-stack/01-database/04-index/README.md) — B+ 树、索引原理
 - 相关：[`13.split-hairs/mysql-index-failure`](../mysql-index-failure/README.md) — 索引失效 10 种场景
 
 ← [返回数据库咬文嚼字](../README.md)

@@ -30,7 +30,7 @@ SELECT * FROM users WHERE UPPER(name) = 'ZHANGSAN';  -- 全表扫描！
 
 ---
 
-> 📚 **前置知识**：[MySQL 索引](../../../../03.data-stack/01-database/04-index/README.md)
+> 📚 **前置知识**：[MySQL 索引](../../../03.data-stack/01-database/04-index/README.md)
 
 ## 一、核心原理
 
@@ -228,7 +228,7 @@ system > const > eq_ref > ref > range > index > ALL
 ## 五、交叉引用
 
 - 主模块：[`03.database`](../../../../note/03.database/) — 数据库知识体系
-- [索引优化](../../../../03.data-stack/01-database/04-index/README.md) — 索引数据结构与优化实战
+- [索引优化](../../../03.data-stack/01-database/04-index/README.md) — 索引数据结构与优化实战
 - [MVCC 原理](../mvcc/README.md) — MVCC 实现原理
 - [B+ Tree](../bplus-tree/README.md) — B+ Tree 详解
 

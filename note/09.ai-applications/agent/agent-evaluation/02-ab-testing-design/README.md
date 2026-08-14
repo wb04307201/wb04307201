@@ -571,7 +571,7 @@ Day 30   : 长期漂移观察
 
 **LLMOps**：
 - [LLM Evaluation](../../../eval/README.md)
-- [RAG 超范围拒答](../../../rag/05-out-of-domain-rejection.md)
+- [RAG 超范围拒答](../../../../09.ai-applications/rag/05-out-of-domain-rejection.md)
 
 **面试速查**：
 - [13.split-hairs · agent-ab-testing](../../../../12.interview/11.ai/agent-ab-testing/README.md) —— 5 组件 + 4 流量 + 90 秒话术 + 11 兄弟导航（⚠️ 待 Phase 1+ 迁入）

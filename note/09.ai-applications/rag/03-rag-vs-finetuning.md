@@ -347,7 +347,7 @@ RAG 适合**低频更新、结构化内容**（FAQ / 文档 / 合规），但**�
 
 - 深度原理：[Agentic Search vs RAG](./06-agentic-rag.md)
 - 面试题（高频反直觉）：为什么 Claude Code 放弃了 RAG（⚠️ 待 Phase 1+ 迁入；占位 `../../../12.interview/11.ai/claude-code-agentic-search/`）
-- 实践原文：Claude Code 最佳实践（⚠️ 待 Phase 1+ 迁入；占位 `../../agent/coding-agents/claude-code-practices/`）
+- 实践原文：Claude Code 最佳实践（⚠️ 待 Phase 1+ 迁入；占位 `../../../09.ai-applications/agent/coding-agents/claude-code-practices/`）
 
 ---
 

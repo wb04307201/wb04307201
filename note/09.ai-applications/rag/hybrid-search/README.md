@@ -129,7 +129,7 @@ response = es.search(
 
 ## 🔗 兄弟章节
 
-- **本专题**：[Embedding 模型](../embedding-models/README.md) / [Chunking](../chunking-strategies/README.md) / [Reranker](../reranker/README.md) / [RAG 评估](../../rag/04-evaluation/README.md)
+- **本专题**：[Embedding 模型](../embedding-models/README.md) / [Chunking](../chunking-strategies/README.md) / [Reranker](../reranker/README.md) / [RAG 评估](../../../09.ai-applications/rag/04-evaluation/README.md)
 - **L1**：[Lost in middle](../lost-in-middle/README.md)
 - **咬文嚼字**：[RAG 面试](../../../12.interview/11.ai/rag/README.md)
 

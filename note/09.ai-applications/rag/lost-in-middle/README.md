@@ -118,7 +118,7 @@ attention_bias[:, -100:] += 0.3  # 后 100 token 加权
 
 ## 🔗 兄弟章节
 
-- **本专题**：[YaRN 长度扩展](../yarn-context-extension/README.md) / [Chunking 策略](../chunking-strategies/README.md) / [Reranker](../reranker/README.md) / [Hybrid Search](../hybrid-search/README.md) / [RAG 评估](../../rag/04-evaluation/README.md)
+- **本专题**：[YaRN 长度扩展](../yarn-context-extension/README.md) / [Chunking 策略](../chunking-strategies/README.md) / [Reranker](../reranker/README.md) / [Hybrid Search](../hybrid-search/README.md) / [RAG 评估](../../../09.ai-applications/rag/04-evaluation/README.md)
 - **L1**：[RoPE 位置编码](../../01-fundamentals/rope-position-encoding/README.md)
 - **咬文嚼字**：[面试深挖](../../../12.interview/11.ai/context-engineering-interview/README.md)
 - **应用场景**：[long-document-processing](../long-document-processing/README.md) — 长 PDF/合同 Lost-in-Middle 实战缓解（位置策略 + 重排序 + Context Compression）

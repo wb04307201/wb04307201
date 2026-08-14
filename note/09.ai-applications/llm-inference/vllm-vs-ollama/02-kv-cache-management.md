@@ -13,7 +13,7 @@ module:
 
 ## 反向链
 
-- [04-sliding-window-attention](../../agent/agent-context/04-sliding-window-attention.md)
+- [04-sliding-window-attention](../../../09.ai-applications/agent/agent-context/04-sliding-window-attention.md)
 
 ← [返回: vLLM vs Ollama](../README.md)
 

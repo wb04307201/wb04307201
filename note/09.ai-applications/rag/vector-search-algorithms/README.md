@@ -344,7 +344,7 @@ QPS：10K
 
 ## 九、与"驾驭演进"主线的关联
 
-向量检索算法演进是 [驾驭演进主线](../../agent/agent-architecture/llm-control-evolution/README.md) 在 RAG 领域的具体体现：
+向量检索算法演进是 [驾驭演进主线](../../../09.ai-applications/agent/agent-architecture/llm-control-evolution/README.md) 在 RAG 领域的具体体现：
 
 | 阶段 | 向量检索 | 适配规模 |
 |------|---------|---------|

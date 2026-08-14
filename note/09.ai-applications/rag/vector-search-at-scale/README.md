@@ -438,7 +438,7 @@ def fallback_chain(doc):
 
 ## 七、与"驾驭演进"主线的关联
 
-向量检索规模演进是 [驾驭演进主线](../../agent/agent-architecture/llm-control-evolution/README.md) 在检索领域的体现：
+向量检索规模演进是 [驾驭演进主线](../../../09.ai-applications/agent/agent-architecture/llm-control-evolution/README.md) 在检索领域的体现：
 
 | 驾驭阶段 | 向量检索规模 | 适配 |
 |---------|------------|------|
