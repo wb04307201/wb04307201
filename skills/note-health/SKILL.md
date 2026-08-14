@@ -3,6 +3,8 @@ name: note-health
 description: Use when user asks to audit or improve note/ — "note 哪里需要优化" / "note 有哪些问题" / "扫一遍 note" / "review note" / "体检" (structural audit) OR "评价 note 质量" / "这篇文章质量怎么样" / "质量验收" / "评分" OR "刚写的这篇质量如何" / "新写的 README 看看" (new-file quality). 单一分层体检：结构机械扫描 + leaf 判断式打分，全库穷举用 Workflow fan-out。
 ---
 
+> **规则来源**：执行前必读 `note/SPEC.md` §5（G1-G6 通用评分维度）+ §6（11 类基础扫描规则）+ `<module>/SPEC.md`（如 `note/01.java-and-jvm/SPEC.md` 的 A 类维度）。模块结构通过 `find note -maxdepth 1 -type d` 运行时读取，不硬编码。
+
 # note-health：note 知识库健康检查
 
 对 `note/` 跑**单一分层体检**：结构机械扫描 + leaf 判断式打分，自底向上 4 相，输出统一 P0-P3 + 分批计划 + 逐篇评分表。重内容放在 `references/`，本文件只留决策骨架。
@@ -11,8 +13,8 @@ description: Use when user asks to audit or improve note/ — "note 哪里需要
 
 | scope | 触发例 | 行为 |
 |---|---|---|
-| 单篇 / 单目录 | "评价 11.ai/RAG" / "这篇质量怎么样" / "这篇新写的质量如何" | **只跑 Phase 2**：直接 Read + 按 `references/leaf-quality.md` 打分。**不启动 workflow**。**新文件**先读 `references/new-file-baseline.md` 拿到 7 必选 + 3 可选结构基线。 |
-| 单模块 | "审一下 06.spring" | Phase 1 扫该模块 + Phase 2 小规模 fan-out（视 leaf 数手工切批，≤ 6 篇/批）。 |
+| 单篇 / 单目录 | "评价某模块下某篇" / "这篇质量怎么样" / "这篇新写的质量如何" | **只跑 Phase 2**：直接 Read + 按 `references/leaf-quality.md` 打分。**不启动 workflow**。**新文件**先读 `references/new-file-baseline.md` 拿到 7 必选 + 3 可选结构基线。 |
+| 单模块 | "审一下某模块"（运行时读取 `find note -maxdepth 1 -type d`） | Phase 1 扫该模块 + Phase 2 小规模 fan-out（视 leaf 数手工切批，≤ 6 篇/批）。 |
 | 全库 | "note 哪里要优化" / "扫一遍 note" / "体检" | 完整 4 相；Phase 2 用「分层采样 + 优先级列表」策略（关键问题全评 + 各模块代表采样），**不直接走 health-workflow.js 全库穷举**（成本过高）。 |
 
 **原则**：单篇请求绝不启动重型机器；leaf 数 < 10 直接手工打分，不开 workflow。
