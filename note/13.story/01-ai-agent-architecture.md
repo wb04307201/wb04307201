@@ -320,7 +320,7 @@ graph TD
 
 - [note](../README.md)
 - [sensitive-word-filter](../06.distributed-systems/04-high-performance/sensitive-word-filter/README.md)
-- [05-applications](../../note/11.ai/05-applications/README.md)
+- [05-applications](../09.ai-applications/agent/case-studies/README.md)
 - [29-codebase-cognitive-debt](29-codebase-cognitive-debt.md)
 - [31-ai-fatal-trio](31-ai-fatal-trio.md)
 - [32a-ai-evaluation-fundamentals](32a-ai-evaluation-fundamentals.md)
