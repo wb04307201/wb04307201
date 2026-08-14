@@ -63,19 +63,19 @@ question:
 | 主题 | 难度 | 核心问题 | 主模块位置 |
 |------|------|---------|----------|
 | [Prompt Engineering](prompt-engineering/) | ⭐⭐⭐⭐ | 8 种核心技巧 + 陷阱 + 注入防御 | [02-technology-stack/prompt-engineering](../../09.ai-applications/prompts/prompt-engineering/README.md) |
-| 🆕 [Temperature=0 误区](temperature-zero-myth/) | ⭐⭐⭐⭐ | 5 大根因 + 3 大防御 + Provider 差异 + 90 秒面试话术 | [03-consistency-and-failure-handling](../../../note/11.ai/08-llmops/production-stability/03-consistency-and-failure-handling.md) |
-| [Context Engineering](context-engineering-interview/) | ⭐⭐⭐⭐ | 4 大原则 + Lost in Middle + 演进路径 | [02-technology-stack/context-engineering](../../../note/11.ai/02-technology-stack/context-engineering/README.md) |
-| [Harness Engineering](harness-engineering/) | ⭐⭐⭐⭐ | 4 大 Harness 类型 + OpenSpec + 4 原则 | [03-engineering/harness-engineering](../../../note/11.ai/03-engineering/harness-engineering/README.md) |
-| [Loop Engineering](loop-engineering/) | ⭐⭐⭐⭐ | 3 大组件 + 6 大陷阱（含 Fresh Context 架构）+ Ralph Wiggum Loop | [03-engineering/loop-engineering](../../../note/11.ai/03-engineering/loop-engineering/README.md) |
+| 🆕 [Temperature=0 误区](temperature-zero-myth/) | ⭐⭐⭐⭐ | 5 大根因 + 3 大防御 + Provider 差异 + 90 秒面试话术 | [03-consistency-and-failure-handling](../../09.ai-applications/agent/production-stability/03-consistency-and-failure-handling.md) |
+| [Context Engineering](context-engineering-interview/) | ⭐⭐⭐⭐ | 4 大原则 + Lost in Middle + 演进路径 | [02-technology-stack/context-engineering](./context-engineering-interview/README.md) |
+| [Harness Engineering](harness-engineering/) | ⭐⭐⭐⭐ | 4 大 Harness 类型 + OpenSpec + 4 原则 | [03-engineering/harness-engineering](./harness-engineering/README.md) |
+| [Loop Engineering](loop-engineering/) | ⭐⭐⭐⭐ | 3 大组件 + 6 大陷阱（含 Fresh Context 架构）+ Ralph Wiggum Loop | [03-engineering/loop-engineering](../../09.ai-applications/agent/loop-engineering/README.md) |
 | [Transformer 架构](transformer/) | ⭐⭐⭐⭐⭐ | Self-Attention / QKV / Positional Encoding / FFN | [01-fundamentals/transformer](../../08.ai-foundations/03-transformer/README.md) |
 | [LLM 推理优化](llm-inference/) | ⭐⭐⭐⭐ | Continuous Batching / PagedAttention / KV Cache / 量化 | [02-technology-stack/llm-inference-optimization](../../09.ai-applications/llm-inference/llm-inference-optimization/README.md) |
-| [LLM 对齐方法](llm-alignment/) | ⭐⭐⭐⭐ | RLHF / DPO / Constitutional AI / 5 大对齐方法 | [07-research/alignment](../../../note/11.ai/07-research/alignment/README.md) |
-| [Token 原理](token/) | ⭐⭐⭐ | BPE / SentencePiece / Tokenizer / 计费模型 | [02-technology-stack/token-billing](../../../note/11.ai/02-technology-stack/token-billing/README.md) |
+| [LLM 对齐方法](llm-alignment/) | ⭐⭐⭐⭐ | RLHF / DPO / Constitutional AI / 5 大对齐方法 | [07-research/alignment](../../09.ai-applications/fine-tuning/README.md) |
+| [Token 原理](token/) | ⭐⭐⭐ | BPE / SentencePiece / Tokenizer / 计费模型 | [02-technology-stack/token-billing]（待 Phase 2+ 迁入） |
 | [RAG 检索增强生成](rag/) | ⭐⭐⭐⭐⭐ | Embedding + Vector DB + Retrieval + Generation | [08-llmops/01-rag-vs-finetuning](../../09.ai-applications/rag/03-rag-vs-finetuning.md) |
-| [Function Calling / Tool Use](function-calling/) | ⭐⭐⭐⭐⭐ | 工具调用原理 / Schema / ReAct Agent 集成 | [02-technology-stack/function-calling](../../../note/11.ai/02-technology-stack/function-calling/README.md) |
-| 🆕 [Multi-turn Tool Reasoning](multi-turn-tool-reasoning/) | ⭐⭐⭐⭐⭐ | 5 大场景（1 turn 解决不了）+ 6 大编排模式 + 4 大防御 + 90 秒话术 | [Function Calling 深度 第 4 节](../../../note/11.ai/02-technology-stack/function-calling/README.md) |
+| [Function Calling / Tool Use](function-calling/) | ⭐⭐⭐⭐⭐ | 工具调用原理 / Schema / ReAct Agent 集成 | [02-technology-stack/function-calling](./function-calling/README.md) |
+| 🆕 [Multi-turn Tool Reasoning](multi-turn-tool-reasoning/) | ⭐⭐⭐⭐⭐ | 5 大场景（1 turn 解决不了）+ 6 大编排模式 + 4 大防御 + 90 秒话术 | [Function Calling 深度 第 4 节](./function-calling/README.md) |
 | 🆕 [Multi-Agent 系统设计 + 死循环防护](multi-agent-system-design/) | ⭐⭐⭐⭐⭐ | 5 大组件（角色+协调者+通信+状态+终止）+ 3 种通信模式 + 4 大防护机制 + 6 大反模式 + 90 秒话术 | [06-multi-agent-deep-dive](../../09.ai-applications/agent/agent-execution-patterns/06-multi-agent-deep-dive.md) |
-| 🆕 [Incremental Embedding 增量向量化](incremental-embedding/) | ⭐⭐⭐⭐ | 5 大增量策略（消息队列/异步/hot-cold/版本/监控）+ 4 大模型升级方案（双写/重读/异步迁移/灰度）+ 4 大反模式 + 90 秒话术 | [vector-search-at-scale 第 5.1 节](../../../note/11.ai/02-technology-stack/vector-search-at-scale/README.md) |
+| 🆕 [Incremental Embedding 增量向量化](incremental-embedding/) | ⭐⭐⭐⭐ | 5 大增量策略（消息队列/异步/hot-cold/版本/监控）+ 4 大模型升级方案（双写/重读/异步迁移/灰度）+ 4 大反模式 + 90 秒话术 | [vector-search-at-scale 第 5.1 节](./vector-search-at-scale/README.md) |
 | 🆕 [多 Agent 共享记忆](multi-agent-shared-memory/) | ⭐⭐⭐⭐⭐ | 5 大内容维度（上下文/事实/任务/技能/Memory 4 层）+ 3 实现层（消息/状态/语义）+ 6 大共享模式 + 5 大反模式 + 90 秒话术 | [agent-memory 共享专章](../../09.ai-applications/agent/agent-memory/shared-memory.md) |
 | 🆕 [RAG 超范围拒答](rag-out-of-domain-rejection/) | ⭐⭐⭐⭐⭐ | 6 大检测机制（分数/距离/OOD/NLI/Self-Consistency）+ 5 大拒答模式（Hard/Soft/Partial/Deflect/Escalate）+ 4 步阈值调优 + 5 反模式 + 90 秒话术 | [08-llmops/06 专章](../../09.ai-applications/rag/05-out-of-domain-rejection.md) |
 | 🆕 [Agent A/B Test 系统设计](agent-ab-testing/) | ⭐⭐⭐⭐⭐ | 5 大组件（流量/配置/指标/统计/决策）+ 4 流量分配（hash/sticky/分层/Holdout）+ 显著性检验（t-test/Bonferroni/Sequential）+ 5 反模式 + 90 秒话术 | [agent-evaluation/02 专章](../../09.ai-applications/agent/agent-evaluation/02-ab-testing-design/README.md) |
@@ -83,20 +83,20 @@ question:
 | **🆕 [KV Cache + MQA/GQA/MLA](kv-cache-mqa-mla/)** | ⭐⭐⭐⭐ | O(n³)→O(n²) 复杂度 + 3 种 KV 共享方案对比（显存/精度/训练 trade-off） | [02-technology-stack/kv-cache](../../09.ai-applications/llm-inference/kv-cache/README.md) |
 | [Agent DAG vs ReAct](agent-dag-vs-react/) | ⭐⭐⭐⭐⭐ | 复杂 Agent 为什么采用 DAG Workflow | [04-architecture/agent-architecture](../../09.ai-applications/agent/agent-architecture/README.md) |
 | **🆕 [ReAct vs Plan-and-Execute](react-vs-plan-execute/)** | ⭐⭐⭐⭐⭐ | 4 模式 6 维打分 + RePlan 3 机制 + 80% 是混合架构 + 7 道 Q&A | [04-architecture/agent-execution-patterns](../../09.ai-applications/agent/agent-execution-patterns/README.md) |
-| [10亿级向量检索](vector-search-algorithms/) | ⭐⭐⭐⭐⭐ | HNSW vs IVF vs DiskANN 4 维选型 + 内存/磁盘/QPS/Recall 权衡 | [02-technology-stack/vector-search-algorithms](../../../note/11.ai/02-technology-stack/vector-search-algorithms/README.md) |
-| [千亿级向量检索](vector-search-at-scale/) | ⭐⭐⭐⭐⭐ | 5 关键架构转变 + 业界真实案例 + 5 阶段时延/召回/成本三元权衡 | [02-technology-stack/vector-search-at-scale](../../../note/11.ai/02-technology-stack/vector-search-at-scale/README.md) |
-| [万亿级向量检索](vector-search-trillion/) | ⭐⭐⭐⭐⭐ | 万亿级多集群 + 联邦 + TPU + 极限压缩 | [02-technology-stack/vector-search-trillion](../../../note/11.ai/02-technology-stack/vector-search-trillion/README.md) |
-| [Skill 设计方法论](skill-design/) | ⭐⭐⭐⭐ | 决策树（写 Skill vs CLAUDE.md / Hook / MCP）+ 6 字段 frontmatter + YAML 模板 | [03-engineering/claude-code-practices/skill-design](../../../note/11.ai/03-engineering/claude-code-practices/skill-design.md) |
-| [Skill 命中率](skill-hit-rate/) | ⭐⭐⭐⭐ | 数量爆炸后 4 层模型（描述 / 路由 / 加载 / 评估）+ 5 大反模式 + 65% → 92% 实战 | [03-engineering/claude-code-practices/skill-hit-rate](../../../note/11.ai/03-engineering/claude-code-practices/skill-hit-rate.md) |
+| [10亿级向量检索](vector-search-algorithms/) | ⭐⭐⭐⭐⭐ | HNSW vs IVF vs DiskANN 4 维选型 + 内存/磁盘/QPS/Recall 权衡 | [02-technology-stack/vector-search-algorithms](./vector-search-algorithms/README.md) |
+| [千亿级向量检索](vector-search-at-scale/) | ⭐⭐⭐⭐⭐ | 5 关键架构转变 + 业界真实案例 + 5 阶段时延/召回/成本三元权衡 | [02-technology-stack/vector-search-at-scale](./vector-search-at-scale/README.md) |
+| [万亿级向量检索](vector-search-trillion/) | ⭐⭐⭐⭐⭐ | 万亿级多集群 + 联邦 + TPU + 极限压缩 | [02-technology-stack/vector-search-trillion](./vector-search-trillion/README.md) |
+| [Skill 设计方法论](skill-design/) | ⭐⭐⭐⭐ | 决策树（写 Skill vs CLAUDE.md / Hook / MCP）+ 6 字段 frontmatter + YAML 模板 | [03-engineering/claude-code-practices/skill-design](../../09.ai-applications/agent/coding-agents/claude-code-practices/skill-design.md) |
+| [Skill 命中率](skill-hit-rate/) | ⭐⭐⭐⭐ | 数量爆炸后 4 层模型（描述 / 路由 / 加载 / 评估）+ 5 大反模式 + 65% → 92% 实战 | [03-engineering/claude-code-practices/skill-hit-rate](../../09.ai-applications/agent/coding-agents/claude-code-practices/skill-hit-rate.md) |
 | **🆕 [工业部署推理引擎选型](inference-engine-selection/)** | ⭐⭐⭐⭐⭐ | vLLM vs Ollama 5 大理由 + PagedAttention + 连续批处理 + 4 引擎对比 + 7 道 Q&A | [03-engineering/ai-platforms/vllm-vs-ollama](../../09.ai-applications/llm-inference/vllm-vs-ollama/README.md) |
 | **🆕 [Agent 长上下文策略](long-context-agent-strategy/)** | ⭐⭐⭐⭐⭐ | 6 大策略组合（Chunking / RAG / Memory / Sliding Window / Sub-Agents / Long-Context）+ Lost in Middle + 7 道 Q&A | [04-architecture/agent-context](../../09.ai-applications/agent/agent-context/README.md) |
-| **🆕 [思维范式：Prompt vs if-else](llm-thinking-paradigm/)** | ⭐⭐⭐⭐⭐ | 4 信号决策 + 80/20 协同 + 60 秒话术 | [01-thinking-paradigm](../../../note/11.ai/08-llmops/production-stability/01-thinking-paradigm.md) |
-| **🆕 [成本控制：5 层路由](llm-cost-control/)** | ⭐⭐⭐⭐⭐ | 3 道 quota + 5 层降级 + 60 秒话术 | [02-cost-control-and-degradation](../../../note/11.ai/08-llmops/production-stability/02-cost-control-and-degradation.md) |
-| **🆕 [超时熔断：双 Timeout](llm-timeout-circuit-breaker/)** | ⭐⭐⭐⭐⭐ | 软/硬限 + Circuit Breaker + Fallback 链 | [04-timeout-and-circuit-breaker](../../../note/11.ai/08-llmops/production-stability/04-timeout-and-circuit-breaker.md) |
-| **🆕 [监控定位：4 维 + Trace](llm-monitoring/)** | ⭐⭐⭐⭐⭐ | 质量/延迟/成本/一致性 + Trace + 黄金集 | [05-online-monitoring](../../../note/11.ai/08-llmops/production-stability/05-online-monitoring.md) |
-| **🆕 [Structured Output 结构化输出](structured-output/)** | ⭐⭐⭐⭐ | JSON Mode 已过时 + 5 层策略 + 3 大陷阱 | [02-technology-stack/structured-output](../../../note/11.ai/02-technology-stack/structured-output/README.md) |
+| **🆕 [思维范式：Prompt vs if-else](llm-thinking-paradigm/)** | ⭐⭐⭐⭐⭐ | 4 信号决策 + 80/20 协同 + 60 秒话术 | [01-thinking-paradigm](../../09.ai-applications/agent/production-stability/01-thinking-paradigm.md) |
+| **🆕 [成本控制：5 层路由](llm-cost-control/)** | ⭐⭐⭐⭐⭐ | 3 道 quota + 5 层降级 + 60 秒话术 | [02-cost-control-and-degradation](../../09.ai-applications/agent/production-stability/02-cost-control-and-degradation.md) |
+| **🆕 [超时熔断：双 Timeout](llm-timeout-circuit-breaker/)** | ⭐⭐⭐⭐⭐ | 软/硬限 + Circuit Breaker + Fallback 链 | [04-timeout-and-circuit-breaker](../../09.ai-applications/agent/production-stability/04-timeout-and-circuit-breaker.md) |
+| **🆕 [监控定位：4 维 + Trace](llm-monitoring/)** | ⭐⭐⭐⭐⭐ | 质量/延迟/成本/一致性 + Trace + 黄金集 | [05-online-monitoring](../../09.ai-applications/agent/production-stability/05-online-monitoring.md) |
+| **🆕 [Structured Output 结构化输出](structured-output/)** | ⭐⭐⭐⭐ | JSON Mode 已过时 + 5 层策略 + 3 大陷阱 | [02-technology-stack/structured-output](./structured-output/README.md) |
 | **🆕 [Planning/Acting/Monitoring 三阶段闭环](planning-acting-monitoring/)** | ⭐⭐⭐⭐⭐ | 6 大反模式 + 工具链选型 + 90 秒话术 | [04-architecture/agent-execution-patterns/planning-acting-monitoring](../../09.ai-applications/agent/agent-execution-patterns/planning-acting-monitoring/README.md) |
-| **🆕 [Transformer 长上下文性能](transformer-long-context-performance/)** | ⭐⭐⭐⭐⭐ | O(n²) 根因 + KV Cache 膨胀 + 6 大优化方案 + 选型指南 | [01-fundamentals/transformer-long-context-performance](../../../note/11.ai/01-fundamentals/transformer-long-context-performance/README.md) |
+| **🆕 [Transformer 长上下文性能](transformer-long-context-performance/)** | ⭐⭐⭐⭐⭐ | O(n²) 根因 + KV Cache 膨胀 + 6 大优化方案 + 选型指南 | [01-fundamentals/transformer-long-context-performance](./transformer-long-context-performance/README.md) |
 | **🆕 [生产级 Agent 端到端搭建](production-agent-system-design/)** | ⭐⭐⭐⭐⭐ | 8 步流水线（需求→架构→Harness→Loop→可靠性→Memory→评测→监控）+ 8 大组件串联 + 端到端 checklist | [04-architecture/production-agent-system-design](../../09.ai-applications/agent/production-agent-system-design/README.md) |
 
 ---
@@ -121,5 +121,5 @@ question:
 - 相关章节：[`09.front-end`](09.front-end/)（前端集成 AI）
 
 
-- [spring-ai-vs-dify](../../../note/11.ai/04-architecture/spring-ai-vs-dify.md)
+- [spring-ai-vs-dify](../../09.ai-applications/agent/ai-platforms/spring-ai-vs-dify.md)
 ← [返回咬文嚼字（高频面试题）](../README.md)
