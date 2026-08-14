@@ -1,7 +1,9 @@
 ---
 name: note-precipitation-planning
-description: Use when user asks where to add or update a topic in the project's note/ knowledge base / "X 应该沉淀到 note 什么位置" / "X 怎么归档" / "放在 note 哪个位置" / "如何沉淀 X" / "新增主题到 note" — covers survey of existing 14-module structure, depth analysis, location decision between main module / 13.split-hairs interview layer / 12.story narrative layer, layered precipitation strategy, and reverse-link verification
+description: Use when user asks where to add or update a topic in the project's note/ knowledge base / "X 应该沉淀到 note 什么位置" / "X 怎么归档" / "放在 note 哪个位置" / "如何沉淀 X" / "新增主题到 note" — covers survey of existing structure (read at runtime), depth analysis, location decision between main module / 12.interview interview layer / 13.story narrative layer, layered precipitation strategy, and reverse-link verification
 ---
+
+> **规则来源**：执行前必读 `note/SPEC.md`（G1-G6 通用评分 + 11 类扫描 + commit 格式 + 互链规则）以及目标模块的 `<module>/SPEC.md`（如 `note/01.java-and-jvm/SPEC.md`）。模块结构在运行时通过 `find note -maxdepth 1 -type d` + `cat note/<module>/README.md` 读取，不硬编码。
 
 # note 沉淀规划
 
@@ -20,7 +22,7 @@ description: Use when user asks where to add or update a topic in the project's 
 
 ## Overview
 
-当用户问"这个主题应该新增/更新到 note 的什么位置"时，遵循 8 步流程输出沉淀方案。`note/` 是 14 主模块的体系化技术知识库，含 `01.java` ~ `14.project-management`，每个主模块有 README + 子目录 + 已建立的双层/三层沉淀模式（13.split-hairs 面试题 + 11.ai 主模块 + 12.story 餐厅叙事）。
+当用户问"这个主题应该新增/更新到 note 的什么位置"时，遵循 8 步流程输出沉淀方案。`note/` 是 13 主模块的体系化技术知识库，含 `01.java-and-jvm` ~ `11.product-and-pm`，每个主模块有 README + 子目录 + 已建立的双层/三层沉淀模式（13.split-hairs 面试题 + 11.ai 主模块 + 12.story 餐厅叙事）。
 
 > 🆕 **Step 0 新增（2026-07-26 教训）**：用户输入可能是**多个主题**（如"大模型思维工程 5 个灵魂拷问"实际包含 5 个独立子主题）。Step 0 在盘点前先识别并拆分多主题，避免把 N 个独立主题错误合并成一个文件。历史案例：`production-thinking-5q` 把思维范式/成本控制/一致性/超时熔断/监控 5 个独立主题合成一个 419 行文件，后续不得不全部拆散。
 
@@ -41,7 +43,7 @@ skill 执行：Step 1 现状盘点 → Step 2 深度评估 → Step 3 位置决�
 输出（节选）：
   ## 📋 现状盘点
   - note/05.tools/claude-code.md：已有但只覆盖 CLI 命令
-  - note/11.ai/03-engineering/agent-frameworks/：相邻分类
+  - note/08.ai-foundations/03-engineering/agent-frameworks/：相邻分类
   - 已有 3 篇 SPL（single page lesson）：SPL-2024-089/-091/-101
 
   ## 🎯 深度评估（3 信号）
@@ -77,7 +79,7 @@ skill 执行：Step 1 现状盘点 → Step 2 深度评估 → Step 3 位置决�
 
 **note 目录位置**：仓库根目录的 note/（CWD 假设 = 项目根）
 
-**14 主模块**：
+**13 主模块**：
 - `01.java` / `02.computer-basics` / `03.database` / `04.system-design`
 - `05.tools` / `06.spring` / `07.workflow` / `08.application-systems`
 - `09.front-end` / `10.big-data` / `11.ai` / `12.story`
@@ -207,10 +209,10 @@ find note/<module> -type d -name "*<topic>*" 2>/dev/null
 ls note/<module>/
 
 # 1.3 13.split-hairs 同栏目兄弟
-ls note/13.split-hairs/<module>/ | grep -v README
+ls note/12.interview/<module>/ | grep -v README
 
 # 1.4 12.story 相关章节
-grep -l "<关键词>" note/12.story/*.md 2>/dev/null
+grep -l "<关键词>" note/13.story/*.md 2>/dev/null
 
 # 1.5 系列结构检查（目标目录下是否已有编号系列）
 # 如果目标目录下有 01-xxx.md / 02-xxx.md 等编号文件，
@@ -501,7 +503,7 @@ PYEOF
 **Subagent prompt 模板**（并行派发时）：
 ```
 **重要**：以下文件由 orchestrator 统一更新，你**不要修改**：
-- `note/13.split-hairs/<module>/README.md`（父 README 目录表）
+- `note/12.interview/<module>/README.md`（父 README 目录表）
 - 任何其他 subagent 可能修改的文件
 
 你只需负责：
@@ -533,9 +535,9 @@ PYEOF
 2. 更新前验证：
    ```bash
    # 统计实际目录数
-   ACTUAL_COUNT=$(ls note/13.split-hairs/<module>/ | grep -v README | wc -l)
+   ACTUAL_COUNT=$(ls note/12.interview/<module>/ | grep -v README | wc -l)
    # 对比父 README 中的题数
-   DECLARED_COUNT=$(grep -oP '共 \K\d+' note/13.split-hairs/<module>/README.md)
+   DECLARED_COUNT=$(grep -oP '共 \K\d+' note/12.interview/<module>/README.md)
    # 如果不一致，先修正历史遗留问题
    ```
 3. 添加新条目：
@@ -640,12 +642,12 @@ PYEOF
 
 **🆕 强化（2026-07-27 经验 — 父 README 目录表更新）**：
 - 当 subagent 更新**父 README 目录表**（如 `13.split-hairs/11.ai/README.md` 添加新面试题条目）时，目录表中的深读链接路径最易出错
-- 历史案例（2026-07-27 Batch 1）：`13.split-hairs/11.ai/README.md` 目录表新增 agent-reliability 条目，subagent 写 `../../../11.ai/03-engineering/agent-reliability/README.md`（3 层 `../`），但 `13.split-hairs/11.ai/` 到 `note/11.ai/` 只需 2 层 `../../`
+- 历史案例（2026-07-27 Batch 1）：`13.split-hairs/11.ai/README.md` 目录表新增 agent-reliability 条目，subagent 写 `../../../11.ai/03-engineering/agent-reliability/README.md`（3 层 `../`），但 `13.split-hairs/11.ai/` 到 `note/08.ai-foundations/` 只需 2 层 `../../`
 - **防御规则**：更新父 README 目录表时，用 Python 验证路径：
   ```python
   import os
-  src_dir = 'note/13.split-hairs/11.ai'  # 父 README 所在目录
-  tgt = 'note/11.ai/03-engineering/agent-reliability/README.md'
+  src_dir = 'note/12.interview/11.ai'  # 父 README 所在目录
+  tgt = 'note/08.ai-foundations/03-engineering/agent-reliability/README.md'
   rel = os.path.relpath(tgt, src_dir)  # 自动计算正确相对路径
   print(rel)  # 输出: ../../11.ai/03-engineering/agent-reliability/README.md
   ```
@@ -672,7 +674,7 @@ PYEOF
   - 例：agent-execution-patterns 系列有 01-react / 02-plan-execute，新增 05-dag / 06-multi-agent
   - 但 01 和 02 的文件末尾**没有链向** 05 和 06 —— 同系列 6 篇文章各自孤立
 - **场景 B（2026-07-25 新增）**：**历史遗留**——已有编号系列，但所有文件**历史都没加过"系列导航表"**。
-  - 例：`note/01.java/kotlin/` 有 01-basics.md / 02-oop.md / 03-functional.md / 04-advanced.md / 05-coroutines.md 共 5 篇，**全部缺链**（没有任何一篇末尾有"系列导航表"）
+  - 例：`note/01.java-and-jvm/kotlin/` 有 01-basics.md / 02-oop.md / 03-functional.md / 04-advanced.md / 05-coroutines.md 共 5 篇，**全部缺链**（没有任何一篇末尾有"系列导航表"）
   - 这类问题体检时通过 `Phase 1.9 系列完整性` 扫描可发现
 
 **修复**：
@@ -854,7 +856,7 @@ done
 
 **历史案例**（2026-07-30 Batch 3）：
 - 3 个 subagent 并行：#5 debounce-streaming / #6 async-vs-multithread / #7 webpack-vite-migration
-- #5 和 #7 都更新 `note/13.split-hairs/09.front-end/README.md`
+- #5 和 #7 都更新 `note/12.interview/09.front-end/README.md`
 - #5 subagent 更新题数 26→27 ✅
 - #7 subagent 添加了条目但**题数仍是 27**（应为 28）
 - Orchestrator 收尾时发现并修正 27→28
@@ -867,9 +869,9 @@ done
 3. **Orchestrator 收尾步骤**：
    ```bash
    # 1. 统计实际目录数
-   ACTUAL_COUNT=$(ls note/13.split-hairs/<module>/ | grep -v README | wc -l)
+   ACTUAL_COUNT=$(ls note/12.interview/<module>/ | grep -v README | wc -l)
    # 2. 对比父 README 中的题数
-   DECLARED_COUNT=$(grep -oP '共 \K\d+' note/13.split-hairs/<module>/README.md)
+   DECLARED_COUNT=$(grep -oP '共 \K\d+' note/12.interview/<module>/README.md)
    # 3. 如不一致，orchestrator 修正 + commit
    if [ "$ACTUAL_COUNT" != "$DECLARED_COUNT" ]; then
      # sed 替换题数
@@ -899,10 +901,10 @@ done
 1. **Step 1 现状盘点必须包含父 README 验证**：
    ```bash
    # 1. 统计实际目录数
-   ACTUAL_COUNT=$(ls note/13.split-hairs/<module>/ | grep -v README | wc -l)
+   ACTUAL_COUNT=$(ls note/12.interview/<module>/ | grep -v README | wc -l)
    
    # 2. 读取父 README 声明的题数
-   DECLARED_COUNT=$(grep -oP '共 \K\d+' note/13.split-hairs/<module>/README.md)
+   DECLARED_COUNT=$(grep -oP '共 \K\d+' note/12.interview/<module>/README.md)
    
    # 3. 对比并记录差异
    if [ "$ACTUAL_COUNT" != "$DECLARED_COUNT" ]; then
@@ -911,8 +913,8 @@ done
    fi
    
    # 4. 列出实际目录 vs 父 README 条目，找出缺失项
-   ls note/13.split-hairs/<module>/ | grep -v README | sort > /tmp/actual.txt
-   grep -oP '\[.*?\]\(([^)]+)/\)' note/13.split-hairs/<module>/README.md | \
+   ls note/12.interview/<module>/ | grep -v README | sort > /tmp/actual.txt
+   grep -oP '\[.*?\]\(([^)]+)/\)' note/12.interview/<module>/README.md | \
      grep -oP '(?<=\()[^)]+(?=/)' | sort > /tmp/declared.txt
    comm -23 /tmp/actual.txt /tmp/declared.txt  # 实际有但父 README 没有的
    ```
