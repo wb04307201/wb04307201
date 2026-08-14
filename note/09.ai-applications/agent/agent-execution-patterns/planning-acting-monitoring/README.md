@@ -251,7 +251,7 @@ for task in topo_sort(dag):
 
 - **相关章节**：
   - [Agent Memory](../../agent-memory/README.md) — 记忆架构（Monitoring 阶段需要）
-  - Function Calling — ⚠️ 待 Phase 1+ 迁入（占位 `[../../spec-tools/function-calling/](../../spec-tools/function-calling/README.md)`）— 工具调用原理（Acting 阶段基础）
+  - Function Calling — ⚠️ 待 Phase 1+ 迁入（占位 `[../../agent-spec-tools/function-calling/](../../agent-spec-tools/function-calling/README.md)`）— 工具调用原理（Acting 阶段基础）
   - LLM 监控 — ⚠️ 待 Phase 1+ 迁入（占位 `[../../../../llm-inference/llmops/production-stability/05-online-monitoring.md](../../../../llm-inference/llmops/production-stability/05-online-monitoring.md)`） — 4 维监控体系
 
 ---

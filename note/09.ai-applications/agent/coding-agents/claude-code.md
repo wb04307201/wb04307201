@@ -354,7 +354,7 @@ $ claude --dangerously-skip-permissions
 - **Skill 设计**：Skill 设计方法论 / Skill 命中率（⚠️ 待 Phase 1+ 迁入；占位 `./claude-code-practices/skill-design.md` / `./claude-code-practices/skill-hit-rate.md`）
 - **横向对比**：[Coding Agents README](README.md)
 - **规范工具**：[Agent Spec Tools](../agent-spec-tools/README.md) — Superpowers / Spec-Kit / OpenSpec（Claude Code 是这 3 工具的主要载体）
-- **Harness 概念**：Harness Engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../../execution-patterns/harness-engineering/]`） — Claude Code 5 扩展点都是 Harness 实现
+- **Harness 概念**：Harness Engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../../agent-execution-patterns/harness-engineering/]`） — Claude Code 5 扩展点都是 Harness 实现
 - **代码审核**：AI Code Review（⚠️ 待 Phase 1+ 迁入；占位 `./ai-code-review/README.md`） — Claude Code 生成的代码怎么审核
 
 ← [返回: Coding Agents 对比](README.md)

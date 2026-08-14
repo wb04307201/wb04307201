@@ -16,7 +16,7 @@ module:
 ## 反向链
 
 - [agent-architecture](../agent-architecture/README.md)
-- harness-engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../../execution-patterns/harness-engineering/]`）
+- harness-engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../../agent-execution-patterns/harness-engineering/]`）
 
 ← [返回: L4 架构设计](../README.md)
 
@@ -29,8 +29,8 @@ module:
 | # | 组件 | 文章 | 解决什么 |
 |---|------|------|---------|
 | 1 | 架构选型 | [agent-architecture](../agent-architecture/README.md) | DAG vs ReAct vs Plan-Execute |
-| 2 | Harness 约束 | harness-engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../../execution-patterns/harness-engineering/]`） | Prompt/工具/输出约束 |
-| 3 | Loop 兜底 | loop-engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../../execution-patterns/loop-engineering/]`） | 循环调用 + Verifier |
+| 2 | Harness 约束 | harness-engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../../agent-execution-patterns/harness-engineering/]`） | Prompt/工具/输出约束 |
+| 3 | Loop 兜底 | loop-engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../../agent-execution-patterns/loop-engineering/]`） | 循环调用 + Verifier |
 | 4 | 可靠性 | [agent-reliability](../agent-reliability/README.md) | 4 层防线防跑偏 |
 | 5 | Memory | [agent-memory](../agent-memory/README.md) | 短期/长期/工作记忆 |
 | 6 | 评测 | [agent-evaluation](../agent-evaluation/README.md) | 6 维评测体系 |
@@ -109,7 +109,7 @@ Q4: 是否需要灵活性 > 稳定性？
 | 输出约束 | 格式 + Schema | "必须返回 JSON，包含 code + explanation" |
 | 流程约束 | 节点顺序 + 分支条件 | "intent_classify → query_order → format_response" |
 
-**深读**：harness-engineering §三 4 大 Harness 类型（⚠️ 待 Phase 1+ 迁入；占位 `[../../execution-patterns/harness-engineering/]`）
+**深读**：harness-engineering §三 4 大 Harness 类型（⚠️ 待 Phase 1+ 迁入；占位 `[../../agent-execution-patterns/harness-engineering/]`）
 
 ---
 
@@ -131,7 +131,7 @@ Q4: 是否需要灵活性 > 稳定性？
 - 语义检查：逻辑一致性 / 业务规则
 - 空结果检测：搜索返回空 → 换策略
 
-**深读**：loop-engineering §三 3 大核心组件（⚠️ 待 Phase 1+ 迁入；占位 `[../../execution-patterns/loop-engineering/]`）
+**深读**：loop-engineering §三 3 大核心组件（⚠️ 待 Phase 1+ 迁入；占位 `[../../agent-execution-patterns/loop-engineering/]`）
 
 ---
 
@@ -278,8 +278,8 @@ Q4: 是否需要灵活性 > 稳定性？
 ### 8 大组件（按流水线顺序）
 
 1. [agent-architecture](../agent-architecture/README.md) — DAG vs ReAct vs Plan-Execute
-2. harness-engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../../execution-patterns/harness-engineering/]`） — 4 大 Harness 类型
-3. loop-engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../../execution-patterns/loop-engineering/]`） — 循环调用 + Verifier
+2. harness-engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../../agent-execution-patterns/harness-engineering/]`） — 4 大 Harness 类型
+3. loop-engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../../agent-execution-patterns/loop-engineering/]`） — 循环调用 + Verifier
 4. [agent-reliability](../agent-reliability/README.md) — 4 层防线
 5. [agent-memory](../agent-memory/README.md) — 4 类 Memory
 6. [agent-evaluation](../agent-evaluation/README.md) — 6 维评测

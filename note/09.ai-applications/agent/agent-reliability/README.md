@@ -131,7 +131,7 @@ module:
 | 重试上限 | 最多 N 次（通常 3 次），超过触发 L3 回滚 |
 | 空结果处理 | 搜索返回空 → 不是换词重试，是"无匹配，请换策略" |
 
-**设计参考**：Verifier 设计（⚠️ 待 Phase 1+ 迁入；占位 `[../execution-patterns/loop-engineering/verifier-design.md`）
+**设计参考**：Verifier 设计（⚠️ 待 Phase 1+ 迁入；占位 `[../agent-execution-patterns/loop-engineering/verifier-design.md`）
 
 ### 3.3 L3 状态快照回滚层
 
@@ -252,9 +252,9 @@ search 返回空结果
 
 ### 深度链接
 
-- Loop Engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../execution-patterns/loop-engineering/`）— 循环调用 3 大组件 + 4 大失败模式
-- Harness Engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../execution-patterns/harness-engineering/`）— 4 大 Harness 类型 + 4 原则
-- Verifier 设计（⚠️ 待 Phase 1+ 迁入；占位 `[../execution-patterns/loop-engineering/verifier-design.md`）— Verifier 组件设计详解
+- Loop Engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../agent-execution-patterns/loop-engineering/`）— 循环调用 3 大组件 + 4 大失败模式
+- Harness Engineering（⚠️ 待 Phase 1+ 迁入；占位 `[../agent-execution-patterns/harness-engineering/`）— 4 大 Harness 类型 + 4 原则
+- Verifier 设计（⚠️ 待 Phase 1+ 迁入；占位 `[../agent-execution-patterns/loop-engineering/verifier-design.md`）— Verifier 组件设计详解
 
 ### 咬文嚼字
 

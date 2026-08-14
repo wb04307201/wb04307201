@@ -1,10 +1,10 @@
 # Spring AI vs 编排平台：代码优先与低代码的边界
 
-> ⬅️ [返回 AI 平台](README.md) | [Dify](dify.md) | [Coze](coze.md) | [LangGraph](langgraph.md) | [BPMN+AI 融合](../../04-architecture/bpmn-ai-integration.md) | [深度对比长文](../../04-architecture/spring-ai-vs-dify.md) | [11 AI 知识体系](../../README.md)
+> ⬅️ [返回 AI 平台](README.md) | [Dify](dify.md) | [Coze](coze.md) | [LangGraph](langgraph.md) | [BPMN+AI 融合](../architecture/bpmn-ai-integration.md) | [深度对比长文](../ai-platforms/spring-ai-vs-dify.md) | [11 AI 知识体系](../../README.md)
 
 ## 🎯 一句话定位
 
-**Spring AI 不是 Dify 的竞品，而是不同的抽象层级**——Dify 是"低代码 AI 应用平台"，Spring AI 是"Java 团队的 AI 框架"。本文讲清**何时用平台、何时自己写代码、何时混合**，深度版见 [04-architecture/spring-ai-vs-dify.md](../../04-architecture/spring-ai-vs-dify.md)。
+**Spring AI 不是 Dify 的竞品，而是不同的抽象层级**——Dify 是"低代码 AI 应用平台"，Spring AI 是"Java 团队的 AI 框架"。本文讲清**何时用平台、何时自己写代码、何时混合**，深度版见 [04-architecture/spring-ai-vs-dify.md](../ai-platforms/spring-ai-vs-dify.md)。
 
 ---
 
@@ -87,9 +87,9 @@
 ## 相关章节
 
 - ⬅️ [返回 AI 平台](README.md) — 6 平台对比矩阵与决策树
-- ➡️ [深度对比长文](../../04-architecture/spring-ai-vs-dify.md) — 7 维度决策 + 代码示例 + 混合架构
+- ➡️ [深度对比长文](../ai-platforms/spring-ai-vs-dify.md) — 7 维度决策 + 代码示例 + 混合架构
 - [Dify](dify.md) — 低代码 DSL 优先 + 私有化首选
 - [Coze](coze.md) — 字节系国内最强生态
 - [LangGraph](langgraph.md) — Python 代码优先复杂 Agent 框架
-- [BPMN+AI 融合](../../04-architecture/bpmn-ai-integration.md) — AI + BPMN 跨界决策范式
+- [BPMN+AI 融合](../architecture/bpmn-ai-integration.md) — AI + BPMN 跨界决策范式
 - [大模型应用框架](../frameworks/llm-app/README.md) — Spring AI / LangChain4j / LangChain / LlamaIndex 框架对比
