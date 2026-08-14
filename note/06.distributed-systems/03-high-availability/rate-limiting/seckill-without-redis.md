@@ -738,7 +738,7 @@ public class SeckillController {
 - [04 · peak-traffic-defense（餐厅流量防御）](../../../13.story/04-peak-traffic-defense.md) — 餐厅流量 = 茅台秒杀的隐喻版
 
 **其他相关**：
-- [限流算法（rate-limiting）面试题](../../../12.interview/../../../06.distributed-systems/01-foundation/02-rate-limiting/README.md) — 互补章节
+- [限流算法（rate-limiting）面试题](../../../12.interview/../../../../06.distributed-systems/01-foundation/02-rate-limiting/README.md) — 互补章节
 - [MySQL 行锁原理](../../../01.java-and-jvm/03-concurrency/juc-locks/README.md) — 乐观锁底层实现
 
 ---

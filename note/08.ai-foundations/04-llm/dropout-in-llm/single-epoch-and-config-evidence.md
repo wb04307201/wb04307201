@@ -266,7 +266,7 @@ epoch 数 ≈ 训练总 tokens / 数据集 tokens 数
 - [LLM 基础概念](../../01-fundamentals/llm-basics/README.md) — 训练数据 + 规模定律
 
 **架构视角**：
-- [LLM 驾驭演进主线](../../04-architecture/llm-control-evolution/README.md) — 训练范式是 Context 维度的新形态
+- [LLM 驾驭演进主线](../../agent/agent-architecture/llm-control-evolution/README.md) — 训练范式是 Context 维度的新形态
 
 **面试题**：
 - [大模型为什么不用 Dropout（基础 4 题）](../../../13.split-hairs/11.ai/dropout-in-llm/README.md) — 基础题

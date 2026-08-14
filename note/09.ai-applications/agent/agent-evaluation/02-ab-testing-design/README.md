@@ -9,7 +9,7 @@ module:
 
 # Agent A/B Test 系统设计 · 深度专章
 
-> 一句话定位：**AI 场景 A/B Test ≠ 传统 web A/B；本质是"输出非确定性 + 多指标 + 长期漂移"下的统计对照系统**。完整体系基于 [主模块 · Agent Evaluation](../../README.md) + [LLM 评测专题](../../../../12.interview/11.ai/agent-performance-evaluation/README.md)（⚠️ 待 Phase 1+ 迁入）。面试速查版见 [13.split-hairs · agent-ab-testing](../../../../12.interview/11.ai/agent-ab-testing/README.md)（⚠️ 待 Phase 1+ 迁入）。
+> 一句话定位：**AI 场景 A/B Test ≠ 传统 web A/B；本质是"输出非确定性 + 多指标 + 长期漂移"下的统计对照系统**。完整体系基于 [主模块 · Agent Evaluation](../../README.md) + [LLM 评测专题](../../../12.interview/11.ai/agent-performance-evaluation/README.md)（⚠️ 待 Phase 1+ 迁入）。面试速查版见 [13.split-hairs · agent-ab-testing](../../../../12.interview/11.ai/agent-ab-testing/README.md)（⚠️ 待 Phase 1+ 迁入）。
 
 ---
 
@@ -557,7 +557,7 @@ Day 30   : 长期漂移观察
 
 **主模块**：
 - [主模块 · Agent Evaluation 总览](../../README.md) —— 6 大指标 + 5 方法 + 4 阶段 Pipeline
-- [LLM 评测专题](../../../../12.interview/11.ai/agent-performance-evaluation/README.md) —— 415 行深度（⚠️ 待 Phase 1+ 迁入）
+- [LLM 评测专题](../../../12.interview/11.ai/agent-performance-evaluation/README.md) —— 415 行深度（⚠️ 待 Phase 1+ 迁入）
 
 **兄弟评测章节（08 个）**：
 - [01-six-metrics.md](../01-six-metrics.md)

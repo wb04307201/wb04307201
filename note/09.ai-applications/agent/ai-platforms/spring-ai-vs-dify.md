@@ -1,6 +1,6 @@
 # Spring AI vs Dify：企业知识库系统的代码优先 vs 低代码架构决策
 
-> ⬅️ [返回 L4 架构设计](README.md) | [代码优先 vs 平台（短卡）](../ai-platforms/spring-ai-vs-platforms.md) | [Dify](../ai-platforms/dify.md) | [Spring AI 工程](../agent-frameworks/llm-app.md) | [BPMN+AI 融合](./architecture/bpmn-ai-integration.md) | [11 AI 知识体系](../README.md)
+> ⬅️ [返回 L4 架构设计](README.md) | [代码优先 vs 平台（短卡）](../ai-platforms/spring-ai-vs-platforms.md) | [Dify](../ai-platforms/dify.md) | [Spring AI 工程](../agent-frameworks/llm-app.md) | [BPMN+AI 融合](../../architecture/bpmn-ai-integration.md) | [11 AI 知识体系](../README.md)
 
 ## 🎯 一句话定位
 
@@ -497,7 +497,7 @@ public String knowledgeBaseQuery(@ToolParam String question) {
 - ➡️ [代码优先 vs 平台（短卡）](../ai-platforms/spring-ai-vs-platforms.md)
 - [Dify](../ai-platforms/dify.md)
 - [Spring AI 工程](../agent-frameworks/llm-app.md)
-- [BPMN+AI 融合](./architecture/bpmn-ai-integration.md) — 另一种跨界决策范式
+- [BPMN+AI 融合](../../architecture/bpmn-ai-integration.md) — 另一种跨界决策范式
 - [大模型应用框架](../agent-frameworks/llm-app.md) — Spring AI / LangChain4j / LangChain / LlamaIndex 框架对比
 - [13.split-hairs/11.ai](../../13.split-hairs/11.ai/README.md) — 面试深挖（建议补充本主题的 3 个高频问题）
 

@@ -13,7 +13,7 @@ module:
 
 > Agent Memory 是 LLM Agent 的核心架构组件。本文从**时间维度**（短期/中期/长期）、**认知科学维度**（情景/语义/程序性）、**工程实现维度**（向量/结构化/文件系统）3 个维度系统讲清楚分类体系，并梳理业界框架（LangChain/LangGraph/Mem0/Letta）的实现差异。
 
-> **面试场景**：这是高频 AI 架构面试题——很多人只想到"对话历史=Memory"，但完整分类是 3 维度、5 大类。面试版（30/60/90 秒话术）见 [咬文嚼字·11.ai/agent-memory-classification](../../../../12.interview/11.ai/agent-memory-classification/README.md)（⚠️ 待 Phase 1+ 迁入）。
+> **面试场景**：这是高频 AI 架构面试题——很多人只想到"对话历史=Memory"，但完整分类是 3 维度、5 大类。面试版（30/60/90 秒话术）见 [咬文嚼字·11.ai/agent-memory-classification](../../../12.interview/11.ai/agent-memory-classification/README.md)（⚠️ 待 Phase 1+ 迁入）。
 
 ---
 
@@ -285,7 +285,7 @@ Memory 演进是 驾驭演进主线 的具体展开（⚠️ 待 Phase 1+ 迁入
 ## 八、相关章节
 
 **面试题**：
-- 咬文嚼字·11.ai/agent-memory-classification（30/60/90 秒话术） — ⚠️ 待 Phase 1+ 迁入（占位 `[../../../../12.interview/11.ai/agent-memory-classification/](../../../../12.interview/11.ai/agent-memory-classification/README.md)`）
+- 咬文嚼字·11.ai/agent-memory-classification（30/60/90 秒话术） — ⚠️ 待 Phase 1+ 迁入（占位 `[../../../12.interview/11.ai/agent-memory-classification/](../../../12.interview/11.ai/agent-memory-classification/README.md)`）
 - 🆕 **咬文嚼字·multi-agent-shared-memory 多 Agent 共享记忆** — ⚠️ 待 Phase 1+ 迁入（占位 `[../../../../12.interview/11.ai/multi-agent-shared-memory/](../../../../12.interview/11.ai/multi-agent-shared-memory/README.md)`）—— 5 大内容维度 + 3 实现层 + 6 模式 + 5 反模式 + 90 秒话术
 
 **同主模块**：

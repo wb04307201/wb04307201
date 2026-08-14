@@ -198,7 +198,7 @@ def estimate_tokens(text):
 ## 相关章节
 
 - 上游：[Transformer 架构](../../01-fundamentals/transformer/README.md) — Token 的处理单元
-- 关联：[RAG](../../rag/01-pipeline.mdREADME.md) — 用 RAG 减少 Token 消耗
+- 关联：[RAG](./01-pipeline.md) — 用 RAG 减少 Token 消耗
 - 关联：[Context Engineering](../context-engineering/README.md) — Context Window 是 Token 上限
 
 ← [返回: L2 技术栈](../README.md)

@@ -50,7 +50,7 @@ module:
 | **Ad-hoc Sub-process** | 无顺序流，LLM 自决顺序 | 灵活 Agent 编排 |
 | **Agent Context** | LLM 可访问流程变量 + RAG 结果 | 上下文感知推理 |
 
-> 📌 完整架构 + 4 融合模式见 [BPMN+AI 融合](../../../architecture/bpmn-ai-integration.md)。
+> 📌 完整架构 + 4 融合模式见 [BPMN+AI 融合](../../architecture/bpmn-ai-integration.md)。
 
 ---
 
@@ -316,7 +316,7 @@ public void handle(final JobClient client, final ActivatedJob job) {
 - **金融/医疗/政务强治理** → Camunda 8 + AI Agent Sub-process
 - **C 端快速试错** → Dify / Coze
 - **复杂多步推理** → LangGraph
-- **混合** → Camunda 8 流程骨架 + LangGraph 复杂 Agent（详见 [BPMN+AI 融合](../../../architecture/bpmn-ai-integration.md)）
+- **混合** → Camunda 8 流程骨架 + LangGraph 复杂 Agent（详见 [BPMN+AI 融合](../../architecture/bpmn-ai-integration.md)）
 
 ---
 

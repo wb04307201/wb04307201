@@ -27,7 +27,7 @@ module:
 
 > 一句话：**Context Engineering 的核心是"在 Context Window 限制下，把对的信息在对的时间给 LLM"**。
 
-📌 **驾驭演进主线**：[LLM 驾驭演进史（Prompt → Context → Harness → Loop）](../../04-architecture/llm-control-evolution/README.md)
+📌 **驾驭演进主线**：[LLM 驾驭演进史（Prompt → Context → Harness → Loop）](../../agent/agent-architecture/llm-control-evolution/README.md)
 
 ---
 
@@ -187,7 +187,7 @@ context = get_relevant_files(query)  # 5K tokens
 - 上一步：[Prompt Engineering](../prompt-engineering/README.md) — Prompt 是 Context 的子集
 - 下一步：[Harness Engineering](../../agent/agent-reliability/harness-engineering/README.md) — 约束 Agent 行为
 - 工具调用：[Function Calling](./function-calling/README.md) — 工具定义是 Context 的一部分
-- 检索增强：[RAG](../../rag/01-pipeline.mdREADME.md) — 用 RAG 注入检索结果到 Context
+- 检索增强：[RAG](./01-pipeline.md) — 用 RAG 注入检索结果到 Context
 - Memory 维度：[Agent Memory 架构（Memory 是 Context 三大件之一）](../../04-architecture/agent-memory/README.md)
 - 🆕 **长上下文策略全景**：[Agent 长上下文架构 6 大策略](../../04-architecture/agent-context/README.md) —— Chunking / RAG / Memory / Sliding Window / Sub-Agents / Long-Context LLMs 组合 + 决策树
 

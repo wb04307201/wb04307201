@@ -498,7 +498,7 @@ Q：你的多 Agent 任务是什么类型？
 
 - [主模块 · Agent Memory 架构](README.md) — 316 行深度：单 Agent Memory 3 维度 + 5 反模式
 - [主模块 · Multi-Agent 深度（第 2.3 节黑板模式）](../agent-execution-patterns/06-multi-agent-deep-dive.md#23-黑板模式blackboard--shared-state) — 5 行简述
-- 兄弟题 · agent-memory-classification — ⚠️ 待 Phase 1+ 迁入（占位 `[../../../../12.interview/11.ai/agent-memory-classification/](../../../../12.interview/11.ai/agent-memory-classification/README.md)`） — 单 Agent Memory 三维分类
+- 兄弟题 · agent-memory-classification — ⚠️ 待 Phase 1+ 迁入（占位 `[../../../12.interview/11.ai/agent-memory-classification/](../../../12.interview/11.ai/agent-memory-classification/README.md)`） — 单 Agent Memory 三维分类
 - 兄弟题 · multi-agent-system-design — ⚠️ 待 Phase 1+ 迁入（占位 `[../../../../12.interview/11.ai/multi-agent-system-design/](../../../../12.interview/11.ai/multi-agent-system-design/README.md)`） — 5 大组件 + 死循环防护
 - [主模块 · Agent Context 03-memory-strategies](../agent-context/03-memory-strategies.md) — 4 层协作机制
 

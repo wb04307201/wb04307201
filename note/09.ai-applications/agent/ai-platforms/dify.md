@@ -1,6 +1,6 @@
 # Dify
 
-> ⬅️ [返回 AI 平台](README.md) | [Coze](coze.md) | [LangGraph](langgraph.md) | [BPMN+AI 融合](./architecture/bpmn-ai-integration.md) | [11 AI 知识体系](../../README.md)
+> ⬅️ [返回 AI 平台](README.md) | [Coze](coze.md) | [LangGraph](langgraph.md) | [BPMN+AI 融合](../../architecture/bpmn-ai-integration.md) | [11 AI 知识体系](../../README.md)
 
 ## 🎯 一句话定位
 
@@ -201,7 +201,7 @@ nodes:
 
 ## 七、Dify vs 传统 BPMN 引擎 8 维对比
 
-> 📌 **注**：Dify 是 AI 平台，BPMN 是工作流引擎；二者并非同一类工具。**Dify 强在 LLM 推理 + 业务快速试错；BPMN 强在确定性事务 + 合规审计**。生产中常**组合使用**——详见 [BPMN+AI 融合](./architecture/bpmn-ai-integration.md)。
+> 📌 **注**：Dify 是 AI 平台，BPMN 是工作流引擎；二者并非同一类工具。**Dify 强在 LLM 推理 + 业务快速试错；BPMN 强在确定性事务 + 合规审计**。生产中常**组合使用**——详见 [BPMN+AI 融合](../../architecture/bpmn-ai-integration.md)。
 
 | 维度 | **Dify** | **传统 BPMN（Camunda 7）** |
 |------|---------|---------------------------|
@@ -269,7 +269,7 @@ nodes:
 
 ## 🤔 思考
 
-1. **Dify 是 BPMN 的替代品吗？** 不是。两者解决不同问题——Dify 强在 LLM 推理 + 业务快速试错；BPMN 强在确定性事务 + 合规审计。生产中常**组合使用**（[BPMN+AI 融合](./architecture/bpmn-ai-integration.md) 模式 C）。
+1. **Dify 是 BPMN 的替代品吗？** 不是。两者解决不同问题——Dify 强在 LLM 推理 + 业务快速试错；BPMN 强在确定性事务 + 合规审计。生产中常**组合使用**（[BPMN+AI 融合](../../architecture/bpmn-ai-integration.md) 模式 C）。
 2. **Dify 的最大风险？** 三件事：**LLM 成本爆炸**（需设置 Token 上限）、**幻觉答案**（需评估 + 人工接管 fallback）、**数据外泄**（敏感知识库需本地化 + 加密）。
 3. **DSL YAML 入 Git 是必需的吗？** 是的。生产项目 DSL 必须入 Git，配合 CI/CD（`dify-cli deploy`）实现版本回滚 + A/B 测试。
 4. **MCP 协议会不会取代 OpenAI Function Calling？** MCP 是**协议层**，Function Calling 是**API 层**。MCP 之上可以用 Function Calling，也可以用 Tool Use（Anthropic）。**MCP 是更上层的抽象**，2 年内将成主流。
@@ -283,7 +283,7 @@ nodes:
 - [11 AI 知识体系](../../README.md) — 章节根目录
 - [Coze（扣子）](coze.md) — 字节系国内最强生态
 - [LangGraph](langgraph.md) — 代码优先复杂 Agent 框架
-- [BPMN+AI 融合](./architecture/bpmn-ai-integration.md) — Dify + Camunda 8 混合架构
+- [BPMN+AI 融合](../../architecture/bpmn-ai-integration.md) — Dify + Camunda 8 混合架构
 
 - [spring-ai-vs-platforms](spring-ai-vs-platforms.md)
 - [spring-ai-vs-dify](../ai-platforms/spring-ai-vs-dify.md)

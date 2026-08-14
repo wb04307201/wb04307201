@@ -247,7 +247,7 @@ Agentic Search 是 AI Coding 检索范式的演进，**与 [驾驭演进主线�
 
 **同主模块**：
 - [Claude Code 最佳实践](../../03-engineering/claude-code-practices/README.md)
-- [RAG vs Finetuning](../../rag/01-pipeline.mdREADME.md)
+- [RAG vs Finetuning](./01-pipeline.md)
 
 **架构视角**：
 - [11.ai 驾驭演进主线](../../agent/agent-architecture/llm-control-evolution.md)
