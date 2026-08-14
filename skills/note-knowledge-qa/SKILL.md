@@ -24,7 +24,7 @@ description: Use when user asks a technical question / "查 note" / "知识库�
 ```
 用户：HashMap 为什么线程不安全？
    ↓
-skill 执行：A 类型（技术问答）→ grep "HashMap" → 双层检索（01.java + 13.split-hairs）
+skill 执行：A 类型（技术问答）→ grep "HashMap" → 双层检索（01.java-and-jvm 主模块 + 12.interview/01.java 面试版）
    ↓
 输出（节选）：
   ## HashMap 线程不安全
@@ -42,8 +42,8 @@ skill 执行：A 类型（技术问答）→ grep "HashMap" → 双层检索（0
 
   ### 📚 知识来源
   | 来源 | 路径 | 覆盖内容 |
-  | HashMap 原理 | note/01.java-and-jvm/collection/hashmap/README.md | 数据结构 + 树化阈值 |
-  | 面试陷阱 | note/12.interview/01.java/hashmap-thread-safe/ | 并发死循环细节 |
+  | HashMap 原理 | note/01.java-and-jvm/collection/hashmap.md | 数据结构 + 树化阈值 |
+  | 面试陷阱 | note/12.interview/01.java/hashmap-thread-unsafe/ | 并发死循环细节 |
 
 不同点：不凭 LLM 训练知识答 — 每条都附 note/ 实际文章路径
 
