@@ -389,6 +389,42 @@ D. 暂不沉淀
 
 ### Step 6: 实施（dispatch subagent）
 
+#### ⚠️ Step 6.0 关键决策：内容驱动 vs lesson 映射（2026-08-14 教训）
+
+**核心原则**：**按内容主题分类，不要按 lesson 编号机械复制**。
+
+```
+用户输入是 → 实施策略选择：
+├─ 已有结构化目录（lesson1/, lesson2/, ...）
+│   ├─ 内容主题统一（整个 lesson 是同一主题）
+│   │   → 按 lesson 复制即可（如 lesson11 整体是"AI 代码安全"）
+│   └─ 内容主题分散（一个 lesson 跨多个主题，如 lesson7 含 Claude/Codex/OpenCode/MCP）
+│       → 必须**按文件内容**分发到不同子目录
+│       → 同一 lesson 的不同 .md 可能去不同位置
+│
+└─ 无结构化目录（散落的 .md 文件）
+    → 必须**先做内容分析**，按主题分类
+    → 不要按文件名/日期随便映射
+```
+
+**判断方法**：
+1. 读每个文件的 `# 标题` + 第一段
+2. 提取主题关键词（如 "MCP"、"Spring 安全"、"jailbreak"）
+3. 按关键词决定目标子目录
+4. 同一 lesson 不同文件可去不同目标（lesson 是**课程编排**，不是**内容分类**）
+
+**案例**（lesson11 内容驱动）：
+| 文件 | 标题主题 | 旧位置（lesson 映射） | 正确位置（内容驱动） |
+|------|---------|---------------------|---------------------|
+| `sh-01-mcp.md` | MCP 推荐 | `02-tools/lesson7/` | `02-tools/mcp/` |
+| `bio-inspired-...-jailbreak.md` | 越狱研究 | `04-quality/lesson11/` | `04-quality/agent-reliability/jailbreak-papers/` |
+| `dark-code-ai-security.md` | Dark Code | `04-quality/lesson11/` | `04-quality/agent-reliability/` |
+
+**反模式**（必须避免）：
+- ❌ `cp -r training/lessonX/. training-temp/某阶段/lessonX/`（机械复制）
+- ❌ 按文件名（如 `claude-code.md`）猜分类（不读内容）
+- ❌ 整 lesson 复制后用"反例"覆盖（如 lesson7 内容跨 4 主题，硬塞 02-tools/lesson7/）
+
 **实施规范**：
 - 严格遵循 plan 中定义的 commit 格式（`refactor(<slug>)` / `feat(<module>)` / `fix(<module>)`）
 - 互链必须在 commit 中明示（"新增章节 + 加反向链"）
