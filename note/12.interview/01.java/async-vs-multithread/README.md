@@ -199,12 +199,12 @@ System.out.println("get() 返回后才执行");
 
 - [CompletableFuture 原理](../../../01.java-and-jvm/03-concurrency/completablefuture/README.md) — Java 异步编程实现
 - [线程池原理](../../../01.java-and-jvm/03-concurrency/thread-pool/README.md) — 多线程并发执行
-- [事件循环 Event Loop](09.front-end/event-loop/README.md) — 单线程异步模型（前端视角）
+- [事件循环 Event Loop](../../09.front-end/event-loop/README.md) — 单线程异步模型（前端视角）
 - [并发 vs 并行](../concurrency-vs-parallelism/README.md) — 并发与并行的概念辨析
 - 主模块：[`01.java`](../../../01.java-and-jvm/) — Java 知识体系
 
 ## 相关章节
 
-- 深度阅读：[`01.java`](01.java/README.md) — 主模块详细内容
+- 深度阅读：[`01.java-and-jvm`](../../../01.java-and-jvm/README.md) — 主模块详细内容
 
 ← [返回: 咬文嚼字 · Java](../README.md)
