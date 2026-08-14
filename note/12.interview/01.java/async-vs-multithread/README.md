@@ -201,7 +201,7 @@ System.out.println("get() 返回后才执行");
 - [线程池原理](../../../01.java-and-jvm/03-concurrency/thread-pool/README.md) — 多线程并发执行
 - [事件循环 Event Loop](09.front-end/event-loop/README.md) — 单线程异步模型（前端视角）
 - [并发 vs 并行](../concurrency-vs-parallelism/README.md) — 并发与并行的概念辨析
-- 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
+- 主模块：[`01.java`](../../../01.java-and-jvm/) — Java 知识体系
 
 ## 相关章节
 

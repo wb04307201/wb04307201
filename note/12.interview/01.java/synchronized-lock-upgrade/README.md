@@ -259,7 +259,7 @@ public int lockElimination() {
 
 ## 六、交叉引用
 
-- 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
+- 主模块：[`01.java`](../../../01.java-and-jvm/) — Java 知识体系
 - [volatile](../../../01.java-and-jvm/03-concurrency/volatile/README.md) — JMM 与内存屏障
 - [AQS](../aqs/README.md) — AQS 队列与 ReentrantLock 实现
 - [CAS 与原子类](../../../01.java-and-jvm/03-concurrency/atomic/README.md) — CAS 原语与原子类

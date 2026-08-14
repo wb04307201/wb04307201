@@ -213,7 +213,7 @@ http=com.apache.dubbo.rpc.protocol.http.HttpProtocol
 
 ## 七、交叉引用
 
-- 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
+- 主模块：[`01.java`](../../../01.java-and-jvm/) — Java 知识体系
 - [类加载机制](../class-loading/README.md) — 类加载与双亲委派
 - [JDBC](../../../01.java-and-jvm/jdbc/README.md) — JDBC 深入
 - [SPI 设计模式](../../../01.java-and-jvm/01-language/spi/README.md) — SPI 机制详解

@@ -292,7 +292,7 @@ graph LR
 
 ## 七、交叉引用
 
-- 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
+- 主模块：[`01.java`](../../../01.java-and-jvm/) — Java 知识体系
 - [JVM 内存](../../../01.java-and-jvm/02-jvm/README.md) — JVM 内存模型
 - [SPI 机制](../spi/README.md) — SPI 机制详解
 

@@ -26,7 +26,7 @@ Java 里有三个名字长得像三胞胎的关键字：
 
 ## 一、final
 
-> 📚 **前置知识**：[Java 语法基础](../../../../note/01.java/concepts/syntax/README.md)
+> 📚 **前置知识**：[Java 语法基础](../../../01.java-and-jvm/concepts/syntax/README.md)
 
 `final` 是 Java 中最常用的修饰符之一，核心语义是"不可改变"，根据修饰对象不同有三种表现。
 
@@ -356,7 +356,7 @@ public class DirectMemoryBuffer implements AutoCloseable {
 
 ## 七、交叉引用
 
-- 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
+- 主模块：[`01.java`](../../../01.java-and-jvm/) — Java 知识体系
 - [JVM 调优](../../../01.java-and-jvm/02-jvm/tuning.md) — GC 算法与内存管理
 
 ## 相关章节

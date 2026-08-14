@@ -345,7 +345,7 @@ map.merge(key, 1, Integer::sum);
 
 ## 六、交叉引用
 
-- 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
+- 主模块：[`01.java`](../../../01.java-and-jvm/) — Java 知识体系
 - 相关主题：
   - [HashMap 原理](../../../01.java-and-jvm/collection/hashmap.md) — 对比理解非线程安全的哈希表实现
   - [HashMap 线程不安全](../hashmap-thread-unsafe/) — 3 大不安全表现 + 源码分析 + 4 大解决方案

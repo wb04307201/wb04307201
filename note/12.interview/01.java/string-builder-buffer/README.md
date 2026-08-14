@@ -414,7 +414,7 @@ System.out.println(sb.capacity()); // 输出 22（10 * 2 + 2）
 
 ## 七、交叉引用
 
-- 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
+- 主模块：[`01.java`](../../../01.java-and-jvm/) — Java 知识体系
 - [String](../../../01.java-and-jvm/01-language/string/README.md) — 字符串常量池与 intern 机制
 - [StringBuilder 重用](../reuse-of-stringbuilder/README.md) — ThreadLocal 重用 + `setLength(0)` 优化
 - [new String 创建几个对象](../new-string/README.md) — 字符串常量池 vs 堆

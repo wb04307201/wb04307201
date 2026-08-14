@@ -444,7 +444,7 @@ fi
 
 ## 六、交叉引用
 
-- 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
+- 主模块：[`01.java`](../../../01.java-and-jvm/) — Java 知识体系
 - [CPU 飙升排查](../cpu-spike-troubleshooting/) — -Xmx 过小导致 CPU 100%
 - [JVM 内存区域](../jvm-memory/) — JVM 运行时数据区详解
 - [GC 算法与收集器](../gc-algorithms/) — GC 算法与各类收集器对比

@@ -260,7 +260,7 @@ Full GC 是性能杀手，常见触发场景包括：
 
 ## 七、交叉引用
 
-- 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
+- 主模块：[`01.java`](../../../01.java-and-jvm/) — Java 知识体系
 - [JVM 内存](../../../01.java-and-jvm/02-jvm/README.md) — JVM 内存模型
 - [JVM 调优](../../../01.java-and-jvm/02-jvm/tuning.md) — JVM 调优实战
 - [Full GC 排查](../full-gc-troubleshooting/) — 线上频繁 Full GC 排查全链路

@@ -300,7 +300,7 @@ dao.save(entity);  // 让调用者处理
 - **相关面试题**：[Error vs Exception](../error-vs-exception/README.md) — 6 维度对比 + 反模式
 - **相关面试题**：[StringBuilder 重用](../reuse-of-stringbuilder/README.md) — 同类性能优化思维
 - **JVM 调优**：[JVM 调优](../../../01.java-and-jvm/02-jvm/tuning.md) — OmitStackTraceInFastThrow 等 JVM 参数
-- **主模块**：[`01.java`](../../../../note/01.java/) — Java 知识体系
+- **主模块**：[`01.java`](../../../01.java-and-jvm/) — Java 知识体系
 
 ## 相关章节
 

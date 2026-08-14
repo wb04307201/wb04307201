@@ -176,7 +176,7 @@ jmap -dump:format=b,file=/tmp/heap.hprof <pid>
 
 ## 七、交叉引用
 
-- 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
+- 主模块：[`01.java`](../../../01.java-and-jvm/) — Java 知识体系
 - [CPU 飙升排查](../cpu-spike-troubleshooting/) — 线上 CPU 100% 排查全流程
 - [GC 算法与收集器](../gc-algorithms/) — GC 算法与各类收集器对比
 - [JVM 内存区域](../jvm-memory/) — JVM 运行时数据区详解

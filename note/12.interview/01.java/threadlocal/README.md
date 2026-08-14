@@ -333,7 +333,7 @@ executor.submit(TtlRunnable.get(() -> {
 
 ## 六、交叉引用
 
-- 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
+- 主模块：[`01.java`](../../../01.java-and-jvm/) — Java 知识体系
 - [并发基础](../../../01.java-and-jvm/03-concurrency/README.md) — 线程与锁机制
 - 🆕 [虚拟线程](../virtual-threads/README.md) — ScopedValue 替代 ThreadLocal（Java 25+）
 - [JVM 内存](../../../01.java-and-jvm/02-jvm/README.md) — 垃圾回收与引用类型

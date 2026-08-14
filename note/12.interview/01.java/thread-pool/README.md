@@ -367,7 +367,7 @@ ThreadFactory namedFactory = new ThreadFactoryBuilder()
 
 ## 六、交叉引用
 
-- 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
+- 主模块：[`01.java`](../../../01.java-and-jvm/) — Java 知识体系
 - [AQS](../aqs/README.md) — AbstractQueuedSynchronizer 详解
 - [并发容器](../../../01.java-and-jvm/03-concurrency/concurrent-collections/README.md) — BlockingQueue 实现原理
 - [JVM 内存](../../../01.java-and-jvm/02-jvm/README.md) — OOM 类型与排查

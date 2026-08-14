@@ -279,7 +279,7 @@ passwordField.set(user, "hacked");  // 绕过所有业务逻辑直接修改
 
 ## 七、交叉引用
 
-- 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
+- 主模块：[`01.java`](../../../01.java-and-jvm/) — Java 知识体系
 - 相关主题：
   - [JVM 类加载](../../../01.java-and-jvm/02-jvm/README.md) — 类加载机制与双亲委派
   - [volatile 与内存模型](../../../01.java-and-jvm/03-concurrency/volatile/README.md) — volatile 与内存模型

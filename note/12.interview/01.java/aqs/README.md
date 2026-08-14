@@ -282,7 +282,7 @@ class OneShotLatch {
 
 ## 六、交叉引用
 
-- 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
+- 主模块：[`01.java`](../../../01.java-and-jvm/) — Java 知识体系
 - 相关主题：
   - [ReentrantLock](../../../01.java-and-jvm/03-concurrency/juc-locks/README.md) — ReentrantLock 源码解析
   - [JUC 工具类](../../../01.java-and-jvm/03-concurrency/utilities/README.md) — JUC 工具类汇总

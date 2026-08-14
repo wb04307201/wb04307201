@@ -336,7 +336,7 @@ public class AtomicInteger {
 
 ## 六、交叉引用
 
-- 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
+- 主模块：[`01.java`](../../../01.java-and-jvm/) — Java 知识体系
 - [synchronized](../../../01.java-and-jvm/03-concurrency/synchronized/README.md) — synchronized 内存语义与锁升级
 - [并发工具类](../../../01.java-and-jvm/03-concurrency/utilities/README.md) — java.util.concurrent 包详解
 - [JMM](../../../01.java-and-jvm/03-concurrency/jmm/README.md) — Java 内存模型与 happens-before 规则

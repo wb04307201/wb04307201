@@ -324,7 +324,7 @@ done
 
 ## 六、交叉引用
 
-- 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
+- 主模块：[`01.java`](../../../01.java-and-jvm/) — Java 知识体系
 - [JVM 内存区域](../jvm-memory/) — JVM 运行时数据区详解
 - [JVM 内存配置踩坑](../jvm-memory-pitfall/) — -Xmx 超过系统可用内存导致启动失败
 - [GC 算法与收集器](../gc-algorithms/) — GC 算法与各类收集器对比

@@ -261,7 +261,7 @@ Java 规定：如果两个对象 `equals` 相等，它们的 `hashCode` 必须�
 
 ## 七、交叉引用
 
-- 主模块：[`01.java`](../../../../note/01.java/) — Java 知识体系
+- 主模块：[`01.java`](../../../01.java-and-jvm/) — Java 知识体系
 - [HashMap](../../../01.java-and-jvm/collection/hashmap.md) — HashMap 底层原理详解
 - [String](../../../01.java-and-jvm/01-language/string/README.md) — 字符串常量池与 intern 机制
 
