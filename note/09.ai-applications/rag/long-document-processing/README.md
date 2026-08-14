@@ -85,7 +85,7 @@ clauses = re.findall(pattern, text, flags=re.S)
 
 ### 🔍 策略 2：检索增强（RAG）
 
-> 详见 [rag-pipeline](../rag-pipeline/README.md)
+> 详见 [rag-pipeline](../../09.ai-applications/rag/01-pipeline.md)
 
 **针对长合同场景的 Pipeline**：
 
@@ -123,7 +123,7 @@ graph LR
 
 ### 📦 策略 3：上下文压缩（Context Compression）
 
-> 详见 [context-engineering](../context-engineering/README.md)
+> 详见 [context-engineering](../../09.ai-applications/agent/agent-context/context-engineering.md)
 
 **上下文压缩流程**：
 
@@ -346,9 +346,9 @@ records = [
 - [yarn-context-extension](../yarn-context-extension/README.md) — YaRN / RoPE 长度扩展 2K → 128K
 
 **系统视角**：
-- [rag-pipeline](../rag-pipeline/README.md) — RAG 5 阶段 SOTA 架构总览
+- [rag-pipeline](../../09.ai-applications/rag/01-pipeline.md) — RAG 5 阶段 SOTA 架构总览
 - [rag-paradigm-evolution](../rag-paradigm-evolution/README.md) — RAG 四阶段演进（Naive→Advanced→Modular→Agentic）
-- [context-engineering](../context-engineering/README.md) — Context Engineering 4 大原则
+- [context-engineering](../../09.ai-applications/agent/agent-context/context-engineering.md) — Context Engineering 4 大原则
 
 **多模态**：
 - [multimodal](../multimodal/README.md) — 含文档理解（PDF/扫描件 OCR）

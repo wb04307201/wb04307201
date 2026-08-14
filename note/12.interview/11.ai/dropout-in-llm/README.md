@@ -133,7 +133,7 @@ question:
 - [Harness Engineering 概念辨析](../harness-engineering/README.md)
 
 **架构视角**：
-- [11.ai/04-architecture/llm-control-evolution（驾驭演进）](../../../09.ai-applications/agent/agent-architecture/llm-control-evolution/README.md) — Dropout 属于"训练范式"维度
+- [11.ai/04-architecture/llm-control-evolution（驾驭演进）](../../../09.ai-applications/agent/agent-architecture/llm-control-evolution.md) — Dropout 属于"训练范式"维度
 
 ## Q5：为什么 LLM 训练是"单 epoch"时代？这对 Dropout 有什么影响？
 

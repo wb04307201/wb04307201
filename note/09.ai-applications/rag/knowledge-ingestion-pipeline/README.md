@@ -387,7 +387,7 @@ graph TD
 
 ## 🔗 相关章节
 
-- **入库后查询**：[rag-pipeline](../rag-pipeline/README.md) / [rag-paradigm-evolution](../rag-paradigm-evolution/README.md)
+- **入库后查询**：[rag-pipeline](../../09.ai-applications/rag/01-pipeline.md) / [rag-paradigm-evolution](../rag-paradigm-evolution/README.md)
 - **入库工具**：[chunking-strategies](../chunking-strategies/README.md) / [embedding-models](../embedding-models/README.md) / [long-document-processing](../long-document-processing/README.md)
 - **入库去重**：[deduplication-table](../../../04.system-design/06-idempotency/deduplication-table/README.md)
 - **AI 平台**：[ai-platforms](../../03-engineering/ai-platforms/README.md)

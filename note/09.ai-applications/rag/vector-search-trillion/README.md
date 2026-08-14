@@ -272,7 +272,7 @@ vs Google TPU v5：
 
 ## 七、与"驾驭演进"主线的关联
 
-向量检索规模演进是 [驾驭演进主线](../../../09.ai-applications/agent/agent-architecture/llm-control-evolution/README.md) 在检索领域的体现：
+向量检索规模演进是 [驾驭演进主线](../../../09.ai-applications/agent/agent-architecture/llm-control-evolution.md) 在检索领域的体现：
 
 | 驾驭阶段 | 向量检索规模 | 适配 |
 |---------|------------|------|
@@ -296,7 +296,7 @@ vs Google TPU v5：
 - [12.story/37-vector-database-and-embedding（味道仓库 第十章反向链）](../../../13.story/37-vector-database-and-embedding.md)
 
 **驾驭演进视角**：
-- [11.ai/04-architecture/llm-control-evolution](../../../09.ai-applications/agent/agent-architecture/llm-control-evolution/README.md)
+- [11.ai/04-architecture/llm-control-evolution](../../../09.ai-applications/agent/agent-architecture/llm-control-evolution.md)
 
 ---
 
