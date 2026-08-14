@@ -413,6 +413,52 @@ D. 暂不沉淀
 3. 按关键词决定目标子目录
 4. 同一 lesson 不同文件可去不同目标（lesson 是**课程编排**，不是**内容分类**）
 
+#### ⚠️ Step 6.1 深度重组（2026-08-14 教训·必做·不询问用户）
+
+**核心原则**：沉淀 ≠ cp -r。沉淀必须做 **3 类主动整理**：
+
+```
+1. 合并（merge）
+   ├─ 场景：同主题有 ≥2 篇文件（如 Tony Kipkemboi 推文 + Harness 2026 文章都讲"概念"）
+   ├─ 操作：选最长/最权威的为基准，其余合并入主文
+   ├─ 必须保留所有原始引用 + 来源标注
+   └─ 禁止：留 2 篇同主题文件让用户自己选
+
+2. 拆分（split）
+   ├─ 场景：单篇 ≥ 500 行且 H2 ≥ 8 且涵盖 ≥ 2 独立主题
+   ├─ 操作：按 H2 主题切分 → 多个 single-topic 文件
+   └─ 判定信号：见 Mistake "多主题错误合并"
+
+3. 错位修正（relocate）
+   ├─ 场景：文件内容主题与所在目录的父 README 定位不符
+   │   例：harness-cybernetics/ 下的"OpenAI Codex 零人工编码"应在 coding-agents/codex/
+   ├─ 操作：移动文件到正确目录 + 加反向链
+   └─ 判定：标题含与目录定位不同的关键词
+```
+
+**自动判定（不询问用户）**：
+```python
+for file in target_dir:
+    title = read_h1(file)
+    parent_dir_purpose = read_h1(f"{target_dir}/README.md")  # 父目录的定位
+    if topic_match(title, parent_dir_purpose):
+        # 同主题 → 合并到同主题文件
+        merge_or_keep(file, parent_dir)
+    else:
+        # 错位 → 移到正确目录
+        relocate(file, correct_topic_dir)
+```
+
+**反模式**（必须避免）：
+- ❌ 留 2 篇同主题文件让用户决定（用户没义务做 skill 的工作）
+- ❌ 错位文件放错目录加 TODO（必须修正）
+- ❌ cp -r 后用 README 反向链接掩盖错位（README 应准确反映内容）
+
+**报告**（实施完成后）：
+- 合并了多少组（保留 N 篇 → 1 篇）
+- 移动了多少错位文件
+- 拆分了多少多主题大文件
+
 **案例**（lesson11 内容驱动）：
 | 文件 | 标题主题 | 旧位置（lesson 映射） | 正确位置（内容驱动） |
 |------|---------|---------------------|---------------------|
