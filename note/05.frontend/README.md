@@ -23,6 +23,7 @@ module:
 | 01 | [基础](./01-foundation/) | 浏览器原理 / HTML 语义化 / CSS 工程化 / Web 标准 | [browser-rendering](./01-foundation/browser-rendering/) / [css-engineering](./01-foundation/css-engineering/) | 性能优化、卡顿分析的根因地图 |
 | 02 | [语言](./02-language/) | JavaScript ES2024-2026 / TypeScript 5 / 运行时 | [typescript](./02-language/typescript/) / [runtime](./02-language/runtime/) | 类型系统 / 异步 / 模块化基石 |
 | 03 | [框架](./03-frameworks/) | React 19 / Vue 3.4+ / Svelte 5 / Solid / Astro | [react](./03-frameworks/react/) / [vue](./03-frameworks/vue/) | UI 开发范式选择 |
+| 03b | [网络](./03-network/) | HTTP/HTTPS / WebSocket / 跨域 / 缓存 | [http-protocol](./03-network/http-protocol/) | 前端网络协议与请求机制 |
 | 04 | [工程化](./04-engineering/) | Vite / Rspack / Monorepo / 测试 / Lint | [vite](./04-engineering/vite/) / [monorepo-practice](./04-engineering/monorepo-practice/) | 团队协作与构建效率 |
 | 05 | [架构](./05-architecture/) | 渲染模式 / 状态 / 路由 / 微前端 / BFF / 设计系统 | [rendering-modes](./05-architecture/rendering-modes/) / [state-management](./05-architecture/state-management/) / [routing](./05-architecture/routing/) / [micro-frontend](./05-architecture/micro-frontend/) / [web-components](./05-architecture/web-components/) / [bff](./05-architecture/bff/) / [design-system](./05-architecture/design-system/) | 大型应用的可维护性 |
 | 06 | [性能](./06-performance/) | Core Web Vitals / 监控 / 优化手段 | [core-web-vitals](./06-performance/core-web-vitals/) / [monitoring](./06-performance/monitoring/) / [optimization](./06-performance/optimization/) | 用户体验与转化率 |

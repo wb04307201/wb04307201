@@ -1,10 +1,10 @@
 <!--
 module:
-  parent: note
-  slug: 09.front-end/network
-  type: article
-  category: 主模块子文章
-  summary: 前端网络协议与请求机制
+  parent: 05.frontend
+  slug: 05.frontend/03-network
+  type: index
+  category: 主模块子 MOC
+  summary: 前端网络协议与请求机制（HTTP/HTTPS / WebSocket / 跨域 / 缓存）
 -->
 
 
