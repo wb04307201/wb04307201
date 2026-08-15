@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 06.distributed-systems
+  slug: 06.distributed-systems\01-foundation\system-design-basics\togaf\conway-and-team-topology
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 第三章：康威定律 + 团队拓扑
 
 > ⬅️ [返回目录](README.md) | 上一篇：[BCAT + 业务能力 + 价值流](business-capability.md) | 下一篇：[架构治理 + 落地实践](architecture-governance.md)

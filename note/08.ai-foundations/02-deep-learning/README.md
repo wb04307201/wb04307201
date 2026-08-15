@@ -6,6 +6,11 @@
   summary: 深度学习基础——主流框架对比（PyTorch / TensorFlow / MindSpore / PaddlePaddle）、训练范式与生产部署。
 -->
 
+
+
+## 📍 一句话定位
+
+> AI 基础概念层（ML / DL / Transformer / LLM / Tokenization + Embedding）
 # 02. 深度学习
 
 > **定位**：深度学习基础框架与工程选型——面向研究、训练和生产部署的主流工具。

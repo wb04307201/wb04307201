@@ -706,3 +706,5 @@ System.out.println(new String(data));
 ---
 
 ← [返回 01.java 主模块](../README.md)
+
+<!-- TODO: 拆分候选 (709 行 / 12 个 H2，超 500+8 阈值） -->

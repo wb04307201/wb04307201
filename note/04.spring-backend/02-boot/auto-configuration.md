@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\02-boot\auto-configuration
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # Spring Boot 自动配置原理
 
 > ⬅️ [返回 04 Spring Boot](README.md) | [自定义 Starter](custom-starter.md) | [自定义 Condition](custom-condition.md) | [spring.factories 迁移](spring-factories-migration.md)

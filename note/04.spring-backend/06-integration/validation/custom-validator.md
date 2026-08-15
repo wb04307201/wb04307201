@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\06-integration\validation\custom-validator
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 使用自定义注解进行验证
 
 在Spring Validation中，自定义注解可实现业务特定的验证逻辑（如复杂规则校验）。

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\04-data\cache\serialization
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # Redis 缓存序列化
 
 > ⬅️ [返回缓存总览](README.md) | [缓存模式](patterns.md) | [多级缓存](multi-level.md)

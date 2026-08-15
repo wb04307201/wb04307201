@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 06.distributed-systems
+  slug: 06.distributed-systems\01-foundation\system-design-basics\archimate\in-practice
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 第三章：落地：ArchiMate × TOGAF × C4 × DDD
 
 > ⬅️ [返回目录](README.md) | 上一篇：[视点：给不同人看不同的图](viewpoints.md)

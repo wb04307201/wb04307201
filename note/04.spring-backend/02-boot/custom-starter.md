@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\02-boot\custom-starter
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 如何创建自己的 Starter 模块
 
 > ⬅️ [返回 04 Spring Boot](README.md) | [自动配置原理](auto-configuration.md) | [spring.factories 迁移](spring-factories-migration.md)

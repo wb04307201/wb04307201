@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\02-boot\spring-factories-migration
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # Spring Boot 3 中 spring.factories 机制移除
 
 > ⬅️ [返回 04 Spring Boot](README.md) | [自动配置原理](auto-configuration.md) | [自定义 Starter](custom-starter.md)

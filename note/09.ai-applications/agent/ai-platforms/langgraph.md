@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 09.ai-applications
+  slug: 09.ai-applications\agent\ai-platforms\langgraph
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # LangGraph
 
 > ⬅️ [返回 AI 平台](README.md) | [Dify](dify.md) | [Coze](coze.md) | BPMN+AI 融合 | [11 AI 知识体系](../README.md)

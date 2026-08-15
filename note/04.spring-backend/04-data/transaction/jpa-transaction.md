@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\04-data\transaction\jpa-transaction
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # JPA 事务管理
 
 > ⬅️ [返回事务总览](README.md) | [编程式事务](programmatic-transaction.md)

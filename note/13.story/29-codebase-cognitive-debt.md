@@ -688,3 +688,5 @@ graph TD
 - 续集八：[`32-agent-harness`](./30-agent-harness.md) —— **Harness 治理**：减少认知债的工程解药
 
 ← [返回系列导读](./index.md)
+
+<!-- TODO: 拆分候选 (691 行 / 12 个 H2，超 500+8 阈值） -->

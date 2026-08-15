@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\03-cloud\service-registry\eureka-vs-consul-vs-nacos-vs-zookeeper
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 服务注册与发现中心对比
 
 | **对比维度**       | **Eureka**                          | **Consul**                          | **Zookeeper**                      | **Nacos**                            |

@@ -1,3 +1,4 @@
+
 # SPEC for note/11.product-and-pm/
 
 > **Inherits from**: [../SPEC.md](../SPEC.md)

@@ -1,3 +1,4 @@
+
 # SPEC for note/01.java-and-jvm/04-patterns/
 
 > **Inherits from**: [../../SPEC.md](../../SPEC.md)

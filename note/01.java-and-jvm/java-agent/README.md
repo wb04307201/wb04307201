@@ -536,3 +536,5 @@ new AgentBuilder.Default()
 - [String](../01-language/string/README.md)
 
 ← [返回 01.java 主模块](../README.md)
+
+<!-- TODO: 拆分候选 (539 行 / 13 个 H2，超 500+8 阈值） -->

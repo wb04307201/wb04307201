@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\02-boot\boot-externalized-configuration
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # Spring Boot 外部化配置
 
 > ⬅️ [返回 04 Spring Boot](README.md) | [启动流程](startup-flow.md) | [自动配置原理](auto-configuration.md)

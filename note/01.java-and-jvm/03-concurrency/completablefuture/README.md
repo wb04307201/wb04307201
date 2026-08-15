@@ -536,3 +536,5 @@ usersFuture
 - [异步 vs 多线程](../../../12.interview/01.java/async-vs-multithread/README.md) — 概念辨析：异步 ≠ 多线程
 
 ← [返回 Java 并发编程专题导航](../README.md)
+
+<!-- TODO: 拆分候选 (539 行 / 9 个 H2，超 500+8 阈值） -->

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 01.java-and-jvm
+  slug: 01.java-and-jvm\kotlin\02-oop
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # Kotlin 面向对象
 
 ## 一、类与构造器

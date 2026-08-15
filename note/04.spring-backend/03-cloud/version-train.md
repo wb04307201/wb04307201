@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\03-cloud\version-train
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # Spring Cloud 版本演进史
 
 > ⬅️ [返回 05 Spring Cloud](README.md) | [Spring Cloud 与 Alibaba 关系](README.md#spring-cloud-与-spring-cloud-alibaba-关系)

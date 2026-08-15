@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 06.distributed-systems
+  slug: 06.distributed-systems\01-foundation\system-design-basics\it4it\in-practice
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 第三章：落地：IT4IT × ITIL × DevOps
 
 > ⬅️ [返回目录](README.md) | 上一篇：[功能组件：9 大 IT 能力 + 数据对象](functional-components.md)

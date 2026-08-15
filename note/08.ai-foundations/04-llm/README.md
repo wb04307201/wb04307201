@@ -6,6 +6,11 @@
   summary: 大语言模型基础——语言模型演进、预训练、对齐与 Agent 能力的全景速查。
 -->
 
+
+
+## 📍 一句话定位
+
+> AI 基础概念层（ML / DL / Transformer / LLM / Tokenization + Embedding）
 # 04. 大语言模型
 
 > **定位**：大语言模型基础——从语言模型演进、Transformer 架构到预训练、对齐与 Agent 能力。

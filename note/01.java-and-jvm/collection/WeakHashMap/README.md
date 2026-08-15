@@ -723,3 +723,5 @@ public Set<Map.Entry<K,V>> entrySet()   // 返回 Entry 视图
 - 8 → 17 中**WeakHashMap API 未变**——这是设计良好的接口稳定性
 - 内部清理性能提升 10x（NUMA 感知 + ZGC）
 - 业务代码无需修改即可享受 GC 改进红利
+
+<!-- TODO: 拆分候选 (726 行 / 10 个 H2，超 500+8 阈值） -->

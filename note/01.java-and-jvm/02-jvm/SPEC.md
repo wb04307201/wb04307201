@@ -1,3 +1,4 @@
+
 # SPEC for note/01.java-and-jvm/02-jvm/
 
 > **Inherits from**: [../../SPEC.md](../../SPEC.md)

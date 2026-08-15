@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\08-annotations\test
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 测试注解
 
 > ⬅️ [返回注解速查](../README.md) | [AOP 注解](aop.md)

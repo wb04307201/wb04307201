@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\01-core\event
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # Spring Event 事件机制
 
 > ⬅️ [返回 01 核心容器](README.md)

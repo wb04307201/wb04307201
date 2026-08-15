@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 06.distributed-systems
+  slug: 06.distributed-systems\05-security\access-control\01-traditional\mac
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # MAC（Mandatory Access Control，强制访问控制）
 
 > 一句话定位：MAC 用主体与客体的密级标签做强制裁决，所有者不能自主转让权限。

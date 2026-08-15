@@ -834,3 +834,5 @@ mvn clean install -rf :module-a        # 从指定模块恢复构建
 ---
 
 ← [返回 01.java 主模块](../README.md)
+
+<!-- TODO: 拆分候选 (837 行 / 9 个 H2，超 500+8 阈值） -->

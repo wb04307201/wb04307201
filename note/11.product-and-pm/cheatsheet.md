@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 11.product-and-pm
+  slug: 11.product-and-pm\cheatsheet
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 项目管理与成本控制 —— 一页速查
 
 > 一页纸 PM 决策速查表，涵盖 **报价 / 外包 / 技术选型 / AI 时代账本 / 人力配比 / 团队拓扑** 6 大场景。

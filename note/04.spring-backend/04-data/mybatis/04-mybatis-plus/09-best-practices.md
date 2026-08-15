@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\04-data\mybatis\04-mybatis-plus\09-best-practices
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 09 最佳实践与踩坑
 
 > 来源:整合自原 `08.mybatis/mybatis-plus/README.md` L317-419(§五 常见问题 + §六 最佳实践 + §七 总结)

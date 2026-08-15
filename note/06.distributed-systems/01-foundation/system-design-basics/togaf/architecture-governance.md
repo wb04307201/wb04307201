@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 06.distributed-systems
+  slug: 06.distributed-systems\01-foundation\system-design-basics\togaf\architecture-governance
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 第四章：架构治理 + 落地实践
 
 > ⬅️ [返回目录](README.md) | 上一篇：[康威定律 + 团队拓扑](conway-and-team-topology.md)

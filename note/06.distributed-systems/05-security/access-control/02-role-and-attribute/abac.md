@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 06.distributed-systems
+  slug: 06.distributed-systems\05-security\access-control\02-role-and-attribute\abac
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # ABAC（Attribute-Based Access Control，基于属性的访问控制）
 
 > 一句话定位：ABAC 基于主体/客体/环境/动作四类属性，由策略引擎动态评估，灵活度最高。

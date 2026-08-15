@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\06-integration\validation\validation-annotations-and-usage
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # Spring Validation
 
 Spring Validation 是基于 Java Bean Validation API（JSR 303/380）的规范实现，由 Hibernate Validator 提供具体实现，Spring 框架通过封装使其更易用。

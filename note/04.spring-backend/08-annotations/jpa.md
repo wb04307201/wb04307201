@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\08-annotations\jpa
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # JPA 注解
 
 > ⬅️ [返回注解速查](../README.md) | [Bean 注解](bean-and-ioc.md)

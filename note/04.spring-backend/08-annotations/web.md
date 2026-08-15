@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\08-annotations\web
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # Web 注解（Spring MVC）
 
 > ⬅️ [返回注解速查](../README.md) | [AOP 注解](aop.md) | [Bean 注解](bean-and-ioc.md)

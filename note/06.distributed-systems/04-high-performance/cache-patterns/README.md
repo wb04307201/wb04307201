@@ -896,3 +896,5 @@ Q4：是否强一致性需求（金融场景）？
 - **媒体专项**：[media-upload-storage](../media-upload-storage/README.md) — 媒体上传场景的 Cache-Aside 缓存策略（原图 + 5 尺寸 + 转码结果）
 
 ← [返回 高性能设计](../README.md)
+
+<!-- TODO: 拆分候选 (899 行 / 13 个 H2，超 500+8 阈值） -->

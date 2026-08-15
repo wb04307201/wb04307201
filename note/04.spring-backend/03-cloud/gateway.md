@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\03-cloud\gateway
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # Spring Cloud Gateway 网关
 
 > ⬅️ [返回 05 Spring Cloud](README.md) | [熔断降级](circuit-breaker.md) | [分布式追踪](distributed-tracing.md)

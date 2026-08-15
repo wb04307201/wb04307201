@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\02-boot\startup-flow
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # Spring Boot 启动流程（`SpringApplication.run()` 6 阶段）
 
 > ⬅️ [返回 04 Spring Boot](README.md) | [启动后钩子](application-bootstrap.md) | [外部化配置](boot-externalized-configuration.md)

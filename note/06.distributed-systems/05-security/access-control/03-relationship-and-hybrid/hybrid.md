@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 06.distributed-systems
+  slug: 06.distributed-systems\05-security\access-control\03-relationship-and-hybrid\hybrid
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # RBAC + ABAC 混合模型
 
 > 一句话定位：RBAC 管"功能权限"（能否访问订单管理），ABAC 管"数据权限"（能否看到这笔订单）—— 这是工程实战中的黄金组合。

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\02-web\mvc\components-order
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 组件执行顺序与对比
 
 > ⬅️ [返回 MVC 总览](README.md) | [DispatcherServlet 与 9 大组件](dispatch-flow.md)

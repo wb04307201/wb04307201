@@ -904,3 +904,4 @@ flowchart LR
 - **陷阱统计**：SCM 项目失败率 30-50%（30% 组织 / 25% 数据 / 20% 预测 / 15% 边界 / 10% 运营）
 - **所属价值链**：03 供应链
 - 关联系统：[SRM 深读](../srm/README.md) / [WMS 深读](../wms/README.md) / [TMS 深读](../tms/README.md) / [ERP 深读](../../05-operations/erp/README.md) / [MES 深读](../../02-production/mes/README.md) / [CRM 深读](../../04-sales-service/crm/README.md)
+<!-- TODO: 拆分候选 (906 行 / 21 个 H2，超 500+8 阈值） -->

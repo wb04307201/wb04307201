@@ -838,3 +838,5 @@ public class TraceIdFilter implements Filter {
 ---
 
 ← [返回 01.java 主模块](../README.md)
+
+<!-- TODO: 拆分候选 (841 行 / 11 个 H2，超 500+8 阈值） -->

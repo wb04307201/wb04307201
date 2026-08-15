@@ -650,3 +650,5 @@ public class UserDao {
 - [08-class-diagram](../../04.spring-backend/04-data/mybatis/01-architecture/08-class-diagram.md)
 
 ← [返回 01.java 主模块](../README.md)
+
+<!-- TODO: 拆分候选 (653 行 / 16 个 H2，超 500+8 阈值） -->

@@ -804,3 +804,4 @@ flowchart LR
 - **行业基准**：FCR ≥ 75% / CSAT ≥ 85% / NPS ≥ 40 / AHT ≤ 6 分钟 / Service Level 80/20
 - **所属价值链**：04 销售服务
 - 关联系统：[CRM 深读](../crm/README.md) / [SCRM 深读](../scrm/README.md) / [OMS 深读](../oms/README.md) / [ITSM 深读](../../06-specialized/itsm/README.md) / [OA 深读](../../05-operations/oa/README.md) / [HR 深读](../../05-operations/hr/README.md) / [BI 深读](../../05-operations/bi/README.md) / [电子签深读](../../05-operations/e-signature/README.md) / [RPA 深读](../../05-operations/rpa/README.md)
+<!-- TODO: 拆分候选 (806 行 / 13 个 H2，超 500+8 阈值） -->

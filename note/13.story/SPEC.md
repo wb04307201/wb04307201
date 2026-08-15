@@ -1,3 +1,4 @@
+
 # SPEC for note/13.story/
 
 > **Inherits from**: [../SPEC.md](../SPEC.md)

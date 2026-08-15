@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 09.ai-applications
+  slug: 09.ai-applications\agent\ai-platforms\spring-ai-vs-platforms
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # Spring AI vs 编排平台：代码优先与低代码的边界
 
 > ⬅️ [返回 AI 平台](README.md) | [Dify](dify.md) | [Coze](coze.md) | [LangGraph](langgraph.md) | BPMN+AI 融合 | [深度对比长文](../ai-platforms/spring-ai-vs-dify.md) | [11 AI 知识体系](../../README.md)

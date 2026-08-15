@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 13.story
+  slug: 13.story\cheatsheet
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 一页纸速查
 
 > 「阿明餐厅」系列 46 篇文章的核心概念、关键决策表、金句心法，浓缩在一页之内。

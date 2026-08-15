@@ -693,3 +693,4 @@ flowchart LR
 - **陷阱统计**：电子签项目失败率 20-35%（25% 合规 / 20% 技术 / 20% 存证 / 15% 集成 / 10% 法律 / 10% 备案）
 - **所属价值链**：05 运营管理
 - 关联系统：[OA 深读](../oa/README.md) / [BPM 深读](../bpm/README.md) / [HR 深读](../hr/README.md) / [ERP 深读](../erp/README.md) / [BI 深读](../bi/README.md) / [CRM 深读](../../04-sales-service/crm/README.md) / [EAM 深读](../eam/README.md)
+<!-- TODO: 拆分候选 (695 行 / 13 个 H2，超 500+8 阈值） -->

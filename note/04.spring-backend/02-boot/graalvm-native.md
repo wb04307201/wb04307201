@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\02-boot\graalvm-native
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # Spring Boot 3 + GraalVM Native Image 简介
 
 > ⬅️ [返回 04 Spring Boot](README.md) | [内嵌服务器](embedded-server.md) | [启动流程](startup-flow.md)

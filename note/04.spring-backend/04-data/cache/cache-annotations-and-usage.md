@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\04-data\cache\cache-annotations-and-usage
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 缓存注解与使用
 
 > ⬅️ [返回缓存总览](README.md) | [缓存实现与最佳实践](implementations-and-best-practices.md)

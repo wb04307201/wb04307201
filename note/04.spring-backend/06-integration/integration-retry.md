@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\06-integration\integration-retry
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # Spring Retry 自动重试
 
 Spring Retry 是 Spring 框架中用于实现方法自动重试的组件，通过声明式编程模型简化瞬时故障处理（如网络超时、数据库连接失败等），提升系统容错能力。其核心机制基于 AOP 拦截器，结合灵活的策略配置实现可定制的重试行为。

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\04-data\mybatis\04-mybatis-plus\02-crud-basics
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 02 CRUD 与条件构造器基础
 
 > 来源:整合自原 `08.mybatis/mybatis-plus/README.md` L83-151(§三.1 CRUD + §三.2 条件构造器基础)

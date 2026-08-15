@@ -6,6 +6,11 @@
   summary: Tokenization 与 Embedding——文本切分算法、向量表示、流形假说与语义空间。
 -->
 
+
+
+## 📍 一句话定位
+
+> AI 基础概念层（ML / DL / Transformer / LLM / Tokenization + Embedding）
 # 05. Tokenization 与 Embedding
 
 > **定位**：Tokenization 与 Embedding 基础——理解文本切分、向量表示及其语义空间。

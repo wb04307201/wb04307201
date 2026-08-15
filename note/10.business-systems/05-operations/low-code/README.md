@@ -735,3 +735,4 @@ flowchart LR
 - **陷阱统计**：低代码项目失败率 25-40%（25% 治理 / 20% 技术 / 15% 集成 / 15% 决策 / 15% 期望 / 10% 运营）
 - **所属价值链**：05 运营管理
 - 关联系统：[BPM 深读](../bpm/README.md) / [RPA 深读](../rpa/README.md) / [OA 深读](../oa/README.md) / [HR 深读](../hr/README.md) / [ERP 深读](../erp/README.md) / [BI 深读](../bi/README.md) / [MDM 深读](../mdm/README.md) / [电子签 深读](../e-signature/README.md) / [数据中台 深读](../data-mesh/README.md) / [EAM 深读](../eam/README.md) / [CRM 深读](../../04-sales-service/crm/README.md)
+<!-- TODO: 拆分候选 (737 行 / 13 个 H2，超 500+8 阈值） -->

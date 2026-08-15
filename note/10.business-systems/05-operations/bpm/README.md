@@ -518,3 +518,5 @@ flowchart LR
 - **陷阱统计**：BPM 项目失败率 30-50%（25% 治理 / 20% 架构 / 15% 定位 / 15% 推广 / 10% 集成 / 10% 运营 / 5% 决策）
 - **所属价值链**：05 运营管理
 - 关联系统：OA（[OA 深读](../oa/README.md)）/ HR（[HR 深读](../hr/README.md)）/ ERP（[ERP 深读](../erp/README.md)）/ BI（[BI 深读](../bi/README.md)）/ MES（[MES 深读](../../02-production/mes/README.md)）/ CRM（[CRM 深读](../../04-sales-service/crm/README.md)）
+
+<!-- TODO: 拆分候选 (521 行 / 13 个 H2，超 500+8 阈值） -->

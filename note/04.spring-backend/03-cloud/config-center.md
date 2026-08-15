@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\03-cloud\config-center
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 配置中心（Config Center）
 
 > ⬅️ [返回 05 Spring Cloud](README.md) | [服务注册](service-registry/) | [分布式追踪](distributed-tracing.md)

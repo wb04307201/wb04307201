@@ -1,3 +1,4 @@
+
 # SPEC for note/09.ai-applications/rag/
 
 > **Inherits from**: [../../SPEC.md](../../SPEC.md)

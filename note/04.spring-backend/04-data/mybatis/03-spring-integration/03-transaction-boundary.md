@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\04-data\mybatis\03-spring-integration\03-transaction-boundary
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 03 事务边界
 
 > ⬅️ [返回 MyBatis 整合总览](README.md) | [⬅️ 02 Mapper 与 Boot](02-mapper-and-boot.md)
@@ -546,3 +555,4 @@ public List<User> searchInTx(UserQuery query) {
 - [transaction/README.md](../../../../README.md) — Spring 事务基础
 - [transaction/failure-cases.md](../../transaction/failure-cases.md) — 事务失效场景全集
 - [13.split-hairs/06.spring/transactional-pitfalls/README.md](../../../../12.interview/06.spring/transactional-pitfalls/README.md) — @Transactional 失效 8 种场景
+<!-- TODO: 拆分候选 (557 行 / 8 个 H2，超 500+8 阈值） -->

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 13.story
+  slug: 13.story\STORY-FORMAT-SPEC
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 「阿明餐厅」故事格式规范 v1.0
 
 > 本规范定义 `note/12.story/` 目录下所有 `.md` 故事文件的统一写作格式。

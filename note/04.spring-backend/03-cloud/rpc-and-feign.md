@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\03-cloud\rpc-and-feign
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # RPC 与 OpenFeign
 
 > ⬅️ [返回 05 Spring Cloud](README.md) | [负载均衡](load-balancer.md) | [熔断降级](circuit-breaker.md)

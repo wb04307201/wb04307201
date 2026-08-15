@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\03-cloud\distributed-tracing
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 分布式链路追踪
 
 > ⬅️ [返回 05 Spring Cloud](README.md) | [配置中心](config-center.md) | [网关](gateway.md)

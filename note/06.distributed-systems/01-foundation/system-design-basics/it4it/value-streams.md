@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 06.distributed-systems
+  slug: 06.distributed-systems\01-foundation\system-design-basics\it4it\value-streams
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 第一章：价值流：从请求到服务的 4 条路
 
 > ⬅️ [返回目录](README.md) | 下一篇：[功能组件：9 大 IT 能力 + 数据对象](functional-components.md)

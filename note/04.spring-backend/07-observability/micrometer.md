@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\07-observability\micrometer
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # Micrometer 指标监控
 
 > ⬅️ [返回 07 可观测性](README.md) | [Prometheus + Grafana](prometheus-grafana.md) | [Spring Boot Actuator](actuator.md)
@@ -575,3 +584,5 @@ Micrometer Tracing API
 - [batch](../06-integration/batch.md)
 - [integration-retry](../06-integration/integration-retry.md)
 - [log-aggregation](log-aggregation.md)
+
+<!-- TODO: 拆分候选 (587 行 / 13 个 H2，超 500+8 阈值） -->

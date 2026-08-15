@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\07-observability\prometheus-grafana
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # Prometheus + Grafana 可视化监控
 
 > ⬅️ [返回 07 可观测性](README.md) | [Micrometer](micrometer.md) | [Spring Boot Actuator](actuator.md)
@@ -618,3 +627,5 @@ graph TB
 - [Micrometer](micrometer.md) — 指标采集
 - [Spring Boot Actuator](actuator.md) — 指标暴露端点
 - [分布式追踪](../03-cloud/distributed-tracing.md) — Tracing + Metrics 统一
+
+<!-- TODO: 拆分候选 (630 行 / 15 个 H2，超 500+8 阈值） -->

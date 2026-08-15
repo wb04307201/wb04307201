@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\03-cloud\stream
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # Spring Cloud Stream 消息驱动微服务
 
 > ⬅️ [返回 05 Spring Cloud](README.md) | [Config 中心](config-center.md) | [Bus](bus.md)

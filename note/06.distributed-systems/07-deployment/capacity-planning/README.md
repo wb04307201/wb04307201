@@ -569,3 +569,5 @@ spec:
 - [负载均衡](../../04-high-performance/load-balance/README.md) — 流量切分与负载分配对容量的影响
 
 ← [返回 部署与运维](../README.md)
+
+<!-- TODO: 拆分候选 (572 行 / 10 个 H2，超 500+8 阈值） -->

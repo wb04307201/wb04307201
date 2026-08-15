@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\08-annotations\aop
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # AOP 注解
 
 > ⬅️ [返回注解速查](../README.md) | [Web 注解](web.md) | [异常注解](exception.md)

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\08-annotations\transaction
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 事务注解
 
 > ⬅️ [返回注解速查](../README.md) | [JPA 注解](jpa.md)

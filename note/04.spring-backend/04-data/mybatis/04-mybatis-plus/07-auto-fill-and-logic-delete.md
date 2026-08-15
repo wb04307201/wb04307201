@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\04-data\mybatis\04-mybatis-plus\07-auto-fill-and-logic-delete
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 07 自动填充与逻辑删除
 
 > 来源:整合自原 `08.mybatis/mybatis-plus/README.md` L196-241(§三.5 自动填充 + §三.6 逻辑删除)

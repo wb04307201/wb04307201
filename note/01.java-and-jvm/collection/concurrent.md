@@ -634,3 +634,5 @@ ConcurrentHashMap<String, Integer> goodMap = new ConcurrentHashMap<>();
 ---
 
 ← [返回: collection](../README.md) | [返回: 01.java](../../README.md)
+
+<!-- TODO: 拆分候选 (637 行 / 12 个 H2，超 500+8 阈值） -->

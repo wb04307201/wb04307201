@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\06-integration\statemachine
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # Spring Statemachine 状态机
 
 **Spring Statemachine 是一个基于 Spring 框架的状态机实现，用于简化复杂状态转换逻辑的开发，适用于订单管理、工作流引擎、设备控制等需要严格状态管理的场景。**以下是其核心特性与实现方式的详细解析：

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\04-data\mybatis\03-spring-integration\05-secondary-cache-integration
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 05 二级缓存与 Redis/Caffeine 整合
 
 > ⬅️ [返回 MyBatis 整合总览](README.md) | [⬅️ 04 多数据源路由](04-multi-datasource.md)
@@ -551,3 +560,4 @@ public void afterCommit(User user) {
 - [cache/serialization.md](../../cache/serialization.md) — 序列化方案
 - [架构与原理](../01-architecture/README.md) — MyBatis 二级缓存机制
 - [03.database/06-cache/](../../../../03.data-stack/01-database/06-cache/README.md/) — 数据库缓存基础
+<!-- TODO: 拆分候选 (562 行 / 10 个 H2，超 500+8 阈值） -->

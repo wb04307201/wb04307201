@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\08-annotations\exception
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 异常处理注解
 
 > ⬅️ [返回注解速查](../README.md) | [Web 注解](web.md) | [AOP 注解](aop.md)

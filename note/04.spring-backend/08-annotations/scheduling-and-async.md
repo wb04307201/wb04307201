@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\08-annotations\scheduling-and-async
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 调度与异步注解
 
 > ⬅️ [返回注解速查](../README.md) | [事务注解](transaction.md)

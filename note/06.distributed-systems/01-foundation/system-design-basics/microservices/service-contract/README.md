@@ -587,3 +587,5 @@ Link: <https://api.example.com/v2/orders>; rel="successor-version"
 - [Protocol Buffers](https://protobuf.dev/) — gRPC 契约语言
 
 ← [返回微服务](../README.md)
+
+<!-- TODO: 拆分候选 (590 行 / 10 个 H2，超 500+8 阈值） -->

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\04-data\transaction\programmatic-transaction
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 编程式事务（TransactionTemplate）
 
 > ⬅️ [返回事务总览](README.md) | [传播行为与隔离级别](propagation-and-isolation.md)

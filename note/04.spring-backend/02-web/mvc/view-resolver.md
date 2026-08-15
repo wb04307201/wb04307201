@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\02-web\mvc\view-resolver
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # ViewResolver 视图解析器
 
 > ⬅️ [返回 MVC 总览](README.md) | [02 Web 层](../README.md)

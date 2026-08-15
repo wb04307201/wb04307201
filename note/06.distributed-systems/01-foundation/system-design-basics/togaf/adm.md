@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 06.distributed-systems
+  slug: 06.distributed-systems\01-foundation\system-design-basics\togaf\adm
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 第一章：核心思想 + ADM 详解
 
 > ⬅️ [返回目录](README.md) | 下一篇：[BCAT + 业务能力 + 价值流](business-capability.md)

@@ -854,3 +854,5 @@ while (!casOperation()) {
 - [seckill-without-redis](../../../06.distributed-systems/03-high-availability/rate-limiting/seckill-without-redis.md)
 
 ← [返回 Java 并发编程专题导航](../README.md)
+
+<!-- TODO: 拆分候选 (857 行 / 9 个 H2，超 500+8 阈值） -->

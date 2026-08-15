@@ -607,3 +607,5 @@ graph TB
 - [business-capability](../togaf/business-capability.md)
 
 ← [返回 IT4IT 目录](README.md) | ← [返回系统设计基础](../README.md)
+
+<!-- TODO: 拆分候选 (610 行 / 12 个 H2，超 500+8 阈值） -->

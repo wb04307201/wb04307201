@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\04-data\mybatis\04-mybatis-plus\03-wrapper-system
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 03 Wrapper 体系(两大维度)
 
 > 来源:整合自原 `08.mybatis/mybatis-plus/Wrapper/README.md` 全文(L1-37)

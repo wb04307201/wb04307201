@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\02-web\mvc\dispatch-flow
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # DispatcherServlet 与 9 大组件
 
 > ⬅️ [返回 MVC 总览](README.md) | [组件对比与场景](components-order.md)

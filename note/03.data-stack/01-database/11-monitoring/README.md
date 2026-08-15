@@ -561,3 +561,4 @@ SHOW SLAVE STATUS;  -- Seconds_Behind_Master: 300s
 ---
 
 ← [返回 01-database 主模块](../README.md)
+<!-- TODO: 拆分候选 (563 行 / 12 个 H2，超 500+8 阈值） -->

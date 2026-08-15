@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\02-boot\custom-condition
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 自定义 Condition 类（高级）
 
 > ⬅️ [返回 04 Spring Boot](README.md) | [自动配置原理](auto-configuration.md) | [自定义 Starter](custom-starter.md)

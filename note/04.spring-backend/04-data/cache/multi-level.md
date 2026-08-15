@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\04-data\cache\multi-level
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 多级缓存与防护（Multi-Level Cache）
 
 > ⬅️ [返回缓存总览](README.md) | [缓存模式](patterns.md) | [序列化](serialization.md)

@@ -591,3 +591,4 @@ public class CacheMetricsCollector {
 ---
 
 ← [返回 Spring Cache 总览](README.md)
+<!-- TODO: 拆分候选 (593 行 / 10 个 H2，超 500+8 阈值） -->

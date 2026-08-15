@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 09.ai-applications
+  slug: 09.ai-applications\agent\architecture\bpmn-ai-integration
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # AI + BPMN 融合
 
 > ⬅️ [返回 AI 平台](../ai-platforms/README.md) | [Dify](../ai-platforms/dify.md) | [Coze](../ai-platforms/coze.md) | [LangGraph](../ai-platforms/langgraph.md) | Camunda 8 | [11 AI 知识体系](../README.md) | 07 工作流

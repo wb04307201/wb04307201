@@ -532,3 +532,5 @@ Q3：用户对拒答接受度？
 **原 LLMOps 兄弟章节**：LLMOps 栈 / 向量库 vs 缓存 / LLM 安全（⚠️ 待 Phase 1+ 迁入；占位 `../../llm-inference/llmops/02-llmops-stack/` / `../../llm-inference/llmops/03-vector-db-vs-cache/` / `../../llm-inference/llmops/05-llm-security/`） / [LLM 评测](../eval/README.md)
 
 ← [返回 RAG MOC](./README.md)
+
+<!-- TODO: 拆分候选 (535 行 / 10 个 H2，超 500+8 阈值） -->

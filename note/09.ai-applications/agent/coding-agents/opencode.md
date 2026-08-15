@@ -508,3 +508,4 @@ oh-my-opencode 会自动分配任务给最适合的 Agent（Gemini 处理前端�
 - **规范工具**：[Agent Spec Tools](../agent-spec-tools/README.md)
 
 ← [返回: Coding Agents 对比](README.md)
+<!-- TODO: 拆分候选 (510 行 / 10 个 H2，超 500+8 阈值） -->

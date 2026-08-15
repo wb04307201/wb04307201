@@ -781,3 +781,4 @@ API 方案（GPT-4o）：
 > 🆕 **阿明餐厅工业部署选型实战**：当连锁开到 30 家（从私部署 Ollama 升级到 vLLM），怎么选推理引擎？→ 详见 [vLLM vs Ollama 工业级选型深度专题](../09.ai-applications/llm-inference/vllm-vs-ollama/README.md)（PagedAttention 原理 + 4 引擎对比 + 场景化决策树）。
 
 ← [返回系列导读](./index.md)
+<!-- TODO: 拆分候选 (783 行 / 14 个 H2，超 500+8 阈值） -->

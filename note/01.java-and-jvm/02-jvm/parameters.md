@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 01.java-and-jvm
+  slug: 01.java-and-jvm\02-jvm\parameters
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # JVM 常用参数速查手册
 
 > 所有参数基于 HotSpot JVM。参数后标注版本状态：`[JDK8]` 仅 JDK 8 可用，`[JDK17+]` 需要 JDK 17 及以上，`[已移除]` 表示在后续版本中被删除。
@@ -507,3 +516,5 @@ jad com.example.Service    # 反编译（确认线上代码版本）
 ---
 
 ← [返回 JVM 主篇](README.md)
+
+<!-- TODO: 拆分候选 (519 行 / 13 个 H2，超 500+8 阈值） -->

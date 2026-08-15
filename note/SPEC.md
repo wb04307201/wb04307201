@@ -1,3 +1,4 @@
+
 # SPEC for note/
 
 > **Inherits from**: (无，L0 是顶层)

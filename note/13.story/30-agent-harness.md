@@ -767,3 +767,5 @@ graph TD
 - 续集二十：[`46-tech-debt-career-trap`](./44-tech-debt-career-trap.md) —— **个人视角**：在 Harness 治理中成长的工程师，简历最值钱
 
 ← [返回系列导读](./index.md)
+
+<!-- TODO: 拆分候选 (770 行 / 12 个 H2，超 500+8 阈值） -->

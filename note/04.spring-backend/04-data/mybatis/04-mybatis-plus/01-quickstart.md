@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\04-data\mybatis\04-mybatis-plus\01-quickstart
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 01 MyBatis-Plus 快速入门
 
 > 来源:整合自原 `08.mybatis/mybatis-plus/README.md` L1-79(§ 一 简介 + § 二 快速入门)

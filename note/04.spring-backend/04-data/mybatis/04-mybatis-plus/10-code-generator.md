@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\04-data\mybatis\04-mybatis-plus\10-code-generator
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 10 代码生成器
 
 > 来源:整合自原 `08.mybatis/mybatis-plus/generator/README.md` L1-152(**已去重**:原文件 L153-300 为全文重复,已剔除)

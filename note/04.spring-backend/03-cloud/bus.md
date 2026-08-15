@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\03-cloud\bus
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # Spring Cloud Bus 集群事件总线
 
 > ⬅️ [返回 05 Spring Cloud](README.md) | [Stream](stream.md) | [Config 中心](config-center.md)

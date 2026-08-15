@@ -1,3 +1,4 @@
+
 # SPEC for note/06.distributed-systems/
 
 > **Inherits from**: [../SPEC.md](../SPEC.md)

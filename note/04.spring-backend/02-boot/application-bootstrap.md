@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\02-boot\application-bootstrap
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # Spring Boot 启动后执行（钩子/回调/事件）
 
 > ⬅️ [返回 04 Spring Boot](README.md) | [启动流程](startup-flow.md) | [外部化配置](boot-externalized-configuration.md)

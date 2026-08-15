@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\01-core\ioc\bean-lifecycle
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # Bean 生命周期
 
 > ⬅️ [返回 IoC 总览](README.md) | [作用域与线程安全](scopes-and-thread-safety.md) | [依赖注入](dependency-injection.md)

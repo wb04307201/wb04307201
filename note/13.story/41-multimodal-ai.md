@@ -644,3 +644,4 @@ ROI：
 - 续集十九：[`45-ai-productivity-paradox`](./43-ai-productivity-paradox.md) —— **多模态生成的成本**：图像/视频的 Token 成本远高于文本，需要重新评估 ROI
 
 ← [返回系列导读](./index.md)
+<!-- TODO: 拆分候选 (646 行 / 13 个 H2，超 500+8 阈值） -->

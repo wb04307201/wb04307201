@@ -752,3 +752,5 @@ public Step masterStep() {
 
 - [annotations-retry](../08-annotations/annotations-retry.md)
 ← [返回 Spring 集成组件](README.md) · [返回 Spring 顶层](../README.md)
+
+<!-- TODO: 拆分候选 (755 行 / 12 个 H2，超 500+8 阈值） -->

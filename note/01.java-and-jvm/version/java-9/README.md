@@ -800,3 +800,5 @@ jlink --module-path "$JAVA_HOME/jmods" \
 - 标准 JRE 9 → 完整 JRE 模块 (~150 MB) 启动时间已大幅优化
 - `jlink` 优势在镜像大小（对容器化部署 ROI 显著）和启动时间（对 serverless 关键）
 - 非模块化项目仍可使用 jlink 裁剪（指定模块路径即可）
+
+<!-- TODO: 拆分候选 (803 行 / 97 个 H2，超 500+8 阈值） -->

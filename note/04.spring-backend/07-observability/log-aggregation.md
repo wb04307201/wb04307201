@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\07-observability\log-aggregation
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 日志聚合（ELK / Loki / Fluentd）
 
 > ⬅️ [返回 07 可观测性](README.md) | [Actuator](actuator.md) | [Micrometer](micrometer.md)

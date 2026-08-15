@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\01-core\aop\advice-order-and-best-practices
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 通知顺序与最佳实践
 
 > ⬅️ [返回 AOP 总览](README.md) | [切点表达式语法](pointcut-expression.md)

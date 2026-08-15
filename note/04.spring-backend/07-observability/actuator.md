@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\07-observability\actuator
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # Spring Boot Actuator 监控
 
 > ⬅️ [返回 07 可观测性](README.md) | [Micrometer](micrometer.md) | [Prometheus + Grafana](prometheus-grafana.md) | [健康检查三探针](health-probes.md) | [日志聚合](log-aggregation.md)

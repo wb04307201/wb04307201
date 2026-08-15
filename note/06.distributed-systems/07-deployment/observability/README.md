@@ -544,3 +544,5 @@ Spring Boot + Micrometer + OpenTelemetry
 - [Spring Boot Actuator / Micrometer / Prometheus 集成](../../../04.spring-backend/07-observability/README.md) — Spring 工程可观测性落地方案
 
 ← [返回 部署与运维](../README.md)
+
+<!-- TODO: 拆分候选 (547 行 / 9 个 H2，超 500+8 阈值） -->

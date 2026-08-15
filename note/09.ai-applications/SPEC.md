@@ -1,3 +1,4 @@
+
 # SPEC for note/09.ai-applications/
 
 > **Inherits from**: [../SPEC.md](../SPEC.md)

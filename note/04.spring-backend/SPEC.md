@@ -1,3 +1,4 @@
+
 # SPEC for note/04.spring-backend/
 
 > **Inherits from**: [../SPEC.md](../SPEC.md)

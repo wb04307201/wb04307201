@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\02-web\mvc\cors-and-static
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # CORS 与静态资源
 
 > ⬅️ [返回 MVC 总览](README.md) | [02 Web 层](../README.md)

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\01-core\ioc\circular-dependency
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # Spring 循环依赖与三级缓存
 
 > ⬅️ [返回 IoC 总览](README.md) | [Bean 生命周期](bean-lifecycle.md) | [依赖注入](dependency-injection.md)

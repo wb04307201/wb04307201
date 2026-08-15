@@ -526,3 +526,5 @@ export function Button({
 > 📅 2026-06-28 · 咬文嚼字 · 前端 CSS · ⭐⭐⭐（高频实战 + 设计思维）
 
 ← [返回: 咬文嚼字 · css-button-styling](../README.md)
+
+<!-- TODO: 拆分候选 (529 行 / 10 个 H2，超 500+8 阈值） -->

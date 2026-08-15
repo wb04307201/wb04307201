@@ -6,6 +6,11 @@
   summary: LLM Dropout——训练时随机失活的设置、影响与单 epoch 实证证据。
 -->
 
+
+
+## 📍 一句话定位
+
+> AI 基础概念层（ML / DL / Transformer / LLM / Tokenization + Embedding）
 # Dropout in LLM
 
 > **定位**：LLM 训练中的 Dropout 机制——单 epoch 配置、影响与实证证据。

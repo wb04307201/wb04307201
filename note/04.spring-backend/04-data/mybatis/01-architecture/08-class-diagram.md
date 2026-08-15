@@ -891,3 +891,5 @@ TypeHandler 的三种读取重载都应实现，因为列名映射、列序号�
 ---
 
 ← [返回: 01-architecture](../README.md) | [返回: 04.spring-backend ](../../README.md)
+
+<!-- TODO: 拆分候选 (894 行 / 8 个 H2，超 500+8 阈值） -->

@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 06.distributed-systems
+  slug: 06.distributed-systems\05-security\access-control\03-relationship-and-hybrid\rebac
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # ReBAC（Relationship-Based Access Control，基于关系的访问控制）
 
 > 一句话定位：ReBAC 以实体间关系（共享、好友、协作者）作为决策依据，Google Zanzibar 是工业级经典实现。

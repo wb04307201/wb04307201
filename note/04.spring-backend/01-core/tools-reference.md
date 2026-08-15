@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\01-core\tools-reference
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # Spring 自带24个工具类
 
 ## Bean相关

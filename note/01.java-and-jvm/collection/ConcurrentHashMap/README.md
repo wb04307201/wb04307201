@@ -1089,3 +1089,5 @@ int size = map.size();           // 超过 21 亿会截断
 - [concurrent](../concurrent.md)
 
 ← [返回 Java 集合框架](../README.md)
+
+<!-- TODO: 拆分候选 (1092 行 / 15 个 H2，超 500+8 阈值） -->

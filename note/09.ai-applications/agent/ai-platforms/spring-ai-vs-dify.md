@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 09.ai-applications
+  slug: 09.ai-applications\agent\ai-platforms\spring-ai-vs-dify
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # Spring AI vs Dify：企业知识库系统的代码优先 vs 低代码架构决策
 
 > ⬅️ [返回 L4 架构设计](README.md) | [代码优先 vs 平台（短卡）](../ai-platforms/spring-ai-vs-platforms.md) | [Dify](../ai-platforms/dify.md) | Spring AI 工程 | BPMN+AI 融合 | [11 AI 知识体系](../README.md)
@@ -502,3 +511,4 @@ public String knowledgeBaseQuery(@ToolParam String question) {
 - 13.split-hairs/11.ai — 面试深挖（建议补充本主题的 3 个高频问题）
 
 ← [返回笔记目录](../../README.md)
+<!-- TODO: 拆分候选 (513 行 / 11 个 H2，超 500+8 阈值） -->

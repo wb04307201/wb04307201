@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 06.distributed-systems
+  slug: 06.distributed-systems\01-foundation\system-design-basics\archimate\language
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 第一章：建模语言：层、方面、关系
 
 > ⬅️ [返回目录](README.md) | 下一篇：[视点：给不同人看不同的图](viewpoints.md)

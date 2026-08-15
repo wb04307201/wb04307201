@@ -1,3 +1,4 @@
+
 # SPEC for note/07.devops-and-tools/
 
 > **Inherits from**: [../SPEC.md](../SPEC.md)

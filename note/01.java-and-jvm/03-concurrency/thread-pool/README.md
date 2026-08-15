@@ -841,3 +841,5 @@ public class ThreadPoolConfig {
 ## 反向链
 
 - [异步 vs 多线程](../../../12.interview/01.java/async-vs-multithread/README.md) — 概念辨析：异步 ≠ 多线程（线程池 + Future.get() 是多线程但同步）
+
+<!-- TODO: 拆分候选 (844 行 / 10 个 H2，超 500+8 阈值） -->

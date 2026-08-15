@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\04-data\mybatis\03-spring-integration\04-multi-datasource
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 04 多数据源路由
 
 > ⬅️ [返回 MyBatis 整合总览](README.md) | [⬅️ 03 事务边界](03-transaction-boundary.md)
@@ -595,3 +604,4 @@ public CompletableFuture<List<User>> asyncBatchGet(List<Long> ids) {
 - [transaction/multi-datasource-and-jta.md](../../transaction/multi-datasource-and-jta.md) — 多数据源事务
 - [transaction/distributed/seata.md](../../transaction/distributed/seata.md) — Seata 分布式事务
 - [MyBatis-Plus 全家桶](../04-mybatis-plus/README.md) — MyBatis-Plus 动态数据源
+<!-- TODO: 拆分候选 (606 行 / 8 个 H2，超 500+8 阈值） -->

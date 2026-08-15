@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\08-annotations\bean-and-ioc
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # Bean 与 IoC 注解
 
 > ⬅️ [返回注解速查](../README.md) | [Web 注解](web.md) | [配置注解](configuration.md)

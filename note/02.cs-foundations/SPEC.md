@@ -1,3 +1,4 @@
+
 # SPEC for note/02.cs-foundations/
 
 > **Inherits from**: [../SPEC.md](../SPEC.md)

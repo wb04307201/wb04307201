@@ -661,3 +661,5 @@ flowchart LR
 - **陷阱统计**：数据中台未达预期 / 烂尾率 40-60%（30% 定位 / 20% 建设 / 20% 治理 / 15% 架构 / 15% 战略）
 - **所属价值链**：05 运营管理
 - 关联系统：[BI 深读](../bi/README.md) / [BPM 深读](../bpm/README.md) / [ERP 深读](../erp/README.md) / [HR 深读](../hr/README.md) / [OA 深读](../oa/README.md) / [RPA 深读](../rpa/README.md) / [MDM 深读](../mdm/README.md)
+
+<!-- TODO: 拆分候选 (664 行 / 13 个 H2，超 500+8 阈值） -->

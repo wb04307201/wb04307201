@@ -1,3 +1,12 @@
+<!--
+module:
+  parent: 04.spring-backend
+  slug: 04.spring-backend\04-data\transaction\multi-datasource-and-jta
+  type: article
+  category: 主模块子文章
+  summary: 待补充
+-->
+
 # 多数据源与 JTA 分布式事务
 
 > ⬅️ [返回事务总览](README.md) | [分布式事务](distributed/theory-and-patterns.md)
