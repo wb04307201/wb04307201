@@ -233,4 +233,12 @@ graph LR
 
 ---
 
+## 子主题
+
+| 主题 | 一句话定位 |
+|------|-----------|
+| [HTML-in-Canvas（WICG 提案）](html-in-canvas/) | 让 `<canvas>` 直接绘制其 HTML 子元素 —— 终结"DOM/CSS 优雅 vs Canvas 高性能"二选一（含 IDL / paint 时机 3 方案对比 / 安全清单） |
+
+---
+
 ← [返回 前端基础](../README.md)
