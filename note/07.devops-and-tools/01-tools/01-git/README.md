@@ -18,11 +18,13 @@ module:
 |------|------|---------|-----------|
 | 01 | [命令清单](command/) | 配置/分支/提交/远程/撤销/子模块 | [README](command/README.md) |
 | 02 | [Gitea](gitea/) | 轻量级自托管 Git 服务，Docker 一键部署 | [README](gitea/README.md) |
+| 03 | [分支命名规范](branch-naming/) | Conventional Branches + 3 大流派 + CI 联动 | [README](branch-naming/README.md) |
 
 ### 1.1 学习路径
 
 - **入门**：命令清单 → 掌握日常开发高频操作
-- **进阶**：Gitea 自建 → 团队私有代码托管平台
+- **进阶**：分支命名规范（[branch-naming/](branch-naming/)）→ Conventional Branches + 3 大流派 + CI 规则联动
+- **高级**：Gitea 自建 → 团队私有代码托管平台
 
 ---
 
@@ -96,8 +98,9 @@ graph TB
 | `01-git/`（本文） | 1 | 顶层 |
 | ├─ `command/` | 1 | Git 命令清单速查 |
 | └─ `gitea/` | 1 | Gitea 自托管服务 |
-| **分类 leaf 合计** | **2 depth-2 + 1 顶层 = 3** | 100% frontmatter |
-| **学习路径主题数** | 2 条（入门：命令清单 → 进阶：Gitea 自建） | 见上方学习路径 |
+| └─ `branch-naming/` | 1 | Conventional Branches + 3 大流派 + CI 联动 |
+| **分类 leaf 合计** | **3 depth-2 + 1 顶层 = 4** | 100% frontmatter |
+| **学习路径主题数** | 3 条（入门：命令清单 → 进阶：分支命名 → 高级：Gitea 自建） | 见上方学习路径 |
 
 > 数字基线：本节以 leaf README 数 + 学习路径主题数双口径统计
 
@@ -105,6 +108,7 @@ graph TB
 
 ## 相关章节
 - 上游：[`工具链`](../README.md)
+- 兄弟：`[`branch-naming/`](branch-naming/README.md)` — 分支命名规范（Conventional Branches + CI 联动）
 - 关联：[`05-monorepo`](../05-monorepo/README.md) — Monorepo 仓库管理依赖 Git 子模块/worktree
 
 ---

@@ -187,7 +187,8 @@ git push --force-with-lease --all                   # --all 涵盖所有分支
 
 ## 相关阅读
 
-- [Git 工具总览](../README.md) — 命令清单 + Gitea 自托管
+- [Git 工具总览](../README.md) — 命令清单 + Gitea 自托管 + 分支命名规范
 - [Gitea 自托管](../gitea/README.md) — 团队私有代码托管平台
+- [分支命名规范](../branch-naming/README.md) — Conventional Branches + 3 大流派 + CI 联动（**搭配本命令清单使用**）
 
 ← [返回 Git 工具](../README.md)

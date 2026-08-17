@@ -357,7 +357,7 @@ git push origin --delete feat/PROJ-1234-add-wechat-login
 
 - [`../` Git 工具总览](../README.md) — 命令清单 + Gitea 自托管 + 本文命名规范三大件
 - [`../command/` Git 命令清单](../command/README.md) — `git switch / restore / branch` 等命令细节
-- [`../../../04-nginx/pingora/README.md`](../../../04-nginx/pingora/README.md) — 兄弟目录交叉引用示例
+- [`../../04-nginx/pingora/README.md`](../../04-nginx/pingora/README.md) — 兄弟目录交叉引用示例
 - [`../../devops/04-pipeline-patterns/README.md`](../../devops/04-pipeline-patterns/README.md) — 三大分支策略（Git Flow / GitHub Flow / Trunk-Based）的完整对比
 
 ---
