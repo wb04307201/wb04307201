@@ -11,7 +11,7 @@ module:
 
 > 一句话定位：**1 万条数据 + 嵌套对象 + 深层修改卡 2 秒 —— 排查路径、响应式 / 数据 / 渲染 3 层优化、5 大反模式**
 
-本文是 [`../README.md`](../) 的"实战调优"姊妹篇，专门针对"中后台表格 / SKU 树 / 组织架构树 / 长列表筛选"等场景下，**Vue 3 响应式 + 深层修改导致的卡顿**。原理细节见 [`../../../12.interview/09.front-end/vue-reactivity/README.md`](../../../12.interview/09.front-end/vue-reactivity/README.md)（响应式原理），本文专攻**实战**。
+本文是 [`../README.md`](../) 的"实战调优"姊妹篇，专门针对"中后台表格 / SKU 树 / 组织架构树 / 长列表筛选"等场景下，**Vue 3 响应式 + 深层修改导致的卡顿**。原理细节见 [`../../../../12.interview/09.front-end/vue-reactivity/README.md`](../../../../12.interview/09.front-end/vue-reactivity/README.md)（响应式原理），本文专攻**实战**。
 
 ---
 
@@ -447,9 +447,9 @@ function update(id: number) {
 ## 交叉引用
 
 - [`../README.md`](../) — Vue 3.4+ 总览（性能优化 bullet 列表）
-- [`../../../12.interview/09.front-end/vue-reactivity/README.md`](../../../12.interview/09.front-end/vue-reactivity/README.md) — Vue 响应式原理深度（原理细节）
-- [`../../../12.interview/09.front-end/large-list-perf/README.md`](../../../12.interview/09.front-end/large-list-perf/README.md) — 面试题版（30s/90s + 反模式速查）
-- [`../../../06-performance/optimization/`](../../../../06-performance/optimization/) — 通用渲染性能优化章节
+- [`../../../../12.interview/09.front-end/vue-reactivity/README.md`](../../../../12.interview/09.front-end/vue-reactivity/README.md) — Vue 响应式原理深度（原理细节）
+- [`../../../../12.interview/09.front-end/large-list-perf/README.md`](../../../../12.interview/09.front-end/large-list-perf/README.md) — 面试题版（30s/90s + 反模式速查）
+- [`../../../../06-performance/optimization/`](../../../../06-performance/optimization/) — 通用渲染性能优化章节
 
 ---
 
