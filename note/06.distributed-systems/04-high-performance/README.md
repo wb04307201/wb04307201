@@ -101,6 +101,7 @@ graph TD
 | ├─ 🆕 `sensitive-word-filter/` | 6 | AC 自动机 + Bloom + Caffeine + 分布式 100w QPS + 变体绕过对抗 |
 | ├─ 🆕 `multi-field-ranking/` | 1 | 归一化方法论 + 加权公式 + 动态权重 + 6 大典型场景 |
 | ├─ 🆕 `product-search/` | 4 | 倒排索引 + IK 分词 + BM25 + 多阶段排序 + 数据同步 |
+| ├─ 🆕 `short-video-recommend/` | 1 | 4 层漏斗（召回/粗排/精排/重排）+ 多路召回 + DIN/DIEN/MMoE + 2024-2026 多模态/大模型融合 |
 | ├─ 🆕 `file-upload/` | 4 | 分片上传 + 断点续传 + 秒传 + 对象存储 + 引用计数 |
 | └─ `serialization/` | 1 | Protobuf / Kryo / Hessian |
 | **leaf README 合计** | 17 depth-2 leaf + 1 顶层 = **18** | 100% frontmatter |

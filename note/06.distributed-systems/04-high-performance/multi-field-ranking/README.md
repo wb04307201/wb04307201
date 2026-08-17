@@ -514,6 +514,7 @@ LIMIT 20 OFFSET 0;
 - 缓存模式：[cache-patterns](../cache-patterns/README.md) — 排名缓存设计
 - Redis 排序：[redis](../../../03.data-stack/01-database/07-redis/README.md) — Sorted Set 底层原理
 - 面试题：[13.split-hairs/multi-field-ranking](../../../12.interview/04.system-design/multi-field-ranking/README.md) — 面试高频拷问
+- ML 推荐系统：[`short-video-recommend/`](../short-video-recommend/README.md) — 短视频/Feed 流场景的召回-排序架构（与本文规则排序互补）
 
 ← [返回: 04-high-performance](../README.md) | [返回: 04.system-design](../../README.md)
 
