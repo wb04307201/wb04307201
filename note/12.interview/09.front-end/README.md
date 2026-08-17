@@ -16,11 +16,11 @@ question:
 
 # 前端咬文嚼字
 
-> 前端高频面试题与细节深挖，对齐主模块 [`09.front-end`](../../../note/09.front-end/)。27 篇真题覆盖 JS 核心 / HTTP / CSS / 浏览器机制 / 工具测试 / 框架 / 安全 / 工程迁移 / Promise 9 大方向（find 校对 2026-08-10；BFC / GET vs POST 已迁出至主模块）。
+> 前端高频面试题与细节深挖，对齐主模块 [`09.front-end`](../../../note/09.front-end/)。28 篇真题覆盖 JS 核心 / HTTP / CSS / 浏览器机制 / 工具测试 / 框架 / 安全 / 工程迁移 / Promise 9 大方向（find 校对 2026-08-17；BFC / GET vs POST 已迁出至主模块；🆕 含 Vue 大列表性能调优实战）。
 
 ---
 
-## 文章清单（共 27 题，find 校对 2026-08-10）
+## 文章清单（共 28 题，find 校对 2026-08-17）
 
 ### JavaScript 核心
 | 主题 | 难度 | 核心问题 |
@@ -66,6 +66,7 @@ question:
 | [Virtual DOM Diff](virtual-dom-diff/) | ⭐⭐⭐⭐ | O(n) 复杂度 / key 的作用 / diff 策略 |
 | [React Hooks 原理](react-hooks/) | ⭐⭐⭐⭐ | useState / useEffect / useMemo / useCallback |
 | [Vue 响应式原理](vue-reactivity/) | ⭐⭐⭐⭐ | Object.defineProperty vs Proxy |
+| 🆕 [Vue 大列表性能调优](large-list-perf/) | ⭐⭐⭐⭐⭐ | 1 万条+嵌套+深层修改卡 2 秒 → 排查 4 步 + 4 层优化（shallowRef/Map/虚拟滚动）+ 量化基准 |
 
 ### 安全
 | 主题 | 难度 | 核心问题 |
