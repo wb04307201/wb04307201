@@ -1,0 +1,104 @@
+<!--
+module:
+  parent: split-hairs
+  slug: 09.front-end
+  type: article
+  category: 高频面试题
+  summary: 前端高频面试题与细节深挖（JS 核心 / HTTP / 浏览器机制 / 框架）
+question:
+  id: 09.front-end-09.front-end
+  topic: 09.front-end
+  difficulty: ⭐⭐⭐⭐
+  frequency: 高频
+  scenario_type: 反直觉代码
+  tags: [09.front-end, end]
+-->
+
+# 前端咬文嚼字
+
+> 前端高频面试题与细节深挖，对齐主模块 [`09.front-end`](../../../note/09.front-end/)。27 篇真题覆盖 JS 核心 / HTTP / CSS / 浏览器机制 / 工具测试 / 框架 / 安全 / 工程迁移 / Promise 9 大方向（find 校对 2026-08-10；BFC / GET vs POST 已迁出至主模块）。
+
+---
+
+## 文章清单（共 27 题，find 校对 2026-08-10）
+
+### JavaScript 核心
+| 主题 | 难度 | 核心问题 |
+|------|------|---------|
+| [闭包 Closure](closure/) | ⭐⭐⭐⭐ | 私有变量 / 内存泄漏 / React Hooks 陷阱 |
+| [事件循环 Event Loop](event-loop/) | ⭐⭐⭐⭐ | 宏任务 / 微任务 / async-await 本质 |
+| [原型链与继承](prototype-chain/) | ⭐⭐⭐⭐ | `__proto__` vs `prototype` / 继承方案 |
+| [this 绑定规则](this-binding/) | ⭐⭐⭐⭐ | 默认 / 隐式 / 显式 / new / 箭头函数 |
+| [防抖 + 节流手写](debounce-throttle/) | ⭐⭐⭐⭐ | debounce / throttle 实现与应用场景 |
+| [防抖流式场景不合适](debounce-streaming/) | ⭐⭐⭐⭐ | AI/SSE 流式输出中的 3 大问题 + 正确方案 |
+
+### HTTP 与网络
+| 主题 | 难度 | 核心问题 |
+|------|------|---------|
+| [HTTP 缓存机制](http-cache/) | ⭐⭐⭐⭐ | 强缓存 Cache-Control / 协商缓存 ETag |
+| [CORS 跨域详解](cors/) | ⭐⭐⭐⭐ | 简单请求 / 预检请求 / 常见头部 |
+| [HTTPS 握手过程](https-handshake/) | ⭐⭐⭐⭐⭐ | TLS 1.2 vs 1.3 / 证书验证 |
+
+### CSS
+| 主题 | 难度 | 核心问题 |
+|------|------|---------|
+| [按钮 CSS 几十行](css-button-styling/) | ⭐⭐⭐ | 8 状态 + 3 抽象层 + 5 大架构方案 |
+
+### 浏览器机制
+| 主题 | 难度 | 核心问题 |
+|------|------|---------|
+| [消息机制](message/) | ⭐⭐⭐ | 浏览器事件循环 + 宏任务 / 微任务 |
+| [存储方案](storage/) | ⭐⭐ | Cookie / LocalStorage / SessionStorage / IndexedDB |
+| [从 URL 输入到页面展示](from-url-to-page/) | ⭐⭐⭐⭐⭐ | 综合题：网络 + 解析 + 渲染全链路 |
+| [CSS 渲染阻塞](css-render-blocking/) | ⭐⭐⭐⭐ | CSS 位置 vs 首屏白屏 + 6 种优化姿势 |
+| [回流与重绘](reflow-repaint/) | ⭐⭐⭐⭐ | 渲染队列机制 + Layout Thrashing 避免 |
+| [script async / defer](script-async-defer/) | ⭐⭐⭐⭐ | 加载 vs 执行时机 + DOMContentLoaded |
+| [懒加载 vs 预加载](lazy-load-preload/) | ⭐⭐⭐⭐ | preload / prefetch / preconnect / dns-prefetch |
+
+### 工具与测试
+| 主题 | 难度 | 核心问题 |
+|------|------|---------|
+| [Playwright vs Selenium](playwright-vs-selenium/) | ⭐⭐⭐ | 2026 Web 自动化测试选型 + 5 大维度对比 |
+
+### 框架
+| 主题 | 难度 | 核心问题 |
+|------|------|---------|
+| [Virtual DOM Diff](virtual-dom-diff/) | ⭐⭐⭐⭐ | O(n) 复杂度 / key 的作用 / diff 策略 |
+| [React Hooks 原理](react-hooks/) | ⭐⭐⭐⭐ | useState / useEffect / useMemo / useCallback |
+| [Vue 响应式原理](vue-reactivity/) | ⭐⭐⭐⭐ | Object.defineProperty vs Proxy |
+
+### 安全
+| 主题 | 难度 | 核心问题 |
+|------|------|---------|
+| [XSS / CSRF 攻击防御](xss-csrf/) | ⭐⭐⭐⭐ | 反射型 / 存储型 / Token / SameSite Cookie |
+| **🆕 [用户登录 Token 存储安全](token-storage-security/)** | ⭐⭐⭐⭐ | localStorage / sessionStorage / HttpOnly Cookie + 双 Token 方案 |
+
+### 工具方法
+| 主题 | 难度 | 核心问题 |
+|------|------|---------|
+| [深拷贝实现](deep-copy/) | ⭐⭐⭐⭐ | 递归 / 循环引用 / 特殊类型处理 |
+
+### 工程迁移
+| 主题 | 难度 | 核心问题 |
+|------|------|---------|
+| [Webpack → Vite/Rspack 迁移坑](webpack-vite-migration/) | ⭐⭐⭐⭐ | CJS vs ESM / Tree-Shaking 差异 / 环境变量迁移 |
+
+### Promise 专题
+| 主题 | 难度 | 核心问题 |
+|------|------|---------|
+| [Promise 手写实现](promise-handwriting/) | ⭐⭐⭐⭐⭐ | resolve / reject / then / catch / all / race |
+
+---
+
+## 学习路径
+
+1. **入门**（3 天）：存储方案 + 消息机制（GET vs POST 已迁出至 [主模块](../../05.frontend/03-network/http-protocol/get-vs-post.md)）
+2. **进阶**（2 周）：事件循环 + 闭包 + 原型链 + this 绑定 + Promise 手写 + 🆕 **async/await 错误处理**
+3. **冲刺面试**：重点看"从 URL 输入到页面展示"、"HTTPS 握手"、"Virtual DOM Diff"、"Vue 响应式原理"、"CSS 渲染阻塞"、"回流与重绘"、"Playwright vs Selenium"、🆕 **"async/await 必须 try/catch 吗"**
+
+## 相关章节
+
+- 主模块：[`note/09.front-end`](../../../note/09.front-end/) — 前端知识体系
+- 相关章节：[`01-foundation`](../../../note/09.front-end/01-foundation/) / [`02-language`](../../../note/09.front-end/02-language/)（基础与语言）
+
+← [返回咬文嚼字（高频面试题）](../README.md)

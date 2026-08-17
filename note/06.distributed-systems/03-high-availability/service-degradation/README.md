@@ -1,0 +1,175 @@
+<!--
+module:
+  parent: system-design
+  slug: system-design/service-degradation
+  type: article
+  category: 主模块子文章
+  summary: 服务降级 本应该很简单
+-->
+
+# 服务降级
+
+---
+
+在分布式系统中，**服务降级** 是一种核心容错策略，其核心目标是通过主动降低非核心功能的质量或暂停非关键服务，确保系统在资源紧张或故障时仍能优先保障核心功能的可用性。以下是详细介绍：
+
+## 目录
+
+- [一、服务降级的核心原理](#一服务降级的核心原理)
+- [二、服务降级的实现方式](#二服务降级的实现方式)
+- [三、服务降级的应用场景](#三服务降级的应用场景)
+- [四、服务降级的实践要点](#四服务降级的实践要点)
+- [五、服务降级与其他容错策略的协同](#五服务降级与其他容错策略的协同)
+- [六、案例分析：电商平台大促降级实践](#六案例分析电商平台大促降级实践)
+- [七、代码示例](#七代码示例)
+- [八、总结](#八总结)
+- [相关章节](#相关章节)
+
+## 一、服务降级的核心原理
+1. **优先级管理**  
+   系统需明确区分核心功能（如支付、订单处理）和非核心功能（如推荐算法、评论功能）。在资源不足时，优先保障核心功能运行，非核心功能通过降级释放资源。
+    - **示例**：电商平台大促期间，关闭实时推荐算法，仅保留基础商品列表展示。
+
+2. **动态调整机制**  
+   通过监控系统实时状态（如CPU使用率、响应时间、错误率），自动或手动触发降级策略，适应不同负载场景。
+    - **自动化工具**：如Sentinel、Resilience4j等框架支持基于阈值的动态降级。
+
+3. **逐级降级策略**  
+   避免一次性关闭所有非核心功能，而是逐步降低服务质量（如减少数据刷新频率、降低图片分辨率），平衡用户体验与系统稳定性。
+
+## 二、服务降级的实现方式
+1. **功能降级**
+    - **直接关闭非核心功能**：如暂停用户评论、搜索建议等非关键服务。
+    - **简化业务流程**：将同步操作改为异步（如订单确认邮件延迟发送），减少实时资源占用。
+
+2. **质量降级**
+    - **降低数据精度**：如返回缓存的旧数据而非实时计算结果，或减少返回的数据字段。
+    - **异步处理**：将非实时任务（如日志记录、数据分析）放入消息队列，延迟处理以释放即时资源。
+
+3. **降级开关设计**
+    - **配置化开关**：通过系统配置文件或动态API控制降级策略，支持快速启用/禁用。
+    - **分层触发**：根据故障级别（如局部故障、全局过载）执行不同降级方案。
+
+## 三、服务降级的应用场景
+1. **高并发场景**
+    - **秒杀活动**：关闭非核心接口（如库存详情页），仅保留下单功能，防止系统崩溃。
+    - **突发流量**：通过限流配合降级，确保核心服务（如用户登录）不受影响。
+
+2. **依赖服务故障**
+    - **下游服务超时**：当依赖的支付服务响应缓慢时，返回预设的降级数据（如“服务繁忙，请稍后重试”），避免请求堆积。
+    - **数据库故障**：切换至只读模式或返回缓存数据，保障系统基本可用性。
+
+3. **资源不足时**
+    - **CPU/内存过载**：降低图片处理质量或暂停批量任务，优先保障在线交易功能。
+
+## 四、服务降级的实践要点
+1. **业务梳理与优先级定义**
+    - 通过业务影响分析（BIA）明确核心功能，制定降级策略白名单。
+    - **示例**：金融系统中，交易功能优先级高于风控报表生成。
+
+2. **降级预案与演练**
+    - 提前设计降级流程（如简化后的订单页面），并通过混沌工程（Chaos Engineering）模拟故障验证预案有效性。
+    - **工具支持**：使用 Chaos Monkey 随机关闭服务节点，测试系统降级能力。详细可阅读本篇 [混沌工程](../chaos-engineering/README.md) 章节。
+
+3. **监控与恢复机制**
+    - **实时监控**：通过Prometheus、Grafana等工具监控关键指标（如错误率、响应时间），触发降级阈值。
+    - **自动恢复**：在故障服务恢复后，逐步重启降级功能，避免流量突增导致二次故障。
+
+## 五、服务降级与其他容错策略的协同
+1. **与熔断（Circuit Breaker）的配合**
+    - 熔断机制在服务故障时快速切断调用链，防止故障扩散；降级机制在熔断后提供替代方案（如返回默认值或缓存数据）。
+    - **示例**：当支付服务熔断后，降级为返回“现金支付”选项。
+
+2. **与限流（Rate Limiting）的配合**
+    - 限流控制进入系统的请求速率，防止过载；降级在限流后进一步优化资源分配（如关闭非核心API）。
+
+## 六、案例分析：电商平台大促降级实践
+- **场景**：双11期间，订单系统流量激增10倍。
+- **降级策略**：
+    1. **功能降级**：关闭商品评价、实时推荐等非核心功能。
+    2. **质量降级**：将订单详情页从实时渲染改为静态模板，减少数据库查询。
+    3. **异步处理**：将订单日志记录改为异步写入，避免阻塞主流程。
+- **效果**：系统核心功能（下单、支付）可用性保持在99.99%，非核心功能响应时间降低70%。
+
+## 七、代码示例
+
+### 1. Sentinel 降级规则（Dashboard JSON 片段）
+```json
+[
+  {
+    “resource”: “getUserRecommend”,
+    “grade”: 1,
+    “count”: 50,
+    “timeWindow”: 5,
+    “minRequestAmount”: 10,
+    “statIntervalMs”: 1000,
+    “slowRatioThreshold”: 0.5
+  }
+]
+```
+> 含义：1 秒内请求数 ≥ 10 且异常比例 / 慢调用比例 > 50% 时，对 `getUserRecommend` 接口在 5 秒内做降级。
+
+### 2. Sentinel Java 代码
+```java
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
+
+@Service
+public class RecommendService {
+
+    @SentinelResource(
+        value = “getUserRecommend”,
+        blockHandler = “recommendFallback”,
+        fallback = “recommendFallback”
+    )
+    public List<Item> recommend(Long userId) {
+        return remoteRecommendClient.fetch(userId);
+    }
+
+    // 降级 / 熔断兜底：返回缓存或空列表
+    public List<Item> recommendFallback(Long userId, BlockException ex) {
+        return recommendCache.getOrDefault(userId, Collections.emptyList());
+    }
+}
+```
+
+### 3. Resilience4j Fallback
+```java
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+
+@Service
+public class PaymentService {
+
+    @CircuitBreaker(name = “payment”, fallbackMethod = “degradedPay”)
+    public PayResult pay(Order order) {
+        return remotePayClient.charge(order);
+    }
+
+    // 降级：返回”稍后重试”占位
+    public PayResult degradedPay(Order order, Throwable t) {
+        return PayResult.deferred(“支付通道繁忙，请稍后重试”);
+    }
+}
+```
+
+## 八、总结
+服务降级是分布式系统中”优雅退让”的容错策略，其核心价值在于：
+- **保障核心业务连续性**：通过资源倾斜确保关键功能稳定运行。
+- **提升系统鲁棒性**：在故障或过载时避免全面崩溃，实现可控的降级。
+- **优化用户体验**：即使部分功能受限，仍能提供基本服务，减少用户流失。
+
+**实施建议**：结合业务特点制定分级降级策略，通过自动化工具实现快速响应，并定期演练确保预案有效性。
+
+## 相关章节
+
+降级是容错链路的”最后一公里”——当其他手段都用尽时给用户一个能用但粗糙的兜底：
+
+- [限流](../rate-limiting/README.md) — 限流被拒绝的请求可以走降级逻辑返回缓存
+- [熔断](../circuit-break/README.md) — 熔断 Open 状态时降级立即接管
+- [重试](../retry/README.md) — 重试耗尽后降级返回兜底
+- [超时](../timeout/README.md) — 超时后可选择降级而非立即失败
+- [混沌工程](../chaos-engineering/README.md) — 通过注入故障验证降级预案有效性
+
+
+- [cache-degradation-and-recovery](../../../04.spring-backend/04-data/cache/cache-degradation-and-recovery.md)
+← [返回 高可用](../README.md)

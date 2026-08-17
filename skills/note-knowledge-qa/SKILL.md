@@ -1,13 +1,15 @@
 ---
 name: note-knowledge-qa
-description: Use when user asks a technical question / "查 note" / "知识库问答" / "我有问题想问" requests interview prep / "面试题" / "出一道题" / "考考我" / "根据简历出题" / "模拟面试" / "面试非科班" wants system design guidance / "如何设计 X" or needs knowledge from the note/ knowledge base — retrieves relevant articles across 14 modules, follows cross-references, synthesizes comprehensive answers with citations
+description: Use when user asks a technical question / "查 note" / "知识库问答" / "我有问题想问" requests interview prep / "面试题" / "出一道题" / "考考我" / "根据简历出题" / "模拟面试" / "面试非科班" wants system design guidance / "如何设计 X" or needs knowledge from the note/ knowledge base — retrieves relevant articles across the 13-module structure (read at runtime), follows cross-references, synthesizes comprehensive answers with citations
 ---
+
+> **规则来源**：执行前用 `find note -maxdepth 1 -type d` 读取当前模块结构，读 `note/SPEC.md` 了解全局规范，读目标模块的 `<module>/SPEC.md` 了解专属维度。模块数 / 文件数在运行时统计，不硬编码。
 
 # note 知识库问答
 
 ## Overview
 
-把 `note/` 知识库（14 主模块 / 781 README / 1066 .md，2026-07-25 find 校对）变成**可检索的私人智囊**。对用户问题做：关键词提取 → 模块定位 → 文件检索 → 关联追踪 → 整合回答。
+把 `note/` 知识库（13 主模块，文件数在运行时统计）变成**可检索的私人智囊**。对用户问题做：关键词提取 → 模块定位 → 文件检索 → 关联追踪 → 整合回答。
 
 > ⚠️ **数字校对**：本文件使用 `find` 实测数字，避免 hardcode 漂移。统计命令：
 > ```bash
@@ -22,7 +24,7 @@ description: Use when user asks a technical question / "查 note" / "知识库�
 ```
 用户：HashMap 为什么线程不安全？
    ↓
-skill 执行：A 类型（技术问答）→ grep "HashMap" → 双层检索（01.java + 13.split-hairs）
+skill 执行：A 类型（技术问答）→ grep "HashMap" → 双层检索（01.java-and-jvm 主模块 + 12.interview/01.java 面试版）
    ↓
 输出（节选）：
   ## HashMap 线程不安全
@@ -40,8 +42,8 @@ skill 执行：A 类型（技术问答）→ grep "HashMap" → 双层检索（0
 
   ### 📚 知识来源
   | 来源 | 路径 | 覆盖内容 |
-  | HashMap 原理 | note/01.java/collection/hashmap/README.md | 数据结构 + 树化阈值 |
-  | 面试陷阱 | note/13.split-hairs/01.java/hashmap-thread-safe/ | 并发死循环细节 |
+  | HashMap 原理 | note/01.java-and-jvm/collection/hashmap.md | 数据结构 + 树化阈值 |
+  | 面试陷阱 | note/12.interview/01.java/hashmap-thread-unsafe/ | 并发死循环细节 |
 
 不同点：不凭 LLM 训练知识答 — 每条都附 note/ 实际文章路径
 
@@ -272,7 +274,7 @@ grep -rl "$KEYWORD" note/ --include="*.md" 2>/dev/null \
 # === 13.split-hairs 命中（被面试者视角）===
 echo ""
 echo "═══ 13.split-hairs 命中（面试陷阱版，最多 5 个）═══"
-grep -rl "$KEYWORD" note/13.split-hairs/ 2>/dev/null \
+grep -rl "$KEYWORD" note/12.interview/ 2>/dev/null \
   | xargs -I {} sh -c 'count=$(grep -c "$0" "{}" 2>/dev/null); echo "$count {}"' "$KEYWORD" \
   | sort -rn \
   | head -5 \
@@ -281,14 +283,14 @@ grep -rl "$KEYWORD" note/13.split-hairs/ 2>/dev/null \
 # === 12.story 命中（叙事类比版）===
 echo ""
 echo "═══ 12.story 命中（阿明餐厅版，最多 3 个）═══"
-grep -rl "$KEYWORD" note/12.story/ 2>/dev/null \
+grep -rl "$KEYWORD" note/13.story/ 2>/dev/null \
   | head -3 \
   | awk '{print "  →  " $1}'
 
 # === 14.project-management 命中（仅面试方法论问题）===
 echo ""
 echo "═══ 14.project-management 命中（面试官视角，最多 3 个）═══"
-grep -rl "$KEYWORD" note/14.project-management/ 2>/dev/null \
+grep -rl "$KEYWORD" note/11.product-and-pm/ 2>/dev/null \
   | head -3 \
   | awk '{print "  →  " $1}'
 
@@ -498,7 +500,7 @@ echo "═══ 建议阅读顺序：主模块 → 13.split-hairs → 12.story�
 
 追问检索流程：
 1. 从薄弱点提取关键词
-2. grep 搜索 note/13.split-hairs/ 和主模块
+2. grep 搜索 note/12.interview/ 和主模块
 3. 读取命中的文章，找到对应段落
 4. 基于 note/ 内容构造追问（确保追问有标准答案）
 5. 追问时附"参考：{note/路径}"以便用户事后学习
@@ -548,16 +550,16 @@ echo "═══ 建议阅读顺序：主模块 → 13.split-hairs → 12.story�
 ```
 {技术点}
 ├── 基础层（概念/原理）
-│   ├── `note/01.java/xxx/README.md` — {一句话概括}
-│   └── `note/01.java/yyy/README.md` — {一句话概括}
+│   ├── `note/01.java-and-jvm/xxx/README.md` — {一句话概括}
+│   └── `note/01.java-and-jvm/yyy/README.md` — {一句话概括}
 ├── 进阶层（源码/深度）
-│   ├── `note/13.split-hairs/01.java/xxx/` — {面试题+陷阱}
-│   └── `note/01.java/zzz/` — {源码分析}
+│   ├── `note/12.interview/01.java/xxx/` — {面试题+陷阱}
+│   └── `note/01.java-and-jvm/zzz/` — {源码分析}
 ├── 实战层（工程/架构）
-│   ├── `note/06.spring/xxx/` — {Spring 集成}
-│   └── `note/04.system-design/xxx/` — {系统设计}
+│   ├── `note/04.spring-backend/xxx/` — {Spring 集成}
+│   └── `note/06.distributed-systems/xxx/` — {系统设计}
 └── 叙事层（故事/类比）
-    └── `note/12.story/xxx.md` — {阿明餐厅类比}
+    └── `note/13.story/xxx.md` — {阿明餐厅类比}
 ```
 
 ═══ 第二部分：问题清单 + 追问链 ═══
@@ -618,13 +620,13 @@ grep -rl "Redis" note/ | sort
 │   └── `note/xx/zz/README.md` — {一句话}
 ├── Level 2: 进阶（掌握基础后读）
 │   ├── `note/xx/aa/` — {一句话}
-│   └── `note/13.split-hairs/xx/bb/` — {面试题，验证理解}
+│   └── `note/12.interview/xx/bb/` — {面试题，验证理解}
 ├── Level 3: 深入（想看源码/原理时读）
 │   ├── `note/xx/cc/` — {一句话}
 │   └── `note/xx/dd/` — {一句话}
 └── Level 4: 实战（做项目时参考）
     ├── `note/xx/ee/` — {一句话}
-    └── `note/12.story/xx.md` — {故事化理解}
+    └── `note/13.story/xx.md` — {故事化理解}
 ```
 
 ═══ 第二部分：交互式学习路径 ═══
@@ -699,8 +701,8 @@ grep -rl "Redis" note/ | sort
 
 | 来源 | 路径 | 覆盖内容 |
 |------|------|---------|
-| 面试问题库 | `note/14.project-management/interviewing-cross-disciplinary/` | 5 场景双题库 + 评估模型 |
-| {降维对照} | `note/13.split-hairs/...` | {科班版原题} |
+| 面试问题库 | `note/11.product-and-pm/interviewing-cross-disciplinary/` | 5 场景双题库 + 评估模型 |
+| {降维对照} | `note/12.interview/...` | {科班版原题} |
 ```
 
 ---
@@ -736,8 +738,8 @@ grep -rl "Redis" note/ | sort
 
 | 来源 | 路径 | 覆盖内容 |
 |------|------|---------|
-| JVM 调优 | `note/01.java/jvm/tuning.md` | JVM 参数详解 |
-| Loop Engineering | `note/11.ai/03-engineering/loop-engineering/README.md` | 循环调用原理 |
+| JVM 调优 | `note/01.java-and-jvm/jvm/tuning.md` | JVM 参数详解 |
+| Loop Engineering | `note/08.ai-foundations/03-engineering/loop-engineering/README.md` | 循环调用原理 |
 ```
 
 ## Common Mistakes

@@ -1,4 +1,6 @@
 > 由 note-health/SKILL.md Phase 1 / Phase 4 调用
+
+> **11 类基础扫描规则已迁入 `note/SPEC.md` §6**（核心定义）。本文件保留**详细执行步骤 + 阈值 + 误判识别 + 自动化脚本**等扩展内容。
 >
 > **章节编号说明**：本文件的 Step 编号早于 SKILL.md 的 Phase 1-4 重构。映射如下：
 > - **Step 1**（现状扫描）= **Phase 1**（结构扫描）
@@ -22,7 +24,7 @@
 ## 已知已修复项（扫描时必须排除，避免重复报告）
 
 跑体检时，以下已修复问题**必须过滤**，不要重复报告：
-- ✅ 14 主模块优化（2026-07-01 spec/plan/实施）
+- ✅ 13 主模块优化（2026-08-13 完成 note 目录重构）（2026-07-01 spec/plan/实施）
 - ✅ 时间戳标记 `最后更新`（commit `785896e`）
 - ✅ `引言：反直觉代码` 模板残留（commit `30f6323`）
 - ✅ Agent Memory / Dropout / Claude Code / Vector Search 三档专题沉淀
@@ -271,7 +273,7 @@ for child in $(find note -name "*.md"); do
 done
 echo "=== 同级兄弟不互链扫描（示例）==="
 # 在某个目录下找兄弟 README，验证是否互相链接
-DIR_TO_CHECK="note/11.ai/07-llmops"
+DIR_TO_CHECK="note/08.ai-foundations/07-llmops"
 for sibling in $(find "$DIR_TO_CHECK" -name "README.md" -maxdepth 2 2>/dev/null); do
   for other in $(find "$DIR_TO_CHECK" -name "README.md" -maxdepth 2 2>/dev/null); do
     [ "$sibling" = "$other" ] && continue
@@ -458,17 +460,17 @@ def count_all_readmes(mod_dir):
     return count
 
 actual = {
-    '01.java':         count_all_readmes('note/13.split-hairs/01.java'),
-    '02.computer-basics': count_all_readmes('note/13.split-hairs/02.computer-basics'),
-    '03.database':     count_all_readmes('note/13.split-hairs/03.database'),
-    '04.system-design': count_all_readmes('note/13.split-hairs/04.system-design'),
-    '05.security':     count_all_readmes('note/13.split-hairs/05.security'),
-    '06.spring':       count_all_readmes('note/13.split-hairs/06.spring'),
-    '09.front-end':    count_all_readmes('note/13.split-hairs/09.front-end'),
-    '10.big-data':     count_all_readmes('note/13.split-hairs/10.big-data'),
-    '11.ai':           count_all_readmes('note/13.split-hairs/11.ai'),
-    'tools':           count_all_readmes('note/13.split-hairs/tools'),
-    '12.story':        len([f for f in glob.glob('note/12.story/[0-9]*.md') if 'STORY-FORMAT-SPEC' not in f]),
+    '01.java':         count_all_readmes('note/12.interview/01.java'),
+    '02.computer-basics': count_all_readmes('note/12.interview/02.computer-basics'),
+    '03.database':     count_all_readmes('note/12.interview/03.database'),
+    '04.system-design': count_all_readmes('note/12.interview/04.system-design'),
+    '05.security':     count_all_readmes('note/12.interview/05.security'),
+    '06.spring':       count_all_readmes('note/12.interview/06.spring'),
+    '09.front-end':    count_all_readmes('note/12.interview/09.front-end'),
+    '10.big-data':     count_all_readmes('note/12.interview/10.big-data'),
+    '11.ai':           count_all_readmes('note/12.interview/11.ai'),
+    'tools':           count_all_readmes('note/12.interview/tools'),
+    '12.story':        len([f for f in glob.glob('note/13.story/[0-9]*.md') if 'STORY-FORMAT-SPEC' not in f]),
 }
 
 print('=== 实际篇数（含根 README）===')
@@ -645,7 +647,7 @@ MISMATCH_RULES = {
 }
 
 issues = []
-for readme in glob.glob('note/11.ai/*/**/README.md', recursive=True):
+for readme in glob.glob('note/08.ai-foundations/*/**/README.md', recursive=True):
     parts = readme.replace(os.sep, '/').split('/')
     if len(parts) < 4: continue
     parent_dir = parts[2]  # 03-engineering / 07-research / 08-llmops 等
@@ -745,7 +747,7 @@ PYEOF
 ### 12. 版本序列导航检查（2026-07-28 新增）
 
 **历史教训**（2026-07-28 Java 版本体检）：
-- `note/01.java/version/` 下 18 个 Java 版本文件（java-8/ ~ java-26/），15 个缺少前后版本导航链接
+- `note/01.java-and-jvm/version/` 下 18 个 Java 版本文件（java-8/ ~ java-26/），15 个缺少前后版本导航链接
 - 只有 java-9、java-10、java-17 有导航，其余版本各自孤立
 - 作为系列文章，每个版本应至少有 `← [Java N-1] | [Java N+1] →` 的导航链
 
@@ -922,7 +924,7 @@ if sys.platform == 'win32':
     except: pass
 
 issues = []
-for f in glob.glob('note/13.split-hairs/**/*.md', recursive=True):
+for f in glob.glob('note/12.interview/**/*.md', recursive=True):
     if f.endswith('README.md') and os.path.dirname(f).count(os.sep) == 3:
         continue
     try:
@@ -1090,9 +1092,9 @@ git diff --ignore-cr-at-eol --ignore-space-at-eol
 
 **症状**：审计只检查"无回链"（leaf → parent 缺失），不检查"单向回链"（parent → leaf 缺失）。例如：
 
-- `note/11.ai/07-llmops/05-agent-evaluation/README.md` 链到 `07-llmops/README.md` —— 后者**没反向链**到前者
-- `note/11.ai/03-engineering/production-agent/README.md` 链到 `11.ai/README.md` —— 后者**没反向链**到前者
-- `note/11.ai/04-architecture/intelligent-system-layers/README.md` 被 `agent-architecture` 链到 —— **没反向链**
+- `note/08.ai-foundations/07-llmops/05-agent-evaluation/README.md` 链到 `07-llmops/README.md` —— 后者**没反向链**到前者
+- `note/08.ai-foundations/03-engineering/production-agent/README.md` 链到 `11.ai/README.md` —— 后者**没反向链**到前者
+- `note/08.ai-foundations/04-architecture/intelligent-system-layers/README.md` 被 `agent-architecture` 链到 —— **没反向链**
 
 **修复**：
 - **审计类别 #3 升级**："回链覆盖率" → **"回链覆盖率 + 互链双向性"**
