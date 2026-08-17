@@ -26,7 +26,7 @@ Java 里有三个名字长得像三胞胎的关键字：
 
 ## 一、final
 
-> 📚 **前置知识**：[Java 语法基础](../../../01.java-and-jvm/concepts/syntax/README.md)
+> 📚 **前置知识**：[Java 语法基础](../../../01.java-and-jvm/01-language/syntax/README.md)
 
 `final` 是 Java 中最常用的修饰符之一，核心语义是"不可改变"，根据修饰对象不同有三种表现。
 
