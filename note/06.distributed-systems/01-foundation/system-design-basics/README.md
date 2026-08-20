@@ -35,6 +35,10 @@ module:
 - [架构描述语言 ArchiMate 3.2](archimate/README.md) — 与 TOGAF 同源的架构建模语言，30+ 视点给不同人看不同图
 - [IT 价值流参考架构 IT4IT 3.0](it4it/README.md) — 4 价值流 + 9 功能组件，IT 运营层的"业务模型"
 
+## 高可用防线
+
+- [高并发与高可用 5 大防线](high-concurrency-and-high-availability-defenses.md) — 缓存/限流/熔断/降级/负载均衡 5 大防线综述 + 决策树 + 落地路线
+
 ## 架构模式
 
 - [设计模式](design-patterns/README.md) — GoF 23 种经典模式
