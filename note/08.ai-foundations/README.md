@@ -64,16 +64,12 @@ graph TB
 | 标题 | 路径 | 状态 | 摘要 |
 |------|------|------|------|
 | 监督学习 → 强化学习 | [01-ml/ml-to-rl.md](./01-ml/ml-to-rl.md) | ✅ 已完成（152 行） | 以自动驾驶为例，梳理监督学习 → 无监督学习 → 强化学习的演进、融合架构与安全探索。 |
-| KNN 原理 | [01-ml/knn.md](./01-ml/knn.md) | ⏳ 待补 | KNN 距离度量 / KD-Tree / 维度灾难 / 工业级替代（Faiss、Annoy） |
-| 决策树剪枝 | [01-ml/decision-tree-pruning.md](./01-ml/decision-tree-pruning.md) | ⏳ 待补 | 预剪枝 vs 后剪枝 / 信息增益 / Gini 系数 / 面试高频题 |
 
 ### 02-deep-learning · 深度学习框架（工程工具链）
 
 | 标题 | 路径 | 状态 | 摘要 |
 |------|------|------|------|
 | 深度学习框架 | [02-deep-learning/deep-learning-frameworks.md](./02-deep-learning/deep-learning-frameworks.md) | ✅ 已完成（76 行） | 对比 MindSpore / PyTorch / TensorFlow / PaddlePaddle 定位与选型。 |
-| Transformer 训练技巧 | [02-deep-learning/transformer-training-tips.md](./02-deep-learning/transformer-training-tips.md) | ⏳ 待补 | AMP / Gradient Accumulation / Warmup / AdamW / ZeRO |
-| 分布式训练 | [02-deep-learning/distributed-training.md](./02-deep-learning/distributed-training.md) | ⏳ 待补 | DDP / TP / PP / 3D 并行 / DeepSpeed / Megatron |
 
 ### 03-transformer · Transformer 架构（核心组件）
 
@@ -81,9 +77,6 @@ graph TB
 |------|------|------|------|
 | 注意力机制 | [03-transformer/attention-mechanism.md](./03-transformer/attention-mechanism.md) | ✅ 已完成（69 行） | Self / Cross / Multi-Head / Sparse / Linear / MQA / GQA 七大变体。 |
 | Transformer 架构 | [03-transformer/transformer-architecture.md](./03-transformer/transformer-architecture.md) | ✅ 已完成（212 行） | 架构详解 + Self-Attention 代码 + 5 个核心 trade-off。 |
-| KV Cache 优化 | [03-transformer/kv-cache-optimization.md](./03-transformer/kv-cache-optimization.md) | ⏳ 待补 | KV Cache / MQA / GQA / MLA（DeepSeek）/ 显存计算 |
-| MQA / GQA / MLA 深度 | [03-transformer/mqa-gqa-mla.md](./03-transformer/mqa-gqa-mla.md) | ⏳ 待补 | LLaMA / Mistral / DeepSeek 选型与适用场景 |
-| FlashAttention 深度 | [03-transformer/flash-attention.md](./03-transformer/flash-attention.md) | ⏳ 待补 | v1 / v2 / v3 演进 / IO 复杂度 / 稀疏注意力 |
 
 ### 04-llm · 大语言模型（应用对象）
 
