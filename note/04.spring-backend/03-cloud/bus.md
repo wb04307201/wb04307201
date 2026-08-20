@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\03-cloud\bus
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: Spring Cloud Bus 集群事件总线
 -->
 
 # Spring Cloud Bus 集群事件总线

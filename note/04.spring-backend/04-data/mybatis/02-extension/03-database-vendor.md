@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\04-data\mybatis\02-extension\03-database-vendor
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 03 数据库厂商扩展(DatabaseIdProvider)
 -->
 
 # 03 数据库厂商扩展(DatabaseIdProvider)

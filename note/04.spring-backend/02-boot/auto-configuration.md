@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\02-boot\auto-configuration
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: Spring Boot 自动配置原理
 -->
 
 # Spring Boot 自动配置原理

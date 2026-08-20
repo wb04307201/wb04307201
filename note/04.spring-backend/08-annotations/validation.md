@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\08-annotations\validation
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 校验注解
 -->
 
 # 校验注解

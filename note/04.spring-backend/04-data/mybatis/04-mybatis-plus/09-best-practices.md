@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\04-data\mybatis\04-mybatis-plus\09-best-practices
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 09 最佳实践与踩坑
 -->
 
 # 09 最佳实践与踩坑

@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\02-boot\graalvm-native
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: Spring Boot 3 + GraalVM Native Image 简介
 -->
 
 # Spring Boot 3 + GraalVM Native Image 简介

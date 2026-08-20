@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\02-boot\spring-factories-migration
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: Spring Boot 3 中 spring.factories 机制移除
 -->
 
 # Spring Boot 3 中 spring.factories 机制移除

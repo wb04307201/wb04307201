@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\04-data\mybatis\04-mybatis-plus\04-lambda-wrapper
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 04 Lambda 条件构造器
 -->
 
 # 04 Lambda 条件构造器

@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\02-web\mvc\view-resolver
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: ViewResolver 视图解析器
 -->
 
 # ViewResolver 视图解析器

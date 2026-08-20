@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\01-core\ioc\scopes-and-thread-safety
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: Bean 作用域与线程安全
 -->
 
 # Bean 作用域与线程安全

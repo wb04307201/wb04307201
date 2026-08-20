@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\01-core\aop\advice-order-and-best-practices
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 通知顺序与最佳实践
 -->
 
 # 通知顺序与最佳实践

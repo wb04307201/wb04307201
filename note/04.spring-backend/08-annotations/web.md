@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\08-annotations\web
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: Web 注解（Spring MVC）
 -->
 
 # Web 注解（Spring MVC）

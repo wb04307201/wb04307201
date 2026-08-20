@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\02-boot\application-bootstrap
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: Spring Boot 启动后执行（钩子/回调/事件）
 -->
 
 # Spring Boot 启动后执行（钩子/回调/事件）

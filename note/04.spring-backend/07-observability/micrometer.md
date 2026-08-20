@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\07-observability\micrometer
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: Micrometer 指标监控
 -->
 
 # Micrometer 指标监控

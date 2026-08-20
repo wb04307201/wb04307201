@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\08-annotations\scheduling-and-async
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 调度与异步注解
 -->
 
 # 调度与异步注解

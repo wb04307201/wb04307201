@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\07-observability\actuator
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: Spring Boot Actuator 监控
 -->
 
 # Spring Boot Actuator 监控

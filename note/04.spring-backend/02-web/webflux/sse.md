@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\02-web\webflux\sse
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: WebFlux 响应式 + SSE 实时推送
 -->
 
 # WebFlux 响应式 + SSE 实时推送

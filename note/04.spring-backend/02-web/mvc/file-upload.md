@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\02-web\mvc\file-upload
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: Spring MVC 文件上传
 -->
 
 # Spring MVC 文件上传

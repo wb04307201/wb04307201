@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\04-data\mybatis\02-extension\02-interceptor
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 02 拦截器(Interceptor)
 -->
 
 # 02 拦截器(Interceptor)

@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\04-data\cache\cache-annotations-and-usage
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 缓存注解与使用
 -->
 
 # 缓存注解与使用

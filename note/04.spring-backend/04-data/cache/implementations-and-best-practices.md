@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\04-data\cache\implementations-and-best-practices
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 缓存实现与最佳实践
 -->
 
 # 缓存实现与最佳实践

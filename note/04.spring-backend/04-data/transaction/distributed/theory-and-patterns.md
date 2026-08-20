@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\04-data\transaction\distributed\theory-and-patterns
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: Spring分布式事务管理
 -->
 
 # Spring分布式事务管理

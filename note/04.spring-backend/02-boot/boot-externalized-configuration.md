@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\02-boot\boot-externalized-configuration
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: Spring Boot 外部化配置
 -->
 
 # Spring Boot 外部化配置

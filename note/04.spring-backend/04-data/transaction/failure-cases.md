@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\04-data\transaction\failure-cases
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 事务失效场景与解决方案
 -->
 
 # 事务失效场景与解决方案

@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\04-data\mybatis\03-spring-integration\03-transaction-boundary
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 03 事务边界
 -->
 
 # 03 事务边界

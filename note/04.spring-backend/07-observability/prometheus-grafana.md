@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\07-observability\prometheus-grafana
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: Prometheus + Grafana 可视化监控
 -->
 
 # Prometheus + Grafana 可视化监控

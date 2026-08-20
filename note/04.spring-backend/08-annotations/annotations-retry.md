@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\08-annotations\annotations-retry
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 重试注解
 -->
 
 # 重试注解

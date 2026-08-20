@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\08-annotations\cache
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 缓存注解
 -->
 
 # 缓存注解

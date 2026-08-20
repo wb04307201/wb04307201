@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\02-boot\custom-starter
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 如何创建自己的 Starter 模块
 -->
 
 # 如何创建自己的 Starter 模块

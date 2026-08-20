@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\04-data\cache\serialization
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: Redis 缓存序列化
 -->
 
 # Redis 缓存序列化

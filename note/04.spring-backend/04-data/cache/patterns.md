@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\04-data\cache\patterns
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 缓存 4 大模式（Patterns）
 -->
 
 # 缓存 4 大模式（Patterns）

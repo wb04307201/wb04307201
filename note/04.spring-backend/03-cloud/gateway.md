@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\03-cloud\gateway
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: Spring Cloud Gateway 网关
 -->
 
 # Spring Cloud Gateway 网关

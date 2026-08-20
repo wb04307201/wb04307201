@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\01-core\ioc\bean-lifecycle
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: Bean 生命周期
 -->
 
 # Bean 生命周期

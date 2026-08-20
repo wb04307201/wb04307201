@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\02-web\mvc\cors-and-static
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: CORS 与静态资源
 -->
 
 # CORS 与静态资源

@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\04-data\mybatis\04-mybatis-plus\05-lambda-sfunction-deep-dive
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 05 LambdaQueryWrapper 中的 SFunction 序列化原理
 -->
 
 # 05 LambdaQueryWrapper 中的 SFunction 序列化原理

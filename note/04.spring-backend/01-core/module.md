@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\01-core\module
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: Spring Framework 模块结构
 -->
 
 # Spring Framework 模块结构

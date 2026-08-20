@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\04-data\mybatis\04-mybatis-plus\02-crud-basics
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 02 CRUD 与条件构造器基础
 -->
 
 # 02 CRUD 与条件构造器基础

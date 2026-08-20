@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\04-data\mybatis\04-mybatis-plus\01-quickstart
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 01 MyBatis-Plus 快速入门
 -->
 
 # 01 MyBatis-Plus 快速入门

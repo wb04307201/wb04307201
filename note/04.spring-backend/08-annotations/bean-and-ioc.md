@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\08-annotations\bean-and-ioc
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: Bean 与 IoC 注解
 -->
 
 # Bean 与 IoC 注解

@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\01-core\ioc\FactoryBean
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: FactoryBean 与复杂对象创建
 -->
 
 # FactoryBean 与复杂对象创建

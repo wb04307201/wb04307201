@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\04-data\transaction\programmatic-transaction
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 编程式事务（TransactionTemplate）
 -->
 
 # 编程式事务（TransactionTemplate）

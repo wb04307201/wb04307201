@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\06-integration\statemachine
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: Spring Statemachine 状态机
 -->
 
 # Spring Statemachine 状态机

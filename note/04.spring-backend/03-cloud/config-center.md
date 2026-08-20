@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\03-cloud\config-center
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 配置中心（Config Center）
 -->
 
 # 配置中心（Config Center）

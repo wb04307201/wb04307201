@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\07-observability\health-probes
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 健康检查三探针（K8s Liveness / Readiness / Startup）
 -->
 
 # 健康检查三探针（K8s Liveness / Readiness / Startup）

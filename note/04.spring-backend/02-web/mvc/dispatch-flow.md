@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\02-web\mvc\dispatch-flow
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: DispatcherServlet 与 9 大组件
 -->
 
 # DispatcherServlet 与 9 大组件

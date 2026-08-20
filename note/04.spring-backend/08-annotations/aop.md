@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\08-annotations\aop
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: AOP 注解
 -->
 
 # AOP 注解

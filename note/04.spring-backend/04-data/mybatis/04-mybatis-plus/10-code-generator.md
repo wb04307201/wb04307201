@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\04-data\mybatis\04-mybatis-plus\10-code-generator
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 10 代码生成器
 -->
 
 # 10 代码生成器

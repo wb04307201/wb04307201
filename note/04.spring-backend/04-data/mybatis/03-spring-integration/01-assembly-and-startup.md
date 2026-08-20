@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\04-data\mybatis\03-spring-integration\01-assembly-and-startup
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 01 装配与启动
 -->
 
 # 01 装配与启动

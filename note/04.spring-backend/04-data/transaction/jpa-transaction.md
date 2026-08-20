@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\04-data\transaction\jpa-transaction
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: JPA 事务管理
 -->
 
 # JPA 事务管理

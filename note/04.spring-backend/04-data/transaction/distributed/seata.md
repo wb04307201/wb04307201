@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\04-data\transaction\distributed\seata
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: Seata 分布式事务框架
 -->
 
 # Seata 分布式事务框架

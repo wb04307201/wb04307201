@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\01-core\configuration-lite-vs-full
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: @Configuration 进阶：Lite Mode vs Full Mode 与 @Import 系列
 -->
 
 # @Configuration 进阶：Lite Mode vs Full Mode 与 @Import 系列

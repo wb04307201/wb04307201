@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\02-web\webflux\r2dbc
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: R2DBC 响应式数据库访问
 -->
 
 # R2DBC 响应式数据库访问

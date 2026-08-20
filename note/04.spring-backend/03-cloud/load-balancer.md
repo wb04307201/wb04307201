@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\03-cloud\load-balancer
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 客户端负载均衡（LoadBalancer）
 -->
 
 # 客户端负载均衡（LoadBalancer）

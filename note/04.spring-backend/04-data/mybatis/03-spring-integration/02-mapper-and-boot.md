@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\04-data\mybatis\03-spring-integration\02-mapper-and-boot
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 02 Mapper 与 Boot
 -->
 
 # 02 Mapper 与 Boot

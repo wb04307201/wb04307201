@@ -4,7 +4,7 @@ module:
   slug: 04.spring-backend\02-web\mvc\components-order
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 组件执行顺序与对比
 -->
 
 # 组件执行顺序与对比
