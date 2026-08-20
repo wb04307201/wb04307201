@@ -12,7 +12,7 @@ question:
 
 > 一句话定位：**后端 / 架构面试经典系统设计题**。考察的不是"文件怎么上传"，而是 **分片协议设计** + **断点续传状态管理** + **秒传去重原理** + **存储选型**。深度实战见 [主模块深度章节](../../../06.distributed-systems/04-high-performance/file-upload/README.md)。
 
-> **系列定位**：高频系统设计题（社招必考）。配套兄弟题：[商品搜索](../product-search/README.md)、[缓存一致性](../cache-consistency/README.md)。
+> **系列定位**：高频系统设计题（社招必考）。配套兄弟题：[缓存一致性](../cache-consistency/README.md)（uploadId 分片状态）、[分布式锁](../distributed-lock/README.md)（并发上传保护）。
 
 ---
 
@@ -179,7 +179,6 @@ xhr.upload.onprogress = (e) => {
 ## 五、交叉引用
 
 - **深度实战**：[大文件上传系统设计](../../../06.distributed-systems/04-high-performance/file-upload/README.md) — 架构演进 + 源码级实现
-- **相关面试题**：[商品搜索](../product-search/README.md) — 系统设计案例
 - **相关面试题**：[缓存一致性](../cache-consistency/README.md) — Redis 状态管理
 - **相关面试题**：[分布式锁](../distributed-lock/README.md) — 并发上传保护
 - **主模块**：[`04.system-design`](../../../../note/04.system-design/) — 系统设计知识体系
