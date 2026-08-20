@@ -131,20 +131,20 @@ graph TB
 ### 阶段 2 · 传统 ML（2-3 周，地基）
 
 1. 阅读 [`01-ml/ml-to-rl.md`](./01-ml/ml-to-rl.md)——建立"监督 → 无监督 → 强化"三范式演进认知
-2. 补 [`01-ml/knn.md`](./01-ml/knn.md) 与 [`01-ml/decision-tree-pruning.md`](./01-ml/decision-tree-pruning.md)——经典算法原理
+2. 经典算法原理 (knn / 决策树剪枝) 待补占位
 3. 配套 [`12.interview/19.ml-algorithms`](../12.interview/19.ml-algorithms/) 面试刷题
 
 ### 阶段 3 · 深度学习工程（2-3 周，工具链）
 
 1. 阅读 [`02-deep-learning/deep-learning-frameworks.md`](./02-deep-learning/deep-learning-frameworks.md)——四框架对比与选型
 2. 学习 PyTorch 官方教程（[pytorch.org/tutorials](https://pytorch.org/tutorials/)）——动手实现 MLP / CNN / RNN
-3. 补 [`02-deep-learning/transformer-training-tips.md`](./02-deep-learning/transformer-training-tips.md) 与 [`02-deep-learning/distributed-training.md`](./02-deep-learning/distributed-training.md)
+3. Transformer 训练 + 分布式训练 待补占位
 
 ### 阶段 4 · Transformer 架构（2-3 周，核心）
 
 1. 阅读 [`03-transformer/transformer-architecture.md`](./03-transformer/transformer-architecture.md)——理解 5 大组件（Embedding / PE / MHA / FFN / Add&Norm）
 2. 阅读 [`03-transformer/attention-mechanism.md`](./03-transformer/attention-mechanism.md)——掌握 7 大注意力变体
-3. 补 [`03-transformer/kv-cache-optimization.md`](./03-transformer/kv-cache-optimization.md) / `flash-attention.md`——推理优化
+3. 推理优化（KV Cache / MQA-GQA-MLA / FlashAttention）待补占位
 4. 配套 [`12.interview/11.ai/transformer`](../12.interview/11.ai/transformer/) 面试刷题
 
 ### 阶段 5 · LLM 应用与拓展（2-3 周，进阶）

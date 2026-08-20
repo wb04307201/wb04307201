@@ -29,9 +29,6 @@
 |------|------|------|------|
 | 注意力机制 | [attention-mechanism.md](./attention-mechanism.md) | ✅ 已完成（69 行） | 系统梳理 Self / Cross / Multi-Head / Sparse / Linear / MQA / GQA 等注意力变体及其工程价值。 |
 | Transformer 架构 | [transformer-architecture.md](./transformer-architecture.md) | ✅ 已完成（212 行） | 架构详解 + Self-Attention 代码：解决 RNN/LSTM 痛点 → 完全基于注意力机制 + 5 个核心 trade-off。 |
-| KV Cache 优化 | [kv-cache-optimization.md](./kv-cache-optimization.md) | ⏳ 待补 | KV Cache 原理 / MQA / GQA / MLA（DeepSeek）对比 / 显存计算公式 |
-| MQA / GQA / MLA 深度 | [mqa-gqa-mla.md](./mqa-gqa-mla.md) | ⏳ 待补 | MQA（多查询） / GQA（分组查询） / MLA（多头潜在注意力）适用场景与 LLaMA / Mistral / DeepSeek 选型 |
-| FlashAttention 深度 | [flash-attention.md](./flash-attention.md) | ⏳ 待补 | FlashAttention v1 / v2 / v3 演进 / IO 复杂度 / 稀疏注意力集成 |
 
 > **覆盖说明**：当前 `03-transformer/` 已沉淀 2 篇（attention-mechanism.md / transformer-architecture.md），覆盖注意力机制与架构概览；KV Cache 优化、MQA-GQA-MLA、FlashAttention 是面试高频 + 工业级核心，建议尽快补齐。
 

@@ -27,8 +27,6 @@
 | 标题 | 路径 | 状态 | 摘要 |
 |------|------|------|------|
 | 深度学习框架 | [deep-learning-frameworks.md](./deep-learning-frameworks.md) | ✅ 已完成（76 行） | 对比 MindSpore / PyTorch / TensorFlow / PaddlePaddle 的定位、特点、选型建议和 2025-2026 发展趋势。 |
-| Transformer 训练技巧 | [transformer-training-tips.md](./transformer-training-tips.md) | ⏳ 待补 | 混合精度（AMP）/ Gradient Accumulation / Warmup / AdamW / ZeRO 优化器 |
-| 分布式训练 | [distributed-training.md](./distributed-training.md) | ⏳ 待补 | 数据并行（DDP）/ 模型并行（TP）/ 流水线并行（PP）/ 3D 并行 / DeepSpeed / Megatron |
 
 > **覆盖说明**：当前 `02-deep-learning/` 仅沉淀 1 篇（deep-learning-frameworks.md），覆盖四框架对比与选型建议；Transformer 训练技巧与分布式训练是工程落地的核心，建议尽快补齐。
 
