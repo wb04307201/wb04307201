@@ -166,64 +166,30 @@ curl mysql-0.mysql-headless.default.svc.cluster.local
 
 **Service Mesh 把这些"横切关注点"从应用中剥离，由 Sidecar Proxy（Envoy）统一处理**。
 
-### 7.2 Istio 架构（1.5+ istiod 时代）
+### 7.2 Istio 架构
 
-> ⚠️ **常见过时认知**：很多老资料仍画 Pilot / Citadel / Galley / **Mixer** 四个独立组件。
-> 实际上 **Istio 1.5（2020-03-05）已把 Pilot + Citadel + Galley + sidecar-injector 合并为单一二进制 `istiod`**，
-> 而 **Mixer 在 1.5 被 Telemetry v2 取代（默认关闭），并在 1.8（2020-11-19）彻底移除**。
-> 面试时若还画 Mixer，基本等于自曝知识停留在 2019 年。
-
-```mermaid
-graph TB
-  subgraph CP["控制平面 Control Plane（单进程 istiod）"]
-    D["istiod<br/>—— 1.5 起合并原 Pilot / Citadel / Galley / injector"]
-    D1["流量配置下发<br/>（原 Pilot，xDS）"]
-    D2["证书签发与轮转<br/>（原 Citadel，内置 CA）"]
-    D3["配置校验与分发<br/>（原 Galley）"]
-    D4["Sidecar 自动注入<br/>（原 sidecar-injector）"]
-    D --- D1
-    D --- D2
-    D --- D3
-    D --- D4
-  end
-
-  subgraph DP["数据平面 Data Plane"]
-    S["Sidecar 模式<br/>每个 Pod 一个 Envoy"]
-    P1["Pod: App + Envoy"]
-    P2["Pod: App + Envoy"]
-    S --- P1
-    S --- P2
-    Z["Ambient 模式（1.24 GA）<br/>ztunnel（节点级 L4 mTLS）<br/>+ waypoint（按需 L7 代理）"]
-  end
-
-  D -->|"xDS 推送路由 / 策略"| S
-  D -->|"SDS 下发工作负载证书"| S
-  D -->|"xDS + 证书"| Z
-  W["WasmPlugin（1.12 引入的一等 API）<br/>取代 Mixer 的扩展能力"] -.->|"动态加载 Wasm 扩展"| S
-
-  style D fill:#e3f2fd
-  style Z fill:#e8f5e9
-  style W fill:#fff8e1
+```text
+┌────────────────────────────────────────────────────────┐
+│  Istio 控制平面（Control Plane）                          │
+│  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐    │
+│  │ Pilot   │  │ Citadel │  │ Galley  │  │ Mixer   │    │
+│  │（流量管理）│  │（安全）   │  │（配置）  │  │（策略）  │    │
+│  └────┬────┘  └────┬────┘  └────┬────┘  └────┬────┘    │
+└───────┼───────────┼───────────┼───────────┼──────────┘
+        │           │           │           │
+        ↓ 推送配置   ↓ 证书     ↓ 配置       ↓ 策略
+┌────────────────────────────────────────────────────────┐
+│  Istio 数据平面（Data Plane）                             │
+│  ┌─────────────────────────────────────────────────┐  │
+│  │  Sidecar Proxy（Envoy）—— 每个 Pod 一个             │  │
+│  │  ┌──────┐  ┌──────┐  ┌──────┐  ┌──────┐         │  │
+│  │  │ Pod  │  │ Pod  │  │ Pod  │  │ Pod  │         │  │
+│  │  │App+  │  │App+  │  │App+  │  │App+  │         │  │
+│  │  │Envoy │  │Envoy │  │Envoy │  │Envoy │         │  │
+│  │  └──────┘  └──────┘  └──────┘  └──────┘         │  │
+│  └─────────────────────────────────────────────────┘  │
+└────────────────────────────────────────────────────────┘
 ```
-
-**关键演进时间线**：
-
-| 版本 | 时间 | 变化 |
-|------|------|------|
-| **1.5** | 2020-03 | Pilot/Citadel/Galley/injector 合并为 **istiod**；引入 WebAssembly 扩展模型；Telemetry v2 默认启用（Mixer 退出默认链路，CPU 降约 50%） |
-| **1.8** | 2020-11 | **Mixer 彻底移除**（含 `istioctl` 安装 addon 的能力一并移除） |
-| **1.12** | 2021-11 | 新增一等公民 **`WasmPlugin` API**，替代 Mixer 承担策略 / 遥测扩展 |
-| **1.24** | 2024-11 | **Ambient 模式 GA**：ztunnel + waypoint + API 全部 Stable，可无 Sidecar 运行 |
-
-**Sidecar vs Ambient 数据面对比**：
-
-| 维度 | Sidecar 模式 | Ambient 模式（1.24 GA） |
-|------|-------------|------------------------|
-| 部署粒度 | 每 Pod 一个 Envoy | 每 Node 一个 **ztunnel**（L4），L7 才按需起 **waypoint** |
-| 资源开销 | 高（Pod 数 × Envoy） | 低（只做 L4 时无 Envoy per-Pod） |
-| 接入成本 | 需重启 Pod 注入 Sidecar | 打 namespace label 即可，无需重启 |
-| 能力 | 全量 L4 + L7 | L4 mTLS 默认；L7（路由 / 授权 / 遥测）需部署 waypoint |
-
 
 ### 7.3 Istio 核心能力
 
