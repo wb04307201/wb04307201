@@ -87,17 +87,17 @@ flowchart TD
 
 ```dart
 // Dart 端
-import 'package:flutter/services.dart'
+import 'package:flutter/services.dart';
 
 class BatteryService {
-  static const _channel = MethodChannel('com.app/battery')
+  static const _channel = MethodChannel('com.app/battery');
 
   Future<int> getBatteryLevel() async {
     try {
-      final level = await _channel.invokeMethod<int>('getBatteryLevel')
-      return level ?? -1
+      final level = await _channel.invokeMethod<int>('getBatteryLevel');
+      return level ?? -1;
     } on PlatformException {
-      return -1
+      return -1;
     }
   }
 }
@@ -153,27 +153,27 @@ import Flutter
 
 ```dart
 // 简单并行计算
-import 'package:flutter/foundation.dart'
+import 'package:flutter/foundation.dart';
 
 Future<List<int>> heavyCompute(List<int> input) async {
-  return await compute(_parseInBackground, input)
+  return await compute(_parseInBackground, input);
 }
 
 List<int> _parseInBackground(List<int> input) {
-  return input.map((n) => n * n).toList()
+  return input.map((n) => n * n).toList();
 }
 ```
 
 ### 11.2 Isolate.run() 复杂场景
 
 ```dart
-import 'dart:isolate'
+import 'dart:isolate';
 
 Future<String> parseBigJson(String jsonString) async {
   return await Isolate.run(() {
-    final data = jsonDecode(jsonString) as List
-    return data.length.toString()
-  })
+    final data = jsonDecode(jsonString) as List;
+    return data.length.toString();
+  });
 }
 ```
 
@@ -183,33 +183,33 @@ Future<String> parseBigJson(String jsonString) async {
 ```dart
 class FadeInWidget extends StatefulWidget {
   @override
-  State<FadeInWidget> createState() => _FadeInWidgetState()
+  State<FadeInWidget> createState() => _FadeInWidgetState();
 }
 
 class _FadeInWidgetState extends State<FadeInWidget>
     with SingleTickerProviderStateMixin {
-  late AnimationController _controller
-  late Animation<double> _animation
+  late AnimationController _controller;
+  late Animation<double> _animation;
 
   @override
   void initState() {
-    super.initState()
+    super.initState();
     _controller = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 300),
-    )
-    _animation = CurvedAnimation(parent: _controller, curve: Curves.easeIn)
+    );
+    _animation = CurvedAnimation(parent: _controller, curve: Curves.easeIn);
   }
 
   @override
   Widget build(BuildContext context) {
-    return FadeTransition(opacity: _animation, child: Text('Hello'))
+    return FadeTransition(opacity: _animation, child: Text('Hello'));
   }
 
   @override
   void dispose() {
-    _controller.dispose()
-    super.dispose()
+    _controller.dispose();
+    super.dispose();
   }
 }
 ```
@@ -218,33 +218,33 @@ class _FadeInWidgetState extends State<FadeInWidget>
 
 ```dart
 // 列表页
-Hero(tag: 'avatar-${user.id}', child: Image.network(user.avatar))
+Hero(tag: 'avatar-${user.id}', child: Image.network(user.avatar));
 
 // 详情页
-Hero(tag: 'avatar-${user.id}', child: Image.network(user.avatar, width: 200))
+Hero(tag: 'avatar-${user.id}', child: Image.network(user.avatar, width: 200));
 ```
 
 ### 12.3 CustomPainter 自定义绘制
 
 ```dart
 class CircleChartPainter extends CustomPainter {
-  final double progress
-  CircleChartPainter(this.progress)
+  final double progress;
+  CircleChartPainter(this.progress);
 
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
       ..color = Colors.blue
       ..strokeWidth = 8
-      ..style = PaintingStyle.stroke
+      ..style = PaintingStyle.stroke;
     canvas.drawArc(
       Rect.fromCircle(center: size.center(Offset.zero), radius: 80),
       0, progress * 2 * pi, false, paint,
-    )
+    );
   }
 
   @override
-  bool shouldRepaint(CircleChartPainter old) => old.progress != progress
+  bool shouldRepaint(CircleChartPainter old) => old.progress != progress;
 }
 ```
 
