@@ -273,7 +273,7 @@ const byTag = await db.notes.where('tags').equals('pwa').toArray()
 
 ### 14.5 游戏
 
-- Canvas 游戏（OfflineCanvas 支持）
+- Canvas 游戏（OffscreenCanvas 支持 — 主线程外渲染避免卡顿）
 - IndexedDB 存游戏进度
 - 离线可玩
 
