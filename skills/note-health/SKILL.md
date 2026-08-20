@@ -44,6 +44,36 @@ description: Use when user asks to audit or improve note/ — "note 哪里需要
 
 > **🆕 2026-07-26 起**：归属合理性审计（`Step 10`）+ 合并检测（`Step 11`）从深度模式提升为默认 Phase 1.11 / 1.12 —— 主题放错位置（如训练方法论放工程层）和多主题错误合并（如 5 个灵魂拷问合成一个文件）是结构性问题，体检默认应该跑。
 
+> **🆕 2026-08-20 起**：关联强度扫描（`Step 12`）从可选提升为默认 Phase 1.13 —— 检测"同栏目 / 同目录"兄弟互链中目标文件 0 真实引用的弱关联（见 `note-precipitation-planning` Mistake 20）。弱关联比 broken link 更隐蔽——链接存在且路径正确，但语义上是噪声，应作为 P2 问题输出。
+
+**关联强度扫描脚本**（Phase 1.13）：
+```bash
+# 对每个 leaf 文件的"兄弟互链"，做关联强度判定
+for f in $(find note -name "README.md" -path "*/04.system-design/*" -o -path "*/06.distributed-systems/*" 2>/dev/null); do
+  # 提取兄弟链接（仅 ../ 相对路径 + 同级目录）
+  siblings=$(grep -oP '\]\(\.\./[a-z-]+/README\.md\)' "$f" | grep -oP '[a-z-]+(?=/README)' | sort -u)
+  for sib in $siblings; do
+    sib_path="$(dirname "$f")/../$sib/README.md"
+    [ ! -f "$sib_path" ] && continue  # broken link 由 1.6 处理
+
+    # 提取目标主题关键词（从兄弟文件标题前 5 个汉字 + 主题名词）
+    keywords=$(head -10 "$sib_path" | grep -oP '[\x{4e00}-\x{9fa5}]{2,4}' | sort -u | head -3 | tr '\n' '|')
+    [ -z "$keywords" ] && continue
+
+    # 在当前文件里 grep 兄弟主题关键词
+    count=$(grep -cE "$keywords" "$f" 2>/dev/null || echo 0)
+    if [ "$count" -eq "0" ]; then
+      echo "  ⚠ 弱关联: $(basename $(dirname $f)) → $sib（被链接文件 0 处提及主题关键词）"
+    fi
+  done
+done
+```
+
+**关联强度输出**：
+- 弱关联列表（≥ 1 处）→ 报告 P2 项 + 推荐"删除或补语义描述"
+- 不输出"强关联"（避免噪音）
+- 历史案例：2026-08-20 file-upload 双层 → product-search（弱关联 0 命中），已修复
+
 ### Phase 2 — Leaf 质量 fan-out
 
 - **单篇 / 单目录 / 单模块**：直接 Read + 按 `references/leaf-quality.md` 的 G1–G6 + A~G 维度打分，**不开 workflow**。
