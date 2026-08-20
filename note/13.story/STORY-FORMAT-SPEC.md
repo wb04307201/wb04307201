@@ -4,7 +4,7 @@ module:
   slug: 13.story\STORY-FORMAT-SPEC
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 「阿明餐厅」故事格式规范 v1.0
 -->
 
 # 「阿明餐厅」故事格式规范 v1.0
