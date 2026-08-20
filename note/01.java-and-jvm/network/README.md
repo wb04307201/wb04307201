@@ -973,4 +973,3 @@ composite.addComponents(true, buf1, buf2, buf3);
 
 ← [返回 01.java 主模块](../README.md)
 
-<!-- TODO: 拆分候选 (975 行 / 10 个 H2，超 500+8 阈值） -->

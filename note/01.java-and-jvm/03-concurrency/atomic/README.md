@@ -686,4 +686,3 @@ class MyCounter {
 
 ← [返回 Java 并发编程专题导航](../README.md)
 
-<!-- TODO: 拆分候选 (688 行 / 9 个 H2，超 500+8 阈值） -->

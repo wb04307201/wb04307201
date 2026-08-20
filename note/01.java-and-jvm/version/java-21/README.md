@@ -551,4 +551,3 @@ G1 Full GC 现在可以移动大对象（Humongous Objects），减少内存碎�
 ---
 
 ← [返回: Java 版本演进](../README.md)
-<!-- TODO: 拆分候选 (553 行 / 18 个 H2，超 500+8 阈值） -->

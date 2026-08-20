@@ -820,4 +820,3 @@ private static final ThreadLocal<SimpleDateFormat> SDF =
 
 ← [返回 Java 并发编程专题导航](../README.md)
 
-<!-- TODO: 拆分候选 (822 行 / 10 个 H2，超 500+8 阈值） -->

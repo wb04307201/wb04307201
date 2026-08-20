@@ -974,4 +974,3 @@ channel.read(buffer, 0, null, new CompletionHandler<Integer, Void>() {
 
 ← [返回 I/O](../README.md)
 
-<!-- TODO: 拆分候选 (976 行 / 11 个 H2，超 500+8 阈值） -->

@@ -721,4 +721,3 @@ list.trimToSize();                            // capacity=3, 节省 7 个引用�
 - [concurrent](../concurrent.md)
 ← [返回 Java 集合框架](../README.md)
 
-<!-- TODO: 拆分候选 (723 行 / 10 个 H2，超 500+8 阈值） -->

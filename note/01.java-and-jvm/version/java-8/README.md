@@ -710,4 +710,3 @@ java -XX:+UseAES -XX:+UseAESIntrinsics MyApp
 ---
 
 ← [返回 Java 版本特性](../README.md)
-<!-- TODO: 拆分候选 (712 行 / 57 个 H2，超 500+8 阈值） -->

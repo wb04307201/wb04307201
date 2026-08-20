@@ -517,4 +517,3 @@ jad com.example.Service    # 反编译（确认线上代码版本）
 
 ← [返回 JVM 主篇](README.md)
 
-<!-- TODO: 拆分候选 (519 行 / 13 个 H2，超 500+8 阈值） -->
