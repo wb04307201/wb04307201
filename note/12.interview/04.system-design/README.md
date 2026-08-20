@@ -20,7 +20,7 @@ question:
 
 ---
 
-## 文章清单（共 23 题，find 校对 2026-07-30）
+## 文章清单（共 24 题，find 校对 2026-08-20）
 
 ### 分布式
 | 主题 | 难度 | 核心问题 |
@@ -54,6 +54,7 @@ question:
 | [微服务 vs 单体](microservices-vs-monolith/) | ⭐⭐⭐⭐⭐ | 6 大核心优势 + 6 大反模式 + Spring Cloud 全套 + 何时该拆决策 |
 | [短链系统设计](url-shortener/) | ⭐⭐⭐⭐ | Base62 + 发号器 + 302 重定向 + 缓存 + 统计 |
 | [多租户 SaaS 系统设计](multi-tenant-saas/) | ⭐⭐⭐⭐⭐ | 6 大隔离模型 + 4 大应用层关注点 + 5 反模式 + PostgreSQL RLS + noisy neighbor 防御 |
+| [可踢下线登录凭证设计](login-credential-kickable/) | ⭐⭐⭐⭐ | Session 主动失效 4 大方案 + 多端管理 4 模式 + 千万级踢下线性能 + 5 大反模式 |
 
 ### 数据库扩展
 | 主题 | 难度 | 核心问题 |
