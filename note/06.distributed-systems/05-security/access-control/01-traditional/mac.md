@@ -4,7 +4,7 @@ module:
   slug: 06.distributed-systems\05-security\access-control\01-traditional\mac
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: MAC 强制访问控制：密级标签 + BLP/Biba 形式化模型（含 SELinux 实战）
 -->
 
 # MAC（Mandatory Access Control，强制访问控制）

@@ -4,7 +4,7 @@ module:
   slug: 06.distributed-systems\05-security\access-control\03-relationship-and-hybrid\hybrid
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 混合访问控制：RBAC+ABAC 4 阶段演进 + 选型决策树
 -->
 
 # RBAC + ABAC 混合模型

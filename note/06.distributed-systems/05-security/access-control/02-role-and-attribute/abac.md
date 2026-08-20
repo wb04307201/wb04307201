@@ -4,7 +4,7 @@ module:
   slug: 06.distributed-systems\05-security\access-control\02-role-and-attribute\abac
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: ABAC 基于属性动态授权：OPA/Rego 实战（含性能开销量化）
 -->
 
 # ABAC（Attribute-Based Access Control，基于属性的访问控制）
