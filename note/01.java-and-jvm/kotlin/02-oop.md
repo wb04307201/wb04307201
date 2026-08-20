@@ -4,7 +4,7 @@ module:
   slug: 01.java-and-jvm\kotlin\02-oop
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: Kotlin 面向对象
 -->
 
 # Kotlin 面向对象
