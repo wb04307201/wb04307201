@@ -829,4 +829,3 @@ async def monitor_retrieval_quality(query, results):
 > 好的向量数据库设计，不是"选个 Pinecone 就完事"，而是"选型 + 调优 + 监控 + 成本"的完整工程。这是 RAG 系统**事实性**的基石。
 
 ← [返回系列导读](./index.md)
-<!-- TODO: 拆分候选 (831 行 / 15 个 H2，超 500+8 阈值） -->

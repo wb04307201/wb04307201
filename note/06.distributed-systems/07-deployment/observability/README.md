@@ -545,4 +545,3 @@ Spring Boot + Micrometer + OpenTelemetry
 
 ← [返回 部署与运维](../README.md)
 
-<!-- TODO: 拆分候选 (547 行 / 9 个 H2，超 500+8 阈值） -->

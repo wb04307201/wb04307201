@@ -560,4 +560,3 @@ public void afterCommit(User user) {
 - [cache/serialization.md](../../cache/serialization.md) — 序列化方案
 - [架构与原理](../01-architecture/README.md) — MyBatis 二级缓存机制
 - [03.database/06-cache/](../../../../03.data-stack/01-database/06-cache/README.md/) — 数据库缓存基础
-<!-- TODO: 拆分候选 (562 行 / 10 个 H2，超 500+8 阈值） -->

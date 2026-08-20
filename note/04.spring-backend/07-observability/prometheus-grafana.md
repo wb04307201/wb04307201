@@ -628,4 +628,3 @@ graph TB
 - [Spring Boot Actuator](actuator.md) — 指标暴露端点
 - [分布式追踪](../03-cloud/distributed-tracing.md) — Tracing + Metrics 统一
 
-<!-- TODO: 拆分候选 (630 行 / 15 个 H2，超 500+8 阈值） -->

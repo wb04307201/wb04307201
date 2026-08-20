@@ -527,4 +527,3 @@ export function Button({
 
 ← [返回: 咬文嚼字 · css-button-styling](../README.md)
 
-<!-- TODO: 拆分候选 (529 行 / 10 个 H2，超 500+8 阈值） -->

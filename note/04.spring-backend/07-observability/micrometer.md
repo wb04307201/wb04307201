@@ -585,4 +585,3 @@ Micrometer Tracing API
 - [integration-retry](../06-integration/integration-retry.md)
 - [log-aggregation](log-aggregation.md)
 
-<!-- TODO: 拆分候选 (587 行 / 13 个 H2，超 500+8 阈值） -->

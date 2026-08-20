@@ -647,4 +647,3 @@ Gap(k) = E[log(SSE_ref(k))] - log(SSE(k))
 
 ← [返回: 算法概述](../README.md)
 
-<!-- TODO: 拆分候选 (649 行 / 8 个 H2，超 500+8 阈值） -->

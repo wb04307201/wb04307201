@@ -767,4 +767,3 @@ flowchart LR
 - **所属价值链**：05 运营管理
 - 关联系统：[ERP 深读](../erp/README.md) / [BPM 深读](../bpm/README.md) / [HR 深读](../hr/README.md) / [RPA 深读](../rpa/README.md) / [电子签 深读](../e-signature/README.md) / [BI 深读](../bi/README.md) / [CRM 深读](../../04-sales-service/crm/README.md)
 
-<!-- TODO: 拆分候选 (769 行 / 19 个 H2，超 500+8 阈值） -->

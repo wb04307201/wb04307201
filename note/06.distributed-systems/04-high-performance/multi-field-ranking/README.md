@@ -518,4 +518,3 @@ LIMIT 20 OFFSET 0;
 
 ← [返回: 04-high-performance](../README.md) | [返回: 04.system-design](../../README.md)
 
-<!-- TODO: 拆分候选 (519 行 / 8 个 H2，超 500+8 阈值） -->

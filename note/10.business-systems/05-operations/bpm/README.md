@@ -519,4 +519,3 @@ flowchart LR
 - **所属价值链**：05 运营管理
 - 关联系统：OA（[OA 深读](../oa/README.md)）/ HR（[HR 深读](../hr/README.md)）/ ERP（[ERP 深读](../erp/README.md)）/ BI（[BI 深读](../bi/README.md)）/ MES（[MES 深读](../../02-production/mes/README.md)）/ CRM（[CRM 深读](../../04-sales-service/crm/README.md)）
 
-<!-- TODO: 拆分候选 (521 行 / 13 个 H2，超 500+8 阈值） -->

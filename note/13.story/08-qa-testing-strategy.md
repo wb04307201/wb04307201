@@ -576,4 +576,3 @@ assert response.tool_call_count == expected_count  # 数量一致
 # 生产推荐：用 golden_dataset.json 维护真实期望，CI 跑回归
 ```
 
-<!-- TODO: 拆分候选 (578 行 / 14 个 H2，超 500+8 阈值） -->

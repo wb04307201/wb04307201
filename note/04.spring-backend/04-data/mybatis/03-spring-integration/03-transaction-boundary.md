@@ -555,4 +555,3 @@ public List<User> searchInTx(UserQuery query) {
 - [transaction/README.md](../../../../README.md) — Spring 事务基础
 - [transaction/failure-cases.md](../../transaction/failure-cases.md) — 事务失效场景全集
 - [13.split-hairs/06.spring/transactional-pitfalls/README.md](../../../../12.interview/06.spring/transactional-pitfalls/README.md) — @Transactional 失效 8 种场景
-<!-- TODO: 拆分候选 (557 行 / 8 个 H2，超 500+8 阈值） -->

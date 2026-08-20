@@ -626,4 +626,3 @@ flowchart LR
 - **关键数据**：Informatica 全球 5000+ 客户 / 客户主数据重复率 30% → <3% / 物料一物多码率 20-40% → <2% / 资质合规率 <60% → >95% / 组织同步延迟 24-72h → <5min
 - **所属价值链**：05 运营管理
 - 关联系统：[ERP 深读](../erp/README.md) / [HR 深读](../hr/README.md) / [BPM 深读](../bpm/README.md) / [RPA 深读](../rpa/README.md) / [BI 深读](../bi/README.md) / [MES 深读](../../02-production/mes/README.md) / [CRM 深读](../../04-sales-service/crm/README.md)
-<!-- TODO: 拆分候选 (628 行 / 13 个 H2，超 500+8 阈值） -->

@@ -582,4 +582,3 @@ Day 30   : 长期漂移观察
 
 ← [返回: Agent Evaluation](../README.md)
 
-<!-- TODO: 拆分候选 (584 行 / 9 个 H2，超 500+8 阈值） -->

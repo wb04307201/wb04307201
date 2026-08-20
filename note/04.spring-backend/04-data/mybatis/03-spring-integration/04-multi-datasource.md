@@ -604,4 +604,3 @@ public CompletableFuture<List<User>> asyncBatchGet(List<Long> ids) {
 - [transaction/multi-datasource-and-jta.md](../../transaction/multi-datasource-and-jta.md) — 多数据源事务
 - [transaction/distributed/seata.md](../../transaction/distributed/seata.md) — Seata 分布式事务
 - [MyBatis-Plus 全家桶](../04-mybatis-plus/README.md) — MyBatis-Plus 动态数据源
-<!-- TODO: 拆分候选 (606 行 / 8 个 H2，超 500+8 阈值） -->

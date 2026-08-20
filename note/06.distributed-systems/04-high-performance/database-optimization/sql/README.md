@@ -596,4 +596,3 @@ List<OrderDTO> dtos = orders.stream()
 
 **主模块基础**：
 - [03.database/02-sql（SQL 语法基础）](../../../../03.data-stack/01-database/02-sql/README.md) — JOIN 语法 + 执行顺序
-<!-- TODO: 拆分候选 (598 行 / 15 个 H2，超 500+8 阈值） -->

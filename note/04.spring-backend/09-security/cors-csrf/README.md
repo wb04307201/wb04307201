@@ -547,4 +547,3 @@ public class ProductionSecurityConfig {
 
 ← [返回: Spring Security](../README.md)
 
-<!-- TODO: 拆分候选 (549 行 / 8 个 H2，超 500+8 阈值） -->

@@ -800,4 +800,3 @@ public class GlobalExceptionHandler {
 
 ← [返回 安全篇](../README.md)
 
-<!-- TODO: 拆分候选 (802 行 / 15 个 H2，超 500+8 阈值） -->

@@ -866,4 +866,3 @@ flowchart LR
 - **陷阱统计**：KM 项目失败率 50-70%（25% 沉淀 / 20% 检索 / 15% 权限 / 15% 运营 / 10% 技术 / 10% 集成 / 5% 认知）
 - **所属价值链**：01 研发创新
 - 关联系统：[PLM 深读](../plm/README.md) / [PDM 深读](../pdm/README.md) / [CMS 深读](../cms/README.md) / [ITSM 深读](../../06-specialized/itsm/README.md) / [CRM 深读](../../04-sales-service/crm/README.md) / [OA 深读](../../05-operations/oa/README.md) / [RPA 深读](../../05-operations/rpa/README.md)
-<!-- TODO: 拆分候选 (868 行 / 13 个 H2，超 500+8 阈值） -->

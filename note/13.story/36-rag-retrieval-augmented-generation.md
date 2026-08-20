@@ -761,4 +761,3 @@ GraphRAG：实体关系
 - 面试深挖：[RAG 咬文嚼字](../../note/12.interview/11.ai/rag/README.md)
 
 ← [返回系列导读](./index.md)
-<!-- TODO: 拆分候选 (763 行 / 16 个 H2，超 500+8 阈值） -->

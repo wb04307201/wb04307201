@@ -744,4 +744,3 @@ public class SeckillController {
 ---
 
 ← [返回 限流原理](README.md)
-<!-- TODO: 拆分候选 (746 行 / 10 个 H2，超 500+8 阈值） -->

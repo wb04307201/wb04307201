@@ -924,4 +924,3 @@ int cp = word.codePointAt(i);
 
 <!-- 04-z-algorithm.md 暂未创建，后续按系列扩展需要时再补充。 -->
 
-<!-- TODO: 拆分候选 (926 行 / 9 个 H2，超 500+8 阈值） -->

@@ -511,4 +511,3 @@ public String knowledgeBaseQuery(@ToolParam String question) {
 - 13.split-hairs/11.ai — 面试深挖（建议补充本主题的 3 个高频问题）
 
 ← [返回笔记目录](../../README.md)
-<!-- TODO: 拆分候选 (513 行 / 11 个 H2，超 500+8 阈值） -->
