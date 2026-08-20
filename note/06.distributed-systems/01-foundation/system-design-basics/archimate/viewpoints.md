@@ -1,7 +1,7 @@
 <!--
 module:
   parent: 04.system-design
-  slug: 04.system-design/01-foundation/system-design-basics/archimate/viewpoints
+  slug: 12.interview/04.system-design/01-foundation/system-design-basics/archimate/viewpoints
   type: article
   category: 主模块子文章
   summary: ---

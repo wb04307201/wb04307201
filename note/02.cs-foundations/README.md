@@ -53,7 +53,7 @@ module:
 | 分类主题数 | 5 | 顶层 5 个分类目录（算法 / OS / 网络 / 运维 / 知识产权） |
 | 子 README 总数 | 25 | 含 5 个分类 README + 20 个 leaf README（depth ≥ 2） |
 | 含 frontmatter 的 README | 待统计 | Phase 2+ 验证 |
-| 配套面试题 | 13 篇 | `13.split-hairs/02.computer-basics/` 9 个兄弟（tcp-handshake / sse-vs-websocket / sensitive-word-filter / greedy-algorithms / machine-learning × 6 等） |
+| 配套面试题 | 13 篇 | `12.interview/02.computer-basics/` 9 个兄弟（tcp-handshake / sse-vs-websocket / sensitive-word-filter / greedy-algorithms / machine-learning × 6 等） |
 
 > **统计时间戳**：2026-08-12（Plan 2 Task 1 完成）
 

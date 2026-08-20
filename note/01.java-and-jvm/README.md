@@ -88,7 +88,7 @@ graph TB
 
 ## 🔗 相关章节
 
-- 下游：[`06.spring`](../../note/06.spring/) — Spring 生态（Java 最主流框架）
+- 下游：[`06.spring`](../../note/04.spring-backend/) — Spring 生态（Java 最主流框架）
 - 关联：[`04.system-design`](../../note/04.system-design/) — 系统设计（Java 工程实践的上层方法论）
 - 面试：[`13.split-hairs/01.java`](../12.interview/01.java/README.md) — 39 篇 Java 高频面试题
 
@@ -111,7 +111,7 @@ graph TB
 | 分类主题数 | 15 | 顶层 15 个分类目录（4 个主轴 01-language / 02-jvm / 03-concurrency / 04-patterns + 11 个周边） |
 | 子 README 总数 | 97 | 含 15 个分类 README + 82 个 leaf README（depth ≥ 2） |
 | 含 frontmatter 的 README | 98 / 98 | 100% 覆盖（含本顶层 README） |
-| 配套面试题 | 39 篇 | `note/13.split-hairs/01.java/` 下 leaf 文章数（待 12.interview 迁移时切换） |
+| 配套面试题 | 39 篇 | `note/12.interview/01.java/` 下 leaf 文章数（待 12.interview 迁移时切换） |
 
 > **统计时间戳**：2026-08-13（Plan 2 Task 3 完成；note/01.java → note/01.java-and-jvm 迁移，4 个主轴子目录重命名，leaf 内容 100% 保留）
 

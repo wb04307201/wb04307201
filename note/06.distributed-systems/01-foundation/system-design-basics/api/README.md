@@ -67,7 +67,7 @@ flowchart TD
 ## 相关章节
 
 - 上游：[`系统设计基础`](../README.md) — 设计原则与建模
-- 关联：[`04.system-design/05-security`](../../../05-security/README.md) — API 安全、JWT、OAuth2
+- 关联：[`12.interview/04.system-design/05-security`](../../../05-security/README.md) — API 安全、JWT、OAuth2
 - 关联：[`06.spring/02-web`](../../../../04.spring-backend/02-web/README.md) — Spring MVC / WebFlux 实现
 
 ← [返回系统设计基础](../README.md)

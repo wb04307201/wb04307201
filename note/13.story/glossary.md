@@ -656,16 +656,16 @@ module:
 |------|------|------|
 | **生产力悖论 (Productivity Paradox)** | AI 编程工具普及后的反直觉现象：代码量暴涨但价值下滑，吞吐量涨 2x 但 Token 涨 10x | [续集十九](./43-ai-productivity-paradox.md) |
 | **DORA 放大器理论 (AI as Amplifier)** | DORA 2025 核心结论：AI 是放大器，放大组织已有的优势和劣势；高绩效团队用 AI 更强，低绩效团队用 AI 更烂 | [续集十九](./43-ai-productivity-paradox.md) |
-| **代码流失率 (Code Churn Rate)** | 一段时间内被修改/重写/删除的代码占总提交代码的比例；AI 时代平均流失率从 30% 涨到 50-60% | [续集十九](./43-ai-productivity-paradox.md) / [13.split-hairs/11.ai/ai-code-churn](../../note/12.interview/11.ai/ai-code-churn/README.md) |
-| **6 周代码留存率 (6-Week Retention)** | AI 代码初次被采纳后 6 周内仍在生产环境的比例；基准 >50% 为健康 | [续集十九](./43-ai-productivity-paradox.md) / [13.split-hairs/11.ai/ai-coding-roi](../../note/12.interview/11.ai/ai-coding-roi/README.md) |
+| **代码流失率 (Code Churn Rate)** | 一段时间内被修改/重写/删除的代码占总提交代码的比例；AI 时代平均流失率从 30% 涨到 50-60% | [续集十九](./43-ai-productivity-paradox.md) / [12.interview/11.ai/ai-code-churn](../../note/12.interview/11.ai/ai-code-churn/README.md) |
+| **6 周代码留存率 (6-Week Retention)** | AI 代码初次被采纳后 6 周内仍在生产环境的比例；基准 >50% 为健康 | [续集十九](./43-ai-productivity-paradox.md) / [12.interview/11.ai/ai-coding-roi](../../note/12.interview/11.ai/ai-coding-roi/README.md) |
 | **Waydev 数据** | 行业研究：AI 代码初次采纳率 80-90%，但 6 周后留存率仅 10-30% | [续集十九](./43-ai-productivity-paradox.md) |
 | **GitClear 数据** | 行业研究：AI 用户代码修改率 9.4 倍（非 AI 用户的）| [续集十九](./43-ai-productivity-paradox.md) |
 | **Faros AI 数据** | 行业研究：AI 用户代码变更率 +861% | [续集十九](./43-ai-productivity-paradox.md) |
 | **Jellyfish 数据** | 行业研究：AI 用户吞吐量 2x 但 Token 成本 10x | [续集十九](./43-ai-productivity-paradox.md) |
-| **DORA 4 指标** | 部署频率 / 变更前置时间 / 变更失败率 / MTTR；2025 DORA 报告新增 AI 时代适配 | [13.split-hairs/11.ai/ai-coding-roi](../../note/12.interview/11.ai/ai-coding-roi/README.md) |
-| **SPACE 5 维度** | Satisfaction / Performance / Activity / Communication / Efficiency；Microsoft Research 提出的开发者生产力多维度量 | [13.split-hairs/11.ai/ai-coding-roi](../../note/12.interview/11.ai/ai-coding-roi/README.md) |
+| **DORA 4 指标** | 部署频率 / 变更前置时间 / 变更失败率 / MTTR；2025 DORA 报告新增 AI 时代适配 | [12.interview/11.ai/ai-coding-roi](../../note/12.interview/11.ai/ai-coding-roi/README.md) |
+| **SPACE 5 维度** | Satisfaction / Performance / Activity / Communication / Efficiency；Microsoft Research 提出的开发者生产力多维度量 | [12.interview/11.ai/ai-coding-roi](../../note/12.interview/11.ai/ai-coding-roi/README.md) |
 | **Token 投入产出比 (Token ROI)** | 业务价值 / Token 成本；AI 时代核心成本指标 | [续集十九](./43-ai-productivity-paradox.md) |
-| **AI Review 拒绝率** | 被拒绝合并的 AI 代码 / 总 AI 代码；基准 >20% 说明 Harness 不够 | [13.split-hairs/11.ai/ai-coding-roi](../../note/12.interview/11.ai/ai-coding-roi/README.md) |
+| **AI Review 拒绝率** | 被拒绝合并的 AI 代码 / 总 AI 代码；基准 >20% 说明 Harness 不够 | [12.interview/11.ai/ai-coding-roi](../../note/12.interview/11.ai/ai-coding-roi/README.md) |
 | **资深 vs 初级鸿沟** | 资深工程师 AI 采纳率 60-70%（修改率 1.5x），初级工程师采纳率 90%（修改率 9.4x）—— 能力决定放大效果 | [续集十九](./43-ai-productivity-paradox.md) |
 
 ---

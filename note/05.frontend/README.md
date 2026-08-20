@@ -145,12 +145,12 @@ Vercel AI SDK / Anthropic SDK / OpenAI SDK 把 LLM 调用抽象为 `streamText` 
 
 ## 六、相关章节
 
-- 上游:[`02.computer-basics/01-network`](../../note/02.computer-basics/01-network/) — HTTP 协议族
-- 下游:[`06.spring`](../../note/06.spring/) / [`11.ai`](../../note/11.ai/) — 后端与 AI 知识体系
-- 横切:[`05.tools/05-monorepo`](../../note/05.tools/05-monorepo/) — Monorepo 工具链与 `04-engineering` 互补
+- 上游:[`02.computer-basics/01-network`](../../note/02.cs-foundations/01-network/) — HTTP 协议族
+- 下游:[`06.spring`](../../note/04.spring-backend/) / [`11.ai`](../../note/11.ai/) — 后端与 AI 知识体系
+- 横切:[`05.tools/05-monorepo`](../../note/07.devops-and-tools/01-tools/05-monorepo/) — Monorepo 工具链与 `04-engineering` 互补
 - 关联:[`04.system-design`](../../note/04.system-design/) — 跨端与架构的系统设计参考
 - 主题阅读:[`12.story`](../../note/12.story/) — 阿明餐厅系列(前端篇 / 多端篇 / AI 学习悖论)
-- 咬文嚼字:[`13.split-hairs/09.front-end`](../../note/13.split-hairs/09.front-end/) — 前端细节专题
+- 咬文嚼字:[`13.split-hairs/09.front-end`](../../note/12.interview/09.front-end/) — 前端细节专题
 
 ---
 

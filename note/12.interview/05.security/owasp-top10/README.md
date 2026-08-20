@@ -112,7 +112,7 @@ SSRF 3 个：图片上传接口接受 URL，可探测内网
 - [令牌桶 vs 漏桶](../rate-limiting-algorithms/README.md) — API 安全与 DDoS 防护
 - [统一权限控制系统](../access-control-design/README.md) — A01 访问控制
 - [单点登录 6 大方案](../sso/README.md) — A07 认证架构
-- [主模块 04.system-design/05-security](../../../06.distributed-systems/05-security/README.md) — 安全知识体系
+- [主模块 12.interview/04.system-design/05-security](../../../06.distributed-systems/05-security/README.md) — 安全知识体系
 
 ---
 

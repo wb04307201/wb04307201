@@ -56,6 +56,6 @@ module:
 ## 相关章节
 
 - 主模块：大数据相关知识分散在 [`03.database`](../../../note/03.database/)（数据库）、[`04.system-design`](../../../note/04.system-design/)（分布式系统）
-- 相关面试题：[`03.database`](03.database/)（MVCC / 事务隔离）/ [`04.system-design`](04.system-design/)（分布式一致性）
+- 相关面试题：[`03.database`](03.database/)（MVCC / 事务隔离）/ [`04.system-design`](12.interview/04.system-design/)（分布式一致性）
 
 ← [返回咬文嚼字（高频面试题）](../README.md)

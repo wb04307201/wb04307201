@@ -279,7 +279,7 @@ graph LR
 ## 八、交叉引用
 
 - 主模块：[`04.system-design`](../../../../note/04.system-design/) — 系统设计
-- 相关：[`13.split-hairs/04.system-design/distributed-lock/`](../distributed-lock/) — 分布式锁（与限流配合）
+- 相关：[`12.interview/04.system-design/distributed-lock/`](../distributed-lock/) — 分布式锁（与限流配合）
 - 待补：熔断、降级详解
 
 ## 相关章节

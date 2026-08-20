@@ -907,7 +907,7 @@ public class LogExportService {
 
 - **相关章节**：
   - [JVM 内存区域](../../02-jvm/README.md) — JVM 内存模型 + GC 算法
-  - [Excel 导出 OOM 面试题](../../../../note/13.split-hairs/01.java/excel-export-oom/) — 面试高频拷问
+  - [Excel 导出 OOM 面试题](../../../../note/12.interview/01.java/excel-export-oom/) — 面试高频拷问
 
 ---
 

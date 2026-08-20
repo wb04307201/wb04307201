@@ -258,7 +258,7 @@ ROI = (业务价值 - TCO) / TCO × 100%
 - 主模块：[`09.front-end/08-cross-platform/mobile-tech-stack`](../../05.frontend/08-cross-platform/mobile-tech-stack/README.md) — 前端跨端选型
 - 主模块：[`note/04.system-design`](../../06.distributed-systems/README.md) — 系统设计架构基线
 - 故事章节：[`12.story/43-ai-productivity-paradox`](../../13.story/43-ai-productivity-paradox.md) — AI Coding ROI 数据
-- 面试专题：[`13.split-hairs/06.spring/transactional-pitfalls`](../../12.interview/06.spring/transactional-pitfalls/README.md) — 工程实践细节
+- 面试专题：[`12.interview/06.spring/transactional-pitfalls`](../../12.interview/06.spring/transactional-pitfalls/README.md) — 工程实践细节
 
 ---
 

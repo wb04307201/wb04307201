@@ -105,7 +105,7 @@ CSP 渐进上线：先 Report-Only 观察 → 分析违规报告 → 切 Enforce
 - [单点登录 6 大方案](../sso/README.md) — OAuth2 中的 State 参数防 CSRF
 - [JWT vs Session](../jwt-vs-session/README.md) — Cookie 安全属性配置
 - [OWASP Top 10](../owasp-top10/README.md) — XSS 和注入在 OWASP 中的排名
-- [主模块 04.system-design/05-security](../../../06.distributed-systems/05-security/README.md) — 安全知识体系
+- [主模块 12.interview/04.system-design/05-security](../../../06.distributed-systems/05-security/README.md) — 安全知识体系
 
 ---
 

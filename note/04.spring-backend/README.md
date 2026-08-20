@@ -178,13 +178,13 @@ module:
 
 ## 🎯 高频面试题（咬文嚼字）
 
-针对面试中反复深挖的细节问题，见 [13.split-hairs/06.spring](../../note/13.split-hairs/06.spring/)：
+针对面试中反复深挖的细节问题，见 [13.split-hairs/06.spring](../../note/12.interview/06.spring/)：
 
 | 主题 | 难度 | 核心问题 |
 |------|:----:|:---------|
-| [@Transactional 失效 8 种场景](../../note/13.split-hairs/06.spring/transactional-pitfalls/) | ⭐⭐⭐⭐⭐ | 同类调用 / 异常类型 / 多线程 / 传播行为 |
-| [Bean 生命周期详解](../../note/13.split-hairs/06.spring/bean-lifecycle/) | ⭐⭐⭐⭐ | 实例化 → 注入 → 初始化 → 销毁 12 步 |
-| [为什么不推荐 @Autowired](../../note/13.split-hairs/06.spring/not-use-@autowired/) | ⭐⭐⭐ | 字段注入 vs 构造器注入 |
+| [@Transactional 失效 8 种场景](../../note/12.interview/06.spring/transactional-pitfalls/) | ⭐⭐⭐⭐⭐ | 同类调用 / 异常类型 / 多线程 / 传播行为 |
+| [Bean 生命周期详解](../../note/12.interview/06.spring/bean-lifecycle/) | ⭐⭐⭐⭐ | 实例化 → 注入 → 初始化 → 销毁 12 步 |
+| [为什么不推荐 @Autowired](../../note/12.interview/06.spring/not-use-@autowired/) | ⭐⭐⭐ | 字段注入 vs 构造器注入 |
 
 ---
 

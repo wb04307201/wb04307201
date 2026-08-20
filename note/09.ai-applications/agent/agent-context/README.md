@@ -27,7 +27,7 @@ Q：你的 Agent 如何处理长上下文？1M token 的文档怎么让 LLM 准�
 3. **反模式**：列举 Agent 长上下文 5 大失效点
 4. **何时反选**：盲目灌长上下文 vs 总是用 RAG 的两个极端都错
 
-完整 5-7 道精选面试题见 [13.split-hairs/11.ai/long-context-agent-strategy](../../../12.interview/11.ai/long-context-agent-strategy/README.md)（⚠️ 待 Phase 1+ 迁入）。
+完整 5-7 道精选面试题见 [12.interview/11.ai/long-context-agent-strategy](../../../12.interview/11.ai/long-context-agent-strategy/README.md)（⚠️ 待 Phase 1+ 迁入）。
 
 ---
 
@@ -93,7 +93,7 @@ Q：你的 Agent 如何处理长上下文？1M token 的文档怎么让 LLM 准�
 
 ## 速查 · 关联资源
 - **餐厅叙事**：⚠️ 待 Phase 1+ 迁入（占位 `../../../../13.story/07-from-chef-to-ceo.md`）
-- **面试题**：[13.split-hairs/11.ai/long-context-agent-strategy](../../../12.interview/11.ai/long-context-agent-strategy/README.md) —— 5-7 道精选题（⚠️ 待 Phase 1+ 迁入）
+- **面试题**：[12.interview/11.ai/long-context-agent-strategy](../../../12.interview/11.ai/long-context-agent-strategy/README.md) —— 5-7 道精选题（⚠️ 待 Phase 1+ 迁入）
 - **同级兄弟**：[agent-memory](../agent-memory/README.md) · [agent-architecture](../agent-architecture/README.md)
 - **相关章节**：context-engineering（⚠️ 待 Phase 1+ 迁入；占位 `../../../../prompts/context-engineering/`）· rag 选型 · vector-search-algorithms（⚠️ 待 Phase 1+ 迁入；占位 `../../../../12.interview/11.ai/vector-search-algorithms/`）
 

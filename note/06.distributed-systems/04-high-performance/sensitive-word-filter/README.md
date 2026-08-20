@@ -28,7 +28,7 @@ Q：Java 后端如何高并发设计敏感词过滤系统？
 3. **架构演进**：单机 → 分布式 → 多级缓存
 4. **5 反模式**：明文传输 / 没前缀处理 / 同步阻塞 / 单点 IdP
 
-完整 5-7 道精选面试题见 [13.split-hairs/02.computer-basics/sensitive-word-filter](../../../12.interview/02.computer-basics/sensitive-word-filter/README.md)。
+完整 5-7 道精选面试题见 [12.interview/02.computer-basics/sensitive-word-filter](../../../12.interview/02.computer-basics/sensitive-word-filter/README.md)。
 
 ---
 
@@ -332,7 +332,7 @@ tokens.forEach(token -> ac.match(token));
 - **同级案例**：[商品搜索系统设计](../product-search/README.md) —— 倒排索引 + BM25 + 多阶段排序 + 数据同步
 - **同级案例**：[大文件上传系统](../file-upload/README.md) —— 分片 + 断点续传 + 秒传 + 对象存储
 - **算法基础**：[string-algorithms/AC 自动机](../../../02.cs-foundations/01-algorithms/string-algorithms/03-ac-automaton.md) —— fail 指针构建 + Java 完整实现
-- **面试题**：[13.split-hairs/02.computer-basics/sensitive-word-filter](../../../12.interview/02.computer-basics/sensitive-word-filter/README.md) —— 5-7 道精选 Q&A
+- **面试题**：[12.interview/02.computer-basics/sensitive-word-filter](../../../12.interview/02.computer-basics/sensitive-word-filter/README.md) —— 5-7 道精选 Q&A
 - **应用场景**：[08.application-systems/cms/README.md](../../../10.business-systems/01-rd-innovation/cms/README.md) —— 内容管理系统中的内容审核
 - **餐厅叙事**：[12.story 联动](../../../13.story/01-ai-agent-architecture.md) —— 阿明餐厅评论区敏感词审查
 

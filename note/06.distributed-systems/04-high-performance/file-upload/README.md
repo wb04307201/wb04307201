@@ -29,7 +29,7 @@ Q：秒传的原理是什么？怎么保证 MD5 不碰撞？
 3. **架构演进**：单机直传 → 分片 + 对象存储 → 分布式 + CDN
 4. **5 反模式**：整文件一次上传 / 分片太大 / 没校验完整性 / 没做秒传 / 没限速
 
-完整面试题见 [13.split-hairs/04.system-design/file-upload](../../../12.interview/04.system-design/file-upload/README.md)。
+完整面试题见 [12.interview/04.system-design/file-upload](../../../12.interview/04.system-design/file-upload/README.md)。
 
 ---
 

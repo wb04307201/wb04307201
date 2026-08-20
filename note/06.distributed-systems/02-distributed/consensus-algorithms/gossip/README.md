@@ -1,6 +1,6 @@
 <!--module:
   parent: system-design
-  slug: 04.system-design/02-distributed/consensus-algorithms/gossip
+  slug: 12.interview/04.system-design/02-distributed/consensus-algorithms/gossip
   type: article
   category: 主模块子文章
   summary: Gossip协议：分布式系统中的高效信息传播机制 本应该很简单，Gossip协议（八卦协议）通过模仿人类社会中“流言传播”的方式，实现分布式系统中信息的快速同步...

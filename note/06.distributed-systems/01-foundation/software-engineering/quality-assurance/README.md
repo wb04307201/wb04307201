@@ -1,6 +1,6 @@
 <!--module:
   parent: system-design
-  slug: 04.system-design/01-foundation/software-engineering/quality-assurance
+  slug: 12.interview/04.system-design/01-foundation/software-engineering/quality-assurance
   type: article
   category: 主模块子文章
   summary: 质量保障体系 本应该很简单，以下是从不同维度对软件工程中质量保障体系的详细阐述，涵盖单元测试、集成测试、CI/CD、代码审查与性能监控等关键环节，并补充其他重要...

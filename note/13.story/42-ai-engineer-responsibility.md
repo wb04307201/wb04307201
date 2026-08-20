@@ -170,9 +170,9 @@ story:
 - [`31-codebase-cognitive-debt`](./29-codebase-cognitive-debt.md) — 续集 7：认知债（技术债的根因）
 - [`32-agent-harness`](./30-agent-harness.md) — 续集 8：Harness（AI 协作的工程解药）
 - 主模块：`11.ai/04-architecture` — AI 架构设计
-- 咬文嚼字：[`13.split-hairs/11.ai/function-calling`](../12.interview/11.ai/function-calling/README.md) — Function Calling 原理
-- 咬文嚼字：[`13.split-hairs/11.ai/agent-dag-vs-react`](../12.interview/11.ai/agent-dag-vs-react/README.md) — DAG vs ReAct
-- 咬文嚼字：[`13.split-hairs/11.ai/harness-engineering`](../12.interview/11.ai/harness-engineering/README.md) — Harness Engineering
+- 咬文嚼字：[`12.interview/11.ai/function-calling`](../12.interview/11.ai/function-calling/README.md) — Function Calling 原理
+- 咬文嚼字：[`12.interview/11.ai/agent-dag-vs-react`](../12.interview/11.ai/agent-dag-vs-react/README.md) — DAG vs ReAct
+- 咬文嚼字：[`12.interview/11.ai/harness-engineering`](../12.interview/11.ai/harness-engineering/README.md) — Harness Engineering
 
 ---
 

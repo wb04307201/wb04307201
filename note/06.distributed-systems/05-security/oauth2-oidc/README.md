@@ -510,7 +510,7 @@ ID Token 是一个签名的 JWT，包含用户身份信息：
 本章节重点讲 OAuth2/OIDC 协议本身，**SSO 作为设计目标**的 6 大实现方案对比（含 CAS / Cookie / OAuth2+OIDC / SAML 2.0 / JWT / 代理）已沉淀到独立专题：
 
 - **SSO 主模块深度**：[../sso/README.md](../sso/README.md) —— 6 文件 / 1520 行深度（含 Spring Security 实战 + JWT 自签 + 选型决策树）
-- **面试题（5.security 新增）**：[13.split-hairs/05.security/sso](../../../12.interview/05.security/sso/README.md) —— 7 道精选 Q&A + 90 秒话术 + 5 反模式
+- **面试题（5.security 新增）**：[12.interview/05.security/sso](../../../12.interview/05.security/sso/README.md) —— 7 道精选 Q&A + 90 秒话术 + 5 反模式
 
 ← [返回 安全篇](../README.md)
 

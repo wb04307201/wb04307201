@@ -11,7 +11,7 @@ module:
 
 > **定位**：单例模式 5 种实现对比 + 反射/序列化破坏 + 选型指南 的核心原理、实现与最佳实践。
 >
-> 本节由 `13.split-hairs/01.java/singleton-pattern/` 迁出，按"面试优先级"重新组织：5 种实现 → 8 种破坏方式 → 选型推荐。完整原理与基础实现见 [creation/README.md](./README.md#一单例模式-singleton)。
+> 本节由 `12.interview/01.java/singleton-pattern/` 迁出，按"面试优先级"重新组织：5 种实现 → 8 种破坏方式 → 选型推荐。完整原理与基础实现见 [creation/README.md](./README.md#一单例模式-singleton)。
 
 ## 引言：为什么单例如此重要？
 

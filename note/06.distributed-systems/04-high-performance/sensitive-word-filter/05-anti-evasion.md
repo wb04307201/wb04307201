@@ -140,7 +140,7 @@ FilterResult result = sensitiveFilter.filter(clean);
 - 专题首页：[sensitive-word-filter 总目录](README.md) —— AC 自动机 + Bloom + 分布式全景
 - 算法基础：[string-algorithms/AC 自动机](../../../02.cs-foundations/01-algorithms/string-algorithms/03-ac-automaton.md) —— 归一化后喂给的匹配引擎
 - AI 兜底：[11.ai/08-llmops/05-llm-security](../../../09.ai-applications/agent/agent-reliability/llm-security/README.md) —— LLM 内容审核（L3 语义兜底）
-- 面试题：[13.split-hairs/02.computer-basics/sensitive-word-filter](../../../12.interview/02.computer-basics/sensitive-word-filter/README.md) —— 变体绕过精选 Q&A
+- 面试题：[12.interview/02.computer-basics/sensitive-word-filter](../../../12.interview/02.computer-basics/sensitive-word-filter/README.md) —— 变体绕过精选 Q&A
 
 ---
 

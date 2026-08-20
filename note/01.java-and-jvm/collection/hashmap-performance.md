@@ -11,7 +11,7 @@ module:
 
 > **定位**：HashMap 大数据量插入的性能陷阱 + 初始容量预设 + 并行方案 的核心原理、实现与最佳实践。
 >
-> 本节由 `13.split-hairs/01.java/large-data-into-hashmap/` 迁出，专注**性能陷阱与并发方案**。HashMap 基础原理见 [hashmap.md](./hashmap.md)。
+> 本节由 `12.interview/01.java/large-data-into-hashmap/` 迁出，专注**性能陷阱与并发方案**。HashMap 基础原理见 [hashmap.md](./hashmap.md)。
 
 ## 一个容易忽略的性能陷阱
 

@@ -105,7 +105,7 @@ keepalive_timeout 65;
 
 - [传输加密 vs 存储加密](../encryption-at-rest-transit/README.md) — TLS 在加密体系中的定位
 - [CORS 预检请求优化](../cors-preflight/README.md) — 另一个 RTT 优化维度
-- [主模块 04.system-design/05-security](../../../06.distributed-systems/05-security/README.md) — 安全知识体系
+- [主模块 12.interview/04.system-design/05-security](../../../06.distributed-systems/05-security/README.md) — 安全知识体系
 
 ---
 

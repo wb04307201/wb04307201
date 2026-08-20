@@ -397,9 +397,9 @@ Keycloak 优势：
 
 ### 主模块兄弟
 
-- [04.system-design/05-security/oauth2-oidc](../../../06.distributed-systems/05-security/oauth2-oidc/README.md) —— OAuth2/OIDC 完整（500 行）
-- [04.system-design/05-security/jwt-security](../../../06.distributed-systems/05-security/jwt-security/README.md) —— JWT 完整（325 行）
-- [04.system-design/05-security/access-control](../../../06.distributed-systems/05-security/access-control/README.md) —— RBAC/ABAC
+- [12.interview/04.system-design/05-security/oauth2-oidc](../../../06.distributed-systems/05-security/oauth2-oidc/README.md) —— OAuth2/OIDC 完整（500 行）
+- [12.interview/04.system-design/05-security/jwt-security](../../../06.distributed-systems/05-security/jwt-security/README.md) —— JWT 完整（325 行）
+- [12.interview/04.system-design/05-security/access-control](../../../06.distributed-systems/05-security/access-control/README.md) —— RBAC/ABAC
 
 ### split-hairs 兄弟
 

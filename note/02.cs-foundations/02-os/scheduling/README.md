@@ -339,7 +339,7 @@ ForkJoinPool (parallelism = 4):
 - 返回：[`06-operating-system`](../README.md) — 操作系统概述
 - 深度阅读：[`01.java/concurrency`](../../../01.java/concurrency/) — Java 并发编程（线程池/Fork-Join）
 - 关联：[`01.java/jvm`](../../../01.java/jvm/) — JVM 内部（JIT 编译线程、GC 线程的调度影响）
-- 关联：[`04.system-design/04-high-performance`](../../../04.system-design/04-high-performance/) — 高性能设计（线程模型选型）
+- 关联：[`12.interview/04.system-design/04-high-performance`](../../../04.system-design/04-high-performance/) — 高性能设计（线程模型选型）
 
 ---
 

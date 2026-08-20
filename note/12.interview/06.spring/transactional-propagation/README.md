@@ -361,7 +361,7 @@ public void methodWithCheckedException() throws Exception {
 
 ## 七、交叉引用
 
-- 主模块：[`06.spring`](../../../../note/06.spring/) — Spring 知识体系
+- 主模块：[`06.spring`](../../../../note/04.spring-backend/) — Spring 知识体系
 - [事务失效场景](../transactional-pitfalls/README.md) — @Transactional 失效场景
 - [事务传播](../../../04.spring-backend/04-data/transaction/propagation-and-isolation.md) — 事务传播与隔离级别详解
 - [分布式事务](../../../06.distributed-systems/02-distributed/distributed-transaction/README.md) — 分布式事务方案对比

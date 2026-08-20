@@ -11,7 +11,7 @@ module:
 
 > CTO / PM / 研发效能负责人都面对一个共同问题：**花 50 万买 AI Coding 工具，半年后真的"省了 80 万"吗？应该看哪些指标？**考察的是 **AI 时代的研发效能度量能力**，不是"AI Coding 好不好用"。
 
-> **前置知识**：[12.story/43-ai-productivity-paradox](../../13.story/43-ai-productivity-paradox.md)（Waydev/GitClear 数据真相）、[12.story/29-codebase-cognitive-debt](../../13.story/29-codebase-cognitive-debt.md)（认知债）、[13.split-hairs/09.front-end/this-binding](../../12.interview/09.front-end/this-binding/README.md)等 AI 主题面试题。
+> **前置知识**：[12.story/43-ai-productivity-paradox](../../13.story/43-ai-productivity-paradox.md)（Waydev/GitClear 数据真相）、[12.story/29-codebase-cognitive-debt](../../13.story/29-codebase-cognitive-debt.md)（认知债）、[12.interview/09.front-end/this-binding](../../12.interview/09.front-end/this-binding/README.md)等 AI 主题面试题。
 
 ---
 
@@ -279,7 +279,7 @@ Waydev 数据：AI 代码采纳率
 - 故事章节：[`12.story/29-codebase-cognitive-debt`](../../13.story/29-codebase-cognitive-debt.md) — AI 时代认知债
 - 故事章节：[`12.story/42-ai-engineer-responsibility`](../../13.story/42-ai-engineer-responsibility.md) — AI 责任金字塔
 - 故事章节：[`12.story/07-from-chef-to-ceo`](../../13.story/07-from-chef-to-ceo.md) — 组织管理康威定律
-- 主模块：`note/11.ai/03-engineering/harness-engineering` — Harness 工程
+- 主模块：`note/08.ai-foundations/03-engineering/harness-engineering` — Harness 工程
 
 ---
 

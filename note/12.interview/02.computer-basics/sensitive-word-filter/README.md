@@ -408,8 +408,8 @@ public void refreshDictionary() {
 
 ### 主模块兄弟
 
-- [04.system-design/04-high-performance/cache-patterns](../../../06.distributed-systems/04-high-performance/cache-patterns/README.md) —— 缓存一致性
-- [04.system-design/04-high-performance/README](../../../06.distributed-systems/04-high-performance/README.md) —— 高性能模块
+- [12.interview/04.system-design/04-high-performance/cache-patterns](../../../06.distributed-systems/04-high-performance/cache-patterns/README.md) —— 缓存一致性
+- [12.interview/04.system-design/04-high-performance/README](../../../06.distributed-systems/04-high-performance/README.md) —— 高性能模块
 - [08.application-systems/cms/](../../../10.business-systems/01-rd-innovation/cms/README.md) —— 内容审核系统
 
 ---

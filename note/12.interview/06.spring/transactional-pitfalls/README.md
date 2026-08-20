@@ -339,7 +339,7 @@ public class OrderService {
 
 ## 五、交叉引用
 
-- 主模块：[`06.spring`](../../../../note/06.spring/) — Spring 知识体系
+- 主模块：[`06.spring`](../../../../note/04.spring-backend/) — Spring 知识体系
 - [AOP 原理](../../../04.spring-backend/08-annotations/aop.md) — AOP 原理详解
 - [@Autowired 推荐用法](../not-use-@autowired/README.md) — @Autowired 推荐用法
 

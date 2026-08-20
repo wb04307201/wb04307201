@@ -414,7 +414,7 @@ Netty EventLoop (1 个线程):
 - 返回：[`06-operating-system`](../README.md) — 操作系统概述
 - 深度阅读：[`01.java/io`](../../../01.java/io/) — Java I/O 体系（BIO/NIO 详解）
 - 深度阅读：[`01.java/concurrency`](../../../01.java/concurrency/) — 并发编程（Netty 事件循环模型）
-- 关联：[`04.system-design/04-high-performance`](../../../04.system-design/04-high-performance/) — 高性能设计（I/O 模型选型）
+- 关联：[`12.interview/04.system-design/04-high-performance`](../../../04.system-design/04-high-performance/) — 高性能设计（I/O 模型选型）
 - 关联：[`03.database`](../../../03.database/) — 数据库（存储引擎与文件系统的关系）
 
 ---

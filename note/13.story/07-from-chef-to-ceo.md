@@ -637,7 +637,7 @@ graph TD
 
 **这是 80 家分店的标准答案** —— 你不需要"全塞"的银弹，你需要"按场景组合"的工程能力。
 
-> 🆕 **深度技术**：6 策略组合 + Lost in Middle 缓解 + Chunking/Re-rank/Sub-Agents 工业级实操 → 详见 [Agent 长上下文架构深度专题](../09.ai-applications/agent/agent-context/README.md)（含 8 文件 1571 行）。面试精选 Q&A 见 [13.split-hairs/11.ai/long-context-agent-strategy](../../note/12.interview/11.ai/long-context-agent-strategy/README.md)。
+> 🆕 **深度技术**：6 策略组合 + Lost in Middle 缓解 + Chunking/Re-rank/Sub-Agents 工业级实操 → 详见 [Agent 长上下文架构深度专题](../09.ai-applications/agent/agent-context/README.md)（含 8 文件 1571 行）。面试精选 Q&A 见 [12.interview/11.ai/long-context-agent-strategy](../../note/12.interview/11.ai/long-context-agent-strategy/README.md)。
 
 ---
 ## 阿明的"AI 餐厅自动修复"挑战：Loop Engineering 实战 50 家分店 bug
@@ -666,7 +666,7 @@ graph TD
 
 这是 80 家分店的标准答案 —— 你不需要"无限信任 AI"，你需要"**目标驱动 + 自动判定 + 自动修复 + 人工兜底**"的工程能力。
 
-> 🆕 **Loop Engineering 实战深度**：11.ai/03-engineering/loop-engineering/auto-fix-strategy.md 4 子节点（修复策略 + Verifier 设计 + IDE 案例 + prompt 模板）共 1398 行深度 —— 包括 Claude Code / Cursor / Devin / Aider 4 大主流 AI IDE 的 Loop 工程实战。面试精选 5 道 Q&A 见 [13.split-hairs/11.ai/loop-engineering](../../note/12.interview/11.ai/loop-engineering/README.md)。
+> 🆕 **Loop Engineering 实战深度**：11.ai/03-engineering/loop-engineering/auto-fix-strategy.md 4 子节点（修复策略 + Verifier 设计 + IDE 案例 + prompt 模板）共 1398 行深度 —— 包括 Claude Code / Cursor / Devin / Aider 4 大主流 AI IDE 的 Loop 工程实战。面试精选 5 道 Q&A 见 [12.interview/11.ai/loop-engineering](../../note/12.interview/11.ai/loop-engineering/README.md)。
 
 ---
 

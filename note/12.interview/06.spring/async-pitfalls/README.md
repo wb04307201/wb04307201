@@ -356,7 +356,7 @@ public void sendNotification() {
 
 ## 七、交叉引用
 
-- 主模块：[`06.spring`](../../../../note/06.spring/) — Spring 知识体系
+- 主模块：[`06.spring`](../../../../note/04.spring-backend/) — Spring 知识体系
 - [事务传播](../../../04.spring-backend/04-data/transaction/propagation-and-isolation.md) — @Transactional 事务传播机制
 - [线程池核心原理](../../../01.java-and-jvm/03-concurrency/thread-basics/README.md) — 线程池调优实战
 

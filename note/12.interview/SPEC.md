@@ -42,7 +42,7 @@
 - `01.java/`：Java、JVM、并发、集合与 Spring/Java 工程基础。
 - `02.computer-basics/`：数据结构、算法、操作系统、网络、数学与设计题基础。
 - `03.database/`：数据库、SQL、索引、事务、缓存与存储。
-- `04.system-design/`：系统设计、分布式、架构、容量与高可用。
+- `12.interview/04.system-design/`：系统设计、分布式、架构、容量与高可用。
 - `05.security/`：安全基础、Web 安全、认证授权与攻防。
 - `06.spring/`：Spring Boot、Spring Cloud、后端工程实践。
 - `09.front-end/`、`10.big-data/`、`11.ai/`：对应领域面试题。

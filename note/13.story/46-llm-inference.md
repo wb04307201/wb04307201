@@ -168,7 +168,7 @@ LLM 推理优化不是"一项技术"，而是**5 项技术的组合**：
 ## 🔗 兄弟章节
 
 - **主模块深度**：[11.ai/02-technology-stack/llm-inference-optimization](../09.ai-applications/llm-inference/llm-inference-optimization/README.md)
-- **面试深挖**：[13.split-hairs/11.ai/llm-inference](../../note/12.interview/11.ai/llm-inference/README.md)
+- **面试深挖**：[12.interview/11.ai/llm-inference](../../note/12.interview/11.ai/llm-inference/README.md)
 - **上集**：45-skill-scheduling-restaurant
 - **下集**：44-tech-debt-career-trap（已在前面章节）
 

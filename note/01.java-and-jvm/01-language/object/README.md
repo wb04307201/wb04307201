@@ -231,7 +231,7 @@ Objects.nonNull(obj);    // 等价于 obj != null
 
 ## 创建对象的 7 种方式（split-hairs 视角）
 
-> 本节由 `13.split-hairs/01.java/create-object/` 迁出，按"常规 → 黑科技"序列，覆盖 Java 创建对象的 7 种典型手段（主模块已讲 Object.clone()，本节聚焦 5 种以上替代方案）。
+> 本节由 `12.interview/01.java/create-object/` 迁出，按"常规 → 黑科技"序列，覆盖 Java 创建对象的 7 种典型手段（主模块已讲 Object.clone()，本节聚焦 5 种以上替代方案）。
 
 ### 1. `new` 关键字（最常见）
 

@@ -10,7 +10,7 @@ question:
 
 # 分库分表后分布式事务怎么搞？
 
-> 分库分表后数据分散在多个数据库，单机事务无法跨库——这就是分库分表带来的分布式事务问题。与[通用分布式事务](04.system-design/distributed-transaction/)的区别：本题聚焦**同库多表 / 多库多表**场景，不是跨微服务。
+> 分库分表后数据分散在多个数据库，单机事务无法跨库——这就是分库分表带来的分布式事务问题。与[通用分布式事务](12.interview/04.system-design/distributed-transaction/)的区别：本题聚焦**同库多表 / 多库多表**场景，不是跨微服务。
 
 ---
 
@@ -68,7 +68,7 @@ question:
 | **Saga** | 最终一致 | ⭐⭐⭐⭐ 好 | 中（补偿逻辑） | 长流程 / 跨多分片 |
 | **本地消息表 + MQ** | 最终一致 | ⭐⭐⭐⭐⭐ 优 | ✅ 低 | **分库分表场景首选** |
 
-> 与[通用分布式事务](04.system-design/distributed-transaction/)的 4 方案一致，但**侧重点不同**：分库分表场景通常不涉及跨服务 RPC，而是同服务内跨 DB 的物理分片，所以本地消息表方案更轻量。
+> 与[通用分布式事务](12.interview/04.system-design/distributed-transaction/)的 4 方案一致，但**侧重点不同**：分库分表场景通常不涉及跨服务 RPC，而是同服务内跨 DB 的物理分片，所以本地消息表方案更轻量。
 
 ---
 
@@ -184,7 +184,7 @@ Seata 是阿里开源的分布式事务框架，支持 4 种模式：
 
 ## 六、交叉引用
 
-- 通用方案：[分布式事务](04.system-design/distributed-transaction/) — 微服务视角的分布式事务 4 方案
+- 通用方案：[分布式事务](12.interview/04.system-design/distributed-transaction/) — 微服务视角的分布式事务 4 方案
 - 同模块：[分表扩容策略](../sharding-resize/) — 分库分表 + 在线 resharding 方案
 - 同模块：[分库分表分页查询](../sharding-pagination/) — 分库分表后分页 4 大方案 + 生产推荐
 - 跨模块：[微服务数据一致性](../../../../note/04.system-design/01-foundation/system-design-basics/microservices/data-consistency/) — 微服务间数据一致性保障

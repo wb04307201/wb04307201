@@ -872,7 +872,7 @@ CTO 会上，产品同事小王提了第一个问题：「为什么不用 ReAct�
 
 **这是 80 家分店的标准答案** —— 你不需要"全 ReAct"的银弹，你需要"按场景选择" + "混合架构"的工程能力。
 
-> 🆕 **4 模式深度解析**：ReAct Thought/Action/Observation + Plan-and-Execute 3 大重规划 + 4 模式 6 维量化对比 + 5 分钟决策树 → 详见 [Agent 4 大执行模式深度专题](../09.ai-applications/agent/agent-execution-patterns/README.md)（含 5 文件 1107 行）。面试精选 7 道 Q&A 见 [13.split-hairs/11.ai/react-vs-plan-execute](../../note/12.interview/11.ai/react-vs-plan-execute/README.md)。
+> 🆕 **4 模式深度解析**：ReAct Thought/Action/Observation + Plan-and-Execute 3 大重规划 + 4 模式 6 维量化对比 + 5 分钟决策树 → 详见 [Agent 4 大执行模式深度专题](../09.ai-applications/agent/agent-execution-patterns/README.md)（含 5 文件 1107 行）。面试精选 7 道 Q&A 见 [12.interview/11.ai/react-vs-plan-execute](../../note/12.interview/11.ai/react-vs-plan-execute/README.md)。
 
 ---
 

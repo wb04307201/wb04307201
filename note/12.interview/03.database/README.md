@@ -162,6 +162,6 @@ graph TB
 ## 相关章节
 
 - 主模块：[`note/03.database`](../../../note/03.database/) — 数据库知识体系
-- 相关章节：[`04.system-design`](04.system-design/)（高性能设计）
+- 相关章节：[`04.system-design`](12.interview/04.system-design/)（高性能设计）
 
 ← [返回咬文嚼字（高频面试题）](../README.md)

@@ -1,27 +1,64 @@
 <!--module:
-  parent: ai-foundations
-  slug: ai-foundations/03-transformer
-  type: index
-  category: AI 基础子模块
-  summary: Transformer 架构——注意力机制、QKV、位置编码与现代 LLM 的核心组件解析。
+  parent: 08.ai-foundations
+  slug: 08.ai-foundations/03-transformer
+  type: index-only
+  category: AI 基础索引
+  summary: Transformer 架构——注意力机制、位置编码、Self-Attention / Multi-Head / KV Cache / MQA-GQA-MLA / FlashAttention 核心组件解析。
 -->
 
-
+# 03. Transformer
 
 ## 📍 一句话定位
 
-> AI 基础概念层（ML / DL / Transformer / LLM / Tokenization + Embedding）
-# 03. Transformer
+> 现代 LLM 的基石——从 2017 年 Google "Attention is All You Need" 出发，掌握 Self-Attention、Multi-Head、位置编码（RoPE / ALiBi）与推理优化（KV Cache / MQA-GQA / FlashAttention），理解所有 GPT / BERT / LLaMA / Claude 的底层架构。
 
-> **定位**：Transformer 架构基础——从注意力机制、QKV 与位置编码到现代大语言模型的核心组件。
-> **继承规范**：[../SPEC.md](../SPEC.md)
+## 🎯 子模块简介
 
-## 文章清单
+`03-transformer/` 聚焦**Transformer 架构的四大核心主题**：
 
-| 标题 | 路径 | 摘要 |
-|------|------|------|
-| 注意力机制（Attention Mechanism） | [attention-mechanism.md](./attention-mechanism.md) | 系统梳理 Self/Cross/Multi-Head、Sparse、Linear、MQA 与 GQA 等注意力变体及其工程价值。 |
-| Transformer 架构 | [transformer-architecture.md](./transformer-architecture.md) | 架构详解 / Self-Attention 代码 |
+- **注意力机制（Attention Mechanism）**：Self-Attention / Cross-Attention / Causal-Attention / Multi-Head / Sparse / Linear / MQA / GQA ——7 大变体的差异与工程价值。
+- **位置编码（Positional Encoding）**：Sinusoidal（原始 Transformer）→ Learned（BERT）→ RoPE（LLaMA）→ ALiBi（MPT）——为什么 Transformer 需要位置信息。
+- **推理优化（Inference Optimization）**：KV Cache（避免重复计算）/ MQA-GQA-MLA（KV 压缩）/ FlashAttention（IO 优化）——让 LLM 推理从"能跑"到"能商用"。
+- **架构组件**：Embedding / LayerNorm / FFN / 残差连接 / MoE（Mixture of Experts）——Transformer 的模块化拼图。
+
+本节是 04-llm / 05-tokenization-embedding 的前置——所有 LLM 行为都源于这些架构选择。
+
+## 🗂️ 文章清单
+
+| 标题 | 路径 | 状态 | 摘要 |
+|------|------|------|------|
+| 注意力机制 | [attention-mechanism.md](./attention-mechanism.md) | ✅ 已完成（69 行） | 系统梳理 Self / Cross / Multi-Head / Sparse / Linear / MQA / GQA 等注意力变体及其工程价值。 |
+| Transformer 架构 | [transformer-architecture.md](./transformer-architecture.md) | ✅ 已完成（212 行） | 架构详解 + Self-Attention 代码：解决 RNN/LSTM 痛点 → 完全基于注意力机制 + 5 个核心 trade-off。 |
+| KV Cache 优化 | [kv-cache-optimization.md](./kv-cache-optimization.md) | ⏳ 待补 | KV Cache 原理 / MQA / GQA / MLA（DeepSeek）对比 / 显存计算公式 |
+| MQA / GQA / MLA 深度 | [mqa-gqa-mla.md](./mqa-gqa-mla.md) | ⏳ 待补 | MQA（多查询） / GQA（分组查询） / MLA（多头潜在注意力）适用场景与 LLaMA / Mistral / DeepSeek 选型 |
+| FlashAttention 深度 | [flash-attention.md](./flash-attention.md) | ⏳ 待补 | FlashAttention v1 / v2 / v3 演进 / IO 复杂度 / 稀疏注意力集成 |
+
+> **覆盖说明**：当前 `03-transformer/` 已沉淀 2 篇（attention-mechanism.md / transformer-architecture.md），覆盖注意力机制与架构概览；KV Cache 优化、MQA-GQA-MLA、FlashAttention 是面试高频 + 工业级核心，建议尽快补齐。
+
+## 🔗 关联主题
+
+- **父模块**：[08.ai-foundations](../README.md) — AI 基础层总索引
+- **同模块相邻**：[02-deep-learning](../02-deep-learning/README.md) — 深度学习框架与训练范式
+- **同模块相邻**：[04-llm](../04-llm/README.md) — LLM 基础（Dropout / 训练技巧）
+- **跨模块应用**：[11.ai/llm-inference/kv-cache](../11.ai/llm-inference/kv-cache/) — 推理复杂度与 KV Cache 实战
+- **咬文嚼字**：[13.split-hairs/transformer-architecture](../13.split-hairs/transformer-architecture/) — Transformer 面试题
+
+## 📚 学习路径
+
+1. **入门**：阅读 [transformer-architecture.md](./transformer-architecture.md)，理解架构 5 大组件（Embedding / PE / MHA / FFN / Add&Norm）
+2. **核心机制**：阅读 [attention-mechanism.md](./attention-mechanism.md)，掌握 7 大注意力变体
+3. **位置编码**：补充 Sinusoidal / RoPE / ALiBi 专题，理解为什么 Transformer 需要位置信息
+4. **推理优化**：补 KV Cache 优化 + MQA / GQA / MLA 专题，掌握 LLM 推理瓶颈
+5. **底层优化**：补 FlashAttention 专题，理解 IO 优化对长上下文的决定性作用
+6. **LLM 实战**：跳转 [04-llm](../04-llm/README.md) 看 LLM 预训练与微调
+
+## 📊 本节统计
+
+- **子目录总数**：1 个（03-transformer/）
+- **已沉淀文章**：2 篇（attention-mechanism.md / transformer-architecture.md）
+- **待补占位**：3 篇（KV Cache 优化 / MQA-GQA-MLA / FlashAttention 深度）
+- **总行数**（不含 README）：约 281 行
+- **最后更新**：2026-08-20
 
 ---
 

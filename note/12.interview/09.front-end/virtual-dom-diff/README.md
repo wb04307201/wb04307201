@@ -276,8 +276,8 @@ createElement('div', null, [
 ## 九、交叉引用
 
 - 主模块：[`09.front-end`](09.front-end/) — 前端知识体系
-- 相关：[`13.split-hairs/09.front-end/event-loop/`](../event-loop/) — 事件循环（Fiber 调度）
-- 相关：[`13.split-hairs/09.front-end/react-hooks/`](../react-hooks/) — React Hooks（与 Fiber 协作）
+- 相关：[`12.interview/09.front-end/event-loop/`](../event-loop/) — 事件循环（Fiber 调度）
+- 相关：[`12.interview/09.front-end/react-hooks/`](../react-hooks/) — React Hooks（与 Fiber 协作）
 
 ## 相关章节
 

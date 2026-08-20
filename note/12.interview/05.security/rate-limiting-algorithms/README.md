@@ -123,7 +123,7 @@ return 1  -- 拒绝
 - [HTTPS 握手性能优化](../https-handshake/README.md) — 连接层性能优化
 - [OWASP Top 10](../owasp-top10/README.md) — API 安全与限流
 - [统一权限控制系统](../access-control-design/README.md) — 权限维度的访问控制
-- [主模块 04.system-design/05-security](../../../06.distributed-systems/05-security/README.md) — 安全知识体系
+- [主模块 12.interview/04.system-design/05-security](../../../06.distributed-systems/05-security/README.md) — 安全知识体系
 
 ---
 

@@ -256,8 +256,8 @@ public class B {
 ## 九、交叉引用
 
 - 主模块：[`06.spring`](06.spring/) — Spring 知识体系
-- 相关：[`13.split-hairs/06.spring/bean-lifecycle/`](../bean-lifecycle/) — Bean 生命周期（三级缓存是生命周期的一部分）
-- 相关：[`13.split-hairs/06.spring/aop-principle/`](../aop-principle/) — AOP 原理（三级缓存的关键作用）
+- 相关：[`12.interview/06.spring/bean-lifecycle/`](../bean-lifecycle/) — Bean 生命周期（三级缓存是生命周期的一部分）
+- 相关：[`12.interview/06.spring/aop-principle/`](../aop-principle/) — AOP 原理（三级缓存的关键作用）
 
 ## 相关章节
 

@@ -29,7 +29,7 @@ Q：商品数据从 MySQL 到 ES 怎么保证同步一致性？
 3. **架构演进**：DB LIKE → 单节点 ES → ES 集群 + 分片 + 缓存
 4. **5 反模式**：DB LIKE 模糊查询 / 不配分词器 / 忽略数据同步延迟 / 排序只用相关性 / 没做 query 缓存
 
-完整面试题见 [13.split-hairs/04.system-design/product-search](../../../12.interview/04.system-design/product-search/README.md)。
+完整面试题见 [12.interview/04.system-design/product-search](../../../12.interview/04.system-design/product-search/README.md)。
 
 ---
 
@@ -228,7 +228,7 @@ WHERE title LIKE '%运动鞋%'
 - 缓存模式：[缓存设计模式](../cache-patterns/README.md) — Cache-Aside / Write-Behind
 - 消息队列：[消息队列](../mq/README.md) — 数据同步的 MQ 选型
 - 数据库：[分库分表](../database-optimization/db-sharding/README.md) — 数据规模扩大后的分片策略
-- 算法基础：[字符串算法](../../../02.computer-basics/02-algorithms/string-algorithms/) — AC 自动机 / Trie 树
+- 算法基础：[字符串算法](../../../02.cs-foundations/02-algorithms/string-algorithms/) — AC 自动机 / Trie 树
 
 ## 相关章节
 

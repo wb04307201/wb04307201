@@ -135,14 +135,14 @@ flowchart TD
 
 ## 🎯 高频面试题（咬文嚼字）
 
-针对面试中反复深挖的细节问题，见 [13.split-hairs/03.database](../../../note/13.split-hairs/03.database/)：
+针对面试中反复深挖的细节问题，见 [13.split-hairs/03.database](../../../note/12.interview/03.database/)：
 
 | 主题 | 难度 | 核心问题 |
 |------|------|---------|
-| [缓存穿透 / 击穿 / 雪崩](../../../note/13.split-hairs/03.database/cache-penetration-breakdown-avalanche/) | ⭐⭐⭐⭐⭐ | 面试必考三件套 |
-| [索引失效的 10 种场景](../../../note/13.split-hairs/03.database/mysql-index-failure/) | ⭐⭐⭐⭐⭐ | LIKE 左通配 / 函数 / 类型转换 / OR / 最左前缀 |
-| [COUNT(*) vs COUNT(1) vs COUNT(字段)](../../../note/13.split-hairs/03.database/mysql-count/) | ⭐⭐ | 性能差异 |
-| [事务隔离级别](../../../note/13.split-hairs/03.database/mysql-isolation/) | ⭐⭐⭐⭐ | RU / RC / RR / Serializable |
+| [缓存穿透 / 击穿 / 雪崩](../../../note/12.interview/03.database/cache-penetration-breakdown-avalanche/) | ⭐⭐⭐⭐⭐ | 面试必考三件套 |
+| [索引失效的 10 种场景](../../../note/12.interview/03.database/mysql-index-failure/) | ⭐⭐⭐⭐⭐ | LIKE 左通配 / 函数 / 类型转换 / OR / 最左前缀 |
+| [COUNT(*) vs COUNT(1) vs COUNT(字段)](../../../note/12.interview/03.database/mysql-count/) | ⭐⭐ | 性能差异 |
+| [事务隔离级别](../../../note/12.interview/03.database/mysql-isolation/) | ⭐⭐⭐⭐ | RU / RC / RR / Serializable |
 
 ---
 
@@ -152,7 +152,7 @@ flowchart TD
 - **子分类总数**：12 个（01-fundamentals / 02-sql / 03-transaction / 04-index / 05-mysql / 06-cache / 07-redis / 08-nosql / 09-connection-pool / 10-data-migration / 11-monitoring / 12-cloud-database）
 - **子 README 数**：12 个（每个分类 1 个独立 README，无嵌套子目录）
 - **frontmatter 覆盖率**：13/13 = 100%
-- **配套面试题**：见 `13.split-hairs/03.database/` 子模块
+- **配套面试题**：见 `12.interview/03.database/` 子模块
 - **统计口径**：子分类按一级目录统计；leaf README 数 = 12（一级子目录 README）
 
 ---

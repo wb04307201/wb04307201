@@ -108,7 +108,7 @@ public class FieldEncryptor {
 - [HTTPS 握手性能优化](../https-handshake/README.md) — TLS 性能优化详解
 - [JWT vs Session](../jwt-vs-session/README.md) — Token 传输安全
 - [OWASP Top 10](../owasp-top10/README.md) — 敏感数据暴露防护
-- [主模块 04.system-design/05-security](../../../06.distributed-systems/05-security/README.md) — 安全知识体系
+- [主模块 12.interview/04.system-design/05-security](../../../06.distributed-systems/05-security/README.md) — 安全知识体系
 
 ---
 

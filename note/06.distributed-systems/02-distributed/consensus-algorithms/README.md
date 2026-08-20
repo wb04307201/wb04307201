@@ -1,6 +1,6 @@
 <!--module:
   parent: system-design/02-distributed
-  slug: 04.system-design/02-distributed/consensus-algorithms
+  slug: 12.interview/04.system-design/02-distributed/consensus-algorithms
   type: article
   category: 主模块子文章
   summary: 分布式共识算法（Paxos / Raft / Gossip）的原理、实现、配置与故障场景分析

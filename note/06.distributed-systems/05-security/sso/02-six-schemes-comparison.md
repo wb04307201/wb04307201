@@ -1,6 +1,6 @@
 <!--
 module:
-  parent: 04.system-design/05-security/sso
+  parent: 12.interview/04.system-design/05-security/sso
   slug: system-design/05-security/sso/02-six-schemes-comparison
   type: topic
   category: 6 大方案详解

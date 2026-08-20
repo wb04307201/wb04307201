@@ -1,6 +1,6 @@
 <!--module:
   parent: system-design
-  slug: 04.system-design/04-high-performance
+  slug: 12.interview/04.system-design/04-high-performance
   type: article
   category: 主模块子文章
   summary: 一句话定位：**在有限资源下最大化吞吐——从负载均衡到数据库优化，从缓存模式到序列化，全链路性能调优。**

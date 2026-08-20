@@ -174,6 +174,6 @@ module:
 
 - 横向：[`HTTP 缓存`](../../../12.interview/09.front-end/http-cache/README.md) — 强缓存 / 协商缓存机制
 - 上游：[`02.computer-basics/01-network`](../../../02.cs-foundations/03-network/README.md) — HTTP 协议族详解
-- 关联：[`13.split-hairs/09.front-end/from-url-to-page`](../../../12.interview/09.front-end/from-url-to-page/README.md) — 从 URL 到页面展示全链路
+- 关联：[`12.interview/09.front-end/from-url-to-page`](../../../12.interview/09.front-end/from-url-to-page/README.md) — 从 URL 到页面展示全链路
 
 ← [返回: 03 网络](../README.md)

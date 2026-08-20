@@ -1,6 +1,6 @@
 <!--
 module:
-  parent: 04.system-design/05-security/sso
+  parent: 12.interview/04.system-design/05-security/sso
   slug: system-design/05-security/sso/01-sso-concept
   type: topic
   category: SSO 概念

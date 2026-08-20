@@ -1,6 +1,6 @@
 <!--module:
   parent: system-design
-  slug: 04.system-design/01-foundation/02-evolution/01-monolith-to-microservices
+  slug: 12.interview/04.system-design/01-foundation/02-evolution/01-monolith-to-microservices
   type: article
   category: 主模块子文章
   summary: 一份按层次梳理的单体拆分速查手册：从策略选择到陷阱规避的完整实战。

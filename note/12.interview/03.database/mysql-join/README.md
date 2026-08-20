@@ -334,7 +334,7 @@ product-service: GET /products/{productId}
 ## 十一、相关章节
 
 **主模块（实战篇）**：
-- [04.system-design/.../sql/README § 四 · 10 张表 JOIN 实战拆分 + 大厂严禁的 5 大理由](../../../06.distributed-systems/04-high-performance/database-optimization/sql/README.md) — 本文「算法 + 实战追问」的深度支撑（含 10 表拆分实战案例 + 大厂规范引用）
+- [12.interview/04.system-design/.../sql/README § 四 · 10 张表 JOIN 实战拆分 + 大厂严禁的 5 大理由](../../../06.distributed-systems/04-high-performance/database-optimization/sql/README.md) — 本文「算法 + 实战追问」的深度支撑（含 10 表拆分实战案例 + 大厂规范引用）
 
 **主模块基础**：
 - [03.database/02-sql（SQL 语法基础）](../../../03.data-stack/01-database/02-sql/README.md) — JOIN 语法 + 执行顺序

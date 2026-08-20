@@ -276,7 +276,7 @@ if (line instanceof Line(Point(var x1, var y1), Point(var x2, var y2))) {
 
 ## Record + 泛型：split-hairs 视角
 
-> 本节由 `13.split-hairs/01.java/record-t/` 迁出，专注 **Record 与泛型的结合 + 5 大陷阱 + 30s 话术**。Record 基础语法见上文。
+> 本节由 `12.interview/01.java/record-t/` 迁出，专注 **Record 与泛型的结合 + 5 大陷阱 + 30s 话术**。Record 基础语法见上文。
 
 ### Record 与泛型对比
 

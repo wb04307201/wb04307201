@@ -178,7 +178,7 @@ graph TB
 - 上游：[`02.computer-basics`](../README.md) — 计算机基础主模块
 - 关联：[`01.java/concurrency`](../../01.java/concurrency/) — Java 并发编程（线程/锁/线程池）
 - 关联：[`01.java/jvm`](../../01.java/jvm/) — JVM 内存模型与 GC
-- 关联：[`04.system-design/04-high-performance`](../../04.system-design/04-high-performance/) — 系统设计高性能（I/O 模型选型）
+- 关联：[`12.interview/04.system-design/04-high-performance`](../../04.system-design/04-high-performance/) — 系统设计高性能（I/O 模型选型）
 - 关联：[`03.database`](../../03.database/) — 数据库（存储引擎依赖文件系统）
 
 ---

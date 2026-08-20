@@ -1,6 +1,6 @@
 <!--module:
   parent: system-design
-  slug: 04.system-design/01-foundation/02-evolution/02-serverless-architecture
+  slug: 12.interview/04.system-design/01-foundation/02-evolution/02-serverless-architecture
   type: article
   category: 主模块子文章
   summary: 一份按形态梳理的 Serverless 速查手册：从函数即服务到边缘计算的完整实战。

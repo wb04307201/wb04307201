@@ -144,7 +144,7 @@ module:
 
 - 主模块：[`11.ai`](../../note/12.interview/11.ai/README.md) — AI 知识体系
 - 主模块：[`13.split-hairs`](../../note/12.interview/README.md) — 面试题深度剖析
-- 技术基础：[`01.java`](../../note/01.java/) · [`04.system-design`](../../note/04.system-design/) · [`06.spring`](../../note/06.spring/) · [`09.front-end`](../../note/09.front-end/)
+- 技术基础：[`01.java`](../../note/01.java/) · [`04.system-design`](../../note/04.system-design/) · [`06.spring`](../../note/04.spring-backend/) · [`09.front-end`](../../note/09.front-end/)
 
 ---
 

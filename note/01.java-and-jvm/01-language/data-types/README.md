@@ -219,7 +219,7 @@ System.out.println(result);
 
 ## 速记卡：split-hairs 视角 — 为什么需要包装类？
 
-> 本节由 `13.split-hairs/01.java/object/` 迁出，整合"为什么需要 Integer/Double 这类包装类"的 7 大设计动机（主模块已讲过基本类型 vs 包装类型对比，本节聚焦**why**）。
+> 本节由 `12.interview/01.java/object/` 迁出，整合"为什么需要 Integer/Double 这类包装类"的 7 大设计动机（主模块已讲过基本类型 vs 包装类型对比，本节聚焦**why**）。
 
 **7 大设计动机速记：**
 

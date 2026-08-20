@@ -334,9 +334,9 @@ function SearchResults() {
 ## 八、交叉引用
 
 - 主模块：[`09.front-end`](09.front-end/) — 前端知识体系
-- 相关：[`13.split-hairs/09.front-end/event-loop/`](../event-loop/) — 事件循环（useEffect 执行时机）
-- 相关：[`13.split-hairs/09.front-end/closure/`](../closure/) — 闭包（Hooks 本质）
-- 相关：[`13.split-hairs/09.front-end/virtual-dom-diff/`](../virtual-dom-diff/) — Virtual DOM（Fiber 架构）
+- 相关：[`12.interview/09.front-end/event-loop/`](../event-loop/) — 事件循环（useEffect 执行时机）
+- 相关：[`12.interview/09.front-end/closure/`](../closure/) — 闭包（Hooks 本质）
+- 相关：[`12.interview/09.front-end/virtual-dom-diff/`](../virtual-dom-diff/) — Virtual DOM（Fiber 架构）
 
 ## 相关章节
 

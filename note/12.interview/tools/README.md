@@ -37,7 +37,7 @@ module:
 ---
 
 ## 与其他分类的关系
-- **同栏目**：[`04.system-design`](04.system-design/) — 系统设计面试题（分布式 / 高可用，与工具题互补）
+- **同栏目**：[`04.system-design`](12.interview/04.system-design/) — 系统设计面试题（分布式 / 高可用，与工具题互补）
 - **主模块**：[`07.workflow`](../../../note/07.workflow/) — 工作流与工程化主模块
 - **故事章节**：[`12.story`](../../../note/12.story/) — 阿明餐厅实战故事
 - **格式规范**：[`QUESTION-FORMAT-SPEC.md`](../QUESTION-FORMAT-SPEC.md) — 面试题写作模板

@@ -9,7 +9,7 @@ module:
 
 # Spring 咬文嚼字
 
-> Spring 高频面试题与细节深挖，对齐主模块 [`06.spring`](../../../note/06.spring/)。16 篇真题覆盖 IoC / Bean 生命周期 / AOP / @Transactional / 循环依赖 / 自动配置 / Spring MVC / 事件 / **Spring Security** / **Spring Cloud** 10 大方向（find 校对 2026-07-19）。
+> Spring 高频面试题与细节深挖，对齐主模块 [`06.spring`](../../../note/04.spring-backend/)。16 篇真题覆盖 IoC / Bean 生命周期 / AOP / @Transactional / 循环依赖 / 自动配置 / Spring MVC / 事件 / **Spring Security** / **Spring Cloud** 10 大方向（find 校对 2026-07-19）。
 
 ---
 
@@ -59,8 +59,8 @@ module:
 ## 待补充的高频面试题（强烈建议）
 
 ### Spring Security
-- **认证 vs 授权流程** → 深度阅读：[`04.system-design/05-security/access-control`](../../06.distributed-systems/05-security/access-control/README.md)（RBAC/ABAC 6 大模型）
-- **JWT vs Session 方案对比** → 深度阅读：[`04.system-design/05-security`](../../06.distributed-systems/05-security/README.md)（JWT、OAuth2）
+- **认证 vs 授权流程** → 深度阅读：[`12.interview/04.system-design/05-security/access-control`](../../06.distributed-systems/05-security/access-control/README.md)（RBAC/ABAC 6 大模型）
+- **JWT vs Session 方案对比** → 深度阅读：[`12.interview/04.system-design/05-security`](../../06.distributed-systems/05-security/README.md)（JWT、OAuth2）
 - **CSRF 防护** → 深度阅读：[`09.front-end/07-security`](../../05.frontend/07-security/README.md)（XSS/CSRF/CSP）
 
 ### Spring Cloud
@@ -77,7 +77,7 @@ module:
 
 ## 相关章节
 
-- 主模块：[`note/06.spring`](../../../note/06.spring/) — Spring 知识体系
-- 相关章节：[`01.java`](01.java/)（Java 基础）/ [`04.system-design`](04.system-design/)（系统设计）
+- 主模块：[`note/06.spring`](../../../note/04.spring-backend/) — Spring 知识体系
+- 相关章节：[`01.java`](01.java/)（Java 基础）/ [`04.system-design`](12.interview/04.system-design/)（系统设计）
 
 ← [返回咬文嚼字（高频面试题）](../README.md)

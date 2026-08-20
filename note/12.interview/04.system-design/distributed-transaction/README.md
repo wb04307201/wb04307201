@@ -328,7 +328,7 @@ graph TB
 
 - 主模块：[`04.system-design`](../../../../note/04.system-design/) — 系统设计
 - [缓存一致性](../cache-consistency/README.md) — 缓存与数据库一致性方案
-- [分库分表分布式事务](13.split-hairs/03.database/sharding-distributed-tx/) — 分库分表场景下的跨库事务
+- [分库分表分布式事务](12.interview/03.database/sharding-distributed-tx/) — 分库分表场景下的跨库事务
 
 ## 相关章节
 

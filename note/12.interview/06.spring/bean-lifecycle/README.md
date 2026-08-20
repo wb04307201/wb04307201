@@ -162,8 +162,8 @@ public class MyBean implements InitializingBean, DisposableBean,
 ## 五、交叉引用
 
 - 主模块：[`06.spring`](06.spring/) — Spring 知识体系
-- 相关：[`13.split-hairs/06.spring/not-use-@autowired/`](../not-use-@autowired/) — @Autowired 推荐用法
-- 相关：[`13.split-hairs/06.spring/circular-dependency/`](../circular-dependency/) — 循环依赖解决
+- 相关：[`12.interview/06.spring/not-use-@autowired/`](../not-use-@autowired/) — @Autowired 推荐用法
+- 相关：[`12.interview/06.spring/circular-dependency/`](../circular-dependency/) — 循环依赖解决
 
 ## 相关章节
 

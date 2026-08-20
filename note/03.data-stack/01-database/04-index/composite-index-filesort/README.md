@@ -380,8 +380,8 @@ ORDER BY create_time;
 
 ## 交叉引用
 - **同模块兄弟**：
-  - [mysql-index-failure 面试题](../../../../../note/13.split-hairs/03.database/mysql-index-failure/) — 10 种索引失效场景
-  - [mysql-tuning 面试题](../../../../../note/13.split-hairs/03.database/mysql-tuning/) — SQL 调优
+  - [mysql-index-failure 面试题](../../../../../note/12.interview/03.database/mysql-index-failure/) — 10 种索引失效场景
+  - [mysql-tuning 面试题](../../../../../note/12.interview/03.database/mysql-tuning/) — SQL 调优
 
 - **相关章节**：
   - [索引主模块](../README.md) — 索引原理 + B+ 树

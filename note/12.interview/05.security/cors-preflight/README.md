@@ -115,7 +115,7 @@ fetch(url, { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JS
 - [HTTPS 握手性能优化](../https-handshake/README.md) — 另一个 RTT 优化维度
 - [XSS、CSRF、CSP 三件套](../xss-csrf-csp/README.md) — CORS 与 CSRF 的关系
 - [令牌桶 vs 漏桶](../rate-limiting-algorithms/README.md) — API 网关性能优化
-- [主模块 04.system-design/05-security](../../../06.distributed-systems/05-security/README.md) — 安全知识体系
+- [主模块 12.interview/04.system-design/05-security](../../../06.distributed-systems/05-security/README.md) — 安全知识体系
 
 ---
 

@@ -384,7 +384,7 @@ CREATE TABLE audit_log (
 - **SSO**：[SSO 单点登录](../sso/README.md) — 6 大方案选型
 - **JWT**：[JWT 安全](../../../06.distributed-systems/05-security/jwt-security/README.md) — Token 签发与验证
 - **API 安全**：[API 安全](../../../06.distributed-systems/05-security/api-security/README.md) — 限流 / 签名 / 防重放
-- **主模块**：[`04.system-design/05-security`](../../../06.distributed-systems/05-security/README.md) — 安全知识体系
+- **主模块**：[`12.interview/04.system-design/05-security`](../../../06.distributed-systems/05-security/README.md) — 安全知识体系
 
 ## 相关章节
 

@@ -340,7 +340,7 @@ public class ComponentWithBean {
 
 ## 八、交叉引用
 
-- 主模块：[`06.spring`](../../../../note/06.spring/) — Spring 知识体系
+- 主模块：[`06.spring`](../../../../note/04.spring-backend/) — Spring 知识体系
 - [Spring AOP](../../../04.spring-backend/08-annotations/aop.md) — CGLIB 代理机制深入
 - [Bean 生命周期](../../../04.spring-backend/01-core/ioc/bean-lifecycle.md) — Bean 从创建到销毁的全过程
 - [自动配置原理](../../../04.spring-backend/02-boot/auto-configuration.md) — Spring Boot 如何发现并加载 Bean
