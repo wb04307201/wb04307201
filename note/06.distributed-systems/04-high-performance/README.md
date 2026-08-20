@@ -78,6 +78,10 @@ graph TD
 - 工具：[`05.tools`](../../07.devops-and-tools/01-tools/README.md) — Nginx 负载均衡配置
 - 面试：[`13.split-hairs/04.system-design`](../../12.interview/04.system-design/README.md) — 系统设计面试题
 
+## 综合入口
+
+- [高并发高可用 5 大防线综述](../01-foundation/system-design-basics/high-concurrency-and-high-availability-defenses.md) — 5 大防线协同决策树 + 落地路线
+
 ---
 
 
