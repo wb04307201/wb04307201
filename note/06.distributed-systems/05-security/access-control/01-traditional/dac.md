@@ -4,7 +4,7 @@ module:
   slug: 06.distributed-systems\05-security\access-control\01-traditional\dac
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: DAC（Discretionary Access Control，自主访问控制）
 -->
 
 # DAC（Discretionary Access Control，自主访问控制）

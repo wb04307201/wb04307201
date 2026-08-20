@@ -4,7 +4,7 @@ module:
   slug: 13.story\cheatsheet
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 一页纸速查
 -->
 
 # 一页纸速查

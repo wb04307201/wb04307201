@@ -72,15 +72,6 @@ cal.add(Calendar.DAY_OF_MONTH, 1); // 修改操作不直观
 
 `Calendar.getInstance()` 默认使用系统时区，在不同环境下行为不一致。
 
----
-## 引言：基础概念
-
-Java Date-Time API 学习笔记 是入门必学的基础概念。
-
-本篇给出一句话定义 + 最小可运行示例 + 3 个常见误区，**5 分钟读完，10 分钟上手**。
-
----
-
 ## 二、SimpleDateFormat 的线程安全问题
 
 `SimpleDateFormat` 是 Java 8 之前最常用的日期格式化器，但它是**线程不安全**的。

@@ -4,7 +4,7 @@ module:
   slug: 09.ai-applications\agent\ai-platforms\langgraph
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: LangGraph
 -->
 
 # LangGraph

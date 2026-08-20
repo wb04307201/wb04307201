@@ -4,7 +4,7 @@ module:
   slug: 06.distributed-systems\01-foundation\system-design-basics\togaf\architecture-governance
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 第四章：架构治理 + 落地实践
 -->
 
 # 第四章：架构治理 + 落地实践

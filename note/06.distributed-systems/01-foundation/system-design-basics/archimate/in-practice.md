@@ -4,7 +4,7 @@ module:
   slug: 06.distributed-systems\01-foundation\system-design-basics\archimate\in-practice
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 第三章：落地：ArchiMate × TOGAF × C4 × DDD
 -->
 
 # 第三章：落地：ArchiMate × TOGAF × C4 × DDD

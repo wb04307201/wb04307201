@@ -4,7 +4,7 @@ module:
   slug: 11.product-and-pm\cheatsheet
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 项目管理与成本控制 —— 一页速查
 -->
 
 # 项目管理与成本控制 —— 一页速查

@@ -4,7 +4,7 @@ module:
   slug: 12.interview\QUESTION-FORMAT-SPEC
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 「咬文嚼字」面试题格式规范 v1.0
 -->
 
 # 「咬文嚼字」面试题格式规范 v1.0

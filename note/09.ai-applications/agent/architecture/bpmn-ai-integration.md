@@ -4,7 +4,7 @@ module:
   slug: 09.ai-applications\agent\architecture\bpmn-ai-integration
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: AI + BPMN 融合
 -->
 
 # AI + BPMN 融合

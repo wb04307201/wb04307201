@@ -9,12 +9,6 @@ module:
 
 # SPI（Service Provider Interface）
 
-## 引言：基础概念
-
-SPI（Service Provider Interface） 是入门必学的基础概念。
-
-本篇给出一句话定义 + 最小可运行示例 + 3 个常见误区，**5 分钟读完，10 分钟上手**。
-
 ---
 
 SPI 即 Service Provider Interface（服务提供者接口），是一种 Java 的扩展机制，允许应用程序在运行时动态发现和加载接口的实现类。

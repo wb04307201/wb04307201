@@ -357,7 +357,7 @@ const Camunda7Modeler = () => {
         setModelerInstance(instance)
 
         // 通过 importXML 加载 BPMN XML（典型示例：开始事件 → 任务 → 排他网关）
-        const sampleXml = "<?xml version="1.0" encoding="UTF-8"?><definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">...完整 40 行示例 XML（bpmn.io 默认）...</definitions>";
+        const sampleXml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><definitions xmlns=\"http://www.omg.org/spec/BPMN/20100524/MODEL\">...完整 40 行示例 XML（bpmn.io 默认）...</definitions>";
         modeler.importXML(sampleXml);
 
         modeler.get('canvas').zoom('fit-viewport');

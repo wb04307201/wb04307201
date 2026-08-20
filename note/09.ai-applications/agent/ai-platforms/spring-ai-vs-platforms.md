@@ -4,7 +4,7 @@ module:
   slug: 09.ai-applications\agent\ai-platforms\spring-ai-vs-platforms
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: Spring AI vs 编排平台：代码优先与低代码的边界
 -->
 
 # Spring AI vs 编排平台：代码优先与低代码的边界

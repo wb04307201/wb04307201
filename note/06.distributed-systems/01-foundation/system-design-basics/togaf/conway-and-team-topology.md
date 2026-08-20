@@ -4,7 +4,7 @@ module:
   slug: 06.distributed-systems\01-foundation\system-design-basics\togaf\conway-and-team-topology
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 第三章：康威定律 + 团队拓扑
 -->
 
 # 第三章：康威定律 + 团队拓扑

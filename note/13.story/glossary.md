@@ -4,7 +4,7 @@ module:
   slug: 13.story\glossary
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 术语表
 -->
 
 # 术语表

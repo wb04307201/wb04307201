@@ -4,7 +4,7 @@ module:
   slug: 06.distributed-systems\01-foundation\system-design-basics\archimate\language
   type: article
   category: 主模块子文章
-  summary: 待补充
+  summary: 第一章：建模语言：层、方面、关系
 -->
 
 # 第一章：建模语言：层、方面、关系
