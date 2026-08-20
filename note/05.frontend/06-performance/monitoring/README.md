@@ -54,8 +54,12 @@ graph TB
 ---
 
 ## web-vitals.js 生产集成
+
+> **版本说明**：以下代码基于 **web-vitals v3+**（v3 起 API 由 `getXXX()` 改名为 `onXXX()`，并新增 `metric.rating` 字段）。
+> ⚠️ `metric.isFinal` 是 **v0.x 时代的旧字段，v1 起已被移除** —— 老教程里 `if (!metric.isFinal) return` 的写法在 v3 上会让 CLS **永远不上报**（`undefined` 恒为 falsy）。
+
 ```typescript
-// lib/metrics.ts
+// lib/metrics.ts  —— web-vitals ^3.5.0 / ^4.x
 import { onLCP, onINP, onCLS, onFCP, onTTFB } from 'web-vitals'
 
 function sendToAnalytics(name: string, value: number, rating: string) {
@@ -72,13 +76,29 @@ function sendToAnalytics(name: string, value: number, rating: string) {
 onLCP(metric => sendToAnalytics('LCP', metric.value, metric.rating))
 onINP(metric => sendToAnalytics('INP', metric.value, metric.rating))
 onCLS(metric => {
-  // CLS 在页面生命周期内会多次变化，使用最终值
-  if (!metric.isFinal) return
+  // v3+ 默认行为：CLS 只在页面进入 hidden / 卸载时回调一次，metric.value 即最终值
+  // 无需（也无法）判断 isFinal —— 该字段已不存在
   sendToAnalytics('CLS', metric.value, metric.rating)
 })
 onFCP(metric => sendToAnalytics('FCP', metric.value, metric.rating))
 onTTFB(metric => sendToAnalytics('TTFB', metric.value, metric.rating))
 ```
+
+**如果需要实时观察指标变化**（调试 / 实时仪表盘），显式传 `reportAllChanges`：
+
+```typescript
+// 每次布局偏移都回调一次，而非只在页面 hidden 时回调
+onCLS(metric => {
+  sendToAnalytics('CLS', metric.value, metric.rating)
+}, { reportAllChanges: true })
+```
+
+| 选项 | 回调时机 | 适用 |
+|------|---------|------|
+| 默认（不传） | 页面 hidden / bfcache 时**回调一次**，值为最终值 | **生产 RUM 首选**（省流量、口径与 CrUX 一致） |
+| `{ reportAllChanges: true }` | 每次指标更新都回调 | 本地调试 / 实时大盘（需后端按 `metric.id` 去重取最新值） |
+
+> **迁移提示**：`metric.id` 在同一次页面加载内保持不变，后端按 `id` 覆盖写入即可，无需前端判断"是否最终值"。
 
 ---
 
