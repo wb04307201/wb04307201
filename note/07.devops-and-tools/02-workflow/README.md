@@ -181,10 +181,10 @@ graph TB
 ## 相关章节
 
 - ⬅️ [返回 note 顶层](../README.md)
-- [03 数据层/分布式事务](../../../note/06.spring/03-data/transaction/distributed/) — Saga/TCC 同样是「分布式协作」模式
-- [04 系统设计/02 分布式](../../../note/04.system-design/02-distributed/) — CAP/共识算法理论基础
-- [04 系统设计/06 幂等](../../06.distributed-systems/06-idempotency/README.md) — 事件驱动必配的幂等设计
-- [06 Spring/05 Spring Cloud](../../../note/06.spring/05-spring-cloud/) — 微服务治理与流程引擎互补
+- [03 数据层/分布式事务](../../../note/04.spring-backend/03-data/transaction/distributed/) — Saga/TCC 同样是「分布式协作」模式
+- [04 系统设计/02 分布式](../../../note/12.interview/04.system-design/02-distributed/) — CAP/共识算法理论基础
+- [04 系统设计/06 幂等](../../../06.distributed-systems/06-idempotency/README.md) — 事件驱动必配的幂等设计
+- [06 Spring/05 Spring Cloud](../../../note/04.spring-backend/05-spring-cloud/) — 微服务治理与流程引擎互补
 
 ---
 
