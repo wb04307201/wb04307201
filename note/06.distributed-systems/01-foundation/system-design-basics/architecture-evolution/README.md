@@ -316,6 +316,7 @@ Level 1 → Level 2 → Level 3 → Level 4 → Level 5 → Level 6 → Level 7
 - [面向对象设计模式](../design-patterns/README.md) — GoF 23 种经典模式
 - [领域驱动设计 DDD](../ddd/README.md) — 以业务领域为核心的建模方法
 - [微服务架构](../microservices/README.md) — 拆分策略与康威定律
+- [从面条代码到整洁架构](from-spaghetti-to-clean.md) — 分层 → 整洁 → 六边形 → 洋葱的代码组织演进史
 - [系统架构设计总览](../README.md) — 系统设计核心步骤
 
 
