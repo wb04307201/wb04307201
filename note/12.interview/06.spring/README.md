@@ -1,17 +1,10 @@
 <!--
 module:
-  parent: split-hairs
-  slug: 06.spring
-  type: article
-  category: 高频面试题
+  parent: 12.interview
+  slug: 12.interview/06.spring
+  type: index-only
+  category: 面试题索引
   summary: Spring 高频面试题与细节深挖（IoC / AOP / 事务 / MVC / 事件）
-question:
-  id: 06.spring-06.spring
-  topic: 06.spring
-  difficulty: ⭐⭐⭐
-  frequency: 高频
-  scenario_type: 反直觉代码
-  tags: [06.spring, Spring]
 -->
 
 # Spring 咬文嚼字

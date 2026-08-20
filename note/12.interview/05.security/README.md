@@ -1,16 +1,10 @@
-<!--module:
-  parent: split-hairs
-  slug: 13.split-hairs/05.security
-  type: article
-  category: 高频面试题
+<!--
+module:
+  parent: 12.interview
+  slug: 12.interview/05.security
+  type: index-only
+  category: 面试题索引
   summary: 安全设计高频面试题与难点深挖（认证 / 加密 / Web 安全 / 限流 / OWASP）
-question:
-  id: 05.security-05.security
-  topic: 05.security
-  difficulty: ⭐⭐⭐⭐⭐
-  frequency: 高频
-  scenario_type: 系统设计
-  tags: [05.security, RBAC, ABAC, SSO, OAuth2, JWT, Spring-Security, XSS, CSRF, TLS, 限流, OWASP]
 -->
 
 # 安全咬文嚼字

@@ -1,17 +1,10 @@
 <!--
 module:
-  parent: split-hairs
-  slug: 03.database
-  type: article
-  category: 高频面试题
+  parent: 12.interview
+  slug: 12.interview/03.database
+  type: index-only
+  category: 面试题索引
   summary: 数据库高频面试题与细节深挖（MySQL / Redis / NoSQL）
-question:
-  id: 03.database-03.database
-  topic: 03.database
-  difficulty: ⭐⭐
-  frequency: 高频
-  scenario_type: 性能对比
-  tags: [03.database]
 -->
 
 # 数据库咬文嚼字

@@ -1,9 +1,9 @@
 <!--
 module:
-  parent: split-hairs
-  slug: split-hairs/big-data
-  type: index
-  category: 高频面试题
+  parent: 12.interview
+  slug: 12.interview/10.big-data
+  type: index-only
+  category: 面试题索引
   summary: 大数据面试题 — Flink / Spark / Hive / Iceberg / Doris / Kafka
 -->
 

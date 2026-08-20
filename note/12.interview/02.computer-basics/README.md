@@ -1,17 +1,10 @@
 <!--
 module:
-  parent: split-hairs
-  slug: 02.computer-basics
-  type: article
-  category: 高频面试题
+  parent: 12.interview
+  slug: 12.interview/02.computer-basics
+  type: index-only
+  category: 面试题索引
   summary: 计算机基础高频面试题（网络 / TCP / HTTP / 操作系统）
-question:
-  id: 02.computer-basics-02.computer-basics
-  topic: 02.computer-basics
-  difficulty: ⭐⭐⭐
-  frequency: 高频
-  scenario_type: 反直觉代码
-  tags: [02.computer-basics, network, TCP]
 -->
 
 # 计算机基础咬文嚼字

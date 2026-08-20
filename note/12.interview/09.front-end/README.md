@@ -1,17 +1,10 @@
 <!--
 module:
-  parent: split-hairs
-  slug: 09.front-end
-  type: article
-  category: 高频面试题
+  parent: 12.interview
+  slug: 12.interview/09.front-end
+  type: index-only
+  category: 面试题索引
   summary: 前端高频面试题与细节深挖（JS 核心 / HTTP / 浏览器机制 / 框架）
-question:
-  id: 09.front-end-09.front-end
-  topic: 09.front-end
-  difficulty: ⭐⭐⭐⭐
-  frequency: 高频
-  scenario_type: 反直觉代码
-  tags: [09.front-end, end]
 -->
 
 # 前端咬文嚼字

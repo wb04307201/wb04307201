@@ -1,17 +1,10 @@
 <!--
 module:
-  parent: split-hairs
-  slug: 01.java
-  type: article
-  category: 高频面试题
+  parent: 12.interview
+  slug: 12.interview/01.java
+  type: index-only
+  category: 面试题索引
   summary: Java 高频面试题与细节深挖（集合 / 并发 / JVM / 类型 / 设计模式）
-question:
-  id: 01.java-01.java
-  topic: 01.java
-  difficulty: ⭐⭐
-  frequency: 高频
-  scenario_type: 性能对比
-  tags: [01.java]
 -->
 
 # Java 咬文嚼字

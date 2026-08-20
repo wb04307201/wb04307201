@@ -1,17 +1,10 @@
 <!--
 module:
-  parent: split-hairs
-  slug: 11.ai
-  type: article
-  category: 高频面试题
-  summary: AI 高频面试题与新概念深挖（6 篇纯面试题 + 9 篇主模块精炼版）
-question:
-  id: 11.ai-11.ai
-  topic: 11.ai
-  difficulty: ⭐⭐
-  frequency: 高频
-  scenario_type: 反直觉代码
-  tags: [11.ai]
+  parent: 12.interview
+  slug: 12.interview/11.ai
+  type: index-only
+  category: 面试题索引
+  summary: AI 高频面试题与新概念深挖（一题一文 + 主模块精炼版）
 -->
 
 # AI 咬文嚼字

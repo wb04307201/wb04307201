@@ -1,17 +1,10 @@
 <!--
 module:
-  parent: split-hairs
-  slug: 04.system-design
-  type: article
-  category: 高频面试题
+  parent: 12.interview
+  slug: 12.interview/04.system-design
+  type: index-only
+  category: 面试题索引
   summary: 系统设计高频面试题与难点深挖（MQ / 缓存 / 分布式 / 限流 / 幂等）
-question:
-  id: 04.system-design-04.system-design
-  topic: 04.system-design
-  difficulty: ⭐⭐⭐⭐
-  frequency: 高频
-  scenario_type: 架构困境
-  tags: [04.system-design, design]
 -->
 
 # 系统设计咬文嚼字
