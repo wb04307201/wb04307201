@@ -134,7 +134,7 @@ graph TD
 
 ### 3.3 熔断
 
-- [熔断](../../03-high-availability/circuit-break/README.md)（106 行——薄，待加强）
+- [熔断](../../03-high-availability/circuit-break/README.md)（743 行——深度专题，含三态状态机/三框架对比/Spring Boot 3 配置/雪崩实战）
 - **核心问题**：依赖服务故障如何快速失败避免雪崩
 - **选型**：Resilience4j vs Sentinel vs Hystrix（已停维，不推荐）
 - **触发时机**：依赖故障、慢调用、错误率超阈值
