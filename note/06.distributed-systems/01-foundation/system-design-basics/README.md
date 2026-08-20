@@ -28,6 +28,7 @@ module:
 ## 架构演进
 
 - [架构认知的演进](architecture-evolution/README.md) — OOD → DDD → TOGAF 的认知升级 + Level 1-7 成熟度评估
+- [从面条代码到整洁架构](architecture-evolution/from-spaghetti-to-clean.md) — 分层 → 整洁 → 六边形 → 洋葱的代码组织演进史
 - [面向对象设计](ood/README.md) — SOLID/GRASP 原则、类与职责分配
 - [领域驱动设计](ddd/README.md) — 以业务领域为核心的建模方法
 - [企业架构 TOGAF 10](togaf/README.md) — 业务能力地图、ADM 9 阶段、模块化架构治理
