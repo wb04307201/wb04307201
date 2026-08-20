@@ -68,6 +68,7 @@ Q：你的 Agent 如何处理长上下文？1M token 的文档怎么让 LLM 准�
 | 05 | [Sub-Agents 任务拆分](05-sub-agents-decomposition.md) | Multi-Agent / Task Decomposition / Delegation？ |
 | 06 | [Long-Context LLMs 直塞](06-long-context-models.md) | 100k-10M 模型怎么用？会撞 Lost in the Middle？ |
 | 07 | [6 策略决策树](07-decision-tree.md) | 场景化决策树 + 反模式 + 配置 checklist |
+| 08 | [Long Context vs RAG · 成本-平衡](08-long-context-vs-rag-cost-balance.md) | 2025 实证数据 + Hybrid 共识 + 平衡点公式 |
 
 ---
 
