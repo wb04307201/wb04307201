@@ -3,7 +3,7 @@
   slug: 05.tools/03-java/lombok
   type: article
   category: 主模块子文章
-  summary: ---
+  summary: Lombok 通过注解在编译期自动生成 Java 模板代码（getter/setter/构造器等）
 -->
 
 # Lombok
