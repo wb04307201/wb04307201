@@ -11,6 +11,8 @@ module:
 
 > 来源:整合自原 `08.mybatis/mybatis-plus/README.md` L164-194(§三.4 分页插件)
 
+`PaginationInnerInterceptor` 是 MyBatis-Plus 内置的分页插件,基于 `Dialect` 自动适配各数据库方言(MySQL `LIMIT n,m` / PostgreSQL `OFFSET m LIMIT n` / Oracle `ROWNUM`),通过 `Page<T>` 对象透明地给 SQL 追加分页与 count 查询。本章聚焦配置、自定义 count、maxLimit 防 OOM、多数据源与拦截器顺序陷阱——这些是生产环境最常见的"分页失效 / 慢 SQL / OOM"问题来源。
+
 ## 配置分页插件
 ```java
 @Configuration
