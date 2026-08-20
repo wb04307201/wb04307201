@@ -161,13 +161,15 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: ssd
-provisioner: kubernetes.io/aws-ebs   # 或 aliyun/disk 等
+provisioner: ebs.csi.aws.com         # CSI 驱动，见 §七
 parameters:
   type: gp3
   fsType: ext4
 reclaimPolicy: Delete
 volumeBindingMode: WaitForFirstConsumer
 ```
+
+> ⚠️ **已废弃**：`kubernetes.io/aws-ebs` 等 in-tree provisioner 已在 **Kubernetes v1.25** 移除（CSI Migration 完成），新集群必须使用 CSI provisioner（如 `ebs.csi.aws.com` / `diskplugin.csi.alibabacloud.com`），完整对照见 [§七 CSI](#七csicontainer-storage-interface)。
 
 **PVC 申请时指定 storageClassName → 自动创建 PV**：
 
