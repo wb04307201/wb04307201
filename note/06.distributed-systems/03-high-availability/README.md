@@ -71,6 +71,10 @@ graph TD
 - 工具：[`06.spring/05-spring-cloud`](../../04.spring-backend/03-cloud/README.md) — Spring Cloud 熔断/重试实现
 - 面试：[`13.split-hairs/04.system-design`](../../12.interview/04.system-design/README.md) — 系统设计面试题
 
+## 综合入口
+
+- [高并发高可用 5 大防线综述](../01-foundation/system-design-basics/high-concurrency-and-high-availability-defenses.md) — 5 大防线协同决策树 + 落地路线
+
 ---
 
 
