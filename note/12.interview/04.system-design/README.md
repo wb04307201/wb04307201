@@ -20,7 +20,7 @@ question:
 
 ---
 
-## 文章清单（共 24 题，find 校对 2026-08-20）
+## 文章清单（共 25 题，find 校对 2026-08-20）
 
 ### 分布式
 | 主题 | 难度 | 核心问题 |
@@ -55,6 +55,7 @@ question:
 | [短链系统设计](url-shortener/) | ⭐⭐⭐⭐ | Base62 + 发号器 + 302 重定向 + 缓存 + 统计 |
 | [多租户 SaaS 系统设计](multi-tenant-saas/) | ⭐⭐⭐⭐⭐ | 6 大隔离模型 + 4 大应用层关注点 + 5 反模式 + PostgreSQL RLS + noisy neighbor 防御 |
 | [可踢下线登录凭证设计](login-credential-kickable/) | ⭐⭐⭐⭐ | Session 主动失效 4 大方案 + 多端管理 4 模式 + 千万级踢下线性能 + 5 大反模式 |
+| [10 万人直播弹幕系统设计](live-barrage-100k/) | ⭐⭐⭐⭐⭐ | WebSocket 网关集群 + Kafka 分层 + 消息合并 + 5 大反模式 |
 
 ### 数据库扩展
 | 主题 | 难度 | 核心问题 |
