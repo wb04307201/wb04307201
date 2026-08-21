@@ -16,7 +16,7 @@ module:
 
 ## 🎯 一句话定位
 
-**Spring MVC = 基于 MVC 模式的 Java Web 框架**——通过 **DispatcherServlet** 作为前端控制器 + **9 大组件**协作 + **注解驱动**开发，让 Web 层代码简洁、可测试、易扩展。RESTful 错误体统一、API 版本化等**统一错误处理**见 [异常处理](exception-resolver.md)。
+**Spring MVC = DispatcherServlet 前端控制器 + 9 大组件协作 + 注解驱动**——Java Web 层的事实标准，RESTful API 与视图渲染一站式搞定。
 
 ---
 
@@ -244,6 +244,231 @@ Q2：拦截器和过滤器哪个先执行？
     → 过滤器（Filter）在 DispatcherServlet 之前；拦截器（Interceptor）在 HandlerMapping 之后
 Q3：如何做接口超时控制？
     → 拦截器 preHandle 里检查；或用 Async 拦截器（AsyncHandlerInterceptor）
+```
+
+---
+
+## 九、源码级深度：DispatcherServlet.doDispatch
+
+### 1. doDispatch()——请求分发的核心入口
+
+```java
+// org.springframework.web.servlet.DispatcherServlet#doDispatch
+// 所有 HTTP 请求最终汇聚于此方法，是 Spring MVC 的"心脏"
+protected void doDispatch(HttpServletRequest request, 
+                          HttpServletResponse response) throws Exception {
+    
+    HttpServletRequest processedRequest = request;
+    HandlerExecutionChain mappedHandler = null;
+    ModelAndView mv = null;
+    Exception dispatchException = null;
+
+    try {
+        // 1. 检查 multipart（文件上传）
+        processedRequest = checkMultipart(request);
+
+        // 2. ⭐ HandlerMapping：根据 URL 找到 Handler + Interceptor 链
+        mappedHandler = getHandler(processedRequest);
+        if (mappedHandler == null) {
+            noHandlerFound(processedRequest, response);  // 404
+            return;
+        }
+
+        // 3. ⭐ HandlerAdapter：根据 Handler 类型找到适配器
+        HandlerAdapter ha = getHandlerAdapter(mappedHandler.getHandler());
+
+        // 4. 执行 Interceptor.preHandle()
+        if (!mappedHandler.applyPreHandle(processedRequest, response)) {
+            return;  // preHandle 返回 false → 中断请求
+        }
+
+        // 5. ⭐ 实际调用 Controller 方法（参数解析 + 数据绑定 + 验证）
+        mv = ha.handle(processedRequest, response, mappedHandler.getHandler());
+
+        // 6. 执行 Interceptor.postHandle()
+        mappedHandler.applyPostHandle(processedRequest, response, mv);
+
+    } catch (Exception ex) {
+        dispatchException = ex;
+    }
+
+    // 7. 处理结果：视图渲染 或 JSON 序列化
+    processDispatchResult(processedRequest, response, mappedHandler, mv, dispatchException);
+}
+```
+
+> **WHY**：`getHandler()` 内部遍历所有 `HandlerMapping`（链式查找），`RequestMappingHandlerMapping` 是最常用的实现——它解析 `@RequestMapping` 注解建立 URL → Method 映射。`getHandlerAdapter()` 则根据 Handler 类型选择适配器，`RequestMappingHandlerAdapter` 负责执行 `@RequestMapping` 标注的方法。
+
+### 2. RequestMappingHandlerAdapter——方法执行与参数解析
+
+```java
+// org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter
+// handleInternal() 是实际调用 Controller 方法的地方
+
+@Override
+protected ModelAndView handleInternal(HttpServletRequest request,
+        HttpServletResponse response, HandlerMethod handlerMethod) throws Exception {
+
+    // 1. 参数解析：HandlerMethodArgumentResolver 链
+    //    @RequestParam → RequestParamMethodArgumentResolver
+    //    @PathVariable → PathVariableMethodArgumentResolver
+    //    @RequestBody  → RequestResponseBodyMethodProcessor（HttpMessageConverter 反序列化）
+    //    @Valid        → 触发 Validator 链
+
+    // 2. 方法调用：反射调用 Controller 方法
+    Object returnValue = handlerMethod.invokeAndHandle(webRequest, mavContainer);
+
+    // 3. 返回值处理：HandlerMethodReturnValueHandler 链
+    //    @ResponseBody → RequestResponseBodyMethodProcessor（HttpMessageConverter 序列化）
+    //    ModelAndView  → 走 ViewResolver 渲染
+    //    ResponseEntity → 直接写 HTTP 状态码 + Body
+
+    return getModelAndView(mavContainer, handlerMethod, webRequest);
+}
+```
+
+> **WHY**：`@RestController` 之所以"跳过 ViewResolver"，是因为返回值处理器 `RequestResponseBodyMethodProcessor` 直接通过 `HttpMessageConverter`（如 `MappingJackson2HttpMessageConverter`）将对象序列化为 JSON 写入 response body，不产生 `ModelAndView`。
+
+---
+
+## 十、版本演进
+
+| 版本 | 关键变更 | 影响 |
+|:-----|:---------|:-----|
+| **Spring MVC 4.x** | `@RestController` 引入（4.0），`@RequestMapping` 全功能 | REST 开发标准化 |
+| **Spring MVC 5.0** | `RouterFunction` 函数式路由（替代注解路由）| 可选的编程式路由风格 |
+| **Spring MVC 5.3** | `@HttpExchange` 声明式 HTTP 客户端（类似 Feign 但原生）| 替代 RestTemplate/WebClient 部分场景 |
+| **Spring Boot 2.x** | 自动配置 `DispatcherServlet` + 内嵌 Tomcat/Netty | 零配置启动 Web 应用 |
+| **Spring Boot 3.x / Spring 6.0** | `javax.servlet.*` → `jakarta.servlet.*`；ProblemDetail（RFC 7807）标准错误体 | 破坏性迁移 + 错误响应标准化 |
+| **Spring Boot 3.2+** | Virtual Threads 默认启用（`spring.threads.virtual.enabled`）；RestClient 替代 RestTemplate | 高并发场景吞吐量提升；HTTP 客户端 API 现代化 |
+
+---
+
+## 十一、❌/✅ 反例对比
+
+### 11.1 @Controller vs @RestController 误用
+
+```java
+// ❌ 反例：REST API 用 @Controller + @ResponseBody 每个方法都标注
+@Controller
+public class UserController {
+    @GetMapping("/api/users")
+    @ResponseBody  // 每个方法都要写，容易遗漏
+    public List<User> getUsers() { ... }
+
+    @PostMapping("/api/users")
+    @ResponseBody  // 忘了加 → 返回 404（找视图模板）
+    public User createUser(@RequestBody User user) { ... }
+}
+```
+
+```java
+// ✅ 正例：纯 API 用 @RestController（= @Controller + @ResponseBody）
+@RestController
+@RequestMapping("/api/users")
+public class UserController {
+    @GetMapping
+    public List<User> getUsers() { ... }  // 自动序列化为 JSON
+
+    @PostMapping
+    public User createUser(@RequestBody User user) { ... }
+}
+// WHY：@RestController 在类级别启用 @ResponseBody，所有方法默认返回 JSON
+//      只有需要返回视图（JSP/Thymeleaf）时才用 @Controller
+```
+
+### 11.2 异常处理：try-catch 散落 vs 全局统一
+
+```java
+// ❌ 反例：每个 Controller 方法内部 try-catch
+@RestController
+public class OrderController {
+    @PostMapping("/orders")
+    public ResponseEntity<?> createOrder(@RequestBody OrderDTO dto) {
+        try {
+            Order order = orderService.create(dto);
+            return ResponseEntity.ok(order);
+        } catch (ValidationException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());  // 重复代码
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("服务器错误");      // 每个方法都写
+        }
+    }
+}
+```
+
+```java
+// ✅ 正例：@RestControllerAdvice 全局异常处理
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(ValidationException.class)
+    public ResponseEntity<ErrorResponse> handleValidation(ValidationException ex) {
+        return ResponseEntity.badRequest()
+            .body(new ErrorResponse("VALIDATION_ERROR", ex.getMessage()));
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleNotFound(ResourceNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+            .body(new ErrorResponse("NOT_FOUND", ex.getMessage()));
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorResponse> handleGeneral(Exception ex) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+            .body(new ErrorResponse("INTERNAL_ERROR", "服务器内部错误"));
+    }
+}
+// WHY：集中处理、统一格式、Controller 只关注业务逻辑
+//      Spring Boot 3.x 还支持 ProblemDetail（RFC 7807）标准格式
+```
+
+### 11.3 拦截器 vs 过滤器选择
+
+```java
+// ❌ 反例：用 Filter 做 Spring Bean 级别的操作（如权限检查需要注入 Service）
+@WebFilter("/api/*")
+public class AuthFilter implements Filter {
+    @Autowired
+    private AuthService authService;  // ⚠️ Filter 不是 Spring Bean（除非手动注册）
+    // @Autowired 注入为 null → NPE
+
+    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) {
+        authService.checkPermission(...);  // NPE!
+    }
+}
+```
+
+```java
+// ✅ 正例：需要 Spring Bean 注入 → 用 HandlerInterceptor
+@Component
+public class AuthInterceptor implements HandlerInterceptor {
+    private final AuthService authService;  // 构造器注入，正常 Spring Bean
+
+    public AuthInterceptor(AuthService authService) {
+        this.authService = authService;
+    }
+
+    @Override
+    public boolean preHandle(HttpServletRequest request,
+                             HttpServletResponse response,
+                             Object handler) {
+        return authService.checkPermission(request);
+    }
+}
+// 注册到 Spring MVC
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(authInterceptor)
+                .addPathPatterns("/api/**")
+                .excludePathPatterns("/api/public/**");
+    }
+}
+// WHY：Filter 是 Servlet 规范（容器级），Interceptor 是 Spring 规范（Bean 级）
+//      需要注入 Spring Bean → Interceptor；需要处理所有请求（含静态资源）→ Filter
 ```
 
 ---
