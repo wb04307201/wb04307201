@@ -60,6 +60,55 @@ flowchart TD
 - **key 缺失或不正确**：列表必须用稳定 key（不要用 index）
 - **不清理副作用**：useEffect 必须 return cleanup（事件监听/定时器/订阅）
 
+---
+
+## 可访问性（a11y）
+
+> React 19 的可访问性最佳实践：**语义化 HTML + ARIA + 键盘导航 + 焦点管理**。
+
+### 核心原则
+
+| 原则 | 说明 | 实践 |
+|------|------|------|
+| **语义化 HTML** | 优先使用原生 HTML 元素 | `<button>` 优于 `<div onClick>` |
+| **ARIA 属性** | 为自定义组件补充语义 | `aria-label` / `aria-expanded` / `role` |
+| **键盘导航** | 所有交互可键盘触达 | Tab / Enter / Escape |
+| **焦点管理** | 动态内容变化时管理焦点 | 模态框打开 → focus trap |
+| **颜色对比度** | 文本与背景对比度 ≥ 4.5:1 | WCAG AA 标准 |
+
+### React 19 a11y 要点
+
+```javascript
+// ✅ 语义化 + ARIA
+function ToggleButton({ isOpen, onToggle }) {
+  return (
+    <button
+      onClick={onToggle}
+      aria-expanded={isOpen}
+      aria-controls="panel-content"
+    >
+      {isOpen ? '收起' : '展开'}
+    </button>
+  )
+}
+
+// ❌ 反模式：div 模拟按钮（缺语义 + 键盘支持）
+function BadToggle({ onClick }) {
+  return <div onClick={onClick}>点击我</div>  // 无键盘支持、无 ARIA
+}
+```
+
+### 工具链
+
+| 工具 | 用途 |
+|------|------|
+| **eslint-plugin-jsx-a11y** | 编译期 a11y 规则检查 |
+| **axe-core** | 运行时 a11y 审计 |
+| **@testing-library/react** | 按 role 测试（`getByRole('button')`） |
+| **Lighthouse** | 浏览器 a11y 评分 |
+
+---
+
 ## 学习资源
 - 官方文档：https://react.dev/
 - Next.js 文档：https://nextjs.org/docs

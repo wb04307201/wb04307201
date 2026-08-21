@@ -1,7 +1,7 @@
 <!--
 module:
-  parent: note
-  slug: 09.front-end/network/http-protocol/get-vs-post
+  parent: front-end
+  slug: front-end/network/http-protocol/get-vs-post
   type: article
   category: 主模块子文章
   summary: GET 与 POST 的 9 大核心差异 + 语义本质 + 工程取舍
@@ -167,6 +167,23 @@ module:
   A: HTTP/1.1 规范没禁止，但绝大多数中间设备（CDN、代理）会丢弃 GET 的 Body——生产环境**不要**依赖此行为
 - Q: 浏览器刷新会重发 POST 吗？
   A: 默认会重发（浏览器会弹确认框）。为避免重复提交，服务端通常要求 POST 幂等或返回 303 重定向到结果页
+
+---
+
+## 十·五、可访问性（a11y）与 API 设计
+
+> HTTP 方法的选择也影响前端可访问性：
+
+| 维度 | GET | POST |
+|------|-----|------|
+| **预加载 / Prefetch** | ✅ 浏览器可 `<link rel="prefetch">` | ❌ 不可预加载 |
+| **表单无障碍** | URL 参数不依赖 JS | 需 JS 提交（渐进增强受限） |
+| **缓存友好** | 屏幕阅读器缓存页面更快 | 每次重新请求 |
+| **SEO + a11y** | URL 可索引 = 更多用户找到内容 | 内容不可索引 |
+
+**最佳实践**：
+- 导航 / 搜索 / 筛选 → **GET**（可被辅助技术缓存和预加载）
+- 表单提交 / 状态变更 → **POST**（配合 `303 See Other` 重定向到 GET 结果页，防重复提交）
 
 ---
 
