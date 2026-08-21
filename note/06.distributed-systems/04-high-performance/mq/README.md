@@ -9,6 +9,8 @@ module:
 
 # 消息队列
 
+> 一句话定位：**MQ = 异步解耦 + 削峰填谷 + 消息总线**——生产者的"写缓冲区"，消费者的"任务队列"，分布式系统的"神经系统"。
+
 消息队列看作是一个存放消息的容器，当需要使用消息的时候，直接从容器中取出消息使用。由于队列 Queue 是一种先进先出的数据结构，所以消费消息时也是按照顺序来消费的。
 
 ## 消息队列的组成
@@ -245,6 +247,229 @@ graph LR
     MQ --> ES
     MQ --> DW
     MQ --> Sync
+```
+
+---
+
+## 源码级深度：Kafka 与 RocketMQ 核心机制
+
+### 1. Kafka：零拷贝与顺序写——高吞吐的秘密
+
+```java
+// org.apache.kafka.common.network.KafkaChannel
+// Kafka 高吞吐的两大基石：顺序写磁盘 + 零拷贝传输
+
+// ① 顺序写：Producer 写入 → 追加到 LogSegment 文件末尾
+// org.apache.kafka.storage.internals.log.LogSegment
+public void append(long largestOffset, long largestTimestamp, 
+                   ByteBuffer records) {
+    // 直接 FileChannel.write() → 顺序追加，无随机 IO
+    // 磁盘顺序写速度 ≈ 内存随机写（600MB/s vs 100MB/s）
+    this.log.write(records);
+    this.index.append(largestTimestamp, largestOffset, 
+                      this.log.channel().position());
+}
+
+// ② 零拷贝：Consumer 拉取 → sendfile() 直接内核态传输
+// org.apache.kafka.common.network.PlaintextTransportLayer
+public long transferTo(WritableByteChannel target, long position) 
+        throws IOException {
+    // FileChannel.transferTo() → Linux sendfile() 系统调用
+    // 数据从 PageCache 直接到 Socket Buffer，不经过用户态
+    // 减少 2 次数据拷贝 + 2 次上下文切换
+    return fileChannel.transferTo(position + this.startingOffset, 
+                                  this.size - (position - this.startingOffset), 
+                                  target);
+}
+```
+
+> **WHY**：传统 IO 需要 4 次拷贝（Disk → Kernel Buffer → User Buffer → Socket Buffer → NIC），零拷贝只需 2 次（Disk → Kernel Buffer → NIC），CPU 开销降低 50%+。
+
+### 2. RocketMQ：事务消息半提交机制
+
+```java
+// org.apache.rocketmq.broker.transaction.queue.TransactionalMessageBridge
+// RocketMQ 事务消息的"半消息"机制——解决分布式事务的最终一致性
+
+// ① 半消息写入：Producer 发送半消息，对 Consumer 不可见
+public boolean putHalfMessage(MessageExtBrokerInner messageInner) {
+    // 将消息写入 RMQ_SYS_TRANS_HALF_TOPIC（半消息 Topic）
+    // Consumer 订阅的是业务 Topic，所以看不到半消息
+    messageInner.setTopic(TransactionalMessageUtil.buildHalfTopic());
+    return putMessage(messageInner);
+}
+
+// ② 本地事务执行后：根据结果 Commit 或 Rollback
+public void endTransaction(EndTransactionRequestHeader requestHeader) {
+    if (requestHeader.getCommitOrRollback() 
+            == MessageSysFlag.TRANSACTION_COMMIT_TYPE) {
+        // Commit：将半消息从 HALF_TOPIC 移到真实 Topic，Consumer 可见
+        deletePrepareMessage(halfMsg);
+        putMessage(realMsg);
+    } else {
+        // Rollback：删除半消息，Consumer 永远看不到
+        deletePrepareMessage(halfMsg);
+    }
+}
+
+// ③ 补偿机制：Broker 定期扫描未确认的半消息，回查 Producer
+// TransactionalMessageCheckService（默认 60s 一次）
+protected void onWaitEnd() {
+    // 遍历所有半消息，找到超过 60s 未 Commit/Rollback 的
+    // 回调 Producer 的 checkLocalTransaction() 方法
+    // Producer 查询本地事务状态，重新发送 Commit/Rollback
+}
+```
+
+> **WHY**：半消息机制本质是"两阶段提交"的消息版——第一阶段写半消息（Prepare），第二阶段根据本地事务结果 Commit/Rollback。补偿回查机制解决了第二阶段失败（网络/宕机）时的可靠性问题。
+
+---
+
+## 版本演进
+
+| 消息队列 | 关键版本 | 核心变更 | 影响 |
+|:---------|:---------|:---------|:-----|
+| **Kafka 0.8** | 2013 | 引入 Consumer Group + 重平衡机制 | 从日志系统进化为消息队列 |
+| **Kafka 0.10** | 2016 | Exactly-Once 语义（幂等 Producer + 事务 API） | 金融级可靠性 |
+| **Kafka 3.0+** | 2021 | KRaft 模式（去 ZooKeeper），Raft 共识替代 | 运维复杂度大幅降低 |
+| **Kafka 3.6+** | 2023 | KRaft 生产就绪，Tiered Storage（冷数据卸载到 S3） | 存储成本下降 80% |
+| **RocketMQ 4.x** | 2016 | 事务消息、延迟消息、死信队列 | 电商级消息可靠性 |
+| **RocketMQ 5.0** | 2022 | 云原生架构（存算分离）、gRPC 协议、Serverless 弹性 | 运维友好 + 按需扩缩 |
+| **RocketMQ 5.1+** | 2023 | 事件网格（EventBridge）、定时消息精度提升 | 事件驱动架构支持 |
+| **RabbitMQ 3.x** | 持续 | Quorum Queue（Raft 共识替代 Classic Mirror） | 高可用队列更可靠 |
+| **Pulsar 2.x** | 2018+ | 存算分离（BookKeeper）、多租户、Schema Registry | 云原生消息平台 |
+
+---
+
+## ❌/✅ 反例对比
+
+### 反例 1：消费者重复消费未做幂等
+
+```java
+// ❌ 反例：消费者直接执行业务逻辑，无幂等保护
+@RocketMQMessageListener(topic = "ORDER_TOPIC", consumerGroup = "order-group")
+public class OrderConsumer implements RocketMQListener<OrderMessage> {
+    @Override
+    public void onMessage(OrderMessage msg) {
+        // 网络抖动 → Broker 未收到 ACK → 重发 → 重复扣款！
+        orderService.deductStock(msg.getOrderId(), msg.getQuantity());
+        paymentService.charge(msg.getOrderId(), msg.getAmount());
+    }
+}
+// 后果：同一订单扣了两次库存、扣了两次钱
+```
+
+```java
+// ✅ 正例：消费者实现幂等（数据库唯一键 + 状态机）
+@RocketMQMessageListener(topic = "ORDER_TOPIC", consumerGroup = "order-group")
+public class OrderConsumer implements RocketMQListener<OrderMessage> {
+    @Override
+    @Transactional
+    public void onMessage(OrderMessage msg) {
+        // ① 幂等键：用消息 ID 作为去重依据
+        String idempotentKey = msg.getMsgId();
+        
+        // ② 数据库唯一索引：INSERT IGNORE 或 ON DUPLICATE KEY UPDATE
+        int inserted = idempotentRepo.insertIgnore(idempotentKey);
+        if (inserted == 0) {
+            log.warn("重复消息，跳过: {}", idempotentKey);
+            return;  // 已处理过，直接返回
+        }
+        
+        // ③ 状态机校验：订单状态必须为"待处理"
+        Order order = orderRepo.findById(msg.getOrderId());
+        if (order.getStatus() != OrderStatus.PENDING) {
+            log.warn("订单已处理，跳过: {}", msg.getOrderId());
+            return;
+        }
+        
+        orderService.deductStock(msg.getOrderId(), msg.getQuantity());
+        paymentService.charge(msg.getOrderId(), msg.getAmount());
+        orderRepo.updateStatus(msg.getOrderId(), OrderStatus.PROCESSED);
+    }
+}
+// WHY：MQ 的 At-Least-Once 语义保证消息至少投递一次，
+//      消费者必须实现幂等才能避免重复处理
+```
+
+### 反例 2：消息丢失——Producer 发了就忘
+
+```java
+// ❌ 反例：Producer 异步发送，不关心结果
+public void sendOrderMessage(OrderMessage msg) {
+    // 异步发送后直接返回，消息可能丢失：
+    // - Broker 未持久化就宕机
+    // - 网络抖动导致发送失败
+    // - 反压时 Broker 拒绝写入
+    kafkaTemplate.send("ORDER_TOPIC", msg);
+    // 不检查 SendResult → 静默丢失
+}
+```
+
+```java
+// ✅ 正例：Producer 确认 + 重试 + 本地消息表
+public void sendOrderMessage(OrderMessage msg) {
+    // ① 同步发送 + 确认（Kafka acks=all，RocketMQ 同步发送）
+    SendResult result = rocketMQTemplate.syncSend("ORDER_TOPIC", msg);
+    
+    if (result.getSendStatus() == SendStatus.SEND_OK) {
+        // ② 发送成功：标记本地消息表为"已发送"
+        localMessageRepo.updateStatus(msg.getId(), MessageStatus.SENT);
+    } else {
+        // ③ 发送失败：标记为"待重试"，定时任务补偿
+        localMessageRepo.updateStatus(msg.getId(), MessageStatus.RETRY);
+    }
+}
+
+// 本地消息表 + 定时补偿（最终一致性兜底）
+@Scheduled(fixedDelay = 60000)  // 每分钟扫描
+public void retryFailedMessages() {
+    List<LocalMessage> failed = localMessageRepo
+        .findByStatus(MessageStatus.RETRY);
+    for (LocalMessage msg : failed) {
+        if (msg.getRetryCount() < MAX_RETRY) {
+            sendOrderMessage(msg.toMessage());
+            msg.incrementRetry();
+            localMessageRepo.save(msg);
+        } else {
+            // 超过最大重试 → 转人工处理
+            localMessageRepo.updateStatus(msg.getId(), MessageStatus.DEAD_LETTER);
+        }
+    }
+}
+// WHY：本地消息表 + 定时补偿是"最终一致性"的经典模式，
+//      确保业务操作和消息发送要么都成功，要么都重试
+```
+
+### 反例 3：雪崩效应——MQ 故障拖垮全链路
+
+```text
+❌ 反例：消费者无降级策略，MQ 故障 → 全链路阻塞
+
+  Producer → MQ（故障）→ Consumer
+       ↓
+  发送超时 → Producer 线程池打满 → 上游服务级联故障
+
+  现象：MQ 单点故障 → 整个微服务集群雪崩
+```
+
+```text
+✅ 正例：多级降级策略
+
+  1. Producer 侧：
+     - 发送超时 3s（fail-fast，不要无限等待）
+     - 异步发送 + 本地消息表（MQ 不可用时降级为定时补偿）
+     - 熔断器：MQ 连续 5 次超时 → 熔断 30s → 半开探测
+
+  2. Consumer 侧：
+     - 消费超时 10s（避免单条消息阻塞整个 Consumer Group）
+     - 死信队列：重试 3 次仍失败 → 转入 DLQ（Dead Letter Queue）
+     - 监控告警：消费积压 > 10000 条 → 触发告警 + 自动扩容
+
+  3. 运维侧：
+     - MQ 集群 ≥ 3 节点（避免单点）
+     - 监控 Broker 磁盘使用率 > 75% → 提前扩容
+     - 定期清理过期消息（避免磁盘写满）
 ```
 
 ---
