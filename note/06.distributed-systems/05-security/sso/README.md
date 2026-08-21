@@ -89,7 +89,7 @@ SSO 选型公式：
 
 ## 速查 · 关联资源
 - **OAuth2 深度**：[oauth2-oidc](../oauth2-oidc/README.md) —— 500 行深度 + 流程图
-- **JWT 深度**：[jwt-security](../jwt-security/README.md) —— 325 行深度
+- **JWT 深度**：[jwt-security](../jwt-security/README.md) —— 325 行深度，详解 JWT 签名验证、Token 刷新、安全存储
 - **面试题**：[12.interview/05.security/sso](../../../12.interview/05.security/sso/README.md) —— 5-7 道精选题
 
 ---

@@ -225,7 +225,7 @@ if (!actualMd5.equals(expectedMd5)) {
 ## 交叉引用
 - 主模块：[`04.system-design`](../../README.md) — 系统设计知识体系
 - 同级案例：[敏感词过滤](../sensitive-word-filter/README.md) — AC 自动机 + 高并发过滤（上传后内容审核）
-- CDN 加速：[CDN 加速](../cdn/README.md) — 上传后的文件分发
+- CDN 加速：[CDN 加速](../cdn/README.md) — 上传后的文件通过 CDN 边缘节点分发，实现就近访问、降低源站压力、提升全球用户访问速度
 - 消息队列：[消息队列](../mq/README.md) — 异步合并 + 内容审核
 - Spring 上传：[Spring MVC 文件上传](../../../04.spring-backend/02-web/mvc/file-upload.md) — 框架层实现
 
