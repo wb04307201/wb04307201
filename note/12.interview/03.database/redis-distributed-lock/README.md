@@ -2,7 +2,7 @@
 question:
   id: 03.database-redis-distributed-lock
   topic: 03.database
-  difficulty: ★★★★★
+  difficulty: ⭐⭐⭐⭐⭐
   frequency: 高频
   scenario_type: 面试追问陷阱
   tags: [03.database, redis, distributed-lock, redisson, watchdog]
@@ -92,7 +92,7 @@ public void unlock(String key, String value) {
 
 **解决了问题 2（误删他人锁）**，但**问题 1（锁提前过期）仍未解决**。
 
-## 二、3 大坑详解
+## 二、3 大陷阱（现象 → 真相）
 
 ### 坑 1：锁提前过期（业务没执行完，锁已过期）
 
@@ -222,6 +222,16 @@ HDEL order:123 thread-a:1  // 第二次释放，计数 = 0，删除锁
 > "Redis 分布式锁有 3 大坑：**锁提前过期**——业务没执行完锁已过期，其他线程拿到锁，用 Redisson 看门狗机制自动续期解决；**误删他人锁**——删除锁时没校验 value，用 Lua 脚本保证原子性（先 get 校验再 del）；**不可重入**——同一线程无法重复获取同一把锁，用 Redisson 可重入锁（Hash 结构 + 计数器）解决。
 >
 > Redisson 看门狗机制：获取锁后启动后台线程，每 10 秒检查一次，如果线程仍持有锁就自动续期（重置为 30 秒）。线程崩溃则看门狗停止，锁自动过期，不会死锁。"
+
+> "Redis 分布式锁是面试高频题，我从实际项目遇到的角度来讲。
+>
+> 我们项目里用 Redis 做订单分布式锁，上线后遇到一个经典问题：订单处理耗时超过锁的过期时间 30 秒，锁自动释放后另一个线程拿到了锁，两个线程同时处理同一笔订单，数据不一致。这就是第一个坑——**锁提前过期**。解决方案是 Redisson 看门狗机制：获取锁后启动后台线程，每 10 秒检查一次，如果线程仍持有锁就自动续期重置为 30 秒。线程崩溃则看门狗停止，锁自动过期不会死锁。
+>
+> 第二个坑是**误删他人锁**：线程 A 的锁过期后线程 B 拿到锁，线程 A 执行完直接 del 删掉了 B 的锁。解决方案是用 Lua 脚本保证原子性——先 get 校验 value 匹配再 del，一步到位不会被中间打断。
+>
+> 第三个坑是**不可重入**：方法 A 持有锁后调用方法 B，方法 B 也需要同一把锁，结果获取失败死锁。Redisson 用 Hash 结构解决——key 是锁名，field 是线程标识，value 是重入计数。lock 时 HINCRBY +1，unlock 时 HINCRBY -1，减到 0 时 HDEL 释放锁。
+>
+> 面试追问的话，可以展开两点：1）为什么不用 RedLock（多节点方案）？因为 Martin Kleppmann 论证过 RedLock 在 GC 停顿或时钟漂移下仍然不安全，生产环境更推荐 Redisson 单节点 + 看门狗。2）与 ZooKeeper / 数据库分布式锁的对比：Redis 性能最高但一致性最弱，ZK 强一致但吞吐低，按业务场景选。"
 
 ## 五、交叉引用
 

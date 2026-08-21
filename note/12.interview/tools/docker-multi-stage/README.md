@@ -96,7 +96,7 @@ COPY --from=builder /app/server /server
 
 ---
 
-## 三、常见陷阱
+## 三、常见陷阱（现象 → 真相）
 
 ### 陷阱 1：Stage 之间 COPY 路径写错
 
@@ -123,7 +123,9 @@ COPY --from=builder /app/server /server
 
 ---
 
-## 五、面试话术（90 秒版本）
+## 五、面试话术（30 秒版）
+
+> "多阶段构建用两个 FROM 把编译环境和运行环境拆开。第一个 stage 用完整镜像（如 golang:1.22）做编译，第二个 stage 用最小镜像（如 alpine）只拷贝编译产物。Go 应用从 1.2GB 瘦到 15-25MB，最终镜像不含编译器和源码，部署快、攻击面小。"
 
 > "多阶段构建的核心思想是把编译环境和运行环境拆成两个 stage。第一个 stage 用完整的基础镜像（如 golang:1.22）做编译，第二个 stage 用最小镜像（如 alpine 或 distroless）只拷贝编译产物。
 >

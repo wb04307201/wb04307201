@@ -244,7 +244,7 @@ static final class CounterCell { volatile long value; }
 
 ---
 
-## 三、常见陷阱
+## 三、常见陷阱（现象 → 真相）
 
 ### 1. size() 不是精确值
 
@@ -340,6 +340,18 @@ map.merge(key, 1, Integer::sum);
 > JDK 8 核心优化：1）桶为空时 CAS 直接插入，无锁路径性能极高；2）链表超 8 且数组超 64 时转红黑树，查找 O(log n)；3）扩容支持多线程协助迁移，通过 ForwardingNode 标记已迁移桶；4）size() 用 CounterCell 数组分散竞争，类似 LongAdder。
 >
 > 与 HashMap 关键差异：CHM 不允许 null key/value，迭代器弱一致性而非 fail-fast，提供 putIfAbsent、computeIfAbsent 等原子复合操作。高并发场景下，CHM 是唯一正确选择。"
+
+> "ConcurrentHashMap 是 Java 并发编程中最核心的数据结构之一，我从 JDK 演进角度来讲。
+>
+> JDK 7 采用分段锁架构：底层是 Segment 数组，每个 Segment 继承 ReentrantLock，保护内部的 HashEntry 数组。默认 16 个 Segment，最多 16 个线程并发写。读操作 volatile 无锁，写操作 Segment 级别加锁。这个设计的问题是并发度被 Segment 数量锁死。
+>
+> JDK 8 彻底重构为 CAS + synchronized：抛弃 Segment，直接用 Node 数组 + 链表/红黑树。核心变化有四点：1）锁粒度降到桶级别，synchronized 只锁头节点；2）桶为空时 CAS 直接插入，完全无锁路径；3）链表超 8 且数组超 64 时转红黑树，查询从 O(n) 降到 O(log n)；4）扩容支持多线程协助迁移——ForwardingNode 标记已迁移桶，其他线程 helpTransfer 协助搬数据。
+>
+> size() 统计也做了优化：JDK 7 是重试 3 次后全锁，JDK 8 用 CounterCell 数组分散竞争，类似 LongAdder 的思想，高并发下性能远优于 AtomicLong。
+>
+> 与 HashMap 的关键差异：CHM 不允许 null key/value（HashMap 允许），迭代器弱一致性而非 fail-fast，提供 putIfAbsent、computeIfAbsent、merge 等原子复合操作。
+>
+> 面试追问的话，可以展开两点：1）JDK 8 为什么选 synchronized 而不是 ReentrantLock？因为 JVM 对 synchronized 有偏向锁、轻量级锁、锁消除等优化，实际性能超过 ReentrantLock，而且不需要手动释放锁，异常安全性更好。2）扩容时高低位拆分——hash & oldCap 为 0 的留原位，为 1 的移到 newCap 偏移位。"
 
 ---
 
