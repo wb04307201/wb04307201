@@ -4,12 +4,12 @@ module:
   slug: story/index
   type: index
   category: 主模块子文章
-  summary: 阿明餐厅 48 篇技术故事的目录导航——按主题、顺序、角色多维入口。
+  summary: 阿明餐厅 50 篇技术故事的目录导航——按主题、顺序、角色多维入口。
 -->
 
 # 故事集 · 目录导航
 
-> 「阿明餐厅」系列 **48 篇** 技术故事完整导航 —— 按主题分类、按叙事顺序、按角色推荐多维入口（含 34/35/36 三个 a/b 拆分双篇）。
+> 「阿明餐厅」系列 **50 篇** 技术故事完整导航 —— 按主题分类、按叙事顺序、按角色推荐多维入口（含 34/35/36 三个 a/b 拆分双篇）。
 
 ← [返回 note 总目录](../../note/README.md)
 
@@ -19,7 +19,7 @@ module:
 
 | 你想看什么？ | 直接跳转 |
 |-------------|---------|
-| 完整文章清单 | [全部 48 篇](./README.md#全部四十八篇文章) |
+| 完整文章清单 | [全部 50 篇](./README.md#全部五十篇文章) |
 | 一页纸速查 | [cheatsheet.md](./cheatsheet.md) |
 | 术语速查 | [glossary.md](./glossary.md)（**340+** 术语） |
 | 主题分类 | [下文分类导航](#四分类导航) |
@@ -30,10 +30,10 @@ module:
 
 ## 二、本系列是什么？
 
-用 **阿明餐厅**（面馆 → 50 家连锁 → 80 家分店）的成长故事，讲明白 48 个核心工程主题：
+用 **阿明餐厅**（面馆 → 50 家连锁 → 80 家分店）的成长故事，讲明白 50 个核心工程主题：
 
 - **传统工程 25 篇**：架构演进、流量治理、可观测性、安全、测试、CI/CD、API、数据、前端、云成本、故障、性能、异步、分布式、SaaS、实时、多端、搜索、数据库迁移、低代码、国际化
-- **AI 时代 19 篇**（续集一 + 续集二 ~ 续集二十 + 番外七/八）：Agent 架构、人机协作、AI 组织转型、AI 原生创业、自进化组织、幻觉护栏、认知债、Harness、致命三件套、评测、协议、Token、可观测性、RAG、向量库、合规、私有化、Prompt、多模态
+- **AI 时代 21 篇**（续集一 + 续集二 ~ 续集二十一 + 番外七/八）：Agent 架构、人机协作、AI 组织转型、AI 原生创业、自进化组织、幻觉护栏、认知债、Harness、致命三件套、评测、协议、Token、可观测性、RAG、向量库、合规、私有化、Prompt、多模态、老板幻觉
 - **番外 8 篇**：重构指南、云成本、SaaS、搜索推荐、低代码、国际化、Prompt、多模态
 
 **适合**：工程师 / 架构师 / SRE / QA / 数据工程师 / AI 工程师 / CTO / 创业者 / PM / 技术管理者。
@@ -80,9 +80,9 @@ module:
 | 番外 1-6（传统） | [03 重构](./03-refactoring-guide-for-pm.md) / [14 云成本](./14-cloud-finops.md) / [19 SaaS](./18-saas-multitenant.md) / [22 搜索](./21-search-recommendation.md) / [25 低代码](./23-lowcode-platform.md) / [26 国际化](./24-globalization.md) |
 | 番外 7-8（AI） | [42 Prompt](./40-prompt-engineering.md) / [43 多模态](./41-multimodal-ai.md) |
 | 续集 1-17（AI 时代） | [01-41 续集](./README.md#全部四十六篇文章) |
-| **续集 18-20**（AI 责任 / 数据真相 / 个人困局） | **[44 谁负责](./42-ai-engineer-responsibility.md) / [45 生产力](./43-ai-productivity-paradox.md) / [46 困局](./44-tech-debt-career-trap.md)** |
+| **续集 18-21**（AI 责任 / 数据真相 / 个人困局 / 老板幻觉） | **[44 谁负责](./42-ai-engineer-responsibility.md) / [45 生产力](./43-ai-productivity-paradox.md) / [46 困局](./44-tech-debt-career-trap.md) / [47 老板幻觉](./47-boss-hallucination.md)** |
 
-### 🟣 AI 时代 21 篇（续集一-十七）
+### 🟣 AI 时代 22 篇（续集一-二十一）
 
 | 续集 | 主题 | 文章 |
 |------|------|------|
@@ -106,6 +106,10 @@ module:
 | 十五 | 6 大向量库选型 | [39 向量数据库与 Embedding](./37-vector-database-and-embedding.md) |
 | 十六 | EU AI Act / GDPR / PIPL | [40 AI 合规与监管](./38-ai-compliance-and-regulation.md) |
 | 十七 | 3 年回本黄金线 | [41 AI 私有化部署](./39-ai-private-deployment.md) |
+| 十八 | AI 责任归属 | [44 谁替系统负责](./42-ai-engineer-responsibility.md) |
+| 十九 | 生产力悖论 | [45 生产力悖论](./43-ai-productivity-paradox.md) |
+| 二十 | 技术债困局 | [46 技术债困局](./44-tech-debt-career-trap.md) |
+| 二十一 | 老板幻觉 | [47 老板幻觉](./47-boss-hallucination.md) |
 
 ---
 

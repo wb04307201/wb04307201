@@ -6,14 +6,14 @@ module:
   topic: 「阿明餐厅」技术系列
   audience: 工程师 / 架构师 / SRE / AI 工程师 / CTO / 创业者 / PM
   category: 主模块
-  summary: 用开餐厅的故事讲明白 49 篇技术文章，覆盖传统工程与 AI 时代（续集一 + 续集二-二十 + 番外七/八/九 + LLM 推理），篇篇独立又互相串联。
+  summary: 用开餐厅的故事讲明白 50 篇技术文章，覆盖传统工程与 AI 时代（续集一 + 续集二-二十一 + 番外七/八/九 + LLM 推理），篇篇独立又互相串联。
 -->
 
 # 「阿明餐厅」技术系列
 
-> 用开餐厅的故事，讲明白四十九篇技术大事 —— 从架构演进到 AI 智能体，从流量治理到 AI 私有化部署。
+> 用开餐厅的故事，讲明白五十篇技术大事 —— 从架构演进到 AI 智能体，从流量治理到 AI 私有化部署。
 
-本系列按**叙事逻辑**组织（**前传 → 续集一 → 正传 → 终章 → 番外 → 续集二十**），每篇标注文件编号方便检索。原编号 17 / 23 已合并到相邻主题（原 17 并入现 17-distributed-puzzles，原 23 并入现 22-database-migration），重编号后编号连续无跳跃。**番外九「扩招 50 个厨师」+ LLM 推理优化篇陆续追加**，总篇数升至 **49 篇**：46 个叙事段中，32 / 33 / 34 各含 2 个子文件（a / b），故实际 `.md` 文件共 **49 个**（46 段 + 3 个拆分）。
+本系列按**叙事逻辑**组织（**前传 → 续集一 → 正传 → 终章 → 番外 → 续集二十一**），每篇标注文件编号方便检索。原编号 17 / 23 已合并到相邻主题（原 17 并入现 17-distributed-puzzles，原 23 并入现 22-database-migration），重编号后编号连续无跳跃。**番外九「扩招 50 个厨师」+ LLM 推理优化篇陆续追加**，总篇数升至 **50 篇**：47 个叙事段中，32 / 33 / 34 各含 2 个子文件（a / b），故实际 `.md` 文件共 **50 个**（47 段 + 3 个拆分）。
 
 ---
 
@@ -21,7 +21,7 @@ module:
 
 ### 1.1 七大叙事集群
 
-本系列**只有顶层结构，无子目录分类**（按故事叙事而非按主题分目录，49 篇文章平铺于顶层）。下列 7 个集群由浅入深、由传统到 AI：
+本系列**只有顶层结构，无子目录分类**（按故事叙事而非按主题分目录，50 篇文章平铺于顶层）。下列 7 个集群由浅入深、由传统到 AI：
 
 | 集群 | 篇数 | 编号区间 | 一句话 |
 |------|------|----------|--------|
@@ -32,15 +32,15 @@ module:
 | 正传 11-14 · 系统进阶 | 4 | [20](./19-realtime-eventdriven.md) / [18](./17-distributed-puzzles.md) / [21](./20-multiplatform-architecture.md) / [24](./22-database-migration.md) | 异步 / 分布式 / 多端 / 数据库迁移 |
 | 终章 · 组织管理 | 1 | [07](./07-from-chef-to-ceo.md) | 从厨师到 CEO，500 人像 5 人协作 |
 | 番外 · 专题拓展 | 10 | [03](./03-refactoring-guide-for-pm.md) / [14](./14-cloud-finops.md) / [19](./18-saas-multitenant.md) / [22](./21-search-recommendation.md) / [25](./23-lowcode-platform.md) / [26](./24-globalization.md) / [42](./40-prompt-engineering.md) / [43](./41-multimodal-ai.md) / [番外九 Skill 调度](./45-skill-scheduling-restaurant.md) / [LLM 推理优化](./46-llm-inference.md) | 重构 / FinOps / SaaS / 搜索 / 低代码 / 国际化 / Prompt / 多模态 / Skill 调度 / LLM 推理 |
-| 续集 2-20 · AI 时代 | 22 | [11](./11-ai-learning-paradox.md) ~ [46](./44-tech-debt-career-trap.md)（含 [34a](./32a-ai-evaluation-fundamentals.md) / [34b](./32b-ai-evaluation-pipeline.md) / [35a](./33a-mcp-protocol.md) / [35b](./33b-a2a-protocol.md) / [36a](./34a-ai-token-cost-structure.md) / [36b](./34b-ai-token-cost-optimization.md)） | AI 时代 22 大主题 |
-| **合计** | **49** | — | 46 叙事段 + 3 个 a/b 拆分 |
+| 续集 2-21 · AI 时代 | 23 | [11](./11-ai-learning-paradox.md) ~ [47](./47-boss-hallucination.md)（含 [34a](./32a-ai-evaluation-fundamentals.md) / [34b](./32b-ai-evaluation-pipeline.md) / [35a](./33a-mcp-protocol.md) / [35b](./33b-a2a-protocol.md) / [36a](./34a-ai-token-cost-structure.md) / [36b](./34b-ai-token-cost-optimization.md)） | AI 时代 23 大主题 |
+| **合计** | **50** | — | 47 叙事段 + 3 个 a/b 拆分 |
 
 ### 1.2 辅助资料
 
 | 资料 | 作用 |
 |------|------|
-| [术语表](./glossary.md) | **340+** 词条速查，按 47 大主题分类 |
-| [一页纸速查](./cheatsheet.md) | 49 篇文章核心概念 + 关键决策表 + 金句心法 |
+| [术语表](./glossary.md) | **340+** 词条速查，按 48 大主题分类 |
+| [一页纸速查](./cheatsheet.md) | 50 篇文章核心概念 + 关键决策表 + 金句心法 |
 | [故事集目录](./index.md) | 按主题分类 + 4 条主路径 + 13 类角色推荐阅读路线 |
 | [故事格式规范](./STORY-FORMAT-SPEC.md) | 章节六段强制（作者撰稿依据） |
 
@@ -49,7 +49,7 @@ module:
 - **新人入门（工程师 1-3 年）**：前传 → 续集一 → 正传 1 → 正传 5 → 正传 11 → 续集一 → 续集十一 → 续集十
 - **AI 应用工程师**：续集一 → 续集二 → 续集十一 → 续集十四 → 续集十六 → 续集七 → 续集八
 - **架构师 / SRE**：前传 → 正传 1-14 → 终章 → 番外一-六
-- **CTO / 技术管理者**：终章 → 续集三 → 续集五 → 续集七 → 续集八 → 续集十二 → 续集十八 → 续集十九 → 续集二十
+- **CTO / 技术管理者**：终章 → 续集三 → 续集五 → 续集七 → 续集八 → 续集十二 → 续集十八 → 续集十九 → 续集二十 → 续集二十一
 - **创业者 / AI 产品经理**：续集四 → 续集五 → 续集六 → 续集十二 → 续集十九 → 续集二十 → 番外三
 - **2026 三大热点（3 小时）**：续集十九 [45 生产力悖论](./43-ai-productivity-paradox.md) → 续集十八 [44 谁负责](./42-ai-engineer-responsibility.md) → 续集二十 [46 技术债困局](./44-tech-debt-career-trap.md)
 
@@ -98,7 +98,7 @@ graph LR
     E7["42 Prompt"]
     E8["43 多模态"]
   end
-  subgraph ai["续集 2-20 · AI 时代"]
+  subgraph ai["续集 2-21 · AI 时代"]
     H1["11 学徒"]
     H2["27 组织"]
     H3["28 创业"]
@@ -118,6 +118,7 @@ graph LR
     H17["44 谁负责"]
     H18["45 生产力"]
     H19["46 困局"]
+    H20["47 老板幻觉"]
   end
 
   A --> B
@@ -130,7 +131,7 @@ graph LR
   E1 --> E2 --> E3 --> E4 --> E5 --> E6 --> E7 --> E8
   E8 --> H1
   H1 --> H2 --> H3 --> H4 --> H5 --> H6
-  H6 --> H7 --> H8 --> H9 --> H10 --> H11 --> H12 --> H13 --> H14 --> H15 --> H16 --> H17 --> H18 --> H19
+  H6 --> H7 --> H8 --> H9 --> H10 --> H11 --> H12 --> H13 --> H14 --> H15 --> H16 --> H17 --> H18 --> H19 --> H20
 
   classDef blue fill:#e3f2fd,stroke:#1976d2,color:#000
   classDef green fill:#e8f5e9,stroke:#388e3c,color:#000
@@ -143,7 +144,7 @@ graph LR
   class P11,P12,P13,P14 yellow
   class I red
   class B,E1,E2,E3,E4,E5,E6,E7,E8 gray
-  class H1,H2,H3,H4,H5,H6,H7,H8,H9,H10,H11,H12,H13,H14,H15,H16,H17,H18,H19 purple
+  class H1,H2,H3,H4,H5,H6,H7,H8,H9,H10,H11,H12,H13,H14,H15,H16,H17,H18,H19,H20 purple
 ```
 
 **色块说明**：🔵 蓝 = 基础设施 · 🟢 绿 = 工程质量 · 🟡 黄 = 系统进阶 · 🔴 红 = 组织管理 · ⚪ 灰 = AI Agent/番外 · 🟣 紫 = AI 时代
@@ -162,9 +163,9 @@ graph LR
 | **正传 7-10 · 工程质量** | 数据 + 前端 + 故障 + 性能 | 数据仓库 / Design System / Runbook / USE 方法 |
 | **正传 11-14 · 系统进阶** | 异步 + 分布式 + 多端 + 数据库迁移 | MQ + EDA / CAP / BFF / 影子表 |
 | **终章 · 组织管理** | 康威定律 + 知识工程 | Team Topologies / SECI / ADR / Docs-as-Code / IDP |
-| **续集 2-20 · AI 时代** | 22 大 AI 时代主题 | 见下方 §3.2 |
+| **续集 2-21 · AI 时代** | 23 大 AI 时代主题 | 见下方 §3.2 |
 
-### 3.2 AI 时代 22 篇速查
+### 3.2 AI 时代 23 篇速查
 
 | 续集 | 主题 | 文件 | 核心问题 |
 |------|------|------|----------|
@@ -188,6 +189,7 @@ graph LR
 | 十八 | AI 责任 | [44](./42-ai-engineer-responsibility.md) | 系统责任金字塔 + 4 大岗位重定义 |
 | 十九 | 生产力悖论 | [45](./43-ai-productivity-paradox.md) | DORA 放大器理论 |
 | 二十 | 技术债困局 | [46](./44-tech-debt-career-trap.md) | 救火 3 年不如建设 1 年 |
+| 二十一 | 老板幻觉 | [47](./47-boss-hallucination.md) | 老板盲信 AI 输出做战略决策 |
 
 ### 3.3 三大热点（2026 必读）
 
@@ -255,9 +257,9 @@ graph LR
 | [42](./40-prompt-engineering.md) | 点菜单的艺术 | 10 大 Prompt 模式 + 7 高级技术 + 4 优化 |
 | [43](./41-multimodal-ai.md) | 五感餐厅 | 5 大模态 + 3 融合架构 + 6 模型 + 5 场景 |
 
-### 4.8 续集 2-20 · AI 时代（22 篇）
+### 4.8 续集 2-21 · AI 时代（23 篇）
 
-详见 [§3.2 AI 时代 22 篇速查](#32-ai-时代-22-篇速查)。每篇独立成文，按 22 大主题顺序排列：学徒危机 → 组织转型 → 原生创业 → 自进化 → 幻觉护栏 → 认知债 → Harness → 致命三件套 → 评测 → 协议 → Token → 可观测 → RAG → 向量库 → 合规 → 私有化 → 责任 → 生产力 → 困局。
+详见 [§3.2 AI 时代 23 篇速查](#32-ai-时代-23-篇速查)。每篇独立成文，按 23 大主题顺序排列：学徒危机 → 组织转型 → 原生创业 → 自进化 → 幻觉护栏 → 认知债 → Harness → 致命三件套 → 评测 → 协议 → Token → 可观测 → RAG → 向量库 → 合规 → 私有化 → 责任 → 生产力 → 困局 → 老板幻觉。
 
 ---
 
@@ -325,10 +327,10 @@ graph LR
 
 | 维度 | 数字 |
 |------|------|
-| 顶层文章数（叙事篇数） | 46 段 + 3 个 a/b 拆分 = **49 篇** |
-| 实际 `.md` 文件数（含编号） | **49 个**（与上方目录表合计一致） |
+| 顶层文章数（叙事篇数） | 47 段 + 3 个 a/b 拆分 = **50 篇** |
+| 实际 `.md` 文件数（含编号） | **50 个**（与上方目录表合计一致） |
 | 顶层辅助资料 | **4 个**（cheatsheet / glossary / index / STORY-FORMAT-SPEC） |
-| 顶层总 `.md` | **54 个**（49 文章 + 4 辅助 + 1 README） |
+| 顶层总 `.md` | **55 个**（50 文章 + 4 辅助 + 1 README） |
 | 一级子目录 | **1 个**（scripts/，内含 insert-frontmatter.py + validate.py） |
 | frontmatter 模式 | story/question/pm（适用 12/13/14）|
 | 写作规范 | [STORY-FORMAT-SPEC.md](./STORY-FORMAT-SPEC.md)（章节六段强制）|

@@ -494,6 +494,7 @@ graph TD
 - [数据厨房](./12-data-kitchen.md) —— 食材兼容性数据库的建设离不开数据治理的基本功
 - [前厅翻修记](./13-frontend-renovation.md) —— AI 推荐的展示方式影响用户信任度，前端设计也是安全的一环
 - [阿明的省钱经](./14-cloud-finops.md) —— 三层护栏的成本控制：自动检查便宜但有限，人工审核昂贵但精准，需要 FinOps 思维
+- [老板出幻觉](./47-boss-hallucination.md) —— 续集二十一，从组织治理视角看"老板盲信 AI 输出"的风险，与本文技术层护栏互补
 - [差评危机](./15-incident-response.md) —— AI 幻觉引发的事故，和系统故障的应急响应流程高度相似
 - [外卖大战](./16-performance-optimization.md) —— AI 审核的时效性优化：如何在不牺牲安全的前提下加快审核速度
 - [传菜窗口的智慧](./19-realtime-eventdriven.md) —— 审核工作流中的异步通知和升级机制，和消息队列的设计思路一致
