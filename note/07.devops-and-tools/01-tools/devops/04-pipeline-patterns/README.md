@@ -419,4 +419,10 @@ jobs:
 
 ---
 
+## 延伸阅读
+
+- [CI/CD 采纳决策](../07-cicd-adoption/README.md) —— 什么时候该上 CI/CD，什么时候手动发版（团队规模 × 发布频率 × 合规要求）
+- [部署策略](../05-deploy-strategies/README.md) —— 蓝绿 / 金丝雀 / 灰度发布
+- [CI/CD vs GitOps](../06-cicd-vs-gitops/README.md) —— 两种范式的区别与协同
+
 ← [返回 DevOps 总览](../README.md) · 📅 2026-06-28

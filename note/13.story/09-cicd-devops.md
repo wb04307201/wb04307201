@@ -410,6 +410,10 @@ graph LR
 - [会自我进化的厨房](./27-self-evolving-company.md) —— Agent Loop 的自动部署能力，Agent 可以自主提交和部署修复
 - [AI 的"黑暗料理"](./28-ai-hallucination-safety.md) —— AI 输出的质量验证纳入 CI/CD，AI 产物的自动化校验流水线
 
+**跨模块延伸阅读**：
+- [为什么大公司用 CI/CD，小公司却手动发版？](../12.interview/tools/cicd-adoption/README.md) —— 面试题：30s/90s 话术 + 3 决策维度 + 反模式
+- [CI/CD 采纳决策深度分析](../07.devops-and-tools/01-tools/devops/07-cicd-adoption/README.md) —— ROI 模型 / 团队规模阈值 / IT 成熟度映射 / 康威定律 / 监管驱动 / 落地决策树
+
 
 - [cheatsheet](cheatsheet.md)
 - [glossary](glossary.md)

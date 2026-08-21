@@ -162,6 +162,7 @@ jobs:
 | [04-pipeline-patterns](04-pipeline-patterns/README.md) | 流水线设计模式（分支策略 / 多环境）|
 | [05-deploy-strategies](05-deploy-strategies/README.md) | 部署策略（蓝绿 / 金丝雀 / 灰度）|
 | [06-cicd-vs-gitops](06-cicd-vs-gitops/README.md) | CI/CD vs GitOps 区别与协同 |
+| [07-cicd-adoption](07-cicd-adoption/README.md) | CI/CD 采纳决策（团队规模 × 发布频率 × 合规要求）|
 
 ---
 
@@ -230,12 +231,12 @@ DORA 4 大指标（来自 Google DORA 报告）：
 |------|------|----------|
 | [三、3 大主流 CI 工具对比](#三3-大主流-ci-工具对比) | Jenkins / GitLab CI / GitHub Actions | 8 分钟 |
 | [四、CD 工具对比](#四cd-工具对比) | ArgoCD / Flux / Spinnaker / Tekton | 5 分钟 |
-| [五、子目录速查](#五子目录速查) | 6 篇子文章（Jenkins → CI/CD vs GitOps）| 3 分钟 |
+| [五、子目录速查](#五子目录速查) | 7 篇子文章（Jenkins → CI/CD vs GitOps → CI/CD 采纳决策）| 3 分钟 |
 | [六、CI/CD 流水线典型阶段](#六cicd-流水线典型阶段) | 10 阶段全流程 | 8 分钟 |
 | [七、关键指标](#七关键指标devops-4-大指标) | DORA 4 大指标 | 5 分钟 |
 | [八、最佳实践](#八最佳实践) | 6 条落地经验 | 5 分钟 |
 
-**总计：~35 分钟**（含 6 篇子文章另需 ~1 小时）
+**总计：~35 分钟**（含 7 篇子文章另需 ~1 小时）
 
 ## 反直觉判断（新增 4-5 条）
 1. **更快的 CI ≠ 更好的 CI**：从 10 分钟压到 3 分钟，工程价值不高；不如把测试覆盖率从 60% 提到 80%
