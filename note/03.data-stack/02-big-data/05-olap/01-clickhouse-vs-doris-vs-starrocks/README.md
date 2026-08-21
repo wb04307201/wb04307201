@@ -223,6 +223,56 @@ Hive → Presto/Trino（过渡）
 
 ---
 
+## ⚠️ 反直觉
+
+| 误区 | 真相 |
+|------|------|
+| ❌ ClickHouse 单表性能无敌 | ✅ 合理索引下 Doris/StarRocks 单表性能接近，且 JOIN 远强于 ClickHouse |
+| ❌ StarRocks 是 Doris 的简单 Fork | ✅ 2024-2026 StarRocks CBO 优化器 + 多表物化视图已大幅领先 Doris |
+| ❌ 国产化替代只能选 Doris | ✅ StarRocks 同为国产开源，综合性能更强 |
+| ❌ OLAP 引擎可以完全替代 MySQL | ✅ OLAP 擅长分析查询，OLTP 事务仍需 MySQL/PostgreSQL |
+| ❌ PB 级数据必须用 ClickHouse | ✅ StarRocks/Doris 分片机制同样支持 PB 级，且运维更简单 |
+
+---
+
+## ⚙️ 参数配置速查表
+
+### ClickHouse 核心参数
+
+| 参数 | 推荐值 | 说明 |
+|------|--------|------|
+| `max_memory_usage` | 8-32 GB | 单查询最大内存 |
+| `max_threads` | CPU 核心数 | 查询并行线程数 |
+| `max_insert_threads` | 2-4 | 写入并行度 |
+| `merge_tree.min_bytes_for_wide_part` | 10 MB | Wide part 阈值（影响写入性能） |
+| `distributed_ddl_task_timeout` | 120s | 分布式 DDL 超时 |
+| `background_pool_size` | 16 | 后台合并线程数 |
+| `max_concurrent_queries` | 100 | 最大并发查询数 |
+
+### Doris 核心参数
+
+| 参数 | 推荐值 | 说明 |
+|------|--------|------|
+| `parallel_exec_instance_num` | CPU 核心数 | 查询并行实例数 |
+| `query_mem_limit` | 8-16 GB | 单查询内存限制 |
+| `streaming_load_max_mb` | 10240 | Stream Load 单次最大数据量 |
+| `default_replication_num` | 3 | 副本数（生产推荐 3） |
+| `tablet_size` | 1 GB | 单 Tablet 大小（影响数据分布） |
+| `compaction_task_num_per_disk` | 4 | 单磁盘合并任务数 |
+
+### StarRocks 核心参数
+
+| 参数 | 推荐值 | 说明 |
+|------|--------|------|
+| `parallel_exec_instance_num` | CPU 核心数 | 查询并行实例数 |
+| `query_mem_limit` | 8-16 GB | 单查询内存限制 |
+| `pipeline_dop` | 0（自动） | Pipeline 并行度（0 = 自动适配） |
+| `bucket` | 数据量 / 1GB | 分桶数（影响并行度和数据分布） |
+| `replication_num` | 3 | 副本数（生产推荐 3） |
+| `mv_refresh_default_timeout` | 300s | 物化视图刷新超时 |
+
+---
+
 ## 与其他模块的关系
 - **上游**：[05-olap](../)（OLAP 总览）
 - **下游**：被 [11.ai 数据可视化](../../../../../note/11.ai/) / 报表工具消费

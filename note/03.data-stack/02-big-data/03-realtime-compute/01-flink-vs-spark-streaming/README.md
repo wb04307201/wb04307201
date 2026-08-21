@@ -191,6 +191,47 @@ Kafka → Spark Structured Streaming → Delta Lake → BI
 
 ---
 
+## ⚠️ 反直觉
+
+| 误区 | 真相 |
+|------|------|
+| ❌ 流式处理一定比微批快 | ✅ 高吞吐场景 Spark 微批可能更高效；延迟 vs 吞吐需权衡 |
+| ❌ Flink 全面优于 Spark Streaming | ✅ 已有 Spark 集群 + 准实时需求 → Spark Streaming 更务实 |
+| ❌ Exactly-Once 没有性能代价 | ✅ Checkpoint 间隔过短会显著降低吞吐量（60-300s 为宜） |
+| ❌ RocksDB 状态后端总是最优 | ✅ 小状态（GB 级）Heap 后端延迟更低；RocksDB 优势在 TB 级 |
+| ❌ 批流一体 = 同一套代码零改动 | ✅ API 统一但调优策略不同（批处理无需 Watermark / Checkpoint） |
+
+---
+
+## ⚙️ 参数配置速查表
+
+### Flink 核心参数
+
+| 参数 | 推荐值 | 说明 |
+|------|--------|------|
+| `state.backend` | rocksdb | 状态后端（TB 级状态首选） |
+| `state.checkpoint.interval` | 60s-300s | Checkpoint 间隔（不要太频繁） |
+| `state.checkpoint.timeout` | 300s | Checkpoint 超时时间 |
+| `state.checkpoint.min-pause` | 30s | 两次 Checkpoint 最小间隔 |
+| `execution.parallelism` | CPU 核心数 | 并行度（建议 = TaskManager 槽位数） |
+| `taskmanager.memory.managed.size` | 4-16 GB | 托管内存（RocksDB 缓存） |
+| `restart-strategy` | fixed-delay | 重启策略（生产推荐 fixed-delay） |
+| `restart-strategy.fixed-delay.attempts` | 3 | 最大重启次数 |
+| `watermark.idle-timeout` | 60s | 空闲数据源超时（避免 Watermark 停滞） |
+
+### Spark Streaming 核心参数
+
+| 参数 | 推荐值 | 说明 |
+|------|--------|------|
+| `spark.streaming.batchDuration` | 1s-10s | 微批间隔（影响延迟下限） |
+| `spark.sql.streaming.trigger` | ProcessingTime(1s) | 触发器（continuous 可达毫秒级） |
+| `spark.sql.streaming.checkpointLocation` | HDFS/S3 路径 | Checkpoint 位置（容错必需） |
+| `spark.streaming.backpressure.enabled` | true | 背压机制（自动调节摄入速率） |
+| `spark.sql.shuffle.partitions` | 200 | Shuffle 分区数（影响并行度） |
+| `spark.executor.memory` | 4-16 GB | Executor 内存 |
+
+---
+
 ## 与其他模块的关系
 - **上游**：[03-realtime-compute](../)（实时计算总览）
 - **下游**：被 [04 数据湖](../../04-data-lake/) / [05 OLAP](../../05-olap/) 消费
