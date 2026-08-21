@@ -13,7 +13,7 @@ module:
 
 后端 / 全栈工程师的日常工作离不开 Git 版本管理、Docker 容器化、Nginx 反向代理、Kubernetes 编排。但大多数人停留在"会用"层面，面试一旦被追问"为什么这样选"、"出了这个状态怎么办"，就容易答不上来。
 
-本目录聚焦 **4 个高频工具面试题**（find 校对 2026-07-19），每题 80-150 行，从场景到原理到陷阱一次讲透。
+本目录聚焦 **5 个高频工具面试题**（find 校对 2026-08-21），每题 80-150 行，从场景到原理到陷阱一次讲透。
 
 ---
 
@@ -24,6 +24,7 @@ module:
 | 2 | [Docker 多阶段构建为什么能大幅减小镜像体积？](docker-multi-stage/README.md) | 性能对比 | ⭐⭐⭐⭐ | 层缓存 / distroless / .dockerignore |
 | 3 | [Nginx 反向代理的负载均衡策略有哪些？](nginx-reverse-proxy/README.md) | 架构选型 | ⭐⭐⭐⭐ | upstream 策略 / 健康检查 / sticky session |
 | 4 | [K8s Pod 生命周期中有哪些容易忽略的状态？](k8s-pod-lifecycle/README.md) | 生产 Bug | ⭐⭐⭐⭐⭐ | Probe 三兄弟 / Init Container / PreStop |
+| 5 | [为什么大公司用 CI/CD，小公司却手动发版？](cicd-adoption/README.md) | 架构选型 | ⭐⭐⭐⭐ | 团队规模 / 发布频率 / ROI / 康威定律 |
 
 ---
 
@@ -31,8 +32,9 @@ module:
 | 目标 | 推荐顺序 |
 |------|---------|
 | **校招 / 实习面试** | #1 Git → #2 Docker → #3 Nginx |
-| **社招后端（3 年+）** | #4 K8s → #2 Docker → #3 Nginx → #1 Git |
-| **DevOps / SRE 方向** | #4 K8s → #3 Nginx → #2 Docker → #1 Git |
+| **社招后端（3 年+）** | #5 CI/CD 采纳 → #4 K8s → #2 Docker → #3 Nginx → #1 Git |
+| **DevOps / SRE 方向** | #5 CI/CD 采纳 → #4 K8s → #3 Nginx → #2 Docker → #1 Git |
+| **Tech Lead / 架构师** | #5 CI/CD 采纳 → #4 K8s → #1 Git → #3 Nginx |
 
 ---
 
