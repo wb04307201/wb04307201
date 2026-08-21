@@ -171,6 +171,16 @@ RAG 检索质量（nDCG@10）：
 
 ---
 
+## 📚 参考文献与开源资源
+
+| 主题 | 论文 / 项目 | 链接 |
+|------|------------|------|
+| **SemanticChunker** | LangChain Experimental（语义分块实现） | [langchain-ai/langchain](https://github.com/langchain-ai/langchain) — `langchain_experimental.text_splitter.SemanticChunker` |
+| **Dense X Retrieval** | [arXiv:2403.18130](https://arxiv.org/abs/2403.18130) — Dense X Retrieval: What Retrieval Granularity Should We Use in RAG? (Sarthi et al., 2024) | [chlangton/dense-x-retrieval](https://github.com/chlangton/dense-x-retrieval) |
+| **Unstructured** | 开源文档 ETL（PDF / HTML / Markdown 解析 + 分块） | [Unstructured-IO/unstructured](https://github.com/Unstructured-IO/unstructured) |
+
+---
+
 ## ⚠️ 反直觉
 
 | 误区 | 真相 |

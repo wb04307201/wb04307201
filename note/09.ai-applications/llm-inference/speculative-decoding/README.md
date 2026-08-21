@@ -84,6 +84,16 @@ prompt += accept_list
 
 ---
 
+## 📚 参考文献与开源资源
+
+| 方法 | 论文 | 开源项目 |
+|------|------|---------|
+| **Speculative Decoding** | [arXiv:2211.17192](https://arxiv.org/abs/2211.17192) — Fast Inference from Transformers via Speculative Decoding (Leviathan et al., 2022) | — |
+| **Medusa** | [arXiv:2401.10774](https://arxiv.org/abs/2401.10774) — Medusa: Simple LLM Inference Acceleration Framework with Multiple Decoding Heads (Cai et al., 2024) | [FasterDecoding/Medusa](https://github.com/FasterDecoding/Medusa) |
+| **EAGLE** | [arXiv:2401.15077](https://arxiv.org/abs/2401.15077) — EAGLE: Speculative Sampling Requires Rethinking Feature Uncertainty (Li et al., 2024) | [SafeAILab/EAGLE](https://github.com/SafeAILab/EAGLE) |
+
+---
+
 ## ⚠️ 反直觉
 
 | 误区 | 真相 |

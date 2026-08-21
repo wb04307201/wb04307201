@@ -364,6 +364,17 @@ LLM-as-Judge（GPT-4 评分）：
 
 ---
 
+## 📚 参考文献与开源资源
+
+| 主题 | 论文 | 开源项目 |
+|------|------|---------|
+| **LLM-as-Judge** | [arXiv:2306.05685](https://arxiv.org/abs/2306.05685) — Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena (Zheng et al., 2023) | [lmsys/FastChat](https://github.com/lm-sys/FastChat) |
+| **DeepEval** | — | [confident-ai/deepeval](https://github.com/confident-ai/deepeval) |
+| **RAGAS** | [arXiv:2309.15217](https://arxiv.org/abs/2309.15217) — RAGAS: Automated Evaluation of Retrieval Augmented Generation | [explodinggradients/ragas](https://github.com/explodinggradients/ragas) |
+| **BERTScore** | [arXiv:1904.09675](https://arxiv.org/abs/1904.09675) — BERTScore: Evaluating Text Generation with BERT | [Tiiiger/bert_score](https://github.com/Tiiiger/bert_score) |
+
+---
+
 ## 十二、相关章节
 
 - 下游：[Agent 性能评估](../agent/agent-evaluation/README.md) — 从 LLM 单次调用评估 → Agent 多步任务评估（6 维度 + 5 方法）

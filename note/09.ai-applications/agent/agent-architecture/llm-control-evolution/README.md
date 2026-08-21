@@ -168,6 +168,17 @@ Loop Engineering 反其道而行之：**小步快跑 + Harness 兜底 + 自动�
 
 ---
 
+## 📚 参考文献与开源资源
+
+| 主题 | 论文 | 开源项目 |
+|------|------|---------|
+| **ReAct** | [arXiv:2210.03629](https://arxiv.org/abs/2210.03629) — ReAct: Synergizing Reasoning and Acting in Language Models (Yao et al., 2022) | [ysymyth/ReAct](https://github.com/ysymyth/ReAct) |
+| **Self-Consistency** | [arXiv:2203.11171](https://arxiv.org/abs/2203.11171) — Self-Consistency Improves Chain of Thought Reasoning in Language Models (Wang et al., 2022) | — |
+| **Tree of Thoughts** | [arXiv:2305.10601](https://arxiv.org/abs/2305.10601) — Tree of Thoughts: Deliberate Problem Solving with Large Language Models (Yao et al., 2023) | [princeton-nlp/tree-of-thought-llm](https://github.com/princeton-nlp/tree-of-thought-llm) |
+| **Agentic Loop** | — | [Significant-Gravitas/AutoGPT](https://github.com/Significant-Gravitas/AutoGPT) · [langchain-ai/langgraph](https://github.com/langchain-ai/langgraph) |
+
+---
+
 ## 相关章节
 
 - 同分类：Agent 架构（DAG vs ReAct） — 4 阶段落地的具体架构
