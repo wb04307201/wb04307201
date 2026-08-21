@@ -258,6 +258,18 @@ data: {"text":"你好"} ← 数据（必填，可多行）
 
 ---
 
+## ⚠️ 反直觉与常见陷阱
+
+| 误区 | 真相 |
+|------|------|
+| ❌ SSE 基于 HTTP 所以效率低 | ✅ HTTP/2 多路复用下 SSE 比 WebSocket 更高效（共享 TCP 连接） |
+| ❌ WebSocket 连接更稳定 | ✅ WebSocket 长连接在企业网络中更易被防火墙/代理中断；SSE 走标准 HTTPS 更稳 |
+| ❌ AI Agent 需要 WebSocket 双向通信 | ✅ 2024-2026 工程实践：SSE + HTTP POST 已覆盖 Function Calling / MCP / 多轮 Agent |
+| ❌ SSE 断线后需要手动重连 | ✅ 浏览器 EventSource 自动重连 + Last-Event-ID 无缝恢复，零代码 |
+| ❌ WebSocket 延迟一定低于 SSE | ✅ 单次请求 SSE 省去了协议升级开销，AI 流式输出首字节延迟反而更快 |
+
+---
+
 ## 八、相关章节
 
 - 面试版：[SSE vs WebSocket 面试题](../../../../12.interview/02.computer-basics/sse-vs-websocket/README.md) — 面试话术 + 陷阱 + 90 秒答案
