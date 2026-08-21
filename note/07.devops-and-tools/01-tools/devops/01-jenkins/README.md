@@ -370,4 +370,14 @@ Manage Jenkins → System → Cloud → Kubernetes
 
 ---
 
+## 相关主题
+
+- 同类工具：[GitLab CI](../02-gitlab-ci/README.md) — GitLab 一体化 CI/CD 方案，MR 触发 + YAML 配置
+- 同类工具：[GitHub Actions](../03-github-actions/README.md) — GitHub 生态 CI/CD，Marketplace 丰富
+- 进阶模式：[Pipeline 模式](../04-pipeline-patterns/README.md) — 流水线设计模式与最佳实践
+- 部署策略：[部署策略](../05-deploy-strategies/README.md) — 蓝绿/金丝雀/滚动发布对比
+- CI/CD 对比：[CI/CD vs GitOps](../06-cicd-vs-gitops/README.md) — 两种交付范式的差异与选型
+
+---
+
 ← [返回 DevOps 总览](../README.md) · 📅 2026-06-28

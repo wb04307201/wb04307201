@@ -299,4 +299,14 @@ kubectl exec mysql-0 -- mysql -uroot
 
 ---
 
+## 相关主题
+
+- 架构总览：[K8s 架构](../01-architecture/README.md) — K8s 控制面与数据面组件
+- 网络：[Service & Ingress](../03-service-and-ingress/README.md) — Pod 的服务发现与流量入口
+- 配置管理：[ConfigMap & Secret](../04-configmap-and-secret/README.md) — Pod 的配置与密钥注入
+- 包管理：[Helm](../07-helm/README.md) — K8s 应用打包与版本管理
+- 运维模式：[Operator & GitOps](../08-operator-and-gitops/README.md) — 自动化运维与声明式交付
+
+---
+
 ← [返回 K8s 总览](../README.md) · 📅 2026-06-28
