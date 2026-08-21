@@ -93,9 +93,9 @@ public void onUserRegistered(UserRegisteredEvent event) {
 graph LR
     P[ApplicationEventPublisher<br/>发布者] -->|publishEvent| E[ApplicationEvent<br/>事件]
     E -->|dispatch| C[ApplicationEventMulticaster<br/>多播器]
-    C --> L1[@EventListener 1]
-    C --> L2[@EventListener 2]
-    C --> L3[@EventListener 3]
+    C --> L1["@EventListener 1"]
+    C --> L2["@EventListener 2"]
+    C --> L3["@EventListener 3"]
 ```
 
 | 组件 | 角色 |
@@ -373,6 +373,227 @@ public class UserEventListener {
     }
 }
 ```
+
+---
+
+## 九、源码链路：publishEvent 到底做了什么
+
+> 面试常考：从 `publisher.publishEvent(event)` 到监听器方法执行，中间经过了什么？
+
+### 9.1 调用链路全景
+
+```
+publisher.publishEvent(event)
+  └─ AbstractApplicationContext.publishEvent()
+       ├─ 1. 包装：如果不是 ApplicationEvent → 包装为 PayloadApplicationEvent
+       ├─ 2. 获取多播器：getApplicationEventMulticaster()
+       └─ 3. 广播：multicaster.multicastEvent(event, eventType)
+            ├─ 遍历所有 ApplicationListener
+            │    ├─ supportsEvent() → 类型匹配（ResolvableType 泛型解析）
+            │    └─ invokeListener()
+            │         ├─ 同步：直接 listener.onApplicationEvent(event)
+            │         └─ 异步：taskExecutor.submit(() -> listener.onApplicationEvent(event))
+            └─ 如果是 SmartApplicationListener：额外检查 shouldInvokeOnLatePublications()
+```
+
+### 9.2 核心类职责
+
+| 类 | 职责 |
+|---|------|
+| `AbstractApplicationContext` | 持有 `ApplicationEventMulticaster` 实例，是发布入口 |
+| `SimpleApplicationEventMulticaster` | 默认多播器，遍历监听器 + 分发（同步/异步） |
+| `ApplicationListenerMethodAdapter` | `@EventListener` 方法的适配器，把注解方法包装成 `ApplicationListener` |
+| `EventListenerMethodProcessor` | `BeanPostProcessor`，启动时扫描所有 `@EventListener` 方法并注册适配器 |
+| `ResolvableType` | Spring 的泛型类型解析器，用于匹配 `ApplicationEvent<UserRegisteredEvent>` 的泛型参数 |
+
+### 9.3 类型匹配原理
+
+```java
+// 监听器声明
+@EventListener
+public void onUserRegistered(UserRegisteredEvent event) { ... }
+
+// 匹配过程（简化）：
+// 1. EventListenerMethodProcessor 扫描方法参数类型 → UserRegisteredEvent
+// 2. 包装为 ApplicationListenerMethodAdapter，其 getSupportedEventType() = UserRegisteredEvent
+// 3. publishEvent(new UserRegisteredEvent(...)) 时：
+//    multicaster 调用 adapter.supportsEvent(eventType)
+//    → eventType.resolve() == UserRegisteredEvent.class → 匹配成功
+```
+
+> 💡 **为什么 POJO 事件也能被监听？**
+> Spring 4.2+ 的 `PayloadApplicationEvent` 会把 POJO 包装一层，多播器在匹配时会解包（unwrap）比较 payload 类型，所以 `@EventListener` 可以直接声明 POJO 参数。
+
+---
+
+## 十、@TransactionalEventListener 源码：事务同步器
+
+> 面试常考：`@TransactionalEventListener` 是怎么做到"事务提交后才触发"的？
+
+### 10.1 核心机制：TransactionSynchronizationManager
+
+```
+@TransactionalEventListener(phase = AFTER_COMMIT) 的注册过程：
+
+1. EventListenerMethodProcessor 扫描到 @TransactionalEventListener 方法
+2. 包装为 TransactionalApplicationListenerMethodAdapter
+3. 当事件发布时，该适配器 **不直接执行监听方法**，而是：
+   └─ TransactionSynchronizationManager.registerSynchronization(
+        new TransactionSynchronization() {
+            @Override
+            public void afterCommit() {
+                // 这里才真正调用监听方法
+                listener.onApplicationEvent(event);
+            }
+        }
+      )
+4. 事务管理器（TransactionInterceptor）在事务生命周期中回调这些同步器：
+   ├─ beforeCommit(boolean readOnly)  → BEFORE_COMMIT
+   ├─ afterCommit()                   → AFTER_COMMIT（默认）
+   ├─ afterCompletion(int status)     → AFTER_COMPLETION / AFTER_ROLLBACK
+   └─ suspend() / resume() / beforeCommit()
+```
+
+### 10.2 关键类关系
+
+```
+TransactionInterceptor（@Transactional 的 AOP 切面）
+  └─ 调用 TransactionAspectSupport.invokeWithinTransaction()
+       └─ 事务开始时：TransactionSynchronizationManager.initSynchronization()
+       └─ 事务提交前：遍历 synchronization.afterCommit()
+       └─ 事务完成后：遍历 synchronization.afterCompletion(status)
+       └─ 事务结束时：TransactionSynchronizationManager.clearSynchronization()
+```
+
+### 10.3 fallbackExecution 行为
+
+```java
+@TransactionalEventListener(phase = AFTER_COMMIT, fallbackExecution = true)  // 默认
+// 如果当前没有活跃事务 → 同步立即执行（降级为普通 @EventListener）
+
+@TransactionalEventListener(phase = AFTER_COMMIT, fallbackExecution = false)
+// 如果当前没有活跃事务 → 事件被丢弃（不执行）
+```
+
+> 💡 **为什么事务中发布的事件，同步监听器会"看到脏数据"？**
+> 因为同步 `@EventListener` 在发布者的**同一事务**中执行，此时事务未提交，监听器读到的是事务内未提交数据。如果监听器发邮件后事务回滚 → 邮件已发但数据没入库。**必须用 `@TransactionalEventListener(AFTER_COMMIT)` 避免此问题。**
+
+---
+
+## 十一、6 大生产陷阱
+
+### 陷阱 1：同步监听器看到未提交数据
+
+```java
+@Transactional
+public void register(User user) {
+    userRepository.save(user);                       // INSERT 但事务未提交
+    publisher.publishEvent(new UserRegisteredEvent(user));  // 触发同步监听器
+    // 此时监听器查 DB 能读到 user，但如果后续代码抛异常 → 事务回滚
+    // 而监听器可能已经发了欢迎邮件 → 数据不一致
+}
+```
+
+**修复**：需要事务感知的逻辑一律用 `@TransactionalEventListener(phase = AFTER_COMMIT)`。
+
+### 陷阱 2：@Async + @TransactionalEventListener 失效
+
+```java
+@Async
+@TransactionalEventListener(phase = AFTER_COMMIT)
+public void onRegistered(UserRegisteredEvent event) { ... }
+// ❌ @Async 在新线程执行，新线程没有原事务的同步回调注册
+//    → 监听器可能在事务提交前就执行，或根本不执行
+```
+
+**修复**：二选一。需要异步 + 事务感知 → 先 `@TransactionalEventListener`，内部调异步服务。
+
+```java
+@TransactionalEventListener(phase = AFTER_COMMIT)
+public void onRegistered(UserRegisteredEvent event) {
+    asyncEmailService.sendWelcome(event.getUser());  // 手动异步
+}
+```
+
+### 陷阱 3：异步监听器异常被吞
+
+```java
+@Async
+@EventListener
+public void sendEmail(UserRegisteredEvent event) {
+    emailClient.send(...);  // 网络超时抛异常
+    // ❌ 异步线程的异常不会传播给发布者，默认只打 ERROR 日志
+    //    发布者完全不知道邮件发送失败
+}
+```
+
+**修复**：自定义 `AsyncUncaughtExceptionHandler` + 持久化失败记录 + Spring Retry。
+
+```java
+@Configuration
+public class AsyncConfig implements AsyncConfigurer {
+    @Override
+    public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
+        return (ex, method, params) -> {
+            log.error("异步事件处理失败: {}.{}", method.getDeclaringClass().getSimpleName(), method.getName(), ex);
+            failureRecordRepository.save(new AsyncFailureRecord(method.getName(), ex.getMessage()));
+        };
+    }
+}
+```
+
+### 陷阱 4：异步线程池打满 → 事件丢失
+
+```java
+@Bean
+public ThreadPoolTaskExecutor eventExecutor() {
+    ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+    executor.setCorePoolSize(4);
+    executor.setMaxPoolSize(8);
+    executor.setQueueCapacity(100);  // ⚠️ 队列满后默认 AbortPolicy → RejectedExecutionException
+    executor.setThreadNamePrefix("event-");
+    return executor;
+}
+// ❌ 高并发时队列满 → 事件发布被拒绝 → 事件丢失
+```
+
+**修复**：
+- 设置 `setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy())`（降级为同步执行）
+- 或扩大队列 + 监控队列长度告警
+- 或关键事件改用 MQ（保证不丢）
+
+### 陷阱 5：@Async 下 @Order 顺序失效
+
+```java
+@Async @Order(1) @EventListener
+public void step1(UserRegisteredEvent e) { log.info("step 1"); }
+
+@Async @Order(2) @EventListener
+public void step2(UserRegisteredEvent e) { log.info("step 2"); }
+// ❌ @Async 让监听器在线程池并发执行，@Order 只决定提交顺序，不决定执行顺序
+//    step2 可能比 step1 先完成
+```
+
+**修复**：需要严格顺序 → 去掉 `@Async`；或用单个监听器内串行调用多个服务。
+
+### 陷阱 6：监听器内发布事件 → 事件风暴 / 死循环
+
+```java
+@EventListener
+public void onUserRegistered(UserRegisteredEvent e) {
+    publisher.publishEvent(new WelcomeBonusEvent(e.getUser()));  // 又发事件
+}
+
+@EventListener
+public void onWelcomeBonus(WelcomeBonusEvent e) {
+    publisher.publishEvent(new UserRegisteredEvent(e.getUser()));  // ❌ 死循环
+}
+```
+
+**修复**：
+- 避免在监听器中发布"会触发回环"的事件
+- 用状态标记（`ThreadLocal` 或事件对象内的 `processed` 标志）防重入
+- 设计时画出事件依赖图，检查是否有环
 
 ---
 
