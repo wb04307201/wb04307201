@@ -10,6 +10,8 @@ question:
 
 # K-means 收敛性与 K-means++：为什么只保证局部最优？
 
+> ⬅️ [返回: 02.computer-basics 综述](../../README.md)
+
 > 一句话定位：K-means 是**唯一一个"必收敛但只收敛到局部最优"**的经典 ML 算法 —— 面试官考察的不是"会不会写 K-means"，而是 **WCSS 收敛性证明** + **K-means++ D² 概率公式** + **n_init=10 的工程含义**。完整深度见 [主模块 K-means 聚类](../../../../02.cs-foundations/01-algorithms/clustering/k-means/README.md)。
 
 > **系列定位**：经典 ML 面试题（K-means 必问 Q1）。考察的不是"聚类怎么跑"，而是 **收敛性数学证明** + **初始质心敏感性** + **K-means++ D² 概率公式** + **K 选择的肘部 / 轮廓**。
