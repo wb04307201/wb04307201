@@ -9,7 +9,7 @@ module:
 
 # JVM — 讲明白 Java 虚拟机
 
-> 目标：读完这篇，理解 JVM 是怎么让 Java 程序跑起来的。
+> 一句话定位：Java 程序的虚拟计算机，负责字节码加载 + 内存管理（堆 / 栈 / 方法区）+ 自动 GC + JIT 编译，"一次编写，到处运行"的基石。
 
 ## 一、JVM 是什么
 
@@ -568,6 +568,81 @@ Java 源码
 ```
 
 **一句话总结**：JVM 就是一个虚拟计算机，它加载你的字节码，管理内存（堆 + 栈 + 方法区），自动回收垃圾，通过 JIT 把热点代码编译成机器码来获得接近原生的性能，并通过 JMM 定义了一套内存可见性规则来保证多线程程序的正确性。
+
+---
+
+## 八、❌/✅ 反例 vs 正例对比
+
+### 8.1 堆内存设置
+
+```bash
+# ❌ 反例：不设上限，生产环境 OOM 时可能拖垮整个机器
+java -jar app.jar
+
+# ❌ 反例：设太小，频繁 Full GC
+java -Xmx256m -jar app.jar
+
+# ✅ 正例：明确设置堆大小，-Xms = -Xmx 避免运行时扩缩容抖动
+java -Xms4g -Xmx4g -XX:+UseG1GC -jar app.jar
+```
+
+### 8.2 栈溢出 vs 合理递归
+
+```java
+// ❌ 反例：无边界递归，StackOverflowError
+public int factorial(int n) {
+    return n * factorial(n - 1);  // 永远不停！
+}
+
+// ✅ 正例：有终止条件 + 栈深度可控
+public int factorial(int n) {
+    if (n <= 1) return 1;        // 递归边界
+    return n * factorial(n - 1);
+}
+```
+
+### 8.3 System.gc() 滥用
+
+```java
+// ❌ 反例：手动触发 GC — 只是"建议"，JVM 大概率忽略；即使执行也是 Full GC，STW 很长
+for (int i = 0; i < 1000; i++) {
+    process(data);
+    System.gc();   // 每次循环都建议 GC，性能灾难
+}
+
+// ✅ 正例：信任 JVM 的 GC 策略，只在内存分析时手动触发
+// 生产环境加 -XX:+DisableExplicitGC 彻底禁止 System.gc()
+java -XX:+DisableExplicitGC -jar app.jar
+```
+
+### 8.4 直接内存泄漏
+
+```java
+// ❌ 反例：分配了直接内存但忘记释放
+ByteBuffer buf = ByteBuffer.allocateDirect(1024 * 1024 * 100);  // 100MB 堆外内存
+// ... 使用完毕后没有释放，依赖 Cleaner 回收，时机不确定
+// 高并发场景可能 OOM: Direct buffer memory
+
+// ✅ 正例：使用 try-with-resources 或手动释放
+try (var scope = Arena.ofConfined()) {               // JDK 22+ Foreign API
+    MemorySegment segment = scope.allocate(1024 * 1024 * 100);
+    // ... 使用 segment
+}   // scope 关闭时自动释放堆外内存
+```
+
+### 8.5 类加载器泄漏
+
+```java
+// ❌ 反例：热部署时旧 ClassLoader 被静态变量持有，无法被 GC
+public class MyService {
+    private static MyService instance;   // 静态变量持有旧 ClassLoader 的引用
+    // 热部署后旧 ClassLoader 无法回收 → Metaspace OOM
+}
+
+// ✅ 正例：避免静态变量持有 ClassLoader 相关引用
+// 使用弱引用或在应用卸载时显式清理
+private static WeakReference<MyService> instance;
+```
 
 ---
 

@@ -9,6 +9,8 @@ module:
 
 # ArrayList 源码剖析与最佳实践
 
+> 一句话定位：Java 集合框架的核心动态数组实现，以 O(1) 随机访问 + 1.5 倍自动扩容 + fail-fast 迭代器为基石，90% 以上 List 场景的首选。
+
 ## 一、底层 Object[] 数组结构
 
 ArrayList 的核心是一个动态数组, 通过 `transient Object[] elementData` 字段存储元素。
@@ -161,6 +163,11 @@ private Object[] grow(int minCapacity) {
         int newCapacity = ArraysSupport.newLength(oldCapacity,
                 minCapacity - oldCapacity,    /* minimum growth */
                 oldCapacity >> 1              /* preferred growth: 1.5倍 */);
+        // WHY >> 1 而不是 >> 2 或 ×2？
+        //   ×2 浪费内存（Vector 的教训），>> 2 (1.25倍) 扩容太频繁
+        //   1.5 倍是内存利用率与拷贝频率的经验平衡点
+        // WHY 返回 elementData = 赋值而非 void？
+        //   因为 grow 内部可能多次调用，返回值让调用方直接用新数组
         return elementData = Arrays.copyOf(elementData, newCapacity);
     } else {
         return elementData = new Object[Math.max(DEFAULT_CAPACITY, minCapacity)];

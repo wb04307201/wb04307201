@@ -9,11 +9,42 @@ module:
 
 # Java 17
 
+> 一句话定位：Java 11 之后的第二个 LTS 版本（2021.09），14 个 JEP 合集，核心引入密封类（JEP 409）、switch 模式匹配预览（JEP 406）、强力封装内部元素（JEP 403）。
+
 ## 引言：变更说明
 
 Java 17 是 14 个 JEP 的合集，于 2021 年 9 月发布，是继 Java 11 之后的第二个 LTS（长期支持）版本。
 
 本篇按主题归类，给出每个条目的一句话定位 + 适用版本/场景，**先扫一遍再决定读哪节**。
+
+### JEP 速查表
+
+| JEP | 特性 | 状态 | 一句话定位 |
+|-----|------|------|-----------|
+| 306 | 严格浮点语义 | 正式 | 恢复 IEEE 754 严格语义，消除跨平台浮点差异 |
+| 356 | 增强伪随机数生成器 | 正式 | `RandomGenerator` 统一接口，支持多种算法 |
+| 382 | macOS 新渲染管线 | 正式 | 适配 macOS Metal，替代旧 OpenGL 管线 |
+| 391 | macOS/AArch64 移植 | 正式 | Apple Silicon (M1/M2) 原生支持 |
+| 398 | 弃用 Applet API | 弃用 | 浏览器插件时代终结 |
+| 403 | 强力封装内部元素 | 正式 | `--illegal-access` 不再可用，`sun.misc.Unsafe` 加速退场 |
+| 406 | switch 模式匹配 | **预览** | switch + 类型模式，为 JDK 21 正式版铺路 |
+| 407 | 移除 RMI 激活 | 移除 | 分布式计算让位给 gRPC / REST |
+| 409 | **密封类** | **正式** | `sealed` / `permits`，控制类层次结构 |
+| 410 | 移除 AOT 和 Graal JIT | 移除 | 实验性编译器清理，GraalVM 独立发展 |
+| 411 | 弃用安全管理器 | 弃用 | 容器化时代的安全模型转向 |
+| 412 | 外部函数和内存 API | 孵化 | JNI 的现代替代，后续演变为 FFM API |
+| 414 | 向量 API | 第二次孵化 | SIMD 向量化计算，Valhalla 就绪后正式 |
+| 415 | 反序列化过滤器 | 正式 | 上下文感知的反序列化安全防护 |
+
+### 关键 JVM 参数变化
+
+| 参数 | 说明 | 影响版本 |
+|------|------|----------|
+| `--illegal-access=deny` | **默认行为**：禁止反射访问 JDK 内部 API（此前版本默认 permit） | JDK 17+ |
+| `-XX:+UseZGC` | ZGC 生产就绪（JDK 15 正式发布，17 推荐） | JDK 15+ |
+| `-XX:+UseShenandoahGC` | Shenandoah 生产就绪 | JDK 15+ |
+| `-XX:-UseBiasedLocking` | 偏向锁默认禁用（JDK 15），17 中进一步弱化 | JDK 15+ |
+| `-XX:+UseCompactObjectHeaders` | 紧凑对象头（Lilliput 项目，JDK 24 正式，17 中实验） | JDK 24+ |
 
 ---
 

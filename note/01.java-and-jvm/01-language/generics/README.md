@@ -9,6 +9,8 @@ module:
 
 # 泛型
 
+> 一句话定位：Java 的类型参数机制，通过编译期类型检查 + 运行时类型擦除实现类型安全与代码复用，JDK 5 引入的三大语法糖之一（泛型 / 注解 / 枚举）。
+
 ---
 
 Java 泛型（Generics）是 JDK 5 引入的特性，通过类型参数增强代码的可读性、类型安全性和复用性。
@@ -293,6 +295,110 @@ public static <T> List<T> of(T... elements) {
 ```
 
 > **注意**：`@SafeVarargs` 只能用于不可被重写的方法（`static`、`final`、`private` 或构造方法），因为编译器需要确认方法的实现是类型安全的。
+
+## 泛型的版本演进
+
+| JDK 版本 | 泛型相关变化 | 说明 |
+|----------|-------------|------|
+| **JDK 5** | 引入泛型 + 类型擦除 | `List<String>`、`Box<T>`，编译期检查 + 运行时擦除 |
+| **JDK 7** | 钻石运算符 `<>` + `@SafeVarargs` | 减少冗余类型声明；抑制堆污染警告 |
+| **JDK 8** | Lambda + 类型推断增强 | `Stream.map(Function<T,R>)` 编译器推断能力大幅提升 |
+| **JDK 9** | `@SafeVarargs` 可用于 private 方法 | 此前仅 `static` / `final` 方法可用 |
+| **JDK 10** | `var` 局部变量类型推断 | `var list = new ArrayList<String>()` 省略左侧类型 |
+| **JDK 16** | 泛型 Record | `record Pair<A, B>(A first, B second)` |
+| **JDK 17+** | 密封类 + 泛型 | `sealed interface Shape<T> permits Circle, Rect` |
+| **未来** | Valhalla 项目 — 值类型 + 特化泛型 | `List<int>` 可能成为现实，消除装箱开销 |
+
+## ❌/✅ 反例 vs 正例对比
+
+### 反例 1：Raw Type 裸奔 — 最常见的反模式
+
+```java
+// ❌ 反例：使用 Raw Type，编译器无法检查类型安全
+List list = new ArrayList();
+list.add("hello");
+list.add(42);           // 编译通过！编译器不报错
+String s = (String) list.get(1);  // 运行时 ClassCastException!
+
+// ✅ 正例：使用泛型，编译期就拦住类型错误
+List<String> list = new ArrayList<>();
+list.add("hello");
+// list.add(42);        // 编译错误！编译器直接拒绝
+String s = list.get(0); // 安全，无需强转
+```
+
+### 反例 2：违反 PECS 原则
+
+```java
+// ❌ 反例：不使用通配符，限制了方法的通用性
+public static <T> void copy(List<T> dest, List<T> src) {
+    for (T item : src) {
+        dest.add(item);
+    }
+}
+
+List<Number> numbers = new ArrayList<>();
+List<Integer> integers = List.of(1, 2, 3);
+// copy(numbers, integers);   // 编译错误！List<Integer> 不是 List<Number> 的子类型
+
+// ✅ 正例：PECS — Producer Extends, Consumer Super
+public static <T> void copy(List<? super T> dest, List<? extends T> src) {
+    for (T item : src) {
+        dest.add(item);
+    }
+}
+
+List<Number> numbers = new ArrayList<>();
+List<Integer> integers = List.of(1, 2, 3);
+copy(numbers, integers);  // 编译通过！src 是生产者(extends)，dest 是消费者(super)
+```
+
+### 反例 3：忘记钻石运算符
+
+```java
+// ❌ 反例：JDK 7+ 还在写冗余的右侧类型
+Map<String, List<Integer>> map = new HashMap<String, List<Integer>>();
+// 冗长、难读，且右侧类型信息完全多余
+
+// ✅ 正例：用 <> 钻石运算符让编译器推断
+Map<String, List<Integer>> map = new HashMap<>();
+
+// ✅ JDK 10+ 更激进：var 推断
+var map = new HashMap<String, List<Integer>>();
+```
+
+### 反例 4：泛型数组陷阱
+
+```java
+// ❌ 反例：试图创建泛型数组 — 编译错误
+// T[] array = new T[10];           // 编译错误！
+// List<String>[] lists = new List<String>[10];  // 编译错误！
+
+// ✅ 正例 1：用 List 替代数组
+List<List<String>> lists = new ArrayList<>();
+
+// ✅ 正例 2：通过 Object[] 中转 + 显式强转
+@SuppressWarnings("unchecked")
+T[] array = (T[]) new Object[10];   // 需要 @SuppressWarnings
+
+// ✅ 正例 3：通过 Array.newInstance（需要 Class 对象）
+T[] array = (T[]) Array.newInstance(clazz, 10);
+```
+
+### 反例 5：类型擦除后的 instanceof 误用
+
+```java
+// ❌ 反例：对泛型类型使用 instanceof — 运行时无法区分
+Object obj = new ArrayList<String>();
+// if (obj instanceof List<String>)   // 编译错误！擦除后只有 List
+
+// ✅ 正例：只检查 Raw Type，用其他方式确认泛型参数
+if (obj instanceof List<?> list) {      // JDK 16+ 模式匹配
+    if (!list.isEmpty() && list.get(0) instanceof String) {
+        // 通过元素类型间接推断
+    }
+}
+```
 
 ---
 

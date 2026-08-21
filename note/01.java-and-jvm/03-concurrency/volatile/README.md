@@ -9,6 +9,8 @@ module:
 
 # volatile 关键字深度解析
 
+> 一句话定位：Java 轻量级同步修饰符，保证可见性 + 有序性（禁止重排序），但不保证原子性 —— 状态标志 / DCL 单例的首选，底层靠内存屏障 + MESI 协议。
+
 ## 一、volatile 的两大核心作用
 
 ### 1.1 保证可见性（Visibility）
@@ -549,6 +551,22 @@ volatile 写 → lock 指令 → 刷回主内存 + 发送 Invalid
 ### 9.3 一句话总结
 
 > **volatile 是轻量级的同步机制，保证可见性和有序性，但不保证原子性。底层通过内存屏障和 MESI 协议实现，是理解 Java 并发编程的基石。**
+
+---
+
+## 十、volatile 的版本演进
+
+| JDK 版本 | volatile 相关变化 | 说明 |
+|----------|-------------------|------|
+| **JDK 1.0** | 引入 volatile 关键字 | 语义模糊，不同 JVM 实现行为不一致 |
+| **JDK 1.2** | 规范初步统一 | 但 JMM 尚未正式定义，仍有歧义 |
+| **JDK 5** | **JSR-133 重写 JMM** | 明确 volatile 的 happens-before 语义 + 内存屏障插入策略，volatile 写之前的所有写对其他线程可见（传递性） |
+| **JDK 6** | 锁优化 + 逃逸分析 | volatile 与锁消除 / 锁粗化配合更紧密 |
+| **JDK 8** | 去除永久代 | volatile 行为不变，但元空间搬迁间接影响类加载时的内存屏障 |
+| **JDK 9** | VarHandle 引入 | `VarHandle.setVolatile()` / `getVolatile()` 提供与 volatile 等价的语义，但不需要修饰字段 |
+| **JDK 11+** | ZGC / Shenandoah | volatile 语义不变，但 GC 安全点设计对 volatile 读的性能有间接影响 |
+
+> **关键里程碑**：JDK 5 的 JSR-133 是 volatile 语义的分水岭 — 此前的 volatile 不可靠，此后的 volatile 才具备严格的 happens-before 保证。
 
 ---
 
