@@ -1,7 +1,7 @@
 <!--
 module:
-  parent: ai
-  slug: ai/automotive-ml-to-rl
+  parent: 08.ai-foundations/01-ml
+  slug: 08.ai-foundations/01-ml/ml-to-rl
   type: article
   category: 主模块子文章
   summary: 监督学习 → 强化学习

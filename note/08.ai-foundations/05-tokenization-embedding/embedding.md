@@ -1,7 +1,7 @@
 <!--
 module:
-  parent: ai
-  slug: ai/embedding-vs-vectorization
+  parent: 08.ai-foundations/05-tokenization-embedding
+  slug: 08.ai-foundations/05-tokenization-embedding/embedding
   type: article
   category: 主模块子文章
   summary: 嵌入 vs 向量化

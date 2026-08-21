@@ -1,7 +1,7 @@
 <!--
 module:
-  parent: ai
-  slug: ai/transformer
+  parent: 08.ai-foundations/03-transformer
+  slug: 08.ai-foundations/03-transformer/transformer-architecture
   type: article
   category: 主模块子文章
   summary: Transformer 架构核心：Self-Attention + QKV + Multi-Head。
@@ -197,15 +197,15 @@ graph LR
 
 ## 七、面试陷阱速览
 
-> 完整陷阱 + 反直觉 + 30 秒话术见 [13.split-hairs Transformer](../../08.ai-foundations/03-transformer/README.md)（⚠️ 待 Phase 1+ 迁入）
+> 完整陷阱 + 反直觉 + 30 秒话术见 [`12.interview/11.ai/transformer`](../../12.interview/11.ai/transformer/)
 
 ---
 
 ## 相关章节
 
 - 上游：[LLM 基础](../04-llm/README.md) — 大语言模型概述
-- 关联：Token 与计费 — ⚠️ 待 Phase 1+ 迁入（[`../../09.ai-applications/llm-inference/token-billing/README.md`](../../09.ai-applications/llm-inference/token-billing/README.md) 占位）
-- 应用：[RAG](../../09.ai-applications/rag/README.md) — Transformer 的核心应用场景
+- 关联：[Token 与计费](../../09.ai-applications/llm-inference/token-billing/) — LLM 推理成本
+- 应用：[RAG](../../09.ai-applications/rag/) — Transformer 的核心应用场景
 
 
 - single-epoch-and-config-evidence

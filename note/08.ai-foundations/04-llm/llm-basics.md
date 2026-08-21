@@ -1,7 +1,7 @@
 <!--
 module:
-  parent: ai
-  slug: ai/llm-basics
+  parent: 08.ai-foundations/04-llm
+  slug: 08.ai-foundations/04-llm/llm-basics
   type: article
   category: 主模块子文章
   summary: 大语言模型基础：从统计语言模型到 Transformer
@@ -75,8 +75,8 @@ module:
 ## 🔗 兄弟章节
 
 - **L1 同级**：[Transformer 架构核心](../03-transformer/README.md)
-- **L2 技术栈**：Token 与计费原理 — ⚠️ 待 Phase 1+ 迁入（[`../../09.ai-applications/llm-inference/token-billing/README.md`](../../09.ai-applications/llm-inference/token-billing/README.md) 占位）
-- **咬文嚼字**：⚠️ 待 Phase 1+ 迁入（[`../../08.ai-foundations/03-transformer/README.md`](../../08.ai-foundations/03-transformer/README.md) + `../../../12.interview/11.ai/token/README.md` 占位）
+- **L2 技术栈**：[Token 与计费](../../09.ai-applications/llm-inference/token-billing/) — LLM 推理成本
+- **咬文嚼字**：[`12.interview/11.ai/token`](../../12.interview/11.ai/token/) — Token 面试题
 - **架构演进**：LLM 驾驭演进史 — ⚠️ 待 Phase 1+ 迁入（`../../09.ai-applications/agent/architecture/llm-control-evolution/README.md` 占位）
 
 ---

@@ -37,8 +37,8 @@
 - **父模块**：[08.ai-foundations](../README.md) — AI 基础层总索引
 - **同模块相邻**：[02-deep-learning](../02-deep-learning/README.md) — 深度学习框架与训练范式
 - **同模块相邻**：[04-llm](../04-llm/README.md) — LLM 基础（Dropout / 训练技巧）
-- **跨模块应用**：[11.ai/llm-inference/kv-cache](../11.ai/llm-inference/kv-cache/) — 推理复杂度与 KV Cache 实战
-- **咬文嚼字**：[13.split-hairs/transformer-architecture](../13.split-hairs/transformer-architecture/) — Transformer 面试题
+- **AI 工程实战**：[`09.ai-applications/llm-inference/kv-cache`](../../09.ai-applications/llm-inference/kv-cache/) — 推理复杂度与 KV Cache 实战
+- **咬文嚼字**：[`12.interview/11.ai/transformer`](../../12.interview/11.ai/transformer/) — Transformer 面试题
 
 ## 📚 学习路径
 

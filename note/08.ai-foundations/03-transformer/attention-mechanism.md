@@ -1,7 +1,7 @@
 <!--
 module:
-  parent: ai
-  slug: ai/attention-mechanism
+  parent: 08.ai-foundations/03-transformer
+  slug: 08.ai-foundations/03-transformer/attention-mechanism
   type: article
   category: 主模块子文章
   summary: 注意力机制全家桶（Self/Cross/Multi-Head/Sparse/Linear/MQA/GQA）
@@ -52,8 +52,8 @@ module:
 
 - **L1 同级**：[Transformer 架构](./README.md)
 - **L2 同模块**：位置编码 RoPE / MoE 架构 / Flash Attention — ⚠️ 待 Phase 1+ 迁入
-- **L2 栈**：[KV Cache](../../09.ai-applications/llm-inference/kv-cache/README.md)（推理复杂度 + MQA/GQA/MLA 对比）
-- **咬文嚼字**：⚠️ 待 Phase 1+ 迁入 `[12.interview/11.ai/transformer](../../08.ai-foundations/03-transformer/README.md)`
+- **L2 栈**：[KV Cache](../../09.ai-applications/llm-inference/kv-cache/)（推理复杂度 + MQA/GQA/MLA 对比）
+- **咬文嚼字**：[`12.interview/11.ai/transformer`](../../12.interview/11.ai/transformer/) — Transformer 架构面试题
 
 ---
 

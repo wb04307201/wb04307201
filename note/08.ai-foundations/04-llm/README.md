@@ -1,6 +1,6 @@
 <!--module:
-  parent: ai-foundations
-  slug: ai-foundations/04-llm
+  parent: 08.ai-foundations
+  slug: 08.ai-foundations/04-llm
   type: index
   category: AI 基础子模块
   summary: 大语言模型基础——语言模型演进、预训练、对齐与 Agent 能力的全景速查。

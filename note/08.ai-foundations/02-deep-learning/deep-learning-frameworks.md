@@ -1,7 +1,7 @@
 <!--
 module:
-  parent: ai
-  slug: ai/deep-learning-frameworks
+  parent: 08.ai-foundations/02-deep-learning
+  slug: 08.ai-foundations/02-deep-learning/deep-learning-frameworks
   type: article
   category: 主模块子文章
   summary: 深度学习框架

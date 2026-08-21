@@ -34,8 +34,8 @@
 
 - **父模块**：[08.ai-foundations](../README.md) — AI 基础层总索引
 - **同模块相邻**：[02-deep-learning](../02-deep-learning/README.md) — 深度学习框架选型与训练范式
-- **跨模块应用**：[11.ai/automotive](../11.ai/automotive/) — 自动驾驶 ML 实战案例
-- **咬文嚼字**：[13.split-hairs/19.ml-algorithms](../12.interview/19.ml-algorithms/) — 传统 ML 面试高频题
+- **AI 工程实战**：[`09.ai-applications/llm-inference`](../09.ai-applications/llm-inference/) — LLM 推理优化实战
+- **咬文嚼字**：[`12.interview/02.computer-basics/machine-learning`](../../12.interview/02.computer-basics/machine-learning/) — 传统 ML 面试高频题
 - **项目沉淀**：[file-view](https://github.com/wb04307201/file-view) — 传统 ML 工业级应用
 
 ## 📚 学习路径
@@ -44,8 +44,8 @@
 2. **算法深挖**：补充 KNN / 决策树 / SVM 三大经典算法专题（建议先 KNN 原理）
 3. **聚类与降维**：补充 K-means / PCA / GMM，对应无监督学习章节
 4. **强化学习**：阅读 DQN / PPO / SAC 算法综述，理解 MDP 与策略梯度
-5. **面试刷题**：跳转 [13.split-hairs/19.ml-algorithms](../12.interview/19.ml-algorithms/) 巩固核心题
-6. **工程落地**：跳转 [11.ai/automotive](../11.ai/automotive/) 看工业级 ML 流水线
+5. **面试刷题**：跳转 [12.interview/02.computer-basics/machine-learning](../../12.interview/02.computer-basics/machine-learning/) 巩固核心题
+6. **工程落地**：跳转 [09.ai-applications/llm-inference](../../09.ai-applications/llm-inference/) 看工业级推理优化
 
 ## 📊 本节统计
 

@@ -1,6 +1,6 @@
 <!--
 module:
-  parent: ai-foundations
+  parent: 08.ai-foundations
   slug: 08.ai-foundations
   type: module
   category: AI 基础理论
@@ -101,9 +101,8 @@ graph TB
 ### 跨模块横向互链
 
 - **下游应用**：[`09.ai-applications`](../09.ai-applications/) — RAG / Agent / Prompt / Fine-tuning / Eval 六大应用主题（基于本模块的 Transformer + LLM 基础）
-- **AI 工程实战**：[`11.ai/llm-inference`](../11.ai/llm-inference/) — LLM 推理优化实战（KV Cache / 量化 / 推理引擎），承接 `03-transformer/kv-cache-optimization` 的理论
-- **AI 工程实战**：[`11.ai/llm-training`](../11.ai/llm-training/) — LLM 预训练与微调实践，承接 `02-deep-learning/distributed-training` 的工程框架
-- **AI 应用案例**：[`11.ai/automotive`](../11.ai/automotive/) — 自动驾驶 ML 实战案例，承接 `01-ml/ml-to-rl.md` 的范式演进
+- **AI 工程实战**：[`09.ai-applications/llm-inference`](../09.ai-applications/llm-inference/) — LLM 推理优化实战（KV Cache / 量化 / 推理引擎），承接 `03-transformer/kv-cache-optimization` 的理论
+- **AI 工程实战**：[`09.ai-applications/fine-tuning`](../09.ai-applications/fine-tuning/) — LLM 预训练与微调实践，承接 `02-deep-learning/distributed-training` 的工程框架
 - **高频面试题**：[`12.interview/11.ai/transformer`](../12.interview/11.ai/transformer/) — Transformer 架构面试题（10+ 篇），与 `03-transformer/` 强互补
 - **高频面试题**：[`12.interview/11.ai/kv-cache-mqa-gqa-mla`](../12.interview/11.ai/kv-cache-mqa-gqa-mla/) — KV Cache / MQA / GQA / MLA 面试专题（与 `03-transformer/` 待补章节对应）
 - **高频面试题**：[`12.interview/11.ai/dropout-in-llm`](../12.interview/11.ai/dropout-in-llm/) — LLM Dropout 面试题（与 `04-llm/dropout-in-llm/` 对应）
@@ -125,7 +124,7 @@ graph TB
 
 1. 阅读 [`01-ml/ml-to-rl.md`](./01-ml/ml-to-rl.md)——建立"监督 → 无监督 → 强化"三范式演进认知
 2. 经典算法原理 (knn / 决策树剪枝) 待补占位
-3. 配套 [`12.interview/19.ml-algorithms`](../12.interview/19.ml-algorithms/) 面试刷题
+3. 配套 [`12.interview/02.computer-basics/machine-learning`](../12.interview/02.computer-basics/machine-learning/) 面试刷题
 
 ### 阶段 3 · 深度学习工程（2-3 周，工具链）
 

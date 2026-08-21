@@ -35,7 +35,7 @@
 - **父模块**：[08.ai-foundations](../README.md) — AI 基础层总索引
 - **同模块相邻**：[01-ml](../01-ml/README.md) — 传统 ML 算法底座
 - **同模块相邻**：[03-transformer](../03-transformer/README.md) — Transformer 架构核心
-- **跨模块应用**：[11.ai/llm-training](../11.ai/llm-training/) — LLM 预训练与微调实践
+- **AI 工程实战**：[`09.ai-applications/fine-tuning`](../../09.ai-applications/fine-tuning/) — LLM 预训练与微调实践
 - **项目沉淀**：[spring-ai-loomagent](https://github.com/wb04307201/spring-ai-loomagent) — Spring AI 集成框架
 
 ## 📚 学习路径
@@ -45,7 +45,7 @@
 3. **训练技巧**：补充 Transformer 训练专题，重点掌握 AMP、Gradient Accumulation、AdamW
 4. **分布式训练**：补充分布式训练专题，理解 DDP / TP / PP / 3D 并行的适用场景
 5. **深度学习理论**：跳转 [03-transformer](../03-transformer/README.md) 看核心架构
-6. **工程落地**：跳转 [11.ai/llm-training](../11.ai/llm-training/) 看 LLM 预训练实战
+6. **工程落地**：跳转 [09.ai-applications/fine-tuning](../../09.ai-applications/fine-tuning/) 看 LLM 微调实战
 
 ## 📊 本节统计
 
