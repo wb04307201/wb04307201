@@ -2,13 +2,12 @@
 # setup.sh — 新环境初始化（clone 后跑一次就行）
 #
 # 用法:
-#   bash setup.sh           # 初始化所有智能体
-#   bash setup.sh claude    # 只初始化 .claude/skills/
-#   bash setup.sh codex     # 只初始化 .codex/skills/
+#   bash setup.sh           # 初始化 .claude/skills/（默认行为）
+#   bash setup.sh claude    # 同上（保留显式入参）
 #
 # 做什么:
 #   1. 配置 git hooks 路径（启用 skill 自动同步）
-#   2. 同步 skills/ → 对应智能体的 skills 目录
+#   2. 同步 skills/ → .claude/skills/
 #   3. 验证环境就绪
 
 set -euo pipefail
@@ -23,13 +22,18 @@ NC='\033[0m'
 AGENT="${1:-}"
 
 if [ "$AGENT" = "--help" ] || [ "$AGENT" = "-h" ]; then
-  echo "用法: bash setup.sh [claude|codex]"
+  echo "用法: bash setup.sh [claude]"
   echo ""
   echo "参数:"
-  echo "  (无参数)  初始化所有智能体"
-  echo "  claude    只生成 .claude/skills/"
-  echo "  codex     只生成 .codex/skills/"
+  echo "  (无参数)  初始化 .claude/skills/（默认）"
+  echo "  claude    同上（显式指定）"
   exit 0
+fi
+
+if [ -n "$AGENT" ] && [ "$AGENT" != "claude" ]; then
+  echo "错误: 未知参数 '$AGENT'" >&2
+  echo "有效参数: (空) 或 'claude'" >&2
+  exit 2
 fi
 
 echo "=== 项目初始化 ${AGENT:+(仅 $AGENT)} ==="

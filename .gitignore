@@ -8,7 +8,6 @@
 
 # Skill 镜像（由 setup.sh / pre-commit hook 从 skills/ 自动同步，不应 commit）
 /.claude/skills/
-/.codex/skills/
 
 # Python 缓存（脚本运行时产生的临时 .pyc，不应 commit）
 __pycache__/

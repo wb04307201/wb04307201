@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
-# sync-skills.sh — 从 skills/ (单一来源) 同步到各智能体的 skills 目录
+# sync-skills.sh — 从 skills/ (单一来源) 同步到 .claude/skills/
 #
 # 用法:
-#   bash scripts/sync-skills.sh              # 同步所有智能体
-#   bash scripts/sync-skills.sh claude       # 只同步 .claude/skills/
-#   bash scripts/sync-skills.sh codex        # 只同步 .codex/skills/
-#   bash scripts/sync-skills.sh --check      # 只检查不复制（CI 用）
-#   bash scripts/sync-skills.sh --check claude  # 只检查 claude
+#   bash scripts/sync-skills.sh           # 同步到 .claude/skills/
+#   bash scripts/sync-skills.sh claude    # 只同步 .claude/skills/（默认即此）
+#   bash scripts/sync-skills.sh --check   # 只检查不复制（CI 用）
+#   bash scripts/sync-skills.sh --check claude  # 只检查 .claude/skills/ 镜像
 #
-# 新增智能体支持：在 AGENT_MAP 中加一行即可
+# 新增智能体支持：在 AGENT_MAP 中加一行: "名称|目标目录"
 
 set -euo pipefail
 
@@ -31,7 +30,6 @@ fi
 # 新增智能体只需在这里加一行: "名称|目标目录"
 AGENT_MAP=(
   "claude|.claude/skills"
-  "codex|.codex/skills"
 )
 
 SOURCE="$REPO_ROOT/skills"
@@ -50,16 +48,20 @@ for arg in "$@"; do
   case "$arg" in
     --check) CHECK_MODE=true ;;
     --help|-h)
-      echo "用法: bash scripts/sync-skills.sh [--check] [claude|codex]"
+      echo "用法: bash scripts/sync-skills.sh [--check] [claude]"
       echo ""
       echo "选项:"
       echo "  --check    只检查不同步（CI 用）"
-      echo "  claude     只同步 .claude/skills/"
-      echo "  codex      只同步 .codex/skills/"
-      echo "  (无参数)   同步所有智能体"
+      echo "  claude     只同步 .claude/skills/（默认即此）"
+      echo "  (无参数)   同步 .claude/skills/"
       exit 0
       ;;
-    *) FILTER_AGENT="$arg" ;;
+    claude) FILTER_AGENT="claude" ;;
+    *)
+      echo -e "${RED}错误: 未知参数 '$arg'${NC}" >&2
+      echo "有效参数: --check, --help, claude（无参时为默认）" >&2
+      exit 2
+      ;;
   esac
 done
 
