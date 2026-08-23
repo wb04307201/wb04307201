@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **双内容仓库**：
 - **顶部 README.md** — 个人主页 + 12 个开源项目展示（File View、Spring AI LoomAgent、Flexible Lock 等）
-- **`note/`** — 14 主模块的体系化技术知识库（基于 Obsidian 维护），777 个 README，1097 个 .md（2026-08-20 find 校对，排除 .health-tmp）
+- **`note/`** — 13 主模块的体系化技术知识库（基于 Obsidian 维护），779 个 README，1100 个 .md（2026-08-23 find 校对，排除 .health-tmp / .obsidian）
 
 主体是文档（Markdown），不是源代码。Java/Spring 项目的源码在外部仓库（如 `wb04307201/file-view`）。
 
@@ -14,35 +14,54 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```
 note/
-├── README.md                      # 总目录 + 14 模块导航
-├── CONTRIBUTING.md                # 写作规范（8-section 模板 / frontmatter / 命名 / 章节风格）
-├── 01.java/ 02.computer-basics/   # 14 主模块，编号 + 英文 + 短横线
-├── ...
-├── 13.split-hairs/                # 高频面试题库（咬文嚼字，6 大分类 134+ 题）
-├── 14.project-management/
-└── .claude/skills/                # 项目级 meta-skill
-    ├── note-precipitation-planning/
-    └── note-health/
+├── README.md                      # 总目录 + 13 模块导航
+├── SPEC.md                        # 全局规范（命名 / commit / 互链 / frontmatter / G1-G6 评分）
+├── 01.java-and-jvm/               # Java + JVM + 并发 + 设计模式
+├── 02.cs-foundations/             # 算法 + OS + 网络 + 数学
+├── 03.data-stack/                 # 数据库 + 缓存 + 大数据
+├── 04.spring-backend/             # Spring + 后端框架
+├── 05.frontend/                   # 前端
+├── 06.distributed-systems/        # 分布式 + 微服务 + 云原生
+├── 07.devops-and-tools/           # CI/CD + 监控 + 工具
+├── 08.ai-foundations/             # ML + DL + Transformer + LLM 基础
+├── 09.ai-applications/            # RAG + Agent + Prompt + LLM 推理
+├── 10.business-systems/           # 电商 + 社交 + 金融
+├── 11.product-and-pm/             # 产品 + PM + 流程（含原 14.project-management 内容）
+├── 12.interview/                  # 高频面试题（10 分类 192 题，10 个主题子目录）
+│   ├── 01.java/ 02.computer-basics/ 03.database/ 04.system-design/
+│   ├── 05.security/ 06.spring/ 09.front-end/ 10.big-data/ 11.ai/ tools/
+│   └── QUESTION-FORMAT-SPEC.md     # 面试题格式 + 反直觉 / 陷阱 / 30 秒话术
+└── 13.story/                      # 「阿明餐厅」技术系列（50 篇，平铺顶层）
+    └── STORY-FORMAT-SPEC.md        # 故事类章节格式（开餐厅叙事 + 技术类比）
+
+仓库根（仓库级 meta-skill，不在 note/ 内）：
+├── skills/                        # 项目级 meta-skill 单一来源（git tracked）
+└── .claude/skills/                # 自动镜像（gitignored）
 ```
 
 **3 大沉淀模式**（沉淀主题时按规模选）：
-- **单文件**（< 150 行）：主模块子 README
-- **双层**（最常用）：13.split-hairs/<topic>/ + 11.ai/<module>/<topic>/ + 互链
-- **三层 + 12.story 联动**：双层 + 12.story 加章节反向链
+- **单文件**（< 150 行）：主模块子 README（如 `03.data-stack/02.cache/01.redis-persistence.md`）
+- **双层**（最常用）：`12.interview/<topic>/`（高频面试题版本）+ 对应主模块 `<topic>/`（深度原理版本）+ 互链回指
+- **三层 + 13.story 联动**：双层 + `13.story/<NN>-xxx.md` 加章节反向链（叙事层包装讲透）
 
 ## 关键规范引用
 
+> **写作规范的单一入口是 `note/SPEC.md`**（顶层规范）。  
+> `note/CONTRIBUTING.md` 在历史上存在过，现已被 SPEC.md 替代；如下路径若 404，请改去 `note/SPEC.md`。
+
 | 主题 | 位置 |
 |------|------|
-| 模块命名 / 模板 / frontmatter / 章节风格 | `note/CONTRIBUTING.md` |
-| 故事类章节格式（阿明餐厅） | `note/12.story/STORY-FORMAT-SPEC.md` |
-| 面试题格式（咬文嚼字） | `note/13.split-hairs/QUESTION-FORMAT-SPEC.md` |
-| 模块 README 标准结构（§12） | `note/CONTRIBUTING.md` §12 |
+| 全局规范（命名 / commit / 互链 / frontmatter / G1-G6 评分 / 11 类扫描规则） | `note/SPEC.md` |
+| 各模块自有 SPEC（11/12/13 等已落地，其余待补） | `note/{NN}.xxx/SPEC.md` |
+| 故事类章节格式（阿明餐厅） | `note/13.story/STORY-FORMAT-SPEC.md` |
+| 面试题格式（高频面试） | `note/12.interview/QUESTION-FORMAT-SPEC.md` |
 
-**所有模块 README 必备 frontmatter**（HTML 注释），3 种类型：
-- `<!--module: ... -->`（主模块 + 子文章）
-- `<!--question: ... -->`（13.split-hairs）
-- `<!--story: ... -->`（12.story）
+**知识文章 frontmatter 类型**（按 `slug` 字段分 3 类，HTML 注释格式 `<!--type: ... -->` 起首 + 多行字段 + `-->` 收尾；详见 `note/SPEC.md` §4）：
+- `module:`（主模块 README + 子文章，跨所有 13 模块）
+- `question:`（`12.interview` 高频面试题，现状 227 篇）
+- `story:`（`13.story` 阿明餐厅，现状 50 篇）
+
+> `SPEC.md` / `index.md` 等索引页豁免 frontmatter。
 
 ## 常用命令
 
@@ -54,10 +73,10 @@ note/
 ls note/
 
 # 单模块速览
-ls note/01.java/ && cat note/01.java/README.md | head -50
+ls note/01.java-and-jvm/ && cat note/01.java-and-jvm/README.md | head -50
 
 # 找特定主题（grep + frontmatter 联动）
-grep -rl "RAG" note/11.ai/ | head -10
+grep -rl "RAG" note/09.ai-applications/ | head -10
 
 # 检查 frontmatter 覆盖
 find note -name "README.md" -exec grep -L "^<!--" {} \;
@@ -65,7 +84,7 @@ find note -name "README.md" -exec grep -L "^<!--" {} \;
 
 ## Meta-Skills（项目级）
 
-`skills/` 为 3 个 skill 的**单一来源**，`.claude/skills/` 和 `.codex/skills/` 是自动镜像：
+`skills/` 为 3 个 skill 的**单一来源**（自动镜像到 `.claude/skills/`，gitignored）：
 
 | Skill | 何时用 |
 |-------|--------|
@@ -73,7 +92,7 @@ find note -name "README.md" -exec grep -L "^<!--" {} \;
 | `note-health` | 用户问"note 哪里需要优化？" / "这篇文章质量怎么样？"（结构体检 + 内容打分） |
 | `note-knowledge-qa` | 用户问技术问题，从 note/ 检索回答 |
 
-**改 skill 只改 `skills/`**，pre-commit hook 会自动同步到 `.claude/skills/` 和 `.codex/skills/`。
+**改 skill 只改 `skills/`**，pre-commit hook 会自动同步到 `.claude/skills/`。
 手动同步：`bash scripts/sync-skills.sh`
 
 新沉淀主题时，优先用 `note-precipitation-planning` 输出"位置 + 方式"方案。
@@ -86,9 +105,9 @@ bash setup.sh   # 一键配置 git hooks + 生成 skill 镜像
 
 `setup.sh` 会自动：
 1. 配置 `git core.hooksPath → .githooks`（启用 skill 同步 hook）
-2. 运行 `scripts/sync-skills.sh`（从 skills/ 生成 .claude/skills/ + .codex/skills/ 镜像）
+2. 运行 `scripts/sync-skills.sh`（从 skills/ 生成 `.claude/skills/` 镜像）
 
-**重要**：`.claude/skills/` 和 `.codex/skills/` 已在 `.gitignore` 中，不提交到 git。clone 后必须跑 `setup.sh` 才能使用 skill。
+**重要**：`.claude/skills/` 已在 `.gitignore` 中，不提交到 git。clone 后必须跑 `setup.sh` 才能使用 skill。
 
 ## CI Workflows
 
@@ -101,7 +120,7 @@ bash setup.sh   # 一键配置 git hooks + 生成 skill 镜像
 **沉淀新主题时的标准流程**（参考 `note-precipitation-planning` skill）：
 1. **现状盘点**：grep / find 扫描 ≥ 5 个相关文件
 2. **深度评估**：3 信号判断（高频 + 内容深 + 缺口真实）
-3. **位置决策**：决策树（面试题→13.split-hairs / 深度原理→11.ai / 叙事→12.story）
+3. **位置决策**：决策树（面试题→`12.interview` / 深度原理→对应主模块（`08.ai-foundations` / `09.ai-applications` / `03.data-stack` / `06.distributed-systems` 等）/ 叙事→`13.story`）
 4. **方式决策**：单 / 双 / 三层（按内容深度）
 5. **选项呈现**：2-4 个选项让用户选
 6. **实施**：派 subagent + 严格 commit 格式（`feat(<slug>)` / `fix(<slug>)` / `style(<slug>)`）
@@ -124,6 +143,6 @@ bash setup.sh   # 一键配置 git hooks + 生成 skill 镜像
 
 ## 关键统计
 
-- 14 主模块 / 777 README / 1097 .md（2026-08-20 find 校对，排除 .health-tmp）
-- frontmatter 覆盖 87.7%（914 / 1042：module 657 + question 192 + story 48 + 其他 17；剩余 128 多为主题内非 README 子文章，按规范可豁免）
-- 6 PNG（教学截图保留，其他应 Mermaid 化）
+- 13 主模块 / 779 README / 1100 .md（2026-08-23 find 校对，排除 .health-tmp / .obsidian）
+- frontmatter 覆盖 93.7%（1031 / 1100：module 754 + question 227 + story 50；剩余 69 多为 SPEC.md / index.md 等索引页，按规范可豁免）
+- 5 PNG（教学截图保留，其他应 Mermaid 化）
