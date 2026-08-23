@@ -15,15 +15,55 @@ description: Use when user asks to audit or improve note/ — "note 哪里需要
 |---|---|---|
 | 单篇 / 单目录 | "评价某模块下某篇" / "这篇质量怎么样" / "这篇新写的质量如何" | **只跑 Phase 2**：直接 Read + 按 `references/leaf-quality.md` 打分。**不启动 workflow**。**新文件**先读 `references/new-file-baseline.md` 拿到 7 必选 + 3 可选结构基线。 |
 | 单模块 | "审一下某模块"（运行时读取 `find note -maxdepth 1 -type d`） | Phase 1 扫该模块 + Phase 2 小规模 fan-out（视 leaf 数手工切批，≤ 6 篇/批）。 |
-| 全库 | "note 哪里要优化" / "扫一遍 note" / "体检" | 完整 4 相；Phase 2 用「分层采样 + 优先级列表」策略（关键问题全评 + 各模块代表采样），**不直接走 health-workflow.js 全库穷举**（成本过高）。 |
+| 全库（leaf ≤ 1000） | "note 哪里要优化" / "扫一遍 note" / "体检" | 完整 4 相；Phase 2 直接走「分层采样 + 优先级列表」策略（关键问题全评 + 各模块代表采样）。 |
+| 全库（leaf > 1000） | 同上，但实时 `find note -name "*.md" \| wc -l` > 1000 | **触发 Step 0.1 策略询问**：用 `AskUserQuestion` 让用户在「采样」/「穷举」/「混合」三选一，默认采样，**不再静默切换**。 |
 
 **原则**：单篇请求绝不启动重型机器；leaf 数 < 10 直接手工打分，不开 workflow。
 
 > **全库策略**（leaf > 50）：
 > - **优先级批**：浅 README（< 50 行）+ 无回链 + 无 frontmatter + 全部 broken link 来源（必评）
 > - **采样批**：每主模块随机 3-5 篇代表 leaf
-> - **不直接走 health-workflow.js 全库 fan-out**：1000+ leaf × 6/批 ≈ 170+ 批 ≈ 200+ subagent，token 成本数百万，边际收益低
+> - **leaf ≤ 1000** → 直接走采样（无需询问）
+> - **leaf > 1000** → **触发 Step 0.1 策略询问**（让用户显式选择）
 > - leaf 数 ≤ 50 → 按单模块（主循环手工切批）
+
+### Step 0.1：全库规模触发的策略询问（leaf > 1000）
+
+> 🆕 **2026-08-23 新增**：当 Step 0 判 scope = 全库且实时 `find note -name "*.md" | wc -l` > 1000 时，**必须**用 `AskUserQuestion` 让用户在 3 种策略中显式选择，**不再静默切换**为采样。
+
+**触发前先算 leaf 数**：
+
+```bash
+LEAF_COUNT=$(find note -name "*.md" | wc -l)
+[ "$LEAF_COUNT" -gt 1000 ] && echo "全库 leaf = $LEAF_COUNT，超阈值，触发 Step 0.1 询问"
+```
+
+**询问选项**（默认 Recommended = 选项 A 采样）：
+
+| 选项 | token 估算 | 时长 | 适用场景 |
+|------|-----------|------|----------|
+| **A. 分层采样 + 优先级列表** (Recommended) | ~200k | 30-60min | 日常 review / 快速定位主要问题 |
+| **B. 全库 fan-out 穷举** | ~3M | 4-6h | release 前最终审计 / 用户明确要求穷举 |
+| **C. 混合：采样 + 高风险模块下钻** | ~300-500k | 1-2h | 平衡成本与覆盖率，先采样定位高风险区再 fan-out 补全 |
+
+**选项触发判定**（按用户原话 / 上下文匹配）：
+
+| 选项 | 触发信号 |
+|------|----------|
+| A 采样（默认） | "扫一遍" / "体检" / "哪里要优化" 等日常表述 |
+| B 穷举 | "穷举" / "全部" / "每一篇" / "all" / "exhaustive" / release 前最终审计 |
+| C 混合 | "重点模块下钻" / "高风险区补全" / "采样后补全" |
+
+**询问失败降级**：
+
+- 用户中断 / 跳过 → 默认走选项 A 采样（最低风险）
+- `AskUserQuestion` 工具不可用 → 同上，log 一条「策略询问跳过，降级为默认采样」
+
+**3 条硬性原则**：
+
+- **询问必须在 Phase 1 启动前完成**，否则已启动的扫描会浪费 token（subagent 不能调 AskUserQuestion，工具不可用）
+- **询问本身不消耗扫描成本**——`AskUserQuestion` 是对话层动作，不进入 `.health-tmp`
+- **询问结果写到 report 头部**——Phase 4 输出必须含「策略选择：<选项>」一行，让用户事后能验证实际跑了哪个策略
 
 > ⚠️ **边缘 case：兄弟相对路径（如 polymorphism）**：当新增子目录（如 `polymorphism/README.md`），兄弟章节用 `[polymorphism](polymorphism/README.md)` 形式链接近似安全 —— 但 markdown 严格按相对路径解析，**从 `inner-class/README.md` 应解析到 `inner-class/polymorphism/README.md`**（不存在）。**Phase 1 §6 broken-links 扫描命中后需人工二次确认**「同目录」vs「跨目录」归属，特别是 polymorphism / distillation 这类子目录的兄弟链。**Obsidian / GitHub 可能因 auto-resolve 显示为 OK，但严格 markdown 规范下是 broken**。Phase 4 综合报告必须标 `[同目录-边缘]` 而非纯 `[真错]`。
 
@@ -253,13 +293,19 @@ Batch 5 (P3 / 亮点): 不动或单列
 ## 调用示例
 
 ```
-# 全库体检
+# 全库体检（leaf ≤ 1000）
 "扫一遍 note 看看哪里要优化"
-→ Step 0: 全库
+→ Step 0: 全库（leaf ≤ 1000），直接走采样
 → Phase 1: 跑 structural-checks.md 扫描，结果落 note/.health-tmp/scan-1-<date>.txt
 → Phase 2: find + python 枚举 leaf，调 health-workflow.js（args.files=...，batchSize=6）
 → Phase 3: 上卷
-→ Phase 4: 写 note/.health-tmp/report-<date>.md
+→ Phase 4: 写 note/.health-tmp/report-<date>.md，header 含「策略选择：A 采样」
+
+# 全库体检（leaf > 1000）
+"扫一遍 note 看看哪里要优化"
+→ Step 0: 全库（leaf > 1000），触发 Step 0.1 策略询问
+→ AskUserQuestion: 用户选 A/B/C（默认 A）
+→ Phase 1-4 同上，header 含「策略选择：<选项>」
 
 # 单篇质量验收
 "评价 11.ai/RAG/README.md 这篇质量怎么样"
