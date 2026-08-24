@@ -3,7 +3,7 @@ name: note-precipitation-planning
 description: Use when user asks where to add or update a topic in the project's note/ knowledge base / "X 应该沉淀到 note 什么位置" / "X 怎么归档" / "放在 note 哪个位置" / "如何沉淀 X" / "新增主题到 note" — covers survey of existing structure (read at runtime), depth analysis, location decision between main module / 12.interview interview layer / 13.story narrative layer, layered precipitation strategy, and reverse-link verification
 ---
 
-> **规则来源**：执行前必读 `note/SPEC.md`（G1-G6 通用评分 + 11 类扫描 + commit 格式 + 互链规则）以及目标模块的 `<module>/SPEC.md`（如 `note/01.java-and-jvm/SPEC.md`）。模块结构在运行时通过 `find note -maxdepth 1 -type d` + `cat note/<module>/README.md` 读取，不硬编码。
+> **规则来源**：执行前必读 `note/SPEC.md`（G1-G6 通用评分 + 11 类扫描 + commit 格式 + 互链规则 + §7 SPEC 分层）以及目标模块的 `<module>/SPEC.md`（如 `note/01.java-and-jvm/SPEC.md`）。**若目标模块有强骨架规范**（如 `note/12.interview/QUESTION-FORMAT-SPEC.md` / `note/13.story/STORY-FORMAT-SPEC.md`），同时必读 `<module>/*-FORMAT-SPEC.md`。模块结构在运行时通过 `find note -maxdepth 1 -type d` + `cat note/<module>/README.md` 读取，不硬编码。
 
 # note 沉淀规划
 
@@ -285,6 +285,11 @@ echo "  □ 系列结构 / 总目录入口已查（1.5 + 1.6）"
 ├─ < 100 行内容 → 单文件（1 commit）
 ├─ 100-300 行 + 面试价值 → 双层沉淀（2 commit）
 └─ 300+ 行 + 已有餐厅叙事相关章节 → 三层 + 12.story 联动（3+ commit）
+
+目标模块有无强骨架规范（L1.5）？
+├─ 12.interview → 必读 `QUESTION-FORMAT-SPEC.md`（30s/90s 话术 + 追问模板），新文章必含 ## 引子/## 追问
+├─ 13.story → 必读 `STORY-FORMAT-SPEC.md`（编号 + 章节骨架 + 系列定位块 + 文末回链）
+└─ 其他模块 → 当前无 L1.5；如本主题需强制骨架，**新建** `*-FORMAT-SPEC.md`（评估维度仍放 SPEC.md）
 ```
 
 **双层沉淀模板**（遵循 `note/CONTRIBUTING.md` §3 commit 规范：`<type>(note): <scope-detail> - <描述>`）：

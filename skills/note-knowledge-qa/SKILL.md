@@ -3,7 +3,7 @@ name: note-knowledge-qa
 description: Use when user asks a technical question / "查 note" / "知识库问答" / "我有问题想问" requests interview prep / "面试题" / "出一道题" / "考考我" / "根据简历出题" / "模拟面试" / "面试非科班" wants system design guidance / "如何设计 X" or needs knowledge from the note/ knowledge base — retrieves relevant articles across the 13-module structure (read at runtime), follows cross-references, synthesizes comprehensive answers with citations
 ---
 
-> **规则来源**：执行前用 `find note -maxdepth 1 -type d` 读取当前模块结构，读 `note/SPEC.md` 了解全局规范，读目标模块的 `<module>/SPEC.md` 了解专属维度。模块数 / 文件数在运行时统计，不硬编码。
+> **规则来源**：执行前用 `find note -maxdepth 1 -type d` 读取当前模块结构，读 `note/SPEC.md` 了解全局规范（含 §7 SPEC 分层元规范），读目标模块的 `<module>/SPEC.md` 了解专属维度；若该模块存在 `*-FORMAT-SPEC.md`（如 `note/12.interview/QUESTION-FORMAT-SPEC.md` / `note/13.story/STORY-FORMAT-SPEC.md`）也一并读取（确保回答引用合规）。模块数 / 文件数在运行时统计，不硬编码。
 
 # note 知识库问答
 

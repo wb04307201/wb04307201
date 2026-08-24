@@ -52,9 +52,8 @@ note/
 | 主题 | 位置 |
 |------|------|
 | 全局规范（命名 / commit / 互链 / frontmatter / G1-G6 评分 / 11 类扫描规则） | `note/SPEC.md` |
-| 各模块自有 SPEC（11/12/13 等已落地，其余待补） | `note/{NN}.xxx/SPEC.md` |
-| 故事类章节格式（阿明餐厅） | `note/13.story/STORY-FORMAT-SPEC.md` |
-| 面试题格式（高频面试） | `note/12.interview/QUESTION-FORMAT-SPEC.md` |
+| 各模块自有 SPEC（评估维度 + 写作总则 + 子目录约定；11/12/13 等已落地） | `note/{NN}.xxx/SPEC.md` |
+| 模块写作模板（仅 12 面试题 / 13 故事，强骨架模块按需存在，不与 SPEC.md 合并） | `note/12.interview/QUESTION-FORMAT-SPEC.md` / `note/13.story/STORY-FORMAT-SPEC.md` |
 
 **知识文章 frontmatter 类型**（按 `slug` 字段分 3 类，HTML 注释格式 `<!--type: ... -->` 起首 + 多行字段 + `-->` 收尾；详见 `note/SPEC.md` §4）：
 - `module:`（主模块 README + 子文章，跨所有 13 模块）
