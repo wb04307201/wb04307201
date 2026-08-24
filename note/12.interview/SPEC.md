@@ -47,3 +47,4 @@
 - `06.spring/`：Spring Boot、Spring Cloud、后端工程实践。
 - `09.front-end/`、`10.big-data/`、`11.ai/`：对应领域面试题。
 - `tools/`：面试准备、题单、复盘与辅助工具。
+- `QUESTION-FORMAT-SPEC.md`：本模块强骨架规范（L1.5，见 [`../SPEC.md`](../SPEC.md) §7）；30s/90s 话术 + 追问模板 + 引子强制。

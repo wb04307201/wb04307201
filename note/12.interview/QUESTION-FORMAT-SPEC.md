@@ -1,12 +1,3 @@
-<!--
-module:
-  parent: 12.interview
-  slug: 12.interview\QUESTION-FORMAT-SPEC
-  type: article
-  category: 主模块子文章
-  summary: 「咬文嚼字」面试题格式规范 v1.0
--->
-
 # 「咬文嚼字」面试题格式规范 v1.0
 
 > 本规范定义 `note/13.split-hairs/**/*.md` 下所有 `.md` 面试题文件的统一写作格式。

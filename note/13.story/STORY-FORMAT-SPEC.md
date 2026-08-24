@@ -1,19 +1,8 @@
-<!--
-module:
-  parent: 13.story
-  slug: 13.story\STORY-FORMAT-SPEC
-  type: article
-  category: 主模块子文章
-  summary: 「阿明餐厅」故事格式规范 v1.0
--->
-
 # 「阿明餐厅」故事格式规范 v1.0
 
 > 本规范定义 `note/12.story/` 目录下所有 `.md` 故事文件的统一写作格式。
 > 适用范围：46 个故事段（47 个 `.md` 文件 —— 34 / 35 / 36 各拆 a-b）。
 > 适用对象：续集新增、番外补写、孪生篇修订、future 故事的作者与 review 人员。
-
-← [返回系列导读](./index.md)
 
 ---
 
@@ -303,4 +292,4 @@ story:
 
 ---
 
-← [返回系列导读](./index.md)
+> **本文件是 L1.5 强骨架规范**（见 `note/SPEC.md` §7），不是系列文章。无需 frontmatter、无需 `← [返回系列导读]` 回链。

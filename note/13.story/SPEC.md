@@ -44,4 +44,4 @@
 - `25-ai-org-transformation.md` 至 `35-ai-observability.md`：AI 组织、产品化、治理与可观测性。
 - `36-rag-retrieval-augmented-generation.md` 至 `46-llm-inference.md`：RAG、向量库、提示词、多模态与推理。
 - `index.md`：全量目录、主题索引与跨故事导航。
-- `STORY-FORMAT-SPEC.md`：阿明餐厅故事的固定结构、角色和写作检查项。
+- `STORY-FORMAT-SPEC.md`：本模块强骨架规范（L1.5，见 [`../SPEC.md`](../SPEC.md) §7）；故事编号 + 章节骨架 + 系列定位 + 文末回链。
