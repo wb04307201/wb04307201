@@ -35,3 +35,10 @@ public class DateTypeHandler extends BaseTypeHandler<Date> {
     <typeHandler handler="com.example.DateTypeHandler" javaType="java.util.Date"/>
 </typeHandlers>
 ```
+---
+
+## 系列导航
+
+- 下一篇：[`02 拦截器`](02-interceptor.md) — 插件机制与四大拦截点
+
+← [返回: 02-extension](README.md)

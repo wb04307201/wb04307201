@@ -28,18 +28,18 @@ module:
 | 编号 | 对齐主模块 | 主题方向 | 篇数 | 子入口 |
 |------|-----------|---------|------|-------|
 | 01 | [`01.java-and-jvm`](../01.java-and-jvm/) | Java 基础陷阱 | 39 | [01.java/](01.java/) |
-| 02 | [`02.cs-foundations`](../02.cs-foundations/) | 计算机基础（网络 / 算法设计 / 操作系统） | 6 | [02.computer-basics/](02.computer-basics/) |
-| 03 | [`03.data-stack`](../03.data-stack/) | 数据库细节 | 26 | [03.database/](03.database/) |
-| 04 | [`06.distributed-systems`](../06.distributed-systems/) | 系统设计难点 | 19 | [12.interview/04.system-design/](12.interview/04.system-design/) |
+| 02 | [`02.cs-foundations`](../02.cs-foundations/) | 计算机基础（网络 / 算法设计 / 操作系统） | 11 | [02.computer-basics/](02.computer-basics/) |
+| 03 | [`03.data-stack`](../03.data-stack/) | 数据库细节 | 31 | [03.database/](03.database/) |
+| 04 | [`06.distributed-systems`](../06.distributed-systems/) | 系统设计难点 | 26 | [12.interview/04.system-design/](12.interview/04.system-design/) |
 | 05 | [`05.security`](05.security) | 安全（认证 / Web 安全 / 限流 / OWASP） | 10 | [05.security/](05.security/) |
-| 06 | [`04.spring-backend`](../04.spring-backend/) | Spring 面试高频 | 16 | [06.spring/](06.spring/) |
-| 09 | [`05.frontend`](../05.frontend/) | 前端细节 | 26 | [09.front-end/](09.front-end/) |
+| 06 | [`04.spring-backend`](../04.spring-backend/) | Spring 面试高频 | 15 | [06.spring/](06.spring/) |
+| 09 | [`05.frontend`](../05.frontend/) | 前端细节 | 28 | [09.front-end/](09.front-end/) |
 | 10 | — | 大数据（Flink / Spark / Hive / Iceberg / Doris / Kafka） | 6 | [10.big-data/](10.big-data/) |
-| 11 | [`08.ai-foundations`](../08.ai-foundations/) + [`09.ai-applications`](../09.ai-applications/) | AI 面试深挖 | 40 | [11.ai/](11.ai/) |
-| ✦ | tools | 开发工具（Git / Docker / Nginx / K8s） | 4 | [tools/](tools/) |
+| 11 | [`08.ai-foundations`](../08.ai-foundations/) + [`09.ai-applications`](../09.ai-applications/) | AI 面试深挖 | 55 | [11.ai/](11.ai/) |
+| ✦ | tools | 开发工具（Git / Docker / Nginx / K8s） | 5 | [tools/](tools/) |
 | ✦ | [`11.product-and-pm`](../11.product-and-pm/) | **外链**（决策实战，已迁出） | — | [14.project-management/](../11.product-and-pm/) |
 
-**总计：192 篇面试题**（仅"一题一文"题；03.database 另有多个二级目录索引页、04.system-design 另有多个二级目录索引页，2026-07-19 find 校对，per-category sums 39+6+26+19+10+16+26+6+40+4=192）
+**总计：226 篇面试题**（仅"一题一文"题；03.database 另有多个二级目录索引页、04.system-design 另有多个二级目录索引页，2026-08-25 find 校对，per-category sums 39+11+31+26+10+15+28+6+55+5=226）
 
 > 各分类的具体子主题（如 Java 集合 / 并发 / JVM；数据库 SQL 优化 / Redis / MVCC；系统设计 MQ / 缓存 / 分布式等）见子目录 README。
 
@@ -61,13 +61,13 @@ module:
 
 | 目标 | 推荐路径 |
 |------|---------|
-| **Java 后端** | [01.java](01.java/) 39 篇 → [06.spring](06.spring/) 16 篇 → [03.database](03.database/) 26 篇 |
-| **系统设计 / 后端架构** | [04.system-design](12.interview/04.system-design/) 19 篇 → [03.database](03.database/) 26 篇 |
-| **前端** | [09.front-end](09.front-end/) 26 篇（含网络 / CSS / 框架 / 安全 / 工程化） |
-| **AI 方向** | [11.ai](11.ai/) 40 篇（含主模块精炼版 + 新增专题：dropout / harness / 上下文工程 / RAG / 向量搜索 / Prompt 工程等） |
-| **安全工程师** | [05.security](05.security/) 10 篇（认证 / Web 安全 / 限流 / OWASP） → [04.system-design](12.interview/04.system-design/) 19 篇 |
-| **大数据 / 数据平台** | [10.big-data](10.big-data/) 6 篇（Flink / Spark / Hive / Iceberg / Doris / Kafka） → [03.database](03.database/) 26 篇 |
-| **DevOps / SRE** | [tools/](tools/) 4 篇（Git / Docker / Nginx / K8s） → [04.system-design](12.interview/04.system-design/) 19 篇 |
+| **Java 后端** | [01.java](01.java/) 39 篇 → [06.spring](06.spring/) 15 篇 → [03.database](03.database/) 31 篇 |
+| **系统设计 / 后端架构** | [04.system-design](12.interview/04.system-design/) 26 篇 → [03.database](03.database/) 31 篇 |
+| **前端** | [09.front-end](09.front-end/) 28 篇（含网络 / CSS / 框架 / 安全 / 工程化） |
+| **AI 方向** | [11.ai](11.ai/) 55 篇（含主模块精炼版 + 新增专题：dropout / harness / 上下文工程 / RAG / 向量搜索 / Prompt 工程等） |
+| **安全工程师** | [05.security](05.security/) 10 篇（认证 / Web 安全 / 限流 / OWASP） → [04.system-design](12.interview/04.system-design/) 26 篇 |
+| **大数据 / 数据平台** | [10.big-data](10.big-data/) 6 篇（Flink / Spark / Hive / Iceberg / Doris / Kafka） → [03.database](03.database/) 31 篇 |
+| **DevOps / SRE** | [tools/](tools/) 5 篇（Git / Docker / Nginx / K8s） → [04.system-design](12.interview/04.system-design/) 26 篇 |
 
 ### 3.2 按难度刷（按面试倒计时）
 

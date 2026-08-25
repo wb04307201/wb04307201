@@ -1,8 +1,10 @@
 <!--
-pm:
-  topic: 技术选型 ROI
+module:
+  parent: product-and-pm
+  slug: pm/self-vs-saas-vs-outsourcing
+  type: article
+  category: 主模块子文章
   audience: CTO / 技术总监
-  category: 决策实战
   summary: 自研 vs SaaS vs 外包三种方案的全生命周期 ROI 对比与决策树
 -->
 

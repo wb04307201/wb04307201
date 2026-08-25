@@ -65,3 +65,10 @@ params.put("result", null); // 初始化OUT参数
 sqlSession.selectOne("com.example.UserMapper.callFunction", params);
 Integer count = (Integer) params.get("result");
 ```
+---
+
+## 系列导航
+
+- 上一篇：[`03 数据库厂商扩展`](03-database-vendor.md) — 多数据库适配
+
+← [返回: 02-extension](README.md)

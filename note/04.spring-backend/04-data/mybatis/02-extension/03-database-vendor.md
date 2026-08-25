@@ -88,3 +88,8 @@ mybatis-plus:
 - 前置：[`01 框架本质`](../01-architecture/01-framework-essence.md)
 - 关联：[`02 初始化流程`](../01-architecture/02-initialization-flow.md) — Configuration 加载过程
 - 对比：[`MyBatis 动态 SQL`](../01-architecture/05-dynamic-sql.md) — 另一种 SQL 差异化方案
+---
+
+- 系列导航：上一篇 [`02 拦截器`](02-interceptor.md) · 下一篇 [`04 存储过程`](04-stored-procedure.md)
+
+← [返回: 02-extension](README.md)

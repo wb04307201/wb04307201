@@ -64,6 +64,7 @@ Map（接口，键值对）
 | [LinkedHashSet](LinkedHashSet/README.md) | 基于 LinkedHashMap 的插入顺序 Set、LruCache 应用 |
 | [TreeMap](TreeMap/README.md) | 红黑树有序 Map、范围查询、Comparable vs Comparator |
 | [WeakHashMap](WeakHashMap/README.md) | 弱引用键、GC 自动回收、缓存场景与陷阱 |
+| [HashMap 性能](hashmap-performance.md) | 大数据量插入的性能陷阱 + 初始容量预设 + 并行方案 |
 
 ---
 

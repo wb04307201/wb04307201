@@ -9,6 +9,8 @@ module:
 
 # Java 9
 
+> 一句话定位：Java 9 = **JPMS 模块系统元年** —— JDK 自身模块化 + jshell REPL + Collection 工厂方法 + Compact Strings + G1 默认 GC + HTTP/2 Client 孵化。
+
 ## 引言：变更说明
 
 Java 9 是首个把 **JPMS 模块系统**引入的版本，也是大量"工程化"特性集中落地的一版：jshell 交互式 REPL、Collection 便利工厂、`Stream`/`Optional` 增强、`Compact Strings` 内存优化、G1 成为默认 GC、HTTP/2 Client 孵化等。
@@ -760,6 +762,7 @@ G1 现在在年轻代回收期间回收不可达的巨型对象（原始类型�
 ## 相关阅读
 
 - [Java 8 新特性](../java-8/README.md) — Lambda、Stream、Optional 起点
+- [Java 10 新特性](../java-10/README.md) — 12 JEP 小版本：`var` 局部变量类型推断
 - [Java 11 LTS 新特性](../java-11/README.md) — HTTP Client 转正、String 新 API
 - [Collection 工厂方法实战](../../collection/README.md) — `List.of` / `Map.of` 选型清单
 - [Java 模块系统专题](../../modules/README.md) — JPMS 实战模式（requires/transports/open）

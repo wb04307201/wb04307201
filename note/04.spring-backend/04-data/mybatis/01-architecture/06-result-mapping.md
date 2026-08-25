@@ -35,3 +35,11 @@ module:
     </collection>
 </resultMap>
 ```
+---
+
+## 系列导航
+
+- 上一篇：[`05 动态 SQL`](05-dynamic-sql.md) — BoundSql 生成的上游规则
+- 下一篇：[`07 缓存机制`](07-cache-mechanism.md) — 一级 / 二级缓存与结果映射的关系
+
+← [返回: 01-architecture](README.md)

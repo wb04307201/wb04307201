@@ -391,3 +391,11 @@ public Object intercept(Invocation invocation) throws Throwable {
 ```
 
 通过系统掌握MyBatis拦截器的核心机制、配置方法和高级技巧，开发者可以构建出高效、灵活的数据访问层扩展方案。在实际项目中，建议结合具体业务场景设计分层拦截策略，例如将安全审计、日志记录等横切关注点与业务逻辑解耦，实现代码的清晰架构和可维护性。
+---
+
+## 系列导航
+
+- 上一篇：[`01 类型处理器`](01-type-handler.md) — TypeHandler 自定义
+- 下一篇：[`03 数据库厂商扩展`](03-database-vendor.md) — 多数据库适配
+
+← [返回: 02-extension](README.md)

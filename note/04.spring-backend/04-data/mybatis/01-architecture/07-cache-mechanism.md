@@ -45,3 +45,11 @@ l2 --> "数据库" : 最终回源
     <!-- 自定义缓存实现 -->
 </cache>
 ```
+---
+
+## 系列导航
+
+- 上一篇：[`06 结果映射`](06-result-mapping.md) — resultMap / collection / association
+- 下一篇：[`08 类图`](08-class-diagram.md) — 架构全景类图
+
+← [返回: 01-architecture](README.md)

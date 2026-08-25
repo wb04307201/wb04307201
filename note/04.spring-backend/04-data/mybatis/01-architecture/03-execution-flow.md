@@ -33,3 +33,11 @@ graph TD
 6. MappedStatement对象:在Executor接口的执行方法中有一个MappedStatement类型的参数，该参数是对映射信息的封装，用于存储要映射的SQL语句的id、参数等信息。
 7. 输入参数映射:输入参数类型可以是Map、List等集合类型，也可以是基本数据类型和POJO类型。输入参数映射过程类似于JDBC对 preparedStatement对象设置参数的过程。
 8. 输出结果映射:输出结果类型可以是Map、List等集合类型，也可以是基本数据类型和POJO类型。输出结果映射过程类似于JDBC对结果集的解析过程。
+---
+
+## 系列导航
+
+- 上一篇：[`02 初始化流程`](02-initialization-flow.md) — SqlSessionFactory 创建全过程
+- 下一篇：[`04 核心组件`](04-core-components.md) — Executor / StatementHandler / ParameterHandler / ResultHandler
+
+← [返回: 01-architecture](README.md)

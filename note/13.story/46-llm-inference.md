@@ -1,13 +1,18 @@
 <!--
-module:
-  parent: 12.story
-  slug: 12.story/46-llm-inference
-  type: article
-  category: 主模块子文章
-  summary: ---
+story:
+  number: 46
+  type: 番外
+  position: 番外 · LLM 推理优化篇
+  title: 阿明餐厅的"上菜革命"
+  audience: AI 工程师 / 后端工程师
+  core_concepts: [KV Cache, Continuous Batching, PagedAttention, 量化, 推测解码]
 -->
 
 # LLM 推理优化——阿明餐厅的"上菜革命"
+
+> **系列定位**：本篇是「阿明餐厅」系列的**番外 · LLM 推理优化篇**，用餐厅上菜流程讲透 5 大推理优化技术。
+>
+> 一句话定位：LLM 推理五大优化技术的餐厅版——从半成品备忘录到调料精简，组合出 67x 上菜提速。
 
 > 阿明餐厅 24 小时营业，客人络绎不绝。但最近老板遇到难题：**客人点菜太多，后厨出菜太慢**。
 >
@@ -167,11 +172,11 @@ LLM 推理优化不是"一项技术"，而是**5 项技术的组合**：
 
 ## 🔗 兄弟章节
 
-- **主模块深度**：[11.ai/02-technology-stack/llm-inference-optimization](../09.ai-applications/llm-inference/llm-inference-optimization/README.md)
-- **面试深挖**：[12.interview/11.ai/llm-inference](../../note/12.interview/11.ai/llm-inference/README.md)
-- **上集**：45-skill-scheduling-restaurant
-- **下集**：44-tech-debt-career-trap（已在前面章节）
+- **主模块深度**：[09.ai-applications/llm-inference/llm-inference-optimization](../09.ai-applications/llm-inference/llm-inference-optimization/README.md)
+- **面试深挖**：[12.interview/11.ai/llm-inference](../12.interview/11.ai/llm-inference/README.md)
+- **上一篇**：[45 · 扩招 50 个厨师：Skill 调度的餐厅隐喻](./45-skill-scheduling-restaurant.md)
+- **下一篇**：[47 · AI 幻觉不可怕，最可怕的是老板出幻觉](./47-boss-hallucination.md)
 
 ---
 
-**番外预告**：下篇讲"AI 餐厅的边界——哪些菜不能做"（AI 合规与对齐）→ 38-ai-compliance
+← [返回：阿明餐厅系列](./README.md)

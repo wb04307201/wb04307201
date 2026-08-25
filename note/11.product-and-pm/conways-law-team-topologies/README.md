@@ -1,8 +1,10 @@
 <!--
-pm:
-  topic: 组织 / 团队
+module:
+  parent: product-and-pm
+  slug: pm/conways-law-team-topologies
+  type: article
+  category: 主模块子文章
   audience: 架构师 / CTO
-  category: 决策实战
   summary: 康威定律下的团队拓扑：组织结构如何映射系统架构
 -->
 

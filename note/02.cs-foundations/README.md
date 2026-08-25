@@ -51,11 +51,11 @@ module:
 | 统计维度 | 数值 | 口径 |
 |----------|------|------|
 | 分类主题数 | 5 | 顶层 5 个分类目录（算法 / OS / 网络 / 运维 / 知识产权） |
-| 子 README 总数 | 25 | 含 5 个分类 README + 20 个 leaf README（depth ≥ 2） |
+| 子 README 总数 | 39 | 含 5 个分类 README + 34 个 leaf README（depth ≥ 2） |
 | 含 frontmatter 的 README | 待统计 | Phase 2+ 验证 |
-| 配套面试题 | 13 篇 | `12.interview/02.computer-basics/` 9 个兄弟（tcp-handshake / sse-vs-websocket / sensitive-word-filter / greedy-algorithms / machine-learning × 6 等） |
+| 配套面试题 | 11 篇 | `12.interview/02.computer-basics/` 下 question 文章数（5 个独立题 + machine-learning 6 大算法拆分题） |
 
-> **统计时间戳**：2026-08-12（Plan 2 Task 1 完成）
+> **统计时间戳**：2026-08-25（note-health 全库体检校对：子 README 25→39，面试题 13→11）
 
 ---
 
