@@ -142,7 +142,7 @@ public abstract class AbstractList<E> implements List<E> {
 ## 六、交叉引用
 
 - [多态](../polymorphism/) — 4 大核心 Java 多态面试深挖（vtable / default 冲突 / 重写）
-- [Object 类](../object/) — 为什么需要 Integer / Double 包装类？
+- [Object 类](../../../01.java-and-jvm/01-language/object/README.md) — 为什么需要 Integer / Double 包装类？
 - [OOP 基础](../../../01.java-and-jvm/01-language/oop/README.md) — 面向对象四大核心概念
 
 ## 相关章节

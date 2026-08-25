@@ -34,7 +34,7 @@
 
 - **父模块**：[08.ai-foundations](../README.md) — AI 基础层总索引
 - **同模块相邻**：[02-deep-learning](../02-deep-learning/README.md) — 深度学习框架选型与训练范式
-- **AI 工程实战**：[`09.ai-applications/llm-inference`](../09.ai-applications/llm-inference/) — LLM 推理优化实战
+- **AI 工程实战**：[`09.ai-applications/llm-inference`](../../09.ai-applications/llm-inference/README.md) — LLM 推理优化实战
 - **咬文嚼字**：[`12.interview/02.computer-basics/machine-learning`](../../12.interview/02.computer-basics/machine-learning/) — 传统 ML 面试高频题
 - **项目沉淀**：[file-view](https://github.com/wb04307201/file-view) — 传统 ML 工业级应用
 

@@ -181,7 +181,7 @@ xhr.upload.onprogress = (e) => {
 - **深度实战**：[大文件上传系统设计](../../../06.distributed-systems/04-high-performance/file-upload/README.md) — 架构演进 + 源码级实现
 - **相关面试题**：[缓存一致性](../cache-consistency/README.md) — Redis 状态管理
 - **相关面试题**：[分布式锁](../distributed-lock/README.md) — 并发上传保护
-- **主模块**：[`04.system-design`](../../../../note/04.system-design/) — 系统设计知识体系
+- **主模块**：[`06.distributed-systems`](../../../06.distributed-systems/README.md) — 系统设计知识体系
 
 ## 相关章节
 

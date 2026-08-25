@@ -364,7 +364,7 @@ fetch('https://api.example.com/data', {
 
 ## 八、交叉引用
 
-- 主模块：[`09.front-end`](../../../../note/09.front-end/) — 前端知识体系
+- 主模块：[`05.frontend`](../../../05.frontend/README.md) — 前端知识体系
 - [CORS 安全](../../../05.frontend/07-security/cors/README.md) — CORS 详解与最佳实践
 - [CSRF 防护](../../../05.frontend/07-security/csrf/README.md) — CSRF 攻击与防御
 

@@ -28,7 +28,7 @@
 - [../agent-spec-tools/](../agent-spec-tools/) — Superpowers / Spec-Kit / OpenSpec 规范工具，架构落地的需求侧管理
 - [../case-studies/](../case-studies/) — Salesforce Agentforce / Shopify AI Agent 等真实案例，看架构如何落到生产
 - [../production-agent-system-design/](../production-agent-system-design/) — 高可用 Agent 架构 + 容量评估 + 容灾，是架构的工程化延伸
-- [../../08.ai-foundations/llm-inference/](../../../08.ai-foundations/llm-inference/) — LLM 推理层（KV Cache / Flash Attention），架构的性能底座
+- [09.ai-applications/llm-inference](../../llm-inference/README.md) — LLM 推理层（KV Cache / Flash Attention），架构的性能底座
 
 ## 📚 学习路径
 

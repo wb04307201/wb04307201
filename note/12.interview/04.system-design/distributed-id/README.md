@@ -365,7 +365,7 @@ long safeOrderId = maskedId * 10 + random(0, 9);  // 加随机尾数
 
 ## 七、交叉引用
 
-- 主模块：[`04.system-design`](../../../../note/04.system-design/) — 系统设计
+- 主模块：[`06.distributed-systems`](../../../06.distributed-systems/README.md) — 系统设计
 
 ## 相关章节
 

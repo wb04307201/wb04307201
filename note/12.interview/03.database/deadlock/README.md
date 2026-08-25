@@ -314,7 +314,7 @@ INSERT INTO orders (id) VALUES (3);             -- 插入意向锁冲突
 - **相关面试题**：[MVCC](../mvcc/README.md) — 读写不阻塞的原理
 - **相关面试题**：[MySQL 索引](../mysql-index-failure/README.md) — 索引对锁范围的影响
 - **监控**：[数据库监控](../../../03.data-stack/01-database/11-monitoring/README.md) — 锁等待监控
-- **主模块**：[`03.database`](../../../../note/03.database/) — 数据库知识体系
+- **主模块**：[`03.database`](../../../03.data-stack/01-database/README.md) — 数据库知识体系
 
 ## 相关章节
 

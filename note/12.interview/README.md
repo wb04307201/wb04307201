@@ -30,7 +30,7 @@ module:
 | 01 | [`01.java-and-jvm`](../01.java-and-jvm/) | Java 基础陷阱 | 39 | [01.java/](01.java/) |
 | 02 | [`02.cs-foundations`](../02.cs-foundations/) | 计算机基础（网络 / 算法设计 / 操作系统） | 11 | [02.computer-basics/](02.computer-basics/) |
 | 03 | [`03.data-stack`](../03.data-stack/) | 数据库细节 | 31 | [03.database/](03.database/) |
-| 04 | [`06.distributed-systems`](../06.distributed-systems/) | 系统设计难点 | 26 | [12.interview/04.system-design/](12.interview/04.system-design/) |
+| 04 | [`06.distributed-systems`](../06.distributed-systems/) | 系统设计难点 | 26 | [12.interview/04.system-design/](04.system-design/) |
 | 05 | [`05.security`](05.security) | 安全（认证 / Web 安全 / 限流 / OWASP） | 10 | [05.security/](05.security/) |
 | 06 | [`04.spring-backend`](../04.spring-backend/) | Spring 面试高频 | 15 | [06.spring/](06.spring/) |
 | 09 | [`05.frontend`](../05.frontend/) | 前端细节 | 28 | [09.front-end/](09.front-end/) |
@@ -62,12 +62,12 @@ module:
 | 目标 | 推荐路径 |
 |------|---------|
 | **Java 后端** | [01.java](01.java/) 39 篇 → [06.spring](06.spring/) 15 篇 → [03.database](03.database/) 31 篇 |
-| **系统设计 / 后端架构** | [04.system-design](12.interview/04.system-design/) 26 篇 → [03.database](03.database/) 31 篇 |
+| **系统设计 / 后端架构** | [04.system-design](04.system-design/) 26 篇 → [03.database](03.database/) 31 篇 |
 | **前端** | [09.front-end](09.front-end/) 28 篇（含网络 / CSS / 框架 / 安全 / 工程化） |
 | **AI 方向** | [11.ai](11.ai/) 55 篇（含主模块精炼版 + 新增专题：dropout / harness / 上下文工程 / RAG / 向量搜索 / Prompt 工程等） |
-| **安全工程师** | [05.security](05.security/) 10 篇（认证 / Web 安全 / 限流 / OWASP） → [04.system-design](12.interview/04.system-design/) 26 篇 |
+| **安全工程师** | [05.security](05.security/) 10 篇（认证 / Web 安全 / 限流 / OWASP） → [04.system-design](04.system-design/) 26 篇 |
 | **大数据 / 数据平台** | [10.big-data](10.big-data/) 6 篇（Flink / Spark / Hive / Iceberg / Doris / Kafka） → [03.database](03.database/) 31 篇 |
-| **DevOps / SRE** | [tools/](tools/) 5 篇（Git / Docker / Nginx / K8s） → [04.system-design](12.interview/04.system-design/) 26 篇 |
+| **DevOps / SRE** | [tools/](tools/) 5 篇（Git / Docker / Nginx / K8s） → [04.system-design](04.system-design/) 26 篇 |
 
 ### 3.2 按难度刷（按面试倒计时）
 
@@ -77,8 +77,8 @@ module:
 
 ### 3.3 按公司刷（精选高频考点）
 
-- **大厂后端（阿里 / 字节 / 美团）**：重点 [01.java](01.java/) 并发 + [06.spring](06.spring/) 事务失效 + [04.system-design](12.interview/04.system-design/) 分布式
-- **外企 / 金融**：重点 [03.database](03.database/) MVCC / 事务隔离 + [04.system-design](12.interview/04.system-design/) CAP / 一致性
+- **大厂后端（阿里 / 字节 / 美团）**：重点 [01.java](01.java/) 并发 + [06.spring](06.spring/) 事务失效 + [04.system-design](04.system-design/) 分布式
+- **外企 / 金融**：重点 [03.database](03.database/) MVCC / 事务隔离 + [04.system-design](04.system-design/) CAP / 一致性
 - **AI 创业 / 大模型团队**：重点 [11.ai](11.ai/) 4 阶段工程演进（Prompt → Context → Harness → Loop）+ 幻觉治理
 - **数据平台 / 大数据团队**：重点 [10.big-data](10.big-data/) Flink / Spark / Kafka + [03.database](03.database/) 索引与查询优化
 

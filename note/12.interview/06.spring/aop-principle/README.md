@@ -311,7 +311,7 @@ public class UserService {
 
 ## 九、交叉引用
 
-- 主模块：[`06.spring`](06.spring/) — Spring 知识体系
+- 主模块：[`04.spring-backend`](../../../04.spring-backend/README.md) — Spring 知识体系
 - 相关：[`12.interview/06.spring/transactional-pitfalls/`](../transactional-pitfalls/) — @Transactional 失效（AOP 失效的具体场景）
 - 相关：[`12.interview/06.spring/circular-dependency/`](../circular-dependency/) — 三级缓存（AOP 提前创建代理）
 

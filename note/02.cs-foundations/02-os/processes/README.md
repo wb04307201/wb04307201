@@ -301,8 +301,8 @@ try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
 ## 八、相关章节
 
 - 返回：[`06-operating-system`](../README.md) — 操作系统概述
-- 深度阅读：[`01.java/concurrency`](../../../01.java/concurrency/) — Java 并发编程（线程池/锁/Fork-Join）
-- 深度阅读：[`01.java/jvm`](../../../01.java/jvm/) — JVM 内存模型（栈/堆与 OS 内存的关系）
+- 深度阅读：[`01.java-and-jvm/03-concurrency`](../../../01.java-and-jvm/03-concurrency/README.md) — Java 并发编程（线程池/锁/Fork-Join）
+- 深度阅读：[`01.java-and-jvm/02-jvm`](../../../01.java-and-jvm/02-jvm/README.md) — JVM 内存模型（栈/堆与 OS 内存的关系）
 
 ---
 

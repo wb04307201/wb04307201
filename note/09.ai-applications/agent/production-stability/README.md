@@ -31,7 +31,7 @@
 - [../loop-engineering/](../loop-engineering/) — Loop 工程（自动修复 + Verifier），与重试预算、超时控制直接耦合
 - [../production-agent/](../production-agent/) — 生产级 Agent 工程实践，与本目录的"思维范式 + 决策树"形成方法论+实战对照
 - [../production-agent-system-design/](../production-agent-system-design/) — 生产级 Agent 系统设计（高可用架构 + 容量评估 + 容灾），从系统视角看稳定性
-- [../../08.ai-foundations/llm-inference/](../../../08.ai-foundations/llm-inference/) — LLM 推理优化（KV Cache / Paged Attention），是降低单请求延迟/成本的技术底座
+- [09.ai-applications/llm-inference](../../llm-inference/README.md) — LLM 推理优化（KV Cache / Paged Attention），是降低单请求延迟/成本的技术底座
 
 ## 📚 学习路径
 

@@ -358,7 +358,7 @@ Lodash 内部使用 `timestamp` 记录时间，通过 `remaining` 计算剩余�
 ## 七、交叉引用
 
 - [防抖流式场景](../debounce-streaming/README.md) — 为什么防抖不适用于流式输出（SSE/AI 场景）
-- 主模块：[`09.front-end`](../../../../note/09.front-end/) — 前端知识体系
+- 主模块：[`05.frontend`](../../../05.frontend/README.md) — 前端知识体系
 
 ## 相关章节
 

@@ -326,7 +326,7 @@ ES5 最优方案是**寄生组合式继承**：用 `Object.create` 建立原型�
 
 ## 七、交叉引用
 
-- 主模块：[`09.front-end`](../../../../note/09.front-end/) — 前端知识体系
+- 主模块：[`05.frontend`](../../../05.frontend/README.md) — 前端知识体系
 - 相关主题：
   - [`closure/`](../closure/) — 闭包与作用域
   - [`this-binding/`](../this-binding/) — this 绑定规则

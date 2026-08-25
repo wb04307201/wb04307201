@@ -115,8 +115,8 @@ Lombok通过编译期注解处理器（JSR 269）修改抽象语法树（AST）�
 
 ---
 
-- 相关：[Java 面向对象基础](../../../01.java-and-jvm/02.oop/) — POJO / 封装原则
-- 关联：[Spring 构造器注入](../../../04.spring-backend/) — Lombok `@RequiredArgsConstructor` 与 Spring `@Autowired` 配合
+- 相关：[Java 面向对象基础](../../../../01.java-and-jvm/01-language/oop/README.md) — POJO / 封装原则
+- 关联：[Spring 构造器注入](../../../../04.spring-backend/README.md) — Lombok `@RequiredArgsConstructor` 与 Spring `@Autowired` 配合
 
 ---
 

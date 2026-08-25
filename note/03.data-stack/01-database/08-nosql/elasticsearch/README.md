@@ -254,7 +254,7 @@ ES 8.0 引入 `dense_vector` 字段和 **kNN（k 最近邻）** 查询，支持 
 
 - [NoSQL 总览](../README.md) — NoSQL 类型对比与选型指南
 - [MongoDB](../mongodb/README.md) — MongoDB 内置文本搜索能力弱，生产搜索场景用 ES
-- [系统设计 · 日志平台](../../../../../note/04.system-design/) — ELK / Loki 日志方案对比
+- [系统设计 · 日志平台](../../../../06.distributed-systems/README.md) — ELK / Loki 日志方案对比
 
 ---
 

@@ -152,13 +152,13 @@ function update(id: number, newVal: any) {
 ## 📚 参考来源
 
 - 深度实战：[`note/05.frontend/03-frameworks/vue/large-list-perf/README.md`](../../../05.frontend/03-frameworks/vue/large-list-perf/README.md)（456 行，含排查方法集 / 完整代码示例 / 性能基准）
-- 响应式原理：[`vue-reactivity/`](vue-reactivity/)（深挖 Proxy / 懒代理 / Dep-Observer-Watcher）
+- 响应式原理：[`vue-reactivity/`](../vue-reactivity/README.md)（深挖 Proxy / 懒代理 / Dep-Observer-Watcher）
 
 ---
 
 ## 交叉引用
 
-- [`vue-reactivity/`](vue-reactivity/) — Vue 响应式原理（同框架原理篇）
+- [`vue-reactivity/`](../vue-reactivity/README.md) — Vue 响应式原理（同框架原理篇）
 - [`../../05.frontend/03-frameworks/vue/large-list-perf/README.md`](../../../05.frontend/03-frameworks/vue/large-list-perf/README.md) — 深度实战（含 4 层优化 / 实战案例 / 完整量化基准）
 - [`../../05.frontend/03-frameworks/vue/README.md`](../../../05.frontend/03-frameworks/vue/README.md) — Vue 3.4+ 总览
 

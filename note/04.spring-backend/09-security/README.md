@@ -227,7 +227,7 @@ void unauthenticatedAccessDenied() throws Exception {
 - ⬆️ [返回 Spring 顶层](../README.md)
 - ↔️ [03-cloud/gateway.md](../03-cloud/gateway.md) —— 网关 JWT 鉴权
 - ↔️ [02-web/mvc/cors-and-static.md](../02-web/mvc/cors-and-static.md) —— MVC 层 CORS 配置
-- ↔️ [13.split-hairs](../../../note/13.split-hairs/) —— 面试咬文嚼字
+- ↔️ [12.interview](../../12.interview/README.md) —— 面试咬文嚼字
 
 ---
 

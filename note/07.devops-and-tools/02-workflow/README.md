@@ -181,10 +181,10 @@ graph TB
 ## 相关章节
 
 - ⬅️ [返回 note 顶层](../README.md)
-- [03 数据层/分布式事务](../../04.spring-backend/03-data/transaction/distributed/) — Saga/TCC 同样是「分布式协作」模式
-- [04 系统设计/02 分布式](../../12.interview/04.system-design/02-distributed/) — CAP/共识算法理论基础
+- [04 数据层/分布式事务](../../04.spring-backend/04-data/transaction/distributed/README.md) — Saga/TCC 同样是「分布式协作」模式
+- [02 分布式](../../06.distributed-systems/02-distributed/README.md) — CAP/共识算法理论基础
 - [04 系统设计/06 幂等](../../06.distributed-systems/06-idempotency/README.md) — 事件驱动必配的幂等设计
-- [06 Spring/05 Spring Cloud](../../04.spring-backend/05-spring-cloud/) — 微服务治理与流程引擎互补
+- [03 Spring Cloud](../../04.spring-backend/03-cloud/README.md) — 微服务治理与流程引擎互补
 - [CI/CD 工具对比](../01-tools/devops/README.md) — Jenkins/GitLab CI/GitHub Actions 选型
 - [K8s Pod 与工作负载](../01-tools/kubernetes/02-pod-and-workload/README.md) — 流程引擎部署的 K8s 基础
 - [Operator & GitOps](../01-tools/kubernetes/08-operator-and-gitops/README.md) — 工作流自动化与 Gitops 交付

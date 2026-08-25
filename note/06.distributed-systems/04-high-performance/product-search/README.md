@@ -228,7 +228,7 @@ WHERE title LIKE '%运动鞋%'
 - 缓存模式：[缓存设计模式](../cache-patterns/README.md) — Cache-Aside / Write-Behind
 - 消息队列：[消息队列](../mq/README.md) — 数据同步的 MQ 选型
 - 数据库：[分库分表](../database-optimization/db-sharding/README.md) — 数据规模扩大后的分片策略
-- 算法基础：[字符串算法](../../../02.cs-foundations/02-algorithms/string-algorithms/) — AC 自动机 / Trie 树
+- 算法基础：[字符串算法](../../../02.cs-foundations/01-algorithms/string-algorithms/README.md) — AC 自动机 / Trie 树
 
 ## 相关章节
 

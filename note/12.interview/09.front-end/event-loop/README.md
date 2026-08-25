@@ -263,7 +263,7 @@ setTimeout(() => {
 ## 七、交叉引用
 
 - 主模块：[`09.front-end/message/`](../message/) — 消息机制基础
-- 主模块：[`09.front-end/`](09.front-end/) — 前端知识体系
+- 主模块：[`05.frontend`](../../../05.frontend/README.md) — 前端知识体系
 - 相关：[`12.interview/09.front-end/promise-handwriting/`](../promise-handwriting/) — Promise 手写实现
 - 相关：[`12.interview/09.front-end/closure/`](../closure/) — 闭包与事件循环配合
 

@@ -302,7 +302,7 @@ systemctl start redis
 
 ## 八、交叉引用
 
-- 主模块：[`03.database`](../../../../note/03.database/)
+- 主模块：[`03.database`](../../../03.data-stack/01-database/README.md)
 - 相关：[Redis大Key问题](../redis-big-key/README.md)、[Redis集群](../redis-cluster/README.md)
 - [官方文档](https://redis.io/docs/manual/persistence/)
 

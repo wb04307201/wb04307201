@@ -337,7 +337,7 @@ func OrderSaga(ctx workflow.Context, order Order) error {
 - **流程引擎**：[process-engine](../process-engine/README.md) — Camunda / Zeebe / Flowable 对比
 - **微服务编排**：[workflow-and-microservice-orchestration](../workflow-and-microservice-orchestration/README.md) — 编舞 vs 编排
 - **事件驱动**：[apache-eventmesh](../apache-eventmesh/README.md) — 事件驱动编排基础设施
-- **分布式事务**：[04.spring-backend/03-data/transaction/distributed](../../../../note/04.spring-backend/03-data/transaction/distributed/) — Saga / TCC 理论
+- **分布式事务**：[04.spring-backend/04-data/transaction/distributed](../../../04.spring-backend/04-data/transaction/distributed/README.md) — Saga / TCC 理论
 
 ---
 

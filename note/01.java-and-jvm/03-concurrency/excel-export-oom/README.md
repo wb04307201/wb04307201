@@ -901,9 +901,9 @@ public class LogExportService {
 
 ## 交叉引用
 - **同模块兄弟**：
-  - [thread-pool](./thread-pool/) — 线程池 7 大参数详解
-  - [completablefuture](./completablefuture/) — 异步编排
-  - [jmm](./jmm/) — Java 内存模型
+  - [thread-pool](../thread-pool/README.md) — 线程池 7 大参数详解
+  - [completablefuture](../completablefuture/README.md) — 异步编排
+  - [jmm](../jmm/README.md) — Java 内存模型
 
 - **相关章节**：
   - [JVM 内存区域](../../02-jvm/README.md) — JVM 内存模型 + GC 算法

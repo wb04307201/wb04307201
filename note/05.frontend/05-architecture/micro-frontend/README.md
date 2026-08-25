@@ -102,8 +102,8 @@ module:
 
 ## 交叉引用
 
-- **[04-engineering/monorepo-practice](../04-engineering/monorepo-practice/)** — Monorepo vs 微前端：代码共享与部署独立性的权衡
-- **[06-performance](../06-performance/)** — 微前端性能优化：懒加载、预加载、资源去重
+- **[04-engineering/monorepo-practice](../../04-engineering/monorepo-practice/README.md)** — Monorepo vs 微前端：代码共享与部署独立性的权衡
+- **[06-performance](../../06-performance/README.md)** — 微前端性能优化：懒加载、预加载、资源去重
 - **[13.story/20-multiplatform-architecture](../../../13.story/20-multiplatform-architecture.md)** — 多端架构演进故事
 
 ---

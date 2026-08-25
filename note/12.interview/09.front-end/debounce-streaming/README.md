@@ -223,7 +223,7 @@ const handleStream = (chunk) => {
 
 - [防抖与节流手写实现](../debounce-throttle/README.md) — 基础实现 + Lodash 高级选项
 - [事件循环 Event Loop](../event-loop/README.md) — 宏任务/微任务与渲染时机
-- 主模块：[`09.front-end`](../../../../note/09.front-end/) — 前端知识体系
+- 主模块：[`05.frontend`](../../../05.frontend/README.md) — 前端知识体系
 
 ## 相关章节
 

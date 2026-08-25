@@ -23,7 +23,7 @@ module:
 
 ## 关联主题
 
-- **HTTP 协议族**：[`02.computer-basics/01-network`](../../../../02.cs-foundations/03-network/) — TCP/IP / DNS / TLS 底层支撑
+- **HTTP 协议族**：[`02.cs-foundations/03-network`](../../../02.cs-foundations/03-network/README.md) — TCP/IP / DNS / TLS 底层支撑
 - **前端网络层**：[`../README.md`](../README.md) — 浏览器 Network / 缓存 / CORS
 - **安全相关**：[`07-security`（注：规划中）`] — CORS / CSRF / CSP
 

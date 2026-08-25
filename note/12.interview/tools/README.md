@@ -39,9 +39,9 @@ module:
 ---
 
 ## 与其他分类的关系
-- **同栏目**：[`04.system-design`](12.interview/04.system-design/) — 系统设计面试题（分布式 / 高可用，与工具题互补）
-- **主模块**：[`07.workflow`](../../../note/07.workflow/) — 工作流与工程化主模块
-- **故事章节**：[`12.story`](../../../note/12.story/) — 阿明餐厅实战故事
+- **同栏目**：[`04.system-design`](../04.system-design/) — 系统设计面试题（分布式 / 高可用，与工具题互补）
+- **主模块**：[`07.devops-and-tools/02-workflow`](../../07.devops-and-tools/02-workflow/README.md) — 工作流与工程化主模块
+- **故事章节**：[`13.story`](../../13.story/) — 阿明餐厅实战故事
 - **格式规范**：[`QUESTION-FORMAT-SPEC.md`](../QUESTION-FORMAT-SPEC.md) — 面试题写作模板
 
 ---
@@ -50,7 +50,7 @@ module:
 - **面试候选人**：后端 / 全栈 / DevOps，准备工具链相关面试题。
 - **新晋 Tech Lead**：需要制定团队 Git 工作流 / 容器化规范 / K8s 部署策略。
 
-> **不适用**：纯前端（工具链侧重不同，请走 [`09.front-end`](09.front-end/)）；纯运维（深度不够，建议直接看官方文档）。
+> **不适用**：纯前端（工具链侧重不同，请走 [`09.front-end`](../09.front-end/)）；纯运维（深度不够，建议直接看官方文档）。
 
 ---
 

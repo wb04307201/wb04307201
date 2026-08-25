@@ -145,7 +145,7 @@ WHERE o.dt BETWEEN '2026-06-01' AND '2026-06-25';
 
 ## 与其他模块的关系
 - **上游**：[04 数据湖](../04-data-lake/) / [03 实时计算](../03-realtime-compute/)（数据写入）
-- **下游**：被 [11.ai 数据可视化](../../../../note/11.ai/) / 报表工具消费
+- **下游**：被 [09.ai-applications 数据可视化](../../../09.ai-applications/README.md) / 报表工具消费
 - **横向**：[02 Hadoop 生态](../02-hadoop-ecosystem/)（Presto/Trino 联邦）
 
 ---

@@ -187,7 +187,7 @@ CREATE TABLE sensor_data (
 
 - [NoSQL 总览](../README.md) — NoSQL 类型对比与选型指南
 - [HBase 架构](../README.md#八hbase-架构) — HBase 基于 HDFS，强一致列存储
-- [系统设计 · 分布式存储](../../../../../note/04.system-design/02-distributed/) — 一致性哈希、Gossip 协议深入
+- [系统设计 · 分布式存储](../../../../06.distributed-systems/02-distributed/README.md) — 一致性哈希、Gossip 协议深入
 
 ---
 

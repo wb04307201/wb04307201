@@ -193,7 +193,7 @@ Refresh Token（长期）：
 
 - [XSS 与 CSRF 攻击防御深度剖析](../xss-csrf/README.md) — XSS 和 CSRF 攻击原理 + 防护
 - [HTTPS 握手过程](../https-handshake/README.md) — HTTPS 加密传输
-- 主模块：[`09.front-end`](../../../../note/09.front-end/) — 前端知识体系
+- 主模块：[`05.frontend`](../../../05.frontend/README.md) — 前端知识体系
 
 ## 相关章节
 

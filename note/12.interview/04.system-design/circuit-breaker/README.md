@@ -295,7 +295,7 @@ new DegradeRule("service")
 
 ## 八、交叉引用
 
-- 主模块：[`04.system-design`](../../../../note/04.system-design/) — 系统设计知识体系
+- 主模块：[`06.distributed-systems`](../../../06.distributed-systems/README.md) — 系统设计知识体系
 
 ## 相关章节
 

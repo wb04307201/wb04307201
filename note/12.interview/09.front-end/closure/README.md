@@ -265,7 +265,7 @@ useEffect(() => {
 
 ## 七、交叉引用
 
-- 主模块：[`09.front-end`](09.front-end/) — 前端知识体系
+- 主模块：[`05.frontend`](../../../05.frontend/README.md) — 前端知识体系
 - 相关：[`12.interview/09.front-end/event-loop/`](../event-loop/) — 事件循环（闭包配合异步）
 - 相关：[`12.interview/09.front-end/promise-handwriting/`](../promise-handwriting/) — Promise 实现（闭包应用）
 

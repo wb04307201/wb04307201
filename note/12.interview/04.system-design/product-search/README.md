@@ -241,7 +241,7 @@ ES 实现用 `function_score` query：
 - **相关面试题**：[缓存一致性](../cache-consistency/README.md) — 搜索缓存失效策略
 - **相关面试题**：[分布式锁](../distributed-lock/README.md) — 并发写入保护
 - **相关面试题**：[限流算法](../rate-limiting/README.md) — 大促期间搜索限流
-- **主模块**：[`04.system-design`](../../../../note/04.system-design/) — 系统设计知识体系
+- **主模块**：[`06.distributed-systems`](../../../06.distributed-systems/README.md) — 系统设计知识体系
 
 ## 相关章节
 

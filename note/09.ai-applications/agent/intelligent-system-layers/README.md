@@ -28,7 +28,7 @@
 - [../agent-execution-patterns/](../agent-execution-patterns/) — 4 大执行模式（ReAct / Plan-and-Execute / DAG / Multi-Agent），分层架构的执行层实现
 - [../production-stability/01-thinking-paradigm.md](../production-stability/01-thinking-paradigm.md) — 思维范式：Prompt vs if-else（决策矩阵），是"业务分层"侧的方法论
 - [../agent-memory/](../agent-memory/) — Agent 4 层记忆（working/episodic/semantic/procedural），是"认知层"的具体实现
-- [../../08.ai-foundations/llm-inference/](../../../08.ai-foundations/llm-inference/) — LLM 推理优化（KV Cache / Paged Attention），分层架构中"智能层"的性能底座
+- [09.ai-applications/llm-inference](../../llm-inference/README.md) — LLM 推理优化（KV Cache / Paged Attention），分层架构中"智能层"的性能底座
 
 ## 📚 学习路径
 

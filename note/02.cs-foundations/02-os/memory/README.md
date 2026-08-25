@@ -323,9 +323,9 @@ fc.read(directBuf);  // OS page cache → DirectByteBuffer（零拷贝潜力）
 ## 九、相关章节
 
 - 返回：[`06-operating-system`](../README.md) — 操作系统概述
-- 深度阅读：[`01.java/jvm`](../../../01.java/jvm/) — JVM 内存模型与 GC
-- 深度阅读：[`01.java/concurrency`](../../../01.java/concurrency/) — 并发编程（线程栈大小 -Xss）
-- 关联：[`03.database`](../../../03.database/) — 数据库存储引擎（Buffer Pool 与 OS Page Cache 的关系）
+- 深度阅读：[`01.java-and-jvm/02-jvm`](../../../01.java-and-jvm/02-jvm/README.md) — JVM 内存模型与 GC
+- 深度阅读：[`01.java-and-jvm/03-concurrency`](../../../01.java-and-jvm/03-concurrency/README.md) — 并发编程（线程栈大小 -Xss）
+- 关联：[`03.data-stack`](../../../03.data-stack/README.md) — 数据库存储引擎（Buffer Pool 与 OS Page Cache 的关系）
 
 ---
 

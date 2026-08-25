@@ -286,7 +286,7 @@ SET user:1001 "{...}"  # 没有 EX/PX 参数
 
 ## 八、交叉引用
 
-- 主模块：[`03.database`](../../../../note/03.database/) — 数据库知识体系
+- 主模块：[`03.database`](../../../03.data-stack/01-database/README.md) — 数据库知识体系
 - 相关笔记：[Redis 大Key问题](../redis-big-key/README.md)、[Redis 持久化机制 RDB vs AOF](../redis-persistence/README.md)、[Redis 集群与分片](../redis-cluster/README.md)
 
 ## 相关章节

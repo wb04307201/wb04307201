@@ -217,7 +217,7 @@ LIMIT 100
 
 - [NoSQL 总览](../README.md) — NoSQL 类型对比与选型指南
 - [MongoDB](../mongodb/README.md) — 文档型，关系查询弱
-- [系统设计 · 知识图谱](../../../../../note/04.system-design/) — Graph RAG 架构
+- [系统设计 · 知识图谱](../../../../06.distributed-systems/README.md) — Graph RAG 架构
 
 ---
 

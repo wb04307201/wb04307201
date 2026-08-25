@@ -315,7 +315,7 @@ public class L1CacheEvictListener {
 
 ## 七、交叉引用
 
-- 主模块：[`03.database`](../../../../note/03.database/) — 数据库与缓存
+- 主模块：[`03.database`](../../../03.data-stack/01-database/README.md) — 数据库与缓存
 - [缓存穿透/击穿/雪崩](../../../03.data-stack/01-database/06-cache/README.md) — 缓存设计模式与问题解决方案
 - [分布式事务](../distributed-transaction/README.md) — 跨服务一致性方案
 - [缓存设计模式 §9.2](../../../06.distributed-systems/04-high-performance/cache-patterns/README.md) — 多级缓存 5 大反模式 + Java/Spring 深度分析

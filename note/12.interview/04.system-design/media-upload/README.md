@@ -218,7 +218,7 @@ ffmpeg -i source.mp4 \
 - **兄弟面试题**：[商品搜索](../product-search/README.md) — 搜索系统设计案例
 - **兄弟面试题**：[缓存一致性](../cache-consistency/README.md) — Redis 状态管理
 - **兄弟面试题**：[限流](../rate-limiting/README.md) — 高并发入口防护
-- **主模块**：[`04.system-design`](../../../../note/04.system-design/) — 系统设计知识体系
+- **主模块**：[`06.distributed-systems`](../../../06.distributed-systems/README.md) — 系统设计知识体系
 
 ---
 

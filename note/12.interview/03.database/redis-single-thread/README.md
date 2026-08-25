@@ -303,7 +303,7 @@ redis-cli --intrinsic-latency 5
 - **相关面试题**：[Redis 大 Key](../redis-big-key/README.md) — 大 Key 阻塞单线程的危害
 - **相关面试题**：[Redis 持久化](../redis-persistence/README.md) — RDB/AOF 对性能的影响
 - **Java NIO**：[Java NIO](../../../01.java-and-jvm/io/nio/README.md) — epoll/selector 的 Java 实现
-- **主模块**：[`03.database`](../../../../note/03.database/) — 数据库知识体系
+- **主模块**：[`03.database`](../../../03.data-stack/01-database/README.md) — 数据库知识体系
 
 ## 相关章节
 

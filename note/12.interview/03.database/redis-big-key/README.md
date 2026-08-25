@@ -291,7 +291,7 @@ groups:
 
 ## 七、交叉引用
 
-- 主模块：[`03.database`](../../../../note/03.database/) — 数据库知识体系
+- 主模块：[`03.database`](../../../03.data-stack/01-database/README.md) — 数据库知识体系
 - [Redis](../../../03.data-stack/01-database/07-redis/README.md) — Redis 详解
 - [分布式锁](../../../06.distributed-systems/02-distributed/distributed-lock/README.md) — 分布式锁实现
 

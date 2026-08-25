@@ -312,7 +312,7 @@ SELECT * FROM orders_xxxx WHERE id IN (...);
 - [分库分表分布式事务](../sharding-distributed-tx/README.md) — 分库分表后跨库事务处理
 - [分库分表扩容](../sharding-resize/README.md) — 分库分表扩容方案
 - [MySQL 深度分页](../mysql-deep-pagination/README.md) — 单库深度分页优化（延迟关联）
-- 主模块：[`03.database`](../../../../note/03.database/) — 数据库知识体系
+- 主模块：[`03.database`](../../../03.data-stack/01-database/README.md) — 数据库知识体系
 
 ## 相关章节
 

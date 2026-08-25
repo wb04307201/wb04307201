@@ -277,7 +277,7 @@ Cache-Control: public, max-age=86400, s-maxage=604800
 
 ## 八、交叉引用
 
-- 主模块：[`09.front-end`](../../../../note/09.front-end/) — 前端知识体系
+- 主模块：[`05.frontend`](../../../05.frontend/README.md) — 前端知识体系
 - [性能优化](../../../05.frontend/06-performance/README.md) — 缓存是前端性能优化的核心手段
 
 ## 相关章节

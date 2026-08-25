@@ -9,7 +9,7 @@ module:
 
 # 数据库咬文嚼字
 
-> 数据库高频面试题与细节深挖，对齐主模块 [`03.database`](../../../note/03.database/)。31 篇真题聚焦 MySQL（索引 / 锁 / 事务 / MVCC / 死锁 / JOIN）、Redis（单线程原理 / 持久化 / 淘汰 / 集群 / 大 Key）、NoSQL 三大方向的高频陷阱（find 校对 2026-07-30）。
+> 数据库高频面试题与细节深挖，对齐主模块 [`03.database`](../../03.data-stack/01-database/README.md)。31 篇真题聚焦 MySQL（索引 / 锁 / 事务 / MVCC / 死锁 / JOIN）、Redis（单线程原理 / 持久化 / 淘汰 / 集群 / 大 Key）、NoSQL 三大方向的高频陷阱（find 校对 2026-07-30）。
 
 ---
 
@@ -161,7 +161,7 @@ graph TB
 
 ## 相关章节
 
-- 主模块：[`note/03.database`](../../../note/03.database/) — 数据库知识体系
-- 相关章节：[`04.system-design`](12.interview/04.system-design/)（高性能设计）
+- 主模块：[`note/03.database`](../../03.data-stack/01-database/README.md) — 数据库知识体系
+- 相关章节：[`04.system-design`](../04.system-design/)（高性能设计）
 
 ← [返回咬文嚼字（高频面试题）](../README.md)

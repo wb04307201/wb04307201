@@ -449,7 +449,7 @@ function update(id: number) {
 - [`../README.md`](../) — Vue 3.4+ 总览（性能优化 bullet 列表）
 - [`../../../../12.interview/09.front-end/vue-reactivity/README.md`](../../../../12.interview/09.front-end/vue-reactivity/README.md) — Vue 响应式原理深度（原理细节）
 - [`../../../../12.interview/09.front-end/large-list-perf/README.md`](../../../../12.interview/09.front-end/large-list-perf/README.md) — 面试题版（30s/90s + 反模式速查）
-- [`../../../../06-performance/optimization/`](../../../../06-performance/optimization/) — 通用渲染性能优化章节
+- [`06-performance/optimization`](../../../06-performance/optimization/README.md) — 通用渲染性能优化章节
 
 ---
 

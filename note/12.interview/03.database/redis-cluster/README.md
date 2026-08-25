@@ -285,7 +285,7 @@ Cluster 中 `MULTI/EXEC` 只能操作**同槽内的 Key**。
 
 ## 八、交叉引用
 
-- 主模块：[`03.database`](../../../../note/03.database/) — 数据库知识体系
+- 主模块：[`03.database`](../../../03.data-stack/01-database/README.md) — 数据库知识体系
 - 相关笔记：
   - [Redis 大Key问题](../redis-big-key/README.md)
   - [Redis 持久化机制](../redis-persistence/README.md)
