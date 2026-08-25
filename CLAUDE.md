@@ -57,7 +57,7 @@ note/
 
 **知识文章 frontmatter 类型**（按 `slug` 字段分 3 类，HTML 注释格式 `<!--type: ... -->` 起首 + 多行字段 + `-->` 收尾；详见 `note/SPEC.md` §4）：
 - `module:`（主模块 README + 子文章，跨所有 13 模块）
-- `question:`（`12.interview` 高频面试题，现状 227 篇）
+- `question:`（`12.interview` 高频面试题，现状 226 篇）
 - `story:`（`13.story` 阿明餐厅，现状 50 篇）
 
 > `SPEC.md` / `index.md` 等索引页豁免 frontmatter。
@@ -143,5 +143,5 @@ bash setup.sh   # 一键配置 git hooks + 生成 skill 镜像
 ## 关键统计
 
 - 13 主模块 / 779 README / 1100 .md（2026-08-23 find 校对，排除 .health-tmp / .obsidian）
-- frontmatter 覆盖 93.7%（1031 / 1100：module 754 + question 227 + story 50；剩余 69 多为 SPEC.md / index.md 等索引页，按规范可豁免）
+- frontmatter 覆盖 98.2%（1080 / 1100：module 804 + question 226 + story 50；剩余 20 为 SPEC.md / index.md 等索引页，按规范可豁免；2026-08-25 note-health 全库体检校对）
 - 5 PNG（教学截图保留，其他应 Mermaid 化）
