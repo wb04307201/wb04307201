@@ -16,6 +16,18 @@ question:
 
 ---
 
+## 引子：200 页合同，答案就在第 80 页
+
+```text
+生产告警：合同审查 RAG 上线一周，法务反馈 10 份合同里有 4 份答案不准。
+排查发现：关键条款在第 80 页（120K context 中部），
+GPT-4 128K / Claude 200K 对中间位置信息的 recall 率只有 ~40%。
+```
+
+这就是 **Lost-in-Middle** —— Liu et al. 2023 论文证实的现象：模型对 prompt 头尾关注强，中间准确率暴跌 30-50%。200 页 PDF 用固定窗口切分还会把条款切碎，RecursiveCharacterTextSplitter 对合同层级结构不友好。分块策略怎么选、Docling 怎么保留条款层级、LongLLMLingua 怎么把 2000 token 压到 500，是长文档工程化的核心难题。
+
+---
+
 ## 🎯 4 大核心题
 
 ### Q1：长合同 PDF 应该用什么分块策略？为什么固定窗口不行？

@@ -34,9 +34,9 @@ flowchart TD
 
 ---
 
-## 1. 排查方法集（先定位，再优化）
+## 排查方法集（先定位，再优化）
 
-### 1.1 Vue Devtools 性能面板
+### Vue Devtools 性能面板
 
 ```text
 打开 Vue Devtools → Performance 面板 → 点击录制 → 复现卡顿 → 停止
@@ -48,7 +48,7 @@ flowchart TD
 | Component update 次数/帧 | < 5 | 1 万次（全列表重渲染）|
 | Vuex/Pinia mutation 数 | 与实际用户操作匹配 | 1 个按钮触发 N 个 mutation |
 
-### 1.2 Chrome Performance 面板（火焰图）
+### Chrome Performance 面板（火焰图）
 
 定位脚本中具体哪段 JS 卡顿：
 
@@ -61,7 +61,7 @@ Performance → Record → 点击触发卡顿 → Stop → 看 Main 线程火焰
 - **紫色 Rendering 长条**：Layout / Style 重计算 → 列表重渲染触发 reflow
 - 频繁"Recalculate Style" / "Layout" → 子组件被无效更新
 
-### 1.3 生产构建 + Performance API 微基准
+### 生产构建 + Performance API 微基准
 
 不能用 Devtools 时（线上、生产构建）：
 
@@ -78,7 +78,7 @@ console.log(performance.getEntriesByName('mutation')[0].duration);
 - **必须用 production 构建测**（dev 模式 Proxy + 大量断言会慢 5-10 倍）
 - 浏览器隐身窗口测（避免扩展程序干扰）
 
-### 1.4 量化 trigger 流（最有效）
+### 量化 trigger 流（最有效）
 
 在 Vue 3 源码中，响应式对象的 `set` 会调用 `trigger(target, key)`，最终调度到组件的 `update`。可以在调试时插入：
 
@@ -92,7 +92,7 @@ export function trigger(...) {
 
 **观察信号**：1 次按钮点击触发 `trigger` 计数 > 100 → 必有响应式滥用。
 
-### 1.5 排查流程清单
+### 排查流程清单
 
 ```text
 [ ] 1. Devtools 录制看 Component render 耗时是否 > 16ms (60fps)
@@ -107,9 +107,9 @@ export function trigger(...) {
 
 ---
 
-## 2. 响应式层优化（4 把武器）
+## 响应式层优化（4 把武器）
 
-### 2.1 `shallowRef` / `shallowReactive` —— 阻断深层代理
+### `shallowRef` / `shallowReactive` —— 阻断深层代理
 
 ```ts
 // ❌ 默认 deep 代理：data 内部数组里 1 万个 item 的每个属性都会被代理
@@ -133,7 +133,7 @@ data.value = { list: [...modifiedList] };
 - 大对象一次性赋值，不改内部字段
 - 第三方库返回的数据（避免被 Vue 接管）
 
-### 2.2 `markRaw` —— 标记永不需要响应的大对象
+### `markRaw` —— 标记永不需要响应的大对象
 
 ```ts
 import { markRaw } from 'vue';
@@ -144,7 +144,7 @@ const staticDict = markRaw({ allProvinces: [...] });
 
 `markRaw` 后，Vue 把对象**永久跳过代理**，节省大量 Proxy 包装开销。
 
-### 2.3 `watch` 避免 `deep: true`
+### `watch` 避免 `deep: true`
 
 ```ts
 // ❌ deep watcher：每次字段变化都触发
@@ -157,7 +157,7 @@ watch(() => data.value.list[index].id, (newId) => { ... });
 
 `deep: true` 内部要遍历所有属性 + 子属性 → 1 万条数据就是 10w+ 访问。
 
-### 2.4 用 `readonly` 防止误改 + `Object.freeze` 加速 V8
+### 用 `readonly` 防止误改 + `Object.freeze` 加速 V8
 
 ```ts
 const constantData = Object.freeze({ list: [...], config: {...} });
@@ -166,9 +166,9 @@ const constantData = Object.freeze({ list: [...], config: {...} });
 
 ---
 
-## 3. 数据层优化（4 把武器）
+## 数据层优化（4 把武器）
 
-### 3.1 扁平化 + Map 索引（消灭 `arr.find`）
+### 扁平化 + Map 索引（消灭 `arr.find`）
 
 ```ts
 // ❌ 1 万条数据 find 是 O(n)，每次修改都要扫一遍
@@ -203,7 +203,7 @@ function updateField(id: number, field: string, val: any) {
 | 单次定位 10k 数组 | 5-20ms | < 0.1ms |
 | 修改后 re-render | 全列表 diff | 仅 1 个节点 patch |
 
-### 3.2 `Object.freeze` 大常量数据
+### `Object.freeze` 大常量数据
 
 ```ts
 const PROVINCES = Object.freeze([...]);   // 城市列表、字典表、配置项
@@ -215,7 +215,7 @@ const formData = reactive({ provinces: PROVINCES });  // ✅ 直接引用，不�
 
 **原理**：V8 对 frozen object 启用**内联缓存 / 隐藏类优化**，属性访问从慢路径（字典模式）切到快路径（fixed shape）。
 
-### 3.3 不可变更新模式（Immer.js）
+### 不可变更新模式（Immer.js）
 
 ```ts
 import { produce } from 'immer';
@@ -234,7 +234,7 @@ data.value = next;  // 整体赋值 → Vue 触发一次更新
 
 **优势**：省去手动 spread 嵌套对象；结构共享内存开销小。
 
-### 3.4 替换 vs 原地修改
+### 替换 vs 原地修改
 
 ```ts
 // ❌ 原地改（Vue 3 能监听到，但 trigger 路径长）
@@ -251,9 +251,9 @@ state.list = produce(state.list, draft => { draft[idx].deep.val = 'x'; });
 
 ---
 
-## 4. 渲染层优化（5 把武器）
+## 渲染层优化（5 把武器）
 
-### 4.1 `:key` 选择 —— 决定 diff 复杂度
+### `:key` 选择 —— 决定 diff 复杂度
 
 ```vue
 <!-- ❌ 用 index 当 key：删除 / 插入一行导致后续所有节点 re-render -->
@@ -267,7 +267,7 @@ state.list = produce(state.list, draft => { draft[idx].deep.val = 'x'; });
 - `index` key + 中间删除：O(n) 重渲染
 - `id` key：O(diff 命中) ≈ O(1) 真实改动节点
 
-### 4.2 `v-memo`（Vue 3.2+）—— 条件级缓存
+### `v-memo`（Vue 3.2+）—— 条件级缓存
 
 ```vue
 <div v-for="item in list" :key="item.id" v-memo="[item.id, item.selected, item.score]">
@@ -279,7 +279,7 @@ state.list = produce(state.list, draft => { draft[idx].deep.val = 'x'; });
 - 大量列表项 + 少数关键属性
 - 重型子组件（Chart / Map / Editor）
 
-### 4.3 异步分片（chunked render）
+### 异步分片（chunked render）
 
 ```ts
 async function renderInChunks(items: any[], chunkSize = 100) {
@@ -293,7 +293,7 @@ async function renderInChunks(items: any[], chunkSize = 100) {
 
 适合**首次渲染**（如 1 万条数据首屏），而非高频更新。
 
-### 4.4 虚拟滚动（终极方案）
+### 虚拟滚动（终极方案）
 
 | 库 | 体积 | 适配 |
 |----|------|------|
@@ -311,7 +311,7 @@ async function renderInChunks(items: any[], chunkSize = 100) {
 
 **首屏 + 滚动**总 DOM 节点 = 视口大小 + 缓冲 = **~30 个**，1 万条数据秒开。
 
-### 4.5 `<KeepAlive>` + `v-show` —— 避免反复 mount
+### `<KeepAlive>` + `v-show` —— 避免反复 mount
 
 适用于 Tab 切换场景：
 
@@ -323,9 +323,9 @@ async function renderInChunks(items: any[], chunkSize = 100) {
 
 ---
 
-## 5. 实战案例：1 万条 + 嵌套 + 深层修改
+## 实战案例：1 万条 + 嵌套 + 深层修改
 
-### 5.1 原始问题代码
+### 原始问题代码
 
 ```vue
 <script setup>
@@ -353,7 +353,7 @@ function update() {
 2. `data.value.list[idx].detail.meta.updatedAt = ...` 触发**整链 proxy 创建**（`detail` + `meta` 首次访问 lazy proxy）
 3. HeavyRow 内部如果用了 `watch(row, () => ..., {deep: true})` → 全部 1 万个 watcher 跑一遍
 
-### 5.2 4 层叠加修复
+### 4 层叠加修复
 
 ```vue
 <script setup>
@@ -403,7 +403,7 @@ function update(id: number) {
 
 ---
 
-## 6. 5 大反模式速查
+## 5 大反模式速查
 
 | ❌ 反模式 | 后果 | ✅ 修正 |
 |----------|------|--------|
@@ -415,7 +415,7 @@ function update(id: number) {
 
 ---
 
-## 7. 性能基准（量化对比）
+## 性能基准（量化对比）
 
 > 基于 Vue 3.4 / Chrome 120 / 1 万条嵌套 3 层对象 / 单条修改
 

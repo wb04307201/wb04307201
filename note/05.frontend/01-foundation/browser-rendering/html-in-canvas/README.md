@@ -39,7 +39,7 @@ graph LR
 
 ---
 
-## 1. 核心动机：5 大用例
+## 核心动机：5 大用例
 
 提案原文明确列出的 5 类痛点：
 
@@ -51,11 +51,11 @@ graph LR
 
 ---
 
-## 2. 三件套原语（3 Primitives）
+## 三件套原语（3 Primitives）
 
 提案的核心由 **3 个新原语** 组成：HTML 属性、绘制方法、事件。
 
-### 2.1 `layoutsubtree` —— 让 Canvas 接受 DOM 子元素
+### `layoutsubtree` —— 让 Canvas 接受 DOM 子元素
 
 ```html
 <canvas id="c" layoutsubtree>
@@ -72,7 +72,7 @@ graph LR
 - 子元素的渲染**对用户不可见**，直到显式调用 `drawElementImage()` 才出现在 canvas 上
 - 等价于"先把 HTML 在屏幕外排好版，再把绘制结果拍进 canvas"
 
-### 2.2 `drawElementImage()` + WebGL/WebGPU 等价物
+### `drawElementImage()` + WebGL/WebGPU 等价物
 
 ```js
 const ctx = canvas.getContext('2d');
@@ -101,7 +101,7 @@ canvas.onpaint = () => {
 |----|-------|--------|
 | `drawElementImage()` | `texElementImage2D(target, internalformat, element, config)` | `copyElementImageToTexture(source, destination)` |
 
-### 2.3 `paint` 事件 + `requestPaint()`
+### `paint` 事件 + `requestPaint()`
 
 ```js
 canvas.onpaint = (event) => {
@@ -111,7 +111,7 @@ canvas.onpaint = (event) => {
 canvas.requestPaint();  // 类似 rAF：强制下一帧 paint（即便子元素未变）
 ```
 
-**触发位置**：`update the rendering` 步骤中，**紧接着浏览器自身 Paint 步骤之后**（详见 §5 设计取舍）。
+**触发位置**：`update the rendering` 步骤中，**紧接着浏览器自身 Paint 步骤之后**（详见「设计取舍」一节）。
 
 **重要规则**：
 - `paint` 事件中**对 canvas 的绘制指令**会出现在当前帧
@@ -120,7 +120,7 @@ canvas.requestPaint();  // 类似 rAF：强制下一帧 paint（即便子元素�
 
 ---
 
-## 3. OffscreenCanvas + Worker 渲染
+## OffscreenCanvas + Worker 渲染
 
 Worker 端运行浏览器无主线程是性能关键模式。提案提供了 `ElementImage` transferable：
 
@@ -178,7 +178,7 @@ $$
 
 ---
 
-## 4. 完整 IDL（spec 原文）
+## 完整 IDL（spec 原文）
 
 ```idl
 partial interface HTMLCanvasElement {
@@ -269,7 +269,7 @@ interface ElementImage {
 
 ---
 
-## 5. 设计取舍：paint 事件触发时机（Option A / B / C）
+## 设计取舍：paint 事件触发时机（Option A / B / C）
 
 提案最关键的工程权衡：**`paint` 应在浏览器渲染管线的哪一步触发？**
 
@@ -295,11 +295,11 @@ Buffer 模式：所有 draw 指令先记录到命令缓冲
 
 Option C 要求：**进入 paint 事件后，DOM 内容（除 canvas 自己的绘制）已经被冻结**。`paint` 内修改 DOM 不会影响当前帧，要等下一帧才能看见。这也是 EventLoop 中"主线程阻塞预算"的另一种体现。
 
-> 想做"每帧都跟手跟随 scroll/animation"的滚动条 / 进度条？提案预留了未来 [auto-updating canvas](#future) 模式（参见 §10）。
+> 想做"每帧都跟手跟随 scroll/animation"的滚动条 / 进度条？提案预留了未来 [auto-updating canvas](#future) 模式（参见「未来展望」一节）。
 
 ---
 
-## 6. 安全与隐私清单（Read-back-allowed Rendering）
+## 安全与隐私清单（Read-back-allowed Rendering）
 
 `drawElementImage` 和 `paint` 事件暴露的内容**不能**多于 author code 已经能观察到的内容 —— 这一约束叫 **read-back-allowed rendering**。具体排除以下 9 类**敏感信息**：
 
@@ -327,7 +327,7 @@ Option C 要求：**进入 paint 事件后，DOM 内容（除 canvas 自己的�
 
 ---
 
-## 7. 与旧方案对比
+## 与旧方案对比
 
 | 场景 | html2canvas 等库 | SVG `<foreignObject>` | HTML-in-Canvas |
 |------|------------------|----------------------|----------------|
@@ -342,7 +342,7 @@ Option C 要求：**进入 paint 事件后，DOM 内容（除 canvas 自己的�
 
 ---
 
-## 8. 浏览器支持与试用入口
+## 浏览器支持与试用入口
 
 | 引擎 | 状态 | 启用方式 |
 |------|------|---------|
@@ -364,7 +364,7 @@ Option C 要求：**进入 paint 事件后，DOM 内容（除 canvas 自己的�
 
 ---
 
-## 9. 关键 takeaway（面试向速查）
+## 关键 takeaway（面试向速查）
 
 | 问题 | 速答 |
 |------|------|
@@ -379,7 +379,7 @@ Option C 要求：**进入 paint 事件后，DOM 内容（除 canvas 自己的�
 
 ---
 
-## 10. 未来展望：自动更新 Canvas（暂未落地）
+## 未来展望：自动更新 Canvas（暂未落地）
 
 提案披露了一个**待实现**的"auto-updating canvas"模式：
 

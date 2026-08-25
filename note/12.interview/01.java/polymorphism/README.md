@@ -16,6 +16,28 @@ question:
 
 ---
 
+## 引子：一道让 80% 候选人翻车的多态题
+
+```java
+class Parent {
+    public static void greet()    { System.out.println("Parent static"); }
+    public void sayHello()        { System.out.println("Parent hello"); }
+}
+class Child extends Parent {
+    public static void greet()    { System.out.println("Child static"); }
+    public void sayHello()        { System.out.println("Child hello"); }
+}
+
+Parent p = new Child();
+p.greet();     // 输出什么？
+p.sayHello();  // 输出什么？
+```
+
+很多人以为两个都输出 `Child`——结果 `greet()` 输出的是 `Parent static`。
+同一个引用、同一个对象，为什么一个方法看引用类型，另一个看实际类型？答案藏在 JVM 的 3 条字节码指令里：`invokestatic` 编译期绑定，`invokevirtual` 运行期查 vtable 动态分派。搞不清这个区别，面试遇到多态题必翻车。
+
+---
+
 ## 🎯 4 大核心题
 
 ### Q1：编译时多态 vs 运行时多态有什么区别？

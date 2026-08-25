@@ -16,6 +16,24 @@ question:
 
 ---
 
+## 引子：索引明明覆盖了，为什么还 filesort？
+
+```text
+场景：线上慢查询告警，SQL 如下——
+  SELECT * FROM orders WHERE user_id = 100 ORDER BY create_time;
+  已有联合索引 idx_uid_ctime(user_id, create_time)
+
+EXPLAIN 结果：
+  type: ref
+  Extra: Using filesort  ← ⚠️ 明明索引覆盖了 WHERE + ORDER BY！
+
+查询耗时：无 filesort 时 2ms，有 filesort 时 380ms（190 倍差距）
+```
+
+联合索引完全覆盖了 WHERE 和 ORDER BY 的列，按道理应该直接走索引有序扫描，为什么 EXPLAIN 还显示 `Using filesort`？这通常是 5 个原因之一：排序方向不一致、范围查询截断、隐式类型转换、字符集 collation 差异、索引列不连续。每一个都能让索引"看得见却用不上"。
+
+---
+
 ## 🎯 面试高频拷问
 
 ```text

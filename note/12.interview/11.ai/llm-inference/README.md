@@ -16,6 +16,19 @@ question:
 
 ---
 
+## 引子：7B 模型生成 1000 token 要多久？
+
+```text
+面试官：LLM 推理时没有 KV Cache，生成 1000 token 大概要多久？
+你：……每个 token 都要重新算所有历史的 Attention？
+面试官：对。那 PagedAttention 为什么能让 vLLM 吞吐提升 24 倍？
+你：……跟 OS 虚拟内存分页有什么关系？
+```
+
+没 KV Cache 时 7B 模型生成 1000 token 要 **50 秒**，有了只需 **5 秒** —— 10 倍差距。vLLM 靠 PagedAttention 把碎片从 60-80% 压到 < 4%，吞吐提升 4-24 倍；Continuous Batching 把调度粒度降到 token 级，利用率从 40% 拉到 90%+。这些数字背后的推理优化原理，是面试高频区。
+
+---
+
 ## 🎯 5 大核心题
 
 ### Q1：KV Cache 是什么？为什么必须有？
