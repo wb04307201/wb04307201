@@ -1,7 +1,7 @@
 <!--
 module:
-  parent: system-design
-  slug: system-design/design-patterns
+  parent: system-design-basics
+  slug: 06.distributed-systems/system-design-basics/design-patterns
   type: article
   category: 主模块子文章
   summary: GoF《设计模式》提出的 23 种经典设计模式，分为创建型（5）、结构型（7）、行为型（11）三类，是可复用面向对象软件的基础词汇表。
@@ -11,9 +11,15 @@ module:
 
 > **定位**：GoF 23 种经典设计模式，按创建型 / 结构型 / 行为型分类，是可复用面向对象软件的基础词汇表。
 
-## 引言：GoF设计模式/23种设计模式 的关键决策
+## 引言：设计模式落地的 5 个 trade-off
 
-本篇是「GoF设计模式/23种设计模式」的核心章节，聚焦"该主题"在实际落地时**5 个 trade-off 的取舍与决策轴**。
+模式不是越多越好——每个模式都在用一种代价换一种收益。落地前先过这 5 个决策轴：
+
+1. **灵活性 ↔ 复杂度**：每引入一层抽象（工厂/代理/装饰器）就多一层间接。类数 < 10 的小系统直接 new，比套三层工厂可读性高得多。
+2. **复用性 ↔ 耦合度**：单例/静态工厂提供全局访问点，换来的是隐式依赖——单元测试无法 mock，重构时牵一发动全身。
+3. **性能 ↔ 可维护性**：代理、装饰器、反射调用都有运行时开销；享元用共享换内存但引入外部状态管理复杂度。热点路径上先量化再套模式。
+4. **编译期安全 ↔ 运行期灵活**：策略模式用接口 + 运行期注入换算法可切换，代价是丢失编译期的穷举检查（漏配一个策略分支编译器不报错）。
+5. **模式词汇 ↔ 过度设计**：面试和代码评审中"这是标准观察者模式"能大幅降低沟通成本；但为未来可能的变化预埋抽象（YAGNI 违背）是新手最常见的坑。
 
 ## 一、创建型模式（5种）
 
@@ -24,6 +30,26 @@ module:
 3. **抽象工厂模式（Abstract Factory）**：提供创建相关或依赖对象家族的接口，无需指定具体类。适用于需要创建一系列相关对象的场景。
 4. **建造者模式（Builder）**：将复杂对象的构建与其表示分离，支持分步骤构建和不同表示生成。适用于对象构造过程复杂且需灵活组合的场景。
 5. **原型模式（Prototype）**：通过复制现有实例创建新对象，避免重复初始化。适用于游戏敌人复制、文档模板克隆等场景，需处理深拷贝与浅拷贝问题。
+
+**创建型 ❌/✅ 对比（以单例为例）**：
+
+```java
+// ❌ 懒汉式双重检查缺 volatile —— 指令重排下其他线程拿到未初始化完成的实例
+private static Config config;
+public static Config getInstance() {
+    if (config == null) {                  // 第一次检查无锁
+        synchronized (Config.class) {
+            if (config == null) config = new Config();  // 重排：分配内存→赋引用→初始化
+        }
+    }
+    return config;
+}
+
+// ✅ volatile 禁止重排；更推荐静态内部类或枚举（JVM 保证线程安全 + 防反射/序列化破坏）
+public enum Config {
+    INSTANCE;
+}
+```
 
 ## 二、结构型模式（7种）
 
@@ -36,6 +62,18 @@ module:
 5. **外观模式（Facade）**：为复杂子系统提供统一接口，简化调用。适用于一键启动电脑等场景。
 6. **享元模式（Flyweight）**：共享细粒度对象，减少内存消耗。适用于文本编辑器字符池等场景。
 7. **代理模式（Proxy）**：控制对象访问，支持延迟加载、权限验证等功能。类型包括虚拟代理、保护代理、远程代理。
+
+**结构型 ❌/✅ 对比（以装饰器替代继承为例）**：
+
+```java
+// ❌ 继承爆炸：日志 + 重试 + 缓存每种组合一个子类 → 2^3 = 8 个类
+class LoggedCachedRetriedDataSource extends DataSource { /* ... */ }
+
+// ✅ 装饰器运行时组合：3 个装饰器类任意堆叠，职责各自独立
+DataSource ds = new LoggingDecorator(
+    new RetryDecorator(
+        new CacheDecorator(new JdbcDataSource())));
+```
 
 ## 三、行为型模式（11种）
 
@@ -52,6 +90,38 @@ module:
 9. **中介者模式（Mediator）**：封装对象交互，降低耦合度。适用于聊天室等场景。
 10. **备忘录模式（Memento）**：保存与恢复对象状态，支持撤销操作。适用于文本编辑器撤销功能等场景。
 11. **解释器模式（Interpreter）**：定义语言文法并实现解释器，支持语言扩展。适用于SQL解析等场景。
+
+**行为型 ❌/✅ 对比（以策略替代 if-else 为例）**：
+
+```java
+// ❌ 新增支付方式必改此方法（违反开闭原则），分支越堆越长
+if ("alipay".equals(type)) { /* ... */ }
+else if ("wechat".equals(type)) { /* ... */ }
+else if ("unionpay".equals(type)) { /* ... */ }
+
+// ✅ 策略族 + 注册表：新增支付渠道只加一个实现类
+Map<String, PayStrategy> strategies;   // Spring 自动注入所有实现
+strategies.get(type).pay(order);       // 类型缺失直接暴露，不静默走错分支
+```
+
+## 四、Top 5 高频模式 Java 骨架
+
+面试与生产出现率最高的 5 个模式，骨架代码（一行看懂结构）：
+
+| 模式 | 一行骨架 | 生产实例 |
+|------|---------|---------|
+| 单例 | `enum Singleton { INSTANCE; }` | Spring 容器内 Bean 默认即单例 |
+| 工厂方法 | `interface Factory { Product create(); }` | `Collection.iterator()` |
+| 代理 | `class Proxy implements Iface { Iface target; /* 增强后委托 */ }` | Spring AOP（JDK 动态代理 / CGLIB） |
+| 观察者 | `publisher.register(subscriber); publisher.notify(event)` | Spring `ApplicationEventPublisher` |
+| 策略 | `Map<String, Strategy> registry; registry.get(k).run()` | 支付路由 / 限流算法切换 |
+
+## 五、GoF 1994 → 现代语言演进
+
+- **1994 GoF 原著**：23 模式基于 C++/Smalltalk——许多模式在"补"语言缺失的能力（用接口模拟函数一等公民）。
+- **Java 8+ 函数式简化**：策略/观察者/模板方法可用 lambda 一行表达，模式"隐形化"——`list.sort(Comparator.comparing(...))` 就是策略。
+- **框架内置化**：Spring（IoC 容器 = 工厂 + 单例 + 代理全家桶）、MyBatis（装饰器缓存执行器、代理映射接口）——业务代码不再手写模式，但要**读得懂框架里的模式**才能调对扩展点。
+- **反模式共识**：现代评审更警惕"模式炫技"——不必要的抽象层（过度设计）与缺失的抽象（if-else 泥球）同样是坏味道，判断标准是**变化是否真的发生**。
 
 ---
 

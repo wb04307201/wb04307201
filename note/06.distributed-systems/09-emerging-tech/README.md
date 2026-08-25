@@ -1,10 +1,10 @@
 <!--
 module:
-  parent: system-design
-  slug: system-design/09-emerging-tech
+  parent: distributed-systems
+  slug: 06.distributed-systems/09-emerging-tech
   type: index
   category: 主模块子文章
-  summary: 一句话定位：**新兴技术是架构师的前瞻视野——eBPF 重塑可观测、WebAssembly 突破语言边界、服务网格重塑通信、云原生趋势定义未来 5 年。**
+  summary: 新兴技术是架构师的前瞻视野——eBPF 重塑可观测、WebAssembly 突破语言边界、服务网格重塑通信、云原生趋势定义未来 5 年。
 -->
 
 # 新兴技术
@@ -81,4 +81,4 @@ graph TB
 
 ---
 
-← [返回 04.system-design 主模块](../README.md)
+← [返回 06.distributed-systems 主模块](../README.md)

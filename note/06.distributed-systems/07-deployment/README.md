@@ -1,8 +1,8 @@
 <!--
 module:
-  parent: system-design
-  slug: system-design/07-deployment
-  type: article
+  parent: distributed-systems
+  slug: 06.distributed-systems/07-deployment
+  type: index
   category: 主模块子文章
   summary: 从单机到 K8s、从蓝绿发布到可观测性——部署架构决定物理形态，发布策略决定变更可控。
 -->
@@ -87,4 +87,4 @@ graph TD
 
 ---
 
-← [返回 04.system-design 主模块](../README.md)
+← [返回 06.distributed-systems 主模块](../README.md)
