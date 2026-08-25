@@ -52,10 +52,10 @@ module:
 |----------|------|------|
 | 分类主题数 | 5 | 顶层 5 个分类目录（算法 / OS / 网络 / 运维 / 知识产权） |
 | 子 README 总数 | 39 | 含 5 个分类 README + 34 个 leaf README（depth ≥ 2） |
-| 含 frontmatter 的 README | 待统计 | Phase 2+ 验证 |
+| 含 frontmatter 的 README | 39（100%） | 39 个子 README 全部含 frontmatter |
 | 配套面试题 | 11 篇 | `12.interview/02.computer-basics/` 下 question 文章数（5 个独立题 + machine-learning 6 大算法拆分题） |
 
-> **统计时间戳**：2026-08-25（note-health 全库体检校对：子 README 25→39，面试题 13→11）
+> **统计时间戳**：2026-08-25（note-health 全库体检校对：子 README 39 ✓，frontmatter 覆盖 39/39 = 100%，面试题 11 ✓）
 
 ---
 

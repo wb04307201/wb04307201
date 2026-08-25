@@ -84,7 +84,7 @@ question:
 
 **架构**：
 
-```
+```text
 用户登录 → 服务端生成 SessionId → Redis 存 {userId, deviceId, loginTime, expireAt}
 后续请求 → Cookie 携带 SessionId → 网关查 Redis 验证
 踢下线 → Redis DEL session:xxx → 下次请求 401
@@ -118,7 +118,7 @@ SET user:1001:sessions '["abc123","def456"]' EX 7200
 
 **架构**：
 
-```
+```text
 登录 → 签发 JWT（含 userId, exp, jti） → 返回前端
 请求 → 携带 JWT → 服务端校验签名 + 有效期 + 查黑名单
 踢下线 → 把 jti 加入 Redis 黑名单（带 TTL = 剩余有效期）
@@ -162,7 +162,7 @@ SET blacklist:jti:abc123 "1" EX 900   # 15 分钟 = Access Token 剩余有效期
 
 **架构**：
 
-```
+```text
 登录 → 签发短期 Access Token（15min）+ 长期 Refresh Token（30d）
 请求 → 携带 Access Token → 服务端只校验签名 + 有效期（不查 Redis）
 踢下线 → 服务端禁用 Refresh Token（Redis 标记 revoked=true）
@@ -187,7 +187,7 @@ SET refresh:rt_xyz789 '{"userId":1001,"deviceId":"iPhone","revoked":true}' EX 25
 
 **Refresh Token 一次性使用（防重放）**：
 
-```
+```text
 换新流程：
 1. 客户端带旧 Refresh Token 请求 /refresh
 2. 服务端检查：是否被禁用？是否已被使用？
@@ -213,7 +213,7 @@ SET refresh:rt_xyz789 '{"userId":1001,"deviceId":"iPhone","revoked":true}' EX 25
 
 **架构**：
 
-```
+```text
 用户 → API 网关（多节点）→ 会话服务（独立微服务，存 Redis Cluster）
 会话服务 → 颁发凭证 → API 网关本地缓存 + Redis 权威存储
 踢下线 → 会话服务 → MQ 广播（Kafka） → 所有 API 网关节点更新本地缓存
@@ -227,7 +227,7 @@ SET refresh:rt_xyz789 '{"userId":1001,"deviceId":"iPhone","revoked":true}' EX 25
 
 **架构示意**：
 
-```
+```text
 ┌─────────────────────────────────────────────────────┐
 │  API 网关 1       API 网关 2       API 网关 3        │
 │  ┌──────────┐    ┌──────────┐    ┌──────────┐      │
@@ -377,7 +377,7 @@ LoadingCache<Long, Boolean> userStatusCache = Caffeine.newBuilder()
 
 **优化 2：MQ 广播**
 
-```
+```text
 踢下线流程：
 1. 管理员点击"踢人" → 会话服务
 2. 会话服务写 Redis（权威状态）
@@ -479,7 +479,7 @@ redis.pipelined()
 
 **token 一次性使用**（防重放攻击）：
 
-```
+```text
 Refresh Token 换新流程：
 1. 客户端带旧 RT 请求 /refresh
 2. 服务端检查：是否被禁用？是否已被使用？
@@ -543,7 +543,7 @@ redis.set("blacklist:" + jti, "1", SetArgs.ex(ttl / 1000));  // 自动过期
 
 **答**：Redis List 存储 active sessions：
 
-```
+```text
 登录时：
 1. LPUSH user:1001:sessions newSessionId
 2. 检查 LRANGE user:1001:sessions 0 -1 长度

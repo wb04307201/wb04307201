@@ -393,7 +393,7 @@ public class SysUserController extends BaseController {
 
 ### 5.1 模板位置
 
-```
+```text
 src/main/resources/
 └── templates/
     ├── entity.java

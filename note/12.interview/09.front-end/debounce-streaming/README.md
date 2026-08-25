@@ -79,7 +79,7 @@ eventSource.onmessage = (event) => {
 
 ### 2.1 延迟累积（用户体验灾难）
 
-```
+```text
 时间轴（假设防抖延迟 300ms，流式持续 10 秒）：
 
 0ms    → chunk 1 到达，防抖开始计时
@@ -194,7 +194,7 @@ const handleStream = (chunk) => {
 
 ### 3.2 方案选择决策树
 
-```
+```text
 流式数据处理
 ├── 需要逐字显示？
 │   ├── 是 → requestAnimationFrame（60fps 平滑渲染）

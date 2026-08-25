@@ -85,7 +85,7 @@ question:
 
 ### 2.3 ACP 核心消息流
 
-```
+```text
 [Editor] ──initialize──> [Agent]
 [Editor] <──capabilities── [Agent]
 [Editor] ──session/new──> [Agent]

@@ -162,7 +162,7 @@ GET products/_search
 
 **架构**：
 
-```
+```text
 商品数据 → 离线构建 Trie 树（前缀 → Top 10）
         → 序列化为 Redis 字符串
         → 加载到 Redis（按业务分 key）
@@ -198,7 +198,7 @@ GET products/_search
 
 **架构**：
 
-```
+```text
 商品 → Kafka → Flink 实时计算（权重整合）
                 ↓
         ES + 自定义 rescore（实名商家加权）
@@ -250,7 +250,7 @@ GET products/_search
 
 **Trie 树**（字典树）：每个节点存 Top 10 + 子节点指针
 
-```
+```text
 root
 ├─ p → [苹果(verified), 葡萄] (Top 2)
 │   ├─ pi → [苹果] (Top 1)
@@ -329,7 +329,7 @@ def compute_score(product, user):
 
 ### 4.3 增量更新流程
 
-```
+```text
 商家状态变化（实名 / 下架 / 改价）
   ↓
 Kafka 事件（topic=product_update）
@@ -343,7 +343,7 @@ Kafka 事件（topic=product_update）
 
 **示例**：商家"苹果旗舰店"通过实名认证
 
-```
+```text
 1. Kafka 事件：{ merchant_id: 123, verified: true }
 2. 查出商家所有商品名：["苹果", "苹果 12", "苹果笔记本"]
 3. 计算所有前缀：
@@ -399,7 +399,7 @@ function getTypeahead(text) {
 
 ### 5.1 缓存分层
 
-```
+```text
 用户输入"苹"
   ↓
 L1 本地 Caffeine（5s TTL，size=10万）→ 命中返回（80% 流量）

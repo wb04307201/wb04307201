@@ -302,7 +302,7 @@ wrapper.last("LIMIT 10");
 
 ## 十、推荐学习路径
 
-```
+```text
 Day 1: 01-quickstart + 02-crud-basics  → 上手 80% 场景
 Day 2: 03-wrapper-system + 04-lambda-wrapper  → 链式写条件
 Day 3: 05-sfunction-deep-dive  → 理解 Lambda 原理

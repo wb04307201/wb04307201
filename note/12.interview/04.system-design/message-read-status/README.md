@@ -65,7 +65,7 @@ CREATE TABLE message_read_status (
 
 ### 1.2 方案二：位图 Bitmap（写扩散 + 空间压缩）—— 大厂标配
 
-```
+```text
 位图本质：用 1 个 bit 代表一个用户的已读状态
 
 消息 msg_1001 → Bitmap: 00101000000000100... (每位 = 1个user_id)

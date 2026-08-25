@@ -382,7 +382,7 @@ public class UserEventListener {
 
 ### 9.1 调用链路全景
 
-```
+```text
 publisher.publishEvent(event)
   └─ AbstractApplicationContext.publishEvent()
        ├─ 1. 包装：如果不是 ApplicationEvent → 包装为 PayloadApplicationEvent
@@ -432,7 +432,7 @@ public void onUserRegistered(UserRegisteredEvent event) { ... }
 
 ### 10.1 核心机制：TransactionSynchronizationManager
 
-```
+```text
 @TransactionalEventListener(phase = AFTER_COMMIT) 的注册过程：
 
 1. EventListenerMethodProcessor 扫描到 @TransactionalEventListener 方法
@@ -456,7 +456,7 @@ public void onUserRegistered(UserRegisteredEvent event) { ... }
 
 ### 10.2 关键类关系
 
-```
+```text
 TransactionInterceptor（@Transactional 的 AOP 切面）
   └─ 调用 TransactionAspectSupport.invokeWithinTransaction()
        └─ 事务开始时：TransactionSynchronizationManager.initSynchronization()

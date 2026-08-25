@@ -119,7 +119,7 @@ wrapper.eq(User::getName, "Tom")    // 方法引用,编译期类型检查
 
 ## 四、4 大构造器选型决策树
 
-```
+```text
 是否要更新数据?
 ├── 是 → 是否需要类型安全?
 │        ├── 是 → LambdaUpdateWrapper<T>

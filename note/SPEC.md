@@ -17,7 +17,7 @@
 
 ### 2. commit 格式
 
-```
+```text
 feat(note): 新增内容
 refactor(note): 结构调整
 fix(note): 修复
@@ -35,7 +35,7 @@ docs: 文档
 
 仅"知识文章"（非 SPEC.md / README.md / index.md）使用：
 
-```
+```text
 <!--module:
   parent: <module-slug>
   slug: <article-slug>

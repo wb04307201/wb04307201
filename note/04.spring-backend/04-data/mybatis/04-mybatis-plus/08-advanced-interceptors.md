@@ -277,7 +277,7 @@ excludecategories=info,debug,result,resultset,batch,statement
 
 输出：
 
-```
+```text
 Consume Time：12 ms
 2026-01-15 10:30:00
 Execute SQL：

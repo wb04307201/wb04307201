@@ -312,7 +312,7 @@ seata:
 
 <details><summary>🔍 @GlobalTransactional 原理路径（AT 模式）</summary>
 
-```
+```text
 GlobalTransactionalInterceptor.invoke()
   → TransactionalTemplate.execute()
     → DataSourceProxy.ConnectionProxy 拦截 SQL

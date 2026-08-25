@@ -225,7 +225,7 @@ public interface StateMachinePersister<S, E, T> {
 
 <details><summary>🔍 StateMachinePersister 内部序列化流程</summary>
 
-```
+```java
 write(sm, orderId):
   StateMachineContext<S,E> ctx = sm.getStateMachineContext()  // 取当前状态快照
   // ctx 包含：当前 state、extendedState 变量、child contexts、history states

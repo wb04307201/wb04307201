@@ -6,7 +6,7 @@ module:
   type: index
   audience: 所有读者
   category: 主入口
-  summary: 14 个主模块的知识库总目录，含全局 SPEC 规范、模块导航、写作规范与 README 模板。
+  summary: 13 个主模块的知识库总目录，含全局 SPEC 规范、模块导航、写作规范与 README 模板。
 -->
 
 # note 总目录

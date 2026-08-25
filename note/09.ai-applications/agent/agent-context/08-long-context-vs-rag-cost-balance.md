@@ -65,7 +65,7 @@ module:
 
 **Lost in the Middle 现象**：
 
-```
+```text
 [P50 准确率] vs [信息在 prompt 中的位置]
 100% ┤
      │        ●
@@ -86,7 +86,7 @@ module:
 
 **不是"技术错"——是"成本贵"**：
 
-```
+```text
 成本拆解（1M token context）：
 ├─ 输入 token：$0.10-2.25（按模型不同）
 ├─ 输出 token：$0.30-15.00
@@ -109,7 +109,7 @@ module:
 
 **机制拆解**：
 
-```
+```text
 100 万本书（语料）
     ↓ Embedding + Index
 100K 候选 chunks
@@ -134,7 +134,7 @@ LLM 生成答案
 
 **不是二选一——是组合**：
 
-```
+```text
 2025 推荐默认架构：
 Hybrid = RAG（召回）+ Long Context（精读）+ Caching（降本）
         ↓                ↓                    ↓
@@ -200,7 +200,7 @@ Hybrid = RAG（召回）+ Long Context（精读）+ Caching（降本）
 
 **延迟来源拆解**：
 
-```
+```text
 TTFT 总延迟 = Prefill 时间 + Network + Queue
     ├─ Prefill：与 input tokens 成正比（O(n²) attention）
     ├─ 1K tokens：0.3s
@@ -226,7 +226,7 @@ Long Context 劣势：input tokens 翻 10×，TTFT 翻 ~5×
 
 **实际效果**：
 
-```
+```text
 单次 query 成本 = $0.30（read cache，1.25× 标准 read）
 复用 cache 后：$0.03（0.1× read）
 节省：90%
@@ -273,7 +273,7 @@ def select_strategy(query, corpus_size):
 
 **Hybrid = RAG + Long Context + Caching**：
 
-```
+```text
 [User Query]
     ↓
 [RAG 召回 top-N 文档]
@@ -311,7 +311,7 @@ def select_strategy(query, corpus_size):
 
 ### 5.2 成本-性能-质量三角（Trade-off）
 
-```
+```text
             性能（质量）
               /\
              /  \
@@ -476,13 +476,13 @@ Agent 收问题
 
 ### 9.1 Long Context 单次成本
 
-```
+```text
 Cost_LC = input_tokens × input_price + output_tokens × output_price
 ```
 
 **示例**（Claude 3.5 Sonnet，100K context + 1K output）：
 
-```
+```text
 Cost_LC = 100,000 × ($3.00 / 1M) + 1,000 × ($15.00 / 1M)
        = $0.300 + $0.015
        = **$0.315/query**
@@ -490,7 +490,7 @@ Cost_LC = 100,000 × ($3.00 / 1M) + 1,000 × ($15.00 / 1M)
 
 ### 9.2 RAG 单次成本
 
-```
+```text
 Cost_RAG = retrieval_cost + embedding_cost + LLM_cost(input_tokens, output_tokens)
          ≈ $0 + $0.0001 + (2,000 × $3.00/1M + 1,000 × $15.00/1M)
          ≈ **$0.021/query**
@@ -498,13 +498,13 @@ Cost_RAG = retrieval_cost + embedding_cost + LLM_cost(input_tokens, output_token
 
 **Long Context / RAG 成本比**：
 
-```
+```text
 $0.315 / $0.021 = **15× 差距**
 ```
 
 ### 9.3 Hybrid 单次成本
 
-```
+```text
 Cost_Hybrid = Cost_RAG + cache_miss_rate × Cost_LC
             ≈ $0.021 + 0.10 × $0.315
             ≈ **$0.053/query**
@@ -549,7 +549,7 @@ Cost_Hybrid = Cost_RAG + cache_miss_rate × Cost_LC
 
 **答案**：
 
-```
+```text
 Hybrid = RAG（召回 top-N）+ Long Context（读全文）+ Caching（复用）
 ```
 
