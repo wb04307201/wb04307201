@@ -60,3 +60,7 @@ graph TD
 - 对比：[`04.spring-backend/04-data`](../../../README.md) — Spring 数据层全景
 
 - [08-class-diagram](08-class-diagram.md)
+
+---
+
+← [返回: MyBatis 架构与原理](README.md)

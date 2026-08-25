@@ -290,3 +290,7 @@ public void call() { ... }
 
 - [webclient](../02-web/webflux/webclient.md)
 - [batch](batch.md)
+
+---
+
+← [返回: 集成组件](../README.md)

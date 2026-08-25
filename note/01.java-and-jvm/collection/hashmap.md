@@ -461,3 +461,5 @@ map.replaceAll((k, v) -> v * 2);
 - [large-data-into-hashmap](hashmap-performance.md)
 - [replace-linkedlist-with-hashset](../../12.interview/01.java/replace-linkedlist-with-hashset/README.md)
 - [sort-map](../../12.interview/01.java/sort-map/README.md)
+
+← [返回: Java 集合框架](README.md)

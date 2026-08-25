@@ -174,3 +174,7 @@ RESTful 风格中 `POST /users` 与 `PUT /users/{id}` 共用 `UserDTO` 是常见
 - [exception](../../08-annotations/exception.md)
 - [validation](../../08-annotations/validation.md)
 - [web](../../08-annotations/web.md)
+
+---
+
+← [返回: Spring Validation 校验框架](README.md)

@@ -225,3 +225,5 @@ TOGAF 10 通过 **Open Agile Architecture™** 标准（2025 年发布 2.0）与
 - ➡️ [下一篇：架构治理 + 落地实践](architecture-governance.md)
 - [微服务架构](../microservices/README.md) — 康威定律与微服务边界
 - [Team Topologies 官网](https://teamtopologies.com/) — 团队拓扑原始资料
+
+← [返回: 企业架构（TOGAF 10）](README.md)

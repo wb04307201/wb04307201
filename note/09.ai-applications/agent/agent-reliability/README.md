@@ -264,6 +264,10 @@ search 返回空结果
 
 - 在线监控（⚠️ 待 Phase 1+ 迁入；占位 `[../../llm-inference/llmops/production-stability/05-online-monitoring.md`） — 4 维监控 + Trace
 
+### 本专题文章
+
+- [LLM 安全攻防实战](llm-security/) — OWASP LLM Top 10 + 6 层纵深防御 + Guardrails 实战
+
 ## 📚 参考来源
 
 1. Anthropic Claude Agent 最佳实践（2026）— Agent 可靠性与成本控制的工程指南

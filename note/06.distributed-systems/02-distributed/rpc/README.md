@@ -92,6 +92,7 @@ sequenceDiagram
 ## 专题导航
 
 - [Apache Dubbo](apache-dubbo/README.md) — 阿里开源高性能 Java RPC 框架（服务治理、负载均衡、集群容错）
+- [RPC和REST](rpc-and-rest/README.md) — RPC与REST两种分布式通信风格的对比与融合趋势
 
 ---
 

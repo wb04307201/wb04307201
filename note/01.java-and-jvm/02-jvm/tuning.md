@@ -868,3 +868,5 @@ YGC 频率：从 30 秒 → 25 秒（新生代小了一点，略频繁，可接�
 - [reuse-of-stringbuilder](../../12.interview/01.java/reuse-of-stringbuilder/README.md)
 - [try-catch-performance](../../12.interview/01.java/try-catch-performance/README.md)
 
+← [返回: JVM](README.md)
+

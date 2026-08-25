@@ -97,6 +97,7 @@ CPU 运行在两个特权级别（Ring），操作系统通过特权级隔离保
 | 02 | [内存管理](memory/) | 虚拟内存 · 分页/分段 · 页表/TLB · 页面置换 | [memory/README](memory/README.md) |
 | 03 | [CPU 调度](scheduling/) | 调度算法 · Linux CFS · 上下文切换 · CPU 亲和性 | [scheduling/README](scheduling/README.md) |
 | 04 | [文件系统与 I/O](filesystem/) | VFS/inode · 文件描述符 · I/O 模型 · epoll | [filesystem/README](filesystem/README.md) |
+| 05 | [Linux 常用命令](linux/) | 服务器管理常用命令分类整理 · 核心用法与典型场景 | [linux/README](linux/README.md) |
 
 ---
 
@@ -198,8 +199,8 @@ graph TB
 
 | 统计维度 | 数值 | 口径 |
 |----------|------|------|
-| 子文章数 | 4 | processes / memory / scheduling / filesystem |
-| 子 README 数 | 5 | 含本 index + 4 个子文章 README |
+| 子文章数 | 5 | processes / memory / scheduling / filesystem / linux |
+| 子 README 数 | 6 | 含本 index + 5 个子文章 README |
 | 含 frontmatter 的 README | 5 / 5 | 100% 覆盖（2026-07-16） |
 
 > **统计时间戳**：2026-07-16

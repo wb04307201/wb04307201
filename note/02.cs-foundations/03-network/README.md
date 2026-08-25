@@ -84,6 +84,7 @@ module:
 | [HTTP 演进](02-http/README.md) | HTTP/1.1 → HTTP/2 → HTTP/3 (QUIC) + 缓存/状态码/性能优化 |
 | [DNS 解析](03-dns/README.md) | 域名解析流程 + 递归/迭代查询 + DNS 缓存与负载均衡 |
 | [HTTPS / TLS](04-https-tls/README.md) | TLS 1.3 握手 + 对称/非对称加密 + 证书体系 + 性能开销 |
+| [TCP 握手与挥手](tcp-handshake-teardown/README.md) | 三次握手 + 四次挥手 + TIME_WAIT/2MSL + 5 大反模式 |
 
 ---
 
@@ -91,9 +92,9 @@ module:
 
 | 统计维度 | 数值 | 口径 |
 |----------|------|------|
-| 分类主题数 | 7 | osi-model / tcp-ip-model / protocols（含 2 子专题） + 4 篇编号子 README（tcp-ip/http/dns/https-tls） |
-| 子 README 数 | 10 | 含 tcp-ip-model / protocols/http-evolution / protocols/tcp-packet 等深层 leaf |
-| 含 frontmatter 的 README | 11 / 11 | 100% 覆盖（2026-07-01） |
+| 分类主题数 | 8 | osi-model / tcp-ip-model / tcp-handshake-teardown / protocols（含 2 子专题） + 4 篇编号子 README（tcp-ip/http/dns/https-tls） |
+| 子 README 数 | 11 | 含 tcp-ip-model / tcp-handshake-teardown / protocols/http-evolution / protocols/tcp-packet 等深层 leaf |
+| 含 frontmatter 的 README | 12 / 12 | 100% 覆盖（2026-07-01） |
 
 > **统计时间戳**：2026-07-01
 

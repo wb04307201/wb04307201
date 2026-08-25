@@ -3,12 +3,12 @@
   slug: ai-applications/llm-inference
   type: index
   category: AI 应用子 MOC
-  summary: LLM 推理工程——KV Cache / Flash Attention / Paged Attention / 推测解码 / 连续批处理 / 权重量化 11 大主题。
+  summary: LLM 推理工程——KV Cache / Flash Attention / Paged Attention / 推测解码 / 连续批处理 / 权重量化 12 大主题。
 -->
 
 # LLM Inference（LLM 推理工程）
 
-> **定位**：MOC——LLM 推理工程主题索引，覆盖 KV Cache / Flash Attention / 推理框架 / 推理指标 / 推理优化 / vLLM vs Ollama / MoE 推理 / Paged Attention / 推测解码 / 连续批处理 / 权重量化。
+> **定位**：MOC——LLM 推理工程主题索引，覆盖 KV Cache / Flash Attention / 推理框架 / 推理指标 / 推理优化 / vLLM vs Ollama / MoE 推理 / Paged Attention / 推测解码 / 连续批处理 / 权重量化 / Token 计费。
 > **继承规范**：[../SPEC.md](../SPEC.md)
 
 ## 主题清单
@@ -26,6 +26,7 @@
 | 9 | 推理优化专题 | [llm-inference-optimization/](llm-inference-optimization/README.md) | 10 章推理优化综述 |
 | 10 | MoE 推理 | [moe-inference/](moe-inference/README.md) | Mixture of Experts 推理特性 |
 | 11 | vLLM vs Ollama | [vllm-vs-ollama/](vllm-vs-ollama/README.md) | 8 章 vLLM 与 Ollama 横评 + 决策树 |
+| 12 | Token 与计费 | [token-billing/](token-billing/README.md) | BPE/WordPiece 分词 + 上下文窗口 + 计费公式 |
 
 ## 阅读路径
 

@@ -9,11 +9,11 @@ module:
 
 # Spring 咬文嚼字
 
-> Spring 高频面试题与细节深挖，对齐主模块 [`06.spring`](../../../note/04.spring-backend/)。16 篇真题覆盖 IoC / Bean 生命周期 / AOP / @Transactional / 循环依赖 / 自动配置 / Spring MVC / 事件 / **Spring Security** / **Spring Cloud** 10 大方向（find 校对 2026-07-19）。
+> Spring 高频面试题与细节深挖，对齐主模块 [`06.spring`](../../../note/04.spring-backend/)。15 篇真题覆盖 IoC / Bean 生命周期 / AOP / @Transactional / 循环依赖 / 自动配置 / Spring MVC / 事件 / **Spring Security** / **Spring Cloud** 10 大方向（find 校对 2026-07-19）。
 
 ---
 
-## 文章清单（共 16 题，find 校对 2026-07-19）
+## 文章清单（共 15 题，find 校对 2026-08-25）
 
 ### 基础
 | 主题 | 难度 | 核心问题 |

@@ -15,7 +15,7 @@ module:
 
 ---
 
-## 文章清单（共 39 篇，find 校对 2026-08-10）
+## 文章清单（共 39 篇，find 校对 2026-08-25）
 
 ### 集合与数据结构
 | 主题 | 难度 | 核心问题 |
@@ -72,6 +72,7 @@ module:
 | [接口 vs 抽象类](interface-vs-abstract/) | ⭐⭐⭐ | 6 维对比 + 设计哲学 + JDK 8+ 变化 + 选择原则 |
 | [Integer 缓存](integer-cache/) | ⭐⭐⭐ | -128 到 127 的复用机制与陷阱 |
 | [new String("123") 创建几个对象](new-string/) | ⭐⭐⭐⭐ | 字符串常量池 vs 堆 |
+| **🆕 [多态深挖](polymorphism/)** | ⭐⭐⭐⭐ | 编译时 vs 运行时 / vtable / default 冲突 / @Override |
 
 ### 设计模式与技巧
 | 主题 | 难度 | 核心问题 |

@@ -196,6 +196,7 @@ Q4: 是否需要灵活性 > 稳定性？
 - 关联：[Agent Memory 架构](../agent-memory/README.md) — Memory × Agent 执行架构（DAG/ReAct/Plan 的 Memory 特殊要求）
 - 关联：Loop Engineering — ⚠️ 待 Phase 1+ 迁入（占位 `../agent-execution-patterns/loop-engineering/`） — DAG 的兜底机制
 - 关联：Harness Engineering — ⚠️ 待 Phase 1+ 迁入（占位 `../agent-execution-patterns/harness-engineering/`） — DAG 是 Harness 的强约束
+- 关联：[LLM 驾驭演进史](llm-control-evolution/README.md) — Prompt → Context → Harness → Loop 4 阶段演进叙事
 - 实战：[生产级 Agent](../production-agent/README.md) — DAG 在生产环境的落地
 
 ← [返回 Agent MOC](../README.md)

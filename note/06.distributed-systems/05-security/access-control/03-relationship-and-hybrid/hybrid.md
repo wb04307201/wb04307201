@@ -129,3 +129,7 @@ public class OrderService {
 - 族内：[ReBAC](rebac.md) — 复杂协作场景的进一步升级
 - 跨族：[RBAC](../02-role-and-attribute/rbac.md) / [ABAC](../02-role-and-attribute/abac.md)
 - 总章：[选型决策树](../README.md#3-选型决策树) — 何时该用本混合模型
+
+---
+
+← [返回: 关系与混合族](README.md)

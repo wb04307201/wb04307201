@@ -9,11 +9,11 @@ module:
 
 # 前端咬文嚼字
 
-> 前端高频面试题与细节深挖，对齐主模块 [`09.front-end`](../../../note/09.front-end/)。28 篇真题覆盖 JS 核心 / HTTP / CSS / 浏览器机制 / 工具测试 / 框架 / 安全 / 工程迁移 / Promise 9 大方向（find 校对 2026-08-17；BFC / GET vs POST 已迁出至主模块；🆕 含 Vue 大列表性能调优实战）。
+> 前端高频面试题与细节深挖，对齐主模块 [`09.front-end`](../../../note/09.front-end/)。28 篇真题覆盖 JS 核心 / HTTP / CSS / 浏览器机制 / 工具测试 / 框架 / 安全 / 工程迁移 / Promise 9 大方向（find 校对 2026-08-17；BFC / GET vs POST 已迁出至主模块；🆕 含 Vue 大列表性能调优实战、async/await 错误处理深挖）。
 
 ---
 
-## 文章清单（共 28 题，find 校对 2026-08-17）
+## 文章清单（共 28 题，find 校对 2026-08-25）
 
 ### JavaScript 核心
 | 主题 | 难度 | 核心问题 |
@@ -24,6 +24,7 @@ module:
 | [this 绑定规则](this-binding/) | ⭐⭐⭐⭐ | 默认 / 隐式 / 显式 / new / 箭头函数 |
 | [防抖 + 节流手写](debounce-throttle/) | ⭐⭐⭐⭐ | debounce / throttle 实现与应用场景 |
 | [防抖流式场景不合适](debounce-streaming/) | ⭐⭐⭐⭐ | AI/SSE 流式输出中的 3 大问题 + 正确方案 |
+| 🆕 [async/await 必须 try/catch 吗](async-await-try-catch/) | ⭐⭐⭐⭐⭐ | 4 种错误处理方式 + 5 反模式 + React/Vue 全链路 |
 
 ### HTTP 与网络
 | 主题 | 难度 | 核心问题 |

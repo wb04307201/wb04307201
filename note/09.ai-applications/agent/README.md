@@ -19,14 +19,17 @@
 | 2 | Agent 长上下文 | [agent-context/](agent-context/README.md) | 6 大策略（Chunking/RAG/Memory/Sliding Window/Sub-Agents/Long-Context） |
 | 3 | Agent 评测 | [agent-evaluation/](agent-evaluation/README.md) | 6 大评测维度 + 5 种方法 + 阿里一面实战 + 7 反模式 |
 | 4 | Agent 4 大执行模式 | [agent-execution-patterns/](agent-execution-patterns/README.md) | ReAct / Plan-and-Execute / DAG / Multi-Agent 6 维对比 + Planning-Acting-Monitoring |
-| 5 | Agent 记忆 | [agent-memory/](agent-memory/README.md) | 4 层记忆架构（working/episodic/semantic/procedural）+ Shared Memory |
-| 6 | Agent 可靠性 | [agent-reliability/](agent-reliability/README.md) | 4 大可靠性机制 + 失败恢复 + 监控 |
-| 7 | Agent Spec 工具 | [agent-spec-tools/](agent-spec-tools/README.md) | Superpowers / Spec-Kit / OpenSpec 三工具对比与组合 |
-| 8 | 真实案例 | [case-studies/](case-studies/README.md) | Salesforce Agentforce / Shopify AI Agent 等 |
-| 9 | 编程 Agent | [coding-agents/](coding-agents/README.md) | Claude Code / Codex / OpenCode / OMP 四大编程 Agent |
-| 10 | 本体驱动 Agent | [ontology-driven-agent/](ontology-driven-agent/README.md) | 本体论驱动的 Agent 架构 |
-| 11 | 生产级 Agent | [production-agent/](production-agent/README.md) | 生产环境 Agent 工程实践 |
-| 12 | 生产级 Agent 系统设计 | [production-agent-system-design/](production-agent-system-design/README.md) | 高可用 Agent 架构 + 容量评估 + 容灾 |
+| 5 | Loop 工程 | [loop-engineering/](loop-engineering/README.md) | 循环执行机制——自动修复 / 验证器 / 循环命令 / IDE 案例 |
+| 6 | Agent 记忆 | [agent-memory/](agent-memory/README.md) | 4 层记忆架构（working/episodic/semantic/procedural）+ Shared Memory |
+| 7 | Agent 可靠性 | [agent-reliability/](agent-reliability/README.md) | 4 大可靠性机制 + 失败恢复 + 监控 |
+| 8 | Agent Spec 工具 | [agent-spec-tools/](agent-spec-tools/README.md) | Superpowers / Spec-Kit / OpenSpec 三工具对比与组合 |
+| 9 | 真实案例 | [case-studies/](case-studies/README.md) | Salesforce Agentforce / Shopify AI Agent 等 |
+| 10 | 编程 Agent | [coding-agents/](coding-agents/README.md) | Claude Code / Codex / OpenCode / OMP 四大编程 Agent |
+| 11 | 本体驱动 Agent | [ontology-driven-agent/](ontology-driven-agent/README.md) | 本体论驱动的 Agent 架构 |
+| 12 | 生产级 Agent | [production-agent/](production-agent/README.md) | 生产环境 Agent 工程实践 |
+| 13 | 生产稳定性 | [production-stability/](production-stability/README.md) | 思维范式 / 成本控制 / 熔断 / 监控 / 选型决策树 |
+| 14 | 生产级 Agent 系统设计 | [production-agent-system-design/](production-agent-system-design/README.md) | 高可用 Agent 架构 + 容量评估 + 容灾 |
+| 15 | AI 平台 | [ai-platforms/](ai-platforms/README.md) | Coze / Dify / LangGraph / Spring AI 平台选型对比 |
 
 ## 阅读路径
 

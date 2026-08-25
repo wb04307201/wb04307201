@@ -345,3 +345,5 @@ graph TB
 - [ArchiMate 3.2 规范](https://pubs.opengroup.org/architecture/archimate3-doc/)
 - [Team Topologies](https://teamtopologies.com/)
 - [ADR 模板：log4brains](https://github.com/fundon/adr-tools)
+
+← [返回: 企业架构（TOGAF 10）](README.md)

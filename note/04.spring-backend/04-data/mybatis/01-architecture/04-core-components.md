@@ -123,3 +123,7 @@ System.out.println("SQL 执行耗时: " + duration + "ms");
 ## 反向链
 
 - [08-class-diagram](08-class-diagram.md)
+
+---
+
+← [返回: MyBatis 架构与原理](README.md)

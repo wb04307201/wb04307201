@@ -31,7 +31,7 @@ module:
 | 十一、Index Merge | 多个单列索引合并 | Intersection / Union / Sort-Union |
 | 十二、Cardinality 与索引选择性 | 索引列唯一值数量 | 选择性 > 0.1 才有价值 |
 | 十三、Online DDL | INPLACE / INSTANT | pt-osc / gh-ost |
-| **🆕 十四、联合索引 + filesort** | 5 大原因 + EXPLAIN 排查 | 排序方向 / 范围截断 / 类型转换 / collation / 列不连续 |
+| **🆕 [十四、联合索引 + filesort](composite-index-filesort/)** | 5 大原因 + EXPLAIN 排查 | 排序方向 / 范围截断 / 类型转换 / collation / 列不连续 |
 
 ---
 
@@ -448,10 +448,10 @@ ALTER TABLE users ADD INDEX idx_email (email), ALGORITHM=INPLACE, LOCK=NONE;
 
 ## 📊 本节统计
 
-- **leaf README 数**：1（本文即为分类 leaf，单 README 长文聚合 13 主题）
-- **本节主题数**：13（必要性、数据结构、分类、最左前缀、失效场景、设计原则、维护、EXPLAIN、ICP、MRR、Index Merge、Cardinality、Online DDL）
+- **leaf README 数**：2（本文 + composite-index-filesort 子 README）
+- **本节主题数**：14（必要性、数据结构、分类、最左前缀、失效场景、设计原则、维护、EXPLAIN、ICP、MRR、Index Merge、Cardinality、Online DDL、联合索引 filesort）
 - **frontmatter 状态**：✅ 已对齐 CONTRIBUTING §12 标准（summary ≤ 80 字 / type=index）
-- **统计口径**：本目录无嵌套子目录，所有内容聚合在本 README
+- **统计口径**：含 1 个嵌套子目录 composite-index-filesort/
 
 ---
 

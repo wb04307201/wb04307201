@@ -87,3 +87,7 @@ module:
 - [propagation-and-isolation](../propagation-and-isolation.md)
 - [circuit-breaker](../../../03-cloud/circuit-breaker.md)
 - [seata-integration](../../../03-cloud/seata-integration.md)
+
+---
+
+← [返回: Spring 分布式事务](README.md)

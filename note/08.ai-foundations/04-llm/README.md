@@ -21,6 +21,7 @@
 | 标题 | 路径 | 摘要 |
 |------|------|------|
 | LLM 基础 | [llm-basics.md](./llm-basics.md) | 5 大章节 / 关键概念速查 |
+| Dropout in LLM | [dropout-in-llm/](./dropout-in-llm/) | 训练随机失活设置、影响与单 epoch 实证 |
 
 ---
 

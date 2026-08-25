@@ -136,3 +136,5 @@ setsebool -P httpd_read_user_content 1
 - 族内：[DAC](dac.md) — DAC 与 MAC 是访问控制的两条根本路线
 - 05-security 主题：[加密与密钥管理](../../encryption/README.md) — 加密是 MAC 之外的另一道防线
 - 05-security 主题：[OWASP Top 10](../../owasp-top10/README.md) — A01 失效的访问控制
+
+← [返回: 传统访问控制：身份即权限](README.md)

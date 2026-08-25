@@ -24,6 +24,7 @@
 | 7 | 向量检索算法 | [vector-search-algorithms/](./vector-search-algorithms/README.md) | HNSW vs IVF vs DiskANN 4 维权衡（内存/磁盘/QPS/Recall） |
 | 8 | 千亿级向量检索 | [vector-search-at-scale/](./vector-search-at-scale/README.md) | 5 关键架构转变 + 业界真实案例 + 5 阶段时延/召回/成本三元权衡 |
 | 9 | 万亿级向量检索 | [vector-search-trillion/](./vector-search-trillion/README.md) | 万亿级多集群 + 联邦 + TPU + 极限压缩 |
+| 10 | Agentic Search vs RAG | [agentic-search-vs-rag/](./agentic-search-vs-rag/README.md) | Agentic Search 取代 RAG：实时 + 跟随引用 + Harness > 索引 |
 
 ## 阅读路径
 

@@ -234,3 +234,5 @@ TOGAF 10 引入了 **"Applying the TOGAF Approach"**（应用 TOGAF 方法）这
 - ⬅️ [返回目录](README.md)
 - ➡️ [第二章：BCAT + 业务能力 + 价值流](business-capability.md)
 - 🏛️ [ADM 与需求管理（TOGAF 10 官方）](https://pubs.opengroup.org/togaf-standard/)
+
+← [返回: 企业架构（TOGAF 10）](README.md)
