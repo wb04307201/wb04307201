@@ -77,7 +77,7 @@ LEAF_COUNT=$(find note -name "*.md" | wc -l)
 
 > 执行前先建临时目录：`mkdir -p note/.health-tmp`
 
-读 `references/structural-checks.md`，跑机械扫描：**frontmatter 覆盖、orphan 目录、孤链、README 总目录章节锚点、模块均分 + 单向链接扫描 + 系列完整性审计 + 数字一致性 + 归属合理性 + 合并检测**等。
+读 `references/structural-checks.md`，跑机械扫描：**frontmatter 覆盖、orphan 目录、孤链（.md + 目录双口径）、README 总目录章节锚点、模块均分 + 单向链接扫描 + 系列完整性审计 + 数字一致性 + 归属合理性 + 合并检测**等。
 **所有大输出重定向到文件**（`> note/.health-tmp/scan-<phase>-<date>.txt`），不堆进对话。Phase 1 不调 workflow。
 
 > **2026-07-25 起**：单向链接扫描（`Step 4.5`）+ 系列完整性审计（`Step 9` + `9.1`）从深度模式提升为默认 Phase 1.8 / 1.9 / 1.10 —— Mistake 9（parent 不回链 = 隐性孤岛）是历史教训，全库 800+ README 的体检默认应该跑，下次不会再忘。
@@ -86,32 +86,57 @@ LEAF_COUNT=$(find note -name "*.md" | wc -l)
 
 > **🆕 2026-08-20 起**：关联强度扫描（`Step 12`）从可选提升为默认 Phase 1.13 —— 检测"同栏目 / 同目录"兄弟互链中目标文件 0 真实引用的弱关联（见 `note-precipitation-planning` Mistake 20）。弱关联比 broken link 更隐蔽——链接存在且路径正确，但语义上是噪声，应作为 P2 问题输出。
 
-**关联强度扫描脚本**（Phase 1.13）：
-```bash
-# 对每个 leaf 文件的"兄弟互链"，做关联强度判定
-for f in $(find note -name "README.md" -path "*/04.system-design/*" -o -path "*/06.distributed-systems/*" 2>/dev/null); do
-  # 提取兄弟链接（仅 ../ 相对路径 + 同级目录）
-  siblings=$(grep -oP '\]\(\.\./[a-z-]+/README\.md\)' "$f" | grep -oP '[a-z-]+(?=/README)' | sort -u)
-  for sib in $siblings; do
-    sib_path="$(dirname "$f")/../$sib/README.md"
-    [ ! -f "$sib_path" ] && continue  # broken link 由 1.6 处理
+> **🆕 2026-08-25 起**：① 断链扫描升级为**双口径**（`.md` 文件链接 + `](dir/)` 目录链接）——目录链接曾是盲区，累积 156 处未检出（见 `structural-checks.md` #6）；② Phase 1.13 弱关联扫描改用**正文内链算法**（v2），排除页脚导航表/表格/代码块，消除 1005 处误报类噪声。
 
-    # 提取目标主题关键词（从兄弟文件标题前 5 个汉字 + 主题名词）
-    keywords=$(head -10 "$sib_path" | grep -oP '[\x{4e00}-\x{9fa5}]{2,4}' | sort -u | head -3 | tr '\n' '|')
-    [ -z "$keywords" ] && continue
+**关联强度扫描脚本**（Phase 1.13 · v2 2026-08-25 正文内链版，实测校准：1005 → 382）：
 
-    # 在当前文件里 grep 兄弟主题关键词
-    count=$(grep -cE "$keywords" "$f" 2>/dev/null || echo 0)
-    if [ "$count" -eq "0" ]; then
-      echo "  ⚠ 弱关联: $(basename $(dirname $f)) → $sib（被链接文件 0 处提及主题关键词）"
-    fi
-  done
-done
+> v1（全文件关键词匹配）误报率极高：G4 要求的页脚"相关章节"兄弟互链天然不在正文重复关键词，2026-08-25 体检命中 1005 处绝大多数是合规导航。v2 四步降噪：**① 切掉代码块 ② 排除表格行（导航表）③ 页脚截断**（`← 返回` / `相关章节/交叉引用/系列导航/反向链` 标题之后）④ **排除祖先回链**（`../README.md` 式返回父级）；关键词检查在**含链接文本的正文**里做（链接文本提到主题 = 强关联）。实测从 1005 噪声降到 382 条基本可执行的跨模块引用候选。
+
+```python
+# Phase 1.13 v2：弱关联扫描（只扫正文内链，排除页脚导航表 / 表格 / 代码块 / 祖先回链）
+import re, os, glob, sys
+sys.stdout.reconfigure(encoding='utf-8')
+LINK_RE = re.compile(r'(?<![|\[])\[([^\]]*)\]\((?!https?://)(?!mailto:)(?!#)([^)#\s]+?\.md)(?:#[^)]*)?\)')
+
+def body_only(content):
+    content = re.sub(r'```.*?```', '', content, flags=re.S)          # ① 去代码块
+    lines = [l for l in content.split('\n') if not l.strip().startswith('|')]  # ② 去表格行（导航表）
+    cut = len(lines)
+    for i, l in enumerate(lines):                                     # ③ 页脚截断
+        if re.search(r'[←⬅]\s*\[?返回', l) or re.match(r'^#{1,3}\s*(🔗\s*)?(相关章节|交叉引用|系列导航|反向链|相关链接)\s*$', l):
+            cut = i
+            break
+    return '\n'.join(lines[:cut])
+
+weak = 0
+for f in glob.glob('note/**/*.md', recursive=True):
+    if '.health-tmp' in f.replace(os.sep, '/'): continue
+    content = open(f, encoding='utf-8', errors='ignore').read()
+    body = body_only(content)
+    f_dir = os.path.dirname(os.path.abspath(f))
+    for m in LINK_RE.finditer(body):
+        t_abs = os.path.normpath(os.path.join(os.path.dirname(f), m.group(2)))
+        if not os.path.isfile(t_abs): continue                        # broken 由 #6 处理
+        t_dir = os.path.dirname(os.path.abspath(t_abs))
+        try:                                                          # ④ 祖先回链（返回父级）跳过
+            if os.path.commonpath([t_dir, f_dir]) == t_dir: continue
+        except ValueError: pass
+        try:
+            tc = open(t_abs, encoding='utf-8', errors='ignore').read(2000)
+        except Exception: continue
+        h1 = re.search(r'^#\s+(.+)$', tc, re.M)                       # ⑤ 目标主题关键词 = H1
+        kws = re.findall(r'[A-Za-z][A-Za-z0-9\-]{3,}|[一-鿿]{2,6}', (h1.group(1) if h1 else ''))
+        if not kws: continue
+        if all(k not in body for k in kws[:6]):                       # 正文（含链接文本）0 提及
+            weak += 1
+            print(f"  ⚠ 弱关联: {f} -> {m.group(2)}")
+print(f"弱关联（正文内链口径）: {weak} 处")
 ```
 
 **关联强度输出**：
-- 弱关联列表（≥ 1 处）→ 报告 P2 项 + 推荐"删除或补语义描述"
+- 弱关联列表 → 报告 P2 项 + 推荐"删除或补语义描述"（正文补一句目标主题与本文的关系）
 - 不输出"强关联"（避免噪音）
+- **页脚/表格内的导航互链永不判弱关联**——它们是 G4 互链要求的合规载体，语义关联由正文承载
 - 历史案例：2026-08-20 file-upload 双层 → product-search（弱关联 0 命中），已修复
 
 ### Phase 2 — Leaf 质量 fan-out
@@ -207,6 +232,8 @@ find note -name "*.md" | python -c "import sys,os; [print(l.strip()) for l in sy
 **阈值**：≥7 保留 / 4-6 灰色 / ≤3 迁出
 
 **配套 E7-E11 评分表**：见 `references/leaf-quality.md` 末尾（E7-E11 节）。
+
+**与 difficulty 深度校准的衔接（🆕 2026-08-25）**：本阶段产出的五维分同时是 `difficulty` 深度校准的数据源——五维总分映射建议星级（9-10→⭐⭐⭐⭐ / 7-8→⭐⭐⭐ / 5-6→⭐⭐ / ≤4→⭐），偏差 ≥1 星进校准清单。完整执行流程见 `references/structural-checks.md` Step 15「深度校准流程」。全库打分时 `health-workflow.js` 已自动采集 `fiveDim`，无需单独再跑一轮五维评分。
 
 **4 个实战教训**（2026-08-10 总结）：
 

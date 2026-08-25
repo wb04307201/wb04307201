@@ -34,6 +34,17 @@ const SCHEMA = {
           total: { type: 'number' },
           maxScore: { type: 'number' },
           grade: { type: 'string' },
+          // 🆕 2026-08-25：12.interview question 文件额外输出五维内容质量分（E7-E11，每维 0-2，用于 difficulty 深度校准）
+          fiveDim: {
+            type: 'object',
+            properties: {
+              depth: { type: 'number' },       // D1 知识深度
+              breadth: { type: 'number' },     // D2 知识广度
+              frequency: { type: 'number' },   // D3 面试频次
+              followup: { type: 'number' },    // D4 追问空间
+              trap: { type: 'number' },        // D5 反直觉/陷阱
+            },
+          },
           findings: { type: 'array', items: { type: 'string' } },
         },
         required: ['file', 'moduleClass', 'total', 'grade'],
@@ -53,7 +64,8 @@ const scored = await pipeline(
     `2. 若某文件是新沉淀/新写的（如路径含近期新增、或内容是初稿），先参考 skills/note-health/references/new-file-baseline.md 的 10 段结构基线，再按 leaf-quality.md 打分\n` +
     `3. 先按路径判断模块类型(A~G)，再用「通用 6 维度 + 该模块专属维度」评分\n` +
     `4. findings 每项需包含：section（修改位置）、action（具体操作）、effort（S/M/L 工作量）\n` +
-    `5. 输出每篇的 total/maxScore/grade + findings\n\n` +
+    `5. 输出每篇的 total/maxScore/grade + findings\n` +
+    `6. **12.interview/ 下的 question 文件**：额外输出 fiveDim 五维内容质量分（depth/breadth/frequency/followup/trap，每维 0-2，定义见 leaf-quality.md E7-E11），供 difficulty 深度校准使用；禁止仅凭文件名/行数判定，必须基于正文内容（历史教训：文件名预筛 70% false positive）\n\n` +
     `文件清单(批 ${idx + 1}):\n${batch.map(f => '- ' + f).join('\\n')}`,
     { label: `score:batch-${idx + 1}`, phase: 'Score', schema: SCHEMA }
   ).then(r => {

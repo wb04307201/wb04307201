@@ -54,6 +54,8 @@
 - ✅ 02.computer-basics/machine-learning 综述拆分（2026-08-10：6 大算法综述 → 6 个 single-topic deep-dive：k-means-convergence / decision-tree-variants / gradient-descent-variants / pca-math / boosting-comparison / classification-metrics）
 - ✅ 19 处 frontmatter difficulty 校准（2026-08-10：16 处低估升级 + 3 处高估降级，依据 5 维评分结果）
 - ✅ transformer 补 2024 推理工程演进（2026-08-10：新增 KV Cache / MQA-GQA-MLA / Flash Attention / PagedAttention 章节，103 行 → 213 行）
+- ✅ 目录型断链 156 处清零（2026-08-25：93 文件 / 134 链接，`a7c2ec95`；旧模块名批量映射 + note/ 前缀修正 + 迁出题改指主模块；既有扫描只匹配 .md 目标是盲区，现 #6 已加目录口径）
+- ✅ 裸代码块 56 处补语言标注（2026-08-25：21 文件；QUESTION-FORMAT-SPEC 骨架示例外层围栏 3→4 反引号修嵌套配对）
 
 > 报告每条发现时标注 `[NEW]`（本会话未触及）或 `[已修]`（本会话已修）。本清单会随时间增补。
 
@@ -153,6 +155,8 @@ def resolve(c, t):
     return os.path.normpath(os.path.join(os.path.dirname(c), t_unified))
 real_broken = 0
 broken_list = []
+dir_broken = 0
+dir_broken_list = []
 PLACEHOLDERS = ['x/README', 'xxx', 'xx/yy']  # SPEC 模板占位符排除
 for readme in glob.glob('note/**/*.md', recursive=True):
     try:
@@ -172,8 +176,21 @@ for readme in glob.glob('note/**/*.md', recursive=True):
         if not os.path.isfile(target_abs):
             real_broken += 1
             broken_list.append((readme, target_rel, m.group(1)[:60]))
-print(f'broken links: {real_broken}')
-for src, tgt, text in broken_list[:30]:
+    # 🆕 2026-08-25 盲区修复：目录型链接 `](dir/)` 此前从未被校验，累积 156 处断链
+    #       （旧模块名残留：04.system-design / 13.split-hairs / note/ 前缀路径错误等）。
+    #       教训：断链扫描必须双口径——.md 文件链接 + 目录链接都要跑。
+    DIR_LINK_RE = re.compile(r'(?<![|\[])\[([^\]]*)\]\((?!https?://)(?!mailto:)(?!#)([^)#\s]+/)(?:#[^)]*)?\)')
+    for m in DIR_LINK_RE.finditer(content):
+        target_rel = m.group(2).strip()
+        if target_rel.startswith(('http', 'mailto:', '#', 'chrome:')): continue
+        if any(p in target_rel for p in PLACEHOLDERS): continue
+        target_abs = resolve(readme, target_rel)
+        if not os.path.isdir(target_abs):
+            dir_broken += 1
+            dir_broken_list.append((readme, target_rel, m.group(1)[:60]))
+print(f'broken links (.md): {real_broken}')
+print(f'broken links (dir): {dir_broken}')
+for src, tgt, text in (broken_list + dir_broken_list)[:30]:
     # Windows GBK 中文路径 → 强制 UTF-8 输出（subagent 看时不乱码）
     try:
         print(f'  {src} -> {tgt}')
@@ -951,11 +968,33 @@ for path, cur, reason in issues:
 PYEOF
 ```
 
-**校准配套步骤**：
-1. Phase 2 完成 5 维评分后，导出 KNOWN_SCORES（file → total 分）
-2. Phase 1.15 跑本检查，对比 frontmatter difficulty 与 KNOWN_SCORES
-3. 偏差 ≥1 星 → 列入 P2 校准清单
-4. 校准脚本示例：见 `note/.health-tmp/fix-frontmatter.py`（reusable）
+**校准配套步骤（深度校准流程 · 🆕 2026-08-25 流程化）**：
+
+> 格式检查（上面的脚本）只查"缺标注 / >5 星"等异常；**深度校准**才是目的——frontmatter `difficulty` 必须与正文实际深度一致。2026-08-10 首轮人工校准发现 19 处偏差，此后沉淀为标准流程。
+
+1. **评分源**：Phase 2 打分（`health-workflow.js`）对 `12.interview/` question 文件输出 `fiveDim`（D1 深度 / D2 广度 / D3 频次 / D4 追问空间 / D5 陷阱，各 0-2，定义见 `leaf-quality.md` E7-E11）。落盘在 `scores-merged*.json` 的 `results[].fiveDim`
+2. **映射**：五维总分 → 建议星级
+   - 9-10 → ⭐⭐⭐⭐ · 7-8 → ⭐⭐⭐ · 5-6 → ⭐⭐ · ≤4 → ⭐（迁出候选，走 Phase 6 阈值判定）
+   - ⭐⭐⭐⭐⭐ 为人工保留档（极高深度 + 高频），五维 ≤8 却标 5 星 → 建议降 4 星，需人工复核
+3. **偏差检测**：|当前星级 − 建议星级| ≥ 1 → 列入校准清单（输出 file / 当前 / 建议 / 五维依据）
+4. **执行**：按模块分批，逐文件 **Edit 工具**修 frontmatter `difficulty:` 行（遵守仓库约定：note/ 内容修改不用脚本批量替换），每批一条 `fix(12.interview): difficulty 深度校准 N 处` commit
+5. **复检**：校准后重跑格式检查脚本 + 抽查 2-3 篇的星级与正文匹配
+
+```python
+# 15b. difficulty 深度校准（读 scores-merged.json fiveDim 对比 frontmatter）
+import json, re, glob
+scores = json.load(open('note/.health-tmp/scores-merged.json', encoding='utf-8'))
+fd = {r['file']: r.get('fiveDim') for r in scores['results'] if r.get('fiveDim')}
+band = lambda s: 4 if s >= 9 else 3 if s >= 7 else 2 if s >= 5 else 1
+for f, d in fd.items():
+    total = sum(d.get(k, 0) for k in ('depth', 'breadth', 'frequency', 'followup', 'trap'))
+    try: c = open(f, encoding='utf-8', errors='ignore').read(800)
+    except Exception: continue
+    m = re.search(r'difficulty:\s*([⭐★]+)', c)
+    cur = (m.group(1).count('⭐') + m.group(1).count('★')) if m else 0
+    if abs(cur - band(total)) >= 1:
+        print(f'  ⚠ {f}: 当前 {cur} 星 → 建议 {band(total)} 星（五维 {total}/10）')
+```
 
 ### Commit 拆分模式（原 Step 5.5）
 
