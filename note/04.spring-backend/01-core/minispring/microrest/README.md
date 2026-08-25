@@ -33,6 +33,8 @@ MicroRest 是一个使用 Servlet 技术模拟 Spring IoC 和 MVC 功能的轻�
 
 ## 项目结构
 
+> 说明：`src/` 为配套可运行源码目录（Java 源码树，按包路径组织，不再按知识目录配 README）；文中代码引用均直接链到对应 `.java` 文件。
+
 ```text
 src/main/java/cn/wubo/micro/rest/
 ├── core/                     # 框架核心组件

@@ -24,8 +24,11 @@ module:
 | 5 | [fine-tuning/](./fine-tuning/) | 微调方法（SFT / RLHF / DPO） |
 | 6 | [eval/](./eval/) | 评估方法 |
 
----
+## 阅读路径（按场景）
 
-（Phase 1 试点填实中）
+- **从零搭一个 RAG 问答**：[rag/](./rag/) 全景 → [llm-inference/](./llm-inference/) 降本提速 → [eval/](./eval/) 验证效果
+- **做生产级 Agent**：[agent/](./agent/) 框架与可靠性 → [prompts/](./prompts/) Prompt 工程 → [eval/](./eval/) 回归评测
+- **面试冲刺**：先看各主题 README 的"面试高频题"速查，再按需深入（配套 [12.interview/11.ai](../12.interview/11.ai/) 陷阱版）
+- **降本专题**：[agent/agent-context/](./agent/agent-context/) 上下文工程 + [llm-inference/](./llm-inference/) 推理优化
 
 ← [返回 note 总目录](../README.md)
