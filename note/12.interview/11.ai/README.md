@@ -9,12 +9,9 @@ module:
 
 # AI 咬文嚼字
 
-## H1 后一句话定位
+> AI 高频面试题与新概念深挖：55 题（find 校对 2026-08-25），每篇陷阱 + 反直觉 + 30 秒话术，完整概念见主模块 [`09.ai-applications`](../../09.ai-applications/README.md)。
 
-> **AI 咬文嚼字 = 55 题** — 一题一文（幻觉 / 思维 / 生产力悖论 / 代码流失 / ROI / Agent Memory / Agent 性能量化 / Token 经济学 / LLM Benchmark / RAG 权限隔离）+ 主模块配套精炼版（Prompt / Context / Harness / Loop / Transformer / Token / RAG / Function Calling / Agent DAG / 端到端 Agent 系统设计）。
-> AI 高频面试题与新概念深挖，对齐主模块 [`11.ai`](../../../note/11.ai/)。**55 题**（find 校对 2026-08-25）= 一题一文（幻觉 / 思维 / 生产力悖论 / 代码流失 / ROI / Agent Memory / Agent 性能量化 / Token 经济学 / LLM Benchmark / RAG 权限隔离）+ 主模块配套精炼版（Prompt / Context / Harness / Loop / Transformer / Token / RAG / Function Calling / Agent DAG / 端到端 Agent 系统设计）。
-
-> ⚠️ **定位说明**：本目录所有文章都是**面试深挖版**（陷阱 + 反直觉 + 30 秒话术，50-80 行）。完整概念文档见主模块对应位置（README 末尾"深度阅读"区有链接）。
+> ⚠️ **定位说明**：本目录所有文章都是**面试深挖版**。完整概念文档见主模块对应位置（README 末尾"深度阅读"区有链接）。
 
 ---
 
@@ -118,9 +115,7 @@ module:
 
 ## 相关章节
 
-- 主模块：[`note/11.ai`](../../../note/11.ai/) — AI 知识体系完整内容
-- 相关章节：[`09.front-end`](09.front-end/)（前端集成 AI）
+- 主模块：[`09.ai-applications`](../../09.ai-applications/README.md) — AI 知识体系完整内容
+- 相关章节：[`09.front-end`](../09.front-end/)（前端集成 AI）/ [`spring-ai-vs-dify`](../../09.ai-applications/agent/ai-platforms/spring-ai-vs-dify.md)（平台选型对比）
 
-
-- [spring-ai-vs-dify](../../09.ai-applications/agent/ai-platforms/spring-ai-vs-dify.md)
 ← [返回咬文嚼字（高频面试题）](../README.md)

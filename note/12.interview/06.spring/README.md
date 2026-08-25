@@ -9,7 +9,7 @@ module:
 
 # Spring 咬文嚼字
 
-> Spring 高频面试题与细节深挖，对齐主模块 [`06.spring`](../../../note/04.spring-backend/)。15 篇真题覆盖 IoC / Bean 生命周期 / AOP / @Transactional / 循环依赖 / 自动配置 / Spring MVC / 事件 / **Spring Security** / **Spring Cloud** 10 大方向（find 校对 2026-07-19）。
+> Spring 高频面试题与细节深挖，对齐主模块 [`04.spring-backend`](../../04.spring-backend/README.md)。15 篇真题覆盖 IoC / Bean 生命周期 / AOP / @Transactional / 循环依赖 / 自动配置 / Spring MVC / 事件 / **Spring Security** / **Spring Cloud** 10 大方向（find 校对 2026-08-25）。
 
 ---
 
@@ -58,14 +58,16 @@ module:
 
 ## 待补充的高频面试题（强烈建议）
 
+> 目标排期：2026-Q4 按体检轮次逐题沉淀（每项附对应主模块深度阅读，先读不亏）。
+
 ### Spring Security
-- **认证 vs 授权流程** → 深度阅读：[`12.interview/04.system-design/05-security/access-control`](../../06.distributed-systems/05-security/access-control/README.md)（RBAC/ABAC 6 大模型）
-- **JWT vs Session 方案对比** → 深度阅读：[`12.interview/04.system-design/05-security`](../../06.distributed-systems/05-security/README.md)（JWT、OAuth2）
-- **CSRF 防护** → 深度阅读：[`09.front-end/07-security`](../../05.frontend/07-security/README.md)（XSS/CSRF/CSP）
+- **认证 vs 授权流程** → 深度阅读：[`06.distributed-systems/access-control`](../../06.distributed-systems/05-security/access-control/README.md)（RBAC/ABAC 6 大模型）
+- **JWT vs Session 方案对比** → 深度阅读：[`06.distributed-systems/05-security`](../../06.distributed-systems/05-security/README.md)（JWT、OAuth2）
+- **CSRF 防护** → 深度阅读：[`05.frontend/07-security`](../../05.frontend/07-security/README.md)（XSS/CSRF/CSP）
 
 ### Spring Cloud
-- **负载均衡**（Ribbon / LoadBalancer）→ 深度阅读：[`06.spring/05-spring-cloud`](../../04.spring-backend/03-cloud/README.md)
-- **配置中心**（Nacos Config / Spring Cloud Config）→ 深度阅读：[`06.spring/05-spring-cloud`](../../04.spring-backend/03-cloud/README.md)
+- **负载均衡**（Ribbon / LoadBalancer）→ 深度阅读：[`04.spring-backend/03-cloud`](../../04.spring-backend/03-cloud/README.md)
+- **配置中心**（Nacos Config / Spring Cloud Config）→ 深度阅读：[`04.spring-backend/03-cloud`](../../04.spring-backend/03-cloud/README.md)
 
 ---
 
@@ -77,7 +79,7 @@ module:
 
 ## 相关章节
 
-- 主模块：[`note/06.spring`](../../../note/04.spring-backend/) — Spring 知识体系
-- 相关章节：[`01.java`](01.java/)（Java 基础）/ [`04.system-design`](12.interview/04.system-design/)（系统设计）
+- 主模块：[`04.spring-backend`](../../04.spring-backend/README.md) — Spring 知识体系
+- 相关章节：[`01.java`](../01.java/)（Java 基础）/ [`04.system-design`](../04.system-design/)（系统设计）
 
 ← [返回咬文嚼字（高频面试题）](../README.md)

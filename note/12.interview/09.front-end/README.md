@@ -9,7 +9,7 @@ module:
 
 # 前端咬文嚼字
 
-> 前端高频面试题与细节深挖，对齐主模块 [`09.front-end`](../../../note/09.front-end/)。28 篇真题覆盖 JS 核心 / HTTP / CSS / 浏览器机制 / 工具测试 / 框架 / 安全 / 工程迁移 / Promise 9 大方向（find 校对 2026-08-17；BFC / GET vs POST 已迁出至主模块；🆕 含 Vue 大列表性能调优实战、async/await 错误处理深挖）。
+> 前端高频面试题与细节深挖，对齐主模块 [`05.frontend`](../../05.frontend/README.md)。28 篇真题覆盖 JS 核心 / HTTP / CSS / 浏览器机制 / 框架 / 安全 / 工程 9 大方向（find 校对 2026-08-25）。
 
 ---
 
@@ -87,13 +87,13 @@ module:
 
 ## 学习路径
 
-1. **入门**（3 天）：存储方案 + 消息机制（GET vs POST 已迁出至 [主模块](../../05.frontend/03-network/http-protocol/get-vs-post.md)）
+1. **入门**（3 天）：存储方案 + 消息机制
 2. **进阶**（2 周）：事件循环 + 闭包 + 原型链 + this 绑定 + Promise 手写 + 🆕 **async/await 错误处理**
 3. **冲刺面试**：重点看"从 URL 输入到页面展示"、"HTTPS 握手"、"Virtual DOM Diff"、"Vue 响应式原理"、"CSS 渲染阻塞"、"回流与重绘"、"Playwright vs Selenium"、🆕 **"async/await 必须 try/catch 吗"**
 
 ## 相关章节
 
-- 主模块：[`note/09.front-end`](../../../note/09.front-end/) — 前端知识体系
-- 相关章节：[`01-foundation`](../../../note/09.front-end/01-foundation/) / [`02-language`](../../../note/09.front-end/02-language/)（基础与语言）
+- 主模块：[`05.frontend`](../../05.frontend/README.md) — 前端知识体系
+- 相关章节：[`01-foundation`](../../05.frontend/01-foundation/README.md) / [`02-language`](../../05.frontend/02-language/README.md)（基础与语言）
 
 ← [返回咬文嚼字（高频面试题）](../README.md)

@@ -42,7 +42,7 @@ module:
 - **风险管控**（30 分钟）：[risk-register](risk-register/README.md) — 风险登记册 + MoSCoW + RICE
 - **敏捷度量**（30 分钟）：[agile-metrics](agile-metrics/README.md) — 超越 DORA/SPACE 的团队效能可视化
 
-### 1.2 候选扩展（待补充）
+### 1.2 候选扩展（待补充，目标排期 2026-Q4，按体检轮次逐题沉淀）
 
 1. **决策类**：上云 vs 自建机房、微服务 vs 单体的"二次成本"
 2. **~~执行类~~**：~~需求变更控制（MoSCoW / RICE）、项目风险登记册~~ → ✅ 已沉淀为 [risk-register](risk-register/README.md) + [agile-metrics](agile-metrics/README.md)

@@ -34,7 +34,7 @@ module:
 ## 🗺️ 目录导航
 
 > 数字基线：以"分类下 leaf MD 数（含所有子目录与子子目录）"为统计口径。
-> 实际结构 = 31 个 README + 111 个非 README 子文章 = 142 个 .md 文件（2026-08-13 find 校对，含 1 个 SPEC.md 占位）。
+> 实际结构 = 31 个 README + 110 个非 README 子文章 = 142 个 .md 文件（2026-08-25 find 校对，另含 1 个 SPEC.md）。
 
 | 序号 | 分类 | 核心内容 | Leaf 数 | 入口 |
 |:----:|:----|:---------|:-------:|:----:|
@@ -48,7 +48,7 @@ module:
 | 08 | **注解速查** | 事务/缓存/调度/校验/重试/AOP/Web/JPA/测试/配置/异常 等按场景分类的索引 | **12** | [08-annotations/README.md](08-annotations/README.md) |
 | 09 | **Spring Security** | SecurityFilterChain 架构、认证（密码/JWT/OAuth2）、授权（@PreAuthorize/ACL）、OAuth2 四种授权模式、CORS/CSRF/Session/安全 Header | **6** | [09-security/README.md](09-security/README.md) |
 
-**合计**：9 大分类 · **31 个 README · 111 个非 README 子文章**（含 1 个 SPEC.md 占位，共 142 个 .md 文件）。
+**合计**：9 大分类 · **31 个 README · 110 个非 README 子文章**（共 142 个 .md 文件，另含 1 个 SPEC.md）。
 
 ### 3.1 MyBatis 全栈专项（4 主题 · 27 篇）
 
@@ -157,8 +157,8 @@ module:
 
 - ⬆️ [返回 note 总目录](../README.md)
 - ↔️ [01.java-and-jvm](../01.java-and-jvm/README.md) —— Java 语言基础（Spring 的语言载体）
-- ↔️ [04.system-design](../06.distributed-systems/README.md) —— 系统设计（Spring Cloud 的理论基础）
-- ↔️ [13.split-hairs/06.spring](../12.interview/06.spring/README.md) —— Spring 咬文嚼字（高频面试考点）
+- ↔️ [06.distributed-systems](../06.distributed-systems/README.md) —— 系统设计（Spring Cloud 的理论基础）
+- ↔️ [12.interview/06.spring](../12.interview/06.spring/README.md) —— Spring 咬文嚼字（高频面试考点）
 
 ---
 
@@ -174,17 +174,31 @@ module:
 | **安全** | `SecurityFilterChain` Bean 方式配置（废弃 `WebSecurityConfigurerAdapter`）；JWT 无状态认证；方法级 `@PreAuthorize`；REST API 禁用 CSRF |
 | **可观测性** | Actuator + Micrometer 指标暴露；分布式追踪（Micrometer Tracing → OTLP）；结构化日志 |
 
+**依赖注入 ❌/✅ 微型对比**：
+
+```java
+// ❌ 字段注入：不可变、难测试、循环依赖被容器静默掩盖
+@Autowired
+private UserService userService;
+
+// ✅ 构造器注入：final 不可变 + 依赖显式可见 + 单测可直接 new
+@RequiredArgsConstructor  // Lombok 生成构造器
+class OrderService {
+    private final UserService userService;
+}
+```
+
 ---
 
 ## 🎯 高频面试题（咬文嚼字）
 
-针对面试中反复深挖的细节问题，见 [13.split-hairs/06.spring](../../note/12.interview/06.spring/)：
+针对面试中反复深挖的细节问题，见 [12.interview/06.spring](../12.interview/06.spring/README.md)：
 
 | 主题 | 难度 | 核心问题 |
 |------|:----:|:---------|
-| [@Transactional 失效 8 种场景](../../note/12.interview/06.spring/transactional-pitfalls/) | ⭐⭐⭐⭐⭐ | 同类调用 / 异常类型 / 多线程 / 传播行为 |
-| [Bean 生命周期详解](../../note/12.interview/06.spring/bean-lifecycle/) | ⭐⭐⭐⭐ | 实例化 → 注入 → 初始化 → 销毁 12 步 |
-| [为什么不推荐 @Autowired](../../note/12.interview/06.spring/not-use-@autowired/) | ⭐⭐⭐ | 字段注入 vs 构造器注入 |
+| [@Transactional 失效 8 种场景](../12.interview/06.spring/transactional-pitfalls/README.md) | ⭐⭐⭐⭐⭐ | 同类调用 / 异常类型 / 多线程 / 传播行为 |
+| [Bean 生命周期详解](../12.interview/06.spring/bean-lifecycle/README.md) | ⭐⭐⭐⭐ | 实例化 → 注入 → 初始化 → 销毁 12 步 |
+| [为什么不推荐 @Autowired](../12.interview/06.spring/not-use-@autowired/README.md) | ⭐⭐⭐ | 字段注入 vs 构造器注入 |
 
 ---
 

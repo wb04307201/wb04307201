@@ -9,7 +9,7 @@ module:
 
 # 系统设计咬文嚼字
 
-> 系统设计高频面试题与难点深挖，对齐主模块 [`04.system-design`](../../../note/04.system-design/)。**26** 篇真题覆盖 MQ / 缓存一致性 / 缓存热点 Key / 限流 / 秒杀 / 分布式 ID / 事务 / CAP / 锁 / 幂等 / 熔断 / **微服务 vs 单体** / **搜索系统** / **搜索框 typeahead** / **多字段动态排名** / **文件上传** / **短链系统** / **分库分表** / **排查与运维** 19 大方向（find 校对 2026-08-20）。
+> 系统设计高频面试题与难点深挖，对齐主模块 [`06.distributed-systems`](../../06.distributed-systems/README.md)。26 篇真题覆盖 19 大方向（find 校对 2026-08-25）。
 
 ---
 
@@ -81,6 +81,8 @@ module:
 
 ## 待补充的高频面试题
 
+> 目标排期：2026-Q4 按体检轮次逐题沉淀（每项附对应主模块深度阅读，先读不亏）。
+
 ### 缓存
 - **缓存穿透 / 击穿 / 雪崩**（三件套必问，已移至 [`03.database/cache-penetration-breakdown-avalanche`](../03.database/cache-penetration-breakdown-avalanche/README.md)）
 - **缓存预热策略**
@@ -104,8 +106,8 @@ module:
 
 ## 相关章节
 
-- 主模块：[`note/04.system-design`](../../../note/04.system-design/) — 系统设计知识体系
-- 相关章节：[`03.database`](03.database/)（数据库细节）/ [`06.spring`](../04.spring-backend/)（框架实现）/ 🆕 [`05.security`](../05.security/README.md)（SSO 单点登录）
+- 主模块：[`06.distributed-systems`](../../06.distributed-systems/README.md) — 系统设计知识体系
+- 相关章节：[`03.database`](../03.database/)（数据库细节）/ [`06.spring`](../06.spring/)（框架实现）/ 🆕 [`05.security`](../05.security/README.md)（SSO 单点登录）
 - 待补充主题的深度阅读：
   - 缓存穿透/击穿/雪崩 → [`03.database/06-cache`](../../03.data-stack/01-database/06-cache/README.md)
   - 分库分表 → [`03.database`](../../03.data-stack/01-database/README.md) 数据迁移与同步
@@ -113,12 +115,3 @@ module:
   - 🆕 单点登录 SSO → [`05.security/sso`](../05.security/sso/README.md)（7 道精选 Q&A）
 
 ← [返回咬文嚼字（高频面试题）](../README.md)
-
-### link-check 修复
-
-| 行 | 原链接 | 修复后 |
-|----|--------|--------|
-| L104 (隐含) | `\[05.security\]\(../05.security\)` | `\[05.security\]\(../../05.security/README.md\)` |
-| L54 (隐含) | 同上 | 同上 |
-
-**全 13.split-hairs 兄弟互链完整链接化**：所有 `../05.security` 类相对引用已验证并补全 `/README.md` 后缀。
