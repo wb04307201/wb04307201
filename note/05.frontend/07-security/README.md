@@ -1,4 +1,5 @@
-<!--module:
+<!--
+module:
   parent: note
   slug: 09.front-end/07-security
   type: article
@@ -44,6 +45,10 @@ flowchart TD
     G --> H[SCA 扫描]
     G --> I[依赖锁文件]
     G --> J[错误监控]
+    A --> K{P2 可选}
+    K --> L[Permissions-Policy]
+    K --> M[COOP/COEP 隔离]
+    K --> N[Subresource Integrity]
 ```
 
 ---
@@ -65,6 +70,8 @@ flowchart TD
 | CORS 配置错误 | 精确 Origin 白名单 + 仅必要方法 / 头部 | P0 |
 | 会话劫持 | HttpOnly + Secure + SameSite cookie + 短过期 | P0 |
 | 依赖投毒 | 锁文件 + 私有 Registry + Socket.dev / Snyk | P1 |
+| **AI 生成钓鱼攻击**(2026 新增) | LLM 内容审计 + 邮件来源验证 + 员工安全意识培训 | P1 |
+| **供应链投毒新手法**(2026 新增) | 依赖签名验证 + 私有 Registry 镜像审计 + SBOM 追踪 | P1 |
 
 ---
 
@@ -76,14 +83,37 @@ flowchart TD
 - JWT 仅存非敏感 `sub` / `exp` / `scope`;Refresh Token 走 HttpOnly Secure cookie
 - 错误监控 + 用户行为日志双通道,异常登录 / 越权访问可追溯
 
+### Helmet.js 一键配置示例
+
+```javascript
+const helmet = require('helmet');
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'nonce-abc123'"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      imgSrc: ["'self'", "data:", "https:"],
+    },
+  },
+  crossOriginResourcePolicy: { policy: "same-site" },
+  referrerPolicy: { policy: "strict-origin-when-cross-origin" },
+}));
+```
+
 ---
 
 ## 常见面试题
 - XSS 三种类型(反射 / 存储 / DOM)的攻击场景与防御差异
+  > **答题要点**：反射型通过 URL 参数注入、存储型持久化到数据库、DOM 型纯前端；防御核心是「输出转义 + CSP」→ 详见 [xss/](xss/)
 - CSRF 与 XSS 的本质区别:CSRF 借用户权限,XSS 偷用户数据
+  > **答题要点**：CSRF 利用浏览器自动携带 Cookie 的特性伪造请求；防御用 SameSite + Token → 详见 [csrf/](csrf/)
 - SameSite 三种取值(Strict / Lax / None)的 CSRF 防护差异
+  > **答题要点**：Strict 最严但影响跨站导航体验、Lax 默认值允许顶级导航 GET、None 必须配合 Secure → 详见 [csrf/](csrf/)
 - CSP 指令优先级:`script-src` 与 `script-src-attr` / `script-src-elem` 关系
+  > **答题要点**：细粒度指令优先（`script-src-elem` 覆盖 `<script>` 标签，`script-src-attr` 覆盖内联事件）→ 详见 [csp/](csp/)
 - JWT 为什么不存敏感信息?Refresh Token 与 Access Token 的轮换协议
+  > **答题要点**：JWT payload 是 base64 非加密；Access Token 短过期 + Refresh Token 轮换 + 服务端吊销机制 → 详见 [sessions/](sessions/)
 
 ---
 

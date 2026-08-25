@@ -23,6 +23,27 @@ module:
 - **WCAG 2.2**（2023年）：进一步强化认知障碍支持（如聚焦管理、导航路径），新增9条成功标准。
 - **WCAG 3.0**（研发中）：计划整合更全面的无障碍框架，包括用户测试和功能指标。
 
+### 版本演进代码级对比
+
+**WCAG 2.1 新增 1.3.4 方向限制**：禁止页面强制锁定横屏/竖屏，需用 CSS 支持多方向：
+```css
+/* ❌ 错误：强制横屏 */
+body { transform: rotate(90deg); }
+
+/* ✅ 正确：响应式适配 */
+@media (orientation: landscape) { /* 横屏布局 */ }
+```
+
+**WCAG 2.2 新增 2.4.11 Focus Not Obscured**：焦点元素不被其他元素遮挡：
+```css
+/* ✅ 正确：使用 focus-visible 确保焦点可见 */
+:focus-visible {
+  outline: 3px solid #005fcc;
+  outline-offset: 2px;
+  z-index: 9999;
+}
+```
+
 ## 四大核心原则（POUR）
 1. **可感知（Perceivable）**
     - 提供文本替代（如图片的alt文本）、支持屏幕阅读器、适配不同感官（如音频转文字、高对比度模式）。
@@ -71,6 +92,29 @@ module:
     - 手动测试：NVDA（屏幕阅读器）、VoiceOver（iOS）。
 - **法律与政策**：各国无障碍法规数据库（如ADA、EN 301 549）。
 
+### 工具调用示例
+
+```javascript
+// axe-core：页面级无障碍检测
+axe.run(document, { runOnly: ['wcag21a', 'wcag21aa'] }, (err, results) => {
+  console.log(`${results.violations.length} violations found`);
+});
+```
+
+```bash
+# Lighthouse CI：仅跑无障碍类别
+lighthouse --only-categories=accessibility https://example.com
+```
+
+### 浏览器/屏幕阅读器对 WCAG 2.2 新标准的支持差异
+
+| 标准 | NVDA (Win) | VoiceOver (iOS/macOS) | TalkBack (Android) | 说明 |
+|------|-----------|---------------------|-------------------|------|
+| 2.4.11 Focus Not Obscured | ✅ 完整 | ✅ 完整 | ⚠️ 部分 | 焦点不被遮挡 |
+| 2.5.7 Dragging Movements | ⚠️ 部分 | ✅ 完整 | ❌ 缺失 | 拖拽替代（单击替代） |
+| 2.5.8 Target Size | ✅ 完整 | ✅ 完整 | ✅ 完整 | 最小点击目标 24×24px |
+| 3.3.7 Redundant Entry | ✅ 完整 | ✅ 完整 | ✅ 完整 | 避免重复输入 |
+
 ## 案例与影响
 - **成功案例**：
     - 政府网站（如英国GOV.UK、美国USA.gov）通过WCAG合规提升公共服务可访问性。
@@ -81,4 +125,4 @@ module:
 
 ---
 
-← [返回 无障碍 a11y](../README.md)
+← [返回 无障碍 a11y](../README.md) | [ARIA 属性实战 →](../README.md#aria-属性实战) | [键盘导航实现 →](../README.md#键盘导航实现)

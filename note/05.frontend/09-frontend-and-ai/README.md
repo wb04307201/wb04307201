@@ -1,8 +1,8 @@
 <!--
 module:
   parent: note
-  slug: 09.front-end/ai
-  type: article
+  slug: 05.frontend/09-frontend-and-ai
+  type: index
   category: 主模块子文章
   summary: 前端 09 前端与 AI
 -->
@@ -48,6 +48,18 @@ flowchart TD
 - **流式响应是标配**:SSE / WebSocket;2026 起所有 LLM 应用都应支持流式
 - **MCP 协议**:Model Context Protocol,让 AI 访问工具 / 数据;前端可作为 MCP Client
 
+**最小 streamText 示例**（Vercel AI SDK）:
+```typescript
+import { streamText } from 'ai';
+import { anthropic } from '@ai-sdk/anthropic';
+
+const result = streamText({
+  model: anthropic('claude-sonnet-4-20250514'),
+  prompt: '用三句话总结 React 18 的并发特性'
+});
+for await (const chunk of result.textStream) process.stdout.write(chunk);
+```
+
 ---
 
 ## 工具与 SDK 对比
@@ -68,22 +80,23 @@ flowchart TD
 - AI IDE 辅助编码(Cursor / Claude Code)+ Vibe Coding 适用原型,生产代码需人工审查
 - AI 聊天 + Generative UI:模型生成 React / Vue 组件,落地前必须 schema 校验
 - MCP 协议让 AI 访问工具 / 数据;前端可作为 MCP Client 调用工具集
+- AI 生成 UI 必须满足 a11y 基线:对比度 ≥ 4.5:1、键盘可达、屏幕阅读器 ARIA 标注完整;流式输出区域用 `aria-live="polite"` 通知辅助技术
 
 ---
 
 ## 常见面试题
-- 流式响应 SSE 与 WebSocket 的取舍:断线重连 / 单向 / 双向差异
-- Vercel AI SDK 的 `streamText` / `useChat` / `generateObject` 三个 API 适用场景
-- MCP(Model Context Protocol)与传统 Function Calling 的本质区别
-- AI Native UI 的渲染边界:模型生成代码的沙箱化执行与 schema 校验
-- Vibe Coding 在生产环境的边界:人类审查的 5 个检查点(架构 / 安全 / 性能 / 一致性 / 测试)
+- 流式响应 SSE 与 WebSocket 的取舍:断线重连 / 单向 / 双向差异 → 待沉淀到 12.interview
+- Vercel AI SDK 的 `streamText` / `useChat` / `generateObject` 三个 API 适用场景 → 待沉淀到 12.interview
+- MCP(Model Context Protocol)与传统 Function Calling 的本质区别 → [12.interview/function-calling](../../12.interview/11.ai/function-calling/)
+- AI Native UI 的渲染边界:模型生成代码的沙箱化执行与 schema 校验 → 待沉淀到 12.interview
+- Vibe Coding 在生产环境的边界:人类审查的 5 个检查点(架构 / 安全 / 性能 / 一致性 / 测试) → 待沉淀到 12.interview
 
 ---
 
 ## 与其他模块的关系
 - **上游**:[02-language](../02-language/) / [03-frameworks](../03-frameworks/)
 - **下游**:所有 AI 集成的 Web 应用
-- **横向**:[11.ai](../../../note/11.ai/) 关注 AI 知识体系,[09 前端与 AI] 关注 AI 在前端的落地
+- **横向**:[08.ai-foundations](../../08.ai-foundations/) 关注 AI 知识体系,[09 前端与 AI] 关注 AI 在前端的落地
 
 ---
 

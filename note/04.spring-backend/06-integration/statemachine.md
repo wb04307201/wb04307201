@@ -1,7 +1,7 @@
 <!--
 module:
   parent: 04.spring-backend
-  slug: 04.spring-backend\06-integration\statemachine
+  slug: 04.spring-backend/06-integration/statemachine
   type: article
   category: 主模块子文章
   summary: Spring Statemachine 状态机
@@ -34,6 +34,19 @@ module:
    状态转换时执行的业务逻辑，如发送通知邮件、更新数据库记录等。
 
 ## 二、依赖配置
+
+<details><summary>📦 版本选择建议</summary>
+
+| 版本段 | 关键变化 | 适用场景 |
+|--------|---------|---------|
+| **1.x** | 同步 API、`EnumStateMachineConfigurerAdapter` | 遗留 Spring Boot 2.0 项目 |
+| **2.x** | 移除 1.x deprecated API、引入 `StateMachineConfigurer` 简化配置 | Spring Boot 2.x 稳定使用 |
+| **3.x** | `ReactiveStateMachine`（响应式）、Spring Boot 3 / JDK 17+ 适配 | 新项目首选，3.2.0 为当前稳定版 |
+
+> **升级路径**：1.x → 2.x 主要改 `configure(StateMachineStateConfigurer)` 签名；2.x → 3.x 需迁移到 Spring Boot 3 + JDK 17。
+
+</details>
+
 通过 Maven 或 Gradle 引入核心库：
 ```xml
 <!-- Maven -->
@@ -182,6 +195,19 @@ transitions.withExternal()
 
 **推荐场景**：需要严格状态管理、复杂业务逻辑或高可维护性的 Spring 应用。对于简单状态转换，可评估是否需要引入额外框架。
 
+<details><summary>🔧 调优参数速查</summary>
+
+| 参数/维度 | 默认/推荐 | 说明 |
+|---------|---------|------|
+| **线程池大小** | `ThreadPoolTaskExecutor.corePoolSize=5` | 高频事件场景按 QPS 调，避免 sendEvent 阻塞 |
+| **Redis 序列化** | `DefaultStateMachineSerializers`（JDK 默认）| 生产推荐 `JacksonStateMachineSerializer`，可读 + 跨语言 |
+| **JDBC LONGBLOB 上限** | 4 GB（MySQL）| 状态机 context 通常 < 1 KB，无需担心 |
+| **Region 数量** | 建议 ≤ 5 | 每多一个 region 内存翻倍，过多说明设计粒度不对 |
+| **持久化时机** | 每次 sendEvent 后立即 write | 不能只在 stop 时 write，否则崩溃丢状态 |
+| **machineId 并发** | 同一 ID 加分布式锁 | 否则两个实例同时 sendEvent 会竞态 |
+
+</details>
+
 ## 七、持久化与分布式
 
 单机 `StateMachine` 实例只活在内存中——JVM 重启、水平扩容、客户端重连后状态全部丢失。Spring Statemachine 提供 `StateMachinePersister<S, E, T>` 接口把状态写入外部存储，配合 `StateMachineService` 让多实例共享同一份"逻辑实例"。
@@ -196,6 +222,28 @@ public interface StateMachinePersister<S, E, T> {
 ```
 
 `T` 是 context（如业务单号 `String orderId`），由用户自定义序列化与反序列化逻辑。
+
+<details><summary>🔍 StateMachinePersister 内部序列化流程</summary>
+
+```
+write(sm, orderId):
+  StateMachineContext<S,E> ctx = sm.getStateMachineContext()  // 取当前状态快照
+  // ctx 包含：当前 state、extendedState 变量、child contexts、history states
+  byte[] bytes = serializer.serialize(ctx)   // 默认 JDK，可换 Kryo/Jackson
+  repository.save(machineId, bytes)          // Redis SET / JDBC UPDATE
+
+read(sm, orderId):
+  byte[] bytes = repository.find(machineId)
+  StateMachineContext<S,E> ctx = serializer.deserialize(bytes)
+  sm.stop()                                  // 必须先 stop 才能 reset
+  sm.getStateMachineAccessor().doWithAllRegions(accessor -> 
+      accessor.resetStateMachine(ctx))       // 用 context 重置所有 region
+  sm.start()                                 // 重新启动
+```
+
+> 关键：`StateMachineContext` 是内存态快照，`read` 本质是把字节反序列化后注入状态机内部 `accessor`，不是简单赋值。
+
+</details>
 
 ### 2. RedisStateMachinePersister
 
@@ -380,4 +428,6 @@ public void configure(StateMachineTransitionConfigurer<States, Events> t) throws
 
 - [batch](batch.md)
 - [06-integration](README.md)
+- [06.distributed-systems/02-distributed/distributed-lock](../../06.distributed-systems/02-distributed/distributed-lock/README.md) — 并发场景下分布式锁与状态机协同
+- [10.business-systems/订单状态机实战](../../10.business-systems/README.md) — 订单状态流转业务案例
 - ← [返回: 集成组件](../README.md)

@@ -4,14 +4,29 @@ module:
   slug: ai/grok-system-prompt
   type: article
   category: 主模块子文章
-  summary: Grok 系统提示词
+  summary: Grok 3 系统提示词 4 版本泄露全文（grok.com / X / DeepSearch / Explain）+ 设计模式拆解与可借鉴技巧。
 -->
 
 # Grok 系统提示词
 
+> **一句话定位**：Grok 3 系统提示词 4 版本泄露全文 + Jinja 模板 / 条件分支 / 记忆管理 / 人格定制 / 安全防线 5 大设计模式拆解。
+
+**核心发现**：Grok 的 prompt 工程体现了生产级 LLM 系统设计的 5 大范式——Jinja2 动态模板引擎实现多场景复用、条件分支（`{% if %}`）控制功能开关、跨会话记忆管理机制、可插拔人格定制（`custom_personality`）、多层安全防线（价格回避 / 版本否认 / 指令隐藏）。这些模式可直接借鉴到自建 Agent 的 system prompt 设计中。
+
+**对比价值**：4 个版本（grok.com / X / DeepSearch / Explain）展示了同一模型在不同产品形态下的 prompt 差异化策略——从通用助手到垂直功能（深度搜索 / 帖子解释），核心差异在于输出格式约束、工具调用授权、上下文注入方式。
+
 ---
 
-← 返回 [Prompt工程](../README.md)
+← 返回 [Prompt工程](../README.md) | [Prompt 模板集](../prompt-templates/README.md) | [Agent 架构](../../../agent/architecture/README.md)
+
+## 4 版本横向对比
+
+| 版本 | Token 估算 | 核心差异 | 适用场景 |
+|------|-----------|---------|---------|
+| grok.com 聊天助手 | ~800 | 完整 Jinja 模板 + 记忆管理 + 产品线说明 | 通用对话 / 多模态分析 |
+| X 上的 Grok | ~300 | 极简指令 + 750 字符限制 + 无 markdown | X 平台回复（短文本） |
+| DeepSearch 模式 | ~1200 | 思维链注入 + 长文报告格式 + Key Citations | 深度研究 / 调查报告 |
+| Grok Explain | ~150 | 帖子解释专用 + bullet points 格式 | X 帖子背景解读 |
 
 ## Grok 3 聊天助手在 http://grok.com 的系统提示词
 
@@ -190,4 +205,10 @@ Explain this X post to me: {{ url }}
 
 ---
 
-← [返回 Prompt 工程](../README.md)
+← [返回 Prompt 工程](../README.md) | [Prompt 模板集](../prompt-templates/README.md) | [Agent 架构](../../../agent/architecture/README.md)
+
+## 参考来源
+
+- xAI 官方：[https://x.ai/grok](https://x.ai/grok)
+- Prompt 泄露来源：Simon Willison's Weblog, "Grok 3's system prompts", 2025-02
+- Grok API 文档：[https://x.ai/api](https://x.ai/api)

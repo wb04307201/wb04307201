@@ -49,6 +49,21 @@ module:
     - **Qiankun**：基于Single-SPA，提供HTML Entry、沙箱隔离、状态共享等企业级功能，阿里系广泛使用。
     - **Module Federation**：Webpack 5特性，允许子应用共享代码模块，减少重复依赖。
 
+### 微前端框架对比
+
+| 方案 | 隔离粒度 | 通信机制 | 部署独立性 | 学习曲线 | 社区活跃度 |
+|------|---------|---------|-----------|---------|-----------|
+| Single-SPA | 路由级（JS 沙箱需自实现） | Event Bus / 共享状态 | 中 | 中 | ★★★ |
+| Qiankun | HTML Entry + Proxy 沙箱 | `initGlobalState` 全局状态 | 高 | 低（API 友好） | ★★★★ |
+| Module Federation | 模块级（共享依赖，无沙箱） | 共享模块导出 | 高 | 中高（Webpack 5 配置） | ★★★★ |
+
+> **选型建议**：需要强沙箱隔离选 Qiankun；纯 React/Vue 同构且追求依赖共享选 Module Federation；多框架混用且生命周期管理复杂选 Single-SPA。
+
+### 性能与可访问性考量
+
+- **性能量化**：子应用首屏加载时间需控制在 2s 内（3G 网络），JS 沙箱（Proxy）开销约 1-5ms，Module Federation 共享依赖可减少重复下载 30-50%。
+- **可访问性**：跨子应用切换时需触发 `aria-live` 区域通知屏幕阅读器，焦点管理由主应用统一协调（避免子应用各自为政导致焦点丢失）。
+
 ## 四、典型应用场景
 1. **大型企业应用**  
    银行在线服务平台拆分账户管理、交易历史等模块，由不同团队独立开发，降低协作冲突。
@@ -82,6 +97,14 @@ module:
 5. **团队协作**
     - **问题**：多团队开发可能导致界面风格不一致。
     - **方案**：建立共享设计系统与组件库，统一视觉与交互规范。
+
+---
+
+## 交叉引用
+
+- **[04-engineering/monorepo-practice](../04-engineering/monorepo-practice/)** — Monorepo vs 微前端：代码共享与部署独立性的权衡
+- **[06-performance](../06-performance/)** — 微前端性能优化：懒加载、预加载、资源去重
+- **[13.story/20-multiplatform-architecture](../../../13.story/20-multiplatform-architecture.md)** — 多端架构演进故事
 
 ---
 

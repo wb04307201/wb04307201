@@ -58,6 +58,13 @@ graph TB
     WebMVC --> WebM
 ```
 
+**模块速查**（点击跳转详细章节）：
+- 核心容器：[spring-core](#31-spring-core) · [spring-beans](#32-spring-beans) · [spring-context](#33-spring-context) · [spring-expression](#34-spring-expression)
+- AOP & 仪器：[spring-aspects](#41-spring-aspects) · [spring-aop](#42-spring-aop) · [spring-instrument](#43-spring-instrument) · [spring-instrument-tomcat](#44-spring-instrument-tomcat)
+- 数据访问：[spring-jdbc](#51-spring-jdbc) · [spring-tx](#52-spring-tx) · [spring-orm](#53-spring-orm) · [spring-oxm](#54-spring-oxm) · [spring-jms](#55-spring-jms)
+- Web：[spring-web](#61-spring-web) · [spring-webmvc](#62-spring-webmvc) · [spring-websocket](#64-spring-websocket)
+- 测试：[Spring Test](#spring-test)
+
 ### 1.2 Spring 5.x 模块结构
 
 ```mermaid
@@ -92,6 +99,14 @@ graph TB
 ```
 
 > Spring 5.x 版本中 Web 模块的 Portlet 组件已经被废弃掉，同时增加了用于异步响应式处理的 WebFlux 组件。
+>
+> **Portlet 废弃原因**：Portlet 是 JSR-168/286 规范的实现，主要用于门户（Portal）系统，但随着现代 SPA + 微服务架构的兴起，Portlet 生态已大幅萎缩。Spring 5.0 起不再提供 `spring-webmvc-portlet` 模块。
+>
+> **替代方案**：需要门户功能的场景建议使用 **Spring WebFlux + API Gateway**（如 Spring Cloud Gateway）或前端微服务组合（Micro-Frontends）模式。
+>
+> **Portlet 废弃原因**：Portlet 是 JSR-168/286 规范的实现，主要用于门户（Portal）系统，但随着现代 SPA + 微服务架构的兴起，Portlet 生态已大幅萎缩。Spring 5.0 起不再提供 `spring-webmvc-portlet` 模块。
+>
+> **替代方案**：需要门户功能的场景建议使用 **Spring WebFlux + API Gateway**（如 Spring Cloud Gateway）或前端微服务组合（Micro-Frontends）模式。
 
 ---
 
@@ -152,6 +167,8 @@ Spring 框架的核心模块，也可以说是基础模块，主要提供 IoC �
 ### 4.4 spring-instrument-tomcat
 
 为 Tomcat 提供了一个织入代理，能够为 Tomcat 传递类文件，就像这些文件是被类加载器加载的一样。
+
+> **典型使用场景**：在不修改 Tomcat 类加载器的前提下，将 AspectJ LTW（Load-Time Weaving）织入代理注入到 Tomcat 中。仅在需要在 Tomcat 容器内启用 `spring-instrument` 类转换时才引入，绝大多数 Spring Boot 项目不需要此模块。
 
 ---
 
@@ -216,4 +233,8 @@ Spring 的测试模块对 JUnit（单元测试框架）、TestNG（类似 JUnit�
 ## 相关章节
 
 - ⬅️ [返回 01 核心容器](README.md)
-- [IoC 容器](ioc/README.md) — Spring 核心模块的最佳实践
+- ➡️ [IoC 容器](ioc/README.md) — Spring 核心模块的最佳实践
+- ➡️ [AOP 详解](aop/README.md) — spring-aop / spring-aspects 模块详解
+- ➡️ [工具类参考](tools-reference.md) — spring-context-support 集成指南
+- ➡️ [事件机制](event.md) — spring-context 事件发布与监听
+- ➡️ [事务管理](../04-data/transaction/README.md) — spring-tx 模块详解

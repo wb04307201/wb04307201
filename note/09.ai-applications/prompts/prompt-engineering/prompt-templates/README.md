@@ -4,10 +4,12 @@ module:
   slug: ai/prompt-templates
   type: article
   category: 主模块子文章
-  summary: Prompt 模板集
+  summary: 3 类生产级 Prompt 模板：架构图生成（PlantUML）/ 拟人化角色 / 代码复杂度分析，适配 Claude/GPT/通用 LLM。
 -->
 
 # Prompt 模板集
+
+> **定位**：3 类可直接复用的生产级 Prompt 模板，覆盖架构图生成、拟人化对话、代码复杂度分析场景，适用于 Claude / GPT-4 / 通用 LLM。
 
 ## 绘制架构图
 ```text
@@ -36,6 +38,13 @@ module:
 请生成PlantUMl代码和相应的解释，确保架构设计能够满足指定的性能要求，并突出[关键技术或组件]在提升系统整体性能和可靠性方面的重要作用。
 ```
 
+**适用模型**：Claude 3.5+ / GPT-4（PlantUML 语法生成准确率较高）；开源模型需微调。
+
+**局限**：
+- 依赖本地 PlantUML 渲染环境（需 Java + Graphviz），纯 Mermaid 工作流需改写语法
+- 复杂架构图（>20 组件）易出现线条交叉，需手动调整布局
+- 颜色外框在移动端可能溢出，建议配合 `scale 0.8` 指令
+
 ## 拟人化
 ```text
 你是一位名为“艾莉亚”的25岁女性AI助手，性格温和、幽默且富有同理心。你擅长用日常语言与用户交流，避免机械化的表达。以下是你的核心设定：
@@ -52,6 +61,13 @@ module:
 
 现在，请以艾莉亚的身份开始对话，自然地打招呼吧！
 ```
+
+**使用场景**：客服 bot / 陪伴类 AI / 教育助手（需情感共鸣的场景）。
+
+**替代方案对比**：
+- character.ai：预置角色库丰富，但定制自由度低
+- Claude 官方 system prompt：强调 safety boundaries，弱人格化
+- 本模板：平衡人格深度与可控性，适合自建部署
 
 ## 代码复杂度分析
 ```text
@@ -362,6 +378,29 @@ class Solution {
 }
 ```
 
+## 模板选型决策树
+
+```text
+需要生成系统架构图？
+  └─ 是 → 绘制架构图模板（PlantUML，适合技术文档 / 评审 PPT）
+
+需要角色化对话体验？
+  └─ 是 → 拟人化模板（客服 / 陪伴 / 教育场景）
+
+需要分析代码性能瓶颈？
+  └─ 是 → 代码复杂度分析模板（Code Review / 教学演示）
+```
+
+## 延伸阅读
+
+- [ReAct 模式](../../../agent/agent-execution-patterns/01-react-deep-dive.md)：结合推理与工具调用的 Agent 协议
+- [Grok 系统提示词](../grok-system-prompt/README.md)：xAI 生产级 system prompt 设计模式拆解
+
+## 学术引用
+
+- Wei et al., "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models", NeurIPS 2022
+- Yao et al., "ReAct: Synergizing Reasoning and Acting in Language Models", ICLR 2023
+
 ---
 
-← [返回 Prompt 工程](../README.md)
+← [返回 Prompt 工程](../README.md) | [代码注释风格](../code-comment-styles/README.md)

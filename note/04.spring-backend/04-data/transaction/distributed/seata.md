@@ -9,6 +9,8 @@ module:
 
 # Seata 分布式事务框架
 
+> 🎯 **一句话定位**：Seata = TC/TM/RM 三组件 + AT/TCC/Saga/XA 四模式，Spring Boot 用 `@GlobalTransactional` 一行注解即可接入分布式事务。
+
 ## 一、Seata 简介
 Seata 是一款开源的分布式事务解决方案，致力于提供高性能和简单易用的分布式事务服务。其核心思想是通过将分布式事务拆解为多个本地事务，利用事务协调器（TC）来协调这些本地事务的提交或回滚，从而实现分布式环境下的数据一致性。
 
@@ -307,6 +309,22 @@ seata:
       // 调用多个微服务
   }
   ```
+
+<details><summary>🔍 @GlobalTransactional 原理路径（AT 模式）</summary>
+
+```
+GlobalTransactionalInterceptor.invoke()
+  → TransactionalTemplate.execute()
+    → DataSourceProxy.ConnectionProxy 拦截 SQL
+      → UndoLogManager 生成 before_image / after_image 写入 undo_log 表
+      → 分支事务注册到 TC，等待全局决策
+    → 全局提交：异步清理 undo_log
+    → 全局回滚：根据 undo_log 反向补偿 SQL
+```
+
+> 关键源码类：`io.seata.rm.datasource.undo.UndoLogManager`、`io.seata.rm.datasource.exec.AbstractDMLBaseExecutor`。
+
+</details>
 - **TCC 模式注解**：
   ```java
   @TwoPhaseBusinessAction(name = "tccAction", commitMethod = "confirm", rollbackMethod = "cancel")
@@ -363,6 +381,20 @@ Seata 提供了 AT、TCC、SAGA 和 XA 四种分布式事务模式，可以满�
 **参考资料**：
 - [Seata 官方文档](https://seata.io/zh-cn/docs/overview/what-is-seata.html)
 
+---
+
+## 十、版本演进速查
+
+| 版本 | 关键变更 | 迁移注意 |
+|------|---------|---------|
+| **1.4.x** | 稳定版，file.conf + registry.conf 配置 | 老项目默认配置 |
+| **1.5.x** | 引入 YAML 配置（application.yml 替代 file.conf） | 配置迁移需改 seata.config 格式 |
+| **2.0.x** | v2 协议、Raft 集群模式替代 file.conf 单机、Spring Boot 3 适配 | 新项目首选；Raft 模式无需部署多 TC + ZK |
+
+> **版本选择**：新项目直接用 2.0+（Raft 集群 + Spring Boot 3）；存量 1.x 项目按需升级，配置格式从 file.conf 迁到 application.yml 即可。
+
+---
+
 ## 反向链
 
 - [04-data](../../README.md)
@@ -370,6 +402,7 @@ Seata 提供了 AT、TCC、SAGA 和 XA 四种分布式事务模式，可以满�
 - [multi-datasource-and-jta](../multi-datasource-and-jta.md)
 - [distributed](README.md)
 - [seata-integration](../../../03-cloud/seata-integration.md)
+- [12.interview/04.system-design/distributed-transaction](../../../../12.interview/04.system-design/distributed-transaction/README.md) — 分布式事务面试题汇总
 
 ---
 

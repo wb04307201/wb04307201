@@ -9,10 +9,32 @@ module:
 
 # 计算机网络基础
 
-> 计算机网络是将地理位置不同、具有独立功能的多台计算机及其外部设备，通过通信线路和设备连接起来，在网络操作系统、协议和管理软件的协调下，实现**资源共享**和**信息传递**的计算机系统。
+> 本模块覆盖 **OSI / TCP-IP 双模型** + **HTTP 1.1→2→3 演进** + **DNS 解析链路** + **TLS 1.3 握手**，从参考模型到协议实战一路打通。
 
 ---
----
+
+```mermaid
+graph TB
+    subgraph 应用层["应用层 Application"]
+        HTTP["HTTP/1.1 · HTTP/2 · HTTP/3"]
+        DNS["DNS"]
+        TLS["TLS 1.3"]
+        SMTP["SMTP · FTP · SSH"]
+    end
+    subgraph 传输层["传输层 Transport"]
+        TCP["TCP（可靠 / 连接）"]
+        UDP["UDP（快速 / 无连接）"]
+    end
+    subgraph 网络层["网络层 Internet"]
+        IP["IP · ICMP · ARP"]
+        ROUTE["路由协议 OSPF / BGP"]
+    end
+    subgraph 链路层["链路层 Link"]
+        ETH["Ethernet · Wi-Fi"]
+        PPP["PPP · VLAN"]
+    end
+    应用层 --> 传输层 --> 网络层 --> 链路层
+```
 
 ## 一、网络组成
 
@@ -94,9 +116,9 @@ module:
 |----------|------|------|
 | 分类主题数 | 8 | osi-model / tcp-ip-model / tcp-handshake-teardown / protocols（含 2 子专题） + 4 篇编号子 README（tcp-ip/http/dns/https-tls） |
 | 子 README 数 | 11 | 含 tcp-ip-model / tcp-handshake-teardown / protocols/http-evolution / protocols/tcp-packet 等深层 leaf |
-| 含 frontmatter 的 README | 12 / 12 | 100% 覆盖（2026-07-01） |
+| 含 frontmatter 的 README | 12 / 12 | 100% 覆盖（2026-08-25 find 校对） |
 
-> **统计时间戳**：2026-07-01
+> **统计时间戳**：2026-08-25
 
 ---
 

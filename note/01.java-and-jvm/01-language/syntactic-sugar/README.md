@@ -4,10 +4,12 @@ module:
   slug: java/concepts/syntactic-sugar
   type: article
   category: 主模块子文章
-  summary: Java 语法糖：泛型擦除、自动装箱、foreach、Lambda、try-with-resources。
+  summary: Java 语法糖：从泛型擦除、自动装箱到 Record、Sealed Classes，16 个语法特性的使用写法与脱糖对照
 -->
 
 # 语法糖
+
+> **定位**：Java 从 1.5 到 21 积累的 16 个语法糖特性汇总，涵盖泛型擦除、自动装箱、Lambda、Record、密封类等，编译期脱糖为更基础的语言构造。
 
 ---
 
@@ -326,5 +328,34 @@ public non-sealed class Triangle extends Shape { } // non-sealed - 开放继承
 ```
 
 ---
+
+## 版本演进对照
+
+| 版本 | 引入的语法糖 / 特性 |
+|------|---------------------|
+| Java 5 | 泛型（擦除式）、自动装箱/拆箱、增强 for、可变参数、静态导入、注解 |
+| Java 7 | 菱形操作符 `<>`、try-with-resources |
+| Java 8 | Lambda 表达式、Stream + Lambda、方法引用 |
+| Java 10 | 局部变量类型推断 `var` |
+| Java 14 | Switch 表达式（正式）、Record（预览） |
+| Java 15 | 文本块 `"""` |
+| Java 16 | Record（正式）、instanceof 模式匹配 |
+| Java 17 | Sealed Classes（密封类） |
+| Java 21 | Switch 模式匹配 |
+
+## 语法糖 vs 脱糖后写法
+
+| 语法糖写法 | 脱糖后等价写法 | 说明 |
+|-----------|---------------|------|
+| `List<String>` | `List`（运行时擦除） | 泛型擦除：类型参数仅存于编译期 |
+| `Integer i = 10;` | `Integer i = Integer.valueOf(10);` | 自动装箱调用 `valueOf()` |
+| `for (int x : arr)` | `Iterator` + `hasNext()`/`next()` | foreach 脱糖为迭代器循环 |
+| `Runnable r = () -> ...;` | `invokedynamic` + `LambdaMetafactory` | Lambda 非匿名类脱糖，运行时动态生成 |
+| `try (var r = ...) { ... }` | `try { ... } finally { r.close(); }` | 编译为嵌套 try-finally |
+
+## 相关章节
+
+- [反射机制](../reflection/README.md) — 运行时获取类型信息，与泛型擦除互补
+- [JVM 类加载机制](../../02-jvm/README.md) — 类加载流程，理解注解 / Lambda 的运行时行为基础
 
 ← [返回 Java 核心概念](../README.md)

@@ -89,25 +89,74 @@ Q：为什么 JSON Mode 已经被淘汰了？
 
 ## 💡 30 秒面试话术
 
-> "让 LLM 稳定输出 JSON 需要 5 层工程策略：
+> "让 LLM 稳定输出 JSON 需要 **5 层工程策略**：response_format（API 约束）→ Function Calling（Schema 伪装）→ Prompt 指令 → 解析重试（3 次兜底）→ Constrained Decoding（推理层强制）。**JSON Mode 已过时**（2024-08 Structured Outputs 100% 合规取代）。商业 API 用 Instructor，自部署用 Outlines。"
+
+## 💡 90 秒面试话术
+
+> "核心矛盾：**LLM 是概率模型，JSON 是确定性格式**。
 >
-> **第一层**：response_format 参数（API 层面约束）。2024-08 OpenAI 推出 Structured Outputs，支持 JSON Schema，100% 合规。**JSON Mode 已过时**，因为它只保证合法 JSON，不保证符合 Schema。
+> **第一层** response_format：2024-08 OpenAI 推出 Structured Outputs（JSON Schema 参数），100% 字段/类型合规。JSON Mode（2023-11）只保证合法 JSON 不保证 Schema，已淘汰。
 >
-> **第二层**：Function Calling。把 JSON 格式伪装成'工具'，利用 FC 的 Schema 约束能力。
+> **第二层** Function Calling：把 JSON 格式伪装成'工具调用'，利用 FC 的 Schema 校验能力，适合需要触发工具的场景。
 >
-> **第三层**：Prompt 指令 + 格式示例。灵活但不可靠（~90% 成功率）。
+> **第三层** Prompt 指令 + Few-shot 示例：灵活但成功率仅 ~90%，生产环境不够。
 >
-> **第四层**：解析重试兜底。不管用什么策略，必须有 3 次重试机制：直接解析 → 提取代码块 → 提取 JSON 块 → 让 LLM 修复。
+> **第四层** 解析重试兜底：不管用什么策略，必须有 3 次重试（直接解析 → 提取 ```json``` 块 → 让 LLM 修复格式）。
 >
-> **第五层**：Constrained Decoding（自部署模型）。在推理层面强制每个 token 符合 Schema，100% 合法。
+> **第五层** Constrained Decoding：自部署模型在推理层面用 CFG/Regex 约束每个 token，100% 合法。Outlines / Guidance 框架实现。
 >
-> 框架选型：商业 API 用 Instructor（自动重试 + Pydantic 校验），自部署用 Outlines（Constrained Decoding）。"
+> **框架选型**：商业 API 用 **Instructor**（Pydantic + 自动重试，3 行代码接入）；自部署用 **Outlines**（CFG 约束，性能开销 ~20% 但 100% 合规）。反模式：prompt 里只写'请输出 JSON'、不做重试、用 JSON Mode。"
+
+## ❌/✅ 对比：如何让 LLM 输出合法 JSON
+
+```python
+# ❌ 错误做法：只靠 prompt
+response = client.chat.completions.create(
+    model="gpt-4",
+    messages=[{"role": "user", "content": "请输出 JSON 格式的用户信息"}]
+)
+# 结果：~10% 解析失败（漏括号 / 类型错 / 多余文本）
+
+# ✅ 正确做法：Structured Outputs + JSON Schema
+response = client.chat.completions.create(
+    model="gpt-4o",
+    response_format={
+        "type": "json_schema",
+        "json_schema": {
+            "name": "user_info",
+            "strict": True,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "name": {"type": "string"},
+                    "age": {"type": "integer"}
+                },
+                "required": ["name", "age"],
+                "additionalProperties": False
+            }
+        }
+    },
+    messages=[{"role": "user", "content": "提取用户信息"}]
+)
+# 结果：100% Schema 合规，无需解析重试
+```
 
 ---
 
 ## 📚 深度阅读
 
-- 主模块深度文章 — 5 种策略 + 框架对比 + 5 大反模式
+- 主模块参考：[Prompt 工程总览](../../../09.ai-applications/prompts/prompt-engineering/README.md) — 结构化输出是 Prompt 工程的核心技巧之一（主模块深度文章待沉淀）
+
+## 🛠️ 框架对比：Instructor vs Outlines
+
+| 维度 | Instructor | Outlines |
+|------|-----------|----------|
+| 定位 | 商业 API 封装（OpenAI / Anthropic） | 自部署模型 constrained decoding |
+| 核心机制 | Pydantic 校验 + 自动重试 | CFG/Regex 约束 token 采样 |
+| Schema 合规 | ~99%（重试兜底） | 100%（推理层强制） |
+| 适用场景 | 快速集成商业 API | 自建推理服务（vLLM + Outlines） |
+| 性能开销 | 低（API 调用） | 中（CFG 约束增加解码时间 ~20%） |
+| 学习曲线 | 低（3 行代码接入） | 中（需理解 CFG + 模型部署） |
 
 ---
 

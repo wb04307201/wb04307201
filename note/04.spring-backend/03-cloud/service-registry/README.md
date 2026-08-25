@@ -50,6 +50,8 @@ graph TB
     class B2,B3 recommended
 ```
 
+> **迁移背景**：Netflix 于 2018 年底宣布停止维护 Eureka 2.0（开源版仅保留 1.x 维护分支），国内新项目普遍转向 Nacos（同时覆盖注册中心 + 配置中心）。
+
 ---
 
 ## 核心概念速查
@@ -61,6 +63,24 @@ graph TB
 | **心跳检测** | 服务定期发送心跳，注册中心据此判断实例健康状态 |
 | **AP vs CP** | AP（高可用，允许短暂不一致）vs CP（强一致，可能不可用）|
 | **命名空间/分组** | 逻辑隔离多环境（dev/test/prod）或多业务线 |
+
+<details><summary>🔧 最小注册配置示例（Nacos）</summary>
+
+```yaml
+# application.yml
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: dev            # 命名空间隔离
+        group: DEFAULT_GROUP
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+```
+
+</details>
 
 ---
 
@@ -74,6 +94,7 @@ graph TB
 | **配置中心** | 不支持 | 支持 K/V | 支持 ZNode | 原生支持（二合一）|
 | **维护状态** | 停止维护 | 活跃 | 活跃 | 活跃（国内首选）|
 | **Spring Cloud 集成** | spring-cloud-starter-netflix-eureka | spring-cloud-starter-consul | 需自封装 | spring-cloud-starter-alibaba-nacos |
+| **启动前置** | JDK 8+ | JDK 8+ + Consul Server | JDK 8+ + ZK 3.5+ | JDK 8+ / MySQL 5.7+（生产推荐）|
 
 ---
 

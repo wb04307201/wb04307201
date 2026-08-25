@@ -4,10 +4,12 @@ module:
   slug: 08.ai-foundations/05-tokenization-embedding/embedding
   type: article
   category: 主模块子文章
-  summary: 嵌入 vs 向量化
+  summary: 区分向量化与嵌入的语义映射本质，介绍流形假说及其在深度学习中的作用
 -->
 
 # 嵌入 vs 向量化
+
+> 嵌入是语义-preserving 的降维映射，向量化仅是数值转换；流形假说揭示高维数据的低维本质结构。
 
 ---
 
@@ -23,6 +25,26 @@ module:
 
 * **向量化**：是一个通用术语，泛指任何将非数值数据转换为数值向量的过程。例如，One-Hot编码就是一种向量化方法，但它高维且稀疏，无法体现任何语义关系。
 * **嵌入**：源于数学中的空间映射理论，特指将高维空间中的结构以无损或低损的方式映射到低维空间，同时保留关键属性（如距离、连续性）。嵌入过程旨在揭示数据的低维本质结构，创造有用的表示。
+
+#### 向量化 vs 嵌入对比
+
+| 维度 | 向量化（如 One-Hot） | 嵌入（如 Word2Vec） |
+|------|---------------------|-------------------|
+| **维度** | 高维（词表大小，通常 10000+） | 低维密集（通常 50–1024） |
+| **稀疏性** | 极度稀疏（仅 1 个非零位） | 密集（所有维度均有值） |
+| **语义保留** | ❌ 无语义，纯符号编码 | ✅ 保留语义距离与方向 |
+| **典型方法** | One-Hot、CountVectorizer | Word2Vec、GloVe、BERT Embedding |
+
+#### 核心度量：余弦相似度
+
+嵌入质量的常用度量是余弦相似度（Cosine Similarity），衡量两个向量方向的接近程度：
+
+$$
+\text{cos}(\theta) = \frac{\mathbf{A} \cdot \mathbf{B}}{|\mathbf{A}| \times |\mathbf{B}|} = \frac{\sum_{i=1}^{n} A_i B_i}{\sqrt{\sum_{i=1}^{n} A_i^2} \sqrt{\sum_{i=1}^{n} B_i^2}}
+$$
+
+- 取值范围：$[-1, 1]$，值越接近 1 表示语义越相似
+- 嵌入降维示意：One-Hot 10000 维 → Word2Vec 300 维 → BERT 768 维（密集且语义丰富）
 
 ### 流形假说（Manifold Hypothesis）
 
@@ -46,6 +68,13 @@ module:
 * **适用范围**：流形假说在图像、语音、文本等领域被经验性地证明极其有效，但并不意味着它适用于所有数据。如果数据本身的内在维度远高于设定的目标嵌入维度，嵌入过程可能会丢失大量关键信息，导致模型失效。
 
 通过这篇文章，我们可以更深入地理解嵌入在机器学习中的作用和意义，以及它与向量化的本质区别。
+
+### 参考文献
+
+* Mikolov, T., et al. (2013). *Efficient Estimation of Word Representations in Vector Space* — Word2Vec 原论文，开创密集词嵌入范式
+* Pennington, J., Socher, R., & Manning, C. (2014). *GloVe: Global Vectors for Word Representation* — 全局统计 + 局部窗口结合
+* Bengio, Y., et al. (2013). *Representation Learning: A Review and New Perspectives* — 流形假说与表示学习的系统综述
+* Jina AI (2023). *Jina Embeddings v2* — 开源长文本嵌入模型（8192 tokens），RAG 场景常用
 
 ---
 

@@ -55,4 +55,69 @@ module:
 | 5 | **锁膨胀** | 长事务占用数据库锁 | 异步化 + 补偿 + 最终一致 |
 | 6 | **大事务** | 一锁 N 张表 → 性能塌方 | 拆小 + Saga + 异步消息 |
 
+<details><summary>🔧 @GlobalTransactional 最小可运行示例</summary>
+
+```java
+@Service
+@RequiredArgsConstructor
+public class OrderServiceImpl implements OrderService {
+
+    private final InventoryFeignClient inventoryClient;
+    private final AccountFeignClient accountClient;
+    private final OrderDao orderDao;
+
+    @GlobalTransactional(name = "create-order", rollbackFor = Exception.class)
+    public Order createOrder(Long userId, Long productId, int count) {
+        // 1. 创建订单（本地事务）
+        Order order = Order.builder().userId(userId).productId(productId).count(count).build();
+        orderDao.insert(order);
+        // 2. 扣减库存（远程调用，RM 自动注册分支事务）
+        inventoryClient.deduct(productId, count);
+        // 3. 扣减余额（远程调用）
+        accountClient.debit(userId, order.getTotalPrice());
+        // 任一步骤抛异常 → Seata TC 协调三个 RM 全部回滚
+        return order;
+    }
+}
+```
+
+**TC 集群配置片段**（Nacos 注册 + DB 存储，生产推荐）：
+
+```yaml
+# seata-server/resources/application.yml
+seata:
+  server:
+    service-port: 8091
+  store:
+    mode: db
+    db:
+      datasource: druid
+      db-type: mysql
+      url: jdbc:mysql://127.0.0.1:3306/seata?rewriteBatchedStatements=true
+      user: root
+      password: root
+      min-conn: 5
+      max-conn: 100
+  registry:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      namespace: seata-server
+      group: SEATA_GROUP
+```
+
+</details>
+
+---
+
+## 🔍 模式选型速查（精简版）
+
+| 场景 | 推荐模式 | 关键约束 |
+|------|---------|---------|
+| 跨 2-3 个微服务的常规写操作 | **AT** | 数据库需支持本地事务（MySQL/Oracle） |
+| 高并发 + 强一致（支付/资金） | **TCC** | 业务需实现 Try/Confirm/Cancel 三接口 |
+| 长事务 + 第三方系统参与 | **Saga** | 接受最终一致 + 需补偿逻辑 |
+| 遗留 XA 数据库 / 强合规要求 | **XA** | 性能差，仅用于无法改造的遗留系统 |
+| 跨系统弱一致 + 异步化 | **本地消息表** | 不依赖 Seata，业务侵入小 |
+
 ← [返回: Spring 事务](../README.md)

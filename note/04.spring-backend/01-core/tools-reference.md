@@ -12,18 +12,20 @@ module:
 ## Bean相关
 此类工具位于spring-beans包中，提供了4个非常实用的工具类。
 
-### BeanUtils
+### BeanUtils ⭐
 针对 JavaBeans 的静态工具方法：用于实例化 Bean、检查 Bean 属性类型、复制 Bean 属性等。
+
+**选型建议**：`BeanUtils.copyProperties` 适合简单属性复制；若需高性能批量转换，选 MapStruct（编译期生成代码）；若仅复制少量字段，手动 setter 更清晰可控。
 
 如下示例：
 ```java
 /**1.对象属性复制*/
-User source = newUser(1L,"PackXg");
-User target = newUser();
+User source = new User(1L,"PackXg");
+User target = new User();
 BeanUtils.copyProperties(source, target);
 
 /**2.通过无参构造方法实例化对象*/
-User instance = BeanUtils.instantiateClass(User .class);
+User instance = BeanUtils.instantiateClass(User.class);
 
 /**3.检查给定类型是否为 Bean 属性和数据绑定场景下的“简单”值类型*/
 Class<?> type = User.class.getDeclaredField("name").getType();
@@ -146,7 +148,9 @@ try (GenericApplicationContext context = new GenericApplicationContext()) {
 运行上面代码，输出如下：
 `class com.pack.UserDAO$$SpringCGLIB$$0`
 
-### AopUtils
+> **命名规则**：`$$SpringCGLIB$$0` 表示这是 Spring 通过 CGLIB 生成的代理子类。格式为 `{原始类名}$$SpringCGLIB$${序号}`，序号用于区分同一类的多个代理实例。当类没有实现接口时，Spring 默认使用 CGLIB 生成字节码子类来实现代理。
+
+### AopUtils ⭐
 用于支持 AOP 的实用工具方法。
 
 如下示例：
@@ -188,15 +192,15 @@ classFilter =ClassFilters.intersection(classFilters);
 ## Spring核心工具类
 此类工具位于spring-core包中，提供了14个非常实用的工具类。
 
-### ReflectUtils
+### ReflectUtils ⭐
 该工具主要用于通过反射进行相关的操作。
 
 如下示例：
 ```java
 /**1.创建实例*/
-ReflectUtils.newInstance(UserDAO .class);
+ReflectUtils.newInstance(UserDAO.class);
 /**2.查找Method对象*/
-ReflectUtils.findDeclaredMethod(UserDAO .class, "create",new Class<?>[] {
+ReflectUtils.findDeclaredMethod(UserDAO.class, "create",new Class<?>[] {
         String.class
 });
 /**3.获取java bean对应的所有getter方法*/
@@ -290,13 +294,15 @@ System.err.println(prop);
 ```java
 /**1.查找类上的@Component注解*/
 Set<Component> annotations = AnnotatedElementUtils.findAllMergedAnnotations(UserDAO.class, Component.class) ;
-// 输出：[@org.springframework.stereotype.Component("")]System.err.println(annotations) ; 
+System.err.println(annotations) ;
+// 输出：[@org.springframework.stereotype.Component("")]
 /**获取指定注解（@Qualifier）所有属性*/
 MultiValueMap<String,Object> attributes = AnnotatedElementUtils.getAllAnnotationAttributes(UserDAO.class, Qualifier.class.getName()) ;
-// 输出：{value=[user]}System.err.println(attributes) ;
+System.err.println(attributes) ;
+// 输出：{value=[user]}
 ```
 
-### ClassUtils
+### ClassUtils ⭐
 关于 java.lang.Class 的杂项实用工具方法集合。
 
 如下示例：
@@ -393,7 +399,7 @@ StreamUtils.copy(in, out) ;
 StreamUtils.copyToByteArray(in) ;
 ```
 
-### StringUtils
+### StringUtils ⭐
 字符串操作工具合集。
 
 如下示例：
@@ -412,6 +418,8 @@ StringUtils.toStringArray(List.of("a", "b","c"));
 ## 反向链
 
 - [01-core](README.md)
+- [IoC 容器](ioc/README.md) — Bean 管理与依赖注入原理
+- [AOP 总览](aop/README.md) — AOP 相关工具类的应用场景
 
 ---
 

@@ -4,16 +4,13 @@ module:
   slug: system-design/07-deployment
   type: article
   category: 主模块子文章
-  summary: 一句话定位：**从单机到 K8s，从蓝绿发布到可观测性——部署架构决定物理形态，发布策略决定变更可控。**
+  summary: 从单机到 K8s、从蓝绿发布到可观测性——部署架构决定物理形态，发布策略决定变更可控。
 -->
 
 # 部署与运维篇
 
-> **定位**：一句话定位：**从单机到 K8s，从蓝绿发布到可观测性——部署架构决定物理形态，发布策略决定变更可控。** 的核心原理、实现与最佳实践。
+> **定位**：从单机到 K8s，从蓝绿发布到可观测性——部署架构决定物理形态，发布策略决定变更可控。
 
-> 一句话定位：**从单机到 K8s，从蓝绿发布到可观测性——部署架构决定物理形态，发布策略决定变更可控。**
-
----
 ---
 
 ## 知识脉络
@@ -50,11 +47,11 @@ graph TD
 
 ## 模块导航
 
-| 序号 | 主题 | 核心内容 |
-|------|------|----------|
-| 1 | [部署架构与发布策略](deploy/README.md) | 单机 → K8s → Serverless；蓝绿 / 金丝雀 / 滚动 / A-B Test / 灰度 / 影子流量 / Feature Flag |
-| 2 | [可观测性](observability/README.md) | Metrics + Logs + Traces 三大支柱 + SLO/SLI/Error Budget |
-| 3 | [容量规划与压测](capacity-planning/README.md) | 压测方法论 · 容量估算模型 · 状态服务容量规划 |
+| 序号 | 主题 | 核心内容 | 状态 |
+|------|------|----------|------|
+| 1 | [部署架构与发布策略](deploy/README.md) | 单机 → K8s → Serverless；蓝绿 / 金丝雀 / 滚动 / A-B Test / 灰度 / 影子流量 / Feature Flag | 完整 |
+| 2 | [可观测性](observability/README.md) | Metrics + Logs + Traces 三大支柱 + SLO/SLI/Error Budget | 完整 |
+| 3 | [容量规划与压测](capacity-planning/README.md) | 压测方法论 · 容量估算模型 · 状态服务容量规划 | 完整 |
 
 ## 学习路径
 
@@ -69,6 +66,8 @@ graph TD
 - 平行：[`04-high-performance`](../04-high-performance/README.md) — 高性能（容量规划与性能的交叉）
 - 工具：[`06.spring/07-observability`](../../04.spring-backend/07-observability/README.md) — Spring Boot 可观测性实现
 - 工具：[`05.tools`](../../07.devops-and-tools/01-tools/README.md) — Docker / Nginx 部署工具
+- 交叉：[`04-high-performance/database-optimization`](../04-high-performance/database-optimization/README.md) — 数据库层面的性能优化
+- 交叉：[`03-high-availability/disaster-recovery`](../03-high-availability/README.md) — 容灾与部署架构的协同
 
 ---
 

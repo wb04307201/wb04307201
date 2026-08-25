@@ -4,10 +4,12 @@ module:
   slug: spring/mybatis/01-architecture/04-core-components
   type: topic
   category: MyBatis 内部原理
-  summary: MyBatis 01-architecture 章节深度 —— Core Components
+  summary: 详解 SqlSessionFactory / MappedStatement / Executor 三大核心组件及三种执行器类型
 -->
 
 # 04 核心组件
+
+> **一句话定位**：MyBatis 四大核心组件（SqlSessionFactory / SqlSession / MappedStatement / Executor）的职责划分与三种执行器类型选型。
 
 > 来源:整合自原 08.mybatis/README.md § 三 + § 五.5.3 + § 九(已去重)
 
@@ -73,6 +75,14 @@ Executor executor =
 // </settings>
 ```
 
+| 执行器 | 适用场景 | 调优提示 |
+|--------|---------|---------|
+| SIMPLE | 单次查询为主的简单应用 | 默认值，无需额外配置 |
+| REUSE | 同一 SqlSession 内重复执行相同 SQL | Statement 缓存按 SQL 文本匹配，参数不同也复用 |
+| BATCH | 批量 INSERT/UPDATE（如数据迁移） | 必须手动 `flushStatements()` 才真正执行，注意内存占用 |
+
+> 💡 性能实测建议：批量插入 1000 条时，BATCH 比 SIMPLE 快 5-10 倍（减少网络往返）。
+
 ### 4. 执行器核心方法
 ```java
 public interface Executor {
@@ -122,7 +132,9 @@ System.out.println("SQL 执行耗时: " + duration + "ms");
 
 ## 反向链
 
-- [08-class-diagram](08-class-diagram.md)
+- [03-execution-flow](03-execution-flow.md) — SQL 执行全流程
+- [07-cache-mechanism](07-cache-mechanism.md) — 一级/二级缓存机制
+- [08-class-diagram](08-class-diagram.md) — 架构全景类图
 
 ---
 

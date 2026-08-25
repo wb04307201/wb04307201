@@ -16,34 +16,34 @@ module:
 ## 文章清单（共 6 篇，find 校对 2026-07-19）
 
 ### 实时计算与流处理
-| 主题 | 难度 | 核心问题 |
-|------|------|---------|
-| [Flink Checkpoint vs Savepoint](flink-checkpoint-vs-savepoint/) | ⭐⭐⭐⭐ | 自动 vs 手动、格式兼容性、增量检查点、Exactly-Once 语义 |
+| 主题 | 难度 | 核心问题 | 主模块深度 |
+|------|------|---------|-----------|
+| [Flink Checkpoint vs Savepoint](flink-checkpoint-vs-savepoint/) | ⭐⭐⭐⭐ | 自动 vs 手动、格式兼容性、增量检查点、Exactly-Once 语义 | → [03.data-stack/02-big-data](../../../03.data-stack/02-big-data/) |
 
 ### 批处理与 Shuffle
-| 主题 | 难度 | 核心问题 |
-|------|------|---------|
-| [Spark Shuffle 优化](spark-shuffle-optimization/) | ⭐⭐⭐⭐⭐ | 数据倾斜检测、加盐、AQE 自适应、Broadcast Join 阈值 |
+| 主题 | 难度 | 核心问题 | 主模块深度 |
+|------|------|---------|-----------|
+| [Spark Shuffle 优化](spark-shuffle-optimization/) | ⭐⭐⭐⭐⭐ | 数据倾斜检测、加盐、AQE 自适应、Broadcast Join 阈值 | → [03.data-stack/02-big-data](../../../03.data-stack/02-big-data/) |
 
 ### 数据仓库
-| 主题 | 难度 | 核心问题 |
-|------|------|---------|
-| [Hive 分区 vs 分桶](hive-partition-vs-bucket/) | ⭐⭐⭐⭐ | Partition Pruning、Bucket Map Join、动态分区、小文件问题 |
+| 主题 | 难度 | 核心问题 | 主模块深度 |
+|------|------|---------|-----------|
+| [Hive 分区 vs 分桶](hive-partition-vs-bucket/) | ⭐⭐⭐⭐ | Partition Pruning、Bucket Map Join、动态分区、小文件问题 | → [03.data-stack/02-big-data](../../../03.data-stack/02-big-data/) |
 
 ### 数据湖
-| 主题 | 难度 | 核心问题 |
-|------|------|---------|
-| [Iceberg ACID 事务](iceberg-acid/) | ⭐⭐⭐⭐⭐ | Snapshot 隔离、Manifest 文件、MVCC、Merge-on-Read vs Copy-on-Write |
+| 主题 | 难度 | 核心问题 | 主模块深度 |
+|------|------|---------|-----------|
+| [Iceberg ACID 事务](iceberg-acid/) | ⭐⭐⭐⭐⭐ | Snapshot 隔离、Manifest 文件、MVCC、Merge-on-Read vs Copy-on-Write | → [03.data-stack/02-big-data](../../../03.data-stack/02-big-data/) |
 
 ### OLAP 引擎
-| 主题 | 难度 | 核心问题 |
-|------|------|---------|
-| [Doris vs ClickHouse](doris-vs-clickhouse/) | ⭐⭐⭐⭐ | 架构对比、Join 性能、实时导入、生态选型 |
+| 主题 | 难度 | 核心问题 | 主模块深度 |
+|------|------|---------|-----------|
+| [Doris vs ClickHouse](doris-vs-clickhouse/) | ⭐⭐⭐⭐ | 架构对比、Join 性能、实时导入、生态选型 | → [03.data-stack/02-big-data](../../../03.data-stack/02-big-data/) |
 
 ### 消息队列
-| 主题 | 难度 | 核心问题 |
-|------|------|---------|
-| [Kafka Exactly-Once](kafka-exactly-once/) | ⭐⭐⭐⭐⭐ | 幂等 Producer、事务 API、Consumer Offset、Kafka Streams |
+| 主题 | 难度 | 核心问题 | 主模块深度 |
+|------|------|---------|-----------|
+| [Kafka Exactly-Once](kafka-exactly-once/) | ⭐⭐⭐⭐⭐ | 幂等 Producer、事务 API、Consumer Offset、Kafka Streams | → [06.distributed-systems](../../../06.distributed-systems/) |
 
 ---
 
@@ -55,7 +55,7 @@ module:
 
 ## 相关章节
 
-- 主模块：大数据相关知识分散在 [`03.database`](../../../note/03.database/)（数据库）、[`04.system-design`](../../../note/04.system-design/)（分布式系统）
-- 相关面试题：[`03.database`](03.database/)（MVCC / 事务隔离）/ [`04.system-design`](12.interview/04.system-design/)（分布式一致性）
+- 主模块：大数据相关知识分散在 [`03.data-stack`](../../../03.data-stack/)（数据库 + 大数据）、[`06.distributed-systems`](../../../06.distributed-systems/)（分布式系统）
+- 相关面试题：[`03.database`](../03.database/)（MVCC / 事务隔离）/ [`04.system-design`](../04.system-design/)（分布式一致性）
 
 ← [返回咬文嚼字（高频面试题）](../README.md)

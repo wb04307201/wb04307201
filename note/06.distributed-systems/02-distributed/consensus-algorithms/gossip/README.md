@@ -1,6 +1,6 @@
 <!--module:
   parent: system-design
-  slug: 12.interview/04.system-design/02-distributed/consensus-algorithms/gossip
+  slug: system-design/gossip
   type: article
   category: 主模块子文章
   summary: Gossip协议：分布式系统中的高效信息传播机制 本应该很简单，Gossip协议（八卦协议）通过模仿人类社会中“流言传播”的方式，实现分布式系统中信息的快速同步...
@@ -58,6 +58,14 @@ Gossip协议因其高效性和容错性，被广泛应用于以下领域：
     - **服务发现**：在Kubernetes等系统中，Gossip用于节点间服务注册与发现。
     - **配置同步**：集群配置变更时，通过Gossip确保所有节点应用相同配置。
 
+### Gossip 在各系统中的实现差异
+
+| 系统 | Gossip 用途 | 传播模式 | 关键差异 |
+|------|-------------|----------|----------|
+| Cassandra | 成员管理 + 元数据同步 | Push-Pull | 每轮随机选 3 个节点，支持跨数据中心 Gossip |
+| Consul | 成员管理 + 健康检查 | Push | 与 Serf 库集成，LAN/WAN 双池 Gossip |
+| Redis Cluster | 集群状态广播 | Push | 仅传播槽位迁移信息，不做数据同步 |
+
 ## 四、优缺点分析：权衡设计中的关键因素
 
 1. **优点**
@@ -78,6 +86,15 @@ Gossip协议因其高效性和容错性，被广泛应用于以下领域：
 3. **定向传播**：结合网络拓扑信息，优先选择关键节点传播，加速收敛。
 4. **混合协议**：将Gossip与其他协议（如Paxos、Raft）结合，平衡一致性与效率。
 
+### Cassandra Gossip 关键配置
+
+| 配置项 | 默认值 | 说明 |
+|--------|--------|------|
+| `gossip_settle_min_wait_ms` | 5000 | Gossip 启动后最小等待时间，等待集群信息稳定 |
+| `gossip_settle_max_wait_ms` | 10000 | 最大等待时间，超时后强制进入服务状态 |
+| `gossip_interval_ms` | 1000 | 每轮 Gossip 通信间隔，调小可加速收敛但增加带宽 |
+| `cross_node_timeout` | false | 跨节点通信超时控制，网络分区场景建议开启 |
+
 ## 六、总结：Gossip协议的分布式系统价值
 Gossip协议通过模拟人际传播的简单机制，为分布式系统提供了一种高效、容错的信息同步方案。其核心优势在于去中心化设计和指数级扩散能力，适用于大规模、动态变化的网络环境。尽管存在延迟和带宽消耗等缺点，但通过模式选择和优化策略，Gossip协议已成为云计算、区块链、分布式数据库等领域的基石技术。未来，随着5G、物联网等技术的发展，Gossip协议在超大规模分布式系统中的应用前景将更加广阔。
 
@@ -86,8 +103,8 @@ Gossip协议通过模拟人际传播的简单机制，为分布式系统提供�
 
 ## 相关章节
 
-- [Serverless 架构：FaaS / BaaS / Knative 全场景实战](../../../01-foundation/02-evolution/02-serverless-architecture/README.md)
-- [演进与组织](../../../01-foundation/system-design-basics/microservices/migration-and-organization/README.md)
-- [4+1 视图](../../../01-foundation/system-design-basics/architecture-diagram/4+1/README.md)
+- [Paxos 算法](../paxos/README.md) — 共识算法的理论基石
+- [Raft 算法](../raft/README.md) — 工程实践中最常用的共识协议
+- [分布式缓存](../../../04-high-performance/cache-patterns/README.md) — Gossip 在缓存一致性中的应用
 
 ← [返回 共识算法](../README.md)

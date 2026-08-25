@@ -84,6 +84,13 @@ src/main/java/cn/wubo/micro/rest/
 
 ## 使用方法
 
+> ⚠️ **前置条件**：MicroRest 源码在外部仓库 [`wb04307201/microrest`](https://github.com/wb04307201/microrest)，需先克隆到本地。
+
+```bash
+git clone https://github.com/wb04307201/microrest.git
+cd microrest
+```
+
 1. **启动服务**:
    ```bash
    mvn jetty:run
@@ -97,7 +104,7 @@ src/main/java/cn/wubo/micro/rest/
 
 - **轻量化**: 仅实现 Spring 的核心功能，代码简洁易懂
 - **可扩展**: 模块化设计，易于添加新功能
-- **教学价值**: 适合作为入门级 IoC + MVC 原理示例
+- **教学定位**: 适合入门级 IoC + MVC 原理演示，**不代表生产级 Spring 实现**
 - **注解驱动**: 使用自定义注解简化开发流程
 
 ## 限制与待完善
@@ -106,18 +113,22 @@ src/main/java/cn/wubo/micro/rest/
 
 明确不支持 / 缺失的能力：
 
-- **仅支持 GET 请求**（可通过扩展支持其他 HTTP 方法）
-- 参数处理仅支持基本类型和特定对象（HttpServletRequest / HttpServletResponse）
-- **缺少 AOP** —— 没有任何动态代理 / 切面织入
-- **缺少事务管理** —— 没有 PlatformTransactionManager 抽象
-- 错误处理机制相对简单，无 `@ControllerAdvice` 全局兜底
-- 不支持 `@Configuration` / `@Bean` / `@Import` 等 Java Config
-- 字段注入仅按类型匹配，不支持 `@Qualifier` / `@Primary`
-- 没有 Bean 生命周期接口（`InitializingBean`、`@PostConstruct`）
-- 没有 Bean 作用域概念（所有 Bean 都是单例且立即实例化）
+- **P0** **仅支持 GET 请求**（可通过扩展 `DispatcherServlet` 支持其他 HTTP 方法）
+- **P0** **缺少 AOP** —— 没有任何动态代理 / 切面织入
+- **P0** **缺少事务管理** —— 没有 PlatformTransactionManager 抽象
+- **P1** 参数处理仅支持基本类型和特定对象（HttpServletRequest / HttpServletResponse）
+- **P1** 错误处理机制相对简单，无 `@ControllerAdvice` 全局兜底
+- **P1** 不支持 `@Configuration` / `@Bean` / `@Import` 等 Java Config
+- **P2** 字段注入仅按类型匹配，不支持 `@Qualifier` / `@Primary`
+- **P2** 没有 Bean 生命周期接口（`InitializingBean`、`@PostConstruct`）
+- **P2** 没有 Bean 作用域概念（所有 Bean 都是单例且立即实例化）
 
 该项目适合用于辅助理解 IoC 容器和 MVC 模式的**入门级运作机制**，但请以官方 Spring 源码为准。
 
 ---
+
+**相关章节**：
+- [`IoC 容器`](../../ioc/README.md) — Spring 原生 Bean 管理机制
+- [`AOP 总览`](../../aop/README.md) — MicroRest 未实现的 AOP 部分
 
 ← [返回 miniSpring 总览](../README.md)

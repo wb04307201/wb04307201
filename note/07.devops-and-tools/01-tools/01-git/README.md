@@ -2,7 +2,7 @@
 module:
   parent: tools
   slug: note/tools/git
-  type: article
+  type: index
   category: 主模块子文章
   summary: Git — 版本控制与自托管代码托管
 -->
@@ -50,25 +50,25 @@ graph TB
 ---
 
 ## 速查表 / Cheat Sheet
-| 概念 | 解释 | 典型场景 |
-|------|------|---------|
-| **git switch** | 切换/创建分支（Git 2.23+ 替代 checkout） | 分支操作 |
-| **git restore** | 恢复文件（替代 checkout -- / reset HEAD） | 撤销工作区/暂存区修改 |
-| **git rebase** | 变基，将提交线性化 | 保持提交历史整洁 |
-| **force-with-lease** | 安全强制推送（2025 标准，优于 --force） | 重写历史后推送 |
-| **git bisect** | 二分查找定位问题提交 | 调试回归问题 |
-| **git submodule** | 子模块，在仓库中嵌套其他仓库 | 共享公共代码库 |
-| **Gitea** | 轻量级自托管 Git 服务（Go 编写，512MB 内存可运行） | 中小企业私有代码托管 |
-| **Gitea Actions** | 类 GitHub Actions 的 CI/CD 流水线 | 自动化构建/部署 |
+| 概念 | 解释 | 典型命令示例 | 典型场景 |
+|------|------|------------|---------|
+| **git switch** | 切换/创建分支（Git 2.23+ 替代 checkout） | `git switch -c feature/login` | 分支操作 |
+| **git restore** | 恢复文件（替代 checkout -- / reset HEAD） | `git restore --staged file.txt` | 撤销工作区/暂存区修改 |
+| **git rebase** | 变基，将提交线性化 | `git rebase -i HEAD~5` | 保持提交历史整洁 |
+| **force-with-lease** | 安全强制推送（2025 标准，优于 --force） | `git push --force-with-lease origin main` | 重写历史后推送 |
+| **git bisect** | 二分查找定位问题提交 | `git bisect start <bad> <good>` → `git bisect good/bad` | 调试回归问题 |
+| **git submodule** | 子模块，在仓库中嵌套其他仓库 | `git submodule add <url> <path>` | 共享公共代码库 |
+| **Gitea** | 轻量级自托管 Git 服务（Go 编写，512MB 内存可运行） | `docker run -d -p 3000:3000 gitea/gitea` | 中小企业私有代码托管 |
+| **Gitea Actions** | 类 GitHub Actions 的 CI/CD 流水线 | `.gitea/workflows/*.yml` | 自动化构建/部署 |
 
 ---
 
 ## 核心内容
-### 4.1 命令清单
+### 1 命令清单
 
 按功能分为八大类：基础配置、仓库操作、文件管理、提交与历史、分支管理、远程协作、撤销回退、高级工具（stash/bisect/cherry-pick/reflog）。采用现代 Git 语法（switch/restore 替代 checkout）。
 
-### 4.2 Gitea 自托管服务
+### 2 Gitea 自托管服务
 
 基于 Go 语言的轻量级 Git 服务，最低 512MB 内存即可运行。功能覆盖代码仓库、PR/Issue、Wiki、Gitea Actions（CI/CD）、包注册表（Container/Maven/npm）。支持 Docker 一键部署，兼容 GitHub API，Apache 2.0 开源协议。与 GitLab 相比资源占用极低，与 Gogs 相比功能更全面且社区更活跃。
 
@@ -108,7 +108,6 @@ graph TB
 
 ## 相关章节
 - 上游：[`工具链`](../README.md)
-- 兄弟：`[`branch-naming/`](branch-naming/README.md)` — 分支命名规范（Conventional Branches + CI 联动）
 - 关联：[`05-monorepo`](../05-monorepo/README.md) — Monorepo 仓库管理依赖 Git 子模块/worktree
 
 ---

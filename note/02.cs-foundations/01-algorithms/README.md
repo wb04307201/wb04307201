@@ -12,7 +12,6 @@ module:
 > 算法是**解决问题的清晰指令序列**——一系列有限步骤的精确描述，将输入转换为输出。
 
 ---
----
 
 ## 一、核心特征
 
@@ -52,6 +51,38 @@ module:
 - **机器学习** — CNN/Transformer/K-Means/决策树
 
 ---
+
+### 选型边界（快速决策）
+
+| 信号 | 建议 |
+|------|------|
+| n < 50 | 插入排序即可，常数小、代码短 |
+| n < 10⁴ | O(n²) 可接受（冒泡/选择/插入） |
+| n > 10⁶ | **必须** O(n log n) 或更优，禁用 O(n²) |
+| 要求稳定 | 归并 / 插入 / 计数 / 桶；避开快排/堆排 |
+| 空输入 / 单元素 | 递归基必须处理，否则栈溢出 |
+| 数值求和 / 累乘 | 用 long / BigDecimal 防溢出 |
+| 浮点比较 | 用 `abs(a-b) < ε`，不要 `==` |
+
+### 分类思维导图
+
+```mermaid
+graph LR
+    A["算法分类"] --> B["按设计方法"]
+    A --> C["按应用领域"]
+    B --> B1["贪心"]
+    B --> B2["动态规划"]
+    B --> B3["分治"]
+    B --> B4["回溯"]
+    B --> B5["随机化"]
+    B --> B6["分支限界"]
+    C --> C1["排序/查找"]
+    C --> C2["图论"]
+    C --> C3["字符串"]
+    C --> C4["数值/数学"]
+    C --> C5["智能优化"]
+    C --> C6["机器学习"]
+```
 
 ## 三、经典案例
 
@@ -163,7 +194,7 @@ module:
 
 - 上游：[`02.computer-basics`](../README.md) — 本模块入口
 - 关联：[`03.database`](../../03.data-stack/01-database/README.md) — B+Tree 索引、查询优化
-- 关联：[`04.system-design`](../../06.distributed-systems/README.md) — 算法在系统设计中的应用（缓存、负载均衡、一致性哈希）
+- 关联：[`06.system-design`](../../06.distributed-systems/README.md) — 算法在系统设计中的应用（缓存、负载均衡、一致性哈希）
 - 面试深挖：[`13.split-hairs 贪心算法`](../../12.interview/02.computer-basics/greedy-algorithms/README.md) — 面试题 + 陷阱表 + 90 秒话术
 
 ---
@@ -178,9 +209,9 @@ module:
 |----------|------|------|
 | 分类主题数 | 1 | 复杂度（含 time-complexity / space-complexity 2 子专题） |
 | 子 README 数 | 3 | 含 complexity/time-complexity / complexity/space-complexity 等深层 leaf |
-| 含 frontmatter 的 README | 4 / 4 | 100% 覆盖（2026-07-01） |
+| 含 frontmatter 的 README | 4 / 4 | 100% 覆盖（2026-08-25 find 校对） |
 
-> **统计时间戳**：2026-07-01
+> **统计时间戳**：2026-08-25
 
 ---
 

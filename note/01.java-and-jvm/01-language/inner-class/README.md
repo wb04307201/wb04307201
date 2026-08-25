@@ -4,10 +4,12 @@ module:
   slug: java/inner-class
   type: article
   category: 主模块子文章
-  summary: 内部类
+  summary: Java 内部类：成员内部类、静态嵌套类、局部内部类、匿名内部类 + Lambda 替代
 -->
 
 # 内部类
+
+> **定位**：Java 嵌套类机制，4 种类型（成员/静态/局部/匿名）各有适用场景，Java 16+ 放宽了静态成员限制。
 
 ---
 
@@ -129,25 +131,32 @@ public class Outer {
 没有类名的内部类，通常用于创建实现接口或继承类的**一次性**对象。
 
 ```java
-// 以下代码需放在方法体内才能编译
-// 实现接口的匿名内部类
-// Runnable runnable = new Runnable() {
-//     @Override
-//     public void run() {
-//         System.out.println("Running in anonymous class");
-//     }
-// };
-//
-// // 继承类的匿名内部类
-// Thread thread = new Thread() {
-//     @Override
-//     public void run() {
-//         System.out.println("Thread running");
-//     }
-// };
-//
-// // Java 8+ 可以用 Lambda 表达式替代函数式接口的匿名内部类
-// Runnable lambda = () -> System.out.println("Running via lambda");
+public class AnonymousDemo {
+    public void demonstrate() {
+        // 实现接口的匿名内部类
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("Running in anonymous class");
+            }
+        };
+
+        // 继承类的匿名内部类
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                System.out.println("Thread running");
+            }
+        };
+
+        // Java 8+ 可以用 Lambda 表达式替代函数式接口的匿名内部类
+        Runnable lambda = () -> System.out.println("Running via lambda");
+
+        runnable.run();
+        thread.start();
+        lambda.run();
+    }
+}
 ```
 
 ## 四种内部类对比
@@ -196,6 +205,14 @@ Comparator<String> methodRef = Comparator.comparingInt(String::length);
 2. **内存泄漏**：非静态内部类持有外部类的引用，如果内部类生命周期比外部类长，可能导致外部类无法被回收
 3. **优先使用静态内部类**：如果内部类不需要访问外部类的实例成员，应声明为`static`，避免不必要的引用持有
 - **多态应用**：[polymorphism](../polymorphism/README.md) — 匿名内部类即一种多态形态（创建匿名子类实现多态分派）
+
+## JDK 版本演进
+
+| 版本 | 变化 |
+|------|------|
+| Java 1.1 | 引入内部类（成员/静态/局部/匿名 4 种） |
+| Java 8 | Lambda 表达式可替代函数式接口的匿名内部类 |
+| Java 16 | 放宽限制：成员内部类允许定义所有静态成员（此前仅允许 `static final` 常量） |
 
 ---
 

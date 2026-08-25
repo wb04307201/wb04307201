@@ -46,6 +46,17 @@ question:
 
 > "以 7B 模型 8K context 为例，KV Cache 显存约 4GB，70B 128K 需 320GB。3 大优化方向：**量化（FP16→INT8 省 2x）/ 共享（MQA-GQA 省 4-8x）/ 分页（PagedAttention 碎片 < 4%）**。KV Cache 是**所有 LLM 推理优化的基石**。"
 
+KV Cache 显存估算公式：
+
+```text
+KV_size = 2 × n_layers × n_heads × d_head × seq_len × dtype_size × batch_size
+
+# 示例：LLaMA-7B, FP16, batch=1
+# = 2 × 32 × 32 × 128 × 8192 × 2 = ~4 GB
+# 示例：LLaMA-70B, FP16, 128K context
+# = 2 × 80 × 64 × 128 × 131072 × 2 = ~320 GB
+```
+
 **反直觉**：
 
 - ❌ "KV Cache 越大越好" → ✅ 显存约束下需权衡
@@ -67,6 +78,17 @@ question:
 **90 秒话术**：
 
 > "传统连续分配下，100 token 和 8000 token 请求混跑，**碎片率 60-80%**。PagedAttention 把 KV 切成 16 token 的 block，**碎片 < 4%**。配合 **Continuous Batching**（每 token 调度），vLLM 实际生产**吞吐量提升 4-24x**。这是 vLLM 2023 年 SOSP 论文的核心贡献。"
+
+PagedAttention block_table 映射结构：
+
+```text
+# 逻辑上连续的 KV Cache（100 token）被分散到不连续的物理 block
+逻辑 token:  [0..15] [16..31] [32..47] ... [96..99]
+              ↓        ↓        ↓            ↓
+物理 block:  block_7  block_2  block_15    block_3（block_size=16）
+
+block_table[req_id] = [7, 2, 15, ..., 3]  # 类似 OS 页表
+```
 
 **反直觉**：
 
@@ -126,6 +148,14 @@ question:
 **90 秒话术**：
 
 > "简单 INT4 截断会掉 5-10% 精度。**GPTQ（2022）**用二阶 Hessian 矩阵找到最优量化顺序，逐层最小化重建误差。**AWQ（2023）**发现激活值大的 1-3% 权重占精度 60%+，跳过这些不量化。**GGUF（llama.cpp）**用 K-means 聚类找最优量化中心。**NF4（QLoRA）**专门为训练设计，NormalFloat 分布匹配正态分布权重。LLaMA-7B 实测：FP16 → INT4 显存 14GB→4GB，加速 2.3x，PPL 损失 < 0.3。"
+
+---
+
+## 🤔 追加问题（面试深挖方向）
+
+- Continuous Batching 与 Prefill 阶段如何协调？（Prefill Chunking + 分离式调度）
+- Speculative Decoding 在 batch > 1 时为何变慢？（验证 forward 的计算量随 batch 线性增长，投机收益被稀释）
+- PagedAttention 的 block 大小怎么选？（太小浪费 block_table，太大内部碎片增加；典型 16 token）
 
 ---
 

@@ -4,12 +4,14 @@ module:
   slug: spring/mybatis/01-architecture/03-execution-flow
   type: topic
   category: MyBatis 内部原理
-  summary: MyBatis 01-architecture 章节深度 —— Execution Flow
+  summary: 以查询为例串起 MyBatis 从配置加载到结果映射的八步执行链路
 -->
 
 # 03 执行流程
 
 > 来源:整合自原 08.mybatis/README.md § 二.2.2
+>
+> 🎯 一句话定位：以查询为例串起 MyBatis 从配置加载到结果映射的八步执行链路。
 
 ### 2.2 执行流程（以查询为例）
 
@@ -39,5 +41,6 @@ graph TD
 
 - 上一篇：[`02 初始化流程`](02-initialization-flow.md) — SqlSessionFactory 创建全过程
 - 下一篇：[`04 核心组件`](04-core-components.md) — Executor / StatementHandler / ParameterHandler / ResultHandler
+- 类图参考：[`08 类图`](08-class-diagram.md) — MyBatis 核心组件关系图
 
 ← [返回: 01-architecture](README.md)

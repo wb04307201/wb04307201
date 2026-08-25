@@ -2,7 +2,7 @@
 module:
   parent: system-design
   slug: system-design/09-emerging-tech
-  type: article
+  type: index
   category: 主模块子文章
   summary: 一句话定位：**新兴技术是架构师的前瞻视野——eBPF 重塑可观测、WebAssembly 突破语言边界、服务网格重塑通信、云原生趋势定义未来 5 年。**
 -->
@@ -43,17 +43,17 @@ graph TB
 
 ## 模块导航
 
-| 序号 | 分类 | 主题 | 核心内容 |
-|------|------|------|----------|
-| 1 | 内核 | [eBPF · 内核级可观测与网络编程实战](01-ebpf/README.md) | 内核沙箱 / 网络可观测 / 安全 / 性能分析 |
-| 2 | 运行时 | [WebAssembly (WASM) · 跨平台高性能运行时实战](02-wasm/README.md) | 浏览器外 / 边缘计算 / 插件系统 / 多语言互操作 |
-| 3 | 通信 | [服务网格深度](03-service-mesh-deep/README.md) | 数据面 / 控制面 / Sidecar 与 eBPF / Istio vs Linkerd |
-| 4 | 趋势 | [云原生趋势 2025+](04-cloud-native-trends/README.md) | Serverless / 多云 / AI Native / 平台工程 |
+| 序号 | 分类 | 主题 | 核心内容 | 技术价值 |
+|------|------|------|----------|----------|
+| 1 | 内核 | [eBPF · 内核级可观测与网络编程实战](01-ebpf/README.md) | 内核沙箱 / 网络可观测 / 安全 / 性能分析 | eBPF 将可观测性和网络编程下沉到内核态，是替代传统 Sidecar 和 Agent 的下一代基础设施原语 |
+| 2 | 运行时 | [WebAssembly (WASM) · 跨平台高性能运行时实战](02-wasm/README.md) | 浏览器外 / 边缘计算 / 插件系统 / 多语言互操作 | WASM 把"一次编译、到处运行"带到浏览器之外，是边缘计算和多语言插件系统的关键运行时 |
+| 3 | 通信 | [服务网格深度](03-service-mesh-deep/README.md) | 数据面 / 控制面 / Sidecar 与 eBPF / Istio vs Linkerd | 服务网格将通信治理能力（限流、熔断、mTLS）从代码中剥离到基础设施层，重新定义微服务通信范式 |
+| 4 | 趋势 | [云原生趋势 2025+](04-cloud-native-trends/README.md) | Serverless / 多云 / AI Native / 平台工程 | Serverless、平台工程和 AI Native 正在定义云原生的下一个五年，是架构师必须跟踪的趋势方向 |
 
 ## 学习路径
 
-- **入门**：eBPF → 服务网格深度（基础前沿 + 通信范式）
-- **进阶**：WebAssembly → 云原生趋势（运行时革命 + 未来 5 年）
+- **入门**：eBPF → 服务网格深度（eBPF 是内核原语，理解了它才能明白服务网格为何能从 Sidecar 演进到 Cilium/eBPF 模式）
+- **进阶**：WebAssembly → 云原生趋势（WASM 打破语言边界后，Serverless / AI Native 等趋势才有了运行时基础）
 - **实战**：eBPF + Cilium 替代 Sidecar → WASM + Envoy 插件化 → 平台工程
 
 ## 相关章节
@@ -61,7 +61,7 @@ graph TB
 - 平行：[`08-observability`](../08-observability/README.md) — eBPF 是可观测性的下一站
 - 平行：[`07-deployment`](../07-deployment/README.md) — 部署架构的新形态
 - 工具：[`05.tools`](../../07.devops-and-tools/01-tools/README.md) — K8s / Docker 是云原生的底座
-- 面试：[`13.split-hairs/04.system-design`](../../12.interview/04.system-design/README.md) — 系统设计面试题
+- 面试：[`12.interview/04.system-design`](../../12.interview/04.system-design/README.md) — 系统设计面试题
 
 ---
 

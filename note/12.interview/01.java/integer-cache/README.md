@@ -147,7 +147,9 @@ System.out.println(a == b); // 这次呢？
 
 ## 五、常见陷阱
 
-### 陷阱1：缓存范围边界问题
+### 陷阱 1：缓存范围边界问题
+
+**真相**：缓存范围是 -128 ~ 127，**边界值 -128 仍在缓存内**，但 -129 会新建对象。面试常考边界值判断。
 
 ```java
 Integer a = -128;
@@ -159,10 +161,12 @@ Integer d = -129;
 System.out.println(c == d); // false（超出下界）
 ```
 
-### 陷阱2：反射修改缓存导致的诡异行为
+### 陷阱 2：反射修改缓存导致的诡异行为
+
+**真相**：反射可以篡改 IntegerCache 数组，导致 `42 + 1 = 1000` 这种反直觉结果。生产环境绝对禁止；且 **Java 9+ 的 JPMS 模块系统默认封禁对 `java.lang` 的深层反射**（需 `--add-opens`），面试应主动提及版本演进。
 
 ```java
-// 危险操作：通过反射修改缓存值
+// 危险操作：通过反射修改缓存值（Java 8 可行，Java 9+ 需 --add-opens java.base/java.lang=ALL-UNNAMED）
 Integer[] cache = getIntegerCache();
 cache[128 + 42] = new Integer(999); // 将42的缓存改为999
 
@@ -172,7 +176,9 @@ System.out.println(42 + 1); // 输出1000！因为42被改为999
 
 这种操作会导致程序行为完全不可预测，生产环境中绝对禁止。
 
-### 陷阱3：反序列化破坏缓存
+### 陷阱 3：反序列化破坏缓存
+
+**真相**：反序列化永远新建对象，**不走 valueOf() 缓存入口**。即使值在 -128~127 范围内，`==` 也返回 false。
 
 ```java
 // 反序列化会创建新的Integer对象，不走缓存
@@ -215,9 +221,23 @@ System.out.println(System.currentTimeMillis() - start);
 2. 自动装箱的底层实现（valueOf vs new）
 3. 各包装类的缓存范围对比
 4. 缓存带来的性能提升原理
-5. 常见的Integer比较陷阱## 相关章节
+5. 常见的Integer比较陷阱
+
+## 相关章节
 
 - 深度阅读：[`01.java/核心概念`](../../../01.java-and-jvm/01-language/README.md) — 基本类型、自动装箱/拆箱
+- 数据类型详解：[`01.java/基本数据类型与包装类`](../../../01.java-and-jvm/01-language/data-types/README.md) — 8 种基本类型 + 缓存机制源码
 - 相关：[`13.split-hairs/new-string`](../new-string/README.md) — 字符串常量池（同类型考点）
+- 数据库 INT 列映射：[`03.data-stack/01-database`](../../../03.data-stack/01-database/README.md) — INT/BIGINT 类型与 Java 包装类选型
+
+## 💡 面试话术
+
+**30 秒话术**：
+
+> "Integer 默认缓存 -128~127，`valueOf()` 和自动装箱走缓存，`new` 不走。范围外必新建对象，`==` 比较会踩坑——**永远用 `equals()` 比较包装类**。"
+
+**90 秒话术**：
+
+> "Java 为高频小整数设计了 IntegerCache（-128~127，上限可用 `-XX:AutoBoxCacheMax` 调整）。自动装箱 `Integer a = 100` 编译为 `Integer.valueOf(100)`，走缓存返回同一对象；`new Integer(100)` 绕开缓存新建。面试三大陷阱：①缓存边界（-128 OK，-129 false）②反射篡改缓存（Java 9+ JPMS 已封禁，需 `--add-opens`）③反序列化不走 valueOf。其他包装类（Byte/Short/Long/Character）也缓存但范围不同，**Float/Double 无缓存**。实战建议：比较用 `equals()`，JVM 参数慎调上限，序列化用 `readResolve()` 兜底。"
 
 ← [返回: 咬文嚼字 · integer-cache](../README.md)
