@@ -419,12 +419,12 @@ curl -X POST http://localhost:8080/api/order/create \
 
 ### 主模块深度版（01.java-and-jvm）
 
-- [`build-tools`](../../01.java-and-jvm/build-tools/README.md) — Maven 依赖治理 + 传递依赖解析原理（本题理论根基）
-- [`exception`](../../01.java-and-jvm/01-language/exception/README.md) — `NoClassDefFoundError` 在 Java 异常体系中的位置 + Error vs Exception 设计哲学
-- [`serialization-and-deserialization`](../../01.java-and-jvm/01-language/serialization-and-deserialization/README.md) — fastjson2 章节，看为什么 JSON 序列化会触发 `<clinit>` 级联加载
+- [`build-tools`](../../../01.java-and-jvm/build-tools/README.md) — Maven 依赖治理 + 传递依赖解析原理（本题理论根基）
+- [`exception`](../../../01.java-and-jvm/01-language/exception/README.md) — `NoClassDefFoundError` 在 Java 异常体系中的位置 + Error vs Exception 设计哲学
+- [`serialization-and-deserialization`](../../../01.java-and-jvm/01-language/serialization-and-deserialization/README.md) — fastjson2 章节，看为什么 JSON 序列化会触发 `<clinit>` 级联加载
 
 ---
 
 > 📅 2026-08-28 · 咬文嚼字 · NoClassDefFoundError 排查 · ⭐⭐⭐⭐⭐（生产部署治理 + Maven 传递依赖深度题）
 
-← [返回 12.interview/01.java 目录表](../../README.md)
+← [返回 12.interview/01.java 目录表](../README.md)
