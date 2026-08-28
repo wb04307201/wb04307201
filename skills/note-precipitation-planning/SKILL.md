@@ -246,9 +246,36 @@ echo "  □ 主题目录已扫（1.2）"
 echo "  □ 13.split-hairs 兄弟已列（1.3）"
 echo "  □ 12.story 联动已查（1.4）"
 echo "  □ 系列结构 / 总目录入口已查（1.5 + 1.6）"
+echo "  □ 同模式范例已对照（1.8 🆕）"
+echo "  □ Bonus 修复同源错误已 grep（1.9 🆕）"
 ```
 
-**输出**：5-10 个相关文件 + 每个文件的"覆盖深度"评估（"已有详细"/"一笔带过"/"完全缺失"）+ **总目录验证结果**
+# 1.8 同模式范例对照（先例优先 — 🆕 2026-08-28 沉淀实战新增）
+# 目的：避免"双层推荐"被用户挑战 —— 当已有同模式面试题 3+ 篇时，**默认单面试题版**比双层更聚焦
+# 操作：
+ls note/12.interview/<module>/ | grep -E "troubleshooting|incident|故障|排查" | head -10
+# 统计先例行数（单面试题 troubleshooting 类通常是 200-450 行）
+for f in note/12.interview/<module>/*/README.md; do
+  if grep -q "troubleshooting\|排查\|故障" "$f"; then
+    echo "$(wc -l < "$f") $f"
+  fi
+done | sort -n
+
+# 判定：
+#   - troubleshooting 类先例 ≥ 3 篇且单篇 200-450 行 → 默认单面试题版（不双层）
+#   - 没有先例或先例很少 → 走原 Step 4 决策树
+
+# 1.9 Bonus 修复同源错误 grep（沉淀前主动检查 — 🆕 2026-08-28 新增）
+# 目的：沉淀新案例时，主动 grep 现有文件是否有同源反直觉错误（同一错误示范）
+#       如 2026-08-28 metaspace-tuning 沉淀时，发现 jvm-memory-pitfall:370 样例代码也缺 MetaspaceSize
+# 操作：
+#   grep -rn "<本案例核心反直觉点关键词>" note/
+#   例：grep -rn "MaxMetaspaceSize" note/ | grep -v "MetaspaceSize"  # 找只设上限不设初始值的同源错误
+# 判定：
+#   - 找到 1 处同源错误 → 顺手修复为单独 fix(note) commit（追加到本次沉淀的 commit 计划）
+#   - 找到 2+ 处 → 评估是否批量修复（可能升级为单独任务）
+
+**输出**：5-10 个相关文件 + 每个文件的"覆盖深度"评估（"已有详细"/"一笔带过"/"完全缺失"）+ **总目录验证结果**+ **同模式先例行数对照表** + **Bonus 修复候选清单（如有）**
 
 ### Step 2: 深度评估（值得沉淀吗？）
 
@@ -290,6 +317,15 @@ echo "  □ 系列结构 / 总目录入口已查（1.5 + 1.6）"
 ├─ 12.interview → 必读 `QUESTION-FORMAT-SPEC.md`（30s/90s 话术 + 追问模板），新文章必含 ## 引子/## 追问
 ├─ 13.story → 必读 `STORY-FORMAT-SPEC.md`（编号 + 章节骨架 + 系列定位块 + 文末回链）
 └─ 其他模块 → 当前无 L1.5；如本主题需强制骨架，**新建** `*-FORMAT-SPEC.md`（评估维度仍放 SPEC.md）
+
+🆕 2026-08-28 经验补充：先例对照覆盖决策（基于 §1.8 同模式先例盘点）
+├─ 同栏目 troubleshooting 类先例 ≥ 3 篇 + 用户输入是生产 Bug 案例 → **默认单面试题版**（不双层）
+│   例：cpu-spike-troubleshooting / full-gc-troubleshooting / no-class-def-found-troubleshooting
+│       都是 189-430 行单面试题，已足够承载排查方法论 + 反直觉点 + 90 秒话术
+│   反模式：硬塞双层（主模块深读 800+ 行 + 面试题 200 行）→ 主模块过载 + 面试题泛化
+├─ 同栏目无先例 + 内容跨多领域（如 Maven + JVM + 容器） → 拆分为多个单面试题
+│   各自独立成文 + 互链（同 Mistake 16 多主题拆分）
+└─ 内容是理论/原理（非生产 Bug 案例） → 走原 Step 3 决策树（主模块深读 / 双层）
 ```
 
 **双层沉淀模板**（遵循 `note/CONTRIBUTING.md` §3 commit 规范：`<type>(note): <scope-detail> - <描述>`）：
@@ -661,6 +697,73 @@ PYEOF
 | 规模阶梯（10B→100B→1T）| 三层 + 12.story | 主模块 + 12.story 联动 | 3+ |
 | 餐厅叙事价值高 | 三层 + 12.story | 12.story + 主模块 + 13.split-hairs/ | 3+ |
 | 单一补充（如 "X 的新特性"）| 单文件 | 主模块子 README | 1 |
+| **🆕 生产 Bug 案例（同栏目 troubleshooting 先例 ≥ 3）**| 单面试题 | `note/12.interview/<module>/<现象>-troubleshooting/` | 2-3 |
+
+### 🆕 §X: 生产 Bug 类面试题特化（2026-08-28 沉淀实战新增）
+
+> **触发**：用户提供真实生产事故案例（"线上 X 报警" / "X 100% 失败" / "X 反复触发"）—— 故事完整、有排查过程、有根因、有调优迭代。
+
+#### §X.1 命名约定（按现有先例排比）
+
+| 主题类型 | 命名模板 | 已落地范例（参照排比） |
+|---------|---------|------|
+| 生产 Bug 排查类 | `<现象>-troubleshooting` | `cpu-spike-troubleshooting` / `full-gc-troubleshooting` / `no-class-def-found-troubleshooting` |
+| 调优类 | `<对象>-tuning-troubleshooting` | `metaspace-tuning-troubleshooting` |
+
+**原则**：命名按现有先例**排比**，不发明新格式。先 `ls note/12.interview/<module>/` 看 3 个先例再命名。
+
+#### §X.2 7 节骨架模板（参照 cpu-spike-troubleshooting 强制结构）
+
+```text
+1. 引子（150-250 字真实场景，含具体堆栈 / 告警 / 数据）
+2. 一、核心原理（含 3-5 个 WHY 反直觉点）
+3. 二、排查方法论（5 步走，含 jstack / jstat / jcmd 工具命令）
+4. 三、根因深挖（3-5 个反直觉点，必须有 ❌/✅ 对照）
+5. 四、解决（含代码块 + 配置 diff + 前后对比）
+6. 五、验证（制品层 / 环境层 / 应用层三角度）
+7. 六、面试话术（90 秒版本，含关键词流）
+8. 七、相关章节（≥ 3 条反向链 + ≥ 1 条同栏目兄弟链）
++ 文末 footer `← [返回: ...]`
+```
+
+#### §X.3 Bonus 修复协议（沉淀时主动检查）
+
+沉淀新案例时，**主动 grep 现有文件是否有同源反直觉错误**（同一错误示范）：
+
+```bash
+# 找现有文件中是否有同样的反直觉点
+# 例：沉淀 MetaspaceSize 案例时，grep 找有没有其他文件只设 MaxMetaspaceSize 不设 MetaspaceSize
+grep -rn "<本案例核心反直觉点关键词>" note/ | grep -v "<正常示范>"
+
+# 找现有样例代码是否有相同错误
+grep -B1 -A1 "<反模式关键词>=" note/<被链文件路径>
+```
+
+**判定**：
+- 找到 1 处同源错误 → 顺手修复为单独 `fix(note)` commit（追加到本次沉淀的 commit 计划）
+- 找到 2+ 处 → 评估是否批量修复（可能升级为单独任务）
+
+#### §X.4 当用户挑战"双层推荐"时的应对（2026-08-28 第一轮经验）
+
+用户说"是不是只沉淀成面试题更合理？" → **不要直接相信**，做内部先例对照：
+
+```bash
+# 找同栏目 troubleshooting 类先例
+ls note/12.interview/<module>/ | grep "troubleshooting"
+
+# 统计行数（先例通常是 200-450 行）
+wc -l note/12.interview/<module>/*troubleshooting*/README.md
+```
+
+| 判定 | 行动 |
+|------|------|
+| 先例 ≥ 3 篇且单篇 200-450 行 | **改推荐：单面试题版**（用户对） |
+| 先例 < 3 篇 | 坚持双层推荐 + 解释为什么 |
+| 内容是纯原理 / 跨多领域 | 拆分或走原决策树 |
+
+**反模式**：看到用户挑战就立刻改方向（缺乏证据）—— 应该用先例数据支撑结论。
+
+## Quick Reference（原表保留）
 
 ## Common Mistakes
 
