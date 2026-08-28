@@ -377,4 +377,10 @@ try {
 
 ---
 
+## 相关面试题
+
+- [生产 NoClassDefFoundError 排查全链路](../../../12.interview/01.java/no-class-def-found-troubleshooting/README.md) — fastjson 2.0.64 的 `<clinit>` 急初始化陷阱 + `AwtRederModule`（注意上游类名拼写，少一个 a）位于 `fastjson2-extension` 独立 jar 的部署确定性治理
+
+---
+
 ← [返回 Java 核心概念](../README.md)

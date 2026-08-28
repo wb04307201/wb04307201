@@ -833,5 +833,11 @@ mvn clean install -rf :module-a        # 从指定模块恢复构建
 
 ---
 
+## 相关面试题
+
+- [生产 NoClassDefFoundError 排查全链路](../../12.interview/01.java/no-class-def-found-troubleshooting/README.md) — Maven 传递依赖 4 类漏点（Nexus 私服治理 / nearest-wins / repackage 增量 / shade exclusion）+ 3 招叠加修复
+
+---
+
 ← [返回 01.java 主模块](../README.md)
 

@@ -590,6 +590,7 @@ executor.execute(() -> {
 ## 相关章节
 
 - 面试深挖版：[`Error vs Exception 面试题`](../../../12.interview/01.java/error-vs-exception/README.md) — 6 维度对比 + 5 反模式 + 面试话术
+- 生产实战：[`生产 NoClassDefFoundError 排查全链路`](../../../12.interview/01.java/no-class-def-found-troubleshooting/README.md) — `NoClassDefFoundError` 在生产部署中的 4 类漏点（Maven 传递依赖治理）+ 3 招修复
 
 ---
 

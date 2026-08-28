@@ -257,6 +257,7 @@ public class MyMegaThrowable extends Throwable { }    // 更不要这样做
 - 🆕 同栏目：[`try-catch 性能`](../try-catch-performance/README.md) — 正常路径零开销 / fillInStackTrace / OmitStackTraceInFastThrow
 - 主模块：[`异常体系`](../../../01.java-and-jvm/01-language/exception/README.md) — Java 异常完整知识体系
 - 关联面试题：[`JVM 内存区域`](../jvm-memory/README.md) — OutOfMemoryError 的内存模型背景
+- 兄弟实战：[`生产 NoClassDefFoundError 排查全链路`](../no-class-def-found-troubleshooting/README.md) — `NoClassDefFoundError`（Error/LinkageError 子类）的生产部署排查全链路，4 类 Maven 传递依赖漏点 + 3 招修复 + 90 秒话术
 
 ---
 
