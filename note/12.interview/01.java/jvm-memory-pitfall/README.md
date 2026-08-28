@@ -367,7 +367,8 @@ echo "Calculated -Xmx: ${XMX_MB}MB"
 
 # 启动 JVM
 exec java -Xms${XMX_MB}m -Xmx${XMX_MB}m \
-     -XX:MaxMetaspaceSize=256m \
+     -XX:MetaspaceSize=256m \          # 补充：避免启动时频繁触发 GC 扩容（详见 metaspace-tuning-troubleshooting）
+     -XX:MaxMetaspaceSize=512m \       # 原值 256m → 512m（与 metaspace-tuning-troubleshooting 最终配置对齐）
      -XX:+UseG1GC \
      -jar app.jar
 ```
