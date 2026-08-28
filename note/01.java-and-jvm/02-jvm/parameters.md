@@ -515,5 +515,9 @@ jad com.example.Service    # 反编译（确认线上代码版本）
 
 ---
 
+## 反向链
+
+- [metaspace-tuning-troubleshooting](../../12.interview/01.java/metaspace-tuning-troubleshooting/README.md)
+
 ← [返回 JVM 主篇](README.md)
 

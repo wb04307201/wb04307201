@@ -181,6 +181,7 @@ jmap -dump:format=b,file=/tmp/heap.hprof <pid>
 - [GC 算法与收集器](../gc-algorithms/) — GC 算法与各类收集器对比
 - [JVM 内存区域](../jvm-memory/) — JVM 运行时数据区详解
 - [Excel 导出 OOM](../excel-export-oom/) — 大文件导出内存溢出排查
+- [JVM Metaspace 调优踩坑](../metaspace-tuning-troubleshooting/) — 只设 MaxMetaspaceSize 不设 MetaspaceSize 触发频繁 GC（Metaspace 不足是 Full GC 五大根因之一）
 
 ## 相关章节
 
