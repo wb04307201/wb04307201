@@ -9,7 +9,7 @@
         aria-labelledby="descId"
       >
         <title id="titleId">wb04307201&#39;s GitHub Stats, Rank: B+</title>
-        <desc id="descId">Total Stars Earned: 1086, Total Commits  (last year) : 3625, Total PRs: 9, Total Issues: 1, Contributed to (last year): 0</desc>
+        <desc id="descId">Total Stars Earned: 1087, Total Commits  (last year) : 3625, Total PRs: 9, Total Issues: 1, Contributed to (last year): 0</desc>
         <style>
           .header {
             font: 600 18px 'Segoe UI', Ubuntu, Sans-Serif;
@@ -73,7 +73,7 @@
         stroke-dashoffset: 251.32741228718345;
       }
       to {
-        stroke-dashoffset: 110.43948672089488;
+        stroke-dashoffset: 110.43624369950425;
       }
     }
   
