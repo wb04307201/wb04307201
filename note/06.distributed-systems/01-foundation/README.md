@@ -94,4 +94,4 @@ graph LR
 
 - [business-capability](system-design-basics/togaf/business-capability.md)
 
-← [返回 04.system-design 主模块](../README.md)
+← [返回 06.distributed-systems 主模块](../README.md)
