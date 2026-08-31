@@ -2,7 +2,7 @@
 question:
   id: 09.front-end-css-render-blocking
   topic: 09.front-end
-  difficulty: ⭐⭐⭐⭐
+  difficulty: ⭐⭐⭐
   frequency: 中频
   scenario_type: 生产 Bug
   tags: [09.front-end, css, render]

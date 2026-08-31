@@ -2,7 +2,7 @@
 question:
   id: 11.ai-agent-dag-vs-react
   topic: 11.ai
-  difficulty: ⭐⭐⭐⭐⭐
+  difficulty: ⭐⭐
   frequency: 中频
   scenario_type: 架构困境
   tags: [11.ai, Agent, agent]

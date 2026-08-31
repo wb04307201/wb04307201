@@ -2,7 +2,7 @@
 question:
   id: 09.front-end-debounce-streaming
   topic: 09.front-end
-  difficulty: ⭐⭐⭐⭐
+  difficulty: ⭐⭐⭐
   frequency: 中频
   scenario_type: AI 场景陷阱
   tags: [09.front-end, debounce, streaming, SSE, AI]
