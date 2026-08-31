@@ -249,7 +249,6 @@ jcmd <pid> VM.native_memory | grep "Java Heap"
 
 ```bash
 # 第一次调优（自认为到位）
-```bash
 exec java -Xms1024m -Xmx1024m \
      -XX:MaxMetaspaceSize=256m \
      -XX:+UseG1GC \
