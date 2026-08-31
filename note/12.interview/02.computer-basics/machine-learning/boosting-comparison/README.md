@@ -2,7 +2,7 @@
 question:
   id: 02.computer-basics-boosting-comparison
   topic: 02.computer-basics
-  difficulty: ⭐⭐⭐
+  difficulty: ⭐⭐⭐⭐
   frequency: 中频
   scenario_type: 选型对比
   tags: [ML, XGBoost, LightGBM, CatBoost, Boosting, GBDT]
