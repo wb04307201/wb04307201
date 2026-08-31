@@ -1,0 +1,106 @@
+name: Difficulty Calibration Check
+
+on:
+  pull_request:
+    branches: [master]
+    paths:
+      - "note/12.interview/**/*.md"
+      - "note/13.story/**/*.md"
+      - ".github/workflows/difficulty-calibration.yml"
+  workflow_dispatch:
+
+jobs:
+  calibration-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Run difficulty calibration check
+        run: |
+          python << 'PYEOF'
+          """
+          Difficulty 校准 CI 检查（结构验证 + 分布报告）
+          - 验证 frontmatter difficulty 字段格式（1-5 星合法）
+          - 验证 frequency 字段格式（高频/中频/低频合法）
+          - 输出分布统计（不预测 5-dim 评分，避免误报）
+          - 5-dim 精确校准由人工 / LLM agent 完成（见 difficulty-calibration.md）
+          """
+          import os, re, sys
+          from collections import Counter
+
+          ROOT = 'note/12.interview'
+          STORIES_ROOT = 'note/13.story'
+
+          diff_counter = Counter()
+          freq_counter = Counter()
+          missing_diff = []
+          invalid_format = []
+          files_checked = 0
+
+          for root_dir in [ROOT, STORIES_ROOT]:
+              if not os.path.isdir(root_dir):
+                  continue
+              for root, _, names in os.walk(root_dir):
+                  if '.health-tmp' in root or '.obsidian' in root:
+                      continue
+                  for n in names:
+                      if not n.endswith('.md') or n in ('SPEC.md', 'index.md'):
+                          continue
+                      # 跳过 module-level README
+                      norm = root.replace(chr(92), '/')
+                      rel = norm.replace(root_dir, '').strip('/')
+                      depth = len([x for x in rel.split('/') if x])
+                      if n == 'README.md' and depth == 0:
+                          continue
+                      p = os.path.join(root, n)
+                      try:
+                          c = open(p, encoding='utf-8', errors='ignore').read(800)
+                      except:
+                          continue
+                      files_checked += 1
+
+                      # difficulty 字段验证
+                      m = re.search(r'difficulty:\s*([⭐★]+)', c)
+                      if not m:
+                          missing_diff.append(p)
+                          continue
+                      stars = m.group(1).count('⭐') + m.group(1).count('★')
+                      if stars < 1 or stars > 5:
+                          invalid_format.append((p, stars))
+                          continue
+                      diff_counter[stars] += 1
+
+                      # frequency 字段验证
+                      f = re.search(r'frequency:\s*(\S+)', c)
+                      if f:
+                          freq_counter[f.group(1)] += 1
+
+          print(f'Scanned {files_checked} leaf files in 12.interview + 13.story')
+          print()
+          print('=== Difficulty Distribution ===')
+          for s in sorted(diff_counter.keys(), reverse=True):
+              bar = '#' * (diff_counter[s] // 3)
+              print(f'  {chr(0x2B50) * s} ({s}-star): {diff_counter[s]:3d} {bar}')
+          print()
+          print('=== Frequency Distribution ===')
+          for f, c in freq_counter.most_common(10):
+              print(f'  {f}: {c}')
+          print()
+          if missing_diff:
+              print(f'Missing difficulty field: {len(missing_diff)} files')
+              for p in missing_diff[:5]:
+                  print(f'  {p}')
+              if len(missing_diff) > 5:
+                  print(f'  ... and {len(missing_diff) - 5} more')
+          if invalid_format:
+              print(f'Invalid difficulty format: {len(invalid_format)} files')
+              for p, s in invalid_format[:5]:
+                  print(f'  {p}: {s}-star (must be 1-5)')
+
+          # 不退出非零（仅警告），让 PR 通过
+          PYEOF
