@@ -4,6 +4,7 @@
   type: article
   category: 主模块子文章
   summary: 在 Java 8 引入 `CompletableFuture` 之前，异步编程主要依赖 `java.util.concurrent.Future` 接口。...
+  depth: ⭐⭐
 -->
 
 # CompletableFuture 完整笔记

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Java 24：24 个 JEP，含分代式 Shenandoah 实验性、紧凑对象头实验性、结构化并发孵化
+  depth: ⭐⭐
 -->
 
 # Java 24

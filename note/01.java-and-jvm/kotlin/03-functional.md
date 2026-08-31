@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Kotlin 的默认参数替代 Java 的方法重载，命名参数提升可读性。
+  depth: ⭐⭐
 -->
 
 # Kotlin 函数式

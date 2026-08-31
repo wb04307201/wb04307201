@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Java 18：9 个 JEP，含 UTF-8 默认编码、简单 Web 服务器、Code Snippets API 孵化
+  depth: ⭐⭐
 -->
 
 # Java 18

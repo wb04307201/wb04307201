@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 扩展函数为现有类添加方法，无需继承或工具类。
+  depth: ⭐⭐
 -->
 
 # Kotlin 高级特性

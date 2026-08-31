@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: JMM (Java Memory Model) 学习笔记
+  depth: ⭐⭐⭐
 -->
 
 # JMM (Java Memory Model) 学习笔记

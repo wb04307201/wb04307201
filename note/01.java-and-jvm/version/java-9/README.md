@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Java 9 核心 JEP 速通：JPMS 模块系统、jshell、Collection 工厂方法、Stream/Optional 增强、Compact Strings、G1 默认 GC、HTTP/2 Client(孵化) 等。
+  depth: ⭐⭐⭐⭐
 -->
 
 # Java 9

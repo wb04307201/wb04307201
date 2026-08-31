@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Java 13：5 个 JEP，含动态 CDS 归档、ZGC 释放未用内存、Text Blocks 预览
+  depth: ⭐
 -->
 
 # Java 13

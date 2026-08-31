@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 变量
+  depth: ⭐⭐
 -->
 
 # 变量

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: ConcurrentHashMap JDK7 分段锁 vs JDK8 CAS+synchronized 实现。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # ConcurrentHashMap 深入

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Java 8 (LTS)：55 个 JEP，含 Lambda 表达式、Stream API、Optional、新日期时间 API、默认方法、类型注解、Nashorn JavaScript 引擎
+  depth: ⭐⭐
 -->
 
 # Java 8

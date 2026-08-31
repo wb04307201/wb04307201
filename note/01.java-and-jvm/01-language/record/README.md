@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Java Record（Java 14+）：不可变数据类的简洁写法。
+  depth: ⭐⭐⭐⭐
 -->
 
 # 记录类（Record）

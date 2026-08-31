@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Java 多态专题：重载 vs 重写 + 编译时 vs 运行时分派 + vtable 实现 + 默认方法 + super 调用 + 协变返回
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # Java 多态（polymorphism）专题

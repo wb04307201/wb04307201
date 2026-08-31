@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Java FFM API（Java 22 预览）：替代 JNI 调用 native 库。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # Foreign Function & Memory API (FFM)

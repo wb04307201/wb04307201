@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 读完这篇，理解 JVM 是怎么让 Java 程序跑起来的。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # JVM — 讲明白 Java 虚拟机

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Java 锁机制详解
+  depth: ⭐⭐⭐⭐
 -->
 
 # Java 锁机制详解

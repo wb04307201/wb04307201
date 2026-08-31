@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Java 21 (LTS)：15 个 JEP，含虚拟线程、顺序集合、分代 ZGC、Record 模式、switch 模式匹配正式版、结构化并发预览
+  depth: ⭐⭐⭐
 -->
 
 # Java 21

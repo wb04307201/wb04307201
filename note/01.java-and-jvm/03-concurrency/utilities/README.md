@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Java 并发工具类
+  depth: ⭐⭐⭐
 -->
 
 # Java 并发工具类 (java.util.concurrent)

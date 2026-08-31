@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: LinkedList 双向链表实现与 ArrayList 的选型对比。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # LinkedList 源码剖析与最佳实践

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Java 16：17 个 JEP，含 Records 正式版、instanceof 模式匹配正式版、Vector API 孵化、Unix Domain Socket
+  depth: ⭐⭐
 -->
 
 # Java 16

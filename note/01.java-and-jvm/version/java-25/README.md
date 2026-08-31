@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Java 25 (LTS)：18 个 JEP，含 PEM 编码加密对象、原始方法句、值类预览
+  depth: ⭐⭐
 -->
 
 # Java 25

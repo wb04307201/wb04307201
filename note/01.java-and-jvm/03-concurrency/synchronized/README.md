@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: synchronized 学习笔记
+  depth: ⭐⭐⭐⭐
 -->
 
 ## 一、synchronized 的三种用法

@@ -4,6 +4,7 @@
   type: article
   category: 主模块子文章
   summary: 基本语法 是入门必学的基础概念。
+  depth: ⭐
 -->
 
 # 基本语法

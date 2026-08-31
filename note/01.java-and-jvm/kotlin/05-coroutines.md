@@ -5,6 +5,7 @@ module:
   type: article
   category: Kotlin 协程
   summary: Kotlin 协程的挂起恢复机制、调度器实现、结构化并发、Flow 与 Channel。
+  depth: ⭐⭐
 -->
 
 # Kotlin 协程与异步

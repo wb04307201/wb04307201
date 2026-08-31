@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Java 反射：Class/Method/Field 动态访问与性能开销。
+  depth: ⭐⭐⭐
 -->
 
 # 反射

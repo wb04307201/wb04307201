@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Java NIO 全面学习笔记
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # Java NIO 全面学习笔记

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Java 16+ Vector API（孵化）：SIMD 加速数值计算。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # Vector API

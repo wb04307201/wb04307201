@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 跳表集合
+  depth: ⭐⭐
 -->
 
 # 跳表集合

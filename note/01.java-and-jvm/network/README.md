@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Java 网络编程：Socket / BIO / NIO / AIO、Reactor 模型、HttpClient 与 Netty 实战。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # Java 网络编程学习笔记

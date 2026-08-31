@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Java 语法糖：从泛型擦除、自动装箱到 Record、Sealed Classes，16 个语法特性的使用写法与脱糖对照
+  depth: ⭐⭐⭐⭐
 -->
 
 # 语法糖

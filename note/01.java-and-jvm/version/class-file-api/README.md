@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Java Class-File API（Java 22 预览）：运行时解析 class 文件结构。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # Class-File API

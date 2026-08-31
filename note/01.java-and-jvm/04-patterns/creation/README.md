@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 创建型模式
+  depth: ⭐⭐⭐
 -->
 
 # 创建型模式

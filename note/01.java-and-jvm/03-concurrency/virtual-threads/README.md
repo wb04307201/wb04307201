@@ -5,6 +5,7 @@ module:
   type: deep-dive
   category: 虚拟线程
   summary: Java 21 虚拟线程深度解析 —— carrier thread / mount-unmount / pinning / ThreadLocal 替代 / 结构化并发 / 框架集成
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 虚拟线程（Virtual Threads）—— Java 并发编程最大变革

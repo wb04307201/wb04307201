@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Java 11+ 内置 HTTP Client：HttpClient/HttpRequest/HttpResponse。
+  depth: ⭐⭐⭐⭐
 -->
 
 # HTTP Client

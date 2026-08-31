@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Kotlin 面向对象
+  depth: ⭐⭐
 -->
 
 # Kotlin 面向对象
