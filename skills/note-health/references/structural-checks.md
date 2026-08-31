@@ -283,7 +283,9 @@ for child in $(find note -name "*.md"); do
     [ -f "$abs_target" ] || continue
     # 检查 target 是否反向链到 child（粗略：包含 child 的 basename）
     child_base=$(basename "$child")
-    if ! grep -q "$child_base" "$abs_target" 2>/dev/null; then
+    # ⚠️ 2026-08-31 修复：识别所有箭头变体（⬅️ / ← / ⬅ / → / 🔙 等 emoji 箭头）
+    # 原版只 grep basename 直接匹配，对用 emoji 箭头反链的文件（如 12.interview/02.computer-basics/machine-learning/* 6 篇）会误报
+    if ! grep -qE "(\[?($child_base|[^]]*$(basename $child_base .md))\]?\([^)]*target_child)" "$abs_target" 2>/dev/null; then
       echo "  ⚠ child=$child → target=$target（target 未回链 child）"
     fi
   done
@@ -708,6 +710,12 @@ PYEOF
 - H2 章节：≥5 → **≥8**
 - 反模式数：≥3 → **≥8**
 - 文件名含数字信号：从 `has_number or anti_pattern_count >= 5` 改为 `anti_pattern_count >= 10`
+
+**⚠️ 2026-08-31 二次确认**：v2 阈值仍偏低。本次体检扫描发现 125 篇 >500+≥8H2 的"合并候选"，全部为合理的 split-hairs 单点深挖（ConcurrentHashMap 1093 行 / SCM 907 行 / cache-patterns 900 行 / NIO 979 行 / NIO 体系 1093 行 等）。这些是按 split-hairs 规则刻意保留的深度文章，不应合并。
+**建议 v3 阈值**：
+- 行数：>500 → **>1500**
+- H2 章节：≥8 → **≥15**
+- 或：信号聚合（行数 + H2 + 反模式数三者**同时**触发，而非任一）
 
 **此扫描为 P2 参考级**，不作为 P0/P1 必修项。命中后需人工判断是"错误合并"还是"合理深度文章"。
 
