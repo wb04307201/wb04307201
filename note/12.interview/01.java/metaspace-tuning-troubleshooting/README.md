@@ -398,7 +398,6 @@ top -bn1 | head -10
 ### 同栏目兄弟（12.interview/01.java）
 
 - [`jvm-memory-pitfall`](../jvm-memory-pitfall/README.md) — `-Xmx` 超过系统可用内存的踩坑 + 容器内存配置模板（同样涉及容器感知）
-- [`full-gc-troubleshooting`](../full-gc-troubleshooting/README.md) — 线上频繁 Full GC 排查五步法（Metaspace 不足是 Full GC 五大根因之一）
 - [`cpu-spike-troubleshooting`](../cpu-spike-troubleshooting/README.md) — 线上 CPU 飙升排查全链路（GC 频繁是 CPU 升高的元凶之一）
 
 ### 主模块深度版（01.java-and-jvm）

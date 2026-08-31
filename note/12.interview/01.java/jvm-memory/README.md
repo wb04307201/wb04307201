@@ -225,7 +225,7 @@ ByteBuffer heapBuffer = ByteBuffer.allocate(1024 * 1024); // 1MB 堆内内存
 - 主模块：[`01.java`](../../../01.java-and-jvm/) — Java 知识体系
 - [垃圾回收](../gc-algorithms/README.md) — GC 算法与收集器详解
 - [类加载机制](../class-loading/README.md) — 类加载过程与双亲委派
-- [Full GC 排查](../full-gc-troubleshooting/) — 线上频繁 Full GC 排查全链路
+- [JVM Metaspace 调优踩坑](../metaspace-tuning-troubleshooting/) — 频繁 Full GC 真实案例（Metaspace 动态扩容 + 容器默认 Xmx 陷阱）
 
 ## 相关章节
 

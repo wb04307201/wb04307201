@@ -49,7 +49,6 @@ module:
 | [GC 算法与收集器](gc-algorithms/) | ⭐⭐⭐⭐⭐ | GC 算法 + 垃圾收集器对比 |
 | [类加载机制](class-loading/) | ⭐⭐⭐⭐⭐ | 双亲委派模型 + 自定义类加载器 |
 | [CPU 飙升排查](cpu-spike-troubleshooting/) | ⭐⭐⭐⭐ | 线上 CPU 100% 排查全流程（-Xmx 过小） |
-| [Full GC 排查](full-gc-troubleshooting/) | ⭐⭐⭐⭐ | 5 大根因 + 排查五步法 + 工具链 + 调优方向 |
 | [生产 NoClassDefFoundError 排查全链路](no-class-def-found-troubleshooting/) | ⭐⭐⭐⭐⭐ | Maven 传递依赖 4 类漏点 + 3 招修复 + 90s 话术 |
 | [JVM 内存配置踩坑](jvm-memory-pitfall/) | ⭐⭐⭐⭐ | -Xmx 超过系统可用内存导致启动失败 |
 | 🆕 [JVM Metaspace 调优踩坑](metaspace-tuning-troubleshooting/) | ⭐⭐⭐⭐ | 只设 MaxMetaspaceSize 不设 MetaspaceSize 触发频繁 GC + 容器默认 Xmx 陷阱 |

@@ -320,7 +320,7 @@ done | sort -n
 
 🆕 2026-08-28 经验补充：先例对照覆盖决策（基于 §1.8 同模式先例盘点）
 ├─ 同栏目 troubleshooting 类先例 ≥ 3 篇 + 用户输入是生产 Bug 案例 → **默认单面试题版**（不双层）
-│   例：cpu-spike-troubleshooting / full-gc-troubleshooting / no-class-def-found-troubleshooting
+│   例：cpu-spike-troubleshooting / metaspace-tuning-troubleshooting / no-class-def-found-troubleshooting
 │       都是 189-430 行单面试题，已足够承载排查方法论 + 反直觉点 + 90 秒话术
 │   反模式：硬塞双层（主模块深读 800+ 行 + 面试题 200 行）→ 主模块过载 + 面试题泛化
 ├─ 同栏目无先例 + 内容跨多领域（如 Maven + JVM + 容器） → 拆分为多个单面试题
@@ -707,7 +707,7 @@ PYEOF
 
 | 主题类型 | 命名模板 | 已落地范例（参照排比） |
 |---------|---------|------|
-| 生产 Bug 排查类 | `<现象>-troubleshooting` | `cpu-spike-troubleshooting` / `full-gc-troubleshooting` / `no-class-def-found-troubleshooting` |
+| 生产 Bug 排查类 | `<现象>-troubleshooting` | `cpu-spike-troubleshooting` / `metaspace-tuning-troubleshooting` / `no-class-def-found-troubleshooting` |
 | 调优类 | `<对象>-tuning-troubleshooting` | `metaspace-tuning-troubleshooting` |
 
 **原则**：命名按现有先例**排比**，不发明新格式。先 `ls note/12.interview/<module>/` 看 3 个先例再命名。

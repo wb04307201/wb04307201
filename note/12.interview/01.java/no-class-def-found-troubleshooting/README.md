@@ -415,7 +415,7 @@ curl -X POST http://localhost:8080/api/order/create \
 - [`class-loading`](../class-loading/README.md) — JVM 类加载机制 + 双亲委派视角，看 NoClassDefFoundError 在"链接阶段失败"的底层原因
 - [`error-vs-exception`](../error-vs-exception/README.md) — `NoClassDefFoundError`（Error / LinkageError）vs `ClassNotFoundException`（CheckedException）的语义对比
 - [`cpu-spike-troubleshooting`](../cpu-spike-troubleshooting/README.md) — 同类生产 Bug 排查（运行时性能维度）
-- [`full-gc-troubleshooting`](../full-gc-troubleshooting/README.md) — 同类生产 Bug 排查（内存维度）
+- [`metaspace-tuning-troubleshooting`](../metaspace-tuning-troubleshooting/README.md) — 同类生产 Bug 排查（内存维度）
 
 ### 主模块深度版（01.java-and-jvm）
 

@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **双内容仓库**：
 - **顶部 README.md** — 个人主页 + 12 个开源项目展示（File View、Spring AI LoomAgent、Flexible Lock 等）
-- **`note/`** — 13 主模块的体系化技术知识库（基于 Obsidian 维护），780 个 README，1101 个 .md（2026-08-25 note-health 全库体检校对，排除 .health-tmp / .obsidian）
+- **`note/`** — 13 主模块的体系化技术知识库（基于 Obsidian 维护），781 个 README，1102 个 .md（2026-08-31 实测校对，排除 .health-tmp / .obsidian）
 
 主体是文档（Markdown），不是源代码。Java/Spring 项目的源码在外部仓库（如 `wb04307201/file-view`）。
 
@@ -57,7 +57,7 @@ note/
 
 **知识文章 frontmatter 类型**（按 `slug` 字段分 3 类，HTML 注释格式 `<!--type: ... -->` 起首 + 多行字段 + `-->` 收尾；详见 `note/SPEC.md` §4）：
 - `module:`（主模块 README + 子文章，跨所有 13 模块）
-- `question:`（`12.interview` 高频面试题，现状 226 篇）
+- `question:`（`12.interview` 高频面试题，现状 227 篇）
 - `story:`（`13.story` 阿明餐厅，现状 50 篇）
 
 > `SPEC.md` / `index.md` 等索引页豁免 frontmatter。
@@ -142,6 +142,6 @@ bash setup.sh   # 一键配置 git hooks + 生成 skill 镜像
 
 ## 关键统计
 
-- 13 主模块 / 780 README / 1101 .md（2026-08-25 note-health 全库体检校对，排除 .health-tmp / .obsidian）
-- frontmatter 覆盖 98.2%（1081 / 1101：module 805 + question 226 + story 50；剩余 20 为 SPEC.md / index.md 等索引页，按规范可豁免）
+- 13 主模块 / 781 README / 1102 .md（2026-08-31 实测校对，排除 .health-tmp / .obsidian）
+- frontmatter 覆盖 98.1%（1081 / 1102：module 804 + question 227 + story 50；剩余 21 为 SPEC.md / index.md 等索引页，按规范可豁免）
 - 5 PNG（教学截图保留，其他应 Mermaid 化）

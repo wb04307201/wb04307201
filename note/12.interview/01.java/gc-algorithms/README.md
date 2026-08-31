@@ -263,7 +263,7 @@ Full GC 是性能杀手，常见触发场景包括：
 - 主模块：[`01.java`](../../../01.java-and-jvm/) — Java 知识体系
 - [JVM 内存](../../../01.java-and-jvm/02-jvm/README.md) — JVM 内存模型
 - [JVM 调优](../../../01.java-and-jvm/02-jvm/tuning.md) — JVM 调优实战
-- [Full GC 排查](../full-gc-troubleshooting/) — 线上频繁 Full GC 排查全链路
+- [JVM Metaspace 调优踩坑](../metaspace-tuning-troubleshooting/) — 频繁 Full GC 真实案例（Metaspace 动态扩容 + 容器默认 Xmx 陷阱）
 
 ## 相关章节
 
