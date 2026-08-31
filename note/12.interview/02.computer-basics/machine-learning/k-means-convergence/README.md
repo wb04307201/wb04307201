@@ -2,10 +2,10 @@
 question:
   id: 02.computer-basics-k-means-convergence
   topic: 02.computer-basics
-  difficulty: ⭐⭐⭐
+  difficulty: ⭐⭐⭐⭐
   frequency: 高频
   scenario_type: 性能对比
-  tags: [ML, K-means, 收敛, K-means++, 局部最优]
+  tags: [ML, K-means, 收敛, K-means++, 局部最优, 数学证明]
 -->
 
 # K-means 收敛性与 K-means++：为什么只保证局部最优？
