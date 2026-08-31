@@ -8,7 +8,7 @@ question:
   tags: [01.java, class, loading]
 -->
 
-# 类加载机制与双亲委派模型
+# 类加载机制与双亲委派模型：双亲委派 + 打破机制 + 源码剖析
 
 ## 引子：一个诡异的问题
 
@@ -287,6 +287,23 @@ graph LR
 ## 六、面试话术（30 秒版）
 
 > 「Java 的类加载遵循双亲委派模型：收到加载请求时，先递归委托给父加载器，只有当父加载器无法加载时，才自己尝试加载。这样做的好处是安全性和隔离性——比如防止用户自定义的 `java.lang.String` 覆盖核心 API。但有三种场景需要打破双亲委派：第一是 SPI 机制，像 JDBC 的 `DriverManager` 在 Bootstrap 层，而具体驱动在 classpath，所以用线程上下文类加载器（TCCL）来加载；第二是 Web 容器，像 Tomcat 的 `WebAppClassLoader` 优先从本地加载类，实现多应用的类隔离；第三是 OSGi 这样的模块化框架，通过网状模型实现模块间的按需共享。实际开发中，如果写自定义类加载器，建议只重写 `findClass`，不要动 `loadClass`。」
+
+---
+
+## 面试话术（90 秒版）
+
+> 「Java 类加载机制遵循双亲委派模型，目的是**安全性 + 隔离性**——防止自定义 `java.lang.String` 覆盖核心 API，也避免类被重复加载。
+>
+> 整个流程分 7 阶段：加载（读字节码）、验证（合法性校验）、准备（静态变量零值）、解析（符号→直接引用）、初始化（执行 `<clinit>`）、使用、卸载（GC 回收 Class 对象）。其中**初始化只会在 5 种主动使用场景**触发：new、读写静态字段、反射、子类初始化、main 启动。
+>
+> 类加载器有 4 层：Bootstrap（C++ 实现、加载 rt.jar）→ Extension（加载 ext 目录）→ Application（classpath）→ Custom（用户自定义）。委派逻辑是**查缓存 → 递归委托父 → 自己 findClass**。
+>
+> 实际场景中**有 3 种打破双亲委派的合法需求**：
+> 1. **SPI 机制**——JDBC 的 `DriverManager` 在 Bootstrap 层，但驱动在 classpath，所以用**线程上下文类加载器（TCCL）** 反向委托；SLF4J、Spring 的 `SpringFactoriesLoader` 都是这个套路。
+> 2. **Tomcat WebAppClassLoader**——优先从本地加载（重写 `loadClass` 顺序），找不到才委托父加载器，实现多 Web 应用的**类隔离**（不同应用可以依赖不同版本的相同库）。
+> 3. **OSGi 网状模型**——每个 Bundle 一个 ClassLoader，通过 `MANIFEST.MF` 声明 `Import-Package` / `Export-Package`，形成模块化协作。
+>
+> 实践要点：自定义类加载器**只重写 `findClass`**（定位字节码）、保留 `loadClass` 的双亲委派逻辑；`defineClass` 是 final 不可重写；TCCL 在子线程会丢失需要手动 `setContextClassLoader` 传递；**热部署场景下要小心 ClassLoader 泄漏**——旧 ClassLoader 被静态变量持有无法 GC，最终 Metaspace OOM。」
 
 ---
 

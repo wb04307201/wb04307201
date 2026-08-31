@@ -2,7 +2,7 @@
 question:
   id: 01.java-cpu-spike-troubleshooting
   topic: 01.java
-  difficulty: ⭐⭐⭐⭐⭐
+  difficulty: ⭐⭐⭐⭐
   frequency: 中频
   scenario_type: 生产 Bug
   tags: [01.java, cpu, spike]
@@ -319,6 +319,24 @@ done
 ## 五、面试话术（30 秒版）
 
 > "线上 CPU 飙升排查分四步：第一步用 `top` 确认是 Java 进程占用；第二步用 `top -Hp` 定位到具体线程，将线程 ID 转为十六进制后在 `jstack` 输出中搜索，看栈顶方法确定线程在做什么；第三步用 `jstat -gcutil` 看 GC 频率和老年代占用，如果 GC 非常频繁就优先考虑内存问题。我实际遇到过一次，是 `-Xmx` 被设成了 256MB，堆太小导致 GC 疯狂运行，CPU 被 GC 线程吃满，最后把堆调到 2G 就恢复正常了。"
+
+---
+
+## 面试话术（90 秒版）
+
+> 「线上 CPU 飙升是高频故障，**90% 不是业务代码问题，是内存/GC 问题传导**。排查必须按四步走，不能乱猜：
+>
+> **第一步：`top` 看进程**——先确认是 Java 进程还是其他系统进程（有时候是 cron、正则回溯、日志框架）。看到 `java` 进程 CPU 高，再进入 JVM 内部排查。
+>
+> **第二步：`top -Hp <pid>` 看线程**——Java 是多线程，CPU 高一定是某几个线程在忙。`top -Hp` 能看到进程内每个线程的 CPU 占用，把占用最高的 3 个线程的 TID 记下来。
+>
+> **第三步：TID 16 进制 + `jstack` 定位方法**——把十进制 TID 转 16 进制（printf '%x'），在 `jstack <pid>` 输出里搜 `nid=0x<hex>`，能看到线程在跑什么方法。这是**定位业务代码还是 GC 线程**的关键——如果是 `GC Thread` 或 `VM Thread`，就是内存问题。
+>
+> **第四步：`jstat -gcutil` 看 GC 频率**——每秒一次，看 YGC 和 FGC 的频次。如果每秒 1 次以上 Full GC，根因不在 CPU，**在堆**：可能是内存泄漏、大对象直接进老年代、`-Xmx` 太小、或者 Metaspace 动态扩容。
+>
+> 我实际遇到过一个经典案例：线上 CPU 突然 100%，看 `top -Hp` 最高的 3 个线程全是 `GC Thread`，`jstat` 看老年代 99%，FGC 每秒 2 次。**根因不是 CPU，是内存**：运维把 `-Xmx` 从 2G 改成了 256M，堆太小导致 GC 疯狂，CPU 全被 GC 线程吃光。调到 2G 后 5 分钟内恢复。
+>
+> 进阶工具：**Arthas**（阿里开源，dashboard 实时看线程和 GC 状态，无需重启）、**async-profiler**（生成火焰图，看 CPU 热点方法，10 秒采样无侵入）。生产环境**推荐**这两个，比 jstack 更直观。」
 
 ---
 

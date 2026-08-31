@@ -2,7 +2,7 @@
 question:
   id: 01.java-jvm-memory
   topic: 01.java
-  difficulty: ⭐⭐⭐
+  difficulty: ⭐⭐⭐⭐
   frequency: 中频
   scenario_type: 架构困境
   tags: [01.java, JVM, jvm]
@@ -217,6 +217,35 @@ ByteBuffer heapBuffer = ByteBuffer.allocate(1024 * 1024); // 1MB 堆内内存
 ## 五、面试话术（30 秒版）
 
 > "JVM 内存分为五大区域：堆存储对象，采用分代收集；方法区存储类元数据，JDK 1.8 后用元空间替代永久代；虚拟机栈存储栈帧，包含局部变量表和操作数栈等；本地方法栈服务 Native 调用；程序计数器记录执行行号。对象创建分六步：先检查类是否加载，再分配内存（指针碰撞或空闲列表），TLAB 优化并发，然后初始化零值，设置对象头（Mark Word + Klass Pointer），最后执行构造器。对象头包含 Mark Word 存储 GC 年龄和锁状态，Klass Pointer 指向类元数据，数组还有长度字段。"
+
+---
+
+## 面试话术（90 秒版）
+
+> 「JVM 运行时内存分 5 大区域，**前 3 个线程私有、后 2 个线程共享**：
+>
+> | 区域 | 线程 | 存储 | 错误 |
+> |------|------|------|------|
+> | 程序计数器 | 私有 | 字节码行号 | **唯一不会 OOM 的** |
+> | 虚拟机栈 | 私有 | 方法栈帧（局部变量表、操作数栈、动态链接、返回地址） | StackOverflowError / OOM |
+> | 本地方法栈 | 私有 | Native 方法栈帧 | 同上 |
+> | 堆 | 共享 | 对象实例、数组 | OOM: Java heap space |
+> | 方法区/元空间 | 共享 | 类元数据、常量池、静态变量 | OOM: Metaspace |
+> | 直接内存 | 共享 | NIO 堆外 buffer | OOM: Direct buffer memory |
+>
+> **几个高频追问点**：
+>
+> 1. **对象在堆里长什么样**？**对象头（Mark Word 8B + Klass Pointer 4B 压缩）+ 实例数据 + 对齐填充**。Mark Word 存 hashCode、GC 年龄、锁状态；Klass Pointer 指向方法区的类元数据；**最小对象 16 字节**（12 头 + 4 对齐）。
+>
+> 2. **压缩指针（Compressed Oops）**——默认开启，对象引用从 8 字节压到 4 字节。但 4 字节只能寻址 2^32，配合 8 字节对齐实际能寻址 2^35 ≈ **32GB**。所以堆**不要超过 32GB**——超过压缩指针失效，每个引用变 8 字节，内存利用率反而下降。
+>
+> 3. **堆分代**——**新生代**（Eden 8 : Survivor 1 : Survivor 1 = 8:1:1）+ **老年代**。对象先在 Eden，Minor GC 后存活进 Survivor，年龄 15（默认）晋升老年代。**TLAB**（Thread Local Allocation Buffer）是 Eden 里每个线程私有的分配缓冲区，避免多线程分配时的指针竞争。
+>
+> 4. **字符串常量池**——在堆里（Java 7+ 从方法区移到堆），String 重复字面量会复用同一个对象。`new String("a")` vs `"a"` 创建方式不同，常量池行为也不同。
+>
+> 5. **方法区 = 元空间（JDK 8+）**——之前是永久代（PermGen）在堆里，JDK 8 改成本地内存。默认**无上限**（`-XX:MaxMetaspaceSize` 不设就一直涨），所以**生产环境必设上限**，否则可能撑爆物理内存。
+>
+> 6. **直接内存**——不在 JVM 堆，通过 `ByteBuffer.allocateDirect` 分配，NIO 性能高（避免堆内外拷贝）。但**不受 `-Xmx` 控制**，OOM 时堆可能还很空，直接内存已经爆了。」
 
 ---
 

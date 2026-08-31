@@ -2,7 +2,7 @@
 question:
   id: 01.java-jvm-memory-pitfall
   topic: 01.java
-  difficulty: ⭐⭐⭐
+  difficulty: ⭐⭐⭐⭐
   frequency: 中频
   scenario_type: 生产 Bug
   tags: [01.java, JVM, jvm]
@@ -440,6 +440,36 @@ fi
 ## 五、面试话术（30 秒版）
 
 > "JVM 总内存不等于 -Xmx，还包括 Metaspace、线程栈、直接内存和 Native 开销，实际可能是 -Xmx 的 1.3~1.5 倍。我遇到过一次线上事故，运维把 -Xmx 设成了 6g，服务器只有 8g 内存，启动时 JVM 实际占用超过 7g，物理内存不足导致系统频繁 Swap，应用卡在数据库连接初始化，等了 6000 秒才超时失败。排查时用 free -h 发现 Swap 已用满，jinfo 看到 -Xmx6g，调整到 4g 后正常启动。之后我建议 -Xmx 不超过系统内存的 60%，并加了启动前内存检查脚本。"
+
+---
+
+## 面试话术（90 秒版）
+
+> 「**JVM 总内存 ≠ `-Xmx`**——这是 JVM 内存最常见的认知误区。`-Xmx` 只控制堆，但 JVM 实际占用还包括 **Metaspace + 线程栈 + 直接内存 + Code Cache + Native 自身开销**，**通常是 `-Xmx` 的 1.3~1.5 倍**。
+>
+> 具体公式：
+>
+> ```text
+> JVM 总内存 ≈ -Xmx
+>            + MaxMetaspaceSize（默认无上限）
+>            + (线程数 × -Xss)
+>            + MaxDirectMemorySize
+>            + Native（Code Cache + GC + 内部结构，约 100~300MB）
+> ```
+>
+> 举个真实案例：线上某 Spring Boot 服务，**4 核 8G 服务器，运维设置 `-Xmx6g`**，认为只占 75% 内存很安全。实际启动时 JVM 总内存 = 6g（堆）+ 300m（Metaspace）+ 200m（200 个线程 × 1m 栈）+ 1g（直接内存）+ 200m（Native）≈ **7.7g**，几乎占满 8G 系统。
+>
+> 结果是 JVM 启动时**虚拟内存分配成功**（Linux 的 overcommit 机制，vm.overcommit_memory=0 默认允许），但运行时物理内存不够，**系统疯狂 Swap**，数据库连接操作从几毫秒变成几秒，应用卡在初始化 100 分钟才超时失败，SSH 都进不去。**不会立即 OOM 报错**，这是最可怕的——`dmesg` 看也没 OOM Killer 记录。
+>
+> **3 大踩坑场景**：
+>
+> 1. **`-Xmx` 过大**——`-Xmx` 不应超过**系统内存的 60%**（留 40% 给 OS + 其他进程 + 文件缓存）。4G 服务器 `-Xmx ≤ 2.4G`、8G 服务器 `-Xmx ≤ 4.8G`。
+>
+> 2. **容器环境只设 `-Xmx`**——Docker 容器限制 4G 内存，JDK 10+ 通过 `UseContainerSupport` 读 cgroup 限制，但**默认 `MaxRAMPercentage=25%`**（JDK 8u191~21）或 50%（JDK 22+），4G 容器下 Xmx 默认只有 1G（25%）或 2G（50%）。**必须显式设 `MaxRAMPercentage=50~75`**。
+>
+> 3. **线程数爆炸**——`-Xss` 默认 1MB，500 线程就吃 500MB。生产环境**应设 `-Xss256k~512k`**（除非有深度递归）。
+>
+> 实践经验：上线前用 **`java -XshowSettings:memory -version`** 看实际堆配置，加**启动前内存检查脚本**对比 `-Xmx` 与系统 `MemTotal`，超阈值就拒绝启动——比线上卡死靠谱。」
 
 ---
 
