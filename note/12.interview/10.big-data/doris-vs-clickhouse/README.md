@@ -2,7 +2,7 @@
 question:
   id: 10.big-data-doris-vs-clickhouse
   topic: 10.big-data
-  difficulty: ⭐⭐⭐⭐⭐
+  difficulty: ⭐⭐⭐⭐
   frequency: 高频
   scenario_type: 架构选型
   tags: [10.big-data, Doris, ClickHouse, OLAP, MergeTree, Colocate-Join, MPP]

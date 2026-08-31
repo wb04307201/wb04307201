@@ -2,7 +2,7 @@
 question:
   id: 10.big-data-hive-partition-vs-bucket
   topic: 10.big-data
-  difficulty: ⭐⭐⭐⭐⭐
+  difficulty: ⭐⭐⭐⭐
   frequency: 高频
   scenario_type: 架构选型
   tags: [10.big-data, Hive, 分区, 分桶, Partition, Bucket, Map-Join, Pruning]
