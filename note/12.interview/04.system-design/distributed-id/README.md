@@ -2,7 +2,7 @@
 question:
   id: 04.system-design-distributed-id
   topic: 04.system-design
-  difficulty: ⭐⭐⭐⭐
+  difficulty: ⭐⭐⭐
   frequency: 中频
   scenario_type: 性能对比
   tags: [04.system-design, distributed]
