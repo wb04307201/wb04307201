@@ -388,3 +388,9 @@ Codex Pro 用户可在 ChatGPT 网页直接派发 Codex 任务，手机端也能
 - **规范工具**：[Agent Spec Tools](../agent-spec-tools/README.md) — Spec-Kit 35 集成兼容 Codex
 
 ← [返回: Coding Agents 对比](README.md)
+
+## 📚 参考来源
+
+1. **官方文档**：OpenAI. *Introducing Codex*. 2025. https://openai.com/index/introducing-codex/
+2. **SWE-bench 评测**：Jimenez et al. *SWE-bench: Can Language Models Resolve Real-World GitHub Issues?* ICLR 2024. https://arxiv.org/abs/2310.06770
+3. **Agentless 框架**：Xia, Deng. *Agentless: Demystifying LLM-based Software Engineering Agents*. 2024. https://arxiv.org/abs/2407.01489

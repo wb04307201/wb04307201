@@ -191,3 +191,13 @@ lmdeploy serve api_server ./qwen2.5-7b-awq --backend turbomind
 ---
 
 ← [返回: vLLM vs Ollama](../README.md) · 上一章：[07-vs-tgi-lmdeploy](07-vs-tgi-lmdeploy.md) · 下一章：本专题结束
+
+---
+
+## 📚 参考来源
+
+1. **Efficient Memory Management for Large Language Model Serving with PagedAttention**：Woosuk Kwon et al. *vLLM 核心论文：高并发场景首选 vLLM 的根本依据，SOSP 2023*. https://arxiv.org/abs/2309.06180
+2. **Efficiently Scaling Transformer Inference**：Reiner Pope et al. *决策树"硬件 + 模型规模"维度对齐 TP/PP 配置，DeepMind 2022*. https://arxiv.org/abs/2211.05102
+3. **FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness**：Tri Dao et al. *长上下文场景决策依据，NeurIPS 2022*. https://arxiv.org/abs/2205.14135
+4. **Accelerating Large Language Model Decoding with Speculative Sampling**：Yaniv Leviathan et al. *低并发 + 小模型场景的加速方案，Google 2023*. https://arxiv.org/abs/2211.17192
+5. **LLM.int8(): 8-bit Matrix Multiplication for Transformers at Scale**：Tim Dettmers et al. *BitsAndBytes INT8 量化方案基础，NeurIPS 2022*. https://arxiv.org/abs/2208.07339

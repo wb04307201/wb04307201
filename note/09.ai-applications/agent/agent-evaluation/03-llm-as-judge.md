@@ -142,4 +142,13 @@ JUDGE_CONFIG = {
 
 ---
 
+## 📚 参考来源
+
+1. **Judging LLM-as-a-Judge**：Zheng et al. *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*. NeurIPS 2023 Datasets and Benchmarks Track. https://arxiv.org/abs/2306.05685
+2. **Chatbot Arena**：Chiang et al. *Chatbot Arena: An Open Platform for Evaluating LLMs by Human Preference*. 2024. https://arxiv.org/abs/2403.04132
+3. **Lost in the Middle**：Liu et al. *Lost in the Middle: How Language Models Use Long Contexts*. TACL 2023. https://arxiv.org/abs/2307.03172
+4. **Arena-Hard**：Li et al. *From Crowdsourced Data to High-Quality Benchmarks: Arena-Hard and BenchBuilder Pipeline*. 2024. https://arxiv.org/abs/2406.11939
+
+---
+
 ← [返回: Agent Evaluation 总目录](../README.md) · 上一章：[02-five-methods](02-five-methods.md) · 下一章：[04-evaluation-pipeline](04-evaluation-pipeline.md)

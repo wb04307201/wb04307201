@@ -135,4 +135,13 @@ module:
 
 ---
 
+## 📚 参考来源
+
+1. **Judging LLM-as-a-Judge**：Zheng et al. *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*. NeurIPS 2023 Datasets and Benchmarks Track. https://arxiv.org/abs/2306.05685
+2. **Lost in the Middle**：Liu et al. *Lost in the Middle: How Language Models Use Long Contexts*. TACL 2023. https://arxiv.org/abs/2307.03172
+3. **Chatbot Arena**：Chiang et al. *Chatbot Arena: An Open Platform for Evaluating LLMs by Human Preference*. 2024. https://arxiv.org/abs/2403.04132
+4. **AgentBench**：Liu et al. *AgentBench: Evaluating LLMs as Agents*. ICLR 2024. https://arxiv.org/abs/2308.03688
+
+---
+
 ← [返回: Agent Evaluation 总目录](../README.md) · 上一章：[05-ali-interview](05-ali-interview.md) · 下一章：[07-selection-decision-tree](07-selection-decision-tree.md)

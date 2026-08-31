@@ -243,3 +243,9 @@ def score(code):
 ---
 
 ← [返回: Loop Engineering 总目录](../README.md) · 上一章：[auto-fix-strategy](auto-fix-strategy.md) · 下一章：[ide-case-studies](ide-case-studies.md)
+
+## 📚 参考来源
+
+1. **ReAct**：Yao et al. *ReAct: Synergizing Reasoning and Acting in Language Models*. ICLR 2023. https://arxiv.org/abs/2210.03629
+2. **Reflexion**：Shinn et al. *Reflexion: Language Agents with Verbal Reinforcement Learning*. NeurIPS 2023. https://arxiv.org/abs/2303.11381
+3. **SWE-bench 评测**：Jimenez et al. *SWE-bench: Can Language Models Resolve Real-World GitHub Issues?* ICLR 2024. https://arxiv.org/abs/2310.06770

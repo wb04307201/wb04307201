@@ -201,3 +201,9 @@ class RetryBudget:
 ---
 
 ← [返回: Loop Engineering 总目录](../README.md) · 下一章：[verifier-design](verifier-design.md)
+
+## 📚 参考来源
+
+1. **ReAct**：Yao et al. *ReAct: Synergizing Reasoning and Acting in Language Models*. ICLR 2023. https://arxiv.org/abs/2210.03629
+2. **Reflexion**：Shinn et al. *Reflexion: Language Agents with Verbal Reinforcement Learning*. NeurIPS 2023. https://arxiv.org/abs/2303.11381
+3. **AutoGen**：Wu et al. *AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation*. 2023. https://arxiv.org/abs/2308.08155

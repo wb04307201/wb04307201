@@ -153,3 +153,12 @@ trainer.train()
 - **咬文嚼字**：面试深挖（⚠️ 待 Phase 1+ 迁入；占位 `../../../12.interview/11.ai/agent-performance-evaluation/`）
 
 ← [返回 09.ai-applications/fine-tuning](../README.md)
+
+---
+
+## 📚 参考来源
+
+1. **Training language models to follow instructions with human feedback**：Long Ouyang et al. *InstructGPT：SFT + RLHF 三阶段对齐奠基论文，OpenAI 2022*. https://arxiv.org/abs/2203.02155
+2. **Self-Instruct: Aligning Language Models with Self-Generated Instructions**：Yizhong Wang et al. *Self-Instruct 自生成指令数据方法，2022*. https://arxiv.org/abs/2212.10560
+3. **LLaMA: Open and Efficient Foundation Language Models**：Hugo Touvron et al. *LLaMA 系列 + Alpaca 数据蒸馏范式，Meta 2023*. https://arxiv.org/abs/2302.13971
+4. **LoRA: Low-Rank Adaptation of Large Language Models**：Edward J. Hu et al. *LoRA 参数高效微调基础，ICLR 2022*. https://arxiv.org/abs/2106.09685

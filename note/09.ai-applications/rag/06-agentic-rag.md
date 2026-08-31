@@ -269,3 +269,10 @@ Agentic Search 是 AI Coding 检索范式的演进，**与 驾驭演进主线（
 > 📅 2026-07-03 · 11.ai/02-technology-stack · ⭐⭐⭐⭐⭐
 
 ← [返回 RAG MOC](./README.md)
+
+---
+
+## 📚 参考来源
+
+1. **Corrective Retrieval Augmented Generation**：Shi-Qi Yan et al. *Corrective Retrieval Augmented Generation*. 2024. https://arxiv.org/abs/2401.15884
+2. **Adaptive-RAG: Learning to Adapt Retrieval-Augmented Large Language Models through Question Complexity**：Soyeong Jeong et al. *Adaptive-RAG: Learning to Adapt Retrieval-Augmented Large Language Models through Question Complexity*. 2024. https://arxiv.org/abs/2403.14403

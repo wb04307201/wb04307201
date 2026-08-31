@@ -168,3 +168,14 @@ Step 5: 保留 Plan Repair 节点（处理未知异常）
 ---
 
 ← [返回: Agent 4 大模式](../README.md) · 上一章：[03-six-dimensions-comparison](03-six-dimensions-comparison.md) · 专题结束
+
+---
+
+## 📚 参考来源
+
+1. **ReAct 原论文**（ReAct 模式核心）：Yao et al. *ReAct: Synergizing Reasoning and Acting in Language Models*. ICLR 2023. https://arxiv.org/abs/2210.03629
+2. **Plan-and-Solve 原论文**（Plan-and-Execute 模式核心）：Wang et al. *Plan-and-Solve Prompting: Improving Zero-Shot Chain-of-Thought Reasoning by Large Language Models*. ACL 2023. https://arxiv.org/abs/2305.04091
+3. **ChatDev 论文**（Multi-Agent 模式代表）：Qian et al. *Communicative Agents for Software Development*. 2023. https://arxiv.org/abs/2307.07924
+4. **LATS 论文**（树搜索/类 DAG 的统一推理范式）：Zhou et al. *Language Agent Tree Search Unifies Reasoning, Acting, and Planning in Tree-of-Thoughts*. 2024. https://arxiv.org/abs/2310.04406
+
+---

@@ -249,3 +249,11 @@ groups:
 ---
 
 ← [返回: 大模型思维工程](../README.md) · 上一章：[04-circuit-breaker](04-timeout-and-circuit-breaker.md) · 下一章：[06-decision-tree](06-decision-tree.md)
+
+---
+
+## 📚 参考来源
+
+1. **RAGAS 论文**（自动化 LLM 评估框架，本文 §2.3 Faithfulness 幻觉率检测的核心方法）：Es et al. *RAGAS: Automated Evaluation of Retrieval Augmented Generation*. EACL 2024. https://arxiv.org/abs/2309.15217
+
+---

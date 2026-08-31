@@ -248,3 +248,9 @@ skills/
 - claude-code
 
 ← [返回 Claude Code 实践总览](README.md)
+
+## 📚 参考来源
+
+1. **官方文档**：Anthropic. *Claude Code Best Practices*. 2025. https://www.anthropic.com/engineering/claude-code-best-practices
+2. **SWE-bench 评测**：Jimenez et al. *SWE-bench: Can Language Models Resolve Real-World GitHub Issues?* ICLR 2024. https://arxiv.org/abs/2310.06770
+3. **Agentless 框架**：Xia, Deng. *Agentless: Demystifying LLM-based Software Engineering Agents*. 2024. https://arxiv.org/abs/2407.01489

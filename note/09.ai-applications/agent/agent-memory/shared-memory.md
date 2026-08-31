@@ -508,3 +508,13 @@ Q：你的多 Agent 任务是什么类型？
 
 ← [返回: AI 知识体系 · agent-memory](README.md)
 
+---
+
+## 📚 参考来源
+
+1. **MemoryBank: Enhancing Large Language Models with Long-Term Memory**：Wanjun Zhong et al. *MemoryBank 论文：长期记忆 + Ebbinghaus 遗忘曲线建模 LLM 记忆，2024*. https://arxiv.org/abs/2305.10250
+2. **MemGPT: Towards LLMs as Operating Systems**：Charles Packer et al. *MemGPT：分层记忆 + 虚拟上下文管理的奠基论文，2023*. https://arxiv.org/abs/2310.06860
+3. **Generative Agents: Interactive Simulacra of Human Behavior**：Joon Sung Park et al. *生成式 Agent + Memory Stream 三层架构，记忆反思与检索范式，2023*. https://arxiv.org/abs/2304.03442
+4. **AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation**：Qingyun Wu et al. *多 Agent 共享上下文与 GroupChat 协作范式，2023*. https://arxiv.org/abs/2308.08155
+5. **MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework**：Sirui Hong et al. *多 Agent 共享 SOP + 知识图谱架构参考，2023*. https://arxiv.org/abs/2308.00352
+

@@ -201,4 +201,13 @@ p < 0.05 = 显著漂移
 
 ---
 
+## 📚 参考来源
+
+1. **AgentBench**：Liu et al. *AgentBench: Evaluating LLMs as Agents*. ICLR 2024. https://arxiv.org/abs/2308.03688
+2. **Judging LLM-as-a-Judge**：Zheng et al. *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*. NeurIPS 2023 Datasets and Benchmarks Track. https://arxiv.org/abs/2306.05685
+3. **SWE-bench**：Jimenez et al. *SWE-bench: Can Language Models Resolve Real-World GitHub Issues?*. ICLR 2024. https://arxiv.org/abs/2310.06770
+4. **GAIA**：Mialon et al. *GAIA: a Benchmark for General AI Assistants*. 2023. https://arxiv.org/abs/2311.12983
+
+---
+
 ← [返回: Agent Evaluation 总目录](../README.md) · 上一章：[04-evaluation-pipeline](04-evaluation-pipeline.md) · 下一章：[06-seven-anti-patterns](06-seven-anti-patterns.md)

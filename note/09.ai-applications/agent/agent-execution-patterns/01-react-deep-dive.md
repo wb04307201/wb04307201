@@ -298,3 +298,12 @@ else:
 ---
 
 ← [返回: Agent 4 大模式](../README.md) · 下一章：[02-plan-and-execute](02-plan-and-execute-deep-dive.md)
+
+---
+
+## 📚 参考来源
+
+1. **ReAct 原论文**：Yao et al. *ReAct: Synergizing Reasoning and Acting in Language Models*. ICLR 2023. https://arxiv.org/abs/2210.03629
+2. **Reflexion 论文**（ReAct 上的 Verbal RL 增强）：Shinn et al. *Reflexion: Language Agents with Verbal Reinforcement Learning*. NeurIPS 2023. https://arxiv.org/abs/2303.11381
+
+---

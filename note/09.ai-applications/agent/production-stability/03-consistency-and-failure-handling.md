@@ -338,3 +338,12 @@ def drift_monitor(prompt, n_samples=10):
 ---
 
 ← [返回: 大模型思维工程](../README.md) · 上一章：[02-cost-control](02-cost-control-and-degradation.md) · 下一章：[04-timeout-and-circuit-breaker](04-timeout-and-circuit-breaker.md)
+
+---
+
+## 📚 参考来源
+
+1. **Self-Consistency 原论文**（多次采样 + 投票）：Wang et al. *Self-Consistency Improves Chain of Thought Reasoning in Language Models*. ICLR 2023. https://arxiv.org/abs/2203.11171
+2. **Reflexion 论文**（Self-Reflection 失败的 verbal RL 修正）：Shinn et al. *Reflexion: Language Agents with Verbal Reinforcement Learning*. NeurIPS 2023. https://arxiv.org/abs/2303.11381
+
+---

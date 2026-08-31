@@ -209,3 +209,14 @@ AlpacaEval 2.0（越高越好）：
 | ❌ 5 种方法可以混用 | ✅ 不同方法可能冲突（loss 叠加需谨慎） |
 
 ← [返回 LLM 对齐专题](../README.md)
+
+---
+
+## 📚 参考来源
+
+1. **KTO: Model Alignment as Prospect Theoretic Optimization**：Kawin Ethayarajh et al. *KTO 论文：Kahneman-Tversky 价值函数 + 单条好/坏标注对齐，2024*. https://arxiv.org/abs/2402.01306
+2. **A General Theoretical Paradigm to Understand Learning from Human Feedback**：Mohammad Gheshlaghi Azar et al. *IPO 论文：加正则化防 DPO 过拟合，2023*. https://arxiv.org/abs/2310.12036
+3. **SimPO: Simple Preference Optimization with a Reference-Free Reward**：Yu Meng et al. *SimPO 论文：平均对数概率 + 无 ref 模型 + 长度归一化，2024*. https://arxiv.org/abs/2405.14734
+4. **ORPO: Monolithic Preference Optimization without Reference Model**：Jiwoo Hong et al. *ORPO 论文：SFT + DPO 一体化 + Odds Ratio 损失，2024*. https://arxiv.org/abs/2403.07691
+5. **Direct Preference Optimization: Your Language Model is Secretly a Reward Model**：Rafael Rafailov et al. *DPO 论文：所有新方法对比的基线，2023*. https://arxiv.org/abs/2305.18290
+6. **Training language models to follow instructions with human feedback**：Long Ouyang et al. *InstructGPT/RLHF 奠基论文：RFT 等方法的对照基线，OpenAI 2022*. https://arxiv.org/abs/2203.02155

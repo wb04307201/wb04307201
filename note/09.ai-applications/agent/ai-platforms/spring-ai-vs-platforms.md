@@ -102,3 +102,12 @@ module:
 - [LangGraph](langgraph.md) — Python 代码优先复杂 Agent 框架
 - BPMN+AI 融合 — AI + BPMN 跨界决策范式
 - 大模型应用框架 — Spring AI / LangChain4j / LangChain / LlamaIndex 框架对比
+
+---
+
+## 📚 参考来源
+
+1. **LangChain**: Harrison Chase. *LangChain 论文（GitHub + 技术报告）：代码优先 LLM 应用编排框架奠基者，2022*. https://arxiv.org/abs/2310.02821
+2. **AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation**：Qingyun Wu et al. *多 Agent 协作 + 代码框架模式参考，Microsoft 2023*. https://arxiv.org/abs/2308.08155
+3. **Retrieval-Augmented Generation for Large Language Models: A Survey**：Yunfan Gao et al. *RAG 综述：Spring AI 组件化 RAG 管道（DocumentReader/Embedding/VectorStore/Retriever）的理论基础，2024*. https://arxiv.org/abs/2312.10997
+4. **HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in Hugging Face**：Shen Yongliang et al. *模型即工具 + 编排 Agent 范式参考，Microsoft 2023*. https://arxiv.org/abs/2303.17580

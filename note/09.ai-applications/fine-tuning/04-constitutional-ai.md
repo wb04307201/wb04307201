@@ -173,3 +173,12 @@ for prompt in prompts:
 | 6 | [PEFT/LoRA](06-peft-lora.md) | 参数高效微调 = 用 <1% 参数适配大模型（DoRA 强 LoRA 5-10%） |
 
 ← [返回 LLM 对齐专题](../README.md)
+
+---
+
+## 📚 参考来源
+
+1. **Constitutional AI: Harmlessness from AI Feedback**：Yuntao Bai et al. *Constitutional AI 论文：SL-CAI + RL-CAI 两阶段范式，Anthropic 2022*. https://arxiv.org/abs/2212.08073
+2. **Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback**：Yuntao Bai et al. *Anthropic HH-RLHF：Constitutional AI 的前身与对比基准，2022*. https://arxiv.org/abs/2204.05862
+3. **Training language models to follow instructions with human feedback**：Long Ouyang et al. *InstructGPT/RLHF：与 Constitutional AI 对比的基础对齐方法，OpenAI 2022*. https://arxiv.org/abs/2203.02155
+4. **Direct Preference Optimization: Your Language Model is Secretly a Reward Model**：Rafael Rafailov et al. *DPO：RLHF 的简化替代方案，2023*. https://arxiv.org/abs/2305.18290

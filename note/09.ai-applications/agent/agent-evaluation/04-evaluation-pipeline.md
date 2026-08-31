@@ -166,4 +166,13 @@ GOLDEN_SET_LIFECYCLE = """
 
 ---
 
+## 📚 参考来源
+
+1. **AgentBench**：Liu et al. *AgentBench: Evaluating LLMs as Agents*. ICLR 2024. https://arxiv.org/abs/2308.03688
+2. **Judging LLM-as-a-Judge**：Zheng et al. *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*. NeurIPS 2023 Datasets and Benchmarks Track. https://arxiv.org/abs/2306.05685
+3. **Chatbot Arena**：Chiang et al. *Chatbot Arena: An Open Platform for Evaluating LLMs by Human Preference*. 2024. https://arxiv.org/abs/2403.04132
+4. **GAIA**：Mialon et al. *GAIA: a Benchmark for General AI Assistants*. 2023. https://arxiv.org/abs/2311.12983
+
+---
+
 ← [返回: Agent Evaluation 总目录](../README.md) · 上一章：[03-llm-as-judge](03-llm-as-judge.md) · 下一章：[05-ali-interview](05-ali-interview.md)

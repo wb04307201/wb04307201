@@ -102,4 +102,13 @@ Q5：是否上线生产？
 
 ---
 
+## 📚 参考来源
+
+1. **Judging LLM-as-a-Judge**：Zheng et al. *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*. NeurIPS 2023 Datasets and Benchmarks Track. https://arxiv.org/abs/2306.05685
+2. **AgentBench**：Liu et al. *AgentBench: Evaluating LLMs as Agents*. ICLR 2024. https://arxiv.org/abs/2308.03688
+3. **Arena-Hard**：Li et al. *From Crowdsourced Data to High-Quality Benchmarks: Arena-Hard and BenchBuilder Pipeline*. 2024. https://arxiv.org/abs/2406.11939
+4. **GAIA**：Mialon et al. *GAIA: a Benchmark for General AI Assistants*. 2023. https://arxiv.org/abs/2311.12983
+
+---
+
 ← [返回: Agent Evaluation 总目录](../README.md) · 上一章：[06-seven-anti-patterns](06-seven-anti-patterns.md) · 专题结束

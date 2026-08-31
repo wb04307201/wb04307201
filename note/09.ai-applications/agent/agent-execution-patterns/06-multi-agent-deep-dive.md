@@ -259,3 +259,12 @@ result = crew.kickoff()
 
 - [shared-memory](../agent-memory/shared-memory.md)
 ← [返回: Agent 4 大模式](../README.md) · 上一章：[05-dag](05-dag-deep-dive.md)
+
+---
+
+## 📚 参考来源
+
+1. **ChatDev 论文**（多智能体协作 + 角色化分工代表）：Qian et al. *Communicative Agents for Software Development*. 2023. https://arxiv.org/abs/2307.07924
+2. **MetaGPT 论文**（SOP 驱动的多智能体软件工程框架）：Hong et al. *MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework*. ICLR 2024. https://arxiv.org/abs/2308.00352
+
+---

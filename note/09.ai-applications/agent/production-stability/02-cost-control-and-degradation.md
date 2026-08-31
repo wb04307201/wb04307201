@@ -260,3 +260,11 @@ class CostCircuitBreaker:
 ---
 
 ← [返回: 大模型思维工程](../README.md) · 上一章：[01-thinking-paradigm](01-thinking-paradigm.md) · 下一章：[03-consistency](03-consistency-and-failure-handling.md)
+
+---
+
+## 📚 参考来源
+
+1. **FrugalGPT 论文**（5 层路由 + 多模型降级的学术同构）：Chen et al. *FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance*. TMLR 2024. https://arxiv.org/abs/2305.05176
+
+---

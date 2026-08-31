@@ -508,3 +508,9 @@ oh-my-opencode 会自动分配任务给最适合的 Agent（Gemini 处理前端�
 - **规范工具**：[Agent Spec Tools](../agent-spec-tools/README.md)
 
 ← [返回: Coding Agents 对比](README.md)
+
+## 📚 参考来源
+
+1. **官方文档**：Anthropic. *Claude Code Best Practices*（开源 Coding Agent 通用方法论参考）. 2025. https://www.anthropic.com/engineering/claude-code-best-practices
+2. **SWE-bench 评测**：Jimenez et al. *SWE-bench: Can Language Models Resolve Real-World GitHub Issues?* ICLR 2024. https://arxiv.org/abs/2310.06770
+3. **Agentless 框架**：Xia, Deng. *Agentless: Demystifying LLM-based Software Engineering Agents*. 2024. https://arxiv.org/abs/2407.01489

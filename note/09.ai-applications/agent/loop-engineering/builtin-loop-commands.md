@@ -181,3 +181,10 @@ Shift+Tab 切换到 Auto Mode（跳过权限确认）
 ---
 
 ← [返回: Loop Engineering](README.md) · 📅 2026-07-10
+
+## 📚 参考来源
+
+1. **官方文档**：Anthropic. *Claude Code Best Practices*（/goal、/loop 命令设计参考）. 2025. https://www.anthropic.com/engineering/claude-code-best-practices
+2. **ReAct**：Yao et al. *ReAct: Synergizing Reasoning and Acting in Language Models*. ICLR 2023. https://arxiv.org/abs/2210.03629
+3. **Reflexion**：Shinn et al. *Reflexion: Language Agents with Verbal Reinforcement Learning*. NeurIPS 2023. https://arxiv.org/abs/2303.11381
+4. **AutoGen**：Wu et al. *AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation*. 2023. https://arxiv.org/abs/2308.08155

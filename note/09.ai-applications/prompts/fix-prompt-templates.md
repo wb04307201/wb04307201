@@ -352,3 +352,11 @@ SCOPED_FIX_PROMPT = """
 ---
 
 ← [返回 Prompts MOC](../README.md) · 上一章：ide-case-studies（⚠️ 待 Phase 1+ 迁入；占位 `../ide-case-studies.md`） · 专题结束
+
+---
+
+## 📚 参考来源
+
+1. **Self-Refine: Iterative Refinement with Self-Feedback**：Aman Madaan et al. *Self-Refine: Iterative Refinement with Self-Feedback*. 2023. https://arxiv.org/abs/2303.17651
+2. **Constitutional AI: Harmlessness from AI Feedback**：Yuntao Bai et al. *Constitutional AI: Harmlessness from AI Feedback*. 2022. https://arxiv.org/abs/2212.08073
+3. **Self-Instruct: Aligning Language Models with Self-Generated Instructions**：Yizhong Wang et al. *Self-Instruct: Aligning Language Models with Self-Generated Instructions*. 2023. https://arxiv.org/abs/2212.10560

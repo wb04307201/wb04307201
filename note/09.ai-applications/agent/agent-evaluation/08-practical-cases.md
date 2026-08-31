@@ -335,4 +335,13 @@ LLM-as-Judge（50 条抽样）：
 
 ---
 
+## 📚 参考来源
+
+1. **SWE-bench**：Jimenez et al. *SWE-bench: Can Language Models Resolve Real-World GitHub Issues?*. ICLR 2024. https://arxiv.org/abs/2310.06770
+2. **HumanEval**：Chen et al. *Evaluating Large Language Models Trained on Code*. 2021. https://arxiv.org/abs/2107.03374
+3. **AgentBench**：Liu et al. *AgentBench: Evaluating LLMs as Agents*. ICLR 2024. https://arxiv.org/abs/2308.03688
+4. **GAIA**：Mialon et al. *GAIA: a Benchmark for General AI Assistants*. 2023. https://arxiv.org/abs/2311.12983
+
+---
+
 ← [返回: Agent Evaluation 总目录](README.md) · 📅 2026-07-10

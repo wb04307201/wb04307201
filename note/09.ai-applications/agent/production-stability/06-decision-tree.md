@@ -160,3 +160,12 @@ Q5：监控定位 → Trace + 黄金集 + 漂移（每月回归 + 实时告警�
 ---
 
 ← [返回: 大模型思维工程](../README.md) · 上一章：[05-monitoring](05-online-monitoring.md) · 专题结束
+
+---
+
+## 📚 参考来源
+
+1. **Self-Consistency 原论文**（决策树 Q3 "连续不一致"分支的学术基础）：Wang et al. *Self-Consistency Improves Chain of Thought Reasoning in Language Models*. ICLR 2023. https://arxiv.org/abs/2203.11171
+2. **FrugalGPT 论文**（决策树 Q1/Q2 成本与 LLM/规则决策的学术同构）：Chen et al. *FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance*. TMLR 2024. https://arxiv.org/abs/2305.05176
+
+---

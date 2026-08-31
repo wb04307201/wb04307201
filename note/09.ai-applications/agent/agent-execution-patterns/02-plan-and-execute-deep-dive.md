@@ -348,3 +348,12 @@ if query_similarity(new_query, past_query) > 0.9:
 ---
 
 ← [返回: Agent 4 大模式](../README.md) · 上一章：[01-react-deep-dive](01-react-deep-dive.md) · 下一章：[03-six-dimensions-comparison](03-six-dimensions-comparison.md)
+
+---
+
+## 📚 参考来源
+
+1. **Plan-and-Solve 原论文**（Plan-and-Execute 的规划方法基础）：Wang et al. *Plan-and-Solve Prompting: Improving Zero-Shot Chain-of-Thought Reasoning by Large Language Models*. ACL 2023. https://arxiv.org/abs/2305.04091
+2. **LATS 论文**（树搜索统一推理 + 行动，含 RePlan 机制）：Zhou et al. *Language Agent Tree Search Unifies Reasoning, Acting, and Planning in Tree-of-Thoughts*. 2024. https://arxiv.org/abs/2310.04406
+
+---

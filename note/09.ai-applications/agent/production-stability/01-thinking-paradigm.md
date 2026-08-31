@@ -212,3 +212,11 @@ def should_use_llm(input_text, expected_qps, accuracy_required):
 ---
 
 ← [返回: 大模型思维工程](../README.md) · 下一章：[02-cost-control](02-cost-control-and-degradation.md)
+
+---
+
+## 📚 参考来源
+
+1. **FrugalGPT 论文**（按成本/精度选择模型的决策框架，与本文"能用规则就别用 LLM"主张一致）：Chen et al. *FrugalGPT: How to Use Large Language Models While Reducing Cost and Improving Performance*. TMLR 2024. https://arxiv.org/abs/2305.05176
+
+---

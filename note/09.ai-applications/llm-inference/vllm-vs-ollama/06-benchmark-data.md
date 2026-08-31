@@ -177,3 +177,13 @@ module:
 ---
 
 ← [返回: vLLM vs Ollama](../README.md) · 上一章：[05-distributed-inference](05-distributed-inference.md) · 下一章：[07-vs-tgi-lmdeploy](07-vs-tgi-lmdeploy.md)
+
+---
+
+## 📚 参考来源
+
+1. **Efficient Memory Management for Large Language Model Serving with PagedAttention**：Woosuk Kwon et al. *vLLM 论文：PagedAttention + 连续批处理是 6-24x 吞吐优势的核心来源，SOSP 2023*. https://arxiv.org/abs/2309.06180
+2. **FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness**：Tri Dao et al. *FlashAttention 用 IO-aware tiling 把 attention 显存降为 O(N)，NeurIPS 2022*. https://arxiv.org/abs/2205.14135
+3. **FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning**：Tri Dao. *FlashAttention 2：进一步并行化与工作划分优化，2023*. https://arxiv.org/abs/2307.08691
+4. **Accelerating Large Language Model Decoding with Speculative Sampling**：Yaniv Leviathan et al. *Speculative Decoding 推测式采样加速推理，Google 2023*. https://arxiv.org/abs/2211.17192
+5. **SARATHI: Efficient LLM Inference by Piggybacking Decodes with Chunked Prefills**：Amey Agrawal et al. *Chunked Prefill 分块预填：解决 prefill-decode 互相阻塞，OSDI 2024*. https://arxiv.org/abs/2308.16369

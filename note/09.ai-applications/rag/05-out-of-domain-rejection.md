@@ -533,3 +533,10 @@ Q3：用户对拒答接受度？
 
 ← [返回 RAG MOC](./README.md)
 
+---
+
+## 📚 参考来源
+
+1. **Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection**：Akari Asai et al. *Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection*. 2023. https://arxiv.org/abs/2310.11511
+2. **FreshLLMs: Refreshing Large Language Models with Search Engine Augmentation**：Tu Vu et al. *FreshLLMs: Refreshing Large Language Models with Search Engine Augmentation*. 2024. https://arxiv.org/abs/2310.03214
+

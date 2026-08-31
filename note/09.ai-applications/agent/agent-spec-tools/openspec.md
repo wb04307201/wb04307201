@@ -177,3 +177,12 @@ openspec init
 > 📅 2026-07-08 · AI 工程实践 · OpenSpec · 实战工具
 
 ← [返回: Agent Spec Tools 对比](README.md)
+
+---
+
+## 📚 参考来源
+
+1. **AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation**：Qingyun Wu et al. *多 Agent 对话 + 规范驱动的工程化框架奠基工作，Microsoft 2023*. https://arxiv.org/abs/2308.08155
+2. **Communicative Agents for Software Development**：Chen Qian et al. *ChatDev 论文：阶段式 + 规范化的工作流拆分范式，2023*. https://arxiv.org/abs/2307.07924
+3. **MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework**：Sirui Hong et al. *SOP / 规范文档作为 Agent 间共识的工程化实践，2023*. https://arxiv.org/abs/2308.00352
+4. **Toolformer: Language Models Can Teach Themselves to Use Tools**：Timo Schick et al. *Agent 工具调用能力的形式化奠基，Meta AI 2023*. https://arxiv.org/abs/2302.04761

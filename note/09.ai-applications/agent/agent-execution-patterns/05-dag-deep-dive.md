@@ -228,3 +228,12 @@ app = graph.compile()
 ---
 
 ← [返回: Agent 4 大模式](../README.md) · 上一章：[04-selection-decision-tree](04-selection-decision-tree.md) · 下一章：[06-multi-agent](06-multi-agent-deep-dive.md)
+
+---
+
+## 📚 参考来源
+
+1. **LLMCompiler 论文**（DAG 式 LLM 编排 + 并行执行）：Kim et al. *An LLM Compiler for Parallel Function Calling*. 2023. https://arxiv.org/abs/2312.04594
+2. **LATS 论文**（树搜索统一推理，与 DAG 同属显式结构化执行）：Zhou et al. *Language Agent Tree Search Unifies Reasoning, Acting, and Planning in Tree-of-Thoughts*. 2024. https://arxiv.org/abs/2310.04406
+
+---

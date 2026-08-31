@@ -252,3 +252,9 @@ Q4：开源优先？
 ---
 
 ← [返回: Loop Engineering 总目录](../README.md) · 上一章：[verifier-design](verifier-design.md) · 下一章：fix-prompt-templates
+
+## 📚 参考来源
+
+1. **官方文档**：Anthropic. *Claude Code Best Practices*（Claude Code Loop 工程参考）. 2025. https://www.anthropic.com/engineering/claude-code-best-practices
+2. **AutoGen**：Wu et al. *AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation*. 2023. https://arxiv.org/abs/2308.08155
+3. **Reflexion**：Shinn et al. *Reflexion: Language Agents with Verbal Reinforcement Learning*. NeurIPS 2023. https://arxiv.org/abs/2303.11381

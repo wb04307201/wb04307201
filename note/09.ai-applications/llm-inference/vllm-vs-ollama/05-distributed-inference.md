@@ -171,3 +171,13 @@ min_TP = ceil(模型权重显存 / 单卡可用显存)
 ---
 
 ← [返回: vLLM vs Ollama](../README.md) · 上一章：[04-quantization](04-quantization.md) · 下一章：[06-benchmark-data](06-benchmark-data.md)
+
+---
+
+## 📚 参考来源
+
+1. **Efficient Memory Management for Large Language Model Serving with PagedAttention**：Woosuk Kwon et al. *PagedAttention / vLLM: 连续批处理 + 分页 KV cache 突破性论文，SOSP 2023*. https://arxiv.org/abs/2309.06180
+2. **Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism**：Mohammad Shoeybi et al. *张量并行 (TP) 起源论文，NVIDIA 2019*. https://arxiv.org/abs/1909.08053
+3. **GPipe: Efficient Training of Giant Neural Networks using Pipeline Parallelism**：Yanping Huang et al. *流水线并行 (PP) + micro-batch 消解气泡，NeurIPS 2019*. https://arxiv.org/abs/1811.06965
+4. **Efficiently Scaling Transformer Inference**：Reiner Pope et al. *TP+PP 多维并行推理系统，DeepMind 2022*. https://arxiv.org/abs/2211.05102
+5. **Reducing Activation Recomputation in Large Transformer Models**：Vijay Anand Korthikanti et al. *激活重计算 + 选择性 TP 优化，NVIDIA 2022*. https://arxiv.org/abs/2205.05198

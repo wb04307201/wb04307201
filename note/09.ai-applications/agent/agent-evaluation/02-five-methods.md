@@ -255,4 +255,13 @@ async def user_simulation_test(agent, users, max_concurrent=100):
 
 ---
 
+## 📚 参考来源
+
+1. **Judging LLM-as-a-Judge**：Zheng et al. *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*. NeurIPS 2023 Datasets and Benchmarks Track. https://arxiv.org/abs/2306.05685
+2. **Chatbot Arena**：Chiang et al. *Chatbot Arena: An Open Platform for Evaluating LLMs by Human Preference*. 2024. https://arxiv.org/abs/2403.04132
+3. **AgentBench**：Liu et al. *AgentBench: Evaluating LLMs as Agents*. ICLR 2024. https://arxiv.org/abs/2308.03688
+4. **Arena-Hard**：Li et al. *From Crowdsourced Data to High-Quality Benchmarks: Arena-Hard and BenchBuilder Pipeline*. 2024. https://arxiv.org/abs/2406.11939
+
+---
+
 ← [返回: Agent Evaluation 总目录](../README.md) · 上一章：[01-six-metrics](01-six-metrics.md) · 下一章：[03-llm-as-judge](03-llm-as-judge.md)

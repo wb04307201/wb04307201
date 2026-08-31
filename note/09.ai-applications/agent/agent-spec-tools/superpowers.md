@@ -160,3 +160,12 @@ Superpowers： "请实现 LRU Cache" → Agent 必须先写测试（RED）→ �
 > 📅 2026-07-08 · AI 工程实践 · Superpowers · 实战工具
 
 ← [返回: Agent Spec Tools 对比](README.md)
+
+---
+
+## 📚 参考来源
+
+1. **AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation**：Qingyun Wu et al. *多 Agent 协作工程化的奠基论文，支撑 Superpowers 子 Agent 分发模式，Microsoft 2023*. https://arxiv.org/abs/2308.08155
+2. **Communicative Agents for Software Development**：Chen Qian et al. *ChatDev：阶段式 Spec 驱动的软件开发 Agent 工作流，2023*. https://arxiv.org/abs/2307.07924
+3. **MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework**：Sirui Hong et al. *SOP / 标准化流程文档作为 Agent 共识载体，2023*. https://arxiv.org/abs/2308.00352
+4. **Toolformer: Language Models Can Teach Themselves to Use Tools**：Timo Schick et al. *Agent 工具形式化使用与 TDD 自动化测试方法论基础，2023*. https://arxiv.org/abs/2302.04761

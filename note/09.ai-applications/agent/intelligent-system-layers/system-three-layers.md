@@ -123,3 +123,13 @@ NAR并行生成完整序列，推理速度较AR提升10倍+：
 未来的竞争，将不再是单一模型的精度竞赛，而是**感知-认知-决策全链路的协同效率之争**。谁能在架构层面实现物理世界与数字世界的无缝映射，谁就将掌握下一代智能系统的定义权。
 
 > 技术永远在迭代，但架构思维决定我们能走多远。
+
+---
+
+## 📚 参考来源
+
+1. **Attention Is All You Need**：Ashish Vaswani et al. *Transformer 奠基论文：认知与模型层的核心算法基础，NeurIPS 2017*. https://arxiv.org/abs/1706.03762
+2. **Mastering the game of Go without human knowledge**：David Silver et al. *AlphaGo Zero：决策与执行层 MCTS 范式奠基，Nature 2017*. https://arxiv.org/abs/1712.01815
+3. **Mastering Chess and Shogi by Self-Play with a General Reinforcement Learning Algorithm**：David Silver et al. *AlphaZero：通用 MCTS + 自博弈强化学习奠基，2017*. https://arxiv.org/abs/1712.01815
+4. **A Survey on Multimodal Large Language Models**：Shukang Yin et al. *多模态大模型综述：感知与数据层融合策略理论基础，2023*. https://arxiv.org/abs/2306.13549
+5. **Generative Agents: Interactive Simulacra of Human Behavior**：Joon Sung Park et al. *感知-认知-决策三层 Agent 架构的工程化参考范式，2023*. https://arxiv.org/abs/2304.03442

@@ -171,3 +171,14 @@ module:
 ---
 
 ← [返回: vLLM vs Ollama](../README.md) · 上一章：[06-benchmark-data](06-benchmark-data.md) · 下一章：[08-decision-tree](08-decision-tree.md)
+
+---
+
+## 📚 参考来源
+
+1. **Efficient Memory Management for Large Language Model Serving with PagedAttention**：Woosuk Kwon et al. *vLLM 论文：PagedAttention 创新与连续批处理，SOSP 2023*. https://arxiv.org/abs/2309.06180
+2. **FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness**：Tri Dao et al. *TGI 采用的 FlashAttention 内核基础，NeurIPS 2022*. https://arxiv.org/abs/2205.14135
+3. **FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning**：Tri Dao. *FlashAttention 2 进一步降低 attention 计算时间，2023*. https://arxiv.org/abs/2307.08691
+4. **SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models**：Guangxuan Xiao et al. *vLLM 支持的 SmoothQuant W8A8 量化方案，MLSYS 2023*. https://arxiv.org/abs/2211.10438
+5. **AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration**：Ji Lin et al. *vLLM/TGI/LMDeploy 都支持的 AWQ INT4 量化，MLSys 2024*. https://arxiv.org/abs/2306.00978
+6. **DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving**：Yinmin Zhong et al. *Prefill-Decode 分离架构：下一代推理引擎优化方向，OSDI 2024*. https://arxiv.org/abs/2401.09670

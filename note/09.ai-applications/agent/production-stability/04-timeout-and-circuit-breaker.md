@@ -234,3 +234,12 @@ class FallbackChain:
 ---
 
 ← [返回: 大模型思维工程](../README.md) · 上一章：[03-consistency](03-consistency-and-failure-handling.md) · 下一章：[05-monitoring](05-online-monitoring.md)
+
+---
+
+## 📚 参考来源
+
+1. **Netflix Hystrix 官方文档**（Circuit Breaker 模式的工业级原始实现，本文 §3 状态机/3 道防线即源于此）：https://github.com/Netflix/Hystrix/wiki/How-it-Works
+2. **AWS Architecture Blog - Circuit Breaker 模式**（Fallback / 监控指标 / 阈值调优权威定义）：https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/circuit-breaker.html
+
+---
