@@ -271,4 +271,6 @@ Full GC 是性能杀手，常见触发场景包括：
 
 - 深度阅读：[`01.java-and-jvm`](../../../01.java-and-jvm/README.md) — 主模块详细内容
 
+> 📅 2026-09-01 · 咬文嚼字 · GC 算法 · ⭐⭐⭐⭐（中频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · gc-algorithms](../README.md)

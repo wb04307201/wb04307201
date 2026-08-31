@@ -389,4 +389,6 @@ form.age = 25
 - 深度阅读：[`05.frontend`](../../../05.frontend/README.md) — 主模块详细内容
 - 兄弟题：[`Vue 大列表性能调优`](../large-list-perf/) — Vue 大列表性能调优实战（响应式原理的实战落地）
 
+> 📅 2026-09-01 · 咬文嚼字 · vue-reactivity · ⭐⭐⭐⭐（中频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · vue-reactivity](../README.md)

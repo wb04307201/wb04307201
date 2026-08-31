@@ -284,6 +284,8 @@ CREATE TABLE click_log (
 
 - 深度阅读：[`04.system-design`](../../../06.distributed-systems/README.md) — 主模块详细内容
 
+> 📅 2026-09-01 · 咬文嚼字 · 短链 · ⭐⭐⭐⭐（高频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · url-shortener](../README.md)
 
 ## 标准陷阱格式（5 大反模式 → 5 标准陷阱）

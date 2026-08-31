@@ -151,4 +151,6 @@ public abstract class AbstractList<E> implements List<E> {
 
 - 深度阅读：[`01.java/核心概念`](../../../01.java-and-jvm/README.md) — Java 知识体系导航
 
+> 📅 2026-09-01 · 咬文嚼字 · 接口 vs 抽象类 · ⭐⭐⭐（高频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · interface-vs-abstract](../README.md)

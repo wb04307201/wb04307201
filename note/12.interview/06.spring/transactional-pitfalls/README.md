@@ -351,4 +351,6 @@ public class OrderService {
 
 
 - [03-transaction-boundary](../../../04.spring-backend/04-data/mybatis/03-spring-integration/03-transaction-boundary.md)
+> 📅 2026-09-01 · 咬文嚼字 · Spring · @Transactional 失效 · ⭐⭐⭐⭐（中频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · transactional-pitfalls](../README.md)

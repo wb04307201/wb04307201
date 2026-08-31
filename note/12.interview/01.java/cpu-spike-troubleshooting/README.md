@@ -404,4 +404,6 @@ done
 
 - 深度阅读：[`01.java-and-jvm`](../../../01.java-and-jvm/README.md) — 主模块详细内容
 
+> 📅 2026-09-01 · 咬文嚼字 · CPU 飙升排查 · ⭐⭐⭐⭐（中频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · cpu-spike-troubleshooting](../README.md)

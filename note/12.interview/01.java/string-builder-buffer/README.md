@@ -426,4 +426,6 @@ System.out.println(sb.capacity()); // 输出 22（10 * 2 + 2）
 
 - 深度阅读：[`01.java-and-jvm`](../../../01.java-and-jvm/README.md) — 主模块详细内容
 
+> 📅 2026-09-01 · 咬文嚼字 · String/Builder/Buffer · ⭐⭐（中频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · string-builder-buffer](../README.md)

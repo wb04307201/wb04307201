@@ -301,4 +301,6 @@ groups:
 
 - 深度阅读：[`03.database`](../../../03.data-stack/01-database/README.md) — 主模块详细内容
 
+> 📅 2026-09-01 · 咬文嚼字 · Redis · ⭐⭐⭐（中频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · redis-big-key](../README.md)

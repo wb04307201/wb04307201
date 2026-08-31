@@ -337,4 +337,6 @@ graph TB
 - 深度阅读：[`04.system-design`](../../../06.distributed-systems/README.md) — 主模块详细内容
 - 排查实战：[`支付消息丢失排查`](../payment-message-lost/README.md) — 全链路 5 段排查框架 + 6 种根因
 
+> 📅 2026-09-01 · 咬文嚼字 · 分布式事务 · ⭐⭐⭐（中频面试 + 实战必会）
+
 ← [返回系统设计咬文嚼字](../README.md)

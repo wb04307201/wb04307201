@@ -665,4 +665,6 @@ void rebuildAffected(merchantId) {
 4. [Flink 实时计算搜索权重 — 阿里云](https://developer.aliyun.com/article/798656)
 5. [Trie 树序列化方案对比 — GitHub awesome-tries](https://github.com/yyyguiqing/Awesome-Tries)
 
+> 📅 2026-09-01 · 咬文嚼字 · 搜索typeahead · ⭐⭐⭐⭐⭐（高频面试 + 实战必会）
+
 ← [返回: 系统设计咬文嚼字](../../README.md)

@@ -290,4 +290,6 @@ graph LR
 
 
 - [seckill-without-redis](../../../06.distributed-systems/03-high-availability/rate-limiting/seckill-without-redis.md)
+> 📅 2026-09-01 · 咬文嚼字 · 限流算法 · ⭐⭐（中频面试 + 实战必会）
+
 ← [返回系统设计咬文嚼字](../README.md)

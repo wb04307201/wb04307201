@@ -160,4 +160,6 @@ response = client.chat.completions.create(
 
 ---
 
+> 📅 2026-09-01 · 咬文嚼字 · 结构化输出 · ⭐⭐⭐（高频面试 + 实战必会）
+
 ← [返回: AI 咬文嚼字](../README.md)

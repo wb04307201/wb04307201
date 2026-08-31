@@ -604,4 +604,6 @@ DEL session:sessionId
 4. [Redis Cluster 在会话管理中的应用 - 美团技术团队](https://tech.meituan.com/)
 5. [Auth0 Refresh Token 实践指南](https://auth0.com/docs/secure/tokens/refresh-tokens)
 
+> 📅 2026-09-01 · 咬文嚼字 · 登录凭证 · ⭐⭐⭐⭐（高频面试 + 实战必会）
+
 ← [返回: 系统设计咬文嚼字](../../README.md)

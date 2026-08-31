@@ -283,4 +283,6 @@ public Product getProductWithRetry(Long productId, int maxRetries) {
 - 深度阅读：[`03.database`](../../../03.data-stack/01-database/README.md) — 主模块详细内容
 - 扩容实战：[`分表扩容策略`](../sharding-resize/README.md) — 增量同步延迟在 resharding 中的影响
 
+> 📅 2026-09-01 · 咬文嚼字 · MySQL 主从复制 · ⭐⭐⭐（中频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · replication-lag](../README.md)

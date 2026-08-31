@@ -242,4 +242,6 @@ System.out.println(System.currentTimeMillis() - start);
 
 > "Java 为高频小整数设计了 IntegerCache（-128~127，上限可用 `-XX:AutoBoxCacheMax` 调整）。自动装箱 `Integer a = 100` 编译为 `Integer.valueOf(100)`，走缓存返回同一对象；`new Integer(100)` 绕开缓存新建。面试三大陷阱：①缓存边界（-128 OK，-129 false）②反射篡改缓存（Java 9+ JPMS 已封禁，需 `--add-opens`）③反序列化不走 valueOf。其他包装类（Byte/Short/Long/Character）也缓存但范围不同，**Float/Double 无缓存**。实战建议：比较用 `equals()`，JVM 参数慎调上限，序列化用 `readResolve()` 兜底。"
 
+> 📅 2026-09-01 · 咬文嚼字 · Integer 缓存 · ⭐⭐⭐⭐（中频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · integer-cache](../README.md)

@@ -185,4 +185,6 @@ redis.set("session:user:1", "data", ex=ttl)
 
 ---
 
+> 📅 2026-09-01 · 咬文嚼字 · Redis · ⭐⭐（中频面试 + 实战必会）
+
 ← [返回: 数据库面试题](../README.md)

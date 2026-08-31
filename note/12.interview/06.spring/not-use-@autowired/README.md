@@ -155,4 +155,6 @@ public class OrderService {
 - 深度阅读：[`06.spring/01-core`](../../../04.spring-backend/01-core/README.md) — IoC 容器、依赖注入方式
 - 相关：[`13.split-hairs/bean-lifecycle`](../bean-lifecycle/README.md) — Bean 生命周期 12 步
 
+> 📅 2026-09-01 · 咬文嚼字 · Spring · @Autowired · ⭐⭐（中频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · not-use-@autowired](../README.md)

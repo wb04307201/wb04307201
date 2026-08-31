@@ -271,4 +271,6 @@ Java 规定：如果两个对象 `equals` 相等，它们的 `hashCode` 必须�
 
 - 深度阅读：[`01.java-and-jvm`](../../../01.java-and-jvm/README.md) — 主模块详细内容
 
+> 📅 2026-09-01 · 咬文嚼字 · equals-hashCode · ⭐⭐⭐⭐（中频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · equals-hashcode](../README.md)

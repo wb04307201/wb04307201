@@ -214,4 +214,6 @@ try {
 - 🆕 [JWT 安全深度（localStorage 危险 + 6 方案）](../../../06.distributed-systems/05-security/jwt-security/README.md) —— 「为什么 localStorage 存 JWT 是危险的」+ HttpOnly Cookie 首选 + 双 Token 实战
 - 🆕 [Cookies vs LocalStorage 会话管理（工程实践）](../../../05.frontend/07-security/sessions/README.md) —— SuperTokens 完整翻译稿
 
+> 📅 2026-09-01 · 咬文嚼字 · storage · ⭐⭐（中频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · storage](../README.md)

@@ -376,4 +376,6 @@ public User getUserFallback(Long userId, BlockException e) {
 
 
 - [cache-degradation-and-recovery](../../../04.spring-backend/04-data/cache/cache-degradation-and-recovery.md)
+> 📅 2026-09-01 · 咬文嚼字 · Redis 缓存 · ⭐⭐（中频面试 + 实战必会）
+
 ← [返回数据库咬文嚼字](../README.md)

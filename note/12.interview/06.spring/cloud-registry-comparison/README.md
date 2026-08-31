@@ -146,4 +146,6 @@ restTemplate.getForObject("http://user-service/api/user/" + id, User.class);
 - 主模块：[`Spring Cloud`](../../../04.spring-backend/03-cloud/README.md) — Spring Cloud 微服务全家桶
 - 主模块：[`微服务架构`](../../../06.distributed-systems/README.md) — 微服务设计原则
 
+> 📅 2026-09-01 · 咬文嚼字 · Spring · 注册中心选型 · ⭐⭐⭐⭐（中频面试 + 实战必会）
+
 ← [返回 Spring 咬文嚼字](../README.md)

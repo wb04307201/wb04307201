@@ -262,6 +262,8 @@ res.cookie('sessionId', 'abc123', {
 
 - 深度阅读：[`05.frontend`](../../../05.frontend/README.md) — 主模块详细内容
 
+> 📅 2026-09-01 · 咬文嚼字 · xss-csrf · ⭐⭐⭐（中频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · xss-csrf](../README.md)
 
 ## 90 秒面试话术（补充版）

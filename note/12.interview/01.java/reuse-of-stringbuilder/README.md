@@ -255,4 +255,6 @@ public final class SBUtils {
 
 - 深度阅读：[`01.java-and-jvm`](../../../01.java-and-jvm/README.md) — 主模块详细内容
 
+> 📅 2026-09-01 · 咬文嚼字 · StringBuilder 重用 · ⭐⭐⭐（中频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · reuse-of-stringbuilder](../README.md)

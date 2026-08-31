@@ -338,4 +338,6 @@ ES5 最优方案是**寄生组合式继承**：用 `Object.create` 建立原型�
 
 - 深度阅读：[`05.frontend`](../../../05.frontend/README.md) — 主模块详细内容
 
+> 📅 2026-09-01 · 咬文嚼字 · prototype-chain · ⭐⭐⭐⭐（中频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · prototype-chain](../README.md)

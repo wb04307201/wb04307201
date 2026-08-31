@@ -366,4 +366,6 @@ public Result register(@Valid @RequestBody UserRegisterRequest req,
 
 - 排查实战：[`支付消息丢失排查`](../payment-message-lost/README.md) — 幂等误拦截是隐性丢消息的常见根因
 
+> 📅 2026-09-01 · 咬文嚼字 · 幂等性 · ⭐⭐⭐（中频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · idempotency](../README.md)

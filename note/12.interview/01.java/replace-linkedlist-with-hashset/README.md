@@ -298,4 +298,6 @@ boolean mightExist = bloom.mightContain("user_123"); // true（可能误判）
 
 - 深度阅读：[`01.java-and-jvm`](../../../01.java-and-jvm/README.md) — 主模块详细内容
 
+> 📅 2026-09-01 · 咬文嚼字 · HashSet 替代 LinkedList · ⭐⭐⭐（中频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · replace-linkedlist-with-hashset](../README.md)

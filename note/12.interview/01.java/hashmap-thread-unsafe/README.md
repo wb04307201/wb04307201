@@ -206,4 +206,6 @@ put 流程：
 
 - 深度阅读：[`01.java-and-jvm`](../../../01.java-and-jvm/README.md) — 主模块详细内容
 
+> 📅 2026-09-01 · 咬文嚼字 · HashMap 线程不安全 · ⭐⭐⭐⭐（高频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · hashmap-thread-unsafe](../README.md)

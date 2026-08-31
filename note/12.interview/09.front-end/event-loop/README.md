@@ -273,4 +273,6 @@ setTimeout(() => {
 
 - 深度阅读：[`05.frontend`](../../../05.frontend/README.md) — 主模块详细内容
 
+> 📅 2026-09-01 · 咬文嚼字 · event-loop · ⭐⭐⭐⭐（中频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · event-loop](../README.md)

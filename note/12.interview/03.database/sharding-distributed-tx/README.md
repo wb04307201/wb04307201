@@ -193,4 +193,6 @@ Seata 是阿里开源的分布式事务框架，支持 4 种模式：
 
 - 深度阅读：[`03.database`](../../../03.data-stack/01-database/README.md) — 数据库咬文嚼字全景（MySQL / Redis / 分库分表）
 
+> 📅 2026-09-01 · 咬文嚼字 · 分库分表 · ⭐⭐⭐⭐⭐（高频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · sharding-distributed-tx](../README.md)

@@ -345,4 +345,6 @@ product-service: GET /products/{productId}
 - [MySQL 索引深挖](../bplus-tree/README.md)
 - [MVCC 多版本并发控制](../mvcc/README.md)
 
+> 📅 2026-09-01 · 咬文嚼字 · MySQL · ⭐⭐⭐（中频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · mysql-join](../README.md)

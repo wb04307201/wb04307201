@@ -334,4 +334,6 @@ Content-Length: 1048576
 4. [BitTorrent 协议规范](https://www.bittorrent.org/beps/bep_0003.html)
 5. [签名 URL 防泄漏方案 - AWS S3 官方](https://docs.aws.amazon.com/AmazonS3/latest/userguide/PresignedUrlUploadObject.html)
 
+> 📅 2026-09-01 · 咬文嚼字 · 大文件分发 · ⭐⭐⭐⭐⭐（高频面试 + 实战必会）
+
 ← [返回: 系统设计咬文嚼字](../../README.md)

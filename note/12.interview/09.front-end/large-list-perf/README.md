@@ -165,3 +165,5 @@ function update(id: number, newVal: any) {
 ---
 
 ← [返回 前端咬文嚼字](../README.md)
+
+> 📅 2026-09-01 · 咬文嚼字 · large-list-perf · ⭐⭐⭐⭐⭐（高频面试 + 实战必会）

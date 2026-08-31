@@ -366,4 +366,6 @@ Lodash 内部使用 `timestamp` 记录时间，通过 `remaining` 计算剩余�
 
 - 深度阅读：[`05.frontend`](../../../05.frontend/README.md) — 主模块详细内容
 
+> 📅 2026-09-01 · 咬文嚼字 · debounce-throttle · ⭐⭐⭐（中频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · debounce-throttle](../README.md)

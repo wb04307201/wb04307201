@@ -390,4 +390,6 @@ CREATE TABLE audit_log (
 
 - 深度阅读：[`04.system-design`](../../../06.distributed-systems/README.md) — 系统设计主模块
 
+> 📅 2026-09-01 · 咬文嚼字 · 权限系统 · ⭐⭐⭐⭐⭐（高频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · access-control-design](../README.md)

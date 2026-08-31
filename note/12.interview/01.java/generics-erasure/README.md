@@ -258,4 +258,6 @@ class UserDao extends GenericDao<User> {}
 
 - 主模块：[`泛型`](../../../01.java-and-jvm/01-language/generics/README.md) — Java 泛型完整体系
 
+> 📅 2026-09-01 · 咬文嚼字 · 泛型擦除 · ⭐⭐⭐⭐（中频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · generics-erasure](../README.md)

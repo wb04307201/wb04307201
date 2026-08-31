@@ -187,4 +187,6 @@ http.cors(Customizer.withDefaults())
 - 同栏目：[`Spring MVC 请求流程`](../../../04.spring-backend/02-web/mvc/README.md) — 请求从 DispatcherServlet 到 Controller 的完整链路
 - 主模块：[`安全架构`](../../../06.distributed-systems/05-security/README.md) — 认证授权原理
 
+> 📅 2026-09-01 · 咬文嚼字 · Spring · Spring Security 过滤器链 · ⭐⭐⭐⭐（中频面试 + 实战必会）
+
 ← [返回 Spring 咬文嚼字](../README.md)

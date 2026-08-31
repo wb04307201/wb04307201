@@ -387,4 +387,6 @@ public void process() {
 
 - 深度阅读：[`04.system-design`](../../../06.distributed-systems/README.md) — 主模块详细内容
 
+> 📅 2026-09-01 · 咬文嚼字 · 分布式锁 · ⭐⭐⭐⭐⭐（中频面试 + 实战必会）
+
 ← [返回系统设计咬文嚼字](../README.md)

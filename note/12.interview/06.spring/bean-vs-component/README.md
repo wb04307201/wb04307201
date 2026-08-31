@@ -352,4 +352,6 @@ public class ComponentWithBean {
 
 - 深度阅读：[`06.spring`](../../../04.spring-backend/README.md) — 主模块详细内容
 
+> 📅 2026-09-01 · 咬文嚼字 · Spring · @Bean vs @Component · ⭐（中频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · bean-vs-component](../README.md)

@@ -292,4 +292,6 @@ passwordField.set(user, "hacked");  // 绕过所有业务逻辑直接修改
 
 - 深度阅读：[`01.java-and-jvm`](../../../01.java-and-jvm/README.md) — 主模块详细内容
 
+> 📅 2026-09-01 · 咬文嚼字 · Java 反射 · ⭐⭐⭐⭐（中频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · reflection](../README.md)

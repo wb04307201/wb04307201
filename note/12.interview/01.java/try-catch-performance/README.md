@@ -306,4 +306,6 @@ dao.save(entity);  // 让调用者处理
 
 - 深度阅读：[`01.java-and-jvm`](../../../01.java-and-jvm/README.md) — 主模块详细内容
 
+> 📅 2026-09-01 · 咬文嚼字 · try-catch 性能 · ⭐⭐⭐（中频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · try-catch-performance](../README.md)

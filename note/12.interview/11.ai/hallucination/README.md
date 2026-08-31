@@ -292,4 +292,6 @@ Query → Generator LLM → Draft Answer
 - 深度阅读：[`11.ai`](../../../08.ai-foundations/README.md) — 主模块详细内容
 - **组织层面**：[`13.story/47-boss-hallucination`](../../../13.story/47-boss-hallucination.md) —— 阿明餐厅叙事：当老板看了 AI 报告后...
 
+> 📅 2026-09-01 · 咬文嚼字 · LLM 幻觉 · ⭐⭐⭐⭐（高频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · hallucination](../README.md)

@@ -381,4 +381,7 @@ ThreadFactory namedFactory = new ThreadFactoryBuilder()
 
 
 - [sequential-execution](../../../01.java-and-jvm/03-concurrency/thread-basics/sequential-execution.md)
+
+> 📅 2026-09-01 · 咬文嚼字 · 线程池 · ⭐⭐⭐⭐（中频面试 + 实战必会）
+
 ← [返回: 咬文嚼字 · thread-pool](../README.md)

@@ -265,4 +265,6 @@ SHOW INDEX FROM t;
 
 ---
 
+> 📅 2026-09-01 · 咬文嚼字 · MySQL 联合索引 · ⭐⭐⭐⭐（高频面试 + 实战必会）
+
 ← [返回: Database 咬文嚼字](../README.md)

@@ -337,4 +337,6 @@ sh mqadmin resetOffsetByTime \
 
 - 排查实战：[`支付消息丢失排查`](../payment-message-lost/README.md) — MQ 可靠性在支付场景的实战排查
 
+> 📅 2026-09-01 · 咬文嚼字 · RocketMQ · ⭐⭐⭐⭐⭐（中频面试 + 实战必会）
+
 ← [返回系统设计咬文嚼字](../README.md)
