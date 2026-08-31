@@ -2,7 +2,7 @@
 question:
   id: 02.computer-basics-classification-metrics
   topic: 02.computer-basics
-  difficulty: ⭐⭐⭐
+  difficulty: ⭐⭐⭐⭐
   frequency: 高频
   scenario_type: 概念辨析
   tags: [ML, 评估指标, F1, AUC, ROC, 混淆矩阵, LogLoss]

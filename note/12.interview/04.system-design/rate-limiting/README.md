@@ -2,7 +2,7 @@
 question:
   id: 04.system-design-rate-limiting
   topic: 04.system-design
-  difficulty: ⭐
+  difficulty: ⭐⭐
   frequency: 中频
   scenario_type: 架构困境
   tags: [04.system-design, rate, limiting]

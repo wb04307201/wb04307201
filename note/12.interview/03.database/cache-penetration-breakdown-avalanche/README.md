@@ -2,7 +2,7 @@
 question:
   id: 03.database-cache-penetration-breakdown-avalanche
   topic: 03.database
-  difficulty: ⭐⭐⭐
+  difficulty: ⭐⭐⭐⭐
   frequency: 中频
   scenario_type: 生产 Bug
   tags: [03.database, cache, penetration]
