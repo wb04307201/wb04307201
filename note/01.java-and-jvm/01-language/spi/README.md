@@ -11,6 +11,8 @@ module:
 
 ---
 
+> **一句话定位**：SPI 用 `META-INF/services` + `ServiceLoader` 解耦接口与实现，是 JDBC、SLF4J 等可插拔架构的核心。
+
 SPI 即 Service Provider Interface（服务提供者接口），是一种 Java 的扩展机制，允许应用程序在运行时动态发现和加载接口的实现类。
 
 ## 核心概念

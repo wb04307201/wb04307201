@@ -9,6 +9,8 @@ module:
 
 # Spring Validation
 
+> **一句话定位**：Spring Validation 基于 JSR-303 规范封装，通过 @Valid/@Validated 注解对 Controller/Service 入参实现全自动校验与 400 错误返回。
+
 Spring Validation 是基于 Java Bean Validation API（JSR 303/380）的规范实现，由 Hibernate Validator 提供具体实现，Spring 框架通过封装使其更易用。
 
 ## 一、核心概念与规范

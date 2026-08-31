@@ -9,6 +9,8 @@ module:
 
 # 熔断（Circuit Breaker）
 
+> **一句话定位**：熔断（Circuit Breaker）是高可用的雪崩防线——详解三态状态机与 Resilience4j/Sentinel 实战配置。
+
 ## 引言
 
 在分布式微服务架构中，**雪崩（Avalanche / Cascading Failure）** 是头号灾难——一个非核心依赖的慢响应或故障，会沿着调用链反向传染，最终拖垮整个系统。**熔断（Circuit Breaker）** 就是这道关键防线：当依赖服务不可用时，不是傻傻地等超时或重试放大故障，而是像电路保险丝一样**主动断开调用链**，快速失败并走降级路径，把故障隔离在边界内。

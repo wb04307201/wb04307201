@@ -9,6 +9,8 @@ module:
 
 # JDBC
 
+> **一句话定位**：JDBC 是 Java 访问关系数据库的标准 API，封装驱动加载、连接池、SQL 执行与事务，是 ORM 框架的底层。
+
 JDBC（Java Database Connectivity）是 Java 标准中用于执行 SQL 语句的 API，定义在 `java.sql` 和 `javax.sql` 包中。它为多种关系型数据库提供统一的访问接口，是所有 Java 数据库操作技术的底层基础。
 
 ---

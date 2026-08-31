@@ -9,6 +9,8 @@ module:
 
 # 实战：统计 API 接口调用耗时
 
+> **一句话定位**：从零实现 Java Agent + ByteBuddy 切面增强，自动统计接口方法耗时，演示字节码增强的实战流程。
+
 本文档演示如何从零构建一个可运行的 Java Agent，实现方法级别的耗时统计。
 
 > 前置知识请参阅 [Java Agent 核心文档](../README.md)

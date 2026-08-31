@@ -9,6 +9,8 @@ module:
 
 # Transformer 架构核心
 
+> **一句话定位**：现代大模型的基石——Self-Attention + Multi-Head + 位置编码三件套，抛弃 RNN 实现并行训练与长距离建模，是 GPT/BERT/Claude/LLaMA 的共同源头。
+
 ← 返回 [基础概念](../README.md)
 
 > Transformer 是 2017 年 Google 论文 *"Attention is All You Need"* 提出的架构，抛弃 RNN，完全基于注意力机制，是 GPT / BERT / Claude / LLaMA 等所有现代大模型的基石。

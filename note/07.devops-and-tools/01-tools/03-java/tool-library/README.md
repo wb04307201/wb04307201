@@ -11,6 +11,8 @@ module:
 
 ---
 
+> **一句话定位**：Hutool/Commons/Guava 三大工具库对比速查——Hutool 中文生态、Commons 稳定兼容、Guava 现代高性能，按场景选型不重复造轮子。
+
 ## Hutool- **定位**：国产轻量级工具库，遵循"减少重复代码"设计哲学，通过静态方法封装JDK底层操作，主打**开发效率与易用性**。
 - **核心特点**：
     - **场景全覆盖**：涵盖日期处理（`DateUtil`）、HTTP客户端（`HttpUtil`）、配置文件（`Setting`）、日志兼容（支持SLF4J/Log4j等）、JDBC工具（ActiveRecord风格）等。

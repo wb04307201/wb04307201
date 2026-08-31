@@ -9,6 +9,8 @@ module:
 
 # Web Components
 
+> **一句话定位**：浏览器原生组件标准——Custom Elements + Shadow DOM + HTML Templates 三件套，跨框架复用，长期可维护。
+
 ---
 
 **Web Components 是一套浏览器原生支持的组件化技术标准，它允许开发者创建可复用、封装良好的自定义 HTML 元素，并直接在浏览器中运行，无需依赖外部框架。**

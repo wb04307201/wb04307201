@@ -9,6 +9,8 @@ module:
 
 # 生产级 Agent 系统：Shopify Sidekick 工程实践
 
+> **一句话定位**：Shopify Sidekick 生产级 Agent 实战——架构演进（Just-in-Time 指令对抗工具爆炸）+ 评估体系（LLM-as-a-Judge 对齐人类）+ GRPO 训练奖励作弊与对策。
+
 **打造生产级智能体系统：来自 Shopify Sidekick 的工程实践与启示**
 
 **原文链接**：[Building production-ready agentic systems: Lessons from Shopify Sidekick](https://shopify.engineering/building-production-ready-agentic-systems)

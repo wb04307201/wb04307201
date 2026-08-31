@@ -9,6 +9,8 @@ module:
 
 # Java NIO 全面学习笔记
 
+> **一句话定位**：NIO 用 Channel+Buffer+Selector 构建非阻塞多路复用 IO 模型，是 Netty 等高并发框架的底层。
+
 ## 一、IO 与 NIO 对比：面向流 vs 面向缓冲区
 
 Java NIO（New IO / Non-blocking IO）自 JDK 1.4 引入，是对传统 `java.io` 包的重大补充。两者的核心差异如下：

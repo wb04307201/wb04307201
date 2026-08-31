@@ -11,6 +11,8 @@ module:
 
 ---
 
+> **一句话定位**：ULID 用 48 位毫秒时间戳加 80 位随机数，兼顾唯一与可排序，26 字符 Base32 编码比 UUID 更紧凑可读。
+
 ## 一、ULID 核心特性
 1. **全局唯一性**  
    ULID（Universally Unique Lexicographically Sortable Identifier）由 **48位时间戳**（毫秒级）和 **80位随机数** 组成，确保同一毫秒内生成的标识符唯一。其理论生成能力为每毫秒 **1.21×10²⁴** 个唯一 ID，远超 UUID v4 的随机性限制。

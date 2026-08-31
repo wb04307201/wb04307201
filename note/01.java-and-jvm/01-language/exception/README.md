@@ -11,6 +11,8 @@ module:
 
 ---
 
+> **一句话定位**：Throwable 派生 Error 与 Exception 两脉；Checked/Unchecked 分工决定编译器要不要强制 catch。
+
 ## Java 异常类层次结构
 
 ```mermaid

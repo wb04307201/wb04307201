@@ -9,6 +9,8 @@ module:
 
 # Cookies vs LocalStorage 用于会话管理：你需要知道的一切
 
+> **一句话定位**：会话管理选 Cookie + HttpOnly——抗 XSS/CSRF，配合 Secure / SameSite；LocalStorage 仅存非敏感客户端状态，禁存鉴权 Token。
+
 ---
 
 **原文链接**：[https://supertokens.com/blog/cookies-vs-localstorage-for-sessions-everything-you-need-to-know](https://supertokens.com/blog/cookies-vs-localstorage-for-sessions-everything-you-need-to-know)

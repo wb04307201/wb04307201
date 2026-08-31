@@ -9,6 +9,8 @@ module:
 
 # LinkedList 源码剖析与最佳实践
 
+> **一句话定位**：LinkedList 是双向链表实现的 List/Deque，频繁增删选它，随机访问选 ArrayList。
+
 ## 一、底层双向链表结构
 
 `LinkedList<E>` 的底层是一个**带头结点的双向链表**（实际上没有虚拟头结点，first 和 last 直接指向真实节点）。

@@ -10,6 +10,9 @@ module:
 # JUC Locks 学习笔记 (AQS / ReentrantLock / ReentrantReadWriteLock / StampedLock / Condition)
 
 ---
+
+> **一句话定位**：JUC 锁族用 AQS 队列 + state 字段实现 ReentrantLock、读写锁、StampedLock 等，比 synchronized 更灵活的并发工具。
+
 ---
 
 ## 目录

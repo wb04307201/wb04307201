@@ -11,6 +11,8 @@ module:
 
 ---
 
+> **一句话定位**：Podman 是 Red Hat 主导的无守护进程容器引擎，兼容 Docker CLI 且原生支持 Rootless，是 Docker 的安全替代方案。
+
 Podman是由Red Hat主导开发的开源容器引擎，专注于提供安全、轻量级的容器管理解决方案。
 
 ## 核心特性

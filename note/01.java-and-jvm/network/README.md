@@ -9,6 +9,8 @@ module:
 
 # Java 网络编程学习笔记
 
+> **一句话定位**：Java 网络编程涵盖 Socket、BIO/NIO/AIO 模型、Reactor 模式与 HttpClient/Netty 高性能通信实战。
+
 ## 一、Socket 编程基础
 
 ### 1.1 什么是 Socket

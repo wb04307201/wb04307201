@@ -9,6 +9,8 @@ module:
 
 # Java Agent
 
+> **一句话定位**：Java Agent 通过 premain/agentmain + Instrumentation API 在类加载前后改写字节码，是 APM/热更新/Mock 的基石。
+
 `Java Agent` 是 JVM 提供的一种字节码增强机制，从 Java 5 开始引入。它允许在不修改原始源代码的前提下，于类加载时或运行时动态修改类的字节码，从而实现性能监控、链路追踪、热更新、AOP 等能力。
 
 所有主流 APM 工具（SkyWalking、Elastic APM、Pinpoint）、Profiler 工具（JProfiler、VisualVM）、Mock 框架（Mockito）、ORM 框架（Hibernate）等，底层都依赖 Java Agent 技术。

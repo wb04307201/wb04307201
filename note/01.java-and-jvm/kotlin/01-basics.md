@@ -9,6 +9,8 @@ module:
 
 # Kotlin 基础
 
+> **一句话定位**：Kotlin 用 val/var、类型推断、空安全替代 Java 模板代码，编写更简洁安全的 JVM 应用。
+
 ## 一、变量声明
 
 Kotlin 区分只读与可变变量，Java 通过 `final` 实现只读。

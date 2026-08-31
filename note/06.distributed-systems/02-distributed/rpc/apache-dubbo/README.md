@@ -9,6 +9,8 @@ module:
 
 # Apache Dubbo
 
+> **一句话定位**：Apache Dubbo 是阿里开源的 Java RPC 框架，内置服务注册、负载均衡、集群容错；3.x 支持 Service Mesh 与 Triple 协议。
+
 Dubbo 是阿里巴巴开源的一款高性能、轻量级的 **Java RPC（Remote Procedure Call，远程过程调用）框架**，旨在解决分布式服务架构中的服务治理问题。它通过提供透明的远程调用能力，让开发者能够像调用本地方法一样使用远程服务，同时支持丰富的服务治理功能（如负载均衡、集群容错、服务注册与发现等）。
 
 ---

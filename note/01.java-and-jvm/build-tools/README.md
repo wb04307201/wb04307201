@@ -9,6 +9,8 @@ module:
 
 # Java 构建工具笔记
 
+> **一句话定位**：Maven 与 Gradle 是 Java 工程化两大支柱，从依赖管理、多模块到生命周期插件体系的全面对比。
+
 ## 一、Maven vs Gradle 对比
 
 | 维度 | Maven | Gradle |

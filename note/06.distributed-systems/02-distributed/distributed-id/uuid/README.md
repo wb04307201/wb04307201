@@ -11,6 +11,8 @@ module:
 
 ---
 
+> **一句话定位**：UUID 是 128 位全局唯一标识符，遵循 RFC 4122；v4 随机无序最常用，Java 内置支持；新版 v6/v7/v8 见 RFC 9562。
+
 ## UUID 简介
 
 UUID (Universally Unique Identifier) 是一种用于标识信息的标准化方法，也称为 GUID (Globally Unique Identifier)。它是一个128位的数字，通常表示为32个十六进制数字，用连字符分为五组，形式为8-4-4-4-12。

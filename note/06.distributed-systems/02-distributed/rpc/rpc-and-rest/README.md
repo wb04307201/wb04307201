@@ -11,6 +11,8 @@ module:
 
 ---
 
+> **一句话定位**：RPC 强调过程调用与内部高性能，REST 强调资源状态与对外可缓存；现代系统常混合使用，gRPC 是两者融合的代表。
+
 RPC（Remote Procedure Call，远程过程调用）和REST（Representational State Transfer，表述性状态转移）是两种常见的分布式系统通信架构风格，它们在设计理念、通信方式、适用场景等方面存在显著差异，但也存在一定联系。
 
 ## 核心概念与设计理念- **RPC**

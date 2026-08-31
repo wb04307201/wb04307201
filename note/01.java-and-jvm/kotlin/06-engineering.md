@@ -9,6 +9,8 @@ module:
 
 # Kotlin 工程实践
 
+> **一句话定位**：Kotlin 工程实践涵盖与 Java 互操作注解、Maven/Gradle 配置、迁移策略与 KMP 跨平台工程化。
+
 ## 一、Java 互操作
 
 Kotlin 与 Java 100% 互操作，但需注意空安全和命名约定。

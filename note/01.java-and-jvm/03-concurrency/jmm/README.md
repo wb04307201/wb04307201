@@ -9,6 +9,8 @@ module:
 
 # JMM (Java Memory Model) 学习笔记
 
+> **一句话定位**：JMM 用 happens-before 规则统一多线程对主内存的读写视图，是 volatile、final 与 synchronized 语义的总闸门。
+
 ## 一、什么是 JMM
 
 Java Memory Model (JMM) 是 Java 虚拟机规范中定义的一组规则，用于**屏蔽各种硬件和操作系统的内存访问差异**，以实现让 Java 程序在各种平台下都能达到一致的并发效果。

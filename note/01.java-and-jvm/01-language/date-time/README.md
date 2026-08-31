@@ -9,6 +9,8 @@ module:
 
 # Java Date-Time API 学习笔记
 
+> **一句话定位**：JSR-310 用不可变、线程安全的 `LocalDateTime` 等替代可变的 `Date/Calendar`，根除日期计算踩坑。
+
 ## 一、Date 和 Calendar 的问题
 
 Java 1.0 引入的 `java.util.Date` 和 Java 1.1 引入的 `java.util.Calendar` 存在大量设计缺陷，是 Java 标准库中被诟病最多的 API 之一。

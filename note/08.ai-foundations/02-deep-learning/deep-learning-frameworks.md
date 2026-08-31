@@ -9,6 +9,8 @@ module:
 
 # 深度学习框架
 
+> **一句话定位**：深度学习框架的四大门派选型——PyTorch 主攻研究、TensorFlow 主攻生产部署、MindSpore/PaddlePaddle 主攻国产化硬件，场景决定选择。
+
 ---
 
 ← 返回 [工程实践](../../README.md)
