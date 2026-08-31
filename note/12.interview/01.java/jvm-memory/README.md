@@ -172,6 +172,74 @@ Klass Pointer 指向对象的类元数据（即 `java.lang.Class` 对象在方�
 
 **对齐填充（Padding）**：HotSpot VM 要求对象大小必须是 8 byte 的整数倍。如果对象头和实例数据的总大小不是 8 的倍数，JVM 会自动添加填充字节补齐。
 
+### 堆的 3 个关键扩展概念
+
+#### 3.7 TLAB（Thread Local Allocation Buffer）
+
+Eden 区里**每个线程私有一小块**分配缓冲区，目的是避免多线程同时在 Eden 分配对象时的指针竞争（CAS 同步开销）。
+
+```text
+Eden 区（默认几十 MB）
+├── TLAB-Thread-A（~512KB 私有）  ← 线程 A 直接在这里分配
+├── TLAB-Thread-B（~512KB 私有）  ← 线程 B 直接在这里分配
+├── ...
+└── Eden-共享区                      ← TLAB 满了之后 / 大对象，走共享区（需 CAS）
+```
+
+**关键参数**：
+- `-XX:+UseTLAB`：默认开启
+- `-XX:TLABSize=N`：单个 TLAB 大小（JVM 自动调整）
+- `-XX:TLABRefillWasteFraction=N`：TLAB 剩余空间不足该比例时，线程去共享区申请新 TLAB（默认 64，即 1/64）
+
+**TLAB 之外的对象**：
+- 大对象（> `-XX:PretenureSizeThreshold`，Serial/ParNew 生效）直接进老年代
+- TLAB 满 → 走共享区（CAS 分配）
+
+#### 3.8 字符串常量池
+
+**位置演进**：JDK 7 之前在**方法区**（PermGen），JDK 7 之后移到**堆**中（避免 PermGen OOM，因为 String 是高频对象）。
+
+```java
+String s1 = "a";              // 字面量：编译期入池，s1 指向常量池对象
+String s2 = "a";              // 字面量：s2 也指向同一个常量池对象
+String s3 = new String("a");  // new：堆上新建对象，s3 指向堆对象（不入池）
+String s4 = s3.intern();      // 运行时入池（JDK 7+ 检查堆中是否存在等价字符串）
+
+s1 == s2   // true（同一个常量池对象）
+s1 == s3   // false（一个在常量池，一个在堆）
+s1 == s4   // true（s3.intern() 返回常量池对象）
+```
+
+**面试高频追问**：`String s = new String("a")` 创建了几个对象？
+**答案：2 个** —— 一个在字符串常量池（"a"），一个在堆（new 出来的新对象）。
+
+**演进点**：
+- JDK 6：`intern()` 把字符串**复制**到 PermGen
+- JDK 7+：`intern()` 只在常量池**记录引用**（不再复制），节省 PermGen 空间
+
+#### 3.9 对象访问方式
+
+JVM 规范定义两种对象访问方式，**HotSpot 默认直接指针**：
+
+```text
+句柄池方式：
+栈 reference → 句柄池 → [实例数据指针 → 堆对象]
+                         [类型数据指针 → 方法区类元数据]
+
+直接指针方式（HotSpot 默认）：
+栈 reference → 堆对象（对象头里 Klass Pointer → 方法区类元数据）
+```
+
+**对比**：
+
+| 维度 | 句柄池 | 直接指针（HotSpot） |
+|------|--------|---------------------|
+| 访问速度 | 多一次指针定位 | 更快（节省一次定位） |
+| GC 移动对象 | 只需改句柄指针，`reference` 不动 | `reference` 需同步更新 |
+| 内存占用 | 句柄池占用额外空间 | 节省句柄池 |
+
+**为什么 HotSpot 选直接指针**：绝大多数应用 GC 不频繁，直接指针节省一次指针定位带来的性能收益大于 GC 移动时同步 `reference` 的开销。
+
 ---
 
 ## 四、常见陷阱

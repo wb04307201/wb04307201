@@ -134,6 +134,64 @@ Linux 的内存分配策略：**Overcommit**
 
 **结果**：JVM 启动时成功分配了虚拟内存，但实际使用时物理内存不足，导致系统开始频繁 Swap 或直接卡死，而不是立即报 `OutOfMemoryError`。
 
+### 1.4 容器环境的内存隔离：cgroup v1 vs v2
+
+> **这是云原生时代的内存关键**。Docker / K8s 的内存限制由 cgroup 控制，JVM 的 overcommit 行为在容器里会**有额外麻烦**。
+
+**cgroup v1（Docker 默认，至 K8s 1.25 之前）**：
+
+```text
+/sys/fs/cgroup/memory/memory.limit_in_bytes   ← 内存硬上限
+/sys/fs/cgroup/memory/memory.usage_in_bytes   ← 当前使用量
+/sys/fs/cgroup/memory/memory.failcnt          ← OOM 次数
+```
+
+- JVM 8u191~JDK 21：自动读 `memory.limit_in_bytes`（`-XX:+UseContainerSupport`）
+- `MaxRAMPercentage` 默认 25%，4G 容器下 Xmx=1G
+
+**cgroup v2（K8s 1.25+ 逐步启用）**：
+
+```text
+/sys/fs/cgroup/memory.max                     ← 内存硬上限（统一接口）
+/sys/fs/cgroup/memory.current                 ← 当前使用量
+/sys/fs/cgroup/memory.events                  ← OOM 事件（含 low/high/max）
+/sys/fs/cgroup/memory.high                    ← 软上限（触发回收）
+/sys/fs/cgroup/memory.swap.max                ← swap 上限
+```
+
+- **JDK 21+ 默认支持** cgroup v2 完整接口（含 `memory.high` 软上限）
+- **JDK 16+** 引入 cgroup v2 感知
+- **JDK 8u372+** 才支持 cgroup v2（之前只能看 v1 路径）
+
+**关键差异：容器内 Swap 行为**：
+
+| cgroup 版本 | Swap 默认 | JVM 看到的 Swap | 影响 |
+|------------|----------|-----------------|------|
+| v1 | 关闭（K8s 默认） | 无 swap 可用 | JVM 内存不足 → 立即 OOM Kill |
+| v2 | 关闭（K8s 默认） | 显式 `swap.max=0` | 同 v1 |
+
+**生产建议**：
+
+```bash
+# 1. 确认 cgroup 版本
+stat -fc %T /sys/fs/cgroup/   # 0xcgroup2 → v2；0x1 → v1
+
+# 2. 显式设 MaxRAMPercentage，避免默认 25% 太小
+-XX:+UseContainerSupport
+-XX:MaxRAMPercentage=70       # 留 30% 给堆外 + native
+-XX:InitialRAMPercentage=70  # 避免启动扩容
+
+# 3. 配套 ExitOnOutOfMemoryError，让 K8s 重启 Pod
+-XX:+ExitOnOutOfMemoryError
+
+# 4. 监控容器真实内存（不要只看 JVM 堆）
+kubectl top pod <name> --containers
+# 或
+cat /sys/fs/cgroup/memory.current  # 容器视角的真实使用量
+```
+
+**反面教材**：某团队在 K8s 上跑了 2 个 JVM 实例（每个 `-Xmx4g`），容器 limit 也是 4g。**`-Xmx4g` ≠ JVM 实际只用 4g**，加上 Metaspace + 线程栈 + 直接内存 + Code Cache ≈ 5g+，**两个实例直接 OOM Killed**。解决方案：要么调小 `-Xmx`，要么用 `MaxRAMPercentage=40` 让 JVM 自己算。
+
 ---
 
 ## 二、实战案例：-Xmx 超过系统内存导致启动超时

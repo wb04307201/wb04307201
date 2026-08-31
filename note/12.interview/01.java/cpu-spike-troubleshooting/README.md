@@ -160,6 +160,55 @@ jinfo -flags 12345
 # 重启后 CPU 恢复正常：15%~25%
 ```
 
+### 2.2.5 火焰图定位热点（async-profiler）
+
+当 `jstack` 定位到的线程是**业务线程**时（不是 GC 线程），还需要进一步看**具体在跑哪个方法**。`jstack` 的栈快照只能反映一个瞬时状态，**火焰图**通过高频采样画出"方法调用时间占比"，是定位 CPU 热点的终极武器。
+
+**async-profiler 安装与使用**：
+
+```bash
+# 下载（最新 release 在 GitHub releases）
+wget https://github.com/async-profiler/async-profiler/releases/download/v3.0/async-profiler-3.0-linux-x64.tar.gz
+tar -xzf async-profiler-3.0-linux-x64.tar.gz
+cd async-profiler-3.0-linux-x64
+
+# 启动采样（60 秒，CPU 模式，生成火焰图 HTML）
+./profiler.sh -e cpu -d 60 -f /tmp/flame.html <pid>
+# 或 JVM 模式（看线程在做什么，含 native + JVM 内部）
+./profiler.sh -e itimer -d 60 -f /tmp/flame.html <pid>
+```
+
+**火焰图怎么看**：
+
+```text
+       ┌─────────────────────────────────────────────┐
+       │              com.example.Service            │  ← 顶层是 JVM 包
+       │   ┌──────────────────────────────────┐     │
+       │   │  com.example.OrderService.calc() │     │  ← 热点方法：calc()
+       │   │   ┌───────────────┐             │     │  ← calc 里的 hot path
+       │   │   │  BigDecimal.* │  ← 60%      │     │     BigDecimal 运算占 60%
+       │   │   └───────────────┘             │     │
+       │   └──────────────────────────────────┘     │
+       └─────────────────────────────────────────────┘
+       宽度 = 该方法及其子方法在采样中出现的时间占比（越宽越热点）
+       颜色 = 同一栈的不同函数（无业务含义）
+```
+
+**实战对照**：
+
+| 工具 | 适用场景 | 优点 | 缺点 |
+|------|---------|------|------|
+| `jstack` | 找线程 + 看瞬时栈 | 内置，快 | 只能看 1 瞬时，高频问题易漏 |
+| `top -Hp` | 看 CPU 占用最高的线程 | 内置，最快 | 不知道在跑什么 |
+| **火焰图** | 找 CPU 热点方法 | 直观，全局视图 | 需额外工具，几分钟采样 |
+| Arthas `trace` | 单方法调用链追踪 | 实时，无需重启 | 路径深时输出冗长 |
+
+**生产环境火焰图采样原则**：
+- **持续 30~60 秒**（太短采样不足，太长干扰业务）
+- **CPU 高峰期采样**（低谷期看不到热点）
+- **attach 模式优于启动注入**（`./profiler.sh <pid>` 即可，进程无侵入）
+- **生成的 HTML 直接在浏览器打开**（无需后端，绿色软件）
+
 ### 2.3 根因分析
 
 ```text
