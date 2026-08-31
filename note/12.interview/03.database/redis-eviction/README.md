@@ -2,10 +2,10 @@
 question:
   id: 03.database-redis-eviction
   topic: 03.database
-  difficulty: ⭐
-  frequency: 中频
+  difficulty: ⭐⭐⭐⭐
+  frequency: 高频
   scenario_type: 生产 Bug
-  tags: [03.database, Redis, redis]
+  tags: [03.database, Redis, 内存淘汰, LRU, LFU, Morris, OOM-Killer]
 -->
 
 # Redis 内存淘汰策略 8 种深度对比

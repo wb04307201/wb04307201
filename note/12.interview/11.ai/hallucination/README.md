@@ -2,10 +2,10 @@
 question:
   id: 11.ai-hallucination
   topic: 11.ai
-  difficulty: ⭐⭐⭐
-  frequency: 中频
+  difficulty: ⭐⭐⭐⭐
+  frequency: 高频
   scenario_type: 反直觉代码
-  tags: [11.ai, LLM, hallucination]
+  tags: [11.ai, LLM, hallucination, NLI, FactCC, softmax]
 -->
 
 # LLM 幻觉问题深度剖析
