@@ -517,7 +517,12 @@ jad com.example.Service    # 反编译（确认线上代码版本）
 
 ## 反向链
 
-- [metaspace-tuning-troubleshooting](../../12.interview/01.java/metaspace-tuning-troubleshooting/README.md)
+> 以下反向链为同栏目（12.interview/01.java）兄弟题 + 主模块内互链。难度按 12.interview frontmatter 标记。
+
+- [class-loading](../../12.interview/01.java/class-loading/README.md) — ⭐⭐⭐⭐ 类加载机制与双亲委派（含 3 种打破机制）
+- [jvm-memory-pitfall](../../12.interview/01.java/jvm-memory-pitfall/README.md) — ⭐⭐⭐⭐ JVM 内存配置踩坑（-Xmx 超过系统可用内存）
+- [metaspace-tuning-troubleshooting](../../12.interview/01.java/metaspace-tuning-troubleshooting/README.md) — ⭐⭐⭐⭐ Metaspace 调优踩坑（容器默认 Xmx 压缩 + Metaspace 双参数）
+- [tuning](tuning.md) — 同目录实战配置手册（5 场景完整参数模板）
 
 ← [返回 JVM 主篇](README.md)
 

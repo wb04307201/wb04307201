@@ -404,6 +404,8 @@ Application ClassLoader（应用类加载器）
 - **安全**：你写一个 `java.lang.String` 也加载不了，因为 Bootstrap 会先加载 JDK 自带的
 - **避免重复**：同一个类只会被加载一次
 
+> **深度版（含 3 种打破双亲委派的合法场景：SPI / Tomcat WebAppClassLoader / OSGi 网状模型 + 自定义类加载器源码）**见 [12.interview/01.java/class-loading](../../12.interview/01.java/class-loading/README.md)。
+
 ---
 
 ## 六、执行引擎
