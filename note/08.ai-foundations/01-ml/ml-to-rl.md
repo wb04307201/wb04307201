@@ -152,4 +152,14 @@ module:
 
 ---
 
+## 📚 参考来源
+
+1. **DQN 论文（Atari 深度强化学习）**：Volodymyr Mnih, Koray Kavukcuoglu, David Silver et al. *Playing Atari with Deep Reinforcement Learning*. arXiv 2013. https://arxiv.org/abs/1312.5602
+2. **AlphaGo 论文（围棋深度网络与树搜索）**：David Silver, Aja Huang, Chris J. Maddison et al. *Mastering the Game of Go with Deep Neural Networks and Tree Search*. Nature 2016. https://arxiv.org/abs/1603.06955
+3. **PPO 论文（近端策略优化）**：John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radon, Oleg Klimov. *Proximal Policy Optimization Algorithms*. arXiv 2017. https://arxiv.org/abs/1707.06347
+4. **RLHF 经典（人类偏好强化学习）**：Paul F. Christiano, Jan Leike, Tom B. Brown, Miljan Martic, Shane Legg, Dario Amodei. *Deep Reinforcement Learning from Human Preferences*. NeurIPS 2017. https://arxiv.org/abs/1706.03741
+5. **SAC 论文（柔性 Actor-Critic）**：Tuomas Haarnoja, Aurick Zhou, Pieter Abbeel, Sergey Levine. *Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor*. ICML 2018. https://arxiv.org/abs/1801.01290
+
+---
+
 ← [返回 AI 在汽车行业](../README.md)

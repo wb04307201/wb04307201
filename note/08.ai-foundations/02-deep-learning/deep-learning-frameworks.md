@@ -74,6 +74,14 @@ module:
 
 > **提示**：框架选择应结合团队技术栈、硬件环境、部署需求综合考量。对于新项目，PyTorch适合快速原型开发；对于国产化要求高的场景，MindSpore和PaddlePaddle是优选；TensorFlow在已有生产系统中仍具价值。
 
+## 📚 参考来源
+
+1. **深度残差网络（ResNet）**：Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun et al. *Deep Residual Learning for Image Recognition*. CVPR 2016. https://arxiv.org/abs/1512.03385
+2. **生成对抗网络（GAN）**：Ian Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu et al. *Generative Adversarial Nets*. NeurIPS 2014. https://arxiv.org/abs/1406.2661
+3. **批量归一化（BatchNorm）**：Sergey Ioffe, Christian Szegedy et al. *Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift*. ICML 2015. https://arxiv.org/abs/1502.03167
+4. **DeepSpeed ZeRO-Infinity**：Samyam Rajbhandari, Olatunji Ruwase, Jeff Rasley, Sam Smith et al. *ZeRO-Infinity: Breaking the GPU Memory Wall for Extreme Scale Deep Learning*. SC 2021. https://arxiv.org/abs/2104.07857
+5. **Adam 优化器**：Diederik P. Kingma, Jimmy Ba et al. *Adam: A Method for Stochastic Optimization*. ICLR 2015. https://arxiv.org/abs/1412.6980
+
 ---
 
 ← [返回 AI 框架选型](../README.md)

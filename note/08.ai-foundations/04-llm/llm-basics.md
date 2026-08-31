@@ -96,4 +96,14 @@ module:
 
 - single-epoch-and-config-evidence
 
+## 📚 参考来源
+
+1. **Transformer 原始论文**：Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit et al. *Attention Is All You Need*. NeurIPS 2017. https://arxiv.org/abs/1706.03762
+2. **GPT-3（in-context learning 奠基）**：Tom B. Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah et al. *Language Models are Few-Shot Learners*. NeurIPS 2020. https://arxiv.org/abs/2005.14165
+3. **Scaling Laws**：Jared Kaplan, Sam McCandlish, Tom Henighan, Tom B. Brown et al. *Scaling Laws for Neural Language Models*. 2020. https://arxiv.org/abs/2001.08361
+4. **InstructGPT / RLHF**：Long Ouyang, Jeff Wu, Xu Jiang, Diogo Almeida et al. *Training Language Models to Follow Instructions with Human Feedback*. NeurIPS 2022. https://arxiv.org/abs/2203.02155
+5. **DPO（替代 RLHF）**：Rafael Rafailov, Archit Sharma, Eric Mitchell, Stefano Ermon et al. *Direct Preference Optimization: Your Language Model is Secretly a Reward Model*. NeurIPS 2023. https://arxiv.org/abs/2305.18290
+6. **LLaMA（开源 LLM 标杆）**：Hugo Touvron, Thibaut Lavril, Gautier Izacard, Xavier Martinet et al. *LLaMA: Open and Efficient Foundation Language Models*. 2023. https://arxiv.org/abs/2302.13971
+7. **Chain-of-Thought**：Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma et al. *Chain-of-Thought Prompting Elicits Reasoning in Large Language Models*. NeurIPS 2022. https://arxiv.org/abs/2201.11903
+
 ← [返回: 基础概念](../README.md)

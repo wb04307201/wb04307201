@@ -67,4 +67,15 @@ module:
 | ❌ Linear Attention 能取代 Softmax | ✅ 性能与表达力难以兼得，2024 仍未主流 |
 | ❌ Flash Attention 改变了数学 | ✅ 数学等价，只优化 IO |
 
+---
+
+## 📚 参考来源
+
+1. **Transformer 原始论文（Attention Is All You Need）**：Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, Illia Polosukhin et al. *Attention Is All You Need*. NeurIPS 2017. https://arxiv.org/abs/1706.03762
+2. **FlashAttention**：Tri Dao, Daniel Y. Fu, Stefano Ermon, Atri Rudra, Christopher Ré et al. *FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness*. NeurIPS 2022. https://arxiv.org/abs/2205.14135
+3. **MQA（Multi-Query Attention）**：Noam Shazeer et al. *Fast Transformer Decoding: One Write-Head is All You Need*. arXiv 2019. https://arxiv.org/abs/1911.02150
+4. **GQA（Grouped-Query Attention）**：Joshua Ainslie, James Lee-Thorp, Michiel de Jong, Yinfei Yang, Cuthan Saharia, David Grangier et al. *GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints*. EMNLP 2023. https://arxiv.org/abs/2305.13245
+5. **Longformer（稀疏注意力）**：Iz Beltagy, Matthew E. Peters, Arman Cohan et al. *Longformer: The Long-Document Transformer*. arXiv 2020. https://arxiv.org/abs/2004.05150
+6. **Linear Attention**：Angelos Katharopoulos, Apoorv Vyas, Nikolaos Pappas, François Fleuret et al. *Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention*. ICML 2020. https://arxiv.org/abs/2006.16236
+
 ← [返回 L1 基础概念](../README.md)

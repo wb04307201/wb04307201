@@ -211,4 +211,14 @@ graph LR
 
 
 - single-epoch-and-config-evidence
+
+## 📚 参考来源
+
+1. **Transformer 原始论文（奠基）**：Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, Illia Polosukhin. *Attention Is All You Need*. NeurIPS 2017. https://arxiv.org/abs/1706.03762
+2. **GPT-1（首次证明 Transformer 生成式预训练）**：Alec Radford, Karthik Narasimhan, Tim Salimans, Ilya Sutskever. *Improving Language Understanding by Generative Pre-Training*. OpenAI Blog 2018. [OpenAI Blog 2018]
+3. **BERT（双向 Transformer 编码器）**：Jacob Devlin, Ming-Wei Chang, Kenton Lee, Kristina Toutanova. *BERT: Pre-Training of Deep Bidirectional Transformers for Language Understanding*. NAACL 2019. https://arxiv.org/abs/1810.04805
+4. **GPT-2（零样本多任务生成）**：Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, Ilya Sutskever. *Language Models are Unsupervised Multitask Learners*. OpenAI Tech Report 2019. [OpenAI Tech Report]
+5. **RoPE（旋转位置编码，LLaMA 等使用）**：Jianlin Su, Yu Lu, Shengfeng Pan, Bo Wen, Yunfeng Liu. *RoFormer: Enhanced Transformer with Rotary Position Embedding*. Neurocomputing 2024 (arXiv 2021). https://arxiv.org/abs/2104.09864
+6. **RMSNorm（替代 LayerNorm，LLaMA 使用）**：Biao Zhang, Rico Sennrich. *Root Mean Square Layer Normalization*. NeurIPS 2019. https://arxiv.org/abs/1910.07467
+
 ← [返回: L1 基础概念](../README.md)
