@@ -10,6 +10,8 @@ question:
 
 # MySQL COUNT(*) vs COUNT(1) vs COUNT(字段) 深度解析
 
+> **一句话定位**：COUNT(*) 与 COUNT(1) 被优化器视为等价，COUNT(字段) 排除 NULL——InnoDB 因 MVCC 只能 O(n) 扫描。
+
 ## 引子：性能差 10 倍，你选哪个？
 
 ```sql

@@ -10,6 +10,8 @@ question:
 
 # Agent 跑偏/绕路/死循环 — 工程解法
 
+> **一句话定位**：4 层工程防线防 Agent 跑偏 / 死循环：L1 Prompt 约束 / L2 Verifier / L3 状态回滚 / L4 成本熔断。
+
 ← 返回 [11.ai 面试题](../README.md)
 
 ## 引子：Agent 凌晨调了 50 次 search，账单停在 $80

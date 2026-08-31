@@ -10,6 +10,8 @@ question:
 
 # MySQL JOIN 算法深度剖析
 
+> **一句话定位**：JOIN 有 NLJ/BNL/Hash Join 三种算法，被驱动表有索引走 NLJ，O(N·logM)；无索引走 BNL/Hash。
+
 ## 引子：同一个 JOIN，为什么快了 100 倍？
 
 ```sql

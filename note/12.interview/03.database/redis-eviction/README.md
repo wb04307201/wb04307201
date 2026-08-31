@@ -10,6 +10,8 @@ question:
 
 # Redis 内存淘汰策略 8 种深度对比
 
+> **一句话定位**：8 种策略分 allkeys/volatile/noeviction 三类，LFU 抗扫描攻击和突发流量优于 LRU，生产首选 allkeys-lfu。
+
 ## 引子：Redis 内存满了怎么办？
 
 ```bash

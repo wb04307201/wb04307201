@@ -10,6 +10,8 @@ question:
 
 # 循环依赖三级缓存解决
 
+> **一句话定位**：Spring 三级缓存解循环依赖：singletonFactories 存 ObjectFactory，关键在 AOP 代理的提前暴露。
+
 ## 引子：先有鸡还是先有蛋？
 
 ```java

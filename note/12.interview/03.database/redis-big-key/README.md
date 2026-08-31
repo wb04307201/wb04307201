@@ -10,6 +10,8 @@ question:
 
 # Redis 大 Key 问题全攻略
 
+> **一句话定位**：大 Key 因 Redis 单线程模型会阻塞主线程，需按 ID/时间拆分 + UNLINK 异步删除 + lazyfree 配置。
+
 ## 引子：Redis 为什么突然卡了？
 
 ```bash

@@ -10,6 +10,8 @@ question:
 
 # 深拷贝实现深度剖析
 
+> **一句话定位**：深拷贝 3 大坑：JSON.stringify 丢函数/Symbol/Date 变字符串、循环引用炸、Map/Set 特殊 —— 用递归 + Map 防环。
+
 ## 引子：一个让人困惑的 Bug
 
 ```javascript

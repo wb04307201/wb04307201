@@ -10,6 +10,8 @@ question:
 
 # MySQL事务隔离级别深度解析
 
+> **一句话定位**：4 大隔离级别（RU/RC/RR/Serializable）分别解决脏读/不可重复读/幻读，InnoDB 默认 RR 靠 MVCC+Gap Lock。
+
 ## 引子：三个经典的并发问题
 
 ```sql

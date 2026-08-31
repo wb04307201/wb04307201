@@ -10,6 +10,8 @@ question:
 
 # JVM 内存配置踩坑：-Xmx 超过系统可用内存
 
+> **一句话定位**：JVM 总内存 ≈ 堆 × 1.3~1.5 —— 含 Metaspace/线程栈/直接内存，容器内必须显式设 MaxRAMPercentage。
+
 ## 引子：一个"启动就卡死"的惨案
 
 ```bash

@@ -10,6 +10,8 @@ question:
 
 # @Transactional 失效的 8 种场景
 
+> **一句话定位**：@Transactional 失效 8 场景：内部调用 / 非 public / 异常被吃 / rollbackFor / MyISAM / 非 Spring Bean / 多线程 / 传播错。
+
 ## 引子：一个线上 Bug
 
 ```java

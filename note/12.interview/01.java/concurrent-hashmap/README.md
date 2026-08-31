@@ -10,6 +10,8 @@ question:
 
 # ConcurrentHashMap 原理（JDK 7 vs 8 深度对比）
 
+> **一句话定位**：高并发 Map 的工业级答案 —— JDK 7 分段锁、JDK 8 桶级 CAS+synchronized，锁粒度持续细化到极致。
+
 ## 引子：为什么要"另起炉灶"？
 
 ```java

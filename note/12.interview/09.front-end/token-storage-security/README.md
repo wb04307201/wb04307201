@@ -10,6 +10,8 @@ question:
 
 # 用户登录 Token 存储在哪里？localStorage 的安全漏洞
 
+> **一句话定位**：Token 存储无完美方案：localStorage 易 XSS，HttpOnly 防 XSS 但有 CSRF——双 Token 是最佳平衡。
+
 ## 引子：一个常见的面试题
 
 面试官："用户登录后的 Token 存储在哪里？"

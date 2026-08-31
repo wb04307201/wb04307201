@@ -10,6 +10,8 @@ question:
 
 # 前端存储方式
 
+> **一句话定位**：Cookie / localStorage / sessionStorage / IndexedDB 四种存储，按容量、生命周期、作用域场景化选型。
+
 ---
 
 ## 引子：一行代码让页面卡死 2 秒

@@ -10,6 +10,8 @@ question:
 
 # 线程池 7 大参数深度剖析
 
+> **一句话定位**：7 大参数 + 三步 execute —— 必须手动建 ThreadPoolExecutor，阿里禁用 Executors 防 OOM。
+
 ## 引子：一个银行网点的故事
 
 想象一个银行网点：

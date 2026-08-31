@@ -10,6 +10,8 @@ question:
 
 # MVCC 实现原理深度剖析
 
+> **一句话定位**：MVCC = 隐藏列 + Undo Log 版本链 + Read View，让读写互不阻塞，RC/RR 区别仅在 Read View 创建时机。
+
 ## 引子：读写互不阻塞的秘密
 
 ```sql

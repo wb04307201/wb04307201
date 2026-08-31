@@ -12,6 +12,8 @@ question:
 
 ---
 
+> **一句话定位**：SQL 调优是"定位→分析→优化→验证"闭环，靠 EXPLAIN（type/key/rows/Extra）驱动索引重写与架构改造。
+
 ## 引子：一条 SQL 从 200ms 飙到 5s，优化器在搞什么鬼？
 
 ```text

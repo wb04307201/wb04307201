@@ -10,6 +10,8 @@ question:
 
 # 从输入 URL 到页面展示全过程
 
+> **一句话定位**：URL 到页面 10 步：DNS 解析 → TCP → TLS → HTTP → HTML 解析 → DOM/CSSOM → Render → Layout → Paint → Composite。
+
 ## 引子：一道题考遍所有知识
 
 ```text

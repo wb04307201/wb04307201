@@ -10,6 +10,8 @@ question:
 
 # Spring Boot 自动配置原理深度剖析
 
+> **一句话定位**：Spring Boot 自动配置 = @EnableAutoConfiguration + spring.factories/imports + @Conditional 三件套的魔法。
+
 ## 引子：为什么引入一个依赖就能用？
 
 ```xml

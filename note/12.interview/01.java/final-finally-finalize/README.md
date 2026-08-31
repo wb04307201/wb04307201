@@ -10,6 +10,8 @@ question:
 
 # final / finally / finalize 深度剖析
 
+> **一句话定位**：三胞胎关键字名似而神异 —— final 锁不变、finally 兜底清理、finalize 已废弃，混用必栽。
+
 ## 引子：三胞胎兄弟，你能分清吗？
 
 Java 里有三个名字长得像三胞胎的关键字：

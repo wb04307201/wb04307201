@@ -10,6 +10,8 @@ question:
 
 # String / StringBuilder / StringBuffer 深度对比
 
+> **一句话定位**：String 不可变 + Builder/Buffer 可变 —— 选型取决于线程安全要求，预分配容量避免 ×2+2 扩容。
+
 ## 引子：一个经典的性能陷阱
 
 ```java

@@ -10,6 +10,8 @@ question:
 
 # Spring 事件机制深度剖析
 
+> **一句话定位**：Spring 事件 = 观察者模式工程化：Event + Listener + Publisher + Multicaster 四件套解耦核心与非核心。
+
 ## 引子：订单创建后，要通知 5 个模块
 
 ```java

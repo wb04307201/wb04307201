@@ -10,6 +10,8 @@ question:
 
 # AQS 框架原理深度剖析
 
+> **一句话定位**：JUC 锁的底层骨架 —— state + CLH 队列 + 模板方法三件套，统一支撑 ReentrantLock、Semaphore、CountDownLatch。
+
 ## 引子：ReentrantLock、CountDownLatch、Semaphore 的共同秘密
 
 ```java

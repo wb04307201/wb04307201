@@ -10,6 +10,8 @@ question:
 
 # == / equals / hashCode 深度剖析
 
+> **一句话定位**：== 比地址、equals 比内容、hashCode 定位桶 —— 三者契约一旦违反，HashMap 即刻原地丢失数据。
+
 ## 引子：一个让人抓狂的 Bug
 
 ```java

@@ -10,6 +10,8 @@ question:
 
 # @Bean vs @Component 深度对比
 
+> **一句话定位**：@Component 自动扫描（自己写的类）vs @Bean 手动注册（第三方库）—— 选错引入一堆坑。
+
 ## 引子：两种方式都能注册 Bean，用哪个？
 
 ```java

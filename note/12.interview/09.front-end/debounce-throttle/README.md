@@ -10,6 +10,8 @@ question:
 
 # 防抖与节流手写实现
 
+> **一句话定位**：防抖（最后一次）vs 节流（固定频率）：setTimeout + clearTimeout + 闭包三件套，搜索用防抖滚动用节流。
+
 ## 引子：搜索框的性能问题
 
 ```javascript

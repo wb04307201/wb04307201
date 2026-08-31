@@ -10,6 +10,8 @@ question:
 
 # JDK 动态代理 vs CGLIB 深度对比
 
+> **一句话定位**：JDK 动态代理（反射、需接口）vs CGLIB（字节码、无需接口）—— Spring Boot 2+ 默认 CGLIB。
+
 ## 引子：Spring 给你生成的代理类，你见过吗？
 
 ```java

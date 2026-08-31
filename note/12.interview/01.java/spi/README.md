@@ -10,6 +10,8 @@ question:
 
 # Java SPI 机制深度剖析
 
+> **一句话定位**：框架定义接口 + META-INF/services 注册 —— 通过 TCCL 打破双亲委派，JDBC/SLF4J/Dubbo 都是这一套路。
+
 ## 引子：JDBC 是怎么找到数据库驱动的？
 
 ```java

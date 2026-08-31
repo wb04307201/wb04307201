@@ -10,6 +10,8 @@ question:
 
 # KV Cache 为什么降低推理复杂度？MQA / GQA / MLA 分别解决什么问题？
 
+> **一句话定位**：KV Cache 把推理复杂度从 O(n³) 降到 O(n²)，MQA / GQA / MLA 各从不同角度省显存。
+
 ← 返回 [11.ai 面试题](../README.md)
 
 ## 引子：128k 上下文时，KV Cache 比模型权重还大

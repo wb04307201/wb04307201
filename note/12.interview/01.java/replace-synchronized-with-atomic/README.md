@@ -10,6 +10,8 @@ question:
 
 # 并发编程优化：Atomic类替代synchronized深度解析
 
+> **一句话定位**：悲观锁 vs 乐观锁的本质选择 —— 低竞争 Atomic 更快、高竞争 LongAdder 分散竞争，synchronized 主守复合操作。
+
 ## 引子：同一个计数器，性能差 10 倍
 
 ```java

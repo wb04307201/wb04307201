@@ -10,6 +10,8 @@ question:
 
 # Virtual DOM 与 Diff 算法
 
+> **一句话定位**：Virtual DOM 用 JS 对象描述 DOM，3 策略让 Diff 算法以 O(n) 找出最小变更。
+
 ## 引子：为什么操作 DOM 这么慢？
 
 ```javascript

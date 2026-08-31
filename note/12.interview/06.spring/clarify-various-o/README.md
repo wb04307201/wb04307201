@@ -10,6 +10,8 @@ question:
 
 # POJO/VO/BO/DTO/DO 对象类型辨析
 
+> **一句话定位**：PO / VO / BO / DTO / DO / DAO 6 类对象 —— 按职责分层、对象不出层是工程化核心。
+
 ## 引子：一个 User 到底有几个"分身"？
 
 ```java

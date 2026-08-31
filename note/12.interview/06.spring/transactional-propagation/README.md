@@ -10,6 +10,8 @@ question:
 
 # @Transactional 传播行为 7 种详解
 
+> **一句话定位**：7 种传播行为：REQUIRED 默认、REQUIRES_NEW 独立、NESTED 嵌套 —— 嵌套事务归属的精细控制。
+
 ## 引子：嵌套事务怎么办？
 
 ```java

@@ -10,6 +10,8 @@ question:
 
 # MySQL 什么情况下会锁表？
 
+> **一句话定位**：锁表 4 大场景：无索引全表扫描、显式 LOCK TABLES、DDL 持 MDL、RR 下间隙锁范围过大。
+
 ## 引子：一个 UPDATE 拖垮整个系统
 
 ```sql

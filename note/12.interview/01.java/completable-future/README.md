@@ -10,6 +10,8 @@ question:
 
 # CompletableFuture 异步编排深度剖析
 
+> **一句话定位**：Java 异步编程的事实标准 —— then/compose/combine 串联 DAG，exceptionally/handle 收口异常，彻底告别回调地狱。
+
 ## 引子：告别回调地狱
 
 ```java

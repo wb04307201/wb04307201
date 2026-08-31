@@ -10,6 +10,8 @@ question:
 
 # 字符串拼接优化：StringBuilder 重用深度解析
 
+> **一句话定位**：ThreadLocal 复用 StringBuilder + setLength(0) 清空 —— 高并发场景下省 90% 对象分配。
+
 ## 引子：你真的会用 StringBuilder 吗？
 
 ```java

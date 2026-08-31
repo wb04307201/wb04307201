@@ -10,6 +10,8 @@ question:
 
 # 分布式锁
 
+> **一句话定位**：分布式锁 6 大要求 + Redis（Redisson 看门狗）/ ZooKeeper / RedLock 三套实现横评 —— 看清所有坑。
+
 ## 引子：库存超卖了！
 
 ```java

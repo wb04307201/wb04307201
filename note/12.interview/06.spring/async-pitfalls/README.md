@@ -10,6 +10,8 @@ question:
 
 # @Async 失效的 4 种场景与解决方案
 
+> **一句话定位**：@Async 失效 4 场景：同类内部调用 / 返回 void / 缺 @EnableAsync / 默认线程池 —— 都是 AOP 失效。
+
 ## 引子：加了 @Async，为什么还是同步执行？
 
 ```java

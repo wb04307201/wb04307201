@@ -10,6 +10,8 @@ question:
 
 # AOP 实现原理：JDK 动态代理 vs CGLIB
 
+> **一句话定位**：AOP 两种底层代理：JDK 动态代理（接口反射）vs CGLIB（字节码子类）—— Spring Boot 2+ 默认后者。
+
 ## 引子：日志、事务、权限——横切关注点怎么解耦？
 
 ```java

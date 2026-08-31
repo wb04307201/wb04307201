@@ -10,6 +10,8 @@ question:
 
 # 有了 Kafka 为什么还要 RocketMQ？
 
+> **一句话定位**：Kafka 拼吞吐 vs RocketMQ 拼可靠：事务消息、延时消息、同步刷盘是后者不可替代的护城河。
+
 ## 引子：两个消息队列，该怎么选？
 
 ```text

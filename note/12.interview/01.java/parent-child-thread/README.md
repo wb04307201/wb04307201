@@ -10,6 +10,8 @@ question:
 
 # Java 父子线程数据传递：3 种方案横跨 JDK + 阿里开源
 
+> **一句话定位**：InheritableThreadLocal 在线程池完全失效 —— 阿里 TTL 用 capture/replay/restore 三步实现工业级透传。
+
 > 经典 Java 面试题（阿里、字节、美团高频）。考察的不是"会不会用 ThreadLocal"，而是 **JDK 原生方案的 3 个限制** + **阿里 TransmittableThreadLocal 的设计精髓** + **线程池场景下的最佳实践**。
 
 ## 引子：审计日志 userId 全是 anonymous

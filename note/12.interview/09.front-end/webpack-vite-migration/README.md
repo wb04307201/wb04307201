@@ -10,6 +10,8 @@ question:
 
 # Webpack → Vite/Rspack 迁移的 5 大坑
 
+> **一句话定位**：Webpack → Vite 迁移 5 大坑：构建模型差异（ESM vs CJS）导致 CJS/Tree-Shaking/环境变量/HMR 翻车。
+
 ## 引子：一个真实的迁移事故
 
 ```text

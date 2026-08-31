@@ -10,6 +10,8 @@ question:
 
 # Bean 生命周期
 
+> **一句话定位**：Bean 12 步生命周期：实例化 → 属性注入 → Aware → 初始化 → BeanPostProcessor → AOP → 销毁，钩子遍布全程。
+
 ## 引子：一个 Bean 的"一生"
 
 你写了个 `@Service`，Spring 帮你创建这个 Bean。但它不是 `new` 一下就完事了——

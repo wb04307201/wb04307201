@@ -10,6 +10,8 @@ question:
 
 # React Hooks 原理
 
+> **一句话定位**：React Hooks 本质是闭包 + 链表，每次渲染都是新闭包，调用顺序决定状态。
+
 ## 引子：一个让人困惑的 Bug
 
 ```jsx

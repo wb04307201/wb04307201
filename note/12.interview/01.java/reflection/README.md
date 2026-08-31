@@ -10,6 +10,8 @@ question:
 
 # Java 反射原理与性能深度剖析
 
+> **一句话定位**：运行期打破封装 + 动态操作 —— 三层优化（setAccessible/MethodHandle/LambdaMetafactory）逐级消除性能税。
+
 ## 引子：一个"不可能"的操作
 
 ```java

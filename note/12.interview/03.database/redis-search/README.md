@@ -12,6 +12,8 @@ question:
 
 ---
 
+> **一句话定位**：生产严禁 KEYS（O(N) 阻塞），用 SCAN 游标迭代；全文检索走 RediSearch，二级索引用 ZSet 兜底。
+
 ## 引子：一条 KEYS 命令让 Redis 集群瘫痪 47 秒
 
 ```text

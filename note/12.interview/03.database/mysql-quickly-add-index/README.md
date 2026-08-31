@@ -10,6 +10,8 @@ question:
 
 # 1亿条数据快速加索引的方法
 
+> **一句话定位**：大表加索引禁直接 ALTER，必走在线 DDL（INPLACE/LOCK=NONE）或 pt-osc/gh-ost 影子表方案。
+
 ## 引子：加个索引，为什么锁表 30 分钟？
 
 ```sql

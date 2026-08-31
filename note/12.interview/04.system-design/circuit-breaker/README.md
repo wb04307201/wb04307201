@@ -10,6 +10,8 @@ question:
 
 # 熔断降级机制深度剖析
 
+> **一句话定位**：熔断器三态机（CLOSED/OPEN/HALF_OPEN）防雪崩，Sentinel 滑动窗口主流，HALF_OPEN 探测数控制避免二次冲击。
+
 ## 引子：一个服务挂掉，拖垮整个系统
 
 ```text

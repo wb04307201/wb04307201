@@ -10,6 +10,8 @@ question:
 
 # ThreadLocal 原理与内存泄漏
 
+> **一句话定位**：线程私有 ThreadLocalMap —— key 弱引用 + value 强引用，线程池场景必须 finally remove 防泄漏。
+
 ## 引子：一个诡异的串号问题
 
 ```java
