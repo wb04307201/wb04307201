@@ -5,7 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Prompt 工程
-  depth: ⭐⭐⭐
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # Prompt 工程

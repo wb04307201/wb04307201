@@ -6,7 +6,7 @@ module:
   audience: 工程师 / SRE / 学生
   category: 主模块
   summary: 系统性整理计算机科学基础知识，涵盖算法、操作系统、网络、运维与知识产权等核心领域。
-  depth: ⭐⭐
+  depth: ⭐⭐⭐⭐
 -->
 
 # 02. CS Foundations（计算机科学基础）

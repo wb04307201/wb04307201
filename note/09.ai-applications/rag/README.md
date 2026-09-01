@@ -4,7 +4,7 @@
   type: index
   category: AI 应用子 MOC
   summary: RAG 全景——Pipeline / 范式演进 / 选型 / 评估 / 超范围拒答 / Agentic RAG 六主题。
-  depth: ⭐
+  depth: ⭐⭐⭐
 -->
 
 # RAG（Retrieval-Augmented Generation）

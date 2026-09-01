@@ -4,7 +4,7 @@
   type: index-only
   category: AI 基础索引
   summary: 传统机器学习算法——监督学习、无监督学习与强化学习的核心方法与演进脉络。
-  depth: ⭐⭐⭐
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 01. 传统机器学习

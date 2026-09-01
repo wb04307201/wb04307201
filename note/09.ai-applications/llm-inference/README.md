@@ -4,7 +4,7 @@
   type: index
   category: AI 应用子 MOC
   summary: LLM 推理工程——KV Cache / Flash Attention / Paged Attention / 推测解码 / 连续批处理 / 权重量化 12 大主题。
-  depth: ⭐
+  depth: ⭐⭐⭐
 -->
 
 # LLM Inference（LLM 推理工程）

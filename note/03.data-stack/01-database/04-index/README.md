@@ -5,7 +5,7 @@ module:
   type: index
   category: 主模块子文章
   summary: 索引通过 B+ 树等数据结构将查找从 O(N) 降至 O(log N)，覆盖聚簇/非聚簇、最左前缀、覆盖索引、ICP、MRR 等核心概念。
-  depth: ⭐⭐⭐⭐⭐
+  depth: ⭐⭐⭐⭐
 -->
 
 # 索引
