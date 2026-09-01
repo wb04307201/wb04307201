@@ -5,7 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 从 OSI/TCP-IP 模型到 HTTP 演进，系统梳理计算机网络体系结构与核心协议族。
-  depth: ⭐⭐⭐⭐
+  depth: ⭐⭐
 -->
 
 # 计算机网络基础
