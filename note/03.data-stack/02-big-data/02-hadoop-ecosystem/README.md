@@ -5,7 +5,7 @@ module:
   type: index
   category: 主模块子文章
   summary: Hadoop 三件套 + 上层引擎（Hive / Presto）——离线数仓基石
-  depth: ⭐⭐⭐⭐⭐
+  depth: ⭐⭐⭐⭐
 -->
 
 # 02 Hadoop 生态

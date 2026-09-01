@@ -5,7 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 5 大 Chunking 策略对比 + 数学原理 + 工业案例
-  depth: ⭐⭐⭐⭐⭐
+  depth: ⭐⭐⭐⭐
 -->
 
 # Chunking 策略（文档分块）

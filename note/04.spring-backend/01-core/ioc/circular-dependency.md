@@ -5,7 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring 循环依赖与三级缓存
-  depth: ⭐⭐⭐⭐
+  depth: ⭐⭐⭐
 -->
 
 # Spring 循环依赖与三级缓存

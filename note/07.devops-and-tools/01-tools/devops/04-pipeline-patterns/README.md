@@ -5,7 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: CI/CD 流水线设计模式
-  depth: ⭐⭐⭐⭐
+  depth: ⭐⭐⭐
 -->
 
 # CI/CD 流水线设计模式：分支策略与多环境管理
