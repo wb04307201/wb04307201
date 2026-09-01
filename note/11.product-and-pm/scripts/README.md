@@ -4,6 +4,7 @@
   type: article
   category: 工具脚本
   summary: 14.project-management 维护脚本（insert-frontmatter / validate）
+  depth: ⭐
 -->
 
 # project-management 维护脚本

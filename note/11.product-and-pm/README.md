@@ -8,6 +8,7 @@ module:
   category: 主模块
   type: index
   summary: 从报价拆解到 AI 时代研发效能度量的项目决策实战手册
+  depth: ⭐⭐⭐
 -->
 
 # 11. 产品 + PM（Product & PM）

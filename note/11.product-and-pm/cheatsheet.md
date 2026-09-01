@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 项目管理与成本控制 —— 一页速查
+  depth: ⭐
 -->
 
 # 项目管理与成本控制 —— 一页速查
