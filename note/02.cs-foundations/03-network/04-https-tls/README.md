@@ -5,7 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 一份按层次梳理的 HTTPS/TLS 速查手册：从对称加密到 TLS 1.3 握手的完整实战。
-  depth: ⭐⭐⭐⭐
+  depth: ⭐⭐⭐
 -->
 
 # HTTPS 与 TLS 1.3：加密传输的完整机制

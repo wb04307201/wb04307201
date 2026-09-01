@@ -5,7 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: JUC Locks 学习笔记
-  depth: ⭐⭐⭐⭐
+  depth: ⭐⭐⭐
 -->
 
 # JUC Locks 学习笔记 (AQS / ReentrantLock / ReentrantReadWriteLock / StampedLock / Condition)
