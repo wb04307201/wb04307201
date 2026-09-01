@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 大模型"单 epoch 时代"的 4 个层面 + 6 个里程碑模型 config 考古实锤：Dropout=0.0 的训练证据。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 单 epoch 时代 + config 考古实锤：Dropout 为什么被弃用？

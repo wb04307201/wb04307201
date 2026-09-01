@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 深度学习框架
+  depth: ⭐⭐
 -->
 
 # 深度学习框架

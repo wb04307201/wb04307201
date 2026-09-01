@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 监督学习 → 强化学习
+  depth: ⭐⭐⭐⭐
 -->
 
 # 监督学习 → 强化学习

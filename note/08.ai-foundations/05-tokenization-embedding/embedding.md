@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 区分向量化与嵌入的语义映射本质，介绍流形假说及其在深度学习中的作用
+  depth: ⭐⭐
 -->
 
 # 嵌入 vs 向量化

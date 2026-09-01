@@ -4,6 +4,7 @@
   type: index
   category: AI 基础子模块
   summary: LLM Dropout——训练时随机失活的设置、影响与单 epoch 实证证据。
+  depth: ⭐
 -->
 
 

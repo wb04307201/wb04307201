@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 注意力机制全家桶（Self/Cross/Multi-Head/Sparse/Linear/MQA/GQA）
+  depth: ⭐⭐⭐⭐
 -->
 
 # 注意力机制（Attention Mechanism）

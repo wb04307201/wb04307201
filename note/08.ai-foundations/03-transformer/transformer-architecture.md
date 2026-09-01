@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Transformer 架构核心：Self-Attention + QKV + Multi-Head。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # Transformer 架构核心

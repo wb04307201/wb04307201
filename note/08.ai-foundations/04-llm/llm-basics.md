@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 大语言模型基础：从统计语言模型到 Transformer
+  depth: ⭐⭐⭐⭐
 -->
 
 # 大语言模型基础
