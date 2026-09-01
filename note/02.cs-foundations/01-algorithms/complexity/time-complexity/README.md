@@ -5,7 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 时间复杂度衡量算法执行时间随输入规模增长的变化速率，用大 O 符号表示，是算法设计和优化的核心依据。
-  depth: ⭐⭐
+  depth: ⭐
 -->
 
 # 时间复杂度

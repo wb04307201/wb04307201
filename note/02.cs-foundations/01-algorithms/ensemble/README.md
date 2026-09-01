@@ -5,7 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 集成学习 Random Forest / XGBoost / LightGBM / CatBoost
-  depth: ⭐⭐⭐⭐⭐
+  depth: ⭐⭐⭐
 -->
 
 # 集成学习（Random Forest / XGBoost / LightGBM）

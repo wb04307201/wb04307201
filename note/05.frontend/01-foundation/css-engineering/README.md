@@ -5,7 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: CSS 工程化
-  depth: ⭐⭐
+  depth: ⭐⭐⭐
 -->
 
 # CSS 工程化
