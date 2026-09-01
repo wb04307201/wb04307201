@@ -15,13 +15,6 @@
   <img src="https://img.shields.io/badge/Docker-✓-8B5CF6?logo=docker&logoColor=white" alt="Docker"/>
 </p>
 
-<p>
-  <a href="https://github.com/wb04307201/wb04307201/actions/workflows/difficulty-calibration.yml"><img src="https://github.com/wb04307201/wb04307201/actions/workflows/difficulty-calibration.yml/badge.svg?branch=master" alt="5 维校准"/></a>
-  <a href="https://github.com/wb04307201/wb04307201/actions/workflows/structural-link-check.yml"><img src="https://github.com/wb04307201/wb04307201/actions/workflows/structural-link-check.yml/badge.svg?branch=master" alt="结构链接"/></a>
-  <a href="https://github.com/wb04307201/wb04307201/actions/workflows/link-check.yml"><img src="https://github.com/wb04307201/wb04307201/actions/workflows/link-check.yml/badge.svg?branch=master" alt="URL 校验"/></a>
-  <a href="https://github.com/wb04307201/wb04307201/actions/workflows/grs.yml"><img src="https://github.com/wb04307201/wb04307201/actions/workflows/grs.yml/badge.svg?branch=master" alt="README 卡片"/></a>
-</p>
-
 </div>
 
 <table>
