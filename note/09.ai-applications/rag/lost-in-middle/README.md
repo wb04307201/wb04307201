@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Lost In the Middle 现象 + 6 大缓解方案
+  depth: ⭐⭐⭐⭐
 -->
 
 # Lost In the Middle（中间遗忘现象）

@@ -5,6 +5,7 @@ module:
   type: deep-dive
   category: Agent 长上下文架构
   summary: Agent 如何处理长上下文 —— 6 大策略（Chunking / RAG / Memory / Sliding Window / Sub-Agents / Long-Context LLMs）+ 选型决策树 + 面试题
+  depth: ⭐⭐⭐
 -->
 
 # Agent 长上下文架构 · 6 大策略全景

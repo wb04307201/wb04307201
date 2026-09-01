@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: LLM 技术栈全景
+  depth: ⭐⭐⭐⭐
 -->
 
 # LLM 技术栈全景 (61 核心概念)

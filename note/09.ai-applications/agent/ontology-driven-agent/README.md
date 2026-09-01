@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 本体驱动的智能体
+  depth: ⭐⭐⭐
 -->
 
 # 本体驱动的智能体（Ontology-Driven Agent）：让AI从”黑箱推理”走向”结构化认知”

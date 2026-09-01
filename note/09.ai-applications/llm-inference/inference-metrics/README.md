@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: LLM 推理性能三大指标 TTFT / TPOT / Throughput
+  depth: ⭐⭐⭐
 -->
 
 # LLM 推理性能指标

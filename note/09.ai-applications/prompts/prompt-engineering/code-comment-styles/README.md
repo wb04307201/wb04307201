@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 创意代码注释风格
+  depth: ⭐
 -->
 
 # 创意代码注释风格

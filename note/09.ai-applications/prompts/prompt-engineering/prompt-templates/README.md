@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 3 类生产级 Prompt 模板：架构图生成（PlantUML）/ 拟人化角色 / 代码复杂度分析，适配 Claude/GPT/通用 LLM。
+  depth: ⭐⭐⭐
 -->
 
 # Prompt 模板集

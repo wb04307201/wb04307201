@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: RLHF 完整流水线：SFT → Reward Model → PPO
+  depth: ⭐⭐⭐
 -->
 
 # RLHF（Reinforcement Learning from Human Feedback）

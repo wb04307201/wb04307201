@@ -5,6 +5,7 @@ module:
   type: index
   category: 主模块子文章
   summary: Coding Agents 横向对比 — Claude Code / Codex / OpenCode / OMP 安装、模型配置、MCP 配置、选型决策树。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # Coding Agents — 4 大编程 Agent 横向对比与选型

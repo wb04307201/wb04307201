@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Shopify AI 智能体学徒车间
+  depth: ⭐⭐
 -->
 
 # Shopify AI 智能体学徒车间

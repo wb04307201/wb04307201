@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: LLM 安全攻防实战
+  depth: ⭐⭐⭐⭐
 -->
 
 # LLM 安全：Prompt 注入 / 数据泄露 / 越权 攻防实战

@@ -5,6 +5,7 @@ module:
   type: deep-dive
   category: 工业级 LLM 部署
   summary: 为什么工业级部署优先选 vLLM 而不是 Ollama —— PagedAttention / 连续批处理 / 量化 / 分布式 / 4 引擎横向对比 / 场景化决策树
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # vLLM vs Ollama · 工业级 LLM 部署选型深度专题

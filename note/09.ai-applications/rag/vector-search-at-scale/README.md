@@ -5,6 +5,7 @@ module:
   type: article
   category: AI 应用子文章
   summary: 千亿级向量检索：5 个架构转变 + 分层索引 + ScANN + GPU + 联邦检索
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 千亿级向量检索架构 —— 分布式 + 分层 + GPU + 联邦

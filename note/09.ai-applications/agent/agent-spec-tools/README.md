@@ -5,6 +5,7 @@ module:
   type: index
   category: 主模块子文章
   summary: Agent Spec Tools：Superpowers / Spec-Kit / OpenSpec 三工具安装、配置、使用与选型对比。
+  depth: ⭐⭐⭐
 -->
 
 # Agent Spec Tools — 三工具对比与选型

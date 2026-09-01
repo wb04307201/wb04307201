@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Token 与计费：BPE/WordPiece 分词 + 上下文窗口 + 计费公式。
+  depth: ⭐⭐⭐
 -->
 
 # Token 与计费原理

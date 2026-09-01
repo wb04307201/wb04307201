@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Cross-Encoder Reranker 重排序
+  depth: ⭐⭐⭐
 -->
 
 # Reranker（重排序模型）

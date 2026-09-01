@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Embedding 模型横评（BGE / M3E / Qwen / OpenAI）
+  depth: ⭐⭐⭐
 -->
 
 # Embedding 模型横评

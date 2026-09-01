@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Flash Attention 2/3：长上下文推理标配
+  depth: ⭐⭐⭐⭐
 -->
 
 # Flash Attention 2/3

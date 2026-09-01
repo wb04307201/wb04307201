@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Speculative Decoding 投机解码：小模型预测+大模型验证
+  depth: ⭐⭐⭐⭐
 -->
 
 # Speculative Decoding（投机解码）

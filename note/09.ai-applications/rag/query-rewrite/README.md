@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Query Rewrite 查询改写提升 RAG 召回
+  depth: ⭐⭐⭐
 -->
 
 # Query Rewrite（查询改写）

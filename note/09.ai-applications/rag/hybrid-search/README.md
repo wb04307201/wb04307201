@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 向量 + BM25 混合检索
+  depth: ⭐⭐⭐
 -->
 
 # Hybrid Search（混合检索）

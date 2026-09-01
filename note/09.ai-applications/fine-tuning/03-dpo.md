@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: DPO 直接偏好优化：跳过 Reward Model
+  depth: ⭐⭐⭐
 -->
 
 # DPO（Direct Preference Optimization）

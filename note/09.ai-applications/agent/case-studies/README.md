@@ -4,6 +4,7 @@
   type: index
   category: AI 应用子 MOC（案例库）
   summary: Agent 真实企业案例库——Salesforce Agentforce、Shopify AI Agent 等生产级 Agent 落地复盘。
+  depth: ⭐
 -->
 
 # Agent 真实案例

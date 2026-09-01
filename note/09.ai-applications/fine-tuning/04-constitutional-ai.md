@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Constitutional AI：用 AI 原则替代人类反馈（Anthropic）
+  depth: ⭐⭐⭐
 -->
 
 # Constitutional AI（宪法式 AI）

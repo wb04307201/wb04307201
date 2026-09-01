@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Context Engineering：为 LLM 准备完整上下文的工程范式。
+  depth: ⭐⭐⭐
 -->
 
 # Context Engineering — 上下文工程

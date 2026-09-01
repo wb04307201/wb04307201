@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 权重量化 GPTQ/AWQ/GGUF/NF4：精度 vs 显存 vs 速度
+  depth: ⭐⭐⭐
 -->
 
 # 权重量化（Weight Quantization）

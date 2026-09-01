@@ -5,6 +5,7 @@ module:
   type: index-only
   category: Context Engineering
   summary: Context Engineering（上下文工程）专题 —— Prompt 设计、上下文窗口管理、注意力分配的系统化方法
+  depth: ⭐
 -->
 
 # Context Engineering 上下文工程

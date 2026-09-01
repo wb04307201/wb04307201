@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 生产级 Agent 系统
+  depth: ⭐⭐⭐⭐
 -->
 
 # 生产级 Agent 系统：Shopify Sidekick 工程实践

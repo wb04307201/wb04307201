@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 长 PDF / 合同场景 4 大策略整合视角（智能分块 + 检索增强 + 上下文压缩 + 长度扩展）
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 长文档处理（几百页 PDF 合同的整合视角）

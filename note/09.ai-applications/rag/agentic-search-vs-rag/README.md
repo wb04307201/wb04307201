@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Agentic Search 取代 RAG 的反直觉革命：实时 + 跟随引用 + Harness > 索引
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # Agentic Search vs RAG —— AI Coding 检索范式的根本转变

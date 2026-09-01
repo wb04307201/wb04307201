@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: LLM 评估体系
+  depth: ⭐⭐⭐⭐
 -->
 
 # LLM 评估体系：6 大维度 + 5 种评估方法完整实战

@@ -5,6 +5,7 @@ module:
   type: topic
   category: 修复 prompt 模板
   summary: 修复 prompt 模板 4 类（语法/类型/测试/运行时）+ 通用结构 + 实战示例
+  depth: ⭐⭐
 -->
 
 # 修复 Prompt 模板 · 4 类常用模板

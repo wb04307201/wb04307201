@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 企业级知识入库 8 阶段全链路（连接 → 解析 → 清洗 → 归一化 → 分块 → Embedding → 入库 → 增量同步 + CDC）
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 企业级 Knowledge Ingestion Pipeline（知识入库流水线）

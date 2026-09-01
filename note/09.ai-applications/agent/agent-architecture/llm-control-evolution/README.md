@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: LLM 驾驭演进史：Prompt → Context → Harness → Loop 4 阶段叙事
+  depth: ⭐⭐⭐⭐
 -->
 
 # LLM 驾驭演进史：从 Prompt 到 Loop 的 4 个阶段

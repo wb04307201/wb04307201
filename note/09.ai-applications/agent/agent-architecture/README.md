@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Agent 架构：DAG vs ReAct vs Plan-and-Execute 三种范式对比。
+  depth: ⭐⭐⭐⭐
 -->
 
 # Agent 架构：DAG vs ReAct vs Plan-and-Execute

@@ -4,6 +4,7 @@
   type: index-only
   category: Agent 子模块索引
   summary: Agent Loop 工程——自动修复策略 / 内置循环命令 / IDE 案例 / 验证器设计 4 大主题。
+  depth: ⭐⭐⭐⭐
 -->
 
 # Loop 工程（Loop Engineering）

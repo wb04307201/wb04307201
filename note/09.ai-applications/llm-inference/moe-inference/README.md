@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: MoE 推理优化：DeepSeek-V3 671B 部署实战
+  depth: ⭐⭐⭐
 -->
 
 # MoE 推理优化

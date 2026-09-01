@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 推理框架对比 vLLM / TGI / SGLang / TensorRT-LLM
+  depth: ⭐⭐⭐
 -->
 
 # 推理框架对比

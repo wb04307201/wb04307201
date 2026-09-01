@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: KV Cache 推理核心机制（内存布局 / 复杂度 / 显存优化 / MQA/GQA/MLA）
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # KV Cache
