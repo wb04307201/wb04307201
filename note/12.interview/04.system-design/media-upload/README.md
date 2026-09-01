@@ -66,7 +66,7 @@ async function generateVariants(buffer: Buffer) {
     for (const format of ['webp', 'avif', 'jpeg']) {
       variants[`${size}.${format}`] = await sharp(buffer)
         .resize({ width: size, withoutEnlargement: true })
-        [format]({ quality: format === 'jpeg' ? 85 : 75 })
+        format
         .withMetadata({ exif: { IFD0: { remove: true } } })  // 去除 EXIF
         .toBuffer();
     }
