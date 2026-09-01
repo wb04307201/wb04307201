@@ -94,6 +94,55 @@ def validate_depth_suggestion(suggestion):
     return 1 <= stars <= 5
 
 
+def get_depth_stars(depth_str):
+    """从 '⭐⭐⭐' 字符串提取星数"""
+    return depth_str.count('⭐') + depth_str.count('★')
+
+
+def is_overview_or_index(file_path):
+    """识别 overview/index 类文件（MOC 独立基线）"""
+    if not file_path.endswith('README.md'):
+        return False
+    if not os.path.exists(file_path):
+        return False
+    try:
+        c = open(file_path, encoding='utf-8', errors='ignore').read(1000)
+    except:
+        return False
+    if re.search(r'type:\s*index', c):
+        return True
+    if re.search(r'category:\s*主模块子\s*MOC', c):
+        return True
+    return False
+
+
+def apply_overview_d5_exemption(file_path, current_depth, suggested_depth):
+    """
+    v12 新增：overview/index 类 D5 豁免
+    - 如果当前 depth 偏低但 suggested 是 ≥ 3（中等深度），overview 可跳过 D5 案例检查
+    - 自动保留当前 depth 在 overview 类（避免盲升）
+    """
+    if not is_overview_or_index(file_path):
+        return suggested_depth  # 非 overview，按建议值
+    # overview 类：current ≤ L2 + suggested ≥ L3 → 强制升到 L3（避免校准不达标）
+    cur = get_depth_stars(current_depth)
+    sug = get_depth_stars(suggested_depth)
+    if cur <= 2 and sug >= 3:
+        return suggested_depth  # overview 升档
+    # 当前已 ≥ L3，保留原状（避免高估）
+    if cur >= 3:
+        return current_depth
+    return suggested_depth
+
+
+def validate_depth_suggestion(suggestion):
+    """验证建议值合法"""
+    if not suggestion or not suggestion.startswith('⭐'):
+        return False
+    stars = suggestion.count('⭐') + suggestion.count('★')
+    return 1 <= stars <= 5
+
+
 def update_depth(file_path, new_depth, no_overwrite=False):
     """更新文件 frontmatter 的 depth 字段"""
     if not os.path.exists(file_path):
@@ -191,7 +240,15 @@ def main():
         if args.dry_run:
             continue
 
-        if update_depth(dev['file'], dev['suggestion'], no_overwrite=args.no_overwrite):
+        # v12 新增：overview D5 豁免逻辑
+        # - overview 类：current ≤ L2 + suggested ≥ L3 → 应用 suggested
+        # - overview 类：current ≥ L3 → 保留 current（避免盲升导致高估）
+        # - 主题深读类：直接应用 suggested
+        final_depth = apply_overview_d5_exemption(dev['file'], dev['current'], dev['suggestion'])
+        if final_depth != dev['suggestion']:
+            print(f'    → v12 豁免: {dev["suggestion"]} → {final_depth}')
+
+        if update_depth(dev['file'], final_depth, no_overwrite=args.no_overwrite):
             applied.append(dev)
             if is_overview:
                 overview_applied.append(dev)
