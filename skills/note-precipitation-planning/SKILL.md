@@ -688,6 +688,44 @@ PYEOF
 - [ ] **代码示例若规格要求**：bash / ffmpeg / openssl 等必须**实际代码块**而非文字描述
 - [ ] **数字实时核对**：subagent 报告行数必须 orchestrator 独立 `wc -l` 校验，不接受 subagent 自我声明
 
+#### 🆕 §7.1 链接路径校验（2026-09-02 教训·必做）
+
+**Session 6 教训**：230 处断链 = 87% 来自"结构重组遗留路径错位"。新增内容时若引用其他模块路径，**必须执行实际路径校验**，仅看 README 文字描述不够。
+
+**校验步骤**（在 commit 前必跑）：
+
+```bash
+# 对每个新加的跨模块链接验证目标存在
+python << 'PYEOF'
+import os, re, glob
+LINK = re.compile(r'(?<![|\[])\[([^\]]*)\]\((?!https?://)(?!mailto:)(?!#)([^)#\s]+?\.md)(?:#[^)]*)?\)')
+DIRLINK = re.compile(r'(?<![|\[])\[([^\]]*)\]\((?!https?://)(?!mailto:)(?!#)([^)#\s]+?)/\)')
+broken = 0
+for f in <新增文件列表>:
+    c = open(f, encoding='utf-8', errors='ignore').read()
+    for m in LINK.finditer(c):
+        t = os.path.normpath(os.path.join(os.path.dirname(f), m.group(2).replace('/', os.sep)))
+        if not os.path.isfile(t):
+            print(f'  ❌ {f} -> {m.group(2)}')
+            broken += 1
+    for m in DIRLINK.finditer(c):
+        t = os.path.normpath(os.path.join(os.path.dirname(f), m.group(2).replace('/', os.sep)))
+        if not (os.path.isdir(t) and os.path.isfile(os.path.join(t, 'README.md'))):
+            print(f'  ❌ {f} -> {m.group(2)}/')
+            broken += 1
+print(f'断链数: {broken}')
+PYEOF
+```
+
+**接受标准**：断链数 = 0。如有 1+ 断链，**修复后才 commit**（不允许"已知 broken"）.
+
+**历史教训**：
+- `09.ai-applications/llm-alignment/` 引用了不存在的目录
+- `08.ai-foundations/transformer/` 旧名未及时跟进结构重组 → `08.ai-foundations/03-transformer/`
+- `13.story/20-board-revolution.md` 文件名已重命名为 `20-multiplatform-architecture.md`
+
+**反直觉 3**："我看了 README 觉得路径是对的" —— README 文字描述 ≠ 实际文件位置。**唯一可靠标准是 `os.path.isfile(target_abs)`**。
+
 ## Quick Reference
 
 | 场景 | 推荐模式 | 落地位置 | Commit 数 |
