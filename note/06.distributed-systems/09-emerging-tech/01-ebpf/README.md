@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 一份按场景梳理的 eBPF 速查手册：从可观测性到安全的内核级革命。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # eBPF · 内核级可观测与网络编程实战

@@ -5,6 +5,7 @@ module:
   type: index
   category: 主模块子文章
   summary: 从单机到 K8s、从蓝绿发布到可观测性——部署架构决定物理形态，发布策略决定变更可控。
+  depth: ⭐⭐⭐⭐
 -->
 
 # 部署与运维篇

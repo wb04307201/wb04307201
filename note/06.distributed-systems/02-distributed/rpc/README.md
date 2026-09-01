@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: RPC 本应该很简单，RPC（Remote Procedure Call，远程过程调用）是一种计算机通信协议，允许程序像调用本地函数一样透明地执行另一台计算机上...
+  depth: ⭐⭐⭐
 -->
 
 # RPC

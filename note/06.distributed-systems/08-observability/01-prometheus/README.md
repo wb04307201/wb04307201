@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 一份按场景梳理的 Prometheus 速查手册：从数据模型到生产告警的完整实战。
+  depth: ⭐⭐⭐⭐
 -->
 
 # Prometheus · 云原生监控体系实战

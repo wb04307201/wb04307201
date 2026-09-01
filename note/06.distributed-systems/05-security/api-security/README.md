@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: API 是系统对外暴露的入口，安全设计是 API 设计的第一要务。本文涵盖签名验证、防重放、数据脱敏、限流等 API 安全核心主题。
+  depth: ⭐⭐⭐⭐
 -->
 
 # API 安全

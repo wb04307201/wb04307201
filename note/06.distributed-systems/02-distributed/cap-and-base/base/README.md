@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: BASE模型是分布式系统设计中针对CAP定理局限性提出的一种**柔性事务模型**，它通过放宽对强一致性的要求，换取系统的高可用性和可扩展...
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # BASE

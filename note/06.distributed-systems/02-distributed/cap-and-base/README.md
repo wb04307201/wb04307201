@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: "CAP 定理（三选二不可能兼得）与 BASE 理论（放弃强一致性换取可用性）的工程实践。"
+  depth: ⭐⭐⭐
 -->
 
 # CAP & BASE

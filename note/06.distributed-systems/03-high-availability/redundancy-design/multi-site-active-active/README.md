@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 异地多活 本应该很简单
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 异地多活

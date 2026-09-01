@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Kruchten 1995 提出的五维架构描述框架，用逻辑/开发/过程/物理四个视图加场景视图完整刻画软件系统。
+  depth: ⭐⭐⭐
 -->
 
 # 4+1 视图

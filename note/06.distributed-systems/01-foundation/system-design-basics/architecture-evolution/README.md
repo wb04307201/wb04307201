@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 架构认知的演进
+  depth: ⭐⭐⭐⭐
 -->
 
 # 架构认知的演进

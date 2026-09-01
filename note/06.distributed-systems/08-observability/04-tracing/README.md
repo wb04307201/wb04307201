@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 分布式追踪实战手册：从 Trace/Span 核心概念到 OpenTelemetry 架构，再到 Jaeger/Zipkin/Tempo 选型与采样策略。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 分布式追踪 · Distributed Tracing 实战

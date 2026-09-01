@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 部署架构决定系统的物理形态，发布策略决定变更的可控性。本文系统讲解部署架构（单机/多实例/容器化/K8s/Serverless）和发布策略（蓝绿/金丝雀/滚动/...
+  depth: ⭐⭐⭐⭐
 -->
 
 # 部署架构与发布策略

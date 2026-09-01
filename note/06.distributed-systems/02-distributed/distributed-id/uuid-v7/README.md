@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: UUID v7 本应该很简单，UUID v7 是 **RFC 9562** 标准定义的最新版本，专为高并发数据库和分布式系统设计。其核心特性为 **时间排序性*...
+  depth: ⭐⭐⭐
 -->
 
 # UUID v7

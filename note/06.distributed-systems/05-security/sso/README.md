@@ -5,6 +5,7 @@ module:
   type: deep-dive
   category: 单点登录
   summary: 单点登录（SSO）深度专题 —— 6 大实现方案对比（CAS/OAuth2/OIDC/SAML/Cookie/JWT）+ Spring Security 实战 + 选型决策
+  depth: ⭐
 -->
 
 # 单点登录（SSO）· 6 大实现方案深度对比

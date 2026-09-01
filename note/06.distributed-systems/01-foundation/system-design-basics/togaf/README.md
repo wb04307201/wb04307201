@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 企业架构（Enterprise Architecture，EA）是从全局视角规划和治理组织 IT 结构的系统性方法。
+  depth: ⭐⭐⭐⭐
 -->
 
 # 企业架构（TOGAF 10）

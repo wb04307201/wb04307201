@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: ABAC 基于属性动态授权：OPA/Rego 实战（含性能开销量化）
+  depth: ⭐⭐⭐⭐
 -->
 
 # ABAC（Attribute-Based Access Control，基于属性的访问控制）

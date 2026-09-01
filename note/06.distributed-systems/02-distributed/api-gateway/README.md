@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: API网关 本应该很简单，API网关是现代微服务架构和分布式系统中的核心组件，充当客户端与后端服务之间的统一入口，负责管理、路由、监控和保护API调用。以下是其...
+  depth: ⭐⭐⭐
 -->
 
 # API网关

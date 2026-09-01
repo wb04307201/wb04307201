@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Paxos算法 本应该很简单，Paxos算法是一种基于消息传递的分布式一致性算法，由Leslie Lamport于1990年提出，旨在解决分布式系统中多个节点在...
+  depth: ⭐⭐⭐
 -->
 
 # Paxos算法

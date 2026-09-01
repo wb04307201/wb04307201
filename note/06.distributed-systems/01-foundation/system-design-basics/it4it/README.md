@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: **IT4IT**（Information Technology Infrastructure Library for IT, "IT 的 ITIL"）是 Th...
+  depth: ⭐⭐⭐⭐
 -->
 
 # IT 价值流参考架构（IT4IT 3.0）

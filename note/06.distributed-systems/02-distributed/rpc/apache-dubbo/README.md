@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Dubbo 是阿里巴巴开源的一款高性能、轻量级的 **Java RPC（Remote Procedure Call，远程过程调用）框架**，旨在解决分布式服务架...
+  depth: ⭐⭐⭐
 -->
 
 # Apache Dubbo

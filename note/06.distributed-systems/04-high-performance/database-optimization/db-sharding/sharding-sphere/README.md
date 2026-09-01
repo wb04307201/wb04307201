@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Apache ShardingSphere 分库分表中间件——JDBC vs Proxy 架构选型 + 分片策略配置
+  depth: ⭐⭐⭐⭐
 -->
 
 # ShardingSphere

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: ⬅️ [返回微服务](../README.md) | ⬅️ [服务契约](../service-contract/README.md) | ➡️ [演进与组织]...
+  depth: ⭐⭐⭐⭐
 -->
 
 # 数据一致性

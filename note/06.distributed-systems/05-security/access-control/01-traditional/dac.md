@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: DAC（Discretionary Access Control，自主访问控制）
+  depth: ⭐⭐
 -->
 
 # DAC（Discretionary Access Control，自主访问控制）

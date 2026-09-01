@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 微服务架构（Microservices Architecture）是一种将大型应用程序拆分为一组**小型、独立服务**的设计方法，每个服务围绕特定业务能力构建，...
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 微服务架构（Microservices）

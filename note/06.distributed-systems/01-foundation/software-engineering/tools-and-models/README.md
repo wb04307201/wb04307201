@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 软件工程的"瑞士军刀"——UML 建模、CI/CD 工具链、版本控制的核心概念与实战选型。
+  depth: ⭐⭐⭐
 -->
 
 # 工具与模型

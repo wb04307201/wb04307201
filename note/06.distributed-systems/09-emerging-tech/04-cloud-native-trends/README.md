@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 一份按技术趋势梳理的云原生速查手册：从 Serverless 到 AI 基础设施的演进全景。
+  depth: ⭐⭐⭐⭐
 -->
 
 # 云原生 2026 趋势：Serverless / AI 基础设施 / 平台工程

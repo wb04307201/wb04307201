@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 角色与属性族：以 RBAC（5 表静态模型）和 ABAC（策略引擎动态决策）为中介，解决 DAC/MAC 的可维护性难题，覆盖选型判定与各模型能力对比
+  depth: ⭐⭐
 -->
 
 # 角色与属性族：把权限从人身上抽到中介

@@ -5,6 +5,7 @@ module:
   type: topic
   category: JWT 实战
   summary: JWT 自建 + Redis 黑名单 + Refresh Token + 5 大反模式
+  depth: ⭐⭐⭐⭐
 -->
 
 # JWT 自建 SSO · Token + Redis 黑名单实战

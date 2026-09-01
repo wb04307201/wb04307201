@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 弹性架构
+  depth: ⭐⭐⭐⭐
 -->
 
 # 弹性架构

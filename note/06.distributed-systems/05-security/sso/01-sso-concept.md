@@ -5,6 +5,7 @@ module:
   type: topic
   category: SSO 概念
   summary: 单点登录是什么？解决什么问题？核心原理 + 3 大设计目标 + 6 大反模式
+  depth: ⭐⭐
 -->
 
 # SSO 概念与原理 · 一次登录多系统访问

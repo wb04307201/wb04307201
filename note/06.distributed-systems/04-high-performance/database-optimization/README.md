@@ -5,6 +5,7 @@ module:
   type: index
   category: 主模块子文章
   summary: 数据库优化总览：SQL 优化、读写分离、分库分表、冷热分离四大维度 + 优化优先级与容量评估
+  depth: ⭐⭐⭐
 -->
 
 # 数据库优化

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 混沌工程(Chaos Engineering)是在分布式系统上进行实验的学科，目的是建立对系统抵御生产环境中异常条件的信心。
+  depth: ⭐⭐⭐⭐
 -->
 
 # 混沌工程

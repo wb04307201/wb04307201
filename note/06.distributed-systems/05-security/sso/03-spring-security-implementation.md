@@ -5,6 +5,7 @@ module:
   type: topic
   category: Spring Security 实战
   summary: Spring Authorization Server 配置 OAuth2 + OIDC IdP + Spring Security 资源服务器 + JWT 验签
+  depth: ⭐⭐⭐⭐
 -->
 
 # Spring Security SSO 实战 · OAuth2 + OIDC 配置

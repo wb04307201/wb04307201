@@ -5,6 +5,7 @@ module:
   type: topic
   category: 6 大方案详解
   summary: SSO 6 大实现方案详解 —— Cookie 共享 / CAS / OAuth2 / OIDC / SAML 2.0 / JWT 自建
+  depth: ⭐⭐⭐
 -->
 
 # SSO 6 大方案详解 · 主流协议对比

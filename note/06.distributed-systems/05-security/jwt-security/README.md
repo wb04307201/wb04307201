@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 为什么 `localStorage` 存储 JWT 是危险的？JWT（JSON Web Token）是现代 Web 应用最常用的无状态认证方案，但其存储方式直接...
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # JWT 存储安全

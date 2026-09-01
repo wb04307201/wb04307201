@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 一份按场景梳理的 Loki 速查手册：从部署架构到 LogQL 查询的完整实战。
+  depth: ⭐⭐⭐
 -->
 
 # Loki · 云原生日志聚合系统实战

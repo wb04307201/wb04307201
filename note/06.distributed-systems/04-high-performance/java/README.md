@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Java 代码性能优化：代码逻辑、数据结构、JVM 调优、并发设计、I/O 操作、序列化工具等多维度系统工程方法论
+  depth: ⭐⭐⭐
 -->
 
 # Java代码性能优化

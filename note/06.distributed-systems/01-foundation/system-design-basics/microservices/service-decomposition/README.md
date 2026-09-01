@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: ⬅️ [返回微服务](../README.md) | ➡️ [服务间通信](../service-communication/README.md)
+  depth: ⭐⭐⭐⭐
 -->
 
 # 服务拆分策略

@@ -5,6 +5,7 @@ module:
   type: topic
   category: 选型决策
   summary: SSO 6 大方案场景化选型 + checklist + 反模式速查
+  depth: ⭐⭐⭐
 -->
 
 # SSO 选型决策树 · 6 大方案场景化

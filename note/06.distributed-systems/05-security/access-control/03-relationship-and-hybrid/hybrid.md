@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 混合访问控制：RBAC+ABAC 4 阶段演进 + 选型决策树
+  depth: ⭐⭐⭐
 -->
 
 # RBAC + ABAC 混合模型

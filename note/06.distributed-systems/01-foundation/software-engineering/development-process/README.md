@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 软件开发的流程与方法 的- [1. 软件工程全生命周期管理](#1-软件工程全生命周期管理)
+  depth: ⭐
 -->
 
 # 软件开发的流程与方法

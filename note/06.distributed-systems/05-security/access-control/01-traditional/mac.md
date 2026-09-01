@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: MAC 强制访问控制：密级标签 + BLP/Biba 形式化模型（含 SELinux 实战）
+  depth: ⭐⭐⭐
 -->
 
 # MAC（Mandatory Access Control，强制访问控制）

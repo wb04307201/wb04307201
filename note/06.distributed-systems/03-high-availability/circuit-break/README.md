@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 熔断（Circuit Breaker）深度专题——三态状态机详解、Hystrix/Resilience4j/Sentinel 对比、Resilience4j Spring Boot 3 生产配置、雪崩防护与微服务实战
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 熔断（Circuit Breaker）
