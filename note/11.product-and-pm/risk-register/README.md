@@ -424,11 +424,11 @@ timeline
 - [康威定律下的团队拓扑](../conways-law-team-topologies/README.md) — 团队规模 vs 风险分布
 - [敏捷度量手册](../agile-metrics/README.md) — 风险 = 度量异常信号
 - 故事联动：[13.story/44-tech-debt-career-trap](../../13.story/44-tech-debt-career-trap.md) — 技术债 = "已接受风险"
-- 故事联动：[13.story/45-black-swan](../../13.story/45-black-swan.md) — 阿明遭遇"黑天鹅"事件的应对
-- 面试题：[12.interview/04.system-design/risk-register-basics.md](../../12.interview/04.system-design/risk-register-basics.md) — 风险登记册高频面试题
-- 面试题：[12.interview/04.system-design/supply-chain-risk.md](../../12.interview/04.system-design/supply-chain-risk.md) — 2008 金融危机后的供应链风险
-- Spring 项目：[04.spring-backend/02-spring-boot/security-checklist.md](../../04.spring-backend/02-spring-boot/security-checklist.md) — 安全风险登记表
-- 分布式系统：[06.distributed-systems/02-distributed/chaos-engineering/README.md](../../06.distributed-systems/02-distributed/chaos-engineering/README.md) — 混沌工程验证风险登记册
+- 故事联动：[13.story/45-black-swan](../../13.story/45-skill-scheduling-restaurant.md) — 阿明遭遇"黑天鹅"事件的应对
+- 面试题：[12.interview/04.system-design/risk-register-basics.md](../../12.interview/04.system-design/README.md) — 风险登记册高频面试题
+- 面试题：[12.interview/04.system-design/supply-chain-risk.md](../../12.interview/04.system-design/README.md) — 2008 金融危机后的供应链风险
+- Spring 项目：[04.spring-backend/02-spring-boot/security-checklist.md](../../04.spring-backend/09-security/README.md) — 安全风险登记表
+- 分布式系统：06.distributed-systems/02-distributed/chaos-engineering/README.md — 混沌工程验证风险登记册
 
 ---
 

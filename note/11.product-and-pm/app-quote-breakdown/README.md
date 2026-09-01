@@ -450,10 +450,10 @@ timeline
 - [敏捷度量手册](../agile-metrics/README.md) — 50 万档的度量基线（覆盖率 > 50%、P99 < 500ms）
 - [3 倍缓冲排期](../team-sizing-3x-buffer/README.md) — 50 万档团队配比（10 人 = 4 工程师 + 2 测试 + 2 PM + 2 设计）
 - [自研 vs SaaS vs 外包](../self-vs-saas-vs-outsourcing/README.md) — 三种研发模式的核心权衡
-- [故事章节：阿明餐厅的"5 万换招牌"](../../13.story/08-quote-50k-vs-5k.md) — 老板阿明的"5 万档"踩坑叙事
-- [面试题：报价拆解 / 隐性成本](../../12.interview/04.system-design/quote-breakdown.md) — 面试高频题
-- [微服务架构基线](../../06.distributed-systems/01-foundation/microservices-baseline.md) — 50 万档必然涉及微服务
-- [Spring Boot 工程实践](../../04.spring-backend/02-spring-boot/README.md) — 后端选 Spring Boot 的报价基线
+- 故事章节：阿明餐厅的"5 万换招牌" — 老板阿明的"5 万档"踩坑叙事
+- [面试题：报价拆解 / 隐性成本](../../12.interview/04.system-design/README.md) — 面试高频题
+- 微服务架构基线 — 50 万档必然涉及微服务
+- [Spring Boot 工程实践](../../04.spring-backend/02-boot/README.md) — 后端选 Spring Boot 的报价基线
 
 ---
 

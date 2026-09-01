@@ -480,9 +480,9 @@ graph TD
 - 外包避坑：[outsourcing-pitfalls](../outsourcing-pitfalls/README.md) — 外包 = 临时"促成团队"
 - 风险登记册：[risk-register](../risk-register/README.md) — "核心人员离职" = 人员相关高 P 风险
 - 自研 vs SaaS：[self-vs-saas-vs-outsourcing](../self-vs-saas-vs-outsourcing/README.md) — 团队规模决定选型
-- Spring 微服务基线：[Spring Cloud 架构](../../04.spring-backend/03-spring-cloud/README.md) — 微服务架构实现
-- 分布式链路追踪：[observability](../../06.distributed-systems/02-distributed/observability/README.md) — 团队协作可观测性
-- AI 团队故事：[13.story/21-platform-team](../../13.story/21-platform-team.md) — 平台团队的失败教训
+- Spring 微服务基线：[Spring Cloud 架构](../../04.spring-backend/03-cloud/README.md) — 微服务架构实现
+- 分布式链路追踪：[observability](../../06.distributed-systems/08-observability/README.md) — 团队协作可观测性
+- AI 团队故事：[13.story/21-platform-team](../../13.story/21-search-recommendation.md) — 平台团队的失败教训
 
 ---
 

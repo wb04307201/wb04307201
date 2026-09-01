@@ -470,9 +470,9 @@ timeline
 - 敏捷度量：[agile-metrics](../agile-metrics/README.md) — 外包必须有 SLA 量化指标
 - 康威定律：[conways-law-team-topologies](../conways-law-team-topologies/README.md) — 外包团队 = 临时"促成团队"（6-12 月）
 - 3 倍缓冲：[team-sizing-3x-buffer](../team-sizing-3x-buffer/README.md) — 外包 ROI 计算
-- 故事章节：[13.story/22-outsourcing-trap](../../13.story/22-outsourcing-trap.md) — 阿明外包踩坑的故事
-- 面试专题：[12.interview/04.system-design/outsourcing-101.md](../../12.interview/04.system-design/outsourcing-101.md) — 外包高频面试题
-- Spring 项目：[04.spring-backend/02-spring-boot](../../04.spring-backend/02-spring-boot/README.md) — Spring Boot 后端外包基线
+- 故事章节：[13.story/22-outsourcing-trap](../../13.story/22-database-migration.md) — 阿明外包踩坑的故事
+- 面试专题：[12.interview/04.system-design/outsourcing-101.md](../../12.interview/04.system-design/README.md) — 外包高频面试题
+- Spring 项目：[04.spring-backend/02-spring-boot](../../04.spring-backend/02-boot/README.md) — Spring Boot 后端外包基线
 - 分布式事务：[06.distributed-systems/02-distributed/distributed-transaction/README.md](../../06.distributed-systems/02-distributed/distributed-transaction/README.md) — 外包分布式系统的复杂
 
 ---

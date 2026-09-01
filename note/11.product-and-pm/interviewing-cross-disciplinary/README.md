@@ -526,11 +526,11 @@ timeline
 - [外包避坑指南](../outsourcing-pitfalls/README.md) — 跨专业候选人 = 内部"懂业务"替代外包
 - [项目风险登记册](../risk-register/README.md) — "核心人员离职" = RICE 高分项
 - [AI 项目管理 DORA + SPACE](../ai-pm-dora-space/README.md) — 评估新人产出效率
-- 故事联动：[13.story/21-hire-cross-disciplinary](../../13.story/21-hire-cross-disciplinary.md) — 阿明招"数学系小李"的故事
-- 面试专项：[12.interview/06-hiring/chapter-06-1](../../12.interview/06-hiring/chapter-06-1.md) — 招聘流程设计
-- 心理学 + IT：[12.interview/04.system-design/psychology-tech.md](../../12.interview/04.system-design/psychology-tech.md) — 跨专业招聘心理
-- 金融 + IT：[12.interview/06-hiring/fintech-hiring.md](../../12.interview/06-hiring/fintech-hiring.md) — 金融科技岗评估
-- Spring 工程实践：[04.spring-backend/02-spring-boot](../../04.spring-backend/02-spring-boot/README.md) — 后端 P5-P6 候选人需懂的栈
+- 故事联动：[13.story/21-hire-cross-disciplinary](../../13.story/21-search-recommendation.md) — 阿明招"数学系小李"的故事
+- 面试专项：[12.interview/06-hiring/chapter-06-1](../../12.interview/04.system-design/README.md) — 招聘流程设计
+- 心理学 + IT：[12.interview/04.system-design/psychology-tech.md](../../12.interview/04.system-design/README.md) — 跨专业招聘心理
+- 金融 + IT：[12.interview/06-hiring/fintech-hiring.md](../../12.interview/04.system-design/README.md) — 金融科技岗评估
+- Spring 工程实践：[04.spring-backend/02-spring-boot](../../04.spring-backend/02-boot/README.md) — 后端 P5-P6 候选人需懂的栈
 
 ---
 

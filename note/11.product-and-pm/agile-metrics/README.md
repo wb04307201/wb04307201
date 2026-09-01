@@ -505,9 +505,9 @@ Cycle Time = 从"开始开发"到"交付上线"的时间
 - [项目风险登记册](../risk-register/README.md) — 风险评分与度量协同（4T 响应策略）
 - [外包避坑指南](../outsourcing-pitfalls/README.md) — 外包验收的量化指标（覆盖率 > 50% / P99 < 500ms）
 - [5万 vs 50万 报价拆解](../app-quote-breakdown/README.md) — 报价档位的度量基线
-- [故事章节：阿明餐厅的"看板革命"](../../13.story/20-board-revolution.md) — 物理看板的隐性成本
-- [面试题：研发效能度量](../../12.interview/04.system-design/dev-metrics.md) — 面试高频"度量反模式"题
-- [分布式链路追踪](../../06.distributed-systems/02-distributed/observability/README.md) — Jaeger / Zipkin → Cycle Time 落地的可观测性
+- [故事章节：阿明餐厅的"看板革命"](../../13.story/20-multiplatform-architecture.md) — 物理看板的隐性成本
+- [面试题：研发效能度量](../../12.interview/04.system-design/README.md) — 面试高频"度量反模式"题
+- [分布式链路追踪](../../06.distributed-systems/08-observability/README.md) — Jaeger / Zipkin → Cycle Time 落地的可观测性
 
 ---
 
