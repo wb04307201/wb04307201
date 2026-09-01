@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: AI + BPMN 融合
+  depth: ⭐⭐⭐
 -->
 
 # AI + BPMN 融合

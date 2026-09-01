@@ -5,6 +5,7 @@ module:
   type: topic
   category: 5 种评测方法
   summary: 5 种评测方法详解 —— 自动化指标 / 黄金集 / LLM-as-Judge / A/B Test / 用户模拟
+  depth: ⭐⭐⭐
 -->
 
 # 5 种评测方法 · Agent 评测完整工具箱

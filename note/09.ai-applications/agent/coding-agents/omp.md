@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: OMP (oh-my-pi)：终端原生 + 100k Rust LOC + Hashline + Subagent IRC bus + per-role 4 角色模型 + 进程内 LSP/DAP。
+  depth: ⭐⭐⭐
 -->
 
 # OMP (oh-my-pi) — Terminal-First Coding Agent

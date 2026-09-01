@@ -5,6 +5,7 @@ module:
   type: topic
   category: 成本-平衡
   summary: 长上下文 vs RAG 成本经济学视角 + 平衡点公式 + 2025 Hybrid 共识，含 3 大生产场景实测 + 延迟对比 + 5 大反直觉 + 5 道面试高频题
+  depth: ⭐⭐⭐
 -->
 
 # 08 · Long Context vs RAG · 成本经济学与平衡点

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spec-Kit：GitHub 官方的 SDD 工具包，9 命令管线（短/全两条路径）+ 35 集成 + 企业级规范。
+  depth: ⭐⭐⭐
 -->
 
 # Spec-Kit — GitHub 官方 SDD 管线

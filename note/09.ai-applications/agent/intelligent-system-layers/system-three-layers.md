@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 智能系统分层架构：感知/认知/决策三层解耦与跨层协同，含硬件、模型与算法选型参考。
+  depth: ⭐⭐
 -->
 
 # 智能系统三层架构

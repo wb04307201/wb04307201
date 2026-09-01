@@ -5,6 +5,7 @@ module:
   type: topic
   category: 模型量化
   summary: GPTQ / AWQ / FP8 / INT4 量化对比 + 吞吐影响 + 何时上 INT4、风险与反模式
+  depth: ⭐⭐
 -->
 
 # 模型量化 · 显存与吞吐的杠杆

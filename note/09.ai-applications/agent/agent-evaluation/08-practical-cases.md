@@ -5,6 +5,7 @@ module:
   type: article
   category: Agent 评测实战
   summary: Agent 评测实战案例：客服 Agent 评估体系搭建 + 代码生成 Agent 评估 + CI/CD 集成 + 评估报告模板
+  depth: ⭐⭐⭐
 -->
 
 # Agent 评测实战案例 + CI/CD 集成

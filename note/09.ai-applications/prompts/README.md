@@ -4,6 +4,7 @@
   type: index
   category: AI 应用子 MOC
   summary: Prompt 工程——Prompt 设计方法 / 模板 / 实战 / 系统提示词 4 大主题。
+  depth: ⭐
 -->
 
 # Prompts（Prompt 工程）

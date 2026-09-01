@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: RAG 完整 Pipeline 综述
+  depth: ⭐⭐⭐
 -->
 
 # RAG Pipeline（完整流水线综述）

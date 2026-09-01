@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Claude Code 速查版：Anthropic 官方 + 锁定 Claude 模型 + CLAUDE.md/Hooks/Skills/Plugins/LSP 五大 Harness 扩展点 + .mcp.json 配置。
+  depth: ⭐⭐⭐
 -->
 
 # Claude Code — Anthropic 官方编程 Agent（速查版）

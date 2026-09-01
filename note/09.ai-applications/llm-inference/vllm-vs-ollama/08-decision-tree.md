@@ -5,6 +5,7 @@ module:
   type: topic
   category: 选型决策
   summary: 「我是 X 场景，应该选 Y 引擎」的场景化决策树 + 推荐配置 + checklist
+  depth: ⭐⭐⭐
 -->
 
 # 场景化决策树 · 选型不迷路

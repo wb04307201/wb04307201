@@ -5,6 +5,7 @@ module:
   type: topic
   category: 思维范式
   summary: Prompt vs if-else —— 何时用 LLM、何时用规则的 4 维决策矩阵 + 反模式
+  depth: ⭐⭐⭐
 -->
 
 # 思维范式 · Prompt vs if-else

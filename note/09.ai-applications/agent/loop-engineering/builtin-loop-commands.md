@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 2026 年各 AI 编码工具的内置循环命令对比：Claude Code /goal + /loop、Codex /goal、Ralph Wiggum 第三方工具。
+  depth: ⭐⭐
 -->
 
 # 内置循环命令对比：/goal · /loop · Ralph Wiggum

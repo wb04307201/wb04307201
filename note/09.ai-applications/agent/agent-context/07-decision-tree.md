@@ -5,6 +5,7 @@ module:
   type: topic
   category: 选型决策
   summary: Agent 长上下文 6 策略场景化决策树 + 反模式 + checklist
+  depth: ⭐⭐
 -->
 
 # 6 策略决策树 · Agent 长上下文选型不迷路

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Skill 从 0-1 的设计方法论：决策树（写 Skill vs 改 CLAUDE.md）+ 4 阶段流程 + 5 反模式 + YAML 模板。
+  depth: ⭐⭐⭐
 -->
 
 # Skill 从 0 到 1：怎么设计一个能用的 Skill？

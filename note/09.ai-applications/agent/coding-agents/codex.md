@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Codex 速查版：OpenAI 官方 + GPT-5.3 Codex + wire_api/base_url 自定义 OpenAI 兼容网关 + config.toml MCP 配置。
+  depth: ⭐⭐⭐
 -->
 
 # Codex — OpenAI 官方编程 Agent（速查版）

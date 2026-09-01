@@ -5,6 +5,7 @@ module:
   type: topic
   category: 一致性与失败处理
   summary: Self-Consistency 投票 + Judge 模型 + 重试预算 + 多结果聚合 + 失败模式（连续 3 次不一致怎么办）
+  depth: ⭐⭐⭐
 -->
 
 # 不一致与失败处理 · Self-Consistency 投票

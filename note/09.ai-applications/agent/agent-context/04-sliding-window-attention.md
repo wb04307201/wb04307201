@@ -5,6 +5,7 @@ module:
   type: topic
   category: 注意力滑动窗口
   summary: Sliding Window Attention + StreamingLLM + LongLoRA + Landmark Attention —— 注意力层面处理长上下文的 4 大技术
+  depth: ⭐⭐
 -->
 
 # Sliding Window Attention · 注意力层面的长上下文

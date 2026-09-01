@@ -5,6 +5,7 @@ module:
   type: index
   category: AI 应用子 MOC
   summary: LLM 评估体系（6 大维度 + 5 种评估方法 + LLM-as-Judge + 黄金集 + A/B Test）
+  depth: ⭐⭐⭐
 -->
 
 # LLM 评估体系：6 大维度 + 5 种评估方法完整实战

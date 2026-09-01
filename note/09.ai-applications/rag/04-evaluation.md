@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: RAG 评估指标（检索×生成×系统 三维度）+ RAGAS / TruLens / DeepEval 工具对比 + Agentic RAG 评估补充
+  depth: ⭐⭐⭐
 -->
 
 # RAG 评估指标与工具

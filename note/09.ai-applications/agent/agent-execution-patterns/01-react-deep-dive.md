@@ -5,6 +5,7 @@ module:
   type: topic
   category: ReAct 深度
   summary: ReAct（Reasoning + Acting）深度剖析 —— Thought/Action/Observation 三元组 + LangChain 实现 + Token 失控模式 + 5 个反模式
+  depth: ⭐⭐⭐
 -->
 
 # ReAct 深度剖析 · 思考 → 行动 → 观察 → 循环

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Skill 数量爆炸后如何保证 Agent 命中率：描述/路由/加载/评估四层模型 + 5 大反模式 + 实战。
+  depth: ⭐⭐⭐
 -->
 
 # Skill 数量爆炸后，Agent 命中率怎么保证？

@@ -5,6 +5,7 @@ module:
   type: topic
   category: 超时熔断
   summary: 双 timeout + Circuit Breaker + Fallback 模型 + Hystrix 模式应用到 LLM 场景
+  depth: ⭐⭐⭐
 -->
 
 # 超时熔断 · 双 timeout + Circuit Breaker

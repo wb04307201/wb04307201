@@ -5,6 +5,7 @@ module:
   type: topic
   category: 文本切片
   summary: Chunking 4 大策略对比：fixed / recursive / semantic / agentic / late chunking + chunk size 选型
+  depth: ⭐⭐⭐
 -->
 
 # Chunking · 文本切片 4 大策略

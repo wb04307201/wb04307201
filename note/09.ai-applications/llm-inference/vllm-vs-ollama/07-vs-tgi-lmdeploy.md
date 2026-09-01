@@ -5,6 +5,7 @@ module:
   type: topic
   category: 引擎横向对比
   summary: vLLM / TGI / LMDeploy / Ollama 4 大推理引擎在 11 个维度上的全对比表 + 推荐场景
+  depth: ⭐⭐
 -->
 
 # 4 引擎横向对比 · vLLM / TGI / LMDeploy / Ollama

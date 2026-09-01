@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring AI vs 编排平台：代码优先与低代码的边界
+  depth: ⭐⭐
 -->
 
 # Spring AI vs 编排平台：代码优先与低代码的边界

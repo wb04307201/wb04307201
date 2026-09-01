@@ -5,6 +5,7 @@ module:
   type: topic
   category: 4 模式对比
   summary: ReAct / Plan-and-Execute / DAG / Multi-Agent 在 6 维度上的完整对比表 + 典型代表 + 量化数据 + 失败模式
+  depth: ⭐⭐⭐
 -->
 
 # 6 维对比 · 4 模式完整打分

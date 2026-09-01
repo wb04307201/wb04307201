@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Coze（扣子）
+  depth: ⭐⭐⭐
 -->
 
 # Coze（扣子）

@@ -5,6 +5,7 @@ module:
   type: topic
   category: KV cache 显存管理
   summary: KV cache 显存碎片化 + prefix sharing + beam search 显存爆炸 + cache eviction 策略
+  depth: ⭐⭐
 -->
 
 # KV cache 管理 · 显存碎片化与共享

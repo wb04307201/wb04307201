@@ -5,6 +5,7 @@ module:
   type: topic
   category: 选型决策
   summary: Agent 评测选型决策 —— 按阶段 / 团队 / 预算选评测方案 + checklist
+  depth: ⭐⭐
 -->
 
 # Agent 评测选型决策 · 按阶段 / 团队 / 预算

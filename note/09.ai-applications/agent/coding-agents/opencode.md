@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: OpenCode 速查版：开源 + 75+ providers + oh-my-opencode 多 Agent + MCP OAuth 自动 RFC 7591 注册。
+  depth: ⭐⭐⭐
 -->
 
 # OpenCode — 开源跨平台编程 Agent（速查版）

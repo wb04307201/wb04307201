@@ -5,6 +5,7 @@ module:
   type: topic
   category: 选型决策
   summary: 4 模式场景化决策树 + 反模式 + checklist
+  depth: ⭐⭐⭐
 -->
 
 # 选型决策树 · 4 模式场景化
