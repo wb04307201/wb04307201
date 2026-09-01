@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Repository Type
 
 **双内容仓库**：
-- **顶部 README.md** — 个人主页 + 12 个开源项目展示（File View、Spring AI LoomAgent、Flexible Lock 等）
+- **顶部 README.md** — 个人主页 + **11 个开源项目**展示（File View、Spring AI LoomAgent、Flexible Lock 等）
 - **`note/`** — 13 主模块的体系化技术知识库（基于 Obsidian 维护），**785 个 README、1106 个 .md**（2026-09-02 实测校对，排除 `.health-tmp` / `.obsidian`）
 
 主体是文档（Markdown），不是源代码。Java/Spring 项目的源码在外部仓库（如 `wb04307201/file-view`）。
