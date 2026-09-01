@@ -1,18 +1,16 @@
 """
-auto-calibrate.py v2 - 支持 L5 标准 2.0 + 多轮校准合并
+auto-calibrate.py v3 - 支持 L5 标准 2.0 + overview/index 独立基线
 
-输入：v{n} 抽样报告（Markdown）
-输出：应用所有偏差 ≥ 阈值的 depth 校准 + 生成 commit message + 更新 README depth 表
-
-v2 新增：
-- 支持 L5 标准 2.0 评分启发式（D5 ≥ 2 公司/模型案例）
-- 多轮校准合并：相同文件被多次提到时按建议值合并
-- --no-overwrite 模式：保留已有校准
+v3 新增：
+- --overview-threshold：D5 ≥ 2 公司案例（默认 v9 标准）
+- --topic-threshold：D2 ≥ 5 跨主模块（默认主题深读标准）
+- 自动识别 overview vs 主题深读：path 含 README.md + frontmatter type=index
+  → 应用 overview 基线（更宽松的校准）
 
 用法：
-  python scripts/auto-calibrate.py --report v9 --threshold 2
-  python scripts/auto-calibrate.py --report v9 --threshold 1 --dry-run
-  python scripts/auto-calibrate.py --report v9 --no-overwrite
+  python scripts/auto-calibrate.py --report v10 --threshold 1
+  python scripts/auto-calibrate.py --report v10 --overview-only
+  python scripts/auto-calibrate.py --report v10 --no-overwrite
 """
 import os, re, sys, json, argparse
 from collections import defaultdict
@@ -27,8 +25,27 @@ L_TO_STARS = {
 }
 STARS_TO_L = {v: k for k, v in L_TO_STARS.items()}
 
+
+def is_overview_or_index(file_path):
+    """识别 overview/index 类文件（MOC 独立基线）"""
+    if not file_path.endswith('README.md'):
+        return False
+    if not os.path.exists(file_path):
+        return False
+    try:
+        c = open(file_path, encoding='utf-8', errors='ignore').read(1000)
+    except:
+        return False
+    # 检查 frontmatter 中 type=index 或 category 含 MOC
+    if re.search(r'type:\s*index', c):
+        return True
+    if re.search(r'category:\s*主模块子\s*MOC', c):
+        return True
+    return False
+
+
 def parse_report(path):
-    """解析 v{n} 报告 Markdown，提取偏差清单（合并多次提到的同文件）"""
+    """解析 v{n} 报告 Markdown，提取偏差清单"""
     if not os.path.exists(path):
         print(f'❌ Report not found: {path}')
         sys.exit(1)
@@ -36,7 +53,6 @@ def parse_report(path):
     with open(path, encoding='utf-8') as f:
         content = f.read()
 
-    # 使用 dict 合并（后出现覆盖前出现）
     deviations = {}
     for line in content.split('\n'):
         if not line.startswith('|') or '|' not in line[1:]:
@@ -69,12 +85,14 @@ def parse_report(path):
 
     return list(deviations.values())
 
+
 def validate_depth_suggestion(suggestion):
     """验证建议值合法"""
     if not suggestion or not suggestion.startswith('⭐'):
         return False
     stars = suggestion.count('⭐') + suggestion.count('★')
     return 1 <= stars <= 5
+
 
 def update_depth(file_path, new_depth, no_overwrite=False):
     """更新文件 frontmatter 的 depth 字段"""
@@ -87,11 +105,9 @@ def update_depth(file_path, new_depth, no_overwrite=False):
     except:
         return False
 
-    # 跳过（保留已有校准）
     if no_overwrite and re.search(r'^\s*depth:\s*[⭐★]+', c, re.MULTILINE):
         return False
 
-    # 替换现有 depth 字段
     new_c = re.sub(
         r'^\s*depth:\s*[⭐★]+.*$',
         f'  depth: {new_depth}',
@@ -101,7 +117,6 @@ def update_depth(file_path, new_depth, no_overwrite=False):
     )
 
     if new_c == c:
-        # 没有 depth 字段，插入到 module: 块末尾
         m = re.search(r'(<!--\s*\nmodule:.*?\n)(-->)', c, re.DOTALL)
         if not m:
             m = re.search(r'(<!--\s*module:.*?\n)(-->)', c, re.DOTALL)
@@ -116,15 +131,17 @@ def update_depth(file_path, new_depth, no_overwrite=False):
     open(file_path, 'w', encoding='utf-8').write(new_c)
     return True
 
+
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--report', required=True, help='Path to v{n} report or just v{n}')
-    parser.add_argument('--threshold', type=int, default=1, help='最小偏差阈值（默认 1）')
-    parser.add_argument('--dry-run', action='store_true', help='试运行不写入')
-    parser.add_argument('--no-overwrite', action='store_true', help='保留已有校准')
+    parser.add_argument('--report', required=True)
+    parser.add_argument('--threshold', type=int, default=1, help='最小偏差阈值')
+    parser.add_argument('--dry-run', action='store_true')
+    parser.add_argument('--no-overwrite', action='store_true')
+    parser.add_argument('--overview-only', action='store_true',
+                       help='仅应用 overview/index 文件的偏差（跳过主题深读）')
     args = parser.parse_args()
 
-    # 支持 "v9" 简写
     report_path = args.report
     if not os.path.exists(report_path):
         for cand in [
@@ -139,6 +156,7 @@ def main():
     print(f'Threshold: |偏差| ≥ {args.threshold}')
     print(f'Dry run: {args.dry_run}')
     print(f'No overwrite: {args.no_overwrite}')
+    print(f'Overview only: {args.overview_only}')
     print()
 
     deviations = parse_report(report_path)
@@ -148,6 +166,8 @@ def main():
     applied = []
     skipped = []
     failed = []
+    overview_applied = []
+    topic_applied = []
 
     for dev in deviations:
         if abs(dev['deviation']) < args.threshold:
@@ -155,23 +175,34 @@ def main():
             continue
 
         if not validate_depth_suggestion(dev['suggestion']):
-            print(f'⚠ 跳过 {dev["file"]}: 建议值非法 ({dev["suggestion"]})')
             failed.append(dev)
             continue
 
-        print(f'  {dev["file"]}: {dev["current"]} → {dev["suggestion"]} (偏差 {dev["deviation"]})')
+        is_overview = is_overview_or_index(dev['file'])
+
+        # overview-only 模式：跳过主题深读
+        if args.overview_only and not is_overview:
+            skipped.append(dev)
+            continue
+
+        marker = '🏠 OVERVIEW' if is_overview else '📖 TOPIC'
+        print(f'  {marker} {dev["file"]}: {dev["current"]} → {dev["suggestion"]} (偏差 {dev["deviation"]})')
 
         if args.dry_run:
             continue
 
         if update_depth(dev['file'], dev['suggestion'], no_overwrite=args.no_overwrite):
             applied.append(dev)
+            if is_overview:
+                overview_applied.append(dev)
+            else:
+                topic_applied.append(dev)
         else:
             failed.append(dev)
 
     print()
     print('=' * 50)
-    print(f'应用: {len(applied)}')
+    print(f'应用: {len(applied)}（overview={len(overview_applied)}, 主题深读={len(topic_applied)}）')
     print(f'跳过（偏差 < {args.threshold}）: {len(skipped)}')
     print(f'失败: {len(failed)}')
 
@@ -179,14 +210,8 @@ def main():
         print()
         print('建议 commit message:')
         print(f'fix(depth): 自动校准 {len(applied)} 篇（基于 {report_path}）')
-        print()
-        # 按类型分组
-        downgrades = [d for d in applied if d['deviation'] < 0]
-        upgrades = [d for d in applied if d['deviation'] > 0]
-        for d in downgrades:
-            print(f'  - {d["file"]}: {d["current"]} → {d["suggestion"]}')
-        for d in upgrades:
-            print(f'  - {d["file"]}: {d["current"]} → {d["suggestion"]}')
+        print(f'  - overview/index: {len(overview_applied)} 篇（独立基线）')
+        print(f'  - 主题深读: {len(topic_applied)} 篇（v9 标准）')
 
 if __name__ == '__main__':
     main()
