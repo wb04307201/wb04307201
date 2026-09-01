@@ -31,6 +31,7 @@ module:
 | 07 | [安全](./07-security/) | XSS / CSRF / CSP / CORS / 会话 / 供应链 | [xss](./07-security/xss/) / [csrf](./07-security/csrf/) / [csp](./07-security/csp/) / [cors](./07-security/cors/) / [sessions](./07-security/sessions/) / [supply-chain](./07-security/supply-chain/) | 攻击防护与合规 |
 | 08 | [跨端](./08-cross-platform/) | React Native / Flutter / Tauri / PWA / 小程序 | [mobile-tech-stack](./08-cross-platform/mobile-tech-stack/) / [react-native](./08-cross-platform/react-native/) / [flutter](./08-cross-platform/flutter/) / [tauri](./08-cross-platform/tauri/) / [pwa](./08-cross-platform/pwa/) / [mini-program](./08-cross-platform/mini-program/) | 一次开发多端部署 |
 | 09 | [前端与 AI](./09-frontend-and-ai/) | AI SDK / AI Native UI / Vibe Coding | [ai-sdk](./09-frontend-and-ai/ai-sdk/) / [vibe-coding](./09-frontend-and-ai/vibe-coding/) | AI 时代开发范式升级 |
+| 10 | [无障碍](./a11y/) | Web Accessibility / ARIA / 键盘导航 / WCAG 2.1 | [wcag](./a11y/wcag/) | 包容性设计与合规必备 |
 
 ### 1.1 学习路径
 
