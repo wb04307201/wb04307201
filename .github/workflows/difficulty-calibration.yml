@@ -6,8 +6,13 @@ on:
     paths:
       - "note/12.interview/**/*.md"
       - "note/13.story/**/*.md"
+      - "note/[01-11]*/**/*.md"
       - ".github/workflows/difficulty-calibration.yml"
+      - "scripts/auto-calibrate.py"
   workflow_dispatch:
+  schedule:
+    # 每月首日 03:00 跑 v6+ 抽样 + 自动校准
+    - cron: "0 3 1 * *"
 
 jobs:
   calibration-check:
@@ -20,13 +25,14 @@ jobs:
         with:
           python-version: "3.13"
 
-      - name: Run difficulty calibration check
+      - name: Run difficulty + depth calibration check
         run: |
           python << 'PYEOF'
           """
           Difficulty 校准 CI 检查（结构验证 + 分布报告）
           - 验证 frontmatter difficulty 字段格式（1-5 星合法）
           - 验证 frequency 字段格式（高频/中频/低频合法）
+          - 验证主模块 depth 字段格式（1-5 星合法）
           - 输出分布统计（不预测 5-dim 评分，避免误报）
           - 5-dim 精确校准由人工 / LLM agent 完成（见 difficulty-calibration.md）
           """
@@ -35,14 +41,22 @@ jobs:
 
           ROOT = 'note/12.interview'
           STORIES_ROOT = 'note/13.story'
+          MAIN_MODULES = [f'note/{m:02d}-{name}' for m, name in [
+              (1, 'java-and-jvm'), (2, 'cs-foundations'), (3, 'data-stack'),
+              (4, 'spring-backend'), (5, 'frontend'), (6, 'distributed-systems'),
+              (7, 'devops-and-tools'), (8, 'ai-foundations'), (9, 'ai-applications'),
+              (10, 'business-systems'), (11, 'product-and-pm'),
+          ]]
 
           diff_counter = Counter()
           freq_counter = Counter()
+          depth_counter = Counter()
           missing_diff = []
+          missing_depth = []
           invalid_format = []
           files_checked = 0
 
-          for root_dir in [ROOT, STORIES_ROOT]:
+          for root_dir in [ROOT, STORIES_ROOT, *MAIN_MODULES]:
               if not os.path.isdir(root_dir):
                   continue
               for root, _, names in os.walk(root_dir):
@@ -64,28 +78,45 @@ jobs:
                           continue
                       files_checked += 1
 
-                      # difficulty 字段验证
-                      m = re.search(r'difficulty:\s*([⭐★]+)', c)
-                      if not m:
-                          missing_diff.append(p)
-                          continue
-                      stars = m.group(1).count('⭐') + m.group(1).count('★')
-                      if stars < 1 or stars > 5:
-                          invalid_format.append((p, stars))
-                          continue
-                      diff_counter[stars] += 1
+                      # difficulty 字段验证（仅 12.interview + 13.story）
+                      if root_dir in (ROOT, STORIES_ROOT):
+                          m = re.search(r'difficulty:\s*([⭐★]+)', c)
+                          if not m:
+                              missing_diff.append(p)
+                              continue
+                          stars = m.group(1).count('⭐') + m.group(1).count('★')
+                          if stars < 1 or stars > 5:
+                              invalid_format.append((p, stars))
+                              continue
+                          diff_counter[stars] += 1
 
-                      # frequency 字段验证
-                      f = re.search(r'frequency:\s*(\S+)', c)
-                      if f:
-                          freq_counter[f.group(1)] += 1
+                          f = re.search(r'frequency:\s*(\S+)', c)
+                          if f:
+                              freq_counter[f.group(1)] += 1
 
-          print(f'Scanned {files_checked} leaf files in 12.interview + 13.story')
+                      # depth 字段验证（仅主模块）
+                      if root_dir in MAIN_MODULES:
+                          m = re.search(r'^\s*depth:\s*([⭐★]+)', c, re.MULTILINE)
+                          if not m:
+                              missing_depth.append(p)
+                              continue
+                          stars = m.group(1).count('⭐') + m.group(1).count('★')
+                          if stars < 1 or stars > 5:
+                              invalid_format.append((p, stars))
+                              continue
+                          depth_counter[stars] += 1
+
+          print(f'Scanned {files_checked} leaf files in 12.interview + 13.story + 11 main modules')
           print()
-          print('=== Difficulty Distribution ===')
+          print('=== Difficulty Distribution (12.interview + 13.story) ===')
           for s in sorted(diff_counter.keys(), reverse=True):
               bar = '#' * (diff_counter[s] // 3)
               print(f'  {chr(0x2B50) * s} ({s}-star): {diff_counter[s]:3d} {bar}')
+          print()
+          print('=== Depth Distribution (11 main modules) ===')
+          for s in sorted(depth_counter.keys(), reverse=True):
+              bar = '#' * (depth_counter[s] // 3)
+              print(f'  {chr(0x2B50) * s} ({s}-star): {depth_counter[s]:3d} {bar}')
           print()
           print('=== Frequency Distribution ===')
           for f, c in freq_counter.most_common(10):
@@ -97,10 +128,27 @@ jobs:
                   print(f'  {p}')
               if len(missing_diff) > 5:
                   print(f'  ... and {len(missing_diff) - 5} more')
+          if missing_depth:
+              print(f'Missing depth field: {len(missing_depth)} files')
+              for p in missing_depth[:5]:
+                  print(f'  {p}')
+              if len(missing_depth) > 5:
+                  print(f'  ... and {len(missing_depth) - 5} more')
           if invalid_format:
-              print(f'Invalid difficulty format: {len(invalid_format)} files')
+              print(f'Invalid format: {len(invalid_format)} files')
               for p, s in invalid_format[:5]:
                   print(f'  {p}: {s}-star (must be 1-5)')
 
           # 不退出非零（仅警告），让 PR 通过
           PYEOF
+
+      - name: Run auto-calibrate (scheduled only)
+        if: github.event_name == 'schedule'
+        run: |
+          echo '=== 月度自动校准 ==='
+          # 仅当抽样报告存在时运行
+          if [ -f skills/note-health/references/v6-sampling-report.md ]; then
+            python scripts/auto-calibrate.py --report v6 --threshold 2 || true
+          else
+            echo 'No v6-sampling-report.md found, skipping auto-calibrate'
+          fi
