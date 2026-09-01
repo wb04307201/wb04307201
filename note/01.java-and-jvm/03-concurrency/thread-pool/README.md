@@ -1538,18 +1538,18 @@ Web 容器
 
 ### 18.1 向上链（依赖/被依赖）
 
-- [线程池高频面试题（12.interview）](../../../12.interview/01.java/thread-pool-高频面试题/README.md) — 面试必备精简版（高频问答）
-- [JMM 内存模型（01.java-and-jvm）](../jmm-memory-model/README.md) — 线程池内存可见性保证（happens-before）
-- [ReentrantLock 锁机制（01.java-and-jvm）](../lock-reentrantlock/README.md) — Worker 的 AQS 实现基础
-- [Spring Boot @Async TaskExecutor（04.spring-backend）](../../../04.spring-backend/spring-boot/async-task-executor/README.md) — Spring 异步任务底层即 ThreadPoolExecutor
-- [Dubbo 线程池模型（06.distributed-systems）](../../../06.distributed-systems/rpc/dubbo-threadpool/README.md) — Dubbo 4 种内置线程池（fixed/cached/limited/eager）
-- [Netty EventLoop 与线程模型（06.distributed-systems）](../../../06.distributed-systems/network/netty-eventloop/README.md) — Netty 业务线程池 UnorderedThreadPoolExecutor
-- [Tomcat 线程池调优（06.distributed-systems）](../../../06.distributed-systems/web-servers/tomcat-threadpool/README.md) — Tomcat TaskQueue 定制
+- [线程池高频面试题（12.interview）](../../../12.interview/01.java/thread-pool/README.md) — 面试必备精简版（高频问答）
+- [JMM 内存模型（01.java-and-jvm）](../jmm/README.md) — 线程池内存可见性保证（happens-before）
+- [ReentrantLock 锁机制（01.java-and-jvm）](../juc-locks/README.md) — Worker 的 AQS 实现基础
+- [Spring Boot @Async TaskExecutor（04.spring-backend）](../../../04.spring-backend/02-boot/async-task-executor/README.md) — Spring 异步任务底层即 ThreadPoolExecutor
+- [Dubbo 线程池模型（06.distributed-systems）](../../../06.distributed-systems/02-distributed/rpc/dubbo-threadpool/README.md) — Dubbo 4 种内置线程池（fixed/cached/limited/eager）
+- [Netty EventLoop 与线程模型（06.distributed-systems）](../../../06.distributed-systems/02-distributed/netty-eventloop/README.md) — Netty 业务线程池 UnorderedThreadPoolExecutor
+- [Tomcat 线程池调优（06.distributed-systems）](../../../06.distributed-systems/02-distributed/tomcat-threadpool/README.md) — Tomcat TaskQueue 定制
 
 ### 18.2 向下链（本文被引用）
 
-- `12.interview/01.java/thread-pool-高频面试题/` — 面试题简版反向链回本文
-- `04.spring-backend/spring-boot/async-task-executor/` — Spring @Async 章节引用本文做底层原理说明
+- `12.interview/01.java/thread-pool/` — 面试题简版反向链回本文
+- `04.spring-backend/02-boot/async-task-executor/` — Spring @Async 章节引用本文做底层原理说明
 
 ---
 
