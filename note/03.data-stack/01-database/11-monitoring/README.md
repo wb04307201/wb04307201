@@ -5,6 +5,7 @@ module:
   type: index
   category: 主模块子文章
   summary: 数据库监控告警是生产稳定性基石,核心是 Prometheus + Grafana + AlertManager,覆盖 QPS、延迟、连接、复制延迟等关键指标与告警闭环。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 数据库监控告警

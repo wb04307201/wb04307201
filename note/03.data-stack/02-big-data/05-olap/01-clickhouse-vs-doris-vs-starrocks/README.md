@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: ClickHouse vs Doris vs StarRocks——实时 OLAP 三剑客深度对比
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # ClickHouse vs Apache Doris vs StarRocks：实时 OLAP 三剑客深度对比

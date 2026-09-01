@@ -5,6 +5,7 @@ module:
   type: index
   category: 主模块子文章
   summary: Airflow / DolphinScheduler / Azkaban——大数据任务编排系统
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 06 调度

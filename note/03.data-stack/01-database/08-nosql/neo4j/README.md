@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Neo4j 图数据库：节点/关系/属性模型、Cypher 查询语言、N 度关系毫秒级查询
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # Neo4j 图数据库

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: PostgreSQL 架构、MVCC、索引、扩展生态与高可用，兼顾与 MySQL 的选型决策
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # PostgreSQL

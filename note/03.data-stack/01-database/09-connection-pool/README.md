@@ -5,6 +5,7 @@ module:
   type: index
   category: 主模块子文章
   summary: 数据库连接池通过预创建并复用连接降低开销,Spring Boot 2.x+ 默认 HikariCP,监控与防 SQL 注入场景推荐 Druid。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 数据库连接池

@@ -5,6 +5,7 @@ module:
   type: index
   category: 主模块子文章
   summary: Lambda / Kappa / 湖仓一体——大数据架构选型的三种主流范式
+  depth: ⭐⭐⭐⭐
 -->
 
 # 01 数仓架构

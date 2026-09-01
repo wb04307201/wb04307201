@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Flink vs Spark Streaming——实时计算引擎深度对比
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # Flink vs Spark Streaming：实时计算引擎深度对比

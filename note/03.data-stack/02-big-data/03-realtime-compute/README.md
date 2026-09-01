@@ -5,6 +5,7 @@ module:
   type: index
   category: 主模块子文章
   summary: Flink / Spark Streaming / Storm——毫秒-秒级延迟的流处理引擎
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 03 实时计算

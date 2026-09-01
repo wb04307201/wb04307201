@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Cassandra 列存储数据库：数据模型、Query-first Design、可调一致性级别
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # Cassandra 列存储数据库

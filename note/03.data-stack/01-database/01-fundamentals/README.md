@@ -4,6 +4,7 @@
   type: index
   category: 主模块子文章
   summary: 数据库基础概念、ER 图、范式与设计步骤、数据类型与字符集，是后续 SQL、事务、索引、MySQL 等高级主题的基石。
+  depth: ⭐⭐⭐
 -->
 
 # 数据库基础知识

@@ -5,6 +5,7 @@ module:
   type: index
   category: 主模块子文章
   summary: NoSQL 涵盖键值、文档、列存储、图、搜索 5 大类型,天生支持分布式扩展,以最终一致性换取扩展性;NewSQL 融合 SQL + NoSQL 优势。
+  depth: ⭐⭐⭐⭐
 -->
 
 # NoSQL 数据库

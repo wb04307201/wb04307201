@@ -5,6 +5,7 @@ module:
   type: index
   category: 主模块子文章
   summary: 数据迁移覆盖全量、增量、异构三大场景,核心工具包括 DataX（离线全量）、Canal/Maxwell（Binlog 增量）、Flink CDC（实时流式）。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 数据迁移与同步
