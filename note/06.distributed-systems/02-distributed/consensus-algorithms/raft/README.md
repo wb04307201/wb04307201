@@ -5,7 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Raft 共识算法：以强 Leader + 模块化分解（选举/日志复制/安全性）实现可理解的分布式一致性，etcd/TiKV/Consul 首选协议
-  depth: ⭐⭐⭐⭐
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # Raft算法

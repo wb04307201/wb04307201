@@ -5,7 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: volatile 关键字深度解析
-  depth: ⭐⭐⭐⭐
+  depth: ⭐⭐
 -->
 
 # volatile 关键字深度解析

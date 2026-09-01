@@ -5,7 +5,7 @@ module:
   type: index
   category: 主模块子文章
   summary: 专项支持环节（LIMS · PMS）—— 通用价值链之外的专项系统，服务于特定行业或场景（实验室、项目管理）。
-  depth: ⭐⭐⭐
+  depth: ⭐
 -->
 
 # 06 专项支持

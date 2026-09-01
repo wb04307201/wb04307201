@@ -5,7 +5,7 @@ module:
   type: index
   category: 主模块子文章
   summary: Redis 是基于内存的高性能键值数据库,支持丰富数据结构、RDB+AOF 持久化、Cluster 集群、淘汰策略与 Lua/事务能力,广泛用于缓存与分布式锁。
-  depth: ⭐⭐⭐⭐
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # Redis

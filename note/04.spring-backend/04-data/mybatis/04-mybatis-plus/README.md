@@ -5,7 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: MyBatis-Plus 全家桶
-  depth: ⭐⭐⭐
+  depth: ⭐
 -->
 
 # 04 MyBatis-Plus 全家桶

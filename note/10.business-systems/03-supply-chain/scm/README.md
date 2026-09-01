@@ -4,7 +4,7 @@
   type: article
   category: 主模块子文章
   summary: 一份按业务场景梳理的 SCM 速查手册：从供应商到客户的"端到端"链条管理。
-  depth: ⭐⭐⭐⭐⭐
+  depth: ⭐⭐⭐⭐
 -->
 
 # SCM · 供应链管理系统

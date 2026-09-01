@@ -5,7 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Agent 可靠性工程防线 — 4 层防护体系防跑偏/死循环
-  depth: ⭐⭐⭐⭐
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # Agent 可靠性工程防线 — 4 层防护体系
