@@ -1,18 +1,41 @@
 #!/usr/bin/env bash
 # pre-commit hook: 自动同步 skills/ → .claude/skills/ + .codex/skills/
+#                    + note/ 链接完整性检查（新增 2026-09-02）
 #
 # 安装: cp .githooks/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
 # 或通过 git config core.hooksPath .githooks（推荐，可追踪）
 
+set -e
+
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 SCRIPT="$REPO_ROOT/scripts/sync-skills.sh"
 
+# 1. skills/ 变更时自动同步到 .claude/skills/
 if [ -f "$SCRIPT" ]; then
-  # 只在 skills/ 有变更时才同步
   STAGED_SKILLS=$(git diff --cached --name-only | grep "^skills/" | wc -l)
   if [ "$STAGED_SKILLS" -gt 0 ]; then
     echo "[pre-commit] skills/ 有变更，同步到 .claude/skills/..."
     bash "$SCRIPT"
-    # 注：镜像目录已在 .gitignore 中，无需 git add
+  fi
+fi
+
+# 2. note/ 新增/修改文件时跑链接完整性检查（新增 2026-09-02 · Session 6 教训）
+STAGED_NOTE=$(git diff --cached --name-only | grep "^note/.*\.md$" | grep -v "^note/.health-tmp" || true)
+if [ -n "$STAGED_NOTE" ]; then
+  CHECK_SCRIPT="$REPO_ROOT/scripts/check-broken-links.py"
+  if [ -f "$CHECK_SCRIPT" ]; then
+    echo "[pre-commit] note/ 有 $(echo "$STAGED_NOTE" | wc -l) 个 .md 变更，跑链接完整性检查..."
+    if ! python "$CHECK_SCRIPT" --quiet $STAGED_NOTE; then
+      echo ""
+      echo "❌ 链接完整性检查未通过，请修复断链后再 commit"
+      echo "   详见: python scripts/check-broken-links.py --help"
+      echo ""
+      # 给出修复建议
+      echo "   修复方法："
+      echo "   1. 跑 python scripts/check-broken-links.py <file>  看具体断链"
+      echo "   2. 修正目标路径或删除孤链（参考 note-precipitation-planning §7.1）"
+      echo "   3. 用 git commit --no-verify 临时绕过（不推荐）"
+      exit 1
+    fi
   fi
 fi
