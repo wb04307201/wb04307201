@@ -5,6 +5,7 @@ module:
   type: index
   category: 主模块子文章
   summary: 搜索算法总目录——覆盖枚举 BFS/DFS、二分搜索、分支限界等精确与启发式搜索方法。
+  depth: ⭐⭐
 -->
 
 # 搜索算法

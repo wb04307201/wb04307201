@@ -5,6 +5,7 @@ module:
   type: deep-dive
   category: 字符串算法
   summary: 字符串算法 3 大深度 —— Trie（字典树）/ KMP / AC 自动机（多模式匹配）+ 实战选型
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 字符串算法 · 3 大深度（Trie / KMP / AC 自动机）

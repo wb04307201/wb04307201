@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: SSE vs WebSocket 协议深度对比——连接建立、数据帧、重连机制与 AI 时代的选型。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # SSE vs WebSocket —— 协议深度对比

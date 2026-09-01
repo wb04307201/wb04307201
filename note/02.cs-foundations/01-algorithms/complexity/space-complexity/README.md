@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 空间复杂度衡量算法运行过程中额外需要的存储空间随输入规模增长的变化速率，用大 O 符号表示。
+  depth: ⭐⭐
 -->
 
 # 空间复杂度

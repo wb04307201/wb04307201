@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 服务器性能监控与云计算服务模型，保障系统稳定运行与架构选型。
+  depth: ⭐⭐
 -->
 
 # 运维

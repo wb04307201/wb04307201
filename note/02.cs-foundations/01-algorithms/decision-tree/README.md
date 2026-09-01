@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 决策树 3 大经典模型（ID3 / C4.5 / CART）
+  depth: ⭐⭐⭐⭐
 -->
 
 # 决策树 3 大经典模型（ID3 / C4.5 / CART）

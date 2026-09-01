@@ -5,6 +5,7 @@ module:
   type: index
   category: 主模块子文章
   summary: 优化算法——求解目标函数最优解的迭代方法
+  depth: ⭐⭐⭐
 -->
 
 # 优化算法

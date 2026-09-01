@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: PCA 主成分分析 + 与 SVD 关系
+  depth: ⭐⭐⭐⭐
 -->
 
 # PCA 主成分分析

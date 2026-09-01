@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 文件系统层次（VFS/ext4/XFS）、inode 与 dentry、文件描述符、I/O 模型与 Linux page cache。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 文件系统与 I/O

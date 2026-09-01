@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 虚拟内存与物理内存映射、分页/分段机制、页表与 TLB、页面置换算法及 Java 堆外内存。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 内存管理

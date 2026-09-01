@@ -4,6 +4,7 @@
   type: topic
   category: Trie 字典树
   summary: Trie 数据结构 —— Java 数组实现 + HashMap 实现 + 自动补全实战
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # Trie（字典树）· 完整实现

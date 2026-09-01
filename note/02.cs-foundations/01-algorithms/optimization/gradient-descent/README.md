@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 梯度下降 4 大变体（BGD/SGD/Mini-batch/Adam）
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 梯度下降（Gradient Descent）
