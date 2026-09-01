@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: PWA
+  depth: ⭐⭐⭐⭐
 -->
 
 # PWA (Progressive Web App)

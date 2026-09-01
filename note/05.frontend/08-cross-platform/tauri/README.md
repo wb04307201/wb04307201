@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Tauri 2.0
+  depth: ⭐⭐⭐⭐
 -->
 
 # Tauri 2.0

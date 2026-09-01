@@ -4,6 +4,7 @@
   type: article
   category: 主模块子文章
   summary: 前端状态管理是 2015 年至今最"内卷"的领域之一。从 Redux 一家独大 → MobX 二分天下 → 2023 后 Zustand / Jotai ...
+  depth: ⭐⭐⭐⭐
 -->
 
 # 状态管理

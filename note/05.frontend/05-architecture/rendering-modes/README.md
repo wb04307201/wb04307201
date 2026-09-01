@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 渲染模式全景
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 渲染模式全景

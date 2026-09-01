@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: CSP 与 SRI
+  depth: ⭐⭐⭐⭐
 -->
 
 # CSP（内容安全策略）与 SRI（子资源完整性）

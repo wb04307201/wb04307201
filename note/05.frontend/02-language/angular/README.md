@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Angular 核心架构、依赖注入、RxJS、Signals 与企业级应用实践
+  depth: ⭐⭐⭐⭐
 -->
 
 # Angular

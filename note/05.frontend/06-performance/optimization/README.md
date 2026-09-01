@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 性能优化手段
+  depth: ⭐⭐⭐
 -->
 
 # 性能优化手段

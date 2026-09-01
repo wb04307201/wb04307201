@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Cookies vs LocalStorage 会话管理
+  depth: ⭐⭐
 -->
 
 # Cookies vs LocalStorage 用于会话管理：你需要知道的一切

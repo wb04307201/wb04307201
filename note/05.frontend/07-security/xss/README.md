@@ -4,6 +4,7 @@
   type: article
   category: 主模块子文章
   summary: XSS（Cross-Site Scripting，为避免与 CSS 混淆缩写为 XSS）是 OWASP Top 10 常年位居前列的攻击方式。核心思路只有...
+  depth: ⭐⭐⭐⭐
 -->
 
 # XSS（跨站脚本攻击）

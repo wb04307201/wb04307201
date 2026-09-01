@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 设计系统
+  depth: ⭐⭐⭐⭐
 -->
 
 # 设计系统

@@ -5,6 +5,7 @@ module:
   type: index-only
   category: HTTP 协议
   summary: HTTP 协议专题索引 —— REST 请求语义（GET vs POST） 与 HTTP 协议族核心机制
+  depth: ⭐
 -->
 
 # HTTP 协议专题

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Core Web Vitals 优化
+  depth: ⭐⭐⭐
 -->
 
 # Core Web Vitals 优化

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Vibe Coding
+  depth: ⭐⭐⭐⭐
 -->
 
 # Vibe Coding：AI 时代的编程范式

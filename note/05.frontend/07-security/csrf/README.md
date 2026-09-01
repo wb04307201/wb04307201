@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: CSRF 攻击与防御
+  depth: ⭐⭐⭐⭐
 -->
 
 # CSRF（跨站请求伪造）

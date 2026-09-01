@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 小程序开发
+  depth: ⭐⭐
 -->
 
 # 小程序开发

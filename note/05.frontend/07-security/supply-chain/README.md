@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 依赖供应链安全
+  depth: ⭐⭐⭐⭐
 -->
 
 # 依赖供应链安全

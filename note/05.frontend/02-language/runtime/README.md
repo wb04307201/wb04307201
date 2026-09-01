@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: JS 运行时：Node.js / Deno / Bun
+  depth: ⭐⭐⭐⭐
 -->
 
 # JS 运行时：Node.js / Deno / Bun

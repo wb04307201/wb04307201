@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: AI SDK 集成
+  depth: ⭐⭐⭐
 -->
 
 # AI SDK 集成

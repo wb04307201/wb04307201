@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 微前端架构——Single-SPA/Qiankun/Module Federation 选型 + 沙箱隔离 + 通信机制
+  depth: ⭐⭐
 -->
 
 # 微前端

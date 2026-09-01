@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: BFF (Backend For Frontend) 模式
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 架构演进：深入理解 BFF (Backend For Frontend) 模式

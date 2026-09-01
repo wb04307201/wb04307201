@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: React Native 跨端移动开发
+  depth: ⭐⭐⭐
 -->
 
 # React Native 跨端移动开发

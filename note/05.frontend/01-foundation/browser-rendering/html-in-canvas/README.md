@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: HTML-in-Canvas WICG 提案
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # HTML-in-Canvas（WICG 提案）

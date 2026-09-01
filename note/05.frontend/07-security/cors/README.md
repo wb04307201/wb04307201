@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: CORS 跨域
+  depth: ⭐⭐
 -->
 
 # CORS 跨域
