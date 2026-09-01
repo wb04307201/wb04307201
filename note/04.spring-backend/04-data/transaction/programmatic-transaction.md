@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 编程式事务（TransactionTemplate）
+  depth: ⭐⭐⭐
 -->
 
 # 编程式事务（TransactionTemplate）

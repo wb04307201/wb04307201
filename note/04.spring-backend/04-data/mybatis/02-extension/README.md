@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: MyBatis 扩展能力
+  depth: ⭐⭐⭐
 -->
 
 # 02 MyBatis 扩展能力

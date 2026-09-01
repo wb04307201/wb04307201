@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 多级缓存与防护（Multi-Level Cache）
+  depth: ⭐⭐⭐
 -->
 
 # 多级缓存与防护（Multi-Level Cache）

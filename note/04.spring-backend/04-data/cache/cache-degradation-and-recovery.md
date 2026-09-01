@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: @Cacheable + Redis 挂了怎么办？4 大降级方案 + Top 2 推荐 + 自动恢复机制 + 降级期数据一致性 + 实战模板。
+  depth: ⭐⭐⭐
 -->
 
 # @Cacheable + Redis 挂了怎么办？4 大降级方案 + 自动恢复实战

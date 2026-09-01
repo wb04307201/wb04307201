@@ -5,6 +5,7 @@ module:
   type: article
   category: MyBatis-Plus 实战
   summary: LambdaQueryWrapper 中 SFunction 序列化原理——为什么 User::getName 能被框架解析成字段名。
+  depth: ⭐⭐⭐
 -->
 
 # 05 LambdaQueryWrapper 中的 SFunction 序列化原理

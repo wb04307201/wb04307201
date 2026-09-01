@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 事务失效场景与解决方案
+  depth: ⭐⭐⭐
 -->
 
 # 事务失效场景与解决方案

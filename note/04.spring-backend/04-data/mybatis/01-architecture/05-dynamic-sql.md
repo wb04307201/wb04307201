@@ -5,6 +5,7 @@ module:
   type: topic
   category: MyBatis 内部原理
   summary: 动态 SQL 标签体系（if/where/foreach/choose）与 OGNL 表达式条件判断
+  depth: ⭐⭐⭐
 -->
 
 # 05 动态 SQL

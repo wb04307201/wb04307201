@@ -7,6 +7,7 @@ module:
   topic: Spring Boot
   audience: Java 后端工程师
   summary: Spring Boot = Spring + 约定优于配置 + 生产级特性（9 篇：自动配置/Starter/启动流程/启动后钩子/外部化配置/内嵌服务器/spring.factories 迁移/自定义 Condition/GraalVM Native）
+  depth: ⭐⭐⭐
 -->
 
 # 04 Spring Boot

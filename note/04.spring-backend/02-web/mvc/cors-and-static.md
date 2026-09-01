@@ -5,7 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: CORS 与静态资源
-  depth: ⭐⭐
+  depth: ⭐⭐⭐
 -->
 
 # CORS 与静态资源

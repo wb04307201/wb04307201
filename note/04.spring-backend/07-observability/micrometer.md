@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Micrometer 指标监控
+  depth: ⭐⭐⭐
 -->
 
 # Micrometer 指标监控

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 04 多数据源路由
+  depth: ⭐⭐⭐
 -->
 
 # 04 多数据源路由

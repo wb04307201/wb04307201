@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Redis 缓存序列化
+  depth: ⭐⭐⭐
 -->
 
 # Redis 缓存序列化

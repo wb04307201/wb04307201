@@ -7,6 +7,7 @@ module:
   topic: Spring 集成组件
   audience: Java 后端工程师
   summary: Spring 集成组件 = 业务级 Spring 子项目（6 篇：Validation/Retry/StateMachine/Batch + Validation 3 篇深度）
+  depth: ⭐⭐⭐
 -->
 
 # 06 集成组件

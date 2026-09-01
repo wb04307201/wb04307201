@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring Validation 校验框架
+  depth: ⭐⭐⭐
 -->
 
 # Spring Validation 校验框架

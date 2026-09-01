@@ -5,6 +5,7 @@ module:
   type: article
   category: MyBatis-Plus 实战
   summary: MyBatis-Plus CRUD 与条件构造器基础——BaseMapper 17 个方法 + Wrapper 常用 API 完整清单。
+  depth: ⭐⭐⭐
 -->
 
 # 02 CRUD 与条件构造器基础

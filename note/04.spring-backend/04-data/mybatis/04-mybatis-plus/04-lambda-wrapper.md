@@ -5,6 +5,7 @@ module:
   type: article
   category: MyBatis-Plus 实战
   summary: MyBatis-Plus Lambda 条件构造器——User::getName 类型安全替代硬编码字段名。
+  depth: ⭐⭐⭐
 -->
 
 # 04 Lambda 条件构造器

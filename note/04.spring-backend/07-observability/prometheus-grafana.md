@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Prometheus + Grafana 可视化监控
+  depth: ⭐⭐⭐
 -->
 
 # Prometheus + Grafana 可视化监控

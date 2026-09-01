@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: MyBatis-Plus 分页插件——配置、自定义 count 查询与常见陷阱。
+  depth: ⭐⭐⭐
 -->
 
 # 06 分页插件

@@ -7,6 +7,7 @@ module:
   topic: MyBatis 全栈
   audience: Java 后端工程师
   summary: MyBatis 全栈 = 架构原理 + 扩展能力 + Spring 整合 + MyBatis-Plus（4 主题 · 27 篇）
+  depth: ⭐⭐⭐
 -->
 
 # MyBatis 全栈

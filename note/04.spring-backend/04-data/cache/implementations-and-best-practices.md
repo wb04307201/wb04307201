@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 缓存实现与最佳实践
+  depth: ⭐⭐⭐
 -->
 
 # 缓存实现与最佳实践

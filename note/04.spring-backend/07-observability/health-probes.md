@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 健康检查三探针（K8s Liveness / Readiness / Startup）
+  depth: ⭐⭐⭐
 -->
 
 # 健康检查三探针（K8s Liveness / Readiness / Startup）

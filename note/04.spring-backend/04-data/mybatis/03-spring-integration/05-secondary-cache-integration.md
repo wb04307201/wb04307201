@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 05 二级缓存与 Redis/Caffeine 整合
+  depth: ⭐⭐⭐
 -->
 
 # 05 二级缓存与 Redis/Caffeine 整合

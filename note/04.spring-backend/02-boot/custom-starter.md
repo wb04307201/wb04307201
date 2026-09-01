@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 如何创建自己的 Starter 模块
+  depth: ⭐⭐⭐
 -->
 
 # 如何创建自己的 Starter 模块

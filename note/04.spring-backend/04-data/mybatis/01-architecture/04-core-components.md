@@ -5,6 +5,7 @@ module:
   type: topic
   category: MyBatis 内部原理
   summary: 详解 SqlSessionFactory / MappedStatement / Executor 三大核心组件及三种执行器类型
+  depth: ⭐⭐⭐
 -->
 
 # 04 核心组件

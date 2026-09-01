@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring AOP 深度解析
+  depth: ⭐⭐⭐
 -->
 
 # Spring AOP 深度解析

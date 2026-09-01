@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 02 拦截器(Interceptor)
+  depth: ⭐⭐⭐
 -->
 
 # 02 拦截器(Interceptor)

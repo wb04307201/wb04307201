@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring Boot Actuator 监控
+  depth: ⭐⭐⭐
 -->
 
 # Spring Boot Actuator 监控

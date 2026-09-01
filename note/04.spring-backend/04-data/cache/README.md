@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring Cache 4 大模式 + 多级缓存 + 序列化选型。
+  depth: ⭐⭐⭐
 -->
 
 # Spring Cache 缓存

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 缓存 4 大模式（Patterns）
+  depth: ⭐⭐⭐
 -->
 
 # 缓存 4 大模式（Patterns）

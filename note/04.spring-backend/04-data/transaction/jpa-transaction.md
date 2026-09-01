@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: JPA 事务管理
+  depth: ⭐⭐⭐
 -->
 
 # JPA 事务管理

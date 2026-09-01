@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring Boot 启动后执行（钩子/回调/事件）
+  depth: ⭐⭐⭐
 -->
 
 # Spring Boot 启动后执行（钩子/回调/事件）

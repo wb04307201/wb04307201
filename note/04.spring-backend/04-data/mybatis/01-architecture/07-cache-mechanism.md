@@ -5,6 +5,7 @@ module:
   type: topic
   category: MyBatis 内部原理
   summary: 一级 SqlSession 缓存 / 二级 Mapper 缓存机制与缓存穿透解决方案
+  depth: ⭐⭐⭐
 -->
 
 # 07 缓存机制

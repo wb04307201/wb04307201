@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 缓存注解与使用
+  depth: ⭐⭐⭐
 -->
 
 # 缓存注解与使用

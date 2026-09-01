@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 09 最佳实践与踩坑
+  depth: ⭐⭐⭐
 -->
 
 # 09 最佳实践与踩坑

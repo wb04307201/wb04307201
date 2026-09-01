@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Seata 分布式事务框架
+  depth: ⭐⭐⭐
 -->
 
 # Seata 分布式事务框架

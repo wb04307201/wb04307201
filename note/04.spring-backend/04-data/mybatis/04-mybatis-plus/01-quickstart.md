@@ -5,6 +5,7 @@ module:
   type: article
   category: MyBatis-Plus 实战
   summary: MyBatis-Plus 快速入门——10 分钟引入 MP,完成依赖、实体类、Mapper、第一个 CRUD。
+  depth: ⭐⭐⭐
 -->
 
 # 01 MyBatis-Plus 快速入门

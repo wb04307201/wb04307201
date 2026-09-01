@@ -5,6 +5,7 @@ module:
   type: index
   category: 主模块子文章
   summary: MyBatis 架构与原理
+  depth: ⭐⭐⭐
 -->
 
 # 01 MyBatis 架构与原理

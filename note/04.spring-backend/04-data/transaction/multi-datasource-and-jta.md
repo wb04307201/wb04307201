@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 多数据源与 JTA 分布式事务
+  depth: ⭐⭐⭐
 -->
 
 # 多数据源与 JTA 分布式事务

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring分布式事务管理
+  depth: ⭐⭐⭐
 -->
 
 # Spring分布式事务管理

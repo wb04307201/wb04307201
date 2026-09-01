@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: CORS 跨域资源共享 + CSRF 跨站请求伪造防护，配套 Session 管理与安全 Header，构筑 Web 应用完整安全防线。
+  depth: ⭐⭐⭐
 -->
 
 # CORS 与 CSRF

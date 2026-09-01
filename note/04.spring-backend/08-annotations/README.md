@@ -7,6 +7,7 @@ module:
   topic: Spring 注解速查
   audience: Java 后端工程师
   summary: Spring 注解 = 按场景分类的速查手册（12 篇：Web/Bean/配置/AOP/异常/测试/JPA/事务/缓存/调度异步/校验/重试）
+  depth: ⭐⭐⭐
 -->
 
 # 08 注解速查

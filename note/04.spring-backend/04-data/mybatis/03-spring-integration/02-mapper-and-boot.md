@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 02 Mapper 与 Boot
+  depth: ⭐⭐⭐
 -->
 
 # 02 Mapper 与 Boot

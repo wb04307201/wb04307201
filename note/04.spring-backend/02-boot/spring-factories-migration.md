@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring Boot 3 中 spring.factories 机制移除
+  depth: ⭐⭐⭐
 -->
 
 # Spring Boot 3 中 spring.factories 机制移除

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 10 代码生成器
+  depth: ⭐⭐⭐
 -->
 
 # 10 代码生成器

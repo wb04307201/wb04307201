@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 01 装配与启动
+  depth: ⭐⭐⭐
 -->
 
 # 01 装配与启动

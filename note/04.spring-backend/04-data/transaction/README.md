@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring 事务：传播行为、隔离级别、失效场景。
+  depth: ⭐⭐⭐
 -->
 
 # Spring 事务管理

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: statementType=CALLABLE 让 MyBatis 透明调用数据库存储过程，支持 IN/OUT/INOUT 三种参数模式与游标映射
+  depth: ⭐⭐⭐
 -->
 
 # 04 存储过程调用

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 日志聚合（ELK / Loki / Fluentd）
+  depth: ⭐⭐⭐
 -->
 
 # 日志聚合（ELK / Loki / Fluentd）

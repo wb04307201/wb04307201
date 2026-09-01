@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring Boot 外部化配置
+  depth: ⭐⭐⭐
 -->
 
 # Spring Boot 外部化配置

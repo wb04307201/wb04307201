@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 08 高级特性(动态表名 / 性能分析 / SQL 注入器)
+  depth: ⭐⭐⭐
 -->
 
 # 08 高级特性（动态表名 / 多租户 / 性能分析 / SQL 注入器）

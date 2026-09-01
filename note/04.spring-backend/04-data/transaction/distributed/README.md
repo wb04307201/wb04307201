@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring 分布式事务：理论 + Seata 落地
+  depth: ⭐⭐⭐
 -->
 
 # Spring 分布式事务

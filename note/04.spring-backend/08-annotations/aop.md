@@ -5,7 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: AOP 注解
-  depth: ⭐⭐
+  depth: ⭐⭐⭐
 -->
 
 # AOP 注解

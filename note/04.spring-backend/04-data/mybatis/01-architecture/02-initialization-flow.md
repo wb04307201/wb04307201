@@ -5,6 +5,7 @@ module:
   type: topic
   category: MyBatis 内部原理
   summary: MyBatis 初始化 7 步流程——从 XML 解析到 SqlSession 创建的全链路剖析
+  depth: ⭐⭐⭐
 -->
 
 # 02 初始化流程

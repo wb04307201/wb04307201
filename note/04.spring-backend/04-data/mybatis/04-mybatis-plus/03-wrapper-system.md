@@ -5,6 +5,7 @@ module:
   type: article
   category: MyBatis-Plus 实战
   summary: MyBatis-Plus Wrapper 体系——两大维度(用途 + 使用方式)全景 + 决策树。
+  depth: ⭐⭐⭐
 -->
 
 # 03 Wrapper 体系(两大维度)

@@ -5,6 +5,7 @@ module:
   type: topic
   category: MyBatis 内部原理
   summary: 一对一 association / 一对多 collection 关联映射的配置与用法
+  depth: ⭐⭐⭐
 -->
 
 # 06 Result Mapping 结果映射

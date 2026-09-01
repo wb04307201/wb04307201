@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 03 数据库厂商扩展(DatabaseIdProvider)
+  depth: ⭐⭐⭐
 -->
 
 # 03 数据库厂商扩展(DatabaseIdProvider)

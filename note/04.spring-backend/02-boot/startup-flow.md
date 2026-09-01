@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring Boot 启动流程（`SpringApplication.run()` 6 阶段）
+  depth: ⭐⭐⭐
 -->
 
 # Spring Boot 启动流程（`SpringApplication.run()` 6 阶段）
