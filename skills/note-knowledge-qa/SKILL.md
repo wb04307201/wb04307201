@@ -327,6 +327,44 @@ echo "═══ 建议阅读顺序：主模块 → 13.split-hairs → 12.story�
 - 关联文章的标题不再与问题相关
 - 总读取量 ≤ 8 篇（避免过载）
 
+#### 🆕 §3.5 链接校验（2026-09-02 Session 6 教训·推荐执行）
+
+**Session 6 教训**：230 处断链集中爆发 = 87% 来自"结构重组遗留路径错位"。
+
+**触发时机**：在 Step 3 检索结束时，或整合回答引用"相关章节"前。
+
+**校验脚本**：
+
+```bash
+# 1. 一次性校验本次引用的所有目标文件存在
+python scripts/check-broken-links.py <引用的源文件>
+
+# 2. 检索结果汇总（避免引用整批含断链的文件）
+python << 'PYEOF'
+import os, re, glob
+LINK = re.compile(r'(?<![|\[])\[([^\]]*)\]\((?!https?://)(?!mailto:)(?!#)([^)#\s]+?\.md)(?:#[^)]*)?\)')
+broken = []
+for f in glob.glob('note/**/*.md', recursive=True):
+    if '.health-tmp' in f.replace(os.sep, '/'): continue
+    c = open(f, encoding='utf-8', errors='ignore').read()
+    for m in LINK.finditer(c):
+        t = os.path.normpath(os.path.join(os.path.dirname(f), m.group(2).replace('/', os.sep)))
+        if not os.path.isfile(t):
+            broken.append((f, m.group(2)))
+print(f'全库断链: {len(broken)} 处（>0 应提醒用户）')
+PYEOF
+```
+
+**处置规则**：
+
+| 情况 | 处置 |
+|------|------|
+| 全库断链 = 0 | ✅ 安心引用 |
+| 引用源文件含断链 | 在回答里标注"[目标](路径)（路径待修复）"，**不删除引用但提醒用户** |
+| 引用了不存在的子目录（如重构遗留的 `09.ai-applications/llm-alignment/`）| 改为引用替代路径或删除链接 |
+
+**反直觉 4**："AI 觉得路径是对的" —— 与 subagent 同理，**唯一可靠标准是 `os.path.isfile(target_abs)`**。
+
 ### Step 4: 整合回答
 
 根据问题类型选择回答模板：
