@@ -584,7 +584,7 @@ def react_loop(question: str, tools: dict, max_steps: int = 8) -> str:
             return thought.split("Finish[")[1].split("]")[0]
         action = thought.split("Action:")[1].strip().split("[")[0]
         query = thought.split("Action:")[1].strip().split("[")[1].rstrip("]")
-        result = tools[action](query)
+        result = toolsaction
         history.append(f"Action {step+1}: {action}[{query}]")
         history.append(f"Observation {step+1}: {result}")
     return "TIMEOUT"
@@ -669,15 +669,15 @@ class WriteCode:
 - → [Agent 工具与规范](../agent-spec-tools/README.md) — Function calling + Tool schema 规范
 - → [Agent 上下文工程](../agent-context/README.md) — Context window + token 管理
 - → [Agent 记忆机制](../agent-memory/README.md) — 短期 + 长期记忆实现
-- → [Agent Loop 工程](../loop-engineering/ralph-wiggum-loop.md) — 循环稳定性 + 反模式
+- → Agent Loop 工程 — 循环稳定性 + 反模式
 
 ### 跨模块链
 
 - → [Prompt Engineering 综述](../../prompts/prompt-engineering/README.md) — ReAct / Plan-and-Solve 提示词设计
-- → [RAG 系统设计](../../rag/rag-system-design/README.md) — Tool / Retrieval 协同
+- → RAG 系统设计 — Tool / Retrieval 协同
 - → [12.interview/11.ai Agent 面试题](../../../12.interview/11.ai/README.md) — 5-7 道精选面试题
 - → [12.interview/11.ai/react-vs-plan-execute](../../../12.interview/11.ai/react-vs-plan-execute/README.md) — 模式选型面试
-- → [04.spring-backend Strategy 模式](../../../04.spring-backend/design-patterns/strategy-pattern/README.md) — 类比 Strategy：Plan 是算法族，Executor 是 Context
+- → [04.spring-backend Strategy 模式](../../../04.spring-backend/01-core/README.md) — 类比 Strategy：Plan 是算法族，Executor 是 Context
 - → [13.story 阿明餐厅系列](../../../13.story/README.md) — 餐厅叙事包装讲透 agent 模式
 
 ---

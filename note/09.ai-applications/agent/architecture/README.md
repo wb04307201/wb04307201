@@ -874,11 +874,11 @@ class Supervisor:
 - **生产级** → [`../production-agent-system-design/`](../production-agent-system-design/) — 高可用 + 容量评估 + 容灾
 - **真实案例** → [`../case-studies/`](../case-studies/) — Salesforce Agentforce / Shopify AI Agent
 - **推理底座** → [`../../llm-inference/`](../../llm-inference/README.md) — LLM 推理层（KV Cache / Flash Attention）
-- **分布式类比** → [`note/06.distributed-systems/microservices/service-mesh/README.md`](../../../06.distributed-systems/microservices/service-mesh/README.md) — sidecar 通信模式类比 A2A 协议
-- **设计模式类比** → [`note/04.spring-backend/design-patterns/observer-pattern/README.md`](../../../04.spring-backend/design-patterns/observer-pattern/README.md) — pub-sub 模式与 Blackboard 通信
+- **分布式类比** → [`note/06.distributed-systems/microservices/service-mesh/README.md`](../../../06.distributed-systems/02-distributed/rpc/README.md) — sidecar 通信模式类比 A2A 协议
+- **设计模式类比** → [`note/04.spring-backend/design-patterns/observer-pattern/README.md`](../../../04.spring-backend/01-core/README.md) — pub-sub 模式与 Blackboard 通信
 - **面试题** → [`note/12.interview/11.ai/`](../../../12.interview/11.ai/) — AI 面试高频题
-- **状态机** → [`note/01.java-and-jvm/state-machines/`](../../01.java-and-jvm/) — LangGraph 的 state 设计借鉴 FSM
-- **消息中间件** → [`note/03.data-stack/messaging/`](../../03.data-stack/) — Kafka / Redis Streams 与 Blackboard 模式
+- **状态机** → [`note/01.java-and-jvm/state-machines/`](../../../01.java-and-jvm/README.md) — LangGraph 的 state 设计借鉴 FSM
+- **消息中间件** → [`note/03.data-stack/messaging/`](../../../03.data-stack/README.md) — Kafka / Redis Streams 与 Blackboard 模式
 
 ---
 

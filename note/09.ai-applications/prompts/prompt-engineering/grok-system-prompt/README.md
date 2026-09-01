@@ -146,9 +146,9 @@ Now, answer the user's query using the thinking trace.
 - Keep all relevant information from the thinking trace in the answer, not only from the final answer part.
 - The answer should be complete and self-contained, as the user will not have access to the thinking trace.
 - The answer should be a standalone document that answers the user's question without repeating the user's question.
-- Include URLs inline, embedded in the sentence, whenever appropriate in the markdown format, i.e. book your ticket at [this website](...full...URL...) or ([Green Tea](...full...URL...)). For URLs inline, link title should be short and distinguishable (1 or 2 words).
+- Include URLs inline, embedded in the sentence, whenever appropriate in the markdown format, i.e. book your ticket at this website or (Green Tea). For URLs inline, link title should be short and distinguishable (1 or 2 words).
 {% if contains_url %}
-- Include a Key Citations section at the end of your response, formatted as a bulleted list. Each bullet point must not be empty and follow this format: [long...title](...full...URL...). The long title should be very descriptive of the page title/content and has about 10 words. The list should include all URLs used or referred to inline. If the URL is "[invalid url, do not cite]", do not cite the URL at all. Do not include citations for function call results.
+- Include a Key Citations section at the end of your response, formatted as a bulleted list. Each bullet point must not be empty and follow this format: long...title. The long title should be very descriptive of the page title/content and has about 10 words. The list should include all URLs used or referred to inline. If the URL is "[invalid url, do not cite]", do not cite the URL at all. Do not include citations for function call results.
 - Make sure in Key Citations section, (...full...URL...) is always a valid URL within (...) and nothing else.
 {% endif %}
 - X posts must be cited with x.com url, i.e. [...](https://x.com/<username>/status/<postid>). Do not directly mention post ID anywhere.

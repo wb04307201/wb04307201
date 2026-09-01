@@ -510,19 +510,19 @@ embeddings = embedder.embed_documents(contextual_chunks)
 - **RAG 专题**：[Embedding 模型](../embedding-models/README.md) / [Hybrid Search](../hybrid-search/README.md) / [Reranker](../reranker/README.md) / [RAG 评估](../04-evaluation.md) / [Lost in middle](../lost-in-middle/README.md)
 - **入库流程**：[knowledge-ingestion-pipeline](../knowledge-ingestion-pipeline/README.md) — 8 阶段流水线中"智能分块"环节
 - **应用场景**：[long-document-processing](../long-document-processing/README.md) — 长 PDF/合同实战（4 大策略整合）
-- **同层 AI 应用**：[RAG 综述](../README.md) / [Agent 综述](../../09.ai-applications/)
+- **同层 AI 应用**：[RAG 综述](../README.md) / [Agent 综述](../../README.md)
 
 ### AI 基础层（08.ai-foundations）
 
-- [Transformer 架构与上下文窗口](../../08.ai-foundations/transformer-architecture/README.md) — chunk_size 受限于模型 max_seq_len
-- [Embedding 数学原理](../../08.ai-foundations/embedding-mathematical-principles/README.md) — 余弦相似度推导
-- [位置编码](../../08.ai-foundations/positional-encoding/README.md) — 长 chunk 的位置信息建模
+- [Transformer 架构与上下文窗口](../../../08.ai-foundations/03-transformer/README.md) — chunk_size 受限于模型 max_seq_len
+- [Embedding 数学原理](../../../08.ai-foundations/05-tokenization-embedding/embedding.md) — 余弦相似度推导
+- [位置编码](../../../08.ai-foundations/03-transformer/transformer-architecture.md) — 长 chunk 的位置信息建模
 
 ### 面试题层（12.interview）
 
 - [RAG 面试](../../../12.interview/11.ai/rag/README.md) — chunking 高频 5 题
 - [long-document-pdf 长文档面试](../../../12.interview/11.ai/long-document-pdf/README.md) — 4 题面试深挖（含分块实战）
-- [Embedding 面试](../../../12.interview/11.ai/embedding/README.md) — chunk_size 与 embedding 维度匹配
+- [Embedding 面试](../../../12.interview/11.ai/incremental-embedding/README.md) — chunk_size 与 embedding 维度匹配
 
 ### 故事层（13.story）
 

@@ -401,10 +401,10 @@ Output format: JSON list of scores in order."""
 
 - **本专题**：[Hybrid Search](../hybrid-search/README.md) / [Embedding 模型](../embedding-models/README.md) / [RAG 评估](../04-evaluation.md)
 - **咬文嚼字**：[RAG 面试](../../../12.interview/11.ai/rag/README.md)
-- **L1 数学基础**：[Cross-Encoder 训练](../../../08.ai-foundations/transformer-attention/README.md) — BERT 微调原理
-- **进阶**：[LLM-as-Judge](../llm-as-judge/README.md) — Reranker 的另一种实现
-- **工业实践**：[Cohere Rerank 实战](../cohere-rerank/README.md) — 商业 API 集成
-- **面试题**：[reranker-面试](../../../12.interview/11.ai/reranker-interview/README.md) — 5 道高频追问
+- **L1 数学基础**：[Cross-Encoder 训练](../../../08.ai-foundations/03-transformer/attention-mechanism.md) — BERT 微调原理
+- **进阶**：LLM-as-Judge — Reranker 的另一种实现
+- **工业实践**：Cohere Rerank 实战 — 商业 API 集成
+- **面试题**：[reranker-面试](../../../12.interview/11.ai/vector-search-at-scale/README.md) — 5 道高频追问
 - **故事化**：[13.story 阿明餐厅 RAG 篇](../../../13.story/) — Reranker 类比"老厨师品鉴打分"
 
 ---

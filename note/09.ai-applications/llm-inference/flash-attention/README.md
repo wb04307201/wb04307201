@@ -479,7 +479,7 @@ def _flash_attn_fwd(
 
 ### L5 分布式场景
 
-- [06.distributed-systems/](../../../../06.distributed-systems/) — tensor parallel / pipeline parallel 下 Attention 的切分方式（FA 与 TP 兼容）
+- [06.distributed-systems/](../../../06.distributed-systems/README.md) — tensor parallel / pipeline parallel 下 Attention 的切分方式（FA 与 TP 兼容）
 
 ---
 

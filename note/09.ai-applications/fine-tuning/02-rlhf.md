@@ -378,10 +378,10 @@ Step 5: RL（AI feedback + RM 信号）
 
 ## 🔗 跨模块反向链
 
-- **08.ai-foundations**：[Transformer 注意力](../../08.ai-foundations/transformer/01-transformer-architecture.md) RM 通常基于 Transformer 最后一层 hidden state + regression head；[强化学习基础](../../08.ai-foundations/reinforcement-learning/01-rl-fundamentals.md) PPO 的策略梯度理论。
-- **03.data-stack**：[分布式训练](../../03.data-stack/distributed-computing/01-distributed-training.md) RLHF 4 模型在 ZeRO-3 / FSDP 下的显存切分；[推理优化](../../03.data-stack/vector-db/01-vector-db-overview.md) PPO rollout 阶段的 KV-cache 复用。
-- **12.interview**：[RLHF vs DPO 对比](../../../12.interview/11.ai/rlhf-vs-dpo.md) 面试高频题；[Reward Hacking](../../../12.interview/11.ai/reward-hacking.md) 经典面试陷阱。
-- **13.story**：[阿明餐厅 - 顾客打分](../../../13.story/36-restaurant-rating.md) 用餐厅顾客打分类比 RM 训练。
+- **08.ai-foundations**：[Transformer 注意力](../../08.ai-foundations/03-transformer/transformer-architecture.md) RM 通常基于 Transformer 最后一层 hidden state + regression head；强化学习基础 PPO 的策略梯度理论。
+- **03.data-stack**：[分布式训练](../../08.ai-foundations/04-llm/llm-basics.md) RLHF 4 模型在 ZeRO-3 / FSDP 下的显存切分；[推理优化](../rag/vector-search-algorithms/README.md) PPO rollout 阶段的 KV-cache 复用。
+- **12.interview**：[RLHF vs DPO 对比](../../12.interview/11.ai/llm-alignment/README.md) 面试高频题；[Reward Hacking](../../12.interview/11.ai/llm-alignment/README.md) 经典面试陷阱。
+- **13.story**：[阿明餐厅 - 顾客打分](../../13.story/36-rag-retrieval-augmented-generation.md) 用餐厅顾客打分类比 RM 训练。
 
 ← [返回 LLM 对齐专题](../README.md)
 

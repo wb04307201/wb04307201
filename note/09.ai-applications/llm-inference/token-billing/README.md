@@ -565,11 +565,11 @@ resp = anthropic.messages.create(
 | **推理性能指标** | [inference-metrics](../inference-metrics/README.md) | Token/s 是首指标，TTFT / TPOT 与 token 强耦合 |
 | **KV Cache 原理** | [kv-cache](../kv-cache/README.md) | Token 进入模型后变成 KV，cache 复用降低长 prompt 成本 |
 | **RAG 降本** | [rag/01-pipeline.md](../../rag/01-pipeline.md) | RAG 用 chunk 检索替代全文，**减少 80% 输入 token** |
-| **面试题 - LLM 推理** | [12.interview/11.ai/llm-inference](../../../../12.interview/11.ai/llm-inference/README.md) | 高频考点：cache / quantization / context window |
-| **面试题 - 成本控制** | [12.interview/11.ai/llm-cost-control](../../../../12.interview/11.ai/llm-cost-control/README.md) | Token 经济学 + 选型策略 |
-| **面试题 - Token 综合** | [12.interview/11.ai/token](../../../../12.interview/11.ai/token/README.md) | 反直觉 / 陷阱 / 30 秒话术 |
-| **故事 - 云 FinOps** | [13.story/14-cloud-finops.md](../../../../13.story/14-cloud-finops.md) | 阿明餐厅用 Token 类比餐厅翻台率与计费 |
-| **业务系统成本** | [10.business-systems](../../10.business-systems/README.md) | LLM 成本是 SaaS 业务最大变动成本 |
+| **面试题 - LLM 推理** | 12.interview/11.ai/llm-inference | 高频考点：cache / quantization / context window |
+| **面试题 - 成本控制** | 12.interview/11.ai/llm-cost-control | Token 经济学 + 选型策略 |
+| **面试题 - Token 综合** | 12.interview/11.ai/token | 反直觉 / 陷阱 / 30 秒话术 |
+| **故事 - 云 FinOps** | 13.story/14-cloud-finops.md | 阿明餐厅用 Token 类比餐厅翻台率与计费 |
+| **业务系统成本** | 10.business-systems | LLM 成本是 SaaS 业务最大变动成本 |
 
 ---
 
@@ -603,13 +603,13 @@ resp = anthropic.messages.create(
 
 ## 十二、相关章节
 
-- 上游：[Transformer 架构](../../08.ai-foundations/03-transformer/README.md) —— Token 是 Transformer 的输入
-- 关联：[RAG Pipeline](../../09.ai-applications/rag/01-pipeline.md) —— 用 RAG 减少 Token 消耗
+- 上游：Transformer 架构 —— Token 是 Transformer 的输入
+- 关联：RAG Pipeline —— 用 RAG 减少 Token 消耗
 - 关联：[KV Cache](../kv-cache/README.md) —— Token 进入模型后的缓存复用
 - 关联：[推理性能指标](../inference-metrics/README.md) —— Token/s 与延迟的耦合
-- 关联：[Context Engineering](../../12.interview/11.ai/context-engineering-interview/README.md) —— Context Window 是 Token 上限
-- 关联：[成本控制](../../12.interview/11.ai/llm-cost-control/README.md) —— Token 是 LLM 应用最大变动成本
-- 业务：[阿明餐厅 FinOps](../../13.story/14-cloud-finops.md) —— Token 经济学的生活化类比
+- 关联：Context Engineering —— Context Window 是 Token 上限
+- 关联：成本控制 —— Token 是 LLM 应用最大变动成本
+- 业务：阿明餐厅 FinOps —— Token 经济学的生活化类比
 
 ---
 

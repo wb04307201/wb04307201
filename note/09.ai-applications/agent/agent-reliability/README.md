@@ -828,17 +828,17 @@ graph TD
 
 - → [LLM 安全攻防实战](llm-security/README.md) — LLM 安全是 Agent 可靠性的"姐妹防线"，覆盖 OWASP LLM Top 10 + Guardrails
 - → [Agent 记忆系统](../agent-memory/README.md) — 状态丢失需要 Memory 持久化，与 L3 快照互补
-- → [Loop Engineering（占位）](../agent-execution-patterns/loop-engineering/README.md) — 循环调用 3 大组件 + 4 大失败模式（与本文 L1/L2 对应）
-- → [Harness Engineering（占位）](../agent-execution-patterns/harness-engineering/README.md) — 4 大 Harness 类型（与本文 L1 Prompt 约束层对应）
+- → Loop Engineering（占位） — 循环调用 3 大组件 + 4 大失败模式（与本文 L1/L2 对应）
+- → Harness Engineering（占位） — 4 大 Harness 类型（与本文 L1 Prompt 约束层对应）
 
 #### 14.2 LLM 运维层
 
-- → [生产稳定性（占位）](../../llm-inference/llmops/production-stability/README.md) — LLM 服务的 SLA 与熔断（与本文 L4 成本熔断互补）
+- → 生产稳定性（占位） — LLM 服务的 SLA 与熔断（与本文 L4 成本熔断互补）
 
 #### 14.3 分布式系统层（深度类比）
 
-- → [断路器模式（占位）](../../../06.distributed-systems/resilience/circuit-breaker/README.md) — **分布式断路器 vs Agent L4 成本熔断是同一数学模型**：closed/open/half-open 三态
-- → [重试与退避（占位）](../../../06.distributed-systems/resilience/retry-backoff/README.md) — **Verifier 重试机制 = 分布式指数退避**：连续失败 → 退避 → 上限后熔断
+- → [断路器模式（占位）](../../../06.distributed-systems/03-high-availability/circuit-break/README.md) — **分布式断路器 vs Agent L4 成本熔断是同一数学模型**：closed/open/half-open 三态
+- → [重试与退避（占位）](../../../06.distributed-systems/03-high-availability/retry/README.md) — **Verifier 重试机制 = 分布式指数退避**：连续失败 → 退避 → 上限后熔断
 
 #### 14.4 面试题层
 

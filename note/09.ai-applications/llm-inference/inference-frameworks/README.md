@@ -329,9 +329,9 @@ results = multi_turn_qa.run_batch([
   - [权重量化](../weight-quantization/README.md) — INT4/INT8/FP8 量化的工程权衡
 - **L1**：MoE 架构（⚠️ 待 Phase 1+ 迁入；占位 `../../../../08.ai-foundations/02-deep-learning/moe-architecture/`） / [Flash Attention](../flash-attention/README.md)
 - **LLMOps**：推理监控（⚠️ 待 Phase 1+ 迁入；占位 `../llmops/`） — Prometheus + Grafana
-- **面试题版**：[LLM 推理框架面试题](../../../../12.interview/11.ai/llm-benchmark/)（⚠️ 占位，待 Phase 1+ 创建）
-- **故事版**：[阿明餐厅之 LLM 推理（46-llm-inference）](../../../../13.story/46-llm-inference.md)（⚠️ 占位，待 Phase 1+ 创建）
-- **部署工具链**：[07.devops-and-tools](../../../../07.devops-and-tools/README.md) — Kubernetes Operator、Helm Chart、Docker 镜像、GPU device plugin
+- **面试题版**：[LLM 推理框架面试题](../../../12.interview/11.ai/llm-benchmark/README.md)（⚠️ 占位，待 Phase 1+ 创建）
+- **故事版**：阿明餐厅之 LLM 推理（46-llm-inference）（⚠️ 占位，待 Phase 1+ 创建）
+- **部署工具链**：07.devops-and-tools — Kubernetes Operator、Helm Chart、Docker 镜像、GPU device plugin
 - **横向对比**：[vLLM vs Ollama](../vllm-vs-ollama/README.md) — 本地开发场景的轻量对比
 - **计费**：[Token 计费](../token-billing/README.md) — 推理成本测算（tokens/s × $/M tokens）
 

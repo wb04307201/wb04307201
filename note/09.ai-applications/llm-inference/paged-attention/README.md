@@ -622,8 +622,7 @@ PagedAttention vs 连续分配：
 
 ### 本专题内（llm-inference）
 
-- **本专题**：[KV Cache](../kv-cache/README.md)（推理复杂度 + MQA/GQA/MLA） / [Continuous Batching](../continuous-batching/README.md)（PagedAttention 的搭档） / [推理框架对比](../inference-frameworks/README.md）
-- **L1**：[Flash Attention](../flash-attention/README.md) — 同样 IO 优化思路
+- **本专题**：[KV Cache](../kv-cache/README.md)（推理复杂度 + MQA/GQA/MLA） / [Continuous Batching](../continuous-batching/README.md)（PagedAttention 的搭档） / 推理框架对比 — 同样 IO 优化思路
 - **相关**：[Speculative Decoding](../speculative-decoding/README.md)（与 PagedAttention 协同调度） / [权重量化](../weight-quantization/README.md)（减少单 token KV 占用）
 
 ### 跨模块互链（5+ 关键反向链）
@@ -632,13 +631,13 @@ PagedAttention vs 连续分配：
 2. **→ [Continuous Batching](../continuous-batching/README.md)**：PagedAttention 释放的显存空间，让 Continuous Batching 可以塞下更多并发请求。
 3. **→ [推理框架对比](../inference-frameworks/README.md)**：vLLM / TGI / SGLang / TensorRT-LLM 的横向对比。
 4. **→ [Speculative Decoding](../speculative-decoding/README.md)**：draft model 的 KV cache 也走 PagedAttention。
-5. **→ [12.interview/11.ai/llm-inference](../../../../12.interview/11.ai/llm-inference.md)**：高频面试题"如何优化 LLM 推理吞吐量？"的详解。
-6. **→ [12.interview/11.ai/kv-cache-mqa-gqa-mla](../../../../12.interview/11.ai/kv-cache-mqa-gqa-mla.md)**：KV Cache 显存优化的另一维度（减少 H_kv）。
-7. **→ [12.interview/11.ai/inference-engine-selection](../../../../12.interview/11.ai/inference-engine-selection.md)**：面试题"如何选推理框架？"会考察 PagedAttention 原理。
-8. **→ [13.story/46-llm-inference](../../../../13.story/46-llm-inference.md)**：阿明餐厅 46 集——PagedAttention 的餐厅叙事版（"翻台率 vs 固定座位"类比）。
-9. **→ [02.cs-foundations/02-os/memory/README.md](../../../../02.cs-foundations/02-os/memory/README.md)**：OS 虚拟内存与 PagedAttention 的设计哲学一致（外碎片→页表映射→按需调页）。
-10. **→ [06.distributed-systems/02-distributed/distributed-cache](../../../../06.distributed-systems/02-distributed/distributed-cache/README.md)**：分布式缓存的"键分片 + 引用计数"思想与 BlockManager ref_count 同源。
-11. **→ [12.interview/11.ai/ai-thinking](../../../../12.interview/11.ai/ai-thinking.md)**（可选）：CoT 推理与 PagedAttention 的"分叉 + 共享"思路相似。
+5. **→ [12.interview/11.ai/llm-inference](../../../12.interview/11.ai/llm-inference/README.md)**：高频面试题"如何优化 LLM 推理吞吐量？"的详解。
+6. **→ [12.interview/11.ai/kv-cache-mqa-gqa-mla](../../../12.interview/11.ai/kv-cache-mqa-gqa-mla/README.md)**：KV Cache 显存优化的另一维度（减少 H_kv）。
+7. **→ 12.interview/11.ai/inference-engine-selection**：面试题"如何选推理框架？"会考察 PagedAttention 原理。
+8. **→ 13.story/46-llm-inference**：阿明餐厅 46 集——PagedAttention 的餐厅叙事版（"翻台率 vs 固定座位"类比）。
+9. **→ [02.cs-foundations/02-os/memory/README.md](../../../02.cs-foundations/02-os/memory/README.md)**：OS 虚拟内存与 PagedAttention 的设计哲学一致（外碎片→页表映射→按需调页）。
+10. **→ 06.distributed-systems/02-distributed/distributed-cache**：分布式缓存的"键分片 + 引用计数"思想与 BlockManager ref_count 同源。
+11. **→ [12.interview/11.ai/ai-thinking](../../../12.interview/11.ai/ai-thinking/README.md)**（可选）：CoT 推理与 PagedAttention 的"分叉 + 共享"思路相似。
 
 ### 设计哲学类比
 

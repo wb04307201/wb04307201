@@ -427,10 +427,10 @@ model.save('./bge-m3-finetuned')
 - **L1**：Embedding vs Vectorization
 - **咬文嚼字**：[RAG 面试](../../../12.interview/11.ai/rag/README.md)
 - **入库侧**：[knowledge-ingestion-pipeline](../knowledge-ingestion-pipeline/README.md) — Embedding 模型选型（在"Embedding"环节批量调用 + 异步写入）
-- **L1 数学基础**：[Transformer 与 Attention](../../../08.ai-foundations/transformer-attention/README.md) — Embedding 来自 Transformer 最后一层
-- **L1 训练范式**：[对比学习](../../../08.ai-foundations/contrastive-learning/README.md) — InfoNCE 损失是 Embedding 训练核心
-- **数据侧**：[向量数据库](../../../03.data-stack/04.vector-db/README.md) — 存 Embedding 的向量库选型
-- **面试题**：[embedding-面试](../../../12.interview/11.ai/embedding-interview/README.md) — 5 道高频追问
+- **L1 数学基础**：[Transformer 与 Attention](../../../08.ai-foundations/03-transformer/attention-mechanism.md) — Embedding 来自 Transformer 最后一层
+- **L1 训练范式**：[对比学习](../../../08.ai-foundations/05-tokenization-embedding/embedding.md) — InfoNCE 损失是 Embedding 训练核心
+- **数据侧**：[向量数据库](../vector-search-algorithms/README.md) — 存 Embedding 的向量库选型
+- **面试题**：[embedding-面试](../../../12.interview/11.ai/incremental-embedding/README.md) — 5 道高频追问
 - **故事化**：[13.story 阿明餐厅 RAG 篇](../../../13.story/) — Embedding 类比"菜品指纹"
 
 ---

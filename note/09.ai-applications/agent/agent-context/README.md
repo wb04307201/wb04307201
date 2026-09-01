@@ -299,13 +299,13 @@ $$
 |------|---------|-----------|
 | → [12.interview/11.ai/long-context-agent-strategy](../../../12.interview/11.ai/long-context-agent-strategy/README.md) | 面试高频 | 5-7 道精选长上下文面试题（待 Phase 1+ 迁入） |
 | → [09.ai-applications/prompts/context-engineering](../../prompts/context-engineering/README.md) | 同模块平行 | Context Engineering vs Long-Context Engineering（占位，待迁入） |
-| → [09.ai-applications/rag/rag-system-design](../../rag/rag-system-design/README.md) | 同模块平行 | RAG 是长上下文的检索层（占位，待迁入） |
+| → 09.ai-applications/rag/rag-system-design | 同模块平行 | RAG 是长上下文的检索层（占位，待迁入） |
 | → [09.ai-applications/agent/agent-memory](../agent-memory/README.md) | 同级兄弟 | Memory 分层策略详解 |
-| → [09.ai-applications/llm-inference/position-encoding](../../llm-inference/position-encoding/README.md) | 同模块平行 | LongRoPE / YaRN / RoPE 位置编码扩展（占位，待迁入） |
+| → 09.ai-applications/llm-inference/position-encoding | 同模块平行 | LongRoPE / YaRN / RoPE 位置编码扩展（占位，待迁入） |
 | → [13.story/07-from-chef-to-ceo](../../../13.story/07-from-chef-to-ceo.md) | 叙事包装 | 阿明餐厅 6 策略决策树（占位，待迁入） |
-| → [06.distributed-systems/distributed-cache/redis](../../../06.distributed-systems/distributed-cache/redis/README.md) | 跨模块类比 | Redis LRU 淘汰 ↔ Sliding Window 注意力 |
-| → [04.spring-backend/architecture/microservices](../../../04.spring-backend/architecture/microservices/README.md) | 跨模块类比 | Sub-Agents ↔ 微服务拆分 |
-| → [01.java-and-jvm/02-jvm/memory-management-gc](../../../01.java-and-jvm/02-jvm/memory-management-gc/README.md) | 跨模块类比 | JVM GC ↔ Memory 压缩策略（占位） |
+| → 06.distributed-systems/distributed-cache/redis | 跨模块类比 | Redis LRU 淘汰 ↔ Sliding Window 注意力 |
+| → [04.spring-backend/architecture/microservices](../../../04.spring-backend/02-boot/README.md) | 跨模块类比 | Sub-Agents ↔ 微服务拆分 |
+| → [01.java-and-jvm/02-jvm/memory-management-gc](../../../01.java-and-jvm/02-jvm/README.md) | 跨模块类比 | JVM GC ↔ Memory 压缩策略（占位） |
 | → [12.interview/11.ai/vector-search-algorithms](../../../12.interview/11.ai/vector-search-algorithms/README.md) | 面试高频 | 向量检索选型面试题（占位） |
 
 **核心跨模块叙事**：

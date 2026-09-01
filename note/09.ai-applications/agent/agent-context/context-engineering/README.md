@@ -331,7 +331,7 @@ pollution_score =  Σ_k   P(token_k | error_anchor)  ·  I(token_k; wrong_answer
 #### 8.4.1 同模块联动
 
 - → [`09.ai-applications/agent/agent-context/`](../README.md)（父目录：Context 三件套总览 —— Context / Memory / Tools）
-- → [`09.ai-applications/agent/agent-memory/`](../agent-memory/README.md)（Memory 是 Context 三件套之一：Context 包含 Memory，Memory 是 Context 的"持久层"）
+- → `09.ai-applications/agent/agent-memory/`（Memory 是 Context 三件套之一：Context 包含 Memory，Memory 是 Context 的"持久层"）
 
 #### 8.4.2 主模块内联动
 

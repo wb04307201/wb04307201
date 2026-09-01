@@ -383,13 +383,13 @@ buffer = Buffer(group, num_nvl_bytes=64 * 1024 * 1024, num_rdma_bytes=128 * 1024
 
 ### 面试题（12.interview/11.ai）
 
-- [LLM 推理引擎选型](../../../../12.interview/11.ai/inference-engine-selection/README.md) — vLLM 为何工业首选（与本专题的 EP 能力对应）
-- [KV Cache MQA/GQA/MLA](../../../../12.interview/11.ai/kv-cache-mqa-gqa-mla/README.md) — MLA 是 DeepSeek-V3 配套技术
-- [LLM 推理基础](../../../../12.interview/11.ai/llm-inference/README.md) — 推理优化全景图
+- [LLM 推理引擎选型](../../../12.interview/11.ai/inference-engine-selection/README.md) — vLLM 为何工业首选（与本专题的 EP 能力对应）
+- KV Cache MQA/GQA/MLA — MLA 是 DeepSeek-V3 配套技术
+- LLM 推理基础 — 推理优化全景图
 
 ### 下游架构（distributed-systems）
 
-- [分布式缓存一致性](../../06.distributed-systems/02-distributed/distributed-cache/README.md) — EP 通信本质是分布式 All-to-All 模式
+- 分布式缓存一致性 — EP 通信本质是分布式 All-to-All 模式
 
 ---
 

@@ -54,7 +54,7 @@ module:
 | **状态空间模型 (SSM/Mamba)** | 基于状态空间方程的序列建模架构，以线性复杂度替代 Transformer 的二次方注意力，适合超长序列处理（如 Mamba、Mamba-2、Jamba）。 | 🔵 | 2023 (Mamba v1) → 2026 (Jamba / Mamba-3) |
 
 > → 相关：模型架构的选择直接影响 [1.2 训练策略](#12-训练与优化) 和 [1.3 推理加速](#13-推理与加速) 的技术路线。
-> → 跨模块：[08.ai-foundations/03-transformer/](../../../../08.ai-foundations/03-transformer/)（Transformer 起源）· [08.ai-foundations/04-llm/](../../../../08.ai-foundations/04-llm/)（LLM 基础）。
+> → 跨模块：08.ai-foundations/03-transformer/（Transformer 起源）· 08.ai-foundations/04-llm/（LLM 基础）。
 
 ### 1.2 训练与优化
 
@@ -77,7 +77,7 @@ module:
 | **分布式训练 (Distributed Training)** | 将训练任务分布到多 GPU/多节点上执行，包括数据并行、模型并行、流水线并行和张量并行等策略。 | 🟢 | 2018 → 2026 (DeepSpeed + FSDP + Megatron 三足鼎立) |
 
 > → 相关：训练产出的模型权重进入 [1.3 推理与加速](#13-推理与加速)；SFT 和 RLHF/DPO 的数据质量依赖 [1.4 检索与知识](#14-检索与知识) 中的数据管道。
-> → 跨模块：[12.interview/11.ai/fine-tuning/](../../../12.interview/11.ai/fine-tuning/README.md)（微调面试高频题）· [13.story/25-ai-org-transformation](../../../13.story/25-ai-org-transformation.md)（团队如何搭训练流水线）。
+> → 跨模块：12.interview/11.ai/fine-tuning/（微调面试高频题）· [13.story/25-ai-org-transformation](../../../13.story/25-ai-org-transformation.md)（团队如何搭训练流水线）。
 
 ### 1.3 推理与加速
 
@@ -91,7 +91,7 @@ module:
 | **推理负载均衡 (Inference Load Balancing)** | 在多 GPU/多节点间动态分配推理请求，优化资源利用率和响应延迟，是大规模部署的必备基础设施。 | 🟢 | 2022 → 2026 (K8s + 推理网关标准化) |
 
 > → 相关：推理服务为 [1.5 应用与编排](#15-应用与编排) 提供底层算力；推理质量和安全由 [1.6 治理与运维](#16-治理与运维) 保障。
-> → 跨模块：[13.story/46-llm-inference](../../../13.story/46-llm-inference.md)（阿明餐厅讲推理优化）· [12.interview/11.ai/inference-optimization](../../../12.interview/11.ai/inference-optimization/README.md)。
+> → 跨模块：[13.story/46-llm-inference](../../../13.story/46-llm-inference.md)（阿明餐厅讲推理优化）· 12.interview/11.ai/inference-optimization。
 
 ### 1.4 检索与知识
 
@@ -135,7 +135,7 @@ module:
 | **模型路由 (Model Routing)** | 根据查询复杂度、任务类型自动将请求分发到最合适的模型（如简单问题→小模型，复杂推理→大模型），平衡成本与质量。 | 🟢 | 2023 (RouteLLM) → 2026 (Not Diamond / LiteLLM Router) |
 
 > → 相关：应用层的稳定性和安全性由 [1.6 治理与运维](#16-治理与运维) 保障；Agent 工具调用依赖 [1.3 推理与加速](#13-推理与加速) 的高性能推理引擎。
-> → 跨模块：[../agent/README.md](../../agent/README.md)（Agent 框架综述）· [../prompts/context-engineering/](../context-engineering/)（上下文工程全专题）· [12.interview/11.ai/agent/](../../../12.interview/11.ai/agent/README.md)· [13.story/01-ai-agent-architecture](../../../13.story/01-ai-agent-architecture.md)· [13.story/30-agent-harness](../../../13.story/30-agent-harness.md)· [13.story/40-prompt-engineering](../../../13.story/40-prompt-engineering.md)。
+> → 跨模块：[../agent/README.md](../../agent/README.md)（Agent 框架综述）· [../prompts/context-engineering/](../context-engineering/)（上下文工程全专题）· 12.interview/11.ai/agent/· [13.story/01-ai-agent-architecture](../../../13.story/01-ai-agent-architecture.md)· [13.story/30-agent-harness](../../../13.story/30-agent-harness.md)· [13.story/40-prompt-engineering](../../../13.story/40-prompt-engineering.md)。
 
 ### 1.6 治理与运维
 
@@ -150,7 +150,7 @@ module:
 | **红队测试 (Red Teaming)** | 通过对抗性攻击系统性测试模型安全边界和脆弱性的实践。 | 🟡 | 2022 → 2026 (Garak / PyRIT 自动化) |
 | **模型部署 (Model Deployment)** | 将模型集成到生产环境，提供实时推理能力。 | 🟢 | 2018 → 2026 (vLLM/TGI/Triton 标准化) |
 
-> → 跨模块：[12.interview/11.ai/llmops/](../../../12.interview/11.ai/llmops/README.md)（LLMOps 面试）· [13.story/35-ai-observability](../../../13.story/35-ai-observability.md)· [13.story/38-ai-compliance-and-regulation](../../../13.story/38-ai-compliance-and-regulation.md)· [13.story/28-ai-hallucination-safety](../../../13.story/28-ai-hallucination-safety.md)。
+> → 跨模块：12.interview/11.ai/llmops/（LLMOps 面试）· [13.story/35-ai-observability](../../../13.story/35-ai-observability.md)· [13.story/38-ai-compliance-and-regulation](../../../13.story/38-ai-compliance-and-regulation.md)· [13.story/28-ai-hallucination-safety](../../../13.story/28-ai-hallucination-safety.md)。
 
 ## 技术领域划分与栈详解
 为了更清晰地理解这些技术如何协作，我们将上述技术栈划分为六个核心领域：**模型基础层**、**训练与优化层**、**推理优化层**、**知识与数据层**、**应用编排层**、**治理与运维层**。
@@ -567,12 +567,12 @@ graph TD
 
 | 当前层 | 主模块内主路径 | 08.ai-foundations | 12.interview | 13.story |
 |---|---|---|---|---|
-| **模型基础层** | [本层 §1.1](#11-模型与架构) | [Transformer](../../../../08.ai-foundations/03-transformer/transformer-architecture.md) · [LLM 基础](../../../../08.ai-foundations/04-llm/llm-basics.md) | [LLM 基础面试](../../../12.interview/11.ai/llm-basics/README.md) | [11-ai-learning-paradox](../../../13.story/11-ai-learning-paradox.md) · [47-boss-hallucination](../../../13.story/47-boss-hallucination.md) |
-| **训练与优化层** | [本层 §1.2](#12-训练与优化) | [ML → RL](../../../../08.ai-foundations/01-ml/ml-to-rl.md) | [Fine-tuning 面试](../../../12.interview/11.ai/fine-tuning/README.md) | [25-ai-org-transformation](../../../13.story/25-ai-org-transformation.md) |
-| **推理优化层** | [本层 §1.3](#13-推理与加速) | [Deep Learning 框架](../../../../08.ai-foundations/02-deep-learning/deep-learning-frameworks.md) | [推理优化面试](../../../12.interview/11.ai/inference-optimization/README.md) | [46-llm-inference](../../../13.story/46-llm-inference.md) · [16-performance-optimization](../../../13.story/16-performance-optimization.md) |
-| **知识与数据层** | [本层 §1.4](#14-检索与知识) | [Embedding](../../../../08.ai-foundations/05-tokenization-embedding/embedding.md) | [RAG 面试](../../../12.interview/11.ai/rag/README.md) · [Embedding 面试](../../../12.interview/11.ai/embedding/README.md) | [36-rag-retrieval-augmented-generation](../../../13.story/36-rag-retrieval-augmented-generation.md) · [37-vector-database-and-embedding](../../../13.story/37-vector-database-and-embedding.md) · [21-search-recommendation](../../../13.story/21-search-recommendation.md) |
-| **应用编排层** | [本层 §1.5](#15-应用与编排) | — | [Agent 面试](../../../12.interview/11.ai/agent/README.md) · [MCP 面试](../../../12.interview/11.ai/mcp/README.md) · [ACP 面试](../../../12.interview/11.ai/acp-protocol/README.md) | [01-ai-agent-architecture](../../../13.story/01-ai-agent-architecture.md) · [30-agent-harness](../../../13.story/30-agent-harness.md) · [40-prompt-engineering](../../../13.story/40-prompt-engineering.md) · [33a-mcp-protocol](../../../13.story/33a-mcp-protocol.md) · [33b-a2a-protocol](../../../13.story/33b-a2a-protocol.md) |
-| **治理与运维层** | [本层 §1.6](#16-治理与运维) | — | [LLMOps 面试](../../../12.interview/11.ai/llmops/README.md) | [35-ai-observability](../../../13.story/35-ai-observability.md) · [38-ai-compliance-and-regulation](../../../13.story/38-ai-compliance-and-regulation.md) · [28-ai-hallucination-safety](../../../13.story/28-ai-hallucination-safety.md) · [42-ai-engineer-responsibility](../../../13.story/42-ai-engineer-responsibility.md) |
+| **模型基础层** | [本层 §1.1](#11-模型与架构) | Transformer · LLM 基础 | [LLM 基础面试](../../../12.interview/11.ai/token/README.md) | [11-ai-learning-paradox](../../../13.story/11-ai-learning-paradox.md) · [47-boss-hallucination](../../../13.story/47-boss-hallucination.md) |
+| **训练与优化层** | [本层 §1.2](#12-训练与优化) | ML → RL | Fine-tuning 面试 | [25-ai-org-transformation](../../../13.story/25-ai-org-transformation.md) |
+| **推理优化层** | [本层 §1.3](#13-推理与加速) | Deep Learning 框架 | 推理优化面试 | [46-llm-inference](../../../13.story/46-llm-inference.md) · [16-performance-optimization](../../../13.story/16-performance-optimization.md) |
+| **知识与数据层** | [本层 §1.4](#14-检索与知识) | Embedding | [RAG 面试](../../../12.interview/11.ai/rag/README.md) · [Embedding 面试](../../../12.interview/11.ai/incremental-embedding/README.md) | [36-rag-retrieval-augmented-generation](../../../13.story/36-rag-retrieval-augmented-generation.md) · [37-vector-database-and-embedding](../../../13.story/37-vector-database-and-embedding.md) · [21-search-recommendation](../../../13.story/21-search-recommendation.md) |
+| **应用编排层** | [本层 §1.5](#15-应用与编排) | — | Agent 面试 · MCP 面试 · [ACP 面试](../../../12.interview/11.ai/acp-protocol/README.md) | [01-ai-agent-architecture](../../../13.story/01-ai-agent-architecture.md) · [30-agent-harness](../../../13.story/30-agent-harness.md) · [40-prompt-engineering](../../../13.story/40-prompt-engineering.md) · [33a-mcp-protocol](../../../13.story/33a-mcp-protocol.md) · [33b-a2a-protocol](../../../13.story/33b-a2a-protocol.md) |
+| **治理与运维层** | [本层 §1.6](#16-治理与运维) | — | LLMOps 面试 | [35-ai-observability](../../../13.story/35-ai-observability.md) · [38-ai-compliance-and-regulation](../../../13.story/38-ai-compliance-and-regulation.md) · [28-ai-hallucination-safety](../../../13.story/28-ai-hallucination-safety.md) · [42-ai-engineer-responsibility](../../../13.story/42-ai-engineer-responsibility.md) |
 
 **主模块内深度反向链**（同模块非本文件）：
 

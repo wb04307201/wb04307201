@@ -347,20 +347,20 @@ Stage 5: Red-Team 持续加固（人工 + AI 联合对抗）
 ### 主模块层
 
 - **AI 应用层**：[同专题 SFT](01-sft.md) / [RLHF](02-rlhf.md) / [DPO](03-dpo.md) / [新方法](05-newer-methods.md) / [PEFT/LoRA](06-peft-lora.md)
-- **AI 基础层**：[Transformer 架构](../../08.ai-foundations/transformer-architecture/README.md) / [In-Context Learning](../../08.ai-foundations/in-context-learning/README.md)
-- **推理优化**：[LLM 推理安全](../../08.ai-foundations/llm-inference-optimization/README.md)
+- **AI 基础层**：[Transformer 架构](../../08.ai-foundations/03-transformer/README.md) / [In-Context Learning](../../08.ai-foundations/04-llm/llm-basics.md)
+- **推理优化**：[LLM 推理安全](../llm-inference/llm-inference-optimization/README.md)
 - **RAG 应用**：[RAG 评估](../rag/04-evaluation.md) / [Hybrid Search](../rag/hybrid-search/README.md)
 
 ### 面试题层（12.interview）
 
-- [AI 安全与对齐面试](../../../12.interview/11.ai/ai-safety-alignment/README.md) — 含 Constitutional AI 3 道高频题
-- [Agent 评估面试](../../../12.interview/11.ai/agent-performance-evaluation/README.md) — AI-as-Judge 评估一致性考点
-- [RLHF/DPO 面试](../../../12.interview/11.ai/rlhf-dpo/README.md) — RLHF vs CAI 对比题
+- [AI 安全与对齐面试](../../12.interview/11.ai/llm-alignment/README.md) — 含 Constitutional AI 3 道高频题
+- [Agent 评估面试](../../12.interview/11.ai/agent-reliability/README.md) — AI-as-Judge 评估一致性考点
+- [RLHF/DPO 面试](../../12.interview/11.ai/llm-alignment/README.md) — RLHF vs CAI 对比题
 
 ### 故事层（13.story）
 
-- [阿明餐厅 - 训练一个守规矩的服务员](../../../13.story/31-ai-safety-alignment-restaurant.md) — 用餐饮规则类比宪法原则
-- [阿明餐厅 - Lambda 架构](../../../13.story/) — AI 反馈 ≈ 顾客反馈
+- [阿明餐厅 - 训练一个守规矩的服务员](../../13.story/31-ai-fatal-trio.md) — 用餐饮规则类比宪法原则
+- [阿明餐厅 - Lambda 架构](../../13.story/README.md) — AI 反馈 ≈ 顾客反馈
 
 ---
 

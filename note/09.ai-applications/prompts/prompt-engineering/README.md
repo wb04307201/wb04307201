@@ -966,8 +966,8 @@ print(resp2.usage)
 
 ### J.1 高频面试题版本
 
-- → [12.interview/11.ai/prompt-engineering/](../../../../12.interview/11.ai/prompt-engineering/) — 高频面试题（反直觉 / 陷阱 / 30 秒话术）
-- → [12.interview/11.ai/prompt-injection/](../../../../12.interview/11.ai/prompt-injection/) — Prompt 注入攻防
+- → [12.interview/11.ai/prompt-engineering/](../../../12.interview/11.ai/prompt-engineering/README.md) — 高频面试题（反直觉 / 陷阱 / 30 秒话术）
+- → [12.interview/11.ai/prompt-injection/](../../../12.interview/11.ai/prompt-injection/README.md) — Prompt 注入攻防
 
 ### J.2 深度原理版本
 
@@ -977,7 +977,7 @@ print(resp2.usage)
 
 ### J.3 叙事层包装
 
-- → [13.story/01-ai-agent-architecture.md](../../../../13.story/01-ai-agent-architecture.md) — 阿明餐厅 #01「AI 智能体架构」叙事版
+- → 13.story/01-ai-agent-architecture.md — 阿明餐厅 #01「AI 智能体架构」叙事版
 
 ---
 

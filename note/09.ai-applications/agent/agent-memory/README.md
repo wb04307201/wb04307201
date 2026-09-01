@@ -717,17 +717,17 @@ Memory 检索（top-k + 图遍历）─────→ 注入 prompt
 
 | 章节 | 关系 | 反向链 |
 |------|------|--------|
-| [RAG 系统设计](../../rag/rag-system-design/README.md)（占位） | RAG 是"外部 Memory"——长期记忆的工程实现 | → `09.ai-applications/rag/rag-system-design/` |
-| [Prompt Engineering](../../prompt-engineering/README.md) | System prompt 可视为"程序性 Memory" | → `09.ai-applications/prompt-engineering/` |
+| RAG 系统设计（占位） | RAG 是"外部 Memory"——长期记忆的工程实现 | → `09.ai-applications/rag/rag-system-design/` |
+| Prompt Engineering | System prompt 可视为"程序性 Memory" | → `09.ai-applications/prompt-engineering/` |
 
 #### 9.4.3 跨主模块反向链（工程类比）
 
 | 章节 | 类比关系 | 反向链 |
 |------|---------|--------|
-| [Redis KV 存储](../../../03.data-stack/02.cache/01.redis-persistence/README.md) | Redis 是经典的"短期 Memory"——TTL + LRU 淘汰 | → `03.data-stack/02.cache/01.redis-persistence/` |
-| [分布式缓存](../../../03.data-stack/03.distributed-cache/README.md) | 长期 Memory 的 LRU 淘汰借鉴 Redis LRU | → `03.data-stack/03.distributed-cache/` |
-| [向量数据库](../../../03.data-stack/04.vector-db/README.md) | 长期 Memory = 向量数据库的工程化 | → `03.data-stack/04.vector-db/` |
-| [消息队列](../../../03.data-stack/05.message-queue/README.md) | 多 Agent 事件流 = 消息队列（Kafka 持久化） | → `03.data-stack/05.message-queue/` |
+| [Redis KV 存储](../../../03.data-stack/01-database/07-redis/README.md) | Redis 是经典的"短期 Memory"——TTL + LRU 淘汰 | → `03.data-stack/02.cache/01.redis-persistence/` |
+| [分布式缓存](../../../03.data-stack/01-database/06-cache/README.md) | 长期 Memory 的 LRU 淘汰借鉴 Redis LRU | → `03.data-stack/03.distributed-cache/` |
+| [向量数据库](../../rag/vector-search-algorithms/README.md) | 长期 Memory = 向量数据库的工程化 | → `03.data-stack/04.vector-db/` |
+| [消息队列](../../../03.data-stack/02-big-data/03-realtime-compute/README.md) | 多 Agent 事件流 = 消息队列（Kafka 持久化） | → `03.data-stack/05.message-queue/` |
 
 #### 9.4.4 面试题层反向链
 

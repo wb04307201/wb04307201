@@ -418,10 +418,10 @@ DeepSeek-R1（生产）：SFT + GRPO → 稳定 + 强推理
 
 ## 🔗 跨模块反向链
 
-- **08.ai-foundations**：[Transformer 架构](../../08.ai-foundations/transformer/01-transformer-architecture.md) SFT 微调的是 Transformer decoder；[LoRA 数学](../../08.ai-foundations/fine-tuning/01-lora-math.md) SFT 中 LoRA 的低秩更新矩阵推导。
-- **03.data-stack**：[分布式训练](../../03.data-stack/distributed-computing/01-distributed-training.md) SFT 在多卡场景的 ZeRO / FSDP 策略；[向量数据库](../../03.data-stack/vector-db/01-vector-db-overview.md) SFT 数据清洗的 embedding 去重。
-- **12.interview**：[SFT vs RAG 对比](../../../12.interview/11.ai/sft-vs-rag.md) 面试高频问题；[RLHF 训练流程](../../../12.interview/11.ai/rlhf-pipeline.md) SFT 是 RLHF 的第一阶段。
-- **13.story**：[阿明餐厅 - 训练服务员](../../../13.story/35-training-new-waiter.md) 用 SFT 类比新员工培训。
+- **08.ai-foundations**：[Transformer 架构](../../08.ai-foundations/03-transformer/transformer-architecture.md) SFT 微调的是 Transformer decoder；[LoRA 数学](06-peft-lora.md) SFT 中 LoRA 的低秩更新矩阵推导。
+- **03.data-stack**：[分布式训练](../../08.ai-foundations/04-llm/llm-basics.md) SFT 在多卡场景的 ZeRO / FSDP 策略；[向量数据库](../rag/vector-search-algorithms/README.md) SFT 数据清洗的 embedding 去重。
+- **12.interview**：[SFT vs RAG 对比](../../12.interview/11.ai/peft-lora/README.md) 面试高频问题；[RLHF 训练流程](../../12.interview/11.ai/llm-alignment/README.md) SFT 是 RLHF 的第一阶段。
+- **13.story**：[阿明餐厅 - 训练服务员](../../13.story/35-ai-observability.md) 用 SFT 类比新员工培训。
 
 ---
 

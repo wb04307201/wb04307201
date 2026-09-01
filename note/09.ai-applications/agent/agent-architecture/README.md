@@ -1252,39 +1252,39 @@ graph LR
 
 ### 15.1 → 01.java-and-jvm
 
-- [01.java-and-jvm/02-jvm/05-gc-tuning/README.md](../../01.java-and-jvm/02-jvm/05-gc-tuning/README.md) — Agent 系统 GC 调优（**长生命周期的 Agent 实例容易触发 Full GC**，G1/ZGC 选择）
-- [01.java-and-jvm/02-jvm/06-hotspot-jvm-runtime/README.md](../../01.java-and-jvm/02-jvm/06-hotspot-jvm-runtime/README.md) — JIT 优化对 Agent 延迟的影响（C2 编译器对 LLM 调用延迟的优化）
+- [01.java-and-jvm/02-jvm/05-gc-tuning/README.md](../../../01.java-and-jvm/02-jvm/README.md) — Agent 系统 GC 调优（**长生命周期的 Agent 实例容易触发 Full GC**，G1/ZGC 选择）
+- [01.java-and-jvm/02-jvm/06-hotspot-jvm-runtime/README.md](../../../01.java-and-jvm/02-jvm/README.md) — JIT 优化对 Agent 延迟的影响（C2 编译器对 LLM 调用延迟的优化）
 
 ### 15.2 → 03.data-stack
 
-- [03.data-stack/02.cache/01.redis-persistence/README.md](../../03.data-stack/02.cache/01.redis-persistence/README.md) — **Agent 状态持久化**（Redis Checkpointer，RDB vs AOF 选择）
-- [03.data-stack/03.big-data/06.kafka/README.md](../../03.data-stack/03.big-data/06.kafka/README.md) — **多 Agent 消息队列**（Kafka 异步通信 Exactly-Once 语义）
+- [03.data-stack/02.cache/01.redis-persistence/README.md](../../../03.data-stack/01-database/07-redis/README.md) — **Agent 状态持久化**（Redis Checkpointer，RDB vs AOF 选择）
+- [03.data-stack/03.big-data/06.kafka/README.md](../../../03.data-stack/02-big-data/03-realtime-compute/README.md) — **多 Agent 消息队列**（Kafka 异步通信 Exactly-Once 语义）
 
 ### 15.3 → 06.distributed-systems（核心反向链）
 
-- [06.distributed-systems/01.microservices/03-service-mesh/README.md](../../06.distributed-systems/01.microservices/03-service-mesh/README.md) — **Agent Mesh 与 Service Mesh 类比**（核心反向链）
+- [06.distributed-systems/01.microservices/03-service-mesh/README.md](../../../06.distributed-systems/02-distributed/rpc/README.md) — **Agent Mesh 与 Service Mesh 类比**（核心反向链）
   - Service Mesh：服务间通信基础设施
   - Agent Mesh：Agent 间通信基础设施（A2A 协议 + MCP 协议）
-- [06.distributed-systems/01.microservices/04-circuit-breaker/README.md](../../06.distributed-systems/01.microservices/04-circuit-breaker/README.md) — **Agent 熔断机制**（Agent 失败时的兜底）
-- [06.distributed-systems/02.event-driven/01-event-sourcing/README.md](../../06.distributed-systems/02.event-driven/01-event-sourcing/README.md) — **Agent Event Sourcing**（完整重放 Agent 执行）
-- [06.distributed-systems/02.event-driven/02-cqrs/README.md](../../06.distributed-systems/02.event-driven/02-cqrs/README.md) — **Agent CQRS**（读写分离的 Agent 设计）
+- [06.distributed-systems/01.microservices/04-circuit-breaker/README.md](../../../06.distributed-systems/03-high-availability/circuit-break/README.md) — **Agent 熔断机制**（Agent 失败时的兜底）
+- [06.distributed-systems/02.event-driven/01-event-sourcing/README.md](../../../06.distributed-systems/02-distributed/README.md) — **Agent Event Sourcing**（完整重放 Agent 执行）
+- [06.distributed-systems/02.event-driven/02-cqrs/README.md](../../../06.distributed-systems/02-distributed/README.md) — **Agent CQRS**（读写分离的 Agent 设计）
 
 ### 15.4 → 07.devops-and-tools
 
-- [07.devops-and-tools/04-monitoring/01-langfuse/README.md](../../07.devops-and-tools/04-monitoring/01-langfuse/README.md) — **Langfuse**（Agent Trace 监控工具，类比 APM）
-- [07.devops-and-tools/04-monitoring/02-prometheus-grafana/README.md](../../07.devops-and-tools/04-monitoring/02-prometheus-grafana/README.md) — Agent 监控指标（Token QPS / Latency / Cost）
+- [07.devops-and-tools/04-monitoring/01-langfuse/README.md](../../../07.devops-and-tools/01-tools/README.md) — **Langfuse**（Agent Trace 监控工具，类比 APM）
+- [07.devops-and-tools/04-monitoring/02-prometheus-grafana/README.md](../../../07.devops-and-tools/02-workflow/README.md) — Agent 监控指标（Token QPS / Latency / Cost）
 
 ### 15.5 → 12.interview（面试精选）
 
-- [12.interview/11.ai/agent-architecture-interview/README.md](../../12.interview/11.ai/agent-architecture-interview/README.md) — **Agent 架构面试题精选**（⚠️ 待 Phase 1+ 迁入）
-- [12.interview/11.ai/multi-agent-patterns/README.md](../../12.interview/11.ai/multi-agent-patterns/README.md) — **多 Agent 模式面试题**（⚠️ 待 Phase 1+ 迁入）
-- [12.interview/11.ai/a2a-protocol-interview/README.md](../../12.interview/11.ai/a2a-protocol-interview/README.md) — **A2A 协议面试题**（⚠️ 待 Phase 1+ 迁入）
+- [12.interview/11.ai/agent-architecture-interview/README.md](../../../12.interview/11.ai/multi-agent-system-design/README.md) — **Agent 架构面试题精选**（⚠️ 待 Phase 1+ 迁入）
+- [12.interview/11.ai/multi-agent-patterns/README.md](../../../12.interview/11.ai/multi-agent-system-design/README.md) — **多 Agent 模式面试题**（⚠️ 待 Phase 1+ 迁入）
+- [12.interview/11.ai/a2a-protocol-interview/README.md](../../../12.interview/11.ai/acp-protocol/README.md) — **A2A 协议面试题**（⚠️ 待 Phase 1+ 迁入）
 
 ### 15.6 → 13.story（叙事层联动）
 
-- [13.story/30-餐厅 Agent 网关.md](../../13.story/30-餐厅 Agent 网关.md) — **阿明餐厅的"Agent 调度"叙事**（用餐厅类比多 Agent 协作；⚠️ 待 Phase 1+ 迁入）
-- [13.story/45-A2A 协议由来.md](../../13.story/45-A2A 协议由来.md) — **A2A 协议的诞生故事**（⚠️ 待 Phase 1+ 迁入）
-- [13.story/47-Agent Mesh 诞生.md](../../13.story/47-Agent Mesh 诞生.md) — **Agent Mesh 从 Service Mesh 演化**（⚠️ 待 Phase 1+ 迁入）
+- [13.story/30-餐厅 Agent 网关.md](../../../13.story/30-agent-harness.md) — **阿明餐厅的"Agent 调度"叙事**（用餐厅类比多 Agent 协作；⚠️ 待 Phase 1+ 迁入）
+- [13.story/45-A2A 协议由来.md](../../../13.story/45-skill-scheduling-restaurant.md) — **A2A 协议的诞生故事**（⚠️ 待 Phase 1+ 迁入）
+- [13.story/47-Agent Mesh 诞生.md](../../../13.story/45-skill-scheduling-restaurant.md) — **Agent Mesh 从 Service Mesh 演化**（⚠️ 待 Phase 1+ 迁入）
 
 ### 15.7 反向链全景图
 

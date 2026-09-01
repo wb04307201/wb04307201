@@ -388,10 +388,10 @@ results = client.query_points(
 - **本专题**：[Embedding 模型](../embedding-models/README.md) / [Chunking](../chunking-strategies/README.md) / [Reranker](../reranker/README.md) / [RAG 评估](../04-evaluation.md)
 - **L1**：[Lost in middle](../lost-in-middle/README.md)
 - **咬文嚼字**：[RAG 面试](../../../12.interview/11.ai/rag/README.md)
-- **L1 数学基础**：[BM25 公式与 TF-IDF](../../../03.data-stack/02.cache/full-text-search.md) — BM25 在 ES/Lucene 中的实现
-- **L1 数据库**：[Elasticsearch 检索原理](../../../03.data-stack/05.search/elasticsearch-internals.md) — BM25 + 倒排索引
-- **进阶**：[ColBERT 多向量检索](../colbert/README.md) — Token 级细粒度检索
-- **面试题**：[hybrid-search-面试](../../../12.interview/11.ai/hybrid-search-interview/README.md) — 5 道高频追问
+- **L1 数学基础**：[BM25 公式与 TF-IDF](../../../03.data-stack/01-database/06-cache/README.md) — BM25 在 ES/Lucene 中的实现
+- **L1 数据库**：[Elasticsearch 检索原理](../../../03.data-stack/02-big-data/03-realtime-compute/README.md) — BM25 + 倒排索引
+- **进阶**：ColBERT 多向量检索 — Token 级细粒度检索
+- **面试题**：[hybrid-search-面试](../../../12.interview/11.ai/vector-search-algorithms/README.md) — 5 道高频追问
 - **故事化**：[13.story 阿明餐厅 RAG 篇](../../../13.story/) — 混合检索类比"老顾客点单 + 新顾客推荐"
 
 ---

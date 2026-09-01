@@ -737,11 +737,11 @@ tools = [
 
 > 「Agent Spec Tools」一文覆盖两个维度：上半部（§1-6）是 **Spec-Driven Development 工具**（决定写什么规范），下半部（§7）是 **Function Calling / Tool Use 协议**（决定 Tool 如何被调用）。两者通过 Agent 这个共同对象正交联动。
 
-- **Prompt 协议**：[→ note/09.ai-applications/prompts/prompt-engineering/README.md](../prompts/prompt-engineering/README.md) —— Tool 描述本质上是「结构化 prompt」，设计方法论一致
+- **Prompt 协议**：→ note/09.ai-applications/prompts/prompt-engineering/README.md —— Tool 描述本质上是「结构化 prompt」，设计方法论一致
 - **Agent 执行模式**：[→ note/09.ai-applications/agent/agent-execution-patterns/README.md](../agent-execution-patterns/README.md) —— ReAct / Plan-and-Execute 中 tool 调用是核心算子
 - **Agent 架构**：[→ note/09.ai-applications/agent/architecture/README.md](../architecture/README.md) —— Tool Registry / Tool Sandbox / Tool Routing 在架构层的位置
-- **面试题**：Function Calling 高频题（Tencent / 阿里 / 字节一面高频）→ [note/12.interview/11.ai/function-calling/README.md](../../12.interview/11.ai/function-calling/README.md)
-- **API Gateway 类比**：Tool 调用 ↔ API Gateway 的请求转发 → [note/06.distributed-systems/02-distributed/api-gateway/README.md](../../06.distributed-systems/02-distributed/api-gateway/README.md)（类比：Tool Registry ≈ service registry；Tool Routing ≈ gateway routing）
+- **面试题**：Function Calling 高频题（Tencent / 阿里 / 字节一面高频）→ [note/12.interview/11.ai/function-calling/README.md](../../../12.interview/11.ai/function-calling/README.md)
+- **API Gateway 类比**：Tool 调用 ↔ API Gateway 的请求转发 → note/06.distributed-systems/02-distributed/api-gateway/README.md（类比：Tool Registry ≈ service registry；Tool Routing ≈ gateway routing）
 - **生产级 Agent**：[→ note/09.ai-applications/agent/production-agent/README.md](../production-agent/README.md) —— Function Calling 在生产环境的可观测性 + 限流 + 熔断
 
 ---

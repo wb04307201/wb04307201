@@ -647,13 +647,13 @@ results = rewriter.retrieve(
 
 | 主模块 | 关联文章 | 关联点 |
 |--------|----------|--------|
-| **08.ai-foundations** | [Embedding 基础](../../../../08.ai-foundations/05-tokenization-embedding/embedding.md) | 改写后的 embedding 仍依赖基础 Embedding 模型 |
-| **08.ai-foundations** | [Transformer 架构](../../../../08.ai-foundations/03-transformer/transformer-architecture.md) | LLM 改写器本质是 Transformer 编码-解码 |
+| **08.ai-foundations** | Embedding 基础 | 改写后的 embedding 仍依赖基础 Embedding 模型 |
+| **08.ai-foundations** | Transformer 架构 | LLM 改写器本质是 Transformer 编码-解码 |
 | **12.interview** | [RAG 面试](../../../12.interview/11.ai/rag/README.md) | Query Rewrite 是 RAG 高频面试题 |
 | **13.story** | [36-rag-retrieval-augmented-generation](../../../13.story/36-rag-retrieval-augmented-generation.md) | 阿明餐厅 RAG 章节：改写 = "听完口语化点单再问后厨" |
 | **13.story** | [40-prompt-engineering](../../../13.story/40-prompt-engineering.md) | 改写 Prompt 是 Prompt Engineering 的子集 |
-| **12.interview** | [Embedding 面试](../../../12.interview/11.ai/embedding/README.md) | Query Rewrite 与 Embedding 检索强相关 |
-| **09.ai-applications/agent** | [Agent 记忆模块](../../agent/memory/README.md) | 多轮融合本质是 Agent 短期记忆的应用 |
+| **12.interview** | [Embedding 面试](../../../12.interview/11.ai/incremental-embedding/README.md) | Query Rewrite 与 Embedding 检索强相关 |
+| **09.ai-applications/agent** | Agent 记忆模块 | 多轮融合本质是 Agent 短期记忆的应用 |
 
 ---
 

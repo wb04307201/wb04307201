@@ -441,25 +441,25 @@ trainer.save_model("./qwen2.5-dpo-final")
 ### 主模块层
 
 - **本专题**：[SFT](01-sft.md) / [RLHF](02-rlhf.md) / [DPO](03-dpo.md) / [Constitutional AI](04-constitutional-ai.md) / [PEFT/LoRA](06-peft-lora.md)
-- **AI 基础层**：[Transformer 架构](../../08.ai-foundations/transformer-architecture/README.md) / [注意力机制](../../08.ai-foundations/attention-mechanism/README.md)
-- **PEFT 系列**：[LoRA 数学原理](../../08.ai-foundations/lora-mathematical-principles/README.md) — SimPO/ORPO 常配合 LoRA 训练
-- **推理优化**：[LLM 推理优化大专题](../../08.ai-foundations/llm-inference-optimization/README.md) — 训练完成后量化部署
+- **AI 基础层**：[Transformer 架构](../../08.ai-foundations/03-transformer/README.md) / [注意力机制](../../08.ai-foundations/03-transformer/attention-mechanism.md)
+- **PEFT 系列**：[LoRA 数学原理](../../08.ai-foundations/05-tokenization-embedding/embedding.md) — SimPO/ORPO 常配合 LoRA 训练
+- **推理优化**：[LLM 推理优化大专题](../llm-inference/llm-inference-optimization/README.md) — 训练完成后量化部署
 
 ### 面试题层（12.interview）
 
-- [RLHF/DPO 面试](../../../12.interview/11.ai/rlhf-dpo/README.md) — 5 道高频对比题
-- [Agent 评估面试](../../../12.interview/11.ai/agent-performance-evaluation/README.md) — 偏好数据质量评估
-- [PEFT 微调面试](../../../12.interview/11.ai/peft-finetune/README.md) — LoRA + DPO/SimPO 组合训练
+- [RLHF/DPO 面试](../../12.interview/11.ai/llm-alignment/README.md) — 5 道高频对比题
+- [Agent 评估面试](../../12.interview/11.ai/agent-reliability/README.md) — 偏好数据质量评估
+- [PEFT 微调面试](../../12.interview/11.ai/peft-lora/README.md) — LoRA + DPO/SimPO 组合训练
 
 ### 故事层（13.story）
 
-- [阿明餐厅 - 顾客反馈驱动菜单](../../../13.story/) — KTO 行为经济学 ≈ 顾客满意度反馈
-- [阿明餐厅 - 服务员培训手册](../../../13.story/) — DPO 偏好对 ≈ 资深员工对比示范
+- [阿明餐厅 - 顾客反馈驱动菜单](../../13.story/README.md) — KTO 行为经济学 ≈ 顾客满意度反馈
+- [阿明餐厅 - 服务员培训手册](../../13.story/README.md) — DPO 偏好对 ≈ 资深员工对比示范
 
 ### 跨领域
 
-- [因果推断与 RLHF](../../02.cs-foundations/causal-inference/README.md) — reward model 的因果建模视角
-- [博弈论与对齐](../../02.cs-foundations/game-theory/README.md) — IPO/ORPO 中的 Nash 均衡视角
+- [因果推断与 RLHF](../../02.cs-foundations/01-algorithms/README.md) — reward model 的因果建模视角
+- [博弈论与对齐](../../02.cs-foundations/01-algorithms/README.md) — IPO/ORPO 中的 Nash 均衡视角
 
 ---
 

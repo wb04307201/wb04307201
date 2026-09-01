@@ -312,12 +312,12 @@ prompt_v2 = f"Context: {context}\nQ: {query}\nA:"
 ## 🔗 兄弟章节
 
 - **本专题**：YaRN 长度扩展 / [Chunking 策略](../chunking-strategies/README.md) / [Reranker](../reranker/README.md) / [Hybrid Search](../hybrid-search/README.md) / [RAG 评估](../04-evaluation.md)
-- **L1**：[RoPE 位置编码](../../../08.ai-foundations/transformer-attention/README.md) — 位置编码偏置的来源
+- **L1**：[RoPE 位置编码](../../../08.ai-foundations/03-transformer/attention-mechanism.md) — 位置编码偏置的来源
 - **咬文嚼字**：[面试深挖](../../../12.interview/11.ai/context-engineering-interview/README.md)
 - **应用场景**：[long-document-processing](../long-document-processing/README.md) — 长 PDF/合同 Lost-in-Middle 实战缓解（位置策略 + 重排序 + Context Compression）
 - **咬文嚼字**：[long-document-pdf 长文档面试](../../../12.interview/11.ai/long-document-pdf/README.md) — Q2 Lost-in-Middle 深挖
-- **L1 注意力机制**：[Attention 原理](../../../08.ai-foundations/transformer-attention/README.md) — Attention Dilution 数学根源
-- **进阶方案**：[Context Engineering 综述](../context-engineering/README.md) — 5 大长 Context 优化策略
+- **L1 注意力机制**：[Attention 原理](../../../08.ai-foundations/03-transformer/attention-mechanism.md) — Attention Dilution 数学根源
+- **进阶方案**：Context Engineering 综述 — 5 大长 Context 优化策略
 - **故事化**：[13.story 阿明餐厅 RAG 篇](../../../13.story/) — Lost-in-Middle 类比"餐厅服务员记长菜单"
 
 ---

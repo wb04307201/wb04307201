@@ -476,11 +476,11 @@ def monitor_gui(prev_screenshot, current_screenshot, expected_state):
 | [Agent 执行模式（上级 MOC）](../README.md) | 上级目录 | 兄弟文章 ReAct / Plan-and-Execute / 6 维对比 / 选型决策树 |
 | [Agent Reliability](../../agent-reliability/README.md) | 同模块 | Monitoring 异常 → 触发 Reliability 的状态回滚 / 断路器 |
 | [Agent Memory](../../agent-memory/README.md) | 同模块 | Monitoring 需要历史记忆做趋势分析；Planning 需要长期记忆做上下文 |
-| [Production Stability（占位）](../../../llmops/production-stability/README.md) | 跨子模块 | LLM 服务级监控（latency / cost / error rate）下沉到 Agent 监控 |
+| Production Stability（占位） | 跨子模块 | LLM 服务级监控（latency / cost / error rate）下沉到 Agent 监控 |
 | [Agent Evaluation](../../agent-evaluation/README.md) | 同模块 | 评测是 Monitoring 的「离线版」（批跑黄金集 vs 在线采集） |
 | [面试题：Planning-Acting-Monitoring（占位）](../../../../12.interview/11.ai/planning-acting-monitoring/README.md) | 跨主模块 | L3 形态的面试题版本，互链回指 |
-| [故事：系统架构演进（占位）](../../../../13.story/02-system-architecture-evolution/README.md) | 跨主模块 | 阿明餐厅系列把三阶段类比为「点菜→做菜→出餐监控」叙事版本 |
-| [分布式追踪（类比）](../../../../06.distributed-systems/observability/distributed-tracing/README.md) | 跨主模块 | Monitoring 阶段的 Trace 追踪 ≈ 微服务的分布式追踪（OTel 协议同源） |
+| 故事：系统架构演进（占位） | 跨主模块 | 阿明餐厅系列把三阶段类比为「点菜→做菜→出餐监控」叙事版本 |
+| 分布式追踪（类比） | 跨主模块 | Monitoring 阶段的 Trace 追踪 ≈ 微服务的分布式追踪（OTel 协议同源） |
 | [LLM 推理优化](../../../llm-inference/README.md) | 跨子模块 | Acting 阶段的工具调用成本 ≈ LLM 推理成本，两者在监控上同构 |
 
 **反向链建设原则**：

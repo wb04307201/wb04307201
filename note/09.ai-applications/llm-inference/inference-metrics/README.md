@@ -391,9 +391,9 @@ class LLMUser(HttpUser):
 
 ### 跨模块（L1 知识网络）
 
-- [12.interview · LLM 评测](../../../../12.interview/11.ai/llm-benchmark/README.md) — 性能指标 vs 能力指标（MMLU / HumanEval）的区别
-- [07.devops-and-tools](../../../../07.devops-and-tools/README.md) — Prometheus / Grafana 监控基础设施
-- [13.story · 46-llm-inference.md](../../../../13.story/46-llm-inference.md) — 阿明餐厅「厨房出餐速度」类比 LLM 推理指标
+- 12.interview · LLM 评测 — 性能指标 vs 能力指标（MMLU / HumanEval）的区别
+- 07.devops-and-tools — Prometheus / Grafana 监控基础设施
+- 13.story · 46-llm-inference.md — 阿明餐厅「厨房出餐速度」类比 LLM 推理指标
 
 ### 前置知识
 
