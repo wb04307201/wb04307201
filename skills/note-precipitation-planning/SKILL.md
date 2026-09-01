@@ -726,6 +726,44 @@ PYEOF
 
 **反直觉 3**："我看了 README 觉得路径是对的" —— README 文字描述 ≠ 实际文件位置。**唯一可靠标准是 `os.path.isfile(target_abs)`**。
 
+#### 🆕 §7.2 单文件自检（2026-09-02 教训·必做）
+
+**触发时机**：Step 6 subagent 报告 "完成" 后，orchestrator commit 前 **必做**。
+
+**目的**：避免 subagent 自报 "全部 commit 完毕" 但实际引入新断链。**subagent 自我声明不算数**（参考 note-precipitation-planning Mistake 20 · 弱关联类教训）。
+
+**执行命令**：
+
+```bash
+# 列出 subagent 修改/新增的所有 .md 文件
+CHANGED_FILES=$(git diff --name-only HEAD | grep "^note/.*\.md$" || true)
+
+# 对每个文件跑 check-broken-links.py
+if [ -n "$CHANGED_FILES" ]; then
+  python scripts/check-broken-links.py $CHANGED_FILES
+  # 期望：❌ 0 处
+fi
+```
+
+**接受标准**：
+
+| 检查项 | 通过条件 |
+|--------|---------|
+| 断链数 | **= 0** |
+| broken link 来源 | 仅 subagent 修改的 file scope 内 |
+| 父 README / 总目录回链 | 已确认（§7 自检清单）|
+
+**失败处理**：
+- 断链数 > 0 → **立即修复**（最常见是路径纠正，参考 §7.1）
+- 修复不成功 → **不允许 commit**，返回 Step 6 重做
+
+**反直觉 4**："subagent 说做完了" ≠ "实际做完了"。Session 6 中 19 篇 v17 校准 subagent 自报 100%，但 orchestrator 独立校验才确保全部落地（v18 验证 80/80 = 100%）。
+
+**与 pre-commit hook 的关系**：
+- pre-commit hook（`.githooks/pre-commit`）=**被动防护**（commit 时跑）
+- §7.2 单文件自检 =**主动验证**（commit 前跑）
+- **推荐流程**：subagent 完成 → orchestrator §7.2 → pre-commit 兜底
+
 ## Quick Reference
 
 | 场景 | 推荐模式 | 落地位置 | Commit 数 |
