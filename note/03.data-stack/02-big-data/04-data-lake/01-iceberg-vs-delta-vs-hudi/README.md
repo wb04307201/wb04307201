@@ -4,7 +4,7 @@
   type: article
   category: 主模块子文章
   summary: Iceberg vs Delta Lake vs Hudi——数据湖三剑客深度对比
-  depth: ⭐⭐⭐⭐⭐
+  depth: ⭐⭐⭐⭐
 -->
 
 # Iceberg vs Delta Lake vs Apache Hudi：数据湖三剑客深度对比

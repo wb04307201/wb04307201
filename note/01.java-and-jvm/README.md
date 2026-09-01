@@ -6,6 +6,7 @@ module:
   audience: Java 工程师 / 架构师 / 后端开发 / 求职面试者
   category: 主模块
   summary: 从语言基础到 JVM 原理、并发编程、设计模式、版本演进（Java 8-26），系统性构建 Java 知识体系。
+  depth: ⭐
 -->
 
 # 01. Java + JVM

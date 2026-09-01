@@ -5,7 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 一份按业务场景梳理的 APS 速查手册：从"经验排产"到"算法排产"的升级指南。
-  depth: ⭐⭐
+  depth: ⭐
 -->
 
 # APS · 高级计划与排程系统

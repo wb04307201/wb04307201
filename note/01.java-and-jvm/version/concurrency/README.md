@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Java 并发演进：synchronized → Lock → CompletableFuture → Virtual Threads。
+  depth: ⭐⭐
 -->
 
 # 并发

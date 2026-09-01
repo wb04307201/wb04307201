@@ -6,6 +6,7 @@ module:
   audience: 后端工程师 / DBA / 数据架构师 / 求职面试者
   category: 主模块
   summary: 数据栈模块覆盖数据库基础、SQL/事务/索引、MySQL/PostgreSQL/Redis/NoSQL、连接池/迁移/监控/云数据库，以及大数据数仓/实时计算/数据湖/OLAP/调度/治理/同步工具全链路。
+  depth: ⭐
 -->
 
 # 03. Data Stack（数据栈）

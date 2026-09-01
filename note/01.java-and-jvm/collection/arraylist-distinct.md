@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: List 去重方案对比：HashSet / 排序遍历 / 外部排序 / 并行流（split-hairs 迁出）
+  depth: ⭐⭐⭐
 -->
 
 # List 去重（split-hairs 视角）

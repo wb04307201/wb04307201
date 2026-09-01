@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: WeakHashMap 弱引用键的 Map 与缓存场景应用。
+  depth: ⭐⭐⭐
 -->
 
 # WeakHashMap 学习笔记

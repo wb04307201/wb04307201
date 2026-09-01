@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: JVM 调优实战——根据服务器配置选择合理的 JVM 启动参数。
+  depth: ⭐⭐⭐
 -->
 
 # JVM 调优 — 根据服务器配置选择参数

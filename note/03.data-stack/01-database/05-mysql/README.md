@@ -5,7 +5,7 @@ module:
   type: index
   category: 主模块子文章
   summary: MySQL 采用 Server + 存储引擎两层架构,InnoDB 是默认引擎，核心机制覆盖 Buffer Pool、Redo Log、Binlog、主从复制与备份恢复。
-  depth: ⭐⭐⭐⭐⭐
+  depth: ⭐⭐⭐⭐
 -->
 
 # MySQL

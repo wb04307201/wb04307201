@@ -5,6 +5,7 @@ module:
   type: module
   category: AI 基础理论
   summary: AI 基础理论全景：ML 传统算法 → 深度学习 → Transformer 架构 → LLM → Tokenization
+  depth: ⭐
 -->
 
 # 08. AI Foundations

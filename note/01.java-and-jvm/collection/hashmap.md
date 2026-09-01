@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: HashMap 底层原理全景：put 流程、扩容机制、哈希扰动函数、红黑树转换、线程安全问题与 JDK 7/8 演进对比。
+  depth: ⭐⭐⭐⭐
 -->
 
 # HashMap 深入

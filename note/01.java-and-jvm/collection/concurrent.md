@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Java 并发集合原理与选型，覆盖 ConcurrentHashMap、CopyOnWriteArrayList、阻塞队列及常见并发陷阱。
+  depth: ⭐⭐⭐⭐
 -->
 
 # 并发集合

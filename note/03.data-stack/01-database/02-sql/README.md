@@ -5,7 +5,7 @@ module:
   type: index
   category: 主模块子文章
   summary: SQL 涵盖分类、语法、执行顺序、慢查询分析与 EXPLAIN，并补充 CTE 与窗口函数等 MySQL 8.0+ 高级特性。
-  depth: ⭐⭐
+  depth: ⭐
 -->
 
 # SQL

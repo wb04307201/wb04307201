@@ -6,6 +6,7 @@ module:
   audience: 后端工程师 / DBA / 求职面试者
   category: 主模块
   summary: 数据库从关系型基础到 NoSQL、缓存、迁移与云原生,涵盖 SQL、事务、索引、MySQL 内部机制、Redis、NoSQL 与监控告警全链路核心知识。
+  depth: ⭐⭐
 -->
 
 # 数据库

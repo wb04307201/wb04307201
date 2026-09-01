@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Java 核心概念（OOP / 类型 / 反射 / 注解 / SPI / 语法糖 等）全貌。
+  depth: ⭐⭐
 -->
 
 # Java 核心概念
