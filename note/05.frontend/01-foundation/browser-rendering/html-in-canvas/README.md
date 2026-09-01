@@ -400,7 +400,7 @@ Option C 要求：**进入 paint 事件后，DOM 内容（除 canvas 自己的�
 | # | 来源 | 类型 | 用途 |
 |---|------|------|------|
 | 1 | [WICG/html-in-canvas README](https://github.com/WICG/html-in-canvas) | 官方（W3C WICG） | 一手 spec，commit 284+ 持续迭代 |
-| 2 | [chrome://flags/#canvas-draw-element](chrome://flags/#canvas-draw-element) | 官方实现 | 试用入口（Chrome Canary） |
+| 2 | chrome://flags/#canvas-draw-element | 官方实现 | 试用入口（Chrome Canary） |
 | 3 | [HTML 渲染进 Canvas 的新提案解析](https://blog.csdn.net/weixin_41961749/article/details/160449948) | 中文二手深度 | 中文读者术语对照（`drawElementImage` / paint 时机） |
 | 4 | [Chrome 推出全新 HTML-in-Canvas API 取代 html2canvas](https://www.sohu.com/a/1028944399_122066678) | 新闻报道 | 行业背景（"取代 html2canvas"信号） |
 | 5 | [GitHub Issue #94: Hit testing and layer ordering](https://github.com/WICG/html-in-canvas/issues/94) | 官方讨论 | 命中测试模型的当前讨论 |

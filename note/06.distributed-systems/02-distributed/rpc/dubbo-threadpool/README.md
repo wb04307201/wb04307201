@@ -104,5 +104,5 @@ public class TaskQueue<R extends Runnable> extends LinkedBlockingQueue<R> {
 
 ## 反向链
 
-- [Java 线程池（01.java-and-jvm）](../../../01.java-and-jvm/03-concurrency/thread-pool/README.md) — JDK ThreadPoolExecutor 七大参数与 Eager 重写 offer 的原理
+- [Java 线程池（01.java-and-jvm）](../../../../01.java-and-jvm/03-concurrency/thread-pool/README.md) — JDK ThreadPoolExecutor 七大参数与 Eager 重写 offer 的原理
 - [Apache Dubbo 总览](../apache-dubbo/README.md) — Dubbo 整体架构与服务治理
