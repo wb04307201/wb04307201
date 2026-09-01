@@ -5,7 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring Event 事件机制
-  depth: ⭐⭐⭐
+  depth: ⭐⭐⭐⭐
 -->
 
 # Spring Event 事件机制

@@ -5,7 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Pingora — Cloudflare 开源的 Rust HTTP 代理框架（库），用于构建高性能反向代理、负载均衡与网关服务
-  depth: ⭐⭐⭐⭐
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # Pingora

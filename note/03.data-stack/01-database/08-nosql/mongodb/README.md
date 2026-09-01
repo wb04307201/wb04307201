@@ -5,7 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: MongoDB 文档数据库：BSON 存储、副本集高可用、分片集群扩展、聚合管道、索引类型
-  depth: ⭐⭐⭐⭐⭐
+  depth: ⭐⭐⭐⭐
 -->
 
 # MongoDB 文档数据库

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: JVM 常用参数速查手册
+  depth: ⭐⭐⭐
 -->
 
 # JVM 常用参数速查手册

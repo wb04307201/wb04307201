@@ -5,7 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Vite 构建工具
-  depth: ⭐⭐⭐⭐⭐
+  depth: ⭐⭐⭐⭐
 -->
 
 # Vite 构建工具
