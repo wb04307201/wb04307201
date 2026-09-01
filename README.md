@@ -50,6 +50,32 @@
 
 基于 Obsidian 维护的体系化技术笔记：14 主模块，frontmatter 100% 覆盖，3 层沉淀模式保证可演进。→ [进入笔记](./note/README.md)
 
+### 📊 主模块 depth 分布统计（2026-09-01）
+
+| 模块 | leaf 总数 | L5 ⭐⭐⭐⭐⭐ | L4 ⭐⭐⭐⭐ | L3 ⭐⭐⭐ | L2 ⭐⭐ | L1 ⭐ | 平均分 | 状态 |
+|------|:---------:|:-----:|:-----:|:-----:|:-----:|:----:|:------:|:----:|
+| 01.java-and-jvm | 92 | 24 (26%) | 10 (11%) | 30 (33%) | 17 (18%) | 7 (8%) | 6.1 | ✅ |
+| 02.cs-foundations | 43 | 20 (47%) | 10 (23%) | 2 | 10 | 1 | 7.28 | ✅ |
+| 03.data-stack | 29 | 22 (76%) | 5 | 2 | 0 | 0 | 7.97 | ✅ |
+| 04.spring-backend | 141 | TBD | TBD | TBD | TBD | TBD | TBD | ⏳ |
+| 05.frontend | 57 | TBD | TBD | TBD | TBD | TBD | TBD | ⏳ |
+| 06.distributed-systems | 158 | TBD | TBD | TBD | TBD | TBD | TBD | ⏳ |
+| 07.devops-and-tools | 47 | TBD | TBD | TBD | TBD | TBD | TBD | ⏳ |
+| 08.ai-foundations | 13 | 2 | 3 | 0 | 5 | 3 | 4.77 | ✅ |
+| 09.ai-applications | 133 | TBD | TBD | TBD | TBD | TBD | TBD | ⏳ |
+| 10.business-systems | 38 | 20 (53%) | 4 | 3 | 9 | 2 | 7.60 | ✅ |
+| 11.product-and-pm | 11 | 2 | 2 | 5 | 0 | 2 | 5.25 | ✅ |
+
+> **depth 含义**（主模块专用）：
+> - L1 ⭐ 入门：概念 + 简单示例
+> - L2 ⭐⭐ 进阶：原理 + 多语言示例
+> - L3 ⭐⭐⭐ 高级：源码级深度 + 版本演进
+> - L4 ⭐⭐⭐⭐ 引擎级：跨模块 + 性能优化
+> - L5 ⭐⭐⭐⭐⭐ 大师级：系统性深度 + 实战案例（≥7 跨模块 + 引擎源码）
+>
+> 已覆盖 6/11 模块（226 篇，28.7%）；剩 04 / 05 / 06 / 07 / 09 共 536 篇（71.3%）正在扩展中。
+> 详见 [note-health skill 流程文档](./skills/note-health/references/main-module-depth.md)。
+
 | 序号 | 分类 | 内容概要 |
 |:----:|------|---------|
 | 01 | **Java** | 集合、JVM、并发、反射、序列化、I/O 与零拷贝、版本新特性 (8→26)、Kotlin |
