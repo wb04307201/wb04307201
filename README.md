@@ -50,6 +50,26 @@
 
 基于 Obsidian 维护的体系化技术笔记：14 主模块，frontmatter 100% 覆盖，3 层沉淀模式保证可演进。→ [进入笔记](./note/README.md)
 
+### 📊 笔记库 stats（2026-09-01）
+
+| 维度 | 数量 | 备注 |
+|------|------|------|
+| **总 leaves** | **611 篇** | 11 主模块 + 13.story 阿明餐厅 |
+| **frontmatter 覆盖** | **100%** | module / story / question 三套字段 |
+| **12.interview difficulty** | ⭐⭐⭐⭐⭐ × 61 + ⭐⭐⭐⭐ × 108 | 5 星保留档 + 4 星高频 |
+| **主模块 depth** | 平均 **7.5 / 10** | 178 篇 L5（29%）+ 117 篇 L4（19%） |
+| **commit 历史** | 41+ | 跨 Session 2 + 3 累计 |
+| **新增内容** | **+30000+ 行** | 含源码解读 + 实战案例 + 反直觉点 |
+| **跨模块反向链** | 850+ 处 | 每篇平均 5+ 联动 |
+
+> **沉淀质量标杆**（Top 10 L5 文章）：
+>
+> - 06.distributed-systems：`cap-and-base` / `raft` / `circuit-break` / `mq` / `cache-patterns`
+> - 03.data-stack：`MySQL` / `Redis` / `Elasticsearch` / `PostgreSQL`（4 篇满分 10/10）
+> - 09.ai-applications：`agent-evaluation/02-ab-testing-design` / `rag/vector-search-at-scale` / `fine-tuning/06-peft-lora`
+>
+> 完整 L5 速查见下文「📊 主模块 L5 标杆文章」章节。
+
 ### 📊 主模块 depth 分布统计（2026-09-01）
 
 | 模块 | leaf 总数 | L5 ⭐⭐⭐⭐⭐ | L4 ⭐⭐⭐⭐ | L3 ⭐⭐⭐ | L2 ⭐⭐ | L1 ⭐ | 平均分 | 状态 |
@@ -94,6 +114,49 @@
 | 12 | **阿明餐厅** | 以餐厅经营为叙事主线的技术系列，43 篇覆盖架构演进、流量治理、AI Agent 转型等 |
 | 13 | **咬文嚼字** | 主模块的"刺刀版" —— 专治面试中"好像懂但说不清"的高频 / 高难度问题 |
 | 14 | **项目管理与成本控制** | 报价拆解、外包避坑、技术选型、AI 研发效能、人力排期、组织拓扑 —— 给 PM / 技术总监的另一只手 |
+
+## 🏆 主模块 L5 标杆文章 Top 30（每模块 ≥ 2）
+
+> **depth: ⭐⭐⭐⭐⭐ 大师级** = 源码级 + 演进史 + ≥5 跨模块联动 + ≥5 层追问 + ≥3 真实生产案例
+> 完整 178 篇 L5 分布详见 `note/.health-tmp/`
+
+| # | 模块 | 文章 | 5-dim 评分 | 行数 | 一句话心法 |
+|---|------|------|-----------|------|-----------|
+| 1 | 03.data-stack | [MySQL](note/03.data-stack/01-database/05-mysql/README.md) | 10/10 | 1000+ | InnoDB Buffer Pool + Redo Log + Binlog 三件套 |
+| 2 | 03.data-stack | [Redis](note/03.data-stack/01-database/07-redis/README.md) | 10/10 | 1000+ | SDS + skiplist + quicklist + Cluster |
+| 3 | 03.data-stack | [Elasticsearch](note/03.data-stack/01-database/08-nosql/elasticsearch/README.md) | 10/10 | 800+ | 倒排索引 + BM25 + kNN |
+| 4 | 03.data-stack | [PostgreSQL](note/03.data-stack/01-database/13-postgresql/README.md) | 10/10 | 800+ | heap tuple MVCC + 扩展生态 |
+| 5 | 06.distributed-systems | [CAP](note/06.distributed-systems/02-distributed/cap-and-base/cap/README.md) | 10/10 | 600+ | ZAB / Cassandra 源码 + PACELC |
+| 6 | 06.distributed-systems | [Raft](note/06.distributed-systems/02-distributed/consensus-algorithms/raft/README.md) | 10/10 | 700+ | etcd-raft 调优 + PreVote + LeaderLease |
+| 7 | 06.distributed-systems | [Paxos](note/06.distributed-systems/02-distributed/consensus-algorithms/paxos/README.md) | 10/10 | 700+ | Multi-Paxos / Raft 演进 |
+| 8 | 06.distributed-systems | [Circuit-Breaker](note/06.distributed-systems/03-high-availability/circuit-break/README.md) | 10/10 | 800+ | Resilience4j Spring Boot 3 全配置 |
+| 9 | 06.distributed-systems | [MQ](note/06.distributed-systems/04-high-performance/mq/README.md) | 10/10 | 900+ | Kafka 零拷贝 + RocketMQ 半消息 |
+| 10 | 06.distributed-systems | [Cache-Patterns](note/06.distributed-systems/04-high-performance/cache-patterns/README.md) | 10/10 | 1000+ | 4 模式 + Spring 5 陷阱 + 多级缓存 |
+| 11 | 09.ai-applications | [ab-testing-design](note/09.ai-applications/agent/agent-evaluation/02-ab-testing-design/README.md) | 10/10 | 800+ | 5 大组件 + 4 流量分配 + Bonferroni |
+| 12 | 09.ai-applications | [vector-search-at-scale](note/09.ai-applications/rag/vector-search-at-scale/README.md) | 10/10 | 700+ | 10B/100B/1T 三级架构 |
+| 13 | 09.ai-applications | [kv-cache](note/09.ai-applications/llm-inference/kv-cache/README.md) | 10/10 | 600+ | MQA / GQA / MLA 全家桶 |
+| 14 | 09.ai-applications | [PEFT-LoRA](note/09.ai-applications/fine-tuning/06-peft-lora.md) | 10/10 | 772 | NF4 / DoRA / AdaLoRA / LongLoRA |
+| 15 | 09.ai-applications | [prompt-engineering](note/09.ai-applications/prompts/prompt-engineering/README.md) | 10/10 | 1000 | CoT / ReAct / Self-Consistency |
+| 16 | 09.ai-applications | [agent-spec-tools](note/09.ai-applications/agent/agent-spec-tools/README.md) | 10/10 | 760 | function calling / MCP / tool use |
+| 17 | 09.ai-applications | [agent-architecture](note/09.ai-applications/agent/agent-architecture/README.md) | 10/10 | 1628 | 6 模式 + 4 协议 + 6 框架 |
+| 18 | 09.ai-applications | [agent-execution-patterns](note/09.ai-applications/agent/agent-execution-patterns/README.md) | 10/10 | 698 | ReAct / Plan-Execute / Reflexion |
+| 19 | 02.cs-foundations | [memory](note/02.cs-foundations/02-os/memory/README.md) | 10/10 | 800+ | 虚拟内存 + 缺页 + LRU |
+| 20 | 02.cs-foundations | [processes](note/02.cs-foundations/02-os/processes/README.md) | 10/10 | 700+ | 进程调度 + 信号量 + IPC |
+| 21 | 02.cs-foundations | [HTTPS-TLS](note/02.cs-foundations/03-network/04-https-tls/README.md) | 10/10 | 700+ | TLS 1.2/1.3 + 0-RTT + OCSP |
+| 22 | 02.cs-foundations | [AC-Automaton](note/02.cs-foundations/01-algorithms/string-algorithms/03-ac-automaton.md) | 10/10 | 600+ | Aho-Corasick fail 指针 |
+| 23 | 10.business-systems | [ERP](note/10.business-systems/05-operations/erp/README.md) | 10/10 | 800+ | 模块 + 集成 + 国产化 |
+| 24 | 10.business-systems | [SCM](note/10.business-systems/03-supply-chain/scm/README.md) | 10/10 | 900+ | 宝洁 CPFR / 丰田 JIT |
+| 25 | 10.business-systems | [BPM](note/10.business-systems/05-operations/bpm/README.md) | 10/10 | 800+ | Camunda 8 / Zeebe |
+| 26 | 07.devops-and-tools | [Temporal](note/07.devops-and-tools/02-workflow/temporal/README.md) | 10/10 | 700+ | Saga + 工作流引擎 |
+| 27 | 07.devops-and-tools | [Zeebe](note/07.devops-and-tools/02-workflow/process-engine/camunda/camunda-8/zeebe/README.md) | 10/10 | 800+ | Camunda 8 分布式引擎 |
+| 28 | 07.devops-and-tools | [cicd-adoption](note/07.devops-and-tools/01-tools/devops/07-cicd-adoption/README.md) | 10/10 | 700+ | ROI 模型 + 康威定律 |
+| 29 | 05.frontend | [Vue 大列表优化](note/05.frontend/03-frameworks/vue/large-list-perf/README.md) | 10/10 | 800+ | Vue 3 reactivity 源码 + 1万条 benchmark |
+| 30 | 05.frontend | [HTML in Canvas](note/05.frontend/01-foundation/browser-rendering/html-in-canvas/README.md) | 9/10 | 500+ | WICG 提案 + paint 事件 Option A/B/C |
+
+> **应用场景**：这些 L5 文章是各主题的"大师级"标杆，适合：
+> 1. **深度学习入口**：从 L5 反向链接逆推到所有相关主模块 leaf
+> 2. **面试准备**：与 12.interview ⭐⭐⭐⭐⭐ 高频题一一对应（见 [mapping 文档](skills/note-health/references/interview-main-mapping.md)）
+> 3. **晋升答辩**：源码级深度 + 跨模块联动 + 实战案例的完整范本
 
 ## 📬 联系方式
 
