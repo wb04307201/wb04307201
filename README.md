@@ -55,32 +55,33 @@
 
 ## 📓 技术笔记
 
-基于 Obsidian 维护的体系化技术笔记：14 主模块，frontmatter 100% 覆盖，3 层沉淀模式保证可演进。→ [进入笔记](./note/README.md)
+基于 Obsidian 维护的体系化技术笔记：**13 主模块** + `12.interview` 高频面试题（227 题）+ `13.story` 阿明餐厅叙事（50 篇），frontmatter 98.1% 覆盖、3 层沉淀模式保证可演进。→ [进入笔记](./note/README.md)
 
-### 📊 笔记库 stats（2026-09-01）
+### 🔄 笔记库 CI 状态（实时）
 
-| 维度 | 数量 | 备注 |
-|------|------|------|
-| **总 leaves** | **611 篇** | 11 主模块 + 13.story 阿明餐厅 |
-| **frontmatter 覆盖** | **100%** | module / story / question 三套字段 |
-| **12.interview difficulty** | ⭐⭐⭐⭐⭐ × 61 + ⭐⭐⭐⭐ × 108 | 5 星保留档 + 4 星高频 |
-| **主模块 depth** | 平均 **7.5 / 10** | 178 篇 L5（29%）+ 117 篇 L4（19%） |
-| **commit 历史** | 41+ | 跨 Session 2 + 3 累计 |
-| **新增内容** | **+30000+ 行** | 含源码解读 + 实战案例 + 反直觉点 |
-| **跨模块反向链** | 850+ 处 | 每篇平均 5+ 联动 |
+<a href="https://github.com/wb04307201/wb04307201/actions/workflows/difficulty-calibration.yml"><img src="https://github.com/wb04307201/wb04307201/actions/workflows/difficulty-calibration.yml/badge.svg?branch=master" alt="5 维校准"/></a>
+<a href="https://github.com/wb04307201/wb04307201/actions/workflows/structural-link-check.yml"><img src="https://github.com/wb04307201/wb04307201/actions/workflows/structural-link-check.yml/badge.svg?branch=master" alt="结构链接"/></a>
+<a href="https://github.com/wb04307201/wb04307201/actions/workflows/link-check.yml"><img src="https://github.com/wb04307201/wb04307201/actions/workflows/link-check.yml/badge.svg?branch=master" alt="URL 校验"/></a>
 
-> **沉淀质量标杆**（Top 10 L5 文章）：
->
-> - 06.distributed-systems：`cap-and-base` / `raft` / `circuit-break` / `mq` / `cache-patterns`
-> - 03.data-stack：`MySQL` / `Redis` / `Elasticsearch` / `PostgreSQL`（4 篇满分 10/10）
-> - 09.ai-applications：`agent-evaluation/02-ab-testing-design` / `rag/vector-search-at-scale` / `fine-tuning/06-peft-lora`
->
-> 完整 L5 速查见下文「📊 主模块 L5 标杆文章」章节。
+> 4 个 workflow 每月 1 日串行跑（02:00/03:00/04:00/06:00），PR 触发即时反馈。
 
-### 📊 主模块 depth 分布统计（2026-09-01，v4+v5 校准后）
+### 📊 笔记库健康度（2026-09-02）
 
-| 模块 | leaf 总数 | L5 ⭐⭐⭐⭐⭐ | L4 ⭐⭐⭐⭐ | L3 ⭐⭐⭐ | L2 ⭐⭐ | L1 ⭐ | 平均分 | 状态 |
-|------|:---------:|:-----:|:-----:|:-----:|:-----:|:----:|:------:|:----:|
+| 维度 | 数量/状态 | 备注 |
+|------|----------|------|
+| **总 .md** | **1106** | 排除 `.health-tmp` / `.obsidian` |
+| **frontmatter 覆盖** | **1085/1106 = 98.1%** | 21 个无 frontmatter 全为 SPEC/README 索引页 |
+| **总 leaves（有 frontmatter）** | **925** | module 760 + question 227 + story 50 + 其他 48 |
+| **结构断链** | **0** | Session 6 修复 230 处断链后闭环 |
+| **orphan 目录** | **0** | 父 README 100% 回链 |
+| **实质弱关联** | **0** | 235 处合规模板导航保留（G4 合规） |
+| **5 维深度准确度（v18）** | **100%** | 80 篇偏差=0、偏差≤1 =100% |
+| **18 轮迭代收敛** | v4 43% → **v18 100%** | 详见 [v18-sampling-report.md](./skills/note-health/references/v18-sampling-report.md) |
+
+### 📊 主模块 depth 分布（v18 校准后，2026-09-02）
+
+| 模块 | leaves | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ | ⭐ | 均分 | 状态 |
+|------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | 01.java-and-jvm | 93 | 19 (20%) | 17 (18%) | 25 (27%) | 25 (27%) | 7 (8%) | 3.17 | ✅ |
 | 02.cs-foundations | 43 | 19 (44%) | 9 (21%) | 4 (9%) | 9 (21%) | 2 (5%) | 3.79 | ✅ |
 | 03.data-stack | 29 | 19 (66%) | 5 (17%) | 4 (14%) | 1 (3%) | 0 | 4.45 | ✅ |
@@ -95,48 +96,37 @@
 | **合计** | **767** | **171 (22%)** | **140 (18%)** | **310 (40%)** | **111 (14%)** | **34 (4%)** | **3.50** | ✅ |
 
 > **depth 含义**（主模块专用）：
-> - L1 ⭐ 入门：概念 + 简单示例
-> - L2 ⭐⭐ 进阶：原理 + 多语言示例
-> - L3 ⭐⭐⭐ 高级：源码级深度 + 版本演进
-> - L4 ⭐⭐⭐⭐ 引擎级：跨模块 + 性能优化
-> - L5 ⭐⭐⭐⭐⭐ 大师级：系统性深度 + 实战案例（≥7 跨模块 + 引擎源码）
+> - ⭐ 入门：概念 + 简单示例
+> - ⭐⭐ 进阶：原理 + 多语言示例
+> - ⭐⭐⭐ 高级：源码级深度 + 版本演进
+> - ⭐⭐⭐⭐ 引擎级：跨模块 + 性能优化
+> - ⭐⭐⭐⭐⭐ 大师级：系统性深度 + 实战案例（≥7 跨模块 + 引擎源码）
 >
-> **11/11 模块全部覆盖**（767 leaves），平均分 3.50 / 10（v4+v5 校准后，L5 硬指标化导致 L4/L3 占比上升，均分微降但准确度从 43% 升至 70%）。
-> **5-dim 评分准确度演进**：v1 → v4 (43%) → v5 (70%) → v6 验证中（目标 ≥80%）。
-> 详见 [note-health skill 流程文档](./skills/note-health/references/main-module-depth.md)。
+> **5-dim 准确度 18 轮演进**：v4 (43%) → v5 (70%) → v12 (81.25% 自报) → v13 (33.75% 验证不成立) → v14 (36.2%) → **v16 突破 (100%)** → **v17 (98.8%)** → **v18 (100% 闭环)**
+> 详见 [note-health skill 流程文档](./skills/note-health/references/main-module-depth.md) 与 [health-metrics-convergence.md](./skills/note-health/references/health-metrics-convergence.md)
 
-> **depth 含义**（主模块专用）：
-> - L1 ⭐ 入门：概念 + 简单示例
-> - L2 ⭐⭐ 进阶：原理 + 多语言示例
-> - L3 ⭐⭐⭐ 高级：源码级深度 + 版本演进
-> - L4 ⭐⭐⭐⭐ 引擎级：跨模块 + 性能优化
-> - L5 ⭐⭐⭐⭐⭐ 大师级：系统性深度 + 实战案例（≥7 跨模块 + 引擎源码）
->
-> **11/11 模块全部覆盖**（611 篇含已补 04 缺失字段），平均分 7.5 / 10（L3-L4 之间）。
-> **09.ai-applications 跃升最显著**：35 篇 L5（56%），从第 9 名跃至前列。
-> 详见 [note-health skill 流程文档](./skills/note-health/references/main-module-depth.md)。
+### 📚 13 主模块导航
 
-| 序号 | 分类 | 内容概要 |
-|:----:|------|---------|
-| 01 | **Java** | 集合、JVM、并发、反射、序列化、I/O 与零拷贝、版本新特性 (8→26)、Kotlin |
-| 02 | **计算机基础** | 算法与复杂度、网络协议 (HTTP/TCP)、Linux、WCAG 无障碍 |
-| 03 | **数据库** | MySQL、索引、SQL 优化、ACID、事务隔离、MVCC、Redis、缓存一致性、连接池 |
-| 04 | **系统设计** | DDD、GoF 设计模式、微服务、API 设计、C4 架构模型、云设计模式；内含分布式 (CAP / Paxos / Raft / 分布式锁·事务·ID) 与高可用 (限流·熔断·弹性架构) 子专题 |
-| 05 | **工具链** | Git、Docker、Nginx/Pingora、Monorepo、常用 Java 库 |
-| 06 | **Spring** | IoC、AOP、事务、Spring Cloud、Batch、Retry、Cache、Reactor |
-| 07 | **工作流** | BPMN 流程引擎 (Camunda / Flowable / Activiti) 与事件驱动编排 (EventMesh / Serverless Workflow) 的互补关系 |
-| 08 | **业务应用系统** | 21 个常见业务系统速查 (MES / ERP / SCM / WMS / CRM / OA / BI 等) —— 业务·PM·需求人员认知地图 |
-| 09 | **前端工程** | 从浏览器原理到框架选型、性能、安全、跨端，再到 AI 协同开发的知识地图 |
-| 10 | **大数据** | 数仓架构、Hadoop 生态、实时计算、数据湖、OLAP、调度、数据治理、同步工具 8 大主题 |
-| 11 | **AI** | 神经网络、LLM 技术栈、多模态、Prompt 工程、RAG、MCP、Agent 架构、16 节培训课程 |
-| 12 | **阿明餐厅** | 以餐厅经营为叙事主线的技术系列，43 篇覆盖架构演进、流量治理、AI Agent 转型等 |
-| 13 | **咬文嚼字** | 主模块的"刺刀版" —— 专治面试中"好像懂但说不清"的高频 / 高难度问题 |
-| 14 | **项目管理与成本控制** | 报价拆解、外包避坑、技术选型、AI 研发效能、人力排期、组织拓扑 —— 给 PM / 技术总监的另一只手 |
+| # | 模块 | 主题 |
+|:-:|------|------|
+| 01 | [java-and-jvm](./note/01.java-and-jvm/) | Java 基础 + JVM + 并发 + 设计模式 |
+| 02 | [cs-foundations](./note/02.cs-foundations/) | 算法 + OS + 网络 + 数学 |
+| 03 | [data-stack](./note/03.data-stack/) | 数据库 + 缓存 + 大数据 |
+| 04 | [spring-backend](./note/04.spring-backend/) | Spring + 后端框架 |
+| 05 | [frontend](./note/05.frontend/) | 前端 |
+| 06 | [distributed-systems](./note/06.distributed-systems/) | 分布式 + 微服务 + 云原生 |
+| 07 | [devops-and-tools](./note/07.devops-and-tools/) | CI/CD + 监控 + 工具 |
+| 08 | [ai-foundations](./note/08.ai-foundations/) | ML + DL + Transformer + LLM 基础 |
+| 09 | [ai-applications](./note/09.ai-applications/) | RAG + Agent + Prompt + LLM 推理 |
+| 10 | [business-systems](./note/10.business-systems/) | 电商 + 社交 + 金融 |
+| 11 | [product-and-pm](./note/11.product-and-pm/) | 产品 + PM + 流程 |
+| 12 | [interview](./note/12.interview/) | 高频面试题（**227 篇**，10 主题子目录） |
+| 13 | [story](./note/13.story/) | 「阿明餐厅」技术系列（**50 篇**叙事层） |
 
 ## 🏆 主模块 L5 标杆文章 Top 30（每模块 ≥ 2）
 
 > **depth: ⭐⭐⭐⭐⭐ 大师级** = 源码级 + 演进史 + ≥5 跨模块联动 + ≥5 层追问 + ≥3 真实生产案例
-> 完整 178 篇 L5 分布详见 `note/.health-tmp/`
+> 完整 171 篇 L5 分布见 [v18-sampling-report.md](./skills/note-health/references/v18-sampling-report.md)
 
 | # | 模块 | 文章 | 5-dim 评分 | 行数 | 一句话心法 |
 |---|------|------|-----------|------|-----------|
