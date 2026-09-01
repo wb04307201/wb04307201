@@ -2,7 +2,8 @@ name: Update README cards
 
 on:
   schedule:
-    - cron: "0 0 * * *" # Runs once daily at midnight
+    # 每月 1 日 02:00（与 auto-calibrate/structural-link-check 错开，统一在每月初）
+    - cron: "0 2 1 * *"
   workflow_dispatch:
 
 jobs:

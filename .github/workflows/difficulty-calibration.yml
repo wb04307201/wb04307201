@@ -6,12 +6,13 @@ on:
     paths:
       - "note/12.interview/**/*.md"
       - "note/13.story/**/*.md"
-      - "note/[01-11]*/**/*.md"
+      - "note/0[1-9].*/**/*.md"
+      - "note/1[0-3].*/**/*.md"
       - ".github/workflows/difficulty-calibration.yml"
       - "scripts/auto-calibrate.py"
   workflow_dispatch:
   schedule:
-    # 每月首日 03:00 跑 v6+ 抽样 + 自动校准
+    # 每月 1 日 03:00 跑 v6+ 抽样 + 自动校准
     - cron: "0 3 1 * *"
 
 jobs:

@@ -9,7 +9,8 @@ on:
   pull_request:
     branches: [master]
   schedule:
-    - cron: "0 6 * * 1"  # Weekly Monday 06:00
+    # 每月 1 日 04:00（与 difficulty-calibration/structural-link-check 错开，统一在每月初）
+    - cron: "0 4 1 * *"
   workflow_dispatch:
 
 jobs:
