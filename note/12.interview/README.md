@@ -3,7 +3,8 @@ module:
   parent: interview
   slug: interview
   type: index
-  category: 高频面试题
+  category: 主模块
+  topic: 高频面试题（10 主题 227 篇 + 反直觉陷阱 + 30s/90s 话术）
   summary: 主模块的刺刀版 —— 专治面试高频 / 高难度问题
 -->
 
