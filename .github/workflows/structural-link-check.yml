@@ -1,0 +1,48 @@
+name: Structural Link Check
+
+# Session 6 (2026-09-02) 新增：note/ 结构级链接完整性（区别于 link-check.yml 的 URL 校验）
+# 互补关系：
+#   - link-check.yml → 校验 URL 形式的外链（HTTP/HTTPS 链接、邮件等）
+#   - structural-link-check.yml → 校验 note/ 内部相对路径（.md 文件 + 目录链接）
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "note/**/*.md"
+      - "scripts/check-broken-links.py"
+  pull_request:
+    branches: [master]
+  schedule:
+    - cron: "0 6 1 * *"  # 月度 1 号 06:00（与 auto-calibrate.py 同步）
+  workflow_dispatch:
+
+jobs:
+  structural-link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Run check-broken-links.py
+        run: |
+          echo "== 全库链接完整性检查 =="
+          python scripts/check-broken-links.py
+        shell: bash
+
+      - name: Run check-broken-links.py (changed files only)
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "== PR 变更文件专项检查 =="
+          CHANGED_FILES=$(git diff --name-only origin/${{ github.event.pull_request.base.ref }}...HEAD | grep "^note/.*\.md$" || true)
+          if [ -n "$CHANGED_FILES" ]; then
+            echo "变更文件数: $(echo "$CHANGED_FILES" | wc -l)"
+            python scripts/check-broken-links.py $CHANGED_FILES
+          else
+            echo "无 note/ .md 变更"
+          fi
+        shell: bash
