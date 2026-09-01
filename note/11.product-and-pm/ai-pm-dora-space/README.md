@@ -6,6 +6,7 @@ module:
   category: 主模块子文章
   summary: DORA + SPACE + ROI 三件套，AI 时代研发效能度量框架。
   depth: ⭐⭐⭐⭐⭐
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # AI 项目管理账本：DORA + SPACE + ROI 三件套
