@@ -7,6 +7,7 @@ story:
   related:
     - 11.ai/03-engineering/claude-code-practices/skill-hit-rate
     - 12.interview/11.ai/skill-hit-rate
+  depth: ⭐⭐⭐⭐
 -->
 
 # 扩招 50 个厨师：Skill 调度的餐厅隐喻

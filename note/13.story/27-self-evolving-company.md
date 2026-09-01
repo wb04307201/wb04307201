@@ -5,6 +5,7 @@ story:
   position: 续集五
   title: 会自我进化的厨房
   audience: AI 工程师 / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 29 · 会自我进化的厨房

@@ -5,6 +5,7 @@ story:
   position: 正传 12
   title: 十家店的烦恼
   audience: 工程师 / SRE / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 17 · 十家店的烦恼

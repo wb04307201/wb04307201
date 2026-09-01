@@ -5,6 +5,7 @@ story:
   position: 番外五
   title: 预制菜还是现炒
   audience: PM / 创业者
+  depth: ⭐⭐⭐⭐
 -->
 
 # 25 · 预制菜还是现炒

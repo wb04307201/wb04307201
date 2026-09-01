@@ -5,6 +5,7 @@ story:
   position: 正传 7
   title: 数据厨房
   audience: 工程师 / SRE / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 12 · 数据厨房

@@ -5,6 +5,7 @@ story:
   position: 续集四
   title: 阿明的二次创业
   audience: AI 工程师 / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 28 · 阿明的二次创业

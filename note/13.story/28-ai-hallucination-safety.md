@@ -5,6 +5,7 @@ story:
   position: 续集六
   title: AI 的"黑暗料理"
   audience: AI 工程师 / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 30 · AI 的"黑暗料理"

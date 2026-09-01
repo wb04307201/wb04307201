@@ -5,6 +5,7 @@ story:
   position: 终章
   title: 从厨师到 CEO
   audience: CTO / 技术管理者
+  depth: ⭐⭐⭐⭐
 -->
 
 # 07 · 从厨师到 CEO

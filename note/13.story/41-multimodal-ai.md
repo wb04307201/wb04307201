@@ -5,6 +5,7 @@ story:
   position: 番外八
   title: 五感餐厅
   audience: PM / 创业者
+  depth: ⭐⭐⭐⭐
 -->
 
 # 43 · 五感餐厅

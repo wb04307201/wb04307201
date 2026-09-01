@@ -5,6 +5,7 @@ story:
   position: 续集十八
   title: AI 替你写代码，谁替系统负责？
   audience: AI 工程师 / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 44 · AI 替你写代码，谁替系统负责？

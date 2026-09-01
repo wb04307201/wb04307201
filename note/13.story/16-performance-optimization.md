@@ -5,6 +5,7 @@ story:
   position: 正传 10
   title: 外卖大战
   audience: 工程师 / SRE / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 16 · 外卖大战

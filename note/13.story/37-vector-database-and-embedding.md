@@ -5,6 +5,7 @@ story:
   position: 续集十五
   title: 味道仓库
   audience: AI 工程师 / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 39 · 味道仓库

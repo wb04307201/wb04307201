@@ -5,6 +5,7 @@ story:
   position: 正传 6
   title: 菜单设计学
   audience: 工程师 / SRE / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 10 · 菜单设计学

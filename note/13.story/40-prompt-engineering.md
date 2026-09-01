@@ -5,6 +5,7 @@ story:
   position: 番外七
   title: 点菜单的艺术
   audience: PM / 创业者
+  depth: ⭐⭐⭐⭐
 -->
 
 # 42 · 点菜单的艺术

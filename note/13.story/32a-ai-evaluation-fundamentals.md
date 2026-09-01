@@ -5,6 +5,7 @@ story:
   position: 续集十（上）
   title: 学徒期末考
   audience: AI 工程师 / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 34a · 学徒期末考

@@ -5,6 +5,7 @@ story:
   position: 番外一
   title: 给产品经理的重构说明书
   audience: PM / 创业者
+  depth: ⭐⭐⭐⭐
 -->
 
 # 03 · 给产品经理的重构说明书

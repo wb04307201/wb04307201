@@ -5,6 +5,7 @@ story:
   position: 续集十二（上）
   title: AI 账本
   audience: AI 工程师 / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 36a · AI 账本

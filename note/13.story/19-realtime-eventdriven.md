@@ -5,6 +5,7 @@ story:
   position: 正传 11
   title: 厨房实况直播
   audience: 工程师 / SRE / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 20 · 厨房实况直播

@@ -5,6 +5,7 @@ story:
   position: 正传 14
   title: 仓库搬家不停业
   audience: 工程师 / SRE / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 24 · 仓库搬家不停业

@@ -5,6 +5,7 @@ story:
   position: 续集八
   title: Agent Harness
   audience: AI 工程师 / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 32 · Agent Harness

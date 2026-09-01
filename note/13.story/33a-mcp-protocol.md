@@ -5,6 +5,7 @@ story:
   position: 续集十一（上）
   title: 万能插口
   audience: AI 工程师 / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 35a · 万能插口

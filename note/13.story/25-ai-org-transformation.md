@@ -5,6 +5,7 @@ story:
   position: 续集三
   title: 厨房大换岗
   audience: AI 工程师 / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 27 · 厨房大换岗

@@ -6,6 +6,7 @@ story:
   title: 阿明餐厅的"上菜革命"
   audience: AI 工程师 / 后端工程师
   core_concepts: [KV Cache, Continuous Batching, PagedAttention, 量化, 推测解码]
+  depth: ⭐⭐⭐⭐
 -->
 
 # LLM 推理优化——阿明餐厅的"上菜革命"

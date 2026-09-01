@@ -5,6 +5,7 @@ story:
   position: 续集十（下）
   title: 从试菜到品控线
   audience: AI 工程师 / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 34b · 从试菜到品控线

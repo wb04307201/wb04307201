@@ -5,6 +5,7 @@ story:
   position: 续集十六
   title: 米其林评审
   audience: AI 工程师 / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 40 · 米其林评审

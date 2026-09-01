@@ -5,6 +5,7 @@ story:
   position: 续集一
   title: 当餐厅长出大脑
   audience: AI 工程师 / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 01 · 当餐厅长出大脑

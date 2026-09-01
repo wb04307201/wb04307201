@@ -5,6 +5,7 @@ story:
   position: 正传 1
   title: 高峰保卫战
   audience: 工程师 / SRE / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 04 · 高峰保卫战

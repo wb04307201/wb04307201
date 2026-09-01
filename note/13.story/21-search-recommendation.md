@@ -5,6 +5,7 @@ story:
   position: 番外四
   title: 懂你的菜单
   audience: PM / 创业者
+  depth: ⭐⭐⭐⭐
 -->
 
 # 22 · 懂你的菜单

@@ -5,6 +5,7 @@ story:
   position: 前传
   title: 架构是"长"出来的
   audience: 工程师 / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 02 · 架构是"长"出来的

@@ -5,6 +5,7 @@ story:
   position: 续集九
   title: AI 致命三件套
   audience: AI 工程师 / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 33 · AI 致命三件套

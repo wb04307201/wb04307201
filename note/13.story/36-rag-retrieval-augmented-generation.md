@@ -5,6 +5,7 @@ story:
   position: 续集十四
   title: 开卷考试
   audience: AI 工程师 / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 38 · 开卷考试

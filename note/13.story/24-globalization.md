@@ -5,6 +5,7 @@ story:
   position: 番外六
   title: 阿明出海记
   audience: PM / 创业者
+  depth: ⭐⭐⭐⭐
 -->
 
 # 26 · 阿明出海记

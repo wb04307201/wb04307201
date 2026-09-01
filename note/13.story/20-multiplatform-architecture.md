@@ -5,6 +5,7 @@ story:
   position: 正传 13
   title: 一个厨房，四个门面
   audience: 工程师 / SRE / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 21 · 一个厨房，四个门面

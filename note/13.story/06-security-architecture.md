@@ -5,6 +5,7 @@ story:
   position: 正传 3
   title: 食安大检查
   audience: 工程师 / SRE / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 06 · 食安大检查

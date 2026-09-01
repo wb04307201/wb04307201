@@ -5,6 +5,7 @@ story:
   position: 续集七
   title: Codebase 认知债
   audience: AI 工程师 / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 31 · Codebase 认知债

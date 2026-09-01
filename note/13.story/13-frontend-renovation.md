@@ -5,6 +5,7 @@ story:
   position: 正传 8
   title: 前厅翻修记
   audience: 工程师 / SRE / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 13 · 前厅翻修记

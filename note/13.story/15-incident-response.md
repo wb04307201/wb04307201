@@ -5,6 +5,7 @@ story:
   position: 正传 9
   title: 差评危机
   audience: 工程师 / SRE / 架构师
+  depth: ⭐⭐⭐⭐
 -->
 
 # 15 · 差评危机
