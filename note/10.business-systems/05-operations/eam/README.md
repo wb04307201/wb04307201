@@ -5,7 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 一份按业务场景梳理的 EAM 速查手册：从"管设备"到"管全资产"。
-  depth: ⭐⭐⭐⭐⭐
+  depth: ⭐⭐⭐
 -->
 
 # EAM · 企业资产管理系统

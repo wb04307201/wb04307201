@@ -5,7 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring Boot 3 + GraalVM Native Image 简介
-  depth: ⭐⭐⭐
+  depth: ⭐⭐⭐⭐
 -->
 
 # Spring Boot 3 + GraalVM Native Image 简介

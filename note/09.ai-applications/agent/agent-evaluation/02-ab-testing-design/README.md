@@ -5,7 +5,7 @@ module:
   type: deep-dive
   category: A/B Test 系统设计
   summary: Agent / Prompt A/B Test 系统设计深度 —— 5 大组件 + 4 流量分配 + 显著性检验 + 灰度发布 + 监控告警 + OSS 实战。
-  depth: ⭐⭐⭐⭐⭐
+  depth: ⭐⭐⭐⭐
 -->
 
 # Agent A/B Test 系统设计 · 深度专章
