@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: FactoryBean 与复杂对象创建
+  depth: ⭐⭐⭐
 -->
 
 # FactoryBean 与复杂对象创建

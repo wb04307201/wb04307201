@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 外部化配置：@Value / @ConfigurationProperties / Environment
+  depth: ⭐⭐⭐
 -->
 
 # 外部化配置：@Value / @ConfigurationProperties / Environment

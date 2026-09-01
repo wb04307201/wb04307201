@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Bean 作用域与线程安全
+  depth: ⭐⭐⭐
 -->
 
 # Bean 作用域与线程安全

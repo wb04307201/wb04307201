@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 熔断降级与限流
+  depth: ⭐⭐⭐⭐
 -->
 
 # 熔断降级与限流

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring MVC 文件上传
+  depth: ⭐⭐
 -->
 
 # Spring MVC 文件上传

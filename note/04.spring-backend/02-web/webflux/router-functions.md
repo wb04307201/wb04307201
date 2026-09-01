@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Router Functions 函数式端点
+  depth: ⭐⭐⭐
 -->
 
 # Router Functions 函数式端点

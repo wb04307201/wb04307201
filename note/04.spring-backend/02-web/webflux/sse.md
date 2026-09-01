@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: WebFlux 响应式 + SSE 实时推送
+  depth: ⭐⭐⭐
 -->
 
 # WebFlux 响应式 + SSE 实时推送

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring Cloud Bus 集群事件总线
+  depth: ⭐⭐⭐
 -->
 
 # Spring Cloud Bus 集群事件总线

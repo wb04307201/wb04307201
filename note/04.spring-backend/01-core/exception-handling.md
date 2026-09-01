@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring 异常处理机制
+  depth: ⭐⭐⭐⭐
 -->
 
 # Spring 异常处理机制

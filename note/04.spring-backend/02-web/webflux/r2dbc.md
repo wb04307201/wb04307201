@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: R2DBC 响应式数据库访问
+  depth: ⭐⭐⭐
 -->
 
 # R2DBC 响应式数据库访问

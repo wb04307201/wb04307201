@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 异步 MVC：Callable / DeferredResult / SSE
+  depth: ⭐⭐⭐
 -->
 
 # 异步 MVC：Callable / DeferredResult / SSE

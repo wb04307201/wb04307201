@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring Retry 自动重试
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # Spring Retry 自动重试

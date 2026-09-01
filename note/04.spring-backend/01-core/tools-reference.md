@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring 自带24个工具类
+  depth: ⭐
 -->
 
 # Spring 自带24个工具类

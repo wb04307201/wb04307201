@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Bean 生命周期
+  depth: ⭐⭐⭐⭐
 -->
 
 # Bean 生命周期

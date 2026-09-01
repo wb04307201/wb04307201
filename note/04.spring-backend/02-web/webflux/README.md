@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring WebFlux 概览
+  depth: ⭐⭐⭐
 -->
 
 # Spring WebFlux 概览

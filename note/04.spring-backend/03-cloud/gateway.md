@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring Cloud Gateway 网关
+  depth: ⭐⭐⭐⭐
 -->
 
 # Spring Cloud Gateway 网关

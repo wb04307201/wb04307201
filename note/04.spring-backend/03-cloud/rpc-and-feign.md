@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: RPC 与 OpenFeign
+  depth: ⭐⭐⭐⭐
 -->
 
 # RPC 与 OpenFeign

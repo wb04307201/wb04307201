@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 客户端负载均衡（LoadBalancer）
+  depth: ⭐⭐⭐⭐
 -->
 
 # 客户端负载均衡（LoadBalancer）

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring AOP 切点表达式语法速查：execution/within/this/target/args/@annotation/bean 7 大表达式 + ❌/✅ 常见反例对比。
+  depth: ⭐⭐⭐
 -->
 
 # 切点表达式语法

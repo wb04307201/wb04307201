@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 通知顺序与最佳实践
+  depth: ⭐⭐⭐
 -->
 
 # 通知顺序与最佳实践

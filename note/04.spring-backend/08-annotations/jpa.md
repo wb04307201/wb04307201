@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: JPA 注解
+  depth: ⭐⭐⭐
 -->
 
 # JPA 注解

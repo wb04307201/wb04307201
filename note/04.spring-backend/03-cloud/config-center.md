@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 配置中心（Config Center）
+  depth: ⭐⭐⭐⭐
 -->
 
 # 配置中心（Config Center）

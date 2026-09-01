@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Seata 集成（Spring Cloud Alibaba 视角）
+  depth: ⭐⭐⭐⭐
 -->
 
 # Seata 集成（Spring Cloud Alibaba 视角）

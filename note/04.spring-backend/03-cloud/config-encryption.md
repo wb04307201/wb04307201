@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Config 加密（Nacos / Spring Cloud Config / Jasypt）
+  depth: ⭐⭐⭐
 -->
 
 # Config 加密（Nacos / Spring Cloud Config / Jasypt）

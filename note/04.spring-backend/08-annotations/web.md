@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Web 注解（Spring MVC）
+  depth: ⭐⭐⭐
 -->
 
 # Web 注解（Spring MVC）

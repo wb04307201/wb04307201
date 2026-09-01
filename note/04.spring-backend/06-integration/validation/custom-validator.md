@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 使用自定义注解进行验证
+  depth: ⭐⭐⭐
 -->
 
 # 使用自定义注解进行验证

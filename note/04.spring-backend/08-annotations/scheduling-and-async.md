@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 调度与异步注解
+  depth: ⭐⭐⭐
 -->
 
 # 调度与异步注解

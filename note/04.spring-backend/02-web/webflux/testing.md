@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: WebFlux 测试
+  depth: ⭐⭐
 -->
 
 # WebFlux 测试

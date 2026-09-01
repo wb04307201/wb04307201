@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring Statemachine 状态机
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # Spring Statemachine 状态机

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring Batch 批处理——分层架构、Job/Step 模型与大数据量实战。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # Spring Batch 批处理

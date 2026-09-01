@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 组件执行顺序与对比
+  depth: ⭐⭐⭐⭐
 -->
 
 # 组件执行顺序与对比

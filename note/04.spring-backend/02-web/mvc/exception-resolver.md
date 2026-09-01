@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: HandlerExceptionResolver 异常处理
+  depth: ⭐⭐⭐
 -->
 
 # HandlerExceptionResolver 异常处理

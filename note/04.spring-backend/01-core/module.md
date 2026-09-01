@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring Framework 模块结构
+  depth: ⭐⭐
 -->
 
 # Spring Framework 模块结构

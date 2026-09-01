@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring Cloud 版本演进史
+  depth: ⭐⭐⭐
 -->
 
 # Spring Cloud 版本演进史

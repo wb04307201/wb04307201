@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 事务注解
+  depth: ⭐⭐⭐
 -->
 
 # 事务注解

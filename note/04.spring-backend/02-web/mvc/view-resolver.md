@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: ViewResolver 视图解析器
+  depth: ⭐
 -->
 
 # ViewResolver 视图解析器

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Bean 与 IoC 注解
+  depth: ⭐⭐⭐
 -->
 
 # Bean 与 IoC 注解

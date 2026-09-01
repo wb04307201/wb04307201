@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Spring Cloud Stream 消息驱动微服务
+  depth: ⭐⭐⭐
 -->
 
 # Spring Cloud Stream 消息驱动微服务

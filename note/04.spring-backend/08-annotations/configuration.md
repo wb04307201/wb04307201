@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 配置注解
+  depth: ⭐⭐⭐
 -->
 
 # 配置注解

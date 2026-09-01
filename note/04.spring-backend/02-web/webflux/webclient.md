@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: WebClient 响应式 HTTP 客户端
+  depth: ⭐⭐⭐
 -->
 
 # WebClient 响应式 HTTP 客户端

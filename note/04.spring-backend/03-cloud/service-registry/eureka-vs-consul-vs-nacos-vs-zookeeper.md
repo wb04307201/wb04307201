@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 服务注册与发现中心对比
+  depth: ⭐⭐
 -->
 
 # 服务注册与发现中心对比

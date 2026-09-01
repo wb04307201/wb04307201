@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 测试注解
+  depth: ⭐⭐⭐
 -->
 
 # 测试注解
