@@ -5,6 +5,7 @@ module:
   type: index
   category: 主模块子文章
   summary: 运营管理环节（ERP · BI · EAM · HR · OA · QMS · RPA · BPM · MDM · 电子签 · 低代码）—— 企业经营管理的核心系统，ERP 是中枢，BI 提供决策支持，RPA 是跨系统自动化的最后一公里，电子签为合同/单据提供法律效力保障，MDM 是主数据单一可信源的核心基础设施，低代码让业务人员也能快速搭建企业级应用。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 05 运营管理

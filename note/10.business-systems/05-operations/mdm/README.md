@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: MDM（Master Data Management 主数据管理） 一句话定位：把企业"主数据"（客户/物料/供应商/组织/账户）统一管理 + 单一可信源治理的系统，是数据治理体系的核心抓手，也是 ERP/CRM/SRM/SCM/MES 等业务系统之间"数据口径统一"的唯一基础设施。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # MDM（Master Data Management 主数据管理）

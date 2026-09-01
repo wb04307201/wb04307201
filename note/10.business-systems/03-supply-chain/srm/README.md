@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 一份按业务场景梳理的 SRM 速查手册：从"管供应商"到"经营供应商生态"。
+  depth: ⭐⭐
 -->
 
 # SRM · 供应商关系管理系统

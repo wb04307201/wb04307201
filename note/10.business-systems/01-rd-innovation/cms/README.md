@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 一份按业务场景梳理的 CMS 速查手册：内容从创作、审核、发布到分发的完整系统地图。
+  depth: ⭐⭐
 -->
 
 # CMS · 内容管理系统

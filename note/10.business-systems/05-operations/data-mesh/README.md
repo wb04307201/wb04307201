@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 数据中台（Data Middle Platform / Data Mesh / OneData） 一句话定位：把企业分散在 ERP / CRM / MES / 业务系统中的"数据资产"沉淀为可复用、可治理、可服务化的中台能力，让"同口径、同指标、同标签"的数据可被 BI / 营销 / 风控 / 算法等多种业务复用，是企业从"数据烟囱"走向"数据要素资产化"的核心基础设施。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 数据中台（Data Middle Platform 数据中台 / Data Mesh / OneData）

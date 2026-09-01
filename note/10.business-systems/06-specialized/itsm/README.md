@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: ITSM（IT Service Management IT 服务管理）一句话定位：把 IT 部门的服务交付、事件管理、变更控制系统化的平台，是 IT 部门的"ERP"，其核心框架是 ITIL 4。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # ITSM（IT Service Management IT 服务管理）

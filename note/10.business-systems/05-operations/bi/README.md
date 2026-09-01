@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 一份按业务场景梳理的 BI 速查手册：从"看报表"到"用数据驱动决策"。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # BI · 商业智能系统

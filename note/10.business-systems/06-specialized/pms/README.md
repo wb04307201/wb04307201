@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 一份按业务场景梳理的 PMS 速查手册：从"Excel 管项目"到"专业项目管理平台"。
+  depth: ⭐⭐
 -->
 
 # PMS · 项目管理系统

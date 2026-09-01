@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 客服系统 / Call Center（Customer Service Center 客户服务中心） 一句话定位：以多渠道接入 + 工单流转 + 知识库 + 智能分配 + SLA + 质检为底座，把"电话 / 在线 / 邮件 / 微信 / 短视频"等所有客户触点系统化的客户服务中心，是企业"服务交付 + 客户体验 + 客户挽回"的统一入口。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 客服系统 / Call Center（Customer Service Center 客户服务中心）

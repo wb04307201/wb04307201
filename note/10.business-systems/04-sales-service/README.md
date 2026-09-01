@@ -5,6 +5,7 @@ module:
   type: index
   category: 主模块子文章
   summary: 销售服务环节（CRM · SCRM · OMS · 客服系统）—— 接触客户、达成交易、订单履约、客户服务中心，CRM 是客户主数据源，OMS 是订单履约协调器，客服系统是客户服务交付中枢。
+  depth: ⭐⭐⭐⭐
 -->
 
 # 04 销售服务

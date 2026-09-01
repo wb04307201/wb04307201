@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 一份按业务场景梳理的 OMS 速查手册：从"多渠道接单"到"全渠道订单中枢"。
+  depth: ⭐⭐
 -->
 
 # OMS · 订单管理系统

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 低代码 / Low-Code（Low-Code Development Platform 低代码开发平台 / aPaaS） 一句话定位：通过可视化拖拽 + 模型驱动 + 表单/流程/报表/AI 引擎，把"应用开发"从专业程序员手中下放到业务人员手中，是企业"应用生产力的下一场革命"，也是 2025-2026 与 BPM/RPA/AI Agent 边界最易混淆的领域。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 低代码 / Low-Code（Low-Code Development Platform 低代码开发平台 / aPaaS）

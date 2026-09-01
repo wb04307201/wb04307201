@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: KM（Knowledge Management 知识管理）一句话定位：以 Nonaka SECI 模型 + 知识图谱 + 智能搜索 + AI 增强为底座，把企业"显性知识（文档 / 数据 / 流程）+ 隐性知识（经验 / 诀窍 / 客户关系）"沉淀为可搜索 / 可协作 / 可复用 / 可度量 / 可治理的知识资产，是企业从"经验驱动"走向"知识驱动"的操作系统。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # KM（Knowledge Management 知识管理）

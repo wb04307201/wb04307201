@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: BPM（Business Process Management 业务流程管理） 一句话定位：通过可视化流程设计器 + 规则引擎 + 表单引擎 + 集成能力，把企业"跨系统、跨部门、跨角色"的业务流程（审批/业务流/编排）从纸面/邮件/Excel 升级为可建模、可监控、可优化的运行中资产。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # BPM（Business Process Management 业务流程管理）

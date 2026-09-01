@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 电子签 / E-Signature（Electronic Signature 电子签名） 一句话定位：以《电子签名法》+ PKI/CA 数字证书 + 时间戳 + 区块链存证为底座，把"合同 / 单据 / 凭证"在数字世界实现法律效力的签署系统，是企业"无纸化、合规化、可证据化"的最后一公里。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 电子签 / E-Signature（Electronic Signature 电子签名）

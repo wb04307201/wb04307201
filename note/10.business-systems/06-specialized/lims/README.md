@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 一份按业务场景梳理的 LIMS 速查手册：从"纸质记录"到"实验全程数字化"。
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # LIMS · 实验室信息管理系统

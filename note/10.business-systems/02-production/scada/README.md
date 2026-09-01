@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 一份按业务场景梳理的 SCADA 速查手册：工业自动化的"眼睛 + 神经"。
+  depth: ⭐⭐
 -->
 
 # SCADA · 数据采集与监控系统

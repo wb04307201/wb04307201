@@ -5,6 +5,7 @@ module:
   type: index
   category: 主模块子文章
   summary: 生产制造环节（MES · MOM · APS · SCADA）—— 把研发设计的产品制造出来，决定交付能力、成本与质量。
+  depth: ⭐⭐⭐⭐
 -->
 
 # 02 生产制造
