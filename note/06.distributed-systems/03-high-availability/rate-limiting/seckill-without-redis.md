@@ -735,8 +735,8 @@ public class SeckillController {
 **面试题**：
 - [秒杀刁难题面试 5 题](../../../12.interview/04.system-design/seckill-without-redis/README.md) — 5 题配套面试
 
-**餐厅叙事（12.story）**：
-- [04 · peak-traffic-defense（餐厅流量防御）](../../../13.story/04-peak-traffic-defense.md) — 餐厅流量 = 茅台秒杀的隐喻版
+**餐厅叙事（13.story）**：
+- [04 · peak-traffic-defense（餐厅流量防御）](../../../13.story/04-peak-traffic-defense.md) — 餐厅流量 = 茅台秒杀的隐喻版；本节"限流 + 单机扣库存"的 5 大方案正是阿明餐厅遇到的高峰防御故事原型。
 
 **其他相关**：
 - 限流算法（rate-limiting）面试题 — 互补章节

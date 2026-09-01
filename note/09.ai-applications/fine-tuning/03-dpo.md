@@ -416,9 +416,9 @@ Step 3: Online DPO（用 GRPO rollout 生成偏好对）
 ## 🔗 跨模块反向链
 
 - **08.ai-foundations**：强化学习基础 DPO 的 Bradley-Terry 模型来源；策略梯度 DPO 与 PPO 的策略优化对比。
-- **03.data-stack**：[分布式训练](../../08.ai-foundations/04-llm/llm-basics.md) DPO 在 FSDP 下的模型并行；[向量数据库](../rag/vector-search-algorithms/README.md) 偏好对的 embedding 去重与质量筛选。
+- **03.data-stack**：分布式训练（DPO 在 FSDP 下的模型并行）；[向量数据库](../rag/vector-search-algorithms/README.md) 偏好对的 embedding 去重与质量筛选。
 - **12.interview**：[RLHF vs DPO 对比](../../12.interview/11.ai/llm-alignment/README.md) 面试必问；[Bradley-Terry 模型](../../12.interview/11.ai/llm-alignment/README.md) DPO 数学基础；[Reward Hacking](../../12.interview/11.ai/llm-alignment/README.md) DPO 的潜在问题。
-- **13.story**：[阿明餐厅 - 顾客偏好](../../13.story/37-vector-database-and-embedding.md) 用顾客偏好类比 DPO 直优化。
+- **13.story**：阿明餐厅 - 顾客偏好（用顾客偏好类比 DPO 直优化；详见 13.story 系列"偏好 / 选择 / 直优化"主题章节）。
 
 ← [返回 LLM 对齐专题](../README.md)
 

@@ -723,7 +723,7 @@ API 方案（GPT-4o）：
 ---
 
 
-- [02-rag-in-agent](../09.ai-applications/agent/agent-context/02-rag-in-agent.md)
+- [02-rag-in-agent（Agent 中集成私有 RAG）](../09.ai-applications/agent/agent-context/02-rag-in-agent.md) — 私有化部署场景下，Agent 内部如何接入本地 RAG 知识库
 - [41-multimodal-ai](41-multimodal-ai.md)
 - [cheatsheet](cheatsheet.md)
 - [glossary](glossary.md)

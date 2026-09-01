@@ -347,7 +347,7 @@ Stage 5: Red-Team 持续加固（人工 + AI 联合对抗）
 ### 主模块层
 
 - **AI 应用层**：[同专题 SFT](01-sft.md) / [RLHF](02-rlhf.md) / [DPO](03-dpo.md) / [新方法](05-newer-methods.md) / [PEFT/LoRA](06-peft-lora.md)
-- **AI 基础层**：[Transformer 架构](../../08.ai-foundations/03-transformer/README.md) / [In-Context Learning](../../08.ai-foundations/04-llm/llm-basics.md)
+- **AI 基础层**：[Transformer 架构](../../08.ai-foundations/03-transformer/README.md) / LLM 基础（In-Context Learning 与 CAI 自评估的对比）
 - **推理优化**：[LLM 推理安全](../llm-inference/llm-inference-optimization/README.md)
 - **RAG 应用**：[RAG 评估](../rag/04-evaluation.md) / [Hybrid Search](../rag/hybrid-search/README.md)
 
@@ -359,7 +359,7 @@ Stage 5: Red-Team 持续加固（人工 + AI 联合对抗）
 
 ### 故事层（13.story）
 
-- [阿明餐厅 - 训练一个守规矩的服务员](../../13.story/31-ai-fatal-trio.md) — 用餐饮规则类比宪法原则
+- [阿明餐厅 - 训练一个守规矩的服务员](../../13.story/31-ai-fatal-trio.md) — 用"AI 三元致命问题"（幻觉/安全/合规）类比宪法原则所防护的边界
 - [阿明餐厅 - Lambda 架构](../../13.story/README.md) — AI 反馈 ≈ 顾客反馈
 
 ---

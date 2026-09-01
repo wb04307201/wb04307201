@@ -442,7 +442,7 @@ trainer.save_model("./qwen2.5-dpo-final")
 
 - **本专题**：[SFT](01-sft.md) / [RLHF](02-rlhf.md) / [DPO](03-dpo.md) / [Constitutional AI](04-constitutional-ai.md) / [PEFT/LoRA](06-peft-lora.md)
 - **AI 基础层**：[Transformer 架构](../../08.ai-foundations/03-transformer/README.md) / [注意力机制](../../08.ai-foundations/03-transformer/attention-mechanism.md)
-- **PEFT 系列**：[LoRA 数学原理](../../08.ai-foundations/05-tokenization-embedding/embedding.md) — SimPO/ORPO 常配合 LoRA 训练
+- **PEFT 系列**：LoRA 数学原理（SimPO/ORPO 常配合 LoRA 训练；详见本专题 [PEFT/LoRA](06-peft-lora.md) 与 06.peft-lora 系列章节）
 - **推理优化**：[LLM 推理优化大专题](../llm-inference/llm-inference-optimization/README.md) — 训练完成后量化部署
 
 ### 面试题层（12.interview）
