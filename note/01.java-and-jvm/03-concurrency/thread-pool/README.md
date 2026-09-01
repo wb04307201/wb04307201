@@ -837,7 +837,723 @@ public class ThreadPoolConfig {
 
 ---
 
-← [返回 并发编程基础概念](../README.md)
+## 九、Worker 回收机制（OpenJDK 源码级）
+
+### 9.1 Worker 的本质：既是 Runnable 又是 AQS
+
+`ThreadPoolExecutor` 内部通过 `Worker` 类同时承担「任务执行载体」和「独占可中断锁」两个职责。
+
+```java
+// OpenJDK: src/java.base/java/util/concurrent/ThreadPoolExecutor.java
+private final class Worker extends AbstractQueuedSynchronizer implements Runnable {
+    final Thread thread;        // 真正执行的 OS 线程
+    Runnable firstTask;         // 创建时领到的第一个任务（避免先入队再取出）
+
+    Worker(Runnable firstTask) {
+        this.firstTask = firstTask;
+        // 在构造里就 setState(1)，表示「启动时即占用」
+        setState(-1); // inhibit interrupts until runWorker
+        this.thread = getThreadFactory().newThread(this);
+    }
+
+    public void run() {
+        runWorker(this);   // 转入 Worker 主循环
+    }
+
+    // tryAcquire/tryRelease 仅 0↔1，用来实现「独占当前线程」
+    protected boolean tryAcquire(int unused) {
+        if (compareAndSetState(0, 1)) {
+            setExclusiveOwnerThread(Thread.currentThread());
+            return true;
+        }
+        return false;
+    }
+}
+```
+
+**关键设计点**：
+
+- Worker 既是 Runnable（被新 Thread 持有后跑 `runWorker`），又是 AQS（`state` 字段：-1=初始，0=空闲，1=正在跑任务）
+- 为什么不直接用 Thread + Runnable？因为需要「中断前检查 Worker 是否正在跑任务」—— `tryLock()` 成功才真正中断（见 `interruptIdleWorkers`）
+
+### 9.2 getTask()：Worker 主循环的取任务方法
+
+这是 worker 回收机制的**核心入口**。源码（OpenJDK 21+）：
+
+```java
+private Runnable getTask() {
+    boolean timed = false;   // 本轮循环是否需要限时等待
+
+    for (;;) {
+        int c = ctl.get();
+        int rs = runStateOf(c);     // 线程池运行状态
+
+        // 状态检测：SHUTDOWN + 队列空 → 退出；STOP → 必退出
+        if (rs >= SHUTDOWN && (rs >= STOP || workQueue.isEmpty())) {
+            decrementWorkerCount();
+            return null;
+        }
+
+        int wc = workerCountOf(c);
+
+        // 是否启用超时回收：
+        //   allowCoreThreadTimeOut=true → 核心线程也限时回收
+        //   wc > corePoolSize           → 非核心线程限时回收
+        boolean allowCoreTimeout = allowCoreThreadTimeOut;
+        boolean timed = allowCoreTimeout || wc > corePoolSize;
+
+        // 二次校验：超过 maxPoolSize 或（限时回收且队列空）→ 退出
+        if ((wc > maximumPoolSize) || (timed && workQueue.isEmpty())) {
+            if (compareAndDecrementWorkerCount(c)) return null;
+            continue;
+        }
+
+        try {
+            Runnable r = timed
+                ? workQueue.poll(keepAliveTime, unit)   // 非核心：限时等待
+                : workQueue.take();                     // 核心：永久阻塞
+
+            if (r != null) return r;
+            // r == null 表示 poll 超时（仅限时）→ 进入下次循环 → 触发回收
+        } catch (InterruptedException retry) {
+            // 中断被忽略，重试
+        }
+    }
+}
+```
+
+**源码中两条关键路径**：
+
+| 场景 | 调用 | 行为 |
+|------|------|------|
+| 核心线程 + 队列空 | `workQueue.take()` | 永久阻塞，直到新任务入队 |
+| 非核心线程 + 队列空 | `workQueue.poll(keepAliveTime, unit)` | 阻塞 keepAliveTime 后返回 null → 触发回收 |
+
+### 9.3 触发回收的三种情况
+
+当 `getTask()` 返回 `null` 时，外层 `runWorker()` 会退出循环，进而调用 `processWorkerExit()`：
+
+```text
+getTask() 返回 null 的三种情况
+│
+├─ 1. 线程池状态 ≥ STOP                 → 必须退出
+├─ 2. wc > maximumPoolSize（动态缩容） → 退出多余 worker
+└─ 3. timed && workQueue.isEmpty()      → 非核心线程空闲超时
+```
+
+### 9.4 processWorkerExit：剔除 + 补偿新建
+
+```java
+private void processWorkerExit(Worker w, boolean completedAbruptly) {
+    if (completedAbruptly)  // 异常退出 → 补偿 workerCount
+        decrementWorkerCount();
+
+    ReentrantLock mainLock = this.mainLock;
+    mainLock.lock();
+    try {
+        completedTaskCount += w.completedTasks;
+        workers.remove(w);
+    } finally {
+        mainLock.unlock();
+    }
+
+    tryTerminate();        // 尝试触发 TERMINATED 状态
+
+    // 关键补偿逻辑：
+    int c = ctl.get();
+    if (runStateLessThan(c, STOP)) {
+        if (!completedAbruptly) {
+            // 队列非空时，至少保留一个 worker 兜底消费
+            int min = allowCoreThreadTimeOut ? 0 : corePoolSize;
+            if (min == 0 && !workQueue.isEmpty())
+                min = 1;
+            if (workerCountOf(c) >= min)
+                return;    // 已有足够 worker → 不补偿
+        }
+        addWorker(null, false);   // 补偿新建一个 worker
+    }
+}
+```
+
+**核心补偿规则**：如果线程池没在 STOP 状态，且当前 worker 数少于 `corePoolSize`（或队列非空），会自动 `addWorker(null, false)` 补偿一个 worker。
+
+> 这就是为什么「即使你把 `corePoolSize` 设成 0，任务来时线程池也会至少启动 1 个 worker 去消费队列」——这就是 `addWorker(null, false)` 的补偿机制在起作用。
+
+---
+
+## 十、拒绝策略矩阵全景
+
+### 10.1 4 个内置策略对比矩阵
+
+| 策略 | 行为 | 是否丢任务 | 是否阻塞调用方 | 是否抛异常 | 适用场景 | 源码位置（OpenJDK 21） |
+|------|------|:----------:|:--------------:|:----------:|----------|------------------------|
+| **AbortPolicy**（默认） | 抛出 `RejectedExecutionException` | 否 | 否 | 是 | 需要明确感知拒绝、快速失败 | `ThreadPoolExecutor.java:2397` |
+| **CallerRunsPolicy** | 调用者线程同步执行 `r.run()` | 否 | 是（间接限流） | 否 | 不允许丢任务，需要天然背压 | `ThreadPoolExecutor.java:2423` |
+| **DiscardPolicy** | 静默丢弃，连日志都没有 | 是 | 否 | 否 | 可容忍丢任务（日志收集、非关键统计） | `ThreadPoolExecutor.java:2450` |
+| **DiscardOldestPolicy** | `queue.poll()` 丢队首 → `execute(r)` 重试 | 是（丢老的） | 否 | 否 | 新任务优先级更高（如实时行情） | `ThreadPoolExecutor.java:2432` |
+
+### 10.2 源码逐字对照
+
+```java
+// === AbortPolicy ===
+public static class AbortPolicy implements RejectedExecutionHandler {
+    public AbortPolicy() { }
+    public void rejectedExecution(Runnable r, ThreadPoolExecutor e) {
+        throw new RejectedExecutionException(
+            "Task " + r.toString() + " rejected from " + e.toString());
+    }
+}
+
+// === CallerRunsPolicy ===
+public static class CallerRunsPolicy implements RejectedExecutionHandler {
+    public CallerRunsPolicy() { }
+    public void rejectedExecution(Runnable r, ThreadPoolExecutor e) {
+        if (!e.isShutdown()) {
+            r.run();    // 注意：是 run() 不是 start()；同步阻塞调用线程
+        }
+    }
+}
+
+// === DiscardPolicy ===
+public static class DiscardPolicy implements RejectedExecutionHandler {
+    public DiscardPolicy() { }
+    public void rejectedExecution(Runnable r, ThreadPoolExecutor e) {
+        // do nothing —— 比 AbortPolicy 还要安静！
+    }
+}
+
+// === DiscardOldestPolicy ===
+public static class DiscardOldestPolicy implements RejectedExecutionHandler {
+    public DiscardOldestPolicy() { }
+    public void rejectedExecution(Runnable r, ThreadPoolExecutor e) {
+        if (!e.isShutdown()) {
+            e.getQueue().poll();      // 丢老的
+            e.execute(r);             // 重试提交（可能再次失败）
+        }
+    }
+}
+```
+
+### 10.3 何时需要自定义
+
+自定义 `RejectedExecutionHandler` 的三大典型场景：
+
+1. **监控埋点**：调用方 `Metrics.counter("executor_rejected_total").increment()` 上报 Prometheus
+2. **告警触发**：通过 IM / PagerDuty 通知 oncall
+3. **降级持久化**：写入磁盘队列 / Kafka / DB，后续异步补偿（例：订单线程池拒绝时写入 Redis Stream）
+
+> 生产环境**几乎都是自定义策略**。4 个内置策略只有 CallerRunsPolicy 在 RPC 之外的纯内部任务中可以勉强直接使用，其他都需要包装。
+
+---
+
+## 十一、监控告警体系
+
+### 11.1 关键监控指标
+
+| 指标 | API | 类型 | 说明 |
+|------|-----|------|------|
+| `pool_size` | `getPoolSize()` | Gauge | 当前 worker 数 |
+| `active_count` | `getActiveCount()` | Gauge | 正在执行任务的 worker 数 |
+| `queue_size` | `getQueue().size()` | Gauge | 队列中待执行任务数 |
+| `queue_remaining` | `getQueue().remainingCapacity()` | Gauge | 队列剩余容量（无界队列返回 `Integer.MAX_VALUE`） |
+| `completed_task_count` | `getCompletedTaskCount()` | Counter | 累计完成任务数 |
+| `largest_pool_size` | `getLargestPoolSize()` | Gauge | 历史最大线程数（监控瞬时扩容） |
+| `task_count` | `getTaskCount()` | Counter | 已接收任务总数（含拒绝） |
+| `rejected_count` | 自定义 | Counter | 累计拒绝任务数（需自定义策略时统计） |
+
+### 11.2 Micrometer + Prometheus 集成
+
+```java
+import io.micrometer.core.instrument.Metrics;
+import io.micrometer.core.instrument.binder.jvm.ExecutorServiceMetrics;
+import java.util.concurrent.ThreadPoolExecutor;
+
+// 一行接入 Micrometer：自动生成全套指标
+ExecutorService monitored = ExecutorServiceMetrics.monitor(
+    Metrics.globalRegistry,
+    executor,
+    "order-executor"     // 指标名前缀
+);
+```
+
+Micrometer 自动导出的指标名（Prometheus 风格）：
+
+| Prometheus 指标 | 含义 |
+|----------------|------|
+| `executor_pool_size_threads` | 当前线程数 |
+| `executor_pool_core_threads` | 核心线程数 |
+| `executor_pool_max_threads` | 最大线程数 |
+| `executor_queue_size` | 队列深度 |
+| `executor_rejected_total` | 累计拒绝数 |
+| `executor_seconds_count` | 任务执行总次数（Histogram） |
+| `executor_seconds_sum` | 任务执行总耗时 |
+| `executor_seconds_max` | 单任务最长耗时 |
+| `executor_idle_seconds_count` | 空闲时长 |
+
+### 11.3 告警阈值设计
+
+| 阈值 | 严重度 | 触发条件 | 处置建议 |
+|------|--------|----------|----------|
+| 队列使用率 > 80% | WARNING | 持续 5 分钟 | 排查上游 QPS 是否异常 |
+| 队列使用率 > 95% | CRITICAL | 持续 1 分钟 | 立即扩容 / 限流 |
+| 拒绝策略触发 | CRITICAL | 任意一次 | 立即介入（已对业务产生影响） |
+| 活跃线程数 > 90% × maxPoolSize | WARNING | 持续 5 分钟 | 准备扩容 |
+| 单任务最长耗时 > 30s | WARNING | 任意一次 | 排查慢任务 |
+| `completedTaskCount` 不增长 | CRITICAL | 持续 1 分钟 | 线程池已死锁或卡死 |
+
+### 11.4 Grafana 看板（PromQL 片段）
+
+```promql
+# 队列使用率
+executor_queue_size / (executor_queue_size + executor_queue_remaining)
+
+# 拒绝率（按 5 分钟聚合）
+rate(executor_rejected_total[5m])
+
+# 任务平均耗时
+rate(executor_seconds_sum[5m]) / rate(executor_seconds_count[5m])
+
+# 线程池利用率
+executor_pool_size_threads / executor_pool_max_threads
+
+# P99 任务耗时（假设已配置 Histogram percentile）
+histogram_quantile(0.99, rate(executor_seconds_bucket[5m]))
+```
+
+---
+
+## 十二、主流框架线程池实战
+
+### 12.1 Tomcat 线程池
+
+Tomcat 自定义了一个 `TaskQueue`（继承 `LinkedBlockingQueue`），通过「强制触发新建 worker」绕过 JDK 的「核心线程满 → 入队」默认行为。
+
+```text
+JDK 默认行为：
+    core 满 → 入队 → 队列满 → 才会创建非核心线程
+
+Tomcat 改造后：
+    core 满 → 入队 → 队列满 → 创建非核心线程（保留 JDK 行为）
+    但 Tomcat 又加了 force()：
+        public boolean force(Runnable o) {
+            // 强制把任务入队，跳过队列容量检查
+            // 用于「如果当前 thread 数 < maxThreads，就先入队、不创建新线程」
+        }
+```
+
+关键参数（`server.xml` / `application.yml`）：
+
+| 参数 | 默认值 | 说明 |
+|------|--------|------|
+| `server.tomcat.threads.max` | 200 | 最大线程数（= maximumPoolSize） |
+| `server.tomcat.threads.min-spare` | 25 | 核心线程数（= corePoolSize） |
+| `server.tomcat.accept-count` | 100 | 等待队列容量（= workQueue 容量） |
+| `server.tomcat.max-connections` | 8192 | 最大连接数 |
+| `server.tomcat.connection-timeout` | 20000 | 连接超时（ms） |
+
+源码路径：`org.apache.tomcat.util.threads.ThreadPoolExecutor`
+
+### 12.2 Dubbo 线程池
+
+Dubbo 通过 SPI 机制（`@SPI` 注解）实现可插拔线程池，4 种内置实现：
+
+| 实现类 | 对应 JDK 类型 | 特点 |
+|--------|--------------|------|
+| `FixedThreadPool` | `newFixedThreadPool` 等价 | 固定大小 + 无界队列（生产慎用） |
+| `CachedThreadPool` | `newCachedThreadPool` 等价 | 弹性扩缩 + SynchronousQueue |
+| `LimitedThreadPool` | 自定义 | 固定大小 + 有界队列（**推荐生产用**） |
+| `EagerThreadPool` | 自定义 | **优先入队，队列满才创建线程**（兼顾吞吐+资源） |
+
+**Eager 模式核心源码**（`EagerThreadPoolExecutor`）：
+
+```java
+// 自定义 TaskQueue：先尝试入队，入队失败才创建线程
+public class EagerThreadPoolExecutor extends ThreadPoolExecutor {
+    // 重写 offer：返回 false 表示「入队失败，需要创建新线程」
+    public boolean offer(Runnable r) {
+        if (executor.getPoolSize() < executor.getMaximumPoolSize()) {
+            return false;    // 故意返回 false → 触发 addWorker 创建新线程
+        }
+        return super.offer(r);
+    }
+}
+```
+
+**Eager 模式的价值**：兼顾「突发流量时快速响应」（避免任务在队列里等）和「资源受控」（不会无限扩线程）。Dubbo 的默认线程池正是 eager。
+
+### 12.3 Netty 线程池
+
+Netty 的业务线程池是 `io.netty.util.concurrent.UnorderedThreadPoolExecutor`：
+
+```java
+// Netty 业务线程池 - 继承自 JDK ThreadPoolExecutor
+public class UnorderedThreadPoolExecutor extends ThreadPoolExecutor {
+
+    // 关键差异 1: 使用 MPSC 队列（多生产者单消费者），吞吐量高于 LinkedBlockingQueue
+    private final MpscLinkedQueue<Runnable> taskQueueMPSC;
+
+    // 关键差异 2: execute() 时如检测到 OOM / 拒绝，打印警告日志
+    public void execute(Runnable command) {
+        // ...
+        try {
+            super.execute(command);
+        } catch (RejectedExecutionException e) {
+            // Netty 的特色：拒绝时打印警告日志（便于排查）
+            logger.warn("Rejected task from {}", this, e);
+            throw e;
+        }
+    }
+}
+```
+
+关键差异：
+
+| 维度 | JDK ThreadPoolExecutor | Netty UnorderedThreadPoolExecutor |
+|------|----------------------|-----------------------------------|
+| 队列 | `LinkedBlockingQueue` | **`MpscLinkedQueue`**（更高的并发入队性能） |
+| 拒绝日志 | 无 | 警告日志 |
+| EventExecutor 集成 | 无 | 继承 `EventExecutorGroup`，Future 可监听 |
+| 任务有序性 | FIFO 严格有序 | Unordered 名字明示不保证顺序 |
+
+> Netty EventLoop **不是** `UnorderedThreadPoolExecutor`——EventLoop 是单线程串行；`UnorderedThreadPoolExecutor` 是 Netty 给业务代码用的并行线程池（不在 EventLoop 跑长任务时使用）。
+
+---
+
+## 十三、美团动态线程池案例
+
+### 13.1 背景
+
+美团 2018 年开源的「线程池参数动态化」方案，已在生产环境大规模落地。核心问题：
+
+- 业务高峰时线程池参数（corePoolSize / maximumPoolSize / queueSize）无法实时调整
+- 修改需要重启应用，QPS 一过峰值又得改回来
+
+### 13.2 解决方案
+
+美团封装了 `DynamicThreadPoolExecutor`，继承自 JDK `ThreadPoolExecutor`：
+
+```java
+public class DynamicThreadPoolExecutor extends ThreadPoolExecutor {
+
+    // Nacos 配置中心监听
+    @NacosConfigListener(dataId = "thread-pool-config")
+    public void onConfigChanged(ThreadPoolConfig newConfig) {
+        // 反射动态修改父类 private final 字段
+        ReflectUtils.setField(corePoolSizeField, this, newConfig.getCoreSize());
+        ReflectUtils.setField(maximumPoolSizeField, this, newConfig.getMaxSize());
+        // ...
+    }
+
+    // 改造拒绝策略：触发告警 + 落库
+    public void rejectedExecution(Runnable r) {
+        // ... 同 §五 自定义拒绝策略
+    }
+}
+```
+
+### 13.3 关键能力
+
+| 能力 | 说明 |
+|------|------|
+| 参数运行时修改 | 通过反射绕过 `final` 限制，修改 `corePoolSize` 等 |
+| 配置中心下发 | Nacos / Apollo 监听数据变更事件 |
+| 实时监控 | JMX / Prometheus 暴露指标 |
+| 告警联动 | 拒绝 / 队列满自动通知 oncall |
+
+### 13.4 引用文章
+
+- **标题**：美团技术团队「Java 线程池实现原理及其在美团业务中的实践」
+- **作者**：美团技术团队
+- **发表年份**：2018 年
+- **文章地址**：tech.meituan.com/2020/04/02/java-pooling-pratice.html
+- **核心论点**：线程池参数应当支持运行时动态调整，而不是停机 + 重启
+
+---
+
+## 十四、参数调优公式
+
+### 14.1 经典公式（Brian Goetz《Java Concurrency in Practice》）
+
+```text
+Nthreads = Ncpu × Ucpu × (1 + W/C)
+
+其中：
+  Ncpu   = CPU 核数（Runtime.getRuntime().availableProcessors()）
+  Ucpu   = 目标 CPU 利用率（0~1，建议 0.5~0.8）
+  W      = 等待时间（wait time，如 IO / 网络等待）
+  C      = 计算时间（compute time）
+  W/C    = 「等待/计算」比
+```
+
+### 14.2 简化经验值
+
+| 任务类型 | 经验公式 | 8 核示例 | 原因 |
+|----------|----------|----------|------|
+| **CPU 密集型** | `Ncpu + 1` | 9 | +1 防止页缺失时 CPU 空闲 |
+| **IO 密集型（DB/网络）** | `2 × Ncpu` | 16 | IO 等待期间 CPU 可执行其他任务 |
+| **IO 密集型（远程 RPC）** | `3 × Ncpu ~ 4 × Ncpu` | 24~32 | 远程调用等待更久 |
+
+### 14.3 自适应公式（更精细）
+
+```java
+// 假设线程 A：50% 时间在 IO 等待，50% 时间计算
+// → 1 个线程占用 CPU 50%，那么 Ncpu × 2 是合理的
+
+double ioRatio = 0.5;          // IO 占比 50%
+double cpuPerThread = 1.0 - ioRatio;  // 每个线程占 CPU 50%
+int Nthreads = (int) (Ncpu / cpuPerThread);  // = Ncpu × 2
+```
+
+### 14.4 压测调优流程
+
+```text
+1. 初始配置：CPU 密集=Ncpu+1，IO 密集=2×Ncpu
+   ↓
+2. 压测：观察 CPU 利用率、线程池利用率、队列使用率
+   ↓
+3. 调优矩阵：
+   CPU 高 + 线程池利用率低 → 加线程数
+   CPU 低 + 线程池利用率高 → 任务可能阻塞 IO，看 W/C
+   队列使用率高             → 加线程或扩队列容量（避免 OOM）
+   ↓
+4. 生产灰度 → 全量 → 持续监控
+```
+
+---
+
+## 十五、JDK 演进史
+
+| 年份 | 里程碑 | 关键贡献 |
+|------|--------|----------|
+| 2004 | Doug Lea 出版《Java Concurrency in Practice》 | 业界线程池模式的标准定义（Brian Goetz 等合著） |
+| 2006 | JDK 5（Java 5.0） | 引入 `java.util.concurrent` + `ThreadPoolExecutor` |
+| 2011 | JDK 7 | 引入 `ForkJoinPool`（Doug Lea 设计，工作窃取） |
+| 2014 | JDK 8 | 引入 `CompletableFuture`（组合式异步） |
+| 2018 | 美团开源 DynamicThreadPoolExecutor | 线程池参数动态化（生产落地） |
+| 2020 | JDK 14 | Virtual Threads（Loom 项目）Preview |
+| 2023 | JDK 21 | Virtual Threads GA（**JEP 444**） |
+
+> Virtual Threads ≠ 替代线程池：Virtual Threads 适合 IO 密集型任务；CPU 密集型仍应使用 `ForkJoinPool.commonPool()` 或自定义线程池。
+
+---
+
+## 十六、反直觉误区清单
+
+### 16.1 ❌「corePoolSize 越小越好」
+
+**真相**：corePoolSize 过小 → 突发流量时频繁触发 worker 创建（new Thread 开销 ~0.1~1ms），反而拉低 QPS。
+
+**正解**：根据历史 QPS 峰值设置 corePoolSize，宁可多 1~2 个常驻 worker。
+
+### 16.2 ❌「无界队列不会拒绝」
+
+**真相**：无界队列（`new LinkedBlockingQueue()`）永远不会触发拒绝策略，但任务持续堆积 → **OOM**。这是「没拒绝 = 安全」最常见的误解。
+
+**正解**：永远指定队列容量。
+
+### 16.3 ❌「CallerRunsPolicy 一定安全」
+
+**真相**：CallerRunsPolicy 让提交线程同步执行任务。如果提交线程是 RPC 线程（如 Netty IO 线程），会**阻塞 RPC 响应** → 整个 RPC 链路雪崩。
+
+**正解**：RPC 入口应使用自定义拒绝策略（埋点 + 持久化），而非 CallerRunsPolicy。
+
+### 16.4 ❌「workQueue 用 LinkedBlockingQueue 即可」
+
+**真相**：`new LinkedBlockingQueue()` 默认容量 `Integer.MAX_VALUE`，与无界等价。
+
+**正解**：`new LinkedBlockingQueue(100)` 或 `new ArrayBlockingQueue(100)`。
+
+### 16.5 ❌「线程池监控只看 poolSize」
+
+**真相**：poolSize 满说明已经触发非核心线程创建（很可能已经积压）。真正能提前预警 OOM 的指标是 **队列使用率**。
+
+**正解**：核心告警指标是 `queueSize / queueCapacity`，阈值 80%。
+
+### 16.6 ❌「Virtual Threads 替代线程池」
+
+**真相**：Virtual Threads 在 IO 密集型场景下吞吐量提升 10x+；但 CPU 密集型任务（计算、序列化）仍应使用 `ForkJoinPool.commonPool()`。
+
+**正解**：IO 密集用 `Executors.newVirtualThreadPerTaskExecutor()`；CPU 密集继续用线程池。
+
+### 16.7 ❌「shutdownNow() 立即停止」
+
+**真相**：`shutdownNow()` 只「向所有 worker 发送中断信号」，不保证任务立即停止。`awaitTermination()` 才是「等真正终止」。
+
+**正解**：`shutdownNow() + awaitTermination(超时)` 组合使用。
+
+### 16.8 ❌「线程池中的异常会自动处理」
+
+**真相**：`execute(Runnable)` 抛出的未捕获异常会传播到线程的 `UncaughtExceptionHandler`；`submit(Runnable)` 抛出的异常会被包装到 `Future`，**不主动调用 `future.get()` 就永远看不到**。
+
+**正解**：要么用 `execute()` + 自定义 `Thread.UncaughtExceptionHandler`，要么用 `submit()` + `future.get()` 检查异常。
+
+---
+
+## 十七、高级代码示例
+
+### 17.1 自定义 RejectedExecutionHandler（埋点 + 告警 + 持久化）
+
+```java
+public class MetricAndAlertRejectHandler implements RejectedExecutionHandler {
+
+    private final Counter rejectedCounter;
+    private final AlertService alertService;
+    private final PersistenceQueue persistenceQueue;
+
+    public MetricAndAlertRejectHandler(MeterRegistry registry) {
+        this.rejectedCounter = Counter.builder("executor_rejected_total")
+            .description("Total rejected tasks")
+            .register(registry);
+        this.alertService = new AlertService();
+        this.persistenceQueue = new DiskPersistenceQueue("/var/log/pool-rejected");
+    }
+
+    @Override
+    public void rejectedExecution(Runnable r, ThreadPoolExecutor e) {
+        // 1. 上报监控
+        rejectedCounter.increment();
+
+        // 2. 记录详细日志（含线程池状态 + 任务信息）
+        LoggerFactory.getLogger(getClass()).error(
+            "[Rejected] poolName={}, poolSize={}, active={}, queueSize={}, task={}",
+            e.getThreadFactory().toString(),
+            e.getPoolSize(), e.getActiveCount(), e.getQueue().size(), r);
+
+        // 3. 告警
+        alertService.notify("[CRITICAL] 线程池已满，请立即排查");
+
+        // 4. 降级：持久化到磁盘队列，后续扫描重试
+        try {
+            persistenceQueue.offer(r);
+        } catch (Exception ex) {
+            // 持久化也失败 → 最后一道防线：抛异常
+            throw new RejectedExecutionException("All fallback paths failed", ex);
+        }
+    }
+}
+```
+
+### 17.2 反射动态修改 ThreadPoolExecutor 参数
+
+```java
+public class ThreadPoolConfigRefresher {
+
+    private static final Field CORE_POOL_SIZE;
+    private static final Field MAXIMUM_POOL_SIZE;
+
+    static {
+        try {
+            CORE_POOL_SIZE = ThreadPoolExecutor.class.getDeclaredField("corePoolSize");
+            MAXIMUM_POOL_SIZE = ThreadPoolExecutor.class.getDeclaredField("maximumPoolSize");
+            CORE_POOL_SIZE.setAccessible(true);
+            MAXIMUM_POOL_SIZE.setAccessible(true);
+        } catch (NoSuchFieldException e) {
+            throw new ExceptionInInitializerError(e);
+        }
+    }
+
+    public static void resize(ThreadPoolExecutor executor, int newCore, int newMax) {
+        // 注意：corePoolSize 不能大于 maximumPoolSize
+        if (newCore > newMax) throw new IllegalArgumentException("core > max");
+
+        try {
+            // 先设置 max → 再设置 core（JDK 内部 check 顺序要求）
+            MAXIMUM_POOL_SIZE.setInt(executor, newMax);
+            CORE_POOL_SIZE.setInt(executor, newCore);
+
+            // 收缩时：如果当前 worker 数 > 新的 core，触发多余的 worker 回收
+            if (executor.getPoolSize() > newCore) {
+                executor.setCorePoolSize(newCore);  // 触发 interruptIdleWorkers
+            }
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException("Failed to resize thread pool", e);
+        }
+    }
+}
+```
+
+> ⚠️ **风险提示**：反射修改 JDK 私有字段属于「黑科技」，生产环境务必通过配置中心灰度发布，并保留 JDK 升级时的兼容性测试（字段名可能在不同 JDK 版本变动）。
+
+### 17.3 Spring Boot @Async 自定义线程池
+
+```java
+@Configuration
+@EnableAsync
+public class AsyncConfig {
+
+    @Bean("taskExecutor")
+    public Executor taskExecutor() {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(10);
+        executor.setMaxPoolSize(20);
+        executor.setQueueCapacity(200);
+        executor.setKeepAliveSeconds(60);
+        executor.setThreadNamePrefix("async-task-");
+        // TaskDecorator：用于传递 ThreadLocal（traceId、userId）
+        executor.setTaskDecorator(runnable -> {
+            Map<String, String> context = MDC.getCopyOfContextMap();
+            return () -> {
+                try {
+                    if (context != null) MDC.setContextMap(context);
+                    runnable.run();
+                } finally {
+                    MDC.clear();
+                }
+            };
+        });
+        // 自定义拒绝策略
+        executor.setRejectedExecutionHandler(new MetricAndAlertRejectHandler(meterRegistry));
+        executor.initialize();
+        return executor;
+    }
+}
+```
+
+---
+
+## 十八、跨模块反向链
+
+线程池在 Java 后端生态中的位置：
+
+```text
+Java 并发（JVM 维度）
+  └─ 线程池（本文）
+        ├─→ 锁机制（ReentrantLock）
+        ├─→ 内存模型（JMM）
+        └─→ Future / CompletableFuture
+
+Spring 后端（框架维度）
+  └─ Spring Boot @Async / TaskExecutor
+        └─→ 底层即 ThreadPoolExecutor
+
+分布式 RPC
+  └─ Dubbo 自定义 ThreadPool（fixed/cached/limited/eager）
+
+高性能网络
+  └─ Netty EventLoop / UnorderedThreadPoolExecutor
+
+Web 容器
+  └─ Tomcat TaskQueue（定制 ThreadPoolExecutor）
+```
+
+### 18.1 向上链（依赖/被依赖）
+
+- [线程池高频面试题（12.interview）](../../../12.interview/01.java/thread-pool-高频面试题/README.md) — 面试必备精简版（高频问答）
+- [JMM 内存模型（01.java-and-jvm）](../jmm-memory-model/README.md) — 线程池内存可见性保证（happens-before）
+- [ReentrantLock 锁机制（01.java-and-jvm）](../lock-reentrantlock/README.md) — Worker 的 AQS 实现基础
+- [Spring Boot @Async TaskExecutor（04.spring-backend）](../../../04.spring-backend/spring-boot/async-task-executor/README.md) — Spring 异步任务底层即 ThreadPoolExecutor
+- [Dubbo 线程池模型（06.distributed-systems）](../../../06.distributed-systems/rpc/dubbo-threadpool/README.md) — Dubbo 4 种内置线程池（fixed/cached/limited/eager）
+- [Netty EventLoop 与线程模型（06.distributed-systems）](../../../06.distributed-systems/network/netty-eventloop/README.md) — Netty 业务线程池 UnorderedThreadPoolExecutor
+- [Tomcat 线程池调优（06.distributed-systems）](../../../06.distributed-systems/web-servers/tomcat-threadpool/README.md) — Tomcat TaskQueue 定制
+
+### 18.2 向下链（本文被引用）
+
+- `12.interview/01.java/thread-pool-高频面试题/` — 面试题简版反向链回本文
+- `04.spring-backend/spring-boot/async-task-executor/` — Spring @Async 章节引用本文做底层原理说明
+
+---
+
+⭐⭐⭐⭐（高频面试 + 实战必会）
 
 ## 反向链
 
