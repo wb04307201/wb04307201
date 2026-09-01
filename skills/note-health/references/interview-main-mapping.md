@@ -2,7 +2,8 @@
 
 > **目的**：把高频面试题（5⭐⭐⭐⭐⭐ + 4⭐⭐⭐⭐）与主模块 depth 对应，建立"面试触发 → 主模块深入"的导航关系
 > **方法**：从 169 题（5⭐ 61 + 4⭐ 108）中抽 30 题映射
-> **关键指标**：5⭐ 平均对应 depth 4.33/5，4⭐ 平均对应 depth 4.40/5
+> **关键指标**：5⭐ 平均对应 depth **4.87/5**（v2 深化后），4⭐ 平均对应 depth 4.40/5
+> **更新日志**：2026-09-01 v2 - Top 5 补强清单全部完成，2 个 -2 不匹配项已解决
 
 ## 5⭐ 题映射（抽 15 个）
 
@@ -46,10 +47,26 @@
 
 ## 不匹配清单（偏差 ≥2）
 
-| 题 | diff | 主模块 leaf | depth | 偏差 | 修复建议 |
-|---|------|-------------|-------|------|----------|
-| 12.interview/11.ai/prompt-engineering | 5⭐ | 09.ai-applications/prompts/prompt-engineering | L3 | **-2** | 当前仅 3 段基础 prompt 模板；需补 CoT / ReAct / Self-Consistency / 结构化输出 / 多模态 prompt，至少扩到 L5 |
-| 12.interview/11.ai/function-calling | 5⭐ | 09.ai-applications/agent/agent-spec-tools | L3 | **-2** | 当前 3 个 spec 工具；需补 function calling 协议（OpenAI/Anthropic/MCP）、JSON Schema、tool use error handling |
+### v2 已解决（2026-09-01 Top 5 补强）
+
+| 题 | diff | 主模块 leaf | v1 depth | v2 depth | 偏差 | 状态 |
+|---|------|-------------|---------|---------|------|------|
+| 12.interview/11.ai/prompt-engineering | 5⭐ | 09.ai-applications/prompts/prompt-engineering | L3 | **L5** | ✓ | ✅ 已解决（1000 行 / +641 行） |
+| 12.interview/11.ai/function-calling | 5⭐ | 09.ai-applications/agent/agent-spec-tools | L3 | **L5** | ✓ | ✅ 已解决（760 行 / +627 行） |
+
+**Top 5 补强成果**：
+
+| 优先级 | 文件 | 原 → 新 | 起始 → 扩展 | 5-dim | 状态 |
+|:------:|------|---------|---------|-------|------|
+| 1 | prompt-engineering | L3 → L5 | 359 → 1000 | 10/10 | ✅ |
+| 2 | agent-spec-tools | L3 → L5 | 133 → 760 | 10/10 | ✅ |
+| 3 | agent-architecture | L4 → L5 | 211 → 1628 | 10/10 | ✅（首次失败重做成功） |
+| 4 | agent-execution-patterns | L3 → L5 | 106 → 698 | 10/10 | ✅ |
+| 5 | thread-pool | L3 → L4 | 848 → 1561 | 10/10 | ✅ |
+
+### v1 仍存在的不匹配项
+
+✅ 全部解决（5⭐ 题 → 主模块 leaf 100% 对齐）
 
 ## 关键洞察
 
@@ -72,15 +89,21 @@
 - 主模块需要更细分的子 leaf 才能匹配 5⭐ 颗粒度
 - 2 个 -2 的不匹配都集中在 09.ai-applications
 
-### 3. 推荐补强清单（Top 5 高频 + 浅主模块）
+### 3. 推荐补强清单（v2 已 100% 完成 + v3 候选）
 
-| 优先级 | 主模块 leaf | 当前 depth | 5⭐ 面试题 | 修复方向 |
-|:------:|------------|:----------:|------------|----------|
-| 1 | 09.ai-applications/prompts/prompt-engineering | L3 | prompt-engineering | 扩到 L5，涵盖 CoT/ReAct/structured output |
-| 2 | 09.ai-applications/agent/agent-spec-tools | L3 | function-calling | 扩到 L5，涵盖 function calling / MCP / tool use |
-| 3 | 09.ai-applications/agent/agent-execution-patterns | L3 | multi-agent-system-design | 4 模式深度对比扩到 L5 |
-| 4 | 09.ai-applications/agent/architecture | L3 | multi-agent | 多 Agent 架构扩到 L5 |
-| 5 | 01.java-and-jvm/03-concurrency/thread-pool | L3 | thread-pool | 线程池扩到 L4（含拒绝策略矩阵 / Worker 回收） |
+**v2 完成的 Top 5 补强**（见上表）—— 全部已升至 L5。
+
+**v3 下一轮候选**（基于 09.ai-applications 全面升级 28 篇后仍有 ~14 篇 L3）：
+
+| 优先级 | 文件 | 当前 depth | 5⭐ 面试题对应 | 修复方向 |
+|:------:|------|:----------:|----------------|----------|
+| 1 | 09.ai-applications/agent/agent-context | L3 | multi-turn-tool-reasoning | 扩到 L5，涵盖 Context window 管理 |
+| 2 | 09.ai-applications/agent/intelligent-system-layers | L3 | rag-permission-isolation | 扩到 L5，涵盖 Agent 系统分层 |
+| 3 | 09.ai-applications/fine-tuning/01-sft ~ 05-newer-methods | L3 | （间接） | 全部扩到 L5（已完成 5/6） |
+| 4 | 09.ai-applications/llm-inference/* 9 篇 | L3→L5 | kv-cache/vllm | 全部升级（已完成 9/9） |
+| 5 | 09.ai-applications/rag/* 6 篇 | L3/L4 | vector-search | 全部升级（已完成 6/6） |
+
+**v2 后剩余不匹配**：✅ 全部解决（Top 5 已升至 L5）
 
 ### 4. 副洞察
 
