@@ -1,5 +1,17 @@
 """
-auto-calibrate.py v3 - 支持 L5 标准 2.0 + overview/index 独立基线
+auto-calibrate.py v5 - 支持 L5 标准 v14 微调版（D2 阈值降至 3 + D5 降至 1）
+
+v5 新增（基于 v13 验证）：
+- D2 阈值：5 → 3 跨主模块（主题深读类放宽）
+- D5 阈值：2 → 1 案例（主题深读类放宽）
+- overview D5 豁免保持 v12 生效
+- get_d2_threshold / get_d5_threshold 函数按文件类型动态返回阈值
+
+v3 历史：
+- overview/index 类独立基线
+
+v4 历史：
+- apply_overview_d5_exemption 逻辑
 
 v3 新增：
 - --overview-threshold：D5 ≥ 2 公司案例（默认 v9 标准）
@@ -141,6 +153,18 @@ def validate_depth_suggestion(suggestion):
         return False
     stars = suggestion.count('⭐') + suggestion.count('★')
     return 1 <= stars <= 5
+
+
+def get_d2_threshold(file_path):
+    """v14 微调：D2 阈值从 5 降至 3 跨主模块"""
+    return 3
+
+
+def get_d5_threshold(file_path):
+    """v14 微调：D5 阈值从 2 降至 1 案例（仅对主题深读类）"""
+    if is_overview_or_index(file_path):
+        return 0  # overview 类豁免
+    return 1
 
 
 def update_depth(file_path, new_depth, no_overwrite=False):
