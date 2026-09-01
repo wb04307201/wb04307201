@@ -4,6 +4,7 @@
   type: article
   category: 主模块子文章
   summary: Helm 速查手册：从 Chart 结构到 Helmfile 多环境管理实战
+  depth: ⭐⭐⭐
 -->
 
 # Helm · K8s 应用包管理工具

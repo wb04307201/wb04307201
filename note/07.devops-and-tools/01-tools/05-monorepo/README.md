@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Monorepo — 单仓多项目管理与工具选型
+  depth: ⭐⭐⭐
 -->
 
 # Monorepo

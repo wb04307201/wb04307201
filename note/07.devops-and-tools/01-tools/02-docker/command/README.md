@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Docker 常用命令速查表（镜像/容器/网络/卷/系统/Compose 6 大类）。
+  depth: ⭐
 -->
 
 # Docker 命令

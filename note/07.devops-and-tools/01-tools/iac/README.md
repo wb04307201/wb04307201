@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Infrastructure as Code 四大工具对比——Terraform / Ansible / Pulumi / CDK 与 GitOps 集成
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # Infrastructure as Code (IaC)

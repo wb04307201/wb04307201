@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Git 分支命名规范：Conventional Branches + 3 大流派 + CI 联动
+  depth: ⭐⭐⭐⭐
 -->
 
 # Git 分支命名规范速查

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: K8s 存储 PV/PVC/StorageClass
+  depth: ⭐⭐⭐
 -->
 
 # K8s 存储：PV / PVC / StorageClass 实战

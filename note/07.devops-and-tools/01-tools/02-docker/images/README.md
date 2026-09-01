@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 常用中间件 Docker 镜像一键部署（Nginx/MySQL/Redis/MinIO 等 15+）
+  depth: ⭐
 -->
 
 # Docker 镜像

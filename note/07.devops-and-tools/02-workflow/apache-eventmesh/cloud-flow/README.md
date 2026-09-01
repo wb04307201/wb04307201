@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: EventMesh 云流程
+  depth: ⭐⭐⭐⭐
 -->
 
 # EventMesh 云流程

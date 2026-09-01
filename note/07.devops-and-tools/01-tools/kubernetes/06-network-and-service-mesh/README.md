@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: K8s 网络与 Service Mesh
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # K8s 网络与 Service Mesh：CNI / Calico / Istio 实战

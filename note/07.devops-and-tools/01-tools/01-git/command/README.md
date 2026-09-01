@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Git 命令清单 + git switch/restore vs checkout/reset 对比表 + 实战工作流场景。
+  depth: ⭐⭐
 -->
 
 # Git 命令清单

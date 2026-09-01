@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: CI/CD 采纳决策深度分析 —— 团队规模 × 发布频率 × 合规要求的经济学模型
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # CI/CD 采纳决策深度分析：什么时候该上，什么时候不该

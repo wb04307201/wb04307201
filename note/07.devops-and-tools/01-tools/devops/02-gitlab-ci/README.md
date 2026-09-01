@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: GitLab CI
+  depth: ⭐⭐⭐
 -->
 
 # GitLab CI · 一体化 DevOps 平台实战

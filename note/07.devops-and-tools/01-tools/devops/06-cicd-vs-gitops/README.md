@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: CI/CD vs GitOps
+  depth: ⭐⭐⭐⭐
 -->
 
 # CI/CD vs GitOps：理念差异与协同模式

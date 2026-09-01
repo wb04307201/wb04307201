@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: GitHub Actions 云原生 CI/CD——从最小工作流到 Matrix 构建 / OIDC 凭证 / 自托管 Runner 的完整实战。
+  depth: ⭐⭐⭐
 -->
 
 # GitHub Actions · 云原生 CI/CD 实战

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: K8s Service 与 Ingress
+  depth: ⭐⭐⭐
 -->
 
 # K8s Service 与 Ingress：服务发现 + 7 层路由

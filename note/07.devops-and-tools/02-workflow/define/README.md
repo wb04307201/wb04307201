@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 工作流定义
+  depth: ⭐⭐⭐⭐⭐
 -->
 
 # 工作流定义

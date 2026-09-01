@@ -4,6 +4,7 @@
   type: article
   category: 主模块子文章
   summary: K8s Pod 与 4 种工作负载（Deployment/StatefulSet/DaemonSet）速查手册
+  depth: ⭐⭐⭐
 -->
 
 # K8s Pod 与工作负载：Deployment / StatefulSet / DaemonSet

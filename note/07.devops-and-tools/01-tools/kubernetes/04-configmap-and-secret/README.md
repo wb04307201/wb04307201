@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: K8s ConfigMap 与 Secret
+  depth: ⭐⭐⭐
 -->
 
 # K8s ConfigMap 与 Secret：配置管理最佳实践

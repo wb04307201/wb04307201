@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Hutool、Apache Commons、Guava工具库
+  depth: ⭐
 -->
 
 # Hutool、Apache Commons、Guava工具库
