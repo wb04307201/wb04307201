@@ -1,10 +1,15 @@
 #!/bin/bash
 # scripts/simulate-monthly-cron.sh
-# 模拟 CI 月度 cron 在本地运行
+# 模拟 CI 月度 cron 在本地运行（3 个 workflow 综合模拟）
+#
+# 2026-09-02 Session 7 更新：新增 structural-link-check 模拟
+#   - difficulty-calibration: 03:00 cron
+#   - structural-link-check:  06:00 cron
+# 模拟时区：UTC（与 GitHub Actions 一致）
 
 set -e
 
-echo "=== 月度 cron 校准模拟 ==="
+echo "=== 月度 cron 综合模拟 ==="
 echo "时间：$(date -u '+%Y-%m-%d %H:%M UTC')"
 echo ""
 
@@ -77,3 +82,33 @@ echo ""
 echo "=== 月度 cron 校准完成（dry-run 验证） ==="
 echo ""
 echo "在生产环境（GitHub Actions）下，--dry-run 标志将移除并应用校准。"
+
+# 4. structural-link-check 模拟（对应 .github/workflows/structural-link-check.yml 06:00 cron）
+echo ""
+echo "==============================================="
+echo "[4/4] 运行 structural-link-check（06:00 cron 模拟）..."
+echo "==============================================="
+echo "时间：$(date -u '+%Y-%m-%d %H:%M UTC')"
+echo ""
+
+if [ -f scripts/check-broken-links.py ]; then
+  echo "[A] 全库链接完整性检查..."
+  python scripts/check-broken-links.py 2>&1 | tail -10
+  LINK_EXIT=$?
+  echo ""
+  if [ "$LINK_EXIT" -eq 0 ]; then
+    echo "✅ 链接完整性：0 断链"
+  else
+    echo "❌ 链接完整性：发现断链，请修复"
+  fi
+  echo ""
+  echo "[B] 月度 cron 完成时间：$(date -u '+%Y-%m-%d %H:%M UTC')"
+else
+  echo "❌ scripts/check-broken-links.py 不存在"
+fi
+
+echo ""
+echo "=== 月度 cron 综合模拟完成 ==="
+echo "对应 workflow："
+echo "  - 03:00 difficulty-calibration.yml（结构验证 + auto-calibrate）"
+echo "  - 06:00 structural-link-check.yml（链接完整性）"
