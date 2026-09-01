@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 事件驱动与 Serverless Workflow
+  depth: ⭐⭐⭐⭐
 -->
 
 # 事件驱动与 Serverless Workflow

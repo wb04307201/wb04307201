@@ -8,6 +8,7 @@ module:
   category: 主模块
   type: index
   summary: 分布式系统 + 微服务 + 云原生（K8s/Service Mesh/Serverless）完整知识体系，从基础理论（软件工程 / DDD / TOGAF / ArchiMate / IT4IT）到工程实践（分布式 / 高可用 / 高性能 / 安全 / 幂等 / 部署 / 可观测性 / 新兴技术）的完整学习路径。
+  depth: ⭐
 -->
 
 # 06. Distributed Systems（分布式系统 + 微服务 + 云原生）

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 第三章：康威定律 + 团队拓扑
+  depth: ⭐⭐⭐
 -->
 
 # 第三章：康威定律 + 团队拓扑

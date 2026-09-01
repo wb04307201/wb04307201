@@ -5,6 +5,7 @@ module:
   type: deep-dive
   category: 敏感词过滤
   summary: 敏感词变体绕过对抗 —— 6 大绕过手法 + 归一化流水线 + Unicode/繁简/谐音/零宽字符处理 + AI 语义兜底
+  depth: ⭐⭐⭐
 -->
 
 # 敏感词变体绕过对抗（Anti-Evasion）

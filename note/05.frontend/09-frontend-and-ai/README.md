@@ -5,6 +5,7 @@ module:
   type: index
   category: 主模块子文章
   summary: 前端 09 前端与 AI
+  depth: ⭐⭐
 -->
 
 # 09 前端与 AI

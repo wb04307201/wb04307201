@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 一句话定位：**系统安全是软件的生命线——从鉴权到加密，从访问控制到 OWASP 防御，构建纵深安全体系。**
+  depth: ⭐⭐
 -->
 
 # 安全篇

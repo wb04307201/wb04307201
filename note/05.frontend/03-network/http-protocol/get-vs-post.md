@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: GET 与 POST 的 9 大核心差异 + 语义本质 + 工程取舍
+  depth: ⭐⭐⭐
 -->
 
 # GET vs POST：HTTP 请求方法的本质差异

@@ -5,6 +5,7 @@ module:
   type: index
   category: 主模块子 MOC
   summary: 前端网络协议与请求机制（HTTP/HTTPS / WebSocket / 跨域 / 缓存）
+  depth: ⭐⭐
 -->
 
 # 03 网络

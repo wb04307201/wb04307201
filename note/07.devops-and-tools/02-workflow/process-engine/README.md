@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 流程引擎
+  depth: ⭐⭐⭐
 -->
 
 # 流程引擎

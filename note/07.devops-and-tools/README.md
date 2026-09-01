@@ -8,6 +8,7 @@ module:
   category: 主模块
   type: index
   summary: DevOps 工具链 + CI/CD + 容器编排 + 流程引擎 一站式速查——从 Git / 容器化 / K8s / IaC 到工作流（BPMN + 事件驱动），完整覆盖日常开发、运维、流程编排所需。
+  depth: ⭐⭐⭐
 -->
 
 # 07. DevOps + Tools + Workflow

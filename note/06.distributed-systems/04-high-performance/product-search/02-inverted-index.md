@@ -5,6 +5,7 @@ module:
   type: topic
   category: 索引与分词
   summary: 倒排索引原理 + IK 中文分词 + 同义词扩展 + 多维筛选（Faceted Search）
+  depth: ⭐⭐⭐
 -->
 
 # 倒排索引与分词 · 搜索的核心引擎

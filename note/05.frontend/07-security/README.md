@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 本模块覆盖 6 大前端安全主题:XSS / CSRF / CSP / CORS / 会话管理 / 依赖供应链,每个都有完整的攻击场景、防御手段、实战代码。
+  depth: ⭐⭐
 -->
 
 # 07 安全

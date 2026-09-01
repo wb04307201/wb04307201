@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 前端 06 性能
+  depth: ⭐⭐
 -->
 
 # 06 性能

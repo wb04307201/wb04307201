@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Java 工具库 — Hutool/Commons/Guava + Lombok 注解提效
+  depth: ⭐⭐
 -->
 
 # Java 工具库

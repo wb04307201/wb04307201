@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 前端 01 基础
+  depth: ⭐⭐
 -->
 
 # 01 基础

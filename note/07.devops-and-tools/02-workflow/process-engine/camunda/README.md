@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Camunda 引擎
+  depth: ⭐⭐
 -->
 
 # Camunda 引擎

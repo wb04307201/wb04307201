@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: **一句话定义**：用 2 行代码实现核心功能，用 8 行代码解决鲁棒性问题。
+  depth: ⭐⭐⭐⭐
 -->
 
 # 2 行 / 8 行原则（2/8 原则）

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Vue 3.4+ 全景
+  depth: ⭐⭐⭐⭐
 -->
 
 # Vue 3.4+

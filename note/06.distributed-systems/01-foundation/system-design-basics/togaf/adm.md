@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 第一章：核心思想 + ADM 详解
+  depth: ⭐⭐⭐
 -->
 
 # 第一章：核心思想 + ADM 详解

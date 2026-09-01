@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 前端 05 架构
+  depth: ⭐⭐
 -->
 
 # 05 架构

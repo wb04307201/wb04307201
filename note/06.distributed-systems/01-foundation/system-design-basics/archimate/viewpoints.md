@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: ---
+  depth: ⭐⭐⭐⭐
 -->
 
 # 第二章：视点：给不同人看不同的图

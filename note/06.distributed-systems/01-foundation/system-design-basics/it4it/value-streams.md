@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 第一章：价值流：从请求到服务的 4 条路
+  depth: ⭐⭐⭐⭐
 -->
 
 # 第一章：价值流：从请求到服务的 4 条路

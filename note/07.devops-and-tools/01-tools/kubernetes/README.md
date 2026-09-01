@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Kubernetes
+  depth: ⭐⭐
 -->
 
 # Kubernetes · 云原生编排平台

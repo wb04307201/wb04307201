@@ -5,6 +5,7 @@ module:
   type: index
   category: 主模块子文章
   summary: 新兴技术是架构师的前瞻视野——eBPF 重塑可观测、WebAssembly 突破语言边界、服务网格重塑通信、云原生趋势定义未来 5 年。
+  depth: ⭐⭐
 -->
 
 # 新兴技术

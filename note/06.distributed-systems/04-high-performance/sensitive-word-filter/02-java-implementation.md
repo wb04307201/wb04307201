@@ -5,6 +5,7 @@ module:
   type: topic
   category: Java 实战
   summary: Java 完整实现 —— Spring Boot 集成 + HanLP 双数组 Trie + 多级缓存 + 替换策略
+  depth: ⭐⭐⭐⭐
 -->
 
 # Java 实战落地 · 完整代码与 Spring 集成

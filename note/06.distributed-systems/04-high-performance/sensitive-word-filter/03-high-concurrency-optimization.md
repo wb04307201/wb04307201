@@ -5,6 +5,7 @@ module:
   type: topic
   category: 高并发优化
   summary: 高并发 9 大优化 —— 双数组 Trie / Bloom / Caffeine / Redis / 字典压缩 / 灰度 / 监控
+  depth: ⭐⭐⭐
 -->
 
 # 高并发 9 大优化策略 · 性能从 1k 到 100w QPS

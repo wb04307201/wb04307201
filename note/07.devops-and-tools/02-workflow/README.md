@@ -6,6 +6,7 @@ module:
   audience: 架构师 / 业务负责人
   category: 主模块
   summary: 工作流 = BPMN 流程骨架 + 事件驱动协作神经，编排 vs 编舞
+  depth: ⭐⭐⭐
 -->
 
 # 工作流

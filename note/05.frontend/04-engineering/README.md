@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 前端 04 工程化
+  depth: ⭐⭐
 -->
 
 # 04 工程化

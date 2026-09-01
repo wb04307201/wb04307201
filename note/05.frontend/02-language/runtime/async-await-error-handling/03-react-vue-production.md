@@ -5,6 +5,7 @@ module:
   type: topic
   category: 框架实战
   summary: React/Vue 异步错误生产实战 —— ErrorBoundary / axios 拦截器 / Vue errorHandler / unhandledrejection 全链路兜底
+  depth: ⭐⭐⭐⭐
 -->
 
 # React/Vue 异步错误生产实战

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: BFC（块级格式化上下文）—— CSS 布局隔离的核心机制
+  depth: ⭐⭐⭐
 -->
 
 # BFC（块级格式化上下文）

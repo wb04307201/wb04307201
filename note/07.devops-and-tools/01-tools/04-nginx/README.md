@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: Nginx — 反向代理配置与 Pingora 新一代代理
+  depth: ⭐⭐⭐
 -->
 
 # Nginx

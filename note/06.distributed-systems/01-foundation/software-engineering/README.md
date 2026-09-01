@@ -4,6 +4,7 @@
   type: index
   category: 主模块子文章
   summary: 软件工程方法论——瀑布/敏捷/DevOps 演进 + 质量保障体系 + 工具链选型
+  depth: ⭐⭐
 -->
 
 # 软件工程

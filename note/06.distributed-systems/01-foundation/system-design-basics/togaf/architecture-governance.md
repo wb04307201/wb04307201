@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 第四章：架构治理 + 落地实践
+  depth: ⭐⭐⭐⭐
 -->
 
 # 第四章：架构治理 + 落地实践

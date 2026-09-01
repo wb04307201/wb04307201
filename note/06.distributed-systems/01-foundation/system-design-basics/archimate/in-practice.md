@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 第三章：落地：ArchiMate × TOGAF × C4 × DDD
+  depth: ⭐⭐⭐⭐
 -->
 
 # 第三章：落地：ArchiMate × TOGAF × C4 × DDD

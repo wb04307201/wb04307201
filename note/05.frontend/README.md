@@ -6,6 +6,7 @@ module:
   audience: 前端 / 全栈工程师
   category: 主模块
   summary: 现代前端工程的知识地图——从浏览器原理到 AI 协同开发
+  depth: ⭐⭐⭐
 -->
 
 # 前端工程

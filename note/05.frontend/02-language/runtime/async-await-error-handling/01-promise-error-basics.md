@@ -5,6 +5,7 @@ module:
   type: topic
   category: Promise 错误基础
   summary: Promise reject 机制 + async 函数异常抛出 + 5 大误区
+  depth: ⭐⭐⭐
 -->
 
 # Promise 错误基础 · reject 机制与异常抛出

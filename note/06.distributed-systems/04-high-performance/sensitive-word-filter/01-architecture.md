@@ -5,6 +5,7 @@ module:
   type: topic
   category: 系统架构
   summary: 敏感词过滤 3 阶段架构演进（单机→分布式→多级异步）+ 5 大组件
+  depth: ⭐⭐⭐
 -->
 
 # 敏感词过滤系统架构 · 3 阶段演进

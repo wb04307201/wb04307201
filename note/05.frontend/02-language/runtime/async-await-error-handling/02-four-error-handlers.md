@@ -5,6 +5,7 @@ module:
   type: topic
   category: 4 种错误处理
   summary: try/catch / .catch() / unhandledrejection / Result 4 种错误处理方式深度对比
+  depth: ⭐⭐⭐
 -->
 
 # 4 种错误处理方式深度对比

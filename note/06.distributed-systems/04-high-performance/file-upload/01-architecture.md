@@ -5,6 +5,7 @@ module:
   type: topic
   category: 系统架构
   summary: 大文件上传 3 阶段架构演进（单机直传→分片+OSS→分布式+CDN）+ 5 大组件
+  depth: ⭐⭐⭐
 -->
 
 # 大文件上传系统架构 · 3 阶段演进

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 在消息队列（Kafka / RabbitMQ / RocketMQ）消费场景中，**单条消息可能被投递多次**（至少一次语义）。去重表是处理"消息幂等消费"最直...
+  depth: ⭐⭐⭐⭐
 -->
 
 # 去重表（Deduplication Table）

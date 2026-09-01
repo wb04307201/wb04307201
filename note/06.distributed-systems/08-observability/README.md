@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 一句话定位：**可观测性是稳定性的眼睛——从 Prometheus 指标到 Grafana 仪表盘到 Loki 日志聚合到分布式追踪到 SLO/SLI，构建云原生时代的全栈可观测体系。**
+  depth: ⭐⭐
 -->
 
 # 可观测性

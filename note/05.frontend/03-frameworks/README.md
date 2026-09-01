@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 前端 03 框架
+  depth: ⭐⭐
 -->
 
 # 03 框架

@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 风控引擎 = 业务风险决策大脑 —— 5 层架构（数据/特征/规则/模型/处置）+ 砍一刀 K-Factor 病毒系数公式 + 黑产 7 类对抗手段
+  depth: ⭐⭐⭐⭐
 -->
 
 # 风控引擎（Risk Control Engine）

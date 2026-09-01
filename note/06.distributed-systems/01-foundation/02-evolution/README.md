@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 一份按时间梳理的架构演进速查手册：从单体到云原生到 AI 原生的完整演进。
+  depth: ⭐⭐⭐
 -->
 
 # 架构演进史：30 年互联网架构的演进全景

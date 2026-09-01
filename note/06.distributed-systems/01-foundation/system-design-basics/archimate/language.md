@@ -5,6 +5,7 @@ module:
   type: article
   category: 主模块子文章
   summary: 第一章：建模语言：层、方面、关系
+  depth: ⭐⭐⭐
 -->
 
 # 第一章：建模语言：层、方面、关系
