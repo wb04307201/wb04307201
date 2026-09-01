@@ -563,14 +563,14 @@ class WorldModel(nn.Module):
 | **LLM 基础** | [08.ai-foundations/04-llm/llm-basics](../04-llm/llm-basics.md) |
 | **Dropout 实证** | [08.ai-foundations/04-llm/dropout-in-llm/single-epoch-and-config-evidence](../04-llm/dropout-in-llm/single-epoch-and-config-evidence.md) |
 | **Embedding** | [08.ai-foundations/05-tokenization-embedding/embedding](../05-tokenization-embedding/embedding.md) |
-| **RLHF / DPO 算法** | [09.ai-applications/llm-alignment](../09.ai-applications/llm-alignment/) |
-| **Agent 架构** | [09.ai-applications/agent/agent-architecture](../09.ai-applications/agent/agent-architecture/) |
-| **多智能体系统** | [12.interview/11.ai/multi-agent-system-design](../12.interview/11.ai/multi-agent-system-design/) |
+| **RLHF / DPO 算法** | [09.ai-applications/llm-alignment](../../09.ai-applications/fine-tuning/02-rlhf.md) |
+| **Agent 架构** | 09.ai-applications/agent/agent-architecture |
+| **多智能体系统** | [12.interview/11.ai/multi-agent-system-design](../../12.interview/11.ai/multi-agent-system-design/README.md) |
 | **故事：自动驾驶** | [13.story/01-ai-agent-architecture](../../13.story/01-ai-agent-architecture.md) |
 | **故事：AI 学习悖论** | [13.story/11-ai-learning-paradox](../../13.story/11-ai-learning-paradox.md) |
 | **故事：AI 致命三胞胎** | [13.story/31-ai-fatal-trio](../../13.story/31-ai-fatal-trio.md) |
-| **分布式 RL 训练（Ray / RLlib）** | [06.distributed-systems/distributed-training](../06.distributed-systems/distributed-training/) |
-| **Wayve / Tesla FSD 案例** | [10.business-systems/autonomous-driving](../10.business-systems/autonomous-driving/) |
+| **分布式 RL 训练（Ray / RLlib）** | [06.distributed-systems/distributed-training](../04-llm/llm-basics.md) |
+| **Wayve / Tesla FSD 案例** | [10.business-systems/autonomous-driving](../../10.business-systems/README.md) |
 
 ---
 

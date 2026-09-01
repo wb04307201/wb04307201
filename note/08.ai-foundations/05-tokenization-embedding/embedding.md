@@ -649,16 +649,16 @@ emb = model.encode("Hello world")
 | **注意力机制（QKV 与 Embedding 的关系）** | [08.ai-foundations/03-transformer/attention-mechanism](../03-transformer/attention-mechanism.md) |
 | **ML 基础（流形假说 → 深度学习）** | [08.ai-foundations/01-ml/ml-to-rl](../01-ml/ml-to-rl.md) |
 | **深度学习框架（PyTorch 实现 Embedding）** | [08.ai-foundations/02-deep-learning/deep-learning-frameworks](../02-deep-learning/deep-learning-frameworks.md) |
-| **RAG 检索增强生成（Embedding → 向量库 → LLM）** | [09.ai-applications/rag/vector-search-at-scale](../09.ai-applications/rag/vector-search-at-scale/) |
-| **Embedding 模型选型** | [09.ai-applications/rag/embedding-models](../09.ai-applications/rag/embedding-models/) |
-| **长文档 Embedding** | [09.ai-applications/rag/long-document-processing](../09.ai-applications/rag/long-document-processing/) |
-| **混合检索（BM25 + Embedding）** | [09.ai-applications/rag/hybrid-search](../09.ai-applications/rag/hybrid-search/) |
-| **向量数据库（FAISS / Milvus / Qdrant）** | [09.ai-applications/rag/vector-search-algorithms](../09.ai-applications/rag/vector-search-algorithms/) |
-| **重排序（Reranker）** | [09.ai-applications/rag/reranker](../09.ai-applications/rag/reranker/) |
+| **RAG 检索增强生成（Embedding → 向量库 → LLM）** | 09.ai-applications/rag/vector-search-at-scale |
+| **Embedding 模型选型** | 09.ai-applications/rag/embedding-models |
+| **长文档 Embedding** | 09.ai-applications/rag/long-document-processing |
+| **混合检索（BM25 + Embedding）** | 09.ai-applications/rag/hybrid-search |
+| **向量数据库（FAISS / Milvus / Qdrant）** | 09.ai-applications/rag/vector-search-algorithms |
+| **重排序（Reranker）** | 09.ai-applications/rag/reranker |
 | **故事：向量数据库与 Embedding** | [13.story/37-vector-database-and-embedding](../../13.story/37-vector-database-and-embedding.md) |
 | **故事：RAG 检索增强生成** | [13.story/36-rag-retrieval-augmented-generation](../../13.story/36-rag-retrieval-augmented-generation.md) |
-| **面试题：Embedding 面试** | [12.interview/11.ai/token](../12.interview/11.ai/token/) |
-| **分布式向量检索** | [06.distributed-systems/distributed-search](../06.distributed-systems/distributed-search/) |
+| **面试题：Embedding 面试** | [12.interview/11.ai/token](../../12.interview/11.ai/token/README.md) |
+| **分布式向量检索** | [06.distributed-systems/distributed-search](../../09.ai-applications/rag/vector-search-algorithms/README.md) |
 
 ---
 

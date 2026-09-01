@@ -814,12 +814,12 @@ total_steps = 500000（约 4 epoch）
 | **Embedding** | [../../05-tokenization-embedding/embedding](../../05-tokenization-embedding/embedding.md) |
 | **深度学习框架** | [../../02-deep-learning/deep-learning-frameworks](../../02-deep-learning/deep-learning-frameworks.md) |
 | **ML → RL** | [../../01-ml/ml-to-rl](../../01-ml/ml-to-rl.md) |
-| **KV Cache 加速** | [../../../09.ai-applications/llm-inference/kv-cache-mqa-gqa-mla](../../../09.ai-applications/llm-inference/kv-cache-mqa-gqa-mla.md) |
-| **RLHF / DPO** | [../../../09.ai-applications/llm-alignment](../../../09.ai-applications/llm-alignment/) |
+| **KV Cache 加速** | [../../../09.ai-applications/llm-inference/kv-cache](../../../09.ai-applications/llm-inference/kv-cache/README.md) |
+| **RLHF / DPO** | [../../../09.ai-applications/llm-alignment](../../../09.ai-applications/fine-tuning/02-rlhf.md) |
 | **微调 LoRA / PEFT** | [../../../09.ai-applications/fine-tuning](../../../09.ai-applications/fine-tuning/) |
-| **分布式训练** | [../../../06.distributed-systems/distributed-training](../../../06.distributed-systems/distributed-training/) |
-| **AdamW 优化器** | [../../02-deep-learning/adam-optimizer](../../02-deep-learning/adam-optimizer.md) |
-| **Weight Decay** | [../../02-deep-learning/weight-decay](../../02-deep-learning/weight-decay.md) |
+| **分布式训练** | [../../../06.distributed-systems/distributed-training](../llm-basics.md) |
+| **AdamW 优化器** | ../../02-deep-learning/adam-optimizer |
+| **Weight Decay** | ../../02-deep-learning/weight-decay |
 | **面试题：LLM 训练** | [../../../12.interview/11.ai/transformer](../../../12.interview/11.ai/transformer/) |
 | **故事：AI 学习悖论** | [../../../13.story/11-ai-learning-paradox](../../../13.story/11-ai-learning-paradox.md) |
 

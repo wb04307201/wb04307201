@@ -685,16 +685,16 @@ $$\text{最优 } N / D \approx 20 \text{ (token per parameter)}$$
 | **Dropout 实证** | [08.ai-foundations/04-llm/dropout-in-llm/single-epoch-and-config-evidence](../04-llm/dropout-in-llm/single-epoch-and-config-evidence.md) |
 | **深度学习框架** | [08.ai-foundations/02-deep-learning/deep-learning-frameworks](../02-deep-learning/deep-learning-frameworks.md) |
 | **RL / RLHF** | [08.ai-foundations/01-ml/ml-to-rl](../01-ml/ml-to-rl.md) |
-| **RLHF 算法** | [09.ai-applications/llm-alignment](../09.ai-applications/llm-alignment/) |
-| **KV Cache** | [09.ai-applications/llm-inference/kv-cache-mqa-gqa-mla](../09.ai-applications/llm-inference/kv-cache-mqa-gqa-mla.md) |
-| **推理引擎选型** | [09.ai-applications/llm-inference/inference-engine-selection](../09.ai-applications/llm-inference/inference-engine-selection.md) |
-| **微调 LoRA / DPO** | [09.ai-applications/fine-tuning](../09.ai-applications/fine-tuning/) |
-| **面试题：Transformer** | [12.interview/11.ai/transformer](../12.interview/11.ai/transformer/) |
-| **面试题：LLM 基础** | [12.interview/11.ai/token](../12.interview/11.ai/token/) |
+| **RLHF 算法** | [09.ai-applications/llm-alignment](../../09.ai-applications/fine-tuning/02-rlhf.md) |
+| **KV Cache** | [09.ai-applications/llm-inference/kv-cache](../../09.ai-applications/llm-inference/kv-cache/README.md) |
+| **推理引擎选型** | [09.ai-applications/llm-inference/inference-engine-selection](../../09.ai-applications/llm-inference/inference-frameworks/README.md) |
+| **微调 LoRA / DPO** | 09.ai-applications/fine-tuning |
+| **面试题：Transformer** | [12.interview/11.ai/transformer](../../12.interview/11.ai/transformer/README.md) |
+| **面试题：LLM 基础** | [12.interview/11.ai/token](../../12.interview/11.ai/token/README.md) |
 | **故事：LLM 推理** | [13.story/46-llm-inference](../../13.story/46-llm-inference.md) |
 | **故事：AI 致命三胞胎** | [13.story/31-ai-fatal-trio](../../13.story/31-ai-fatal-trio.md) |
-| **分布式 LLM 训练** | [06.distributed-systems/distributed-training](../06.distributed-systems/distributed-training/) |
-| **GPU 集群调度** | [06.distributed-systems/gpu-cluster-scheduling](../06.distributed-systems/gpu-cluster-scheduling/) |
+| **分布式 LLM 训练** | [06.distributed-systems/distributed-training](llm-basics.md) |
+| **GPU 集群调度** | [06.distributed-systems/gpu-cluster-scheduling](../../07.devops-and-tools/02-workflow/README.md) |
 
 ---
 

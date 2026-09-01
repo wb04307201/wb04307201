@@ -192,11 +192,11 @@ print(f"LLM 风格参数数量（无 Dropout）：  {sum(p.numel() for p in bloc
 
 - **同模块父**：[`08.ai-foundations/04-llm`](../README.md) — LLM 基础总索引
 - **同模块兄弟**：[`08.ai-foundations/04-llm/dropout-in-llm/single-epoch-and-config-evidence`](./single-epoch-and-config-evidence.md) — 单 epoch 时代的 4 层面 + 6 模型 config 考古（"怎么证明不用 Dropout"的实锤）
-- **同模块相邻**：[`08.ai-foundations/03-transformer`](../transformer-architecture.md) — Transformer 架构（Dropout 通常加在 Attention 输出与 FFN 输出之后）
-- **深度学习框架**：[`08.ai-foundations/02-deep-learning`](../02-deep-learning/README.md) — weight decay 在 AdamW 框架中的实现
+- **同模块相邻**：`08.ai-foundations/03-transformer` — Transformer 架构（Dropout 通常加在 Attention 输出与 FFN 输出之后）
+- **深度学习框架**：`08.ai-foundations/02-deep-learning` — weight decay 在 AdamW 框架中的实现
 - **AI 工程实战**：[`09.ai-applications/fine-tuning`](../../../09.ai-applications/fine-tuning/) — LoRA / QLoRA 微调中的 Dropout 策略（adapter 层通常仍用 Dropout）
-- **咬文嚼字**：[`12.interview/11.ai/llm`](../../../../12.interview/11.ai/) — LLM 面试题（含"为什么不用 Dropout"经典题）
-- **故事叙事**：[`13.story/`](../../../../13.story/) — "阿明餐厅"系列讲解"正则化"的餐饮管理类比
+- **咬文嚼字**：[`12.interview/11.ai/llm`](../../../12.interview/11.ai/README.md) — LLM 面试题（含"为什么不用 Dropout"经典题）
+- **故事叙事**：[`13.story/`](../../../13.story/README.md) — "阿明餐厅"系列讲解"正则化"的餐饮管理类比
 
 ---
 

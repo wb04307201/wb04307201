@@ -194,10 +194,10 @@ skip_gram_demo()
 - **同模块父**：[`08.ai-foundations`](../README.md) — AI 基础层总索引
 - **同模块相邻**：[`08.ai-foundations/03-transformer`](../03-transformer/README.md) — Transformer 第一层就是 Embedding + Positional Encoding
 - **同模块相邻**：[`08.ai-foundations/04-llm`](../04-llm/README.md) — LLM 训练中 Embedding 层的特殊处理（tied weights / 共享 embedding）
-- **AI 工程实战**：[`09.ai-applications/rag`](../09.ai-applications/) — RAG 系统中 Embedding 选型与向量化策略
-- **AI 工程实战**：[`09.ai-applications/fine-tuning`](../09.ai-applications/fine-tuning/) — Embedding 微调与领域适配
-- **咬文嚼字**：[`12.interview/11.ai/nlp`](../12.interview/11.ai/) — NLP / Tokenization 面试题
-- **故事叙事**：[`13.story/`](../13.story/) — "阿明餐厅"系列讲解"语义空间"的几何类比
+- **AI 工程实战**：[`09.ai-applications/rag`](../../09.ai-applications/README.md) — RAG 系统中 Embedding 选型与向量化策略
+- **AI 工程实战**：`09.ai-applications/fine-tuning` — Embedding 微调与领域适配
+- **咬文嚼字**：[`12.interview/11.ai/nlp`](../../12.interview/11.ai/README.md) — NLP / Tokenization 面试题
+- **故事叙事**：[`13.story/`](../../13.story/README.md) — "阿明餐厅"系列讲解"语义空间"的几何类比
 
 ---
 
@@ -214,7 +214,7 @@ skip_gram_demo()
 3. **Word2Vec 原理**：学习 Skip-gram + 负采样的数学，理解嵌入的几何直觉
 4. **上下文嵌入**：阅读 BERT Embedding，理解"动态嵌入"与"静态嵌入"的差异
 5. **LLM Embedding**：跳转 [03-transformer](../03-transformer/README.md) 看 LLM 第一层的实现
-6. **RAG 实战**：跳转 [`09.ai-applications`](../09.ai-applications/) 看工业级嵌入选型
+6. **RAG 实战**：跳转 [`09.ai-applications`](../../09.ai-applications/README.md) 看工业级嵌入选型
 
 ## 📊 本节统计
 

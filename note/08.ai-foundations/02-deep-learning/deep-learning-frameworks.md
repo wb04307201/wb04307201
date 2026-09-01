@@ -563,14 +563,14 @@ model = ms.compile(model, backend="ms")  # 性能提升 20-50%
 | **LLM 训练（DeepSpeed / FSDP）** | [08.ai-foundations/04-llm/llm-basics](../04-llm/llm-basics.md) |
 | **Dropout 配置考古** | [08.ai-foundations/04-llm/dropout-in-llm/single-epoch-and-config-evidence](../04-llm/dropout-in-llm/single-epoch-and-config-evidence.md) |
 | **Embedding / Tokenization** | [08.ai-foundations/05-tokenization-embedding/embedding](../05-tokenization-embedding/embedding.md) |
-| **推理引擎选型（vLLM/TensorRT）** | [09.ai-applications/llm-inference](../09.ai-applications/llm-inference/inference-engine-selection.md) |
-| **KV Cache 加速** | [09.ai-applications/llm-inference/kv-cache-mqa-gqa-mla](../09.ai-applications/kv-cache-mqa-gqa-mla.md) |
-| **微调（PEFT/LoRA）** | [09.ai-applications/fine-tuning](../09.ai-applications/fine-tuning/) |
-| **RAG 检索（向量数据库）** | [09.ai-applications/rag/vector-search-at-scale](../09.ai-applications/rag/vector-search-at-scale/) |
-| **分布式训练（万卡集群）** | [06.distributed-systems/distributed-training](../06.distributed-systems/distributed-training/) |
-| **GPU 资源调度** | [06.distributed-systems/gpu-cluster-scheduling](../06.distributed-systems/gpu-cluster-scheduling/) |
-| **MLOps 平台** | [09.ai-applications/production-stability](../09.ai-applications/production-stability/) |
-| **面试题：框架选型** | [12.interview/11.ai/transformer](../12.interview/11.ai/transformer/) |
+| **推理引擎选型（vLLM/TensorRT）** | [09.ai-applications/llm-inference](../../09.ai-applications/llm-inference/inference-frameworks/README.md) |
+| **KV Cache 加速** | [09.ai-applications/llm-inference/kv-cache](../../09.ai-applications/llm-inference/kv-cache/README.md) |
+| **微调（PEFT/LoRA）** | 09.ai-applications/fine-tuning |
+| **RAG 检索（向量数据库）** | 09.ai-applications/rag/vector-search-at-scale |
+| **分布式训练（万卡集群）** | [06.distributed-systems/distributed-training](../04-llm/llm-basics.md) |
+| **GPU 资源调度** | [06.distributed-systems/gpu-cluster-scheduling](../../07.devops-and-tools/02-workflow/README.md) |
+| **MLOps 平台** | [09.ai-applications/production-stability](../../09.ai-applications/llm-inference/llm-inference-optimization/README.md) |
+| **面试题：框架选型** | [12.interview/11.ai/transformer](../../12.interview/11.ai/transformer/README.md) |
 | **故事：AI 框架演进** | [13.story/11-ai-learning-paradox](../../13.story/11-ai-learning-paradox.md) |
 | **故事：AI 工程化** | [13.story/42-ai-engineer-responsibility](../../13.story/42-ai-engineer-responsibility.md) |
 
