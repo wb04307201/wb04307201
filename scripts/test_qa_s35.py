@@ -195,6 +195,39 @@ ROUND_3 = [
     ('故障排查', ['note/07.devops-and-tools/04-observability/troubleshooting/README.md']),
 ]
 
+ROUND_4 = [
+    # S: 12.interview 子目录（5）
+    ('volatile 关键字', ['note/12.interview/01.java/volatile/README.md']),
+    ('synchronized vs Lock', ['note/12.interview/01.java/synchronized-vs-lock/README.md']),
+    ('B+ 树索引原理', ['note/12.interview/03.database/b-plus-tree/README.md']),
+    ('分布式限流算法', ['note/12.interview/04.system-design/rate-limiting/README.md']),
+    ('幂等设计', ['note/12.interview/04.system-design/idempotency/README.md']),
+    # T: 特殊字符（5）
+    ('kafka-3.x', ['note/09.ai-applications/llm-inference/kafka-3.x/README.md']),
+    ('raft 算法', ['note/06.distributed-systems/02-distributed/consensus-algorithms/raft/README.md']),
+    ('spring-boot-starter', ['note/04.spring-backend/02-boot/spring-boot-starter/README.md']),
+    ('java 21', ['note/01.java-and-jvm/version/java-21/README.md']),
+    ('mybatis 3', ['note/03.data-stack/01-database/05-mybatis/README.md']),
+    # U: 综述 vs 长文（5）
+    ('微服务治理综述', ['note/06.distributed-systems/02-distributed/microservices/README.md']),
+    ('Java 集合框架综述', ['note/01.java-and-jvm/01-language/collection/README.md']),
+    ('Spring IoC 综述', ['note/04.spring-backend/01-core/ioc/README.md']),
+    ('分布式 ID 综述', ['note/06.distributed-systems/02-distributed/distributed-id/README.md']),
+    ('Spring Boot 自动配置综述', ['note/04.spring-backend/02-boot/auto-configuration/README.md']),
+    # V: 跨年版本（5）
+    ('Java 8 新特性', ['note/01.java-and-jvm/version/java-8/README.md']),
+    ('Java 11 新特性', ['note/01.java-and-jvm/version/java-11/README.md']),
+    ('Spring 5 vs 6', ['note/04.spring-backend/version/spring-5/README.md']),
+    ('ES 7 vs 8', ['note/03.data-stack/01-database/08-nosql/elasticsearch-8/README.md']),
+    ('Vue 2 → 3 迁移', ['note/05.frontend/03-frameworks/vue-2-to-3/README.md']),
+    # W: 业务系统（5）
+    ('ERP 系统', ['note/10.business-systems/05-operations/erp/README.md']),
+    ('MES 制造执行', ['note/10.business-systems/05-operations/mes/README.md']),
+    ('WMS 仓储', ['note/10.business-systems/05-operations/wms/README.md']),
+    ('CRM 客户关系', ['note/10.business-systems/01-rd-innovation/crm/README.md']),
+    ('OA 办公自动化', ['note/10.business-systems/05-operations/oa/README.md']),
+]
+
 
 # ============ 测试运行 ============
 
@@ -239,14 +272,14 @@ def run_round(name, scenarios, verbose=False):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--round', type=int, choices=[1, 2, 3], help='仅跑某一轮')
+    parser.add_argument('--round', type=int, choices=[1, 2, 3, 4], help='仅跑某一轮')
     parser.add_argument('--verbose', action='store_true', help='打印所有失效')
     parser.add_argument('--path', help='自定义单路径测试')
     args = parser.parse_args()
 
     print('=' * 70)
     print('note-knowledge-qa §3.5 + §3.5.1 - {} 场景测试'.format(
-        '自定义' if args.path else '75 (3 轮)'))
+        '自定义' if args.path else '100 (4 轮)'))
     print('=' * 70)
 
     rounds = []
@@ -256,6 +289,8 @@ def main():
         rounds.append(('Round 2', ROUND_2))
     if not args.round or args.round == 3:
         rounds.append(('Round 3', ROUND_3))
+    if not args.round or args.round == 4:
+        rounds.append(('Round 4', ROUND_4))
 
     total = {'refs': 0, 'ok': 0, 'fail': 0, 'rel': 0, 'rel_t': 0}
     for name, sc_list in rounds:
