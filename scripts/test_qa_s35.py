@@ -7,10 +7,16 @@ Session 9 实测教训：
 - v3 排除模块 README 反效果：真实命中率从 50% 掉到 7%
 - 修复：完整路径 + 真实相关判定（§3.5.1 测试必做）
 
+通用化（2026-09-02 修复）：
+- 默认知识库根 `note/`，可通过 `NOTE_DIR` 环境变量覆盖
+- `python scripts/test_qa_s35.py`
+- `NOTE_DIR=./docs/knowledge python scripts/test_qa_s35.py`
+
 用法：
-  python scripts/test_qa_s35.py                       # 全 75 场景
+  python scripts/test_qa_s35.py                       # 全 175 场景（7 轮）
   python scripts/test_qa_s35.py --round 1            # 仅第 1 轮
   python scripts/test_qa_s35.py --path note/...      # 自定义路径
+  NOTE_DIR=./docs python scripts/test_qa_s35.py     # 自定义 KB 根
 """
 import os, re, glob, sys, argparse
 if os.name == 'nt':
@@ -18,6 +24,19 @@ if os.name == 'nt':
         sys.stdout.reconfigure(encoding='utf-8')
     except Exception:
         pass
+
+
+# ============ 通用化：知识库根目录配置（2026-09-02 修复）============
+# 默认 'note/'，可通过 NOTE_DIR 环境变量覆盖；若默认不存在则用项目根
+KB_DIR = os.environ.get('NOTE_DIR', 'note')
+if not os.path.isdir(KB_DIR):
+    KB_DIR = '.'
+
+def k(path):
+    """统一路径前缀：把 'note/...' 转换为 '{KB_DIR}/...'"""
+    if path.startswith('note/'):
+        return os.path.join(KB_DIR, path[5:]).replace(os.sep, '/')
+    return path
 
 
 # ============ §3.5.1 v2（保留，50% 真实命中）============
@@ -29,10 +48,11 @@ def suggest_v2(path, top=3):
     parent_dir = dir_parts[-1].lower() if dir_parts else ''
     keywords = re.findall(r'[A-Za-z]+|[一-鿿]{2,}', name)
     scores = {}
-    for f in glob.glob('note/**/*.md', recursive=True):
+    for f in glob.glob('{}/**/*.md'.format(KB_DIR), recursive=True):
         if '.health-tmp' in f.replace(os.sep, '/'):
             continue
-        if f.replace(os.sep, '/') in ['note/README.md', 'note/SPEC.md']:
+        # 排除 KB_DIR 的根 README/SPEC
+        if f.replace(os.sep, '/') in ['{}/README.md'.format(KB_DIR), '{}/SPEC.md'.format(KB_DIR)]:
             continue
         s = 0
         fn = os.path.basename(f).replace('.md', '').lower()
@@ -66,10 +86,10 @@ def suggest_v4(path, top=3):
     keywords = _re.findall(r'[A-Za-z]+|[一-鿿]{2,}', name)
     missing_depth = len([p for p in dir_parts if p])
     scores = {}
-    for f in glob.glob('note/**/*.md', recursive=True):
+    for f in glob.glob('{}/**/*.md'.format(KB_DIR), recursive=True):
         if '.health-tmp' in f.replace(os.sep, '/'):
             continue
-        if f.replace(os.sep, '/') in ['note/README.md', 'note/SPEC.md']:
+        if f.replace(os.sep, '/') in ['{}/README.md'.format(KB_DIR), '{}/SPEC.md'.format(KB_DIR)]:
             continue
         f_lower = f.lower()
         f_norm = f.replace(os.sep, '/')
@@ -107,7 +127,10 @@ def suggest_v4(path, top=3):
 
 def is_relevant(top1_path, missing_path):
     """真实相关判定：非模块 README + 含原关键词"""
-    short = top1_path.replace(os.sep, '/').replace('note/', '')
+    # 去掉 KB_DIR 前缀后再判断
+    short = top1_path.replace(os.sep, '/')
+    if short.startswith(KB_DIR + '/'):
+        short = short[len(KB_DIR) + 1:]
     is_module_readme = (short.count('/') == 1 and short.endswith('/README.md'))
     if is_module_readme:
         return False

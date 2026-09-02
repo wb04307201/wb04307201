@@ -1,6 +1,6 @@
 ---
 name: note-health
-description: Use when user asks to audit or improve note/ — "note 哪里需要优化" / "note 有哪些问题" / "扫一遍 note" / "review note" / "体检" (structural audit) OR "评价 note 质量" / "这篇文章质量怎么样" / "质量验收" / "评分" OR "刚写的这篇质量如何" / "新写的 README 看看" (new-file quality). 单一分层体检：结构机械扫描 + leaf 判断式打分，全库穷举用 Workflow fan-out。
+description: Use when user asks to audit or improve a project's knowledge base (default `note/`, configurable via `NOTE_DIR` env var) — "note 哪里需要优化" / "note 有哪些问题" / "扫一遍 note" / "review note" / "体检" (structural audit) OR "评价 note 质量" / "这篇文章质量怎么样" / "质量验收" / "评分" OR "刚写的这篇质量如何" / "新写的 README 看看" (new-file quality). 单一分层体检：结构机械扫描 + leaf 判断式打分，全库穷举用 Workflow fan-out。
 ---
 
 > **规则来源**：执行前必读 `note/SPEC.md` §5（G1-G6 通用评分维度）+ §6（11 类基础扫描规则）+ §7（SPEC 分层元规范）+ `<module>/SPEC.md`（如 `note/01.java-and-jvm/SPEC.md` 的 A 类维度）；若目标模块有强骨架规范（如 `note/12.interview/QUESTION-FORMAT-SPEC.md` / `note/13.story/STORY-FORMAT-SPEC.md`）也一并读取（已在 `references/leaf-quality.md` 等处引用其硬性要求）。模块结构通过 `find note -maxdepth 1 -type d` 运行时读取，不硬编码。
