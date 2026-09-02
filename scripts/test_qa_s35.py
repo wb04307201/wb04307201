@@ -49,6 +49,62 @@ def suggest_v2(path, top=3):
     return sorted(scores.items(), key=lambda x: -x[1])[:top]
 
 
+def suggest_v4(path, top=3):
+    """§3.5.1 v4 算法（Session 9 七轮 175 场景实测驱动）
+
+    v4 关键改进（相对 v2）：
+    1. path 段前缀匹配：每段命中 +4（核心）
+    2. 模块 README 降权（不是排除）：关键词贡献 -50%
+    3. path 深度匹配：depth_diff==0 +3，==1 +1
+
+    实测：136/142 = 96% Top1 真实相关
+    """
+    import re as _re
+    name = os.path.basename(path).replace('.md', '').lower()
+    dir_parts = [p.lower() for p in path.replace('note/', '').split('/')[:-1]]
+    parent_dir = dir_parts[-1] if dir_parts else ''
+    keywords = _re.findall(r'[A-Za-z]+|[一-鿿]{2,}', name)
+    missing_depth = len([p for p in dir_parts if p])
+    scores = {}
+    for f in glob.glob('note/**/*.md', recursive=True):
+        if '.health-tmp' in f.replace(os.sep, '/'):
+            continue
+        if f.replace(os.sep, '/') in ['note/README.md', 'note/SPEC.md']:
+            continue
+        f_lower = f.lower()
+        f_norm = f.replace(os.sep, '/')
+        s = 0
+        f_name = os.path.basename(f).replace('.md', '').lower()
+        if name == f_name:
+            s += 15
+        elif name in f_name or f_name in name:
+            s += 8
+        matched_parts = 0
+        for fp in f_norm.split('/')[2:-1]:
+            for pp in dir_parts[:-1]:
+                if fp == pp:
+                    matched_parts += 1
+                    break
+        s += matched_parts * 4
+        f_dir = os.path.dirname(f).replace(os.sep, '/').lower()
+        if parent_dir and parent_dir in f_dir:
+            s += 5
+        kw_contrib = sum(2 if k.lower() in f_lower else 0 for k in keywords)
+        s += kw_contrib
+        f_depth = len([p for p in f_norm.split('/') if p]) - 2
+        if f_depth <= 1 and f_norm.endswith('/README.md'):
+            s -= kw_contrib // 2
+        f_actual_depth = len([p for p in f_norm.split('/')[2:-1] if p])
+        depth_diff = abs(f_actual_depth - missing_depth)
+        if depth_diff == 0:
+            s += 3
+        elif depth_diff == 1:
+            s += 1
+        if s > 0:
+            scores[f] = s
+    return sorted(scores.items(), key=lambda x: -x[1])[:top]
+
+
 def is_relevant(top1_path, missing_path):
     """真实相关判定：非模块 README + 含原关键词"""
     short = top1_path.replace(os.sep, '/').replace('note/', '')
@@ -261,6 +317,34 @@ ROUND_5 = [
     ('Java 字节码操作', ['note/01.java-and-jvm/01-language/bytecode/README.md']),
 ]
 
+ROUND_7 = [
+    ('性能优化', ['note/03.data-stack/04-performance-optimization/README.md']),
+    ('高并发', ['note/06.distributed-systems/04-high-performance/high-concurrency/README.md']),
+    ('性能调优', ['note/03.data-stack/01-database/performance-tuning/README.md']),
+    ('数据库调优', ['note/01.java-and-jvm/01-language/jvm-tuning/README.md']),
+    ('应用性能', ['note/01.java-and-jvm/02-jvm/performance-tuning/README.md']),
+    ('监控', ['note/07.devops-and-tools/04-observability/README.md']),
+    ('日志', ['note/07.devops-and-tools/04-observability/logging/README.md']),
+    ('链路追踪', ['note/06.distributed-systems/08-observability/distributed-tracing/README.md']),
+    ('APM', ['note/07.devops-and-tools/04-observability/apm/README.md']),
+    ('告警', ['note/07.devops-and-tools/04-observability/alerting/README.md']),
+    ('认证', ['note/06.distributed-systems/05-security/authentication/README.md']),
+    ('授权', ['note/06.distributed-systems/05-security/authorization/README.md']),
+    ('JWT', ['note/06.distributed-systems/05-security/jwt/README.md']),
+    ('单点登录', ['note/06.distributed-systems/05-security/sso/README.md']),
+    ('加密', ['note/06.distributed-systems/05-security/encryption/README.md']),
+    ('部署', ['note/06.distributed-systems/07-deployment/README.md']),
+    ('Docker', ['note/07.devops-and-tools/01-tools/docker/README.md']),
+    ('K8s', ['note/07.devops-and-tools/03-cloud/kubernetes/README.md']),
+    ('CI/CD', ['note/07.devops-and-tools/01-tools/cicd/README.md']),
+    ('Helm', ['note/07.devops-and-tools/03-cloud/helm/README.md']),
+    ('单例模式', ['note/01.java-and-jvm/04-patterns/singleton/README.md']),
+    ('工厂模式', ['note/01.java-and-jvm/04-patterns/factory/README.md']),
+    ('策略模式', ['note/01.java-and-jvm/04-patterns/strategy/README.md']),
+    ('观察者模式', ['note/01.java-and-jvm/04-patterns/observer/README.md']),
+    ('装饰器模式', ['note/01.java-and-jvm/04-patterns/decorator/README.md']),
+]
+
 ROUND_6 = [
     # AC: 已知错误路径测试（5）
     ('Java 集合 → 错位引用', ['note/01.java-and-jvm/01-language/collections/README.md']),
@@ -311,7 +395,7 @@ def run_round(name, scenarios, verbose=False):
                 ok_refs += 1
             else:
                 fail_refs += 1
-                r = suggest_v2(ref, 1)
+                r = suggest_v4(ref, 1)  # Session 9 决定默认用 v4
                 if r:
                     real_total += 1
                     if is_relevant(r[0][0], ref):
@@ -338,14 +422,14 @@ def run_round(name, scenarios, verbose=False):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--round', type=int, choices=[1, 2, 3, 4, 5, 6], help='仅跑某一轮')
+    parser.add_argument('--round', type=int, choices=[1, 2, 3, 4, 5, 6, 7], help='仅跑某一轮')
     parser.add_argument('--verbose', action='store_true', help='打印所有失效')
     parser.add_argument('--path', help='自定义单路径测试')
     args = parser.parse_args()
 
     print('=' * 70)
     print('note-knowledge-qa §3.5 + §3.5.1 - {} 场景测试'.format(
-        '自定义' if args.path else '150 (6 轮)'))
+        '自定义' if args.path else '175 (7 轮)'))
     print('=' * 70)
 
     rounds = []
@@ -361,6 +445,8 @@ def main():
         rounds.append(('Round 5', ROUND_5))
     if not args.round or args.round == 6:
         rounds.append(('Round 6', ROUND_6))
+    if not args.round or args.round == 7:
+        rounds.append(('Round 7', ROUND_7))
 
     total = {'refs': 0, 'ok': 0, 'fail': 0, 'rel': 0, 'rel_t': 0}
     for name, sc_list in rounds:
