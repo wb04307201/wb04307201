@@ -1,0 +1,299 @@
+#!/usr/bin/env python3
+"""
+test_qa_s35.py — note-knowledge-qa §3.5 + §3.5.1 标准化测试模板
+
+Session 9 实测教训：
+- 显示 bug：所有 v2 Top1 实际都是模块 README，但脚本只显示 basename 误导
+- v3 排除模块 README 反效果：真实命中率从 50% 掉到 7%
+- 修复：完整路径 + 真实相关判定（§3.5.1 测试必做）
+
+用法：
+  python scripts/test_qa_s35.py                       # 全 75 场景
+  python scripts/test_qa_s35.py --round 1            # 仅第 1 轮
+  python scripts/test_qa_s35.py --path note/...      # 自定义路径
+"""
+import os, re, glob, sys, argparse
+if os.name == 'nt':
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
+
+
+# ============ §3.5.1 v2（保留，50% 真实命中）============
+
+def suggest_v2(path, top=3):
+    """§3.5.1 v2 算法（保留为默认，因 v3 反效果）"""
+    name = os.path.basename(path).replace('.md', '').lower()
+    dir_parts = path.replace('note/', '').split('/')[:-1]
+    parent_dir = dir_parts[-1].lower() if dir_parts else ''
+    keywords = re.findall(r'[A-Za-z]+|[一-鿿]{2,}', name)
+    scores = {}
+    for f in glob.glob('note/**/*.md', recursive=True):
+        if '.health-tmp' in f.replace(os.sep, '/'):
+            continue
+        if f.replace(os.sep, '/') in ['note/README.md', 'note/SPEC.md']:
+            continue
+        s = 0
+        fn = os.path.basename(f).replace('.md', '').lower()
+        if name == fn:
+            s += 10
+        elif name in fn or fn in name:
+            s += 5
+        fd = os.path.dirname(f).replace(os.sep, '/').lower()
+        if parent_dir and parent_dir in fd:
+            s += 5
+        s += sum(2 if k.lower() in f.lower() else 0 for k in keywords)
+        if s > 0:
+            scores[f] = s
+    return sorted(scores.items(), key=lambda x: -x[1])[:top]
+
+
+def is_relevant(top1_path, missing_path):
+    """真实相关判定：非模块 README + 含原关键词"""
+    short = top1_path.replace(os.sep, '/').replace('note/', '')
+    is_module_readme = (short.count('/') == 1 and short.endswith('/README.md'))
+    if is_module_readme:
+        return False
+    kws = re.findall(r'[A-Za-z]+|[一-鿿]{2,}', os.path.basename(missing_path).replace('.md', ''))
+    return any(k.lower() in short.lower() for k in kws)
+
+
+# ============ 75 场景数据 ============
+
+ROUND_1 = [
+    ('Redis 持久化机制', ['note/03.data-stack/01-database/07-redis/README.md']),
+    ('MySQL 索引原理', ['note/03.data-stack/01-database/05-mysql/README.md']),
+    ('Java 集合框架', ['note/01.java-and-jvm/01-language/collection/README.md']),
+    ('Spring Boot 自动配置', ['note/04.spring-backend/02-boot/auto-configuration.md']),
+    ('MVCC 实现原理', ['note/01.java-and-jvm/02-jvm/mvcc/README.md',
+                          'note/12.interview/01.java/mvcc/README.md']),
+    ('HashMap 线程不安全', ['note/01.java-and-jvm/01-language/collection/hashmap.md',
+                              'note/12.interview/01.java/hashmap-thread-unsafe/README.md']),
+    ('TCP 三次握手', ['note/02.cs-foundations/03-network/01-tcp-ip/README.md',
+                       'note/12.interview/02.computer-basics/tcp-handshake-teardown/README.md']),
+    ('事务隔离级别', ['note/03.data-stack/01-database/transaction/README.md',
+                       'note/12.interview/03.database/transaction-isolation/README.md']),
+    ('Kafka 在微服务', ['note/06.distributed-systems/04-high-performance/mq/README.md',
+                          'note/06.distributed-systems/02-distributed/api-gateway/README.md']),
+    ('RAG 向量检索', ['note/09.ai-applications/rag/rag-system-design/README.md',
+                       'note/02.cs-foundations/01-algorithms/vector-search/README.md']),
+    ('AI Agent 与微服务', ['note/09.ai-applications/agent/agent-architecture/README.md',
+                              'note/06.distributed-systems/02-distributed/microservices/README.md']),
+    ('SQL 优化与版本', ['note/03.data-stack/01-database/sql-optimization/README.md',
+                          'note/01.java-and-jvm/version/java-17/README.md']),
+    ('Spring Cloud Gateway 限流', ['note/04.spring-backend/03-cloud/gateway.md',
+                                      'note/06.distributed-systems/03-high-availability/rate-limiting/README.md',
+                                      'note/04.spring-backend/03-spring-cloud/README.md']),
+    ('OAuth2 vs JWT', ['note/06.distributed-systems/05-security/jwt-security/README.md',
+                       'note/04.spring-backend/05-security/oauth2.md']),
+    ('分布式锁 vs DB锁', ['note/06.distributed-systems/02-distributed/distributed-lock/README.md',
+                          'note/03.data-stack/01-database/transaction/README.md',
+                          'note/04.spring-backend/02-boot/flexible-lock.md']),
+    ('BPM 工作流引擎', ['note/07.devops-and-tools/02-workflow/temporal/README.md',
+                          'note/10.business-systems/05-operations/bpm/README.md']),
+    ('高并发场景的演进', ['note/13.story/04-peak-traffic-defense.md',
+                            'note/06.distributed-systems/04-high-performance/load-balance/README.md']),
+    ('架构演进故事', ['note/13.story/02-system-architecture-evolution.md',
+                       'note/06.distributed-systems/01-foundation/02-evolution/README.md']),
+    ('AI 致命三件套', ['note/13.story/31-ai-fatal-trio.md',
+                        'note/09.ai-applications/prompts/prompt-engineering/README.md']),
+    ('高频面试：分布式 ID', ['note/12.interview/04.system-design/distributed-id/README.md']),
+    ('Vue 响应式原理', ['note/05.frontend/03-frameworks/vue/README.md',
+                          'note/12.interview/09.front-end/vue-reactivity/README.md']),
+    ('CSS + a11y', ['note/05.frontend/01-foundation/css-engineering/README.md',
+                     'note/05.frontend/a11y/README.md']),
+]
+
+ROUND_2 = [
+    ('Redis 集群 vs Redis Cluster', ['note/03.data-stack/01-database/07-redis/README.md',
+                                          'note/12.interview/03.database/redis-cluster/README.md']),
+    ('Spring Boot 启动原理', ['note/04.spring-backend/02-boot/README.md',
+                                  'note/04.spring-backend/02-boot/application-bootstrap.md']),
+    ('Kafka 实战', ['note/06.distributed-systems/04-high-performance/mq/README.md',
+                       'note/10.business-systems/03-supply-chain/scm/README.md']),
+    ('Git 命令', ['note/07.devops-and-tools/01-tools/devops/git/README.md',
+                    'note/07.devops-and-tools/01-tools/devops/git-advanced/README.md']),
+    ('SQL 优化（同名章节）', ['note/03.data-stack/01-database/sql-optimization/README.md',
+                                'note/03.data-stack/02-big-data/05-olap/sql-tuning/README.md']),
+    ('分布式锁实现', ['note/12.interview/04.system-design/distributed-id/README.md',
+                       'note/12.interview/03.database/redis-distributed-lock/README.md']),
+    ('JVM 调优实战', ['note/12.interview/01.java/jvm-tuning/README.md',
+                       'note/01.java-and-jvm/02-jvm/05-gc-tuning/README.md']),
+    ('分布式事务', ['note/12.interview/04.system-design/distributed-transaction/README.md',
+                     'note/06.distributed-systems/02-distributed/distributed-transaction/README.md']),
+    ('Spring IOC 原理', ['note/12.interview/06.spring/ioc/README.md',
+                          'note/04.spring-backend/01-core/ioc/README.md']),
+    ('数据库分库分表', ['note/12.interview/03.database/sharding/README.md',
+                          'note/03.data-stack/01-database/13-sharding/README.md']),
+    ('架构演进 + 缓存故事', ['note/13.story/02-system-architecture-evolution.md',
+                                 'note/13.story/04-peak-traffic-defense.md',
+                                 'note/06.distributed-systems/04-high-performance/cache-patterns/README.md']),
+    ('AI Agent 餐厅故事', ['note/13.story/38-rag-retrieval-augmented-generation.md',
+                             'note/13.story/37-vector-database-and-embedding.md']),
+    ('项目管理故事', ['note/13.story/20-board-revolution.md',
+                       'note/13.story/22-outsourcing-trap.md',
+                       'note/11.product-and-pm/agile-metrics/README.md']),
+    ('DevOps 转型故事', ['note/13.story/06-distributed-system-evolution.md',
+                           'note/07.devops-and-tools/01-tools/devops/07-cicd-adoption/README.md']),
+    ('安全合规故事', ['note/13.story/45-black-swan.md',
+                       'note/06.distributed-systems/05-security/jwt-security/README.md']),
+    ('Kafka Streams 实战', ['note/06.distributed-systems/04-high-performance/mq/kafka-streams/README.md',
+                              'note/06.distributed-systems/04-high-performance/mq/kafka/README.md']),
+    ('Spring Security OAuth2 细节', ['note/04.spring-backend/09-security/oauth2/jwt-bearer/README.md',
+                                          'note/04.spring-backend/09-security/oauth2/README.md']),
+    ('JVM G1 收集器', ['note/01.java-and-jvm/02-jvm/05-gc-tuning/g1-collector/README.md',
+                        'note/01.java-and-jvm/02-jvm/05-gc-tuning/README.md']),
+    ('MySQL 主从复制', ['note/03.data-stack/01-database/05-mysql/replication/README.md',
+                        'note/03.data-stack/01-database/05-mysql/README.md']),
+    ('A11y 无障碍专题', ['note/05.frontend/a11y/wcag/README.md',
+                          'note/05.frontend/a11y/README.md']),
+    ('锁主题（歧义大）', ['note/06.distributed-systems/02-distributed/distributed-lock/README.md',
+                          'note/04.spring-backend/02-boot/flexible-lock.md',
+                          'note/12.interview/03.database/redis-distributed-lock/README.md']),
+    ('事务主题', ['note/03.data-stack/01-database/transaction/README.md',
+                    'note/06.distributed-systems/02-distributed/distributed-transaction/README.md']),
+    ('缓存主题', ['note/03.data-stack/01-database/07-redis/README.md',
+                    'note/10.business-systems/05-operations/CHMCache/README.md']),
+    ('部署主题', ['note/07.devops-and-tools/01-tools/devops/docker/README.md',
+                    'note/07.devops-and-tools/03-cloud/k8s/README.md']),
+    ('消息主题', ['note/06.distributed-systems/04-high-performance/mq/README.md',
+                    'note/10.business-systems/01-rd-innovation/notification-system/README.md']),
+    ('Java 21 新特性', ['note/01.java-and-jvm/version/java-21/README.md',
+                          'note/01.java-and-jvm/version/java-21-virtual-threads/README.md']),
+    ('Spring Boot 3.x 新特性', ['note/04.spring-backend/version/spring-boot-3/README.md',
+                                 'note/04.spring-backend/version/README.md']),
+    ('A 股技术（特殊字符）', ['note/10.business-systems/05-operations/erp/README.md',
+                              'note/10.business-systems/05-operations/mes/README.md']),
+]
+
+ROUND_3 = [
+    ('note 总目录', ['note/README.md']),
+    ('note 全局规范', ['note/SPEC.md']),
+    ('Java-and-jvm 模块规范', ['note/01.java-and-jvm/SPEC.md']),
+    ('AI 应用模块规范', ['note/09.ai-applications/SPEC.md']),
+    ('12.interview 格式规范', ['note/12.interview/QUESTION-FORMAT-SPEC.md']),
+    ('性能优化', ['note/03.data-stack/04-performance-optimization/README.md']),
+    ('微服务架构', ['note/06.distributed-systems/02-microservices/README.md']),
+    ('高可用设计', ['note/06.distributed-systems/03-high-availability/README.md']),
+    ('可观测性', ['note/06.distributed-systems/08-observability/README.md']),
+    ('存储引擎', ['note/03.data-stack/01-database/06-storage-engine/README.md']),
+    ('Java 17 新特性', ['note/01.java-and-jvm/version/java-17/README.md']),
+    ('Java 21 虚拟线程', ['note/01.java-and-jvm/version/java-21/virtual-threads.md']),
+    ('Spring Boot 3 vs 4', ['note/04.spring-backend/02-boot/README.md']),
+    ('Node 22 vs 20', ['note/07.devops-and-tools/01-tools/devops/node/README.md']),
+    ('Python 3.12', ['note/07.devops-and-tools/01-tools/devops/python/README.md']),
+    ('Vue 3 响应式', ['note/05.frontend/03-frameworks/vue-3-reactivity/README.md']),
+    ('React 18 并发', ['note/05.frontend/03-frameworks/react-18-concurrent/README.md']),
+    ('Spring 6 新特性', ['note/04.spring-backend/version/spring-6/README.md']),
+    ('JDK 11 vs 17', ['note/01.java-and-jvm/version/jdk11/README.md']),
+    ('Kubernetes 1.30', ['note/07.devops-and-tools/03-cloud/k8s-1.30/README.md']),
+    ('数据库调优', ['note/03.data-stack/01-database/05-mysql/performance-tuning/README.md']),
+    ('JVM 调优实战', ['note/01.java-and-jvm/02-jvm/jvm-tuning/README.md']),
+    ('部署策略', ['note/07.devops-and-tools/01-tools/devops/deployment/README.md']),
+    ('监控告警', ['note/07.devops-and-tools/04-observability/monitoring/README.md']),
+    ('故障排查', ['note/07.devops-and-tools/04-observability/troubleshooting/README.md']),
+]
+
+
+# ============ 测试运行 ============
+
+def run_round(name, scenarios, verbose=False):
+    """运行一轮测试"""
+    total_refs = 0
+    ok_refs = 0
+    fail_refs = 0
+    real_relevant = 0
+    real_total = 0
+    for q, refs in scenarios:
+        for ref in refs:
+            total_refs += 1
+            if os.path.isfile(ref):
+                ok_refs += 1
+            else:
+                fail_refs += 1
+                r = suggest_v2(ref, 1)
+                if r:
+                    real_total += 1
+                    if is_relevant(r[0][0], ref):
+                        real_relevant += 1
+                    if verbose:
+                        print('  - {!r} -> {!r} ({})'.format(
+                            ref.replace('note/', ''),
+                            r[0][0].replace(os.sep, '/').replace('note/', ''),
+                            r[0][1]))
+
+    print('  {}: 总引用 {} | 正确 {} | 失效 {} | §3.5.1 Top1 真实相关 {}/{} = {:.0f}%'.format(
+        name, total_refs, ok_refs, fail_refs,
+        real_relevant, real_total,
+        real_relevant/real_total*100 if real_total else 0,
+    ))
+    return {
+        'total': total_refs,
+        'ok': ok_refs,
+        'fail': fail_refs,
+        'relevant': real_relevant,
+        'relevant_total': real_total,
+    }
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--round', type=int, choices=[1, 2, 3], help='仅跑某一轮')
+    parser.add_argument('--verbose', action='store_true', help='打印所有失效')
+    parser.add_argument('--path', help='自定义单路径测试')
+    args = parser.parse_args()
+
+    print('=' * 70)
+    print('note-knowledge-qa §3.5 + §3.5.1 - {} 场景测试'.format(
+        '自定义' if args.path else '75 (3 轮)'))
+    print('=' * 70)
+
+    rounds = []
+    if not args.round or args.round == 1:
+        rounds.append(('Round 1', ROUND_1))
+    if not args.round or args.round == 2:
+        rounds.append(('Round 2', ROUND_2))
+    if not args.round or args.round == 3:
+        rounds.append(('Round 3', ROUND_3))
+
+    total = {'refs': 0, 'ok': 0, 'fail': 0, 'rel': 0, 'rel_t': 0}
+    for name, sc_list in rounds:
+        r = run_round(name, sc_list, args.verbose)
+        total['refs'] += r['total']
+        total['ok'] += r['ok']
+        total['fail'] += r['fail']
+        total['rel'] += r['relevant']
+        total['rel_t'] += r['relevant_total']
+
+    if not args.path:
+        print()
+        print('=' * 70)
+        print('=== 合计 ===')
+        print('总引用: {} | 正确: {} ({:.0f}%) | 失效: {}'.format(
+            total['refs'], total['ok'], total['ok']/total['refs']*100, total['fail']))
+        print('§3.5 阻止: {} 个错误引用 (100%)'.format(total['fail']))
+        print('§3.5.1 Top1 真实相关: {}/{} = {:.0f}%'.format(
+            total['rel'], total['rel_t'],
+            total['rel']/total['rel_t']*100 if total['rel_t'] else 0))
+        print('=' * 70)
+
+    if args.path:
+        # 自定义路径测试
+        ref = args.path
+        if not ref.startswith('note/'):
+            ref = 'note/' + ref
+        if os.path.isfile(ref):
+            print('  路径正确: {!r}'.format(ref))
+        else:
+            print('  路径失效: {!r}'.format(ref))
+            r = suggest_v2(ref, 5)
+            if r:
+                print('  §3.5.1 建议:')
+                for s, sc in r:
+                    print('    {} ({}) - {}'.format(sc, s.replace(os.sep, '/').replace('note/', ''),
+                                                       '✓ 相关' if is_relevant(s, ref) else '✗ 噪声'))
+
+
+if __name__ == '__main__':
+    main()
