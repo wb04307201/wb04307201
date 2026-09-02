@@ -261,6 +261,39 @@ ROUND_5 = [
     ('Java 字节码操作', ['note/01.java-and-jvm/01-language/bytecode/README.md']),
 ]
 
+ROUND_6 = [
+    # AC: 已知错误路径测试（5）
+    ('Java 集合 → 错位引用', ['note/01.java-and-jvm/01-language/collections/README.md']),
+    ('Spring Boot → 错位', ['note/04.spring-backend/02-boot/SpringBoot/README.md']),
+    ('Redis → 大小写', ['note/03.data-stack/01-database/REDIS/README.md']),
+    ('Kafka → 模块错位', ['note/01.java-and-jvm/kafka/README.md']),
+    ('Git → 模块错位', ['note/04.spring-backend/git/README.md']),
+    # AD: 5+ 级路径（5）
+    ('Java 并发 → 嵌套', ['note/01.java-and-jvm/03-concurrency/thread-pool/executor-service/README.md']),
+    ('Spring Cloud → 嵌套', ['note/04.spring-backend/03-cloud/gateway/predicate/README.md']),
+    ('分布式 ID → 嵌套', ['note/06.distributed-systems/02-distributed/distributed-id/snowflake/README.md']),
+    ('Spring Security → 嵌套', ['note/04.spring-backend/09-security/oauth2/authorization-code/README.md']),
+    ('前端性能 → 嵌套', ['note/05.frontend/06-performance/lcp-optimization/README.md']),
+    # AE: 同义不同名（5）
+    ('JVM 调优', ['note/01.java-and-jvm/02-jvm/optimization/README.md']),
+    ('Java 内存', ['note/01.java-and-jvm/02-jvm/ram/README.md']),
+    ('Spring AOP', ['note/04.spring-backend/01-core/aspect/README.md']),
+    ('分布式事务', ['note/06.distributed-systems/02-distributed/tx/README.md']),
+    ('微服务', ['note/06.distributed-systems/02-distributed/micro-service/README.md']),
+    # AF: 大小写变体（5）
+    ('spring boot', ['note/04.spring-backend/02-boot/SPRING-BOOT/README.md']),
+    ('MYSQL', ['note/03.data-stack/01-database/MYSQL/README.md']),
+    ('JAVA', ['note/01.java-and-jvm/JVM/README.md']),
+    ('nginx', ['note/07.devops-and-tools/01-tools/Nginx/README.md']),
+    ('rabbitmq', ['note/06.distributed-systems/04-high-performance/rabbitmq/README.md']),
+    # AG: 现实常见主题（5）
+    ('Vim 编辑器', ['note/07.devops-and-tools/01-tools/vim/README.md']),
+    ('Shell 脚本', ['note/07.devops-and-tools/01-tools/shell/README.md']),
+    ('网络协议入门', ['note/02.cs-foundations/03-network/basics/README.md']),
+    ('iOS 开发', ['note/05.frontend/09-mobile/ios/README.md']),
+    ('Android 开发', ['note/05.frontend/09-mobile/android/README.md']),
+]
+
 
 # ============ 测试运行 ============
 
@@ -305,14 +338,14 @@ def run_round(name, scenarios, verbose=False):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--round', type=int, choices=[1, 2, 3, 4, 5], help='仅跑某一轮')
+    parser.add_argument('--round', type=int, choices=[1, 2, 3, 4, 5, 6], help='仅跑某一轮')
     parser.add_argument('--verbose', action='store_true', help='打印所有失效')
     parser.add_argument('--path', help='自定义单路径测试')
     args = parser.parse_args()
 
     print('=' * 70)
     print('note-knowledge-qa §3.5 + §3.5.1 - {} 场景测试'.format(
-        '自定义' if args.path else '125 (5 轮)'))
+        '自定义' if args.path else '150 (6 轮)'))
     print('=' * 70)
 
     rounds = []
@@ -326,6 +359,8 @@ def main():
         rounds.append(('Round 4', ROUND_4))
     if not args.round or args.round == 5:
         rounds.append(('Round 5', ROUND_5))
+    if not args.round or args.round == 6:
+        rounds.append(('Round 6', ROUND_6))
 
     total = {'refs': 0, 'ok': 0, 'fail': 0, 'rel': 0, 'rel_t': 0}
     for name, sc_list in rounds:
