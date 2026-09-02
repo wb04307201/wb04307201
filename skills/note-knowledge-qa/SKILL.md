@@ -1,15 +1,15 @@
 ---
 name: note-knowledge-qa
-description: Use when user asks a technical question / "查 note" / "知识库问答" / "我有问题想问" requests interview prep / "面试题" / "出一道题" / "考考我" / "根据简历出题" / "模拟面试" / "面试非科班" wants system design guidance / "如何设计 X" or needs knowledge from the note/ knowledge base — retrieves relevant articles across the 13-module structure (read at runtime), follows cross-references, synthesizes comprehensive answers with citations
+description: Use when user asks a technical question / "查 note" / "知识库问答" / "我有问题想问" requests interview prep / "面试题" / "出一道题" / "考考我" / "根据简历出题" / "模拟面试" / "面试非科班" wants system design guidance / "如何设计 X" or needs knowledge from the project's knowledge base (default `note/`, configurable via `NOTE_DIR` env var) — retrieves relevant articles across the 13-module structure (read at runtime), follows cross-references, synthesizes comprehensive answers with citations
 ---
 
-> **规则来源**：执行前用 `find note -maxdepth 1 -type d` 读取当前模块结构，读 `note/SPEC.md` 了解全局规范（含 §7 SPEC 分层元规范），读目标模块的 `<module>/SPEC.md` 了解专属维度；若该模块存在 `*-FORMAT-SPEC.md`（如 `note/12.interview/QUESTION-FORMAT-SPEC.md` / `note/13.story/STORY-FORMAT-SPEC.md`）也一并读取（确保回答引用合规）。模块数 / 文件数在运行时统计，不硬编码。
+> **规则来源**：执行前用 `find note -maxdepth 1 -type d` 读取当前模块结构，读 `$KB_DIR/SPEC.md` 了解全局规范（含 §7 SPEC 分层元规范），读目标模块的 `<module>/SPEC.md` 了解专属维度；若该模块存在 `*-FORMAT-SPEC.md`（如 `$KB_DIR/12.interview/QUESTION-FORMAT-SPEC.md` / `$KB_DIR/13.story/STORY-FORMAT-SPEC.md`）也一并读取（确保回答引用合规）。模块数 / 文件数在运行时统计，不硬编码。
 
 # note 知识库问答
 
 ## Overview
 
-把 `note/` 知识库（13 主模块，文件数在运行时统计）变成**可检索的私人智囊**。对用户问题做：关键词提取 → 模块定位 → 文件检索 → 关联追踪 → 整合回答。
+把 `$KB_DIR/` 知识库（13 主模块，文件数在运行时统计）变成**可检索的私人智囊**。对用户问题做：关键词提取 → 模块定位 → 文件检索 → 关联追踪 → 整合回答。
 
 > ⚠️ **数字校对**：本文件使用 `find` 实测数字，避免 hardcode 漂移。统计命令：
 > ```bash
@@ -17,7 +17,7 @@ description: Use when user asks a technical question / "查 note" / "知识库�
 > find note -name '*.md' | wc -l         # 当前 .md 总数
 > ```
 
-**核心原则**：**先搜后答** —— 不凭记忆回答，先从 note/ 检索相关内容，确保答案有据可查。
+**核心原则**：**先搜后答** —— 不凭记忆回答，先从 $KB_DIR/ 检索相关内容，确保答案有据可查。
 
 ## Quick Example
 
@@ -42,18 +42,18 @@ skill 执行：A 类型（技术问答）→ grep "HashMap" → 双层检索（0
 
   ### 📚 知识来源
   | 来源 | 路径 | 覆盖内容 |
-  | HashMap 原理 | note/01.java-and-jvm/collection/hashmap.md | 数据结构 + 树化阈值 |
-  | 面试陷阱 | note/12.interview/01.java/hashmap-thread-unsafe/ | 并发死循环细节 |
+  | HashMap 原理 | $KB_DIR/01.java-and-jvm/collection/hashmap.md | 数据结构 + 树化阈值 |
+  | 面试陷阱 | $KB_DIR/12.interview/01.java/hashmap-thread-unsafe/ | 并发死循环细节 |
 
-不同点：不凭 LLM 训练知识答 — 每条都附 note/ 实际文章路径
+不同点：不凭 LLM 训练知识答 — 每条都附 $KB_DIR/ 实际文章路径
 
 ## 50+ 新词检索映射表（2026-07-14 新增）
 
-> ⚠️ **本表写于 2026-07-14**，与实际 `note/` 结构可能漂移。每次使用前用 `ls <path>` 验证路径存在，失效项标 ⚠️ 并跳到映射表中转。
+> ⚠️ **本表写于 2026-07-14**，与实际 `$KB_DIR/` 结构可能漂移。每次使用前用 `ls <path>` 验证路径存在，失效项标 ⚠️ 并跳到映射表中转。
 > 
 > 漂移检测命令：
 > ```bash
-> grep -oE 'note/11\.ai/[^\` ]+' skills/note-knowledge-qa/SKILL.md | sort -u | while read p; do
+> grep -oE '$KB_DIR/11\.ai/[^\` ]+' skills/note-knowledge-qa/SKILL.md | sort -u | while read p; do
 >   [ -f "$p/README.md" ] || [ -f "$p" ] || echo "MISSING: $p"
 > done
 > ```
@@ -153,11 +153,11 @@ skill：查表 → DPO 在 11.ai/07-research/alignment/03-dpo + 13.split-hairs/1
 - 用户要面试模拟（如 "我来答你出题"）
 - 用户给简历要面试问题（如 "根据简历出题"）
 - 用户问 AI 相关（如 "如何平衡 AI 成本"）
-- 任何可以利用 note/ 知识库回答的问题
+- 任何可以利用 $KB_DIR/ 知识库回答的问题
 
 **Don't use when**：
-- 用户问的是 note/ 里没有的主题（→ 直接用通用知识回答，说明 note 未覆盖）
-- 用户问的是 note/ 结构/维护问题（→ 用其他 skill）
+- 用户问的是 $KB_DIR/ 里没有的主题（→ 直接用通用知识回答，说明 note 未覆盖）
+- 用户问的是 $KB_DIR/ 结构/维护问题（→ 用其他 skill）
 - 用户明确说"不要搜 note"
 
 ## 问答流程（5 步）
@@ -194,7 +194,7 @@ E（简历面试）和 G（面试官出题）类型**必须先做教育背景检
 
 ### Step 2: 关键词提取 + 模块定位
 
-从问题中提取关键词，映射到 note/ 模块：
+从问题中提取关键词，映射到 $KB_DIR/ 模块：
 
 ```
 关键词提取规则：
@@ -240,13 +240,13 @@ E（简历面试）和 G（面试官出题）类型**必须先做教育背景检
 
 ```bash
 # 1. 关键词全文搜索（取 top 10 相关文件）
-grep -rl "<关键词>" note/ | head -10
+grep -rl "<关键词>" $KB_DIR/ | head -10
 
 # 2. 模块 README 优先读（获取全景视图）
 # 先读命中模块的 README.md，了解目录结构
 
 # 3. 精确匹配子目录
-find note/<module> -type d -name "*<topic>*" 2>/dev/null
+find $KB_DIR/<module> -type d -name "*<topic>*" 2>/dev/null
 ```
 
 **3.2 深度读取**（选 3-5 篇最相关的读全文）
@@ -264,7 +264,7 @@ KEYWORD="${1:?需要 1 个参数：关键词}"
 
 # === 主模块命中（深度原理）===
 echo "═══ 主模块命中（按命中数倒序，最多 10 个）═══"
-grep -rl "$KEYWORD" note/ --include="*.md" 2>/dev/null \
+grep -rl "$KEYWORD" $KB_DIR/ --include="*.md" 2>/dev/null \
   | grep -v "/13.split-hairs/" \
   | xargs -I {} sh -c 'count=$(grep -c "$0" "{}" 2>/dev/null); echo "$count {}"' "$KEYWORD" \
   | sort -rn \
@@ -274,7 +274,7 @@ grep -rl "$KEYWORD" note/ --include="*.md" 2>/dev/null \
 # === 13.split-hairs 命中（被面试者视角）===
 echo ""
 echo "═══ 13.split-hairs 命中（面试陷阱版，最多 5 个）═══"
-grep -rl "$KEYWORD" note/12.interview/ 2>/dev/null \
+grep -rl "$KEYWORD" $KB_DIR/12.interview/ 2>/dev/null \
   | xargs -I {} sh -c 'count=$(grep -c "$0" "{}" 2>/dev/null); echo "$count {}"' "$KEYWORD" \
   | sort -rn \
   | head -5 \
@@ -283,14 +283,14 @@ grep -rl "$KEYWORD" note/12.interview/ 2>/dev/null \
 # === 12.story 命中（叙事类比版）===
 echo ""
 echo "═══ 12.story 命中（阿明餐厅版，最多 3 个）═══"
-grep -rl "$KEYWORD" note/13.story/ 2>/dev/null \
+grep -rl "$KEYWORD" $KB_DIR/13.story/ 2>/dev/null \
   | head -3 \
   | awk '{print "  →  " $1}'
 
 # === 14.project-management 命中（仅面试方法论问题）===
 echo ""
 echo "═══ 14.project-management 命中（面试官视角，最多 3 个）═══"
-grep -rl "$KEYWORD" note/11.product-and-pm/ 2>/dev/null \
+grep -rl "$KEYWORD" $KB_DIR/11.product-and-pm/ 2>/dev/null \
   | head -3 \
   | awk '{print "  →  " $1}'
 
@@ -346,7 +346,7 @@ python << 'PYEOF'
 import os, re, glob
 LINK = re.compile(r'(?<![|\[])\[([^\]]*)\]\((?!https?://)(?!mailto:)(?!#)([^)#\s]+?\.md)(?:#[^)]*)?\)')
 broken = []
-for f in glob.glob('note/**/*.md', recursive=True):
+for f in glob.glob('$KB_DIR/**/*.md', recursive=True):
     if '.health-tmp' in f.replace(os.sep, '/'): continue
     c = open(f, encoding='utf-8', errors='ignore').read()
     for m in LINK.finditer(c):
@@ -387,15 +387,15 @@ def suggest_similar(missing_path, top=3):
     实测结果：v4 Top1 真实相关率 = 136/142 = 96%
     """
     name = os.path.basename(missing_path).replace('.md', '').lower()
-    dir_parts = [p.lower() for p in missing_path.replace('note/', '').split('/')[:-1]]
+    dir_parts = [p.lower() for p in missing_path.replace('$KB_DIR/', '').split('/')[:-1]]
     parent_dir = dir_parts[-1] if dir_parts else ''
     keywords = re.findall(r'[A-Za-z]+|[一-鿿]{2,}', name)
     missing_depth = len([p for p in dir_parts if p])
 
     scores = {}
-    for f in glob.glob('note/**/*.md', recursive=True):
+    for f in glob.glob('$KB_DIR/**/*.md', recursive=True):
         if '.health-tmp' in f: continue
-        if f.replace(os.sep, '/') in ['note/README.md', 'note/SPEC.md']: continue
+        if f.replace(os.sep, '/') in ['$KB_DIR/README.md', '$KB_DIR/SPEC.md']: continue
         f_lower = f.lower()
         f_norm = f.replace(os.sep, '/')
         s = 0
@@ -442,9 +442,9 @@ def suggest_similar(missing_path, top=3):
     return sorted(scores.items(), key=lambda x: -x[1])[:top]
 
 # 示例（v4 实测 142 失效路径）
-suggestions = suggest_similar('note/01.java-and-jvm/version/java-21/virtual-threads.md')
+suggestions = suggest_similar('$KB_DIR/01.java-and-jvm/version/java-21/virtual-threads.md')
 # → 真实建议：
-#   1. note/01.java-and-jvm/version/java-21/README.md (score=10)
+#   1. $KB_DIR/01.java-and-jvm/version/java-21/README.md (score=10)
 ```
 
 **v4 实测对比**（七轮 142 失效路径）：
@@ -521,7 +521,7 @@ print(f'  {sc:3d}  {full_path}')  # full_path 而非 os.path.basename
 
 # 质量评估必须按"真实相关"判定（非仅关键词命中）
 def is_relevant(top1_path, missing_path):
-    short = top1_path.replace('note/', '')
+    short = top1_path.replace('$KB_DIR/', '')
     if short.count('/') == 1 and short.endswith('/README.md'):
         return False  # 模块 README = 噪声
     kws = re.findall(r'[A-Za-z]+|[一-鿿]{2,}', os.path.basename(missing_path).replace('.md', ''))
@@ -552,11 +552,11 @@ def is_relevant(top1_path, missing_path):
 
 ### 详细解释
 
-{基于 note/ 内容的详细解答，用表格/代码/图辅助}
+{基于 $KB_DIR/ 内容的详细解答，用表格/代码/图辅助}
 
 ### 实战建议
 
-{基于 note/ 最佳实践的可操作建议}
+{基于 $KB_DIR/ 最佳实践的可操作建议}
 
 ### 📚 知识来源
 
@@ -599,8 +599,8 @@ def is_relevant(top1_path, missing_path):
 
 ### 📚 知识来源
 
-- {note/路径1}
-- {note/路径2}
+- {$KB_DIR/路径1}
+- {$KB_DIR/路径2}
 ```
 
 #### C. 设计指导 模板
@@ -620,7 +620,7 @@ def is_relevant(top1_path, missing_path):
 
 ### 推荐方案
 
-{基于 note/ 内容的推荐 + 理由}
+{基于 $KB_DIR/ 内容的推荐 + 理由}
 
 ### 关键设计点
 
@@ -628,7 +628,7 @@ def is_relevant(top1_path, missing_path):
 
 ### 📚 知识来源
 
-- {note/路径列表}
+- {$KB_DIR/路径列表}
 ```
 
 #### D. 模拟面试 流程
@@ -636,20 +636,20 @@ def is_relevant(top1_path, missing_path):
 ```
 1. 确认面试方向（Java后端 / 系统设计 / AI 工程师 / 前端...）
 2. 确认难度（初级 / 中级 / 高级 / 架构师）
-3. 从 note/ 检索对应模块，准备 5-8 道题目
+3. 从 $KB_DIR/ 检索对应模块，准备 5-8 道题目
 
 交互流程（每题循环）：
 ┌─ 出题 → 等用户回答
 │
 ├─ 评价用户答案：
 │   ├─ ✅ 答对的部分（鼓励 + 标注覆盖深度：概念/原理/源码/实战）
-│   ├─ ⚠️ 遗漏的点（补充 + 标注对应 note/ 文章）
+│   ├─ ⚠️ 遗漏的点（补充 + 标注对应 $KB_DIR/ 文章）
 │   ├─ 🔴 答错的部分（纠正 + 给出正确解释）
 │   ├─ 📊 深度评估（当前回答在哪个层次）
 │   └─ 💬 话术优化建议（面试中怎么说更好，给出 90 秒话术）
 │
 ├─ 🔄 追问链生成（核心能力，见下方详细规则）：
-│   ├─ 根据用户答案的薄弱点 → 从 note/ 检索关联文章 → 生成追问
+│   ├─ 根据用户答案的薄弱点 → 从 $KB_DIR/ 检索关联文章 → 生成追问
 │   ├─ 追问不是随机出题，而是沿着用户的知识缺口深挖
 │   └─ 每轮追问后继续评估 → 继续追问（最多 3 轮深挖）
 │
@@ -710,10 +710,10 @@ def is_relevant(top1_path, missing_path):
 
 追问检索流程：
 1. 从薄弱点提取关键词
-2. grep 搜索 note/12.interview/ 和主模块
+2. grep 搜索 $KB_DIR/12.interview/ 和主模块
 3. 读取命中的文章，找到对应段落
-4. 基于 note/ 内容构造追问（确保追问有标准答案）
-5. 追问时附"参考：{note/路径}"以便用户事后学习
+4. 基于 $KB_DIR/ 内容构造追问（确保追问有标准答案）
+5. 追问时附"参考：{$KB_DIR/路径}"以便用户事后学习
 ```
 
 **追问链输出格式**：
@@ -723,7 +723,7 @@ def is_relevant(top1_path, missing_path):
 
 **你的薄弱点**：{分析用户答案中哪个层次缺失}
 
-**追问**：{基于 note/ 内容的追问}
+**追问**：{基于 $KB_DIR/ 内容的追问}
 
 > 📖 这题的知识来源：`{note/路径}` — {文章标题}
 > 建议事后阅读这篇补充：{关联文章路径}
@@ -742,7 +742,7 @@ def is_relevant(top1_path, missing_path):
            └─ 评估用：底线+加分模型（而非科班的标准答案深度）
 
 1. 解析简历关键技术点（语言/框架/项目经验/行业）
-2. 映射到 note/ 模块：
+2. 映射到 $KB_DIR/ 模块：
    ├─ 技术栈 → 对应主模块
    ├─ 项目经验 → 对应系统设计/架构模块
    ├─ 行业 → 对应应用系统模块
@@ -755,21 +755,21 @@ def is_relevant(top1_path, missing_path):
 
 ## 🗺️ 知识地图：{简历技术点}
 
-{用 grep 搜索 note/ 中所有相关文章，按层次组织}
+{用 grep 搜索 $KB_DIR/ 中所有相关文章，按层次组织}
 
 ```
 {技术点}
 ├── 基础层（概念/原理）
-│   ├── `note/01.java-and-jvm/xxx/README.md` — {一句话概括}
-│   └── `note/01.java-and-jvm/yyy/README.md` — {一句话概括}
+│   ├── `$KB_DIR/01.java-and-jvm/xxx/README.md` — {一句话概括}
+│   └── `$KB_DIR/01.java-and-jvm/yyy/README.md` — {一句话概括}
 ├── 进阶层（源码/深度）
-│   ├── `note/12.interview/01.java/xxx/` — {面试题+陷阱}
-│   └── `note/01.java-and-jvm/zzz/` — {源码分析}
+│   ├── `$KB_DIR/12.interview/01.java/xxx/` — {面试题+陷阱}
+│   └── `$KB_DIR/01.java-and-jvm/zzz/` — {源码分析}
 ├── 实战层（工程/架构）
-│   ├── `note/04.spring-backend/xxx/` — {Spring 集成}
-│   └── `note/06.distributed-systems/xxx/` — {系统设计}
+│   ├── `$KB_DIR/04.spring-backend/xxx/` — {Spring 集成}
+│   └── `$KB_DIR/06.distributed-systems/xxx/` — {系统设计}
 └── 叙事层（故事/类比）
-    └── `note/13.story/xxx.md` — {阿明餐厅类比}
+    └── `$KB_DIR/13.story/xxx.md` — {阿明餐厅类比}
 ```
 
 ═══ 第二部分：问题清单 + 追问链 ═══
@@ -778,7 +778,7 @@ def is_relevant(top1_path, missing_path):
 
 ### {简历技术点1}：{具体内容}
 
-| # | 问题 | 意图 | 期望答案层次 | note/ 参考 |
+| # | 问题 | 意图 | 期望答案层次 | $KB_DIR/ 参考 |
 |---|------|------|------------|-----------|
 | 1 | {基础题} | 验证基本功 | {关键词} | `{note/路径}` |
 | 2 | {深度题} | 探测天花板 | {关键词} | `{note/路径}` |
@@ -799,7 +799,7 @@ def is_relevant(top1_path, missing_path):
 ```bash
 # 1. 从简历提取技术关键词（如 "Redis"、"Spring Boot"、"分布式"）
 # 2. 对每个关键词做全模块搜索
-grep -rl "Redis" note/ | sort
+grep -rl "Redis" $KB_DIR/ | sort
 
 # 3. 按目录分类为层次
 #    01.java/xxx → 基础层
@@ -821,22 +821,22 @@ grep -rl "Redis" note/ | sort
 
 ## 🗺️ {主题} 知识地图
 
-{搜索 note/ 中所有相关文章，按学习顺序组织}
+{搜索 $KB_DIR/ 中所有相关文章，按学习顺序组织}
 
 ```
 {主题}
 ├── Level 1: 入门（先读这些）
-│   ├── `note/xx/yy/README.md` — {一句话}
-│   └── `note/xx/zz/README.md` — {一句话}
+│   ├── `$KB_DIR/xx/yy/README.md` — {一句话}
+│   └── `$KB_DIR/xx/zz/README.md` — {一句话}
 ├── Level 2: 进阶（掌握基础后读）
-│   ├── `note/xx/aa/` — {一句话}
-│   └── `note/12.interview/xx/bb/` — {面试题，验证理解}
+│   ├── `$KB_DIR/xx/aa/` — {一句话}
+│   └── `$KB_DIR/12.interview/xx/bb/` — {面试题，验证理解}
 ├── Level 3: 深入（想看源码/原理时读）
-│   ├── `note/xx/cc/` — {一句话}
-│   └── `note/xx/dd/` — {一句话}
+│   ├── `$KB_DIR/xx/cc/` — {一句话}
+│   └── `$KB_DIR/xx/dd/` — {一句话}
 └── Level 4: 实战（做项目时参考）
-    ├── `note/xx/ee/` — {一句话}
-    └── `note/13.story/xx.md` — {故事化理解}
+    ├── `$KB_DIR/xx/ee/` — {一句话}
+    └── `$KB_DIR/13.story/xx.md` — {故事化理解}
 ```
 
 ═══ 第二部分：交互式学习路径 ═══
@@ -852,7 +852,7 @@ grep -rl "Redis" note/ | sort
 ### 🔄 学习追问（可选）
 
 学完每步后，可以说"考考我"触发追问链：
-├─ 我会从 note/ 出一道题检验你的理解
+├─ 我会从 $KB_DIR/ 出一道题检验你的理解
 ├─ 根据你的回答分析薄弱点
 ├─ 推荐下一步该读哪篇（基于你的薄弱点动态调整）
 └─ 如果你的回答暴露了前置知识缺失 → 推荐回退到 Level N
@@ -862,7 +862,7 @@ grep -rl "Redis" note/ | sort
 
 ```
 用户说"考考我"或"我学完了"
-├─ 从当前 Level 的 note/ 文章出一道自测题
+├─ 从当前 Level 的 $KB_DIR/ 文章出一道自测题
 ├─ 用户回答后：
 │   ├─ 答对 → 跳到下一 Level
 │   ├─ 答错 → 分析薄弱点 → 推荐回退或补充阅读
@@ -880,7 +880,7 @@ grep -rl "Redis" note/ | sort
 
 ### 题目列表
 
-| # | 题目 | 类型 | 考察维度 | 评估要点 | note/ 来源 |
+| # | 题目 | 类型 | 考察维度 | 评估要点 | $KB_DIR/ 来源 |
 |---|------|------|---------|---------|-----------|
 | 1 | {场景化题目} | 降维/场景 | {转码动机/基础认知/系统设计/工程实践/跨专业优势} | {优秀答案信号} | `{路径}` |
 | 2 | ... | ... | ... | ... | ... |
@@ -919,12 +919,12 @@ grep -rl "Redis" note/ | sort
 
 ## 特殊处理
 
-### 当 note/ 没有相关内容时
+### 当 $KB_DIR/ 没有相关内容时
 
 ```markdown
-> ⚠️ note/ 知识库未直接覆盖此主题。以下答案基于通用知识，非 note/ 内容。
+> ⚠️ $KB_DIR/ 知识库未直接覆盖此主题。以下答案基于通用知识，非 $KB_DIR/ 内容。
 > 
-> **建议**：这个主题值得沉淀到 note/，可以运行 `/note-precipitation-planning` 规划位置。
+> **建议**：这个主题值得沉淀到 $KB_DIR/，可以运行 `/note-precipitation-planning` 规划位置。
 
 {通用知识回答}
 ```
@@ -941,7 +941,7 @@ grep -rl "Redis" note/ | sort
 
 ### 引用格式
 
-所有回答末尾附 **📚 知识来源** 表格，列出引用的 note/ 文件。格式：
+所有回答末尾附 **📚 知识来源** 表格，列出引用的 $KB_DIR/ 文件。格式：
 
 ```markdown
 ### 📚 知识来源
@@ -956,7 +956,7 @@ grep -rl "Redis" note/ | sort
 
 **❌ Mistake 1: 直接凭印象答（核心反模式）**
 
-- **症状**：用户问"JVM 参数怎么配"直接答，不 grep note/ → 答的是训练知识，事后与 note/ 不一致
+- **症状**：用户问"JVM 参数怎么配"直接答，不 grep $KB_DIR/ → 答的是训练知识，事后与 $KB_DIR/ 不一致
 - **修复**：Step 3.1 必须先 grep，即使是高频问题也要确认 note 怎么写
 
 **❌ Mistake 2: 单一来源 = 薄弱回答**
@@ -998,7 +998,7 @@ grep -rl "Redis" note/ | sort
 
 ```bash
 # 把回答正文存为 answer.md，跑下面命令
-grep -oE 'note/[^\` )]+\.md' answer.md | sort | uniq -c | sort -rn | awk '$1 >= 2 {print}'
+grep -oE '$KB_DIR/[^\` )]+\.md' answer.md | sort | uniq -c | sort -rn | awk '$1 >= 2 {print}'
 # 输出：同一路径 cite ≥ 2 次的文件清单 → 必须去重或换其他维度
 ```
 
@@ -1011,7 +1011,7 @@ grep -oE 'note/[^\` )]+\.md' answer.md | sort | uniq -c | sort -rn | awk '$1 >= 
 
 ## Real-World Impact
 
-本 skill 是"**非通用 AI**"的区分点 —— 强制 LLM 把 note/ 当作私有知识库使用，而不是凭训练知识答。
+本 skill 是"**非通用 AI**"的区分点 —— 强制 LLM 把 $KB_DIR/ 当作私有知识库使用，而不是凭训练知识答。
 
 **典型场景 + 预期产出**：
 
@@ -1026,7 +1026,7 @@ grep -oE 'note/[^\` )]+\.md' answer.md | sort | uniq -c | sort -rn | awk '$1 >= 
 | **G. 面试官出题** | "面非科班应届" | 候选人画像 + 双题库 + 评估速查表 | ~10 分钟 |
 
 **避免的失败**：
-- ❌ 凭训练知识答（用户事后发现与 note/ 不一致 → Mistake 1）
+- ❌ 凭训练知识答（用户事后发现与 $KB_DIR/ 不一致 → Mistake 1）
 - ❌ 漏知识来源表（用户无法自我纠错 → Mistake 4）
 - ❌ 跨模块问题只答一半（如 SSO 只答 OAuth 不答 SAML → Mistake 5）
 - ❌ 简历面试一刀切（科班/非科班混用题库 → Mistake 6/9）
@@ -1043,11 +1043,11 @@ grep -oE 'note/[^\` )]+\.md' answer.md | sort | uniq -c | sort -rn | awk '$1 >= 
 
 - [ ] 问题已分类（A/B/C/D/E/F/G 类型）
 - [ ] 关键词已提取并映射到模块
-- [ ] 已搜索 note/（至少 grep 一次）
+- [ ] 已搜索 $KB_DIR/（至少 grep 一次）
 - [ ] 已读 ≥ 3 篇相关文章
 - [ ] 已追踪 ≥ 1 篇关联文章
 - [ ] 回答末尾有 📚 知识来源
-- [ ] 如果 note/ 未覆盖，已标注并建议沉淀
+- [ ] 如果 $KB_DIR/ 未覆盖，已标注并建议沉淀
 - [ ] **E/G 类型**：已检测候选人教育背景（科班 vs 非科班）
 - [ ] **E/G 非科班**：出题来源是 `14/interviewing-cross-disciplinary`（不是 `13.split-hairs`）
 - [ ] **E/G 非科班**：追问链使用非科班规则（思维过程/给提示看反应/跨专业优势）

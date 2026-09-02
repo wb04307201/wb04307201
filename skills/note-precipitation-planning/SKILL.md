@@ -3,7 +3,14 @@ name: note-precipitation-planning
 description: Use when user asks where to add or update a topic in the project's knowledge base (default `note/`, configurable via `NOTE_DIR` env var) / "X 应该沉淀到 note 什么位置" / "X 怎么归档" / "放在 note 哪个位置" / "如何沉淀 X" / "新增主题到 note" — covers survey of existing structure (read at runtime), depth analysis, location decision between main module / 12.interview interview layer / 13.story narrative layer, layered precipitation strategy, and reverse-link verification
 ---
 
-> **规则来源**：执行前必读 `note/SPEC.md`（G1-G6 通用评分 + 11 类扫描 + commit 格式 + 互链规则 + §7 SPEC 分层）以及目标模块的 `<module>/SPEC.md`（如 `note/01.java-and-jvm/SPEC.md`）。**若目标模块有强骨架规范**（如 `note/12.interview/QUESTION-FORMAT-SPEC.md` / `note/13.story/STORY-FORMAT-SPEC.md`），同时必读 `<module>/*-FORMAT-SPEC.md`。模块结构在运行时通过 `find note -maxdepth 1 -type d` + `cat note/<module>/README.md` 读取，不硬编码。
+> **规则来源**：执行前必读 `$KB_DIR/SPEC.md`（G1-G6 通用评分 + 11 类扫描 + commit 格式 + 互链规则 + §7 SPEC 分层）以及目标模块的 `<module>/SPEC.md`（如 `$KB_DIR/01.java-and-jvm/SPEC.md`）。**若目标模块有强骨架规范**（如 `$KB_DIR/12.interview/QUESTION-FORMAT-SPEC.md` / `$KB_DIR/13.story/STORY-FORMAT-SPEC.md`），同时必读 `<module>/*-FORMAT-SPEC.md`。模块结构在运行时通过 `find note -maxdepth 1 -type d` + `cat $KB_DIR/<module>/README.md` 读取，不硬编码。
+
+> **目录变量（通用化）**：本 skill 默认使用仓库根目录的 `$KB_DIR/` 作为知识库根。**支持自定义**：
+> 1. **环境变量**：`NOTE_DIR=./docs/knowledge` 覆盖
+> 2. **配置优先**：项目根有 `.claude/knowledge-base.config.json`（schema: `{"kb_dir": "./docs/knowledge"}`）优先用配置
+> 3. **自动检测**：`[ -d note ] && KB=note || KB=.`（无 `$KB_DIR/` 时用项目根）
+>
+> **本 skill 文档中所有 `$KB_DIR/` 在 bash / Python 代码块中已替换为 `$KB_DIR/`**，运行时按上述规则解析。
 
 # note 沉淀规划
 
@@ -42,8 +49,8 @@ skill 执行：Step 1 现状盘点 → Step 2 深度评估 → Step 3 位置决�
    ↓
 输出（节选）：
   ## 📋 现状盘点
-  - note/07.devops-and-tools/claude-code.md：已有但只覆盖 CLI 命令
-  - note/08.ai-foundations/03-engineering/agent-frameworks/：相邻分类
+  - $KB_DIR/07.devops-and-tools/claude-code.md：已有但只覆盖 CLI 命令
+  - $KB_DIR/08.ai-foundations/03-engineering/agent-frameworks/：相邻分类
   - 已有 3 篇 SPL（single page lesson）：SPL-2024-089/-091/-101
 
   ## 🎯 深度评估（3 信号）
@@ -77,7 +84,7 @@ skill 执行：Step 1 现状盘点 → Step 2 深度评估 → Step 3 位置决�
 
 ## Project Context（必读）
 
-**note 目录位置**：仓库根目录的 note/（CWD 假设 = 项目根）
+**note 目录位置**：仓库根目录的 `note/`（CWD 假设 = 项目根）
 
 **13 主模块**：
 - `01.java` / `02.computer-basics` / `03.database` / `04.system-design`
@@ -202,22 +209,22 @@ skill 执行：Step 1 现状盘点 → Step 2 深度评估 → Step 3 位置决�
 ```bash
 # 1.1 关键词搜索
 cd "$(git rev-parse --show-toplevel)"
-grep -rl "<关键词>" note/ | head -10
+grep -rl "<关键词>" $KB_DIR/ | head -10
 
 # 1.2 主题目录扫描（如 RAG / Transformer / Memory）
-find note/<module> -type d -name "*<topic>*" 2>/dev/null
-ls note/<module>/
+find $KB_DIR/<module> -type d -name "*<topic>*" 2>/dev/null
+ls $KB_DIR/<module>/
 
 # 1.3 13.split-hairs 同栏目兄弟
-ls note/12.interview/<module>/ | grep -v README
+ls $KB_DIR/12.interview/<module>/ | grep -v README
 
 # 1.4 12.story 相关章节
-grep -l "<关键词>" note/13.story/*.md 2>/dev/null
+grep -l "<关键词>" $KB_DIR/13.story/*.md 2>/dev/null
 
 # 1.5 系列结构检查（目标目录下是否已有编号系列）
 # 如果目标目录下有 01-xxx.md / 02-xxx.md 等编号文件，
 # 说明是"系列"，新增文章时必须补全系列内互链
-ls note/<target-dir>/[0-9]*.md 2>/dev/null
+ls $KB_DIR/<target-dir>/[0-9]*.md 2>/dev/null
 # 如果找到编号文件 → 新文章需要：
 #   a. 末尾加"系列导航表"（链向所有兄弟）
 #   b. 所有已有兄弟末尾加/更新"系列导航表"（链向新文件）
@@ -225,17 +232,17 @@ ls note/<target-dir>/[0-9]*.md 2>/dev/null
 # 1.6 总目录入口验证（防"总目录孤岛"，对应反直觉 1）
 # 原理：新文件链到主模块 README，但主模块 README 没在目录表里反向列新文件 →
 #       用户从父 README 读，根本不知道有这个子章节
-# 输出：每个新文件必须在目标模块 README + note/README.md 总目录都登记
-TARGET_README="note/<target-module>/README.md"
-NEW_FILE="note/<target-module>/<topic>.md"
+# 输出：每个新文件必须在目标模块 README + $KB_DIR/README.md 总目录都登记
+TARGET_README="$KB_DIR/<target-module>/README.md"
+NEW_FILE="$KB_DIR/<target-module>/<topic>.md"
 NEW_BASE=$(basename "$NEW_FILE" .md)
 echo "=== 总目录入口验证 ==="
 if [ -f "$TARGET_README" ] && ! grep -q "\[$NEW_BASE\]" "$TARGET_README" 2>/dev/null; then
   echo "  ⚠  $NEW_FILE 未在 $TARGET_README 目录表中登记（总目录孤岛）"
   echo "      修复：在 $TARGET_README 加一行 [标题](相对路径)"
 fi
-if [ -f "note/README.md" ] && ! grep -q "<target-module>" "note/README.md" 2>/dev/null; then
-  echo "  ⚠  目标模块 <target-module> 未在 note/README.md 总目录出现"
+if [ -f "$KB_DIR/README.md" ] && ! grep -q "<target-module>" "$KB_DIR/README.md" 2>/dev/null; then
+  echo "  ⚠  目标模块 <target-module> 未在 $KB_DIR/README.md 总目录出现"
 fi
 
 # 1.7 计划阶段预检（commit 前的 sanity check，避免进入 Step 6 后才发现）
@@ -253,9 +260,9 @@ echo "  □ Bonus 修复同源错误已 grep（1.9 🆕）"
 # 1.8 同模式范例对照（先例优先 — 🆕 2026-08-28 沉淀实战新增）
 # 目的：避免"双层推荐"被用户挑战 —— 当已有同模式面试题 3+ 篇时，**默认单面试题版**比双层更聚焦
 # 操作：
-ls note/12.interview/<module>/ | grep -E "troubleshooting|incident|故障|排查" | head -10
+ls $KB_DIR/12.interview/<module>/ | grep -E "troubleshooting|incident|故障|排查" | head -10
 # 统计先例行数（单面试题 troubleshooting 类通常是 200-450 行）
-for f in note/12.interview/<module>/*/README.md; do
+for f in $KB_DIR/12.interview/<module>/*/README.md; do
   if grep -q "troubleshooting\|排查\|故障" "$f"; then
     echo "$(wc -l < "$f") $f"
   fi
@@ -269,8 +276,8 @@ done | sort -n
 # 目的：沉淀新案例时，主动 grep 现有文件是否有同源反直觉错误（同一错误示范）
 #       如 2026-08-28 metaspace-tuning 沉淀时，发现 jvm-memory-pitfall:370 样例代码也缺 MetaspaceSize
 # 操作：
-#   grep -rn "<本案例核心反直觉点关键词>" note/
-#   例：grep -rn "MaxMetaspaceSize" note/ | grep -v "MetaspaceSize"  # 找只设上限不设初始值的同源错误
+#   grep -rn "<本案例核心反直觉点关键词>" $KB_DIR/
+#   例：grep -rn "MaxMetaspaceSize" $KB_DIR/ | grep -v "MetaspaceSize"  # 找只设上限不设初始值的同源错误
 # 判定：
 #   - 找到 1 处同源错误 → 顺手修复为单独 fix(note) commit（追加到本次沉淀的 commit 计划）
 #   - 找到 2+ 处 → 评估是否批量修复（可能升级为单独任务）
@@ -658,9 +665,9 @@ PYEOF
 2. 更新前验证：
    ```bash
    # 统计实际目录数
-   ACTUAL_COUNT=$(ls note/12.interview/<module>/ | grep -v README | wc -l)
+   ACTUAL_COUNT=$(ls $KB_DIR/12.interview/<module>/ | grep -v README | wc -l)
    # 对比父 README 中的题数
-   DECLARED_COUNT=$(grep -oP '共 \K\d+' note/12.interview/<module>/README.md)
+   DECLARED_COUNT=$(grep -oP '共 \K\d+' $KB_DIR/12.interview/<module>/README.md)
    # 如果不一致，先修正历史遗留问题
    ```
 3. 添加新条目：
@@ -736,7 +743,7 @@ PYEOF
 
 ```bash
 # 列出 subagent 修改/新增的所有 .md 文件
-CHANGED_FILES=$(git diff --name-only HEAD | grep "^note/.*\.md$" || true)
+CHANGED_FILES=$(git diff --name-only HEAD | grep "^$KB_DIR/.*\.md$" || true)
 
 # 对每个文件跑 check-broken-links.py
 if [ -n "$CHANGED_FILES" ]; then
@@ -809,10 +816,10 @@ fi
 ```bash
 # 找现有文件中是否有同样的反直觉点
 # 例：沉淀 MetaspaceSize 案例时，grep 找有没有其他文件只设 MaxMetaspaceSize 不设 MetaspaceSize
-grep -rn "<本案例核心反直觉点关键词>" note/ | grep -v "<正常示范>"
+grep -rn "<本案例核心反直觉点关键词>" $KB_DIR/ | grep -v "<正常示范>"
 
 # 找现有样例代码是否有相同错误
-grep -B1 -A1 "<反模式关键词>=" note/<被链文件路径>
+grep -B1 -A1 "<反模式关键词>=" $KB_DIR/<被链文件路径>
 ```
 
 **判定**：
@@ -825,10 +832,10 @@ grep -B1 -A1 "<反模式关键词>=" note/<被链文件路径>
 
 ```bash
 # 找同栏目 troubleshooting 类先例
-ls note/12.interview/<module>/ | grep "troubleshooting"
+ls $KB_DIR/12.interview/<module>/ | grep "troubleshooting"
 
 # 统计行数（先例通常是 200-450 行）
-wc -l note/12.interview/<module>/*troubleshooting*/README.md
+wc -l $KB_DIR/12.interview/<module>/*troubleshooting*/README.md
 ```
 
 | 判定 | 行动 |
@@ -896,7 +903,7 @@ wc -l note/12.interview/<module>/*troubleshooting*/README.md
 
 **修复（4 步强制）**：
 1. **目标路径必须实际验证**：用 `find note -name "<target>" -type f` 或 `ls -la <path>` 确认目标存在
-2. **手动数层级**：从源文件向上数 `../` 数量 = 目标深度差（注意 note/ 跨模块跳数）
+2. **手动数层级**：从源文件向上数 `../` 数量 = 目标深度差（注意 $KB_DIR/ 跨模块跳数）
 3. **每文件 commit 后立即跑 broken links 扫描**（见 Step 6.5）
 4. **不依赖"记忆"**：每次都 grep/find 验证，不要凭印象写路径
 
@@ -912,8 +919,8 @@ wc -l note/12.interview/<module>/*troubleshooting*/README.md
 - **防御规则**：更新父 README 目录表时，用 Python 验证路径：
   ```python
   import os
-  src_dir = 'note/12.interview/11.ai'  # 父 README 所在目录
-  tgt = 'note/08.ai-foundations/03-engineering/agent-reliability/README.md'
+  src_dir = '$KB_DIR/12.interview/11.ai'  # 父 README 所在目录
+  tgt = '$KB_DIR/08.ai-foundations/03-engineering/agent-reliability/README.md'
   rel = os.path.relpath(tgt, src_dir)  # 自动计算正确相对路径
   print(rel)  # 输出: ../../11.ai/03-engineering/agent-reliability/README.md
   ```
@@ -1014,11 +1021,11 @@ done
 
 ### ❌ Mistake 14：新内容引入新 broken links（2026-07-25 历史教训）
 
-**症状**：沉淀 6 个新文件到 note/ 后，新文件中的 markdown 链接路径写错（相对路径多/少一层 ../），引入新的 broken links。**即使新内容质量满分（20/20），broken links 增量仍然是结构性硬伤**。
+**症状**：沉淀 6 个新文件到 $KB_DIR/ 后，新文件中的 markdown 链接路径写错（相对路径多/少一层 ../），引入新的 broken links。**即使新内容质量满分（20/20），broken links 增量仍然是结构性硬伤**。
 
 **历史案例**（2026-07-25 coding-agents 沉淀）：
 - 6 个新文件 + 8 commit 后，**新引入 0 broken links**（验证通过 ✅）
-- 但反例风险：在 note/03.java/01-foo/02-bar/README.md 写 `../baz/README.md` 而不是 `../../baz/README.md`，会让 note 出现真错
+- 但反例风险：在 $KB_DIR/03.java/01-foo/02-bar/README.md 写 `../baz/README.md` 而不是 `../../baz/README.md`，会让 note 出现真错
 
 **🆕 强化（2026-07-25 经验）**：
 - subagent 写新 README 引用任何系统前**必须**先 `grep -r "<system>" note/08.application-systems/` 确认该系统是否独立存在
@@ -1035,7 +1042,7 @@ import os, re, glob
 LINK_RE = re.compile(r'(?<![|\[])\[([^\]]*)\]\((?!https?://)(?!mailto:)(?!#)([^)#\s]+?\.md)(?:#[^)]*)?\)')
 PLACEHOLDERS = ['x/README', 'xxx', 'xx/yy', '../11.ai/...']
 real_broken = 0
-new_files = [f for f in glob.glob('note/**/*.md', recursive=True)
+new_files = [f for f in glob.glob('$KB_DIR/**/*.md', recursive=True)
              if os.path.exists(f) and int(os.stat(f).st_mtime) > <沉淀开始时间戳>]
 for readme in new_files:  # 优先扫本会话新文件
     content = open(readme, encoding='utf-8', errors='ignore').read()
@@ -1135,9 +1142,9 @@ done
 3. **Orchestrator 收尾步骤**：
    ```bash
    # 1. 统计实际目录数
-   ACTUAL_COUNT=$(ls note/12.interview/<module>/ | grep -v README | wc -l)
+   ACTUAL_COUNT=$(ls $KB_DIR/12.interview/<module>/ | grep -v README | wc -l)
    # 2. 对比父 README 中的题数
-   DECLARED_COUNT=$(grep -oP '共 \K\d+' note/12.interview/<module>/README.md)
+   DECLARED_COUNT=$(grep -oP '共 \K\d+' $KB_DIR/12.interview/<module>/README.md)
    # 3. 如不一致，orchestrator 修正 + commit
    if [ "$ACTUAL_COUNT" != "$DECLARED_COUNT" ]; then
      # sed 替换题数
@@ -1167,10 +1174,10 @@ done
 1. **Step 1 现状盘点必须包含父 README 验证**：
    ```bash
    # 1. 统计实际目录数
-   ACTUAL_COUNT=$(ls note/12.interview/<module>/ | grep -v README | wc -l)
+   ACTUAL_COUNT=$(ls $KB_DIR/12.interview/<module>/ | grep -v README | wc -l)
    
    # 2. 读取父 README 声明的题数
-   DECLARED_COUNT=$(grep -oP '共 \K\d+' note/12.interview/<module>/README.md)
+   DECLARED_COUNT=$(grep -oP '共 \K\d+' $KB_DIR/12.interview/<module>/README.md)
    
    # 3. 对比并记录差异
    if [ "$ACTUAL_COUNT" != "$DECLARED_COUNT" ]; then
@@ -1179,8 +1186,8 @@ done
    fi
    
    # 4. 列出实际目录 vs 父 README 条目，找出缺失项
-   ls note/12.interview/<module>/ | grep -v README | sort > /tmp/actual.txt
-   grep -oP '\[.*?\]\(([^)]+)/\)' note/12.interview/<module>/README.md | \
+   ls $KB_DIR/12.interview/<module>/ | grep -v README | sort > /tmp/actual.txt
+   grep -oP '\[.*?\]\(([^)]+)/\)' $KB_DIR/12.interview/<module>/README.md | \
      grep -oP '(?<=\()[^)]+(?=/)' | sort > /tmp/declared.txt
    comm -23 /tmp/actual.txt /tmp/declared.txt  # 实际有但父 README 没有的
    ```
@@ -1261,10 +1268,10 @@ done
 **检测脚本**（可在 Step 7 自检时跑）：
 ```bash
 # 对每个被链接的兄弟文件，做关联强度判定
-for target in $(grep -oP '\]\(\.\./[^)]+\)' note/<file>/README.md | grep -oP '\.\./[^)]+'); do
+for target in $(grep -oP '\]\(\.\./[^)]+\)' $KB_DIR/<file>/README.md | grep -oP '\.\./[^)]+'); do
   count=$(grep -c "<target的主题关键词>" <被链接的文件>)
   if [ "$count" -eq "0" ]; then
-    echo "  ⚠ 弱关联: note/<file>/ → $target（被链接文件 0 处提及）"
+    echo "  ⚠ 弱关联: $KB_DIR/<file>/ → $target（被链接文件 0 处提及）"
   fi
 done
 ```

@@ -3,11 +3,11 @@ name: note-health
 description: Use when user asks to audit or improve a project's knowledge base (default `note/`, configurable via `NOTE_DIR` env var) — "note 哪里需要优化" / "note 有哪些问题" / "扫一遍 note" / "review note" / "体检" (structural audit) OR "评价 note 质量" / "这篇文章质量怎么样" / "质量验收" / "评分" OR "刚写的这篇质量如何" / "新写的 README 看看" (new-file quality). 单一分层体检：结构机械扫描 + leaf 判断式打分，全库穷举用 Workflow fan-out。
 ---
 
-> **规则来源**：执行前必读 `note/SPEC.md` §5（G1-G6 通用评分维度）+ §6（11 类基础扫描规则）+ §7（SPEC 分层元规范）+ `<module>/SPEC.md`（如 `note/01.java-and-jvm/SPEC.md` 的 A 类维度）；若目标模块有强骨架规范（如 `note/12.interview/QUESTION-FORMAT-SPEC.md` / `note/13.story/STORY-FORMAT-SPEC.md`）也一并读取（已在 `references/leaf-quality.md` 等处引用其硬性要求）。模块结构通过 `find note -maxdepth 1 -type d` 运行时读取，不硬编码。
+> **规则来源**：执行前必读 `$KB_DIR/SPEC.md` §5（G1-G6 通用评分维度）+ §6（11 类基础扫描规则）+ §7（SPEC 分层元规范）+ `<module>/SPEC.md`（如 `$KB_DIR/01.java-and-jvm/SPEC.md` 的 A 类维度）；若目标模块有强骨架规范（如 `$KB_DIR/12.interview/QUESTION-FORMAT-SPEC.md` / `$KB_DIR/13.story/STORY-FORMAT-SPEC.md`）也一并读取（已在 `references/leaf-quality.md` 等处引用其硬性要求）。模块结构通过 `find note -maxdepth 1 -type d` 运行时读取，不硬编码。
 
 # note-health：note 知识库健康检查
 
-对 `note/` 跑**单一分层体检**：结构机械扫描 + leaf 判断式打分，自底向上 4 相，输出统一 P0-P3 + 分批计划 + 逐篇评分表。重内容放在 `references/`，本文件只留决策骨架。
+对 `$KB_DIR/` 跑**单一分层体检**：结构机械扫描 + leaf 判断式打分，自底向上 4 相，输出统一 P0-P3 + 分批计划 + 逐篇评分表。重内容放在 `references/`，本文件只留决策骨架。
 
 ## Step 0：scope 判断（第一闸）
 
@@ -111,7 +111,7 @@ def body_only(content):
     return '\n'.join(lines[:cut])
 
 weak = 0
-for f in glob.glob('note/**/*.md', recursive=True):
+for f in glob.glob('$KB_DIR/**/*.md', recursive=True):
     if '.health-tmp' in f.replace(os.sep, '/'): continue
     content = open(f, encoding='utf-8', errors='ignore').read()
     body = body_only(content)
@@ -368,10 +368,10 @@ python scripts/check-broken-links.py --module 09.ai-applications
 # 全库体检（leaf ≤ 1000）
 "扫一遍 note 看看哪里要优化"
 → Step 0: 全库（leaf ≤ 1000），直接走采样
-→ Phase 1: 跑 structural-checks.md 扫描，结果落 note/.health-tmp/scan-1-<date>.txt
+→ Phase 1: 跑 structural-checks.md 扫描，结果落 $KB_DIR/.health-tmp/scan-1-<date>.txt
 → Phase 2: find + python 枚举 leaf，调 health-workflow.js（args.files=...，batchSize=6）
 → Phase 3: 上卷
-→ Phase 4: 写 note/.health-tmp/report-<date>.md，header 含「策略选择：A 采样」
+→ Phase 4: 写 $KB_DIR/.health-tmp/report-<date>.md，header 含「策略选择：A 采样」
 
 # 全库体检（leaf > 1000）
 "扫一遍 note 看看哪里要优化"
