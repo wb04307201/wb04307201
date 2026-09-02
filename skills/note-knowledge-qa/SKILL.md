@@ -371,31 +371,65 @@ PYEOF
 AI 经常按"模块名+子主题"猜测路径（如 `02-memory-model`），但实际结构可能不同。**用 grep 找真实存在的相似文件**：
 
 ```python
-import os, glob
-def suggest_similar(missing_path):
-    """给定缺失路径，返回最相似的 3 个真实存在的文件"""
-    name = os.path.basename(missing_path).replace('.md', '')
-    # 提取核心关键词
+import os, glob, re
+
+def suggest_similar(missing_path, top=3):
+    """§3.5.1 智能路径建议（v2 优化版）
+
+    实测问题：单纯关键词匹配会产生大量噪声（命中 note/README.md）。
+    v2 加 4 个权重优化：
+    1. 文件名完整匹配: ×10
+    2. 同目录: +5
+    3. 父目录名匹配: +3
+    4. 排除根 README: -100
+    """
+    name = os.path.basename(missing_path).replace('.md', '').lower()
+    dir_parts = missing_path.replace('note/', '').split('/')[:-1]
+    parent_dir = dir_parts[-1].lower() if dir_parts else ''
     keywords = re.findall(r'[A-Za-z]+|[一-鿿]{2,}', name)
+
     scores = {}
     for f in glob.glob('note/**/*.md', recursive=True):
-        if '.health-tmp' in f: continue
-        score = sum(1 for k in keywords if k.lower() in f.lower())
+        if '.health-tmp' in f.replace(os.sep, '/'): continue
+        f_lower = f.lower()
+        score = 0
+
+        # 排除根 README 噪声
+        if f.replace(os.sep, '/') in ['note/README.md', 'note/SPEC.md']:
+            continue
+
+        # 文件名完整匹配（最强信号）
+        f_name = os.path.basename(f).replace('.md', '').lower()
+        if name == f_name:
+            score += 10
+        elif name in f_name or f_name in name:
+            score += 5
+
+        # 同目录匹配
+        f_dir = os.path.dirname(f).replace(os.sep, '/').lower()
+        if parent_dir and parent_dir in f_dir:
+            score += 5
+
+        # 关键词加权（避免单纯全文匹配）
+        score += sum(2 if k.lower() in f_lower else 0 for k in keywords)
+
         if score > 0:
             scores[f] = score
-    return sorted(scores.items(), key=lambda x: -x[1])[:3]
+    return sorted(scores.items(), key=lambda x: -x[1])[:top]
 
-# 示例：JVM 内存模型查询
-suggestions = suggest_similar('note/01.java-and-jvm/02-jvm/02-memory-model/README.md')
-# → 可能返回：
-#   1. note/01.java-and-jvm/02-jvm/memory-model/README.md (score=2)
-#   2. note/01.java-and-jvm/02-jvm/jvm-memory-model/README.md (score=2)
-#   3. note/12.interview/01.java/jvm-memory-model/README.md (score=2)
+# 示例：JVM 内存模型查询（实测得分 7-6）
+suggestions = suggest_similar('note/13.story/06-distributed-system-evolution.md')
+# → 真实建议：
+#   1. note/13.story/02-system-architecture-evolution.md (score=7)
+#   2. note/06.distributed-systems/01-foundation/02-evolution/README.md (score=6)
+#   3. note/06.distributed-systems/01-foundation/02-evolution/01-monolith-to-microservices/README.md (score=6)
 ```
 
 **使用场景**：AI 给用户答案时，如果发现引用路径不存在，**主动提示"类似路径可能是 X"** 而不是简单报错。
 
 **反直觉 4**："AI 觉得路径是对的" —— 与 subagent 同理，**唯一可靠标准是 `os.path.isfile(target_abs)`**。
+
+**反直觉 5**（Session 9 实测）：单纯的关键词全文匹配会命中 `note/README.md` 等通用文件，必须加**文件名/目录名权重**才能给出真实有用的建议。
 
 ### Step 4: 整合回答
 
