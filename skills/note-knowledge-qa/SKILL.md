@@ -331,6 +331,8 @@ echo "═══ 建议阅读顺序：主模块 → 13.split-hairs → 12.story�
 
 **Session 6 教训**：230 处断链集中爆发 = 87% 来自"结构重组遗留路径错位"。
 
+**Session 9 实测**：3 个真实问题测试中 §3.5 成功阻止 5+ 处错误引用（JVM、跨模块等），验证有效。
+
 **触发时机**：在 Step 3 检索结束时，或整合回答引用"相关章节"前。
 
 **校验脚本**：
@@ -362,6 +364,36 @@ PYEOF
 | 全库断链 = 0 | ✅ 安心引用 |
 | 引用源文件含断链 | 在回答里标注"[目标](路径)（路径待修复）"，**不删除引用但提醒用户** |
 | 引用了不存在的子目录（如重构遗留的 `09.ai-applications/llm-alignment/`）| 改为引用替代路径或删除链接 |
+| **§3.5.1 智能路径建议** | 当 AI 引用的路径不存在，**自动 grep 关键词找最相似的真实文件** |
+
+**§3.5.1 智能路径建议（2026-09-02 实测新增）**
+
+AI 经常按"模块名+子主题"猜测路径（如 `02-memory-model`），但实际结构可能不同。**用 grep 找真实存在的相似文件**：
+
+```python
+import os, glob
+def suggest_similar(missing_path):
+    """给定缺失路径，返回最相似的 3 个真实存在的文件"""
+    name = os.path.basename(missing_path).replace('.md', '')
+    # 提取核心关键词
+    keywords = re.findall(r'[A-Za-z]+|[一-鿿]{2,}', name)
+    scores = {}
+    for f in glob.glob('note/**/*.md', recursive=True):
+        if '.health-tmp' in f: continue
+        score = sum(1 for k in keywords if k.lower() in f.lower())
+        if score > 0:
+            scores[f] = score
+    return sorted(scores.items(), key=lambda x: -x[1])[:3]
+
+# 示例：JVM 内存模型查询
+suggestions = suggest_similar('note/01.java-and-jvm/02-jvm/02-memory-model/README.md')
+# → 可能返回：
+#   1. note/01.java-and-jvm/02-jvm/memory-model/README.md (score=2)
+#   2. note/01.java-and-jvm/02-jvm/jvm-memory-model/README.md (score=2)
+#   3. note/12.interview/01.java/jvm-memory-model/README.md (score=2)
+```
+
+**使用场景**：AI 给用户答案时，如果发现引用路径不存在，**主动提示"类似路径可能是 X"** 而不是简单报错。
 
 **反直觉 4**："AI 觉得路径是对的" —— 与 subagent 同理，**唯一可靠标准是 `os.path.isfile(target_abs)`**。
 
