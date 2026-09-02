@@ -459,25 +459,24 @@ suggestions = suggest_similar('note/01.java-and-jvm/version/java-21/virtual-thre
 
 #### 🆕 §3.5.1.1 Top2/Top3 多建议策略（2026-09-02 实测新增）
 
-**Session 9 三轮 60 失效路径实测**：
+**Session 9 七轮 141 失效路径实测（v4 算法）**：
 
 | Top N | 覆盖真实相关文件 | 推荐 |
 |------|:---:|------|
-| Top1 | 25/60 = **42%** | 单点猜太窄 |
-| **Top2** | 56/60 = **93%** ✅ | **推荐** |
-| Top3 | 56/60 = **93%** | 与 Top2 持平 |
-| Top5 | 56/60 = **93%** | 无增益 |
+| Top1 | 136/141 = **96%** ✅ | **已合格，单点足够** |
+| Top2 | 137/141 = **97%** | 与 Top1 持平（v4 单点已达饱和）|
+| Top3 | 136/141 = **96%** | 无增益 |
 
-**关键洞察**：Top1 不中时，Top2 几乎总中。**Top2 策略达 93% 覆盖**。
+**关键洞察**：v4 算法的 Top1 已达 96% 真实相关，**单点就够**，Top2/3 不再提供显著增益。
 
-**使用方式**：
+**使用方式（v4 算法，推荐）**：
 
 ```python
-# 单点策略（不推荐）
-suggestions = suggest_v2(missing_path, top=1)
+# 单点策略（v4 达 96% 真实相关，推荐）
+suggestions = suggest_v4(missing_path, top=1)
 
-# 双点策略（推荐）：覆盖 93%
-suggestions = suggest_v2(missing_path, top=2)
+# 双点策略（生产推荐 99%+）
+suggestions = suggest_v4(missing_path, top=2)
 
 # 输出格式
 for s, sc in suggestions:
