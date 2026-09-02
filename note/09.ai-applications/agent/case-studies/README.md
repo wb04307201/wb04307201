@@ -15,12 +15,12 @@
 
 | # | 案例 | 路径 | 摘要 |
 |---|------|------|------|
-| 1 | Salesforce Agentforce | [10-salesforce-agentforce/](10-salesforce-agentforce/README.md) | Salesforce 企业级 Agent 平台（Apex/Flow/Agentforce 集成） |
+| 1 | Salesforce Agentforce | [salesforce-agentforce/](salesforce-agentforce/README.md) | Salesforce 企业级 Agent 平台（Apex/Flow/Agentforce 集成） |
 | 2 | Shopify AI Agent | [shopify-ai-agent/](shopify-ai-agent/README.md) | Shopify Sidekick 商家 AI Agent（Shopify Magic + Sidekick） |
 
 ## 阅读路径
 
-1. **先看企业平台**：[Salesforce Agentforce](10-salesforce-agentforce/README.md) —— 成熟企业级 Agent 平台，适合理解大规模 Agent 编排架构
+1. **先看企业平台**：[Salesforce Agentforce](salesforce-agentforce/README.md) —— 成熟企业级 Agent 平台，适合理解大规模 Agent 编排架构
 2. **再看电商实战**：[Shopify AI Agent](shopify-ai-agent/README.md) —— 电商场景 Agent 落地，适合理解 Sidekick 式商家助手的设计取舍
 
 ## 关联主题

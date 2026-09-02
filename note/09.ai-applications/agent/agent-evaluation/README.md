@@ -185,7 +185,7 @@ Agent Evaluation 公式：
 - **LLM 评估**：[LLM 单次调用评估](../../eval/README.md) —— 331 行深度
 - **RAG 评估**：../04-evaluation.md —— RAGAS / TruLens / DeepEval 3 大工具横评
 - **面试题**：[12.interview/11.ai/agent-performance-evaluation](../../../12.interview/11.ai/agent-performance-evaluation/README.md) —— 7 道精选 Q&A（⚠️ 待 Phase 1+ 迁入）
-- **真实案例**：[Salesforce Agentforce 评测实践](../case-studies/10-salesforce-agentforce/README.md)
+- **真实案例**：[Salesforce Agentforce 评测实践](../case-studies/salesforce-agentforce/README.md)
 - **生产级 Agent**：[Shopify Sidekick 评测流程](../production-agent/README.md)
 
 ---

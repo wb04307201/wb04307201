@@ -380,7 +380,7 @@ deploy:
 
 ### 真实案例
 
-- [11.ai/05-applications/case-studies/10-salesforce-agentforce](../../../09.ai-applications/agent/case-studies/10-salesforce-agentforce/README.md) —— Salesforce Agentforce 评测实践
+- [11.ai/05-applications/case-studies/salesforce-agentforce](../../../09.ai-applications/agent/case-studies/salesforce-agentforce/README.md) —— Salesforce Agentforce 评测实践
 
 ### 同栏目（11.ai 高频面试题）
 
