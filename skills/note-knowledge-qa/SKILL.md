@@ -448,6 +448,47 @@ suggestions = suggest_similar('note/13.story/06-distributed-system-evolution.md'
 
 **反直觉 6**（v3 修复）：模块 README 排除后，**真实相关文件**（如 `vue-3-reactivity`）才能排第一。
 
+#### 🆕 §3.5.1 实测教训（2026-09-02 三轮 60 失效路径 · 关键诚实记录）
+
+**测试背景**：Session 9 设计 75 场景（3 轮 × 22/28/25），覆盖 6+ 类别，**§3.5.1 v2 在 60 失效路径上 Top1 真实命中率仅 50%**（30/60 = 真实相关，30/60 = 模块 README 噪声）。
+
+**反直觉 7（最关键）**：之前报告"91% Top1 命中率"是**显示 bug**——所有 v2 Top1 实际都是 `01.java-and-jvm/README.md`（模块 README），但脚本输出只显示 basename `README.md`，让人误以为"Top1 真实相关"。**真实命中率是 50%**。
+
+**反直觉 8（v3 反而变差）**：v3 排除了模块 README 后，**Top1 真实命中率掉到 7%**（4/60）。原因是部分真实相关的内容**只在模块 README 里汇总**，排除后反而找不到。
+
+**实际可接受度**：
+
+| 维度 | 价值 |
+|------|------|
+| §3.5 基础校验 | **100% 阻止错误引用**（核心价值）|
+| §3.5.1 智能建议 | **辅助价值，AI 需自判断**（不依赖单一 Top1） |
+
+**结论**：§3.5.1 是"**锦上添花**"不是"**核心保障**"。
+
+**避免显示 bug 的建议**（v4 测试模板必做）：
+
+```python
+# 输出时务必打印完整路径，不能只看 basename
+print(f'  {sc:3d}  {full_path}')  # full_path 而非 os.path.basename
+
+# 质量评估必须按"真实相关"判定（非仅关键词命中）
+def is_relevant(top1_path, missing_path):
+    short = top1_path.replace('note/', '')
+    if short.count('/') == 1 and short.endswith('/README.md'):
+        return False  # 模块 README = 噪声
+    kws = re.findall(r'[A-Za-z]+|[一-鿿]{2,}', os.path.basename(missing_path).replace('.md', ''))
+    return any(k.lower() in short.lower() for k in kws)
+```
+
+**完整实测数据**（详见 §3.5.2 测试模板）：
+
+| 轮次 | 失效数 | v2 Top1 真实相关 | v3 Top1 真实相关 |
+|------|:---:|:---:|:---:|
+| 第1轮（22 场景） | 14 | 10 (71%) | 1 (7%) |
+| 第2轮（28 场景） | 30 | 16 (53%) | 3 (10%) |
+| 第3轮（25 场景） | 16 | 4 (25%) | 0 (0%) |
+| **合计** | **60** | **30 (50%)** | **4 (7%)** |
+
 ### Step 4: 整合回答
 
 根据问题类型选择回答模板：
