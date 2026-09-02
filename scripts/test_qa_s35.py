@@ -95,24 +95,36 @@ def suggest_v4(path, top=3):
     2. 模块 README 降权（不是排除）：关键词贡献 -50%
     3. path 深度匹配：depth_diff==0 +3，==1 +1
 
-    实测：136/142 = 96% Top1 真实相关
+    v4.1 修复：KB_DIR 根 README（"体检"、"全局"）加权
     """
     import re as _re
     name = os.path.basename(path).replace('.md', '').lower()
     dir_parts = [p.lower() for p in path.replace('note/', '').split('/')[:-1]]
-    parent_dir = dir_parts[-1] if dir_parts else ''
+    parent_dir = dir_parts[-1].lower() if dir_parts else ''
     keywords = _re.findall(r'[A-Za-z]+|[一-鿿]{2,}', name)
     missing_depth = len([p for p in dir_parts if p])
+    # 缺失路径就是 KB 根 README（如 note/README.md）：需要特别处理
+    is_root_missing = (len(dir_parts) == 0 or dir_parts == ['']) and 'readme' in name
+
     scores = {}
     for f in glob.glob('{}/**/*.md'.format(KB_DIR), recursive=True):
         if '.health-tmp' in f.replace(os.sep, '/'):
             continue
-        if f.replace(os.sep, '/') in ['{}/README.md'.format(KB_DIR), '{}/SPEC.md'.format(KB_DIR)]:
-            continue
+        # 注意：不再排除 KB_DIR/README.md！v4.1 反而要加分
         f_lower = f.lower()
         f_norm = f.replace(os.sep, '/')
         s = 0
         f_name = os.path.basename(f).replace('.md', '').lower()
+
+        # v4.1: 缺失 KB 根 README 时，KB_DIR 的 README 应排第一
+        if is_root_missing and f_norm.endswith('/README.md'):
+            f_depth_from_root = len([p for p in f_norm.split('/') if p]) - 2  # 减 KB_DIR
+            # 根 README 分数最高，然后是模块 README（深度 1）
+            if f_depth_from_root == 0:
+                s += 20  # KB_DIR 自己的 README
+            else:
+                s += max(0, 8 - f_depth_from_root)  # 越浅越高
+
         if name == f_name:
             s += 15
         elif name in f_name or f_name in name:
@@ -121,8 +133,7 @@ def suggest_v4(path, top=3):
         for fp in f_norm.split('/')[2:-1]:
             for pp in dir_parts[:-1]:
                 if fp == pp:
-                    matched_parts += 1
-                    break
+                    matched_parts += 1; break
         s += matched_parts * 4
         f_dir = os.path.dirname(f).replace(os.sep, '/').lower()
         if parent_dir and parent_dir in f_dir:
