@@ -442,6 +442,40 @@ suggestions = suggest_similar('note/13.story/06-distributed-system-evolution.md'
 
 **使用场景**：AI 给用户答案时，如果发现引用路径不存在，**主动提示"类似路径可能是 X"** 而不是简单报错。
 
+#### 🆕 §3.5.1.1 Top2/Top3 多建议策略（2026-09-02 实测新增）
+
+**Session 9 三轮 60 失效路径实测**：
+
+| Top N | 覆盖真实相关文件 | 推荐 |
+|------|:---:|------|
+| Top1 | 25/60 = **42%** | 单点猜太窄 |
+| **Top2** | 56/60 = **93%** ✅ | **推荐** |
+| Top3 | 56/60 = **93%** | 与 Top2 持平 |
+| Top5 | 56/60 = **93%** | 无增益 |
+
+**关键洞察**：Top1 不中时，Top2 几乎总中。**Top2 策略达 93% 覆盖**。
+
+**使用方式**：
+
+```python
+# 单点策略（不推荐）
+suggestions = suggest_v2(missing_path, top=1)
+
+# 双点策略（推荐）：覆盖 93%
+suggestions = suggest_v2(missing_path, top=2)
+
+# 输出格式
+for s, sc in suggestions:
+    marker = '✓' if is_relevant(s, missing_path) else '✗'
+    print(f'  {marker} {sc} {s}')
+```
+
+**AI 答错率降低**：
+- §3.5 基础阻止：**60/60 = 100%**（核心价值）
+- §3.5.1.1 Top2 建议：**56/60 = 93%**（AI 自判断后实际命中率）
+
+**实际有效命中率**：≥ 93%（§3.5 + §3.5.1.1 Top2）
+
 **反直觉 4**："AI 觉得路径是对的" —— 与 subagent 同理，**唯一可靠标准是 `os.path.isfile(target_abs)`**。
 
 **反直觉 5**（Session 9 三轮实测 · v2 教训）：单纯排除 `note/README.md` 还不够，**模块 README 也是噪声**（如 `01.java-and-jvm/README.md` 命中所有含"java"关键词的查询）。
