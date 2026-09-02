@@ -26,16 +26,34 @@ if os.name == 'nt':
         pass
 
 
-# ============ 通用化：知识库根目录配置（2026-09-02 修复）============
-# 默认 'note/'，可通过 NOTE_DIR 环境变量覆盖；若默认不存在则用项目根
-KB_DIR = os.environ.get('NOTE_DIR', 'note')
-if not os.path.isdir(KB_DIR):
+# ============ 通用化：知识库根目录解析（2026-09-02 修复 v2）============
+# 解析优先级（不硬编码 note/）：
+#   1. NOTE_DIR 环境变量（用户显式指定）
+#   2. 自动检测：项目根找 note/ docs/knowledge/ knowledge/ .knowledge/
+#   3. fallback = 项目根 '.'（真正默认）
+KB_DIR = os.environ.get('NOTE_DIR', '')
+if not KB_DIR:
+    for _candidate in ('note', 'docs/knowledge', 'knowledge', '.knowledge'):
+        if os.path.isdir(_candidate) and os.path.isfile(os.path.join(_candidate, 'README.md')):
+            KB_DIR = _candidate
+            break
+if not KB_DIR:
     KB_DIR = '.'
 
+# 兼容层：用户数据可能写 'note/xxx' 或 'KB_DIR_NAME/xxx'，统一处理
+KB_BASENAME = os.path.basename(KB_DIR.rstrip('/').rstrip('\\'))
+
 def k(path):
-    """统一路径前缀：把 'note/...' 转换为 '{KB_DIR}/...'"""
+    """把数据中 'note/xxx' 或 'KB_DIR/xxx' 转换为实际 KB_DIR/xxx
+
+    兼容历史数据：ROUND_* 中仍写 'note/...' 时，自动转换为 KB_DIR/...
+    """
+    # 优先匹配 'note/' 前缀（向后兼容）
     if path.startswith('note/'):
         return os.path.join(KB_DIR, path[5:]).replace(os.sep, '/')
+    # 也匹配 KB_DIR 自身的 basename（如 docs/knowledge/... 写为 knowledge/...）
+    if KB_BASENAME and KB_BASENAME != '.' and path.startswith(KB_BASENAME + '/'):
+        return os.path.join(KB_DIR, path[len(KB_BASENAME) + 1:]).replace(os.sep, '/')
     return path
 
 
@@ -456,20 +474,27 @@ def main():
     print('=' * 70)
 
     rounds = []
+    # 通用化：把数据中 'note/...' 或 'KB_DIR/...' 转换为实际 KB_DIR/...
+    def _convert(scenarios):
+        out = []
+        for q, refs in scenarios:
+            out.append((q, [k(r) for r in refs]))
+        return out
+
     if not args.round or args.round == 1:
-        rounds.append(('Round 1', ROUND_1))
+        rounds.append(('Round 1', _convert(ROUND_1)))
     if not args.round or args.round == 2:
-        rounds.append(('Round 2', ROUND_2))
+        rounds.append(('Round 2', _convert(ROUND_2)))
     if not args.round or args.round == 3:
-        rounds.append(('Round 3', ROUND_3))
+        rounds.append(('Round 3', _convert(ROUND_3)))
     if not args.round or args.round == 4:
-        rounds.append(('Round 4', ROUND_4))
+        rounds.append(('Round 4', _convert(ROUND_4)))
     if not args.round or args.round == 5:
-        rounds.append(('Round 5', ROUND_5))
+        rounds.append(('Round 5', _convert(ROUND_5)))
     if not args.round or args.round == 6:
-        rounds.append(('Round 6', ROUND_6))
+        rounds.append(('Round 6', _convert(ROUND_6)))
     if not args.round or args.round == 7:
-        rounds.append(('Round 7', ROUND_7))
+        rounds.append(('Round 7', _convert(ROUND_7)))
 
     total = {'refs': 0, 'ok': 0, 'fail': 0, 'rel': 0, 'rel_t': 0}
     for name, sc_list in rounds:
