@@ -134,10 +134,13 @@ commit-msg  →  pre-commit  →  §7.2 自检  →  push/PR  →  monthly cron
 |----------|---------|------|
 | **`grs.yml`** | 每月 1 日 02:00 + workflow_dispatch | 更新 `profile/stats.svg` + `top-langs.svg`（GitHub README 卡片）|
 | **`difficulty-calibration.yml`** | 每月 1 日 03:00 + PR（修改 note + scripts 时）| 5 维 depth 字段格式验证 + 月度 auto-calibrate.py 自动校准 |
-| **`link-check.yml`** | 每月 1 日 04:00 + push/PR | 第三方 action 校验 HTTP/HTTPS 外链（`.mlc_config.json` 配置忽略规则）|
 | **`structural-link-check.yml`** | 每月 1 日 06:00 + push/PR | 自研 `scripts/check-broken-links.py` 校验 note/ 内部相对路径（双口径：.md + 目录链接）|
 
-**cron 阶梯**：02:00 / 03:00 / 04:00 / 06:00 — 4 个 job 在 4 小时内串行完成。
+**cron 阶梯**：02:00 / 03:00 / 06:00 — 3 个 job 在 4 小时内串行完成。
+
+> **Session 9 决策**：删除 `link-check.yml`（原每月 1 日 04:00 + push/PR）。
+> 理由：1100+ 外链的 HEAD 请求 ×8s 超时 = 数学上必然 15-25min；外链是动态不可控（GFW/SSL），长期失败无意义。
+> 内部路径已由 `structural-link-check.yml` 100% 覆盖。
 
 ## 工作流惯例
 

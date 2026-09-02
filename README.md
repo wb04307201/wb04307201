@@ -53,9 +53,9 @@
 
 <a href="https://github.com/wb04307201/wb04307201/actions/workflows/difficulty-calibration.yml"><img src="https://github.com/wb04307201/wb04307201/actions/workflows/difficulty-calibration.yml/badge.svg?branch=master" alt="5 维校准"/></a>
 <a href="https://github.com/wb04307201/wb04307201/actions/workflows/structural-link-check.yml"><img src="https://github.com/wb04307201/wb04307201/actions/workflows/structural-link-check.yml/badge.svg?branch=master" alt="结构链接"/></a>
-<a href="https://github.com/wb04307201/wb04307201/actions/workflows/link-check.yml"><img src="https://github.com/wb04307201/wb04307201/actions/workflows/link-check.yml/badge.svg?branch=master" alt="URL 校验"/></a>
 
-> 4 个 workflow 每月 1 日串行跑（02:00/03:00/04:00/06:00），PR 触发即时反馈。
+> 3 个 workflow 每月 1 日串行跑（02:00/03:00/06:00），PR 触发即时反馈。
+> ~~URL 校验~~ link-check.yml 已删除（Session 9：外部链接是动态不可控，长期失败无意义）。
 
 ### 📚 13 主模块导航
 

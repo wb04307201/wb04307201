@@ -19,3 +19,4 @@ note/.health-tmp/
 
 # Obsidian 工作区配置（个人/机器级，不应 commit）
 note/.obsidian/
+.playwright-mcp/
