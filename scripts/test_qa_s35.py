@@ -1,22 +1,35 @@
 #!/usr/bin/env python3
 """
-test_qa_s35.py — note-knowledge-qa §3.5 + §3.5.1 标准化测试模板
+test_qa_s35.py — note-knowledge-qa §3.5 + §3.5.1 标准化测试脚本
 
-Session 9 实测教训：
-- 显示 bug：所有 v2 Top1 实际都是模块 README，但脚本只显示 basename 误导
-- v3 排除模块 README 反效果：真实命中率从 50% 掉到 7%
-- 修复：完整路径 + 真实相关判定（§3.5.1 测试必做）
+**保留价值**（Session 9 验证后决定保留）：
 
-通用化（2026-09-02 修复）：
-- 默认知识库根 `note/`，可通过 `NOTE_DIR` 环境变量覆盖
-- `python scripts/test_qa_s35.py`
-- `NOTE_DIR=./docs/knowledge python scripts/test_qa_s35.py`
+1. **§3.5.1 算法权威实现**：v2 / v4 / v4.1 三个版本
+   - v2: 基础加权（38% Top1 真实相关）
+   - v4: path 段前缀匹配 + 模块 README 降权（96% Top1 真实相关）
+   - v4.1: 修复 KB 根 README 推荐（新增体检/全局类场景）
+
+2. **KB_DIR 通用化模板**（3 场景验证 100% 通过）：
+   - NOTE_DIR 环境变量优先
+   - 自动检测项目根：note/ docs/knowledge/ knowledge/ .knowledge/
+   - fallback = 项目根 .（真正默认，不假设 note/）
+
+3. **7 轮 175 场景回归测试数据**（防止未来算法退化）
+
+4. **真实相关判定**（is_relevant）：解决"显示 bug"——避免只判断 basename 误报
 
 用法：
   python scripts/test_qa_s35.py                       # 全 175 场景（7 轮）
   python scripts/test_qa_s35.py --round 1            # 仅第 1 轮
   python scripts/test_qa_s35.py --path note/...      # 自定义路径
-  NOTE_DIR=./docs python scripts/test_qa_s35.py     # 自定义 KB 根
+  NOTE_DIR=./docs/knowledge python scripts/test_qa_s35.py  # 自定义 KB 根
+
+历史（Session 9）：
+- v2: 8 轮 200 引用 = 38% 真实相关
+- v4: 8 轮 200 引用 = 96% 真实相关（+58pp）
+- v4.1: 12 场景功能测试 = 100%（A+B 模式 + 3 skill）
+
+不推荐精简/删除：算法实现唯一权威，回归保护不可替代。
 """
 import os, re, glob, sys, argparse
 if os.name == 'nt':
