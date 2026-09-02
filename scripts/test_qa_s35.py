@@ -228,6 +228,39 @@ ROUND_4 = [
     ('OA 办公自动化', ['note/10.business-systems/05-operations/oa/README.md']),
 ]
 
+ROUND_5 = [
+    # X: 复合路径（5）
+    ('Java 集合框架 → 12.interview', ['note/12.interview/01.java/java-collection/README.md']),
+    ('Spring Boot 启动 → 04 启动', ['note/04.spring-backend/02-boot/02-bootstrap/README.md']),
+    ('Redis 集群 → 12.interview', ['note/12.interview/03.database/redis-cluster-mode/README.md']),
+    ('Kafka 生产 → 09 AI 应用', ['note/09.ai-applications/llm-inference/kafka-producer/README.md']),
+    ('ZooKeeper → 06 分布式', ['note/06.distributed-systems/02-distributed/zookeeper/README.md']),
+    # Y: 中文主题（5）
+    ('事务', ['note/03.data-stack/01-database/01-事务/README.md']),
+    ('锁', ['note/06.distributed-systems/02-distributed/01-锁/README.md']),
+    ('缓存', ['note/03.data-stack/02-cache/01-缓存/README.md']),
+    ('消息队列', ['note/06.distributed-systems/04-high-performance/01-消息队列/README.md']),
+    ('数据库', ['note/03.data-stack/01-database/01-数据库/README.md']),
+    # Z: 案例研究（5）
+    ('Salesforce Agentforce 案例', ['note/09.ai-applications/agent/case-studies/salesforce-agentforce/README.md']),
+    ('Shopify AI Agent 案例', ['note/09.ai-applications/agent/case-studies/shopify-ai-agent/README.md']),
+    ('AI 编码 Claude Code 实践', ['note/09.ai-applications/agent/coding-agents/claude-code/README.md']),
+    ('电商系统架构案例', ['note/10.business-systems/02-e-commerce/architecture/README.md']),
+    ('外卖系统案例', ['note/10.business-systems/02-e-commerce/food-delivery.md']),
+    # AA: 协议/标准（5）
+    ('HTTP/3 协议', ['note/02.cs-foundations/03-network/02-http-3/README.md']),
+    ('gRPC 协议', ['note/06.distributed-systems/02-distributed/rpc/grpc.md']),
+    ('WebSocket 协议', ['note/05.frontend/03-network/websocket/README.md']),
+    ('OAuth 2.0 协议', ['note/06.distributed-systems/05-security/oauth2-protocol/README.md']),
+    ('TLS/SSL 协议', ['note/02.cs-foundations/03-network/04-tls/README.md']),
+    # AB: 极端路径（5）
+    ('Spring Security 嵌套', ['note/04.spring-backend/09-security/oauth2/resource-server/jwt/README.md']),
+    ('前端工程化深度', ['note/05.frontend/04-engineering/vite/advanced-config/README.md']),
+    ('DevOps K8s Helm', ['note/07.devops-and-tools/03-cloud/k8s/helm-chart/README.md']),
+    ('测试/单元测试', ['note/07.devops-and-tools/05-quality/unit-test/README.md']),
+    ('Java 字节码操作', ['note/01.java-and-jvm/01-language/bytecode/README.md']),
+]
+
 
 # ============ 测试运行 ============
 
@@ -272,14 +305,14 @@ def run_round(name, scenarios, verbose=False):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--round', type=int, choices=[1, 2, 3, 4], help='仅跑某一轮')
+    parser.add_argument('--round', type=int, choices=[1, 2, 3, 4, 5], help='仅跑某一轮')
     parser.add_argument('--verbose', action='store_true', help='打印所有失效')
     parser.add_argument('--path', help='自定义单路径测试')
     args = parser.parse_args()
 
     print('=' * 70)
     print('note-knowledge-qa §3.5 + §3.5.1 - {} 场景测试'.format(
-        '自定义' if args.path else '100 (4 轮)'))
+        '自定义' if args.path else '125 (5 轮)'))
     print('=' * 70)
 
     rounds = []
@@ -291,6 +324,8 @@ def main():
         rounds.append(('Round 3', ROUND_3))
     if not args.round or args.round == 4:
         rounds.append(('Round 4', ROUND_4))
+    if not args.round or args.round == 5:
+        rounds.append(('Round 5', ROUND_5))
 
     total = {'refs': 0, 'ok': 0, 'fail': 0, 'rel': 0, 'rel_t': 0}
     for name, sc_list in rounds:
