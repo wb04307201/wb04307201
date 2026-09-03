@@ -9,11 +9,11 @@ module:
 
 # 数据库咬文嚼字
 
-> 数据库高频面试题与细节深挖，对齐主模块 [`03.database`](../../03.data-stack/01-database/README.md)。31 篇真题聚焦 MySQL（索引 / 锁 / 事务 / MVCC / 死锁 / JOIN）、Redis（单线程原理 / 持久化 / 淘汰 / 集群 / 大 Key）、NoSQL 三大方向的高频陷阱（find 校对 2026-07-30）。
+> 数据库高频面试题与细节深挖，对齐主模块 [`03.database`](../../03.data-stack/01-database/README.md)。32 篇真题聚焦 MySQL（索引 / 锁 / 事务 / MVCC / 死锁 / JOIN）、Redis（单线程原理 / 持久化 / 淘汰 / 集群 / 大 Key）、PostgreSQL / 人大金仓（VACUUM 排查）三大方向的高频陷阱（find 校对 2026-09-03）。
 
 ---
 
-## 文章清单（共 31 题，find 校对 2026-07-30）
+## 文章清单（共 32 题，find 校对 2026-09-03）
 
 ### MySQL 基础
 | 主题 | 难度 | 核心问题 |
@@ -52,6 +52,11 @@ module:
 | **🆕 [分库分表分布式事务](sharding-distributed-tx/)** | ⭐⭐⭐⭐⭐ | 分库后跨库事务 4 大方案 + Seata + 本地消息表 |
 | **🆕 [分库分表分页查询](sharding-pagination/)** | ⭐⭐⭐⭐ | 全局视野法 / ES / 冗余汇总 + 4 大陷阱 |
 | [垂直分表判定规范](vertical-table-split/) | ⭐⭐⭐⭐ | 30 字段拆不拆 + 5 指标判定 + Buffer Pool 原理 + 反模式 |
+
+### PostgreSQL / 人大金仓
+| 主题 | 难度 | 核心问题 |
+|------|------|---------|
+| 🆕 [PG-VACUUM 大量删除后查询变慢排查](pg-vacuum-troubleshooting/) | ⭐⭐⭐⭐ | dead tuples + autovacuum 滞后 + 表/索引膨胀 + 人大金仓 sys_stat_user_tables 特化 |
 
 ### Redis
 | 主题 | 难度 | 核心问题 |
