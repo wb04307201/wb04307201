@@ -172,7 +172,7 @@ E（简历面试）和 G（面试官出题）类型**必须先做教育背景检
 └─ 其他专业（数学/金融/外语/文科/工科/其他）→ 非科班路线
    ├─ 技术题用降维版（从 12.interview 改写）+ 场景版
    ├─ 重点考：自驱力、学习方法、逻辑思维、跨专业优势
-   ├─ 出题来源：`14/interviewing-cross-disciplinary`（不是 12.interview）
+   ├─ 出题来源：`11.product-and-pm/interviewing-cross-disciplinary`（不是 12.interview）
    └─ 评估用：底线+加分模型（而非科班的标准答案深度）
 ```
 
@@ -198,9 +198,9 @@ E（简历面试）和 G（面试官出题）类型**必须先做教育背景检
 
 ```
 关键词提取规则：
-├─ 技术术语直接映射（HashMap → 01.java, RAG → 09.ai-applications）
-├─ 配置/参数映射（JVM → 01.java/jvm, Spring → 06.spring）
-├─ 架构/设计映射（SSO → 04.system-design, 微服务 → 04 + 06）
+├─ 技术术语直接映射（HashMap → 01.java-and-jvm, RAG → 09.ai-applications）
+├─ 配置/参数映射（JVM → 01.java-and-jvm/02-jvm, Spring → 04.spring-backend）
+├─ 架构/设计映射（SSO → 06.distributed-systems/05-security/sso, 微服务 → 04.spring-backend/03-cloud + 06.distributed-systems）
 ├─ AI 概念映射（成本 → 09.ai-applications + 13.story, Agent → 09.ai-applications）
 ├─ 面试方法论映射（面试官/非科班/应届生/转码/跨专业/出题 → 11.product-and-pm/interviewing-cross-disciplinary）
 └─ 跨领域问题（拆成多个关键词，分别检索）
@@ -210,11 +210,11 @@ E（简历面试）和 G（面试官出题）类型**必须先做教育背景检
 
 | 排名 | 模块 | 擅长回答的问题类型 |
 |:---:|------|------------------|
-| 🥇 | `01.java` | Java 语言、JVM、并发、集合、Kotlin |
+| 🥇 | `01.java-and-jvm` | Java 语言、JVM、并发、集合、Kotlin |
 | 🥈 | `09.ai-applications` | LLM、RAG、Agent、Prompt、Token、MCP、AI 工程 |
-| 🥉 | `06.spring` | Spring Boot/Cloud、MyBatis、缓存、消息队列 |
+| 🥉 | `04.spring-backend` | Spring Boot/Cloud、MyBatis、缓存、消息队列 |
 | 4 | `03.database` | MySQL、Redis、索引、事务、SQL 优化 |
-| 5 | `04.system-design` | 系统设计、高可用、分布式、安全、SSO |
+| 5 | `06.distributed-systems` | 系统设计、高可用、分布式、安全、SSO |
 | 6 | `12.interview` | 面试精炼版（陷阱+话术）、咬文嚼字 |
 | 7 | `02.cs-foundations` | 网络、算法、数据结构、操作系统 *(主模块命名：主模块名为 `02.cs-foundations`；`12.interview/02.computer-basics` 是面试版同名子目录)* |
 | 8 | `05.tools` | Docker、K8s、Git、CI/CD |
@@ -254,7 +254,7 @@ find $KB_DIR/<module> -type d -name "*<topic>*" 2>/dev/null
 - 优先读 leaf 文章（深度内容）而非 README 索引
 - 每读一篇，检查其"相关章节"链接，追踪 1-2 篇关联文章
 - 面试题类型（被面试者视角）：同时读 `12.interview` 和主模块（双层检索）
-- 面试官出题类型（G 类型）：**优先读 `14/interviewing-cross-disciplinary`**（问题库），按需引用 `12.interview` 作降维素材
+- 面试官出题类型（G 类型）：**优先读 `11.product-and-pm/interviewing-cross-disciplinary`**（问题库），按需引用 `12.interview` 作降维素材
 
 **双层检索 grep 模板**（核心武器，直接复用）：
 
@@ -736,7 +736,7 @@ def is_relevant(top1_path, missing_path):
    ├─ 专业是 CS / SE / 软件工程 / 计算机相关？
    │   └─ 科班路线 → 正常技术深度题（原流程）
    └─ 专业是数学/金融/外语/文科/工科/其他？
-       └─ 非科班路线 → 自动引入 14/interviewing-cross-disciplinary 问题库
+       └─ 非科班路线 → 自动引入 11.product-and-pm/interviewing-cross-disciplinary 问题库
            ├─ 技术题用降维版（从 12.interview 改写）+ 场景版
            ├─ 重点考：自驱力、学习方法、逻辑思维、跨专业优势
            └─ 评估用：底线+加分模型（而非科班的标准答案深度）
@@ -746,7 +746,7 @@ def is_relevant(top1_path, missing_path):
    ├─ 技术栈 → 对应主模块
    ├─ 项目经验 → 对应系统设计/架构模块
    ├─ 行业 → 对应应用系统模块
-   └─ 非科班 → 14/interviewing-cross-disciplinary（问题库 + 评估模型）
+   └─ 非科班 → 11.product-and-pm/interviewing-cross-disciplinary（问题库 + 评估模型）
 3. 为每个技术点生成知识地图 + 问题清单
 
 输出格式（两个部分）：
@@ -802,7 +802,7 @@ def is_relevant(top1_path, missing_path):
 grep -rl "Redis" $KB_DIR/ | sort
 
 # 3. 按目录分类为层次
-#    01.java/xxx → 基础层
+#    01.java-and-jvm/xxx → 基础层
 #    12.interview/xxx → 进阶层（面试题）
 #    04.spring-backend/xxx → 实战层
 #    04.spring-backend/xxx → 架构层
@@ -936,7 +936,7 @@ grep -rl "Redis" $KB_DIR/ | sort
 1. 拆分问题为多个子问题
 2. 每个子问题检索对应模块
 3. 整合时标注每个子答案的来源模块
-4. 特别标注跨模块关联（如 "06.spring 的缓存方案 + 03.database 的 Redis 实践"）
+4. 特别标注跨模块关联（如 "04.spring-backend 的缓存方案 + 03.data-stack 的 Redis 实践"）
 ```
 
 ### 引用格式
@@ -948,7 +948,7 @@ grep -rl "Redis" $KB_DIR/ | sort
 
 | 来源 | 路径 | 覆盖内容 |
 |------|------|---------|
-| JVM 调优 | `note/01.java-and-jvm/jvm/tuning.md` | JVM 参数详解 |
+| JVM 调优 | `note/01.java-and-jvm/02-jvm/tuning.md` | JVM 参数详解 |
 | Loop Engineering | `note/08.ai-foundations/03-engineering/loop-engineering/README.md` | 循环调用原理 |
 ```
 
@@ -966,7 +966,7 @@ grep -rl "Redis" $KB_DIR/ | sort
 
 **❌ Mistake 3: 忽略 12.interview 双层（被面试者视角）**
 
-- **症状**：用户出"为什么树化阈值是 8"，只引 01.java 主模块 → 缺面试陷阱视角
+- **症状**：用户出"为什么树化阈值是 8"，只引 01.java-and-jvm 主模块 → 缺面试陷阱视角
 - **修复**：必须同时引 `12.interview/<module>/<topic>/`（面试陷阱版）+ 主模块深度版
 
 **❌ Mistake 4: 漏写知识来源表**
@@ -982,7 +982,7 @@ grep -rl "Redis" $KB_DIR/ | sort
 **❌ Mistake 6: 候选人专业漏检（E/G 类型专属）**
 
 - **症状**：简历面试忘了检测非科班 → 自动用科班路线题压人 → 应聘者被错杀
-- **修复**：见 E 类型 Step 0 教育背景检测；非科班自动用 `14/interviewing-cross-disciplinary` 问题库 + 非科班追问链
+- **修复**：见 E 类型 Step 0 教育背景检测；非科班自动用 `11.product-and-pm/interviewing-cross-disciplinary` 问题库 + 非科班追问链
 
 **❌ Mistake 7: 模拟面试不追问（D/E 类型专属）**
 
@@ -1049,5 +1049,5 @@ grep -oE '$KB_DIR/[^\` )]+\.md' answer.md | sort | uniq -c | sort -rn | awk '$1 
 - [ ] 回答末尾有 📚 知识来源
 - [ ] 如果 $KB_DIR/ 未覆盖，已标注并建议沉淀
 - [ ] **E/G 类型**：已检测候选人教育背景（科班 vs 非科班）
-- [ ] **E/G 非科班**：出题来源是 `14/interviewing-cross-disciplinary`（不是 `12.interview`）
+- [ ] **E/G 非科班**：出题来源是 `11.product-and-pm/interviewing-cross-disciplinary`（不是 `12.interview`）
 - [ ] **E/G 非科班**：追问链使用非科班规则（思维过程/给提示看反应/跨专业优势）
