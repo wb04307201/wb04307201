@@ -13,10 +13,23 @@ description: Use when user asks to audit or improve a project's knowledge base (
 
 | scope | 触发例 | 行为 |
 |---|---|---|
+| **空 / 不存在**（🆕 2026-09-03 测试新增） | `$KB_DIR/` 不存在 / `find` 返回 0 | **直接返回**："KB_DIR 为空或不存在，无可体检内容"。不进入 Phase 1；不报错；不启动 workflow。 |
 | 单篇 / 单目录 | "评价某模块下某篇" / "这篇质量怎么样" / "这篇新写的质量如何" | **只跑 Phase 2**：直接 Read + 按 `references/leaf-quality.md` 打分。**不启动 workflow**。**新文件**先读 `references/new-file-baseline.md` 拿到 7 必选 + 3 可选结构基线。 |
 | 单模块 | "审一下某模块"（运行时读取 `find note -maxdepth 1 -type d`） | Phase 1 扫该模块 + Phase 2 小规模 fan-out（视 leaf 数手工切批，≤ 6 篇/批）。 |
 | 全库（leaf ≤ 1000） | "note 哪里要优化" / "扫一遍 note" / "体检" | 完整 4 相；Phase 2 直接走「分层采样 + 优先级列表」策略（关键问题全评 + 各模块代表采样）。 |
 | 全库（leaf > 1000） | 同上，但实时 `find note -name "*.md" \| wc -l` > 1000 | **触发 Step 0.1 策略询问**：用 `AskUserQuestion` 让用户在「采样」/「穷举」/「混合」三选一，默认采样，**不再静默切换**。 |
+
+**🆕 空 KB_DIR 检测（2026-09-03 测试新增）**：
+
+```bash
+# Step 0 启动前必跑（< 1 秒）
+KB_DIR="${NOTE_DIR:-note}"  # 默认 note/，支持 NOTE_DIR 环境变量覆盖
+if [ ! -d "$KB_DIR" ] || [ -z "$(find "$KB_DIR" -maxdepth 5 -name "*.md" -print -quit 2>/dev/null)" ]; then
+  echo "⚠️  KB_DIR ($KB_DIR) 为空或不存在，无可体检内容"
+  echo "    提示：检查 NOTE_DIR 环境变量 / .claude/knowledge-base.config.json 配置"
+  exit 0
+fi
+```
 
 **原则**：单篇请求绝不启动重型机器；leaf 数 < 10 直接手工打分，不开 workflow。
 

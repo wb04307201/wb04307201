@@ -616,6 +616,49 @@ for f, h1, h2, s1, s2, rate, dist in issues[:20]:
     print(f'  {f} line {h1} & {h2} 重叠率={rate:.0%} 距离={dist}')
 PYEOF
 
+# 9.6 orphan 目录独立检测（🆕 2026-09-03 测试新增）
+# 背景：场景 9 FAIL — Step 9.2 只扫"叶级未引用"，但严格意义的 orphan 目录（无 README 且无 .md 被引用）需独立信号
+# 判定：目录无 README.md + 目录内 .md 文件未被任何外部 .md 引用 → orphan
+echo "=== 9.6 orphan 目录独立检测 ==="
+python << 'PYEOF'
+import os, glob, re
+LINK_RE = re.compile(r'(?<![|\[])\[([^\]]*)\]\((?!https?://)(?!mailto:)(?!#)([^)#\s]+?\.md)(?:#[^)]*)?\)')
+all_md = set()
+for f in glob.glob('note/**/*.md', recursive=True):
+    if '.health-tmp' in f.replace(os.sep, '/'): continue
+    all_md.add(f.replace(os.sep, '/'))
+
+referenced = set()
+for f in all_md:
+    try:
+        c = open(f, encoding='utf-8', errors='ignore').read()
+        f_dir = os.path.dirname(f).replace(os.sep, '/')
+        for m in LINK_RE.finditer(c):
+            tgt = os.path.normpath(os.path.join(f_dir, m.group(2).replace('/', os.sep))).replace(os.sep, '/')
+            if tgt in all_md:
+                referenced.add(tgt)
+    except Exception:
+        continue
+
+orphan = []
+for d in sorted(set(os.path.dirname(f) for f in all_md)):
+    d = d.replace(os.sep, '/')
+    if d == 'note': continue
+    readme = f'{d}/README.md'
+    if readme.replace(os.sep, '/') in all_md:
+        continue  # 有 README → 非 orphan
+    # 检查目录内是否有任何 md 被外部引用
+    d_files = [f for f in all_md if f.startswith(d + '/')]
+    if not d_files:
+        orphan.append((d, '空目录（无 .md）'))
+    elif not any(f in referenced for f in d_files):
+        orphan.append((d, f'目录内 {len(d_files)} 个 .md 均无外部引用'))
+
+print(f'orphan 目录: {len(orphan)} 个')
+for d, reason in orphan[:20]:
+    print(f'  ⚠ {d} — {reason}')
+PYEOF
+
 ### 10. 归属合理性审计（2026-07-26 新增）
 
 **历史教训**（2026-07-26 llm-production-thinking 重构）：
