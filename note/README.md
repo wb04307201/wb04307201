@@ -33,9 +33,9 @@ module:
 
 | # | 模块 | 主题 | 子 README |
 |:-:|------|------|:---:|
-| 01 | [01.java-and-jvm](./01.java-and-jvm/) | Java 基础 + JVM + 并发 + 设计模式 | 93 |
+| 01 | [01.java-and-jvm](./01.java-and-jvm/) | Java 基础 + JVM + 并发 + 设计模式 | 117 |
 | 02 | [02.cs-foundations](./02.cs-foundations/) | 算法 + OS + 网络 + 数学 | 43 |
-| 03 | [03.data-stack](./03.data-stack/) | 数据库 + 缓存 + 大数据 | 29 |
+| 03 | [03.data-stack](./03.data-stack/) | 数据库 + 缓存 + 大数据 | 33 |
 | 04 | [04.spring-backend](./04.spring-backend/) | Spring 生态 + 后端框架 | 141 |
 | 05 | [05.frontend](./05.frontend/) | 前端工程 | 57 |
 | 06 | [06.distributed-systems](./06.distributed-systems/) | 分布式 + 微服务 + 云原生 | 161 |
