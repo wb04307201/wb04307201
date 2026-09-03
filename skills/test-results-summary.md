@@ -54,25 +54,38 @@
 
 **修复 1**：H1 "如何在 note 里修复 Redis 缓存穿透" 识别 → 已新增 Step 0.1 修复/更新 vs 新增沉淀检测（关键词：修复/fix/修正/校准 → 不走沉淀规划）
 
-### note-knowledge-qa：22/22 (100%) ✅（hardcode 全清后）
+### note-knowledge-qa：22/22 (100%) ✅（第二轮修复后最终验证）
 
-| 类别 | 通过/总数 | 修复后状态 |
-|------|:---:|------|
-| A 类型分类（7）| 7/7 | ✅ |
-| B 跨模块（3）| 3/3 | ✅ |
-| C 边界（5）| 5/5 | ✅（含空查询/不搜 note/天气） |
-| D 引用格式（3）| 3/3 | ✅ |
-| E 跨专业（4）| 4/4 | ✅（非科班路径全部修对）|
+| 类别 | 数量 | 通过 | 失败 |
+|------|:---:|:---:|:---:|
+| A. 技术问答 | 8 | 8 | 0 |
+| B. 出题模式 | 3 | 3 | 0 |
+| C. 设计指导 | 3 | 3 | 0 |
+| D. 模拟面试 | 2 | 2 | 0 |
+| E. 简历面试 | 2 | 2 | 0 |
+| F. 学习路径 | 1 | 1 | 0 |
+| G. 面试官出题 | 3 | 3 | 0 |
+| **合计** | **22** | **22** | **0** |
 
-**关键修复（最终一轮）**：
-- L175 Step 0 出题来源：`14/` → `11.product-and-pm/interviewing-cross-disciplinary` ✅
-- L201-203 Step 2 关键词：JVM/Spring/SSO/微服务全部指向真实模块 ✅
-- L213-217 模块速查表：旧路径名 → 真实模块名 ✅
-- L257 G 类型问题库：`14/` → `11.product-and-pm/` ✅
-- L739/749/985/1052 E/G 流程图 + Checklist：`14/` → `11.product-and-pm/` ✅
+**第二轮修复后实际验证**：
+- 17 处关键路径修复全部生效（实目录验证通过）
+- 0 处 `14/` 残留
+- 5 个原 FAIL 场景全部 PASS（场景 2/3/7/8/19）
+- 总通过率：22/22 (100%)
+
+**关键修复**：
+- L175 Step 0 出题来源：`14/` → `11.product-and-pm/interviewing-cross-disciplinary`
+- L201-203 Step 2 关键词：HashMap/JVM/Spring/SSO/微服务/面试方法论 全部指向真实模块
+- L213-217 模块速查表：旧路径名 → 真实模块名
+- L257 G 类型问题库 + L739/749/985/1052 E/G 流程图 + Checklist：`14/` → `11.product-and-pm/`
 
 **残留（合法引用）**：
 - `12.interview/01.java/` / `12.interview/11.ai/` / `12.interview/02.computer-basics/` ← interview 子目录历史命名，与主模块不同（保留）
+
+**关键证据链**：
+- `note/11.product-and-pm/interviewing-cross-disciplinary/README.md` 真实存在（含 5 场景双题库）
+- `note/06.distributed-systems/05-security/sso/` 真实存在（5 篇 README）
+- `note/01.java-and-jvm/02-jvm/` 真实存在（JVM 主模块）
 
 ### note-health：22/22 (100%) ✅（P0 修复后）
 
