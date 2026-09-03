@@ -20,6 +20,10 @@ Java 21 是 15 个 JEP 的合集。
 
 ← [Java 20](../java-20/README.md) · [Java 22](../java-22/README.md)
 
+### 专题深读
+
+- [虚拟线程深读（JEP 444）](./virtual-threads.md) — Project Loom 详解 + Spring Boot 3.2+ 默认启用
+
 ---
 
 - **JEP 430**: 字符串模板（预览）
