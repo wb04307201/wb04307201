@@ -95,6 +95,7 @@ sequenceDiagram
 ## 专题导航
 
 - [Apache Dubbo](apache-dubbo/README.md) — 阿里开源高性能 Java RPC 框架（服务治理、负载均衡、集群容错）
+- [gRPC](grpc.md) — Google 开源 RPC 框架，HTTP/2 + Protocol Buffers，5 大核心特性 + Spring Boot 集成
 - [RPC和REST](rpc-and-rest/README.md) — RPC与REST两种分布式通信风格的对比与融合趋势
 
 ---
