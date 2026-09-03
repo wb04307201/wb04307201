@@ -23,13 +23,13 @@ description: Use when user asks where to add or update a topic in the project's 
 3. **父 README / 总目录 → 新文件**：父目录 README / 总目录表 必须添加新文件链接（避免"父不知道有新成员")
 4. **系列内兄弟互链**：当向已有系列添加新文章时，新文件**必须链向系列内所有已有兄弟**，且**所有已有兄弟必须回链新文件**（避免"同系列但互不知道"）
 
-> **反直觉 1**：很多人以为"我加了反向链接就完事" —— 但**总目录扫描**经常漏掉。新文件链接了 11.ai/README.md，但 11.ai/README.md 没在目录表里加新文件 → **总目录是孤岛**。
+> **反直觉 1**：很多人以为"我加了反向链接就完事" —— 但**总目录扫描**经常漏掉。新文件链接了 09.ai-applications/README.md，但 09.ai-applications/README.md 没在目录表里加新文件 → **总目录是孤岛**。
 >
 > **反直觉 2**：Mistake 9 覆盖了 parent ↔ child 的反向链，但**同系列兄弟**之间是另一个维度。例如 agent-execution-patterns 有 01-react / 02-plan-execute，但 01 和 02 的文件末尾**没有链向** 03 和 04 —— 它们只链回 README。正确做法：每篇文件末尾加"系列导航表"，链向系列内所有其他文件。
 
 ## Overview
 
-当用户问"这个主题应该新增/更新到 note 的什么位置"时，遵循 8 步流程输出沉淀方案。`note/` 是 13 主模块的体系化技术知识库，含 `01.java-and-jvm` ~ `11.product-and-pm`，每个主模块有 README + 子目录 + 已建立的双层/三层沉淀模式（13.split-hairs 面试题 + 11.ai 主模块 + 12.story 餐厅叙事）。
+当用户问"这个主题应该新增/更新到 note 的什么位置"时，遵循 8 步流程输出沉淀方案。`note/` 是 13 主模块的体系化技术知识库，含 11 个技术主模块（`01.java-and-jvm` ~ `11.product-and-pm`）+ `12.interview` 面试题主模块 + `13.story` 阿明餐厅叙事主模块，每个主模块有 README + 子目录 + 已建立的双层/三层沉淀模式（12.interview 面试题 + 08.ai-foundations/09.ai-applications 深度原理 + 13.story 餐厅叙事）。
 
 > 🆕 **Step 0 新增（2026-07-26 教训）**：用户输入可能是**多个主题**（如"大模型思维工程 5 个灵魂拷问"实际包含 5 个独立子主题）。Step 0 在盘点前先识别并拆分多主题，避免把 N 个独立主题错误合并成一个文件。历史案例：`production-thinking-5q` 把思维范式/成本控制/一致性/超时熔断/监控 5 个独立主题合成一个 419 行文件，后续不得不全部拆散。
 
@@ -38,7 +38,7 @@ description: Use when user asks where to add or update a topic in the project's 
 > - [ ] 每个子主题都有自己的 30s/90s 话术？（合并文件通常每节都有完整话术模板）
 > - [ ] 任一项 Yes → 拆分为多个 single-topic 文件，每个子题独立 frontmatter
 >
-> 历史案例：`split-hairs/02.computer-basics/machine-learning/README.md` 把 K-means / 决策树 / 梯度下降 / PCA / Boosting / 评估指标 6 大算法合成一个 126 行综述，每个算法都有完整 30s/90s 话术。已拆分为 6 个 single-topic deep-dive（每篇 146-293 行）。
+> 历史案例：`12.interview/02.computer-basics/machine-learning/README.md` 把 K-means / 决策树 / 梯度下降 / PCA / Boosting / 评估指标 6 大算法合成一个 126 行综述，每个算法都有完整 30s/90s 话术。已拆分为 6 个 single-topic deep-dive（每篇 146-293 行）。
 
 ## Quick Example
 
@@ -59,7 +59,7 @@ skill 执行：Step 1 现状盘点 → Step 2 深度评估 → Step 3 位置决�
   - 缺口真实：✅ note 当前只覆盖用法，未覆盖 SKILL.md 协议本身
 
   ## 💡 位置 + 方式
-  - 推荐：双层 + 11.ai 联动（推荐项 A）
+  - 推荐：双层 + 09.ai-applications 联动（推荐项 A）
 
   ## ❓ 选项
   A. 双层沉淀 + Claude Code 协议层深度（推荐）→ 3 commit
@@ -77,7 +77,7 @@ skill 执行：Step 1 现状盘点 → Step 2 深度评估 → Step 3 位置决�
 - 用户提供主题 + 问"放在 note 哪个位置合适？"
 
 **Don't use when**：
-- 用户已知具体位置（如"在 06.spring 加 Spring Boot 3.5 新特性"）→ 直接实施
+- 用户已知具体位置（如"在 04.spring-backend 加 Spring Boot 3.5 新特性"）→ 直接实施
 - 用户问"note 的现状" → 直接展示，不需要沉淀规划
 - 用户问"note 的整体结构" → 直接展示 README
 - 用户问"修复 X 文件" → 直接修复，不需要规划
@@ -86,25 +86,65 @@ skill 执行：Step 1 现状盘点 → Step 2 深度评估 → Step 3 位置决�
 
 **note 目录位置**：仓库根目录的 `note/`（CWD 假设 = 项目根）
 
-**13 主模块**：
-- `01.java` / `02.computer-basics` / `03.database` / `04.system-design`
-- `05.tools` / `06.spring` / `07.workflow` / `08.application-systems`
-- `09.front-end` / `10.big-data` / `11.ai` / `12.story`
-- `13.split-hairs` / `14.project-management`
+**13 主模块**（`find note -maxdepth 1 -type d` 运行时读取，列表为 2026-09-03 实测）：
+- `01.java-and-jvm` / `02.cs-foundations` / `03.data-stack` / `04.spring-backend`
+- `05.frontend` / `06.distributed-systems` / `07.devops-and-tools` / `08.ai-foundations`
+- `09.ai-applications` / `10.business-systems` / `11.product-and-pm` / `12.interview`
+- `13.story`
 
 **3 大沉淀模式**（每次都问用哪个）：
 
 | 模式 | 适用 | 落地位置 |
 |------|------|---------|
-| **单文件** | 内容 < 150 行 或 极专一 | 主模块子 README / 13.split-hairs/XX/ |
-| **双层沉淀**（最常用）| 面试高频 + 需深度原理 | 13.split-hairs/<topic> + 11.ai/<module>/<topic> + 互链 |
-| **三层 + 12.story 联动** | 重要主题 + 有餐厅叙事价值 | 双层 + 12.story 加章节反向链 |
+| **单文件** | 内容 < 150 行 或 极专一 | 主模块子 README / `12.interview/<module>/XX/` |
+| **双层沉淀**（最常用）| 面试高频 + 需深度原理 | `12.interview/<module>/<topic>/` + 主模块（`08.ai-foundations` / `09.ai-applications` / `06.distributed-systems` 等） + 互链 |
+| **三层 + 13.story 联动** | 重要主题 + 有餐厅叙事价值 | 双层 + `13.story/<topic>.md` 加章节反向链 |
 
 ## 8 步核心流程
 
 ### Step 0: 主题识别与拆分（必做，第一步）
 
 **目的**：避免多主题错误合并成一个文件（2026-07-26 历史教训：`production-thinking-5q` 把 5 个独立主题合成 419 行文件）
+
+#### Step 0.1 修复/更新 vs 新增 沉淀 检测（2026-09-03 测试新增 · H1 修复 FAIL 后必做）
+
+**触发**：用户输入**第一句**含以下关键词时，先判定是"修复现有内容"还是"新增沉淀"：
+
+| 关键词 | 含义 | 行动 |
+|--------|------|------|
+| "修复" / "fix" / "修正" / "改正" / "校准" / "数字统一" | 现有内容存在错误，需修正 | **不要**走沉淀规划，引导直接修复（用 Edit 工具）|
+| "更新" / "补全" / "完善" / "深化" / "扩展" | 现有内容但有缺口 | **不要**走沉淀规划，识别目标文件后做增量修改 |
+| "如何在 note 里 X" / "note 里 X 不对" / "note 中 X 错误" | 现有内容定位后修正 | 同上 |
+| "新增" / "沉淀" / "添加" / "放 note" / "归档" | 全新内容 | **走** Step 1-7 沉淀规划 |
+
+**反例（FAIL 案例 2026-09-03）**：
+- 用户："如何在 note 里修复 Redis 缓存穿透" → skill 错误地走沉淀规划
+- 应识别"修复"关键词 → 定位 `note/03.data-stack/02.cache/01.redis-penetration.md`（已存在）→ 直接 Edit 修复
+
+**正例**：
+- 用户："沉淀 CAP 理论" → "新增"类，走 Step 1-7
+- 用户："沉淀 Claude Code Skills" → "新增"类（即使 Quick Example 中已提及，但用户意图是新增章节）
+- 用户："修复 Redis 缓存穿透" → "修复"类，不要规划沉淀，直接修复
+
+**Step 0.1 输出格式**（命中修复类时）：
+
+```markdown
+## 🔧 Step 0.1: 检测到「修复/更新」意图
+
+**用户输入关键词**："修复 Redis 缓存穿透"
+**判定**：修复现有内容（不是新增沉淀）
+
+**目标文件**：`note/03.data-stack/02.cache/01.redis-penetration.md`（按 Step 1 现状盘点定位）
+
+**建议**：
+- 选项 A：直接 Edit 修复该文件（推荐）
+- 选项 B：补充新章节（如果缺口真实，需要新增 README）
+- 选项 C：暂不处理
+
+> 注：本 skill 不直接修复，请用 Read + Edit 工具操作；或转给其他工具
+```
+
+#### Step 0.2 多主题识别（必做，第一步）
 
 **判断逻辑**：
 
@@ -164,7 +204,7 @@ skill 执行：Step 1 现状盘点 → Step 2 深度评估 → Step 3 位置决�
 | 因素 | 权重 | 说明 |
 |------|------|------|
 | 沉淀模式 | 单文件=1 / 双层=2 / 三层=3 | 双层涉及 2 个文件 + 2-3 个 commit |
-| 父 README 更新数 | 每更新 1 个 +0.5 | 如 13.split-hairs/11.ai/README.md + 主模块 README |
+| 父 README 更新数 | 每更新 1 个 +0.5 | 如 12.interview/11.ai/README.md + 主模块 README |
 | 反向链复杂度 | 简单=0 / 中等=0.5 / 复杂=1 | 跨模块链接需路径验证 |
 | 系列导航表 | 需要=1 / 不需要=0 | 向已有系列新增时需更新所有兄弟 |
 
@@ -215,10 +255,10 @@ grep -rl "<关键词>" $KB_DIR/ | head -10
 find $KB_DIR/<module> -type d -name "*<topic>*" 2>/dev/null
 ls $KB_DIR/<module>/
 
-# 1.3 13.split-hairs 同栏目兄弟
+# 1.3 12.interview 同栏目兄弟
 ls $KB_DIR/12.interview/<module>/ | grep -v README
 
-# 1.4 12.story 相关章节
+# 1.4 13.story 相关章节
 grep -l "<关键词>" $KB_DIR/13.story/*.md 2>/dev/null
 
 # 1.5 系列结构检查（目标目录下是否已有编号系列）
@@ -250,8 +290,8 @@ fi
 echo "=== Step 1 预检清单 ==="
 echo "  □ 关键词已 grep（1.1）"
 echo "  □ 主题目录已扫（1.2）"
-echo "  □ 13.split-hairs 兄弟已列（1.3）"
-echo "  □ 12.story 联动已查（1.4）"
+echo "  □ 12.interview 兄弟已列（1.3）"
+echo "  □ 13.story 联动已查（1.4）"
 echo "  □ 系列结构 / 总目录入口已查（1.5 + 1.6）"
 echo "  □ 同模式范例已对照（1.8 🆕）"
 echo "  □ Bonus 修复同源错误已 grep（1.9 🆕）"
@@ -300,17 +340,17 @@ done | sort -n
 
 ```
 用户场景是什么？
-├─ 面试题 → 13.split-hairs/<module>/<topic>.md
-├─ 深度原理 → 11.ai/<module>/<topic>.md（或其他主模块）
-├─ 餐厅叙事 → 12.story/<topic>.md（前传/续集/番外）
-└─ 实战框架 → 11.ai/03-engineering/ai-platforms/<framework>.md
+├─ 面试题 → 12.interview/<module>/<topic>.md
+├─ 深度原理 → 08.ai-foundations/<module>/<topic>.md 或 09.ai-applications/<module>/<topic>.md（或其他主模块）
+├─ 餐厅叙事 → 13.story/<topic>.md（前传/续集/番外）
+└─ 实战框架 → 09.ai-applications/03-engineering/ai-platforms/<framework>.md
 ```
 
 **特殊位置判断**：
 - 架构/模式 → 主模块的 `04-architecture/` 或 `02-technology-stack/` 子目录
 - 框架对比 → 主模块的 `03-engineering/ai-platforms/`
 - 算法原理 → 主模块的 `01-fundamentals/` 或 `02-technology-stack/`
-- 面试 Q&A → `13.split-hairs/<module>/<topic>.md`
+- 面试 Q&A → `12.interview/<module>/<topic>.md`
 
 ### Step 4: 沉淀方式决策（用决策树）
 
@@ -318,7 +358,7 @@ done | sort -n
 主题深度？
 ├─ < 100 行内容 → 单文件（1 commit）
 ├─ 100-300 行 + 面试价值 → 双层沉淀（2 commit）
-└─ 300+ 行 + 已有餐厅叙事相关章节 → 三层 + 12.story 联动（3+ commit）
+└─ 300+ 行 + 已有餐厅叙事相关章节 → 三层 + 13.story 联动（3+ commit）
 
 目标模块有无强骨架规范（L1.5）？
 ├─ 12.interview → 必读 `QUESTION-FORMAT-SPEC.md`（30s/90s 话术 + 追问模板），新文章必含 ## 引子/## 追问
@@ -337,13 +377,13 @@ done | sort -n
 
 **双层沉淀模板**（遵循 `note/CONTRIBUTING.md` §3 commit 规范：`<type>(note): <scope-detail> - <描述>`）：
 ```
-Commit 1: feat(note): 13.split-hairs/<module> - 新增'<topic>'面试题 + 陷阱表
+Commit 1: feat(note): 12.interview/<module> - 新增'<topic>'面试题 + 陷阱表
 Commit 2: feat(note): <module> - 新增'<topic>'深度原理（含源码分析）
 ```
 
 **三层沉淀模板**：
 ```
-Commit 1: feat(note): 13.split-hairs/<module> - 新增'<topic>'面试题
+Commit 1: feat(note): 12.interview/<module> - 新增'<topic>'面试题
 Commit 2: feat(note): <module> - 新增'<topic>'深度原理
 Commit 3: refactor(note): <related-chapter> - 加反向链（指向新文件）
 ```
@@ -351,14 +391,14 @@ Commit 3: refactor(note): <related-chapter> - 加反向链（指向新文件）
 **commit 类型说明**（与 CONTRIBUTING §3 一致）：
 | 类型 | 用途 | 例子 |
 |------|------|------|
-| `feat(note)` | 新增章节/文章 | `feat(note): 11.ai - 新增 Claude Code Skills 章节` |
-| `fix(note)` | 修复/数字校对/断链 | `fix(note): 12.story - 数字统一 46→47` |
-| `refactor(note)` | 结构/反向链/结构调整 | `refactor(note): 04.system-design - PNG→Mermaid 迁移` |
-| `style(note)` | 润色/模板清理 | `style(note): 13.split-hairs - 引子格式统一` |
+| `feat(note)` | 新增章节/文章 | `feat(note): 09.ai-applications - 新增 Claude Code Skills 章节` |
+| `fix(note)` | 修复/数字校对/断链 | `fix(note): 13.story - 数字统一 46→47` |
+| `refactor(note)` | 结构/反向链/结构调整 | `refactor(note): 06.distributed-systems - PNG→Mermaid 迁移` |
+| `style(note)` | 润色/模板清理 | `style(note): 12.interview - 引子格式统一` |
 | `docs(note)` | 文档/CONTRIBUTING 同步 | `docs(note): 同步 CONTRIBUTING §3 commit 规范` |
 | `chore(note)` | 回链/琐事 | `chore(note): 13 主模块补文末回链` |
 
-> **统一性检查**：所有 commit 必须用 `feat/fix/refactor/.../chore(note)` 形式（仓库统一 scope = `note`），不要用 `feat(11.ai)` 这种过细的 scope。
+> **统一性检查**：所有 commit 必须用 `feat/fix/refactor/.../chore(note)` 形式（仓库统一 scope = `note`），不要用 `feat(09.ai-applications)` 这种过细的 scope。
 
 ### Step 5: 选项呈现（用 AskUserQuestion，orchestrator 执行）
 
@@ -540,7 +580,7 @@ if sys.platform == 'win32':
 
 # 严格 regex
 LINK_RE = re.compile(r'(?<![|\[])\[([^\]]*)\]\((?!https?://)(?!mailto:)(?!#)([^)#\s]+?\.md)(?:#[^)]*)?\)')
-PLACEHOLDERS = ['x/README', 'xxx', 'xx/yy', '../11.ai/...']
+PLACEHOLDERS = ['x/README', 'xxx', 'xx/yy', '../09.ai-applications/...']
 real_broken = 0
 # 只扫本会话新文件（按时间戳或 git diff --name-only）
 new_files = subprocess.check_output(['git', 'diff', '--name-only', '--since=<本次沉淀开始时间>'], cwd='.').decode().splitlines()
@@ -623,7 +663,7 @@ PYEOF
 
 ### Step 6.7: 并行 subagent 共享文件协调（2026-07-30 新增）
 
-> 🆕 **2026-07-30 教训**（Batch 3）：3 个 subagent 并行时，#5 和 #7 共享同一个父 README（`13.split-hairs/09.front-end/README.md`）。#7 subagent 完成了 feat commit 但**反向链变更未 commit**（留在 working tree），且题数没有更新到正确值（27→28）。
+> 🆕 **2026-07-30 教训**（Batch 3）：3 个 subagent 并行时，#5 和 #7 共享同一个父 README（`12.interview/05.frontend/README.md`）。#7 subagent 完成了 feat commit 但**反向链变更未 commit**（留在 working tree），且题数没有更新到正确值（27→28）。
 
 **规则**：
 1. **识别共享文件**：派发前检查哪些父 README 会被多个 subagent 修改
@@ -775,10 +815,10 @@ fi
 
 | 场景 | 推荐模式 | 落地位置 | Commit 数 |
 |------|---------|---------|----------|
-| 面试题（高频）| 双层 | 13.split-hairs/ + 主模块 | 2 |
-| 深度原理 | 双层 | 主模块 + 13.split-hairs/ | 2 |
-| 规模阶梯（10B→100B→1T）| 三层 + 12.story | 主模块 + 12.story 联动 | 3+ |
-| 餐厅叙事价值高 | 三层 + 12.story | 12.story + 主模块 + 13.split-hairs/ | 3+ |
+| 面试题（高频）| 双层 | 12.interview/ + 主模块 | 2 |
+| 深度原理 | 双层 | 主模块 + 12.interview/ | 2 |
+| 规模阶梯（10B→100B→1T）| 三层 + 13.story | 主模块 + 13.story 联动 | 3+ |
+| 餐厅叙事价值高 | 三层 + 13.story | 13.story + 主模块 + 12.interview/ | 3+ |
 | 单一补充（如 "X 的新特性"）| 单文件 | 主模块子 README | 1 |
 | **🆕 生产 Bug 案例（同栏目 troubleshooting 先例 ≥ 3）**| 单面试题 | `note/12.interview/<module>/<现象>-troubleshooting/` | 2-3 |
 
@@ -864,7 +904,7 @@ wc -l $KB_DIR/12.interview/<module>/*troubleshooting*/README.md
 
 ### ❌ Mistake 3: 位置错位
 
-**症状**：把技术原理放 `12.story`（叙事）/ 把面试题放 `11.ai/01-fundamentals`（原理）/ 把算法放 `04-architecture`（架构）
+**症状**：把技术原理放 `13.story`（叙事）/ 把面试题放 `08.ai-foundations/01-fundamentals`（原理）/ 把算法放 `04-architecture`（架构）
 
 **修复**：Step 3 决策树 + 检查主模块子目录的命名约定（`01-fundamentals` / `02-technology-stack` / `03-engineering` / `04-architecture`）
 
@@ -894,11 +934,11 @@ wc -l $KB_DIR/12.interview/<module>/*troubleshooting*/README.md
 
 ### ❌ Mistake 8: 路径深度错误（2026-07-25 强化）
 
-**症状**：12.story 链接 `../../11.ai/13.split-hairs/11.ai/...`（多一层）→ broken link
+**症状**：13.story 链接 `../../08.ai-foundations/12.interview/11.ai/...`（多一层）→ broken link
 
 **历史案例**（2026-07-25 ACP 沉淀）：
 - ❌ `mcp.md` —— 以为是独立文件，实际 MCP 在 `context-engineering/README.md` 内联
-- ❌ `multi-agent-system-design` 在 `../../../03-engineering/...` —— 实际在 `13.split-hairs/11.ai/`
+- ❌ `multi-agent-system-design` 在 `../../../03-engineering/...` —— 实际在 `12.interview/11.ai/`
 - 根因：**没实际验证目标路径就写**
 
 **修复（4 步强制）**：
@@ -914,15 +954,15 @@ wc -l $KB_DIR/12.interview/<module>/*troubleshooting*/README.md
 - 历史案例（2026-07-25 业务系统补深）：QMS 引用 `../06-specialized/lims/README.md`（少一层 `../`，正确应是 `../../06-specialized/lims/README.md`），独立 `find` 验证 + 修复为正确路径
 
 **🆕 强化（2026-07-27 经验 — 父 README 目录表更新）**：
-- 当 subagent 更新**父 README 目录表**（如 `13.split-hairs/11.ai/README.md` 添加新面试题条目）时，目录表中的深读链接路径最易出错
-- 历史案例（2026-07-27 Batch 1）：`13.split-hairs/11.ai/README.md` 目录表新增 agent-reliability 条目，subagent 写 `../../../11.ai/03-engineering/agent-reliability/README.md`（3 层 `../`），但 `13.split-hairs/11.ai/` 到 `note/08.ai-foundations/` 只需 2 层 `../../`
+- 当 subagent 更新**父 README 目录表**（如 `12.interview/11.ai/README.md` 添加新面试题条目）时，目录表中的深读链接路径最易出错
+- 历史案例（2026-07-27 Batch 1）：`12.interview/11.ai/README.md` 目录表新增 agent-reliability 条目，subagent 写 `../../../08.ai-foundations/03-engineering/agent-reliability/README.md`（3 层 `../`），但 `12.interview/11.ai/` 到 `note/08.ai-foundations/` 只需 2 层 `../../`
 - **防御规则**：更新父 README 目录表时，用 Python 验证路径：
   ```python
   import os
   src_dir = '$KB_DIR/12.interview/11.ai'  # 父 README 所在目录
   tgt = '$KB_DIR/08.ai-foundations/03-engineering/agent-reliability/README.md'
   rel = os.path.relpath(tgt, src_dir)  # 自动计算正确相对路径
-  print(rel)  # 输出: ../../11.ai/03-engineering/agent-reliability/README.md
+  print(rel)  # 输出: ../../08.ai-foundations/03-engineering/agent-reliability/README.md
   ```
 - 不要手动数 `../` 层数，用 `os.path.relpath` 自动计算
 
@@ -931,7 +971,7 @@ wc -l $KB_DIR/12.interview/<module>/*troubleshooting*/README.md
 **症状**：新文件链接到 parent / 同级兄弟，但**parent / 同级兄弟没有反向链**到新文件。例如：
 
 - 沉淀"05-agent-evaluation"，链到 `07-llmops/README.md` —— 但 `07-llmops/README.md` 没反向链到新文件
-- 沉淀"production-agent 实战"，链到 `11.ai/README.md` —— 但 `11.ai/README.md` 没反向链到新文件
+- 沉淀"production-agent 实战"，链到 `09.ai-applications/README.md` —— 但 `09.ai-applications/README.md` 没反向链到新文件
 
 **修复**：
 - **强制规则**：每个新文件 commit 时，**主动给被链接的 parent / 同级兄弟加反向链**（单独 refactor commit）
@@ -1028,9 +1068,9 @@ done
 - 但反例风险：在 $KB_DIR/03.java/01-foo/02-bar/README.md 写 `../baz/README.md` 而不是 `../../baz/README.md`，会让 note 出现真错
 
 **🆕 强化（2026-07-25 经验）**：
-- subagent 写新 README 引用任何系统前**必须**先 `grep -r "<system>" note/08.application-systems/` 确认该系统是否独立存在
+- subagent 写新 README 引用任何系统前**必须**先 `grep -r "<system>" note/10.business-systems/` 确认该系统是否独立存在
 - 如果**不是独立系统**（如 CMDB 是 ITSM 子模块、APR/MRP 是 ERP 子模块），应使用替代方案：① 删除链接 ② 改为指向父系统 with 注释（如 `[ITSM 深读](../../06-specialized/itsm/README.md)`（含 CMDB））
-- 历史案例（2026-07-25 业务系统补深）：EAM 引用 `../../06-specialized/cmdb/README.md`（CMDB 不是独立系统，是 ITSM 子模块），独立验证 `ls -la note/08.application-systems/06-specialized/` 发现 cmdb 目录不存在 → 修复为 ITSM with 注释
+- 历史案例（2026-07-25 业务系统补深）：EAM 引用 `../../06-specialized/cmdb/README.md`（CMDB 不是独立系统，是 ITSM 子模块），独立验证 `ls -la note/10.business-systems/06-specialized/` 发现 cmdb 目录不存在 → 修复为 ITSM with 注释
 
 **修复（沉淀完成后的简单兜底）**：
 
@@ -1040,7 +1080,7 @@ done
 python -c "
 import os, re, glob
 LINK_RE = re.compile(r'(?<![|\[])\[([^\]]*)\]\((?!https?://)(?!mailto:)(?!#)([^)#\s]+?\.md)(?:#[^)]*)?\)')
-PLACEHOLDERS = ['x/README', 'xxx', 'xx/yy', '../11.ai/...']
+PLACEHOLDERS = ['x/README', 'xxx', 'xx/yy', '../09.ai-applications/...']
 real_broken = 0
 new_files = [f for f in glob.glob('$KB_DIR/**/*.md', recursive=True)
              if os.path.exists(f) and int(os.stat(f).st_mtime) > <沉淀开始时间戳>]
@@ -1063,7 +1103,7 @@ print(f'新文件 broken links: {real_broken}')
 
 **症状**：沉淀新章节时，作者**独立维护了 2+ 张等价信息源**（如"目录表" + "明细表"）。下游体检只扫**跨文件** / **文件级**重复，发现不了**同文件内冗余**。
 
-**历史案例**（2026-07-25 12.story/README.md）：
+**历史案例**（2026-07-25 13.story/README.md）：
 - line 26-36：8 集群目录表（含"一句话"列）—— 完整 + 信息密度高
 - line 336-353（已删除）：49 篇明细表（按类型分组）—— 100% 重叠 + 编号混乱（line 353 注释显式承认"11 = 续集二 / 14 = 番外二"）
 - 两张表 49 篇文章编号需同时维护 → 维护成本翻倍 + 易漂移
@@ -1353,7 +1393,7 @@ done
 | dropout-in-llm | 双层 | `git log --grep='dropout-in-llm' --oneline` |
 | claude-code-agentic-search | 双层 + RAG 反向链 | `git log --grep='skill' --oneline \| head -5` |
 | agent-memory-classification | 双层 + 04-architecture 补全 | `git log --grep='agent-memory' --oneline` |
-| vector-search-algorithms | 三层 + 12.story 联动 | `git log --grep='vector-search' --oneline` |
+| vector-search-algorithms | 三层 + 13.story 联动 | `git log --grep='vector-search' --oneline` |
 | vector-search-at-scale / trillion | 三层 + 10B/100B/1T 阶梯 | `git log --grep='at-scale' --oneline` |
 
 > **可核实性**：每个主题的实际 commit hash 以 `git log --grep="<topic>"` 实时查询为准。上表不再硬编码 commit hash（避免 hash 被回滚后误导用户）。用户复制验证命令到本地 `note/..` 仓库即可查到该系列首条 feat commit。
@@ -1389,4 +1429,4 @@ done
   - **新 README 必须有**，根目录 README（`note/README.md`）除外
 - [ ] **新 README 内每张表格只承载一个职责**（避免同 README 内重复维护多张等价表，见 Mistake 15）
   - 自检：grep 新 README 的 `\|---` 表格分隔行数 ≥ 2 → 人工检查表格列字段是否重叠 ≥ 50%
-  - 历史教训：12.story/README.md 历史上同时维护 8 集群目录表 + 49 篇明细表，100% 等价
+  - 历史教训：13.story/README.md 历史上同时维护 8 集群目录表 + 49 篇明细表，100% 等价

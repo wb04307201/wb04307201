@@ -62,84 +62,84 @@ skill 执行：A 类型（技术问答）→ grep "HashMap" → 双层检索（0
 
 ### LLM 架构层（5 词）
 
-| 词汇 | 主模块 | 13.split-hairs |
+| 词汇 | 主模块 | 12.interview |
 |------|--------|---------------|
-| Transformer | `11.ai/01-fundamentals/transformer` | `13.split-hairs/11.ai/transformer` |
-| 注意力机制 | `11.ai/01-fundamentals/attention-mechanism` | (在 attention-mechanism 中) |
-| MoE 架构 | `11.ai/01-fundamentals/moe-architecture` | (在 moe-architecture 中) |
-| RoPE 位置编码 | `11.ai/01-fundamentals/rope-position-encoding` | (在 rope 中) |
-| Flash Attention | `11.ai/01-fundamentals/flash-attention` | (在 flash-attention 中) |
+| Transformer | `09.ai-applications/01-fundamentals/transformer` | `12.interview/11.ai/transformer` |
+| 注意力机制 | `09.ai-applications/01-fundamentals/attention-mechanism` | (在 attention-mechanism 中) |
+| MoE 架构 | `09.ai-applications/01-fundamentals/moe-architecture` | (在 moe-architecture 中) |
+| RoPE 位置编码 | `09.ai-applications/01-fundamentals/rope-position-encoding` | (在 rope 中) |
+| Flash Attention | `09.ai-applications/01-fundamentals/flash-attention` | (在 flash-attention 中) |
 
 ### LLM 推理优化（10 词）
 
-| 词汇 | 主模块 | 13.split-hairs |
+| 词汇 | 主模块 | 12.interview |
 |------|--------|---------------|
-| KV Cache | `11.ai/02-technology-stack/kv-cache` | `13.split-hairs/11.ai/llm-inference` |
-| PagedAttention | `11.ai/02-technology-stack/paged-attention` | (在 llm-inference 中) |
-| Continuous Batching | `11.ai/02-technology-stack/continuous-batching` | (在 llm-inference 中) |
-| Speculative Decoding | `11.ai/02-technology-stack/speculative-decoding` | (在 llm-inference 中) |
-| 权重量化 | `11.ai/02-technology-stack/weight-quantization` | (在 llm-inference 中) |
-| MoE 推理 | `11.ai/02-technology-stack/moe-inference` | (在 llm-inference 中) |
-| 推理性能指标 (TTFT/TPOT) | `11.ai/02-technology-stack/inference-metrics` | (在 llm-inference 中) |
-| 推理框架对比 | `11.ai/02-technology-stack/inference-frameworks` | (在 llm-inference 中) |
-| LLM 推理优化大专题 | `11.ai/02-technology-stack/llm-inference-optimization` | `12.story/46-llm-inference` |
-| vLLM / TGI / SGLang | `11.ai/02-technology-stack/inference-frameworks` | - |
+| KV Cache | `09.ai-applications/02-technology-stack/kv-cache` | `12.interview/11.ai/llm-inference` |
+| PagedAttention | `09.ai-applications/02-technology-stack/paged-attention` | (在 llm-inference 中) |
+| Continuous Batching | `09.ai-applications/02-technology-stack/continuous-batching` | (在 llm-inference 中) |
+| Speculative Decoding | `09.ai-applications/02-technology-stack/speculative-decoding` | (在 llm-inference 中) |
+| 权重量化 | `09.ai-applications/02-technology-stack/weight-quantization` | (在 llm-inference 中) |
+| MoE 推理 | `09.ai-applications/02-technology-stack/moe-inference` | (在 llm-inference 中) |
+| 推理性能指标 (TTFT/TPOT) | `09.ai-applications/02-technology-stack/inference-metrics` | (在 llm-inference 中) |
+| 推理框架对比 | `09.ai-applications/02-technology-stack/inference-frameworks` | (在 llm-inference 中) |
+| LLM 推理优化大专题 | `09.ai-applications/02-technology-stack/llm-inference-optimization` | `13.story/46-llm-inference` |
+| vLLM / TGI / SGLang | `09.ai-applications/02-technology-stack/inference-frameworks` | - |
 
 ### LLM 训练与对齐（10 词）
 
-| 词汇 | 主模块 | 13.split-hairs |
+| 词汇 | 主模块 | 12.interview |
 |------|--------|---------------|
-| SFT | `11.ai/07-research/alignment/01-sft` | `13.split-hairs/11.ai/llm-alignment` |
-| RLHF | `11.ai/07-research/alignment/02-rlhf` | (在 llm-alignment 中) |
+| SFT | `09.ai-applications/07-research/alignment/01-sft` | `12.interview/11.ai/llm-alignment` |
+| RLHF | `09.ai-applications/07-research/alignment/02-rlhf` | (在 llm-alignment 中) |
 | PPO | (在 RLHF 中) | (在 llm-alignment 中) |
 | Reward Model | (在 RLHF 中) | - |
-| DPO | `11.ai/07-research/alignment/03-dpo` | (在 llm-alignment 中) |
-| Constitutional AI | `11.ai/07-research/alignment/04-constitutional-ai` | (在 llm-alignment 中) |
-| KTO / IPO / SimPO | `11.ai/07-research/alignment/05-newer-methods` | (在 llm-alignment 中) |
+| DPO | `09.ai-applications/07-research/alignment/03-dpo` | (在 llm-alignment 中) |
+| Constitutional AI | `09.ai-applications/07-research/alignment/04-constitutional-ai` | (在 llm-alignment 中) |
+| KTO / IPO / SimPO | `09.ai-applications/07-research/alignment/05-newer-methods` | (在 llm-alignment 中) |
 | ORPO / RFT | (在 newer-methods 中) | - |
-| LLM 对齐专题 | `11.ai/07-research/alignment` | (在 llm-alignment 中) |
+| LLM 对齐专题 | `09.ai-applications/07-research/alignment` | (在 llm-alignment 中) |
 
 ### LLM 应用层（10 词）
 
-| 词汇 | 主模块 | 13.split-hairs |
+| 词汇 | 主模块 | 12.interview |
 |------|--------|---------------|
-| Lost In the Middle | `11.ai/02-technology-stack/lost-in-middle` | (在 context-engineering-interview 中) |
-| YaRN / RoPE 扩展 | `11.ai/02-technology-stack/yarn-context-extension` | (在 llm-benchmark 中) |
-| Chunking 策略 | `11.ai/02-technology-stack/chunking-strategies` | (在 rag 中) |
-| Embedding 模型 | `11.ai/02-technology-stack/embedding-models` | (在 rag 中) |
-| Hybrid Search | `11.ai/02-technology-stack/hybrid-search` | (在 rag 中) |
-| Reranker | `11.ai/02-technology-stack/reranker` | (在 rag 中) |
-| Query Rewrite | `11.ai/02-technology-stack/query-rewrite` | - |
-| RAG Pipeline | `11.ai/02-technology-stack/rag-pipeline` | - |
-| RAG 评估 | `11.ai/06-agent-evaluation/09-rag-evaluation` | - |
-| RAGAS / TruLens | `11.ai/06-agent-evaluation/09-rag-evaluation` | - |
+| Lost In the Middle | `09.ai-applications/02-technology-stack/lost-in-middle` | (在 context-engineering-interview 中) |
+| YaRN / RoPE 扩展 | `09.ai-applications/02-technology-stack/yarn-context-extension` | (在 llm-benchmark 中) |
+| Chunking 策略 | `09.ai-applications/02-technology-stack/chunking-strategies` | (在 rag 中) |
+| Embedding 模型 | `09.ai-applications/02-technology-stack/embedding-models` | (在 rag 中) |
+| Hybrid Search | `09.ai-applications/02-technology-stack/hybrid-search` | (在 rag 中) |
+| Reranker | `09.ai-applications/02-technology-stack/reranker` | (在 rag 中) |
+| Query Rewrite | `09.ai-applications/02-technology-stack/query-rewrite` | - |
+| RAG Pipeline | `09.ai-applications/02-technology-stack/rag-pipeline` | - |
+| RAG 评估 | `09.ai-applications/06-agent-evaluation/09-rag-evaluation` | - |
+| RAGAS / TruLens | `09.ai-applications/06-agent-evaluation/09-rag-evaluation` | - |
 
 ### 传统 ML 算法（10 词）
 
-| 词汇 | 主模块 | 13.split-hairs |
+| 词汇 | 主模块 | 12.interview |
 |------|--------|---------------|
-| K-means | `02.computer-basics/02-algorithms/clustering/k-means` | `13.split-hairs/02.computer-basics/machine-learning` |
-| 梯度下降 | `02.computer-basics/02-algorithms/optimization/gradient-descent` | (在 machine-learning 中) |
-| PCA | `02.computer-basics/02-algorithms/dimensionality-reduction/pca` | (在 machine-learning 中) |
-| 分支界限 | `02.computer-basics/02-algorithms/search/branch-and-bound` | - |
-| ID3 / C4.5 / CART | `02.computer-basics/02-algorithms/decision-tree` | (在 machine-learning 中) |
-| Random Forest | `02.computer-basics/02-algorithms/ensemble` | - |
-| XGBoost / LightGBM | `02.computer-basics/02-algorithms/ensemble` | - |
-| 集成学习 | `02.computer-basics/02-algorithms/ensemble` | - |
+| K-means | `02.cs-foundations/01-algorithms/clustering/k-means` | `12.interview/02.computer-basics/machine-learning` |
+| 梯度下降 | `02.cs-foundations/01-algorithms/optimization/gradient-descent` | (在 machine-learning 中) |
+| PCA | `02.cs-foundations/01-algorithms/dimensionality-reduction/pca` | (在 machine-learning 中) |
+| 分支界限 | `02.cs-foundations/01-algorithms/search/branch-and-bound` | - |
+| ID3 / C4.5 / CART | `02.cs-foundations/01-algorithms/decision-tree` | (在 machine-learning 中) |
+| Random Forest | `02.cs-foundations/01-algorithms/ensemble` | - |
+| XGBoost / LightGBM | `02.cs-foundations/01-algorithms/ensemble` | - |
+| 集成学习 | `02.cs-foundations/01-algorithms/ensemble` | - |
 | 评估指标 (F1/AUC) | (在 machine-learning 面试中) | (在 machine-learning 中) |
-| ML 面试 | - | `13.split-hairs/02.computer-basics/machine-learning` |
+| ML 面试 | - | `12.interview/02.computer-basics/machine-learning` |
 
 ### 自动触发流程（改进）
 
 **当用户问"X 是什么"时**：
 1. 查本映射表（X → module 路径）
-2. 读主模块深度 + 13.split-hairs 面试版
+2. 读主模块深度 + 12.interview 面试版
 3. 综合回答 + 引用
 
 **示例**：
 ```
 用户："DPO 是什么？"
-skill：查表 → DPO 在 11.ai/07-research/alignment/03-dpo + 13.split-hairs/11.ai/llm-alignment
+skill：查表 → DPO 在 09.ai-applications/07-research/alignment/03-dpo + 12.interview/11.ai/llm-alignment
 回答：包含 SFT/RLHF 上下文 + DPO 数学保证 + vs RLHF 对比 + 5 大反直觉
 ```
 ```
@@ -168,11 +168,11 @@ E（简历面试）和 G（面试官出题）类型**必须先做教育背景检
 
 ```
 判断候选人专业：
-├─ CS / SE / 软件工程 / 计算机相关 → 科班路线（默认 13.split-hairs 原题）
+├─ CS / SE / 软件工程 / 计算机相关 → 科班路线（默认 12.interview 原题）
 └─ 其他专业（数学/金融/外语/文科/工科/其他）→ 非科班路线
-   ├─ 技术题用降维版（从 13.split-hairs 改写）+ 场景版
+   ├─ 技术题用降维版（从 12.interview 改写）+ 场景版
    ├─ 重点考：自驱力、学习方法、逻辑思维、跨专业优势
-   ├─ 出题来源：`14/interviewing-cross-disciplinary`（不是 13.split-hairs）
+   ├─ 出题来源：`14/interviewing-cross-disciplinary`（不是 12.interview）
    └─ 评估用：底线+加分模型（而非科班的标准答案深度）
 ```
 
@@ -198,11 +198,11 @@ E（简历面试）和 G（面试官出题）类型**必须先做教育背景检
 
 ```
 关键词提取规则：
-├─ 技术术语直接映射（HashMap → 01.java, RAG → 11.ai）
+├─ 技术术语直接映射（HashMap → 01.java, RAG → 09.ai-applications）
 ├─ 配置/参数映射（JVM → 01.java/jvm, Spring → 06.spring）
 ├─ 架构/设计映射（SSO → 04.system-design, 微服务 → 04 + 06）
-├─ AI 概念映射（成本 → 11.ai + 12.story, Agent → 11.ai）
-├─ 面试方法论映射（面试官/非科班/应届生/转码/跨专业/出题 → 14.project-management/interviewing-cross-disciplinary）
+├─ AI 概念映射（成本 → 09.ai-applications + 13.story, Agent → 09.ai-applications）
+├─ 面试方法论映射（面试官/非科班/应届生/转码/跨专业/出题 → 11.product-and-pm/interviewing-cross-disciplinary）
 └─ 跨领域问题（拆成多个关键词，分别检索）
 ```
 
@@ -211,17 +211,17 @@ E（简历面试）和 G（面试官出题）类型**必须先做教育背景检
 | 排名 | 模块 | 擅长回答的问题类型 |
 |:---:|------|------------------|
 | 🥇 | `01.java` | Java 语言、JVM、并发、集合、Kotlin |
-| 🥈 | `11.ai` | LLM、RAG、Agent、Prompt、Token、MCP、AI 工程 |
+| 🥈 | `09.ai-applications` | LLM、RAG、Agent、Prompt、Token、MCP、AI 工程 |
 | 🥉 | `06.spring` | Spring Boot/Cloud、MyBatis、缓存、消息队列 |
 | 4 | `03.database` | MySQL、Redis、索引、事务、SQL 优化 |
 | 5 | `04.system-design` | 系统设计、高可用、分布式、安全、SSO |
-| 6 | `13.split-hairs` | 面试精炼版（陷阱+话术）、咬文嚼字 |
-| 7 | `02.computer-basics` | 网络、算法、数据结构、操作系统 |
+| 6 | `12.interview` | 面试精炼版（陷阱+话术）、咬文嚼字 |
+| 7 | `02.cs-foundations` | 网络、算法、数据结构、操作系统 *(主模块命名：主模块名为 `02.cs-foundations`；`12.interview/02.computer-basics` 是面试版同名子目录)* |
 | 8 | `05.tools` | Docker、K8s、Git、CI/CD |
-| 9 | `14.project-management` | 项目管理、DORA、研发效能、**面试方法论、跨专业候选人评估** |
-| 10 | `12.story` | 概念叙事理解（阿明餐厅系列）、架构演进故事 |
+| 9 | `11.product-and-pm` | 项目管理、DORA、研发效能、**面试方法论、跨专业候选人评估** |
+| 10 | `13.story` | 概念叙事理解（阿明餐厅系列）、架构演进故事 |
 | 11 | `09.front-end` | JS/TS、React、Web Components、设计系统 |
-| 12 | `08.application-systems` | ERP、CRM、EAM 等企业系统 |
+| 12 | `10.business-systems` | ERP、CRM、EAM 等企业系统 |
 | 13 | `10.big-data` | Flink、Spark、ClickHouse、数仓 |
 | 14 | `07.workflow` | 流程引擎、Camunda、BPMN |
 
@@ -253,8 +253,8 @@ find $KB_DIR/<module> -type d -name "*<topic>*" 2>/dev/null
 
 - 优先读 leaf 文章（深度内容）而非 README 索引
 - 每读一篇，检查其"相关章节"链接，追踪 1-2 篇关联文章
-- 面试题类型（被面试者视角）：同时读 `13.split-hairs` 和主模块（双层检索）
-- 面试官出题类型（G 类型）：**优先读 `14/interviewing-cross-disciplinary`**（问题库），按需引用 `13.split-hairs` 作降维素材
+- 面试题类型（被面试者视角）：同时读 `12.interview` 和主模块（双层检索）
+- 面试官出题类型（G 类型）：**优先读 `14/interviewing-cross-disciplinary`**（问题库），按需引用 `12.interview` 作降维素材
 
 **双层检索 grep 模板**（核心武器，直接复用）：
 
@@ -265,43 +265,43 @@ KEYWORD="${1:?需要 1 个参数：关键词}"
 # === 主模块命中（深度原理）===
 echo "═══ 主模块命中（按命中数倒序，最多 10 个）═══"
 grep -rl "$KEYWORD" $KB_DIR/ --include="*.md" 2>/dev/null \
-  | grep -v "/13.split-hairs/" \
+  | grep -v "/12.interview/" \
   | xargs -I {} sh -c 'count=$(grep -c "$0" "{}" 2>/dev/null); echo "$count {}"' "$KEYWORD" \
   | sort -rn \
   | head -10 \
   | awk '{print "  " $1 " 处命中  →  " $2}'
 
-# === 13.split-hairs 命中（被面试者视角）===
+# === 12.interview 命中（被面试者视角）===
 echo ""
-echo "═══ 13.split-hairs 命中（面试陷阱版，最多 5 个）═══"
+echo "═══ 12.interview 命中（面试陷阱版，最多 5 个）═══"
 grep -rl "$KEYWORD" $KB_DIR/12.interview/ 2>/dev/null \
   | xargs -I {} sh -c 'count=$(grep -c "$0" "{}" 2>/dev/null); echo "$count {}"' "$KEYWORD" \
   | sort -rn \
   | head -5 \
   | awk '{print "  " $1 " 处命中  →  " $2}'
 
-# === 12.story 命中（叙事类比版）===
+# === 13.story 命中（叙事类比版）===
 echo ""
-echo "═══ 12.story 命中（阿明餐厅版，最多 3 个）═══"
+echo "═══ 13.story 命中（阿明餐厅版，最多 3 个）═══"
 grep -rl "$KEYWORD" $KB_DIR/13.story/ 2>/dev/null \
   | head -3 \
   | awk '{print "  →  " $1}'
 
-# === 14.project-management 命中（仅面试方法论问题）===
+# === 11.product-and-pm 命中（仅面试方法论问题）===
 echo ""
-echo "═══ 14.project-management 命中（面试官视角，最多 3 个）═══"
+echo "═══ 11.product-and-pm 命中（面试官视角，最多 3 个）═══"
 grep -rl "$KEYWORD" $KB_DIR/11.product-and-pm/ 2>/dev/null \
   | head -3 \
   | awk '{print "  →  " $1}'
 
-# === 候选阅读顺序（主模块优先，13.split-hairs 双层，12.story 收尾）===
+# === 候选阅读顺序（主模块优先，12.interview 双层，13.story 收尾）===
 echo ""
-echo "═══ 建议阅读顺序：主模块 → 13.split-hairs → 12.story（叙事辅助）═══"
+echo "═══ 建议阅读顺序：主模块 → 12.interview → 13.story（叙事辅助）═══"
 ```
 
 **双层调度决策**（根据问题类型选择检索顺序）：
 
-| 问题类型 | 主模块 | 13.split-hairs | 12.story | 14.project-management |
+| 问题类型 | 主模块 | 12.interview | 13.story | 11.product-and-pm |
 |---------|:---:|:---:|:---:|:---:|
 | **A 技术问答** | 第 1 读 | 可选 | 可选 | — |
 | **B 出题** | 第 2 读（参答案） | **第 1 读** | 可选 | — |
@@ -316,8 +316,8 @@ echo "═══ 建议阅读顺序：主模块 → 13.split-hairs → 12.story�
 ```
 读完文章 A → 发现"相关章节"链接到 B、C
 ├─ 如果 B/C 的标题与问题相关 → 读 B/C
-├─ 如果 A 有"面试陷阱速览" → 读对应 13.split-hairs 版本
-└─ 如果 A 有"故事联动" → 读对应 12.story 版本（获取叙事视角）
+├─ 如果 A 有"面试陷阱速览" → 读对应 12.interview 版本
+└─ 如果 A 有"故事联动" → 读对应 13.story 版本（获取叙事视角）
 ```
 
 **3.4 检索终止条件**
@@ -737,7 +737,7 @@ def is_relevant(top1_path, missing_path):
    │   └─ 科班路线 → 正常技术深度题（原流程）
    └─ 专业是数学/金融/外语/文科/工科/其他？
        └─ 非科班路线 → 自动引入 14/interviewing-cross-disciplinary 问题库
-           ├─ 技术题用降维版（从 13.split-hairs 改写）+ 场景版
+           ├─ 技术题用降维版（从 12.interview 改写）+ 场景版
            ├─ 重点考：自驱力、学习方法、逻辑思维、跨专业优势
            └─ 评估用：底线+加分模型（而非科班的标准答案深度）
 
@@ -803,10 +803,10 @@ grep -rl "Redis" $KB_DIR/ | sort
 
 # 3. 按目录分类为层次
 #    01.java/xxx → 基础层
-#    13.split-hairs/xxx → 进阶层（面试题）
-#    06.spring/xxx → 实战层
-#    04.system-design/xxx → 架构层
-#    12.story/xxx → 叙事层
+#    12.interview/xxx → 进阶层（面试题）
+#    04.spring-backend/xxx → 实战层
+#    04.spring-backend/xxx → 架构层
+#    13.story/xxx → 叙事层
 
 # 4. 读每篇文章的第一段 + summary，提取一句话概括
 # 5. 组织成树形结构输出
@@ -964,10 +964,10 @@ grep -rl "Redis" $KB_DIR/ | sort
 - **症状**：只读 1 篇就整合；用户问"HashMap 原理"只引一篇
 - **修复**：Step 3.4 终止条件是 ≥ 3 篇深度 + ≥ 1 篇追踪，不达标则继续读
 
-**❌ Mistake 3: 忽略 13.split-hairs 双层（被面试者视角）**
+**❌ Mistake 3: 忽略 12.interview 双层（被面试者视角）**
 
 - **症状**：用户出"为什么树化阈值是 8"，只引 01.java 主模块 → 缺面试陷阱视角
-- **修复**：必须同时引 `13.split-hairs/<module>/<topic>/`（面试陷阱版）+ 主模块深度版
+- **修复**：必须同时引 `12.interview/<module>/<topic>/`（面试陷阱版）+ 主模块深度版
 
 **❌ Mistake 4: 漏写知识来源表**
 
@@ -1004,7 +1004,7 @@ grep -oE '$KB_DIR/[^\` )]+\.md' answer.md | sort | uniq -c | sort -rn | awk '$1 
 
 **❌ Mistake 9: G 类型出题用科班题库**
 
-- **症状**：面试非科班候选人，直接搬 13.split-hairs 原题 → 应聘者答不出 → 错杀潜力股
+- **症状**：面试非科班候选人，直接搬 12.interview 原题 → 应聘者答不出 → 错杀潜力股
 - **修复**：见 G 模板"降维版为主 + 重点考察自驱力/逻辑思维/跨专业优势"
 
 ---
@@ -1049,5 +1049,5 @@ grep -oE '$KB_DIR/[^\` )]+\.md' answer.md | sort | uniq -c | sort -rn | awk '$1 
 - [ ] 回答末尾有 📚 知识来源
 - [ ] 如果 $KB_DIR/ 未覆盖，已标注并建议沉淀
 - [ ] **E/G 类型**：已检测候选人教育背景（科班 vs 非科班）
-- [ ] **E/G 非科班**：出题来源是 `14/interviewing-cross-disciplinary`（不是 `13.split-hairs`）
+- [ ] **E/G 非科班**：出题来源是 `14/interviewing-cross-disciplinary`（不是 `12.interview`）
 - [ ] **E/G 非科班**：追问链使用非科班规则（思维过程/给提示看反应/跨专业优势）

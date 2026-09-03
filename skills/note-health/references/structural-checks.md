@@ -489,7 +489,7 @@ actual = {
     '10.big-data':     count_all_readmes('note/12.interview/10.big-data'),
     '11.ai':           count_all_readmes('note/12.interview/11.ai'),
     'tools':           count_all_readmes('note/12.interview/tools'),
-    '12.story':        len([f for f in glob.glob('note/13.story/[0-9]*.md') if 'STORY-FORMAT-SPEC' not in f]),
+    '13.story':        len([f for f in glob.glob('note/13.story/[0-9]*.md') if 'STORY-FORMAT-SPEC' not in f]),
 }
 
 print('=== 实际篇数（含根 README）===')
@@ -498,7 +498,7 @@ for k, v in actual.items():
     total += v
     print(f'  {k}: {v}')
 print(f'13题 + tools 总题数: {total}')
-print(f'12.story 篇数: {actual[\"12.story\"]}')
+print(f'13.story 篇数: {actual[\"13.story\"]}')
 
 print('\\n=== note/README.md 声明数字 vs 实际 ===')
 with open('note/README.md', encoding='utf-8') as f:
@@ -508,7 +508,7 @@ mismatch = 0
 # 分类导航表：匹配表格行中的数字（格式如 '| X | ... | N |'）
 # note/README.md 分类导航表用表格格式，数字在第三列
 for mod in actual.keys():
-    if mod == '12.story': continue
+    if mod == '13.story': continue
     # 找分类导航表中该模块对应的行
     # 表格格式：| 序号 | 主题 | 文章数 | 入口 |
     # 匹配策略：找包含模块路径的行，提取文章数
@@ -529,7 +529,7 @@ for mod in actual.keys():
 m = re.search(r'(\d+) [篇个].*?深度文章', content)
 if m:
     decl_total = int(m.group(1))
-    real_13q = sum(v for k, v in actual.items() if k != '12.story')
+    real_13q = sum(v for k, v in actual.items() if k != '13.story')
     status = '✓' if decl_total == real_13q else f'✗ 偏差 {decl_total - real_13q:+d}'
     print(f'  13题总篇数: 声明 {decl_total} vs 实际 {real_13q} → {status}')
     if decl_total != real_13q: mismatch += 1
