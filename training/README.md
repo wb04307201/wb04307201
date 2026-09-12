@@ -225,7 +225,7 @@ graph TD
 
 ## 7. 相关章节
 
-> 相关笔记见 `note/11.ai/` 知识体系（独立仓库）
+> 相关笔记见 [`note` 独立仓库](https://github.com/wb04307201/note)的 `12.interview/11.ai/` 知识体系
 
 ---
 
