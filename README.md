@@ -47,35 +47,11 @@
 
 ## 📓 技术笔记
 
-基于 Obsidian 维护的体系化技术笔记：**13 主模块** + `12.interview` 高频面试题 + `13.story` 阿明餐厅叙事。→ [进入笔记](./note/README.md)
+基于 Obsidian 维护的体系化技术笔记：**13 主模块** + `12.interview` 高频面试题 + `13.story` 阿明餐厅叙事。
 
-### 🔄 笔记库 CI 状态（实时）
-
-<a href="https://github.com/wb04307201/wb04307201/actions/workflows/difficulty-calibration.yml"><img src="https://github.com/wb04307201/wb04307201/actions/workflows/difficulty-calibration.yml/badge.svg?branch=master" alt="5 维校准"/></a>
-<a href="https://github.com/wb04307201/wb04307201/actions/workflows/structural-link-check.yml"><img src="https://github.com/wb04307201/wb04307201/actions/workflows/structural-link-check.yml/badge.svg?branch=master" alt="结构链接"/></a>
-
-> 3 个 workflow 每月 1 日串行跑（02:00/03:00/06:00），PR 触发即时反馈。
-> ~~URL 校验~~ link-check.yml 已删除（Session 9：外部链接是动态不可控，长期失败无意义）。
-
-### 📚 13 主模块导航
-
-| # | 模块 | 主题 |
-|:-:|------|------|
-| 01 | [java-and-jvm](./note/01.java-and-jvm/) | Java 基础 + JVM + 并发 + 设计模式 |
-| 02 | [cs-foundations](./note/02.cs-foundations/) | 算法 + OS + 网络 + 数学 |
-| 03 | [data-stack](./note/03.data-stack/) | 数据库 + 缓存 + 大数据 |
-| 04 | [spring-backend](./note/04.spring-backend/) | Spring + 后端框架 |
-| 05 | [frontend](./note/05.frontend/) | 前端 |
-| 06 | [distributed-systems](./note/06.distributed-systems/) | 分布式 + 微服务 + 云原生 |
-| 07 | [devops-and-tools](./note/07.devops-and-tools/) | CI/CD + 监控 + 工具 |
-| 08 | [ai-foundations](./note/08.ai-foundations/) | ML + DL + Transformer + LLM 基础 |
-| 09 | [ai-applications](./note/09.ai-applications/) | RAG + Agent + Prompt + LLM 推理 |
-| 10 | [business-systems](./note/10.business-systems/) | 电商 + 社交 + 金融 |
-| 11 | [product-and-pm](./note/11.product-and-pm/) | 产品 + PM + 流程 |
-| 12 | [interview](./note/12.interview/) | 高频面试题（**227 篇**，10 主题子目录） |
-| 13 | [story](./note/13.story/) | 「阿明餐厅」技术系列（**50 篇**叙事层） |
-
-**完整健康度指标、主模块 depth 分布、L5 Top 30 标杆文章** → 见 [note/README.md](./note/README.md) 与 [v18-sampling-report.md](./skills/note-health/references/v18-sampling-report.md)
+> 📦 **2026-09 已拆分为独立仓库**：[wb04307201/note](https://github.com/wb04307201/note)（Gitee 同名镜像）
+>
+> 本仓库回归纯个人主页 + 开源项目展示；笔记内容、meta-skills、校验脚本与 CI 全部随迁至新仓库（内容平铺在其仓库根）。
 
 ## 📬 联系方式
 
@@ -83,7 +59,3 @@
 |------|------|
 | Gitee | [wb04307201](https://gitee.com/wb04307201) |
 | GitHub | [wb04307201](https://github.com/wb04307201) |
-
-## 反向链
-
-- [CONTRIBUTING](note/SPEC.md)
