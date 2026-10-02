@@ -50,7 +50,7 @@
 
 基于 Obsidian 维护的体系化技术笔记：**13 主模块** + `12.interview` 高频面试题 + `13.story` 阿明餐厅叙事。
 
-> 📦 **2026-09 已拆分为独立仓库**：[wb04307201/note](https://github.com/wb04307201/note)（Gitee 同名镜像）
+> 📦 **2026-09 已拆分为独立仓库**：[GitHub](https://github.com/wb04307201/note) · [Gitee](https://gitee.com/wb04307201/note)
 >
 > 本仓库回归纯个人主页 + 开源项目展示；笔记内容、meta-skills、校验脚本与 CI 全部随迁至新仓库（内容平铺在其仓库根）。
 
