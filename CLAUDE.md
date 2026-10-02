@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Repository Type
 
 **个人主页仓库**(GitHub/Gitee profile repo):
-- **README.md** — 个人主页 + **11 个开源项目**展示(File View、Spring AI LoomAgent、Flexible Lock 等)
+- **README.md** — 个人主页 + **12 个开源项目**展示(File View、Spring AI LoomAgent、Flexible Lock 等)
 - **profile/** — GitHub README 统计卡片(stats.svg / top-langs.svg,由 grs.yml 每月更新)
 - **hp/** — 主页展示图片(PNG)
 - **training/** — 培训课件目录
@@ -27,7 +27,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## 常用命令
 
 ```bash
-# 主页项目表维护:直接编辑 README.md 的项目表格(11 行)
+# 主页项目表维护:直接编辑 README.md 的项目表格(12 行)
 
 # 追溯已迁出的笔记历史
 git log --oneline --all -- note/ | head -20
