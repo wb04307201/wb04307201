@@ -2,8 +2,8 @@ name: Update README cards
 
 on:
   schedule:
-    # 每月 1 日 02:00（与 auto-calibrate/structural-link-check 错开，统一在每月初）
-    - cron: "0 2 1 * *"
+    # 每天 02:00 UTC（北京时间 10:00）
+    - cron: "0 2 * * *"
   workflow_dispatch:
 
 jobs:
@@ -30,14 +30,6 @@ jobs:
           card: top-langs
           options: username=${{ github.repository_owner }}&layout=compact&langs_count=6
           path: profile/top-langs.svg
-          token: ${{ secrets.TOKEN }}
-
-      - name: Generate pin card
-        uses: stats-organization/github-readme-stats-action@v2
-        with:
-          card: pin
-          options: username=stats-organization&repo=github-readme-stats
-          path: profile/pin-stats-organization-github-readme-stats.svg
           token: ${{ secrets.TOKEN }}
 
       - name: Commit cards

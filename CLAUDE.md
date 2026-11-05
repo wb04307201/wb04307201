@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **个人主页仓库**(GitHub/Gitee profile repo):
 - **README.md** — 个人主页 + **12 个开源项目**展示(File View、Spring AI LoomAgent、Flexible Lock 等)
-- **profile/** — GitHub README 统计卡片(stats.svg / top-langs.svg,由 grs.yml 每月更新)
+- **profile/** — GitHub README 统计卡片(stats.svg / top-langs.svg,由 grs.yml 每天更新)
 - **hp/** — 主页展示图片(PNG)
 - **training/** — 培训课件目录
 
@@ -20,7 +20,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 | Workflow | 触发时机 | 职责 |
 |----------|---------|------|
-| **`grs.yml`** | 每月 1 日 02:00 + workflow_dispatch | 更新 `profile/stats.svg` + `top-langs.svg`(GitHub README 卡片,需要 `secrets.TOKEN`) |
+| **`grs.yml`** | 每天 02:00 UTC(北京 10:00) + workflow_dispatch 手动触发 | 更新 `profile/stats.svg` + `top-langs.svg`(GitHub README 卡片,需要 `secrets.TOKEN`);卡片内容无变化则不产生 commit |
 
 > 原 difficulty-calibration.yml / structural-link-check.yml 已随知识库迁至 `wb04307201/note` 仓库。
 
